@@ -8,7 +8,6 @@ import XCTest
 
 final class PizzaKitFrontendTests: XCTestCase {
     func testExample() throws {
-        print(YJSNPIImage.yjsnpi)
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
 

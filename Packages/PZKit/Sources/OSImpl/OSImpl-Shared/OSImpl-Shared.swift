@@ -3,13 +3,3 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import SwiftUI
-
-extension Image {
-    public static let yjsnpi: String = "YJSNPI"
-}
-
-// MARK: - YJSNPIProtocol
-
-public protocol YJSNPIProtocol {
-    static var yjsnpi: String { get }
-}

@@ -3,11 +3,3 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import WatchKit
-
-// MARK: - WKImage + YJSNPIProtocol
-
-extension WKImage: YJSNPIProtocol {
-    public static let yjsnpi: String = "YJSNPI"
-}
-
-public typealias YJSNPIImage = WKImage
