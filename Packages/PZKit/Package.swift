@@ -50,6 +50,17 @@ let package = Package(
             name: "PZKitFrontend",
             targets: ["PZKitFrontend"]
         )
+
+        #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
+        Product.library(
+            name: "EnkaKit",
+            targets: ["EnkaKit"]
+        )
+        Product.library(
+            name: "GachaKit",
+            targets: ["GachaKit"]
+        )
+        #endif
     },
     dependencies: buildPackageDependencies {
         Package.Dependency.package(
