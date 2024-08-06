@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BF32D902C62A2F6008C9949 /* PizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF32D8F2C62A2F6008C9949 /* PizzaKit */; };
 		5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */; };
 		5BFD6B922C628CD8000A63E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B912C628CD8000A63E9 /* ContentView.swift */; };
 		5BFD6B942C628CD8000A63E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B932C628CD8000A63E9 /* Item.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BF32D8C2C62A2E4008C9949 /* PZKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZKit; sourceTree = "<group>"; };
 		5BFD6B8C2C628CD8000A63E9 /* UnitedPizzaHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitedPizzaHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedPizzaHelperApp.swift; sourceTree = "<group>"; };
 		5BFD6B912C628CD8000A63E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BF32D902C62A2F6008C9949 /* PizzaKit in Frameworks */,
 				5BFD6BA72C628EA2000A63E9 /* PizzaKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,9 +44,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BF32D8D2C62A2E4008C9949 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				5BF32D8C2C62A2E4008C9949 /* PZKit */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 		5BFD6B832C628CD8000A63E9 = {
 			isa = PBXGroup;
 			children = (
+				5BF32D8D2C62A2E4008C9949 /* Packages */,
 				5BFD6BA82C628ECD000A63E9 /* RepoRoot */,
 				5BFD6B8E2C628CD8000A63E9 /* UnitedPizzaHelper */,
 				5BFD6B8D2C628CD8000A63E9 /* Products */,
@@ -107,6 +119,7 @@
 			name = UnitedPizzaHelper;
 			packageProductDependencies = (
 				5BFD6BA62C628EA2000A63E9 /* PizzaKit */,
+				5BF32D8F2C62A2F6008C9949 /* PizzaKit */,
 			);
 			productName = UnitedPizzaHelper;
 			productReference = 5BFD6B8C2C628CD8000A63E9 /* UnitedPizzaHelper.app */;
@@ -137,7 +150,7 @@
 			);
 			mainGroup = 5BFD6B832C628CD8000A63E9;
 			packageReferences = (
-				5BFD6BA52C628EA2000A63E9 /* XCLocalSwiftPackageReference "Packages/PZKit" */,
+				5BF32D8E2C62A2F6008C9949 /* XCLocalSwiftPackageReference "Packages/PZKit" */,
 			);
 			productRefGroup = 5BFD6B8D2C628CD8000A63E9 /* Products */;
 			projectDirPath = "";
@@ -383,13 +396,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		5BFD6BA52C628EA2000A63E9 /* XCLocalSwiftPackageReference "Packages/PZKit" */ = {
+		5BF32D8E2C62A2F6008C9949 /* XCLocalSwiftPackageReference "Packages/PZKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/PZKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5BF32D8F2C62A2F6008C9949 /* PizzaKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PizzaKit;
+		};
 		5BFD6BA62C628EA2000A63E9 /* PizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PizzaKit;

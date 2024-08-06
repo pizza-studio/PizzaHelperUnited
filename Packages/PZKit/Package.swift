@@ -23,7 +23,7 @@ let sharedSwiftSettings: [SwiftSetting] = [
 
 let package = Package(
     name: "PizzaKit",
-    platforms: [.iOS(.v17), .macOS(.v14), .watchOS(.v10)],
+    platforms: [.iOS(.v17), .macOS(.v14), .watchOS(.v10), .macCatalyst(.v14), .visionOS(.v1)],
     products: buildProducts {
         Product.library(
             name: "PizzaKit",
@@ -72,6 +72,12 @@ let package = Package(
 
         Target.target(
             name: "PZBaseKit",
+            dependencies: buildTargetDependencies {
+                Target.Dependency.product(
+                    name: "Defaults",
+                    package: "Defaults"
+                )
+            },
             swiftSettings: sharedSwiftSettings
         )
         Target.target(
@@ -112,15 +118,27 @@ let package = Package(
         Target.target(
             name: "EnkaKit",
             dependencies: buildTargetDependencies {
-                Target.Dependency.product(name: "EnkaDBFiles", package: "EnkaDBGenerator")
-                Target.Dependency.product(name: "EnkaDBModels", package: "EnkaDBGenerator")
+                Target.Dependency.product(
+                    name: "EnkaDBFiles",
+                    package: "EnkaDBGenerator",
+                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
+                )
+                Target.Dependency.product(
+                    name: "EnkaDBModels",
+                    package: "EnkaDBGenerator",
+                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
+                )
             },
             swiftSettings: sharedSwiftSettings
         )
         Target.target(
             name: "GachaKit",
             dependencies: buildTargetDependencies {
-                Target.Dependency.product(name: "GachaMetaDB", package: "GachaMetaGenerator")
+                Target.Dependency.product(
+                    name: "GachaMetaDB",
+                    package: "GachaMetaGenerator",
+                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
+                )
             },
             swiftSettings: sharedSwiftSettings
         )
