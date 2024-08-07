@@ -140,6 +140,9 @@ let package = Package(
                     condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
                 )
             },
+            resources: buildResources {
+                Resource.process("Assets/AdditionalLangTableShared.json")
+            },
             swiftSettings: sharedSwiftSettings
         )
         Target.target(
@@ -248,6 +251,13 @@ func buildTargetDependencies(
     @ArrayBuilder<Target.Dependency?> dependencies: () -> [Target.Dependency?]
 )
     -> [Target.Dependency] {
+    dependencies().compactMap { $0 }
+}
+
+func buildResources(
+    @ArrayBuilder<Resource?> dependencies: () -> [Resource?]
+)
+    -> [Resource] {
     dependencies().compactMap { $0 }
 }
 
