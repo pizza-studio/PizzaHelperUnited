@@ -2,6 +2,51 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Combine
 import enum EnkaDBModels.EnkaDBModelsGI
+import Foundation
 
-extension Enka {}
+// MARK: - Enka.EnkaDB4GI
+
+extension Enka {
+    @Observable
+    public class EnkaDB4GI: EnkaDBProtocol, Codable {
+        // MARK: Lifecycle
+
+        public init(
+            locTag: String? = nil,
+            locTable: Enka.LocTable,
+            characters: EnkaDBModelsGI.CharacterDict,
+            namecards: EnkaDBModelsGI.NameCardDict,
+            profilePictures: EnkaDBModelsGI.ProfilePictureDict
+        ) {
+            self.locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+            self.locTable = locTable
+            self.characters = characters
+            self.namecards = namecards
+            self.profilePictures = profilePictures
+        }
+
+        // MARK: Public
+
+        public var locTag: String
+        public var locTable: Enka.LocTable
+        public var characters: EnkaDBModelsGI.CharacterDict
+        public var namecards: EnkaDBModelsGI.NameCardDict
+        public var profilePictures: EnkaDBModelsGI.ProfilePictureDict
+        public var isExpired: Bool = false
+    }
+}
+
+extension Enka.EnkaDB4GI {
+    public var game: Enka.HoyoGame { .genshinImpact }
+
+    @MainActor
+    public func update(new: Enka.EnkaDB4GI) {
+        locTag = new.locTag
+        locTable = new.locTable
+        characters = new.characters
+        namecards = new.namecards
+        profilePictures = new.profilePictures
+    }
+}

@@ -1,0 +1,92 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+import Foundation
+
+// MARK: - Enka.HoyoGame
+
+extension Enka {
+    public enum HoyoGame: CaseIterable, Codable, Hashable {
+        case genshinImpact
+        case starRail
+    }
+}
+
+extension Enka {
+    public typealias LocTable = [String: String]
+
+    /// 星穹铁道所支持的语言数量比原神略少，所以取两者之交集。
+    public static let allowedLangTags: [String] = [
+        "en", "ru", "vi", "th", "pt", "ko",
+        "ja", "id", "fr", "es", "de", "zh-tw", "zh-cn",
+    ]
+
+    public static var currentLangTag: String { Locale.langCodeForEnkaAPI }
+
+    public static func sanitizeLangTag(_ target: some StringProtocol) -> String {
+        var target = target.lowercased()
+        if target.prefix(2) == "zh" {
+            if target.contains("cht") || target.contains("hant") {
+                target = "zh-tw"
+            } else if target.contains("chs") || target.contains("hans") {
+                target = "zh-cn"
+            }
+        }
+        if !Self.allowedLangTags.contains(target) {
+            target = "en"
+        }
+        return target
+    }
+}
+
+// MARK: - EnkaAPI LangCode
+
+extension Locale {
+    public static var langCodeForEnkaAPI: String {
+        let languageCode = Locale.preferredLanguages.first
+            ?? Bundle.module.preferredLocalizations.first
+            ?? Bundle.main.preferredLocalizations.first
+            ?? "en"
+        switch languageCode.prefix(7).lowercased() {
+        case "zh-hans": return "zh-cn"
+        case "zh-hant": return "zh-tw"
+        default: break
+        }
+        switch languageCode.prefix(5).lowercased() {
+        case "zh-cn": return "zh-cn"
+        case "zh-tw": return "zh-tw"
+        default: break
+        }
+        switch languageCode.prefix(2).lowercased() {
+        case "ja", "jp": return "ja"
+        case "ko", "kr": return "ko"
+        default: break
+        }
+        let valid = Enka.allowedLangTags.contains(languageCode)
+        return valid ? languageCode.prefix(2).description : "en"
+    }
+}
+
+// MARK: - Data Implementation
+
+extension Data {
+    public func parseAs<T: Decodable>(_ type: T.Type) throws -> T {
+        try JSONDecoder().decode(T.self, from: self)
+    }
+}
+
+extension Data? {
+    public func parseAs<T: Decodable>(_ type: T.Type) throws -> T? {
+        guard let this = self else { return nil }
+        return try JSONDecoder().decode(T.self, from: this)
+    }
+
+    public func assertedParseAs<T: Decodable>(_ type: T.Type) throws -> T {
+        try JSONDecoder().decode(T.self, from: self ?? .init([]))
+    }
+}
+
+extension Bundle {
+    public static let enka = Bundle.module
+}

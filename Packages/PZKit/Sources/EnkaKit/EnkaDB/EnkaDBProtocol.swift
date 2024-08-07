@@ -2,4 +2,15 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-public protocol EnkaDBProtocol {}
+import Foundation
+
+// MARK: - EnkaDBProtocol
+
+public protocol EnkaDBProtocol {
+    var game: Enka.HoyoGame { get }
+    var locTable: Enka.LocTable { get set }
+    var locTag: String { get }
+    var isExpired: Bool { get set }
+}
+
+extension EnkaDBProtocol {}
