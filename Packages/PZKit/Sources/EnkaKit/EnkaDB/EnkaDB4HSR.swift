@@ -68,12 +68,13 @@ extension Enka {
     }
 }
 
+// MARK: - Protocol Conformance.
+
 extension Enka.EnkaDB4HSR {
     public var game: Enka.HoyoGame { .starRail }
 
     /// Only available for characters and Weapons.
     public func getNameTextMapHash(id: String) -> String? {
-        var result = String?.none
         var matchedInts: [Int] = characters.compactMap {
             guard $0.key.hasPrefix(id) else { return nil }
             return $0.value.avatarName.hash
@@ -97,5 +98,38 @@ extension Enka.EnkaDB4HSR {
         skills = new.skills
         skillTrees = new.skillTrees
         weapons = new.weapons
+    }
+}
+
+// MARK: - Use bundled resources to initiate an EnkaDB instance.
+
+extension Enka.EnkaDB4HSR {
+    public convenience init(locTag: String? = nil) throws {
+        let locTables = try Enka.JSONType.hsrLocTable.bundledJSONData
+            .assertedParseAs(Enka.RawLocTables.self)
+        let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+        guard let locTableSpecified = locTables[locTag] else {
+            throw Enka.EKError.langTableMatchFailure
+        }
+        self.init(
+            locTag: locTag,
+            locTable: locTableSpecified,
+            profileAvatars: try Enka.JSONType.hsrProfileAvatarIcons.bundledJSONData
+                .assertedParseAs(EnkaDBModelsHSR.ProfileAvatarDict.self),
+            characters: try Enka.JSONType.hsrCharacters.bundledJSONData
+                .assertedParseAs(EnkaDBModelsHSR.CharacterDict.self),
+            meta: try Enka.JSONType.hsrMetadata.bundledJSONData
+                .assertedParseAs(EnkaDBModelsHSR.Meta.self),
+            skillRanks: try Enka.JSONType.hsrSkillRanks.bundledJSONData
+                .assertedParseAs(EnkaDBModelsHSR.SkillRanksDict.self),
+            artifacts: try Enka.JSONType.hsrArtifacts.bundledJSONData
+                .assertedParseAs(EnkaDBModelsHSR.ArtifactsDict.self),
+            skills: try Enka.JSONType.hsrSkills.bundledJSONData
+                .assertedParseAs(EnkaDBModelsHSR.SkillsDict.self),
+            skillTrees: try Enka.JSONType.hsrSkillTrees.bundledJSONData
+                .assertedParseAs(EnkaDBModelsHSR.SkillTreesDict.self),
+            weapons: try Enka.JSONType.hsrWeapons.bundledJSONData
+                .assertedParseAs(EnkaDBModelsHSR.WeaponsDict.self)
+        )
     }
 }

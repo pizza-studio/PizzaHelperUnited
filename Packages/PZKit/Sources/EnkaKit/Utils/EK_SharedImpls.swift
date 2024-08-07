@@ -14,6 +14,7 @@ extension Enka {
 }
 
 extension Enka {
+    public typealias RawLocTables = [String: LocTable]
     public typealias LocTable = [String: String]
 
     /// 星穹铁道所支持的语言数量比原神略少，所以取两者之交集。

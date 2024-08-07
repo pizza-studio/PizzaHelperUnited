@@ -48,13 +48,14 @@ extension Enka {
     }
 }
 
+// MARK: - Protocol Conformance.
+
 extension Enka.EnkaDB4GI {
     public var game: Enka.HoyoGame { .genshinImpact }
 
     /// Only available for characters.
     public func getNameTextMapHash(id: String) -> String? {
-        var result = String?.none
-        var matchedInts: [Int] = characters.compactMap {
+        let matchedInts: [Int] = characters.compactMap {
             guard $0.key.hasPrefix(id) else { return nil }
             return $0.value.nameTextMapHash
         }
@@ -68,5 +69,28 @@ extension Enka.EnkaDB4GI {
         characters = new.characters
         namecards = new.namecards
         profilePictures = new.profilePictures
+    }
+}
+
+// MARK: - Use bundled resources to initiate an EnkaDB instance.
+
+extension Enka.EnkaDB4GI {
+    public convenience init(locTag: String? = nil) throws {
+        let locTables = try Enka.JSONType.giLocTable.bundledJSONData
+            .assertedParseAs(Enka.RawLocTables.self)
+        let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+        guard let locTableSpecified = locTables[locTag] else {
+            throw Enka.EKError.langTableMatchFailure
+        }
+        self.init(
+            locTag: locTag,
+            locTable: locTableSpecified,
+            characters: try Enka.JSONType.giCharacters.bundledJSONData
+                .assertedParseAs(EnkaDBModelsGI.CharacterDict.self),
+            namecards: try Enka.JSONType.giNamecards.bundledJSONData
+                .assertedParseAs(EnkaDBModelsGI.NameCardDict.self),
+            profilePictures: try Enka.JSONType.giProfileAvatarIcons.bundledJSONData
+                .assertedParseAs(EnkaDBModelsGI.ProfilePictureDict.self)
+        )
     }
 }

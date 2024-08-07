@@ -15,16 +15,16 @@ public protocol EnkaDBProtocol {
 }
 
 extension EnkaDBProtocol {
-    func getTranslationFor(id: String) -> String? {
+    func getTranslationFor(id: String) -> String {
         if let realNameMap = Enka.JSONType.bundledRealNameTable[locTag],
            let matchedRealName = realNameMap[id] {
             return matchedRealName
         }
         let missingTranslation = "i18nMissing(id:\(id))"
         if let hash = getNameTextMapHash(id: id) {
-            return locTable[hash]
+            return locTable[hash] ?? missingTranslation
         } else {
-            return locTable[id]
+            return locTable[id] ?? missingTranslation
         }
     }
 

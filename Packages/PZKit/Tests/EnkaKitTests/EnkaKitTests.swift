@@ -6,7 +6,7 @@
 import XCTest
 
 final class EnkaKitTests: XCTestCase {
-    func testEDecodingPropertyAndElement() throws {
+    func testDecodingPropertyAndElement() throws {
         let jsonStr1 = #"{"PropType": "GrassAddedRatio"}"#
         let jsonStr2 = #"{"Element": "Grass"}"#
         guard let data1 = jsonStr1.data(using: .utf8), let data2 = jsonStr2.data(using: .utf8) else {
@@ -17,5 +17,12 @@ final class EnkaKitTests: XCTestCase {
         let decoded2 = try JSONDecoder().decode([String: Enka.GameElement].self, from: data2)
         XCTAssertEqual(decoded1.values.first, .dendroAddedRatio)
         XCTAssertEqual(decoded2.values.first, .dendro)
+    }
+
+    func testEnkaDBInitUsingBundledData() throws {
+        let dbGI = try Enka.EnkaDB4GI(locTag: "zh-Hant")
+        let dbHSR = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
+        XCTAssertEqual(dbGI.locTag, "zh-tw")
+        XCTAssertEqual(dbHSR.locTag, "zh-tw")
     }
 }
