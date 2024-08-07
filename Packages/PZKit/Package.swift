@@ -161,6 +161,13 @@ let package = Package(
             name: "PizzaKitFrontendTests",
             dependencies: ["PZKitFrontend", "OSImpl"]
         )
+
+        #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
+        Target.testTarget(
+            name: "EnkaKitTests",
+            dependencies: ["EnkaKit"]
+        )
+        #endif
     }
 )
 
