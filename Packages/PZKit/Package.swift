@@ -129,6 +129,7 @@ let package = Package(
         Target.target(
             name: "EnkaKit",
             dependencies: buildTargetDependencies {
+                "PZBaseKit"
                 Target.Dependency.product(
                     name: "EnkaDBFiles",
                     package: "EnkaDBGenerator",
@@ -149,6 +150,7 @@ let package = Package(
         Target.target(
             name: "GachaKit",
             dependencies: buildTargetDependencies {
+                "PZBaseKit"
                 Target.Dependency.product(
                     name: "GachaMetaDB",
                     package: "GachaMetaGenerator",
