@@ -21,12 +21,45 @@ extension Enka {
         case hsrSkills = "honker_skills"
         case hsrWeapons = "honker_weps"
         case hsrRealNameTable = "RealNameDict"
-        case retrieved = "N/A" // The JSON file retrieved from Enka Networks website per each query.
 
         // MARK: Public
 
+        public var game: Enka.HoyoGame {
+            switch self {
+            case .giCharacters, .giLocTable, .giNamecards, .giProfileAvatarIcons:
+                return .genshinImpact
+            default: return .starRail
+            }
+        }
+
+        public var repoFileInternalPath: String {
+            let rootFolder = "Sources/EnkaDBFiles/Resources/Specimen/"
+            switch game {
+            case .genshinImpact: return "\(rootFolder)GI/\(rawValue).json"
+            case .starRail: return "\(rootFolder)HSR/\(rawValue).json"
+            }
+        }
+
         // Bundle JSON Accessor.
-        public static var bundledExtraLangTable: Enka.RawLocTables = {
+        public var bundledJSONData: Data? {
+            EnkaDBFileProvider.getBundledJSONFileData(fileNameStem: rawValue)
+        }
+
+        public func getBundledJSONObject<T: Decodable>(
+            as: T.Type, decoderConfigurator: ((JSONDecoder) -> Void)? = nil
+        )
+            -> T? {
+            EnkaDBFileProvider.getBundledJSONFileObject(
+                fileNameStem: rawValue,
+                type: T.self,
+                decoderConfigurator: decoderConfigurator
+            )
+        }
+
+        // MARK: Internal
+
+        // Bundle JSON Accessor.
+        static var bundledExtraLangTable: Enka.RawLocTables = {
             guard let url = Bundle.module.url(
                 forResource: "AdditionalLangTableShared", withExtension: "json"
             ) else { return [:] }
@@ -40,7 +73,7 @@ extension Enka {
         }()
 
         // Bundle JSON Accessor.
-        public static var bundledRealNameTable: Enka.RawLocTables = {
+        static var bundledRealNameTable: Enka.RawLocTables = {
             guard let url = Bundle.module.url(
                 forResource: "RealNameDict", withExtension: "json"
             ) else { return [:] }
@@ -53,22 +86,12 @@ extension Enka {
             }
         }()
 
-        // Bundle JSON Accessor.
-        public var bundledJSONData: Data? {
-            guard rawValue != "N/A" else { return nil }
-            return EnkaDBFileProvider.getBundledJSONFileData(fileNameStem: rawValue)
+        static var cases4GI: [Self] {
+            Self.allCases.filter { $0.game == .genshinImpact }
         }
 
-        public func getBundledJSONObject<T: Decodable>(
-            as: T.Type, decoderConfigurator: ((JSONDecoder) -> Void)? = nil
-        )
-            -> T? {
-            guard rawValue != "N/A" else { return nil }
-            return EnkaDBFileProvider.getBundledJSONFileObject(
-                fileNameStem: rawValue,
-                type: T.self,
-                decoderConfigurator: decoderConfigurator
-            )
+        static var cases4HSR: [Self] {
+            Self.allCases.filter { $0.game == .starRail }
         }
     }
 }

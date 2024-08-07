@@ -160,3 +160,12 @@ extension Enka.GIAvatarAttribute {
         }
     }
 }
+
+// MARK: - Enka.PropertyType.PVPair
+
+extension Enka.PropertyType {
+    public struct PVPair: Hashable, Codable {
+        let prop: Enka.PropertyType
+        let value: Double
+    }
+}
