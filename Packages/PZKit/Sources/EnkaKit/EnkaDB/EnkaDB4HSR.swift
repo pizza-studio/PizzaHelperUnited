@@ -4,6 +4,7 @@
 
 import enum EnkaDBModels.EnkaDBModelsHSR
 import Foundation
+import Observation
 
 // MARK: - Enka.EnkaDB4HSR
 

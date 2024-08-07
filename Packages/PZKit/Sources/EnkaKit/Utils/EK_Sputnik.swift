@@ -2,16 +2,99 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Combine
 import Defaults
 import EnkaDBModels
 import Foundation
+import Observation
 
 // MARK: - Enka.Sputnik
 
 extension Enka {
-    public enum Sputnik {
-        public static var sharedDB4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
-        public static var sharedDB4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
+    @Observable
+    public class Sputnik {
+        // MARK: Lifecycle
+
+        private init() {
+            /// Both db4GI and db4HSR are `@ObservationTracked` by the `@Observable` macro
+            /// applied to this class, hence no worries.
+            Defaults.publisher(.enkaDBData4GI)
+                .sink { newDB in
+                    Task.detached { @MainActor in
+                        self.db4GI.update(new: newDB.newValue)
+                    }
+                }.store(in: &cancellables)
+            Defaults.publisher(.enkaDBData4HSR).sink { newDB in
+                Task.detached { @MainActor in
+                    self.db4HSR.update(new: newDB.newValue)
+                }
+            }.store(in: &cancellables)
+        }
+
+        // MARK: Public
+
+        public enum EnkaDBResult {
+            case genshinImpact(Enka.EnkaDB4GI)
+            case starRail(Enka.EnkaDB4HSR)
+            case failure(Error)
+        }
+
+        public static let shared = Sputnik()
+
+        public fileprivate(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
+        public fileprivate(set) var db4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
+
+        @MainActor
+        public static func getEnkaDB(for game: Enka.HoyoGame) async -> EnkaDBResult {
+            do {
+                switch game {
+                case .genshinImpact: return try await .genshinImpact(getEnkaDB4GI())
+                case .starRail: return try await .starRail(getEnkaDB4HSR())
+                }
+            } catch {
+                return .failure(error)
+            }
+        }
+
+        // MARK: Private
+
+        private var cancellables: Set<AnyCancellable> = []
+    }
+}
+
+// MARK: - Individual EnkaDB Getters.
+
+extension Enka.Sputnik {
+    @MainActor
+    @discardableResult
+    public static func getEnkaDB4GI() async throws -> Enka.EnkaDB4GI {
+        let sharedDB = Self.shared.db4GI
+        let needUpdate = checkWhetherDataNeedsUpdate(against: sharedDB)
+        guard needUpdate else { return sharedDB }
+        let newDB = try await Enka.EnkaDB4GI(host: Defaults[.defaultDBQueryHost])
+        Defaults[.enkaDBData4GI] = newDB
+        Self.shared.db4GI.update(new: newDB) // 被监视的对象不宜被整个替换，但把内臟全换了还是可以的。
+        Defaults[.lastEnkaDBDataCheckDate] = Date()
+        return newDB
+    }
+
+    @MainActor
+    @discardableResult
+    public static func getEnkaDB4HSR() async throws -> Enka.EnkaDB4HSR {
+        let sharedDB = Self.shared.db4HSR
+        let needUpdate = checkWhetherDataNeedsUpdate(against: sharedDB)
+        guard needUpdate else { return sharedDB }
+        let newDB = try await Enka.EnkaDB4HSR(host: Defaults[.defaultDBQueryHost])
+        Defaults[.enkaDBData4HSR] = newDB
+        Self.shared.db4HSR.update(new: newDB) // 被监视的对象不宜被整个替换，但把内臟全换了还是可以的。
+        Defaults[.lastEnkaDBDataCheckDate] = Date()
+        return newDB
+    }
+
+    private static func checkWhetherDataNeedsUpdate(against data: EnkaDBProtocol) -> Bool {
+        let previousDate = Defaults[.lastEnkaDBDataCheckDate]
+        let expired = Calendar.current.date(byAdding: .hour, value: 2, to: previousDate)! < Date()
+        return expired || Locale.langCodeForEnkaAPI != data.locTag
     }
 }
 

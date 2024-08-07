@@ -25,4 +25,11 @@ final class EnkaKitTests: XCTestCase {
         XCTAssertEqual(dbGI.locTag, "zh-tw")
         XCTAssertEqual(dbHSR.locTag, "zh-tw")
     }
+
+    func testEnkaDBOnlineConstruction() async throws {
+        let dbGI = try await Enka.EnkaDB4GI(host: .mainlandChina)
+        let dbHSR = try await Enka.EnkaDB4HSR(host: .mainlandChina)
+        XCTAssertEqual(dbGI.game, .genshinImpact)
+        XCTAssertEqual(dbHSR.game, .starRail)
+    }
 }

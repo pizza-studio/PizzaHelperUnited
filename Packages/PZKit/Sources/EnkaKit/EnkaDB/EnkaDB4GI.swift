@@ -4,6 +4,7 @@
 
 import enum EnkaDBModels.EnkaDBModelsGI
 import Foundation
+import Observation
 
 // MARK: - Enka.EnkaDB4GI
 
