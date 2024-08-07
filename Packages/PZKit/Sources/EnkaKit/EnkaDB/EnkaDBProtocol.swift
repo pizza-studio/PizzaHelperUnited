@@ -11,6 +11,28 @@ public protocol EnkaDBProtocol {
     var locTable: Enka.LocTable { get set }
     var locTag: String { get }
     var isExpired: Bool { get set }
+    func getNameTextMapHash(id: String) -> String?
 }
 
-extension EnkaDBProtocol {}
+extension EnkaDBProtocol {
+    func getTranslationFor(id: String) -> String? {
+        if let realNameMap = Enka.JSONType.bundledRealNameTable[locTag],
+           let matchedRealName = realNameMap[id] {
+            return matchedRealName
+        }
+        let missingTranslation = "i18nMissing(id:\(id))"
+        if let hash = getNameTextMapHash(id: id) {
+            return locTable[hash]
+        } else {
+            return locTable[id]
+        }
+    }
+
+    func getTranslationFor(property: Enka.PropertyType) -> String? {
+        if let realNameMap = Enka.JSONType.bundledRealNameTable[locTag],
+           let matchedRealName = realNameMap[property.rawValue] {
+            return matchedRealName
+        }
+        return locTable[property.rawValue]
+    }
+}

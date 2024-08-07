@@ -71,6 +71,20 @@ extension Enka {
 extension Enka.EnkaDB4HSR {
     public var game: Enka.HoyoGame { .starRail }
 
+    /// Only available for characters and Weapons.
+    public func getNameTextMapHash(id: String) -> String? {
+        var result = String?.none
+        var matchedInts: [Int] = characters.compactMap {
+            guard $0.key.hasPrefix(id) else { return nil }
+            return $0.value.avatarName.hash
+        }
+        matchedInts += weapons.compactMap {
+            guard $0.key.hasPrefix(id) else { return nil }
+            return $0.value.equipmentName.hash
+        }
+        return matchedInts.first?.description
+    }
+
     @MainActor
     public func update(new: Enka.EnkaDB4HSR) {
         locTag = new.locTag

@@ -51,6 +51,16 @@ extension Enka {
 extension Enka.EnkaDB4GI {
     public var game: Enka.HoyoGame { .genshinImpact }
 
+    /// Only available for characters.
+    public func getNameTextMapHash(id: String) -> String? {
+        var result = String?.none
+        var matchedInts: [Int] = characters.compactMap {
+            guard $0.key.hasPrefix(id) else { return nil }
+            return $0.value.nameTextMapHash
+        }
+        return matchedInts.first?.description
+    }
+
     @MainActor
     public func update(new: Enka.EnkaDB4GI) {
         locTag = new.locTag
