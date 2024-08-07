@@ -12,6 +12,46 @@ extension Enka {
     public class EnkaDB4GI: EnkaDBProtocol, Codable {
         // MARK: Lifecycle
 
+        required public convenience init(host: Enka.HostType) async throws {
+            try await self.init(
+                locTag: Locale.langCodeForEnkaAPI,
+                locTables: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .giLocTable,
+                    decodingTo: Enka.RawLocTables.self
+                ),
+                characters: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .giCharacters,
+                    decodingTo: EnkaDBModelsGI.CharacterDict.self
+                ),
+                namecards: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .giNamecards,
+                    decodingTo: EnkaDBModelsGI.NameCardDict.self
+                ),
+                profilePictures: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .giProfileAvatarIcons,
+                    decodingTo: EnkaDBModelsGI.ProfilePictureDict.self
+                )
+            )
+        }
+
+        public init(
+            locTag: String? = nil,
+            locTables: Enka.RawLocTables,
+            characters: EnkaDBModelsGI.CharacterDict,
+            namecards: EnkaDBModelsGI.NameCardDict,
+            profilePictures: EnkaDBModelsGI.ProfilePictureDict
+        ) throws {
+            let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+            guard let locTableSpecified = locTables[locTag] else {
+                throw Enka.EKError.langTableMatchFailure
+            }
+            self.locTag = locTag
+            self.locTable = locTableSpecified
+            self.characters = characters
+            self.namecards = namecards
+            self.profilePictures = profilePictures
+        }
+
         public init(
             locTag: String? = nil,
             locTable: Enka.LocTable,

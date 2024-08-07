@@ -12,6 +12,7 @@ public protocol EnkaDBProtocol {
     var locTag: String { get }
     var isExpired: Bool { get set }
     func getNameTextMapHash(id: String) -> String?
+    init(host: Enka.HostType) async throws
 }
 
 extension EnkaDBProtocol {

@@ -12,6 +12,76 @@ extension Enka {
     public class EnkaDB4HSR: EnkaDBProtocol, Codable {
         // MARK: Lifecycle
 
+        required public convenience init(host: Enka.HostType) async throws {
+            try await self.init(
+                locTag: Locale.langCodeForEnkaAPI,
+                locTables: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .hsrLocTable,
+                    decodingTo: Enka.RawLocTables.self
+                ),
+                profileAvatars: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .hsrProfileAvatarIcons,
+                    decodingTo: EnkaDBModelsHSR.ProfileAvatarDict.self
+                ),
+                characters: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .hsrCharacters,
+                    decodingTo: EnkaDBModelsHSR.CharacterDict.self
+                ),
+                meta: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .hsrMetadata,
+                    decodingTo: EnkaDBModelsHSR.Meta.self
+                ),
+                skillRanks: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .hsrSkillRanks,
+                    decodingTo: EnkaDBModelsHSR.SkillRanksDict.self
+                ),
+                artifacts: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .hsrArtifacts,
+                    decodingTo: EnkaDBModelsHSR.ArtifactsDict.self
+                ),
+                skills: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .hsrSkills,
+                    decodingTo: EnkaDBModelsHSR.SkillsDict.self
+                ),
+                skillTrees: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .hsrSkillTrees,
+                    decodingTo: EnkaDBModelsHSR.SkillTreesDict.self
+                ),
+                weapons: Enka.Sputnik.fetchEnkaDBData(
+                    from: host, type: .hsrWeapons,
+                    decodingTo: EnkaDBModelsHSR.WeaponsDict.self
+                )
+            )
+        }
+
+        public init(
+            locTag: String? = nil,
+            locTables: Enka.RawLocTables,
+            profileAvatars: EnkaDBModelsHSR.ProfileAvatarDict,
+            characters: EnkaDBModelsHSR.CharacterDict,
+            meta: EnkaDBModelsHSR.Meta,
+            skillRanks: EnkaDBModelsHSR.SkillRanksDict,
+            artifacts: EnkaDBModelsHSR.ArtifactsDict,
+            skills: EnkaDBModelsHSR.SkillsDict,
+            skillTrees: EnkaDBModelsHSR.SkillTreesDict,
+            weapons: EnkaDBModelsHSR.WeaponsDict
+        ) throws {
+            let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+            guard let locTableSpecified = locTables[locTag] else {
+                throw Enka.EKError.langTableMatchFailure
+            }
+            self.locTag = locTag
+            self.locTable = locTableSpecified
+            self.profileAvatars = profileAvatars
+            self.characters = characters
+            self.meta = meta
+            self.skillRanks = skillRanks
+            self.artifacts = artifacts
+            self.skills = skills
+            self.skillTrees = skillTrees
+            self.weapons = weapons
+        }
+
         public init(
             locTag: String? = nil,
             locTable: Enka.LocTable,
