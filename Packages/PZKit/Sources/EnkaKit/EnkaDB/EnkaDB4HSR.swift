@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
 import enum EnkaDBModels.EnkaDBModelsHSR
 import Foundation
 
@@ -50,6 +49,22 @@ extension Enka {
         public var skillTrees: EnkaDBModelsHSR.SkillTreesDict
         public var weapons: EnkaDBModelsHSR.WeaponsDict
         public var isExpired: Bool = false
+
+        // MARK: Private
+
+        private enum CodingKeys: CodingKey {
+            case _locTag
+            case _locTable
+            case _profileAvatars
+            case _characters
+            case _meta
+            case _skillRanks
+            case _artifacts
+            case _skills
+            case _skillTrees
+            case _weapons
+            case _isExpired
+        }
     }
 }
 

@@ -142,6 +142,7 @@ let package = Package(
             },
             resources: buildResources {
                 Resource.process("Assets/AdditionalLangTableShared.json")
+                Resource.process("Assets/RealNameDict.json")
             },
             swiftSettings: sharedSwiftSettings
         )

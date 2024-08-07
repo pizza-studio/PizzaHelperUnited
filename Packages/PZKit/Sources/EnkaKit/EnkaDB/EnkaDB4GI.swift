@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
 import enum EnkaDBModels.EnkaDBModelsGI
 import Foundation
 
@@ -35,6 +34,17 @@ extension Enka {
         public var namecards: EnkaDBModelsGI.NameCardDict
         public var profilePictures: EnkaDBModelsGI.ProfilePictureDict
         public var isExpired: Bool = false
+
+        // MARK: Private
+
+        private enum CodingKeys: CodingKey {
+            case _locTag
+            case _locTable
+            case _characters
+            case _namecards
+            case _profilePictures
+            case _isExpired
+        }
     }
 }
 
