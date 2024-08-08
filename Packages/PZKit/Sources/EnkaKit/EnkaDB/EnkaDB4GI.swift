@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import enum EnkaDBModels.EnkaDBModelsGI
 import Foundation
 import Observation
@@ -76,6 +77,11 @@ extension Enka {
         public var profilePictures: EnkaDBModelsGI.ProfilePictureDict
         public var isExpired: Bool = false
 
+        @MainActor
+        public func saveSelfToUserDefaults() {
+            Defaults[.enkaDBData4GI] = self
+        }
+
         // MARK: Private
 
         private enum CodingKeys: CodingKey {
@@ -110,6 +116,7 @@ extension Enka.EnkaDB4GI {
         characters = new.characters
         namecards = new.namecards
         profilePictures = new.profilePictures
+        isExpired = false
     }
 }
 

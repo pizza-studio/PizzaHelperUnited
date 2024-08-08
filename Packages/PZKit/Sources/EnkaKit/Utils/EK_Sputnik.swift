@@ -50,7 +50,7 @@ extension Enka {
     }
 }
 
-// MARK: - Individual EnkaDB Getters.
+// MARK: - EnkaDB Getters.
 
 extension Enka.Sputnik {
     @MainActor
@@ -65,55 +65,18 @@ extension Enka.Sputnik {
         }
     }
 
-    public static func forceUpdateEnkaDBOnMainActor(for game: Enka.GameType) {
-        switch game {
-        case .genshinImpact:
-            shared.db4GI.isExpired = true
-            Task.detached { @MainActor in
-                try? await getEnkaDB4GI()
-            }
-        case .starRail:
-            shared.db4HSR.isExpired = true
-            Task.detached { @MainActor in
-                try? await getEnkaDB4HSR()
-            }
-        }
-    }
-
     @MainActor
     @discardableResult
     public static func getEnkaDB4GI() async throws -> Enka.EnkaDB4GI {
-        let sharedDB = Self.shared.db4GI
-        let needUpdate = checkWhetherDataNeedsUpdate(against: sharedDB)
-        guard needUpdate else { return sharedDB }
-        let newDB = try await Enka.EnkaDB4GI(host: Defaults[.defaultDBQueryHost])
-        Defaults[.enkaDBData4GI] = newDB
-        Self.shared.db4GI.update(new: newDB) // 被监视的对象不宜被整个替换，但把内臟全换了还是可以的。
-        Defaults[.lastEnkaDBDataCheckDate] = Date()
-        return newDB
+        try await Self.shared.db4GI.onlineUpdate()
     }
 
     @MainActor
     @discardableResult
     public static func getEnkaDB4HSR() async throws -> Enka.EnkaDB4HSR {
-        let sharedDB = Self.shared.db4HSR
-        let needUpdate = checkWhetherDataNeedsUpdate(against: sharedDB)
-        guard needUpdate else { return sharedDB }
-        let newDB = try await Enka.EnkaDB4HSR(host: Defaults[.defaultDBQueryHost])
-        Defaults[.enkaDBData4HSR] = newDB
-        Self.shared.db4HSR.update(new: newDB) // 被监视的对象不宜被整个替换，但把内臟全换了还是可以的。
-        Defaults[.lastEnkaDBDataCheckDate] = Date()
-        return newDB
+        try await Self.shared.db4HSR.onlineUpdate()
     }
 
-    private static func checkWhetherDataNeedsUpdate(against data: any EnkaDBProtocol) -> Bool {
-        let previousDate = Defaults[.lastEnkaDBDataCheckDate]
-        let expired = Calendar.current.date(byAdding: .hour, value: 2, to: previousDate)! < Date()
-        return expired || Locale.langCodeForEnkaAPI != data.locTag
-    }
-}
-
-extension Enka.Sputnik {
     /// 从 EnkaNetwork 获取具体单笔 EnkaDB 子类型资料
     /// - Parameters:
     ///     - completion: 资料

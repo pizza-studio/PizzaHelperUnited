@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import enum EnkaDBModels.EnkaDBModelsHSR
 import Foundation
 import Observation
@@ -121,6 +122,11 @@ extension Enka {
         public var weapons: EnkaDBModelsHSR.WeaponsDict
         public var isExpired: Bool = false
 
+        @MainActor
+        public func saveSelfToUserDefaults() {
+            Defaults[.enkaDBData4HSR] = self
+        }
+
         // MARK: Private
 
         private enum CodingKeys: CodingKey {
@@ -169,6 +175,7 @@ extension Enka.EnkaDB4HSR {
         skills = new.skills
         skillTrees = new.skillTrees
         weapons = new.weapons
+        isExpired = false
     }
 }
 

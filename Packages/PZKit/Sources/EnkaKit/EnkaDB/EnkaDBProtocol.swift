@@ -2,23 +2,49 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import Foundation
 
 // MARK: - EnkaDBProtocol
 
 public protocol EnkaDBProtocol {
-    associatedtype This = EnkaDBProtocol
     var game: Enka.GameType { get }
     var locTable: Enka.LocTable { get set }
     var locTag: String { get }
     var isExpired: Bool { get set }
-    func getNameTextMapHash(id: String) -> String?
 
     init(host: Enka.HostType) async throws
 
+    func getNameTextMapHash(id: String) -> String?
+
     @MainActor
-    mutating func update(new: This)
+    func saveSelfToUserDefaults()
+
+    @MainActor
+    mutating func update(new: Self)
 }
+
+// MARK: - Online Update.
+
+extension EnkaDBProtocol {
+    var needsUpdate: Bool {
+        let previousDate = Defaults[.lastEnkaDBDataCheckDate]
+        let expired = Calendar.current.date(byAdding: .hour, value: 2, to: previousDate)! < Date()
+        return expired || Locale.langCodeForEnkaAPI != locTag
+    }
+
+    @MainActor
+    @discardableResult
+    mutating func onlineUpdate(forced: Bool = false) async throws -> Self {
+        let newDB = try await Self(host: Defaults[.defaultDBQueryHost])
+        newDB.saveSelfToUserDefaults()
+        Defaults[.lastEnkaDBDataCheckDate] = Date()
+        update(new: newDB)
+        return self
+    }
+}
+
+// MARK: - Translation APIs.
 
 extension EnkaDBProtocol {
     func getTranslationFor(id: String) -> String {

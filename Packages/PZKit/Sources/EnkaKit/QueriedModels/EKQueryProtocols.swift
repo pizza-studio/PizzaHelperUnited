@@ -4,7 +4,7 @@
 
 // MARK: - EKQueryResultProtocol
 
-public protocol EKQueryResultProtocol {
+public protocol EKQueryResultProtocol: Decodable {
     associatedtype QueriedProfileType = EKQueriedProfileProtocol
     var detailInfo: QueriedProfileType? { get set }
     var uid: String? { get }
