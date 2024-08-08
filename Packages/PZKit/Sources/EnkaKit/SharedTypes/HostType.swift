@@ -69,30 +69,32 @@ extension Enka {
             // swiftlint:enable force_unwrapping
         }
 
-        public func enkaProfileQueryURL(uid: String) -> URL {
+        public func enkaProfileQueryURL(uid: String, game: Enka.GameType) -> URL {
             // swiftlint:disable force_unwrapping
-            .init(string: profileQueryURLPrefix + uid + profileQueryURLSuffix)!
+            .init(string: profileQueryURLPrefix(game) + uid + profileQueryURLSuffix(game))!
             // swiftlint:enable force_unwrapping
         }
 
         // MARK: Private
 
-        private var profileQueryURLPrefix: String {
-            switch self {
-            case .mainlandChina: return "https://api.mihomo.me/sr_info/"
-            case .enkaGlobal: return "https://enka.network/api/hsr/uid/"
-            }
-        }
-
-        private var profileQueryURLSuffix: String {
-            switch self {
-            case .mainlandChina: return "?is_force_update=true"
-            case .enkaGlobal: return ""
-            }
-        }
-
         private static func gitLinkURLWrapper(_ urlStr: String, branch: String) -> String {
             "https://gitlink.org.cn/attachments/entries/get_file?download_url=\(urlStr)?ref=\(branch)"
+        }
+
+        private func profileQueryURLPrefix(_ game: Enka.GameType) -> String {
+            switch (self, game) {
+            case (.mainlandChina, .starRail): return "https://api.mihomo.me/sr_info/"
+            case (.enkaGlobal, .starRail): return "https://enka.network/api/hsr/uid/"
+            case (.mainlandChina, .genshinImpact): return "https://profile.microgg.cn/api/uid/"
+            case (.enkaGlobal, .genshinImpact): return "https://enka.network/api/uid/"
+            }
+        }
+
+        private func profileQueryURLSuffix(_ game: Enka.GameType) -> String {
+            switch (self, game) {
+            case (.mainlandChina, .starRail): return "?is_force_update=true"
+            default: return ""
+            }
         }
     }
 }

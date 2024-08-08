@@ -116,7 +116,7 @@ extension Enka.Sputnik {
             dataToParse = data
         } catch {
             print(error.localizedDescription)
-            print("// [Enka.Sputnik.fetchEnkaDBData] Attempt using alternative JSON server source.")
+            print("// [Enka.Sputnik.fetchEnkaDBData] Attempting to use alternative JSON server source.")
             do {
                 let (data, _) = try await URLSession.shared.data(
                     for: URLRequest(url: serverType.viceVersa.enkaDBSourceURL(type: dataType))
@@ -129,6 +129,7 @@ extension Enka.Sputnik {
                 Enka.HostType.toggleEnkaDBQueryHost()
             } catch {
                 print("// [Enka.Sputnik.fetchEnkaDBData] Final attempt failed:")
+                print(error)
                 print(error.localizedDescription)
                 throw error
             }
@@ -142,6 +143,7 @@ extension Enka.Sputnik {
             } else {
                 print("// DEBUG: [Enka.Sputnik.fetchEnkaDBData] Data Parse Failed: \(dataType.rawValue).json")
             }
+            print(error)
             print(error.localizedDescription)
             throw error
         }
