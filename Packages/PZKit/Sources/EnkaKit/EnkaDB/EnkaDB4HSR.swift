@@ -16,7 +16,7 @@ extension Enka {
 
         required public convenience init(host: Enka.HostType) async throws {
             try await self.init(
-                locTag: Locale.langCodeForEnkaAPI,
+                locTag: Enka.currentLangTag,
                 locTables: Enka.Sputnik.fetchEnkaDBData(
                     from: host, type: .hsrLocTable,
                     decodingTo: Enka.RawLocTables.self
@@ -68,7 +68,7 @@ extension Enka {
             skillTrees: EnkaDBModelsHSR.SkillTreesDict,
             weapons: EnkaDBModelsHSR.WeaponsDict
         ) throws {
-            let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+            let locTag = Enka.sanitizeLangTag(locTag ?? Enka.currentLangTag)
             guard let locTableSpecified = locTables[locTag] else {
                 throw Enka.EKError.langTableMatchingFailure
             }
@@ -96,7 +96,7 @@ extension Enka {
             skillTrees: EnkaDBModelsHSR.SkillTreesDict,
             weapons: EnkaDBModelsHSR.WeaponsDict
         ) {
-            self.locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+            self.locTag = Enka.sanitizeLangTag(locTag ?? Enka.currentLangTag)
             self.locTable = locTable
             self.profileAvatars = profileAvatars
             self.characters = characters
@@ -187,7 +187,7 @@ extension Enka.EnkaDB4HSR {
     public convenience init(locTag: String? = nil) throws {
         let locTables = try Enka.JSONType.hsrLocTable.bundledJSONData
             .assertedParseAs(Enka.RawLocTables.self)
-        let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+        let locTag = Enka.sanitizeLangTag(locTag ?? Enka.currentLangTag)
         guard let locTableSpecified = locTables[locTag] else {
             throw Enka.EKError.langTableMatchingFailure
         }

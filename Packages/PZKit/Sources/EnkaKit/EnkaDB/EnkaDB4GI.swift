@@ -4,7 +4,6 @@
 
 import Defaults
 import enum EnkaDBModels.EnkaDBModelsGI
-import Foundation
 import Observation
 
 // MARK: - Enka.EnkaDB4GI
@@ -16,7 +15,7 @@ extension Enka {
 
         required public convenience init(host: Enka.HostType) async throws {
             try await self.init(
-                locTag: Locale.langCodeForEnkaAPI,
+                locTag: Enka.currentLangTag,
                 locTables: Enka.Sputnik.fetchEnkaDBData(
                     from: host, type: .giLocTable,
                     decodingTo: Enka.RawLocTables.self
@@ -43,7 +42,7 @@ extension Enka {
             namecards: EnkaDBModelsGI.NameCardDict,
             profilePictures: EnkaDBModelsGI.ProfilePictureDict
         ) throws {
-            let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+            let locTag = Enka.sanitizeLangTag(locTag ?? Enka.currentLangTag)
             guard let locTableSpecified = locTables[locTag] else {
                 throw Enka.EKError.langTableMatchingFailure
             }
@@ -61,7 +60,7 @@ extension Enka {
             namecards: EnkaDBModelsGI.NameCardDict,
             profilePictures: EnkaDBModelsGI.ProfilePictureDict
         ) {
-            self.locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+            self.locTag = Enka.sanitizeLangTag(locTag ?? Enka.currentLangTag)
             self.locTable = locTable
             self.characters = characters
             self.namecards = namecards
@@ -128,7 +127,7 @@ extension Enka.EnkaDB4GI {
     public convenience init(locTag: String? = nil) throws {
         let locTables = try Enka.JSONType.giLocTable.bundledJSONData
             .assertedParseAs(Enka.RawLocTables.self)
-        let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
+        let locTag = Enka.sanitizeLangTag(locTag ?? Enka.currentLangTag)
         guard let locTableSpecified = locTables[locTag] else {
             throw Enka.EKError.langTableMatchingFailure
         }

@@ -25,12 +25,12 @@ extension Defaults.Keys {
     )
     public static let enkaDBData4GI = Key<Enka.EnkaDB4GI>(
         "enkaDBData4GI",
-        default: try! Enka.EnkaDB4GI(locTag: Locale.langCodeForEnkaAPI),
+        default: try! Enka.EnkaDB4GI(locTag: Enka.currentLangTag),
         suite: .enkaSuite
     )
     public static let enkaDBData4HSR = Key<Enka.EnkaDB4HSR>(
         "enkaDBData4HSR",
-        default: try! Enka.EnkaDB4HSR(locTag: Locale.langCodeForEnkaAPI),
+        default: try! Enka.EnkaDB4HSR(locTag: Enka.currentLangTag),
         suite: .enkaSuite
     )
     public static let queriedEnkaProfiles4GI = Key<[String: Enka.QueriedProfileGI]>(

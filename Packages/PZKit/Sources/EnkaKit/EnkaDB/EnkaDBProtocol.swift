@@ -33,7 +33,7 @@ extension EnkaDBProtocol {
     var needsUpdate: Bool {
         let previousDate = Defaults[.lastEnkaDBDataCheckDate]
         let expired = Calendar.current.date(byAdding: .hour, value: 2, to: previousDate)! < Date()
-        return expired || Locale.langCodeForEnkaAPI != locTag
+        return expired || Enka.currentLangTag != locTag
     }
 
     @MainActor
@@ -50,9 +50,8 @@ extension EnkaDBProtocol {
 // MARK: - Translation APIs.
 
 extension EnkaDBProtocol {
-    func getTranslationFor(id: String) -> String {
-        if let realNameMap = Enka.JSONType.bundledRealNameTable[locTag],
-           let matchedRealName = realNameMap[id] {
+    func getTranslationFor(id: String, realName: Bool = true) -> String {
+        if realName, let matchedRealName = Enka.JSONType.bundledRealNameTable[locTag]?[id] {
             return matchedRealName
         }
         let missingTranslation = "i18nMissing(id:\(id))"

@@ -25,6 +25,26 @@ extension Enka {
 
     public static var currentLangTag: String { Locale.langCodeForEnkaAPI }
 
+    /// 不用于 EnkaDB 自身的辞典检索。
+    public static var currentWebAPILangTag: String {
+        switch currentLangTag {
+        case "de": "de-de"
+        case "en": "en-us"
+        case "es": "es-es"
+        case "fr": "fr-fr"
+        case "id": "id-id"
+        case "ja": "ja-jp"
+        case "ko": "ko-kr"
+        case "pt": "pt-pt"
+        case "ru": "ru-ru"
+        case "th": "th-th"
+        case "vi": "vi-vn"
+        case "zh-cn": "zh-cn"
+        case "zh-tw": "zh-tw"
+        default: "en-us"
+        }
+    }
+
     public static func sanitizeLangTag(_ target: some StringProtocol) -> String {
         var target = target.lowercased()
         if target.prefix(2) == "zh" {
