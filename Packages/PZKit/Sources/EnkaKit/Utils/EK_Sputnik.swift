@@ -65,6 +65,21 @@ extension Enka.Sputnik {
         }
     }
 
+    public static func forceUpdateEnkaDBOnMainActor(for game: Enka.GameType) {
+        switch game {
+        case .genshinImpact:
+            shared.db4GI.isExpired = true
+            Task.detached { @MainActor in
+                try? await getEnkaDB4GI()
+            }
+        case .starRail:
+            shared.db4HSR.isExpired = true
+            Task.detached { @MainActor in
+                try? await getEnkaDB4HSR()
+            }
+        }
+    }
+
     @MainActor
     @discardableResult
     public static func getEnkaDB4GI() async throws -> Enka.EnkaDB4GI {
