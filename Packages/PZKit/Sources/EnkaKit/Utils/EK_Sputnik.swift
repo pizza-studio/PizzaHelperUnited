@@ -106,7 +106,7 @@ extension Enka.Sputnik {
         return newDB
     }
 
-    private static func checkWhetherDataNeedsUpdate(against data: EnkaDBProtocol) -> Bool {
+    private static func checkWhetherDataNeedsUpdate(against data: any EnkaDBProtocol) -> Bool {
         let previousDate = Defaults[.lastEnkaDBDataCheckDate]
         let expired = Calendar.current.date(byAdding: .hour, value: 2, to: previousDate)! < Date()
         return expired || Locale.langCodeForEnkaAPI != data.locTag

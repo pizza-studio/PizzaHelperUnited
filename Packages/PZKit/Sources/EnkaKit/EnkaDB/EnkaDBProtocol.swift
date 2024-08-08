@@ -7,12 +7,17 @@ import Foundation
 // MARK: - EnkaDBProtocol
 
 public protocol EnkaDBProtocol {
+    associatedtype This = EnkaDBProtocol
     var game: Enka.GameType { get }
     var locTable: Enka.LocTable { get set }
     var locTag: String { get }
     var isExpired: Bool { get set }
     func getNameTextMapHash(id: String) -> String?
+
     init(host: Enka.HostType) async throws
+
+    @MainActor
+    mutating func update(new: This)
 }
 
 extension EnkaDBProtocol {
