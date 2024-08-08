@@ -70,6 +70,8 @@ extension Enka {
 
         // MARK: Public
 
+        public typealias QueriedType = Enka.QueriedProfileGI
+
         public var locTag: String
         public var locTable: Enka.LocTable
         public var characters: EnkaDBModelsGI.CharacterDict
@@ -140,5 +142,30 @@ extension Enka.EnkaDB4GI {
             profilePictures: try Enka.JSONType.giProfileAvatarIcons.bundledJSONData
                 .assertedParseAs(EnkaDBModelsGI.ProfilePictureDict.self)
         )
+    }
+}
+
+// MARK: - Expiry Check.
+
+extension Enka.EnkaDB4GI {
+    public func checkIfExpired(against givenProfile: QueriedType) -> Bool {
+        // 与星穹铁道不同，除了角色以外的内容在 EnkaDB 里面没有现成的 ID 库可以查询。
+        // 好在可以用来查询对应的 NameTextMapHash。
+        // 先检查角色 ID：
+        let newAvatarIDs = Set<String>(givenProfile.avatarDetailList.map(\.id))
+        let remainingIDs = newAvatarIDs.subtracting(characters.keys)
+        guard remainingIDs.isEmpty else { return true }
+        // 再检查武器，用验证 NameTextMapHash 的方式。
+        let newEquipNameHashes: Set<String> = .init(
+            givenProfile.avatarDetailList.map {
+                $0.equipList.compactMap { equip in
+                    equip.flat.equipType == nil ? equip.flat.nameTextMapHash : nil
+                }
+            }.reduce([], +)
+        )
+        let remainingHashes = newEquipNameHashes.subtracting(locTable.keys)
+        guard remainingHashes.isEmpty else { return true }
+        // TODO: 目前暂时没有方法检查圣遗物，等 Algoinde 更新 JSON 追加相关资料。
+        return false
     }
 }

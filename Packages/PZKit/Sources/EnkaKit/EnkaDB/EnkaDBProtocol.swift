@@ -8,6 +8,8 @@ import Foundation
 // MARK: - EnkaDBProtocol
 
 public protocol EnkaDBProtocol {
+    associatedtype QueriedProfile = EKQueriedProfileProtocol
+
     var game: Enka.GameType { get }
     var locTable: Enka.LocTable { get set }
     var locTag: String { get }
@@ -16,6 +18,7 @@ public protocol EnkaDBProtocol {
     init(host: Enka.HostType) async throws
 
     func getNameTextMapHash(id: String) -> String?
+    func checkIfExpired(against givenProfile: QueriedProfile) -> Bool
 
     @MainActor
     func saveSelfToUserDefaults()

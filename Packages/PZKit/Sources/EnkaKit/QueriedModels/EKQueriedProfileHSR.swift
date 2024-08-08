@@ -119,7 +119,7 @@ extension Enka.QueriedProfileHSR {
         }
 
         /// Identifiable.
-        public var id: Int { avatarId }
+        public var id: String { avatarId.description }
     }
 
     // MARK: - Equipment

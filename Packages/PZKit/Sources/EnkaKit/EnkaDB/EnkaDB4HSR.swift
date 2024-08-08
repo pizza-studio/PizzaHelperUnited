@@ -110,6 +110,8 @@ extension Enka {
 
         // MARK: Public
 
+        public typealias QueriedType = Enka.QueriedProfileHSR
+
         public var locTag: String
         public var locTable: Enka.LocTable
         public var profileAvatars: EnkaDBModelsHSR.ProfileAvatarDict
@@ -209,5 +211,31 @@ extension Enka.EnkaDB4HSR {
             weapons: try Enka.JSONType.hsrWeapons.bundledJSONData
                 .assertedParseAs(EnkaDBModelsHSR.WeaponsDict.self)
         )
+    }
+}
+
+// MARK: - Expiry Check.
+
+extension Enka.EnkaDB4HSR {
+    public func checkIfExpired(against givenProfile: QueriedType) -> Bool {
+        // 星穹铁道直接拿角色、武器、圣遗物 ID 来查询就好。
+        // 先检查角色 ID：
+        var newIDs = Set<String>(givenProfile.avatarDetailList.map(\.id))
+        var remainingIDs = newIDs.subtracting(characters.keys)
+        guard remainingIDs.isEmpty else { return true }
+        // 再检查武器：
+        newIDs = Set<String>(
+            givenProfile.avatarDetailList.compactMap(\.equipment?.tid.description)
+        )
+        remainingIDs = newIDs.subtracting(weapons.keys)
+        guard remainingIDs.isEmpty else { return true }
+        // 再检查圣遗物。
+        newIDs = Set<String>(
+            givenProfile.avatarDetailList.compactMap { avatar in
+                avatar.relicList?.map(\.tid.description)
+            }.reduce([], +)
+        )
+        remainingIDs = newIDs.subtracting(artifacts.keys)
+        return !remainingIDs.isEmpty
     }
 }

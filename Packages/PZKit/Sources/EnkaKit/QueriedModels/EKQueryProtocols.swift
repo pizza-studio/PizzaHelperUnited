@@ -45,5 +45,5 @@ extension EKQueriedProfileProtocol {
 
 public protocol EKQueriedRawAvatarProtocol: Identifiable {
     var avatarId: Int { get }
-    var id: Int { get }
+    var id: String { get }
 }

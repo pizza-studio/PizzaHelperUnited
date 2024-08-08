@@ -7,7 +7,7 @@ import Foundation
 
 extension Enka {
     public enum JSONType: String, CaseIterable {
-        case giLocTable = "locs"
+        case giLocTable = "loc"
         case giCharacters = "characters"
         case giNamecards = "namecards"
         case giProfileAvatarIcons = "pfps" // Player Account Profile Picture

@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Defaults
+import EnkaDBModels
 
 // MARK: - Enka.QueriedProfileGI
 
@@ -244,7 +245,12 @@ extension Enka.QueriedProfileGI {
         /// 命之座带来的额外技能等级加成
         public var proudSkillExtraLevelMap: [String: Int]?
 
-        /// Identifiable.
-        public var id: Int { avatarId }
+        /// Identifiable. Optimized for Protagonists.
+        public var id: String {
+            let textAvatarID = avatarId.description
+            var isProtagonist: Bool = Protagonist(rawValue: avatarId) != nil
+            isProtagonist = isProtagonist && textAvatarID.count == 8 // 仅限原神角色。
+            return isProtagonist ? "\(avatarId)-\(skillDepotId)" : textAvatarID
+        }
     }
 }

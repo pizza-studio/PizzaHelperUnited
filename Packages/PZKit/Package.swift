@@ -74,7 +74,7 @@ let package = Package(
         )
         Package.Dependency.package(
             url: "https://github.com/pizza-studio/EnkaDBGenerator",
-            from: "1.2.3"
+            from: "1.3.0"
         )
         #endif
     },
