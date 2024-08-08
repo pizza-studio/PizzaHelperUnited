@@ -73,6 +73,12 @@ final class EnkaKitTests: XCTestCase {
         }
         XCTAssertEqual(hsrProfile.uid, giProfile.uid)
     }
+
+    func testEnkaOnlineProfileQueryRAW() async throws {
+        let hsrQueried = try await Enka.QueriedResultHSR.queryRAW(uid: "114514810")
+        let giQueried = try await Enka.QueriedResultHSR.queryRAW(uid: "114514810")
+        XCTAssertEqual(hsrQueried.uid, giQueried.uid)
+    }
 }
 
 // MARK: - TestError

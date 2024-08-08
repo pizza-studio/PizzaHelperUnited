@@ -127,3 +127,66 @@ extension Enka.Sputnik {
         }
     }
 }
+
+// MARK: - Fetching Enka Query Profile.
+
+extension Enka.Sputnik {
+    /// 从 Enka Networks 获取游戏内玩家展柜资讯的原始查询结果。
+    /// - Parameters:
+    ///     - uid: 用户UID
+    ///     - completion: 资料
+    static func fetchEnkaQueryResultRAW<T: EKQueryResultProtocol>(
+        _ uid: String,
+        type: T.Type,
+        dateWhenNextRefreshable: Date? = nil
+    ) async throws
+        -> T {
+        if let date = dateWhenNextRefreshable, date > Date() {
+            print("PLAYER DETAIL FETCH 刷新太快了，请在\(date.coolingDownTimeRemaining)秒后刷新")
+            throw Enka.EKError.queryTooFrequent(dateWhenRefreshable: date)
+        } else {
+            var server = Enka.HostType(uid: uid)
+            var dataToParse = Data([])
+            do {
+                let (data, _) = try await URLSession.shared.data(
+                    for: URLRequest(url: server.enkaProfileQueryURL(uid: uid, game: T.game))
+                )
+                dataToParse = data
+            } catch {
+                print(error.localizedDescription)
+                print(
+                    "// [Enka.Sputnik.fetchEnkaQueryResultRAW] Attempt using alternative profile query server source."
+                )
+                do {
+                    server = server.viceVersa
+                    let (data, _) = try await URLSession.shared.data(
+                        for: URLRequest(url: server.enkaProfileQueryURL(uid: uid, game: T.game))
+                    )
+                    dataToParse = data
+                    // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
+                    let successMsg = "// [Enka.Sputnik.fetchEnkaQueryResultRAW] 2nd attempt succeeded."
+                    print(successMsg)
+                } catch {
+                    print("// [Enka.Sputnik.fetchEnkaQueryResultRAW] Final attempt failed:")
+                    print(error.localizedDescription)
+                    throw error
+                }
+            }
+            do {
+                let requestResult = try JSONDecoder()
+                    .decode(T.self, from: dataToParse)
+                return requestResult
+            } catch {
+                if dataToParse.isEmpty {
+                    print("// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query Failed. UID: \(uid) .")
+                } else {
+                    print(
+                        "// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query Data Parse Failed. UID: \(uid) ."
+                    )
+                }
+                print(error.localizedDescription)
+                throw error
+            }
+        }
+    }
+}

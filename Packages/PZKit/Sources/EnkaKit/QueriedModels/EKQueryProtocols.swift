@@ -12,6 +12,12 @@ public protocol EKQueryResultProtocol: Decodable {
     static var game: Enka.GameType { get }
 }
 
+extension EKQueryResultProtocol {
+    public static func queryRAW(uid: String) async throws -> Self {
+        try await Enka.Sputnik.fetchEnkaQueryResultRAW(uid, type: Self.self)
+    }
+}
+
 // MARK: - EKQueriedProfileProtocol
 
 public protocol EKQueriedProfileProtocol {
@@ -20,12 +26,14 @@ public protocol EKQueriedProfileProtocol {
     var uid: Int { get }
 }
 
-extension EKQueriedProfileProtocol where QueriedAvatar == any EKQueriedRawAvatarProtocol {
+extension EKQueriedProfileProtocol {
     /// 仅制作这个新 API 将旧资料融入新资料，因为反向融合没有任何意义。
     public mutating func merge(old: Self?) -> Self {
         var newResult = self
         old?.avatarDetailList.forEach { oldAvatar in
-            guard !avatarDetailList.map(\.avatarId).contains(oldAvatar.avatarId) else { return }
+            guard let oldAvatarTyped = oldAvatar as? any EKQueriedRawAvatarProtocol else { return }
+            let ids = (avatarDetailList as? [any EKQueriedRawAvatarProtocol])?.map(\.avatarId) ?? []
+            guard !ids.contains(oldAvatarTyped.avatarId) else { return }
             newResult.avatarDetailList.append(oldAvatar)
         }
         return newResult

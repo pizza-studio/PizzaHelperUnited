@@ -70,7 +70,7 @@ extension Enka {
         ) throws {
             let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
             guard let locTableSpecified = locTables[locTag] else {
-                throw Enka.EKError.langTableMatchFailure
+                throw Enka.EKError.langTableMatchingFailure
             }
             self.locTag = locTag
             self.locTable = locTableSpecified
@@ -187,7 +187,7 @@ extension Enka.EnkaDB4HSR {
             .assertedParseAs(Enka.RawLocTables.self)
         let locTag = Enka.sanitizeLangTag(locTag ?? Locale.langCodeForEnkaAPI)
         guard let locTableSpecified = locTables[locTag] else {
-            throw Enka.EKError.langTableMatchFailure
+            throw Enka.EKError.langTableMatchingFailure
         }
         self.init(
             locTag: locTag,

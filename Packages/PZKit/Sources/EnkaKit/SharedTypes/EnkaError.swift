@@ -7,18 +7,22 @@ import PZBaseKit
 
 extension Enka {
     public enum EKError: Error, LocalizedError {
-        case langTableMatchFailure
+        case langTableMatchingFailure
         case queryTooFrequent(dateWhenRefreshable: Date)
 
         // MARK: Public
 
         public var description: String {
             switch self {
-            case .langTableMatchFailure: return "rawValue"
+            case .langTableMatchingFailure: return "rawValue"
             case let .queryTooFrequent(dateWhenRefreshable):
                 let cd = dateWhenRefreshable.coolingDownTimeRemaining
                 return "Query too frequent. Remaining cooling down time: \(cd) seconds."
             }
+        }
+
+        public var localizedDescription: String {
+            description
         }
 
         public var errorDescription: String? {
