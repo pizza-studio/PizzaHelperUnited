@@ -79,6 +79,18 @@ final class EnkaKitTests: XCTestCase {
         let giQueried = try await Enka.QueriedResultHSR.queryRAW(uid: "114514810")
         XCTAssertEqual(hsrQueried.uid, giQueried.uid)
     }
+
+    func testEnkaProfileSummaryAsMarkdown() throws {
+        let hsrDecoded = try getUnitTestJSONObject("testProfileHSR", as: Enka.QueriedResultHSR.self)
+        guard let firstAvatar = hsrDecoded.detailInfo?.avatarDetailList.first else {
+            throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
+        }
+        let englishDB = try Enka.EnkaDB4HSR(locTag: "en")
+        guard let summarized = firstAvatar.summarize(theDB: englishDB) else {
+            throw TestError.error(msg: "Failed in summarizing Raiden Mei's character build.")
+        }
+        print(summarized.asText)
+    }
 }
 
 // MARK: - TestError

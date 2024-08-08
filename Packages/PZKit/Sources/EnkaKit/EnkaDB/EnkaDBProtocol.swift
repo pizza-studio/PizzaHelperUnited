@@ -69,4 +69,8 @@ extension EnkaDBProtocol {
         }
         return locTable[property.rawValue]
     }
+
+    var additionalLocTable: [String: String] {
+        Enka.JSONType.bundledExtraLangTable[locTag] ?? [:]
+    }
 }

@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+// MARK: - Enka.LifePath
+
 extension Enka {
     public enum LifePath: String, Codable, Hashable, CaseIterable {
         case none = "None"
@@ -12,5 +14,15 @@ extension Enka {
         case nihility = "Warlock"
         case preservation = "Knight"
         case abundance = "Priest"
+    }
+}
+
+extension Enka.LifePath {
+    public var iconFileName: String {
+        String(describing: self).capitalized
+    }
+
+    public var iconAssetName: String {
+        "path_\(String(describing: self).capitalized)"
     }
 }

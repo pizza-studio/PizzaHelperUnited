@@ -100,7 +100,7 @@ extension Enka.QueriedProfileGI {
             self.skillDepotId = try container.decode(Int.self, forKey: .skillDepotId)
             self.inherentProudSkillList = try container.decode([Int].self, forKey: .inherentProudSkillList)
             self.skillLevelMap = try container.decode([String: Int].self, forKey: .skillLevelMap)
-            self.equipList = try container.decode([EquipListRAW].self, forKey: .equipList)
+            self.equipList = try container.decode([EquipListItemRAW].self, forKey: .equipList)
             self.fetterInfo = try container.decode(FetterInfoRAW.self, forKey: .fetterInfo)
             self.costumeId = try container.decodeIfPresent(Int.self, forKey: .costumeId)
             self.proudSkillExtraLevelMap = try container.decodeIfPresent(
@@ -153,7 +153,7 @@ extension Enka.QueriedProfileGI {
         }
 
         /// 装备列表的一项，包括武器和圣遗物
-        public struct EquipListRAW: Codable, Hashable {
+        public struct EquipListItemRAW: Codable, Hashable {
             /// 圣遗物
             public struct Reliquary: Codable, Hashable {
                 /// 圣遗物等级
@@ -237,7 +237,7 @@ extension Enka.QueriedProfileGI {
         /// 天赋等级的字典，skillLevelMap.skillLevel: [天赋ID(String) : 等级(Int)]
         public var skillLevelMap: [String: Int]
         /// 装备列表，包括武器和圣遗物
-        public var equipList: [EquipListRAW]
+        public var equipList: [EquipListItemRAW]
         /// 角色好感等级，fetterInfo.expLevel
         public var fetterInfo: FetterInfoRAW
         /// 角色时装编号（nullable）

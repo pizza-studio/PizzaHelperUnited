@@ -91,3 +91,41 @@ extension Enka.GameElement {
         }
     }
 }
+
+extension Enka.GameElement {
+    public var iconFileNameStem: String {
+        "\(rawValue)"
+    }
+
+    public var iconAssetName: String {
+        "\(rawValue)"
+    }
+
+    public var damageAddedRatioProperty: Enka.PropertyType {
+        switch self {
+        case .physico: return .physicoAddedRatio
+        case .anemo: return .anemoAddedRatio
+        case .electro: return .electroAddedRatio
+        case .fantastico: return .fantasticoAddedRatio
+        case .posesto: return .posestoAddedRatio
+        case .pyro: return .pyroAddedRatio
+        case .cryo: return .cryoAddedRatio
+        case .geo: return .geoAddedRatio
+        case .dendro: return .dendroAddedRatio
+        case .hydro: return .hydroAddedRatio
+        }
+    }
+
+    public static let elementConversionDict: [String: String] = [
+        "Physical": "Physico",
+        "Wind": "Anemo",
+        "Lightning": "Electro",
+        "Imaginary": "Fantastico",
+        "Quantum": "Posesto",
+        "Fire": "Pyro",
+        "Ice": "Cryo",
+        "Rock": "Geo",
+        "Water": "Hydro",
+        "Grass": "Dendro",
+    ]
+}

@@ -228,3 +228,200 @@ private enum GIAvatarAttribute: String, Codable, Hashable, CaseIterable, RawRepr
         }
     }
 }
+
+extension Enka.PropertyType {
+    public var titleSuffix: String {
+        var result = ""
+        if isDelta { result = "+" }
+        if isPercentage { result = "%" }
+        return result
+    }
+
+    public var isDelta: Bool { rawValue.suffix(5) == "Delta" }
+
+    public var isPercentage: Bool {
+        rawValue.contains("Chance")
+            || rawValue.contains("Probability")
+            || rawValue.contains("Ratio")
+            || rawValue.contains("Crit")
+            || rawValue.contains("Rate")
+            || rawValue.contains("Resistance")
+            || rawValue.contains("BreakUp")
+            || rawValue.contains("Damage")
+    }
+
+    public var iconFileName: String? {
+        hasPropIcon ? proposedIconFileName : nil
+    }
+
+    public var iconAssetName: String? {
+        hasPropIcon ? "property_\(proposedIconFileNameStem)" : nil
+    }
+
+    internal var proposedIconFileName: String {
+        "\(proposedIconFileNameStem).heic"
+    }
+
+    internal var proposedIconFileNameStem: String {
+        var nameStem = rawValue
+        switch self {
+        case .baseHP, .hpAddedRatio, .hpDelta: nameStem = "MaxHP"
+        case .baseDefence, .defenceAddedRatio, .defenceDelta: nameStem = "Defence"
+        case .attackAddedRatio, .attackDelta, .baseAttack: nameStem = "Attack"
+        case .breakDamageAddedRatio, .breakDamageAddedRatioBase: nameStem = "BreakUp"
+        case .criticalChanceBase: nameStem = "CriticalChance"
+        case .healRatioBase: nameStem = "HealRatio"
+        case .statusProbabilityBase: nameStem = "StatusProbability"
+        case .speedAddedRatio, .speedDelta: nameStem = "Speed"
+        case .energyRecovery: nameStem = "EnergyRecovery"
+        case .energyRecoveryBase: nameStem = "EnergyRecovery"
+        case .criticalDamageBase: nameStem = "CriticalDamage"
+        case .statusResistanceBase: nameStem = "StatusResistance"
+        case .energyLimit: nameStem = "EnergyLimit"
+        case .allDamageTypeAddedRatio: nameStem = "AllDamageTypeAddedRatio"
+        default: break
+        }
+        return "Icon\(nameStem)"
+    }
+
+    /// This variable is only for unit tests.
+    internal var proposedIconAssetName: String {
+        "property_\(proposedIconFileNameStem)"
+    }
+
+    public var hasPropIcon: Bool {
+        switch self {
+        case .allDamageTypeAddedRatio: return true
+        case .baseAttack, .baseDefence, .baseHP: return true
+        case .attack: return true
+        case .breakUp: return true
+        case .criticalChance: return true
+        case .criticalDamage: return true
+        case .defence: return true
+        case .energyLimit: return true
+        case .energyRecovery: return true
+        case .healRatio: return true
+        case .maxHP: return true
+        case .speed: return true
+        case .statusProbability: return true
+        case .statusResistance: return true
+        case .pyroAddedRatio: return true
+        case .pyroResistanceDelta: return true
+        case .cryoAddedRatio: return true
+        case .cryoResistanceDelta: return true
+        case .fantasticoAddedRatio: return true
+        case .fantasticoResistanceDelta: return true
+        case .physicoAddedRatio: return true
+        case .physicoResistanceDelta: return true
+        case .posestoAddedRatio: return true
+        case .posestoResistanceDelta: return true
+        case .electroAddedRatio: return true
+        case .electroResistanceDelta: return true
+        case .anemoAddedRatio: return true
+        case .anemoResistanceDelta: return true
+        case .geoAddedRatio: return true
+        case .geoResistanceDelta: return true
+        case .hydroAddedRatio: return true
+        case .hydroResistanceDelta: return true
+        case .dendroAddedRatio: return true
+        case .dendroResistanceDelta: return true
+
+        // Other cases requiring reusing existing icons.
+        case .hpDelta: return true
+        case .healRatioBase: return true
+        case .defenceDelta: return true
+        case .hpAddedRatio: return true
+        case .defenceAddedRatio: return true
+        case .attackDelta: return true
+        case .attackAddedRatio: return true
+        case .criticalChanceBase: return true
+        case .breakDamageAddedRatio: return true
+        case .breakDamageAddedRatioBase: return true
+        case .statusProbabilityBase: return true
+        case .speedDelta: return true
+        case .energyRecoveryBase: return true
+        case .criticalDamageBase: return true
+        case .statusResistanceBase: return true
+
+        default:
+            // Just in case that there will be new elements available.
+            let condition1 = rawValue.suffix(10) == "AddedRatio" || rawValue.suffix(15) == "ResistanceDelta"
+            let condition2 = rawValue.prefix(9) != "AllDamage"
+            return condition1 && condition2
+        }
+    }
+
+    public var element: Enka.GameElement? {
+        switch self {
+        case .anemoAddedRatio, .anemoResistance, .anemoResistanceDelta:
+            return .anemo
+        case .physicoAddedRatio, .physicoResistance, .physicoResistanceDelta:
+            return .physico
+        case .electroAddedRatio, .electroResistance, .electroResistanceDelta:
+            return .electro
+        case .fantasticoAddedRatio, .fantasticoResistance, .fantasticoResistanceDelta:
+            return .fantastico
+        case .posestoAddedRatio, .posestoResistance, .posestoResistanceDelta:
+            return .posesto
+        case .pyroAddedRatio, .pyroResistance, .pyroResistanceDelta:
+            return .pyro
+        case .cryoAddedRatio, .cryoResistance, .cryoResistanceDelta:
+            return .cryo
+        case .geoAddedRatio, .geoResistance, .geoResistanceDelta:
+            return .geo
+        case .hydroAddedRatio, .hydroResistance, .hydroResistanceDelta:
+            return .hydro
+        case .dendroAddedRatio, .dendroResistance, .dendroResistanceDelta:
+            return .dendro
+        default: return nil
+        }
+    }
+
+    public static var propsForAddedRatioPerElement: [Self] {
+        [
+            .physicoAddedRatio,
+            .anemoAddedRatio,
+            .electroAddedRatio,
+            .fantasticoAddedRatio,
+            .posestoAddedRatio,
+            .pyroAddedRatio,
+            .cryoAddedRatio,
+            .geoAddedRatio,
+            .dendroAddedRatio,
+            .hydroAddedRatio,
+        ]
+    }
+
+    public static func getAvatarProperties(
+        element: Enka.GameElement
+    )
+        -> [Enka.PropertyType] {
+        var results: [Enka.PropertyType] = [
+            .maxHP,
+            .attack,
+            .defence,
+            .speed,
+            .criticalChance,
+            .criticalDamage,
+            .breakUp,
+            .energyRecovery,
+            .statusProbability,
+            .statusResistance,
+            .healRatio,
+        ]
+        switch element {
+        case .physico: results.append(.physicoAddedRatio)
+        case .anemo: results.append(.anemoAddedRatio)
+        case .electro: results.append(.electroAddedRatio)
+        case .fantastico: results.append(.fantasticoAddedRatio)
+        case .posesto: results.append(.posestoAddedRatio)
+        case .pyro: results.append(.pyroAddedRatio)
+        case .cryo: results.append(.cryoAddedRatio)
+        case .geo: results.append(.geoAddedRatio)
+        case .dendro: results.append(.dendroAddedRatio)
+        case .hydro: results.append(.hydroAddedRatio)
+        }
+
+        return results
+    }
+}

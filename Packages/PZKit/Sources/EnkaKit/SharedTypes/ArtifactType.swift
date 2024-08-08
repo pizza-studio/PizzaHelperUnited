@@ -1,0 +1,84 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+import EnkaDBModels
+
+extension Enka {
+    public enum ArtifactType: String, Codable, Hashable, CaseIterable, Identifiable {
+        case hsrHead = "HEAD"
+        case hsrHand = "HAND"
+        case hsrBody = "BODY"
+        case hsrFoot = "FOOT"
+        case hsrObject = "NECK" // MiHoYo's mistake, not ours.
+        case hsrNeck = "OBJECT" // MiHoYo's mistake, not ours.
+        case giFlower = "EQUIP_BRACER"
+        case giPlume = "EQUIP_NECKLACE"
+        case giSands = "EQUIP_SHOES"
+        case giGoblet = "EQUIP_RING"
+        case giCirclet = "EQUIP_DRESS"
+
+        // MARK: Lifecycle
+
+        public init?(typeID: Int, game: Enka.GameType) {
+            switch (game, typeID) {
+            case (.starRail, 1): self = .hsrHead
+            case (.starRail, 2): self = .hsrHand
+            case (.starRail, 3): self = .hsrBody
+            case (.starRail, 4): self = .hsrFoot
+            case (.starRail, 5): self = .hsrObject
+            case (.starRail, 6): self = .hsrNeck
+            case (.genshinImpact, 1): self = .giFlower
+            case (.genshinImpact, 2): self = .giPlume
+            case (.genshinImpact, 3): self = .giSands
+            case (.genshinImpact, 4): self = .giGoblet
+            case (.genshinImpact, 5): self = .giCirclet
+            default: return nil
+            }
+        }
+
+        // MARK: Public
+
+        public var game: Enka.GameType {
+            rawValue.hasPrefix("EQUIP_") ? .genshinImpact : .starRail
+        }
+
+        public var id: String { rawValue }
+
+        public var assetSuffix: Int {
+            switch self {
+            case .hsrHead: 0
+            case .hsrHand: 1
+            case .hsrBody: 2
+            case .hsrFoot: 3
+            case .hsrObject: 0
+            case .hsrNeck: 1
+            case .giFlower: 0
+            case .giPlume: 1
+            case .giSands: 2
+            case .giGoblet: 3
+            case .giCirclet: 4
+            }
+        }
+
+        public var emojiRepresentable: String {
+            switch self {
+            case .hsrHead: "⛑️"
+            case .hsrHand: "🥊"
+            case .hsrBody: "🧥"
+            case .hsrFoot: "🥾"
+            case .hsrObject: "🏀"
+            case .hsrNeck: "📿"
+            case .giFlower: "🌷"
+            case .giPlume: "🪶"
+            case .giSands: "⏳"
+            case .giGoblet: "🍷"
+            case .giCirclet: "👑"
+            }
+        }
+
+        public static func allCases(game: Enka.GameType) -> [Self] {
+            Self.allCases.filter { $0.game == game }
+        }
+    }
+}
