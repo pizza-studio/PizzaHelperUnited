@@ -44,18 +44,6 @@ extension Enka {
         public fileprivate(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
         public fileprivate(set) var db4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
 
-        @MainActor
-        public static func getEnkaDB(for game: Enka.HoyoGame) async -> EnkaDBResult {
-            do {
-                switch game {
-                case .genshinImpact: return try await .genshinImpact(getEnkaDB4GI())
-                case .starRail: return try await .starRail(getEnkaDB4HSR())
-                }
-            } catch {
-                return .failure(error)
-            }
-        }
-
         // MARK: Private
 
         private var cancellables: Set<AnyCancellable> = []
@@ -65,6 +53,18 @@ extension Enka {
 // MARK: - Individual EnkaDB Getters.
 
 extension Enka.Sputnik {
+    @MainActor
+    public static func getEnkaDB(for game: Enka.GameType) async -> EnkaDBResult {
+        do {
+            switch game {
+            case .genshinImpact: return try await .genshinImpact(getEnkaDB4GI())
+            case .starRail: return try await .starRail(getEnkaDB4HSR())
+            }
+        } catch {
+            return .failure(error)
+        }
+    }
+
     @MainActor
     @discardableResult
     public static func getEnkaDB4GI() async throws -> Enka.EnkaDB4GI {

@@ -24,7 +24,7 @@ extension Enka {
 
         // MARK: Public
 
-        public var game: Enka.HoyoGame {
+        public var game: Enka.GameType {
             switch self {
             case .giCharacters, .giLocTable, .giNamecards, .giProfileAvatarIcons:
                 return .genshinImpact

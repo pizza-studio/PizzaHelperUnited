@@ -4,10 +4,10 @@
 
 import Foundation
 
-// MARK: - Enka.HoyoGame
+// MARK: - Enka.GameType
 
 extension Enka {
-    public enum HoyoGame: CaseIterable, Codable, Hashable {
+    public enum GameType: CaseIterable, Codable, Hashable {
         case genshinImpact
         case starRail
     }

@@ -7,7 +7,7 @@ import Foundation
 // MARK: - EnkaDBProtocol
 
 public protocol EnkaDBProtocol {
-    var game: Enka.HoyoGame { get }
+    var game: Enka.GameType { get }
     var locTable: Enka.LocTable { get set }
     var locTag: String { get }
     var isExpired: Bool { get set }

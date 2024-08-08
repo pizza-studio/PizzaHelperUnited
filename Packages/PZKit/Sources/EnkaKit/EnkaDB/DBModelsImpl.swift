@@ -9,7 +9,8 @@ extension EnkaDBModelsHSR.Meta.NestedPropValueMap {
         let rawResult = self[id.description]?[stage.description]?["props"] ?? [:]
         var results = [Enka.PropertyType: Double]()
         for (key, value) in rawResult {
-            guard let propKey = Enka.PropertyType(rawValue: key) else { continue }
+            let propKey = Enka.PropertyType(rawValue: key)
+            guard propKey != .unknownType else { continue }
             results[propKey] = value
         }
         return results

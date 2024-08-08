@@ -142,7 +142,7 @@ extension Enka {
 // MARK: - Protocol Conformance.
 
 extension Enka.EnkaDB4HSR {
-    public var game: Enka.HoyoGame { .starRail }
+    public var game: Enka.GameType { .starRail }
 
     /// Only available for characters and Weapons.
     public func getNameTextMapHash(id: String) -> String? {

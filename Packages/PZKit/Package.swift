@@ -74,7 +74,7 @@ let package = Package(
         )
         Package.Dependency.package(
             url: "https://github.com/pizza-studio/EnkaDBGenerator",
-            from: "1.2.2"
+            from: "1.2.3"
         )
         #endif
     },
@@ -142,8 +142,7 @@ let package = Package(
                 )
             },
             resources: buildResources {
-                Resource.process("Assets/AdditionalLangTableShared.json")
-                Resource.process("Assets/RealNameDict.json")
+                Resource.process("Assets/")
             },
             swiftSettings: sharedSwiftSettings
         )
@@ -171,7 +170,10 @@ let package = Package(
         #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
         Target.testTarget(
             name: "EnkaKitTests",
-            dependencies: ["EnkaKit"]
+            dependencies: ["EnkaKit"],
+            resources: buildResources {
+                Resource.process("TestAssets/")
+            }
         )
         #endif
     }
