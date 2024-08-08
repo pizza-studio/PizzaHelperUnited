@@ -18,6 +18,11 @@ extension Defaults.Keys {
         default: .init(timeIntervalSince1970: 0),
         suite: .enkaSuite
     )
+    public static let defaultDBQueryHost = Key<Enka.HostType>(
+        "defaultDBQueryHost",
+        default: Enka.HostType.enkaGlobal,
+        suite: .enkaSuite
+    )
     public static let enkaDBData4GI = Key<Enka.EnkaDB4GI>(
         "enkaDBData4GI",
         default: try! Enka.EnkaDB4GI(locTag: Locale.langCodeForEnkaAPI),
@@ -28,9 +33,14 @@ extension Defaults.Keys {
         default: try! Enka.EnkaDB4HSR(locTag: Locale.langCodeForEnkaAPI),
         suite: .enkaSuite
     )
-    public static let defaultDBQueryHost = Key<Enka.HostType>(
-        "defaultDBQueryHost",
-        default: Enka.HostType.enkaGlobal,
+    public static let queriedEnkaProfiles4GI = Key<[String: Enka.QueriedProfileGI]>(
+        "queriedEnkaProfiles4GI",
+        default: [:],
+        suite: .enkaSuite
+    )
+    public static let queriedEnkaProfiles4HSR = Key<[String: Enka.QueriedProfileHSR]>(
+        "queriedEnkaProfiles4HSR",
+        default: [:],
         suite: .enkaSuite
     )
 
@@ -72,6 +82,14 @@ extension Enka.EnkaDB4GI: _DefaultsSerializable {}
 // MARK: - Enka.EnkaDB4HSR + _DefaultsSerializable
 
 extension Enka.EnkaDB4HSR: _DefaultsSerializable {}
+
+// MARK: - Enka.QueriedProfileGI + _DefaultsSerializable
+
+extension Enka.QueriedProfileGI: _DefaultsSerializable {}
+
+// MARK: - Enka.QueriedProfileHSR + _DefaultsSerializable
+
+extension Enka.QueriedProfileHSR: _DefaultsSerializable {}
 
 // MARK: - Enka.HostType + _DefaultsSerializable
 

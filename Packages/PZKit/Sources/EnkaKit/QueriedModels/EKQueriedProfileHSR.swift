@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
+
 // MARK: - Enka.QueriedProfileHSR
 
 extension Enka {
@@ -74,6 +76,11 @@ extension Enka {
         public let platform: PlatformType
         public var avatarDetailList: [RawAvatar]
         public let assistAvatarList: [RawAvatar]
+
+        public var locallyCachedData: Enka.QueriedProfileHSR? {
+            get { Defaults[.queriedEnkaProfiles4HSR][uid.description] }
+            set { Defaults[.queriedEnkaProfiles4HSR][uid.description] = newValue }
+        }
     }
 }
 

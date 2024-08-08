@@ -24,6 +24,7 @@ public protocol EKQueriedProfileProtocol {
     associatedtype QueriedAvatar = EKQueriedRawAvatarProtocol
     var avatarDetailList: [QueriedAvatar] { get set }
     var uid: Int { get }
+    var locallyCachedData: Self? { get set }
 }
 
 extension EKQueriedProfileProtocol {

@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
+
 // MARK: - Enka.QueriedProfileGI
 
 extension Enka {
@@ -75,6 +77,11 @@ extension Enka {
         public var profilePicture: ProfilePictureRAW
 
         public var avatarDetailList: [RawAvatar]
+
+        public var locallyCachedData: Enka.QueriedProfileGI? {
+            get { Defaults[.queriedEnkaProfiles4GI][uid.description] }
+            set { Defaults[.queriedEnkaProfiles4GI][uid.description] = newValue }
+        }
     }
 }
 
