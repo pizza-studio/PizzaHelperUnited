@@ -80,7 +80,9 @@ private struct PascalCaseKey: CodingKey {
 }
 
 extension String {
-    public var asURL: URL! {
-        URL(string: self)
+    public var asURL: URL {
+        // swiftlint:disable force_unwrapping
+        URL(string: self)!
+        // swiftlint:enable force_unwrapping
     }
 }
