@@ -150,6 +150,13 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
 
             public let iconFileNameStem: String
 
+            public var iconOnlineFileNameStem: String {
+                switch game {
+                case .genshinImpact: return iconFileNameStem
+                case .starRail: return "SkillIcon_\(iconFileNameStem)"
+                }
+            }
+
             public var iconAssetName: String {
                 "skill_\(charIDStr)_\(type.rawValue)"
             }
@@ -186,15 +193,12 @@ extension Enka.AvatarSummarized {
         public let refinement: Int
         public let basicProps: [Enka.PVPair]
         public let specialProps: [Enka.PVPair]
+        public let iconOnlineFileNameStem: String
 
         public let rarityStars: Int
 
         public var allProps: [Enka.PVPair] {
             basicProps + specialProps
-        }
-
-        public var iconFileName: String {
-            "\(enkaId).heic"
         }
 
         public var iconAssetName: String {
@@ -220,7 +224,7 @@ extension Enka.AvatarSummarized {
         public let type: Enka.ArtifactType
         public let trainedLevel: Int
         public let rarityStars: Int
-        public let iconFileNameStem: String
+        public let iconOnlineFileNameStem: String
 
         public var id: Int { enkaId }
         public var allProps: [Enka.PVPair] {

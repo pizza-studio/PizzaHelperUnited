@@ -117,6 +117,8 @@ extension Enka.AvatarSummarized.WeaponPanel {
         ).map { key, value in
             Enka.PVPair(theDB: hsrDB, type: key, value: value)
         }
+        self.iconOnlineFileNameStem = theCommonInfo
+            .imagePath.split(separator: "/").suffix(1).joined().dropLast(4).description
         self.rarityStars = theCommonInfo.rarity
         self.game = .starRail
     }
@@ -155,7 +157,8 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         self.setID = flat.setID
         // 回頭恐需要單獨給聖遺物套裝名稱設定 Datamine。
         self.setNameLocalized = "Set.\(setID)"
-        self.iconFileNameStem = "\(setID)_\(type.assetSuffix)"
+        self.iconOnlineFileNameStem = theCommonInfo
+            .icon.split(separator: "/").suffix(1).joined().dropLast(4).description
         self.game = .starRail
     }
 }

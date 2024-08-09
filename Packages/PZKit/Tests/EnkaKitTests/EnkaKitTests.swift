@@ -90,18 +90,31 @@ final class EnkaKitTests: XCTestCase {
             throw TestError.error(msg: "Failed in summarizing Raiden Mei's character build.")
         }
         print(summarized.asText)
+        print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.talent.onlineAssetURLStr)
+        if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
+        summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
     }
 
     func testEnkaGIProfileSummaryAsText() throws {
         let giDecoded = try getUnitTestJSONObject("testProfileGI", as: Enka.QueriedResultGI.self)
-        guard let firstAvatar = giDecoded.detailInfo?.avatarDetailList.first else {
-            throw TestError.error(msg: "First avatar (Raiden Ei) missing.")
+        guard let firstAvatar = giDecoded.detailInfo?.avatarDetailList[6] else {
+            throw TestError.error(msg: "First avatar (Keqing, with costume) missing.")
         }
         let englishDB = try Enka.EnkaDB4GI(locTag: "en")
         guard let summarized = firstAvatar.summarize(giDB: englishDB) else {
-            throw TestError.error(msg: "Failed in summarizing Raiden Ei's character build.")
+            throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
         }
         print(summarized.asText)
+        print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
+        summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
     }
 }
 

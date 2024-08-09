@@ -143,6 +143,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
                 arrSubProps.append(newProp)
             }
         }
+        self.iconOnlineFileNameStem = weaponPack.flat.icon
         self.basicProps = arrMainProps
         self.specialProps = arrSubProps
         self.game = .genshinImpact
@@ -200,7 +201,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         }
         self.subProps = arrSubProps
         self.setID = setID
-        self.iconFileNameStem = equipItem.flat.icon
+        self.iconOnlineFileNameStem = equipItem.flat.icon
         var setName = "Set.\(setID)"
         if let hash = equipItem.flat.setNameTextMapHash {
             setName = giDB.getTranslationFor(id: hash.description)
