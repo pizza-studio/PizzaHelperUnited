@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-extension Enka.AvatarSummarizedHSR {
+extension Enka.AvatarSummarized {
     public var asText: String { makeTextSummary(useMarkDown: false) }
     public var asMarkDown: String { makeTextSummary(useMarkDown: true) }
 

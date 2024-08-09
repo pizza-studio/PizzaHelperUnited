@@ -3,17 +3,17 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 extension Enka.QueriedProfileHSR.RawAvatar {
-    public func summarize(theDB: Enka.EnkaDB4HSR) -> Enka.AvatarSummarizedHSR? {
+    public func summarize(hsrDB: Enka.EnkaDB4HSR) -> Enka.AvatarSummarized? {
         // Main Info
-        let baseSkillSet = Enka.AvatarSummarizedHSR.AvatarMainInfo.BaseSkillSet(
-            theDB: theDB,
+        let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
+            hsrDB: hsrDB,
             constellation: rank ?? 0,
             fetched: skillTreeList
         )
         guard let baseSkillSet = baseSkillSet else { return nil }
 
-        let mainInfo = Enka.AvatarSummarizedHSR.AvatarMainInfo(
-            theDB: theDB,
+        let mainInfo = Enka.AvatarSummarized.AvatarMainInfo(
+            hsrDB: hsrDB,
             charID: avatarId,
             avatarLevel: level,
             constellation: rank ?? 0,
@@ -21,17 +21,17 @@ extension Enka.QueriedProfileHSR.RawAvatar {
         )
         guard let mainInfo = mainInfo else { return nil }
 
-        let equipInfo: Enka.AvatarSummarizedHSR.WeaponPanel? = {
+        let equipInfo: Enka.AvatarSummarized.WeaponPanel? = {
             guard let equipment = equipment else { return nil }
-            return Enka.AvatarSummarizedHSR.WeaponPanel(theDB: theDB, fetched: equipment)
+            return Enka.AvatarSummarized.WeaponPanel(hsrDB: hsrDB, fetched: equipment)
         }()
 
         let artifactsInfo = artifactList.compactMap {
-            Enka.AvatarSummarizedHSR.ArtifactInfo(theDB: theDB, fetched: $0)
+            Enka.AvatarSummarized.ArtifactInfo(hsrDB: hsrDB, fetched: $0)
         }
 
         // Panel: Add basic values from catched character Metadata.
-        let baseMetaCharacter = theDB.meta.avatar[avatarId.description]?[promotion.description]
+        let baseMetaCharacter = hsrDB.meta.avatar[avatarId.description]?[promotion.description]
         guard let baseMetaCharacter = baseMetaCharacter else { return nil }
         var panel = MutableAvatarPropertyPanel()
         panel.maxHP = baseMetaCharacter.hpBase
@@ -46,7 +46,7 @@ extension Enka.QueriedProfileHSR.RawAvatar {
 
         // Panel: Base Props from the Weapon.
 
-        if let equipFlat: Enka.QueriedProfileHSR.EquipmentFlat = equipment?.getFlat(theDB: theDB) {
+        if let equipFlat: Enka.QueriedProfileHSR.EquipmentFlat = equipment?.getFlat(hsrDB: hsrDB) {
             panel.maxHP += equipFlat.props.first { Enka.PropertyType(rawValue: $0.type) == .baseHP }?.value ?? 0
             panel.attack += equipFlat.props.first { Enka.PropertyType(rawValue: $0.type) == .baseAttack }?.value ?? 0
             panel.defence += equipFlat.props.first { Enka.PropertyType(rawValue: $0.type) == .baseDefence }?
@@ -57,14 +57,14 @@ extension Enka.QueriedProfileHSR.RawAvatar {
 
         // Panel: - Additional Props from the Weapon.
 
-        let weaponSpecialProps: [Enka.AvatarSummarizedHSR.PropertyPair] = equipInfo?.specialProps ?? []
+        let weaponSpecialProps: [Enka.AvatarSummarized.PropertyPair] = equipInfo?.specialProps ?? []
 
         // Panel: Base and Additional Props from the Skill Tree.
 
-        let skillTreeProps: [Enka.AvatarSummarizedHSR.PropertyPair] = skillTreeList.compactMap { currentNode in
+        let skillTreeProps: [Enka.AvatarSummarized.PropertyPair] = skillTreeList.compactMap { currentNode in
             if currentNode.level == 1 {
-                return theDB.meta.tree.query(id: currentNode.pointId, stage: 1).map {
-                    Enka.AvatarSummarizedHSR.PropertyPair(theDB: theDB, type: $0.key, value: $0.value)
+                return hsrDB.meta.tree.query(id: currentNode.pointId, stage: 1).map {
+                    Enka.AvatarSummarized.PropertyPair(hsrDB: hsrDB, type: $0.key, value: $0.value)
                 }
             }
             return nil
@@ -72,23 +72,23 @@ extension Enka.QueriedProfileHSR.RawAvatar {
 
         // Panel: - Additional Props from the Artifacts.
 
-        let artifactProps: [Enka.AvatarSummarizedHSR.PropertyPair] = artifactsInfo.map(\.allProps).reduce([], +)
+        let artifactProps: [Enka.AvatarSummarized.PropertyPair] = artifactsInfo.map(\.allProps).reduce([], +)
 
         // Panel: - Additional Props from the Artifact Set Effects.
 
-        let artifactSetProps: [Enka.AvatarSummarizedHSR.PropertyPair] = {
-            var resultPairs = [Enka.AvatarSummarizedHSR.PropertyPair]()
+        let artifactSetProps: [Enka.AvatarSummarized.PropertyPair] = {
+            var resultPairs = [Enka.AvatarSummarized.PropertyPair]()
             var setIDCounters: [Int: Int] = [:]
             artifactsInfo.map(\.setID).forEach { setIDCounters[$0, default: 0] += 1 }
             setIDCounters.forEach { setId, count in
                 guard count >= 2 else { return }
-                let x = theDB.meta.relic.setSkill.query(id: setId, stage: 2).map {
-                    Enka.AvatarSummarizedHSR.PropertyPair(theDB: theDB, type: $0.key, value: $0.value)
+                let x = hsrDB.meta.relic.setSkill.query(id: setId, stage: 2).map {
+                    Enka.AvatarSummarized.PropertyPair(hsrDB: hsrDB, type: $0.key, value: $0.value)
                 }
                 resultPairs.append(contentsOf: x)
                 guard count >= 4 else { return }
-                let y = theDB.meta.relic.setSkill.query(id: setId, stage: 4).map {
-                    Enka.AvatarSummarizedHSR.PropertyPair(theDB: theDB, type: $0.key, value: $0.value)
+                let y = hsrDB.meta.relic.setSkill.query(id: setId, stage: 4).map {
+                    Enka.AvatarSummarized.PropertyPair(hsrDB: hsrDB, type: $0.key, value: $0.value)
                 }
                 resultPairs.append(contentsOf: y)
             }
@@ -98,13 +98,14 @@ extension Enka.QueriedProfileHSR.RawAvatar {
         // Panel: Triage and Handle.
 
         let allProps = skillTreeProps + weaponSpecialProps + artifactProps + artifactSetProps
-        panel.triageAndHandle(theDB: theDB, allProps, element: mainInfo.element)
+        panel.triageAndHandle(hsrDB: hsrDB, allProps, element: mainInfo.element)
 
         // Panel: Final Output.
 
-        let propPair = panel.converted(theDB: theDB, element: mainInfo.element)
+        let propPair = panel.converted(hsrDB: hsrDB, element: mainInfo.element)
 
-        return Enka.AvatarSummarizedHSR(
+        return Enka.AvatarSummarized(
+            game: .starRail,
             mainInfo: mainInfo,
             equippedWeapon: equipInfo,
             avatarPropertiesA: propPair.0,
@@ -133,24 +134,24 @@ private struct MutableAvatarPropertyPanel {
     public var elementalDMGAddedRatio: Double = 0
 
     public func converted(
-        theDB: Enka.EnkaDB4HSR,
+        hsrDB: Enka.EnkaDB4HSR,
         element: Enka.GameElement
     )
-        -> ([Enka.AvatarSummarizedHSR.PropertyPair], [Enka.AvatarSummarizedHSR.PropertyPair]) {
-        var resultA = [Enka.AvatarSummarizedHSR.PropertyPair]()
-        var resultB = [Enka.AvatarSummarizedHSR.PropertyPair]()
-        resultA.append(.init(theDB: theDB, type: .maxHP, value: maxHP))
-        resultA.append(.init(theDB: theDB, type: .attack, value: attack))
-        resultA.append(.init(theDB: theDB, type: .defence, value: defence))
-        resultA.append(.init(theDB: theDB, type: .speed, value: speed))
-        resultA.append(.init(theDB: theDB, type: .criticalChance, value: criticalChance))
-        resultA.append(.init(theDB: theDB, type: .criticalDamage, value: criticalDamage))
-        resultB.append(.init(theDB: theDB, type: element.damageAddedRatioProperty, value: elementalDMGAddedRatio))
-        resultB.append(.init(theDB: theDB, type: .breakDamageAddedRatio, value: breakUp))
-        resultB.append(.init(theDB: theDB, type: .healRatio, value: healRatio))
-        resultB.append(.init(theDB: theDB, type: .energyRecovery, value: energyRecovery))
-        resultB.append(.init(theDB: theDB, type: .statusProbability, value: statusProbability))
-        resultB.append(.init(theDB: theDB, type: .statusResistance, value: statusResistance))
+        -> ([Enka.AvatarSummarized.PropertyPair], [Enka.AvatarSummarized.PropertyPair]) {
+        var resultA = [Enka.AvatarSummarized.PropertyPair]()
+        var resultB = [Enka.AvatarSummarized.PropertyPair]()
+        resultA.append(.init(hsrDB: hsrDB, type: .maxHP, value: maxHP))
+        resultA.append(.init(hsrDB: hsrDB, type: .attack, value: attack))
+        resultA.append(.init(hsrDB: hsrDB, type: .defence, value: defence))
+        resultA.append(.init(hsrDB: hsrDB, type: .speed, value: speed))
+        resultA.append(.init(hsrDB: hsrDB, type: .criticalChance, value: criticalChance))
+        resultA.append(.init(hsrDB: hsrDB, type: .criticalDamage, value: criticalDamage))
+        resultB.append(.init(hsrDB: hsrDB, type: element.damageAddedRatioProperty, value: elementalDMGAddedRatio))
+        resultB.append(.init(hsrDB: hsrDB, type: .breakDamageAddedRatio, value: breakUp))
+        resultB.append(.init(hsrDB: hsrDB, type: .healRatio, value: healRatio))
+        resultB.append(.init(hsrDB: hsrDB, type: .energyRecovery, value: energyRecovery))
+        resultB.append(.init(hsrDB: hsrDB, type: .statusProbability, value: statusProbability))
+        resultB.append(.init(hsrDB: hsrDB, type: .statusResistance, value: statusResistance))
         return (resultA, resultB)
     }
 
@@ -159,12 +160,12 @@ private struct MutableAvatarPropertyPanel {
     ///   - newProps: An array of property pairs to addup to self.
     ///   - element: The element of the character, affecting which element's damange added ratio will be respected.
     public mutating func triageAndHandle(
-        theDB: Enka.EnkaDB4HSR,
-        _ newProps: [Enka.AvatarSummarizedHSR.PropertyPair],
+        hsrDB: Enka.EnkaDB4HSR,
+        _ newProps: [Enka.AvatarSummarized.PropertyPair],
         element: Enka.GameElement
     ) {
-        var propAmplifiers = [Enka.AvatarSummarizedHSR.PropertyPair]()
-        var propAdditions = [Enka.AvatarSummarizedHSR.PropertyPair]()
+        var propAmplifiers = [Enka.AvatarSummarized.PropertyPair]()
+        var propAdditions = [Enka.AvatarSummarized.PropertyPair]()
         newProps.forEach { $0.triage(amp: &propAmplifiers, add: &propAdditions, element: element) }
 
         var propAmpDictionary: [Enka.PropertyType: Double] = [:]
@@ -173,7 +174,7 @@ private struct MutableAvatarPropertyPanel {
         }
 
         propAmpDictionary.forEach { key, value in
-            handle(.init(theDB: theDB, type: key, value: value), element: element)
+            handle(.init(hsrDB: hsrDB, type: key, value: value), element: element)
         }
 
         propAdditions.forEach { handle($0, element: element) }
@@ -183,7 +184,7 @@ private struct MutableAvatarPropertyPanel {
 
     // swiftlint:disable cyclomatic_complexity
     private mutating func handle(
-        _ prop: Enka.AvatarSummarizedHSR.PropertyPair,
+        _ prop: Enka.AvatarSummarized.PropertyPair,
         element: Enka.GameElement
     ) {
         switch prop.type {
@@ -212,10 +213,10 @@ private struct MutableAvatarPropertyPanel {
     // swiftlint:enable cyclomatic_complexity
 }
 
-extension Enka.AvatarSummarizedHSR.PropertyPair {
+extension Enka.AvatarSummarized.PropertyPair {
     func triage(
-        amp arrAmp: inout [Enka.AvatarSummarizedHSR.PropertyPair],
-        add arrAdd: inout [Enka.AvatarSummarizedHSR.PropertyPair],
+        amp arrAmp: inout [Enka.AvatarSummarized.PropertyPair],
+        add arrAdd: inout [Enka.AvatarSummarized.PropertyPair],
         element: Enka.GameElement
     ) {
         switch type {
@@ -239,10 +240,10 @@ extension Enka.AvatarSummarizedHSR.PropertyPair {
 }
 
 extension Enka.QueriedProfileHSR.ArtifactItem {
-    public func getFlat(theDB: Enka.EnkaDB4HSR) -> Enka.QueriedProfileHSR.ArtifactItem.SteppedFlat? {
+    public func getFlat(hsrDB: Enka.EnkaDB4HSR) -> Enka.QueriedProfileHSR.ArtifactItem.SteppedFlat? {
         var result = [Enka.QueriedProfileHSR.PropStepped]()
-        guard let matchedArtifact = theDB.artifacts[tid.description] else { return nil }
-        let mainAffix = theDB.meta.relic.mainAffix[
+        guard let matchedArtifact = hsrDB.artifacts[tid.description] else { return nil }
+        let mainAffix = hsrDB.meta.relic.mainAffix[
             matchedArtifact.mainAffixGroup.description
         ]?[mainAffixId.description]
         if let mainAffix = mainAffix {
@@ -256,7 +257,7 @@ extension Enka.QueriedProfileHSR.ArtifactItem {
             )
         }
         subAffixList?.forEach { sub in
-            guard let subAffix = theDB.meta.relic.subAffix[
+            guard let subAffix = hsrDB.meta.relic.subAffix[
                 matchedArtifact.subAffixGroup.description
             ]?[sub.affixId.description] else { return }
             result.append(
@@ -277,9 +278,9 @@ extension Enka.QueriedProfileHSR.ArtifactItem {
 }
 
 extension Enka.QueriedProfileHSR.Equipment {
-    public func getFlat(theDB: Enka.EnkaDB4HSR) -> Enka.QueriedProfileHSR.EquipmentFlat {
+    public func getFlat(hsrDB: Enka.EnkaDB4HSR) -> Enka.QueriedProfileHSR.EquipmentFlat {
         var result = [Enka.QueriedProfileHSR.Prop]()
-        if let table = theDB.meta.equipment[tid.description]?[(promotion ?? 0).description] {
+        if let table = hsrDB.meta.equipment[tid.description]?[(promotion ?? 0).description] {
             let summedHP = table.baseHP + table.hpAdd * (Double(level) - 1)
             let summedATK = table.baseAttack + table.attackAdd * (Double(level) - 1)
             let summedDEF = table.baseDefence + table.defenceAdd * (Double(level) - 1)
@@ -287,6 +288,6 @@ extension Enka.QueriedProfileHSR.Equipment {
             result.append(.init(type: Enka.PropertyType.baseAttack.rawValue, value: summedATK))
             result.append(.init(type: Enka.PropertyType.baseDefence.rawValue, value: summedDEF))
         }
-        return .init(props: result, name: theDB.weapons[tid.description]?.equipmentName.hash ?? 0)
+        return .init(props: result, name: hsrDB.weapons[tid.description]?.equipmentName.hash ?? 0)
     }
 }

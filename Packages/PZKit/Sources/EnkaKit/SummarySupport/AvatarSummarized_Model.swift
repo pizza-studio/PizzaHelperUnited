@@ -5,13 +5,14 @@
 import Defaults
 import EnkaDBModels
 
-// MARK: - Enka.AvatarSummarizedHSR
+// MARK: - Enka.AvatarSummarized
 
 extension Enka {
     /// The backend struct dedicated for rendering EachAvatarStatView.
-    public struct AvatarSummarizedHSR: Codable, Hashable, Identifiable {
+    public struct AvatarSummarized: Codable, Hashable, Identifiable {
         // MARK: Public
 
+        public let game: Enka.GameType
         public let mainInfo: AvatarMainInfo
         public let equippedWeapon: WeaponPanel?
         public let avatarPropertiesA: [PropertyPair]
@@ -32,25 +33,34 @@ extension Enka {
 
 // MARK: - Enka.AvatarSummarized.AvatarMainInfo
 
-extension Enka.AvatarSummarizedHSR {
+extension Enka.AvatarSummarized {
+    /// 专门用来负责管理角色证件照显示的 Identifiable Struct。
     public struct CharacterID: Identifiable, Codable, Hashable {
         // MARK: Lifecycle
 
+        /// 通用建构子。
         public init?(id: String) {
             guard Enka.Sputnik.shared.db4HSR.characters.keys.contains(id) else { return nil }
             self.id = id
+            self.nameObj = .init(pidStr: id)
         }
 
         // MARK: Public
 
         public let id: String
 
+        public let nameObj: Enka.CharacterName
+
+        public var game: Enka.GameType {
+            nameObj.game
+        }
+
         public var i18nNameForUI: String {
-            Enka.Sputnik.shared.db4HSR.getTranslationFor(id: id, realName: true)
+            nameObj.description
         }
 
         public var i18nNameFactoryVanilla: String {
-            Enka.Sputnik.shared.db4HSR.getTranslationFor(id: id, realName: false)
+            nameObj.officialDescription
         }
 
         public var avatarAssetNameStem: String {
@@ -65,15 +75,16 @@ extension Enka.AvatarSummarizedHSR {
     public struct AvatarMainInfo: Codable, Hashable {
         // MARK: Lifecycle
 
+        /// 星穹铁道专用建构子。
         public init?(
-            theDB: Enka.EnkaDB4HSR,
+            hsrDB: Enka.EnkaDB4HSR,
             charID: Int,
             avatarLevel avatarLv: Int,
             constellation constellationLevel: Int,
             baseSkills baseSkillSet: BaseSkillSet
         ) {
-            guard let theCommonInfo = theDB.characters[charID.description] else { return nil }
-            guard let idExpressible = Enka.AvatarSummarizedHSR.CharacterID(id: charID.description) else { return nil }
+            guard let theCommonInfo = hsrDB.characters[charID.description] else { return nil }
+            guard let idExpressible = Enka.AvatarSummarized.CharacterID(id: charID.description) else { return nil }
             guard let lifePath = Enka.LifePath(rawValue: theCommonInfo.avatarBaseType) else { return nil }
             guard let theElement = Enka.GameElement(rawValue: theCommonInfo.element) else { return nil }
             self.avatarLevel = avatarLv
@@ -83,10 +94,11 @@ extension Enka.AvatarSummarizedHSR {
             self.element = theElement
             self.lifePath = lifePath
             let nameTyped = Enka.CharacterName(pid: charID)
-            self.localizedName = nameTyped.i18n(theDB: theDB, officialNameOnly: true)
-            self.localizedRealName = nameTyped.i18n(theDB: theDB, officialNameOnly: false)
-            self.terms = .init(lang: theDB.locTag, game: .starRail)
+            self.localizedName = nameTyped.i18n(theDB: hsrDB, officialNameOnly: true)
+            self.localizedRealName = nameTyped.i18n(theDB: hsrDB, officialNameOnly: false)
+            self.terms = .init(lang: hsrDB.locTag, game: .starRail)
             self.idExpressable = idExpressible
+            guard game == .starRail else { return nil }
         }
 
         // MARK: Public
@@ -97,7 +109,7 @@ extension Enka.AvatarSummarizedHSR {
         /// Unique Character ID number used by both Enka Network and MiHoYo.
         public let uniqueCharId: Int
         /// Unique Character ID Expressable Object.
-        public let idExpressable: Enka.AvatarSummarizedHSR.CharacterID
+        public let idExpressable: Enka.AvatarSummarized.CharacterID
         /// Character's Mastered Element.
         public let element: Enka.GameElement
         /// Character's LifePath.
@@ -109,21 +121,26 @@ extension Enka.AvatarSummarizedHSR {
         /// Base Skills.
         public let baseSkills: BaseSkillSet
 
+        public var game: Enka.GameType {
+            idExpressable.game
+        }
+
         public var name: String {
             Defaults[.useRealCharacterNames] ? localizedRealName : localizedName
         }
     }
 }
 
-// MARK: - Enka.AvatarSummarizedHSR.AvatarMainInfo.BaseSkillSet
+// MARK: - Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet
 
-extension Enka.AvatarSummarizedHSR.AvatarMainInfo {
+extension Enka.AvatarSummarized.AvatarMainInfo {
     /// Base Skill Set of a Character, excluding Technique since it doesn't have a level.
     public struct BaseSkillSet: Codable, Hashable {
         // MARK: Lifecycle
 
+        /// 星穹铁道专用建构子。
         public init?(
-            theDB: Enka.EnkaDB4HSR,
+            hsrDB: Enka.EnkaDB4HSR,
             constellation: Int,
             fetched: [Enka.QueriedProfileHSR.SkillTreeItem]
         ) {
@@ -133,7 +150,7 @@ extension Enka.AvatarSummarizedHSR.AvatarMainInfo {
             if constellation > 1 {
                 for i in 1 ... constellation {
                     let keyword = "\(charIDStr)0\(i)"
-                    theDB.skillRanks[keyword]?.skillAddLevelList.forEach { thisPointId, levelDelta in
+                    hsrDB.skillRanks[keyword]?.skillAddLevelList.forEach { thisPointId, levelDelta in
                         var writeKeyArr = thisPointId.map(\.description)
                         writeKeyArr.insert("0", at: 4)
                         levelAdditionList[writeKeyArr.joined(), default: 0] += levelDelta
@@ -144,23 +161,28 @@ extension Enka.AvatarSummarizedHSR.AvatarMainInfo {
             self.basicAttack = .init(
                 charIDStr: charIDStr, baseLevel: fetched[0].level,
                 levelAddition: levelAdditionList[fetched[0].pointId.description],
-                type: .basicAttack
+                type: .basicAttack,
+                game: .starRail
             )
             self.elementalSkill = .init(
                 charIDStr: charIDStr, baseLevel: fetched[1].level,
                 levelAddition: levelAdditionList[fetched[1].pointId.description],
-                type: .elementalSkill
+                type: .elementalSkill,
+                game: .starRail
             )
             self.elementalBurst = .init(
                 charIDStr: charIDStr, baseLevel: fetched[2].level,
                 levelAddition: levelAdditionList[fetched[2].pointId.description],
-                type: .elementalBurst
+                type: .elementalBurst,
+                game: .starRail
             )
             self.talent = .init(
                 charIDStr: charIDStr, baseLevel: fetched[3].level,
                 levelAddition: levelAdditionList[fetched[3].pointId.description],
-                type: .talent
+                type: .talent,
+                game: .starRail
             )
+            self.game = .starRail
         }
 
         // MARK: Public
@@ -178,6 +200,9 @@ extension Enka.AvatarSummarizedHSR.AvatarMainInfo {
             public let baseLevel: Int
             public let levelAddition: Int?
             public let type: SkillType
+
+            /// Game.
+            public let game: Enka.GameType
 
             public var iconFileNameStem: String {
                 "\(charIDStr)_\(type.rawValue)"
@@ -197,39 +222,43 @@ extension Enka.AvatarSummarizedHSR.AvatarMainInfo {
         /// Talent.
         public let talent: BaseSkill
 
+        /// Game.
+        public let game: Enka.GameType
+
         public var toArray: [BaseSkill] {
             [basicAttack, elementalSkill, elementalBurst, talent]
         }
     }
 }
 
-// MARK: - Enka.AvatarSummarizedHSR.PropertyPair
+// MARK: - Enka.AvatarSummarized.PropertyPair
 
-extension Enka.AvatarSummarizedHSR {
+extension Enka.AvatarSummarized {
     public struct PropertyPair: Codable, Hashable, Identifiable {
         // MARK: Lifecycle
 
         /// 该建构子不得用于圣遗物的词条构筑。
         public init(
-            theDB: Enka.EnkaDB4HSR,
+            hsrDB: Enka.EnkaDB4HSR,
             type: Enka.PropertyType,
             value: Double
         ) {
             self.type = type
             self.value = value
             var title = (
-                theDB.additionalLocTable[type.rawValue] ?? theDB.locTable[type.rawValue] ?? type.rawValue
+                hsrDB.additionalLocTable[type.rawValue] ?? hsrDB.locTable[type.rawValue] ?? type.rawValue
             )
             Self.sanitizeTitle(&title)
             self.localizedTitle = title
             self.isArtifact = false
             self.count = 0
             self.step = nil
+            self.game = .starRail
         }
 
         /// 该建构子只得用于圣遗物的词条构筑。
         public init(
-            theDB: Enka.EnkaDB4HSR,
+            hsrDB: Enka.EnkaDB4HSR,
             type: Enka.PropertyType,
             value: Double,
             count: Int,
@@ -238,17 +267,20 @@ extension Enka.AvatarSummarizedHSR {
             self.type = type
             self.value = value
             var title = (
-                theDB.additionalLocTable[type.rawValue] ?? theDB.locTable[type.rawValue] ?? type.rawValue
+                hsrDB.additionalLocTable[type.rawValue] ?? hsrDB.locTable[type.rawValue] ?? type.rawValue
             )
             Self.sanitizeTitle(&title)
             self.localizedTitle = title
             self.isArtifact = true
             self.count = count
             self.step = step
+            self.game = .starRail
         }
 
         // MARK: Public
 
+        /// Game.
+        public let game: Enka.GameType
         public let type: Enka.PropertyType
         public let value: Double
         public let localizedTitle: String
@@ -298,39 +330,42 @@ extension Enka.AvatarSummarizedHSR {
     }
 }
 
-// MARK: - Enka.AvatarSummarizedHSR.WeaponPanel
+// MARK: - Enka.AvatarSummarized.WeaponPanel
 
-extension Enka.AvatarSummarizedHSR {
+extension Enka.AvatarSummarized {
     public struct WeaponPanel: Codable, Hashable {
         // MARK: Lifecycle
 
         public init?(
-            theDB: Enka.EnkaDB4HSR,
+            hsrDB: Enka.EnkaDB4HSR,
             fetched: Enka.QueriedProfileHSR.Equipment
         ) {
-            guard let theCommonInfo = theDB.weapons[fetched.tid.description] else { return nil }
+            guard let theCommonInfo = hsrDB.weapons[fetched.tid.description] else { return nil }
             self.enkaId = fetched.tid
             self.commonInfo = theCommonInfo
             self.paramDataFetched = fetched
             let nameHash = theCommonInfo.equipmentName.hash.description
-            self.localizedName = theDB.locTable[nameHash] ?? "EnkaId: \(fetched.tid)"
+            self.localizedName = hsrDB.locTable[nameHash] ?? "EnkaId: \(fetched.tid)"
             self.trainedLevel = fetched.level
             self.refinement = fetched.rank
-            self.basicProps = fetched.getFlat(theDB: theDB).props.compactMap { currentRecord in
+            self.basicProps = fetched.getFlat(hsrDB: hsrDB).props.compactMap { currentRecord in
                 let theType = Enka.PropertyType(rawValue: currentRecord.type)
                 return theType != .unknownType
-                    ? PropertyPair(theDB: theDB, type: theType, value: currentRecord.value)
+                    ? PropertyPair(hsrDB: hsrDB, type: theType, value: currentRecord.value)
                     : PropertyPair?.none
             }
-            self.specialProps = theDB.meta.equipmentSkill.query(
+            self.specialProps = hsrDB.meta.equipmentSkill.query(
                 id: enkaId, stage: fetched.rank
             ).map { key, value in
-                PropertyPair(theDB: theDB, type: key, value: value)
+                PropertyPair(hsrDB: hsrDB, type: key, value: value)
             }
+            self.game = .starRail
         }
 
         // MARK: Public
 
+        /// Game.
+        public let game: Enka.GameType
         /// Unique Weapon ID.
         public let enkaId: Int
         /// Common information fetched from EnkaDB.
@@ -359,18 +394,18 @@ extension Enka.AvatarSummarizedHSR {
     }
 }
 
-// MARK: - Enka.AvatarSummarizedHSR.ArtifactInfo
+// MARK: - Enka.AvatarSummarized.ArtifactInfo
 
-extension Enka.AvatarSummarizedHSR {
+extension Enka.AvatarSummarized {
     public struct ArtifactInfo: Codable, Hashable, Identifiable {
         // MARK: Lifecycle
 
-        public init?(theDB: Enka.EnkaDB4HSR, fetched: Enka.QueriedProfileHSR.ArtifactItem) {
-            guard let theCommonInfo = theDB.artifacts[fetched.tid.description] else { return nil }
+        public init?(hsrDB: Enka.EnkaDB4HSR, fetched: Enka.QueriedProfileHSR.ArtifactItem) {
+            guard let theCommonInfo = hsrDB.artifacts[fetched.tid.description] else { return nil }
             self.enkaId = fetched.tid
             self.commonInfo = theCommonInfo
             self.paramDataFetched = fetched
-            guard let flat = fetched.getFlat(theDB: theDB) else { return nil }
+            guard let flat = fetched.getFlat(hsrDB: hsrDB) else { return nil }
             guard let matchedType = Enka.ArtifactType(typeID: paramDataFetched.type, game: .starRail)
                 ?? Enka.ArtifactType(rawValue: commonInfo.type) else { return nil }
             self.type = matchedType
@@ -379,7 +414,7 @@ extension Enka.AvatarSummarizedHSR {
                 let theType = Enka.PropertyType(rawValue: currentRecord.type)
                 if theType != .unknownType {
                     return PropertyPair(
-                        theDB: theDB,
+                        hsrDB: hsrDB,
                         type: theType,
                         value: currentRecord.value,
                         count: currentRecord.count,
@@ -394,10 +429,13 @@ extension Enka.AvatarSummarizedHSR {
             self.setID = flat.setID
             // 回頭恐需要單獨給聖遺物套裝名稱設定 Datamine。
             self.setNameLocalized = "Set.\(setID)"
+            self.game = .starRail
         }
 
         // MARK: Public
 
+        /// Game.
+        public let game: Enka.GameType
         /// Unique Artifact ID, defining its Rarity, Set Suite, and Body Part.
         public let enkaId: Int
         /// Artifact Set ID.
