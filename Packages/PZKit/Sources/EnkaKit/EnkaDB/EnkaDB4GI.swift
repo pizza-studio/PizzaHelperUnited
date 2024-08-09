@@ -155,16 +155,20 @@ extension Enka.EnkaDB4GI {
         let remainingIDs = newAvatarIDs.subtracting(characters.keys)
         guard remainingIDs.isEmpty else { return true }
         // 再检查武器，用验证 NameTextMapHash 的方式。
-        let newEquipNameHashes: Set<String> = .init(
+        var newEquipNameHashes: Set<String> = .init(
             givenProfile.avatarDetailList.map {
                 $0.equipList.compactMap { equip in
                     equip.flat.equipType == nil ? equip.flat.nameTextMapHash : nil
                 }
             }.reduce([], +)
         )
+        // 同时检查圣遗物，用圣遗物套装名称 setNameTextMapHash 检查。
+        givenProfile.avatarDetailList.map {
+            $0.equipList.compactMap(\.flat.setNameTextMapHash)
+        }.reduce([], +).forEach {
+            newEquipNameHashes.insert($0)
+        }
         let remainingHashes = newEquipNameHashes.subtracting(locTable.keys)
-        guard remainingHashes.isEmpty else { return true }
-        // TODO: 目前暂时没有方法检查圣遗物，等 Algoinde 更新 JSON 追加相关资料。
-        return false
+        return !remainingHashes.isEmpty
     }
 }
