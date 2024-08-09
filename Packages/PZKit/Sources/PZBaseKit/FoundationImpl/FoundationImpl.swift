@@ -9,3 +9,24 @@ extension Date {
         timeIntervalSinceReferenceDate - Date.now.timeIntervalSinceReferenceDate
     }
 }
+
+// MARK: - Swift Extension to round doubles.
+
+extension Double {
+    /// Rounds the double to decimal places value
+    public func roundToPlaces(places: Int = 1, round: FloatingPointRoundingRule? = nil) -> Double {
+        guard places > 0 else { return self }
+        var precision = 1.0
+        for _ in 0 ..< places {
+            precision *= 10
+        }
+        var amped = precision * self
+        if let round {
+            amped.round(round)
+        } else {
+            amped = amped.rounded()
+        }
+
+        return Double(amped / precision)
+    }
+}

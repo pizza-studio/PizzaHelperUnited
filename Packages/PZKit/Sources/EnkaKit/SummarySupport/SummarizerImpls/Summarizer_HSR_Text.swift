@@ -38,8 +38,18 @@ extension Enka.AvatarSummarized {
         // 姓名, 等级, 命之座, 天赋等级
         var headLine = useMarkDown ? "### " : " "
         headLine.append(mainInfo.name + " ")
-        headLine.append("[Lv.\(mainInfo.avatarLevel), E\(mainInfo.constellation)]")
-        let skillLevels: String = mainInfo.baseSkills.toArray.map { skillUnit in
+        let terms = mainInfo.terms
+        let eidolonInitial: String = switch game {
+        case .genshinImpact: "C"
+        case .starRail: "E"
+        }
+        headLine
+            .append("[\(terms.levelNameShortened)\(mainInfo.avatarLevel), \(eidolonInitial)\(mainInfo.constellation)]")
+        var skills = mainInfo.baseSkills.toArray
+        if game == .genshinImpact {
+            skills = skills.dropLast(1)
+        }
+        let skillLevels: String = skills.map { skillUnit in
             if let addedLevel = skillUnit.levelAddition {
                 let strDeltaDisplay = "(+\(addedLevel))"
                 return skillUnit.baseLevel.description + strDeltaDisplay

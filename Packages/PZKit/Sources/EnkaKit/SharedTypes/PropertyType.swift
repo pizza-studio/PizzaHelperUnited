@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 // MARK: - Enka.PropertyType
 
 extension Enka {
@@ -163,7 +165,128 @@ extension Enka.PropertyType {
 // MARK: - Enka.PVPair
 
 extension Enka {
-    public typealias PVPair = Enka.AvatarSummarized.PropertyPair
+    public struct PVPair: Codable, Hashable, Identifiable {
+        // MARK: Lifecycle
+
+        /// 该建构子不得用于圣遗物的词条构筑。
+        public init(
+            theDB: some EnkaDBProtocol,
+            type: Enka.PropertyType,
+            value: Double
+        ) {
+            self.type = type
+            self.value = value
+            var title = (
+                theDB.additionalLocTable[type.rawValue] ?? theDB.locTable[type.rawValue] ?? type.rawValue
+            )
+            Self.sanitizeTitle(&title)
+            self.localizedTitle = title
+            self.isArtifact = false
+            self.count = 0
+            self.step = nil
+            self.game = theDB.game
+        }
+
+        /// 该建构子只得用于圣遗物的词条构筑。
+        public init(
+            theDB: some EnkaDBProtocol,
+            type: Enka.PropertyType,
+            value: Double,
+            count: Int,
+            step: Int?
+        ) {
+            self.type = type
+            self.value = value
+            var title = (
+                theDB.additionalLocTable[type.rawValue] ?? theDB.locTable[type.rawValue] ?? type.rawValue
+            )
+            Self.sanitizeTitle(&title)
+            self.localizedTitle = title
+            self.isArtifact = true
+            self.count = count
+            self.step = step
+            self.game = theDB.game
+        }
+
+        // MARK: Public
+
+        /// Game.
+        public let game: Enka.GameType
+        public let type: Enka.PropertyType
+        public let value: Double
+        public let localizedTitle: String
+        public let isArtifact: Bool
+        public let count: Int
+        public let step: Int?
+
+        public var id: Enka.PropertyType { type }
+
+        public var valueString: String {
+            var copiedValue = value
+            let prefix = isArtifact ? "+" : ""
+            if type.isPercentage {
+                copiedValue *= 100
+                return prefix + copiedValue.roundToPlaces(
+                    places: 1, round: .up
+                ).description + "%"
+            }
+            return prefix + Int(copiedValue.rounded(.up)).description
+        }
+
+        public var iconFileName: String? {
+            type.iconFileName
+        }
+
+        public var iconAssetName: String? {
+            type.iconAssetName
+        }
+
+        // MARK: Internal
+
+        func triage(
+            amp arrAmp: inout [Enka.PVPair],
+            add arrAdd: inout [Enka.PVPair],
+            element: Enka.GameElement
+        ) {
+            switch type {
+            case .attackAddedRatio, .defenceAddedRatio, .hpAddedRatio, .speedAddedRatio: arrAmp.append(self)
+            case .allDamageTypeAddedRatio, .attack, .attackDelta,
+                 .baseAttack, .baseDefence, .baseHP, .baseSpeed,
+                 .breakDamageAddedRatio, .breakDamageAddedRatioBase,
+                 .breakUp, .criticalChance, .criticalChanceBase,
+                 .criticalDamage, .criticalDamageBase, .defence,
+                 .defenceDelta, element.damageAddedRatioProperty,
+                 .energyRecovery, .energyRecoveryBase,
+                 .healRatio, .healRatioBase,
+                 .hpDelta, .maxHP, .speed,
+                 .speedDelta, .statusProbability,
+                 .statusProbabilityBase, .statusResistance,
+                 .statusResistanceBase:
+                arrAdd.append(self)
+            default: break
+            }
+        }
+
+        // MARK: Private
+
+        private static func sanitizeTitle(_ title: inout String) {
+            title = title.replacingOccurrences(of: "Regeneration", with: "Recharge")
+            title = title.replacingOccurrences(of: "Rate", with: "%")
+            title = title.replacingOccurrences(of: "Bonus", with: "+")
+            title = title.replacingOccurrences(of: "Boost", with: "+")
+            title = title.replacingOccurrences(of: "ダメージ", with: "傷害量")
+            title = title.replacingOccurrences(of: "能量恢复", with: "元素充能")
+            title = title.replacingOccurrences(of: "能量恢復", with: "元素充能")
+            title = title.replacingOccurrences(of: "属性", with: "元素")
+            title = title.replacingOccurrences(of: "屬性", with: "元素")
+            title = title.replacingOccurrences(of: "量子元素", with: "量子")
+            title = title.replacingOccurrences(of: "物理元素", with: "物理")
+            title = title.replacingOccurrences(of: "虛數元素", with: "虛數")
+            title = title.replacingOccurrences(of: "虚数元素", with: "虚数")
+            title = title.replacingOccurrences(of: "提高", with: "增幅")
+            title = title.replacingOccurrences(of: "与", with: "")
+        }
+    }
 }
 
 // MARK: - GIAvatarAttribute

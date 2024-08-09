@@ -80,7 +80,7 @@ final class EnkaKitTests: XCTestCase {
         XCTAssertEqual(hsrQueried.uid, giQueried.uid)
     }
 
-    func testEnkaHSRProfileSummaryAsMarkdown() throws {
+    func testEnkaHSRProfileSummaryAsText() throws {
         let hsrDecoded = try getUnitTestJSONObject("testProfileHSR", as: Enka.QueriedResultHSR.self)
         guard let firstAvatar = hsrDecoded.detailInfo?.avatarDetailList.first else {
             throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
@@ -88,6 +88,18 @@ final class EnkaKitTests: XCTestCase {
         let englishDB = try Enka.EnkaDB4HSR(locTag: "en")
         guard let summarized = firstAvatar.summarize(hsrDB: englishDB) else {
             throw TestError.error(msg: "Failed in summarizing Raiden Mei's character build.")
+        }
+        print(summarized.asText)
+    }
+
+    func testEnkaGIProfileSummaryAsText() throws {
+        let giDecoded = try getUnitTestJSONObject("testProfileGI", as: Enka.QueriedResultGI.self)
+        guard let firstAvatar = giDecoded.detailInfo?.avatarDetailList.first else {
+            throw TestError.error(msg: "First avatar (Raiden Ei) missing.")
+        }
+        let englishDB = try Enka.EnkaDB4GI(locTag: "en")
+        guard let summarized = firstAvatar.summarize(giDB: englishDB) else {
+            throw TestError.error(msg: "Failed in summarizing Raiden Ei's character build.")
         }
         print(summarized.asText)
     }

@@ -15,13 +15,13 @@ extension Enka {
         public let game: Enka.GameType
         public let mainInfo: AvatarMainInfo
         public let equippedWeapon: WeaponPanel?
-        public let avatarPropertiesA: [PropertyPair]
-        public let avatarPropertiesB: [PropertyPair]
+        public let avatarPropertiesA: [Enka.PVPair]
+        public let avatarPropertiesB: [Enka.PVPair]
         public private(set) var artifacts: [ArtifactInfo]
 
         // public var artifactRatingResult: ArtifactRating.ScoreResult?
 
-        public var id: Int { mainInfo.uniqueCharId } // 回头可能需要另外考虑。
+        public var id: String { mainInfo.uniqueCharId } // 回头可能需要另外考虑。
 
         // MARK: Internal
 
@@ -40,7 +40,8 @@ extension Enka.AvatarSummarized {
 
         /// 通用建构子。
         public init?(id: String) {
-            guard Enka.Sputnik.shared.db4HSR.characters.keys.contains(id) else { return nil }
+            guard Enka.Sputnik.shared.db4HSR.characters.keys.contains(id) || Enka.Sputnik.shared.db4GI.characters.keys
+                .contains(id) else { return nil }
             self.id = id
             self.nameObj = .init(pidStr: id)
         }
@@ -77,7 +78,7 @@ extension Enka.AvatarSummarized {
         public let localizedName: String
         public let localizedRealName: String
         /// Unique Character ID number used by both Enka Network and MiHoYo.
-        public let uniqueCharId: Int
+        public let uniqueCharId: String
         /// Unique Character ID Expressable Object.
         public let idExpressable: Enka.AvatarSummarized.CharacterID
         /// Character's Mastered Element.
@@ -123,9 +124,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
             /// Game.
             public let game: Enka.GameType
 
-            public var iconFileNameStem: String {
-                "\(charIDStr)_\(type.rawValue)"
-            }
+            public let iconFileNameStem: String
 
             public var iconAssetName: String {
                 "skill_\(charIDStr)_\(type.rawValue)"
@@ -150,41 +149,6 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     }
 }
 
-// MARK: - Enka.AvatarSummarized.PropertyPair
-
-extension Enka.AvatarSummarized {
-    public struct PropertyPair: Codable, Hashable, Identifiable {
-        /// Game.
-        public let game: Enka.GameType
-        public let type: Enka.PropertyType
-        public let value: Double
-        public let localizedTitle: String
-        public let isArtifact: Bool
-        public let count: Int
-        public let step: Int?
-
-        public var id: Enka.PropertyType { type }
-
-        public var valueString: String {
-            var copiedValue = value
-            let prefix = isArtifact ? "+" : ""
-            if type.isPercentage {
-                copiedValue *= 100
-                return prefix + copiedValue.roundToPlaces(places: 1).description + "%"
-            }
-            return prefix + Int(copiedValue).description
-        }
-
-        public var iconFileName: String? {
-            type.iconFileName
-        }
-
-        public var iconAssetName: String? {
-            type.iconAssetName
-        }
-    }
-}
-
 // MARK: - Enka.AvatarSummarized.WeaponPanel
 
 extension Enka.AvatarSummarized {
@@ -193,19 +157,15 @@ extension Enka.AvatarSummarized {
         public let game: Enka.GameType
         /// Unique Weapon ID.
         public let enkaId: Int
-        /// Common information fetched from EnkaDB.
-        public let commonInfo: EnkaDBModelsHSR.Weapon
-        /// Data from Enka query result profile.
-        public let paramDataFetched: Enka.QueriedProfileHSR.Equipment
         public let localizedName: String
         public let trainedLevel: Int
         public let refinement: Int
-        public let basicProps: [PropertyPair]
-        public let specialProps: [PropertyPair]
+        public let basicProps: [Enka.PVPair]
+        public let specialProps: [Enka.PVPair]
 
-        public var rarityStars: Int { commonInfo.rarity }
+        public let rarityStars: Int
 
-        public var allProps: [PropertyPair] {
+        public var allProps: [Enka.PVPair] {
             basicProps + specialProps
         }
 
@@ -230,46 +190,23 @@ extension Enka.AvatarSummarized {
         /// Artifact Set ID.
         public let setID: Int
         public let setNameLocalized: String
-        /// Common information fetched from EnkaDB.
-        public let commonInfo: EnkaDBModelsHSR.Artifact
-        /// Data from Enka query result profile.
-        public let paramDataFetched: Enka.QueriedProfileHSR.ArtifactItem
-        public let mainProp: PropertyPair
-        public let subProps: [PropertyPair]
-
+        public let mainProp: Enka.PVPair
+        public let subProps: [Enka.PVPair]
         public var ratedScore: Int?
-
         public let type: Enka.ArtifactType
+        public let trainedLevel: Int
+        public let rarityStars: Int
+        public let iconFileNameStem: String
 
-        public var trainedLevel: Int { paramDataFetched.level ?? 0 }
-        public var rarityStars: Int { commonInfo.rarity }
         public var id: Int { enkaId }
-        public var allProps: [PropertyPair] {
+        public var allProps: [Enka.PVPair] {
             var result = subProps
             result.insert(mainProp, at: 0)
             return result
         }
 
-        public var iconFileName: String {
-            "\(commonInfo.setID)_\(type.assetSuffix).heic"
-        }
-
         public var iconAssetName: String {
-            "relic_\(commonInfo.setID)_\(type.assetSuffix)"
+            "relic_\(setID)_\(type.assetSuffix)"
         }
-    }
-}
-
-// MARK: - Swift Extension to round doubles.
-
-extension Double {
-    /// Rounds the double to decimal places value
-    fileprivate func roundToPlaces(places: Int = 1) -> Double {
-        guard places > 0 else { return self }
-        var precision = 1.0
-        for _ in 0 ..< places {
-            precision *= 10
-        }
-        return Double((precision * self).rounded() / precision)
     }
 }

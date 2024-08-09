@@ -48,7 +48,9 @@ extension Enka.CharacterName: RawRepresentable, Hashable, Codable, Sendable {
     }
 
     public init(rawValue: String) {
-        if let rawIntValue = Int(rawValue),
+        // 原神的 charID 的数字是前八位，剩下的字串位数用来判断主角的元素属性。
+        // 所以只看最多前八位。
+        if let rawIntValue = Int(rawValue.prefix(8)),
            let matchedProtagonist = Protagonist(rawValue: rawIntValue) {
             self = .protagonist(matchedProtagonist)
         } else {
