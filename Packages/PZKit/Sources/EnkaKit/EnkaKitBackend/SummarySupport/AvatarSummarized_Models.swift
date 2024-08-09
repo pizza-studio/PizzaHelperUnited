@@ -39,18 +39,45 @@ extension Enka.AvatarSummarized {
         // MARK: Lifecycle
 
         /// 通用建构子。
-        public init?(id: String) {
-            guard Enka.Sputnik.shared.db4HSR.characters.keys.contains(id) || Enka.Sputnik.shared.db4GI.characters.keys
-                .contains(id) else { return nil }
+        public init?(id: String, costumeID: String? = nil) {
+            let keys: [String] = [
+                [String](Enka.Sputnik.shared.db4HSR.characters.keys),
+                [String](Enka.Sputnik.shared.db4GI.characters.keys),
+            ].reduce([], +)
+            guard keys.contains(id) else { return nil }
             self.id = id
             self.nameObj = .init(pidStr: id)
+            switch nameObj.game {
+            case .genshinImpact:
+                if let matched = Enka.Sputnik.shared.db4GI.characters[id] {
+                    if let costumeID, let costume = matched.costumes?[costumeID] {
+                        self.avatarAssetNameStem = "avatar_\(id)_\(costumeID)"
+                        self.photoAssetNameStem = "characters_\(costumeID)"
+                        self.avatarOnlineFileNameStem = costume.sideIconName.dropLast(5).description
+                    } else {
+                        self.avatarAssetNameStem = "avatar_\(id)"
+                        self.photoAssetNameStem = "characters_\(id)"
+                        self.avatarOnlineFileNameStem = matched.sideIconName.dropLast(5).description
+                    }
+                } else {
+                    self.avatarAssetNameStem = "avatar_\(id)"
+                    self.photoAssetNameStem = "characters_\(id)"
+                    self.avatarOnlineFileNameStem = "\(id)"
+                }
+            case .starRail:
+                self.avatarAssetNameStem = "avatar_\(id)"
+                self.photoAssetNameStem = "characters_\(id)"
+                self.avatarOnlineFileNameStem = "\(id)"
+            }
         }
 
         // MARK: Public
 
         public let id: String
-
         public let nameObj: Enka.CharacterName
+        public let avatarAssetNameStem: String
+        public let photoAssetNameStem: String
+        public let avatarOnlineFileNameStem: String
 
         public var game: Enka.GameType {
             nameObj.game
@@ -62,14 +89,6 @@ extension Enka.AvatarSummarized {
 
         public var i18nNameFactoryVanilla: String {
             nameObj.officialDescription
-        }
-
-        public var avatarAssetNameStem: String {
-            "avatar_\(id)"
-        }
-
-        public var photoAssetNameStem: String {
-            "characters_\(id)"
         }
     }
 

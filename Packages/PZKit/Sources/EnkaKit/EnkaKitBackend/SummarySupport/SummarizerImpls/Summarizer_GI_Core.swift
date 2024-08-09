@@ -17,7 +17,8 @@ extension Enka.QueriedProfileGI.RawAvatar {
             charID: id,
             avatarLevel: Int(propMap.level.val) ?? 0,
             constellation: talentIdList?.count ?? 0,
-            baseSkills: baseSkillSet
+            baseSkills: baseSkillSet,
+            costumeID: costumeId?.description ?? nil
         )
         guard let mainInfo = mainInfo else {
             print("MainInfo nulled")

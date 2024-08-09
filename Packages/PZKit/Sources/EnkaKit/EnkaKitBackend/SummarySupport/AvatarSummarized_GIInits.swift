@@ -14,13 +14,14 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         charID: String,
         avatarLevel avatarLv: Int,
         constellation constellationLevel: Int,
-        baseSkills baseSkillSet: BaseSkillSet
+        baseSkills baseSkillSet: BaseSkillSet,
+        costumeID: String? = nil
     ) {
         guard let theCommonInfo = giDB.characters[charID] else {
             print("theCommonInfo nulled")
             return nil
         }
-        guard let idExpressible = Enka.AvatarSummarized.CharacterID(id: charID) else {
+        guard let idExpressible = Enka.AvatarSummarized.CharacterID(id: charID, costumeID: costumeID) else {
             print("idExpressible nulled")
             return nil
         }
