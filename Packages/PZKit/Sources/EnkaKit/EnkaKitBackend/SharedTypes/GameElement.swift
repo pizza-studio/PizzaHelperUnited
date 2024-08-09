@@ -98,7 +98,19 @@ extension Enka.GameElement {
     }
 
     public var iconAssetName: String {
-        "\(rawValue)"
+        let suffix = switch self {
+        case .physico: "Physico"
+        case .anemo: "Anemo"
+        case .electro: "Electro"
+        case .fantastico: "Fantastico"
+        case .posesto: "Posesto"
+        case .pyro: "Pyro"
+        case .cryo: "Cryo"
+        case .geo: "Geo"
+        case .dendro: "Dendro"
+        case .hydro: "Hydro"
+        }
+        return "element_\(suffix)"
     }
 
     public var damageAddedRatioProperty: Enka.PropertyType {
