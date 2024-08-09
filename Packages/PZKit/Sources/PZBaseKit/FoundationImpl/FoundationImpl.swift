@@ -78,3 +78,9 @@ private struct PascalCaseKey: CodingKey {
     let stringValue: String
     let intValue: Int?
 }
+
+extension String {
+    public var asURL: URL! {
+        URL(string: self)
+    }
+}
