@@ -40,11 +40,9 @@ extension Enka.AvatarSummarized {
 
         /// 通用建构子。
         public init?(id: String, costumeID: String? = nil) {
-            let keys: [String] = [
-                [String](Enka.Sputnik.shared.db4HSR.characters.keys),
-                [String](Enka.Sputnik.shared.db4GI.characters.keys),
-            ].reduce([], +)
-            guard keys.contains(id) else { return nil }
+            let keys1 = Array(Enka.Sputnik.shared.db4HSR.characters.keys)
+            let keys2 = Enka.Sputnik.shared.db4GI.characters.keys
+            guard (keys1 + keys2).contains(id) else { return nil }
             self.id = id
             self.nameObj = .init(pidStr: id)
             switch nameObj.game {
@@ -53,11 +51,11 @@ extension Enka.AvatarSummarized {
                     if let costumeID, let costume = matched.costumes?[costumeID] {
                         self.avatarAssetNameStem = "avatar_\(id)_\(costumeID)"
                         self.photoAssetNameStem = "characters_\(costumeID)"
-                        self.avatarOnlineFileNameStem = costume.sideIconName.dropLast(5).description
+                        self.avatarOnlineFileNameStem = Self.convertIconName(from: costume.sideIconName)
                     } else {
                         self.avatarAssetNameStem = "avatar_\(id)"
                         self.photoAssetNameStem = "characters_\(id)"
-                        self.avatarOnlineFileNameStem = matched.sideIconName.dropLast(5).description
+                        self.avatarOnlineFileNameStem = Self.convertIconName(from: matched.sideIconName)
                     }
                 } else {
                     self.avatarAssetNameStem = "avatar_\(id)"
@@ -89,6 +87,13 @@ extension Enka.AvatarSummarized {
 
         public var i18nNameFactoryVanilla: String {
             nameObj.officialDescription
+        }
+
+        // MARK: Private
+
+        /// 原神专用。
+        private static func convertIconName(from sideIconName: String) -> String {
+            sideIconName.replacingOccurrences(of: "_Side", with: "")
         }
     }
 

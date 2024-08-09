@@ -49,12 +49,7 @@ extension Enka.QueriedProfileHSR.RawAvatar {
 
         // Panel: Base Props from the Weapon.
 
-        if let equipFlat: Enka.QueriedProfileHSR.EquipmentFlat = equipment?.getFlat(hsrDB: hsrDB) {
-            panel.maxHP += equipFlat.props.first { Enka.PropertyType(rawValue: $0.type) == .baseHP }?.value ?? 0
-            panel.attack += equipFlat.props.first { Enka.PropertyType(rawValue: $0.type) == .baseAttack }?.value ?? 0
-            panel.defence += equipFlat.props.first { Enka.PropertyType(rawValue: $0.type) == .baseDefence }?
-                .value ?? 0
-        }
+        Self.updateFlat(for: &panel, flat: equipment?.getFlat(hsrDB: hsrDB))
 
         // Panel: Handle all additional props
 
@@ -85,12 +80,12 @@ extension Enka.QueriedProfileHSR.RawAvatar {
             artifactsInfo.map(\.setID).forEach { setIDCounters[$0, default: 0] += 1 }
             setIDCounters.forEach { setId, count in
                 guard count >= 2 else { return }
-                let x = hsrDB.meta.relic.setSkill.query(id: setId, stage: 2).map {
+                let x: [Enka.PVPair] = hsrDB.meta.relic.setSkill.query(id: setId, stage: 2).map {
                     Enka.PVPair(theDB: hsrDB, type: $0.key, value: $0.value)
                 }
                 resultPairs.append(contentsOf: x)
                 guard count >= 4 else { return }
-                let y = hsrDB.meta.relic.setSkill.query(id: setId, stage: 4).map {
+                let y: [Enka.PVPair] = hsrDB.meta.relic.setSkill.query(id: setId, stage: 4).map {
                     Enka.PVPair(theDB: hsrDB, type: $0.key, value: $0.value)
                 }
                 resultPairs.append(contentsOf: y)
@@ -115,6 +110,19 @@ extension Enka.QueriedProfileHSR.RawAvatar {
             avatarPropertiesB: propPair.1,
             artifacts: artifactsInfo
         ) // .artifactsRated()
+    }
+}
+
+extension Enka.QueriedProfileHSR.RawAvatar {
+    fileprivate static func updateFlat(
+        for panel: inout MutableAvatarPropertyPanel,
+        flat: Enka.QueriedProfileHSR.EquipmentFlat?
+    ) {
+        guard let equipFlat = flat else { return }
+        panel.maxHP += equipFlat.props.first { Enka.PropertyType(rawValue: $0.type) == .baseHP }?.value ?? 0
+        panel.attack += equipFlat.props.first { Enka.PropertyType(rawValue: $0.type) == .baseAttack }?.value ?? 0
+        panel.defence += equipFlat.props.first { Enka.PropertyType(rawValue: $0.type) == .baseDefence }?
+            .value ?? 0
     }
 }
 
