@@ -67,7 +67,6 @@ let package = Package(
             url: "https://github.com/sindresorhus/Defaults",
             from: "8.2.0"
         )
-        #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
         Package.Dependency.package(
             url: "https://github.com/pizza-studio/GachaMetaGenerator",
             from: "2.1.2"
@@ -76,7 +75,6 @@ let package = Package(
             url: "https://github.com/pizza-studio/EnkaDBGenerator",
             from: "1.3.1"
         )
-        #endif
     },
     targets: buildTargets {
         // MARK: - Common Targets
