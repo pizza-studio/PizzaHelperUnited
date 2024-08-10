@@ -23,7 +23,7 @@ let sharedSwiftSettings: [SwiftSetting] = [
 
 let package = Package(
     name: "PizzaKit",
-    platforms: [.iOS(.v17), .macOS(.v14), .watchOS(.v10), .macCatalyst(.v14), .visionOS(.v1)],
+    platforms: [.iOS(.v17), .macOS(.v14), .watchOS(.v10), .macCatalyst(.v17), .visionOS(.v1)],
     products: buildProducts {
         Product.library(
             name: "PizzaKit",
@@ -95,29 +95,20 @@ let package = Package(
             swiftSettings: sharedSwiftSettings
         )
         Target.target(
-            name: "OSImpl",
-            dependencies: ["PZBaseKit"],
-            sources: makeSourceList("OSImpl", .separatedOSesAndShared),
-            swiftSettings: sharedSwiftSettings
-        )
-        Target.target(
             name: "PZKitBackend",
             dependencies: buildTargetDependencies {
                 "PZBaseKit"
                 "PZAccountKit"
-                "OSImpl"
                 #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
                 "EnkaKit"
                 "GachaKit"
                 #endif
             },
-            sources: makeSourceList("PZKitBackend", .separatedOSesAndShared),
             swiftSettings: sharedSwiftSettings
         )
         Target.target(
             name: "PZKitFrontend",
-            dependencies: ["PZBaseKit", "PZAccountKit", "OSImpl", "PZKitBackend"],
-            sources: makeSourceList("PZKitFrontend", .separatedOSesAndShared),
+            dependencies: ["PZBaseKit", "PZAccountKit", "PZKitBackend"],
             swiftSettings: sharedSwiftSettings
         )
 
@@ -162,7 +153,7 @@ let package = Package(
 
         Target.testTarget(
             name: "PizzaKitFrontendTests",
-            dependencies: ["PZKitFrontend", "OSImpl"]
+            dependencies: ["PZKitFrontend"]
         )
 
         #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
@@ -176,34 +167,6 @@ let package = Package(
         #endif
     }
 )
-
-// MARK: - Utils
-
-func makeSourceList(_ target: String, _ folderSetting: SourceFolderSetting = .singleOne) -> [String] {
-    switch folderSetting {
-    case .singleOne: return [target]
-    case .separateOSes:
-        var result = [String]()
-        #if os(iOS) || targetEnvironment(macCatalyst)
-        result.append("\(target)-NonWatch")
-        #elseif os(watchOS)
-        result.append("\(target)-Watch")
-        #elseif os(macOS)
-        result.append("\(target)-macOS")
-        #endif
-        return result
-    case .separatedOSesAndShared:
-        var result = ["\(target)-Shared"]
-        #if os(iOS) || targetEnvironment(macCatalyst)
-        result.append("\(target)-NonWatch")
-        #elseif os(watchOS)
-        result.append("\(target)-Watch")
-        #elseif os(macOS)
-        result.append("\(target)-macOS")
-        #endif
-        return result
-    }
-}
 
 // MARK: - ArrayBuilder
 
