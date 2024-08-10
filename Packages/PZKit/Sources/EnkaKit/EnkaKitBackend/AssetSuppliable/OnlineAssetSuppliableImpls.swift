@@ -30,14 +30,13 @@ extension OnlineAssetSuppliable {
 
 // MARK: - Enka.AvatarSummarized.CharacterID + OnlineAssetSuppliable
 
-// swiftlint:disable force_unwrapping
 extension Enka.AvatarSummarized.CharacterID: OnlineAssetSuppliable {
     public var onlineAssetURLStr: String {
         let urlStr: String = switch game {
         case .genshinImpact:
-            "https://api.hakush.in/gi/UI/\(avatarOnlineFileNameStem).webp"
+            "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
-            "https://api.hakush.in/hsr/UI/avatarshopicon/\(avatarOnlineFileNameStem).webp"
+            "https://api.hakush.in/hsr/UI/avatarshopicon/\(iconOnlineFileNameStem).webp"
         }
         return urlStr
     }
