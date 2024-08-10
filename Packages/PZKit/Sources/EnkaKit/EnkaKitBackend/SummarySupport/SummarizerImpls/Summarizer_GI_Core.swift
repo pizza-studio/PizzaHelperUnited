@@ -41,13 +41,19 @@ extension Enka.QueriedProfileGI.RawAvatar {
         // 又比如说优菈、辛焱、雷泽等物理大剑，明明各自有各自的提瓦特元素属性，但往往都只会堆物理伤害加成。
         var elementalPropMap: [Enka.GameElement: Enka.PVPair] = [:]
         rawProps.forEach {
-            guard let element = $0.type.element else { return }
+            guard let element = $0.type.element, $0.type.rawValue.contains("AddedRatio") else { return }
             elementalPropMap[element] = $0
         }
-        let firstElement: Enka.GameElement? = elementalPropMap.sorted {
-            $0.value.value > $1.value.value
-        }.map(\.key).first
-        let guardedElement = firstElement ?? mainInfo.element
+        var prioritizedElement = mainInfo.element
+        var prioritizedElementDmg: Double = elementalPropMap[mainInfo.element]?.value ?? 0
+        updateElement: for pair in elementalPropMap.values {
+            if pair.value > prioritizedElementDmg, let newElement = pair.type.element {
+                prioritizedElement = newElement
+                prioritizedElementDmg = pair.value
+                break updateElement
+            }
+        }
+
         var panel = MutableAvatarPropertyPanel(game: .genshinImpact)
         let filteredProps = rawProps.filter { propPair in
             switch propPair.type {
@@ -60,16 +66,16 @@ extension Enka.QueriedProfileGI.RawAvatar {
             case .healRatio: panel.healRatio += propPair.value
             case .energyRecovery: panel.energyRecovery += propPair.value
             case .shieldCostMinusRatio: panel.energyRecovery += propPair.value
-            case _ where propPair.type.element == guardedElement:
-                panel.elementalDMGAddedRatio += propPair.value
+            case _ where propPair.type.element == prioritizedElement:
+                panel.elementalDMGAddedRatio += prioritizedElementDmg
             default: break
             }
-            return [guardedElement, nil].contains(propPair.type.element)
+            return [prioritizedElement, nil].contains(propPair.type.element)
         }
 
-        panel.triageAndHandle(theDB: giDB, filteredProps, element: guardedElement)
+        panel.triageAndHandle(theDB: giDB, filteredProps, element: prioritizedElement)
 
-        let propPair = panel.converted(theDB: giDB, element: guardedElement)
+        let propPair = panel.converted(theDB: giDB, element: prioritizedElement)
 
         return .init(
             game: .genshinImpact,

@@ -28,7 +28,7 @@ extension Enka.QueriedProfileHSR.RawAvatar {
             return Enka.AvatarSummarized.WeaponPanel(hsrDB: hsrDB, fetched: equipment)
         }()
 
-        let artifactsInfo = artifactList.compactMap {
+        let artifactsInfo: [Enka.AvatarSummarized.ArtifactInfo] = artifactList.compactMap {
             Enka.AvatarSummarized.ArtifactInfo(hsrDB: hsrDB, fetched: $0)
         }
 
@@ -61,9 +61,11 @@ extension Enka.QueriedProfileHSR.RawAvatar {
 
         let skillTreeProps: [Enka.PVPair] = skillTreeList.compactMap { currentNode in
             if currentNode.level == 1 {
-                return hsrDB.meta.tree.query(id: currentNode.pointId, stage: 1).map {
-                    Enka.PVPair(theDB: hsrDB, type: $0.key, value: $0.value)
-                }
+                let result: [Enka.PVPair] = hsrDB.meta.tree
+                    .query(id: currentNode.pointId, stage: 1).map {
+                        Enka.PVPair(theDB: hsrDB, type: $0.key, value: $0.value)
+                    }
+                return result
             }
             return nil
         }.reduce([], +)

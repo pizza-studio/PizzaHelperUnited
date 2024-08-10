@@ -43,21 +43,29 @@ extension Enka.AvatarSummarized {
             let keys1 = Array(Enka.Sputnik.shared.db4HSR.characters.keys)
             let keys2 = Enka.Sputnik.shared.db4GI.characters.keys
             guard (keys1 + keys2).contains(id) else { return nil }
-            self.id = id
-            self.nameObj = .init(pidStr: id)
+            self.idSansCostume = id
+            var newIdStr = id
+            if let costumeID {
+                newIdStr += "_\(costumeID)"
+            }
+            self.id = newIdStr
+            self.nameObj = .init(pidStr: newIdStr)
             switch nameObj.game {
             case .genshinImpact:
                 guard let matched = Enka.Sputnik.shared.db4GI.characters[id] else { return nil }
-                var idStr = id
                 var onlineFileNameStem = Self.convertIconName(from: matched.sideIconName)
                 if let costumeID, let costume = matched.costumes?[costumeID] {
-                    idStr += costumeID
                     onlineFileNameStem = Self.convertIconName(from: costume.sideIconName)
                 }
-                self.iconAssetName = "characters_\(idStr)"
                 self.iconOnlineFileNameStem = onlineFileNameStem
+                switch nameObj {
+                case .someoneElse:
+                    self.iconAssetName = "gi_character_\(self.id)"
+                case .protagonist:
+                    self.iconAssetName = "gi_character_\(idSansCostume.prefix(8))"
+                }
             case .starRail:
-                self.iconAssetName = "characters_\(id)"
+                self.iconAssetName = "hsr_character_\(id)"
                 self.iconOnlineFileNameStem = "\(id)"
             }
         }
@@ -65,6 +73,7 @@ extension Enka.AvatarSummarized {
         // MARK: Public
 
         public let id: String
+        public let idSansCostume: String
         public let nameObj: Enka.CharacterName
         public let iconAssetName: String
         public let iconOnlineFileNameStem: String

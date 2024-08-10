@@ -454,6 +454,8 @@ extension Enka.PropertyType {
         case .energyRecoveryBase: return true
         case .criticalDamageBase: return true
         case .statusResistanceBase: return true
+        case .elementalMastery: return true
+        case .shieldCostMinusRatio: return true
 
         default:
             // Just in case that there will be new elements available.
