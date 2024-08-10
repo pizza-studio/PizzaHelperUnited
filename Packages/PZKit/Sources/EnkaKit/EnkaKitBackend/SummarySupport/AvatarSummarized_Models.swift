@@ -47,24 +47,17 @@ extension Enka.AvatarSummarized {
             self.nameObj = .init(pidStr: id)
             switch nameObj.game {
             case .genshinImpact:
-                if let matched = Enka.Sputnik.shared.db4GI.characters[id] {
-                    if let costumeID, let costume = matched.costumes?[costumeID] {
-                        self.avatarAssetNameStem = "avatar_\(id)_\(costumeID)"
-                        self.photoAssetNameStem = "characters_\(costumeID)"
-                        self.avatarOnlineFileNameStem = Self.convertIconName(from: costume.sideIconName)
-                    } else {
-                        self.avatarAssetNameStem = "avatar_\(id)"
-                        self.photoAssetNameStem = "characters_\(id)"
-                        self.avatarOnlineFileNameStem = Self.convertIconName(from: matched.sideIconName)
-                    }
-                } else {
-                    self.avatarAssetNameStem = "avatar_\(id)"
-                    self.photoAssetNameStem = "characters_\(id)"
-                    self.avatarOnlineFileNameStem = "\(id)"
+                guard let matched = Enka.Sputnik.shared.db4GI.characters[id] else { return nil }
+                var idStr = id
+                var onlineFileNameStem = Self.convertIconName(from: matched.sideIconName)
+                if let costumeID, let costume = matched.costumes?[costumeID] {
+                    idStr += costumeID
+                    onlineFileNameStem = Self.convertIconName(from: costume.sideIconName)
                 }
+                self.avatarPhotoAssetName = "characters_\(idStr)"
+                self.avatarOnlineFileNameStem = onlineFileNameStem
             case .starRail:
-                self.avatarAssetNameStem = "avatar_\(id)"
-                self.photoAssetNameStem = "characters_\(id)"
+                self.avatarPhotoAssetName = "characters_\(id)"
                 self.avatarOnlineFileNameStem = "\(id)"
             }
         }
@@ -73,8 +66,7 @@ extension Enka.AvatarSummarized {
 
         public let id: String
         public let nameObj: Enka.CharacterName
-        public let avatarAssetNameStem: String
-        public let photoAssetNameStem: String
+        public let avatarPhotoAssetName: String
         public let avatarOnlineFileNameStem: String
 
         public var game: Enka.GameType {
@@ -140,26 +132,13 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
             }
 
             public let charIDStr: String
-            /// Base skill level with amplification by constellations.
+            /// Base skill level without amplification by constellations.
             public let baseLevel: Int
             public let levelAddition: Int?
             public let type: SkillType
-
-            /// Game.
             public let game: Enka.GameType
-
-            public let iconFileNameStem: String
-
-            public var iconOnlineFileNameStem: String {
-                switch game {
-                case .genshinImpact: return iconFileNameStem
-                case .starRail: return "SkillIcon_\(iconFileNameStem)"
-                }
-            }
-
-            public var iconAssetName: String {
-                "skill_\(charIDStr)_\(type.rawValue)"
-            }
+            public let iconAssetName: String
+            public var iconOnlineFileNameStem: String
         }
 
         /// Basic Attack.
@@ -187,22 +166,19 @@ extension Enka.AvatarSummarized {
         /// Game.
         public let game: Enka.GameType
         /// Unique Weapon ID.
-        public let enkaId: Int
+        public let weaponID: Int
         public let localizedName: String
         public let trainedLevel: Int
         public let refinement: Int
         public let basicProps: [Enka.PVPair]
         public let specialProps: [Enka.PVPair]
-        public let iconOnlineFileNameStem: String
+        public let iconAssetName: String
+        public var iconOnlineFileNameStem: String
 
         public let rarityStars: Int
 
         public var allProps: [Enka.PVPair] {
             basicProps + specialProps
-        }
-
-        public var iconAssetName: String {
-            "light_cone_\(enkaId)"
         }
     }
 }
@@ -214,7 +190,7 @@ extension Enka.AvatarSummarized {
         /// Game.
         public let game: Enka.GameType
         /// Unique Artifact ID, defining its Rarity, Set Suite, and Body Part.
-        public let enkaId: Int
+        public let itemID: Int
         /// Artifact Set ID.
         public let setID: Int
         public let setNameLocalized: String
@@ -224,17 +200,14 @@ extension Enka.AvatarSummarized {
         public let type: Enka.ArtifactType
         public let trainedLevel: Int
         public let rarityStars: Int
-        public let iconOnlineFileNameStem: String
+        public let iconAssetName: String
+        public var iconOnlineFileNameStem: String
 
-        public var id: Int { enkaId }
+        public var id: Int { itemID }
         public var allProps: [Enka.PVPair] {
             var result = subProps
             result.insert(mainProp, at: 0)
             return result
-        }
-
-        public var iconAssetName: String {
-            "relic_\(setID)_\(type.assetSuffix)"
         }
     }
 }

@@ -60,33 +60,40 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
             type.rawValue
         }
 
+        let offlineAssetPrefix = "hsr_skill_\(charIDStr)"
+        let onlineFilePrefix = "SkillIcon_\(charIDStr)"
+
         self.basicAttack = .init(
             charIDStr: charIDStr, baseLevel: fetched[0].level,
             levelAddition: levelAdditionList[fetched[0].pointId.description],
             type: .basicAttack,
             game: .starRail,
-            iconFileNameStem: "\(charIDStr)_\(getTypeRaw(.basicAttack))"
+            iconAssetName: "\(offlineAssetPrefix)_\(getTypeRaw(.basicAttack))",
+            iconOnlineFileNameStem: "\(onlineFilePrefix)_\(getTypeRaw(.basicAttack))"
         )
         self.elementalSkill = .init(
             charIDStr: charIDStr, baseLevel: fetched[1].level,
             levelAddition: levelAdditionList[fetched[1].pointId.description],
             type: .elementalSkill,
             game: .starRail,
-            iconFileNameStem: "\(charIDStr)_\(getTypeRaw(.elementalSkill))"
+            iconAssetName: "\(offlineAssetPrefix)_\(getTypeRaw(.elementalSkill))",
+            iconOnlineFileNameStem: "\(onlineFilePrefix)_\(getTypeRaw(.elementalSkill))"
         )
         self.elementalBurst = .init(
             charIDStr: charIDStr, baseLevel: fetched[2].level,
             levelAddition: levelAdditionList[fetched[2].pointId.description],
             type: .elementalBurst,
             game: .starRail,
-            iconFileNameStem: "\(charIDStr)_\(getTypeRaw(.elementalBurst))"
+            iconAssetName: "\(offlineAssetPrefix)_\(getTypeRaw(.elementalBurst))",
+            iconOnlineFileNameStem: "\(onlineFilePrefix)_\(getTypeRaw(.elementalBurst))"
         )
         self.talent = .init(
             charIDStr: charIDStr, baseLevel: fetched[3].level,
             levelAddition: levelAdditionList[fetched[3].pointId.description],
             type: .talent,
             game: .starRail,
-            iconFileNameStem: "\(charIDStr)_\(getTypeRaw(.talent))"
+            iconAssetName: "\(offlineAssetPrefix)_\(getTypeRaw(.talent))",
+            iconOnlineFileNameStem: "\(onlineFilePrefix)_\(getTypeRaw(.talent))"
         )
         self.game = .starRail
     }
@@ -101,7 +108,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
         fetched: Enka.QueriedProfileHSR.Equipment
     ) {
         guard let theCommonInfo = hsrDB.weapons[fetched.tid.description] else { return nil }
-        self.enkaId = fetched.tid
+        self.weaponID = fetched.tid
         let nameHash = theCommonInfo.equipmentName.hash.description
         self.localizedName = hsrDB.locTable[nameHash] ?? "EnkaId: \(fetched.tid)"
         self.trainedLevel = fetched.level
@@ -113,12 +120,13 @@ extension Enka.AvatarSummarized.WeaponPanel {
             return Enka.PVPair(theDB: hsrDB, type: theType, value: newValue)
         }
         self.specialProps = hsrDB.meta.equipmentSkill.query(
-            id: enkaId, stage: fetched.rank
+            id: weaponID, stage: fetched.rank
         ).map { key, value in
             Enka.PVPair(theDB: hsrDB, type: key, value: value)
         }
         self.iconOnlineFileNameStem = theCommonInfo
             .imagePath.split(separator: "/").suffix(1).joined().dropLast(4).description
+        self.iconAssetName = "hsr_light_cone_\(weaponID)"
         self.rarityStars = theCommonInfo.rarity
         self.game = .starRail
     }
@@ -130,7 +138,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
     /// 星穹铁道专用建构子。
     public init?(hsrDB: Enka.EnkaDB4HSR, fetched: Enka.QueriedProfileHSR.ArtifactItem) {
         guard let theCommonInfo = hsrDB.artifacts[fetched.tid.description] else { return nil }
-        self.enkaId = fetched.tid
+        self.itemID = fetched.tid
         self.rarityStars = theCommonInfo.rarity
         self.trainedLevel = fetched.level ?? 0
         guard let flat = fetched.getFlat(hsrDB: hsrDB) else { return nil }
@@ -159,6 +167,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         self.setNameLocalized = "Set.\(setID)"
         self.iconOnlineFileNameStem = theCommonInfo
             .icon.split(separator: "/").suffix(1).joined().dropLast(4).description
+        self.iconAssetName = "hsr_relic_\(setID)_\(type.assetSuffix)"
         self.game = .starRail
     }
 }
