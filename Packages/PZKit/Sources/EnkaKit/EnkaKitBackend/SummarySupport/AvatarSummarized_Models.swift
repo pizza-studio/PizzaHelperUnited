@@ -54,11 +54,11 @@ extension Enka.AvatarSummarized {
                     idStr += costumeID
                     onlineFileNameStem = Self.convertIconName(from: costume.sideIconName)
                 }
-                self.avatarPhotoAssetName = "characters_\(idStr)"
-                self.avatarOnlineFileNameStem = onlineFileNameStem
+                self.iconAssetName = "characters_\(idStr)"
+                self.iconOnlineFileNameStem = onlineFileNameStem
             case .starRail:
-                self.avatarPhotoAssetName = "characters_\(id)"
-                self.avatarOnlineFileNameStem = "\(id)"
+                self.iconAssetName = "characters_\(id)"
+                self.iconOnlineFileNameStem = "\(id)"
             }
         }
 
@@ -66,8 +66,8 @@ extension Enka.AvatarSummarized {
 
         public let id: String
         public let nameObj: Enka.CharacterName
-        public let avatarPhotoAssetName: String
-        public let avatarOnlineFileNameStem: String
+        public let iconAssetName: String
+        public let iconOnlineFileNameStem: String
 
         public var game: Enka.GameType {
             nameObj.game
