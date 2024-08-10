@@ -233,11 +233,7 @@ extension Enka {
             return prefix + Int(copiedValue.rounded(.up)).description
         }
 
-        public var iconFileName: String? {
-            type.iconFileName
-        }
-
-        public var iconAssetName: String? {
+        public var iconAssetName: String {
             type.iconAssetName
         }
 
@@ -370,12 +366,8 @@ extension Enka.PropertyType {
             || rawValue.contains("Damage")
     }
 
-    public var iconFileName: String? {
-        hasPropIcon ? proposedIconFileName : nil
-    }
-
-    public var iconAssetName: String? {
-        hasPropIcon ? "property_\(proposedIconFileNameStem)" : nil
+    public var iconAssetName: String {
+        "property_\(proposedIconFileNameStem)"
     }
 
     internal var proposedIconFileName: String {
