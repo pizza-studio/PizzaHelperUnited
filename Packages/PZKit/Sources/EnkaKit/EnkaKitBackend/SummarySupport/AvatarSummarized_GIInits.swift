@@ -60,7 +60,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
                 levelAddition: additionalLevel,
                 type: type,
                 game: .genshinImpact,
-                iconFileNameStem: icon
+                iconAssetName: "gi_skill_\(icon.dropFirst(6))",
+                iconOnlineFileNameStem: icon
             )
         }
 
@@ -102,7 +103,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
             levelAddition: 514,
             type: .talent,
             game: .genshinImpact,
-            iconFileNameStem: "YJSNPI"
+            iconAssetName: "YJSNPI",
+            iconOnlineFileNameStem: "YJSNPI"
         )
         self.game = .genshinImpact
     }
@@ -123,7 +125,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
         guard let weaponPack, let weapon = weaponPack.weapon,
               let weaponStats = weaponPack.flat.weaponStats
         else { return nil } /// 原神的角色必定有至少装备一个武器。
-        self.enkaId = weaponPack.itemId
+        self.weaponID = weaponPack.itemId
         self.rarityStars = weaponPack.flat.rankLevel
         self.localizedName = giDB.getTranslationFor(id: weaponPack.flat.nameTextMapHash)
         self.trainedLevel = weapon.level
@@ -144,6 +146,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
             }
         }
         self.iconOnlineFileNameStem = weaponPack.flat.icon
+        self.iconAssetName = "gi_weapon_\(weaponID)"
         self.basicProps = arrMainProps
         self.specialProps = arrSubProps
         self.game = .genshinImpact
@@ -167,7 +170,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         let setID: Int? = arr.count == 4 ? Int(arr[2]) : nil
         guard let setID else { return nil }
 
-        self.enkaId = equipItem.itemId
+        self.itemID = equipItem.itemId
         self.rarityStars = equipItem.flat.rankLevel
         self.trainedLevel = Swift.max(0, artifactDataObj.level - 1) // 待检查。
         self.type = artifactType
@@ -202,6 +205,9 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         self.subProps = arrSubProps
         self.setID = setID
         self.iconOnlineFileNameStem = equipItem.flat.icon
+        var iconAssetNameStr = "gi_relic_"
+        iconAssetNameStr += equipItem.flat.icon.replacingOccurrences(of: "UI_RelicIcon_", with: "")
+        self.iconAssetName = iconAssetNameStr
         var setName = "Set.\(setID)"
         if let hash = equipItem.flat.setNameTextMapHash {
             setName = giDB.getTranslationFor(id: hash.description)
