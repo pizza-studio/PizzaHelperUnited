@@ -4,6 +4,8 @@
 
 import EnkaDBModels
 
+// MARK: - Enka.CharacterName
+
 extension Enka {
     public enum CharacterName {
         case protagonist(Protagonist)
@@ -21,18 +23,16 @@ extension Enka {
             case let .someoneElse(pid): pid.count == 4 ? .starRail : .genshinImpact
             }
         }
-    }
 
-    // MARK: Public
-
-    /// 仅用于将星穹铁道的主角的不同命途的肖像专门回退检索到相同的素材上。
-    public static func convertPIDForHSRProtagonist(_ pid: String) -> String {
-        guard pid.count == 4, let first = pid.first, first == "8" else { return pid }
-        guard let last = pid.last?.description, var lastDigi = Int(last) else { return pid }
-        guard lastDigi >= 1 else { return pid }
-        lastDigi = lastDigi % 2
-        if lastDigi == 0 { lastDigi += 2 }
-        return String(pid.dropLast()) + lastDigi.description
+        /// 仅用于将星穹铁道的主角的不同命途的肖像专门回退检索到相同的素材上。
+        public static func convertPIDForHSRProtagonist(_ pid: String) -> String {
+            guard pid.count == 4, let first = pid.first, first == "8" else { return pid }
+            guard let last = pid.last?.description, var lastDigi = Int(last) else { return pid }
+            guard lastDigi >= 1 else { return pid }
+            lastDigi = lastDigi % 2
+            if lastDigi == 0 { lastDigi += 2 }
+            return String(pid.dropLast()) + lastDigi.description
+        }
     }
 }
 

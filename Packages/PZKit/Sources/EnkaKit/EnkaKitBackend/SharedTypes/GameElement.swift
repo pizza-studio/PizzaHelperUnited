@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import CoreGraphics
+
 // MARK: - Enka.GameElement
 
 extension Enka {
@@ -140,4 +142,21 @@ extension Enka.GameElement {
         "Water": "Hydro",
         "Grass": "Dendro",
     ]
+}
+
+extension Enka.GameElement {
+    public var themeColor: CGColor {
+        switch self {
+        case .physico: .init(red: 0.40, green: 0.40, blue: 0.40, alpha: 1.00)
+        case .anemo: .init(red: 0.00, green: 0.52, blue: 0.56, alpha: 1.00)
+        case .electro: .init(red: 0.54, green: 0.14, blue: 0.79, alpha: 1.00)
+        case .fantastico: .init(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.00)
+        case .posesto: .init(red: 0.00, green: 0.13, blue: 1.00, alpha: 1.00)
+        case .pyro: .init(red: 0.83, green: 0.00, blue: 0.00, alpha: 1.00)
+        case .cryo: .init(red: 0.00, green: 0.38, blue: 0.63, alpha: 1.00)
+        case .geo: .init(red: 0.79, green: 0.57, blue: 0.15, alpha: 1.00)
+        case .dendro: .init(red: 0.25, green: 0.79, blue: 0.07, alpha: 1.00)
+        case .hydro: .init(red: 0.06, green: 0.35, blue: 0.85, alpha: 1.00)
+        }
+    }
 }

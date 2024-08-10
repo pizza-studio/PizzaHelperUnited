@@ -1,0 +1,47 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+import CoreGraphics
+import Foundation
+#if os(macOS)
+import AppKit
+#elseif os(iOS)
+import UIKit
+#endif
+import SwiftUI
+
+extension Enka {
+    public static func queryImageAsset(for assetName: String) -> CGImage? {
+        #if os(macOS)
+        guard let image = Bundle.module.image(forResource: assetName) else { return nil }
+        var imageRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+        let imageRef = image.cgImage(forProposedRect: &imageRect, context: nil, hints: nil)
+        return imageRef
+        #elseif os(iOS)
+        return UIImage(named: assetName, in: Bundle.module, compatibleWith: nil)?.cgImage
+        #else
+        return nil
+        #endif
+    }
+
+    public static func queryImageAssetSUI(for assetName: String) -> Image? {
+        #if os(macOS)
+        let instance = Bundle.module.image(forResource: assetName)
+        #elseif os(iOS)
+        let instance = UIImage(named: assetName, in: Bundle.module, compatibleWith: nil)
+        #endif
+        guard instance != nil else { return nil }
+        return Image(assetName, bundle: Bundle.module)
+    }
+
+    public static func queryWeaponImageSUI(for id: String) -> Image? {
+        let idSansExt = id.replacingOccurrences(of: ".heic", with: "").replacingOccurrences(of: ".png", with: "")
+        return queryImageAssetSUI(for: "light_cone_\(idSansExt)")
+    }
+
+    public static func queryOfficialCharAvatarSUI(for id: String) -> Image? {
+        let idSansExt = id.replacingOccurrences(of: ".heic", with: "").replacingOccurrences(of: ".png", with: "")
+        return queryImageAssetSUI(for: "avatar_\(idSansExt)")
+    }
+}
