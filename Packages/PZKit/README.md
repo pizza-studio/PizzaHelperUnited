@@ -8,12 +8,11 @@
 
 几个注意点：
 
-1. 针对 SwiftUI 的全平台通用扩展放到 `OSImpl` 的 Shared 分支内。
-2. 针对 Foundation 与 Swift 本身的通用扩展放到 `PZBaseKit` 的 FoundationImpl 资料夹内。
-3. `PZAccountKit` 负责存放与米游社帐号登入有关的一些内容。然而，下述内容均得放到专门的 SPM target 内：
+1. 针对 SwiftUI 的全平台通用扩展放到 `PZBaseKit` 的 Shared 分支内。
+2. `PZAccountKit` 负责存放与米游社帐号登入有关的一些内容。然而，下述内容均得放到专门的 SPM target 内：
   - 对于抽卡记录的抽取有关的米游社后端互动内容。
   - DailyNote（树脂/开拓力）、摩拉帐簿、个人深渊记录、深渊排行（这些都会各自弄成各自的 SPM target。
-4. 开发时是按照 UnitedPizzaHelper 开发的，但：
+3. 开发时是按照 UnitedPizzaHelper 开发的，但：
   1. 实际上会就原披助手与穹披助手分别设立两个不同的 Xcode target、以各自的 BundleIdentifier 来区分彼此。
   2. App 实际运行时，会检查 BundleIdentifier 来自动屏蔽与自身不对应的游戏。
     - 比如说原神披萨助手会自动隐藏任何与星穹铁道有关的内容。反之亦然。
