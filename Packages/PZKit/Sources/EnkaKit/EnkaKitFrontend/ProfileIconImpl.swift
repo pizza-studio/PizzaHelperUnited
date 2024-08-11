@@ -14,7 +14,7 @@ extension EKQueriedProfileProtocol {
                 imgObj.resizable()
             }
         } placeholder: {
-            Image(Self.nullPhotoAssetName).resizable()
+            Image(Self.nullPhotoAssetName).resizable().aspectRatio(contentMode: .fit)
         }
     }
 
@@ -27,7 +27,7 @@ extension EKQueriedProfileProtocol {
             }
         }.background {
             Color.black.opacity(0.15)
-            Image(Self.nullPhotoAssetName).resizable()
+            Image(Self.nullPhotoAssetName).resizable().aspectRatio(contentMode: .fit)
         }
         .clipShape(.circle)
     }
