@@ -182,7 +182,7 @@ extension CGColor {
 public struct Divided<Content: View>: View {
     // MARK: Lifecycle
 
-    init(@ViewBuilder content: () -> Content) {
+    public init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
 
