@@ -46,6 +46,18 @@ extension EKQueriedProfileProtocol {
         locallyCachedData = self
     }
 
+    public var onlineAssetURLStr: String {
+        switch DBType.game {
+        case .genshinImpact:
+            let matched = Enka.Sputnik.shared.db4GI.profilePictures[headIcon.description]?.iconPath
+            return "https://enka.network/ui/\(matched ?? "YJSNPI").png"
+        case .starRail:
+            let str = Enka.Sputnik.shared.db4HSR.profileAvatars[headIcon.description]?
+                .icon.split(separator: "/").last?.description ?? "Anonymous.png"
+            return "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/\(str)"
+        }
+    }
+
     public var iconAssetName: String {
         var headIconID = headIcon.description
         if DBType.game == .starRail {
