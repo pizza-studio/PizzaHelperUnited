@@ -45,13 +45,18 @@ extension Enka {
         }
 
         public struct ProfilePictureRAW: Codable, Hashable {
+            // MARK: Lifecycle
+
+            public init(from decoder: any Decoder) throws {
+                let container = try decoder.singleValueContainer()
+                self.id = (try? container.decode(Int.self)) ?? 1
+            }
+
+            // MARK: Public
+
             /// 在 ProfilePictureExcelConfigData.json 当中的检索用 ID。
             /// Ref: https://twitter.com/EnkaNetwork/status/1708819830693077325
-            public let id: Int?
-            /// 旧 API，不要删，否则自 4.1 版发行开始起没改过肖像的玩家会受到影响。
-            public var avatarId: Int?
-            /// 旧 API，不要删，否则自 4.1 版发行开始起没改过肖像的玩家会受到影响。
-            public var costumeId: Int?
+            public let id: Int
         }
 
         /// UID
@@ -80,6 +85,10 @@ extension Enka {
         public var profilePicture: ProfilePictureRAW
 
         public var avatarDetailList: [RawAvatar]
+
+        public var headIcon: Int {
+            profilePicture.id
+        }
 
         public var locallyCachedData: Enka.QueriedProfileGI? {
             get { Defaults[.queriedEnkaProfiles4GI][uid.description] }

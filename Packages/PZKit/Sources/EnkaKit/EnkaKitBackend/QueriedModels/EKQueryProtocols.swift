@@ -26,6 +26,7 @@ public protocol EKQueriedProfileProtocol {
     var avatarDetailList: [QueriedAvatar] { get set }
     var uid: Int { get }
     var locallyCachedData: Self? { get set }
+    var headIcon: Int { get }
 }
 
 extension EKQueriedProfileProtocol {
@@ -43,6 +44,21 @@ extension EKQueriedProfileProtocol {
 
     public mutating func saveToCache() {
         locallyCachedData = self
+    }
+
+    public var iconAssetName: String {
+        var headIconID = headIcon.description
+        if DBType.game == .starRail {
+            let str = Enka.Sputnik.shared.db4HSR.profileAvatars[headIcon.description]?
+                .icon.split(separator: "/").last?.description ?? "Anonymous.png"
+            headIconID = str.replacingOccurrences(of: ".png", with: "")
+        }
+        return "\(DBType.game.localAssetNamePrefix)avatar_\(headIconID)"
+    }
+
+    public static var nullPhotoAssetName: String {
+        /// 让原神沿用星穹铁道的匿名肖像。
+        "hsr_avatar_Anonymous"
     }
 }
 
