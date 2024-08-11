@@ -68,6 +68,11 @@ extension Enka {
 
         public static var game: Enka.GameType { .starRail }
 
+        public static var locallyCachedData: [String: Self] {
+            get { Defaults[.queriedEnkaProfiles4HSR] }
+            set { Defaults[.queriedEnkaProfiles4HSR] = newValue }
+        }
+
         public let uid: Int
         public let nickname: String
         public let level, friendCount: Int
@@ -78,11 +83,6 @@ extension Enka {
         public let platform: PlatformType
         public var avatarDetailList: [RawAvatar]
         public let assistAvatarList: [RawAvatar]
-
-        public var locallyCachedData: Enka.QueriedProfileHSR? {
-            get { Defaults[.queriedEnkaProfiles4HSR][uid.description] }
-            set { Defaults[.queriedEnkaProfiles4HSR][uid.description] = newValue }
-        }
     }
 }
 

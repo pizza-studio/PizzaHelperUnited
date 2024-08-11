@@ -8,7 +8,7 @@ import Foundation
 // MARK: - EnkaDBProtocol
 
 public protocol EnkaDBProtocol {
-    associatedtype QueriedProfile: EKQueriedProfileProtocol
+    associatedtype QueriedResult: EKQueryResultProtocol
     static var game: Enka.GameType { get }
     var locTable: Enka.LocTable { get set }
     var locTag: String { get }
@@ -26,9 +26,10 @@ public protocol EnkaDBProtocol {
     mutating func update(new: Self)
 }
 
-// MARK: - Online Update.
+// MARK: - Online Update & Query.
 
 extension EnkaDBProtocol {
+    public typealias QueriedProfile = QueriedResult.QueriedProfileType
     public var game: Enka.GameType { Self.game }
     public var needsUpdate: Bool {
         let previousDate = Defaults[.lastEnkaDBDataCheckDate]
@@ -44,6 +45,30 @@ extension EnkaDBProtocol {
         Defaults[.lastEnkaDBDataCheckDate] = Date()
         update(new: newDB)
         return self
+    }
+
+    public func query(
+        for uid: String,
+        dateWhenNextRefreshable nextAvailableDate: Date? = nil
+    ) async throws
+        -> Self.QueriedProfile {
+        let existingData = QueriedProfile.locallyCachedData[uid]
+        do {
+            let newData = try await Enka.Sputnik.fetchEnkaQueryResultRAW(
+                uid, type: QueriedResult.self, dateWhenNextRefreshable: nextAvailableDate
+            )
+            guard let detailInfo = newData.detailInfo else {
+                let errMsgCore = newData.message ?? "No Error Message is Given."
+                throw Enka.EKError.queryFailure(uid: uid, game: QueriedResult.game, message: errMsgCore)
+            }
+            let newMerged = detailInfo.inheritAvatars(from: existingData)
+            QueriedProfile.locallyCachedData[uid] = newMerged
+            return newMerged
+        } catch {
+            let msg = error.localizedDescription + "\n\(error)"
+            print(msg)
+            throw Enka.EKError.queryFailure(uid: uid, game: QueriedResult.game, message: msg)
+        }
     }
 }
 

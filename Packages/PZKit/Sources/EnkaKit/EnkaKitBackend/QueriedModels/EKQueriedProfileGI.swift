@@ -59,6 +59,11 @@ extension Enka {
             public let id: Int
         }
 
+        public static var locallyCachedData: [String: Self] {
+            get { Defaults[.queriedEnkaProfiles4GI] }
+            set { Defaults[.queriedEnkaProfiles4GI] = newValue }
+        }
+
         /// UID
         public var uid: Int = 0
         /// 名称
@@ -88,11 +93,6 @@ extension Enka {
 
         public var headIcon: Int {
             profilePicture.id
-        }
-
-        public var locallyCachedData: Enka.QueriedProfileGI? {
-            get { Defaults[.queriedEnkaProfiles4GI][uid.description] }
-            set { Defaults[.queriedEnkaProfiles4GI][uid.description] = newValue }
         }
     }
 }

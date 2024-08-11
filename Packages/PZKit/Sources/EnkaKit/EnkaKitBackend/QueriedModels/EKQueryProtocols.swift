@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
+
 // MARK: - EKQueryResultProtocol
 
 public protocol EKQueryResultProtocol: Decodable {
@@ -21,11 +23,11 @@ extension EKQueryResultProtocol {
 
 // MARK: - EKQueriedProfileProtocol
 
-public protocol EKQueriedProfileProtocol {
+public protocol EKQueriedProfileProtocol: Decodable {
     associatedtype QueriedAvatar: EKQueriedRawAvatarProtocol
     var avatarDetailList: [QueriedAvatar] { get set }
     var uid: Int { get }
-    var locallyCachedData: Self? { get set }
+    static var locallyCachedData: [String: Self] { get set }
     var headIcon: Int { get }
 }
 
@@ -43,7 +45,7 @@ extension EKQueriedProfileProtocol {
     }
 
     public mutating func saveToCache() {
-        locallyCachedData = self
+        Self.locallyCachedData[uid.description] = self
     }
 
     public var onlineAssetURLStr: String {

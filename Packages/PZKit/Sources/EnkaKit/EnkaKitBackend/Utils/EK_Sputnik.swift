@@ -10,6 +10,8 @@ import Observation
 
 // MARK: - Enka.Sputnik
 
+// 注意：针对展柜的查询 API 并未放在该档案内，而是针对 EnkaDBProtocol 直接实作了。
+
 extension Enka {
     @Observable
     public class Sputnik {

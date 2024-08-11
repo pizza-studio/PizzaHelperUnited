@@ -69,7 +69,7 @@ extension Enka {
 
         // MARK: Public
 
-        public typealias QueriedType = Enka.QueriedProfileGI
+        public typealias QueriedResult = Enka.QueriedResultGI
 
         public var locTag: String
         public var locTable: Enka.LocTable
@@ -147,7 +147,7 @@ extension Enka.EnkaDB4GI {
 // MARK: - Expiry Check.
 
 extension Enka.EnkaDB4GI {
-    public func checkIfExpired(against givenProfile: QueriedType) -> Bool {
+    public func checkIfExpired(against givenProfile: QueriedProfile) -> Bool {
         // 与星穹铁道不同，除了角色以外的内容在 EnkaDB 里面没有现成的 ID 库可以查询。
         // 好在可以用来查询对应的 NameTextMapHash。
         // 先检查角色 ID：
