@@ -234,7 +234,7 @@ public struct CharacterIconView: View {
                 .blur(radius: 6)
                 .scaleEffect(5, anchor: .center)
             Color.black.opacity(0.265)
-            if cutType == .cutShoulder, let element = guessGenshinCharacterElement(id: charIDGuarded) {
+            if cutType.pathTotemVisible, let element = guessGenshinCharacterElement(id: charIDGuarded) {
                 element.localFittingIcon4SUI
                     .scaleEffect(1.5)
                     .colorMultiply(Color(cgColor: element.themeColor))

@@ -43,7 +43,7 @@ public struct IDPhotoView4HSR: View {
         // MARK: Internal
 
         var pathTotemVisible: Bool {
-            ![.cutHead, .cutFace, .cutFaceRoundedRect].contains(self)
+            ![.cutFace, .cutFaceRoundedRect].contains(self)
         }
 
         func shiftedAmount(containerSize size: CGFloat) -> CGFloat {
