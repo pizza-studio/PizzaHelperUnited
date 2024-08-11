@@ -1,0 +1,64 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "enka.ASCV.summarzeToClipboard.asMD" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize to Clipboard as Markdown"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MarkDownとしてクリップボードに要約を書き込む"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将该角色的面板以 Markdown 的形式写入剪贴板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將該角色的面板以 Markdown 的形式寫入剪貼簿"
+          }
+        }
+      }
+    },
+    "enka.ASCV.summarzeToClipboard.asText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize to Clipboard as Plain Text"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレーンテキストとしてクリップボードに要約を書き込む"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将该角色的面板以纯文本的形式写入剪贴板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將該角色的面板以純文字的形式寫入剪貼簿"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
