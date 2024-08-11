@@ -75,6 +75,10 @@ let package = Package(
             url: "https://github.com/pizza-studio/EnkaDBGenerator",
             from: "1.3.1"
         )
+        Package.Dependency.package(
+            url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git",
+            .upToNextMajor(from: "5.3.0")
+        )
     },
     targets: buildTargets {
         // MARK: - Common Targets
@@ -128,6 +132,10 @@ let package = Package(
                     name: "EnkaDBModels",
                     package: "EnkaDBGenerator",
                     condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
+                )
+                Target.Dependency.product(
+                    name: "SFSafeSymbols",
+                    package: "SFSafeSymbols"
                 )
             },
             resources: buildResources {
