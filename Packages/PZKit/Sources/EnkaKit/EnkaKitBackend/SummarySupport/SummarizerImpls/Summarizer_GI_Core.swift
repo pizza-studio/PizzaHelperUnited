@@ -3,9 +3,9 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 extension Enka.QueriedProfileGI.RawAvatar {
-    public func summarize(giDB: Enka.EnkaDB4GI) -> Enka.AvatarSummarized? {
+    public func summarize(theDB: DBType) -> Enka.AvatarSummarized? {
         let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
-            giDB: giDB,
+            giDB: theDB,
             avatar: self
         )
         guard let baseSkillSet = baseSkillSet else {
@@ -13,7 +13,7 @@ extension Enka.QueriedProfileGI.RawAvatar {
             return nil
         }
         let mainInfo = Enka.AvatarSummarized.AvatarMainInfo(
-            giDB: giDB,
+            giDB: theDB,
             charID: id,
             avatarLevel: Int(propMap.level.val) ?? 0,
             constellation: talentIdList?.count ?? 0,
@@ -24,15 +24,15 @@ extension Enka.QueriedProfileGI.RawAvatar {
             print("MainInfo nulled")
             return nil
         }
-        let equipInfo = Enka.AvatarSummarized.WeaponPanel(giDB: giDB, avatar: self)
+        let equipInfo = Enka.AvatarSummarized.WeaponPanel(giDB: theDB, avatar: self)
 
         let artifactsInfo = equipList.compactMap {
-            Enka.AvatarSummarized.ArtifactInfo(giDB: giDB, equipItem: $0)
+            Enka.AvatarSummarized.ArtifactInfo(giDB: theDB, equipItem: $0)
         }
 
         // 原神的角色面板由 Enka 预先计算完成。
         let rawProps = fightPropMap.map { propType, value in
-            Enka.PVPair(theDB: giDB, type: propType, value: value)
+            Enka.PVPair(theDB: theDB, type: propType, value: value)
         }
 
         // 从角色面板当中找出最强的元素伤害增幅词条。
@@ -73,9 +73,9 @@ extension Enka.QueriedProfileGI.RawAvatar {
             return [prioritizedElement, nil].contains(propPair.type.element)
         }
 
-        panel.triageAndHandle(theDB: giDB, filteredProps, element: prioritizedElement)
+        panel.triageAndHandle(theDB: theDB, filteredProps, element: prioritizedElement)
 
-        let propPair = panel.converted(theDB: giDB, element: prioritizedElement)
+        let propPair = panel.converted(theDB: theDB, element: prioritizedElement)
 
         return .init(
             game: .genshinImpact,

@@ -6,6 +6,9 @@
 
 extension Enka {
     public struct QueriedResultHSR: Codable, Hashable, EKQueryResultProtocol {
+        public typealias QueriedProfileType = Enka.QueriedProfileHSR
+        public typealias DBType = Enka.EnkaDB4HSR
+
         public static var game: Enka.GameType { .starRail }
 
         public var detailInfo: QueriedProfileHSR?

@@ -5,17 +5,17 @@
 import EnkaDBModels
 
 extension Enka.QueriedProfileHSR.RawAvatar {
-    public func summarize(hsrDB: Enka.EnkaDB4HSR) -> Enka.AvatarSummarized? {
+    public func summarize(theDB: DBType) -> Enka.AvatarSummarized? {
         // Main Info
         let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
-            hsrDB: hsrDB,
+            hsrDB: theDB,
             constellation: rank ?? 0,
             fetched: skillTreeList
         )
         guard let baseSkillSet = baseSkillSet else { return nil }
 
         let mainInfo = Enka.AvatarSummarized.AvatarMainInfo(
-            hsrDB: hsrDB,
+            hsrDB: theDB,
             charID: avatarId,
             avatarLevel: level,
             constellation: rank ?? 0,
@@ -25,15 +25,15 @@ extension Enka.QueriedProfileHSR.RawAvatar {
 
         let equipInfo: Enka.AvatarSummarized.WeaponPanel? = {
             guard let equipment = equipment else { return nil }
-            return Enka.AvatarSummarized.WeaponPanel(hsrDB: hsrDB, fetched: equipment)
+            return Enka.AvatarSummarized.WeaponPanel(hsrDB: theDB, fetched: equipment)
         }()
 
         let artifactsInfo: [Enka.AvatarSummarized.ArtifactInfo] = artifactList.compactMap {
-            Enka.AvatarSummarized.ArtifactInfo(hsrDB: hsrDB, fetched: $0)
+            Enka.AvatarSummarized.ArtifactInfo(hsrDB: theDB, fetched: $0)
         }
 
         // Panel: Add basic values from catched character Metadata.
-        let baseMetaCharacter: EnkaDBModelsHSR.Meta.AvatarMeta? = hsrDB.meta
+        let baseMetaCharacter: EnkaDBModelsHSR.Meta.AvatarMeta? = theDB.meta
             .avatar[avatarId.description]?[promotion.description]
         guard let baseMetaCharacter = baseMetaCharacter else { return nil }
         var panel = MutableAvatarPropertyPanel(game: .starRail)
@@ -49,7 +49,7 @@ extension Enka.QueriedProfileHSR.RawAvatar {
 
         // Panel: Base Props from the Weapon.
 
-        Self.updateFlat(for: &panel, flat: equipment?.getFlat(hsrDB: hsrDB))
+        Self.updateFlat(for: &panel, flat: equipment?.getFlat(hsrDB: theDB))
 
         // Panel: Handle all additional props
 
@@ -61,9 +61,9 @@ extension Enka.QueriedProfileHSR.RawAvatar {
 
         let skillTreeProps: [Enka.PVPair] = skillTreeList.compactMap { currentNode in
             if currentNode.level == 1 {
-                let result: [Enka.PVPair] = hsrDB.meta.tree
+                let result: [Enka.PVPair] = theDB.meta.tree
                     .query(id: currentNode.pointId, stage: 1).map {
-                        Enka.PVPair(theDB: hsrDB, type: $0.key, value: $0.value)
+                        Enka.PVPair(theDB: theDB, type: $0.key, value: $0.value)
                     }
                 return result
             }
@@ -82,13 +82,13 @@ extension Enka.QueriedProfileHSR.RawAvatar {
             artifactsInfo.map(\.setID).forEach { setIDCounters[$0, default: 0] += 1 }
             setIDCounters.forEach { setId, count in
                 guard count >= 2 else { return }
-                let x: [Enka.PVPair] = hsrDB.meta.relic.setSkill.query(id: setId, stage: 2).map {
-                    Enka.PVPair(theDB: hsrDB, type: $0.key, value: $0.value)
+                let x: [Enka.PVPair] = theDB.meta.relic.setSkill.query(id: setId, stage: 2).map {
+                    Enka.PVPair(theDB: theDB, type: $0.key, value: $0.value)
                 }
                 resultPairs.append(contentsOf: x)
                 guard count >= 4 else { return }
-                let y: [Enka.PVPair] = hsrDB.meta.relic.setSkill.query(id: setId, stage: 4).map {
-                    Enka.PVPair(theDB: hsrDB, type: $0.key, value: $0.value)
+                let y: [Enka.PVPair] = theDB.meta.relic.setSkill.query(id: setId, stage: 4).map {
+                    Enka.PVPair(theDB: theDB, type: $0.key, value: $0.value)
                 }
                 resultPairs.append(contentsOf: y)
             }
@@ -98,11 +98,11 @@ extension Enka.QueriedProfileHSR.RawAvatar {
         // Panel: Triage and Handle.
 
         let allProps: [Enka.PVPair] = skillTreeProps + weaponSpecialProps + artifactProps + artifactSetProps
-        panel.triageAndHandle(theDB: hsrDB, allProps, element: mainInfo.element)
+        panel.triageAndHandle(theDB: theDB, allProps, element: mainInfo.element)
 
         // Panel: Final Output.
 
-        let propPair = panel.converted(theDB: hsrDB, element: mainInfo.element)
+        let propPair = panel.converted(theDB: theDB, element: mainInfo.element)
 
         return Enka.AvatarSummarized(
             game: .starRail,

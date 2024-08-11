@@ -33,6 +33,8 @@ extension Enka {
 
         // MARK: Public
 
+        public typealias QueriedAvatar = Enka.QueriedProfileGI.RawAvatar
+
         public struct ShowAvatarInfoRAW: Codable, Hashable {
             /// 角色ID
             public var avatarId: Int
@@ -116,6 +118,8 @@ extension Enka.QueriedProfileGI {
         }
 
         // MARK: Public
+
+        public typealias DBType = Enka.EnkaDB4GI
 
         public struct PropMapRAW: Codable, Hashable {
             // MARK: Public
