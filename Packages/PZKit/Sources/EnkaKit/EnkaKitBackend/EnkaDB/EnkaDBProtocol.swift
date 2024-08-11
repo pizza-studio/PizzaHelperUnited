@@ -14,6 +14,8 @@ public protocol EnkaDBProtocol {
     var locTag: String { get }
     var isExpired: Bool { get set }
 
+    @MainActor static var shared: Self { get }
+
     init(host: Enka.HostType) async throws
 
     func getNameTextMapHash(id: String) -> String?

@@ -34,6 +34,30 @@ struct IDPhotoFallbackView4HSR: View {
 
     // MARK: Internal
 
+    @Observable
+    @MainActor
+    class Coordinator {
+        // MARK: Lifecycle
+
+        public init?(pid: String) {
+            self.pid = pid
+            let fallbackPID = Enka.CharacterName.convertPIDForHSRProtagonist(pid)
+            guard let charAvatarImage = Enka.queryImageAssetSUI(for: "idp\(pid)")
+                ?? Enka.queryImageAssetSUI(for: "idp\(fallbackPID)")
+            else { return nil }
+            let backgroundImage = Enka.queryImageAssetSUI(for: "hsr_character_\(pid)")
+            guard let backgroundImage = backgroundImage else { return nil }
+            self.backgroundImage = backgroundImage
+            self.charAvatarImage = charAvatarImage
+        }
+
+        // MARK: Internal
+
+        var backgroundImage: Image
+        var charAvatarImage: Image
+        var pid: String
+    }
+
     @Environment(\.colorScheme) var colorScheme
 
     var coreBody: some View {
@@ -114,30 +138,6 @@ struct IDPhotoFallbackView4HSR: View {
     }
 
     // MARK: Private
-
-    @Observable
-    @MainActor
-    private class Coordinator {
-        // MARK: Lifecycle
-
-        public init?(pid: String) {
-            self.pid = pid
-            let fallbackPID = Enka.CharacterName.convertPIDForHSRProtagonist(pid)
-            guard let charAvatarImage = Enka.queryImageAssetSUI(for: "idp\(pid)")
-                ?? Enka.queryImageAssetSUI(for: "idp\(fallbackPID)")
-            else { return nil }
-            let backgroundImage = Enka.queryImageAssetSUI(for: "hsr_character_\(pid)")
-            guard let backgroundImage = backgroundImage else { return nil }
-            self.backgroundImage = backgroundImage
-            self.charAvatarImage = charAvatarImage
-        }
-
-        // MARK: Internal
-
-        var backgroundImage: Image
-        var charAvatarImage: Image
-        var pid: String
-    }
 
     private let pid: String
     private let imageHandler: (Image) -> Image

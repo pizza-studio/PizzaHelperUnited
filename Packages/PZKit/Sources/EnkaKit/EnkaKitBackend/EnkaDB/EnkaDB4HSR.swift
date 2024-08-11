@@ -11,7 +11,7 @@ import Observation
 
 extension Enka {
     @Observable
-    public class EnkaDB4HSR: EnkaDBProtocol, Codable {
+    final public class EnkaDB4HSR: EnkaDBProtocol, Codable {
         // MARK: Lifecycle
 
         required public convenience init(host: Enka.HostType) async throws {
@@ -123,6 +123,8 @@ extension Enka {
         public var skillTrees: EnkaDBModelsHSR.SkillTreesDict
         public var weapons: EnkaDBModelsHSR.WeaponsDict
         public var isExpired: Bool = false
+
+        @MainActor public static var shared: Enka.EnkaDB4HSR { Enka.Sputnik.shared.db4HSR }
 
         @MainActor
         public func saveSelfToUserDefaults() {
