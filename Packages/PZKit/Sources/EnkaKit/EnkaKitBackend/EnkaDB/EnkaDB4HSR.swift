@@ -112,6 +112,8 @@ extension Enka {
 
         public typealias QueriedResult = Enka.QueriedResultHSR
 
+        @MainActor public static var shared: Enka.EnkaDB4HSR { Enka.Sputnik.shared.db4HSR }
+
         public var locTag: String
         public var locTable: Enka.LocTable
         public var profileAvatars: EnkaDBModelsHSR.ProfileAvatarDict
@@ -123,8 +125,6 @@ extension Enka {
         public var skillTrees: EnkaDBModelsHSR.SkillTreesDict
         public var weapons: EnkaDBModelsHSR.WeaponsDict
         public var isExpired: Bool = false
-
-        @MainActor public static var shared: Enka.EnkaDB4HSR { Enka.Sputnik.shared.db4HSR }
 
         @MainActor
         public func saveSelfToUserDefaults() {

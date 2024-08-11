@@ -12,9 +12,9 @@ extension Enka {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.detailInfo = try container.decodeIfPresent(QueriedProfileGI.self, forKey: .detailInfo)
             self.ttl = try container.decodeIfPresent(Int.self, forKey: .ttl)
-            if let uid = try container.decodeIfPresent(String.self, forKey: .uid), let uidInt = Int(uid) {
+            if let uid = try container.decodeIfPresent(String.self, forKey: .uid) {
                 self.uid = uid
-                detailInfo?.uid = uidInt
+                detailInfo?.uid = uid
             } else {
                 self.uid = nil
             }

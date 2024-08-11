@@ -71,14 +71,14 @@ extension Enka {
 
         public typealias QueriedResult = Enka.QueriedResultGI
 
+        @MainActor public static var shared: Enka.EnkaDB4GI { Enka.Sputnik.shared.db4GI }
+
         public var locTag: String
         public var locTable: Enka.LocTable
         public var characters: EnkaDBModelsGI.CharacterDict
         public var namecards: EnkaDBModelsGI.NameCardDict
         public var profilePictures: EnkaDBModelsGI.ProfilePictureDict
         public var isExpired: Bool = false
-
-        @MainActor public static var shared: Enka.EnkaDB4GI { Enka.Sputnik.shared.db4GI }
 
         @MainActor
         public func saveSelfToUserDefaults() {
