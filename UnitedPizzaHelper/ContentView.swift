@@ -5,7 +5,7 @@
 import SwiftData
 import SwiftUI
 
-struct ContentView: View {
+struct DemoContentView: View {
     // MARK: Internal
 
     var body: some View {
@@ -55,6 +55,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    DemoContentView()
         .modelContainer(for: Item.self, inMemory: true)
 }

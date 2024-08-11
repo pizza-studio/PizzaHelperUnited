@@ -7,7 +7,7 @@ import SwiftUI
 
 @main
 struct UnitedPizzaHelperApp: App {
-    var sharedModelContainer: ModelContainer = {
+    var sharedDemoModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
         ])
@@ -22,8 +22,8 @@ struct UnitedPizzaHelperApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DemoContentView()
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(sharedDemoModelContainer)
     }
 }
