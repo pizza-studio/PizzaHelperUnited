@@ -33,8 +33,7 @@ extension Enka {
 extension Enka.ProfileSummarized {
     @MainActor
     public func update(newRawInfo: P, dropExistingData: Bool = false) {
-        var newInfoMutable = newRawInfo
-        rawInfo = dropExistingData ? newRawInfo : newInfoMutable.merge(old: rawInfo)
+        rawInfo = dropExistingData ? newRawInfo : newRawInfo.inheritAvatars(from: rawInfo)
         summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB)
     }
 }

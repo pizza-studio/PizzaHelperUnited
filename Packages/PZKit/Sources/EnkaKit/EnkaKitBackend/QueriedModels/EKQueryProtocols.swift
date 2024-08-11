@@ -32,9 +32,9 @@ public protocol EKQueriedProfileProtocol {
 extension EKQueriedProfileProtocol {
     public typealias DBType = QueriedAvatar.DBType
     /// 仅制作这个新 API 将旧资料融入新资料，因为反向融合没有任何意义。
-    public mutating func merge(old: Self?) -> Self {
+    public func inheritAvatars(from oldInfo: Self?) -> Self {
         var newResult = self
-        old?.avatarDetailList.forEach { oldAvatar in
+        oldInfo?.avatarDetailList.forEach { oldAvatar in
             let ids = avatarDetailList.map(\.avatarId)
             guard !ids.contains(oldAvatar.avatarId) else { return }
             newResult.avatarDetailList.append(oldAvatar)
