@@ -65,15 +65,15 @@ let package = Package(
     dependencies: buildPackageDependencies {
         Package.Dependency.package(
             url: "https://github.com/sindresorhus/Defaults",
-            from: "8.2.0"
+            .upToNextMajor(from: "8.2.0")
         )
         Package.Dependency.package(
             url: "https://github.com/pizza-studio/GachaMetaGenerator",
-            from: "2.1.2"
+            .upToNextMajor(from: "2.1.2")
         )
         Package.Dependency.package(
             url: "https://github.com/pizza-studio/EnkaDBGenerator",
-            from: "1.3.1"
+            .upToNextMajor(from: "1.3.1")
         )
         Package.Dependency.package(
             url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git",
