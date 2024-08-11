@@ -62,6 +62,35 @@ public struct IDPhotoView4HSR: View {
 
     // MARK: Internal
 
+    @Observable
+    @MainActor
+    class Coordinator {
+        // MARK: Lifecycle
+
+        public init?(pid: String) {
+            guard let cidObj = Enka.AvatarSummarized.CharacterID(id: pid) else { return nil }
+            self.cid = cidObj
+            let fallbackPID = Enka.CharacterName.convertPIDForHSRProtagonist(pid)
+            guard let charAvatarImage = Enka.queryImageAssetSUI(for: "idp\(pid)")
+                ?? Enka.queryImageAssetSUI(for: "idp\(fallbackPID)")
+            else { return nil }
+            let lifePathStr = Enka.Sputnik.shared.db4HSR.characters[pid]?.avatarBaseType
+            guard let lifePathStr, let lifePath = Enka.LifePath(rawValue: lifePathStr) else { return nil }
+            self.lifePathImage = lifePath.localIcon4SUI
+            self.backgroundImage = cidObj.localIcon4SUI
+            self.charAvatarImage = charAvatarImage
+        }
+
+        // MARK: Internal
+
+        let cid: Enka.AvatarSummarized.CharacterID
+        var lifePathImage: Image
+        var backgroundImage: Image
+        var charAvatarImage: Image
+
+        var pid: String { cid.id }
+    }
+
     @Environment(\.colorScheme) var colorScheme
 
     var coreBody: some View {
@@ -165,35 +194,6 @@ public struct IDPhotoView4HSR: View {
     }
 
     // MARK: Private
-
-    @Observable
-    @MainActor
-    private class Coordinator {
-        // MARK: Lifecycle
-
-        public init?(pid: String) {
-            guard let cidObj = Enka.AvatarSummarized.CharacterID(id: pid) else { return nil }
-            self.cid = cidObj
-            let fallbackPID = Enka.CharacterName.convertPIDForHSRProtagonist(pid)
-            guard let charAvatarImage = Enka.queryImageAssetSUI(for: "idp\(pid)")
-                ?? Enka.queryImageAssetSUI(for: "idp\(fallbackPID)")
-            else { return nil }
-            let lifePathStr = Enka.Sputnik.shared.db4HSR.characters[pid]?.avatarBaseType
-            guard let lifePathStr, let lifePath = Enka.LifePath(rawValue: lifePathStr) else { return nil }
-            self.lifePathImage = lifePath.localIcon4SUI
-            self.backgroundImage = cidObj.localIcon4SUI
-            self.charAvatarImage = charAvatarImage
-        }
-
-        // MARK: Internal
-
-        let cid: Enka.AvatarSummarized.CharacterID
-        var lifePathImage: Image
-        var backgroundImage: Image
-        var charAvatarImage: Image
-
-        var pid: String { cid.id }
-    }
 
     private let pid: String
     private let imageHandler: (Image) -> Image

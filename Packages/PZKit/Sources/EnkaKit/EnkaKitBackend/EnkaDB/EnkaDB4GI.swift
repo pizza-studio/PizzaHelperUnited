@@ -10,7 +10,7 @@ import Observation
 
 extension Enka {
     @Observable
-    public class EnkaDB4GI: EnkaDBProtocol, Codable {
+    final public class EnkaDB4GI: EnkaDBProtocol, Codable {
         // MARK: Lifecycle
 
         required public convenience init(host: Enka.HostType) async throws {
@@ -77,6 +77,8 @@ extension Enka {
         public var namecards: EnkaDBModelsGI.NameCardDict
         public var profilePictures: EnkaDBModelsGI.ProfilePictureDict
         public var isExpired: Bool = false
+
+        @MainActor public static var shared: Enka.EnkaDB4GI { Enka.Sputnik.shared.db4GI }
 
         @MainActor
         public func saveSelfToUserDefaults() {
