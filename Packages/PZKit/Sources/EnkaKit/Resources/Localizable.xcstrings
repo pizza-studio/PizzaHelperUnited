@@ -2,7 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "enka.ASCV.summarzeToClipboard.asMD" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -31,7 +30,6 @@
       }
     },
     "enka.ASCV.summarzeToClipboard.asText" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -55,6 +53,118 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "以純文字的形式寫入剪貼簿"
+          }
+        }
+      }
+    },
+    "enka.CaseQuery.showCaseAPIServiceProviders.explain.GI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ShowCase Query Result Provider depends on which server the UID belongs to:\n* MicroGG (Celestia and Irminsul server).\n* Enka Networks (All other servers)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショーケースのデータのAPI提供者:\n* 天空の島と世界樹サーバー限定: MicroGG。\n* 他のすべてのサーバー: Enka Networks。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "展柜查询结果由下述来源提供:\n* 天空岛＆世界树: MicroGG。\n* 其余区服: Enka Networks。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "展櫃查詢結果由下述來源提供:\n* 天空島＆世界樹: MicroGG。\n* 其餘區服: Enka Networks。"
+          }
+        }
+      }
+    },
+    "enka.CaseQuery.showCaseAPIServiceProviders.explain.HSR" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ShowCase Query Result Provider depends on which server the UID belongs to:\n* MiHoMo Origin (Celestia-AstralExpress and Irminsul-Nameless server).\n* Enka Networks (All other servers)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショーケースのデータのAPI提供者:\n* 天空の島(星穹列車)と世界樹(ナナシビト)サーバー限定: MiHoMo Origin。\n* 他のすべてのサーバー: Enka Networks。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "展柜查询结果由下述来源提供:\n* 天空岛(星穹列车)＆世界树(无名客): MiHoMo Origin。\n* 其余区服: Enka Networks。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "展櫃查詢結果由下述來源提供:\n* 天空島(星穹列車)＆世界樹(無名客): MiHoMo Origin。\n* 其餘區服: Enka Networks。"
+          }
+        }
+      }
+    },
+    "enka.CaseQuery.title.GI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Query ShowCase With UID (Genshin Impact)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UID でショーケースを調べる (原神)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以 UID 查询展柜 (原神)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以 UID 查詢展櫃 (原神)"
+          }
+        }
+      }
+    },
+    "enka.CaseQuery.title.HSR" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Query ShowCase With UID (Star Rail)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UID でショーケースを調べる (スターレイル)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以 UID 查询展柜 (星穹铁道)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以 UID 查詢展櫃 (星穹鐵道)"
           }
         }
       }

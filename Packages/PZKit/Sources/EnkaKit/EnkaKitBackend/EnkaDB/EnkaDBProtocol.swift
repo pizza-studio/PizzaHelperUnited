@@ -17,6 +17,7 @@ public protocol EnkaDBProtocol {
     @MainActor static var shared: Self { get }
 
     init(host: Enka.HostType) async throws
+    init(locTag: String?)
 
     func getNameTextMapHash(id: String) -> String?
     func checkIfExpired(against givenProfile: QueriedProfile) -> Bool
@@ -31,6 +32,10 @@ public protocol EnkaDBProtocol {
 // MARK: - Online Update & Query.
 
 extension EnkaDBProtocol {
+    public init(locTag: String? = nil) {
+        self.init(locTag: locTag)
+    }
+
     public typealias QueriedProfile = QueriedResult.QueriedProfileType
     public var game: Enka.GameType { Self.game }
     public var needsUpdate: Bool {
@@ -67,7 +72,7 @@ extension EnkaDBProtocol {
             QueriedProfile.locallyCachedData[uid] = newMerged
             return newMerged
         } catch {
-            let msg = error.localizedDescription + "\n\(error)"
+            let msg = error.localizedDescription
             print(msg)
             throw Enka.EKError.queryFailure(uid: uid, game: QueriedResult.game, message: msg)
         }

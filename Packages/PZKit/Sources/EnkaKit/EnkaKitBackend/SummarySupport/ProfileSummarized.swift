@@ -21,6 +21,8 @@ extension Enka {
 
         // MARK: Public
 
+        public typealias OriginType = P
+
         public typealias DBType = P.DBType
 
         public let game: Enka.GameType

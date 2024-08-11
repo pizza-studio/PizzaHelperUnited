@@ -82,7 +82,7 @@ final class EnkaKitTests: XCTestCase {
 
     func testEnkaHSRProfileSummaryAsText() throws {
         let hsrDecoded = try getUnitTestJSONObject("testProfileHSR", as: Enka.QueriedResultHSR.self)
-        guard let firstAvatar = hsrDecoded.detailInfo?.avatarDetailList.first else {
+        guard let profile = hsrDecoded.detailInfo, let firstAvatar = profile.avatarDetailList.first else {
             throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
         }
         let englishDB = try Enka.EnkaDB4HSR(locTag: "en")
@@ -97,11 +97,13 @@ final class EnkaKitTests: XCTestCase {
         print(summarized.mainInfo.baseSkills.talent.onlineAssetURLStr)
         if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
         summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
+        print(profile.iconAssetName)
+        print(profile.onlineAssetURLStr)
     }
 
     func testEnkaGIProfileSummaryAsText() throws {
         let giDecoded = try getUnitTestJSONObject("testProfileGI", as: Enka.QueriedResultGI.self)
-        guard let firstAvatar = giDecoded.detailInfo?.avatarDetailList[6] else {
+        guard let profile = giDecoded.detailInfo, let firstAvatar = profile.avatarDetailList.first else {
             throw TestError.error(msg: "First avatar (Keqing, with costume) missing.")
         }
         let englishDB = try Enka.EnkaDB4GI(locTag: "en")
@@ -115,6 +117,8 @@ final class EnkaKitTests: XCTestCase {
         print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
         if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
         summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
+        print(profile.iconAssetName)
+        print(profile.onlineAssetURLStr)
     }
 }
 

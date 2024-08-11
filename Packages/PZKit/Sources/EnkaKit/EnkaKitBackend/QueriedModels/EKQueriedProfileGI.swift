@@ -15,7 +15,7 @@ extension Enka {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.nickname = try container.decode(String.self, forKey: .nickname)
             self.level = try container.decode(Int.self, forKey: .level)
-            self.signature = try container.decodeIfPresent(String.self, forKey: .signature)
+            self.signature = try container.decodeIfPresent(String.self, forKey: .signature) ?? ""
             self.worldLevel = try container.decode(Int.self, forKey: .worldLevel)
             self.nameCardId = try container.decode(Int.self, forKey: .nameCardId)
             self.finishAchievementNum = try container.decode(Int.self, forKey: .finishAchievementNum)
@@ -28,7 +28,7 @@ extension Enka {
             self.showNameCardIdList = try container.decodeIfPresent([Int].self, forKey: .showNameCardIdList)
             self.profilePicture = try container.decode(ProfilePictureRAW.self, forKey: .profilePicture)
             self.avatarDetailList = try container.decodeIfPresent([RawAvatar].self, forKey: .avatarDetailList) ?? []
-            self.uid = 0
+            self.uid = "UID not included in the retrieved JSON."
         }
 
         // MARK: Public
@@ -48,15 +48,29 @@ extension Enka {
             // MARK: Lifecycle
 
             public init(from decoder: any Decoder) throws {
-                let container = try decoder.singleValueContainer()
-                self.id = (try? container.decode(Int.self)) ?? 1
+                let container = try decoder.container(keyedBy: Enka.QueriedProfileGI.ProfilePictureRAW.CodingKeys.self)
+                let theID = try container.decodeIfPresent(Int.self, forKey: .id)
+                self.avatarId = try container.decodeIfPresent(Int.self, forKey: .avatarId)
+                self.costumeId = try container.decodeIfPresent(Int.self, forKey: .costumeId)
+                if theID == nil {
+                    // 针对自原神 4.1 版发行开始起没改过肖像的玩家帐号实施兼容处理。
+                    let candidate1: Int? = Enka.costumeReverseQueryTable[costumeId ?? -114_514]
+                    let candidate2: Int? = Enka.costumeReverseQueryTable[avatarId ?? -114_514]
+                    self.id = candidate1 ?? candidate2 ?? 1
+                } else {
+                    self.id = theID
+                }
             }
 
             // MARK: Public
 
             /// 在 ProfilePictureExcelConfigData.json 当中的检索用 ID。
             /// Ref: https://twitter.com/EnkaNetwork/status/1708819830693077325
-            public let id: Int
+            public let id: Int?
+            /// 旧 API，不要删，否则自 4.1 版发行开始起没改过肖像的玩家会受到影响。
+            public var avatarId: Int?
+            /// 旧 API，不要删，否则自 4.1 版发行开始起没改过肖像的玩家会受到影响。
+            public var costumeId: Int?
         }
 
         public static var locallyCachedData: [String: Self] {
@@ -65,13 +79,13 @@ extension Enka {
         }
 
         /// UID
-        public var uid: Int = 0
+        public var uid: String
         /// 名称
         public var nickname: String
         /// 等级
         public var level: Int
         /// 签名
-        public var signature: String?
+        public var signature: String
         /// 世界等级
         public var worldLevel: Int
         /// 资料名片ID
@@ -92,7 +106,7 @@ extension Enka {
         public var avatarDetailList: [RawAvatar]
 
         public var headIcon: Int {
-            profilePicture.id
+            profilePicture.id ?? 1
         }
     }
 }

@@ -23,10 +23,14 @@ extension EKQueryResultProtocol {
 
 // MARK: - EKQueriedProfileProtocol
 
-public protocol EKQueriedProfileProtocol: Decodable {
+public protocol EKQueriedProfileProtocol: Decodable, Hashable {
     associatedtype QueriedAvatar: EKQueriedRawAvatarProtocol
     var avatarDetailList: [QueriedAvatar] { get set }
-    var uid: Int { get }
+    var uid: String { get set }
+    var nickname: String { get }
+    var signature: String { get }
+    var level: Int { get }
+    var worldLevel: Int { get }
     static var locallyCachedData: [String: Self] { get set }
     var headIcon: Int { get }
 }
@@ -62,7 +66,9 @@ extension EKQueriedProfileProtocol {
 
     public var iconAssetName: String {
         var headIconID = headIcon.description
-        if DBType.game == .starRail {
+        switch DBType.game {
+        case .genshinImpact: break
+        case .starRail:
             let str = Enka.Sputnik.shared.db4HSR.profileAvatars[headIcon.description]?
                 .icon.split(separator: "/").last?.description ?? "Anonymous.png"
             headIconID = str.replacingOccurrences(of: ".png", with: "")

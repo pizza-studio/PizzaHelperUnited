@@ -23,7 +23,7 @@ extension Enka {
             platform: PlatformType,
             avatarDetailList: [RawAvatar]
         ) {
-            self.uid = uid
+            self.uid = uid.description
             self.nickname = nickname
             self.level = level
             self.friendCount = friendCount
@@ -39,7 +39,7 @@ extension Enka {
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.uid = try container.decode(Int.self, forKey: .uid)
+            self.uid = try container.decode(Int.self, forKey: .uid).description
             self.nickname = (try? container.decode(String.self, forKey: .nickname)) ?? "@Nanashibito"
             self.level = (try? container.decode(Int.self, forKey: .level)) ?? 0
             self.friendCount = (try? container.decode(Int.self, forKey: .friendCount)) ?? 0
@@ -73,7 +73,7 @@ extension Enka {
             set { Defaults[.queriedEnkaProfiles4HSR] = newValue }
         }
 
-        public let uid: Int
+        public var uid: String
         public let nickname: String
         public let level, friendCount: Int
         public let signature: String

@@ -213,3 +213,53 @@ public struct Divided<Content: View>: View {
 
     var content: Content
 }
+
+// MARK: - View.restoreAppTint.
+
+extension View {
+    @ViewBuilder
+    public func restoreSystemTint() -> some View {
+        // tint(.init(uiColor: UIColor.tintColor))
+        tint(.accentColor)
+    }
+}
+
+// MARK: - View.headerFooterVisibilityEnhanced
+
+extension View {
+    @ViewBuilder
+    public func secondaryColorVerseBackground() -> some View {
+        foregroundColor(.primary.opacity(0.75))
+    }
+}
+
+// MARK: - AccentVerseBackground
+
+public struct AccentVerseBackground: ViewModifier {
+    // MARK: Public
+
+    public func body(content: Content) -> some View {
+        switch colorScheme {
+        case .light:
+            content
+                .foregroundColor(Color(uiColor: UIColor.darkGray))
+                .blendMode(.colorDodge)
+        case .dark:
+            content
+                .foregroundColor(Color(uiColor: UIColor.lightGray))
+                .blendMode(.colorDodge)
+        @unknown default:
+            content
+        }
+    }
+
+    // MARK: Internal
+
+    @Environment(\.colorScheme) var colorScheme
+}
+
+extension View {
+    public func accentVerseBackground() -> some View {
+        modifier(AccentVerseBackground())
+    }
+}
