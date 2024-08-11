@@ -8,9 +8,8 @@ import Foundation
 // MARK: - EnkaDBProtocol
 
 public protocol EnkaDBProtocol {
-    associatedtype QueriedProfile = EKQueriedProfileProtocol
-
-    var game: Enka.GameType { get }
+    associatedtype QueriedProfile: EKQueriedProfileProtocol
+    static var game: Enka.GameType { get }
     var locTable: Enka.LocTable { get set }
     var locTag: String { get }
     var isExpired: Bool { get set }
@@ -30,7 +29,8 @@ public protocol EnkaDBProtocol {
 // MARK: - Online Update.
 
 extension EnkaDBProtocol {
-    var needsUpdate: Bool {
+    public var game: Enka.GameType { Self.game }
+    public var needsUpdate: Bool {
         let previousDate = Defaults[.lastEnkaDBDataCheckDate]
         let expired = Calendar.current.date(byAdding: .hour, value: 2, to: previousDate)! < Date()
         return expired || Enka.currentLangTag != locTag
@@ -38,7 +38,7 @@ extension EnkaDBProtocol {
 
     @MainActor
     @discardableResult
-    mutating func onlineUpdate(forced: Bool = false) async throws -> Self {
+    mutating public func onlineUpdate(forced: Bool = false) async throws -> Self {
         let newDB = try await Self(host: Defaults[.defaultDBQueryHost])
         newDB.saveSelfToUserDefaults()
         Defaults[.lastEnkaDBDataCheckDate] = Date()

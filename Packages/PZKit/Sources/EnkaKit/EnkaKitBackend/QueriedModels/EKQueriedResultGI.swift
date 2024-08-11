@@ -31,6 +31,8 @@ extension Enka {
 
         // MARK: Public
 
+        public typealias QueriedProfileType = Enka.QueriedProfileGI
+
         public static var game: Enka.GameType { .genshinImpact }
 
         /// 账号基本信息

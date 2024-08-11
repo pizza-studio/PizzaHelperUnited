@@ -99,7 +99,7 @@ extension Enka {
 // MARK: - Protocol Conformance.
 
 extension Enka.EnkaDB4GI {
-    public var game: Enka.GameType { .genshinImpact }
+    public static var game: Enka.GameType { .genshinImpact }
 
     /// Only available for characters.
     public func getNameTextMapHash(id: String) -> String? {

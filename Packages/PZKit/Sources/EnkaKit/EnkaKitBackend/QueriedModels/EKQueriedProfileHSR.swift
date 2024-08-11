@@ -64,6 +64,8 @@ extension Enka {
 
         // MARK: Public
 
+        public typealias QueriedAvatar = Enka.QueriedProfileHSR.RawAvatar
+
         public static var game: Enka.GameType { .starRail }
 
         public let uid: Int
@@ -102,6 +104,8 @@ extension Enka.QueriedProfileHSR {
         }
 
         // MARK: Public
+
+        public typealias DBType = Enka.EnkaDB4HSR
 
         public let level, avatarId: Int
         public let equipment: Equipment?
