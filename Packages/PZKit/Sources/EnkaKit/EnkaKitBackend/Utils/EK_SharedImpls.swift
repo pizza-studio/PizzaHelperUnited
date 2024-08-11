@@ -10,6 +10,15 @@ extension Enka {
     public enum GameType: CaseIterable, Codable, Hashable {
         case genshinImpact
         case starRail
+
+        // MARK: Public
+
+        public var localAssetNamePrefix: String {
+            switch self {
+            case .genshinImpact: "gi_"
+            case .starRail: "hsr_"
+            }
+        }
     }
 }
 
