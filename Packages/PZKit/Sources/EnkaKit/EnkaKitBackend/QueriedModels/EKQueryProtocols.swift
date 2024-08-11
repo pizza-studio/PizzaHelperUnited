@@ -40,6 +40,10 @@ extension EKQueriedProfileProtocol {
         }
         return newResult
     }
+
+    public mutating func saveToCache() {
+        locallyCachedData = self
+    }
 }
 
 // MARK: - EKQueriedRawAvatarProtocol
