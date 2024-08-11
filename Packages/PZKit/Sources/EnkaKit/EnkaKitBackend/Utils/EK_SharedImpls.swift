@@ -13,6 +13,13 @@ extension Enka {
 
         // MARK: Public
 
+        public var debugTag: String {
+            switch self {
+            case .genshinImpact: "GI"
+            case .starRail: "SR"
+            }
+        }
+
         public var localAssetNamePrefix: String {
             switch self {
             case .genshinImpact: "gi_"

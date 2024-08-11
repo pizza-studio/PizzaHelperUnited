@@ -9,6 +9,7 @@ extension Enka {
     public enum EKError: Error, LocalizedError {
         case langTableMatchingFailure
         case queryTooFrequent(dateWhenRefreshable: Date)
+        case queryFailure(uid: String, game: Enka.GameType, message: String)
 
         // MARK: Public
 
@@ -18,6 +19,8 @@ extension Enka {
             case let .queryTooFrequent(dateWhenRefreshable):
                 let cd = dateWhenRefreshable.coolingDownTimeRemaining
                 return "Query too frequent. Remaining cooling down time: \(cd) seconds."
+            case let .queryFailure(uid: uid, game: game, message: message):
+                return "Enka Query Failure. UID(\(game.debugTag)): \(uid), message: \(message)"
             }
         }
 

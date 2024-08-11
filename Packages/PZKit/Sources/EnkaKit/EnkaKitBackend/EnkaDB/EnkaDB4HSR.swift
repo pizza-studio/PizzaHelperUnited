@@ -110,7 +110,7 @@ extension Enka {
 
         // MARK: Public
 
-        public typealias QueriedType = Enka.QueriedProfileHSR
+        public typealias QueriedResult = Enka.QueriedResultHSR
 
         public var locTag: String
         public var locTable: Enka.LocTable
@@ -217,7 +217,7 @@ extension Enka.EnkaDB4HSR {
 // MARK: - Expiry Check.
 
 extension Enka.EnkaDB4HSR {
-    public func checkIfExpired(against givenProfile: QueriedType) -> Bool {
+    public func checkIfExpired(against givenProfile: QueriedProfile) -> Bool {
         // 星穹铁道直接拿角色、武器、圣遗物 ID 来查询就好。
         // 先检查角色 ID：
         var newIDs = Set<String>(givenProfile.avatarDetailList.map(\.id))
