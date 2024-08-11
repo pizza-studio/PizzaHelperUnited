@@ -5,7 +5,7 @@
 // MARK: - EKQueryResultProtocol
 
 public protocol EKQueryResultProtocol: Decodable {
-    associatedtype QueriedProfileType = EKQueriedProfileProtocol
+    associatedtype QueriedProfileType: EKQueriedProfileProtocol
     var detailInfo: QueriedProfileType? { get set }
     var uid: String? { get }
     var message: String? { get }
@@ -13,6 +13,7 @@ public protocol EKQueryResultProtocol: Decodable {
 }
 
 extension EKQueryResultProtocol {
+    public typealias DBType = QueriedProfileType.DBType
     public static func queryRAW(uid: String) async throws -> Self {
         try await Enka.Sputnik.fetchEnkaQueryResultRAW(uid, type: Self.self)
     }
@@ -21,20 +22,20 @@ extension EKQueryResultProtocol {
 // MARK: - EKQueriedProfileProtocol
 
 public protocol EKQueriedProfileProtocol {
-    associatedtype QueriedAvatar = EKQueriedRawAvatarProtocol
+    associatedtype QueriedAvatar: EKQueriedRawAvatarProtocol
     var avatarDetailList: [QueriedAvatar] { get set }
     var uid: Int { get }
     var locallyCachedData: Self? { get set }
 }
 
 extension EKQueriedProfileProtocol {
+    public typealias DBType = QueriedAvatar.DBType
     /// 仅制作这个新 API 将旧资料融入新资料，因为反向融合没有任何意义。
     public mutating func merge(old: Self?) -> Self {
         var newResult = self
         old?.avatarDetailList.forEach { oldAvatar in
-            guard let oldAvatarTyped = oldAvatar as? any EKQueriedRawAvatarProtocol else { return }
-            let ids = (avatarDetailList as? [any EKQueriedRawAvatarProtocol])?.map(\.avatarId) ?? []
-            guard !ids.contains(oldAvatarTyped.avatarId) else { return }
+            let ids = avatarDetailList.map(\.avatarId)
+            guard !ids.contains(oldAvatar.avatarId) else { return }
             newResult.avatarDetailList.append(oldAvatar)
         }
         return newResult
@@ -44,6 +45,8 @@ extension EKQueriedProfileProtocol {
 // MARK: - EKQueriedRawAvatarProtocol
 
 public protocol EKQueriedRawAvatarProtocol: Identifiable {
+    associatedtype DBType: EnkaDBProtocol
     var avatarId: Int { get }
     var id: String { get }
+    func summarize(theDB: DBType) -> Enka.AvatarSummarized?
 }

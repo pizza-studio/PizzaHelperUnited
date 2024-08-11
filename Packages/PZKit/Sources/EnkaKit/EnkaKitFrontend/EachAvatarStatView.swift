@@ -644,7 +644,7 @@ private let summariesHSR: [Enka.AvatarSummarized] = {
     let filePath = testDataPath + "testProfileHSR.json"
     let dataURL = URL(fileURLWithPath: filePath)
     let profile = try! Data(contentsOf: dataURL).parseAs(Enka.QueriedResultHSR.self)
-    let summaries = profile.detailInfo!.avatarDetailList.map { $0.summarize(hsrDB: enkaDatabase)! }
+    let summaries = profile.detailInfo!.avatarDetailList.map { $0.summarize(theDB: enkaDatabase)! }
     return summaries
     // swiftlint:enable force_try
     // swiftlint:enable force_unwrapping
@@ -662,7 +662,7 @@ private let summariesGI: [Enka.AvatarSummarized] = {
     let filePath = testDataPath + "testProfileGI.json"
     let dataURL = URL(fileURLWithPath: filePath)
     let profile = try! Data(contentsOf: dataURL).parseAs(Enka.QueriedResultGI.self)
-    let summaries = profile.detailInfo!.avatarDetailList.map { $0.summarize(giDB: enkaDatabase)! }
+    let summaries = profile.detailInfo!.avatarDetailList.map { $0.summarize(theDB: enkaDatabase)! }
     return summaries
     // swiftlint:enable force_try
     // swiftlint:enable force_unwrapping

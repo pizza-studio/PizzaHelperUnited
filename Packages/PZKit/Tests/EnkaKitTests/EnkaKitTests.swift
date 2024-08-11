@@ -86,7 +86,7 @@ final class EnkaKitTests: XCTestCase {
             throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
         }
         let englishDB = try Enka.EnkaDB4HSR(locTag: "en")
-        guard let summarized = firstAvatar.summarize(hsrDB: englishDB) else {
+        guard let summarized = firstAvatar.summarize(theDB: englishDB) else {
             throw TestError.error(msg: "Failed in summarizing Raiden Mei's character build.")
         }
         print(summarized.asText)
@@ -105,7 +105,7 @@ final class EnkaKitTests: XCTestCase {
             throw TestError.error(msg: "First avatar (Keqing, with costume) missing.")
         }
         let englishDB = try Enka.EnkaDB4GI(locTag: "en")
-        guard let summarized = firstAvatar.summarize(giDB: englishDB) else {
+        guard let summarized = firstAvatar.summarize(theDB: englishDB) else {
             throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
         }
         print(summarized.asText)
