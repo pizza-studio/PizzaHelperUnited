@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5BF32D902C62A2F6008C9949 /* PizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF32D8F2C62A2F6008C9949 /* PizzaKit */; };
+		5B2A65FB2C69204600BAEE7E /* EnkaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A65FA2C69204600BAEE7E /* EnkaKit */; };
+		5B2A65FD2C69205100BAEE7E /* PizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A65FC2C69205100BAEE7E /* PizzaKit */; };
+		5B2A65FF2C69205700BAEE7E /* PZBaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A65FE2C69205700BAEE7E /* PZBaseKit */; };
+		5B2A66012C69205900BAEE7E /* PZAccountKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A66002C69205900BAEE7E /* PZAccountKit */; };
+		5B2A66032C69206C00BAEE7E /* PZKitBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A66022C69206C00BAEE7E /* PZKitBackend */; };
+		5B2A66052C69206E00BAEE7E /* PZKitFrontend in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A66042C69206E00BAEE7E /* PZKitFrontend */; };
 		5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */; };
 		5BFD6B922C628CD8000A63E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B912C628CD8000A63E9 /* ContentView.swift */; };
 		5BFD6B942C628CD8000A63E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B932C628CD8000A63E9 /* Item.swift */; };
 		5BFD6B962C628CDA000A63E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B952C628CDA000A63E9 /* Assets.xcassets */; };
 		5BFD6B992C628CDA000A63E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */; };
-		5BFD6BA72C628EA2000A63E9 /* PizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFD6BA62C628EA2000A63E9 /* PizzaKit */; };
 		5BFD6BAF2C628EE5000A63E9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6BAB2C628EDA000A63E9 /* LICENSE */; };
 /* End PBXBuildFile section */
 
@@ -37,14 +41,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BF32D902C62A2F6008C9949 /* PizzaKit in Frameworks */,
-				5BFD6BA72C628EA2000A63E9 /* PizzaKit in Frameworks */,
+				5B2A65FF2C69205700BAEE7E /* PZBaseKit in Frameworks */,
+				5B2A66052C69206E00BAEE7E /* PZKitFrontend in Frameworks */,
+				5B2A65FD2C69205100BAEE7E /* PizzaKit in Frameworks */,
+				5B2A65FB2C69204600BAEE7E /* EnkaKit in Frameworks */,
+				5B2A66032C69206C00BAEE7E /* PZKitBackend in Frameworks */,
+				5B2A66012C69205900BAEE7E /* PZAccountKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B2A65F92C69204600BAEE7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5BF32D8D2C62A2E4008C9949 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +74,7 @@
 				5BF32D8D2C62A2E4008C9949 /* Packages */,
 				5BFD6BA82C628ECD000A63E9 /* RepoRoot */,
 				5BFD6B8E2C628CD8000A63E9 /* UnitedPizzaHelper */,
+				5B2A65F92C69204600BAEE7E /* Frameworks */,
 				5BFD6B8D2C628CD8000A63E9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -110,6 +126,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BFD6B9D2C628CDA000A63E9 /* Build configuration list for PBXNativeTarget "UnitedPizzaHelper" */;
 			buildPhases = (
+				5BB3A4E72C69232400653C89 /* SwiftFormat */,
 				5BFD6B882C628CD8000A63E9 /* Sources */,
 				5BFD6B892C628CD8000A63E9 /* Frameworks */,
 				5BFD6B8A2C628CD8000A63E9 /* Resources */,
@@ -120,8 +137,12 @@
 			);
 			name = UnitedPizzaHelper;
 			packageProductDependencies = (
-				5BFD6BA62C628EA2000A63E9 /* PizzaKit */,
-				5BF32D8F2C62A2F6008C9949 /* PizzaKit */,
+				5B2A65FA2C69204600BAEE7E /* EnkaKit */,
+				5B2A65FC2C69205100BAEE7E /* PizzaKit */,
+				5B2A65FE2C69205700BAEE7E /* PZBaseKit */,
+				5B2A66002C69205900BAEE7E /* PZAccountKit */,
+				5B2A66022C69206C00BAEE7E /* PZKitBackend */,
+				5B2A66042C69206E00BAEE7E /* PZKitFrontend */,
 			);
 			productName = UnitedPizzaHelper;
 			productReference = 5BFD6B8C2C628CD8000A63E9 /* UnitedPizzaHelper.app */;
@@ -135,7 +156,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					5BFD6B8B2C628CD8000A63E9 = {
 						CreatedOnToolsVersion = 15.3;
@@ -149,6 +170,9 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
+				ja,
 			);
 			mainGroup = 5BFD6B832C628CD8000A63E9;
 			packageReferences = (
@@ -175,6 +199,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5BB3A4E72C69232400653C89 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5BFD6B882C628CD8000A63E9 /* Sources */ = {
@@ -224,10 +270,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -288,10 +335,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -320,14 +368,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelper/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnitedPizzaHelper/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -336,11 +390,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -354,14 +409,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelper/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnitedPizzaHelper/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -370,11 +431,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -409,13 +471,29 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5BF32D8F2C62A2F6008C9949 /* PizzaKit */ = {
+		5B2A65FA2C69204600BAEE7E /* EnkaKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EnkaKit;
+		};
+		5B2A65FC2C69205100BAEE7E /* PizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PizzaKit;
 		};
-		5BFD6BA62C628EA2000A63E9 /* PizzaKit */ = {
+		5B2A65FE2C69205700BAEE7E /* PZBaseKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = PizzaKit;
+			productName = PZBaseKit;
+		};
+		5B2A66002C69205900BAEE7E /* PZAccountKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZAccountKit;
+		};
+		5B2A66022C69206C00BAEE7E /* PZKitBackend */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZKitBackend;
+		};
+		5B2A66042C69206E00BAEE7E /* PZKitFrontend */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZKitFrontend;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
