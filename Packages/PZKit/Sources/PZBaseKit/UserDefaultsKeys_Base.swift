@@ -10,4 +10,9 @@ extension UserDefaults {
     public static let baseSuite = UserDefaults(suiteName: appGroupID) ?? .standard
 }
 
-extension Defaults.Keys {}
+extension Defaults.Keys {
+    /// Remembering the most-recent tab index.
+    public static let appTabIndex = Key<Int>("appTabIndex", default: 0, suite: .baseSuite)
+    /// Remembering the most-recent tab index.
+    public static let restoreTabOnLaunching = Key<Bool>("restoreTabOnLaunching", default: true, suite: .baseSuite)
+}
