@@ -23,12 +23,31 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
     @State public var expanded: Bool
 
     public var body: some View {
+        // （Enka 被天空岛服务器喂屎的情形会导致 profile.summarizedAvatars 成为空阵列。）
         if !profile.summarizedAvatars.isEmpty {
-            if !expanded {
-                bodyAsCardCase
-            } else {
-                bodyAsNavList
+            Group {
+                if !expanded {
+                    bodyAsCardCase
+                } else {
+                    bodyAsNavList
+                }
             }
+            #if !os(OSX)
+            .fullScreenCover(item: $showingCharacterIdentifier) { enkaId in
+                fullScreenCover(selectedAvatarID: enkaId)
+            }
+            #else
+            .sheet(isPresented: $isSheetVisible) {
+                    if let identifier = showingCharacterIdentifier ?? profile.summarizedAvatars.first?.id {
+                        fullScreenCover(selectedAvatarID: identifier)
+                            .frame(minWidth: 375, minHeight: 667)
+                    } else {
+                        EmptyView().onAppear {
+                            isSheetVisible = false
+                        }
+                    }
+                }
+            #endif
         }
     }
 
@@ -37,17 +56,9 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
             Spacer()
             VStack {
                 Divided {
-                    // TabView 以 EnkaID 为依据，不能仅依赖资料本身的 Identifiable 特性。
                     ForEach(profile.summarizedAvatars) { avatar in
                         Button {
-                            tapticMedium()
-                            var transaction = Transaction()
-                            transaction.animation = .easeInOut
-                            transaction.disablesAnimations = !animateOnCallingCharacterShowcase
-                            withTransaction(transaction) {
-                                // TabView 以 EnkaId 为依据。
-                                showingCharacterIdentifier = avatar.id
-                            }
+                            characterButtonDidPress(avatar: avatar)
                         } label: {
                             HStack(alignment: .center) {
                                 let intel = avatar.mainInfo
@@ -70,59 +81,47 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
                                 }
                             }
                         }
+                        .buttonStyle(.borderless)
                         .foregroundStyle(.primary)
                     }
                 }
             }
         }
-        #if !os(OSX)
-        .fullScreenCover(item: $showingCharacterIdentifier) { enkaId in
-            fullScreenCover(selectedAvatarID: enkaId)
-        }
-        #endif
     }
 
     @ViewBuilder public var bodyAsCardCase: some View {
-        // （Enka 被天空岛服务器喂屎的情形会导致 profile.summarizedAvatars 成为空阵列。）
-        if profile.summarizedAvatars.isEmpty {
-            EmptyView()
-        } else {
-            VStack(alignment: .leading) {
-                ScrollView(.horizontal) {
-                    HStack {
-                        // TabView 以 EnkaID 为依据，不能仅依赖资料本身的 Identifiable 特性。
-                        ForEach(profile.summarizedAvatars, id: \.mainInfo.uniqueCharId) { avatar in
-                            Button {
-                                tapticMedium()
-                                var transaction = Transaction()
-                                transaction.animation = .easeInOut
-                                transaction.disablesAnimations = !animateOnCallingCharacterShowcase
-                                withTransaction(transaction) {
-                                    // TabView 以 EnkaId 为依据。
-                                    showingCharacterIdentifier = avatar.mainInfo.uniqueCharId
-                                }
-                            } label: {
-                                avatar.asCardIcon(75)
-                            }
+        VStack(alignment: .leading) {
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(profile.summarizedAvatars) { avatar in
+                        Button {
+                            characterButtonDidPress(avatar: avatar)
+                        } label: {
+                            avatar.asCardIcon(75)
                         }
                     }
                 }
-                .padding(.vertical, 4)
-                HelpTextForScrollingOnDesktopComputer(.horizontal)
             }
-            #if !os(OSX)
-            .fullScreenCover(item: $showingCharacterIdentifier) { enkaId in
-                fullScreenCover(selectedAvatarID: enkaId)
-            }
-            #endif
+            .padding(.vertical, 4)
+            HelpTextForScrollingOnDesktopComputer(.horizontal)
         }
     }
 
     // MARK: Internal
 
-    @State var showingCharacterIdentifier: String?
-    @Default(.animateOnCallingCharacterShowcase) var animateOnCallingCharacterShowcase: Bool
-    @State var profile: S
+    func characterButtonDidPress(avatar: Enka.AvatarSummarized) {
+        tapticMedium()
+        var transaction = Transaction()
+        transaction.animation = .easeInOut
+        transaction.disablesAnimations = !animateOnCallingCharacterShowcase
+        withTransaction(transaction) {
+            // TabView 以 EnkaId 为依据。
+            showingCharacterIdentifier = avatar.id
+        }
+        #if os(OSX)
+        isSheetVisible.toggle()
+        #endif
+    }
 
     @ViewBuilder
     func fullScreenCover(selectedAvatarID: String) -> some View {
@@ -142,7 +141,11 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
 
     // MARK: Private
 
+    @State private var isSheetVisible = false
+    @State private var showingCharacterIdentifier: String?
+    @State private var profile: S
     @Environment(\.dismiss) private var dismiss
+    @Default(.animateOnCallingCharacterShowcase) private var animateOnCallingCharacterShowcase: Bool
 
     private func tapticMedium() {
         #if !os(OSX)

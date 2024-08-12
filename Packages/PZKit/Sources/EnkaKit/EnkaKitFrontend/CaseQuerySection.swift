@@ -5,6 +5,7 @@
 import Combine
 import Defaults
 import Foundation
+import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -60,6 +61,8 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
                 }
         } footer: {
             sectionFooterWithExplainTexts()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.footnote)
                 .foregroundColor(.primary.opacity(0.75)) // Enhance legibility with background images.
                 .onTapGesture {
                     dropFieldFocus()
@@ -134,6 +137,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
+                    .buttonStyle(.borderless)
                     .disabled(delegate.taskState == .busy || !isUIDValid)
                 }
             }
@@ -263,11 +267,11 @@ public struct CaseQueryResultListView<ProfileForList: EKQueriedProfileProtocol>:
         profile: ProfileForList,
         enkaDB: ProfileForList.DBType,
         header: Bool = false,
-        listWrapped: Bool = false
+        formWrapped: Bool = false
     ) {
         self.profile = profile
         self.enkaDB = enkaDB
-        self.listWrapped = listWrapped
+        self.formWrapped = formWrapped
         self.showHeader = header
         self.extraTerms = .init(lang: Enka.currentLangTag, game: ProfileForList.DBType.game)
     }
@@ -275,10 +279,11 @@ public struct CaseQueryResultListView<ProfileForList: EKQueriedProfileProtocol>:
     // MARK: Public
 
     public var body: some View {
-        if listWrapped {
-            List {
+        if formWrapped {
+            Form {
                 coreBody
             }
+            .formStyle(.grouped)
             .navigationTitle(Text(verbatim: "\(profile.nickname) (\(profile.uid.description))"))
         } else {
             coreBody
@@ -332,14 +337,16 @@ public struct CaseQueryResultListView<ProfileForList: EKQueriedProfileProtocol>:
         if showHeader {
             header
         }
-        profile.asView(theDB: enkaDB, expanded: true)
+        Section {
+            profile.asView(theDB: enkaDB, expanded: true)
+        }
     }
 
     // MARK: Private
 
     @State private var profile: ProfileForList
     @State private var enkaDB: ProfileForList.DBType
-    @State private var listWrapped: Bool
+    @State private var formWrapped: Bool
     @State private var showHeader: Bool
     private let extraTerms: Enka.ExtraTerms
 
@@ -365,10 +372,10 @@ private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
             CaseQuerySection(theDB: enkaDatabaseGI)
         }
         .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
-            CaseQueryResultListView(profile: result, enkaDB: enkaDatabaseGI, header: true, listWrapped: true)
+            CaseQueryResultListView(profile: result, enkaDB: enkaDatabaseGI, header: true, formWrapped: true)
         }
         .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
-            CaseQueryResultListView(profile: result, enkaDB: enkaDatabaseHSR, header: true, listWrapped: true)
+            CaseQueryResultListView(profile: result, enkaDB: enkaDatabaseHSR, header: true, formWrapped: true)
         }
     }
     .environment(\.locale, .init(identifier: "zh-Hant-TW"))
