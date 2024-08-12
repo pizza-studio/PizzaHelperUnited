@@ -14,9 +14,9 @@ enum SourceFolderSetting {
 let sharedSwiftSettings: [SwiftSetting] = [
     .unsafeFlags([
         "-Xfrontend",
-        "-warn-long-function-bodies=200",
+        "-warn-long-function-bodies=250",
         "-Xfrontend",
-        "-warn-long-expression-type-checking=200",
+        "-warn-long-expression-type-checking=250",
     ]),
     .enableExperimentalFeature("AccessLevelOnImport"),
 ]
@@ -79,6 +79,10 @@ let package = Package(
             url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git",
             .upToNextMajor(from: "5.3.0")
         )
+        Package.Dependency.package(
+            url: "https://github.com/pizza-studio/ArtifactRatingDB.git",
+            .upToNextMajor(from: "1.0.2")
+        )
     },
     targets: buildTargets {
         // MARK: - Common Targets
@@ -131,6 +135,11 @@ let package = Package(
                 Target.Dependency.product(
                     name: "EnkaDBModels",
                     package: "EnkaDBGenerator",
+                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
+                )
+                Target.Dependency.product(
+                    name: "ArtifactRatingDB",
+                    package: "ArtifactRatingDB",
                     condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
                 )
                 Target.Dependency.product(
