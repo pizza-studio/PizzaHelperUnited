@@ -28,6 +28,11 @@ extension Defaults.Keys {
         default: .makeBundledDB(),
         suite: .enkaSuite
     )
+    public static let artifactCountDB4GI = Key<[String: String]>(
+        "artifactCountDB4GI",
+        default: ArtifactRating.initBundledCountDB(),
+        suite: .enkaSuite
+    )
     public static let enkaDBData4GI = Key<Enka.EnkaDB4GI>(
         "enkaDBData4GI",
         default: try! Enka.EnkaDB4GI(locTag: Enka.currentLangTag),

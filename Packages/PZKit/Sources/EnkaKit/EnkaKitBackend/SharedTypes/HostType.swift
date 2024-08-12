@@ -75,11 +75,13 @@ extension Enka {
             // swiftlint:enable force_unwrapping
         }
 
-        // MARK: Private
+        // MARK: Internal
 
-        private static func gitLinkURLWrapper(_ urlStr: String, branch: String) -> String {
+        static func gitLinkURLWrapper(_ urlStr: String, branch: String) -> String {
             "https://gitlink.org.cn/attachments/entries/get_file?download_url=\(urlStr)?ref=\(branch)"
         }
+
+        // MARK: Private
 
         private func profileQueryURLPrefix(_ game: Enka.GameType) -> String {
             switch (self, game) {

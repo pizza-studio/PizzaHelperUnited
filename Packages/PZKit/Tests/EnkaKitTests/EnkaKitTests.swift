@@ -8,11 +8,12 @@ import XCTest
 // MARK: - ArtifactRatingTests
 
 final class ArtifactRatingTests: XCTestCase {
-    func testInitializingBundledArtifactRatingDB() throws {
+    func testInitializingBundledArtifactRatingDB() async throws {
         let dictA = ArtifactRating.ModelDB(game: .starRail)
         let dictB = ArtifactRating.ModelDB(game: .genshinImpact)
         XCTAssertFalse(dictA.isEmpty)
         XCTAssertFalse(dictB.isEmpty)
+        try await ArtifactRating.ARSputnik.shared.onlineUpdate()
     }
 }
 
