@@ -5,6 +5,17 @@
 @testable import EnkaKit
 import XCTest
 
+// MARK: - ArtifactRatingTests
+
+final class ArtifactRatingTests: XCTestCase {
+    func testInitializingBundledArtifactRatingDB() throws {
+        let dictA = ArtifactRating.ModelDB(game: .starRail)
+        let dictB = ArtifactRating.ModelDB(game: .genshinImpact)
+        XCTAssertFalse(dictA.isEmpty)
+        XCTAssertFalse(dictB.isEmpty)
+    }
+}
+
 // MARK: - EnkaKitTests
 
 final class EnkaKitTests: XCTestCase {
