@@ -37,3 +37,9 @@ extension ArtifactRating.ModelDB {
         )!
     }
 }
+
+extension ArtifactRating {
+    public static func initBundledCountDB() -> [String: String] {
+        ARDB.getBundledCountDB4GI()
+    }
+}
