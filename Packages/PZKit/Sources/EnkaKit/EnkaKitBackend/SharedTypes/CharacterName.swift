@@ -106,7 +106,8 @@ extension Enka.CharacterName: CustomStringConvertible {
         guard let theDB = theDB else { return getDescription(officialName: officialNameOnly) }
         switch self {
         case let .protagonist(protagonist):
-            return protagonist.nameTranslationDict[Enka.currentWebAPILangTag] ?? String(describing: protagonist)
+            let newLangTag = Enka.convertLangTagToWebAPILangTag(oldTag: theDB.locTag)
+            return protagonist.nameTranslationDict[newLangTag] ?? String(describing: protagonist)
         case let .someoneElse(pid):
             return theDB.getTranslationFor(id: pid, realName: !officialNameOnly)
         }

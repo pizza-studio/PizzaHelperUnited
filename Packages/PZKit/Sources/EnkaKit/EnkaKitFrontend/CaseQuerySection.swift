@@ -273,7 +273,7 @@ public struct CaseQueryResultListView<ProfileForList: EKQueriedProfileProtocol>:
         self.enkaDB = enkaDB
         self.formWrapped = formWrapped
         self.showHeader = header
-        self.extraTerms = .init(lang: Enka.currentLangTag, game: ProfileForList.DBType.game)
+        self.extraTerms = .init(lang: enkaDB.locTag, game: ProfileForList.DBType.game)
     }
 
     // MARK: Public

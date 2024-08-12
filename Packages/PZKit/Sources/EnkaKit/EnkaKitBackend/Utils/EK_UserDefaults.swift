@@ -87,7 +87,7 @@ extension Defaults.Keys {
     /// Whether displaying real names for certain characters, not affecting SRGF imports & exports.
     public static let useRealCharacterNames = Key<Bool>(
         "useRealCharacterNames",
-        default: false,
+        default: true,
         suite: .baseSuite
     )
 }
