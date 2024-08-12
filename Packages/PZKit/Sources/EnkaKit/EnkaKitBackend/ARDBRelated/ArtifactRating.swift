@@ -39,7 +39,27 @@ extension ArtifactRating.ModelDB {
 }
 
 extension ArtifactRating {
-    public static func initBundledCountDB() -> [String: String] {
-        ARDB.getBundledCountDB4GI()
+    public static func initBundledCountDB() -> [String: Enka.PropertyType] {
+        ARDB.getBundledJSONFileObject(
+            fileNameStem: "CountDB4GI", type: [String: Enka.PropertyType].self
+        )!
+    }
+
+    public static func calculateSteps(
+        against appendPropIdList: [Int],
+        using db: [String: Enka.PropertyType],
+        dbExpiryHandler: (() -> Void)? = nil
+    )
+        -> [Enka.PropertyType: Int] {
+        var result = [Enka.PropertyType: Int]() // [PropName: Steps]
+        for propID in appendPropIdList {
+            // Shouldn't happen unless the database is expired.
+            guard let propName = db[propID.description] else {
+                dbExpiryHandler?()
+                return [:]
+            }
+            result[propName, default: 0] += 1
+        }
+        return result
     }
 }

@@ -182,11 +182,17 @@ extension Enka.AvatarSummarized.ArtifactInfo {
             theDB: giDB,
             type: mainStat.mainPropId,
             value: mainPropValue,
-            count: -114_514, // TODO: Not precalculated by Enka yet.
-            step: nil // TODO: Not precalculated by Enka yet.
+            count: -114_514, // Main Prop has no counts.
+            step: nil // Not necessary for Main Prop. Use artifact promote level instead.
         )
 
         var arrSubProps = [Enka.PVPair]()
+
+        var countMap: [Enka.PropertyType: Int] = [:]
+        if let appendPropIDs = artifactDataObj.appendPropIdList {
+            countMap = ArtifactRating.ARSputnik.shared.calculateSteps4GI(against: appendPropIDs)
+        }
+
         equipItem.flat.reliquarySubstats?.forEach { currentRecord in
             guard currentRecord.appendPropId != .unknownType else { return }
             let subPropValue: Double = currentRecord.appendPropId.isPercentage
@@ -197,8 +203,8 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                     theDB: giDB,
                     type: currentRecord.appendPropId,
                     value: subPropValue,
-                    count: -114_514, // TODO: Not precalculated by Enka yet.
-                    step: nil // TODO: Not precalculated by Enka yet.
+                    count: countMap[currentRecord.appendPropId] ?? -114_514,
+                    step: Int((Double(artifactDataObj.level) / 4).rounded(.down))
                 )
             )
         }
