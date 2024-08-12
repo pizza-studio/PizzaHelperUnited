@@ -94,6 +94,17 @@ extension EnkaDBProtocol {
         }
     }
 
+    func getFailableTranslationFor(id: String, realName: Bool = true) -> String? {
+        if realName, let matchedRealName = Enka.JSONType.bundledRealNameTable[locTag]?[id] {
+            return matchedRealName
+        }
+        if let hash = getNameTextMapHash(id: id) {
+            return locTable[hash]
+        } else {
+            return locTable[id]
+        }
+    }
+
     func getTranslationFor(property: Enka.PropertyType) -> String? {
         if let realNameMap = Enka.JSONType.bundledRealNameTable[locTag],
            let matchedRealName = realNameMap[property.rawValue] {

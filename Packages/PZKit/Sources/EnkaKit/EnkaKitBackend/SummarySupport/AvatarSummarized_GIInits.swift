@@ -127,7 +127,8 @@ extension Enka.AvatarSummarized.WeaponPanel {
         else { return nil } /// 原神的角色必定有至少装备一个武器。
         self.weaponID = weaponPack.itemId
         self.rarityStars = weaponPack.flat.rankLevel
-        self.localizedName = giDB.getTranslationFor(id: weaponPack.flat.nameTextMapHash)
+        self.localizedName = giDB.getFailableTranslationFor(id: weaponPack.itemId.description)
+            ?? giDB.getTranslationFor(id: weaponPack.flat.nameTextMapHash)
         self.trainedLevel = weapon.level
         self.refinement = (weapon.affixMap?.first?.value ?? 0) + 1
         var arrMainProps = [Enka.PVPair]()

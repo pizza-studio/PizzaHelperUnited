@@ -480,7 +480,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
 extension Enka.AvatarSummarized.ArtifactInfo {
     private func scoreText(lang: String) -> String {
         guard Defaults[.enableArtifactRatingInShowcase] else { return "" }
-        let extraTerms = Enka.ExtraTerms(game: game)
+        let extraTerms = Enka.ExtraTerms(lang: lang, game: game)
         let unit = extraTerms.artifactRatingUnit
         if let score = ratedScore?.description {
             return score + unit
@@ -654,7 +654,7 @@ private let summariesHSR: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
-    let enkaDatabase = try! Enka.EnkaDB4HSR(locTag: "zh-cn")
+    let enkaDatabase = try! Enka.EnkaDB4HSR(locTag: "zh-tw")
     let packageRootPath = URL(fileURLWithPath: #file).pathComponents.prefix(while: { $0 != "Sources" }).joined(
         separator: "/"
     ).dropFirst()
@@ -672,7 +672,7 @@ private let summariesGI: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
-    let enkaDatabase = try! Enka.EnkaDB4GI(locTag: "zh-cn")
+    let enkaDatabase = try! Enka.EnkaDB4GI(locTag: "zh-tw")
     let packageRootPath = URL(fileURLWithPath: #file).pathComponents.prefix(while: { $0 != "Sources" }).joined(
         separator: "/"
     ).dropFirst()
