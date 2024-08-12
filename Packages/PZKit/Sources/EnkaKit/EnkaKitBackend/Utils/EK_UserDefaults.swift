@@ -28,7 +28,7 @@ extension Defaults.Keys {
         default: .makeBundledDB(),
         suite: .enkaSuite
     )
-    public static let artifactCountDB4GI = Key<[String: String]>(
+    public static let artifactCountDB4GI = Key<[String: Enka.PropertyType]>(
         "artifactCountDB4GI",
         default: ArtifactRating.initBundledCountDB(),
         suite: .enkaSuite
@@ -104,6 +104,10 @@ extension Enka.QueriedProfileGI: _DefaultsSerializable {}
 // MARK: - Enka.QueriedProfileHSR + _DefaultsSerializable
 
 extension Enka.QueriedProfileHSR: _DefaultsSerializable {}
+
+// MARK: - Enka.PropertyType + _DefaultsSerializable
+
+extension Enka.PropertyType: _DefaultsSerializable {}
 
 // MARK: - Enka.HostType + _DefaultsSerializable
 

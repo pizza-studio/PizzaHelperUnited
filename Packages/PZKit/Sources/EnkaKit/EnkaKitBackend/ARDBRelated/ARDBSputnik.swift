@@ -37,7 +37,7 @@ extension ArtifactRating {
         public static let shared = ARSputnik()
 
         public var arDB: ArtifactRating.ModelDB = Defaults[.artifactRatingDB]
-        public var countDB4GI: [String: String] = Defaults[.artifactCountDB4GI]
+        public var countDB4GI: [String: Enka.PropertyType] = Defaults[.artifactCountDB4GI]
 
         // MARK: Private
 
@@ -53,15 +53,14 @@ extension ArtifactRating.ARSputnik {
             newDB[key] = value
         }
         arDB = newDB
-        countDB4GI = try await Self.fetchARDBData(type: .countDB4GI, decodingTo: [String: String].self)
+        countDB4GI = try await Self.fetchARDBData(type: .countDB4GI, decodingTo: [String: Enka.PropertyType].self)
     }
 
     func calculateSteps4GI(
-        against appendPropIdList: [Int],
-        dbExpiryHandler: (() -> Void)? = nil
+        against appendPropIdList: [Int]
     )
-        -> [String: Int] {
-        ARDB.calculateSteps(against: appendPropIdList, using: countDB4GI) {
+        -> [Enka.PropertyType: Int] {
+        ArtifactRating.calculateSteps(against: appendPropIdList, using: countDB4GI) {
             Task.detached { @MainActor in
                 try? await self.onlineUpdate()
             }
