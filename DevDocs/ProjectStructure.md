@@ -1,6 +1,6 @@
 # PZKit
 
-为了方便多人开发维护、解决「非得登入专案主管的 Apple ID 才能正常编译」的窘境，特此设立 PizzaKit 这个 SPM。
+为了方便多人开发维护、解决「非得登入专案主管的 Apple ID 才能正常编译」的窘境，特此设立 PZKit 这个 SPM。
 
 因为涉及到多个平台的编译，所以 `Package.swift` 的构造有些复杂、且有异于常见的 Swift Package。实际上呢，这个文件是个 Swift JIT 脚本，不用担心太多。
 
@@ -12,7 +12,8 @@
 2. `PZAccountKit` 负责存放与米游社帐号登入有关的一些内容。然而，下述内容均得放到专门的 SPM target 内：
   - 对于抽卡记录的抽取有关的米游社后端互动内容。
   - DailyNote（树脂/开拓力）、摩拉帐簿、个人深渊记录、深渊排行（这些都会各自弄成各自的 SPM target。
-3. 开发时是按照 UnitedPizzaHelper 开发的，但：
+3. 前端的内容，只要是两款 App 共用的，都塞到 `PZHelper` 或 `PZHelper-Watch` 这两个 targets 当中。
+4. 开发时是按照 UnitedPizzaHelper 开发的，但：
   1. 实际上会就原披助手与穹披助手分别设立两个不同的 Xcode target、以各自的 BundleIdentifier 来区分彼此。
   2. App 实际运行时，会检查 BundleIdentifier 来自动屏蔽与自身不对应的游戏。
     - 比如说原神披萨助手会自动隐藏任何与星穹铁道有关的内容。反之亦然。
