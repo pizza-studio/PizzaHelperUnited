@@ -23,6 +23,11 @@ extension Defaults.Keys {
         default: Enka.HostType.enkaGlobal,
         suite: .enkaSuite
     )
+    public static let artifactRatingDB = Key<ArtifactRating.ModelDB>(
+        "artifactRatingDB",
+        default: .makeBundledDB(),
+        suite: .enkaSuite
+    )
     public static let enkaDBData4GI = Key<Enka.EnkaDB4GI>(
         "enkaDBData4GI",
         default: try! Enka.EnkaDB4GI(locTag: Enka.currentLangTag),
@@ -74,6 +79,10 @@ extension Defaults.Keys {
         suite: .baseSuite
     )
 }
+
+// MARK: - ArtifactRating.RatingModel + _DefaultsSerializable
+
+extension ArtifactRating.RatingModel: _DefaultsSerializable {}
 
 // MARK: - Enka.EnkaDB4GI + _DefaultsSerializable
 
