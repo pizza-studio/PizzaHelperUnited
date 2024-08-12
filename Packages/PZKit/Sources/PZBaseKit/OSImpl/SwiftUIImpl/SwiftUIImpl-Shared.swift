@@ -30,7 +30,8 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
     public var body: some View {
         if OS.type == .macOS {
             let mark: String = (direction == .horizontal) ? "⇆ " : "⇅ "
-            (Text(mark) + Text("operation.scrolling.guide", bundle: Bundle.module)).font(.footnote).opacity(0.7)
+            (Text(verbatim: mark) + Text("operation.scrolling.guide", bundle: Bundle.module))
+                .font(.footnote).opacity(0.7)
         } else {
             EmptyView()
         }
@@ -242,11 +243,11 @@ public struct AccentVerseBackground: ViewModifier {
         switch colorScheme {
         case .light:
             content
-                .foregroundColor(Color(uiColor: UIColor.darkGray))
+                .foregroundColor(Color(UIColor.darkGray))
                 .blendMode(.colorDodge)
         case .dark:
             content
-                .foregroundColor(Color(uiColor: UIColor.lightGray))
+                .foregroundColor(Color(UIColor.lightGray))
                 .blendMode(.colorDodge)
         @unknown default:
             content
