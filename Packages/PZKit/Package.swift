@@ -5,12 +5,6 @@ import PackageDescription
 
 // MARK: - SourceFolderSetting
 
-enum SourceFolderSetting {
-    case singleOne
-    case separateOSes
-    case separatedOSesAndShared
-}
-
 let sharedSwiftSettings: [SwiftSetting] = [
     .unsafeFlags([
         "-Xfrontend",
@@ -30,8 +24,6 @@ let package = Package(
             targets: buildStrings {
                 "PZBaseKit"
                 "PZAccountKit"
-                "PZKitBackend"
-                "PZKitFrontend"
             }
         )
         Product.library(
@@ -41,14 +33,6 @@ let package = Package(
         Product.library(
             name: "PZAccountKit",
             targets: ["PZAccountKit"]
-        )
-        Product.library(
-            name: "PZKitBackend",
-            targets: ["PZKitBackend"]
-        )
-        Product.library(
-            name: "PZKitFrontend",
-            targets: ["PZKitFrontend"]
         )
 
         #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
@@ -102,23 +86,6 @@ let package = Package(
             dependencies: ["PZBaseKit"],
             swiftSettings: sharedSwiftSettings
         )
-        Target.target(
-            name: "PZKitBackend",
-            dependencies: buildTargetDependencies {
-                "PZBaseKit"
-                "PZAccountKit"
-                #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
-                "EnkaKit"
-                "GachaKit"
-                #endif
-            },
-            swiftSettings: sharedSwiftSettings
-        )
-        Target.target(
-            name: "PZKitFrontend",
-            dependencies: ["PZBaseKit", "PZAccountKit", "PZKitBackend"],
-            swiftSettings: sharedSwiftSettings
-        )
 
         // MARK: - Non-Watch Targets
 
@@ -167,11 +134,6 @@ let package = Package(
         #endif
 
         // MARK: - Test Targets
-
-        Target.testTarget(
-            name: "PizzaKitFrontendTests",
-            dependencies: ["PZKitFrontend"]
-        )
 
         #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
         Target.testTarget(
