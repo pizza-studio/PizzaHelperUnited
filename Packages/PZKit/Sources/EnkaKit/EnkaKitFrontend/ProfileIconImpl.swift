@@ -14,7 +14,7 @@ extension EKQueriedProfileProtocol {
                 imgObj.resizable()
             }
         } placeholder: {
-            Image(Self.nullPhotoAssetName).resizable().aspectRatio(contentMode: .fit)
+            Image(Self.nullPhotoAssetName, bundle: Bundle.module).resizable().aspectRatio(contentMode: .fit)
         }
     }
 
@@ -27,7 +27,8 @@ extension EKQueriedProfileProtocol {
             }
         }.background {
             Color.black.opacity(0.15)
-            Image(Self.nullPhotoAssetName).resizable().aspectRatio(contentMode: .fit)
+            /// 拿 Anonymous 的橙黄色当背景也不赖。
+            Image(Self.nullPhotoAssetName, bundle: Bundle.module).resizable().aspectRatio(contentMode: .fit)
         }
         .clipShape(.circle)
     }

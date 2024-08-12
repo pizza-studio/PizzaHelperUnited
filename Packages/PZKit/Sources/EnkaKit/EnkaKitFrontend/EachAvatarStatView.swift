@@ -335,9 +335,9 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
     func levelDisplay(size: CGFloat) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
-            Text("\(baseLevel)").font(.system(size: size * 0.8, weight: .heavy))
+            Text(verbatim: "\(baseLevel)").font(.system(size: size * 0.8, weight: .heavy))
             if let additionalLevel = self.levelAddition {
-                Text("+\(additionalLevel)").font(.system(size: size * 0.65, weight: .black))
+                Text(verbatim: "+\(additionalLevel)").font(.system(size: size * 0.65, weight: .black))
             }
         }
         .foregroundStyle(.white) // Always use white color for the text of these information.

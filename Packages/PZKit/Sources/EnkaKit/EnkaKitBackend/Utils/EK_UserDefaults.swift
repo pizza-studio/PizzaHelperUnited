@@ -49,7 +49,7 @@ extension Defaults.Keys {
     /// Whether animating on calling character showcase panel tabView.
     public static let animateOnCallingCharacterShowcase = Key<Bool>(
         "animateOnCallingCharacterShowcase",
-        default: true,
+        default: false,
         suite: .baseSuite
     )
 
