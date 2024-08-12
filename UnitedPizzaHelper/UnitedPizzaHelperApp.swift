@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZKitFrontend
 import SwiftData
 import SwiftUI
 
@@ -22,8 +23,10 @@ struct UnitedPizzaHelperApp: App {
 
     var body: some Scene {
         WindowGroup {
-            DemoContentView()
+            ContentView()
+                .frame(minWidth: 600, minHeight: 800)
         }
+        .windowResizability(.contentMinSize)
         .modelContainer(sharedDemoModelContainer)
     }
 }

@@ -13,8 +13,9 @@
 		5B2A66012C69205900BAEE7E /* PZAccountKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A66002C69205900BAEE7E /* PZAccountKit */; };
 		5B2A66032C69206C00BAEE7E /* PZKitBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A66022C69206C00BAEE7E /* PZKitBackend */; };
 		5B2A66052C69206E00BAEE7E /* PZKitFrontend in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A66042C69206E00BAEE7E /* PZKitFrontend */; };
+		5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */; };
 		5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */; };
-		5BFD6B922C628CD8000A63E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B912C628CD8000A63E9 /* ContentView.swift */; };
+		5BFD6B922C628CD8000A63E9 /* DemoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B912C628CD8000A63E9 /* DemoContentView.swift */; };
 		5BFD6B942C628CD8000A63E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B932C628CD8000A63E9 /* Item.swift */; };
 		5BFD6B962C628CDA000A63E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B952C628CDA000A63E9 /* Assets.xcassets */; };
 		5BFD6B992C628CDA000A63E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */; };
@@ -22,11 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5BE646A42C63B9760054F0D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BF32D8C2C62A2E4008C9949 /* PZKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZKit; sourceTree = "<group>"; };
 		5BFD6B8C2C628CD8000A63E9 /* UnitedPizzaHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitedPizzaHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedPizzaHelperApp.swift; sourceTree = "<group>"; };
-		5BFD6B912C628CD8000A63E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5BFD6B912C628CD8000A63E9 /* DemoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoContentView.swift; sourceTree = "<group>"; };
 		5BFD6B932C628CD8000A63E9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5BFD6B952C628CDA000A63E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -92,11 +94,12 @@
 			children = (
 				5BE646A42C63B9760054F0D4 /* Info.plist */,
 				5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */,
-				5BFD6B912C628CD8000A63E9 /* ContentView.swift */,
+				5BFD6B912C628CD8000A63E9 /* DemoContentView.swift */,
 				5BFD6B932C628CD8000A63E9 /* Item.swift */,
 				5BFD6B952C628CDA000A63E9 /* Assets.xcassets */,
 				5BFD6B9A2C628CDA000A63E9 /* UnitedPizzaHelper.entitlements */,
 				5BFD6B972C628CDA000A63E9 /* Preview Content */,
+				5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */,
 			);
 			path = UnitedPizzaHelper;
 			sourceTree = "<group>";
@@ -169,7 +172,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				"zh-Hans",
 				"zh-Hant",
 				ja,
@@ -194,6 +196,7 @@
 			files = (
 				5BFD6BAF2C628EE5000A63E9 /* LICENSE in Resources */,
 				5BFD6B992C628CDA000A63E9 /* Preview Assets.xcassets in Resources */,
+				5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */,
 				5BFD6B962C628CDA000A63E9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BFD6B922C628CD8000A63E9 /* ContentView.swift in Sources */,
+				5BFD6B922C628CD8000A63E9 /* DemoContentView.swift in Sources */,
 				5BFD6B942C628CD8000A63E9 /* Item.swift in Sources */,
 				5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */,
 			);
@@ -297,6 +300,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -355,6 +359,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
@@ -390,6 +395,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -431,6 +437,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
