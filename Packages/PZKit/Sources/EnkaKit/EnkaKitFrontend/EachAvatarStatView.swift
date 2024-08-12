@@ -529,6 +529,10 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                                 .minimumScaleFactor(0.5)
                         }
                         .frame(maxWidth: .infinity)
+                        .colorMultiply(colorToMultiply(on: prop))
+                        .overlay(alignment: .center) {
+                            // Text(verbatim: prop.count.description).padding(.horizontal, 5).background(.black)
+                        }
                     }
                 }
             }
@@ -561,6 +565,20 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                 .clipped()
                 .scaledToFit()
                 .frame(width: fontSize * 4, height: fontSize * 4)
+        }
+    }
+
+    @MainActor
+    private func colorToMultiply(on subProp: Enka.PVPair) -> Color {
+        guard Defaults[.useColorsToDifferentiateArtifactSubPropSteps] else { return .primary }
+        return switch subProp.count {
+        case 1: .primary.opacity(0.6)
+        case 2: .primary
+        case 3: .orange.opacity(0.95)
+        case 4: .yellow.opacity(0.95)
+        case 5 ..< 10: .red.opacity(0.95)
+        case 10...: .brown
+        default: .secondary.opacity(0.1)
         }
     }
 }

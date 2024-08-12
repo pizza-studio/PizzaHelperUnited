@@ -77,6 +77,13 @@ extension Defaults.Keys {
         suite: .baseSuite
     )
 
+    /// Whether displaying artifact sub-props in different colors to indicate their steps.
+    public static let useColorsToDifferentiateArtifactSubPropSteps = Key<Bool>(
+        "useColorsToDifferentiateArtifactSubPropSteps",
+        default: true,
+        suite: .baseSuite
+    )
+
     /// Whether displaying real names for certain characters, not affecting SRGF imports & exports.
     public static let useRealCharacterNames = Key<Bool>(
         "useRealCharacterNames",
