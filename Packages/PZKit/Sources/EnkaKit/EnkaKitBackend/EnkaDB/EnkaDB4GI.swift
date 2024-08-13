@@ -174,3 +174,15 @@ extension Enka.EnkaDB4GI {
         return !remainingHashes.isEmpty
     }
 }
+
+// MARK: - Extra.
+
+extension Enka.EnkaDB4GI {
+    public func findCostume(charID: String) -> (costumeID: String, costume: EnkaDBModelsGI.Costume)? {
+        guard let matchedCharacter = characters[charID] else { return nil }
+        let filtered: [(String, EnkaDBModelsGI.Costume)]? = matchedCharacter.costumes?.filter {
+            !$0.value.sideIconName.contains("CostumeWic")
+        }
+        return filtered?.first
+    }
+}

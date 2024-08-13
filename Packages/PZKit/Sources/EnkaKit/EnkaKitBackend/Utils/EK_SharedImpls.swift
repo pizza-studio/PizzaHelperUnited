@@ -7,11 +7,13 @@ import Foundation
 // MARK: - Enka.GameType
 
 extension Enka {
-    public enum GameType: CaseIterable, Codable, Hashable {
+    public enum GameType: CaseIterable, Codable, Hashable, Equatable, Identifiable {
         case genshinImpact
         case starRail
 
         // MARK: Public
+
+        public var id: String { debugTag }
 
         public var debugTag: String {
             switch self {

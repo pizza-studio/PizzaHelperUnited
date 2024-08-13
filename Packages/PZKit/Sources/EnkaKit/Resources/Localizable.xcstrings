@@ -174,25 +174,111 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This might not be appliable to certain occasions. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875)."
+            "value" : "This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875)."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "効かぬ場所はございます。なお：弊アプリで使用していた「原神のキャラ写真スタイルに基づいたキャラ写真」素材は、**情報漏洩者からの素材でなく**、「[MiHoYo公式提供したミクミクダンス用モデル](https://www.aplaybox.com/u/516827875)」を使って作ったものである。"
+            "value" : "これらの画像は弊アプリで効かぬ場合はございます。なお：弊アプリで使用していた「原神のキャラ写真スタイルに基づいたキャラ写真」素材は、**情報漏洩者からの素材でなく**、「[MiHoYo公式提供したミクミクダンス用モデル](https://www.aplaybox.com/u/516827875)」を使って作ったものである。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该功能可能在某些场合下无法起作用。另附免责声明：这套原神风格的角色证件照**并非出自内鬼泄漏的角色人设图稿**，而是利用[米哈游官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)渲染而成。\n"
+            "value" : "这套证件照可能在该 App 内的某些场合下无法起作用。另附免责声明：这套原神风格的角色证件照**并非出自内鬼泄漏的角色人设图稿**，而是利用[米哈游官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)渲染而成。\n"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "該功能可能在某些場合下無法起作用。另附免責聲明：這套原神風格的角色證件照**並非出自內鬼洩漏的角色人設圖稿**，而是利用[米哈遊官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)渲染而成。"
+            "value" : "這套證件照可能在該 App 內的某些場合下無法起作用。另附免責聲明：這套原神風格的角色證件照**並非出自內鬼洩漏的角色人設圖稿**，而是利用[米哈遊官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)渲染而成。"
+          }
+        }
+      }
+    },
+    "enka.photoSpecimen.credit.genshin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The background totem assets used for ID Photos of Genshin Impact characters in this app are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "弊アプリ内の『原神』キャラクターの画像の背景紋様は、キャラクターの元素能力属性を示します。その紋様の素材は『崩壊：スターレイル』からの素材です（草、水、岩属性の紋様は例外）。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该应用内显示的《原神》角色证件照的背景图腾乃是为了彰显该角色的元素能力属性而设定。该图腾素材取自《崩坏：星穹铁道》（水、岩、草这三个属性除外）。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該應用內顯示的《原神》角色證件照的背景圖騰乃是為了彰顯該角色的元素能力屬性而設定。該圖騰素材取自《崩壞：星穹鐵道》（水、岩、草這三個屬性除外）。"
+          }
+        }
+      }
+    },
+    "enka.photoSpecimen.credit.starRail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The background totem assets used for ID Photos of Star Rail in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "弊アプリ内の「崩壊：スターレイル」キャラクターの画像の背景紋様は、キャラクターの「運命の途」と「元素能力属性」両方を示します。「元素能力属性」は紋様の色彩で表現します。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该应用内显示的《崩坏：星穹铁道》角色证件照的背景图腾乃是为了同时彰显该角色的元素能力属性与命途而设定。元素能力属性体现在命途纹样的配色上。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該應用內顯示的《崩壞：星穹鐵道》角色證件照的背景圖騰乃是為了同時彰顯該角色的元素能力屬性與命途而設定。元素能力屬性體現在命途紋樣的配色上。"
+          }
+        }
+      }
+    },
+    "enka.photoSpecimen.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID Photo Specimen for all characters"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "身分証明用写真一覧 (全キャラ)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全角色证件照样本"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全角色身分證件照樣本"
           }
         }
       }
@@ -226,7 +312,6 @@
       }
     },
     "settings.display.artifactRating.considerHyperBloomElectroRoles.explanation" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -283,7 +368,6 @@
       }
     },
     "settings.display.artifactRating.considerSwirls.explanation" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -676,7 +760,6 @@
       }
     },
     "settings.display.showCase.colorizeArtifactSubPropCounts.explain" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -3,28 +3,98 @@
   "strings" : {
     "Add Item" : {
       "localizations" : {
-        "ja" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Add Item Here"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "記録を添付"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "添入记录"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "添入記錄"
+          }
+        }
+      }
+    },
+    "CFBundleDisplayName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "United Pizza Helper"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "統一ピザ助手"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一桶披萨助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一桶披薩助手"
+          }
+        }
+      }
+    },
+    "CFBundleName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "United Pizza Helper"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "統一ピザ助手"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "桶披助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "桶披助手"
           }
         }
       }
     },
     "Item at %@" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Item at %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -47,6 +117,12 @@
     },
     "Select an item" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select an item"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
