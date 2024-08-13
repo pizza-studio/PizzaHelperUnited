@@ -76,6 +76,8 @@ extension Enka {
         case statusResistanceBase = "StatusResistanceBase"
         case elementalMastery = "ElementalMastery" // GI
         case shieldCostMinusRatio = "ShieldCostMinusRatio" // GI
+        case skillCoolDownMinusRatio = "SkillCoolDownMinusRatio" // GI
+        case allDamageResistance = "AllDamageResistance" // GI
     }
 }
 
@@ -89,6 +91,7 @@ extension Enka.PropertyType: Codable, CodingKeyRepresentable {
             ?? GIAvatarAttribute(rawValue: rawValue)?.asPropertyType
             ?? Self.allCases.first(where: { $0.rawValue == rawValue })
         else {
+            print("!!! Unknown or Unhandled Property: \(rawValue)")
             self = .unknownType
             return
         }
@@ -313,34 +316,58 @@ private enum GIAvatarAttribute: String, Codable, Hashable, CaseIterable, RawRepr
     case attackAmp = "FIGHT_PROP_ATTACK_PERCENT"
     case hpAmp = "FIGHT_PROP_HP_PERCENT"
     case defenceAmp = "FIGHT_PROP_DEFENSE_PERCENT"
+    case allDmgAddHurt = "FIGHT_PROP_ADD_HURT"
+    case speedPercent = "FIGHT_PROP_SPEED_PERCENT"
+    case resisElectro = "FIGHT_PROP_ELEC_SUB_HURT"
+    case resisPyro = "FIGHT_PROP_FIRE_SUB_HURT"
+    case resisDendro = "FIGHT_PROP_GRASS_SUB_HURT"
+    case resisCryo = "FIGHT_PROP_ICE_SUB_HURT"
+    case resisPhysico = "FIGHT_PROP_PHYSICAL_SUB_HURT"
+    case resisGeo = "FIGHT_PROP_ROCK_SUB_HURT"
+    case resisHydro = "FIGHT_PROP_WATER_SUB_HURT"
+    case resisAnemo = "FIGHT_PROP_WIND_SUB_HURT"
+    case allDamageSubHurt = "FIGHT_PROP_SUB_HURT"
+    case skillCdMinusRatio = "FIGHT_PROP_SKILL_CD_MINUS_RATIO"
 
     // MARK: Internal
 
     var asPropertyType: Enka.PropertyType {
         switch self {
-        case .baseAttack: return .baseAttack
-        case .maxHP: return .maxHP
-        case .attack: return .attack
-        case .defence: return .defence
-        case .elementalMastery: return .elementalMastery
-        case .critRate: return .criticalChance
-        case .critDmg: return .criticalDamage
-        case .healAmp: return .healRatio
-        case .healedAmp: return .healTakenRatio
-        case .chargeEfficiency: return .energyRecovery
-        case .shieldCostMinusRatio: return .shieldCostMinusRatio
-        case .dmgAmpPyro: return .pyroAddedRatio
-        case .dmgAmpHydro: return .hydroAddedRatio
-        case .dmgAmpDendro: return .dendroAddedRatio
-        case .dmgAmpElectro: return .electroAddedRatio
-        case .dmgAmpAnemo: return .anemoAddedRatio
-        case .dmgAmpCryo: return .cryoAddedRatio
-        case .dmgAmpGeo: return .geoAddedRatio
-        case .dmgAmpPhysico: return .physicoAddedRatio
-        case .hp: return .maxHP
-        case .attackAmp: return .attackAddedRatio
-        case .hpAmp: return .hpAddedRatio
-        case .defenceAmp: return .defenceAddedRatio
+        case .baseAttack: .baseAttack
+        case .maxHP: .maxHP
+        case .attack: .attack
+        case .defence: .defence
+        case .elementalMastery: .elementalMastery
+        case .critRate: .criticalChance
+        case .critDmg: .criticalDamage
+        case .healAmp: .healRatio
+        case .healedAmp: .healTakenRatio
+        case .chargeEfficiency: .energyRecovery
+        case .shieldCostMinusRatio: .shieldCostMinusRatio
+        case .dmgAmpAnemo: .anemoAddedRatio
+        case .dmgAmpCryo: .cryoAddedRatio
+        case .dmgAmpDendro: .dendroAddedRatio
+        case .dmgAmpElectro: .electroAddedRatio
+        case .dmgAmpGeo: .geoAddedRatio
+        case .dmgAmpHydro: .hydroAddedRatio
+        case .dmgAmpPhysico: .physicoAddedRatio
+        case .dmgAmpPyro: .pyroAddedRatio
+        case .resisAnemo: .anemoResistance
+        case .resisCryo: .cryoResistance
+        case .resisDendro: .dendroResistance
+        case .resisElectro: .electroResistance
+        case .resisGeo: .geoResistance
+        case .resisHydro: .hydroResistance
+        case .resisPhysico: .physicoResistance
+        case .resisPyro: .pyroResistance
+        case .hp: .maxHP
+        case .attackAmp: .attackAddedRatio
+        case .hpAmp: .hpAddedRatio
+        case .defenceAmp: .defenceAddedRatio
+        case .allDmgAddHurt: .allDamageTypeAddedRatio
+        case .speedPercent: .speedAddedRatio
+        case .allDamageSubHurt: .allDamageResistance
+        case .skillCdMinusRatio: .skillCoolDownMinusRatio
         }
     }
 }
