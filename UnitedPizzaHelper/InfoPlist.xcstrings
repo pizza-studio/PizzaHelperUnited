@@ -1,86 +1,90 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add Item" : {
+    "CFBundleDisplayName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add Item Here"
+            "value" : "United Pizza Helper"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "記録を添付"
+            "state" : "translated",
+            "value" : "統一ピザ助手"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "添入记录"
+            "state" : "translated",
+            "value" : "桶披助手"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "添入記錄"
+            "state" : "translated",
+            "value" : "桶披助手"
           }
         }
       }
     },
-    "Item at %@" : {
+    "CFBundleName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Item at %@"
+            "value" : "United Pizza Helper"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@つ目の記録"
+            "value" : "統一ピザ助手"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "第%@笔记录"
+            "value" : "一桶披萨助手"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "第%@筆記錄"
+            "value" : "一桶披薩助手"
           }
         }
       }
     },
-    "Select an item" : {
+    "NSHumanReadableCopyright" : {
+      "comment" : "Copyright (human-readable)",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select an item"
+            "state" : "new",
+            "value" : "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later)."
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "１つ記録のお選びを"
+            "state" : "needs_review",
+            "value" : "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later)."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "请任选一笔记录"
+            "state" : "needs_review",
+            "value" : "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later)."
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "請任選一筆記錄"
+            "state" : "needs_review",
+            "value" : "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later)."
           }
         }
       }
