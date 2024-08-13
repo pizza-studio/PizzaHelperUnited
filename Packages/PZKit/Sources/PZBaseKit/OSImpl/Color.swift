@@ -2,12 +2,11 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import AppKit
 import SwiftUI
 
 #if !canImport(UIKit) && canImport(AppKit)
+import AppKit
 public typealias UIColor = NSColor
-
 #endif
 
 extension UIColor {
