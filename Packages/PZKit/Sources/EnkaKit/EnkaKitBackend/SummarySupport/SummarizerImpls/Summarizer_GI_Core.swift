@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 extension Enka.QueriedProfileGI.RawAvatar {
+    /// 计算角色面板（原神）。
     public func summarize(theDB: DBType) -> Enka.AvatarSummarized? {
         let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
             giDB: theDB,
@@ -67,7 +68,7 @@ extension Enka.QueriedProfileGI.RawAvatar {
             case .energyRecovery: panel.energyRecovery += propPair.value
             case .shieldCostMinusRatio: panel.energyRecovery += propPair.value
             case _ where propPair.type.element == prioritizedElement:
-                panel.elementalDMGAddedRatio += prioritizedElementDmg
+                panel.elementalDMGAddedRatio = prioritizedElementDmg // 特殊处理
             default: break
             }
             return [prioritizedElement, nil].contains(propPair.type.element)

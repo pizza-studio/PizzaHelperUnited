@@ -5,6 +5,7 @@
 import EnkaDBModels
 
 extension Enka.QueriedProfileHSR.RawAvatar {
+    /// 计算角色面板（星穹铁道）。
     public func summarize(theDB: DBType) -> Enka.AvatarSummarized? {
         // Main Info
         let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
