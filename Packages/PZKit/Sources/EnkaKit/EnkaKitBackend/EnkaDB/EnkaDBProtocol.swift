@@ -4,6 +4,7 @@
 
 import Defaults
 import Foundation
+import PZBaseKit
 
 // MARK: - EnkaDBProtocol
 
@@ -83,17 +84,35 @@ extension EnkaDBProtocol {
 
 extension EnkaDBProtocol {
     func getTranslationFor(id: String, realName: Bool = true) -> String {
+        // 处理雷电国崩的自订姓名。
         if realName, let matchedRealName = Enka.JSONType.bundledRealNameTable[locTag]?[id] {
             return matchedRealName
         } else if ["10000075", "3230559562"].contains(id), !Defaults[.customizedNameForWanderer].isEmpty {
             return Defaults[.customizedNameForWanderer]
         }
+        // 正常处理。
         let missingTranslation = "i18nMissing(id:\(id))"
-        if let hash = getNameTextMapHash(id: id) {
-            return locTable[hash] ?? missingTranslation
+        let result: String = if let hash = getNameTextMapHash(id: id) {
+            locTable[hash] ?? missingTranslation
         } else {
-            return locTable[id] ?? missingTranslation
+            locTable[id] ?? missingTranslation
         }
+        guard Defaults[.forceCharacterWeaponNameFixed] else { return result }
+        if Locale.isUILanguageSimplifiedChinese {
+            if result == "钟离" {
+                return "锺离"
+            } else if result.contains("钟离") {
+                return result.replacingOccurrences(of: "钟离", with: "锺离")
+            }
+        } else if Locale.isUILanguageTraditionalChinese {
+            if result == "霧切之回光" {
+                return "霧切之迴光"
+            }
+            if result.contains("堇") {
+                return result.replacingOccurrences(of: "堇", with: "菫")
+            }
+        }
+        return result
     }
 
     func getFailableTranslationFor(id: String, realName: Bool = true) -> String? {
