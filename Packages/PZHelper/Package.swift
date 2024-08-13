@@ -30,6 +30,7 @@ let package = Package(
             name: "PZHelper",
             dependencies: [
                 .product(name: "PizzaKit", package: "PZKit"),
+                .product(name: "EnkaKit", package: "PZKit"),
             ],
             swiftSettings: sharedSwiftSettings
         ),
