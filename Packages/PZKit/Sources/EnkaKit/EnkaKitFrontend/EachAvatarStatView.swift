@@ -30,7 +30,7 @@ public struct EachAvatarStatView: View {
                     WeaponPanelView(for: weapon, fontSize: fontSize)
                 }
                 renderPropertyGrid()
-                // artifactRatingSummaryRow
+                artifactRatingSummaryRow
             }
             .padding(.horizontal, 11 * Self.zoomFactor)
             .padding(.vertical, 6 * Self.zoomFactor)
@@ -57,7 +57,6 @@ public struct EachAvatarStatView: View {
                 .ignoresSafeArea(.all)
             }
         }
-        // .showDimension()
     }
 
     // MARK: Internal
@@ -65,24 +64,23 @@ public struct EachAvatarStatView: View {
     @Default(.enableArtifactRatingInShowcase) var enableArtifactRatingInShowcase: Bool
 
     @ViewBuilder @MainActor var artifactRatingSummaryRow: some View {
-        EmptyView()
-//        if enableArtifactRatingInShowcase, let ratingResult = data.artifactRatingResult {
-//            HStack {
-//                Text(verbatim: " → " + data.mainInfo.terms.artifactRatingName)
-//                    .fontWidth(.compressed)
-//                Spacer()
-//                Text(
-//                    verbatim: ratingResult.sumExpression
-//                        + ratingResult.allpt.description
-//                        + "(\(ratingResult.result))"
-//                )
-//                .fontWeight(.bold)
-//                .fontWidth(.condensed)
-//            }
-//            .font(.system(size: fontSize * 0.7))
-//            .opacity(0.9)
-//            .padding(.top, 2)
-//        }
+        if enableArtifactRatingInShowcase, let ratingResult = data.artifactRatingResult {
+            HStack {
+                Text(verbatim: " → " + data.mainInfo.terms.artifactRatingName)
+                    .fontWidth(.compressed)
+                Spacer()
+                Text(
+                    verbatim: ratingResult.sumExpression
+                        + ratingResult.allpt.description
+                        + "(\(ratingResult.result))"
+                )
+                .fontWeight(.bold)
+                .fontWidth(.condensed)
+            }
+            .font(.system(size: fontSize * 0.7))
+            .opacity(0.9)
+            .padding(.top, 2)
+        }
     }
 
     @ViewBuilder @MainActor var artifactGrid: some View {
@@ -530,9 +528,9 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                         }
                         .frame(maxWidth: .infinity)
                         .colorMultiply(colorToMultiply(on: prop))
-                        .overlay(alignment: .center) {
-                            // Text(verbatim: prop.count.description).padding(.horizontal, 5).background(.black)
-                        }
+                        // .overlay(alignment: .center) {
+                        //     Text(verbatim: prop.count.description).padding(.horizontal, 5).background(.black)
+                        // }
                     }
                 }
             }

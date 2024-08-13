@@ -84,6 +84,6 @@ extension Enka.QueriedProfileGI.RawAvatar {
             avatarPropertiesA: propPair.0,
             avatarPropertiesB: propPair.1,
             artifacts: artifactsInfo
-        )
+        ).artifactsRated()
     }
 }

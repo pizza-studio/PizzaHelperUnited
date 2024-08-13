@@ -233,14 +233,14 @@ extension CaseQuerySection {
                         }
 
                         // 检查本地圣遗物评分模型是否过期，过期了的话就尝试更新。
-                        //  if ArtifactRating.isScoreModelExpired(against: profile) {
-                        //      ArtifactRating.resetFactoryScoreModel()
-                        //      if ArtifactRating.isScoreModelExpired(against: profile) {
-                        //          // 圣遗物评分非刚需体验。
-                        //          // 如果在这个过程内出错的话，顶多就是该当角色没有圣遗物评分可用。
-                        //          _ = await ArtifactRating.onlineUpdateScoreModel()
-                        //      }
-                        //  }
+                        if ArtifactRating.sharedDB.isExpired(against: profile) {
+                            ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
+                            if ArtifactRating.sharedDB.isExpired(against: profile) {
+                                // 圣遗物评分非刚需体验。
+                                // 如果在这个过程内出错的话，顶多就是该当角色没有圣遗物评分可用。
+                                try? await ArtifactRating.ARSputnik.shared.onlineUpdate()
+                            }
+                        }
 
                         self.currentInfo = profile
                         taskState = .standBy

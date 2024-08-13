@@ -39,6 +39,18 @@ extension Enka {
 
         // MARK: Public
 
+        public var artifactRatingTypeIDStr: String {
+            let intResult: Int = switch self {
+            case .giFlower, .hsrHead: 1
+            case .giPlume, .hsrHand: 2
+            case .giSands, .hsrBody: 3
+            case .giGoblet, .hsrFoot: 4
+            case .giCirclet, .hsrObject: 5
+            case .hsrNeck: 6
+            }
+            return intResult.description
+        }
+
         public var game: Enka.GameType {
             rawValue.hasPrefix("EQUIP_") ? .genshinImpact : .starRail
         }

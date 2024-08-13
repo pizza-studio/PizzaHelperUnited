@@ -90,7 +90,18 @@ extension Defaults.Keys {
         default: true,
         suite: .baseSuite
     )
+
+    /// Artifact rating preferences for Genshin Impact.
+    public static let artifactRatingRules = Key<ArtifactRating.Rules>(
+        "artifactRatingRules",
+        default: .allEnabled,
+        suite: .baseSuite
+    )
 }
+
+// MARK: - ArtifactRating.Rules + _DefaultsSerializable
+
+extension ArtifactRating.Rules: _DefaultsSerializable {}
 
 // MARK: - ArtifactRating.RatingModel + _DefaultsSerializable
 
