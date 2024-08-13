@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5BFD6B8B2C628CD8000A63E9"
-               BuildableName = "UnitedPizzaHelper.app"
+               BuildableName = "United Pizza Helper.app"
                BlueprintName = "UnitedPizzaHelper"
                ReferencedContainer = "container:UnitedPizzaHelper.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5BFD6B8B2C628CD8000A63E9"
-            BuildableName = "UnitedPizzaHelper.app"
+            BuildableName = "United Pizza Helper.app"
             BlueprintName = "UnitedPizzaHelper"
             ReferencedContainer = "container:UnitedPizzaHelper.xcodeproj">
          </BuildableReference>
@@ -63,7 +63,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5BFD6B8B2C628CD8000A63E9"
-            BuildableName = "UnitedPizzaHelper.app"
+            BuildableName = "United Pizza Helper.app"
             BlueprintName = "UnitedPizzaHelper"
             ReferencedContainer = "container:UnitedPizzaHelper.xcodeproj">
          </BuildableReference>
