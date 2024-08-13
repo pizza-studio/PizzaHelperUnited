@@ -94,6 +94,12 @@ extension Enka {
                 }
             } header: {
                 Text("settings.display.showCase.sectionTitle".i18nEnka)
+            } footer: {
+                NavigationLink(destination: PhotoSpecimenView()) {
+                    Text("enka.photoSpecimen.navTitle".i18nEnka)
+                        .font(.footnote)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
 
             Section {
