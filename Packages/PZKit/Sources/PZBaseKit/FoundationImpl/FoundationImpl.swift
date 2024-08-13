@@ -86,3 +86,9 @@ extension String {
         // swiftlint:enable force_unwrapping
     }
 }
+
+extension String {
+    public var i18nBaseKit: String {
+        NSLocalizedString(self, bundle: Bundle.module, comment: "")
+    }
+}
