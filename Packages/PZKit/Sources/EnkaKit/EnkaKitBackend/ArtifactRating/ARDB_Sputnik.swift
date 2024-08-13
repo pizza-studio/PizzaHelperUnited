@@ -46,6 +46,10 @@ extension ArtifactRating {
 }
 
 extension ArtifactRating.ARSputnik {
+    func resetFactoryScoreModel() {
+        Defaults.reset(.artifactRatingDB)
+    }
+
     func onlineUpdate() async throws {
         var newDB = try await Self.fetchARDBData(type: .arDB4GI, decodingTo: ArtifactRating.ModelDB.self)
         let hsrDB = try await Self.fetchARDBData(type: .arDB4HSR, decodingTo: ArtifactRating.ModelDB.self)

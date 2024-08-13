@@ -14,6 +14,8 @@ final class ArtifactRatingTests: XCTestCase {
         XCTAssertFalse(dictA.isEmpty)
         XCTAssertFalse(dictB.isEmpty)
         try await ArtifactRating.ARSputnik.shared.onlineUpdate()
+        let c = ArtifactRating.ARSputnik.shared.countDB4GI
+        print(c)
     }
 }
 
@@ -98,7 +100,7 @@ final class EnkaKitTests: XCTestCase {
             throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
         }
         let englishDB = try Enka.EnkaDB4HSR(locTag: "en")
-        guard let summarized = firstAvatar.summarize(theDB: englishDB) else {
+        guard let summarized = firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Raiden Mei's character build.")
         }
         print(summarized.asText)
@@ -111,6 +113,8 @@ final class EnkaKitTests: XCTestCase {
         summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
         print(profile.iconAssetName)
         print(profile.onlineAssetURLStr)
+        let x = summarized.artifactRatingResult
+        print(x ?? "Result Rating Failed.")
     }
 
     func testEnkaGIProfileSummaryAsText() throws {
@@ -119,7 +123,7 @@ final class EnkaKitTests: XCTestCase {
             throw TestError.error(msg: "First avatar (Keqing, with costume) missing.")
         }
         let englishDB = try Enka.EnkaDB4GI(locTag: "en")
-        guard let summarized = firstAvatar.summarize(theDB: englishDB) else {
+        guard let summarized = firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
         }
         print(summarized.asText)
@@ -131,6 +135,8 @@ final class EnkaKitTests: XCTestCase {
         summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
         print(profile.iconAssetName)
         print(profile.onlineAssetURLStr)
+        let x = summarized.artifactRatingResult
+        print(x ?? "Result Rating Failed.")
     }
 }
 

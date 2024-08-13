@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Combine
+import Defaults
 import Foundation
 import Observation
 
@@ -17,6 +19,14 @@ extension Enka {
             self.theDB = theDB
             self.rawInfo = rawInfo
             self.summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB) // 肯定是一致的，不用怀疑了。
+
+            cancellables.append(
+                Defaults.publisher(.artifactRatingRules).sink { _ in
+                    Task.detached { @MainActor in
+                        self.evaluateArtifactRatings() // 选项有变更时，给圣遗物重新评分。
+                    }
+                }
+            )
         }
 
         // MARK: Public
@@ -29,6 +39,10 @@ extension Enka {
         public private(set) var theDB: DBType
         public private(set) var rawInfo: P
         public private(set) var summarizedAvatars: [Enka.AvatarSummarized]
+
+        // MARK: Private
+
+        private var cancellables: [AnyCancellable] = []
     }
 }
 
@@ -37,6 +51,11 @@ extension Enka.ProfileSummarized {
     public func update(newRawInfo: P, dropExistingData: Bool = false) {
         rawInfo = dropExistingData ? newRawInfo : newRawInfo.inheritAvatars(from: rawInfo)
         summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB)
+    }
+
+    @MainActor
+    public func evaluateArtifactRatings() {
+        summarizedAvatars = summarizedAvatars.map { $0.artifactsRated() }
     }
 }
 

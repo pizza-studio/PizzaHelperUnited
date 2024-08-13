@@ -19,7 +19,7 @@ extension Enka {
         public let avatarPropertiesB: [Enka.PVPair]
         public private(set) var artifacts: [ArtifactInfo]
 
-        // public var artifactRatingResult: ArtifactRating.ScoreResult?
+        public var artifactRatingResult: ArtifactRating.ScoreResult?
 
         public var id: String { mainInfo.uniqueCharId } // 回头可能需要另外考虑。
 

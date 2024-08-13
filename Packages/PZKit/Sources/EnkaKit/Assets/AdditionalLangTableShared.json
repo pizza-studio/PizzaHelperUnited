@@ -1,5 +1,6 @@
 {
   "ar" : {
+    "_ArtifactRating" : "توافق الآثار",
     "_AdventureRank" : "رتبة المغامرة",
     "_AdventureRankShortened" : "AR",
     "_AvatarLevel" : "مستوى",
@@ -48,6 +49,7 @@
     "WindResistanceDelta" : "مقاومة الانيمو"
   },
   "de" : {
+    "_ArtifactRating" : "Artefaktkompatibilität",
     "_AdventureRank" : "Abenteuerstufe",
     "_AdventureRankShortened" : "AS",
     "_AvatarLevel" : "Stufe",
@@ -130,6 +132,7 @@
     "WindResistanceDelta" : "Anemo-WDS"
   },
   "en" : {
+    "_ArtifactRating" : "Artifact Compatibility",
     "_AdventureRank" : "Adventure Rank",
     "_AdventureRankShortened" : "AR",
     "_AvatarLevel" : "Level",
@@ -212,6 +215,7 @@
     "WindResistanceDelta" : "Anemo RES"
   },
   "es" : {
+    "_ArtifactRating" : "Compatibilidad de artefactos",
     "_AdventureRank" : "Rango de Aventura",
     "_AdventureRankShortened" : "RA",
     "_AvatarLevel" : "Nivel",
@@ -294,6 +298,7 @@
     "WindResistanceDelta" : "RES Anemo"
   },
   "fr" : {
+    "_ArtifactRating" : "Compatibilité des artefacts",
     "_AdventureRank" : "Niv. D'Aventure",
     "_AdventureRankShortened" : "NA",
     "_AvatarLevel" : "Niveau",
@@ -376,6 +381,7 @@
     "WindResistanceDelta" : "RÉS Anémo"
   },
   "id" : {
+    "_ArtifactRating" : "Kompatibilitas Artefak",
     "_AdventureRank" : "Rank Adventure",
     "_AdventureRankShortened" : "RA",
     "_AvatarLevel" : "Tingkat",
@@ -458,6 +464,7 @@
     "WindResistanceDelta" : "Anemo RES"
   },
   "it" : {
+    "_ArtifactRating" : "Compatibilità degli artefatti",
     "_AdventureRank" : "Grado Avventura",
     "_AdventureRankShortened" : "GA",
     "_AvatarLevel" : "Livello",
@@ -506,6 +513,7 @@
     "WindResistanceDelta" : "RES ad Anemo"
   },
   "ja" : {
+    "_ArtifactRating" : "聖遺物適合度",
     "_AdventureRank" : "冒険ランク",
     "_AdventureRankShortened" : "AR",
     "_AvatarLevel" : "レベル",
@@ -588,6 +596,7 @@
     "WindResistanceDelta" : "風元素耐性"
   },
   "ko" : {
+    "_ArtifactRating" : "성유물 호환성",
     "_AdventureRank" : "모험 등급",
     "_AdventureRankShortened" : "AR",
     "_AvatarLevel" : "레벨",
@@ -670,6 +679,7 @@
     "WindResistanceDelta" : "바람 원소 내성"
   },
   "pt" : {
+    "_ArtifactRating" : "Compatibilidade de artefatos",
     "_AdventureRank" : "Rank de Aventura",
     "_AdventureRankShortened" : "RA",
     "_AvatarLevel" : "Nível",
@@ -752,6 +762,7 @@
     "WindResistanceDelta" : "RES Anemo"
   },
   "ru" : {
+    "_ArtifactRating" : "Совместимость артефактов",
     "_AdventureRank" : "Ранг Приключений",
     "_AdventureRankShortened" : "РП",
     "_AvatarLevel" : "Уровень",
@@ -834,6 +845,7 @@
     "WindResistanceDelta" : "Анемо сопротивление"
   },
   "th" : {
+    "_ArtifactRating" : "ความเข้ากันได้ของวัตถุโบราณ",
     "_AdventureRank" : "แรงก์ผจญภัย",
     "_AdventureRankShortened" : "AR",
     "_AvatarLevel" : "เลเวล",
@@ -916,6 +928,7 @@
     "WindResistanceDelta" : "ความต้านทานลม"
   },
   "tr" : {
+    "_ArtifactRating" : "Nesne Uyumluluğu",
     "_AdventureRank" : "Macera Rütbesi",
     "_AdventureRankShortened" : "MR",
     "_AvatarLevel" : "Seviyesi",
@@ -964,6 +977,7 @@
     "WindResistanceDelta" : "Rüzgar Direnci"
   },
   "uk" : {
+    "_ArtifactRating" : "Сумісність артефактів",
     "_AdventureRank" : "Ранг Пригод",
     "_AdventureRankShortened" : "РП",
     "_AvatarLevel" : "Рівень",
@@ -1012,6 +1026,7 @@
     "WindResistanceDelta" : "Anemo RES"
   },
   "vi" : {
+    "_ArtifactRating" : "Tính tương thích của hiện vật",
     "_AdventureRank" : "Hạng Mạo Hiểm",
     "_AdventureRankShortened" : "HMH",
     "_AvatarLevel" : "Cấp",
@@ -1094,6 +1109,7 @@
     "WindResistanceDelta" : "Kháng Nguyên Tố Phong"
   },
   "zh-cn" : {
+    "_ArtifactRating" : "圣遗物契合度",
     "_AdventureRank" : "冒险等阶",
     "_AdventureRankShortened" : "AR",
     "_AvatarLevel" : "等级",
@@ -1177,6 +1193,7 @@
     "WindResistanceDelta" : "风元素抗性增幅"
   },
   "zh-tw" : {
+    "_ArtifactRating" : "聖遺物契合度",
     "_AdventureRank" : "冒險等階",
     "_AdventureRankShortened" : "AR",
     "_AvatarLevel" : "等級",
