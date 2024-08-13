@@ -27,6 +27,27 @@ extension Enka {
                     }
                 }
             )
+            cancellables.append(
+                Defaults.publisher(.useRealCharacterNames).sink { _ in
+                    Task.detached { @MainActor in
+                        self.update(newRawInfo: rawInfo, dropExistingData: false)
+                    }
+                }
+            )
+            cancellables.append(
+                Defaults.publisher(.forceCharacterWeaponNameFixed).sink { _ in
+                    Task.detached { @MainActor in
+                        self.update(newRawInfo: rawInfo, dropExistingData: false)
+                    }
+                }
+            )
+            cancellables.append(
+                Defaults.publisher(.customizedNameForWanderer).sink { _ in
+                    Task.detached { @MainActor in
+                        self.update(newRawInfo: rawInfo, dropExistingData: false)
+                    }
+                }
+            )
         }
 
         // MARK: Public

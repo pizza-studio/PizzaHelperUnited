@@ -70,16 +70,9 @@ extension Defaults.Keys {
         suite: .baseSuite
     )
 
-    /// Whether displaying artifact compatibility rating results in EachAvatarStatView.
-    public static let enableArtifactRatingInShowcase = Key<Bool>(
-        "enableArtifactRatingInShowcase",
-        default: true,
-        suite: .baseSuite
-    )
-
     /// Whether displaying artifact sub-props in different colors to indicate their steps.
-    public static let useColorsToDifferentiateArtifactSubPropSteps = Key<Bool>(
-        "useColorsToDifferentiateArtifactSubPropSteps",
+    public static let colorizeArtifactSubPropCounts = Key<Bool>(
+        "colorizeArtifactSubPropCounts",
         default: true,
         suite: .baseSuite
     )
@@ -95,6 +88,21 @@ extension Defaults.Keys {
     public static let artifactRatingRules = Key<ArtifactRating.Rules>(
         "artifactRatingRules",
         default: .allEnabled,
+        suite: .baseSuite
+    )
+
+    /// User-Specified Wanderer's name.
+    public static let customizedNameForWanderer = Key<String>(
+        "customizedNameForWanderer",
+        default: .init(),
+        suite: .baseSuite
+    )
+
+    /// 是否强制修复指定语言下的某些角色跟物品的名称用字。
+    /// 该选项仅对中文介面可见。
+    public static let forceCharacterWeaponNameFixed = Key<Bool>(
+        "forceCharacterWeaponNameFixed",
+        default: true,
         suite: .baseSuite
     )
 }

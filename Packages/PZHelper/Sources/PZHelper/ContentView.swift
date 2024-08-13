@@ -23,11 +23,12 @@ public struct ContentView: View {
             ShowCaseQueryTabPage()
                 .tag(0) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem {
-                    Label {
-                        Text("tab.query", bundle: .module)
-                    } icon: {
-                        Image(systemSymbol: .magnifyingglassCircleFill)
-                    }
+                    Label("tab.query".i18nPZHelper, systemSymbol: .archiveboxCircle)
+                }
+            AppSettingsPage()
+                .tag(4) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                .tabItem {
+                    Label("tab.settings".i18nPZHelper, systemSymbol: .wrenchAndScrewdriverFill)
                 }
         }
         .tint(tintForCurrentTab)
@@ -39,11 +40,13 @@ public struct ContentView: View {
 
     // MARK: Internal
 
+    @Default(.appTabIndex) var appIndex: Int
+
     var index: Binding<Int> { Binding(
         get: { selection },
         set: {
             selection = $0
-            Defaults[.appTabIndex] = $0
+            appIndex = $0
             UserDefaults.baseSuite.synchronize()
         }
     ) }
