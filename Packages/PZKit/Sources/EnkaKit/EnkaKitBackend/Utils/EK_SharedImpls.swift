@@ -146,3 +146,9 @@ extension Data? {
 extension Bundle {
     public static let enka = Bundle.module
 }
+
+extension String {
+    public var i18nEnka: String {
+        NSLocalizedString(self, bundle: Bundle.module, comment: "")
+    }
+}

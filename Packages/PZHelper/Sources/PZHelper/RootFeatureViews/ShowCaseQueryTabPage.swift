@@ -16,6 +16,7 @@ struct ShowCaseQueryTabPage: View {
                 CaseQuerySection(theDB: sharedDB.db4HSR)
             }
             .formStyle(.grouped)
+            .navigationTitle("tab.query.fullTitle".i18nPZHelper)
             .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
                 CaseQueryResultListView(
                     profile: result,

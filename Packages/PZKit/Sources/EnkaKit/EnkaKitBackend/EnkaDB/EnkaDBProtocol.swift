@@ -85,6 +85,8 @@ extension EnkaDBProtocol {
     func getTranslationFor(id: String, realName: Bool = true) -> String {
         if realName, let matchedRealName = Enka.JSONType.bundledRealNameTable[locTag]?[id] {
             return matchedRealName
+        } else if ["10000075", "3230559562"].contains(id), !Defaults[.customizedNameForWanderer].isEmpty {
+            return Defaults[.customizedNameForWanderer]
         }
         let missingTranslation = "i18nMissing(id:\(id))"
         if let hash = getNameTextMapHash(id: id) {

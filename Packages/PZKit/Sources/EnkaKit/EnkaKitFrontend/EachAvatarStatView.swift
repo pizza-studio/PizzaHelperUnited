@@ -61,10 +61,10 @@ public struct EachAvatarStatView: View {
 
     // MARK: Internal
 
-    @Default(.enableArtifactRatingInShowcase) var enableArtifactRatingInShowcase: Bool
+    @Default(.artifactRatingRules) var artifactRatingRules: ArtifactRating.Rules
 
     @ViewBuilder @MainActor var artifactRatingSummaryRow: some View {
-        if enableArtifactRatingInShowcase, let ratingResult = data.artifactRatingResult {
+        if artifactRatingRules.contains(.enabled), let ratingResult = data.artifactRatingResult {
             HStack {
                 Text(verbatim: " → " + data.mainInfo.terms.artifactRatingName)
                     .fontWidth(.compressed)
@@ -475,19 +475,24 @@ extension Enka.AvatarSummarized.WeaponPanel {
     }
 }
 
-extension Enka.AvatarSummarized.ArtifactInfo {
-    private func scoreText(lang: String) -> String {
-        guard Defaults[.enableArtifactRatingInShowcase] else { return "" }
-        let extraTerms = Enka.ExtraTerms(lang: lang, game: game)
-        let unit = extraTerms.artifactRatingUnit
-        if let score = ratedScore?.description {
-            return score + unit
-        }
-        return ""
+// MARK: - ArtifactView
+
+private struct ArtifactView: View {
+    // MARK: Lifecycle
+
+    public init(
+        _ artifact: Enka.AvatarSummarized.ArtifactInfo,
+        fontSize: CGFloat,
+        langTag: String
+    ) {
+        self.artifact = artifact
+        self.fontSize = fontSize
+        self.langTag = langTag
     }
 
-    @ViewBuilder @MainActor
-    public func asView(fontSize: CGFloat, langTag: String) -> some View {
+    // MARK: Public
+
+    @ViewBuilder @MainActor public var body: some View {
         coreBody(fontSize: fontSize, langTag: langTag)
             .padding(.vertical, fontSize * 0.13)
             .padding(.horizontal, fontSize * 0.3)
@@ -497,15 +502,34 @@ extension Enka.AvatarSummarized.ArtifactInfo {
             }
     }
 
+    // MARK: Private
+
+    @State private var artifact: Enka.AvatarSummarized.ArtifactInfo
+    @State private var fontSize: CGFloat
+    @State private var langTag: String
+
+    @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
+    @Default(.artifactRatingRules) private var artifactRatingRules: ArtifactRating.Rules
+
+    private func scoreText(lang: String) -> String {
+        guard artifactRatingRules.contains(.enabled) else { return "" }
+        let extraTerms = Enka.ExtraTerms(lang: lang, game: artifact.game)
+        let unit = extraTerms.artifactRatingUnit
+        if let score = artifact.ratedScore?.description {
+            return score + unit
+        }
+        return ""
+    }
+
     @ViewBuilder @MainActor
     private func coreBody(fontSize: CGFloat, langTag: String) -> some View {
         HStack(alignment: .top) {
             Color.clear.frame(width: fontSize * 2.6)
             LazyVStack(spacing: 0) {
                 AttributeTagPair(
-                    icon: mainProp.iconAssetName,
+                    icon: artifact.mainProp.iconAssetName,
                     title: "",
-                    valueStr: mainProp.valueString,
+                    valueStr: artifact.mainProp.valueString,
                     fontSize: fontSize * 0.86
                 )
                 Divider().overlay {
@@ -513,7 +537,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                 }
                 let gridColumnsFixed = [GridItem](repeating: .init(), count: 2)
                 LazyVGrid(columns: gridColumnsFixed, spacing: 0) {
-                    ForEach(self.subProps) { prop in
+                    ForEach(artifact.subProps) { prop in
                         HStack(spacing: 0) {
                             Enka.queryImageAssetSUI(for: prop.iconAssetName)?
                                 .resizable()
@@ -539,11 +563,11 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         .frame(height: fontSize * 4)
         .fixedSize(horizontal: false, vertical: true)
         .corneredTag(
-            verbatim: "Lv.\(trainedLevel) ★\(rarityStars)",
+            verbatim: "Lv.\(artifact.trainedLevel) ★\(artifact.rarityStars)",
             alignment: .bottomLeading, textSize: fontSize * 0.7
         )
         .background(alignment: .topLeading) {
-            handleArtifactIcon(fontSize: fontSize, content: self.localFittingIcon4SUI)
+            handleArtifactIcon(fontSize: fontSize, content: artifact.localFittingIcon4SUI)
                 .opacity(0.9)
                 .corneredTag(
                     verbatim: scoreText(lang: langTag),
@@ -555,7 +579,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
 
     @ViewBuilder @MainActor
     private func handleArtifactIcon(fontSize: CGFloat, content: (some View)?) -> some View {
-        if game == .starRail {
+        if artifact.game == .starRail {
             content
         } else {
             content?
@@ -568,7 +592,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
 
     @MainActor
     private func colorToMultiply(on subProp: Enka.PVPair) -> Color {
-        guard Defaults[.useColorsToDifferentiateArtifactSubPropSteps] else { return .primary }
+        guard colorizeArtifactSubPropCounts else { return .primary }
         return switch subProp.count {
         case 1: .primary.opacity(0.6)
         case 2: .primary
@@ -578,6 +602,13 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         case 10...: .brown
         default: .secondary.opacity(0.1)
         }
+    }
+}
+
+extension Enka.AvatarSummarized.ArtifactInfo {
+    @ViewBuilder @MainActor
+    public func asView(fontSize: CGFloat, langTag: String) -> some View {
+        ArtifactView(self, fontSize: fontSize, langTag: langTag)
     }
 }
 

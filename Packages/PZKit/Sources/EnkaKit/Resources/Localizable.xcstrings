@@ -168,6 +168,709 @@
           }
         }
       }
+    },
+    "enka.genshinStylePhotosForHSR.featureOption.disclaimer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This might not be appliable to certain occasions. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "効かぬ場所はございます。なお：弊アプリで使用していた「原神のキャラ写真スタイルに基づいたキャラ写真」素材は、**情報漏洩者からの素材でなく**、「[MiHoYo公式提供したミクミクダンス用モデル](https://www.aplaybox.com/u/516827875)」を使って作ったものである。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该功能可能在某些场合下无法起作用。另附免责声明：这套原神风格的角色证件照**并非出自内鬼泄漏的角色人设图稿**，而是利用[米哈游官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)渲染而成。\n"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該功能可能在某些場合下無法起作用。另附免責聲明：這套原神風格的角色證件照**並非出自內鬼洩漏的角色人設圖稿**，而是利用[米哈遊官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)渲染而成。"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.considerHyperBloomElectroRoles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accommodating electro hyperbloom builds"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "雷属性キャラの超開花ビルドも考慮する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "评分时照顾任何雷系角色的超绽放配装"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "評分時照顧任何雷系角色的超綻放配裝"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.considerHyperBloomElectroRoles.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genshin Only. E.g.: Raiden Shogun with over-900 elemental master (and related 4-piece artifact sets) can team up with Baizhu, Furina, and Nahida to be the strongest full-auto guided remote hyperbloom team. This disobeys the initial character design of Raiden Shogun but is an acceptable and effective choice with significantly-reduced workload of building-up the entire team with significantly larger firing range than Shinobu-Yukuaki-based close-combat hyperbloom teams. Similar situations may apply to other electro characters in Genshin Impact."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原神限定の聖遺物評判ルールです。900点以上の元素熟知を持って元素熟知系聖遺物セットを装備した雷電将軍は白朮＆フリーナ＆ナヒーダと組むと、最強の全自動超開花チームになり、そしてキャラクターの養成にかかる時間もめっちゃ少なくなり、さらに（忍＆行秋系超開花チームと比べると）射程距離はめっちゃ遠いです。雷電将軍の数値モデルと反する養成方法ですが、かなり強い超開花チームです。このようなことは他の雷系キャラにもある可能性があるので、このルールのオプションを用意しました。スターレイルのキャラクターにはこのルールが通用しません。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "举例：雷电将军在堆有至少 900 点元素精通（且使用有助于超绽放的圣遗物套装）的情况下可以与芙宁娜＆纳西妲＆白朮组成最强的远程全自动脱手超绽放阵容。该阵容违背了雷电将军的数值模型，但培养角色所需的时间成本显著降低、且拥有比以久岐忍＆行秋为核心的近战超绽放阵容更远的射程范围。其余雷系角色可能会有类似的情况。该选项对星穹铁道角色无效。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "舉例：雷電將軍在堆有至少 900 點元素精通（且使用有助於超綻放的聖遺物套裝）的情況下可以與芙寧娜＆納西妲＆白朮組成最強的遠程全自動脫手超綻放陣容。該陣容違背了雷電將軍的數值模型，但培養角色所需的時間成本顯著降低、且擁有比以久岐忍＆行秋為核心的近戰超綻放陣容更遠的射程範圍。其餘雷系角色可能會有類似的情況。該選項對星穹鐵道角色無效。"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.considerSwirls" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consider catalysis reactions triggered with anemo characters"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "風属性キャラの拡散で起こした超激化反応も考慮する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "兼顾风系角色的扩散行为所启动的超激化反应"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "兼顧風系角色的擴散行為所啟動的超激化反應"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.considerSwirls.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genshin Only. E.g.: Kaedehara Kazuha with 4-piece Thundering Fury artifact suite is now considered as an acceptable choice to trigger dendro catalysis. Similar situations may apply to other anemo characters in Genshin Impact."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原神限定の聖遺物評判ルールです。「雷のような怒り」聖遺物の４セットを装備した楓原万葉は超激化反応にお役立てると今はそう認識されております。このようなことは他の風系キャラにもある可能性があるので、このルールのオプションを用意しました。スターレイルのキャラクターにはこのルールが通用しません。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "举例：枫原万叶持「如雷的盛怒」四件套可有效参与激化反应。其他的风系角色可能会有类似的情况。该选项对星穹铁道角色无效。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "舉例：楓原萬葉持「如雷的盛怒」四件套可有效參與激化反應。其他的風系角色可能會有類似的情況。該選項對星穹鐵道角色無效。"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.enabled" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show artifact compatibility ratings in showcase"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャラのビルド画面で聖遺物適合度を表示する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在角色面板画面显示圣遗物契合度评分"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在角色面板畫面顯示聖遺物契合度評分"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.sectionTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artifact Rating Preferences"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聖遺物適合度評判に関する設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "圣遗物评分系统设定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聖遺物評分系統設定"
+          }
+        }
+      }
+    },
+    "settings.display.customizingNameForKunikuzushi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customize the name for Wanderer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放浪者の名前を指定する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自订流浪者姓名"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自訂流浪者姓名"
+          }
+        }
+      }
+    },
+    "settings.display.customizingNameForKunikuzushi.currentValueLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customized name for Wanderer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指定済みの名前"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已自订的流浪者姓名"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已自訂的流浪者姓名"
+          }
+        }
+      }
+    },
+    "settings.display.customizingNameForKunikuzushi.prompt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter your preferred name for Wanderer (Kunikuzushi)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放浪者（雷電国崩）の名前をお好きにしてご記入ください"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请键入您希望给雷电国崩（流浪者）自订的姓名"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請鍵入您希望給雷電國崩（流浪者）自訂的姓名"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.defaultDBQueryHost" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current EnkaDB Query Host"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今の使用中のEnkaDBのクエリーホスト"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前的 EnkaDB 查询用服务器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前的 EnkaDB 查詢用伺服器"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.defaultDBQueryHost.explanation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This settings automatically changes when the current setting fails on access."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接続故障すると、このオプションは自動的に変わります。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该设定会在连接失败时自动变更。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該設定會在連線失敗時自動變更。"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.defaultDBQueryHost.GitHub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overseas"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "海外のサーバー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "海外"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "海外"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.defaultDBQueryHost.GitLink" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mainland China"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中国大陸のサーバー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中国大陆"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中國大陸"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.lastEnkaDBCheckDate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Database updates are previously checked at:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前回のデータベースアップデート点検をした時点"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近一次查询 Enka 资料更新的时间点"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近一次查詢 Enka 資料更新的時間點"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.sectionTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On-Device Enka Database Status"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該当端末での EnkaDB 資料の状況"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前设备的本机 EnkaDB 资料库状况"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當前裝置的本機 EnkaDB 資料庫狀況"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.animateOnCalling" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animate on calling / closing character build view from showcase"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャラ陳列で詳細ビルド画面を呼ぶ・閉じるときの動画効果を起用"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在开启/关闭角色面板画面时显示动画"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在開啟/關閉角色面板畫面時顯示動畫"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.colorizeArtifactSubPropCounts" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colorize the sub-properties of artifacts to differentiate their counts"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聖遺物のサブステータスの重複数を色付きで反映する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用不同的颜色区分圣遗物副词条的累积次数"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用不同的顏色區分聖遺物副詞條的累積次數"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.colorizeArtifactSubPropCounts.explain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the lowest to highest: Gray, DemiWhite, White, Orange, Yellow, Red."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最低から最高まで数えると：灰色、淡白色、白色、オレンジ色、黄色、赤色。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从最低到最高：灰色、半白色、白色、橙色、黄色、红色。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從最低到最高：灰色、半白色、白色、橙色、黃色、紅色。"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.forceCharacterWeaponNameFixed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force-fixing the name of certain characters / weapons written in certain languages"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特定の言語でのキャラ・武器の名前の表記を訂正する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对特定语言下的部分角色/武器的名称进行用字订正"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "對特定語言下的部分角色/武器的名稱進行用字訂正"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.forceCharacterWeaponNameFixed.explain" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting is only for Simplified & Traditional Chinese UI."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "簡体中国語のUIで（苗字としての）「钟・钟离」を「锺・锺离」と訂正します。繁体中国語UIの場合、「堇」を「菫」と訂正します。他のこのような状況も同じことをします。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。对类似的情形也会作出同样的处理。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這將會在簡體中文當中強制自動恢復目前已被在地語委恢復的「锺」、在繁體中文當中強制自動恢復「堇」的當代繁體中文寫法「菫」。對類似的情形也會作出同樣的處理。"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.namingPrefs.sectionTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naming Preferences"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名前の設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名称设定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名稱設定"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.sectionTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Character Build Page & ShowCase"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャラのビルド画面とショーケース"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角色面板与展柜"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角色面板與展櫃"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.useGenshinStyleCharacterPhotos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Genshin-style character photos for Star Rail characters"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スターレイルのキャラに対して原神スタイルのキャラ写真を起用"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对星穹铁道角色启用原神风格的证件照"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对星穹铁道角色启用原神风格的证件照"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.useRealCharacterNames" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show characters’ real names instead"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一部のキャラの本名を表示する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示部分角色的真实姓名"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示部分角色的真實姓名"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

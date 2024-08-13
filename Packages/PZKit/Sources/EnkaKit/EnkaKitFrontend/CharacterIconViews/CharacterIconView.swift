@@ -152,6 +152,7 @@ public struct CharacterIconView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .scaleEffect(1.5, anchor: .top)
+                .offset(y: size / (15 * 1.15))
                 .scaleEffect(1.4)
                 .frame(maxWidth: size, maxHeight: size)
             // Draw.
@@ -192,7 +193,12 @@ public struct CharacterIconView: View {
     }
 
     private var proposedPhotoAssetName: String {
-        "character_\(charID)"
+        switch game {
+        case .genshinImpact:
+            "gi_character_\(charID)"
+        case .starRail:
+            "hsr_character_\(charID)"
+        }
     }
 
     private var charIDGuarded: String {
