@@ -1,5 +1,41 @@
 {
+  "fi": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
+    "1112": "Jelena",
+    "1205": "Yingxing",
+    "1210": "Guinevere",
+    "1304": "Kakavasha",
+    "1308": "Raiden Mei",
+    "1312": "Mikhail"
+  },
   "id": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
+    "1112": "Jelena",
+    "1205": "Yingxing",
+    "1210": "Guinevere",
+    "1304": "Kakavasha",
+    "1308": "Raiden Mei",
+    "1312": "Mikhail"
+  },
+  "tr": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
+    "1112": "Jelena",
+    "1205": "Yingxing",
+    "1210": "Guinevere",
+    "1304": "Kakavasha",
+    "1308": "Raiden Mei",
+    "1312": "Mikhail"
+  },
+  "it": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
     "1112": "Jelena",
     "1205": "Yingxing",
     "1210": "Guinevere",
@@ -8,6 +44,9 @@
     "1312": "Mikhail"
   },
   "ko": {
+    "10000049": "나가노하라 요이미야",
+    "10000075": "라이덴 쿠니쿠즈시",
+    "10000096": "페르엘",
     "1112": "예레나",
     "1205": "응성",
     "1210": "귀네비어",
@@ -16,6 +55,9 @@
     "1312": "할아버지"
   },
   "ja": {
+    "10000049": "長野原宵宮",
+    "10000075": "雷電国崩",
+    "10000096": "ペルヴェーレ",
     "1112": "エレーナ",
     "1205": "応星",
     "1210": "グィネヴィア",
@@ -24,25 +66,32 @@
     "1312": "ミハイル"
   },
   "zh-cn": {
+    "10000049": "长野原宵宫",
+    "10000075": "雷电国崩",
+    "10000096": "佩露薇利",
     "1112": "叶琳娜",
     "1205": "应星",
     "1210": "格妮薇儿",
     "1304": "卡卡瓦夏",
     "1308": "雷电芽衣",
-    "1312": "米哈伊尔",
-    "10000064": "雲菫",
-    "10000030": "锺离"
+    "1312": "米哈伊尔"
   },
   "zh-tw": {
+    "10000049": "長野原宵宮",
+    "10000075": "雷電國崩",
+    "10000096": "佩露薇利",
+    "11509": "霧切之迴光",
     "1112": "葉琳娜",
     "1205": "應星",
     "1210": "關妮薇",
     "1304": "卡卡瓦夏",
     "1308": "雷電芽衣",
-    "1312": "米哈伊爾",
-    "11509": "霧切之迴光"
+    "1312": "米哈伊爾"
   },
   "vi": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
     "1112": "Yelena",
     "1205": "Yingxing",
     "1210": "Guinevere",
@@ -51,6 +100,9 @@
     "1312": "Mikhail"
   },
   "fr": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
     "1112": "Yelena",
     "1205": "Yingxing",
     "1210": "Guenièvre",
@@ -59,6 +111,9 @@
     "1312": "Mikhail"
   },
   "th": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
     "1112": "Jelena",
     "1205": "Yingxing",
     "1210": "Guinevere",
@@ -67,6 +122,9 @@
     "1312": "Mikhail"
   },
   "ru": {
+    "10000049": "Наганохара Ёимия",
+    "10000075": "Куникудзуси",
+    "10000096": "Перуэр",
     "1112": "Елена",
     "1205": "Инсин",
     "1210": "Гвиневра",
@@ -75,6 +133,9 @@
     "1312": "Дедушка"
   },
   "pt": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
     "1112": "Jelena",
     "1205": "Yingxing",
     "1210": "Guinevere",
@@ -83,6 +144,9 @@
     "1312": "Mikhail"
   },
   "en": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
     "1112": "Jelena",
     "1205": "Yingxing",
     "1210": "Guinevere",
@@ -91,6 +155,9 @@
     "1312": "Mikhail"
   },
   "es": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
     "1112": "Yelena",
     "1205": "Yingxing",
     "1210": "Guinevere",
@@ -99,6 +166,9 @@
     "1312": "Mikhail"
   },
   "de": {
+    "10000049": "Naganohara Yoimiya",
+    "10000075": "Raiden Kunikuzushi",
+    "10000096": "Peruere",
     "1112": "Jelena",
     "1205": "Yingxing",
     "1210": "Guinevere",
