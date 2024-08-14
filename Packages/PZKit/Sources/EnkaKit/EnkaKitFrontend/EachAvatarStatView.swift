@@ -251,7 +251,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                 HStack(alignment: .bottom) {
                     Text(name)
                         .font(.system(size: fontSize * 1.6))
-                        .fontWeight(.bold)
+                        .fontWeight(.heavy)
+                        .fontWidth(.compressed)
                         .lineLimit(1).fixedSize()
                         .minimumScaleFactor(0.5)
                     Spacer()
