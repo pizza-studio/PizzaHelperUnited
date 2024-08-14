@@ -11,6 +11,8 @@ extension UserDefaults {
 }
 
 extension Defaults.Keys {
+    /// App UI language. At least, this works with macOS. This must use the standard container.
+    public static let appLanguage = Key<[String]?>(AppLanguage.defaultsKeyName, default: nil, suite: .standard)
     /// Remembering the most-recent tab index.
     public static let appTabIndex = Key<Int>("appTabIndex", default: 0, suite: .baseSuite)
     /// Remembering the most-recent tab index.

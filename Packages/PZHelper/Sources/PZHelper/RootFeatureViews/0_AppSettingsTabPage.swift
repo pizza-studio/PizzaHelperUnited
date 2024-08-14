@@ -2,7 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import EnkaKit
+import PZBaseKit
 import SwiftUI
 
 // MARK: - AppSettingsTabPage
@@ -19,8 +21,42 @@ struct AppSettingsTabPage: View {
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
-                NavigationLink(value: Nav.uiSettings) {
-                    Label("settings.uiSettings.title".i18nPZHelper, systemSymbol: .pc)
+                Section {
+                    #if !targetEnvironment(macCatalyst) && os(iOS)
+                    Button {
+                        UIApplication.shared.open(UIApplication.openSettingsURLString.asURL)
+                    } label: {
+                        Label {
+                            Text("settings.appLanguage.title".i18nPZHelper)
+                                .foregroundColor(.primary)
+                        } icon: {
+                            Image(systemSymbol: .globe)
+                        }
+                    }
+                    #elseif canImport(UIKit, _version: 18.0)
+                    /// 這個語言選擇器用 Xcode 15 建置的話是無效的。
+                    VStack {
+                        Picker(selection: $appLanguage) {
+                            Text("app.language.followSystemDefault".i18nBaseKit).tag([String]?.none)
+                            ForEach(AppLanguage.allCases) { appLang in
+                                Text(appLang.localizedDescription).tag(appLang.savedValue)
+                            }
+                        } label: {
+                            HStack {
+                                Image(systemSymbol: .globe)
+                                Text("settings.appLanguage.title".i18nPZHelper)
+                            }
+                        }
+                        Text("settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper)
+                            .font(.footnote).foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    #endif
+                    NavigationLink(value: Nav.uiSettings) {
+                        Label("settings.uiSettings.title".i18nPZHelper, systemSymbol: .pc)
+                    }
+                } header: {
+                    Text("settings.section.visualSettings.header".i18nPZHelper)
                 }
                 NavigationLink(value: Nav.otherSettings) {
                     Label("UNDER_CONSTRUCTION".i18nPZHelper, systemSymbol: .infoSquare)
@@ -38,6 +74,8 @@ struct AppSettingsTabPage: View {
     @State private var nav: Nav?
     @State private var sharedDB = Enka.Sputnik.shared
 
+    @Default(.appLanguage) private var appLanguage: [String]?
+
     @ViewBuilder
     private func navigationDetail(selection: Binding<Nav?>) -> some View {
         NavigationStack {
@@ -48,42 +86,4 @@ struct AppSettingsTabPage: View {
             }
         }
     }
-}
-
-// MARK: - UISettingsPageContent
-
-@MainActor
-struct UISettingsPageContent: View {
-    // MARK: Internal
-
-    var body: some View {
-        Form {
-            Enka.DisplayOptionViewContents()
-        }
-        .formStyle(.grouped)
-        .navigationTitle("settings.uiSettings.title".i18nPZHelper)
-    }
-
-    // MARK: Private
-
-    @State private var sharedDB = Enka.Sputnik.shared
-}
-
-// MARK: - OtherSettingsPageContent
-
-@MainActor
-struct OtherSettingsPageContent: View {
-    // MARK: Internal
-
-    var body: some View {
-        Form {
-            Text(verbatim: "UNDER_CONSTRUCTION")
-        }
-        .formStyle(.grouped)
-        .navigationTitle("settings.uiSettings.title".i18nPZHelper)
-    }
-
-    // MARK: Private
-
-    @State private var sharedDB = Enka.Sputnik.shared
 }
