@@ -284,6 +284,7 @@ public struct CaseQueryResultListView<ProfileForList: EKQueriedProfileProtocol>:
             }
             .formStyle(.grouped)
             .navigationTitle(Text(verbatim: "\(profile.nickname) (\(profile.uid.description))"))
+            .navigationBarTitleDisplayMode(.inline)
         } else {
             coreBody
         }

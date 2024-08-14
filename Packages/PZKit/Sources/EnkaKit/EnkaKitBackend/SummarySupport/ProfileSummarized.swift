@@ -61,6 +61,9 @@ extension Enka {
         public private(set) var rawInfo: P
         public private(set) var summarizedAvatars: [Enka.AvatarSummarized]
 
+        public var nickName: String { rawInfo.nickname }
+        public var uid: String { rawInfo.uid }
+
         // MARK: Private
 
         private var cancellables: [AnyCancellable] = []

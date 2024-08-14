@@ -59,7 +59,11 @@ public struct AvatarShowCaseView<P: EKQueriedProfileProtocol>: View {
         )
         #endif
         .onTapGesture {
-            onClose?()
+            if let onClose {
+                onClose()
+            } else {
+                presentationMode.wrappedValue.dismiss()
+            }
         }
         .background {
             ZStack {
@@ -149,6 +153,8 @@ public struct AvatarShowCaseView<P: EKQueriedProfileProtocol>: View {
     // MARK: Private
 
     private let onClose: (() -> Void)?
+
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     @State private var showTabViewIndex: Bool = false
 
