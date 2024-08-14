@@ -36,6 +36,9 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
             .fullScreenCover(item: $showingCharacterIdentifier) { enkaId in
                 fullScreenCover(selectedAvatarID: enkaId)
             }
+            .transaction { transaction in
+                transaction.disablesAnimations = !animateOnCallingCharacterShowcase
+            }
             #else
             .sheet(isPresented: $isSheetVisible) {
                     if let identifier = showingCharacterIdentifier ?? profile.summarizedAvatars.first?.id {
@@ -108,13 +111,8 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
 
     func characterButtonDidPress(avatar: Enka.AvatarSummarized) {
         tapticMedium()
-        var transaction = Transaction()
-        transaction.animation = .easeInOut
-        transaction.disablesAnimations = !animateOnCallingCharacterShowcase
-        withTransaction(transaction) {
-            // TabView 以 EnkaId 为依据。
-            showingCharacterIdentifier = avatar.id
-        }
+        // TabView 以 EnkaId 为依据。
+        showingCharacterIdentifier = avatar.id
         #if os(OSX)
         isSheetVisible.toggle()
         #endif
@@ -126,12 +124,10 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
             selectedAvatarID: selectedAvatarID,
             profile: profile
         ) {
-            var transaction = Transaction()
-            transaction.animation = .easeInOut
+            showingCharacterIdentifier = nil
+        }
+        .transaction { transaction in
             transaction.disablesAnimations = !animateOnCallingCharacterShowcase
-            withTransaction(transaction) {
-                showingCharacterIdentifier = nil
-            }
         }
         .environment(\.colorScheme, .dark)
     }
