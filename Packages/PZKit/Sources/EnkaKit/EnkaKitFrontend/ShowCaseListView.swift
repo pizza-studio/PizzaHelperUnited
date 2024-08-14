@@ -5,6 +5,7 @@
 import Defaults
 import Foundation
 import PZBaseKit
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - ShowCaseListView
@@ -59,32 +60,33 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
     @ViewBuilder public var bodyAsNavList: some View {
         Section {
             ForEach(profile.summarizedAvatars) { avatar in
+                NavigationLink {
+                    AvatarShowCaseView(
+                        selectedAvatarID: avatar.id,
+                        profile: profile
+                    )
+                    .ignoresSafeArea(.all)
+                    .environment(\.colorScheme, .dark)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar(.hidden, for: .tabBar)
+                    .toolbar(.hidden)
+                } label: {
+                    makeLabelForNavLink(avatar: avatar)
+                }
+            }
+        }
+    }
+
+    /// Deprecated in this view but kept as a reference for future purposes.
+    @ViewBuilder public var bodyAsFullScreenCover: some View {
+        Section {
+            ForEach(profile.summarizedAvatars) { avatar in
                 Button {
                     characterButtonDidPress(avatar: avatar)
                 } label: {
-                    HStack(alignment: .center) {
-                        let intel = avatar.mainInfo
-                        let strLevel = "\(intel.terms.levelName): \(intel.avatarLevel)"
-                        let strEL = "\(intel.terms.constellationName): \(intel.constellation)"
-                        intel.avatarPhoto(
-                            size: ceil(Font.baseFontSize * 3),
-                            circleClipped: true,
-                            clipToHead: true
-                        )
-                        VStack(alignment: .leading) {
-                            Text(verbatim: intel.name).font(.headline).fontWeight(.bold)
-                            HStack {
-                                Text(verbatim: strLevel)
-                                Spacer()
-                                Text(verbatim: strEL)
-                            }
-                            .monospacedDigit()
-                            .font(.subheadline)
-                        }
-                    }
+                    makeLabelForNavLink(avatar: avatar)
                 }
                 .buttonStyle(.borderless)
-                .foregroundStyle(.primary)
             }
         }
     }
@@ -109,6 +111,10 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
 
     // MARK: Internal
 
+    var subNavTitleText: String {
+        "\(profile.nickName) (\(profile.uid))"
+    }
+
     func characterButtonDidPress(avatar: Enka.AvatarSummarized) {
         tapticMedium()
         // TabView 以 EnkaId 为依据。
@@ -116,6 +122,31 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
         #if os(OSX)
         isSheetVisible.toggle()
         #endif
+    }
+
+    @ViewBuilder
+    func makeLabelForNavLink(avatar: Enka.AvatarSummarized) -> some View {
+        HStack(alignment: .center) {
+            let intel = avatar.mainInfo
+            let strLevel = "\(intel.terms.levelName): \(intel.avatarLevel)"
+            let strEL = "\(intel.terms.constellationName): \(intel.constellation)"
+            intel.avatarPhoto(
+                size: ceil(Font.baseFontSize * 3),
+                circleClipped: true,
+                clipToHead: true
+            )
+            VStack(alignment: .leading) {
+                Text(verbatim: intel.name).font(.headline).fontWeight(.bold)
+                HStack {
+                    Text(verbatim: strLevel)
+                    Spacer()
+                    Text(verbatim: strEL)
+                }
+                .monospacedDigit()
+                .font(.subheadline)
+            }
+        }
+        .foregroundStyle(.primary)
     }
 
     @ViewBuilder
