@@ -21,6 +21,7 @@ public struct CharSpecimen: Identifiable, Hashable {
         columns: Int,
         size: Double,
         cutType: IDPhotoView4HSR.IconType = .cutShoulder,
+        animation: Namespace.ID,
         supplementalIDs: (() -> [String])? = nil
     )
         -> some View {
@@ -29,6 +30,7 @@ public struct CharSpecimen: Identifiable, Hashable {
             columns: columns, outerPadding: false, scroll: scroll, list: specimens
         ) { specimen in
             specimen.render(size: size, cutType: cutType)
+                .matchedGeometryEffect(id: specimen.id, in: animation)
         }
         if scroll {
             ScrollView {
@@ -89,11 +91,9 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     public init(
         for game: Enka.GameType,
-        columns: Int = 4,
         scroll: Bool = true,
         supplementalIDs: (() -> [String])? = nil
     ) {
-        self.columns = Swift.max(1, columns)
         self.scroll = scroll
         self.supplementalIDs = supplementalIDs?() ?? []
         self.game = game
@@ -115,22 +115,28 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     // MARK: Internal
 
-    @Namespace var animation
+    @Namespace var animation: Namespace.ID
 
     @State var containerSize: CGSize = .init(width: 320, height: 320)
 
-    @State var columns: Int
-
     @State var scroll: Bool
 
+    var columns: Int {
+        max(Int(($containerSize.wrappedValue.width / 120).rounded(.down)), 1)
+    }
+
+    var singleSize: Double {
+        (($containerSize.wrappedValue.width / Double(columns)) - 8.0).rounded(.down)
+    }
+
     @ViewBuilder var coreBodyView: some View {
-        let base: CGFloat = scroll ? 1.2 : 1
         CharSpecimen.renderAllSpecimen(
             for: game,
             scroll: scroll,
             columns: columns,
-            size: containerSize.width / (base * Double(columns)),
-            cutType: .cutShoulder
+            size: singleSize,
+            cutType: .cutShoulder,
+            animation: animation
         ) {
             supplementalIDs
         }
