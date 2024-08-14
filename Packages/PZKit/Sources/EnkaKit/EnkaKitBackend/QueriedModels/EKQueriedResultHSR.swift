@@ -12,7 +12,7 @@ extension Enka {
         public static var game: Enka.GameType { .starRail }
 
         public var detailInfo: QueriedProfileHSR?
-        public let uid: String?
+        public var uid: String?
         public let message: String?
     }
 }

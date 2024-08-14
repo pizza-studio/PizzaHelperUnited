@@ -220,8 +220,7 @@ extension CaseQuerySection {
                     errorMsg = nil
                     do {
                         var enkaDB = CoordinatedDB.shared
-                        var profile = try await enkaDB.query(for: givenUID.description)
-                        profile.uid = givenUID.description
+                        let profile = try await enkaDB.query(for: givenUID.description)
                         // 检查本地 EnkaDB 是否过期，过期了的话就尝试更新。
                         if enkaDB.checkIfExpired(against: profile) {
                             let factoryDB = CoordinatedDB(locTag: Enka.currentLangTag)

@@ -9,7 +9,7 @@ import Defaults
 public protocol EKQueryResultProtocol: Decodable {
     associatedtype QueriedProfileType: EKQueriedProfileProtocol
     var detailInfo: QueriedProfileType? { get set }
-    var uid: String? { get }
+    var uid: String? { get set }
     var message: String? { get }
     static var game: Enka.GameType { get }
 }

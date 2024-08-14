@@ -175,8 +175,12 @@ extension Enka.Sputnik {
                 }
             }
             do {
-                let requestResult = try JSONDecoder()
+                var requestResult = try JSONDecoder()
                     .decode(T.self, from: dataToParse)
+                // MicroGG Genshin Results might have lack of the UID.
+                if T.game == .genshinImpact, requestResult.uid == nil {
+                    requestResult.uid = uid
+                }
                 return requestResult
             } catch {
                 if dataToParse.isEmpty {

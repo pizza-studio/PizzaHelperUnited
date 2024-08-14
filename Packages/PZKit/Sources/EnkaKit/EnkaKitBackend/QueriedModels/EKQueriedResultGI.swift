@@ -38,9 +38,16 @@ extension Enka {
         /// 账号基本信息
         public var detailInfo: QueriedProfileGI?
         public var ttl: Int?
-        public var uid: String?
         /// Enka 偶尔会返回错误讯息。
         public var message: String?
+
+        public var uid: String? {
+            didSet {
+                if detailInfo != nil, let uid {
+                    detailInfo?.uid = uid
+                }
+            }
+        }
 
         // MARK: Internal
 
