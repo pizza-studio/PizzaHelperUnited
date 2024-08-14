@@ -14,13 +14,11 @@ struct PhotoSpecimenView: View {
                 case .genshinImpact:
                     AllCharacterPhotoSpecimenViewPerGame(
                         for: .genshinImpact,
-                        columns: specimenColumns,
                         scroll: false
                     )
                 case .starRail:
                     AllCharacterPhotoSpecimenViewPerGame(
                         for: .starRail,
-                        columns: specimenColumns,
                         scroll: false
                     )
                 }
@@ -60,8 +58,4 @@ struct PhotoSpecimenView: View {
     @State private var isBusy: Bool = false
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
-
-    private var specimenColumns: Int {
-        horizontalSizeClass == .compact ? 3 : 6
-    }
 }
