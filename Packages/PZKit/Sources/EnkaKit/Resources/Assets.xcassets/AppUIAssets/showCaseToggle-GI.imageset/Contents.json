@@ -1,0 +1,72 @@
+{
+  "images" : [
+    {
+      "filename" : "showCaseToggle-GI-en.heic",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "showCaseToggle-GI-chs.heic",
+      "idiom" : "universal",
+      "locale" : "zh-Hans",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "zh-Hans",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "zh-Hans",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "showCaseToggle-GI-cht.heic",
+      "idiom" : "universal",
+      "locale" : "zh-Hant",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "zh-Hant",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "zh-Hant",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "showCaseToggle-GI-ja.heic",
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

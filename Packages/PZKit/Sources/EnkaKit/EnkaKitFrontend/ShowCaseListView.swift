@@ -48,6 +48,8 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
                     }
                 }
             #endif
+        } else {
+            ShowCaseEmptyInfoView(game: profile.game)
         }
     }
 

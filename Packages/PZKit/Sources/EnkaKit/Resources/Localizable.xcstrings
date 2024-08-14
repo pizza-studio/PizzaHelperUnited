@@ -283,6 +283,35 @@
         }
       }
     },
+    "enka.showCase.emptyShowCase.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Either no detail-exposable characters in the showcase or (in case of Genshin Impact) the UID owner didn't enable \"Show Character Details\" in the game. If you are the UID owner, you may follow the following screenshot to config the showcase in the game."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショーケースにはキャラはいないか、或いは（原神の場合）UIDの所有者がゲーム内で「キャラ詳細を表示」を有効にしていない可能性があります。UIDの所有者は貴殿である場合、以下のスクリーンショットをご参考してゲーム内でショーケースを設定してください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "展柜中没有可以显示详情的角色，或者（以《原神》为例）UID 所有者没有在游戏中启用「显示角色详情」。如果您是 UID 所有者，可以按照以下述戏画面撷图配置游戏中的展柜。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "展櫃中沒有可以顯示詳情的角色，或者（以《原神》為例）UID 擁有者沒有在遊戲中啟用「顯示角色詳情」。如果您是 UID 擁有者，可以按照下述遊戲畫面擷圖來配置遊戲中的展櫃。"
+          }
+        }
+      }
+    },
     "settings.display.artifactRating.considerHyperBloomElectroRoles" : {
       "localizations" : {
         "en" : {
