@@ -20,13 +20,18 @@ public struct ContentView: View {
 
     public var body: some View {
         TabView(selection: index) {
+            TodayTabPage()
+                .tag(1)
+                .tabItem {
+                    Label("tab.today".i18nPZHelper, systemSymbol: .windshieldFrontAndWiperAndDrop)
+                }
             ShowCaseQueryTabPage()
-                .tag(0) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                .tag(3) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem {
                     Label("tab.query".i18nPZHelper, systemSymbol: .archiveboxCircle)
                 }
-            AppSettingsPage()
-                .tag(4) // .toolbarBackground(.thinMaterial, for: .tabBar)
+            AppSettingsTabPage()
+                .tag(0) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem {
                     Label("tab.settings".i18nPZHelper, systemSymbol: .wrenchAndScrewdriverFill)
                 }

@@ -5,10 +5,10 @@
 import EnkaKit
 import SwiftUI
 
-// MARK: - AppSettingsPage
+// MARK: - AppSettingsTabPage
 
 @MainActor
-struct AppSettingsPage: View {
+struct AppSettingsTabPage: View {
     // MARK: Internal
 
     enum Nav {
