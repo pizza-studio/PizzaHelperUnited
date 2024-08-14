@@ -52,39 +52,34 @@ public struct ShowCaseListView<P: EKQueriedProfileProtocol, S: Enka.ProfileSumma
     }
 
     @ViewBuilder public var bodyAsNavList: some View {
-        ScrollView {
-            Spacer()
-            VStack {
-                Divided {
-                    ForEach(profile.summarizedAvatars) { avatar in
-                        Button {
-                            characterButtonDidPress(avatar: avatar)
-                        } label: {
-                            HStack(alignment: .center) {
-                                let intel = avatar.mainInfo
-                                let strLevel = "\(intel.terms.levelName): \(intel.avatarLevel)"
-                                let strEL = "\(intel.terms.constellationName): \(intel.constellation)"
-                                intel.avatarPhoto(
-                                    size: ceil(Font.baseFontSize * 3),
-                                    circleClipped: true,
-                                    clipToHead: true
-                                )
-                                VStack(alignment: .leading) {
-                                    Text(verbatim: intel.name).font(.headline).fontWeight(.bold)
-                                    HStack {
-                                        Text(verbatim: strLevel)
-                                        Spacer()
-                                        Text(verbatim: strEL)
-                                    }
-                                    .monospacedDigit()
-                                    .font(.subheadline)
-                                }
+        Section {
+            ForEach(profile.summarizedAvatars) { avatar in
+                Button {
+                    characterButtonDidPress(avatar: avatar)
+                } label: {
+                    HStack(alignment: .center) {
+                        let intel = avatar.mainInfo
+                        let strLevel = "\(intel.terms.levelName): \(intel.avatarLevel)"
+                        let strEL = "\(intel.terms.constellationName): \(intel.constellation)"
+                        intel.avatarPhoto(
+                            size: ceil(Font.baseFontSize * 3),
+                            circleClipped: true,
+                            clipToHead: true
+                        )
+                        VStack(alignment: .leading) {
+                            Text(verbatim: intel.name).font(.headline).fontWeight(.bold)
+                            HStack {
+                                Text(verbatim: strLevel)
+                                Spacer()
+                                Text(verbatim: strEL)
                             }
+                            .monospacedDigit()
+                            .font(.subheadline)
                         }
-                        .buttonStyle(.borderless)
-                        .foregroundStyle(.primary)
                     }
                 }
+                .buttonStyle(.borderless)
+                .foregroundStyle(.primary)
             }
         }
     }
