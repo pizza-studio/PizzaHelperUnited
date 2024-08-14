@@ -409,7 +409,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 17.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -452,7 +452,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 17.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
