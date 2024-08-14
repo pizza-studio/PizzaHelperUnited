@@ -60,7 +60,7 @@ public struct CharSpecimen: Identifiable, Hashable {
         var ids: [String] = []
         switch game {
         case .genshinImpact:
-            ids = Enka.Sputnik.shared.db4GI.characters.compactMap { charID, char in
+            let filtered: [[String]] = Enka.Sputnik.shared.db4GI.characters.compactMap { charID, char in
                 // Drop duplicated anemo protagonist.
                 if Protagonist(rawValue: Int(charID.prefix(8).description) ?? -114_514) != nil {
                     guard charID.count != 8 else { return nil }
@@ -73,7 +73,8 @@ public struct CharSpecimen: Identifiable, Hashable {
                     returnable.append("\(charID)_\(costume.0)")
                 }
                 return returnable
-            }.reduce([], +)
+            }
+            ids = filtered.reduce([], +)
         case .starRail:
             ids = Enka.Sputnik.shared.db4HSR.characters.keys.sorted()
         case .none: break
