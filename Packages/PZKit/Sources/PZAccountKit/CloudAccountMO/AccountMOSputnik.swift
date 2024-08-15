@@ -43,6 +43,8 @@ public final class AccountMOSputnik {
 
     // MARK: Internal
 
+    static let shared = try? AccountMOSputnik(persistence: .cloud, backgroundContext: false)
+
     func theDB(for game: Pizza.SupportedGame) -> PersistentContainer {
         switch game {
         case .genshinImpact: db4GI

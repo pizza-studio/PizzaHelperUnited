@@ -7,13 +7,13 @@ import Foundation
 import PZBaseKit
 import Sworm
 
-// MARK: - AccountMOProtocol
+// MARK: - ProfileMOProtocol
 
 /// AccountMO 不是统一披萨助手引擎用来主要处理的格式，而是专门针对 CloudKit 做的资料交换格式。
 /// 这也是为了方便直接继承旧版原披助手与穹披助手的云端资料。
 /// AccountMO 不曝露给前端使用，不直接用于 SwiftUI。
 
-public protocol AccountMOProtocol {
+public protocol ProfileMOProtocol: Codable {
     var allowNotification: Bool { get set }
     var cookie: String { get set }
     var deviceFingerPrint: String { get set }
@@ -23,6 +23,11 @@ public protocol AccountMOProtocol {
     var sTokenV2: String? { get set }
     var uid: String { get set }
     var uuid: UUID { get set }
+}
+
+// MARK: - AccountMOProtocol
+
+public protocol AccountMOProtocol: Codable, ProfileMOProtocol {
     static var entityName: String { get }
     static var modelName: String { get }
     static var containerName: String { get }
@@ -92,8 +97,14 @@ extension AccountMOProtocol {
 
 // MARK: - AccountMO4GI
 
-/// 原披助手专用，不曝露。
+/// 原披助手专用。
 struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
     public struct Relations {}
 
     public static var cloudContainerID: String = "iCloud.com.Canglong.GenshinPizzaHepler" // 没机会纠正了。
@@ -130,6 +141,10 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
 
 /// 穹披助手专用，不曝露。
 struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol {
+    // MARK: Lifecycle
+
+    public init() {}
+
     // MARK: Public
 
     public struct Relations {}
