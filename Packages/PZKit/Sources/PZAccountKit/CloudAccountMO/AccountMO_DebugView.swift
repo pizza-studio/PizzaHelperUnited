@@ -93,7 +93,7 @@ public struct AccountMODebugView: View {
 
     // MARK: Internal
 
-    static let sputnik = try! AccountMOSputnik(persistence: .cloud, backgroundContext: false)
+    static let sputnik: AccountMOSputnik = try! .shared ?? .init(persistence: .inMemory, backgroundContext: false)
 
     @State var game: Pizza.SupportedGame = .genshinImpact
 }

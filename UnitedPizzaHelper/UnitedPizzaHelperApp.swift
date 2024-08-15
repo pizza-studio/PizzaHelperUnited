@@ -2,24 +2,30 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZAccountKit
+import PZBaseKit
 import PZHelper
 import SwiftData
 import SwiftUI
 
 @main
 struct UnitedPizzaHelperApp: App {
-//    var sharedDemoModelContainer: ModelContainer = {
-//        let schema = Schema([
-//            Item.self,
-//        ])
-//        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-//
-//        do {
-//            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-//        } catch {
-//            fatalError("Could not create ModelContainer: \(error)")
-//        }
-//    }()
+    var sharedPZProfileMOContainer: ModelContainer = {
+        let schema = Schema([
+            PZProfileMO.self,
+        ])
+        let modelConfiguration = ModelConfiguration(
+            schema: schema, isStoredInMemoryOnly: false,
+            groupContainer: .none,
+            cloudKitDatabase: .private(iCloudContainerName)
+        )
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
 
     var body: some Scene {
         WindowGroup {
@@ -29,6 +35,6 @@ struct UnitedPizzaHelperApp: App {
             #endif
         }
         .windowResizability(.contentMinSize)
-        // .modelContainer(sharedDemoModelContainer)
+        .modelContainer(sharedPZProfileMOContainer)
     }
 }

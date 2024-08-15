@@ -11,6 +11,7 @@
 		<string>iCloud.com.Canglong.GenshinPizzaHepler</string>
 		<string>iCloud.com.Canglong.HSRPizzaHelper</string>
 		<string>iCloud.com.Canglong.PizzaGachaLog</string>
+		<string>iCloud.com.Canglong.UnitedPizzaHelper</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
