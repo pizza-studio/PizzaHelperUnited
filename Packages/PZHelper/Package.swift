@@ -31,6 +31,7 @@ let package = Package(
             dependencies: [
                 .product(name: "PizzaKit", package: "PZKit"),
                 .product(name: "EnkaKit", package: "PZKit"),
+                .product(name: "GachaKit", package: "PZKit"),
             ],
             swiftSettings: sharedSwiftSettings
         ),
