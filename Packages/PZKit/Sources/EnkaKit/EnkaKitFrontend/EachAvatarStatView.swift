@@ -539,7 +539,7 @@ private struct ArtifactView: View {
                 let gridColumnsFixed = [GridItem](repeating: .init(), count: 2)
                 LazyVGrid(columns: gridColumnsFixed, spacing: 0) {
                     ForEach(artifact.subProps) { prop in
-                        HStack(spacing: 0) {
+                        let propDisplay = HStack(spacing: 0) {
                             Enka.queryImageAssetSUI(for: prop.iconAssetName)?
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -552,10 +552,13 @@ private struct ArtifactView: View {
                                 .minimumScaleFactor(0.5)
                         }
                         .frame(maxWidth: .infinity)
-                        .colorMultiply(colorToMultiply(on: prop))
-                        // .overlay(alignment: .center) {
-                        //     Text(verbatim: prop.count.description).padding(.horizontal, 5).background(.black)
-                        // }
+
+                        if colorizeArtifactSubPropCounts {
+                            propDisplay
+                                .colorMultiply(colorToMultiply(on: prop))
+                        } else {
+                            propDisplay
+                        }
                     }
                 }
             }

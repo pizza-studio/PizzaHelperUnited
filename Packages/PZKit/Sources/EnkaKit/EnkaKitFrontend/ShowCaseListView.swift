@@ -15,13 +15,11 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
     // MARK: Lifecycle
 
     public init(
-        profile: ProfileForList,
+        profile givenProfile: ProfileForList,
         enkaDB: ProfileForList.DBType,
         asCardIcons: Bool = false
     ) {
-        self.profile = profile
-        self.enkaDB = enkaDB
-        self.profileSummarized = profile.summarize(theDB: enkaDB)
+        self.profile = givenProfile.summarize(theDB: enkaDB)
         self.extraTerms = .init(lang: enkaDB.locTag, game: ProfileForList.DBType.game)
         self.asCardIcons = asCardIcons
     }
@@ -39,7 +37,7 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
         .navigationDestination(for: Enka.AvatarSummarized.self) { currentAvatar in
             AvatarShowCaseView(
                 selectedAvatarID: currentAvatar.id,
-                profile: profileSummarized
+                profile: profile
             )
         }
     }
@@ -48,7 +46,7 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
         VStack(alignment: .leading) {
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(profileSummarized.summarizedAvatars) { avatar in
+                    ForEach(profile.summarizedAvatars) { avatar in
                         NavigationLink(value: avatar) {
                             avatar.asCardIcon(75)
                         }
@@ -66,22 +64,22 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
         List {
             listHeader
             Section {
-                ForEach(profileSummarized.summarizedAvatars) { avatar in
+                ForEach(profile.summarizedAvatars) { avatar in
                     NavigationLink(value: avatar) {
                         makeLabelForNavLink(avatar: avatar)
                     }
                 }
             }
         }
-        .navigationTitle(Text(verbatim: "\(profile.nickname) (\(profile.uid.description))"))
+        .navigationTitle(Text(verbatim: "\(profile.rawInfo.nickname) (\(profile.uid.description))"))
         .navigationBarTitleDisplayMode(.inline)
     }
 
     @ViewBuilder var listHeader: some View {
         Section {
             HStack(spacing: 0) {
-                let levelTag = "\(extraTerms.levelNameShortened)\(profile.level)"
-                profile.localFittingIcon4SUI
+                let levelTag = "\(extraTerms.levelNameShortened)\(profile.rawInfo.level)"
+                profile.rawInfo.localFittingIcon4SUI
                     .frame(width: 74, height: 60)
                     .corneredTag(
                         verbatim: levelTag,
@@ -92,12 +90,12 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
                 VStack(alignment: .leading) {
                     HStack(spacing: 10) {
                         VStack(alignment: .leading) {
-                            Text(verbatim: profile.nickname)
+                            Text(verbatim: profile.rawInfo.nickname)
                                 .font(.title3)
                                 .bold()
                                 .padding(.top, 5)
                                 .lineLimit(1)
-                            Text(verbatim: profile.signature)
+                            Text(verbatim: profile.rawInfo.signature)
                                 .foregroundColor(.secondary)
                                 .font(.footnote)
                                 .lineLimit(2)
@@ -114,7 +112,7 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
             HStack {
                 Text(verbatim: "UID: \(profile.uid)")
                 Spacer()
-                Text(verbatim: "\(extraTerms.equilibriumLevel): \(profile.worldLevel)")
+                Text(verbatim: "\(extraTerms.equilibriumLevel): \(profile.rawInfo.worldLevel)")
             }
             .secondaryColorVerseBackground()
         }
@@ -147,15 +145,9 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
 
     // MARK: Private
 
-    @State private var profile: ProfileForList
-    @State private var profileSummarized: ProfileForList.SummarizedType
-    @State private var enkaDB: ProfileForList.DBType
+    private let profile: ProfileForList.SummarizedType
     private let asCardIcons: Bool
     private let extraTerms: Enka.ExtraTerms
-
-    private var allAvatarSummaries: [Enka.AvatarSummarized] {
-        profile.summarizeAllAvatars(theDB: enkaDB)
-    }
 }
 
 extension EKQueriedProfileProtocol {
