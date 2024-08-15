@@ -3,20 +3,18 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import EnkaKit
+import PZAccountKit
 import SwiftUI
 
 // MARK: - OtherSettingsPageContent
 
 @MainActor
-struct OtherSettingsPageContent: View {
+struct CloudAccountSettingsPageContent: View {
     // MARK: Internal
 
     var body: some View {
-        Form {
-            Text(verbatim: "# under construction")
-        }
-        .formStyle(.grouped)
-        .navigationTitle("# under construction".description)
+        AccountMODebugView()
+            .navigationTitle("# CloudKit Debug".description)
     }
 
     // MARK: Private

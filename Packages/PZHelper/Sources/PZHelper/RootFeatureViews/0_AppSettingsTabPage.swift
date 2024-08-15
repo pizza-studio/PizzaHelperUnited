@@ -14,6 +14,7 @@ struct AppSettingsTabPage: View {
     // MARK: Internal
 
     enum Nav {
+        case cloudAccountSettings
         case uiSettings
         case otherSettings
     }
@@ -21,6 +22,12 @@ struct AppSettingsTabPage: View {
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
+                Section {
+                    NavigationLink(value: Nav.cloudAccountSettings) {
+                        Label("# Cloud Account Settings".description, systemSymbol: .infoSquare)
+                    }
+                }
+
                 Section {
                     #if !targetEnvironment(macCatalyst) && os(iOS)
                     Button {
@@ -59,7 +66,7 @@ struct AppSettingsTabPage: View {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
                 }
                 NavigationLink(value: Nav.otherSettings) {
-                    Label("UNDER_CONSTRUCTION".i18nPZHelper, systemSymbol: .infoSquare)
+                    Label("# Other Settings".description, systemSymbol: .infoSquare)
                 }
             }
             .listStyle(.insetGrouped)
@@ -80,6 +87,7 @@ struct AppSettingsTabPage: View {
     private func navigationDetail(selection: Binding<Nav?>) -> some View {
         NavigationStack {
             switch selection.wrappedValue {
+            case .cloudAccountSettings: CloudAccountSettingsPageContent()
             case .uiSettings: UISettingsPageContent()
             case .otherSettings: OtherSettingsPageContent()
             case .none: UISettingsPageContent()
