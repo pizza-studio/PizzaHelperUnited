@@ -43,12 +43,12 @@ extension AccountMOProtocol {
         )!
     }
 
-    public static func getLoadedPersistentContainer(options: PersistenceOptions) throws -> NSPersistentContainer {
+    public static func getLoadedPersistentContainer(persistence: DBPersistenceMethod) throws -> NSPersistentContainer {
         let container: NSPersistentContainer
-        switch options {
+        switch persistence {
         case .inMemory:
             container = NSPersistentContainer(name: Self.containerName, managedObjectModel: getManagedObjModel())
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+            container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         case .local:
             container = NSPersistentContainer(name: Self.containerName, managedObjectModel: getManagedObjModel())
         case .cloud:
@@ -62,6 +62,11 @@ extension AccountMOProtocol {
                 true as NSNumber,
                 forKey: "NSPersistentStoreRemoteChangeNotificationOptionKey"
             )
+        }
+        if let containerURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first,
+           persistence != .inMemory {
+            let storeURL = containerURL.appendingPathComponent("\(sharedBundleIDHeader)/\(modelName).sqlite")
+            container.persistentStoreDescriptions.first?.url = storeURL
         }
 
         // Start initializing data.
