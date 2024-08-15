@@ -35,7 +35,7 @@ let package = Package(
             targets: ["PZAccountKit"]
         )
 
-        #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
+        #if !os(watchOS)
         Product.library(
             name: "EnkaKit",
             targets: ["EnkaKit"]
@@ -103,7 +103,7 @@ let package = Package(
 
         // MARK: - Non-Watch Targets
 
-        #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
+        #if !os(watchOS)
         Target.target(
             name: "EnkaKit",
             dependencies: buildTargetDependencies {
@@ -157,7 +157,7 @@ let package = Package(
 
         // MARK: - Test Targets
 
-        #if os(iOS) || os(macOS) || targetEnvironment(macCatalyst)
+        #if !os(watchOS)
         Target.testTarget(
             name: "EnkaKitTests",
             dependencies: ["EnkaKit"],
