@@ -37,6 +37,7 @@ public protocol EKQueriedProfileProtocol: Decodable, Hashable {
 
 extension EKQueriedProfileProtocol {
     public typealias DBType = QueriedAvatar.DBType
+    public typealias SummarizedType = Enka.ProfileSummarized<Self>
     /// 仅制作这个新 API 将旧资料融入新资料，因为反向融合没有任何意义。
     public func inheritAvatars(from oldInfo: Self?) -> Self {
         var newResult = self

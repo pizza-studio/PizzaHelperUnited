@@ -87,7 +87,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     @FocusState var backupFocus: Bool
 
     @ViewBuilder var textFieldView: some View {
-        TextField("UID", text: $givenUID)
+        TextField("UID".description, text: $givenUID)
             .focused(focused ?? $backupFocus)
             .onReceive(Just(givenUID)) { _ in formatText() }
         #if !os(OSX) && !targetEnvironment(macCatalyst)
@@ -219,7 +219,7 @@ extension CaseQuerySection {
                     currentInfo = nil
                     errorMsg = nil
                     do {
-                        var enkaDB = CoordinatedDB.shared
+                        let enkaDB = CoordinatedDB.shared
                         let profile = try await enkaDB.query(for: givenUID.description)
                         // 检查本地 EnkaDB 是否过期，过期了的话就尝试更新。
                         if enkaDB.checkIfExpired(against: profile) {
@@ -256,105 +256,6 @@ extension CaseQuerySection {
     }
 }
 
-// MARK: - CaseQueryResultListView
-
-@MainActor
-public struct CaseQueryResultListView<ProfileForList: EKQueriedProfileProtocol>: View {
-    // MARK: Lifecycle
-
-    public init(
-        profile: ProfileForList,
-        enkaDB: ProfileForList.DBType,
-        header: Bool = false,
-        formWrapped: Bool = false
-    ) {
-        self.profile = profile
-        self.enkaDB = enkaDB
-        self.formWrapped = formWrapped
-        self.showHeader = header
-        self.extraTerms = .init(lang: enkaDB.locTag, game: ProfileForList.DBType.game)
-    }
-
-    // MARK: Public
-
-    public var body: some View {
-        if formWrapped {
-            Form {
-                coreBody
-            }
-            .formStyle(.grouped)
-            .navigationTitle(Text(verbatim: "\(profile.nickname) (\(profile.uid.description))"))
-            .navigationBarTitleDisplayMode(.inline)
-        } else {
-            coreBody
-        }
-    }
-
-    @ViewBuilder public var header: some View {
-        Section {
-            HStack(spacing: 0) {
-                let levelTag = "\(extraTerms.levelNameShortened)\(profile.level)"
-                profile.localFittingIcon4SUI
-                    .frame(width: 74, height: 60)
-                    .corneredTag(
-                        verbatim: levelTag,
-                        alignment: .bottomTrailing,
-                        textSize: 12
-                    )
-                    .padding(.trailing, 4)
-                VStack(alignment: .leading) {
-                    HStack(spacing: 10) {
-                        VStack(alignment: .leading) {
-                            Text(verbatim: profile.nickname)
-                                .font(.title3)
-                                .bold()
-                                .padding(.top, 5)
-                                .lineLimit(1)
-                            Text(verbatim: profile.signature)
-                                .foregroundColor(.secondary)
-                                .font(.footnote)
-                                .lineLimit(2)
-                                .fixedSize(
-                                    horizontal: false,
-                                    vertical: true
-                                )
-                        }
-                        Spacer()
-                    }
-                }
-            }
-        } footer: {
-            HStack {
-                Text(verbatim: "UID: \(profile.uid)")
-                Spacer()
-                Text(verbatim: "\(extraTerms.equilibriumLevel): \(profile.worldLevel)")
-            }
-            .secondaryColorVerseBackground()
-        }
-    }
-
-    @ViewBuilder public var coreBody: some View {
-        if showHeader {
-            header
-        }
-        Section {
-            profile.asView(theDB: enkaDB, expanded: true)
-        }
-    }
-
-    // MARK: Private
-
-    @State private var profile: ProfileForList
-    @State private var enkaDB: ProfileForList.DBType
-    @State private var formWrapped: Bool
-    @State private var showHeader: Bool
-    private let extraTerms: Enka.ExtraTerms
-
-    private var allAvatarSummaries: [Enka.AvatarSummarized] {
-        profile.summarizeAllAvatars(theDB: enkaDB)
-    }
-}
-
 #if DEBUG
 
 // swiftlint:disable force_try
@@ -372,10 +273,10 @@ private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
             CaseQuerySection(theDB: enkaDatabaseGI)
         }
         .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
-            CaseQueryResultListView(profile: result, enkaDB: enkaDatabaseGI, header: true, formWrapped: true)
+            ShowCaseListView(profile: result, enkaDB: enkaDatabaseGI)
         }
         .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
-            CaseQueryResultListView(profile: result, enkaDB: enkaDatabaseHSR, header: true, formWrapped: true)
+            ShowCaseListView(profile: result, enkaDB: enkaDatabaseHSR)
         }
     }
     .environment(\.locale, .init(identifier: "zh-Hant-TW"))
