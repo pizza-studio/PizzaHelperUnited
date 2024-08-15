@@ -52,16 +52,21 @@ let package = Package(
             .upToNextMajor(from: "8.2.0")
         )
         Package.Dependency.package(
+            url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git",
+            .upToNextMajor(from: "5.3.0")
+        )
+        Package.Dependency.package(
+            url: "https://github.com/prisma-ai/Sworm.git",
+            .upToNextMajor(from: "1.1.0")
+        )
+        // ---------- BELOW ARE PIZZA PACKAGES ---------- //
+        Package.Dependency.package(
             url: "https://github.com/pizza-studio/GachaMetaGenerator",
             .upToNextMajor(from: "2.1.2")
         )
         Package.Dependency.package(
             url: "https://github.com/pizza-studio/EnkaDBGenerator",
             .upToNextMajor(from: "1.3.1")
-        )
-        Package.Dependency.package(
-            url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git",
-            .upToNextMajor(from: "5.3.0")
         )
         Package.Dependency.package(
             url: "https://github.com/pizza-studio/ArtifactRatingDB.git",
@@ -83,7 +88,16 @@ let package = Package(
         )
         Target.target(
             name: "PZAccountKit",
-            dependencies: ["PZBaseKit"],
+            dependencies: buildTargetDependencies {
+                "PZBaseKit"
+                Target.Dependency.product(
+                    name: "Sworm",
+                    package: "Sworm"
+                )
+            },
+            resources: buildResources {
+                Resource.process("Resources/")
+            },
             swiftSettings: sharedSwiftSettings
         )
 
@@ -124,10 +138,18 @@ let package = Package(
             dependencies: buildTargetDependencies {
                 "PZBaseKit"
                 Target.Dependency.product(
+                    name: "Sworm",
+                    package: "Sworm",
+                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
+                )
+                Target.Dependency.product(
                     name: "GachaMetaDB",
                     package: "GachaMetaGenerator",
                     condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
                 )
+            },
+            resources: buildResources {
+                Resource.process("Resources/")
             },
             swiftSettings: sharedSwiftSettings
         )
