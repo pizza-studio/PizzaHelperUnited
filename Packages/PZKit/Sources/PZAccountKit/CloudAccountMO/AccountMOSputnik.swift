@@ -6,27 +6,15 @@ import CoreData
 import PZBaseKit
 import Sworm
 
-// MARK: - PersistenceOptions
-
-public enum PersistenceOptions: String, Identifiable, Codable, Hashable {
-    case inMemory
-    case local
-    case cloud
-
-    // MARK: Public
-
-    public var id: String { rawValue }
-}
-
 // MARK: - AccountMOSputnik
 
 @MainActor
 public final class AccountMOSputnik {
     // MARK: Lifecycle
 
-    public init(options: PersistenceOptions, backgroundContext: Bool) throws {
-        let pc4HSR = try AccountMO4HSR.getLoadedPersistentContainer(options: options)
-        let pc4GI = try AccountMO4GI.getLoadedPersistentContainer(options: options)
+    public init(persistence: DBPersistenceMethod, backgroundContext: Bool) throws {
+        let pc4HSR = try AccountMO4HSR.getLoadedPersistentContainer(persistence: persistence)
+        let pc4GI = try AccountMO4GI.getLoadedPersistentContainer(persistence: persistence)
         if backgroundContext {
             self.db4HSR = .init(managedObjectContext: pc4HSR.newBackgroundContext)
             self.db4GI = .init(managedObjectContext: pc4GI.newBackgroundContext)
