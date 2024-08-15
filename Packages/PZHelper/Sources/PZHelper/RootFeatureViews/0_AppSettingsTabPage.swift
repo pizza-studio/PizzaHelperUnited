@@ -24,8 +24,10 @@ struct AppSettingsTabPage: View {
             List(selection: $nav) {
                 Section {
                     NavigationLink(value: Nav.cloudAccountSettings) {
-                        Label("# Cloud Account Settings".description, systemSymbol: .infoSquare)
+                        Label("# Cloud Account Settings".description, systemSymbol: .cloudCircle)
                     }
+                } header: {
+                    Text(verbatim: "# iCloud-hosted data debug")
                 }
 
                 Section {
