@@ -113,7 +113,7 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
         .init(\.uuid, "uuid"),
     ]
 
-    public static var game: Pizza.SupportedGame = .genshinImpact
+    public static let game: Pizza.SupportedGame = .genshinImpact
 
     public var name: String = ""
     public var priority: Int = 0
@@ -151,7 +151,7 @@ struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol {
         .init(\.uuid, "uuid"),
     ]
 
-    public static var game: Pizza.SupportedGame = .starRail
+    public static let game: Pizza.SupportedGame = .starRail
 
     public var name: String = ""
     public var priority: Int = 0
