@@ -6,7 +6,7 @@ import EnkaKit
 import SwiftUI
 
 @MainActor
-struct ShowCaseQueryTabPage: View {
+struct DetailPortalTabPage: View {
     // MARK: Internal
 
     var body: some View {
@@ -16,7 +16,7 @@ struct ShowCaseQueryTabPage: View {
                 CaseQuerySection(theDB: sharedDB.db4HSR)
             }
             .formStyle(.grouped)
-            .navigationTitle("tab.query.fullTitle".i18nPZHelper)
+            .navigationTitle("tab.details.fullTitle".i18nPZHelper)
             .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
                 ShowCaseListView(
                     profile: result,

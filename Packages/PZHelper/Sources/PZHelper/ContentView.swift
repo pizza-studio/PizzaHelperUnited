@@ -21,14 +21,19 @@ public struct ContentView: View {
     public var body: some View {
         TabView(selection: index) {
             TodayTabPage()
-                .tag(1)
+                .tag(1) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem {
                     Label("tab.today".i18nPZHelper, systemSymbol: .windshieldFrontAndWiperAndDrop)
                 }
-            ShowCaseQueryTabPage()
+            DetailPortalTabPage()
+                .tag(2) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                .tabItem {
+                    Label("tab.details".i18nPZHelper, systemSymbol: .personTextRectangleFill)
+                }
+            UtilsTabPage()
                 .tag(3) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem {
-                    Label("tab.query".i18nPZHelper, systemSymbol: .archiveboxCircle)
+                    Label("tab.utils".i18nPZHelper, systemSymbol: .shippingboxFill)
                 }
             AppSettingsTabPage()
                 .tag(0) // .toolbarBackground(.thinMaterial, for: .tabBar)
@@ -60,7 +65,7 @@ public struct ContentView: View {
 
     @State private var selection: Int = {
         guard Defaults[.restoreTabOnLaunching] else { return 0 }
-        guard (0 ..< 3).contains(Defaults[.appTabIndex]) else { return 0 }
+        guard [0, 1, 2, 3].contains(Defaults[.appTabIndex]) else { return 0 }
         return Defaults[.appTabIndex]
     }()
 
