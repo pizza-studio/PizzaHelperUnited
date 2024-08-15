@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - EnkaDBProtocol
 
-public protocol EnkaDBProtocol {
+public protocol EnkaDBProtocol: AnyObject {
     associatedtype QueriedResult: EKQueryResultProtocol
     static var game: Enka.GameType { get }
     var locTable: Enka.LocTable { get set }
@@ -27,7 +27,7 @@ public protocol EnkaDBProtocol {
     func saveSelfToUserDefaults()
 
     @MainActor
-    mutating func update(new: Self)
+    func update(new: Self)
 }
 
 // MARK: - Online Update & Query.
@@ -47,7 +47,7 @@ extension EnkaDBProtocol {
 
     @MainActor
     @discardableResult
-    mutating public func onlineUpdate(forced: Bool = false) async throws -> Self {
+    public func onlineUpdate(forced: Bool = false) async throws -> Self {
         let newDB = try await Self(host: Defaults[.defaultDBQueryHost])
         newDB.saveSelfToUserDefaults()
         Defaults[.lastEnkaDBDataCheckDate] = Date()
