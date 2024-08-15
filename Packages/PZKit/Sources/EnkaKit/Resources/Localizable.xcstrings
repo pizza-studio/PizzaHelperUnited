@@ -732,34 +732,6 @@
         }
       }
     },
-    "settings.display.showCase.animateOnCalling" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Animate on calling / closing character build view from showcase"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キャラ陳列で詳細ビルド画面を呼ぶ・閉じるときの動画効果を起用"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在开启/关闭角色面板画面时显示动画"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在開啟/關閉角色面板畫面時顯示動畫"
-          }
-        }
-      }
-    },
     "settings.display.showCase.colorizeArtifactSubPropCounts" : {
       "localizations" : {
         "en" : {

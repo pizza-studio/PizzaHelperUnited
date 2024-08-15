@@ -18,19 +18,15 @@ struct ShowCaseQueryTabPage: View {
             .formStyle(.grouped)
             .navigationTitle("tab.query.fullTitle".i18nPZHelper)
             .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
-                CaseQueryResultListView(
+                ShowCaseListView(
                     profile: result,
-                    enkaDB: sharedDB.db4GI,
-                    header: true,
-                    formWrapped: true
+                    enkaDB: sharedDB.db4GI
                 )
             }
             .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
-                CaseQueryResultListView(
+                ShowCaseListView(
                     profile: result,
-                    enkaDB: sharedDB.db4HSR,
-                    header: true,
-                    formWrapped: true
+                    enkaDB: sharedDB.db4HSR
                 )
             }
         }

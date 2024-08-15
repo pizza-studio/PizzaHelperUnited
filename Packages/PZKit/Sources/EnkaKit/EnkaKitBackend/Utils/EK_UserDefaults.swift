@@ -56,13 +56,6 @@ extension Defaults.Keys {
 
     // MARK: - HSR Suite
 
-    /// Whether animating on calling character showcase panel tabView.
-    public static let animateOnCallingCharacterShowcase = Key<Bool>(
-        "animateOnCallingCharacterShowcase",
-        default: false,
-        suite: .baseSuite
-    )
-
     /// Whether displaying character photos in Genshin style.
     public static let useGenshinStyleCharacterPhotos = Key<Bool>(
         "useGenshinStyleCharacterPhotos",

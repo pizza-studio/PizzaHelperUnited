@@ -30,19 +30,26 @@ public struct AvatarShowCaseView<P: EKQueriedProfileProtocol>: View {
     // MARK: Public
 
     public var body: some View {
-        if hasNoAvatars {
-            blankView()
-        } else {
-            GeometryReader { geometry in
-                coreBody()
-                    .environment(orientation)
-                    .overlay(alignment: .top) {
-                        HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
-                    }.onChange(of: geometry.size) { _, _ in
-                        showTabViewIndex = $showTabViewIndex.wrappedValue // 强制重新渲染整个画面。
-                    }
+        Group {
+            if hasNoAvatars {
+                blankView()
+            } else {
+                GeometryReader { geometry in
+                    coreBody()
+                        .environment(orientation)
+                        .overlay(alignment: .top) {
+                            HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
+                        }.onChange(of: geometry.size) { _, _ in
+                            showTabViewIndex = $showTabViewIndex.wrappedValue // 强制重新渲染整个画面。
+                        }
+                }
             }
         }
+        .environment(\.colorScheme, .dark)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .navigationBar)
+        .toolbar(.hidden, for: .tabBar)
+        .toolbar(.hidden)
     }
 
     @ViewBuilder

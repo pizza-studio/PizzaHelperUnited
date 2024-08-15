@@ -70,9 +70,6 @@ extension Enka {
             }
 
             Section {
-                Toggle(isOn: $animateOnCallingCharacterShowcase) {
-                    Text("settings.display.showCase.animateOnCalling".i18nEnka)
-                }
                 VStack {
                     Toggle(isOn: $colorizeArtifactSubPropCounts) {
                         Text("settings.display.showCase.colorizeArtifactSubPropCounts".i18nEnka)
@@ -156,7 +153,6 @@ extension Enka {
 
         // MARK: Private
 
-        @Default(.animateOnCallingCharacterShowcase) private var animateOnCallingCharacterShowcase: Bool
         @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleCharacterPhotos: Bool
         @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
         @Default(.artifactRatingRules) private var artifactRatingRules: ArtifactRating.Rules
