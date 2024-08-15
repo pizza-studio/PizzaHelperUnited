@@ -91,7 +91,8 @@ extension Enka.PropertyType: Codable, CodingKeyRepresentable {
             ?? GIAvatarAttribute(rawValue: rawValue)?.asPropertyType
             ?? Self.allCases.first(where: { $0.rawValue == rawValue })
         else {
-            print("!!! Unknown or Unhandled Property: \(rawValue)")
+            // The rest unknown / unhandled cases are all useless to this app.
+            // print("!!! Unknown or Unhandled Property: \(rawValue)")
             self = .unknownType
             return
         }
