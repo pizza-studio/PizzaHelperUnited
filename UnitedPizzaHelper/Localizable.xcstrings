@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Add Item" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -30,6 +31,7 @@
       }
     },
     "Item at %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -58,6 +60,7 @@
       }
     },
     "Select an item" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
