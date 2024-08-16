@@ -22,7 +22,15 @@ struct CreateProfileSheetView: View {
                 Text(verbatim: "# Under Construction")
             }
             .navigationTitle("profileMgr.new".i18nPZHelper)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("sys.cancel".i18nBaseKit) {
+                        modelContext.rollback()
+                        isShown.toggle()
+                    }
+                }
+            }
         }
     }
 
@@ -30,4 +38,5 @@ struct CreateProfileSheetView: View {
 
     @Binding private var isShown: Bool
     @State private var profile: PZProfileMO
+    @Environment(\.modelContext) private var modelContext
 }
