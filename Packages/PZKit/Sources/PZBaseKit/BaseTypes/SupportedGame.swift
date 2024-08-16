@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+// MARK: - Pizza.SupportedGame
+
 extension Pizza {
     public enum SupportedGame: String, Sendable, Identifiable, Hashable, Codable, CaseIterable {
         case genshinImpact = "GI"
@@ -23,6 +25,29 @@ extension Pizza {
             case .genshinImpact: "GI"
             case .starRail: "SR"
             }
+        }
+    }
+}
+
+// MARK: - Pizza.SupportedGame + CustomStringConvertible
+
+extension Pizza.SupportedGame: CustomStringConvertible {
+    public var description: String {
+        localizedDescription
+    }
+
+    public var localizedDescription: String {
+        switch self {
+        case .genshinImpact: "game.genshin.i18nName".i18nBaseKit
+        case .starRail: "game.starRail.i18nName".i18nBaseKit
+        }
+    }
+
+    /// 带书名号的产品名。
+    public var titleMarkedName: String {
+        switch self {
+        case .genshinImpact: "game.genshin.titleMarkedName".i18nBaseKit
+        case .starRail: "game.starRail.titleMarkedName".i18nBaseKit
         }
     }
 }
