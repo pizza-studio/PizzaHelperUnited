@@ -1,6 +1,1389 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "app.miyoushe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miyoushe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米游社"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社"
+          }
+        }
+      }
+    },
+    "profileMgr.added.succeeded" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加成功"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加成功"
+          }
+        }
+      }
+    },
+    "profileMgr.create.server.os.notsupport" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global Servers (not supported yet)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "グローバルプレーヤー（国際サーバーには現在対応しておりません）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "国际服（暂不支持）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "國際伺服器（暫不支援）"
+          }
+        }
+      }
+    },
+    "profileMgr.edit.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Account Information"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント情報を編集"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑账号信息"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編輯帳號資訊"
+          }
+        }
+      }
+    },
+    "profileMgr.explanation.1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To get resin and other data from HoYoLAB / Miyoushe, UID and login cookie of your account is needed. After logging into HoYoLAB / Miyoushe, we will store them locally as well as on your private iCloud. Then our app will use the stored UID and cookie to get the resin and other information in a way similar to HoYoLAB / Miyoushe app, then display them on your widget. Your private information will not be sent to other places other than HoYoLAB / Miyoushe and iCloud, including us, so your personal information will be very secure. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのゲーム内データをリクエストするためには、データ取得に必要な、UIDとCookieを取得する必要があります。 次のページでログインした後、あなたの個人データをローカルファイルおよびiCloudに保存します。 そして、HoYoLAB ・ Miyousheと同様の方法で、あなたのゲーム内データの情報を取得します。 あなたの個人情報は、私どもを含め、誰にも提供されない。あなたの個人情報はあなたのスマホの中で管理されます。このAppはオープンソース プログラムであり、誰もがこのプログラムの基本的な動作をすべてチェックおよび監視できます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "為了請求您的遊戲內的資料，我們需要獲取您的UID和Cookie，這是獲取資料的必要參數。您在接下來的網頁登入後，我們會在您的本地和iCloud存儲您的個人資料。然後我們通過類似米遊社 / HoYoLAB 的方式獲取您的遊戲內的資料。您的個人資訊不會傳送給任何人，包括我們自己。您的個人資訊將會是非常安全的。敝軟體是開放原始碼軟體，每個人都可以檢查和監督敝軟體的全部底層行為。"
+          }
+        }
+      }
+    },
+    "profileMgr.explanation.2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This procedure is not an illegal procedure such as plug-ins. This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本プログラムは、プラグインなどの不正プログラムではありません。 本プログラムは、HoYoverseの二次創作ルールの該当する内容を遵守しています。 このAppはオープンソース プログラムであり、誰もがこのプログラムの基本的な動作をすべてチェックおよび監視できます。 詳しくは、設定-FAQをご覧ください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本程序不属于外挂等违法程序。本程序遵守米哈游二次创作规则的相关内容。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。具体内容参见「设置 - FAQ」章节。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝軟體不屬於外掛等違法程式。敝軟體遵守米哈遊二次創作規則的相關內容。敝軟體是開放原始碼程式，每個人都可以檢查和監督敝軟體的全部底層行為。具體內容參見「設定 - FAQ」章節。"
+          }
+        }
+      }
+    },
+    "profileMgr.explanation.title.1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How this App work?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "進め方について"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于我们的工作原理"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於我們的工作原理"
+          }
+        }
+      }
+    },
+    "profileMgr.explanation.title.2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About your account security"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントの安全性について"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于您的账号安全"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於您的帳號安全"
+          }
+        }
+      }
+    },
+    "profileMgr.fp.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device FP"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス指紋"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设备指纹"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "裝置指紋"
+          }
+        }
+      }
+    },
+    "profileMgr.importLegacyProfiles.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inherit Previously-Used Local Accounts"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリの古いバージョンのローカルアカウントを読み込む"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入旧版 App 的本地账号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯入舊版 App 的本地帳號"
+          }
+        }
+      }
+    },
+    "profileMgr.label.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Detail"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントの詳細情報"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "账号详情"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "帳號詳情"
+          }
+        }
+      }
+    },
+    "profileMgr.label.login" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログイン"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登入"
+          }
+        }
+      }
+    },
+    "profileMgr.label.nickname" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nickname"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ニックネーム"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "昵称"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暱稱"
+          }
+        }
+      }
+    },
+    "profileMgr.label.relogin" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-Login"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再ログイン"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新登录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新登入"
+          }
+        }
+      }
+    },
+    "profileMgr.label.select" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Your Game UID"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ゲーム UID を選択"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择你的 UID"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇你的 UID"
+          }
+        }
+      }
+    },
+    "profileMgr.login.cn_disabled_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorry, login feature for China mainland server (Celestia-AstralExpress and Irminsul-Nameless server) is temporary down. We are working on this. You can now manually config your account with your own effective Miyoushe Cookie. "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深く残念ながら、中国大陸のサーバー（天空の島(星穹列車)サーバーと世界樹(ナナシビト)サーバー）のアカウントのログインは現時点でできません。一刻も早く使えるよう、我らは策を練っています。幸い、使える「米遊社Cookieデータ」がお持ちしている場合、ご自分でそれを書き込んでログインするのは可能です。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抱歉，中国大陆服务器（天空岛(星穹列车)＆世界树(无名客)）的登录功能暂时无法使用。我们正在努力寻求解决方案。目前您仍可以通过「自行填写有效米游社Cookie」的方式来手动登录。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抱歉，中國大陸伺服器（天空島(星穹列車)＆世界樹(無名客)）的登入功能暫時無法使用。我們正在努力尋求解決方案。目前您仍可以藉由「自行填寫有效米遊社Cookie」的方式來手動登入。"
+          }
+        }
+      }
+    },
+    "profileMgr.login.error.no.profileMgr.found" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This HoYoLAB / Miyoushe account is not bound to any game character."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このHoYoLAB ・ Miyousheアカウントはゲームアカウントとは関連付けられていません。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该米游社 / HoYoLAB 账号未绑定游戏角色。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該米遊社 / HoYoLAB 帳號未綁定遊戲角色。"
+          }
+        }
+      }
+    },
+    "profileMgr.login.manageLink.shortened" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理"
+          }
+        }
+      }
+    },
+    "profileMgr.login.manual.1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can also"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "または"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你也可以"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你也可以"
+          }
+        }
+      }
+    },
+    "profileMgr.login.manual.2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "manually configure your local profile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローカルアカウントを手動で配置する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手动配置你的本地账号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手動設定你的本地帳號"
+          }
+        }
+      }
+    },
+    "profileMgr.login.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please Finish Login"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログインしてください"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请完成登录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請完成登入"
+          }
+        }
+      }
+    },
+    "profileMgr.manage.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locale Profile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローカルアカウント管理"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理本地账号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理本地帳號"
+          }
+        }
+      }
+    },
+    "profileMgr.new" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Profile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローカルアカウントを追加"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加本地账号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加本地帳號"
+          }
+        }
+      }
+    },
+    "profileMgr.new.test" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test connection"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントをテスト"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "测试账号连接"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "測試帳號連接"
+          }
+        }
+      }
+    },
+    "profileMgr.notice.bewareof" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beware of these things before you proceed:\n\n→ This app is NOT made for the creation nor deletion of HoYoLAB / Miyoushe profileMgr. Such actions are supposed to be done through HoYoLAB / Miyoushe app or official website services provided by MiHoYo / Cognosphere. You may tap the management link (see the top-trailing corner of this window) to proceed to that website service page.\n\n→ A HoYoLAB / Miyoushe account must have been used to play the game (Genshin Impact or Houkai: Star Rail) AT LEAST ONCE in order to be usable in this app.\n\n→ A related game account (under the managment of its related HoYoLAB / Miyoushe account) must enable the public visibility of the character showcase through in-game settings in order to let the related information displayable in this app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下記の事項をご注意してからご続行ください：\n\n→ 米遊社 ・ HoYoLAB アカウントの入会・管理・退会についての一切機能は、弊アプリのサポート対象外です。米遊社 ・ HoYoLAB アプリを使うか、あるいは MiHoYo / Cognosphere 社からの公式 Web サービスで該当事項をお行いください。この画面の右上隅にある管理リンクをタップしてから、その Web サービスページへ続行できます。\n\n→ いずれの米遊社 ・ HoYoLAB 新規アカウントは、必ず該当ゲーム（『原神』或いは『崩壊：スターレイル』）で少なくとも一回お遊びしてから、弊アプリで利用可能です。\n\n→ いずれの米遊社 ・ HoYoLAB アカウントでも、それに管理している該当ゲームのアカウントは、必ずゲーム内の設定でキャラクターショウケースの内容を公開と設定してから、弊アプリでそのショウケースの内容は見えます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有几点需要您事先知悉的事项：\n\n→ 敝 App 无法用来完成米游社 / HoYoLAB 新账号的注册与删除。这类流程得通过米游社 / HoYoLAB App 等由 MiHoYo / Cognosphere 官方提供的相关服务来完成（可参见当前画面右上角的管理链接）。\n\n→ 任何用于敝 App 的米游社 / HoYoLAB 新账号均已经至少用来游玩过对应的游戏（《原神》或《崩坏：星穹铁道》），否则在技术上无法用于敝 App。\n\n→ 任何用于敝 App 的米游社 / HoYoLAB 账号下的游戏账号，除非手动在游戏内启用展柜等相关内容的公开显示，否则敝 App 无权显示相关内容。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有幾點需要您事先知悉的事項：\n\n→ 敝 App 無法用來完成米遊社 / HoYoLAB 新帳號的註冊與刪除。這類流程得通過米遊社 / HoYoLAB App 等由 MiHoYo / Cognosphere 官方提供的相關服務來完成（可參見當前畫面右上角的管理鏈接）。\n\n→ 任何用於敝 App 的米遊社 / HoYoLAB 新帳號均已經至少用來遊玩過對應的遊戲（《原神》或《崩壞：星穹鐵道》），否則在技術上無法用於敝 App。\n\n→ 任何用於敝 App 的米遊社 / HoYoLAB 帳號下的遊戲帳號，除非手動在遊戲內啟用展櫃等相關內容的公開顯示，否則敝 App 無權顯示相關內容。"
+          }
+        }
+      }
+    },
+    "profileMgr.PlayerDetail.EmptyAvatarsFetched" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Either no characters found in the Character Showcase, or Enka failed from retrieving the player's data from the game server."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャラ陳列には誰もござぬか、あるいは Enka にてゲームサーバーからプレーヤー資料を取り出すのはできなかった。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "账号未展示角色详情，或 Enka 未能成功从游戏服务器取得玩家数据。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "帳號未展示角色詳情，或 Enka 沒能成功從遊戲伺服器取得玩家資料。"
+          }
+        }
+      }
+    },
+    "profileMgr.qr_code_login.check_scanned" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I have scanned. Please check. "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキャン済み、ご検査を"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已扫描，请检查"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已掃描，請檢查"
+          }
+        }
+      }
+    },
+    "profileMgr.qr_code_login.click_qr_to_save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the QR code above to save it"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QRコードをタップして保存"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点击该二维码以保存"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點按該 QR Code 以保存"
+          }
+        }
+      }
+    },
+    "profileMgr.qr_code_login.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please use MiYouShe app to scan the QR code. You may also want to screenshot this QR code for the scanning."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社アプリで直接にスキャンするか、あるいは画面画像を撮ってからスキャンしてください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请使用米游社 App 扫描该二维码。您也可以将该二维码用屏幕截图的方式存下来扫描。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請使用米遊社 App 掃描該 QR Code。您也可以將該 QR Code 用螢幕擷圖的方式存下來掃描。"
+          }
+        }
+      }
+    },
+    "profileMgr.qr_code_login.not_scanned_alert" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server response indicates that the QR code has not been scanned. Please try scanning it again or regenerate a new QR code for scanning."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サーバーからの報告によって、先のQRコードが未スキャンの状態のままのようです。それをもう一度スキャンするか、あるいはQRコードを再生成してスキャンしてください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "服务器回传讯息指出该二维码尚未被扫描。请重新尝试扫描、或者重新生成新的二维码再尝试。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伺服器回傳訊息指出該 QR Code 尚未被掃描。請重新嘗試掃描、或者重新生成新的 QR Code 再嘗試。"
+          }
+        }
+      }
+    },
+    "profileMgr.qr_code_login.open_miyoushe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click here to jump to Miyoushe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社アプリを呼び出す"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点此跳转至米游社"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點此跳轉至米遊社"
+          }
+        }
+      }
+    },
+    "profileMgr.qr_code_login.open_miyoushe_mas_page" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Miyoushe from App Store"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store の米遊社アプリのページへ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从 App Store 获取米游社应用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "藉由 App Store 獲取米遊社應用"
+          }
+        }
+      }
+    },
+    "profileMgr.qr_code_login.regenerate_qrcode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regenerate the QR code"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QRコードを再生成"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新生成二维码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新生成 QR Code"
+          }
+        }
+      }
+    },
+    "profileMgr.qr_code_login.shared_qr_code_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR Code for Miyoushe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社専用QRコード"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米游社专用二维码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社專用 QR Code"
+          }
+        }
+      }
+    },
+    "profileMgr.qr_code_login.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login by scanning the QR code"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QRコードスキャンでログイン"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通过扫描二维码登录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "藉由 QR Code 掃描的方式登入"
+          }
+        }
+      }
+    },
+    "profileMgr.setting.allownotification" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow notifications"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知を許可"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许通知"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許通知"
+          }
+        }
+      }
+    },
+    "profileMgr.test.footer.recommend_device_fp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To avoid consistently being requested for verification, please set up device finger print according to [this tutorial](https://hsr.pizzastudio.org/static/fp_tutorial)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人間認証要求が何度も出まくっている場合、[この説明文章](https://hsr.pizzastudio.org/static/fp_tutorial)の方法に沿って、ご自分でデバイス指紋を取ってご記入ください。そうすれば、この支障を避けることはできます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果持续要求输入验证码，建议参考[本教程](https://hsr.pizzastudio.org/static/fp_tutorial)抓包填入设备指纹以规避。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果持續要求人機驗證的話，建議參考[該教學指引](https://hsr.pizzastudio.org/static/fp_tutorial)抓包填入裝置指紋、以規避該故障。"
+          }
+        }
+      }
+    },
+    "profileMgr.test.verify.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please tap here to enter the verification code. "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ここをタップして人間認証"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请点击这里输入验证码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請點擊這裡進行人機驗證"
+          }
+        }
+      }
+    },
+    "profileMgr.test.verify.web_sheet.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verification"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人間認証"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人机验证"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人機驗證"
+          }
+        }
+      }
+    },
+    "profileMgr.withdraw.entrylink.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regarding how to Manage or Delete your HoYoLAB / Miyoushe account"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HoYoLAB・米遊社通行証の管理・退会削除方法"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "了解如何对 米游社 / HoYoLAB 账号进行 管理 或 注销(删号)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "了解如何對 米遊社 / HoYoLAB 帳號進行 管理 或 註銷(删号)"
+          }
+        }
+      }
+    },
+    "profileMgr.withdraw.view.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regarding Account Deletion"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント退会について"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注销(删号)说明"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "註銷(删号)說明"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.linkTo:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The above link guides you to: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上記のリンク先：%@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上述链接将前往: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上述鏈接將前往: %@"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.navTitle.hoyolab" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Deletion (HoYoLAB)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント退会 (HoYoLAB)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注销(删号) - HoYoLAB"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "註銷(删号) - HoYoLAB"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.navTitle.miyoushe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Deletion (Miyoushe)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント退会 (米遊社)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注销(删号) - 米游社"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "註銷(删号) - 米遊社"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.readme.hoyolab.specialNotice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\nThe above link works on all devices. Users can also use HoYoLAB App (iPhone) to finish the account withdrawal (deletion)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\nHoYoLABアカウントの退会(削除)は、上記の（端末不制限の）リンクでも、HoYoLAB アプリでも行えます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\nHoYoLAB 账号的注销可借由任何设备使用上述链接来完成，也可以使用 HoYoLAB 的 App 来完成。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\nHoYoLAB 帳號的註銷可藉由任何設備使用上述鏈接來完成，也可以使用 HoYoLAB 的 App 來完成。"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.readme.miyoushe.specialNotice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\nMiyoushe expects that users need to use either cellphone or Miyoushe App (iPhone) to finish the account withdrawal (deletion). \n\nIf you are on macOS, you can change the user-agent of your Safari browser to iPhone in order to see the account deletion link. For more information regarding how to use the developer menu in Safari on macOS to change its user-agent, please contact Apple Support. \n\nThe above link, if directly clicked, will automatically apply the user-agent of iPhone."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\n米遊社は、ユーザーが米遊社アカウントの退会(削除)を完了するには、スマホまたは米遊社アプリのいずれかを使用してしまえと想定しています。\n\nmacOS で米遊社アカウント削除リンクを表示するために、Safari ブラウザのユーザーエージェント(User-Agent, UA)を iPhone のUAと変更する必要でございます。macOS の Safari の開発者メニューを使用して UA を変更する方法については、Apple サポートにお問い合わせください。\n\n弊アプリで直接に上記のリンクをクリックした場合、自動的に iPhone の UA を適用します。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\n米游社期望用户使用手机或米游社App（iPhone）来完成账号注销（删除）。\n\n如果您使用的是 macOS，则可以将 Safari 浏览器的用户代理（UA, User-Agent）变更为 iPhone，以便看到账号删除专用链接入口。有关如何使用 macOS 上 Safari 中的开发者选单更改其用户代理的方法，请联系 Apple 支持。\n\n在敝 App 内直接点击上述链接的话，会在前往该页面时自动套用 iPhone 的用户代理（UA）。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\n米遊社期望用戶使用手機或米遊社App（iPhone）來完成帳號註銷（刪除）。\n\n如果您使用的是 macOS，則可以將 Safari 瀏覽器的使用者代理（UA, User-Agent）變更為 iPhone，以便看到帳號刪除專用鏈接入口。有關如何使用 macOS 上 Safari 中的開發者選單更改其使用者代理的方法，請聯絡 Apple 支援。\n\n在敝 App 內直接點按上述鏈接的話，會在前往該頁面時自動套用 iPhone 的使用者代理（UA）。"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.warning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You acknowledge and agree that as a result of deleting your Account, you will lose access to all services related to all games developed by MiHoYo / Cognosphere, including the account information, subscriptions and all game-related information linked to such Account and permanently lose the possibility to access other services through the Account."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "貴殿は、貴殿の本アカウントの退会削除の結果、貴殿が本アカウントに紐づけられたアカウント情報、サブスクリプション及び（MiHoYo & Cognosphere の開発したすべての）ゲーム関連情報を含め、ゲーム関連サービスへのアクセス権を永遠的に失い、本アカウントを通じて他のサービスにアクセスする可能性を失うことを確認し同意します。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您认可并同意账号注销导致的后果：您将无法通过该账号登入（任何由米哈游 / Cognosphere 开发的）游戏相关服务，包括与该账号相关联的账号资讯、订阅和游戏的相关资讯，并永久丧失任何通过该账号访问其他服务的权利。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您認可並同意帳號註銷導致的後果：您將無法藉由該帳號登入（任何由米哈遊 / Cognosphere 開發的）遊戲相關服務，包括與該帳號相關聯的帳號資訊、訂閱和遊戲的相關資訊，並永久喪失任何藉由該帳號存取其他服務的權利。"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.warning.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may confirm this consequence by consulting HoYoLAB / Miyoushe support."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "と上記の結果・責任につきましては HoYoLAB・米遊社 のサポートにお問い合わせください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可自行向米游社 / HoYoLAB 客户服务确认上述后果是否真实。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可自行向米遊社 / HoYoLAB 客戶服務確認上述後果是否真實。"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.whyAddedThisPage.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This page is made in compliance with what requested by App Store Review Board."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このページは App Store 審査委員会が命じて作られたものである。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该页面乃应 App Store 审委会之要求而实作。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該頁面乃應 App Store 審委會之要求而實作。"
+          }
+        }
+      }
+    },
     "settings.appLanguage.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -113,6 +1496,62 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "UI設定"
+          }
+        }
+      }
+    },
+    "sys.server.cn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "China Mainland Servers"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中国本土のプレーヤー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "国服"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中國大陸伺服器"
+          }
+        }
+      }
+    },
+    "sys.server.os" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global Servers"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "グローバルプレーヤー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "国际服"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "國際伺服器"
           }
         }
       }
