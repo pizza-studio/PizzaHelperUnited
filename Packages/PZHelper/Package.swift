@@ -24,11 +24,16 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../PZKit"),
+        .package(
+            url: "https://github.com/elai950/AlertToast",
+            .upToNextMajor(from: "1.3.9")
+        ),
     ],
     targets: [
         .target(
             name: "PZHelper",
             dependencies: [
+                .product(name: "AlertToast", package: "AlertToast"),
                 .product(name: "PizzaKit", package: "PZKit"),
                 .product(name: "EnkaKit", package: "PZKit"),
                 .product(name: "GachaKit", package: "PZKit"),
