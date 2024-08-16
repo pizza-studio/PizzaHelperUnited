@@ -14,6 +14,7 @@ struct AppSettingsTabPage: View {
     // MARK: Internal
 
     enum Nav {
+        case profileManager
         case cloudAccountSettings
         case uiSettings
         case otherSettings
@@ -23,6 +24,9 @@ struct AppSettingsTabPage: View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
                 Section {
+                    NavigationLink(value: Nav.profileManager) {
+                        Label("profileMgr.manage.title".i18nPZHelper, systemSymbol: .personTextRectangleFill)
+                    }
                     NavigationLink(value: Nav.cloudAccountSettings) {
                         Label("# Cloud Account Settings".description, systemSymbol: .cloudCircle)
                     }
@@ -89,6 +93,7 @@ struct AppSettingsTabPage: View {
     private func navigationDetail(selection: Binding<Nav?>) -> some View {
         NavigationStack {
             switch selection.wrappedValue {
+            case .profileManager: ProfileManagerPageContent()
             case .cloudAccountSettings: CloudAccountSettingsPageContent()
             case .uiSettings: UISettingsPageContent()
             case .otherSettings: OtherSettingsPageContent()
