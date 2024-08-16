@@ -81,6 +81,12 @@ extension GachaMOProtocol {
             error = catchedError
         }
         if let error = error { throw error }
+        if persistence == .cloud {
+            container.viewContext.automaticallyMergesChangesFromParent = true
+            container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+            container.viewContext.refreshAllObjects()
+        }
+
         return container
     }
 }
