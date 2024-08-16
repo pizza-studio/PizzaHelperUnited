@@ -10,22 +10,7 @@ import SwiftUI
 
 @main
 struct UnitedPizzaHelperApp: App {
-    var sharedPZProfileMOContainer: ModelContainer = {
-        let schema = Schema([
-            PZProfileMO.self,
-        ])
-        let modelConfiguration = ModelConfiguration(
-            schema: schema, isStoredInMemoryOnly: false,
-            groupContainer: .none,
-            cloudKitDatabase: .private(iCloudContainerName)
-        )
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
@@ -35,6 +20,6 @@ struct UnitedPizzaHelperApp: App {
             #endif
         }
         .windowResizability(.contentMinSize)
-        .modelContainer(sharedPZProfileMOContainer)
+        .modelContainer(persistenceController.modelContainer)
     }
 }
