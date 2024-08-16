@@ -61,7 +61,8 @@ struct ProfileManagerPageContent: View {
                                     .foregroundColor(.primary)
                                 HStack {
                                     Text(profile.uidWithGame).fontDesign(.monospaced)
-                                    Text(profile.serverRawValue) // TODO: Needs fix later.
+                                    Text(profile.game.localizedDescription)
+                                    Text(profile.server.localizedDescriptionByGame)
                                 }
                                 .font(.footnote)
                                 .foregroundColor(.secondary)
