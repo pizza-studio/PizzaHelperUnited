@@ -53,7 +53,9 @@ struct ProfileManagerPageContent: View {
             Section {
                 ForEach(profiles) { profile in
                     Button {
-                        sheetType = .editExistingProfile(profile)
+                        if isEditMode != .active {
+                            sheetType = .editExistingProfile(profile)
+                        }
                     } label: {
                         HStack {
                             VStack(alignment: .leading, spacing: 3) {
@@ -68,7 +70,9 @@ struct ProfileManagerPageContent: View {
                                 .foregroundColor(.secondary)
                             }
                             Spacer()
-                            Image(systemSymbol: .sliderHorizontal3)
+                            if isEditMode != .active {
+                                Image(systemSymbol: .sliderHorizontal3)
+                            }
                         }
                     }
                 }
@@ -108,6 +112,7 @@ struct ProfileManagerPageContent: View {
             )
         }
         .environment(alertToastEventStatus)
+        .environment(\.editMode, $isEditMode)
     }
 
     // MARK: Private
@@ -116,6 +121,7 @@ struct ProfileManagerPageContent: View {
     @State private var alertToastEventStatus = AlertToastEventStatus()
     @State private var isBusy = false
     @State private var errorMessage: String?
+    @State var isEditMode: EditMode = .inactive
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
 
