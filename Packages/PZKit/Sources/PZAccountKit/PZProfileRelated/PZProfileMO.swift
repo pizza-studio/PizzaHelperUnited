@@ -22,6 +22,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.game = game
         self.uid = uid
         self.serverRawValue = server.rawValue
+        self.server = server
         if let configuration {
             self.allowNotification = configuration.allowNotification
             self.cookie = configuration.cookie

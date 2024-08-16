@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
@@ -65,7 +66,9 @@ struct HoYoPassWithdrawView: View {
                         .navigationTitle("profileMgr.withdrawal.navTitle.miyoushe".i18nPZHelper)
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
-                    Text("sys.server.cn".i18nPZHelper) + Text(verbatim: " - ") + Text("app.miyoushe")
+                    Text("sys.server.cn".i18nPZHelper)
+                        + Text(verbatim: " - ")
+                        + Text(HoYo.AccountRegion.miyoushe(.genshinImpact).localizedDescription)
                 }
             } footer: {
                 VStack(alignment: .leading) {

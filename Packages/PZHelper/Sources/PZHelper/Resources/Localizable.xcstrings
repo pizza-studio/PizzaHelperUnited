@@ -1,34 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "app.miyoushe" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Miyoushe"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "米遊社"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "米游社"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "米遊社"
-          }
-        }
-      }
-    },
     "profileMgr.added.succeeded" : {
       "extractionState" : "migrated",
       "localizations" : {
