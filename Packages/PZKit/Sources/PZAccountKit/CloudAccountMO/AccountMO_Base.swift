@@ -25,6 +25,17 @@ public protocol ProfileMOProtocol: Codable {
     var uuid: UUID { get set }
 }
 
+extension ProfileMOProtocol {
+    public var isValid: Bool {
+        true
+            && !uid.isEmpty
+            && !cookie.isEmpty
+            && !name.isEmpty
+    }
+
+    public var isInvalid: Bool { !isValid }
+}
+
 // MARK: - AccountMOProtocol
 
 public protocol AccountMOProtocol: Codable, ProfileMOProtocol {
