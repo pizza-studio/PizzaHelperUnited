@@ -90,18 +90,18 @@ extension PZProfileMO {
     public static func inheritOldData(insertTo context: ModelContext) async throws {
         guard let oldSputnik = AccountMOSputnik.shared else { return }
         // Genshin.
-        let genshinData: [PZProfileMO]? = try? oldSputnik
+        let genshinData: [PZProfileMO]? = try oldSputnik
             .allAccountDataMO(for: .genshinImpact).map { oldMO in
                 PZProfileMO(game: .genshinImpact, uid: oldMO.uid, configuration: oldMO)
             }
         // StarRail.
-        let hsrData: [PZProfileMO]? = try? oldSputnik
+        let hsrData: [PZProfileMO]? = try oldSputnik
             .allAccountDataMO(for: .starRail).map { oldMO in
                 PZProfileMO(game: .starRail, uid: oldMO.uid, configuration: oldMO)
             }
         let dataSet: [PZProfileMO] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
         guard !dataSet.isEmpty else { return }
         dataSet.forEach { context.insert($0) }
-        try? context.save()
+        try context.save()
     }
 }
