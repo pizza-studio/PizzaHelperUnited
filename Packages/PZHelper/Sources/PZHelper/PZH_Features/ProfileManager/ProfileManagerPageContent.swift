@@ -37,7 +37,7 @@ struct ProfileManagerPageContent: View {
         List {
             Section {
                 Button {
-                    sheetType = .createNewProfile(.init(game: .genshinImpact, uid: "114514"))
+                    sheetType = .createNewProfile(.init())
                 } label: {
                     Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
                 }
