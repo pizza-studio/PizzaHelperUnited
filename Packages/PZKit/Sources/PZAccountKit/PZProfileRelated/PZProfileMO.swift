@@ -12,21 +12,29 @@ import SwiftData
 public final class PZProfileMO: Codable, ProfileMOProtocol {
     // MARK: Lifecycle
 
-    public init(game: Pizza.SupportedGame, uid: String, configuration: AccountMOProtocol? = nil) {
+    /// 专门用来从旧版 AccountMO 迁移到全新的 PZProfileMO 帐号体系的建构子。
+    /// - Parameters:
+    ///   - game: 游戏。
+    ///   - uid: UID。
+    ///   - configuration: 旧版 AccountMO。
+    public init?(game: Pizza.SupportedGame, uid: String, configuration: AccountMOProtocol? = nil) {
+        guard let server = HoYo.Server(uid: uid, game: game) else { return nil }
         self.game = game
         self.uid = uid
+        self.serverRawValue = server.rawValue
         if let configuration {
             self.allowNotification = configuration.allowNotification
             self.cookie = configuration.cookie
             self.deviceFingerPrint = configuration.deviceFingerPrint
             self.name = configuration.name
             self.priority = configuration.priority
-            self.serverRawValue = configuration.serverRawValue
             self.sTokenV2 = configuration.sTokenV2
             self.uid = configuration.uid
             self.uuid = configuration.uuid
         }
     }
+
+    public init() {}
 
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -35,6 +43,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.deviceFingerPrint = try container.decode(String.self, forKey: .deviceFingerPrint)
         self.name = try container.decode(String.self, forKey: .name)
         self.priority = try container.decode(Int.self, forKey: .priority)
+        self.server = try container.decode(HoYo.Server.self, forKey: .server)
         self.serverRawValue = try container.decode(String.self, forKey: .serverRawValue)
         self.sTokenV2 = try container.decodeIfPresent(String.self, forKey: .sTokenV2)
         self.uid = try container.decode(String.self, forKey: .uid)
@@ -52,7 +61,8 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     public var deviceFingerPrint: String = ""
     public var name: String = ""
     public var priority: Int = 0
-    public var serverRawValue: String = ""
+    public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact)
+    public var serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue
     public var sTokenV2: String?
 
     public func encode(to encoder: any Encoder) throws {
@@ -63,6 +73,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         try container.encode(name, forKey: .name)
         try container.encode(game, forKey: .game)
         try container.encode(priority, forKey: .priority)
+        try container.encode(server, forKey: .server)
         try container.encode(serverRawValue, forKey: .serverRawValue)
         try container.encodeIfPresent(sTokenV2, forKey: .sTokenV2)
         try container.encode(uid, forKey: .uid)
@@ -79,6 +90,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         case game
         case priority
         case serverRawValue
+        case server
         case sTokenV2
         case uid
         case uuid
