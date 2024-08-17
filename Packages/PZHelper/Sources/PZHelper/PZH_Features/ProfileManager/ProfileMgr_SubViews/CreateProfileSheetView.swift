@@ -17,7 +17,7 @@ struct CreateProfileSheetView: View {
     // MARK: Internal
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Text(verbatim: "# Under Construction")
             }

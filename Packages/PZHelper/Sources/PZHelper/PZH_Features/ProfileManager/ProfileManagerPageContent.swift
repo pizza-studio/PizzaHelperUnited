@@ -85,25 +85,15 @@ struct ProfileManagerPageContent: View {
                 }
             }
         }
+        #if targetEnvironment(macCatalyst)
+        .navigationDestination(item: $sheetType, destination: handleSheetNavigation)
+        #else
+        .sheet(item: $sheetType, content: handleSheetNavigation)
+        #endif
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navigationBarTitleDisplayMode(.large)
-        .sheet(item: $sheetType, content: { type in
-            switch type {
-            case let .createNewProfile(newProfile):
-                CreateProfileSheetView(profile: newProfile, isShown: isSheetShown)
-            case let .editExistingProfile(profile):
-                EditProfileSheetView(profile: profile, isShown: isSheetShown)
-            }
-        })
-        .onAppear {
-            profiles.filter(\.isInvalid).forEach { profile in
-                modelContext.delete(profile)
-                try? modelContext.save()
-            }
-        }
-        .toolbar {
-            EditButton()
-        }
+        .onAppear(perform: bleachInvalidProfiles)
+        .toolbar { EditButton() }
         .toast(isPresenting: $alertToastEventStatus.isDoneButtonTapped) {
             AlertToast(
                 displayMode: .alert,
@@ -111,7 +101,6 @@ struct ProfileManagerPageContent: View {
                 title: "profileMgr.added.succeeded".i18nPZHelper
             )
         }
-        .environment(alertToastEventStatus)
         .environment(\.editMode, $isEditMode)
     }
 
@@ -131,6 +120,24 @@ struct ProfileManagerPageContent: View {
         } set: { newValue in
             if !newValue { sheetType = nil }
         }
+    }
+
+    @ViewBuilder
+    private func handleSheetNavigation(_ sheetType: SheetType) -> some View {
+        Group {
+            switch sheetType {
+            case let .createNewProfile(newProfile):
+                CreateProfileSheetView(profile: newProfile, isShown: isSheetShown)
+                    .environment(alertToastEventStatus)
+            case let .editExistingProfile(profile):
+                EditProfileSheetView(profile: profile, isShown: isSheetShown)
+                    .environment(alertToastEventStatus)
+            }
+        }
+        // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
+        .toolbar(.hidden, for: .tabBar)
+        // 仅针对 macOS 使用 NavigationDestination 的情况，让用户改用自订的后退按钮。
+        .navigationBarBackButtonHidden(true)
     }
 
     private func addProfile(_ profile: PZProfileMO) {
@@ -189,16 +196,23 @@ struct ProfileManagerPageContent: View {
             isBusy = false
         }
     }
+
+    private func bleachInvalidProfiles() {
+        profiles.filter(\.isInvalid).forEach { profile in
+            modelContext.delete(profile)
+            try? modelContext.save()
+        }
+    }
 }
 
 extension ProfileManagerPageContent {
     @Observable
-    fileprivate class AlertToastEventStatus {
+    class AlertToastEventStatus {
         var isDoneButtonTapped = false
         var isLoginSucceeded = false
     }
 
-    enum SheetType: Identifiable {
+    enum SheetType: Identifiable, Hashable {
         case createNewProfile(PZProfileMO)
         case editExistingProfile(PZProfileMO)
 
