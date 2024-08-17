@@ -77,6 +77,14 @@ struct ProfileManagerPageContent: View {
                             }
                         } label: {
                             profile.asIcon4SUI().frame(width: 48).padding(.trailing, 4)
+                        }.contextMenu {
+                            Button("profileMgr.edit.title".i18nPZHelper) {
+                                sheetType = .editExistingProfile(profile)
+                            }
+                            Button("profileMgr.delete.title".i18nPZHelper) {
+                                modelContext.delete(profile)
+                                try? modelContext.save()
+                            }
                         }
                     }
                 }
