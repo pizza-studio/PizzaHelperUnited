@@ -7,7 +7,7 @@ import PZBaseKit
 import SwiftUI
 
 struct ProfileConfigEditorView: View {
-    @Binding var unsavedAccount: PZProfileMO
+    @Binding var unsavedProfile: PZProfileMO
 
     var body: some View {
         Form {
@@ -15,33 +15,33 @@ struct ProfileConfigEditorView: View {
                 LabeledContent {
                     TextField(
                         "profile.label.nickname".i18nPZHelper,
-                        text: $unsavedAccount.name,
+                        text: $unsavedProfile.name,
                         prompt: Text("profile.label.nickname".i18nPZHelper)
                     )
                     .multilineTextAlignment(.trailing)
                 } label: { Text("profile.label.nickname".i18nPZHelper) }
-                Picker("profile.label.game".i18nPZHelper, selection: $unsavedAccount.game) {
+                Picker("profile.label.game".i18nPZHelper, selection: $unsavedProfile.game) {
                     ForEach(Pizza.SupportedGame.allCases) { currentGame in
                         Text(currentGame.localizedDescription).tag(currentGame)
                     }
-                }.onChange(of: unsavedAccount.game) { _, newValue in
-                    switch unsavedAccount.server {
-                    case .celestia: unsavedAccount.server = .celestia(newValue)
-                    case .irminsul: unsavedAccount.server = .irminsul(newValue)
-                    case .unitedStates: unsavedAccount.server = .unitedStates(newValue)
-                    case .europe: unsavedAccount.server = .europe(newValue)
-                    case .asia: unsavedAccount.server = .asia(newValue)
-                    case .hkMacauTaiwan: unsavedAccount.server = .hkMacauTaiwan(newValue)
+                }.onChange(of: unsavedProfile.game) { _, newValue in
+                    switch unsavedProfile.server {
+                    case .celestia: unsavedProfile.server = .celestia(newValue)
+                    case .irminsul: unsavedProfile.server = .irminsul(newValue)
+                    case .unitedStates: unsavedProfile.server = .unitedStates(newValue)
+                    case .europe: unsavedProfile.server = .europe(newValue)
+                    case .asia: unsavedProfile.server = .asia(newValue)
+                    case .hkMacauTaiwan: unsavedProfile.server = .hkMacauTaiwan(newValue)
                     }
-                    unsavedAccount.serverRawValue = unsavedAccount.server.rawValue
+                    unsavedProfile.serverRawValue = unsavedProfile.server.rawValue
                 }
                 LabeledContent {
-                    TextField("UID", text: $unsavedAccount.uid, prompt: Text("UID"))
+                    TextField("UID", text: $unsavedProfile.uid, prompt: Text("UID"))
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                 } label: { Text("UID") }
-                Picker("profile.label.server".i18nPZHelper, selection: $unsavedAccount.server) {
-                    switch unsavedAccount.game {
+                Picker("profile.label.server".i18nPZHelper, selection: $unsavedProfile.server) {
+                    switch unsavedProfile.game {
                     case .genshinImpact:
                         ForEach(HoYo.Server.allCases4GI) { server in
                             Text(server.localizedDescriptionByGameAndRegion).tag(server)
@@ -56,14 +56,14 @@ struct ProfileConfigEditorView: View {
 
             Section {
                 let cookieTextEditorFrame: CGFloat = 150
-                TextEditor(text: $unsavedAccount.cookie)
+                TextEditor(text: $unsavedProfile.cookie)
                     .frame(height: cookieTextEditorFrame)
             } header: {
                 Text("profile.label.cookie".i18nPZHelper)
                     .textCase(.none)
             }
             Section {
-                TextField("profile.label.fp".i18nPZHelper, text: $unsavedAccount.deviceFingerPrint)
+                TextField("profile.label.fp".i18nPZHelper, text: $unsavedProfile.deviceFingerPrint)
                     .multilineTextAlignment(.leading)
             } header: {
                 Text("profile.label.fp".i18nPZHelper)

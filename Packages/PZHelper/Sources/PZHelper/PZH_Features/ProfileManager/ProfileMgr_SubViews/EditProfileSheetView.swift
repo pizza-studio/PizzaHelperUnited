@@ -35,14 +35,15 @@ extension ProfileManagerPageContent {
                                         isShown.toggle()
                                         // WidgetCenter.shared.reloadAllTimelines() // TODO:
                                         // globalDailyNoteCardRefreshSubject.send(()) // TODO:
+                                        alertToastEventStatus.isDoneButtonTapped.toggle()
                                     } catch {
                                         saveProfileError = .saveDataError(error)
                                         isSaveProfileFailAlertShown.toggle()
                                     }
                                 } else {
                                     isShown.toggle()
+                                    alertToastEventStatus.isDoneButtonTapped.toggle()
                                 }
-                                alertToastEventStatus.isDoneButtonTapped.toggle()
                             }
                         }
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -66,48 +67,50 @@ extension ProfileManagerPageContent {
     }
 }
 
-// MARK: - SaveProfileError
+// MARK: - ProfileManagerPageContent.SaveProfileError
 
-private enum SaveProfileError: Error, LocalizedError {
-    case saveDataError(Error)
-    case missingFieldError(String)
+extension ProfileManagerPageContent {
+    enum SaveProfileError: Error, LocalizedError {
+        case saveDataError(Error)
+        case missingFieldError(String)
 
-    // MARK: Public
+        // MARK: Public
 
-    public var description: String { localizedDescription }
+        public var description: String { localizedDescription }
 
-    public var localizedDescription: String {
-        switch self {
-        case let .saveDataError(error):
-            return "\(localizedDescriptionHeaderKey)\(error).".i18nPZHelper
-        case let .missingFieldError(field):
-            return "\(localizedDescriptionHeaderKey)\(field).".i18nPZHelper
+        public var localizedDescription: String {
+            switch self {
+            case let .saveDataError(error):
+                return "\(localizedDescriptionHeaderKey)\(error).".i18nPZHelper
+            case let .missingFieldError(field):
+                return "\(localizedDescriptionHeaderKey)\(field).".i18nPZHelper
+            }
         }
-    }
 
-    public var localizedDescriptionHeaderKey: String {
-        switch self {
-        case .saveDataError:
-            "profileMgr.error.SaveProfileError.saveDataError:"
-        case .missingFieldError:
-            "profileMgr.error.SaveProfileError.missingFieldError:"
+        public var localizedDescriptionHeaderKey: String {
+            switch self {
+            case .saveDataError:
+                "profileMgr.error.SaveProfileError.saveDataError:"
+            case .missingFieldError:
+                "profileMgr.error.SaveProfileError.missingFieldError:"
+            }
         }
-    }
 
-    public var errorDescription: String? {
-        localizedDescription
-    }
-
-    public var failureReason: String? {
-        switch self {
-        case let .saveDataError(error):
-            return "Save Error: \(error)."
-        case let .missingFieldError(field):
-            return "Missing Fields: \(field)."
+        public var errorDescription: String? {
+            localizedDescription
         }
-    }
 
-    public var helpAnchor: String? {
-        "profileMgr.error.SaveProfileError.helpAnchor".i18nPZHelper
+        public var failureReason: String? {
+            switch self {
+            case let .saveDataError(error):
+                return "Save Error: \(error)."
+            case let .missingFieldError(field):
+                return "Missing Fields: \(field)."
+            }
+        }
+
+        public var helpAnchor: String? {
+            "profileMgr.error.SaveProfileError.helpAnchor".i18nPZHelper
+        }
     }
 }

@@ -83,7 +83,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "編輯本地帳號詳情"
+            "value" : "編輯本機帳號詳情"
           }
         }
       }
@@ -285,7 +285,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "編輯本地帳號組態"
+            "value" : "編輯本機帳號組態"
           }
         }
       }
@@ -343,7 +343,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "因下述錯誤，本地帳號資料保存失敗："
+            "value" : "因下述錯誤，本機帳號資料保存失敗："
           }
         }
       }
@@ -372,7 +372,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "因下述資料缺失，本地帳號資料保存失敗："
+            "value" : "因下述資料缺失，本機帳號資料保存失敗："
           }
         }
       }
@@ -541,7 +541,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "匯入舊版 App 的本地帳號"
+            "value" : "匯入舊版 App 的本 帳號"
           }
         }
       }
@@ -826,7 +826,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手動設定你的本地帳號"
+            "value" : "手動設定你的本機帳號"
           }
         }
       }
@@ -882,7 +882,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "管理本地帳號"
+            "value" : "管理本機帳號"
           }
         }
       }
@@ -904,13 +904,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "添加本地账号"
+            "value" : "新增本地账号"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "添加本地帳號"
+            "value" : "新增本機帳號"
           }
         }
       }
