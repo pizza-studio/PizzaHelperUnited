@@ -28,9 +28,13 @@ public protocol ProfileMOProtocol: Codable {
 extension ProfileMOProtocol {
     public var isValid: Bool {
         true
-            && !uid.isEmpty
-            && !cookie.isEmpty
+            && Int(uid) != nil
+            && [8, 9].contains(uid.count)
             && !name.isEmpty
+    }
+
+    public var isOfflineProfile: Bool {
+        cookie.isEmpty
     }
 
     public var isInvalid: Bool { !isValid }
