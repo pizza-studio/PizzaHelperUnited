@@ -54,7 +54,6 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
 
     // MARK: Public
 
-    public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact
     public var uid: String = "114514810"
     public var uuid: UUID = UUID()
     public var allowNotification: Bool = true
@@ -65,6 +64,20 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact)
     public var serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue
     public var sTokenV2: String?
+
+    public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact {
+        willSet {
+            switch server {
+            case .celestia: server = .celestia(newValue)
+            case .irminsul: server = .irminsul(newValue)
+            case .unitedStates: server = .unitedStates(newValue)
+            case .europe: server = .europe(newValue)
+            case .asia: server = .asia(newValue)
+            case .hkMacauTaiwan: server = .hkMacauTaiwan(newValue)
+            }
+            serverRawValue = server.rawValue
+        }
+    }
 
     public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)

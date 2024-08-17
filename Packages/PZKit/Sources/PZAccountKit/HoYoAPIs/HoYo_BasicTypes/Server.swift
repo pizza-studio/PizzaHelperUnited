@@ -163,6 +163,10 @@ extension HoYo.Server: CustomStringConvertible {
         localizedStringKeyByGame.i18nAK
     }
 
+    public var localizedDescriptionByGameAndRegion: String {
+        "\(localizedDescriptionByGame) (\(region.localizedDescription))"
+    }
+
     public var literalNameRawValue: String {
         switch self {
         case .celestia: "celestia"
