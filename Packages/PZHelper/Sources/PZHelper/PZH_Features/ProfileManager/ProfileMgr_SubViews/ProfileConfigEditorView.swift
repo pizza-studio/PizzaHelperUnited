@@ -40,6 +40,11 @@ struct ProfileConfigEditorView: View {
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                 } label: { Text("UID") }
+                    .onChange(of: unsavedProfile.uid) { _, _ in
+                        let server = HoYo.Server(uid: unsavedProfile.uid, game: unsavedProfile.game)
+                        guard let server else { return }
+                        unsavedProfile.server = server
+                    }
                 Picker("profile.label.server".i18nPZHelper, selection: $unsavedProfile.server) {
                     switch unsavedProfile.game {
                     case .genshinImpact:
