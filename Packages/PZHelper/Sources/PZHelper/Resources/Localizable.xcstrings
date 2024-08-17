@@ -1,6 +1,35 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "dpv.query.menuCommandTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Showcase Query"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ショーケースを調べる"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查询展柜"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查詢展櫃"
+          }
+        }
+      }
+    },
     "profile.label.allowNotification" : {
       "extractionState" : "manual",
       "localizations" : {
