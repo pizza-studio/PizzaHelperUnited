@@ -64,7 +64,9 @@ struct ProfileManagerPageContent: View {
                                         .foregroundColor(.primary)
                                     HStack {
                                         Text(profile.uidWithGame).fontDesign(.monospaced)
-                                        Text(profile.game.localizedDescription)
+                                        if horizontalSizeClass != .compact {
+                                            Text(profile.game.localizedDescription)
+                                        }
                                         Text(profile.server.localizedDescriptionByGame)
                                     }
                                     .font(.footnote)
@@ -123,6 +125,7 @@ struct ProfileManagerPageContent: View {
     @State private var isBusy = false
     @State private var errorMessage: String?
     @State var isEditMode: EditMode = .inactive
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
 
