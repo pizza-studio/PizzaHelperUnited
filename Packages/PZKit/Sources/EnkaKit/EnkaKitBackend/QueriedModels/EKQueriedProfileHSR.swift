@@ -39,7 +39,12 @@ extension Enka {
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.uid = try container.decode(Int.self, forKey: .uid).description
+            let maybeUID1 = try? container.decodeIfPresent(Int.self, forKey: .uid)?.description
+            if let maybeUID1 {
+                self.uid = maybeUID1
+            } else {
+                self.uid = try container.decode(String.self, forKey: .uid)
+            }
             self.nickname = (try? container.decode(String.self, forKey: .nickname)) ?? "@Nanashibito"
             self.level = (try? container.decode(Int.self, forKey: .level)) ?? 0
             self.friendCount = (try? container.decode(Int.self, forKey: .friendCount)) ?? 0
