@@ -49,8 +49,10 @@ extension EKQueriedProfileProtocol {
         return newResult
     }
 
-    public mutating func saveToCache() {
-        Self.locallyCachedData[uid.description] = self
+    public func saveToCache() {
+        Task.detached { @MainActor in
+            Self.locallyCachedData[uid.description] = self
+        }
     }
 
     public var onlineAssetURLStr: String {
@@ -78,8 +80,7 @@ extension EKQueriedProfileProtocol {
     }
 
     public static var nullPhotoAssetName: String {
-        /// 让原神沿用星穹铁道的匿名肖像。
-        "hsr_avatar_Anonymous"
+        Enka.ProfileIconView.nullPhotoAssetName
     }
 }
 

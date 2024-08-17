@@ -3,30 +3,26 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - Enka.GameType
 
 extension Enka {
-    public enum GameType: CaseIterable, Codable, Hashable, Equatable, Identifiable {
-        case genshinImpact
-        case starRail
+    public typealias GameType = Pizza.SupportedGame
+}
 
-        // MARK: Public
-
-        public var id: String { debugTag }
-
-        public var debugTag: String {
-            switch self {
-            case .genshinImpact: "GI"
-            case .starRail: "SR"
-            }
+extension Pizza.SupportedGame {
+    public var debugTag: String {
+        switch self {
+        case .genshinImpact: "GI"
+        case .starRail: "SR"
         }
+    }
 
-        public var localAssetNamePrefix: String {
-            switch self {
-            case .genshinImpact: "gi_"
-            case .starRail: "hsr_"
-            }
+    public var localAssetNamePrefix: String {
+        switch self {
+        case .genshinImpact: "gi_"
+        case .starRail: "hsr_"
         }
     }
 }

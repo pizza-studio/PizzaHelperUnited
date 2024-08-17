@@ -133,6 +133,17 @@ extension Enka.Sputnik {
 // MARK: - Fetching Enka Query Profile.
 
 extension Enka.Sputnik {
+    public func queryAndSave(uid: String, game: Enka.GameType) async throws {
+        switch game {
+        case .genshinImpact:
+            let fetched = try await Enka.Sputnik.fetchEnkaQueryResultRAW(uid, type: Enka.QueriedResultGI.self)
+            fetched.detailInfo?.saveToCache()
+        case .starRail:
+            let fetched = try await Enka.Sputnik.fetchEnkaQueryResultRAW(uid, type: Enka.QueriedResultHSR.self)
+            fetched.detailInfo?.saveToCache()
+        }
+    }
+
     /// 从 Enka Networks 获取游戏内玩家展柜资讯的原始查询结果。
     /// - Parameters:
     ///     - uid: 用户UID

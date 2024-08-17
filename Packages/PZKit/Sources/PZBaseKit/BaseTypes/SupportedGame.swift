@@ -5,7 +5,7 @@
 // MARK: - Pizza.SupportedGame
 
 extension Pizza {
-    public enum SupportedGame: String, Sendable, Identifiable, Hashable, Codable, CaseIterable {
+    public enum SupportedGame: String, Sendable, Identifiable, Hashable, Codable, CaseIterable, Equatable {
         case genshinImpact = "GI"
         case starRail = "HSR"
 
