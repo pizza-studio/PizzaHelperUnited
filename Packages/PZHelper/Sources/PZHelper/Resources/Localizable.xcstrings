@@ -1791,6 +1791,35 @@
         }
       }
     },
+    "settings.section.profileManagement.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Local Profiles"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該当端末で保存したプロフィールの管理"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理这部设备上的本地账号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理這部裝置上的本機帳號"
+          }
+        }
+      }
+    },
     "settings.section.visualSettings.header" : {
       "extractionState" : "manual",
       "localizations" : {
