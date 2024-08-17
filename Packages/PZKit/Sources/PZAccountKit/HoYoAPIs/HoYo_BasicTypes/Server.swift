@@ -87,9 +87,9 @@ extension HoYo.Server: CaseIterable {
     ]
 }
 
-// MARK: - HoYo.Server + RawRepresentable, Codable, Identifiable
+// MARK: - HoYo.Server + RawRepresentable, Codable, Identifiable, Hashable
 
-extension HoYo.Server: RawRepresentable, Codable, Identifiable {
+extension HoYo.Server: RawRepresentable, Codable, Identifiable, Hashable {
     public init?(rawValue: String) {
         switch rawValue.lowercased() {
         case "cn_gf01": self = .celestia(.genshinImpact)
