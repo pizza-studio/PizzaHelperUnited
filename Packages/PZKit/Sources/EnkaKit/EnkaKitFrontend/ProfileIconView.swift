@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import SwiftUI
 
 extension EKQueriedProfileProtocol {
@@ -26,11 +27,69 @@ extension EKQueriedProfileProtocol {
                 onlineIcon().aspectRatio(contentMode: .fit)
             }
         }.background {
-            Color.black.opacity(0.15)
-            /// 拿 Anonymous 的橙黄色当背景也不赖。
-            Image(Self.nullPhotoAssetName, bundle: Bundle.module).resizable().aspectRatio(contentMode: .fit)
+            Color(cgColor: .init(red: 0.94, green: 0.88, blue: 0.48, alpha: 1.00))
         }
         .clipShape(.circle)
+    }
+}
+
+// MARK: - Enka.ProfileIconView
+
+extension Enka {
+    @MainActor
+    public struct ProfileIconView: View {
+        // MARK: Lifecycle
+
+        public init(uid: String, game: Enka.GameType) {
+            self.uid = uid
+            self.game = game
+        }
+
+        // MARK: Public
+
+        nonisolated public static let nullPhotoAssetName = "avatar_anonymous_yjsnpi"
+
+        @ViewBuilder public static var anonymousIcon4SUI: some View {
+            Image(nullPhotoAssetName, bundle: Bundle.module)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .clipShape(.circle)
+        }
+
+        public let uid: String
+        public let game: Enka.GameType
+
+        public var body: some View {
+            switch game {
+            case .genshinImpact:
+                if let profile = profiles4GI[uid] {
+                    profile.localFittingIcon4SUI
+                } else {
+                    Self.anonymousIcon4SUI
+                        .onAppear {
+                            Task.detached { @MainActor in
+                                try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
+                            }
+                        }
+                }
+            case .starRail:
+                if let profile = profiles4HSR[uid] {
+                    profile.localFittingIcon4SUI
+                } else {
+                    Self.anonymousIcon4SUI
+                        .onAppear {
+                            Task.detached { @MainActor in
+                                try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
+                            }
+                        }
+                }
+            }
+        }
+
+        // MARK: Private
+
+        @Default(.queriedEnkaProfiles4GI) private var profiles4GI
+        @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
     }
 }
 

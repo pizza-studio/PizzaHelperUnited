@@ -70,7 +70,9 @@ extension EnkaDBProtocol {
                 throw Enka.EKError.queryFailure(uid: uid, game: QueriedResult.game, message: errMsgCore)
             }
             let newMerged = detailInfo.inheritAvatars(from: existingData)
-            QueriedProfile.locallyCachedData[uid] = newMerged
+            Task.detached { @MainActor in
+                QueriedProfile.locallyCachedData[uid] = newMerged
+            }
             return newMerged
         } catch {
             let msg = error.localizedDescription
