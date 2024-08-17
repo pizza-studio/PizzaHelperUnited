@@ -10,6 +10,8 @@ import SFSafeSymbols
 import SwiftData
 import SwiftUI
 
+// MARK: - DetailPortalTabPage
+
 @MainActor
 struct DetailPortalTabPage: View {
     // MARK: Lifecycle
@@ -64,7 +66,9 @@ struct DetailPortalTabPage: View {
     @ViewBuilder var accountSwitcherMenuContent: some View {
         Menu {
             Button {
-                currentPZProfile = nil
+                withAnimation {
+                    currentPZProfile = nil
+                }
             } label: {
                 LabeledContent {
                     Text("dpv.query.menuCommandTitle".i18nPZHelper)
@@ -75,31 +79,36 @@ struct DetailPortalTabPage: View {
                     Image(systemSymbol: .magnifyingglassCircleFill).frame(width: 48).padding(.trailing, 4)
                 }
             }
-            .labelStyle(.titleAndIcon)
             Divider()
             ForEach(profiles) { enumeratedProfile in
                 Button {
-                    currentPZProfile = enumeratedProfile
+                    withAnimation {
+                        currentPZProfile = enumeratedProfile
+                    }
                 } label: {
                     enumeratedProfile.asAccountMenuLabel4SUI()
                 }
-                .labelStyle(.titleAndIcon)
             }
         } label: {
             let dimension: CGFloat = 35
             Group {
                 if let profile = currentPZProfile {
-                    Enka.ProfileIconView(uid: profile.uid, game: profile.game).frame(width: dimension)
+                    Enka.ProfileIconView(uid: profile.uid, game: profile.game)
+                        .frame(width: dimension)
                 } else {
-                    Image(systemSymbol: .magnifyingglassCircleFill).frame(width: dimension)
+                    Image(systemSymbol: .personCircleFill)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: dimension - 8)
                 }
             }
             .background {
                 Circle()
-                    .strokeBorder(Color.accentColor, lineWidth: 9)
+                    .strokeBorder(Color.accentColor, lineWidth: 8)
                     .frame(width: dimension, height: dimension)
             }
             .frame(width: dimension, height: dimension)
+            .clipShape(.circle)
             .compositingGroup()
         }
     }
