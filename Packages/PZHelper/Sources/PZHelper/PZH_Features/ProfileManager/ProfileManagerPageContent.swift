@@ -57,22 +57,26 @@ struct ProfileManagerPageContent: View {
                             sheetType = .editExistingProfile(profile)
                         }
                     } label: {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text(profile.name)
-                                    .foregroundColor(.primary)
-                                HStack {
-                                    Text(profile.uidWithGame).fontDesign(.monospaced)
-                                    Text(profile.game.localizedDescription)
-                                    Text(profile.server.localizedDescriptionByGame)
+                        LabeledContent {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text(profile.name)
+                                        .foregroundColor(.primary)
+                                    HStack {
+                                        Text(profile.uidWithGame).fontDesign(.monospaced)
+                                        Text(profile.game.localizedDescription)
+                                        Text(profile.server.localizedDescriptionByGame)
+                                    }
+                                    .font(.footnote)
+                                    .foregroundColor(.secondary)
                                 }
-                                .font(.footnote)
-                                .foregroundColor(.secondary)
+                                Spacer()
+                                if isEditMode != .active {
+                                    Image(systemSymbol: .sliderHorizontal3)
+                                }
                             }
-                            Spacer()
-                            if isEditMode != .active {
-                                Image(systemSymbol: .sliderHorizontal3)
-                            }
+                        } label: {
+                            profile.asIcon4SUI().frame(width: 48).padding(.trailing, 4)
                         }
                     }
                 }
