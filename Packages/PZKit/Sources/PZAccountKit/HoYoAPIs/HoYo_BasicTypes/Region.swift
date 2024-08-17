@@ -44,9 +44,9 @@ extension HoYo.AccountRegion: CaseIterable {
     ]
 }
 
-// MARK: - HoYo.AccountRegion + RawRepresentable, Codable, Identifiable
+// MARK: - HoYo.AccountRegion + RawRepresentable, Codable, Identifiable, Hashable
 
-extension HoYo.AccountRegion: RawRepresentable, Codable, Identifiable {
+extension HoYo.AccountRegion: RawRepresentable, Codable, Identifiable, Hashable {
     public init?(rawValue: String) {
         switch rawValue.lowercased() {
         case "hkrpg_global": self = .hoyoLab(.starRail)
