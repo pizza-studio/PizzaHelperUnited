@@ -27,11 +27,8 @@ struct AppSettingsTabPage: View {
                     NavigationLink(value: Nav.profileManager) {
                         Label("profileMgr.manage.title".i18nPZHelper, systemSymbol: .personTextRectangleFill)
                     }
-                    NavigationLink(value: Nav.cloudAccountSettings) {
-                        Label("# Cloud Account Settings".description, systemSymbol: .cloudCircle)
-                    }
                 } header: {
-                    Text(verbatim: "# iCloud-hosted data debug")
+                    Text("settings.section.profileManagement.header".i18nPZHelper)
                 }
 
                 Section {
@@ -71,8 +68,16 @@ struct AppSettingsTabPage: View {
                 } header: {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
                 }
-                NavigationLink(value: Nav.otherSettings) {
-                    Label("# Other Settings".description, systemSymbol: .infoSquare)
+
+                Section {
+                    NavigationLink(value: Nav.cloudAccountSettings) {
+                        Label("# Cloud Account Settings".description, systemSymbol: .cloudCircle)
+                    }
+                    NavigationLink(value: Nav.otherSettings) {
+                        Label("# Other Settings".description, systemSymbol: .infoSquare)
+                    }
+                } header: {
+                    Text(verbatim: "# Other Settings")
                 }
             }
             .listStyle(.insetGrouped)
