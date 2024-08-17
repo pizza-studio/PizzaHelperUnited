@@ -57,37 +57,7 @@ struct ProfileManagerPageContent: View {
                             sheetType = .editExistingProfile(profile)
                         }
                     } label: {
-                        LabeledContent {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text(profile.name)
-                                        .foregroundColor(.primary)
-                                    HStack {
-                                        Text(profile.uidWithGame).fontDesign(.monospaced)
-                                        if horizontalSizeClass != .compact {
-                                            Text(profile.game.localizedDescription)
-                                        }
-                                        Text(profile.server.localizedDescriptionByGame)
-                                    }
-                                    .font(.footnote)
-                                    .foregroundColor(.secondary)
-                                }
-                                Spacer()
-                                if isEditMode != .active {
-                                    Image(systemSymbol: .sliderHorizontal3)
-                                }
-                            }
-                        } label: {
-                            profile.asIcon4SUI().frame(width: 48).padding(.trailing, 4)
-                        }.contextMenu {
-                            Button("profileMgr.edit.title".i18nPZHelper) {
-                                sheetType = .editExistingProfile(profile)
-                            }
-                            Button("profileMgr.delete.title".i18nPZHelper) {
-                                modelContext.delete(profile)
-                                try? modelContext.save()
-                            }
-                        }
+                        drawRow(profile: profile)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -153,6 +123,41 @@ struct ProfileManagerPageContent: View {
         .toolbar(.hidden, for: .tabBar)
         // 仅针对 macOS 使用 NavigationDestination 的情况，让用户改用自订的后退按钮。
         .navigationBarBackButtonHidden(true)
+    }
+
+    @ViewBuilder
+    private func drawRow(profile: PZProfileMO) -> some View {
+        LabeledContent {
+            HStack {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(profile.name)
+                        .foregroundColor(.primary)
+                    HStack {
+                        Text(profile.uidWithGame).fontDesign(.monospaced)
+                        if horizontalSizeClass != .compact {
+                            Text(profile.game.localizedDescription)
+                        }
+                        Text(profile.server.localizedDescriptionByGame)
+                    }
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                }
+                Spacer()
+                if isEditMode != .active {
+                    Image(systemSymbol: .sliderHorizontal3)
+                }
+            }
+        } label: {
+            profile.asIcon4SUI().frame(width: 48).padding(.trailing, 4)
+        }.contextMenu {
+            Button("profileMgr.edit.title".i18nPZHelper) {
+                sheetType = .editExistingProfile(profile)
+            }
+            Button("profileMgr.delete.title".i18nPZHelper) {
+                modelContext.delete(profile)
+                try? modelContext.save()
+            }
+        }
     }
 
     private func addProfile(_ profile: PZProfileMO) {
