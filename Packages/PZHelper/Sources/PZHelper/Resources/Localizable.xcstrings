@@ -71,7 +71,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ローカルプロファイルの詳細を編集"
+            "value" : "プロファイルの詳細を編集"
           }
         },
         "zh-Hans" : {
@@ -262,6 +262,35 @@
         }
       }
     },
+    "profileMgr.delete.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Profile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロファイルを削除"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除本地账号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刪除本機帳號"
+          }
+        }
+      }
+    },
     "profileMgr.edit.title" : {
       "localizations" : {
         "en" : {
@@ -273,7 +302,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ローカルアカウントの配置"
+            "value" : "プロファイルの配置"
           }
         },
         "zh-Hans" : {
@@ -331,7 +360,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ローカルアカウント配置の保存失敗です。原因となったエラー："
+            "value" : "プロファイル配置の保存失敗です。原因となったエラー："
           }
         },
         "zh-Hans" : {
@@ -360,7 +389,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ローカルアカウント配置の保存失敗です。原因となった記載漏れ："
+            "value" : "プロファイル配置の保存失敗です。原因となった記載漏れ："
           }
         },
         "zh-Hans" : {
@@ -388,7 +417,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あなたのゲーム内データをリクエストするためには、データ取得に必要な、UIDとCookieを取得する必要があります。 次のページでログインした後、あなたの個人データをローカルファイルおよびiCloudに保存します。 そして、HoYoLAB ・ Miyousheと同様の方法で、あなたのゲーム内データの情報を取得します。 あなたの個人情報は、私どもを含め、誰にも提供されない。あなたの個人情報はあなたのスマホの中で管理されます。このAppはオープンソース プログラムであり、誰もがこのプログラムの基本的な動作をすべてチェックおよび監視できます。"
+            "value" : "HoYoLAB / 米遊社から樹脂・開拓力やその他のデータを取得するためには、アカウントのUIDとログインクッキーが必要です。HoYoLAB / 米遊社 にログインした後、これらの情報をこの端末および iCloud に保存します。その後、アプリはその保存されたUIDとクッキーを用いて、HoYoLAB / 米遊社アプリと同様の方法で樹脂（および・開拓力やその他の情報を取得し、ウィジェットに表示します。貴殿の個人情報は HoYoLAB / 米遊社および iCloud 以外の場所には送信されず、我ら開発チーム自身にも送信されないので、ご安心くださいませ。このアプリはオープンソースのプロジェクト（FOSS）であり、誰でもこのプログラムのすべての基盤となる動作を確認し、監視することができます。"
           }
         },
         "zh-Hans" : {
@@ -400,7 +429,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "為了請求您的遊戲內的資料，我們需要獲取您的UID和Cookie，這是獲取資料的必要參數。您在接下來的網頁登入後，我們會在您的本地和iCloud存儲您的個人資料。然後我們通過類似米遊社 / HoYoLAB 的方式獲取您的遊戲內的資料。您的個人資訊不會傳送給任何人，包括我們自己。您的個人資訊將會是非常安全的。敝軟體是開放原始碼軟體，每個人都可以檢查和監督敝軟體的全部底層行為。"
+            "value" : "為了請求您的遊戲內的資料，我們需要獲取您的UID和Cookie，這是獲取資料的必要參數。您在接下來的網頁登入後，我們會在本機和iCloud存儲您的個人資料。然後我們通過類似米遊社 / HoYoLAB 的方式獲取您的遊戲內的資料。您的個人資訊不會傳送給任何人，包括我們自己。您的個人資訊將會是非常安全的。敝軟體是開放原始碼軟體，每個人都可以檢查和監督敝軟體的全部底層行為。"
           }
         }
       }
@@ -529,7 +558,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "このアプリの古いバージョンのローカルアカウントを読み込む"
+            "value" : "このアプリの古いバージョンのローカルアカウントを引き継ぐ"
           }
         },
         "zh-Hans" : {
@@ -814,7 +843,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ローカルアカウントを手動で配置する"
+            "value" : "プロファイルを手動で配置する"
           }
         },
         "zh-Hans" : {
@@ -870,7 +899,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ローカルアカウント管理"
+            "value" : "プロファイル管理"
           }
         },
         "zh-Hans" : {
@@ -898,7 +927,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ローカルアカウントを追加"
+            "value" : "プロファイルを追加"
           }
         },
         "zh-Hans" : {

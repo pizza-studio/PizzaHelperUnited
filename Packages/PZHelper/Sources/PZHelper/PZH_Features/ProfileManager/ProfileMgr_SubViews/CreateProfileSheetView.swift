@@ -26,7 +26,7 @@ extension ProfileManagerPageContent {
                     .navigationTitle("profileMgr.new".i18nPZHelper)
                     .navigationBarTitleDisplayMode(.large)
                     .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
+                        ToolbarItem(placement: .topBarTrailing) {
                             Button("sys.done".i18nBaseKit) {
                                 do {
                                     withAnimation {
