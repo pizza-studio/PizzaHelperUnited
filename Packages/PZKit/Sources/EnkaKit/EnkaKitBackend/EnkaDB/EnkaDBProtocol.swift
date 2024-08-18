@@ -84,7 +84,10 @@ extension EnkaDBProtocol {
         } catch {
             let msg = error.localizedDescription
             print(msg)
-            throw Enka.EKError.queryFailure(uid: uid, game: QueriedResult.game, message: msg)
+            switch error {
+            case Enka.EKError.queryFailure: throw error
+            default: throw Enka.EKError.queryFailure(uid: uid, game: QueriedResult.game, message: msg)
+            }
         }
     }
 }
