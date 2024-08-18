@@ -6,12 +6,17 @@ import Foundation
 import Observation
 
 @Observable @MainActor
-public final class ViewRefreshSputnik {
-    public static let shared = ViewRefreshSputnik()
+public final class ViewEventBroadcaster {
+    public static let shared = ViewEventBroadcaster()
 
-    public private(set) var event: UUID = .init()
+    public private(set) var eventForRefreshingCurrentPage: UUID = .init()
+    public private(set) var eventForStoppingRootTabTasks: UUID = .init()
 
-    public func update() {
-        event = .init()
+    public func refreshPage() {
+        eventForRefreshingCurrentPage = .init()
+    }
+
+    public func stopRootTabTasks() {
+        eventForStoppingRootTabTasks = .init()
     }
 }

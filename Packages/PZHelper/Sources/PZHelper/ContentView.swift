@@ -55,6 +55,9 @@ public struct ContentView: View {
     var index: Binding<Int> { Binding(
         get: { selection },
         set: {
+            if $0 != selection {
+                ViewEventBroadcaster.shared.stopRootTabTasks()
+            }
             selection = $0
             appIndex = $0
             UserDefaults.baseSuite.synchronize()
