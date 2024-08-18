@@ -14,7 +14,7 @@ extension PZProfileMO {
     }
 
     @ViewBuilder @MainActor
-    func asAccountMenuLabel4SUI() -> some View {
+    func asMenuLabel4SUI() -> some View {
         LabeledContent {
             VStack(alignment: .leading, spacing: 3) {
                 Text(name)
