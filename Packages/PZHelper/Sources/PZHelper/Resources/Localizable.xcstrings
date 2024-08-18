@@ -1998,25 +1998,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Details"
+            "value" : "ShowCase Details"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "詳細"
+            "value" : "ショーケースの詳細"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "详情"
+            "value" : "展柜详情"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "詳情"
+            "value" : "展櫃詳情"
           }
         }
       }
