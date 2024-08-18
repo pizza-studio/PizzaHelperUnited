@@ -70,6 +70,7 @@ extension Enka {
         // MARK: Public
 
         public typealias QueriedResult = Enka.QueriedResultGI
+        public typealias QueriedProfile = Enka.QueriedProfileGI
 
         @MainActor public static var shared: Enka.EnkaDB4GI { Enka.Sputnik.shared.db4GI }
 

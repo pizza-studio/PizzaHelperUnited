@@ -4,7 +4,7 @@
 
 import EnkaDBModels
 
-extension Enka.QueriedProfileHSR.RawAvatar {
+extension Enka.QueriedProfileHSR.QueriedAvatar {
     /// 计算角色面板（星穹铁道）。
     public func summarize(theDB: DBType) -> Enka.AvatarSummarized? {
         // Main Info
@@ -116,7 +116,7 @@ extension Enka.QueriedProfileHSR.RawAvatar {
     }
 }
 
-extension Enka.QueriedProfileHSR.RawAvatar {
+extension Enka.QueriedProfileHSR.QueriedAvatar {
     fileprivate static func updateFlat(
         for panel: inout MutableAvatarPropertyPanel,
         flat: Enka.QueriedProfileHSR.EquipmentFlat?

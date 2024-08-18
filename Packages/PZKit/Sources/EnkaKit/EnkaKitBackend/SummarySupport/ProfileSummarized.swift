@@ -11,10 +11,10 @@ import Observation
 
 extension Enka {
     @Observable
-    public class ProfileSummarized<P: EKQueriedProfileProtocol> {
+    public class ProfileSummarized<DBType: EnkaDBProtocol> {
         // MARK: Lifecycle
 
-        public init(db theDB: DBType, rawInfo: P) {
+        public init(db theDB: DBType.QueriedProfile.DBType, rawInfo: DBType.QueriedProfile) {
             self.game = theDB.game
             self.theDB = theDB
             self.rawInfo = rawInfo
@@ -52,13 +52,9 @@ extension Enka {
 
         // MARK: Public
 
-        public typealias OriginType = P
-
-        public typealias DBType = P.DBType
-
         public let game: Enka.GameType
-        public private(set) var theDB: DBType
-        public private(set) var rawInfo: P
+        public private(set) var theDB: DBType.QueriedProfile.DBType
+        public private(set) var rawInfo: DBType.QueriedProfile
         public private(set) var summarizedAvatars: [Enka.AvatarSummarized]
 
         public var nickName: String { rawInfo.nickname }
@@ -72,7 +68,7 @@ extension Enka {
 
 extension Enka.ProfileSummarized {
     @MainActor
-    public func update(newRawInfo: P, dropExistingData: Bool = false) {
+    public func update(newRawInfo: DBType.QueriedProfile, dropExistingData: Bool = false) {
         rawInfo = dropExistingData ? newRawInfo : newRawInfo.inheritAvatars(from: rawInfo)
         summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB)
     }
@@ -86,13 +82,13 @@ extension Enka.ProfileSummarized {
 // MARK: - Summerizer APIs for Star Rail.
 
 extension EKQueriedProfileProtocol {
-    public func summarizeAllAvatars(theDB: DBType) -> [Enka.AvatarSummarized] {
+    public func summarizeAllAvatars(theDB: DBType.QueriedProfile.DBType) -> [Enka.AvatarSummarized] {
         avatarDetailList.compactMap {
             $0.summarize(theDB: theDB)
         }
     }
 
-    public func summarize(theDB: DBType) -> Enka.ProfileSummarized<Self> {
+    public func summarize(theDB: DBType) -> Enka.ProfileSummarized<Self.DBType> {
         .init(db: theDB, rawInfo: self)
     }
 }

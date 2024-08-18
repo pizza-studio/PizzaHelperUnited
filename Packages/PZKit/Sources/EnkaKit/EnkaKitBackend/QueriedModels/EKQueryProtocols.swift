@@ -7,15 +7,14 @@ import Defaults
 // MARK: - EKQueryResultProtocol
 
 public protocol EKQueryResultProtocol: Decodable {
-    associatedtype QueriedProfileType: EKQueriedProfileProtocol
-    var detailInfo: QueriedProfileType? { get set }
+    associatedtype DBType: EnkaDBProtocol where DBType.QueriedResult == Self
+    var detailInfo: DBType.QueriedProfile? { get set }
     var uid: String? { get set }
     var message: String? { get }
     static var game: Enka.GameType { get }
 }
 
 extension EKQueryResultProtocol {
-    public typealias DBType = QueriedProfileType.DBType
     public static func queryRAW(uid: String) async throws -> Self {
         try await Enka.Sputnik.fetchEnkaQueryResultRAW(uid, type: Self.self)
     }
@@ -24,7 +23,8 @@ extension EKQueryResultProtocol {
 // MARK: - EKQueriedProfileProtocol
 
 public protocol EKQueriedProfileProtocol: Decodable, Hashable {
-    associatedtype QueriedAvatar: EKQueriedRawAvatarProtocol
+    associatedtype DBType: EnkaDBProtocol where DBType.QueriedProfile == Self
+    associatedtype QueriedAvatar: EKQueriedRawAvatarProtocol where QueriedAvatar.DBType == DBType
     var avatarDetailList: [QueriedAvatar] { get set }
     var uid: String { get set }
     var nickname: String { get }
@@ -36,8 +36,6 @@ public protocol EKQueriedProfileProtocol: Decodable, Hashable {
 }
 
 extension EKQueriedProfileProtocol {
-    public typealias DBType = QueriedAvatar.DBType
-    public typealias SummarizedType = Enka.ProfileSummarized<Self>
     /// 仅制作这个新 API 将旧资料融入新资料，因为反向融合没有任何意义。
     public func inheritAvatars(from oldInfo: Self?) -> Self {
         var newResult = self
@@ -91,7 +89,7 @@ extension EKQueriedProfileProtocol {
 // MARK: - EKQueriedRawAvatarProtocol
 
 public protocol EKQueriedRawAvatarProtocol: Identifiable {
-    associatedtype DBType: EnkaDBProtocol
+    associatedtype DBType: EnkaDBProtocol where DBType.QueriedProfile.QueriedAvatar == Self
     var avatarId: Int { get }
     var id: String { get }
     func summarize(theDB: DBType) -> Enka.AvatarSummarized?

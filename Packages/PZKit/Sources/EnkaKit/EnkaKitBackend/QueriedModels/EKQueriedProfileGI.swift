@@ -27,13 +27,13 @@ extension Enka {
             )
             self.showNameCardIdList = try container.decodeIfPresent([Int].self, forKey: .showNameCardIdList)
             self.profilePicture = try container.decode(ProfilePictureRAW.self, forKey: .profilePicture)
-            self.avatarDetailList = try container.decodeIfPresent([RawAvatar].self, forKey: .avatarDetailList) ?? []
+            self.avatarDetailList = try container.decodeIfPresent([QueriedAvatar].self, forKey: .avatarDetailList) ?? []
             self.uid = "UID not included in the retrieved JSON."
         }
 
         // MARK: Public
 
-        public typealias QueriedAvatar = Enka.QueriedProfileGI.RawAvatar
+        public typealias DBType = Enka.EnkaDB4GI
 
         public struct ShowAvatarInfoRAW: Codable, Hashable {
             /// 角色ID
@@ -103,7 +103,7 @@ extension Enka {
         /// 玩家头像编号，需要据此在 ProfilePictureExcelConfigData.json 单独查询。
         public var profilePicture: ProfilePictureRAW
 
-        public var avatarDetailList: [RawAvatar]
+        public var avatarDetailList: [QueriedAvatar]
 
         public var headIcon: Int {
             profilePicture.id ?? 1
@@ -111,10 +111,10 @@ extension Enka {
     }
 }
 
-// MARK: - Enka.QueriedProfileGI.RawAvatar
+// MARK: - Enka.QueriedProfileGI.QueriedAvatar
 
 extension Enka.QueriedProfileGI {
-    public struct RawAvatar: Codable, Hashable, EKQueriedRawAvatarProtocol {
+    public struct QueriedAvatar: Codable, Hashable, EKQueriedRawAvatarProtocol {
         // MARK: Lifecycle
 
         public init(from decoder: any Decoder) throws {

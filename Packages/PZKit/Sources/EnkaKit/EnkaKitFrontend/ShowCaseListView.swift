@@ -11,16 +11,16 @@ import SwiftUI
 // MARK: - ShowCaseListView
 
 @MainActor
-public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
+public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.QueriedProfile.DBType == DBType {
     // MARK: Lifecycle
 
     public init(
-        profile givenProfile: ProfileForList,
-        enkaDB: ProfileForList.DBType,
+        profile givenProfile: DBType.QueriedProfile,
+        enkaDB: DBType,
         asCardIcons: Bool = false
     ) {
         self.profile = givenProfile.summarize(theDB: enkaDB)
-        self.extraTerms = .init(lang: enkaDB.locTag, game: ProfileForList.DBType.game)
+        self.extraTerms = .init(lang: enkaDB.locTag, game: DBType.game)
         self.asCardIcons = asCardIcons
     }
 
@@ -35,7 +35,7 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
             }
         }
         .navigationDestination(for: Enka.AvatarSummarized.self) { currentAvatar in
-            AvatarShowCaseView(
+            AvatarShowCaseView<DBType>(
                 selectedAvatarID: currentAvatar.id,
                 profile: profile
             )
@@ -145,7 +145,7 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
 
     // MARK: Private
 
-    private let profile: ProfileForList.SummarizedType
+    private let profile: DBType.SummarizedType
     private let asCardIcons: Bool
     private let extraTerms: Enka.ExtraTerms
 }
@@ -153,10 +153,10 @@ public struct ShowCaseListView<ProfileForList: EKQueriedProfileProtocol>: View {
 extension EKQueriedProfileProtocol {
     @MainActor
     public func asView(
-        theDB: Self.DBType,
+        theDB: DBType,
         expanded: Bool = false
     )
-        -> ShowCaseListView<Self> {
+        -> ShowCaseListView<DBType> {
         .init(profile: self, enkaDB: theDB, asCardIcons: !expanded)
     }
 }

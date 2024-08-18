@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-extension Enka.QueriedProfileGI.RawAvatar {
+extension Enka.QueriedProfileGI.QueriedAvatar {
     /// 计算角色面板（原神）。
     public func summarize(theDB: DBType) -> Enka.AvatarSummarized? {
         let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
