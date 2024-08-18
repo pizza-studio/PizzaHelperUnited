@@ -62,6 +62,7 @@ extension EnkaDBProtocol {
         QueriedProfile.getCachedProfile(uid: uid)
     }
 
+    @MainActor
     public func query(
         for uid: String,
         dateWhenNextRefreshable nextAvailableDate: Date? = nil
@@ -77,9 +78,7 @@ extension EnkaDBProtocol {
                 throw Enka.EKError.queryFailure(uid: uid, game: QueriedResult.game, message: errMsgCore)
             }
             let newMerged = detailInfo.inheritAvatars(from: existingData)
-            Task.detached { @MainActor in
-                QueriedProfile.locallyCachedData[uid] = newMerged
-            }
+            QueriedProfile.locallyCachedData[uid] = newMerged
             return newMerged
         } catch {
             let msg = error.localizedDescription
