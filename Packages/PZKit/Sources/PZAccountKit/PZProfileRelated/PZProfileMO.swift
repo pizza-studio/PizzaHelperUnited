@@ -135,6 +135,8 @@ public struct FakePZProfileMO: ProfileMOProtocol {
     public var serverRawValue: String = ""
     public var sTokenV2: String? = ""
     public var uuid: UUID = .init()
+
+    public var id: UUID { uuid }
 }
 
 #endif

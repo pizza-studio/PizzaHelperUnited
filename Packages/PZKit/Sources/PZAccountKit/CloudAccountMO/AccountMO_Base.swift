@@ -46,7 +46,7 @@ extension ProfileMOBasicProtocol {
 
 // MARK: - ProfileMOProtocol
 
-public protocol ProfileMOProtocol: ProfileMOBasicProtocol {
+public protocol ProfileMOProtocol: ProfileMOBasicProtocol, Identifiable {
     var game: Pizza.SupportedGame { get set }
 }
 
