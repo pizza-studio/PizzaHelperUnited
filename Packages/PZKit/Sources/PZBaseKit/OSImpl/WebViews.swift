@@ -44,7 +44,7 @@ public struct WebBrowserView: UIViewRepresentable {
 
 // MARK: - OPWebView
 
-public class OPWebView: WKWebView {
+public final class OPWebView: WKWebView {
     // MARK: Lifecycle
 
     override public init(frame: CGRect, configuration: WKWebViewConfiguration) {
