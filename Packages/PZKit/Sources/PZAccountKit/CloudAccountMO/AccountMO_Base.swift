@@ -28,8 +28,7 @@ public protocol ProfileMOProtocol: Codable {
 extension ProfileMOProtocol {
     public var isValid: Bool {
         true
-            && Int(uid) != nil
-            && [8, 9].contains(uid.count)
+            && isUIDValid
             && !name.isEmpty
     }
 
@@ -38,6 +37,11 @@ extension ProfileMOProtocol {
     }
 
     public var isInvalid: Bool { !isValid }
+
+    private var isUIDValid: Bool {
+        guard let givenUIDInt = Int(uid) else { return false }
+        return (100_000_000 ... 9_999_999_999).contains(givenUIDInt)
+    }
 }
 
 // MARK: - AccountMOProtocol
