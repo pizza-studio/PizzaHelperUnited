@@ -42,7 +42,7 @@ struct DetailPortalTabPage: View {
             }
             .formStyle(.grouped)
             .refreshable {
-                refreshSputnik.update()
+                broadcaster.refreshPage()
             }
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
             .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
@@ -135,7 +135,7 @@ struct DetailPortalTabPage: View {
 
     @State private var sharedDB: Enka.Sputnik = .shared
     @State private var delegate: Coordinator = .init()
-    @State private var refreshSputnik = ViewRefreshSputnik.shared
+    @State private var broadcaster = ViewEventBroadcaster.shared
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
     @Default(.queriedEnkaProfiles4GI) private var profiles4GI

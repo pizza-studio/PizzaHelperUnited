@@ -56,8 +56,11 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
                 }
             }
         }
-        .onChange(of: refreshSputnik.event) { _, _ in
+        .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
             triggerUpdateTask()
+        }
+        .onChange(of: broadcaster.eventForStoppingRootTabTasks) { _, _ in
+            delegate.task?.cancel()
         }
         .refreshable {
             triggerUpdateTask()
@@ -145,7 +148,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     private let additionalView: () -> T
     private var theDB: QueryDB
     @State private var delegate: Coordinator<QueryDB>
-    @State private var refreshSputnik = ViewRefreshSputnik.shared
+    @State private var broadcaster = ViewEventBroadcaster.shared
 
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(pzProfile.uid) else { return false }
