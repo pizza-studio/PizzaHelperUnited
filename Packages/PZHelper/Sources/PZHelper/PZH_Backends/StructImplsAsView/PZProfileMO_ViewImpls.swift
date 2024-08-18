@@ -15,19 +15,14 @@ extension PZProfileMO {
 
     @ViewBuilder @MainActor
     func asMenuLabel4SUI() -> some View {
-        LabeledContent {
-            VStack(alignment: .leading, spacing: 3) {
-                Text(name)
-                    .foregroundColor(.primary)
-                    .multilineTextAlignment(.leading)
-                    .fontWidth(.condensed)
-                Text(uidWithGame).fontDesign(.monospaced)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-            }
-            .frame(maxWidth: .infinity)
-        } label: {
-            asIcon4SUI().frame(width: 48).padding(.trailing, 4)
+        Label {
+            #if targetEnvironment(macCatalyst)
+            Text(name + " // \(uidWithGame)")
+            #else
+            Text(name + "\n\(uidWithGame)")
+            #endif
+        } icon: {
+            asIcon4SUI()
         }
     }
 }
