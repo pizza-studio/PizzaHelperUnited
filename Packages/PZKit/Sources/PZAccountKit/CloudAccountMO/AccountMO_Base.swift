@@ -7,13 +7,13 @@ import Foundation
 import PZBaseKit
 import Sworm
 
-// MARK: - ProfileMOProtocol
+// MARK: - ProfileMOBasicProtocol
 
 /// AccountMO 不是统一披萨助手引擎用来主要处理的格式，而是专门针对 CloudKit 做的资料交换格式。
 /// 这也是为了方便直接继承旧版原披助手与穹披助手的云端资料。
 /// AccountMO 不曝露给前端使用，不直接用于 SwiftUI。
 
-public protocol ProfileMOProtocol: Codable {
+public protocol ProfileMOBasicProtocol: Codable {
     var allowNotification: Bool { get set }
     var cookie: String { get set }
     var deviceFingerPrint: String { get set }
@@ -25,7 +25,7 @@ public protocol ProfileMOProtocol: Codable {
     var uuid: UUID { get set }
 }
 
-extension ProfileMOProtocol {
+extension ProfileMOBasicProtocol {
     public var isValid: Bool {
         true
             && isUIDValid
@@ -44,9 +44,21 @@ extension ProfileMOProtocol {
     }
 }
 
+// MARK: - ProfileMOProtocol
+
+public protocol ProfileMOProtocol: ProfileMOBasicProtocol {
+    var game: Pizza.SupportedGame { get set }
+}
+
+extension ProfileMOProtocol {
+    public var uidWithGame: String {
+        "\(game.uidPrefix)-\(uid)"
+    }
+}
+
 // MARK: - AccountMOProtocol
 
-public protocol AccountMOProtocol: Codable, ProfileMOProtocol {
+public protocol AccountMOProtocol: Codable, ProfileMOBasicProtocol {
     static var entityName: String { get }
     static var modelName: String { get }
     static var containerName: String { get }
