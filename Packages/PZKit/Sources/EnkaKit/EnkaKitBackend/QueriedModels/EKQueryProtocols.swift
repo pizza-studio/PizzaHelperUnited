@@ -6,7 +6,7 @@ import Defaults
 
 // MARK: - EKQueryResultProtocol
 
-public protocol EKQueryResultProtocol: Decodable {
+public protocol EKQueryResultProtocol: Decodable, Hashable, Equatable {
     associatedtype DBType: EnkaDBProtocol where DBType.QueriedResult == Self
     var detailInfo: DBType.QueriedProfile? { get set }
     var uid: String? { get set }
@@ -22,7 +22,7 @@ extension EKQueryResultProtocol {
 
 // MARK: - EKQueriedProfileProtocol
 
-public protocol EKQueriedProfileProtocol: Decodable, Hashable {
+public protocol EKQueriedProfileProtocol: Decodable, Hashable, Equatable {
     associatedtype DBType: EnkaDBProtocol where DBType.QueriedProfile == Self
     associatedtype QueriedAvatar: EKQueriedRawAvatarProtocol where QueriedAvatar.DBType == DBType
     var avatarDetailList: [QueriedAvatar] { get set }
@@ -88,7 +88,7 @@ extension EKQueriedProfileProtocol {
 
 // MARK: - EKQueriedRawAvatarProtocol
 
-public protocol EKQueriedRawAvatarProtocol: Identifiable {
+public protocol EKQueriedRawAvatarProtocol: Identifiable, Hashable, Equatable {
     associatedtype DBType: EnkaDBProtocol where DBType.QueriedProfile.QueriedAvatar == Self
     var avatarId: Int { get }
     var id: String { get }

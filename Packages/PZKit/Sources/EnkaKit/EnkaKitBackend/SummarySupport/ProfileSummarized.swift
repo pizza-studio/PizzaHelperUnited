@@ -79,6 +79,23 @@ extension Enka.ProfileSummarized {
     }
 }
 
+// MARK: - Enka.ProfileSummarized + Hashable
+
+extension Enka.ProfileSummarized: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(rawInfo)
+        hasher.combine(summarizedAvatars)
+    }
+}
+
+// MARK: - Enka.ProfileSummarized + Equatable
+
+extension Enka.ProfileSummarized: Equatable {
+    public static func == (lhs: Enka.ProfileSummarized<DBType>, rhs: Enka.ProfileSummarized<DBType>) -> Bool {
+        lhs.rawInfo == rhs.rawInfo && lhs.summarizedAvatars == rhs.summarizedAvatars
+    }
+}
+
 // MARK: - Summerizer APIs for Star Rail.
 
 extension EKQueriedProfileProtocol {
