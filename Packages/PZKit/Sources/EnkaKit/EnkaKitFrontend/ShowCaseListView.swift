@@ -41,6 +41,9 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                     selectedAvatarID: currentAvatarID,
                     profile: currentProfile
                 )
+                .task {
+                    simpleTaptic(type: .medium)
+                }
             }
         }
     }
