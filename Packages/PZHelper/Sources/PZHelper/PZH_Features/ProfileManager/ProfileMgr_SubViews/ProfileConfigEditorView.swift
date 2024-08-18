@@ -7,7 +7,7 @@ import PZBaseKit
 import SwiftUI
 
 struct ProfileConfigEditorView: View {
-    @Binding var unsavedProfile: PZProfileMO
+    @Bindable var unsavedProfile: PZProfileMO
 
     var body: some View {
         Form {
