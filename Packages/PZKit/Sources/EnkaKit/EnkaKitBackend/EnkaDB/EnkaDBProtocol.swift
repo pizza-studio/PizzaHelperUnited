@@ -47,12 +47,17 @@ extension EnkaDBProtocol {
 
     @MainActor
     @discardableResult
-    public func onlineUpdate(forced: Bool = false) async throws -> Self {
+    public func onlineUpdate() async throws -> Self {
         let newDB = try await Self(host: Defaults[.defaultDBQueryHost])
         newDB.saveSelfToUserDefaults()
         Defaults[.lastEnkaDBDataCheckDate] = Date()
         update(new: newDB)
         return self
+    }
+
+    @MainActor
+    func getCachedProfileRAW(uid: String) -> QueriedResult.QueriedProfileType? {
+        QueriedResult.QueriedProfileType.getCachedProfile(uid: uid)
     }
 
     public func query(
