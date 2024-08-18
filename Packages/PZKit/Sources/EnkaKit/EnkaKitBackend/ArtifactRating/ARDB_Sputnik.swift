@@ -50,6 +50,7 @@ extension ArtifactRating.ARSputnik {
         Defaults.reset(.artifactRatingDB)
     }
 
+    @MainActor
     public func onlineUpdate() async throws {
         var newDB = try await Self.fetchARDBData(type: .arDB4GI, decodingTo: ArtifactRating.ModelDB.self)
         let hsrDB = try await Self.fetchARDBData(type: .arDB4HSR, decodingTo: ArtifactRating.ModelDB.self)
@@ -57,6 +58,7 @@ extension ArtifactRating.ARSputnik {
             newDB[key] = value
         }
         arDB = newDB
+        Defaults[.artifactRatingDB] = newDB
         countDB4GI = try await Self.fetchARDBData(type: .countDB4GI, decodingTo: [String: Enka.PropertyType].self)
     }
 
