@@ -111,8 +111,30 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     }
 }
 
-extension PZProfileMO {
-    public var uidWithGame: String {
-        "\(game.uidPrefix)-\(uid)"
+// MARK: - FakePZProfileMO
+
+#if DEBUG
+
+public struct FakePZProfileMO: ProfileMOProtocol {
+    // MARK: Lifecycle
+
+    public init(game: PZBaseKit.Pizza.SupportedGame, uid: String) {
+        self.game = game
+        self.uid = uid
     }
+
+    // MARK: Public
+
+    public var game: PZBaseKit.Pizza.SupportedGame
+    public var uid: String
+    public var allowNotification: Bool = true
+    public var cookie: String = ""
+    public var deviceFingerPrint: String = ""
+    public var name: String = ""
+    public var priority: Int = 0
+    public var serverRawValue: String = ""
+    public var sTokenV2: String? = ""
+    public var uuid: UUID = .init()
 }
+
+#endif
