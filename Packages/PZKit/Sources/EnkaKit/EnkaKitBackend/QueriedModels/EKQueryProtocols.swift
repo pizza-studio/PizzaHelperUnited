@@ -51,8 +51,12 @@ extension EKQueriedProfileProtocol {
 
     public func saveToCache() {
         Task.detached { @MainActor in
-            Self.locallyCachedData[uid.description] = self
+            Self.locallyCachedData[uid] = self
         }
+    }
+
+    public static func getCachedProfile(uid: String) -> Self? {
+        Self.locallyCachedData[uid]
     }
 
     public var onlineAssetURLStr: String {

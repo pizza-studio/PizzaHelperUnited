@@ -20,12 +20,11 @@ extension Enka {
         private init() {
             /// Both db4GI and db4HSR are `@ObservationTracked` by the `@Observable` macro
             /// applied to this class, hence no worries.
-            Defaults.publisher(.enkaDBData4GI)
-                .sink { newDB in
-                    Task.detached { @MainActor in
-                        self.db4GI.update(new: newDB.newValue)
-                    }
-                }.store(in: &cancellables)
+            Defaults.publisher(.enkaDBData4GI).sink { newDB in
+                Task.detached { @MainActor in
+                    self.db4GI.update(new: newDB.newValue)
+                }
+            }.store(in: &cancellables)
             Defaults.publisher(.enkaDBData4HSR).sink { newDB in
                 Task.detached { @MainActor in
                     self.db4HSR.update(new: newDB.newValue)

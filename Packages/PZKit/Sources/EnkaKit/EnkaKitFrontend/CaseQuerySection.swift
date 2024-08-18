@@ -227,7 +227,7 @@ extension CaseQuerySection {
                             if factoryDB.checkIfExpired(against: profile) {
                                 enkaDB.update(new: factoryDB)
                             } else {
-                                try await enkaDB.onlineUpdate(forced: true)
+                                try await enkaDB.onlineUpdate()
                             }
                         }
 
