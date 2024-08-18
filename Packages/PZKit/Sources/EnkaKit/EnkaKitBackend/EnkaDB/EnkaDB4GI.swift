@@ -10,7 +10,7 @@ import Observation
 
 extension Enka {
     @Observable
-    final public class EnkaDB4GI: EnkaDBProtocol, Codable {
+    public final class EnkaDB4GI: EnkaDBProtocol, Codable {
         // MARK: Lifecycle
 
         required public convenience init(host: Enka.HostType) async throws {
