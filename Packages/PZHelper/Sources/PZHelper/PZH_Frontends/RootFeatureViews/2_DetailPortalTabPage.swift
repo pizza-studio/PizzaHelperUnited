@@ -86,7 +86,7 @@ struct DetailPortalTabPage: View {
                         currentPZProfile = enumeratedProfile
                     }
                 } label: {
-                    enumeratedProfile.asAccountMenuLabel4SUI()
+                    enumeratedProfile.asMenuLabel4SUI()
                 }
             }
         } label: {
