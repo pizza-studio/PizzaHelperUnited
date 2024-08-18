@@ -22,7 +22,7 @@ extension Enka {
             /// 特殊措施：将 avatarInfoList 塞到 detailInfo 里面，方便本地存根。
             if let guardedDetailInfo = detailInfo, guardedDetailInfo.avatarDetailList.isEmpty {
                 detailInfo?.avatarDetailList = try container.decodeIfPresent(
-                    [Enka.QueriedProfileGI.RawAvatar].self,
+                    [Enka.QueriedProfileGI.QueriedAvatar].self,
                     forKey: .avatarInfoList
                 ) ?? []
                 self.avatarInfoList = nil
@@ -31,7 +31,7 @@ extension Enka {
 
         // MARK: Public
 
-        public typealias QueriedProfileType = Enka.QueriedProfileGI
+        public typealias DBType = Enka.EnkaDB4GI
 
         public static var game: Enka.GameType { .genshinImpact }
 
@@ -62,6 +62,6 @@ extension Enka {
         // MARK: Private
 
         /// 正在展示的角色的详细信息
-        private var avatarInfoList: [QueriedProfileGI.RawAvatar]?
+        private var avatarInfoList: [QueriedProfileGI.QueriedAvatar]?
     }
 }

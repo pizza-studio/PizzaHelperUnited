@@ -9,7 +9,8 @@ import PZBaseKit
 // MARK: - EnkaDBProtocol
 
 public protocol EnkaDBProtocol: AnyObject {
-    associatedtype QueriedResult: EKQueryResultProtocol
+    associatedtype QueriedResult: EKQueryResultProtocol where QueriedResult.DBType == Self
+    associatedtype QueriedProfile: EKQueriedProfileProtocol where QueriedResult.DBType == Self
     static var game: Enka.GameType { get }
     var locTable: Enka.LocTable { get set }
     var locTag: String { get }
@@ -33,11 +34,12 @@ public protocol EnkaDBProtocol: AnyObject {
 // MARK: - Online Update & Query.
 
 extension EnkaDBProtocol {
+    public typealias QueriedAvatar = QueriedProfile.QueriedAvatar
+    public typealias SummarizedType = Enka.ProfileSummarized<Self>
     public init(locTag: String? = nil) {
         self.init(locTag: locTag)
     }
 
-    public typealias QueriedProfile = QueriedResult.QueriedProfileType
     public var game: Enka.GameType { Self.game }
     public var needsUpdate: Bool {
         let previousDate = Defaults[.lastEnkaDBDataCheckDate]
@@ -56,8 +58,8 @@ extension EnkaDBProtocol {
     }
 
     @MainActor
-    func getCachedProfileRAW(uid: String) -> QueriedResult.QueriedProfileType? {
-        QueriedResult.QueriedProfileType.getCachedProfile(uid: uid)
+    func getCachedProfileRAW(uid: String) -> QueriedProfile? {
+        QueriedProfile.getCachedProfile(uid: uid)
     }
 
     public func query(

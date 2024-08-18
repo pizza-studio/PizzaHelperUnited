@@ -21,7 +21,7 @@ extension Enka {
             worldLevel: Int,
             isDisplayAvatar: Bool,
             platform: PlatformType,
-            avatarDetailList: [RawAvatar]
+            avatarDetailList: [QueriedAvatar]
         ) {
             self.uid = uid.description
             self.nickname = nickname
@@ -54,8 +54,8 @@ extension Enka {
             self.worldLevel = (try? container.decode(Int.self, forKey: .worldLevel)) ?? 0
             self.isDisplayAvatar = (try? container.decode(Bool.self, forKey: .isDisplayAvatar)) ?? false
             // 在这个阶段就将 assistAvatarList 的内容并入到 avatarDetailList 内。
-            let avatarListPrimary = (try? container.decode([RawAvatar].self, forKey: .assistAvatarList)) ?? []
-            var avatarListSecondary = (try? container.decode([RawAvatar].self, forKey: .avatarDetailList)) ?? []
+            let avatarListPrimary = (try? container.decode([QueriedAvatar].self, forKey: .assistAvatarList)) ?? []
+            var avatarListSecondary = (try? container.decode([QueriedAvatar].self, forKey: .avatarDetailList)) ?? []
             let filteredCharIDs = avatarListPrimary.map(\.avatarId)
             avatarListSecondary.removeAll { filteredCharIDs.contains($0.avatarId) }
             self.assistAvatarList = []
@@ -69,7 +69,7 @@ extension Enka {
 
         // MARK: Public
 
-        public typealias QueriedAvatar = Enka.QueriedProfileHSR.RawAvatar
+        public typealias DBType = Enka.EnkaDB4HSR
 
         public static var game: Enka.GameType { .starRail }
 
@@ -86,15 +86,15 @@ extension Enka {
         public let headIcon, worldLevel: Int
         public let isDisplayAvatar: Bool
         public let platform: PlatformType
-        public var avatarDetailList: [RawAvatar]
-        public let assistAvatarList: [RawAvatar]
+        public var avatarDetailList: [QueriedAvatar]
+        public let assistAvatarList: [QueriedAvatar]
     }
 }
 
 extension Enka.QueriedProfileHSR {
     // MARK: - Avatar
 
-    public struct RawAvatar: Codable, Hashable, EKQueriedRawAvatarProtocol {
+    public struct QueriedAvatar: Codable, Hashable, EKQueriedRawAvatarProtocol {
         // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {

@@ -10,12 +10,12 @@ import SwiftUI
 // MARK: - AvatarShowCaseView
 
 @MainActor
-public struct AvatarShowCaseView<P: EKQueriedProfileProtocol>: View {
+public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.QueriedProfile.DBType == DBType {
     // MARK: Lifecycle
 
     public init?(
         selectedAvatarID: String? = nil,
-        profile: Enka.ProfileSummarized<P>,
+        profile: Enka.ProfileSummarized<DBType>,
         onClose: (() -> Void)? = nil
     ) {
         guard !profile.summarizedAvatars.isEmpty else { return nil }
@@ -163,11 +163,11 @@ public struct AvatarShowCaseView<P: EKQueriedProfileProtocol>: View {
 
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
-    @State private var showTabViewIndex: Bool = false
+    @State private var showTabViewIndex = false
 
     @State private var showingCharacterIdentifier: String
 
-    @State private var profile: Enka.ProfileSummarized<P>
+    @State private var profile: Enka.ProfileSummarized<DBType>
     @State private var orientation = DeviceOrientation()
     private let bottomSpacerHeight: CGFloat = 20
 
@@ -182,9 +182,9 @@ public struct AvatarShowCaseView<P: EKQueriedProfileProtocol>: View {
     private var hasNoAvatars: Bool { profile.summarizedAvatars.isEmpty }
 }
 
-extension Enka.ProfileSummarized {
+extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
     @MainActor
-    public func asView() -> AvatarShowCaseView<P>? {
+    public func asView() -> AvatarShowCaseView<DBType>? {
         .init(profile: self)
     }
 }
@@ -193,7 +193,7 @@ extension Enka.ProfileSummarized {
 
 #if DEBUG
 
-private let summaryHSR: Enka.ProfileSummarized<Enka.QueriedProfileHSR> = {
+private let summaryHSR: Enka.ProfileSummarized<Enka.EnkaDB4HSR> = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
@@ -210,7 +210,7 @@ private let summaryHSR: Enka.ProfileSummarized<Enka.QueriedProfileHSR> = {
     // swiftlint:enable force_unwrapping
 }()
 
-private let summaryGI: Enka.ProfileSummarized<Enka.QueriedProfileGI> = {
+private let summaryGI: Enka.ProfileSummarized<Enka.EnkaDB4GI> = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.

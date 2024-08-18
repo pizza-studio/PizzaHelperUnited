@@ -111,6 +111,7 @@ extension Enka {
         // MARK: Public
 
         public typealias QueriedResult = Enka.QueriedResultHSR
+        public typealias QueriedProfile = Enka.QueriedProfileHSR
 
         @MainActor public static var shared: Enka.EnkaDB4HSR { Enka.Sputnik.shared.db4HSR }
 

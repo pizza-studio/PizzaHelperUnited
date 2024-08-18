@@ -73,7 +73,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     /// 原神专用建构子。
     public init?(
         giDB: Enka.EnkaDB4GI,
-        avatar avatarInfo: Enka.QueriedProfileGI.RawAvatar
+        avatar avatarInfo: Enka.QueriedProfileGI.QueriedAvatar
     ) {
         guard let character = giDB.characters[avatarInfo.id] else { return nil }
         guard character.skillOrder.count == 3 else { return nil } // 原神的角色只有三个可以升级的技能。
@@ -116,7 +116,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
     /// 原神专用建构子。
     public init?(
         giDB: Enka.EnkaDB4GI,
-        avatar: Enka.QueriedProfileGI.RawAvatar
+        avatar: Enka.QueriedProfileGI.QueriedAvatar
     ) {
         /// 武器的 flat.equipType 必定为 nil，因为这个属性是用来鉴定圣遗物部位分类的。
         let weaponPack = avatar.equipList.first {
@@ -158,7 +158,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
     // MARK: Lifecycle
 
     /// 原神专用建构子。
-    public init?(giDB: Enka.EnkaDB4GI, equipItem: Enka.QueriedProfileGI.RawAvatar.EquipListItemRAW) {
+    public init?(giDB: Enka.EnkaDB4GI, equipItem: Enka.QueriedProfileGI.QueriedAvatar.EquipListItemRAW) {
         guard let equipTypeStr = equipItem.flat.equipType,
               let artifactType = Enka.ArtifactType(rawValue: equipTypeStr),
               equipItem.flat.itemType != "ITEM_WEAPON",
