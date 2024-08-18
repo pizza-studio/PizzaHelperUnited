@@ -34,27 +34,36 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 showAsList
             }
         }
-        .navigationDestination(for: Enka.AvatarSummarized.self) { currentAvatar in
-            AvatarShowCaseView<DBType>(
-                selectedAvatarID: currentAvatar.id,
-                profile: profile
-            )
+        .navigationDestination(for: NavMsgPack<DBType>.self) { msgPack in
+            switch msgPack {
+            case let .avatarProfilePair(currentAvatarID, currentProfile):
+                AvatarShowCaseView<DBType>(
+                    selectedAvatarID: currentAvatarID,
+                    profile: currentProfile
+                )
+            }
         }
     }
 
     @ViewBuilder public var showAsCardIcons: some View {
-        VStack(alignment: .leading) {
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(profile.summarizedAvatars) { avatar in
-                        NavigationLink(value: avatar) {
-                            avatar.asCardIcon(75)
+        if profile.summarizedAvatars.isEmpty {
+            ShowCaseEmptyInfoView(game: profile.game)
+        } else {
+            VStack(alignment: .leading) {
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(profile.summarizedAvatars) { avatar in
+                            NavigationLink(
+                                value: NavMsgPack<DBType>.avatarProfilePair(avatar.id, profile)
+                            ) {
+                                avatar.asCardIcon(75)
+                            }
                         }
                     }
                 }
+                .padding(.vertical, 4)
+                HelpTextForScrollingOnDesktopComputer(.horizontal)
             }
-            .padding(.vertical, 4)
-            HelpTextForScrollingOnDesktopComputer(.horizontal)
         }
     }
 
@@ -63,10 +72,16 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
     @ViewBuilder var showAsList: some View {
         List {
             listHeader
-            Section {
-                ForEach(profile.summarizedAvatars) { avatar in
-                    NavigationLink(value: avatar) {
-                        makeLabelForNavLink(avatar: avatar)
+            if profile.summarizedAvatars.isEmpty {
+                ShowCaseEmptyInfoView(game: profile.game)
+            } else {
+                Section {
+                    ForEach(profile.summarizedAvatars) { avatar in
+                        NavigationLink(
+                            value: NavMsgPack<DBType>.avatarProfilePair(avatar.id, profile)
+                        ) {
+                            makeLabelForNavLink(avatar: avatar)
+                        }
                     }
                 }
             }
@@ -80,7 +95,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
             HStack(spacing: 0) {
                 let levelTag = "\(extraTerms.levelNameShortened)\(profile.rawInfo.level)"
                 profile.rawInfo.localFittingIcon4SUI
-                    .frame(width: 74, height: 60)
+                    .frame(width: 74, height: 60, alignment: .leading)
                     .corneredTag(
                         verbatim: levelTag,
                         alignment: .bottomTrailing,
@@ -144,6 +159,10 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
     }
 
     // MARK: Private
+
+    private enum NavMsgPack<DB: EnkaDBProtocol>: Hashable {
+        case avatarProfilePair(String, DB.SummarizedType)
+    }
 
     private let profile: DBType.SummarizedType
     private let asCardIcons: Bool
