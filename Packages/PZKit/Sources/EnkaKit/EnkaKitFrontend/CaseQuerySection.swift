@@ -214,42 +214,50 @@ extension CaseQuerySection {
             guard let givenUID = givenUID else { return }
             task?.cancel()
             withAnimation {
-                self.task = Task {
-                    self.taskState = .busy
-                    currentInfo = nil
-                    errorMsg = nil
-                    do {
-                        let enkaDB = CoordinatedDB.shared
-                        let profile = try await enkaDB.query(for: givenUID.description)
-                        // 检查本地 EnkaDB 是否过期，过期了的话就尝试更新。
-                        if enkaDB.checkIfExpired(against: profile) {
-                            let factoryDB = CoordinatedDB(locTag: Enka.currentLangTag)
-                            if factoryDB.checkIfExpired(against: profile) {
-                                enkaDB.update(new: factoryDB)
-                            } else {
-                                try await enkaDB.onlineUpdate()
-                            }
+                self.taskState = .busy
+                currentInfo = nil
+                errorMsg = nil
+            }
+            task = Task {
+                do {
+                    let enkaDB = CoordinatedDB.shared
+                    let profile = try await enkaDB.query(for: givenUID.description)
+                    // 检查本地 EnkaDB 是否过期，过期了的话就尝试更新。
+                    if enkaDB.checkIfExpired(against: profile) {
+                        let factoryDB = CoordinatedDB(locTag: Enka.currentLangTag)
+                        if factoryDB.checkIfExpired(against: profile) {
+                            enkaDB.update(new: factoryDB)
+                        } else {
+                            try await enkaDB.onlineUpdate()
                         }
-
-                        // 检查本地圣遗物评分模型是否过期，过期了的话就尝试更新。
-                        if ArtifactRating.sharedDB.isExpired(against: profile) {
-                            ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
-                            if ArtifactRating.sharedDB.isExpired(against: profile) {
-                                // 圣遗物评分非刚需体验。
-                                // 如果在这个过程内出错的话，顶多就是该当角色没有圣遗物评分可用。
-                                try? await ArtifactRating.ARSputnik.shared.onlineUpdate()
-                            }
-                        }
-
-                        self.currentInfo = profile
-                        taskState = .standBy
-                        errorMsg = nil
-                        return profile
-                    } catch {
-                        taskState = .standBy
-                        errorMsg = error.localizedDescription
-                        return nil
                     }
+
+                    // 检查本地圣遗物评分模型是否过期，过期了的话就尝试更新。
+                    if ArtifactRating.sharedDB.isExpired(against: profile) {
+                        ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
+                        if ArtifactRating.sharedDB.isExpired(against: profile) {
+                            // 圣遗物评分非刚需体验。
+                            // 如果在这个过程内出错的话，顶多就是该当角色没有圣遗物评分可用。
+                            try? await ArtifactRating.ARSputnik.shared.onlineUpdate()
+                        }
+                    }
+
+                    Task.detached { @MainActor in
+                        withAnimation {
+                            self.currentInfo = profile
+                            self.taskState = .standBy
+                            self.errorMsg = nil
+                        }
+                    }
+                    return profile
+                } catch {
+                    Task.detached { @MainActor in
+                        withAnimation {
+                            self.taskState = .standBy
+                            self.errorMsg = error.localizedDescription
+                        }
+                    }
+                    return nil
                 }
             }
         }
