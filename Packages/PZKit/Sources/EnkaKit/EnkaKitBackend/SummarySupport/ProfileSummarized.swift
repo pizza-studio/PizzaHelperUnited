@@ -11,7 +11,7 @@ import Observation
 
 extension Enka {
     @Observable
-    public class ProfileSummarized<DBType: EnkaDBProtocol> {
+    public final class ProfileSummarized<DBType: EnkaDBProtocol> {
         // MARK: Lifecycle
 
         public init(db theDB: DBType.QueriedProfile.DBType, rawInfo: DBType.QueriedProfile) {
