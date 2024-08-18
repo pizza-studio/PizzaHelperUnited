@@ -6,6 +6,7 @@ import Defaults
 import EnkaKit
 import Observation
 import PZAccountKit
+import PZBaseKit
 import SFSafeSymbols
 import SwiftData
 import SwiftUI
@@ -16,25 +17,23 @@ import SwiftUI
 struct DetailPortalTabPage: View {
     // MARK: Lifecycle
 
-    public init() {
-        self.currentPZProfile = profiles.first
-    }
+    public init() {}
 
     // MARK: Internal
 
     var body: some View {
         NavigationStack {
             Form {
-                if let currentPZProfile {
-                    switch currentPZProfile.game {
+                if let profile = delegate.currentPZProfile {
+                    switch profile.game {
                     case .genshinImpact:
-                        Text(verbatim: "# GI ShowCase Under Construction.")
+                        ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile)
+                            .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                         CaseQuerySection(theDB: sharedDB.db4GI)
-                    // ShowCaseListView(profile: currentPZProfile, enkaDB: sharedDB.db4GI)
                     case .starRail:
-                        Text(verbatim: "# HSR ShowCase Under Construction.")
+                        ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile)
+                            .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                         CaseQuerySection(theDB: sharedDB.db4HSR)
-                        // ShowCaseListView(profile: currentPZProfile, enkaDB: sharedDB.db4HSR)
                     }
                 } else {
                     CaseQuerySection(theDB: sharedDB.db4GI)
@@ -42,6 +41,9 @@ struct DetailPortalTabPage: View {
                 }
             }
             .formStyle(.grouped)
+            .refreshable {
+                refreshSputnik.update()
+            }
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
             .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
                 ShowCaseListView(
@@ -56,18 +58,22 @@ struct DetailPortalTabPage: View {
                 )
             }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    accountSwitcherMenuContent
+                // if delegate.currentPZProfile == nil, !profiles.isEmpty {
+                if !profiles.isEmpty {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        accountSwitcherMenu()
+                    }
                 }
             }
         }
     }
 
-    @ViewBuilder var accountSwitcherMenuContent: some View {
+    @ViewBuilder
+    func accountSwitcherMenu(staticIcon useStaticIcon: Bool = false) -> some View {
         Menu {
             Button {
                 withAnimation {
-                    currentPZProfile = nil
+                    delegate.currentPZProfile = nil
                 }
             } label: {
                 LabeledContent {
@@ -83,42 +89,74 @@ struct DetailPortalTabPage: View {
             ForEach(profiles) { enumeratedProfile in
                 Button {
                     withAnimation {
-                        currentPZProfile = enumeratedProfile
+                        delegate.currentPZProfile = enumeratedProfile
                     }
                 } label: {
                     enumeratedProfile.asMenuLabel4SUI()
                 }
             }
         } label: {
-            let dimension: CGFloat = 35
-            Group {
-                if let profile = currentPZProfile {
-                    Enka.ProfileIconView(uid: profile.uid, game: profile.game)
-                        .frame(width: dimension)
+            LabeledContent {
+                let dimension: CGFloat = 30
+                Group {
+                    if let profile = delegate.currentPZProfile {
+                        Enka.ProfileIconView(uid: profile.uid, game: profile.game)
+                            .frame(width: dimension)
+                    } else {
+                        Image(systemSymbol: .personCircleFill)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: dimension - 8)
+                            .foregroundStyle(Color.accentColor)
+                    }
+                }
+                .background {
+                    Circle()
+                        .strokeBorder(Color.accentColor, lineWidth: 8)
+                        .frame(width: dimension, height: dimension)
+                }
+                .frame(width: dimension, height: dimension)
+                .clipShape(.circle)
+                .compositingGroup()
+            } label: {
+                if let profile = delegate.currentPZProfile {
+                    Text(profile.name + " // \(profile.uidWithGame)")
                 } else {
-                    Image(systemSymbol: .personCircleFill)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: dimension - 8)
+                    Text("dpv.query.menuCommandTitle".i18nPZHelper)
                 }
             }
-            .background {
-                Circle()
-                    .strokeBorder(Color.accentColor, lineWidth: 8)
-                    .frame(width: dimension, height: dimension)
-            }
-            .frame(width: dimension, height: dimension)
-            .clipShape(.circle)
-            .compositingGroup()
+            .padding(4).padding(.leading, 12)
+            .blurMaterialBackground()
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
     }
 
     // MARK: Private
 
-    @State private var currentPZProfile: PZProfileMO?
     @State private var sharedDB: Enka.Sputnik = .shared
+    @State private var delegate: Coordinator = .init()
+    @State private var refreshSputnik = ViewRefreshSputnik.shared
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
     @Default(.queriedEnkaProfiles4GI) private var profiles4GI
     @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
+}
+
+// MARK: DetailPortalTabPage.Coordinator
+
+extension DetailPortalTabPage {
+    @MainActor @Observable
+    public final class Coordinator {
+        // MARK: Lifecycle
+
+        public init() {
+            let pzProfiles = try? PersistenceController.shared.modelContainer
+                .mainContext.fetch(FetchDescriptor<PZProfileMO>())
+            self.currentPZProfile = pzProfiles?.first
+        }
+
+        // MARK: Internal
+
+        var currentPZProfile: PZProfileMO?
+    }
 }
