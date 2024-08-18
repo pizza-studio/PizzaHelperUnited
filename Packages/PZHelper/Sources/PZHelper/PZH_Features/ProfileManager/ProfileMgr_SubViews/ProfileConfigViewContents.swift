@@ -54,7 +54,7 @@ struct ProfileConfigViewContents: View {
 
         Section {
             NavigationLink {
-                ProfileConfigEditorView(unsavedProfile: $profile)
+                ProfileConfigEditorView(unsavedProfile: profile)
             } label: {
                 Text("profile.label.editDetails".i18nPZHelper)
             }
