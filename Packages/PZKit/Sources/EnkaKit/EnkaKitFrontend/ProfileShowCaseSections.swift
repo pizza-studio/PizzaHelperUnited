@@ -27,7 +27,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
         self.additionalView = additionalView
         self.theDB = theDB
         self.pzProfile = pzProfile
-        self.delegate = .init(uid: pzProfile.uid)
+        self.delegate = .init(uid: pzProfile.uid, theDB: theDB)
     }
 
     // MARK: Public
@@ -61,6 +61,9 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
         }
         .refreshable {
             triggerUpdateTask()
+        }
+        .onDisappear {
+            delegate.task?.cancel()
         }
     }
 
@@ -130,7 +133,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     }
 
     func triggerUpdateTask() {
-        Task {
+        Task.detached { @MainActor in
             delegate.update()
         }
     }
@@ -150,7 +153,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     }
 
     private var guardedEnkaProfile: QueryDB.QueriedProfile? {
-        delegate.currentInfo ?? theDB.getCachedProfileRAW(uid: pzProfile.uid)
+        delegate.currentInfo
     }
 }
 
@@ -162,11 +165,11 @@ extension ProfileShowCaseSections {
     class Coordinator<CoordinatedDB: EnkaDBProtocol> {
         // MARK: Lifecycle
 
-        public init(uid: String) {
+        public init(uid: String, theDB: CoordinatedDB) {
             self.uid = uid
-            Task.detached { @MainActor in
-                self.update()
-            }
+            self.currentInfo = theDB.getCachedProfileRAW(uid: uid)
+            update()
+            self.booted = true
         }
 
         // MARK: Public
@@ -186,6 +189,7 @@ extension ProfileShowCaseSections {
         var currentInfo: CoordinatedDB.QueriedProfile?
         var task: Task<CoordinatedDB.QueriedProfile?, Never>?
         var uid: String
+        var booted = false
 
         var errorMsg: String?
 
@@ -195,7 +199,6 @@ extension ProfileShowCaseSections {
             task?.cancel()
             withAnimation {
                 self.taskState = .busy
-                currentInfo = nil
                 errorMsg = nil
             }
             task = Task {
