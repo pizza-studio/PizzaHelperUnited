@@ -107,6 +107,7 @@ let package = Package(
         Target.target(
             name: "EnkaKit",
             dependencies: buildTargetDependencies {
+                "PZAccountKit"
                 "PZBaseKit"
                 Target.Dependency.product(
                     name: "EnkaDBFiles",
