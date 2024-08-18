@@ -120,7 +120,7 @@ struct DetailPortalTabPage: View {
                 .compositingGroup()
             } label: {
                 if let profile = delegate.currentPZProfile {
-                    Text(profile.name + " // \(profile.uidWithGame)")
+                    Text(profile.uidWithGame)
                 } else {
                     Text("dpv.query.menuCommandTitle".i18nPZHelper)
                 }
