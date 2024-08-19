@@ -24,20 +24,24 @@ struct DetailPortalTabPage: View {
     var body: some View {
         NavigationStack {
             Form {
+                let query4GI = CaseQuerySection(theDB: sharedDB.db4GI, focus: $uidInputFieldFocus)
+                let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)
                 if let profile = delegate.currentPZProfile {
                     switch profile.game {
                     case .genshinImpact:
                         ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile)
                             .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
-                        CaseQuerySection(theDB: sharedDB.db4GI)
+                            .onTapGesture { uidInputFieldFocus = false }
+                        query4GI
                     case .starRail:
                         ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile)
                             .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
-                        CaseQuerySection(theDB: sharedDB.db4HSR)
+                            .onTapGesture { uidInputFieldFocus = false }
+                        query4HSR
                     }
                 } else {
-                    CaseQuerySection(theDB: sharedDB.db4GI)
-                    CaseQuerySection(theDB: sharedDB.db4HSR)
+                    query4GI
+                    query4HSR
                 }
             }
             .formStyle(.grouped)
@@ -136,6 +140,7 @@ struct DetailPortalTabPage: View {
     @State private var sharedDB: Enka.Sputnik = .shared
     @State private var delegate: Coordinator = .init()
     @State private var broadcaster = ViewEventBroadcaster.shared
+    @FocusState private var uidInputFieldFocus: Bool
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
     @Default(.queriedEnkaProfiles4GI) private var profiles4GI
