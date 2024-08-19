@@ -19,13 +19,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "桶披助手"
+            "value" : "一桶披萨助手"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "桶披助手"
+            "value" : "一桶披薩助手"
           }
         }
       }
