@@ -47,7 +47,7 @@ public struct ContentView: View {
         }
         .tint(tintForCurrentTab)
         .onChange(of: selection) { _, _ in
-            feedbackGenerator.selectionChanged()
+            simpleTaptic(type: .selection)
         }
         // .initializeApp()
     }
@@ -77,8 +77,6 @@ public struct ContentView: View {
     }()
 
     @Environment(\.colorScheme) private var colorScheme
-
-    private let feedbackGenerator = UISelectionFeedbackGenerator()
 
     private var tintForCurrentTab: Color {
         .accentColor
