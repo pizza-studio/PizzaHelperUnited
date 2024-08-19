@@ -2,16 +2,13 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
 import Defaults
 import Foundation
-import Observation
 
 // MARK: - Enka.ProfileSummarized
 
 extension Enka {
-    @Observable
-    public final class ProfileSummarized<DBType: EnkaDBProtocol> {
+    public struct ProfileSummarized<DBType: EnkaDBProtocol> {
         // MARK: Lifecycle
 
         public init(db theDB: DBType.QueriedProfile.DBType, rawInfo: DBType.QueriedProfile) {
@@ -19,35 +16,6 @@ extension Enka {
             self.theDB = theDB
             self.rawInfo = rawInfo
             self.summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB) // 肯定是一致的，不用怀疑了。
-
-            cancellables.append(
-                Defaults.publisher(.artifactRatingRules).sink { _ in
-                    Task.detached { @MainActor in
-                        self.evaluateArtifactRatings() // 选项有变更时，给圣遗物重新评分。
-                    }
-                }
-            )
-            cancellables.append(
-                Defaults.publisher(.useRealCharacterNames).sink { _ in
-                    Task.detached { @MainActor in
-                        self.update(newRawInfo: rawInfo, dropExistingData: false)
-                    }
-                }
-            )
-            cancellables.append(
-                Defaults.publisher(.forceCharacterWeaponNameFixed).sink { _ in
-                    Task.detached { @MainActor in
-                        self.update(newRawInfo: rawInfo, dropExistingData: false)
-                    }
-                }
-            )
-            cancellables.append(
-                Defaults.publisher(.customizedNameForWanderer).sink { _ in
-                    Task.detached { @MainActor in
-                        self.update(newRawInfo: rawInfo, dropExistingData: false)
-                    }
-                }
-            )
         }
 
         // MARK: Public
@@ -59,22 +27,18 @@ extension Enka {
 
         public var nickName: String { rawInfo.nickname }
         public var uid: String { rawInfo.uid }
-
-        // MARK: Private
-
-        private var cancellables: [AnyCancellable] = []
     }
 }
 
 extension Enka.ProfileSummarized {
     @MainActor
-    public func update(newRawInfo: DBType.QueriedProfile, dropExistingData: Bool = false) {
+    public mutating func update(newRawInfo: DBType.QueriedProfile, dropExistingData: Bool = false) {
         rawInfo = dropExistingData ? newRawInfo : newRawInfo.inheritAvatars(from: rawInfo)
         summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB)
     }
 
     @MainActor
-    public func evaluateArtifactRatings() {
+    public mutating func evaluateArtifactRatings() {
         summarizedAvatars = summarizedAvatars.map { $0.artifactsRated() }
     }
 }

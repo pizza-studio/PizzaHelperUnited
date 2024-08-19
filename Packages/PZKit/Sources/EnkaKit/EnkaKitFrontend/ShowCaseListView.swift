@@ -40,6 +40,9 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 showAsList
             }
         }
+        .onChange(of: dbSet.eventForResummarizingEnkaProfiles) { _, _ in
+            profile.update(newRawInfo: profile.rawInfo)
+        }
     }
 
     @ViewBuilder public var showAsCardIcons: some View {
@@ -169,9 +172,10 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
 
     // MARK: Private
 
-    private let profile: DBType.SummarizedType
+    @State private var dbSet = Enka.Sputnik.shared
+    @State private var profile: DBType.SummarizedType
+    @State private var extraTerms: Enka.ExtraTerms
     private let asCardIcons: Bool
-    private let extraTerms: Enka.ExtraTerms
 }
 
 extension EKQueriedProfileProtocol {
