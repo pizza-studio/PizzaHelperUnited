@@ -46,7 +46,7 @@ public struct GachaMODebugView: View {
 
     public var body: some View {
         Form {
-            ForEach(try! Self.sputnik.allGachaDataMO(for: game), id: \.id) { gachaItemMO in
+            ForEach(try! Self.sputnik.allGachaDataMO(for: game), id: \.enumID) { gachaItemMO in
                 GachaMOItemDebugView(gachaItemMO: gachaItemMO)
             }
         }
