@@ -40,8 +40,6 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 showAsList
             }
         }
-        /// 依 Xcode 警告，将下述两则 navigationDestination 挪至下文「NavHook4ShowCaseListView」区段。
-        /// 回头等侦错的时候再使用「NavHook4ShowCaseListView」钩住外围视图即可。
     }
 
     @ViewBuilder public var showAsCardIcons: some View {
@@ -52,9 +50,15 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(profile.summarizedAvatars) { avatar in
-                            NavigationLink(
-                                value: NavMsgPack<DBType>.avatarProfilePair(avatar.id, profile)
-                            ) {
+                            NavigationLink {
+                                AvatarShowCaseView<DBType>(
+                                    selectedAvatarID: avatar.id,
+                                    profile: profile
+                                )
+                                .task {
+                                    simpleTaptic(type: .medium)
+                                }
+                            } label: {
                                 avatar.asCardIcon(75)
                             }
                         }
@@ -76,9 +80,15 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
             } else {
                 Section {
                     ForEach(profile.summarizedAvatars) { avatar in
-                        NavigationLink(
-                            value: NavMsgPack<DBType>.avatarProfilePair(avatar.id, profile)
-                        ) {
+                        NavigationLink {
+                            AvatarShowCaseView<DBType>(
+                                selectedAvatarID: avatar.id,
+                                profile: profile
+                            )
+                            .task {
+                                simpleTaptic(type: .medium)
+                            }
+                        } label: {
                             makeLabelForNavLink(avatar: avatar)
                         }
                     }
@@ -175,41 +185,6 @@ extension EKQueriedProfileProtocol {
     }
 }
 
-// MARK: - NavHook4ShowCaseListView
-
-private struct NavHook4ShowCaseListView<T: EnkaDBProtocol>: ViewModifier where ShowCaseListView<T>.DBType == T {
-    // MARK: Public
-
-    public func body(content: Content) -> some View {
-        content
-            /// 依 Xcode 警告，将下述两则 navigationDestination 从 ShowCaseListView 挪到此处。
-            .navigationDestination(for: ShowCaseListView<T>.NavMsgPack<T>.self) { msgPack in
-                switch msgPack {
-                case let .avatarProfilePair(currentAvatarID, currentProfile):
-                    AvatarShowCaseView<T>(
-                        selectedAvatarID: currentAvatarID,
-                        profile: currentProfile
-                    )
-                    .task {
-                        simpleTaptic(type: .medium)
-                    }
-                }
-            }
-        /// 依 Xcode 警告，将上述两则 navigationDestination 从 ShowCaseListView 挪到此处。
-    }
-
-    // MARK: Internal
-
-    let dbType: T.Type
-}
-
-extension View {
-    public func navHook4ShowCaseListView<T: EnkaDBProtocol>(dbType: T.Type) -> some View
-        where ShowCaseListView<T>.DBType == T {
-        modifier(NavHook4ShowCaseListView(dbType: T.self))
-    }
-}
-
 // MARK: - EachAvatarStatView_Previews
 
 #if DEBUG
@@ -257,25 +232,21 @@ private let summaryGI: Enka.QueriedProfileGI = {
         NavigationStack {
             summaryGI
                 .asView(theDB: enkaDatabaseGI, expanded: false)
-                .navHook4ShowCaseListView(dbType: Enka.EnkaDB4GI.self)
         }
         .tabItem { Text(verbatim: "GI") }
         NavigationStack {
             summaryHSR
                 .asView(theDB: enkaDatabaseHSR, expanded: false)
-                .navHook4ShowCaseListView(dbType: Enka.EnkaDB4HSR.self)
         }
         .tabItem { Text(verbatim: "HSR") }
         NavigationStack {
             summaryGI
                 .asView(theDB: enkaDatabaseGI, expanded: true)
-                .navHook4ShowCaseListView(dbType: Enka.EnkaDB4GI.self)
         }
         .tabItem { Text(verbatim: "GIEX") }
         NavigationStack {
             summaryHSR
                 .asView(theDB: enkaDatabaseHSR, expanded: true)
-                .navHook4ShowCaseListView(dbType: Enka.EnkaDB4HSR.self)
         }
         .tabItem { Text(verbatim: "HSREX") }
     }
