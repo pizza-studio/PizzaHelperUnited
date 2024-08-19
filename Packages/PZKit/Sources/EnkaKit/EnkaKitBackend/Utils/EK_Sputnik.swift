@@ -30,6 +30,27 @@ extension Enka {
                     self.db4HSR.update(new: newDB.newValue)
                 }
             }.store(in: &cancellables)
+
+            Defaults.publisher(.artifactRatingRules).sink { _ in
+                Task.detached { @MainActor in
+                    self.tellViewsToResummarizeEnkaProfiles() // 选项有变更时，给圣遗物重新评分。
+                }
+            }.store(in: &cancellables)
+            Defaults.publisher(.useRealCharacterNames).sink { _ in
+                Task.detached { @MainActor in
+                    self.tellViewsToResummarizeEnkaProfiles()
+                }
+            }.store(in: &cancellables)
+            Defaults.publisher(.forceCharacterWeaponNameFixed).sink { _ in
+                Task.detached { @MainActor in
+                    self.tellViewsToResummarizeEnkaProfiles()
+                }
+            }.store(in: &cancellables)
+            Defaults.publisher(.customizedNameForWanderer).sink { _ in
+                Task.detached { @MainActor in
+                    self.tellViewsToResummarizeEnkaProfiles()
+                }
+            }.store(in: &cancellables)
         }
 
         // MARK: Public
@@ -44,6 +65,11 @@ extension Enka {
 
         public fileprivate(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
         public fileprivate(set) var db4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
+        public fileprivate(set) var eventForResummarizingEnkaProfiles: UUID = .init()
+
+        public func tellViewsToResummarizeEnkaProfiles() {
+            eventForResummarizingEnkaProfiles = .init()
+        }
 
         // MARK: Private
 
