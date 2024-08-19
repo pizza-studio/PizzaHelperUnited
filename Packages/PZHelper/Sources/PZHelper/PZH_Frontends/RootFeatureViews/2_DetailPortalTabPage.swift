@@ -57,6 +57,10 @@ struct DetailPortalTabPage: View {
                     enkaDB: sharedDB.db4HSR
                 )
             }
+            /// 依 Xcode 警告，将下述两则 navigationDestination 从 ShowCaseListView 挪到此处。
+            .navHook4ShowCaseListView(dbType: Enka.EnkaDB4GI.self)
+            .navHook4ShowCaseListView(dbType: Enka.EnkaDB4HSR.self)
+            /// 依 Xcode 警告，将上述两则 navigationDestination 从 ShowCaseListView 挪到此处。
             .toolbar {
                 // if delegate.currentPZProfile == nil, !profiles.isEmpty {
                 if !profiles.isEmpty {
