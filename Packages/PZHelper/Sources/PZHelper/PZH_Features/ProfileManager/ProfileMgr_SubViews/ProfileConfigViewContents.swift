@@ -21,11 +21,14 @@ struct ProfileConfigViewContents: View {
     // MARK: Public
 
     public var body: some View {
+        #if DEBUG
+        // TODO: 相关功能尚未完工，暂时不开放。
         RequireLoginView(
             unsavedCookie: $profile.cookie,
             unsavedFP: $profile.deviceFingerPrint,
             region: profile.server.region
         )
+        #endif
         Section {
             HStack {
                 Text("profile.label.nickname".i18nPZHelper)

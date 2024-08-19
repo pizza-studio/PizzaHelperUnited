@@ -59,6 +59,8 @@ struct ProfileConfigEditorView: View {
                 }
             }
 
+            #if DEBUG
+            // TODO: 相关功能尚未完工，暂时不开放。
             Section {
                 let cookieTextEditorFrame: CGFloat = 150
                 TextEditor(text: $unsavedProfile.cookie)
@@ -74,6 +76,7 @@ struct ProfileConfigEditorView: View {
                 Text("profile.label.fp".i18nPZHelper)
                     .textCase(.none)
             }
+            #endif
         }
         .formStyle(.grouped)
         .navigationTitle("profile.label.editDetails".i18nPZHelper)
