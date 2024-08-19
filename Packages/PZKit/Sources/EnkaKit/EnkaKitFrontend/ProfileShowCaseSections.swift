@@ -168,11 +168,20 @@ extension ProfileShowCaseSections {
     class Coordinator<CoordinatedDB: EnkaDBProtocol> {
         // MARK: Lifecycle
 
+        /// 展柜 ViewModel 的建构子。
+        ///
+        /// - Remark: 注意：该 ViewModel 会在 App Tab 切换时立刻被析构，
+        /// 所以严禁任何放在 MainActor 之外的间接脱手操作（哪怕间接也不行）。
+        /// - Parameters:
+        ///   - uid: UID
+        ///   - theDB: EnkaDB（注意直接决定了游戏类型）。
         public init(uid: String, theDB: CoordinatedDB) {
             self.uid = uid
             self.currentInfo = theDB.getCachedProfileRAW(uid: uid)
-            update()
-            self.booted = true
+            Task.detached { @MainActor in
+                self.update()
+                self.booted = true
+            }
         }
 
         // MARK: Public
