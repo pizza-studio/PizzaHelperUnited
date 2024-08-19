@@ -599,7 +599,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "匯入舊版 App 的本 帳號"
+            "value" : "匯入舊版 App 的本機帳號"
           }
         }
       }
