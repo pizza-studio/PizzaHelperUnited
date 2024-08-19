@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 @main
+@MainActor
 struct UnitedPizzaHelperApp: App {
     let persistenceController = PersistenceController.shared
 
