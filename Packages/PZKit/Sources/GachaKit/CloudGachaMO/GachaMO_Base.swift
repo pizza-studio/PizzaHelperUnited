@@ -26,6 +26,7 @@ public protocol GachaMOProtocol {
 }
 
 extension GachaMOProtocol {
+    public var enumID: Int { [id, uid, name, "\(time.timeIntervalSince1970)"].hashValue }
     public var entityName: String { Self.entityName }
     public var modelName: String { Self.modelName }
     public var containerName: String { Self.containerName }
