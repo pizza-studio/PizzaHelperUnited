@@ -62,7 +62,7 @@ struct ProfileManagerPageContent: View {
                 }
                 .onDelete(perform: deleteItems)
                 .onMove(perform: moveItems)
-                if profiles.isEmpty {
+                if profiles.isEmpty, PersistenceController.hasOldAccountDataDetected() {
                     Button("profileMgr.importLegacyProfiles.title".i18nPZHelper) {
                         importLegacyData()
                     }
