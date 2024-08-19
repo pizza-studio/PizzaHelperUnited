@@ -87,10 +87,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
         .clipped()
         .compositingGroup()
         .onChange(of: showingCharacterIdentifier) { _, _ in
-            #if canImport(UIKit)
-            let selectionGenerator = UISelectionFeedbackGenerator()
-            selectionGenerator.selectionChanged()
-            #endif
+            simpleTaptic(type: .selection)
             withAnimation(.easeIn(duration: 0.1)) {
                 showTabViewIndex = true
             }
