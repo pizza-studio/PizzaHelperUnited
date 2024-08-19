@@ -41,6 +41,21 @@ public final class AccountMOSputnik {
         }
     }
 
+    public func countAllAccountDataMO(for game: Pizza.SupportedGame) throws -> Int {
+        try theDB(for: game).perform { ctx in
+            switch game {
+            case .genshinImpact:
+                try ctx.count(of: AccountMO4GI.all)
+            case .starRail:
+                try ctx.count(of: AccountMO4HSR.all)
+            }
+        }
+    }
+
+    public func countAllAccountDataAsPZProfileMO() throws -> Int {
+        try countAllAccountDataMO(for: .genshinImpact) + countAllAccountDataMO(for: .starRail)
+    }
+
     public func allAccountDataAsPZProfileMO() throws -> [PZProfileMO] {
         // Genshin.
         let genshinData: [PZProfileMO]? = try allAccountDataMO(for: .genshinImpact).compactMap { oldMO in

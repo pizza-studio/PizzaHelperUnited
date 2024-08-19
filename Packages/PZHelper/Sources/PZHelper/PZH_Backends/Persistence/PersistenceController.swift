@@ -56,6 +56,12 @@ extension PersistenceController {
     }
 
     @MainActor
+    public static func hasOldAccountDataDetected() -> Bool {
+        let count = try? Self.shared.accountMOSputnik.countAllAccountDataAsPZProfileMO()
+        return (count ?? 0) > 0
+    }
+
+    @MainActor
     public static func migrateOldAccountsIntoProfiles() throws {
         let context = Self.shared.modelContainer.mainContext
         let allExistingUUIDs: [String] = try context.fetch(FetchDescriptor<PZProfileMO>())
