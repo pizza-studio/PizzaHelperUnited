@@ -20,21 +20,25 @@ public struct ContentView: View {
 
     public var body: some View {
         TabView(selection: index) {
+            #if DEBUG
             TodayTabPage()
                 .tag(1) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem {
                     Label("tab.today".i18nPZHelper, systemSymbol: .windshieldFrontAndWiperAndDrop)
                 }
+            #endif
             DetailPortalTabPage()
                 .tag(2) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem {
                     Label("tab.details".i18nPZHelper, systemSymbol: .personTextRectangleFill)
                 }
+            #if DEBUG
             UtilsTabPage()
                 .tag(3) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem {
                     Label("tab.utils".i18nPZHelper, systemSymbol: .shippingboxFill)
                 }
+            #endif
             AppSettingsTabPage()
                 .tag(0) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem {

@@ -69,6 +69,7 @@ struct AppSettingsTabPage: View {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
                 }
 
+                #if DEBUG
                 Section {
                     NavigationLink(value: Nav.cloudAccountSettings) {
                         Label("# Cloud Account Settings".description, systemSymbol: .cloudCircle)
@@ -79,6 +80,7 @@ struct AppSettingsTabPage: View {
                 } header: {
                     Text(verbatim: "# Other Settings")
                 }
+                #endif
             }
             .listStyle(.insetGrouped)
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
