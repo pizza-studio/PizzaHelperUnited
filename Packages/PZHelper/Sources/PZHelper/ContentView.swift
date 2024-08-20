@@ -20,30 +20,11 @@ public struct ContentView: View {
 
     public var body: some View {
         TabView(selection: index) {
-            #if DEBUG
-            TodayTabPage()
-                .tag(1) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                .tabItem {
-                    Label("tab.today".i18nPZHelper, systemSymbol: .windshieldFrontAndWiperAndDrop)
+            ForEach(NavItems.allCases) { navCase in
+                if navCase.isExposed {
+                    navCase
                 }
-            #endif
-            DetailPortalTabPage()
-                .tag(2) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                .tabItem {
-                    Label("tab.details".i18nPZHelper, systemSymbol: .personTextRectangleFill)
-                }
-            #if DEBUG
-            UtilsTabPage()
-                .tag(3) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                .tabItem {
-                    Label("tab.utils".i18nPZHelper, systemSymbol: .shippingboxFill)
-                }
-            #endif
-            AppSettingsTabPage()
-                .tag(0) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                .tabItem {
-                    Label("tab.settings".i18nPZHelper, systemSymbol: .wrenchAndScrewdriverFill)
-                }
+            }
         }
         .tint(tintForCurrentTab)
         .onChange(of: selection) { _, _ in
@@ -53,6 +34,62 @@ public struct ContentView: View {
     }
 
     // MARK: Internal
+
+    @MainActor
+    enum NavItems: Int, View, CaseIterable, @preconcurrency Identifiable {
+        case today = 1
+        case showcaseDetail = 2
+        case utils = 3
+        case appSettings = 0
+
+        // MARK: Public
+
+        @ViewBuilder @MainActor public var body: some View {
+            switch self {
+            case .today:
+                TodayTabPage()
+                    .tag(rawValue) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                    .tabItem { label }
+            case .showcaseDetail:
+                DetailPortalTabPage()
+                    .tag(rawValue) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                    .tabItem { label }
+            case .utils:
+                UtilsTabPage()
+                    .tag(rawValue) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                    .tabItem { label }
+            case .appSettings:
+                AppSettingsTabPage()
+                    .tag(rawValue) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                    .tabItem { label }
+            }
+        }
+
+        @ViewBuilder @MainActor public var label: some View {
+            switch self {
+            case .today: Label("tab.today".i18nPZHelper, systemSymbol: .windshieldFrontAndWiperAndDrop)
+            case .showcaseDetail: Label("tab.details".i18nPZHelper, systemSymbol: .personTextRectangleFill)
+            case .utils: Label("tab.utils".i18nPZHelper, systemSymbol: .shippingboxFill)
+            case .appSettings: Label("tab.settings".i18nPZHelper, systemSymbol: .wrenchAndScrewdriverFill)
+            }
+        }
+
+        // MARK: Internal
+
+        static var exposedCaseTags: [Int] {
+            #if DEBUG
+            [1, 2, 3, 0]
+            #else
+            [2, 0]
+            #endif
+        }
+
+        var id: Int { rawValue }
+
+        var isExposed: Bool {
+            Self.exposedCaseTags.contains(rawValue)
+        }
+    }
 
     @Default(.appTabIndex) var appIndex: Int
 
@@ -72,7 +109,7 @@ public struct ContentView: View {
 
     @State private var selection: Int = {
         guard Defaults[.restoreTabOnLaunching] else { return 0 }
-        guard [0, 1, 2, 3].contains(Defaults[.appTabIndex]) else { return 0 }
+        guard NavItems.allCases.map(\.rawValue).contains(Defaults[.appTabIndex]) else { return 0 }
         return Defaults[.appTabIndex]
     }()
 
