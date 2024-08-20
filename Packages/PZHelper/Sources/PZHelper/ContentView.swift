@@ -26,6 +26,15 @@ public struct ContentView: View {
                 }
             }
         }
+        .apply { theContent in
+            if #available(macCatalyst 18.0, *) {
+                theContent
+                    .tabViewStyle(.sidebarAdaptable)
+                    .tabViewCustomization(.none)
+            } else {
+                theContent
+            }
+        }
         .tint(tintForCurrentTab)
         .onChange(of: selection) { _, _ in
             simpleTaptic(type: .selection)
