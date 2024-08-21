@@ -4,7 +4,7 @@ import Foundation
 
 // 该脚本为星穹铁道专用，不过仅仅是 workSpaceDirPath 不同而已。
 
-let workSpaceDirPath = "./Packages/PZKit/Sources/EnkaKit/Resources/Assets.xcassets/MetaAssetsHSR"
+let workSpaceDirPath = "./Packages/EnkaKit/Sources/EnkaKit/Resources/Assets.xcassets/MetaAssetsHSR"
 
 // MARK: JSON 档案范本内容。
 

@@ -23,11 +23,10 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(path: "../EnkaKit"),
+        .package(path: "../GachaKit"),
         .package(path: "../PZKit"),
-        .package(
-            url: "https://github.com/elai950/AlertToast",
-            .upToNextMajor(from: "1.3.9")
-        ),
+        .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
     ],
     targets: [
         .target(
@@ -35,8 +34,8 @@ let package = Package(
             dependencies: [
                 .product(name: "AlertToast", package: "AlertToast"),
                 .product(name: "PizzaKit", package: "PZKit"),
-                .product(name: "EnkaKit", package: "PZKit"),
-                .product(name: "GachaKit", package: "PZKit"),
+                .product(name: "EnkaKit", package: "EnkaKit"),
+                .product(name: "GachaKit", package: "GachaKit"),
             ],
             swiftSettings: sharedSwiftSettings
         ),

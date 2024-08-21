@@ -130,11 +130,11 @@ let bannedFinalFileNames: [String] = [
 
 extension NSImage {
     @MainActor
-    func asPNGData() throws -> Data  {
+    func asPNGData() throws -> Data {
         guard let tiffData = tiffRepresentation, let imageRep = NSBitmapImageRep(data: tiffData) else {
             throw NSError(domain: "ImageConversionError", code: -1, userInfo: nil)
         }
-        guard let newData = CFDataCreateMutable(kCFAllocatorDefault, 0) else { 
+        guard let newData = CFDataCreateMutable(kCFAllocatorDefault, 0) else {
             throw NSError(domain: "CFDataAllocationError", code: -1, userInfo: nil)
         }
 
@@ -151,7 +151,7 @@ extension NSImage {
         }
         return newData as Data
     }
-    
+
     func saveRaw(to url: URL) throws {
         try tiffRepresentation?.write(to: url, options: .atomic)
     }
