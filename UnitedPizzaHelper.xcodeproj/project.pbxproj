@@ -31,6 +31,17 @@
 		5BD0D0F22C6A633700DA8099 /* PZHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHelper; sourceTree = "<group>"; };
 		5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "PZHelper-Watch"; sourceTree = "<group>"; };
 		5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5BDDF26A2C75FEB8006D4BFE /* heic_sips.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = heic_sips.sh; sourceTree = "<group>"; };
+		5BDDF26C2C75FEB8006D4BFE /* _assetUpdate4GI.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _assetUpdate4GI.sh; sourceTree = "<group>"; };
+		5BDDF26D2C75FEB8006D4BFE /* _assetUpdate4HSR.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _assetUpdate4HSR.sh; sourceTree = "<group>"; };
+		5BDDF26E2C75FEB8006D4BFE /* convertAssetsToHEIC.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = convertAssetsToHEIC.sh; sourceTree = "<group>"; };
+		5BDDF26F2C75FEB8006D4BFE /* GI_ImageAssetRegenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GI_ImageAssetRegenerator.swift; sourceTree = "<group>"; };
+		5BDDF2702C75FEB8006D4BFE /* GI_RawAssetsPuller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GI_RawAssetsPuller.swift; sourceTree = "<group>"; };
+		5BDDF2712C75FEB8006D4BFE /* HSR_ImageAssetRegenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSR_ImageAssetRegenerator.swift; sourceTree = "<group>"; };
+		5BDDF2722C75FEB8006D4BFE /* HSR_RawAssetsPuller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSR_RawAssetsPuller.swift; sourceTree = "<group>"; };
+		5BDDF2732C75FEB8006D4BFE /* WallpaperAssetCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAssetCollector.swift; sourceTree = "<group>"; };
+		5BDDF2752C7601AA006D4BFE /* EnkaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = EnkaKit; sourceTree = "<group>"; };
+		5BDDF2762C7601AA006D4BFE /* GachaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GachaKit; sourceTree = "<group>"; };
 		5BF32D8C2C62A2E4008C9949 /* PZKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZKit; sourceTree = "<group>"; };
 		5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		5BFD6B8C2C628CD8000A63E9 /* United Pizza Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "United Pizza Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,12 +88,38 @@
 			path = SharedBundles;
 			sourceTree = "<group>";
 		};
+		5BDDF26B2C75FEB8006D4BFE /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				5BDDF26A2C75FEB8006D4BFE /* heic_sips.sh */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		5BDDF2742C75FEB8006D4BFE /* Script */ = {
+			isa = PBXGroup;
+			children = (
+				5BDDF26B2C75FEB8006D4BFE /* utils */,
+				5BDDF26C2C75FEB8006D4BFE /* _assetUpdate4GI.sh */,
+				5BDDF26D2C75FEB8006D4BFE /* _assetUpdate4HSR.sh */,
+				5BDDF26E2C75FEB8006D4BFE /* convertAssetsToHEIC.sh */,
+				5BDDF26F2C75FEB8006D4BFE /* GI_ImageAssetRegenerator.swift */,
+				5BDDF2702C75FEB8006D4BFE /* GI_RawAssetsPuller.swift */,
+				5BDDF2712C75FEB8006D4BFE /* HSR_ImageAssetRegenerator.swift */,
+				5BDDF2722C75FEB8006D4BFE /* HSR_RawAssetsPuller.swift */,
+				5BDDF2732C75FEB8006D4BFE /* WallpaperAssetCollector.swift */,
+			);
+			path = Script;
+			sourceTree = "<group>";
+		};
 		5BF32D8D2C62A2E4008C9949 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
 				5BD0D0F22C6A633700DA8099 /* PZHelper */,
 				5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */,
 				5BF32D8C2C62A2E4008C9949 /* PZKit */,
+				5BDDF2752C7601AA006D4BFE /* EnkaKit */,
+				5BDDF2762C7601AA006D4BFE /* GachaKit */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -137,6 +174,7 @@
 				5BFD6BAB2C628EDA000A63E9 /* LICENSE */,
 				5BFD6BAA2C628EDA000A63E9 /* Makefile */,
 				5BFD6BA92C628EDA000A63E9 /* README.md */,
+				5BDDF2742C75FEB8006D4BFE /* Script */,
 			);
 			name = RepoRoot;
 			sourceTree = "<group>";
