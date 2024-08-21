@@ -70,15 +70,11 @@ struct ProfileManagerPageContent: View {
             }
         }
         .apply { thisViewUnit in
-            #if targetEnvironment(macCatalyst)
-            if #available(macCatalyst 18.0, *) {
-                thisViewUnit.sheet(item: $sheetType, content: handleSheetNavigation)
-            } else {
+            if #unavailable(macCatalyst 18.0) {
                 thisViewUnit.navigationDestination(item: $sheetType, destination: handleSheetNavigation)
+            } else {
+                thisViewUnit.sheet(item: $sheetType, content: handleSheetNavigation)
             }
-            #else
-            thisViewUnit.sheet(item: $sheetType, content: handleSheetNavigation)
-            #endif
         }
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navigationBarTitleDisplayMode(.large)
@@ -133,28 +129,26 @@ struct ProfileManagerPageContent: View {
 
     @ViewBuilder
     private func drawRow(profile: PZProfileMO) -> some View {
-        LabeledContent {
-            HStack {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(profile.name)
-                        .foregroundColor(.primary)
-                    HStack {
-                        Text(profile.uidWithGame).fontDesign(.monospaced)
-                        if horizontalSizeClass != .compact {
-                            Text(profile.game.localizedDescription)
-                        }
-                        Text(profile.server.localizedDescriptionByGame)
-                    }
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                }
-                Spacer()
-                if isEditMode != .active {
-                    Image(systemSymbol: .sliderHorizontal3)
-                }
-            }
-        } label: {
+        /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
+        HStack {
             profile.asIcon4SUI().frame(width: 48).padding(.trailing, 4)
+            VStack(alignment: .leading, spacing: 3) {
+                Text(profile.name)
+                    .foregroundColor(.primary)
+                HStack {
+                    Text(profile.uidWithGame).fontDesign(.monospaced)
+                    if horizontalSizeClass != .compact {
+                        Text(profile.game.localizedDescription)
+                    }
+                    Text(profile.server.localizedDescriptionByGame)
+                }
+                .font(.footnote)
+                .foregroundColor(.secondary)
+            }
+            Spacer()
+            if isEditMode != .active {
+                Image(systemSymbol: .sliderHorizontal3)
+            }
         }.contextMenu {
             Button("profileMgr.edit.title".i18nPZHelper) {
                 sheetType = .editExistingProfile(profile)

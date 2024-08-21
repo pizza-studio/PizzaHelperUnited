@@ -16,9 +16,9 @@ struct UnitedPizzaHelperApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.horizontalSizeClass, .compact)
             #if targetEnvironment(macCatalyst)
                 .frame(minWidth: 600, minHeight: 800)
-                .environment(\.horizontalSizeClass, .compact)
             #endif
         }
         .windowResizability(.contentMinSize)
