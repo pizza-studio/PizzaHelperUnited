@@ -42,6 +42,7 @@
 		5BDDF2732C75FEB8006D4BFE /* WallpaperAssetCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAssetCollector.swift; sourceTree = "<group>"; };
 		5BDDF2752C7601AA006D4BFE /* EnkaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = EnkaKit; sourceTree = "<group>"; };
 		5BDDF2762C7601AA006D4BFE /* GachaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GachaKit; sourceTree = "<group>"; };
+		5BDDF2772C760281006D4BFE /* WallpaperKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WallpaperKit; sourceTree = "<group>"; };
 		5BF32D8C2C62A2E4008C9949 /* PZKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZKit; sourceTree = "<group>"; };
 		5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		5BFD6B8C2C628CD8000A63E9 /* United Pizza Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "United Pizza Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +121,7 @@
 				5BF32D8C2C62A2E4008C9949 /* PZKit */,
 				5BDDF2752C7601AA006D4BFE /* EnkaKit */,
 				5BDDF2762C7601AA006D4BFE /* GachaKit */,
+				5BDDF2772C760281006D4BFE /* WallpaperKit */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
