@@ -27,12 +27,12 @@ public struct ContentView: View {
             }
         }
         .apply { theContent in
-            if #available(macCatalyst 18.0, *) {
+            if #unavailable(iOS 18.0), #unavailable(macCatalyst 18.0) {
+                theContent
+            } else {
                 theContent
                     .tabViewStyle(.sidebarAdaptable)
                     .tabViewCustomization(.none)
-            } else {
-                theContent
             }
         }
         .tint(tintForCurrentTab)
