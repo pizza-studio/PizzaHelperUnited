@@ -34,17 +34,6 @@ let package = Package(
             name: "PZAccountKit",
             targets: ["PZAccountKit"]
         )
-
-        #if !os(watchOS)
-        Product.library(
-            name: "EnkaKit",
-            targets: ["EnkaKit"]
-        )
-        Product.library(
-            name: "GachaKit",
-            targets: ["GachaKit"]
-        )
-        #endif
     },
     dependencies: buildPackageDependencies {
         // 将参数都弄成单行，方便用脚本来更新这些内容的版本号。
@@ -52,20 +41,7 @@ let package = Package(
             url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "8.2.0")
         )
         Package.Dependency.package(
-            url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")
-        )
-        Package.Dependency.package(
             url: "https://github.com/prisma-ai/Sworm.git", .upToNextMajor(from: "1.1.0")
-        )
-        // ---------- BELOW ARE PIZZA PACKAGES ---------- //
-        Package.Dependency.package(
-            url: "https://github.com/pizza-studio/GachaMetaGenerator", .upToNextMajor(from: "2.1.2")
-        )
-        Package.Dependency.package(
-            url: "https://github.com/pizza-studio/EnkaDBGenerator", .upToNextMajor(from: "1.3.1")
-        )
-        Package.Dependency.package(
-            url: "https://github.com/pizza-studio/ArtifactRatingDB.git", .upToNextMajor(from: "1.0.2")
         )
     },
     targets: buildTargets {
@@ -96,72 +72,7 @@ let package = Package(
             swiftSettings: sharedSwiftSettings
         )
 
-        // MARK: - Non-Watch Targets
-
-        #if !os(watchOS)
-        Target.target(
-            name: "EnkaKit",
-            dependencies: buildTargetDependencies {
-                "PZAccountKit"
-                "PZBaseKit"
-                Target.Dependency.product(
-                    name: "EnkaDBFiles",
-                    package: "EnkaDBGenerator",
-                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
-                )
-                Target.Dependency.product(
-                    name: "EnkaDBModels",
-                    package: "EnkaDBGenerator",
-                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
-                )
-                Target.Dependency.product(
-                    name: "ArtifactRatingDB",
-                    package: "ArtifactRatingDB",
-                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
-                )
-                Target.Dependency.product(
-                    name: "SFSafeSymbols",
-                    package: "SFSafeSymbols"
-                )
-            },
-            resources: buildResources {
-                Resource.process("Assets/")
-            },
-            swiftSettings: sharedSwiftSettings
-        )
-        Target.target(
-            name: "GachaKit",
-            dependencies: buildTargetDependencies {
-                "PZBaseKit"
-                Target.Dependency.product(
-                    name: "Sworm",
-                    package: "Sworm",
-                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
-                )
-                Target.Dependency.product(
-                    name: "GachaMetaDB",
-                    package: "GachaMetaGenerator",
-                    condition: .when(platforms: [.iOS, .macOS, .macCatalyst, .visionOS])
-                )
-            },
-            resources: buildResources {
-                Resource.process("Resources/")
-            },
-            swiftSettings: sharedSwiftSettings
-        )
-        #endif
-
         // MARK: - Test Targets
-
-        #if !os(watchOS)
-        Target.testTarget(
-            name: "EnkaKitTests",
-            dependencies: ["EnkaKit"],
-            resources: buildResources {
-                Resource.process("TestAssets/")
-            }
-        )
-        #endif
     }
 )
 
