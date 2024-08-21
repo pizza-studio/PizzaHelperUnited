@@ -45,4 +45,3 @@ extension String {
         split(separator: "/").last?.split(separator: ".").dropLast().joined(separator: ".").description ?? self
     }
 }
-
