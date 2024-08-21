@@ -9,12 +9,53 @@ import PZBaseKit
 
 public enum Wallpaper {
     public struct WallpaperAsset: Identifiable, Codable {
+        // MARK: Lifecycle
+
+        public init(
+            game: Pizza.SupportedGame,
+            id: String,
+            localizedName: String,
+            assetName: String,
+            assetName4LiveActivity: String,
+            bindedCharID: String?
+        ) {
+            self.game = game
+            self.id = id
+            self.localizedName = localizedName
+            self.assetName = assetName
+            self.assetName4LiveActivity = assetName4LiveActivity
+            self.bindedCharID = bindedCharID
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: Wallpaper.WallpaperAsset.CodingKeys.self)
+            self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
+            self.id = try container.decode(String.self, forKey: .id)
+            self.assetName = try container.decode(String.self, forKey: .assetName)
+            self.assetName4LiveActivity = try container.decode(String.self, forKey: .assetName4LiveActivity)
+            self.bindedCharID = try container.decodeIfPresent(String.self, forKey: .bindedCharID)
+            self.localizedName = try container.decodeIfPresent(String.self, forKey: .localizedName) ?? assetName
+        }
+
+        // MARK: Public
+
         public let game: Pizza.SupportedGame
         public let id: String
-        public let localizedName: String
-        public let assetName: String
-        public let assetName4LiveActivity: String
+        public var localizedName: String
+        public fileprivate(set) var assetName: String
+        public fileprivate(set) var assetName4LiveActivity: String
         public let bindedCharID: String? // 原神专用
+
+        // MARK: Private
+
+        private enum CodingKeys: CodingKey {
+            case game
+            case id
+            case localizedName
+            case assetName
+            case assetName4LiveActivity
+            case bindedCharID
+        }
     }
 }
 
@@ -25,8 +66,15 @@ extension Wallpaper.WallpaperAsset: _DefaultsSerializable {}
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
 extension Wallpaper.WallpaperAsset {
-    fileprivate static func getBundledDB4HSR() -> [String: String] {
+    fileprivate static func getBundledLangDB4HSR() -> [String: String] {
         let url = Bundle.module.url(forResource: "HSRWallpapers", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
+        return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
+    }
+
+    fileprivate static func getBundledLangDB4GI() -> [String: String] {
+        let url = Bundle.module.url(forResource: "GIWallpapers_Lang", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
@@ -34,9 +82,24 @@ extension Wallpaper.WallpaperAsset {
 }
 
 extension Wallpaper {
+    public static func defaultValue(for game: Pizza.SupportedGame) -> WallpaperAsset {
+        let allCases = allCases(for: game)
+        return switch game {
+        case .genshinImpact: allCases.first { $0.id == "210042" }!
+        case .starRail: allCases.first { $0.id == "221005" }!
+        }
+    }
+
+    public static func allCases(for game: Pizza.SupportedGame) -> [WallpaperAsset] {
+        switch game {
+        case .genshinImpact: allCases4GI
+        case .starRail: allCases4HSR
+        }
+    }
+
     public static let allCases4HSR: [WallpaperAsset] = {
         var results = [WallpaperAsset]()
-        let db = WallpaperAsset.getBundledDB4HSR()
+        let db = WallpaperAsset.getBundledLangDB4HSR()
         db.forEach { key, value in
             results.append(
                 WallpaperAsset(
@@ -50,6 +113,23 @@ extension Wallpaper {
             )
         }
         return results
+    }()
+
+    public static let allCases4GI: [WallpaperAsset] = {
+        var results = [WallpaperAsset]()
+        let url = Bundle.module.url(forResource: "GIWallpapers_Meta", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        var dbs = try! JSONDecoder().decode([WallpaperAsset].self, from: data)
+        let langDB = WallpaperAsset.getBundledLangDB4GI()
+        for i in 0 ..< dbs.count {
+            let oldObj = dbs[i]
+            dbs[i].assetName = "NC\(oldObj.id)"
+            dbs[i].assetName4LiveActivity = "NC\(oldObj.id)"
+            if let localized = langDB[dbs[i].id] {
+                dbs[i].localizedName = localized
+            }
+        }
+        return dbs
     }()
 }
 
