@@ -325,24 +325,24 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Edit Profile Configuration"
+            "value" : "Edit Profile Config"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "プロファイルの配置"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "编辑本地账号配置"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "編輯本機帳號組態"
           }
         }

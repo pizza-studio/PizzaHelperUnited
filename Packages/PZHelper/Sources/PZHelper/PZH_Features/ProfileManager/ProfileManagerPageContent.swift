@@ -149,13 +149,16 @@ struct ProfileManagerPageContent: View {
             if isEditMode != .active {
                 Image(systemSymbol: .sliderHorizontal3)
             }
-        }.contextMenu {
+        }
+        .contextMenu {
             Button("profileMgr.edit.title".i18nPZHelper) {
                 sheetType = .editExistingProfile(profile)
             }
-            Button("profileMgr.delete.title".i18nPZHelper) {
+            Button(role: .destructive) {
                 modelContext.delete(profile)
                 try? modelContext.save()
+            } label: {
+                Text("profileMgr.delete.title".i18nPZHelper)
             }
         }
     }
