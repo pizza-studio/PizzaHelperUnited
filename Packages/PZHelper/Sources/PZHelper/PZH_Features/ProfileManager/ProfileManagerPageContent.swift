@@ -172,7 +172,12 @@ struct ProfileManagerPageContent: View {
         }
     }
 
+    /// 该方法是 SwiftUI 内部 Protocol 规定的方法。
     private func deleteItems(offsets: IndexSet) {
+        deleteItems(offsets: offsets, clearEnkaCache: false)
+    }
+
+    private func deleteItems(offsets: IndexSet, clearEnkaCache: Bool) {
         withAnimation {
             var idsToDrop: [(String, Pizza.SupportedGame)] = []
             offsets.map {
@@ -182,13 +187,15 @@ struct ProfileManagerPageContent: View {
             }.forEach(modelContext.delete)
 
             defer {
-                // 特殊处理：当且仅当当前删掉的帐号不是重复的本地帐号的时候，才清空展柜缓存。
-                let remainingUIDs = profiles.map(\.uid)
-                idsToDrop.forEach { currentUID, currentGame in
-                    if !remainingUIDs.contains(currentUID) {
-                        switch currentGame {
-                        case .genshinImpact: Defaults[.queriedEnkaProfiles4GI].removeValue(forKey: currentUID)
-                        case .starRail: Defaults[.queriedEnkaProfiles4HSR].removeValue(forKey: currentUID)
+                if clearEnkaCache {
+                    // 特殊处理：当且仅当当前删掉的帐号不是重复的本地帐号的时候，才清空展柜缓存。
+                    let remainingUIDs = profiles.map(\.uid)
+                    idsToDrop.forEach { currentUID, currentGame in
+                        if !remainingUIDs.contains(currentUID) {
+                            switch currentGame {
+                            case .genshinImpact: Defaults[.queriedEnkaProfiles4GI].removeValue(forKey: currentUID)
+                            case .starRail: Defaults[.queriedEnkaProfiles4HSR].removeValue(forKey: currentUID)
+                            }
                         }
                     }
                 }
