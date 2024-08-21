@@ -1,0 +1,1304 @@
+[
+  {
+    "assetName" : "UI_NameCardPic_0_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_0_P",
+    "game" : "GI",
+    "id" : "210001"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp1_P",
+    "game" : "GI",
+    "id" : "210002"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ambor_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ambor_P",
+    "bindedCharID" : "10000021",
+    "game" : "GI",
+    "id" : "210003"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Klee_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Klee_P",
+    "bindedCharID" : "10000029",
+    "game" : "GI",
+    "id" : "210004"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Diluc_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Diluc_P",
+    "bindedCharID" : "10000016",
+    "game" : "GI",
+    "id" : "210005"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Razor_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Razor_P",
+    "bindedCharID" : "10000020",
+    "game" : "GI",
+    "id" : "210006"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Venti_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Venti_P",
+    "bindedCharID" : "10000022",
+    "game" : "GI",
+    "id" : "210007"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Qin_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Qin_P",
+    "bindedCharID" : "10000003",
+    "game" : "GI",
+    "id" : "210008"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Barbara_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Barbara_P",
+    "bindedCharID" : "10000014",
+    "game" : "GI",
+    "id" : "210009"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Kaeya_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Kaeya_P",
+    "bindedCharID" : "10000015",
+    "game" : "GI",
+    "id" : "210010"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Lisa_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Lisa_P",
+    "bindedCharID" : "10000006",
+    "game" : "GI",
+    "id" : "210011"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Sucrose_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Sucrose_P",
+    "bindedCharID" : "10000043",
+    "game" : "GI",
+    "id" : "210012"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Fischl_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Fischl_P",
+    "bindedCharID" : "10000031",
+    "game" : "GI",
+    "id" : "210013"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Noel_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Noel_P",
+    "bindedCharID" : "10000034",
+    "game" : "GI",
+    "id" : "210014"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Mona_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Mona_P",
+    "bindedCharID" : "10000041",
+    "game" : "GI",
+    "id" : "210015"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bennett_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bennett_P",
+    "bindedCharID" : "10000032",
+    "game" : "GI",
+    "id" : "210016"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xiangling_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xiangling_P",
+    "bindedCharID" : "10000023",
+    "game" : "GI",
+    "id" : "210017"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xingqiu_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xingqiu_P",
+    "bindedCharID" : "10000025",
+    "game" : "GI",
+    "id" : "210018"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Qiqi_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Qiqi_P",
+    "bindedCharID" : "10000035",
+    "game" : "GI",
+    "id" : "210019"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Keqing_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Keqing_P",
+    "bindedCharID" : "10000042",
+    "game" : "GI",
+    "id" : "210020"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Csxy1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Csxy1_P",
+    "game" : "GI",
+    "id" : "210021"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Mxsy_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Mxsy_P",
+    "game" : "GI",
+    "id" : "210022"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Yxzl_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Yxzl_P",
+    "game" : "GI",
+    "id" : "210023"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Md_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Md_P",
+    "game" : "GI",
+    "id" : "210024"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ly_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ly_P",
+    "game" : "GI",
+    "id" : "210025"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Yszj_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Yszj_P",
+    "game" : "GI",
+    "id" : "210026"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Sss_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Sss_P",
+    "game" : "GI",
+    "id" : "210027"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tzz1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tzz1_P",
+    "game" : "GI",
+    "id" : "210028"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Sj1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Sj1_P",
+    "game" : "GI",
+    "id" : "210029"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Olah1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Olah1_P",
+    "game" : "GI",
+    "id" : "210030"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Zdg1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Zdg1_P",
+    "game" : "GI",
+    "id" : "210031"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Lyws1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Lyws1_P",
+    "game" : "GI",
+    "id" : "210032"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ysxf1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ysxf1_P",
+    "game" : "GI",
+    "id" : "210033"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ningguang_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ningguang_P",
+    "bindedCharID" : "10000027",
+    "game" : "GI",
+    "id" : "210038"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Beidou_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Beidou_P",
+    "bindedCharID" : "10000024",
+    "game" : "GI",
+    "id" : "210039"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Chongyun_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Chongyun_P",
+    "bindedCharID" : "10000036",
+    "game" : "GI",
+    "id" : "210040"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tzz2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tzz2_P",
+    "game" : "GI",
+    "id" : "210041"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp2_P",
+    "game" : "GI",
+    "id" : "210042"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Diona_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Diona_P",
+    "bindedCharID" : "10000039",
+    "game" : "GI",
+    "id" : "210043"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Zhongli_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Zhongli_P",
+    "bindedCharID" : "10000030",
+    "game" : "GI",
+    "id" : "210044"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xinyan_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xinyan_P",
+    "bindedCharID" : "10000044",
+    "game" : "GI",
+    "id" : "210045"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tartaglia_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tartaglia_P",
+    "bindedCharID" : "10000033",
+    "game" : "GI",
+    "id" : "210046"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Md2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Md2_P",
+    "game" : "GI",
+    "id" : "210047"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Md1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Md1_P",
+    "game" : "GI",
+    "id" : "210048"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ly1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ly1_P",
+    "game" : "GI",
+    "id" : "210049"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ly2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ly2_P",
+    "game" : "GI",
+    "id" : "210050"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tzz3_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tzz3_P",
+    "game" : "GI",
+    "id" : "210051"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xssdlk_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xssdlk_P",
+    "game" : "GI",
+    "id" : "210052"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ganyu_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ganyu_P",
+    "bindedCharID" : "10000037",
+    "game" : "GI",
+    "id" : "210053"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Albedo_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Albedo_P",
+    "bindedCharID" : "10000038",
+    "game" : "GI",
+    "id" : "210054"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp3_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp3_P",
+    "game" : "GI",
+    "id" : "210055"
+  },
+  {
+    "assetName" : "UI_NameCardPic_ElderTree_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_ElderTree_P",
+    "game" : "GI",
+    "id" : "210056"
+  },
+  {
+    "assetName" : "UI_NameCardPic_EffigyChallenge_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_EffigyChallenge_P",
+    "game" : "GI",
+    "id" : "210057"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xiao_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xiao_P",
+    "bindedCharID" : "10000026",
+    "game" : "GI",
+    "id" : "210058"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Hutao_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Hutao_P",
+    "bindedCharID" : "10000046",
+    "game" : "GI",
+    "id" : "210059"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp4_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp4_P",
+    "game" : "GI",
+    "id" : "210060"
+  },
+  {
+    "assetName" : "UI_NameCardPic_LanternRite_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_LanternRite_P",
+    "game" : "GI",
+    "id" : "210061"
+  },
+  {
+    "assetName" : "UI_NameCardPic_TheatreMechanicus_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_TheatreMechanicus_P",
+    "game" : "GI",
+    "id" : "210062"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Rosaria_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Rosaria_P",
+    "bindedCharID" : "10000045",
+    "game" : "GI",
+    "id" : "210063"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp5_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp5_P",
+    "game" : "GI",
+    "id" : "210064"
+  },
+  {
+    "assetName" : "UI_NameCardPic_RedandWhite_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_RedandWhite_P",
+    "game" : "GI",
+    "id" : "210065"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Razer_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Razer_P",
+    "game" : "GI",
+    "id" : "210066"
+  },
+  {
+    "assetName" : "UI_NameCardPic_ChannellerSlab_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_ChannellerSlab_P",
+    "game" : "GI",
+    "id" : "210067"
+  },
+  {
+    "assetName" : "UI_NameCardPic_HideandSeek_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_HideandSeek_P",
+    "game" : "GI",
+    "id" : "210068"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Feiyan_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Feiyan_P",
+    "bindedCharID" : "10000048",
+    "game" : "GI",
+    "id" : "210069"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Eula_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Eula_P",
+    "bindedCharID" : "10000051",
+    "game" : "GI",
+    "id" : "210070"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp6_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp6_P",
+    "game" : "GI",
+    "id" : "210071"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Homeworld_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Homeworld_P",
+    "game" : "GI",
+    "id" : "210072"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Kazuha_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Kazuha_P",
+    "bindedCharID" : "10000047",
+    "game" : "GI",
+    "id" : "210073"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp7_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp7_P",
+    "game" : "GI",
+    "id" : "210074"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Homeworld1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Homeworld1_P",
+    "game" : "GI",
+    "id" : "210075"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Google_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Google_P",
+    "game" : "GI",
+    "id" : "210076"
+  },
+  {
+    "assetName" : "UI_NameCardPic_BounceConjuringChallenge_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_BounceConjuringChallenge_P",
+    "game" : "GI",
+    "id" : "210077"
+  },
+  {
+    "assetName" : "UI_NameCardPic_EffigyChallenge02_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_EffigyChallenge02_P",
+    "game" : "GI",
+    "id" : "210078"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Oraionokami_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Oraionokami_P",
+    "game" : "GI",
+    "id" : "210079"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp8_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp8_P",
+    "game" : "GI",
+    "id" : "210080"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ayaka_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ayaka_P",
+    "bindedCharID" : "10000002",
+    "game" : "GI",
+    "id" : "210081"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Yoimiya_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Yoimiya_P",
+    "bindedCharID" : "10000049",
+    "game" : "GI",
+    "id" : "210082"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Sayu_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Sayu_P",
+    "bindedCharID" : "10000053",
+    "game" : "GI",
+    "id" : "210083"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Dq1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Dq1_P",
+    "game" : "GI",
+    "id" : "210084"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Dq2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Dq2_P",
+    "game" : "GI",
+    "id" : "210085"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ysxf2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ysxf2_P",
+    "game" : "GI",
+    "id" : "210086"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Csxy2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Csxy2_P",
+    "game" : "GI",
+    "id" : "210087"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tzz4_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tzz4_P",
+    "game" : "GI",
+    "id" : "210088"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Homeworld2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Homeworld2_P",
+    "game" : "GI",
+    "id" : "210089"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Daoqi1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Daoqi1_P",
+    "game" : "GI",
+    "id" : "210090"
+  },
+  {
+    "assetName" : "UI_NameCardPic_TheatreMechanicus2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_TheatreMechanicus2_P",
+    "game" : "GI",
+    "id" : "210091"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Shougun_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Shougun_P",
+    "bindedCharID" : "10000052",
+    "game" : "GI",
+    "id" : "210092"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Kokomi_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Kokomi_P",
+    "bindedCharID" : "10000054",
+    "game" : "GI",
+    "id" : "210093"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Sara_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Sara_P",
+    "bindedCharID" : "10000056",
+    "game" : "GI",
+    "id" : "210094"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Aloy_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Aloy_P",
+    "bindedCharID" : "10000062",
+    "game" : "GI",
+    "id" : "210095"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp9_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp9_P",
+    "game" : "GI",
+    "id" : "210096"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Daoqi2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Daoqi2_P",
+    "game" : "GI",
+    "id" : "210097"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Fishing_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Fishing_P",
+    "game" : "GI",
+    "id" : "210098"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Concert_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Concert_P",
+    "game" : "GI",
+    "id" : "210099"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Sumo_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Sumo_P",
+    "game" : "GI",
+    "id" : "210100"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tohma_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tohma_P",
+    "bindedCharID" : "10000050",
+    "game" : "GI",
+    "id" : "210101"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp10_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp10_P",
+    "game" : "GI",
+    "id" : "210102"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Daoqi3_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Daoqi3_P",
+    "game" : "GI",
+    "id" : "210103"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Gorou_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Gorou_P",
+    "bindedCharID" : "10000055",
+    "game" : "GI",
+    "id" : "210104"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Itto_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Itto_P",
+    "bindedCharID" : "10000057",
+    "game" : "GI",
+    "id" : "210105"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp11_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp11_P",
+    "game" : "GI",
+    "id" : "210106"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Shenhe_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Shenhe_P",
+    "bindedCharID" : "10000063",
+    "game" : "GI",
+    "id" : "210107"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Yunjin_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Yunjin_P",
+    "bindedCharID" : "10000064",
+    "game" : "GI",
+    "id" : "210108"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Daoqi4_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Daoqi4_P",
+    "game" : "GI",
+    "id" : "210109"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp12_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp12_P",
+    "game" : "GI",
+    "id" : "210110"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bartender_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bartender_P",
+    "game" : "GI",
+    "id" : "210111"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Yae1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Yae1_P",
+    "bindedCharID" : "10000058",
+    "game" : "GI",
+    "id" : "210112"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp13_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp13_P",
+    "game" : "GI",
+    "id" : "210113"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ayato_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ayato_P",
+    "bindedCharID" : "10000066",
+    "game" : "GI",
+    "id" : "210114"
+  },
+  {
+    "assetName" : "UI_NameCardPic_LuminanceStone_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_LuminanceStone_P",
+    "game" : "GI",
+    "id" : "210115"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tzz5_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tzz5_P",
+    "game" : "GI",
+    "id" : "210116"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Cenyan1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Cenyan1_P",
+    "game" : "GI",
+    "id" : "210117"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp14_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp14_P",
+    "game" : "GI",
+    "id" : "210118"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Yelan_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Yelan_P",
+    "bindedCharID" : "10000060",
+    "game" : "GI",
+    "id" : "210119"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Shinobu_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Shinobu_P",
+    "bindedCharID" : "10000065",
+    "game" : "GI",
+    "id" : "210120"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp15_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp15_P",
+    "game" : "GI",
+    "id" : "210121"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Heizo_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Heizo_P",
+    "bindedCharID" : "10000059",
+    "game" : "GI",
+    "id" : "210122"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp16_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp16_P",
+    "game" : "GI",
+    "id" : "210123"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tighnari_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tighnari_P",
+    "bindedCharID" : "10000069",
+    "game" : "GI",
+    "id" : "210124"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Collei_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Collei_P",
+    "bindedCharID" : "10000067",
+    "game" : "GI",
+    "id" : "210125"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Dori_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Dori_P",
+    "bindedCharID" : "10000068",
+    "game" : "GI",
+    "id" : "210126"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp17_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp17_P",
+    "game" : "GI",
+    "id" : "210127"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Csxy3_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Csxy3_P",
+    "game" : "GI",
+    "id" : "210128"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ysxf3_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ysxf3_P",
+    "game" : "GI",
+    "id" : "210129"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xm1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xm1_P",
+    "game" : "GI",
+    "id" : "210130"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xumi1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xumi1_P",
+    "game" : "GI",
+    "id" : "210131"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xumi2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xumi2_P",
+    "game" : "GI",
+    "id" : "210132"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp18_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp18_P",
+    "game" : "GI",
+    "id" : "210133"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Cyno_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Cyno_P",
+    "bindedCharID" : "10000071",
+    "game" : "GI",
+    "id" : "210134"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Candace_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Candace_P",
+    "bindedCharID" : "10000072",
+    "game" : "GI",
+    "id" : "210135"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Nilou_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Nilou_P",
+    "bindedCharID" : "10000070",
+    "game" : "GI",
+    "id" : "210136"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Yszj2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Yszj2_P",
+    "game" : "GI",
+    "id" : "210137"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xm2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xm2_P",
+    "game" : "GI",
+    "id" : "210138"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tzz6_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tzz6_P",
+    "game" : "GI",
+    "id" : "210139"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Nahida_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Nahida_P",
+    "bindedCharID" : "10000073",
+    "game" : "GI",
+    "id" : "210140"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Layla_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Layla_P",
+    "bindedCharID" : "10000074",
+    "game" : "GI",
+    "id" : "210141"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp19_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp19_P",
+    "game" : "GI",
+    "id" : "210142"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Wanderer_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Wanderer_P",
+    "bindedCharID" : "10000075",
+    "game" : "GI",
+    "id" : "210143"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Faruzan_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Faruzan_P",
+    "bindedCharID" : "10000076",
+    "game" : "GI",
+    "id" : "210144"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Gcg1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Gcg1_P",
+    "game" : "GI",
+    "id" : "210145"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp20_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp20_P",
+    "game" : "GI",
+    "id" : "210146"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Alhatham_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Alhatham_P",
+    "bindedCharID" : "10000078",
+    "game" : "GI",
+    "id" : "210147"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Yaoyao_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Yaoyao_P",
+    "bindedCharID" : "10000077",
+    "game" : "GI",
+    "id" : "210148"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Cadillac_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Cadillac_P",
+    "game" : "GI",
+    "id" : "210149"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp21_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp21_P",
+    "game" : "GI",
+    "id" : "210150"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xm3_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xm3_P",
+    "game" : "GI",
+    "id" : "210151"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Dehya_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Dehya_P",
+    "bindedCharID" : "10000079",
+    "game" : "GI",
+    "id" : "210152"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Mika_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Mika_P",
+    "bindedCharID" : "10000080",
+    "game" : "GI",
+    "id" : "210153"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp22_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp22_P",
+    "game" : "GI",
+    "id" : "210154"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Baizhuer_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Baizhuer_P",
+    "bindedCharID" : "10000082",
+    "game" : "GI",
+    "id" : "210155"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Kaveh_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Kaveh_P",
+    "bindedCharID" : "10000081",
+    "game" : "GI",
+    "id" : "210156"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Xm4_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Xm4_P",
+    "game" : "GI",
+    "id" : "210157"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tzz7_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tzz7_P",
+    "game" : "GI",
+    "id" : "210158"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Vasara_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Vasara_P",
+    "game" : "GI",
+    "id" : "210159"
+  },
+  {
+    "assetName" : "UI_NameCardPic_OfferingPari_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_OfferingPari_P",
+    "game" : "GI",
+    "id" : "210160"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp23_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp23_P",
+    "game" : "GI",
+    "id" : "210161"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Kirara_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Kirara_P",
+    "bindedCharID" : "10000061",
+    "game" : "GI",
+    "id" : "210162"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp24_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp24_P",
+    "game" : "GI",
+    "id" : "210163"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp25_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp25_P",
+    "game" : "GI",
+    "id" : "210164"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Liney_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Liney_P",
+    "bindedCharID" : "10000084",
+    "game" : "GI",
+    "id" : "210165"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Linette_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Linette_P",
+    "bindedCharID" : "10000083",
+    "game" : "GI",
+    "id" : "210166"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Freminet_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Freminet_P",
+    "bindedCharID" : "10000085",
+    "game" : "GI",
+    "id" : "210167"
+  },
+  {
+    "assetName" : "UI_NameCardPic_FD1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_FD1_P",
+    "game" : "GI",
+    "id" : "210168"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Ysxf4_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Ysxf4_P",
+    "game" : "GI",
+    "id" : "210169"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Csxy4_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Csxy4_P",
+    "game" : "GI",
+    "id" : "210170"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Fontaine1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Fontaine1_P",
+    "game" : "GI",
+    "id" : "210171"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Fontaine2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Fontaine2_P",
+    "game" : "GI",
+    "id" : "210172"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp26_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp26_P",
+    "game" : "GI",
+    "id" : "210173"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Neuvillette_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Neuvillette_P",
+    "bindedCharID" : "10000087",
+    "game" : "GI",
+    "id" : "210174"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Wriothesley_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Wriothesley_P",
+    "bindedCharID" : "10000086",
+    "game" : "GI",
+    "id" : "210175"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp27_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp27_P",
+    "game" : "GI",
+    "id" : "210176"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Guqin_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Guqin_P",
+    "game" : "GI",
+    "id" : "210177"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tzz8_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tzz8_P",
+    "game" : "GI",
+    "id" : "210178"
+  },
+  {
+    "assetName" : "UI_NameCardPic_FD2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_FD2_P",
+    "game" : "GI",
+    "id" : "210179"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Furina_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Furina_P",
+    "bindedCharID" : "10000089",
+    "game" : "GI",
+    "id" : "210180"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Charlotte_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Charlotte_P",
+    "bindedCharID" : "10000088",
+    "game" : "GI",
+    "id" : "210181"
+  },
+  {
+    "assetName" : "UI_NameCardPic_FD3_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_FD3_P",
+    "game" : "GI",
+    "id" : "210182"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp28_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp28_P",
+    "game" : "GI",
+    "id" : "210183"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Navia_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Navia_P",
+    "bindedCharID" : "10000091",
+    "game" : "GI",
+    "id" : "210184"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Chevreuse_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Chevreuse_P",
+    "bindedCharID" : "10000090",
+    "game" : "GI",
+    "id" : "210185"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp29_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp29_P",
+    "game" : "GI",
+    "id" : "210186"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Liuyun_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Liuyun_P",
+    "bindedCharID" : "10000093",
+    "game" : "GI",
+    "id" : "210187"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Gaming_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Gaming_P",
+    "bindedCharID" : "10000092",
+    "game" : "GI",
+    "id" : "210188"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Chenyu1_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Chenyu1_P",
+    "game" : "GI",
+    "id" : "210189"
+  },
+  {
+    "assetName" : "UI_NameCardPic_OfferingSilong_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_OfferingSilong_P",
+    "game" : "GI",
+    "id" : "210190"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp30_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp30_P",
+    "game" : "GI",
+    "id" : "210191"
+  },
+  {
+    "assetName" : "UI_NameCardPic_OST4_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_OST4_P",
+    "game" : "GI",
+    "id" : "210192"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Chiori_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Chiori_P",
+    "bindedCharID" : "10000094",
+    "game" : "GI",
+    "id" : "210193"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp31_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp31_P",
+    "game" : "GI",
+    "id" : "210194"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Arlecchino_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Arlecchino_P",
+    "bindedCharID" : "10000096",
+    "game" : "GI",
+    "id" : "210195"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Deep_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Deep_P",
+    "game" : "GI",
+    "id" : "210196"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Tzz9_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Tzz9_P",
+    "game" : "GI",
+    "id" : "210197"
+  },
+  {
+    "assetName" : "UI_NameCardPic_WishingPond_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_WishingPond_P",
+    "game" : "GI",
+    "id" : "210198"
+  },
+  {
+    "assetName" : "UI_NameCardPic_GreatFestivalV2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_GreatFestivalV2_P",
+    "game" : "GI",
+    "id" : "210199"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Clorinde_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Clorinde_P",
+    "bindedCharID" : "10000098",
+    "game" : "GI",
+    "id" : "210200"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Sigewinne_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Sigewinne_P",
+    "bindedCharID" : "10000095",
+    "game" : "GI",
+    "id" : "210201"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Sethos_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Sethos_P",
+    "bindedCharID" : "10000097",
+    "game" : "GI",
+    "id" : "210202"
+  },
+  {
+    "assetName" : "UI_NameCardPic_RoleCombat_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_RoleCombat_P",
+    "game" : "GI",
+    "id" : "210203"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp33_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp33_P",
+    "game" : "GI",
+    "id" : "210204"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Emilie_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Emilie_P",
+    "bindedCharID" : "10000099",
+    "game" : "GI",
+    "id" : "210205"
+  },
+  {
+    "assetName" : "UI_NameCardPic_Bp34_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_Bp34_P",
+    "game" : "GI",
+    "id" : "210206"
+  },
+  {
+    "assetName" : "UI_NameCardPic_RedandWhite2_P",
+    "assetName4LiveActivity" : "UI_NameCardPic_RedandWhite2_P",
+    "game" : "GI",
+    "id" : "210207"
+  }
+]
