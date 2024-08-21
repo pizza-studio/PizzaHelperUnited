@@ -1,0 +1,38 @@
+name: Update SPM Dependencies
+'on':
+  workflow_dispatch: {}
+  schedule:
+    - cron: 0 12 * * *
+jobs:
+  update:
+    name: Update Swift Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Swift
+        uses: swift-actions/setup-swift@v1
+      - name: Checkout swift-dependency-updater
+        uses: actions/checkout@v2
+        with:
+          repository: Nef10/swift-dependency-updater
+          path: swift-dependency-updater
+          ref: main
+      - name: Run swift-dependency-updater
+        run: >-
+          cd swift-dependency-updater && swift run swift-dependency-updater ./
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          branch: 'update-SPM-Dependencies-${{ github.run_number }}'
+          base: main
+          title: Update SPM Dependencies
+          body: |
+            This PR updates SPM Dependencies.
+          delete-branch: true
+          assignees: ShikiSuen
+          reviewers: ShikiSuen
+          team-reviewers: |
+            owners
+            maintainers
