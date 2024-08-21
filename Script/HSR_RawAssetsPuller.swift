@@ -10,28 +10,28 @@ import Foundation
 
 extension NSImage {
     @MainActor
-    func asPNGData() throws -> Data  {
+    func asPNGData() throws -> Data {
         guard let tiffData = tiffRepresentation, let imageRep = NSBitmapImageRep(data: tiffData) else {
             throw NSError(domain: "ImageConversionError", code: -1, userInfo: nil)
         }
-        guard let newData = CFDataCreateMutable(kCFAllocatorDefault, 0) else { 
+        guard let newData = CFDataCreateMutable(kCFAllocatorDefault, 0) else {
             throw NSError(domain: "CFDataAllocationError", code: -1, userInfo: nil)
         }
-        
+
         guard let destination = CGImageDestinationCreateWithData(newData, "public.png" as CFString, 1, nil),
               let cgImage = imageRep.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
             throw NSError(domain: "HEICConversionError", code: -1, userInfo: nil)
         }
-        
+
         let options = [kCGImageDestinationLossyCompressionQuality: 1.0] as CFDictionary
         CGImageDestinationAddImage(destination, cgImage, options)
-        
+
         guard CGImageDestinationFinalize(destination) else {
             throw NSError(domain: "HEICEncodingError", code: -1, userInfo: nil)
         }
         return newData as Data
     }
-    
+
     func saveRaw(to url: URL) throws {
         try tiffRepresentation?.write(to: url, options: .atomic)
     }
@@ -335,7 +335,7 @@ do {
         withIntermediateDirectories: true,
         attributes: nil
     )
-    
+
     for (fileNameStem, nsImage) in dataDict {
         let newURL = URL(fileURLWithPath: workSpaceDirPath + "/\(fileNameStem)")
         if fileNameStem.hasSuffix("png") {
@@ -344,7 +344,7 @@ do {
             try nsImage.saveRaw(to: newURL)
         }
     }
-    
+
     print("\n// RAW Images Pulled Succesfully.\n")
 } catch {
     assertionFailure(error.localizedDescription)
