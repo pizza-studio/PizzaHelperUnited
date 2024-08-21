@@ -1,5 +1,7 @@
 #!/usr/bin/env swift
 
+import AppKit
+import AVFoundation
 import Foundation
 
 // 该脚本为原神专用。
@@ -123,6 +125,37 @@ let bannedFinalFileNames: [String] = [
     "gi_weapon_13304.webp",
     "gi_weapon_14306.webp",
 ]
+
+// MARK: - NSImage Extensions
+
+extension NSImage {
+    @MainActor
+    func asPNGData() throws -> Data  {
+        guard let tiffData = tiffRepresentation, let imageRep = NSBitmapImageRep(data: tiffData) else {
+            throw NSError(domain: "ImageConversionError", code: -1, userInfo: nil)
+        }
+        guard let newData = CFDataCreateMutable(kCFAllocatorDefault, 0) else { 
+            throw NSError(domain: "CFDataAllocationError", code: -1, userInfo: nil)
+        }
+
+        guard let destination = CGImageDestinationCreateWithData(newData, "public.png" as CFString, 1, nil),
+              let cgImage = imageRep.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+            throw NSError(domain: "HEICConversionError", code: -1, userInfo: nil)
+        }
+
+        let options = [kCGImageDestinationLossyCompressionQuality: 1.0] as CFDictionary
+        CGImageDestinationAddImage(destination, cgImage, options)
+
+        guard CGImageDestinationFinalize(destination) else {
+            throw NSError(domain: "HEICEncodingError", code: -1, userInfo: nil)
+        }
+        return newData as Data
+    }
+    
+    func saveRaw(to url: URL) throws {
+        try tiffRepresentation?.write(to: url, options: .atomic)
+    }
+}
 
 // MARK: - Decoding Strategy for Decoding UpperCamelCases
 
@@ -414,7 +447,7 @@ print(String(data: try! encoder.encode(urlDict), encoding: .utf8)!)
 // MARK: - Image Data Download
 
 let dataDict = try await withThrowingTaskGroup(
-    of: (String, Data)?.self, returning: [String: Data].self
+    of: (String, Data)?.self, returning: [String: NSImage].self
 ) { taskGroup in
     urlDict.forEach { fileNameStem, urlString in
         taskGroup.addTask {
@@ -423,10 +456,10 @@ let dataDict = try await withThrowingTaskGroup(
         }
     }
 
-    var newDict = [String: Data]()
+    var newDict = [String: NSImage]()
     for try await result in taskGroup {
-        guard let result = result else { continue }
-        newDict[result.0] = result.1
+        guard let result = result, let image = NSImage(data: result.1) else { continue }
+        newDict[result.0] = image
     }
     return newDict
 }
@@ -443,8 +476,13 @@ do {
         attributes: nil
     )
 
-    for (fileNameStem, rawData) in dataDict {
-        try rawData.write(to: URL(fileURLWithPath: workSpaceDirPath + "/\(fileNameStem)"), options: .atomic)
+    for (fileNameStem, nsImage) in dataDict {
+        let newURL = URL(fileURLWithPath: workSpaceDirPath + "/\(fileNameStem)")
+        if fileNameStem.hasSuffix("png") {
+            try nsImage.asPNGData().write(to: newURL, options: .atomic)
+        } else {
+            try nsImage.saveRaw(to: newURL)
+        }
     }
 
     print("\n// RAW Images Pulled Succesfully.\n")
