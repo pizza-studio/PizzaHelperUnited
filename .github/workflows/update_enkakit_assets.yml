@@ -1,39 +1,33 @@
 name: Update EnkaKit Assets
-
-on:
-    workflow_dispatch: {}
-    schedule:
-        - cron: '0 12 * * *'
-
+'on':
+  workflow_dispatch: {}
+  schedule:
+    - cron: 0 12 * * *
 jobs:
-    update:
-        runs-on: macOS-latest
-
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v2
-
-            - name: Set up Swift
-              uses: swift-actions/setup-swift@v2
-
-            - name: Update EnkaKit Assets
-              id: compare_shas
-              run: |
-                zsh ./Script/_assetUpdate4GI.sh
-                zsh ./Script/_assetUpdate4HSR.sh
-
-            - name: Create Pull Request
-              uses: peter-evans/create-pull-request@v3
-              with:
-                token: ${{ secrets.GITHUB_TOKEN }}
-                branch: update-enkakit-assets-${{ github.run_number }}
-                base: main
-                title: "Update EnkaKit Asset"
-                body: |
-                  This PR updates the generated EnkaKit Assets.
-                delete-branch: true
-                assignees: ShikiSuen
-                reviewers: ShikiSuen
-                team-reviewers: |
-                  owners
-                  maintainers
+  update:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Swift
+        uses: swift-actions/setup-swift@v2
+      - name: Update EnkaKit Assets
+        id: compare_shas
+        run: |
+          zsh ./Script/_assetUpdate4GI.sh
+          zsh ./Script/_assetUpdate4HSR.sh
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          branch: 'update-enkakit-assets-${{ github.run_number }}'
+          base: main
+          title: Update EnkaKit Asset
+          body: |
+            This PR updates the generated EnkaKit Assets.
+          delete-branch: true
+          assignees: ShikiSuen
+          reviewers: ShikiSuen
+          team-reviewers: |
+            owners
+            maintainers
