@@ -1,38 +1,32 @@
 name: Update WallpaperKit Assets
-
-on:
-    workflow_dispatch: {}
-    schedule:
-        - cron: '0 12 * * *'
-
+'on':
+  workflow_dispatch: {}
+  schedule:
+    - cron: 0 12 * * *
 jobs:
-    update:
-        runs-on: macOS-latest
-
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v2
-
-            - name: Set up Swift
-              uses: swift-actions/setup-swift@v2
-
-            - name: Update WallpaperKit Assets
-              id: compare_shas
-              run: |
-                swift ./Script/WallpaperAssetCollector.swift
-
-            - name: Create Pull Request
-              uses: peter-evans/create-pull-request@v3
-              with:
-                token: ${{ secrets.GITHUB_TOKEN }}
-                branch: update-WallpaperKit-assets-${{ github.run_number }}
-                base: main
-                title: "Update WallpaperKit Asset"
-                body: |
-                  This PR updates the generated WallpaperKit Assets.
-                delete-branch: true
-                assignees: ShikiSuen
-                reviewers: ShikiSuen
-                team-reviewers: |
-                  owners
-                  maintainers
+  update:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Swift
+        uses: swift-actions/setup-swift@v2
+      - name: Update WallpaperKit Assets
+        id: compare_shas
+        run: |
+          swift ./Script/WallpaperAssetCollector.swift
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          branch: 'update-WallpaperKit-assets-${{ github.run_number }}'
+          base: main
+          title: Update WallpaperKit Asset
+          body: |
+            This PR updates the generated WallpaperKit Assets.
+          delete-branch: true
+          assignees: ShikiSuen
+          reviewers: ShikiSuen
+          team-reviewers: |
+            owners
+            maintainers
