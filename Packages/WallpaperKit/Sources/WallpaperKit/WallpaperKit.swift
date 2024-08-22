@@ -104,6 +104,22 @@ extension Wallpaper {
         return results
     }()
 
+    /// This will return fallbacked normal value instead if nothing is matched.
+    public static func findNameCardForGenshinCharacter(charID: String) -> WallpaperAsset {
+        assetCharMap4GI[charID]
+            ?? assetCharMap4GI[charID.prefix(8).description]
+            ?? Wallpaper.defaultValue(for: .genshinImpact)
+    }
+
+    private static let assetCharMap4GI: [String: WallpaperAsset] = {
+        var result = [String: WallpaperAsset]()
+        allCases4GI.forEach {
+            guard let charID = $0.bindedCharID else { return }
+            result[charID] = $0
+        }
+        return result
+    }()
+
     public static let allCases4GI: [WallpaperAsset] = {
         var results = [WallpaperAsset]()
         let url = Bundle.module.url(forResource: "GIWallpapers_Meta", withExtension: "json")!
