@@ -5,51 +5,64 @@ import Defaults
 import Foundation
 import PZBaseKit
 
+extension Defaults.Keys {
+    // Background wallpaper for live activity view. Nulled value means random value.
+    public static let background4LiveActivity = Key<Wallpaper?>(
+        "background4LiveActivity",
+        default: Wallpaper.defaultValue(for: .genshinImpact),
+        suite: .baseSuite
+    )
+    // Background wallpaper for app view. Nulled value means random value.
+    public static let background4App = Key<Wallpaper?>(
+        "background4App",
+        default: Wallpaper.defaultValue(for: .genshinImpact),
+        suite: .baseSuite
+    )
+}
+
 // MARK: - Wallpaper
 
-public enum Wallpaper {
-    public struct WallpaperAsset: Identifiable, Codable {
-        public let game: Pizza.SupportedGame
-        public let id: String
-        public let bindedCharID: String? // 原神专用
+public struct Wallpaper: Identifiable, Codable {
+    public let game: Pizza.SupportedGame
+    public let id: String
+    public let bindedCharID: String? // 原神专用
 
-        public var assetName: String {
-            switch game {
-            case .genshinImpact: "NC\(id)"
-            case .starRail: "WP\(id)"
-            }
+    public var assetName: String {
+        switch game {
+        case .genshinImpact: "NC\(id)"
+        case .starRail: "WP\(id)"
         }
+    }
 
-        public var assetName4LiveActivity: String {
-            switch game {
-            case .genshinImpact: "NC\(id)"
-            case .starRail: "LA_WP\(id)"
-            }
+    public var assetName4LiveActivity: String {
+        switch game {
+        case .genshinImpact: "NC\(id)"
+        case .starRail: "LA_WP\(id)"
         }
+    }
 
-        public var localizedName: String {
-            switch game {
-            case .genshinImpact: Self.bundledLangDB4GI[id] ?? "NC(\(id))"
-            case .starRail: Self.bundledLangDB4HSR[id] ?? "WP(\(id))"
-            }
+    public var localizedName: String {
+        switch game {
+        case .genshinImpact: Self.bundledLangDB4GI[id] ?? "NC(\(id))"
+        case .starRail: Self.bundledLangDB4HSR[id] ?? "WP(\(id))"
         }
+    }
 
-        public var localizedRealName: String {
-            switch game {
-            case .genshinImpact: Self.bundledLangDB4GIRealName[id] ?? localizedName
-            case .starRail: Self.bundledLangDB4HSR[id] ?? localizedName
-            }
+    public var localizedRealName: String {
+        switch game {
+        case .genshinImpact: Self.bundledLangDB4GIRealName[id] ?? localizedName
+        case .starRail: Self.bundledLangDB4HSR[id] ?? localizedName
         }
     }
 }
 
-// MARK: - Wallpaper.WallpaperAsset + _DefaultsSerializable
+// MARK: _DefaultsSerializable
 
-extension Wallpaper.WallpaperAsset: _DefaultsSerializable {}
+extension Wallpaper: _DefaultsSerializable {}
 
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
-extension Wallpaper.WallpaperAsset {
+extension Wallpaper {
     fileprivate static let bundledLangDB4HSR: [String: String] = {
         let url = Bundle.module.url(forResource: "HSRWallpapers", withExtension: "json")!
         let data = try! Data(contentsOf: url)
@@ -75,7 +88,7 @@ extension Wallpaper.WallpaperAsset {
 }
 
 extension Wallpaper {
-    public static func defaultValue(for game: Pizza.SupportedGame) -> WallpaperAsset {
+    public static func defaultValue(for game: Pizza.SupportedGame) -> Self {
         let allCases = allCases(for: game)
         return switch game {
         case .genshinImpact: allCases.first { $0.id == "210042" }!
@@ -83,18 +96,33 @@ extension Wallpaper {
         }
     }
 
-    public static func allCases(for game: Pizza.SupportedGame) -> [WallpaperAsset] {
+    public static func randomValue(for game: Pizza.SupportedGame) -> Self {
+        let allCases = allCases(for: game)
+        return switch game {
+        case .genshinImpact: allCases.randomElement()!
+        case .starRail: allCases.randomElement()!
+        }
+    }
+
+    public static func allCases(for game: Pizza.SupportedGame) -> [Self] {
         switch game {
         case .genshinImpact: allCases4GI
         case .starRail: allCases4HSR
         }
     }
 
-    public static let allCases4HSR: [WallpaperAsset] = {
-        var results = [WallpaperAsset]()
-        WallpaperAsset.bundledLangDB4HSR.forEach { key, _ in
+    /// This will return fallbacked normal value instead if nothing is matched.
+    public static func findNameCardForGenshinCharacter(charID: String) -> Self {
+        assetCharMap4GI[charID]
+            ?? assetCharMap4GI[charID.prefix(8).description]
+            ?? Wallpaper.defaultValue(for: .genshinImpact)
+    }
+
+    public static let allCases4HSR: [Self] = {
+        var results = [Self]()
+        bundledLangDB4HSR.forEach { key, _ in
             results.append(
-                WallpaperAsset(
+                Self(
                     game: .starRail,
                     id: key,
                     bindedCharID: nil
@@ -104,27 +132,20 @@ extension Wallpaper {
         return results
     }()
 
-    /// This will return fallbacked normal value instead if nothing is matched.
-    public static func findNameCardForGenshinCharacter(charID: String) -> WallpaperAsset {
-        assetCharMap4GI[charID]
-            ?? assetCharMap4GI[charID.prefix(8).description]
-            ?? Wallpaper.defaultValue(for: .genshinImpact)
-    }
+    public static let allCases4GI: [Self] = {
+        var results = [Self]()
+        let url = Bundle.module.url(forResource: "GIWallpapers_Meta", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        return try! JSONDecoder().decode([Self].self, from: data)
+    }()
 
-    private static let assetCharMap4GI: [String: WallpaperAsset] = {
-        var result = [String: WallpaperAsset]()
+    private static let assetCharMap4GI: [String: Self] = {
+        var result = [String: Self]()
         allCases4GI.forEach {
             guard let charID = $0.bindedCharID else { return }
             result[charID] = $0
         }
         return result
-    }()
-
-    public static let allCases4GI: [WallpaperAsset] = {
-        var results = [WallpaperAsset]()
-        let url = Bundle.module.url(forResource: "GIWallpapers_Meta", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-        return try! JSONDecoder().decode([WallpaperAsset].self, from: data)
     }()
 }
 
