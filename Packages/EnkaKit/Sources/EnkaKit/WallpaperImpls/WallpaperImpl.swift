@@ -14,4 +14,11 @@ extension View {
             AppWallpaperView(forLiveActivity: false, blur: true)
         }
     }
+
+    @inlinable
+    public func listRowMaterialBackground() -> some View {
+        listRowBackground(
+            Color.clear.background(.thinMaterial, in: Rectangle())
+        )
+    }
 }

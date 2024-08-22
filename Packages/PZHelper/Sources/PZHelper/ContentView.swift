@@ -129,10 +129,10 @@ public struct ContentView: View {
     @Environment(\.colorScheme) private var colorScheme
 
     private var tintForCurrentTab: Color {
-        .accentColor
-        // switch selection {
-        // case 0, 1: return .accessibilityAccent(colorScheme)
-        // default: return .accentColor
-        // }
+        switch NavItems(rawValue: selection) {
+        case .today: Color.accessibilityAccent(colorScheme)
+        case .showcaseDetail: Color.accessibilityAccent(colorScheme)
+        default: .accentColor
+        }
     }
 }

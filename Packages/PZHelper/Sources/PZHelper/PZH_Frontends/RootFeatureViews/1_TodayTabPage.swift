@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import EnkaKit
 import SwiftUI
 
 @MainActor
@@ -23,9 +24,12 @@ struct TodayTabPage: View {
                 } header: {
                     Text(verbatim: "该页面待施工")
                 }
+                .listRowMaterialBackground()
             }.formStyle(.grouped)
                 .navigationTitle("tab.today.fullTitle".i18nPZHelper)
                 .listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden)
+                .listContainerBackground()
         }
     }
 }
