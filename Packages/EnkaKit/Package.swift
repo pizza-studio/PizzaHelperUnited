@@ -15,6 +15,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../PZKit"),
+        .package(path: "../WallpaperKit"),
         .package(
             url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "8.2.0")
         ),
@@ -36,6 +37,7 @@ let package = Package(
             dependencies: [
                 .product(name: "PZAccountKit", package: "PZKit"),
                 .product(name: "PZBaseKit", package: "PZKit"),
+                .product(name: "WallpaperKit", package: "WallpaperKit"),
                 .product(name: "EnkaDBFiles", package: "EnkaDBGenerator"),
                 .product(name: "EnkaDBModels", package: "EnkaDBGenerator"),
                 .product(name: "ArtifactRatingDB", package: "ArtifactRatingDB"),

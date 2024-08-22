@@ -5,6 +5,7 @@
 import Defaults
 import Foundation
 import SwiftUI
+import WallpaperKit
 
 // MARK: - EachAvatarStatView
 
@@ -202,13 +203,24 @@ extension Enka.AvatarSummarized {
     }
 
     @ViewBuilder @MainActor
-    public func asBackground() -> some View {
-        mainInfo.idExpressable.localIcon4SUI
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .blur(radius: 60)
-            .saturation(3)
-            .opacity(0.47)
+    public func asBackground(useNameCardBG: Bool = false) -> some View {
+        if useNameCardBG, game == .genshinImpact {
+            let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: id)
+            wallPaper.image4CellphoneWallpaper
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .scaleEffect(1.2)
+                .ignoresSafeArea(.all)
+                .blur(radius: 30)
+                .overlay(Color(UIColor.systemGray6).opacity(0.5))
+        } else {
+            mainInfo.idExpressable.localIcon4SUI
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .blur(radius: 60)
+                .saturation(3)
+                .opacity(0.47)
+        }
     }
 
     @ViewBuilder @MainActor
