@@ -6,6 +6,7 @@ import Defaults
 import Foundation
 import PZBaseKit
 import SwiftUI
+import WallpaperKit
 
 // MARK: - AvatarShowCaseView
 
@@ -75,7 +76,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
         .background {
             ZStack {
                 Color(hue: 0, saturation: 0, brightness: 0.1)
-                avatar?.asBackground()
+                avatar?.asBackground(useNameCardBG: useNameCardBackgrounds)
                     .scaledToFill()
                     .scaleEffect(1.2)
                     .clipped()
@@ -157,16 +158,13 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
     // MARK: Private
 
     private let onClose: (() -> Void)?
-
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-
+    private let bottomSpacerHeight: CGFloat = 20
     @State private var showTabViewIndex = false
-
     @State private var showingCharacterIdentifier: String
-
     @State private var profile: Enka.ProfileSummarized<DBType>
     @State private var orientation = DeviceOrientation()
-    private let bottomSpacerHeight: CGFloat = 20
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @Default(.useNameCardBackgroundsWithGICharacters) private var useNameCardBackgroundsWithGICharacters: Bool
 
     private var avatar: Enka.AvatarSummarized? {
         profile.summarizedAvatars.first(where: { avatar in
@@ -177,6 +175,13 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
     private var scaleRatioCompatible: CGFloat { DeviceOrientation.scaleRatioCompatible }
 
     private var hasNoAvatars: Bool { profile.summarizedAvatars.isEmpty }
+
+    private var useNameCardBackgrounds: Bool {
+        switch profile.game {
+        case .genshinImpact: useNameCardBackgroundsWithGICharacters
+        case .starRail: false
+        }
+    }
 }
 
 extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {

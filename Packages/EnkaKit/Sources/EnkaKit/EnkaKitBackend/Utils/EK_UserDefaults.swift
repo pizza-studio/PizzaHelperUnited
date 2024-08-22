@@ -56,7 +56,14 @@ extension Defaults.Keys {
 
     // MARK: - HSR Suite
 
-    /// Whether displaying character photos in Genshin style.
+    /// 决定是否给原神的角色面板与证件照启用名片背景。
+    public static let useNameCardBackgroundsWithGICharacters = Key<Bool>(
+        "useNameCardBackgroundsWithGICharacters",
+        default: true,
+        suite: .baseSuite
+    )
+
+    /// Whether displaying Star Rail character photos in Genshin style.
     public static let useGenshinStyleCharacterPhotos = Key<Bool>(
         "useGenshinStyleCharacterPhotos",
         default: true,
