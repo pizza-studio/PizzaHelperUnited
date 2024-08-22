@@ -198,7 +198,7 @@ public struct EachAvatarStatView: View {
 
 extension Enka.AvatarSummarized.CharacterID {
     @ViewBuilder @MainActor
-    public func asBackground(useNameCardBG: Bool = false) -> some View {
+    public func asBackground(useNameCardBG: Bool = false, element: Enka.GameElement? = nil) -> some View {
         if useNameCardBG, game == .genshinImpact {
             let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: id)
             wallPaper.image4CellphoneWallpaper
@@ -208,6 +208,16 @@ extension Enka.AvatarSummarized.CharacterID {
                 .ignoresSafeArea(.all)
                 .blur(radius: 30)
                 .overlay(Color(UIColor.systemGray6).opacity(0.5))
+                .apply { content in
+                    if self.isProtagonist, let element {
+                        content
+                            .colorMultiply(element.themeColor.suiColor)
+                            .saturation(0.5)
+                            .brightness(0.1)
+                    } else {
+                        content
+                    }
+                }
         } else {
             localIcon4SUI
                 .resizable()
@@ -248,7 +258,10 @@ extension Enka.AvatarSummarized {
 
     @MainActor
     public func asBackground(useNameCardBG: Bool = false) -> some View {
-        mainInfo.idExpressable.asBackground(useNameCardBG: useNameCardBG)
+        mainInfo.idExpressable.asBackground(
+            useNameCardBG: useNameCardBG,
+            element: mainInfo.element
+        )
     }
 
     @MainActor
