@@ -315,6 +315,35 @@ for charID in allCharIDs {
     matched?.bindedCharID = charID
 }
 
+// MARK: - Add supplemental charIDs for chars with costumes.
+
+let bindedCostumeIDMap: [String: String] = [
+    "210021": "10000003_200301",
+    "210074": "10000014_201401",
+    "210091": "10000027_202701",
+    "210117": "10000042_204201",
+    "210028": "10000016_201601",
+    "210042": "10000031_203101",
+    "210098": "10000002_200201",
+    "210127": "10000006_200601",
+    "210065": "10000029_202901",
+    "210132": "10000015_201501",
+    "210150": "10000063_206301",
+    "210191": "10000025_202501",
+    "210192": "10000037_203701",
+    "210183": "10000070_207001",
+    "210206": "10000061_206101",
+]
+
+assetObjects.forEach { obj in
+    let matched = bindedCostumeIDMap.first { $0.key == obj.id }
+    if let matched {
+        obj.bindedCharID = matched.value
+    }
+}
+
+// MARK: - Write Meta.
+
 try encoder.encode(assetObjects).write(to: URL(fileURLWithPath: path4GIMeta), options: .atomic)
 
 // MARK: - Handle Asset Downloads.
