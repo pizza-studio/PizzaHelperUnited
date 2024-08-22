@@ -45,6 +45,7 @@ public struct AppWallpaperView: View {
                     .scaleEffect(blur ? 1.2 : 0)
                     .ignoresSafeArea(.all)
                     .blur(radius: blur ? blurAmount : 1)
+                    .saturation(blur ? 1.5 : 1)
                     .overlay(Color(UIColor.systemGray6).opacity(0.5))
             case .starRail:
                 rawImage
