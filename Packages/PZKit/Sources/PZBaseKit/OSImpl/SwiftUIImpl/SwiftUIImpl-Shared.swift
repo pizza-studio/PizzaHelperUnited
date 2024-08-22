@@ -108,6 +108,12 @@ extension View {
     public func adjustedBlurMaterialBackground() -> some View {
         modifier(AdjustedBlurMaterialBackground())
     }
+
+    public func listRowMaterialBackground() -> some View {
+        listRowBackground(
+            Color.clear.background(.thinMaterial, in: Rectangle())
+        )
+    }
 }
 
 // MARK: - BlurMaterialBackground
