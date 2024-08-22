@@ -51,6 +51,6 @@ public func simpleTaptic(type: SimpleTapticType) {
         let selectionGenerator = UISelectionFeedbackGenerator()
         selectionGenerator.selectionChanged()
     }
-    print("Taptic Success")
+    print("Taptic Succeeded")
 }
 #endif
