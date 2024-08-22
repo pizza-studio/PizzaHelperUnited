@@ -12,6 +12,38 @@ import WebKit
 
 // MARK: - WebBrowserView
 
+#if os(macOS)
+public struct WebBrowserView: NSViewRepresentable {
+    // MARK: Lifecycle
+
+    public init(url: String) {
+        self.url = url
+    }
+
+    // MARK: Public
+
+    public var url: String = ""
+
+    public func makeNSView(context: Context) -> WKWebView {
+        guard let url = URL(string: url)
+        else {
+            return OPWebView()
+        }
+        let request = URLRequest(url: url)
+        let webview = OPWebView()
+        webview.load(request)
+        return webview
+    }
+
+    public func updateNSView(_ nsView: WKWebView, context: Context) {
+        if let url = URL(string: url) {
+            let request = URLRequest(url: url)
+            nsView.load(request)
+        }
+    }
+}
+
+#elseif os(iOS) || targetEnvironment(macCatalyst)
 public struct WebBrowserView: UIViewRepresentable {
     // MARK: Lifecycle
 
@@ -41,6 +73,7 @@ public struct WebBrowserView: UIViewRepresentable {
         }
     }
 }
+#endif
 
 // MARK: - OPWebView
 
