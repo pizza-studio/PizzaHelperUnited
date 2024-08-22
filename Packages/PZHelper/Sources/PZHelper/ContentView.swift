@@ -48,7 +48,7 @@ public struct ContentView: View {
 
     // MARK: Internal
 
-    @preconcurrency @MainActor
+    @preconcurrency
     enum NavItems: Int, View, CaseIterable, Identifiable {
         case today = 1
         case showcaseDetail = 2
