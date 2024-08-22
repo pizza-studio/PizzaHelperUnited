@@ -151,7 +151,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
             let intel = avatar.mainInfo
             let strLevel = "\(intel.terms.levelName): \(intel.avatarLevel)"
             let strEL = "\(intel.terms.constellationName): \(intel.constellation)"
-            intel.avatarPhoto(
+            intel.idExpressable.avatarPhoto(
                 size: ceil(Font.baseFontSize * 3),
                 circleClipped: true,
                 clipToHead: true
