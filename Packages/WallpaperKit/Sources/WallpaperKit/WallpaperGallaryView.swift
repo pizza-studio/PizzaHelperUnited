@@ -15,7 +15,7 @@ public struct WallpaperGalleryViewContent: View {
 
     // MARK: Public
 
-    public static let navTitle: String = NSLocalizedString("wallpaperGallery.navTitle", bundle: .module, comment: "")
+    public static let navTitle: String = "wallpaperGallery.navTitle".i18nWPKit
 
     public var body: some View {
         GeometryReader { geometry in

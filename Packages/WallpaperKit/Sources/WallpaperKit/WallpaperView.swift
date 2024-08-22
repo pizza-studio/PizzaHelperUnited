@@ -108,11 +108,11 @@ public struct AppWallpaperView: View {
     }
 
     var guardedWallpaper: Wallpaper {
-        wallpaperOverride ?? wallpaper ?? .randomValue(for: appGame ?? .genshinImpact)
+        wallpaperOverride ?? wallpaper
     }
 
     // MARK: Private
 
-    @Default(.background4App) private var wallpaper: Wallpaper?
+    @Default(.background4App) private var wallpaper: Wallpaper
     @Environment(\.colorScheme) private var colorScheme
 }
