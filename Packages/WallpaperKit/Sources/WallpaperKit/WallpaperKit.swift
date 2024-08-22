@@ -9,27 +9,6 @@ import PZBaseKit
 
 public enum Wallpaper {
     public struct WallpaperAsset: Identifiable, Codable {
-        // MARK: Lifecycle
-
-        public init(
-            game: Pizza.SupportedGame,
-            id: String,
-            bindedCharID: String?
-        ) {
-            self.game = game
-            self.id = id
-            self.bindedCharID = bindedCharID
-        }
-
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: Wallpaper.WallpaperAsset.CodingKeys.self)
-            self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
-            self.id = try container.decode(String.self, forKey: .id)
-            self.bindedCharID = try container.decodeIfPresent(String.self, forKey: .bindedCharID)
-        }
-
-        // MARK: Public
-
         public let game: Pizza.SupportedGame
         public let id: String
         public let bindedCharID: String? // 原神专用
@@ -60,14 +39,6 @@ public enum Wallpaper {
             case .genshinImpact: Self.bundledLangDB4GIRealName[id] ?? localizedName
             case .starRail: Self.bundledLangDB4HSR[id] ?? localizedName
             }
-        }
-
-        // MARK: Private
-
-        private enum CodingKeys: CodingKey {
-            case game
-            case id
-            case bindedCharID
         }
     }
 }
