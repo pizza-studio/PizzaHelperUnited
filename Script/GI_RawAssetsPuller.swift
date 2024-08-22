@@ -126,35 +126,57 @@ let bannedFinalFileNames: [String] = [
     "gi_weapon_14306.webp",
 ]
 
-// MARK: - NSImage Extensions
+// MARK: - ImageProcessingError
 
-extension NSImage {
-    @MainActor
-    func asPNGData() throws -> Data {
-        guard let tiffData = tiffRepresentation, let imageRep = NSBitmapImageRep(data: tiffData) else {
-            throw NSError(domain: "ImageConversionError", code: -1, userInfo: nil)
-        }
-        guard let newData = CFDataCreateMutable(kCFAllocatorDefault, 0) else {
-            throw NSError(domain: "CFDataAllocationError", code: -1, userInfo: nil)
-        }
+enum ImageProcessingError: Error {
+    case imageInitializationFailed
+    case bitmapCreationFailed
+    case jpegConversionFailed
+}
 
-        guard let destination = CGImageDestinationCreateWithData(newData, "public.png" as CFString, 1, nil),
-              let cgImage = imageRep.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
-            throw NSError(domain: "HEICConversionError", code: -1, userInfo: nil)
-        }
-
-        let options = [kCGImageDestinationLossyCompressionQuality: 1.0] as CFDictionary
-        CGImageDestinationAddImage(destination, cgImage, options)
-
-        guard CGImageDestinationFinalize(destination) else {
-            throw NSError(domain: "HEICEncodingError", code: -1, userInfo: nil)
-        }
-        return newData as Data
+func reencodePNG(from imageData: Data) throws -> Data {
+    guard let image = NSImage(data: imageData) else {
+        throw ImageProcessingError.imageInitializationFailed
     }
 
-    func saveRaw(to url: URL) throws {
-        try tiffRepresentation?.write(to: url, options: .atomic)
+    // Create a new size for the image
+    let newSize = image.size
+
+    // Create a new bitmap representation for the resized image
+    guard let bitmapRep = NSBitmapImageRep(
+        bitmapDataPlanes: nil,
+        pixelsWide: Int(newSize.width),
+        pixelsHigh: Int(newSize.height),
+        bitsPerSample: 8,
+        samplesPerPixel: 4,
+        hasAlpha: true,
+        isPlanar: false,
+        colorSpaceName: .deviceRGB,
+        bytesPerRow: 0,
+        bitsPerPixel: 0
+    ) else {
+        throw ImageProcessingError.bitmapCreationFailed
     }
+
+    // Draw the image into the new size
+    NSGraphicsContext.saveGraphicsState()
+    NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmapRep)
+    image.draw(
+        in: NSRect(origin: .zero, size: newSize),
+        from: NSRect(origin: .zero, size: image.size),
+        operation: .sourceOver,
+        fraction: 1.0,
+        respectFlipped: false,
+        hints: [.interpolation: NSImageInterpolation.high]
+    )
+    NSGraphicsContext.restoreGraphicsState()
+
+    // Convert the resized image to JPEG data with 82% quality
+    guard let jpegData = bitmapRep.representation(using: .png, properties: [.compressionFactor: 0.82]) else {
+        throw ImageProcessingError.jpegConversionFailed
+    }
+
+    return jpegData
 }
 
 // MARK: - Decoding Strategy for Decoding UpperCamelCases
@@ -447,7 +469,7 @@ print(String(data: try! encoder.encode(urlDict), encoding: .utf8)!)
 // MARK: - Image Data Download
 
 let dataDict = try await withThrowingTaskGroup(
-    of: (String, Data)?.self, returning: [String: NSImage].self
+    of: (String, Data)?.self, returning: [String: Data].self
 ) { taskGroup in
     urlDict.forEach { fileNameStem, urlString in
         taskGroup.addTask {
@@ -456,10 +478,10 @@ let dataDict = try await withThrowingTaskGroup(
         }
     }
 
-    var newDict = [String: NSImage]()
+    var newDict = [String: Data]()
     for try await result in taskGroup {
-        guard let result = result, let image = NSImage(data: result.1) else { continue }
-        newDict[result.0] = image
+        guard let result = result else { continue }
+        newDict[result.0] = result.1
     }
     return newDict
 }
@@ -476,12 +498,12 @@ do {
         attributes: nil
     )
 
-    for (fileNameStem, nsImage) in dataDict {
+    for (fileNameStem, data) in dataDict {
         let newURL = URL(fileURLWithPath: workSpaceDirPath + "/\(fileNameStem)")
         if fileNameStem.hasSuffix("png") {
-            try nsImage.asPNGData().write(to: newURL, options: .atomic)
+            try reencodePNG(from: data).write(to: newURL, options: .atomic)
         } else {
-            try nsImage.saveRaw(to: newURL)
+            try data.write(to: newURL, options: .atomic)
         }
     }
 
