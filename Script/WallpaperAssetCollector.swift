@@ -170,8 +170,8 @@ public class WallpaperAsset: Identifiable, Encodable {
         try container.encode(game, forKey: .game)
         try container.encode(id, forKey: .id)
         // try container.encode(nameTextMapHash, forKey: .nameTextMapHash)
-        try container.encode(assetName, forKey: .assetName)
-        try container.encode(assetName4LiveActivity, forKey: .assetName4LiveActivity)
+        // try container.encode(assetName, forKey: .assetName)
+        // try container.encode(assetName4LiveActivity, forKey: .assetName4LiveActivity)
         if bindedCharID != nil {
             try container.encode(bindedCharID, forKey: .bindedCharID)
         }
