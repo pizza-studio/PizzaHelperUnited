@@ -43,9 +43,6 @@ struct PhotoSpecimenView: View {
                     }
                     .padding(4)
                     .pickerStyle(.segmented)
-                    .onChange(of: game, initial: true) {
-                        print("Action")
-                    }
                 }
             }
             .navigationTitle("enka.photoSpecimen.navTitle".i18nEnka)
