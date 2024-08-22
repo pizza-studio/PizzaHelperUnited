@@ -70,32 +70,10 @@ extension Defaults.Keys {
         suite: .baseSuite
     )
 
-    /// Whether displaying real names for certain characters, not affecting SRGF imports & exports.
-    public static let useRealCharacterNames = Key<Bool>(
-        "useRealCharacterNames",
-        default: true,
-        suite: .baseSuite
-    )
-
     /// Artifact rating preferences for Genshin Impact.
     public static let artifactRatingRules = Key<ArtifactRating.Rules>(
         "artifactRatingRules",
         default: .allEnabled,
-        suite: .baseSuite
-    )
-
-    /// User-Specified Wanderer's name.
-    public static let customizedNameForWanderer = Key<String>(
-        "customizedNameForWanderer",
-        default: .init(),
-        suite: .baseSuite
-    )
-
-    /// 是否强制修复指定语言下的某些角色跟物品的名称用字。
-    /// 该选项仅对中文介面可见。
-    public static let forceCharacterWeaponNameFixed = Key<Bool>(
-        "forceCharacterWeaponNameFixed",
-        default: true,
         suite: .baseSuite
     )
 }
