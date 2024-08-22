@@ -92,8 +92,8 @@ extension Wallpaper {
     public static func defaultValue(for game: Pizza.SupportedGame) -> Self {
         let allCases = allCases(for: game)
         return switch game {
-        case .genshinImpact: allCases.first { $0.id == "210042" }!
-        case .starRail: allCases.first { $0.id == "221005" }!
+        case .genshinImpact: allCases.first { $0.id == "210018" }!
+        case .starRail: allCases.first { $0.id == "221000" }!
         }
     }
 
