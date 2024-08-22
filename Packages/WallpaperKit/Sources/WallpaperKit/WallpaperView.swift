@@ -36,34 +36,19 @@ public struct AppWallpaperView: View {
     // MARK: Public
 
     public var body: some View {
-        Group {
-            switch guardedWallpaper.game {
-            case .genshinImpact:
-                rawImage
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .scaleEffect(blur ? 1.2 : 0)
-                    .ignoresSafeArea(.all)
-                    .blur(radius: blur ? blurAmount : 1)
-                    .saturation(blur ? 1.5 : 1)
-                    .overlay(colorSystemGray6.opacity(0.5))
-            case .starRail:
-                rawImage
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .scaledToFill()
-                    .scaleEffect(blur ? 1.2 : 0)
-                    .blur(radius: blur ? blurAmount : 0)
-                    .ignoresSafeArea(.all)
-                    .saturation(blur ? 1.5 : 1)
-                    .overlay {
-                        if blur {
-                            overlayContent4Blur
-                        }
-                    }
+        rawImage
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .scaleEffect(blur ? 1.2 : 0)
+            .blur(radius: blur ? blurAmount : 0)
+            .saturation(blur ? 1.5 : 1)
+            .overlay {
+                if blur {
+                    overlayContent4Blur
+                }
             }
-        }
-        .compositingGroup()
+            .ignoresSafeArea(.all)
+            .compositingGroup()
     }
 
     // MARK: Internal
