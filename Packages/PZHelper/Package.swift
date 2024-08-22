@@ -23,6 +23,7 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(path: "../WallpaperKit"),
         .package(path: "../EnkaKit"),
         .package(path: "../GachaKit"),
         .package(path: "../PZKit"),
@@ -36,6 +37,7 @@ let package = Package(
                 .product(name: "PizzaKit", package: "PZKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "GachaKit", package: "GachaKit"),
+                .product(name: "WallpaperKit", package: "WallpaperKit"),
             ],
             swiftSettings: sharedSwiftSettings
         ),

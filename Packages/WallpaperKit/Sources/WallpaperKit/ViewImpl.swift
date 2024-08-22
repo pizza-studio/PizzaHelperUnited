@@ -3,7 +3,6 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import SwiftUI
-import WallpaperKit
 
 // MARK: - NavigationBackground
 
@@ -13,12 +12,5 @@ extension View {
         background(alignment: .topTrailing) {
             AppWallpaperView(forLiveActivity: false, blur: true)
         }
-    }
-
-    @inlinable
-    public func listRowMaterialBackground() -> some View {
-        listRowBackground(
-            Color.clear.background(.thinMaterial, in: Rectangle())
-        )
     }
 }
