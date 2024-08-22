@@ -98,9 +98,12 @@ struct DetailPortalTabPage: View {
                 }
             }
             .background {
-                Circle()
-                    .strokeBorder(Color.accentColor, lineWidth: 8)
-                    .frame(width: dimension, height: dimension)
+                // Compiler optimization.
+                AnyView(erasing: {
+                    Circle()
+                        .strokeBorder(Color.accentColor, lineWidth: 8)
+                        .frame(width: dimension, height: dimension)
+                }())
             }
             .frame(width: dimension, height: dimension)
             .clipShape(.circle)
