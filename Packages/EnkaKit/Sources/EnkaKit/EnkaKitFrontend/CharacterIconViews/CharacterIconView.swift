@@ -180,7 +180,7 @@ public struct CharacterIconView: View {
     // MARK: Private
 
     @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleIcon: Bool
-    @Default(.useNameCardBackgroundsWithGICharacters) private var useNameCardBackgroundsWithGICharacters: Bool
+    @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
 
     private let isCard: Bool
     private let charID: String
@@ -212,7 +212,7 @@ public struct CharacterIconView: View {
 
     private var useNameCardBackgrounds: Bool {
         switch game {
-        case .genshinImpact: useNameCardBackgroundsWithGICharacters
+        case .genshinImpact: useNameCardBGWithGICharacters
         case .starRail: false
         }
     }
