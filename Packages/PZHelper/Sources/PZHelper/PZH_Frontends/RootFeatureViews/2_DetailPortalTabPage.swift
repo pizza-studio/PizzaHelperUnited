@@ -55,21 +55,24 @@ struct DetailPortalTabPage: View {
                 broadcaster.refreshPage()
             }
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
-            .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
-                ShowCaseListView(
-                    profile: result,
-                    enkaDB: sharedDB.db4GI
-                )
-                .scrollContentBackground(.hidden)
-                .listContainerBackground()
-            }
-            .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
-                ShowCaseListView(
-                    profile: result,
-                    enkaDB: sharedDB.db4HSR
-                )
-                .scrollContentBackground(.hidden)
-                .listContainerBackground()
+            .apply { theContent in
+                theContent
+                    .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
+                        ShowCaseListView(
+                            profile: result,
+                            enkaDB: sharedDB.db4GI
+                        )
+                        .scrollContentBackground(.hidden)
+                        .listContainerBackground()
+                    }
+                    .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
+                        ShowCaseListView(
+                            profile: result,
+                            enkaDB: sharedDB.db4HSR
+                        )
+                        .scrollContentBackground(.hidden)
+                        .listContainerBackground()
+                    }
             }
             .toolbar {
                 // if delegate.currentPZProfile == nil, !profiles.isEmpty {
@@ -77,6 +80,11 @@ struct DetailPortalTabPage: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         accountSwitcherMenu()
                     }
+                }
+            }
+            .onChange(of: delegate.currentPZProfile) { oldValue, newValue in
+                if oldValue != newValue {
+                    ViewEventBroadcaster.shared.stopRootTabTasks()
                 }
             }
         }
