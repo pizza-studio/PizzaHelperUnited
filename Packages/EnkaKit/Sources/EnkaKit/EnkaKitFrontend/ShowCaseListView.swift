@@ -78,8 +78,10 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
     @ViewBuilder var showAsList: some View {
         List {
             listHeader
+                .listRowMaterialBackground()
             if profile.summarizedAvatars.isEmpty {
                 ShowCaseEmptyInfoView(game: profile.game)
+                    .listRowMaterialBackground()
             } else {
                 Section {
                     ForEach(profile.summarizedAvatars) { avatar in
@@ -96,6 +98,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                         }
                     }
                 }
+                .listRowMaterialBackground()
             }
         }
         .navigationTitle(Text(verbatim: "\(profile.rawInfo.nickname) (\(profile.uid.description))"))

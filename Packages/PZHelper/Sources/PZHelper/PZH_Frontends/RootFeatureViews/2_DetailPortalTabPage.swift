@@ -25,16 +25,20 @@ struct DetailPortalTabPage: View {
         NavigationStack {
             Form {
                 let query4GI = CaseQuerySection(theDB: sharedDB.db4GI, focus: $uidInputFieldFocus)
+                    .listRowMaterialBackground()
                 let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)
+                    .listRowMaterialBackground()
                 if let profile = delegate.currentPZProfile {
                     switch profile.game {
                     case .genshinImpact:
                         ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile)
+                            .listRowMaterialBackground()
                             .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                             .onTapGesture { uidInputFieldFocus = false }
                         query4GI
                     case .starRail:
                         ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile)
+                            .listRowMaterialBackground()
                             .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                             .onTapGesture { uidInputFieldFocus = false }
                         query4HSR
@@ -45,6 +49,8 @@ struct DetailPortalTabPage: View {
                 }
             }
             .formStyle(.grouped)
+            .scrollContentBackground(.hidden)
+            .listContainerBackground()
             .refreshable {
                 broadcaster.refreshPage()
             }
@@ -54,12 +60,16 @@ struct DetailPortalTabPage: View {
                     profile: result,
                     enkaDB: sharedDB.db4GI
                 )
+                .scrollContentBackground(.hidden)
+                .listContainerBackground()
             }
             .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
                 ShowCaseListView(
                     profile: result,
                     enkaDB: sharedDB.db4HSR
                 )
+                .scrollContentBackground(.hidden)
+                .listContainerBackground()
             }
             .toolbar {
                 // if delegate.currentPZProfile == nil, !profiles.isEmpty {
@@ -70,6 +80,41 @@ struct DetailPortalTabPage: View {
                 }
             }
         }
+    }
+
+    @ViewBuilder @MainActor var accountSwitcherMenuLabel: some View {
+        LabeledContent {
+            let dimension: CGFloat = 30
+            Group {
+                if let profile: PZProfileMO = delegate.currentPZProfile {
+                    Enka.ProfileIconView(uid: profile.uid, game: profile.game)
+                        .frame(width: dimension)
+                } else {
+                    Image(systemSymbol: .personCircleFill)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: dimension - 8)
+                        .foregroundStyle(Color.accentColor)
+                }
+            }
+            .background {
+                Circle()
+                    .strokeBorder(Color.accentColor, lineWidth: 8)
+                    .frame(width: dimension, height: dimension)
+            }
+            .frame(width: dimension, height: dimension)
+            .clipShape(.circle)
+            .compositingGroup()
+        } label: {
+            if let profile: PZProfileMO = delegate.currentPZProfile {
+                Text(profile.uidWithGame)
+            } else {
+                Text("dpv.query.menuCommandTitle".i18nPZHelper)
+            }
+        }
+        .padding(4).padding(.leading, 12)
+        .blurMaterialBackground()
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
     @ViewBuilder
@@ -100,38 +145,7 @@ struct DetailPortalTabPage: View {
                 }
             }
         } label: {
-            LabeledContent {
-                let dimension: CGFloat = 30
-                Group {
-                    if let profile = delegate.currentPZProfile {
-                        Enka.ProfileIconView(uid: profile.uid, game: profile.game)
-                            .frame(width: dimension)
-                    } else {
-                        Image(systemSymbol: .personCircleFill)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: dimension - 8)
-                            .foregroundStyle(Color.accentColor)
-                    }
-                }
-                .background {
-                    Circle()
-                        .strokeBorder(Color.accentColor, lineWidth: 8)
-                        .frame(width: dimension, height: dimension)
-                }
-                .frame(width: dimension, height: dimension)
-                .clipShape(.circle)
-                .compositingGroup()
-            } label: {
-                if let profile = delegate.currentPZProfile {
-                    Text(profile.uidWithGame)
-                } else {
-                    Text("dpv.query.menuCommandTitle".i18nPZHelper)
-                }
-            }
-            .padding(4).padding(.leading, 12)
-            .blurMaterialBackground()
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            accountSwitcherMenuLabel
         }
     }
 
