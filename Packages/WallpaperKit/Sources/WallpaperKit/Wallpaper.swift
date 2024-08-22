@@ -1,5 +1,6 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Defaults
 import Foundation
@@ -9,13 +10,13 @@ extension Defaults.Keys {
     // Background wallpaper for live activity view. Nulled value means random value.
     public static let background4LiveActivity = Key<Wallpaper?>(
         "background4LiveActivity",
-        default: Wallpaper.defaultValue(for: .genshinImpact),
+        default: Wallpaper.defaultValue(for: appGame ?? .genshinImpact),
         suite: .baseSuite
     )
     // Background wallpaper for app view. Nulled value means random value.
     public static let background4App = Key<Wallpaper?>(
         "background4App",
-        default: Wallpaper.defaultValue(for: .genshinImpact),
+        default: Wallpaper.defaultValue(for: appGame ?? .genshinImpact),
         suite: .baseSuite
     )
 }
