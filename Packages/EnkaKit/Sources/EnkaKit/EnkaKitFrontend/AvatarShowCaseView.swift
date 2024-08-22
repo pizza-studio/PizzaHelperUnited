@@ -164,7 +164,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
     @State private var profile: Enka.ProfileSummarized<DBType>
     @State private var orientation = DeviceOrientation()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    @Default(.useNameCardBackgroundsWithGICharacters) private var useNameCardBackgroundsWithGICharacters: Bool
+    @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
 
     private var avatar: Enka.AvatarSummarized? {
         profile.summarizedAvatars.first(where: { avatar in
@@ -178,7 +178,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
 
     private var useNameCardBackgrounds: Bool {
         switch profile.game {
-        case .genshinImpact: useNameCardBackgroundsWithGICharacters
+        case .genshinImpact: useNameCardBGWithGICharacters
         case .starRail: false
         }
     }

@@ -57,8 +57,8 @@ extension Defaults.Keys {
     // MARK: - HSR Suite
 
     /// 决定是否给原神的角色面板与证件照启用名片背景。
-    public static let useNameCardBackgroundsWithGICharacters = Key<Bool>(
-        "useNameCardBackgroundsWithGICharacters",
+    public static let useNameCardBGWithGICharacters = Key<Bool>(
+        "useNameCardBGWithGICharacters",
         default: true,
         suite: .baseSuite
     )

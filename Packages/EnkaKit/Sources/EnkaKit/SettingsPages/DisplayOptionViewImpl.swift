@@ -78,6 +78,9 @@ extension Enka {
                         .font(.footnote).foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                Toggle(isOn: $useNameCardBGWithGICharacters) {
+                    Text("settings.display.showCase.useNameCardBGWithGICharacters".i18nEnka)
+                }
                 VStack {
                     Toggle(isOn: $useGenshinStyleCharacterPhotos) {
                         Text("settings.display.showCase.useGenshinStyleCharacterPhotos".i18nEnka)
@@ -153,6 +156,7 @@ extension Enka {
 
         // MARK: Private
 
+        @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
         @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleCharacterPhotos: Bool
         @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
         @Default(.artifactRatingRules) private var artifactRatingRules: ArtifactRating.Rules

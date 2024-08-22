@@ -928,6 +928,35 @@
         }
       }
     },
+    "settings.display.showCase.useNameCardBGWithGICharacters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原神のキャラクターの画像とビルド画面には名刺背景を起用"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "针对原神角色的证件照与面板启用名片背景"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "針對原神角色的證件照與面板啟用名片背景"
+          }
+        }
+      }
+    },
     "settings.display.showCase.useRealCharacterNames" : {
       "localizations" : {
         "en" : {
