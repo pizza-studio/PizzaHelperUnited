@@ -24,29 +24,7 @@ struct DetailPortalTabPage: View {
     var body: some View {
         NavigationStack {
             Form {
-                let query4GI = CaseQuerySection(theDB: sharedDB.db4GI, focus: $uidInputFieldFocus)
-                    .listRowMaterialBackground()
-                let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)
-                    .listRowMaterialBackground()
-                if let profile = delegate.currentPZProfile {
-                    switch profile.game {
-                    case .genshinImpact:
-                        ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile)
-                            .listRowMaterialBackground()
-                            .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
-                            .onTapGesture { uidInputFieldFocus = false }
-                        query4GI
-                    case .starRail:
-                        ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile)
-                            .listRowMaterialBackground()
-                            .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
-                            .onTapGesture { uidInputFieldFocus = false }
-                        query4HSR
-                    }
-                } else {
-                    query4GI
-                    query4HSR
-                }
+                formContent
             }
             .formStyle(.grouped)
             .scrollContentBackground(.hidden)
@@ -55,38 +33,62 @@ struct DetailPortalTabPage: View {
                 broadcaster.refreshPage()
             }
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
-            .apply { theContent in
-                theContent
-                    .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
-                        ShowCaseListView(
-                            profile: result,
-                            enkaDB: sharedDB.db4GI
-                        )
-                        .scrollContentBackground(.hidden)
-                        .listContainerBackground()
-                    }
-                    .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
-                        ShowCaseListView(
-                            profile: result,
-                            enkaDB: sharedDB.db4HSR
-                        )
-                        .scrollContentBackground(.hidden)
-                        .listContainerBackground()
-                    }
-            }
             .toolbar {
-                // if delegate.currentPZProfile == nil, !profiles.isEmpty {
-                if !profiles.isEmpty {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        accountSwitcherMenu()
+                Group {
+                    if !profiles.isEmpty {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            accountSwitcherMenu()
+                        }
                     }
                 }
+            }
+            .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
+                ShowCaseListView(
+                    profile: result,
+                    enkaDB: sharedDB.db4GI
+                )
+                .scrollContentBackground(.hidden)
+                .listContainerBackground()
+            }
+            .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
+                ShowCaseListView(
+                    profile: result,
+                    enkaDB: sharedDB.db4HSR
+                )
+                .scrollContentBackground(.hidden)
+                .listContainerBackground()
             }
             .onChange(of: delegate.currentPZProfile) { oldValue, newValue in
                 if oldValue != newValue {
                     ViewEventBroadcaster.shared.stopRootTabTasks()
                 }
             }
+        }
+    }
+
+    @ViewBuilder @MainActor var formContent: some View {
+        let query4GI = CaseQuerySection(theDB: sharedDB.db4GI, focus: $uidInputFieldFocus)
+            .listRowMaterialBackground()
+        let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)
+            .listRowMaterialBackground()
+        if let profile = delegate.currentPZProfile {
+            switch profile.game {
+            case .genshinImpact:
+                ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile)
+                    .listRowMaterialBackground()
+                    .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
+                    .onTapGesture { uidInputFieldFocus = false }
+                query4GI
+            case .starRail:
+                ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile)
+                    .listRowMaterialBackground()
+                    .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
+                    .onTapGesture { uidInputFieldFocus = false }
+                query4HSR
+            }
+        } else {
+            query4GI
+            query4HSR
         }
     }
 
