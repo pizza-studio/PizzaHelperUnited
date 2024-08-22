@@ -10,13 +10,13 @@ extension Defaults.Keys {
     // Background wallpaper for live activity view. Nulled value means random value.
     public static let background4LiveActivity = Key<Wallpaper?>(
         "background4LiveActivity",
-        default: Wallpaper.defaultValue(for: appGame ?? .genshinImpact),
+        default: Wallpaper.defaultValue(for: appGame ?? .starRail),
         suite: .baseSuite
     )
-    // Background wallpaper for app view. Nulled value means random value.
-    public static let background4App = Key<Wallpaper?>(
+    // Background wallpaper for app view.
+    public static let background4App = Key<Wallpaper>(
         "background4App",
-        default: Wallpaper.defaultValue(for: appGame ?? .genshinImpact),
+        default: Wallpaper.defaultValue(for: appGame ?? .starRail),
         suite: .baseSuite
     )
 }
@@ -117,6 +117,14 @@ extension Wallpaper {
         assetCharMap4GI[charID]
             ?? assetCharMap4GI[charID.prefix(8).description]
             ?? Wallpaper.defaultValue(for: .genshinImpact)
+    }
+
+    public static var allCases: [Self] {
+        switch appGame {
+        case .genshinImpact: allCases4GI
+        case .starRail: allCases4HSR
+        case .none: allCases4HSR + allCases4GI
+        }
     }
 
     public static let allCases4HSR: [Self] = {

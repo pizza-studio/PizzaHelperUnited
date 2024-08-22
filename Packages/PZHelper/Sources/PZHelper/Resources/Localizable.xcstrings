@@ -1762,6 +1762,35 @@
         }
       }
     },
+    "settings.display.generalSettings.sectionHeader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通用设定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通用設定"
+          }
+        }
+      }
+    },
     "settings.requireLoginView.loginViaMiyousheOrHoyoLab" : {
       "comment" : "Add account",
       "localizations" : {

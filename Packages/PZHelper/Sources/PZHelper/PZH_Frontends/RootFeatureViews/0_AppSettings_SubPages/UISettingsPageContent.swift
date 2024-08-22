@@ -2,8 +2,10 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import EnkaKit
 import SwiftUI
+import WallpaperKit
 
 // MARK: - UISettingsPageContent
 
@@ -13,6 +15,12 @@ struct UISettingsPageContent: View {
 
     var body: some View {
         Form {
+            Section {
+                AppWallpaperSettingsPicker()
+            } header: {
+                Text("settings.display.generalSettings.sectionHeader".i18nPZHelper)
+            }
+
             Enka.DisplayOptionViewContents()
         }
         .formStyle(.grouped)
@@ -22,4 +30,5 @@ struct UISettingsPageContent: View {
     // MARK: Private
 
     @State private var sharedDB = Enka.Sputnik.shared
+    @Default(.background4App) private var background4App: Wallpaper
 }
