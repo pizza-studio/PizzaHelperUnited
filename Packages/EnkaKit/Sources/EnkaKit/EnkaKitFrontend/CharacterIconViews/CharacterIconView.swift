@@ -4,6 +4,7 @@
 
 import Defaults
 import SwiftUI
+import WallpaperKit
 
 // MARK: - CharacterIconView
 
@@ -179,6 +180,7 @@ public struct CharacterIconView: View {
     // MARK: Private
 
     @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleIcon: Bool
+    @Default(.useNameCardBackgroundsWithGICharacters) private var useNameCardBackgroundsWithGICharacters: Bool
 
     private let isCard: Bool
     private let charID: String
@@ -208,6 +210,13 @@ public struct CharacterIconView: View {
         }
     }
 
+    private var useNameCardBackgrounds: Bool {
+        switch game {
+        case .genshinImpact: useNameCardBackgroundsWithGICharacters
+        case .starRail: false
+        }
+    }
+
     @ViewBuilder private var blankQuestionedView: some View {
         Circle().background(.gray).overlay {
             Text(verbatim: "?").foregroundStyle(.white).fontWeight(.black)
@@ -215,6 +224,25 @@ public struct CharacterIconView: View {
             .clipShape(RoundedRectangle(cornerRadius: size / 10))
             .contentShape(RoundedRectangle(cornerRadius: size / 10))
             .compositingGroup()
+    }
+
+    @ViewBuilder private var namecardBg4GI: some View {
+        let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: charID)
+        wallPaper.image4CellphoneWallpaper
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .offset(x: size / -3)
+            .apply { content in
+                let isProtagonist: Bool = ["10000005", "10000007"].contains(charID.prefix(8))
+                if isProtagonist, let element = guessGenshinCharacterElement(id: charID) {
+                    content
+                        .colorMultiply(element.themeColor.suiColor)
+                        .saturation(0.5)
+                        .brightness(0.1)
+                } else {
+                    content
+                }
+            }
     }
 
     private func guessGenshinCharacterElement(id: String) -> Enka.GameElement? {
@@ -233,20 +261,24 @@ public struct CharacterIconView: View {
     @ViewBuilder
     private func turnImageAsBlurredBackground4GI(_ image: Image) -> some View {
         ZStack {
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .rotationEffect(.degrees(180))
-                .blur(radius: 6)
-                .scaleEffect(5, anchor: .center)
-            Color.black.opacity(0.265)
-            if cutType.pathTotemVisible, let element = guessGenshinCharacterElement(id: charID) {
-                element.localFittingIcon4SUI
-                    .scaleEffect(1.5)
-                    .colorMultiply(Color(cgColor: element.themeColor))
-                    .saturation(0.5)
-                    .brightness(0.7)
-                    .opacity(0.3)
+            if useNameCardBackgrounds {
+                namecardBg4GI
+            } else {
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .rotationEffect(.degrees(180))
+                    .blur(radius: 6)
+                    .scaleEffect(5, anchor: .center)
+                Color.black.opacity(0.265)
+                if cutType.pathTotemVisible, let element = guessGenshinCharacterElement(id: charID) {
+                    element.localFittingIcon4SUI
+                        .scaleEffect(1.5)
+                        .colorMultiply(Color(cgColor: element.themeColor))
+                        .saturation(0.5)
+                        .brightness(0.7)
+                        .opacity(0.3)
+                }
             }
         }
     }
