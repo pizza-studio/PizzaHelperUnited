@@ -78,6 +78,13 @@ extension Enka.AvatarSummarized {
         public let iconAssetName: String
         public let iconOnlineFileNameStem: String
 
+        public var isProtagonist: Bool {
+            switch nameObj {
+            case .protagonist: true
+            case .someoneElse: false
+            }
+        }
+
         public var game: Enka.GameType {
             nameObj.game
         }

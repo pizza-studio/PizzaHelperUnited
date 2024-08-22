@@ -196,12 +196,7 @@ public struct EachAvatarStatView: View {
     }
 }
 
-extension Enka.AvatarSummarized {
-    @MainActor
-    public func asView(background: Bool = false) -> EachAvatarStatView {
-        .init(data: self, background: background)
-    }
-
+extension Enka.AvatarSummarized.CharacterID {
     @ViewBuilder @MainActor
     public func asBackground(useNameCardBG: Bool = false) -> some View {
         if useNameCardBG, game == .genshinImpact {
@@ -214,7 +209,7 @@ extension Enka.AvatarSummarized {
                 .blur(radius: 30)
                 .overlay(Color(UIColor.systemGray6).opacity(0.5))
         } else {
-            mainInfo.idExpressable.localIcon4SUI
+            localIcon4SUI
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .blur(radius: 60)
@@ -225,7 +220,7 @@ extension Enka.AvatarSummarized {
 
     @ViewBuilder @MainActor
     public func asPortrait() -> some View {
-        mainInfo.idExpressable.localIcon4SUI
+        localIcon4SUI
             .resizable()
             .aspectRatio(contentMode: .fit)
             .background {
@@ -233,32 +228,47 @@ extension Enka.AvatarSummarized {
             }
     }
 
-    /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
-    @ViewBuilder @MainActor
-    public func asCardIcon(
-        _ size: CGFloat
-    )
-        -> some View {
-        mainInfo.cardIcon(size: size)
-    }
-}
-
-extension Enka.AvatarSummarized.AvatarMainInfo {
     @ViewBuilder @MainActor
     public func avatarPhoto(size: CGFloat, circleClipped: Bool = true, clipToHead: Bool = false) -> some View {
-        CharacterIconView(charID: idExpressable.id, size: size, circleClipped: circleClipped, clipToHead: clipToHead)
+        CharacterIconView(charID: id, size: size, circleClipped: circleClipped, clipToHead: clipToHead)
     }
 
     /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
     @ViewBuilder @MainActor
     public func cardIcon(size: CGFloat) -> some View {
-        CharacterIconView(charID: idExpressable.id, cardSize: size)
+        CharacterIconView(charID: id, cardSize: size)
+    }
+}
+
+extension Enka.AvatarSummarized {
+    @MainActor
+    public func asView(background: Bool = false) -> EachAvatarStatView {
+        .init(data: self, background: background)
     }
 
+    @MainActor
+    public func asBackground(useNameCardBG: Bool = false) -> some View {
+        mainInfo.idExpressable.asBackground(useNameCardBG: useNameCardBG)
+    }
+
+    @MainActor
+    public func asPortrait() -> some View {
+        mainInfo.idExpressable.asPortrait()
+    }
+
+    /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
+    @MainActor
+    public func asCardIcon(_ size: CGFloat)
+        -> some View {
+        mainInfo.idExpressable.cardIcon(size: size)
+    }
+}
+
+extension Enka.AvatarSummarized.AvatarMainInfo {
     @ViewBuilder @MainActor
     public func asView(fontSize: CGFloat) -> some View {
         HStack(alignment: .bottom, spacing: fontSize * 0.55) {
-            avatarPhoto(size: fontSize * 5)
+            idExpressable.avatarPhoto(size: fontSize * 5)
             LazyVStack(spacing: 0) {
                 HStack(alignment: .bottom) {
                     Text(name)
