@@ -90,7 +90,7 @@ struct DetailPortalTabPage: View {
                 }
             }
             Divider()
-            ForEach(profiles) { enumeratedProfile in
+            ForEach(sortedProfiles) { enumeratedProfile in
                 Button {
                     withAnimation {
                         delegate.currentPZProfile = enumeratedProfile
@@ -145,6 +145,10 @@ struct DetailPortalTabPage: View {
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
     @Default(.queriedEnkaProfiles4GI) private var profiles4GI
     @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
+
+    private var sortedProfiles: [PZProfileMO] {
+        profiles.sorted { $0.priority < $1.priority }
+    }
 }
 
 // MARK: DetailPortalTabPage.Coordinator
@@ -157,6 +161,7 @@ extension DetailPortalTabPage {
         public init() {
             let pzProfiles = try? PersistenceController.shared.modelContainer
                 .mainContext.fetch(FetchDescriptor<PZProfileMO>())
+                .sorted { $0.priority < $1.priority }
             self.currentPZProfile = pzProfiles?.first
         }
 
