@@ -8,11 +8,15 @@ import Foundation
 public let sharedBundleIDHeader = "Canglong.GenshinPizzaHepler"
 public let appGroupID = "group.GenshinPizzaHelper"
 public let iCloudContainerName: String = "iCloud.com.Canglong.GenshinPizzaHepler"
+public let appGame: Pizza.SupportedGame? = .genshinImpact
 #elseif PizzaHelper4HSR
 public let sharedBundleIDHeader = "Canglong.HSRPizzaHelper"
 public let appGroupID = "group.Canglong.HSRPizzaHelper"
 public let iCloudContainerName: String = "iCloud.com.Canglong.HSRPizzaHelper"
+public let appGame: Pizza.SupportedGame? = .starRail
 #else
+public let appGame: Pizza.SupportedGame? = .none
+
 public let sharedBundleIDHeader: String = {
     switch Bundle.main.bundleIdentifier {
     case "Canglong.GenshinPizzaHepler": return "Canglong.GenshinPizzaHepler"
