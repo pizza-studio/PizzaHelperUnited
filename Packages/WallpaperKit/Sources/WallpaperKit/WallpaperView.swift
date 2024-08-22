@@ -46,7 +46,7 @@ public struct AppWallpaperView: View {
                     .ignoresSafeArea(.all)
                     .blur(radius: blur ? blurAmount : 1)
                     .saturation(blur ? 1.5 : 1)
-                    .overlay(Color(UIColor.systemGray6).opacity(0.5))
+                    .overlay(colorSystemGray6.opacity(0.5))
             case .starRail:
                 rawImage
                     .resizable()
@@ -81,9 +81,25 @@ public struct AppWallpaperView: View {
 
     @ViewBuilder var overlayContent4Blur: some View {
         switch guardedWallpaper.game {
-        case .genshinImpact: Color(uiColor: .systemGray6).opacity(0.5)
-        case .starRail: Color(uiColor: .systemBackground).opacity(0.3).blendMode(.hardLight)
+        case .genshinImpact: colorSystemGray6.opacity(0.5)
+        case .starRail: colorSysBackground.opacity(0.3).blendMode(.hardLight)
         }
+    }
+
+    var colorSystemGray6: Color {
+        #if os(OSX)
+        Color(nsColor: .systemGray).opacity(0.3333)
+        #else
+        Color(uiColor: .systemGray6)
+        #endif
+    }
+
+    var colorSysBackground: Color {
+        #if os(OSX)
+        Color(nsColor: .textBackgroundColor).opacity(0.3333)
+        #else
+        Color(uiColor: .systemBackground)
+        #endif
     }
 
     var rawImage: Image {
@@ -98,4 +114,5 @@ public struct AppWallpaperView: View {
     // MARK: Private
 
     @Default(.background4App) private var wallpaper: Wallpaper?
+    @Environment(\.colorScheme) private var colorScheme
 }

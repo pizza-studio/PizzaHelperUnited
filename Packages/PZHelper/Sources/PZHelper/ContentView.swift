@@ -93,7 +93,7 @@ public struct ContentView: View {
             #if DEBUG
             [1, 2, 3, 0]
             #else
-            [2, 0]
+            [2, 3, 0]
             #endif
         }
 

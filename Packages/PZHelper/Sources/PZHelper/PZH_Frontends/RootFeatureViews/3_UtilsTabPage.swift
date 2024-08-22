@@ -4,21 +4,28 @@
 
 import GachaKit
 import SwiftUI
+import WallpaperKit
 
 @MainActor
 struct UtilsTabPage: View {
     // MARK: Internal
 
     enum Nav {
+        case wallpaperGallery
         case gachaCloudDebug
     }
 
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
+                NavigationLink(value: Nav.wallpaperGallery) {
+                    Label(WallpaperGalleryViewContent.navTitle, systemSymbol: .photoOnRectangleAngled)
+                }
+                #if DEBUG
                 NavigationLink(value: Nav.gachaCloudDebug) {
                     Label("# Gacha Cloud Debug".i18nPZHelper, systemSymbol: .cloudFogFill)
                 }
+                #endif
             }
             .listStyle(.insetGrouped)
             .navigationTitle("tab.utils.fullTitle".i18nPZHelper)
@@ -35,6 +42,7 @@ struct UtilsTabPage: View {
     private func navigationDetail(selection: Binding<Nav?>) -> some View {
         NavigationStack {
             switch selection.wrappedValue {
+            case .wallpaperGallery: WallpaperGalleryViewContent()
             case .gachaCloudDebug: GachaMODebugView()
             case .none: GachaMODebugView()
             }

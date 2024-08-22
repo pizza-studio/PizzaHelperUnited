@@ -23,7 +23,7 @@ extension Defaults.Keys {
 
 // MARK: - Wallpaper
 
-public struct Wallpaper: Identifiable, Codable {
+public struct Wallpaper: Identifiable, Codable, Hashable {
     public let game: Pizza.SupportedGame
     public let id: String
     public let bindedCharID: String? // 原神专用
@@ -130,7 +130,9 @@ extension Wallpaper {
                 )
             )
         }
-        return results
+        return results.sorted {
+            $0.id < $1.id
+        }
     }()
 
     public static let allCases4GI: [Self] = {
