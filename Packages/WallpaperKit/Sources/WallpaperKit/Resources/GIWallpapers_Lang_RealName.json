@@ -1,0 +1,77 @@
+{
+  "de" : {
+    "210082" : "Naganohara Yoimiya – Auratus-Funken",
+    "210143" : "Raiden Kunikuzushi – Ballade des Herumtreibers",
+    "210195" : "Peruere – Edikt"
+  },
+  "en" : {
+    "210082" : "Naganohara Yoimiya: Auratus Spark",
+    "210143" : "Raiden Kunikuzushi: Drifter's Ballad",
+    "210195" : "Peruere: Edict"
+  },
+  "es" : {
+    "210082" : "Naganohara Yoimiya - Pirotecnia dorada",
+    "210143" : "Raiden Kunikuzushi - Balada a la deriva",
+    "210195" : "Peruere - Ley"
+  },
+  "fr" : {
+    "210082" : "Naganohara Yoimiya - Étincelle dorée",
+    "210143" : "Raiden Kunikuzushi - Ballade d'errance",
+    "210195" : "Peruere - Édit"
+  },
+  "id" : {
+    "210082" : "Naganohara Yoimiya: Auratus Spark",
+    "210143" : "Raiden Kunikuzushi: Drifter's Ballad",
+    "210195" : "Peruere: Edict"
+  },
+  "it" : {
+    "210082" : "Naganohara Yoimiya: Scintilla d'Auratus",
+    "210143" : "Raiden Kunikuzushi: Ballata effimera",
+    "210195" : "Peruere: Editto"
+  },
+  "ja" : {
+    "210082" : "長野原宵宮·琉金の花火",
+    "210143" : "雷電国崩·憂き世の歌",
+    "210195" : "ペルヴェーレ·規則"
+  },
+  "ko" : {
+    "210082" : "나가노하라 요이미야·유금불꽃",
+    "210143" : "라이덴 쿠니쿠즈시·떠도는 자의 노래",
+    "210195" : "페르엘·규칙"
+  },
+  "pt" : {
+    "210082" : "Naganohara Yoimiya: Faísca de Auratus",
+    "210143" : "Raiden Kunikuzushi: Balada Transitória",
+    "210195" : "Peruere: Édito"
+  },
+  "ru" : {
+    "210082" : "Искры золотой рыбки",
+    "210143" : "Баллада скитальца",
+    "210195" : "Правила"
+  },
+  "th" : {
+    "210082" : "Naganohara Yoimiya - ประกายเพลิงเริงระบำ",
+    "210143" : "Raiden Kunikuzushi - บทเพลงลอยล่อง",
+    "210195" : "Peruere - กฎเกณฑ์"
+  },
+  "tr" : {
+    "210082" : "Naganohara Yoimiya: Altın Kıvılcım",
+    "210143" : "Raiden Kunikuzushi: Serseri Şiir",
+    "210195" : "Peruere: Ferman"
+  },
+  "vi" : {
+    "210082" : "Naganohara Yoimiya - Hoa Lửa Kim Lưu",
+    "210143" : "Raiden Kunikuzushi - Phù Ca",
+    "210195" : "Peruere - Sắc Lệnh"
+  },
+  "zh-cn" : {
+    "210082" : "长野原宵宫·琉金火花",
+    "210143" : "雷电国崩·浮歌",
+    "210195" : "佩露薇利·法度"
+  },
+  "zh-tw" : {
+    "210082" : "長野原宵宮·琉金火花",
+    "210143" : "雷電國崩·浮歌",
+    "210195" : "佩露薇利·法度"
+  }
+}
