@@ -209,14 +209,18 @@ extension Enka.AvatarSummarized.CharacterID {
                 .blur(radius: 30)
                 .overlay(Color(UIColor.systemGray6).opacity(0.5))
                 .apply { content in
-                    if self.isProtagonist, let element {
-                        content
-                            .colorMultiply(element.themeColor.suiColor)
-                            .saturation(0.5)
-                            .brightness(0.1)
-                    } else {
-                        content
+                    ZStack {
+                        if self.isProtagonist, let element {
+                            content
+                                .colorMultiply(element.themeColor.suiColor)
+                                .contrast(2)
+                                .saturation(0.3)
+                                .brightness(0.4)
+                        } else {
+                            content
+                        }
                     }
+                    .compositingGroup()
                 }
         } else {
             localIcon4SUI
