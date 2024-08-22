@@ -48,8 +48,8 @@ public struct ContentView: View {
 
     // MARK: Internal
 
-    @MainActor
-    enum NavItems: Int, View, CaseIterable, @preconcurrency Identifiable {
+    @preconcurrency @MainActor
+    enum NavItems: Int, View, CaseIterable, Identifiable {
         case today = 1
         case showcaseDetail = 2
         case utils = 3
@@ -97,7 +97,7 @@ public struct ContentView: View {
             #endif
         }
 
-        var id: Int { rawValue }
+        nonisolated var id: Int { rawValue }
 
         var isExposed: Bool {
             Self.exposedCaseTags.contains(rawValue)
