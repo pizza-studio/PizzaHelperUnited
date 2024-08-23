@@ -85,10 +85,13 @@ public struct WallpaperGalleryViewContent: View {
 
     private func wallpaperName(for wallpaper: Wallpaper) -> String {
         var result = useRealCharacterNames ? wallpaper.localizedRealName : wallpaper.localizedName
-        if !customizedNameForWanderer.isEmpty, !useRealCharacterNames, wallpaper.id == "210143" {
+        checkKunikuzushi: if wallpaper.id == "210143" {
+            guard !customizedNameForWanderer.isEmpty, !useRealCharacterNames else {
+                break checkKunikuzushi
+            }
             let separators: [String] = [" – ", ": ", " - ", "·"]
             checkSeparator: for separator in separators {
-                guard result.contains(separator) else { break checkSeparator }
+                guard result.contains(separator) else { continue }
                 result = result.split(separator: separator).dropFirst().joined()
                 result = customizedNameForWanderer + separator + result
                 break checkSeparator
