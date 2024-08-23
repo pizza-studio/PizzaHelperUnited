@@ -59,6 +59,93 @@
         }
       }
     },
+    "MiHoYoAPIError.fingerPrintNeeded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] Device fingerprint missing from the stored cookie."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIエラー] Cookie には端末指紋が欠缺。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPI错误] Cookie 尚未包含设备指纹资料。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPI錯誤] Cookie 尚未包含裝置指紋資料。"
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.noSTokenV2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] STokenV2 is missing from the stored cookie."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "[HoYoAPIエラー] Cookie には STokenV2 が欠缺。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "[HoYoAPI错误] Cookie 尚未包含 STokenV2 资料。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "[HoYoAPI錯誤] Cookie 尚未包含 STokenV2 資料。"
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.verificationNeeded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] Human verification needed."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIエラー] 人間認証が必要である。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPI错误] 需要人机验证。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPI錯誤] 需要人機驗證。"
+          }
+        }
+      }
+    },
     "server.location.asia" : {
       "extractionState" : "manual",
       "localizations" : {

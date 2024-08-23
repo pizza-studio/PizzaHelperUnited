@@ -1,0 +1,79 @@
+{
+  "retcode" : 0,
+  "message" : "OK",
+  "data" : {
+    "uid" : 123456789,
+    "month_data" : {
+      "current_primogems" : 4615,
+      "current_primogems_level" : 3,
+      "last_mora" : 7537763,
+      "primogems_rate" : -26,
+      "mora_rate" : -38,
+      "group_by" : [
+        {
+          "percent" : 28,
+          "num" : 1260,
+          "action_id" : 6,
+          "action" : "活动奖励"
+        },
+        {
+          "percent" : 27,
+          "num" : 1200,
+          "action_id" : 4,
+          "action" : "深境螺旋"
+        },
+        {
+          "percent" : 23,
+          "num" : 1020,
+          "action_id" : 3,
+          "action" : "每日活跃"
+        },
+        {
+          "percent" : 8,
+          "num" : 400,
+          "action_id" : 5,
+          "action" : "邮件奖励"
+        },
+        {
+          "percent" : 6,
+          "num" : 300,
+          "action_id" : 2,
+          "action" : "任务奖励"
+        },
+        {
+          "percent" : 6,
+          "num" : 308,
+          "action_id" : 1,
+          "action" : "冒险奖励"
+        },
+        {
+          "percent" : 2,
+          "num" : 127,
+          "action_id" : 0,
+          "action" : "其他"
+        }
+      ],
+      "last_primogems" : 6297,
+      "current_mora" : 4651797
+    },
+    "data_month" : 10,
+    "date" : "2023-10-18",
+    "data_last_month" : 9,
+    "region" : "cn_gf01",
+    "optional_month" : [
+      8,
+      9,
+      10
+    ],
+    "month" : 10,
+    "nickname" : "鱼抓猫小",
+    "account_id" : 123456789,
+    "day_data" : {
+      "current_mora" : 0,
+      "last_primogems" : 260,
+      "last_mora" : 353278,
+      "current_primogems" : 0
+    },
+    "lantern" : false
+  }
+}

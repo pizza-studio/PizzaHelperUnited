@@ -20,7 +20,7 @@ public protocol ProfileMOBasicProtocol: Codable {
     var name: String { get set }
     var priority: Int { get set }
     var serverRawValue: String { get set }
-    var sTokenV2: String? { get set }
+    var sTokenV2: String { get set }
     var uid: String { get set }
     var uuid: UUID { get set }
 }
@@ -166,7 +166,7 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
     public var name: String = ""
     public var priority: Int = 0
     public var serverRawValue: String = ""
-    public var sTokenV2: String? = ""
+    public var sTokenV2: String = ""
     public var uid: String = "YJSNPI"
     public var uuid: UUID = .init()
     public var allowNotification: Bool = false
@@ -208,7 +208,7 @@ struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol {
     public var name: String = ""
     public var priority: Int = 0
     public var serverRawValue: String = ""
-    public var sTokenV2: String? = ""
+    public var sTokenV2: String = ""
     public var uid: String = "YJSNPI"
     public var uuid: UUID = .init()
     public var allowNotification: Bool = false

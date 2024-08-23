@@ -1,0 +1,57 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+import Foundation
+
+// MARK: - MultiToken
+
+/// A struct representing a miHoYo multi token API result with stoken and ltoken
+public struct MultiToken: Decodable {
+    // MARK: Lifecycle
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let items = try container.decode([Item].self, forKey: .list)
+
+        if let stoken = get("stoken"), let ltoken = get("ltoken") {
+            self.stoken = stoken
+            self.ltoken = ltoken
+        } else {
+            let unknownErrorRetcode = -9999
+            /// Throw an `MiHoYoAPIError` if failed to get stoken / ltoken
+            throw MiHoYoAPIError(
+                retcode: unknownErrorRetcode,
+                message: "Fail to get stoken & ltoken. Result is: \(items)"
+            )
+        }
+
+        func get(_ tokenName: String) -> String? {
+            items.first { item in
+                item.name == tokenName
+            }?.token
+        }
+    }
+
+    // MARK: Public
+
+    /// stoken string
+    public let stoken: String
+    /// ltoken string
+    public let ltoken: String
+
+    // MARK: Internal
+
+    enum CodingKeys: String, CodingKey {
+        case list
+    }
+
+    struct Item: Decodable {
+        public let name: String
+        public let token: String
+    }
+}
+
+// MARK: DecodableFromMiHoYoAPIJSONResult
+
+extension MultiToken: DecodableFromMiHoYoAPIJSONResult {}
