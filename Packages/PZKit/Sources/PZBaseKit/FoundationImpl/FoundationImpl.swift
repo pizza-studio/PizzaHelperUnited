@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import CryptoKit
 import Foundation
 
 extension Date {
@@ -79,6 +80,8 @@ private struct PascalCaseKey: CodingKey {
     let intValue: Int?
 }
 
+// MARK: - String Implementations.
+
 extension String {
     public var asURL: URL {
         // swiftlint:disable force_unwrapping
@@ -92,6 +95,17 @@ extension String {
         NSLocalizedString(self, bundle: Bundle.module, comment: "")
     }
 }
+
+extension String {
+    /// - returns: the String, as an MD5 hash.
+    public var md5: String {
+        Insecure.MD5.hash(data: Data(utf8)).map {
+            String(format: "%02hhx", $0)
+        }.joined()
+    }
+}
+
+// MARK: - Locale Implementations.
 
 extension Locale {
     public static var isUILanguagePanChinese: Bool {
@@ -117,5 +131,33 @@ extension Locale {
         else { return false }
         return firstLocale.contains("zh-Hant") || firstLocale
             .contains("zh-TW") || firstLocale.contains("zh-HK")
+    }
+}
+
+// MARK: - AnyLocalizedError
+
+public enum AnyLocalizedError: LocalizedError {
+    case localizedError(LocalizedError)
+    case otherError(Error)
+
+    // MARK: Lifecycle
+
+    public init(_ error: Error) {
+        if let error = error as? LocalizedError {
+            self = .localizedError(error)
+        } else {
+            self = .otherError(error)
+        }
+    }
+
+    // MARK: Public
+
+    public var errorDescription: String? {
+        switch self {
+        case let .localizedError(localizedError):
+            localizedError.errorDescription
+        case let .otherError(error):
+            error.localizedDescription
+        }
     }
 }

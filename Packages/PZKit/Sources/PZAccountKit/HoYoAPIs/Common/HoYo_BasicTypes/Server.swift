@@ -122,37 +122,19 @@ extension HoYo.Server: RawRepresentable, Codable, Identifiable, Hashable {
     public var id: String { rawValue }
 
     public var rawValue: String {
-        switch self {
-        case let .celestia(supportedGame):
-            switch supportedGame {
-            case .genshinImpact: "cn_gf01"
-            case .starRail: "prod_gf_cn"
-            }
-        case let .irminsul(supportedGame):
-            switch supportedGame {
-            case .genshinImpact: "cn_qd01"
-            case .starRail: "prod_qd_cn"
-            }
-        case let .unitedStates(supportedGame):
-            switch supportedGame {
-            case .genshinImpact: "os_usa"
-            case .starRail: "prod_official_usa"
-            }
-        case let .europe(supportedGame):
-            switch supportedGame {
-            case .genshinImpact: "os_euro"
-            case .starRail: "prod_official_eur"
-            }
-        case let .asia(supportedGame):
-            switch supportedGame {
-            case .genshinImpact: "os_asia"
-            case .starRail: "prod_official_asia"
-            }
-        case let .hkMacauTaiwan(supportedGame):
-            switch supportedGame {
-            case .genshinImpact: "os_cht"
-            case .starRail: "prod_official_cht"
-            }
+        switch (self, game) {
+        case (.celestia, .genshinImpact): "cn_gf01"
+        case (.irminsul, .genshinImpact): "cn_qd01"
+        case (.unitedStates, .genshinImpact): "os_usa"
+        case (.europe, .genshinImpact): "os_euro"
+        case (.asia, .genshinImpact): "os_asia"
+        case (.hkMacauTaiwan, .genshinImpact): "os_cht"
+        case (.celestia, .starRail): "prod_gf_cn"
+        case (.irminsul, .starRail): "prod_qd_cn"
+        case (.unitedStates, .starRail): "prod_official_usa"
+        case (.europe, .starRail): "prod_official_eur"
+        case (.asia, .starRail): "prod_official_asia"
+        case (.hkMacauTaiwan, .starRail): "prod_official_cht"
         }
     }
 

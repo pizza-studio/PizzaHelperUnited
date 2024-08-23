@@ -22,7 +22,7 @@ extension CGImage {
         return directResized(size: size, quality: quality)
     }
 
-    internal func directResized(size: CGSize, quality: CGInterpolationQuality = .high) -> CGImage? {
+    public func directResized(size: CGSize, quality: CGInterpolationQuality = .high) -> CGImage? {
         // Ref: https://rockyshikoku.medium.com/resize-cgimage-baf23a0f58ab
         let width = Int(floor(size.width))
         let height = Int(floor(size.height))

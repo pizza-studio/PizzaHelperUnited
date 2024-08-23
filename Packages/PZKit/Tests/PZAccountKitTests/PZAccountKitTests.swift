@@ -2,4 +2,11 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-public enum HoYo {}
+@testable import PZAccountKit
+import XCTest
+
+final class PZAccountKitTests: XCTestCase {
+    func testX() throws {
+        print("X")
+    }
+}

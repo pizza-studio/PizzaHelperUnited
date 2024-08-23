@@ -1,0 +1,1613 @@
+{
+  "retcode" : 0,
+  "message" : "OK",
+  "data" : {
+    "energy_skill_rank" : [
+      {
+        "avatar_id" : 10000025,
+        "value" : 25,
+        "avatar_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u8f88e\/99bf569b3e21634abe7dc4b703a4be57.png",
+        "rarity" : 4
+      }
+    ],
+    "start_time" : "1697400000",
+    "total_win_times" : 12,
+    "max_floor" : "12-3",
+    "floors" : [
+      {
+        "is_unlock" : true,
+        "settle_time" : "0",
+        "star" : 9,
+        "levels" : [
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697401772",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 29,
+                  "second" : 32,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000046,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+                    "level" : 90,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000060,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000030,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697401813",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 30,
+                  "second" : 13,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "盗宝团·火之药剂师",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/97f1c1a01f7d3c626fde9966de0fdaaf.png",
+                "level" : 72
+              },
+              {
+                "name" : "盗宝团·水之药剂师",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/d6a2020e979a0421a9ac36f43130deb3.png",
+                "level" : 72
+              },
+              {
+                "name" : "机关·侦察记录型·荒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/249a1a7ca5b0ee5c50ca53ac5f9a62d5.png",
+                "level" : 72
+              },
+              {
+                "name" : "野伏·阵刀番",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/c7952424f348117215ee557784099431.png",
+                "level" : 72
+              },
+              {
+                "name" : "野伏·火付番",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/5b68943dfc18d1d6d0545b7e3840df38.png",
+                "level" : 72
+              },
+              {
+                "name" : "野伏·机巧番",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/1a6adb6d75c33e06814a6989ae2a3d18.png",
+                "level" : 72
+              },
+              {
+                "name" : "机关·地质勘探型·荒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/b72a50ad7d94c997b5bd94cb1a3218ce.png",
+                "level" : 72
+              },
+              {
+                "name" : "机关·算力增幅器·荒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/e74a720adafcc03fa9296a6619940ef2.png",
+                "level" : 72
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "野伏·火付番",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/5b68943dfc18d1d6d0545b7e3840df38.png",
+                "level" : 72
+              },
+              {
+                "name" : "野伏·机巧番",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/1a6adb6d75c33e06814a6989ae2a3d18.png",
+                "level" : 72
+              },
+              {
+                "name" : "机关·灵活采集型·芒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/8ca65d0a9f57e78b7c67d56da8ed79f1.png",
+                "level" : 72
+              },
+              {
+                "name" : "攻坚特化型机关·芒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/c272b25b95dbe55ec5503679f8367199.png",
+                "level" : 72
+              },
+              {
+                "name" : "机关·算力增幅器·芒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/e74a720adafcc03fa9296a6619940ef2.png",
+                "level" : 72
+              },
+              {
+                "name" : "盗宝团·雷之药剂师",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/ae780fda8ef90a04418edb3ade50d9fb.png",
+                "level" : 72
+              }
+            ],
+            "index" : 1
+          },
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697401837",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 30,
+                  "second" : 37,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000046,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+                    "level" : 90,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000060,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000030,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697401885",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 31,
+                  "second" : 25,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "幻形豕兽·水",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/d0fe04ac65e0c10cdea205d900e096cf.png",
+                "level" : 74
+              },
+              {
+                "name" : "大型水史莱姆",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/2bea8b02c4431fb2fe62af21c9bfce58.png",
+                "level" : 74
+              },
+              {
+                "name" : "大型冰史莱姆",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/f216c043ee09c4974efb4630fb57b107.png",
+                "level" : 74
+              },
+              {
+                "name" : "大天使海兔",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/a4bddc2f167fdb0374a7d907e3f191f5.png",
+                "level" : 74
+              },
+              {
+                "name" : "歼灭特化型机关·荒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/9087b758522bd56f9b7d663af1a17684.png",
+                "level" : 74
+              },
+              {
+                "name" : "盗宝团·冰之药剂师",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/8a1bd14615ea799c740dd77eab71dd89.png",
+                "level" : 74
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "大型火史莱姆",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/f8d00e22a7b33191a077d1cb37c8ad59.png",
+                "level" : 74
+              },
+              {
+                "name" : "歼灭特化型机关·芒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/9087b758522bd56f9b7d663af1a17684.png",
+                "level" : 74
+              },
+              {
+                "name" : "盗宝团·火之药剂师",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/97f1c1a01f7d3c626fde9966de0fdaaf.png",
+                "level" : 74
+              },
+              {
+                "name" : "坚盾重甲蟹",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/b3b666bb55e7a50b36eaa7ccc6c246a1.png",
+                "level" : 74
+              }
+            ],
+            "index" : 2
+          },
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697401921",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 32,
+                  "second" : 1,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000046,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+                    "level" : 90,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000060,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000030,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697401952",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 32,
+                  "second" : 32,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "火斧丘丘暴徒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/bc58125fd7633e7f7396ff5117b6e55a.png",
+                "level" : 76
+              },
+              {
+                "name" : "雷斧丘丘暴徒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/bc58125fd7633e7f7396ff5117b6e55a.png",
+                "level" : 76
+              },
+              {
+                "name" : "愚人众·藏镜仕女",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/98273263e2c4011178536bf34bff2f6f.png",
+                "level" : 76
+              },
+              {
+                "name" : "压制特化型机关·荒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/96c49606ad1033f2d4a59caca214db77.png",
+                "level" : 76
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "愚人众·火之债务处理人",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/06d74166b4b18789e927c21638dbbcfe.png",
+                "level" : 76
+              },
+              {
+                "name" : "歼灭特化型机关·芒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/9087b758522bd56f9b7d663af1a17684.png",
+                "level" : 76
+              }
+            ],
+            "index" : 3
+          }
+        ],
+        "max_star" : 9,
+        "ley_line_disorder" : [
+          "角色触发蒸发反应后的5秒内，该角色通过蒸发反应造成的伤害提升提高50%。"
+        ],
+        "settle_date_time" : null,
+        "icon" : "",
+        "index" : 9
+      },
+      {
+        "is_unlock" : true,
+        "settle_time" : "0",
+        "star" : 9,
+        "levels" : [
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697402015",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 33,
+                  "second" : 35,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697402037",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 33,
+                  "second" : 57,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000046,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+                    "level" : 90,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000060,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000030,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "愚人众先遣队·火铳游击兵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/5d78caafb435736be006b935fcd231ec.png",
+                "level" : 80
+              },
+              {
+                "name" : "机关·灵活采集型·荒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/8ca65d0a9f57e78b7c67d56da8ed79f1.png",
+                "level" : 80
+              },
+              {
+                "name" : "盗宝团·掘墓者",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/f933ad6c7804e182928fc960857a00a2.png",
+                "level" : 80
+              },
+              {
+                "name" : "盗宝团·海上男儿",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/679e8814e0947b18361f9eb73747cd71.png",
+                "level" : 80
+              },
+              {
+                "name" : "盗宝团·杂工",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/bcbe11d75b7c7fb6b65d73344740252e.png",
+                "level" : 80
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "建造特化型机关·芒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/15a4803900e1646ffbd7f0a99d4cc015.png",
+                "level" : 80
+              },
+              {
+                "name" : "机关·地质勘探型·芒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/b72a50ad7d94c997b5bd94cb1a3218ce.png",
+                "level" : 80
+              }
+            ],
+            "index" : 1
+          },
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697402058",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 34,
+                  "second" : 18,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697402095",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 34,
+                  "second" : 55,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000046,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+                    "level" : 90,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000060,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000030,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "火飘浮灵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/c843ff0c266e5537d89f3d82698154bd.png",
+                "level" : 82
+              },
+              {
+                "name" : "草飘浮灵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/3931662d2a2bba246af19f22dec2adeb.png",
+                "level" : 82
+              },
+              {
+                "name" : "雷飘浮灵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/0eeffff0cb2d5904b896b35834c98979.png",
+                "level" : 82
+              },
+              {
+                "name" : "有翼草本真蕈",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/b5782697ec2247570e13112072bfbb2d.png",
+                "level" : 82
+              },
+              {
+                "name" : "有翼冰本真蕈",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/633d98d0ef797b84721f32cf41429f5c.png",
+                "level" : 82
+              },
+              {
+                "name" : "陆行水本真蕈",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/7f8a0ec2275c34c2903872a715d62097.png",
+                "level" : 82
+              },
+              {
+                "name" : "陆行岩本真蕈",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/8fc1210bf6104a933085920a259e63e3.png",
+                "level" : 82
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "深海龙蜥幼体·啮冰",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/d9123ecc3f92f8b0dcdeae87f27fb59b.png",
+                "level" : 82
+              },
+              {
+                "name" : "深海龙蜥幼体·吞雷",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/6ce427af3da2e0489b606d2c425c4782.png",
+                "level" : 82
+              },
+              {
+                "name" : "深海龙蜥·原种",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/fe4fcb2063b198be60dc4852868d71a7.png",
+                "level" : 82
+              }
+            ],
+            "index" : 2
+          },
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697402127",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 35,
+                  "second" : 27,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697402147",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 35,
+                  "second" : 47,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000046,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+                    "level" : 90,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000060,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000030,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "镀金旅团·魔岩役使",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/c42e669191d878859919d67ef8982c9b.png",
+                "level" : 85
+              },
+              {
+                "name" : "镀金旅团·炽阳凝冰",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/083cedffe868ac8af07dca0e14d75cf0.png",
+                "level" : 85
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "遗迹重机",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/2af7af0652566f5fa89898f8dd862632.png",
+                "level" : 85
+              }
+            ],
+            "index" : 3
+          }
+        ],
+        "max_star" : 9,
+        "ley_line_disorder" : [
+          "角色对处于水元素附着状态下的敌人造成的伤害提高50%。"
+        ],
+        "settle_date_time" : null,
+        "icon" : "",
+        "index" : 10
+      },
+      {
+        "is_unlock" : true,
+        "settle_time" : "0",
+        "star" : 9,
+        "levels" : [
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697402203",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 36,
+                  "second" : 43,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697402244",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 37,
+                  "second" : 24,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000046,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+                    "level" : 90,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000060,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000030,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "镀金旅团·机弩兵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/cc8790ee4eafd783aeb215a696daeb13.png",
+                "level" : 88
+              },
+              {
+                "name" : "镀金旅团·鸦喙戟手",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/8bf7504da9c267babce24e8cd49b43f9.png",
+                "level" : 88
+              },
+              {
+                "name" : "镀金旅团·破阵者",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/be3df2104cc1c3c857c8f07439126b29.png",
+                "level" : 88
+              },
+              {
+                "name" : "镀金旅团·刀舞者",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/625d973a701aca7fe6fa1713a5db3b6e.png",
+                "level" : 88
+              },
+              {
+                "name" : "镀金旅团·沙中净水",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/771768858d94b87be304902e46b6603b.png",
+                "level" : 88
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "丘丘岩盔王",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/bf4f98093421db9cbf0d32a330879a7a.png",
+                "level" : 88
+              },
+              {
+                "name" : "丘丘雷兜王",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/9a09b7c159daf81afbf999c0c458aa38.png",
+                "level" : 88
+              }
+            ],
+            "index" : 1
+          },
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697402271",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 37,
+                  "second" : 51,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697402346",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 39,
+                  "second" : 6,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000046,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+                    "level" : 90,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000060,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000030,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "冰飘浮灵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/cdf8220413c7f3ab5c47bd3fe0c54712.png",
+                "level" : 90
+              },
+              {
+                "name" : "雷飘浮灵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/0eeffff0cb2d5904b896b35834c98979.png",
+                "level" : 90
+              },
+              {
+                "name" : "火飘浮灵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/c843ff0c266e5537d89f3d82698154bd.png",
+                "level" : 90
+              },
+              {
+                "name" : "草飘浮灵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/3931662d2a2bba246af19f22dec2adeb.png",
+                "level" : 90
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "遗迹守卫",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/946291ec81081a2ce5dc88a68640b46d.png",
+                "level" : 90
+              },
+              {
+                "name" : "遗迹重机",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/2af7af0652566f5fa89898f8dd862632.png",
+                "level" : 90
+              },
+              {
+                "name" : "遗迹龙兽·地巡",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/33c4d8613878e9d72141c1f7c20c592a.png",
+                "level" : 90
+              }
+            ],
+            "index" : 2
+          },
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697402520",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 42,
+                  "second" : 0,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697402594",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 43,
+                  "second" : 14,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000046,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+                    "level" : 90,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000060,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000030,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "大型火史莱姆",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/f8d00e22a7b33191a077d1cb37c8ad59.png",
+                "level" : 92
+              },
+              {
+                "name" : "大型雷史莱姆",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/a52f2935bd631bd74e3fac705c07896d.png",
+                "level" : 92
+              },
+              {
+                "name" : "变异雷史莱姆",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/aff4938061a76f14aceeb37d7d01b22f.png",
+                "level" : 92
+              },
+              {
+                "name" : "坚盾重甲蟹",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/b3b666bb55e7a50b36eaa7ccc6c246a1.png",
+                "level" : 92
+              },
+              {
+                "name" : "泡泡雄海马",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/8dd8f7eef23b044077fba58f1e3a807c.png",
+                "level" : 92
+              },
+              {
+                "name" : "火深境螺旋法师",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/6f96a61d0de74a8d73b23f00e040b9fc.png",
+                "level" : 92
+              },
+              {
+                "name" : "狂蔓隙境原体",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/b94420acdcc4b95e53e72653d157541f.png",
+                "level" : 92
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "历经百战的浊水粉碎幻灵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/68577e6684d828769ba993145aaa7890.png",
+                "level" : 92
+              },
+              {
+                "name" : "历经百战的浊水喷吐幻灵",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/7e38d5f74eadc0760978c029405140ec.png",
+                "level" : 92
+              }
+            ],
+            "index" : 3
+          }
+        ],
+        "max_star" : 9,
+        "ley_line_disorder" : [
+          "队伍中所有角色获得60%冰元素伤害加成。",
+          "队伍中所有角色获得60%水元素伤害加成。"
+        ],
+        "settle_date_time" : null,
+        "icon" : "",
+        "index" : 11
+      },
+      {
+        "is_unlock" : true,
+        "settle_time" : "0",
+        "star" : 9,
+        "levels" : [
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697403321",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 55,
+                  "second" : 21,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697403406",
+                "settle_date_time" : {
+                  "hour" : 4,
+                  "minute" : 56,
+                  "second" : 46,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000052,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/1454c59a217067754644e91894f74f99.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000032,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/5c4f913c2975ecb6a53fe042e45315dc.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000023,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/6e39d8b0366582b2e770a902bd505b0c.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "千年珍珠骏麟",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/d83181c4d2e9d376614d490c4e89921c.png",
+                "level" : 95
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "嗜岩·兽境幼兽",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/d03ebadd706c6af8a824b6c3ead49ec1.png",
+                "level" : 95
+              },
+              {
+                "name" : "嗜雷·兽境幼兽",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/b4d87023833f987749eb990b34ce489e.png",
+                "level" : 95
+              },
+              {
+                "name" : "嗜岩·兽境猎犬",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/4b10701a79f12a5c201550769586d3ba.png",
+                "level" : 95
+              },
+              {
+                "name" : "嗜雷·兽境猎犬",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/cfabb61d149702964e2ecb531513ab9b.png",
+                "level" : 95
+              },
+              {
+                "name" : "火深境螺旋法师",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/6f96a61d0de74a8d73b23f00e040b9fc.png",
+                "level" : 95
+              }
+            ],
+            "index" : 1
+          },
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697403637",
+                "settle_date_time" : {
+                  "hour" : 5,
+                  "minute" : 0,
+                  "second" : 37,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697403701",
+                "settle_date_time" : {
+                  "hour" : 5,
+                  "minute" : 1,
+                  "second" : 41,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000052,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/1454c59a217067754644e91894f74f99.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000032,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/5c4f913c2975ecb6a53fe042e45315dc.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000023,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/6e39d8b0366582b2e770a902bd505b0c.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "深海龙蜥幼体·原种",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/fe4fcb2063b198be60dc4852868d71a7.png",
+                "level" : 98
+              },
+              {
+                "name" : "建造特化型机关·芒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/15a4803900e1646ffbd7f0a99d4cc015.png",
+                "level" : 98
+              },
+              {
+                "name" : "压制特化型机关·芒",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/96c49606ad1033f2d4a59caca214db77.png",
+                "level" : 98
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "冰风组曲·歌裴莉娅的葬送",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/800ad04bc268e1a6a4e5e1f423040d74.png",
+                "level" : 98
+              }
+            ],
+            "index" : 2
+          },
+          {
+            "star" : 3,
+            "max_star" : 3,
+            "battles" : [
+              {
+                "timestamp" : "1697403776",
+                "settle_date_time" : {
+                  "hour" : 5,
+                  "minute" : 2,
+                  "second" : 56,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000002,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000045,
+                    "icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000047,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000054,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  }
+                ],
+                "index" : 1
+              },
+              {
+                "timestamp" : "1697403864",
+                "settle_date_time" : {
+                  "hour" : 5,
+                  "minute" : 4,
+                  "second" : 24,
+                  "year" : 2023,
+                  "month" : 10,
+                  "day" : 16
+                },
+                "avatars" : [
+                  {
+                    "id" : 10000052,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/1454c59a217067754644e91894f74f99.png",
+                    "level" : 88,
+                    "rarity" : 5
+                  },
+                  {
+                    "id" : 10000025,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000032,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/5c4f913c2975ecb6a53fe042e45315dc.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  },
+                  {
+                    "id" : 10000023,
+                    "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/6e39d8b0366582b2e770a902bd505b0c.png",
+                    "level" : 88,
+                    "rarity" : 4
+                  }
+                ],
+                "index" : 2
+              }
+            ],
+            "top_half_floor_monster" : [
+              {
+                "name" : "愚人众·藏镜仕女",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/98273263e2c4011178536bf34bff2f6f.png",
+                "level" : 100
+              },
+              {
+                "name" : "愚人众·风役人",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/01b8dd54304e0513a8c7cc0c5a8abb77.png",
+                "level" : 100
+              }
+            ],
+            "bottom_half_floor_monster" : [
+              {
+                "name" : "实验性场力发生装置",
+                "icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_monster_icon_u8f88e\/6700887ca4c10f7680ea62b5d76e8101.png",
+                "level" : 100
+              }
+            ],
+            "index" : 3
+          }
+        ],
+        "max_star" : 9,
+        "ley_line_disorder" : [
+          "仅在此层，地脉的涌流平缓通顺。"
+        ],
+        "settle_date_time" : null,
+        "icon" : "",
+        "index" : 12
+      }
+    ],
+    "total_battle_times" : 17,
+    "take_damage_rank" : [
+      {
+        "avatar_id" : 10000052,
+        "value" : 48962,
+        "avatar_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u8f88e\/a92ca483b566b359dd2ce5e7ac2789ca.png",
+        "rarity" : 5
+      }
+    ],
+    "is_unlock" : true,
+    "defeat_rank" : [
+      {
+        "avatar_id" : 10000002,
+        "value" : 40,
+        "avatar_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u8f88e\/a7e33b316f413a37fe1a7e0beda06681.png",
+        "rarity" : 5
+      }
+    ],
+    "end_time" : "1698782399",
+    "normal_skill_rank" : [
+      {
+        "avatar_id" : 10000002,
+        "value" : 42,
+        "avatar_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u8f88e\/a7e33b316f413a37fe1a7e0beda06681.png",
+        "rarity" : 5
+      }
+    ],
+    "damage_rank" : [
+      {
+        "avatar_id" : 10000046,
+        "value" : 332712,
+        "avatar_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u8f88e\/d11859cba5106a784bf9ab199380bf2b.png",
+        "rarity" : 5
+      }
+    ],
+    "schedule_id" : 80,
+    "reveal_rank" : [
+      {
+        "avatar_id" : 10000002,
+        "value" : 12,
+        "avatar_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+        "rarity" : 5
+      },
+      {
+        "avatar_id" : 10000025,
+        "value" : 12,
+        "avatar_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+        "rarity" : 4
+      },
+      {
+        "avatar_id" : 10000045,
+        "value" : 12,
+        "avatar_icon" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+        "rarity" : 4
+      },
+      {
+        "avatar_id" : 10000047,
+        "value" : 12,
+        "avatar_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+        "rarity" : 5
+      }
+    ],
+    "total_star" : 36
+  }
+}
