@@ -26,6 +26,13 @@ extension Pizza {
             case .starRail: "SR"
             }
         }
+
+        public var viseVersa: Self {
+            switch self {
+            case .genshinImpact: .starRail
+            case .starRail: .genshinImpact
+            }
+        }
     }
 }
 

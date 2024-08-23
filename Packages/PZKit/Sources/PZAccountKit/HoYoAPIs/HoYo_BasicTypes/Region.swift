@@ -27,6 +27,13 @@ extension HoYo {
             case let .miyoushe(supportedGame): supportedGame
             }
         }
+
+        public mutating func changeGame(to game: Pizza.SupportedGame) {
+            self = switch self {
+            case .hoyoLab: .hoyoLab(game)
+            case .miyoushe: .miyoushe(game)
+            }
+        }
     }
 }
 

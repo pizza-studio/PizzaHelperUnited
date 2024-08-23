@@ -60,6 +60,17 @@ extension HoYo {
             case let .hkMacauTaiwan(supportedGame): supportedGame
             }
         }
+
+        public mutating func changeGame(to game: Pizza.SupportedGame) {
+            self = switch self {
+            case .celestia: .celestia(game)
+            case .irminsul: .irminsul(game)
+            case .unitedStates: .unitedStates(game)
+            case .europe: .europe(game)
+            case .asia: .asia(game)
+            case .hkMacauTaiwan: .hkMacauTaiwan(game)
+            }
+        }
     }
 }
 
