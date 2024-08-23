@@ -73,6 +73,11 @@ let package = Package(
         )
 
         // MARK: - Test Targets
+
+        Target.testTarget(
+            name: "PZAccountKitTests",
+            dependencies: ["PZAccountKit"]
+        )
     }
 )
 

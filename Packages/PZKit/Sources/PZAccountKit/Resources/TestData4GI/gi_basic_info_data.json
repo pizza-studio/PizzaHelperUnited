@@ -1,0 +1,1088 @@
+{
+  "retcode" : 0,
+  "message" : "OK",
+  "data" : {
+    "query_tool_link" : "https:\/\/act.mihoyo.com\/ys\/event\/bbs-achievements-search\/index.html?mhy_presentation_style=fullscreen&mhy_auth_required=true&utm_medium=mys&utm_campaign=GameRecordTools",
+    "role" : {
+      "game_head_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/ec9dd5a0c9fb47c326df7303d8235830.png",
+      "AvatarUrl" : "",
+      "nickname" : "鱼抓猫小",
+      "region" : "天空岛",
+      "level" : 60
+    },
+    "stats" : {
+      "hydroculus_number" : 41,
+      "avatar_number" : 57,
+      "exquisite_chest_number" : 1355,
+      "common_chest_number" : 1777,
+      "field_ext_map" : {
+        "hydroculus_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=508&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "avatar_number" : {
+          "link" : "",
+          "backup_link" : ""
+        },
+        "common_chest_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=17&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "exquisite_chest_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=44&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "way_point_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=3,2&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "geoculus_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=6&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "dendroculus_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=403&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "domain_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=154&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "anemoculus_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=5&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "luxurious_chest_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=46&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "magic_chest_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=269&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "precious_chest_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=45&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        },
+        "spiral_abyss" : {
+          "link" : "",
+          "backup_link" : ""
+        },
+        "electroculus_number" : {
+          "link" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&utm_source=gamerecord&utm_medium=ys&utm_campaign=icon&_markerFps=24#\/map\/2?shown_types=194&center=2008.50,-1084.00&zoom=-3.00",
+          "backup_link" : ""
+        }
+      },
+      "way_point_number" : 357,
+      "geoculus_number" : 131,
+      "dendroculus_number" : 143,
+      "achievement_number" : 740,
+      "domain_number" : 52,
+      "active_day_number" : 899,
+      "anemoculus_number" : 66,
+      "luxurious_chest_number" : 143,
+      "electroculus_number" : 180,
+      "precious_chest_number" : 382,
+      "spiral_abyss" : "12-3",
+      "magic_chest_number" : 88
+    },
+    "query_tool_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/query_tool\/query_tool_entry.png",
+    "world_explorations" : [
+      {
+        "id" : 9,
+        "background_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterBackground_Fengdan.png",
+        "is_hot" : true,
+        "map_url" : "",
+        "parent_id" : 0,
+        "area_exploration_list" : [
+          {
+            "name" : "白露区",
+            "exploration_percentage" : 455
+          },
+          {
+            "name" : "苍晶区",
+            "exploration_percentage" : 462
+          },
+          {
+            "name" : "枫丹廷区",
+            "exploration_percentage" : 437
+          },
+          {
+            "name" : "黎翡区",
+            "exploration_percentage" : 307
+          },
+          {
+            "name" : "枫丹动能工程科学研究院区",
+            "exploration_percentage" : 72
+          }
+        ],
+        "type" : "Reputation",
+        "offerings" : [
+          {
+            "name" : "露景泉",
+            "level" : 3,
+            "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterOffering_DewTemple.png"
+          }
+        ],
+        "level" : 3,
+        "exploration_percentage" : 190,
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterIcon_Fengdan.png",
+        "inner_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterInnerIcon_Fengdan.png",
+        "cover" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterCover_Fengdan.png",
+        "boss_list" : [
+          {
+            "name" : "铁甲熔火帝皇",
+            "kill_num" : 3
+          },
+          {
+            "name" : "冰风组曲",
+            "kill_num" : 23
+          },
+          {
+            "name" : "实验性场力发生装置",
+            "kill_num" : 2
+          },
+          {
+            "name" : "千年珍珠骏麟",
+            "kill_num" : 5
+          }
+        ],
+        "name" : "枫丹",
+        "strategy_url" : ""
+      },
+      {
+        "id" : 8,
+        "background_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterBackground_Xumi.png",
+        "is_hot" : false,
+        "map_url" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&utm_source=mys&utm_medium=ys&utm_campaign=gamerecord&lang=zh-cn&_markerFps=24#\/map\/2?center=3116.00,-3823.00&zoom=-2.00&shown_types=",
+        "parent_id" : 0,
+        "area_exploration_list" : [
+
+        ],
+        "type" : "Reputation",
+        "offerings" : [
+          {
+            "name" : "梦之树",
+            "level" : 29,
+            "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterOffering_DreamTree.png"
+          }
+        ],
+        "level" : 10,
+        "exploration_percentage" : 580,
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterIcon_Xumi.png",
+        "inner_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterInnerIcon_Xumi.png",
+        "cover" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterCover_Xumi.png",
+        "boss_list" : [
+
+        ],
+        "name" : "须弥",
+        "strategy_url" : "https:\/\/bbs.mihoyo.com\/ys\/strategy\/channel\/map\/45\/251?bbs_presentation_style=no_header"
+      },
+      {
+        "id" : 7,
+        "background_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterBackground_ChasmsMaw.png",
+        "is_hot" : false,
+        "map_url" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&_markerFps=24#\/map\/9?&center=0.00,1.00&zoom=-1.00",
+        "parent_id" : 6,
+        "area_exploration_list" : [
+
+        ],
+        "type" : "Offering",
+        "offerings" : [
+          {
+            "name" : "流明石触媒",
+            "level" : 10,
+            "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterOffering_Lumenstone.png"
+          }
+        ],
+        "level" : 10,
+        "exploration_percentage" : 946,
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterIcon_ChasmsMaw.png",
+        "inner_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterInnerIcon_ChasmsMaw.png",
+        "cover" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterCover_ChasmsMaw.png",
+        "boss_list" : [
+
+        ],
+        "name" : "层岩巨渊·地下矿区",
+        "strategy_url" : "https:\/\/bbs.mihoyo.com\/ys\/strategy\/channel\/map\/45\/226?bbs_presentation_style=no_header"
+      },
+      {
+        "id" : 6,
+        "background_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterBackground_ChasmsMaw.png",
+        "is_hot" : false,
+        "map_url" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn&_markerFps=24#\/map\/2?&center=2917.44,-2500.29&zoom=0.00",
+        "parent_id" : 0,
+        "area_exploration_list" : [
+
+        ],
+        "type" : "Offering",
+        "offerings" : [
+          {
+            "name" : "流明石触媒",
+            "level" : 10,
+            "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterOffering_Lumenstone.png"
+          }
+        ],
+        "level" : 10,
+        "exploration_percentage" : 955,
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterIcon_ChasmsMaw.png",
+        "inner_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterInnerIcon_ChasmsMaw.png",
+        "cover" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterCover_ChasmsMaw.png",
+        "boss_list" : [
+
+        ],
+        "name" : "层岩巨渊",
+        "strategy_url" : "https:\/\/bbs.mihoyo.com\/ys\/strategy\/channel\/map\/45\/226?bbs_presentation_style=no_header"
+      },
+      {
+        "id" : 5,
+        "background_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterBackground_Enkanomiya.png",
+        "is_hot" : false,
+        "map_url" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&lang=zh-cn#\/map\/7?&center=1.00,197.00&zoom=-2.00",
+        "parent_id" : 0,
+        "area_exploration_list" : [
+
+        ],
+        "type" : "Offering",
+        "offerings" : [
+
+        ],
+        "level" : 0,
+        "exploration_percentage" : 918,
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterIcon_Enkanomiya.png",
+        "inner_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterInnerIcon_Enkanomiya.png",
+        "cover" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterCover_Enkanomiya.png",
+        "boss_list" : [
+
+        ],
+        "name" : "渊下宫",
+        "strategy_url" : ""
+      },
+      {
+        "id" : 4,
+        "background_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterBackground_Daoqi.png",
+        "is_hot" : false,
+        "map_url" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&_markerFps=24&lang=zh-cn#\/map\/2?&center=5329.96,2489.19&zoom=-1.00",
+        "parent_id" : 0,
+        "area_exploration_list" : [
+
+        ],
+        "type" : "Reputation",
+        "offerings" : [
+          {
+            "name" : "神樱眷顾",
+            "level" : 50,
+            "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterOffering_Oraionokami.png"
+          }
+        ],
+        "level" : 10,
+        "exploration_percentage" : 960,
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterIcon_Daoqi.png",
+        "inner_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterInnerIcon_Daoqi.png",
+        "cover" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterCover_Daoqi.png",
+        "boss_list" : [
+
+        ],
+        "name" : "稻妻",
+        "strategy_url" : ""
+      },
+      {
+        "id" : 3,
+        "background_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterBackground_Dragonspine.png",
+        "is_hot" : false,
+        "map_url" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&_markerFps=24&lang=zh-cn#\/map\/2?&center=1183.49,-116.41&zoom=0.00",
+        "parent_id" : 0,
+        "area_exploration_list" : [
+
+        ],
+        "type" : "Offering",
+        "offerings" : [
+          {
+            "name" : "忍冬之树",
+            "level" : 12,
+            "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterOffering_Eldertree.png"
+          }
+        ],
+        "level" : 12,
+        "exploration_percentage" : 944,
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterIcon_Dragonspine.png",
+        "inner_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterInnerIcon_Dragonspine.png",
+        "cover" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterCover_Dragonspine.png",
+        "boss_list" : [
+
+        ],
+        "name" : "龙脊雪山",
+        "strategy_url" : ""
+      },
+      {
+        "id" : 2,
+        "background_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterBackground_Liyue.png",
+        "is_hot" : false,
+        "map_url" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&_markerFps=24&lang=zh-cn#\/map\/2?&center=2602.08,-1612.55&zoom=-1.00",
+        "parent_id" : 0,
+        "area_exploration_list" : [
+
+        ],
+        "type" : "Reputation",
+        "offerings" : [
+
+        ],
+        "level" : 8,
+        "exploration_percentage" : 941,
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterIcon_Liyue.png",
+        "inner_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterInnerIcon_Liyue.png",
+        "cover" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterCover_Liyue.png",
+        "boss_list" : [
+
+        ],
+        "name" : "璃月",
+        "strategy_url" : ""
+      },
+      {
+        "id" : 1,
+        "background_image" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterBackground_Mengde.png",
+        "is_hot" : false,
+        "map_url" : "https:\/\/webstatic.mihoyo.com\/ys\/app\/interactive-map\/index.html?bbs_presentation_style=no_header&_markerFps=24&lang=zh-cn#\/map\/2?&center=-111.96,-200.87&zoom=-1.00",
+        "parent_id" : 0,
+        "area_exploration_list" : [
+
+        ],
+        "type" : "Reputation",
+        "offerings" : [
+
+        ],
+        "level" : 8,
+        "exploration_percentage" : 992,
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterIcon_Mengde.png",
+        "inner_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterInnerIcon_Mengde.png",
+        "cover" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/city_icon\/UI_ChapterCover_Mengde.png",
+        "boss_list" : [
+
+        ],
+        "name" : "蒙德",
+        "strategy_url" : ""
+      }
+    ],
+    "city_explorations" : [
+
+    ],
+    "homes" : [
+      {
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/home\/UI_HomeworldModule_2_Pic.png",
+        "comfort_level_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/home\/UI_Homeworld_Comfort_10.png",
+        "level" : 10,
+        "comfort_num" : 20230,
+        "comfort_level_name" : "贝阙珠宫",
+        "visit_num" : 11,
+        "name" : "罗浮洞",
+        "item_num" : 832
+      },
+      {
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/home\/UI_HomeworldModule_1_Pic.png",
+        "comfort_level_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/home\/UI_Homeworld_Comfort_10.png",
+        "level" : 10,
+        "comfort_num" : 20230,
+        "comfort_level_name" : "贝阙珠宫",
+        "visit_num" : 11,
+        "name" : "翠黛峰",
+        "item_num" : 832
+      },
+      {
+        "icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/home\/UI_HomeworldModule_3_Pic.png",
+        "comfort_level_icon" : "https:\/\/act-webstatic.mihoyo.com\/game_record\/genshin\/home\/UI_Homeworld_Comfort_10.png",
+        "level" : 10,
+        "comfort_num" : 20230,
+        "comfort_level_name" : "贝阙珠宫",
+        "visit_num" : 11,
+        "name" : "清琼岛",
+        "item_num" : 832
+      }
+    ],
+    "avatars" : [
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/48815b605763b8c27c587167e177b448.png",
+        "id" : 10000046,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/df55c82d297e304357414281509a5415.png",
+        "level" : 90,
+        "name" : "胡桃",
+        "actived_constellation_num" : 1
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/fb83405594ff262a6070a111541be756.png",
+        "id" : 10000002,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d7170407d389973d33446c62b1e4a09.png",
+        "level" : 88,
+        "name" : "神里绫华",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/c6c27bc1e56cb722366c6610a366c455.png",
+        "id" : 10000022,
+        "is_chosen" : false,
+        "element" : "Anemo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/acd5634fcca93af0d57f0f16293577f0.png",
+        "level" : 88,
+        "name" : "温迪",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/134d5bd957b5bb48117a31d951895d89.png",
+        "id" : 10000026,
+        "is_chosen" : false,
+        "element" : "Anemo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/1415be5854b87b2411f1ecff40eaa713.png",
+        "level" : 88,
+        "name" : "魈",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/e5616d66d0c09ba633aad322b5286c5e.png",
+        "id" : 10000030,
+        "is_chosen" : false,
+        "element" : "Geo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f4f70c7f589ece7f29202657dd467db8.png",
+        "level" : 88,
+        "name" : "钟离",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/cc0c1d99ad610c47c2eeff1e48e068d4.png",
+        "id" : 10000037,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/94f6d42e324f53de0f3c28e2937e6eb4.png",
+        "level" : 88,
+        "name" : "甘雨",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/8d7c1672d29a02267c0340a44a41d2de.png",
+        "id" : 10000038,
+        "is_chosen" : false,
+        "element" : "Geo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/dd6bf6f06c499cf005ff0478ee904976.png",
+        "level" : 88,
+        "name" : "阿贝多",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/580bfeb8fa4012b6cb61158df3c1d78d.png",
+        "id" : 10000042,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/9e65ea45f7f5d140e96fae0fbbe33c14.png",
+        "level" : 88,
+        "name" : "刻晴",
+        "actived_constellation_num" : 2
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/7be2241a54a7b50dfcbf7d62575f64cc.png",
+        "id" : 10000047,
+        "is_chosen" : false,
+        "element" : "Anemo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2f2f3d2211c909fdc2fdaf0d2d373ed7.png",
+        "level" : 88,
+        "name" : "枫原万叶",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/8178d2b6bdaf90578db25343233f8d27.png",
+        "id" : 10000049,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/b4375fb6d7f19475864b617c8560694b.png",
+        "level" : 88,
+        "name" : "宵宫",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/bd2c594f5db626a4a201db8e6d065097.png",
+        "id" : 10000052,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/1454c59a217067754644e91894f74f99.png",
+        "level" : 88,
+        "name" : "雷电将军",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2b7facb938409bca8df7014be009d8e5.png",
+        "id" : 10000054,
+        "is_chosen" : false,
+        "element" : "Hydro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/096d1f0d3ba7bc58d659cfee70f96acc.png",
+        "level" : 88,
+        "name" : "珊瑚宫心海",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/ef9b6cdce466d3063554ab557b9a196b.png",
+        "id" : 10000058,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d4dc260db9ebe2e48660743aed8aa69a.png",
+        "level" : 88,
+        "name" : "八重神子",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/fce49b53328b108a3dad6fdd8876d4ec.png",
+        "id" : 10000060,
+        "is_chosen" : false,
+        "element" : "Hydro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d8b66b5191c2ce1e4fea6569633d18f1.png",
+        "level" : 88,
+        "name" : "夜兰",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/706836185a52e2fd6a51b9bd3d9328d8.png",
+        "id" : 10000070,
+        "is_chosen" : false,
+        "element" : "Hydro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/870e69818112aa4a144809a6c838cc7d.png",
+        "level" : 88,
+        "name" : "妮露",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/165c595dbcd55fce381744253a2e1586.png",
+        "id" : 10000073,
+        "is_chosen" : false,
+        "element" : "Dendro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/a49f038170006b6279d5f221da73f319.png",
+        "level" : 88,
+        "name" : "纳西妲",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/e4940f1bf0a19b3c9254ec9a3d6bbb0a.png",
+        "id" : 10000075,
+        "is_chosen" : false,
+        "element" : "Anemo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/c67f9552c6c3575de62ac4d23467531d.png",
+        "level" : 88,
+        "name" : "流浪者",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/7cafb45639ad13f1028ceaa60dc87e93.png",
+        "id" : 10000078,
+        "is_chosen" : false,
+        "element" : "Dendro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/147043a4e44062d735c6a87d121f7845.png",
+        "level" : 88,
+        "name" : "艾尔海森",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/7250a7a202382829cc0ca047b1032da9.png",
+        "id" : 10000079,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/a0895e3be6221d60345c89d6b36a676f.png",
+        "level" : 88,
+        "name" : "迪希雅",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/3b43a09037f805a889bc6228e5b7029f.png",
+        "id" : 10000082,
+        "is_chosen" : false,
+        "element" : "Dendro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/07e695cdbc66afaa02c536a33c45782d.png",
+        "level" : 88,
+        "name" : "白术",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/23d80a9235cf75ef73515dd31bd2a20b.png",
+        "id" : 10000023,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/6e39d8b0366582b2e770a902bd505b0c.png",
+        "level" : 88,
+        "name" : "香菱",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/ee36c2ce51cff285ec70c5405e240c13.png",
+        "id" : 10000025,
+        "is_chosen" : false,
+        "element" : "Hydro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/824d3ceb202f5ed2c8985c45e794ea22.png",
+        "level" : 88,
+        "name" : "行秋",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/8d40a1ba1d73bebd7844befafcdd632a.png",
+        "id" : 10000031,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/446e6a545f547e0c6249bc06a12b0a20.png",
+        "level" : 88,
+        "name" : "菲谢尔",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/452ef19de2c552124361401be32de388.png",
+        "id" : 10000032,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/5c4f913c2975ecb6a53fe042e45315dc.png",
+        "level" : 88,
+        "name" : "班尼特",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/fe14cd9fd2158df253aca777c24d2c89.png",
+        "id" : 10000039,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/a6ba34764f85893109c2eefa25ffbc63.png",
+        "level" : 88,
+        "name" : "迪奥娜",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/6f9a3e9f24e46e8a020907fdba773cca.png",
+        "id" : 10000043,
+        "is_chosen" : false,
+        "element" : "Anemo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/6286745f3a88312477b9784649a82be7.png",
+        "level" : 88,
+        "name" : "砂糖",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/6e60e033c140bb04a693deb45b189dfd.png",
+        "id" : 10000045,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/rosaria_623de3bc25a21b6e516ea0489ddd11f8.png",
+        "level" : 88,
+        "name" : "罗莎莉亚",
+        "actived_constellation_num" : 4
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/6e4d8bbf0cbbc63ca02afd8822882782.png",
+        "id" : 10000050,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/5b75c1730937a9810e9a74e5f425bf24.png",
+        "level" : 88,
+        "name" : "托马",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/10c99edaaf542bb854ca110c4a473ef4.png",
+        "id" : 10000053,
+        "is_chosen" : false,
+        "element" : "Anemo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/c3cf7a8669e25edd68868b3ac9cec265.png",
+        "level" : 88,
+        "name" : "早柚",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/c0362ecad369358de123e23feaaff574.png",
+        "id" : 10000064,
+        "is_chosen" : false,
+        "element" : "Geo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/29e4b39ef63b8693ee3b9b82feaa1c8f.png",
+        "level" : 88,
+        "name" : "云堇",
+        "actived_constellation_num" : 4
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/1bbc8bd8ec9bf90b52e45097461f765a.png",
+        "id" : 10000065,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/aa8733cc0361b16d1f7b24984b07f6b8.png",
+        "level" : 88,
+        "name" : "久岐忍",
+        "actived_constellation_num" : 2
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/b555bbc8fe015850e0febc7a5a36f9cd.png",
+        "id" : 10000067,
+        "is_chosen" : false,
+        "element" : "Dendro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/789a8e3c137fa8c43de3c290e29b1e24.png",
+        "level" : 88,
+        "name" : "柯莱",
+        "actived_constellation_num" : 2
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/1fbb283187a1ae41711de13c6dae5b3d.png",
+        "id" : 10000076,
+        "is_chosen" : false,
+        "element" : "Anemo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d52e4e1c03eecfcf73b996bae4ee807d.png",
+        "level" : 88,
+        "name" : "珐露珊",
+        "actived_constellation_num" : 4
+      },
+      {
+        "fetter" : 7,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2892d99ecfd9277e85ccf67bda24ea28.png",
+        "id" : 10000083,
+        "is_chosen" : false,
+        "element" : "Anemo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/e94022e019126cf7c5918353b9c3c5db.png",
+        "level" : 88,
+        "name" : "琳妮特",
+        "actived_constellation_num" : 3
+      },
+      {
+        "fetter" : 6,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/ecc9206b74b2ed9b22c6a8292eaae99e.png",
+        "id" : 10000077,
+        "is_chosen" : false,
+        "element" : "Dendro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/0eacf739de3ff0da64d1a08a24c78135.png",
+        "level" : 88,
+        "name" : "瑶瑶",
+        "actived_constellation_num" : 1
+      },
+      {
+        "fetter" : 0,
+        "rarity" : 5,
+        "card_image" : "https:\/\/webstatic.mihoyo.com\/upload\/static-resource\/2023\/05\/08\/bae613577eb442ebe8afa7f5ef9de459_2574210978352150210.png",
+        "id" : 10000007,
+        "is_chosen" : false,
+        "element" : "Dendro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/static\/player\/UI_AvatarIcon_PlayerGirl.png",
+        "level" : 88,
+        "name" : "旅行者",
+        "actived_constellation_num" : 5
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/8d54abf34dc76ba73e0c1f9c05f4c15c.png",
+        "id" : 10000074,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/7982593b85e1efd138b1d8e5a38fab74.png",
+        "level" : 81,
+        "name" : "莱依拉",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2c32fa76d2d9fef469652ae596d21578.png",
+        "id" : 10000035,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/6bdb68945965356c495f67355b6c1087.png",
+        "level" : 70,
+        "name" : "七七",
+        "actived_constellation_num" : 4
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/5bd4d153cae3a8e801a0ac5b4018884e.png",
+        "id" : 10000027,
+        "is_chosen" : false,
+        "element" : "Geo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/79425f55938054e30cfad12ae4bd4845.png",
+        "level" : 70,
+        "name" : "凝光",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2c651194cc1ad0bf9aeecacc74cd40fc.png",
+        "id" : 10000006,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/57b4f4b8ed11accc62b1fceccd27dad9.png",
+        "level" : 60,
+        "name" : "丽莎",
+        "actived_constellation_num" : 5
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/c756bd9d74e2bfca2b9c24b018ce9a75.png",
+        "id" : 10000014,
+        "is_chosen" : false,
+        "element" : "Hydro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/ac98049477cb0e2874912948c5196152.png",
+        "level" : 50,
+        "name" : "芭芭拉",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 8,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/89ee0bbf98d863b4005a9d1e6b12f81f.png",
+        "id" : 10000034,
+        "is_chosen" : false,
+        "element" : "Geo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f0ca85aee1dc650e5cbac57827ac4a3b.png",
+        "level" : 40,
+        "name" : "诺艾尔",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 10,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/d92dfed99ce9350712502de787eef593.png",
+        "id" : 10000048,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/0649d0875d352eb2b80b47154c1b45a2.png",
+        "level" : 20,
+        "name" : "烟绯",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 2,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/c6275029df16ee4f0aaa9d0df5ca06d9.png",
+        "id" : 10000016,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/ba528d9402aad1983b203270fae5a9f5.png",
+        "level" : 20,
+        "name" : "迪卢克",
+        "actived_constellation_num" : 3
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 5,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/f20bd8fa3103b9e708beafd829bf9669.png",
+        "id" : 10000062,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/2738ed515917cff7d1dd73a78991eca8.png",
+        "level" : 20,
+        "name" : "埃洛伊",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d3d5c6bb09bcf53eb5a752ac3ad7821.png",
+        "id" : 10000015,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/ec7593e493c3e2f89cdae0a4b1dc8b81.png",
+        "level" : 20,
+        "name" : "凯亚",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/16a6b20756d66ef00c3f16da979789fe.png",
+        "id" : 10000020,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/badd821e75e9e7dc57492e9f452408a6.png",
+        "level" : 20,
+        "name" : "雷泽",
+        "actived_constellation_num" : 3
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/9613f7f4746668dfa62c4b2786f728e7.png",
+        "id" : 10000021,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/uploadstatic.mihoyo.com\/hk4e\/e20200928calculate\/common\/ambor_48e38b5882f6f03c35aa39aa34c4736b.png",
+        "level" : 20,
+        "name" : "安柏",
+        "actived_constellation_num" : 1
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/e1c89f643a5fdadcf3f864c4ae8466ed.png",
+        "id" : 10000024,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/093aff52952805cba0d68e22c0babf3f.png",
+        "level" : 20,
+        "name" : "北斗",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/dc8ffe80eb14ea71f8e4bb0a86b9cc99.png",
+        "id" : 10000036,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/beafbc1a8dfa371cce187cc602e18752.png",
+        "level" : 20,
+        "name" : "重云",
+        "actived_constellation_num" : 3
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/56ad1811167dc1bc38ad9b7fda533703.png",
+        "id" : 10000044,
+        "is_chosen" : false,
+        "element" : "Pyro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/708063d069bb1b08f401814a1ccdf53b.png",
+        "level" : 20,
+        "name" : "辛焱",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/4d0196ecf1eb90f9cd4ce7f392edb555.png",
+        "id" : 10000055,
+        "is_chosen" : false,
+        "element" : "Geo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/cb9ff521583a88948a2230468b5ddee3.png",
+        "level" : 20,
+        "name" : "五郎",
+        "actived_constellation_num" : 6
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/33648b1c67b56f3542b87d5da3d1fbc9.png",
+        "id" : 10000056,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/50d2475b831fba51c34b11cb1c17d2fa.png",
+        "level" : 20,
+        "name" : "九条裟罗",
+        "actived_constellation_num" : 2
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/b3146ca06907cd30ed0b7b064307365e.png",
+        "id" : 10000068,
+        "is_chosen" : false,
+        "element" : "Electro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/687912327dc462361bab8bbd36c421b7.png",
+        "level" : 20,
+        "name" : "多莉",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/252c0c3c86a72883981ed045080950dd.png",
+        "id" : 10000072,
+        "is_chosen" : false,
+        "element" : "Hydro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/b71fc7155fdff1cf8260f927f621af53.png",
+        "level" : 20,
+        "name" : "坎蒂丝",
+        "actived_constellation_num" : 1
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/81badc3efaf83ae4b8da796f5697687f.png",
+        "id" : 10000080,
+        "is_chosen" : false,
+        "element" : "Cryo",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/08db893d23e0fe8f520f14f757ee34f8.png",
+        "level" : 20,
+        "name" : "米卡",
+        "actived_constellation_num" : 0
+      },
+      {
+        "fetter" : 1,
+        "rarity" : 4,
+        "card_image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/29252021219d45659e3cd6a5d0823a29.png",
+        "id" : 10000081,
+        "is_chosen" : false,
+        "element" : "Dendro",
+        "image" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_icon_u8f88e\/63db3cb758b79aaa694159566352a2a7.png",
+        "level" : 20,
+        "name" : "卡维",
+        "actived_constellation_num" : 0
+      }
+    ]
+  }
+}

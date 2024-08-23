@@ -46,7 +46,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.priority = try container.decode(Int.self, forKey: .priority)
         self.server = try container.decode(HoYo.Server.self, forKey: .server)
         self.serverRawValue = try container.decode(String.self, forKey: .serverRawValue)
-        self.sTokenV2 = try container.decodeIfPresent(String.self, forKey: .sTokenV2)
+        self.sTokenV2 = try container.decodeIfPresent(String.self, forKey: .sTokenV2) ?? ""
         self.uid = try container.decode(String.self, forKey: .uid)
         self.uuid = try container.decode(UUID.self, forKey: .uuid)
         self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
@@ -63,7 +63,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     public var priority: Int = 0
     public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact)
     public var serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue
-    public var sTokenV2: String?
+    public var sTokenV2: String = ""
 
     public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact {
         willSet {
@@ -133,7 +133,7 @@ public struct FakePZProfileMO: ProfileMOProtocol {
     public var name: String = ""
     public var priority: Int = 0
     public var serverRawValue: String = ""
-    public var sTokenV2: String? = ""
+    public var sTokenV2: String = ""
     public var uuid: UUID = .init()
 
     public var id: UUID { uuid }

@@ -1,0 +1,72 @@
+{
+  "retcode" : 0,
+  "message" : "OK",
+  "data" : {
+    "region" : "os_asia",
+    "uid" : 812345678,
+    "nickname" : "雪喵",
+    "month_data" : {
+      "current_primogems" : 3490,
+      "primogem_rate" : -56,
+      "last_mora" : 10247758,
+      "mora_rate" : -64,
+      "group_by" : [
+        {
+          "percent" : 30,
+          "num" : 1020,
+          "action_id" : 3,
+          "action" : "Daily Activity"
+        },
+        {
+          "percent" : 25,
+          "num" : 870,
+          "action_id" : 6,
+          "action" : "Events"
+        },
+        {
+          "percent" : 19,
+          "num" : 640,
+          "action_id" : 5,
+          "action" : "Mail"
+        },
+        {
+          "percent" : 17,
+          "num" : 600,
+          "action_id" : 4,
+          "action" : "Spiral Abyss"
+        },
+        {
+          "percent" : 6,
+          "num" : 216,
+          "action_id" : 1,
+          "action" : "Adventure"
+        },
+        {
+          "percent" : 1,
+          "num" : 60,
+          "action_id" : 2,
+          "action" : "Quests"
+        },
+        {
+          "percent" : 2,
+          "num" : 84,
+          "action_id" : 0,
+          "action" : "Other"
+        }
+      ],
+      "last_primogems" : 7977,
+      "current_mora" : 3680212
+    },
+    "optional_month" : [
+      8,
+      9,
+      10
+    ],
+    "month" : 10,
+    "data_month" : 10,
+    "day_data" : {
+      "current_primogems" : 0,
+      "current_mora" : 0
+    }
+  }
+}

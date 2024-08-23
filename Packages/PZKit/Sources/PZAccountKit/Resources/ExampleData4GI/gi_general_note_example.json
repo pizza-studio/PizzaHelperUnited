@@ -1,0 +1,98 @@
+{
+  "retcode" : 0,
+  "message" : "OK",
+  "data" : {
+    "total_task_num" : 4,
+    "max_resin" : 160,
+    "resin_discount_num_limit" : 3,
+    "current_resin" : 55,
+    "current_expedition_num" : 5,
+    "home_coin_recovery_time" : "164417",
+    "calendar_url" : "",
+    "daily_task" : {
+      "finished_num" : 4,
+      "is_extra_task_reward_received" : true,
+      "attendance_rewards" : [
+        {
+          "status" : "AttendanceRewardStatusTakenAward",
+          "progress" : 2000
+        },
+        {
+          "status" : "AttendanceRewardStatusTakenAward",
+          "progress" : 2000
+        },
+        {
+          "status" : "AttendanceRewardStatusTakenAward",
+          "progress" : 2000
+        },
+        {
+          "status" : "AttendanceRewardStatusTakenAward",
+          "progress" : 2000
+        }
+      ],
+      "total_num" : 4,
+      "task_rewards" : [
+        {
+          "status" : "TaskRewardStatusUnfinished"
+        },
+        {
+          "status" : "TaskRewardStatusUnfinished"
+        },
+        {
+          "status" : "TaskRewardStatusUnfinished"
+        },
+        {
+          "status" : "TaskRewardStatusUnfinished"
+        }
+      ],
+      "attendance_visible" : true
+    },
+    "max_home_coin" : 2400,
+    "expeditions" : [
+      {
+        "status" : "Ongoing",
+        "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/8c08c93d61e4f4da591d56dd8dab8287.png",
+        "remained_time" : "27195"
+      },
+      {
+        "status" : "Ongoing",
+        "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/1498c7158c0875b0cf1c667ab2a9f8c4.png",
+        "remained_time" : "27195"
+      },
+      {
+        "status" : "Ongoing",
+        "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/a6cb35ffbfe4f9c93ab2e98f9ed27425.png",
+        "remained_time" : "45115"
+      },
+      {
+        "status" : "Ongoing",
+        "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/bb98002c172f4ccb9f18778bb19c65a1.png",
+        "remained_time" : "45115"
+      },
+      {
+        "status" : "Ongoing",
+        "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/8af1c9288d855e2551daae602ab8a543.png",
+        "remained_time" : "45115"
+      }
+    ],
+    "max_expedition_num" : 5,
+    "finished_task_num" : 4,
+    "is_extra_task_reward_received" : true,
+    "current_home_coin" : 1020,
+    "remain_resin_discount_num" : 2,
+    "transformer" : {
+      "obtained" : true,
+      "recovery_time" : {
+        "Day" : 0,
+        "Minute" : 0,
+        "reached" : true,
+        "Second" : 0,
+        "Hour" : 0
+      },
+      "noticed" : false,
+      "latest_job_id" : "0",
+      "wiki" : "https:\/\/bbs.mihoyo.com\/ys\/obc\/content\/1562\/detail?bbs_presentation_style=no_header"
+    },
+    "resin_recovery_time" : "50002"
+  }
+}
