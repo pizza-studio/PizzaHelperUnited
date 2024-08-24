@@ -35,7 +35,7 @@ struct PhotoSpecimenView: View {
         }.formStyle(.grouped)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Picker("", selection: $game.animation()) {
+                    Picker("".description, selection: $game.animation()) {
                         Text("game.genshin.shortNameEX".i18nBaseKit)
                             .tag(Enka.GameType.genshinImpact)
                         Text("game.starRail.shortNameEX".i18nBaseKit)
