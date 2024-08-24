@@ -76,7 +76,7 @@ public struct AccountMODebugView: View {
         .formStyle(.grouped)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Picker("", selection: $game.animation()) {
+                Picker("".description, selection: $game.animation()) {
                     ForEach(Pizza.SupportedGame.allCases) { enumeratedGame in
                         Text(enumeratedGame.localizedShortName)
                             .tag(enumeratedGame)

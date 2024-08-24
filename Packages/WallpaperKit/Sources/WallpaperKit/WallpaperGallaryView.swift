@@ -32,7 +32,7 @@ public struct WallpaperGalleryViewContent: View {
             let placement: ToolbarItemPlacement = .topBarTrailing
             #endif
             ToolbarItem(placement: placement) {
-                Picker("", selection: $game.animation()) {
+                Picker("".description, selection: $game.animation()) {
                     Text("game.genshin.shortNameEX".i18nBaseKit)
                         .tag(Pizza.SupportedGame.genshinImpact)
                     Text("game.starRail.shortNameEX".i18nBaseKit)
