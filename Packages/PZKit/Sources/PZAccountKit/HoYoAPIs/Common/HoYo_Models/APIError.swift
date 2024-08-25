@@ -6,19 +6,19 @@ import Foundation
 
 public enum MiHoYoAPIError: Error, LocalizedError {
     case verificationNeeded
-    case fingerPrintNeeded
-    case noSTokenV2
+    case fingerPrintInvalidOrMissing
+    case sTokenV2InvalidOrMissing
+    case reloginRequired
     case other(retcode: Int, message: String)
 
     // MARK: Lifecycle
 
     public init(retcode: Int, message: String) {
-        if retcode == 1034 || retcode == 10035 {
-            self = .verificationNeeded
-        } else if retcode == 5003 {
-            self = .fingerPrintNeeded
-        } else {
-            self = .other(retcode: retcode, message: message)
+        self = switch retcode {
+        case 1034, 10035: .verificationNeeded
+        case 5003: .fingerPrintInvalidOrMissing
+        case 10001: .reloginRequired
+        default: .other(retcode: retcode, message: message)
         }
     }
 
@@ -29,8 +29,9 @@ public enum MiHoYoAPIError: Error, LocalizedError {
     public var localizedDescription: String {
         switch self {
         case .verificationNeeded: "MiHoYoAPIError.verificationNeeded".i18nAK
-        case .fingerPrintNeeded: "MiHoYoAPIError.fingerPrintNeeded".i18nAK
-        case .noSTokenV2: "MiHoYoAPIError.noSTokenV2".i18nAK
+        case .fingerPrintInvalidOrMissing: "MiHoYoAPIError.fingerPrintInvalidOrMissing".i18nAK
+        case .sTokenV2InvalidOrMissing: "MiHoYoAPIError.sTokenV2InvalidOrMissing".i18nAK
+        case .reloginRequired: "MiHoYoAPIError.reloginRequired".i18nAK
         case let .other(retcode, message):
             "[HoYoAPIErr] Ret: \(retcode); Msg: \(message)"
         }

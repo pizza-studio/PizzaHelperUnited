@@ -24,7 +24,7 @@ extension HoYo {
                     deviceId: deviceId
                 )
             } else {
-                throw MiHoYoAPIError.noSTokenV2
+                throw MiHoYoAPIError.sTokenV2InvalidOrMissing
             }
         case .hoyoLab:
             return try await generalNote4GI(
