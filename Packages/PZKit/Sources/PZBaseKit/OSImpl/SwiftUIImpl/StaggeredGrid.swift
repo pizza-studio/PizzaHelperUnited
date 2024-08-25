@@ -1,7 +1,6 @@
-//  StaggeredGrid.swift
-//  StaggeredGrid (iOS)
+//  StaggeredGrid for SwiftUI.
 //
-//  Created by 李宇鸿 on 2022/8/13.
+//  Written by 李宇鸿 on 2022/8/13.
 //  ref: https://blog.csdn.net/qq_42816425/article/details/126325803
 
 import SwiftUI
