@@ -11,7 +11,8 @@ extension HoYo {
             server: profile.server,
             uid: profile.uid,
             cookie: profile.cookie,
-            deviceFingerPrint: profile.deviceFingerPrint
+            deviceFingerPrint: profile.deviceFingerPrint,
+            deviceID: profile.deviceID
         )
     }
 
@@ -28,19 +29,24 @@ extension HoYo {
         server: Server,
         uid: String,
         cookie: String,
-        deviceFingerPrint: String?
+        deviceFingerPrint: String?,
+        deviceID: String?
     ) async throws
         -> Note4HSR {
-        let deviceFingerPrint = deviceFingerPrint ?? ThisDevice.identifier4Vendor
         switch server.region {
         case .miyoushe:
-            return try await widgetNote4HSR(cookie: cookie, deviceFingerPrint: deviceFingerPrint)
+            return try await widgetNote4HSR(
+                cookie: cookie,
+                deviceFingerPrint: deviceFingerPrint,
+                deviceID: deviceID
+            )
         case .hoyoLab:
             return try await generalNote4HSR(
                 server: server,
                 uid: uid,
                 cookie: cookie,
-                deviceFingerPrint: deviceFingerPrint
+                deviceFingerPrint: deviceFingerPrint,
+                deviceID: deviceID
             )
         }
     }
@@ -58,7 +64,8 @@ extension HoYo {
         server: Server,
         uid: String,
         cookie: String,
-        deviceFingerPrint: String?
+        deviceFingerPrint: String?,
+        deviceID: String?
     ) async throws
         -> GeneralNote4HSR {
 //        #if DEBUG
@@ -69,8 +76,11 @@ extension HoYo {
             .init(name: "server", value: server.rawValue),
         ]
         let additionalHeaders: [String: String]? = {
-            if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
-                return ["x-rpc-device_fp": deviceFingerPrint]
+            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceID {
+                return [
+                    "x-rpc-device_fp": deviceFingerPrint,
+                    "x-rpc-device_id": deviceID,
+                ]
             } else {
                 return nil
             }
@@ -95,15 +105,17 @@ extension HoYo {
     ///   - deviceFingerPrint: The device finger print of the user.
     static func widgetNote4HSR(
         cookie: String,
-        deviceFingerPrint: String?
+        deviceFingerPrint: String?,
+        deviceID: String?
     ) async throws
         -> WidgetNote4HSR {
         var additionalHeaders = [
             "User-Agent": "WidgetExtension/434 CFNetwork/1492.0.1 Darwin/23.3.0",
         ]
 
-        if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
+        if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceID {
             additionalHeaders.updateValue(deviceFingerPrint, forKey: "x-rpc-device_fp")
+            additionalHeaders.updateValue(deviceID, forKey: "x-rpc-device_id")
         }
 
         let request = try await Self.generateRecordAPIRequest(

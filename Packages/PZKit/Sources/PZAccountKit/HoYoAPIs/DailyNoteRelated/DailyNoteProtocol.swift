@@ -18,19 +18,9 @@ extension PZProfileMO {
     public func getDailyNote() async throws -> DailyNoteProtocol {
         switch game {
         case .genshinImpact:
-            try await HoYo.note4GI(
-                server: server,
-                uid: uid,
-                cookie: cookie,
-                deviceFingerPrint: deviceFingerPrint
-            )
+            try await HoYo.note4GI(profile: self)
         case .starRail:
-            try await HoYo.note4HSR(
-                server: server,
-                uid: uid,
-                cookie: cookie,
-                deviceFingerPrint: deviceFingerPrint
-            )
+            try await HoYo.note4HSR(profile: self)
         }
     }
 }

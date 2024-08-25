@@ -11,7 +11,8 @@ extension HoYo {
             server: profile.server,
             uid: profile.uid,
             cookie: profile.cookie,
-            deviceFingerPrint: profile.deviceFingerPrint
+            deviceFingerPrint: profile.deviceFingerPrint,
+            deviceID: profile.deviceID
         )
     }
 
@@ -21,10 +22,9 @@ extension HoYo {
         cookie: String,
         sTokenV2: String? = nil,
         deviceFingerPrint: String?,
-        deviceId: String? = ThisDevice.identifier4Vendor
+        deviceID: String?
     ) async throws
         -> any Note4GI {
-        let deviceFingerPrint = deviceFingerPrint ?? ThisDevice.identifier4Vendor
         switch server.region {
         case .miyoushe:
             if let sTokenV2 {
@@ -32,13 +32,13 @@ extension HoYo {
                     cookie: cookie,
                     sTokenV2: sTokenV2,
                     deviceFingerPrint: deviceFingerPrint,
-                    deviceId: deviceId
+                    deviceID: deviceID
                 )
             } else if cookie.contains("stoken=v2_") {
                 return try await widgetNote4GI(
                     cookie: cookie,
                     deviceFingerPrint: deviceFingerPrint,
-                    deviceId: deviceId
+                    deviceID: deviceID
                 )
             } else {
                 throw MiHoYoAPIError.sTokenV2InvalidOrMissing
@@ -49,7 +49,7 @@ extension HoYo {
                 uid: uid,
                 cookie: cookie,
                 deviceFingerPrint: deviceFingerPrint,
-                deviceId: deviceId
+                deviceID: deviceID
             )
         }
     }
@@ -59,7 +59,7 @@ extension HoYo {
         uid: String,
         cookie: String,
         deviceFingerPrint: String?,
-        deviceId: String?
+        deviceID: String?
     ) async throws
         -> GeneralNote4GI {
         let queryItems: [URLQueryItem] = [
@@ -68,10 +68,10 @@ extension HoYo {
         ]
 
         let additionalHeaders: [String: String]? = {
-            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
+            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceID {
                 return [
                     "x-rpc-device_fp": deviceFingerPrint,
-                    "x-rpc-device_id": deviceId,
+                    "x-rpc-device_id": deviceID,
                 ]
             } else {
                 return nil
@@ -95,7 +95,7 @@ extension HoYo {
         cookie: String,
         sTokenV2: String = "",
         deviceFingerPrint: String?,
-        deviceId: String?
+        deviceID: String?
     ) async throws
         -> WidgetNote4GI {
         var cookie = cookie + "stoken: \(sTokenV2)"
@@ -103,10 +103,10 @@ extension HoYo {
             cookie += "stoken: \(sTokenV2)"
         }
         let additionalHeaders: [String: String]? = {
-            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
+            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceID {
                 return [
                     "x-rpc-device_fp": deviceFingerPrint,
-                    "x-rpc-device_id": deviceId,
+                    "x-rpc-device_id": deviceID,
                 ]
             } else {
                 return nil
