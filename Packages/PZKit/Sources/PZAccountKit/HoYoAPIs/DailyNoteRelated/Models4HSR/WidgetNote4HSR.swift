@@ -12,7 +12,7 @@ public struct WidgetNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
 
     public init(from decoder: Decoder) throws {
         let decoder = try decoder.singleValueContainer()
-        self.staminaInfoHSR = try decoder.decode(StaminaInfo4HSR.self)
+        self.staminaInfo = try decoder.decode(StaminaInfo4HSR.self)
         self.assignmentInfo = try decoder.decode(AssignmentInfo4HSR.self)
         self.simulatedUniverseInfo = try decoder.decode(SimuUnivInfo4HSR.self)
         self.dailyTrainingInfo = try decoder.decode(DailyTrainingInfo4HSR.self)
@@ -21,7 +21,7 @@ public struct WidgetNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
     // MARK: Public
 
     /// Stamina info
-    public var staminaInfoHSR: StaminaInfo4HSR
+    public var staminaInfo: StaminaInfo4HSR
     /// Assignment info
     public var assignmentInfo: AssignmentInfo4HSR
     /// The time when this struct is generated
@@ -37,7 +37,7 @@ public struct WidgetNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
 extension WidgetNote4HSR: BenchmarkTimeEditable {
     public func replacingBenchmarkTime(_ newBenchmarkTime: Date) -> WidgetNote4HSR {
         var newNote4HSR = self
-        newNote4HSR.staminaInfoHSR = staminaInfoHSR.replacingBenchmarkTime(newBenchmarkTime)
+        newNote4HSR.staminaInfo = staminaInfo.replacingBenchmarkTime(newBenchmarkTime)
         newNote4HSR.assignmentInfo = assignmentInfo.replacingBenchmarkTime(newBenchmarkTime)
         return newNote4HSR
     }

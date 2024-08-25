@@ -3,8 +3,18 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 extension HoYo {
+    public static func note4HSR(profile: PZProfileMO) async throws -> Note4HSR {
+        try await note4HSR(
+            server: profile.server,
+            uid: profile.uid,
+            cookie: profile.cookie,
+            deviceFingerPrint: profile.deviceFingerPrint
+        )
+    }
+
     /// Fetches the daily note of the specified user.
     ///
     /// - Parameter server: The server where the user's account exists.
@@ -14,13 +24,14 @@ extension HoYo {
     /// - Throws: An error of type `MiHoYoAPIError` if an error occurs while making the API request.
     ///
     /// - Returns: An instance of `Note4HSR` that represents the user's daily note.
-    public static func note4HSR(
+    static func note4HSR(
         server: Server,
         uid: String,
         cookie: String,
         deviceFingerPrint: String?
     ) async throws
         -> Note4HSR {
+        let deviceFingerPrint = deviceFingerPrint ?? ThisDevice.identifier4Vendor
         switch server.region {
         case .miyoushe:
             return try await widgetNote4HSR(cookie: cookie, deviceFingerPrint: deviceFingerPrint)
