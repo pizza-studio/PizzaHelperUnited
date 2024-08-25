@@ -8,13 +8,12 @@ import SwiftUI
 
 // MARK: - CharSpecimen
 
-@MainActor
 public struct CharSpecimen: Identifiable, Hashable {
     // MARK: Public
 
     public let id: String
 
-    @ViewBuilder
+    @ViewBuilder @MainActor
     public static func renderAllSpecimen(
         for game: Enka.GameType?,
         scroll: Bool,
@@ -41,7 +40,7 @@ public struct CharSpecimen: Identifiable, Hashable {
         }
     }
 
-    @ViewBuilder
+    @ViewBuilder @MainActor
     public func render(size: Double, cutType: IDPhotoView4HSR.IconType = .cutShoulder) -> some View {
         if id.count == 4 {
             if let first = IDPhotoView4HSR(pid: id, size, cutType, forceRender: true) {
@@ -86,7 +85,6 @@ public struct CharSpecimen: Identifiable, Hashable {
 
 // MARK: - AllCharacterPhotoSpecimenViewPerGame
 
-@MainActor
 public struct AllCharacterPhotoSpecimenViewPerGame: View {
     // MARK: Lifecycle
 
@@ -102,7 +100,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         coreBodyView.overlay {
             GeometryReader { geometry in
                 Color.clear.onAppear {
@@ -130,7 +128,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
         (($containerSize.wrappedValue.width / Double(columns)) - 8.0).rounded(.down)
     }
 
-    @ViewBuilder var coreBodyView: some View {
+    @MainActor @ViewBuilder var coreBodyView: some View {
         CharSpecimen.renderAllSpecimen(
             for: game,
             scroll: scroll,

@@ -10,7 +10,6 @@ import SwiftUI
 
 // MARK: - ContentView
 
-@MainActor
 public struct ContentView: View {
     // MARK: Lifecycle
 
@@ -18,7 +17,7 @@ public struct ContentView: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         TabView(selection: index) {
             ForEach(NavItems.allCases) { navCase in
                 if navCase.isExposed {

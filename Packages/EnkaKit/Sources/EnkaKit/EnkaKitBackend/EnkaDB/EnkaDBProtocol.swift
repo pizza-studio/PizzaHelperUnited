@@ -57,7 +57,6 @@ extension EnkaDBProtocol {
         return self
     }
 
-    @MainActor
     func getCachedProfileRAW(uid: String) -> QueriedProfile? {
         QueriedProfile.getCachedProfile(uid: uid)
     }

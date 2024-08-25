@@ -149,7 +149,7 @@ struct GetCookieQRCodeView: View {
         }
     }
 
-    public var body: some View {
+    @MainActor public var body: some View {
         NavigationStack {
             List {
                 Section {

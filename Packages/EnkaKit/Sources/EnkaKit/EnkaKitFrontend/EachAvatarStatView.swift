@@ -9,7 +9,6 @@ import WallpaperKit
 
 // MARK: - EachAvatarStatView
 
-@MainActor
 public struct EachAvatarStatView: View {
     // MARK: Lifecycle
 
@@ -22,7 +21,7 @@ public struct EachAvatarStatView: View {
 
     public let data: Enka.AvatarSummarized
 
-    public var body: some View {
+    @MainActor public var body: some View {
         // 按照 iPhone SE2-SE3 的标准画面解析度（375 × 667）制作。
         LazyVStack(spacing: outerContentSpacing) {
             data.mainInfo.asView(fontSize: fontSize)
@@ -413,7 +412,6 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
 
 // MARK: - WeaponPanelView
 
-@MainActor
 private struct WeaponPanelView: View {
     // MARK: Lifecycle
 
@@ -425,7 +423,7 @@ private struct WeaponPanelView: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         HStack(spacing: fontSize * 0.4) {
             background
                 .frame(width: fontSize * 4.46, height: fontSize * 4.46)
@@ -693,7 +691,7 @@ public struct AttributeTagPair: View {
     public let shortenedTitle: String
     public let iconImg: Image?
 
-    public var body: some View {
+    @MainActor public var body: some View {
         HStack(spacing: 0) {
             iconImg?
                 .aspectRatio(contentMode: .fit)

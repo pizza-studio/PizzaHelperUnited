@@ -5,7 +5,7 @@
 import Foundation
 import Observation
 
-@Observable @MainActor
+@Observable
 public final class ViewEventBroadcaster {
     public static let shared = ViewEventBroadcaster()
 

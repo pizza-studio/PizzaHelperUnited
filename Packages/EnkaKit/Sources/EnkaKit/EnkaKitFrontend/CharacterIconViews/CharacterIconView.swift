@@ -8,7 +8,6 @@ import WallpaperKit
 
 // MARK: - CharacterIconView
 
-@MainActor
 public struct CharacterIconView: View {
     // MARK: Lifecycle
 
@@ -56,7 +55,7 @@ public struct CharacterIconView: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         switch (game, isCard) {
         case (.starRail, true): cardIconHSR
         case (.starRail, false): normalIconHSR

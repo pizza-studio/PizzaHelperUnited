@@ -7,10 +7,10 @@ import SwiftUI
 // MARK: - IDPhotoFallbackView
 
 /// 仅用于 EnkaDB 还没更新的场合。
-@MainActor
 struct IDPhotoFallbackView4HSR: View {
     // MARK: Lifecycle
 
+    @MainActor
     public init?(
         pid: String,
         _ size: CGFloat,
@@ -28,7 +28,7 @@ struct IDPhotoFallbackView4HSR: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         coreBody.compositingGroup()
     }
 
@@ -39,6 +39,7 @@ struct IDPhotoFallbackView4HSR: View {
     class Coordinator {
         // MARK: Lifecycle
 
+        @MainActor
         public init?(pid: String) {
             self.pid = pid
             let fallbackPID = Enka.CharacterName.convertPIDForHSRProtagonist(pid)
@@ -60,7 +61,7 @@ struct IDPhotoFallbackView4HSR: View {
 
     @Environment(\.colorScheme) var colorScheme
 
-    var coreBody: some View {
+    @MainActor var coreBody: some View {
         switch iconType {
         case .asCard: return AnyView(cardView)
         default: return AnyView(circleIconView)
@@ -74,7 +75,7 @@ struct IDPhotoFallbackView4HSR: View {
         }
     }
 
-    @ViewBuilder var cardView: some View {
+    @MainActor @ViewBuilder var cardView: some View {
         imageObj
             .scaledToFill()
             .frame(width: size * iconType.rawValue, height: size * iconType.rawValue)
@@ -89,7 +90,7 @@ struct IDPhotoFallbackView4HSR: View {
             .contentShape(RoundedRectangle(cornerRadius: size / 10))
     }
 
-    @ViewBuilder var circleIconView: some View {
+    @MainActor @ViewBuilder var circleIconView: some View {
         let ratio = 179.649 / 1024
         let cornerSize = CGSize(width: ratio * size, height: ratio * size)
         let roundCornerSize = CGSize(width: size / 2, height: size / 2)
@@ -108,13 +109,13 @@ struct IDPhotoFallbackView4HSR: View {
             .contentShape(RoundedRectangle(cornerSize: roundRect ? cornerSize : roundCornerSize))
     }
 
-    var imageObj: some View {
+    @MainActor var imageObj: some View {
         imageHandler(coordinator.charAvatarImage)
             .resizable()
             .aspectRatio(contentMode: .fit)
     }
 
-    @ViewBuilder var backgroundObj: some View {
+    @MainActor @ViewBuilder var backgroundObj: some View {
         Group {
             coordinator.backgroundImage
                 .resizable()

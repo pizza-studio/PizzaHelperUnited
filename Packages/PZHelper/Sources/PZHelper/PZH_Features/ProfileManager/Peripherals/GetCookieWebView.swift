@@ -31,7 +31,7 @@ struct GetCookieWebView: View {
 
     @State var showAlert: Bool = true
 
-    var body: some View {
+    @MainActor var body: some View {
         NavigationStack {
             CookieGetterWebView(
                 url: getAccountPageLoginURL(region: region),

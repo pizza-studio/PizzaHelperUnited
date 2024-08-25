@@ -12,7 +12,7 @@ public protocol LocalAssetSuppliable {
 }
 
 extension LocalAssetSuppliable {
-    @MainActor public var localIcon4SUI: Image {
+    public var localIcon4SUI: Image {
         Image(iconAssetName, bundle: Bundle.module).resizable()
     }
 

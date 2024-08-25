@@ -9,7 +9,6 @@ import SwiftUI
 
 // MARK: - AppSettingsTabPage
 
-@MainActor
 struct AppSettingsTabPage: View {
     // MARK: Internal
 
@@ -20,7 +19,7 @@ struct AppSettingsTabPage: View {
         case otherSettings
     }
 
-    var body: some View {
+    @MainActor var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
                 Section {

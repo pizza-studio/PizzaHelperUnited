@@ -11,11 +11,9 @@ import SwiftUI
 
 // MARK: - CaseQuerySection
 
-@MainActor
 public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     // MARK: Lifecycle
 
-    @MainActor
     public init(theDB: QueryDB, focus: FocusState<Bool>.Binding? = nil) {
         self.theDB = theDB
         self.focused = focus
@@ -23,7 +21,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         Section {
             queryInputSection()
             if let result = delegate.currentInfo {
@@ -86,7 +84,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     var focused: FocusState<Bool>.Binding?
     @FocusState var backupFocus: Bool
 
-    @ViewBuilder var textFieldView: some View {
+    @MainActor @ViewBuilder var textFieldView: some View {
         TextField("UID".description, text: $givenUID)
             .focused(focused ?? $backupFocus)
             .onReceive(Just(givenUID)) { _ in formatText() }
@@ -101,7 +99,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
             .disabled(delegate.taskState == .busy)
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func sectionHeader() -> some View {
         switch QueryDB.game {
         case .genshinImpact:
@@ -111,7 +109,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func sectionFooterWithExplainTexts() -> some View {
         switch QueryDB.game {
         case .genshinImpact:
@@ -121,7 +119,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func queryInputSection() -> some View {
         HStack {
             textFieldView
@@ -150,10 +148,9 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
         backupFocus = false
     }
 
+    @MainActor
     func triggerUpdateTask() {
-        Task {
-            delegate.update(givenUID: Int(givenUID))
-        }
+        delegate.update(givenUID: Int(givenUID))
     }
 
     // MARK: Private
@@ -184,7 +181,6 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
 extension CaseQuerySection {
     @Observable
-    @MainActor
     class Coordinator<CoordinatedDB: EnkaDBProtocol> {
         // MARK: Lifecycle
 

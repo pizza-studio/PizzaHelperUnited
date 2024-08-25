@@ -13,7 +13,6 @@ import SwiftUI
 
 // MARK: - DetailPortalTabPage
 
-@MainActor
 struct DetailPortalTabPage: View {
     // MARK: Lifecycle
 
@@ -21,7 +20,7 @@ struct DetailPortalTabPage: View {
 
     // MARK: Internal
 
-    var body: some View {
+    @MainActor var body: some View {
         NavigationStack {
             Form {
                 formContent
