@@ -63,7 +63,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     public var priority: Int = 0
     public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact)
     public var serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue
-    public var sTokenV2: String = ""
+    public var sTokenV2: String? = ""
 
     public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact {
         willSet {
@@ -133,7 +133,7 @@ public struct FakePZProfileMO: ProfileMOProtocol {
     public var name: String = ""
     public var priority: Int = 0
     public var serverRawValue: String = ""
-    public var sTokenV2: String = ""
+    public var sTokenV2: String? = ""
     public var uuid: UUID = .init()
 
     public var id: UUID { uuid }
