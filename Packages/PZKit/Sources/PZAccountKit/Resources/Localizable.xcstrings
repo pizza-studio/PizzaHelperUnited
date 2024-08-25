@@ -59,60 +59,89 @@
         }
       }
     },
-    "MiHoYoAPIError.fingerPrintNeeded" : {
+    "MiHoYoAPIError.fingerPrintInvalidOrMissing" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPIErr] Device fingerprint missing from the stored cookie."
+            "value" : "[HoYoAPIErr] Device fingerprint is either wrecked or missing from the stored cookie."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPIエラー] Cookie には端末指紋が欠缺。"
+            "value" : "[HoYoAPIエラー] Cookie には端末指紋が欠缺・無効。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] Cookie 尚未包含设备指纹资料。"
+            "value" : "[HoYoAPI错误] Cookie 尚未包含设备指纹资料、或相关资料失效。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI錯誤] Cookie 尚未包含裝置指紋資料。"
+            "value" : "[HoYoAPI錯誤] Cookie 尚未包含裝置指紋資料、或相關資料失效。"
           }
         }
       }
     },
-    "MiHoYoAPIError.noSTokenV2" : {
+    "MiHoYoAPIError.reloginRequired" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPIErr] STokenV2 is missing from the stored cookie."
+            "value" : "[HoYoAPIErr] Please relogin."
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "[HoYoAPIエラー] Cookie には STokenV2 が欠缺。"
+            "state" : "translated",
+            "value" : "[HoYoAPIエラー] 再ログインが必要である。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "[HoYoAPI错误] Cookie 尚未包含 STokenV2 资料。"
+            "state" : "translated",
+            "value" : "[HoYoAPI错误] 请重新登入。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "[HoYoAPI錯誤] Cookie 尚未包含 STokenV2 資料。"
+            "state" : "translated",
+            "value" : "[HoYoAPI錯誤] 請重新登入。"
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.sTokenV2InvalidOrMissing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] STokenV2 is either wrecked or missing from the stored cookie."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIエラー] Cookie には STokenV2 が欠缺・無効。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPI错误] Cookie 尚未包含 STokenV2 资料、或相关资料失效。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPI錯誤] Cookie 尚未包含 STokenV2 資料、或相關資料失效。"
           }
         }
       }
