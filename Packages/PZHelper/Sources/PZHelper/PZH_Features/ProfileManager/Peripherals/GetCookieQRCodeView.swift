@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - GetCookieQRCodeView
 
 struct GetCookieQRCodeView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State var viewModel = GetCookieQRCodeViewModel.shared
     @Binding var cookie: String
     @Binding var deviceFP: String
@@ -105,7 +105,9 @@ struct GetCookieQRCodeView: View {
         cookie += "mid=" + parsedResult.mid + "; "
         try await extraCookieProcess(cookie: &cookie)
         self.cookie = cookie
-        if shouldDismiss { dismiss() }
+        if shouldDismiss {
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 
     @ViewBuilder
@@ -206,7 +208,7 @@ struct GetCookieQRCodeView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("sys.cancel".i18nBaseKit) {
-                        dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }
