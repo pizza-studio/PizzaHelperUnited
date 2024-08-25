@@ -3,10 +3,11 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - Note4GI
 
-public protocol Note4GI {
+public protocol Note4GI: DailyNoteProtocol {
     associatedtype DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI
     var dailyTaskInfo: DailyTaskInfo4GI { get }
     associatedtype ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI
@@ -15,6 +16,10 @@ public protocol Note4GI {
     var homeCoinInfo: HomeCoinInfo4GI { get }
     associatedtype ResinInfo4GI: PZAccountKit.ResinInfo4GI
     var resinInfo: ResinInfo4GI { get }
+}
+
+extension Note4GI {
+    public static var game: Pizza.SupportedGame { .genshinImpact }
 }
 
 // MARK: - DailyTaskInfo4GI

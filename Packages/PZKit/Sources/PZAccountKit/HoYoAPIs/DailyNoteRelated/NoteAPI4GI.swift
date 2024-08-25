@@ -3,23 +3,40 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 extension HoYo {
-    public static func note4GI(
+    public static func note4GI(profile: PZProfileMO) async throws -> any Note4GI {
+        try await note4GI(
+            server: profile.server,
+            uid: profile.uid,
+            cookie: profile.cookie,
+            deviceFingerPrint: profile.deviceFingerPrint
+        )
+    }
+
+    static func note4GI(
         server: Server,
         uid: String,
         cookie: String,
-        sTokenV2: String?,
+        sTokenV2: String? = nil,
         deviceFingerPrint: String?,
-        deviceId: String?
+        deviceId: String? = ThisDevice.identifier4Vendor
     ) async throws
         -> any Note4GI {
+        let deviceFingerPrint = deviceFingerPrint ?? ThisDevice.identifier4Vendor
         switch server.region {
         case .miyoushe:
             if let sTokenV2 {
                 return try await widgetNote4GI(
                     cookie: cookie,
                     sTokenV2: sTokenV2,
+                    deviceFingerPrint: deviceFingerPrint,
+                    deviceId: deviceId
+                )
+            } else if cookie.contains("stoken=v2_") {
+                return try await widgetNote4GI(
+                    cookie: cookie,
                     deviceFingerPrint: deviceFingerPrint,
                     deviceId: deviceId
                 )
@@ -76,12 +93,15 @@ extension HoYo {
 
     static func widgetNote4GI(
         cookie: String,
-        sTokenV2: String,
+        sTokenV2: String = "",
         deviceFingerPrint: String?,
         deviceId: String?
     ) async throws
         -> WidgetNote4GI {
-        let cookie = cookie + "stoken: \(sTokenV2)"
+        var cookie = cookie + "stoken: \(sTokenV2)"
+        if !cookie.contains("stoken=v2_"), !sTokenV2.isEmpty {
+            cookie += "stoken: \(sTokenV2)"
+        }
         let additionalHeaders: [String: String]? = {
             if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
                 return [

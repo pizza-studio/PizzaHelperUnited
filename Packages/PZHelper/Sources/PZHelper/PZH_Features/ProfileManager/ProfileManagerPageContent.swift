@@ -235,13 +235,9 @@ struct ProfileManagerPageContent: View {
     }
 }
 
-extension ProfileManagerPageContent {
-    @Observable
-    class AlertToastEventStatus {
-        var isDoneButtonTapped = false
-        var isLoginSucceeded = false
-    }
+// MARK: ProfileManagerPageContent.SheetType
 
+extension ProfileManagerPageContent {
     enum SheetType: Identifiable, Hashable {
         case createNewProfile(PZProfileMO)
         case editExistingProfile(PZProfileMO)
