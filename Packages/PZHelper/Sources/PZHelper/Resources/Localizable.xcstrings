@@ -2962,25 +2962,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies."
+            "value" : "This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies. If profile duplication happens during this process, then the existing profile will be updated instead with new cookie, latest device fingerprints, and latest device ID instead."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "このオプションは、サーバーに対して貴殿が本当に自分のデバイスでこの 米遊社 / HoYoLAB アカウントを使用していることを知らせるのに非常に役立ちます。UID・ゲーム・ゲームサーバーごとの個別のログインは、この 米遊社 / HoYoLAB アカウントがどれだけのデバイスにログインしているかを米遊社 / HoYoLAB アカウントサーバーが誤解し、クッキーの有効期限が早まる恐れがあります。"
+            "value" : "このオプションは、サーバーに対して貴殿が本当に自分のデバイスでこの 米遊社 / HoYoLAB アカウントを使用していることを知らせるのに非常に役立ちます。UID・ゲーム・ゲームサーバーごとの個別のログインは、この 米遊社 / HoYoLAB アカウントがどれだけのデバイスにログインしているかを米遊社 / HoYoLAB アカウントサーバーが誤解し、クッキーの有効期限が早まる恐れがあります。読み込む途中で重複のプロファイルが発見した場合、新規プロファイルを添付せず、代わりに既存プロファイルのクッキーと端末指紋情報と端末識別子を最新にします。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB 账号。相同的米游社 / HoYoLAB 账号下的每个游戏每个 UID 每个区服都登入一次的话，可能会让米游社 / HoYoLAB 服务器误解此账号登入了多少设备，导致 Cookie 提前失效。"
+            "value" : "此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB 账号。相同的米游社 / HoYoLAB 账号下的每个游戏每个 UID 每个区服都登入一次的话，可能会让米游社 / HoYoLAB 服务器误解此账号登入了多少设备，导致 Cookie 提前失效。在这个读入过程中，如果发现与既存的本地账号重复的情况的话，则不再新增重复的账号，而是将既有账号的 Cookies、设备指纹、设备 ID 更新为最新的版本。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "此選項非常有助於讓伺服器知道您確實是在自己的裝置上使用您的米遊社 / HoYoLAB 帳號。相同的米遊社 / HoYoLAB 帳號下的每個遊戲每個 UID 每個區服都登入一次的話，可能會讓米遊社 / HoYoLAB 伺服器誤解此帳號登入了多少裝置，導致 Cookie 提前失效。"
+            "value" : "此選項非常有助於讓伺服器知道您確實是在自己的裝置上使用您的米遊社 / HoYoLAB 帳號。相同的米遊社 / HoYoLAB 帳號下的每個遊戲每個 UID 每個區服都登入一次的話，可能會讓米遊社 / HoYoLAB 伺服器誤解此帳號登入了多少裝置，導致 Cookie 提前失效。在這個讀入過程中，如果發現與既存的本機帳號重複的情況的話，則不再新增重複的帳號，而是將既有帳號的 Cookies、設備指紋、設備 ID 更新為最新的版本。"
           }
         }
       }
