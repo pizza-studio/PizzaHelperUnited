@@ -49,24 +49,7 @@ struct TestAccountSectionView: View {
         }
         Task {
             do {
-                switch profile.game {
-                case .genshinImpact:
-                    _ = try await HoYo.note4GI(
-                        server: profile.server,
-                        uid: profile.uid,
-                        cookie: profile.cookie,
-                        sTokenV2: profile.sTokenV2,
-                        deviceFingerPrint: profile.deviceFingerPrint,
-                        deviceId: ThisDevice.identifier4Vendor
-                    )
-                case .starRail:
-                    _ = try await HoYo.note4HSR(
-                        server: profile.server,
-                        uid: profile.uid,
-                        cookie: profile.cookie,
-                        deviceFingerPrint: profile.deviceFingerPrint
-                    )
-                }
+                _ = try await profile.getDailyNote()
                 withAnimation {
                     status = .succeeded
                 }
