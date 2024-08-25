@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import SwiftData
 import SwiftUI
 
 // MARK: - ProfileManagerPageContent.CreateProfileSheetView
@@ -129,7 +130,18 @@ extension ProfileManagerPageContent {
                                 newProfile.cookie = profile.cookie // 很重要
                                 newProfile.deviceID = profile.deviceID
                                 newProfile.deviceFingerPrint = profile.deviceFingerPrint
-                                modelContext.insert(newProfile)
+
+                                // Check duplications
+                                let firstDuplicate = profiles.first {
+                                    $0.uid == newProfile.uid && $0.game == newProfile.game
+                                }
+                                if let firstDuplicate {
+                                    firstDuplicate.cookie = profile.cookie // 很重要
+                                    firstDuplicate.deviceID = profile.deviceID
+                                    firstDuplicate.deviceFingerPrint = profile.deviceFingerPrint
+                                } else {
+                                    modelContext.insert(newProfile)
+                                }
                             }
                             status = .gotProfile
                         }
@@ -241,6 +253,7 @@ extension ProfileManagerPageContent {
         @Binding private var isShown: Bool
         @Environment(\.modelContext) private var modelContext
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
+        @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
     }
 }
 
