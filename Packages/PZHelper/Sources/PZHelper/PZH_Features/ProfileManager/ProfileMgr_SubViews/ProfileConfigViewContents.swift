@@ -14,21 +14,19 @@ import SwiftUI
 struct ProfileConfigViewContents: View {
     // MARK: Lifecycle
 
-    public init(profile: PZProfileMO) {
+    public init(profile: PZProfileMO, fetchedAccounts: [FetchedAccount]? = nil) {
         self.profile = profile
+        self.fetchedAccounts = fetchedAccounts
     }
 
     // MARK: Public
 
     public var body: some View {
-        #if DEBUG
-        // TODO: 相关功能尚未完工，暂时不开放。
         RequireLoginView(
             unsavedCookie: $profile.cookie,
             unsavedFP: $profile.deviceFingerPrint,
             region: profile.server.region
         )
-        #endif
         Section {
             HStack {
                 Text("profile.label.nickname".i18nPZHelper)
@@ -51,9 +49,9 @@ struct ProfileConfigViewContents: View {
             }
         }
 
-        // if let accountsForSelected = accountsForSelected {
-        //     SelectAccountView(account: account, accountsForSelected: accountsForSelected)
-        // }
+        if let fetchedAccounts {
+            SelectAccountView(profile: profile, fetchedAccounts: fetchedAccounts)
+        }
 
         Section {
             NavigationLink {
@@ -63,14 +61,14 @@ struct ProfileConfigViewContents: View {
             }
         }
 
-        // TestAccountSectionView(account: account)
+        TestAccountSectionView(profile: profile)
     }
 
     // MARK: Private
 
     @State private var profile: PZProfileMO
-    // private var profilesForSelected: [FetchedAccount]?
     @State private var validate: String = ""
+    @State private var fetchedAccounts: [FetchedAccount]?
 
     private var allowNotification: Binding<Bool> {
         .init {
@@ -104,18 +102,73 @@ extension ProfileConfigViewContents {
                     maxHeight: .infinity
                 )
             }
-            //        .sheet(isPresented: $isGetCookieWebViewShown, content: {
-            //            switch region {
-            //            case .mainlandChina:
-            //                GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP)
-            //            case .global:
-            //                GetCookieWebView(
-            //                    isShown: $isGetCookieWebViewShown,
-            //                    cookie: $unsavedCookie,
-            //                    region: region
-            //                )
-            //            }
-            //        })
+            .sheet(isPresented: $isGetCookieWebViewShown, content: handleSheetNavigation)
+        }
+
+        @ViewBuilder
+        private func handleSheetNavigation() -> some View {
+            switch region {
+            case .hoyoLab:
+                GetCookieWebView(
+                    isShown: $isGetCookieWebViewShown,
+                    cookie: $unsavedCookie,
+                    region: region
+                )
+            case .miyoushe:
+                GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP)
+            }
+        }
+    }
+
+    // MARK: - SelectAccountView
+
+    fileprivate struct SelectAccountView: View {
+        // MARK: Lifecycle
+
+        init(profile: PZProfileMO, fetchedAccounts: [FetchedAccount]) {
+            self._profile = State(wrappedValue: profile)
+            self.fetchedAccounts = fetchedAccounts
+        }
+
+        // MARK: Internal
+
+        @State var profile: PZProfileMO
+
+        let fetchedAccounts: [FetchedAccount]
+
+        var body: some View {
+            Section {
+                // 如果该帐号绑定的UID不止一个，则显示Picker选择帐号
+                if fetchedAccounts.count > 1 {
+                    Picker("account.label.select", selection: selectedAccount) {
+                        ForEach(
+                            fetchedAccounts,
+                            id: \.gameUid
+                        ) { account in
+                            Text(account.nickname + "（\(account.gameUid)）")
+                                .tag(account as FetchedAccount?)
+                        }
+                    }
+                }
+            }
+        }
+
+        // MARK: Private
+
+        @MainActor private var selectedAccount: Binding<FetchedAccount?> {
+            .init {
+                fetchedAccounts.first { account in
+                    account.gameUid == profile.uid
+                }
+            } set: { account in
+                if let account = account {
+                    profile.name = account.nickname
+                    profile.uid = account.gameUid
+                    profile.server = HoYo.Server(rawValue: account.region)
+                        ?? HoYo.Server(uid: account.gameUid, game: profile.game)
+                        ?? .celestia(profile.game)
+                }
+            }
         }
     }
 }
