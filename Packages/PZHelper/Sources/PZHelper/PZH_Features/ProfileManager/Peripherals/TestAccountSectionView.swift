@@ -39,7 +39,7 @@ struct TestAccountSectionView: View {
         .onAppear {
             doTest()
         }
-        .onChange(of: profile) {
+        .onChange(of: profile.cookie) {
             doTest()
         }
     }
