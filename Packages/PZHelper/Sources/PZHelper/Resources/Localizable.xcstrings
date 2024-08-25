@@ -24,7 +24,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果持續要求人機驗證的話，建議參考[該教學指引](https://hsr.pizzastudio.org/static/fp_tutorial)抓包填入裝置指紋、以規避該故障。"
+            "value" : "如果持續要求人機驗證的話，建議參考[該教學指引](https://hsr.pizzastudio.org/static/fp_tutorial)抓包填入設備指紋、以規避該故障。"
           }
         }
       }
@@ -253,7 +253,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "裝置指紋"
+            "value" : "設備指紋"
           }
         }
       }
@@ -1198,34 +1198,6 @@
         }
       }
     },
-    "profileMgr.fp.label" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Device FP"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイス指紋"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设备指纹"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "裝置指紋"
-          }
-        }
-      }
-    },
     "profileMgr.importLegacyProfiles.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2041,7 +2013,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果持續要求人機驗證的話，建議參考[該教學指引](https://hsr.pizzastudio.org/static/fp_tutorial)抓包填入裝置指紋、以規避該故障。"
+            "value" : "如果持續要求人機驗證的話，建議參考[該教學指引](https://hsr.pizzastudio.org/static/fp_tutorial)抓包填入設備指紋、以規避該故障。"
           }
         }
       }
