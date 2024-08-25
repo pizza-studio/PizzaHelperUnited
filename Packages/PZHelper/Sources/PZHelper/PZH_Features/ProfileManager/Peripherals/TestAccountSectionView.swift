@@ -32,7 +32,12 @@ struct TestAccountSectionView: View {
             }
         } footer: {
             if verificationErrorHasOccurred {
-                Text("profile.accountConnectivity.footer.recommend_device_fp".i18nPZHelper)
+                let rawText = "profileMgr.test.footer.recommend_device_fp".i18nPZHelper
+                if let attrStr = try? AttributedString(markdown: rawText) {
+                    Text(attrStr)
+                } else {
+                    Text(rawText)
+                }
             }
         }
         .onAppear {
@@ -148,7 +153,7 @@ struct TestAccountSectionView: View {
                 status = .progressing
                 popVerificationWebSheet()
             } label: {
-                Text("profile.accountConnectivity.verify.button".i18nPZHelper)
+                Text("profileMgr.test.verify.button".i18nPZHelper)
             }
             .onAppear {
                 popVerificationWebSheet()
@@ -173,8 +178,7 @@ struct TestAccountSectionView: View {
                                 }
                             }
                         }
-                        .navigationTitle("profile.accountConnectivity.verify.web_sheet.title".i18nPZHelper)
-                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationTitle("profileMgr.test.verify.web_sheet.title".i18nPZHelper)
                     }
                 }
             })

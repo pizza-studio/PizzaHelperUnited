@@ -1,86 +1,485 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "account.test.footer.recommend_device_fp" : {
+    "app.dailynote.card.daily_training.label" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To avoid consistently being requested for verification, please set up device finger print according to [this tutorial](https://hsr.pizzastudio.org/static/fp_tutorial)."
+            "value" : "Daily Training"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "人間認証要求が何度も出まくっている場合、[この説明文章](https://hsr.pizzastudio.org/static/fp_tutorial)の方法に沿って、ご自分でデバイス指紋を取ってご記入ください。そうすれば、この支障を避けることはできます。"
+            "value" : "デイリー訓練"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果持续要求输入验证码，建议参考[本教程](https://hsr.pizzastudio.org/static/fp_tutorial)抓包填入设备指纹以规避。"
+            "value" : "每日实训"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果持續要求人機驗證的話，建議參考[該教學指引](https://hsr.pizzastudio.org/static/fp_tutorial)抓包填入設備指紋、以規避該故障。"
+            "value" : "每日實訓"
           }
         }
       }
     },
-    "account.test.verify.button" : {
+    "app.dailynote.card.dailyTask.extraReward.notReceived" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please tap here to enter the verification code. "
+            "value" : "Extra Reward Available"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ここをタップして人間認証"
+            "value" : "追加報酬未受取"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请点击这里输入验证码"
+            "value" : "额外奖励待领取"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請點擊這裡進行人機驗證"
+            "value" : "額外獎勵待領取"
           }
         }
       }
     },
-    "account.test.verify.web_sheet.title" : {
+    "app.dailynote.card.dailyTask.extraReward.received" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verification"
+            "value" : "Extra Reward Retrieved"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "人間認証"
+            "value" : "追加報酬受取済"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "人机验证"
+            "value" : "已领取额外奖励"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "人機驗證"
+            "value" : "已領取額外獎勵"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.dailyTask.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Commission"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デイリー依頼"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每日委托"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每日委託"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.dispatch.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assignments"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "依頼"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "委托"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "委託"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.error.need_verification.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verification Needed"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人間認証が必要です"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要验证"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要人機驗證"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.error.other_error.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other Error (Press to show)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他のエラー（タップで読む）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他错误（点击查看）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其它錯誤（點此檢視）"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.error.pleaseCheckAtProfileMgr" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please go to the Settings Page to check possible connectivity issues with this locale profile."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリ設定でこのプロファイルの接続問題をご確認ください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请前往 App 设定页面检查该本地账号的网络连接故障。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請前往 App 設定頁面檢查該本機帳號的網路連線故障。"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.expedition.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expedition"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "探索派遣"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "探索派遣"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "探索派遣"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.homeCoin.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Realm Currency"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "洞天宝銭"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "洞天宝钱"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "洞天寶錢"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.resin.label" : {
+      "comment" : "Watch App",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original Resin"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天然樹脂"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原粹树脂"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原粹樹脂"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.resinFull" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resin is fully capped"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "樹脂が全て回復しました"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "树脂已全部回满"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "樹脂已全部回滿"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.simulated_universe.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulated Universe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模擬宇宙"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模拟宇宙"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模擬宇宙"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.trailblazePower.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trailblaze Power"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開拓力"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开拓力"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開拓力"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.transformer" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parametric Transformer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参量物質変化器"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参量质变仪"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "參量質變儀"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.weeklyBoss" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly Boss"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "週ボス"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "周本折扣"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "週本折扣"
+          }
+        }
+      }
+    },
+    "app.dailynote.noCard.suggestion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No local profile found on this device. You may switch to the App Settings page and add one. :)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該当端末でプロファイルを見つけませんでした。アプリ設定画面で新しいプロファイルをご追加ください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚未发现本地账号。请前往 App 设定页面新增一个本地账号。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚未發現本機帳號。請前往 App 設定頁面新增一個本機帳號。"
           }
         }
       }
@@ -398,7 +797,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手動配置新的本地帳號"
+            "value" : "手動配置新的本機帳號"
           }
         }
       }
