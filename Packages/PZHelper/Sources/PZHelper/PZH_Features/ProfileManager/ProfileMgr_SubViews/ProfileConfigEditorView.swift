@@ -9,6 +9,8 @@ import SwiftUI
 // MARK: - ProfileConfigEditorView
 
 struct ProfileConfigEditorView: View {
+    // MARK: Internal
+
     @Bindable var unsavedProfile: PZProfileMO
 
     var body: some View {
@@ -78,7 +80,7 @@ struct ProfileConfigEditorView: View {
 
             if requiresSTokenV2(for: unsavedProfile.server.region) {
                 Section {
-                    TextField("STokenV2".description, text: $unsavedProfile.sTokenV2)
+                    TextField("STokenV2".description, text: sTokenBinding)
                         .multilineTextAlignment(.leading)
                     RegenerateSTokenV2Button(profile: unsavedProfile)
                 } header: {
@@ -92,7 +94,16 @@ struct ProfileConfigEditorView: View {
         .navigationBarTitleDisplayMode(.large)
     }
 
-    func requiresSTokenV2(for region: HoYo.AccountRegion) -> Bool {
+    // MARK: Private
+
+    private var sTokenBinding: Binding<String> {
+        .init(
+            get: { unsavedProfile.sTokenV2 ?? "" },
+            set: { unsavedProfile.sTokenV2 = $0 }
+        )
+    }
+
+    private func requiresSTokenV2(for region: HoYo.AccountRegion) -> Bool {
         switch region {
         case .hoyoLab: false
         case .miyoushe: false
