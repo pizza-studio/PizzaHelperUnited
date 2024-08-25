@@ -36,6 +36,14 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.deviceID = ThisDevice.identifier4Vendor
     }
 
+    public init(server: HoYo.Server, uid: String) {
+        self.game = server.game
+        self.uid = uid
+        self.serverRawValue = server.rawValue
+        self.server = server
+        self.deviceID = ThisDevice.identifier4Vendor
+    }
+
     public init() {}
 
     public init(from decoder: any Decoder) throws {

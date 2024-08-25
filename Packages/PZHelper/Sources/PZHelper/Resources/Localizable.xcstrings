@@ -2927,6 +2927,64 @@
         }
       }
     },
+    "settings.profile.importAllUIDs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import all UIDs of both games from this account"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該当アカウントの両ゲームの全てのUIDを一気に読み込む"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一次性读入该账号下的这两款游戏的所有区服的 UID"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一次性匯入該帳號下的這兩款遊戲的所有區服的 UID"
+          }
+        }
+      }
+    },
+    "settings.profile.importAllUIDs.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このオプションは、サーバーに対して貴殿が本当に自分のデバイスでこの 米遊社 / HoYoLAB アカウントを使用していることを知らせるのに非常に役立ちます。UID・ゲーム・ゲームサーバーごとの個別のログインは、この 米遊社 / HoYoLAB アカウントがどれだけのデバイスにログインしているかを米遊社 / HoYoLAB アカウントサーバーが誤解し、クッキーの有効期限が早まる恐れがあります。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB 账号。相同的米游社 / HoYoLAB 账号下的每个游戏每个 UID 每个区服都登入一次的话，可能会让米游社 / HoYoLAB 服务器误解此账号登入了多少设备，导致 Cookie 提前失效。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此選項非常有助於讓伺服器知道您確實是在自己的裝置上使用您的米遊社 / HoYoLAB 帳號。相同的米遊社 / HoYoLAB 帳號下的每個遊戲每個 UID 每個區服都登入一次的話，可能會讓米遊社 / HoYoLAB 伺服器誤解此帳號登入了多少裝置，導致 Cookie 提前失效。"
+          }
+        }
+      }
+    },
     "settings.profile.pleaseSelectGame" : {
       "extractionState" : "manual",
       "localizations" : {
