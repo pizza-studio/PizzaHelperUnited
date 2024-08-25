@@ -68,7 +68,11 @@ extension ProfileManagerPageContent {
                 .onChange(of: status) { _, newValue in
                     switch newValue {
                     case .gotCookie:
-                        getAccountForSelected()
+                        if importAllUIDs {
+                            getAllAccountsFetched()
+                        } else {
+                            getAccountForSelected()
+                        }
                     default:
                         return
                     }
@@ -98,6 +102,46 @@ extension ProfileManagerPageContent {
             } catch {
                 saveProfileError = .saveDataError(error)
                 isSaveProfileFailAlertShown.toggle()
+            }
+        }
+
+        /// Add all accounts at once.
+        func getAllAccountsFetched() {
+            Task(priority: .userInitiated) {
+                if !profile.cookie.isEmpty {
+                    do {
+                        var giRegion = region
+                        var srRegion = region
+                        giRegion.changeGame(to: .genshinImpact)
+                        srRegion.changeGame(to: .starRail)
+                        fetchedAccounts = try await HoYo.getUserGameRolesByCookie(
+                            region: giRegion,
+                            cookie: profile.cookie
+                        )
+                        fetchedAccounts += try await HoYo.getUserGameRolesByCookie(
+                            region: srRegion,
+                            cookie: profile.cookie
+                        )
+                        for account in fetchedAccounts {
+                            if let server = HoYo.Server(rawValue: account.region) {
+                                let newProfile = PZProfileMO(server: server, uid: account.gameUid)
+                                newProfile.name = account.nickname
+                                newProfile.cookie = profile.cookie // 很重要
+                                newProfile.deviceID = profile.deviceID
+                                newProfile.deviceFingerPrint = profile.deviceFingerPrint
+                                modelContext.insert(newProfile)
+                            }
+                            status = .gotProfile
+                        }
+                        alertToastEventStatus.isDoneButtonTapped.toggle()
+                        try modelContext.save()
+                        isShown.toggle()
+                    } catch {
+                        getAccountError = .source(error)
+                        isGetAccountFailAlertShown.toggle()
+                        status = .pending
+                    }
+                }
             }
         }
 
@@ -144,7 +188,8 @@ extension ProfileManagerPageContent {
                     RequireLoginView(
                         unsavedCookie: $profile.cookie,
                         unsavedFP: $profile.deviceFingerPrint,
-                        region: $region
+                        region: $region,
+                        importAllUIDs: $importAllUIDs
                     )
                 } header: {
                     Text("profile.login.sectionHeader".i18nPZHelper).textCase(.none)
@@ -184,6 +229,7 @@ extension ProfileManagerPageContent {
 
         // MARK: Private
 
+        @State private var importAllUIDs: Bool = true
         @State private var isGetAccountFailAlertShown: Bool = false
         @State private var getAccountError: GetAccountError?
         @State private var status: AddProfileStatus = .pending
@@ -206,66 +252,72 @@ private struct RequireLoginView: View {
     public init(
         unsavedCookie: Binding<String>,
         unsavedFP: Binding<String>,
-        region: Binding<HoYo.AccountRegion>
+        region: Binding<HoYo.AccountRegion>,
+        importAllUIDs: Binding<Bool>
     ) {
         self._unsavedCookie = unsavedCookie
         self._unsavedFP = unsavedFP
         self._region = region
+        self._importAllUIDs = importAllUIDs
     }
 
     // MARK: Internal
 
     var body: some View {
-        VStack(spacing: 12) {
-            LabeledContent("settings.profile.pleaseSelectGame".i18nPZHelper) {
-                Picker("".description, selection: $region) {
-                    switch region {
-                    case .hoyoLab:
-                        Text(Pizza.SupportedGame.genshinImpact.localizedDescription)
-                            .tag(HoYo.AccountRegion.hoyoLab(.genshinImpact))
-                        Text(Pizza.SupportedGame.starRail.localizedDescription)
-                            .tag(HoYo.AccountRegion.hoyoLab(.starRail))
-                    case .miyoushe:
-                        Text(Pizza.SupportedGame.genshinImpact.localizedDescription)
-                            .tag(HoYo.AccountRegion.miyoushe(.genshinImpact))
-                        Text(Pizza.SupportedGame.starRail.localizedDescription)
-                            .tag(HoYo.AccountRegion.miyoushe(.starRail))
-                    }
+        LabeledContent("settings.profile.pleaseSelectGame".i18nPZHelper) {
+            Picker("".description, selection: $region) {
+                switch region {
+                case .hoyoLab:
+                    Text(Pizza.SupportedGame.genshinImpact.localizedDescription)
+                        .tag(HoYo.AccountRegion.hoyoLab(.genshinImpact))
+                    Text(Pizza.SupportedGame.starRail.localizedDescription)
+                        .tag(HoYo.AccountRegion.hoyoLab(.starRail))
+                case .miyoushe:
+                    Text(Pizza.SupportedGame.genshinImpact.localizedDescription)
+                        .tag(HoYo.AccountRegion.miyoushe(.genshinImpact))
+                    Text(Pizza.SupportedGame.starRail.localizedDescription)
+                        .tag(HoYo.AccountRegion.miyoushe(.starRail))
                 }
-                .pickerStyle(.segmented)
-                .fixedSize()
             }
-            LabeledContent("settings.profile.pleaseSelectRegion".i18nPZHelper) {
-                Picker("".description, selection: $region) {
-                    switch region.game {
-                    case .genshinImpact:
-                        Text(HoYo.AccountRegion.miyoushe(.genshinImpact).localizedDescription)
-                            .tag(HoYo.AccountRegion.miyoushe(.genshinImpact))
-                        Text(HoYo.AccountRegion.hoyoLab(.genshinImpact).localizedDescription)
-                            .tag(HoYo.AccountRegion.hoyoLab(.genshinImpact))
-                    case .starRail:
-                        Text(HoYo.AccountRegion.miyoushe(.starRail).localizedDescription)
-                            .tag(HoYo.AccountRegion.miyoushe(.starRail))
-                        Text(HoYo.AccountRegion.hoyoLab(.starRail).localizedDescription)
-                            .tag(HoYo.AccountRegion.hoyoLab(.starRail))
-                    }
+            .pickerStyle(.segmented)
+            .fixedSize()
+        }
+        LabeledContent("settings.profile.pleaseSelectRegion".i18nPZHelper) {
+            Picker("".description, selection: $region) {
+                switch region.game {
+                case .genshinImpact:
+                    Text(HoYo.AccountRegion.miyoushe(.genshinImpact).localizedDescription)
+                        .tag(HoYo.AccountRegion.miyoushe(.genshinImpact))
+                    Text(HoYo.AccountRegion.hoyoLab(.genshinImpact).localizedDescription)
+                        .tag(HoYo.AccountRegion.hoyoLab(.genshinImpact))
+                case .starRail:
+                    Text(HoYo.AccountRegion.miyoushe(.starRail).localizedDescription)
+                        .tag(HoYo.AccountRegion.miyoushe(.starRail))
+                    Text(HoYo.AccountRegion.hoyoLab(.starRail).localizedDescription)
+                        .tag(HoYo.AccountRegion.hoyoLab(.starRail))
                 }
-                .pickerStyle(.segmented)
-                .fixedSize()
             }
+            .pickerStyle(.segmented)
+            .fixedSize()
+        }
+        VStack {
+            Toggle("settings.profile.importAllUIDs".i18nPZHelper, isOn: $importAllUIDs)
+            Text("settings.profile.importAllUIDs.explanation".i18nPZHelper)
+                .font(.footnote).foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
 
-            Button {
-                assignRegion()
-            } label: {
-                Text(loginLabelText + " \(region.localizedDescription) (\(region.game.localizedDescription))")
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-                    .padding(8)
-                    .background {
-                        RoundedRectangle(cornerRadius: 8).foregroundStyle(.primary.opacity(0.1))
-                    }
-            }
+        Button {
+            assignRegion()
+        } label: {
+            Text(loginLabelText + " \(region.localizedDescription) (\(region.game.localizedDescription))")
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
+                .padding(8)
+                .background {
+                    RoundedRectangle(cornerRadius: 8).foregroundStyle(.primary.opacity(0.1))
+                }
         }
         .sheet(item: $getCookieWebViewRegion, content: handleSheetNavigation)
     }
@@ -273,6 +325,7 @@ private struct RequireLoginView: View {
     // MARK: Private
 
     @State private var getCookieWebViewRegion: HoYo.AccountRegion?
+    @Binding private var importAllUIDs: Bool
     @Binding private var unsavedCookie: String
     @Binding private var unsavedFP: String
     @Binding private var region: HoYo.AccountRegion
