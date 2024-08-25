@@ -33,6 +33,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
             self.uid = configuration.uid
             self.uuid = configuration.uuid
         }
+        self.deviceID = ThisDevice.identifier4Vendor
     }
 
     public init() {}
@@ -50,6 +51,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.uid = try container.decode(String.self, forKey: .uid)
         self.uuid = try container.decode(UUID.self, forKey: .uuid)
         self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
+        self.deviceID = try container.decode(String.self, forKey: .deviceID)
     }
 
     // MARK: Public
@@ -64,6 +66,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact)
     public var serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue
     public var sTokenV2: String? = ""
+    public var deviceID: String = ThisDevice.identifier4Vendor // For cross-device purposes.
 
     public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact {
         willSet {
@@ -92,6 +95,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         try container.encodeIfPresent(sTokenV2, forKey: .sTokenV2)
         try container.encode(uid, forKey: .uid)
         try container.encode(uuid, forKey: .uuid)
+        try container.encode(deviceID, forKey: .deviceID)
     }
 
     // MARK: Private
@@ -108,6 +112,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         case sTokenV2
         case uid
         case uuid
+        case deviceID
     }
 }
 
