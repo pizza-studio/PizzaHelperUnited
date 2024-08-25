@@ -31,13 +31,11 @@ extension Enka {
 }
 
 extension Enka.ProfileSummarized {
-    @MainActor
     public mutating func update(newRawInfo: DBType.QueriedProfile, dropExistingData: Bool = false) {
         rawInfo = dropExistingData ? newRawInfo : newRawInfo.inheritAvatars(from: rawInfo)
         summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB)
     }
 
-    @MainActor
     public mutating func evaluateArtifactRatings() {
         summarizedAvatars = summarizedAvatars.map { $0.artifactsRated() }
     }

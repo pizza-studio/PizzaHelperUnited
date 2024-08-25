@@ -10,7 +10,6 @@ import PZBaseKit
 import SwiftUI
 
 extension Enka {
-    @MainActor
     public struct DisplayOptionViewContents: View {
         // MARK: Lifecycle
 
@@ -18,7 +17,7 @@ extension Enka {
 
         // MARK: Public
 
-        public var body: some View {
+        @MainActor public var body: some View {
             mainView
                 .alert(
                     "settings.display.customizingNameForKunikuzushi.prompt".i18nEnka,

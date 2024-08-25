@@ -10,7 +10,6 @@ import SwiftUI
 
 // MARK: - ShowCaseListView
 
-@MainActor
 public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.QueriedProfile.DBType == DBType {
     // MARK: Lifecycle
 
@@ -32,7 +31,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
         case avatarProfilePair(String, DB.SummarizedType)
     }
 
-    public var body: some View {
+    @MainActor public var body: some View {
         Group {
             if asCardIcons {
                 showAsCardIcons
@@ -45,7 +44,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
         }
     }
 
-    @ViewBuilder public var showAsCardIcons: some View {
+    @MainActor @ViewBuilder public var showAsCardIcons: some View {
         if profile.summarizedAvatars.isEmpty {
             ShowCaseEmptyInfoView(game: profile.game)
         } else {
@@ -75,7 +74,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
 
     // MARK: Internal
 
-    @ViewBuilder var showAsList: some View {
+    @MainActor @ViewBuilder var showAsList: some View {
         List {
             listHeader
                 .listRowMaterialBackground()
@@ -105,7 +104,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    @ViewBuilder var listHeader: some View {
+    @MainActor @ViewBuilder var listHeader: some View {
         Section {
             HStack(spacing: 0) {
                 let levelTag = "\(extraTerms.levelNameShortened)\(profile.rawInfo.level)"
@@ -148,7 +147,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func makeLabelForNavLink(avatar: Enka.AvatarSummarized) -> some View {
         HStack(alignment: .center) {
             let intel = avatar.mainInfo
@@ -182,7 +181,6 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
 }
 
 extension EKQueriedProfileProtocol {
-    @MainActor
     public func asView(
         theDB: DBType,
         expanded: Bool = false

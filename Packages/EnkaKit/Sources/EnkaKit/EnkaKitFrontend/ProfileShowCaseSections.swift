@@ -12,7 +12,6 @@ import SwiftUI
 
 // MARK: - ProfileShowCaseSections
 
-@MainActor
 public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     where QueryDB.QueriedProfile.DBType == QueryDB {
     // MARK: Lifecycle
@@ -31,7 +30,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         listHeader
         Section {
             switch delegate.taskState {
@@ -163,7 +162,6 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
 extension ProfileShowCaseSections {
     @Observable
-    @MainActor
     class Coordinator<CoordinatedDB: EnkaDBProtocol> {
         // MARK: Lifecycle
 

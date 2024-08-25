@@ -5,9 +5,8 @@
 import EnkaKit
 import SwiftUI
 
-@MainActor
 struct TodayTabPage: View {
-    var body: some View {
+    @MainActor var body: some View {
         NavigationStack {
             Form {
                 Section {
