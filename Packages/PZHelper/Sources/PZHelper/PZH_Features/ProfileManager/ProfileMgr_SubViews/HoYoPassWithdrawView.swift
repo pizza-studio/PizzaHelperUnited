@@ -9,6 +9,17 @@ import SwiftUI
 // MARK: - AccountWithdrawalView
 
 struct HoYoPassWithdrawView: View {
+    // MARK: Public
+
+    @ViewBuilder public static var linksForManagingHoYoLabAccounts: some View {
+        Link(destination: URL(string: "https://user.mihoyo.com/")!) {
+            Text("sys.server.cn".i18nPZHelper) + Text(verbatim: " - ") + Text("accountRegion.name.miyoushe".i18nAK)
+        }
+        Link(destination: URL(string: "https://account.hoyoverse.com/")!) {
+            Text("sys.server.os".i18nPZHelper) + Text(verbatim: " - ") + Text("accountRegion.name.hoyoLab".i18nAK)
+        }
+    }
+
     // MARK: Internal
 
     var body: some View {
