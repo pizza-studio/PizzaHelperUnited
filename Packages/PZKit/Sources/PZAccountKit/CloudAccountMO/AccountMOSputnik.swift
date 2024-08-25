@@ -59,11 +59,15 @@ public final class AccountMOSputnik {
     public func allAccountDataAsPZProfileMO() throws -> [PZProfileMO] {
         // Genshin.
         let genshinData: [PZProfileMO]? = try allAccountDataMO(for: .genshinImpact).compactMap { oldMO in
-            PZProfileMO(game: .genshinImpact, uid: oldMO.uid, configuration: oldMO)
+            let result = PZProfileMO(game: .genshinImpact, uid: oldMO.uid, configuration: oldMO)
+            result?.deviceID = oldMO.uuid.uuidString
+            return result
         }
         // StarRail.
         let hsrData: [PZProfileMO]? = try allAccountDataMO(for: .starRail).compactMap { oldMO in
-            PZProfileMO(game: .starRail, uid: oldMO.uid, configuration: oldMO)
+            let result = PZProfileMO(game: .starRail, uid: oldMO.uid, configuration: oldMO)
+            result?.deviceID = oldMO.uuid.uuidString
+            return result
         }
         let dataSet: [PZProfileMO] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
         return dataSet
