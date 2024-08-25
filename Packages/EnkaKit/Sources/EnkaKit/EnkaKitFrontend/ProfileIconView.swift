@@ -36,7 +36,6 @@ extension EKQueriedProfileProtocol {
 // MARK: - Enka.ProfileIconView
 
 extension Enka {
-    @MainActor
     public struct ProfileIconView: View {
         // MARK: Lifecycle
 
@@ -59,7 +58,7 @@ extension Enka {
         public let uid: String
         public let game: Enka.GameType
 
-        public var body: some View {
+        @MainActor public var body: some View {
             switch game {
             case .genshinImpact:
                 if let profile = profiles4GI[uid] {

@@ -7,7 +7,6 @@ import SwiftUI
 
 // MARK: - IDPhotoView
 
-@MainActor
 public struct IDPhotoView4HSR: View {
     // MARK: Lifecycle
 
@@ -56,14 +55,13 @@ public struct IDPhotoView4HSR: View {
         }
     }
 
-    public var body: some View {
+    @MainActor public var body: some View {
         coreBody.compositingGroup()
     }
 
     // MARK: Internal
 
     @Observable
-    @MainActor
     class Coordinator {
         // MARK: Lifecycle
 

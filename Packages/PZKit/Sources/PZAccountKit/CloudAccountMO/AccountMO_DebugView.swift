@@ -59,7 +59,6 @@ public struct AccountMOItemDebugView: View {
 
 // MARK: - AccountMODebugView
 
-@MainActor
 public struct AccountMODebugView: View {
     // MARK: Lifecycle
 
@@ -67,7 +66,7 @@ public struct AccountMODebugView: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         Form {
             ForEach(try! Self.sputnik.allAccountDataMO(for: game), id: \.uuid) { accountMO in
                 AccountMOItemDebugView(accountMO: accountMO)
@@ -93,7 +92,8 @@ public struct AccountMODebugView: View {
 
     // MARK: Internal
 
-    static let sputnik: AccountMOSputnik = try! .shared ?? .init(persistence: .inMemory, backgroundContext: false)
+    @MainActor static let sputnik: AccountMOSputnik = try! .shared
+        ?? .init(persistence: .inMemory, backgroundContext: false)
 
     @State var game: Pizza.SupportedGame = .genshinImpact
 }

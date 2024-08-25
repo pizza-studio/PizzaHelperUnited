@@ -10,7 +10,6 @@ import WallpaperKit
 
 // MARK: - AvatarShowCaseView
 
-@MainActor
 public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.QueriedProfile.DBType == DBType {
     // MARK: Lifecycle
 
@@ -30,7 +29,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         Group {
             if hasNoAvatars {
                 blankView()
@@ -185,7 +184,6 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
 }
 
 extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
-    @MainActor
     public func asView() -> AvatarShowCaseView<DBType>? {
         .init(profile: self)
     }

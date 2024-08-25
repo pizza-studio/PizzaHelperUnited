@@ -17,7 +17,7 @@ public struct WallpaperGalleryViewContent: View {
 
     public static let navTitle: String = "wallpaperGallery.navTitle".i18nWPKit
 
-    public var body: some View {
+    @MainActor public var body: some View {
         GeometryReader { geometry in
             coreBodyView.onAppear {
                 containerSize = geometry.size

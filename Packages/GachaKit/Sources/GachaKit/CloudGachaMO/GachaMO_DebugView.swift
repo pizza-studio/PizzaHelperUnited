@@ -36,7 +36,6 @@ public struct GachaMOItemDebugView: View {
 
 // MARK: - GachaMODebugView
 
-@MainActor
 public struct GachaMODebugView: View {
     // MARK: Lifecycle
 
@@ -44,7 +43,7 @@ public struct GachaMODebugView: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         Form {
             ForEach(try! Self.sputnik.allGachaDataMO(for: game), id: \.enumID) { gachaItemMO in
                 GachaMOItemDebugView(gachaItemMO: gachaItemMO)
@@ -70,7 +69,9 @@ public struct GachaMODebugView: View {
 
     // MARK: Internal
 
-    static let sputnik = try! GachaMOSputnik(persistence: .cloud, backgroundContext: false)
+    @MainActor static let sputnik = try! GachaMOSputnik(
+        persistence: .cloud, backgroundContext: false
+    )
 
     @State var game: Pizza.SupportedGame = .genshinImpact
 }

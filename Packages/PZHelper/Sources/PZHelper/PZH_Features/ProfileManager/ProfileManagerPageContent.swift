@@ -13,11 +13,10 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent
 
-@MainActor
 struct ProfileManagerPageContent: View {
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         coreBody
             .disabled(isBusy)
             .overlay {
@@ -33,7 +32,7 @@ struct ProfileManagerPageContent: View {
 
     // MARK: Internal
 
-    @ViewBuilder var coreBody: some View {
+    @MainActor @ViewBuilder var coreBody: some View {
         List {
             Section {
                 Button {
@@ -109,7 +108,7 @@ struct ProfileManagerPageContent: View {
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     private func handleSheetNavigation(_ sheetType: SheetType) -> some View {
         Group {
             switch sheetType {
@@ -127,7 +126,7 @@ struct ProfileManagerPageContent: View {
         .navigationBarBackButtonHidden(true)
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     private func drawRow(profile: PZProfileMO) -> some View {
         /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
         HStack {
@@ -215,6 +214,7 @@ struct ProfileManagerPageContent: View {
         }
     }
 
+    @MainActor
     private func importLegacyData() {
         withAnimation {
             isBusy = true

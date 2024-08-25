@@ -9,11 +9,10 @@ import WallpaperKit
 
 // MARK: - UISettingsPageContent
 
-@MainActor
 struct UISettingsPageContent: View {
     // MARK: Internal
 
-    var body: some View {
+    @MainActor var body: some View {
         Form {
             Section {
                 Toggle(isOn: $restoreTabOnLaunching) {

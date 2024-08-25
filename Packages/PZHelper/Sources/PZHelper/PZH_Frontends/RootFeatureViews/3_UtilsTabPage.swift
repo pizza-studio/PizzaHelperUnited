@@ -6,7 +6,6 @@ import GachaKit
 import SwiftUI
 import WallpaperKit
 
-@MainActor
 struct UtilsTabPage: View {
     // MARK: Internal
 
@@ -15,7 +14,7 @@ struct UtilsTabPage: View {
         case gachaCloudDebug
     }
 
-    var body: some View {
+    @MainActor var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
                 NavigationLink(value: Nav.wallpaperGallery) {
