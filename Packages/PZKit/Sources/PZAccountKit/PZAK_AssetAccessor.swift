@@ -2,4 +2,10 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-public enum AccountKit {}
+import SwiftUI
+
+extension AccountKit {
+    public static func imageAsset(_ name: String) -> Image {
+        Image(name, bundle: .module)
+    }
+}
