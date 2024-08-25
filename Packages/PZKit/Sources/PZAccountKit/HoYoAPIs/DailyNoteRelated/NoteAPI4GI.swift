@@ -37,7 +37,7 @@ extension HoYo {
         }
     }
 
-    public static func generalNote4GI(
+    static func generalNote4GI(
         server: Server,
         uid: String,
         cookie: String,
