@@ -89,11 +89,7 @@ public struct ContentView: View {
         // MARK: Internal
 
         static var exposedCaseTags: [Int] {
-            #if DEBUG
             [1, 2, 3, 0]
-            #else
-            [2, 3, 0]
-            #endif
         }
 
         nonisolated var id: Int { rawValue }
