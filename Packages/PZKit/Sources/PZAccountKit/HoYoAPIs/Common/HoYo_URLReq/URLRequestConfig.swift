@@ -10,7 +10,7 @@ import PZBaseKit
 public enum URLRequestConfig {
     public static func getUserAgent(region: HoYo.AccountRegion) -> String {
         """
-        Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) \
+        Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) \
         AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/\(Self.xRpcAppVersion(region: region))
         """
     }
@@ -61,8 +61,8 @@ public enum URLRequestConfig {
 
     public static func xRpcAppVersion(region: HoYo.AccountRegion) -> String {
         switch region {
-        case .miyoushe: "2.74.2"
-        case .hoyoLab: "2.59.0"
+        case .miyoushe: "2.40.1" // 跟 YunzaiBot 一致。
+        case .hoyoLab: "2.55.0" // 跟 YunzaiBot 一致。
         }
     }
 
@@ -76,7 +76,21 @@ public enum URLRequestConfig {
     public static func referer(region: HoYo.AccountRegion) -> String {
         switch region {
         case .miyoushe: "https://webstatic.mihoyo.com"
-        case .hoyoLab: "https://webstatic-sea.hoyolab.com"
+        case .hoyoLab: "https://act.hoyolab.com"
+        }
+    }
+
+    public static func origin(region: HoYo.AccountRegion) -> String {
+        switch region {
+        case .miyoushe: "https://webstatic.mihoyo.com"
+        case .hoyoLab: "https://act.hoyolab.com"
+        }
+    }
+
+    public static func xRequestedWith(region: HoYo.AccountRegion) -> String {
+        switch region {
+        case .miyoushe: "com.mihoyo.hyperion"
+        case .hoyoLab: "com.mihoyo.hoyolab"
         }
     }
 
@@ -92,12 +106,13 @@ public enum URLRequestConfig {
         var headers = [
             "User-Agent": Self.getUserAgent(region: region),
             "Referer": referer(region: region),
-            "Origin": referer(region: region),
+            "Origin": origin(region: region),
             "Accept-Encoding": "gzip, deflate, br",
             "Accept-Language": "zh-CN,zh-Hans;q=0.9",
             "Accept": "application/json, text/plain, */*",
             "Connection": "keep-alive",
 
+            "X-Requested-With": xRequestedWith(region: region),
             "x-rpc-app_version": xRpcAppVersion(region: region),
             "x-rpc-client_type": xRpcClientType(region: region),
             "x-rpc-page": "3.1.3_#/rpg",
