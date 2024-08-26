@@ -351,7 +351,7 @@ try encoder.encode(assetObjects).write(to: URL(fileURLWithPath: path4GIMeta), op
 var assetIDURLMap: [String: URL] = [:]
 
 assetObjects.forEach { currentObj in
-    let assetURL = "https://enka.network/ui/\(currentObj.assetName).png".asURL
+    let assetURL = "https://api.ambr.top/assets/UI/namecard/\(currentObj.assetName).png".asURL
     assetIDURLMap[currentObj.id] = assetURL
 }
 
