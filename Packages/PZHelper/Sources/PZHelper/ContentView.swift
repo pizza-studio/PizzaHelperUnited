@@ -105,7 +105,7 @@ public struct ContentView: View {
         get: { selection },
         set: {
             if $0 != selection {
-                ViewEventBroadcaster.shared.stopRootTabTasks()
+                Broadcaster.shared.stopRootTabTasks()
             }
             selection = $0
             appIndex = $0

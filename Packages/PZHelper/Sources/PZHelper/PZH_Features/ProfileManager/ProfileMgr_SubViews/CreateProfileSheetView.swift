@@ -91,15 +91,8 @@ extension ProfileManagerPageContent {
                 modelContext.insert(profile)
                 try modelContext.save()
                 isShown.toggle()
-                // TODO: To enable.
-                //  Task {
-                //      do {
-                //          _ = try await HSRNotificationCenter.requestAuthorization()
-                //      } catch {
-                //          print(error)
-                //      }
-                //  }
-                // WidgetCenter.shared.reloadAllTimelines() // TODO: To enable.
+                Broadcaster.shared.requireOSNotificationCenterAuthorization()
+                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
             } catch {
                 saveProfileError = .saveDataError(error)
                 isSaveProfileFailAlertShown.toggle()
