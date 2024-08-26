@@ -58,3 +58,9 @@ extension Pizza.SupportedGame: CustomStringConvertible {
         }
     }
 }
+
+extension Pizza.SupportedGame? {
+    public var localizedShortName: String {
+        self?.localizedShortName ?? "game.all.shortNameEX".i18nBaseKit
+    }
+}

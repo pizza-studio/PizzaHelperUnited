@@ -25,7 +25,7 @@ struct TodayTabPage: View {
                     }
                     .listRowMaterialBackground()
                 } else {
-                    ForEach(profiles) { profile in
+                    ForEach(filteredProfiles) { profile in
                         InAppDailyNoteCardView(profile: profile)
                             .listRowMaterialBackground()
                     }
@@ -41,6 +41,11 @@ struct TodayTabPage: View {
                     Button("", systemImage: "arrow.clockwise") { refresh() }
                 }
                 #endif
+                ToolbarItem(placement: .topBarTrailing) {
+                    gamePicker
+                        .padding(4)
+                        .pickerStyle(.segmented)
+                }
             }
             .refreshable {
                 broadcaster.refreshPage()
@@ -48,16 +53,37 @@ struct TodayTabPage: View {
         }
     }
 
-    func refresh() {
-        broadcaster.refreshPage()
-        // WidgetCenter.shared.reloadAllTimelines()
-    }
-
     // MARK: Private
 
     @State private var broadcaster = ViewEventBroadcaster.shared
+    @State private var game: Pizza.SupportedGame? = .none
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
+
+    private var filteredProfiles: [PZProfileMO] {
+        switch game {
+        case .genshinImpact: profiles.filter { $0.game == .genshinImpact }
+        case .starRail: profiles.filter { $0.game == .starRail }
+        case nil: profiles
+        }
+    }
+
+    @ViewBuilder
+    @MainActor private var gamePicker: some View {
+        Picker("".description, selection: $game.animation()) {
+            Text(Pizza.SupportedGame?.none.localizedShortName)
+                .tag(nil as Pizza.SupportedGame?)
+            Text(Pizza.SupportedGame.genshinImpact.localizedShortName)
+                .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)
+            Text(Pizza.SupportedGame.starRail.localizedShortName)
+                .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
+        }
+    }
+
+    private func refresh() {
+        broadcaster.refreshPage()
+        // WidgetCenter.shared.reloadAllTimelines()
+    }
 }
 
 // MARK: - AddNewProfileButton
