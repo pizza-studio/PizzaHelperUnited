@@ -361,9 +361,14 @@ let assetDataMap: [String: Data] = try await withThrowingTaskGroup(
 ) { taskGroup in
     assetIDURLMap.forEach { id, url in
         taskGroup.addTask {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let newData = try resizeImageToJPEGData(from: data)
-            return (id, newData)
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url)
+                let newData = try resizeImageToJPEGData(from: data)
+                return (id, newData)
+            } catch {
+                print("Error handing: \(url.absoluteString)")
+                throw error
+            }
         }
     }
     var results = [String: Data]()
