@@ -360,10 +360,16 @@ do {
 
     for (fileNameStem, data) in dataDict {
         let newURL = URL(fileURLWithPath: workSpaceDirPath + "/\(fileNameStem)")
-        if fileNameStem.hasSuffix("png") {
-            try reencodePNG(from: data).write(to: newURL, options: .atomic)
-        } else {
-            try data.write(to: newURL, options: .atomic)
+        do {
+            if fileNameStem.hasSuffix("png") {
+                try reencodePNG(from: data).write(to: newURL, options: .atomic)
+            } else {
+                try data.write(to: newURL, options: .atomic)
+            }
+        } catch {
+            if !fileNameStem.contains("_avatar_") {
+                throw error
+            }
         }
     }
 
