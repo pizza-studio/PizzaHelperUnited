@@ -125,19 +125,19 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "依頼"
+            "value" : "派遣依頼"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "委托"
+            "value" : "派遣委托"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "委託"
+            "value" : "派遣委託"
           }
         }
       }
