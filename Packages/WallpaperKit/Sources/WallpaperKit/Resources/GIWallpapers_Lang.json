@@ -202,7 +202,18 @@
     "210204" : "Erlebnispass – Szenarien",
     "210205" : "Émilie – Basisnote",
     "210206" : "Erlebnispass – Märchen",
-    "210207" : "Feierlichkeit – Gelage II"
+    "210207" : "Feierlichkeit – Gelage II",
+    "210208" : "Kinich – Ajaw",
+    "210209" : "Mualani – Haifisch",
+    "210210" : "Kachina – Wirbelwind",
+    "210211" : "Natlan – Göttliche Armee",
+    "210212" : "Natlan – Feuerdrache",
+    "210213" : "Errungenschaft – Ende",
+    "210214" : "Errungenschaft – Miau-Glück",
+    "210215" : "Natlan – Die Rückkehr der Flamme",
+    "210216" : "Errungenschaft – Herrscher der Nacht",
+    "210217" : "Erlebnispass – Urfeuer",
+    "210218" : "Feierlichkeit – Süß und knackig"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -407,7 +418,18 @@
     "210204" : "Travel Notes: Simulnation",
     "210205" : "Emilie: Base Note",
     "210206" : "Travel Notes: Fanciful Fabrication",
-    "210207" : "Celebration: Feast (II)"
+    "210207" : "Celebration: Feast (II)",
+    "210208" : "Kinich: Ajaw",
+    "210209" : "Mualani: Sharky",
+    "210210" : "Kachina: Twirly",
+    "210211" : "Natlan: Divine Army",
+    "210212" : "Natlan: Fiery Dragon",
+    "210213" : "Achievement: Endpoint",
+    "210214" : "Achievement: Feline Fortune",
+    "210215" : "Natlan: Return of the Flame",
+    "210216" : "Achievement: Lord of the Night",
+    "210217" : "Travel Notes: Primal Fire",
+    "210218" : "Celebration: Crispy and Sweet"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -612,7 +634,18 @@
     "210204" : "PB - Que comience la función",
     "210205" : "Émilie - Nota de fondo",
     "210206" : "PB - Emulación",
-    "210207" : "Celebración - Festín (II)"
+    "210207" : "Celebración - Festín (II)",
+    "210208" : "Kinich - Ahau",
+    "210209" : "Mualani - Escualín",
+    "210210" : "Kachina - ¡Gira, gira, gira!",
+    "210211" : "Natlan - Armada divina",
+    "210212" : "Natlan - Dragón de fuego",
+    "210213" : "Logro - Final",
+    "210214" : "Logro - Fortuna felina",
+    "210215" : "Natlan - Retorno del fuego",
+    "210216" : "Logro - Señor de la Noche",
+    "210217" : "PB - Fuego primigenio",
+    "210218" : "Celebración - Dulce y crujiente"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -817,7 +850,18 @@
     "210204" : "PB - Simulnation",
     "210205" : "Émilie - Note de fond",
     "210206" : "PB - Ersatz",
-    "210207" : "Célébration - Festin (2)"
+    "210207" : "Célébration - Festin (2)",
+    "210208" : "Kinich - Ajaw",
+    "210209" : "Mualani - Requinou",
+    "210210" : "Kachina - Virevolturbo",
+    "210211" : "Natlan - Armée divine",
+    "210212" : "Natlan - Dragon incandescent",
+    "210213" : "Succès - Extrémité",
+    "210214" : "Succès - Fortune féline",
+    "210215" : "Natlan - Aux flammes",
+    "210216" : "Succès - Seigneur de la nuit",
+    "210217" : "PB - Feu primaire",
+    "210218" : "Célébration - Doux et croquant"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1022,7 +1066,18 @@
     "210204" : "Catatan Perjalanan: Teater Kaleidoskop",
     "210205" : "Emilie: Base Note",
     "210206" : "Catatan Perjalanan: Siluet Rekayasa",
-    "210207" : "Perayaan: Feast (II)"
+    "210207" : "Perayaan: Feast (II)",
+    "210208" : "Kinich: Ajaw",
+    "210209" : "Mualani: Sharky",
+    "210210" : "Kachina: Twirly",
+    "210211" : "Natlan: Tentara Dewa",
+    "210212" : "Natlan: Naga Api",
+    "210213" : "Achievement: Titik Akhir",
+    "210214" : "Achievement: Kucing Keberuntungan",
+    "210215" : "Natlan: Kembalinya Kobaran Api",
+    "210216" : "Achievement: Penguasa Malam",
+    "210217" : "Catatan Perjalanan: Api Purbakala",
+    "210218" : "Perayaan: Renyah dan Manis"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1227,7 +1282,18 @@
     "210204" : "Appunti di viaggio: Politeama",
     "210205" : "Émilie: Nota di fondo",
     "210206" : "Appunti di viaggio: Produzione estrosa",
-    "210207" : "Celebrazione: Banchetto (II)"
+    "210207" : "Celebrazione: Banchetto (II)",
+    "210208" : "Kinich: Ajaw",
+    "210209" : "Mualani: Sharky",
+    "210210" : "Kachina: Trottolino",
+    "210211" : "Natlan: Armata divina",
+    "210212" : "Natlan: Drago ardente",
+    "210213" : "Obiettivo: Punto finale",
+    "210214" : "Obiettivo: Fortuna felina",
+    "210215" : "Natlan: Ritorno della Fiamma",
+    "210216" : "Obiettivo: Signore della Notte",
+    "210217" : "Appunti di viaggio: Fiamma primordiale",
+    "210218" : "Celebrazione: Croccante e dolce"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1432,7 +1498,18 @@
     "210204" : "紀行·演習",
     "210205" : "エミリエ·ラストノート",
     "210206" : "紀行·彫刻",
-    "210207" : "祭典·宴会·2"
+    "210207" : "祭典·宴会·2",
+    "210208" : "キィニチ·アハウ",
+    "210209" : "ムアラニ·サメくん",
+    "210210" : "カチーナ·コマちゃん",
+    "210211" : "ナタ·神の軍",
+    "210212" : "ナタ·炎龍",
+    "210213" : "アチーブメント·果て",
+    "210214" : "アチーブメント·にゃん運",
+    "210215" : "ナタ·帰火",
+    "210216" : "アチーブメント·夜の主",
+    "210217" : "紀行·源火",
+    "210218" : "祭典·あまあまサクサク"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -1637,7 +1714,18 @@
     "210204" : "기행·모의전",
     "210205" : "에밀리·베이스 노트",
     "210206" : "기행·모형",
-    "210207" : "축제·연회·두 번째"
+    "210207" : "축제·연회·두 번째",
+    "210208" : "키니치·아쥬",
+    "210209" : "말라니·샤크",
+    "210210" : "카치나·쌩쌩",
+    "210211" : "나타·신의 군대",
+    "210212" : "나타·화염룡",
+    "210213" : "업적·끝에서",
+    "210214" : "업적·고양이 점괘",
+    "210215" : "나타·돌아온 불",
+    "210216" : "업적·밤의 주인",
+    "210217" : "기행·불의 근원",
+    "210218" : "축전·바삭바삭"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -1842,7 +1930,18 @@
     "210204" : "Passe de Batalha: Teatro Caleidoscópico",
     "210205" : "Emilie - Nota de Fundo",
     "210206" : "Passe de Batalha: Simulação",
-    "210207" : "Celebração - Banquete II"
+    "210207" : "Celebração - Banquete II",
+    "210208" : "Kinich: Ajaw",
+    "210209" : "Mualani: Tubarão",
+    "210210" : "Kachina: Pirueta",
+    "210211" : "Natlan: Exército Divino",
+    "210212" : "Natlan: Dragão Fogoso",
+    "210213" : "Conquista: Fim",
+    "210214" : "Conquista: Sorte Felina",
+    "210215" : "Natlan: Retorno da Chama",
+    "210216" : "Conquista: Lorde da Noite",
+    "210217" : "Passe de Batalha:: Fogo Original",
+    "210218" : "Celebração: Doce e Crocante"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2047,7 +2146,18 @@
     "210204" : "Симуляция",
     "210205" : "Конечная нота",
     "210206" : "Чудесные творения",
-    "210207" : "Великое пиршество II"
+    "210207" : "Великое пиршество II",
+    "210208" : "Ахав",
+    "210209" : "Акулка",
+    "210210" : "Вихрь",
+    "210211" : "Священная армия",
+    "210212" : "Пылающий дракон",
+    "210213" : "Конец",
+    "210214" : "Кошачья удача",
+    "210215" : "Возвращение огня",
+    "210216" : "Владыка ночи",
+    "210217" : "Первозданный огонь",
+    "210218" : "Хрустящие и сладкие"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2252,7 +2362,18 @@
     "210204" : "บันทึก - เกมจำลอง",
     "210205" : "Emilie: กลิ่นพื้นฐาน",
     "210206" : "บันทึก - สิ่งจำลอง",
-    "210207" : "การเฉลิมฉลอง - งานเลี้ยง II"
+    "210207" : "การเฉลิมฉลอง - งานเลี้ยง II",
+    "210208" : "Kinich - Ajaw",
+    "210209" : "Mualani - ฉลาม",
+    "210210" : "Kachina - หมุนติ้ว",
+    "210211" : "Natlan - กองทัพเทพ",
+    "210212" : "Natlan - มังกรไฟ",
+    "210213" : "ความสำเร็จ - จุดสิ้นสุด",
+    "210214" : "ความสำเร็จ - แมวนำโชค",
+    "210215" : "Natlan - เพลิงหวน",
+    "210216" : "ความสำเร็จ - เจ้าแห่งรัตติกาล",
+    "210217" : "บันทึก - เพลิงปฐมกาล",
+    "210218" : "การฉลอง - ทั้งหวานทั้งกรอบ"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -2457,7 +2578,18 @@
     "210204" : "Gezi Notları: Sahne Tozu",
     "210205" : "Emilie: Alt Nota",
     "210206" : "Gezi Notları: Hayali Üretim",
-    "210207" : "Kutlama: Ziyafet (II)"
+    "210207" : "Kutlama: Ziyafet (II)",
+    "210208" : "Kinich: Ajaw",
+    "210209" : "Mualani: Camgöz",
+    "210210" : "Kachina: Topaç",
+    "210211" : "Natlan: Kutsal Ordu",
+    "210212" : "Natlan: Ateşli Ejderha",
+    "210213" : "Başarım: Bitiş Noktası",
+    "210214" : "Başarım: Kedi Şansı",
+    "210215" : "Natlan: Alevin Dönüşü",
+    "210216" : "Başarım: Gece Lordu",
+    "210217" : "Gezi Notları: Kadim Ateş",
+    "210218" : "Kutlama: Çıtır ve Tatlı"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -2662,7 +2794,18 @@
     "210204" : "Nhật Ký Hành Trình - Mô Phỏng",
     "210205" : "Emilie - Làn Hương Cuối",
     "210206" : "Nhật Ký Hành Trình - Mô Phỏng",
-    "210207" : "Lễ Hội - Tiệc Lớn (II)"
+    "210207" : "Lễ Hội - Tiệc Lớn (II)",
+    "210208" : "Kinich - Ajaw",
+    "210209" : "Mualani - Cá Mập",
+    "210210" : "Kachina - Quay Tròn",
+    "210211" : "Natlan - Thần Quân",
+    "210212" : "Natlan - Rồng Lửa",
+    "210213" : "Thành Tựu - Tận Cùng",
+    "210214" : "Thành Tựu - Vận May Mèo",
+    "210215" : "Natlan - Lửa Trở Về",
+    "210216" : "Thành Tựu - Chủ Nhân Màn Đêm",
+    "210217" : "Nhật Ký Hành Trình - Lửa Nguồn",
+    "210218" : "Lễ Hội – Giòn Và Ngọt"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -2867,7 +3010,18 @@
     "210204" : "纪行·衍演",
     "210205" : "艾梅莉埃·后调",
     "210206" : "纪行·拟像",
-    "210207" : "庆典·盛宴·其二"
+    "210207" : "庆典·盛宴·其二",
+    "210208" : "基尼奇·阿乔",
+    "210209" : "玛拉妮·鲨鲨",
+    "210210" : "卡齐娜·转转",
+    "210211" : "纳塔·神军",
+    "210212" : "纳塔·炎龙",
+    "210213" : "成就·尽头",
+    "210214" : "成就·喵运",
+    "210215" : "纳塔·归火",
+    "210216" : "成就·夜主",
+    "210217" : "纪行·源火",
+    "210218" : "庆典·甘脆"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3072,6 +3226,17 @@
     "210204" : "紀行·衍演",
     "210205" : "艾梅莉埃·後調",
     "210206" : "紀行·擬像",
-    "210207" : "慶典·盛宴·其二"
+    "210207" : "慶典·盛宴·其二",
+    "210208" : "基尼奇·阿喬",
+    "210209" : "瑪拉妮·鯊鯊",
+    "210210" : "卡齊娜·轉轉",
+    "210211" : "納塔·神軍",
+    "210212" : "納塔·炎龍",
+    "210213" : "成就·盡頭",
+    "210214" : "成就·喵運",
+    "210215" : "納塔·歸火",
+    "210216" : "成就·夜主",
+    "210217" : "紀行·源火",
+    "210218" : "慶典·甘脆"
   }
 }
