@@ -1074,7 +1074,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "通过扫描二维码登录"
+            "value" : "通过扫描二维码登入"
           }
         },
         "zh-Hant" : {
@@ -1102,7 +1102,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。"
+            "value" : "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登入后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。"
           }
         },
         "zh-Hant" : {
@@ -1215,7 +1215,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请在打开的网页完成登录 HoYoLab 操作后点击「完成」。\n\n通过Google，Facebook或Twitter等第三方服务登录 HoYoLAB 的方式不受敝 App 支持，请使用账号密码登录。"
+            "value" : "请在打开的网页完成登入 HoYoLab 操作后点击「完成」。\n\n通过Google，Facebook或Twitter等第三方服务登入 HoYoLAB 的方式不受敝 App 支持，请使用账号密码登入。"
           }
         },
         "zh-Hant" : {
@@ -1272,7 +1272,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请完成登录"
+            "value" : "请完成登入"
           }
         },
         "zh-Hant" : {
@@ -1502,7 +1502,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。"
+            "value" : "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登入后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。"
           }
         },
         "zh-Hant" : {
@@ -1728,7 +1728,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "抱歉，中国大陆服务器（天空岛(星穹列车)＆世界树(无名客)）的登录功能暂时无法使用。我们正在努力寻求解决方案。目前您仍可以通过「自行填写有效米游社Cookie」的方式来手动登录。"
+            "value" : "抱歉，中国大陆服务器（天空岛(星穹列车)＆世界树(无名客)）的登入功能暂时无法使用。我们正在努力寻求解决方案。目前您仍可以通过「自行填写有效米游社Cookie」的方式来手动登入。"
           }
         },
         "zh-Hant" : {
@@ -1870,7 +1870,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请完成登录"
+            "value" : "请完成登入"
           }
         },
         "zh-Hant" : {
@@ -2294,7 +2294,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "通过扫描二维码登录"
+            "value" : "通过扫描二维码登入"
           }
         },
         "zh-Hant" : {
@@ -3061,7 +3061,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "登录米游社 / HoYoLAB 通行证"
+            "value" : "登入米游社 / HoYoLAB 通行证"
           }
         },
         "zh-Hant" : {
@@ -3090,7 +3090,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重新登录米游社 / HoYoLAB 通行证"
+            "value" : "重新登入米游社 / HoYoLAB 通行证"
           }
         },
         "zh-Hant" : {
