@@ -59,7 +59,7 @@ struct DetailPortalTabPage: View {
             }
             .onChange(of: delegate.currentPZProfile) { oldValue, newValue in
                 if oldValue != newValue {
-                    ViewEventBroadcaster.shared.stopRootTabTasks()
+                    Broadcaster.shared.stopRootTabTasks()
                 }
             }
         }
@@ -165,7 +165,7 @@ struct DetailPortalTabPage: View {
 
     @State private var sharedDB: Enka.Sputnik = .shared
     @State private var delegate: Coordinator = .init()
-    @State private var broadcaster = ViewEventBroadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]

@@ -4,10 +4,13 @@
 
 import Foundation
 import Observation
+import WidgetKit
+
+// MARK: - Broadcaster
 
 @Observable
-public final class ViewEventBroadcaster {
-    public static let shared = ViewEventBroadcaster()
+public final class Broadcaster {
+    public static let shared = Broadcaster()
 
     public private(set) var eventForRefreshingCurrentPage: UUID = .init()
     public private(set) var eventForStoppingRootTabTasks: UUID = .init()
@@ -18,5 +21,21 @@ public final class ViewEventBroadcaster {
 
     public func stopRootTabTasks() {
         eventForStoppingRootTabTasks = .init()
+    }
+}
+
+extension Broadcaster {
+    public func reloadAllTimeLinesAcrossWidgets() {
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    public func requireOSNotificationCenterAuthorization() {
+        Task {
+            do {
+                _ = try await PZNotificationCenter.requestAuthorization()
+            } catch {
+                print(error)
+            }
+        }
     }
 }

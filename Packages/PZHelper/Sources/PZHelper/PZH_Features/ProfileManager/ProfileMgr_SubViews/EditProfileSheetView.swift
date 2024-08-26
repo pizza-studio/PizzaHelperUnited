@@ -33,8 +33,8 @@ extension ProfileManagerPageContent {
                                     do {
                                         try modelContext.save()
                                         isShown.toggle()
-                                        // WidgetCenter.shared.reloadAllTimelines() // TODO:
-                                        // globalDailyNoteCardRefreshSubject.send(()) // TODO:
+                                        Broadcaster.shared.requireOSNotificationCenterAuthorization()
+                                        Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                                         alertToastEventStatus.isDoneButtonTapped.toggle()
                                     } catch {
                                         saveProfileError = .saveDataError(error)
