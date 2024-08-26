@@ -2962,7 +2962,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies. If profile duplication happens during this process, then the existing profile will be updated instead with new cookie, latest device fingerprints, and latest device ID instead."
+            "value" : "This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies. If profile duplication happens during this process, then the existing profile will be updated instead with new cookie, the latest device fingerprint, and the latest device ID instead."
           }
         },
         "ja" : {
