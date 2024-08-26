@@ -88,6 +88,35 @@
         }
       }
     },
+    "MiHoYoAPIError.insufficientDataVisibility" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insufficient data visibility in the Miyoushe / HoYoLAB account settings."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社 / HoYoLAB アカウント設定での資料公開権限は不足である。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米游社 / HoYoLAB 账户设定内的资料公开权限不足。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社 / HoYoLAB 帳戶設定內的資料公開權限不足。"
+          }
+        }
+      }
+    },
     "MiHoYoAPIError.reloginRequired" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -113,6 +142,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "[HoYoAPI錯誤] 請重新登入。"
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.serverUnderMaintenanceUpgrade" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miyoushe / HoYoLAB server under maintenance."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社 / HoYoLAB サーバーは整備中である。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米游社 / HoYoLAB 伺服器正在进行维护处理。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社 / HoYoLAB 伺服器正在進行維護處理。"
           }
         }
       }
