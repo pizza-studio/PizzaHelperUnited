@@ -47,7 +47,7 @@ struct InAppDailyNoteCardView: View {
     // MARK: Private
 
     @State private var theVM: DailyNoteViewModel
-    @State private var broadcaster = ViewEventBroadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
 }
 
 // MARK: - NoteView

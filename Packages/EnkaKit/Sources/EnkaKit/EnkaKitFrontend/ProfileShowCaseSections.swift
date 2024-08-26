@@ -146,7 +146,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     private let additionalView: () -> T
     private var theDB: QueryDB
     @State private var delegate: Coordinator<QueryDB>
-    @State private var broadcaster = ViewEventBroadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
 
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(pzProfile.uid) else { return false }
