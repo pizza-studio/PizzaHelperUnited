@@ -7,7 +7,7 @@
 import Foundation
 
 extension Date {
-    public static func Specify(day: Int, month: Int, year: Int) -> Date? {
+    public static func specify(day: Int, month: Int, year: Int) -> Date? {
         let month = max(1, min(12, month))
         let year = max(1965, min(9999, year))
         var day = max(1, min(31, day))
