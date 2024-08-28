@@ -63,9 +63,6 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
         .refreshable {
             triggerUpdateTask()
         }
-        .onDisappear {
-            delegate.task?.cancel()
-        }
     }
 
     // MARK: Internal
