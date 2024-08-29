@@ -41,7 +41,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.uid = uid
         self.serverRawValue = server.rawValue
         self.server = server
-        self.deviceID = ThisDevice.identifier4Vendor
+        self.deviceID = ThisDevice.identifier4Vendor.description // .description 很重要，防止 EXC_BAD_ACCESS。
     }
 
     public init() {}

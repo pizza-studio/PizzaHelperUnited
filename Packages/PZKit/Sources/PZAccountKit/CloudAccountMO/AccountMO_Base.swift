@@ -40,7 +40,8 @@ extension ProfileMOBasicProtocol {
 
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(uid) else { return false }
-        return (100_000_000 ... 9_999_999_999).contains(givenUIDInt)
+        /// 绝区零的国服 UID 是八位。
+        return (100_000_00 ... 9_999_999_999).contains(givenUIDInt)
     }
 }
 

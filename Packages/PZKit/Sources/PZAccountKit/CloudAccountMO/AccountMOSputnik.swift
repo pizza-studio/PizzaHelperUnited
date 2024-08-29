@@ -27,29 +27,23 @@ public final class AccountMOSputnik {
     // MARK: Public
 
     public func allAccountDataMO(for game: Pizza.SupportedGame) throws -> [AccountMOProtocol] {
-        try theDB(for: game).perform { ctx in
+        try theDB(for: game)?.perform { ctx in
             switch game {
-            case .genshinImpact:
-                try ctx.fetch(AccountMO4GI.all).map {
-                    try $0.decode()
-                }
-            case .starRail:
-                try ctx.fetch(AccountMO4HSR.all).map {
-                    try $0.decode()
-                }
+            case .genshinImpact: try ctx.fetch(AccountMO4GI.all).map { try $0.decode() }
+            case .starRail: try ctx.fetch(AccountMO4HSR.all).map { try $0.decode() }
+            case .zenlessZone: []
             }
-        }
+        } ?? []
     }
 
     public func countAllAccountDataMO(for game: Pizza.SupportedGame) throws -> Int {
-        try theDB(for: game).perform { ctx in
+        try theDB(for: game)?.perform { ctx in
             switch game {
-            case .genshinImpact:
-                try ctx.count(of: AccountMO4GI.all)
-            case .starRail:
-                try ctx.count(of: AccountMO4HSR.all)
+            case .genshinImpact: try ctx.count(of: AccountMO4GI.all)
+            case .starRail: try ctx.count(of: AccountMO4HSR.all)
+            case .zenlessZone: 0
             }
-        }
+        } ?? 0
     }
 
     public func countAllAccountDataAsPZProfileMO() throws -> Int {
@@ -77,10 +71,11 @@ public final class AccountMOSputnik {
 
     static let shared = try? AccountMOSputnik(persistence: .cloud, backgroundContext: false)
 
-    func theDB(for game: Pizza.SupportedGame) -> PersistentContainer {
+    func theDB(for game: Pizza.SupportedGame) -> PersistentContainer? {
         switch game {
         case .genshinImpact: db4GI
         case .starRail: db4HSR
+        case .zenlessZone: nil
         }
     }
 
