@@ -161,12 +161,10 @@ extension ProfileConfigViewContents {
                     account.gameUid == profile.uid
                 }
             } set: { account in
-                if let account = account {
+                if let account = account, let region = HoYo.AccountRegion(rawValue: account.gameBiz) {
                     profile.name = account.nickname
                     profile.uid = account.gameUid
-                    profile.server = HoYo.Server(rawValue: account.region)
-                        ?? HoYo.Server(uid: account.gameUid, game: profile.game)
-                        ?? .celestia(profile.game)
+                    profile.server = HoYo.Server(uid: account.gameUid, game: region.game) ?? .celestia(profile.game)
                 }
             }
         }
