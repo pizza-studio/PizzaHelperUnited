@@ -98,7 +98,7 @@ extension HoYo {
         deviceID: String?
     ) async throws
         -> WidgetNote4GI {
-        var cookie = cookie + "stoken: \(sTokenV2)"
+        var cookie = cookie
         if !cookie.contains("stoken=v2_"), !sTokenV2.isEmpty {
             cookie += "stoken: \(sTokenV2)"
         }
