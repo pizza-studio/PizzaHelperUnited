@@ -16,6 +16,8 @@ public struct ShowCaseEmptyInfoView: View {
                 Image("showCaseToggle-GI", bundle: .module).resizable().aspectRatio(contentMode: .fit)
             case .starRail:
                 Image("showCaseToggle-HSR", bundle: .module).resizable().aspectRatio(contentMode: .fit)
+            case .zenlessZone:
+                EmptyView() // 临时设定。
             }
         }
     }

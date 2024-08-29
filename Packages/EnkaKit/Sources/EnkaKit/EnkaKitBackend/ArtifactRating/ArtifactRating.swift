@@ -330,6 +330,7 @@ extension ArtifactRating {
                 "\(stat1pt)+\(stat2pt)+\(stat3pt)+\(stat4pt)+\(stat5pt) = "
             case .starRail:
                 "\(stat1pt)+\(stat2pt)+\(stat3pt)+\(stat4pt)+\(stat5pt)+\(stat6pt) = "
+            case .zenlessZone: "114514" // 临时设定。
             }
         }
 

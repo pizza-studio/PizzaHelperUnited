@@ -334,6 +334,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                                 width: fontSize * 2.6,
                                 height: fontSize * 2
                             )
+                    case .zenlessZone: EmptyView() // 临时设定。
                     }
                 }
                 HStack {
@@ -365,6 +366,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         switch game {
         case .genshinImpact: 3
         case .starRail: 4
+        case .zenlessZone: 4 // 临时设定。
         }
     }
 }
@@ -488,6 +490,7 @@ private struct WeaponPanelView: View {
                     .opacity(0.5)
             }
             .clipShape(.circle)
+        case .zenlessZone: EmptyView() // 临时设定。
         }
     }
 

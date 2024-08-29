@@ -35,6 +35,7 @@ extension ArtifactRating.ModelDB {
         let fileNameStem: String = switch game {
         case .genshinImpact: "ARDB4GI"
         case .starRail: "ARDB4HSR"
+        case .zenlessZone: "ARDB4ZZZ" // 临时设定。
         }
         self = ARDB.getBundledJSONFileObject(
             fileNameStem: fileNameStem, type: Self.self

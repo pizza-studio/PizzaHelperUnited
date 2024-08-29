@@ -66,6 +66,7 @@ extension EKQueriedProfileProtocol {
             let str = Enka.Sputnik.shared.db4HSR.profileAvatars[headIcon.description]?
                 .icon.split(separator: "/").last?.description ?? "Anonymous.png"
             return "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/\(str)"
+        case .zenlessZone: return "114514" // 临时设定。
         }
     }
 
@@ -77,6 +78,7 @@ extension EKQueriedProfileProtocol {
             let str = Enka.Sputnik.shared.db4HSR.profileAvatars[headIcon.description]?
                 .icon.split(separator: "/").last?.description ?? "Anonymous.png"
             headIconID = str.replacingOccurrences(of: ".png", with: "")
+        case .zenlessZone: break // 临时设定。
         }
         return "\(DBType.game.localAssetNamePrefix)avatar_\(headIconID)"
     }

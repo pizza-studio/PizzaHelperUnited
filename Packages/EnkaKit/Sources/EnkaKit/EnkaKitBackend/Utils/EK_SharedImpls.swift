@@ -16,6 +16,7 @@ extension Pizza.SupportedGame {
         switch self {
         case .genshinImpact: "GI"
         case .starRail: "SR"
+        case .zenlessZone: "ZZ"
         }
     }
 
@@ -23,6 +24,7 @@ extension Pizza.SupportedGame {
         switch self {
         case .genshinImpact: "gi_"
         case .starRail: "hsr_"
+        case .zenlessZone: "zzz_" // 临时设定。
         }
     }
 }

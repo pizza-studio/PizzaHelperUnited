@@ -4,9 +4,8 @@
 
 extension Enka.AvatarSummarized {
     public mutating func rateMyArtifacts() {
-        artifactRatingResult = ArtifactRating.Appraiser(
-            request: convert2ArtifactRatingModel()
-        ).evaluate()
+        guard let request = convert2ArtifactRatingModel() else { return }
+        artifactRatingResult = ArtifactRating.Appraiser(request: request).evaluate()
         if let result = artifactRatingResult {
             updateArtifacts { oldArray in
                 oldArray.map { currentArtifact in
@@ -31,7 +30,7 @@ extension Enka.AvatarSummarized {
         return this
     }
 
-    public func convert2ArtifactRatingModel() -> ArtifactRating.RatingRequest {
+    public func convert2ArtifactRatingModel() -> ArtifactRating.RatingRequest? {
         let extractedData = extractArtifactSetData()
         switch game {
         case .genshinImpact:
@@ -63,6 +62,7 @@ extension Enka.AvatarSummarized {
                 objectOrCirclet: extractedData[.hsrObject] ?? .init(type: .hsrObject),
                 neckHSR: extractedData[.hsrNeck] ?? .init(type: .hsrNeck)
             )
+        case .zenlessZone: return nil // 临时设定。
         }
     }
 

@@ -12,6 +12,7 @@ struct MutableAvatarPropertyPanel {
         switch game {
         case .genshinImpact: self.energyRecovery = 0
         case .starRail: self.energyRecovery = 1
+        case .zenlessZone: self.energyRecovery = 0 // 临时设定。
         }
     }
 
@@ -53,6 +54,7 @@ struct MutableAvatarPropertyPanel {
             resultB.append(.init(theDB: theDB, type: .elementalMastery, value: elementalMastery))
         case .starRail:
             resultB.append(.init(theDB: theDB, type: .breakDamageAddedRatio, value: breakUp))
+        case .zenlessZone: break // 临时设定。
         }
         resultB.append(.init(theDB: theDB, type: .healRatio, value: healRatio))
         resultB.append(.init(theDB: theDB, type: .energyRecovery, value: energyRecovery))
@@ -62,6 +64,7 @@ struct MutableAvatarPropertyPanel {
         case .starRail:
             resultB.append(.init(theDB: theDB, type: .statusProbability, value: statusProbability))
             resultB.append(.init(theDB: theDB, type: .statusResistance, value: statusResistance))
+        case .zenlessZone: break // 临时设定。
         }
         return (resultA, resultB)
     }
@@ -76,6 +79,7 @@ struct MutableAvatarPropertyPanel {
         element: Enka.GameElement
     ) {
         switch theDB.game {
+        case .zenlessZone: return // 临时设定。
         case .genshinImpact: return // 原神直接使用 Enka 预先计算的面板结果。
         case .starRail:
             var propAmplifiers = [Enka.PVPair]()

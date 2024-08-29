@@ -61,6 +61,7 @@ public struct CharacterIconView: View {
         case (.starRail, false): normalIconHSR
         case (.genshinImpact, true): cardIconGI
         case (.genshinImpact, false): normalIconHSRGI
+        case (.zenlessZone, _): EmptyView() // 临时设定。
         }
     }
 
@@ -199,6 +200,8 @@ public struct CharacterIconView: View {
             "gi_character_\(charID)"
         case .starRail:
             "hsr_character_\(charID)"
+        case .zenlessZone:
+            "zzz_character_\(charID)" // 临时设定。
         }
     }
 
@@ -206,6 +209,7 @@ public struct CharacterIconView: View {
         switch game {
         case .genshinImpact: charIDTruncated ?? charID
         case .starRail: charID
+        case .zenlessZone: charID // 临时设定。
         }
     }
 
@@ -213,6 +217,7 @@ public struct CharacterIconView: View {
         switch game {
         case .genshinImpact: useNameCardBGWithGICharacters
         case .starRail: false
+        case .zenlessZone: false // 临时设定。
         }
     }
 

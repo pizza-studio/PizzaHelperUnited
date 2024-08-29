@@ -42,6 +42,7 @@ extension Enka.AvatarSummarized {
         let eidolonInitial: String = switch game {
         case .genshinImpact: "C"
         case .starRail: "E"
+        case .zenlessZone: "M" // Mindscape Cinema. // 临时设定。
         }
         headLine
             .append("[\(terms.levelNameShortened)\(mainInfo.avatarLevel), \(eidolonInitial)\(mainInfo.constellation)]")

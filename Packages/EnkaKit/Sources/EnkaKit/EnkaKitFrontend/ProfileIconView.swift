@@ -82,6 +82,7 @@ extension Enka {
                             }
                         }
                 }
+            case .zenlessZone: Self.anonymousIcon4SUI // 临时设定。
             }
         }
 

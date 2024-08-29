@@ -67,6 +67,9 @@ extension Enka.AvatarSummarized {
             case .starRail:
                 self.iconAssetName = "hsr_character_\(id)"
                 self.iconOnlineFileNameStem = "\(id)"
+            case .zenlessZone:
+                self.iconAssetName = "zzz_character_\(id)" // 临时设定。
+                self.iconOnlineFileNameStem = "\(id)" // 临时设定。
             }
         }
 

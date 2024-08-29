@@ -21,6 +21,7 @@ struct PhotoSpecimenView: View {
                         for: .starRail,
                         scroll: false
                     )
+                case .zenlessZone: EmptyView()
                 }
             } header: {
                 switch game {
@@ -30,6 +31,7 @@ struct PhotoSpecimenView: View {
                 case .starRail:
                     Text("enka.photoSpecimen.credit.starRail".i18nEnka)
                         .textCase(.none)
+                case .zenlessZone: EmptyView()
                 }
             }
         }.formStyle(.grouped)

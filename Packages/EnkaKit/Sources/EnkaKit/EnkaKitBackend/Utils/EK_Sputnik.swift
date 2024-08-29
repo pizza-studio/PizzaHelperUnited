@@ -55,12 +55,6 @@ extension Enka {
 
         // MARK: Public
 
-        public enum EnkaDBResult {
-            case genshinImpact(Enka.EnkaDB4GI)
-            case starRail(Enka.EnkaDB4HSR)
-            case failure(Error)
-        }
-
         public static let shared = Sputnik()
 
         public fileprivate(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
@@ -80,18 +74,6 @@ extension Enka {
 // MARK: - EnkaDB Getters.
 
 extension Enka.Sputnik {
-    @MainActor
-    public static func getEnkaDB(for game: Enka.GameType) async -> EnkaDBResult {
-        do {
-            switch game {
-            case .genshinImpact: return try await .genshinImpact(getEnkaDB4GI())
-            case .starRail: return try await .starRail(getEnkaDB4HSR())
-            }
-        } catch {
-            return .failure(error)
-        }
-    }
-
     @MainActor
     @discardableResult
     public static func getEnkaDB4GI() async throws -> Enka.EnkaDB4GI {
@@ -166,6 +148,7 @@ extension Enka.Sputnik {
         case .starRail:
             let fetched = try await Enka.Sputnik.fetchEnkaQueryResultRAW(uid, type: Enka.QueriedResultHSR.self)
             fetched.detailInfo?.saveToCache()
+        case .zenlessZone: break // 临时设定。
         }
     }
 
