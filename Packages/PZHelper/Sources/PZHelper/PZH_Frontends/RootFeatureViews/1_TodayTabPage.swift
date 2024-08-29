@@ -61,10 +61,9 @@ struct TodayTabPage: View {
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
 
     private var filteredProfiles: [PZProfileMO] {
-        switch game {
-        case .genshinImpact: profiles.filter { $0.game == .genshinImpact }
-        case .starRail: profiles.filter { $0.game == .starRail }
-        case nil: profiles
+        profiles.filter {
+            guard let currentGame = game else { return true }
+            return $0.game == currentGame
         }
     }
 
@@ -77,6 +76,8 @@ struct TodayTabPage: View {
                 .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)
             Text(Pizza.SupportedGame.starRail.localizedShortName)
                 .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
+            Text(Pizza.SupportedGame.zenlessZone.localizedShortName)
+                .tag(Pizza.SupportedGame.zenlessZone as Pizza.SupportedGame?)
         }
     }
 
