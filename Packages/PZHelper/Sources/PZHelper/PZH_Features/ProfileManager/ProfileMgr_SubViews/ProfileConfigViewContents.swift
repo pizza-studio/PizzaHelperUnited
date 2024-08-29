@@ -45,7 +45,7 @@ struct ProfileConfigViewContents: View {
                 Text("UID: " + profile.uidWithGame)
                 Spacer()
                 Text(profile.game.localizedDescription)
-                Text(profile.server.localizedDescriptionByGame)
+                Text(profile.server.withGame(profile.game).localizedDescriptionByGame)
             }
         }
 

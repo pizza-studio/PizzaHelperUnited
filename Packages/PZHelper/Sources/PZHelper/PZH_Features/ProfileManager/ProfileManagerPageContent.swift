@@ -139,7 +139,7 @@ struct ProfileManagerPageContent: View {
                     if horizontalSizeClass != .compact {
                         Text(profile.game.localizedDescription)
                     }
-                    Text(profile.server.localizedDescriptionByGame)
+                    Text(profile.server.withGame(profile.game).localizedDescriptionByGame)
                 }
                 .font(.footnote)
                 .foregroundColor(.secondary)
@@ -191,6 +191,7 @@ struct ProfileManagerPageContent: View {
                             switch currentGame {
                             case .genshinImpact: Defaults[.queriedEnkaProfiles4GI].removeValue(forKey: currentUID)
                             case .starRail: Defaults[.queriedEnkaProfiles4HSR].removeValue(forKey: currentUID)
+                            case .zenlessZone: break // 临时设定。
                             }
                         }
                     }

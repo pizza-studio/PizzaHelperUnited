@@ -119,6 +119,14 @@ extension HoYo.Server: CaseIterable {
         .asia(.starRail),
         .hkMacauTaiwan(.starRail),
     ]
+
+    public static var allCases4ZZZ: [Self] = [
+        .celestia(.zenlessZone),
+        .unitedStates(.zenlessZone),
+        .europe(.zenlessZone),
+        .asia(.zenlessZone),
+        .hkMacauTaiwan(.zenlessZone),
+    ]
 }
 
 // MARK: - HoYo.Server + RawRepresentable, Codable, Identifiable, Hashable

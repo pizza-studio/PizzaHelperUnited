@@ -34,7 +34,7 @@ struct DetailPortalTabPage: View {
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
             .toolbar {
                 Group {
-                    if !profiles.isEmpty {
+                    if !sortedProfiles.isEmpty {
                         ToolbarItem(placement: .topBarTrailing) {
                             accountSwitcherMenu()
                         }
@@ -84,6 +84,7 @@ struct DetailPortalTabPage: View {
                     .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                     .onTapGesture { uidInputFieldFocus = false }
                 query4HSR
+            case .zenlessZone: EmptyView()
             }
         } else {
             query4GI
@@ -174,6 +175,7 @@ struct DetailPortalTabPage: View {
 
     private var sortedProfiles: [PZProfileMO] {
         profiles.sorted { $0.priority < $1.priority }
+            .filter { $0.game != .zenlessZone } // 临时设定。
     }
 }
 
@@ -188,6 +190,7 @@ extension DetailPortalTabPage {
             let pzProfiles = try? PersistenceController.shared.modelContainer
                 .mainContext.fetch(FetchDescriptor<PZProfileMO>())
                 .sorted { $0.priority < $1.priority }
+                .filter { $0.game != .zenlessZone } // 临时设定。
             self.currentPZProfile = pzProfiles?.first
         }
 

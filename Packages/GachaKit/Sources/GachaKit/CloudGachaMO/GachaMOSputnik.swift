@@ -27,7 +27,7 @@ public final class GachaMOSputnik {
     // MARK: Public
 
     public func allGachaDataMO(for game: Pizza.SupportedGame) throws -> [GachaMOProtocol] {
-        try theDB(for: game).perform { ctx in
+        try theDB(for: game)?.perform { ctx in
             switch game {
             case .genshinImpact:
                 try ctx.fetch(GachaMO4GI.all).map {
@@ -37,16 +37,18 @@ public final class GachaMOSputnik {
                 try ctx.fetch(GachaMO4HSR.all).map {
                     try $0.decode()
                 }
+            case .zenlessZone: []
             }
-        }
+        } ?? []
     }
 
     // MARK: Internal
 
-    func theDB(for game: Pizza.SupportedGame) -> PersistentContainer {
+    func theDB(for game: Pizza.SupportedGame) -> PersistentContainer? {
         switch game {
         case .genshinImpact: db4GI
         case .starRail: db4HSR
+        case .zenlessZone: nil
         }
     }
 

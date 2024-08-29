@@ -104,10 +104,9 @@ extension ProfileManagerPageContent {
             Task(priority: .userInitiated) {
                 if !profile.cookie.isEmpty {
                     do {
-                        var giRegion = region
-                        var srRegion = region
-                        giRegion.changeGame(to: .genshinImpact)
-                        srRegion.changeGame(to: .starRail)
+                        let giRegion = region.withGame(.genshinImpact)
+                        let srRegion = region.withGame(.starRail)
+                        let zzzRegion = region.withGame(.zenlessZone)
                         fetchedAccounts = try await HoYo.getUserGameRolesByCookie(
                             region: giRegion,
                             cookie: profile.cookie
@@ -116,9 +115,13 @@ extension ProfileManagerPageContent {
                             region: srRegion,
                             cookie: profile.cookie
                         )
+                        fetchedAccounts += try await HoYo.getUserGameRolesByCookie(
+                            region: zzzRegion,
+                            cookie: profile.cookie
+                        )
                         for account in fetchedAccounts {
                             let region = HoYo.AccountRegion(rawValue: account.gameBiz)
-                            if let region, let server = HoYo.Server(rawValue: account.region)?.withGame(region.game) {
+                            if let region, let server = HoYo.Server(uid: account.gameUid, game: region.game) {
                                 let newProfile = PZProfileMO(server: server, uid: account.gameUid)
                                 newProfile.name = account.nickname
                                 newProfile.cookie = profile.cookie // 很重要
@@ -161,7 +164,7 @@ extension ProfileManagerPageContent {
                         )
                         if let account = fetchedAccounts.first,
                            let region = HoYo.AccountRegion(rawValue: account.gameBiz),
-                           let server = HoYo.Server(rawValue: account.region)?.withGame(region.game) {
+                           let server = HoYo.Server(uid: account.gameUid, game: region.game) {
                             profile.name = account.nickname
                             profile.uid = account.gameUid
                             profile.server = server
@@ -281,11 +284,15 @@ private struct RequireLoginView: View {
                         .tag(HoYo.AccountRegion.hoyoLab(.genshinImpact))
                     Text(Pizza.SupportedGame.starRail.localizedDescription)
                         .tag(HoYo.AccountRegion.hoyoLab(.starRail))
+                    Text(Pizza.SupportedGame.zenlessZone.localizedDescription)
+                        .tag(HoYo.AccountRegion.hoyoLab(.zenlessZone))
                 case .miyoushe:
                     Text(Pizza.SupportedGame.genshinImpact.localizedDescription)
                         .tag(HoYo.AccountRegion.miyoushe(.genshinImpact))
                     Text(Pizza.SupportedGame.starRail.localizedDescription)
                         .tag(HoYo.AccountRegion.miyoushe(.starRail))
+                    Text(Pizza.SupportedGame.zenlessZone.localizedDescription)
+                        .tag(HoYo.AccountRegion.miyoushe(.zenlessZone))
                 }
             }
             .pickerStyle(.segmented)
@@ -304,6 +311,11 @@ private struct RequireLoginView: View {
                         .tag(HoYo.AccountRegion.miyoushe(.starRail))
                     Text(HoYo.AccountRegion.hoyoLab(.starRail).localizedDescription)
                         .tag(HoYo.AccountRegion.hoyoLab(.starRail))
+                case .zenlessZone:
+                    Text(HoYo.AccountRegion.miyoushe(.zenlessZone).localizedDescription)
+                        .tag(HoYo.AccountRegion.miyoushe(.zenlessZone))
+                    Text(HoYo.AccountRegion.hoyoLab(.zenlessZone).localizedDescription)
+                        .tag(HoYo.AccountRegion.hoyoLab(.zenlessZone))
                 }
             }
             .pickerStyle(.segmented)
