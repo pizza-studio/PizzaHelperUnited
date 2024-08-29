@@ -37,6 +37,7 @@ extension Enka {
             switch game {
             case .genshinImpact: return "\(rootFolder)GI/\(rawValue).json"
             case .starRail: return "\(rootFolder)HSR/\(rawValue).json"
+            case .zenlessZone: return "\(rootFolder)ZZZ/\(rawValue).json" // 临时设定。
             }
         }
 

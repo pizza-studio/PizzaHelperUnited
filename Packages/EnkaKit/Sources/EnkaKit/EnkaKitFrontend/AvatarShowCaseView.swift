@@ -179,6 +179,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
         switch profile.game {
         case .genshinImpact: useNameCardBGWithGICharacters
         case .starRail: false
+        case .zenlessZone: false // 临时设定。
         }
     }
 }
