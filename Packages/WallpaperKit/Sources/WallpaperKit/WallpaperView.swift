@@ -61,6 +61,7 @@ public struct AppWallpaperView: View {
         switch guardedWallpaper.game {
         case .genshinImpact: 30
         case .starRail: 50
+        case .zenlessZone: 50 // 临时设定。
         }
     }
 
@@ -68,6 +69,7 @@ public struct AppWallpaperView: View {
         switch guardedWallpaper.game {
         case .genshinImpact: colorSystemGray6.opacity(0.5)
         case .starRail: colorSysBackground.opacity(0.3).blendMode(.hardLight)
+        case .zenlessZone: colorSysBackground.opacity(0.3).blendMode(.hardLight) // 临时设定。
         }
     }
 

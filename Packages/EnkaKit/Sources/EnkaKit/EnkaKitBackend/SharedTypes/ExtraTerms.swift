@@ -92,6 +92,19 @@ extension Enka.GameType {
                 equilibriumLevel: "_EquilibriumLevel",
                 equilibriumLevelShortened: "_EquilibriumLevelShortened"
             )
+        case .zenlessZone: // 临时设定。
+            return .init(
+                langTag: Enka.currentLangTag,
+                levelName: "_AvatarLevel",
+                levelNameShortened: "_AvatarLevelShortened",
+                constellationName: "_Constellation",
+                artifactRatingName: "_ArtifactRating",
+                artifactRatingUnit: "_UnitForPoints",
+                trailblazeLevel: "_AdventureRank",
+                trailblazeLevelShortened: "_AdventureRankShortened",
+                equilibriumLevel: "_WorldLevel",
+                equilibriumLevelShortened: "_WorldLevelShortened"
+            )
         }
     }
 }

@@ -37,6 +37,8 @@ extension Enka.AvatarSummarized.CharacterID: OnlineAssetSuppliable {
             "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
             "https://api.hakush.in/hsr/UI/avatarshopicon/\(iconOnlineFileNameStem).webp"
+        case .zenlessZone:
+            "114514" // 临时设定。
         }
         return urlStr
     }
@@ -51,6 +53,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill: OnlineAss
             "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
             "https://api.yatta.top/hsr/assets/UI/skill/\(iconOnlineFileNameStem).png"
+        case .zenlessZone:
+            "114514" // 临时设定。
         }
         return urlStr
     }
@@ -65,6 +69,7 @@ extension Enka.AvatarSummarized.WeaponPanel: OnlineAssetSuppliable {
             "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
             "https://api.hakush.in/hsr/UI/lightconemediumicon/\(iconOnlineFileNameStem).webp"
+        case .zenlessZone: "114514" // 临时设定。
         }
         return urlStr
     }
@@ -79,6 +84,7 @@ extension Enka.AvatarSummarized.ArtifactInfo: OnlineAssetSuppliable {
             "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
             "https://api.hakush.in/hsr/UI/relicfigures/\(iconOnlineFileNameStem).webp"
+        case .zenlessZone: "114514" // 临时设定。
         }
         return urlStr
     }

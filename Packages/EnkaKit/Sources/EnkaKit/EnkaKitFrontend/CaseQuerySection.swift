@@ -75,6 +75,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
         switch QueryDB.game {
         case .genshinImpact: return "114514810"
         case .starRail: return "114514810"
+        case .zenlessZone: return "114514810"
         }
         #else
         return ""
@@ -106,6 +107,8 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
             Text("enka.CaseQuery.title.GI", bundle: .module)
         case .starRail:
             Text("enka.CaseQuery.title.HSR", bundle: .module)
+        case .zenlessZone:
+            EmptyView() // 临时设定。
         }
     }
 
@@ -116,6 +119,8 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
             Text("enka.CaseQuery.showCaseAPIServiceProviders.explain.GI", bundle: .module)
         case .starRail:
             Text("enka.CaseQuery.showCaseAPIServiceProviders.explain.HSR", bundle: .module)
+        case .zenlessZone:
+            EmptyView() // 临时设定。
         }
     }
 

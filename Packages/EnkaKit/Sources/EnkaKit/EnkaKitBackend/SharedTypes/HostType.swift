@@ -89,6 +89,8 @@ extension Enka {
             case (.enkaGlobal, .starRail): return "https://enka.network/api/hsr/uid/"
             case (.mainlandChina, .genshinImpact): return "https://profile.microgg.cn/api/uid/"
             case (.enkaGlobal, .genshinImpact): return "https://enka.network/api/uid/"
+            case (.mainlandChina, .zenlessZone): return "https://114514.cn/"
+            case (.enkaGlobal, .zenlessZone): return "https://114514.cn/" // 临时设定。
             }
         }
 

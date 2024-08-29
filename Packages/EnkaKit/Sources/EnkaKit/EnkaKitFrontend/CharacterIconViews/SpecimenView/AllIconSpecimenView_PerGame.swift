@@ -76,6 +76,7 @@ public struct CharSpecimen: Identifiable, Hashable {
             ids = filtered.reduce([], +)
         case .starRail:
             ids = Enka.Sputnik.shared.db4HSR.characters.keys.sorted()
+        case .zenlessZone: break // 临时设定。
         case .none: break
         }
         ids += (supplementalIDs ?? [])

@@ -32,6 +32,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable {
         switch game {
         case .genshinImpact: "NC\(id)"
         case .starRail: "WP\(id)"
+        case .zenlessZone: "ZZ\(id)" // 临时设定。
         }
     }
 
@@ -39,6 +40,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable {
         switch game {
         case .genshinImpact: "NC\(id)"
         case .starRail: "LA_WP\(id)"
+        case .zenlessZone: "ZZ\(id)" // 临时设定。
         }
     }
 
@@ -46,6 +48,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable {
         switch game {
         case .genshinImpact: Self.bundledLangDB4GI[id] ?? "NC(\(id))"
         case .starRail: Self.bundledLangDB4HSR[id] ?? "WP(\(id))"
+        case .zenlessZone: "ZZ\(id)" // 临时设定。
         }
     }
 
@@ -53,6 +56,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable {
         switch game {
         case .genshinImpact: Self.bundledLangDB4GIRealName[id] ?? localizedName
         case .starRail: Self.bundledLangDB4HSR[id] ?? localizedName
+        case .zenlessZone: localizedName // 临时设定。
         }
     }
 }
@@ -94,6 +98,7 @@ extension Wallpaper {
         return switch game {
         case .genshinImpact: allCases.first { $0.id == "210018" }!
         case .starRail: allCases.first { $0.id == "221000" }!
+        case .zenlessZone: allCases4GI.first { $0.id == "210018" }! // 临时设定。
         }
     }
 
@@ -102,6 +107,7 @@ extension Wallpaper {
         return switch game {
         case .genshinImpact: allCases.randomElement()!
         case .starRail: allCases.randomElement()!
+        case .zenlessZone: allCases4HSR.randomElement()! // 临时设定。
         }
     }
 
@@ -109,6 +115,7 @@ extension Wallpaper {
         switch game {
         case .genshinImpact: allCases4GI
         case .starRail: allCases4HSR
+        case .zenlessZone: []
         }
     }
 
@@ -123,6 +130,7 @@ extension Wallpaper {
         switch appGame {
         case .genshinImpact: allCases4GI
         case .starRail: allCases4HSR
+        case .zenlessZone: []
         case .none: allCases4HSR + allCases4GI
         }
     }
