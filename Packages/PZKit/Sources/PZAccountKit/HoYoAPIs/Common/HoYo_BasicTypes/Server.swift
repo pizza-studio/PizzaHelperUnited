@@ -61,6 +61,12 @@ extension HoYo {
             }
         }
 
+        public func withGame(_ game: Pizza.SupportedGame) -> Self {
+            var result = self
+            result.changeGame(to: game)
+            return result
+        }
+
         public mutating func changeGame(to game: Pizza.SupportedGame) {
             self = switch self {
             case .celestia: .celestia(game)
@@ -101,6 +107,8 @@ extension HoYo.Server: CaseIterable {
 // MARK: - HoYo.Server + RawRepresentable, Codable, Identifiable, Hashable
 
 extension HoYo.Server: RawRepresentable, Codable, Identifiable, Hashable {
+    /// 注意：该建构子无法区分绝区零的国服与星穹铁道的天空岛（星穹列车）伺服器。
+    /// 初期化之后必须使用 .withGame() -> Self 来补充修正游戏类型。
     public init?(rawValue: String) {
         switch rawValue.lowercased() {
         case "cn_gf01": self = .celestia(.genshinImpact)

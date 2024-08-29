@@ -22,7 +22,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.game = game
         self.uid = uid
         self.serverRawValue = server.rawValue
-        self.server = server
+        self.server = server.withGame(game)
         if let configuration {
             self.allowNotification = configuration.allowNotification
             self.cookie = configuration.cookie
@@ -53,12 +53,12 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.deviceFingerPrint = try container.decode(String.self, forKey: .deviceFingerPrint)
         self.name = try container.decode(String.self, forKey: .name)
         self.priority = try container.decode(Int.self, forKey: .priority)
-        self.server = try container.decode(HoYo.Server.self, forKey: .server)
+        self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
+        self.server = try container.decode(HoYo.Server.self, forKey: .server).withGame(game)
         self.serverRawValue = try container.decode(String.self, forKey: .serverRawValue)
         self.sTokenV2 = try container.decodeIfPresent(String.self, forKey: .sTokenV2) ?? ""
         self.uid = try container.decode(String.self, forKey: .uid)
         self.uuid = try container.decode(UUID.self, forKey: .uuid)
-        self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
         self.deviceID = try container.decode(String.self, forKey: .deviceID)
     }
 
@@ -78,14 +78,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
 
     public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact {
         willSet {
-            switch server {
-            case .celestia: server = .celestia(newValue)
-            case .irminsul: server = .irminsul(newValue)
-            case .unitedStates: server = .unitedStates(newValue)
-            case .europe: server = .europe(newValue)
-            case .asia: server = .asia(newValue)
-            case .hkMacauTaiwan: server = .hkMacauTaiwan(newValue)
-            }
+            server.changeGame(to: newValue)
             serverRawValue = server.rawValue
         }
     }

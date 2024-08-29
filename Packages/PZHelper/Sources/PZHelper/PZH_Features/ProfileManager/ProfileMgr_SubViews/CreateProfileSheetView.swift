@@ -117,7 +117,8 @@ extension ProfileManagerPageContent {
                             cookie: profile.cookie
                         )
                         for account in fetchedAccounts {
-                            if let server = HoYo.Server(rawValue: account.region) {
+                            let region = HoYo.AccountRegion(rawValue: account.gameBiz)
+                            if let region, let server = HoYo.Server(rawValue: account.region)?.withGame(region.game) {
                                 let newProfile = PZProfileMO(server: server, uid: account.gameUid)
                                 newProfile.name = account.nickname
                                 newProfile.cookie = profile.cookie // 很重要
@@ -158,7 +159,9 @@ extension ProfileManagerPageContent {
                             region: region,
                             cookie: profile.cookie
                         )
-                        if let account = fetchedAccounts.first, let server = HoYo.Server(rawValue: account.region) {
+                        if let account = fetchedAccounts.first,
+                           let region = HoYo.AccountRegion(rawValue: account.gameBiz),
+                           let server = HoYo.Server(rawValue: account.region)?.withGame(region.game) {
                             profile.name = account.nickname
                             profile.uid = account.gameUid
                             profile.server = server
