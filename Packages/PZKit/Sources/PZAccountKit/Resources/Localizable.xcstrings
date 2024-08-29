@@ -349,6 +349,35 @@
         }
       }
     },
+    "server.location.celestia.ZZZ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Eridu"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新エリー都"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新艾利都"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新艾利都"
+          }
+        }
+      }
+    },
     "server.location.europe" : {
       "extractionState" : "manual",
       "localizations" : {

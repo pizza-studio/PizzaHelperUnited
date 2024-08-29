@@ -34,6 +34,12 @@ extension HoYo {
             case .miyoushe: .miyoushe(game)
             }
         }
+
+        public func withGame(_ game: Pizza.SupportedGame) -> Self {
+            var result = self
+            result.changeGame(to: game)
+            return result
+        }
     }
 }
 
@@ -60,6 +66,8 @@ extension HoYo.AccountRegion: RawRepresentable, Codable, Identifiable, Hashable 
         case "hkrpg_cn": self = .miyoushe(.starRail)
         case "hk4e_global": self = .hoyoLab(.genshinImpact)
         case "hk4e_cn": self = .miyoushe(.genshinImpact)
+        case "nap_global": self = .hoyoLab(.genshinImpact)
+        case "nap_cn": self = .miyoushe(.genshinImpact)
         default: return nil
         }
     }
@@ -72,11 +80,13 @@ extension HoYo.AccountRegion: RawRepresentable, Codable, Identifiable, Hashable 
             switch supportedGame {
             case .genshinImpact: "hk4e_global"
             case .starRail: "hkrpg_global"
+            case .zenlessZone: "nap_global"
             }
         case let .miyoushe(supportedGame):
             switch supportedGame {
             case .genshinImpact: "hk4e_cn"
             case .starRail: "hkrpg_cn"
+            case .zenlessZone: "nap_cn"
             }
         }
     }
