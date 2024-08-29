@@ -20,21 +20,13 @@ extension HoYo {
         server: Server,
         uid: String,
         cookie: String,
-        sTokenV2: String? = nil,
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
         -> any Note4GI {
         switch server.region {
         case .miyoushe:
-            if let sTokenV2 {
-                return try await widgetNote4GI(
-                    cookie: cookie,
-                    sTokenV2: sTokenV2,
-                    deviceFingerPrint: deviceFingerPrint,
-                    deviceID: deviceID
-                )
-            } else if cookie.contains("stoken=v2_") {
+            if cookie.contains("stoken=v2_") {
                 return try await widgetNote4GI(
                     cookie: cookie,
                     deviceFingerPrint: deviceFingerPrint,
@@ -93,15 +85,10 @@ extension HoYo {
 
     static func widgetNote4GI(
         cookie: String,
-        sTokenV2: String = "",
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
         -> WidgetNote4GI {
-        var cookie = cookie
-        if !cookie.contains("stoken=v2_"), !sTokenV2.isEmpty {
-            cookie += "stoken: \(sTokenV2)"
-        }
         let additionalHeaders: [String: String]? = {
             if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceID {
                 return [
