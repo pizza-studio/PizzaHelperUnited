@@ -8,6 +8,7 @@ extension Pizza {
     public enum SupportedGame: String, Sendable, Identifiable, Hashable, Codable, CaseIterable, Equatable {
         case genshinImpact = "GI"
         case starRail = "HSR"
+        case zenlessZone = "ZZZ"
 
         // MARK: Public
 
@@ -17,6 +18,7 @@ extension Pizza {
             switch self {
             case .genshinImpact: "game.genshin.shortNameEX".i18nBaseKit
             case .starRail: "game.starRail.shortNameEX".i18nBaseKit
+            case .zenlessZone: "game.zenlessZone.shortNameEX".i18nBaseKit
             }
         }
 
@@ -24,13 +26,15 @@ extension Pizza {
             switch self {
             case .genshinImpact: "GI"
             case .starRail: "SR"
+            case .zenlessZone: "ZZ"
             }
         }
 
-        public var viseVersa: Self {
+        public var nextIteration: Self {
             switch self {
             case .genshinImpact: .starRail
-            case .starRail: .genshinImpact
+            case .starRail: .zenlessZone
+            case .zenlessZone: .genshinImpact
             }
         }
     }
@@ -47,6 +51,7 @@ extension Pizza.SupportedGame: CustomStringConvertible {
         switch self {
         case .genshinImpact: "game.genshin.i18nName".i18nBaseKit
         case .starRail: "game.starRail.i18nName".i18nBaseKit
+        case .zenlessZone: "game.zenlessZone.i18nName".i18nBaseKit
         }
     }
 
@@ -55,6 +60,7 @@ extension Pizza.SupportedGame: CustomStringConvertible {
         switch self {
         case .genshinImpact: "game.genshin.titleMarkedName".i18nBaseKit
         case .starRail: "game.starRail.titleMarkedName".i18nBaseKit
+        case .zenlessZone: "game.zenlessZone.titleMarkedName".i18nBaseKit
         }
     }
 }
