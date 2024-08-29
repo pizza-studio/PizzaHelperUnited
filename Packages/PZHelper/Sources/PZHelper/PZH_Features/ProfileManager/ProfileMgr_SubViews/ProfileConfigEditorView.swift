@@ -57,6 +57,10 @@ struct ProfileConfigEditorView: View {
                         ForEach(HoYo.Server.allCases4HSR) { server in
                             Text(server.localizedDescriptionByGameAndRegion).tag(server)
                         }
+                    case .zenlessZone:
+                        ForEach(HoYo.Server.allCases4ZZZ) { server in
+                            Text(server.localizedDescriptionByGameAndRegion).tag(server)
+                        }
                     }
                 }
             }

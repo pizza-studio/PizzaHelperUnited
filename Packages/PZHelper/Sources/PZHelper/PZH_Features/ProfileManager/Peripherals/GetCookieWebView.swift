@@ -15,6 +15,7 @@ private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
     case (.miyoushe, _): "https://user.mihoyo.com/#/login/captcha"
     case (.hoyoLab, .genshinImpact): "https://act.hoyolab.com/ys/event/calculator-sea/"
     case (.hoyoLab, .starRail): "https://act.hoyolab.com/app/community-game-records-sea/rpg/m.html#/hsr"
+    case (.hoyoLab, .zenlessZone): "https://act.hoyolab.com/app/zzz-game-record/index.html#/zzz"
     }
 }
 
