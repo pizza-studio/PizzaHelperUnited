@@ -56,6 +56,8 @@ public enum URLRequestConfig {
         case (.hoyoLab, .genshinImpact): "public-operation-hk4e-sg.hoyoverse.com"
         case (.miyoushe, .starRail): "public-operation-hkrpg.mihoyo.com"
         case (.hoyoLab, .starRail): "public-operation-hkrpg-sg.hoyoverse.com"
+        case (.miyoushe, .zenlessZone): "public-operation-nap.mihoyo.com"
+        case (.hoyoLab, .zenlessZone): "public-operation-nap-sg.hoyoverse.com"
         }
     }
 
@@ -136,14 +138,19 @@ extension URLRequestConfig {
         for region: HoYo.AccountRegion
     ) {
         guard case .miyoushe = region else { return }
-        let header = "https://api-takumi-record.mihoyo.com/game_record/app/"
         switch region.game {
         case .genshinImpact:
+            let header = "https://api-takumi-record.mihoyo.com/game_record/app/"
             target["x-rpc-challenge_path"] = "\(header)genshin/api/dailyNote"
             target["x-rpc-challenge_game"] = "2"
         case .starRail:
+            let header = "https://api-takumi-record.mihoyo.com/game_record/app/"
             target["x-rpc-challenge_path"] = "\(header)hkrpg/api/note"
             target["x-rpc-challenge_game"] = "6"
+        case .zenlessZone:
+            let header = "https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz"
+            target["x-rpc-challenge_path"] = "\(header)/note"
+            target["x-rpc-challenge_game"] = "8"
         }
     }
 }

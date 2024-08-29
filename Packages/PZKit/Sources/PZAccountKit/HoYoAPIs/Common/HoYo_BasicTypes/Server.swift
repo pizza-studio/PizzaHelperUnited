@@ -22,18 +22,35 @@ extension HoYo {
 
         public init?(uid: String?, game: Pizza.SupportedGame?) {
             guard var theUID = uid, let theGame = game else { return nil }
-            while theUID.count > 9 {
-                theUID = theUID.dropFirst().description
-            }
             guard let initial = theUID.first, let initialInt = Int(initial.description) else { return nil }
-            switch initialInt {
-            case 1 ... 4: self = .celestia(theGame)
-            case 5: self = .irminsul(theGame)
-            case 6: self = .unitedStates(theGame)
-            case 7: self = .europe(theGame)
-            case 8: self = .asia(theGame)
-            case 9: self = .hkMacauTaiwan(theGame)
-            default: return nil
+            switch theGame {
+            case .genshinImpact, .starRail:
+                while theUID.count > 9 {
+                    theUID = theUID.dropFirst().description
+                }
+                switch initialInt {
+                case 1 ... 4: self = .celestia(theGame)
+                case 5: self = .irminsul(theGame)
+                case 6: self = .unitedStates(theGame)
+                case 7: self = .europe(theGame)
+                case 8: self = .asia(theGame)
+                case 9: self = .hkMacauTaiwan(theGame)
+                default: return nil
+                }
+            case .zenlessZone:
+                guard theUID.count >= 10 else {
+                    self = .celestia(.zenlessZone)
+                    return
+                }
+                guard let initial = Int(theUID.prefix(2).dropFirst()),
+                      let initialInt = Int(initial.description) else { return nil }
+                switch initialInt {
+                case 0 ... 2: self = .unitedStates(theGame)
+                case 3 ... 4: self = .asia(theGame)
+                case 5 ... 6: self = .europe(theGame)
+                case 7...: self = .hkMacauTaiwan(theGame)
+                default: return nil
+                }
             }
         }
 
@@ -70,7 +87,7 @@ extension HoYo {
         public mutating func changeGame(to game: Pizza.SupportedGame) {
             self = switch self {
             case .celestia: .celestia(game)
-            case .irminsul: .irminsul(game)
+            case .irminsul: game != .zenlessZone ? .irminsul(game) : .celestia(.zenlessZone)
             case .unitedStates: .unitedStates(game)
             case .europe: .europe(game)
             case .asia: .asia(game)
@@ -123,6 +140,11 @@ extension HoYo.Server: RawRepresentable, Codable, Identifiable, Hashable {
         case "prod_official_eur": self = .europe(.starRail)
         case "prod_official_usa": self = .unitedStates(.starRail)
         case "prod_official_cht": self = .hkMacauTaiwan(.starRail)
+        // case "prod_gf_cn": self = .celestia(.zenlessZone)
+        case "prod_gf_us": self = .asia(.zenlessZone)
+        case "prod_gf_eu": self = .europe(.zenlessZone)
+        case "prod_gf_jp": self = .unitedStates(.zenlessZone)
+        case "prod_gf_sg": self = .hkMacauTaiwan(.zenlessZone) // 绝区零新加坡服当作港澳台服处理。
         default: return nil
         }
     }
@@ -143,6 +165,12 @@ extension HoYo.Server: RawRepresentable, Codable, Identifiable, Hashable {
         case (.europe, .starRail): "prod_official_eur"
         case (.asia, .starRail): "prod_official_asia"
         case (.hkMacauTaiwan, .starRail): "prod_official_cht"
+        case (.celestia, .zenlessZone): "prod_gf_cn"
+        case (.irminsul, .zenlessZone): "prod_gf_cn"
+        case (.unitedStates, .zenlessZone): "prod_gf_us"
+        case (.europe, .zenlessZone): "prod_gf_eu"
+        case (.asia, .zenlessZone): "prod_gf_jp"
+        case (.hkMacauTaiwan, .zenlessZone): "prod_gf_sg" // 绝区零新加坡服当作港澳台服处理。
         }
     }
 
