@@ -17,7 +17,7 @@ public struct GachaMOItemDebugView: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         LabeledContent {
             VStack(alignment: .trailing) {
                 Text(verbatim: gachaItemMO.time.formatted())

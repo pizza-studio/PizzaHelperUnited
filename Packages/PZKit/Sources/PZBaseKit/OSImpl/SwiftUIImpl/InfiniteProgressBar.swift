@@ -12,7 +12,7 @@ public struct InfiniteProgressBar: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         Rectangle()
             .foregroundColor(.gray) // change the color as you see fit
             .frame(height: Self.height)

@@ -17,7 +17,7 @@ public struct AccountMOItemDebugView: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         Section {
             LabeledContent("game".description) {
                 Text(verbatim: accountMO.game.localizedShortName)

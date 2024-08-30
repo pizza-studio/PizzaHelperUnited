@@ -8,7 +8,7 @@ import SwiftUI
 // struct DemoContentView: View {
 //    // MARK: Internal
 //
-//    var body: some View {
+//    @MainActor var body: some View {
 //        NavigationSplitView {
 //            List {
 //                ForEach(items) { item in
