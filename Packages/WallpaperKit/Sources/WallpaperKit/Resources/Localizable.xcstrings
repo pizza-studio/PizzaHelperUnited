@@ -77,7 +77,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "设为实时活动背景图"
+            "value" : "设为 App 壁纸"
           }
         },
         "zh-Hant" : {
@@ -106,7 +106,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "设为 App 壁纸"
+            "value" : "设为实时活动背景图"
           }
         },
         "zh-Hant" : {
