@@ -36,11 +36,9 @@ struct TodayTabPage: View {
             .listContainerBackground()
             .navigationTitle("tab.today.fullTitle".i18nPZHelper)
             .toolbar {
-                #if os(OSX) || targetEnvironment(macCatalyst)
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("", systemImage: "arrow.clockwise") { refresh() }
                 }
-                #endif
                 ToolbarItem(placement: .topBarTrailing) {
                     gamePicker
                         .padding(4)
