@@ -15,7 +15,7 @@ public struct Note4ZZZ: Codable, Hashable, DecodableFromMiHoYoAPIJSONResult, Dai
     /// 电池电量
     public var energy: Energy
     public var vitality: Vitality
-    public var vhsSale: VhsSale
+    public var vhsSale: VHSSale
     public var cardSign: String?
 
     public var cardScratched: Bool {
@@ -53,9 +53,9 @@ extension Note4ZZZ {
         }
     }
 
-    // MARK: - VhsSale
+    // MARK: - VHSSale
 
-    public struct VhsSale: Codable, Hashable {
+    public struct VHSSale: Codable, Hashable {
         // MARK: Public
 
         public var saleState: String
