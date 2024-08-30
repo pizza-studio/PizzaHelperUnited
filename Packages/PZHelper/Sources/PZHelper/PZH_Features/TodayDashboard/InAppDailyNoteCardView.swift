@@ -62,6 +62,7 @@ private struct NoteView: View {
         switch givenNote {
         case let note as any Note4GI: getBody4GI(note: note)
         case let note as Note4HSR: getBody4HSR(note: note)
+        case let note as Note4ZZZ: getBody4ZZZ(note: note)
         default: EmptyView()
         }
     }
@@ -69,6 +70,59 @@ private struct NoteView: View {
     // MARK: Private
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
+
+    @ViewBuilder @MainActor
+    private func getBody4ZZZ(note: Note4ZZZ) -> some View {
+        // Energy. 绝区电量。这里注意本地化不要直接写「电量」，免得被 App Store 审委会认为有歧义。
+        VStack {
+            HStack {
+                Text("app.dailynote.card.zzzBatteryEnergy.label".i18nPZHelper).bold()
+                Spacer()
+            }
+            HStack(spacing: 10) {
+                let iconFrame: CGFloat = 40
+                AccountKit.imageAsset("zzz_note_battery")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: iconFrame)
+                HStack(alignment: .lastTextBaseline, spacing: 0) {
+                    Text(verbatim: "\(note.energy.progress.current)")
+                        .font(.title)
+                    Text(verbatim: " / \(note.energy.progress.max)")
+                        .font(.caption)
+                    Spacer()
+                    if note.energy.fullyChargedDate > Date() {
+                        (
+                            Text(note.energy.fullyChargedDate, style: .relative)
+                                + Text(verbatim: "\n")
+                                + Text(dateFormatter.string(from: note.energy.fullyChargedDate))
+                        )
+                        .multilineTextAlignment(.trailing)
+                        .font(.caption2)
+                    }
+                }
+            }
+        }
+        HStack {
+            Text("app.dailynote.card.zzzVitality.label".i18nPZHelper).bold()
+            Spacer()
+            Text(verbatim: "\(note.vitality.current)/\(note.vitality.max)")
+        }
+        HStack {
+            Text("app.dailynote.card.zzzVHSStoreInOperationState.label".i18nPZHelper).bold()
+            Spacer()
+            let stateOn = "app.dailynote.card.zzzVHSStoreInOperationState.on".i18nPZHelper
+            let stateOff = "app.dailynote.card.zzzVHSStoreInOperationState.off".i18nPZHelper
+            Text(verbatim: note.vhsSale.isInOperation ? stateOn : stateOff)
+        }
+        HStack {
+            Text("app.dailynote.card.zzzScratchableCard.label".i18nPZHelper).bold()
+            Spacer()
+            let stateDone = "app.dailynote.card.zzzScratchableCard.done".i18nPZHelper
+            let stateNyet = "app.dailynote.card.zzzScratchableCard.notYet".i18nPZHelper
+            Text(verbatim: note.cardScratched ? stateDone : stateNyet)
+        }
+    }
 
     @ViewBuilder @MainActor
     private func getBody4HSR(note: Note4HSR) -> some View {
