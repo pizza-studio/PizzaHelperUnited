@@ -1,0 +1,80 @@
+{
+  "de": {
+    "110000": "Pizza: Abendessen",
+    "110001": "Pizza: Frühstück",
+    "110002": "Pizza: Geteilte Köstlichkeit",
+    "110003": "Pizza: Einladung"
+  },
+  "en": {
+    "110000": "Pizza: Dinner",
+    "110001": "Pizza: Breakfast",
+    "110002": "Pizza: Shared Deliciousness",
+    "110003": "Pizza: Invitation"
+  },
+  "es": {
+    "110000": "Pizza: Cena",
+    "110001": "Pizza: Desayuno",
+    "110002": "Pizza: Deliciosa Comida Compartida",
+    "110003": "Pizza: Invitación"
+  },
+  "fr": {
+    "110000": "Pizza : Dîner",
+    "110001": "Pizza : Petit-déjeuner",
+    "110002": "Pizza : Délicieuse Partage",
+    "110003": "Pizza : Invitation"
+  },
+  "id": {
+    "110000": "Pizza: Makan Malam",
+    "110001": "Pizza: Sarapan",
+    "110002": "Pizza: Kelezatan yang Dibagi",
+    "110003": "Pizza: Undangan"
+  },
+  "ja": {
+    "110000": "ピザ・夕食",
+    "110001": "ピザ・朝食",
+    "110002": "ピザ・分かち合う美味",
+    "110003": "ピザ・お誘い"
+  },
+  "ko": {
+    "110000": "피자: 저녁 식사",
+    "110001": "피자: 아침 식사",
+    "110002": "피자: 함께 나누는 맛있는 음식",
+    "110003": "피자: 초대"
+  },
+  "pt": {
+    "110000": "Pizza: Jantar",
+    "110001": "Pizza: Café da Manhã",
+    "110002": "Pizza: Delícia Compartilhada",
+    "110003": "Pizza: Convite"
+  },
+  "ru": {
+    "110000": "Пицца: Ужин",
+    "110001": "Пицца: Завтрак",
+    "110002": "Пицца: Общая Вкуснота",
+    "110003": "Пицца: Приглашение"
+  },
+  "th": {
+    "110000": "พิซซ่า: มื้อเย็น",
+    "110001": "พิซซ่า: อาหารเช้า",
+    "110002": "พิซซ่า: ความอร่อยที่แบ่งปัน",
+    "110003": "พิซซ่า: คำเชิญ"
+  },
+  "vi": {
+    "110000": "Pizza: Bữa Tối",
+    "110001": "Pizza: Bữa Sáng",
+    "110002": "Pizza: Sự Ngon Chia Sẻ",
+    "110003": "Pizza: Lời Mời"
+  },
+  "zh-cn": {
+    "110000": "披萨・晚餐",
+    "110001": "披萨・早餐",
+    "110002": "披萨・共享",
+    "110003": "披萨・邀宴"
+  },
+  "zh-tw": {
+    "110000": "披薩・晚餐",
+    "110001": "披薩・早餐",
+    "110002": "披薩・共享",
+    "110003": "披薩・邀宴"
+  }
+}
