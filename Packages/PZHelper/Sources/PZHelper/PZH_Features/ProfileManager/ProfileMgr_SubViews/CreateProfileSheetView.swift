@@ -104,44 +104,52 @@ extension ProfileManagerPageContent {
             Task(priority: .userInitiated) {
                 if !profile.cookie.isEmpty {
                     do {
-                        let giRegion = region.withGame(.genshinImpact)
-                        let srRegion = region.withGame(.starRail)
-                        let zzzRegion = region.withGame(.zenlessZone)
-                        fetchedAccounts = try await HoYo.getUserGameRolesByCookie(
-                            region: giRegion,
-                            cookie: profile.cookie
-                        )
-                        fetchedAccounts += try await HoYo.getUserGameRolesByCookie(
-                            region: srRegion,
-                            cookie: profile.cookie
-                        )
-                        fetchedAccounts += try await HoYo.getUserGameRolesByCookie(
-                            region: zzzRegion,
-                            cookie: profile.cookie
-                        )
-                        for account in fetchedAccounts {
-                            let region = HoYo.AccountRegion(rawValue: account.gameBiz)
-                            if let region, let server = HoYo.Server(uid: account.gameUid, game: region.game) {
-                                let newProfile = PZProfileMO(server: server, uid: account.gameUid)
-                                newProfile.name = account.nickname
-                                newProfile.cookie = profile.cookie // 很重要
-                                newProfile.deviceID = profile.deviceID
-                                newProfile.deviceFingerPrint = profile.deviceFingerPrint
+                        @Sendable
+                        func handleFetched(_ account: FetchedAccount, game: Pizza.SupportedGame) {
+                            guard let server = HoYo.Server(uid: account.gameUid, game: game) else { return }
+                            let newProfile = PZProfileMO(server: server, uid: account.gameUid)
+                            newProfile.name = account.nickname
+                            newProfile.cookie = profile.cookie // 很重要
+                            newProfile.deviceID = profile.deviceID
+                            newProfile.deviceFingerPrint = profile.deviceFingerPrint
+                            newProfile.game = game
+                            newProfile.server = server
 
-                                // Check duplications
-                                let firstDuplicate = profiles.first {
-                                    $0.uid == newProfile.uid && $0.game == newProfile.game
-                                }
-                                if let firstDuplicate {
-                                    firstDuplicate.cookie = profile.cookie // 很重要
-                                    firstDuplicate.deviceID = profile.deviceID
-                                    firstDuplicate.deviceFingerPrint = profile.deviceFingerPrint
-                                } else {
-                                    modelContext.insert(newProfile)
-                                }
+                            // Check duplications
+                            let firstDuplicate = profiles.first {
+                                $0.uid == newProfile.uid && $0.game == newProfile.game
+                            }
+                            if let firstDuplicate {
+                                firstDuplicate.cookie = profile.cookie // 很重要
+                                firstDuplicate.deviceID = profile.deviceID
+                                firstDuplicate.deviceFingerPrint = profile.deviceFingerPrint
+                            } else {
+                                modelContext.insert(newProfile)
                             }
                             status = .gotProfile
                         }
+
+                        try await HoYo.getUserGameRolesByCookie(
+                            region: region.withGame(.genshinImpact),
+                            cookie: profile.cookie
+                        ).forEach {
+                            handleFetched($0, game: .genshinImpact)
+                        }
+
+                        try await HoYo.getUserGameRolesByCookie(
+                            region: region.withGame(.starRail),
+                            cookie: profile.cookie
+                        ).forEach {
+                            handleFetched($0, game: .starRail)
+                        }
+
+                        try await HoYo.getUserGameRolesByCookie(
+                            region: region.withGame(.zenlessZone),
+                            cookie: profile.cookie
+                        ).forEach {
+                            handleFetched($0, game: .zenlessZone)
+                        }
+
                         alertToastEventStatus.isDoneButtonTapped.toggle()
                         try modelContext.save()
                         isShown.toggle()
@@ -163,12 +171,11 @@ extension ProfileManagerPageContent {
                             cookie: profile.cookie
                         )
                         if let account = fetchedAccounts.first,
-                           let region = HoYo.AccountRegion(rawValue: account.gameBiz),
                            let server = HoYo.Server(uid: account.gameUid, game: region.game) {
                             profile.name = account.nickname
                             profile.uid = account.gameUid
-                            profile.server = server
                             profile.game = server.game
+                            profile.server = server
                         } else {
                             getAccountError = .customize("profileMgr.loginError.noGameUIDFound".i18nPZHelper)
                         }
