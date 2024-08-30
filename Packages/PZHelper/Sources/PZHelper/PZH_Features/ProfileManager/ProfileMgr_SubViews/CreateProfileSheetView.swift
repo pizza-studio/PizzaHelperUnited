@@ -104,7 +104,8 @@ extension ProfileManagerPageContent {
             Task(priority: .userInitiated) {
                 if !profile.cookie.isEmpty {
                     do {
-                        @MainActor func handleFetched(_ account: FetchedAccount, game: Pizza.SupportedGame) {
+                        @MainActor
+                        func handleFetched(_ account: FetchedAccount, game: Pizza.SupportedGame) {
                             guard let server = HoYo.Server(uid: account.gameUid, game: game) else { return }
                             let newProfile = PZProfileMO(server: server, uid: account.gameUid)
                             newProfile.name = account.nickname
