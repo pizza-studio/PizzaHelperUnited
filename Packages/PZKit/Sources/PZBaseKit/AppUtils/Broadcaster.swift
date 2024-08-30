@@ -13,7 +13,12 @@ public final class Broadcaster {
     public static let shared = Broadcaster()
 
     public private(set) var eventForRefreshingCurrentPage: UUID = .init()
+    public private(set) var eventForJustSwitchedToTodayTab: UUID = .init()
     public private(set) var eventForStoppingRootTabTasks: UUID = .init()
+
+    public func todayTabDidSwitchTo() {
+        eventForJustSwitchedToTodayTab = .init()
+    }
 
     public func refreshPage() {
         eventForRefreshingCurrentPage = .init()

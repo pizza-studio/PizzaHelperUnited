@@ -106,6 +106,9 @@ public struct ContentView: View {
         set: {
             if $0 != selection {
                 Broadcaster.shared.stopRootTabTasks()
+                if $0 == 1 {
+                    Broadcaster.shared.todayTabDidSwitchTo()
+                }
             }
             selection = $0
             appIndex = $0
