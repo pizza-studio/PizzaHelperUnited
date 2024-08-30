@@ -286,21 +286,9 @@ private struct RequireLoginView: View {
         VStack {
             Text("settings.profile.pleaseSelectGame".i18nPZHelper).frame(maxWidth: .infinity, alignment: .leading)
             Picker("".description, selection: $region) {
-                switch region {
-                case .hoyoLab:
-                    Text(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed)
-                        .tag(HoYo.AccountRegion.hoyoLab(.genshinImpact))
-                    Text(Pizza.SupportedGame.starRail.localizedDescriptionTrimmed)
-                        .tag(HoYo.AccountRegion.hoyoLab(.starRail))
-                    Text(Pizza.SupportedGame.zenlessZone.localizedDescriptionTrimmed)
-                        .tag(HoYo.AccountRegion.hoyoLab(.zenlessZone))
-                case .miyoushe:
-                    Text(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed)
-                        .tag(HoYo.AccountRegion.miyoushe(.genshinImpact))
-                    Text(Pizza.SupportedGame.starRail.localizedDescriptionTrimmed)
-                        .tag(HoYo.AccountRegion.miyoushe(.starRail))
-                    Text(Pizza.SupportedGame.zenlessZone.localizedDescriptionTrimmed)
-                        .tag(HoYo.AccountRegion.miyoushe(.zenlessZone))
+                ForEach(Pizza.SupportedGame.allCases) { currentGame in
+                    Text(currentGame.localizedDescriptionTrimmed)
+                        .tag(region.withGame(currentGame))
                 }
             }
             .pickerStyle(.segmented)
