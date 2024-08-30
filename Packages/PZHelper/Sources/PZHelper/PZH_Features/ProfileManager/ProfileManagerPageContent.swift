@@ -68,13 +68,8 @@ struct ProfileManagerPageContent: View {
                 }
             }
         }
-        .apply { thisViewUnit in
-            if #unavailable(macCatalyst 18.0) {
-                thisViewUnit.navigationDestination(item: $sheetType, destination: handleSheetNavigation)
-            } else {
-                thisViewUnit.sheet(item: $sheetType, content: handleSheetNavigation)
-            }
-        }
+        .navigationDestination(item: $sheetType, destination: handleSheetNavigation)
+        // .sheet(item: $sheetType, content: handleSheetNavigation)
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navigationBarTitleDisplayMode(.large)
         .onAppear(perform: bleachInvalidProfiles)
