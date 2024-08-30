@@ -15,11 +15,11 @@ extension DailyNoteProtocol {
 }
 
 extension PZProfileMO {
-    public func getDailyNote() async throws -> DailyNoteProtocol? {
+    public func getDailyNote() async throws -> DailyNoteProtocol {
         switch game {
         case .genshinImpact: try await HoYo.note4GI(profile: self)
         case .starRail: try await HoYo.note4HSR(profile: self)
-        case .zenlessZone: nil // TODO: 待 Lava 补充，回头实作完毕之后把这个函式的结果去掉 nullability。
+        case .zenlessZone: try await HoYo.note4ZZZ(profile: self)
         }
     }
 }
