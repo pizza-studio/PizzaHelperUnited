@@ -27,7 +27,7 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
         case horizontal, vertical
     }
 
-    public var body: some View {
+    @MainActor public var body: some View {
         if OS.type == .macOS {
             let mark: String = (direction == .horizontal) ? "⇆ " : "⇅ "
             (Text(verbatim: mark) + Text("operation.scrolling.guide", bundle: Bundle.module))
@@ -195,7 +195,7 @@ public struct Divided<Content: View>: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         _VariadicView.Tree(DividedLayout()) {
             content
         }

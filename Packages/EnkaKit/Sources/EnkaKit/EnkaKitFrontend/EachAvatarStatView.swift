@@ -533,7 +533,7 @@ private struct ArtifactView: View {
 
     // MARK: Public
 
-    @ViewBuilder @MainActor public var body: some View {
+    @MainActor public var body: some View {
         coreBody(fontSize: fontSize, langTag: langTag)
             .padding(.vertical, fontSize * 0.13)
             .padding(.horizontal, fontSize * 0.3)

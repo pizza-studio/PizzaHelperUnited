@@ -13,7 +13,7 @@ struct ProfileConfigEditorView: View {
 
     @Bindable var unsavedProfile: PZProfileMO
 
-    var body: some View {
+    @MainActor var body: some View {
         Form {
             Section {
                 LabeledContent {
@@ -131,7 +131,7 @@ private struct RegenerateDeviceFingerPrintButton: View {
 
     @State var status: Status = .pending
 
-    var body: some View {
+    @MainActor var body: some View {
         Button {
             if case let .progress(task) = status {
                 task.cancel()

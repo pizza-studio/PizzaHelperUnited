@@ -90,7 +90,7 @@ struct TodayTabPage: View {
 // MARK: - AddNewProfileButton
 
 private struct AddNewProfileButton: View {
-    var body: some View {
+    @MainActor var body: some View {
         VStack {
             NavigationLink {
                 ProfileManagerPageContent()

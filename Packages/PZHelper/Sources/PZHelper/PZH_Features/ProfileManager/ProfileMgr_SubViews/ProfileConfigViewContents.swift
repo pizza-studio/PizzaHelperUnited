@@ -21,7 +21,7 @@ struct ProfileConfigViewContents: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         RequireLoginView(
             unsavedCookie: $profile.cookie,
             unsavedFP: $profile.deviceFingerPrint,
@@ -90,7 +90,7 @@ extension ProfileConfigViewContents {
 
         let region: HoYo.AccountRegion
 
-        var body: some View {
+        @MainActor var body: some View {
             Button {
                 isGetCookieWebViewShown.toggle()
             } label: {
@@ -136,7 +136,7 @@ extension ProfileConfigViewContents {
 
         let fetchedAccounts: [FetchedAccount]
 
-        var body: some View {
+        @MainActor var body: some View {
             Section {
                 // 如果该帐号绑定的UID不止一个，则显示Picker选择帐号
                 if fetchedAccounts.count > 1 {
