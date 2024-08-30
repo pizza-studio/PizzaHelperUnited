@@ -37,6 +37,8 @@ public struct WallpaperGalleryViewContent: View {
                         .tag(Pizza.SupportedGame.genshinImpact)
                     Text("game.starRail.shortNameEX".i18nBaseKit)
                         .tag(Pizza.SupportedGame.starRail)
+                    Text("game.zenlessZone.shortNameEX".i18nBaseKit)
+                        .tag(Pizza.SupportedGame.zenlessZone)
                 }
                 .padding(4)
                 .pickerStyle(.segmented)

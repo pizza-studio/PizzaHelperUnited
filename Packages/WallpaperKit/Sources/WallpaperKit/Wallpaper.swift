@@ -32,7 +32,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable {
         switch game {
         case .genshinImpact: "NC\(id)"
         case .starRail: "WP\(id)"
-        case .zenlessZone: "ZZ\(id)" // 临时设定。
+        case .zenlessZone: "ZZ\(id)"
         }
     }
 
@@ -40,7 +40,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable {
         switch game {
         case .genshinImpact: "NC\(id)"
         case .starRail: "LA_WP\(id)"
-        case .zenlessZone: "ZZ\(id)" // 临时设定。
+        case .zenlessZone: "ZZ\(id)"
         }
     }
 
@@ -48,7 +48,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable {
         switch game {
         case .genshinImpact: Self.bundledLangDB4GI[id] ?? "NC(\(id))"
         case .starRail: Self.bundledLangDB4HSR[id] ?? "WP(\(id))"
-        case .zenlessZone: "ZZ\(id)" // 临时设定。
+        case .zenlessZone: Self.bundledLangDB4ZZZ[id] ?? "ZZ\(id)"
         }
     }
 
@@ -56,7 +56,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable {
         switch game {
         case .genshinImpact: Self.bundledLangDB4GIRealName[id] ?? localizedName
         case .starRail: Self.bundledLangDB4HSR[id] ?? localizedName
-        case .zenlessZone: localizedName // 临时设定。
+        case .zenlessZone: Self.bundledLangDB4ZZZ[id] ?? localizedName
         }
     }
 }
@@ -68,6 +68,13 @@ extension Wallpaper: _DefaultsSerializable {}
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
 extension Wallpaper {
+    fileprivate static let bundledLangDB4ZZZ: [String: String] = {
+        let url = Bundle.module.url(forResource: "ZZZWallpapers", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
+        return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
+    }()
+
     fileprivate static let bundledLangDB4HSR: [String: String] = {
         let url = Bundle.module.url(forResource: "HSRWallpapers", withExtension: "json")!
         let data = try! Data(contentsOf: url)
@@ -98,7 +105,7 @@ extension Wallpaper {
         return switch game {
         case .genshinImpact: allCases.first { $0.id == "210018" }!
         case .starRail: allCases.first { $0.id == "221000" }!
-        case .zenlessZone: allCases4GI.first { $0.id == "210018" }! // 临时设定。
+        case .zenlessZone: allCases.first { $0.id == "990001" }!
         }
     }
 
@@ -107,7 +114,7 @@ extension Wallpaper {
         return switch game {
         case .genshinImpact: allCases.randomElement()!
         case .starRail: allCases.randomElement()!
-        case .zenlessZone: allCases4HSR.randomElement()! // 临时设定。
+        case .zenlessZone: allCases.randomElement()!
         }
     }
 
@@ -115,7 +122,7 @@ extension Wallpaper {
         switch game {
         case .genshinImpact: allCases4GI
         case .starRail: allCases4HSR
-        case .zenlessZone: []
+        case .zenlessZone: allCases4ZZZ
         }
     }
 
@@ -130,8 +137,8 @@ extension Wallpaper {
         switch appGame {
         case .genshinImpact: allCases4GI
         case .starRail: allCases4HSR
-        case .zenlessZone: []
-        case .none: allCases4HSR + allCases4GI
+        case .zenlessZone: allCases4ZZZ
+        case .none: allCases4HSR + allCases4ZZZ + allCases4GI
         }
     }
 
@@ -141,6 +148,22 @@ extension Wallpaper {
             results.append(
                 Self(
                     game: .starRail,
+                    id: key,
+                    bindedCharID: nil
+                )
+            )
+        }
+        return results.sorted {
+            $0.id < $1.id
+        }
+    }()
+
+    public static let allCases4ZZZ: [Self] = {
+        var results = [Self]()
+        bundledLangDB4ZZZ.forEach { key, _ in
+            results.append(
+                Self(
+                    game: .zenlessZone,
                     id: key,
                     bindedCharID: nil
                 )
