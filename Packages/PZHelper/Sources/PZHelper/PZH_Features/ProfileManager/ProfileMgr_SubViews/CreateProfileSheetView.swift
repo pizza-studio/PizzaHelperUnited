@@ -303,6 +303,7 @@ private struct RequireLoginView: View {
                 }
             }
             .pickerStyle(.segmented)
+            .fontWidth(.condensed)
         }
         LabeledContent("settings.profile.pleaseSelectRegion".i18nPZHelper) {
             Picker("".description, selection: $region) {
