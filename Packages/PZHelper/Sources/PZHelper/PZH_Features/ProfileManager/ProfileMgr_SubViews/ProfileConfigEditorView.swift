@@ -27,11 +27,12 @@ struct ProfileConfigEditorView: View {
                 LabeledContent("profile.label.game".i18nPZHelper) {
                     Picker("".description, selection: $unsavedProfile.game) {
                         ForEach(Pizza.SupportedGame.allCases) { currentGame in
-                            Text(currentGame.localizedDescription)
+                            Text(currentGame.localizedDescriptionTrimmed)
                                 .tag(currentGame)
                         }
                     }
                     .pickerStyle(.segmented)
+                    .fontWidth(.condensed)
                     .fixedSize()
                 }.onChange(of: unsavedProfile.game) { _, newValue in
                     unsavedProfile.server.changeGame(to: newValue)
