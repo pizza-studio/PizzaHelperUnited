@@ -55,6 +55,15 @@ extension Pizza.SupportedGame: CustomStringConvertible {
         }
     }
 
+    /// Specifically used for Segmented Pickers when `localizedShortName` is too short.
+    public var localizedDescriptionTrimmed: String {
+        switch self {
+        case .genshinImpact: "game.genshin.i18nNameTrimmed".i18nBaseKit
+        case .starRail: "game.starRail.i18nNameTrimmed".i18nBaseKit
+        case .zenlessZone: "game.zenlessZone.i18nNameTrimmed".i18nBaseKit
+        }
+    }
+
     /// 带书名号的产品名。
     public var titleMarkedName: String {
         switch self {
