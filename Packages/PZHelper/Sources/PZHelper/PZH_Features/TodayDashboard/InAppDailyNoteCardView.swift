@@ -36,6 +36,9 @@ struct InAppDailyNoteCardView: View {
             .secondaryColorVerseBackground()
             .textCase(.none)
         }
+        .onChange(of: broadcaster.eventForJustSwitchedToTodayTab) {
+            theVM.getDailyNote()
+        }
         .onChange(of: broadcaster.eventForRefreshingCurrentPage) {
             theVM.getDailyNoteUncheck()
         }
