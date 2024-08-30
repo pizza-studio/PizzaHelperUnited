@@ -34,11 +34,13 @@ public struct WallpaperGalleryViewContent: View {
             ToolbarItem(placement: placement) {
                 Picker("".description, selection: $game.animation()) {
                     Text("game.genshin.shortNameEX".i18nBaseKit)
-                        .tag(Pizza.SupportedGame.genshinImpact)
+                        .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)
                     Text("game.starRail.shortNameEX".i18nBaseKit)
-                        .tag(Pizza.SupportedGame.starRail)
+                        .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
                     Text("game.zenlessZone.shortNameEX".i18nBaseKit)
-                        .tag(Pizza.SupportedGame.zenlessZone)
+                        .tag(Pizza.SupportedGame.zenlessZone as Pizza.SupportedGame?)
+                    Text("wpKit.gamePicker.Pizza.shortName".i18nWPKit)
+                        .tag(Pizza.SupportedGame?.none)
                 }
                 .padding(4)
                 .pickerStyle(.segmented)
@@ -57,6 +59,14 @@ public struct WallpaperGalleryViewContent: View {
         StaggeredGrid(columns: columns, list: searchResults, content: { currentCard in
             draw(wallpaper: currentCard)
                 .matchedGeometryEffect(id: currentCard.id, in: animation)
+                .contextMenu {
+                    Button("wpKit.assign.background4App".i18nWPKit) {
+                        background4App = currentCard
+                    }
+                    Button("wpKit.assign.background4LiveActivity".i18nWPKit) {
+                        background4LiveActivity = currentCard
+                    }
+                }
         })
         .searchable(text: $searchText)
         .padding(.horizontal)
@@ -78,9 +88,11 @@ public struct WallpaperGalleryViewContent: View {
 
     @Namespace private var animation
     @State private var orientation = DeviceOrientation()
-    @State private var game: Pizza.SupportedGame = appGame ?? .genshinImpact
+    @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
     @State private var containerSize: CGSize = .zero
+    @Default(.background4App) private var background4App: Wallpaper
+    @Default(.background4LiveActivity) private var background4LiveActivity: Wallpaper?
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
