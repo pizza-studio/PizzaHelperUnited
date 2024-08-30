@@ -283,27 +283,27 @@ private struct RequireLoginView: View {
     // MARK: Internal
 
     var body: some View {
-        LabeledContent("settings.profile.pleaseSelectGame".i18nPZHelper) {
+        VStack {
+            Text("settings.profile.pleaseSelectGame".i18nPZHelper).frame(maxWidth: .infinity, alignment: .leading)
             Picker("".description, selection: $region) {
                 switch region {
                 case .hoyoLab:
-                    Text(Pizza.SupportedGame.genshinImpact.localizedDescription)
+                    Text(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed)
                         .tag(HoYo.AccountRegion.hoyoLab(.genshinImpact))
-                    Text(Pizza.SupportedGame.starRail.localizedDescription)
+                    Text(Pizza.SupportedGame.starRail.localizedDescriptionTrimmed)
                         .tag(HoYo.AccountRegion.hoyoLab(.starRail))
-                    Text(Pizza.SupportedGame.zenlessZone.localizedDescription)
+                    Text(Pizza.SupportedGame.zenlessZone.localizedDescriptionTrimmed)
                         .tag(HoYo.AccountRegion.hoyoLab(.zenlessZone))
                 case .miyoushe:
-                    Text(Pizza.SupportedGame.genshinImpact.localizedDescription)
+                    Text(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed)
                         .tag(HoYo.AccountRegion.miyoushe(.genshinImpact))
-                    Text(Pizza.SupportedGame.starRail.localizedDescription)
+                    Text(Pizza.SupportedGame.starRail.localizedDescriptionTrimmed)
                         .tag(HoYo.AccountRegion.miyoushe(.starRail))
-                    Text(Pizza.SupportedGame.zenlessZone.localizedDescription)
+                    Text(Pizza.SupportedGame.zenlessZone.localizedDescriptionTrimmed)
                         .tag(HoYo.AccountRegion.miyoushe(.zenlessZone))
                 }
             }
             .pickerStyle(.segmented)
-            .fixedSize()
         }
         LabeledContent("settings.profile.pleaseSelectRegion".i18nPZHelper) {
             Picker("".description, selection: $region) {
@@ -338,7 +338,7 @@ private struct RequireLoginView: View {
         Button {
             assignRegion()
         } label: {
-            Text(loginLabelText + " \(region.localizedDescription) (\(region.game.localizedDescription))")
+            Text(loginLabelText + " \(region.localizedDescription)\n(\(region.game.localizedDescription))")
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
