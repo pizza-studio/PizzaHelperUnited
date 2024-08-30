@@ -35,6 +35,13 @@ struct DetailPortalTabPage: View {
             .toolbar {
                 Group {
                     if !sortedProfiles.isEmpty {
+                        if delegate.currentPZProfile != nil {
+                            ToolbarItem(placement: .topBarTrailing) {
+                                Button("", systemImage: "arrow.clockwise") {
+                                    broadcaster.refreshPage()
+                                }
+                            }
+                        }
                         ToolbarItem(placement: .topBarTrailing) {
                             accountSwitcherMenu()
                         }
