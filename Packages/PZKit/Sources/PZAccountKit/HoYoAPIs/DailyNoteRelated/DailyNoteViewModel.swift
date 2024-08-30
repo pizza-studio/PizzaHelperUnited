@@ -65,8 +65,7 @@ public class DailyNoteViewModel {
         }
         let task = Task {
             do {
-                // TODO: 待 Lava 补充 getDailyNote() 之后，解除下述行当中的的 guard let 约束。
-                guard let result = try await profile.getDailyNote() else { return }
+                let result = try await profile.getDailyNote()
                 withAnimation {
                     dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
                 }
