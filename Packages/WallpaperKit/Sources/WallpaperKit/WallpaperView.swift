@@ -62,6 +62,7 @@ public struct AppWallpaperView: View {
         case .genshinImpact: 30
         case .starRail: 50
         case .zenlessZone: 50
+        case .none: 50
         }
     }
 
@@ -70,6 +71,7 @@ public struct AppWallpaperView: View {
         case .genshinImpact: colorSystemGray6.opacity(0.5)
         case .starRail: colorSysBackground.opacity(0.3).blendMode(.hardLight)
         case .zenlessZone: colorSysBackground.opacity(0.3).blendMode(.hardLight)
+        case .none: colorSysBackground.opacity(0.3).blendMode(.hardLight)
         }
     }
 
