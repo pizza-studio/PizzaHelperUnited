@@ -20,7 +20,7 @@ extension ProfileManagerPageContent {
 
         // MARK: Internal
 
-        var body: some View {
+        @MainActor var body: some View {
             NavigationStack {
                 Form {
                     switch status {
@@ -101,7 +101,7 @@ extension ProfileManagerPageContent {
 
         /// Add all accounts at once.
         func getAllAccountsFetched() {
-            Task(priority: .userInitiated) {
+            Task(priority: .userInitiated) { @MainActor in
                 if !profile.cookie.isEmpty {
                     do {
                         @MainActor
@@ -282,7 +282,7 @@ private struct RequireLoginView: View {
 
     // MARK: Internal
 
-    var body: some View {
+    @MainActor var body: some View {
         VStack {
             Text("settings.profile.pleaseSelectGame".i18nPZHelper).frame(maxWidth: .infinity, alignment: .leading)
             Picker("".description, selection: $region) {
@@ -395,7 +395,7 @@ private enum AddProfileStatus {
 private struct ExplanationView: View {
     // MARK: Internal
 
-    var body: some View {
+    @MainActor var body: some View {
         Group {
             VStack(alignment: .leading, spacing: 9) {
                 Text(verbatim: beareOfTextHeader)

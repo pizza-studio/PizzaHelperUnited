@@ -47,7 +47,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hasha
     public var showsIndicators: Bool
     public var spacing: CGFloat
 
-    public var body: some View {
+    @MainActor public var body: some View {
         if scroll {
             ScrollView(.vertical, showsIndicators: showsIndicators) {
                 innerContent

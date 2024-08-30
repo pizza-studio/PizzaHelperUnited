@@ -11,7 +11,7 @@ struct TestAccountSectionView: View {
 
     @State var profile: PZProfileMO
 
-    var body: some View {
+    @MainActor var body: some View {
         Section {
             Button {
                 doTest()
@@ -126,7 +126,7 @@ struct TestAccountSectionView: View {
     private struct FailureView: View {
         let error: Error
 
-        var body: some View {
+        @MainActor var body: some View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(error.localizedDescription)
                 Text("\(error)").font(.caption2)
@@ -148,7 +148,7 @@ struct TestAccountSectionView: View {
         let profile: PZProfileMO
         @State var shouldRefreshAccount: () -> Void
 
-        var body: some View {
+        @MainActor var body: some View {
             Button {
                 status = .progressing
                 popVerificationWebSheet()

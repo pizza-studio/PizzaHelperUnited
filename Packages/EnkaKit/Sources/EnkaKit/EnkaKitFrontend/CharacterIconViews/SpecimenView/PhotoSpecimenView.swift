@@ -7,7 +7,7 @@ import SwiftUI
 struct PhotoSpecimenView: View {
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         Form {
             Section {
                 switch game {

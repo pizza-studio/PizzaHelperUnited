@@ -35,7 +35,7 @@ public struct AppWallpaperView: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         rawImage
             .resizable()
             .aspectRatio(contentMode: .fill)
