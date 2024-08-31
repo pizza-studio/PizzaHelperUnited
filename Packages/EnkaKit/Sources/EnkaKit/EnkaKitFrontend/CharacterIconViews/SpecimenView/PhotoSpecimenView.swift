@@ -34,21 +34,22 @@ struct PhotoSpecimenView: View {
                 case .zenlessZone: EmptyView()
                 }
             }
-        }.formStyle(.grouped)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Picker("".description, selection: $game.animation()) {
-                        Text("game.genshin.shortNameEX".i18nBaseKit)
-                            .tag(Enka.GameType.genshinImpact)
-                        Text("game.starRail.shortNameEX".i18nBaseKit)
-                            .tag(Enka.GameType.starRail)
-                    }
-                    .padding(4)
-                    .pickerStyle(.segmented)
+        }
+        .formStyle(.grouped)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Picker("".description, selection: $game.animation()) {
+                    Text("game.genshin.shortNameEX".i18nBaseKit)
+                        .tag(Enka.GameType.genshinImpact)
+                    Text("game.starRail.shortNameEX".i18nBaseKit)
+                        .tag(Enka.GameType.starRail)
                 }
+                .padding(4)
+                .pickerStyle(.segmented)
             }
-            .navigationTitle("enka.photoSpecimen.navTitle".i18nEnka)
-            .navigationBarTitleDisplayMode(.large)
+        }
+        .navigationTitle("enka.photoSpecimen.navTitle".i18nEnka)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     // MARK: Private
