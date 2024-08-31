@@ -51,7 +51,7 @@ public struct GachaMODebugView: View {
         }
         .formStyle(.grouped)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .confirmationAction) {
                 Picker("".description, selection: $game.animation()) {
                     ForEach(Pizza.SupportedGame.allCases) { enumeratedGame in
                         Text(enumeratedGame.localizedShortName)

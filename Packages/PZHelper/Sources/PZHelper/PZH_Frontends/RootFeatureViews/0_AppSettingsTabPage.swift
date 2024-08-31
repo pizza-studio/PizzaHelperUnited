@@ -81,7 +81,11 @@ struct AppSettingsTabPage: View {
                 }
                 #endif
             }
+            #if os(iOS) || targetEnvironment(macCatalyst)
             .listStyle(.insetGrouped)
+            #elseif os(macOS)
+            .listStyle(.bordered)
+            #endif
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
         } detail: {
             navigationDetail(selection: $nav)

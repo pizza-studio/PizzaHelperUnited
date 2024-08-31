@@ -103,7 +103,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
             }
         }
         .navigationTitle(Text(verbatim: "\(profile.rawInfo.nickname) (\(profile.uid.description))"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navBarTitleDisplayMode(.inline)
     }
 
     @MainActor @ViewBuilder var listHeader: some View {

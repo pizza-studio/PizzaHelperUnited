@@ -10,7 +10,7 @@ public typealias UIColor = NSColor
 #endif
 
 extension UIColor {
-    func modified(
+    public func modified(
         withAdditionalHue hue: CGFloat,
         additionalSaturation: CGFloat,
         additionalBrightness: CGFloat
@@ -55,6 +55,22 @@ extension UIColor {
 }
 
 extension Color {
+    public static var colorSystemGray6: Color {
+        #if os(OSX)
+        Color(nsColor: .systemGray).opacity(0.3333)
+        #else
+        Color(uiColor: .systemGray6)
+        #endif
+    }
+
+    public static var colorSysBackground: Color {
+        #if os(OSX)
+        Color(nsColor: .textBackgroundColor).opacity(0.3333)
+        #else
+        Color(uiColor: .systemBackground)
+        #endif
+    }
+
     public func addSaturation(_ added: CGFloat) -> Color {
         let uiColor = UIColor(self)
         return Color(uiColor.modified(

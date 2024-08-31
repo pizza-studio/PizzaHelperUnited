@@ -37,7 +37,7 @@ struct PhotoSpecimenView: View {
         }
         .formStyle(.grouped)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .confirmationAction) {
                 Picker("".description, selection: $game.animation()) {
                     Text("game.genshin.shortNameEX".i18nBaseKit)
                         .tag(Enka.GameType.genshinImpact)
@@ -49,7 +49,7 @@ struct PhotoSpecimenView: View {
             }
         }
         .navigationTitle("enka.photoSpecimen.navTitle".i18nEnka)
-        .navigationBarTitleDisplayMode(.large)
+        .navBarTitleDisplayMode(.large)
     }
 
     // MARK: Private

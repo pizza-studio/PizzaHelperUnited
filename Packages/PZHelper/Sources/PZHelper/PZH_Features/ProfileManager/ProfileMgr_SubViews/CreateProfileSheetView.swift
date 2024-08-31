@@ -36,7 +36,7 @@ extension ProfileManagerPageContent {
                 .navigationTitle("profileMgr.new".i18nPZHelper)
                 .toolbar {
                     if status != .pending {
-                        ToolbarItem(placement: .navigationBarTrailing) {
+                        ToolbarItem(placement: .confirmationAction) {
                             Button("sys.done".i18nBaseKit) {
                                 saveProfile()
                                 // globalDailyNoteCardRefreshSubject.send(())
@@ -45,11 +45,11 @@ extension ProfileManagerPageContent {
                             .disabled(status != .gotProfile)
                         }
                     } else {
-                        ToolbarItem(placement: .navigationBarTrailing) {
+                        ToolbarItem(placement: .confirmationAction) {
                             menuForManagingHoYoLabProfiles()
                         }
                     }
-                    ToolbarItem(placement: .navigationBarLeading) {
+                    ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {
                             modelContext.rollback()
                             isShown.toggle()

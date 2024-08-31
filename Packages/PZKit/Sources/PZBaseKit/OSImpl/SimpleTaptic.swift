@@ -4,6 +4,9 @@
 
 #if canImport(UIKit)
 import UIKit
+#endif
+
+// MARK: - SimpleTapticType
 
 public enum SimpleTapticType {
     case success
@@ -19,6 +22,7 @@ public enum SimpleTapticType {
 
 // swiftlint:disable:next cyclomatic_complexity
 public func simpleTaptic(type: SimpleTapticType) {
+    #if canImport(UIKit)
     let feedbackGenerator = UINotificationFeedbackGenerator()
     switch type {
     case .success:
@@ -52,5 +56,7 @@ public func simpleTaptic(type: SimpleTapticType) {
         selectionGenerator.selectionChanged()
     }
     print("Taptic Succeeded")
+    #else
+    print("Taptic Skipped: the platform does not support UIKit.")
+    #endif
 }
-#endif

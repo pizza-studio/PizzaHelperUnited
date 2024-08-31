@@ -311,3 +311,28 @@ extension Binding where Value: OptionSet, Value == Value.Element {
 extension View {
     public func apply<V: View>(@ViewBuilder _ block: (Self) -> V) -> V { block(self) }
 }
+
+// MARK: - NavBarTitleDisplayMode.
+
+extension View {
+    @ViewBuilder @MainActor
+    public func navBarTitleDisplayMode(_ mode: NavBarTitleDisplayMode?) -> some View {
+        #if os(iOS) || targetEnvironment(macCatalyst)
+        switch mode {
+        case .inline: self.navigationBarTitleDisplayMode(.inline)
+        case .large: self.navigationBarTitleDisplayMode(.large)
+        case nil: self.navigationBarTitleDisplayMode(.automatic)
+        }
+        #else
+        self
+        #endif
+    }
+}
+
+// MARK: - NavBarTitleDisplayMode
+
+/// This one is compatible to macOS on compilation.
+public enum NavBarTitleDisplayMode {
+    case inline
+    case large
+}
