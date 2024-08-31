@@ -26,12 +26,7 @@ public struct WallpaperGalleryViewContent: View {
             }
         }
         .toolbar {
-            #if os(macOS)
-            let placement: ToolbarItemPlacement = .automatic
-            #else
-            let placement: ToolbarItemPlacement = .topBarTrailing
-            #endif
-            ToolbarItem(placement: placement) {
+            ToolbarItem(placement: .confirmationAction) {
                 Picker("".description, selection: $game.animation()) {
                     Text("game.genshin.shortNameEX".i18nBaseKit)
                         .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)

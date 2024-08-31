@@ -5,7 +5,6 @@
 #if !os(watchOS)
 import CoreImage
 import Foundation
-import UIKit
 
 extension HoYo {
     public static func generateQRCodeURL(deviceId: UUID) async throws -> (url: URL, ticket: String) {

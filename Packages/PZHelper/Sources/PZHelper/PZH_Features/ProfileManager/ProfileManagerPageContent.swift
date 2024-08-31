@@ -52,9 +52,13 @@ struct ProfileManagerPageContent: View {
             Section {
                 ForEach(profiles) { profile in
                     Button {
+                        #if os(iOS) || targetEnvironment(macCatalyst)
                         if isEditMode != .active {
                             sheetType = .editExistingProfile(profile)
                         }
+                        #else
+                        sheetType = .editExistingProfile(profile)
+                        #endif
                     } label: {
                         drawRow(profile: profile)
                     }
@@ -71,18 +75,26 @@ struct ProfileManagerPageContent: View {
         .navigationDestination(item: $sheetType, destination: handleSheetNavigation)
         // .sheet(item: $sheetType, content: handleSheetNavigation)
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
-        .navigationBarTitleDisplayMode(.large)
+        .navBarTitleDisplayMode(.large)
         .onAppear(perform: bleachInvalidProfiles)
-        .toolbar { EditButton() }
-        .toast(isPresenting: $alertToastEventStatus.isDoneButtonTapped) {
-            AlertToast(
-                displayMode: .alert,
-                type: .complete(.green),
-                title: "profileMgr.added.succeeded".i18nPZHelper
-            )
-        }
-        .environment(\.editMode, $isEditMode)
+        #if os(iOS) || targetEnvironment(macCatalyst)
+            .toolbar { EditButton() }
+        #endif
+            .toast(isPresenting: $alertToastEventStatus.isDoneButtonTapped) {
+                AlertToast(
+                    displayMode: .alert,
+                    type: .complete(.green),
+                    title: "profileMgr.added.succeeded".i18nPZHelper
+                )
+            }
+        #if os(iOS) || targetEnvironment(macCatalyst)
+            .environment(\.editMode, $isEditMode)
+        #endif
     }
+
+    #if os(iOS) || targetEnvironment(macCatalyst)
+    @State var isEditMode: EditMode = .inactive
+    #endif
 
     // MARK: Private
 
@@ -90,7 +102,7 @@ struct ProfileManagerPageContent: View {
     @State private var alertToastEventStatus = AlertToastEventStatus()
     @State private var isBusy = false
     @State private var errorMessage: String?
-    @State var isEditMode: EditMode = .inactive
+
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
@@ -116,7 +128,9 @@ struct ProfileManagerPageContent: View {
             }
         }
         // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
+        #if os(iOS) || targetEnvironment(macCatalyst)
         .toolbar(.hidden, for: .tabBar)
+        #endif
         // 仅针对 macOS 使用 NavigationDestination 的情况，让用户改用自订的后退按钮。
         .navigationBarBackButtonHidden(true)
     }
@@ -140,9 +154,13 @@ struct ProfileManagerPageContent: View {
                 .foregroundColor(.secondary)
             }
             Spacer()
+            #if os(iOS) || targetEnvironment(macCatalyst)
             if isEditMode != .active {
                 Image(systemSymbol: .sliderHorizontal3)
             }
+            #else
+            Image(systemSymbol: .sliderHorizontal3)
+            #endif
         }
         .contextMenu {
             Button("profileMgr.edit.title".i18nPZHelper) {

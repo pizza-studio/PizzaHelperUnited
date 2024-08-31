@@ -46,10 +46,12 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
             }
         }
         .environment(\.colorScheme, .dark)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar(.hidden, for: .navigationBar)
-        .toolbar(.hidden, for: .tabBar)
-        .toolbar(.hidden)
+        .navBarTitleDisplayMode(.inline)
+        #if os(iOS) || targetEnvironment(macCatalyst)
+            .toolbar(.hidden, for: .navigationBar)
+            .toolbar(.hidden, for: .tabBar)
+        #endif
+            .toolbar(.hidden)
     }
 
     @ViewBuilder

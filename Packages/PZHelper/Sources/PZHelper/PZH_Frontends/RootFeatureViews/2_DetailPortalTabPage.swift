@@ -36,13 +36,13 @@ struct DetailPortalTabPage: View {
                 Group {
                     if !sortedProfiles.isEmpty {
                         if delegate.currentPZProfile != nil {
-                            ToolbarItem(placement: .topBarTrailing) {
+                            ToolbarItem(placement: .confirmationAction) {
                                 Button("", systemImage: "arrow.clockwise") {
                                     broadcaster.refreshPage()
                                 }
                             }
                         }
-                        ToolbarItem(placement: .topBarTrailing) {
+                        ToolbarItem(placement: .confirmationAction) {
                             accountSwitcherMenu()
                         }
                     }

@@ -36,10 +36,10 @@ struct TodayTabPage: View {
             .listContainerBackground()
             .navigationTitle("tab.today.fullTitle".i18nPZHelper)
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("", systemImage: "arrow.clockwise") { refresh() }
                 }
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     gamePicker
                         .padding(4)
                         .pickerStyle(.segmented)
@@ -94,7 +94,9 @@ private struct AddNewProfileButton: View {
                 ProfileManagerPageContent()
                     .scrollContentBackground(.visible)
                     .tint(.blue)
+                #if os(iOS) || targetEnvironment(macCatalyst)
                     .toolbar(.hidden, for: .tabBar)
+                #endif
             } label: {
                 HStack {
                     Spacer()
