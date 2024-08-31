@@ -62,7 +62,7 @@ public struct WallpaperGalleryViewContent: View {
                     }
                 }
         })
-        .searchable(text: $searchText)
+        .searchable(text: $searchText, placement: searchFieldPlacement)
         .padding(.horizontal)
         .animation(.easeInOut, value: columns)
         .environment(orientation)
@@ -90,6 +90,14 @@ public struct WallpaperGalleryViewContent: View {
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
+
+    private var searchFieldPlacement: SearchFieldPlacement {
+        #if os(iOS) || targetEnvironment(macCatalyst)
+        return .navigationBarDrawer(displayMode: .always)
+        #else
+        return .automatic
+        #endif
+    }
 
     private func wallpaperName(for wallpaper: Wallpaper) -> String {
         var result = useRealCharacterNames ? wallpaper.localizedRealName : wallpaper.localizedName
