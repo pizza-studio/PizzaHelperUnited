@@ -25,6 +25,7 @@ struct ProfileConfigViewContents: View {
         RequireLoginView(
             unsavedCookie: $profile.cookie,
             unsavedFP: $profile.deviceFingerPrint,
+            deviceID: $profile.deviceID,
             region: profile.server.region
         )
         Section {
@@ -85,6 +86,7 @@ extension ProfileConfigViewContents {
     fileprivate struct RequireLoginView: View {
         @Binding var unsavedCookie: String
         @Binding var unsavedFP: String
+        @Binding var deviceID: String
 
         @State private var isGetCookieWebViewShown: Bool = false
 
@@ -115,7 +117,7 @@ extension ProfileConfigViewContents {
                     region: region
                 )
             case .miyoushe:
-                GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP)
+                GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP, deviceID: $deviceID)
             }
         }
     }

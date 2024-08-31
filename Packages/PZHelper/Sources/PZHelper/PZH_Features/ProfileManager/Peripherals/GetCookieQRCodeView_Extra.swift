@@ -6,7 +6,7 @@ import PZAccountKit
 
 extension GetCookieQRCodeView {
     func extraCookieProcess(cookie: inout String) async throws {
-        let fpResult = try await HoYo.getDeviceFingerPrint(region: .miyoushe(.genshinImpact))
+        let fpResult = try await HoYo.getDeviceFingerPrint(region: .miyoushe(.genshinImpact), deviceID: deviceID)
         // cookie += "DEVICEFP=\(fpResult.deviceFP); "
         // cookie += "DEVICEFP_SEED_ID=\(fpResult.seedID); "
         // cookie += "DEVICEFP_SEED_TIME=\(fpResult.seedTime); "
