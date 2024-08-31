@@ -76,9 +76,7 @@ public struct PZDictionaryView: View {
             contents
             #endif
         }
-        .searchable(
-            text: $viewModel.query
-        )
+        .searchable(text: $viewModel.query, placement: searchFieldPlacement)
         .onChange(of: viewModel.game) { oldValue, newValue in
             if oldValue != newValue {
                 viewModel.restartFetch()
@@ -89,6 +87,14 @@ public struct PZDictionaryView: View {
     // MARK: Private
 
     @State private var viewModel: Coordinator = .init()
+
+    private var searchFieldPlacement: SearchFieldPlacement {
+        #if os(iOS) || targetEnvironment(macCatalyst)
+        return .navigationBarDrawer(displayMode: .always)
+        #else
+        return .automatic
+        #endif
+    }
 }
 
 // MARK: PZDictionaryView.DictionaryTranslationDetailView
