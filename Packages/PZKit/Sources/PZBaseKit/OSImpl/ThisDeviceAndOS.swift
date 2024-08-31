@@ -55,7 +55,7 @@ public enum ThisDevice {
     // MARK: Private
 
     #if canImport(IOKit) && !canImport(UIKit)
-    private func getIdentifier4Vendor() -> String? {
+    private static func getIdentifier4Vendor() -> String? {
         // Returns an object with a +1 retain count; the caller needs to release.
         func ioService(named name: String, wantBuiltIn: Bool) -> io_service_t? {
             let default_port = kIOMainPortDefault
