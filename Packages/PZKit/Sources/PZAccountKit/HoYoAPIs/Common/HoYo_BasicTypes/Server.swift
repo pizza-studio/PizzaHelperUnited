@@ -149,9 +149,9 @@ extension HoYo.Server: RawRepresentable, Codable, Identifiable, Hashable {
         case "prod_official_usa": self = .unitedStates(.starRail)
         case "prod_official_cht": self = .hkMacauTaiwan(.starRail)
         // case "prod_gf_cn": self = .celestia(.zenlessZone)
-        case "prod_gf_us": self = .asia(.zenlessZone)
+        case "prod_gf_jp": self = .asia(.zenlessZone)
         case "prod_gf_eu": self = .europe(.zenlessZone)
-        case "prod_gf_jp": self = .unitedStates(.zenlessZone)
+        case "prod_gf_us": self = .unitedStates(.zenlessZone)
         case "prod_gf_sg": self = .hkMacauTaiwan(.zenlessZone) // 绝区零新加坡服当作港澳台服处理。
         default: return nil
         }
