@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B1641342C8320D600C4698C /* PZDictionaryKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZDictionaryKit; sourceTree = "<group>"; };
 		5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		5B560A162C6BB64300175FB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B560A172C6BBB8300175FB1 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -122,6 +123,7 @@
 				5BDDF2752C7601AA006D4BFE /* EnkaKit */,
 				5BDDF2762C7601AA006D4BFE /* GachaKit */,
 				5BDDF2772C760281006D4BFE /* WallpaperKit */,
+				5B1641342C8320D600C4698C /* PZDictionaryKit */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
