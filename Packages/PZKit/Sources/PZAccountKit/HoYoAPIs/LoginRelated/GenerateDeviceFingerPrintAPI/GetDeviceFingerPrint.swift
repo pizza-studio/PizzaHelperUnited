@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 extension HoYo {
     public struct FingerPrintDataSet {
@@ -11,7 +12,10 @@ extension HoYo {
         public let seedTime: Int
     }
 
-    public static func getDeviceFingerPrint(region: HoYo.AccountRegion) async throws -> FingerPrintDataSet {
+    public static func getDeviceFingerPrint(
+        region: HoYo.AccountRegion, deviceID: String? = nil
+    ) async throws
+        -> FingerPrintDataSet {
         struct DeviceFingerPrintResult: DecodableFromMiHoYoAPIJSONResult {
             let msg: String
             // swiftlint:disable:next identifier_name

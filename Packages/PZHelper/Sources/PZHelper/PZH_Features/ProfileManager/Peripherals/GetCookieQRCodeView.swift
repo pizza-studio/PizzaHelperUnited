@@ -13,6 +13,7 @@ struct GetCookieQRCodeView: View {
     @State var viewModel = GetCookieQRCodeViewModel.shared
     @Binding var cookie: String
     @Binding var deviceFP: String
+    @Binding var deviceID: String
 
     private var qrWidth: CGFloat {
         #if os(OSX) || targetEnvironment(macCatalyst)

@@ -141,7 +141,8 @@ private struct RegenerateDeviceFingerPrintButton: View {
             let task = Task {
                 do {
                     profile.deviceFingerPrint = try await HoYo.getDeviceFingerPrint(
-                        region: profile.server.region
+                        region: profile.server.region,
+                        deviceID: profile.deviceID
                     ).deviceFP
                     status = .succeed
                 } catch {
