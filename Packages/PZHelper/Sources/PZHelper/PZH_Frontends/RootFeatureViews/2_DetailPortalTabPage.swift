@@ -32,38 +32,8 @@ struct DetailPortalTabPage: View {
                 broadcaster.refreshPage()
             }
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
-            .toolbar {
-                Group {
-                    if !sortedProfiles.isEmpty {
-                        if delegate.currentPZProfile != nil {
-                            ToolbarItem(placement: .confirmationAction) {
-                                Button("", systemImage: "arrow.clockwise") {
-                                    broadcaster.refreshPage()
-                                }
-                            }
-                        }
-                        ToolbarItem(placement: .confirmationAction) {
-                            accountSwitcherMenu()
-                        }
-                    }
-                }
-            }
-            .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
-                ShowCaseListView(
-                    profile: result,
-                    enkaDB: sharedDB.db4GI
-                )
-                .scrollContentBackground(.hidden)
-                .listContainerBackground()
-            }
-            .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
-                ShowCaseListView(
-                    profile: result,
-                    enkaDB: sharedDB.db4HSR
-                )
-                .scrollContentBackground(.hidden)
-                .listContainerBackground()
-            }
+            .apply(hookNavigationDestinations)
+            .apply(hookToolbar)
             .onChange(of: delegate.currentPZProfile) { oldValue, newValue in
                 if oldValue != newValue {
                     Broadcaster.shared.stopRootTabTasks()
@@ -166,6 +136,47 @@ struct DetailPortalTabPage: View {
             }
         } label: {
             accountSwitcherMenuLabel
+        }
+    }
+
+    @ViewBuilder @MainActor
+    func hookNavigationDestinations(_ content: some View) -> some View {
+        content
+            .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
+                ShowCaseListView(
+                    profile: result,
+                    enkaDB: sharedDB.db4GI
+                )
+                .scrollContentBackground(.hidden)
+                .listContainerBackground()
+            }
+            .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
+                ShowCaseListView(
+                    profile: result,
+                    enkaDB: sharedDB.db4HSR
+                )
+                .scrollContentBackground(.hidden)
+                .listContainerBackground()
+            }
+    }
+
+    @ViewBuilder @MainActor
+    func hookToolbar(_ content: some View) -> some View {
+        if !sortedProfiles.isEmpty {
+            content.toolbar {
+                if delegate.currentPZProfile != nil {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("", systemImage: "arrow.clockwise") {
+                            broadcaster.refreshPage()
+                        }
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    accountSwitcherMenu()
+                }
+            }
+        } else {
+            content
         }
     }
 
