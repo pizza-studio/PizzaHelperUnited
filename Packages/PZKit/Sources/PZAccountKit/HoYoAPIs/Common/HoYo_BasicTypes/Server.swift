@@ -42,7 +42,7 @@ extension HoYo {
                     self = .celestia(.zenlessZone)
                     return
                 }
-                guard let initial = Int(theUID.prefix(2).dropFirst()),
+                guard let initial = Int(theUID.prefix(2).suffix(1)),
                       let initialInt = Int(initial.description) else { return nil }
                 switch initialInt {
                 case 0 ... 2: self = .unitedStates(theGame)
