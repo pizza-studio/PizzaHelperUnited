@@ -206,6 +206,7 @@ extension ProfileManagerPageContent {
                     RequireLoginView(
                         unsavedCookie: $profile.cookie,
                         unsavedFP: $profile.deviceFingerPrint,
+                        deviceID: $profile.deviceID,
                         region: $region,
                         importAllUIDs: $importAllUIDs
                     )
@@ -271,16 +272,20 @@ private struct RequireLoginView: View {
     public init(
         unsavedCookie: Binding<String>,
         unsavedFP: Binding<String>,
+        deviceID: Binding<String>,
         region: Binding<HoYo.AccountRegion>,
         importAllUIDs: Binding<Bool>
     ) {
         self._unsavedCookie = unsavedCookie
         self._unsavedFP = unsavedFP
+        self._deviceID = deviceID
         self._region = region
         self._importAllUIDs = importAllUIDs
     }
 
     // MARK: Internal
+
+    @Binding var deviceID: String
 
     @MainActor var body: some View {
         VStack {
@@ -377,7 +382,7 @@ private struct RequireLoginView: View {
                 region: region
             )
         case .miyoushe:
-            GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP)
+            GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP, deviceID: $deviceID)
         }
     }
 }
