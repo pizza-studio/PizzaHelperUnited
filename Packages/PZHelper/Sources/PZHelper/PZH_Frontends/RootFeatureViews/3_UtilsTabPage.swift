@@ -3,6 +3,9 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import GachaKit
+import PZAccountKit
+import PZBaseKit
+import PZDictionaryKit
 import SwiftUI
 import WallpaperKit
 
@@ -11,14 +14,46 @@ struct UtilsTabPage: View {
 
     enum Nav {
         case wallpaperGallery
+        case pizzaDictionary
+        case hoyoMap
         case gachaCloudDebug
     }
 
     @MainActor var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
-                NavigationLink(value: Nav.wallpaperGallery) {
-                    Label(WallpaperGalleryViewContent.navTitle, systemSymbol: .photoOnRectangleAngled)
+                Section {
+                    NavigationLink(value: Nav.wallpaperGallery) {
+                        Label(WallpaperGalleryViewContent.navTitle, systemSymbol: .photoOnRectangleAngled)
+                    }
+                    NavigationLink(value: Nav.pizzaDictionary) {
+                        Label(PZDictionaryView.navTitle, systemSymbol: .characterBookClosedFill)
+                    }
+                }
+                Section {
+                    NavigationLink(value: Nav.hoyoMap) {
+                        Text(verbatim: HoYoMapView.navTitle)
+                    }
+                    Menu {
+                        #if os(macOS) || targetEnvironment(macCatalyst)
+                        Link(destination: "https://genshin.yunlu18.net".asURL) {
+                            Text(verbatim: "Alice Workshop (\(Pizza.SupportedGame.genshinImpact.localizedShortName))")
+                        }
+                        Link(destination: "https://starrail.yunlu18.net/".asURL) {
+                            Text(verbatim: "Alice Workshop (\(Pizza.SupportedGame.starRail.localizedShortName))")
+                        }
+                        #else
+                        Link(destination: "https://apps.apple.com/app/id1620751192".asURL) {
+                            Text(verbatim: "Alice Workshop (\(Pizza.SupportedGame.genshinImpact.localizedShortName))")
+                        }
+                        Link(destination: "https://apps.apple.com/app/id6450605570".asURL) {
+                            Text(verbatim: "Alice Workshop (\(Pizza.SupportedGame.starRail.localizedShortName))")
+                        }
+                        #endif
+                    } label: {
+                        Text(verbatim: "Alice Workshop (App Store)")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
                 #if DEBUG
                 NavigationLink(value: Nav.gachaCloudDebug) {
@@ -46,7 +81,9 @@ struct UtilsTabPage: View {
         NavigationStack {
             switch selection.wrappedValue {
             case .wallpaperGallery: WallpaperGalleryViewContent()
+            case .pizzaDictionary: PZDictionaryView()
             case .gachaCloudDebug: GachaMODebugView()
+            case .hoyoMap: HoYoMapView()
             case .none: GachaMODebugView()
             }
         }
