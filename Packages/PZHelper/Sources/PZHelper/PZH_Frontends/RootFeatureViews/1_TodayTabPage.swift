@@ -41,7 +41,6 @@ struct TodayTabPage: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     gamePicker
-                        .padding(4)
                         .pickerStyle(.segmented)
                 }
             }

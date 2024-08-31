@@ -37,7 +37,6 @@ public struct WallpaperGalleryViewContent: View {
                     Text("wpKit.gamePicker.Pizza.shortName".i18nWPKit)
                         .tag(Pizza.SupportedGame?.none)
                 }
-                .padding(4)
                 .pickerStyle(.segmented)
             }
         }

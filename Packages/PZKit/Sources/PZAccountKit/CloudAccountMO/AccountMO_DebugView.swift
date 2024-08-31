@@ -81,7 +81,6 @@ public struct AccountMODebugView: View {
                             .tag(enumeratedGame)
                     }
                 }
-                .padding(4)
                 .pickerStyle(.segmented)
                 .onChange(of: game, initial: true) {
                     print("Action")
