@@ -3707,6 +3707,35 @@
           }
         }
       }
+    },
+    "tools.hoyoMap.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "miHoYo Interactive Map"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "miHoYo ゲーム地図"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米哈游互动地图"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米哈遊互動地圖"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
