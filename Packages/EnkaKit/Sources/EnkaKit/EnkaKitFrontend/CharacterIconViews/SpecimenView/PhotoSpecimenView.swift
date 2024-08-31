@@ -44,7 +44,6 @@ struct PhotoSpecimenView: View {
                     Text("game.starRail.shortNameEX".i18nBaseKit)
                         .tag(Enka.GameType.starRail)
                 }
-                .padding(4)
                 .pickerStyle(.segmented)
             }
         }

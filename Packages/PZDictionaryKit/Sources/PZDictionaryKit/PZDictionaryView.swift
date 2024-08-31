@@ -65,7 +65,6 @@ public struct PZDictionaryView: View {
                     Text(Pizza.SupportedGame.starRail.localizedShortName)
                         .tag(Pizza.SupportedGame.starRail)
                 }
-                .padding(4)
                 .pickerStyle(.segmented)
             }
         }

@@ -58,7 +58,6 @@ public struct GachaMODebugView: View {
                             .tag(enumeratedGame)
                     }
                 }
-                .padding(4)
                 .pickerStyle(.segmented)
                 .onChange(of: game, initial: true) {
                     print("Action")
