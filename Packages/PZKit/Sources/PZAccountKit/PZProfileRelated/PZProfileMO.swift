@@ -71,14 +71,19 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     public var deviceFingerPrint: String = ""
     public var name: String = ""
     public var priority: Int = 0
-    public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact)
     public var serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue
     public var sTokenV2: String? = ""
     public var deviceID: String = ThisDevice.identifier4Vendor // For cross-device purposes.
 
+    public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact) {
+        didSet {
+            serverRawValue = server.rawValue
+        }
+    }
+
     public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact {
-        willSet {
-            server.changeGame(to: newValue)
+        didSet {
+            server.changeGame(to: game)
             serverRawValue = server.rawValue
         }
     }
