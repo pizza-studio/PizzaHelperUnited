@@ -40,7 +40,9 @@ struct ProfileConfigEditorView: View {
                 }
                 LabeledContent {
                     TextField("UID", text: $unsavedProfile.uid, prompt: Text("UID"))
+                    #if os(iOS) || targetEnvironment(macCatalyst)
                         .keyboardType(.numberPad)
+                    #endif
                         .multilineTextAlignment(.trailing)
                 } label: { Text("UID") }
                     .onChange(of: unsavedProfile.uid) { _, _ in
@@ -85,7 +87,7 @@ struct ProfileConfigEditorView: View {
         }
         .formStyle(.grouped)
         .navigationTitle("profile.label.editDetails".i18nPZHelper)
-        .navigationBarTitleDisplayMode(.large)
+        .navBarTitleDisplayMode(.large)
     }
 
     // MARK: Private

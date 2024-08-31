@@ -72,7 +72,7 @@ public struct PZDictionaryView: View {
         .navigationTitle("tool.dictionary.title".i18nDictKit)
         .apply { contents in
             #if os(iOS) || targetEnvironment(macCatalyst)
-            contents.navigationBarTitleDisplayMode(.large)
+            contents.navBarTitleDisplayMode(.large)
             #else
             contents
             #endif
@@ -133,7 +133,7 @@ extension PZDictionaryView {
             .navigationTitle("tool.dictionary.detail.title".i18nDictKit)
             .apply { contents in
                 #if os(iOS) || targetEnvironment(macCatalyst)
-                contents.navigationBarTitleDisplayMode(.large)
+                contents.navBarTitleDisplayMode(.large)
                 #else
                 contents
                 #endif

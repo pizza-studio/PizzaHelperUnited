@@ -51,7 +51,7 @@ struct HoYoPassWithdrawView: View {
                 NavigationLink {
                     WebBrowserView(url: urlStrHoYoLab)
                         .navigationTitle("profileMgr.withdrawal.navTitle.hoyolab".i18nPZHelper)
-                        .navigationBarTitleDisplayMode(.inline)
+                        .navBarTitleDisplayMode(.inline)
                 } label: {
                     Text("sys.server.os".i18nPZHelper) + Text(verbatim: " - HoYoLAB")
                 }
@@ -75,7 +75,7 @@ struct HoYoPassWithdrawView: View {
                 NavigationLink {
                     WebBrowserView(url: urlStrMiyoushe)
                         .navigationTitle("profileMgr.withdrawal.navTitle.miyoushe".i18nPZHelper)
-                        .navigationBarTitleDisplayMode(.inline)
+                        .navBarTitleDisplayMode(.inline)
                 } label: {
                     Text("sys.server.cn".i18nPZHelper)
                         + Text(verbatim: " - ")
@@ -93,7 +93,11 @@ struct HoYoPassWithdrawView: View {
     // MARK: Private
 
     private static var isMiyousheInstalled: Bool {
+        #if !canImport(UIKit)
+        false
+        #else
         UIApplication.shared.canOpenURL(URL(string: miyousheHeader)!)
+        #endif
     }
 
     private static var miyousheHeader: String { "mihoyobbs://" }

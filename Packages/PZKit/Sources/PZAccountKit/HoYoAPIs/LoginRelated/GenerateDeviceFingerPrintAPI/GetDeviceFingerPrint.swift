@@ -3,7 +3,6 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
-import UIKit
 
 extension HoYo {
     public struct FingerPrintDataSet {
@@ -21,11 +20,7 @@ extension HoYo {
         }
 
         let url = URL(string: "\(region.publicDataHostURLHeader)/device-fp/api/getFp")!
-        #if os(iOS)
-        let deviceId = await (UIDevice.current.identifierForVendor ?? UUID()).uuidString
-        #else
-        let deviceId = UUID().uuidString
-        #endif
+        let deviceId = deviceID ?? ThisDevice.identifier4Vendor
         let seedID = generateSeed()
         let seedTime = Int(Date().timeIntervalSince1970) * 1000
         let initialRandomFp = deviceId.md5.prefix(13).description // 根据 deviceId 生成初始指纹。

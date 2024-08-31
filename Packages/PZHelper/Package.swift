@@ -23,20 +23,24 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(path: "../PZDictionaryKit"),
         .package(path: "../WallpaperKit"),
         .package(path: "../EnkaKit"),
         .package(path: "../GachaKit"),
         .package(path: "../PZKit"),
         .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
     ],
     targets: [
         .target(
             name: "PZHelper",
             dependencies: [
                 .product(name: "AlertToast", package: "AlertToast"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "PizzaKit", package: "PZKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "GachaKit", package: "GachaKit"),
+                .product(name: "PZDictionaryKit", package: "PZDictionaryKit"),
                 .product(name: "WallpaperKit", package: "WallpaperKit"),
             ],
             swiftSettings: sharedSwiftSettings

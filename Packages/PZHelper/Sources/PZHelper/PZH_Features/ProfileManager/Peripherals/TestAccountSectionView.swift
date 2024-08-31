@@ -172,7 +172,7 @@ struct TestAccountSectionView: View {
                             }
                         )
                         .toolbar {
-                            ToolbarItem(placement: .navigationBarLeading) {
+                            ToolbarItem(placement: .cancellationAction) {
                                 Button("sys.cancel".i18nBaseKit) {
                                     sheetItem = nil
                                 }

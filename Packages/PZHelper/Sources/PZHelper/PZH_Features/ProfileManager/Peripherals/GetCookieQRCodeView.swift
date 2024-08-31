@@ -33,7 +33,11 @@ struct GetCookieQRCodeView: View {
     }
 
     private static var isMiyousheInstalled: Bool {
+        #if !canImport(UIKit)
+        false
+        #else
         UIApplication.shared.canOpenURL(URL(string: miyousheHeader)!)
+        #endif
     }
 
     private static var miyousheHeader: String { "mihoyobbs://" }
@@ -204,9 +208,9 @@ struct GetCookieQRCodeView: View {
                 }
             }
             .navigationTitle("profileMgr.account.qr_code_login.title".i18nPZHelper)
-            .navigationBarTitleDisplayMode(.inline)
+            .navBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("sys.cancel".i18nBaseKit) {
                         presentationMode.wrappedValue.dismiss()
                     }

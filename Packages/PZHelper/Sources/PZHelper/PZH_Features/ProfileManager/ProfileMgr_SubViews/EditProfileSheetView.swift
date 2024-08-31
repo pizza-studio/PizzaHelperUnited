@@ -25,9 +25,9 @@ extension ProfileManagerPageContent {
                     ProfileConfigViewContents(profile: profile)
                 }.formStyle(.grouped)
                     .navigationTitle("profileMgr.edit.title".i18nPZHelper)
-                    .navigationBarTitleDisplayMode(.large)
+                    .navBarTitleDisplayMode(.large)
                     .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
+                        ToolbarItem(placement: .confirmationAction) {
                             Button("sys.done".i18nBaseKit) {
                                 if modelContext.hasChanges {
                                     do {
@@ -46,7 +46,7 @@ extension ProfileManagerPageContent {
                                 }
                             }
                         }
-                        ToolbarItem(placement: .navigationBarLeading) {
+                        ToolbarItem(placement: .cancellationAction) {
                             Button("sys.cancel".i18nBaseKit) {
                                 modelContext.rollback()
                                 isShown.toggle()

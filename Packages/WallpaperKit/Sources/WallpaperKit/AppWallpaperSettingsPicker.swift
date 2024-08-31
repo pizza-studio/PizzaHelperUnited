@@ -30,7 +30,9 @@ public struct AppWallpaperSettingsPicker: View {
                 }.tag(wallpaper)
             }
         }
+        #if os(iOS) || targetEnvironment(macCatalyst)
         .pickerStyle(.navigationLink)
+        #endif
     }
 
     // MARK: Internal

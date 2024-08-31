@@ -206,7 +206,7 @@ extension Enka.AvatarSummarized.CharacterID {
                 .scaleEffect(1.2)
                 .ignoresSafeArea(.all)
                 .blur(radius: 30)
-                .overlay(Color(UIColor.systemGray6).opacity(0.5))
+                .overlay(Color(Color.colorSystemGray6).opacity(0.5))
                 .apply { content in
                     ZStack {
                         if self.isProtagonist, let element {
