@@ -56,7 +56,7 @@ extension HoYo {
         -> GeneralNote4GI {
         let queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
-            .init(name: "server", value: server.id),
+            .init(name: "server", value: server.rawValue),
         ]
 
         let additionalHeaders: [String: String]? = {
