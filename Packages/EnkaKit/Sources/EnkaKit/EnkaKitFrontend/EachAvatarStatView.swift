@@ -223,6 +223,7 @@ extension Enka.AvatarSummarized.CharacterID {
                     ZStack {
                         if self.isProtagonist, let element {
                             content
+                                .saturation(0)
                                 .colorMultiply(element.themeColor.suiColor)
                                 .contrast(2)
                                 .saturation(0.3)
@@ -254,6 +255,7 @@ extension Enka.AvatarSummarized.CharacterID {
                     ZStack {
                         if self.isProtagonist, let element {
                             content
+                                .saturation(0)
                                 .colorMultiply(element.themeColor.suiColor)
                                 .contrast(2)
                                 .saturation(0.3)
