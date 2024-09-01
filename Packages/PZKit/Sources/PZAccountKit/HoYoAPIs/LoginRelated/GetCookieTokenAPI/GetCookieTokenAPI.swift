@@ -6,7 +6,11 @@ import Foundation
 
 extension HoYo {
     /// 返回CookieToken，需要验证SToken。
-    static func cookieToken(cookie: String, queryItems: [URLQueryItem] = []) async throws -> GetCookieTokenResult {
+    public static func cookieToken(
+        cookie: String,
+        queryItems: [URLQueryItem] = []
+    ) async throws
+        -> GetCookieTokenResult {
         let request = try await generateRequest(
             region: .miyoushe(.genshinImpact), // 此处可以乱填游戏名称，因为不影响。
             host: "api-takumi.mihoyo.com",
@@ -25,14 +29,19 @@ extension HoYo {
 
 // MARK: - GetCookieTokenResult
 
-struct GetCookieTokenResult: Decodable, DecodableFromMiHoYoAPIJSONResult {
+public struct GetCookieTokenResult: Decodable, DecodableFromMiHoYoAPIJSONResult {
     // MARK: Lifecycle
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.cookieToken = try container.decode(String.self, forKey: .cookieToken)
         self.uid = try container.decode(String.self, forKey: .uid)
     }
+
+    // MARK: Public
+
+    public let cookieToken: String
+    public let uid: String
 
     // MARK: Internal
 
@@ -40,7 +49,4 @@ struct GetCookieTokenResult: Decodable, DecodableFromMiHoYoAPIJSONResult {
         case cookieToken = "cookie_token"
         case uid
     }
-
-    let cookieToken: String
-    let uid: String
 }

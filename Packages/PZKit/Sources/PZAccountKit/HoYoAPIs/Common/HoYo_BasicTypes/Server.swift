@@ -157,7 +157,7 @@ extension HoYo.Server: RawRepresentable, Codable, Identifiable, Hashable {
         }
     }
 
-    public var id: String { rawValue }
+    public var id: String { "\(game.rawValue)-\(rawValue)" }
 
     public var rawValue: String {
         switch (self, game) {
