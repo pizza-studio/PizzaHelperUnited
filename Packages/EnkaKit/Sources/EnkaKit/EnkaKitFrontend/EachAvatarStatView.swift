@@ -197,6 +197,49 @@ public struct EachAvatarStatView: View {
 
 extension Enka.AvatarSummarized.CharacterID {
     @ViewBuilder @MainActor
+    public func asRowBG(element: Enka.GameElement? = nil) -> some View {
+        switch game {
+        case .starRail:
+            if let commonCharData = Enka.Sputnik.shared.db4HSR.characters[id],
+               let element = Enka.GameElement(rawValue: commonCharData.element),
+               let lifePath = Enka.LifePath(rawValue: commonCharData.avatarBaseType) {
+                let elementColor = element.themeColor.suiColor
+                let bgPath = Enka.queryImageAssetSUI(for: lifePath.iconAssetName)?
+                    .resizable()
+                    .scaledToFill()
+                    .colorMultiply(elementColor)
+                    .opacity(0.05)
+                bgPath
+                    // .frame(maxHeight: 63).clipped()
+                    .compositingGroup()
+            }
+        case .genshinImpact:
+            let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: id)
+            wallPaper.image4CellphoneWallpaper
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .overlay(Color(Color.colorSystemGray6).opacity(0.5))
+                .apply { content in
+                    ZStack {
+                        if self.isProtagonist, let element {
+                            content
+                                .colorMultiply(element.themeColor.suiColor)
+                                .contrast(2)
+                                .saturation(0.3)
+                                .brightness(0.4)
+                        } else {
+                            content
+                        }
+                    }
+                    .opacity(0.6)
+                    // .frame(maxHeight: 63).clipped()
+                    .compositingGroup()
+                }
+        case .zenlessZone: EmptyView() // 临时设定。
+        }
+    }
+
+    @ViewBuilder @MainActor
     public func asBackground(useNameCardBG: Bool = false, element: Enka.GameElement? = nil) -> some View {
         if useNameCardBG, game == .genshinImpact {
             let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: id)
