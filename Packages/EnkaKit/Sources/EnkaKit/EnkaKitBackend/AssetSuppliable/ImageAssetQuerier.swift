@@ -34,14 +34,4 @@ extension Enka {
         guard instance != nil else { return nil }
         return Image(assetName, bundle: Bundle.module)
     }
-
-    public static func queryWeaponImageSUI(for id: String) -> Image? {
-        let idSansExt = id.replacingOccurrences(of: ".heic", with: "").replacingOccurrences(of: ".png", with: "")
-        return queryImageAssetSUI(for: "light_cone_\(idSansExt)")
-    }
-
-    public static func queryOfficialCharAvatarSUI(for id: String) -> Image? {
-        let idSansExt = id.replacingOccurrences(of: ".heic", with: "").replacingOccurrences(of: ".png", with: "")
-        return queryImageAssetSUI(for: "avatar_\(idSansExt)")
-    }
 }
