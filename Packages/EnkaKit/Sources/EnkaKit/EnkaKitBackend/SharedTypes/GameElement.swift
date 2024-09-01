@@ -154,7 +154,7 @@ extension Enka.GameElement {
         case .posesto: .init(red: 0.00, green: 0.13, blue: 1.00, alpha: 1.00)
         case .pyro: .init(red: 0.83, green: 0.00, blue: 0.00, alpha: 1.00)
         case .cryo: .init(red: 0.00, green: 0.38, blue: 0.63, alpha: 1.00)
-        case .geo: .init(red: 0.79, green: 0.57, blue: 0.15, alpha: 1.00)
+        case .geo: .init(red: 1.00, green: 0.7, blue: 0.00, alpha: 1.00)
         case .dendro: .init(red: 0.25, green: 0.79, blue: 0.07, alpha: 1.00)
         case .hydro: .init(red: 0.06, green: 0.35, blue: 0.85, alpha: 1.00)
         }

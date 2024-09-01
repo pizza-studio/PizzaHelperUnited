@@ -240,6 +240,7 @@ public struct CharacterIconView: View {
                 let isProtagonist: Bool = ["10000005", "10000007"].contains(charID.prefix(8))
                 if isProtagonist, let element = guessGenshinCharacterElement(id: charID) {
                     content
+                        .saturation(0)
                         .colorMultiply(element.themeColor.suiColor)
                         .saturation(0.5)
                         .brightness(0.1)
