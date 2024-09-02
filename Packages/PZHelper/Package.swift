@@ -28,6 +28,7 @@ let package = Package(
         .package(path: "../EnkaKit"),
         .package(path: "../GachaKit"),
         .package(path: "../PZKit"),
+        .package(path: "../PZHoYoLabKit"),
         .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
     ],
@@ -41,6 +42,7 @@ let package = Package(
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "GachaKit", package: "GachaKit"),
                 .product(name: "PZDictionaryKit", package: "PZDictionaryKit"),
+                .product(name: "PZHoYoLabKit", package: "PZHoYoLabKit"),
                 .product(name: "WallpaperKit", package: "WallpaperKit"),
             ],
             swiftSettings: sharedSwiftSettings
