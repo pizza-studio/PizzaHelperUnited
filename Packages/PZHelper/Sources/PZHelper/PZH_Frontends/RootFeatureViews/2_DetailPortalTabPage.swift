@@ -39,6 +39,11 @@ struct DetailPortalTabPage: View {
                     Broadcaster.shared.stopRootTabTasks()
                 }
             }
+            .onAppear {
+                if let profile = delegate.currentPZProfile, !profiles.contains(profile) {
+                    delegate.currentPZProfile = nil
+                }
+            }
         }
     }
 
@@ -215,6 +220,6 @@ extension DetailPortalTabPage {
 
         // MARK: Internal
 
-        var currentPZProfile: PZProfileMO?
+        weak var currentPZProfile: PZProfileMO?
     }
 }
