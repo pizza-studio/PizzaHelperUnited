@@ -78,7 +78,7 @@ extension HoYoAPIErrorView {
                     popVerificationWebSheet()
                 } label: {
                     Label {
-                        Text("account.test.verify.button")
+                        Text("profileMgr.test.verify.button".i18nPZHelper)
                     } icon: {
                         Image(systemSymbol: .exclamationmarkTriangle)
                             .foregroundStyle(.yellow)
@@ -103,13 +103,13 @@ extension HoYoAPIErrorView {
                             .listContainerBackground()
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarLeading) {
-                                    Button("sys.cancel") {
+                                    Button("sys.cancel".i18nBaseKit) {
                                         status = .pending
                                         sheetItem = nil
                                     }
                                 }
                             }
-                            .navigationTitle("account.test.verify.web_sheet.title")
+                            .navigationTitle("profileMgr.test.verify.web_sheet.title".i18nPZHelper)
                         }
                     }
                 })
