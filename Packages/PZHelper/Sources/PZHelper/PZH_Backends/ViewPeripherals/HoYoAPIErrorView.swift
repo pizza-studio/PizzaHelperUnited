@@ -127,6 +127,7 @@ extension HoYoAPIErrorView {
                     let verification = try await HoYo.createVerification(
                         region: profile.server.region,
                         cookie: profile.cookie,
+                        deviceID: profile.deviceID,
                         deviceFingerPrint: profile.deviceFingerPrint
                     )
                     Task.detached { @MainActor in

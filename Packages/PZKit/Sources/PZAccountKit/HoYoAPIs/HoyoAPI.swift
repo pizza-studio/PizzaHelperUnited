@@ -25,6 +25,7 @@ extension HoYo {
         queryItems: [URLQueryItem],
         body: Data? = nil,
         cookie: String? = nil,
+        deviceID: String? = nil,
         additionalHeaders: [String: String]? = nil
     ) async throws
         -> URLRequest {
@@ -36,6 +37,7 @@ extension HoYo {
             queryItems: queryItems,
             body: body,
             cookie: cookie,
+            deviceID: deviceID,
             additionalHeaders: additionalHeaders
         )
     }
@@ -56,6 +58,7 @@ extension HoYo {
         queryItems: [URLQueryItem],
         body: Data? = nil,
         cookie: String? = nil,
+        deviceID: String? = nil,
         additionalHeaders: [String: String]? = nil
     ) async throws
         -> URLRequest {
@@ -67,6 +70,7 @@ extension HoYo {
             queryItems: queryItems,
             body: body,
             cookie: cookie,
+            deviceID: deviceID,
             additionalHeaders: additionalHeaders
         )
     }
@@ -89,6 +93,7 @@ extension HoYo {
         queryItems: [URLQueryItem],
         body: Data? = nil,
         cookie: String? = nil,
+        deviceID: String? = nil,
         additionalHeaders: [String: String]?
     ) async throws
         -> URLRequest {
@@ -115,6 +120,7 @@ extension HoYo {
 
         request.allHTTPHeaderFields = try await URLRequestConfig.defaultHeaders(
             region: region,
+            deviceID: deviceID,
             additionalHeaders: additionalHeaders
         )
 

@@ -9,6 +9,7 @@ extension HoYo {
     public static func createVerification(
         region: HoYo.AccountRegion,
         cookie: String,
+        deviceID: String?,
         deviceFingerPrint: String? = nil,
         challengePathOverride: String? = nil
     ) async throws
@@ -35,13 +36,14 @@ extension HoYo {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = try await URLRequestConfig.defaultHeaders(
-            region: .miyoushe(.genshinImpact), // 与具体游戏无关。
+            region: region,
+            deviceID: deviceID,
             additionalHeaders: additionalHeaders
         )
         request.setValue(cookie, forHTTPHeaderField: "Cookie")
         request.setValue(
             URLRequestHelper.getDS(
-                region: .miyoushe(.genshinImpact), // 与具体游戏无关。
+                region: region,
                 query: url.query ?? "",
                 body: nil
             ),
@@ -60,7 +62,8 @@ extension HoYo {
         validate: String,
         challengePathOverride: String? = nil,
         cookie: String,
-        deviceFingerPrint: String? = nil
+        deviceFingerPrint: String? = nil,
+        deviceID: String? = nil
     ) async throws
         -> VerifyVerification {
         var additionalHeaders: [String: String] = [:]
@@ -95,13 +98,14 @@ extension HoYo {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = try await URLRequestConfig.defaultHeaders(
-            region: .miyoushe(.genshinImpact), // 与具体游戏无关。
+            region: region,
+            deviceID: deviceID,
             additionalHeaders: additionalHeaders
         )
         request.setValue(cookie, forHTTPHeaderField: "Cookie")
         request.setValue(
             URLRequestHelper.getDS(
-                region: .miyoushe(.genshinImpact), // 与具体游戏无关。
+                region: region,
                 query: url.query ?? "",
                 body: bodyData
             ),
