@@ -12,7 +12,7 @@ import SwiftUI
 // 因为该 VM 也用于 Apple Watch，所以塞到 PZAccountKit 里面。
 
 @Observable
-public class DailyNoteViewModel {
+public final class DailyNoteViewModel {
     // MARK: Lifecycle
 
     /// Initializes a new instance of the view model.

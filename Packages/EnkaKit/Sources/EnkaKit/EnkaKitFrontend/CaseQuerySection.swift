@@ -186,7 +186,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
 extension CaseQuerySection {
     @Observable
-    class Coordinator<CoordinatedDB: EnkaDBProtocol> {
+    final class Coordinator<CoordinatedDB: EnkaDBProtocol> {
         // MARK: Lifecycle
 
         public init() {}

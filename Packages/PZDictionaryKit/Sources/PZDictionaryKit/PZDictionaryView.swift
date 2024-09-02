@@ -167,7 +167,7 @@ extension PZDictionaryView {
 
 extension PZDictionaryView {
     @Observable
-    class Coordinator {
+    final class Coordinator {
         // MARK: Lifecycle
 
         init() {

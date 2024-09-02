@@ -115,7 +115,7 @@ typealias UIViewRepresentable = NSViewRepresentable
 // MARK: - HoYoMapWebView
 
 private struct HoYoMapWebView: UIViewRepresentable {
-    class Coordinator: NSObject, WKNavigationDelegate {
+    final class Coordinator: NSObject, WKNavigationDelegate {
         // MARK: Lifecycle
 
         init(_ parent: HoYoMapWebView) {
