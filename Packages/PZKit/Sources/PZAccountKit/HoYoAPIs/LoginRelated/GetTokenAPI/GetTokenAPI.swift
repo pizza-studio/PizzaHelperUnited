@@ -24,7 +24,7 @@ extension HoYo {
         ]
 
         let request = try await Self.generateAccountAPIRequest(
-            region: region, // 此处可以乱填游戏名称，因为不影响。
+            region: region,
             path: "/auth/api/getMultiTokenByLoginTicket",
             queryItems: queryItems,
             cookie: nil
