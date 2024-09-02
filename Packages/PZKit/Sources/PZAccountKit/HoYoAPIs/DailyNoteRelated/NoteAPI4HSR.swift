@@ -35,11 +35,15 @@ extension HoYo {
         -> Note4HSR {
         switch server.region {
         case .miyoushe:
-            return try await widgetNote4HSR(
-                cookie: cookie,
-                deviceFingerPrint: deviceFingerPrint,
-                deviceID: deviceID
-            )
+            if cookie.contains("stoken=v2_") {
+                return try await widgetNote4HSR(
+                    cookie: cookie,
+                    deviceFingerPrint: deviceFingerPrint,
+                    deviceID: deviceID
+                )
+            } else {
+                throw MiHoYoAPIError.sTokenV2InvalidOrMissing
+            }
         case .hoyoLab:
             return try await generalNote4HSR(
                 server: server,
