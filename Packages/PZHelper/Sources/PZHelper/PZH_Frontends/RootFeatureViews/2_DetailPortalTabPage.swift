@@ -29,7 +29,7 @@ struct DetailPortalTabPage: View {
             .scrollContentBackground(.hidden)
             .listContainerBackground()
             .refreshable {
-                broadcaster.refreshPage()
+                refreshAction()
             }
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
             .apply(hookNavigationDestinations)
@@ -176,7 +176,7 @@ struct DetailPortalTabPage: View {
                 if delegate.currentPZProfile != nil {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("", systemImage: "arrow.clockwise") {
-                            broadcaster.refreshPage()
+                            refreshAction()
                         }
                     }
                 }
@@ -203,6 +203,11 @@ struct DetailPortalTabPage: View {
     private var sortedProfiles: [PZProfileMO] {
         profiles.sorted { $0.priority < $1.priority }
             .filter { $0.game != .zenlessZone } // 临时设定。
+    }
+
+    private func refreshAction() {
+        broadcaster.refreshPage()
+        delegate.charInventoryNavCoordinator.refresh()
     }
 }
 
