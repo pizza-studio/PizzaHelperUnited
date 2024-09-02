@@ -11,20 +11,21 @@ public protocol DecodableFromMiHoYoAPIJSONResult: Decodable {}
 
 extension DecodableFromMiHoYoAPIJSONResult {
     /// Decodes data from MiHoYoAPI JSON results
-    public static func decodeFromMiHoYoAPIJSONResult(data: Data, with request: URLRequest) async throws -> Self {
-        let decoder = JSONDecoder()
-        let result = try decoder.decode(MiHoYoAPIJSONResult<Self>.self, from: data)
-        if result.retcode == 0 {
-            // swiftlint:disable:next force_unwrapping
-            return result.data!
-        } else {
-            throw MiHoYoAPIError(retcode: result.retcode, message: result.message)
-        }
-    }
-
     public static func decodeFromMiHoYoAPIJSONResult(data: Data) throws -> Self {
         let decoder = JSONDecoder()
-        let result = try decoder.decode(MiHoYoAPIJSONResult<Self>.self, from: data)
+        let result: MiHoYoAPIJSONResult<Self>
+        do {
+            result = try decoder.decode(MiHoYoAPIJSONResult<Self>.self, from: data)
+        } catch {
+            throw MiHoYoAPIError(
+                retcode: -114514, message: """
+                DECODE ITEM: \(String(data: data, encoding: .utf8)!)
+                --------------
+                rawError:
+                \(error)
+                """
+            )
+        }
         if result.retcode == 0 {
             // swiftlint:disable:next force_unwrapping
             return result.data!

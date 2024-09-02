@@ -23,7 +23,7 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        let resultData = try await GenerateQRCodeURLData.decodeFromMiHoYoAPIJSONResult(data: data, with: request)
+        let resultData = try GenerateQRCodeURLData.decodeFromMiHoYoAPIJSONResult(data: data)
 
         let resultURL = resultData.url
         let urlComponents = URLComponents(url: resultURL, resolvingAgainstBaseURL: false)
