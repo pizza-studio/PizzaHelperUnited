@@ -55,16 +55,20 @@ struct DetailPortalTabPage: View {
         if let profile = delegate.currentPZProfile {
             switch profile.game {
             case .genshinImpact:
-                ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile)
-                    .listRowMaterialBackground()
-                    .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
-                    .onTapGesture { uidInputFieldFocus = false }
+                ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile) {
+                    CharInventoryNav(theVM: delegate.charInventoryNavCoordinator)
+                }
+                .listRowMaterialBackground()
+                .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
+                .onTapGesture { uidInputFieldFocus = false }
                 query4GI
             case .starRail:
-                ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile)
-                    .listRowMaterialBackground()
-                    .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
-                    .onTapGesture { uidInputFieldFocus = false }
+                ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile) {
+                    CharInventoryNav(theVM: delegate.charInventoryNavCoordinator)
+                }
+                .listRowMaterialBackground()
+                .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
+                .onTapGesture { uidInputFieldFocus = false }
                 query4HSR
             case .zenlessZone: EmptyView()
             }
@@ -220,6 +224,12 @@ extension DetailPortalTabPage {
 
         // MARK: Internal
 
-        weak var currentPZProfile: PZProfileMO?
+        var charInventoryNavCoordinator: CharInventoryNav.Coordinator = .init()
+
+        weak var currentPZProfile: PZProfileMO? {
+            didSet {
+                charInventoryNavCoordinator.profile = currentPZProfile
+            }
+        }
     }
 }

@@ -380,31 +380,6 @@ private struct AssignmentView4HSR: View {
     @State var assignment: AssignmentInfo4HSR.Assignment
 }
 
-// MARK: - InformationRowView
-
-/// Only for Genshin Impact
-private struct InformationRowView<L: View>: View {
-    // MARK: Lifecycle
-
-    init(_ title: String, @ViewBuilder labelContent: @escaping () -> L) {
-        self.title = title
-        self.labelContent = labelContent
-    }
-
-    // MARK: Internal
-
-    @ViewBuilder let labelContent: () -> L
-
-    let title: String
-
-    @MainActor var body: some View {
-        VStack(alignment: .leading) {
-            Text(title).font(.subheadline).bold()
-            labelContent()
-        }
-    }
-}
-
 // MARK: - DailyNoteCardErrorView
 
 private struct DailyNoteCardErrorView: View {
