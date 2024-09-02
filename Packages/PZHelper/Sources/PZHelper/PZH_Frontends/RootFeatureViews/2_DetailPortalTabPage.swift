@@ -200,10 +200,11 @@ struct DetailPortalTabPage: View {
 // MARK: DetailPortalTabPage.Coordinator
 
 extension DetailPortalTabPage {
-    @MainActor @Observable
+    @Observable
     public final class Coordinator {
         // MARK: Lifecycle
 
+        @MainActor
         public init() {
             let pzProfiles = try? PersistenceController.shared.modelContainer
                 .mainContext.fetch(FetchDescriptor<PZProfileMO>())
