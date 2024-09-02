@@ -161,3 +161,50 @@ public enum AnyLocalizedError: LocalizedError {
         }
     }
 }
+
+// MARK: - UUID Impl.
+
+extension UUID {
+    /// Converts an MD5 hash string into a UUID.
+    /// - Parameter md5: A 32-character hexadecimal MD5 hash string.
+    /// - Throws: An error if the MD5 string is invalid.
+    /// - Returns: A UUID generated from the MD5 hash.
+    public static func fromMD5(_ md5: String) throws -> UUID {
+        // Ensure the MD5 string is valid (32 characters, hexadecimal)
+        guard md5.count == 32, md5.range(of: "^[a-fA-F0-9]{32}$", options: .regularExpression) != nil else {
+            throw NSError(domain: "InvalidMD5", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid MD5 string."])
+        }
+
+        // Convert the MD5 string into raw bytes
+        var bytes = [UInt8]()
+        var index = md5.startIndex
+        for _ in 0 ..< 16 {
+            let nextIndex = md5.index(index, offsetBy: 2)
+            if let byte = UInt8(md5[index ..< nextIndex], radix: 16) {
+                bytes.append(byte)
+            }
+            index = nextIndex
+        }
+
+        // Convert the raw bytes into a UUID
+        let uuid = UUID(uuid: (
+            bytes[0],
+            bytes[1],
+            bytes[2],
+            bytes[3],
+            bytes[4],
+            bytes[5],
+            bytes[6],
+            bytes[7],
+            bytes[8],
+            bytes[9],
+            bytes[10],
+            bytes[11],
+            bytes[12],
+            bytes[13],
+            bytes[14],
+            bytes[15]
+        ))
+        return uuid
+    }
+}

@@ -43,7 +43,9 @@ public enum ThisDevice {
     }()
 
     public static let identifier4Vendor: String = {
-        #if canImport(UIKit)
+        #if canImport(IOKit) && canImport(UIKit)
+        return UIDevice.current.identifierForVendor?.uuidString ?? getIdentifier4Vendor() ?? UUID().uuidString
+        #elseif canImport(UIKit) && !canImport(IOKit)
         return UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         #elseif canImport(IOKit)
         return getIdentifier4Vendor() ?? UUID().uuidString
@@ -54,7 +56,7 @@ public enum ThisDevice {
 
     // MARK: Private
 
-    #if canImport(IOKit) && !canImport(UIKit)
+    #if canImport(IOKit)
     private static func getIdentifier4Vendor() -> String? {
         // Returns an object with a +1 retain count; the caller needs to release.
         func ioService(named name: String, wantBuiltIn: Bool) -> io_service_t? {
@@ -106,7 +108,7 @@ public enum ThisDevice {
 
         guard let data = cftype as? Data else { return nil }
         let xArray = data.map { $0.description }.joined()
-        return xArray.md5
+        return try? UUID.fromMD5(xArray.md5).uuidString
     }
     #endif
 }
