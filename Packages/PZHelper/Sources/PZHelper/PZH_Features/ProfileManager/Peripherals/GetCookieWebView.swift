@@ -103,7 +103,7 @@ struct GetCookieWebView: View {
 
 #if canImport(AppKit) && !canImport(UIKit)
 struct CookieGetterWebView: NSViewRepresentable {
-    class Coordinator: NSObject, WKNavigationDelegate {
+    final class Coordinator: NSObject, WKNavigationDelegate {
         // MARK: Lifecycle
 
         init(_ parent: CookieGetterWebView) {
@@ -192,7 +192,7 @@ struct CookieGetterWebView: NSViewRepresentable {
 
 #elseif canImport(UIKit)
 struct CookieGetterWebView: UIViewRepresentable {
-    class Coordinator: NSObject, WKNavigationDelegate {
+    final class Coordinator: NSObject, WKNavigationDelegate {
         // MARK: Lifecycle
 
         init(_ parent: CookieGetterWebView) {

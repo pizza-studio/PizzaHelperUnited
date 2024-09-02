@@ -139,7 +139,7 @@ public enum GenshinLang: String, CaseIterable, Sendable, Identifiable {
 
 // MARK: - WallpaperAsset
 
-public class WallpaperAsset: Identifiable, Encodable {
+public final class WallpaperAsset: Identifiable, Encodable {
     // MARK: Lifecycle
 
     public init(
