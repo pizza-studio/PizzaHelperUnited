@@ -35,7 +35,6 @@ struct IDPhotoFallbackView4HSR: View {
     // MARK: Internal
 
     @Observable
-    @MainActor
     class Coordinator {
         // MARK: Lifecycle
 
