@@ -20,7 +20,7 @@ public enum MiHoYoAPIError: Error, LocalizedError {
         case 1034, 10035: .verificationNeeded
         case 5003, 10041: .fingerPrintInvalidOrMissing
         case 10102: .insufficientDataVisibility
-        case 10001: .reloginRequired
+        case -100, 10001: .reloginRequired
         case 10307: .serverUnderMaintenanceUpgrade
         default: .other(retcode: retcode, message: message)
         }
