@@ -3,16 +3,18 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 extension HoYo {
     /// 返回CookieToken，需要验证SToken。
     public static func cookieToken(
+        game: Pizza.SupportedGame,
         cookie: String,
         queryItems: [URLQueryItem] = []
     ) async throws
         -> GetCookieTokenResult {
         let request = try await generateRequest(
-            region: .miyoushe(.genshinImpact), // 此处可以乱填游戏名称，因为不影响。
+            region: .miyoushe(game),
             host: "api-takumi.mihoyo.com",
             path: "/auth/api/getCookieAccountInfoBySToken",
             queryItems: queryItems,
