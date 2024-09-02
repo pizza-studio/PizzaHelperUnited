@@ -43,10 +43,9 @@ extension HoYo {
         ]
 
         let additionalHeaders: [String: String]? = {
-            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
+            if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
                 return [
                     "x-rpc-device_fp": deviceFingerPrint,
-                    "x-rpc-device_id": deviceId,
                 ]
             } else {
                 return nil
@@ -59,6 +58,7 @@ extension HoYo {
             path: server.region.characterInventoryRetrievalPath,
             queryItems: queryItems,
             cookie: cookie,
+            deviceID: deviceId,
             additionalHeaders: additionalHeaders
         )
 
@@ -81,10 +81,9 @@ extension HoYo {
         ]
 
         let additionalHeaders: [String: String]? = {
-            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
+            if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
                 return [
                     "x-rpc-device_fp": deviceFingerPrint,
-                    "x-rpc-device_id": deviceId,
                 ]
             } else {
                 return nil
@@ -107,6 +106,7 @@ extension HoYo {
             path: server.region.characterInventoryRetrievalPath,
             queryItems: queryItems,
             cookie: newCookie,
+            deviceID: deviceId,
             additionalHeaders: additionalHeaders
         )
         #if DEBUG
