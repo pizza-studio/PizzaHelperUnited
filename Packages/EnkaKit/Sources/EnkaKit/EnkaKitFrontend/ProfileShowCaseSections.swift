@@ -20,9 +20,9 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     public init(
         theDB: QueryDB,
         pzProfile: any ProfileMOProtocol,
-        additionalView: @escaping (() -> T) = { EmptyView() }
+        appendedContent: @escaping (() -> T) = { EmptyView() }
     ) {
-        self.additionalView = additionalView
+        self.appendedContent = appendedContent
         self.theDB = theDB
         self.pzProfile = pzProfile
         self.delegate = .init(uid: pzProfile.uid, theDB: theDB)
@@ -47,12 +47,15 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
                 InfiniteProgressBar().id(UUID())
             }
             if let errorMsg = delegate.errorMsg {
+                Divider()
                 Button {
                     triggerUpdateTask()
                 } label: {
                     Text(errorMsg).font(.caption2)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
+            appendedContent()
         }
         .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
             triggerUpdateTask()
@@ -116,7 +119,6 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
                         Spacer()
                     }
                 }
-                additionalView()
             }
         } footer: {
             HStack {
@@ -140,7 +142,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
-    private let additionalView: () -> T
+    private let appendedContent: () -> T
     private var theDB: QueryDB
     @State private var delegate: Coordinator<QueryDB>
     @State private var broadcaster = Broadcaster.shared
