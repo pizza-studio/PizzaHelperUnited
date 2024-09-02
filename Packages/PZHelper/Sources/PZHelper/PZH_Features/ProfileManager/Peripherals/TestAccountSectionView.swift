@@ -206,7 +206,7 @@ struct TestAccountSectionView: View {
         func verifyValidate(challenge: String, validate: String) {
             Task {
                 do {
-                    _ = try await HoYo.verifyVerification(
+                    try await HoYo.verifyVerification(
                         region: profile.server.region,
                         challenge: challenge,
                         validate: validate,

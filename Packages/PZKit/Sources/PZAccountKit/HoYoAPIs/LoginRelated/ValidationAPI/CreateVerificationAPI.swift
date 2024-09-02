@@ -53,6 +53,7 @@ extension HoYo {
         return try .decodeFromMiHoYoAPIJSONResult(data: data)
     }
 
+    @discardableResult
     public static func verifyVerification(
         region: HoYo.AccountRegion,
         challenge: String,
