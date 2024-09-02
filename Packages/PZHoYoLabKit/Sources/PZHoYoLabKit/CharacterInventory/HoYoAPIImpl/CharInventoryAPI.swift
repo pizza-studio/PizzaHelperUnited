@@ -53,7 +53,7 @@ extension HoYo {
         }()
 
         let request = try await Self.generateRecordAPIRequest(
-            httpMethod: .post,
+            httpMethod: .post, // 不是 .get。
             region: server.region,
             path: server.region.characterInventoryRetrievalPath,
             queryItems: queryItems,
@@ -101,7 +101,7 @@ extension HoYo {
         }
 
         let request = try await Self.generateRecordAPIRequest(
-            httpMethod: .post,
+            httpMethod: .get, // 不是 .post。
             region: server.region,
             path: server.region.characterInventoryRetrievalPath,
             queryItems: queryItems,
