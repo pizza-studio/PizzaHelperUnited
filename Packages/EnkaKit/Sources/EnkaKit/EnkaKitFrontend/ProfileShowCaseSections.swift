@@ -161,7 +161,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
 extension ProfileShowCaseSections {
     @Observable
-    class Coordinator<CoordinatedDB: EnkaDBProtocol> {
+    final class Coordinator<CoordinatedDB: EnkaDBProtocol> {
         // MARK: Lifecycle
 
         /// 展柜 ViewModel 的建构子。
