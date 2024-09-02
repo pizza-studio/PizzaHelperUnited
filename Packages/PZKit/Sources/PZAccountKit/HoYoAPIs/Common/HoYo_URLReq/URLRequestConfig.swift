@@ -102,6 +102,7 @@ public enum URLRequestConfig {
     /// - Returns: http request headers
     public static func defaultHeaders(
         region: HoYo.AccountRegion,
+        deviceID: String?,
         additionalHeaders: [String: String]?
     ) async throws
         -> [String: String] {
@@ -118,7 +119,7 @@ public enum URLRequestConfig {
             "x-rpc-app_version": xRpcAppVersion(region: region),
             "x-rpc-client_type": xRpcClientType(region: region),
             "x-rpc-page": "3.1.3_#/rpg",
-            "x-rpc-device_id": ThisDevice.identifier4Vendor,
+            "x-rpc-device_id": deviceID ?? ThisDevice.identifier4Vendor,
             "x-rpc-language": HoYo.APILang.current.rawValue,
 
             "Sec-Fetch-Dest": "empty",
