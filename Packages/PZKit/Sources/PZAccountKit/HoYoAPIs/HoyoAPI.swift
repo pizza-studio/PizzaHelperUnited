@@ -85,7 +85,7 @@ extension HoYo {
     ///   - body: `Body` of request.
     ///   - cookie: cookie of request.
     /// - Returns: `URLRequest`
-    static func generateRequest(
+    public static func generateRequest(
         httpMethod: HTTPMethod = .get,
         region: HoYo.AccountRegion,
         host: String,
