@@ -34,14 +34,14 @@ struct DetailPortalTabPage: View {
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
             .apply(hookNavigationDestinations)
             .apply(hookToolbar)
-            .onChange(of: delegate.currentPZProfile) { oldValue, newValue in
+            .onChange(of: delegate.currentProfile) { oldValue, newValue in
                 if oldValue != newValue {
                     Broadcaster.shared.stopRootTabTasks()
                 }
             }
             .onAppear {
-                if let profile = delegate.currentPZProfile, !profiles.contains(profile) {
-                    delegate.currentPZProfile = nil
+                if let profile = delegate.currentProfile, !profiles.contains(profile) {
+                    delegate.currentProfile = nil
                 }
             }
         }
@@ -52,19 +52,24 @@ struct DetailPortalTabPage: View {
             .listRowMaterialBackground()
         let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)
             .listRowMaterialBackground()
-        if let profile = delegate.currentPZProfile {
+        if let profile = delegate.currentProfile {
             switch profile.game {
             case .genshinImpact:
                 ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile) {
-                    CharInventoryNav(theVM: delegate.charInventoryNavCoordinator)
+                    CharInventoryNav(theVM: delegate)
                 }
                 .listRowMaterialBackground()
                 .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                 .onTapGesture { uidInputFieldFocus = false }
                 query4GI
+                // Peripheral Nav Sections.
+                Section {
+                    LedgerNav(theVM: delegate)
+                        .listRowMaterialBackground()
+                }
             case .starRail:
                 ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile) {
-                    CharInventoryNav(theVM: delegate.charInventoryNavCoordinator)
+                    CharInventoryNav(theVM: delegate)
                 }
                 .listRowMaterialBackground()
                 .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
@@ -82,7 +87,7 @@ struct DetailPortalTabPage: View {
         LabeledContent {
             let dimension: CGFloat = 30
             Group {
-                if let profile: PZProfileMO = delegate.currentPZProfile {
+                if let profile: PZProfileMO = delegate.currentProfile {
                     Enka.ProfileIconView(uid: profile.uid, game: profile.game)
                         .frame(width: dimension)
                 } else {
@@ -105,7 +110,7 @@ struct DetailPortalTabPage: View {
             .clipShape(.circle)
             .compositingGroup()
         } label: {
-            if let profile: PZProfileMO = delegate.currentPZProfile {
+            if let profile: PZProfileMO = delegate.currentProfile {
                 Text(profile.uidWithGame)
             } else {
                 Text("dpv.query.menuCommandTitle".i18nPZHelper)
@@ -121,7 +126,7 @@ struct DetailPortalTabPage: View {
         Menu {
             Button {
                 withAnimation {
-                    delegate.currentPZProfile = nil
+                    delegate.currentProfile = nil
                 }
             } label: {
                 LabeledContent {
@@ -137,7 +142,7 @@ struct DetailPortalTabPage: View {
             ForEach(sortedProfiles) { enumeratedProfile in
                 Button {
                     withAnimation {
-                        delegate.currentPZProfile = enumeratedProfile
+                        delegate.currentProfile = enumeratedProfile
                     }
                 } label: {
                     enumeratedProfile.asMenuLabel4SUI()
@@ -173,7 +178,7 @@ struct DetailPortalTabPage: View {
     func hookToolbar(_ content: some View) -> some View {
         if !sortedProfiles.isEmpty {
             content.toolbar {
-                if delegate.currentPZProfile != nil {
+                if delegate.currentProfile != nil {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("", systemImage: "arrow.clockwise") {
                             refreshAction()
@@ -192,7 +197,7 @@ struct DetailPortalTabPage: View {
     // MARK: Private
 
     @State private var sharedDB: Enka.Sputnik = .shared
-    @State private var delegate: Coordinator = .init()
+    @State private var delegate: DetailPortalViewModel = .init()
     @State private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
     @Environment(\.modelContext) private var modelContext
@@ -207,34 +212,5 @@ struct DetailPortalTabPage: View {
 
     private func refreshAction() {
         broadcaster.refreshPage()
-        delegate.charInventoryNavCoordinator.refresh()
-    }
-}
-
-// MARK: DetailPortalTabPage.Coordinator
-
-extension DetailPortalTabPage {
-    @Observable
-    public final class Coordinator {
-        // MARK: Lifecycle
-
-        @MainActor
-        public init() {
-            let pzProfiles = try? PersistenceController.shared.modelContainer
-                .mainContext.fetch(FetchDescriptor<PZProfileMO>())
-                .sorted { $0.priority < $1.priority }
-                .filter { $0.game != .zenlessZone } // 临时设定。
-            self.currentPZProfile = pzProfiles?.first
-        }
-
-        // MARK: Internal
-
-        var charInventoryNavCoordinator: CharInventoryNav.Coordinator = .init()
-
-        weak var currentPZProfile: PZProfileMO? {
-            didSet {
-                charInventoryNavCoordinator.profile = currentPZProfile
-            }
-        }
     }
 }
