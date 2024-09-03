@@ -133,6 +133,7 @@ struct CookieGetterWebView: NSViewRepresentable {
     let dataStore: WKWebsiteDataStore
     let httpHeaderFields: [String: String]
 
+    @MainActor
     func makeNSView(context: Context) -> OPWebView {
         guard let url = URL(string: url)
         else {
@@ -166,10 +167,11 @@ struct CookieGetterWebView: NSViewRepresentable {
         let webview = OPWebView()
         webview.configuration.websiteDataStore = dataStore
         webview.navigationDelegate = context.coordinator
-        webview.load(request)
+        Task { webview.load(request) }
         return webview
     }
 
+    @MainActor
     func updateNSView(_ nsView: OPWebView, context _: Context) {
         if let url = URL(string: url) {
             let timeoutInterval: TimeInterval = 10
@@ -181,7 +183,7 @@ struct CookieGetterWebView: NSViewRepresentable {
             request.httpShouldHandleCookies = false
             request.allHTTPHeaderFields = httpHeaderFields
             print(request.description)
-            nsView.load(request)
+            Task { nsView.load(request) }
         }
     }
 
@@ -222,6 +224,7 @@ struct CookieGetterWebView: UIViewRepresentable {
     let dataStore: WKWebsiteDataStore
     let httpHeaderFields: [String: String]
 
+    @MainActor
     func makeUIView(context: Context) -> OPWebView {
         guard let url = URL(string: url)
         else {
@@ -255,10 +258,11 @@ struct CookieGetterWebView: UIViewRepresentable {
         let webview = OPWebView()
         webview.configuration.websiteDataStore = dataStore
         webview.navigationDelegate = context.coordinator
-        webview.load(request)
+        Task { webview.load(request) }
         return webview
     }
 
+    @MainActor
     func updateUIView(_ uiView: OPWebView, context _: Context) {
         if let url = URL(string: url) {
             let timeoutInterval: TimeInterval = 10
@@ -270,7 +274,7 @@ struct CookieGetterWebView: UIViewRepresentable {
             request.httpShouldHandleCookies = false
             request.allHTTPHeaderFields = httpHeaderFields
             print(request.description)
-            uiView.load(request)
+            Task { uiView.load(request) }
         }
     }
 

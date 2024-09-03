@@ -46,6 +46,7 @@ struct GeetestValidateView: NSViewRepresentable {
 
     @State var completion: (String) -> Void
 
+    @MainActor
     func makeNSView(context: Context) -> WKWebView {
         webView.navigationDelegate = context.coordinator
         webView.configuration.userContentController.removeAllScriptMessageHandlers()
@@ -56,6 +57,7 @@ struct GeetestValidateView: NSViewRepresentable {
         return webView
     }
 
+    @MainActor
     func updateNSView(_ nsView: WKWebView, context: Context) {
         let url = URL(string: "https://gi.pizzastudio.org/geetest/")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
@@ -72,7 +74,7 @@ struct GeetestValidateView: NSViewRepresentable {
             "Referer": "https://webstatic.mihoyo.com",
         ]
 
-        nsView.load(request)
+        Task { nsView.load(request) }
     }
 
     func makeCoordinator() -> Coordinator {
@@ -97,6 +99,7 @@ struct GeetestValidateView: UIViewRepresentable {
 
     @State var completion: (String) -> Void
 
+    @MainActor
     func makeUIView(context: Context) -> WKWebView {
         webView.navigationDelegate = context.coordinator
         webView.configuration.userContentController.removeAllScriptMessageHandlers()
@@ -107,6 +110,7 @@ struct GeetestValidateView: UIViewRepresentable {
         return webView
     }
 
+    @MainActor
     func updateUIView(_ uiView: WKWebView, context: Context) {
         let url = URL(string: "https://gi.pizzastudio.org/geetest/")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
@@ -123,7 +127,7 @@ struct GeetestValidateView: UIViewRepresentable {
             "Referer": "https://webstatic.mihoyo.com",
         ]
 
-        uiView.load(request)
+        Task { uiView.load(request) }
     }
 
     func makeCoordinator() -> Coordinator {
