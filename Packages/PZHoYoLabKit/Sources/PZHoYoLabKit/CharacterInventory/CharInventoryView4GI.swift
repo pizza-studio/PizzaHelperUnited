@@ -118,7 +118,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
     // MARK: Private
 
     @State private var allAvatarListDisplayType: InventoryViewFilterType = .all
-    @State private var expanded: Bool = false
+    @State private var expanded: Bool = true
     @State private var containerSize: CGSize = .init(width: 320, height: 320)
     @State private var orientation = DeviceOrientation()
     @Environment(\.dismiss) private var dismiss
