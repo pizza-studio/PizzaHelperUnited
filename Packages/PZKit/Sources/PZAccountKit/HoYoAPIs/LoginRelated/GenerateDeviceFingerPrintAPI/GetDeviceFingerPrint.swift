@@ -34,7 +34,7 @@ extension HoYo {
             "platform": region.platformID,
             "seed_time": "\(seedTime)",
             "ext_fields": region.getFpExtFields(deviceID: deviceId),
-            "app_name": region.appNameStringForFp,
+            "app_name": region.rawValue,
             "device_fp": initialRandomFp,
         ]
         var request = URLRequest(url: url)
@@ -69,13 +69,6 @@ extension HoYo.AccountRegion {
         switch self {
         case .miyoushe: "https://public-data-api.mihoyo.com"
         case .hoyoLab: "https://sg-public-data-api.hoyoverse.com"
-        }
-    }
-
-    fileprivate var appNameStringForFp: String {
-        switch self {
-        case .miyoushe: "account_cn"
-        case .hoyoLab: "hkrpg_global"
         }
     }
 
