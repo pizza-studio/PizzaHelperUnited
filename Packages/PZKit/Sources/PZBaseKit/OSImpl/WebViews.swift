@@ -24,6 +24,7 @@ public struct WebBrowserView: NSViewRepresentable {
 
     public var url: String = ""
 
+    @MainActor
     public func makeNSView(context: Context) -> WKWebView {
         guard let url = URL(string: url)
         else {
@@ -31,14 +32,15 @@ public struct WebBrowserView: NSViewRepresentable {
         }
         let request = URLRequest(url: url)
         let webview = OPWebView()
-        webview.load(request)
+        Task { webview.load(request) }
         return webview
     }
 
+    @MainActor
     public func updateNSView(_ nsView: WKWebView, context: Context) {
         if let url = URL(string: url) {
             let request = URLRequest(url: url)
-            nsView.load(request)
+            Task { nsView.load(request) }
         }
     }
 }
@@ -55,6 +57,7 @@ public struct WebBrowserView: UIViewRepresentable {
 
     public var url: String = ""
 
+    @MainActor
     public func makeUIView(context: Context) -> WKWebView {
         guard let url = URL(string: url)
         else {
@@ -62,14 +65,15 @@ public struct WebBrowserView: UIViewRepresentable {
         }
         let request = URLRequest(url: url)
         let webview = OPWebView()
-        webview.load(request)
+        Task { webview.load(request) }
         return webview
     }
 
+    @MainActor
     public func updateUIView(_ uiView: WKWebView, context: Context) {
         if let url = URL(string: url) {
             let request = URLRequest(url: url)
-            uiView.load(request)
+            Task { uiView.load(request) }
         }
     }
 }
