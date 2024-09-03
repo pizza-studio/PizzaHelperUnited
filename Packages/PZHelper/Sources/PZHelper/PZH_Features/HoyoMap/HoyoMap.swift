@@ -159,6 +159,7 @@ private struct HoYoMapWebView: UIViewRepresentable {
 
     @State var region: HoYo.AccountRegion
 
+    @MainActor
     func makeUIView(context: Context) -> OPWebView {
         guard let url = region.hoyoMapURL
         else {
@@ -166,20 +167,22 @@ private struct HoYoMapWebView: UIViewRepresentable {
         }
         let request = URLRequest(url: url)
 
-        let webView = OPWebView()
-        webView.configuration.userContentController.removeAllUserScripts() // 对提瓦特地图禁用自动 dark mode 支持。
-        webView.navigationDelegate = context.coordinator
-        webView.load(request)
-        return webView
+        let webview = OPWebView()
+        webview.configuration.userContentController.removeAllUserScripts() // 对提瓦特地图禁用自动 dark mode 支持。
+        webview.navigationDelegate = context.coordinator
+        Task { webview.load(request) }
+        return webview
     }
 
+    @MainActor
     func updateUIView(_ uiView: OPWebView, context: Context) {
         if let url = region.hoyoMapURL {
             let request = URLRequest(url: url)
-            uiView.load(request)
+            Task { uiView.load(request) }
         }
     }
 
+    @MainActor
     func makeNSView(context: Context) -> OPWebView {
         guard let url = region.hoyoMapURL
         else {
@@ -187,17 +190,18 @@ private struct HoYoMapWebView: UIViewRepresentable {
         }
         let request = URLRequest(url: url)
 
-        let webView = OPWebView()
-        webView.configuration.userContentController.removeAllUserScripts() // 对提瓦特地图禁用自动 dark mode 支持。
-        webView.navigationDelegate = context.coordinator
-        webView.load(request)
-        return webView
+        let webview = OPWebView()
+        webview.configuration.userContentController.removeAllUserScripts() // 对提瓦特地图禁用自动 dark mode 支持。
+        webview.navigationDelegate = context.coordinator
+        Task { webview.load(request) }
+        return webview
     }
 
+    @MainActor
     func updateNSView(_ nsView: OPWebView, context: Context) {
         if let url = region.hoyoMapURL {
             let request = URLRequest(url: url)
-            nsView.load(request)
+            Task { nsView.load(request) }
         }
     }
 
