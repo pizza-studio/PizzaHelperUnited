@@ -99,55 +99,70 @@ extension ProfileManagerPageContent {
             }
         }
 
+        /// 仅用于对批次帐号处理当中的单个帐号的处理。
+        @MainActor
+        func handleSingleFetchedUnit(_ account: FetchedAccount, game: Pizza.SupportedGame) async throws {
+            guard let server = HoYo.Server(uid: account.gameUid, game: game) else { return }
+            let newProfile = PZProfileMO(server: server, uid: account.gameUid)
+            newProfile.game = game
+            newProfile.server = server
+            newProfile.name = account.nickname
+            newProfile.cookie = profile.cookie // 很重要
+            newProfile.deviceID = profile.deviceID
+            checkFP: switch server.region {
+            case .hoyoLab:
+                // HoYoLAB automatically supplies valid device_FP values in the cookie.
+                break checkFP
+            case .miyoushe:
+                newProfile.deviceFingerPrint = try await HoYo.getDeviceFingerPrint(
+                    region: server.region, deviceID: profile.deviceID
+                ).deviceFP
+            }
+
+            // Check duplications
+            let firstDuplicate = profiles.first {
+                $0.uid == newProfile.uid && $0.game == newProfile.game
+            }
+            if let firstDuplicate {
+                firstDuplicate.cookie = profile.cookie // 很重要
+                firstDuplicate.deviceID = profile.deviceID
+                firstDuplicate.deviceFingerPrint = profile.deviceFingerPrint
+            } else {
+                modelContext.insert(newProfile)
+            }
+            status = .gotProfile
+        }
+
         /// Add all accounts at once.
         func getAllAccountsFetched() {
             Task(priority: .userInitiated) { @MainActor in
                 if !profile.cookie.isEmpty {
                     do {
-                        @MainActor
-                        func handleFetched(_ account: FetchedAccount, game: Pizza.SupportedGame) {
-                            guard let server = HoYo.Server(uid: account.gameUid, game: game) else { return }
-                            let newProfile = PZProfileMO(server: server, uid: account.gameUid)
-                            newProfile.name = account.nickname
-                            newProfile.cookie = profile.cookie // 很重要
-                            newProfile.deviceID = profile.deviceID
-                            newProfile.deviceFingerPrint = profile.deviceFingerPrint
-                            newProfile.game = game
-                            newProfile.server = server
-
-                            // Check duplications
-                            let firstDuplicate = profiles.first {
-                                $0.uid == newProfile.uid && $0.game == newProfile.game
-                            }
-                            if let firstDuplicate {
-                                firstDuplicate.cookie = profile.cookie // 很重要
-                                firstDuplicate.deviceID = profile.deviceID
-                                firstDuplicate.deviceFingerPrint = profile.deviceFingerPrint
-                            } else {
-                                modelContext.insert(newProfile)
-                            }
-                            status = .gotProfile
-                        }
+                        var map = [Pizza.SupportedGame: FetchedAccount]()
 
                         try await HoYo.getUserGameRolesByCookie(
                             region: region.withGame(.genshinImpact),
                             cookie: profile.cookie
                         ).forEach {
-                            handleFetched($0, game: .genshinImpact)
+                            map[.genshinImpact] = $0
                         }
 
                         try await HoYo.getUserGameRolesByCookie(
                             region: region.withGame(.starRail),
                             cookie: profile.cookie
                         ).forEach {
-                            handleFetched($0, game: .starRail)
+                            map[.starRail] = $0
                         }
 
                         try await HoYo.getUserGameRolesByCookie(
                             region: region.withGame(.zenlessZone),
                             cookie: profile.cookie
                         ).forEach {
-                            handleFetched($0, game: .zenlessZone)
+                            map[.zenlessZone] = $0
+                        }
+
+                        for (game, fetchedAccount) in map {
+                            try await handleSingleFetchedUnit(fetchedAccount, game: game)
                         }
 
                         alertToastEventStatus.isDoneButtonTapped.toggle()
@@ -180,6 +195,7 @@ extension ProfileManagerPageContent {
                             getAccountError = .customize("profileMgr.loginError.noGameUIDFound".i18nPZHelper)
                         }
                         // Device fingerPrint for MiYouShe profiles are already fetched in GetCookieQRCodeView.
+                        // This make sure it refreshes everytime you rescan using QR Code.
                         status = .gotProfile
                     } catch {
                         getAccountError = .source(error)
