@@ -5,6 +5,7 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import SFSafeSymbols
 import SwiftData
 import SwiftUI
 import WebKit
@@ -34,26 +35,31 @@ struct HoYoMapView: View {
         }
         .navigationTitle(Self.navTitle)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Picker("".description, selection: $isMiyoushe.animation()) {
-                    Text(HoYo.AccountRegion.miyoushe(game).localizedDescription)
-                        .tag(true)
-                    Text(HoYo.AccountRegion.hoyoLab(game).localizedDescription)
-                        .tag(false)
+        #if os(iOS) || targetEnvironment(macCatalyst)
+            .toolbar(.hidden, for: .tabBar)
+        #endif
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Image(systemSymbol: .map)
+                        Picker("".description, selection: $isMiyoushe.animation()) {
+                            Text(HoYo.AccountRegion.miyoushe(game).localizedDescription)
+                                .tag(true)
+                            Text(HoYo.AccountRegion.hoyoLab(game).localizedDescription)
+                                .tag(false)
+                        }
+                        .pickerStyle(.segmented)
+                        Picker("".description, selection: $game.animation()) {
+                            Text(Pizza.SupportedGame.genshinImpact.localizedShortName)
+                                .tag(Pizza.SupportedGame.genshinImpact)
+                            Text(Pizza.SupportedGame.starRail.localizedShortName)
+                                .tag(Pizza.SupportedGame.starRail)
+                        }
+                        .pickerStyle(.segmented)
+                    }
+                    .fixedSize()
                 }
-                .pickerStyle(.segmented)
             }
-            ToolbarItem(placement: .confirmationAction) {
-                Picker("".description, selection: $game.animation()) {
-                    Text(Pizza.SupportedGame.genshinImpact.localizedShortName)
-                        .tag(Pizza.SupportedGame.genshinImpact)
-                    Text(Pizza.SupportedGame.starRail.localizedShortName)
-                        .tag(Pizza.SupportedGame.starRail)
-                }
-                .pickerStyle(.segmented)
-            }
-        }
     }
 
     // MARK: Private
