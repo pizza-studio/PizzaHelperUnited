@@ -13,21 +13,24 @@ import SwiftUI
 public struct CharInventoryNav: View {
     // MARK: Lifecycle
 
-    public init(theVM: Coordinator) {
+    public init(theVM: DetailPortalViewModel) {
         self.theVM = theVM
     }
 
     // MARK: Public
 
     @MainActor public var body: some View {
-        if let profile = theVM.profile {
+        if let profile = theVM.currentProfile {
             coreBody(profile: profile)
+                .onChange(of: broadcaster.eventForRefreshingCurrentPage) {
+                    theVM.refresh()
+                }
         }
     }
 
     @MainActor @ViewBuilder
     public func coreBody(profile: PZProfileMO) -> some View {
-        switch theVM.characterInventoryStatus {
+        switch theVM.taskStatus4CharInventory {
         case .progress:
             InformationRowView(Self.navTitle) {
                 ProgressView()
@@ -36,7 +39,7 @@ public struct CharInventoryNav: View {
             InformationRowView(Self.navTitle) {
                 let region = profile.server.region.withGame(profile.game)
                 let suffix = region.characterInventoryRetrievalPath
-                let apiPath = "https://api-takumi-record.mihoyo.com" + suffix
+                let apiPath = URLRequestConfig.recordURLAPIHost(region: region) + suffix
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
                     theVM.refresh()
                 }
@@ -90,85 +93,6 @@ public struct CharInventoryNav: View {
 
     // MARK: Private
 
-    @State private var theVM: Coordinator
-}
-
-// MARK: CharInventoryNav.Coordinator
-
-extension CharInventoryNav {
-    @Observable
-    public final class Coordinator {
-        // MARK: Lifecycle
-
-        public init(profile: PZProfileMO? = nil) {
-            self.profile = profile
-            Task {
-                await fetchCharacterInventoryList()
-            }
-        }
-
-        // MARK: Public
-
-        public enum Status<T> {
-            case progress(Task<Void, Never>)
-            case fail(Error)
-            case succeed(T)
-            case standby
-
-            // MARK: Internal
-
-            var isBusy: Bool {
-                switch self {
-                case .progress: return true
-                default: return false
-                }
-            }
-        }
-
-        public var characterInventoryStatus: Status<any CharacterInventory> = .standby
-
-        public weak var profile: PZProfileMO? {
-            didSet {
-                refresh()
-            }
-        }
-
-        // MARK: Internal
-
-        func refresh() {
-            Task {
-                await fetchCharacterInventoryList()
-            }
-        }
-
-        // MARK: Private
-
-        @MainActor
-        private func fetchCharacterInventoryList() async {
-            if case let .progress(task) = characterInventoryStatus { task.cancel() }
-            let task = Task {
-                do {
-                    guard let profile = self.profile,
-                          let queryResult = try await HoYo.getCharacterInventory(for: profile)
-                    else { return }
-                    Task.detached { @MainActor in
-                        withAnimation {
-                            self.characterInventoryStatus = .succeed(queryResult)
-                        }
-                    }
-                } catch {
-                    Task.detached { @MainActor in
-                        withAnimation {
-                            self.characterInventoryStatus = .fail(error)
-                        }
-                    }
-                }
-            }
-            Task.detached { @MainActor in
-                withAnimation {
-                    self.characterInventoryStatus = .progress(task)
-                }
-            }
-        }
-    }
+    @State private var theVM: DetailPortalViewModel
+    @State private var broadcaster = Broadcaster.shared
 }
