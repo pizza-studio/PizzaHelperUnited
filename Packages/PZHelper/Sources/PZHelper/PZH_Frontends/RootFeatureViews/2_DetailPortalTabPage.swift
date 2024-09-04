@@ -65,8 +65,10 @@ struct DetailPortalTabPage: View {
                 // Peripheral Nav Sections.
                 Section {
                     LedgerNav(theVM: delegate)
-                        .listRowMaterialBackground()
+                    TravelStatsNav(theVM: delegate)
                 }
+                .listRowMaterialBackground()
+                .onTapGesture { uidInputFieldFocus = false }
             case .starRail:
                 ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile) {
                     CharInventoryNav(theVM: delegate)
