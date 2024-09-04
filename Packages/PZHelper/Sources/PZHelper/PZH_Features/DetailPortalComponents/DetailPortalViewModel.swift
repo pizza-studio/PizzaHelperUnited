@@ -48,6 +48,7 @@ public final class DetailPortalViewModel {
 
     public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
     public var taskStatus4Ledger: Status<HoYo.LedgerData4GI> = .standby
+    public var taskStatus4TravelStats: Status<HoYo.TravelStatsData4GI> = .standby
 
     public var currentProfile: PZProfileMO? {
         didSet {
@@ -58,6 +59,7 @@ public final class DetailPortalViewModel {
     public func refresh() {
         Task {
             await fetchCharacterInventoryList()
+            await fetchTravelStatsData()
             await fetchLedgerData()
         }
     }
@@ -127,6 +129,33 @@ extension DetailPortalViewModel {
         Task.detached { @MainActor in
             withAnimation {
                 self.taskStatus4Ledger = .progress(task)
+            }
+        }
+    }
+
+    @MainActor
+    func fetchTravelStatsData() async {
+        if case let .progress(task) = taskStatus4TravelStats { task.cancel() }
+        let task = Task {
+            do {
+                guard let profile = self.currentProfile else { return }
+                let queryResult = try await HoYo.getTravelStatsData4GI(for: profile)
+                Task.detached { @MainActor in
+                    withAnimation {
+                        self.taskStatus4TravelStats = .succeed(queryResult)
+                    }
+                }
+            } catch {
+                Task.detached { @MainActor in
+                    withAnimation {
+                        self.taskStatus4TravelStats = .fail(error)
+                    }
+                }
+            }
+        }
+        Task.detached { @MainActor in
+            withAnimation {
+                self.taskStatus4TravelStats = .progress(task)
             }
         }
     }
