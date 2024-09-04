@@ -59,7 +59,7 @@ struct DetailPortalTabPage: View {
                     CharInventoryNav(theVM: delegate)
                 }
                 .listRowMaterialBackground()
-                .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
+                .id(UUID().hashValue) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                 .onTapGesture { uidInputFieldFocus = false }
                 query4GI
                 // Peripheral Nav Sections.
@@ -72,7 +72,7 @@ struct DetailPortalTabPage: View {
                     CharInventoryNav(theVM: delegate)
                 }
                 .listRowMaterialBackground()
-                .id(profile.uid) // 很重要，否则在同款游戏之间的帐号切换不会生效。
+                .id(UUID().hashValue) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                 .onTapGesture { uidInputFieldFocus = false }
                 query4HSR
             case .zenlessZone: EmptyView()
