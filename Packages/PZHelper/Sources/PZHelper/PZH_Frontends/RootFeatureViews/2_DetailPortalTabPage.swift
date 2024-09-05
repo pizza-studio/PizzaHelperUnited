@@ -62,13 +62,6 @@ struct DetailPortalTabPage: View {
                 .id(UUID().hashValue) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                 .onTapGesture { uidInputFieldFocus = false }
                 query4GI
-                // Peripheral Nav Sections.
-                Section {
-                    LedgerNav(theVM: delegate)
-                    TravelStatsNav(theVM: delegate)
-                }
-                .listRowMaterialBackground()
-                .onTapGesture { uidInputFieldFocus = false }
             case .starRail:
                 ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile) {
                     CharInventoryNav(theVM: delegate)
@@ -79,6 +72,13 @@ struct DetailPortalTabPage: View {
                 query4HSR
             case .zenlessZone: EmptyView()
             }
+            // Peripheral Nav Sections.
+            Section {
+                LedgerNav(theVM: delegate)
+                TravelStatsNav(theVM: delegate)
+            }
+            .listRowMaterialBackground()
+            .onTapGesture { uidInputFieldFocus = false }
         } else {
             query4GI
             query4HSR
