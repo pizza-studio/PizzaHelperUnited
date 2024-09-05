@@ -56,6 +56,17 @@ extension HoYo {
 
         // MARK: Public
 
+        public var timeZoneDelta: Int {
+            switch self {
+            case .celestia: 8
+            case .irminsul: 8
+            case .unitedStates: -5
+            case .europe: 1
+            case .asia: 8
+            case .hkMacauTaiwan: 8
+            }
+        }
+
         public var region: HoYo.AccountRegion {
             switch self {
             case let .celestia(supportedGame): return .miyoushe(supportedGame)
