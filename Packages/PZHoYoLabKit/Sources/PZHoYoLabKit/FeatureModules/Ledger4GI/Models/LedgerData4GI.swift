@@ -7,13 +7,15 @@ import PZAccountKit
 // MARK: - HoYo.LedgerData4GI
 
 extension HoYo {
-    public struct LedgerData4GI: Codable, Hashable, DecodableFromMiHoYoAPIJSONResult {
+    public struct LedgerData4GI: Ledger {
         // MARK: Public
 
-        public struct MonthData: Codable, Hashable {
+        public typealias ViewType = LedgerView4GI
+
+        public struct MonthData: Codable, Hashable, Sendable {
             // MARK: Public
 
-            public struct LedgerDataGroup: Codable, Hashable {
+            public struct LedgerDataGroup: Codable, Hashable, Sendable {
                 // MARK: Public
 
                 public var percent: Int
@@ -59,7 +61,7 @@ extension HoYo {
             }
         }
 
-        public struct DayData: Codable, Hashable {
+        public struct DayData: Codable, Hashable, Sendable {
             // MARK: Public
 
             public var currentMora: Int

@@ -39,7 +39,7 @@ public struct LedgerNav: View {
             InformationRowView(Self.navTitle) {
                 let region = profile.server.region.withGame(profile.game)
                 let suffix = region.genshinLedgerDataRetrievalPath
-                let apiPath = URLRequestConfig.genshinLedgerAPIURLHost(region: region) + suffix
+                let apiPath = URLRequestConfig.ledgerAPIURLHost(region: region) + suffix
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
                     theVM.refresh()
                 }
