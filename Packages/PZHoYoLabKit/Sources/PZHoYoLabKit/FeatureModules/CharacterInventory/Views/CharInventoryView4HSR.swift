@@ -34,7 +34,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
                         if !isMiyousheUID {
                             Text(goldStats, bundle: .module)
                         } else {
-                            Text("hylKit.inventoryView.characters.miyousheLimitations.description")
+                            Text("hylKit.inventoryView.characters.miyousheLimitationNotes".i18nHYLKit)
                         }
                     }
                 }.font(.footnote)
