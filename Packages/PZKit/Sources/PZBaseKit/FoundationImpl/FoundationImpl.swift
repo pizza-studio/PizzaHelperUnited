@@ -5,6 +5,21 @@
 import CryptoKit
 import Foundation
 
+extension URLRequest {
+    public func printDebugIntelIfDebugMode() {
+        #if DEBUG
+        print("---------------------------------------------")
+        print(debugDescription)
+        if let headerEX = allHTTPHeaderFields {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.sortedKeys, .prettyPrinted, .withoutEscapingSlashes]
+            print(String(data: try! encoder.encode(headerEX), encoding: .utf8)!)
+        }
+        print("---------------------------------------------")
+        #endif
+    }
+}
+
 extension Date {
     public var coolingDownTimeRemaining: TimeInterval {
         timeIntervalSinceReferenceDate - Date.now.timeIntervalSinceReferenceDate
