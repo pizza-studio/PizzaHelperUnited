@@ -6,6 +6,16 @@ import Foundation
 import PZAccountKit
 
 extension HoYo {
+    public static func getLedgerData(for profile: PZProfileMO) async throws -> LedgerData4GI? {
+        guard let month = Calendar.current.dateComponents([.month], from: Date()).month else { return nil }
+        return try await getLedgerData4GI(
+            month: month,
+            uid: profile.uid,
+            server: profile.server,
+            cookie: profile.cookie
+        )
+    }
+
     public static func getLedgerData4GI(
         month: Int, uid: String, server: Server, cookie: String
     ) async throws
