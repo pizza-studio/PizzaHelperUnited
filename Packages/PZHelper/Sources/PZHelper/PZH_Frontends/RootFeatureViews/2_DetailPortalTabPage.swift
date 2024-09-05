@@ -74,6 +74,7 @@ struct DetailPortalTabPage: View {
             }
             // Peripheral Nav Sections.
             Section {
+                AbyssReportNav(theVM: delegate)
                 LedgerNav(theVM: delegate)
                 TravelStatsNav(theVM: delegate)
             }
