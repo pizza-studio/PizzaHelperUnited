@@ -285,7 +285,7 @@
         }
       }
     },
-    "hylKit.ledger.action.name.byAbyss" : {
+    "hylKit.ledger4GI.action.name.byAbyss" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -314,7 +314,7 @@
         }
       }
     },
-    "hylKit.ledger.action.name.byActivity" : {
+    "hylKit.ledger4GI.action.name.byActivity" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -343,7 +343,7 @@
         }
       }
     },
-    "hylKit.ledger.action.name.byAdventure" : {
+    "hylKit.ledger4GI.action.name.byAdventure" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -372,7 +372,7 @@
         }
       }
     },
-    "hylKit.ledger.action.name.byEvent" : {
+    "hylKit.ledger4GI.action.name.byEvent" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -401,7 +401,7 @@
         }
       }
     },
-    "hylKit.ledger.action.name.byMail" : {
+    "hylKit.ledger4GI.action.name.byMail" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -430,7 +430,7 @@
         }
       }
     },
-    "hylKit.ledger.action.name.byOther" : {
+    "hylKit.ledger4GI.action.name.byOther" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -459,7 +459,7 @@
         }
       }
     },
-    "hylKit.ledger.action.name.byTask" : {
+    "hylKit.ledger4GI.action.name.byTask" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -488,7 +488,7 @@
         }
       }
     },
-    "hylKit.ledger.billThisMonth:%@" : {
+    "hylKit.ledger4GI.billThisMonth:%@" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -517,7 +517,7 @@
         }
       }
     },
-    "hylKit.ledger.compare" : {
+    "hylKit.ledger4GI.compare" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -545,7 +545,7 @@
         }
       }
     },
-    "hylKit.ledger.compare.month" : {
+    "hylKit.ledger4GI.compare.month" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -573,7 +573,7 @@
         }
       }
     },
-    "hylKit.ledger.mora" : {
+    "hylKit.ledger4GI.mora" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -601,7 +601,7 @@
         }
       }
     },
-    "hylKit.ledger.primogem.income.title:%lld" : {
+    "hylKit.ledger4GI.primogem.income.title:%lld" : {
       "comment" : "MARK: - 2.5.4",
       "extractionState" : "migrated",
       "localizations" : {
@@ -631,7 +631,7 @@
         }
       }
     },
-    "hylKit.ledger.primogems" : {
+    "hylKit.ledger4GI.primogems" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -659,7 +659,7 @@
         }
       }
     },
-    "hylKit.ledger.tip" : {
+    "hylKit.ledger4GI.tip" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -687,7 +687,7 @@
         }
       }
     },
-    "hylKit.ledger.todayAcquisition.title" : {
+    "hylKit.ledger4GI.todayAcquisition.title" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -716,7 +716,7 @@
         }
       }
     },
-    "hylKit.ledger.view.navTitle" : {
+    "hylKit.ledger4GI.view.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

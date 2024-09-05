@@ -105,14 +105,9 @@ extension DetailPortalViewModel {
         }
         let task = Task {
             do {
-                let month = Calendar.current.dateComponents([.month], from: Date()).month
-                guard let month, let profile = self.currentProfile else { return }
-                let queryResult = try await HoYo.getLedgerData4GI(
-                    month: month,
-                    uid: profile.uid,
-                    server: profile.server,
-                    cookie: profile.cookie
-                )
+                guard let profile = self.currentProfile,
+                      let queryResult = try await HoYo.getLedgerData(for: profile)
+                else { return }
                 Task.detached { @MainActor in
                     withAnimation {
                         self.taskStatus4Ledger = .succeed(queryResult)
