@@ -32,11 +32,11 @@ public struct TravelStatsNav: View {
     public func coreBody(profile: PZProfileMO) -> some View {
         switch theVM.taskStatus4TravelStats {
         case .progress:
-            InformationRowView(Self.navTitle) {
+            InformationRowView(navTitle) {
                 ProgressView()
             }
         case let .fail(error):
-            InformationRowView(Self.navTitle) {
+            InformationRowView(navTitle) {
                 let region = profile.server.region.withGame(profile.game)
                 let suffix = region.genshinTravelStatsDataRetrievalPath
                 let apiPath = URLRequestConfig.recordURLAPIHost(region: region) + suffix
@@ -45,17 +45,32 @@ public struct TravelStatsNav: View {
                 }
             }
         case let .succeed(data):
-            InformationRowView(Self.navTitle) {
-                NavigationLink(destination: TravelStatsView4GI(data: data)) {
-                    HStack(spacing: 10) {
-                        let iconFrame: CGFloat = 40
-                        TravelStatsView4GI.treasureBoxImage
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: iconFrame, height: iconFrame)
-                        Text(verbatim: "\(data.stats.luxuriousChestNumber)")
-                            .font(.title)
-                        Spacer()
+            InformationRowView(navTitle) {
+                if let data = data as? HoYo.TravelStatsData4GI {
+                    NavigationLink(destination: data.asView()) {
+                        HStack(spacing: 10) {
+                            let iconFrame: CGFloat = 40
+                            TravelStatsView4GI.treasureBoxImage
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: iconFrame, height: iconFrame)
+                            Text(verbatim: "\(data.stats.luxuriousChestNumber)")
+                                .font(.title)
+                            Spacer()
+                        }
+                    }
+                } else if let data = data as? HoYo.TravelStatsData4HSR {
+                    NavigationLink(destination: data.asView()) {
+                        HStack(spacing: 10) {
+                            let iconFrame: CGFloat = 40
+                            TravelStatsView4HSR.treasureBoxImage
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: iconFrame, height: iconFrame)
+                            Text(verbatim: "\(data.stats.chestNum)")
+                                .font(.title)
+                            Spacer()
+                        }
                     }
                 }
             }
@@ -66,7 +81,13 @@ public struct TravelStatsNav: View {
 
     // MARK: Internal
 
-    static var navTitle: String { TravelStatsView4GI.navTitle }
+    var navTitle: String {
+        switch theVM.currentProfile?.game {
+        case .genshinImpact: TravelStatsView4GI.navTitle
+        case .starRail: TravelStatsView4HSR.navTitle
+        default: "N/A"
+        }
+    }
 
     // MARK: Private
 

@@ -47,8 +47,8 @@ public final class DetailPortalViewModel {
     }
 
     public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
-    public var taskStatus4Ledger: Status<HoYo.LedgerData4GI> = .standby
-    public var taskStatus4TravelStats: Status<HoYo.TravelStatsData4GI> = .standby
+    public var taskStatus4Ledger: Status<any Ledger> = .standby
+    public var taskStatus4TravelStats: Status<any TravelStats> = .standby
 
     public var currentProfile: PZProfileMO? {
         didSet {
@@ -99,10 +99,6 @@ extension DetailPortalViewModel {
     @MainActor
     func fetchLedgerData() async {
         if case let .progress(task) = taskStatus4Ledger { task.cancel() }
-        guard currentProfile?.game == .genshinImpact else {
-            taskStatus4Ledger = .standby
-            return
-        }
         let task = Task {
             do {
                 guard let profile = self.currentProfile,
@@ -133,8 +129,9 @@ extension DetailPortalViewModel {
         if case let .progress(task) = taskStatus4TravelStats { task.cancel() }
         let task = Task {
             do {
-                guard let profile = self.currentProfile else { return }
-                let queryResult = try await HoYo.getTravelStatsData4GI(for: profile)
+                guard let profile = self.currentProfile,
+                      let queryResult = try await HoYo.getTravelStatsData(for: profile)
+                else { return }
                 Task.detached { @MainActor in
                     withAnimation {
                         self.taskStatus4TravelStats = .succeed(queryResult)

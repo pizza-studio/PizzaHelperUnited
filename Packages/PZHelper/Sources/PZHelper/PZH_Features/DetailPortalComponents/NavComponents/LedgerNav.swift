@@ -32,30 +32,45 @@ public struct LedgerNav: View {
     public func coreBody(profile: PZProfileMO) -> some View {
         switch theVM.taskStatus4Ledger {
         case .progress:
-            InformationRowView(Self.navTitle) {
+            InformationRowView(navTitle) {
                 ProgressView()
             }
         case let .fail(error):
-            InformationRowView(Self.navTitle) {
+            InformationRowView(navTitle) {
                 let region = profile.server.region.withGame(profile.game)
-                let suffix = region.genshinLedgerDataRetrievalPath
+                let suffix = region.ledgerDataRetrievalPath
                 let apiPath = URLRequestConfig.ledgerAPIURLHost(region: region) + suffix
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
                     theVM.refresh()
                 }
             }
         case let .succeed(data):
-            InformationRowView(Self.navTitle) {
-                NavigationLink(destination: LedgerView4GI(data: data)) {
-                    HStack(spacing: 10) {
-                        let iconFrame: CGFloat = 40
-                        LedgerView4GI.primogemImage
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: iconFrame, height: iconFrame)
-                        Text(verbatim: "\(data.monthData.currentPrimogems)")
-                            .font(.title)
-                        Spacer()
+            InformationRowView(navTitle) {
+                if let data = data as? HoYo.LedgerData4GI {
+                    NavigationLink(destination: data.asView()) {
+                        HStack(spacing: 10) {
+                            let iconFrame: CGFloat = 40
+                            LedgerView4GI.primogemImage
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: iconFrame, height: iconFrame)
+                            Text(verbatim: "\(data.monthData.currentPrimogems)")
+                                .font(.title)
+                            Spacer()
+                        }
+                    }
+                } else if let data = data as? HoYo.LedgerData4HSR {
+                    NavigationLink(destination: data.asView()) {
+                        HStack(spacing: 10) {
+                            let iconFrame: CGFloat = 40
+                            LedgerView4HSR.stellarJadeImage
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: iconFrame, height: iconFrame)
+                            Text(verbatim: "\(data.monthData.currentStellarJades)")
+                                .font(.title)
+                            Spacer()
+                        }
                     }
                 }
             }
@@ -66,7 +81,13 @@ public struct LedgerNav: View {
 
     // MARK: Internal
 
-    static var navTitle: String { LedgerView4GI.navTitle }
+    var navTitle: String {
+        switch theVM.currentProfile?.game {
+        case .genshinImpact: LedgerView4GI.navTitle
+        case .starRail: LedgerView4HSR.navTitle
+        default: "N/A"
+        }
+    }
 
     // MARK: Private
 
