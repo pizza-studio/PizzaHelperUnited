@@ -17,7 +17,7 @@ public struct LedgerView4GI: View {
 
     // MARK: Public
 
-    public static let navTitle = "hylKit.ledger.view.navTitle".i18nHYLKit
+    public static let navTitle = "hylKit.ledger4GI.view.navTitle".i18nHYLKit
 
     public static var primogemImage: Image { Image("gi_misc_primogem", bundle: .module) }
 
@@ -25,28 +25,28 @@ public struct LedgerView4GI: View {
         List {
             Section {
                 LabelWithDescription(
-                    title: "hylKit.ledger.primogems",
-                    memo: "hylKit.ledger.compare",
+                    title: "hylKit.ledger4GI.primogems",
+                    memo: "hylKit.ledger4GI.compare",
                     icon: "gi_misc_primogem",
                     mainValue: data.dayData.currentPrimogems,
                     previousValue: data.dayData.lastPrimogems
                 )
                 LabelWithDescription(
-                    title: "hylKit.ledger.mora",
-                    memo: "hylKit.ledger.compare",
+                    title: "hylKit.ledger4GI.mora",
+                    memo: "hylKit.ledger4GI.compare",
                     icon: "gi_misc_mora",
                     mainValue: data.dayData.currentMora,
                     previousValue: data.dayData.lastMora
                 )
             } header: {
                 HStack {
-                    Text("hylKit.ledger.todayAcquisition.title", bundle: .module)
+                    Text("hylKit.ledger4GI.todayAcquisition.title", bundle: .module)
                     Spacer()
                     Text(verbatim: "\(data.date ?? "")")
                 }
                 .secondaryColorVerseBackground()
             } footer: {
-                Text("hylKit.ledger.tip", bundle: .module)
+                Text("hylKit.ledger4GI.tip", bundle: .module)
                     .font(.footnote)
                     .multilineTextAlignment(.leading)
                     .secondaryColorVerseBackground()
@@ -59,21 +59,21 @@ public struct LedgerView4GI: View {
                     from: Date()
                 ).day
                 LabelWithDescription(
-                    title: "hylKit.ledger.primogems",
-                    memo: "hylKit.ledger.compare.month",
+                    title: "hylKit.ledger4GI.primogems",
+                    memo: "hylKit.ledger4GI.compare.month",
                     icon: "gi_misc_primogem",
                     mainValue: data.monthData.currentPrimogems,
                     previousValue: data.monthData.lastPrimogems / (dayCountThisMonth ?? 1)
                 )
                 LabelWithDescription(
-                    title: "hylKit.ledger.mora",
-                    memo: "hylKit.ledger.compare.month",
+                    title: "hylKit.ledger4GI.mora",
+                    memo: "hylKit.ledger4GI.compare.month",
                     icon: "gi_misc_mora",
                     mainValue: data.monthData.currentMora,
                     previousValue: data.monthData.lastMora / (dayCountThisMonth ?? 1)
                 )
             } header: {
-                Text("hylKit.ledger.billThisMonth:\(data.dataMonth.description)", bundle: .module)
+                Text("hylKit.ledger4GI.billThisMonth:\(data.dataMonth.description)", bundle: .module)
                     .secondaryColorVerseBackground()
             } footer: {
                 footerChart

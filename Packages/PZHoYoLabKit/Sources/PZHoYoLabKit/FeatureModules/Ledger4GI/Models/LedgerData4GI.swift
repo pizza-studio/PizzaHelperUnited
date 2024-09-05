@@ -130,7 +130,7 @@ extension HoYo.LedgerData4GI {
         // MARK: Public
 
         public var localized: String {
-            "hylKit.ledger.action.name.\(String(describing: self))".i18nHYLKit
+            "hylKit.ledger4GI.action.name.\(String(describing: self))".i18nHYLKit
         }
     }
 }
