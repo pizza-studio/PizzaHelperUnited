@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - LedgerView
 
-public struct LedgerView4GI: LedgerView {
+public struct LedgerView4HSR: LedgerView {
     // MARK: Lifecycle
 
     public init(data: LedgerData) {
@@ -17,11 +17,11 @@ public struct LedgerView4GI: LedgerView {
 
     // MARK: Public
 
-    public typealias LedgerData = HoYo.LedgerData4GI
+    public typealias LedgerData = HoYo.LedgerData4HSR
 
-    public static let navTitle = "hylKit.ledger4GI.view.navTitle".i18nHYLKit
+    public static let navTitle = "hylKit.ledger4HSR.view.navTitle".i18nHYLKit
 
-    public static var primogemImage: Image { Image("gi_misc_primogem", bundle: .module) }
+    public static var stellarJadeImage: Image { Image("hsr_misc_stellarJade", bundle: .module) }
 
     public let data: LedgerData
 
@@ -29,28 +29,28 @@ public struct LedgerView4GI: LedgerView {
         List {
             Section {
                 LabelWithDescription(
-                    title: "hylKit.ledger4GI.primogems",
-                    memo: "hylKit.ledger4GI.compare",
-                    icon: "gi_misc_primogem",
-                    mainValue: data.dayData.currentPrimogems,
-                    previousValue: data.dayData.lastPrimogems
+                    title: "hylKit.ledger4HSR.stellarJade",
+                    memo: "hylKit.ledger4HSR.compare",
+                    icon: "hsr_misc_stellarJade",
+                    mainValue: data.dayData.currentStellarJades,
+                    previousValue: data.dayData.prevStellarJade
                 )
                 LabelWithDescription(
-                    title: "hylKit.ledger4GI.mora",
-                    memo: "hylKit.ledger4GI.compare",
-                    icon: "gi_misc_mora",
-                    mainValue: data.dayData.currentMora,
-                    previousValue: data.dayData.lastMora
+                    title: "hylKit.ledger4HSR.srPass",
+                    memo: "hylKit.ledger4HSR.compare",
+                    icon: "hsr_misc_srPass",
+                    mainValue: data.dayData.currentPasses,
+                    previousValue: data.dayData.prevPasses
                 )
             } header: {
                 HStack {
-                    Text("hylKit.ledger4GI.todayAcquisition.title", bundle: .module)
+                    Text("hylKit.ledger4HSR.todayAcquisition.title", bundle: .module)
                     Spacer()
                     Text(verbatim: "\(data.date ?? "")")
                 }
                 .secondaryColorVerseBackground()
             } footer: {
-                Text("hylKit.ledger4GI.tip", bundle: .module)
+                Text("hylKit.ledger4HSR.tip", bundle: .module)
                     .font(.footnote)
                     .multilineTextAlignment(.leading)
                     .secondaryColorVerseBackground()
@@ -63,21 +63,21 @@ public struct LedgerView4GI: LedgerView {
                     from: Date()
                 ).day
                 LabelWithDescription(
-                    title: "hylKit.ledger4GI.primogems",
-                    memo: "hylKit.ledger4GI.compare.month",
-                    icon: "gi_misc_primogem",
-                    mainValue: data.monthData.currentPrimogems,
-                    previousValue: data.monthData.lastPrimogems / (dayCountThisMonth ?? 1)
+                    title: "hylKit.ledger4HSR.stellarJade",
+                    memo: "hylKit.ledger4HSR.compare.month",
+                    icon: "hsr_misc_stellarJade",
+                    mainValue: data.monthData.currentStellarJades,
+                    previousValue: data.monthData.prevStellarJade / (dayCountThisMonth ?? 1)
                 )
                 LabelWithDescription(
-                    title: "hylKit.ledger4GI.mora",
-                    memo: "hylKit.ledger4GI.compare.month",
-                    icon: "gi_misc_mora",
-                    mainValue: data.monthData.currentMora,
-                    previousValue: data.monthData.lastMora / (dayCountThisMonth ?? 1)
+                    title: "hylKit.ledger4HSR.srPass",
+                    memo: "hylKit.ledger4HSR.compare.month",
+                    icon: "hsr_misc_srPass",
+                    mainValue: data.monthData.currentPasses,
+                    previousValue: data.monthData.prevPasses / (dayCountThisMonth ?? 1)
                 )
             } header: {
-                Text("hylKit.ledger4GI.billThisMonth:\(data.dataMonth.description)", bundle: .module)
+                Text("hylKit.ledger4HSR.billThisMonth:\(data.dataMonth.description)", bundle: .module)
                     .secondaryColorVerseBackground()
             } footer: {
                 footerChart

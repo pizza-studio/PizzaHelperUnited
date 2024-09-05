@@ -34,10 +34,12 @@ public struct TravelStatsView4HSR: TravelStatsView {
                     label: "hylKit.travelStats4HSR.characters",
                     value: "\(data.stats.avatarNum)"
                 )
-                TravelStatLabel(
-                    label: "hylKit.travelStats4HSR.abyss",
-                    value: data.stats.abyssProcess
-                )
+                if !data.stats.abyssProcess.isEmpty {
+                    TravelStatLabel(
+                        label: "hylKit.travelStats4HSR.abyss",
+                        value: data.stats.abyssProcess
+                    )
+                }
                 TravelStatLabel(
                     label: "hylKit.travelStats4HSR.achievements",
                     value: "\(data.stats.achievementNum)"

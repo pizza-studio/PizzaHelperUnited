@@ -15,10 +15,14 @@ public enum URLRequestConfig {
         """
     }
 
-    public static func genshinLedgerAPIURLHost(region: HoYo.AccountRegion) -> String {
-        switch region {
-        case .miyoushe: "hk4e-api.mihoyo.com"
-        case .hoyoLab: "sg-hk4e-api.hoyolab.com"
+    public static func ledgerAPIURLHost(region: HoYo.AccountRegion) -> String {
+        switch (region, region.game) {
+        case (.miyoushe, .genshinImpact): "hk4e-api.mihoyo.com"
+        case (.hoyoLab, .genshinImpact): "sg-hk4e-api.hoyolab.com"
+        case (.miyoushe, .starRail): "api-takumi.mihoyo.com"
+        case (.hoyoLab, .starRail): "sg-public-api.hoyolab.com"
+        case (.miyoushe, .zenlessZone): "" // 尚无该功能可用。
+        case (.hoyoLab, .zenlessZone): "" // 尚无该功能可用。
         }
     }
 
