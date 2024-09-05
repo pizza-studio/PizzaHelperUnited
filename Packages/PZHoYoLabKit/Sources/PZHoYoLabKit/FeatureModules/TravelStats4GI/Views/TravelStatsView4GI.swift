@@ -6,36 +6,47 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-public struct TravelStatsView4GI: View {
+public struct TravelStatsView4GI: TravelStatsView {
     // MARK: Lifecycle
 
-    public init(data: HoYo.TravelStatsData4GI) {
+    public init(data: StatsData) {
         self.data = data
     }
 
     // MARK: Public
 
-    public static let navTitle = "hylKit.travelStats4GI.navTitle".i18nHYLKit
+    public typealias StatsData = HoYo.TravelStatsData4GI
+
+    public static let navTitle = "hylKit.travelStats4HSR.navTitle".i18nHYLKit
 
     public static var treasureBoxImage: Image { Image("gi_travelStats_treasureBox_gradeHigh", bundle: .module) }
 
-    public let data: HoYo.TravelStatsData4GI
+    public let data: StatsData
 
-    public var body: some View {
+    @MainActor public var body: some View {
         List {
             Section {
-                DataDisplayView(label: "hylKit.travelStats4GI.daysActive", value: "\(data.stats.activeDayNumber)")
-                DataDisplayView(label: "hylKit.travelStats4GI.characters", value: "\(data.stats.avatarNumber)")
-                DataDisplayView(label: "hylKit.travelStats4GI.abyss", value: data.stats.spiralAbyss)
-                DataDisplayView(
+                TravelStatLabel(
+                    label: "hylKit.travelStats4GI.daysActive",
+                    value: "\(data.stats.activeDayNumber)"
+                )
+                TravelStatLabel(
+                    label: "hylKit.travelStats4GI.characters",
+                    value: "\(data.stats.avatarNumber)"
+                )
+                TravelStatLabel(
+                    label: "hylKit.travelStats4GI.abyss",
+                    value: data.stats.spiralAbyss
+                )
+                TravelStatLabel(
                     label: "hylKit.travelStats4GI.achievements",
                     value: "\(data.stats.achievementNumber)"
                 )
-                DataDisplayView(
+                TravelStatLabel(
                     label: "hylKit.travelStats4GI.waypoints",
                     value: "\(data.stats.wayPointNumber)"
                 )
-                DataDisplayView(
+                TravelStatLabel(
                     label: "hylKit.travelStats4GI.domains",
                     value: "\(data.stats.domainNumber)"
                 )
@@ -43,16 +54,19 @@ public struct TravelStatsView4GI: View {
             .listRowMaterialBackground()
 
             Section {
-                DataDisplayView(label: "hylKit.travelStats4GI.chest.1", value: "\(data.stats.commonChestNumber)")
-                DataDisplayView(
+                TravelStatLabel(
+                    label: "hylKit.travelStats4GI.chest.1",
+                    value: "\(data.stats.commonChestNumber)"
+                )
+                TravelStatLabel(
                     label: "hylKit.travelStats4GI.chest.3",
                     value: "\(data.stats.preciousChestNumber)"
                 )
-                DataDisplayView(
+                TravelStatLabel(
                     label: "hylKit.travelStats4GI.chest.2",
                     value: "\(data.stats.exquisiteChestNumber)"
                 )
-                DataDisplayView(
+                TravelStatLabel(
                     label: "hylKit.travelStats4GI.chest.4",
                     value: "\(data.stats.luxuriousChestNumber)"
                 )
@@ -60,38 +74,38 @@ public struct TravelStatsView4GI: View {
             .listRowMaterialBackground()
 
             Section {
-                DataDisplayView(
+                TravelStatLabel(
                     symbol: Image("gi_travelStats_eyeball_Anemoculus", bundle: .module),
                     label: "hylKit.travelStats4GI.eyeball.anemo",
                     value: "\(data.stats.anemoculusNumber)"
                 )
-                DataDisplayView(
+                TravelStatLabel(
                     symbol: Image("gi_travelStats_eyeball_Geoculus", bundle: .module),
                     label: "hylKit.travelStats4GI.eyeball.geo",
                     value: "\(data.stats.geoculusNumber)"
                 )
-                DataDisplayView(
+                TravelStatLabel(
                     symbol: Image("gi_travelStats_eyeball_Electroculus", bundle: .module),
                     label: "hylKit.travelStats4GI.eyeball.electro",
                     value: "\(data.stats.electroculusNumber)"
                 )
-                DataDisplayView(
+                TravelStatLabel(
                     symbol: Image("gi_travelStats_eyeball_Dendroculus", bundle: .module),
                     label: "hylKit.travelStats4GI.eyeball.dendro",
                     value: "\(data.stats.dendroculusNumber)"
                 )
-                DataDisplayView(
+                TravelStatLabel(
                     symbol: Image("gi_travelStats_eyeball_Hydroculus", bundle: .module),
                     label: "hylKit.travelStats4GI.eyeball.hydro",
                     value: "\(data.stats.hydroculusNumber)"
                 )
-                DataDisplayView(
+                TravelStatLabel(
                     symbol: Image("gi_travelStats_eyeball_Pyroculus", bundle: .module),
                     label: "hylKit.travelStats4GI.eyeball.pyro",
                     value: "\(data.stats.pyroculusNumber)"
                 )
                 if let cryoculusTotal = data.stats.cryoculusNumber {
-                    DataDisplayView(
+                    TravelStatLabel(
                         symbol: Image("gi_travelStats_eyeball_Cryoculus", bundle: .module),
                         label: "hylKit.travelStats4GI.eyeball.cryo",
                         value: "\(cryoculusTotal)"
@@ -114,55 +128,12 @@ public struct TravelStatsView4GI: View {
 
     // MARK: Private
 
-    private struct DataDisplayView: View {
-        // MARK: Lifecycle
-
-        init(symbol: Image, label: LocalizedStringKey, value: String) {
-            self.symbol = symbol
-            self.label = label
-            self.value = value
-        }
-
-        init(label: LocalizedStringKey, value: String) {
-            self.symbol = nil
-            self.label = label
-            self.value = value
-        }
-
-        // MARK: Internal
-
-        let symbol: Image?
-        let label: LocalizedStringKey
-        let value: String
-
-        var body: some View {
-            if let symbol {
-                Label {
-                    HStack {
-                        Text(label, bundle: .module)
-                        Spacer()
-                        Text(verbatim: value)
-                    }
-                } icon: {
-                    symbol.resizable().scaledToFit()
-                        .frame(height: 30)
-                }
-            } else {
-                HStack {
-                    Text(label, bundle: .module)
-                    Spacer()
-                    Text(verbatim: value)
-                }
-            }
-        }
-    }
-
     private struct WorldExplorationView: View {
         struct WorldDataLabel: View {
             @Environment(\.colorScheme) private var colorScheme
             let worldData: HoYo.TravelStatsData4GI.WorldExploration
 
-            var body: some View {
+            @MainActor var body: some View {
                 Label {
                     Text(verbatim: worldData.name)
                     Spacer()
@@ -204,7 +175,7 @@ public struct TravelStatsView4GI: View {
 
         let worldData: HoYo.TravelStatsData4GI.WorldExploration
 
-        var body: some View {
+        @MainActor var body: some View {
             if !worldData.offerings.isEmpty {
                 DisclosureGroup {
                     ForEach(worldData.offerings, id: \.name) { offering in
