@@ -49,6 +49,7 @@ public final class DetailPortalViewModel {
     public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
     public var taskStatus4Ledger: Status<any Ledger> = .standby
     public var taskStatus4TravelStats: Status<any TravelStats> = .standby
+    public var taskStatus4AbyssReport: Status<any AbyssReportSet> = .standby
 
     public var currentProfile: PZProfileMO? {
         didSet {
@@ -61,6 +62,7 @@ public final class DetailPortalViewModel {
             await fetchCharacterInventoryList()
             await fetchTravelStatsData()
             await fetchLedgerData()
+            await fetchAbyssReportSet()
         }
     }
 
@@ -148,6 +150,34 @@ extension DetailPortalViewModel {
         Task.detached { @MainActor in
             withAnimation {
                 self.taskStatus4TravelStats = .progress(task)
+            }
+        }
+    }
+
+    @MainActor
+    func fetchAbyssReportSet() async {
+        if case let .progress(task) = taskStatus4AbyssReport { task.cancel() }
+        let task = Task {
+            do {
+                guard let profile = self.currentProfile,
+                      let queryResult = try await HoYo.getAbyssReportSet(for: profile)
+                else { return }
+                Task.detached { @MainActor in
+                    withAnimation {
+                        self.taskStatus4AbyssReport = .succeed(queryResult)
+                    }
+                }
+            } catch {
+                Task.detached { @MainActor in
+                    withAnimation {
+                        self.taskStatus4AbyssReport = .fail(error)
+                    }
+                }
+            }
+        }
+        Task.detached { @MainActor in
+            withAnimation {
+                self.taskStatus4AbyssReport = .progress(task)
             }
         }
     }
