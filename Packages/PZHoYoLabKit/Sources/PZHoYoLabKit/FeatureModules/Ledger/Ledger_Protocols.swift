@@ -25,4 +25,5 @@ public protocol LedgerView: View {
     associatedtype LedgerData: Ledger where Self == LedgerData.ViewType
     init(data: LedgerData)
     var data: LedgerData { get }
+    @ViewBuilder @MainActor var body: Self.Body { get }
 }
