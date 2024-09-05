@@ -76,7 +76,11 @@ public struct CharInventoryNav: View {
                             thisLabel
                         }
                     } else if let data = data as? HoYo.CharInventory4HSR {
-                        NavigationLink(destination: data.asView(isMiyousheUID: false)) {
+                        let isMiyousheUID: Bool = switch profile.server.region {
+                        case .hoyoLab: false
+                        case .miyoushe: true
+                        }
+                        NavigationLink(destination: data.asView(isMiyousheUID: isMiyousheUID)) {
                             thisLabel
                         }
                     }
