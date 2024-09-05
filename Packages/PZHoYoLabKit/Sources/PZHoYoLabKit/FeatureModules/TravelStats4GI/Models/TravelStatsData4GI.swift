@@ -7,10 +7,12 @@ import PZAccountKit
 // MARK: - HoYo.TravelStatsData4GI
 
 extension HoYo {
-    public struct TravelStatsData4GI: Codable, DecodableFromMiHoYoAPIJSONResult, Hashable {
+    public struct TravelStatsData4GI: TravelStats {
         // MARK: Public
 
-        public struct Stats: Codable, Hashable {
+        public typealias ViewType = TravelStatsView4GI
+
+        public struct Stats: TravelStatsTable {
             // MARK: Public
 
             /// 解锁角色数
@@ -74,10 +76,10 @@ extension HoYo {
             }
         }
 
-        public struct WorldExploration: Codable, Hashable {
+        public struct WorldExploration: Codable, Hashable, Sendable {
             // MARK: Public
 
-            public struct Offering: Codable, Hashable {
+            public struct Offering: Codable, Hashable, Sendable {
                 public var name: String
                 public var level: Int
                 public var icon: String
@@ -116,7 +118,7 @@ extension HoYo {
             }
         }
 
-        public struct Avatar: Codable, Identifiable, Hashable {
+        public struct Avatar: Codable, Identifiable, Hashable, Sendable {
             // MARK: Public
 
             public var fetter: Int
