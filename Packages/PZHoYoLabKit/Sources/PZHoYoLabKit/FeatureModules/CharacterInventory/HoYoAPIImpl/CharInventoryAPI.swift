@@ -109,16 +109,7 @@ extension HoYo {
             deviceID: deviceId,
             additionalHeaders: additionalHeaders
         )
-        #if DEBUG
-        print("---------------------------------------------")
-        print(request.debugDescription)
-        if let headerEX = request.allHTTPHeaderFields {
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.sortedKeys, .prettyPrinted, .withoutEscapingSlashes]
-            print(String(data: try! encoder.encode(headerEX), encoding: .utf8)!)
-        }
-        print("---------------------------------------------")
-        #endif
+        request.printDebugIntelIfDebugMode()
 
         let (data, _) = try await URLSession.shared.data(for: request)
 

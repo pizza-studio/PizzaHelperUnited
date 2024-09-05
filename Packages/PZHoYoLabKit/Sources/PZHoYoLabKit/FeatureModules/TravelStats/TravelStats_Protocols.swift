@@ -31,6 +31,7 @@ public protocol TravelStatsView: View {
     associatedtype StatsData: TravelStats where Self == StatsData.ViewType
     init(data: StatsData)
     var data: StatsData { get }
+    @ViewBuilder @MainActor var body: Self.Body { get }
 }
 
 // MARK: - TravelStatLabel
