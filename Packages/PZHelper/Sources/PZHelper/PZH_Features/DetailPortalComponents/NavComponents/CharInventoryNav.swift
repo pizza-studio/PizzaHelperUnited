@@ -45,8 +45,8 @@ public struct CharInventoryNav: View {
                 }
             }
         case let .succeed(data):
-            let thisLabel = InformationRowView(Self.navTitle) {
-                HStack(spacing: 3) {
+            InformationRowView(Self.navTitle) {
+                let thisLabel = HStack(spacing: 3) {
                     ForEach(data.avatars.prefix(5), id: \.id) { avatar in
                         if let charIdExp = Enka.AvatarSummarized.CharacterID(
                             id: avatar.id.description, costumeID: avatar.firstCostumeID?.description
@@ -68,21 +68,21 @@ public struct CharInventoryNav: View {
                         }
                     }
                 }
-            }
-            if data.avatars.isEmpty {
-                Text("dpv.characterInventory.notice.EmptyInventoryResult".i18nPZHelper).font(.caption)
-            } else {
-                if let data = data as? HoYo.CharInventory4GI {
-                    NavigationLink(destination: data.asView(isMiyousheUID: false)) {
-                        thisLabel
-                    }
-                } else if let data = data as? HoYo.CharInventory4HSR {
-                    let isMiyousheUID: Bool = switch profile.server.region {
-                    case .hoyoLab: false
-                    case .miyoushe: true
-                    }
-                    NavigationLink(destination: data.asView(isMiyousheUID: isMiyousheUID)) {
-                        thisLabel
+                if data.avatars.isEmpty {
+                    Text("dpv.characterInventory.notice.EmptyInventoryResult".i18nPZHelper).font(.caption)
+                } else {
+                    if let data = data as? HoYo.CharInventory4GI {
+                        NavigationLink(destination: data.asView(isMiyousheUID: false)) {
+                            thisLabel
+                        }
+                    } else if let data = data as? HoYo.CharInventory4HSR {
+                        let isMiyousheUID: Bool = switch profile.server.region {
+                        case .hoyoLab: false
+                        case .miyoushe: true
+                        }
+                        NavigationLink(destination: data.asView(isMiyousheUID: isMiyousheUID)) {
+                            thisLabel
+                        }
                     }
                 }
             }
