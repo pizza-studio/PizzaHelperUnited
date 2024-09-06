@@ -16,6 +16,7 @@ struct AppSettingsTabPage: View {
         case profileManager
         case cloudAccountSettings
         case uiSettings
+        case privacySettings
         case otherSettings
     }
 
@@ -38,19 +39,22 @@ struct AppSettingsTabPage: View {
                 } header: {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
                 }
-
-                #if DEBUG
                 Section {
+                    NavigationLink(
+                        value: Nav.privacySettings,
+                        label: { Label("settings.privacy.title".i18nPZHelper, systemSymbol: .handRaisedSlashFill) }
+                    )
+                    #if DEBUG
                     NavigationLink(value: Nav.cloudAccountSettings) {
                         Label("# Cloud Account Settings".description, systemSymbol: .cloudCircle)
                     }
                     NavigationLink(value: Nav.otherSettings) {
                         Label("# Other Settings".description, systemSymbol: .infoSquare)
                     }
+                    #endif
                 } header: {
-                    Text(verbatim: "# Other Settings")
+                    Text(verbatim: "settings.section.otherSettings.header".i18nPZHelper)
                 }
-                #endif
             }
             #if os(iOS) || targetEnvironment(macCatalyst)
             .listStyle(.insetGrouped)
@@ -77,6 +81,7 @@ struct AppSettingsTabPage: View {
             case .profileManager: ProfileManagerPageContent()
             case .cloudAccountSettings: CloudAccountSettingsPageContent()
             case .uiSettings: UISettingsPageContent()
+            case .privacySettings: PrivacySettingsPageContent()
             case .otherSettings: OtherSettingsPageContent()
             case .none: UISettingsPageContent()
             }
