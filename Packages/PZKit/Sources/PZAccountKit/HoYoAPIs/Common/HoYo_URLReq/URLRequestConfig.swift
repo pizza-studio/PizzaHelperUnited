@@ -100,6 +100,13 @@ public enum URLRequestConfig {
         }
     }
 
+    public static func xRPCLanguage(region: HoYo.AccountRegion) -> String {
+        switch (region, region.game) {
+        case (.miyoushe, .starRail): HoYo.APILang.langCHS.rawValue
+        default: HoYo.APILang.current.rawValue
+        }
+    }
+
     /// Get unfinished default headers containing host, api-version, etc.
     /// You need to add `DS` field using `URLRequestHelper.getDS` manually
     /// - Parameter region: the region of the account
@@ -124,13 +131,13 @@ public enum URLRequestConfig {
             "x-rpc-client_type": xRpcClientType(region: region),
             "x-rpc-page": "3.1.3_#/rpg",
             "x-rpc-device_id": deviceID ?? ThisDevice.identifier4Vendor,
-            "x-rpc-language": HoYo.APILang.current.rawValue,
+            "x-rpc-language": xRPCLanguage(region: region),
 
             "Sec-Fetch-Dest": "empty",
             "Sec-Fetch-Site": "same-site",
             "Sec-Fetch-Mode": "cors",
         ]
-        if let additionalHeaders {
+        if let additionalHeaders, !additionalHeaders.isEmpty {
             headers.merge(additionalHeaders, uniquingKeysWith: { $1 })
         }
         return headers
