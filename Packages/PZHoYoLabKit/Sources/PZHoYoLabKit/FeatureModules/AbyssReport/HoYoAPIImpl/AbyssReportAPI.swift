@@ -12,6 +12,11 @@ extension HoYo {
         case .genshinImpact:
             let current = try await abyssReportData4GI(for: profile, isPreviousRound: false)
             let previous = try? await abyssReportData4GI(for: profile, isPreviousRound: true)
+            defer {
+                Task(priority: .background) {
+                    try? await SnapHutao.commitAbyssRecord(profile: profile, abyssData: current)
+                }
+            }
             return AbyssReportSet4GI(current: current, previous: previous)
         case .starRail:
             let current = try await abyssReportData4HSR(for: profile, isPreviousRound: false)
@@ -163,5 +168,46 @@ extension HoYo.AccountRegion {
         case (.hoyoLab, .zenlessZone): "" // 暂不实作。
         case (.miyoushe, .zenlessZone): "" // 暂不实作。
         }
+    }
+}
+
+// MARK: - HutaoDB Extensions.
+
+extension SnapHutao.AbyssDataPack {
+    public enum InitError: Error {
+        case wrongGame
+        case insufficientStars
+        case avatarMismatch
+        case abyssDataNotSupplied
+    }
+
+    public init(
+        profile: PZProfileMO,
+        abyssData: HoYo.AbyssReport4GI? = nil
+    ) async throws {
+        guard profile.game == .genshinImpact else { throw InitError.wrongGame }
+        guard SnapHutao.isCommissionPermittedByUser else {
+            throw SnapHutao.SHError.insufficientUserPermission
+        }
+        self.uid = profile.uid
+        self.identity = "GenshinPizzaHelper"
+        self.reservedUserName = ""
+        var abyssData = abyssData
+        if abyssData == nil {
+            abyssData = try await HoYo.abyssReportData4GI(for: profile)
+        }
+        guard let abyssData else { throw InitError.abyssDataNotSupplied }
+        guard abyssData.totalStar == 36 else { throw InitError.insufficientStars }
+        let rawInventory = try await HoYo.getCharacterInventory(for: profile)
+        guard let allAvatarInfo = rawInventory as? HoYo.CharInventory4GI else { throw InitError.wrongGame }
+        self.avatars = allAvatarInfo.avatars.map { avatar in
+            .init(
+                avatarId: avatar.id,
+                weaponId: avatar.weapon.id,
+                reliquarySetIds: avatar.reliquaries.map(\.set.id),
+                activedConstellationNumber: avatar.activedConstellationNum
+            )
+        }
+        self.spiralAbyss = .init(data: abyssData)
     }
 }
