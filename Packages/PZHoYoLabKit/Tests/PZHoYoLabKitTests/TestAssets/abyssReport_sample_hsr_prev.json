@@ -1,0 +1,608 @@
+{
+  "all_floor_detail": [
+    {
+      "is_chaos": true,
+      "is_fast": false,
+      "maze_id": 3510,
+      "name": "曲尽梦散其十",
+      "node_1": {
+        "avatars": [
+          {
+            "element": "fire",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/b1ad0b0cde57a8ff91f66c20720151a4.png",
+            "id": 1310,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "imaginary",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/cab53a25efea59eab52527ba903eb5d0.png",
+            "id": 1304,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "lightning",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/ae4b50a5d109bc5a2b971aa0c4f6dfed.png",
+            "id": 1308,
+            "level": 80,
+            "rank": 2,
+            "rarity": 5
+          },
+          {
+            "element": "fire",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/59e55d0376104a2468d75871196fe41a.png",
+            "id": 1218,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          }
+        ],
+        "challenge_time": {
+          "day": 24,
+          "hour": 12,
+          "minute": 42,
+          "month": 8,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [
+          {
+            "element": "ice",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/8e2fc5fb6de865010293b92220eeee25.png",
+            "id": 1303,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "ice",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/aaa8a185f3767344c4d692abc2de6881.png",
+            "id": 1212,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "quantum",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/bd408b9b64b7e6677b8c49e47edb2042.png",
+            "id": 1102,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "fire",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/2e82c946e5ccb45e7a358da478067151.png",
+            "id": 1301,
+            "level": 80,
+            "rank": 6,
+            "rarity": 4
+          }
+        ],
+        "challenge_time": {
+          "day": 24,
+          "hour": 12,
+          "minute": 42,
+          "month": 8,
+          "year": 2024
+        }
+      },
+      "round_num": 6,
+      "star_num": 3
+    },
+    {
+      "is_chaos": true,
+      "is_fast": false,
+      "maze_id": 3509,
+      "name": "曲尽梦散其九",
+      "node_1": {
+        "avatars": [
+          {
+            "element": "lightning",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/ae4b50a5d109bc5a2b971aa0c4f6dfed.png",
+            "id": 1308,
+            "level": 80,
+            "rank": 2,
+            "rarity": 5
+          },
+          {
+            "element": "imaginary",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/cab53a25efea59eab52527ba903eb5d0.png",
+            "id": 1304,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "fire",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/59e55d0376104a2468d75871196fe41a.png",
+            "id": 1218,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "wind",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/d7d87f1a47a90c624e7badda918eacc5.png",
+            "id": 1101,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          }
+        ],
+        "challenge_time": {
+          "day": 24,
+          "hour": 12,
+          "minute": 58,
+          "month": 8,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [
+          {
+            "element": "ice",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/8e2fc5fb6de865010293b92220eeee25.png",
+            "id": 1303,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "ice",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/aaa8a185f3767344c4d692abc2de6881.png",
+            "id": 1212,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "quantum",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/c48be80a047047ac4f8bdf014c63dc42.png",
+            "id": 1006,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "fire",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/2e82c946e5ccb45e7a358da478067151.png",
+            "id": 1301,
+            "level": 80,
+            "rank": 6,
+            "rarity": 4
+          }
+        ],
+        "challenge_time": {
+          "day": 24,
+          "hour": 12,
+          "minute": 58,
+          "month": 8,
+          "year": 2024
+        }
+      },
+      "round_num": 9,
+      "star_num": 2
+    },
+    {
+      "is_chaos": true,
+      "is_fast": false,
+      "maze_id": 3508,
+      "name": "曲尽梦散其八",
+      "node_1": {
+        "avatars": [
+          {
+            "element": "imaginary",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/cab53a25efea59eab52527ba903eb5d0.png",
+            "id": 1304,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "quantum",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/1639895ff57a27354729e600c5c1f39b.png",
+            "id": 1201,
+            "level": 80,
+            "rank": 4,
+            "rarity": 4
+          },
+          {
+            "element": "wind",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/d7d87f1a47a90c624e7badda918eacc5.png",
+            "id": 1101,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "ice",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/8e2fc5fb6de865010293b92220eeee25.png",
+            "id": 1303,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          }
+        ],
+        "challenge_time": {
+          "day": 24,
+          "hour": 13,
+          "minute": 9,
+          "month": 8,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [
+          {
+            "element": "lightning",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/ae4b50a5d109bc5a2b971aa0c4f6dfed.png",
+            "id": 1308,
+            "level": 80,
+            "rank": 2,
+            "rarity": 5
+          },
+          {
+            "element": "fire",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/59e55d0376104a2468d75871196fe41a.png",
+            "id": 1218,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "fire",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/2e82c946e5ccb45e7a358da478067151.png",
+            "id": 1301,
+            "level": 80,
+            "rank": 6,
+            "rarity": 4
+          },
+          {
+            "element": "fire",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/b1ad0b0cde57a8ff91f66c20720151a4.png",
+            "id": 1310,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          }
+        ],
+        "challenge_time": {
+          "day": 24,
+          "hour": 13,
+          "minute": 9,
+          "month": 8,
+          "year": 2024
+        }
+      },
+      "round_num": 10,
+      "star_num": 2
+    },
+    {
+      "is_chaos": true,
+      "is_fast": false,
+      "maze_id": 3507,
+      "name": "曲尽梦散其七",
+      "node_1": {
+        "avatars": [
+          {
+            "element": "ice",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/aaa8a185f3767344c4d692abc2de6881.png",
+            "id": 1212,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "wind",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/d7d87f1a47a90c624e7badda918eacc5.png",
+            "id": 1101,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "physical",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/516559caf928813af14b827e10db0634.png",
+            "id": 1309,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "imaginary",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/cab53a25efea59eab52527ba903eb5d0.png",
+            "id": 1304,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          }
+        ],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [
+          {
+            "element": "wind",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/75055d3fa42c48f35a451f789b47085a.png",
+            "id": 1205,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "ice",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/8e2fc5fb6de865010293b92220eeee25.png",
+            "id": 1303,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          },
+          {
+            "element": "fire",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/2e82c946e5ccb45e7a358da478067151.png",
+            "id": 1301,
+            "level": 80,
+            "rank": 6,
+            "rarity": 4
+          },
+          {
+            "element": "quantum",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf03ic/bdc386af5196c82ea20b6c662b54bd7a.png",
+            "id": 1208,
+            "level": 80,
+            "rank": 0,
+            "rarity": 5
+          }
+        ],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "round_num": 6,
+      "star_num": 3
+    },
+    {
+      "is_chaos": true,
+      "is_fast": true,
+      "maze_id": 3506,
+      "name": "曲尽梦散其六",
+      "node_1": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "round_num": 0,
+      "star_num": 3
+    },
+    {
+      "is_chaos": true,
+      "is_fast": true,
+      "maze_id": 3505,
+      "name": "曲尽梦散其五",
+      "node_1": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "round_num": 0,
+      "star_num": 3
+    },
+    {
+      "is_chaos": true,
+      "is_fast": true,
+      "maze_id": 3504,
+      "name": "曲尽梦散其四",
+      "node_1": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "round_num": 0,
+      "star_num": 3
+    },
+    {
+      "is_chaos": true,
+      "is_fast": true,
+      "maze_id": 3503,
+      "name": "曲尽梦散其三",
+      "node_1": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "round_num": 0,
+      "star_num": 3
+    },
+    {
+      "is_chaos": true,
+      "is_fast": true,
+      "maze_id": 3502,
+      "name": "曲尽梦散其二",
+      "node_1": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "round_num": 0,
+      "star_num": 3
+    },
+    {
+      "is_chaos": true,
+      "is_fast": true,
+      "maze_id": 3501,
+      "name": "曲尽梦散其一",
+      "node_1": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "node_2": {
+        "avatars": [],
+        "challenge_time": {
+          "day": 23,
+          "hour": 2,
+          "minute": 2,
+          "month": 7,
+          "year": 2024
+        }
+      },
+      "round_num": 0,
+      "star_num": 3
+    }
+  ],
+  "battle_num": 12,
+  "begin_time": {
+    "day": 22,
+    "hour": 4,
+    "minute": 0,
+    "month": 7,
+    "year": 2024
+  },
+  "end_time": {
+    "day": 2,
+    "hour": 4,
+    "minute": 0,
+    "month": 9,
+    "year": 2024
+  },
+  "groups": [
+    {
+      "begin_time": {
+        "day": 2,
+        "hour": 4,
+        "minute": 0,
+        "month": 9,
+        "year": 2024
+      },
+      "end_time": {
+        "day": 14,
+        "hour": 4,
+        "minute": 0,
+        "month": 10,
+        "year": 2024
+      },
+      "name_mi18n": "长眠不醒",
+      "schedule_id": 1017,
+      "status": "New"
+    },
+    {
+      "begin_time": {
+        "day": 22,
+        "hour": 4,
+        "minute": 0,
+        "month": 7,
+        "year": 2024
+      },
+      "end_time": {
+        "day": 2,
+        "hour": 4,
+        "minute": 0,
+        "month": 9,
+        "year": 2024
+      },
+      "name_mi18n": "曲尽梦散",
+      "schedule_id": 1016,
+      "status": "End"
+    }
+  ],
+  "has_data": true,
+  "max_floor": "曲尽梦散其十",
+  "max_floor_id": 3510,
+  "schedule_id": 1016,
+  "star_num": 30
+}

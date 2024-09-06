@@ -39,7 +39,7 @@ extension HoYo {
                 // MARK: Public
 
                 public struct Battle: Codable, Hashable, Sendable {
-                    public struct Avatar: Codable, Hashable, Sendable {
+                    public struct Avatar: Codable, Hashable, Sendable, Identifiable {
                         // MARK: Lifecycle
 
                         public init(id: Int, icon: String, level: Int, rarity: Int) {

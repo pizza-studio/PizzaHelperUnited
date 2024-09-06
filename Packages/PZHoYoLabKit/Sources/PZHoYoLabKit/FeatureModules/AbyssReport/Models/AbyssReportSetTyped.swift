@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 
 // MARK: - AbyssReportSetTyped
 
@@ -22,6 +23,10 @@ public struct AbyssReportSetTyped<Report: AbyssReport>: AbyssReportSet {
     public let current: Report
     public var previous: Report?
     public var costumeMap: [String: String]
+
+    public var asView: AbyssReportSetView<Report> {
+        AbyssReportSetView(data: self)
+    }
 }
 
 public typealias AbyssReportSet4GI = AbyssReportSetTyped<HoYo.AbyssReport4GI>
