@@ -93,6 +93,7 @@ extension View {
                     .opacity(opacity)
                     .padding(padding)
                     .fixedSize()
+                    .environment(\.colorScheme, .dark)
             }
         )
     }
