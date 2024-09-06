@@ -79,7 +79,7 @@ struct DetailPortalTabPage: View {
                 TravelStatsNav(theVM: delegate)
             }
             .listRowMaterialBackground()
-            .onTapGesture { uidInputFieldFocus = false }
+            // .onTapGesture { uidInputFieldFocus = false } // 备忘：不要启用这一行，否则这些导航会失效。
         } else {
             query4GI
             query4HSR
