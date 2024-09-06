@@ -45,9 +45,9 @@ public struct LedgerNav: View {
                 }
             }
         case let .succeed(data):
-            if let data = data as? HoYo.LedgerData4GI {
-                NavigationLink(destination: data.asView()) {
-                    InformationRowView(navTitle) {
+            InformationRowView(navTitle) {
+                if let data = data as? HoYo.LedgerData4GI {
+                    NavigationLink(destination: data.asView()) {
                         HStack(spacing: 10) {
                             let iconFrame: CGFloat = 40
                             LedgerView4GI.primogemImage
@@ -59,10 +59,8 @@ public struct LedgerNav: View {
                             Spacer()
                         }
                     }
-                }
-            } else if let data = data as? HoYo.LedgerData4HSR {
-                NavigationLink(destination: data.asView()) {
-                    InformationRowView(navTitle) {
+                } else if let data = data as? HoYo.LedgerData4HSR {
+                    NavigationLink(destination: data.asView()) {
                         HStack(spacing: 10) {
                             let iconFrame: CGFloat = 40
                             LedgerView4HSR.stellarJadeImage
