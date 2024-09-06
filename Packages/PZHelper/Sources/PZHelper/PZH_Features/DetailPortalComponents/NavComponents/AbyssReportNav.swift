@@ -79,7 +79,7 @@ public struct AbyssReportNav: View {
 
     // MARK: Internal
 
-    var navTitle: String {
+    @MainActor var navTitle: String {
         switch theVM.currentProfile?.game {
         case .genshinImpact: AbyssReportView4GI.navTitle
         case .starRail: AbyssReportView4HSR.navTitle

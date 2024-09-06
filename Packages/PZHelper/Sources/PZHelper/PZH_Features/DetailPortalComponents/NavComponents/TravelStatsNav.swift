@@ -83,7 +83,7 @@ public struct TravelStatsNav: View {
 
     // MARK: Internal
 
-    var navTitle: String {
+    @MainActor var navTitle: String {
         switch theVM.currentProfile?.game {
         case .genshinImpact: TravelStatsView4GI.navTitle
         case .starRail: TravelStatsView4HSR.navTitle
