@@ -11,7 +11,7 @@ public enum URLRequestConfig {
     public static func getUserAgent(region: HoYo.AccountRegion) -> String {
         """
         Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) \
-        AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/\(Self.xRpcAppVersion(region: region))
+        AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/\(Self.xRPCAppVersion(region: region))
         """
     }
 
@@ -65,14 +65,14 @@ public enum URLRequestConfig {
         }
     }
 
-    public static func xRpcAppVersion(region: HoYo.AccountRegion) -> String {
+    public static func xRPCAppVersion(region: HoYo.AccountRegion) -> String {
         switch region {
         case .miyoushe: "2.40.1" // 跟 YunzaiBot 一致。
         case .hoyoLab: "2.55.0" // 跟 YunzaiBot 一致。
         }
     }
 
-    public static func xRpcClientType(region: HoYo.AccountRegion) -> String {
+    public static func xRPCClientType(region: HoYo.AccountRegion) -> String {
         switch region {
         case .miyoushe: "5"
         case .hoyoLab: "2"
@@ -127,8 +127,8 @@ public enum URLRequestConfig {
             "Connection": "keep-alive",
 
             "X-Requested-With": xRequestedWith(region: region),
-            "x-rpc-app_version": xRpcAppVersion(region: region),
-            "x-rpc-client_type": xRpcClientType(region: region),
+            "x-rpc-app_version": xRPCAppVersion(region: region),
+            "x-rpc-client_type": xRPCClientType(region: region),
             "x-rpc-page": "3.1.3_#/rpg",
             "x-rpc-device_id": deviceID ?? ThisDevice.identifier4Vendor,
             "x-rpc-language": xRPCLanguage(region: region),
