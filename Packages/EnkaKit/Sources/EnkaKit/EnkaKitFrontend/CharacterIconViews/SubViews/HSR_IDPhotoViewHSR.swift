@@ -37,7 +37,7 @@ public struct IDPhotoView4HSR: View {
         case cutShoulder = 1.15
         case cutHead = 1.5
         case cutFace = 2
-        case cutFaceRoundedRect = 3
+        case cutFaceRoundedRect = 1.999
 
         // MARK: Internal
 
