@@ -25,6 +25,14 @@ extension HoYo {
         public let maxFloorID: Int
         public let groups: [FHMeta]?
 
+        public var name: String? {
+            groups?.first(where: { $0.scheduleID == scheduleID })?.name
+        }
+
+        public var maxFloorNumStr: String {
+            maxFloorID.description.suffix(2).description
+        }
+
         // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
@@ -40,15 +48,11 @@ extension HoYo {
             case maxFloorID = "max_floor_id"
             case groups
         }
-
-        var name: String? {
-            groups?.first(where: { $0.scheduleID == scheduleID })?.name
-        }
     }
 }
 
 extension HoYo.AbyssReport4HSR {
-    public struct FHAvatar: Codable, Hashable, Sendable {
+    public struct FHAvatar: Codable, Hashable, Sendable, Identifiable {
         // MARK: Public
 
         public let id: Int
@@ -77,8 +81,12 @@ extension HoYo.AbyssReport4HSR {
         public let isChaos: Bool
         public let mazeID: Int
 
-        public var isFast: Bool {
+        public var isSkipped: Bool {
             _isFast || (node1.avatars.isEmpty && node2.avatars.isEmpty)
+        }
+
+        public var floorNumStr: String {
+            mazeID.description.suffix(2).description
         }
 
         // MARK: Internal
@@ -133,12 +141,18 @@ extension HoYo.AbyssReport4HSR {
         }
     }
 
-    public struct FHDateComponents: Codable, Hashable, Sendable {
+    public struct FHDateComponents: Codable, Hashable, Sendable, CustomStringConvertible {
         public let year: Int
         public let month: Int
         public let day: Int
         public let hour: Int
         public let minute: Int
+
+        public var description: String {
+            let dateStr = "\(year)-\(month)-\(day)"
+            let time = "\(hour):\(minute)"
+            return "\(dateStr) \(time)"
+        }
 
         public func asDate(timeZoneDelta: Int) -> Date? {
             let calendar = Calendar(identifier: .gregorian)

@@ -1,0 +1,922 @@
+{
+  "damage_rank": [
+    {
+      "avatar_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u9b0pg/8421399f6306e77a566176042322a9f2.png",
+      "avatar_id": 10000051,
+      "rarity": 5,
+      "value": 394887
+    }
+  ],
+  "defeat_rank": [
+    {
+      "avatar_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u9b0pg/6f0ee9442f8474bf3d29144a3a898acb.png",
+      "avatar_id": 10000060,
+      "rarity": 5,
+      "value": 90
+    }
+  ],
+  "end_time": "1723751999",
+  "energy_skill_rank": [
+    {
+      "avatar_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u9b0pg/6f0ee9442f8474bf3d29144a3a898acb.png",
+      "avatar_id": 10000060,
+      "rarity": 5,
+      "value": 136
+    }
+  ],
+  "floors": [
+    {
+      "icon": "",
+      "index": 9,
+      "is_unlock": true,
+      "levels": [
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5f715c580fa2a2f761d29ecb77904184.png",
+                  "id": 10000052,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+                  "id": 10000073,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+                  "id": 10000082,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721084176"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5af48ffeeb3cd9e2ef6a5a245ff5a502.png",
+                  "id": 10000096,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1af6a4bc9d1fa4e1555c7f9d4d16ba8b.png",
+                  "id": 10000046,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721084215"
+            }
+          ],
+          "index": 1,
+          "max_star": 3,
+          "star": 3
+        },
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5f715c580fa2a2f761d29ecb77904184.png",
+                  "id": 10000052,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+                  "id": 10000073,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+                  "id": 10000082,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721084257"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5af48ffeeb3cd9e2ef6a5a245ff5a502.png",
+                  "id": 10000096,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1af6a4bc9d1fa4e1555c7f9d4d16ba8b.png",
+                  "id": 10000046,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721084297"
+            }
+          ],
+          "index": 2,
+          "max_star": 3,
+          "star": 3
+        },
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5f715c580fa2a2f761d29ecb77904184.png",
+                  "id": 10000052,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+                  "id": 10000073,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+                  "id": 10000082,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721084345"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5af48ffeeb3cd9e2ef6a5a245ff5a502.png",
+                  "id": 10000096,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1af6a4bc9d1fa4e1555c7f9d4d16ba8b.png",
+                  "id": 10000046,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721084379"
+            }
+          ],
+          "index": 3,
+          "max_star": 3,
+          "star": 3
+        }
+      ],
+      "max_star": 9,
+      "settle_time": "0",
+      "star": 9
+    },
+    {
+      "icon": "",
+      "index": 10,
+      "is_unlock": true,
+      "levels": [
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5f715c580fa2a2f761d29ecb77904184.png",
+                  "id": 10000052,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+                  "id": 10000073,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+                  "id": 10000082,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721084457"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1af6a4bc9d1fa4e1555c7f9d4d16ba8b.png",
+                  "id": 10000046,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/861b12faa1eb55619acf3778ebf025d7.png",
+                  "id": 10000025,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721084484"
+            }
+          ],
+          "index": 1,
+          "max_star": 3,
+          "star": 3
+        },
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5f715c580fa2a2f761d29ecb77904184.png",
+                  "id": 10000052,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+                  "id": 10000073,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+                  "id": 10000082,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721084511"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1af6a4bc9d1fa4e1555c7f9d4d16ba8b.png",
+                  "id": 10000046,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/861b12faa1eb55619acf3778ebf025d7.png",
+                  "id": 10000025,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721084549"
+            }
+          ],
+          "index": 2,
+          "max_star": 3,
+          "star": 3
+        },
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5f715c580fa2a2f761d29ecb77904184.png",
+                  "id": 10000052,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+                  "id": 10000073,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+                  "id": 10000082,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721084584"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1af6a4bc9d1fa4e1555c7f9d4d16ba8b.png",
+                  "id": 10000046,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/861b12faa1eb55619acf3778ebf025d7.png",
+                  "id": 10000025,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721084616"
+            }
+          ],
+          "index": 3,
+          "max_star": 3,
+          "star": 3
+        }
+      ],
+      "max_star": 9,
+      "settle_time": "0",
+      "star": 9
+    },
+    {
+      "icon": "",
+      "index": 11,
+      "is_unlock": true,
+      "levels": [
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/fece1037f9ceb5b14c86ea598ffe72ca.png",
+                  "id": 10000066,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1f41c1331addab8e380cbbf0aa94a9eb.png",
+                  "id": 10000074,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/861b12faa1eb55619acf3778ebf025d7.png",
+                  "id": 10000025,
+                  "level": 90,
+                  "rarity": 4
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721141750"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1af6a4bc9d1fa4e1555c7f9d4d16ba8b.png",
+                  "id": 10000046,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/427f51f1fbd7007417d9521b9fb7077f.png",
+                  "id": 10000050,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/46bb4b3c9c7171fb9978cf03a3a14148.png",
+                  "id": 10000032,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721141811"
+            }
+          ],
+          "index": 1,
+          "max_star": 3,
+          "star": 3
+        },
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/fece1037f9ceb5b14c86ea598ffe72ca.png",
+                  "id": 10000066,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1f41c1331addab8e380cbbf0aa94a9eb.png",
+                  "id": 10000074,
+                  "level": 90,
+                  "rarity": 4
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721085186"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5af48ffeeb3cd9e2ef6a5a245ff5a502.png",
+                  "id": 10000096,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/6432ce4c32bca6ac93192514495f09cb.png",
+                  "id": 10000023,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/46bb4b3c9c7171fb9978cf03a3a14148.png",
+                  "id": 10000032,
+                  "level": 90,
+                  "rarity": 4
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721085247"
+            }
+          ],
+          "index": 2,
+          "max_star": 3,
+          "star": 3
+        },
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/fece1037f9ceb5b14c86ea598ffe72ca.png",
+                  "id": 10000066,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1f41c1331addab8e380cbbf0aa94a9eb.png",
+                  "id": 10000074,
+                  "level": 90,
+                  "rarity": 4
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721085313"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5af48ffeeb3cd9e2ef6a5a245ff5a502.png",
+                  "id": 10000096,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/6432ce4c32bca6ac93192514495f09cb.png",
+                  "id": 10000023,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/46bb4b3c9c7171fb9978cf03a3a14148.png",
+                  "id": 10000032,
+                  "level": 90,
+                  "rarity": 4
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721085366"
+            }
+          ],
+          "index": 3,
+          "max_star": 3,
+          "star": 3
+        }
+      ],
+      "max_star": 9,
+      "settle_time": "0",
+      "star": 9
+    },
+    {
+      "icon": "",
+      "index": 12,
+      "is_unlock": true,
+      "levels": [
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5f715c580fa2a2f761d29ecb77904184.png",
+                  "id": 10000052,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+                  "id": 10000073,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+                  "id": 10000082,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 1,
+              "timestamp": "1722703144"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1af6a4bc9d1fa4e1555c7f9d4d16ba8b.png",
+                  "id": 10000046,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/861b12faa1eb55619acf3778ebf025d7.png",
+                  "id": 10000025,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 2,
+              "timestamp": "1722703226"
+            }
+          ],
+          "index": 1,
+          "max_star": 3,
+          "star": 2
+        },
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/3fecd94de2ba17765ae640cebdc86295.png",
+                  "id": 10000065,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/7c2ca1e8dbd21233781ab930785dee37.png",
+                  "id": 10000060,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+                  "id": 10000073,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+                  "id": 10000082,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 1,
+              "timestamp": "1722181788"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5af48ffeeb3cd9e2ef6a5a245ff5a502.png",
+                  "id": 10000096,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/861b12faa1eb55619acf3778ebf025d7.png",
+                  "id": 10000025,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 2,
+              "timestamp": "1722181868"
+            }
+          ],
+          "index": 2,
+          "max_star": 3,
+          "star": 2
+        },
+        {
+          "battles": [
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/5f715c580fa2a2f761d29ecb77904184.png",
+                  "id": 10000052,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+                  "id": 10000089,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+                  "id": 10000073,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+                  "id": 10000082,
+                  "level": 90,
+                  "rarity": 5
+                }
+              ],
+              "index": 1,
+              "timestamp": "1721834009"
+            },
+            {
+              "avatars": [
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/861b12faa1eb55619acf3778ebf025d7.png",
+                  "id": 10000025,
+                  "level": 90,
+                  "rarity": 4
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/4ecdeaddd3f4de79beaced7c449b9c6f.png",
+                  "id": 10000091,
+                  "level": 80,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+                  "id": 10000030,
+                  "level": 90,
+                  "rarity": 5
+                },
+                {
+                  "icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/46bb4b3c9c7171fb9978cf03a3a14148.png",
+                  "id": 10000032,
+                  "level": 90,
+                  "rarity": 4
+                }
+              ],
+              "index": 2,
+              "timestamp": "1721834066"
+            }
+          ],
+          "index": 3,
+          "max_star": 3,
+          "star": 2
+        }
+      ],
+      "max_star": 9,
+      "settle_time": "0",
+      "star": 6
+    }
+  ],
+  "is_unlock": true,
+  "max_floor": "12-3",
+  "normal_skill_rank": [
+    {
+      "avatar_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u9b0pg/6f0ee9442f8474bf3d29144a3a898acb.png",
+      "avatar_id": 10000060,
+      "rarity": 5,
+      "value": 473
+    }
+  ],
+  "reveal_rank": [
+    {
+      "avatar_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/012270473e54fd09aa6ef272f3a050bb.png",
+      "avatar_id": 10000089,
+      "rarity": 5,
+      "value": 33
+    },
+    {
+      "avatar_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/1a681b7d4820bb3301d0a7ac6c4f73f8.png",
+      "avatar_id": 10000030,
+      "rarity": 5,
+      "value": 31
+    },
+    {
+      "avatar_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/b2fa30cb06f2526b6a4077954a1bfb55.png",
+      "avatar_id": 10000082,
+      "rarity": 5,
+      "value": 28
+    },
+    {
+      "avatar_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon_u9b0pg/894f44d4821b4b21c2e9f11226e19d85.png",
+      "avatar_id": 10000073,
+      "rarity": 5,
+      "value": 28
+    }
+  ],
+  "schedule_id": 97,
+  "start_time": "1721073600",
+  "take_damage_rank": [
+    {
+      "avatar_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u9b0pg/3098cb1a891b80cd129c02319f42bd97.png",
+      "avatar_id": 10000082,
+      "rarity": 5,
+      "value": 294419
+    }
+  ],
+  "total_battle_times": 83,
+  "total_star": 33,
+  "total_win_times": 35
+}
