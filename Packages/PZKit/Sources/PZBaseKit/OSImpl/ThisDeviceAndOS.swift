@@ -21,14 +21,14 @@ public enum ThisDevice {
     // MARK: Public
 
     public static let modelIdentifier: String = {
-        #if os(macOS) || targetEnvironment(macCatalyst)
+        #if os(macOS)
         let service: io_service_t = IOServiceGetMatchingService(
             kIOMainPortDefault,
             IOServiceMatching("IOPlatformExpertDevice")
         )
         let model = IORegistryEntryCreateCFProperty(service, "model" as CFString, kCFAllocatorDefault, 0)
         return modelIdentifier as String
-        #elseif os(iOS)
+        #elseif os(iOS) || targetEnvironment(macCatalyst)
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
