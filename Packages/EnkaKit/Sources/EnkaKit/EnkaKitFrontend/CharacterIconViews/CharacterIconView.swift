@@ -60,7 +60,7 @@ public struct CharacterIconView: View {
         case (.starRail, true): cardIconHSR
         case (.starRail, false): normalIconHSR
         case (.genshinImpact, true): cardIconGI
-        case (.genshinImpact, false): normalIconHSRGI
+        case (.genshinImpact, false): normalIconGI
         case (.zenlessZone, _): EmptyView() // 临时设定。
         }
     }
@@ -84,7 +84,7 @@ public struct CharacterIconView: View {
         }
     }
 
-    @ViewBuilder var normalIconHSRGI: some View {
+    @ViewBuilder var normalIconGI: some View {
         if let fetched = Enka.queryImageAssetSUI(for: "gi_character_\(charIDGuarded)") {
             let newResult = fetched
                 .resizable()
@@ -191,7 +191,11 @@ public struct CharacterIconView: View {
     private let game: Enka.GameType
 
     private var cutType: IDPhotoView4HSR.IconType {
-        clipToHead ? .cutHead : .cutShoulder
+        if !circleClipped, !isCard {
+            .cutFaceRoundedRect
+        } else {
+            clipToHead ? .cutHead : .cutShoulder
+        }
     }
 
     private var proposedPhotoAssetName: String {
