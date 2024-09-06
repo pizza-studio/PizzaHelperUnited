@@ -3188,6 +3188,119 @@
         }
       }
     },
+    "settings.privacy.abyssDataCollect" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow to Collect Spiral Abyss Battle Reports Data"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深境螺旋の作戦報告データの収集を許可"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许收集深境螺旋个人战报资料"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許收集深境螺旋個人戰報資料"
+          }
+        }
+      }
+    },
+    "settings.privacy.abyssDataCollect.detail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We are looking forward to collect the Genshin characters you own and you used in the Spiral Abyss and send them to Snap.Hutao Database (i.e. HutaoDB) and Pizza DB. Allowing us to collect the data will help HutaoDB & PizzaAbyssDB to supply more-accurate information of the real-time Spiral Abyss Chacacter Usage Rate, Team Usage Rate, etc. information available-to-watch in the App. The information also consists of the related in-game Genshin UID but no other of your game account information to help HutaoDB potentially refuse forged records from identified cheaters."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "こちらは貴殿の「ご所有の原神キャラ資料」と「深境螺旋でご使用していた原神キャラ資料」を集めて、「Snap.Hutao 深境螺旋データベース（略称『HutaoDB』）」と「ピザ深境螺旋データベース(PizzaAbyssDB)」へ送ろうとしていますが、貴殿のご許可が必要です。ご許可があれば、HutaoDB と PizzaAbyssDB の「全サーバーの深境螺旋全キャラ使用率」「サーバーの深境螺旋全チーム使用率」その情報の正確性をもっと向上することはできます。原神のUIDもそれに含まれておりますが、これ以上他の種類のアカウント情報は送り出しません。UIDの収集は HutaoDB が「チーティングなどの不正利用で偽の作戦報告を出した UID からの作戦報告を永遠的に拒む」ためです。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们希望能将您已拥有的角色和在攻克深境螺旋时使用的角色资讯打包上传给 Snap.Hutao 深渊资料库（简称「HutaoDB」）以及披萨深渊资料库（PizzaAbyssDB）。您对此的准许将会使得 HutaoDB 和 PizzaAbyssDB 能提供更准确的深境螺旋角色使用率、队伍使用率等情况（均可以通过敝 App 查阅）。该上传资料也包含对应的原神 UID，但不会包括其他的原神账号资料。对 UID 的收集有助于 HutaoDB 永久拒绝来自作弊玩家的战报资料递交。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我們希望能將您已擁有的角色和在攻克深境螺旋時使用的角色資訊打包上傳給 Snap.Hutao 深淵資料庫（簡稱「HutaoDB」）以及披薩深淵資料庫（PizzaAbyssDB）。您對此的准許將會使得 HutaoDB 和 PizzaAbyssDB 能提供更準確的深境螺旋角色使用率、隊伍使用率等情況（均可以藉由敝 App 檢閱）。該上傳資料也包含對應的原神 UID，但不會包括其他的原神帳號資料。對 UID 的收集有助於 HutaoDB 永久拒絕來自作弊玩家的戰報資料遞交。"
+          }
+        }
+      }
+    },
+    "settings.privacy.abyssDataCollect.faqLink" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here to read the FAQs about it."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "それについてのよくある質問は、ここをタップしてから読めます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点此检阅与此有关的常见问题解答。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點此檢閱與此有關的常見問題解答。"
+          }
+        }
+      }
+    },
+    "settings.privacy.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシー"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐私设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隱私設定"
+          }
+        }
+      }
+    },
     "settings.profile.clickHereToLogin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3416,6 +3529,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新登入米遊社 / HoYoLAB 通行證"
+          }
+        }
+      }
+    },
+    "settings.section.otherSettings.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他の設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他设定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他設定"
           }
         }
       }
