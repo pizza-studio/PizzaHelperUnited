@@ -162,3 +162,178 @@ public enum OS: Int {
         #endif
     }()
 }
+
+// MARK: - Window Size Helpers
+
+extension ThisDevice {
+    public static var basicWindowSize: CGSize {
+        DeviceOrientation.basicWindowSize
+    }
+
+    public static var isScreenLandScape: Bool {
+        #if canImport(UIKit)
+        guard let window = getKeyWindow() else { return false }
+        let filtered = window.safeAreaInsets.allParamters.filter { $0 > 0 }
+        return filtered.count == 3
+        #else
+        return true
+        #endif
+    }
+
+    public static var isHDScreenRatio: Bool {
+        #if canImport(UIKit)
+        let screenSize = UIScreen.main.bounds.size
+        let big = max(screenSize.width, screenSize.height)
+        let small = min(screenSize.width, screenSize.height)
+        return (1.76 ... 1.78).contains(big / small)
+        #else
+        return false
+        #endif
+    }
+
+    public static var isHDPhoneOrPodTouch: Bool {
+        isHDScreenRatio && OS.type == .iPhoneOS
+    }
+
+    public static var isSmallestSlideOverWindowWidth: Bool {
+        #if canImport(UIKit)
+        guard let window = getKeyWindow() else { return Self.isSmallestHDScreenPhone }
+        return min(window.frame.width, window.frame.height) < 375
+        #else
+        return false
+        #endif
+    }
+
+    /// 检测荧幕解析度是否为 iPhone 5 / 5c / 5s / SE Gen1 / iPod Touch 7th Gen 的最大荧幕解析度。
+    /// 如果是 iPhone SE2 / SE3 / 6 / 7 / 8 且开启了荧幕放大模式的话，也会用到这个解析度。
+    /// 不考虑 4:3 荧幕的机种（iPhone 4s 为止的机种）。
+    public static var isSmallestHDScreenPhone: Bool {
+        #if canImport(UIKit)
+        // 仅列出至少有支援 iOS 14 的机种。
+        guard !["iPhone8,4", "iPod9,1"].contains(ThisDevice.modelIdentifier)
+        else {
+            return true
+        }
+        let screenSize = UIScreen.main.bounds
+        return min(screenSize.width, screenSize.height) < 375
+        #else
+        return false
+        #endif
+    }
+
+    public static var scaleRatioCompatible: CGFloat {
+        DeviceOrientation.scaleRatioCompatible
+    }
+
+    public static var isThinnestSplitOnPad: Bool {
+        #if canImport(UIKit)
+        guard OS.type == .iPadOS, isSplitOrSlideOver else { return false }
+        guard let window = getKeyWindow() else { return false }
+        let windowSize = window.frame.size
+        let big = max(windowSize.width, windowSize.height)
+        let small = min(windowSize.width, windowSize.height)
+        return (2.2 ... 4).contains(big / small)
+        #else
+        return false
+        #endif
+    }
+
+    public static var isWidestSplitOnPad: Bool {
+        #if canImport(UIKit)
+        guard OS.type == .iPadOS, isSplitOrSlideOver else { return false }
+        guard let window = getKeyWindow() else { return false }
+        let windowSize = window.frame.size
+        let big = max(windowSize.width, windowSize.height)
+        let small = min(windowSize.width, windowSize.height)
+        return (1 ... 1.05).contains(big / small)
+        #else
+        return false
+        #endif
+    }
+
+    public static var isSplitOrSlideOver: Bool {
+        #if canImport(UIKit)
+        guard let window = getKeyWindow() else { return false }
+        return window.frame.width != window.screen.bounds.width
+        #else
+        return false
+        #endif
+    }
+
+    public static var isRunningInFullScreen: Bool {
+        #if canImport(UIKit)
+        guard let window = getKeyWindow() else { return true }
+        let screenSize = UIScreen.main.bounds.size
+        let appSize = window.bounds.size
+        let compatibleA = CGRectEqualToRect(
+            CGRect(origin: .zero, size: screenSize),
+            CGRect(origin: .zero, size: appSize)
+        )
+        let appSizeFlipped = CGSize(
+            width: appSize.height,
+            height: appSize.width
+        )
+        let compatibleB = CGRectEqualToRect(
+            CGRect(origin: .zero, size: screenSize),
+            CGRect(origin: .zero, size: appSizeFlipped)
+        )
+        return compatibleA || compatibleB
+        #else
+        return false
+        #endif
+    }
+
+    #if canImport(UIKit)
+    public static func getKeyWindow() -> UIWindow? {
+        UIApplication.shared.connectedScenes
+            .compactMap { scene -> UIWindow? in
+                (scene as? UIWindowScene)?.keyWindow
+            }
+            .first
+    }
+    #endif
+
+    // MARK: Internal
+
+    enum NotchType {
+        case normalNotch
+        case dynamicIsland
+        case none
+    }
+
+    static var notchType: NotchType {
+        guard hasNotchOrDynamicIsland else { return .none }
+        guard hasDynamicIsland else { return .normalNotch }
+        return .dynamicIsland
+    }
+
+    // MARK: Private
+
+    private static var hasDynamicIsland: Bool {
+        #if canImport(UIKit)
+        guard let window = getKeyWindow() else { return false }
+        let filtered = window.safeAreaInsets.allParamters.filter { $0 >= 59 }
+        return filtered.count == 1
+        #else
+        return false
+        #endif
+    }
+
+    private static var hasNotchOrDynamicIsland: Bool {
+        #if canImport(UIKit)
+        guard let window = getKeyWindow() else { return false }
+        let filtered = window.safeAreaInsets.allParamters.filter { $0 >= 44 }
+        return filtered.count == 1
+        #else
+        return false
+        #endif
+    }
+}
+
+#if canImport(UIKit)
+extension UIEdgeInsets {
+    fileprivate var allParamters: [CGFloat] {
+        [bottom, top, left, right]
+    }
+}
+#endif
