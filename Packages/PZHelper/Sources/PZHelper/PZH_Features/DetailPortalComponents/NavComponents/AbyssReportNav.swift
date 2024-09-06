@@ -46,28 +46,60 @@ public struct AbyssReportNav: View {
             }
         case let .succeed(data):
             if let data = data as? AbyssReportSet4GI {
-                NavigationLink(destination: data.current.asView()) {
-                    InformationRowView(navTitle) {
-                        Text(verbatim: "Abyss Data")
-                    }
-                }
-                if let prevData = data.previous {
-                    NavigationLink(destination: prevData.asView()) {
-                        InformationRowView(navTitle) {
-                            Text(verbatim: "Abyss Data (Previous)")
+                InformationRowView(navTitle) {
+                    NavigationLink(destination: data.asView.navigationTitle(navTitle)) {
+                        HStack(spacing: 10) {
+                            let iconFrame: CGFloat = 40
+                            AbyssReportView4GI.abyssIcon
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: iconFrame, height: iconFrame)
+                            if !data.current.floors.isEmpty {
+                                HStack(alignment: .lastTextBaseline) {
+                                    Text(verbatim: "\(data.current.maxFloor)")
+                                        .font(.title)
+                                    HStack(alignment: .center, spacing: 2) {
+                                        Text(verbatim: "⭐️")
+                                            .frame(width: 20, height: 20)
+                                        Text(verbatim: " \(data.current.totalStar)")
+                                            .font(.title3)
+                                    }
+                                }
+                                Spacer()
+                            } else {
+                                Text("hylKit.abyssReport.noDataAvailableForThisSeason".i18nHYLKit)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }
             } else if let data = data as? AbyssReportSet4HSR {
-                NavigationLink(destination: data.current.asView()) {
-                    InformationRowView(navTitle) {
-                        Text(verbatim: "Abyss Data")
-                    }
-                }
-                if let prevData = data.previous {
-                    NavigationLink(destination: prevData.asView()) {
-                        InformationRowView(navTitle) {
-                            Text(verbatim: "Abyss Data (Previous)")
+                InformationRowView(navTitle) {
+                    NavigationLink(destination: data.asView.navigationTitle(navTitle)) {
+                        HStack(spacing: 10) {
+                            let iconFrame: CGFloat = 40
+                            AbyssReportView4HSR.abyssIcon
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: iconFrame, height: iconFrame)
+                            if data.current.hasData {
+                                HStack(alignment: .lastTextBaseline) {
+                                    Text(verbatim: "\(data.current.maxFloorNumStr)")
+                                        .font(.title)
+                                    HStack(alignment: .center, spacing: 2) {
+                                        Text(verbatim: "⭐️")
+                                            .frame(width: 20, height: 20)
+                                        Text(verbatim: " \(data.current.starNum)")
+                                            .font(.title3)
+                                    }
+                                }
+                                Spacer()
+                            } else {
+                                Text("hylKit.abyssReport.noDataAvailableForThisSeason".i18nHYLKit)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }

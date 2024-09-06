@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 import SwiftUI
 
 // MARK: - AbyssReportSet
@@ -40,8 +41,6 @@ public protocol AbyssReportView: View {
 
 // MARK: - Debug
 
-import PZBaseKit
-
 extension AbyssReportView {
     @MainActor @ViewBuilder public var debugBody: some View {
         VStack {
@@ -76,8 +75,12 @@ extension AbyssReportView {
         return dataText
     }
 
-    public func copyEncoded() {
+    func copyEncoded() {
         guard !textRaw.isEmpty else { return }
         Clipboard.writeString(textRaw)
+    }
+
+    var decoratedIconSize: CGFloat {
+        (ThisDevice.isSmallestSlideOverWindowWidth || ThisDevice.isSmallestHDScreenPhone) ? 45 : 55
     }
 }
