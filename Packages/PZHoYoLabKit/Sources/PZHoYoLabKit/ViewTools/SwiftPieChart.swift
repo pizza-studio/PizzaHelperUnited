@@ -12,7 +12,6 @@ import SwiftUI
 
 // MARK: - PieChartView
 
-@available(OSX 10.15, *)
 public struct PieChartView: View {
     // MARK: Lifecycle
 
@@ -119,8 +118,13 @@ public struct PieChartView: View {
                                 )) : names[activeIndex]
                         )
                         .font(.headline)
-                        .foregroundColor(Color(uiColor: .secondaryLabel))
-                        .shadow(color: .init(uiColor: .systemBackground), radius: 3)
+                        #if os(iOS) || targetEnvironment(macCatalyst)
+                            .foregroundColor(Color(uiColor: .secondaryLabel))
+                            .shadow(color: .init(uiColor: .systemBackground), radius: 3)
+                        #else
+                            .foregroundColor(Color(nsColor: NSColor.secondaryLabelColor))
+                            .shadow(color: .init(nsColor: NSColor.controlBackgroundColor), radius: 3)
+                        #endif
                         Text(
                             formatter(
                                 activeIndex == -1 ? values
@@ -128,7 +132,11 @@ public struct PieChartView: View {
                             )
                         )
                         .font(.title)
-                        .shadow(color: .init(uiColor: .systemBackground), radius: 3)
+                        #if os(iOS) || targetEnvironment(macCatalyst)
+                            .shadow(color: .init(uiColor: .systemBackground), radius: 3)
+                        #else
+                            .shadow(color: .init(nsColor: NSColor.controlBackgroundColor), radius: 3)
+                        #endif
                     }
                 }
                 PieChartRows(
@@ -186,37 +194,74 @@ public struct PieChartView: View {
 
 // MARK: - PieChartRows
 
-@available(OSX 10.15, *)
 struct PieChartRows: View {
+    // MARK: Lifecycle
+
+    init?(colors: [Color], names: [String], values: [String], percents: [String]) {
+        self.colors = colors
+        self.names = names
+        guard names.count == colors.count else { return nil }
+        self.values = values
+        guard names.count == values.count else { return nil }
+        self.percents = percents
+        guard percents.count == values.count else { return nil }
+    }
+
+    // MARK: Internal
+
+    struct DataSet: Hashable, Identifiable {
+        let color: Color
+        let name: String
+        let value: String
+        let percent: String
+
+        var id: Int { hashValue }
+    }
+
     var colors: [Color]
     var names: [String]
     var values: [String]
     var percents: [String]
 
+    var dataSets: [DataSet] {
+        var result = [DataSet]()
+        for (i, color) in colors.enumerated() {
+            result.append(.init(color: color, name: names[i], value: values[i], percent: percents[i]))
+        }
+        return result
+    }
+
     var body: some View {
         VStack {
-            ForEach(values.indices, id: \.self) { i in
+            ForEach(dataSets, id: \.self) { valueSet in
                 HStack {
-                    RoundedRectangle(cornerRadius: 5.0)
-                        .fill(colors[i])
+                    valueSet.color
+                        .clipShape(RoundedRectangle(cornerRadius: 5.0))
                         .frame(width: 20, height: 20)
-                    Text(names[i])
+                    Text(valueSet.name)
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text(values[i])
-                        Text(percents[i])
+                        Text(valueSet.value)
+                        Text(valueSet.percent)
+                        #if os(iOS) || targetEnvironment(macCatalyst)
                             .foregroundColor(Color(uiColor: .secondaryLabel))
+                        #else
+                            .foregroundColor(Color(nsColor: NSColor.secondaryLabelColor))
+                        #endif
                     }
                 }
             }
         }
+        #if os(iOS) || targetEnvironment(macCatalyst)
         .shadow(color: .init(uiColor: .systemBackground), radius: 3)
+        #else
+        .shadow(color: .init(nsColor: NSColor.controlBackgroundColor), radius: 3)
+        #endif
     }
 }
 
 // MARK: - PieChartView_Previews
 
-@available(OSX 10.15.0, *)
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
         PieChartView(
@@ -285,7 +330,6 @@ struct PieSlice: View {
 
 // MARK: - PieSliceData
 
-@available(OSX 10.15, *)
 struct PieSliceData {
     var startAngle: Angle
     var endAngle: Angle
@@ -296,7 +340,6 @@ struct PieSliceData {
 
 // MARK: - PieSlice_Previews
 
-@available(OSX 10.15.0, *)
 struct PieSlice_Previews: PreviewProvider {
     static var previews: some View {
         PieSlice(pieSliceData: PieSliceData(
