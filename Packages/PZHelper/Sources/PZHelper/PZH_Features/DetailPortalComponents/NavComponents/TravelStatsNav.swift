@@ -45,9 +45,9 @@ public struct TravelStatsNav: View {
                 }
             }
         case let .succeed(data):
-            InformationRowView(navTitle) {
-                if let data = data as? HoYo.TravelStatsData4GI {
-                    NavigationLink(destination: data.asView()) {
+            if let data = data as? HoYo.TravelStatsData4GI {
+                NavigationLink(destination: data.asView()) {
+                    InformationRowView(navTitle) {
                         HStack(spacing: 10) {
                             let iconFrame: CGFloat = 40
                             TravelStatsView4GI.treasureBoxImage
@@ -59,8 +59,10 @@ public struct TravelStatsNav: View {
                             Spacer()
                         }
                     }
-                } else if let data = data as? HoYo.TravelStatsData4HSR {
-                    NavigationLink(destination: data.asView()) {
+                }
+            } else if let data = data as? HoYo.TravelStatsData4HSR {
+                NavigationLink(destination: data.asView()) {
+                    InformationRowView(navTitle) {
                         HStack(spacing: 10) {
                             let iconFrame: CGFloat = 40
                             TravelStatsView4HSR.treasureBoxImage
