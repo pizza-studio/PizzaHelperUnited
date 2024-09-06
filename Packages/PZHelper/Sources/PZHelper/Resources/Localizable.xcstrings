@@ -3188,6 +3188,35 @@
         }
       }
     },
+    "settings.misc.faq" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "よくある質問 (FAQ)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "常见问题解答 (FAQ)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "常見問題解答 (FAQ)"
+          }
+        }
+      }
+    },
     "settings.privacy.abyssDataCollect" : {
       "localizations" : {
         "en" : {

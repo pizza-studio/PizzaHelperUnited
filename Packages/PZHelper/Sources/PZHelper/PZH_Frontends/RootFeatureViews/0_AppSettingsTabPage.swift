@@ -14,6 +14,7 @@ struct AppSettingsTabPage: View {
 
     enum Nav {
         case profileManager
+        case faq
         case cloudAccountSettings
         case uiSettings
         case privacySettings
@@ -26,6 +27,12 @@ struct AppSettingsTabPage: View {
                 Section {
                     NavigationLink(value: Nav.profileManager) {
                         Label("profileMgr.manage.title".i18nPZHelper, systemSymbol: .personTextRectangleFill)
+                    }
+                    NavigationLink(value: Nav.faq) {
+                        Label(
+                            "settings.misc.faq".i18nPZHelper,
+                            systemSymbol: .personFillQuestionmark
+                        )
                     }
                 } header: {
                     Text("settings.section.profileManagement.header".i18nPZHelper)
@@ -69,6 +76,15 @@ struct AppSettingsTabPage: View {
 
     // MARK: Private
 
+    private static let faqURLString: String = {
+        switch Bundle.main.preferredLocalizations.first?.prefix(2) {
+        case "zh":
+            return "https://gi.pizzastudio.org/static/faq.html"
+        default:
+            return "https://gi.pizzastudio.org/static/faq_en.html"
+        }
+    }()
+
     @State private var nav: Nav?
     @State private var sharedDB = Enka.Sputnik.shared
 
@@ -79,6 +95,10 @@ struct AppSettingsTabPage: View {
         NavigationStack {
             switch selection.wrappedValue {
             case .profileManager: ProfileManagerPageContent()
+            case .faq:
+                WebBrowserView(url: Self.faqURLString)
+                    .navigationTitle("settings.misc.faq".i18nPZHelper)
+                    .navigationBarTitleDisplayMode(.inline)
             case .cloudAccountSettings: CloudAccountSettingsPageContent()
             case .uiSettings: UISettingsPageContent()
             case .privacySettings: PrivacySettingsPageContent()
