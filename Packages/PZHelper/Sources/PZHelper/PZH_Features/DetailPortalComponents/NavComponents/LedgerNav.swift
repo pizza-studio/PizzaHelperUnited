@@ -83,7 +83,7 @@ public struct LedgerNav: View {
 
     // MARK: Internal
 
-    var navTitle: String {
+    @MainActor var navTitle: String {
         switch theVM.currentProfile?.game {
         case .genshinImpact: LedgerView4GI.navTitle
         case .starRail: LedgerView4HSR.navTitle
