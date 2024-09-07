@@ -2,123 +2,22 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Defaults
 import Foundation
 import PZAccountKit
 
 // MARK: - SnapHutao
 
 public enum SnapHutao {
-    public typealias CommissionResult = Result<
-        SnapHutao.ResponseModel,
-        SnapHutao.SHError
-    >
-
-    public struct ResponseModel: Codable {
-        public let retcode: Int
-        public let message: String
-    }
-
-    public enum SHError: Error {
-        case insufficientUserPermission
-        case otherError(String)
-        case uploadError(String)
-        case getResponseError(String)
-        case respDecodingError(String)
-    }
-
-    public static let sharedActor = DataActor()
-
-    public static var isCommissionPermittedByUser: Bool {
-        Defaults[.allowAbyssDataCollection]
-    }
-}
-
-// MARK: SnapHutao.DataActor
-
-extension SnapHutao {
-    public actor DataActor {
-        public func commitAbyssRecord(
-            profile: PZProfileMO,
-            abyssData: HoYo.AbyssReport4GI? = nil
-        ) async throws
-            -> CommissionResult {
-            let dataPack = try await AbyssDataPack(profile: profile, abyssData: abyssData)
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.sortedKeys]
-            return try await commitAbyssRecord(data: encoder.encode(dataPack))
-        }
-
-        public func commitAbyssRecord(
-            data dataToSend: Data
-        ) async throws
-            -> CommissionResult {
-            var components = URLComponents()
-            components.scheme = "https"
-            components.host = "homa.snapgenshin.com"
-            components.path = "/Record/Upload"
-            guard let url = components.url else {
-                throw SHError.uploadError("Remote URL Construction Failed.")
-            }
-            var request = URLRequest(url: url)
-            request.httpMethod = HoYo.HTTPMethod.post.rawValue
-            // 设置请求头
-            request.allHTTPHeaderFields = [
-                "Accept-Encoding": "gzip, deflate, br",
-                "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-                "Accept": "*/*",
-                "Connection": "keep-alive",
-                "Content-Type": "application/json",
-            ]
-            request.setValue(
-                "Pizza-Helper/5.0",
-                forHTTPHeaderField: "User-Agent"
-            )
-            request.httpBody = dataToSend
-            request.setValue(
-                "\(dataToSend.count)",
-                forHTTPHeaderField: "Content-Length"
-            )
-            do {
-                let (data, responseRAW) = try await URLSession.shared.data(for: request)
-                guard let response = responseRAW as? HTTPURLResponse else {
-                    throw SHError.getResponseError("Not a valid HTTPURLResponse.")
-                }
-                handleStatus: switch response.statusCode {
-                case 200: break handleStatus
-                default: throw SHError.getResponseError("Initial HTTP Response is not 200.")
-                }
-                let decoded = try JSONDecoder().decode(ResponseModel.self, from: data)
-                switch decoded.retcode {
-                case 0: return .success(decoded) // 完成工作，退出执行。
-                default: throw SHError.getResponseError("Final Server Response is not 0.")
-                }
-            } catch {
-                if error is DecodingError {
-                    return .failure(.respDecodingError("\(error)"))
-                }
-                if error is SHError {
-                    return .failure(.otherError("\(error)"))
-                } // 防止俄罗斯套娃。
-                return .failure(SHError.uploadError("\(error)"))
-            }
-        }
-    }
-}
-
-// MARK: SnapHutao.AbyssDataPack
-
-extension SnapHutao {
-    public struct AbyssDataPack: Codable {
-        public struct SpiralAbyss: Codable {
-            public struct Damage: Codable {
+    public struct AbyssDataPack: Codable, AbyssDataPackProtocol {
+        public struct SpiralAbyss: Codable, Hashable {
+            public struct Damage: Codable, Hashable {
                 public var avatarId: Int
                 public var aalue: Int
             }
 
-            public struct Floor: Codable {
-                public struct Level: Codable {
-                    public struct Battle: Codable {
+            public struct Floor: Codable, Hashable {
+                public struct Level: Codable, Hashable {
+                    public struct Battle: Codable, Hashable {
                         public var index: Int
                         public var avatars: [Int]
                     }
@@ -141,7 +40,7 @@ extension SnapHutao {
             public var floors: [Floor]
         }
 
-        public struct Avatar: Codable {
+        public struct Avatar: Codable, Hashable {
             public var avatarId: Int
             public var weaponId: Int
             public var reliquarySetIds: [Int]
@@ -153,6 +52,54 @@ extension SnapHutao {
         public var spiralAbyss: SpiralAbyss?
         public var avatars: [Avatar]
         public var reservedUserName: String
+
+        public var pizzaCalculatedSeasonInt: Int
+
+        /// 返回结尾只有0或1的abyssSeason信息
+        public func getLocalAbyssSeason() -> Int {
+            if pizzaCalculatedSeasonInt % 2 == 0 {
+                return (pizzaCalculatedSeasonInt / 10) * 10
+            } else {
+                return (pizzaCalculatedSeasonInt / 10) * 10 + 1
+            }
+        }
+    }
+}
+
+extension SnapHutao.AbyssDataPack {
+    public init(
+        profile: PZProfileMO,
+        abyssData: HoYo.AbyssReport4GI? = nil,
+        inventoryData: HoYo.CharInventory4GI? = nil
+    ) async throws {
+        guard profile.game == .genshinImpact else { throw AbyssCollector.ACError.wrongGame }
+        guard AbyssCollector.isCommissionPermittedByUser else {
+            throw AbyssCollector.ACError.insufficientUserPermission
+        }
+        self.uid = profile.uid
+        self.identity = "GenshinPizzaHelper"
+        self.reservedUserName = ""
+        var abyssData = abyssData
+        if abyssData == nil {
+            abyssData = try await HoYo.abyssReportData4GI(for: profile)
+        }
+        guard let abyssData else { throw AbyssCollector.ACError.abyssDataNotSupplied }
+        guard abyssData.totalStar == 36 else { throw AbyssCollector.ACError.insufficientStars }
+        var inventoryData = inventoryData
+        if inventoryData == nil {
+            inventoryData = try await HoYo.characterInventory4GI(for: profile)
+        }
+        guard let inventoryData else { throw AbyssCollector.ACError.inventoryDataNotSupplied }
+        self.avatars = inventoryData.avatars.map { avatar in
+            .init(
+                avatarId: avatar.id,
+                weaponId: avatar.weapon.id,
+                reliquarySetIds: avatar.reliquaries.map(\.set.id),
+                activedConstellationNumber: avatar.activedConstellationNum
+            )
+        }
+        self.spiralAbyss = .init(data: abyssData)
+        self.pizzaCalculatedSeasonInt = try AbyssCollector.createAbyssSeasonStr(startTime: abyssData.startTime)
     }
 }
 

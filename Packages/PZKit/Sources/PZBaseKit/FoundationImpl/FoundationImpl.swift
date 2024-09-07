@@ -118,6 +118,13 @@ extension String {
             String(format: "%02hhx", $0)
         }.joined()
     }
+
+    public var sha256: String {
+        let digest = SHA256.hash(data: Data(utf8))
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
+    }
 }
 
 // MARK: - Locale Implementations.
