@@ -107,7 +107,7 @@ struct ShowTeamPercentageView: View {
             let rest = 4 - team.team.count
             if rest > 0 {
                 ForEach((0 ..< rest).map(\.description), id: \.self) { _ in
-                    Enka.ProfileIconView.anonymousIcon4SUI
+                    AnonymousIconView.rawImage4SUI
                         .frame(width: 48, height: 48)
                         .opacity(0.3)
                 }

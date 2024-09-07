@@ -161,34 +161,41 @@ extension AbyssReportView4GI {
             var guardedAvatars: [HoYo.AbyssReport4GI.Floor.Level.Battle.Avatar] {
                 var result = node.avatars
                 while result.count < 4 {
-                    result.append(.init(id: -213, icon: "", level: -213, rarity: 5))
+                    result.append(.init(id: -114_514, icon: "", level: -213, rarity: 5))
                 }
                 return result
             }
-            ForEach(node.avatars) { avatar in
+            ForEach(guardedAvatars) { avatar in
                 let decoratedIconSize = decoratedIconSize
+                let isNullAvatar: Bool = avatar.id == -114_514
                 Group {
-                    if avatar.id == -114_514 {
-                        Color.primary.opacity(0.3).frame(width: decoratedIconSize)
-                    } else if ThisDevice.isSmallestHDScreenPhone {
-                        CharacterIconView(
-                            charID: avatar.id.description,
-                            size: decoratedIconSize,
-                            circleClipped: false,
-                            clipToHead: true
-                        )
-                        .corneredTag(
-                            verbatim: avatar.level.description,
-                            alignment: .bottomTrailing,
-                            textSize: 11
-                        )
-                    } else {
-                        CharacterIconView(charID: avatar.id.description, cardSize: decoratedIconSize / 0.74)
+                    if ThisDevice.isSmallestHDScreenPhone {
+                        if isNullAvatar {
+                            AnonymousIconView(decoratedIconSize, cutType: .roundRectangle)
+                        } else {
+                            CharacterIconView(
+                                charID: avatar.id.description,
+                                size: decoratedIconSize,
+                                circleClipped: false,
+                                clipToHead: true
+                            )
                             .corneredTag(
-                                verbatim: "Lv.\(avatar.level.description)",
-                                alignment: .bottom,
+                                verbatim: avatar.level.description,
+                                alignment: .bottomTrailing,
                                 textSize: 11
                             )
+                        }
+                    } else {
+                        if isNullAvatar {
+                            AnonymousIconView(decoratedIconSize / 0.74, cutType: .card)
+                        } else {
+                            CharacterIconView(charID: avatar.id.description, cardSize: decoratedIconSize / 0.74)
+                                .corneredTag(
+                                    verbatim: "Lv.\(avatar.level.description)",
+                                    alignment: .bottom,
+                                    textSize: 11
+                                )
+                        }
                     }
                 }.frame(
                     width: decoratedIconSize,
@@ -231,12 +238,9 @@ extension AbyssReportView4GI {
 
 #Preview {
     NavigationStack {
-        Form {
-            AbyssReportView4GI(data: try! AbyssReportTestAssets.giCurr.getReport4GI())
-        }
-        .formStyle(.grouped)
+        AbyssReportView4GI(data: try! AbyssReportTestAssets.giCurr.getReport4GI())
+            .formStyle(.grouped)
     }
-    .frame(width: 480, height: 720)
 }
 
 #endif
