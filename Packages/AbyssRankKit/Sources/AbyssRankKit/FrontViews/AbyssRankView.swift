@@ -53,7 +53,7 @@ public struct AbyssRankView: View {
             ToolbarItem(placement: .confirmationAction) {
                 NavigationLink {
                     WebBrowserView(url: Self.faqURL)
-                        .navigationTitle("abyssRankKit.rank.faq")
+                        .navigationTitle("abyssRankKit.rank.faq".i18nAbyssRank)
                         .navBarTitleDisplayMode(.inline)
                 } label: {
                     Image(systemSymbol: .questionmarkCircle)
