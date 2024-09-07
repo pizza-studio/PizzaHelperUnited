@@ -17,7 +17,7 @@ enum ServerChoice: Hashable {
         case .all:
             return "abyssRankKit.rank.server.filter.all".i18nAbyssRank
         case let .server(server):
-            return server.localizedDescription
+            return server.localizedDescriptionByGame
         }
     }
 }
