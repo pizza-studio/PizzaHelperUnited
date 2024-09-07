@@ -47,6 +47,13 @@ struct TodayTabPage: View {
             .refreshable {
                 broadcaster.refreshPage()
             }
+            .onAppear {
+                if let theGame = game, !games.contains(theGame) {
+                    withAnimation {
+                        game = .none
+                    }
+                }
+            }
         }
     }
 
@@ -69,12 +76,16 @@ struct TodayTabPage: View {
         Picker("".description, selection: $game.animation()) {
             Text(Pizza.SupportedGame?.none.localizedShortName)
                 .tag(nil as Pizza.SupportedGame?)
-            Text(Pizza.SupportedGame.genshinImpact.localizedShortName)
-                .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)
-            Text(Pizza.SupportedGame.starRail.localizedShortName)
-                .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
-            Text(Pizza.SupportedGame.zenlessZone.localizedShortName)
-                .tag(Pizza.SupportedGame.zenlessZone as Pizza.SupportedGame?)
+            ForEach(games) { game in
+                Text(game.localizedShortName)
+                    .tag(game as Pizza.SupportedGame?)
+            }
+        }
+    }
+
+    private var games: [Pizza.SupportedGame] {
+        profiles.map(\.game).reduce(into: [Pizza.SupportedGame]()) {
+            if !$0.contains($1) { $0.append($1) }
         }
     }
 
