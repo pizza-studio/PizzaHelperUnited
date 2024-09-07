@@ -95,10 +95,25 @@ public struct AbyssReportView4HSR: AbyssReportView {
                         Spacer()
                         drawBattleNode(floorData.node2, label: "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit)
                     }
+                    let theContentLabeledSansSpacers = Group {
+                        drawBattleNode(
+                            floorData.node1,
+                            label: "hylKit.abyssReport.floor.1stHalf".i18nHYLKit,
+                            spacers: false
+                        )
+                        Spacer()
+                        drawBattleNode(
+                            floorData.node2,
+                            label: "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit,
+                            spacers: false
+                        )
+                    }
                     ViewThatFits(in: .horizontal) {
                         HStack { theContentLabeled }
+                        HStack { theContentLabeledSansSpacers }
                         HStack { theContent }
                         VStack { theContentLabeled }
+                        VStack { theContentLabeledSansSpacers }
                         VStack { theContent }
                     }
                 }
@@ -119,13 +134,12 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     @MainActor @ViewBuilder
     func drawBattleNode(_ node: HoYo.AbyssReport4HSR.FHNode, label: String = "", spacers: Bool = true) -> some View {
-        if !label.isEmpty {
-            Text(label)
-                .fontDesign(.monospaced)
-                .padding()
-        }
-        if spacers { Spacer() }
         HStack {
+            if !label.isEmpty {
+                Text(label)
+                    .fontDesign(.monospaced)
+            }
+            if spacers { Spacer() }
             var guardedAvatars: [HoYo.AbyssReport4HSR.FHAvatar] {
                 var result = node.avatars
                 while result.count < 4 {
