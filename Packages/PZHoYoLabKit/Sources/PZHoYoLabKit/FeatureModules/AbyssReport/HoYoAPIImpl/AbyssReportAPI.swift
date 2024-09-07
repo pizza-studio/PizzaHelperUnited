@@ -11,7 +11,7 @@ extension HoYo {
         switch profile.game {
         case .genshinImpact:
             let current = try await abyssReportData4GI(for: profile, isPreviousRound: false)
-            let previous = try? await abyssReportData4GI(for: profile, isPreviousRound: true)
+            let previous = try await abyssReportData4GI(for: profile, isPreviousRound: true)
             defer {
                 Task(priority: .background) {
                     try? await SnapHutao.commitAbyssRecord(profile: profile, abyssData: current)
@@ -20,7 +20,7 @@ extension HoYo {
             return AbyssReportSet4GI(current: current, previous: previous)
         case .starRail:
             let current = try await abyssReportData4HSR(for: profile, isPreviousRound: false)
-            let previous = try? await abyssReportData4HSR(for: profile, isPreviousRound: true)
+            let previous = try await abyssReportData4HSR(for: profile, isPreviousRound: true)
             return AbyssReportSet4HSR(current: current, previous: previous)
         default: return nil
         }
