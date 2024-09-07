@@ -50,23 +50,30 @@ public final class DetailPortalViewModel {
     public var taskStatus4Ledger: Status<any Ledger> = .standby
     public var taskStatus4TravelStats: Status<any TravelStats> = .standby
     public var taskStatus4AbyssReport: Status<any AbyssReportSet> = .standby
+    public let abyssCollector: AbyssCollector = .init()
+
+    @ObservationIgnored public var refreshingStatus: Status<Void> = .standby
 
     public var currentProfile: PZProfileMO? {
         didSet {
+            if case let .progress(task) = refreshingStatus { task.cancel() }
+            refreshingStatus = .standby
             refresh()
         }
     }
 
     public func refresh() {
-        Task {
+        guard case .standby = refreshingStatus else { return }
+        let task = Task {
             await fetchCharacterInventoryList()
             await fetchTravelStatsData()
             await fetchLedgerData()
             await fetchAbyssReportSet()
+            await commitAbyssCollectionData()
+            refreshingStatus = .standby
         }
+        refreshingStatus = .progress(task)
     }
-
-    // MARK: Private
 }
 
 extension DetailPortalViewModel {
@@ -179,6 +186,61 @@ extension DetailPortalViewModel {
             withAnimation {
                 self.taskStatus4AbyssReport = .progress(task)
             }
+        }
+    }
+}
+
+extension DetailPortalViewModel {
+    func commitAbyssCollectionData() async {
+        guard AbyssCollector.isCommissionPermittedByUser else { return }
+        Task(priority: .background) { @MainActor in
+            guard let profile = currentProfile else { return }
+            guard profile.game == .genshinImpact else { return }
+            if case let .progress(task) = taskStatus4TravelStats {
+                await task.value
+            }
+            if case let .progress(task) = taskStatus4AbyssReport {
+                await task.value
+            }
+            if case let .progress(task) = taskStatus4CharInventory {
+                await task.value
+            }
+            guard case let .succeed(travelStats) = taskStatus4TravelStats,
+                  case let .succeed(abyssDataSet) = taskStatus4AbyssReport,
+                  let abyssData = (abyssDataSet as? AbyssReportSet4GI)?.current,
+                  case let .succeed(inventoryData) = taskStatus4CharInventory
+            else {
+                return
+            }
+
+            let cdDate = await abyssCollector.cooldownTime
+            let cdTime = cdDate.coolingDownTimeRemaining
+            guard cdTime < 60 else {
+                print("深渊资料每分钟最多执行一次上传，请在\(cdTime)秒后刷新")
+                return // throw ACError.cooldownPeriodNotPassed
+            }
+
+            for commissionType in AbyssCollector.CommissionType.allCases {
+                do {
+                    let holdingResult = try await abyssCollector.commitAbyssRecord(
+                        profile: profile,
+                        abyssData: abyssData,
+                        inventoryData: inventoryData as? HoYo.CharInventory4GI,
+                        travelStats: travelStats as? HoYo.TravelStatsData4GI,
+                        commissionType: commissionType
+                    )
+                    guard holdingResult.hasNoCriticalError else {
+                        switch holdingResult {
+                        case .success: return
+                        case let .failure(theError): throw theError
+                        }
+                    }
+                } catch {
+                    print(error)
+                    return
+                }
+            }
+            await abyssCollector.updateCDTime()
         }
     }
 }
