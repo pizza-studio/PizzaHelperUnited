@@ -18,7 +18,12 @@ extension Enka {
             } else {
                 self.uid = nil
             }
-            self.message = try container.decodeIfPresent(String.self, forKey: .message)
+            let primaryMessage = try container.decodeIfPresent(String.self, forKey: .message)
+            var secondaryMessage = try container.decodeIfPresent(String.self, forKey: .detail)
+            if let message2nd = secondaryMessage {
+                secondaryMessage? = "[MicroGG] \(message2nd)"
+            }
+            self.message = primaryMessage ?? secondaryMessage
             /// 特殊措施：将 avatarInfoList 塞到 detailInfo 里面，方便本地存根。
             if let guardedDetailInfo = detailInfo, guardedDetailInfo.avatarDetailList.isEmpty {
                 detailInfo?.avatarDetailList = try container.decodeIfPresent(
@@ -40,6 +45,8 @@ extension Enka {
         public var ttl: Int?
         /// Enka 偶尔会返回错误讯息。
         public var message: String?
+        // MicroGG 错误讯息。
+        public var detail: String?
 
         public var uid: String? {
             didSet {
@@ -57,6 +64,7 @@ extension Enka {
             case ttl
             case uid
             case message
+            case detail
         }
 
         // MARK: Private
