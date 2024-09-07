@@ -106,8 +106,8 @@ public struct CharacterIconView: View {
                 } else {
                     newResult
                         .background { currentBg }
-                        .clipShape(Rectangle())
-                        .contentShape(Rectangle())
+                        .clipShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
+                        .contentShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
                 }
             }
             .compositingGroup()
@@ -167,8 +167,8 @@ public struct CharacterIconView: View {
                 } else {
                     newResult
                         .background { bgColor }
-                        .clipShape(Rectangle())
-                        .contentShape(Rectangle())
+                        .clipShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
+                        .contentShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
                 }
             }
             .compositingGroup()
@@ -178,6 +178,8 @@ public struct CharacterIconView: View {
     }
 
     // MARK: Private
+
+    private static let roundedRectRatio = 179.649 / 1024
 
     @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleIcon: Bool
     @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
