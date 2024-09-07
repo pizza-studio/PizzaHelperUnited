@@ -27,73 +27,81 @@ public enum SnapHutao {
         case respDecodingError(String)
     }
 
+    public static let sharedActor = DataActor()
+
     public static var isCommissionPermittedByUser: Bool {
         Defaults[.allowAbyssDataCollection]
     }
+}
 
-    public static func commitAbyssRecord(
-        profile: PZProfileMO,
-        abyssData: HoYo.AbyssReport4GI? = nil
-    ) async throws
-        -> CommissionResult {
-        let dataPack = try await AbyssDataPack(profile: profile, abyssData: abyssData)
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = [.sortedKeys]
-        return try await commitAbyssRecord(data: encoder.encode(dataPack))
-    }
+// MARK: SnapHutao.DataActor
 
-    public static func commitAbyssRecord(
-        data dataToSend: Data
-    ) async throws
-        -> CommissionResult {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "homa.snapgenshin.com"
-        components.path = "/Record/Upload"
-        guard let url = components.url else {
-            throw SHError.uploadError("Remote URL Construction Failed.")
+extension SnapHutao {
+    public actor DataActor {
+        public func commitAbyssRecord(
+            profile: PZProfileMO,
+            abyssData: HoYo.AbyssReport4GI? = nil
+        ) async throws
+            -> CommissionResult {
+            let dataPack = try await AbyssDataPack(profile: profile, abyssData: abyssData)
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.sortedKeys]
+            return try await commitAbyssRecord(data: encoder.encode(dataPack))
         }
-        var request = URLRequest(url: url)
-        request.httpMethod = HoYo.HTTPMethod.post.rawValue
-        // 设置请求头
-        request.allHTTPHeaderFields = [
-            "Accept-Encoding": "gzip, deflate, br",
-            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-            "Accept": "*/*",
-            "Connection": "keep-alive",
-            "Content-Type": "application/json",
-        ]
-        request.setValue(
-            "Pizza-Helper/5.0",
-            forHTTPHeaderField: "User-Agent"
-        )
-        request.httpBody = dataToSend
-        request.setValue(
-            "\(dataToSend.count)",
-            forHTTPHeaderField: "Content-Length"
-        )
-        do {
-            let (data, responseRAW) = try await URLSession.shared.data(for: request)
-            guard let response = responseRAW as? HTTPURLResponse else {
-                throw SHError.getResponseError("Not a valid HTTPURLResponse.")
+
+        public func commitAbyssRecord(
+            data dataToSend: Data
+        ) async throws
+            -> CommissionResult {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = "homa.snapgenshin.com"
+            components.path = "/Record/Upload"
+            guard let url = components.url else {
+                throw SHError.uploadError("Remote URL Construction Failed.")
             }
-            handleStatus: switch response.statusCode {
-            case 200: break handleStatus
-            default: throw SHError.getResponseError("Initial HTTP Response is not 200.")
+            var request = URLRequest(url: url)
+            request.httpMethod = HoYo.HTTPMethod.post.rawValue
+            // 设置请求头
+            request.allHTTPHeaderFields = [
+                "Accept-Encoding": "gzip, deflate, br",
+                "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+                "Accept": "*/*",
+                "Connection": "keep-alive",
+                "Content-Type": "application/json",
+            ]
+            request.setValue(
+                "Pizza-Helper/5.0",
+                forHTTPHeaderField: "User-Agent"
+            )
+            request.httpBody = dataToSend
+            request.setValue(
+                "\(dataToSend.count)",
+                forHTTPHeaderField: "Content-Length"
+            )
+            do {
+                let (data, responseRAW) = try await URLSession.shared.data(for: request)
+                guard let response = responseRAW as? HTTPURLResponse else {
+                    throw SHError.getResponseError("Not a valid HTTPURLResponse.")
+                }
+                handleStatus: switch response.statusCode {
+                case 200: break handleStatus
+                default: throw SHError.getResponseError("Initial HTTP Response is not 200.")
+                }
+                let decoded = try JSONDecoder().decode(ResponseModel.self, from: data)
+                switch decoded.retcode {
+                case 0: return .success(decoded) // 完成工作，退出执行。
+                default: throw SHError.getResponseError("Final Server Response is not 0.")
+                }
+            } catch {
+                if error is DecodingError {
+                    return .failure(.respDecodingError("\(error)"))
+                }
+                if error is SHError {
+                    return .failure(.otherError("\(error)"))
+                } // 防止俄罗斯套娃。
+                return .failure(SHError.uploadError("\(error)"))
             }
-            let decoded = try JSONDecoder().decode(ResponseModel.self, from: data)
-            switch decoded.retcode {
-            case 0: return .success(decoded) // 完成工作，退出执行。
-            default: throw SHError.getResponseError("Final Server Response is not 0.")
-            }
-        } catch {
-            if error is DecodingError {
-                return .failure(.respDecodingError("\(error)"))
-            }
-            if error is SHError {
-                return .failure(.otherError("\(error)"))
-            } // 防止俄罗斯套娃。
-            return .failure(SHError.uploadError("\(error)"))
         }
     }
 }

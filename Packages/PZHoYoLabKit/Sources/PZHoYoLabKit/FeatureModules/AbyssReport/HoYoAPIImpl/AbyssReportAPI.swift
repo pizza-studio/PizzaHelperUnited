@@ -14,7 +14,7 @@ extension HoYo {
             let previous = try await abyssReportData4GI(for: profile, isPreviousRound: true)
             defer {
                 Task(priority: .background) {
-                    try? await SnapHutao.commitAbyssRecord(profile: profile, abyssData: current)
+                    try? await SnapHutao.sharedActor.commitAbyssRecord(profile: profile, abyssData: current)
                 }
             }
             return AbyssReportSet4GI(current: current, previous: previous)
