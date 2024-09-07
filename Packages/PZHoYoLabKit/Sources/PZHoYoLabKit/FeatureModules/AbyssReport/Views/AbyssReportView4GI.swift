@@ -169,7 +169,7 @@ extension AbyssReportView4GI {
                 let decoratedIconSize = decoratedIconSize
                 Group {
                     if avatar.id == -114_514 {
-                        Color.primary.opacity(0.3)
+                        Color.primary.opacity(0.3).frame(width: decoratedIconSize)
                     } else if ThisDevice.isSmallestHDScreenPhone {
                         CharacterIconView(
                             charID: avatar.id.description,
@@ -177,6 +177,7 @@ extension AbyssReportView4GI {
                             circleClipped: false,
                             clipToHead: true
                         )
+                        .clipShape(RoundedRectangle(cornerRadius: decoratedIconSize / 8))
                         .corneredTag(
                             verbatim: avatar.level.description,
                             alignment: .bottomTrailing,
