@@ -29,9 +29,9 @@ public struct AbyssReportView4GI: AbyssReportView {
     @MainActor public var body: some View {
         GeometryReader { geometry in
             contents.onAppear {
-                containerSize = geometry.size
-            }.onChange(of: geometry.size) { _, newSize in
-                containerSize = newSize
+                containerWidth = geometry.size.width
+            }.onChange(of: geometry.size.width) { _, newSize in
+                containerWidth = newSize
             }
         }
     }
@@ -71,11 +71,11 @@ public struct AbyssReportView4GI: AbyssReportView {
 
     // MARK: Private
 
-    @State private var containerSize: CGSize = ThisDevice.basicWindowSize
+    @State private var containerWidth: CGFloat = ThisDevice.basicWindowSize.width
     @State private var orientation = DeviceOrientation()
     @Namespace private var animation
 
-    private var columns: Int { min(max(Int(floor($containerSize.wrappedValue.width / 200)), 2), 4) }
+    private var columns: Int { min(max(Int(floor($containerWidth.wrappedValue / 200)), 2), 4) }
 }
 
 extension AbyssReportView4GI {
