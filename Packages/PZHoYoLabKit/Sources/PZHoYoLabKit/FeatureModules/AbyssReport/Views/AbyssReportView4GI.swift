@@ -106,6 +106,7 @@ extension AbyssReportView4GI {
         VStack {
             HStack {
                 Text("hylKit.abyssReport.room.title:\(levelData.index.description)", bundle: .module)
+                    .fontWeight(.black)
                 Spacer()
                 Text(verbatim: String(repeating: " ⭐️", count: levelData.star))
             }
