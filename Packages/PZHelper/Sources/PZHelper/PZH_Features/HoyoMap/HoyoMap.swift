@@ -34,7 +34,7 @@ struct HoYoMapView: View {
             }
         }
         .navigationTitle(Self.navTitle)
-        .navigationBarTitleDisplayMode(.inline)
+        .navBarTitleDisplayMode(.inline)
         #if os(iOS) || targetEnvironment(macCatalyst)
             .toolbar(.hidden, for: .tabBar)
         #endif

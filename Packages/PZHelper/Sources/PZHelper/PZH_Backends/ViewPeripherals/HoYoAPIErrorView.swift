@@ -102,7 +102,7 @@ extension HoYoAPIErrorView {
                             )
                             .listContainerBackground()
                             .toolbar {
-                                ToolbarItem(placement: .navigationBarLeading) {
+                                ToolbarItem(placement: .cancellationAction) {
                                     Button("sys.cancel".i18nBaseKit) {
                                         status = .pending
                                         sheetItem = nil

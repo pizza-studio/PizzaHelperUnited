@@ -38,50 +38,49 @@ struct AppLanguageSwitcher: View {
     // MARK: Public
 
     @MainActor public var body: some View {
-        switch OS.type {
-        case .macOS:
+        #if os(iOS) && !targetEnvironment(macCatalyst)
+        Button {
+            UIApplication.shared.open(UIApplication.openSettingsURLString.asURL)
+        } label: {
             Label {
-                VStack {
-                    HStack {
-                        Text("settings.appLanguage.title".i18nPZHelper)
-                        Spacer()
-                        Picker("".description, selection: $appleLanguageTag) {
-                            Text("app.language.followSystemDefault".i18nBaseKit).tag("auto")
-                            ForEach(AppLanguage.allCases) { appLang in
-                                Text(appLang.localizedDescription).tag(appLang.rawValue)
-                            }
-                        }.labelsHidden()
-                    }
-                    Text("settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper)
-                        .font(.footnote).foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
+                Text("settings.appLanguage.title".i18nPZHelper)
+                    .foregroundColor(.primary)
             } icon: {
                 Image(systemSymbol: .globe)
             }
-            .onChange(of: appLanguage) {
-                alertPresented = true
-            }
-            .alert(
-                "settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper,
-                isPresented: $alertPresented
-            ) {
-                Button("sys.ok".i18nBaseKit) { exit(0) }
-            } message: {
-                Text("app.language.restartRequired.description".i18nPZHelper)
-            }
-        default:
-            Button {
-                UIApplication.shared.open(UIApplication.openSettingsURLString.asURL)
-            } label: {
-                Label {
-                    Text("settings.appLanguage.title".i18nPZHelper)
-                        .foregroundColor(.primary)
-                } icon: {
-                    Image(systemSymbol: .globe)
-                }
-            }
         }
+        #else
+        Label {
+            VStack {
+                HStack {
+                    Text("settings.appLanguage.title".i18nPZHelper)
+                    Spacer()
+                    Picker("".description, selection: $appleLanguageTag) {
+                        Text("app.language.followSystemDefault".i18nBaseKit).tag("auto")
+                        ForEach(AppLanguage.allCases) { appLang in
+                            Text(appLang.localizedDescription).tag(appLang.rawValue)
+                        }
+                    }.labelsHidden()
+                }
+                Text("settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper)
+                    .font(.footnote).foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        } icon: {
+            Image(systemSymbol: .globe)
+        }
+        .onChange(of: appLanguage) {
+            alertPresented = true
+        }
+        .alert(
+            "settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper,
+            isPresented: $alertPresented
+        ) {
+            Button("sys.ok".i18nBaseKit) { exit(0) }
+        } message: {
+            Text("app.language.restartRequired.description".i18nPZHelper)
+        }
+        #endif
     }
 
     // MARK: Private
