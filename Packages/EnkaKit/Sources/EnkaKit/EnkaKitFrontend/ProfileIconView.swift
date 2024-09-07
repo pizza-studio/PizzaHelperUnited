@@ -52,7 +52,6 @@ extension Enka {
             Image(nullPhotoAssetName, bundle: Bundle.module)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .clipShape(.circle)
         }
 
         public let uid: String
@@ -65,6 +64,7 @@ extension Enka {
                     profile.localFittingIcon4SUI
                 } else {
                     Self.anonymousIcon4SUI
+                        .clipShape(.circle)
                         .onAppear {
                             Task.detached { @MainActor in
                                 try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
@@ -76,13 +76,14 @@ extension Enka {
                     profile.localFittingIcon4SUI
                 } else {
                     Self.anonymousIcon4SUI
+                        .clipShape(.circle)
                         .onAppear {
                             Task.detached { @MainActor in
                                 try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
                             }
                         }
                 }
-            case .zenlessZone: Self.anonymousIcon4SUI // 临时设定。
+            case .zenlessZone: Self.anonymousIcon4SUI.clipShape(.circle) // 临时设定。
             }
         }
 
