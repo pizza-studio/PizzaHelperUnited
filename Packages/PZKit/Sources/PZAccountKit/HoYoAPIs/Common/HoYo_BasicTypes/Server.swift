@@ -67,6 +67,10 @@ extension HoYo {
             }
         }
 
+        public var timeZone: TimeZone {
+            .init(secondsFromGMT: timeZoneDelta * 3600) ?? .current
+        }
+
         public var region: HoYo.AccountRegion {
             switch self {
             case let .celestia(supportedGame): return .miyoushe(supportedGame)
