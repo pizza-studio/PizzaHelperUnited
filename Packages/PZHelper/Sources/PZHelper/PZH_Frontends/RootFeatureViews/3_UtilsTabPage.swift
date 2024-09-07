@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import AbyssRankKit
 import GachaKit
 import PZAccountKit
 import PZBaseKit
@@ -13,6 +14,7 @@ struct UtilsTabPage: View {
     // MARK: Internal
 
     enum Nav {
+        case giAbyssRank
         case wallpaperGallery
         case pizzaDictionary
         case hoyoMap
@@ -22,6 +24,16 @@ struct UtilsTabPage: View {
     @MainActor var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
+                Section {
+                    NavigationLink(value: Nav.giAbyssRank) {
+                        Label {
+                            Text(AbyssRankView.navTitle)
+                        } icon: {
+                            AbyssRankView.navIcon.resizable().aspectRatio(contentMode: .fit)
+                        }
+                    }
+                }
+
                 Section {
                     NavigationLink(value: Nav.wallpaperGallery) {
                         Label(WallpaperGalleryViewContent.navTitle, systemSymbol: .photoOnRectangleAngled)
@@ -80,6 +92,7 @@ struct UtilsTabPage: View {
     private func navigationDetail(selection: Binding<Nav?>) -> some View {
         NavigationStack {
             switch selection.wrappedValue {
+            case .giAbyssRank: AbyssRankView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
             case .gachaCloudDebug: GachaMODebugView()
