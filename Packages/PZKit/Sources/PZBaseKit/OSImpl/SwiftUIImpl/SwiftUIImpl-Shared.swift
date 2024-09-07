@@ -176,6 +176,21 @@ extension Font {
         return 13
         #endif
     }()
+
+
+  public static let baseFontSizeSmall: CGFloat = {
+      #if os(OSX)
+      return NSFont.smallSystemFontSize
+      #elseif targetEnvironment(macCatalyst)
+      return UIFont.smallSystemFontSize / 0.77
+      #elseif os(iOS)
+      return UIFont.smallSystemFontSize
+      #elseif os(watchOS)
+      return 11
+      #else
+      return 11
+      #endif
+  }()
 }
 
 extension CGColor {

@@ -54,6 +54,14 @@ extension UIColor {
     }
 }
 
+
+#if !canImport(UIKit) && canImport(AppKit)
+extension UIColor {
+    public static var secondarySystemBackground: UIColor { .windowBackgroundColor }
+    public static var systemBackground: UIColor { .controlBackgroundColor }
+}
+#endif
+
 extension Color {
     public static var colorSystemGray6: Color {
         #if os(OSX)
