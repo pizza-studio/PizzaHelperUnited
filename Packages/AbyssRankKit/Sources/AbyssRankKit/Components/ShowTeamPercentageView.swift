@@ -59,6 +59,9 @@ struct ShowTeamPercentageView: View {
                 .frame(maxWidth: 414)
                 Spacer()
             }
+            if result == nil {
+                ProgressView()
+            }
         }
         .background(Color(viewBackgroundColor))
     }
@@ -107,9 +110,7 @@ struct ShowTeamPercentageView: View {
             let rest = 4 - team.team.count
             if rest > 0 {
                 ForEach((0 ..< rest).map(\.description), id: \.self) { _ in
-                    AnonymousIconView.rawImage4SUI
-                        .frame(width: 48, height: 48)
-                        .opacity(0.3)
+                    AnonymousIconView(48, cutType: .roundRectangle)
                 }
             }
             Spacer()
