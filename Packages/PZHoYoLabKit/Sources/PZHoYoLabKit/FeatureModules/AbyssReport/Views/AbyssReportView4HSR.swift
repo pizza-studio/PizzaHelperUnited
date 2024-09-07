@@ -147,30 +147,37 @@ public struct AbyssReportView4HSR: AbyssReportView {
                 }
                 return result
             }
-            ForEach(node.avatars) { avatar in
+            ForEach(guardedAvatars) { avatar in
                 let decoratedIconSize = decoratedIconSize
+                let isNullAvatar: Bool = avatar.id == -114_514
                 Group {
-                    if avatar.id == -114_514 {
-                        Color.primary.opacity(0.3).frame(width: decoratedIconSize)
-                    } else if ThisDevice.isSmallestHDScreenPhone {
-                        CharacterIconView(
-                            charID: avatar.id.description,
-                            size: decoratedIconSize,
-                            circleClipped: false,
-                            clipToHead: true
-                        )
-                        .corneredTag(
-                            verbatim: avatar.level.description,
-                            alignment: .bottomTrailing,
-                            textSize: 11
-                        )
-                    } else {
-                        CharacterIconView(charID: avatar.id.description, cardSize: decoratedIconSize / 0.74)
+                    if ThisDevice.isSmallestHDScreenPhone {
+                        if isNullAvatar {
+                            AnonymousIconView(decoratedIconSize, cutType: .roundRectangle)
+                        } else {
+                            CharacterIconView(
+                                charID: avatar.id.description,
+                                size: decoratedIconSize,
+                                circleClipped: false,
+                                clipToHead: true
+                            )
                             .corneredTag(
-                                verbatim: "Lv.\(avatar.level.description)",
-                                alignment: .bottom,
+                                verbatim: avatar.level.description,
+                                alignment: .bottomTrailing,
                                 textSize: 11
                             )
+                        }
+                    } else {
+                        if isNullAvatar {
+                            AnonymousIconView(decoratedIconSize / 0.74, cutType: .card)
+                        } else {
+                            CharacterIconView(charID: avatar.id.description, cardSize: decoratedIconSize / 0.74)
+                                .corneredTag(
+                                    verbatim: "Lv.\(avatar.level.description)",
+                                    alignment: .bottom,
+                                    textSize: 11
+                                )
+                        }
                     }
                 }.frame(
                     width: decoratedIconSize,
@@ -187,10 +194,8 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
 #Preview {
     NavigationStack {
-        Form {
-            AbyssReportView4HSR(data: try! AbyssReportTestAssets.hsrCurr.getReport4HSR())
-        }
-        .formStyle(.grouped)
+        AbyssReportView4HSR(data: try! AbyssReportTestAssets.hsrCurr.getReport4HSR())
+            .formStyle(.grouped)
     }
 }
 

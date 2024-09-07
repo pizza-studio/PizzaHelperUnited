@@ -84,7 +84,7 @@ extension EKQueriedProfileProtocol {
     }
 
     public static var nullPhotoAssetName: String {
-        Enka.ProfileIconView.nullPhotoAssetName
+        AnonymousIconView.nullPhotoAssetName
     }
 }
 
