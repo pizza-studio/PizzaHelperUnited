@@ -122,8 +122,8 @@ public struct IDPhotoView4HSR: View {
 
     @ViewBuilder var circleIconView: some View {
         let ratio = 179.649 / 1024
-        let cornerSize = CGSize(width: ratio * size, height: ratio * size)
-        let roundCornerSize = CGSize(width: size / 2, height: size / 2)
+        let cornerRadius = ratio * size
+        let roundCornerRadius = size / 2
         let roundRect = iconType == .cutFaceRoundedRect
         imageObj
             .scaledToFill()
@@ -135,8 +135,8 @@ public struct IDPhotoView4HSR: View {
                 backgroundObj
             }
             .frame(width: size, height: size)
-            .clipShape(RoundedRectangle(cornerSize: roundRect ? cornerSize : roundCornerSize))
-            .contentShape(RoundedRectangle(cornerSize: roundRect ? cornerSize : roundCornerSize))
+            .clipShape(RoundedRectangle(cornerRadius: roundRect ? cornerRadius : roundCornerRadius))
+            .contentShape(RoundedRectangle(cornerRadius: roundRect ? cornerRadius : roundCornerRadius))
     }
 
     var imageObj: some View {

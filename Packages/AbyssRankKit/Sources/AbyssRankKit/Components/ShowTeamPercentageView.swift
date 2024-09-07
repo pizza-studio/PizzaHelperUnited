@@ -103,14 +103,12 @@ struct ShowTeamPercentageView: View {
                     circleClipped: false,
                     clipToHead: true
                 )
-                .clipShape(RoundedRectangle(cornerRadius: 6))
             }
             let rest = 4 - team.team.count
             if rest > 0 {
                 ForEach((0 ..< rest).map(\.description), id: \.self) { _ in
                     Enka.ProfileIconView.anonymousIcon4SUI
                         .frame(width: 48, height: 48)
-                        .clipShape(RoundedRectangle(cornerRadius: 6))
                         .opacity(0.3)
                 }
             }
