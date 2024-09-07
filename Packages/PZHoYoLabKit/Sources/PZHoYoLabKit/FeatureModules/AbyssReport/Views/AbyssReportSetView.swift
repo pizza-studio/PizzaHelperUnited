@@ -37,7 +37,7 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
         .toolbar {
             if hasPreviousSeasonContent {
                 ToolbarItem(
-                    placement: .navigationBarTrailing
+                    placement: .confirmationAction
                 ) {
                     Picker("", selection: $showPreviousSeason.animation()) {
                         Text("hylKit.abyssReport.seasonPicker.current".i18nHYLKit).tag(false)

@@ -6,14 +6,6 @@ import Defaults
 import Foundation
 import PZAccountKit
 
-extension Defaults.Keys {
-    public static let allowAbyssDataCollection = Key<Bool>(
-        "allowAbyssDataCollection",
-        default: false,
-        suite: .baseSuite
-    )
-}
-
 // MARK: - SnapHutao
 
 public enum SnapHutao {
