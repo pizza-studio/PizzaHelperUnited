@@ -15,7 +15,7 @@ extension EKQueriedProfileProtocol {
                 imgObj.resizable()
             }
         } placeholder: {
-            Image(Self.nullPhotoAssetName, bundle: Bundle.module).resizable().aspectRatio(contentMode: .fit)
+            AnonymousIconView.rawImage4SUI
         }
     }
 
@@ -46,14 +46,6 @@ extension Enka {
 
         // MARK: Public
 
-        nonisolated public static let nullPhotoAssetName = "avatar_anonymous_yjsnpi"
-
-        @ViewBuilder public static var anonymousIcon4SUI: some View {
-            Image(nullPhotoAssetName, bundle: Bundle.module)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-        }
-
         public let uid: String
         public let game: Enka.GameType
 
@@ -63,7 +55,7 @@ extension Enka {
                 if let profile = profiles4GI[uid] {
                     profile.localFittingIcon4SUI
                 } else {
-                    Self.anonymousIcon4SUI
+                    AnonymousIconView.rawImage4SUI
                         .clipShape(.circle)
                         .onAppear {
                             Task.detached { @MainActor in
@@ -75,7 +67,7 @@ extension Enka {
                 if let profile = profiles4HSR[uid] {
                     profile.localFittingIcon4SUI
                 } else {
-                    Self.anonymousIcon4SUI
+                    AnonymousIconView.rawImage4SUI
                         .clipShape(.circle)
                         .onAppear {
                             Task.detached { @MainActor in
@@ -83,7 +75,7 @@ extension Enka {
                             }
                         }
                 }
-            case .zenlessZone: Self.anonymousIcon4SUI.clipShape(.circle) // 临时设定。
+            case .zenlessZone: AnonymousIconView.rawImage4SUI.clipShape(.circle) // 临时设定。
             }
         }
 
