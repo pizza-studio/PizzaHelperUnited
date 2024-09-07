@@ -53,4 +53,10 @@ extension Defaults.Keys {
         default: true,
         suite: .baseSuite
     )
+
+    public static let defaultServer = Key<String>(
+        "defaultServer",
+        default: "os_asia",
+        suite: .baseSuite
+    )
 }
