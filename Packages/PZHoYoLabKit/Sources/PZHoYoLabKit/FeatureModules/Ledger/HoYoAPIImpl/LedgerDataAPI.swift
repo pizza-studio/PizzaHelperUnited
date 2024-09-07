@@ -8,32 +8,42 @@ import PZAccountKit
 extension HoYo {
     public static func getLedgerData(for profile: PZProfileMO) async throws -> (any Ledger)? {
         switch profile.game {
-        case .genshinImpact:
-            guard let month = Calendar.current.dateComponents([.month], from: Date()).month else { return nil }
-            return try await getLedgerData4GI(
-                month: month,
-                uid: profile.uid,
-                server: profile.server,
-                cookie: profile.cookie
-            )
-        case .starRail:
-            let components = Calendar.current.dateComponents([.year, .month], from: Date.now)
-            guard let year = components.year?.description else { return nil }
-            guard var month = components.month?.description else { return nil }
-            if month.count == 1 {
-                month.insert("0", at: month.startIndex)
-            }
-            return try await getLedgerData4HSR(
-                month: year + month,
-                uid: profile.uid,
-                server: profile.server,
-                cookie: profile.cookie
-            )
-        case .zenlessZone: return nil
+        case .genshinImpact: try await ledgerData4GI(for: profile)
+        case .starRail: try await ledgerData4HSR(for: profile)
+        case .zenlessZone: nil
         }
     }
+}
 
-    public static func getLedgerData4GI(
+extension HoYo {
+    static func ledgerData4GI(for profile: PZProfileMO) async throws -> LedgerData4GI? {
+        guard let month = Calendar.current.dateComponents([.month], from: Date()).month else { return nil }
+        return try await ledgerData4GI(
+            month: month,
+            uid: profile.uid,
+            server: profile.server,
+            cookie: profile.cookie
+        )
+    }
+
+    static func ledgerData4HSR(for profile: PZProfileMO) async throws -> LedgerData4HSR? {
+        let components = Calendar.current.dateComponents([.year, .month], from: Date.now)
+        guard let year = components.year?.description else { return nil }
+        guard var month = components.month?.description else { return nil }
+        if month.count == 1 {
+            month.insert("0", at: month.startIndex)
+        }
+        return try await ledgerData4HSR(
+            month: year + month,
+            uid: profile.uid,
+            server: profile.server,
+            cookie: profile.cookie
+        )
+    }
+}
+
+extension HoYo {
+    public static func ledgerData4GI(
         month: Int, uid: String, server: Server, cookie: String
     ) async throws
         -> LedgerData4GI {
@@ -82,7 +92,7 @@ extension HoYo {
         return try .decodeFromMiHoYoAPIJSONResult(data: data)
     }
 
-    public static func getLedgerData4HSR(
+    public static func ledgerData4HSR(
         month: String, uid: String, server: Server, cookie: String
     ) async throws
         -> LedgerData4HSR {

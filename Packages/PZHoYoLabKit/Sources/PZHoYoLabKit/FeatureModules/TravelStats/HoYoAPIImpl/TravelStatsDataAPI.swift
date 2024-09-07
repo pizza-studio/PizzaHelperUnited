@@ -8,25 +8,37 @@ import PZAccountKit
 extension HoYo {
     public static func getTravelStatsData(for profile: PZProfileMO) async throws -> (any TravelStats)? {
         switch profile.game {
-        case .genshinImpact: try await getTravalStatsData4GI(
-                server: profile.server,
-                uid: profile.uid,
-                cookie: profile.cookie,
-                deviceFingerPrint: profile.deviceFingerPrint,
-                deviceID: profile.deviceID
-            )
-        case .starRail: try await getTravalStatsData4HSR(
-                server: profile.server,
-                uid: profile.uid,
-                cookie: profile.cookie,
-                deviceFingerPrint: profile.deviceFingerPrint,
-                deviceID: profile.deviceID
-            )
+        case .genshinImpact: try await getTravelStatsData4GI(for: profile)
+        case .starRail: try await getTravelStatsData4HSR(for: profile)
         case .zenlessZone: nil
         }
     }
+}
 
-    private static func getTravalStatsData4GI(
+extension HoYo {
+    static func getTravelStatsData4GI(for profile: PZProfileMO) async throws -> TravelStatsData4GI {
+        try await travelStatsData4GI(
+            server: profile.server,
+            uid: profile.uid,
+            cookie: profile.cookie,
+            deviceFingerPrint: profile.deviceFingerPrint,
+            deviceID: profile.deviceID
+        )
+    }
+
+    static func getTravelStatsData4HSR(for profile: PZProfileMO) async throws -> TravelStatsData4HSR {
+        try await travelStatsData4HSR(
+            server: profile.server,
+            uid: profile.uid,
+            cookie: profile.cookie,
+            deviceFingerPrint: profile.deviceFingerPrint,
+            deviceID: profile.deviceID
+        )
+    }
+}
+
+extension HoYo {
+    private static func travelStatsData4GI(
         server: Server,
         uid: String,
         cookie: String,
@@ -68,7 +80,7 @@ extension HoYo {
         return try .decodeFromMiHoYoAPIJSONResult(data: data)
     }
 
-    private static func getTravalStatsData4HSR(
+    private static func travelStatsData4HSR(
         server: Server,
         uid: String,
         cookie: String,
