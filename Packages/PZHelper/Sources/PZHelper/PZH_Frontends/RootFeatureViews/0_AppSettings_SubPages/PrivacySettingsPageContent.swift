@@ -23,7 +23,7 @@ struct PrivacySettingsPageContent: View {
                     NavigationLink {
                         WebBrowserView(url: Self.privacyFAQURL.absoluteString)
                             .navigationTitle("FAQ")
-                            .navigationBarTitleDisplayMode(.inline)
+                            .navBarTitleDisplayMode(.inline)
                     } label: {
                         Text("settings.privacy.abyssDataCollect.faqLink".i18nPZHelper)
                             .font(.footnote)

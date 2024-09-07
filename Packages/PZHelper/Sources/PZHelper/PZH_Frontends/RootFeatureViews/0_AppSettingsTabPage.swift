@@ -98,7 +98,7 @@ struct AppSettingsTabPage: View {
             case .faq:
                 WebBrowserView(url: Self.faqURLString)
                     .navigationTitle("settings.misc.faq".i18nPZHelper)
-                    .navigationBarTitleDisplayMode(.inline)
+                    .navBarTitleDisplayMode(.inline)
             case .cloudAccountSettings: CloudAccountSettingsPageContent()
             case .uiSettings: UISettingsPageContent()
             case .privacySettings: PrivacySettingsPageContent()
