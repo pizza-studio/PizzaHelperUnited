@@ -120,10 +120,25 @@ extension AbyssReportView4GI {
                 Spacer()
                 drawBattleNode(levelData.battles[1], label: "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit)
             }
+            let theContentLabeledSansSpacers = Group {
+                drawBattleNode(
+                    levelData.battles[0],
+                    label: "hylKit.abyssReport.floor.1stHalf".i18nHYLKit,
+                    spacers: false
+                )
+                Spacer()
+                drawBattleNode(
+                    levelData.battles[1],
+                    label: "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit,
+                    spacers: false
+                )
+            }
             ViewThatFits(in: .horizontal) {
                 HStack { theContentLabeled }
+                HStack { theContentLabeledSansSpacers }
                 HStack { theContent }
                 VStack { theContentLabeled }
+                VStack { theContentLabeledSansSpacers }
                 VStack { theContent }
             }
         }
@@ -136,13 +151,12 @@ extension AbyssReportView4GI {
         spacers: Bool = true
     )
         -> some View {
-        if !label.isEmpty {
-            Text(label)
-                .fontDesign(.monospaced)
-                .padding()
-        }
-        if spacers { Spacer() }
         HStack {
+            if !label.isEmpty {
+                Text(label)
+                    .fontDesign(.monospaced)
+            }
+            if spacers { Spacer() }
             var guardedAvatars: [HoYo.AbyssReport4GI.Floor.Level.Battle.Avatar] {
                 var result = node.avatars
                 while result.count < 4 {
