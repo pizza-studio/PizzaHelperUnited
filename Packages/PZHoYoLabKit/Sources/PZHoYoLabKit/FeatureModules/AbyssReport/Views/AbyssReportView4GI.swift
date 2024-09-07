@@ -177,7 +177,6 @@ extension AbyssReportView4GI {
                             circleClipped: false,
                             clipToHead: true
                         )
-                        .clipShape(RoundedRectangle(cornerRadius: decoratedIconSize / 8))
                         .corneredTag(
                             verbatim: avatar.level.description,
                             alignment: .bottomTrailing,
