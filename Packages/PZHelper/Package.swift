@@ -23,6 +23,7 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(path: "../AbyssRankKit"),
         .package(path: "../PZDictionaryKit"),
         .package(path: "../WallpaperKit"),
         .package(path: "../EnkaKit"),
@@ -41,6 +42,7 @@ let package = Package(
                 .product(name: "PizzaKit", package: "PZKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "GachaKit", package: "GachaKit"),
+                .product(name: "AbyssRankKit", package: "AbyssRankKit"),
                 .product(name: "PZDictionaryKit", package: "PZDictionaryKit"),
                 .product(name: "PZHoYoLabKit", package: "PZHoYoLabKit"),
                 .product(name: "WallpaperKit", package: "WallpaperKit"),

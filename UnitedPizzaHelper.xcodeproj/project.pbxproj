@@ -30,6 +30,7 @@
 		5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		5B560A162C6BB64300175FB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B560A172C6BBB8300175FB1 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		5BCAFCE12C8C5B2600347A09 /* AbyssRankKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AbyssRankKit; sourceTree = "<group>"; };
 		5BD0D0F22C6A633700DA8099 /* PZHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHelper; sourceTree = "<group>"; };
 		5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "PZHelper-Watch"; sourceTree = "<group>"; };
 		5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		5BF32D8D2C62A2E4008C9949 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				5BCAFCE12C8C5B2600347A09 /* AbyssRankKit */,
 				5BDDF2752C7601AA006D4BFE /* EnkaKit */,
 				5BDDF2762C7601AA006D4BFE /* GachaKit */,
 				5B1641342C8320D600C4698C /* PZDictionaryKit */,
