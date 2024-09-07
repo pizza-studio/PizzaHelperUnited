@@ -28,7 +28,7 @@ extension HoYo {
 }
 
 extension HoYo {
-    fileprivate static func abyssReportData4GI(
+    static func abyssReportData4GI(
         for profile: PZProfileMO, isPreviousRound: Bool = false
     ) async throws
         -> AbyssReport4GI {
@@ -42,7 +42,7 @@ extension HoYo {
         )
     }
 
-    fileprivate static func abyssReportData4HSR(
+    static func abyssReportData4HSR(
         for profile: PZProfileMO, isPreviousRound: Bool = false
     ) async throws
         -> AbyssReport4HSR {

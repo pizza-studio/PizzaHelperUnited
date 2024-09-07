@@ -11,24 +11,36 @@ extension HoYo {
         print("||| START REQUESTING CHARACTER INVENTORY |||")
         #endif
         return switch profile.game {
-        case .genshinImpact: try await characterInventory4GI(
-                server: profile.server.withGame(profile.game),
-                uid: profile.uid,
-                cookie: profile.cookie,
-                deviceFingerPrint: profile.deviceFingerPrint,
-                deviceId: profile.deviceID
-            )
-        case .starRail: try await characterInventory4HSR(
-                server: profile.server.withGame(profile.game),
-                uid: profile.uid,
-                cookie: profile.cookie,
-                deviceFingerPrint: profile.deviceFingerPrint,
-                deviceId: profile.deviceID
-            )
+        case .genshinImpact: try await characterInventory4GI(for: profile)
+        case .starRail: try await characterInventory4HSR(for: profile)
         case .zenlessZone: nil
         }
     }
+}
 
+extension HoYo {
+    static func characterInventory4GI(for profile: PZProfileMO) async throws -> CharInventory4GI {
+        try await characterInventory4GI(
+            server: profile.server.withGame(profile.game),
+            uid: profile.uid,
+            cookie: profile.cookie,
+            deviceFingerPrint: profile.deviceFingerPrint,
+            deviceId: profile.deviceID
+        )
+    }
+
+    static func characterInventory4HSR(for profile: PZProfileMO) async throws -> CharInventory4HSR {
+        try await characterInventory4HSR(
+            server: profile.server.withGame(profile.game),
+            uid: profile.uid,
+            cookie: profile.cookie,
+            deviceFingerPrint: profile.deviceFingerPrint,
+            deviceId: profile.deviceID
+        )
+    }
+}
+
+extension HoYo {
     fileprivate static func characterInventory4GI(
         server: Server,
         uid: String,
