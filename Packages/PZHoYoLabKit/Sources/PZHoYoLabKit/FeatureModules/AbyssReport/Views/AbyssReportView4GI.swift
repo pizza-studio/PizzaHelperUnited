@@ -221,6 +221,7 @@ extension AbyssReportView4GI {
                     .lineLimit(1)
                     .font(.caption)
                     .minimumScaleFactor(0.3)
+                    .fontWidth(.condensed)
             }
             .frame(maxWidth: .infinity)
             cellData.makeAvatar()
