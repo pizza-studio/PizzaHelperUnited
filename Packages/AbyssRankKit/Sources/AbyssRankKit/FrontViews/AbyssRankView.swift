@@ -35,7 +35,7 @@ public struct AbyssRankView: View {
                     VStack {
                         Image(systemSymbol: .clockBadgeExclamationmark)
                             .font(.largeTitle)
-                        Text("abyssDataCollection.availableSince20230401", bundle: .module)
+                        Text("abyssRankKit.availableSince20230401", bundle: .module)
                             .padding()
                             .font(.headline)
                     }
