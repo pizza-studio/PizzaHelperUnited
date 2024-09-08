@@ -52,7 +52,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
         .navigationTitle("hylKit.inventoryView.characters.title".i18nHYLKit)
         .toolbar {
             ToolbarItemGroup(placement: .confirmationAction) {
-                Picker("", selection: $expanded.animation()) {
+                Picker("".description, selection: $expanded.animation()) {
                     Text("hylKit.inventoryView.expand.tabText".i18nHYLKit).tag(true)
                     Text("hylKit.inventoryView.collapse.tabText".i18nHYLKit).tag(false)
                 }
