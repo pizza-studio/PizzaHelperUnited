@@ -11,14 +11,13 @@ struct UtilizationParasSettingBar: View {
     var pvp: Bool = false
     @Binding var params: UtilizationAPIParameters
 
-    var body: some View {
+    @MainActor var body: some View {
         Picker(params.serverChoice.describe(), selection: $params.serverChoice.animation()) {
             Text("abyssRankKit.rank.server.filter.all", bundle: .module).tag(ServerChoice.all)
             ForEach(HoYo.Server.allCases4GI, id: \.id) { server in
                 Text(server.localizedDescriptionByGame).tag(ServerChoice.server(server))
             }
         }.pickerStyle(.menu)
-        Spacer()
         Picker(selection: $params.floor.animation()) {
             ForEach((9 ... 12).reversed(), id: \.self) { number in
                 Text("abyssRankKit.rank.floor.title:\(number)", bundle: .module).tag(number)
@@ -26,7 +25,6 @@ struct UtilizationParasSettingBar: View {
         } label: {
             Text("abyssRankKit.rank.floor.title:\(params.floor)")
         }.pickerStyle(.menu)
-        Spacer()
         Picker(params.season.describe(), selection: $params.season.animation()) {
             ForEach(AbyssSeason.choices(pvp: pvp), id: \.hashValue) { season in
                 Text(season.describe()).tag(season)
