@@ -12,6 +12,7 @@ public struct AnonymousIconView: View {
     public init(_ size: CGFloat, cutType: CutType) {
         self.cutType = cutType
         self.size = size
+        self.roundRectCornerRadius = size * Self.roundedRectRatio
     }
 
     // MARK: Public
@@ -29,19 +30,18 @@ public struct AnonymousIconView: View {
             .contentShape(.circle)
         case .roundRectangle: Self.rawImage4SUI
             .frame(width: size, height: size)
-            .clipShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
-            .contentShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
+            .clipShape(RoundedRectangle(cornerRadius: roundRectCornerRadius))
+            .contentShape(RoundedRectangle(cornerRadius: roundRectCornerRadius))
         }
     }
-
-    // MARK: Internal
-
-    @State var size: CGFloat
-    @State var cutType: CutType
 
     // MARK: Private
 
     private static let roundedRectRatio = 179.649 / 1024
+
+    private let size: CGFloat
+    private let cutType: CutType
+    private let roundRectCornerRadius: CGFloat
 }
 
 extension AnonymousIconView {
