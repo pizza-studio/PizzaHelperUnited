@@ -149,8 +149,12 @@ extension HoYo.AbyssReport4HSR {
         public let minute: Int
 
         public var description: String {
-            let dateStr = "\(year)-\(month)-\(day)"
-            let time = "\(hour):\(minute)"
+            let monthString = "0\(month)".suffix(2)
+            let dayString = "0\(day)".suffix(2)
+            let hourString = "0\(hour)".suffix(2)
+            let minuteString = "0\(minute)".suffix(2)
+            let dateStr = "\(year)-\(monthString)-\(dayString)"
+            let time = "\(hourString):\(minuteString)"
             return "\(dateStr) \(time)"
         }
 
