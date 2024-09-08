@@ -83,7 +83,7 @@ struct ShowTeamPercentageView: View {
 
     func dataExtractionErrorText() -> String? {
         guard case let .failure(error) = result else { return nil }
-        return error.localizedDescription
+        return "\(error)"
     }
 
     func extractTeams(from data: TeamUtilizationData) -> [TeamUtilizationData.Team] {
