@@ -47,7 +47,7 @@ public struct AbyssReportNav: View {
         case let .succeed(data):
             if let data = data as? AbyssReportSet4GI {
                 InformationRowView(navTitle) {
-                    NavigationLink(destination: data.asView.navigationTitle(navTitle)) {
+                    NavigationLink(destination: data.asView.navigationTitle(navTitleTiny)) {
                         HStack(spacing: 10) {
                             let iconFrame: CGFloat = 40
                             AbyssReportView4GI.abyssIcon
@@ -76,7 +76,7 @@ public struct AbyssReportNav: View {
                 }
             } else if let data = data as? AbyssReportSet4HSR {
                 InformationRowView(navTitle) {
-                    NavigationLink(destination: data.asView.navigationTitle(navTitle)) {
+                    NavigationLink(destination: data.asView.navigationTitle(navTitleTiny)) {
                         HStack(spacing: 10) {
                             let iconFrame: CGFloat = 40
                             AbyssReportView4HSR.abyssIcon
@@ -115,6 +115,14 @@ public struct AbyssReportNav: View {
         switch theVM.currentProfile?.game {
         case .genshinImpact: AbyssReportView4GI.navTitle
         case .starRail: AbyssReportView4HSR.navTitle
+        default: "N/A"
+        }
+    }
+
+    @MainActor var navTitleTiny: String {
+        switch theVM.currentProfile?.game {
+        case .genshinImpact: AbyssReportView4GI.navTitleTiny
+        case .starRail: AbyssReportView4HSR.navTitleTiny
         default: "N/A"
         }
     }

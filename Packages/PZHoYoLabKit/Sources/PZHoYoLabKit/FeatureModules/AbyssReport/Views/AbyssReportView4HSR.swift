@@ -21,6 +21,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
     public typealias AbyssReportData = HoYo.AbyssReport4HSR
 
     public static let navTitle = "hylKit.abyssReportView4HSR.navTitle".i18nHYLKit
+    public static let navTitleTiny = "hylKit.abyssReportView4HSR.navTitle.tiny".i18nHYLKit
 
     public static var abyssIcon: Image { Image("hsr_abyss", bundle: .module) }
 
