@@ -23,6 +23,7 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
 
     @MainActor public var body: some View {
         container
+            .navBarTitleDisplayMode(.inline)
     }
 
     @MainActor @ViewBuilder public var container: some View {
