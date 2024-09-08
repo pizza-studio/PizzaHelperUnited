@@ -1,6 +1,35 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "abyssRankKit.availableSince20230401" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available From 2023-04-01"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "令和４年４月１日からご提供の資料です"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "资料自 2023-04-01 开始提供"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "資料自 2023-04-01 開始提供"
+          }
+        }
+      }
+    },
     "abyssRankKit.collection.1:%@%@%lld" : {
       "comment" : "detail",
       "localizations" : {
