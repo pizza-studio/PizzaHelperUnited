@@ -25,6 +25,7 @@ public struct ContentView: View {
                 }
             }
         }
+        #if targetEnvironment(macCatalyst)
         .apply { theContent in
             #if compiler(>=6.0) && canImport(UIKit, _version: 18.0)
             if #unavailable(iOS 18.0), #unavailable(macCatalyst 18.0) {
@@ -38,6 +39,7 @@ public struct ContentView: View {
             theContent
             #endif
         }
+        #endif
         .tint(tintForCurrentTab)
         .onChange(of: selection) { _, _ in
             simpleTaptic(type: .selection)
