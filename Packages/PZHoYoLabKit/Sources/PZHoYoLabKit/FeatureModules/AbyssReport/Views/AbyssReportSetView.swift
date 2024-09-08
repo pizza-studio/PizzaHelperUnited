@@ -40,7 +40,7 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
                 ToolbarItem(
                     placement: .confirmationAction
                 ) {
-                    Picker("", selection: $showPreviousSeason.animation()) {
+                    Picker("".description, selection: $showPreviousSeason.animation()) {
                         Text("hylKit.abyssReport.seasonPicker.current".i18nHYLKit).tag(false)
                         Text("hylKit.abyssReport.seasonPicker.previous".i18nHYLKit).tag(true)
                     }
