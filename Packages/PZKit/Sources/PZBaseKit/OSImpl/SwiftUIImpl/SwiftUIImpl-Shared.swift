@@ -67,6 +67,8 @@ extension View {
                     .opacity(opacity)
                     .padding(padding)
                     .fixedSize()
+                    .foregroundStyle(.white)
+                    .environment(\.colorScheme, .dark)
             }
         )
     }
@@ -93,6 +95,7 @@ extension View {
                     .opacity(opacity)
                     .padding(padding)
                     .fixedSize()
+                    .foregroundStyle(.white)
                     .environment(\.colorScheme, .dark)
             }
         )
