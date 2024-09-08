@@ -114,7 +114,6 @@
       }
     },
     "app.dailynote.card.dispatch.label" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -199,7 +198,6 @@
       }
     },
     "app.dailynote.card.error.pleaseCheckAtProfileMgr" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -369,7 +367,6 @@
       }
     },
     "app.dailynote.card.trailblazePower.label" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -456,7 +453,6 @@
       }
     },
     "app.dailynote.card.zzzBatteryEnergy.label" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -485,7 +481,6 @@
       }
     },
     "app.dailynote.card.zzzScratchableCard.done" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -514,7 +509,6 @@
       }
     },
     "app.dailynote.card.zzzScratchableCard.label" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -543,7 +537,6 @@
       }
     },
     "app.dailynote.card.zzzScratchableCard.notYet" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -572,7 +565,6 @@
       }
     },
     "app.dailynote.card.zzzVHSStoreInOperationState.label" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -601,7 +593,6 @@
       }
     },
     "app.dailynote.card.zzzVHSStoreInOperationState.off" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -630,7 +621,6 @@
       }
     },
     "app.dailynote.card.zzzVHSStoreInOperationState.on" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -659,7 +649,6 @@
       }
     },
     "app.dailynote.card.zzzVitality.label" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -688,7 +677,6 @@
       }
     },
     "app.dailynote.noCard.suggestion" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -717,7 +705,6 @@
       }
     },
     "app.language.restartRequired.description" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -746,7 +733,6 @@
       }
     },
     "dpv.characterInventory.navTitle" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -775,7 +761,6 @@
       }
     },
     "dpv.characterInventory.notice.EmptyInventoryResult" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -804,7 +789,6 @@
       }
     },
     "dpv.query.menuCommandTitle" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -861,7 +845,6 @@
       }
     },
     "profile.label.allowNotification" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -890,7 +873,6 @@
       }
     },
     "profile.label.cookie" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -919,7 +901,6 @@
       }
     },
     "profile.label.editDetails" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -948,7 +929,6 @@
       }
     },
     "profile.label.fp" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -977,7 +957,6 @@
       }
     },
     "profile.label.game" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1006,7 +985,6 @@
       }
     },
     "profile.label.nickname" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1035,7 +1013,6 @@
       }
     },
     "profile.label.server" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1064,7 +1041,6 @@
       }
     },
     "profile.login.manual.1" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1093,7 +1069,6 @@
       }
     },
     "profile.login.manual.2" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1122,7 +1097,6 @@
       }
     },
     "profile.login.sectionHeader" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1179,7 +1153,6 @@
       }
     },
     "profileMgr.account.qr_code_login.click_qr_to_save" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1292,7 +1265,6 @@
       }
     },
     "profileMgr.account.qr_code_login.open_miyoushe_mas_page" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1517,7 +1489,6 @@
       }
     },
     "profileMgr.accountLogin.instruction" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1546,7 +1517,6 @@
       }
     },
     "profileMgr.accountLogin.notice.bewareof" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1632,7 +1602,6 @@
       }
     },
     "profileMgr.create.server.os.notsupport" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1661,7 +1630,6 @@
       }
     },
     "profileMgr.delete.title" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1718,7 +1686,6 @@
       }
     },
     "profileMgr.error.SaveProfileError.helpAnchor" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1747,7 +1714,6 @@
       }
     },
     "profileMgr.error.SaveProfileError.missingFieldError:" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1776,7 +1742,6 @@
       }
     },
     "profileMgr.error.SaveProfileError.saveDataError:" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1917,7 +1882,6 @@
       }
     },
     "profileMgr.importLegacyProfiles.title" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2088,7 +2052,6 @@
       }
     },
     "profileMgr.login.manageLink.shortened" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2201,7 +2164,6 @@
       }
     },
     "profileMgr.loginError.noGameUIDFound" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2258,7 +2220,6 @@
       }
     },
     "profileMgr.manageHoYoAccounts.shortened" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2399,7 +2360,6 @@
       }
     },
     "profileMgr.qr_code_login.click_qr_to_save" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2512,7 +2472,6 @@
       }
     },
     "profileMgr.qr_code_login.open_miyoushe_mas_page" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3073,7 +3032,6 @@
       }
     },
     "setting.display.restoreTabOnLaunching" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3102,7 +3060,6 @@
       }
     },
     "settings.appLanguage.title" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3131,7 +3088,6 @@
       }
     },
     "settings.disclaimer.requiringAppRebootToApplySettings" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3160,7 +3116,6 @@
       }
     },
     "settings.display.generalSettings.sectionHeader" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3189,7 +3144,6 @@
       }
     },
     "settings.misc.faq" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3274,7 +3228,6 @@
       }
     },
     "settings.privacy.abyssDataCollect.faqLink" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3331,7 +3284,6 @@
       }
     },
     "settings.profile.clickHereToLogin" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3360,7 +3312,6 @@
       }
     },
     "settings.profile.clickHereToLogin.reLogin" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3389,7 +3340,6 @@
       }
     },
     "settings.profile.importAllUIDs" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3418,7 +3368,6 @@
       }
     },
     "settings.profile.importAllUIDs.explanation" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3447,7 +3396,6 @@
       }
     },
     "settings.profile.pleaseSelectGame" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3476,7 +3424,6 @@
       }
     },
     "settings.profile.pleaseSelectRegion" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3563,7 +3510,6 @@
       }
     },
     "settings.section.otherSettings.header" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3592,7 +3538,6 @@
       }
     },
     "settings.section.profileManagement.header" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3621,7 +3566,6 @@
       }
     },
     "settings.section.visualSettings.header" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3650,7 +3594,6 @@
       }
     },
     "settings.uiSettings.title" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3735,7 +3678,6 @@
       }
     },
     "tab.details" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3764,7 +3706,6 @@
       }
     },
     "tab.details.fullTitle" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3793,7 +3734,6 @@
       }
     },
     "tab.settings" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3822,7 +3762,6 @@
       }
     },
     "tab.settings.fullTitle" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3851,7 +3790,6 @@
       }
     },
     "tab.today" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3880,7 +3818,6 @@
       }
     },
     "tab.today.fullTitle" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3909,7 +3846,6 @@
       }
     },
     "tab.utils" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3938,7 +3874,6 @@
       }
     },
     "tab.utils.fullTitle" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3967,7 +3902,6 @@
       }
     },
     "tools.hoyoMap.navTitle" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
