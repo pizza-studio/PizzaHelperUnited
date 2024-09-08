@@ -87,6 +87,7 @@ extension AbyssReportView4GI {
                         drawBattleRoom(levelData: battleRoom)
                     }
                 }
+                .padding(.vertical, 8)
             } header: {
                 HStack {
                     Text(
@@ -97,6 +98,8 @@ extension AbyssReportView4GI {
                     Text(verbatim: "\(floorData.star) / \(floorData.maxStar) ⭐️")
                 }
             }
+            .listRowSpacing(4)
+            .listRowSeparator(.hidden)
             .listRowMaterialBackground()
         }
     }
@@ -110,38 +113,43 @@ extension AbyssReportView4GI {
                 Spacer()
                 Text(verbatim: String(repeating: " ⭐️", count: levelData.star))
             }
-            // 每一间在产生记录时，一定会同时有上下两半场同时被登记。
-            let theContent = Group {
-                drawBattleNode(levelData.battles[0], spacers: false)
-                Spacer()
-                drawBattleNode(levelData.battles[1], spacers: false)
-            }
-            let theContentLabeled = Group {
-                drawBattleNode(levelData.battles[0], label: "hylKit.abyssReport.floor.1stHalf".i18nHYLKit)
-                Spacer()
-                drawBattleNode(levelData.battles[1], label: "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit)
-            }
-            let theContentLabeledSansSpacers = Group {
-                drawBattleNode(
-                    levelData.battles[0],
-                    label: "hylKit.abyssReport.floor.1stHalf".i18nHYLKit,
-                    spacers: false
-                )
-                Spacer()
-                drawBattleNode(
-                    levelData.battles[1],
-                    label: "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit,
-                    spacers: false
-                )
-            }
             ViewThatFits(in: .horizontal) {
-                HStack { theContentLabeled }
-                HStack { theContentLabeledSansSpacers }
-                HStack { theContent }
-                VStack { theContentLabeled }
-                VStack { theContentLabeledSansSpacers }
-                VStack { theContent }
+                drawLevelInnerContents(levelData, vertical: false, hasLabel: true, hasSpacers: true)
+                drawLevelInnerContents(levelData, vertical: false, hasLabel: true, hasSpacers: false)
+                drawLevelInnerContents(levelData, vertical: false, hasLabel: false, hasSpacers: true)
+                drawLevelInnerContents(levelData, vertical: false, hasLabel: false, hasSpacers: false)
+                drawLevelInnerContents(levelData, vertical: true, hasLabel: true, hasSpacers: true)
+                drawLevelInnerContents(levelData, vertical: true, hasLabel: true, hasSpacers: false)
+                drawLevelInnerContents(levelData, vertical: true, hasLabel: false, hasSpacers: true)
+                drawLevelInnerContents(levelData, vertical: true, hasLabel: false, hasSpacers: false)
             }
+        }
+    }
+
+    @MainActor @ViewBuilder
+    func drawLevelInnerContents(
+        _ levelData: HoYo.AbyssReport4GI.Floor.Level,
+        vertical: Bool,
+        hasLabel: Bool,
+        hasSpacers: Bool
+    )
+        -> some View {
+        // 每一间在产生记录时，一定会同时有上下两半场同时被登记。
+        let theContent = Group {
+            drawBattleNode(
+                levelData.battles[0],
+                label: hasLabel ? "hylKit.abyssReport.floor.1stHalf".i18nHYLKit : ""
+            )
+            if hasSpacers, !vertical { Spacer() }
+            drawBattleNode(
+                levelData.battles[1],
+                label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
+            )
+        }
+        if vertical {
+            VStack { theContent }
+        } else {
+            HStack { theContent }
         }
     }
 
@@ -155,6 +163,7 @@ extension AbyssReportView4GI {
         HStack {
             if !label.isEmpty {
                 Text(label)
+                    .font(.caption)
                     .fontDesign(.monospaced)
             }
             if spacers { Spacer() }

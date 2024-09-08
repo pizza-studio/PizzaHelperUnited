@@ -85,37 +85,17 @@ public struct AbyssReportView4HSR: AbyssReportView {
                 if floorData.isSkipped {
                     Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
                 } else {
-                    let theContent = Group {
-                        drawBattleNode(floorData.node1, spacers: false)
-                        Spacer()
-                        drawBattleNode(floorData.node2, spacers: false)
-                    }
-                    let theContentLabeled = Group {
-                        drawBattleNode(floorData.node1, label: "hylKit.abyssReport.floor.1stHalf".i18nHYLKit)
-                        Spacer()
-                        drawBattleNode(floorData.node2, label: "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit)
-                    }
-                    let theContentLabeledSansSpacers = Group {
-                        drawBattleNode(
-                            floorData.node1,
-                            label: "hylKit.abyssReport.floor.1stHalf".i18nHYLKit,
-                            spacers: false
-                        )
-                        Spacer()
-                        drawBattleNode(
-                            floorData.node2,
-                            label: "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit,
-                            spacers: false
-                        )
-                    }
                     ViewThatFits(in: .horizontal) {
-                        HStack { theContentLabeled }
-                        HStack { theContentLabeledSansSpacers }
-                        HStack { theContent }
-                        VStack { theContentLabeled }
-                        VStack { theContentLabeledSansSpacers }
-                        VStack { theContent }
+                        drawFloorInnerContents(floorData, vertical: false, hasLabel: true, hasSpacers: true)
+                        drawFloorInnerContents(floorData, vertical: false, hasLabel: true, hasSpacers: false)
+                        drawFloorInnerContents(floorData, vertical: false, hasLabel: false, hasSpacers: true)
+                        drawFloorInnerContents(floorData, vertical: false, hasLabel: false, hasSpacers: false)
+                        drawFloorInnerContents(floorData, vertical: true, hasLabel: true, hasSpacers: true)
+                        drawFloorInnerContents(floorData, vertical: true, hasLabel: true, hasSpacers: false)
+                        drawFloorInnerContents(floorData, vertical: true, hasLabel: false, hasSpacers: true)
+                        drawFloorInnerContents(floorData, vertical: true, hasLabel: false, hasSpacers: false)
                     }
+                    .padding(.vertical, 8)
                 }
             } header: {
                 HStack {
@@ -133,10 +113,41 @@ public struct AbyssReportView4HSR: AbyssReportView {
     }
 
     @MainActor @ViewBuilder
+    func drawFloorInnerContents(
+        _ floorData: HoYo.AbyssReport4HSR.FHFloorDetail,
+        vertical: Bool,
+        hasLabel: Bool,
+        hasSpacers: Bool
+    )
+        -> some View {
+        if floorData.isSkipped {
+            Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+        } else {
+            let theContent = Group {
+                drawBattleNode(
+                    floorData.node1,
+                    label: hasLabel ? "hylKit.abyssReport.floor.1stHalf".i18nHYLKit : ""
+                )
+                if hasSpacers, !vertical { Spacer() }
+                drawBattleNode(
+                    floorData.node2,
+                    label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
+                )
+            }
+            if vertical {
+                VStack { theContent }
+            } else {
+                HStack { theContent }
+            }
+        }
+    }
+
+    @MainActor @ViewBuilder
     func drawBattleNode(_ node: HoYo.AbyssReport4HSR.FHNode, label: String = "", spacers: Bool = true) -> some View {
         HStack {
             if !label.isEmpty {
                 Text(label)
+                    .font(.caption)
                     .fontDesign(.monospaced)
             }
             if spacers { Spacer() }
