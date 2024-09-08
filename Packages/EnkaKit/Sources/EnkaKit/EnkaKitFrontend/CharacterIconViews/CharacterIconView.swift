@@ -31,6 +31,7 @@ public struct CharacterIconView: View {
         self.isCard = false
         /// 算上 costume id 后缀的话，原神的 CharID 会更长。所以 >= 8。
         self.game = charID.count >= 8 ? .genshinImpact : .starRail
+        self.roundRectCornerRadius = size * Self.roundedRectRatio
     }
 
     /// 卡片图示。
@@ -51,6 +52,7 @@ public struct CharacterIconView: View {
         self.isCard = true
         /// 算上 costume id 后缀的话，原神的 CharID 会更长。所以 >= 8。
         self.game = charID.count >= 8 ? .genshinImpact : .starRail
+        self.roundRectCornerRadius = size * Self.roundedRectRatio
     }
 
     // MARK: Public
@@ -106,8 +108,8 @@ public struct CharacterIconView: View {
                 } else {
                     newResult
                         .background { currentBg }
-                        .clipShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
-                        .contentShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
+                        .clipShape(RoundedRectangle(cornerRadius: roundRectCornerRadius))
+                        .contentShape(RoundedRectangle(cornerRadius: roundRectCornerRadius))
                 }
             }
             .compositingGroup()
@@ -167,8 +169,8 @@ public struct CharacterIconView: View {
                 } else {
                     newResult
                         .background { bgColor }
-                        .clipShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
-                        .contentShape(RoundedRectangle(cornerRadius: size * Self.roundedRectRatio))
+                        .clipShape(RoundedRectangle(cornerRadius: roundRectCornerRadius))
+                        .contentShape(RoundedRectangle(cornerRadius: roundRectCornerRadius))
                 }
             }
             .compositingGroup()
@@ -191,6 +193,7 @@ public struct CharacterIconView: View {
     private let circleClipped: Bool
     private let clipToHead: Bool
     private let game: Enka.GameType
+    private let roundRectCornerRadius: CGFloat
 
     private var cutType: IDPhotoView4HSR.IconType {
         if !circleClipped, !isCard {
