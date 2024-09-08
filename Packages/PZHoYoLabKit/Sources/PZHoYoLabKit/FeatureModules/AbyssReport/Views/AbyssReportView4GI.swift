@@ -28,11 +28,13 @@ public struct AbyssReportView4GI: AbyssReportView {
     public var data: AbyssReportData
 
     @MainActor public var body: some View {
-        GeometryReader { geometry in
-            contents.onAppear {
-                containerWidth = geometry.size.width
-            }.onChange(of: geometry.size.width) { _, newSize in
-                containerWidth = newSize
+        contents.overlay {
+            GeometryReader { geometry in
+                Color.clear.onAppear {
+                    containerWidth = geometry.size.width
+                }.onChange(of: geometry.size.width) { _, newSize in
+                    containerWidth = newSize
+                }
             }
         }
     }
