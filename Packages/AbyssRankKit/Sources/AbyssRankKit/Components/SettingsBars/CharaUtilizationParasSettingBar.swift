@@ -17,19 +17,19 @@ struct UtilizationParasSettingBar: View {
             ForEach(HoYo.Server.allCases4GI, id: \.id) { server in
                 Text(server.localizedDescriptionByGame).tag(ServerChoice.server(server))
             }
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
         Picker(selection: $params.floor.animation()) {
             ForEach((9 ... 12).reversed(), id: \.self) { number in
                 Text("abyssRankKit.rank.floor.title:\(number)", bundle: .module).tag(number)
             }
         } label: {
             Text("abyssRankKit.rank.floor.title:\(params.floor)")
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
         Picker(params.season.describe(), selection: $params.season.animation()) {
             ForEach(AbyssSeason.choices(pvp: pvp), id: \.hashValue) { season in
                 Text(season.describe()).tag(season)
             }
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
     }
 }
 
