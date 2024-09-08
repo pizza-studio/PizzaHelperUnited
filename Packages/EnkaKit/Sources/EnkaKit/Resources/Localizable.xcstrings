@@ -198,7 +198,6 @@
       }
     },
     "enka.photoSpecimen.credit.genshin" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -227,7 +226,6 @@
       }
     },
     "enka.photoSpecimen.credit.starRail" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -284,7 +282,6 @@
       }
     },
     "enka.showCase.emptyShowCase.description" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -929,7 +926,6 @@
       }
     },
     "settings.display.showCase.useNameCardBGWithGICharacters" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

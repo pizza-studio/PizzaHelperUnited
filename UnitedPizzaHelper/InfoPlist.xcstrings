@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "CFBundleDisplayName" : {
-      "extractionState" : "manual",
+      "comment" : "Bundle display name",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -31,7 +31,7 @@
       }
     },
     "CFBundleName" : {
-      "extractionState" : "manual",
+      "comment" : "Bundle name",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -91,7 +91,6 @@
     },
     "NSPhotoLibraryAddUsageDescription" : {
       "comment" : "Privacy - Photo Library Additions Usage Description",
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

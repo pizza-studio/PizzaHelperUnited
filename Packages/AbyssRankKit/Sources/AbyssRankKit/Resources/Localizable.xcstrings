@@ -2,7 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "abyssRankKit.availableSince20230401" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
