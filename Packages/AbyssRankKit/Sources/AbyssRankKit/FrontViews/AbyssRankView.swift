@@ -23,7 +23,7 @@ public struct AbyssRankView: View {
         Image("gi_tools_abyssRank", bundle: .module)
     }
 
-    public var body: some View {
+    @MainActor public var body: some View {
         VStack {
             switch vmAbyssRank.showingType {
             case .abyssAvatarsUtilization:
