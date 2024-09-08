@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import GITodayMaterialsKit
 import PZAccountKit
 import PZBaseKit
 import SwiftData
@@ -17,6 +18,7 @@ struct TodayTabPage: View {
         NavigationStack {
             Form {
                 if profiles.isEmpty {
+                    todayMaterialNav
                     Label {
                         Text("app.dailynote.noCard.suggestion".i18nPZHelper)
                     } icon: {
@@ -25,6 +27,9 @@ struct TodayTabPage: View {
                     }
                     .listRowMaterialBackground()
                 } else {
+                    if game == .genshinImpact || game == nil {
+                        todayMaterialNav
+                    }
                     ForEach(filteredProfiles) { profile in
                         InAppDailyNoteCardView(profile: profile)
                             .listRowMaterialBackground()
@@ -55,6 +60,17 @@ struct TodayTabPage: View {
                 }
             }
         }
+    }
+
+    @MainActor @ViewBuilder var todayMaterialNav: some View {
+        let navName =
+            "\(GITodayMaterialsView.navTitle) (\(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed))"
+        NavigationLink {
+            GITodayMaterialsView()
+        } label: {
+            Text(navName)
+        }
+        .listRowMaterialBackground()
     }
 
     // MARK: Private

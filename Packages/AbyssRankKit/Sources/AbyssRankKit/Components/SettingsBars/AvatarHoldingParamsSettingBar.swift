@@ -17,7 +17,7 @@ struct AvatarHoldingParamsSettingBar: View {
                 Text(server.localizedDescriptionByGame).tag(ServerChoice.server(server))
             }
         }.pickerStyle(.menu)
-        DatePicker("", selection: $params.date, displayedComponents: [.date])
+        DatePicker("".description, selection: $params.date, displayedComponents: [.date])
     }
 }
 
