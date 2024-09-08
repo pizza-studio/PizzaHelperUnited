@@ -137,17 +137,19 @@ extension AbyssReportView4GI {
         hasSpacers: Bool
     )
         -> some View {
-        // 每一间在产生记录时，一定会同时有上下两半场同时被登记。
+        let hasLabel = levelData.battles.count > 1 ? hasLabel : false
         let theContent = Group {
             drawBattleNode(
                 levelData.battles[0],
                 label: hasLabel ? "hylKit.abyssReport.floor.1stHalf".i18nHYLKit : ""
             )
-            if hasSpacers, !vertical { Spacer() }
-            drawBattleNode(
-                levelData.battles[1],
-                label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
-            )
+            if levelData.battles.count > 1 {
+                if hasSpacers, !vertical { Spacer() }
+                drawBattleNode(
+                    levelData.battles[1],
+                    label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
+                )
+            }
         }
         if vertical {
             VStack { theContent }
