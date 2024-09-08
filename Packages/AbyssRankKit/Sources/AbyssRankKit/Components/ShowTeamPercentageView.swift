@@ -35,7 +35,7 @@ struct ShowTeamPercentageView: View {
         colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 
-    var body: some View {
+    @MainActor var body: some View {
         ScrollView(.vertical) {
             HStack {
                 Spacer()
@@ -96,7 +96,7 @@ struct ShowTeamPercentageView: View {
         return result.sorted(by: { $0.percentage > $1.percentage })
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func renderTeamLine(team: TeamUtilizationData.Team, index: Int) -> some View {
         HStack(spacing: ThisDevice.isSmallestHDScreenPhone ? 2 : nil) {
             ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
@@ -123,7 +123,7 @@ struct ShowTeamPercentageView: View {
         )
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func percentageView(value: Double, index: Int) -> some View {
         if let assets = Self.percentageViewAssets(value: value, index: index) {
             Text(assets.0).font(.system(size: 16, weight: .heavy)).fontWidth(.compressed)
@@ -133,7 +133,7 @@ struct ShowTeamPercentageView: View {
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func renderHeaderSection(data: TeamUtilizationData) -> some View {
         Section {
             HStack {

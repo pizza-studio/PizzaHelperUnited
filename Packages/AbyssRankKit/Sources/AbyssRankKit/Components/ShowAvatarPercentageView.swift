@@ -36,7 +36,7 @@ struct ShowAvatarPercentageView: View {
         }
     }
 
-    var body: some View {
+    @MainActor var body: some View {
         Form {
             if let result = result {
                 switch result {
@@ -73,7 +73,7 @@ struct ShowAvatarPercentageView: View {
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
         HStack {
             if let avatarIdentified = Enka.AvatarSummarized.CharacterID(id: avatar.charId.description) {
