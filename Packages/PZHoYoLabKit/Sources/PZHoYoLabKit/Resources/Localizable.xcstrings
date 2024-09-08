@@ -731,6 +731,34 @@
         }
       }
     },
+    "hylKit.abyssReportView4GI.navTitle.tiny" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiral Abyss"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深境螺旋"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深境螺旋"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深境螺旋"
+          }
+        }
+      }
+    },
     "hylKit.abyssReportView4HSR.navTitle" : {
       "localizations" : {
         "en" : {
@@ -755,6 +783,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "個人戰報・忘卻之庭"
+          }
+        }
+      }
+    },
+    "hylKit.abyssReportView4HSR.navTitle.tiny" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forgotten Hall"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忘却の庭"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忘却之庭"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忘卻之庭"
           }
         }
       }
