@@ -534,7 +534,6 @@
       }
     },
     "tool.dictionary.prompt_for_keywords" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -2,7 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "app.language.en" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -31,7 +30,6 @@
       }
     },
     "app.language.followSystemDefault" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -60,7 +58,6 @@
       }
     },
     "app.language.ja" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -89,7 +86,6 @@
       }
     },
     "app.language.zh-Hans" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -118,7 +114,6 @@
       }
     },
     "app.language.zh-Hant" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -147,7 +142,6 @@
       }
     },
     "game.all.shortNameEX" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -176,7 +170,6 @@
       }
     },
     "game.genshin.i18nName" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -205,7 +198,6 @@
       }
     },
     "game.genshin.i18nNameTrimmed" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -234,7 +226,6 @@
       }
     },
     "game.genshin.shortNameEX" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -263,7 +254,6 @@
       }
     },
     "game.genshin.titleMarkedName" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -292,7 +282,6 @@
       }
     },
     "game.starRail.i18nName" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -321,7 +310,6 @@
       }
     },
     "game.starRail.i18nNameTrimmed" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -350,7 +338,6 @@
       }
     },
     "game.starRail.shortNameEX" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -379,7 +366,6 @@
       }
     },
     "game.starRail.titleMarkedName" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -408,7 +394,6 @@
       }
     },
     "game.zenlessZone.i18nName" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -437,7 +422,6 @@
       }
     },
     "game.zenlessZone.i18nNameTrimmed" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -466,7 +450,6 @@
       }
     },
     "game.zenlessZone.shortNameEX" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -495,7 +478,6 @@
       }
     },
     "game.zenlessZone.titleMarkedName" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -524,7 +506,6 @@
       }
     },
     "operation.scrolling.guide" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -553,7 +534,6 @@
       }
     },
     "sys.add" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -582,7 +562,6 @@
       }
     },
     "sys.back" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -611,7 +590,6 @@
       }
     },
     "sys.cancel" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -640,7 +618,6 @@
       }
     },
     "sys.close" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -669,7 +646,6 @@
       }
     },
     "sys.delete" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -698,7 +674,6 @@
       }
     },
     "sys.done" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -728,7 +703,6 @@
     },
     "sys.no" : {
       "comment" : "Boolean Confirmation",
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -757,7 +731,6 @@
       }
     },
     "sys.ok" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -786,7 +759,6 @@
       }
     },
     "sys.refresh" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -816,7 +788,6 @@
     },
     "sys.yes" : {
       "comment" : "Boolean Confirmation",
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
