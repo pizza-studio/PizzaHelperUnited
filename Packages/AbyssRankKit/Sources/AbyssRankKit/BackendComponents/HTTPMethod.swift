@@ -120,8 +120,7 @@ struct HttpMethod<T: Decodable> {
                             .localizedDescription
                     )))
                     print(
-                        "DataTask error in General HttpMethod: " +
-                            error.localizedDescription + "\n"
+                        "DataTask error in General HttpMethod: \(error)\n"
                     )
                 } else {
                     guard let data = data else {

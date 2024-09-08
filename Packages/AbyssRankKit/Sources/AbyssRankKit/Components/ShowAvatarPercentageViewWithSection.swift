@@ -86,7 +86,7 @@ struct ShowAvatarPercentageViewWithSection: View {
                         }
                     }
                 case let .failure(error):
-                    Text(error.localizedDescription)
+                    Text("\(error)")
                 }
             } else {
                 ProgressView()

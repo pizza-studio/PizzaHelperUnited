@@ -85,28 +85,28 @@ public struct AbyssRankView: View {
                     AvatarHoldingParamsSettingBar(
                         params: $vmAbyssRank
                             .holdingParam
-                    )
+                    ).lineLimit(1)
                 case .fullStarHoldingRate:
                     FullStarAvatarHoldingParamsSettingBar(
                         params: $vmAbyssRank
                             .fullStarHoldingParam
-                    )
+                    ).lineLimit(1)
                 case .abyssAvatarsUtilization:
                     UtilizationParasSettingBar(
                         params: $vmAbyssRank
                             .utilizationParams
-                    )
+                    ).lineLimit(1)
                 case .teamUtilization:
                     TeamUtilizationParasSettingBar(
                         params: $vmAbyssRank
                             .teamUtilizationParams
-                    )
+                    ).lineLimit(1)
                 case .pvpUtilization:
                     UtilizationParasSettingBar(
                         pvp: true,
                         params: $vmAbyssRank
                             .pvpUtilizationParams
-                    )
+                    ).lineLimit(1)
                 }
             }
         }
