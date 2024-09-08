@@ -16,24 +16,24 @@ struct TeamUtilizationParasSettingBar: View {
             ForEach(HoYo.Server.allCases4GI, id: \.id) { server in
                 Text(server.localizedDescriptionByGame).tag(ServerChoice.server(server))
             }
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
         Picker(selection: $params.floor.animation()) {
             ForEach((9 ... 12).reversed(), id: \.self) { number in
                 Text("abyssRankKit.rank.floor.title:\(number)", bundle: .module).tag(number)
             }
         } label: {
             Text("abyssRankKit.rank.floor.title:\(params.floor)")
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
         Picker(params.season.describe(), selection: $params.season.animation()) {
             ForEach(AbyssSeason.choices(), id: \.hashValue) { season in
                 Text(season.describe()).tag(season)
             }
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
         Picker(params.half.rawValue.i18nAbyssRank, selection: $params.half.animation()) {
             ForEach(TeamUtilizationAPIParameters.Half.allCases, id: \.hashValue) { half in
                 Text(half.rawValue.i18nAbyssRank).tag(half)
             }
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
     }
 }
 

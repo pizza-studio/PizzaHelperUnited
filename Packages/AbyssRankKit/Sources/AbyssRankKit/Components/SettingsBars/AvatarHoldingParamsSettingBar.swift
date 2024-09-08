@@ -16,7 +16,7 @@ struct AvatarHoldingParamsSettingBar: View {
             ForEach(HoYo.Server.allCases4GI, id: \.id) { server in
                 Text(server.localizedDescriptionByGame).tag(ServerChoice.server(server))
             }
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
         DatePicker("".description, selection: $params.date, displayedComponents: [.date])
     }
 }

@@ -16,12 +16,12 @@ struct FullStarAvatarHoldingParamsSettingBar: View {
             ForEach(HoYo.Server.allCases4GI, id: \.id) { server in
                 Text(server.localizedDescriptionByGame).tag(ServerChoice.server(server))
             }
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
         Picker(params.season.describe(), selection: $params.season.animation()) {
             ForEach(AbyssSeason.choices(), id: \.hashValue) { season in
                 Text(season.describe()).tag(season)
             }
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).fixedSize()
     }
 }
 
