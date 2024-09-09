@@ -1,0 +1,90 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "gachaKit.GachaMetaDBError.DatabaseExpired" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local GachaMetaDB cache expired."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローカルGachaMetaDBキャッシュは古すぎて失効だと判断しました。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本机 GachaMetaDB 缓存已过期。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本機 GachaMetaDB 快取已過期。"
+          }
+        }
+      }
+    },
+    "gachaKit.GachaMetaDBError.EmptyFetchResult" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty results retrieved while trying to online-update GachaMetaDB."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け取った資料は空っぽでした（ローカルGachaMetaDBキャッシュのアップデート中の話）。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尝试更新 GachaMetaDB 缓存时，获取到的资料是空的。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "嘗試更新 GachaMetaDB 快取時，獲取到的資料是空的。"
+          }
+        }
+      }
+    },
+    "gachaKit.GachaMetaDBError.ResultFetchFailed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from attempting to to online-update GachaMetaDB."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "資料の受け取りは失敗しました（ローカルGachaMetaDBキャッシュのアップデート中の話）。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尝试更新 GachaMetaDB 缓存时失败。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "嘗試更新 GachaMetaDB 快取時失敗。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
