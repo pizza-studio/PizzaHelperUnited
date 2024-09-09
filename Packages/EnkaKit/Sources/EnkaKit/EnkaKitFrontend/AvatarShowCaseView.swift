@@ -54,7 +54,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
             .toolbar(.hidden)
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     public func coreBody() -> some View {
         TabView(selection: $showingCharacterIdentifier.animation()) {
             // TabView 以 EnkaID 为依据。
@@ -114,7 +114,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
 
     // MARK: Internal
 
-    @ViewBuilder var contextMenuContents: some View {
+    @MainActor @ViewBuilder var contextMenuContents: some View {
         if let avatar = avatar {
             Group {
                 Button {
@@ -139,7 +139,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func framedCoreView(_ avatar: Enka.AvatarSummarized) -> some View {
         VStack {
             Spacer().frame(width: 25, height: 10)
@@ -151,7 +151,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func blankView() -> some View {
         Text("🗑️")
     }

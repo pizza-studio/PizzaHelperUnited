@@ -8,12 +8,12 @@ import PZBaseKit
 import SwiftUI
 
 extension PZProfileMO {
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     func asIcon4SUI() -> some View {
         Enka.ProfileIconView(uid: uid, game: game)
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     func asMenuLabel4SUI() -> some View {
         Label {
             #if targetEnvironment(macCatalyst)

@@ -34,6 +34,7 @@ public struct InfiniteProgressBar: View {
 
     @State private var offset = Self.minOffset
 
+    @MainActor
     private func overlayRect(in rect: CGRect) -> some View {
         let width = rect.width * Self.coverPercentage
         return Rectangle()

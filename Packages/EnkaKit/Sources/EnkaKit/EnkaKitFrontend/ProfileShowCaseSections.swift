@@ -72,7 +72,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     @State var pzProfile: any ProfileMOProtocol
 
-    @ViewBuilder var listHeader: some View {
+    @MainActor @ViewBuilder var listHeader: some View {
         let extraTerms = Enka.ExtraTerms(lang: theDB.locTag, game: theDB.game)
         let rawInfo = guardedEnkaProfile
         Section {

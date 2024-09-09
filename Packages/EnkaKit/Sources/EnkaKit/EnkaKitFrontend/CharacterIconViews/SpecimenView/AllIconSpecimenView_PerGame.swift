@@ -13,7 +13,7 @@ public struct CharSpecimen: Identifiable, Hashable {
 
     public let id: String
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public static func renderAllSpecimen(
         for game: Enka.GameType?,
         scroll: Bool,
@@ -40,7 +40,7 @@ public struct CharSpecimen: Identifiable, Hashable {
         }
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func render(size: Double, cutType: IDPhotoView4HSR.IconType = .cutShoulder) -> some View {
         if id.count == 4 {
             if let first = IDPhotoView4HSR(pid: id, size, cutType, forceRender: true) {

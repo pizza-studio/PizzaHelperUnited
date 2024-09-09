@@ -45,6 +45,7 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
 // MARK: - Trailing Text Label
 
 extension View {
+    @MainActor
     public func corneredTag(
         _ stringKey: LocalizedStringKey,
         alignment: Alignment,
@@ -73,6 +74,7 @@ extension View {
         )
     }
 
+    @MainActor
     public func corneredTag(
         verbatim stringVerbatim: String,
         alignment: Alignment,
@@ -105,14 +107,17 @@ extension View {
 // MARK: - Blur Background
 
 extension View {
+    @MainActor @ViewBuilder
     public func blurMaterialBackground() -> some View {
         modifier(BlurMaterialBackground())
     }
 
+    @MainActor @ViewBuilder
     public func adjustedBlurMaterialBackground() -> some View {
         modifier(AdjustedBlurMaterialBackground())
     }
 
+    @MainActor @ViewBuilder
     public func listRowMaterialBackground() -> some View {
         listRowBackground(
             Color.clear.background(.thinMaterial, in: Rectangle())
@@ -123,6 +128,7 @@ extension View {
 // MARK: - BlurMaterialBackground
 
 struct BlurMaterialBackground: ViewModifier {
+    @MainActor @ViewBuilder
     public func body(content: Content) -> some View {
         content.background(
             .regularMaterial,
@@ -140,7 +146,7 @@ struct BlurMaterialBackground: ViewModifier {
 struct AdjustedBlurMaterialBackground: ViewModifier {
     // MARK: Public
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     public func body(content: Content) -> some View {
         Group {
             if colorScheme == .dark {
@@ -222,7 +228,7 @@ public struct Divided<Content: View>: View {
     // MARK: Internal
 
     struct DividedLayout: _VariadicView_MultiViewRoot {
-        @ViewBuilder
+        @MainActor @ViewBuilder
         public func body(children: _VariadicView.Children) -> some View {
             let last = children.last?.id
 
@@ -242,7 +248,7 @@ public struct Divided<Content: View>: View {
 // MARK: - View.restoreAppTint.
 
 extension View {
-    @ViewBuilder
+    @MainActor @ViewBuilder
     public func restoreSystemTint() -> some View {
         // tint(.init(uiColor: UIColor.tintColor))
         tint(.accentColor)
@@ -252,7 +258,7 @@ extension View {
 // MARK: - View.headerFooterVisibilityEnhanced
 
 extension View {
-    @ViewBuilder
+    @MainActor @ViewBuilder
     public func secondaryColorVerseBackground() -> some View {
         foregroundColor(.primary.opacity(0.75))
     }
@@ -263,6 +269,7 @@ extension View {
 public struct AccentVerseBackground: ViewModifier {
     // MARK: Public
 
+    @MainActor @ViewBuilder
     public func body(content: Content) -> some View {
         switch colorScheme {
         case .light:
@@ -284,6 +291,7 @@ public struct AccentVerseBackground: ViewModifier {
 }
 
 extension View {
+    @MainActor @ViewBuilder
     public func accentVerseBackground() -> some View {
         modifier(AccentVerseBackground())
     }
@@ -333,7 +341,7 @@ extension View {
 // MARK: - NavBarTitleDisplayMode.
 
 extension View {
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func navBarTitleDisplayMode(_ mode: NavBarTitleDisplayMode?) -> some View {
         #if os(iOS) || targetEnvironment(macCatalyst)
         switch mode {
