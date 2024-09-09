@@ -1,0 +1,95 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+import Foundation
+import PZBaseKit
+
+// MARK: - GachaItemType
+
+enum GachaItemType: String {
+    case character
+    case weapon
+    case bangboo /// ZZZ Only
+}
+
+extension GachaItemType {
+    public init(itemID: String, game: Pizza.SupportedGame) {
+        switch game {
+        case .genshinImpact:
+            self = itemID.count > 6 ? .character : .weapon
+        case .starRail:
+            switch itemID.count {
+            case 5...: self = .weapon
+            default: self = .character
+            }
+        case .zenlessZone: self = .bangboo // 暂时不处理。
+        }
+    }
+
+    public func getTranslatedRaw(for lang: GachaLanguage, game: Pizza.SupportedGame) -> String {
+        switch game {
+        case .genshinImpact:
+            switch (self, lang) {
+            case (.character, .langDE): return "Figur"
+            case (.character, .langEN): return "Character"
+            case (.character, .langES): return "Personaje"
+            case (.character, .langFR): return "Personnage"
+            case (.character, .langID): return "Karakter"
+            case (.character, .langJP): return "キャラクター"
+            case (.character, .langKR): return "캐릭터"
+            case (.character, .langPT): return "Personagem"
+            case (.character, .langRU): return "Персонаж"
+            case (.character, .langTH): return "ตัวละคร"
+            case (.character, .langVI): return "Nhân Vật"
+            case (.character, .langCHS): return "角色"
+            case (.character, .langCHT): return "角色"
+            case (.weapon, .langDE): return "Waffe"
+            case (.weapon, .langEN): return "Weapons"
+            case (.weapon, .langES): return "Arma"
+            case (.weapon, .langFR): return "Arme"
+            case (.weapon, .langID): return "Senjata"
+            case (.weapon, .langJP): return "武器"
+            case (.weapon, .langKR): return "무기"
+            case (.weapon, .langPT): return "Arma"
+            case (.weapon, .langRU): return "Оружие"
+            case (.weapon, .langTH): return "อาวุธ"
+            case (.weapon, .langVI): return "Vũ Khí"
+            case (.weapon, .langCHS): return "武器"
+            case (.weapon, .langCHT): return "武器"
+            default: return ""
+            }
+        case .starRail:
+            switch (self, lang) {
+            case (.character, .langDE): return "Figur"
+            case (.character, .langEN): return "Character"
+            case (.character, .langES): return "Personaje"
+            case (.character, .langFR): return "Personnage"
+            case (.character, .langID): return "Karakter"
+            case (.character, .langJP): return "キャラクター"
+            case (.character, .langKR): return "캐릭터"
+            case (.character, .langPT): return "Personagem"
+            case (.character, .langRU): return "Персонаж"
+            case (.character, .langTH): return "ตัวละคร"
+            case (.character, .langVI): return "Nhân Vật"
+            case (.character, .langCHS): return "角色"
+            case (.character, .langCHT): return "角色"
+            case (.weapon, .langDE): return "Lichtkegel"
+            case (.weapon, .langEN): return "Light Cone"
+            case (.weapon, .langES): return "Cono de luz"
+            case (.weapon, .langFR): return "Cône de lumière"
+            case (.weapon, .langID): return "Light Cone"
+            case (.weapon, .langJP): return "光円錐"
+            case (.weapon, .langKR): return "광추"
+            case (.weapon, .langPT): return "Cone de Luz"
+            case (.weapon, .langRU): return "Световой конус"
+            case (.weapon, .langTH): return "Light Cone"
+            case (.weapon, .langVI): return "Nón Ánh Sáng"
+            case (.weapon, .langCHS): return "光锥"
+            case (.weapon, .langCHT): return "光錐"
+            default: return ""
+            }
+        case .zenlessZone: return ""
+        }
+    }
+}
