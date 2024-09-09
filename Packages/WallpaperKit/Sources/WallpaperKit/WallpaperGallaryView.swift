@@ -49,7 +49,7 @@ public struct WallpaperGalleryViewContent: View {
         max(Int(floor($containerSize.wrappedValue.width / 240)), 1)
     }
 
-    @ViewBuilder var coreBodyView: some View {
+    @MainActor @ViewBuilder var coreBodyView: some View {
         StaggeredGrid(columns: columns, list: searchResults, content: { currentCard in
             draw(wallpaper: currentCard)
                 .matchedGeometryEffect(id: currentCard.id, in: animation)

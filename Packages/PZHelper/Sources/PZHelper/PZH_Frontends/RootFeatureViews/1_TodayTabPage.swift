@@ -87,8 +87,7 @@ struct TodayTabPage: View {
         }
     }
 
-    @ViewBuilder
-    @MainActor private var gamePicker: some View {
+    @MainActor @ViewBuilder private var gamePicker: some View {
         Picker("".description, selection: $game.animation()) {
             Text(Pizza.SupportedGame?.none.localizedShortName)
                 .tag(nil as Pizza.SupportedGame?)

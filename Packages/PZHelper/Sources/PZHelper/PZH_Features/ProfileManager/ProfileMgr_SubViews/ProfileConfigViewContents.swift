@@ -107,7 +107,7 @@ extension ProfileConfigViewContents {
             .sheet(isPresented: $isGetCookieWebViewShown, content: handleSheetNavigation)
         }
 
-        @ViewBuilder
+        @MainActor @ViewBuilder
         private func handleSheetNavigation() -> some View {
             switch region {
             case .hoyoLab:

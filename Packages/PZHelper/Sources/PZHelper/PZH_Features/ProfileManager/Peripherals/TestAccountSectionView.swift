@@ -71,7 +71,7 @@ struct TestAccountSectionView: View {
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func buttonIcon() -> some View {
         Group {
             switch status {

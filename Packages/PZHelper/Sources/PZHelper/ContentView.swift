@@ -58,7 +58,7 @@ public struct ContentView: View {
 
         // MARK: Public
 
-        @ViewBuilder @MainActor public var body: some View {
+        @MainActor @ViewBuilder public var body: some View {
             switch self {
             case .today:
                 TodayTabPage()
@@ -79,7 +79,7 @@ public struct ContentView: View {
             }
         }
 
-        @ViewBuilder @MainActor public var label: some View {
+        @MainActor @ViewBuilder public var label: some View {
             switch self {
             case .today: Label("tab.today".i18nPZHelper, systemSymbol: .windshieldFrontAndWiperAndDrop)
             case .showcaseDetail: Label("tab.details".i18nPZHelper, systemSymbol: .personTextRectangleFill)

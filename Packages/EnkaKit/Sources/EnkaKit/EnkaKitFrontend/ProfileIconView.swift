@@ -19,7 +19,7 @@ extension EKQueriedProfileProtocol {
         }
     }
 
-    @ViewBuilder @MainActor public var localFittingIcon4SUI: some View {
+    @MainActor @ViewBuilder public var localFittingIcon4SUI: some View {
         Group {
             if let local = Enka.queryImageAssetSUI(for: iconAssetName) {
                 local.resizable().aspectRatio(contentMode: .fit)

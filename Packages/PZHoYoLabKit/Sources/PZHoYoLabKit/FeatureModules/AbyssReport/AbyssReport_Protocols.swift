@@ -36,7 +36,7 @@ public protocol AbyssReportView: View {
     init(data: AbyssReportData)
     var data: AbyssReportData { get }
     static var navTitle: String { get }
-    @ViewBuilder @MainActor var body: Self.Body { get }
+    @MainActor @ViewBuilder var body: Self.Body { get }
 }
 
 // MARK: - Debug

@@ -63,7 +63,7 @@ public struct EachAvatarStatView: View {
 
     @Default(.artifactRatingRules) var artifactRatingRules: ArtifactRating.Rules
 
-    @ViewBuilder @MainActor var artifactRatingSummaryRow: some View {
+    @MainActor @ViewBuilder var artifactRatingSummaryRow: some View {
         if artifactRatingRules.contains(.enabled), let ratingResult = data.artifactRatingResult {
             HStack {
                 Text(verbatim: " → " + data.mainInfo.terms.artifactRatingName)
@@ -83,7 +83,7 @@ public struct EachAvatarStatView: View {
         }
     }
 
-    @ViewBuilder @MainActor var artifactGrid: some View {
+    @MainActor @ViewBuilder var artifactGrid: some View {
         let gridColumnsFixed = [GridItem](repeating: .init(), count: 2)
         LazyVGrid(columns: gridColumnsFixed, spacing: outerContentSpacing) {
             ForEach(data.artifacts) { currentArtifact in
@@ -94,7 +94,7 @@ public struct EachAvatarStatView: View {
         .padding(.bottom, 18 * Self.zoomFactor)
     }
 
-    @ViewBuilder @MainActor var propsPanelBackground: some View {
+    @MainActor @ViewBuilder var propsPanelBackground: some View {
         Color.black.opacity(0.2)
             .clipShape(
                 .rect(
@@ -106,7 +106,7 @@ public struct EachAvatarStatView: View {
             )
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     func renderPropertyGrid() -> some View {
         let gridColumnsFixed = [GridItem](repeating: .init(.flexible()), count: 2)
         LazyVGrid(columns: gridColumnsFixed, spacing: 0) {
@@ -196,7 +196,7 @@ public struct EachAvatarStatView: View {
 }
 
 extension Enka.AvatarSummarized.CharacterID {
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func asRowBG(element: Enka.GameElement? = nil) -> some View {
         switch game {
         case .starRail:
@@ -240,7 +240,7 @@ extension Enka.AvatarSummarized.CharacterID {
         }
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func asBackground(useNameCardBG: Bool = false, element: Enka.GameElement? = nil) -> some View {
         if useNameCardBG, game == .genshinImpact {
             let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: id)
@@ -276,7 +276,7 @@ extension Enka.AvatarSummarized.CharacterID {
         }
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func asPortrait() -> some View {
         localIcon4SUI
             .resizable()
@@ -286,13 +286,13 @@ extension Enka.AvatarSummarized.CharacterID {
             }
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func avatarPhoto(size: CGFloat, circleClipped: Bool = true, clipToHead: Bool = false) -> some View {
         CharacterIconView(charID: id, size: size, circleClipped: circleClipped, clipToHead: clipToHead)
     }
 
     /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func cardIcon(size: CGFloat) -> some View {
         CharacterIconView(charID: id, cardSize: size)
     }
@@ -304,7 +304,7 @@ extension Enka.AvatarSummarized {
         .init(data: self, background: background)
     }
 
-    @MainActor
+    @MainActor @ViewBuilder
     public func asBackground(useNameCardBG: Bool = false) -> some View {
         mainInfo.idExpressable.asBackground(
             useNameCardBG: useNameCardBG,
@@ -312,7 +312,7 @@ extension Enka.AvatarSummarized {
         )
     }
 
-    @MainActor
+    @MainActor @ViewBuilder
     public func asPortrait() -> some View {
         mainInfo.idExpressable.asPortrait()
     }
@@ -326,7 +326,7 @@ extension Enka.AvatarSummarized {
 }
 
 extension Enka.AvatarSummarized.AvatarMainInfo {
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func asView(fontSize: CGFloat) -> some View {
         HStack(alignment: .bottom, spacing: fontSize * 0.55) {
             idExpressable.avatarPhoto(size: fontSize * 5)
@@ -417,6 +417,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
 }
 
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
+    @MainActor @ViewBuilder
     func levelDisplay(size: CGFloat) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
             Text(verbatim: "\(baseLevel)").font(.system(size: size * 0.8, weight: .heavy))
@@ -427,7 +428,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
         .foregroundStyle(.white) // Always use white color for the text of these information.
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func asView(fontSize: CGFloat) -> some View {
         ZStack(alignment: .bottom) {
             LazyVStack {
@@ -517,7 +518,7 @@ private struct WeaponPanelView: View {
 
     // MARK: Internal
 
-    @ViewBuilder @MainActor var background: some View {
+    @MainActor @ViewBuilder var background: some View {
         switch weapon.game {
         case .starRail:
             Color.primary.opacity(0.075)
@@ -555,7 +556,7 @@ private struct WeaponPanelView: View {
 }
 
 extension Enka.AvatarSummarized.WeaponPanel {
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func asView(fontSize: CGFloat) -> some View {
         WeaponPanelView(for: self, fontSize: fontSize)
     }
@@ -607,7 +608,7 @@ private struct ArtifactView: View {
         return ""
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     private func coreBody(fontSize: CGFloat, langTag: String) -> some View {
         HStack(alignment: .top) {
             Color.clear.frame(width: fontSize * 2.6)
@@ -666,7 +667,7 @@ private struct ArtifactView: View {
         }
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     private func handleArtifactIcon(fontSize: CGFloat, content: (some View)?) -> some View {
         if artifact.game == .starRail {
             content
@@ -695,7 +696,7 @@ private struct ArtifactView: View {
 }
 
 extension Enka.AvatarSummarized.ArtifactInfo {
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     public func asView(fontSize: CGFloat, langTag: String) -> some View {
         ArtifactView(self, fontSize: fontSize, langTag: langTag)
     }

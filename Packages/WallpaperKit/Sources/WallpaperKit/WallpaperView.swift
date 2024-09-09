@@ -66,7 +66,7 @@ public struct AppWallpaperView: View {
         }
     }
 
-    @ViewBuilder var overlayContent4Blur: some View {
+    @MainActor @ViewBuilder var overlayContent4Blur: some View {
         switch guardedWallpaper.game {
         case .genshinImpact: Color.colorSystemGray6.opacity(0.5)
         case .starRail: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)

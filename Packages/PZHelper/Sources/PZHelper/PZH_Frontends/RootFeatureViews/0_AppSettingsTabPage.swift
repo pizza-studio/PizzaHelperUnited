@@ -90,7 +90,7 @@ struct AppSettingsTabPage: View {
 
     @Default(.appLanguage) private var appLanguage: [String]?
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     private func navigationDetail(selection: Binding<Nav?>) -> some View {
         NavigationStack {
             switch selection.wrappedValue {
