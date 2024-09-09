@@ -388,8 +388,13 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                             title: terms.levelName, valueStr: self.avatarLevel.description,
                             fontSize: fontSize * 0.8
                         )
+                        let constUnitName: String = switch self.game {
+                        case .genshinImpact: "C"
+                        case .starRail: "E"
+                        case .zenlessZone: "M"
+                        }
                         AttributeTagPair(
-                            title: terms.constellationName, valueStr: "E\(self.constellation)",
+                            title: terms.constellationName, valueStr: "\(constUnitName)\(self.constellation)",
                             fontSize: fontSize * 0.8
                         )
                     }
