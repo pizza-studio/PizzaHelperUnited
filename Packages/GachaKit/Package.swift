@@ -28,6 +28,9 @@ let package = Package(
         .package(
             url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "8.2.0")
         ),
+        .package(
+            url: "https://github.com/CoreOffice/CoreXLSX", .upToNextMajor(from: "0.14.2")
+        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -42,6 +45,7 @@ let package = Package(
                 .product(name: "GachaMetaDB", package: "GachaMetaGenerator"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
+                .product(name: "CoreXLSX", package: "CoreXLSX"),
             ],
             resources: [
                 .process("Resources/"),

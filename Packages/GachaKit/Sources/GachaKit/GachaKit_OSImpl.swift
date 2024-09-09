@@ -3,6 +3,8 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZAccountKit
+import PZBaseKit
 
 extension String {
     public var i18nGachaKit: String {

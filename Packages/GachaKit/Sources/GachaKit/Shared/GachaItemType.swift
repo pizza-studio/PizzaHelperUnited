@@ -27,6 +27,20 @@ extension GachaItemType {
         }
     }
 
+    // 僅獻給原神抽卡記錄使用。
+    init(rawString4GI: String) {
+        let weaponStrings: [String] = [
+            "Arma", "Arme", "Senjata", "Vũ Khí",
+            "Waffe", "Weapon", "Weapons", "อาวุธ",
+            "武器", "무기", "Оружие",
+        ]
+        if weaponStrings.contains(rawString4GI) {
+            self = .weapon
+        } else {
+            self = .character
+        }
+    }
+
     public func getTranslatedRaw(for lang: GachaLanguage, game: Pizza.SupportedGame) -> String {
         switch game {
         case .genshinImpact:
