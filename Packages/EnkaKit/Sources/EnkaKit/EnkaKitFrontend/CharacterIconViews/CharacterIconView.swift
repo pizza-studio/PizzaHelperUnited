@@ -186,7 +186,7 @@ public struct CharacterIconView: View {
     // Note: Due to the mission-critical fact in this context, we use @AppStorage in lieu of @Default.
     // @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleIcon: Bool
     // @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
-    @AppStorage("useGenshinStyleIcon", store: .baseSuite) private var useGenshinStyleIcon: Bool = true
+    @AppStorage("useGenshinStyleCharacterPhotos", store: .baseSuite) private var useGenshinStyleIcon: Bool = true
     @AppStorage(
         "useNameCardBGWithGICharacters",
         store: .baseSuite
