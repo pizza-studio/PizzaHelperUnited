@@ -85,7 +85,7 @@ extension AbyssReportView4GI {
     @MainActor @ViewBuilder fileprivate var floorList: some View {
         ForEach(data.floors.reversed(), id: \.index) { floorData in
             Section {
-                VStack {
+                LazyVStack {
                     ForEach(floorData.levels, id: \.index) { battleRoom in
                         drawBattleRoom(levelData: battleRoom)
                     }
@@ -109,7 +109,7 @@ extension AbyssReportView4GI {
 
     @MainActor @ViewBuilder
     fileprivate func drawBattleRoom(levelData: HoYo.AbyssReport4GI.Floor.Level) -> some View {
-        VStack {
+        LazyVStack {
             HStack {
                 Text("hylKit.abyssReport.room.title:\(levelData.index.description)", bundle: .module)
                     .fontWeight(.black)
@@ -152,7 +152,7 @@ extension AbyssReportView4GI {
             }
         }
         if vertical {
-            VStack { theContent }
+            LazyVStack { theContent }
         } else {
             HStack { theContent }
         }
