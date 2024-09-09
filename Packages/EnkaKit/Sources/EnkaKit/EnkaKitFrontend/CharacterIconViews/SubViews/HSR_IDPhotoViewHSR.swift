@@ -91,7 +91,7 @@ public struct IDPhotoView4HSR: View {
 
     @Environment(\.colorScheme) var colorScheme
 
-    var coreBody: some View {
+    @MainActor var coreBody: some View {
         switch iconType {
         case .asCard: return AnyView(cardView)
         default: return AnyView(circleIconView)
@@ -105,7 +105,7 @@ public struct IDPhotoView4HSR: View {
         }
     }
 
-    @ViewBuilder var cardView: some View {
+    @MainActor @ViewBuilder var cardView: some View {
         imageObj
             .scaledToFill()
             .frame(width: size * iconType.rawValue, height: size * iconType.rawValue)
@@ -120,7 +120,7 @@ public struct IDPhotoView4HSR: View {
             .contentShape(RoundedRectangle(cornerRadius: size / 10))
     }
 
-    @ViewBuilder var circleIconView: some View {
+    @MainActor @ViewBuilder var circleIconView: some View {
         let ratio = 179.649 / 1024
         let cornerRadius = ratio * size
         let roundCornerRadius = size / 2
@@ -145,7 +145,7 @@ public struct IDPhotoView4HSR: View {
             .aspectRatio(contentMode: .fit)
     }
 
-    @ViewBuilder var backgroundObj: some View {
+    @MainActor @ViewBuilder var backgroundObj: some View {
         Group {
             coordinator.backgroundImage
                 .resizable()

@@ -88,7 +88,7 @@ struct UtilsTabPage: View {
 
     @State private var nav: Nav?
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     private func navigationDetail(selection: Binding<Nav?>) -> some View {
         NavigationStack {
             switch selection.wrappedValue {

@@ -14,6 +14,7 @@ private struct OnAppBecomeActiveModifier: ViewModifier {
     /// A closure that holds the action to be performed on becoming active.
     let action: () -> Void
 
+    @MainActor @ViewBuilder
     func body(content: Content) -> some View {
         content
             .onChange(of: scenePhase) { _, scenePhase in
@@ -36,6 +37,7 @@ private struct OnAppEnterBackgroundModifier: ViewModifier {
     /// The view body with the added action.
     /// - Parameter content: The Content view.
     /// - Returns: A view with the added action.
+    @MainActor @ViewBuilder
     func body(content: Content) -> some View {
         content
             .onChange(of: scenePhase) { _, scenePhase in
@@ -58,6 +60,7 @@ private struct OnAppBecomeInactiveModifier: ViewModifier {
     /// The view body with the added action.
     /// - Parameter content: The Content view.
     /// - Returns: A view with the added action.
+    @MainActor @ViewBuilder
     func body(content: Content) -> some View {
         content
             .onChange(of: scenePhase) { _, scenePhase in
@@ -73,6 +76,7 @@ extension View {
     ///
     /// - Parameter action: A closure that holds the action to be performed on becoming active.
     /// - Returns: A View with the added action.
+    @MainActor @ViewBuilder
     public func onAppBecomeActive(perform action: @escaping () -> Void) -> some View {
         modifier(OnAppBecomeActiveModifier(action: action))
     }
@@ -81,6 +85,7 @@ extension View {
     ///
     /// - Parameter action: A closure that holds the action to be performed on entering the background state.
     /// - Returns: A View with the added action.
+    @MainActor @ViewBuilder
     public func onAppEnterBackground(perform action: @escaping () -> Void) -> some View {
         modifier(OnAppEnterBackgroundModifier(action: action))
     }
@@ -89,6 +94,7 @@ extension View {
     ///
     /// - Parameter action: A closure that holds the action to be performed on becoming inactive.
     /// - Returns: A View with the added action.
+    @MainActor @ViewBuilder
     public func onAppBecomeInactive(perform action: @escaping () -> Void) -> some View {
         modifier(OnAppBecomeInactiveModifier(action: action))
     }

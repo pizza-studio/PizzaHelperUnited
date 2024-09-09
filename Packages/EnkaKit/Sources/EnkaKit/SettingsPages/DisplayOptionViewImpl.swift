@@ -41,7 +41,7 @@ extension Enka {
 
         // MARK: Internal
 
-        @ViewBuilder var mainView: some View {
+        @MainActor @ViewBuilder var mainView: some View {
             Section {
                 Toggle(isOn: $artifactRatingRules.bind(.enabled, animate: true).animation()) {
                     Text("settings.display.artifactRating.enabled".i18nEnka)

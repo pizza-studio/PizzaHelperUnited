@@ -74,7 +74,7 @@ private struct NoteView: View {
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     private func getBody4ZZZ(note: Note4ZZZ) -> some View {
         // Energy. 绝区电量。这里注意本地化不要直接写「电量」，免得被 App Store 审委会认为有歧义。
         VStack {
@@ -127,7 +127,7 @@ private struct NoteView: View {
         }
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     private func getBody4HSR(note: Note4HSR) -> some View {
         // Trailblaze_Power
         VStack {
@@ -199,7 +199,7 @@ private struct NoteView: View {
         }
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     private func getBody4GI(note dailyNote: any Note4GI) -> some View {
         let iconFrame: CGFloat = 40
 

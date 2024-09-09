@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - NavigationBackground
 
 extension View {
-    @ViewBuilder
+    @MainActor @ViewBuilder
     public func listContainerBackground(wallpaperOverride: Wallpaper? = nil) -> some View {
         background(alignment: .topTrailing) {
             AppWallpaperView(forLiveActivity: false, blur: true)

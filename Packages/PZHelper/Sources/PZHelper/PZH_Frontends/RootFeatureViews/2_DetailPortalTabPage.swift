@@ -47,7 +47,7 @@ struct DetailPortalTabPage: View {
         }
     }
 
-    @ViewBuilder @MainActor var formContent: some View {
+    @MainActor @ViewBuilder var formContent: some View {
         let query4GI = CaseQuerySection(theDB: sharedDB.db4GI, focus: $uidInputFieldFocus)
             .listRowMaterialBackground()
         let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)
@@ -86,7 +86,7 @@ struct DetailPortalTabPage: View {
         }
     }
 
-    @ViewBuilder @MainActor var accountSwitcherMenuLabel: some View {
+    @MainActor @ViewBuilder var accountSwitcherMenuLabel: some View {
         LabeledContent {
             let dimension: CGFloat = 30
             Group {
@@ -124,7 +124,7 @@ struct DetailPortalTabPage: View {
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func accountSwitcherMenu(staticIcon useStaticIcon: Bool = false) -> some View {
         Menu {
             Button {
@@ -156,7 +156,7 @@ struct DetailPortalTabPage: View {
         }
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     func hookNavigationDestinations(_ content: some View) -> some View {
         content
             .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
@@ -177,7 +177,7 @@ struct DetailPortalTabPage: View {
             }
     }
 
-    @ViewBuilder @MainActor
+    @MainActor @ViewBuilder
     func hookToolbar(_ content: some View) -> some View {
         if !sortedProfiles.isEmpty {
             content.toolbar {

@@ -206,7 +206,7 @@ extension ProfileManagerPageContent {
             }
         }
 
-        @ViewBuilder
+        @MainActor @ViewBuilder
         func menuForManagingHoYoLabProfiles() -> some View {
             Menu {
                 HoYoPassWithdrawView.linksForManagingHoYoLabAccounts
@@ -215,7 +215,7 @@ extension ProfileManagerPageContent {
             }
         }
 
-        @ViewBuilder
+        @MainActor @ViewBuilder
         func pendingView() -> some View {
             Group {
                 Section {
@@ -252,12 +252,12 @@ extension ProfileManagerPageContent {
             .interactiveDismissDisabled()
         }
 
-        @ViewBuilder
+        @MainActor @ViewBuilder
         func gotCookieView() -> some View {
             ProgressView()
         }
 
-        @ViewBuilder
+        @MainActor @ViewBuilder
         func gotProfileView() -> some View {
             ProfileConfigViewContents(profile: profile, fetchedAccounts: fetchedAccounts)
         }
@@ -388,7 +388,7 @@ private struct RequireLoginView: View {
         getCookieWebViewRegion = region
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     private func handleSheetNavigation(_ region: HoYo.AccountRegion) -> some View {
         switch region {
         case .hoyoLab:

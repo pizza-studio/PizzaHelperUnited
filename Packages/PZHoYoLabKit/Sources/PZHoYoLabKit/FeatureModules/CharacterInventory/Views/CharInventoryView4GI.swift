@@ -73,7 +73,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
 
     // MARK: Internal
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func renderAllAvatarListFull() -> some View {
         Section {
             ForEach(showingAvatars, id: \.id) { avatar in
@@ -92,7 +92,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func renderAllAvatarListCondensed() -> some View {
         StaggeredGrid(
             columns: lineCapacity, outerPadding: false,

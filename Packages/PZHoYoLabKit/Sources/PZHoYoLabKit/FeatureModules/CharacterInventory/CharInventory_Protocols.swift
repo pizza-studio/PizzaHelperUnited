@@ -42,7 +42,7 @@ public protocol CharacterInventoryView: View {
     associatedtype InventoryData: CharacterInventory where Self == InventoryData.ViewType
     init(data: InventoryData, isMiyousheUID: Bool)
     var data: InventoryData { get }
-    @ViewBuilder @MainActor var body: Self.Body { get }
+    @MainActor @ViewBuilder var body: Self.Body { get }
 }
 
 extension CharacterInventoryView {
