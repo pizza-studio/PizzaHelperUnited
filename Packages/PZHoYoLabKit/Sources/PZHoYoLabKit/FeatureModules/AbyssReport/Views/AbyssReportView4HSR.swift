@@ -136,7 +136,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                 )
             }
             if vertical {
-                VStack { theContent }
+                LazyVStack { theContent }
             } else {
                 HStack { theContent }
             }
