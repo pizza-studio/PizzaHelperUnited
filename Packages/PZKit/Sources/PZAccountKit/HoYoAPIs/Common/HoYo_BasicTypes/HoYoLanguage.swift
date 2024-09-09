@@ -35,6 +35,85 @@ extension HoYo {
     }
 }
 
+extension HoYo.APILang {
+    public var localizedKey: String {
+        "hoyo.lang.\(String(describing: self).replacingOccurrences(of: "lang", with: "").lowercased())"
+    }
+
+    public var localized: String {
+        NSLocalizedString("\(localizedKey)", tableName: "HoYoLangNames", bundle: .module, comment: "")
+    }
+}
+
+extension HoYo.APILang {
+    public init?(langTag: String) {
+        let langTag = langTag.lowercased()
+        switch langTag.prefix(3) {
+        case "chs":
+            self = .langCHS
+            return
+        case "cht":
+            self = .langCHT
+            return
+        default: break
+        }
+        switch langTag.prefix(2) {
+        case "ja", "jp": self = .langJP
+        case "ko", "kr": self = .langKR
+        case "es": self = .langES
+        case "th": self = .langTH
+        case "id": self = .langID
+        case "pt": self = .langPT
+        case "de": self = .langDE
+        case "fr": self = .langFR
+        case "ru": self = .langRU
+        case "en": self = .langEN
+        case "vi": self = .langVI
+        case "zh":
+            switch langTag.count {
+            case 7...:
+                let middleTag = langTag.map(\.description)[3 ... 6].joined()
+                switch middleTag {
+                case "hans": self = .langCHS
+                case "hant": self = .langCHT
+                default: self = .langCHS
+                }
+            case 0 ... 6:
+                let trailingTag = langTag.map(\.description)[3 ... 4].joined()
+                switch trailingTag {
+                case "hk", "mo", "tw", "yue": self = .langCHT
+                case "cn", "my", "sg": self = .langCHS
+                default: self = .langCHS
+                }
+            default:
+                self = .langCHS
+            }
+        default: return nil
+        }
+    }
+}
+
+// MARK: - HoYo.APILang + Codable
+
+extension HoYo.APILang: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+        guard let languageCode = HoYo.APILang(rawValue: rawValue) else {
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: "Invalid HoYo.APILang raw value: \(rawValue)"
+            )
+        }
+        self = languageCode
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(rawValue)
+    }
+}
+
 extension Locale {
     /// Get the language code used for miHoYo API according to current UI language preference.
     public static var hoyoAPILanguage: HoYo.APILang {
