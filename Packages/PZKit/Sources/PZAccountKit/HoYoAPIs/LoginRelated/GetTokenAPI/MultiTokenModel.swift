@@ -7,7 +7,7 @@ import Foundation
 // MARK: - MultiToken
 
 /// A struct representing a miHoYo multi token API result with stoken and ltoken
-public struct MultiToken: Decodable {
+public struct MultiToken: Decodable, Sendable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {

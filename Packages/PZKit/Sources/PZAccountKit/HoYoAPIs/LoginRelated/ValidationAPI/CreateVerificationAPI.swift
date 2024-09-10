@@ -21,7 +21,7 @@ extension HoYo {
         var additionalHeaders: [String: String] = [:]
         if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
             additionalHeaders["x-rpc-device_fp"] = deviceFingerPrint
-            additionalHeaders["x-rpc-device_id"] = ThisDevice.identifier4Vendor
+            additionalHeaders["x-rpc-device_id"] = await ThisDevice.getDeviceID4Vendor(deviceID)
         }
         URLRequestConfig.writeXRPCChallengeHeaders4DailyNote(to: &additionalHeaders, for: region)
         if let challengePathOverride {
@@ -69,14 +69,14 @@ extension HoYo {
         var additionalHeaders: [String: String] = [:]
         if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
             additionalHeaders["x-rpc-device_fp"] = deviceFingerPrint
-            additionalHeaders["x-rpc-device_id"] = ThisDevice.identifier4Vendor
+            additionalHeaders["x-rpc-device_id"] = await ThisDevice.getDeviceID4Vendor(deviceID)
         }
         URLRequestConfig.writeXRPCChallengeHeaders4DailyNote(to: &additionalHeaders, for: region)
         if let challengePathOverride {
             additionalHeaders["x-rpc-challenge_path"] = challengePathOverride
         }
 
-        struct VerifyVerificationBody: Encodable {
+        struct VerifyVerificationBody: Encodable, Sendable {
             let geetestChallenge: String
             let geetestValidate: String
             let geetestSeccode: String

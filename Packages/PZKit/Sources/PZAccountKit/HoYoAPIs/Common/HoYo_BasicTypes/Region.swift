@@ -8,7 +8,7 @@ import PZBaseKit
 // MARK: - HoYo.AccountRegion
 
 extension HoYo {
-    public enum AccountRegion {
+    public enum AccountRegion: Sendable {
         case hoyoLab(Pizza.SupportedGame)
         case miyoushe(Pizza.SupportedGame)
 

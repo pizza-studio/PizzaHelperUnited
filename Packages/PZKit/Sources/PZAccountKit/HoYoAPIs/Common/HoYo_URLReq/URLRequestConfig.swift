@@ -130,7 +130,7 @@ public enum URLRequestConfig {
             "x-rpc-app_version": xRPCAppVersion(region: region),
             "x-rpc-client_type": xRPCClientType(region: region),
             "x-rpc-page": "3.1.3_#/rpg",
-            "x-rpc-device_id": deviceID ?? ThisDevice.identifier4Vendor,
+            "x-rpc-device_id": await ThisDevice.getDeviceID4Vendor(deviceID),
             "x-rpc-language": xRPCLanguage(region: region),
 
             "Sec-Fetch-Dest": "empty",

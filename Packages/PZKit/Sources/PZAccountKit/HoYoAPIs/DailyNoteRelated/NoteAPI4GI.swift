@@ -6,7 +6,7 @@ import Foundation
 import PZBaseKit
 
 extension HoYo {
-    public static func note4GI(profile: PZProfileMO) async throws -> any Note4GI {
+    public static func note4GI(profile: PZProfileSendable) async throws -> any Note4GI {
         try await note4GI(
             server: profile.server,
             uid: profile.uid,

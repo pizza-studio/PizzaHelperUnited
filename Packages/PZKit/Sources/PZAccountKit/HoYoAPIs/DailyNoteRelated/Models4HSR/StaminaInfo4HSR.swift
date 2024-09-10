@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - StaminaInfo4HSR
 
-public struct StaminaInfo4HSR {
+public struct StaminaInfo4HSR: Sendable {
     // MARK: Public
 
     /// Each primary stamina needs 6 minutes to recover

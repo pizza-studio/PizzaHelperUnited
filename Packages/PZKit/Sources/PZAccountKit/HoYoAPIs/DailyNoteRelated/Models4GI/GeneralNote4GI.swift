@@ -7,7 +7,7 @@ import Foundation
 // MARK: - GeneralNote4GI
 
 public struct GeneralNote4GI: Note4GI {
-    public struct DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI {
+    public struct DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI, Sendable {
         public let totalTaskCount: Int
         public let finishedTaskCount: Int
         public let isExtraRewardReceived: Bool
@@ -21,8 +21,8 @@ public struct GeneralNote4GI: Note4GI {
         // MARK: Private
     }
 
-    public struct ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI {
-        public struct Expedition: PZAccountKit.Expedition {
+    public struct ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI, Sendable {
+        public struct Expedition: PZAccountKit.Expedition, Sendable {
             public let finishTime: Date
             public let iconURL: URL
 
@@ -33,24 +33,24 @@ public struct GeneralNote4GI: Note4GI {
         public let expeditions: [Expedition]
     }
 
-    public struct HomeCoinInfo4GI: PZAccountKit.HomeCoinInfo4GI {
+    public struct HomeCoinInfo4GI: PZAccountKit.HomeCoinInfo4GI, Sendable {
         public let maxHomeCoin: Int
         public let currentHomeCoin: Int
         public let fullTime: Date
     }
 
-    public struct ResinInfo4GI: PZAccountKit.ResinInfo4GI {
+    public struct ResinInfo4GI: PZAccountKit.ResinInfo4GI, Sendable {
         public let maxResin: Int
         public let currentResin: Int
         public let resinRecoveryTime: Date
     }
 
-    public struct TransformerInfo4GI {
+    public struct TransformerInfo4GI: Sendable {
         public let obtained: Bool
         public let recoveryTime: Date
     }
 
-    public struct WeeklyBossesInfo4GI {
+    public struct WeeklyBossesInfo4GI: Sendable {
         public let totalResinDiscount: Int
         public let remainResinDiscount: Int
     }

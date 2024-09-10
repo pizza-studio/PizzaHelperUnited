@@ -17,6 +17,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     ///   - game: 游戏。
     ///   - uid: UID。
     ///   - configuration: 旧版 AccountMO。
+    @MainActor
     public init?(game: Pizza.SupportedGame, uid: String, configuration: AccountMOProtocol? = nil) {
         guard let server = HoYo.Server(uid: uid, game: game) else { return nil }
         self.game = game
@@ -33,9 +34,10 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
             self.uid = configuration.uid
             self.uuid = configuration.uuid
         }
-        self.deviceID = ThisDevice.identifier4Vendor
+        self.deviceID = ThisDevice.identifier4Vendor.description // .description 很重要，防止 EXC_BAD_ACCESS。
     }
 
+    @MainActor
     public init(server: HoYo.Server, uid: String) {
         self.game = server.game
         self.uid = uid
@@ -44,10 +46,14 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.deviceID = ThisDevice.identifier4Vendor.description // .description 很重要，防止 EXC_BAD_ACCESS。
     }
 
-    public init() {}
+    @MainActor
+    public init() {
+        self.deviceID = ThisDevice.identifier4Vendor.description
+    }
 
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.deviceID = UUID().uuidString
         self.allowNotification = try container.decode(Bool.self, forKey: .allowNotification)
         self.cookie = try container.decode(String.self, forKey: .cookie)
         self.deviceFingerPrint = try container.decode(String.self, forKey: .deviceFingerPrint)
@@ -73,7 +79,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     public var priority: Int = 0
     public var serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue
     public var sTokenV2: String? = ""
-    public var deviceID: String = ThisDevice.identifier4Vendor // For cross-device purposes.
+    public var deviceID: String = UUID().uuidString // For cross-device purposes.
 
     public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact) {
         didSet {

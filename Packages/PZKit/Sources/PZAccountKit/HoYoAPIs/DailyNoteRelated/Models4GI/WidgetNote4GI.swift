@@ -7,14 +7,14 @@ import Foundation
 // MARK: - WidgetNote4GI
 
 public struct WidgetNote4GI: Note4GI {
-    public struct DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI {
+    public struct DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI, Sendable {
         public let totalTaskCount: Int
         public let finishedTaskCount: Int
         public let isExtraRewardReceived: Bool
     }
 
-    public struct ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI {
-        public struct Expedition: PZAccountKit.Expedition {
+    public struct ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI, Sendable {
+        public struct Expedition: PZAccountKit.Expedition, Sendable {
             public let isFinished: Bool
             public let iconURL: URL
         }
@@ -23,14 +23,14 @@ public struct WidgetNote4GI: Note4GI {
         public let expeditions: [Expedition]
     }
 
-    public struct HomeCoinInfo4GI: PZAccountKit.HomeCoinInfo4GI {
+    public struct HomeCoinInfo4GI: PZAccountKit.HomeCoinInfo4GI, Sendable {
         public let maxHomeCoin: Int
         public let currentHomeCoin: Int
 
         public let fullTime: Date
     }
 
-    public struct ResinInfo4GI: PZAccountKit.ResinInfo4GI {
+    public struct ResinInfo4GI: PZAccountKit.ResinInfo4GI, Sendable {
         public let maxResin: Int
         public let currentResin: Int
         public let resinRecoveryTime: Date

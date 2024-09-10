@@ -6,7 +6,7 @@ import Foundation
 import PZBaseKit
 
 extension HoYo {
-    public static func note4HSR(profile: PZProfileMO) async throws -> Note4HSR {
+    public static func note4HSR(profile: PZProfileSendable) async throws -> Note4HSR {
         try await note4HSR(
             server: profile.server,
             uid: profile.uid,
