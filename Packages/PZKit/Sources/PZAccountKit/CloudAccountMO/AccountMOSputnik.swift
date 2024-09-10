@@ -2,9 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import CoreData
+@preconcurrency import CoreData
 import PZBaseKit
-import Sworm
+@preconcurrency import Sworm
 
 // MARK: - AccountMOSputnik
 

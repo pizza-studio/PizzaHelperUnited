@@ -4,7 +4,7 @@
 
 import PZBaseKit
 import SwiftUI
-import Sworm
+@preconcurrency import Sworm
 
 // MARK: - GachaMOItemDebugView
 

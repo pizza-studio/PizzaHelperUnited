@@ -4,7 +4,7 @@
 
 import ArtifactRatingDB
 import Combine
-import Defaults
+@preconcurrency import Defaults
 import Foundation
 import Observation
 import PZBaseKit
