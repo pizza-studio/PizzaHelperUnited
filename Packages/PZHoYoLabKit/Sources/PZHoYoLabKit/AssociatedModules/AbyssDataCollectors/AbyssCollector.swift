@@ -9,7 +9,7 @@ import PZBaseKit
 
 // MARK: - AbyssDataPackProtocol
 
-public protocol AbyssDataPackProtocol: Codable, Hashable {}
+public protocol AbyssDataPackProtocol: Codable, Hashable, Sendable {}
 
 extension AbyssCollector {
     public static let shared = AbyssCollector()
@@ -18,12 +18,12 @@ extension AbyssCollector {
         ACError
     >
 
-    public struct ResponseModel: Codable {
+    public struct ResponseModel: Codable, Sendable {
         public let retcode: Int?
         public let message: String?
     }
 
-    public enum CommissionType: CaseIterable {
+    public enum CommissionType: CaseIterable, Sendable {
         case pzAvatarHolding
         case pzAbyssDB
         case hutaoDB
@@ -122,7 +122,7 @@ public actor AbyssCollector {
 
 extension AbyssCollector {
     public func commitAbyssRecord(
-        profile: PZProfileMO,
+        profile: PZProfileSendable,
         abyssData: HoYo.AbyssReport4GI? = nil,
         inventoryData: HoYo.CharInventory4GI? = nil,
         travelStats: HoYo.TravelStatsData4GI? = nil,

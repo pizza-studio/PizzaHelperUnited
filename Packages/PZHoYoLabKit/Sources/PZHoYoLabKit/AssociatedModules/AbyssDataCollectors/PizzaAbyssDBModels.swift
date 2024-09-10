@@ -42,7 +42,7 @@ extension PZAbyssDB {
 extension PZAbyssDB {
     /// 用于向服务器发送的深境螺旋数据
     public struct AbyssDataPack: Codable, AbyssDataPackProtocol {
-        public struct SubmitDetailModel: Codable, Hashable {
+        public struct SubmitDetailModel: Codable, Hashable, Sendable {
             /// 深境螺旋层数
             public let floor: Int
             /// 深境螺旋间数
@@ -54,7 +54,7 @@ extension PZAbyssDB {
             public let usedChars: [Int]
         }
 
-        public struct AbyssRankModel: Codable, Hashable {
+        public struct AbyssRankModel: Codable, Hashable, Sendable {
             /// 造成的最高伤害
             public let topDamageValue: Int
 
@@ -135,7 +135,7 @@ extension PZAbyssDB {
 
 extension PZAbyssDB.AvatarHoldingDataPack {
     public init(
-        profile: PZProfileMO,
+        profile: PZProfileSendable,
         travelStats: HoYo.TravelStatsData4GI? = nil
     ) async throws {
         let obfuscatedUid = "\(profile.uid)\(profile.uid.md5)\(PZAbyssDB.uidSalt)"
@@ -158,7 +158,7 @@ extension PZAbyssDB.AvatarHoldingDataPack {
 
 extension PZAbyssDB.AbyssDataPack {
     public init(
-        profile: PZProfileMO,
+        profile: PZProfileSendable,
         abyssData: HoYo.AbyssReport4GI? = nil,
         travelStats: HoYo.TravelStatsData4GI? = nil
     ) async throws {

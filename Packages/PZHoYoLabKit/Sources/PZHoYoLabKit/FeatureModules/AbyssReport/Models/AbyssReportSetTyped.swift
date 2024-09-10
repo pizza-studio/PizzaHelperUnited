@@ -24,7 +24,7 @@ public struct AbyssReportSetTyped<Report: AbyssReport>: AbyssReportSet {
     public var previous: Report?
     public var costumeMap: [String: String]
 
-    public var asView: AbyssReportSetView<Report> {
+    @MainActor public var asView: AbyssReportSetView<Report> {
         AbyssReportSetView(data: self)
     }
 }

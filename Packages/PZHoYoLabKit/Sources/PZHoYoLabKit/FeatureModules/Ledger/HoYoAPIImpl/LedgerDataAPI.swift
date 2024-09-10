@@ -6,7 +6,7 @@ import Foundation
 import PZAccountKit
 
 extension HoYo {
-    public static func getLedgerData(for profile: PZProfileMO) async throws -> (any Ledger)? {
+    public static func getLedgerData(for profile: PZProfileSendable) async throws -> (any Ledger)? {
         switch profile.game {
         case .genshinImpact: try await ledgerData4GI(for: profile)
         case .starRail: try await ledgerData4HSR(for: profile)
@@ -16,7 +16,7 @@ extension HoYo {
 }
 
 extension HoYo {
-    static func ledgerData4GI(for profile: PZProfileMO) async throws -> LedgerData4GI? {
+    static func ledgerData4GI(for profile: PZProfileSendable) async throws -> LedgerData4GI? {
         guard let month = Calendar.current.dateComponents([.month], from: Date()).month else { return nil }
         return try await ledgerData4GI(
             month: month,
@@ -26,7 +26,7 @@ extension HoYo {
         )
     }
 
-    static func ledgerData4HSR(for profile: PZProfileMO) async throws -> LedgerData4HSR? {
+    static func ledgerData4HSR(for profile: PZProfileSendable) async throws -> LedgerData4HSR? {
         let components = Calendar.current.dateComponents([.year, .month], from: Date.now)
         guard let year = components.year?.description else { return nil }
         guard var month = components.month?.description else { return nil }

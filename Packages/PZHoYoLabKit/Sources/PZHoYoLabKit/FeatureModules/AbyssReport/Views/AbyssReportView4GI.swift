@@ -101,7 +101,6 @@ extension AbyssReportView4GI {
                     Text(verbatim: "\(floorData.star) / \(floorData.maxStar) ⭐️")
                 }
             }
-            .listRowSpacing(4)
             .listRowSeparator(.hidden)
             .listRowMaterialBackground()
         }

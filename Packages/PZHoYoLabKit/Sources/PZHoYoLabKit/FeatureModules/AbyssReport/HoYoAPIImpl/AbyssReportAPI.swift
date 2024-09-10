@@ -7,7 +7,7 @@ import PZAccountKit
 import PZBaseKit
 
 extension HoYo {
-    public static func getAbyssReportSet(for profile: PZProfileMO) async throws -> (any AbyssReportSet)? {
+    public static func getAbyssReportSet(for profile: PZProfileSendable) async throws -> (any AbyssReportSet)? {
         switch profile.game {
         case .genshinImpact:
             let current = try await abyssReportData4GI(for: profile, isPreviousRound: false)
@@ -24,7 +24,7 @@ extension HoYo {
 
 extension HoYo {
     static func abyssReportData4GI(
-        for profile: PZProfileMO, isPreviousRound: Bool = false
+        for profile: PZProfileSendable, isPreviousRound: Bool = false
     ) async throws
         -> AbyssReport4GI {
         try await abyssReportData4GI(
@@ -38,7 +38,7 @@ extension HoYo {
     }
 
     static func abyssReportData4HSR(
-        for profile: PZProfileMO, isPreviousRound: Bool = false
+        for profile: PZProfileSendable, isPreviousRound: Bool = false
     ) async throws
         -> AbyssReport4HSR {
         try await abyssReportData4HSR(
