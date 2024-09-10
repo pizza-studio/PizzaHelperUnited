@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - Verification
 
-public struct Verification: Decodable, DecodableFromMiHoYoAPIJSONResult {
+public struct Verification: Decodable, DecodableFromMiHoYoAPIJSONResult, Sendable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
@@ -38,6 +38,6 @@ public struct Verification: Decodable, DecodableFromMiHoYoAPIJSONResult {
 
 // MARK: - VerifyVerification
 
-public struct VerifyVerification: Decodable, DecodableFromMiHoYoAPIJSONResult {
+public struct VerifyVerification: Decodable, DecodableFromMiHoYoAPIJSONResult, Sendable {
     let challenge: String
 }

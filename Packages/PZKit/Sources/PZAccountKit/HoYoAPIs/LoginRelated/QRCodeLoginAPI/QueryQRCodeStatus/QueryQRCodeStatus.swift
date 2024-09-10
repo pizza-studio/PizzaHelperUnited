@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - QueryQRCodeStatus
 
-public enum QueryQRCodeStatus: Decodable {
+public enum QueryQRCodeStatus: Decodable, Sendable {
     case unscanned
     case scanned
     case confirmed(accountId: String, token: String)

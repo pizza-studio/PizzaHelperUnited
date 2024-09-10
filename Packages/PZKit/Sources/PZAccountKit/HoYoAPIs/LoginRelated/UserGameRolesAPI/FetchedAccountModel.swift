@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - FetchedAccount
 
-public struct FetchedAccount: Decodable {
+public struct FetchedAccount: Decodable, Sendable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {

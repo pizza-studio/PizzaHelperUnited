@@ -4,7 +4,7 @@
 
 // MARK: - SimuUnivInfo4HSR
 
-public struct SimuUnivInfo4HSR {
+public struct SimuUnivInfo4HSR: Sendable {
     public let currentScore: Int
     public let maxScore: Int
 }

@@ -6,7 +6,7 @@ import PZBaseKit
 
 // MARK: - DailyNoteProtocol
 
-public protocol DailyNoteProtocol {
+public protocol DailyNoteProtocol: Sendable {
     static var game: Pizza.SupportedGame { get }
 }
 
@@ -14,12 +14,18 @@ extension DailyNoteProtocol {
     public var game: Pizza.SupportedGame { Self.game }
 }
 
-extension PZProfileMO {
+extension PZProfileSendable {
     public func getDailyNote() async throws -> DailyNoteProtocol {
         switch game {
         case .genshinImpact: try await HoYo.note4GI(profile: self)
         case .starRail: try await HoYo.note4HSR(profile: self)
         case .zenlessZone: try await HoYo.note4ZZZ(profile: self)
         }
+    }
+}
+
+extension PZProfileMO {
+    public func getDailyNote() async throws -> DailyNoteProtocol {
+        try await makeSendable().getDailyNote()
     }
 }

@@ -27,7 +27,7 @@ extension ReferencingBenchmarkTime {
 // MARK: - BenchmarkTime
 
 @propertyWrapper
-public struct BenchmarkTime: Hashable {
+public struct BenchmarkTime: Hashable, Sendable {
     // MARK: Lifecycle
 
     public init() {
