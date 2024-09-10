@@ -26,12 +26,12 @@ public actor PersistenceController {
 
     @MainActor public static let shared = PersistenceController()
 
-    @MainActor public let accountMOSputnik: AccountMOSputnik = try! AccountMOSputnik(
+    @MainActor public static let accountMOSputnik: AccountMOSputnik = try! AccountMOSputnik(
         persistence: .cloud,
         backgroundContext: false
     )
 
-    @MainActor public let gachaMOSputnik: GachaMOSputnik = try! GachaMOSputnik(
+    @MainActor public static let gachaMOSputnik: GachaMOSputnik = try! GachaMOSputnik(
         persistence: .cloud,
         backgroundContext: false
     )
@@ -57,7 +57,7 @@ extension PersistenceController {
 
     @MainActor
     public static func hasOldAccountDataDetected() -> Bool {
-        let count = try? Self.shared.accountMOSputnik.countAllAccountDataAsPZProfileMO()
+        let count = try? Self.accountMOSputnik.countAllAccountDataAsPZProfileMO()
         return (count ?? 0) > 0
     }
 
@@ -66,7 +66,7 @@ extension PersistenceController {
         let context = Self.shared.modelContainer.mainContext
         let allExistingUUIDs: [String] = try context.fetch(FetchDescriptor<PZProfileMO>())
             .map(\.uuid.uuidString)
-        let oldData = try Self.shared.accountMOSputnik.allAccountDataAsPZProfileMO()
+        let oldData = try Self.accountMOSputnik.allAccountDataAsPZProfileMO()
         oldData.forEach { theEntry in
             if allExistingUUIDs.contains(theEntry.uuid.uuidString) {
                 theEntry.uuid = .init()
