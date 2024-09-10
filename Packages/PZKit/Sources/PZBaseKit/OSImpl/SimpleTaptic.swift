@@ -3,7 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 #if canImport(UIKit)
-import UIKit
+@preconcurrency import UIKit
 #endif
 
 // MARK: - SimpleTapticType
@@ -21,6 +21,7 @@ public enum SimpleTapticType {
 }
 
 // swiftlint:disable:next cyclomatic_complexity
+@MainActor
 public func simpleTaptic(type: SimpleTapticType) {
     #if canImport(UIKit)
     let feedbackGenerator = UINotificationFeedbackGenerator()

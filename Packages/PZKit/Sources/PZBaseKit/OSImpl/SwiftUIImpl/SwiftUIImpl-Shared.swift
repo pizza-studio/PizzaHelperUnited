@@ -306,6 +306,7 @@ extension Binding where Value: OptionSet, Value == Value.Element {
         wrappedValue.contains(options)
     }
 
+    @MainActor
     public func bind(
         _ options: Value,
         animate: Bool = false

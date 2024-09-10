@@ -8,8 +8,8 @@ import WidgetKit
 
 // MARK: - Broadcaster
 
-@Observable
-public final class Broadcaster {
+@Observable @MainActor
+public final class Broadcaster: Sendable {
     public static let shared = Broadcaster()
 
     public private(set) var eventForRefreshingCurrentPage: UUID = .init()
