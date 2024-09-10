@@ -11,8 +11,8 @@ import SwiftUI
 
 // 因为该 VM 也用于 Apple Watch，所以塞到 PZAccountKit 里面。
 
-@Observable
-public final class DailyNoteViewModel {
+@Observable @MainActor
+public final class DailyNoteViewModel: Sendable {
     // MARK: Lifecycle
 
     /// Initializes a new instance of the view model.
@@ -20,14 +20,12 @@ public final class DailyNoteViewModel {
     /// - Parameter account: The account for which the daily note will be fetched.
     public init(profile: PZProfileMO) {
         self.profile = profile
-        Task {
-            await getDailyNoteUncheck()
-        }
+        getDailyNoteUncheck()
     }
 
     // MARK: Public
 
-    public enum Status {
+    public enum Status: Sendable {
         case succeed(dailyNote: any DailyNoteProtocol, refreshDate: Date)
         case failure(error: AnyLocalizedError)
         case progress(Task<Void, Never>?)
@@ -63,9 +61,10 @@ public final class DailyNoteViewModel {
         if case let .progress(task) = dailyNoteStatus {
             task?.cancel()
         }
-        let task = Task {
+        let profileSendable = profile.makeSendable()
+        let task = Task { @MainActor in
             do {
-                let result = try await profile.getDailyNote()
+                let result = try await profileSendable.getDailyNote()
                 withAnimation {
                     dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
                 }

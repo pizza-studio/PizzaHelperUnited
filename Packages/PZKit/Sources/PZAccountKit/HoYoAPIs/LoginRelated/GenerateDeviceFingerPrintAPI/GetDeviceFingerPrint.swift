@@ -6,7 +6,7 @@ import Foundation
 import PZBaseKit
 
 extension HoYo {
-    public struct FingerPrintDataSet {
+    public struct FingerPrintDataSet: Sendable {
         public let deviceFP: String
         public let seedID: String
         public let seedTime: Int
@@ -24,7 +24,7 @@ extension HoYo {
         }
 
         let url = URL(string: "\(region.publicDataHostURLHeader)/device-fp/api/getFp")!
-        let deviceId = deviceID ?? ThisDevice.identifier4Vendor
+        let deviceId = await ThisDevice.getDeviceID4Vendor(deviceID)
         let seedID = generateSeed()
         let seedTime = Int(Date().timeIntervalSince1970) * 1000
         let initialRandomFp = deviceId.md5.prefix(13).description // 根据 deviceId 生成初始指纹。

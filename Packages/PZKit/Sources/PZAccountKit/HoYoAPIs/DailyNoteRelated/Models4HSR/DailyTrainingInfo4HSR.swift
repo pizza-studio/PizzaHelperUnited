@@ -4,7 +4,7 @@
 
 // MARK: - DailyTrainingInfo4HSR
 
-public struct DailyTrainingInfo4HSR {
+public struct DailyTrainingInfo4HSR: Sendable {
     public let currentScore: Int
     public let maxScore: Int
 }

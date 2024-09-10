@@ -35,7 +35,7 @@ public struct Note4ZZZ: Codable, Hashable, DecodableFromMiHoYoAPIJSONResult, Dai
 extension Note4ZZZ {
     // MARK: - Vitality
 
-    public struct Vitality: Codable, Hashable {
+    public struct Vitality: Codable, Hashable, Sendable {
         // MARK: Lifecycle
 
         init(max: Int, current: Int) {
@@ -55,7 +55,7 @@ extension Note4ZZZ {
 
     // MARK: - VHSSale
 
-    public struct VHSSale: Codable, Hashable {
+    public struct VHSSale: Codable, Hashable, Sendable {
         // MARK: Public
 
         public var saleState: String
@@ -73,7 +73,7 @@ extension Note4ZZZ {
 
     // MARK: - Energy
 
-    public struct Energy: Codable, Hashable {
+    public struct Energy: Codable, Hashable, Sendable {
         // MARK: Lifecycle
 
         init(progress: EnergyProgress, restore: Int) {
@@ -90,7 +90,7 @@ extension Note4ZZZ {
 
         // MARK: Public
 
-        public struct EnergyProgress: Codable, Hashable {
+        public struct EnergyProgress: Codable, Hashable, Sendable {
             public var max: Int
             public var current: Int
 

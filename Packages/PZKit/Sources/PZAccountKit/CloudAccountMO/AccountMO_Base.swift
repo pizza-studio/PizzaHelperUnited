@@ -145,7 +145,7 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
 
     public struct Relations {}
 
-    public static var cloudContainerID: String = "iCloud.com.Canglong.GenshinPizzaHepler" // 没机会纠正了。
+    public static let cloudContainerID: String = "iCloud.com.Canglong.GenshinPizzaHepler" // 没机会纠正了。
     public static let containerName: String = "AccountConfiguration"
     public static let entityName: String = "AccountConfiguration"
     public static let modelName: String = "AccountMO4GI"
@@ -187,7 +187,7 @@ struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol {
 
     public struct Relations {}
 
-    public static var cloudContainerID: String = "iCloud.com.Canglong.HSRPizzaHelper"
+    public static let cloudContainerID: String = "iCloud.com.Canglong.HSRPizzaHelper"
     public static let containerName: String = "HSRPizzaHelper"
     public static let entityName: String = "Account"
     public static let modelName: String = "AccountMO4HSR"

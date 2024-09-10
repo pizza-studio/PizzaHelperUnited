@@ -10,7 +10,7 @@ import PZBaseKit
 extension HoYo {
     /// 统一披萨助手引擎不再将 Server 作为要在本地帐号里面记入的资料。
     /// 该类型专门用来从 UID 倒推伺服器、或用于米哈游伺服器的 JSON 解码。
-    public enum Server {
+    public enum Server: Sendable {
         case celestia(Pizza.SupportedGame)
         case irminsul(Pizza.SupportedGame)
         case unitedStates(Pizza.SupportedGame)
@@ -117,7 +117,7 @@ extension HoYo {
 extension HoYo.Server: CaseIterable {
     public static let allCases: [Self] = allCases4GI + allCases4HSR
 
-    public static var allCases4GI: [Self] = [
+    public static let allCases4GI: [Self] = [
         .celestia(.genshinImpact),
         .irminsul(.genshinImpact),
         .unitedStates(.genshinImpact),
@@ -126,7 +126,7 @@ extension HoYo.Server: CaseIterable {
         .hkMacauTaiwan(.genshinImpact),
     ]
 
-    public static var allCases4HSR: [Self] = [
+    public static let allCases4HSR: [Self] = [
         .celestia(.starRail),
         .irminsul(.starRail),
         .unitedStates(.starRail),
@@ -135,7 +135,7 @@ extension HoYo.Server: CaseIterable {
         .hkMacauTaiwan(.starRail),
     ]
 
-    public static var allCases4ZZZ: [Self] = [
+    public static let allCases4ZZZ: [Self] = [
         .celestia(.zenlessZone),
         .unitedStates(.zenlessZone),
         .europe(.zenlessZone),
