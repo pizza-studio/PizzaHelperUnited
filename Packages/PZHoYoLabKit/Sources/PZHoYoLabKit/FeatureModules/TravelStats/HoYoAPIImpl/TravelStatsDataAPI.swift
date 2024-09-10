@@ -6,7 +6,7 @@ import Foundation
 import PZAccountKit
 
 extension HoYo {
-    public static func getTravelStatsData(for profile: PZProfileMO) async throws -> (any TravelStats)? {
+    public static func getTravelStatsData(for profile: PZProfileSendable) async throws -> (any TravelStats)? {
         switch profile.game {
         case .genshinImpact: try await getTravelStatsData4GI(for: profile)
         case .starRail: try await getTravelStatsData4HSR(for: profile)
@@ -16,7 +16,7 @@ extension HoYo {
 }
 
 extension HoYo {
-    static func getTravelStatsData4GI(for profile: PZProfileMO) async throws -> TravelStatsData4GI {
+    static func getTravelStatsData4GI(for profile: PZProfileSendable) async throws -> TravelStatsData4GI {
         try await travelStatsData4GI(
             server: profile.server,
             uid: profile.uid,
@@ -26,7 +26,7 @@ extension HoYo {
         )
     }
 
-    static func getTravelStatsData4HSR(for profile: PZProfileMO) async throws -> TravelStatsData4HSR {
+    static func getTravelStatsData4HSR(for profile: PZProfileSendable) async throws -> TravelStatsData4HSR {
         try await travelStatsData4HSR(
             server: profile.server,
             uid: profile.uid,
