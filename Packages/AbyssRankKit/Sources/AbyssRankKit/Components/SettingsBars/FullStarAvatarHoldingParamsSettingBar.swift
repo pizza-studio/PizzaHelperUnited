@@ -27,7 +27,7 @@ struct FullStarAvatarHoldingParamsSettingBar: View {
 
 // MARK: - FullStarAPIParameters
 
-struct FullStarAPIParameters {
+struct FullStarAPIParameters: Sendable, Equatable {
     var season: AbyssSeason = .now()
     var serverChoice: ServerChoice = .all
 

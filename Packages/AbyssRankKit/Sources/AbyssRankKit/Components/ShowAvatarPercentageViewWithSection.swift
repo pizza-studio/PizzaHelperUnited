@@ -23,7 +23,7 @@ struct ShowAvatarPercentageViewWithSection: View {
     var result: FetchHomeModelResult<AvatarPercentageModel>? {
         switch vmAbyssRank.showingType {
         case .fullStarHoldingRate:
-            return vmAbyssRank.fullStaAvatarHoldingResult
+            return vmAbyssRank.fullStarAvatarHoldingResult
         case .holdingRate:
             return vmAbyssRank.avatarHoldingResult
         case .abyssAvatarsUtilization:
