@@ -34,11 +34,6 @@ struct DetailPortalTabPage: View {
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
             .apply(hookNavigationDestinations)
             .apply(hookToolbar)
-            .onChange(of: delegate.currentProfile) { oldValue, newValue in
-                if oldValue != newValue {
-                    Broadcaster.shared.stopRootTabTasks()
-                }
-            }
             .onAppear {
                 if let profile = delegate.currentProfile, !profiles.contains(profile) {
                     delegate.currentProfile = nil
@@ -59,7 +54,7 @@ struct DetailPortalTabPage: View {
                     CharInventoryNav(theVM: delegate)
                 }
                 .listRowMaterialBackground()
-                .id(UUID().hashValue) // 很重要，否则在同款游戏之间的帐号切换不会生效。
+                .id(profile.uidWithGame) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                 .onTapGesture { uidInputFieldFocus = false }
                 query4GI
             case .starRail:
@@ -67,7 +62,7 @@ struct DetailPortalTabPage: View {
                     CharInventoryNav(theVM: delegate)
                 }
                 .listRowMaterialBackground()
-                .id(UUID().hashValue) // 很重要，否则在同款游戏之间的帐号切换不会生效。
+                .id(profile.uidWithGame) // 很重要，否则在同款游戏之间的帐号切换不会生效。
                 .onTapGesture { uidInputFieldFocus = false }
                 query4HSR
             case .zenlessZone: EmptyView()

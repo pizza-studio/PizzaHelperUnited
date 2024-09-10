@@ -37,10 +37,12 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
             case .standBy:
                 if let result = guardedEnkaProfile {
                     ShowCaseListView(profile: result, enkaDB: theDB, asCardIcons: true)
+                        .id(result.hashValue)
                 }
             case .busy:
                 if let result = guardedEnkaProfile {
                     ShowCaseListView(profile: result, enkaDB: theDB, asCardIcons: true)
+                        .id(result.hashValue)
                         .disabled(delegate.taskState == .busy)
                         .saturation(delegate.taskState == .busy ? 0 : 1)
                 }
@@ -57,11 +59,12 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
             }
             appendedContent()
         }
-        .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
-            triggerUpdateTask()
-        }
         .onChange(of: broadcaster.eventForStoppingRootTabTasks) { _, _ in
             delegate.task?.cancel()
+            delegate.taskState = .standBy
+        }
+        .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
+            triggerUpdateTask()
         }
         .refreshable {
             triggerUpdateTask()
@@ -133,8 +136,10 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     }
 
     func triggerUpdateTask() {
-        Task.detached { @MainActor in
-            delegate.update()
+        if delegate.taskState == .standBy {
+            Task.detached { @MainActor in
+                delegate.update()
+            }
         }
     }
 
@@ -176,6 +181,10 @@ extension ProfileShowCaseSections {
             self.uid = uid
             self.currentInfo = theDB.getCachedProfileRAW(uid: uid)
             update()
+        }
+
+        deinit {
+            task?.cancel()
         }
 
         // MARK: Public
