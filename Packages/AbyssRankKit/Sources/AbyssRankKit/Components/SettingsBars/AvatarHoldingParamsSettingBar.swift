@@ -23,7 +23,7 @@ struct AvatarHoldingParamsSettingBar: View {
 
 // MARK: - AvatarHoldingAPIParameters
 
-struct AvatarHoldingAPIParameters {
+struct AvatarHoldingAPIParameters: Sendable, Equatable {
     var date: Date = Calendar.current.date(
         byAdding: .day,
         value: -30,

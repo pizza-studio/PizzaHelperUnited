@@ -35,7 +35,7 @@ struct UtilizationParasSettingBar: View {
 
 // MARK: - UtilizationAPIParameters
 
-struct UtilizationAPIParameters {
+struct UtilizationAPIParameters: Sendable, Equatable {
     var season: AbyssSeason = .from(Date())
     var serverChoice: ServerChoice = .all
 

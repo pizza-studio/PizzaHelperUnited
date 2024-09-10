@@ -39,7 +39,7 @@ struct TeamUtilizationParasSettingBar: View {
 
 // MARK: - TeamUtilizationAPIParameters
 
-struct TeamUtilizationAPIParameters {
+struct TeamUtilizationAPIParameters: Sendable, Equatable {
     enum Half: String, CaseIterable {
         case all = "abyssRankKit.rank.season.both"
         case secondHalf = "abyssRankKit.half.2"
