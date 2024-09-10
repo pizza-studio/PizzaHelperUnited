@@ -11,7 +11,7 @@ import AppKit
 #endif
 
 extension GITodayMaterial {
-    public static let bundledData: [Self] = {
+    @MainActor public static let bundledData: [Self] = {
         let bundledRawData = NSDataAsset(name: "BundledGIDailyMaterialsData", bundle: .module)!
         return try! JSONDecoder().decode([Self].self, from: bundledRawData.data)
     }()
