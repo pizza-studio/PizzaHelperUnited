@@ -98,7 +98,7 @@ extension GachaMOProtocol {
 struct GachaMO4GI: ManagedObjectConvertible, GachaMOProtocol {
     public struct Relations {}
 
-    public static var cloudContainerID: String = "iCloud.com.Canglong.PizzaGachaLog" // 没机会纠正了。
+    public static let cloudContainerID: String = "iCloud.com.Canglong.PizzaGachaLog" // 没机会纠正了。
     public static let containerName: String = "PizzaGachaLog"
     public static let entityName: String = "GachaItemMO"
     public static let modelName: String = "GachaMO4GI"
@@ -136,7 +136,7 @@ struct GachaMO4GI: ManagedObjectConvertible, GachaMOProtocol {
 struct GachaMO4HSR: ManagedObjectConvertible, GachaMOProtocol {
     public struct Relations {}
 
-    public static var cloudContainerID: String = "iCloud.com.Canglong.HSRPizzaHelper"
+    public static let cloudContainerID: String = "iCloud.com.Canglong.HSRPizzaHelper"
     public static let containerName: String = "HSRPizzaHelper"
     public static let entityName: String = "GachaItemMO"
     public static let modelName: String = "GachaMO4HSR"
