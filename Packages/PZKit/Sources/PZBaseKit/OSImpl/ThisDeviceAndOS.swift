@@ -17,6 +17,7 @@ import WatchKit
 #endif
 
 #if os(macOS) || os(iOS) || targetEnvironment(macCatalyst)
+@MainActor
 public enum ThisDevice {
     // MARK: Public
 
@@ -53,6 +54,11 @@ public enum ThisDevice {
         return UUID().uuidString
         #endif
     }()
+
+    nonisolated public static func getDeviceID4Vendor(_ overridedValue: String? = nil) async -> String {
+        guard let overridedValue else { return await identifier4Vendor.description }
+        return overridedValue
+    }
 
     // MARK: Private
 
@@ -116,6 +122,7 @@ public enum ThisDevice {
 
 // MARK: - OS
 
+@MainActor
 public enum OS: Int {
     case macOS = 0
     case iPhoneOS = 1

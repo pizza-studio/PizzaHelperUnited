@@ -5,6 +5,12 @@
 import CryptoKit
 import Foundation
 
+// MARK: - UserDefaults + Sendable
+
+extension UserDefaults: @unchecked @retroactive Sendable {}
+
+// MARK: - Debug Intel Dumper for URLRequest.
+
 extension URLRequest {
     public func printDebugIntelIfDebugMode() {
         #if DEBUG
