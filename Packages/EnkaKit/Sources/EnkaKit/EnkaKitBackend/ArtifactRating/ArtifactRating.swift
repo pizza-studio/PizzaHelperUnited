@@ -15,7 +15,7 @@ public typealias ArtifactSubStatScore = ArtifactRating.SubStatScoreLevel
 // MARK: - ArtifactRating.SubStatScoreLevel
 
 extension ArtifactRating {
-    public enum SubStatScoreLevel: Double, Codable, Hashable {
+    public enum SubStatScoreLevel: Double, Codable, Hashable, Sendable {
         case highest = 100
         case higherPlus = 90
         case higher = 80
@@ -191,6 +191,7 @@ extension ArtifactRating.RatingRequest.Artifact {
         return false
     }
 
+    @MainActor
     func getSubScore(
         for request: ArtifactRating.RatingRequest,
         rules: ArtifactRating.Rules
@@ -283,6 +284,7 @@ extension ArtifactRating.RatingRequest.Artifact {
 }
 
 extension ArtifactRating.Appraiser {
+    @MainActor
     public func evaluate() -> ArtifactRating.ScoreResult? {
         var result = ArtifactRating.ScoreResult(
             game: request.game,
@@ -312,7 +314,7 @@ extension ArtifactRating.Appraiser {
 // MARK: - ArtifactRating.ScoreResult
 
 extension ArtifactRating {
-    public struct ScoreResult: Codable, Equatable, Hashable {
+    public struct ScoreResult: Codable, Equatable, Hashable, Sendable {
         public var game: Enka.GameType
         public var charID: String
         public var stat1pt: Int = 0

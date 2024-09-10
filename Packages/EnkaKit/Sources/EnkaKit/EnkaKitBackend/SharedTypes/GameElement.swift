@@ -8,7 +8,7 @@ import CoreGraphics
 
 extension Enka {
     /// 元素（星穹铁道与原神共用）。
-    public enum GameElement: String, CaseIterable, Hashable, Codable {
+    public enum GameElement: String, CaseIterable, Hashable, Codable, Sendable {
         case physico
         case anemo
         case geo
@@ -45,7 +45,7 @@ extension Enka.GameElement {
 
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
-        let debugDescription = "Wrong type decodable for Enka.GameElement"
+        let debugDescription = "Wrong type Decodable for Enka.GameElement"
         let error = DecodingError.typeMismatch(
             Self.self,
             DecodingError.Context(

@@ -158,6 +158,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
     // MARK: Lifecycle
 
     /// 原神专用建构子。
+    @MainActor
     public init?(giDB: Enka.EnkaDB4GI, equipItem: Enka.QueriedProfileGI.QueriedAvatar.EquipListItemRAW) {
         guard let equipTypeStr = equipItem.flat.equipType,
               let artifactType = Enka.ArtifactType(rawValue: equipTypeStr),

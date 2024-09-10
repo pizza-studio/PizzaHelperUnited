@@ -12,7 +12,7 @@ import PZBaseKit
 // MARK: - ArtifactRating.ARSputnik
 
 extension ArtifactRating {
-    @Observable
+    @Observable @MainActor
     public final class ARSputnik {
         // MARK: Lifecycle
 
@@ -21,14 +21,10 @@ extension ArtifactRating {
             /// applied to this class, hence no worries.
             Defaults.publisher(.artifactRatingDB)
                 .sink { newDB in
-                    Task.detached { @MainActor in
-                        self.arDB = newDB.newValue
-                    }
+                    self.arDB = newDB.newValue
                 }.store(in: &cancellables)
             Defaults.publisher(.artifactCountDB4GI).sink { newDB in
-                Task.detached { @MainActor in
-                    self.countDB4GI = newDB.newValue
-                }
+                self.countDB4GI = newDB.newValue
             }.store(in: &cancellables)
         }
 
@@ -67,7 +63,7 @@ extension ArtifactRating.ARSputnik {
     )
         -> [Enka.PropertyType: Int] {
         ArtifactRating.calculateSteps(against: appendPropIdList, using: countDB4GI) {
-            Task.detached { @MainActor in
+            Task { @MainActor in
                 try? await self.onlineUpdate()
             }
         }

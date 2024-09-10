@@ -8,9 +8,10 @@ import Foundation
 // MARK: - Enka.ProfileSummarized
 
 extension Enka {
-    public struct ProfileSummarized<DBType: EnkaDBProtocol> {
+    public struct ProfileSummarized<DBType: EnkaDBProtocol>: Sendable {
         // MARK: Lifecycle
 
+        @MainActor
         public init(db theDB: DBType.QueriedProfile.DBType, rawInfo: DBType.QueriedProfile) {
             self.game = theDB.game
             self.theDB = theDB
@@ -31,11 +32,13 @@ extension Enka {
 }
 
 extension Enka.ProfileSummarized {
+    @MainActor
     public mutating func update(newRawInfo: DBType.QueriedProfile, dropExistingData: Bool = false) {
         rawInfo = dropExistingData ? newRawInfo : newRawInfo.inheritAvatars(from: rawInfo)
         summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB)
     }
 
+    @MainActor
     public mutating func evaluateArtifactRatings() {
         summarizedAvatars = summarizedAvatars.map { $0.artifactsRated() }
     }
@@ -65,12 +68,14 @@ extension Enka.ProfileSummarized: Equatable {
 // MARK: - Summerizer APIs for Star Rail.
 
 extension EKQueriedProfileProtocol {
+    @MainActor
     public func summarizeAllAvatars(theDB: DBType.QueriedProfile.DBType) -> [Enka.AvatarSummarized] {
         avatarDetailList.compactMap {
             $0.summarize(theDB: theDB)
         }
     }
 
+    @MainActor
     public func summarize(theDB: DBType) -> Enka.ProfileSummarized<Self.DBType> {
         .init(db: theDB, rawInfo: self)
     }

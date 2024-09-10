@@ -187,6 +187,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
 }
 
 extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
+    @MainActor
     public func asView() -> AvatarShowCaseView<DBType>? {
         .init(profile: self)
     }
@@ -196,7 +197,7 @@ extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
 
 #if DEBUG
 
-private let summaryHSR: Enka.ProfileSummarized<Enka.EnkaDB4HSR> = {
+@MainActor private let summaryHSR: Enka.ProfileSummarized<Enka.EnkaDB4HSR> = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
@@ -213,7 +214,7 @@ private let summaryHSR: Enka.ProfileSummarized<Enka.EnkaDB4HSR> = {
     // swiftlint:enable force_unwrapping
 }()
 
-private let summaryGI: Enka.ProfileSummarized<Enka.EnkaDB4GI> = {
+@MainActor private let summaryGI: Enka.ProfileSummarized<Enka.EnkaDB4GI> = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.

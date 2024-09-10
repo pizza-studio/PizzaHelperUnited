@@ -8,7 +8,7 @@ import PZBaseKit
 
 extension Enka {
     /// 原神＆星穹铁道共用的属性类型。
-    public enum PropertyType: String, Hashable, CaseIterable, RawRepresentable {
+    public enum PropertyType: String, Hashable, CaseIterable, RawRepresentable, Sendable {
         case unknownType = "UnknownType" // 解码失败时专用。
         case anemoAddedRatio = "WindAddedRatio"
         case anemoResistance = "WindResistance"
@@ -101,7 +101,7 @@ extension Enka.PropertyType: Codable, CodingKeyRepresentable {
 
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
-        let debugDescription = "Wrong type decodable for Enka.PropertyType"
+        let debugDescription = "Wrong type Decodable for Enka.PropertyType"
         let error = DecodingError.typeMismatch(
             Self.self,
             DecodingError.Context(
@@ -169,7 +169,7 @@ extension Enka.PropertyType {
 // MARK: - Enka.PVPair
 
 extension Enka {
-    public struct PVPair: Codable, Hashable, Identifiable {
+    public struct PVPair: Codable, Hashable, Sendable, Identifiable {
         // MARK: Lifecycle
 
         /// 该建构子不得用于圣遗物的词条构筑。
@@ -293,7 +293,7 @@ extension Enka {
 
 /// 原神词条 Enum，一律先翻译成 PropertyType 再投入使用。
 /// 这个 Enum 有极大概率已经没用了，因为 Enka 查询结果里面的原神词条是以 Stringed Integer 命名的。
-private enum GIAvatarAttribute: String, Codable, Hashable, CaseIterable, RawRepresentable {
+private enum GIAvatarAttribute: String, Codable, Hashable, Sendable, CaseIterable, RawRepresentable {
     case baseAttack = "FIGHT_PROP_BASE_ATTACK"
     case maxHP = "FIGHT_PROP_MAX_HP"
     case attack = "FIGHT_PROP_ATTACK"
