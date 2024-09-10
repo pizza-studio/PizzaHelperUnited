@@ -9,15 +9,15 @@ import PZAccountKit
 
 public enum SnapHutao {
     public struct AbyssDataPack: Codable, AbyssDataPackProtocol {
-        public struct SpiralAbyss: Codable, Hashable {
-            public struct Damage: Codable, Hashable {
+        public struct SpiralAbyss: Codable, Hashable, Sendable {
+            public struct Damage: Codable, Hashable, Sendable {
                 public var avatarId: Int
                 public var aalue: Int
             }
 
-            public struct Floor: Codable, Hashable {
-                public struct Level: Codable, Hashable {
-                    public struct Battle: Codable, Hashable {
+            public struct Floor: Codable, Hashable, Sendable {
+                public struct Level: Codable, Hashable, Sendable {
+                    public struct Battle: Codable, Hashable, Sendable {
                         public var index: Int
                         public var avatars: [Int]
                     }
@@ -40,7 +40,7 @@ public enum SnapHutao {
             public var floors: [Floor]
         }
 
-        public struct Avatar: Codable, Hashable {
+        public struct Avatar: Codable, Hashable, Sendable {
             public var avatarId: Int
             public var weaponId: Int
             public var reliquarySetIds: [Int]
@@ -68,7 +68,7 @@ public enum SnapHutao {
 
 extension SnapHutao.AbyssDataPack {
     public init(
-        profile: PZProfileMO,
+        profile: PZProfileSendable,
         abyssData: HoYo.AbyssReport4GI? = nil,
         inventoryData: HoYo.CharInventory4GI? = nil
     ) async throws {

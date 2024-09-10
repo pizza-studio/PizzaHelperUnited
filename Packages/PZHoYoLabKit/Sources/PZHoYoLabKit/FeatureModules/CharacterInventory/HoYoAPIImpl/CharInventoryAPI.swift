@@ -6,7 +6,7 @@ import Foundation
 import PZAccountKit
 
 extension HoYo {
-    public static func getCharacterInventory(for profile: PZProfileMO) async throws -> (any CharacterInventory)? {
+    public static func getCharacterInventory(for profile: PZProfileSendable) async throws -> (any CharacterInventory)? {
         #if DEBUG
         print("||| START REQUESTING CHARACTER INVENTORY |||")
         #endif
@@ -19,7 +19,7 @@ extension HoYo {
 }
 
 extension HoYo {
-    static func characterInventory4GI(for profile: PZProfileMO) async throws -> CharInventory4GI {
+    static func characterInventory4GI(for profile: PZProfileSendable) async throws -> CharInventory4GI {
         try await characterInventory4GI(
             server: profile.server.withGame(profile.game),
             uid: profile.uid,
@@ -29,7 +29,7 @@ extension HoYo {
         )
     }
 
-    static func characterInventory4HSR(for profile: PZProfileMO) async throws -> CharInventory4HSR {
+    static func characterInventory4HSR(for profile: PZProfileSendable) async throws -> CharInventory4HSR {
         try await characterInventory4HSR(
             server: profile.server.withGame(profile.game),
             uid: profile.uid,
