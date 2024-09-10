@@ -4,8 +4,8 @@
 
 // MARK: - TranslationResult
 
-struct TranslationResult: Decodable {
-    struct Translation: Decodable, Identifiable {
+struct TranslationResult: Decodable, Sendable {
+    struct Translation: Decodable, Identifiable, Sendable {
         // MARK: Lifecycle
 
         init(from decoder: Decoder) throws {
