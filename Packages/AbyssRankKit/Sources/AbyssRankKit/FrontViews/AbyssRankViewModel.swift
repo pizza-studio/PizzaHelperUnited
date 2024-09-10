@@ -10,18 +10,17 @@ import SwiftUI
 
 // MARK: - AbyssRankViewModel
 
-@Observable
+@Observable @MainActor
 class AbyssRankViewModel {
     // MARK: Lifecycle
 
     init() {
         self.showingType = .abyssAvatarsUtilization
-        getData()
     }
 
     // MARK: Internal
 
-    enum ShowingData: String, CaseIterable, Identifiable {
+    enum ShowingData: String, CaseIterable, Identifiable, Equatable {
         case abyssAvatarsUtilization = "abyssRankKit.rank.usageRate.characters"
         case pvpUtilization = "abyssRankKit.rank.usageRate.characterSansRestart"
         case teamUtilization = "abyssRankKit.rank.usageRate.teams"
@@ -39,7 +38,7 @@ class AbyssRankViewModel {
 
     // MARK: - 满星用户持有率
 
-    var fullStaAvatarHoldingResult: AvatarHoldingReceiveDataFetchModelResult?
+    var fullStarAvatarHoldingResult: AvatarHoldingReceiveDataFetchModelResult?
 
     // MARK: - 深境螺旋使用率
 
@@ -53,32 +52,20 @@ class AbyssRankViewModel {
 
     var pvpUtilizationDataFetchModelResult: UtilizationDataFetchModelResult?
 
-    var showingType: ShowingData {
-        didSet {
-            getData()
-        }
-    }
+    var showingType: ShowingData
 
-    var holdingParam: AvatarHoldingAPIParameters = .init() {
-        didSet { getAvatarHoldingResult() }
-    }
+    var holdingParam: AvatarHoldingAPIParameters = .init()
 
-    var fullStarHoldingParam: FullStarAPIParameters = .init() {
-        didSet { getFullStarHoldingResult() }
-    }
+    var fullStarHoldingParam: FullStarAPIParameters = .init()
 
-    var utilizationParams: UtilizationAPIParameters = .init() {
-        didSet { getUtilizationResult() }
-    }
+    var utilizationParams: UtilizationAPIParameters = .init()
 
     var teamUtilizationParams: TeamUtilizationAPIParameters =
-        .init() {
-        didSet { getTeamUtilizationResult() }
-    }
+        .init()
 
-    var pvpUtilizationParams: UtilizationAPIParameters = .init() {
-        didSet { getPVPUtilizationResult() }
-    }
+    var pvpUtilizationParams: UtilizationAPIParameters = .init()
+
+    var initialized: Bool = false
 
     var paramsDescription: String {
         let result: String = { switch showingType {
@@ -98,7 +85,7 @@ class AbyssRankViewModel {
     var totalDataCount: Int {
         switch showingType {
         case .fullStarHoldingRate:
-            return (try? fullStaAvatarHoldingResult?.get().data.totalUsers) ?? 0
+            return (try? fullStarAvatarHoldingResult?.get().data.totalUsers) ?? 0
         case .holdingRate:
             return (try? avatarHoldingResult?.get().data.totalUsers) ?? 0
         case .abyssAvatarsUtilization:
@@ -134,23 +121,24 @@ class AbyssRankViewModel {
         }
     }
 
-    func getData() {
+    func getData() async {
         switch showingType {
         case .abyssAvatarsUtilization:
-            getUtilizationResult()
+            await getUtilizationResult()
         case .holdingRate:
-            getAvatarHoldingResult()
+            await getAvatarHoldingResult()
         case .fullStarHoldingRate:
-            getFullStarHoldingResult()
+            await getFullStarHoldingResult()
         case .teamUtilization:
-            getTeamUtilizationResult()
+            await getTeamUtilizationResult()
         case .pvpUtilization:
-            getPVPUtilizationResult()
+            await getPVPUtilizationResult()
         }
     }
 
-    func getAvatarHoldingResult() {
-        PSAServer.fetchHoldingRateData(
+    func getAvatarHoldingResult() async {
+        let holdingParam = holdingParam
+        await PSAServer.fetchHoldingRateData(
             queryStartDate: holdingParam.date,
             server: holdingParam.server
         ) { result in
@@ -160,19 +148,21 @@ class AbyssRankViewModel {
         }
     }
 
-    func getFullStarHoldingResult() {
-        PSAServer.fetchFullStarHoldingRateData(
+    func getFullStarHoldingResult() async {
+        let fullStarHoldingParam = fullStarHoldingParam
+        await PSAServer.fetchFullStarHoldingRateData(
             season: fullStarHoldingParam.season,
             server: fullStarHoldingParam.server
         ) { result in
             withAnimation {
-                self.fullStaAvatarHoldingResult = result
+                self.fullStarAvatarHoldingResult = result
             }
         }
     }
 
-    func getUtilizationResult() {
-        PSAServer.fetchAbyssUtilizationData(
+    func getUtilizationResult() async {
+        let utilizationParams = utilizationParams
+        await PSAServer.fetchAbyssUtilizationData(
             season: utilizationParams.season,
             server: utilizationParams.server,
             floor: utilizationParams.floor,
@@ -184,8 +174,8 @@ class AbyssRankViewModel {
         }
     }
 
-    func getTeamUtilizationResult() {
-        PSAServer.fetchTeamUtilizationData(
+    func getTeamUtilizationResult() async {
+        await PSAServer.fetchTeamUtilizationData(
             season: teamUtilizationParams.season,
             server: teamUtilizationParams.server,
             floor: teamUtilizationParams.floor
@@ -194,8 +184,8 @@ class AbyssRankViewModel {
         }
     }
 
-    func getPVPUtilizationResult() {
-        PSAServer.fetchAbyssUtilizationData(
+    func getPVPUtilizationResult() async {
+        await PSAServer.fetchAbyssUtilizationData(
             season: utilizationParams.season,
             server: utilizationParams.server,
             floor: utilizationParams.floor,

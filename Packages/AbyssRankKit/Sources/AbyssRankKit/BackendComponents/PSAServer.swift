@@ -5,6 +5,7 @@
 import Foundation
 import PZAccountKit
 
+@MainActor
 enum PSAServer {
     /// 深境螺旋角色使用率
     static func fetchAbyssUtilizationData(
@@ -13,7 +14,7 @@ enum PSAServer {
         floor: Int = 12,
         pvp: Bool,
         _ completion: @escaping (UtilizationDataFetchModelResult) -> Void
-    ) {
+    ) async {
         // 请求类别
         let urlStr = "/abyss/utilization"
 
@@ -33,7 +34,7 @@ enum PSAServer {
         paraDict.updateValue(String(pvp), forKey: "pvp")
 
         // 请求
-        HttpMethod<UtilizationDataFetchModel>
+        await HttpMethod<UtilizationDataFetchModel>
             .homeServerRequest(
                 .get,
                 urlStr: urlStr,
@@ -73,7 +74,7 @@ enum PSAServer {
         server: HoYo.Server? = nil,
         _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult)
             -> Void
-    ) {
+    ) async {
         // 请求类别
         let urlStr = "/abyss/holding/full_star"
 
@@ -90,7 +91,7 @@ enum PSAServer {
         }
 
         // 请求
-        HttpMethod<AvatarHoldingReceiveDataFetchModel>
+        await HttpMethod<AvatarHoldingReceiveDataFetchModel>
             .homeServerRequest(
                 .get,
                 urlStr: urlStr,
@@ -130,7 +131,7 @@ enum PSAServer {
         server: HoYo.Server? = nil,
         _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult)
             -> Void
-    ) {
+    ) async {
         // 请求类别
         let urlStr = "/user_holding/holding_rate"
 
@@ -151,7 +152,7 @@ enum PSAServer {
         }
 
         // 请求
-        HttpMethod<AvatarHoldingReceiveDataFetchModel>
+        await HttpMethod<AvatarHoldingReceiveDataFetchModel>
             .homeServerRequest(
                 .get,
                 urlStr: urlStr,
@@ -188,12 +189,12 @@ enum PSAServer {
     /// 后台服务器版本
     static func fetchHomeServerVersion(
         _ completion: @escaping (HomeServerVersionFetchModelResult) -> Void
-    ) {
+    ) async {
         // 请求类别
         let urlStr = "/debug/version"
 
         // 请求
-        HttpMethod<HomeServerVersionFetchModel>
+        await HttpMethod<HomeServerVersionFetchModel>
             .homeServerRequest(
                 .get,
                 urlStr: urlStr
@@ -232,7 +233,7 @@ enum PSAServer {
         server: HoYo.Server? = nil,
         floor: Int = 12,
         _ completion: @escaping (TeamUtilizationDataFetchModelResult) -> Void
-    ) {
+    ) async {
         // 请求类别
         let urlStr = "/abyss/utilization/teams"
 
@@ -250,7 +251,7 @@ enum PSAServer {
         }
 
         // 请求
-        HttpMethod<TeamUtilizationDataFetchModel>
+        await HttpMethod<TeamUtilizationDataFetchModel>
             .homeServerRequest(
                 .get,
                 urlStr: urlStr,

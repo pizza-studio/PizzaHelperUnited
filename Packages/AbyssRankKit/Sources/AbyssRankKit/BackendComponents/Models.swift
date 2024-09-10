@@ -29,21 +29,21 @@ enum PSAServerError: Error {
 
 // MARK: - FetchHomeModel
 
-struct FetchHomeModel<T: Codable>: Codable {
+struct FetchHomeModel<T: Codable & Sendable>: Codable, Sendable {
     let retCode: Int
     let message: String
     let data: T
 }
 
-typealias FetchHomeModelResult<T: Codable> = Result<
+typealias FetchHomeModelResult<T: Codable & Sendable> = Result<
     FetchHomeModel<T>,
     PSAServerError
 >
 
 // MARK: - AvatarPercentageModel
 
-struct AvatarPercentageModel: Codable {
-    struct Avatar: Codable {
+struct AvatarPercentageModel: Codable, Sendable {
+    struct Avatar: Codable, Sendable {
         let charId: Int
         let percentage: Double?
     }
@@ -54,8 +54,8 @@ struct AvatarPercentageModel: Codable {
 
 // MARK: - TeamUtilizationData
 
-struct TeamUtilizationData: Codable {
-    struct Team: Codable {
+struct TeamUtilizationData: Codable, Sendable {
+    struct Team: Codable, Sendable {
         let team: [Int]
         let percentage: Double
     }

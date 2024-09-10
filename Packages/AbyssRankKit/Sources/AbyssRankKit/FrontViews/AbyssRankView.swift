@@ -110,6 +110,44 @@ public struct AbyssRankView: View {
                 }
             }
         }
+        .onAppear {
+            Task { @MainActor in
+                if !vmAbyssRank.initialized {
+                    await vmAbyssRank.getData()
+                    vmAbyssRank.initialized.toggle()
+                }
+            }
+        }
+        .onChange(of: vmAbyssRank.showingType) {
+            Task { @MainActor in
+                await vmAbyssRank.getData()
+            }
+        }
+        .onChange(of: vmAbyssRank.holdingParam) {
+            Task { @MainActor in
+                await vmAbyssRank.getAvatarHoldingResult()
+            }
+        }
+        .onChange(of: vmAbyssRank.fullStarHoldingParam) {
+            Task { @MainActor in
+                await vmAbyssRank.getFullStarHoldingResult()
+            }
+        }
+        .onChange(of: vmAbyssRank.utilizationParams) {
+            Task { @MainActor in
+                await vmAbyssRank.getUtilizationResult()
+            }
+        }
+        .onChange(of: vmAbyssRank.teamUtilizationParams) {
+            Task { @MainActor in
+                await vmAbyssRank.getTeamUtilizationResult()
+            }
+        }
+        .onChange(of: vmAbyssRank.pvpUtilizationParams) {
+            Task { @MainActor in
+                await vmAbyssRank.getPVPUtilizationResult()
+            }
+        }
     }
 
     // MARK: Private
