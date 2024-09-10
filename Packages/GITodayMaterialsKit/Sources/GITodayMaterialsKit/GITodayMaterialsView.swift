@@ -13,7 +13,7 @@ public struct GITodayMaterialsView: View {
 
     public init() {
         self.data = Material.bundledData
-        switch Calendar.current.firstWeekday {
+        switch Calendar.current.component(.weekday, from: Date.now) {
         case 2, 5: self.weekday = .MonThu
         case 3, 6: self.weekday = .TueFri
         case 4, 7: self.weekday = .WedSat
@@ -33,7 +33,7 @@ public struct GITodayMaterialsView: View {
         .formStyle(.grouped)
         .scrollContentBackground(.hidden)
         .listContainerBackground()
-        .navBarTitleDisplayMode(.inline)
+        .navBarTitleDisplayMode(.large)
         .navigationTitle(Self.navTitle)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
@@ -47,7 +47,7 @@ public struct GITodayMaterialsView: View {
                     RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
                 )
             }
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .principal) {
                 Picker("".description, selection: $weekday.animation()) {
                     Text(Material.AvailableWeekDay?.none.localizedName).tag(Material.AvailableWeekDay?.none)
                     ForEach(Material.AvailableWeekDay.allCases) { weekday in
@@ -60,6 +60,17 @@ public struct GITodayMaterialsView: View {
                 .background(
                     RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
                 )
+            }
+        }
+        .onAppear {
+            if !initialized {
+                switch Calendar.current.component(.weekday, from: Date.now) {
+                case 2, 5: weekday = .MonThu
+                case 3, 6: weekday = .TueFri
+                case 4, 7: weekday = .WedSat
+                default: weekday = nil
+                }
+                initialized.toggle()
             }
         }
     }
@@ -112,6 +123,7 @@ public struct GITodayMaterialsView: View {
 
     @State private var isWeapon: Bool = false
     @State private var weekday: Material.AvailableWeekDay?
+    @State private var initialized: Bool = false
     private let data: [Material]
 
     private var materialsFiltered: [Material] {
