@@ -5,7 +5,7 @@
 // MARK: - Enka.QueriedResultGI
 
 extension Enka {
-    public struct QueriedResultGI: Codable, Hashable, EKQueryResultProtocol {
+    public struct QueriedResultGI: Codable, Hashable, Sendable, EKQueryResultProtocol {
         // MARK: Lifecycle
 
         public init(from decoder: any Decoder) throws {

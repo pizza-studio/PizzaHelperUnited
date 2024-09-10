@@ -10,7 +10,7 @@ extension ArtifactRating {
     /// 原神很多角色可以开发出离经叛道的有效玩法。
     /// 比如说雷电将军低命座可以用影芙妲白打全自动脱手超绽放，此时元素精通是雷电将军的最有效的词条。
     /// 这类需求使得对原神的雷系角色不能只用一套固定的静态圣遗物评分模型来处理。
-    public struct Rules: OptionSet {
+    public struct Rules: OptionSet, Sendable {
         // MARK: Lifecycle
 
         public init(rawValue: Int) {

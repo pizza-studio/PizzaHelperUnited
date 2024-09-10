@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - EnkaDBProtocol
 
-public protocol EnkaDBProtocol: AnyObject {
+public protocol EnkaDBProtocol: AnyObject, Sendable {
     associatedtype QueriedResult: EKQueryResultProtocol where QueriedResult.DBType == Self
     associatedtype QueriedProfile: EKQueriedProfileProtocol where QueriedResult.DBType == Self
     static var game: Enka.GameType { get }

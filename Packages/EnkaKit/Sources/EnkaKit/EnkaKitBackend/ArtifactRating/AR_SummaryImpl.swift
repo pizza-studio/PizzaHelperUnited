@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 extension Enka.AvatarSummarized {
+    @MainActor
     public mutating func rateMyArtifacts() {
         guard let request = convert2ArtifactRatingModel() else { return }
         artifactRatingResult = ArtifactRating.Appraiser(request: request).evaluate()
@@ -24,6 +25,7 @@ extension Enka.AvatarSummarized {
         }
     }
 
+    @MainActor
     public func artifactsRated() -> Self {
         var this = self
         this.rateMyArtifacts()

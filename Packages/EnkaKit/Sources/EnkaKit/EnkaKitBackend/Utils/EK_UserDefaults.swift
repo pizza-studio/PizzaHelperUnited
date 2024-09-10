@@ -7,7 +7,8 @@ import Foundation
 import PZBaseKit
 
 extension UserDefaults {
-    public static let enkaSuite = UserDefaults(suiteName: appGroupID + ".storageForEnka") ?? .baseSuite
+    public static let enkaSuite = UserDefaults(suiteName: appGroupID + ".storageForEnka") ??
+        .baseSuite
 }
 
 extension Defaults.Keys {

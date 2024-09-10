@@ -183,6 +183,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
 }
 
 extension EKQueriedProfileProtocol {
+    @MainActor
     public func asView(
         theDB: DBType,
         expanded: Bool = false

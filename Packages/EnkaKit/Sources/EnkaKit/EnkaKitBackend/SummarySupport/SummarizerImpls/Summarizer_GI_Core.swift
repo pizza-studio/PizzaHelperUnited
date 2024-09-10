@@ -4,6 +4,7 @@
 
 extension Enka.QueriedProfileGI.QueriedAvatar {
     /// 计算角色面板（原神）。
+    @MainActor
     public func summarize(theDB: DBType) -> Enka.AvatarSummarized? {
         let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
             giDB: theDB,

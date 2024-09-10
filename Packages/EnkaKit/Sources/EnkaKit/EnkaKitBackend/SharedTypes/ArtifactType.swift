@@ -5,7 +5,7 @@
 import EnkaDBModels
 
 extension Enka {
-    public enum ArtifactType: String, Codable, Hashable, CaseIterable, Identifiable {
+    public enum ArtifactType: String, Codable, Hashable, Sendable, CaseIterable, Identifiable {
         case hsrHead = "HEAD"
         case hsrHand = "HAND"
         case hsrBody = "BODY"

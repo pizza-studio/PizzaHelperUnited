@@ -8,13 +8,13 @@ import ArtifactRatingDB
 
 extension ArtifactRating {
     public typealias ModelDB = [String: RatingModel]
-    public struct RatingModel: Codable, Hashable {
+    public struct RatingModel: Codable, Hashable, Sendable {
         public var main: [String: [Enka.PropertyType: Double]] = [:]
         public var weight: [Enka.PropertyType: Double] = [:]
         public var max: Double = 10
     }
 
-    public static var sharedDB: ArtifactRating.ModelDB {
+    @MainActor public static var sharedDB: ArtifactRating.ModelDB {
         ArtifactRating.ARSputnik.shared.arDB
     }
 }
@@ -42,6 +42,7 @@ extension ArtifactRating.ModelDB {
         )!
     }
 
+    @MainActor
     public func isExpired<T: EKQueriedProfileProtocol>(against profile: T) -> Bool {
         let targetIDs: Set<String> = .init(profile.avatarDetailList.map(\.avatarId.description))
         guard targetIDs.isSubset(of: Set<String>(ArtifactRating.sharedDB.keys)) else { return true }
@@ -99,6 +100,7 @@ extension ArtifactRating.CharacterStatScoreModel {
     ///   - charID: 角色 ID
     ///   - artifactType: 聖遺物種類。指定了的話就查詢主詞條，如果沒指定（也就是 nil）那就查詢副詞條。
     /// - Returns: [ArtifactRating.Appraiser.Param: ArtifactSubStatScore]
+    @MainActor
     static func getScoreModel(
         charID: String,
         artifactType: Enka.ArtifactType? = nil
@@ -121,6 +123,7 @@ extension ArtifactRating.CharacterStatScoreModel {
         return result
     }
 
+    @MainActor
     static func getMax(charID: String) -> Double {
         ArtifactRating.sharedDB[charID]?.max ?? 10
     }

@@ -7,7 +7,7 @@
 // MARK: - Enka.QueriedProfileHSR
 
 extension Enka {
-    public struct QueriedProfileHSR: Codable, Hashable, EKQueriedProfileProtocol {
+    public struct QueriedProfileHSR: Codable, Hashable, Sendable, EKQueriedProfileProtocol {
         // MARK: Lifecycle
 
         public init(
@@ -94,7 +94,7 @@ extension Enka {
 extension Enka.QueriedProfileHSR {
     // MARK: - Avatar
 
-    public struct QueriedAvatar: Codable, Hashable, EKQueriedRawAvatarProtocol {
+    public struct QueriedAvatar: Codable, Hashable, Sendable, EKQueriedRawAvatarProtocol {
         // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
@@ -133,7 +133,7 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - Equipment
 
-    public struct Equipment: Codable, Hashable {
+    public struct Equipment: Codable, Hashable, Sendable {
         // MARK: Public
 
         public let rank, level, tid: Int
@@ -158,14 +158,14 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - EquipmentFlat
 
-    public struct EquipmentFlat: Codable, Hashable {
+    public struct EquipmentFlat: Codable, Hashable, Sendable {
         public let props: [Prop]
         public let name: Int
     }
 
     // MARK: - Prop
 
-    public struct Prop: Codable, Hashable {
+    public struct Prop: Codable, Hashable, Sendable {
         public let type: String
         public let value: Double
     }
@@ -173,7 +173,7 @@ extension Enka.QueriedProfileHSR {
     // MARK: - PropStepped
 
     // NON-ENKA
-    public struct PropStepped: Codable, Hashable {
+    public struct PropStepped: Codable, Hashable, Sendable {
         public let type: String
         public let value: Double
         public let count: Int
@@ -182,19 +182,19 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - ArtifactItem
 
-    public struct ArtifactItem: Codable, Hashable {
+    public struct ArtifactItem: Codable, Hashable, Sendable {
         // MARK: Public
 
         // MARK: - SubAffixList
 
-        public struct SubAffixItem: Codable, Hashable {
+        public struct SubAffixItem: Codable, Hashable, Sendable {
             public let affixId, cnt: Int
             public let step: Int?
         }
 
         // MARK: - ArtifactItem.Flat
 
-        public struct Flat: Codable, Hashable {
+        public struct Flat: Codable, Hashable, Sendable {
             public let props: [Prop]
             public let setName, setID: Int
         }
@@ -202,7 +202,7 @@ extension Enka.QueriedProfileHSR {
         // MARK: - ArtifactItem.SteppedFlat
 
         // NON-ENKA
-        public struct SteppedFlat: Codable, Hashable {
+        public struct SteppedFlat: Codable, Hashable, Sendable {
             public let props: [PropStepped]
             public let setName, setID: Int
         }
@@ -229,13 +229,13 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - SkillTreeItem
 
-    public struct SkillTreeItem: Codable, Hashable {
+    public struct SkillTreeItem: Codable, Hashable, Sendable {
         public let pointId, level: Int
     }
 
     // MARK: - RecordInfo
 
-    public struct RecordInfo: Codable, Hashable {
+    public struct RecordInfo: Codable, Hashable, Sendable {
         public let maxRogueChallengeScore, achievementCount: Int?
         public let challengeInfo: ChallengeInfo?
         public let equipmentCount, avatarCount: Int?
@@ -243,12 +243,12 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - ChallengeInfo
 
-    public struct ChallengeInfo: Codable, Hashable {
+    public struct ChallengeInfo: Codable, Hashable, Sendable {
         public let scheduleGroupId: Int?
     }
 
     // swiftlint:disable identifier_name
-    public enum PlatformType: Int, Hashable, Codable, CaseIterable {
+    public enum PlatformType: Int, Hashable, Codable, CaseIterable, Sendable {
         case editor = 0
         case ios = 1
         case android = 2
