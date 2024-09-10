@@ -54,7 +54,7 @@ struct GetCookieQRCodeView: View {
     private func fireAutoCheckScanningConfirmationStatus() async {
         guard !viewModel.scanningConfirmationStatus.isBusy else { return }
         guard let ticket = viewModel.qrCodeAndTicket?.ticket else { return }
-        let task = Task.detached { @MainActor [weak viewModel] in
+        let task = Task { @MainActor [weak viewModel] in
             loopTask: while case .automatically = viewModel?.scanningConfirmationStatus {
                 guard let viewModel = viewModel else { break loopTask }
                 do {
@@ -79,7 +79,7 @@ struct GetCookieQRCodeView: View {
 
     private func loginCheckScannedButtonDidPress(ticket: String) async {
         viewModel.cancelAllConfirmationTasks(resetState: false)
-        let task = Task.detached { @MainActor in
+        let task = Task { @MainActor in
             do {
                 let status = try await HoYo.queryQRCodeStatus(
                     deviceId: viewModel.taskId,
@@ -225,7 +225,7 @@ struct GetCookieQRCodeView: View {
 
 // Credit: Bill Haku for the fix.
 @Observable
-class GetCookieQRCodeViewModel {
+class GetCookieQRCodeViewModel: @unchecked Sendable {
     // MARK: Lifecycle
 
     init() {
@@ -241,7 +241,7 @@ class GetCookieQRCodeViewModel {
 
     public func reCreateQRCode() {
         taskId = .init()
-        Task.detached { @MainActor in
+        Task { @MainActor in
             do {
                 self.qrCodeAndTicket = try await HoYo.generateLoginQRCode(deviceId: self.taskId)
                 self.error = nil
@@ -253,7 +253,7 @@ class GetCookieQRCodeViewModel {
 
     // MARK: Internal
 
-    enum ScanningConfirmationStatus {
+    enum ScanningConfirmationStatus: Sendable {
         case manually(Task<Void, Never>)
         case automatically(Task<Void, Never>)
         case idle
@@ -268,7 +268,7 @@ class GetCookieQRCodeViewModel {
         }
     }
 
-    static var shared: GetCookieQRCodeViewModel = .init()
+    nonisolated(unsafe) static var shared: GetCookieQRCodeViewModel = .init()
 
     var qrCodeAndTicket: (qrCode: CGImage, ticket: String)?
     var taskId: UUID

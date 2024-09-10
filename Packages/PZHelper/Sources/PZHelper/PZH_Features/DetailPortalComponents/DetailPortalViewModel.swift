@@ -15,7 +15,7 @@ import SwiftUI
 // 注：这个 Class 不负责管理 Enka 展柜的 Raw Profile。
 
 @Observable
-public final class DetailPortalViewModel {
+public final class DetailPortalViewModel: @unchecked Sendable {
     // MARK: Lifecycle
 
     @MainActor
@@ -64,7 +64,7 @@ public final class DetailPortalViewModel {
 
     public func refresh() {
         guard case .standby = refreshingStatus else { return }
-        let task = Task {
+        let task = Task { @MainActor in
             await fetchCharacterInventoryList()
             await fetchTravelStatsData()
             await fetchLedgerData()
