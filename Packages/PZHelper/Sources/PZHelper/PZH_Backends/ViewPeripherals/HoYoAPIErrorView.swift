@@ -141,7 +141,7 @@ extension HoYoAPIErrorView {
         }
 
         func verifyValidate(challenge: String, validate: String) {
-            Task.detached { @MainActor in
+            Task { @MainActor in
                 do {
                     try await HoYo.verifyVerification(
                         region: profile.server.region,
