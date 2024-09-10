@@ -8,7 +8,7 @@ import Foundation
 #if canImport(AppKit)
 import AppKit
 #endif
-import Combine
+@preconcurrency import Combine
 #if canImport(UIKit)
 import UIKit
 #endif
@@ -16,6 +16,7 @@ import UIKit
 // MARK: - DeviceOrientation
 
 @Observable
+@MainActor
 public final class DeviceOrientation {
     // MARK: Lifecycle
 
@@ -58,7 +59,7 @@ public final class DeviceOrientation {
 
     // MARK: Private
 
-    private var listener: AnyCancellable?
+    @ObservationIgnored private var listener: AnyCancellable?
 }
 
 extension DeviceOrientation {
