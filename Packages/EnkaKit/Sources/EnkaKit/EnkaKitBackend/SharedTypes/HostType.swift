@@ -7,7 +7,7 @@ import Foundation
 // MARK: - Enka.HostType
 
 extension Enka {
-    public enum HostType: Int, Codable, RawRepresentable, Hashable {
+    public enum HostType: Int, Codable, RawRepresentable, Hashable, Sendable {
         case mainlandChina = 0
         case enkaGlobal = 1
 

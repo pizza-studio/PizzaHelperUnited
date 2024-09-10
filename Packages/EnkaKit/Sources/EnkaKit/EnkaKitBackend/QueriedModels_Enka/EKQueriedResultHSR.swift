@@ -5,7 +5,7 @@
 // MARK: - Enka.QueriedResultHSR
 
 extension Enka {
-    public struct QueriedResultHSR: Codable, Hashable, EKQueryResultProtocol {
+    public struct QueriedResultHSR: Codable, Hashable, Sendable, EKQueryResultProtocol {
         public typealias QueriedProfileType = Enka.QueriedProfileHSR
         public typealias DBType = Enka.EnkaDB4HSR
 

@@ -8,7 +8,7 @@ import EnkaDBModels
 // MARK: - Enka.QueriedProfileGI
 
 extension Enka {
-    public struct QueriedProfileGI: Codable, Hashable, EKQueriedProfileProtocol {
+    public struct QueriedProfileGI: Codable, Hashable, Sendable, EKQueriedProfileProtocol {
         // MARK: Lifecycle
 
         public init(from decoder: any Decoder) throws {
@@ -35,7 +35,7 @@ extension Enka {
 
         public typealias DBType = Enka.EnkaDB4GI
 
-        public struct ShowAvatarInfoRAW: Codable, Hashable {
+        public struct ShowAvatarInfoRAW: Codable, Hashable, Sendable {
             /// 角色ID
             public var avatarId: Int
             /// 角色等级
@@ -44,7 +44,7 @@ extension Enka {
             public var costumeId: Int?
         }
 
-        public struct ProfilePictureRAW: Codable, Hashable {
+        public struct ProfilePictureRAW: Codable, Hashable, Sendable {
             // MARK: Lifecycle
 
             public init(from decoder: any Decoder) throws {
@@ -114,7 +114,7 @@ extension Enka {
 // MARK: - Enka.QueriedProfileGI.QueriedAvatar
 
 extension Enka.QueriedProfileGI {
-    public struct QueriedAvatar: Codable, Hashable, EKQueriedRawAvatarProtocol {
+    public struct QueriedAvatar: Codable, Hashable, Sendable, EKQueriedRawAvatarProtocol {
         // MARK: Lifecycle
 
         public init(from decoder: any Decoder) throws {
@@ -144,21 +144,21 @@ extension Enka.QueriedProfileGI {
 
         public typealias DBType = Enka.EnkaDB4GI
 
-        public struct PropMapRAW: Codable, Hashable {
+        public struct PropMapRAW: Codable, Hashable, Sendable {
             // MARK: Public
 
-            public struct ExpRAW: Codable, Hashable {
+            public struct ExpRAW: Codable, Hashable, Sendable {
                 public var type: Int // 不是词条。
                 public var ival: String
             }
 
-            public struct LevelStageRAW: Codable, Hashable {
+            public struct LevelStageRAW: Codable, Hashable, Sendable {
                 public var type: Int // 不是词条。
                 public var ival: String
                 public var val: String?
             }
 
-            public struct LevelRAW: Codable, Hashable {
+            public struct LevelRAW: Codable, Hashable, Sendable {
                 public var type: Int // 不是词条。
                 public var ival: String
                 public var val: String
@@ -180,9 +180,9 @@ extension Enka.QueriedProfileGI {
         }
 
         /// 装备列表的一项，包括武器和圣遗物
-        public struct EquipListItemRAW: Codable, Hashable {
+        public struct EquipListItemRAW: Codable, Hashable, Sendable {
             /// 圣遗物
-            public struct Reliquary: Codable, Hashable {
+            public struct Reliquary: Codable, Hashable, Sendable {
                 /// 圣遗物等级
                 public var level: Int
                 /// 圣遗物主属性ID
@@ -191,7 +191,7 @@ extension Enka.QueriedProfileGI {
                 public var appendPropIdList: [Int]?
             }
 
-            public struct WeaponRAW: Codable, Hashable {
+            public struct WeaponRAW: Codable, Hashable, Sendable {
                 /// 武器等级
                 public var level: Int
                 /// 武器突破等级
@@ -200,18 +200,18 @@ extension Enka.QueriedProfileGI {
                 public var affixMap: [String: Int]?
             }
 
-            public struct PreCalculatedFlat: Codable, Hashable {
-                public struct ReliquaryMainstat: Codable, Hashable {
+            public struct PreCalculatedFlat: Codable, Hashable, Sendable {
+                public struct ReliquaryMainstat: Codable, Hashable, Sendable {
                     public var mainPropId: Enka.PropertyType
                     public var statValue: Double
                 }
 
-                public struct ReliquarySubstat: Codable, Hashable {
+                public struct ReliquarySubstat: Codable, Hashable, Sendable {
                     public var appendPropId: Enka.PropertyType
                     public var statValue: Double
                 }
 
-                public struct WeaponStat: Codable, Hashable {
+                public struct WeaponStat: Codable, Hashable, Sendable {
                     public var appendPropId: Enka.PropertyType
                     public var statValue: Double
                 }
@@ -245,7 +245,7 @@ extension Enka.QueriedProfileGI {
             public var flat: PreCalculatedFlat // 由 Enka 事先计算好的面板参数。
         }
 
-        public struct FetterInfoRAW: Codable, Hashable {
+        public struct FetterInfoRAW: Codable, Hashable, Sendable {
             public var expLevel: Int
         }
 

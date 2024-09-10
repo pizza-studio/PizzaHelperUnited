@@ -774,7 +774,7 @@ public struct AttributeTagPair: View {
 
 #if DEBUG
 
-private let summariesHSR: [Enka.AvatarSummarized] = {
+@MainActor private let summariesHSR: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
@@ -792,7 +792,7 @@ private let summariesHSR: [Enka.AvatarSummarized] = {
     // swiftlint:enable force_unwrapping
 }()
 
-private let summariesGI: [Enka.AvatarSummarized] = {
+@MainActor private let summariesGI: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.

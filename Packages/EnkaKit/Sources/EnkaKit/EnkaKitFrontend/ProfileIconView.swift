@@ -58,7 +58,7 @@ extension Enka {
                     AnonymousIconView.rawImage4SUI
                         .clipShape(.circle)
                         .onAppear {
-                            Task.detached { @MainActor in
+                            Task { @MainActor in
                                 try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
                             }
                         }
@@ -70,7 +70,7 @@ extension Enka {
                     AnonymousIconView.rawImage4SUI
                         .clipShape(.circle)
                         .onAppear {
-                            Task.detached { @MainActor in
+                            Task { @MainActor in
                                 try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
                             }
                         }

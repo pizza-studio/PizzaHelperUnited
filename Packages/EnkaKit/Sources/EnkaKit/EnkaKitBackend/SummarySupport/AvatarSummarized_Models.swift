@@ -9,7 +9,7 @@ import EnkaDBModels
 
 extension Enka {
     /// The backend struct dedicated for rendering EachAvatarStatView.
-    public struct AvatarSummarized: Codable, Hashable, Identifiable {
+    public struct AvatarSummarized: Codable, Hashable, Sendable, Identifiable {
         // MARK: Public
 
         public let game: Enka.GameType
@@ -35,7 +35,7 @@ extension Enka {
 
 extension Enka.AvatarSummarized {
     /// 专门用来负责管理角色证件照显示的 Identifiable Struct。
-    public struct CharacterID: Identifiable, Codable, Hashable {
+    public struct CharacterID: Identifiable, Codable, Hashable, Sendable {
         // MARK: Lifecycle
 
         /// 通用建构子。
@@ -108,7 +108,7 @@ extension Enka.AvatarSummarized {
         }
     }
 
-    public struct AvatarMainInfo: Codable, Hashable {
+    public struct AvatarMainInfo: Codable, Hashable, Sendable {
         public let terms: Enka.ExtraTerms
         public let localizedName: String
         public let localizedRealName: String
@@ -141,9 +141,9 @@ extension Enka.AvatarSummarized {
 
 extension Enka.AvatarSummarized.AvatarMainInfo {
     /// Base Skill Set of a Character, excluding Technique since it doesn't have a level.
-    public struct BaseSkillSet: Codable, Hashable {
-        public struct BaseSkill: Codable, Hashable {
-            public enum SkillType: String, Codable, Hashable {
+    public struct BaseSkillSet: Codable, Hashable, Sendable {
+        public struct BaseSkill: Codable, Hashable, Sendable {
+            public enum SkillType: String, Codable, Hashable, Sendable {
                 case basicAttack = "Normal"
                 case elementalSkill = "BP"
                 case elementalBurst = "Ultra"
@@ -181,7 +181,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
 // MARK: - Enka.AvatarSummarized.WeaponPanel
 
 extension Enka.AvatarSummarized {
-    public struct WeaponPanel: Codable, Hashable {
+    public struct WeaponPanel: Codable, Hashable, Sendable {
         /// Game.
         public let game: Enka.GameType
         /// Unique Weapon ID.
@@ -205,7 +205,7 @@ extension Enka.AvatarSummarized {
 // MARK: - Enka.AvatarSummarized.ArtifactInfo
 
 extension Enka.AvatarSummarized {
-    public struct ArtifactInfo: Codable, Hashable, Identifiable {
+    public struct ArtifactInfo: Codable, Hashable, Sendable, Identifiable {
         /// Game.
         public let game: Enka.GameType
         /// Unique Artifact ID, defining its Rarity, Set Suite, and Body Part.

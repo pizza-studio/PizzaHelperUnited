@@ -171,13 +171,11 @@ extension ProfileShowCaseSections {
         /// - Parameters:
         ///   - uid: UID
         ///   - theDB: EnkaDB（注意直接决定了游戏类型）。
+        @MainActor
         public init(uid: String, theDB: CoordinatedDB) {
             self.uid = uid
             self.currentInfo = theDB.getCachedProfileRAW(uid: uid)
-            Task.detached { @MainActor in
-                self.update()
-                self.booted = true
-            }
+            update()
         }
 
         // MARK: Public
@@ -197,8 +195,6 @@ extension ProfileShowCaseSections {
         var currentInfo: CoordinatedDB.QueriedProfile?
         var task: Task<CoordinatedDB.QueriedProfile?, Never>?
         var uid: String
-        var booted = false
-
         var errorMsg: String?
 
         @MainActor
@@ -256,6 +252,8 @@ extension ProfileShowCaseSections {
 }
 
 #if DEBUG
+
+extension FakePZProfileMO: @unchecked @retroactive Sendable {}
 
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping

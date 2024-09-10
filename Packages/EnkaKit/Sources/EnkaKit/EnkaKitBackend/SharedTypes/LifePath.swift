@@ -5,7 +5,7 @@
 // MARK: - Enka.LifePath
 
 extension Enka {
-    public enum LifePath: String, Codable, Hashable, CaseIterable {
+    public enum LifePath: String, Codable, Hashable, Sendable, CaseIterable {
         case none = "None"
         case destruction = "Warrior"
         case hunt = "Rogue"

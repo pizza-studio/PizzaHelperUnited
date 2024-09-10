@@ -6,7 +6,7 @@ import EnkaDBFiles
 import Foundation
 
 extension Enka {
-    public enum JSONType: String, CaseIterable {
+    public enum JSONType: String, CaseIterable, Sendable {
         case giLocTable = "loc"
         case giCharacters = "characters"
         case giNamecards = "namecards"
@@ -60,7 +60,7 @@ extension Enka {
         // MARK: Internal
 
         // Bundle JSON Accessor.
-        static var bundledExtraLangTable: Enka.RawLocTables = {
+        static let bundledExtraLangTable: Enka.RawLocTables = {
             guard let url = Bundle.module.url(
                 forResource: "AdditionalLangTableShared", withExtension: "json"
             ) else { return [:] }
@@ -74,7 +74,7 @@ extension Enka {
         }()
 
         // Bundle JSON Accessor.
-        static var bundledRealNameTable: Enka.RawLocTables = {
+        static let bundledRealNameTable: Enka.RawLocTables = {
             guard let url = Bundle.module.url(
                 forResource: "RealNameDict", withExtension: "json"
             ) else { return [:] }
