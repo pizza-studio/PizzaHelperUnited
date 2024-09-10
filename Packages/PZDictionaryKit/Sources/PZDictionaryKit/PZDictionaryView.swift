@@ -167,7 +167,7 @@ extension PZDictionaryView {
 
 extension PZDictionaryView {
     @Observable
-    final class Coordinator {
+    final class Coordinator: @unchecked Sendable {
         // MARK: Lifecycle
 
         init() {
@@ -182,17 +182,8 @@ extension PZDictionaryView {
                         task.cancel()
                     }
                     self.currentResult = nil
-                    self.queryStatus = .fetching(Task(priority: .high) {
-                        do {
-                            let result = try await self.game.translate(query: query, page: 1, pageSize: 20)
-                            Task.detached { @MainActor in
-                                self.currentResult = result
-                                self.queryStatus = .pending
-                            }
-                        } catch {
-                            print(error)
-                        }
-                    })
+                    self.queryStatus = .pending
+                    fetchFirst()
                 })
         }
 
@@ -218,15 +209,32 @@ extension PZDictionaryView {
             debouncedSearchSubject.send(query)
         }
 
-        func fetchMore() {
+        func fetchFirst() {
             queryStatus = .fetching(Task(priority: .high) {
+                do {
+                    let result = try await self.game.translate(query: query, page: 1, pageSize: 20)
+                    Task.detached { @MainActor @Sendable in
+                        self.currentResult = result
+                        self.queryStatus = .pending
+                    }
+                } catch {
+                    print(error)
+                }
+            })
+        }
+
+        func fetchMore() {
+            let game = game
+            let query = query
+            let nextPage = nextPage
+            queryStatus = .fetching(Task(priority: .high) { @Sendable in
                 do {
                     let result = try await game.translate(
                         query: query,
                         page: nextPage,
                         pageSize: 20
                     )
-                    Task.detached { @MainActor in
+                    Task.detached { @MainActor @Sendable in
                         self.currentResult?.totalPage = result.totalPage
                         self.currentResult?.translations.append(contentsOf: result.translations)
                         self.queryStatus = .pending
