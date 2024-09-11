@@ -84,41 +84,48 @@ struct ProfileConfigViewContents: View {
 
 extension ProfileConfigViewContents {
     fileprivate struct RequireLoginView: View {
+        // MARK: Internal
+
         @Binding var unsavedCookie: String
         @Binding var unsavedFP: String
         @Binding var deviceID: String
 
-        @State private var isGetCookieWebViewShown: Bool = false
-
         let region: HoYo.AccountRegion
 
         @MainActor var body: some View {
-            Button {
-                isGetCookieWebViewShown.toggle()
+            NavigationLink {
+                handleSheetNavigation()
             } label: {
                 Text(
                     "settings.requireLoginView.loginViaMiyousheOrHoyoLab.relogin".i18nPZHelper
                 )
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity
-                )
+                .foregroundColor(.accentColor)
             }
-            .sheet(isPresented: $isGetCookieWebViewShown, content: handleSheetNavigation)
         }
+
+        // MARK: Private
 
         @MainActor @ViewBuilder
         private func handleSheetNavigation() -> some View {
-            switch region {
-            case .hoyoLab:
-                GetCookieWebView(
-                    isShown: $isGetCookieWebViewShown,
-                    cookie: $unsavedCookie,
-                    region: region
-                )
-            case .miyoushe:
-                GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP, deviceID: $deviceID)
+            Group {
+                switch region {
+                case .hoyoLab:
+                    GetCookieWebView(
+                        cookie: $unsavedCookie,
+                        region: region
+                    )
+                case .miyoushe:
+                    GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP, deviceID: $deviceID)
+                }
             }
+            // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
+            #if os(iOS) || targetEnvironment(macCatalyst)
+            .toolbar(.hidden, for: .tabBar)
+            #endif
+            // 逼着用户改用自订的后退按钮。
+            // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
+            // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
+            .navigationBarBackButtonHidden(true)
         }
     }
 

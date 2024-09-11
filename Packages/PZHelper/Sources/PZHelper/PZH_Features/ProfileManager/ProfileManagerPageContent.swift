@@ -73,7 +73,6 @@ struct ProfileManagerPageContent: View {
             }
         }
         .navigationDestination(item: $sheetType, destination: handleSheetNavigation)
-        // .sheet(item: $sheetType, content: handleSheetNavigation)
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
         .onAppear(perform: bleachInvalidProfiles)
@@ -131,7 +130,9 @@ struct ProfileManagerPageContent: View {
         #if os(iOS) || targetEnvironment(macCatalyst)
         .toolbar(.hidden, for: .tabBar)
         #endif
-        // 仅针对 macOS 使用 NavigationDestination 的情况，让用户改用自订的后退按钮。
+        // 逼着用户改用自订的后退按钮。
+        // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
+        // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
         .navigationBarBackButtonHidden(true)
     }
 
