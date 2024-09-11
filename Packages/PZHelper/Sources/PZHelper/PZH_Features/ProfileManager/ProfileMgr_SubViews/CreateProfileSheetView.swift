@@ -345,8 +345,8 @@ private struct RequireLoginView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
 
-        Button {
-            assignRegion()
+        NavigationLink {
+            handleSheetNavigation()
         } label: {
             Text(loginLabelText + " \(region.localizedDescription)\n(\(region.game.localizedDescription))")
                 .fontWeight(.bold)
@@ -357,12 +357,11 @@ private struct RequireLoginView: View {
                     RoundedRectangle(cornerRadius: 8).foregroundStyle(.primary.opacity(0.1))
                 }
         }
-        .sheet(item: $getCookieWebViewRegion, content: handleSheetNavigation)
+        .foregroundColor(.accentColor)
     }
 
     // MARK: Private
 
-    @State private var getCookieWebViewRegion: HoYo.AccountRegion?
     @Binding private var importAllUIDs: Bool
     @Binding private var unsavedCookie: String
     @Binding private var unsavedFP: String
@@ -374,32 +373,27 @@ private struct RequireLoginView: View {
             : "settings.profile.clickHereToLogin.reLogin".i18nPZHelper
     }
 
-    private var isCookieWebViewShown: Binding<Bool> {
-        .init(get: {
-            getCookieWebViewRegion != nil
-        }, set: { newValue in
-            if !newValue {
-                getCookieWebViewRegion = nil
-            }
-        })
-    }
-
-    private func assignRegion() {
-        getCookieWebViewRegion = region
-    }
-
     @MainActor @ViewBuilder
-    private func handleSheetNavigation(_ region: HoYo.AccountRegion) -> some View {
-        switch region {
-        case .hoyoLab:
-            GetCookieWebView(
-                isShown: isCookieWebViewShown,
-                cookie: $unsavedCookie,
-                region: region
-            )
-        case .miyoushe:
-            GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP, deviceID: $deviceID)
+    private func handleSheetNavigation() -> some View {
+        Group {
+            switch region {
+            case .hoyoLab:
+                GetCookieWebView(
+                    cookie: $unsavedCookie,
+                    region: region
+                )
+            case .miyoushe:
+                GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP, deviceID: $deviceID)
+            }
         }
+        // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
+        #if os(iOS) || targetEnvironment(macCatalyst)
+        .toolbar(.hidden, for: .tabBar)
+        #endif
+        // 逼着用户改用自订的后退按钮。
+        // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
+        // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
+        .navigationBarBackButtonHidden(true)
     }
 }
 
