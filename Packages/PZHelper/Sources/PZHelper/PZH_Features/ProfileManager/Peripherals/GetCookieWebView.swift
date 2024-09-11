@@ -21,7 +21,7 @@ private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
 // MARK: - GetCookieWebView
 
 struct GetCookieWebView: View {
-    @Binding var isShown: Bool
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     @Binding var cookie: String
 
@@ -33,11 +33,15 @@ struct GetCookieWebView: View {
 
     @MainActor var body: some View {
         NavigationStack {
-            CookieGetterWebView(
-                url: getAccountPageLoginURL(region: region),
-                dataStore: dataStore,
-                httpHeaderFields: getHTTPHeaderFields(region: region)
-            )
+            VStack {
+                CookieGetterWebView(
+                    url: getAccountPageLoginURL(region: region),
+                    dataStore: dataStore,
+                    httpHeaderFields: getHTTPHeaderFields(region: region)
+                )
+                Text("profileMgr.accountLogin.instruction".i18nPZHelper)
+                    .font(.footnote).padding()
+            }
             .navigationTitle("profileMgr.accountLogin.pleaseFinish.title".i18nPZHelper)
             .navBarTitleDisplayMode(.inline)
             .toolbar {
@@ -51,7 +55,7 @@ struct GetCookieWebView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("sys.cancel".i18nBaseKit) {
                         Task.detached { @MainActor in
-                            isShown.toggle()
+                            presentationMode.wrappedValue.dismiss()
                         }
                     }
                 }
@@ -68,7 +72,7 @@ struct GetCookieWebView: View {
 
     @MainActor
     func getCookieFromDataStore() async {
-        defer { isShown.toggle() }
+        defer { presentationMode.wrappedValue.dismiss() }
         cookie = ""
         let cookies = await dataStore.httpCookieStore.allCookies()
 
