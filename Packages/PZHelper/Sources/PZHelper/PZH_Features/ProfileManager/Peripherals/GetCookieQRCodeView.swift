@@ -56,6 +56,7 @@ struct GetCookieQRCodeView: View {
         guard let ticket = viewModel.qrCodeAndTicket?.ticket else { return }
         let task = Task { @MainActor [weak viewModel] in
             loopTask: while case .automatically = viewModel?.scanningConfirmationStatus {
+                var counter = 0
                 guard let viewModel = viewModel else { break loopTask }
                 do {
                     let status = try await HoYo.queryQRCodeStatus(
@@ -68,8 +69,13 @@ struct GetCookieQRCodeView: View {
                     }
                     try await Task.sleep(nanoseconds: 3 * 1_000_000_000) // 3sec.
                 } catch {
-                    viewModel.error = error
-                    break loopTask
+                    if error._code != NSURLErrorNetworkConnectionLost || counter >= 20 {
+                        viewModel.error = error
+                        counter = 0
+                        break loopTask
+                    } else {
+                        counter += 1
+                    }
                 }
             }
             viewModel?.scanningConfirmationStatus = .idle
