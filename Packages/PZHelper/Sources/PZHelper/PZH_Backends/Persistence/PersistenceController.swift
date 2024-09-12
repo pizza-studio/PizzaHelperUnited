@@ -26,21 +26,9 @@ public actor PersistenceController {
 
     @MainActor public static let shared = PersistenceController()
 
-    @MainActor public static let accountMOSputnik: AccountMOSputnik = try! AccountMOSputnik(
-        persistence: .cloud,
-        backgroundContext: false
-    )
-
-    @MainActor public static let cdGachaMOSputnik: CDGachaMOSputnik = try! CDGachaMOSputnik(
-        persistence: .cloud,
-        backgroundContext: false
-    )
-}
-
-extension PersistenceController {
     public static func makeContainer() -> ModelContainer {
         let schema = Schema([
-            PZProfileMO.self,
+            PZProfileMO.self, PZGachaEntryMO.self
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema, isStoredInMemoryOnly: false,
@@ -54,10 +42,14 @@ extension PersistenceController {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }
+}
 
+// MARK: - AccountMO Related.
+
+extension PersistenceController {
     @MainActor
     public static func hasOldAccountDataDetected() -> Bool {
-        let count = try? Self.accountMOSputnik.countAllAccountDataAsPZProfileMO()
+        let count = try? AccountMOSputnik.shared.countAllAccountDataAsPZProfileMO()
         return (count ?? 0) > 0
     }
 
@@ -66,13 +58,36 @@ extension PersistenceController {
         let context = Self.shared.modelContainer.mainContext
         let allExistingUUIDs: [String] = try context.fetch(FetchDescriptor<PZProfileMO>())
             .map(\.uuid.uuidString)
-        let oldData = try Self.accountMOSputnik.allAccountDataAsPZProfileMO()
+        let oldData = try AccountMOSputnik.shared.allAccountDataAsPZProfileMO()
         oldData.forEach { theEntry in
             if allExistingUUIDs.contains(theEntry.uuid.uuidString) {
                 theEntry.uuid = .init()
                 theEntry.name += " (Imported)"
             }
             context.insert(theEntry)
+        }
+        try context.save()
+    }
+}
+
+// MARK: - CDGachaMO Related.
+
+extension PersistenceController {
+    @MainActor
+    public static func hasOldGachaDataDetected() -> Bool {
+        let count = try? CDGachaMOSputnik.shared.countAllCDGachaMOAsPZGachaEntryMO()
+        return (count ?? 0) > 0
+    }
+
+    @MainActor
+    public static func migrateOldGachasIntoProfiles() throws {
+        let context = Self.shared.modelContainer.mainContext
+        let allExistingEntryIDs: [String] = try context.fetch(FetchDescriptor<PZGachaEntryMO>()).map(\.id)
+        let oldData = try CDGachaMOSputnik.shared.allCDGachaMOAsPZGachaEntryMO()
+        oldData.forEach { theEntry in
+            if !allExistingEntryIDs.contains(theEntry.id) {
+                context.insert(theEntry)
+            }
         }
         try context.save()
     }

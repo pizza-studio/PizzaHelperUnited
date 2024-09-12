@@ -16,6 +16,38 @@ public protocol PZGachaEntryProtocol {}
 public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
     // MARK: Lifecycle
 
+    public init(handler: ((PZGachaEntryMO) -> Void)? = nil) {
+        handler?(self)
+    }
+
+    public init(
+        game: Pizza.SupportedGame,
+        uid: String,
+        gachaType: String,
+        itemID: String,
+        count: String,
+        time: String,
+        name: String,
+        lang: String,
+        itemType: String,
+        rankType: String,
+        id: String,
+        gachaID: String
+    ) {
+        self.game = game
+        self.uid = uid
+        self.gachaType = gachaType
+        self.itemID = itemID
+        self.count = count
+        self.time = time
+        self.name = name
+        self.lang = lang
+        self.itemType = itemType
+        self.rankType = rankType
+        self.id = id
+        self.gachaID = gachaID
+    }
+
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
@@ -44,7 +76,7 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
     public var lang: String = "zh-cn"
     public var itemType: String = "武器"
     public var rankType: String = "3"
-    public var id: String = "\(Int64.random(in: (10 ^ 18 * 9) ... (10 ^ 19 - 2)))"
+    public var id: String = PZGachaEntryMO.makeEntryID()
     public var gachaID: String = "0"
 
     final public func encode(to encoder: any Encoder) throws {
@@ -78,5 +110,13 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
         case rankType
         case id
         case gachaID
+    }
+
+    private static func makeEntryID() -> String {
+        var stringStack = "9"
+        while stringStack.count < 19 {
+            stringStack.append(Int.random(in: 0 ... 9).description)
+        }
+        return stringStack
     }
 }
