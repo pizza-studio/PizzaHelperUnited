@@ -9,7 +9,8 @@ import PZBaseKit
 
 // MARK: - ProfileMOBasicProtocol
 
-/// AccountMO 不是统一披萨助手引擎用来主要处理的格式，而是专门针对 CloudKit 做的资料交换格式。
+/// AccountMO 不是统一披萨助手引擎用来主要处理的格式，
+/// 而是专门为了从 CloudKit 读取既有资料而实作的资料交换格式。
 /// 这也是为了方便直接继承旧版原披助手与穹披助手的云端资料。
 /// AccountMO 不曝露给前端使用，不直接用于 SwiftUI。
 
