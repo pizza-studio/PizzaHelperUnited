@@ -26,6 +26,8 @@ public final class AccountMOSputnik {
 
     // MARK: Public
 
+    public static let shared = try! AccountMOSputnik(persistence: .cloud, backgroundContext: false)
+
     public func allAccountDataMO(for game: Pizza.SupportedGame) throws -> [AccountMOProtocol] {
         try theDB(for: game)?.perform { ctx in
             switch game {
@@ -68,8 +70,6 @@ public final class AccountMOSputnik {
     }
 
     // MARK: Internal
-
-    static let shared = try? AccountMOSputnik(persistence: .cloud, backgroundContext: false)
 
     func theDB(for game: Pizza.SupportedGame) -> PersistentContainer? {
         switch game {
