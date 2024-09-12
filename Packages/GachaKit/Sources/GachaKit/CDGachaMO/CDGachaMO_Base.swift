@@ -19,6 +19,7 @@ public protocol CDGachaMOProtocol {
     var uid: String { get set }
     var name: String { get set }
     var time: Date { get set }
+    var asPZGachaEntryMO: PZGachaEntryMO { get }
     static var entityName: String { get }
     static var modelName: String { get }
     static var containerName: String { get }
@@ -129,6 +130,24 @@ struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol {
     public var rankType: Int = 3
     public var time: Date = .init(timeIntervalSince1970: 1)
     public var uid = "YJSNPI"
+
+    public var asPZGachaEntryMO: PZGachaEntryMO {
+        PZGachaEntryMO.init { newEntry in
+            newEntry.game = .genshinImpact
+            newEntry.uid = uid
+            newEntry.count = 1.description
+            newEntry.gachaType = gachaType.description
+            newEntry.id = id
+            newEntry.itemID = itemId
+            newEntry.itemType = itemType
+            newEntry.lang = lang
+            newEntry.name = name
+            newEntry.rankType = rankType.description
+            newEntry.time = time.asUIGFDate(
+                timeZoneDelta: GachaKit.getServerTimeZoneDelta(uid: uid, game: .genshinImpact)
+            )
+        }
+    }
 }
 
 // MARK: - CDGachaMO4HSR
@@ -171,4 +190,23 @@ struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol {
     public var time: Date = .init(timeIntervalSince1970: 1)
     public var timeRawValue: String? = "1"
     public var uid = "YJSNPI"
+
+    public var asPZGachaEntryMO: PZGachaEntryMO {
+        PZGachaEntryMO.init { newEntry in
+            newEntry.game = .starRail
+            newEntry.uid = uid
+            newEntry.count = count.description
+            newEntry.gachaID = gachaID.description
+            newEntry.gachaType = gachaTypeRawValue
+            newEntry.id = id
+            newEntry.itemID = itemID
+            newEntry.itemType = itemTypeRawValue
+            newEntry.lang = langRawValue
+            newEntry.name = name
+            newEntry.rankType = rankRawValue
+            newEntry.time = timeRawValue ?? time.asUIGFDate(
+                timeZoneDelta: GachaKit.getServerTimeZoneDelta(uid: uid, game: .genshinImpact)
+            )
+        }
+    }
 }

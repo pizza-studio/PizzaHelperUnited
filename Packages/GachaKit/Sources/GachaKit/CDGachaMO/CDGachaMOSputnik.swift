@@ -26,6 +26,8 @@ public final class CDGachaMOSputnik {
 
     // MARK: Public
 
+    public static let shared = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: false)
+
     public func allGachaDataMO(for game: Pizza.SupportedGame) throws -> [CDGachaMOProtocol] {
         try theDB(for: game)?.perform { ctx in
             switch game {
@@ -40,6 +42,29 @@ public final class CDGachaMOSputnik {
             case .zenlessZone: []
             }
         } ?? []
+    }
+
+    public func countAllCDGachaMO(for game: Pizza.SupportedGame) throws -> Int {
+        try theDB(for: game)?.perform { ctx in
+            switch game {
+            case .genshinImpact: try ctx.count(of: CDGachaMO4GI.all)
+            case .starRail: try ctx.count(of: CDGachaMO4HSR.all)
+            case .zenlessZone: 0
+            }
+        } ?? 0
+    }
+
+    public func countAllCDGachaMOAsPZGachaEntryMO() throws -> Int {
+        try countAllCDGachaMO(for: .genshinImpact) + countAllCDGachaMO(for: .starRail)
+    }
+
+    public func allCDGachaMOAsPZGachaEntryMO() throws -> [PZGachaEntryMO] {
+        // Genshin.
+        let genshinData: [PZGachaEntryMO]? = try allGachaDataMO(for: .genshinImpact).map(\.asPZGachaEntryMO)
+        // StarRail.
+        let hsrData: [PZGachaEntryMO]? = try allGachaDataMO(for: .starRail).map(\.asPZGachaEntryMO)
+        let dataSet: [PZGachaEntryMO] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
+        return dataSet
     }
 
     // MARK: Internal
