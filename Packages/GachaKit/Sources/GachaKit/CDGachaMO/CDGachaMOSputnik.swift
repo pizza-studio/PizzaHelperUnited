@@ -6,15 +6,15 @@
 import PZBaseKit
 @preconcurrency import Sworm
 
-// MARK: - GachaMOSputnik
+// MARK: - CDGachaMOSputnik
 
 @MainActor
-public final class GachaMOSputnik {
+public final class CDGachaMOSputnik {
     // MARK: Lifecycle
 
     public init(persistence: DBPersistenceMethod, backgroundContext: Bool) throws {
-        let pc4HSR = try GachaMO4HSR.getLoadedPersistentContainer(persistence: persistence)
-        let pc4GI = try GachaMO4GI.getLoadedPersistentContainer(persistence: persistence)
+        let pc4HSR = try CDGachaMO4HSR.getLoadedPersistentContainer(persistence: persistence)
+        let pc4GI = try CDGachaMO4GI.getLoadedPersistentContainer(persistence: persistence)
         if backgroundContext {
             self.db4HSR = .init(managedObjectContext: pc4HSR.newBackgroundContext)
             self.db4GI = .init(managedObjectContext: pc4GI.newBackgroundContext)
@@ -26,15 +26,15 @@ public final class GachaMOSputnik {
 
     // MARK: Public
 
-    public func allGachaDataMO(for game: Pizza.SupportedGame) throws -> [GachaMOProtocol] {
+    public func allGachaDataMO(for game: Pizza.SupportedGame) throws -> [CDGachaMOProtocol] {
         try theDB(for: game)?.perform { ctx in
             switch game {
             case .genshinImpact:
-                try ctx.fetch(GachaMO4GI.all).map {
+                try ctx.fetch(CDGachaMO4GI.all).map {
                     try $0.decode()
                 }
             case .starRail:
-                try ctx.fetch(GachaMO4HSR.all).map {
+                try ctx.fetch(CDGachaMO4HSR.all).map {
                     try $0.decode()
                 }
             case .zenlessZone: []

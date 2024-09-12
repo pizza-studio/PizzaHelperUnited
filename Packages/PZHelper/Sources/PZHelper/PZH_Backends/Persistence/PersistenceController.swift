@@ -31,7 +31,7 @@ public actor PersistenceController {
         backgroundContext: false
     )
 
-    @MainActor public static let gachaMOSputnik: GachaMOSputnik = try! GachaMOSputnik(
+    @MainActor public static let cdGachaMOSputnik: CDGachaMOSputnik = try! CDGachaMOSputnik(
         persistence: .cloud,
         backgroundContext: false
     )
