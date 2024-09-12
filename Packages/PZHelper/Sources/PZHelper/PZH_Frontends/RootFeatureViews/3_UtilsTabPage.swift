@@ -95,9 +95,9 @@ struct UtilsTabPage: View {
             case .giAbyssRank: AbyssRankView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
-            case .gachaCloudDebug: GachaMODebugView()
+            case .gachaCloudDebug: CDGachaMODebugView()
             case .hoyoMap: HoYoMapView()
-            case .none: GachaMODebugView()
+            case .none: CDGachaMODebugView()
             }
         }
     }

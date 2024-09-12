@@ -6,12 +6,12 @@ import PZBaseKit
 import SwiftUI
 @preconcurrency import Sworm
 
-// MARK: - GachaMOItemDebugView
+// MARK: - CDGachaMOItemDebugView
 
-public struct GachaMOItemDebugView: View {
+public struct CDGachaMOItemDebugView: View {
     // MARK: Lifecycle
 
-    public init(gachaItemMO: GachaMOProtocol) {
+    public init(gachaItemMO: CDGachaMOProtocol) {
         self.gachaItemMO = gachaItemMO
     }
 
@@ -31,12 +31,12 @@ public struct GachaMOItemDebugView: View {
 
     // MARK: Private
 
-    private let gachaItemMO: GachaMOProtocol
+    private let gachaItemMO: CDGachaMOProtocol
 }
 
-// MARK: - GachaMODebugView
+// MARK: - CDGachaMODebugView
 
-public struct GachaMODebugView: View {
+public struct CDGachaMODebugView: View {
     // MARK: Lifecycle
 
     public init() {}
@@ -46,7 +46,7 @@ public struct GachaMODebugView: View {
     @MainActor public var body: some View {
         Form {
             ForEach(try! Self.sputnik.allGachaDataMO(for: game), id: \.enumID) { gachaItemMO in
-                GachaMOItemDebugView(gachaItemMO: gachaItemMO)
+                CDGachaMOItemDebugView(gachaItemMO: gachaItemMO)
             }
         }
         .formStyle(.grouped)
@@ -68,7 +68,7 @@ public struct GachaMODebugView: View {
 
     // MARK: Internal
 
-    @MainActor static let sputnik = try! GachaMOSputnik(
+    @MainActor static let sputnik = try! CDGachaMOSputnik(
         persistence: .cloud, backgroundContext: false
     )
 
