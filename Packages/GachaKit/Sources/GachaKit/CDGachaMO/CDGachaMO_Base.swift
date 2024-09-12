@@ -7,13 +7,14 @@ import Foundation
 import PZBaseKit
 @preconcurrency import Sworm
 
-// MARK: - GachaMOProtocol
+// MARK: - CDGachaMOProtocol
 
-/// GachaMO 不是统一披萨助手引擎用来主要处理的格式，而是专门针对 CloudKit 做的资料交换格式。
+/// CDGachaMO 不是统一披萨助手引擎用来主要处理的格式，
+/// 而是专门为了从 CloudKit 读取既有资料而实作的资料交换格式。
 /// 这也是为了方便直接继承旧版原披助手与穹披助手的云端资料。
-/// GachaMO 不曝露给前端使用，不直接用于 SwiftUI。
+/// CDGachaMO 不曝露给前端使用，不直接用于 SwiftUI。
 
-public protocol GachaMOProtocol {
+public protocol CDGachaMOProtocol {
     var id: String { get set }
     var uid: String { get set }
     var name: String { get set }
@@ -25,7 +26,7 @@ public protocol GachaMOProtocol {
     static var game: Pizza.SupportedGame { get }
 }
 
-extension GachaMOProtocol {
+extension CDGachaMOProtocol {
     public var enumID: Int { [id, uid, name, "\(time.timeIntervalSince1970)"].hashValue }
     public var entityName: String { Self.entityName }
     public var modelName: String { Self.modelName }
@@ -92,18 +93,18 @@ extension GachaMOProtocol {
     }
 }
 
-// MARK: - GachaMO4GI
+// MARK: - CDGachaMO4GI
 
 /// 原披助手专用，不曝露。
-struct GachaMO4GI: ManagedObjectConvertible, GachaMOProtocol {
+struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol {
     public struct Relations {}
 
     public static let cloudContainerID: String = "iCloud.com.Canglong.PizzaGachaLog" // 没机会纠正了。
     public static let containerName: String = "PizzaGachaLog"
     public static let entityName: String = "GachaItemMO"
-    public static let modelName: String = "GachaMO4GI"
+    public static let modelName: String = "CDGachaMO4GI"
     public static let relations = Relations()
-    public static let attributes: Set<Attribute<GachaMO4GI>> = [
+    public static let attributes: Set<Attribute<CDGachaMO4GI>> = [
         .init(\.count, "count"),
         .init(\.gachaType, "gachaType"),
         .init(\.id, "id"),
@@ -130,18 +131,18 @@ struct GachaMO4GI: ManagedObjectConvertible, GachaMOProtocol {
     public var uid = "YJSNPI"
 }
 
-// MARK: - GachaMO4HSR
+// MARK: - CDGachaMO4HSR
 
 /// 穹披助手专用，不曝露。
-struct GachaMO4HSR: ManagedObjectConvertible, GachaMOProtocol {
+struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol {
     public struct Relations {}
 
     public static let cloudContainerID: String = "iCloud.com.Canglong.HSRPizzaHelper"
     public static let containerName: String = "HSRPizzaHelper"
     public static let entityName: String = "GachaItemMO"
-    public static let modelName: String = "GachaMO4HSR"
+    public static let modelName: String = "CDGachaMO4HSR"
     public static let relations = Relations()
-    public static let attributes: Set<Attribute<GachaMO4HSR>> = [
+    public static let attributes: Set<Attribute<CDGachaMO4HSR>> = [
         .init(\.count, "count"),
         .init(\.gachaID, "gachaID"),
         .init(\.gachaTypeRawValue, "gachaTypeRawValue"),
