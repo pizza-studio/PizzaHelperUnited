@@ -45,7 +45,7 @@ public struct CDGachaMODebugView: View {
 
     @MainActor public var body: some View {
         Form {
-            ForEach(try! Self.sputnik.allGachaDataMO(for: game), id: \.enumID) { gachaItemMO in
+            ForEach(try! CDGachaMOSputnik.shared.allGachaDataMO(for: game), id: \.enumID) { gachaItemMO in
                 CDGachaMOItemDebugView(gachaItemMO: gachaItemMO)
             }
         }
@@ -67,10 +67,6 @@ public struct CDGachaMODebugView: View {
     }
 
     // MARK: Internal
-
-    @MainActor static let sputnik = try! CDGachaMOSputnik(
-        persistence: .cloud, backgroundContext: false
-    )
 
     @State var game: Pizza.SupportedGame = .genshinImpact
 }
