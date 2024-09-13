@@ -28,7 +28,7 @@ public actor PersistenceController {
 
     public static func makeContainer() -> ModelContainer {
         let schema = Schema([
-            PZProfileMO.self, PZGachaEntryMO.self
+            PZProfileMO.self, PZGachaEntryMO.self,
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema, isStoredInMemoryOnly: false,
@@ -90,5 +90,14 @@ extension PersistenceController {
             }
         }
         try context.save()
+    }
+
+    @MainActor
+    public static func command4InheritingOldGachaRecord() -> Void? {
+        if PersistenceController.hasOldGachaDataDetected() {
+            return try! PersistenceController.migrateOldGachasIntoProfiles()
+        } else {
+            return nil
+        }
     }
 }
