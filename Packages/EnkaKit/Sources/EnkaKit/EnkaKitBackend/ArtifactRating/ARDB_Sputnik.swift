@@ -37,7 +37,7 @@ extension ArtifactRating {
 
         // MARK: Private
 
-        private var cancellables: Set<AnyCancellable> = []
+        @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
     }
 }
 
