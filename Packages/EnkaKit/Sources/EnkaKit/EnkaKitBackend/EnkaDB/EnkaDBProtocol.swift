@@ -93,7 +93,7 @@ extension EnkaDBProtocol {
 // MARK: - Translation APIs.
 
 extension EnkaDBProtocol {
-    func getTranslationFor(id: String, realName: Bool = true) -> String {
+    public func getFailableTranslationFor(id: String, realName: Bool = true) -> String? {
         // 处理雷电国崩的自订姓名。
         if realName, let matchedRealName = Enka.JSONType.bundledRealNameTable[locTag]?[id] {
             return matchedRealName
@@ -101,13 +101,13 @@ extension EnkaDBProtocol {
             return Defaults[.customizedNameForWanderer]
         }
         // 正常处理。
-        let missingTranslation = "i18nMissing(id:\(id))"
-        let result: String = if let hash = getNameTextMapHash(id: id) {
-            locTable[hash] ?? missingTranslation
+        let result: String? = if let hash = getNameTextMapHash(id: id) {
+            locTable[hash]
         } else {
-            locTable[id] ?? missingTranslation
+            locTable[id]
         }
         guard Defaults[.forceCharacterWeaponNameFixed] else { return result }
+        guard let result else { return nil }
         if Locale.isUILanguageSimplifiedChinese {
             if result == "钟离" {
                 return "锺离"
@@ -125,15 +125,9 @@ extension EnkaDBProtocol {
         return result
     }
 
-    func getFailableTranslationFor(id: String, realName: Bool = true) -> String? {
-        if realName, let matchedRealName = Enka.JSONType.bundledRealNameTable[locTag]?[id] {
-            return matchedRealName
-        }
-        if let hash = getNameTextMapHash(id: id) {
-            return locTable[hash]
-        } else {
-            return locTable[id]
-        }
+    func getTranslationFor(id: String, realName: Bool = true) -> String {
+        let missingTranslation = "i18nMissing(id:\(id))"
+        return getFailableTranslationFor(id: id, realName: realName) ?? missingTranslation
     }
 
     func getTranslationFor(property: Enka.PropertyType) -> String? {
