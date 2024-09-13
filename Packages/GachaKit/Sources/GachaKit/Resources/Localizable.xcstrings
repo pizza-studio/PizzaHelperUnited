@@ -84,6 +84,35 @@
           }
         }
       }
+    },
+    "gachaKit.GachaRecordRootView.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gacha Record Manager"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガチャ記録管理"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抽卡记录管理"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抽卡記錄管理"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
