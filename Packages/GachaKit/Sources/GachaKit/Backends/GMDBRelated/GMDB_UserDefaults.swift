@@ -19,22 +19,22 @@ extension Defaults.Keys {
         suite: .gmdbSuite
     )
     /// 原神的抽卡专用中继资料库。
-    public static let localGachaMetaDB4GI = Key<GachaMetaDB>(
+    public static let localGachaMetaDB4GI = Key<GachaMeta.MetaDB>(
         "localGachaMetaDB4GI",
-        default: try! GachaMetaDB.getBundledDefault(for: .genshinImpact)!,
+        default: try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!,
         suite: .gmdbSuite
     )
     /// 原神的抽卡专用中继资料库。
-    public static let localGachaMetaDB4HSR = Key<GachaMetaDB>(
+    public static let localGachaMetaDB4HSR = Key<GachaMeta.MetaDB>(
         "localGachaMetaDB4HSR",
-        default: try! GachaMetaDB.getBundledDefault(for: .starRail)!,
+        default: try! GachaMeta.MetaDB.getBundledDefault(for: .starRail)!,
         suite: .gmdbSuite
     )
     /// 反向查询专用资料库，供原神抽卡记录的 ItemID 复原工作所特需。必须是简体中文。
     public static let localGachaMetaDBReversed4GI = Key<[String: Int]>(
         "localGachaMetaDBReversed4GI",
         default: {
-            try! GachaMetaDB.getBundledDefault(for: .genshinImpact)!
+            try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!
                 .generateHotReverseQueryDict(for: "zh-cn")!
         }(),
         suite: .gmdbSuite
