@@ -33,4 +33,14 @@ public enum GachaTypeHSR: RawRepresentable, Codable, Hashable, Sendable {
         case let .unknown(rawValue): rawValue
         }
     }
+
+    public var expressible: GachaPoolExpressible {
+        switch self {
+        case .stellarWarp: .srStellarWarp
+        case .characterEventWarp: .srCharacterEventWarp
+        case .lightConeEventWarp: .srLightConeEventWarp
+        case .departureWarp: .srDepartureWarp
+        case .unknown: .srUnknown
+        }
+    }
 }

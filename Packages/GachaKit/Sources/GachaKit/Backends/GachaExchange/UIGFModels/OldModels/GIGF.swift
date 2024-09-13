@@ -586,7 +586,7 @@ extension XLSXFile {
                 time: time.asUIGFDate(timeZoneDelta: timeZoneDelta),
                 name: name,
                 itemType: itemType,
-                rankType: GachaItemRankType(rawValue: rankType) ?? .three,
+                rankType: GachaItemRankType(rawValue: rankType) ?? .rank3,
                 id: id,
                 uigfGachaType: gachaType.uigfGachaType
             )

@@ -64,4 +64,13 @@ extension Date {
         -> String {
         DateFormatter.forUIGFEntry(timeZoneDelta: timeZoneDelta).string(from: self)
     }
+
+    public init?(_ hoyoExpression: String, tzDelta: Int) {
+        let dateFormatter = DateFormatter.Gregorian()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = .init(secondsFromGMT: tzDelta * 3600)
+        guard let date = dateFormatter.date(from: hoyoExpression) else { return nil }
+        self = date
+    }
 }
