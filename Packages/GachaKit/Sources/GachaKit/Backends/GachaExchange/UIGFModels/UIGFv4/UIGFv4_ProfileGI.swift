@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import GachaMetaDB
 
 // MARK: - UIGFv4.ProfileGI
 
@@ -38,13 +39,13 @@ extension UIGFv4 {
             }
 
             /// Check whether GachaItemDB is expired.
-            if GachaMetaDBExposed.shared.mainDB4GI.checkIfExpired(against: Set<String>(list.map(\.itemID))) {
+            if GachaMeta.sharedDB.mainDB4GI.checkIfExpired(against: Set<String>(list.map(\.itemID))) {
                 defer {
                     Task { @MainActor in
-                        try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                        try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
                     }
                 }
-                throw GachaMetaDBExposed.GMDBError.databaseExpired
+                throw GachaMeta.GMDBError.databaseExpired
             }
         }
 
@@ -167,7 +168,7 @@ extension [UIGFv4.ProfileGI.GachaItemGI] {
         var newItemContainer = Self()
         // 君子协定：这里要求 UIGFGachaItem 的 itemID 必须是有效值，否则会出现灾难性的后果。
         self.forEach { currentItem in
-            let theDB = GachaMetaDBExposed.shared.mainDB4GI
+            let theDB = GachaMeta.sharedDB.mainDB4GI
             var newItem = currentItem
             let itemTypeRaw: GachaItemType = .init(itemID: newItem.itemID, game: .genshinImpact)
             newItem.itemType = itemTypeRaw.getTranslatedRaw(for: lang, game: .genshinImpact)

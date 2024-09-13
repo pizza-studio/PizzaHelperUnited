@@ -6,6 +6,7 @@ import CoreData
 import CoreXLSX
 @preconcurrency import Defaults
 import Foundation
+import GachaMetaDB
 @preconcurrency import NaturalLanguage
 import SwiftUI
 import UniformTypeIdentifiers
@@ -289,7 +290,7 @@ extension GIGF {
             uid: info.uid
         )
 
-        let mainDB = GachaMetaDBExposed.shared.mainDB4GI
+        let mainDB = GachaMeta.sharedDB.mainDB4GI
         let revDB = mainDB.generateHotReverseQueryDict(for: info.lang.rawValue) ?? [:]
 
         list.forEach { v2Item in
@@ -301,7 +302,7 @@ extension GIGF {
                 }
             }
             if !newItemID.isEmpty {
-                newName = GachaMetaDBExposed.shared.mainDB4GI.plainQueryForNames(
+                newName = GachaMeta.sharedDB.mainDB4GI.plainQueryForNames(
                     itemID: newItemID, langID: self.info.lang.rawValue
                 ) ?? v2Item.name
             }
@@ -400,7 +401,7 @@ extension GIGF {
             languages.append(.langCHS) // 垫底语言。
         }
 
-        let sharedDBSet = GachaMetaDBExposed.shared
+        let sharedDBSet = GachaMeta.sharedDB
         var revDB = [String: Int]()
         let listBackup = list
         languageEnumeration: while !languages.isEmpty, let language = languages.first {
@@ -431,7 +432,7 @@ extension GIGF {
 
 extension GachaLanguage {
     fileprivate func makeRevDB() -> [String: Int] {
-        GachaMetaDBExposed.shared.mainDB4GI.generateHotReverseQueryDict(for: rawValue) ?? [:]
+        GachaMeta.sharedDB.mainDB4GI.generateHotReverseQueryDict(for: rawValue) ?? [:]
     }
 }
 
