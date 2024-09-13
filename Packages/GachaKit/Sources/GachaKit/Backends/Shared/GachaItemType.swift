@@ -3,14 +3,20 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZAccountKit
 import PZBaseKit
 
 // MARK: - GachaItemType
 
-enum GachaItemType: String {
+public enum GachaItemType: String, Sendable, Hashable, Codable, Identifiable {
     case character
     case weapon
-    case bangboo /// ZZZ Only
+    case unknown
+    case bangboo /// ZZZ Only.
+
+    // MARK: Public
+
+    public var id: String { rawValue }
 }
 
 extension GachaItemType {
@@ -23,7 +29,7 @@ extension GachaItemType {
             case 5...: self = .weapon
             default: self = .character
             }
-        case .zenlessZone: self = .bangboo // 暂时不处理。
+        case .zenlessZone: self = .weapon // 暂时不处理。
         }
     }
 
@@ -41,7 +47,7 @@ extension GachaItemType {
         }
     }
 
-    public func getTranslatedRaw(for lang: GachaLanguage, game: Pizza.SupportedGame) -> String {
+    public func getTranslatedRaw(for lang: GachaLanguage = .current, game: Pizza.SupportedGame) -> String {
         switch game {
         case .genshinImpact:
             switch (self, lang) {

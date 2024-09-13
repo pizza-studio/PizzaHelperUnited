@@ -4,20 +4,20 @@
 
 /// 卡池类型，API返回
 public enum GachaTypeZZZ: RawRepresentable, Codable, Hashable, Sendable {
-    case standardBanner
-    case limitedBanner
-    case wEngineBanner
-    case bangbooBanner
+    case stableChannel
+    case exclusiveChannel
+    case wEngineChannel
+    case bangbooChannel
     case unknown(rawValue: String)
 
     // MARK: Lifecycle
 
     public init(rawValue: String) {
         self = switch rawValue {
-        case "1": .standardBanner
-        case "2": .limitedBanner
-        case "3": .wEngineBanner
-        case "5": .bangbooBanner
+        case "1": .stableChannel
+        case "2": .exclusiveChannel
+        case "3": .wEngineChannel
+        case "5": .bangbooChannel
         default: .unknown(rawValue: rawValue)
         }
     }
@@ -26,11 +26,21 @@ public enum GachaTypeZZZ: RawRepresentable, Codable, Hashable, Sendable {
 
     public var rawValue: String {
         switch self {
-        case .standardBanner: "1"
-        case .limitedBanner: "2"
-        case .wEngineBanner: "3"
-        case .bangbooBanner: "5"
+        case .stableChannel: "1"
+        case .exclusiveChannel: "2"
+        case .wEngineChannel: "3"
+        case .bangbooChannel: "5"
         case let .unknown(rawValue): rawValue
+        }
+    }
+
+    public var expressible: GachaPoolExpressible {
+        switch self {
+        case .stableChannel: .zzStableChannel
+        case .exclusiveChannel: .zzExclusiveChannel
+        case .wEngineChannel: .zzWEngineChannel
+        case .bangbooChannel: .zzBangbooChannel
+        case .unknown: .zzUnknown
         }
     }
 }
