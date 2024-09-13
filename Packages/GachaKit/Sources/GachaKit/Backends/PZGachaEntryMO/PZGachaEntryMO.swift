@@ -8,7 +8,20 @@ import SwiftData
 
 // MARK: - PZGachaEntryProtocol
 
-public protocol PZGachaEntryProtocol {}
+public protocol PZGachaEntryProtocol {
+    var game: Pizza.SupportedGame { get set }
+    var uid: String { get set }
+    var gachaType: String { get set }
+    var itemID: String { get set }
+    var count: String { get set }
+    var time: String { get set }
+    var name: String { get set }
+    var lang: String { get set }
+    var itemType: String { get set }
+    var rankType: String { get set }
+    var id: String { get set }
+    var gachaID: String { get set }
+}
 
 // MARK: - PZGachaEntryMO
 
