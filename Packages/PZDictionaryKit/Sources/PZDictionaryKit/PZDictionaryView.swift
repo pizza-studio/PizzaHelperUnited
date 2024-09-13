@@ -249,7 +249,7 @@ extension PZDictionaryView {
         // MARK: Private
 
         private let debouncedSearchSubject = PassthroughSubject<String, Never>()
-        private var cancellable: AnyCancellable?
+        @ObservationIgnored private var cancellable: AnyCancellable?
     }
 }
 
