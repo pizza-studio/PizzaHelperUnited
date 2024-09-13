@@ -15,6 +15,7 @@ struct UtilsTabPage: View {
 
     enum Nav {
         case giAbyssRank
+        case gachaManager
         case wallpaperGallery
         case pizzaDictionary
         case hoyoMap
@@ -30,6 +31,13 @@ struct UtilsTabPage: View {
                             Text(AbyssRankView.navTitle)
                         } icon: {
                             AbyssRankView.navIcon.resizable().aspectRatio(contentMode: .fit)
+                        }
+                    }
+                    NavigationLink(value: Nav.gachaManager) {
+                        Label {
+                            Text(GachaRecordRootView.navTitle)
+                        } icon: {
+                            GachaRecordRootView.navIcon.resizable().aspectRatio(contentMode: .fit)
                         }
                     }
                 }
@@ -93,6 +101,9 @@ struct UtilsTabPage: View {
         NavigationStack {
             switch selection.wrappedValue {
             case .giAbyssRank: AbyssRankView()
+            case .gachaManager: GachaRecordRootView {
+                    PersistenceController.command4InheritingOldGachaRecord()
+                }
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
             case .gachaCloudDebug: CDGachaMODebugView()
