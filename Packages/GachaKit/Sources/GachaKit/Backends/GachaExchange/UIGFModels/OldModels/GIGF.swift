@@ -4,7 +4,7 @@
 
 import CoreData
 import CoreXLSX
-import Defaults
+@preconcurrency import Defaults
 import Foundation
 @preconcurrency import NaturalLanguage
 import SwiftUI
