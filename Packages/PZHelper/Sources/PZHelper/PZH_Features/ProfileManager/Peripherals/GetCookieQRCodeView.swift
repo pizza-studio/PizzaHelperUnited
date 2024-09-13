@@ -55,8 +55,8 @@ struct GetCookieQRCodeView: View {
         guard !viewModel.scanningConfirmationStatus.isBusy else { return }
         guard let ticket = viewModel.qrCodeAndTicket?.ticket else { return }
         let task = Task { @MainActor [weak viewModel] in
+            var counter = 0
             loopTask: while case .automatically = viewModel?.scanningConfirmationStatus {
-                var counter = 0
                 guard let viewModel = viewModel else { break loopTask }
                 do {
                     let status = try await HoYo.queryQRCodeStatus(
