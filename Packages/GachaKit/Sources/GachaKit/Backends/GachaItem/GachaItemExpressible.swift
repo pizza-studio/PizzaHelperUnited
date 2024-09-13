@@ -4,6 +4,7 @@
 
 import EnkaKit
 import Foundation
+import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
@@ -153,8 +154,8 @@ extension GachaItemExpressible {
     public var rarity: GachaItemRankType {
         var rarityInt: Int?
         switch game {
-        case .genshinImpact: rarityInt = GachaMetaDBExposed.shared.mainDB4GI.plainQueryForRarity(itemID: itemID)
-        case .starRail: rarityInt = GachaMetaDBExposed.shared.mainDB4HSR.plainQueryForRarity(itemID: itemID)
+        case .genshinImpact: rarityInt = GachaMeta.sharedDB.mainDB4GI.plainQueryForRarity(itemID: itemID)
+        case .starRail: rarityInt = GachaMeta.sharedDB.mainDB4HSR.plainQueryForRarity(itemID: itemID)
         case .zenlessZone: rarityInt = nil // 警告：绝区零的 rankType 需要 +1 才能用。
         }
         return switch rarityInt {
@@ -174,7 +175,7 @@ extension GachaItemExpressible {
             } else {
                 result = nil
             }
-            return result ?? GachaMetaDBExposed.shared.mainDB4GI.plainQueryForNames(
+            return result ?? GachaMeta.sharedDB.mainDB4GI.plainQueryForNames(
                 itemID: itemID,
                 langID: lang.rawValue
             )
@@ -186,7 +187,7 @@ extension GachaItemExpressible {
             } else {
                 result = nil
             }
-            return result ?? GachaMetaDBExposed.shared.mainDB4HSR
+            return result ?? GachaMeta.sharedDB.mainDB4HSR
                 .plainQueryForNames(itemID: itemID, langID: lang.rawValue) ?? name
         case .zenlessZone: return name // 暂不处理。
         }

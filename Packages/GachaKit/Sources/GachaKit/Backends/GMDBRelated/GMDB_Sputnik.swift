@@ -10,54 +10,51 @@ import GachaMetaGeneratorModule
 import PZAccountKit
 import PZBaseKit
 
-public typealias GachaMetaDBExposed = GachaMetaDB
+// MARK: - GachaMeta.Sputnik
 
-// MARK: - GachaMetaDB.Sputnik
-
-extension GachaMetaDB {
+extension GachaMeta {
     public enum Sputnik {}
 
     /// 拿传入的简体中文翻译「是否在库」来检查资料库是否过期。（原神专用。）
     public func checkIfExpired(againstTranslation names: Set<String>) -> Bool {
-        !names.subtracting(Set<String>(GachaMetaDBExposed.shared.reversedDB4GI.keys)).isEmpty
+        !names.subtracting(Set<String>(GachaMeta.sharedDB.reversedDB4GI.keys)).isEmpty
     }
 }
 
-extension GachaMetaDB {
-    public static let shared = SharedDBSet()
+// MARK: - GachaMeta.DBSet
 
-    public class SharedDBSet: ObservableObject, @unchecked Sendable {
+/// 备注：此处不宜将 GachaMetaDB 继续用作 Root Namespace，
+/// 否则 Observable Macro 生成的内容在这个代码文脉下会产生冲突性质的 cmopile-time error。
+extension GachaMeta {
+    public static let sharedDB = GachaMeta.DBSet()
+
+    @Observable
+    public class DBSet: @unchecked Sendable {
         // MARK: Lifecycle
 
         public init() {
-            cancellables.append(
-                Defaults.publisher(.localGachaMetaDBReversed4GI).sink { _ in
-                    Task.detached { @MainActor in
-                        self.reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
-                    }
+            Defaults.publisher(.localGachaMetaDBReversed4GI).sink { _ in
+                Task.detached { @MainActor in
+                    self.reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
                 }
-            )
-            cancellables.append(
-                Defaults.publisher(.localGachaMetaDB4GI).sink { _ in
-                    Task.detached { @MainActor in
-                        self.mainDB4GI = Defaults[.localGachaMetaDB4GI]
-                    }
+            }.store(in: &cancellables)
+            Defaults.publisher(.localGachaMetaDB4GI).sink { _ in
+                Task.detached { @MainActor in
+                    self.mainDB4GI = Defaults[.localGachaMetaDB4GI]
                 }
-            )
-            cancellables.append(
-                Defaults.publisher(.localGachaMetaDB4HSR).sink { _ in
-                    Task.detached { @MainActor in
-                        self.mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
-                    }
+            }.store(in: &cancellables)
+            Defaults.publisher(.localGachaMetaDB4HSR).sink { _ in
+                Task.detached { @MainActor in
+                    self.mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
                 }
-            )
+            }.store(in: &cancellables)
         }
 
         // MARK: Public
 
-        @Published public var reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
-        @Published public var mainDB4GI = Defaults[.localGachaMetaDB4GI]
-        @Published public var mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
+        public var reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
+        public var mainDB4GI = Defaults[.localGachaMetaDB4GI]
+        public var mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
 
         public func reverseQuery4GI(for name: String) -> Int? {
             reversedDB4GI[name]
@@ -65,11 +62,11 @@ extension GachaMetaDB {
 
         // MARK: Private
 
-        private var cancellables: [AnyCancellable] = []
+        @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
     }
 }
 
-extension GachaMetaDB.Sputnik {
+extension GachaMeta.Sputnik {
     @MainActor
     public static func updateLocalGachaMetaDB(for game: Pizza.SupportedGame) async throws {
         do {
@@ -84,14 +81,14 @@ extension GachaMetaDB.Sputnik {
             case .zenlessZone: return // 暂不支持。
             }
         } catch {
-            throw GachaMetaDB.GMDBError.resultFetchFailure(subError: error)
+            throw GachaMeta.GMDBError.resultFetchFailure(subError: error)
         }
     }
 
     static func fetchPreCompiledData(
         from serverType: HoYo.AccountRegion
     ) async throws
-        -> GachaMetaDB {
+        -> GachaMeta.MetaDB {
         var dataToParse = Data([])
         do {
             let (data, _) = try await URLSession.shared.data(
@@ -100,29 +97,29 @@ extension GachaMetaDB.Sputnik {
             dataToParse = data
         } catch {
             print(error.localizedDescription)
-            print("// [GachaMetaDB.fetchPreCompiledData] Attempt using alternative JSON server source.")
+            print("// [GachaMeta.MetaDB.fetchPreCompiledData] Attempt using alternative JSON server source.")
             do {
                 let (data, _) = try await URLSession.shared.data(
                     for: URLRequest(url: serverType.gmdbServerViceVersa.gachaMetaDBRemoteURL)
                 )
                 dataToParse = data
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
-                let successMsg = "// [GachaMetaDB.fetchPreCompiledData] 2nd attempt succeeded."
+                let successMsg = "// [GachaMeta.MetaDB.fetchPreCompiledData] 2nd attempt succeeded."
                 print(successMsg)
             } catch {
-                print("// [GachaMetaDB.fetchPreCompiledData] Final attempt failed:")
+                print("// [GachaMeta.MetaDB.fetchPreCompiledData] Final attempt failed:")
                 print(error.localizedDescription)
                 throw error
             }
         }
-        let requestResult = try JSONDecoder().decode(GachaMetaDB.self, from: dataToParse)
+        let requestResult = try JSONDecoder().decode(GachaMeta.MetaDB.self, from: dataToParse)
         return requestResult
     }
 }
 
-// MARK: - GachaMetaDB.GMDBError
+// MARK: - GachaMeta.GMDBError
 
-extension GachaMetaDB {
+extension GachaMeta {
     public enum GMDBError: Error, LocalizedError {
         case emptyFetchResult
         case resultFetchFailure(subError: Error)
