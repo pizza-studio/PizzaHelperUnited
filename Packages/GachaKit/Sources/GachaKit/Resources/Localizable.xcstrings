@@ -57,6 +57,35 @@
         }
       }
     },
+    "gachaKit.GachaMetaDBError.itemIDInvalid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ItemID Invalid."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ItemID が無効です。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ItemID 无效。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ItemID 無效。"
+          }
+        }
+      }
+    },
     "gachaKit.GachaMetaDBError.ResultFetchFailed" : {
       "localizations" : {
         "en" : {
