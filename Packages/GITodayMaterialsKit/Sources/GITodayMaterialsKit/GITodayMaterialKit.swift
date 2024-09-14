@@ -19,10 +19,20 @@ extension GITodayMaterial {
 
 extension String {
     public var i18nTodayMaterials: String {
-        NSLocalizedString(self, bundle: Bundle.module, comment: "")
+        String(localized: .init(stringLiteral: self), bundle: .module)
     }
 
     public var i18nTodayMaterialNames: String {
-        NSLocalizedString(self, tableName: "MaterialNames", bundle: Bundle.module, comment: "")
+        String(localized: .init(stringLiteral: self), table: "MaterialNames", bundle: .module)
+    }
+}
+
+extension String.LocalizationValue {
+    public var i18nTodayMaterials: String {
+        String(localized: self, bundle: .module)
+    }
+
+    public var i18nTodayMaterialNames: String {
+        String(localized: self, table: "MaterialNames", bundle: .module)
     }
 }
