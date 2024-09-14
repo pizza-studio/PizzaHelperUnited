@@ -6,6 +6,12 @@ import Foundation
 
 extension String {
     public var i18nPZHelper: String {
-        NSLocalizedString(self, bundle: Bundle.module, comment: "")
+        String(localized: .init(stringLiteral: self), bundle: .module)
+    }
+}
+
+extension String.LocalizationValue {
+    public var i18nPZHelper: String {
+        String(localized: self, bundle: .module)
     }
 }

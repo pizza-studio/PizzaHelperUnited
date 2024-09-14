@@ -8,6 +8,12 @@ import PZBaseKit
 
 extension String {
     public var i18nGachaKit: String {
-        NSLocalizedString(self, bundle: Bundle.module, comment: "")
+        String(localized: .init(stringLiteral: self), bundle: .module)
+    }
+}
+
+extension String.LocalizationValue {
+    public var i18nGachaKit: String {
+        String(localized: self, bundle: .module)
     }
 }
