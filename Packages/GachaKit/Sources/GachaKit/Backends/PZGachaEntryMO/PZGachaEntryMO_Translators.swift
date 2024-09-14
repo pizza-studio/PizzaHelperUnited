@@ -5,6 +5,8 @@
 import GachaMetaDB
 import PZBaseKit
 
+// MARK: - APIs for converting fetched contents to GachaEntryMO.
+
 extension GachaFetchModels.PageFetched.FetchedEntry {
     func toGachaEntryMO(game: Pizza.SupportedGame, fixItemIDs: Bool = true) async throws -> PZGachaEntryMO {
         let result = PZGachaEntryMO { newEntry in
@@ -34,6 +36,23 @@ extension GachaFetchModels.PageFetched.FetchedEntry {
             result.itemID = newItemID.description
         }
 
+        return result
+    }
+}
+
+extension GachaFetchModels.PageFetched {
+    func extractEntries(
+        game: Pizza.SupportedGame,
+        fixItemIDs: Bool = true,
+        itemCounter: inout Int?
+    ) async throws
+        -> [PZGachaEntryMO] {
+        var result = [PZGachaEntryMO]()
+        for rawEntry in list {
+            let converted = try await rawEntry.toGachaEntryMO(game: game, fixItemIDs: fixItemIDs)
+            result.append(converted)
+            if itemCounter != nil { itemCounter = (itemCounter ?? 0) + 1 }
+        }
         return result
     }
 }
@@ -107,7 +126,7 @@ extension PZGachaEntryMO {
 
 extension [PZGachaEntryMO] {
     func extractItem<T: UIGFGachaItemProtocol>(_ type: T.Type) throws -> [(uid: String, entry: T)] {
-        try self.compactMap {
+        try compactMap {
             if let matched = try $0.toUIGFGachaEntry(for: T.game) as? T {
                 return (uid: $0.uid, entry: matched)
             }
@@ -135,5 +154,45 @@ extension [PZGachaEntryMO] {
             )
         }
         return profiles
+    }
+}
+
+// MARK: - APIs for converting UIGF to GachaEntryMO.
+
+extension UIGFGachaItemProtocol {
+    func asPZGachaEntryMO(uid: String) -> PZGachaEntryMO {
+        let result = PZGachaEntryMO { newEntry in
+            newEntry.game = game
+            newEntry.uid = uid
+            newEntry.count = count ?? "1"
+            newEntry.gachaID = gachaID
+            newEntry.gachaType = gachaType.rawValue
+            newEntry.id = id
+            newEntry.itemID = itemID
+            newEntry.itemType = GachaItemType(itemID: itemID, game: game).getTranslatedRaw(for: .langCHS, game: game)
+            newEntry.lang = GachaLanguage.langCHS.rawValue
+            newEntry.name = name ?? itemID
+            let fallbackRankType: String = game == .zenlessZone ? "2" : "3"
+            let newRankType = rankType ?? GachaItemRankType(itemID: itemID, game: game)?.uigfRankType(game: game)
+            newEntry.rankType = newRankType ?? fallbackRankType
+            newEntry.time = time
+        }
+        return result
+    }
+}
+
+extension UIGFv4.Profile {
+    func extractEntries() -> [PZGachaEntryMO] {
+        list.map { $0.asPZGachaEntryMO(uid: self.uid) }
+    }
+}
+
+extension UIGFv4 {
+    func extractAllEntries() -> [PZGachaEntryMO] {
+        var result = [[PZGachaEntryMO]]()
+        result.append(contentsOf: giProfiles?.map { $0.extractEntries() } ?? [])
+        result.append(contentsOf: hsrProfiles?.map { $0.extractEntries() } ?? [])
+        result.append(contentsOf: zzzProfiles?.map { $0.extractEntries() } ?? [])
+        return result.reduce([], +)
     }
 }
