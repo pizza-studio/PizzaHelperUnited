@@ -78,7 +78,7 @@ extension GachaFetchModels {
             self.region = try container.decode(String.self, forKey: .region)
             self.total = try container.decodeIfPresent(String.self, forKey: .total)
             self.timeZoneDelta = try container.decode(Int.self, forKey: .timeZoneDelta)
-            self.list = try container.decode([PageFetched].self, forKey: .list)
+            self.list = try container.decode([FetchedEntry].self, forKey: .list)
         }
 
         // MARK: Internal
@@ -88,7 +88,7 @@ extension GachaFetchModels {
         let region: String
         let total: String? // Genshin only. Might be totally useless.
         let timeZoneDelta: Int
-        let list: [PageFetched]
+        let list: [FetchedEntry]
 
         // MARK: Private
 
