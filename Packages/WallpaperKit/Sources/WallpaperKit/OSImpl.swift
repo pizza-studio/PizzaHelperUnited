@@ -18,6 +18,12 @@ extension View {
 
 extension String {
     public var i18nWPKit: String {
-        NSLocalizedString(self, bundle: Bundle.module, comment: "")
+        String(localized: .init(stringLiteral: self), bundle: .module)
+    }
+}
+
+extension String.LocalizationValue {
+    public var i18nWPKit: String {
+        String(localized: self, bundle: .module)
     }
 }
