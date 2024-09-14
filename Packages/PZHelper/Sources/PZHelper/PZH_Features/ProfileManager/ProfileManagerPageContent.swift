@@ -179,6 +179,7 @@ struct ProfileManagerPageContent: View {
     private func addProfile(_ profile: PZProfileMO) {
         withAnimation {
             modelContext.insert(profile)
+            try? modelContext.save()
         }
     }
 
@@ -212,9 +213,7 @@ struct ProfileManagerPageContent: View {
                 }
             }
 
-            for index in offsets {
-                modelContext.delete(profiles[index])
-            }
+            try? modelContext.save()
         }
     }
 

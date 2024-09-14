@@ -100,6 +100,7 @@ extension ProfileManagerPageContent {
         }
 
         /// 仅用于对批次帐号处理当中的单个帐号的处理。
+        /// 所以，这个函式并未在最终执行 modelContext.save()。
         @MainActor
         func handleSingleFetchedUnit(_ account: FetchedAccount, game: Pizza.SupportedGame) async throws {
             guard let server = HoYo.Server(uid: account.gameUid, game: game) else { return }
