@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import GachaMetaDB
 import PZBaseKit
 import SwiftUI
 
@@ -19,6 +20,21 @@ public enum GachaItemRankType: Int, Identifiable, Sendable, Hashable, Codable {
         guard var intRawValue = Int(rawValueStr) else { return nil }
         if game == .zenlessZone { intRawValue += 1 }
         switch intRawValue {
+        case 3: self = .rank3
+        case 4: self = .rank4
+        case 5: self = .rank5
+        default: return nil
+        }
+    }
+
+    public init?(itemID: String, game: Pizza.SupportedGame) {
+        var rarityInt: Int?
+        switch game {
+        case .genshinImpact: rarityInt = GachaMeta.sharedDB.mainDB4GI.plainQueryForRarity(itemID: itemID)
+        case .starRail: rarityInt = GachaMeta.sharedDB.mainDB4HSR.plainQueryForRarity(itemID: itemID)
+        case .zenlessZone: rarityInt = nil // 警告：绝区零的 rankType 需要 +1 才能用。
+        }
+        switch rarityInt {
         case 3: self = .rank3
         case 4: self = .rank4
         case 5: self = .rank5
