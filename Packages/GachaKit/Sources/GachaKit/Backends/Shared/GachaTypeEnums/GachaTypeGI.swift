@@ -2,10 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 // MARK: - GachaTypeGI
 
 /// 卡池类型，API返回
-public enum GachaTypeGI: RawRepresentable, Codable, Hashable, Sendable {
+public enum GachaTypeGI: GachaTypeProtocol {
     case beginnersWish
     case standardWish
     case characterEventWish1
@@ -29,6 +31,8 @@ public enum GachaTypeGI: RawRepresentable, Codable, Hashable, Sendable {
     }
 
     // MARK: Public
+
+    public typealias ItemType = UIGFv4.GachaItemGI
 
     public var rawValue: String {
         switch self {

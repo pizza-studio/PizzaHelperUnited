@@ -21,15 +21,32 @@ public enum GachaItemType: String, Sendable, Hashable, Codable, Identifiable {
 
 extension GachaItemType {
     public init(itemID: String, game: Pizza.SupportedGame) {
+        guard let itemIDInt = Int(itemID) else {
+            self = .unknown
+            return
+        }
         switch game {
         case .genshinImpact:
-            self = itemID.count > 6 ? .character : .weapon
+            switch itemID.count {
+            case 8: self = .character
+            case 5: self = .weapon
+            default: self = .unknown
+            }
         case .starRail:
             switch itemID.count {
-            case 5...: self = .weapon
-            default: self = .character
+            case 4: self = .character
+            case 5: self = .weapon
+            default: self = .unknown
             }
-        case .zenlessZone: self = .weapon // 暂时不处理。
+        case .zenlessZone:
+            switch itemID.count {
+            case 4: self = .character
+            case 5: switch itemIDInt {
+                case 50000...: self = .bangboo
+                default: self = .weapon
+                }
+            default: self = .unknown
+            }
         }
     }
 
