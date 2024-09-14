@@ -4,6 +4,7 @@
 
 @preconcurrency import CoreData
 import GachaKit
+import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
 import SwiftData
@@ -95,7 +96,7 @@ extension PersistenceController {
     @MainActor
     public static func command4InheritingOldGachaRecord() -> Void? {
         if PersistenceController.hasOldGachaDataDetected() {
-            return try! PersistenceController.migrateOldGachasIntoProfiles()
+            return try? PersistenceController.migrateOldGachasIntoProfiles()
         } else {
             return nil
         }

@@ -3,6 +3,8 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @preconcurrency import CoreData
+import GachaMetaDB
+import PZAccountKit
 import PZBaseKit
 @preconcurrency import Sworm
 
@@ -31,14 +33,8 @@ public final class CDGachaMOSputnik {
     public func allGachaDataMO(for game: Pizza.SupportedGame) throws -> [CDGachaMOProtocol] {
         try theDB(for: game)?.perform { ctx in
             switch game {
-            case .genshinImpact:
-                try ctx.fetch(CDGachaMO4GI.all).map {
-                    try $0.decode()
-                }
-            case .starRail:
-                try ctx.fetch(CDGachaMO4HSR.all).map {
-                    try $0.decode()
-                }
+            case .genshinImpact: try ctx.fetch(CDGachaMO4GI.all).map { try $0.decode() }
+            case .starRail: try ctx.fetch(CDGachaMO4HSR.all).map { try $0.decode() }
             case .zenlessZone: []
             }
         } ?? []
@@ -61,6 +57,20 @@ public final class CDGachaMOSputnik {
     public func allCDGachaMOAsPZGachaEntryMO() throws -> [PZGachaEntryMO] {
         // Genshin.
         let genshinData: [PZGachaEntryMO]? = try allGachaDataMO(for: .genshinImpact).map(\.asPZGachaEntryMO)
+        // Fix Genshin ItemIDs.
+        let problematicObjects: [PZGachaEntryMO]? = genshinData?.filter { Int($0.itemID) == nil }
+        let revDB = GachaMeta.sharedDB.mainDB4GI.generateHotReverseQueryDict(for: HoYo.APILang.langCHS.rawValue) ?? [:]
+        try problematicObjects?.forEach { obj in
+            if let newItemIDInt = revDB[obj.name] {
+                obj.itemID = newItemIDInt.description
+            } else {
+                Task { @MainActor in
+                    try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                }
+                throw GachaMeta.GMDBError.databaseExpired
+            }
+        }
+
         // StarRail.
         let hsrData: [PZGachaEntryMO]? = try allGachaDataMO(for: .starRail).map(\.asPZGachaEntryMO)
         let dataSet: [PZGachaEntryMO] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
