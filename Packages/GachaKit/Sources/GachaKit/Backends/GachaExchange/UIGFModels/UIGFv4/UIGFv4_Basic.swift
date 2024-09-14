@@ -49,6 +49,15 @@ extension UIGFv4 {
     }
 }
 
+extension UIGFv4 {
+    public init(info: Info, entries: [PZGachaEntryMO]) throws {
+        self.info = info
+        self.giProfiles = try entries.extractProfiles(GachaItemGI.self, lang: .current)
+        self.hsrProfiles = try entries.extractProfiles(GachaItemHSR.self, lang: .current)
+        self.zzzProfiles = try entries.extractProfiles(GachaItemZZZ.self, lang: .current)
+    }
+}
+
 // MARK: UIGFv4.Info
 
 extension UIGFv4 {
