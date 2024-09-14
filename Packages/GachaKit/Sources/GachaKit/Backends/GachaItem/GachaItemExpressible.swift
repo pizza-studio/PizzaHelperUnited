@@ -123,32 +123,7 @@ extension GachaItemExpressible {
 }
 
 extension GachaItemExpressible {
-    public var itemType: GachaItemType {
-        guard let itemIDInt = Int(itemID) else { return .unknown }
-        switch game {
-        case .genshinImpact:
-            switch itemID.count {
-            case 8: return .character
-            case 5: return .weapon
-            default: return .unknown
-            }
-        case .starRail:
-            switch itemID.count {
-            case 4: return .character
-            case 5: return .weapon
-            default: return .unknown
-            }
-        case .zenlessZone:
-            switch itemID.count {
-            case 4: return .character
-            case 5: switch itemIDInt {
-                case 50000...: return .bangboo
-                default: return .weapon
-                }
-            default: return .unknown
-            }
-        }
-    }
+    public var itemType: GachaItemType { GachaItemType(itemID: itemID, game: game) }
 
     /// 建议在实际使用时以该变数取代用作垫底值的 rankType。
     public var rarity: GachaItemRankType {

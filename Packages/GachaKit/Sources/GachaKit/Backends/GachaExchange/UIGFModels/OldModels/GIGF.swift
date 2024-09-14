@@ -313,16 +313,16 @@ extension GIGF {
                 maybeRankType = intMaybeRankType.description
             }
 
-            let v4Item = UIGFv4.ProfileGI.GachaItemGI(
+            let v4Item = UIGFv4.GachaItemGI(
                 count: v2Item.count,
+                gachaID: nil,
                 gachaType: v2Item.gachaType,
                 id: v2Item.id,
                 itemID: newItemID,
                 itemType: v2Item.itemType,
                 name: newName,
                 rankType: maybeRankType,
-                time: v2Item.time,
-                uigfGachaType: v2Item.gachaType.uigfGachaType
+                time: v2Item.time
             )
             newInfo.list.append(v4Item)
         }
@@ -487,7 +487,7 @@ extension XLSXFile {
             }
         }
 
-        var newMap = [String: [UIGFv4.ProfileGI.GachaItemGI]]()
+        var newMap = [String: [UIGFv4.GachaItemGI]]()
         for iii in 0 ..< giProfiles.count {
             giProfiles[iii].list.updateLanguage(.langCHS)
             newMap[giProfiles[iii].uid, default: []].append(contentsOf: giProfiles[iii].list)

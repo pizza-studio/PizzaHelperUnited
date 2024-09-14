@@ -101,8 +101,6 @@ extension UIGFv4 {
 // MARK: - Extensions
 
 extension UIGFv4 {
-    public typealias DataEntry = ProfileHSR.GachaItemHSR // 注意这个地方是否与所属 App 一致。
-
     public enum SupportedHoYoGames: String {
         case genshinImpact = "GI"
         case starRail = "HSR"
