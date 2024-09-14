@@ -2,8 +2,10 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 /// 卡池类型，API返回
-public enum GachaTypeHSR: RawRepresentable, Codable, Hashable, Sendable {
+public enum GachaTypeHSR: GachaTypeProtocol {
     case stellarWarp
     case characterEventWarp
     case lightConeEventWarp
@@ -23,6 +25,8 @@ public enum GachaTypeHSR: RawRepresentable, Codable, Hashable, Sendable {
     }
 
     // MARK: Public
+
+    public typealias ItemType = UIGFv4.GachaItemHSR
 
     public var rawValue: String {
         switch self {
