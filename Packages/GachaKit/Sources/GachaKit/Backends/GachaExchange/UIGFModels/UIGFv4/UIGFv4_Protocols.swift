@@ -5,6 +5,16 @@
 import GachaMetaDB
 import PZBaseKit
 
+extension Pizza.SupportedGame {
+    public var gachaItemType: any UIGFGachaItemProtocol.Type {
+        switch self {
+        case .genshinImpact: return UIGFv4.GachaItemGI.self
+        case .starRail: return UIGFv4.GachaItemHSR.self
+        case .zenlessZone: return UIGFv4.GachaItemZZZ.self
+        }
+    }
+}
+
 // MARK: - GachaTypeProtocol
 
 public protocol GachaTypeProtocol: RawRepresentable, Codable, Hashable, Sendable {
