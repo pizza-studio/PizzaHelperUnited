@@ -6,8 +6,8 @@ import GachaMetaDB
 import PZBaseKit
 
 extension GachaFetchModels.PageFetched.FetchedEntry {
-    func toGachaEntryMO(game: Pizza.SupportedGame, fixItemIDs: Bool = true) -> PZGachaEntryMO {
-        PZGachaEntryMO { newEntry in
+    func toGachaEntryMO(game: Pizza.SupportedGame, fixItemIDs: Bool = true) async throws -> PZGachaEntryMO {
+        let result = PZGachaEntryMO { newEntry in
             newEntry.game = game
             newEntry.uid = uid
             newEntry.count = count
@@ -20,11 +20,20 @@ extension GachaFetchModels.PageFetched.FetchedEntry {
             newEntry.name = name
             newEntry.rankType = rankType
             newEntry.time = time
-
-            if fixItemIDs, game == .genshinImpact, itemID.isEmpty,
-               let newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name) {
-                newEntry.itemID = newItemID.description
-            }
         }
+
+        if fixItemIDs, game == .genshinImpact, itemID.isEmpty {
+            var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
+            if newItemID == nil {
+                try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
+            }
+            guard let newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name) else {
+                throw GachaMeta.GMDBError.databaseExpired
+            }
+            result.itemID = newItemID.description
+        }
+
+        return result
     }
 }
