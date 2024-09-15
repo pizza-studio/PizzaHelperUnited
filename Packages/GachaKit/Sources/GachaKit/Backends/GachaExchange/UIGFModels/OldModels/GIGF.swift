@@ -489,7 +489,7 @@ extension XLSXFile {
 
         var newMap = [String: [UIGFv4.GachaItemGI]]()
         for iii in 0 ..< giProfiles.count {
-            giProfiles[iii].list.updateLanguage(.langCHS)
+            try giProfiles[iii].list.updateLanguage(.langCHS)
             newMap[giProfiles[iii].uid, default: []].append(contentsOf: giProfiles[iii].list)
         }
 
