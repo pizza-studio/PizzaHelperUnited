@@ -88,7 +88,7 @@ public struct GachaProfileID: GachaProfileIDProtocol, Sendable {
 
 // MARK: - GachaProfileIDProtocol
 
-public protocol GachaProfileIDProtocol: Identifiable, Equatable {
+public protocol GachaProfileIDProtocol: Identifiable, Equatable, Hashable {
     var uid: String { get set }
     var game: Pizza.SupportedGame { get set }
     var profileName: String? { get set }
