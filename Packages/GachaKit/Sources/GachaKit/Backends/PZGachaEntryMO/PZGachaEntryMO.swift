@@ -23,6 +23,12 @@ public protocol PZGachaEntryProtocol {
     var gachaID: String { get set }
 }
 
+extension PZGachaEntryProtocol {
+    public var uidWithGame: String {
+        "\(game.uidPrefix)-\(uid)"
+    }
+}
+
 // MARK: - PZGachaEntryMO
 
 @Model
