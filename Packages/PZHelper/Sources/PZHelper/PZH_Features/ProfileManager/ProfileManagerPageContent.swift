@@ -65,7 +65,7 @@ struct ProfileManagerPageContent: View {
                 }
                 .onDelete(perform: deleteItems)
                 .onMove(perform: moveItems)
-                if profiles.isEmpty, PersistenceController.hasOldAccountDataDetected() {
+                if profiles.isEmpty, PZProfileActor.hasOldAccountDataDetected() {
                     Button("profileMgr.importLegacyProfiles.title".i18nPZHelper) {
                         importLegacyData()
                     }
@@ -233,7 +233,7 @@ struct ProfileManagerPageContent: View {
         withAnimation {
             isBusy = true
             do {
-                try PersistenceController.migrateOldAccountsIntoProfiles()
+                try PZProfileActor.migrateOldAccountsIntoProfiles()
             } catch {
                 errorMessage = error.localizedDescription
             }

@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import GachaKit
 import PZAccountKit
 import PZBaseKit
 import PZHelper
@@ -11,8 +12,6 @@ import SwiftUI
 @main
 @MainActor
 struct UnitedPizzaHelperApp: App {
-    let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -22,6 +21,6 @@ struct UnitedPizzaHelperApp: App {
             #endif
         }
         .windowResizability(.contentMinSize)
-        .modelContainer(persistenceController.modelContainer)
+        .modelContainer(PZHelper.sharedContainer)
     }
 }

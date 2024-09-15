@@ -20,8 +20,9 @@ public final class DetailPortalViewModel: @unchecked Sendable {
 
     @MainActor
     public init() {
-        let pzProfiles = try? PersistenceController.shared.modelContainer
-            .mainContext.fetch(FetchDescriptor<PZProfileMO>())
+        let actor = PZProfileActor(modelContainer: PZHelper.sharedContainer)
+        let context = actor.modelContainer.mainContext
+        let pzProfiles = try? context.fetch(FetchDescriptor<PZProfileMO>())
             .sorted { $0.priority < $1.priority }
             .filter { $0.game != .zenlessZone } // 临时设定。
         self.currentProfile = pzProfiles?.first
