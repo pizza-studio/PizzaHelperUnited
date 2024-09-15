@@ -101,9 +101,7 @@ struct UtilsTabPage: View {
         NavigationStack {
             switch selection.wrappedValue {
             case .giAbyssRank: AbyssRankView()
-            case .gachaManager: GachaRecordRootView {
-                    PersistenceController.command4InheritingOldGachaRecord()
-                }
+            case .gachaManager: GachaView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
             case .gachaCloudDebug: EmptyView() // CDGachaMODebugView()

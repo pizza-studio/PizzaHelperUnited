@@ -30,6 +30,10 @@ public final class CDGachaMOSputnik {
 
     public static let shared = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: false)
 
+    public var hasData: Bool {
+        ((try? countAllCDGachaMOAsPZGachaEntryMO()) ?? 0) > 0
+    }
+
     public func allGachaDataMO(for game: Pizza.SupportedGame) throws -> [CDGachaMOProtocol] {
         try theDB(for: game)?.perform { ctx in
             switch game {
