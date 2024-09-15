@@ -171,13 +171,17 @@ extension GachaItemExpressible {
     // 如果是大图表的话，建议尺寸是 40；否则是 30。
     @MainActor @ViewBuilder
     public func icon(_ size: CGFloat = 30) -> some View {
-        switch (game, itemType) {
-        case (_, .unknown): AnonymousIconView(size, cutType: .circleClipped)
-        case (.zenlessZone, .bangboo): AnonymousIconView(size, cutType: .circleClipped).colorMultiply(.red)
-        case (_, .character): CharacterIconView(charID: itemID, size: size, circleClipped: true, clipToHead: true)
-        case (.genshinImpact, .weapon): Enka.queryImageAssetSUI(for: "gi_weapon_\(itemID)")
-        case (.starRail, .weapon): Enka.queryImageAssetSUI(for: "hsr_light_cone_\(itemID)")
-        default: AnonymousIconView(size, cutType: .circleClipped).colorMultiply(.gray)
-        }
+        Group {
+            switch (game, itemType) {
+            case (_, .unknown): AnonymousIconView(size, cutType: .circleClipped)
+            case (.zenlessZone, .bangboo): AnonymousIconView(size, cutType: .circleClipped).colorMultiply(.red)
+            case (_, .character): CharacterIconView(charID: itemID, size: size, circleClipped: true, clipToHead: true)
+            case (.genshinImpact, .weapon): Enka.queryImageAssetSUI(for: "gi_weapon_\(itemID)")
+            case (.starRail, .weapon): Enka.queryImageAssetSUI(for: "hsr_light_cone_\(itemID)")
+            default: AnonymousIconView(size, cutType: .circleClipped).colorMultiply(.gray)
+            }
+        }.background {
+            rankType.backgroundGradient
+        }.clipShape(.circle)
     }
 }
