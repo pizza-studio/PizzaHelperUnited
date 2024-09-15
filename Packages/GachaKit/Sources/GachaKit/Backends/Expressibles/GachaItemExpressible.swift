@@ -12,6 +12,7 @@ import SwiftUI
 // MARK: - GachaItemExpressible
 
 /// 专用于 PZGachaEntry 的前端表述框架。
+@frozen
 public struct GachaItemExpressible: Identifiable, Equatable, Sendable {
     // MARK: Public
 
