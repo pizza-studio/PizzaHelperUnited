@@ -10,6 +10,14 @@ extension Pizza {
         case starRail = "HSR"
         case zenlessZone = "ZZZ"
 
+        // MARK: Lifecycle
+
+        public init?(uidPrefix: String) {
+            let matched = Self.allCases.first { $0.uidPrefix == uidPrefix }
+            guard let matched else { return nil }
+            self = matched
+        }
+
         // MARK: Public
 
         public var id: String { rawValue }
@@ -36,6 +44,11 @@ extension Pizza {
             case .starRail: .zenlessZone
             case .zenlessZone: .genshinImpact
             }
+        }
+
+        // 生成带有游戏标识码的 UID。
+        public func with(uid: String) -> String {
+            "\(uidPrefix)-\(uid)"
         }
     }
 }
