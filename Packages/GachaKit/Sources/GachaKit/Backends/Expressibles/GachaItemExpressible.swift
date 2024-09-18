@@ -35,15 +35,15 @@ extension GachaItemExpressible {
     public init(rawEntry: PZGachaEntryProtocol) {
         self.id = rawEntry.id
         self.uid = rawEntry.uid
-        self.game = rawEntry.game
-        self.pool = .init(rawEntry.gachaType, game: rawEntry.game) // 从 GachaType 解读。
+        self.game = rawEntry.gameTyped
+        self.pool = .init(rawEntry.gachaType, game: game) // 从 GachaType 解读。
         self.itemID = rawEntry.itemID // 这里假设原神的 itemID 已被修复。
         self.count = rawEntry.count
         self.name = rawEntry.name
         // self.itemType = .init(rawString4GI: rawEntry.itemType) // 改用 ItemID 推断。
-        self.rankType = .init(rawValueStr: rawEntry.rankType, game: rawEntry.game) ?? .rank3
+        self.rankType = .init(rawValueStr: rawEntry.rankType, game: game) ?? .rank3
         self.gachaID = rawEntry.gachaID
-        let tzDelta = GachaKit.getServerTimeZoneDelta(uid: rawEntry.uid, game: rawEntry.game)
+        let tzDelta = GachaKit.getServerTimeZoneDelta(uid: rawEntry.uid, game: game)
         self.time = .init(rawEntry.time, tzDelta: tzDelta) ?? .distantPast
     }
 }
