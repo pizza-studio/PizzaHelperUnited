@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @preconcurrency import CoreData
+import EnkaKit
 import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
@@ -90,7 +91,8 @@ extension GachaActor {
             }
         }
         try modelContext.save()
-        try lazyRefreshProfiles(newProfiles: profiles)
+        // try lazyRefreshProfiles(newProfiles: profiles)
+        try refreshAllProfiles()
     }
 
     public func lazyRefreshProfiles(newProfiles: Set<GachaProfileID>? = nil) throws {
@@ -103,6 +105,24 @@ extension GachaActor {
         try modelContext.save()
         let arrProfiles = profiles.sorted { $0.uidWithGame < $1.uidWithGame }
         arrProfiles.forEach { modelContext.insert($0.asMO) }
+        try modelContext.save()
+    }
+
+    public func refreshAllProfiles() throws {
+        let oldProfileMOs = try modelContext.fetch(FetchDescriptor<PZGachaProfileMO>())
+        var profiles = oldProfileMOs.map(\.asSendable)
+        var entryFetchDescriptor = FetchDescriptor<PZGachaEntryMO>()
+        entryFetchDescriptor.propertiesToFetch = [\.uid, \.game]
+        let filteredEntries = try modelContext.fetch(entryFetchDescriptor)
+        filteredEntries.forEach { currentGachaEntry in
+            let alreadyExisted = profiles.first { $0.uidWithGame == currentGachaEntry.uidWithGame }
+            guard alreadyExisted == nil else { return }
+            let newProfile = GachaProfileID(uid: currentGachaEntry.uid, game: currentGachaEntry.gameTyped)
+            profiles.append(newProfile)
+        }
+        oldProfileMOs.forEach { modelContext.delete($0) }
+        try modelContext.save()
+        profiles.forEach { modelContext.insert($0.asMO) }
         try modelContext.save()
     }
 }
