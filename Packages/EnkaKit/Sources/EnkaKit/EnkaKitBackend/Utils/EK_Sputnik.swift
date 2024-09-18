@@ -56,6 +56,7 @@ extension Enka {
         // MARK: Public
 
         public static let shared = Sputnik()
+        public static let commonActor = DBActor()
 
         public fileprivate(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
         public fileprivate(set) var db4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
@@ -68,6 +69,22 @@ extension Enka {
         // MARK: Private
 
         @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
+    }
+}
+
+// MARK: - Enka.Sputnik.DBActor
+
+extension Enka.Sputnik {
+    public actor DBActor {
+        // MARK: Public
+
+        public func queryAndSave(uid: String, game: Enka.GameType) async throws {
+            try await sharedSputnik.queryAndSave(uid: uid, game: game)
+        }
+
+        // MARK: Private
+
+        private let sharedSputnik = Enka.Sputnik.shared
     }
 }
 

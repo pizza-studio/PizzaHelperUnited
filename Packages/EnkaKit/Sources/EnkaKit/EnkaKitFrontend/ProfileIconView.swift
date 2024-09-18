@@ -57,10 +57,8 @@ extension Enka {
                 } else {
                     AnonymousIconView.rawImage4SUI
                         .clipShape(.circle)
-                        .onAppear {
-                            Task { @MainActor in
-                                try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
-                            }
+                        .task(priority: .background) {
+                            try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
                         }
                 }
             case .starRail:
@@ -69,10 +67,8 @@ extension Enka {
                 } else {
                     AnonymousIconView.rawImage4SUI
                         .clipShape(.circle)
-                        .onAppear {
-                            Task { @MainActor in
-                                try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
-                            }
+                        .task(priority: .background) {
+                            try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
                         }
                 }
             case .zenlessZone: AnonymousIconView.rawImage4SUI.clipShape(.circle) // 临时设定。
