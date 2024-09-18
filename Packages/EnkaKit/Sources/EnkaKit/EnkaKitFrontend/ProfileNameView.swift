@@ -9,10 +9,11 @@ extension Enka {
     public struct ProfileNameView: View {
         // MARK: Lifecycle
 
-        public init(uid: String, game: Enka.GameType, name profileName: String? = nil) {
+        public init(uid: String, game: Enka.GameType, name profileName: String? = nil, onlineUpdate: Bool = false) {
             self.uid = uid
             self.game = game
             self.profileName = profileName
+            self.onlineUpdate = onlineUpdate
         }
 
         // MARK: Public
@@ -31,9 +32,9 @@ extension Enka {
                         Text(profile.nickname)
                     } else {
                         Text(uid)
-                            .onAppear {
-                                Task { @MainActor in
-                                    try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
+                            .task(priority: .background) {
+                                if onlineUpdate {
+                                    try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
                                 }
                             }
                     }
@@ -42,9 +43,9 @@ extension Enka {
                         Text(profile.nickname)
                     } else {
                         Text(uid)
-                            .onAppear {
-                                Task { @MainActor in
-                                    try? await Enka.Sputnik.shared.queryAndSave(uid: uid, game: game)
+                            .task(priority: .background) {
+                                if onlineUpdate {
+                                    try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
                                 }
                             }
                     }
@@ -55,6 +56,7 @@ extension Enka {
 
         // MARK: Private
 
+        private let onlineUpdate: Bool
         @Default(.queriedEnkaProfiles4GI) private var profiles4GI
         @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
     }
