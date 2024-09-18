@@ -52,7 +52,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill: OnlineAss
         case .genshinImpact:
             "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
-            "https://api.yatta.top/hsr/assets/UI/skill/\(iconOnlineFileNameStem).png"
+            "https://sr.yatta.moe/hsr/assets/UI/skill/\(iconOnlineFileNameStem).png"
         case .zenlessZone:
             "114514" // 临时设定。
         }
