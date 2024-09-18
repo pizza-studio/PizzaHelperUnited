@@ -81,7 +81,7 @@ struct DetailPortalTabPage: View {
         }
     }
 
-    @MainActor @ViewBuilder var accountSwitcherMenuLabel: some View {
+    @MainActor @ViewBuilder var profileSwitcherMenuLabel: some View {
         LabeledContent {
             let dimension: CGFloat = 30
             Group {
@@ -109,7 +109,7 @@ struct DetailPortalTabPage: View {
             .compositingGroup()
         } label: {
             if let profile: PZProfileMO = delegate.currentProfile {
-                Text(profile.uidWithGame)
+                Text(profile.uidWithGame).monospacedDigit()
             } else {
                 Text("dpv.query.menuCommandTitle".i18nPZHelper)
             }
@@ -120,7 +120,7 @@ struct DetailPortalTabPage: View {
     }
 
     @MainActor @ViewBuilder
-    func accountSwitcherMenu(staticIcon useStaticIcon: Bool = false) -> some View {
+    func profileSwitcherMenu() -> some View {
         Menu {
             Button {
                 withAnimation {
@@ -147,7 +147,7 @@ struct DetailPortalTabPage: View {
                 }
             }
         } label: {
-            accountSwitcherMenuLabel
+            profileSwitcherMenuLabel
         }
     }
 
@@ -184,7 +184,7 @@ struct DetailPortalTabPage: View {
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    accountSwitcherMenu()
+                    profileSwitcherMenu()
                 }
             }
         } else {
