@@ -114,6 +114,34 @@
         }
       }
     },
+    "gachaKit.gachaProfileMenu.chooseProfile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Profile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガチャUIDのご選択"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择抽卡UID"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇抽卡UID"
+          }
+        }
+      }
+    },
     "gachaKit.GachaRecordRootView.navTitle" : {
       "localizations" : {
         "en" : {
@@ -586,6 +614,62 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "音擎頻段"
+          }
+        }
+      }
+    },
+    "gachaKit.prompt.noGachaProfileFound" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No gacha records found."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガチャ記録は見つかりませんでした。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚无抽卡记录在库。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚無抽卡記錄在庫。"
+          }
+        }
+      }
+    },
+    "gachaKit.prompt.pleaseChooseGachaProfile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please choose a gacha profile."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガチャUIDをご選択ください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请选择一个抽卡UID。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請選擇一個抽卡UID。"
           }
         }
       }
