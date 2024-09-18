@@ -105,8 +105,10 @@ extension GachaRecordRootView {
         Form {
             if let gachaProfile = delegate.currentGachaProfile {
                 Text(gachaProfile.uidWithGame) + Text("in action".description)
+            } else if !noDataAvailable {
+                Text("gachaKit.prompt.pleaseChooseGachaProfile".i18nGachaKit)
             } else {
-                Text("gachaKit.noGachaProfileChoosen".i18nGachaKit)
+                Text("gachaKit.prompt.noGachaProfileFound".i18nGachaKit)
             }
         }
         .formStyle(.grouped)
@@ -172,7 +174,7 @@ extension GachaRecordRootView {
             if let profile: PZGachaProfileMO = delegate.currentGachaProfile {
                 Text(profile.uidWithGame).monospacedDigit()
             } else {
-                Text("gachaKit.noGachaProfileChoosen".i18nGachaKit)
+                Text("gachaKit.gachaProfileMenu.chooseProfile".i18nGachaKit)
             }
         }
         .padding(4).padding(.leading, 12)
