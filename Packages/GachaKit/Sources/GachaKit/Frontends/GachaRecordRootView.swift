@@ -2,27 +2,11 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import EnkaKit
-import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
 import SwiftData
 import SwiftUI
-
-// MARK: - GachaView
-
-public struct GachaView: View {
-    // MARK: Lifecycle
-
-    public init() {}
-
-    // MARK: Public
-
-    @MainActor public var body: some View {
-        GachaRecordRootView()
-    }
-}
 
 // MARK: - GachaRecordRootView
 
@@ -87,8 +71,6 @@ public struct GachaRecordRootView: View {
 
     @Environment(\.modelContext) fileprivate var modelContext
     @Environment(\.horizontalSizeClass) fileprivate var horizontalSizeClass: UserInterfaceSizeClass?
-    @State fileprivate var enkaDB = Enka.Sputnik.shared
-    @State fileprivate var metaDB = GachaMeta.sharedDB
     @State fileprivate var isBusy = false
     @Query fileprivate var entries: [PZGachaEntryMO]
     @Query(sort: \PZProfileMO.priority) fileprivate var pzProfiles: [PZProfileMO]

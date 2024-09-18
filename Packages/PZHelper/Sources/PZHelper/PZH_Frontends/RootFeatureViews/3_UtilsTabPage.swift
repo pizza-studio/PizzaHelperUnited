@@ -101,7 +101,7 @@ struct UtilsTabPage: View {
         NavigationStack {
             switch selection.wrappedValue {
             case .giAbyssRank: AbyssRankView()
-            case .gachaManager: GachaView()
+            case .gachaManager: GachaRecordRootView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
             case .gachaCloudDebug: EmptyView() // CDGachaMODebugView()
