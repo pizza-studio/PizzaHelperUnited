@@ -9,7 +9,7 @@ import SwiftData
 // MARK: - PZGachaEntryProtocol
 
 public protocol PZGachaEntryProtocol {
-    var game: Pizza.SupportedGame { get set }
+    var game: String { get set }
     var uid: String { get set }
     var gachaType: String { get set }
     var itemID: String { get set }
@@ -24,8 +24,14 @@ public protocol PZGachaEntryProtocol {
 }
 
 extension PZGachaEntryProtocol {
+    public var gameTyped: Pizza.SupportedGame {
+        .init(rawValue: game) ?? .genshinImpact
+    }
+}
+
+extension PZGachaEntryProtocol {
     public var uidWithGame: String {
-        "\(game.uidPrefix)-\(uid)"
+        "\(gameTyped.uidPrefix)-\(uid)"
     }
 }
 
@@ -53,7 +59,7 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
         id: String,
         gachaID: String
     ) {
-        self.game = game
+        self.game = game.rawValue
         self.uid = uid
         self.gachaType = gachaType
         self.itemID = itemID
@@ -69,7 +75,7 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
 
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
+        self.game = try container.decode(String.self, forKey: .game)
         self.uid = try container.decode(String.self, forKey: .uid)
         self.gachaType = try container.decode(String.self, forKey: .gachaType)
         self.itemID = try container.decode(String.self, forKey: .itemID)
@@ -85,7 +91,7 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
 
     // MARK: Public
 
-    public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact
+    public var game: String = "GI"
     public var uid: String = "000000000"
     public var gachaType: String = "5"
     public var itemID: String = UUID().uuidString
