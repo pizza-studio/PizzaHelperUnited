@@ -106,9 +106,9 @@ struct UtilsTabPage: View {
                 }
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
-            case .gachaCloudDebug: CDGachaMODebugView()
+            case .gachaCloudDebug: EmptyView() // CDGachaMODebugView()
             case .hoyoMap: HoYoMapView()
-            case .none: CDGachaMODebugView()
+            case .none: EmptyView() // CDGachaMODebugView()
             }
         }
     }
