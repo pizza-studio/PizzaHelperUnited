@@ -84,7 +84,7 @@ extension GachaActor {
             if !allExistingEntryIDs.contains(theEntry.id) {
                 modelContext.insert(theEntry)
             }
-            let profile = GachaProfileID(uid: theEntry.uid, game: theEntry.game)
+            let profile = GachaProfileID(uid: theEntry.uid, game: theEntry.gameTyped)
             if !profiles.contains(profile) {
                 profiles.insert(profile)
             }

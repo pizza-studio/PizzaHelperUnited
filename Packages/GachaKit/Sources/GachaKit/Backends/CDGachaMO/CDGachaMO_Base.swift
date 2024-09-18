@@ -133,7 +133,7 @@ struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol {
 
     public var asPZGachaEntryMO: PZGachaEntryMO {
         PZGachaEntryMO.init { newEntry in
-            newEntry.game = .genshinImpact
+            newEntry.game = Pizza.SupportedGame.genshinImpact.rawValue
             newEntry.uid = uid
             newEntry.count = 1.description
             newEntry.gachaType = gachaType.description
@@ -193,7 +193,7 @@ struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol {
 
     public var asPZGachaEntryMO: PZGachaEntryMO {
         PZGachaEntryMO.init { newEntry in
-            newEntry.game = .starRail
+            newEntry.game = Pizza.SupportedGame.starRail.rawValue
             newEntry.uid = uid
             newEntry.count = count.description
             newEntry.gachaID = gachaID.description

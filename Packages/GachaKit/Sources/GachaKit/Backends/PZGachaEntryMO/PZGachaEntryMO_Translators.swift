@@ -10,7 +10,7 @@ import PZBaseKit
 extension GachaFetchModels.PageFetched.FetchedEntry {
     func toGachaEntryMO(game: Pizza.SupportedGame, fixItemIDs: Bool = true) async throws -> PZGachaEntryMO {
         let result = PZGachaEntryMO { newEntry in
-            newEntry.game = game
+            newEntry.game = game.rawValue
             newEntry.uid = uid
             newEntry.count = count
             newEntry.gachaID = gachaID
@@ -61,7 +61,7 @@ extension GachaFetchModels.PageFetched {
 
 extension PZGachaEntryMO {
     public func fixItemID() async throws {
-        if game == .genshinImpact, itemID.isEmpty {
+        if Pizza.SupportedGame(rawValue: game) == .genshinImpact, itemID.isEmpty {
             var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
             if newItemID == nil {
                 try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
@@ -162,7 +162,7 @@ extension [PZGachaEntryMO] {
 extension UIGFGachaItemProtocol {
     func asPZGachaEntryMO(uid: String) -> PZGachaEntryMO {
         let result = PZGachaEntryMO { newEntry in
-            newEntry.game = game
+            newEntry.game = game.rawValue
             newEntry.uid = uid
             newEntry.count = count ?? "1"
             newEntry.gachaID = gachaID
