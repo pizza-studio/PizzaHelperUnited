@@ -87,7 +87,7 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
 
     public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact
     public var uid: String = "000000000"
-    public var gachaType: String = "character"
+    public var gachaType: String = "5"
     public var itemID: String = UUID().uuidString
     public var count: String = "1"
     public var time: String = "2000-01-01 00:00:00"
