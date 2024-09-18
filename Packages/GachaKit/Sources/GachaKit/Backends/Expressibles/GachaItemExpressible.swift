@@ -169,7 +169,7 @@ extension GachaItemExpressible {
         }
     }
 
-    // 如果是大图表的话，建议尺寸是 40；否则是 30。
+    /// 如果是大图表的话，建议尺寸是 40；否则是 30。
     @MainActor @ViewBuilder
     public func icon(_ size: CGFloat = 30) -> some View {
         Group {
