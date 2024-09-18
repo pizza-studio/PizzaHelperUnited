@@ -28,6 +28,7 @@ public struct GachaRecordRootView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     profileSwitcherMenu()
+                        .disabled(noDataAvailable)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Menu {
@@ -46,23 +47,24 @@ public struct GachaRecordRootView: View {
                         if CDGachaMOSputnik.shared.hasData {
                             Divider()
                             Button("IMPORT_DATA".description) {
-                                isBusy = true
-                                Task(priority: .background) {
-                                    defer { isBusy = false }
-                                    try? await GachaActor.migrateOldGachasIntoProfiles()
-                                }
+                                migrateOldGachasIntoProfiles()
                             }
+                        }
+                        Button("REFRESH_GACHA_UID_LIST".description) {
+                            refreshGachaUIDList()
                         }
                     } label: {
                         Image(systemSymbol: .goforwardPlus)
                     }
                 }
             }
+            .disabled(theVM.taskState == .busy)
             .onAppear {
-                if delegate.currentGachaProfile == nil {
+                // refreshGachaUIDList() // 需額外評估是否就這樣砍掉這一行。
+                if theVM.currentGachaProfile == nil {
                     resetDefaultProfile()
-                } else if let profile = delegate.currentGachaProfile, !pzGachaProfileIDs.contains(profile) {
-                    delegate.currentGachaProfile = nil
+                } else if let profile = theVM.currentGachaProfile, !pzGachaProfileIDs.contains(profile) {
+                    theVM.currentGachaProfile = nil
                 }
             }
     }
@@ -71,11 +73,9 @@ public struct GachaRecordRootView: View {
 
     @Environment(\.modelContext) fileprivate var modelContext
     @Environment(\.horizontalSizeClass) fileprivate var horizontalSizeClass: UserInterfaceSizeClass?
-    @State fileprivate var isBusy = false
-    @Query fileprivate var entries: [PZGachaEntryMO]
     @Query(sort: \PZProfileMO.priority) fileprivate var pzProfiles: [PZProfileMO]
     @Query fileprivate var pzGachaProfileIDs: [PZGachaProfileMO]
-    @State fileprivate var delegate: Coordinator = .init()
+    @State fileprivate var theVM: GachaVM = .shared
 
     fileprivate var sortedGachaProfiles: [PZGachaProfileMO] {
         pzGachaProfileIDs.sorted { $0.uidWithGame < $1.uidWithGame }
@@ -85,7 +85,7 @@ public struct GachaRecordRootView: View {
 extension GachaRecordRootView {
     @MainActor @ViewBuilder public var coreBody: some View {
         Form {
-            if let gachaProfile = delegate.currentGachaProfile {
+            if let gachaProfile = theVM.currentGachaProfile {
                 Text(gachaProfile.uidWithGame) + Text("in action".description)
             } else if !noDataAvailable {
                 Text("gachaKit.prompt.pleaseChooseGachaProfile".i18nGachaKit)
@@ -103,7 +103,7 @@ extension GachaRecordRootView {
             ForEach(sortedGachaProfiles) { profileIDObj in
                 Button {
                     withAnimation {
-                        delegate.currentGachaProfile = profileIDObj
+                        theVM.currentGachaProfile = profileIDObj
                     }
                 } label: {
                     Label {
@@ -131,7 +131,7 @@ extension GachaRecordRootView {
         LabeledContent {
             let dimension: CGFloat = 30
             Group {
-                if let profile: PZGachaProfileMO = delegate.currentGachaProfile {
+                if let profile: PZGachaProfileMO = theVM.currentGachaProfile {
                     profile.photoView.frame(width: dimension)
                 } else {
                     Image(systemSymbol: .personCircleFill)
@@ -153,7 +153,7 @@ extension GachaRecordRootView {
             .clipShape(.circle)
             .compositingGroup()
         } label: {
-            if let profile: PZGachaProfileMO = delegate.currentGachaProfile {
+            if let profile: PZGachaProfileMO = theVM.currentGachaProfile {
                 Text(profile.uidWithGame).monospacedDigit()
             } else {
                 Text("gachaKit.gachaProfileMenu.chooseProfile".i18nGachaKit)
@@ -177,20 +177,66 @@ extension GachaRecordRootView {
     }
 
     fileprivate func resetDefaultProfile() {
-        guard let matched = pzProfiles.first else { return }
-        let firstExistingProfile = sortedGachaProfiles.first {
-            $0.uid == matched.uid && $0.game == matched.game
+        guard !pzGachaProfileIDs.isEmpty else { return }
+        let sortedGachaProfiles = sortedGachaProfiles
+        withAnimation {
+            if let matched = pzProfiles.first {
+                let firstExistingProfile = sortedGachaProfiles.first {
+                    $0.uid == matched.uid && $0.game == matched.game
+                }
+                guard let firstExistingProfile else { return }
+                theVM.currentGachaProfile = firstExistingProfile
+            } else {
+                theVM.currentGachaProfile = sortedGachaProfiles.first
+            }
         }
-        guard let firstExistingProfile else { return }
-        delegate.currentGachaProfile = firstExistingProfile
     }
-}
 
-// MARK: GachaRecordRootView.Coordinator
+    fileprivate func refreshGachaUIDList() {
+        theVM.task?.cancel()
+        withAnimation {
+            theVM.taskState = .busy
+            theVM.errorMsg = nil
+        }
+        theVM.task = Task {
+            do {
+                try await GachaActor.sharedBg.refreshAllProfiles()
+                Task { @MainActor in
+                    withAnimation {
+                        theVM.taskState = .standBy
+                        theVM.errorMsg = nil
+                        if theVM.currentGachaProfile == nil {
+                            resetDefaultProfile()
+                        }
+                    }
+                }
+            } catch {
+                theVM.handleError(error)
+            }
+        }
+    }
 
-extension GachaRecordRootView {
-    @Observable
-    public class Coordinator: @unchecked Sendable {
-        public var currentGachaProfile: PZGachaProfileMO?
+    fileprivate func migrateOldGachasIntoProfiles() {
+        theVM.task?.cancel()
+        withAnimation {
+            theVM.taskState = .busy
+            theVM.errorMsg = nil
+        }
+        theVM.task = Task {
+            do {
+                try await GachaActor.migrateOldGachasIntoProfiles()
+                Task { @MainActor in
+                    withAnimation {
+                        theVM.taskState = .standBy
+                        theVM.errorMsg = nil
+                        if theVM.currentGachaProfile == nil {
+                            resetDefaultProfile()
+                        }
+                    }
+                }
+            } catch {
+                theVM.handleError(error)
+            }
+        }
     }
 }
