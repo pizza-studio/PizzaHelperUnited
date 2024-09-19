@@ -151,11 +151,8 @@ extension GachaEntryExpressible {
             } else {
                 result = nil
             }
-            return result ?? GachaMeta.sharedDB.mainDB4GI.plainQueryForNames(
-                itemID: itemID,
-                langID: lang.rawValue
-            )
-                ?? name
+            return result ?? GachaMeta.sharedDB.mainDB4GI
+                .plainQueryForNames(itemID: itemID, langID: lang.rawValue) ?? name
         case .starRail:
             var result: String?
             if lang == .current {
@@ -195,7 +192,7 @@ extension GachaEntryExpressible {
 }
 
 extension [GachaEntryExpressible] {
-    public var drawCount: [Int] {
+    public var drawCounts: [Int] {
         map { item in
             item.rarity
         }.enumerated().map { index, thisRankType in
