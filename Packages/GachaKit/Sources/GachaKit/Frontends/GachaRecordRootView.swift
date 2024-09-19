@@ -87,7 +87,7 @@ extension GachaRecordRootView {
         Form {
             if let gachaProfile = theVM.currentGachaProfile {
                 Text(gachaProfile.uidWithGame) + Text("in action".description)
-                GachaProfileView()
+                GachaProfileView(givenGPID: gachaProfile.asSendable)
                     .environment(theVM)
             } else if !noDataAvailable {
                 Text("gachaKit.prompt.pleaseChooseGachaProfile".i18nGachaKit)
