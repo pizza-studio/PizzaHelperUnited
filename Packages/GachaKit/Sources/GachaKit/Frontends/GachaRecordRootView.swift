@@ -72,10 +72,6 @@ public struct GachaRecordRootView: View {
     @Query(sort: \PZProfileMO.priority) fileprivate var pzProfiles: [PZProfileMO]
     @Query fileprivate var pzGachaProfileIDs: [PZGachaProfileMO]
     @State fileprivate var theVM: GachaVM = .shared
-
-    fileprivate var sortedGachaProfiles: [PZGachaProfileMO] {
-        pzGachaProfileIDs.sorted { $0.uidWithGame < $1.uidWithGame }
-    }
 }
 
 extension GachaRecordRootView {

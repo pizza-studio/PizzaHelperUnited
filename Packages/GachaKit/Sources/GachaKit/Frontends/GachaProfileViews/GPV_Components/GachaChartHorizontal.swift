@@ -4,7 +4,6 @@
 
 import Charts
 import PZBaseKit
-import SwiftData
 import SwiftUI
 
 public struct GachaChartHorizontal: View {

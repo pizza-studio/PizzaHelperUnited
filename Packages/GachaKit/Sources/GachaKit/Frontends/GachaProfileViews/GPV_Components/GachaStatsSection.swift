@@ -4,7 +4,6 @@
 
 import PZBaseKit
 import SFSafeSymbols
-import SwiftData
 import SwiftUI
 
 // MARK: - GachaProfileView.GachaStatsSection
