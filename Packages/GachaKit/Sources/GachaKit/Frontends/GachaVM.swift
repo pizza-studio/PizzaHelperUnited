@@ -2,7 +2,10 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
+import EnkaKit
 import Observation
+import PZAccountKit
 import PZBaseKit
 import SwiftData
 import SwiftUI
@@ -28,7 +31,6 @@ public class GachaVM: @unchecked Sendable {
 
     public static let shared = GachaVM()
 
-    public var allAvailableGPIDs: [GachaProfileID] = []
     public var task: Task<Void, Never>?
     public var cachedEntries: [GachaEntryExpressible] = []
     public var currentPoolType: GachaPoolExpressible?
@@ -37,9 +39,9 @@ public class GachaVM: @unchecked Sendable {
 
     public var errorMsg: String?
 
-    public var currentGachaProfile: PZGachaProfileMO? {
+    public var currentGPID: GachaProfileID? {
         didSet {
-            currentPoolType = Self.defaultPoolType(for: currentGachaProfile?.game)
+            currentPoolType = Self.defaultPoolType(for: currentGPID?.game)
             updateCachedEntries()
         }
     }
@@ -67,8 +69,56 @@ extension GachaVM {
         task?.cancel()
     }
 
+    public func refreshGachaUIDList() {
+        task?.cancel()
+        withAnimation {
+            taskState = .busy
+            errorMsg = nil
+        }
+        task = Task {
+            do {
+                try await GachaActor.sharedBg.refreshAllProfiles()
+                Task { @MainActor in
+                    withAnimation {
+                        taskState = .standBy
+                        errorMsg = nil
+                        if currentGPID == nil {
+                            resetDefaultProfile()
+                        }
+                    }
+                }
+            } catch {
+                handleError(error)
+            }
+        }
+    }
+
+    public func migrateOldGachasIntoProfiles() {
+        task?.cancel()
+        withAnimation {
+            taskState = .busy
+            errorMsg = nil
+        }
+        task = Task {
+            do {
+                try await GachaActor.migrateOldGachasIntoProfiles()
+                Task { @MainActor in
+                    withAnimation {
+                        taskState = .standBy
+                        errorMsg = nil
+                        if currentGPID == nil {
+                            resetDefaultProfile()
+                        }
+                    }
+                }
+            } catch {
+                handleError(error)
+            }
+        }
+    }
+
     public func updateCachedEntries() {
-        guard let currentGachaProfile else {
+        guard let currentGPID else {
             withAnimation {
                 cachedEntries.removeAll()
             }
@@ -83,7 +133,7 @@ extension GachaVM {
             do {
                 let descriptor = FetchDescriptor<PZGachaEntryMO>(
                     predicate: PZGachaEntryMO.predicate(
-                        owner: currentGachaProfile,
+                        owner: currentGPID,
                         rarityLevel: nil
                     ),
                     sortBy: [SortDescriptor(\PZGachaEntryMO.id, order: .reverse)]
@@ -111,11 +161,68 @@ extension GachaVM {
                         cachedEntries = result
                         taskState = .standBy
                         errorMsg = nil
-                        // 此处不需要检查 currentGachaProfile 是否为 nil。
+                        // 此处不需要检查 currentGPID 是否为 nil。
                     }
                 }
             } catch {
                 handleError(error)
+            }
+        }
+    }
+}
+
+// MARK: - Profile Switchers and other tools.
+
+extension GachaVM {
+    @MainActor public var currentGPIDTitle: String? {
+        guard let pfID = currentGPID else { return nil }
+        return nameIDMap[pfID.uidWithGame] ?? nil
+    }
+
+    @MainActor public var nameIDMap: [String: String] {
+        var nameMap = [String: String]()
+        let context = PZProfileActor.shared.modelContainer.mainContext
+        try? context.enumerate(FetchDescriptor<PZProfileMO>(), batchSize: 1) { pzProfile in
+            if nameMap[pzProfile.uidWithGame] == nil { nameMap[pzProfile.uidWithGame] = pzProfile.name }
+        }
+        Defaults[.queriedEnkaProfiles4GI].forEach { uid, enkaProfile in
+            let pfID = GachaProfileID(uid: uid, game: .genshinImpact)
+            guard nameMap[pfID.uidWithGame] == nil else { return }
+            nameMap[pfID.uidWithGame] = enkaProfile.nickname
+        }
+        Defaults[.queriedEnkaProfiles4HSR].forEach { uid, enkaProfile in
+            let pfID = GachaProfileID(uid: uid, game: .starRail)
+            guard nameMap[pfID.uidWithGame] == nil else { return }
+            nameMap[pfID.uidWithGame] = enkaProfile.nickname
+        }
+        return nameMap
+    }
+
+    @MainActor public var allPZProfiles: [PZProfileMO] {
+        let context = PZProfileActor.shared.modelContainer.mainContext
+        let result = try? context.fetch(FetchDescriptor<PZProfileMO>())
+        return result?.sorted { $0.priority < $1.priority } ?? []
+    }
+
+    @MainActor public var allGPIDs: [GachaProfileID] {
+        let context = GachaActor.shared.modelContainer.mainContext
+        let result = try? context.fetch(FetchDescriptor<PZGachaProfileMO>()).map(\.asSendable)
+        return result?.sorted { $0.uidWithGame < $1.uidWithGame } ?? []
+    }
+
+    @MainActor
+    public func resetDefaultProfile() {
+        let sortedGPIDs = allGPIDs
+        guard !sortedGPIDs.isEmpty else { return }
+        withAnimation {
+            if let matched = allPZProfiles.first {
+                let firstExistingProfile = sortedGPIDs.first {
+                    $0.uid == matched.uid && $0.game == matched.game
+                }
+                guard let firstExistingProfile else { return }
+                currentGPID = firstExistingProfile
+            } else {
+                currentGPID = sortedGPIDs.first
             }
         }
     }
