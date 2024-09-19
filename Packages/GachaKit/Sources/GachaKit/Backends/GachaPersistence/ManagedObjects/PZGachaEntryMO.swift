@@ -37,20 +37,6 @@ extension PZGachaEntryProtocol {
     }
 }
 
-extension Array where Element: PZGachaEntryProtocol {
-    public var drawCount: [Int] {
-        map { item in
-            item.rankType
-        }.enumerated().map { index, thisRankType in
-            let theRestOfArray = self[(index + 1)...]
-            let nextIndexInRest = theRestOfArray.firstIndex {
-                (Int($0.rankType) ?? 0) >= (Int(thisRankType) ?? 0)
-            }
-            return (nextIndexInRest ?? self.count) - index
-        }
-    }
-}
-
 // MARK: - PZGachaEntryMO
 
 @Model
