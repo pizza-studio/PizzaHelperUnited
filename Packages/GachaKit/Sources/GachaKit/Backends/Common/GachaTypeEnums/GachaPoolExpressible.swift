@@ -24,6 +24,16 @@ public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sen
     case zzExclusiveChannel
     case zzWEngineChannel
     case zzBangbooChannel // 非限定池
+}
+
+extension GachaPoolExpressible {
+    public init(_ gachaTypeStr: String, game: Pizza.SupportedGame) {
+        switch game {
+        case .genshinImpact: self = GachaTypeGI(rawValue: gachaTypeStr).expressible
+        case .starRail: self = GachaTypeHSR(rawValue: gachaTypeStr).expressible
+        case .zenlessZone: self = GachaTypeZZZ(rawValue: gachaTypeStr).expressible
+        }
+    }
 
     // MARK: Public
 
@@ -70,14 +80,34 @@ public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sen
         case .zzBangbooChannel: false
         }
     }
-}
 
-extension GachaPoolExpressible {
-    public init(_ gachaTypeStr: String, game: Pizza.SupportedGame) {
+    /// 该动态 property 用来辅助 Predicate 筛选。所有目前未知的卡池在这里都指定「-114514」。
+    public var rawValueForKnownPools: String {
+        switch self {
+        case .giUnknown: "-114514"
+        case .giBeginnersWish: GachaTypeGI.beginnersWish.rawValue
+        case .giStandardWish: GachaTypeGI.standardWish.rawValue
+        case .giCharacterEventWish: GachaTypeGI.UIGFGachaType.standardWish.rawValue
+        case .giWeaponEventWish: GachaTypeGI.weaponEventWish.rawValue
+        case .giChronicledWish: GachaTypeGI.chronicledWish.rawValue
+        case .srUnknown: "-114514"
+        case .srStellarWarp: GachaTypeHSR.stellarWarp.rawValue
+        case .srCharacterEventWarp: GachaTypeHSR.characterEventWarp.rawValue
+        case .srLightConeEventWarp: GachaTypeHSR.lightConeEventWarp.rawValue
+        case .srDepartureWarp: GachaTypeHSR.departureWarp.rawValue
+        case .zzUnknown: "-114514"
+        case .zzStableChannel: GachaTypeZZZ.stableChannel.rawValue
+        case .zzExclusiveChannel: GachaTypeZZZ.exclusiveChannel.rawValue
+        case .zzWEngineChannel: GachaTypeZZZ.wEngineChannel.rawValue
+        case .zzBangbooChannel: GachaTypeZZZ.bangbooChannel.rawValue
+        }
+    }
+
+    public var appraiserDescriptionKey: String {
         switch game {
-        case .genshinImpact: self = GachaTypeGI(rawValue: gachaTypeStr).expressible
-        case .starRail: self = GachaTypeHSR(rawValue: gachaTypeStr).expressible
-        case .zenlessZone: self = GachaTypeZZZ(rawValue: gachaTypeStr).expressible
+        case .genshinImpact: "gachaKit.reviewFromAppraiser.gi"
+        case .starRail: "gachaKit.reviewFromAppraiser.hsr"
+        case .zenlessZone: "gachaKit.reviewFromAppraiser.zzz"
         }
     }
 }
