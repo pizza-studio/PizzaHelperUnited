@@ -2,40 +2,28 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import PZAccountKit
-import PZBaseKit
-import SFSafeSymbols
 import SwiftUI
 
-// MARK: - GachaProfileView
+// MARK: - GachaBigChartView
 
-public struct GachaProfileDetailedListView: View {
+public struct GachaBigChartView: View {
     // MARK: Lifecycle
 
     public init() {}
 
     // MARK: Public
 
-    public static let navTitle = "gachaKit.profile.detailedList".i18nGachaKit
+    public static let navTitle = "gachaKit.profile.bigChart".i18nGachaKit
 
     @MainActor public var body: some View {
         NavigationStack {
             Form {
                 contentFilterSection
                     .disabled(theVM.taskState == .busy)
-                ForEach(filteredEntriesWithDrawCount, id: \.entry) { entry, drawCount in
-                    ZStack(alignment: .center) {
-                        if chosenRarity != .rank5 {
-                            entry.rarity.backgroundGradient.opacity(0.2)
-                                .saturation(3)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        }
-                        GachaEntryBar(entry: entry, drawCount: drawCount, showDate: showDate)
-                            .padding(.horizontal)
-                            .padding(.vertical, 4)
-                    }
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                }
+                GachaChartVertical(
+                    gpid: theVM.currentGPID,
+                    poolType: theVM.currentPoolType
+                )?.environment(theVM)
             }
             .saturation(theVM.taskState == .busy ? 0 : 1)
             .formStyle(.grouped)
@@ -61,6 +49,10 @@ public struct GachaProfileDetailedListView: View {
         return GachaPoolExpressible.getKnownCases(by: game)
     }
 
+    var filteredEntries: [GachaEntryExpressible] {
+        filteredEntriesWithDrawCount.map(\.entry)
+    }
+
     var filteredEntriesWithDrawCount: [(entry: GachaEntryExpressible, drawCount: Int)] {
         let cachedEntries = theVM.cachedEntries.filter {
             $0.pool == theVM.currentPoolType
@@ -70,7 +62,7 @@ public struct GachaProfileDetailedListView: View {
             zip(cachedEntries, drawCounts)
         )
         return zippedPairs.filter {
-            $0.entry.rarity.rawValue >= chosenRarity.rawValue
+            $0.entry.rarity == .rank5
         }
     }
 
@@ -78,8 +70,6 @@ public struct GachaProfileDetailedListView: View {
 
     @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
-    @State fileprivate var showDate = false
-    @State fileprivate var chosenRarity: GachaItemRankType = .rank5
 
     @MainActor @ViewBuilder fileprivate var contentFilterSection: some View {
         if let theProfile = theVM.currentGPID {
@@ -92,17 +82,6 @@ public struct GachaProfileDetailedListView: View {
                         Text(poolType.localizedTitle).tag(taggableValue)
                     }
                 }
-                Picker("gachaKit.filter.rarity".i18nGachaKit, selection: $chosenRarity.animation()) {
-                    ForEach(GachaItemRankType.allCases.reversed()) { rankValue in
-                        let labelText: String = switch rankValue {
-                        case .rank5: "★★★★★"
-                        case .rank4: "★3 ★4"
-                        case .rank3: "★3 ★4 ★5"
-                        }
-                        Text(labelText).tag(rankValue)
-                    }
-                }
-                Toggle("gachaKit.filter.showDate".i18nGachaKit, isOn: $showDate.animation())
             } header: {
                 Text("gachaKit.filter.options".i18nGachaKit).textCase(.none)
             }
