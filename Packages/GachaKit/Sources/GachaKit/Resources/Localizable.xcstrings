@@ -393,6 +393,62 @@
         }
       }
     },
+    "gachaKit.menu.inheritCloudDataFromPreviousVersions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inherit iCloud Gacha Records from old Pizza Apps"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "古いピザプリのiCloudデータからガチャ記録を引き継ぐ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从旧版披萨应用继承云端抽卡记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從舊版披薩應用繼承雲端抽卡記錄"
+          }
+        }
+      }
+    },
+    "gachaKit.menu.rebuildGachaUIDList" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rebuild Gacha UID List"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガチャUIDリストを再構築"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重建抽卡记录UID清单"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重建抽卡記錄UID清單"
+          }
+        }
+      }
+    },
     "gachaKit.poolFilterLabel.byGame.GI" : {
       "localizations" : {
         "en" : {

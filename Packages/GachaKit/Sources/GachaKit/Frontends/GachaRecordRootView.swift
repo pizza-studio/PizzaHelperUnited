@@ -36,26 +36,23 @@ public struct GachaRecordRootView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Menu {
-                        NavigationLink("gachaKit.home.get_gacha_record") {
+                        NavigationLink("gachaKit.menu.getGachaRecords") {
                             EmptyView() // GetGachaRecordView()
-                        }
-                        NavigationLink("gachaKit.home.manage_gacha_record") {
+                        }.disabled(true)
+                        NavigationLink("gachaKit.menu.manageGachaRecords") {
                             EmptyView() // ManageGachaRecordView()
-                        }
-                        NavigationLink("gachaKit.manage.uigf.import") {
-                            EmptyView() // ImportGachaView()
-                        }
-                        NavigationLink("gachaKit.manage.uigf.export") {
-                            EmptyView() // ExportGachaView()
-                        }.disabled(pzGachaProfileIDs.isEmpty)
+                        }.disabled(true)
+                        NavigationLink("gachaKit.menu.exchangeGachaRecords") {
+                            EmptyView() // ExchangeGachaView()
+                        }.disabled(true)
                         if CDGachaMOSputnik.shared.hasData {
                             Divider()
-                            Button("IMPORT_DATA".description) {
+                            Button("gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit) {
                                 theVM.migrateOldGachasIntoProfiles()
                             }
                         }
-                        Button("REFRESH_GACHA_UID_LIST".description) {
-                            theVM.refreshGachaUIDList()
+                        Button("gachaKit.menu.rebuildGachaUIDList".i18nGachaKit) {
+                            theVM.rebuildGachaUIDList()
                         }
                     } label: {
                         Image(systemSymbol: .goforwardPlus)
