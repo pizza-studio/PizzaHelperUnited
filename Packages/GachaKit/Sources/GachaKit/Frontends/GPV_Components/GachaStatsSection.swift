@@ -13,10 +13,10 @@ extension GachaProfileView {
     public struct GachaStatsSection: View {
         // MARK: Lifecycle
 
-        public init?(gpid: GachaProfileID?, gachaType: GachaPoolExpressible?) {
-            guard let gpid, let gachaType else { return nil }
+        public init?(gpid: GachaProfileID?, poolType: GachaPoolExpressible?) {
+            guard let gpid, let poolType else { return nil }
             self.givenGPID = gpid
-            self.poolType = gachaType
+            self.poolType = poolType
         }
 
         // MARK: Public
@@ -83,7 +83,7 @@ extension GachaProfileView {
             return fmt
         }()
 
-        @State fileprivate var theVM: GachaVM = .shared
+        @Environment(GachaVM.self) fileprivate var theVM
 
         fileprivate let poolType: GachaPoolExpressible
         fileprivate let givenGPID: GachaProfileID
@@ -145,7 +145,7 @@ extension GachaProfileView {
                 }
                 HStack {
                     Spacer()
-                    let judgedRank = ApprisedLevel.judge(limitedDrawNumber: limitedDrawCount, gachaType: poolType)
+                    let judgedRank = ApprisedLevel.judge(limitedDrawNumber: limitedDrawCount, poolType: poolType)
                     ForEach(ApprisedLevel.allCases, id: \.rawValue) { rankLevel in
                         Group {
                             rankLevel.appraiserIcon(game: givenGPID.game)
@@ -167,7 +167,8 @@ extension GachaProfileView {
 extension GachaProfileView.GachaStatsSection {
     // MARK: Internal
 
-    fileprivate enum ApprisedLevel: Int, CaseIterable {
+    /// 抽卡评分，数字值越小则评价越低。
+    public enum ApprisedLevel: Int, CaseIterable {
         case one = 1
         case two = 2
         case three = 3
@@ -187,10 +188,10 @@ extension GachaProfileView.GachaStatsSection {
         // swiftlint:disable:next cyclomatic_complexity
         fileprivate static func judge(
             limitedDrawNumber: Int,
-            gachaType: GachaPoolExpressible
+            poolType: GachaPoolExpressible
         )
             -> Self {
-            guard gachaType.isSurinukable else { return .one }
+            guard poolType.isSurinukable else { return .one }
             return switch limitedDrawNumber {
             case ...80: .five
             case 80 ..< 90: .four
