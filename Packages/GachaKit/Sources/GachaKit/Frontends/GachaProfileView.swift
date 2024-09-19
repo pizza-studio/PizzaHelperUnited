@@ -24,18 +24,11 @@ public struct GachaProfileView: View {
             gpid: theVM.currentGPID,
             gachaType: theVM.currentPoolType
         )
-        ForEach(theVM.cachedEntries) { entry in
-            Label {
-                HStack {
-                    Text(entry.nameLocalized())
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer()
-                    Text(String(repeating: "★", count: entry.rarity.rawValue))
-                }
-            } icon: {
-                entry.icon(30)
-            }
+        NavigationLink("gachaKit.profile.detailedList".i18nGachaKit) {
+            GachaProfileDetailedListView()
+                .environment(theVM)
         }
+        .disabled(theVM.taskState == .busy)
     }
 
     // MARK: Internal

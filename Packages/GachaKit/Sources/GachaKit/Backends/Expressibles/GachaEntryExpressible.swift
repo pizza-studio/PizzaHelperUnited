@@ -13,7 +13,7 @@ import SwiftUI
 
 /// 专用于 PZGachaEntry 的前端表述框架。
 @frozen
-public struct GachaEntryExpressible: Identifiable, Equatable, Sendable {
+public struct GachaEntryExpressible: Identifiable, Equatable, Sendable, Hashable {
     // MARK: Public
 
     public let id: String
