@@ -9,21 +9,21 @@ import PZBaseKit
 /// 该 Enum 仅用于前台显示之用途，不参与后台资料处理、不承载任何附加参数资讯。
 public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sendable, CaseIterable {
     case giUnknown
-    case giBeginnersWish
-    case giStandardWish
     case giCharacterEventWish // 两个限定池合并显示
     case giWeaponEventWish
     case giChronicledWish
+    case giStandardWish
+    case giBeginnersWish
     case srUnknown
-    case srStellarWarp
     case srCharacterEventWarp
     case srLightConeEventWarp
+    case srStellarWarp
     case srDepartureWarp
     case zzUnknown
-    case zzStableChannel
     case zzExclusiveChannel
     case zzWEngineChannel
     case zzBangbooChannel // 非限定池
+    case zzStableChannel
 }
 
 extension GachaPoolExpressible {
