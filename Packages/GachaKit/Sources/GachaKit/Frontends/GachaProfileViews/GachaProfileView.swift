@@ -65,6 +65,8 @@ public struct GachaProfileView: View {
                         Text(poolType.localizedTitle).tag(taggableValue)
                     }
                 }
+            } header: {
+                Text("gachaKit.filter.options".i18nGachaKit).textCase(.none)
             }
         }
     }
