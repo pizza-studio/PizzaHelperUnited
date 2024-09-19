@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import EnkaKit
 import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
@@ -20,6 +19,7 @@ public struct GachaProfileView: View {
     // MARK: Public
 
     @MainActor public var body: some View {
+        poolPickerSection
         GachaStatsSection(
             gpid: theVM.currentGachaProfile?.asSendable,
             gachaType: theVM.currentPoolType
@@ -38,10 +38,38 @@ public struct GachaProfileView: View {
         }
     }
 
+    // MARK: Internal
+
+    var availablePoolTypes: [GachaPoolExpressible] {
+        guard let game = theVM.currentGachaProfile?.game else { return [] }
+        return GachaPoolExpressible.getKnownCases(by: game)
+    }
+
     // MARK: Fileprivate
 
-    @State fileprivate var enkaDB = Enka.Sputnik.shared
     @State fileprivate var metaDB = GachaMeta.sharedDB
     @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
+
+    @MainActor @ViewBuilder fileprivate var poolPickerSection: some View {
+        if let theProfile = theVM.currentGachaProfile {
+            Section {
+                let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)
+                @Bindable var theVM = theVM
+                Picker(labelName, selection: $theVM.currentPoolType.animation()) {
+                    ForEach(availablePoolTypes) { poolType in
+                        let taggableValue = poolType as GachaPoolExpressible?
+                        Text(poolType.localizedTitle).tag(taggableValue)
+                    }
+                }
+            } header: {
+                HStack {
+                    theProfile.profileNameView
+                    Spacer()
+                    Text(theProfile.uidWithGame)
+                }
+                .textCase(.none)
+            }
+        }
+    }
 }

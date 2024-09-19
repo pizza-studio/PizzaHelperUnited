@@ -91,17 +91,20 @@ extension GachaVM {
                 var existedIDs = Set<String>() // 用来去除重复内容。
                 var result = [GachaEntryExpressible]()
                 let context = GachaActor.sharedBg.modelExecutor.modelContext
-                try context.enumerate(descriptor) { rawEntry in
-                    let expressible = rawEntry.expressible
-                    if existedIDs.contains(expressible.id) {
-                        context.delete(rawEntry)
-                    } else {
-                        existedIDs.insert(expressible.id)
-                        result.append(expressible)
+                let count = try context.fetchCount(descriptor)
+                if count > 0 {
+                    try context.enumerate(descriptor) { rawEntry in
+                        let expressible = rawEntry.expressible
+                        if existedIDs.contains(expressible.id) {
+                            context.delete(rawEntry)
+                        } else {
+                            existedIDs.insert(expressible.id)
+                            result.append(expressible)
+                        }
                     }
-                }
-                if context.hasChanges {
-                    try context.save()
+                    if context.hasChanges {
+                        try context.save()
+                    }
                 }
                 Task { @MainActor in
                     withAnimation {
