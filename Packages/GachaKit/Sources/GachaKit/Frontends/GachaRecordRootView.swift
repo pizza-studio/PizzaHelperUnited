@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
@@ -23,8 +24,8 @@ public struct GachaRecordRootView: View {
 
     @MainActor public var body: some View {
         coreBody
-            .navigationTitle(Self.navTitle)
-            .navBarTitleDisplayMode(.inline)
+            .navigationTitle(navTitle)
+            .navBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     profileSwitcherMenu()
@@ -180,7 +181,22 @@ extension GachaRecordRootView {
         try? modelContext.enumerate(FetchDescriptor<PZProfileMO>(), batchSize: 1) { pzProfile in
             if nameMap[pzProfile.uidWithGame] == nil { nameMap[pzProfile.uidWithGame] = pzProfile.name }
         }
+        Defaults[.queriedEnkaProfiles4GI].forEach { uid, enkaProfile in
+            let pfID = GachaProfileID(uid: uid, game: .genshinImpact)
+            guard nameMap[pfID.uidWithGame] == nil else { return }
+            nameMap[pfID.uidWithGame] = enkaProfile.nickname
+        }
+        Defaults[.queriedEnkaProfiles4HSR].forEach { uid, enkaProfile in
+            let pfID = GachaProfileID(uid: uid, game: .starRail)
+            guard nameMap[pfID.uidWithGame] == nil else { return }
+            nameMap[pfID.uidWithGame] = enkaProfile.nickname
+        }
         return nameMap
+    }
+
+    fileprivate var navTitle: String {
+        guard let pfID = theVM.currentGachaProfile?.asSendable else { return Self.navTitle }
+        return nameIDMap[pfID.uidWithGame] ?? Self.navTitle
     }
 
     fileprivate func resetDefaultProfile() {
