@@ -145,3 +145,30 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
         return stringStack
     }
 }
+
+// MARK: - Predicates.
+
+extension PZGachaEntryMO {
+    public static func predicate(
+        owner gachaProfile: PZGachaProfileMO?,
+        rarityLevel: GachaItemRankType? = GachaItemRankType.rank5
+    )
+        -> Predicate<PZGachaEntryMO> {
+        guard let gachaProfile else { return #Predicate<PZGachaEntryMO> { _ in false } }
+        let matchedGame = gachaProfile.game.rawValue
+        let matchedUID = gachaProfile.uid
+        let matchedRankType = rarityLevel?.rawValue.description
+        if let matchedRankType {
+            return #Predicate<PZGachaEntryMO> { entry in
+                entry.uid == matchedUID
+                    && entry.game == matchedGame
+                    && entry.rankType == matchedRankType
+            }
+        } else {
+            return #Predicate<PZGachaEntryMO> { entry in
+                entry.uid == matchedUID
+                    && entry.game == matchedGame
+            }
+        }
+    }
+}

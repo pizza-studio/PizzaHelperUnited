@@ -54,17 +54,3 @@ public struct GachaProfileView: View {
     @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
 }
-
-extension PZGachaEntryMO {
-    public static func predicate(
-        owner gachaProfile: PZGachaProfileMO?
-    )
-        -> Predicate<PZGachaEntryMO> {
-        guard let gachaProfile else { return #Predicate<PZGachaEntryMO> { _ in false } }
-        let matchedGame = gachaProfile.game.rawValue
-        let matchedUID = gachaProfile.uid
-        return #Predicate<PZGachaEntryMO> { entry in
-            entry.uid == matchedUID && entry.game == matchedGame
-        }
-    }
-}
