@@ -242,3 +242,22 @@ extension UUID {
         return uuid
     }
 }
+
+// MARK: - Collection Chunker.
+
+extension Collection {
+    public func chunked(into size: Int) -> [[Self.Element]] where Self.Index == Int {
+        stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, self.count)])
+        }
+    }
+}
+
+// MARK: - Bool Constructor with Equality checks.
+
+extension Bool {
+    public init<T: Comparable>(equalCheck lhs: T?, against rhs: T?) {
+        guard let lhs, let rhs else { self = false; return }
+        self = lhs == rhs
+    }
+}
