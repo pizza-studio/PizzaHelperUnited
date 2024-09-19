@@ -32,7 +32,7 @@ extension PZGachaEntryProtocol {
         "\(gameTyped.uidPrefix)-\(uid)"
     }
 
-    public var expressible: GachaItemExpressible {
+    public var expressible: GachaEntryExpressible {
         .init(rawEntry: self)
     }
 }

@@ -30,6 +30,11 @@ public struct GachaRecordRootView: View {
                     profileSwitcherMenu()
                         .disabled(noDataAvailable)
                 }
+                if theVM.taskState == .busy {
+                    ToolbarItem(placement: .confirmationAction) {
+                        ProgressView()
+                    }
+                }
                 ToolbarItem(placement: .confirmationAction) {
                     Menu {
                         NavigationLink("gachaKit.home.get_gacha_record") {
@@ -59,6 +64,7 @@ public struct GachaRecordRootView: View {
                 }
             }
             .disabled(theVM.taskState == .busy)
+            .saturation(theVM.taskState == .busy ? 0 : 1)
             .onAppear {
                 // refreshGachaUIDList() // 需額外評估是否就這樣砍掉這一行。
                 if theVM.currentGachaProfile == nil {
@@ -67,6 +73,7 @@ public struct GachaRecordRootView: View {
                     theVM.currentGachaProfile = nil
                 }
             }
+            .environment(theVM)
     }
 
     // MARK: Fileprivate
@@ -87,8 +94,7 @@ extension GachaRecordRootView {
         Form {
             if let gachaProfile = theVM.currentGachaProfile {
                 Text(gachaProfile.uidWithGame) + Text("in action".description)
-                GachaProfileView(givenGPID: gachaProfile.asSendable)
-                    .environment(theVM)
+                GachaProfileView()
             } else if !noDataAvailable {
                 Text("gachaKit.prompt.pleaseChooseGachaProfile".i18nGachaKit)
             } else {

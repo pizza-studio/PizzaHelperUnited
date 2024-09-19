@@ -9,11 +9,11 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-// MARK: - GachaItemExpressible
+// MARK: - GachaEntryExpressible
 
 /// 专用于 PZGachaEntry 的前端表述框架。
 @frozen
-public struct GachaItemExpressible: Identifiable, Equatable, Sendable {
+public struct GachaEntryExpressible: Identifiable, Equatable, Sendable {
     // MARK: Public
 
     public let id: String
@@ -31,7 +31,7 @@ public struct GachaItemExpressible: Identifiable, Equatable, Sendable {
     fileprivate let rankType: GachaItemRankType
 }
 
-extension GachaItemExpressible {
+extension GachaEntryExpressible {
     public init(rawEntry: PZGachaEntryProtocol) {
         self.id = rawEntry.id
         self.uid = rawEntry.uid
@@ -48,7 +48,7 @@ extension GachaItemExpressible {
     }
 }
 
-extension GachaItemExpressible {
+extension GachaEntryExpressible {
     public var uidWithGame: String {
         "\(game.uidPrefix)-\(uid)"
     }
@@ -123,7 +123,7 @@ extension GachaItemExpressible {
     }
 }
 
-extension GachaItemExpressible {
+extension GachaEntryExpressible {
     public var itemType: GachaItemType { GachaItemType(itemID: itemID, game: game) }
 
     /// 建议在实际使用时以该变数取代用作垫底值的 rankType。
@@ -191,5 +191,19 @@ extension GachaItemExpressible {
         .frame(width: size, height: size)
         .contentShape(.circle)
         .clipShape(.circle)
+    }
+}
+
+extension [GachaEntryExpressible] {
+    public var drawCount: [Int] {
+        map { item in
+            item.rarity
+        }.enumerated().map { index, thisRankType in
+            let theRestOfArray = self[(index + 1)...]
+            let nextIndexInRest = theRestOfArray.firstIndex {
+                $0.rarity.rawValue >= thisRankType.rawValue
+            }
+            return (nextIndexInRest ?? self.count) - index
+        }
     }
 }
