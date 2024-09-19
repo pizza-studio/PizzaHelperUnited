@@ -18,6 +18,8 @@ public struct GachaProfileDetailedListView: View {
 
     // MARK: Public
 
+    public static let navTitle = "gachaKit.profile.detailedList".i18nGachaKit
+
     @MainActor public var body: some View {
         NavigationStack {
             Form {
@@ -39,7 +41,8 @@ public struct GachaProfileDetailedListView: View {
             }
             .saturation(theVM.taskState == .busy ? 0 : 1)
             .formStyle(.grouped)
-            .navBarTitleDisplayMode(.inline)
+            .navBarTitleDisplayMode(.large)
+            .navigationTitle(theVM.currentGPIDTitle ?? Self.navTitle)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     GachaProfileSwitcherView()
