@@ -24,7 +24,7 @@ public struct GachaRecordRootView: View {
     @MainActor public var body: some View {
         coreBody
             .navigationTitle(Self.navTitle)
-            .navBarTitleDisplayMode(noDataAvailable ? .large : .none)
+            .navBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     profileSwitcherMenu()
@@ -92,8 +92,7 @@ public struct GachaRecordRootView: View {
 extension GachaRecordRootView {
     @MainActor @ViewBuilder public var coreBody: some View {
         Form {
-            if let gachaProfile = theVM.currentGachaProfile {
-                Text(gachaProfile.uidWithGame) + Text("in action".description)
+            if theVM.currentGachaProfile != nil {
                 GachaProfileView()
             } else if !noDataAvailable {
                 Text("gachaKit.prompt.pleaseChooseGachaProfile".i18nGachaKit)
