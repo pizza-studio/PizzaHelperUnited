@@ -62,14 +62,15 @@ public struct GachaProfileView: View {
                         Text(poolType.localizedTitle).tag(taggableValue)
                     }
                 }
-            } header: {
-                HStack {
-                    theProfile.profileNameView
-                    Spacer()
-                    Text(theProfile.uidWithGame)
-                }
-                .textCase(.none)
             }
+//            header: {
+//                HStack {
+//                    theProfile.profileNameView
+//                    Spacer()
+//                    Text(theProfile.uidWithGame)
+//                }
+//                .textCase(.none)
+//            }
         }
     }
 }
