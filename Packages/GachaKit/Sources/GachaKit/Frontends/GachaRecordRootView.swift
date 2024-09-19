@@ -17,7 +17,7 @@ public struct GachaRecordRootView: View {
 
     // MARK: Public
 
-    public static var navTitle: String = "gachaKit.GachaRecordRootView.navTitle".i18nGachaKit
+    public static let navTitle: String = "gachaKit.GachaRecordRootView.navTitle".i18nGachaKit
 
     public static var navIcon: Image { Image("GachaRecordMgr_NavIcon", bundle: .module) }
 

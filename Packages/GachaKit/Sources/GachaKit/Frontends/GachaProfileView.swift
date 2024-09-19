@@ -24,7 +24,7 @@ public struct GachaProfileView: View {
             gpid: theVM.currentGPID,
             gachaType: theVM.currentPoolType
         )
-        NavigationLink("gachaKit.profile.detailedList".i18nGachaKit) {
+        NavigationLink(GachaProfileDetailedListView.navTitle) {
             GachaProfileDetailedListView()
                 .environment(theVM)
         }

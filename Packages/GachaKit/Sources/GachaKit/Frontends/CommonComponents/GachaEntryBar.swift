@@ -53,6 +53,8 @@ public struct GachaEntryBar: View {
                     Divider()
                     Text(entry.itemType.getTranslatedRaw(game: entry.game))
                     Text(entry.pool.localizedTitle)
+                    Divider()
+                    Text(entry.id)
                 }
             #endif
         }
