@@ -27,7 +27,7 @@ public struct GachaEntryBar: View {
             HStack {
                 entry.icon(35)
                 HStack {
-                    Text(entry.nameLocalized(realName: useRealCharacterNames))
+                    entry.nameView
                         .fontWeight(.medium)
                         .fontWidth(.condensed)
                     itemIDText
@@ -83,6 +83,4 @@ public struct GachaEntryBar: View {
         dateFormatter.timeStyle = .short
         return dateFormatter
     }()
-
-    @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
 }

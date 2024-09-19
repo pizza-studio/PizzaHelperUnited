@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
@@ -20,10 +19,22 @@ public struct GachaProfileView: View {
 
     @MainActor public var body: some View {
         poolPickerSection
+        Section {
+            GachaChartHorizontal(
+                gpid: theVM.currentGPID,
+                poolType: theVM.currentPoolType
+            )?.environment(theVM)
+            NavigationLink {
+                GachaBigChartView()
+                    .environment(theVM)
+            } label: {
+                Label(GachaBigChartView.navTitle, systemSymbol: .chartBarXaxis)
+            }
+        }
         GachaStatsSection(
             gpid: theVM.currentGPID,
-            gachaType: theVM.currentPoolType
-        )
+            poolType: theVM.currentPoolType
+        )?.environment(theVM)
         NavigationLink(GachaProfileDetailedListView.navTitle) {
             GachaProfileDetailedListView()
                 .environment(theVM)
@@ -40,7 +51,6 @@ public struct GachaProfileView: View {
 
     // MARK: Fileprivate
 
-    @State fileprivate var metaDB = GachaMeta.sharedDB
     @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
 

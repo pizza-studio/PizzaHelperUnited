@@ -25,9 +25,11 @@ public struct GachaEntryExpressible: Identifiable, Equatable, Sendable, Hashable
     public let time: Date
     public let gachaID: String
 
+    /// Name Raw Value in the DB.
+    public let name: String
+
     // MARK: Fileprivate
 
-    fileprivate let name: String
     fileprivate let rankType: GachaItemRankType
 }
 
@@ -140,6 +142,10 @@ extension GachaEntryExpressible {
         case 5: .rank5
         default: rankType
         }
+    }
+
+    @MainActor @ViewBuilder public var nameView: some View {
+        GachaEntryNameView(entry: self)
     }
 
     public func nameLocalized(for lang: GachaLanguage = .current, realName: Bool = true) -> String {
