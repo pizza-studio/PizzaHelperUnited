@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
@@ -80,7 +79,6 @@ public struct GachaProfileDetailedListView: View {
 
     @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
-    @State fileprivate var metaDB = GachaMeta.sharedDB
     @State fileprivate var showDate = false
     @State fileprivate var chosenRarity: GachaItemRankType = .rank5
 
