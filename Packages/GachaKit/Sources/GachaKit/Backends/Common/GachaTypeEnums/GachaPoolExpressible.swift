@@ -7,7 +7,7 @@ import PZBaseKit
 // MARK: - GachaPoolExpressible
 
 /// 该 Enum 仅用于前台显示之用途，不参与后台资料处理、不承载任何附加参数资讯。
-public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sendable {
+public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sendable, CaseIterable {
     case giUnknown
     case giBeginnersWish
     case giStandardWish
@@ -37,7 +37,23 @@ extension GachaPoolExpressible {
 
     // MARK: Public
 
+    public static func getKnownCases(by game: Pizza.SupportedGame) -> [Self] {
+        Self.allCases.filter { $0.game == game && !$0.isUnknown }
+    }
+
+    public static func getPoolFilterLabel(by game: Pizza.SupportedGame) -> String {
+        "gachaKit.poolFilterLabel.byGame.\(game.rawValue)".i18nGachaKit
+    }
+
     public var id: String { rawValue }
+
+    public var isUnknown: Bool {
+        [.giUnknown, .srUnknown, .zzUnknown].contains(self)
+    }
+
+    public var localizedTitle: String {
+        "gachaKit.poolType.\(rawValue)".i18nGachaKit
+    }
 
     public var game: Pizza.SupportedGame {
         switch self {
