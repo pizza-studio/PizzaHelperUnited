@@ -21,7 +21,7 @@ public struct GachaProfileView: View {
     @MainActor public var body: some View {
         poolPickerSection
         GachaStatsSection(
-            gpid: theVM.currentGachaProfile?.asSendable,
+            gpid: theVM.currentGPID,
             gachaType: theVM.currentPoolType
         )
         ForEach(theVM.cachedEntries) { entry in
@@ -41,7 +41,7 @@ public struct GachaProfileView: View {
     // MARK: Internal
 
     var availablePoolTypes: [GachaPoolExpressible] {
-        guard let game = theVM.currentGachaProfile?.game else { return [] }
+        guard let game = theVM.currentGPID?.game else { return [] }
         return GachaPoolExpressible.getKnownCases(by: game)
     }
 
@@ -52,7 +52,7 @@ public struct GachaProfileView: View {
     @Environment(GachaVM.self) fileprivate var theVM
 
     @MainActor @ViewBuilder fileprivate var poolPickerSection: some View {
-        if let theProfile = theVM.currentGachaProfile {
+        if let theProfile = theVM.currentGPID {
             Section {
                 let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)
                 @Bindable var theVM = theVM
@@ -63,14 +63,6 @@ public struct GachaProfileView: View {
                     }
                 }
             }
-//            header: {
-//                HStack {
-//                    theProfile.profileNameView
-//                    Spacer()
-//                    Text(theProfile.uidWithGame)
-//                }
-//                .textCase(.none)
-//            }
         }
     }
 }

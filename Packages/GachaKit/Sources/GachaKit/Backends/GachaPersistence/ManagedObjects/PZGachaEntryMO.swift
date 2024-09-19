@@ -166,7 +166,7 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
 
 extension PZGachaEntryMO {
     public static func predicate(
-        owner gachaProfile: PZGachaProfileMO?,
+        owner gachaProfile: (any GachaProfileIDProtocol)?,
         rarityLevel: GachaItemRankType? = GachaItemRankType.rank5
     )
         -> Predicate<PZGachaEntryMO> {
