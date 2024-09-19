@@ -64,7 +64,7 @@ public struct GachaProfileDetailedListView: View {
         let cachedEntries = theVM.cachedEntries.filter {
             $0.pool == theVM.currentPoolType
         }
-        let drawCounts = cachedEntries.drawCount
+        let drawCounts = cachedEntries.drawCounts
         let zippedPairs: [(entry: GachaEntryExpressible, drawCount: Int)] = Array(
             zip(cachedEntries, drawCounts)
         )

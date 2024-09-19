@@ -93,7 +93,7 @@ extension GachaProfileView {
         }
 
         fileprivate var entriesWithDrawCount: [(GachaEntryExpressible, drawCount: Int)] {
-            Array(zip(entries, entries.drawCount))
+            Array(zip(entries, entries.drawCounts))
         }
 
         fileprivate var fiveStarEntriesWithDrawCount: [(GachaEntryExpressible, drawCount: Int)] {
