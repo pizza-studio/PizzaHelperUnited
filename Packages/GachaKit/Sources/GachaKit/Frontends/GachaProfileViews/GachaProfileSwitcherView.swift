@@ -19,7 +19,7 @@ public struct GachaProfileSwitcherView: View {
         profileSwitcherMenu()
             .disabled(theVM.taskState == .busy || pzGachaProfileIDs.isEmpty)
             .onAppear {
-                // refreshGachaUIDList() // 需額外評估是否就這樣砍掉這一行。
+                // rebuildGachaUIDList() // 需額外評估是否就這樣砍掉這一行。
                 if theVM.currentGPID == nil {
                     theVM.resetDefaultProfile()
                 } else if let profile = theVM.currentGPID, !sortedGPIDs.contains(profile) {

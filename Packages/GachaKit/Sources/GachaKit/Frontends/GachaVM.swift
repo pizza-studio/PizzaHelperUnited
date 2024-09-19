@@ -69,7 +69,7 @@ extension GachaVM {
         task?.cancel()
     }
 
-    public func refreshGachaUIDList() {
+    public func rebuildGachaUIDList() {
         task?.cancel()
         withAnimation {
             taskState = .busy
