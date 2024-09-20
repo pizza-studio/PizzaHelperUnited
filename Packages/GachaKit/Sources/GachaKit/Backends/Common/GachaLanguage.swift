@@ -9,5 +9,5 @@ public typealias GachaLanguage = HoYo.APILang
 
 extension Locale {
     /// Get the language code used for gacha API according to current preferred localization.
-    static var gachaLangauge: GachaLanguage { .current }
+    public static var gachaLangauge: GachaLanguage { .current }
 }
