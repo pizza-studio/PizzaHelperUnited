@@ -12,7 +12,6 @@ import SwiftUI
 // MARK: - GachaEntryExpressible
 
 /// 专用于 PZGachaEntry 的前端表述框架。
-@frozen
 public struct GachaEntryExpressible: Identifiable, Equatable, Sendable, Hashable {
     // MARK: Public
 
@@ -24,6 +23,7 @@ public struct GachaEntryExpressible: Identifiable, Equatable, Sendable, Hashable
     public let count: String
     public let time: Date
     public let gachaID: String
+    public var drawCount: Int = -1
 
     /// Name Raw Value in the DB.
     public let name: String
@@ -198,15 +198,32 @@ extension GachaEntryExpressible {
 }
 
 extension [GachaEntryExpressible] {
-    public var drawCounts: [Int] {
+    /// 注意：有明显的效能开销。
+    public var withDrawCounts: Self {
         map { item in
-            item.rarity
-        }.enumerated().map { index, thisRankType in
+            (item.rarity, item)
+        }.enumerated().map { index, neta in
+            let thisRankType = neta.0
+            var entry = neta.1
             let theRestOfArray = self[(index + 1)...]
             let nextIndexInRest = theRestOfArray.firstIndex {
                 $0.rarity.rawValue >= thisRankType.rawValue
             }
-            return (nextIndexInRest ?? self.count) - index
+            entry.drawCount = (nextIndexInRest ?? self.count) - index
+            return entry
         }
+    }
+
+    /// 警告：用这个 API 之前，整个阵列应该先由 id 从小到大排序一次。
+    public var mappedByPools: [GachaPoolExpressible: [GachaEntryExpressible]] {
+        var resultOld = [GachaPoolExpressible: [GachaEntryExpressible]]()
+        var resultNew = [GachaPoolExpressible: [GachaEntryExpressible]]()
+        forEach { entry in
+            resultOld[entry.pool, default: []].append(entry)
+        }
+        resultOld.forEach { pool, array in
+            resultNew[pool] = array.withDrawCounts
+        }
+        return resultNew
     }
 }

@@ -32,7 +32,7 @@ public class GachaVM: @unchecked Sendable {
     public static let shared = GachaVM()
 
     public var task: Task<Void, Never>?
-    public var cachedEntries: [GachaEntryExpressible] = []
+    public var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     public var currentPoolType: GachaPoolExpressible?
 
     public var taskState: State = .standBy
@@ -42,7 +42,7 @@ public class GachaVM: @unchecked Sendable {
     public var currentGPID: GachaProfileID? {
         didSet {
             currentPoolType = Self.defaultPoolType(for: currentGPID?.game)
-            updateCachedEntries()
+            updatemappedEntriesByPools()
         }
     }
 
@@ -117,10 +117,10 @@ extension GachaVM {
         }
     }
 
-    public func updateCachedEntries() {
+    public func updatemappedEntriesByPools() {
         guard let currentGPID else {
             withAnimation {
-                cachedEntries.removeAll()
+                mappedEntriesByPools.removeAll()
             }
             return
         }
@@ -139,7 +139,7 @@ extension GachaVM {
                     sortBy: [SortDescriptor(\PZGachaEntryMO.id, order: .reverse)]
                 )
                 var existedIDs = Set<String>() // 用来去除重复内容。
-                var result = [GachaEntryExpressible]()
+                var fetchedEntries = [GachaEntryExpressible]()
                 let context = GachaActor.sharedBg.modelExecutor.modelContext
                 let count = try context.fetchCount(descriptor)
                 if count > 0 {
@@ -149,16 +149,17 @@ extension GachaVM {
                             context.delete(rawEntry)
                         } else {
                             existedIDs.insert(expressible.id)
-                            result.append(expressible)
+                            fetchedEntries.append(expressible)
                         }
                     }
                     if context.hasChanges {
                         try context.save()
                     }
                 }
+                let mappedEntries = fetchedEntries.mappedByPools
                 Task { @MainActor in
                     withAnimation {
-                        cachedEntries = result
+                        mappedEntriesByPools = mappedEntries
                         taskState = .standBy
                         errorMsg = nil
                         // 此处不需要检查 currentGPID 是否为 nil。
