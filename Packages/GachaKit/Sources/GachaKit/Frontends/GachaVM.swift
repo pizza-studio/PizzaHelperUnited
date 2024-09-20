@@ -81,21 +81,21 @@ extension GachaVM {
         withAnimation {
             taskState = .busy
             errorMsg = nil
-        }
-        task = Task {
-            do {
-                try await GachaActor.sharedBg.refreshAllProfiles()
-                Task { @MainActor in
-                    withAnimation {
-                        if currentGPID == nil {
-                            resetDefaultProfile()
+            task = Task {
+                do {
+                    try await GachaActor.sharedBg.refreshAllProfiles()
+                    Task { @MainActor in
+                        withAnimation {
+                            if currentGPID == nil {
+                                resetDefaultProfile()
+                            }
+                            taskState = .standBy
+                            errorMsg = nil
                         }
-                        taskState = .standBy
-                        errorMsg = nil
                     }
+                } catch {
+                    handleError(error)
                 }
-            } catch {
-                handleError(error)
             }
         }
     }
@@ -105,21 +105,21 @@ extension GachaVM {
         withAnimation {
             taskState = .busy
             errorMsg = nil
-        }
-        task = Task {
-            do {
-                try await GachaActor.migrateOldGachasIntoProfiles()
-                Task { @MainActor in
-                    withAnimation {
-                        if currentGPID == nil {
-                            resetDefaultProfile()
+            task = Task {
+                do {
+                    try await GachaActor.migrateOldGachasIntoProfiles()
+                    Task { @MainActor in
+                        withAnimation {
+                            if currentGPID == nil {
+                                resetDefaultProfile()
+                            }
+                            taskState = .standBy
+                            errorMsg = nil
                         }
-                        taskState = .standBy
-                        errorMsg = nil
                     }
+                } catch {
+                    handleError(error)
                 }
-            } catch {
-                handleError(error)
             }
         }
     }
@@ -135,15 +135,15 @@ extension GachaVM {
         withAnimation {
             taskState = .busy
             errorMsg = nil
-        }
-        task = Task {
-            let filtered = getCurrentPentaStars()
-            Task { @MainActor in
-                withAnimation {
-                    currentPentaStars = filtered
-                    taskState = .standBy
-                    errorMsg = nil
-                    // 此处不需要检查 currentGPID 是否为 nil。
+            task = Task {
+                let filtered = getCurrentPentaStars()
+                Task { @MainActor in
+                    withAnimation {
+                        currentPentaStars = filtered
+                        taskState = .standBy
+                        errorMsg = nil
+                        // 此处不需要检查 currentGPID 是否为 nil。
+                    }
                 }
             }
         }
@@ -161,47 +161,47 @@ extension GachaVM {
         withAnimation {
             taskState = .busy
             errorMsg = nil
-        }
-        task = Task {
-            do {
-                let descriptor = FetchDescriptor<PZGachaEntryMO>(
-                    predicate: PZGachaEntryMO.predicate(
-                        owner: currentGPID,
-                        rarityLevel: nil
-                    ),
-                    sortBy: [SortDescriptor(\PZGachaEntryMO.id, order: .reverse)]
-                )
-                var existedIDs = Set<String>() // 用来去除重复内容。
-                var fetchedEntries = [GachaEntryExpressible]()
-                let context = GachaActor.sharedBg.modelExecutor.modelContext
-                let count = try context.fetchCount(descriptor)
-                if count > 0 {
-                    try context.enumerate(descriptor) { rawEntry in
-                        let expressible = rawEntry.expressible
-                        if existedIDs.contains(expressible.id) {
-                            context.delete(rawEntry)
-                        } else {
-                            existedIDs.insert(expressible.id)
-                            fetchedEntries.append(expressible)
+            task = Task {
+                do {
+                    let descriptor = FetchDescriptor<PZGachaEntryMO>(
+                        predicate: PZGachaEntryMO.predicate(
+                            owner: currentGPID,
+                            rarityLevel: nil
+                        ),
+                        sortBy: [SortDescriptor(\PZGachaEntryMO.id, order: .reverse)]
+                    )
+                    var existedIDs = Set<String>() // 用来去除重复内容。
+                    var fetchedEntries = [GachaEntryExpressible]()
+                    let context = GachaActor.sharedBg.modelExecutor.modelContext
+                    let count = try context.fetchCount(descriptor)
+                    if count > 0 {
+                        try context.enumerate(descriptor) { rawEntry in
+                            let expressible = rawEntry.expressible
+                            if existedIDs.contains(expressible.id) {
+                                context.delete(rawEntry)
+                            } else {
+                                existedIDs.insert(expressible.id)
+                                fetchedEntries.append(expressible)
+                            }
+                        }
+                        if context.hasChanges {
+                            try context.save()
                         }
                     }
-                    if context.hasChanges {
-                        try context.save()
+                    let mappedEntries = fetchedEntries.mappedByPools
+                    let pentaStars = getCurrentPentaStars(from: mappedEntries)
+                    Task { @MainActor in
+                        withAnimation {
+                            mappedEntriesByPools = mappedEntries
+                            currentPentaStars = pentaStars
+                            taskState = .standBy
+                            errorMsg = nil
+                            // 此处不需要检查 currentGPID 是否为 nil。
+                        }
                     }
+                } catch {
+                    handleError(error)
                 }
-                let mappedEntries = fetchedEntries.mappedByPools
-                let pentaStars = getCurrentPentaStars(from: mappedEntries)
-                Task { @MainActor in
-                    withAnimation {
-                        mappedEntriesByPools = mappedEntries
-                        currentPentaStars = pentaStars
-                        taskState = .standBy
-                        errorMsg = nil
-                        // 此处不需要检查 currentGPID 是否为 nil。
-                    }
-                }
-            } catch {
-                handleError(error)
             }
         }
     }
