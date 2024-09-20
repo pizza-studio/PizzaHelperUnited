@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - HoYo.APILang
 
@@ -11,14 +12,14 @@ extension HoYo {
     public enum APILang: String, CaseIterable, Sendable, Identifiable {
         case langCHS = "zh-cn"
         case langCHT = "zh-tw"
-        case langDE = "de-de"
+        case langJP = "ja-jp"
+        case langKR = "ko-kr"
         case langEN = "en-us"
+        case langDE = "de-de"
         case langES = "es-es"
         case langFR = "fr-fr"
         case langID = "id-id"
         case langIT = "it-it" // 原神专用
-        case langJP = "ja-jp"
-        case langKR = "ko-kr"
         case langPT = "pt-pt"
         case langRU = "ru-ru"
         case langTH = "th-th"
@@ -32,6 +33,11 @@ extension HoYo {
         }
 
         public var id: String { rawValue }
+
+        public func sanitized(by game: Pizza.SupportedGame) -> Self {
+            guard game != .genshinImpact, [.langIT, .langTR].contains(self) else { return self }
+            return .langEN
+        }
     }
 }
 
