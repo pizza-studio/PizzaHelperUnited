@@ -8,16 +8,16 @@ import SFSafeSymbols
 import SwiftData
 import SwiftUI
 
-// MARK: - GachaRecordRootView
+// MARK: - GachaRootView
 
-public struct GachaRecordRootView: View {
+public struct GachaRootView: View {
     // MARK: Lifecycle
 
     public init() {}
 
     // MARK: Public
 
-    public static let navTitle: String = "gachaKit.GachaRecordRootView.navTitle".i18nGachaKit
+    public static let navTitle: String = "gachaKit.GachaRootView.navTitle".i18nGachaKit
 
     public static var navIcon: Image { Image("GachaRecordMgr_NavIcon", bundle: .module) }
 
@@ -75,7 +75,7 @@ public struct GachaRecordRootView: View {
     @State fileprivate var theVM: GachaVM = .shared
 }
 
-extension GachaRecordRootView {
+extension GachaRootView {
     @MainActor @ViewBuilder public var coreBody: some View {
         Form {
             if theVM.currentGPID != nil {
