@@ -19,7 +19,7 @@ public struct GachaChartHorizontal: View {
 
     @MainActor public var body: some View {
         if pentaStarEntries.isEmpty {
-            Text("gachaKit.chart.noDataRepresentableForNow".i18nGachaKit)
+            Text("gachaKit.chart.noPentaStarsFound".i18nGachaKit)
                 .font(.caption)
         } else {
             VStack(alignment: .leading) {
