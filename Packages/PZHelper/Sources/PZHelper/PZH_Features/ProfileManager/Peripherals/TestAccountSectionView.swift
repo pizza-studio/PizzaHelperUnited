@@ -130,7 +130,7 @@ struct TestAccountSectionView: View {
         @MainActor var body: some View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(error.localizedDescription)
-                Text("\(error)").font(.caption2)
+                Text(verbatim: "\(error)").font(.caption2)
             }.multilineTextAlignment(.leading)
             if let error = error as? LocalizedError {
                 if let failureReason = error.failureReason {

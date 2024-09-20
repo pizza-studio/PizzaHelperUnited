@@ -65,7 +65,7 @@ struct ShowAvatarPercentageView: View {
                         }
                     }
                 case let .failure(error):
-                    Text("\(error)")
+                    Text(verbatim: "\(error)")
                 }
             } else {
                 ProgressView()
