@@ -4,6 +4,7 @@
 
 @preconcurrency import CoreData
 import EnkaKit
+import Foundation
 import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
@@ -127,5 +128,44 @@ extension GachaActor {
         try modelContext.save()
         profiles.forEach { modelContext.insert($0.asMO) }
         try modelContext.save()
+    }
+}
+
+// MARK: - UIGF Exporter APIs.
+
+extension GachaActor {
+    public func prepareUIGFv4(
+        for owners: [GachaProfileID]? = nil,
+        lang: GachaLanguage = Locale.gachaLangauge
+    ) throws
+        -> UIGFv4 {
+        var entries = [PZGachaEntrySendable]()
+        var descriptor = FetchDescriptor<PZGachaEntryMO>()
+        if let owners, !owners.isEmpty {
+            try owners.forEach { pfID in
+                let theUID = pfID.uid
+                let theGame = pfID.game.rawValue
+                descriptor.predicate = #Predicate { currentEntry in
+                    currentEntry.game == theGame && currentEntry.uid == theUID
+                }
+                try modelContext.enumerate(descriptor) { entry in
+                    entries.append(entry.asSendable)
+                }
+            }
+        } else {
+            try modelContext.enumerate(descriptor) { entry in
+                entries.append(entry.asSendable)
+            }
+        }
+        return try UIGFv4(info: .init(), entries: entries, lang: lang)
+    }
+
+    public func prepareUIGFv4Document(
+        for owners: [GachaProfileID]? = nil,
+        lang: GachaLanguage = Locale.gachaLangauge
+    ) throws
+        -> GachaDocument {
+        let model = try prepareUIGFv4(for: owners, lang: lang)
+        return .init(model: model)
     }
 }
