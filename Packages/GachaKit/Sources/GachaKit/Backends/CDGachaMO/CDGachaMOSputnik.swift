@@ -10,8 +10,8 @@ import PZBaseKit
 
 // MARK: - CDGachaMOSputnik
 
-@MainActor
-public final class CDGachaMOSputnik {
+/// 警告：请务必不要直接初始化这个 class。请借由 GachaActor 来使用这个 class。
+public final class CDGachaMOSputnik: @unchecked Sendable {
     // MARK: Lifecycle
 
     public init(persistence: DBPersistenceMethod, backgroundContext: Bool) throws {
@@ -27,8 +27,6 @@ public final class CDGachaMOSputnik {
     }
 
     // MARK: Public
-
-    public static let shared = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: false)
 
     public var hasData: Bool {
         ((try? countAllCDGachaMOAsPZGachaEntryMO()) ?? 0) > 0
@@ -58,15 +56,16 @@ public final class CDGachaMOSputnik {
         try countAllCDGachaMO(for: .genshinImpact) + countAllCDGachaMO(for: .starRail)
     }
 
-    public func allCDGachaMOAsPZGachaEntryMO() throws -> [PZGachaEntryMO] {
+    public func allCDGachaMOAsPZGachaEntryMO() throws -> [PZGachaEntrySendable] {
         // Genshin.
-        let genshinData: [PZGachaEntryMO]? = try allGachaDataMO(for: .genshinImpact).map(\.asPZGachaEntryMO)
+        var genshinData: [PZGachaEntrySendable] = try allGachaDataMO(for: .genshinImpact).map(\.asPZGachaEntrySendable)
         // Fix Genshin ItemIDs.
-        let problematicObjects: [PZGachaEntryMO]? = genshinData?.filter { Int($0.itemID) == nil }
         let revDB = GachaMeta.sharedDB.mainDB4GI.generateHotReverseQueryDict(for: HoYo.APILang.langCHS.rawValue) ?? [:]
-        try problematicObjects?.forEach { obj in
-            if let newItemIDInt = revDB[obj.name] {
-                obj.itemID = newItemIDInt.description
+        for idx in 0 ..< genshinData.count {
+            let currentObj = genshinData[idx]
+            guard Int(currentObj.itemID) == nil else { continue }
+            if let newItemIDInt = revDB[currentObj.name] {
+                genshinData[idx].itemID = newItemIDInt.description
             } else {
                 Task { @MainActor in
                     try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
@@ -74,10 +73,9 @@ public final class CDGachaMOSputnik {
                 throw GachaMeta.GMDBError.databaseExpired
             }
         }
-
         // StarRail.
-        let hsrData: [PZGachaEntryMO]? = try allGachaDataMO(for: .starRail).map(\.asPZGachaEntryMO)
-        let dataSet: [PZGachaEntryMO] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
+        let hsrData: [PZGachaEntrySendable]? = try allGachaDataMO(for: .starRail).map(\.asPZGachaEntrySendable)
+        let dataSet: [PZGachaEntrySendable] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
         return dataSet
     }
 
