@@ -57,34 +57,6 @@
         }
       }
     },
-    "gachaKit.chart.noDataRepresentableForNow" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No data representable for now."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "表示できる図表はしばらくございません。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暂无可呈现的图表。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暫無可呈現的圖表。"
-          }
-        }
-      }
-    },
     "gachaKit.chart.noPentaStarsFound" : {
       "localizations" : {
         "en" : {
