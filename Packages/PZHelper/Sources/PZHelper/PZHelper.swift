@@ -7,8 +7,14 @@ import PZAccountKit
 import SwiftData
 
 public enum PZHelper {
-    public static let sharedContainer = try! ModelContainer(
-        for: PZProfileMO.self, PZGachaEntryMO.self, PZGachaProfileMO.self,
-        configurations: PZProfileActor.modelConfig, GachaActor.modelConfig4Profiles, GachaActor.modelConfig4Entries
-    )
+    public static let sharedContainer: ModelContainer = {
+        let result = try! ModelContainer(
+            for: PZProfileMO.self, PZGachaEntryMO.self, PZGachaProfileMO.self,
+            configurations: PZProfileActor.modelConfig, GachaActor.modelConfig4Profiles, GachaActor.modelConfig4Entries
+        )
+        Task { @MainActor in
+            GachaVM.sharedContext = result.mainContext
+        }
+        return result
+    }()
 }
