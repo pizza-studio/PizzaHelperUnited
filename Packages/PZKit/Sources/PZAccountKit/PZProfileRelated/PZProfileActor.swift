@@ -27,7 +27,7 @@ public actor PZProfileActor {
 
     public static var modelConfig: ModelConfiguration {
         ModelConfiguration(
-            schema: Schema([PZProfileMO.self]),
+            schema: Self.schema,
             isStoredInMemoryOnly: false,
             groupContainer: .none,
             cloudKitDatabase: .private(iCloudContainerName)
