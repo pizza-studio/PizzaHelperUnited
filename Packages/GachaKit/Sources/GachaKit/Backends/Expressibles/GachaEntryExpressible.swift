@@ -13,8 +13,6 @@ import SwiftUI
 
 /// 专用于 PZGachaEntry 的前端表述框架。
 public struct GachaEntryExpressible: Identifiable, Equatable, Sendable, Hashable {
-    // MARK: Public
-
     public let id: String
     public let uid: String
     public let game: Pizza.SupportedGame
@@ -23,14 +21,13 @@ public struct GachaEntryExpressible: Identifiable, Equatable, Sendable, Hashable
     public let count: String
     public let time: Date
     public let gachaID: String
+    public let rarity: GachaItemRankType
     public var drawCount: Int = -1
 
     /// Name Raw Value in the DB.
     public let name: String
 
     // MARK: Fileprivate
-
-    fileprivate let rankType: GachaItemRankType
 }
 
 extension GachaEntryExpressible {
@@ -43,7 +40,7 @@ extension GachaEntryExpressible {
         self.count = rawEntry.count
         self.name = rawEntry.name
         // self.itemType = .init(rawString4GI: rawEntry.itemType) // 改用 ItemID 推断。
-        self.rankType = .init(rawValueStr: rawEntry.rankType, game: game) ?? .rank3
+        self.rarity = .init(rawValueStr: rawEntry.rankType, game: game) ?? .rank3
         self.gachaID = rawEntry.gachaID
         let tzDelta = GachaKit.getServerTimeZoneDelta(uid: rawEntry.uid, game: game)
         self.time = .init(rawEntry.time, tzDelta: tzDelta) ?? .distantPast
@@ -58,7 +55,7 @@ extension GachaEntryExpressible {
     /// Is Lose5050 (i.e. Surinuked).
     /// Surinuke 此处作动词使用，意思是「歪了」。
     public var isSurinuked: Bool {
-        guard rankType == .rank5, pool.isSurinukable else { return true }
+        guard rarity == .rank5, pool.isSurinukable else { return true }
         switch game {
         case .starRail:
             return switch itemID {
@@ -129,7 +126,7 @@ extension GachaEntryExpressible {
     public var itemType: GachaItemType { GachaItemType(itemID: itemID, game: game) }
 
     /// 建议在实际使用时以该变数取代用作垫底值的 rankType。
-    public var rarity: GachaItemRankType {
+    public var calculatedRarity: GachaItemRankType {
         var rarityInt: Int?
         switch game {
         case .genshinImpact: rarityInt = GachaMeta.sharedDB.mainDB4GI.plainQueryForRarity(itemID: itemID)
@@ -140,7 +137,7 @@ extension GachaEntryExpressible {
         case 3: .rank3
         case 4: .rank4
         case 5: .rank5
-        default: rankType
+        default: rarity
         }
     }
 
@@ -189,7 +186,7 @@ extension GachaEntryExpressible {
             default: AnonymousIconView(size, cutType: .circleClipped).colorMultiply(.gray)
             }
         }.background {
-            rankType.backgroundGradient
+            rarity.backgroundGradient
         }
         .frame(width: size, height: size)
         .contentShape(.circle)
