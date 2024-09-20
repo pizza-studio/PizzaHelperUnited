@@ -41,7 +41,7 @@ extension GachaProfileView {
                         systemSymbol: .handTapFill
                     )
                     Spacer()
-                    Text(entriesWithDrawCount.count.description)
+                    Text(entries.count.description)
                 }
                 HStack {
                     Label(
@@ -88,49 +88,45 @@ extension GachaProfileView {
         fileprivate let givenGPID: GachaProfileID
 
         fileprivate var entries: [GachaEntryExpressible] {
-            theVM.cachedEntries.filter { $0.pool == poolType }
+            theVM.mappedEntriesByPools[poolType] ?? []
         }
 
-        fileprivate var entriesWithDrawCount: [(GachaEntryExpressible, drawCount: Int)] {
-            Array(zip(entries, entries.drawCounts))
-        }
-
-        fileprivate var fiveStarEntriesWithDrawCount: [(GachaEntryExpressible, drawCount: Int)] {
-            entriesWithDrawCount.filter { entry, _ in
+        fileprivate var pentaStarEntries: [GachaEntryExpressible] {
+            entries.filter { entry in
                 entry.rarity == .rank5
             }
         }
 
-        fileprivate var fiveStarsNotSurinuked: [GachaEntryExpressible] {
+        fileprivate var pentaStarsNotSurinuked: [GachaEntryExpressible] {
             entries.filter { entry in
                 entry.rarity == .rank5 && !entry.isSurinuked
             }
         }
 
         fileprivate var limitedDrawCount: Int {
-            fiveStarEntriesWithDrawCount.map(\.drawCount).reduce(0, +) / max(fiveStarsNotSurinuked.count, 1)
+            pentaStarEntries.map(\.drawCount).reduce(0, +) / max(pentaStarsNotSurinuked.count, 1)
         }
 
         // 如果获得的第一个五星是限定，默认其不歪
         fileprivate var surinukeEvasionRate: Double {
             // 歪次数 = 非限定五星数量
-            let countSurinuked = Double(fiveStarEntriesWithDrawCount.count - fiveStarsNotSurinuked.count)
+            let countSurinuked = Double(pentaStarEntries.count - pentaStarsNotSurinuked.count)
             // 小保底次数 = 限定五星数量
-            var countEnsured = Double(fiveStarsNotSurinuked.count)
+            var countEnsured = Double(pentaStarsNotSurinuked.count)
             // 如果抽的第一个是非限定，则多一次小保底
-            if fiveStarEntriesWithDrawCount.last?.0.isSurinuked ?? false {
+            if pentaStarEntries.last?.isSurinuked ?? false {
                 countEnsured += 1
             }
             return 1.0 - countSurinuked / countEnsured
         }
 
-        fileprivate var average5StarDraw: Int { fiveStarEntriesWithDrawCount.map { $0.drawCount }
+        fileprivate var average5StarDraw: Int { pentaStarEntries.map { $0.drawCount }
             .reduce(0) { $0 + $1 } /
-            max(fiveStarEntriesWithDrawCount.count, 1)
+            max(pentaStarEntries.count, 1)
         }
 
         fileprivate var drawCountableAmount: Int {
-            entriesWithDrawCount.firstIndex(where: { $0.0.rarity == .rank5 }) ?? entriesWithDrawCount.count
+            entries.firstIndex(where: { $0.rarity == .rank5 }) ?? entries.count
         }
 
         @MainActor @ViewBuilder

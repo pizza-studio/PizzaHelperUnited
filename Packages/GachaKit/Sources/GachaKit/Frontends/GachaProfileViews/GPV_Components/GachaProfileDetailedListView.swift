@@ -23,14 +23,14 @@ public struct GachaProfileDetailedListView: View {
             Form {
                 contentFilterSection
                     .disabled(theVM.taskState == .busy)
-                ForEach(filteredEntriesWithDrawCount, id: \.entry) { entry, drawCount in
+                ForEach(prefilteredEntries) { entry in
                     ZStack(alignment: .center) {
                         if chosenRarity != .rank5 {
                             entry.rarity.backgroundGradient.opacity(0.2)
                                 .saturation(3)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
-                        GachaEntryBar(entry: entry, drawCount: drawCount, showDate: showDate)
+                        GachaEntryBar(entry: entry, showDate: showDate)
                             .padding(.horizontal)
                             .padding(.vertical, 4)
                     }
@@ -61,17 +61,12 @@ public struct GachaProfileDetailedListView: View {
         return GachaPoolExpressible.getKnownCases(by: game)
     }
 
-    var filteredEntriesWithDrawCount: [(entry: GachaEntryExpressible, drawCount: Int)] {
-        let cachedEntries = theVM.cachedEntries.filter {
-            $0.pool == theVM.currentPoolType
-        }
-        let drawCounts = cachedEntries.drawCounts
-        let zippedPairs: [(entry: GachaEntryExpressible, drawCount: Int)] = Array(
-            zip(cachedEntries, drawCounts)
-        )
-        return zippedPairs.filter {
-            $0.entry.rarity.rawValue >= chosenRarity.rawValue
-        }
+    var prefilteredEntries: [GachaEntryExpressible] {
+        guard let thePool = theVM.currentPoolType else { return [] }
+        let cached = theVM.mappedEntriesByPools[thePool]
+        return cached?.filter {
+            $0.rarity.rawValue >= chosenRarity.rawValue
+        } ?? []
     }
 
     // MARK: Fileprivate

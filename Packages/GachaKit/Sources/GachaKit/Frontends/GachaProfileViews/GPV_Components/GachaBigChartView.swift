@@ -49,23 +49,6 @@ public struct GachaBigChartView: View {
         return GachaPoolExpressible.getKnownCases(by: game)
     }
 
-    var filteredEntries: [GachaEntryExpressible] {
-        filteredEntriesWithDrawCount.map(\.entry)
-    }
-
-    var filteredEntriesWithDrawCount: [(entry: GachaEntryExpressible, drawCount: Int)] {
-        let cachedEntries = theVM.cachedEntries.filter {
-            $0.pool == theVM.currentPoolType
-        }
-        let drawCounts = cachedEntries.drawCounts
-        let zippedPairs: [(entry: GachaEntryExpressible, drawCount: Int)] = Array(
-            zip(cachedEntries, drawCounts)
-        )
-        return zippedPairs.filter {
-            $0.entry.rarity == .rank5
-        }
-    }
-
     // MARK: Fileprivate
 
     @Environment(\.modelContext) fileprivate var modelContext
