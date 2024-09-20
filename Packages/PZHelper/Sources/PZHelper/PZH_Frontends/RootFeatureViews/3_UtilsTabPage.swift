@@ -35,9 +35,9 @@ struct UtilsTabPage: View {
                     }
                     NavigationLink(value: Nav.gachaManager) {
                         Label {
-                            Text(GachaRecordRootView.navTitle)
+                            Text(GachaRootView.navTitle)
                         } icon: {
-                            GachaRecordRootView.navIcon.resizable().aspectRatio(contentMode: .fit)
+                            GachaRootView.navIcon.resizable().aspectRatio(contentMode: .fit)
                         }
                     }
                 }
@@ -101,7 +101,7 @@ struct UtilsTabPage: View {
         NavigationStack {
             switch selection.wrappedValue {
             case .giAbyssRank: AbyssRankView()
-            case .gachaManager: GachaRecordRootView()
+            case .gachaManager: GachaRootView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
             case .gachaCloudDebug: EmptyView() // CDGachaMODebugView()
