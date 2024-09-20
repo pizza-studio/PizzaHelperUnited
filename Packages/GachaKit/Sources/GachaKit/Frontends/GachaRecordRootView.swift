@@ -45,7 +45,7 @@ public struct GachaRecordRootView: View {
                         NavigationLink("gachaKit.menu.exchangeGachaRecords") {
                             EmptyView() // ExchangeGachaView()
                         }.disabled(true)
-                        if CDGachaMOSputnik.shared.hasData {
+                        if GachaActor.shared.cdGachaMOSputnik.hasData {
                             Divider()
                             Button("gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit) {
                                 theVM.migrateOldGachasIntoProfiles()

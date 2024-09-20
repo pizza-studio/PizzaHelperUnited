@@ -24,6 +24,10 @@ public actor GachaActor {
 
     // MARK: Public
 
+    public let cdGachaMOSputnik = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: true)
+}
+
+extension GachaActor {
     @MainActor public static let shared = GachaActor()
     public static let sharedBg = GachaActor()
 
@@ -69,21 +73,21 @@ extension GachaActor {
 // MARK: - CDGachaMO Related Static Methods.
 
 extension GachaActor {
-    @MainActor
     public static func migrateOldGachasIntoProfiles() async throws {
-        let oldData = try CDGachaMOSputnik.shared.allCDGachaMOAsPZGachaEntryMO()
-        let task = Task {
-            try await sharedBg.batchInsert(oldData)
-        }
-        try await task.value
+        try await Self.sharedBg.migrateOldGachasIntoProfiles()
     }
 
-    public func batchInsert(_ sources: [PZGachaEntryMO]) throws {
+    public func migrateOldGachasIntoProfiles() throws {
+        let oldData = try cdGachaMOSputnik.allCDGachaMOAsPZGachaEntryMO()
+        try batchInsert(oldData)
+    }
+
+    public func batchInsert(_ sources: [PZGachaEntrySendable]) throws {
         let allExistingEntryIDs: [String] = try modelContext.fetch(FetchDescriptor<PZGachaEntryMO>()).map(\.id)
         var profiles: Set<GachaProfileID> = .init()
         sources.forEach { theEntry in
             if !allExistingEntryIDs.contains(theEntry.id) {
-                modelContext.insert(theEntry)
+                modelContext.insert(theEntry.asMO)
             }
             let profile = GachaProfileID(uid: theEntry.uid, game: theEntry.gameTyped)
             if !profiles.contains(profile) {
