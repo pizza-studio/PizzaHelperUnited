@@ -92,14 +92,12 @@ extension GachaProfileView {
         }
 
         fileprivate var pentaStarEntries: [GachaEntryExpressible] {
-            entries.filter { entry in
-                entry.rarity == .rank5
-            }
+            theVM.currentPentaStars
         }
 
         fileprivate var pentaStarsNotSurinuked: [GachaEntryExpressible] {
-            entries.filter { entry in
-                entry.rarity == .rank5 && !entry.isSurinuked
+            theVM.currentPentaStars.filter { entry in
+                !entry.isSurinuked
             }
         }
 
