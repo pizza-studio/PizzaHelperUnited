@@ -19,7 +19,7 @@ public protocol CDGachaMOProtocol {
     var uid: String { get set }
     var name: String { get set }
     var time: Date { get set }
-    var asPZGachaEntryMO: PZGachaEntryMO { get }
+    var asPZGachaEntrySendable: PZGachaEntrySendable { get }
     static var entityName: String { get }
     static var modelName: String { get }
     static var containerName: String { get }
@@ -131,8 +131,8 @@ struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol {
     public var time: Date = .init(timeIntervalSince1970: 1)
     public var uid = "YJSNPI"
 
-    public var asPZGachaEntryMO: PZGachaEntryMO {
-        PZGachaEntryMO.init { newEntry in
+    public var asPZGachaEntrySendable: PZGachaEntrySendable {
+        PZGachaEntrySendable.init { newEntry in
             newEntry.game = Pizza.SupportedGame.genshinImpact.rawValue
             newEntry.uid = uid
             newEntry.count = 1.description
@@ -191,8 +191,8 @@ struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol {
     public var timeRawValue: String? = "1"
     public var uid = "YJSNPI"
 
-    public var asPZGachaEntryMO: PZGachaEntryMO {
-        PZGachaEntryMO.init { newEntry in
+    public var asPZGachaEntrySendable: PZGachaEntrySendable {
+        PZGachaEntrySendable.init { newEntry in
             newEntry.game = Pizza.SupportedGame.starRail.rawValue
             newEntry.uid = uid
             newEntry.count = count.description
