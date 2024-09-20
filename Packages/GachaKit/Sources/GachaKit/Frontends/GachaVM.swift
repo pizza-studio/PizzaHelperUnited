@@ -31,10 +31,11 @@ public class GachaVM: @unchecked Sendable {
 
     public static let shared = GachaVM()
 
+    @MainActor public static var sharedContext: ModelContext?
+
     public var task: Task<Void, Never>?
     public var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     public var currentPoolType: GachaPoolExpressible?
-
     public var taskState: State = .standBy
 
     public var errorMsg: String?
@@ -182,9 +183,10 @@ extension GachaVM {
 
     @MainActor public var nameIDMap: [String: String] {
         var nameMap = [String: String]()
-        let context = PZProfileActor.shared.modelContainer.mainContext
-        try? context.enumerate(FetchDescriptor<PZProfileMO>(), batchSize: 1) { pzProfile in
-            if nameMap[pzProfile.uidWithGame] == nil { nameMap[pzProfile.uidWithGame] = pzProfile.name }
+        if let context = Self.sharedContext {
+            try? context.enumerate(FetchDescriptor<PZProfileMO>(), batchSize: 1) { pzProfile in
+                if nameMap[pzProfile.uidWithGame] == nil { nameMap[pzProfile.uidWithGame] = pzProfile.name }
+            }
         }
         Defaults[.queriedEnkaProfiles4GI].forEach { uid, enkaProfile in
             let pfID = GachaProfileID(uid: uid, game: .genshinImpact)
@@ -200,7 +202,7 @@ extension GachaVM {
     }
 
     @MainActor public var allPZProfiles: [PZProfileMO] {
-        let context = PZProfileActor.shared.modelContainer.mainContext
+        guard let context = Self.sharedContext else { return [] }
         let result = try? context.fetch(FetchDescriptor<PZProfileMO>())
         return result?.sorted { $0.priority < $1.priority } ?? []
     }
