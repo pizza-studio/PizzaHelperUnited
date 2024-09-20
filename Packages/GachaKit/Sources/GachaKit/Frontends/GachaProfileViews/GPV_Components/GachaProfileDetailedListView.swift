@@ -28,7 +28,6 @@ public struct GachaProfileDetailedListView: View {
                         if chosenRarity != .rank5 {
                             entry.rarity.backgroundGradient.opacity(0.2)
                                 .saturation(3)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
                         GachaEntryBar(entry: entry, showDate: showDate)
                             .padding(.horizontal)
