@@ -48,7 +48,7 @@ extension GachaActor {
     public static var modelConfig4Entries: ModelConfiguration {
         ModelConfiguration(
             "PZGachaEntryMO",
-            schema: Schema([PZGachaEntryMO.self]),
+            schema: Self.schema4Entries,
             isStoredInMemoryOnly: false,
             groupContainer: .none,
             cloudKitDatabase: .private(iCloudContainerName)
@@ -58,7 +58,7 @@ extension GachaActor {
     public static var modelConfig4Profiles: ModelConfiguration {
         ModelConfiguration(
             "PZGachaProfileMO",
-            schema: Schema([PZGachaProfileMO.self]),
+            schema: schema4Profiles,
             isStoredInMemoryOnly: false,
             groupContainer: .none,
             cloudKitDatabase: .private(iCloudContainerName)
