@@ -8,15 +8,9 @@ import SwiftUI
 public struct GachaEntryBar: View {
     // MARK: Lifecycle
 
-    public init(entry: GachaEntryExpressible) {
+    public init(entry: GachaEntryExpressible, showDate: Bool = false) {
         self.entry = entry
-        self.drawCount = nil
-        self.showDate = nil
-    }
-
-    public init(entry: GachaEntryExpressible, drawCount: Int, showDate: Bool) {
-        self.entry = entry
-        self.drawCount = drawCount
+        self.drawCount = entry.drawCount < 0 ? nil : entry.drawCount
         self.showDate = showDate
     }
 

@@ -20,17 +20,17 @@ public struct GachaChartVertical: View {
     // MARK: Public
 
     @MainActor public var body: some View {
-        let frozenEntries: [EntryPair] = entries
-        let entriesOf5Star = extract5Stars(frozenEntries)
-        if !entriesOf5Star.isEmpty {
-            VStack(spacing: -12) {
-                ForEach(entriesOf5Star.chunked(into: 60), id: \.first!.0.id) { chunkedEntries in
-                    let chunkedEntriesOf5Star = extract5Stars(chunkedEntries)
-                    let isFirst = Bool(equalCheck: entriesOf5Star.first?.0.id, against: chunkedEntries.first?.0.id)
-                    let isLast = Bool(equalCheck: entriesOf5Star.last?.0.id, against: chunkedEntries.last?.0.id)
+        let pentaStars = pentaStarEntries
+        let avrgCount: Int = pentaStars.map(\.drawCount).reduce(0, +) / max(pentaStars.count, 1)
+        if !pentaStars.isEmpty {
+            // 这里必须用 LazyVStack，否则真的要卡到死。
+            LazyVStack(spacing: -12) {
+                ForEach(pentaStars.chunked(into: 5), id: \.first!.id) { chunk in
+                    let isFirst = Bool(equalCheck: pentaStars.first?.id, against: chunk.first?.id)
+                    let isLast = Bool(equalCheck: pentaStars.last?.id, against: chunk.last?.id)
                     subChart(
-                        givenEntries: chunkedEntries,
-                        fiveStarEntries: chunkedEntriesOf5Star,
+                        givenEntries: chunk,
+                        averagePullsCount: avrgCount,
                         isFirst: isFirst,
                         isLast: isLast
                     ).padding(isFirst ? .top : [])
@@ -44,40 +44,33 @@ public struct GachaChartVertical: View {
 
     // MARK: Fileprivate
 
-    fileprivate typealias EntryPair = (entry: GachaEntryExpressible, drawCount: Int)
-
     fileprivate let poolType: GachaPoolExpressible
     fileprivate let givenGPID: GachaProfileID
     @Environment(GachaVM.self) fileprivate var theVM
 
-    fileprivate var entries: [EntryPair] {
-        let preFiltered = theVM.cachedEntries.filter { $0.pool == poolType }
-        let drawCounts = preFiltered.drawCounts
-        return Array(zip(preFiltered, drawCounts))
+    fileprivate var pentaStarEntries: [GachaEntryExpressible] {
+        theVM.mappedEntriesByPools[poolType]?.filter { entry in
+            entry.rarity == .rank5
+        } ?? []
     }
 
     fileprivate var surinukedIcon: Image {
         GachaProfileView.GachaStatsSection.ApprisedLevel.one.appraiserIcon(game: givenGPID.game)
     }
 
-    fileprivate func extract5Stars(_ source: [EntryPair]) -> [EntryPair] {
-        source.filter { $0.0.rarity == .rank5 }
-    }
-
     @MainActor @ViewBuilder
     fileprivate func subChart(
-        givenEntries: [EntryPair],
-        fiveStarEntries: [EntryPair],
+        givenEntries: [GachaEntryExpressible],
+        averagePullsCount: Int,
         isFirst: Bool,
         isLast: Bool
     )
         -> some View {
-        let averagePullsCount: Int = fiveStarEntries.map(\.drawCount).reduce(0, +) / max(fiveStarEntries.count, 1)
         Chart {
-            ForEach(givenEntries, id: \.0.id) { entry in
+            ForEach(givenEntries) { entry in
                 drawChartContent(for: entry)
             }
-            if !fiveStarEntries.isEmpty {
+            if !givenEntries.isEmpty {
                 RuleMark(x: .value("gachaKit.chart.average".i18nGachaKit, averagePullsCount))
                     .foregroundStyle(.gray)
                     .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
@@ -97,43 +90,43 @@ public struct GachaChartVertical: View {
         }
         .chartXScale(domain: 0 ... 110)
         .frame(height: CGFloat(givenEntries.count * 65))
-        .chartForegroundStyleScale(range: colors(entries: fiveStarEntries))
+        .chartForegroundStyleScale(range: colors(entries: givenEntries))
         .chartLegend(.hidden)
     }
 
     fileprivate func matchedEntries(
-        among source: [EntryPair],
+        among source: [GachaEntryExpressible],
         with value: String
     )
         -> [GachaEntryExpressible] {
-        source.map(\.0).filter { $0.id == value }
+        source.filter { $0.id == value }
     }
 
-    fileprivate func colors(entries: [EntryPair]) -> [Color] {
-        entries.map { _, count in
-            switch count {
-            case 0 ..< 62:
-                return .green
-            case 62 ..< 80:
-                return .yellow
-            default:
-                return .red
+    fileprivate func colors(entries: [GachaEntryExpressible]) -> [Color] {
+        entries.map { neta in
+            switch neta.drawCount {
+            case ..<0: .gray
+            case 0 ..< 50: .cyan
+            case 50 ..< 62: .green
+            case 62 ..< 70: .yellow
+            case 70 ..< 80: .orange
+            default: .red
             }
         }
     }
 
     @ChartContentBuilder
-    fileprivate func drawChartContent(for entry: EntryPair) -> some ChartContent {
+    fileprivate func drawChartContent(for entry: GachaEntryExpressible) -> some ChartContent {
         BarMark(
             x: .value("gachaKit.chart.pullCount".i18nGachaKit, entry.drawCount),
-            y: .value("gachaKit.chart.character".i18nGachaKit, entry.0.id),
+            y: .value("gachaKit.chart.character".i18nGachaKit, entry.id),
             height: .fixed(20)
         )
         .annotation(position: .trailing) {
             HStack(spacing: 3) {
                 let frame: CGFloat = 35
-                Text("\(entry.drawCount)").foregroundColor(.gray).font(.caption)
-                if poolType.isSurinukable, entry.0.isSurinuked {
+                Text(entry.drawCount.description).foregroundColor(.gray).font(.caption)
+                if poolType.isSurinukable, entry.isSurinuked {
                     surinukedIcon.resizable().scaledToFit()
                         .frame(width: frame, height: frame)
                         .offset(y: -5)
@@ -142,11 +135,11 @@ public struct GachaChartVertical: View {
                 }
             }
         }
-        .foregroundStyle(by: .value("gachaKit.chart.pullCount".i18nGachaKit, entry.0.id))
+        .foregroundStyle(by: .value("gachaKit.chart.pullCount".i18nGachaKit, entry.id))
     }
 
     @AxisContentBuilder
-    fileprivate func axisContentY(entries givenEntries: [EntryPair]) -> some AxisContent {
+    fileprivate func axisContentY(entries givenEntries: [GachaEntryExpressible]) -> some AxisContent {
         AxisMarks(preset: .aligned, position: .leading) { value in
             AxisValueLabel(content: {
                 if let id = value.as(String.self),
