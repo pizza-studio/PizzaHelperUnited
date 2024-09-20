@@ -36,9 +36,7 @@ public struct GachaChartHorizontal: View {
     @Environment(GachaVM.self) fileprivate var theVM
 
     fileprivate var pentaStarEntries: [GachaEntryExpressible] {
-        theVM.mappedEntriesByPools[poolType]?.filter { entry in
-            entry.rarity == .rank5
-        } ?? []
+        theVM.currentPentaStars
     }
 
     fileprivate var colors: [Color] {

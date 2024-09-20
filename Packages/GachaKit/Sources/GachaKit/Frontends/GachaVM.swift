@@ -34,16 +34,21 @@ public class GachaVM: @unchecked Sendable {
     @MainActor public static var sharedContext: ModelContext?
 
     public var task: Task<Void, Never>?
-    public var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
-    public var currentPoolType: GachaPoolExpressible?
     public var taskState: State = .standBy
-
     public var errorMsg: String?
+    public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
+    public private(set) var currentPentaStars: [GachaEntryExpressible] = []
 
     public var currentGPID: GachaProfileID? {
         didSet {
             currentPoolType = Self.defaultPoolType(for: currentGPID?.game)
-            updatemappedEntriesByPools()
+            updateMappedEntriesByPools()
+        }
+    }
+
+    public var currentPoolType: GachaPoolExpressible? {
+        didSet {
+            updateCurrentPentaStars()
         }
     }
 
@@ -65,6 +70,7 @@ extension GachaVM {
     public func handleError(_ error: Error) {
         withAnimation {
             errorMsg = "\(error)"
+            taskState = .standBy
         }
         GachaActor.sharedBg.modelExecutor.modelContext.rollback()
         task?.cancel()
@@ -81,11 +87,11 @@ extension GachaVM {
                 try await GachaActor.sharedBg.refreshAllProfiles()
                 Task { @MainActor in
                     withAnimation {
-                        taskState = .standBy
-                        errorMsg = nil
                         if currentGPID == nil {
                             resetDefaultProfile()
                         }
+                        taskState = .standBy
+                        errorMsg = nil
                     }
                 }
             } catch {
@@ -105,11 +111,11 @@ extension GachaVM {
                 try await GachaActor.migrateOldGachasIntoProfiles()
                 Task { @MainActor in
                     withAnimation {
-                        taskState = .standBy
-                        errorMsg = nil
                         if currentGPID == nil {
                             resetDefaultProfile()
                         }
+                        taskState = .standBy
+                        errorMsg = nil
                     }
                 }
             } catch {
@@ -118,10 +124,36 @@ extension GachaVM {
         }
     }
 
-    public func updatemappedEntriesByPools() {
+    public func updateCurrentPentaStars() {
+        guard currentGPID != nil else {
+            withAnimation {
+                currentPentaStars.removeAll()
+            }
+            return
+        }
+        task?.cancel()
+        withAnimation {
+            taskState = .busy
+            errorMsg = nil
+        }
+        task = Task {
+            let filtered = getCurrentPentaStars()
+            Task { @MainActor in
+                withAnimation {
+                    currentPentaStars = filtered
+                    taskState = .standBy
+                    errorMsg = nil
+                    // 此处不需要检查 currentGPID 是否为 nil。
+                }
+            }
+        }
+    }
+
+    public func updateMappedEntriesByPools() {
         guard let currentGPID else {
             withAnimation {
                 mappedEntriesByPools.removeAll()
+                currentPentaStars.removeAll()
             }
             return
         }
@@ -158,9 +190,11 @@ extension GachaVM {
                     }
                 }
                 let mappedEntries = fetchedEntries.mappedByPools
+                let pentaStars = getCurrentPentaStars(from: mappedEntries)
                 Task { @MainActor in
                     withAnimation {
                         mappedEntriesByPools = mappedEntries
+                        currentPentaStars = pentaStars
                         taskState = .standBy
                         errorMsg = nil
                         // 此处不需要检查 currentGPID 是否为 nil。
@@ -176,6 +210,21 @@ extension GachaVM {
 // MARK: - Profile Switchers and other tools.
 
 extension GachaVM {
+    fileprivate func getCurrentPentaStars(
+        from mappedEntries: [GachaPoolExpressible: [GachaEntryExpressible]]? = nil
+    )
+        -> [GachaEntryExpressible] {
+        let mappedEntries = mappedEntries ?? mappedEntriesByPools
+        guard let currentPoolType else {
+            return mappedEntries.values.reduce([], +).filter { entry in
+                entry.rarity == .rank5
+            }
+        }
+        return mappedEntries[currentPoolType]?.filter { entry in
+            entry.rarity == .rank5
+        } ?? []
+    }
+
     @MainActor public var currentGPIDTitle: String? {
         guard let pfID = currentGPID else { return nil }
         return nameIDMap[pfID.uidWithGame] ?? nil
