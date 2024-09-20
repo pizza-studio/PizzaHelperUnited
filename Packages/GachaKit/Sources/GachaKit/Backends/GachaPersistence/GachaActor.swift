@@ -28,8 +28,7 @@ public actor GachaActor {
 }
 
 extension GachaActor {
-    @MainActor public static let shared = GachaActor()
-    public static let sharedBg = GachaActor()
+    public static let shared = GachaActor()
 
     public static func makeContainer() -> ModelContainer {
         do {
@@ -74,7 +73,7 @@ extension GachaActor {
 
 extension GachaActor {
     public static func migrateOldGachasIntoProfiles() async throws {
-        try await Self.sharedBg.migrateOldGachasIntoProfiles()
+        try await Self.shared.migrateOldGachasIntoProfiles()
     }
 
     public func migrateOldGachasIntoProfiles() throws {

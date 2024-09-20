@@ -72,7 +72,7 @@ extension GachaVM {
             errorMsg = "\(error)"
             taskState = .standBy
         }
-        GachaActor.sharedBg.modelExecutor.modelContext.rollback()
+        GachaActor.shared.modelExecutor.modelContext.rollback()
         task?.cancel()
     }
 
@@ -83,7 +83,7 @@ extension GachaVM {
             errorMsg = nil
             task = Task {
                 do {
-                    try await GachaActor.sharedBg.refreshAllProfiles()
+                    try await GachaActor.shared.refreshAllProfiles()
                     Task { @MainActor in
                         withAnimation {
                             if currentGPID == nil {
@@ -172,7 +172,7 @@ extension GachaVM {
                     )
                     var existedIDs = Set<String>() // 用来去除重复内容。
                     var fetchedEntries = [GachaEntryExpressible]()
-                    let context = GachaActor.sharedBg.modelExecutor.modelContext
+                    let context = GachaActor.shared.modelExecutor.modelContext
                     let count = try context.fetchCount(descriptor)
                     if count > 0 {
                         try context.enumerate(descriptor) { rawEntry in
