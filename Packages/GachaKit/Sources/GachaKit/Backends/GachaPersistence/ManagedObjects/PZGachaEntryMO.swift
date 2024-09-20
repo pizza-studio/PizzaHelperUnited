@@ -6,37 +6,6 @@ import Foundation
 import PZBaseKit
 import SwiftData
 
-// MARK: - PZGachaEntryProtocol
-
-public protocol PZGachaEntryProtocol {
-    var game: String { get set }
-    var uid: String { get set }
-    var gachaType: String { get set }
-    var itemID: String { get set }
-    var count: String { get set }
-    var time: String { get set }
-    var name: String { get set }
-    var lang: String { get set }
-    var itemType: String { get set }
-    var rankType: String { get set }
-    var id: String { get set }
-    var gachaID: String { get set }
-}
-
-extension PZGachaEntryProtocol {
-    public var gameTyped: Pizza.SupportedGame {
-        .init(rawValue: game) ?? .genshinImpact
-    }
-
-    public var uidWithGame: String {
-        "\(gameTyped.uidPrefix)-\(uid)"
-    }
-
-    public var expressible: GachaEntryExpressible {
-        .init(rawEntry: self)
-    }
-}
-
 // MARK: - PZGachaEntryMO
 
 @Model
@@ -122,9 +91,9 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
         try container.encode(gachaID, forKey: .gachaID)
     }
 
-    // MARK: Private
+    // MARK: Fileprivate
 
-    private enum CodingKeys: CodingKey {
+    fileprivate enum CodingKeys: CodingKey {
         case game
         case uid
         case gachaType
@@ -137,14 +106,6 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
         case rankType
         case id
         case gachaID
-    }
-
-    private static func makeEntryID() -> String {
-        var stringStack = "9"
-        while stringStack.count < 19 {
-            stringStack.append(Int.random(in: 0 ... 9).description)
-        }
-        return stringStack
     }
 }
 
