@@ -5,11 +5,11 @@
 import GachaMetaDB
 import PZBaseKit
 
-// MARK: - APIs for converting fetched contents to GachaEntryMO.
+// MARK: - APIs for converting fetched contents to PZGachaEntrySendable.
 
 extension GachaFetchModels.PageFetched.FetchedEntry {
-    func toGachaEntryMO(game: Pizza.SupportedGame, fixItemIDs: Bool = true) async throws -> PZGachaEntryMO {
-        let result = PZGachaEntryMO { newEntry in
+    func toGachaEntrySendable(game: Pizza.SupportedGame, fixItemIDs: Bool = true) async throws -> PZGachaEntrySendable {
+        var result = PZGachaEntrySendable { newEntry in
             newEntry.game = game.rawValue
             newEntry.uid = uid
             newEntry.count = count
@@ -46,10 +46,10 @@ extension GachaFetchModels.PageFetched {
         fixItemIDs: Bool = true,
         itemCounter: inout Int?
     ) async throws
-        -> [PZGachaEntryMO] {
-        var result = [PZGachaEntryMO]()
+        -> [PZGachaEntrySendable] {
+        var result = [PZGachaEntrySendable]()
         for rawEntry in list {
-            let converted = try await rawEntry.toGachaEntryMO(game: game, fixItemIDs: fixItemIDs)
+            let converted = try await rawEntry.toGachaEntrySendable(game: game, fixItemIDs: fixItemIDs)
             result.append(converted)
             if itemCounter != nil { itemCounter = (itemCounter ?? 0) + 1 }
         }
@@ -57,26 +57,43 @@ extension GachaFetchModels.PageFetched {
     }
 }
 
-// MARK: - APIs for converting GachaEntryMO to UIGF.
+// MARK: - APIs for converting PZGachaEntryProtocol to UIGF.
 
-extension PZGachaEntryMO {
-    public func fixItemID() async throws {
-        if Pizza.SupportedGame(rawValue: game) == .genshinImpact, itemID.isEmpty {
-            var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
-            if newItemID == nil {
-                try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
-                newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
-            }
-            guard let newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name) else {
-                throw GachaMeta.GMDBError.databaseExpired
-            }
-            itemID = newItemID.description
+extension PZGachaEntryProtocol {
+    public mutating func fixItemID() async throws {
+        guard Pizza.SupportedGame(rawValue: game) == .genshinImpact, itemID.isEmpty else { return }
+        var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
+        if newItemID == nil {
+            try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+            newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
         }
+        guard let newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name) else {
+            throw GachaMeta.GMDBError.databaseExpired
+        }
+        itemID = newItemID.description
     }
 
-    public func toUIGFGachaEntryWithFix(for game: Pizza.SupportedGame) async throws -> any UIGFGachaItemProtocol {
-        try await fixItemID()
-        return try toUIGFGachaEntry(for: game)
+    public func asItemIDFixed() async throws -> Self {
+        guard Pizza.SupportedGame(rawValue: game) == .genshinImpact else { return self }
+        guard itemID.isEmpty else { return self }
+        var result = self
+        var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
+        if newItemID == nil {
+            try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+            newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
+        }
+        guard let newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name) else {
+            throw GachaMeta.GMDBError.databaseExpired
+        }
+        result.itemID = newItemID.description
+        return result
+    }
+
+    public func toUIGFGachaEntryWithFix(
+        for game: Pizza.SupportedGame
+    ) async throws
+        -> any UIGFGachaItemProtocol {
+        try await asItemIDFixed().toUIGFGachaEntry(for: game)
     }
 
     public func toUIGFGachaEntry(for game: Pizza.SupportedGame) throws -> any UIGFGachaItemProtocol {
@@ -124,11 +141,11 @@ extension PZGachaEntryMO {
     }
 }
 
-extension [PZGachaEntryMO] {
-    func extractItem<T: UIGFGachaItemProtocol>(_ type: T.Type) throws -> [(uid: String, entry: T)] {
+extension [PZGachaEntryProtocol] {
+    func extractItem<T: UIGFGachaItemProtocol>(_ type: T.Type) throws -> [(gpid: GachaProfileID, entry: T)] {
         try compactMap {
             if let matched = try $0.toUIGFGachaEntry(for: T.game) as? T {
-                return (uid: $0.uid, entry: matched)
+                return (gpid: GachaProfileID(uid: $0.uid, game: T.game), entry: matched)
             }
             return nil
         }
@@ -139,17 +156,20 @@ extension [PZGachaEntryMO] {
         lang: GachaLanguage = .current
     ) throws
         -> [UIGFv4.Profile<T>] {
-        let mapped: [String: [(uid: String, entry: T)]] = Dictionary(grouping: try extractItem(T.self)) { $0.uid }
+        let mapped: [GachaProfileID: [(gpid: GachaProfileID, entry: T)]] =
+            Dictionary(grouping: try extractItem(T.self)) { $0.gpid }
         var profiles = [UIGFv4.Profile<T>]()
-        try mapped.forEach { uid, setData in
+        // 筛掉不受游戏支持的语言。
+        let lang = lang.sanitized(by: T.game)
+        try mapped.forEach { gpid, setData in
             var list: [T] = setData.map(\.entry)
             try list.updateLanguage(lang)
             profiles.append(
                 .init(
                     lang: lang,
                     list: list,
-                    timezone: GachaKit.getServerTimeZoneDelta(uid: uid, game: T.game),
-                    uid: uid
+                    timezone: GachaKit.getServerTimeZoneDelta(uid: gpid.uid, game: T.game),
+                    uid: gpid.uid
                 )
             )
         }
@@ -157,11 +177,11 @@ extension [PZGachaEntryMO] {
     }
 }
 
-// MARK: - APIs for converting UIGF to GachaEntryMO.
+// MARK: - APIs for converting UIGF to PZGachaEntrySendable.
 
 extension UIGFGachaItemProtocol {
-    func asPZGachaEntryMO(uid: String) -> PZGachaEntryMO {
-        let result = PZGachaEntryMO { newEntry in
+    func asPZGachaEntrySendable(uid: String) -> PZGachaEntrySendable {
+        let result = PZGachaEntrySendable { newEntry in
             newEntry.game = game.rawValue
             newEntry.uid = uid
             newEntry.count = count ?? "1"
@@ -182,14 +202,14 @@ extension UIGFGachaItemProtocol {
 }
 
 extension UIGFv4.Profile {
-    func extractEntries() -> [PZGachaEntryMO] {
-        list.map { $0.asPZGachaEntryMO(uid: self.uid) }
+    func extractEntries() -> [PZGachaEntrySendable] {
+        list.map { $0.asPZGachaEntrySendable(uid: self.uid) }
     }
 }
 
 extension UIGFv4 {
-    func extractAllEntries() -> [PZGachaEntryMO] {
-        var result = [[PZGachaEntryMO]]()
+    func extractAllEntries() -> [PZGachaEntrySendable] {
+        var result = [[PZGachaEntrySendable]]()
         result.append(contentsOf: giProfiles?.map { $0.extractEntries() } ?? [])
         result.append(contentsOf: hsrProfiles?.map { $0.extractEntries() } ?? [])
         result.append(contentsOf: zzzProfiles?.map { $0.extractEntries() } ?? [])
