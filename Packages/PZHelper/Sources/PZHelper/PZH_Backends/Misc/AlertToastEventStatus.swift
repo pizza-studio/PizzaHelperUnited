@@ -5,7 +5,7 @@
 import Observation
 
 @Observable
-class AlertToastEventStatus {
+final class AlertToastEventStatus {
     public var isDoneButtonTapped = false
     public var isLoginSucceeded = false
 }
