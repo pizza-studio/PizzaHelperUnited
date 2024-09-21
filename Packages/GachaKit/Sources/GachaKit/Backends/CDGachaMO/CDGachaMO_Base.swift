@@ -14,7 +14,7 @@ import PZBaseKit
 /// 这也是为了方便直接继承旧版原披助手与穹披助手的云端资料。
 /// CDGachaMO 不曝露给前端使用，不直接用于 SwiftUI。
 
-public protocol CDGachaMOProtocol {
+public protocol CDGachaMOProtocol: Sendable {
     var id: String { get set }
     var uid: String { get set }
     var name: String { get set }
