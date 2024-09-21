@@ -187,3 +187,59 @@ extension SRGFv1.Info {
         return .init(timeIntervalSince1970: Double(exportTimestamp))
     }
 }
+
+// MARK: - Translating UIGF(HSR) Entries to SRGF Entries.
+
+/// 因为 UIGFv4 到 SRGFv1 的转换过程是无损转换，所以统一披萨引擎不再支持直接的 SRGFv1 导出。
+/// 对 SRGFv1 导出的导出流程定为：先生成 UIGFv4.ProfileHSR 再转换成 SRGFv1。
+
+extension SRGFv1.DataEntry {
+    public init(fromUIGFv4 source: UIGFv4.GachaItemHSR) {
+        self = .init(
+            gachaID: source.gachaID,
+            itemID: source.itemID,
+            time: source.time,
+            id: source.id,
+            gachaType: source.gachaType,
+            name: source.name,
+            rankType: source.rankType,
+            count: source.count,
+            itemType: source.itemType
+        )
+    }
+}
+
+extension UIGFv4.GachaItemHSR {
+    public var asSRGFv1Item: SRGFv1.DataEntry {
+        .init(fromUIGFv4: self)
+    }
+}
+
+extension SRGFv1.Info {
+    public init(fromUIGFv4 source: UIGFv4.ProfileHSR) {
+        self = .init(uid: source.uid, lang: source.lang ?? Locale.gachaLangauge)
+        self.regionTimeZone = source.timezone
+    }
+}
+
+extension SRGFv1 {
+    public init(fromUIGFv4 source: UIGFv4.ProfileHSR) {
+        self = .init(
+            info: .init(fromUIGFv4: source),
+            list: source.list.map(\.asSRGFv1Item)
+        )
+    }
+}
+
+extension UIGFv4.ProfileHSR {
+    public var asSRGFv1: SRGFv1 {
+        .init(fromUIGFv4: self)
+    }
+}
+
+extension UIGFv4 {
+    public func extractSRGFv1() -> [SRGFv1]? {
+        guard let uigfProfiles = hsrProfiles, !uigfProfiles.isEmpty else { return nil }
+        return uigfProfiles.map(\.asSRGFv1)
+    }
+}
