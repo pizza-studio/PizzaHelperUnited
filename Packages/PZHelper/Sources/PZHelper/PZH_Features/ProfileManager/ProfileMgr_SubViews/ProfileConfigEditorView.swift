@@ -34,7 +34,7 @@ struct ProfileConfigEditorView: View {
                     .pickerStyle(.segmented)
                     .fontWidth(.condensed)
                     .fixedSize()
-                }.onChange(of: unsavedProfile.game) { _, newValue in
+                }.onChange(of: unsavedProfile.game, initial: true) { _, newValue in
                     unsavedProfile.server.changeGame(to: newValue)
                     unsavedProfile.serverRawValue = unsavedProfile.server.rawValue
                 }
@@ -45,7 +45,7 @@ struct ProfileConfigEditorView: View {
                     #endif
                         .multilineTextAlignment(.trailing)
                 } label: { Text("UID") }
-                    .onChange(of: unsavedProfile.uid) { _, _ in
+                    .onChange(of: unsavedProfile.uid, initial: true) { _, _ in
                         let server = HoYo.Server(uid: unsavedProfile.uid, game: unsavedProfile.game)
                         guard let server else { return }
                         unsavedProfile.server = server
