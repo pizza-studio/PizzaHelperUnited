@@ -8,10 +8,11 @@ import SwiftUI
 public struct GachaEntryBar: View {
     // MARK: Lifecycle
 
-    public init(entry: GachaEntryExpressible, showDate: Bool = false) {
+    public init(entry: GachaEntryExpressible, showDate: Bool = false, debug: Bool = false) {
         self.entry = entry
         self.drawCount = entry.drawCount < 0 ? nil : entry.drawCount
         self.showDate = showDate
+        self.debug = debug
     }
 
     // MARK: Public
@@ -21,19 +22,35 @@ public struct GachaEntryBar: View {
             HStack {
                 entry.icon(35)
                 HStack {
-                    entry.nameView
-                        .fontWeight(.medium)
-                        .fontWidth(.condensed)
-                    itemIDText
-                        .fontWidth(.condensed)
+                    VStack(alignment: .leading) {
+                        HStack {
+                            entry.nameView
+                                .fontWeight(.medium)
+                                .fontWidth(.condensed)
+                            itemIDText
+                                .fontWidth(.condensed)
+                        }
+                        if debug {
+                            HStack {
+                                Text(verbatim: entry.id)
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                                    .fontWidth(.condensed)
+                            }
+                        }
+                    }
                     Spacer()
 
                     VStack(alignment: .trailing) {
                         if let drawCount, entry.rarity != .rank3 {
                             Text(drawCount.description)
-                                .font((showDate ?? false) ? .caption2 : .body)
+                                .font(showDate ? .caption2 : .body)
+                        } else if debug {
+                            Text(entry.uidWithGame)
+                                .font(.caption2)
+                                .fontWidth(.condensed)
                         }
-                        if showDate ?? false {
+                        if showDate {
                             Text(Self.dateFormatter.string(from: entry.time))
                                 .foregroundColor(.secondary)
                                 .font(.caption2)
@@ -41,16 +58,21 @@ public struct GachaEntryBar: View {
                     }
                 }
             }
-            #if DEBUG
-            .contextMenu {
-                    Text(verbatim: "Debug Info")
-                    Divider()
-                    Text(entry.itemType.getTranslatedRaw(game: entry.game))
-                    Text(entry.pool.localizedTitle)
-                    Divider()
-                    Text(entry.id)
+            .apply { theContent in
+                if !debug {
+                    theContent
+                } else {
+                    theContent
+                        .contextMenu {
+                            Text(verbatim: "Debug Info")
+                            Divider()
+                            Text(entry.itemType.getTranslatedRaw(game: entry.game))
+                            Text(entry.pool.localizedTitle)
+                            Divider()
+                            Text(entry.id)
+                        }
                 }
-            #endif
+            }
         }
     }
 
@@ -58,10 +80,11 @@ public struct GachaEntryBar: View {
 
     let entry: GachaEntryExpressible
     let drawCount: Int?
-    let showDate: Bool?
+    let showDate: Bool
+    let debug: Bool
 
     @MainActor var itemIDText: Text {
-        if showDate ?? false {
+        if showDate {
             Text(verbatim: "\(entry.itemID)")
                 .font(.caption).foregroundColor(.secondary)
         } else {
