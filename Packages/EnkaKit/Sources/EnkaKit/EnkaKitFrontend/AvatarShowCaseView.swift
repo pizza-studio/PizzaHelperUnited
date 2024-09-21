@@ -39,7 +39,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
                         .environment(orientation)
                         .overlay(alignment: .top) {
                             HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
-                        }.onChange(of: geometry.size) { _, _ in
+                        }.onChange(of: geometry.size, initial: true) { _, _ in
                             showTabViewIndex = $showTabViewIndex.wrappedValue // 强制重新渲染整个画面。
                         }
                 }

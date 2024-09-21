@@ -40,10 +40,7 @@ struct TestAccountSectionView: View {
                 }
             }
         }
-        .onAppear {
-            doTest()
-        }
-        .onChange(of: profile.cookie) {
+        .onChange(of: profile.cookie, initial: true) {
             doTest()
         }
     }

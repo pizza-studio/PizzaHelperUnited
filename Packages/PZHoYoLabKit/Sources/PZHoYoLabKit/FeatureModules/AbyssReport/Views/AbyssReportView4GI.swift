@@ -32,7 +32,7 @@ public struct AbyssReportView4GI: AbyssReportView {
             GeometryReader { geometry in
                 Color.clear.onAppear {
                     containerWidth = geometry.size.width
-                }.onChange(of: geometry.size.width) { _, newSize in
+                }.onChange(of: geometry.size.width, initial: true) { _, newSize in
                     containerWidth = newSize
                 }
             }
