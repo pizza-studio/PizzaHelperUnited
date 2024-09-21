@@ -477,6 +477,34 @@
         }
       }
     },
+    "gachaKit.menu.listCloudDataFromPreviousVersions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "List iCloud Gacha Records from old Pizza Apps"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "古いピザプリのiCloudデータからガチャ記録を点検"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检视旧版披萨应用的云端抽卡记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "檢視舊版披薩應用的雲端抽卡記錄"
+          }
+        }
+      }
+    },
     "gachaKit.menu.rebuildGachaUIDList" : {
       "localizations" : {
         "en" : {
