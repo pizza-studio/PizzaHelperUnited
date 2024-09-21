@@ -14,7 +14,7 @@ public actor PZProfileActor {
     // MARK: Lifecycle
 
     public init() {
-        self.modelContainer = Self.makeContainer()
+        modelContainer = Self.makeContainer()
         modelExecutor = DefaultSerialModelExecutor(
             modelContext: .init(modelContainer)
         )
@@ -40,14 +40,19 @@ public actor PZProfileActor {
         do {
             return try ModelContainer(for: Self.schema, configurations: [config])
         } catch {
-            do {
+            secondAttempt: do {
                 try FileManager.default.removeItem(at: config.url)
+                do {
+                    return try ModelContainer(for: Self.schema, configurations: [config])
+                } catch {
+                    break secondAttempt
+                }
             } catch {
                 fatalError(
                     "Could not remove wrecked PZProfileMO ModelContainer at \(config.url.absoluteString). Error: \(error)"
                 )
             }
-            fatalError("Could not create PZProfileMO ModelContainer at \(config.url.absoluteString): \(error)")
+            fatalError("Could not create PZProfileMO ModelContainer at \(config.url.absoluteString). Error: \(error)")
         }
     }
 }
