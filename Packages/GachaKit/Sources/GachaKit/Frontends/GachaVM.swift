@@ -33,6 +33,9 @@ public final class GachaVM: @unchecked Sendable {
 
     @MainActor public static var sharedContext: ModelContext?
 
+    @MainActor public var hasInheritableGachaEntries: Bool = false
+
+    public var oneTimeTask: Task<Void, Never>? // `.checkWhetherInheritableDataExists()` 专用。
     public var task: Task<Void, Never>?
     public var taskState: State = .standBy
     public var errorMsg: String?
@@ -97,6 +100,17 @@ extension GachaVM {
                 }
             } catch {
                 handleError(error)
+            }
+        }
+    }
+
+    /// This method is not supposed to have animation.
+    public func checkWhetherInheritableDataExists() {
+        oneTimeTask?.cancel()
+        oneTimeTask = Task {
+            let hasEntries = await GachaActor.shared.cdGachaMOSputnik.confirmWhetherHavingData()
+            Task { @MainActor in
+                hasInheritableGachaEntries = hasEntries
             }
         }
     }
