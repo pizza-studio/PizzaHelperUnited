@@ -11,7 +11,7 @@ import PZBaseKit
 // MARK: - CDGachaMOSputnik
 
 /// 警告：请务必不要直接初始化这个 class。请借由 GachaActor 来使用这个 class。
-public final class CDGachaMOSputnik: @unchecked Sendable {
+public final class CDGachaMOSputnik: Sendable {
     // MARK: Lifecycle
 
     public init(persistence: DBPersistenceMethod, backgroundContext: Bool) throws {
@@ -28,8 +28,8 @@ public final class CDGachaMOSputnik: @unchecked Sendable {
 
     // MARK: Public
 
-    public var hasData: Bool {
-        ((try? countAllCDGachaMOAsPZGachaEntryMO()) ?? 0) > 0
+    public func confirmWhetherHavingData() async -> Bool {
+        ((try? await countAllCDGachaMOAsPZGachaEntryMO()) ?? 0) > 0
     }
 
     public func allGachaDataMO(for game: Pizza.SupportedGame) throws -> [CDGachaMOProtocol] {
@@ -52,8 +52,12 @@ public final class CDGachaMOSputnik: @unchecked Sendable {
         } ?? 0
     }
 
-    public func countAllCDGachaMOAsPZGachaEntryMO() throws -> Int {
-        try countAllCDGachaMO(for: .genshinImpact) + countAllCDGachaMO(for: .starRail)
+    public func countAllCDGachaMOAsPZGachaEntryMO() async throws -> Int {
+        async let countGI = countAllCDGachaMO(for: .genshinImpact)
+        async let countHSR = countAllCDGachaMO(for: .starRail)
+        let intGI = try await countGI
+        let intHSR = try await countHSR
+        return intGI + intHSR
     }
 
     public func allCDGachaMOAsPZGachaEntryMO() throws -> [PZGachaEntrySendable] {
@@ -91,6 +95,6 @@ public final class CDGachaMOSputnik: @unchecked Sendable {
 
     // MARK: Private
 
-    private var db4GI: PersistentContainer
-    private var db4HSR: PersistentContainer
+    private let db4GI: PersistentContainer
+    private let db4HSR: PersistentContainer
 }

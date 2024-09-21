@@ -53,7 +53,7 @@ public struct GachaRootView: View {
                         NavigationLink("gachaKit.menu.listCloudDataFromPreviousVersions".i18nGachaKit) {
                             CDGachaMODebugView()
                         }
-                        if GachaActor.shared.cdGachaMOSputnik.hasData {
+                        if theVM.hasInheritableGachaEntries {
                             Button("gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit) {
                                 theVM.migrateOldGachasIntoProfiles()
                             }
@@ -67,6 +67,14 @@ public struct GachaRootView: View {
                     }
                 }
             }
+            .task {
+                if let task = theVM.oneTimeTask { await task.value }
+                if let task = theVM.task { await task.value }
+                if !theVM.hasInheritableGachaEntries {
+                    theVM.checkWhetherInheritableDataExists()
+                }
+            }
+            .disabled(theVM.taskState == .busy)
             .saturation(theVM.taskState == .busy ? 0 : 1)
             .environment(theVM)
     }

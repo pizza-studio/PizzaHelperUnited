@@ -16,8 +16,10 @@ public struct CDGachaMODebugView: View {
 
     @MainActor public var body: some View {
         Form {
-            let managedObjs = try! GachaActor.shared.cdGachaMOSputnik.allGachaDataMO(for: game)
-            if managedObjs.isEmpty {
+            if delegate.isBusy {
+                ProgressView()
+            }
+            if delegate.managedObjs.isEmpty {
                 Text(
                     verbatim:
                     """
@@ -32,7 +34,11 @@ public struct CDGachaMODebugView: View {
                 )
                 .font(.caption)
             }
-            ForEach(managedObjs, id: \.enumID) { gachaItemMO in
+            if let errorMsg = delegate.errorMsg {
+                Text(verbatim: errorMsg)
+                    .font(.caption)
+            }
+            ForEach(delegate.managedObjs, id: \.enumID) { gachaItemMO in
                 let theEntry = gachaItemMO.asPZGachaEntrySendable.expressible
                 GachaEntryBar(entry: theEntry, showDate: true, debug: true)
             }
@@ -40,25 +46,79 @@ public struct CDGachaMODebugView: View {
         .formStyle(.grouped)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Picker("".description, selection: $game.animation()) {
-                    ForEach(Self.oldGachaGames) { enumeratedGame in
-                        Text(enumeratedGame.localizedShortName)
-                            .tag(enumeratedGame)
+                HStack {
+                    Picker("".description, selection: $delegate.game.animation()) {
+                        ForEach(Self.oldGachaGames) { enumeratedGame in
+                            Text(enumeratedGame.localizedShortName)
+                                .tag(enumeratedGame)
+                        }
                     }
-                }
-                .pickerStyle(.segmented)
-                .onChange(of: game, initial: true) {
-                    print("Action")
+                    .pickerStyle(.segmented)
+                    .onChange(of: delegate.game, initial: true) {
+                        print("Action")
+                    }
                 }
             }
         }
-        .navigationTitle(game.localizedDescription)
+        .navigationTitle(delegate.game.localizedDescription)
         .navBarTitleDisplayMode(.large)
+        .onChange(of: delegate.game, initial: true) {
+            delegate.loadData()
+        }
     }
 
     // MARK: Internal
 
     static let oldGachaGames: [Pizza.SupportedGame] = [.genshinImpact, .starRail]
 
-    @State var game: Pizza.SupportedGame = .genshinImpact
+    @State var delegate = Coordinator()
+}
+
+// MARK: CDGachaMODebugView.Coordinator
+
+extension CDGachaMODebugView {
+    @Observable
+    final class Coordinator: @unchecked Sendable {
+        // MARK: Lifecycle
+
+        init() {}
+
+        // MARK: Internal
+
+        var task: Task<Void?, Never>?
+        var managedObjs: [any CDGachaMOProtocol] = []
+        var errorMsg: String?
+        var isBusy: Bool = false
+        var game: Pizza.SupportedGame = .genshinImpact
+
+        func loadData() {
+            task?.cancel()
+            managedObjs = []
+            isBusy = true
+            errorMsg = nil
+            task = Task {
+                await loadDataInternalTask()
+            }
+        }
+
+        func loadDataInternalTask() async {
+            do {
+                async let fetchedManagedObjs = try GachaActor.shared.cdGachaMOSputnik.allGachaDataMO(for: game)
+                let fetched: [any CDGachaMOProtocol] = try await fetchedManagedObjs
+                Task { @MainActor in
+                    withAnimation {
+                        managedObjs = fetched
+                        isBusy = false
+                    }
+                }
+            } catch {
+                Task { @MainActor in
+                    withAnimation {
+                        errorMsg = "\(error)"
+                        isBusy = false
+                    }
+                }
+            }
+        }
+    }
 }
