@@ -1098,25 +1098,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pom-Pom’s Appraisement"
+            "value" : "Mitsuki Nanoka’s Appraisement"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "パムのご評価"
+            "value" : "三月なのかのご評価"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "帕姆的评价"
+            "value" : "三月七的评价"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "帕姆的評價"
+            "value" : "三月七的評價"
           }
         }
       }
