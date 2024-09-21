@@ -41,7 +41,7 @@ public struct ContentView: View {
         }
         #endif
         .tint(tintForCurrentTab)
-        .onChange(of: selection) { _, _ in
+        .onChange(of: selection) {
             simpleTaptic(type: .selection)
         }
         // .initializeApp()

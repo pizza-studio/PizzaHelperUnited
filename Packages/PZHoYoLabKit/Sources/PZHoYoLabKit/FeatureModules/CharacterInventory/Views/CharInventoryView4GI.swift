@@ -108,7 +108,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
             GeometryReader { geometry in
                 Color.clear.onAppear {
                     containerSize = geometry.size
-                }.onChange(of: geometry.size) { _, newSize in
+                }.onChange(of: geometry.size, initial: true) { _, newSize in
                     containerSize = newSize
                 }
             }
