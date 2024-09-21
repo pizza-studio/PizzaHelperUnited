@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @preconcurrency import CoreData
+import Foundation
 import PZBaseKit
 import SwiftData
 
@@ -35,10 +36,18 @@ public actor PZProfileActor {
     }
 
     public static func makeContainer() -> ModelContainer {
+        let config = Self.modelConfig
         do {
-            return try ModelContainer(for: Self.schema, configurations: [Self.modelConfig])
+            return try ModelContainer(for: Self.schema, configurations: [config])
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            do {
+                try FileManager.default.removeItem(at: config.url)
+            } catch {
+                fatalError(
+                    "Could not remove wrecked PZProfileMO ModelContainer at \(config.url.absoluteString). Error: \(error)"
+                )
+            }
+            fatalError("Could not create PZProfileMO ModelContainer at \(config.url.absoluteString): \(error)")
         }
     }
 }
