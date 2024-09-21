@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="GachaItemMO" representedClassName="CloudGachaMO4HSR" syncable="YES">
         <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="gachaID" optional="YES" attributeType="String"/>
         <attribute name="gachaTypeRawValue" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="itemID" attributeType="String" defaultValueString=""/>
+        <attribute name="itemID" optional="YES" attributeType="String"/>
         <attribute name="itemTypeRawValue" optional="YES" attributeType="String"/>
         <attribute name="langRawValue" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
