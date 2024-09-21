@@ -31,6 +31,9 @@ let package = Package(
         .package(
             url: "https://github.com/CoreOffice/CoreXLSX", .upToNextMajor(from: "0.14.2")
         ),
+        .package(
+            url: "https://github.com/toastersocks/MultiPicker", .upToNextMajor(from: "1.1.0")
+        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -46,6 +49,7 @@ let package = Package(
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
                 .product(name: "CoreXLSX", package: "CoreXLSX"),
+                .product(name: "MultiPicker", package: "MultiPicker"),
             ],
             resources: [
                 .process("Resources/"),
