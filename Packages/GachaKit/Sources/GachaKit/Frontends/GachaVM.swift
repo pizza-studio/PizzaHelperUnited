@@ -13,7 +13,7 @@ import SwiftUI
 // MARK: - GachaVM
 
 @Observable
-public class GachaVM: @unchecked Sendable {
+public final class GachaVM: @unchecked Sendable {
     // MARK: Lifecycle
 
     public init() {}
@@ -38,6 +38,7 @@ public class GachaVM: @unchecked Sendable {
     public var errorMsg: String?
     public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     public private(set) var currentPentaStars: [GachaEntryExpressible] = []
+    public private(set) var currentExportableDocument: GachaDocument?
 
     public var currentGPID: GachaProfileID? {
         didSet {
