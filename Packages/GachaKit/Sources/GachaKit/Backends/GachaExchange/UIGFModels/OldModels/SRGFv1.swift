@@ -177,7 +177,7 @@ extension SRGFv1.Info {
         self.srgfVersion = "v1.0"
         self.regionTimeZone = GachaKit.getServerTimeZoneDelta(uid: uid, game: .starRail)
         self.exportTimestamp = Int(Date.now.timeIntervalSince1970)
-        self.exportApp = "PizzaHelper4HSR"
+        self.exportApp = "UnitedPizzaHelper"
         let shortVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         self.exportAppVersion = shortVer ?? "1.14.514"
     }

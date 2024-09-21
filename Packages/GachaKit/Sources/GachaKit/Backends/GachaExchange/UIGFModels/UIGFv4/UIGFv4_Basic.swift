@@ -150,7 +150,7 @@ extension UIGFv4.Info {
     // MARK: Lifecycle
 
     public init() {
-        self.exportApp = "PizzaHelper4HSR"
+        self.exportApp = "UnitedPizzaHelper"
         let shortVer = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         self.exportAppVersion = shortVer ?? "1.14.514"
         self.exportTimestamp = Int(Date.now.timeIntervalSince1970).description
