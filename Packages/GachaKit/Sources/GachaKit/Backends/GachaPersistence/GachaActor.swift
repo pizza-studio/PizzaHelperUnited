@@ -16,8 +16,8 @@ import SwiftData
 public actor GachaActor {
     // MARK: Lifecycle
 
-    public init() {
-        self.modelContainer = Self.makeContainer()
+    public init(unitTests: Bool = false) {
+        modelContainer = unitTests ? Self.makeContainer4UnitTests() : Self.makeContainer()
         modelExecutor = DefaultSerialModelExecutor(
             modelContext: .init(modelContainer)
         )
@@ -30,6 +30,33 @@ public actor GachaActor {
 
 extension GachaActor {
     public static let shared = GachaActor()
+
+    public static func makeContainer4UnitTests() -> ModelContainer {
+        do {
+            return try ModelContainer(
+                for:
+                PZGachaEntryMO.self,
+                PZGachaProfileMO.self,
+                configurations:
+                ModelConfiguration(
+                    "PZGachaEntryMO",
+                    schema: Self.schema4Entries,
+                    isStoredInMemoryOnly: true,
+                    groupContainer: .none,
+                    cloudKitDatabase: .none
+                ),
+                ModelConfiguration(
+                    "PZGachaProfileMO",
+                    schema: schema4Profiles,
+                    isStoredInMemoryOnly: true,
+                    groupContainer: .none,
+                    cloudKitDatabase: .none
+                )
+            )
+        } catch {
+            fatalError("Could not create in-memory ModelContainer: \(error)")
+        }
+    }
 
     public static func makeContainer() -> ModelContainer {
         do {
