@@ -19,7 +19,6 @@ struct UtilsTabPage: View {
         case wallpaperGallery
         case pizzaDictionary
         case hoyoMap
-        case gachaCloudDebug
     }
 
     @MainActor var body: some View {
@@ -75,11 +74,6 @@ struct UtilsTabPage: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
-                #if DEBUG
-                NavigationLink(value: Nav.gachaCloudDebug) {
-                    Label("# Gacha Cloud Debug".i18nPZHelper, systemSymbol: .cloudFogFill)
-                }
-                #endif
             }
             #if os(iOS) || targetEnvironment(macCatalyst)
             .listStyle(.insetGrouped)
@@ -104,9 +98,8 @@ struct UtilsTabPage: View {
             case .gachaManager: GachaRootView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
-            case .gachaCloudDebug: EmptyView() // CDGachaMODebugView()
             case .hoyoMap: HoYoMapView()
-            case .none: EmptyView() // CDGachaMODebugView()
+            case .none: WallpaperGalleryViewContent()
             }
         }
     }
