@@ -49,12 +49,16 @@ public struct GachaRootView: View {
                         NavigationLink("gachaKit.menu.exchangeGachaRecords") {
                             EmptyView() // ExchangeGachaView()
                         }.disabled(true)
+                        Divider()
+                        NavigationLink("gachaKit.menu.listCloudDataFromPreviousVersions".i18nGachaKit) {
+                            CDGachaMODebugView()
+                        }
                         if GachaActor.shared.cdGachaMOSputnik.hasData {
-                            Divider()
                             Button("gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit) {
                                 theVM.migrateOldGachasIntoProfiles()
                             }
                         }
+                        Divider()
                         Button("gachaKit.menu.rebuildGachaUIDList".i18nGachaKit) {
                             theVM.rebuildGachaUIDList()
                         }
