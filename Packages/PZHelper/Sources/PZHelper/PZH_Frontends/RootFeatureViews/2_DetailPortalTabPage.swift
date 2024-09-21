@@ -178,7 +178,7 @@ struct DetailPortalTabPage: View {
             content.toolbar {
                 if delegate.currentProfile != nil {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("", systemImage: "arrow.clockwise") {
+                        Button("".description, systemImage: "arrow.clockwise") {
                             refreshAction()
                         }
                     }
