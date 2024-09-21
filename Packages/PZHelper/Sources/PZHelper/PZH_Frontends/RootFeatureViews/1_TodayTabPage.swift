@@ -42,7 +42,7 @@ struct TodayTabPage: View {
             .navigationTitle("tab.today.fullTitle".i18nPZHelper)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("", systemImage: "arrow.clockwise") { refresh() }
+                    Button("".description, systemImage: "arrow.clockwise") { refresh() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     gamePicker
