@@ -158,7 +158,7 @@ extension GachaActor {
     }
 }
 
-// MARK: - UIGF Exporter APIs.
+// MARK: - UIGF & SRGF Exporter APIs.
 
 extension GachaActor {
     public func prepareUIGFv4(
@@ -187,12 +187,51 @@ extension GachaActor {
         return try UIGFv4(info: .init(), entries: entries, lang: lang)
     }
 
+    public func prepareSRGFv1(
+        for owner: GachaProfileID,
+        lang: GachaLanguage = Locale.gachaLangauge
+    ) throws
+        -> SRGFv1 {
+        var entries = [any PZGachaEntryProtocol]()
+        var descriptor = FetchDescriptor<PZGachaEntryMO>()
+        let theUID = owner.uid
+        let theGame = owner.game.rawValue
+        descriptor.predicate = #Predicate { currentEntry in
+            currentEntry.game == theGame && currentEntry.uid == theUID
+        }
+        try modelContext.enumerate(descriptor) { entry in
+            entries.append(entry.asSendable)
+        }
+        let uigfProfiles = try entries.extractProfiles(UIGFv4.GachaItemHSR.self, lang: lang)
+        let srgfEntries = uigfProfiles.map(\.list).reduce([], +).map(\.asSRGFv1Item)
+        return .init(info: .init(uid: owner.uid, lang: lang), list: srgfEntries)
+    }
+
     public func prepareUIGFv4Document(
         for owners: [GachaProfileID]? = nil,
         lang: GachaLanguage = Locale.gachaLangauge
     ) throws
         -> GachaDocument {
-        let model = try prepareUIGFv4(for: owners, lang: lang)
-        return .init(model: model)
+        .init(model: try prepareUIGFv4(for: owners, lang: lang))
+    }
+
+    public func prepareSRGFv4Document(
+        for owner: GachaProfileID,
+        lang: GachaLanguage = Locale.gachaLangauge
+    ) throws
+        -> GachaDocument {
+        .init(model: try prepareSRGFv1(for: owner, lang: lang))
+    }
+
+    public func prepareGachaDocument(
+        for owner: GachaProfileID,
+        format: GachaVM.ExportableFormat,
+        lang: GachaLanguage = Locale.gachaLangauge
+    ) throws
+        -> GachaDocument {
+        switch format {
+        case .asUIGFv4: .init(model: try prepareUIGFv4(for: [owner], lang: lang))
+        case .asSRGFv1: .init(model: try prepareSRGFv1(for: owner, lang: lang))
+        }
     }
 }
