@@ -155,7 +155,7 @@ extension [PZGachaEntryProtocol] {
         _ type: T.Type,
         lang: GachaLanguage = .current
     ) throws
-        -> [UIGFv4.Profile<T>] {
+        -> [UIGFv4.Profile<T>]? {
         let mapped: [GachaProfileID: [(gpid: GachaProfileID, entry: T)]] =
             Dictionary(grouping: try extractItem(T.self)) { $0.gpid }
         var profiles = [UIGFv4.Profile<T>]()
@@ -174,7 +174,7 @@ extension [PZGachaEntryProtocol] {
                 )
             )
         }
-        return profiles
+        return profiles.isEmpty ? nil : profiles
     }
 }
 
