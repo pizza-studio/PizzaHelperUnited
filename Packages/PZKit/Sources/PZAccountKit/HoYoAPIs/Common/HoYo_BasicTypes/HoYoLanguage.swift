@@ -10,23 +10,33 @@ import PZBaseKit
 extension HoYo {
     /// 米哈游 API 所用的语言标识。
     public enum APILang: String, CaseIterable, Sendable, Identifiable {
-        case langCHS = "zh-cn"
-        case langCHT = "zh-tw"
-        case langJP = "ja-jp"
-        case langKR = "ko-kr"
-        case langEN = "en-us"
         case langDE = "de-de"
+        case langEN = "en-us"
         case langES = "es-es"
         case langFR = "fr-fr"
         case langID = "id-id"
         case langIT = "it-it" // 原神专用
+        case langJP = "ja-jp"
+        case langKR = "ko-kr"
         case langPT = "pt-pt"
         case langRU = "ru-ru"
         case langTH = "th-th"
         case langTR = "tr-tr" // 原神专用
         case langVI = "vi-vn"
+        case langCHS = "zh-cn"
+        case langCHT = "zh-tw"
 
         // MARK: Public
+
+        public static let cjkLanguages: [Self] = [.langCHS, .langCHT, .langJP, .langKR]
+
+        public static let allCasesSorted: [Self] = {
+            var result: [Self] = [.current] + cjkLanguages
+            let prioritizesCJK = cjkLanguages.contains(.current)
+            let index4NonCJK: [Self].Index = prioritizesCJK ? result.endIndex : 1
+            result.insert(contentsOf: allCases, at: index4NonCJK)
+            return result.reduce(into: [Self]()) { if !$0.contains($1) { $0.append($1) } }
+        }()
 
         public static var current: Self {
             Locale.hoyoAPILanguage
