@@ -82,7 +82,7 @@ public struct GachaRootView: View {
     @Environment(\.modelContext) fileprivate var modelContext
     @Query(sort: \PZProfileMO.priority) fileprivate var pzProfiles: [PZProfileMO]
     @Query fileprivate var pzGachaProfileIDs: [PZGachaProfileMO]
-    @State fileprivate var theVM: GachaVM = .shared
+    @Environment(GachaVM.self) fileprivate var theVM
 }
 
 extension GachaRootView {
