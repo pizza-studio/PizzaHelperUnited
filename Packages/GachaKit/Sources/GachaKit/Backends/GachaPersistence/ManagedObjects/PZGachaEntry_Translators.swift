@@ -144,8 +144,8 @@ extension PZGachaEntryProtocol {
 extension [PZGachaEntryProtocol] {
     func extractItem<T: UIGFGachaItemProtocol>(_ type: T.Type) throws -> [(gpid: GachaProfileID, entry: T)] {
         try compactMap {
-            if let matched = try $0.toUIGFGachaEntry(for: T.game) as? T {
-                return (gpid: GachaProfileID(uid: $0.uid, game: T.game), entry: matched)
+            if let matched = try $0.toUIGFGachaEntry(for: $0.gameTyped) as? T {
+                return (gpid: GachaProfileID(uid: $0.uid, game: $0.gameTyped), entry: matched)
             }
             return nil
         }
@@ -162,6 +162,7 @@ extension [PZGachaEntryProtocol] {
         // 筛掉不受游戏支持的语言。
         let lang = lang.sanitized(by: T.game)
         try mapped.forEach { gpid, setData in
+            guard gpid.game == T.game else { return }
             var list: [T] = setData.map(\.entry)
             try list.updateLanguage(lang)
             profiles.append(

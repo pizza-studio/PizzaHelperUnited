@@ -63,5 +63,8 @@ extension UIGFv4 {
         public var timezone: Int
         /// UID
         public var uid: String
+
+        /// 对应的游戏
+        public var game: Pizza.SupportedGame { ItemType.game }
     }
 }
