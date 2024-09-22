@@ -12,9 +12,6 @@ public enum PZHelper {
             for: PZProfileMO.self, PZGachaEntryMO.self, PZGachaProfileMO.self,
             configurations: PZProfileActor.modelConfig, GachaActor.modelConfig4Profiles, GachaActor.modelConfig4Entries
         )
-        Task { @MainActor in
-            GachaVM.sharedContext = result.mainContext
-        }
         return result
     }()
 }

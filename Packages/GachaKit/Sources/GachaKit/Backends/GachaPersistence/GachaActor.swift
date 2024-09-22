@@ -29,7 +29,7 @@ public actor GachaActor {
 }
 
 extension GachaActor {
-    public static let shared = GachaActor()
+    public static var shared = GachaActor()
 
     public static func makeContainer4UnitTests() -> ModelContainer {
         do {
