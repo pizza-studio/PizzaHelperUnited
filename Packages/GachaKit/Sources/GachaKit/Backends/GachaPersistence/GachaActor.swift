@@ -212,26 +212,26 @@ extension GachaActor {
         lang: GachaLanguage = Locale.gachaLangauge
     ) throws
         -> GachaDocument {
-        .init(model: try prepareUIGFv4(for: owners, lang: lang))
+        .init(theUIGFv4: try prepareUIGFv4(for: owners, lang: lang))
     }
 
-    public func prepareSRGFv4Document(
+    public func prepareSRGFv1Document(
         for owner: GachaProfileID,
         lang: GachaLanguage = Locale.gachaLangauge
     ) throws
         -> GachaDocument {
-        .init(model: try prepareSRGFv1(for: owner, lang: lang))
+        .init(theSRGFv1: try prepareSRGFv1(for: owner, lang: lang))
     }
 
     public func prepareGachaDocument(
         for owner: GachaProfileID,
-        format: GachaVM.ExportableFormat,
+        format: GachaExchange.ExportableFormat,
         lang: GachaLanguage = Locale.gachaLangauge
     ) throws
         -> GachaDocument {
         switch format {
-        case .asUIGFv4: .init(model: try prepareUIGFv4(for: [owner], lang: lang))
-        case .asSRGFv1: .init(model: try prepareSRGFv1(for: owner, lang: lang))
+        case .asUIGFv4: .init(theUIGFv4: try prepareUIGFv4(for: [owner], lang: lang))
+        case .asSRGFv1: .init(theSRGFv1: try prepareSRGFv1(for: owner, lang: lang))
         }
     }
 }
