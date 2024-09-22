@@ -4,10 +4,8 @@
 
 import PZBaseKit
 
-// MARK: - Formats Importable & Exportable.
-
-extension GachaVM {
-    public enum ExportableFormat: String, Sendable, Identifiable, CaseIterable {
+public enum GachaExchange {
+    public enum ExportableFormat: String, Sendable, Identifiable, CaseIterable, Hashable {
         case asUIGFv4
         case asSRGFv1
 
@@ -30,7 +28,7 @@ extension GachaVM {
         }
     }
 
-    public enum ExportableOptions: Sendable, Identifiable {
+    public enum ExportPackageMethod: Sendable, Identifiable, Hashable {
         case specifiedOwners([GachaProfileID])
         case singleOwner(GachaProfileID)
         case allOwners
@@ -60,7 +58,7 @@ extension GachaVM {
         }
 
         public var localizedName: String {
-            "gachaKit.exportableOptions.\(id)"
+            "gachaKit.exportPackageMethod.\(id)".i18nGachaKit
         }
 
         public func supportedExportableFormats(by game: Pizza.SupportedGame) -> [ExportableFormat] {
@@ -71,7 +69,7 @@ extension GachaVM {
         }
     }
 
-    public enum ImportableFormat: String, Sendable, Identifiable, CaseIterable {
+    public enum ImportableFormat: String, Sendable, Identifiable, CaseIterable, Hashable {
         case asUIGFv4
         case asSRGFv1
         case asGIGFJson
@@ -99,5 +97,3 @@ extension GachaVM {
         }
     }
 }
-
-// MARK: - Extra Tasks dedicated for Gacha Data Exchange (UIGF, etc.)

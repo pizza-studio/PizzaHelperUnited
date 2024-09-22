@@ -4,6 +4,7 @@
 
 import Defaults
 import EnkaKit
+import GachaMetaDB
 import Observation
 import PZAccountKit
 import PZBaseKit
@@ -36,10 +37,10 @@ public final class GachaVM: @unchecked Sendable {
     public var task: Task<Void, Never>?
     @MainActor public var hasInheritableGachaEntries: Bool = false
     @MainActor public var taskState: State = .standBy
-    @MainActor public var errorMsg: String?
+    @MainActor public var currentError: Error?
     @MainActor public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     @MainActor public private(set) var currentPentaStars: [GachaEntryExpressible] = []
-    @MainActor public private(set) var currentExportableDocument: GachaDocument?
+    @MainActor public var currentExportableDocument: GachaDocument?
 
     @MainActor public var currentGPID: GachaProfileID? {
         didSet {
@@ -72,7 +73,7 @@ extension GachaVM {
     @MainActor
     public func handleError(_ error: Error) {
         withAnimation {
-            errorMsg = "\(error)"
+            currentError = error
             taskState = .standBy
         }
         GachaActor.shared.modelExecutor.modelContext.rollback()
@@ -80,11 +81,39 @@ extension GachaVM {
     }
 
     @MainActor
+    public func updateGMDB(for games: [Pizza.SupportedGame]) {
+        task?.cancel()
+        withAnimation {
+            taskState = .busy
+            currentError = nil
+        }
+        task = Task {
+            do {
+                var games = games
+                if games.isEmpty {
+                    games = Pizza.SupportedGame.allCases
+                }
+                for game in games {
+                    try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: game)
+                }
+                Task { @MainActor in
+                    withAnimation {
+                        taskState = .standBy
+                        currentError = nil
+                    }
+                }
+            } catch {
+                handleError(error)
+            }
+        }
+    }
+
+    @MainActor
     public func rebuildGachaUIDList() {
         task?.cancel()
         withAnimation {
             taskState = .busy
-            errorMsg = nil
+            currentError = nil
         }
         task = Task {
             do {
@@ -95,7 +124,7 @@ extension GachaVM {
                             resetDefaultProfile()
                         }
                         taskState = .standBy
-                        errorMsg = nil
+                        currentError = nil
                     }
                 }
             } catch {
@@ -121,7 +150,7 @@ extension GachaVM {
         task?.cancel()
         withAnimation {
             taskState = .busy
-            errorMsg = nil
+            currentError = nil
         }
         task = Task {
             do {
@@ -132,7 +161,7 @@ extension GachaVM {
                             resetDefaultProfile()
                         }
                         taskState = .standBy
-                        errorMsg = nil
+                        currentError = nil
                     }
                 }
             } catch {
@@ -152,7 +181,7 @@ extension GachaVM {
         task?.cancel()
         withAnimation {
             taskState = .busy
-            errorMsg = nil
+            currentError = nil
         }
         task = Task {
             let filtered = getCurrentPentaStars()
@@ -160,7 +189,7 @@ extension GachaVM {
                 withAnimation {
                     currentPentaStars = filtered
                     taskState = .standBy
-                    errorMsg = nil
+                    currentError = nil
                     // 此处不需要检查 currentGPID 是否为 nil。
                 }
             }
@@ -179,7 +208,7 @@ extension GachaVM {
         task?.cancel()
         withAnimation {
             taskState = .busy
-            errorMsg = nil
+            currentError = nil
         }
         task = Task {
             do {
@@ -215,7 +244,42 @@ extension GachaVM {
                         mappedEntriesByPools = mappedEntries
                         currentPentaStars = pentaStars
                         taskState = .standBy
-                        errorMsg = nil
+                        currentError = nil
+                        // 此处不需要检查 currentGPID 是否为 nil。
+                    }
+                }
+            } catch {
+                handleError(error)
+            }
+        }
+    }
+
+    @MainActor
+    public func prepareGachaDocumentForExport(
+        packaging pkgMethod: GachaExchange.ExportPackageMethod,
+        format: GachaExchange.ExportableFormat,
+        lang: GachaLanguage = Locale.gachaLangauge
+    ) {
+        task?.cancel()
+        withAnimation {
+            taskState = .busy
+            currentError = nil
+        }
+        task = Task {
+            do {
+                let packagedDocument: GachaDocument = switch pkgMethod {
+                case let .singleOwner(gpid):
+                    try await GachaActor.shared.prepareGachaDocument(for: gpid, format: format, lang: lang)
+                case let .specifiedOwners(owners):
+                    try await GachaActor.shared.prepareUIGFv4Document(for: owners, lang: lang)
+                case .allOwners:
+                    try await GachaActor.shared.prepareUIGFv4Document(for: nil, lang: lang)
+                }
+                Task { @MainActor in
+                    withAnimation {
+                        self.currentExportableDocument = packagedDocument
+                        taskState = .standBy
+                        currentError = nil
                         // 此处不需要检查 currentGPID 是否为 nil。
                     }
                 }

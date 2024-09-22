@@ -42,13 +42,16 @@ public struct GachaRootView: View {
                     Menu {
                         NavigationLink("gachaKit.menu.getGachaRecords") {
                             EmptyView() // GetGachaRecordView()
+                                .environment(theVM)
                         }.disabled(true)
                         NavigationLink("gachaKit.menu.manageGachaRecords") {
                             EmptyView() // ManageGachaRecordView()
+                                .environment(theVM)
                         }.disabled(true)
-                        NavigationLink("gachaKit.menu.exchangeGachaRecords") {
-                            EmptyView() // ExchangeGachaView()
-                        }.disabled(true)
+                        NavigationLink("gachaKit.menu.exchangeGachaRecords".i18nGachaKit) {
+                            GachaExchangeView()
+                                .environment(theVM)
+                        }
                         Divider()
                         NavigationLink("gachaKit.menu.listCloudDataFromPreviousVersions".i18nGachaKit) {
                             CDGachaMODebugView()
