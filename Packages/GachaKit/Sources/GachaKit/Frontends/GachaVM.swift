@@ -81,7 +81,7 @@ extension GachaVM {
     }
 
     @MainActor
-    public func updateGMDB(for games: [Pizza.SupportedGame]) {
+    public func updateGMDB(for games: [Pizza.SupportedGame?]? = nil) {
         task?.cancel()
         withAnimation {
             taskState = .busy
@@ -89,7 +89,7 @@ extension GachaVM {
         }
         task = Task {
             do {
-                var games = games
+                var games = (games ?? []).compactMap { $0 }
                 if games.isEmpty {
                     games = Pizza.SupportedGame.allCases
                 }
