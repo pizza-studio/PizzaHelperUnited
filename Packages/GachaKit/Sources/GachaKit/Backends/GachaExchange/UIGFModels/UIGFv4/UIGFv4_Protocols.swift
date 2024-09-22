@@ -81,6 +81,8 @@ extension Array where Element: UIGFGachaItemProtocol {
             newItem.itemType = itemTypeRaw.getTranslatedRaw(for: lang, game: currentItem.game)
             if let newName = theDB.plainQueryForNames(itemID: newItem.itemID, langID: lang.rawValue) {
                 newItem.name = newName
+            } else {
+                throw GachaMeta.GMDBError.databaseExpired
             }
             newItemContainer.append(newItem)
         }
