@@ -30,27 +30,24 @@ public final class GachaVM: @unchecked Sendable {
     }
 
     public static let shared = GachaVM()
-
     @MainActor public static var sharedContext: ModelContext?
 
-    @MainActor public var hasInheritableGachaEntries: Bool = false
-
-    public var oneTimeTask: Task<Void, Never>? // `.checkWhetherInheritableDataExists()` 专用。
     public var task: Task<Void, Never>?
-    public var taskState: State = .standBy
-    public var errorMsg: String?
-    public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
-    public private(set) var currentPentaStars: [GachaEntryExpressible] = []
-    public private(set) var currentExportableDocument: GachaDocument?
+    @MainActor public var hasInheritableGachaEntries: Bool = false
+    @MainActor public var taskState: State = .standBy
+    @MainActor public var errorMsg: String?
+    @MainActor public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
+    @MainActor public private(set) var currentPentaStars: [GachaEntryExpressible] = []
+    @MainActor public private(set) var currentExportableDocument: GachaDocument?
 
-    public var currentGPID: GachaProfileID? {
+    @MainActor public var currentGPID: GachaProfileID? {
         didSet {
             currentPoolType = Self.defaultPoolType(for: currentGPID?.game)
             updateMappedEntriesByPools()
         }
     }
 
-    public var currentPoolType: GachaPoolExpressible? {
+    @MainActor public var currentPoolType: GachaPoolExpressible? {
         didSet {
             updateCurrentPentaStars()
         }
@@ -71,6 +68,7 @@ public final class GachaVM: @unchecked Sendable {
 // MARK: - Tasks and Error Handlers.
 
 extension GachaVM {
+    @MainActor
     public func handleError(_ error: Error) {
         withAnimation {
             errorMsg = "\(error)"
@@ -80,6 +78,7 @@ extension GachaVM {
         task?.cancel()
     }
 
+    @MainActor
     public func rebuildGachaUIDList() {
         task?.cancel()
         withAnimation {
@@ -105,9 +104,10 @@ extension GachaVM {
     }
 
     /// This method is not supposed to have animation.
+    @MainActor
     public func checkWhetherInheritableDataExists() {
-        oneTimeTask?.cancel()
-        oneTimeTask = Task {
+        task?.cancel()
+        task = Task {
             let hasEntries = await GachaActor.shared.cdGachaMOSputnik.confirmWhetherHavingData()
             Task { @MainActor in
                 hasInheritableGachaEntries = hasEntries
@@ -115,6 +115,7 @@ extension GachaVM {
         }
     }
 
+    @MainActor
     public func migrateOldGachasIntoProfiles() {
         task?.cancel()
         withAnimation {
@@ -139,6 +140,7 @@ extension GachaVM {
         }
     }
 
+    @MainActor
     public func updateCurrentPentaStars() {
         guard currentGPID != nil else {
             withAnimation {
@@ -164,6 +166,7 @@ extension GachaVM {
         }
     }
 
+    @MainActor
     public func updateMappedEntriesByPools() {
         guard let currentGPID else {
             withAnimation {
@@ -225,6 +228,7 @@ extension GachaVM {
 // MARK: - Profile Switchers and other tools.
 
 extension GachaVM {
+    @MainActor
     fileprivate func getCurrentPentaStars(
         from mappedEntries: [GachaPoolExpressible: [GachaEntryExpressible]]? = nil
     )
@@ -281,16 +285,14 @@ extension GachaVM {
     public func resetDefaultProfile() {
         let sortedGPIDs = allGPIDs
         guard !sortedGPIDs.isEmpty else { return }
-        withAnimation {
-            if let matched = allPZProfiles.first {
-                let firstExistingProfile = sortedGPIDs.first {
-                    $0.uid == matched.uid && $0.game == matched.game
-                }
-                guard let firstExistingProfile else { return }
-                currentGPID = firstExistingProfile
-            } else {
-                currentGPID = sortedGPIDs.first
+        if let matched = allPZProfiles.first {
+            let firstExistingProfile = sortedGPIDs.first {
+                $0.uid == matched.uid && $0.game == matched.game
             }
+            guard let firstExistingProfile else { return }
+            currentGPID = firstExistingProfile
+        } else {
+            currentGPID = sortedGPIDs.first
         }
     }
 }

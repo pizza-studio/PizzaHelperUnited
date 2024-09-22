@@ -17,6 +17,7 @@ public struct GachaProfileSwitcherView: View {
 
     @MainActor public var body: some View {
         profileSwitcherMenu()
+            .saturation(theVM.taskState == .busy ? 0 : 1)
             .disabled(theVM.taskState == .busy || pzGachaProfileIDs.isEmpty)
             .onAppear {
                 // rebuildGachaUIDList() // 需額外評估是否就這樣砍掉這一行。

@@ -37,6 +37,7 @@ public struct GachaProfileView: View {
             GachaProfileDetailedListView()
                 .environment(theVM)
         }
+        .saturation(theVM.taskState == .busy ? 0 : 1)
         .disabled(theVM.taskState == .busy)
     }
 
