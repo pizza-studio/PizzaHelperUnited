@@ -37,11 +37,13 @@ public struct GachaEntryNameView: View {
             } else {
                 result = nil
             }
-            return result
-                ?? metaDB.mainDB4GI.plainQueryForNames(
-                    itemID: entry.itemID, langID: lang.rawValue
-                )
-                ?? entry.name
+            if let result { return result }
+            result = metaDB.mainDB4GI.plainQueryForNames(
+                itemID: entry.itemID, langID: lang.rawValue
+            )
+            if let result { return result }
+            theVM.currentError = GachaMeta.GMDBError.databaseExpired(game: entry.game)
+            return entry.name
         case .starRail:
             var result: String?
             if lang == .current {
@@ -51,14 +53,20 @@ public struct GachaEntryNameView: View {
             } else {
                 result = nil
             }
-            return result
-                ?? metaDB.mainDB4HSR.plainQueryForNames(
-                    itemID: entry.itemID, langID: lang.rawValue
-                )
-                ?? entry.name
+            if let result { return result }
+            result = metaDB.mainDB4HSR.plainQueryForNames(
+                itemID: entry.itemID, langID: lang.rawValue
+            )
+            if let result { return result }
+            theVM.currentError = GachaMeta.GMDBError.databaseExpired(game: entry.game)
+            return entry.name
         case .zenlessZone: return entry.name // 暂不处理。
         }
     }
+
+    // MARK: Fileprivate
+
+    @Environment(GachaVM.self) fileprivate var theVM
 
     // MARK: Private
 
