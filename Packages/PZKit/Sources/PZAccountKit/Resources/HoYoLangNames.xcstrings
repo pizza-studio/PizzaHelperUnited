@@ -1,12 +1,128 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "hoyo.lang.chs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simplified Chinese"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chinois simplifié"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cinese Semplificato"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "簡体字中国語"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중국어 간체"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Упрощенный Китайский"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếng Trung Giản Thể"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "简体中文"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "簡體中文"
+          }
+        }
+      }
+    },
+    "hoyo.lang.cht" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traditional Chinese"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chinois traditionnel"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cinese Tradizionale"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繁体字中国語"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중국어(번체)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Традиционный Китайский"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếng Trung Phồn Thể"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繁体中文"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繁體中文"
+          }
+        }
+      }
+    },
     "hoyo.lang.de" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "German"
+            "value" : "Deutsch (German)"
           }
         },
         "fr" : {
@@ -24,7 +140,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ドイツ語"
+            "value" : "ドイツ語 (独逸語)"
           }
         },
         "ko" : {
@@ -59,7 +175,7 @@
         }
       }
     },
-    "hoyo.lang.enUS" : {
+    "hoyo.lang.en" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -140,7 +256,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "スペイン語"
+            "value" : "スペイン語 (西班牙語)"
           }
         },
         "ko" : {
@@ -198,7 +314,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "フランス語"
+            "value" : "フランス語 (仏蘭西語)"
           }
         },
         "ko" : {
@@ -256,7 +372,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "インドネシア語"
+            "value" : "インドネシア語 (印度尼西亜語)"
           }
         },
         "ko" : {
@@ -291,7 +407,65 @@
         }
       }
     },
-    "hoyo.lang.ja" : {
+    "hoyo.lang.it" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italian"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italien"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italiano"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "イタリア語 (伊太利亜語)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이탈리아어"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Итальянский"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếng Ý"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "意大利文"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "義大利文"
+          }
+        }
+      }
+    },
+    "hoyo.lang.jp" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -349,7 +523,7 @@
         }
       }
     },
-    "hoyo.lang.ko" : {
+    "hoyo.lang.kr" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -430,7 +604,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ポルトガル語"
+            "value" : "ポルトガル語 (葡萄牙語)"
           }
         },
         "ko" : {
@@ -488,7 +662,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ロシア語"
+            "value" : "ロシア語 (露西亜語)"
           }
         },
         "ko" : {
@@ -524,7 +698,6 @@
       }
     },
     "hoyo.lang.th" : {
-      "comment" : "gacha avaliable language",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -547,7 +720,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "タイ語"
+            "value" : "タイ語 (泰語)"
           }
         },
         "ko" : {
@@ -582,6 +755,64 @@
         }
       }
     },
+    "hoyo.lang.tr" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turkish"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turc"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turco"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トルコ語 (土耳古語)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "터키어"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Турецкий"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếng Thổ Nhĩ Kỳ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "土耳其文"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "土耳其文"
+          }
+        }
+      }
+    },
     "hoyo.lang.vi" : {
       "localizations" : {
         "en" : {
@@ -605,7 +836,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ベトナム語"
+            "value" : "ベトナム語 (越南語)"
           }
         },
         "ko" : {
@@ -636,122 +867,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "越南文"
-          }
-        }
-      }
-    },
-    "hoyo.lang.zhHans" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Simplified Chinese"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chinois simplifié"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cinese Semplificato"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "簡体字中国語"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "중국어 간체"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Упрощенный Китайский"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiếng Trung Giản Thể"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "简体中文"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "簡體中文"
-          }
-        }
-      }
-    },
-    "hoyo.lang.zhHant" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Traditional Chinese"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chinois traditionnel"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cinese Tradizionale"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "繁体字中国語"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "중국어(번체)"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Традиционный Китайский"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiếng Trung Phồn Thể"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "繁体中文"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "繁體中文"
           }
         }
       }
