@@ -74,7 +74,7 @@ public final class CDGachaMOSputnik: Sendable {
                 Task { @MainActor in
                     try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
                 }
-                throw GachaMeta.GMDBError.databaseExpired
+                throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
             }
         }
         // StarRail.

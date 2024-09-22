@@ -31,7 +31,7 @@ extension GachaFetchModels.PageFetched.FetchedEntry {
                 newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
             }
             guard let newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name) else {
-                throw GachaMeta.GMDBError.databaseExpired
+                throw GachaMeta.GMDBError.databaseExpired(game: game)
             }
             result.itemID = newItemID.description
         }
@@ -68,7 +68,7 @@ extension PZGachaEntryProtocol {
             newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
         }
         guard let newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name) else {
-            throw GachaMeta.GMDBError.databaseExpired
+            throw GachaMeta.GMDBError.databaseExpired(game: gameTyped)
         }
         itemID = newItemID.description
     }
@@ -83,7 +83,7 @@ extension PZGachaEntryProtocol {
             newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
         }
         guard let newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name) else {
-            throw GachaMeta.GMDBError.databaseExpired
+            throw GachaMeta.GMDBError.databaseExpired(game: gameTyped)
         }
         result.itemID = newItemID.description
         return result

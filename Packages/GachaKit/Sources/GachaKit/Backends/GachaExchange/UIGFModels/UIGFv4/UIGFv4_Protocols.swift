@@ -82,7 +82,7 @@ extension Array where Element: UIGFGachaItemProtocol {
             if let newName = theDB.plainQueryForNames(itemID: newItem.itemID, langID: lang.rawValue) {
                 newItem.name = newName
             } else {
-                throw GachaMeta.GMDBError.databaseExpired
+                throw GachaMeta.GMDBError.databaseExpired(game: currentItem.game)
             }
             newItemContainer.append(newItem)
         }

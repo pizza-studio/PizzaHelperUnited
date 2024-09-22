@@ -49,7 +49,7 @@ extension UIGFv4 {
                             try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
                         }
                     }
-                    throw GachaMeta.GMDBError.databaseExpired
+                    throw GachaMeta.GMDBError.databaseExpired(game: ItemType.game)
                 }
             }
         }

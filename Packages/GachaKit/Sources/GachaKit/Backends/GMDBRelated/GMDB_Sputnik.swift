@@ -123,7 +123,7 @@ extension GachaMeta {
     public enum GMDBError: Error, LocalizedError {
         case emptyFetchResult
         case resultFetchFailure(subError: Error)
-        case databaseExpired
+        case databaseExpired(game: Pizza.SupportedGame)
         case itemIDInvalid(name: String, game: Pizza.SupportedGame)
 
         // MARK: Public
