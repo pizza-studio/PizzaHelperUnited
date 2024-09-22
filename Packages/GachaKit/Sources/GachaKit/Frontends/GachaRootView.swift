@@ -65,17 +65,15 @@ public struct GachaRootView: View {
                     } label: {
                         Image(systemSymbol: .goforwardPlus)
                     }
+                    .disabled(theVM.taskState == .busy)
                 }
             }
             .task {
-                if let task = theVM.oneTimeTask { await task.value }
                 if let task = theVM.task { await task.value }
                 if !theVM.hasInheritableGachaEntries {
                     theVM.checkWhetherInheritableDataExists()
                 }
             }
-            .disabled(theVM.taskState == .busy)
-            .saturation(theVM.taskState == .busy ? 0 : 1)
             .environment(theVM)
     }
 
