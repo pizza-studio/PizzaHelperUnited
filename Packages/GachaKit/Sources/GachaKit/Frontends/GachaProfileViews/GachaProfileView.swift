@@ -17,6 +17,9 @@ public struct GachaProfileView: View {
 
     @MainActor public var body: some View {
         poolPickerSection
+        if let gpid = theVM.currentGPID {
+            GachaEntryExpiredRow(alwaysVisible: false, games: [gpid.game])
+        }
         Section {
             GachaChartHorizontal(
                 gpid: theVM.currentGPID,
