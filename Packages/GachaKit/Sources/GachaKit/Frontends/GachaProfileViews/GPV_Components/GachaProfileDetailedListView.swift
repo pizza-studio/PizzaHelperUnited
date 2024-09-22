@@ -32,6 +32,7 @@ public struct GachaProfileDetailedListView: View {
                         GachaEntryBar(entry: entry, showDate: showDate)
                             .padding(.horizontal)
                             .padding(.vertical, 4)
+                            .environment(theVM)
                     }
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
