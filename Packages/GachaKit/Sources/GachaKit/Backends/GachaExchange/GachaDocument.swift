@@ -15,13 +15,27 @@ public struct GachaDocument: FileDocument {
         let uigfModel = try? JSONDecoder().decode(UIGFv4.self, from: configuration.file.regularFileContents!)
         if let uigfModel {
             self.model = uigfModel
+            self.fileNameStem = uigfModel.defaultFileNameStem
         } else {
-            self.model = try JSONDecoder().decode(SRGFv1.self, from: configuration.file.regularFileContents!)
+            let srgfModel = try JSONDecoder().decode(SRGFv1.self, from: configuration.file.regularFileContents!)
+            self.model = srgfModel
+            self.fileNameStem = srgfModel.defaultFileNameStem
         }
     }
 
-    public init(model: Codable & Sendable) {
+    public init(model: Codable & Sendable, fileNameStem: String) {
         self.model = model
+        self.fileNameStem = fileNameStem
+    }
+
+    public init(theUIGFv4: UIGFv4) {
+        self.model = theUIGFv4
+        self.fileNameStem = theUIGFv4.defaultFileNameStem
+    }
+
+    public init(theSRGFv1: SRGFv1) {
+        self.model = theSRGFv1
+        self.fileNameStem = theSRGFv1.defaultFileNameStem
     }
 
     // MARK: Public
@@ -29,6 +43,8 @@ public struct GachaDocument: FileDocument {
     public static let readableContentTypes: [UTType] = [.json]
 
     public let model: Codable & Sendable
+
+    public var fileNameStem: String
 
     public func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         let encoder = JSONEncoder()
