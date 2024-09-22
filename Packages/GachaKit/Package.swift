@@ -32,6 +32,9 @@ let package = Package(
             url: "https://github.com/CoreOffice/CoreXLSX", .upToNextMajor(from: "0.14.2")
         ),
         .package(
+            url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")
+        ),
+        .package(
             url: "https://github.com/toastersocks/MultiPicker", .upToNextMajor(from: "1.1.0")
         ),
     ],
@@ -49,6 +52,7 @@ let package = Package(
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
                 .product(name: "CoreXLSX", package: "CoreXLSX"),
+                .product(name: "AlertToast", package: "AlertToast"),
                 .product(name: "MultiPicker", package: "MultiPicker"),
             ],
             resources: [
