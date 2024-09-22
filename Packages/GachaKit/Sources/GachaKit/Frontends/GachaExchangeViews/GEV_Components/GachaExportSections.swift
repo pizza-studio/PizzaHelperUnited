@@ -27,24 +27,7 @@ public struct GachaExportSections: View {
             }
 
             if case let .databaseExpired(game) = theVM.currentError as? GachaMeta.GMDBError {
-                VStack {
-                    Button {
-                        theVM.updateGMDB(for: [game])
-                    } label: {
-                        Text("gachaKit.export.clickHereToUpdateGMDB".i18nGachaKit)
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(8)
-                            .background {
-                                RoundedRectangle(cornerRadius: 8).foregroundStyle(.primary.opacity(0.1))
-                            }
-                            .foregroundStyle(.red)
-                    }
-                    Text("gachaKit.export.gmdbExpired.explanation".i18nGachaKit)
-                        .font(.footnote).foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
+                GachaEntryExpiredRow(alwaysVisible: true, games: [game])
             } else if theVM.taskState != .busy {
                 Button {
                     theVM.prepareGachaDocumentForExport(
