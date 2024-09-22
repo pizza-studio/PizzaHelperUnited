@@ -25,6 +25,7 @@ public struct GachaEntryBar: View {
                     VStack(alignment: .leading) {
                         HStack {
                             entry.nameView
+                                .environment(theVM)
                                 .fontWeight(.medium)
                                 .fontWidth(.condensed)
                             itemIDText

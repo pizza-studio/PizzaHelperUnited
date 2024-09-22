@@ -153,6 +153,7 @@ public struct GachaChartVertical: View {
                 if let theValue = value.as(String.self),
                    let entry = matchedEntries(among: givenEntries, with: theValue).first {
                     entry.nameView
+                        .environment(theVM)
                         .padding(.bottom, 4)
                         .offset(y: givenEntries.count == 1 ? 0 : 8)
                 } else {
