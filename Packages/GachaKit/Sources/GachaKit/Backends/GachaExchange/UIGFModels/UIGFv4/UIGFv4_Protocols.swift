@@ -70,6 +70,7 @@ extension Array where Element: UIGFGachaItemProtocol {
             guard Int(currentItem.itemID) != nil else {
                 throw GachaMeta.GMDBError.itemIDInvalid(name: currentItem.name ?? "", game: currentItem.game)
             }
+            let lang = lang.sanitized(by: currentItem.game)
             let theDB: [String: GachaItemMetadata] = switch currentItem.game {
             case .genshinImpact: GachaMeta.sharedDB.mainDB4GI
             case .starRail: GachaMeta.sharedDB.mainDB4HSR

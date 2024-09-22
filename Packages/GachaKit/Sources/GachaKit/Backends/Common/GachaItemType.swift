@@ -65,6 +65,7 @@ extension GachaItemType {
     }
 
     public func getTranslatedRaw(for lang: GachaLanguage = .current, game: Pizza.SupportedGame) -> String {
+        let lang = lang.sanitized(by: game)
         switch game {
         case .genshinImpact:
             switch (self, lang) {
