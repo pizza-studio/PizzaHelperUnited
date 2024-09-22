@@ -4,6 +4,7 @@
 
 @preconcurrency import Defaults
 import EnkaKit
+import GachaKit
 import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
@@ -44,13 +45,13 @@ public struct ContentView: View {
         .onChange(of: selection) {
             simpleTaptic(type: .selection)
         }
+        .environment(GachaVM(modelContext: modelContext))
         // .initializeApp()
     }
 
     // MARK: Internal
 
-    @preconcurrency
-    enum NavItems: Int, View, CaseIterable, Identifiable {
+    enum NavItems: Int, View, CaseIterable, Identifiable, Sendable {
         case today = 1
         case showcaseDetail = 2
         case utils = 3
@@ -127,6 +128,7 @@ public struct ContentView: View {
     }()
 
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.modelContext) private var modelContext
 
     private var tintForCurrentTab: Color {
         switch NavItems(rawValue: selection) {
