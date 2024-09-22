@@ -202,7 +202,7 @@ extension GachaActor {
         try modelContext.enumerate(descriptor) { entry in
             entries.append(entry.asSendable)
         }
-        let uigfProfiles = try entries.extractProfiles(UIGFv4.GachaItemHSR.self, lang: lang)
+        let uigfProfiles = try entries.extractProfiles(UIGFv4.GachaItemHSR.self, lang: lang) ?? []
         let srgfEntries = uigfProfiles.map(\.list).reduce([], +).map(\.asSRGFv1Item)
         return .init(info: .init(uid: owner.uid, lang: lang), list: srgfEntries)
     }

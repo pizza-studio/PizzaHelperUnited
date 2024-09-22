@@ -47,6 +47,15 @@ extension UIGFv4 {
         msg += "// \(keyName) は必ず有効な値しか処理できません。"
         return DecodingError.dataCorrupted(.init(codingPath: [key], debugDescription: msg))
     }
+
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        // 此处用 if let 免得生成的 JSON 出现空阵列。
+        if let giProfiles { try container.encode(giProfiles, forKey: .giProfiles) }
+        if let hsrProfiles { try container.encode(hsrProfiles, forKey: .hsrProfiles) }
+        if let zzzProfiles { try container.encode(zzzProfiles, forKey: .zzzProfiles) }
+        try container.encode(info, forKey: .info)
+    }
 }
 
 extension UIGFv4 {
