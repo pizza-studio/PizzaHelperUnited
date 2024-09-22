@@ -225,7 +225,7 @@ extension CaseQuerySection {
                     let profile = try await enkaDB.query(for: givenUID.description)
                     // 检查本地 EnkaDB 是否过期，过期了的话就尝试更新。
                     if enkaDB.checkIfExpired(against: profile) {
-                        let factoryDB = CoordinatedDB(locTag: Enka.currentLangTag)
+                        let factoryDB = try CoordinatedDB(locTag: Enka.currentLangTag)
                         if factoryDB.checkIfExpired(against: profile) {
                             enkaDB.update(new: factoryDB)
                         } else {

@@ -19,7 +19,7 @@ public protocol EnkaDBProtocol: AnyObject, Sendable {
     @MainActor static var shared: Self { get }
 
     init(host: Enka.HostType) async throws
-    init(locTag: String?)
+    init(locTag: String?) throws
 
     func getNameTextMapHash(id: String) -> String?
     func checkIfExpired(against givenProfile: QueriedProfile) -> Bool
@@ -36,9 +36,6 @@ public protocol EnkaDBProtocol: AnyObject, Sendable {
 extension EnkaDBProtocol {
     public typealias QueriedAvatar = QueriedProfile.QueriedAvatar
     public typealias SummarizedType = Enka.ProfileSummarized<Self>
-    public init(locTag: String? = nil) {
-        self.init(locTag: locTag)
-    }
 
     public var game: Enka.GameType { Self.game }
     public var needsUpdate: Bool {
