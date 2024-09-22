@@ -92,6 +92,10 @@ public struct GachaEntryBar: View {
         }
     }
 
+    // MARK: Fileprivate
+
+    @Environment(GachaVM.self) fileprivate var theVM
+
     // MARK: Private
 
     private static let dateFormatter: DateFormatter = {
