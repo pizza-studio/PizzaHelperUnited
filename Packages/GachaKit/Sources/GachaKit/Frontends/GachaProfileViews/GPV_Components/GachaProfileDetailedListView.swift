@@ -98,6 +98,7 @@ public struct GachaProfileDetailedListView: View {
                     }
                 }
                 Toggle("gachaKit.filter.showDate".i18nGachaKit, isOn: $showDate.animation())
+                GachaEntryExpiredRow(alwaysVisible: false, games: [theProfile.game])
             } header: {
                 Text("gachaKit.filter.options".i18nGachaKit).textCase(.none)
             }
