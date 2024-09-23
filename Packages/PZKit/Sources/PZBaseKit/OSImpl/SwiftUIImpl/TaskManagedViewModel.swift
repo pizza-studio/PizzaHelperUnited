@@ -49,7 +49,7 @@ open class TaskManagedViewModel {
 
     @MainActor
     public func fireTask<T: Sendable>(
-        prerequisite: (condition: Bool, notMetHandler: () -> Void)? = nil,
+        prerequisite: (condition: Bool, notMetHandler: (() -> Void)?)? = nil,
         animatedPreparationTask: (() -> Void)? = nil,
         cancelPreviousTask: Bool = true,
         givenTask: @escaping () async throws -> T?,
@@ -57,8 +57,10 @@ open class TaskManagedViewModel {
         errorHandler: ((Error) -> Void)? = nil
     ) {
         if let prerequisite, !prerequisite.condition {
-            withAnimation {
-                prerequisite.notMetHandler()
+            if let notMetHandler = prerequisite.notMetHandler {
+                withAnimation {
+                    notMetHandler()
+                }
             }
             return
         }
