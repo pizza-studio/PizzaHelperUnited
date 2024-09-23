@@ -16,7 +16,7 @@ public struct CDGachaMODebugView: View {
 
     @MainActor public var body: some View {
         Form {
-            if delegate.isBusy {
+            if delegate.taskState == .busy {
                 ProgressView()
             }
             if delegate.managedObjs.isEmpty {
@@ -34,8 +34,8 @@ public struct CDGachaMODebugView: View {
                 )
                 .font(.caption)
             }
-            if let errorMsg = delegate.errorMsg {
-                Text(verbatim: errorMsg)
+            if let error = delegate.currentError {
+                Text(verbatim: "\(error)")
                     .font(.caption)
             }
             ForEach(delegate.managedObjs, id: \.enumID) { gachaItemMO in
@@ -71,54 +71,34 @@ public struct CDGachaMODebugView: View {
 
     static let oldGachaGames: [Pizza.SupportedGame] = [.genshinImpact, .starRail]
 
-    @State var delegate = Coordinator()
+    @State var delegate = CDGachaMODebugVM()
 }
 
-// MARK: CDGachaMODebugView.Coordinator
+// MARK: CDGachaMODebugView.CDGachaMODebugVM
 
 extension CDGachaMODebugView {
     @Observable
-    final class Coordinator: @unchecked Sendable {
-        // MARK: Lifecycle
+    final class CDGachaMODebugVM: TaskManagedViewModel {
+        @MainActor var game: Pizza.SupportedGame = .genshinImpact
+        @MainActor var managedObjs: [any CDGachaMOProtocol] = []
 
-        init() {}
-
-        // MARK: Internal
-
-        var task: Task<Void?, Never>?
-        var managedObjs: [any CDGachaMOProtocol] = []
-        var errorMsg: String?
-        var isBusy: Bool = false
-        var game: Pizza.SupportedGame = .genshinImpact
-
+        @MainActor
         func loadData() {
-            task?.cancel()
-            managedObjs = []
-            isBusy = true
-            errorMsg = nil
-            task = Task {
-                await loadDataInternalTask()
-            }
-        }
-
-        func loadDataInternalTask() async {
-            do {
-                async let fetchedManagedObjs = try GachaActor.shared.cdGachaMOSputnik.allGachaDataMO(for: game)
-                let fetched: [any CDGachaMOProtocol] = try await fetchedManagedObjs
-                Task { @MainActor in
-                    withAnimation {
-                        managedObjs = fetched
-                        isBusy = false
-                    }
+            let game = game // 使其变成 Sendable.
+            fireTask(
+                animatedPreparationTask: {
+                    self.managedObjs.removeAll()
+                },
+                cancelPreviousTask: true, // 强制重新读入。
+                givenTask: {
+                    async let fetchedManagedObjs = try GachaActor.shared.cdGachaMOSputnik.allGachaDataMO(for: game)
+                    let fetched: [any CDGachaMOProtocol] = try await fetchedManagedObjs
+                    return fetched
+                },
+                completionHandler: { fetched in
+                    self.managedObjs = fetched ?? []
                 }
-            } catch {
-                Task { @MainActor in
-                    withAnimation {
-                        errorMsg = "\(error)"
-                        isBusy = false
-                    }
-                }
-            }
+            )
         }
     }
 }
