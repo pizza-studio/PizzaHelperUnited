@@ -54,7 +54,6 @@ struct PhotoSpecimenView: View {
     // MARK: Private
 
     @State private var game: Enka.GameType = .genshinImpact
-    @State private var isBusy: Bool = false
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 }
