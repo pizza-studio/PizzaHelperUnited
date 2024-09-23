@@ -14,7 +14,7 @@ import SwiftUI
 // MARK: - GachaVM
 
 @Observable
-public final class GachaVM: TaskManagedViewModel {
+public final class GachaVM: TaskManagedVM {
     // MARK: Lifecycle
 
     @MainActor

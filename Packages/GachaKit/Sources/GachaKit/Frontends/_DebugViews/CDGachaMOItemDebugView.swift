@@ -78,7 +78,7 @@ public struct CDGachaMODebugView: View {
 
 extension CDGachaMODebugView {
     @Observable
-    final class CDGachaMODebugVM: TaskManagedViewModel {
+    final class CDGachaMODebugVM: TaskManagedVM {
         @MainActor var game: Pizza.SupportedGame = .genshinImpact
         @MainActor var managedObjs: [any CDGachaMOProtocol] = []
 
