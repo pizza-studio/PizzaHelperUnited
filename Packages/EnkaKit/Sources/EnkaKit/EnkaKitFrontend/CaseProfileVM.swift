@@ -7,7 +7,7 @@ import Observation
 import PZBaseKit
 
 @Observable
-final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedViewModel {
+final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
     // MARK: Lifecycle
 
     /// 展柜 ViewModel 的建构子。
