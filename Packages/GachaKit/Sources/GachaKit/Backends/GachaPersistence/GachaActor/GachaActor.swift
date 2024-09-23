@@ -2,8 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import CoreData
-import EnkaKit
 import Foundation
 import GachaMetaDB
 import PZAccountKit
@@ -106,15 +104,22 @@ extension GachaActor {
 
     public func migrateOldGachasIntoProfiles() throws {
         let oldData = try cdGachaMOSputnik.allCDGachaMOAsPZGachaEntryMO()
-        try batchInsert(oldData)
+        try batchInsert(oldData, refreshGachaProfiles: true)
     }
 
-    public func batchInsert(_ sources: [PZGachaEntrySendable]) throws {
+    @discardableResult
+    public func batchInsert(
+        _ sources: [PZGachaEntrySendable],
+        refreshGachaProfiles: Bool = false
+    ) throws
+        -> Int {
         let allExistingEntryIDs: [String] = try modelContext.fetch(FetchDescriptor<PZGachaEntryMO>()).map(\.id)
         var profiles: Set<GachaProfileID> = .init()
+        var insertedEntriesCount = 0
         sources.forEach { theEntry in
             if !allExistingEntryIDs.contains(theEntry.id) {
                 modelContext.insert(theEntry.asMO)
+                insertedEntriesCount += 1
             }
             let profile = GachaProfileID(uid: theEntry.uid, game: theEntry.gameTyped)
             if !profiles.contains(profile) {
@@ -123,7 +128,10 @@ extension GachaActor {
         }
         try modelContext.save()
         // try lazyRefreshProfiles(newProfiles: profiles)
-        try refreshAllProfiles()
+        if refreshGachaProfiles {
+            try refreshAllProfiles()
+        }
+        return insertedEntriesCount
     }
 
     public func lazyRefreshProfiles(newProfiles: Set<GachaProfileID>? = nil) throws {
@@ -155,83 +163,5 @@ extension GachaActor {
         try modelContext.save()
         profiles.forEach { modelContext.insert($0.asMO) }
         try modelContext.save()
-    }
-}
-
-// MARK: - UIGF & SRGF Exporter APIs.
-
-extension GachaActor {
-    public func prepareUIGFv4(
-        for owners: [GachaProfileID]? = nil,
-        lang: GachaLanguage = Locale.gachaLangauge
-    ) throws
-        -> UIGFv4 {
-        var entries = [PZGachaEntrySendable]()
-        var descriptor = FetchDescriptor<PZGachaEntryMO>()
-        if let owners, !owners.isEmpty {
-            try owners.forEach { pfID in
-                let theUID = pfID.uid
-                let theGame = pfID.game.rawValue
-                descriptor.predicate = #Predicate { currentEntry in
-                    currentEntry.game == theGame && currentEntry.uid == theUID
-                }
-                try modelContext.enumerate(descriptor) { entry in
-                    entries.append(entry.asSendable)
-                }
-            }
-        } else {
-            try modelContext.enumerate(descriptor) { entry in
-                entries.append(entry.asSendable)
-            }
-        }
-        return try UIGFv4(info: .init(), entries: entries, lang: lang)
-    }
-
-    public func prepareSRGFv1(
-        for owner: GachaProfileID,
-        lang: GachaLanguage = Locale.gachaLangauge
-    ) throws
-        -> SRGFv1 {
-        var entries = [any PZGachaEntryProtocol]()
-        var descriptor = FetchDescriptor<PZGachaEntryMO>()
-        let theUID = owner.uid
-        let theGame = owner.game.rawValue
-        descriptor.predicate = #Predicate { currentEntry in
-            currentEntry.game == theGame && currentEntry.uid == theUID
-        }
-        try modelContext.enumerate(descriptor) { entry in
-            entries.append(entry.asSendable)
-        }
-        let uigfProfiles = try entries.extractProfiles(UIGFv4.GachaItemHSR.self, lang: lang) ?? []
-        let srgfEntries = uigfProfiles.map(\.list).reduce([], +).map(\.asSRGFv1Item)
-        return .init(info: .init(uid: owner.uid, lang: lang), list: srgfEntries)
-    }
-
-    public func prepareUIGFv4Document(
-        for owners: [GachaProfileID]? = nil,
-        lang: GachaLanguage = Locale.gachaLangauge
-    ) throws
-        -> GachaDocument {
-        .init(theUIGFv4: try prepareUIGFv4(for: owners, lang: lang))
-    }
-
-    public func prepareSRGFv1Document(
-        for owner: GachaProfileID,
-        lang: GachaLanguage = Locale.gachaLangauge
-    ) throws
-        -> GachaDocument {
-        .init(theSRGFv1: try prepareSRGFv1(for: owner, lang: lang))
-    }
-
-    public func prepareGachaDocument(
-        for owner: GachaProfileID,
-        format: GachaExchange.ExportableFormat,
-        lang: GachaLanguage = Locale.gachaLangauge
-    ) throws
-        -> GachaDocument {
-        switch format {
-        case .asUIGFv4: .init(theUIGFv4: try prepareUIGFv4(for: [owner], lang: lang))
-        case .asSRGFv1: .init(theSRGFv1: try prepareSRGFv1(for: owner, lang: lang))
-        }
     }
 }

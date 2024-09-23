@@ -66,5 +66,24 @@ extension UIGFv4 {
 
         /// 对应的游戏
         public var game: Pizza.SupportedGame { ItemType.game }
+
+        /// 对应的 GachaProfileID
+        public var gachaProfileID: GachaProfileID { .init(uid: uid, game: game) }
+    }
+}
+
+extension UIGFv4 {
+    func extractGachaProfileIDs() -> [GachaProfileID] {
+        var results = Set<GachaProfileID>()
+        giProfiles?.forEach { profile in
+            results.insert(profile.gachaProfileID)
+        }
+        hsrProfiles?.forEach { profile in
+            results.insert(profile.gachaProfileID)
+        }
+        zzzProfiles?.forEach { profile in
+            results.insert(profile.gachaProfileID)
+        }
+        return results.sorted { $0.uidWithGame < $1.uidWithGame }
     }
 }

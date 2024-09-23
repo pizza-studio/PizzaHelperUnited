@@ -73,4 +73,51 @@ extension Date {
         guard let date = dateFormatter.date(from: hoyoExpression) else { return nil }
         self = date
     }
+
+    public static func shiftUIGFTimeStampTimeZone(
+        from oldTimeZoneDelta: Int,
+        to newTimeZoneDelta: Int,
+        against targetTimeStr: inout String
+    ) throws {
+        guard oldTimeZoneDelta != newTimeZoneDelta else { return }
+        let formatterOld = DateFormatter.forUIGFEntry(timeZoneDelta: oldTimeZoneDelta)
+        let formatterNew = DateFormatter.forUIGFEntry(timeZoneDelta: newTimeZoneDelta)
+        let dateParsed = formatterOld.date(from: targetTimeStr)
+        guard let dateParsed else {
+            throw GachaKit.EntryException.timeRawValueNotParsable(rawString: targetTimeStr)
+        }
+        targetTimeStr = formatterNew.string(from: dateParsed)
+    }
+
+    public static func shiftUIGFTimeStampTimeZone(
+        formatterOld: DateFormatter, formatterNew: DateFormatter,
+        against targetTimeStr: inout String
+    ) throws {
+        guard formatterOld.timeZone != formatterNew.timeZone else { return }
+        let dateParsed = formatterOld.date(from: targetTimeStr)
+        guard let dateParsed else {
+            throw GachaKit.EntryException.timeRawValueNotParsable(rawString: targetTimeStr)
+        }
+        targetTimeStr = formatterNew.string(from: dateParsed)
+    }
+}
+
+// MARK: - GachaKit.EntryException
+
+extension GachaKit {
+    public enum EntryException: Error, LocalizedError {
+        case timeRawValueNotParsable(rawString: String)
+
+        // MARK: Public
+
+        public var errorDescription: String? { localizedDescription }
+
+        public var localizedDescription: String {
+            switch self {
+            case let .timeRawValueNotParsable(rawString):
+                return "gachaKit.EntryException.timeRawValueNotParsable".i18nGachaKit
+                    + " // \(rawString)"
+            }
+        }
+    }
 }

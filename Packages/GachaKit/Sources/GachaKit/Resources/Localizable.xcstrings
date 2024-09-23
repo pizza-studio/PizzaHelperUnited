@@ -113,6 +113,34 @@
         }
       }
     },
+    "gachaKit.EntryException.timeRawValueNotParsable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time RawValue not parsable."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time の原始データは解読不可。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法正常解讀原始時間戳資料值。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法正常解读原始时间戳资料值。"
+          }
+        }
+      }
+    },
     "gachaKit.exchange.currentFileFormat" : {
       "localizations" : {
         "en" : {
