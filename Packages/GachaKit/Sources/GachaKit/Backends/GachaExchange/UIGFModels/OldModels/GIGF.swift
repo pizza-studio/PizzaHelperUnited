@@ -24,7 +24,7 @@ import UniformTypeIdentifiers
 /// 最终写入 App 自身的 CoreData 资料库的内容一定是简体中文，这个步骤由 UIGFv4 把关。
 ///
 /// Ref: [UIGF](https://uigf.org/zh/standards/uigf.html)
-struct GIGF: Decodable {
+public struct GIGF: Decodable {
     // MARK: Lifecycle
 
     public init(info: Info, list: [GIGFGachaItem]) {
@@ -42,16 +42,7 @@ struct GIGF: Decodable {
 
     // MARK: Public
 
-    public var info: Info
-    public internal(set) var list: [GIGFGachaItem]
-
-    public var needsItemIDFix: Bool {
-        !list.filter { $0.itemID.isEmpty }.isEmpty
-    }
-
-    // MARK: Internal
-
-    struct Info: Decodable {
+    public struct Info: Decodable {
         // MARK: Lifecycle
 
         init(
@@ -74,7 +65,7 @@ struct GIGF: Decodable {
             self.regionTimeZone = regionTimeZone
         }
 
-        init(from decoder: Decoder) throws {
+        public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.uid = try container.decode(String.self, forKey: .uid)
 
@@ -136,6 +127,15 @@ struct GIGF: Decodable {
         let uigfVersion: String?
     }
 
+    public var info: Info
+    public internal(set) var list: [GIGFGachaItem]
+
+    public var needsItemIDFix: Bool {
+        !list.filter { $0.itemID.isEmpty }.isEmpty
+    }
+
+    // MARK: Internal
+
     enum CodingKeys: CodingKey {
         case info
         case list
@@ -145,7 +145,7 @@ struct GIGF: Decodable {
 // MARK: - GIGFGachaItem
 
 /// UIGFv2~v3 格式（也就是 GIGF 格式）的 GachaItem。
-struct GIGFGachaItem: Decodable {
+public struct GIGFGachaItem: Decodable {
     // MARK: Lifecycle
 
     fileprivate init(
@@ -170,7 +170,7 @@ struct GIGFGachaItem: Decodable {
         self.uigfGachaType = uigfGachaType
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let gcTypeStr = try container.decodeIfPresent(String.self, forKey: .gachaType) {
             self.gachaType = GachaTypeGI(rawValue: gcTypeStr)
@@ -278,7 +278,7 @@ extension GIGF {
 
 extension GIGF {
     /// 注意：这个方法不会自动尝试修复 GIGF (UIGFv2.2 & v2.3) 的时区资讯。
-    func upgradeTo4thGenerationProfile() -> UIGFv4.ProfileGI {
+    func upgradeToUIGFv4Profile() -> UIGFv4.ProfileGI {
         // MARK: Info
 
         var newInfo = UIGFv4.ProfileGI(
@@ -361,7 +361,7 @@ extension GIGF {
     private static func guessLanguages(for text: String) -> [GachaLanguage] {
         recognizer.languageConstraints = GachaLanguage.allCases.compactMap { $0.nlLanguage }
         Self.recognizer.processString(text)
-        return Self.recognizer.languageHypotheses(withMaximum: 114_514).sorted {
+        return Self.recognizer.languageHypotheses(withMaximum: 114514).sorted {
             $0.value > $1.value
         }.compactMap { tag in
             GachaLanguage(langTag: tag.key.rawValue)
@@ -483,7 +483,7 @@ extension XLSXFile {
                 var newFile = GIGF(info: info, list: item)
                 newFile.fixItemIDs()
                 newFile.fixTimeZoneIfNil()
-                giProfiles.append(newFile.upgradeTo4thGenerationProfile())
+                giProfiles.append(newFile.upgradeToUIGFv4Profile())
             }
         }
 
