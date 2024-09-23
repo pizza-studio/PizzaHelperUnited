@@ -841,6 +841,34 @@
         }
       }
     },
+    "gachaKit.GachaRootView.navDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app does not contain paid gacha. The Gacha Record Manager in this app only allows users to manage their personal gacha records for some of the games supported by this app. // Your gacha records in this app will only be stored in the private iCloud space of your current Apple ID, as well as on any Apple devices that are signed in with that Apple ID and have this app installed and in-use, hence no privacy concerns needed. // Zenless Zone Zero is currently not supported by this feature."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "弊アプリには有料ガチャは含まれておりません。このガチャ記録管理機能は、弊アプリのサポート対象としている一部のゲームにおいてユーザーが自分のガチャ記録を管理することのみが可能です。貴殿のガチャ記録は、該当端末のログインしている Apple ID の iCloud ストレージ内、そしてその Apple ID のサインイン状態中（且つ弊アプリを実装してお用いしていた）Apple デバイスにのみ保存されておりますので、プライバシー上のご配慮は要りません。「ゼンレスゾーンゼロ（絶区ゼロ）」は現時点で弊アプリのこの機能のサポート対象外です。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝应用不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被敝应用所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的 Apple ID 的私有 iCloud 空间内、以及任何登入了该 Apple ID 且有安装使用敝应用的 Apple 装置，不会有隐私上的安全问题。敝应用的抽卡记录管理功能现阶段不提供对绝区零的支持。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝應用不包含付費轉蛋。該抽卡記錄管理功能僅允許使用者就「被敝應用所支援的部分遊戲」管理自己的個人抽卡（轉蛋）記錄。您的抽卡記錄僅會存儲在您當前的 Apple ID 的私有 iCloud 空間內、以及任何登入了該 Apple ID 且有安裝使用敝應用的 Apple 裝置，不會有隱私上的安全問題。敝應用的抽卡記錄管理功能現階段不提供對絕區零的支援。"
+          }
+        }
+      }
+    },
     "gachaKit.GachaRootView.navTitle" : {
       "localizations" : {
         "en" : {
