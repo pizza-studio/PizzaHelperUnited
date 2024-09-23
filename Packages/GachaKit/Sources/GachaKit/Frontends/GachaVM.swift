@@ -14,30 +14,22 @@ import SwiftUI
 // MARK: - GachaVM
 
 @Observable
-public final class GachaVM: @unchecked Sendable {
+public final class GachaVM: TaskManagedViewModel {
     // MARK: Lifecycle
 
     @MainActor
     public init(modelContext: ModelContext) {
         self.modelContext = modelContext
+        super.init()
+        super.assignableErrorHandlingTask = { _ in
+            GachaActor.shared.modelExecutor.modelContext.rollback()
+        }
     }
 
     // MARK: Public
 
-    public enum State: String, Sendable, Hashable, Identifiable {
-        case busy
-        case standBy
-
-        // MARK: Public
-
-        public var id: String { rawValue }
-    }
-
     @MainActor public var modelContext: ModelContext
-    public var task: Task<Void, Never>?
     @MainActor public var hasInheritableGachaEntries: Bool = false
-    @MainActor public var taskState: State = .standBy
-    @MainActor public var currentError: Error?
     @MainActor public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     @MainActor public private(set) var currentPentaStars: [GachaEntryExpressible] = []
     @MainActor public var currentExportableDocument: GachaDocument?
@@ -71,24 +63,10 @@ public final class GachaVM: @unchecked Sendable {
 
 extension GachaVM {
     @MainActor
-    public func handleError(_ error: Error) {
-        withAnimation {
-            currentError = error
-            taskState = .standBy
-        }
-        GachaActor.shared.modelExecutor.modelContext.rollback()
-        task?.cancel()
-    }
-
-    @MainActor
-    public func updateGMDB(for games: [Pizza.SupportedGame?]? = nil) {
-        task?.cancel()
-        withAnimation {
-            taskState = .busy
-            currentError = nil
-        }
-        task = Task {
-            do {
+    public func updateGMDB(for games: [Pizza.SupportedGame?]? = nil, immediately: Bool = true) {
+        fireTask(
+            cancelPreviousTask: immediately,
+            givenTask: {
                 var games = (games ?? []).compactMap { $0 }
                 if games.isEmpty {
                     games = Pizza.SupportedGame.allCases
@@ -96,177 +74,131 @@ extension GachaVM {
                 for game in games {
                     try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: game)
                 }
-                Task { @MainActor in
-                    withAnimation {
-                        taskState = .standBy
-                        currentError = nil
-                    }
-                }
-            } catch {
-                handleError(error)
             }
-        }
+        )
     }
 
     @MainActor
-    public func rebuildGachaUIDList() {
-        task?.cancel()
-        withAnimation {
-            taskState = .busy
-            currentError = nil
-        }
-        task = Task {
-            do {
+    public func rebuildGachaUIDList(immediately: Bool = true) {
+        fireTask(
+            cancelPreviousTask: immediately,
+            givenTask: {
                 try await GachaActor.shared.refreshAllProfiles()
-                Task { @MainActor in
-                    withAnimation {
-                        if currentGPID == nil {
-                            resetDefaultProfile()
-                        }
-                        taskState = .standBy
-                        currentError = nil
-                    }
+            },
+            completionHandler: { _ in
+                if self.currentGPID == nil {
+                    self.resetDefaultProfile()
                 }
-            } catch {
-                handleError(error)
             }
-        }
+        )
     }
 
     /// This method is not supposed to have animation.
     @MainActor
-    public func checkWhetherInheritableDataExists() {
-        task?.cancel()
-        task = Task {
-            let hasEntries = await GachaActor.shared.cdGachaMOSputnik.confirmWhetherHavingData()
-            Task { @MainActor in
-                hasInheritableGachaEntries = hasEntries
+    public func checkWhetherInheritableDataExists(immediately: Bool = true) {
+        fireTask(
+            cancelPreviousTask: immediately,
+            givenTask: {
+                await GachaActor.shared.cdGachaMOSputnik.confirmWhetherHavingData()
+            },
+            completionHandler: {
+                if let retrieved = $0 {
+                    self.hasInheritableGachaEntries = retrieved
+                }
             }
-        }
+        )
     }
 
     @MainActor
-    public func migrateOldGachasIntoProfiles() {
-        task?.cancel()
-        withAnimation {
-            taskState = .busy
-            currentError = nil
-        }
-        task = Task {
-            do {
-                try await GachaActor.migrateOldGachasIntoProfiles()
-                Task { @MainActor in
-                    withAnimation {
-                        if currentGPID == nil {
-                            resetDefaultProfile()
+    public func migrateOldGachasIntoProfiles(immediately: Bool = true) {
+        fireTask(
+            cancelPreviousTask: immediately,
+            givenTask: { try await GachaActor.migrateOldGachasIntoProfiles() },
+            completionHandler: { _ in
+                if self.currentGPID == nil {
+                    self.resetDefaultProfile()
+                }
+            }
+        )
+    }
+
+    @MainActor
+    public func updateCurrentPentaStars(immediately: Bool = true) {
+        fireTask(
+            prerequisite: (currentGPID != nil, {
+                self.currentPentaStars.removeAll()
+            }),
+            cancelPreviousTask: immediately,
+            givenTask: { self.getCurrentPentaStars() },
+            completionHandler: {
+                if let retrieved = $0 {
+                    self.currentPentaStars = retrieved
+                }
+            }
+        )
+    }
+
+    @MainActor
+    public func updateMappedEntriesByPools(immediately: Bool = true) {
+        fireTask(
+            prerequisite: (currentGPID != nil, {
+                self.mappedEntriesByPools.removeAll()
+                self.currentPentaStars.removeAll()
+            }),
+            cancelPreviousTask: immediately,
+            givenTask: {
+                if let currentGPID = self.currentGPID {
+                    let descriptor = FetchDescriptor<PZGachaEntryMO>(
+                        predicate: PZGachaEntryMO.predicate(
+                            owner: currentGPID,
+                            rarityLevel: nil
+                        ),
+                        sortBy: [SortDescriptor(\PZGachaEntryMO.id, order: .reverse)]
+                    )
+                    var existedIDs = Set<String>() // 用来去除重复内容。
+                    var fetchedEntries = [GachaEntryExpressible]()
+                    let context = GachaActor.shared.modelExecutor.modelContext
+                    let count = try context.fetchCount(descriptor)
+                    if count > 0 {
+                        try context.enumerate(descriptor) { rawEntry in
+                            let expressible = rawEntry.expressible
+                            if existedIDs.contains(expressible.id) {
+                                context.delete(rawEntry)
+                            } else {
+                                existedIDs.insert(expressible.id)
+                                fetchedEntries.append(expressible)
+                            }
                         }
-                        taskState = .standBy
-                        currentError = nil
-                    }
-                }
-            } catch {
-                handleError(error)
-            }
-        }
-    }
-
-    @MainActor
-    public func updateCurrentPentaStars() {
-        guard currentGPID != nil else {
-            withAnimation {
-                currentPentaStars.removeAll()
-            }
-            return
-        }
-        task?.cancel()
-        withAnimation {
-            taskState = .busy
-            currentError = nil
-        }
-        task = Task {
-            let filtered = getCurrentPentaStars()
-            Task { @MainActor in
-                withAnimation {
-                    currentPentaStars = filtered
-                    taskState = .standBy
-                    currentError = nil
-                    // 此处不需要检查 currentGPID 是否为 nil。
-                }
-            }
-        }
-    }
-
-    @MainActor
-    public func updateMappedEntriesByPools() {
-        guard let currentGPID else {
-            withAnimation {
-                mappedEntriesByPools.removeAll()
-                currentPentaStars.removeAll()
-            }
-            return
-        }
-        task?.cancel()
-        withAnimation {
-            taskState = .busy
-            currentError = nil
-        }
-        task = Task {
-            do {
-                let descriptor = FetchDescriptor<PZGachaEntryMO>(
-                    predicate: PZGachaEntryMO.predicate(
-                        owner: currentGPID,
-                        rarityLevel: nil
-                    ),
-                    sortBy: [SortDescriptor(\PZGachaEntryMO.id, order: .reverse)]
-                )
-                var existedIDs = Set<String>() // 用来去除重复内容。
-                var fetchedEntries = [GachaEntryExpressible]()
-                let context = GachaActor.shared.modelExecutor.modelContext
-                let count = try context.fetchCount(descriptor)
-                if count > 0 {
-                    try context.enumerate(descriptor) { rawEntry in
-                        let expressible = rawEntry.expressible
-                        if existedIDs.contains(expressible.id) {
-                            context.delete(rawEntry)
-                        } else {
-                            existedIDs.insert(expressible.id)
-                            fetchedEntries.append(expressible)
+                        if context.hasChanges {
+                            try context.save()
                         }
                     }
-                    if context.hasChanges {
-                        try context.save()
-                    }
+                    let mappedEntries = fetchedEntries.mappedByPools
+                    let pentaStars = self.getCurrentPentaStars(from: mappedEntries)
+                    return (mappedEntries, pentaStars)
+                } else {
+                    // 不会发生，因为上文有过一个 null check 了。
+                    return nil
                 }
-                let mappedEntries = fetchedEntries.mappedByPools
-                let pentaStars = getCurrentPentaStars(from: mappedEntries)
-                Task { @MainActor in
-                    withAnimation {
-                        mappedEntriesByPools = mappedEntries
-                        currentPentaStars = pentaStars
-                        taskState = .standBy
-                        currentError = nil
-                        // 此处不需要检查 currentGPID 是否为 nil。
-                    }
-                }
-            } catch {
-                handleError(error)
+            },
+            completionHandler: { mappedEntries, pentaStars in
+                self.mappedEntriesByPools = mappedEntries
+                self.currentPentaStars = pentaStars
             }
-        }
+        )
     }
 
     @MainActor
     public func prepareGachaDocumentForExport(
         packaging pkgMethod: GachaExchange.ExportPackageMethod,
         format: GachaExchange.ExportableFormat,
-        lang: GachaLanguage = Locale.gachaLangauge
+        lang: GachaLanguage = Locale.gachaLangauge,
+        immediately: Bool = true
     ) {
-        task?.cancel()
-        withAnimation {
-            taskState = .busy
-            currentError = nil
-        }
-        task = Task {
-            do {
+        fireTask(
+            prerequisite: nil,
+            cancelPreviousTask: immediately,
+            givenTask: {
                 let packagedDocument: GachaDocument = switch pkgMethod {
                 case let .singleOwner(gpid):
                     try await GachaActor.shared.prepareGachaDocument(for: gpid, format: format, lang: lang)
@@ -275,40 +207,18 @@ extension GachaVM {
                 case .allOwners:
                     try await GachaActor.shared.prepareUIGFv4Document(for: nil, lang: lang)
                 }
-                Task { @MainActor in
-                    withAnimation {
-                        self.currentExportableDocument = packagedDocument
-                        taskState = .standBy
-                        currentError = nil
-                        // 此处不需要检查 currentGPID 是否为 nil。
-                    }
-                }
-            } catch {
-                handleError(error)
+                return packagedDocument
+            },
+            completionHandler: {
+                self.currentExportableDocument = $0
             }
-        }
+        )
     }
 }
 
 // MARK: - Profile Switchers and other tools.
 
 extension GachaVM {
-    @MainActor
-    fileprivate func getCurrentPentaStars(
-        from mappedEntries: [GachaPoolExpressible: [GachaEntryExpressible]]? = nil
-    )
-        -> [GachaEntryExpressible] {
-        let mappedEntries = mappedEntries ?? mappedEntriesByPools
-        guard let currentPoolType else {
-            return mappedEntries.values.reduce([], +).filter { entry in
-                entry.rarity == .rank5
-            }
-        }
-        return mappedEntries[currentPoolType]?.filter { entry in
-            entry.rarity == .rank5
-        } ?? []
-    }
-
     @MainActor public var currentGPIDTitle: String? {
         guard let pfID = currentGPID else { return nil }
         return nameIDMap[pfID.uidWithGame] ?? nil
@@ -341,6 +251,22 @@ extension GachaVM {
         let context = GachaActor.shared.modelContainer.mainContext
         let result = try? context.fetch(FetchDescriptor<PZGachaProfileMO>()).map(\.asSendable)
         return result?.sorted { $0.uidWithGame < $1.uidWithGame } ?? []
+    }
+
+    @MainActor
+    fileprivate func getCurrentPentaStars(
+        from mappedEntries: [GachaPoolExpressible: [GachaEntryExpressible]]? = nil
+    )
+        -> [GachaEntryExpressible] {
+        let mappedEntries = mappedEntries ?? mappedEntriesByPools
+        guard let currentPoolType else {
+            return mappedEntries.values.reduce([], +).filter { entry in
+                entry.rarity == .rank5
+            }
+        }
+        return mappedEntries[currentPoolType]?.filter { entry in
+            entry.rarity == .rank5
+        } ?? []
     }
 
     @MainActor
