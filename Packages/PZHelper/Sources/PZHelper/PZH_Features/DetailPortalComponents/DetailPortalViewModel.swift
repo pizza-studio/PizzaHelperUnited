@@ -15,7 +15,7 @@ import SwiftUI
 // 注：这个 Class 不负责管理 Enka 展柜的 Raw Profile。
 
 @Observable
-public final class DetailPortalViewModel: @unchecked Sendable {
+public final class DetailPortalViewModel {
     // MARK: Lifecycle
 
     @MainActor
@@ -47,15 +47,15 @@ public final class DetailPortalViewModel: @unchecked Sendable {
         }
     }
 
-    public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
-    public var taskStatus4Ledger: Status<any Ledger> = .standby
-    public var taskStatus4TravelStats: Status<any TravelStats> = .standby
-    public var taskStatus4AbyssReport: Status<any AbyssReportSet> = .standby
-    public let abyssCollector: AbyssCollector = .init()
+    @MainActor public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
+    @MainActor public var taskStatus4Ledger: Status<any Ledger> = .standby
+    @MainActor public var taskStatus4TravelStats: Status<any TravelStats> = .standby
+    @MainActor public var taskStatus4AbyssReport: Status<any AbyssReportSet> = .standby
+    @MainActor public let abyssCollector: AbyssCollector = .init()
 
     @ObservationIgnored public var refreshingStatus: Status<Void> = .standby
 
-    public var currentProfile: PZProfileMO? {
+    @MainActor public var currentProfile: PZProfileMO? {
         didSet {
             if case let .progress(task) = refreshingStatus { task.cancel() }
             refreshingStatus = .standby
@@ -63,14 +63,15 @@ public final class DetailPortalViewModel: @unchecked Sendable {
         }
     }
 
+    @MainActor
     public func refresh() {
         guard case .standby = refreshingStatus else { return }
-        let task = Task { @MainActor in
-            await fetchCharacterInventoryList()
-            await fetchTravelStatsData()
-            await fetchLedgerData()
-            await fetchAbyssReportSet()
-            await commitAbyssCollectionData()
+        let task = Task {
+            await self.fetchCharacterInventoryList()
+            await self.fetchTravelStatsData()
+            await self.fetchLedgerData()
+            await self.fetchAbyssReportSet()
+            await self.commitAbyssCollectionData()
             refreshingStatus = .standby
         }
         refreshingStatus = .progress(task)
@@ -192,6 +193,7 @@ extension DetailPortalViewModel {
 }
 
 extension DetailPortalViewModel {
+    @MainActor
     func commitAbyssCollectionData() async {
         guard AbyssCollector.isCommissionPermittedByUser else { return }
         Task(priority: .background) { @MainActor in
