@@ -48,8 +48,8 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
                     }
                 }
             }
-            if let errorMsg = delegate.errorMsg {
-                Text(errorMsg).font(.caption2)
+            if let error = delegate.currentError {
+                Text(verbatim: "\(error)").font(.caption2)
             }
         } header: {
             sectionHeader()
@@ -163,7 +163,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
     private var theDB: QueryDB
-    @State private var delegate: Coordinator<QueryDB> = .init()
+    @State private var delegate: CaseProfileVM<QueryDB> = .init()
 
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(givenUID) else { return false }
@@ -179,89 +179,6 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
         }
         // 仅当结果相异时，才会写入。
         if givenUID != toHandle { givenUID = toHandle }
-    }
-}
-
-// MARK: CaseQuerySection.Coordinator
-
-extension CaseQuerySection {
-    @Observable
-    final class Coordinator<CoordinatedDB: EnkaDBProtocol> {
-        // MARK: Lifecycle
-
-        public init() {}
-
-        // MARK: Public
-
-        public enum State: String, Sendable, Hashable, Identifiable {
-            case busy
-            case standBy
-
-            // MARK: Public
-
-            public var id: String { rawValue }
-        }
-
-        // MARK: Internal
-
-        var taskState: State = .standBy
-        var currentInfo: CoordinatedDB.QueriedProfile?
-        var task: Task<CoordinatedDB.QueriedProfile?, Never>?
-
-        var errorMsg: String?
-
-        @MainActor
-        func update(givenUID: Int?) {
-            guard let givenUID = givenUID else { return }
-            task?.cancel()
-            withAnimation {
-                self.taskState = .busy
-                currentInfo = nil
-                errorMsg = nil
-            }
-            task = Task {
-                do {
-                    let enkaDB = CoordinatedDB.shared
-                    let profile = try await enkaDB.query(for: givenUID.description)
-                    // 检查本地 EnkaDB 是否过期，过期了的话就尝试更新。
-                    if enkaDB.checkIfExpired(against: profile) {
-                        let factoryDB = try CoordinatedDB(locTag: Enka.currentLangTag)
-                        if factoryDB.checkIfExpired(against: profile) {
-                            enkaDB.update(new: factoryDB)
-                        } else {
-                            try await enkaDB.onlineUpdate()
-                        }
-                    }
-
-                    // 检查本地圣遗物评分模型是否过期，过期了的话就尝试更新。
-                    if ArtifactRating.sharedDB.isExpired(against: profile) {
-                        ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
-                        if ArtifactRating.sharedDB.isExpired(against: profile) {
-                            // 圣遗物评分非刚需体验。
-                            // 如果在这个过程内出错的话，顶多就是该当角色没有圣遗物评分可用。
-                            try? await ArtifactRating.ARSputnik.shared.onlineUpdate()
-                        }
-                    }
-
-                    Task.detached { @MainActor in
-                        withAnimation {
-                            self.currentInfo = profile
-                            self.taskState = .standBy
-                            self.errorMsg = nil
-                        }
-                    }
-                    return profile
-                } catch {
-                    Task.detached { @MainActor in
-                        withAnimation {
-                            self.taskState = .standBy
-                            self.errorMsg = error.localizedDescription
-                        }
-                    }
-                    return nil
-                }
-            }
-        }
     }
 }
 
