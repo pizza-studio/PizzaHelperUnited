@@ -188,6 +188,41 @@ extension SRGFv1.Info {
     }
 }
 
+// MARK: - Translating SRGF Entry to UIGF Entry.
+
+extension UIGFv4.GachaItemHSR {
+    public init(fromSRGFEntry source: SRGFv1.DataEntry) {
+        self = .init(
+            count: source.count,
+            gachaID: source.gachaID,
+            gachaType: source.gachaType,
+            id: source.id,
+            itemID: source.itemID,
+            itemType: source.itemType,
+            name: source.name,
+            rankType: source.rankType,
+            time: source.time
+        )
+    }
+}
+
+extension SRGFv1.DataEntry {
+    public var asUIGFv4: UIGFv4.GachaItemHSR {
+        .init(fromSRGFEntry: self)
+    }
+}
+
+extension SRGFv1 {
+    public func upgradeToUIGFv4Profile() -> UIGFv4.ProfileHSR {
+        .init(
+            lang: info.lang,
+            list: list.map(\.asUIGFv4),
+            timezone: info.regionTimeZone,
+            uid: info.uid
+        )
+    }
+}
+
 // MARK: - Translating UIGF(HSR) Entries to SRGF Entries.
 
 /// 因为 UIGFv4 到 SRGFv1 的转换过程是无损转换，所以统一披萨引擎不再支持直接的 SRGFv1 导出。
