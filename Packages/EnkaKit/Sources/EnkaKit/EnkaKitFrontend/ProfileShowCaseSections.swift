@@ -48,12 +48,11 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
                 }
                 InfiniteProgressBar().id(UUID())
             }
-            if let errorMsg = delegate.errorMsg {
-                Divider()
+            if let error = delegate.currentError {
                 Button {
                     triggerUpdateTask()
                 } label: {
-                    Text(errorMsg).font(.caption2)
+                    Text(verbatim: "\(error)").font(.caption2)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
@@ -149,7 +148,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     private let appendedContent: () -> T
     private var theDB: QueryDB
-    @State private var delegate: Coordinator<QueryDB>
+    @State private var delegate: CaseProfileVM<QueryDB>
     @State private var broadcaster = Broadcaster.shared
 
     private var isUIDValid: Bool {
@@ -159,104 +158,6 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     private var guardedEnkaProfile: QueryDB.QueriedProfile? {
         delegate.currentInfo
-    }
-}
-
-// MARK: ProfileShowCaseSections.Coordinator
-
-extension ProfileShowCaseSections {
-    @Observable
-    final class Coordinator<CoordinatedDB: EnkaDBProtocol> {
-        // MARK: Lifecycle
-
-        /// 展柜 ViewModel 的建构子。
-        ///
-        /// - Remark: 注意：该 ViewModel 会在 App Tab 切换时立刻被析构，
-        /// 所以严禁任何放在 MainActor 之外的间接脱手操作（哪怕间接也不行）。
-        /// - Parameters:
-        ///   - uid: UID
-        ///   - theDB: EnkaDB（注意直接决定了游戏类型）。
-        @MainActor
-        public init(uid: String, theDB: CoordinatedDB) {
-            self.uid = uid
-            self.currentInfo = theDB.getCachedProfileRAW(uid: uid)
-            update()
-        }
-
-        deinit {
-            task?.cancel()
-        }
-
-        // MARK: Public
-
-        public enum State: String, Sendable, Hashable, Identifiable {
-            case busy
-            case standBy
-
-            // MARK: Public
-
-            public var id: String { rawValue }
-        }
-
-        // MARK: Internal
-
-        var taskState: State = .standBy
-        var currentInfo: CoordinatedDB.QueriedProfile?
-        var task: Task<CoordinatedDB.QueriedProfile?, Never>?
-        var uid: String
-        var errorMsg: String?
-
-        @MainActor
-        func update() {
-            guard let givenUID = Int(uid) else { return }
-            task?.cancel()
-            withAnimation {
-                self.taskState = .busy
-                errorMsg = nil
-            }
-            task = Task {
-                do {
-                    let enkaDB = CoordinatedDB.shared
-                    let profile = try await enkaDB.query(for: givenUID.description)
-                    // 检查本地 EnkaDB 是否过期，过期了的话就尝试更新。
-                    if enkaDB.checkIfExpired(against: profile) {
-                        let factoryDB = try CoordinatedDB(locTag: Enka.currentLangTag)
-                        if factoryDB.checkIfExpired(against: profile) {
-                            enkaDB.update(new: factoryDB)
-                        } else {
-                            try await enkaDB.onlineUpdate()
-                        }
-                    }
-
-                    // 检查本地圣遗物评分模型是否过期，过期了的话就尝试更新。
-                    if ArtifactRating.sharedDB.isExpired(against: profile) {
-                        ArtifactRating.ARSputnik.shared.resetFactoryScoreModel()
-                        if ArtifactRating.sharedDB.isExpired(against: profile) {
-                            // 圣遗物评分非刚需体验。
-                            // 如果在这个过程内出错的话，顶多就是该当角色没有圣遗物评分可用。
-                            try? await ArtifactRating.ARSputnik.shared.onlineUpdate()
-                        }
-                    }
-
-                    Task.detached { @MainActor in
-                        withAnimation {
-                            self.currentInfo = profile
-                            self.taskState = .standBy
-                            self.errorMsg = nil
-                        }
-                    }
-                    return profile
-                } catch {
-                    Task.detached { @MainActor in
-                        withAnimation {
-                            self.taskState = .standBy
-                            self.errorMsg = error.localizedDescription
-                        }
-                    }
-                    return nil
-                }
-            }
-        }
     }
 }
 
