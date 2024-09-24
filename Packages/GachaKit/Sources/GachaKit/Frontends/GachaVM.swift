@@ -228,8 +228,7 @@ extension GachaVM {
     ) {
         fireTask(
             prerequisite: (
-                url.startAccessingSecurityScopedResource(),
-                {
+                url.startAccessingSecurityScopedResource(), {
                     self.currentError = GachaKit.FileExchangeException.accessFailureComDlg32
                 }
             ),
