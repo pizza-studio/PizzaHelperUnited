@@ -17,7 +17,6 @@ final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
     /// - Parameters:
     ///   - uid: UID
     ///   - theDB: EnkaDB（注意直接决定了游戏类型）。
-    @MainActor
     public init(uid: String, theDB: CoordinatedDB) {
         self.uid = uid
         self.currentInfo = theDB.getCachedProfileRAW(uid: uid)
@@ -25,7 +24,6 @@ final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
         update()
     }
 
-    @MainActor
     public override init() {
         self.uid = "YJSNPI"
         super.init()
@@ -33,10 +31,9 @@ final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
 
     // MARK: Internal
 
-    @MainActor var currentInfo: CoordinatedDB.QueriedProfile?
-    @MainActor var uid: String
+    var currentInfo: CoordinatedDB.QueriedProfile?
+    var uid: String
 
-    @MainActor
     func update(givenUID: Int? = nil, immediately: Bool = true) {
         guard let givenUID = givenUID ?? Int(uid) else { return }
         fireTask(

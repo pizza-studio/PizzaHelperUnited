@@ -17,7 +17,6 @@ import SwiftUI
 public final class GachaVM: TaskManagedVM {
     // MARK: Lifecycle
 
-    @MainActor
     public init(modelContext: ModelContext) {
         self.modelContext = modelContext
         super.init()
@@ -28,20 +27,20 @@ public final class GachaVM: TaskManagedVM {
 
     // MARK: Public
 
-    @MainActor public var modelContext: ModelContext
-    @MainActor public var hasInheritableGachaEntries: Bool = false
-    @MainActor public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
-    @MainActor public private(set) var currentPentaStars: [GachaEntryExpressible] = []
-    @MainActor public var currentExportableDocument: GachaDocument?
+    public var modelContext: ModelContext
+    public var hasInheritableGachaEntries: Bool = false
+    public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
+    public private(set) var currentPentaStars: [GachaEntryExpressible] = []
+    public var currentExportableDocument: GachaDocument?
 
-    @MainActor public var currentGPID: GachaProfileID? {
+    public var currentGPID: GachaProfileID? {
         didSet {
             currentPoolType = Self.defaultPoolType(for: currentGPID?.game)
             updateMappedEntriesByPools()
         }
     }
 
-    @MainActor public var currentPoolType: GachaPoolExpressible? {
+    public var currentPoolType: GachaPoolExpressible? {
         didSet {
             updateCurrentPentaStars()
         }
@@ -62,7 +61,6 @@ public final class GachaVM: TaskManagedVM {
 // MARK: - Tasks and Error Handlers.
 
 extension GachaVM {
-    @MainActor
     public func updateGMDB(for games: [Pizza.SupportedGame?]? = nil, immediately: Bool = true) {
         fireTask(
             cancelPreviousTask: immediately,
@@ -78,7 +76,6 @@ extension GachaVM {
         )
     }
 
-    @MainActor
     public func rebuildGachaUIDList(immediately: Bool = true) {
         fireTask(
             cancelPreviousTask: immediately,
@@ -94,7 +91,6 @@ extension GachaVM {
     }
 
     /// This method is not supposed to have animation.
-    @MainActor
     public func checkWhetherInheritableDataExists(immediately: Bool = true) {
         fireTask(
             cancelPreviousTask: immediately,
@@ -109,7 +105,6 @@ extension GachaVM {
         )
     }
 
-    @MainActor
     public func migrateOldGachasIntoProfiles(immediately: Bool = true) {
         fireTask(
             cancelPreviousTask: immediately,
@@ -122,7 +117,6 @@ extension GachaVM {
         )
     }
 
-    @MainActor
     public func updateCurrentPentaStars(immediately: Bool = true) {
         fireTask(
             prerequisite: (currentGPID != nil, {
@@ -138,7 +132,6 @@ extension GachaVM {
         )
     }
 
-    @MainActor
     public func updateMappedEntriesByPools(immediately: Bool = true) {
         fireTask(
             prerequisite: (currentGPID != nil, {
@@ -181,14 +174,15 @@ extension GachaVM {
                     return nil
                 }
             },
-            completionHandler: { mappedEntries, pentaStars in
-                self.mappedEntriesByPools = mappedEntries
-                self.currentPentaStars = pentaStars
+            completionHandler: { pack in
+                if let pack {
+                    self.mappedEntriesByPools = pack.0
+                    self.currentPentaStars = pack.1
+                }
             }
         )
     }
 
-    @MainActor
     public func prepareGachaDocumentForExport(
         packaging pkgMethod: GachaExchange.ExportPackageMethod,
         format: GachaExchange.ExportableFormat,
@@ -219,12 +213,12 @@ extension GachaVM {
 // MARK: - Profile Switchers and other tools.
 
 extension GachaVM {
-    @MainActor public var currentGPIDTitle: String? {
+    public var currentGPIDTitle: String? {
         guard let pfID = currentGPID else { return nil }
         return nameIDMap[pfID.uidWithGame] ?? nil
     }
 
-    @MainActor public var nameIDMap: [String: String] {
+    public var nameIDMap: [String: String] {
         var nameMap = [String: String]()
         try? modelContext.enumerate(FetchDescriptor<PZProfileMO>(), batchSize: 1) { pzProfile in
             if nameMap[pzProfile.uidWithGame] == nil { nameMap[pzProfile.uidWithGame] = pzProfile.name }
@@ -242,18 +236,17 @@ extension GachaVM {
         return nameMap
     }
 
-    @MainActor public var allPZProfiles: [PZProfileMO] {
+    public var allPZProfiles: [PZProfileMO] {
         let result = try? modelContext.fetch(FetchDescriptor<PZProfileMO>())
         return result?.sorted { $0.priority < $1.priority } ?? []
     }
 
-    @MainActor public var allGPIDs: [GachaProfileID] {
+    public var allGPIDs: [GachaProfileID] {
         let context = GachaActor.shared.modelContainer.mainContext
         let result = try? context.fetch(FetchDescriptor<PZGachaProfileMO>()).map(\.asSendable)
         return result?.sorted { $0.uidWithGame < $1.uidWithGame } ?? []
     }
 
-    @MainActor
     fileprivate func getCurrentPentaStars(
         from mappedEntries: [GachaPoolExpressible: [GachaEntryExpressible]]? = nil
     )
@@ -269,7 +262,6 @@ extension GachaVM {
         } ?? []
     }
 
-    @MainActor
     public func resetDefaultProfile() {
         let sortedGPIDs = allGPIDs
         guard !sortedGPIDs.isEmpty else { return }
