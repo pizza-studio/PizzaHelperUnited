@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - UIGFv4
 
@@ -136,12 +137,6 @@ extension UIGFv4 {
 // MARK: - Extensions
 
 extension UIGFv4 {
-    public enum SupportedHoYoGames: String {
-        case genshinImpact = "GI"
-        case starRail = "HSR"
-        case zenlessZoneZero = "ZZZ"
-    }
-
     public init() {
         self.info = .init()
         self.giProfiles = []
@@ -150,21 +145,39 @@ extension UIGFv4 {
     }
 
     public var defaultFileNameStem: String {
+        if let singleGPID = gpidIfContainingOnlyOneSingleProfile {
+            return getFileNameStem(uid: singleGPID.uid, for: singleGPID.game)
+        }
+        return fallbackFileNameStem
+    }
+
+    public var fallbackFileNameStem: String {
         let dateFormatter = DateFormatter.forUIGFFileName
         return "\(Self.initials)\(dateFormatter.string(from: info.maybeDateExported ?? Date()))"
+    }
+
+    public var gpidIfContainingOnlyOneSingleProfile: GachaProfileID? {
+        if let giProfiles, giProfiles.count == 1, let firstProfile = giProfiles.first {
+            return firstProfile.gachaProfileID
+        } else if let hsrProfiles, hsrProfiles.count == 1, let firstProfile = hsrProfiles.first {
+            return firstProfile.gachaProfileID
+        } else if let zzzProfiles, zzzProfiles.count == 1, let firstProfile = zzzProfiles.first {
+            return firstProfile.gachaProfileID
+        }
+        return nil
     }
 
     private static let initials = "UIGFv4_"
 
     public func getFileNameStem(
         uid: String? = nil,
-        for game: SupportedHoYoGames? = .starRail
+        for game: Pizza.SupportedGame? = .starRail
     )
         -> String {
         var stack = Self.initials
         if let game { stack += "\(game.rawValue)_" }
         if let uid { stack += "\(uid)_" }
-        return defaultFileNameStem.replacingOccurrences(of: Self.initials, with: stack)
+        return fallbackFileNameStem.replacingOccurrences(of: Self.initials, with: stack)
     }
 }
 
