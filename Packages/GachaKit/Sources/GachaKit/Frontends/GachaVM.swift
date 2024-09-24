@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import CoreXLSX
 @preconcurrency import Defaults
 import EnkaKit
 import GachaMetaDB
@@ -31,7 +32,8 @@ public final class GachaVM: TaskManagedVM {
     public var hasInheritableGachaEntries: Bool = false
     public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     public private(set) var currentPentaStars: [GachaEntryExpressible] = []
-    public var currentExportableDocument: GachaDocument?
+    public var currentExportableDocument: Result<GachaDocument, Error>?
+    public var currentSceneStep4Import: GachaImportSections.SceneStep = .chooseFormat
 
     public var currentGPID: GachaProfileID? {
         didSet {
@@ -201,10 +203,122 @@ extension GachaVM {
                 case .allOwners:
                     try await GachaActor.shared.prepareUIGFv4Document(for: nil, lang: lang)
                 }
-                return packagedDocument
+                return Result.success(packagedDocument)
             },
-            completionHandler: {
-                self.currentExportableDocument = $0
+            completionHandler: { newDocument in
+                self.currentExportableDocument = newDocument
+            },
+            errorHandler: { error in
+                withAnimation {
+                    if case .databaseExpired = error as? GachaMeta.GMDBError {
+                        self.currentError = error
+                    } else {
+                        self.currentExportableDocument = Result.failure(error)
+                    }
+                }
+                self.task?.cancel()
+            }
+        )
+    }
+
+    public func prepareGachaDocumentForImport(
+        _ url: URL,
+        format: GachaExchange.ImportableFormat,
+        immediately: Bool = true
+    ) {
+        fireTask(
+            prerequisite: (
+                url.startAccessingSecurityScopedResource(),
+                {
+                    self.currentError = GachaKit.FileExchangeException.accessFailureComDlg32
+                }
+            ),
+            cancelPreviousTask: immediately,
+            givenTask: {
+                var fetchedFile: UIGFv4
+                let decoder = JSONDecoder()
+                switch format {
+                case .asGIGFExcel:
+                    guard let file = XLSXFile(filepath: url.relativePath) else {
+                        throw GachaKit.FileExchangeException.fileNotExist
+                    }
+                    do {
+                        fetchedFile = try await GachaActor.shared.upgradeToUIGFv4(xlsx: file)
+                    } catch {
+                        throw GachaKit.FileExchangeException.otherError(error)
+                    }
+                case .asUIGFv4:
+                    let data: Data = try Data(contentsOf: url)
+                    do {
+                        fetchedFile = try decoder.decode(UIGFv4.self, from: data)
+                    } catch {
+                        throw GachaKit.FileExchangeException.decodingError(error)
+                    }
+                case .asSRGFv1:
+                    let data: Data = try Data(contentsOf: url)
+                    do {
+                        fetchedFile = try await GachaActor.shared
+                            .upgradeToUIGFv4(srgf: decoder.decode(SRGFv1.self, from: data))
+                    } catch {
+                        throw GachaKit.FileExchangeException.decodingError(error)
+                    }
+                case .asGIGFJson:
+                    let data: Data = try Data(contentsOf: url)
+                    do {
+                        fetchedFile = try await GachaActor.shared
+                            .upgradeToUIGFv4(gigf: decoder.decode(GIGF.self, from: data))
+                    } catch {
+                        throw GachaKit.FileExchangeException.decodingError(error)
+                    }
+                }
+                return fetchedFile
+            },
+            completionHandler: { fetchedFile in
+                if let fetchedFile {
+                    self.currentSceneStep4Import = .chooseProfiles(fetchedFile)
+                }
+            },
+            errorHandler: { error in
+                withAnimation {
+                    if error is GachaKit.FileExchangeException {
+                        self.currentSceneStep4Import = .error(error)
+                    } else {
+                        self.currentSceneStep4Import = .error(
+                            GachaKit.FileExchangeException.otherError(error)
+                        )
+                    }
+                }
+                self.task?.cancel()
+            }
+        )
+    }
+
+    public func importUIGFv4(
+        _ source: UIGFv4,
+        specifiedGPIDs: Set<GachaProfileID>? = nil,
+        immediately: Bool = true
+    ) {
+        fireTask(
+            cancelPreviousTask: immediately,
+            givenTask: {
+                try await GachaActor.shared.importUIGFv4(source, specifiedGPIDs: specifiedGPIDs)
+            },
+            completionHandler: { resultMap in
+                if let resultMap {
+                    self.currentSceneStep4Import = .importSucceeded(resultMap)
+                }
+            },
+            errorHandler: { error in
+                withAnimation {
+                    if error is GachaKit.FileExchangeException {
+                        self.currentSceneStep4Import = .error(error)
+                    } else {
+                        self.currentSceneStep4Import = .error(
+                            GachaKit.FileExchangeException.uigfEntryInsertionError(error)
+                        )
+                    }
+                }
+                self.task?.cancel()
             }
         )
     }

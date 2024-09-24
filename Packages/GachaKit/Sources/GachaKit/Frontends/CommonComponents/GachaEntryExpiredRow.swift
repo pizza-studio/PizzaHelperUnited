@@ -20,9 +20,10 @@ public struct GachaEntryExpiredRow: View {
         if isVisible {
             VStack {
                 Button {
+                    theVM.currentSceneStep4Import = .chooseFormat
                     theVM.updateGMDB(for: games)
                 } label: {
-                    Text("gachaKit.export.clickHereToUpdateGMDB".i18nGachaKit)
+                    Text("gachaKit.GMDB.clickHereToUpdateGMDB".i18nGachaKit)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -32,7 +33,7 @@ public struct GachaEntryExpiredRow: View {
                         }
                         .foregroundStyle(.red)
                 }
-                Text("gachaKit.export.gmdbExpired.explanation".i18nGachaKit)
+                Text("gachaKit.GMDB.gmdbExpired.explanation".i18nGachaKit)
                     .font(.footnote).foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }

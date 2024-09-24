@@ -29,31 +29,34 @@ public struct GachaExportSections: View {
             if case let .databaseExpired(game) = theVM.currentError as? GachaMeta.GMDBError {
                 GachaEntryExpiredRow(alwaysVisible: true, games: [game])
             } else if theVM.taskState != .busy {
-                Button {
-                    theVM.prepareGachaDocumentForExport(
-                        packaging: packageMethod,
-                        format: exportFormat,
-                        lang: documentLanguage
-                    )
-                } label: {
-                    Text("gachaKit.export.clickHereToExport".i18nGachaKit)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(8)
-                        .background {
-                            RoundedRectangle(cornerRadius: 8).foregroundStyle(.primary.opacity(0.1))
-                        }
-                }
-                .apply { exporterButton in
-                    hookAlertAndComDlg32(target: exporterButton)
+                switch theVM.currentExportableDocument {
+                case let .failure(error):
+                    Text(verbatim: "\(error)")
+                        .font(.caption2)
+                case .none, .success:
+                    Button {
+                        theVM.prepareGachaDocumentForExport(
+                            packaging: packageMethod,
+                            format: exportFormat,
+                            lang: documentLanguage
+                        )
+                    } label: {
+                        Text("gachaKit.exchange.export.clickHereToExport".i18nGachaKit)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(8)
+                            .background {
+                                RoundedRectangle(cornerRadius: 8).foregroundStyle(.primary.opacity(0.1))
+                            }
+                    }
                 }
             } else {
                 ProgressView()
             }
         } header: {
             HStack {
-                Text("gachaKit.export.currentExportOption".i18nGachaKit)
+                Text("gachaKit.exchange.export.currentExportOption".i18nGachaKit)
                 Spacer()
                 Text(packageMethod.localizedName)
             }
@@ -61,10 +64,13 @@ public struct GachaExportSections: View {
         } footer: {
             Text("gachaKit.uigf.affLink.[UIGF](https://uigf.org/)", bundle: .module)
         }
-        .onChange(of: specifiedOwners, initial: true) {
+        .apply { exporterButton in
+            hookAlertAndComDlg32(target: exporterButton)
+        }
+        .onChange(of: specifiedProfiles, initial: true) {
             packageMethod = .init(
                 owners: Array(
-                    specifiedOwners.sorted {
+                    specifiedProfiles.sorted {
                         $0.uidWithGame < $1.uidWithGame
                     }
                 )
@@ -72,25 +78,29 @@ public struct GachaExportSections: View {
         }
         .onChange(of: packageMethod) { _, newValue in
             switch newValue {
-            case .singleOwner where specifiedOwners.first?.game == .starRail: break
+            case .singleOwner where specifiedProfiles.first?.game == .starRail: break
             default: exportFormat = .asUIGFv4
             }
         }
 
         Section {
             // Do NOT animate this. Animating this doesn't make any sense.
-            MultiPicker("".description, selection: $specifiedOwners) {
+            MultiPicker("".description, selection: $specifiedProfiles) {
                 let nameIDMap = theVM.nameIDMap
                 let sortedGPIDs = sortedGPIDs
                 ForEach(sortedGPIDs) { gpid in
-                    drawGPID(gpid, nameIDMap: nameIDMap, isChosen: specifiedOwners.contains(gpid))
-                        .mpTag(gpid)
+                    GachaExchangeView.drawGPID(
+                        gpid,
+                        nameIDMap: nameIDMap,
+                        isChosen: specifiedProfiles.contains(gpid)
+                    ).mpTag(gpid)
                 }
             }
             .labelsHidden()
         } header: {
-            Text("gachaKit.export.chooseOwners.prompt".i18nGachaKit)
+            Text("gachaKit.exchange.chooseProfiles.export.prompt".i18nGachaKit)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .textCase(.none)
         }
         .mpPickerStyle(.inline)
         .selectionIndicatorPosition(.trailing)
@@ -99,46 +109,18 @@ public struct GachaExportSections: View {
     // MARK: Internal
 
     @MainActor @ViewBuilder
-    func drawGPID(_ gpid: GachaProfileID, nameIDMap: [String: String], isChosen: Bool) -> some View {
-        HStack {
-            gpid.photoView.frame(width: 35, height: 35)
-            HStack {
-                Group {
-                    if let name = nameIDMap[gpid.uidWithGame] {
-                        VStack(alignment: .leading) {
-                            Text(name)
-                                .fontWeight(.medium)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text(gpid.uidWithGame)
-                                .font(.caption2)
-                                .fontDesign(.monospaced)
-                                .opacity(0.8)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                    } else {
-                        Text(gpid.uidWithGame)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                }
-                .foregroundStyle(isChosen ? Color.accentColor : .primary)
-                Spacer()
-            }
-        }.padding(.vertical, 4)
-    }
-
-    @MainActor @ViewBuilder
     func makeFormatPicker() -> some View {
         let formatsToEnumerate: [GachaExchange.ExportableFormat] = switch packageMethod {
         case let .singleOwner(gpid): packageMethod.supportedExportableFormats(by: gpid.game)
         default:
-            if pzGachaProfileIDs.count == 1, specifiedOwners.randomElement()?.game == .starRail {
+            if pzGachaProfileIDs.count == 1, specifiedProfiles.randomElement()?.game == .starRail {
                 packageMethod.supportedExportableFormats(by: .starRail)
             } else {
                 [.asUIGFv4]
             }
         }
         LabeledContent {
-            Picker("gachaKit.exchange.currentFileFormat".i18nGachaKit, selection: $exportFormat) {
+            Picker("gachaKit.exchange.fileFormat".i18nGachaKit, selection: $exportFormat) {
                 ForEach(formatsToEnumerate) { enumeratedFormat in
                     Text(verbatim: enumeratedFormat.name).tag(enumeratedFormat)
                 }
@@ -148,7 +130,7 @@ public struct GachaExportSections: View {
             .fixedSize()
             .disabled(formatsToEnumerate.count == 1)
         } label: {
-            Text("gachaKit.exchange.currentFileFormat".i18nGachaKit)
+            Text("gachaKit.exchange.fileFormat".i18nGachaKit)
         }
     }
 
@@ -158,7 +140,7 @@ public struct GachaExportSections: View {
     @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
     @State fileprivate var packageMethod: GachaExchange.ExportPackageMethod = .allOwners
-    @State fileprivate var specifiedOwners: Set<GachaProfileID> = []
+    @State fileprivate var specifiedProfiles: Set<GachaProfileID> = []
     @State fileprivate var exportFormat: GachaExchange.ExportableFormat = .asUIGFv4
     @State fileprivate var documentLanguage: GachaLanguage = .current
     @State fileprivate var fileSaveActionResult: Result<URL, any Error>?
@@ -168,7 +150,30 @@ public struct GachaExportSections: View {
     }
 
     var isComDlg32Visible: Binding<Bool> {
-        .init(get: { theVM.currentExportableDocument != nil }, set: { _ in })
+        .init(get: {
+            switch theVM.currentExportableDocument {
+            case .success: return true
+            case .failure, .none: return false
+            }
+        }, set: { result in
+            if !result {
+                theVM.currentExportableDocument = nil
+            }
+        })
+    }
+
+    var defaultFileName: String? {
+        switch theVM.currentExportableDocument {
+        case let .success(document): return document.fileNameStem
+        case .failure, .none: return nil
+        }
+    }
+
+    var currentExportableDocument: GachaDocument? {
+        switch theVM.currentExportableDocument {
+        case let .success(document): return document
+        case .failure, .none: return nil
+        }
     }
 
     var isExportResultAvailable: Binding<Bool> {
@@ -179,11 +184,11 @@ public struct GachaExportSections: View {
         return switch fileSaveActionResult {
         case let .success(url):
             (
-                "gachaKit.export.succeededInSavingToFile".i18nGachaKit,
-                "gachaKit.export.fileSavedTo:".i18nGachaKit + "\n\n\(url)"
+                "gachaKit.exchange.export.succeededInSavingToFile".i18nGachaKit,
+                "gachaKit.exchange.export.fileSavedTo:".i18nGachaKit + "\n\n\(url)"
             )
         case let .failure(message):
-            ("gachaKit.export.failedInSavingToFile".i18nGachaKit, "⚠︎ \(message)")
+            ("gachaKit.exchange.export.failedInSavingToFile".i18nGachaKit, "⚠︎ \(message)")
         case nil: ("", "")
         }
     }
@@ -194,9 +199,9 @@ public struct GachaExportSections: View {
         target
             .fileExporter(
                 isPresented: isComDlg32Visible,
-                document: theVM.currentExportableDocument,
+                document: currentExportableDocument,
                 contentType: .json,
-                defaultFilename: theVM.currentExportableDocument?.fileNameStem
+                defaultFilename: defaultFileName
             ) { result in
                 fileSaveActionResult = result
                 theVM.currentExportableDocument = nil
