@@ -242,7 +242,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "抽卡语言"
+            "value" : "点击此处导出"
           }
         },
         "zh-Hant" : {
@@ -1110,7 +1110,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点击此处导出"
+            "value" : "抽卡语言"
           }
         },
         "zh-Hant" : {
