@@ -88,11 +88,12 @@ open class TaskManagedVM {
             animatedPreparationTask?()
         }
         Task {
+            let previousTask = task
             task = Task(priority: .background) {
                 if cancelPreviousTask {
-                    task?.cancel() // 按需取消既有任务。
+                    previousTask?.cancel() // 按需取消既有任务。
                 } else {
-                    await task?.value // 等待既有任务执行完毕。
+                    await previousTask?.value // 等待既有任务执行完毕。
                 }
                 do {
                     let retrieved = try await givenTask()
