@@ -77,11 +77,18 @@ extension UIGFv4 {
     public struct Info: Codable, Hashable, Sendable {
         // MARK: Lifecycle
 
-        public init(exportApp: String, exportAppVersion: String, exportTimestamp: String, version: String) {
+        public init(
+            exportApp: String,
+            exportAppVersion: String,
+            exportTimestamp: String,
+            version: String = "v4.0",
+            previousFormat: String? = nil
+        ) {
             self.exportApp = exportApp
             self.exportAppVersion = exportAppVersion
             self.exportTimestamp = exportTimestamp
             self.version = version
+            self.previousFormat = previousFormat ?? "UIGF v4.0"
         }
 
         public init(from decoder: any Decoder) throws {
@@ -98,6 +105,9 @@ extension UIGFv4 {
             } else {
                 self.exportTimestamp = "YJSNPI" // 摆烂值，反正这里不解析。
             }
+            self.previousFormat = try container.decodeIfPresent(
+                String.self, forKey: .previousFormat
+            ) ?? "UIGF v4.0"
         }
 
         // MARK: Public
@@ -107,6 +117,7 @@ extension UIGFv4 {
             case exportAppVersion = "export_app_version"
             case exportTimestamp = "export_timestamp"
             case version
+            case previousFormat = "previous_format"
         }
 
         /// 导出档案的 App 名称
@@ -117,6 +128,8 @@ extension UIGFv4 {
         public let exportTimestamp: String
         /// 导出档案的 UIGF 版本号，格式为 'v{major}.{minor}'，如 v4.0
         public let version: String
+        /// 从哪个旧版升级过来的？
+        public let previousFormat: String
     }
 }
 
@@ -164,6 +177,7 @@ extension UIGFv4.Info {
         self.exportAppVersion = shortVer ?? "1.14.514"
         self.exportTimestamp = Int(Date.now.timeIntervalSince1970).description
         self.version = "v4.0"
+        self.previousFormat = "UIGF v4.0"
     }
 
     public var maybeDateExported: Date? {
