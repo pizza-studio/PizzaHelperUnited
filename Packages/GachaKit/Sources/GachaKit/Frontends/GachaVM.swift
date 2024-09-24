@@ -271,6 +271,7 @@ extension GachaVM {
                         throw GachaKit.FileExchangeException.decodingError(error)
                     }
                 }
+                fetchedFile.zzzProfiles = nil // TODO: 等绝区零的支持实作完毕之后，移除这一行。
                 return fetchedFile
             },
             completionHandler: { fetchedFile in
