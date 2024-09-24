@@ -79,12 +79,21 @@ public enum GachaExchange {
 
         public var id: String { rawValue }
 
-        public var name: String {
+        public var longName: String {
+            switch self {
+            case .asUIGFv4: "UIGF v4.0"
+            case .asSRGFv1: "SRGF v1.0"
+            case .asGIGFJson: "GIGF (UIGF v2.2 … v3.0, JSON)"
+            case .asGIGFExcel: "GIGF (UIGF v2.0 … v2.2, Excel XLSX)"
+            }
+        }
+
+        public var shortNameForPicker: String {
             switch self {
             case .asUIGFv4: "UIGF-v4.0"
             case .asSRGFv1: "SRGF-v1.0"
-            case .asGIGFJson: "GIGF-JSON (UIGF-v2.2…v3.0)"
-            case .asGIGFExcel: "GIGF-Excel (UIGF-v2.0…v2.2)"
+            case .asGIGFJson: "GIGF-JSON"
+            case .asGIGFExcel: "GIGF-XLSX"
             }
         }
 
@@ -93,6 +102,15 @@ public enum GachaExchange {
             case .asUIGFv4: Pizza.SupportedGame.allCases
             case .asSRGFv1: [.starRail]
             case .asGIGFExcel, .asGIGFJson: [.genshinImpact]
+            }
+        }
+
+        public var isObsoletedFormat: Bool {
+            switch self {
+            case .asUIGFv4: false
+            case .asSRGFv1: false
+            case .asGIGFJson: true
+            case .asGIGFExcel: true
             }
         }
     }

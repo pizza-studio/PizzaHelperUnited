@@ -99,6 +99,8 @@ extension GachaRootView {
             } else {
                 Text("gachaKit.prompt.noGachaProfileFound".i18nGachaKit)
             }
+            Text(GachaRootView.navDescription)
+                .font(.footnote).foregroundStyle(.secondary)
         }
         .formStyle(.grouped)
     }

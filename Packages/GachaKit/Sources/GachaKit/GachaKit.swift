@@ -120,4 +120,35 @@ extension GachaKit {
             }
         }
     }
+
+    public enum FileExchangeException: Error, LocalizedError, CustomStringConvertible {
+        case accessFailureComDlg32
+        case fileNotExist
+        case decodingError(Error)
+        case uigfEntryInsertionError(Error)
+        case otherError(Error)
+
+        // MARK: Public
+
+        public var description: String { localizedDescription }
+
+        public var errorDescription: String? { localizedDescription }
+
+        public var localizedDescription: String {
+            switch self {
+            case .accessFailureComDlg32:
+                return "gachaKit.FileExchangeException.accessFailureComDlg32".i18nGachaKit
+            case .fileNotExist:
+                return "gachaKit.FileExchangeException.fileNotExist".i18nGachaKit
+            case let .uigfEntryInsertionError(error):
+                return "gachaKit.FileExchangeException.uigfEntryInsertionError".i18nGachaKit
+                    + " // \(error)"
+            case let .decodingError(error):
+                return "gachaKit.FileExchangeException.fileParseFailure".i18nGachaKit
+                    + " // \(error)"
+            case let .otherError(error):
+                return "\(error)"
+            }
+        }
+    }
 }
