@@ -39,9 +39,6 @@ struct UtilsTabPage: View {
                             GachaRootView.navIcon.resizable().aspectRatio(contentMode: .fit)
                         }
                     }
-                } footer: {
-                    Text(GachaRootView.navDescription)
-                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
                 Section {

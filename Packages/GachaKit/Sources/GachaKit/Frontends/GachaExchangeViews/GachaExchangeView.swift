@@ -5,6 +5,8 @@
 import SwiftData
 import SwiftUI
 
+// MARK: - GachaExchangeView
+
 public struct GachaExchangeView: View {
     // MARK: Public
 
@@ -65,6 +67,11 @@ public struct GachaExchangeView: View {
                     currentPage = .importData
                 }
             }
+            .navigationBarBackButtonHidden(theVM.taskState == .busy)
+            .animation(.default, value: theVM.taskState)
+        }
+        .onDisappear {
+            theVM.currentSceneStep4Import = .chooseFormat
         }
     }
 
@@ -74,4 +81,39 @@ public struct GachaExchangeView: View {
     @Query fileprivate var pzGachaProfileIDs: [PZGachaProfileMO]
     @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
+}
+
+extension GachaExchangeView {
+    @MainActor @ViewBuilder
+    public static func drawGPID(
+        _ gpid: GachaProfileID,
+        nameIDMap: [String: String],
+        isChosen: Bool = false
+    )
+        -> some View {
+        HStack {
+            gpid.photoView.frame(width: 35, height: 35)
+            HStack {
+                Group {
+                    if let name = nameIDMap[gpid.uidWithGame] {
+                        VStack(alignment: .leading) {
+                            Text(name)
+                                .fontWeight(.medium)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Text(gpid.uidWithGame)
+                                .font(.caption2)
+                                .fontDesign(.monospaced)
+                                .opacity(0.8)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    } else {
+                        Text(gpid.uidWithGame)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+                .foregroundStyle(isChosen ? Color.accentColor : .primary)
+                Spacer()
+            }
+        }.padding(.vertical, 4)
+    }
 }

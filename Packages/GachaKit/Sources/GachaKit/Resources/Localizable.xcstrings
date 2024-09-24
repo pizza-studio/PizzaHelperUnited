@@ -141,7 +141,259 @@
         }
       }
     },
-    "gachaKit.exchange.currentFileFormat" : {
+    "gachaKit.exchange.backAndReselectFile.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go back and select another file"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "戻って別のファイルを読み込む"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回且选择其他的档案"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回且選擇其他的檔案"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.chooseProfiles.export.prompt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the gacha profiles to export.\nEmpty selection indicates selecting all profiles."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出すガチャプロファイルをご指定ください。\n未指定の場合、全員の資料を書き出すとみなします。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请指定要导出的抽卡记录档案。\n若没有选中的持有者的话，则会被视为导出全部持有者的抽卡记录档案。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請指定要匯出的抽卡記錄檔案。\n若沒有選中的持有者的話，則會被視為匯出全部持有者的抽卡記錄檔案。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.chooseProfiles.import.prompt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the gacha profiles to import.\nEmpty selection indicates selecting all profiles."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み込むガチャプロファイルをご指定ください。\n未指定の場合、全員の資料を読み込むとみなします。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请指定要导入的抽卡记录档案。\n若没有选中的持有者的话，则会被视为导入全部持有者的抽卡记录档案。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請指定要匯入的抽卡記錄檔案。\n若沒有選中的持有者的話，則會被視為匯入全部持有者的抽卡記錄檔案。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.clickHereToExport" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Export"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップして書き出す"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抽卡语言"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點擊此處匯出"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.currentExportOption" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Option"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出しの設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导出方式选项"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯出方式選項"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.failedInSavingToFile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from dumping the exchangeable gacha records file."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残念ながら、交換用ガチャ記録ファイルは書き出しできませんでした。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可交换型抽卡记录档案没能成功导出。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可交換型抽卡記錄檔案沒能成功匯出。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.fileSavedTo:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped the exchangeable gacha records file to:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交換用ガチャ記録ファイルは無事でここで書き出しました:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可交换型抽卡记录档案已成功导出至:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可交換型抽卡記錄檔案已成功匯出至:"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.succeededInSavingToFile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped the exchangeable gacha records file."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交換用ガチャ記録ファイルは無事で書き出しました。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可交换型抽卡记录档案已成功导出。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可交換型抽卡記錄檔案已成功匯出。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.exportedFromApp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exported by"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書出し元のアプリ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "档案生成来源"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "檔案生成來源"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.fileFormat" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -152,7 +404,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ファイル フォーマット"
+            "value" : "ファイル規格"
           }
         },
         "zh-Hans" : {
@@ -165,6 +417,258 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "檔案格式"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.gigf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GIGF (Genshin Impact Gacha-Exchangeable Format) indicates UIGF v3.0 and earlier. The feature of importing these obsolete formats is only considered for importing old backup files generated by this app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GIGF は「原神専用ガチャ記録交換用規格」の略称であり、UIGF v3.0 までの全てのバージョンの統括名前であり、全て廃止済みである。廃止された規格に準じたファイルをインポートする機能は、「このアプリによって生成された」古いバックアップ ファイルを読み込むだけのためである。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GIGF（原神专用抽卡记录交换格式）是对 UIGF v3.0 及更早版本的 UIGF 的统称。这些版本的规格已经被全部淘汰。对已淘汰规格的导入支持仅为满足用户导入既有备份资料之目的。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GIGF（原神專用抽卡記錄交換格式）是對 UIGF v3.0 及更早版本的 UIGF 的統稱。這些版本的規格已經被全部淘汰。對已淘汰規格的匯入支援僅為滿足使用者匯入既有備份資料之目的。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.gigf.minimumSupportedVersion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app does not support importing GIGF formats older than UIGF v2.0 due to the lack of too many crucial information fields."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "肝心なる情報の記入欄は欠けていたため、UIGF v2.0 より古い GIGF 規格に準じて書き出したファイルの読み込みはできません。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝 App 无法支持对比 UIGF v2.0 更早的 GIGF 格式的导入，因为欠缺了太多的关键资讯。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝 App 無法支援對比 UIGF v2.0 更早的 GIGF 格式的匯入，因為欠缺了太多的關鍵資訊。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.gigf.timeZone" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ UIGF v2.3 (and earlier) JSON files & UIGF v2.2 Excel Spreadsheets are exported without timezone information, and the apps used for generating these files may have individual behaviors in handling timezone information.\n - For such files generated by Snap Hutao (v1.7.16_2023-11-10 and earlier) in these deprecated formats, please set the fallback time zone to UTC+0.\n - For such files generated by Xunkong (v1.4.4_2024-04-24) in these deprecated formats, please set the fallback time zone to the server time zone. Xunkong provided no UIGF v2.4 support and they introduced the gacha timezone support with UIGF v3.0 support starts from v1.5.0 update on 2024-09-21.\n - For such files generated by Teyvat Helper (YShelper), please set the fallback time to the device time where this file was generated and exported by Teyvat Helper."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ UIGF v2.3 そそれ以前の規格に準じて書き出した JSON・XLSX ファイルには時間帯情報は欠けており、それを書き出したそれぞれのアプリの各自の時間帯情報処理手順はそれぞれです。\n - 「Snap.HuTao」アプリの古いバージョン (v1.7.16_2023-11-10 まで) から書き出した（これらの廃止規格に準じた）ファイルを読み込む場合、時間帯を「UTC+0」と設置してください。\n - 「Xunkong」の古いバージョン (v1.4.4_2024-04-24 まで) から書き出した（これらの廃止規格に準じた）ファイルを読み込む場合、時間帯の設定をサーバーの時間帯と一致してください。「Xunkong」は UIGF v2.4 をサッポートをしたことはなくて、v1.5.0 版 (2024-09-21) にてガチャ時間帯のサポートと共に UIGF v3.0 のサポートも実装しました。\n - 「Teyvat Helper (YShelper；テイワット小助手)」アプリから書き出した（これらの廃止規格に準じた）ファイルを読み込む場合、該当ファイルを書き出した端末のあの時点の時間帯と設置してください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ UIGF v2.3 及之前的规格的 JSON 档案 / Excel 试算簿不包含有效的时区资讯，且每一款 App 在导出这些旧版规格的 时对时区的处理规则各有差异。\n - 如果您尝试导入用「Snap.HuTao」旧版(v1.7.16_2023-11-10 为止的版本) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为 UTC+0。\n - 如果您尝试导入用「寻空」旧版 (v1.4.4_2024-04-24) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为服务器时区。「寻空」未曾提供过对 UIGF v2.4 的支持，且从 v1.5.0 版 (2024-09-21) 开始才同时提供了对抽卡时区与 UIGF v3.0 的支持。\n - 如果您尝试导入由「提瓦特小助手 (YShelper)」导出的这些旧规格的抽卡记录的话，请将缺省值设定为当初用以导出该档案时的设备的系统时区。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ UIGF v2.3 及之前的規格的 JSON 檔案 / Excel 試算簿不包含有效的時區資訊，且每一款 App 在匯出這些舊版規格的檔案時對時區的處理規則各有差異。\n - 如果您嘗試匯入用「Snap.HuTao」舊版(v1.7.16_2023-11-10 為止的版本) 匯出的這些舊規格的抽卡記錄的話，請將時區缺省值設定為 UTC+0。\n - 如果您嘗試匯入用「尋空」舊版 (v1.4.4_2024-04-24) 匯出的這些舊規格的抽卡記錄的話，請將時區缺省值設定為伺服器時區。「尋空」未曾提供過對 UIGF v2.4 的支援，且從 v1.5.0 版 (2024-09-21) 開始才同時提供了對抽卡時區與 UIGF v3.0 的支援。\n - 如果您嘗試匯入由「提瓦特小助手 (YShelper)」匯出的這些舊規格的抽卡記錄的話，請將缺省值設定為當初用以匯出該檔案時的裝置的系統時區。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.srgfv1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SRGF v1.0, established by the UIGF committee, is an exchangeable format for gacha records of Star Rail, a game produced by Cognosphere and MiHoYo. Although this format is marked as a vintage format and is replaced by UIGF v4.0, there are some excellent apps on Windows which only conforms to SRGF v1.0, hence the option here for compatibility purposes."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UIGF委員会によって確立されたSRGF v1.0フォーマット規格は、CognosphereとMiHoYoによって制作されたゲーム「スターレール」のガチャ記録のために作られた交換可能なフォーマットです。この規格は淘汰猶予とされ、UIGF v4.0に置き換えられましたが、両フォーマット間での双方向の無損失変換が可能です。さらに、Windows上で動作するいくつかの優れたアプリはSRGF v1.0にのみ対応しているため、互換性を考慮してこのオプションが提供されています。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SRGF v1.0 是由 UIGF 委员会制定的资讯交换格式，用于 Cognosphere 和米哈遊制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由 UIGF v4.0 取代，但两者之间可以进行无损的双向转换。此外，Windows 平台上有一些只支持 SRGF v1.0 的优秀应用，因此这里提供了兼容性选项。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SRGF v1.0 是由 UIGF 委員會制定的資訊交換格式，用於 Cognosphere 和米哈遊製作的《星穹鐵道》遊戲的抽卡記錄。雖然此格式被標記為舊版本，並被 UIGF v4.0 取代，但兩者之間可以進行無損的雙向轉換。此外，Windows 平台上有一些只支持 SRGF v1.0 的優秀應用，因此這裡提供了兼容性選項。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.uigfv4" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UIGF v4.0, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UIGF委員会によって確立されたUIGF v4.0フォーマット規格は、CognosphereとMiHoYoによって制作された多くのゲームのガチャ記録のために作った統合交換可能なフォーマットです。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UIGF v4.0 是由 UIGF 委员会制定的聚合型资讯交换格式，用于多款由 Cognosphere 和米哈遊制作发行的的电玩们的抽卡记录的交换。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UIGF v4.0 是由 UIGF 委員會制定的聚合型資訊交換格式，用於多款由 Cognosphere 和米哈遊製作發行的的電玩們的抽卡記錄的交換。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.import.info.time" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exported at"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出した時点"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导出时间"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯出時間"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.import.succeeded" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully imported all entries from the specified profile(s) of the given file."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ご指定したファイルからご指定のプロファイルの全てのガチャ記録の読み込みは無事完了しました。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已成功从指定的档案导入了指定的抽卡所有者的全部的抽卡记录。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已成功從指定的檔案匯入了指定的抽卡所有者的全部的抽卡記錄。"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.import.succeededReport.sectionHeader" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics: New Entries Imported"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しく読み込んだ記録の数"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入的新资料的笔数统计"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯入的新資料的筆數統計"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.loadFile.button.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Load File"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップしてファイルを選択"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点此选择要读入的档案"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點此選擇要讀入的檔案"
           }
         }
       }
@@ -225,6 +729,34 @@
         }
       }
     },
+    "gachaKit.exchange.startImportingData.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Start Import"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップして読み込みを始める"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点此开始导入"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點此開始匯入"
+          }
+        }
+      }
+    },
     "gachaKit.exchange.tabTitle.exportData" : {
       "localizations" : {
         "en" : {
@@ -277,230 +809,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "匯入"
-          }
-        }
-      }
-    },
-    "gachaKit.export.chooseOwners.prompt" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose Owners to Export."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "書き出す資料の所有者のご指定ください。未指定の場合、全員の資料を書き出すとみなします。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请指定要导出的抽卡记录的持有者。若没有选中的持有者的话，则会被视为导出全部持有者的资料。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "請指定要匯出的抽卡記錄的持有者。若沒有選中的持有者的話，則會被視為匯出全部持有者的資料。"
-          }
-        }
-      }
-    },
-    "gachaKit.export.clickHereToExport" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Click Here to Export"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "タップして書き出す"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "抽卡语言"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "點擊此處匯出"
-          }
-        }
-      }
-    },
-    "gachaKit.export.clickHereToUpdateGMDB" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Click Here to Update GachaMetaDB"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "タップして GachaMetaDB を更新"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "点此更新 GachaMetaDB"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "點此更新 GachaMetaDB"
-          }
-        }
-      }
-    },
-    "gachaKit.export.currentExportOption" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Export Option"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "書き出しの設定"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "导出方式选项"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "匯出方式選項"
-          }
-        }
-      }
-    },
-    "gachaKit.export.failedInSavingToFile" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Failed from dumping the exchangeable gacha records file."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "残念ながら、交換用ガチャ記録ファイルは書き出しできませんでした。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可交换型抽卡记录档案没能成功汇出。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可交換型抽卡記錄檔案沒能成功匯出。"
-          }
-        }
-      }
-    },
-    "gachaKit.export.fileSavedTo:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Successfully dumped the exchangeable gacha records file to:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "交換用ガチャ記録ファイルは無事でここで書き出しました:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可交换型抽卡记录档案已成功汇出至:"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可交換型抽卡記錄檔案已成功匯出至:"
-          }
-        }
-      }
-    },
-    "gachaKit.export.gmdbExpired.explanation" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GachaMetaDB is out of date for handling certain gacha item entries in either the local app gacha entry database or from external sources. This DB contains crucial intel for mapping ItemIDs and their translations, plus telling the rarity type of each gacha item."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GachaMetaDB は、（該当端末での）弊アプリのガチャ記録データベースや外部ソースからの特定のガチャ部品記録の処理において古くなり、ガチャ記録の交換などのお役に立てられません。このデータベースには、ItemID とその（諸言語の）名称をお互いに参照するための重要な情報が含まれており、各ガチャ部品の稀有度情報も載っております。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "这部设备上的 GachaMetaDB 已经过期、无法正常用来处理来自该应用的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB 资料库包含了用以映射 ItemID 及其翻译的重要資訊，且记载了每个抽卡物品的稀有等级查询表。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "這部裝置上的 GachaMetaDB 已經過期、無法正常用來處理來自該應用的本地資料庫或外部來源的某些抽卡物品條目。GachaMetaDB 資料庫包含了用以映射 ItemID 及其翻譯的重要資訊，且記載了每個抽卡物品的稀有等級查詢表。"
-          }
-        }
-      }
-    },
-    "gachaKit.export.succeededInSavingToFile" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Successfully dumped the exchangeable gacha records file."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "交換用ガチャ記録ファイルは無事で書き出しました。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可交换型抽卡记录档案已成功汇出。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可交換型抽卡記錄檔案已成功匯出。"
           }
         }
       }
@@ -585,6 +893,118 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "指定的持有者（多名）"
+          }
+        }
+      }
+    },
+    "gachaKit.FileExchangeException.accessFailureComDlg32" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insufficient privileges on accessing the given file."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該当ファイルのアクセスにはさらなる権限が必要である。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对该档案的存取需要更多的权限。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "對該檔案的存取需要更多的權限。"
+          }
+        }
+      }
+    },
+    "gachaKit.FileExchangeException.fileNotExist" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Either the specified file does not exist or is inaccessible."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ご指定のファイルは不存在か、あるいはアクセスできないと判断しました。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指定的档案不存在或无法存取。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指定的檔案不存在或無法存取。"
+          }
+        }
+      }
+    },
+    "gachaKit.FileExchangeException.fileParseFailure" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The given file does not match the chosen file format."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ご指定のファイルは、ご指定のファイル規格として解読できませんでした。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该档案无法以指定的格式解读。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該檔案無法以指定的格式解讀。"
+          }
+        }
+      }
+    },
+    "gachaKit.FileExchangeException.uigfEntryInsertionError" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error happened on inserting the imported gacha entries into the database."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガチャ記録をデータベースに書き込む時にはエラーが発生しました。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "往资料库内写入正在导入的抽卡记录时出现错误。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "往資料庫內寫入正在匯入的抽卡記錄時出現錯誤。"
           }
         }
       }
@@ -921,6 +1341,146 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "抽卡記錄管理"
+          }
+        }
+      }
+    },
+    "gachaKit.GMDB.clickHereToUpdateGMDB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Update GachaMetaDB"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップして GachaMetaDB を更新"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点此更新 GachaMetaDB"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點此更新 GachaMetaDB"
+          }
+        }
+      }
+    },
+    "gachaKit.GMDB.gmdbExpired.explanation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GachaMetaDB is out of date for handling certain gacha item entries in either the local app gacha entry database or from external sources. This DB contains crucial intel for mapping ItemIDs and their translations, plus telling the rarity type of each gacha item."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GachaMetaDB は、（該当端末での）弊アプリのガチャ記録データベースや外部ソースからの特定のガチャ部品記録の処理において古くなり、ガチャ記録の交換などのお役に立てられません。このデータベースには、ItemID とその（諸言語の）名称をお互いに参照するための重要な情報が含まれており、各ガチャ部品の稀有度情報も載っております。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这部设备上的 GachaMetaDB 已经过期、无法正常用来处理来自该应用的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB 资料库包含了用以映射 ItemID 及其翻译的重要資訊，且记载了每个抽卡物品的稀有等级查询表。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這部裝置上的 GachaMetaDB 已經過期、無法正常用來處理來自該應用的本地資料庫或外部來源的某些抽卡物品條目。GachaMetaDB 資料庫包含了用以映射 ItemID 及其翻譯的重要資訊，且記載了每個抽卡物品的稀有等級查詢表。"
+          }
+        }
+      }
+    },
+    "gachaKit.import.gigf.fallbackTimeZone" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default time zone if field is missing"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時間帯設定値がない時に、この時間帯とす："
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时区资料缺失时的缺省值"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時區資料缺失時的缺省值"
+          }
+        }
+      }
+    },
+    "gachaKit.import.gigf.fallbackTimeZone.autoDeduct" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Time Zone"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サーバーの時間帯"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "服务器时区"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伺服器時區"
+          }
+        }
+      }
+    },
+    "gachaKit.import.obsoleteFormats.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obsolete Standards"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "廃止済みの規格"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已被淘汰的规格"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已被淘汰的規格"
           }
         }
       }
@@ -1938,25 +2498,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[About UIGF v4.0 and SRGF v1.0 format standards, established by UIGF committee.](https://uigf.org/)"
+            "value" : "[About UIGF committee and their established gacha exchangeable formats, incl. UIGF, SRGF, etc.](https://uigf.org/)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[UIGF 委員会の UIGF v4.0 と SRGF v1.0 ガチャ記録規格について](https://uigf.org/)"
+            "value" : "[UIGF委員会とその確立したガチャ交換フォーマット（UIGF、SRGFなど）について](https://uigf.org/)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[关于 UIGF 组织所规范的「米哈游游戏统一抽卡记录交换标准 UIGF v4.0」以及其前任「星穹铁道抽卡记录交换标准 SRGF v1.0」格式](https://uigf.org/)"
+            "value" : "[关于 UIGF 组织及其所规范的抽卡记录交换标准 (UIGF、SRGF 等)](https://uigf.org/)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[關於 UIGF 組織所規範的「米哈遊遊戲統一抽卡記錄交換標準 UIGF v4.0」以及其前任「星穹鐵道抽卡記錄交換標準 SRGF v1.0」格式](https://uigf.org/)"
+            "value" : "[關於 UIGF 組織及其所規範的抽卡記錄交換標準 (UIGF、SRGF 等)](https://uigf.org/)"
           }
         }
       }
