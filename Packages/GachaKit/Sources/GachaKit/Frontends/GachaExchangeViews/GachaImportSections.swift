@@ -196,6 +196,9 @@ extension GachaImportSections {
                             source,
                             specifiedGPIDs: self.chosenGPID
                         )
+                        theVM.updateMappedEntriesByPools(
+                            immediately: false
+                        )
                     } label: {
                         Text(verbatim: "gachaKit.exchange.startImportingData.button".i18nGachaKit)
                             .fontWeight(.bold)
