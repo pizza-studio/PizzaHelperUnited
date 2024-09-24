@@ -59,8 +59,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
             appendedContent()
         }
         .onChange(of: broadcaster.eventForStoppingRootTabTasks) { _, _ in
-            delegate.task?.cancel()
-            delegate.taskState = .standBy
+            delegate.forceStopTheTask()
         }
         .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
             triggerUpdateTask()

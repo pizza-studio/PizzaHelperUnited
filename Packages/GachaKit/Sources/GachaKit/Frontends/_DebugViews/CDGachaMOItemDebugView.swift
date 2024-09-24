@@ -79,10 +79,9 @@ public struct CDGachaMODebugView: View {
 extension CDGachaMODebugView {
     @Observable
     final class CDGachaMODebugVM: TaskManagedVM {
-        @MainActor var game: Pizza.SupportedGame = .genshinImpact
-        @MainActor var managedObjs: [any CDGachaMOProtocol] = []
+        var game: Pizza.SupportedGame = .genshinImpact
+        var managedObjs: [any CDGachaMOProtocol] = []
 
-        @MainActor
         func loadData() {
             let game = game // 使其变成 Sendable.
             fireTask(
