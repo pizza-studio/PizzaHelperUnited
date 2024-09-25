@@ -19,7 +19,7 @@ public final class GachaVM: TaskManagedVM {
     // MARK: Lifecycle
 
     public init(modelContext: ModelContext) {
-        self.modelContext = modelContext
+        self.pzProfileMOContext = modelContext
         super.init()
         super.assignableErrorHandlingTask = { _ in
             GachaActor.shared.modelExecutor.modelContext.rollback()
@@ -28,7 +28,7 @@ public final class GachaVM: TaskManagedVM {
 
     // MARK: Public
 
-    public var modelContext: ModelContext
+    public var pzProfileMOContext: ModelContext
     public var hasInheritableGachaEntries: Bool = false
     public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     public private(set) var currentPentaStars: [GachaEntryExpressible] = []
@@ -339,8 +339,12 @@ extension GachaVM {
 
     public var nameIDMap: [String: String] {
         var nameMap = [String: String]()
-        try? modelContext.enumerate(FetchDescriptor<PZProfileMO>(), batchSize: 1) { pzProfile in
-            if nameMap[pzProfile.uidWithGame] == nil { nameMap[pzProfile.uidWithGame] = pzProfile.name }
+        try? pzProfileMOContext.enumerate(
+            FetchDescriptor<PZProfileMO>(), batchSize: 1
+        ) { pzProfile in
+            if nameMap[pzProfile.uidWithGame] == nil {
+                nameMap[pzProfile.uidWithGame] = pzProfile.name
+            }
         }
         Defaults[.queriedEnkaProfiles4GI].forEach { uid, enkaProfile in
             let pfID = GachaProfileID(uid: uid, game: .genshinImpact)
@@ -356,7 +360,7 @@ extension GachaVM {
     }
 
     public var allPZProfiles: [PZProfileMO] {
-        let result = try? modelContext.fetch(FetchDescriptor<PZProfileMO>())
+        let result = try? pzProfileMOContext.fetch(FetchDescriptor<PZProfileMO>())
         return result?.sorted { $0.priority < $1.priority } ?? []
     }
 
