@@ -103,9 +103,8 @@ public struct GachaRootView: View {
 
     // MARK: Fileprivate
 
-    @Environment(\.modelContext) fileprivate var modelContext
     @Query(sort: \PZProfileMO.priority) fileprivate var pzProfiles: [PZProfileMO]
-    @Query fileprivate var pzGachaProfileIDs: [PZGachaProfileMO]
+    @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
 }
 
@@ -114,7 +113,7 @@ extension GachaRootView {
         Form {
             if theVM.currentGPID != nil {
                 GachaProfileView()
-            } else if !pzGachaProfileIDs.isEmpty {
+            } else if !theVM.hasGPID.wrappedValue {
                 Text("gachaKit.prompt.pleaseChooseGachaProfile".i18nGachaKit)
             } else {
                 Text("gachaKit.prompt.noGachaProfileFound".i18nGachaKit)
