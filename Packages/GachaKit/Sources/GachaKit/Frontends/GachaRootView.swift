@@ -49,25 +49,45 @@ public struct GachaRootView: View {
                             EmptyView() // ManageGachaRecordView()
                                 .environment(theVM)
                         }.disabled(true)
-                        NavigationLink("gachaKit.menu.exchangeGachaRecords".i18nGachaKit) {
+                        NavigationLink {
                             GachaExchangeView()
                                 .environment(theVM)
+                        } label: {
+                            Label(
+                                "gachaKit.menu.exchangeGachaRecords".i18nGachaKit,
+                                systemSymbol: .externaldriveFillBadgeWifi
+                            )
                         }
                         Divider()
-                        NavigationLink("gachaKit.menu.listCloudDataFromPreviousVersions".i18nGachaKit) {
+                        NavigationLink {
                             CDGachaMODebugView()
+                        } label: {
+                            Label(
+                                "gachaKit.menu.listCloudDataFromPreviousVersions".i18nGachaKit,
+                                systemSymbol: .externaldriveBadgeIcloud
+                            )
                         }
                         if theVM.hasInheritableGachaEntries {
-                            Button("gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit) {
+                            Button {
                                 theVM.migrateOldGachasIntoProfiles()
+                            } label: {
+                                Label(
+                                    "gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit,
+                                    systemSymbol: .icloudAndArrowDown
+                                )
                             }
                         }
                         Divider()
-                        Button("gachaKit.menu.rebuildGachaUIDList".i18nGachaKit) {
+                        Button {
                             theVM.rebuildGachaUIDList()
+                        } label: {
+                            Label(
+                                "gachaKit.menu.rebuildGachaUIDList".i18nGachaKit,
+                                systemSymbol: .gearshapeArrowTriangle2Circlepath
+                            )
                         }
                     } label: {
-                        Image(systemSymbol: .goforwardPlus)
+                        Image(systemSymbol: .filemenuAndSelection)
                     }
                     .disabled(theVM.taskState == .busy)
                 }
