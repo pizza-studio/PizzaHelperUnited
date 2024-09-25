@@ -89,6 +89,25 @@ extension GachaActor {
         )
     }
 
+    public func deleteAllEntriesOfGPID(_ gpid: GachaProfileID) throws {
+        try modelContext.transaction {
+            let uid = gpid.uid
+            let gameStr = gpid.game.rawValue
+            try modelContext.delete(
+                model: PZGachaEntryMO.self,
+                where: #Predicate { matchedEntryMO in
+                    matchedEntryMO.uid == uid && matchedEntryMO.game == gameStr
+                }
+            )
+            try modelContext.delete(
+                model: PZGachaProfileMO.self,
+                where: #Predicate { matchedEntryMO in
+                    matchedEntryMO.uid == uid && matchedEntryMO.gameRAW == gameStr
+                }
+            )
+        }
+    }
+
     @discardableResult
     public func batchInsert(
         _ sources: [PZGachaEntrySendable],

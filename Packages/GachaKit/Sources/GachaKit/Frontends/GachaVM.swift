@@ -78,6 +78,15 @@ extension GachaVM {
         )
     }
 
+    public func deleteAllEntriesOfGPID(_ gpid: GachaProfileID, immediately: Bool = true) {
+        fireTask(
+            cancelPreviousTask: immediately,
+            givenTask: {
+                try await GachaActor.shared.deleteAllEntriesOfGPID(gpid)
+            }
+        )
+    }
+
     public func rebuildGachaUIDList(immediately: Bool = true) {
         fireTask(
             cancelPreviousTask: immediately,
