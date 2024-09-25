@@ -351,6 +351,7 @@ private struct RequireLoginView: View {
         } label: {
             Text(loginLabelText + " \(region.localizedDescription)\n(\(region.game.localizedDescription))")
                 .fontWeight(.bold)
+                .fontWidth(.condensed)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
                 .padding(8)
