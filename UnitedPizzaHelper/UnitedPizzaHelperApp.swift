@@ -21,6 +21,6 @@ struct UnitedPizzaHelperApp: App {
             #endif
         }
         .windowResizability(.contentMinSize)
-        .modelContainer(PZHelper.sharedContainer)
+        .modelContainer(PZProfileActor.shared.modelContainer)
     }
 }

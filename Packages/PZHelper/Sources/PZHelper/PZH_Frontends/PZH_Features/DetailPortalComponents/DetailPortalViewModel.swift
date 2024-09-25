@@ -20,7 +20,7 @@ public final class DetailPortalViewModel {
 
     @MainActor
     public init() {
-        let actor = PZProfileActor(modelContainer: PZHelper.sharedContainer)
+        let actor = PZProfileActor.shared
         let context = actor.modelContainer.mainContext
         let pzProfiles = try? context.fetch(FetchDescriptor<PZProfileMO>())
             .sorted { $0.priority < $1.priority }
