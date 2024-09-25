@@ -56,6 +56,7 @@ public struct GachaImportSections: View {
     @Environment(GachaVM.self) fileprivate var theVM
     @State fileprivate var format: GachaExchange.ImportableFormat = .asUIGFv4
     @State fileprivate var chosenGPID: Set<GachaProfileID> = []
+    @State fileprivate var overrideDuplicatedEntriesOnImport: Bool = false
 }
 
 // MARK: GachaImportSections.SceneStep
@@ -185,16 +186,21 @@ extension GachaImportSections {
             LabeledContent {
                 Text(verbatim: source.info.exportApp)
             } label: {
-                Text("gachaKit.exchange.exportedFromApp".i18nGachaKit)
+                Text("gachaKit.exchange.exportedFromAppOrigin".i18nGachaKit)
             }
             makeDateLabel(unixTimeStamp: source.info.exportTimestamp)
+            Toggle(
+                "gachaKit.exchange.import.overrideDuplicatedEntries".i18nGachaKit,
+                isOn: $overrideDuplicatedEntriesOnImport
+            )
 
             Group {
                 if theVM.taskState != .busy {
                     Button {
                         theVM.importUIGFv4(
                             source,
-                            specifiedGPIDs: self.chosenGPID
+                            specifiedGPIDs: self.chosenGPID,
+                            overrideDuplicatedEntries: overrideDuplicatedEntriesOnImport
                         )
                         theVM.updateMappedEntriesByPools(
                             immediately: false
