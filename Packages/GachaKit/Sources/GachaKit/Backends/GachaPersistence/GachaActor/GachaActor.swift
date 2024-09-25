@@ -96,31 +96,34 @@ extension GachaActor {
         refreshGachaProfiles: Bool = false
     ) throws
         -> Int {
-        let allExistingEntryIDs: Set<String> = .init(
-            try modelContext.fetch(FetchDescriptor<PZGachaEntryMO>()).map(\.id)
-        )
-        var profiles: Set<GachaProfileID> = .init()
         var insertedEntriesCount = 0
-        try sources.forEach { theEntry in
+        try modelContext.transaction {
+            var allExistingEntryIDs: Set<String> = .init(
+                try modelContext.fetch(FetchDescriptor<PZGachaEntryMO>()).map(\.id)
+            )
             if overrideDuplicatedEntries {
-                let recordID2Delete = theEntry.id
+                let allNewEntryIDs: Set<String> = .init(sources.map(\.id))
+                let entryIDsToRemove = allExistingEntryIDs.intersection(allNewEntryIDs)
                 try modelContext.delete(
                     model: PZGachaEntryMO.self,
                     where: #Predicate { matchedEntryMO in
-                        matchedEntryMO.id == recordID2Delete
+                        entryIDsToRemove.contains(matchedEntryMO.id)
                     }
                 )
+                allExistingEntryIDs.subtract(entryIDsToRemove)
             }
-            if overrideDuplicatedEntries || !allExistingEntryIDs.contains(theEntry.id) {
-                modelContext.insert(theEntry.asMO)
-                insertedEntriesCount += 1
-            }
-            let profile = GachaProfileID(uid: theEntry.uid, game: theEntry.gameTyped)
-            if !profiles.contains(profile) {
-                profiles.insert(profile)
+            var profiles: Set<GachaProfileID> = .init()
+            sources.forEach { theEntry in
+                if overrideDuplicatedEntries || !allExistingEntryIDs.contains(theEntry.id) {
+                    modelContext.insert(theEntry.asMO)
+                    insertedEntriesCount += 1
+                }
+                let profile = GachaProfileID(uid: theEntry.uid, game: theEntry.gameTyped)
+                if !profiles.contains(profile) {
+                    profiles.insert(profile)
+                }
             }
         }
-        try modelContext.save()
         // try lazyRefreshProfiles(newProfiles: profiles)
         if refreshGachaProfiles {
             try refreshAllProfiles()
@@ -129,35 +132,36 @@ extension GachaActor {
     }
 
     public func lazyRefreshProfiles(newProfiles: Set<GachaProfileID>? = nil) throws {
-        let existingProfiles = try modelContext.fetch(FetchDescriptor<PZGachaProfileMO>())
-        var profiles = newProfiles ?? .init()
-        existingProfiles.forEach {
-            profiles.insert($0.asSendable)
-            modelContext.delete($0)
+        try modelContext.transaction {
+            let existingProfiles = try modelContext.fetch(FetchDescriptor<PZGachaProfileMO>())
+            var profiles = newProfiles ?? .init()
+            existingProfiles.forEach {
+                profiles.insert($0.asSendable)
+                modelContext.delete($0)
+            }
+            let arrProfiles = profiles.sorted { $0.uidWithGame < $1.uidWithGame }
+            arrProfiles.forEach { modelContext.insert($0.asMO) }
         }
-        try modelContext.save()
-        let arrProfiles = profiles.sorted { $0.uidWithGame < $1.uidWithGame }
-        arrProfiles.forEach { modelContext.insert($0.asMO) }
-        try modelContext.save()
     }
 
     @discardableResult
     public func refreshAllProfiles() throws -> [GachaProfileID] {
-        let oldProfileMOs = try modelContext.fetch(FetchDescriptor<PZGachaProfileMO>())
-        var profiles = Set(oldProfileMOs.map(\.asSendable))
-        var entryFetchDescriptor = FetchDescriptor<PZGachaEntryMO>()
-        entryFetchDescriptor.propertiesToFetch = [\.uid, \.game]
-        let filteredEntries = try modelContext.fetch(entryFetchDescriptor)
-        filteredEntries.forEach { currentGachaEntry in
-            let alreadyExisted = profiles.first { $0.uidWithGame == currentGachaEntry.uidWithGame }
-            guard alreadyExisted == nil else { return }
-            let newProfile = GachaProfileID(uid: currentGachaEntry.uid, game: currentGachaEntry.gameTyped)
-            profiles.insert(newProfile)
+        var profiles = Set<GachaProfileID>()
+        try modelContext.transaction {
+            let oldProfileMOs = try modelContext.fetch(FetchDescriptor<PZGachaProfileMO>())
+            profiles = Set(oldProfileMOs.map(\.asSendable))
+            var entryFetchDescriptor = FetchDescriptor<PZGachaEntryMO>()
+            entryFetchDescriptor.propertiesToFetch = [\.uid, \.game]
+            let filteredEntries = try modelContext.fetch(entryFetchDescriptor)
+            filteredEntries.forEach { currentGachaEntry in
+                let alreadyExisted = profiles.first { $0.uidWithGame == currentGachaEntry.uidWithGame }
+                guard alreadyExisted == nil else { return }
+                let newProfile = GachaProfileID(uid: currentGachaEntry.uid, game: currentGachaEntry.gameTyped)
+                profiles.insert(newProfile)
+            }
+            oldProfileMOs.forEach { modelContext.delete($0) }
+            profiles.forEach { modelContext.insert($0.asMO) }
         }
-        oldProfileMOs.forEach { modelContext.delete($0) }
-        try modelContext.save()
-        profiles.forEach { modelContext.insert($0.asMO) }
-        try modelContext.save()
         return profiles.sorted { $0.uidWithGame < $1.uidWithGame }
     }
 }
