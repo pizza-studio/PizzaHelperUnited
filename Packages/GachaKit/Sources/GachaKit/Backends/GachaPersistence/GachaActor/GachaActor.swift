@@ -159,9 +159,10 @@ extension GachaActor {
         try modelContext.save()
     }
 
-    public func refreshAllProfiles() throws {
+    @discardableResult
+    public func refreshAllProfiles() throws -> [GachaProfileID] {
         let oldProfileMOs = try modelContext.fetch(FetchDescriptor<PZGachaProfileMO>())
-        var profiles = oldProfileMOs.map(\.asSendable)
+        var profiles = Set(oldProfileMOs.map(\.asSendable))
         var entryFetchDescriptor = FetchDescriptor<PZGachaEntryMO>()
         entryFetchDescriptor.propertiesToFetch = [\.uid, \.game]
         let filteredEntries = try modelContext.fetch(entryFetchDescriptor)
@@ -169,11 +170,12 @@ extension GachaActor {
             let alreadyExisted = profiles.first { $0.uidWithGame == currentGachaEntry.uidWithGame }
             guard alreadyExisted == nil else { return }
             let newProfile = GachaProfileID(uid: currentGachaEntry.uid, game: currentGachaEntry.gameTyped)
-            profiles.append(newProfile)
+            profiles.insert(newProfile)
         }
         oldProfileMOs.forEach { modelContext.delete($0) }
         try modelContext.save()
         profiles.forEach { modelContext.insert($0.asMO) }
         try modelContext.save()
+        return profiles.sorted { $0.uidWithGame < $1.uidWithGame }
     }
 }
