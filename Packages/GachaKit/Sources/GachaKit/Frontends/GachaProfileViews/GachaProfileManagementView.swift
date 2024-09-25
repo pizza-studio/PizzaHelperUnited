@@ -13,46 +13,50 @@ public struct GachaProfileManagementView: View {
     @MainActor public var body: some View {
         NavigationStack {
             Form {
-                Section {
-                    LabeledContent {
-                        GachaProfileSwitcherView()
-                            .fixedSize()
-                            .environment(theVM)
-                    } label: {
-                        Text("gachaKit.management.uidAndGameToPurge".i18nGachaKit)
-                    }
-                    if theVM.taskState != .busy {
-                        Button {
-                            if let gpid = theVM.currentGPID {
-                                theVM.deleteAllEntriesOfGPID(gpid)
-                            }
-                            theVM.updateMappedEntriesByPools(immediately: false)
-                            theVM.resetDefaultProfile()
+                if theVM.hasGPID.wrappedValue {
+                    Section {
+                        LabeledContent {
+                            GachaProfileSwitcherView()
+                                .fixedSize()
+                                .environment(theVM)
                         } label: {
-                            Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID".i18nGachaKit)
-                                .fontWidth(.condensed)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .padding(8)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .foregroundStyle(.primary.opacity(0.1))
+                            Text("gachaKit.management.uidAndGameToPurge".i18nGachaKit)
+                        }
+                        if theVM.taskState != .busy {
+                            Button {
+                                if let gpid = theVM.currentGPID {
+                                    theVM.deleteAllEntriesOfGPID(gpid)
                                 }
-                                .foregroundStyle(.red)
+                                theVM.updateMappedEntriesByPools(immediately: false)
+                                theVM.resetDefaultProfile()
+                            } label: {
+                                Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID".i18nGachaKit)
+                                    .fontWidth(.condensed)
+                                    .fontWeight(.bold)
+                                    .multilineTextAlignment(.center)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(8)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .foregroundStyle(.primary.opacity(0.1))
+                                    }
+                                    .foregroundStyle(.red)
+                            }
+                        } else {
+                            InfiniteProgressBar().id(UUID())
                         }
-                    } else {
-                        InfiniteProgressBar().id(UUID())
-                    }
-                } header: {
-                    if let gpid = theVM.currentGPID {
-                        HStack {
-                            Text("gachaKit.management.currentGame".i18nGachaKit)
-                            Spacer()
-                            Text(verbatim: gpid.game.localizedDescription)
+                    } header: {
+                        if let gpid = theVM.currentGPID {
+                            HStack {
+                                Text("gachaKit.management.currentGame".i18nGachaKit)
+                                Spacer()
+                                Text(verbatim: gpid.game.localizedDescription)
+                            }
+                            .textCase(.none)
                         }
-                        .textCase(.none)
                     }
+                } else {
+                    Text("gachaKit.prompt.noGachaProfileFound".i18nGachaKit)
                 }
             }
             .navigationTitle(Self.navTitle)
