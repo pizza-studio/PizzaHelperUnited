@@ -364,10 +364,24 @@ extension GachaVM {
         return result?.sorted { $0.priority < $1.priority } ?? []
     }
 
-    public var allGPIDs: [GachaProfileID] {
-        let context = GachaActor.shared.modelContainer.mainContext
-        let result = try? context.fetch(FetchDescriptor<PZGachaProfileMO>()).map(\.asSendable)
-        return result?.sorted { $0.uidWithGame < $1.uidWithGame } ?? []
+    public var allGPIDs: Binding<[GachaProfileID]> {
+        .init(get: {
+            let context = GachaActor.shared.modelContainer.mainContext
+            let result = try? context.fetch(FetchDescriptor<PZGachaProfileMO>()).map(\.asSendable)
+            return result?.sorted { $0.uidWithGame < $1.uidWithGame } ?? []
+        }, set: { _ in
+
+        })
+    }
+
+    public var hasGPID: Binding<Bool> {
+        .init(get: {
+            let context = GachaActor.shared.modelContainer.mainContext
+            let result = try? context.fetchCount(FetchDescriptor<PZGachaProfileMO>())
+            return result ?? 0 > 0
+        }, set: { _ in
+
+        })
     }
 
     fileprivate func getCurrentPentaStars(
@@ -386,7 +400,7 @@ extension GachaVM {
     }
 
     public func resetDefaultProfile() {
-        let sortedGPIDs = allGPIDs
+        let sortedGPIDs = allGPIDs.wrappedValue
         guard !sortedGPIDs.isEmpty else { return }
         if let matched = allPZProfiles.first {
             let firstExistingProfile = sortedGPIDs.first {
