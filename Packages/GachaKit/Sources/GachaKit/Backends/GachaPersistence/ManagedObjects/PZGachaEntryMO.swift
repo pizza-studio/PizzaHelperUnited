@@ -135,3 +135,22 @@ extension PZGachaEntryMO {
         }
     }
 }
+
+// MARK: - Update Existing GachaEntryMO information. (no need to extend the PZGachaEntryProtocol.)
+
+extension PZGachaEntryMO {
+    public func inherit(from target: PZGachaEntryProtocol) {
+        game = target.game
+        uid = target.uid
+        gachaType = target.gachaType
+        itemID = target.itemID
+        count = target.count
+        time = target.time
+        name = target.name
+        lang = target.lang
+        itemType = target.itemType
+        rankType = target.rankType
+        id = target.id
+        gachaID = target.gachaID
+    }
+}
