@@ -50,6 +50,10 @@ public struct GachaProfileDetailedListView: View {
                         ProgressView()
                     }
                 }
+                ToolbarItem(placement: .confirmationAction) {
+                    GachaExportToolbarButton(gpid: theVM.currentGPID)?
+                        .environment(theVM)
+                }
             }
         }
     }
