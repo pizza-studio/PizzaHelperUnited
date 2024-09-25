@@ -40,6 +40,10 @@ public struct GachaRootView: View {
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
+                    GachaExportToolbarButton(gpid: theVM.currentGPID)?
+                        .environment(theVM)
+                }
+                ToolbarItem(placement: .confirmationAction) {
                     Menu {
                         NavigationLink("gachaKit.menu.getGachaRecords") {
                             EmptyView() // GetGachaRecordView()
