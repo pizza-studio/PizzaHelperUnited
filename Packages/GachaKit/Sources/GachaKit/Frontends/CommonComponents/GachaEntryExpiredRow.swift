@@ -25,6 +25,7 @@ public struct GachaEntryExpiredRow: View {
                 } label: {
                     Text("gachaKit.GMDB.clickHereToUpdateGMDB".i18nGachaKit)
                         .fontWeight(.bold)
+                        .fontWidth(.condensed)
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(8)
