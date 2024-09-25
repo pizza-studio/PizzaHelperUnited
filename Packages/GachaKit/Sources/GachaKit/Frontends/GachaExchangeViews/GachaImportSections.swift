@@ -208,6 +208,7 @@ extension GachaImportSections {
                     } label: {
                         Text(verbatim: "gachaKit.exchange.startImportingData.button".i18nGachaKit)
                             .fontWeight(.bold)
+                            .fontWidth(.condensed)
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding(8)
@@ -363,6 +364,7 @@ private struct PopFileButton: View {
         } label: {
             Text(verbatim: title)
                 .fontWeight(.bold)
+                .fontWidth(.condensed)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(8)
