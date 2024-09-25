@@ -4,9 +4,9 @@
 
 import Foundation
 
-// MARK: - GachaFetchModelType
+// MARK: - GachaFetchModelTypeProtocol
 
-protocol GachaFetchModelType: Decodable, Hashable, Equatable {}
+protocol GachaFetchModelTypeProtocol: Decodable, Hashable, Equatable, Sendable {}
 
 // MARK: - GachaFetchModels
 
@@ -38,10 +38,10 @@ public enum GachaFetchModelError: Error, LocalizedError {
 // MARK: GachaFetchModels.PageFetched
 
 extension GachaFetchModels {
-    struct RawResponseModel: GachaFetchModelType {
+    public struct RawResponseModel: GachaFetchModelTypeProtocol {
         // MARK: Lifecycle
 
-        init(from decoder: any Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.retcode = try container.decode(Int.self, forKey: .retcode)
             self.message = try container.decode(String.self, forKey: .message)
@@ -52,11 +52,11 @@ extension GachaFetchModels {
             self.data = data
         }
 
-        // MARK: Internal
+        // MARK: Public
 
-        let retcode: Int
-        let message: String
-        let data: PageFetched
+        public let retcode: Int
+        public let message: String
+        public let data: PageFetched
 
         // MARK: Private
 
@@ -68,10 +68,10 @@ extension GachaFetchModels {
     }
 
     /// 专门用来解码伺服器远端抽卡记录的单页资料结构，共用于绝区零、原神、星穹铁道的抽卡记录。
-    struct PageFetched: GachaFetchModelType {
+    public struct PageFetched: GachaFetchModelTypeProtocol {
         // MARK: Lifecycle
 
-        init(from decoder: any Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.page = try container.decode(String.self, forKey: .page)
             self.size = try container.decode(String.self, forKey: .size)
@@ -81,14 +81,14 @@ extension GachaFetchModels {
             self.list = try container.decode([FetchedEntry].self, forKey: .list)
         }
 
-        // MARK: Internal
+        // MARK: Public
 
-        let page: String
-        let size: String
-        let region: String
-        let total: String? // Genshin only. Might be totally useless.
-        let timeZoneDelta: Int
-        let list: [FetchedEntry]
+        public let page: String
+        public let size: String
+        public let region: String
+        public let total: String? // Genshin only. Might be totally useless.
+        public let timeZoneDelta: Int
+        public let list: [FetchedEntry]
 
         // MARK: Private
 
@@ -110,10 +110,10 @@ extension GachaFetchModels.PageFetched {
     ///
     /// 该结构忠实保留原有数据，不对时间做任何提前解码。所有属性都是 String。
     /// 唯一例外是原神没有 gachaID，自动补零处理。
-    struct FetchedEntry: GachaFetchModelType, Identifiable {
+    public struct FetchedEntry: GachaFetchModelTypeProtocol, Identifiable {
         // MARK: Lifecycle
 
-        init(from decoder: any Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.uid = try container.decode(String.self, forKey: .uid)
             self.gachaType = try container.decode(String.self, forKey: .gachaType)
@@ -128,19 +128,19 @@ extension GachaFetchModels.PageFetched {
             self.gachaID = try container.decodeIfPresent(String.self, forKey: .gachaID) ?? "0"
         }
 
-        // MARK: Internal
+        // MARK: Public
 
-        let uid: String
-        let gachaType: String
-        let itemID: String
-        let count: String
-        let time: String
-        let name: String
-        let lang: String
-        let itemType: String
-        let rankType: String
-        let id: String
-        let gachaID: String
+        public let uid: String
+        public let gachaType: String
+        public let itemID: String
+        public let count: String
+        public let time: String
+        public let name: String
+        public let lang: String
+        public let itemType: String
+        public let rankType: String
+        public let id: String
+        public let gachaID: String
 
         // MARK: Private
 
