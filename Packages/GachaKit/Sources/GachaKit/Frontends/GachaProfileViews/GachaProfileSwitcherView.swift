@@ -71,31 +71,33 @@ public struct GachaProfileSwitcherView: View {
     @MainActor @ViewBuilder
     func profileSwitcherMenu() -> some View {
         let nameIDMap = theVM.nameIDMap
-        Menu {
-            ForEach(sortedGPIDs) { profileIDObj in
-                Button {
-                    withAnimation {
-                        theVM.currentGPID = profileIDObj
-                    }
-                } label: {
-                    Label {
-                        if let name = nameIDMap[profileIDObj.uidWithGame] {
-                            #if targetEnvironment(macCatalyst)
-                            Text(name + " // \(profileIDObj.uidWithGame)")
-                            #else
-                            Text(name + "\n\(profileIDObj.uidWithGame)")
-                            #endif
-                        } else {
-                            Text(profileIDObj.uidWithGame)
+        if !sortedGPIDs.isEmpty {
+            Menu {
+                ForEach(sortedGPIDs) { profileIDObj in
+                    Button {
+                        withAnimation {
+                            theVM.currentGPID = profileIDObj
                         }
-                    } icon: {
-                        profileIDObj.photoView
+                    } label: {
+                        Label {
+                            if let name = nameIDMap[profileIDObj.uidWithGame] {
+                                #if targetEnvironment(macCatalyst)
+                                Text(name + " // \(profileIDObj.uidWithGame)")
+                                #else
+                                Text(name + "\n\(profileIDObj.uidWithGame)")
+                                #endif
+                            } else {
+                                Text(profileIDObj.uidWithGame)
+                            }
+                        } icon: {
+                            profileIDObj.photoView
+                        }
+                        .id(profileIDObj.uidWithGame)
                     }
-                    .id(profileIDObj.uidWithGame)
                 }
+            } label: {
+                profileSwitcherMenuLabel
             }
-        } label: {
-            profileSwitcherMenuLabel
         }
     }
 

@@ -33,6 +33,7 @@ public struct GachaRootView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     GachaProfileSwitcherView()
+                        .environment(theVM)
                 }
                 if theVM.taskState == .busy {
                     ToolbarItem(placement: .confirmationAction) {
