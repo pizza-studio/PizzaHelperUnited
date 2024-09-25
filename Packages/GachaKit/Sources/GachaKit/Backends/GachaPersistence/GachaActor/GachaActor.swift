@@ -37,15 +37,8 @@ extension GachaActor {
                 PZGachaProfileMO.self,
                 configurations:
                 ModelConfiguration(
-                    "PZGachaEntryMO",
-                    schema: Self.schema4Entries,
-                    isStoredInMemoryOnly: true,
-                    groupContainer: .none,
-                    cloudKitDatabase: .none
-                ),
-                ModelConfiguration(
-                    "PZGachaProfileMO",
-                    schema: schema4Profiles,
+                    "PZGachaKitDB",
+                    schema: Self.schema,
                     isStoredInMemoryOnly: true,
                     groupContainer: .none,
                     cloudKitDatabase: .none
@@ -60,7 +53,7 @@ extension GachaActor {
         do {
             return try ModelContainer(
                 for: PZGachaEntryMO.self, PZGachaProfileMO.self,
-                configurations: Self.modelConfig4Entries, Self.modelConfig4Profiles
+                configurations: Self.modelConfig
             )
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
@@ -71,23 +64,12 @@ extension GachaActor {
 // MARK: - Schemes and Configs.
 
 extension GachaActor {
-    public static let schema4Entries = Schema([PZGachaEntryMO.self])
-    public static let schema4Profiles = Schema([PZGachaProfileMO.self])
+    public static let schema = Schema([PZGachaEntryMO.self, PZGachaProfileMO.self])
 
-    public static var modelConfig4Entries: ModelConfiguration {
+    public static var modelConfig: ModelConfiguration {
         ModelConfiguration(
-            "PZGachaEntryMO",
-            schema: Self.schema4Entries,
-            isStoredInMemoryOnly: false,
-            groupContainer: .none,
-            cloudKitDatabase: .private(iCloudContainerName)
-        )
-    }
-
-    public static var modelConfig4Profiles: ModelConfiguration {
-        ModelConfiguration(
-            "PZGachaProfileMO",
-            schema: schema4Profiles,
+            "PZGachaKitDB",
+            schema: Self.schema,
             isStoredInMemoryOnly: false,
             groupContainer: .none,
             cloudKitDatabase: .private(iCloudContainerName)
