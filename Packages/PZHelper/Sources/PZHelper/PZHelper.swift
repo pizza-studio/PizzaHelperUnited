@@ -6,8 +6,4 @@ import GachaKit
 import PZAccountKit
 import SwiftData
 
-public enum PZHelper {
-    @MainActor public static var sharedContainer: ModelContainer {
-        PZProfileActor.shared.modelContainer
-    }
-}
+public enum PZHelper {}
