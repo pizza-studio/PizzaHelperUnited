@@ -841,6 +841,34 @@
         }
       }
     },
+    "gachaKit.export.share.warnings.doNotShareToPublicCollectors" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ WARNING: Do not share your gacha records to **public** gacha record collectors who may **publicize** their statistic results."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 警告：貴殿などのガチャ記録を用いて作った統計結果を『公開』する可能性のある『公共』ガチャ記録収集者と共有することをご遠慮ください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 警告：请勿将您的抽卡记录分享给可能会公开其统计结果的公共抽卡记录收集者。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 警告：请勿将您的抽卡记录分享给可能会公开其统计结果的公共抽卡记录收集者。"
+          }
+        }
+      }
+    },
     "gachaKit.exportPackageMethod.allOwners" : {
       "localizations" : {
         "en" : {
