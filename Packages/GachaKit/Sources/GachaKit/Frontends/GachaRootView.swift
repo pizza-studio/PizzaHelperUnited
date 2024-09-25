@@ -59,22 +59,24 @@ public struct GachaRootView: View {
                             )
                         }
                         Divider()
-                        NavigationLink {
-                            CDGachaMODebugView()
-                        } label: {
-                            Label(
-                                "gachaKit.menu.listCloudDataFromPreviousVersions".i18nGachaKit,
-                                systemSymbol: .externaldriveBadgeIcloud
-                            )
-                        }
-                        if theVM.hasInheritableGachaEntries {
-                            Button {
-                                theVM.migrateOldGachasIntoProfiles()
+                        if FileManager.default.ubiquityIdentityToken != nil {
+                            NavigationLink {
+                                CDGachaMODebugView()
                             } label: {
                                 Label(
-                                    "gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit,
-                                    systemSymbol: .icloudAndArrowDown
+                                    "gachaKit.menu.listCloudDataFromPreviousVersions".i18nGachaKit,
+                                    systemSymbol: .externaldriveBadgeIcloud
                                 )
+                            }
+                            if theVM.hasInheritableGachaEntries {
+                                Button {
+                                    theVM.migrateOldGachasIntoProfiles()
+                                } label: {
+                                    Label(
+                                        "gachaKit.menu.inheritCloudDataFromPreviousVersions".i18nGachaKit,
+                                        systemSymbol: .icloudAndArrowDown
+                                    )
+                                }
                             }
                         }
                         Divider()
