@@ -43,6 +43,7 @@ public struct GachaExportSections: View {
                     } label: {
                         Text("gachaKit.exchange.export.clickHereToExport".i18nGachaKit)
                             .fontWeight(.bold)
+                            .fontWidth(.condensed)
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding(8)
