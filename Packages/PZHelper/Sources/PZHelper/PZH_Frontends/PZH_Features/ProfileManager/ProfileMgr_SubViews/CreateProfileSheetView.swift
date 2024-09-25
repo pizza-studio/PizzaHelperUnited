@@ -318,22 +318,10 @@ private struct RequireLoginView: View {
         }
         LabeledContent("settings.profile.pleaseSelectRegion".i18nPZHelper) {
             Picker("".description, selection: $region) {
-                switch region.game {
-                case .genshinImpact:
-                    Text(HoYo.AccountRegion.miyoushe(.genshinImpact).localizedDescription)
-                        .tag(HoYo.AccountRegion.miyoushe(.genshinImpact))
-                    Text(HoYo.AccountRegion.hoyoLab(.genshinImpact).localizedDescription)
-                        .tag(HoYo.AccountRegion.hoyoLab(.genshinImpact))
-                case .starRail:
-                    Text(HoYo.AccountRegion.miyoushe(.starRail).localizedDescription)
-                        .tag(HoYo.AccountRegion.miyoushe(.starRail))
-                    Text(HoYo.AccountRegion.hoyoLab(.starRail).localizedDescription)
-                        .tag(HoYo.AccountRegion.hoyoLab(.starRail))
-                case .zenlessZone:
-                    Text(HoYo.AccountRegion.miyoushe(.zenlessZone).localizedDescription)
-                        .tag(HoYo.AccountRegion.miyoushe(.zenlessZone))
-                    Text(HoYo.AccountRegion.hoyoLab(.zenlessZone).localizedDescription)
-                        .tag(HoYo.AccountRegion.hoyoLab(.zenlessZone))
+                let regionsMatched = HoYo.AccountRegion.getCases(region.game)
+                ForEach(regionsMatched) { matchedRegion in
+                    Text(matchedRegion.localizedDescription)
+                        .tag(matchedRegion)
                 }
             }
             .pickerStyle(.segmented)

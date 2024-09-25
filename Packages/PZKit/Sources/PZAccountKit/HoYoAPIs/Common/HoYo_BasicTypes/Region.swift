@@ -46,7 +46,15 @@ extension HoYo {
 // MARK: - HoYo.AccountRegion + CaseIterable
 
 extension HoYo.AccountRegion: CaseIterable {
-    public static let allCases: [Self] = allCases4GI + allCases4HSR
+    public static let allCases: [Self] = allCases4GI + allCases4HSR + allCases4ZZZ
+
+    public static func getCases(_ game: Pizza.SupportedGame) -> [Self] {
+        switch game {
+        case .genshinImpact: allCases4GI
+        case .starRail: allCases4HSR
+        case .zenlessZone: allCases4ZZZ
+        }
+    }
 
     public static let allCases4GI: [Self] = [
         .hoyoLab(.genshinImpact), .miyoushe(.genshinImpact),
@@ -54,6 +62,10 @@ extension HoYo.AccountRegion: CaseIterable {
 
     public static let allCases4HSR: [Self] = [
         .hoyoLab(.starRail), .miyoushe(.starRail),
+    ]
+
+    public static let allCases4ZZZ: [Self] = [
+        .hoyoLab(.zenlessZone), .miyoushe(.zenlessZone),
     ]
 }
 
