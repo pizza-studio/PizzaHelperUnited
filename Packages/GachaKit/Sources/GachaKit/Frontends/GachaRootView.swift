@@ -50,10 +50,15 @@ public struct GachaRootView: View {
                             EmptyView() // GetGachaRecordView()
                                 .environment(theVM)
                         }.disabled(true)
-                        NavigationLink("gachaKit.menu.manageGachaRecords") {
-                            EmptyView() // ManageGachaRecordView()
+                        NavigationLink {
+                            GachaProfileManagementView()
                                 .environment(theVM)
-                        }.disabled(true)
+                        } label: {
+                            Label(
+                                GachaProfileManagementView.navTitle,
+                                systemSymbol: .tray2
+                            )
+                        }
                         NavigationLink {
                             GachaExchangeView()
                                 .environment(theVM)
