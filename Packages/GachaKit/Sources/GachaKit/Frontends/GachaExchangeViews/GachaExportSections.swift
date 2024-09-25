@@ -62,7 +62,14 @@ public struct GachaExportSections: View {
             }
             .textCase(.none)
         } footer: {
-            Text("gachaKit.uigf.affLink.[UIGF](https://uigf.org/)", bundle: .module)
+            VStack(alignment: .leading, spacing: 11) {
+                Text("gachaKit.uigf.affLink.[UIGF](https://uigf.org/)", bundle: .module)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("gachaKit.export.share.warnings.doNotShareToPublicCollectors", bundle: .module)
+                    .fontWeight(.medium)
+                    .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }.multilineTextAlignment(.leading)
         }
         .apply { exporterButton in
             hookAlertAndComDlg32(target: exporterButton)
