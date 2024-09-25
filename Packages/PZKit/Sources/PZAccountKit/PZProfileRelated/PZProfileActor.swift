@@ -13,8 +13,8 @@ import SwiftData
 public actor PZProfileActor {
     // MARK: Lifecycle
 
-    public init() {
-        modelContainer = Self.makeContainer()
+    public init(unitTests: Bool = false) {
+        modelContainer = unitTests ? Self.makeContainer4UnitTests() : Self.makeContainer()
         modelExecutor = DefaultSerialModelExecutor(
             modelContext: .init(modelContainer)
         )
@@ -53,6 +53,23 @@ public actor PZProfileActor {
                 )
             }
             fatalError("Could not create PZProfileMO ModelContainer at \(config.url.absoluteString). Error: \(error)")
+        }
+    }
+
+    public static func makeContainer4UnitTests() -> ModelContainer {
+        do {
+            return try ModelContainer(
+                for: PZProfileMO.self,
+                configurations: ModelConfiguration(
+                    "PZProfileMO",
+                    schema: Self.schema,
+                    isStoredInMemoryOnly: true,
+                    groupContainer: .none,
+                    cloudKitDatabase: .none
+                )
+            )
+        } catch {
+            fatalError("Could not create in-memory ModelContainer: \(error)")
         }
     }
 }
