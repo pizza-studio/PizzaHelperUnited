@@ -98,26 +98,38 @@ extension GachaActor {
 // MARK: - CDGachaMO Related Static Methods.
 
 extension GachaActor {
-    public static func migrateOldGachasIntoProfiles() async throws {
-        try await Self.shared.migrateOldGachasIntoProfiles()
-    }
-
     public func migrateOldGachasIntoProfiles() throws {
         let oldData = try cdGachaMOSputnik.allCDGachaMOAsPZGachaEntryMO()
-        try batchInsert(oldData, refreshGachaProfiles: true)
+        try batchInsert(
+            oldData,
+            overrideDuplicatedEntries: false,
+            refreshGachaProfiles: true
+        )
     }
 
     @discardableResult
     public func batchInsert(
         _ sources: [PZGachaEntrySendable],
+        overrideDuplicatedEntries: Bool = false,
         refreshGachaProfiles: Bool = false
     ) throws
         -> Int {
-        let allExistingEntryIDs: [String] = try modelContext.fetch(FetchDescriptor<PZGachaEntryMO>()).map(\.id)
+        let allExistingEntryIDs: Set<String> = .init(
+            try modelContext.fetch(FetchDescriptor<PZGachaEntryMO>()).map(\.id)
+        )
         var profiles: Set<GachaProfileID> = .init()
         var insertedEntriesCount = 0
-        sources.forEach { theEntry in
-            if !allExistingEntryIDs.contains(theEntry.id) {
+        try sources.forEach { theEntry in
+            if overrideDuplicatedEntries {
+                let recordID2Delete = theEntry.id
+                try modelContext.delete(
+                    model: PZGachaEntryMO.self,
+                    where: #Predicate { matchedEntryMO in
+                        matchedEntryMO.id == recordID2Delete
+                    }
+                )
+            }
+            if overrideDuplicatedEntries || !allExistingEntryIDs.contains(theEntry.id) {
                 modelContext.insert(theEntry.asMO)
                 insertedEntriesCount += 1
             }

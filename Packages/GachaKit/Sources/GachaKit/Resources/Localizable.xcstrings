@@ -365,7 +365,7 @@
         }
       }
     },
-    "gachaKit.exchange.exportedFromApp" : {
+    "gachaKit.exchange.exportedFromAppOrigin" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -585,6 +585,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "匯出時間"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.import.overrideDuplicatedEntries" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Override existing records"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "既存の情報を上書きする"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "覆写既存的记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "覆寫既存的記錄"
           }
         }
       }
