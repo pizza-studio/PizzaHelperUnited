@@ -51,7 +51,6 @@ public struct GachaBigChartView: View {
 
     // MARK: Fileprivate
 
-    @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
 
     @MainActor @ViewBuilder fileprivate var contentFilterSection: some View {

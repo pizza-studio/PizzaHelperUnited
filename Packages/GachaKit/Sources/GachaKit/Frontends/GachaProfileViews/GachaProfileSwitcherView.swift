@@ -18,7 +18,7 @@ public struct GachaProfileSwitcherView: View {
     @MainActor public var body: some View {
         profileSwitcherMenu()
             .saturation(theVM.taskState == .busy ? 0 : 1)
-            .disabled(theVM.taskState == .busy || pzGachaProfileIDs.isEmpty)
+            .disabled(theVM.taskState == .busy || !theVM.hasGPID.wrappedValue)
             .onAppear {
                 // rebuildGachaUIDList() // 需額外評估是否就這樣砍掉這一行。
                 if theVM.currentGPID == nil {
@@ -102,11 +102,10 @@ public struct GachaProfileSwitcherView: View {
     // MARK: Fileprivate
 
     @Query(sort: \PZProfileMO.priority) fileprivate var pzProfiles: [PZProfileMO]
-    @Query fileprivate var pzGachaProfileIDs: [PZGachaProfileMO]
-    @Environment(GachaVM.self) fileprivate var theVM
     @Environment(\.modelContext) fileprivate var modelContext
+    @Environment(GachaVM.self) fileprivate var theVM
 
     fileprivate var sortedGPIDs: [GachaProfileID] {
-        pzGachaProfileIDs.map(\.asSendable).sorted { $0.uidWithGame < $1.uidWithGame }
+        theVM.allGPIDs.wrappedValue
     }
 }

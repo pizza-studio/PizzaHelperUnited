@@ -71,7 +71,6 @@ public struct GachaProfileDetailedListView: View {
 
     // MARK: Fileprivate
 
-    @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
     @State fileprivate var showDate = false
     @State fileprivate var chosenRarity: GachaItemRankType = .rank5
