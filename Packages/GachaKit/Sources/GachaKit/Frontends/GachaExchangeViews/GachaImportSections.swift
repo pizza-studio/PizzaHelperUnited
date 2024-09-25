@@ -4,6 +4,7 @@
 
 @preconcurrency import Defaults
 import MultiPicker
+import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 import UniformTypeIdentifiers
@@ -111,7 +112,7 @@ extension GachaImportSections {
                 FallbackTimeZonePicker()
             }
             if theVM.taskState == .busy {
-                ProgressView()
+                InfiniteProgressBar().id(UUID())
             } else {
                 Group {
                     let rawUTTypes: [String] = switch format {
@@ -217,7 +218,7 @@ extension GachaImportSections {
                             }
                     }
                 } else {
-                    ProgressView()
+                    InfiniteProgressBar().id(UUID())
                 }
             }
         }

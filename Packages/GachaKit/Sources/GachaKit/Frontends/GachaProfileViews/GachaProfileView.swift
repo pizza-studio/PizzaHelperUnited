@@ -21,10 +21,14 @@ public struct GachaProfileView: View {
             GachaEntryExpiredRow(alwaysVisible: false, games: [gpid.game])
         }
         Section {
-            GachaChartHorizontal(
-                gpid: theVM.currentGPID,
-                poolType: theVM.currentPoolType
-            )?.environment(theVM)
+            if theVM.taskState == .busy {
+                InfiniteProgressBar().id(UUID())
+            } else {
+                GachaChartHorizontal(
+                    gpid: theVM.currentGPID,
+                    poolType: theVM.currentPoolType
+                )?.environment(theVM)
+            }
             NavigationLink {
                 GachaBigChartView()
                     .environment(theVM)

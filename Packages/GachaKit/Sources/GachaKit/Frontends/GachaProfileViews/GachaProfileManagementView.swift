@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
 import SwiftUI
 
 public struct GachaProfileManagementView: View {
@@ -20,24 +21,28 @@ public struct GachaProfileManagementView: View {
                     } label: {
                         Text("gachaKit.management.uidAndGameToPurge".i18nGachaKit)
                     }
-                    Button {
-                        if let gpid = theVM.currentGPID {
-                            theVM.deleteAllEntriesOfGPID(gpid)
-                        }
-                        theVM.updateMappedEntriesByPools(immediately: false)
-                        theVM.resetDefaultProfile()
-                    } label: {
-                        Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID".i18nGachaKit)
-                            .fontWidth(.condensed)
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(8)
-                            .background {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .foregroundStyle(.primary.opacity(0.1))
+                    if theVM.taskState != .busy {
+                        Button {
+                            if let gpid = theVM.currentGPID {
+                                theVM.deleteAllEntriesOfGPID(gpid)
                             }
-                            .foregroundStyle(.red)
+                            theVM.updateMappedEntriesByPools(immediately: false)
+                            theVM.resetDefaultProfile()
+                        } label: {
+                            Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID".i18nGachaKit)
+                                .fontWidth(.condensed)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(8)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .foregroundStyle(.primary.opacity(0.1))
+                                }
+                                .foregroundStyle(.red)
+                        }
+                    } else {
+                        InfiniteProgressBar().id(UUID())
                     }
                 } header: {
                     if let gpid = theVM.currentGPID {
