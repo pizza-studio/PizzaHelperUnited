@@ -93,7 +93,8 @@ extension GachaActor {
     @discardableResult
     public func importUIGFv4(
         _ source: UIGFv4,
-        specifiedGPIDs: Set<GachaProfileID>? = nil
+        specifiedGPIDs: Set<GachaProfileID>? = nil,
+        overrideDuplicatedEntries: Bool = false
     ) throws
         -> [GachaProfileID: Int] {
         var counterMap = [GachaProfileID: Int]()
@@ -108,6 +109,7 @@ extension GachaActor {
                 guard specifiedGPIDs?.contains(gpid) ?? true else { return }
                 counterMap[gpid] = try importUIGFv4Profile(
                     profile,
+                    overrideDuplicatedEntries: overrideDuplicatedEntries,
                     languageAlreadyEnforced: langAlreadyEnforced
                 )
             }
@@ -116,14 +118,20 @@ extension GachaActor {
             try profiles.forEach { profile in
                 let gpid = profile.gachaProfileID
                 guard specifiedGPIDs?.contains(gpid) ?? true else { return }
-                counterMap[gpid] = try importUIGFv4Profile(profile)
+                counterMap[gpid] = try importUIGFv4Profile(
+                    profile,
+                    overrideDuplicatedEntries: overrideDuplicatedEntries
+                )
             }
         }
         if let profiles = source.zzzProfiles {
             try profiles.forEach { profile in
                 let gpid = profile.gachaProfileID
                 guard specifiedGPIDs?.contains(gpid) ?? true else { return }
-                counterMap[gpid] = try importUIGFv4Profile(profile)
+                counterMap[gpid] = try importUIGFv4Profile(
+                    profile,
+                    overrideDuplicatedEntries: overrideDuplicatedEntries
+                )
             }
         }
         try refreshAllProfiles()
@@ -138,6 +146,7 @@ extension GachaActor {
     @discardableResult
     public func importUIGFv4Profile<T: UIGFGachaItemProtocol>(
         _ source: UIGFv4.Profile<T>,
+        overrideDuplicatedEntries: Bool = false,
         languageAlreadyEnforced: Bool = false
     ) throws
         -> Int {
@@ -166,7 +175,7 @@ extension GachaActor {
             try fixTime(&uigfEntry.time)
             return uigfEntry.asPZGachaEntrySendable(uid: uid)
         }
-        return try batchInsert(sendableEntries)
+        return try batchInsert(sendableEntries, overrideDuplicatedEntries: overrideDuplicatedEntries)
     }
 
     /// 星穹铁道抽卡记录的格式升級专用函式。所有 Entry 都会转换为 UIGFv4 Entry 再导入资料库。

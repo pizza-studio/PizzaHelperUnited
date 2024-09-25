@@ -110,7 +110,7 @@ extension GachaVM {
     public func migrateOldGachasIntoProfiles(immediately: Bool = true) {
         fireTask(
             cancelPreviousTask: immediately,
-            givenTask: { try await GachaActor.migrateOldGachasIntoProfiles() },
+            givenTask: { try await GachaActor.shared.migrateOldGachasIntoProfiles() },
             completionHandler: { _ in
                 if self.currentGPID == nil {
                     self.resetDefaultProfile()
@@ -296,12 +296,17 @@ extension GachaVM {
     public func importUIGFv4(
         _ source: UIGFv4,
         specifiedGPIDs: Set<GachaProfileID>? = nil,
+        overrideDuplicatedEntries: Bool = false,
         immediately: Bool = true
     ) {
         fireTask(
             cancelPreviousTask: immediately,
             givenTask: {
-                try await GachaActor.shared.importUIGFv4(source, specifiedGPIDs: specifiedGPIDs)
+                try await GachaActor.shared.importUIGFv4(
+                    source,
+                    specifiedGPIDs: specifiedGPIDs,
+                    overrideDuplicatedEntries: overrideDuplicatedEntries
+                )
             },
             completionHandler: { resultMap in
                 if let resultMap {
