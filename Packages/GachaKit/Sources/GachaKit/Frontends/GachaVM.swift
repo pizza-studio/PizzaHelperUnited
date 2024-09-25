@@ -402,14 +402,17 @@ extension GachaVM {
     public func resetDefaultProfile() {
         let sortedGPIDs = allGPIDs.wrappedValue
         guard !sortedGPIDs.isEmpty else { return }
-        if let matched = allPZProfiles.first {
-            let firstExistingProfile = sortedGPIDs.first {
-                $0.uid == matched.uid && $0.game == matched.game
-            }
-            guard let firstExistingProfile else { return }
-            currentGPID = firstExistingProfile
-        } else {
+        guard let matched = allPZProfiles.first else {
             currentGPID = sortedGPIDs.first
+            return
         }
+        let firstExistingProfile = sortedGPIDs.first {
+            $0.uid == matched.uid && $0.game == matched.game
+        }
+        guard let firstExistingProfile else {
+            currentGPID = sortedGPIDs.first
+            return
+        }
+        currentGPID = firstExistingProfile
     }
 }
