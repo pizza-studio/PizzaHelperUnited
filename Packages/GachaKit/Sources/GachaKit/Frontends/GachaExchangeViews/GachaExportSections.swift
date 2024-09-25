@@ -4,6 +4,7 @@
 
 import GachaMetaDB
 import MultiPicker
+import PZBaseKit
 import SFSafeSymbols
 import SwiftData
 import SwiftUI
@@ -53,7 +54,7 @@ public struct GachaExportSections: View {
                     }
                 }
             } else {
-                ProgressView()
+                InfiniteProgressBar().id(UUID())
             }
         } header: {
             HStack {
