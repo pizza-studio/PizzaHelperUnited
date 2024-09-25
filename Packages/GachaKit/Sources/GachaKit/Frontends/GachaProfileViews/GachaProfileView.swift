@@ -53,7 +53,6 @@ public struct GachaProfileView: View {
 
     // MARK: Fileprivate
 
-    @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
 
     @MainActor @ViewBuilder fileprivate var poolPickerSection: some View {

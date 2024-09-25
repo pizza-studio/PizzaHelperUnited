@@ -87,7 +87,7 @@ public struct GachaExportSections: View {
             // Do NOT animate this. Animating this doesn't make any sense.
             MultiPicker("".description, selection: $specifiedProfiles) {
                 let nameIDMap = theVM.nameIDMap
-                let sortedGPIDs = sortedGPIDs
+                let sortedGPIDs = theVM.allGPIDs.wrappedValue
                 ForEach(sortedGPIDs) { gpid in
                     GachaExchangeView.drawGPID(
                         gpid,
@@ -113,7 +113,8 @@ public struct GachaExportSections: View {
         let formatsToEnumerate: [GachaExchange.ExportableFormat] = switch packageMethod {
         case let .singleOwner(gpid): packageMethod.supportedExportableFormats(by: gpid.game)
         default:
-            if pzGachaProfileIDs.count == 1, specifiedProfiles.randomElement()?.game == .starRail {
+            if theVM.allGPIDs.wrappedValue.count == 1,
+               specifiedProfiles.randomElement()?.game == .starRail {
                 packageMethod.supportedExportableFormats(by: .starRail)
             } else {
                 [.asUIGFv4]
@@ -136,18 +137,12 @@ public struct GachaExportSections: View {
 
     // MARK: Fileprivate
 
-    @Query fileprivate var pzGachaProfileIDs: [PZGachaProfileMO]
-    @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
     @State fileprivate var packageMethod: GachaExchange.ExportPackageMethod = .allOwners
     @State fileprivate var specifiedProfiles: Set<GachaProfileID> = []
     @State fileprivate var exportFormat: GachaExchange.ExportableFormat = .asUIGFv4
     @State fileprivate var documentLanguage: GachaLanguage = .current
     @State fileprivate var fileSaveActionResult: Result<URL, any Error>?
-
-    fileprivate var sortedGPIDs: [GachaProfileID] {
-        pzGachaProfileIDs.map(\.asSendable).sorted { $0.uidWithGame < $1.uidWithGame }
-    }
 
     var isComDlg32Visible: Binding<Bool> {
         .init(get: {

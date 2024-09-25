@@ -49,7 +49,7 @@ public struct GachaExchangeView: View {
                         ProgressView()
                     }
                 }
-                if !pzGachaProfileIDs.isEmpty {
+                if !theVM.allGPIDs.isEmpty {
                     ToolbarItem(placement: .confirmationAction) {
                         Picker("".description, selection: $currentPage.animation()) {
                             ForEach(Page.allCases) { currentCase in
@@ -62,8 +62,8 @@ public struct GachaExchangeView: View {
                     }
                 }
             }
-            .onChange(of: pzGachaProfileIDs.count, initial: true) { _, newValue in
-                if newValue == 0, currentPage != .importData {
+            .onChange(of: theVM.hasGPID.wrappedValue, initial: true) { _, hasGPID in
+                if !hasGPID, currentPage != .importData {
                     currentPage = .importData
                 }
             }
@@ -78,8 +78,6 @@ public struct GachaExchangeView: View {
     // MARK: Fileprivate
 
     @State fileprivate var currentPage: Page = .exportData
-    @Query fileprivate var pzGachaProfileIDs: [PZGachaProfileMO]
-    @Environment(\.modelContext) fileprivate var modelContext
     @Environment(GachaVM.self) fileprivate var theVM
 }
 
