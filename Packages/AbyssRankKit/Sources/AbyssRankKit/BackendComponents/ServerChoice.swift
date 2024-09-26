@@ -14,10 +14,8 @@ enum ServerChoice: Hashable {
 
     func describe() -> String {
         switch self {
-        case .all:
-            return "abyssRankKit.rank.server.filter.all".i18nAbyssRank
-        case let .server(server):
-            return server.localizedDescriptionByGame
+        case .all: "abyssRankKit.rank.server.filter.all".i18nAbyssRank
+        case let .server(server): server.localizedDescriptionByGame
         }
     }
 }

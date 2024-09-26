@@ -22,17 +22,11 @@ struct ShowAvatarPercentageView: View {
 
     var result: FetchHomeModelResult<AvatarPercentageModel>? {
         switch vmAbyssRank.showingType {
-        case .fullStarHoldingRate:
-            return vmAbyssRank.fullStarAvatarHoldingResult
-        case .holdingRate:
-            return vmAbyssRank.avatarHoldingResult
-        case .abyssAvatarsUtilization:
-            return vmAbyssRank.utilizationDataFetchModelResult
-        case .pvpUtilization:
-            return vmAbyssRank
-                .pvpUtilizationDataFetchModelResult
-        default:
-            return nil
+        case .fullStarHoldingRate: vmAbyssRank.fullStarAvatarHoldingResult
+        case .holdingRate: vmAbyssRank.avatarHoldingResult
+        case .abyssAvatarsUtilization: vmAbyssRank.utilizationDataFetchModelResult
+        case .pvpUtilization: vmAbyssRank.pvpUtilizationDataFetchModelResult
+        default: nil
         }
     }
 
@@ -55,10 +49,9 @@ struct ShowAvatarPercentageView: View {
                             switch vmAbyssRank.showingType {
                             case .abyssAvatarsUtilization, .pvpUtilization,
                                  .teamUtilization:
-                                return ($0.percentage ?? 0) >
-                                    ($1.percentage ?? 0)
+                                ($0.percentage ?? 0) > ($1.percentage ?? 0)
                             case .fullStarHoldingRate, .holdingRate:
-                                return $0.charId < $1.charId
+                                $0.charId < $1.charId
                             }
                         }), id: \.charId) { avatar in
                             renderLine(avatar)

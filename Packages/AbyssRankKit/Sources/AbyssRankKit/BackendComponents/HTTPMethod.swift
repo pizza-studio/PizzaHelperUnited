@@ -16,15 +16,17 @@ enum RequestError: Error, LocalizedError {
     // MARK: Internal
 
     var localizedDescription: String {
-        switch self {
-        case let .dataTaskError(string):
-            return "[PZReqErr] Data Task Error:\n=======\n\(string)\n=======\n"
-        case .noResponseData: return "[PZReqErr] Data is not attached in the HTTP response."
-        case .responseError: return "[PZReqErr] HTTP Response Error. (RequestError.responseError)"
-        case let .decodeError(string):
-            return "[PZReqErr] JSON Decode Error. Raw Contents:\n=======\n\(string)\n=======\n"
-        case let .errorWithCode(int): return "[PZReqErr] Request Error (Code \(int))."
+        func wrapString(_ str: String) -> String {
+            "=======\n\(str)\n======="
         }
+        let msg = switch self {
+        case let .dataTaskError(string): "Data Task Error:\n\(wrapString(string))\n"
+        case .noResponseData: "Data is not attached in the HTTP response."
+        case .responseError: "HTTP Response Error. (RequestError.responseError)"
+        case let .decodeError(string): "JSON Decode Error. Raw Contents:\n\(wrapString(string))\n"
+        case let .errorWithCode(int): "Request Error (Code \(int))."
+        }
+        return "[PZReqErr] " + msg
     }
 }
 

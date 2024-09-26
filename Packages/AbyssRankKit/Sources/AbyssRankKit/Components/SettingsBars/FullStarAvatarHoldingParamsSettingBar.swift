@@ -33,10 +33,8 @@ struct FullStarAPIParameters: Sendable, Equatable {
 
     var server: HoYo.Server? {
         switch serverChoice {
-        case .all:
-            return nil
-        case let .server(server):
-            return server
+        case .all: nil
+        case let .server(server): server
         }
     }
 

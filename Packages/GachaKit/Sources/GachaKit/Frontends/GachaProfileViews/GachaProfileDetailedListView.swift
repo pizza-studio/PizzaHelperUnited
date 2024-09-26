@@ -93,7 +93,7 @@ public struct GachaProfileDetailedListView: View {
                 }
                 Picker("gachaKit.filter.rarity".i18nGachaKit, selection: $chosenRarity.animation()) {
                     ForEach(GachaItemRankType.allCases.reversed()) { rankValue in
-                        let labelText: String = switch rankValue {
+                        let labelText = switch rankValue {
                         case .rank5: "★★★★★"
                         case .rank4: "★3 ★4"
                         case .rank3: "★3 ★4 ★5"

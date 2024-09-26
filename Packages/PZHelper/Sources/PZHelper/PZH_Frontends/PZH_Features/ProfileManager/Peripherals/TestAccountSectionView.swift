@@ -103,16 +103,11 @@ struct TestAccountSectionView: View {
 
         var id: Int {
             switch self {
-            case .pending:
-                return 0
-            case .testing:
-                return 1
-            case .succeeded:
-                return 2
-            case let .failure(error):
-                return error.localizedDescription.hashValue
-            case .verificationNeeded:
-                return 4
+            case .pending: 0
+            case .testing: 1
+            case .succeeded: 2
+            case let .failure(error): error.localizedDescription.hashValue
+            case .verificationNeeded: 4
             }
         }
 
@@ -233,14 +228,10 @@ struct TestAccountSectionView: View {
 
             var description: String {
                 switch self {
-                case let .fail(error):
-                    return "ERROR: \(error.localizedDescription)"
-                case .progressing:
-                    return "gettingVerification"
-                case let .gotVerification(verification):
-                    return "Challenge: \(verification.challenge)"
-                case .pending:
-                    return "PENDING"
+                case let .fail(error): "ERROR: \(error.localizedDescription)"
+                case .progressing: "gettingVerification"
+                case let .gotVerification(verification): "Challenge: \(verification.challenge)"
+                case .pending: "PENDING"
                 }
             }
         }
@@ -253,7 +244,7 @@ struct TestAccountSectionView: View {
             var id: Int {
                 switch self {
                 case let .gotVerification(verification):
-                    return verification.challenge.hashValue
+                    verification.challenge.hashValue
                 }
             }
         }

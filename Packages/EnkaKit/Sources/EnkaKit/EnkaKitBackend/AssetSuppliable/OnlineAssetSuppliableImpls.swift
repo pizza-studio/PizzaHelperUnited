@@ -32,7 +32,7 @@ extension OnlineAssetSuppliable {
 
 extension Enka.AvatarSummarized.CharacterID: OnlineAssetSuppliable {
     public var onlineAssetURLStr: String {
-        let urlStr: String = switch game {
+        let urlStr = switch game {
         case .genshinImpact:
             "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
@@ -48,7 +48,7 @@ extension Enka.AvatarSummarized.CharacterID: OnlineAssetSuppliable {
 
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill: OnlineAssetSuppliable {
     public var onlineAssetURLStr: String {
-        let urlStr: String = switch game {
+        let urlStr = switch game {
         case .genshinImpact:
             "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
@@ -64,7 +64,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill: OnlineAss
 
 extension Enka.AvatarSummarized.WeaponPanel: OnlineAssetSuppliable {
     public var onlineAssetURLStr: String {
-        let urlStr: String = switch game {
+        let urlStr = switch game {
         case .genshinImpact:
             "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:
@@ -79,7 +79,7 @@ extension Enka.AvatarSummarized.WeaponPanel: OnlineAssetSuppliable {
 
 extension Enka.AvatarSummarized.ArtifactInfo: OnlineAssetSuppliable {
     public var onlineAssetURLStr: String {
-        let urlStr: String = switch game {
+        let urlStr = switch game {
         case .genshinImpact:
             "https://api.hakush.in/gi/UI/\(iconOnlineFileNameStem).webp"
         case .starRail:

@@ -37,7 +37,7 @@ extension HoYo {
             additionalHeaders.updateValue(deviceID, forKey: "x-rpc-device_id")
         }
 
-        let host: String = switch server.region {
+        let host = switch server.region {
         case .miyoushe: "api-takumi-record.mihoyo.com"
         case .hoyoLab: "sg-act-nap-api.hoyolab.com"
         }

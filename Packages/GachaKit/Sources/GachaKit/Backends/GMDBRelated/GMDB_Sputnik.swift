@@ -133,14 +133,14 @@ extension GachaMeta {
         public var localizedDescription: String {
             switch self {
             case .emptyFetchResult:
-                return "gachaKit.GachaMetaDBError.EmptyFetchResult".i18nGachaKit
+                "gachaKit.GachaMetaDBError.EmptyFetchResult".i18nGachaKit
             case let .resultFetchFailure(subError):
-                return "gachaKit.GachaMetaDBError.ResultFetchFailed"
+                "gachaKit.GachaMetaDBError.ResultFetchFailed"
                     .i18nGachaKit + " // \(subError.localizedDescription)"
             case .databaseExpired:
-                return "gachaKit.GachaMetaDBError.DatabaseExpired".i18nGachaKit
+                "gachaKit.GachaMetaDBError.DatabaseExpired".i18nGachaKit
             case let .itemIDInvalid(name, game):
-                return "gachaKit.GachaMetaDBError.itemIDInvalid"
+                "gachaKit.GachaMetaDBError.itemIDInvalid"
                     .i18nGachaKit + " // \(name) @ \(game.localizedShortName)"
             }
         }
@@ -150,8 +150,8 @@ extension GachaMeta {
 extension HoYo.AccountRegion {
     fileprivate var gmdbServerViceVersa: Self {
         switch self {
-        case .miyoushe: return .hoyoLab(game)
-        case .hoyoLab: return .miyoushe(game)
+        case .miyoushe: .hoyoLab(game)
+        case .hoyoLab: .miyoushe(game)
         }
     }
 

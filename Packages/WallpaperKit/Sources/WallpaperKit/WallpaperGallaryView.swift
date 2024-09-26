@@ -70,9 +70,9 @@ public struct WallpaperGalleryViewContent: View {
 
     var searchResults: [Wallpaper] {
         if searchText.isEmpty {
-            return Wallpaper.allCases(for: game)
+            Wallpaper.allCases(for: game)
         } else {
-            return Wallpaper.allCases(for: game).filter { wallpaper in
+            Wallpaper.allCases(for: game).filter { wallpaper in
                 wallpaperName(for: wallpaper).lowercased().contains(searchText.lowercased())
             }
         }

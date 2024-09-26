@@ -78,7 +78,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
         let rawInfo = guardedEnkaProfile
         Section {
             HStack(spacing: 0) {
-                let levelTag: String = if let rawInfo {
+                let levelTag = if let rawInfo {
                     "\(extraTerms.levelNameShortened)\(rawInfo.level)"
                 } else {
                     ""

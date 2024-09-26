@@ -15,20 +15,17 @@ enum SaveProfileError: Error, LocalizedError {
     public var description: String { localizedDescription }
 
     public var localizedDescription: String {
-        switch self {
-        case let .saveDataError(error):
-            return "\(localizedDescriptionHeaderKey.i18nPZHelper)\(error)."
-        case let .missingFieldError(field):
-            return "\(localizedDescriptionHeaderKey.i18nPZHelper)\(field)."
+        let i18nInitial = localizedDescriptionHeaderKey.i18nPZHelper
+        return switch self {
+        case let .saveDataError(error): "\(i18nInitial)\(error)."
+        case let .missingFieldError(field): "\(i18nInitial)\(field)."
         }
     }
 
     public var localizedDescriptionHeaderKey: String {
         switch self {
-        case .saveDataError:
-            "profileMgr.error.SaveProfileError.saveDataError:"
-        case .missingFieldError:
-            "profileMgr.error.SaveProfileError.missingFieldError:"
+        case .saveDataError: "profileMgr.error.SaveProfileError.saveDataError:"
+        case .missingFieldError: "profileMgr.error.SaveProfileError.missingFieldError:"
         }
     }
 
@@ -38,10 +35,8 @@ enum SaveProfileError: Error, LocalizedError {
 
     public var failureReason: String? {
         switch self {
-        case let .saveDataError(error):
-            return "Save Error: \(error)."
-        case let .missingFieldError(field):
-            return "Missing Fields: \(field)."
+        case let .saveDataError(error): "Save Error: \(error)."
+        case let .missingFieldError(field): "Missing Fields: \(field)."
         }
     }
 
@@ -60,10 +55,8 @@ enum GetAccountError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case let .source(error):
-            return error.localizedDescription
-        case let .customize(message):
-            return message
+        case let .source(error): error.localizedDescription
+        case let .customize(message): message
         }
     }
 }

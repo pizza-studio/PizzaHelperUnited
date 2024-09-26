@@ -169,14 +169,10 @@ extension HoYoAPIErrorView {
 
             var description: String {
                 switch self {
-                case let .fail(error):
-                    return "ERROR: \(error.localizedDescription)"
-                case .progressing:
-                    return "gettingVerification"
-                case let .gotVerification(verification):
-                    return "Challenge: \(verification.challenge)"
-                case .pending:
-                    return "PENDING"
+                case let .fail(error): "ERROR: \(error.localizedDescription)"
+                case .progressing: "gettingVerification"
+                case let .gotVerification(verification): "Challenge: \(verification.challenge)"
+                case .pending: "PENDING"
                 }
             }
         }
@@ -189,7 +185,7 @@ extension HoYoAPIErrorView {
             var id: Int {
                 switch self {
                 case let .gotVerification(verification):
-                    return verification.challenge.hashValue
+                    verification.challenge.hashValue
                 }
             }
         }

@@ -93,15 +93,15 @@ public struct IDPhotoView4HSR: View {
 
     @MainActor var coreBody: some View {
         switch iconType {
-        case .asCard: return AnyView(cardView)
-        default: return AnyView(circleIconView)
+        case .asCard: AnyView(cardView)
+        default: AnyView(circleIconView)
         }
     }
 
     var proposedSize: CGSize {
         switch iconType {
-        case .asCard: return .init(width: size * 0.74, height: size)
-        default: return .init(width: size, height: size)
+        case .asCard: .init(width: size * 0.74, height: size)
+        default: .init(width: size, height: size)
         }
     }
 

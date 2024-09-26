@@ -45,9 +45,9 @@ public struct BenchmarkTime: Hashable, Sendable {
     public var wrappedValue: Date {
         get {
             if let projectedValue = projectedValue {
-                return projectedValue
+                projectedValue
             } else {
-                return Date()
+                Date()
             }
         } set {
             projectedValue = newValue

@@ -115,7 +115,7 @@ extension GachaKit {
         public var localizedDescription: String {
             switch self {
             case let .timeRawValueNotParsable(rawString):
-                return "gachaKit.EntryException.timeRawValueNotParsable".i18nGachaKit
+                "gachaKit.EntryException.timeRawValueNotParsable".i18nGachaKit
                     + " // \(rawString)"
             }
         }
@@ -137,17 +137,17 @@ extension GachaKit {
         public var localizedDescription: String {
             switch self {
             case .accessFailureComDlg32:
-                return "gachaKit.FileExchangeException.accessFailureComDlg32".i18nGachaKit
+                "gachaKit.FileExchangeException.accessFailureComDlg32".i18nGachaKit
             case .fileNotExist:
-                return "gachaKit.FileExchangeException.fileNotExist".i18nGachaKit
+                "gachaKit.FileExchangeException.fileNotExist".i18nGachaKit
             case let .uigfEntryInsertionError(error):
-                return "gachaKit.FileExchangeException.uigfEntryInsertionError".i18nGachaKit
+                "gachaKit.FileExchangeException.uigfEntryInsertionError".i18nGachaKit
                     + " // \(error)"
             case let .decodingError(error):
-                return "gachaKit.FileExchangeException.fileParseFailure".i18nGachaKit
+                "gachaKit.FileExchangeException.fileParseFailure".i18nGachaKit
                     + " // \(error)"
             case let .otherError(error):
-                return "\(error)"
+                "\(error)"
             }
         }
     }

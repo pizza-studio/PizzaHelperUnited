@@ -60,13 +60,13 @@ extension Enka.CharacterName: RawRepresentable, Hashable, Codable, Sendable {
 
     public var rawValue: String {
         switch self {
-        case let .someoneElse(name): return name
+        case let .someoneElse(name): name
         case let .protagonist(protagonist):
             switch protagonist {
-            case .ofCaelus: return "8001"
-            case .ofStelle: return "8002"
-            case .ofAether: return "10000005"
-            case .ofLumine: return "10000007"
+            case .ofCaelus: "8001"
+            case .ofStelle: "8002"
+            case .ofAether: "10000005"
+            case .ofLumine: "10000007"
             }
         }
     }

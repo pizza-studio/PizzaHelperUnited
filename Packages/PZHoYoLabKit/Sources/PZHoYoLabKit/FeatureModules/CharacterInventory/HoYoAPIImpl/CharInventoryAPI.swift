@@ -56,11 +56,11 @@ extension HoYo {
 
         let additionalHeaders: [String: String]? = {
             if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
-                return [
+                [
                     "x-rpc-device_fp": deviceFingerPrint,
                 ]
             } else {
-                return nil
+                nil
             }
         }()
 
@@ -94,11 +94,11 @@ extension HoYo {
 
         let additionalHeaders: [String: String]? = {
             if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
-                return [
+                [
                     "x-rpc-device_fp": deviceFingerPrint,
                 ]
             } else {
-                return nil
+                nil
             }
         }()
 
