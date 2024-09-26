@@ -72,6 +72,7 @@ custom_rules:
     severity: warning
 
 excluded:
+  - .git*
   - Packages/Build/*
   - Build/*
   - "*/.build/*"

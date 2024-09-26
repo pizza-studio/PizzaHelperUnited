@@ -3,7 +3,7 @@
 
 # Specify version used in a project
 
---swiftversion 5.7
+--swiftversion 6.0
 
 # Rules explicitly required by the guideline
 
@@ -99,7 +99,7 @@ strongifiedSelf
 
 # Excluded folders
 
---exclude Pods,**/UNTESTED_TODO,vendor,fastlane,./Build,*.build*
+--exclude Pods,**/UNTESTED_TODO,vendor,fastlane,./Build,*.build*,.git*
 
 # https://github.com/NoemiRozpara/Google-SwiftFormat-Config
 
