@@ -24,11 +24,7 @@ public struct GachaProfileManagementView: View {
                         }
                         if theVM.taskState != .busy {
                             Button {
-                                if let gpid = theVM.currentGPID {
-                                    theVM.deleteAllEntriesOfGPID(gpid)
-                                }
-                                theVM.updateMappedEntriesByPools(immediately: false)
-                                theVM.resetDefaultProfile()
+                                isRemovalConfirmationAlertShown = true
                             } label: {
                                 Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID".i18nGachaKit)
                                     .fontWidth(.condensed)
@@ -76,14 +72,27 @@ public struct GachaProfileManagementView: View {
                     }
                 }
             }
+            .alert(
+                "gachaKit.management.confirmingDeletingAllRecordsOfThisGPID".i18nGachaKit,
+                isPresented: $isRemovalConfirmationAlertShown
+            ) {
+                Button("sys.cancel".i18nBaseKit, role: .cancel) {
+                    isRemovalConfirmationAlertShown = false
+                }
+                Button("sys.proceed".i18nBaseKit, role: .destructive) {
+                    if let gpid = theVM.currentGPID {
+                        theVM.deleteAllEntriesOfGPID(gpid)
+                    }
+                    theVM.updateMappedEntriesByPools(immediately: false)
+                    theVM.resetDefaultProfile()
+                }
+            }
         }
     }
 
     // MARK: Fileprivate
 
+    @State fileprivate var isRemovalConfirmationAlertShown: Bool = false
     @Environment(GachaVM.self) fileprivate var theVM
-
-    // MARK: Private
-
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @Environment(\.presentationMode) fileprivate var presentationMode: Binding<PresentationMode>
 }
