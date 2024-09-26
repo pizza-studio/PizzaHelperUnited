@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import AlertToast
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
@@ -111,6 +112,17 @@ public struct GachaRootView: View {
                 }
             }
             .environment(theVM)
+            .apply { mainContent in
+                @Bindable var theVM = theVM
+                mainContent
+                    .toast(isPresenting: $theVM.showSucceededAlertToast) {
+                        AlertToast(
+                            displayMode: .alert,
+                            type: .complete(.green),
+                            title: "gachaKit.alertToast.succeeded".i18nGachaKit
+                        )
+                    }
+            }
     }
 
     // MARK: Fileprivate
