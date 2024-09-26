@@ -99,7 +99,7 @@ struct UtilsTabPage: View {
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
             case .hoyoMap: HoYoMapView()
-            case .none: WallpaperGalleryViewContent()
+            case .none: EmptyView() // Temporary for now.
             }
         }
     }
