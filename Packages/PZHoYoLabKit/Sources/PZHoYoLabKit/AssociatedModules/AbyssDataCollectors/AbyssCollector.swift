@@ -31,7 +31,7 @@ extension AbyssCollector {
         // MARK: Internal
 
         var remoteSettings: (scheme: String, host: String, path: String) {
-            return switch self {
+            switch self {
             case .hutaoDB: ("https", "homa.snapgenshin.com", "/Record/Upload")
             case .pzAbyssDB: ("http", "81.70.76.222", "/abyss/upload")
             case .pzAvatarHolding: ("http", "81.70.76.222", "/user_holding/upload")
@@ -88,9 +88,9 @@ extension AbyssCollector {
 extension AbyssCollector.CommissionResult {
     public var hasNoCriticalError: Bool {
         switch self {
-        case .success: return true
+        case .success: true
         case let .failure(acError):
-            return switch acError {
+            switch acError {
             case .alreadyUploaded: true
             default: false
             }

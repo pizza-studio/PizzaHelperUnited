@@ -130,8 +130,8 @@ extension HoYo {
 
             public var isProtagonist: Bool {
                 switch id {
-                case 10000005, 10000007: return true
-                default: return false
+                case 10000005, 10000007: true
+                default: false
                 }
             }
 

@@ -8,9 +8,9 @@ import PZBaseKit
 extension Pizza.SupportedGame {
     public var gachaItemType: any UIGFGachaItemProtocol.Type {
         switch self {
-        case .genshinImpact: return UIGFv4.GachaItemGI.self
-        case .starRail: return UIGFv4.GachaItemHSR.self
-        case .zenlessZone: return UIGFv4.GachaItemZZZ.self
+        case .genshinImpact: UIGFv4.GachaItemGI.self
+        case .starRail: UIGFv4.GachaItemHSR.self
+        case .zenlessZone: UIGFv4.GachaItemZZZ.self
         }
     }
 }

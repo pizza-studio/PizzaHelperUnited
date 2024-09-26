@@ -65,31 +65,31 @@ extension Enka.GameElement {
 
     public var rawValueForHSR: String {
         switch self {
-        case .physico: return "Physical"
-        case .anemo: return "Wind"
-        case .electro: return "Thunder"
-        case .fantastico: return "Imaginary"
-        case .posesto: return "Quantum"
-        case .pyro: return "Fire"
-        case .cryo: return "Ice"
-        case .geo: return "Rock" // GI
-        case .dendro: return "Grass" // GI
-        case .hydro: return "Water" // GI
+        case .physico: "Physical"
+        case .anemo: "Wind"
+        case .electro: "Thunder"
+        case .fantastico: "Imaginary"
+        case .posesto: "Quantum"
+        case .pyro: "Fire"
+        case .cryo: "Ice"
+        case .geo: "Rock" // GI
+        case .dendro: "Grass" // GI
+        case .hydro: "Water" // GI
         }
     }
 
     public var rawValueForGI: String {
         switch self {
-        case .physico: return "Unknown"
-        case .anemo: return "Wind"
-        case .electro: return "Electric"
-        case .fantastico: return "Imaginary"
-        case .posesto: return "Quantum"
-        case .pyro: return "Fire"
-        case .cryo: return "Ice"
-        case .geo: return "Rock"
-        case .dendro: return "Grass"
-        case .hydro: return "Water"
+        case .physico: "Unknown"
+        case .anemo: "Wind"
+        case .electro: "Electric"
+        case .fantastico: "Imaginary"
+        case .posesto: "Quantum"
+        case .pyro: "Fire"
+        case .cryo: "Ice"
+        case .geo: "Rock"
+        case .dendro: "Grass"
+        case .hydro: "Water"
         }
     }
 }
@@ -117,16 +117,16 @@ extension Enka.GameElement {
 
     public var damageAddedRatioProperty: Enka.PropertyType {
         switch self {
-        case .physico: return .physicoAddedRatio
-        case .anemo: return .anemoAddedRatio
-        case .electro: return .electroAddedRatio
-        case .fantastico: return .fantasticoAddedRatio
-        case .posesto: return .posestoAddedRatio
-        case .pyro: return .pyroAddedRatio
-        case .cryo: return .cryoAddedRatio
-        case .geo: return .geoAddedRatio
-        case .dendro: return .dendroAddedRatio
-        case .hydro: return .hydroAddedRatio
+        case .physico: .physicoAddedRatio
+        case .anemo: .anemoAddedRatio
+        case .electro: .electroAddedRatio
+        case .fantastico: .fantasticoAddedRatio
+        case .posesto: .posestoAddedRatio
+        case .pyro: .pyroAddedRatio
+        case .cryo: .cryoAddedRatio
+        case .geo: .geoAddedRatio
+        case .dendro: .dendroAddedRatio
+        case .hydro: .hydroAddedRatio
         }
     }
 

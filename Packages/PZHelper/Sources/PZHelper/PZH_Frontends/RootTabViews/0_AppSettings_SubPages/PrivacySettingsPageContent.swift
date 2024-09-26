@@ -38,14 +38,10 @@ struct PrivacySettingsPageContent: View {
 
     private static let privacyFAQURL: URL = {
         switch Bundle.main.preferredLocalizations.first?.prefix(2) {
-        case "zh":
-            return "https://gi.pizzastudio.org/static/faq_abyss.html".asURL
-        case "en":
-            return "https://gi.pizzastudio.org/static/faq_abyss_en.html".asURL
-        case "ja":
-            return "https://gi.pizzastudio.org/static/faq_abyss_ja.html".asURL
-        default:
-            return "https://gi.pizzastudio.org/static/faq_abyss_en.html".asURL
+        case "zh": "https://gi.pizzastudio.org/static/faq_abyss.html".asURL
+        case "en": "https://gi.pizzastudio.org/static/faq_abyss_en.html".asURL
+        case "ja": "https://gi.pizzastudio.org/static/faq_abyss_ja.html".asURL
+        default: "https://gi.pizzastudio.org/static/faq_abyss_en.html".asURL
         }
     }()
 

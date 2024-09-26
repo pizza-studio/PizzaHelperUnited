@@ -99,9 +99,9 @@ extension PZAbyssDB {
         /// 返回结尾只有0或1的abyssSeason信息
         public func getLocalAbyssSeason() -> Int {
             if abyssSeason % 2 == 0 {
-                return (abyssSeason / 10) * 10
+                (abyssSeason / 10) * 10
             } else {
-                return (abyssSeason / 10) * 10 + 1
+                (abyssSeason / 10) * 10 + 1
             }
         }
     }
@@ -240,14 +240,14 @@ extension [PZAbyssDB.AbyssDataPack.SubmitDetailModel] {
             floor.levels.flatMap { level in
                 level.battles.compactMap { battle in
                     if floor.gainAllStar {
-                        return .init(
+                        PZAbyssDB.AbyssDataPack.SubmitDetailModel(
                             floor: floor.index,
                             room: level.index,
                             half: battle.index,
                             usedChars: battle.avatars
                                 .sorted(by: { $0.id < $1.id }).map { $0.id }
                         )
-                    } else { return nil }
+                    } else { nil }
                 }
             }
         }

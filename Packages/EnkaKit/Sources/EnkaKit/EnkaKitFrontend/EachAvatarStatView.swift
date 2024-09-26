@@ -388,7 +388,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                             title: terms.levelName, valueStr: self.avatarLevel.description,
                             fontSize: fontSize * 0.8
                         )
-                        let constUnitName: String = switch self.game {
+                        let constUnitName = switch self.game {
                         case .genshinImpact: "C"
                         case .starRail: "E"
                         case .zenlessZone: "M"

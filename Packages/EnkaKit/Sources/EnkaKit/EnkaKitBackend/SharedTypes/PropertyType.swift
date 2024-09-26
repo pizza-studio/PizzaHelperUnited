@@ -496,26 +496,26 @@ extension Enka.PropertyType {
     public var element: Enka.GameElement? {
         switch self {
         case .anemoAddedRatio, .anemoResistance, .anemoResistanceDelta:
-            return .anemo
+            .anemo
         case .physicoAddedRatio, .physicoResistance, .physicoResistanceDelta:
-            return .physico
+            .physico
         case .electroAddedRatio, .electroResistance, .electroResistanceDelta:
-            return .electro
+            .electro
         case .fantasticoAddedRatio, .fantasticoResistance, .fantasticoResistanceDelta:
-            return .fantastico
+            .fantastico
         case .posestoAddedRatio, .posestoResistance, .posestoResistanceDelta:
-            return .posesto
+            .posesto
         case .pyroAddedRatio, .pyroResistance, .pyroResistanceDelta:
-            return .pyro
+            .pyro
         case .cryoAddedRatio, .cryoResistance, .cryoResistanceDelta:
-            return .cryo
+            .cryo
         case .geoAddedRatio, .geoResistance, .geoResistanceDelta:
-            return .geo
+            .geo
         case .hydroAddedRatio, .hydroResistance, .hydroResistanceDelta:
-            return .hydro
+            .hydro
         case .dendroAddedRatio, .dendroResistance, .dendroResistanceDelta:
-            return .dendro
-        default: return nil
+            .dendro
+        default: nil
         }
     }
 

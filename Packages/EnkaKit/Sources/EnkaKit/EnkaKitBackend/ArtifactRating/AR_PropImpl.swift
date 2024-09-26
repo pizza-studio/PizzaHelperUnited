@@ -6,33 +6,33 @@
 extension Enka.PropertyType {
     public var appraisableArtifactParam: ArtifactRating.Appraiser.Param? {
         switch self {
-        case .hpDelta: return .hpDelta
-        case .attack, .attackDelta: return .atkDelta
-        case .defence, .defenceDelta: return .defDelta
-        case .hpAddedRatio, .maxHP: return .hpAmp
-        case .attackAddedRatio: return .atkAmp
-        case .defenceAddedRatio, .shieldCostMinusRatio: return .defAmp
-        case .speedDelta: return .spdDelta
-        case .criticalChance, .criticalChanceBase: return .critChance
-        case .criticalDamage, .criticalDamageBase: return .critDamage
-        case .statusProbabilityBase: return .statProb
-        case .statusResistanceBase: return .statResis
-        case .breakDamageAddedRatioBase: return .breakDmg
-        case .healRatio, .healRatioBase: return .healAmp
-        case .energyRecoveryBase: return .energyRecovery
-        case .physicoAddedRatio: return .dmgAmp(.physico)
-        case .pyroAddedRatio: return .dmgAmp(.pyro)
-        case .cryoAddedRatio: return .dmgAmp(.cryo)
-        case .electroAddedRatio: return .dmgAmp(.electro)
-        case .anemoAddedRatio: return .dmgAmp(.anemo)
-        case .posestoAddedRatio: return .dmgAmp(.posesto)
-        case .fantasticoAddedRatio: return .dmgAmp(.fantastico)
-        case .geoAddedRatio: return .dmgAmp(.geo)
-        case .hydroAddedRatio: return .dmgAmp(.hydro)
-        case .dendroAddedRatio: return .dmgAmp(.dendro)
-        case .elementalMastery: return .elementalMastery
-        case .energyRecovery: return .energyRecovery
-        default: return nil
+        case .hpDelta: .hpDelta
+        case .attack, .attackDelta: .atkDelta
+        case .defence, .defenceDelta: .defDelta
+        case .hpAddedRatio, .maxHP: .hpAmp
+        case .attackAddedRatio: .atkAmp
+        case .defenceAddedRatio, .shieldCostMinusRatio: .defAmp
+        case .speedDelta: .spdDelta
+        case .criticalChance, .criticalChanceBase: .critChance
+        case .criticalDamage, .criticalDamageBase: .critDamage
+        case .statusProbabilityBase: .statProb
+        case .statusResistanceBase: .statResis
+        case .breakDamageAddedRatioBase: .breakDmg
+        case .healRatio, .healRatioBase: .healAmp
+        case .energyRecoveryBase: .energyRecovery
+        case .physicoAddedRatio: .dmgAmp(.physico)
+        case .pyroAddedRatio: .dmgAmp(.pyro)
+        case .cryoAddedRatio: .dmgAmp(.cryo)
+        case .electroAddedRatio: .dmgAmp(.electro)
+        case .anemoAddedRatio: .dmgAmp(.anemo)
+        case .posestoAddedRatio: .dmgAmp(.posesto)
+        case .fantasticoAddedRatio: .dmgAmp(.fantastico)
+        case .geoAddedRatio: .dmgAmp(.geo)
+        case .hydroAddedRatio: .dmgAmp(.hydro)
+        case .dendroAddedRatio: .dmgAmp(.dendro)
+        case .elementalMastery: .elementalMastery
+        case .energyRecovery: .energyRecovery
+        default: nil
         }
     }
 }

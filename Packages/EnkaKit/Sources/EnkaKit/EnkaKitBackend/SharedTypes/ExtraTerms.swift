@@ -67,7 +67,7 @@ extension Enka.GameType {
     var i18nKeyForExtraTerms: Enka.ExtraTerms {
         switch self {
         case .genshinImpact:
-            return .init(
+            .init(
                 langTag: Enka.currentLangTag,
                 levelName: "_AvatarLevel",
                 levelNameShortened: "_AvatarLevelShortened",
@@ -80,7 +80,7 @@ extension Enka.GameType {
                 equilibriumLevelShortened: "_WorldLevelShortened"
             )
         case .starRail:
-            return .init(
+            .init(
                 langTag: Enka.currentLangTag,
                 levelName: "_AvatarLevel",
                 levelNameShortened: "_AvatarLevelShortened",
@@ -93,7 +93,7 @@ extension Enka.GameType {
                 equilibriumLevelShortened: "_EquilibriumLevelShortened"
             )
         case .zenlessZone: // 临时设定。
-            return .init(
+            .init(
                 langTag: Enka.currentLangTag,
                 levelName: "_AvatarLevel",
                 levelNameShortened: "_AvatarLevelShortened",

@@ -40,7 +40,7 @@ extension Enka {
         // MARK: Public
 
         public var artifactRatingTypeIDStr: String {
-            let intResult: Int = switch self {
+            let intResult = switch self {
             case .giFlower, .hsrHead: 1
             case .giPlume, .hsrHand: 2
             case .giSands, .hsrBody: 3

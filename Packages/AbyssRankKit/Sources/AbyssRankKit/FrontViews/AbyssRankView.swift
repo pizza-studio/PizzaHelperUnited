@@ -162,14 +162,10 @@ public struct AbyssRankView: View {
 
     private static let faqURL: String = {
         switch Bundle.main.preferredLocalizations.first?.prefix(2) {
-        case "zh":
-            return "https://gi.pizzastudio.org/static/faq_abyss.html"
-        case "en":
-            return "https://gi.pizzastudio.org/static/faq_abyss_en.html"
-        case "ja":
-            return "https://gi.pizzastudio.org/static/faq_abyss_ja.html"
-        default:
-            return "https://gi.pizzastudio.org/static/faq_abyss_en.html"
+        case "zh": "https://gi.pizzastudio.org/static/faq_abyss.html"
+        case "en": "https://gi.pizzastudio.org/static/faq_abyss_en.html"
+        case "ja": "https://gi.pizzastudio.org/static/faq_abyss_ja.html"
+        default: "https://gi.pizzastudio.org/static/faq_abyss_en.html"
         }
     }()
 

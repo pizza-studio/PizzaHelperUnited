@@ -62,9 +62,9 @@ extension CharacterInventoryView {
 
     func filterAvatars(type: InventoryViewFilterType) -> [InventoryData.AvatarType] {
         switch type {
-        case .all: return data.avatars
-        case .star4: return data.avatars.filter { $0.rarity == 4 }
-        case .star5: return data.avatars.filter { $0.rarity == 5 }
+        case .all: data.avatars
+        case .star4: data.avatars.filter { $0.rarity == 4 }
+        case .star5: data.avatars.filter { $0.rarity == 5 }
         }
     }
 

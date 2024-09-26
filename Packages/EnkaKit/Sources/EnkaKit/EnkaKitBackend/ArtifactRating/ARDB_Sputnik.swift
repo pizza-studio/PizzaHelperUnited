@@ -135,7 +135,7 @@ extension Enka.HostType {
     }
 
     fileprivate var arDBSourceURLPrefix: String {
-        let prefix: String = switch self {
+        let prefix = switch self {
         case .mainlandChina: "https://www.gitlink.org.cn/api/ShikiSuen/ArtifactRatingDB/raw/"
         case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/ArtifactRatingDB/main/"
         }

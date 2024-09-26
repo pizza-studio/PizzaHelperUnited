@@ -260,10 +260,8 @@ extension ProfileManagerPageContent {
 
         public var id: UUID {
             switch self {
-            case let .createNewProfile(profile):
-                return profile.uuid
-            case let .editExistingProfile(profile):
-                return profile.uuid
+            case let .createNewProfile(profile): profile.uuid
+            case let .editExistingProfile(profile): profile.uuid
             }
         }
     }

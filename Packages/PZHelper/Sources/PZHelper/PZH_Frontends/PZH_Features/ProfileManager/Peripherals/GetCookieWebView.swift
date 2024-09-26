@@ -291,7 +291,7 @@ struct CookieGetterWebView: UIViewRepresentable {
 private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String] {
     switch region {
     case .miyoushe:
-        return [
+        [
             "Accept": """
             text/html,application/xhtml+xml,application/xml;q=0.9,\
             image/webp,image/apng,*/*;q=0.8,\
@@ -308,7 +308,7 @@ private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String]
             "cache-control": "max-age=0",
         ]
     case .hoyoLab:
-        return [
+        [
             "accept": """
             text/html,application/xhtml+xml,\
             application/xml;q=0.9,\

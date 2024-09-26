@@ -22,31 +22,26 @@ struct ShowAvatarPercentageViewWithSection: View {
 
     var result: FetchHomeModelResult<AvatarPercentageModel>? {
         switch vmAbyssRank.showingType {
-        case .fullStarHoldingRate:
-            return vmAbyssRank.fullStarAvatarHoldingResult
-        case .holdingRate:
-            return vmAbyssRank.avatarHoldingResult
-        case .abyssAvatarsUtilization:
-            return vmAbyssRank.utilizationDataFetchModelResult
-        case .pvpUtilization:
-            return vmAbyssRank.pvpUtilizationDataFetchModelResult
-        default:
-            return nil
+        case .fullStarHoldingRate: vmAbyssRank.fullStarAvatarHoldingResult
+        case .holdingRate: vmAbyssRank.avatarHoldingResult
+        case .abyssAvatarsUtilization: vmAbyssRank.utilizationDataFetchModelResult
+        case .pvpUtilization: vmAbyssRank.pvpUtilizationDataFetchModelResult
+        default: nil
         }
     }
 
     var avatarSectionDatas: [[AvatarPercentageModel.Avatar]]? {
         switch vmAbyssRank.showingType {
         case .abyssAvatarsUtilization:
-            return getDataSection(
+            getDataSection(
                 data: vmAbyssRank.utilizationDataFetchModelResult
             )
         case .pvpUtilization:
-            return getDataSection(
+            getDataSection(
                 data: vmAbyssRank.pvpUtilizationDataFetchModelResult
             )
         default:
-            return getDataSection(
+            getDataSection(
                 data: vmAbyssRank.utilizationDataFetchModelResult
             )
         }
