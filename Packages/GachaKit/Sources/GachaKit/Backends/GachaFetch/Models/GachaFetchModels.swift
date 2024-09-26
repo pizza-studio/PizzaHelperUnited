@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZAccountKit
 
 // MARK: - GachaFetchModelTypeProtocol
 
@@ -13,7 +14,7 @@ protocol GachaFetchModelTypeProtocol: Decodable, Hashable, Equatable, Sendable {
 /// Namespaces holding all types used for decoding raw remote JSON data of Gacha Records from HoYo servers.
 ///
 /// This namespaces is intensionally made non-public.
-enum GachaFetchModels {}
+public enum GachaFetchModels {}
 
 // MARK: - GachaFetchModelError
 
@@ -35,40 +36,11 @@ public enum GachaFetchModelError: Error, LocalizedError {
     }
 }
 
-// MARK: GachaFetchModels.PageFetched
+// MARK: - GachaFetchModels.PageFetched
 
 extension GachaFetchModels {
-    public struct RawResponseModel: GachaFetchModelTypeProtocol {
-        // MARK: Lifecycle
-
-        public init(from decoder: any Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.retcode = try container.decode(Int.self, forKey: .retcode)
-            self.message = try container.decode(String.self, forKey: .message)
-            let data = try container.decodeIfPresent(GachaFetchModels.PageFetched.self, forKey: .data)
-            guard let data else {
-                throw GachaFetchModelError.retrievalFailure(retCode: retcode, message: message)
-            }
-            self.data = data
-        }
-
-        // MARK: Public
-
-        public let retcode: Int
-        public let message: String
-        public let data: PageFetched
-
-        // MARK: Private
-
-        private enum CodingKeys: CodingKey {
-            case retcode
-            case message
-            case data
-        }
-    }
-
     /// 专门用来解码伺服器远端抽卡记录的单页资料结构，共用于绝区零、原神、星穹铁道的抽卡记录。
-    public struct PageFetched: GachaFetchModelTypeProtocol {
+    public struct PageFetched: GachaFetchModelTypeProtocol, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Lifecycle
 
         public init(from decoder: any Decoder) throws {
@@ -89,6 +61,7 @@ extension GachaFetchModels {
         public let total: String? // Genshin only. Might be totally useless.
         public let timeZoneDelta: Int
         public let list: [FetchedEntry]
+        public var listConverted: [PZGachaEntrySendable] = []
 
         // MARK: Private
 
