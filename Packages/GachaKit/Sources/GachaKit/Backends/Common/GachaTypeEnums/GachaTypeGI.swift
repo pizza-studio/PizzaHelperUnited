@@ -34,6 +34,15 @@ public enum GachaTypeGI: GachaTypeProtocol {
 
     public typealias ItemType = UIGFv4.GachaItemGI
 
+    public static let knownCases: [Self] = [
+        .characterEventWish1,
+        .characterEventWish2,
+        .chronicledWish,
+        .weaponEventWish,
+        .standardWish,
+        .beginnersWish,
+    ]
+
     public var rawValue: String {
         switch self {
         case .beginnersWish: "100"
