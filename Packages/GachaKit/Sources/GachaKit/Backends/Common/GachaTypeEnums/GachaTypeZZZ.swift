@@ -28,6 +28,13 @@ public enum GachaTypeZZZ: GachaTypeProtocol {
 
     public typealias ItemType = UIGFv4.GachaItemZZZ
 
+    public static let knownCases: [Self] = [
+        .exclusiveChannel,
+        .wEngineChannel,
+        .bangbooChannel,
+        .stableChannel,
+    ]
+
     public var rawValue: String {
         switch self {
         case .stableChannel: "1"

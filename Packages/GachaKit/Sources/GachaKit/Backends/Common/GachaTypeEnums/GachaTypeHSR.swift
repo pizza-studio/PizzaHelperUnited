@@ -28,6 +28,13 @@ public enum GachaTypeHSR: GachaTypeProtocol {
 
     public typealias ItemType = UIGFv4.GachaItemHSR
 
+    public static let knownCases: [Self] = [
+        .characterEventWarp,
+        .lightConeEventWarp,
+        .stellarWarp,
+        .departureWarp,
+    ]
+
     public var rawValue: String {
         switch self {
         case .stellarWarp: "1"
