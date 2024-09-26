@@ -17,14 +17,23 @@ extension Pizza.SupportedGame {
 
 // MARK: - GachaTypeProtocol
 
-public protocol GachaTypeProtocol: RawRepresentable, Codable, Hashable, Sendable {
+public protocol GachaTypeProtocol: RawRepresentable, Codable, Hashable, Sendable where RawValue == String {
     associatedtype ItemType: UIGFGachaItemProtocol where ItemType.PoolType == Self
-    var rawValue: String { get }
+    static var knownCases: [Self] { get }
+    init(rawValue: String)
 }
 
 extension GachaTypeProtocol {
     static var game: Pizza.SupportedGame { ItemType.game }
     var game: Pizza.SupportedGame { Self.game }
+
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        Self.knownCases.firstIndex(of: lhs)! < Self.knownCases.firstIndex(of: rhs)!
+    }
+
+    public func next() -> Self? {
+        Self.knownCases.first { (Int(self.rawValue) ?? 0) < (Int($0.rawValue) ?? 0) }
+    }
 }
 
 // MARK: - UIGFGachaItemProtocol
