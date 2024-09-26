@@ -5,6 +5,8 @@
 import Foundation
 import PZAccountKit
 
+// MARK: - PSAServer
+
 @MainActor
 enum PSAServer {
     /// 深境螺旋角色使用率
@@ -18,54 +20,28 @@ enum PSAServer {
         // 请求类别
         let urlStr = "/abyss/utilization"
 
-        var paraDict = [String: String]()
+        var paramDict = [String: String]()
         if let season = season {
-            paraDict.updateValue(
+            paramDict.updateValue(
                 String(describing: season),
                 forKey: "season"
             )
         }
 
-        paraDict.updateValue(String(describing: floor), forKey: "floor")
+        paramDict.updateValue(String(describing: floor), forKey: "floor")
         if let server = server {
-            paraDict.updateValue(server.id, forKey: "server")
+            paramDict.updateValue(server.id, forKey: "server")
         }
 
-        paraDict.updateValue(String(pvp), forKey: "pvp")
+        paramDict.updateValue(String(pvp), forKey: "pvp")
 
         // 请求
-        await HttpMethod<UtilizationDataFetchModel>
-            .homeServerRequest(
-                .get,
-                urlStr: urlStr,
-                parasDict: paraDict
-            ) { result in
-                switch result {
-                case let .success(requestResult):
-                    print("request succeed")
-//                        let userData = requestResult.data
-//                        let retcode = requestResult.retCode
-//                        let message = requestResult.message
-
-                    switch requestResult.retCode {
-                    case 0:
-                        print("get data succeed")
-                        completion(.success(requestResult))
-                    default:
-                        print("fail")
-                        completion(.failure(.getDataError(
-                            requestResult
-                                .message
-                        )))
-                    }
-
-                case let .failure(error):
-                    completion(.failure(.getDataError(
-                        error
-                            .localizedDescription
-                    )))
-                }
-            }
+        await handleHTTPMethodResults {
+            try await HttpMethod<UtilizationDataFetchModel>
+                .homeServerRequest(.get, urlStr: urlStr, paramDict: paramDict)
+        } completionHandler: { result in
+            completion(result)
+        }
     }
 
     /// 满星玩家持有率
@@ -78,51 +54,25 @@ enum PSAServer {
         // 请求类别
         let urlStr = "/abyss/holding/full_star"
 
-        var paraDict = [String: String]()
+        var paramDict = [String: String]()
         if let season = season {
-            paraDict.updateValue(
+            paramDict.updateValue(
                 String(describing: season),
                 forKey: "season"
             )
         }
 
         if let server = server {
-            paraDict.updateValue(server.id, forKey: "server")
+            paramDict.updateValue(server.id, forKey: "server")
         }
 
         // 请求
-        await HttpMethod<AvatarHoldingReceiveDataFetchModel>
-            .homeServerRequest(
-                .get,
-                urlStr: urlStr,
-                parasDict: paraDict
-            ) { result in
-                switch result {
-                case let .success(requestResult):
-                    print("request succeed")
-//                        let userData = requestResult.data
-//                        let retcode = requestResult.retCode
-//                        let message = requestResult.message
-
-                    switch requestResult.retCode {
-                    case 0:
-                        print("get data succeed")
-                        completion(.success(requestResult))
-                    default:
-                        print("fail")
-                        completion(.failure(.getDataError(
-                            requestResult
-                                .message
-                        )))
-                    }
-
-                case let .failure(error):
-                    completion(.failure(.getDataError(
-                        error
-                            .localizedDescription
-                    )))
-                }
-            }
+        await handleHTTPMethodResults {
+            try await HttpMethod<AvatarHoldingReceiveDataFetchModel>
+                .homeServerRequest(.get, urlStr: urlStr, paramDict: paramDict)
+        } completionHandler: { result in
+            completion(result)
+        }
     }
 
     /// 所有玩家持有率
@@ -135,11 +85,11 @@ enum PSAServer {
         // 请求类别
         let urlStr = "/user_holding/holding_rate"
 
-        var paraDict = [String: String]()
+        var paramDict = [String: String]()
         if let queryStartDate = queryStartDate {
             let dateFormatter = DateFormatter.Gregorian()
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            paraDict.updateValue(
+            paramDict.updateValue(
                 String(
                     describing: dateFormatter
                         .string(from: queryStartDate)
@@ -148,42 +98,16 @@ enum PSAServer {
             )
         }
         if let server = server {
-            paraDict.updateValue(server.id, forKey: "server")
+            paramDict.updateValue(server.id, forKey: "server")
         }
 
         // 请求
-        await HttpMethod<AvatarHoldingReceiveDataFetchModel>
-            .homeServerRequest(
-                .get,
-                urlStr: urlStr,
-                parasDict: paraDict
-            ) { result in
-                switch result {
-                case let .success(requestResult):
-                    print("request succeed")
-//                        let userData = requestResult.data
-//                        let retcode = requestResult.retCode
-//                        let message = requestResult.message
-
-                    switch requestResult.retCode {
-                    case 0:
-                        print("get data succeed")
-                        completion(.success(requestResult))
-                    default:
-                        print("fail")
-                        completion(.failure(.getDataError(
-                            requestResult
-                                .message
-                        )))
-                    }
-
-                case let .failure(error):
-                    completion(.failure(.getDataError(
-                        error
-                            .localizedDescription
-                    )))
-                }
-            }
+        await handleHTTPMethodResults {
+            try await HttpMethod<AvatarHoldingReceiveDataFetchModel>
+                .homeServerRequest(.get, urlStr: urlStr, paramDict: paramDict)
+        } completionHandler: { result in
+            completion(result)
+        }
     }
 
     /// 后台服务器版本
@@ -194,37 +118,12 @@ enum PSAServer {
         let urlStr = "/debug/version"
 
         // 请求
-        await HttpMethod<HomeServerVersionFetchModel>
-            .homeServerRequest(
-                .get,
-                urlStr: urlStr
-            ) { result in
-                switch result {
-                case let .success(requestResult):
-                    print("request succeed")
-//                        let userData = requestResult.data
-//                        let retcode = requestResult.retCode
-//                        let message = requestResult.message
-
-                    switch requestResult.retCode {
-                    case 0:
-                        print("get data succeed")
-                        completion(.success(requestResult))
-                    default:
-                        print("fail")
-                        completion(.failure(.getDataError(
-                            requestResult
-                                .message
-                        )))
-                    }
-
-                case let .failure(error):
-                    completion(.failure(.getDataError(
-                        error
-                            .localizedDescription
-                    )))
-                }
-            }
+        await handleHTTPMethodResults {
+            try await HttpMethod<HomeServerVersionFetchModel>
+                .homeServerRequest(.get, urlStr: urlStr)
+        } completionHandler: { result in
+            completion(result)
+        }
     }
 
     /// 深境螺旋角色使用率
@@ -237,51 +136,42 @@ enum PSAServer {
         // 请求类别
         let urlStr = "/abyss/utilization/teams"
 
-        var paraDict = [String: String]()
+        var paramDict = [String: String]()
         if let season = season {
-            paraDict.updateValue(
+            paramDict.updateValue(
                 String(describing: season),
                 forKey: "season"
             )
         }
 
-        paraDict.updateValue(String(describing: floor), forKey: "floor")
+        paramDict.updateValue(String(describing: floor), forKey: "floor")
         if let server = server {
-            paraDict.updateValue(server.id, forKey: "server")
+            paramDict.updateValue(server.id, forKey: "server")
         }
 
         // 请求
-        await HttpMethod<TeamUtilizationDataFetchModel>
-            .homeServerRequest(
-                .get,
-                urlStr: urlStr,
-                parasDict: paraDict
-            ) { result in
-                switch result {
-                case let .success(requestResult):
-                    print("request succeed")
-//                        let userData = requestResult.data
-//                        let retcode = requestResult.retCode
-//                        let message = requestResult.message
+        await handleHTTPMethodResults {
+            try await HttpMethod<TeamUtilizationDataFetchModel>
+                .homeServerRequest(.get, urlStr: urlStr, paramDict: paramDict)
+        } completionHandler: { result in
+            completion(result)
+        }
+    }
+}
 
-                    switch requestResult.retCode {
-                    case 0:
-                        print("get data succeed")
-                        completion(.success(requestResult))
-                    default:
-                        print("fail")
-                        completion(.failure(.getDataError(
-                            requestResult
-                                .message
-                        )))
-                    }
-
-                case let .failure(error):
-                    completion(.failure(.getDataError(
-                        error
-                            .localizedDescription
-                    )))
-                }
+extension PSAServer {
+    fileprivate static func handleHTTPMethodResults<T>(
+        from requestResultGenerator: @escaping () async throws -> FetchHomeModel<T>,
+        completionHandler: @escaping (Result<FetchHomeModel<T>, PSAServerError>) -> Void
+    ) async {
+        do {
+            let requestResult = try await requestResultGenerator()
+            switch requestResult.retCode {
+            case 0: completionHandler(.success(requestResult))
+            default: completionHandler(.failure(.getDataError(requestResult.message)))
             }
+        } catch {
+            completionHandler(.failure(.getDataError("\(error)")))
+        }
     }
 }
