@@ -41,8 +41,8 @@ public final class DetailPortalViewModel {
 
         var isBusy: Bool {
             switch self {
-            case .progress: return true
-            default: return false
+            case .progress: true
+            default: false
             }
         }
     }

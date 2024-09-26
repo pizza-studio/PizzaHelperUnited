@@ -32,16 +32,16 @@ extension Enka {
 
         public var viceVersa: Self {
             switch self {
-            case .enkaGlobal: return .mainlandChina
-            case .mainlandChina: return .enkaGlobal
+            case .enkaGlobal: .mainlandChina
+            case .mainlandChina: .enkaGlobal
             }
         }
 
         public var srsModelURL: URL {
             var urlStr: String = {
                 switch self {
-                case .mainlandChina: return "https://www.gitlink.org.cn/api/ShikiSuen/StarRailScore/raw/"
-                case .enkaGlobal: return "https://raw.githubusercontent.com/Mar-7th/StarRailScore/master/"
+                case .mainlandChina: "https://www.gitlink.org.cn/api/ShikiSuen/StarRailScore/raw/"
+                case .enkaGlobal: "https://raw.githubusercontent.com/Mar-7th/StarRailScore/master/"
                 }
             }()
             urlStr += "score.json"
@@ -56,8 +56,8 @@ extension Enka {
         public func enkaDBSourceURL(type: Enka.JSONType) -> URL {
             var urlStr: String = {
                 switch self {
-                case .mainlandChina: return "https://www.gitlink.org.cn/api/ShikiSuen/EnkaDBGenerator/raw/"
-                case .enkaGlobal: return "https://raw.githubusercontent.com/ShikiSuen/EnkaDBGenerator/master/"
+                case .mainlandChina: "https://www.gitlink.org.cn/api/ShikiSuen/EnkaDBGenerator/raw/"
+                case .enkaGlobal: "https://raw.githubusercontent.com/ShikiSuen/EnkaDBGenerator/master/"
                 }
             }()
             // swiftlint:disable force_unwrapping
@@ -85,19 +85,19 @@ extension Enka {
 
         private func profileQueryURLPrefix(_ game: Enka.GameType) -> String {
             switch (self, game) {
-            case (.mainlandChina, .starRail): return "https://api.mihomo.me/sr_info/"
-            case (.enkaGlobal, .starRail): return "https://enka.network/api/hsr/uid/"
-            case (.mainlandChina, .genshinImpact): return "https://profile.microgg.cn/api/uid/"
-            case (.enkaGlobal, .genshinImpact): return "https://enka.network/api/uid/"
-            case (.mainlandChina, .zenlessZone): return "https://114514.cn/"
-            case (.enkaGlobal, .zenlessZone): return "https://114514.cn/" // 临时设定。
+            case (.mainlandChina, .starRail): "https://api.mihomo.me/sr_info/"
+            case (.enkaGlobal, .starRail): "https://enka.network/api/hsr/uid/"
+            case (.mainlandChina, .genshinImpact): "https://profile.microgg.cn/api/uid/"
+            case (.enkaGlobal, .genshinImpact): "https://enka.network/api/uid/"
+            case (.mainlandChina, .zenlessZone): "https://114514.cn/"
+            case (.enkaGlobal, .zenlessZone): "https://114514.cn/" // 临时设定。
             }
         }
 
         private func profileQueryURLSuffix(_ game: Enka.GameType) -> String {
             switch (self, game) {
-            case (.mainlandChina, .starRail): return "?is_force_update=true"
-            default: return ""
+            case (.mainlandChina, .starRail): "?is_force_update=true"
+            default: ""
             }
         }
     }

@@ -170,9 +170,9 @@ extension Array where Element == HoYo.TravelStatsData4GI.WorldExploration {
         var result = [HoYo.TravelStatsData4GI.WorldExploration]()
         let chenyuValePercent: Int = reversed().compactMap { this in
             if this.icon.contains("ChenYuVale") || this.innerIcon.contains("ChenYuVale") {
-                return !this.offerings.isEmpty ? 0 : this.explorationPercentage
+                !this.offerings.isEmpty ? 0 : this.explorationPercentage
             } else {
-                return nil
+                nil
             }
         }.reduce(0, +)
         var chenyuValeAlreadyAdded = false

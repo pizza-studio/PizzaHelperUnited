@@ -72,32 +72,19 @@ enum DictionaryLanguage: String, Decodable {
 extension DictionaryLanguage: CustomStringConvertible {
     var description: String {
         switch self {
-        case .english:
-            return "tool.dictionary.language.english".i18nDictKit
-        case .portuguese:
-            return "tool.dictionary.language.portuguese".i18nDictKit
-        case .japanese:
-            return "tool.dictionary.language.japanese".i18nDictKit
-        case .indonesian:
-            return "tool.dictionary.language.indonesian".i18nDictKit
-        case .korean:
-            return "tool.dictionary.language.korean".i18nDictKit
-        case .thai:
-            return "tool.dictionary.language.thai".i18nDictKit
-        case .french:
-            return "tool.dictionary.language.french".i18nDictKit
-        case .simplifiedChinese:
-            return "tool.dictionary.language.simplified_chinese".i18nDictKit
-        case .russian:
-            return "tool.dictionary.language.russian".i18nDictKit
-        case .german:
-            return "tool.dictionary.language.german".i18nDictKit
-        case .traditionalChinese:
-            return "tool.dictionary.language.traditional_chinese".i18nDictKit
-        case .spanish:
-            return "tool.dictionary.language.spanish".i18nDictKit
-        case .vietnamese:
-            return "tool.dictionary.language.vietnamese".i18nDictKit
+        case .english: "tool.dictionary.language.english".i18nDictKit
+        case .portuguese: "tool.dictionary.language.portuguese".i18nDictKit
+        case .japanese: "tool.dictionary.language.japanese".i18nDictKit
+        case .indonesian: "tool.dictionary.language.indonesian".i18nDictKit
+        case .korean: "tool.dictionary.language.korean".i18nDictKit
+        case .thai: "tool.dictionary.language.thai".i18nDictKit
+        case .french: "tool.dictionary.language.french".i18nDictKit
+        case .simplifiedChinese: "tool.dictionary.language.simplified_chinese".i18nDictKit
+        case .russian: "tool.dictionary.language.russian".i18nDictKit
+        case .german: "tool.dictionary.language.german".i18nDictKit
+        case .traditionalChinese: "tool.dictionary.language.traditional_chinese".i18nDictKit
+        case .spanish: "tool.dictionary.language.spanish".i18nDictKit
+        case .vietnamese: "tool.dictionary.language.vietnamese".i18nDictKit
         }
     }
 }

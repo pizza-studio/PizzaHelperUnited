@@ -44,11 +44,11 @@ public func secondsToHoursMinutes(_ seconds: Int) -> String {
 
 public func secondsToHrOrDay(_ seconds: Int) -> String {
     if seconds / 3600 > 24 {
-        return "unit.daysOf:\(seconds / (3600 * 24))"
+        "unit.daysOf:\(seconds / (3600 * 24))"
     } else if seconds / 3600 > 0 {
-        return "unit.hrs:\(seconds / 3600)"
+        "unit.hrs:\(seconds / 3600)"
     } else {
-        return "unit.mins:\((seconds % 3600) / 60)"
+        "unit.mins:\((seconds % 3600) / 60)"
     }
 }
 

@@ -32,7 +32,7 @@ extension ArtifactRating.ModelDB {
     }
 
     public init(game: Enka.GameType) {
-        let fileNameStem: String = switch game {
+        let fileNameStem = switch game {
         case .genshinImpact: "ARDB4GI"
         case .starRail: "ARDB4HSR"
         case .zenlessZone: "ARDB4ZZZ" // 临时设定。

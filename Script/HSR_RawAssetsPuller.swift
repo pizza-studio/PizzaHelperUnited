@@ -176,10 +176,10 @@ struct SRDArtifact: Codable {
 
         var subID: Int {
             switch self {
-            case .ball, .head: return 0
-            case .hand, .neck: return 1
-            case .body: return 2
-            case .foot: return 3
+            case .ball, .head: 0
+            case .hand, .neck: 1
+            case .body: 2
+            case .foot: 3
             }
         }
     }
@@ -269,11 +269,11 @@ public enum DataType: String, CaseIterable {
 
     private var jsonURLString: String {
         switch self {
-        case .profileAvatar: return Self.mar7BasePath + "avatars.json"
-        case .skillTree: return Self.srdBasePath + "AvatarSkillTreeConfig.json"
-        case .character: return Self.srdBasePath + "AvatarConfig.json"
-        case .lightCone: return Self.srdBasePath + "EquipmentConfig.json"
-        case .artifact: return Self.srdBasePath + "RelicDataInfo.json"
+        case .profileAvatar: Self.mar7BasePath + "avatars.json"
+        case .skillTree: Self.srdBasePath + "AvatarSkillTreeConfig.json"
+        case .character: Self.srdBasePath + "AvatarConfig.json"
+        case .lightCone: Self.srdBasePath + "EquipmentConfig.json"
+        case .artifact: Self.srdBasePath + "RelicDataInfo.json"
         }
     }
 

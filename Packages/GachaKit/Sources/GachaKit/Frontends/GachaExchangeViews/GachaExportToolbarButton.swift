@@ -82,7 +82,7 @@ public struct GachaExportToolbarButton: View {
     // MARK: Internal
 
     var fileSaveActionResultMessagePack: (title: String, message: String) {
-        return switch fileSaveActionResult {
+        switch fileSaveActionResult {
         case let .success(url):
             (
                 "gachaKit.exchange.export.succeededInSavingToFile".i18nGachaKit,
@@ -97,8 +97,8 @@ public struct GachaExportToolbarButton: View {
     var isComDlg32Visible: Binding<Bool> {
         .init(get: {
             switch theVM.currentExportableDocument {
-            case .success: return true
-            case .failure, .none: return false
+            case .success: true
+            case .failure, .none: false
             }
         }, set: { result in
             if !result {
@@ -109,15 +109,15 @@ public struct GachaExportToolbarButton: View {
 
     var defaultFileName: String? {
         switch theVM.currentExportableDocument {
-        case let .success(document): return document.fileNameStem
-        case .failure, .none: return nil
+        case let .success(document): document.fileNameStem
+        case .failure, .none: nil
         }
     }
 
     var currentExportableDocument: GachaDocument? {
         switch theVM.currentExportableDocument {
-        case let .success(document): return document
-        case .failure, .none: return nil
+        case let .success(document): document
+        case .failure, .none: nil
         }
     }
 

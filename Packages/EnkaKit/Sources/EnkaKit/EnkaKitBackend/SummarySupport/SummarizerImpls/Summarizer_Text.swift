@@ -17,17 +17,17 @@ extension Enka.AvatarSummarized {
 
         func indentNode(_ level: UInt = 0) -> String {
             if !useMarkDown {
-                return " \(String(repeating: " ", count: Int(level)))→ "
+                " \(String(repeating: " ", count: Int(level)))→ "
             } else {
-                return "- ###\(String(repeating: "#", count: Int(level))) "
+                "- ###\(String(repeating: "#", count: Int(level))) "
             }
         }
 
         func indent(_ level: UInt = 0) -> String {
             if !useMarkDown {
-                return " \(String(repeating: " ", count: Int(level)))"
+                " \(String(repeating: " ", count: Int(level)))"
             } else {
-                return "\(String(repeating: "\t", count: Int(level)))- "
+                "\(String(repeating: "\t", count: Int(level)))- "
             }
         }
 
@@ -39,7 +39,7 @@ extension Enka.AvatarSummarized {
         var headLine = useMarkDown ? "### " : " "
         headLine.append(mainInfo.name + " ")
         let terms = mainInfo.terms
-        let eidolonInitial: String = switch game {
+        let eidolonInitial = switch game {
         case .genshinImpact: "C"
         case .starRail: "E"
         case .zenlessZone: "M" // Mindscape Cinema. // 临时设定。

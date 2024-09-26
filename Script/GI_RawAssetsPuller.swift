@@ -414,12 +414,12 @@ public enum DataType: String, CaseIterable {
 
     private var jsonURLString: String {
         switch self {
-        case .profilePicture: return Self.agdBasePath + "ProfilePictureExcelConfigData.json"
-        case .skill: return Self.agdBasePath + "AvatarSkillExcelConfigData.json"
-        case .character: return Self.agdBasePath + "AvatarExcelConfigData.json"
-        case .characterCostumed: return Self.agdBasePath + "AvatarCostumeExcelConfigData.json"
-        case .weapon: return Self.agdBasePath + "WeaponExcelConfigData.json"
-        case .artifact: return Self.agdBasePath + "ReliquaryExcelConfigData.json"
+        case .profilePicture: Self.agdBasePath + "ProfilePictureExcelConfigData.json"
+        case .skill: Self.agdBasePath + "AvatarSkillExcelConfigData.json"
+        case .character: Self.agdBasePath + "AvatarExcelConfigData.json"
+        case .characterCostumed: Self.agdBasePath + "AvatarCostumeExcelConfigData.json"
+        case .weapon: Self.agdBasePath + "WeaponExcelConfigData.json"
+        case .artifact: Self.agdBasePath + "ReliquaryExcelConfigData.json"
         }
     }
 

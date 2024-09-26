@@ -29,15 +29,9 @@ extension AbyssSeason {
         let yearMonth = formatter.date(from: String(seasonString.prefix(6)))!
         let year = Calendar.current.component(.year, from: yearMonth)
         let month = Calendar.current.component(.month, from: yearMonth)
-        let day = {
-            if String(seasonString.suffix(1)) == "0" {
-                return 1
-            } else {
-                return 16
-            }
-        }()
-        return Calendar.current
-            .date(from: DateComponents(year: year, month: month, day: day))!
+        let day: Int = seasonString.suffix(1) == "0" ? 1 : 16
+        let dateComponents = DateComponents(year: year, month: month, day: day)
+        return Calendar.current.date(from: dateComponents)!
     }
 
     func describe() -> String {
@@ -49,9 +43,9 @@ extension AbyssSeason {
 //        let month = Calendar.current.component(.month, from: yearMonth)
         let half = {
             if String(seasonString.suffix(1)) == "0" {
-                return "abyssRankKit.rank.season.1".i18nAbyssRank
+                "abyssRankKit.rank.season.1".i18nAbyssRank
             } else {
-                return "abyssRankKit.rank.season.2".i18nAbyssRank
+                "abyssRankKit.rank.season.2".i18nAbyssRank
             }
         }()
         let yearStr = String(seasonString.prefix(6).prefix(4))

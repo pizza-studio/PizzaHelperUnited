@@ -19,25 +19,25 @@ public let appGame: Pizza.SupportedGame? = .none
 
 public let sharedBundleIDHeader: String = {
     switch Bundle.main.bundleIdentifier {
-    case "Canglong.GenshinPizzaHepler": return "Canglong.GenshinPizzaHepler"
-    case "Canglong.HSRPizzaHelper": return "Canglong.HSRPizzaHelper"
-    default: return "org.pizzastudio.UnitedPizzaHelper"
+    case "Canglong.GenshinPizzaHepler": "Canglong.GenshinPizzaHepler"
+    case "Canglong.HSRPizzaHelper": "Canglong.HSRPizzaHelper"
+    default: "org.pizzastudio.UnitedPizzaHelper"
     }
 }()
 
 public let appGroupID: String = {
     switch Bundle.main.bundleIdentifier {
-    case "Canglong.GenshinPizzaHepler": return "group.GenshinPizzaHelper"
-    case "Canglong.HSRPizzaHelper": return "group.Canglong.HSRPizzaHelper"
-    default: return "group.pizzastudio.UnitedPizzaHelper"
+    case "Canglong.GenshinPizzaHepler": "group.GenshinPizzaHelper"
+    case "Canglong.HSRPizzaHelper": "group.Canglong.HSRPizzaHelper"
+    default: "group.pizzastudio.UnitedPizzaHelper"
     }
 }()
 
 public let iCloudContainerName: String = {
     switch Bundle.main.bundleIdentifier {
-    case "Canglong.GenshinPizzaHepler": return "iCloud.com.Canglong.GenshinPizzaHepler"
-    case "Canglong.HSRPizzaHelper": return "iCloud.com.Canglong.HSRPizzaHelper"
-    default: return "iCloud.com.Canglong.UnitedPizzaHelper"
+    case "Canglong.GenshinPizzaHepler": "iCloud.com.Canglong.GenshinPizzaHepler"
+    case "Canglong.HSRPizzaHelper": "iCloud.com.Canglong.HSRPizzaHelper"
+    default: "iCloud.com.Canglong.UnitedPizzaHelper"
     }
 }()
 

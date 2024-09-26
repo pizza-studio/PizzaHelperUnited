@@ -336,21 +336,21 @@ extension GIGF {
 extension GachaLanguage {
     var nlLanguage: NLLanguage {
         switch self {
-        case .langTH: return .thai
-        case .langKR: return .korean
-        case .langES: return .spanish
-        case .langJP: return .japanese
-        case .langCHS: return .simplifiedChinese
-        case .langID: return .indonesian
-        case .langPT: return .portuguese
-        case .langDE: return .german
-        case .langFR: return .french
-        case .langCHT: return .traditionalChinese
-        case .langRU: return .russian
-        case .langEN: return .english
-        case .langVI: return .vietnamese
-        case .langIT: return .italian // GI only.
-        case .langTR: return .turkish // GI only.
+        case .langTH: .thai
+        case .langKR: .korean
+        case .langES: .spanish
+        case .langJP: .japanese
+        case .langCHS: .simplifiedChinese
+        case .langID: .indonesian
+        case .langPT: .portuguese
+        case .langDE: .german
+        case .langFR: .french
+        case .langCHT: .traditionalChinese
+        case .langRU: .russian
+        case .langEN: .english
+        case .langVI: .vietnamese
+        case .langIT: .italian // GI only.
+        case .langTR: .turkish // GI only.
         }
     }
 }
@@ -448,9 +448,9 @@ extension XLSXFile {
 
         public var errorDescription: String? {
             switch self {
-            case let .errorWithMessage(msg): return msg
-            case .rawDataMissing: return "app.gacha.import.fail.rawDataNotExist".i18nGachaKit
-            case .tableDataMissing: return "app.gacha.import.fail.dataTableMissingData".i18nGachaKit
+            case let .errorWithMessage(msg): msg
+            case .rawDataMissing: "app.gacha.import.fail.rawDataNotExist".i18nGachaKit
+            case .tableDataMissing: "app.gacha.import.fail.dataTableMissingData".i18nGachaKit
             }
         }
     }

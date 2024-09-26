@@ -268,8 +268,8 @@ final class GetCookieQRCodeViewModel: @unchecked Sendable {
 
         var isBusy: Bool {
             switch self {
-            case .automatically, .manually: return true
-            case .idle: return false
+            case .automatically, .manually: true
+            case .idle: false
             }
         }
     }

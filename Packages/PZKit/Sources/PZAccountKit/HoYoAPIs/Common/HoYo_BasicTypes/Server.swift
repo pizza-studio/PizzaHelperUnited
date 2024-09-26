@@ -73,12 +73,12 @@ extension HoYo {
 
         public var region: HoYo.AccountRegion {
             switch self {
-            case let .celestia(supportedGame): return .miyoushe(supportedGame)
-            case let .irminsul(supportedGame): return .miyoushe(supportedGame)
-            case let .unitedStates(supportedGame): return .hoyoLab(supportedGame)
-            case let .europe(supportedGame): return .hoyoLab(supportedGame)
-            case let .asia(supportedGame): return .hoyoLab(supportedGame)
-            case let .hkMacauTaiwan(supportedGame): return .hoyoLab(supportedGame)
+            case let .celestia(supportedGame): .miyoushe(supportedGame)
+            case let .irminsul(supportedGame): .miyoushe(supportedGame)
+            case let .unitedStates(supportedGame): .hoyoLab(supportedGame)
+            case let .europe(supportedGame): .hoyoLab(supportedGame)
+            case let .asia(supportedGame): .hoyoLab(supportedGame)
+            case let .hkMacauTaiwan(supportedGame): .hoyoLab(supportedGame)
             }
         }
 

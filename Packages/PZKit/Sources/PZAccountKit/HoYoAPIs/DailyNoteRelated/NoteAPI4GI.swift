@@ -61,12 +61,12 @@ extension HoYo {
 
         let additionalHeaders: [String: String]? = {
             if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceID {
-                return [
+                [
                     "x-rpc-device_fp": deviceFingerPrint,
                     "x-rpc-device_id": deviceID,
                 ]
             } else {
-                return nil
+                nil
             }
         }()
 
@@ -91,12 +91,12 @@ extension HoYo {
         -> WidgetNote4GI {
         let additionalHeaders: [String: String]? = {
             if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceID {
-                return [
+                [
                     "x-rpc-device_fp": deviceFingerPrint,
                     "x-rpc-device_id": deviceID,
                 ]
             } else {
-                return nil
+                nil
             }
         }()
 

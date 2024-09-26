@@ -69,14 +69,10 @@ final class AbyssRankViewModel {
 
     var paramsDescription: String {
         let result: String = { switch showingType {
-        case .fullStarHoldingRate:
-            return fullStarHoldingParam.describe()
-        case .holdingRate:
-            return holdingParam.describe()
-        case .abyssAvatarsUtilization, .pvpUtilization:
-            return utilizationParams.describe()
-        case .teamUtilization:
-            return teamUtilizationParams.describe()
+        case .fullStarHoldingRate: fullStarHoldingParam.describe()
+        case .holdingRate: holdingParam.describe()
+        case .abyssAvatarsUtilization, .pvpUtilization: utilizationParams.describe()
+        case .teamUtilization: teamUtilizationParams.describe()
         }
         }()
         return result.replacingOccurrences(of: "·", with: "\n")
@@ -85,21 +81,21 @@ final class AbyssRankViewModel {
     var totalDataCount: Int {
         switch showingType {
         case .fullStarHoldingRate:
-            return (try? fullStarAvatarHoldingResult?.get().data.totalUsers) ?? 0
+            (try? fullStarAvatarHoldingResult?.get().data.totalUsers) ?? 0
         case .holdingRate:
-            return (try? avatarHoldingResult?.get().data.totalUsers) ?? 0
+            (try? avatarHoldingResult?.get().data.totalUsers) ?? 0
         case .abyssAvatarsUtilization:
-            return (
+            (
                 try? utilizationDataFetchModelResult?.get().data
                     .totalUsers
             ) ?? 0
         case .teamUtilization:
-            return (
+            (
                 try? teamUtilizationDataFetchModelResult?.get().data
                     .totalUsers
             ) ?? 0
         case .pvpUtilization:
-            return (
+            (
                 try? pvpUtilizationDataFetchModelResult?.get().data
                     .totalUsers
             ) ?? 0
@@ -108,31 +104,21 @@ final class AbyssRankViewModel {
 
     var paramsDetailDescription: String {
         switch showingType {
-        case .fullStarHoldingRate:
-            return fullStarHoldingParam.detail()
-        case .holdingRate:
-            return holdingParam.detail()
-        case .abyssAvatarsUtilization:
-            return utilizationParams.detail()
-        case .teamUtilization:
-            return teamUtilizationParams.detail()
-        case .pvpUtilization:
-            return pvpUtilizationParams.detail()
+        case .fullStarHoldingRate: fullStarHoldingParam.detail()
+        case .holdingRate: holdingParam.detail()
+        case .abyssAvatarsUtilization: utilizationParams.detail()
+        case .teamUtilization: teamUtilizationParams.detail()
+        case .pvpUtilization: pvpUtilizationParams.detail()
         }
     }
 
     func getData() async {
         switch showingType {
-        case .abyssAvatarsUtilization:
-            await getUtilizationResult()
-        case .holdingRate:
-            await getAvatarHoldingResult()
-        case .fullStarHoldingRate:
-            await getFullStarHoldingResult()
-        case .teamUtilization:
-            await getTeamUtilizationResult()
-        case .pvpUtilization:
-            await getPVPUtilizationResult()
+        case .abyssAvatarsUtilization: await getUtilizationResult()
+        case .holdingRate: await getAvatarHoldingResult()
+        case .fullStarHoldingRate: await getFullStarHoldingResult()
+        case .teamUtilization: await getTeamUtilizationResult()
+        case .pvpUtilization: await getPVPUtilizationResult()
         }
     }
 

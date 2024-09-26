@@ -27,8 +27,8 @@ extension Enka {
         public var game: Enka.GameType {
             switch self {
             case .giCharacters, .giLocTable, .giNamecards, .giProfileAvatarIcons:
-                return .genshinImpact
-            default: return .starRail
+                .genshinImpact
+            default: .starRail
             }
         }
 

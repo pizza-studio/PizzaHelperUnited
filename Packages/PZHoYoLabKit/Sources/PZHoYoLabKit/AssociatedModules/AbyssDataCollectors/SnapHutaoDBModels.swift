@@ -58,9 +58,9 @@ public enum SnapHutao {
         /// 返回结尾只有0或1的abyssSeason信息
         public func getLocalAbyssSeason() -> Int {
             if pizzaCalculatedSeasonInt % 2 == 0 {
-                return (pizzaCalculatedSeasonInt / 10) * 10
+                (pizzaCalculatedSeasonInt / 10) * 10
             } else {
-                return (pizzaCalculatedSeasonInt / 10) * 10 + 1
+                (pizzaCalculatedSeasonInt / 10) * 10 + 1
             }
         }
     }
