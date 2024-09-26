@@ -34,6 +34,7 @@ public final class GachaVM: TaskManagedVM {
     public private(set) var currentPentaStars: [GachaEntryExpressible] = []
     public var currentExportableDocument: Result<GachaDocument, Error>?
     public var currentSceneStep4Import: GachaImportSections.SceneStep = .chooseFormat
+    public var showSucceededAlertToast = false
 
     public var currentGPID: GachaProfileID? {
         didSet {
@@ -83,6 +84,9 @@ extension GachaVM {
             cancelPreviousTask: immediately,
             givenTask: {
                 try await GachaActor.shared.deleteAllEntriesOfGPID(gpid)
+            },
+            completionHandler: { _ in
+                self.showSucceededAlertToast = true
             }
         )
     }
@@ -97,6 +101,7 @@ extension GachaVM {
                 if self.currentGPID == nil {
                     self.resetDefaultProfile()
                 }
+                self.showSucceededAlertToast = true
             }
         )
     }
@@ -124,6 +129,7 @@ extension GachaVM {
                 if self.currentGPID == nil {
                     self.resetDefaultProfile()
                 }
+                self.showSucceededAlertToast = true
             }
         )
     }
@@ -321,6 +327,7 @@ extension GachaVM {
                 if let resultMap {
                     self.currentSceneStep4Import = .importSucceeded(resultMap)
                 }
+                self.showSucceededAlertToast = true
             },
             errorHandler: { error in
                 withAnimation {
