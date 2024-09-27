@@ -15,13 +15,23 @@ import WatchKit
 
 #if os(macOS) || os(iOS) || targetEnvironment(macCatalyst)
 public enum Clipboard {
-    public static func writeString(_ string: String) {
-        #if canImport(UIKit) || targetEnvironment(macCatalyst)
-        UIPasteboard.general.string = string
-        #endif
-        #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-        NSPasteboard.general.setString(string, forType: .string)
-        #endif
+    public static var currentString: String {
+        get {
+            #if canImport(UIKit) || targetEnvironment(macCatalyst)
+            return UIPasteboard.general.string ?? ""
+            #endif
+            #if canImport(AppKit) && !targetEnvironment(macCatalyst)
+            return NSPasteboard.general.string(forType: .string)
+            #endif
+        }
+        set {
+            #if canImport(UIKit) || targetEnvironment(macCatalyst)
+            UIPasteboard.general.string = newValue
+            #endif
+            #if canImport(AppKit) && !targetEnvironment(macCatalyst)
+            NSPasteboard.general.setString(newValue, forType: .string)
+            #endif
+        }
     }
 }
 #endif

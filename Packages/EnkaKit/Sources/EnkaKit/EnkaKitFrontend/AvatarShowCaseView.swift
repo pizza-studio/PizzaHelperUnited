@@ -118,12 +118,12 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
         if let avatar = avatar {
             Group {
                 Button {
-                    Clipboard.writeString(avatar.asText)
+                    Clipboard.currentString = avatar.asText
                 } label: {
                     Text("enka.ASCV.summarzeToClipboard.asText", bundle: .module)
                 }
                 Button {
-                    Clipboard.writeString(avatar.asMarkDown)
+                    Clipboard.currentString = avatar.asMarkDown
                 } label: {
                     Text("enka.ASCV.summarzeToClipboard.asMD", bundle: .module)
                 }

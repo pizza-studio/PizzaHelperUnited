@@ -77,7 +77,7 @@ extension AbyssReportView {
 
     func copyEncoded() {
         guard !textRaw.isEmpty else { return }
-        Clipboard.writeString(textRaw)
+        Clipboard.currentString = textRaw
     }
 
     var decoratedIconSize: CGFloat {
