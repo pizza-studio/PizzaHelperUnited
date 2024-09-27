@@ -1726,7 +1726,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "导入或导入抽卡记录"
+            "value" : "导入或导出抽卡记录"
           }
         },
         "zh-Hant" : {
