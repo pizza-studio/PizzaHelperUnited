@@ -42,7 +42,7 @@ extension HoYo {
     ) async throws
         -> GenAuthKeyResult {
         if case .hoyoLab = profile.server.region {
-            throw GetGachaError.unknowError(
+            throw GetGachaError.unknownError(
                 retcode: -213,
                 message: "HoYo.genAuthKey4GI is for Miyoushe only."
             )
