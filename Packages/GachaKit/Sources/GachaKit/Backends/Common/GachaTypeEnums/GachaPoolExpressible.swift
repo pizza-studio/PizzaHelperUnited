@@ -47,6 +47,10 @@ extension GachaPoolExpressible {
 
     public var id: String { rawValue }
 
+    public var sortID: Int {
+        Self.allCases.enumerated().first { $0.element == self }?.offset ?? 0
+    }
+
     public var isUnknown: Bool {
         [.giUnknown, .srUnknown, .zzUnknown].contains(self)
     }
