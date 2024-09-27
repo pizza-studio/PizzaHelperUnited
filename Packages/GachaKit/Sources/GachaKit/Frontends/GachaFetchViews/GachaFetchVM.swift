@@ -39,6 +39,19 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
         case got(page: Int, gachaType: GachaType, newItemCount: Int, cancel: () -> Void)
         case failFetching(page: Int, gachaType: GachaType, error: Error, retry: () -> Void)
         case finished(typeFetchedCount: [GachaType: Int], initialize: () -> Void)
+
+        // MARK: Public
+
+        public var navBackButtonDisabled: Bool {
+            switch self {
+            case .waitingForURL: false
+            case .readyToFire: false
+            case .inProgress: true
+            case .got: true
+            case .failFetching: false
+            case .finished: false
+            }
+        }
     }
 
     public var savedTypeFetchedCount: [GachaType: Int] = Dictionary(
