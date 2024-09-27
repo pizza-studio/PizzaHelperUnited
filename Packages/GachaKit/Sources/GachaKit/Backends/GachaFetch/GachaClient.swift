@@ -2,13 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
 import Foundation
 import PZAccountKit
 
 // MARK: - GachaClient
 
-public class GachaClient<GachaType: GachaTypeProtocol>: @unchecked Sendable {
+public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIteratorProtocol {
     // MARK: Lifecycle
 
     public init(gachaURLString: String) throws(ParseGachaURLError) {
@@ -19,51 +18,102 @@ public class GachaClient<GachaType: GachaTypeProtocol>: @unchecked Sendable {
 
     public typealias GachaResult = GachaFetchModels.PageFetched
 
-    public let publisher: PassthroughSubject<(gachaType: GachaType, result: GachaResult), GachaError> =
-        .init()
+    public struct Pagination {
+        // MARK: Lifecycle
 
-    public func start() {
-        if task == nil {
-            task = Task(priority: .high) {
-                while case let .currentPagination(pagination) = status {
-                    let rnd = Double.random(in: Self.getGachaDelayRangeRandom)
-                    try? await Task.sleep(nanoseconds: UInt64(rnd * 1_000_000_000))
-                    do {
-                        var result = try await fetchData(pagination: pagination)
-                        var convertedItems = [PZGachaEntrySendable]()
-                        for fetchedEntryRAW in result.list {
-                            let convertedEntry = try await fetchedEntryRAW.toGachaEntrySendable(
+        init() {
+            self.page = 1
+            self.size = 20
+            self.endID = "0"
+            self.gachaType = .knownCases[0]
+        }
+
+        init(gachaType: GachaType) {
+            self.page = 1
+            self.size = 20
+            self.endID = "0"
+            self.gachaType = gachaType
+        }
+
+        init(page: Int, size: Int, endID: String, gachaType: GachaType) {
+            self.page = page
+            self.size = size
+            self.endID = endID
+            self.gachaType = gachaType
+        }
+
+        // MARK: Internal
+
+        var page: Int
+        var size: Int
+        var endID: String
+        var gachaType: GachaType
+    }
+
+    public var pagination: Pagination = .init()
+
+    public func makeAsyncIterator() -> Self { self }
+
+    public mutating func next() async throws(GachaError) -> GachaResult? {
+        do {
+            let request = Self.generateGachaRequest(
+                basicParam: authentication,
+                page: pagination.page,
+                size: pagination.size,
+                gachaType: pagination.gachaType,
+                endID: pagination.endID
+            )
+
+            let (data, _) = try await URLSession.shared.data(for: request)
+
+            var result = try GachaResult.decodeFromMiHoYoAPIJSONResult(data: data)
+
+            result.listConverted = try await withThrowingTaskGroup(
+                of: PZGachaEntrySendable.self,
+                returning: [PZGachaEntrySendable].self,
+                body: { taskGroup in
+                    result.list.forEach { entryRaw in
+                        taskGroup.addTask {
+                            try await entryRaw.toGachaEntrySendable(
                                 game: GachaType.game, fixItemIDs: GachaType.game == .genshinImpact
                             )
-                            convertedItems.append(convertedEntry)
                         }
-                        result.listConverted = convertedItems
-                        publisher.send((gachaType: pagination.gachaType, result: result))
-                        status.switchToNextPage(endID: result.list.last?.id)
-                    } catch {
-                        status = .finished
-                        publisher.send(
-                            completion: .failure(
-                                GachaError.fetchDataError(
-                                    page: pagination.page,
-                                    size: pagination.size,
-                                    gachaTypeRaw: pagination.gachaType.rawValue,
-                                    error: error
-                                )
-                            )
-                        )
+                    }
+
+                    return try await taskGroup.reduce(into: []) { partialResult, entry in
+                        partialResult.append(entry)
                     }
                 }
-                status = .finished
-                publisher.send(completion: .finished)
+            )
+
+            if let endId = result.list.last?.id {
+                pagination = .init(
+                    page: pagination.page + 1,
+                    size: pagination.size,
+                    endID: endId,
+                    gachaType: pagination.gachaType
+                )
+            } else {
+                if let nextGachaType = pagination.gachaType.next() {
+                    pagination = .init(gachaType: nextGachaType)
+                } else {
+                    return nil
+                }
             }
+
+            return result
+        } catch {
+            throw GachaError.fetchDataError(
+                page: pagination.page,
+                size: pagination.size,
+                gachaTypeRaw: pagination.gachaType.rawValue,
+                error: error
+            )
         }
     }
 
-    public func cancel() {
-        task?.cancel()
-        status = .finished
-        publisher.send(completion: .finished)
+    public mutating func reset() {
+        pagination = .init()
     }
 
     // MARK: Internal
@@ -97,93 +147,11 @@ public class GachaClient<GachaType: GachaTypeProtocol>: @unchecked Sendable {
 
     // MARK: Private
 
-    private enum Status {
-        case finished
-        case currentPagination(Pagination)
-
-        // MARK: Internal
-
-        mutating func switchToNextPage(endID: String?) {
-            guard case let .currentPagination(pagination) = self else {
-                return
-            }
-
-            if let endID {
-                self = .currentPagination(
-                    Pagination(
-                        page: pagination.page + 1,
-                        size: pagination.size,
-                        endID: endID,
-                        gachaType: pagination.gachaType
-                    )
-                )
-            } else {
-                if let nextGachaType = pagination.gachaType.next() {
-                    self = .currentPagination(.init(gachaType: nextGachaType))
-                } else {
-                    self = .finished
-                }
-            }
-        }
-    }
-
-    private struct Pagination {
-        // MARK: Lifecycle
-
-        init() {
-            self.page = 1
-            self.size = 20
-            self.endID = "0"
-            self.gachaType = .knownCases[0]
-        }
-
-        init(gachaType: GachaType) {
-            self.page = 1
-            self.size = 20
-            self.endID = "0"
-            self.gachaType = gachaType
-        }
-
-        init(page: Int, size: Int, endID: String, gachaType: GachaType) {
-            self.page = page
-            self.size = size
-            self.endID = endID
-            self.gachaType = gachaType
-        }
-
-        // MARK: Internal
-
-        var page: Int
-        var size: Int
-        var endID: String
-        var gachaType: GachaType
-    }
-
     private static var getGachaDelayRangeRandom: Range<Double> { 0.8 ..< 1.5 }
 
     private let authentication: GachaRequestAuthentication
-    private var status: Status = .currentPagination(.init())
-    private var task: Task<Void, Never>?
 
-    private func fetchData(pagination: Pagination) async throws -> GachaResult {
-        let request = Self.generateGachaRequest(
-            basicParam: authentication,
-            page: pagination.page,
-            size: pagination.size,
-            gachaType: pagination.gachaType,
-            endID: pagination.endID
-        )
-
-        let (data, _) = try await URLSession.shared.data(for: request)
-
-        let result = try GachaResult.decodeFromMiHoYoAPIJSONResult(data: data)
-
-        return result
-    }
-}
-
-extension GachaClient {
-    private static func generateGachaRequest(
+    static private func generateGachaRequest(
         basicParam: GachaRequestAuthentication,
         page: Int,
         size: Int,
