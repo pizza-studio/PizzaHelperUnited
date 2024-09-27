@@ -119,7 +119,7 @@ extension PZDictionaryView {
                 Section {
                     ForEach(sortedTranslations, id: \.key) { key, value in
                         Button {
-                            Clipboard.writeString(value)
+                            Clipboard.currentString = value
                             isAlertShown.toggle()
                         } label: {
                             VStack(alignment: .leading, spacing: 5) {
