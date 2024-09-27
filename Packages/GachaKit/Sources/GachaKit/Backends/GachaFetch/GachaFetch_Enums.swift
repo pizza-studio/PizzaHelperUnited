@@ -22,13 +22,27 @@ public enum GachaError: Error, Sendable {
 
 // MARK: - ParseGachaURLError
 
-public enum ParseGachaURLError: Error {
+public enum ParseGachaURLError: String, Error, LocalizedError {
     case invalidURL
     case noAuthenticationKey
     case noAuthenticationKeyVersion
     case noServer
     case invalidServer
     case noSignType
+
+    // MARK: Public
+
+    public var description: String {
+        "gachaKit.ParseGachaURLError.\(rawValue)".i18nGachaKit
+    }
+
+    public var errorDescription: String? {
+        description
+    }
+
+    public var localizedDescription: String {
+        description
+    }
 }
 
 // MARK: - GetGachaError
