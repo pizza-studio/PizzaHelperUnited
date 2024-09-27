@@ -252,8 +252,8 @@ extension GachaFetchView4Game {
                 }
             } footer: {
                 HStack {
-                    // Text(verbatim: GachaPoolExpressible.getPoolFilterLabel(by: GachaType.game) + ": ")
-                    Text(verbatim: gachaType.description)
+                    Text(verbatim: GachaPoolExpressible.getPoolFilterLabel(by: GachaType.game) + ":")
+                    Text(verbatim: poolType.localizedTitle + " (\(gachaType.rawValue))")
                     Spacer()
                     Text(String(format: "gachaKit.getRecord.gotSome.page".i18nGachaKit, page))
                     Spacer()

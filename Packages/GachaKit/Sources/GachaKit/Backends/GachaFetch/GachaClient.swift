@@ -88,12 +88,12 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
                 }
             )
 
-            if let endId = result.list.last?.id {
+            if let endResult = result.list.last {
                 pagination = .init(
                     page: pagination.page + 1,
                     size: pagination.size,
-                    endID: endId,
-                    gachaType: pagination.gachaType
+                    endID: endResult.id,
+                    gachaType: .init(rawValue: endResult.gachaType)
                 )
             } else if let nextGachaType = pagination.gachaType.next() {
                 pagination = .init(gachaType: nextGachaType)
