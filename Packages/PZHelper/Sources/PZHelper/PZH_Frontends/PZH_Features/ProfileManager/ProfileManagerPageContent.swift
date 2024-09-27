@@ -32,6 +32,10 @@ struct ProfileManagerPageContent: View {
 
     // MARK: Internal
 
+    #if os(iOS) || targetEnvironment(macCatalyst)
+    @State var isEditMode: EditMode = .inactive
+    #endif
+
     @MainActor @ViewBuilder var coreBody: some View {
         List {
             Section {
@@ -90,10 +94,6 @@ struct ProfileManagerPageContent: View {
             .environment(\.editMode, $isEditMode)
         #endif
     }
-
-    #if os(iOS) || targetEnvironment(macCatalyst)
-    @State var isEditMode: EditMode = .inactive
-    #endif
 
     // MARK: Private
 
