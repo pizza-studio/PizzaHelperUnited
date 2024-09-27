@@ -8,11 +8,17 @@ import SwiftUI
 public struct GachaEntryBar: View {
     // MARK: Lifecycle
 
-    public init(entry: GachaEntryExpressible, showDate: Bool = false, debug: Bool = false) {
+    public init(
+        entry: GachaEntryExpressible,
+        showDate: Bool = false,
+        debug: Bool = false,
+        debugMenu: Bool = false
+    ) {
         self.entry = entry
         self.drawCount = entry.drawCount < 0 ? nil : entry.drawCount
         self.showDate = showDate
         self.debug = debug
+        self.debugMenu = debugMenu
     }
 
     // MARK: Public
@@ -60,7 +66,7 @@ public struct GachaEntryBar: View {
                 }
             }
             .apply { theContent in
-                if !debug {
+                if !debug || !debugMenu {
                     theContent
                 } else {
                     theContent
@@ -83,6 +89,7 @@ public struct GachaEntryBar: View {
     let drawCount: Int?
     let showDate: Bool
     let debug: Bool
+    let debugMenu: Bool
 
     @MainActor var itemIDText: Text {
         if showDate {
