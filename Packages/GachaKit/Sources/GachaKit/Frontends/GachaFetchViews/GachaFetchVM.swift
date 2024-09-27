@@ -46,7 +46,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
 
     public enum Status {
         case waitingForURL
-        case pending(start: () -> Void, initialize: () -> Void)
+        case readyToFire(start: () -> Void, reinit: () -> Void)
         case inProgress(cancel: () -> Void)
         case got(page: Int, gachaType: GachaType, newItemCount: Int, cancel: () -> Void)
         case failFetching(page: Int, gachaType: GachaType, error: Error, retry: () -> Void)
@@ -54,7 +54,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
 
         // MARK: Public
 
-        public var navBackButtonDisabled: Bool {
+        public var isBusy: Bool {
             switch self {
             case .waitingForURL: false
             case .readyToFire: false
@@ -199,7 +199,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
 
     private func setPending() {
         withAnimation {
-            self.status = .pending(start: { self.startFetching() }, initialize: { self.initialize() })
+            self.status = .readyToFire(start: { self.startFetching() }, reinit: { self.initialize() })
         }
     }
 
