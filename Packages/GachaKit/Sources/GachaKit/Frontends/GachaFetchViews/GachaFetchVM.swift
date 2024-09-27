@@ -18,9 +18,21 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     // MARK: Public
 
     public struct GachaTypeDateCount: Hashable, Identifiable {
+        // MARK: Lifecycle
+
+        public init(date: Date, count: Int, gachaType: GachaType) {
+            self.date = date
+            self.count = count
+            self.gachaType = gachaType
+            self.poolType = gachaType.expressible
+        }
+
+        // MARK: Public
+
         public let date: Date
         public var count: Int
         public let gachaType: GachaType
+        public let poolType: GachaPoolExpressible
 
         public var id: Int {
             hashValue
