@@ -54,7 +54,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
 
     public func makeAsyncIterator() -> Self { self }
 
-    public mutating func next() async throws(GachaError) -> GachaResult? {
+    public mutating func next() async throws(GachaError) -> (gachaType: GachaType, result: GachaResult)? {
         do {
             let request = Self.generateGachaRequest(
                 basicParam: authentication,
@@ -101,7 +101,9 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
                 return nil
             }
 
-            return result
+            return (pagination.gachaType, result)
+        } catch is CancellationError {
+            return nil
         } catch {
             throw GachaError.fetchDataError(
                 page: pagination.page,
