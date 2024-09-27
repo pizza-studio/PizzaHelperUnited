@@ -21,33 +21,33 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
     public struct Pagination {
         // MARK: Lifecycle
 
-        init() {
+        public init() {
             self.page = 1
             self.size = 20
             self.endID = "0"
             self.gachaType = .knownCases[0]
         }
 
-        init(gachaType: GachaType) {
+        public init(gachaType: GachaType) {
             self.page = 1
             self.size = 20
             self.endID = "0"
             self.gachaType = gachaType
         }
 
-        init(page: Int, size: Int, endID: String, gachaType: GachaType) {
+        public init(page: Int, size: Int, endID: String, gachaType: GachaType) {
             self.page = page
             self.size = size
             self.endID = endID
             self.gachaType = gachaType
         }
 
-        // MARK: Internal
+        // MARK: Public
 
-        var page: Int
-        var size: Int
-        var endID: String
-        var gachaType: GachaType
+        public var page: Int
+        public var size: Int
+        public var endID: String
+        public var gachaType: GachaType
     }
 
     public var pagination: Pagination = .init()
