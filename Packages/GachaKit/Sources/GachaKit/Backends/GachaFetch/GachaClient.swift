@@ -164,7 +164,11 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         components.scheme = "https"
         components.host = URLRequestConfig.domain4PublicOps(region: basicParam.server.region)
 
-        components.path = "/common/gacha_record/api/getGachaLog"
+        components.path = switch GachaType.game {
+        case .starRail: "/common/gacha_record/api/getGachaLog"
+        case .genshinImpact: "/gacha_info/api/getGachaLog"
+        case .zenlessZone: "/gacha_info/api/getGachaLog"
+        }
 
         let langRawValue: String = switch gachaType.game {
         case .genshinImpact: GachaLanguage.langCHS.rawValue
