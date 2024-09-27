@@ -49,7 +49,9 @@ extension GachaFetchModels {
             self.size = try container.decode(String.self, forKey: .size)
             self.region = try container.decode(String.self, forKey: .region)
             self.total = try container.decodeIfPresent(String.self, forKey: .total)
-            self.timeZoneDelta = try container.decode(Int.self, forKey: .timeZoneDelta)
+            // 原神的 gacha raw 没有 regionTimeZone。这里用一个假值取代之。
+            // 反正伺服器的抽卡时区是固定的、是可以用 UID 倒推的。
+            self.timeZoneDelta = try container.decodeIfPresent(Int.self, forKey: .timeZoneDelta) ?? 114_514
             self.list = try container.decode([FetchedEntry].self, forKey: .list)
         }
 
