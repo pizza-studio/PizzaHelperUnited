@@ -255,6 +255,8 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                         case let .fetchDataError(page, _, gachaType, error):
                             setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
                         }
+                    case let error as URLError where error.code == .cancelled:
+                        setFinished()
                     default:
                         break
                         // since `next` is typed throwing it is unreachable here
