@@ -54,7 +54,7 @@ public enum GetGachaError: Error, Equatable {
     case networkError(message: String)
     case incorrectUrl
     case decodeError(message: String)
-    case unknowError(retcode: Int, message: String)
+    case unknownError(retcode: Int, message: String)
     case genAuthKeyError(message: String)
 }
 
