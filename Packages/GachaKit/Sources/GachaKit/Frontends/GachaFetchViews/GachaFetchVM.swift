@@ -227,8 +227,8 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
         task = Task { [weak self] in
             guard let self else { return }
             do {
-                for try await result in client {
-                    setGot(page: Int(result.page) ?? 0, gachaType: client.pagination.gachaType)
+                for try await (gachaType, result) in client {
+                    setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
                     Task.detached { @MainActor @Sendable [weak self] in
                         guard let self else { return }
                         for item in result.listConverted {
