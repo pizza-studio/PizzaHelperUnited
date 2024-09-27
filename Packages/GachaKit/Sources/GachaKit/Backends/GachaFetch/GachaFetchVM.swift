@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
 import Foundation
 import PZAccountKit
 import PZBaseKit
@@ -106,7 +105,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     // MARK: Private
 
     private var client: GachaClient<GachaType>?
-    private var cancellables: [AnyCancellable] = []
+    private var task: Task<Void, Never>?
 
     private var mainContext: ModelContext {
         GachaActor.shared.modelContainer.mainContext
@@ -173,46 +172,41 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     private func startFetching() {
         guard let client else { return }
         setInProgress()
-        cancellables.append(client.publisher.sink { [self] completion in
-            switch completion {
-            case .finished:
+        task = Task { [weak self] in
+            guard let self else { return }
+            do {
+                for try await result in client {
+                    setGot(page: Int(result.page) ?? 0, gachaType: client.pagination.gachaType)
+                    Task.detached { @MainActor @Sendable [weak self] in
+                        guard let self else { return }
+                        for item in result.listConverted {
+                            Task {
+                                withAnimation {
+                                    self.updateCachedItems(item)
+                                    self.updateGachaDateCounts(item)
+                                }
+                            }
+                            try? await insert(item)
+                            try? await Task.sleep(for: .seconds(0.5 / 20.0))
+                        }
+                        try? mainContext.save()
+                    }
+                }
                 setFinished()
-            case let .failure(error):
+            } catch is CancellationError {
+                setFinished()
+            } catch {
                 switch error {
-                case let .fetchDataError(page: page, size: _, gachaTypeRaw: gachaType, error: error):
-                    setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
+                case let error as GachaError:
+                    switch error {
+                    case let .fetchDataError(page: page, size: _, gachaTypeRaw: gachaType, error: error):
+                        setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
+                    }
+                default:
+                    break
+                    // since `next` is typed throwing it is unreachable here
                 }
             }
-        } receiveValue: { [self] gachaType, result in
-            setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
-            cancellables.append(
-                Publishers.Zip(
-                    result.listConverted.publisher,
-                    Timer.publish(
-                        every: 0.5 / 20.0,
-                        on: .main,
-                        in: .default
-                    )
-                    .autoconnect()
-                )
-                .map(\.0)
-                .sink(receiveCompletion: { _ in
-                    let context = self.mainContext
-                    try? context.save()
-                }, receiveValue: { [self] item in
-                    withAnimation {
-                        self.updateCachedItems(item)
-                        self.updateGachaDateCounts(item)
-                    }
-                    Task { @MainActor in
-                        try await insert(item)
-                    }
-                })
-            )
-
-        })
-        Task { @MainActor in
-            client.start()
         }
     }
 
@@ -225,33 +219,26 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                     (gachaType, 0)
                 }
         )
-        cancellables.forEach { cancellable in
-            cancellable.cancel()
-        }
-        cancellables = []
+        task?.cancel()
         cachedItems = []
         gachaTypeDateCounts = []
     }
 
     private func retry() {
         setPending()
+        client?.reset()
         savedTypeFetchedCount = Dictionary(
             uniqueKeysWithValues: GachaType.knownCases
                 .map { gachaType in
                     (gachaType, 0)
                 }
         )
-        cancellables.forEach { cancellable in
-            cancellable.cancel()
-        }
-        cancellables = []
+        task?.cancel()
         cachedItems = []
         gachaTypeDateCounts = []
     }
 
     private func cancel() {
-        Task { @MainActor in
-            self.client?.cancel()
-        }
+        task?.cancel()
     }
 }
