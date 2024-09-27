@@ -68,8 +68,10 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
 
     func updateGachaDateCounts(_ item: PZGachaEntrySendable) {
         let itemExpr = item.expressible
-        if gachaTypeDateCounts
-            .filter({ ($0.date == itemExpr.time) && ($0.gachaType.rawValue == item.gachaType) }).isEmpty {
+        let dateAndPoolMatched = gachaTypeDateCounts.first {
+            ($0.date == itemExpr.time) && ($0.gachaType.rawValue == item.gachaType)
+        }
+        if dateAndPoolMatched == nil {
             let count = GachaTypeDateCount(
                 date: itemExpr.time,
                 count: gachaTypeDateCounts.filter { data in
@@ -79,9 +81,10 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
             )
             gachaTypeDateCounts.append(count)
         }
-        gachaTypeDateCounts.indicesMeeting { element in
+        func predicateElement(_ element: GachaTypeDateCount) -> Bool {
             (element.date >= itemExpr.time) && (element.gachaType.rawValue == item.gachaType)
-        }?.forEach { index in
+        }
+        gachaTypeDateCounts.indicesMeeting(condition: predicateElement)?.forEach { index in
             self.gachaTypeDateCounts[index].count += 1
         }
     }
@@ -193,18 +196,20 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                     }
                 }
                 setFinished()
-            } catch is CancellationError {
-                setFinished()
             } catch {
-                switch error {
-                case let error as GachaError:
+                if error is CancellationError {
+                    setFinished()
+                } else {
                     switch error {
-                    case let .fetchDataError(page: page, size: _, gachaTypeRaw: gachaType, error: error):
-                        setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
+                    case let error as GachaError:
+                        switch error {
+                        case let .fetchDataError(page, _, gachaType, error):
+                            setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
+                        }
+                    default:
+                        break
+                        // since `next` is typed throwing it is unreachable here
                     }
-                default:
-                    break
-                    // since `next` is typed throwing it is unreachable here
                 }
             }
         }
