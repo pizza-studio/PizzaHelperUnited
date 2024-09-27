@@ -2,12 +2,14 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Charts
 import PZBaseKit
+import SwiftUI
 
 // MARK: - GachaPoolExpressible
 
 /// 该 Enum 仅用于前台显示之用途，不参与后台资料处理、不承载任何附加参数资讯。
-public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sendable, CaseIterable {
+public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sendable, CaseIterable, Plottable {
     case giUnknown
     case giCharacterEventWish // 两个限定池合并显示
     case giWeaponEventWish
@@ -128,6 +130,17 @@ extension GachaPoolExpressible {
         case .genshinImpact: "gachaKit.reviewFromAppraiser.gi"
         case .starRail: "gachaKit.reviewFromAppraiser.hsr"
         case .zenlessZone: "gachaKit.reviewFromAppraiser.zzz"
+        }
+    }
+
+    public var color4SUI: Color {
+        switch self {
+        case .giUnknown, .srUnknown, .zzUnknown: .gray
+        case .giCharacterEventWish, .srCharacterEventWarp, .zzExclusiveChannel: .blue
+        case .giWeaponEventWish, .srLightConeEventWarp, .zzWEngineChannel: .yellow
+        case .giChronicledWish, .zzBangbooChannel: .red
+        case .giStandardWish, .srStellarWarp, .zzStableChannel: .green
+        case .giBeginnersWish, .srDepartureWarp: .cyan
         }
     }
 }
