@@ -95,12 +95,10 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
                     endID: endId,
                     gachaType: pagination.gachaType
                 )
+            } else if let nextGachaType = pagination.gachaType.next() {
+                pagination = .init(gachaType: nextGachaType)
             } else {
-                if let nextGachaType = pagination.gachaType.next() {
-                    pagination = .init(gachaType: nextGachaType)
-                } else {
-                    return nil
-                }
+                return nil
             }
 
             return result
@@ -192,9 +190,11 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
             .init(name: "gacha_type", value: gachaType.rawValue),
             .init(name: "end_id", value: endID),
         ]
-        let urlString = components.url!
-            .absoluteString +
-            "&authkey=\(basicParam.authenticationKey.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)"
+        let authKeyRaw = basicParam.authenticationKey
+        let authKeyPercEncoded = authKeyRaw.addingPercentEncoding(
+            withAllowedCharacters: .alphanumerics
+        )!
+        let urlString = components.url!.absoluteString + "&authkey=\(authKeyPercEncoded)"
         return URLRequest(url: URL(string: urlString)!)
     }
 }
