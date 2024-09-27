@@ -4,6 +4,7 @@
 
 import GachaMetaDB
 import PZBaseKit
+import SwiftUI
 
 extension Pizza.SupportedGame {
     public var gachaItemType: any UIGFGachaItemProtocol.Type {
@@ -17,22 +18,37 @@ extension Pizza.SupportedGame {
 
 // MARK: - GachaTypeProtocol
 
-public protocol GachaTypeProtocol: RawRepresentable, Codable, Hashable, Sendable where RawValue == String {
+public protocol GachaTypeProtocol: RawRepresentable, Codable, Hashable, Sendable,
+    Identifiable where RawValue == String {
     associatedtype ItemType: UIGFGachaItemProtocol where ItemType.PoolType == Self
     static var knownCases: [Self] { get }
+    var expressible: GachaPoolExpressible { get }
     init(rawValue: String)
 }
 
 extension GachaTypeProtocol {
     static var game: Pizza.SupportedGame { ItemType.game }
-    var game: Pizza.SupportedGame { Self.game }
+    public var game: Pizza.SupportedGame { Self.game }
+    public var id: String { rawValue }
 
     public static func < (lhs: Self, rhs: Self) -> Bool {
-        Self.knownCases.firstIndex(of: lhs)! < Self.knownCases.firstIndex(of: rhs)!
+        lhs.expressible.sortID < rhs.expressible.sortID
     }
 
     public func next() -> Self? {
-        Self.knownCases.first { (Int(self.rawValue) ?? 0) < (Int($0.rawValue) ?? 0) }
+        Self.knownCases.sorted {
+            $0 < $1
+        }.first {
+            self.expressible.sortID < $0.expressible.sortID
+        }
+    }
+
+    public var description: String {
+        expressible.localizedTitle + " (\(rawValue))"
+    }
+
+    public var color4SUI: Color {
+        expressible.color4SUI
     }
 }
 
