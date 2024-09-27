@@ -47,10 +47,18 @@ public struct GachaRootView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Menu {
-                        NavigationLink("gachaKit.menu.getGachaRecords") {
-                            EmptyView() // GetGachaRecordView()
-                                .environment(theVM)
-                        }.disabled(true)
+                        Menu {
+                            ForEach(Pizza.SupportedGame.allCases) { game in
+                                NavigationLink(game.localizedDescription) {
+                                    GachaFetchView(for: game)
+                                }.disabled(game == .zenlessZone)
+                            }
+                        } label: {
+                            Label(
+                                GachaFetchView.navTitle,
+                                systemSymbol: .squareAndArrowDownOnSquare
+                            )
+                        }
                         NavigationLink {
                             GachaProfileManagementView()
                                 .environment(theVM)
