@@ -85,7 +85,8 @@ strongifiedSelf
 --indent 4
 --maxwidth 120
 --typeattributes prev-line
---varattributes same-line
+--storedvarattrs same-line
+--computedvarattrs same-line
 --voidtype void
 --wraparguments before-first
 --wrapparameters before-first
