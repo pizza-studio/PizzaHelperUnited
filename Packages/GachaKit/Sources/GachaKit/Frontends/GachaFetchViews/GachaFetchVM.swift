@@ -126,8 +126,24 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
             }
         )
         do {
-            let gachaItemMOs = try mainContext.fetch(request)
-            return !gachaItemMOs.isEmpty
+            let gachaItemMOCount = try mainContext.fetchCount(request)
+            return gachaItemMOCount > 0
+        } catch {
+            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
+            return true
+        }
+    }
+
+    func checkGPIDExists(uid: String) -> Bool {
+        let gameStr = GachaType.game.rawValue
+        let request = FetchDescriptor<PZGachaProfileMO>(
+            predicate: #Predicate {
+                $0.uid == uid && $0.gameRAW == gameStr
+            }
+        )
+        do {
+            let gpidMOCount = try mainContext.fetchCount(request)
+            return gpidMOCount > 0
         } catch {
             print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
             return true
@@ -196,6 +212,10 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     private func insert(_ gachaItem: PZGachaEntrySendable) async throws {
         guard !checkIDAndUIDExists(uid: gachaItem.uid, id: gachaItem.id) else { return }
         mainContext.insert(gachaItem.asMO)
+        if !checkGPIDExists(uid: gachaItem.uid) {
+            let gpid = GachaProfileID(uid: gachaItem.uid, game: GachaType.game)
+            mainContext.insert(gpid.asMO)
+        }
         withAnimation {
             self.savedTypeFetchedCount[.init(rawValue: gachaItem.gachaType)]! += 1
         }
