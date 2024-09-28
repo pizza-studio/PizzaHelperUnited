@@ -61,7 +61,7 @@ public final class DailyNoteViewModel: Sendable {
         if case let .progress(task) = dailyNoteStatus {
             task?.cancel()
         }
-        let profileSendable = profile.makeSendable()
+        let profileSendable = profile.asSendable
         let task = Task { @MainActor in
             do {
                 let result = try await profileSendable.getDailyNote()
