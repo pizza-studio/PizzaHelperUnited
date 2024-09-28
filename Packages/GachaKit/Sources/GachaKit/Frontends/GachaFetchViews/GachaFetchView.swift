@@ -125,21 +125,19 @@ extension GachaFetchView4Game {
         @MainActor var body: some View {
             Group {
                 Section {
+                    let alertIntelPack = packAlertIntel()
                     Button {
                         handleURLString(Clipboard.currentString)
                     } label: {
                         Label("gachaKit.getRecord.waitingURL.readClipboard".i18nGachaKit, systemSymbol: .docOnClipboard)
                     }
-                    .alert(isPresented: $isErrorAlertVisible, error: error) { _ in
-                        Button("sys.ok") {
+                    .alert(alertIntelPack.title, isPresented: $isErrorAlertVisible) {
+                        Button("sys.ok".i18nBaseKit) {
                             subError = nil
                             error = nil
-                            isErrorAlertVisible.toggle()
                         }
-                    } message: { _ in
-                        if let subError {
-                            Text(verbatim: "\(subError)")
-                        }
+                    } message: {
+                        Text(verbatim: alertIntelPack.message)
                     }
                 } header: {
                     Text(GachaType.game.titleMarkedName).textCase(.none)
@@ -231,8 +229,21 @@ extension GachaFetchView4Game {
                     fatalError()
                 }
             } else {
+                error = .invalidURL
                 isErrorAlertVisible.toggle()
             }
+        }
+
+        private func packAlertIntel() -> (title: String, message: String) {
+            let alertTitle = error?.localizedDescription ?? ""
+            var alertSubTitle = ""
+            if let error {
+                alertSubTitle += "\(error)"
+            }
+            if let subError {
+                alertSubTitle += "\n\n\(subError)"
+            }
+            return (alertTitle, alertSubTitle)
         }
     }
 }
