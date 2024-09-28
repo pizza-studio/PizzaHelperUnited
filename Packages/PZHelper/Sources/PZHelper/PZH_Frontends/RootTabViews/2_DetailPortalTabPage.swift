@@ -110,7 +110,7 @@ struct DetailPortalTabPage: View {
             .compositingGroup()
         } label: {
             if let profile: PZProfileMO = delegate.currentProfile {
-                Text(profile.uidWithGame).monospacedDigit()
+                Text(profile.uidWithGame).fontWidth(.condensed)
             } else {
                 Text("dpv.query.menuCommandTitle".i18nPZHelper)
             }
