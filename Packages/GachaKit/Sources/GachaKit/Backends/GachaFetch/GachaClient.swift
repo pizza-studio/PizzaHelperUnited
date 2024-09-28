@@ -126,7 +126,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         by gachaURLString: String
     ) throws(ParseGachaURLError)
         -> GachaRequestAuthentication {
-        guard let url = URL(string: gachaURLString),
+        guard let url = URL(string: gachaURLString), gachaURLString.contains("api/getGachaLog"),
               let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else { throw ParseGachaURLError.invalidURL }
 
