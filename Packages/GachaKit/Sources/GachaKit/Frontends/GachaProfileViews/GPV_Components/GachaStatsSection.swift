@@ -51,7 +51,7 @@ extension GachaProfileView {
                     Spacer()
                     Text(average5StarDraw.description)
                 }
-                if poolType.isSurinukable {
+                if poolType.isSurinukable, theVM.taskState != .busy {
                     HStack {
                         Label(
                             "gachaKit.stats.avaragePulls4LimitedPentaStars".i18nGachaKit,
