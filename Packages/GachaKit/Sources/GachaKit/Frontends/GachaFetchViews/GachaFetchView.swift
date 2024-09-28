@@ -3,7 +3,10 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Charts
+import PZAccountKit
 import PZBaseKit
+import SFSafeSymbols
+import SwiftData
 import SwiftUI
 
 // MARK: - GachaFetchView
@@ -119,40 +122,117 @@ extension GachaFetchView4Game {
         // MARK: Internal
 
         @MainActor var body: some View {
-            Section {
-                Button {
-                    let urlString = Clipboard.currentString
-                    if urlString.hasPrefix("https://"), urlString.contains("api/getGachaLog") {
-                        do {
-                            try completion(urlString)
-                        } catch let error as ParseGachaURLError {
-                            self.error = error
-                            self.isErrorAlertVisible.toggle()
-                        } catch {
-                            fatalError()
+            Group {
+                Section {
+                    Button {
+                        handleURLString(Clipboard.currentString)
+                    } label: {
+                        Label("gachaKit.getRecord.waitingURL.readClipboard".i18nGachaKit, systemSymbol: .docOnClipboard)
+                    }
+                    .alert(isPresented: $isErrorAlertVisible, error: error) { _ in
+                        Button("sys.ok") {
+                            subError = nil
+                            error = nil
+                            isErrorAlertVisible.toggle()
                         }
-                    } else {
-                        isPasteBoardNoDataAlertVisible.toggle()
+                    } message: { _ in
+                        if let subError {
+                            Text(verbatim: "\(subError)")
+                        }
                     }
-                } label: {
-                    Label("gachaKit.getRecord.waitingURL.readClipboard".i18nGachaKit, systemSymbol: .docOnClipboard)
+                } header: {
+                    Text(GachaType.game.titleMarkedName).textCase(.none)
                 }
-                .alert(isPresented: $isErrorAlertVisible, error: error) {
-                    Button("sys.ok") {
-                        isErrorAlertVisible.toggle()
-                    }
-                }
-            } header: {
-                Text(GachaType.game.titleMarkedName).textCase(.none)
+                genshinPZProfileList
+            }
+            .onAppear {
+                refreshPZProfilesInThisView()
             }
         }
 
         // MARK: Private
 
+        @Observable
+        private class URLAwaitVM: TaskManagedVM {}
+
         private let completion: (String) throws -> Void
+        @State private var pzProfiles: [PZProfileSendable] = []
         @State private var error: ParseGachaURLError?
+        @State private var subError: Error?
         @State private var isErrorAlertVisible: Bool = false
-        @State private var isPasteBoardNoDataAlertVisible: Bool = false
+        @State private var urlAwaitVM = URLAwaitVM()
+
+        @MainActor @ViewBuilder private var genshinPZProfileList: some View {
+            if !pzProfiles.isEmpty {
+                Section {
+                    ForEach(pzProfiles, id: \.uid) { pzProfile in
+                        Button {
+                            urlAwaitVM.fireTask(
+                                givenTask: {
+                                    try await HoYo.generateGIGachaURLByMiyousheAPI(pzProfile)
+                                },
+                                completionHandler: { urlStr in
+                                    if let urlStr {
+                                        handleURLString(urlStr)
+                                    }
+                                },
+                                errorHandler: { thrownException in
+                                    subError = thrownException
+                                    error = .urlGenerationFailure
+                                    isErrorAlertVisible.toggle()
+                                }
+                            )
+                        } label: {
+                            LabeledContent {
+                                Image(systemSymbol: .trayAndArrowDownFill)
+                                    .foregroundStyle(Color.accentColor)
+                            } label: {
+                                GachaExchangeView.drawGPID(
+                                    GachaProfileID(
+                                        uid: pzProfile.uid,
+                                        game: pzProfile.game,
+                                        profileName: pzProfile.name
+                                    ),
+                                    nameIDMap: [:]
+                                )
+                                .foregroundStyle(.primary)
+                            }
+                        }
+                    }
+                } header: {
+                    Text("gachaKit.getRecord.quickFetch4GenshinMiyousheUIDs".i18nGachaKit)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .textCase(.none)
+                }
+            }
+        }
+
+        private func refreshPZProfilesInThisView() {
+            let context = PZProfileActor.shared.modelContainer.mainContext
+            let fetched = try? context.fetch(FetchDescriptor<PZProfileMO>())
+            pzProfiles = (fetched ?? []).map(\.asSendable).filter { pzProfile in
+                guard pzProfile.game == .genshinImpact else { return false }
+                switch pzProfile.server.region {
+                case .miyoushe: return true
+                default: return false
+                }
+            }.sorted { $0.uid < $1.uid }
+        }
+
+        private func handleURLString(_ urlString: String) {
+            if urlString.hasPrefix("https://"), urlString.contains("api/getGachaLog") {
+                do {
+                    try completion(urlString)
+                } catch let error as ParseGachaURLError {
+                    self.error = error
+                    self.isErrorAlertVisible.toggle()
+                } catch {
+                    fatalError()
+                }
+            } else {
+                isErrorAlertVisible.toggle()
+            }
+        }
     }
 }
 
