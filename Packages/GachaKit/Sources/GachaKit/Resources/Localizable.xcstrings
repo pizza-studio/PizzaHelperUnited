@@ -1795,6 +1795,34 @@
         }
       }
     },
+    "gachaKit.getRecord.readyStart.forceOverride" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force-override existing entries"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "既存の記録を上書きする"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "覆写既存记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "覆寫既存記錄"
+          }
+        }
+      }
+    },
     "gachaKit.getRecord.readyStart.reinit" : {
       "localizations" : {
         "en" : {

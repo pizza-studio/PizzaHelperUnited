@@ -76,6 +76,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     public var status: Status = .waitingForURL
     public var cachedItems: [PZGachaEntrySendable] = []
     public var gachaTypeDateCounts: [GachaTypeDateCount] = []
+    public var isForceOverrideModeEnabled = true
 
     public private(set) var client: GachaClient<GachaType>?
 
@@ -130,6 +131,17 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
             print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
             return true
         }
+    }
+
+    func removeEntry(uid: String, id: String) throws {
+        let gameStr = GachaType.game.rawValue
+        try mainContext.delete(
+            model: PZGachaEntryMO.self,
+            where: #Predicate {
+                $0.id == id && $0.uid == uid && $0.game == gameStr
+            },
+            includeSubclasses: false
+        )
     }
 
     func checkGPIDExists(uid: String) -> Bool {
@@ -211,7 +223,11 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     }
 
     private func insert(_ gachaItem: PZGachaEntrySendable) async throws {
-        guard !checkIDAndUIDExists(uid: gachaItem.uid, id: gachaItem.id) else { return }
+        if !isForceOverrideModeEnabled {
+            guard !checkIDAndUIDExists(uid: gachaItem.uid, id: gachaItem.id) else { return }
+        } else {
+            try removeEntry(uid: gachaItem.uid, id: gachaItem.id)
+        }
         mainContext.insert(gachaItem.asMO)
         if !checkGPIDExists(uid: gachaItem.uid) {
             let gpid = GachaProfileID(uid: gachaItem.uid, game: GachaType.game)

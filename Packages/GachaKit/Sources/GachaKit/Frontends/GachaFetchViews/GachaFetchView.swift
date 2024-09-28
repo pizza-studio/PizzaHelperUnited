@@ -263,6 +263,13 @@ extension GachaFetchView4Game {
                 } label: {
                     Label("gachaKit.getRecord.readyStart.start".i18nGachaKit, systemSymbol: .playCircle)
                 }
+                @Bindable var gachaFetchVM = gachaFetchVM
+                Toggle(isOn: $gachaFetchVM.isForceOverrideModeEnabled) {
+                    Label(
+                        "gachaKit.getRecord.readyStart.forceOverride".i18nGachaKit,
+                        systemSymbol: .arrowshapeBounceRight
+                    )
+                }
                 if let urlStr = gachaFetchVM.client?.urlString {
                     Button {
                         Clipboard.currentString = urlStr
