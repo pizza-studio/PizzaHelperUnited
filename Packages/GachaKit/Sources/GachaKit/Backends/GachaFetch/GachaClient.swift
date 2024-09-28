@@ -179,15 +179,21 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         default: GachaLanguage.current.rawValue
         }
 
+        let gachaID = switch gachaType.game {
+        case .genshinImpact: "9e72b521e716d347e3027a4f71efc08f1455d4b2"
+        case .starRail: "37ebc087b75657573e19622da856f9c29524ae"
+        case .zenlessZone: "2c1f5692fdfbb733a08733f9eb69d32aed1d37"
+        }
+
         components.queryItems = [
             .init(name: "authkey_ver", value: basicParam.authenticationKeyVersion),
             .init(name: "sign_type", value: basicParam.signType),
             .init(name: "auth_appid", value: "webview_gacha"),
             .init(name: "win_mode", value: "fullscreen"),
-            .init(name: "gacha_id", value: "37ebc087b75657573e19622da856f9c29524ae"),
+            .init(name: "gacha_id", value: gachaID),
             .init(name: "timestamp", value: "\(Int(Date().timeIntervalSince1970))"),
             .init(name: "region", value: basicParam.server.rawValue),
-            .init(name: "default_gacha_type", value: "11"),
+            .init(name: "default_gacha_type", value: GachaType.knownCases[0].rawValue),
             .init(name: "lang", value: langRawValue),
             .init(name: "game_biz", value: basicParam.server.region.rawValue),
             .init(name: "os_system", value: "iOS 16.6"),
@@ -196,6 +202,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
             .init(name: "page", value: "\(page)"),
             .init(name: "size", value: "\(size)"),
             .init(name: "gacha_type", value: gachaType.rawValue),
+            .init(name: "real_gacha_type", value: gachaType.rawValue),
             .init(name: "end_id", value: endID),
         ]
         let authKeyRaw = basicParam.authenticationKey
