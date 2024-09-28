@@ -201,8 +201,8 @@ extension HoYo {
         }
         urlComponents.path = "/gacha_info/api/getGachaLog"
         let gameVersion = switch server.region {
-        case .miyoushe: "CNRELiOS3.5.0_R13695448_S13586568_D13718257"
-        case .hoyoLab: "OSRELWin3.5.0_R13695448_S13586568_D13948595"
+        case .miyoushe: "CNRELWin5.0.0_R26885261_S27370672_D27173400"
+        case .hoyoLab: "OSRELWin5.0.0_R26458901_S26368837_D26487341"
         }
 
         urlComponents.queryItems = [
