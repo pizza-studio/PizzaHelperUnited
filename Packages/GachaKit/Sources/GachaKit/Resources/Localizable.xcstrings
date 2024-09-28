@@ -1767,7 +1767,35 @@
         }
       }
     },
-    "gachaKit.getRecord.readyStart.fire" : {
+    "gachaKit.getRecord.readyStart.copyThisURL" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy this URL to clipboard"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この URL をクリップボードに書き込む"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将该 URL 复制到剪贴板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將該 URL 複製到剪貼簿"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.readyStart.reinit" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {

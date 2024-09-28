@@ -59,7 +59,8 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                         gachaVM4Fetch.load(urlString: urlString)
                     }
                 case let .readyToFire(start: start, reinit: initialize):
-                    WaitingForStartView(start: start, fireTask: initialize)
+                    ReadyToFireView(start: start, reinit: initialize)
+                        .environment(gachaVM4Fetch)
                 case let .inProgress(cancel: cancel):
                     InProgressView(cancel: cancel)
                 case let .got(page: page, gachaType: gachaType, newItemCount: newItemCount, cancel: cancel):
@@ -70,7 +71,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                             gachaRootVM.updateMappedEntriesByPools()
                         }
                 case let .finished(typeFetchedCount: typeFetchedCount, initialize: initialize):
-                    FinishedView(typeFetchedCount: typeFetchedCount, fireTask: initialize)
+                    FinishedView(typeFetchedCount: typeFetchedCount, reinit: initialize)
                         .onAppear {
                             gachaRootVM.updateMappedEntriesByPools()
                         }
@@ -236,36 +237,48 @@ extension GachaFetchView4Game {
     }
 }
 
-// MARK: GachaFetchView4Game.WaitingForStartView
+// MARK: GachaFetchView4Game.ReadyToFireView
 
 extension GachaFetchView4Game {
-    private struct WaitingForStartView: View {
+    private struct ReadyToFireView: View {
         // MARK: Lifecycle
 
-        init(start: @escaping () -> Void, fireTask: @escaping () -> Void) {
+        init(start: @escaping () -> Void, reinit: @escaping () -> Void) {
             self.start = start
-            self.fireTask = fireTask
+            self.reinit = reinit
         }
 
         // MARK: Internal
 
         @MainActor var body: some View {
-            Button {
-                start()
-            } label: {
-                Label("gachaKit.getRecord.readyStart.start".i18nGachaKit, systemSymbol: .playCircle)
+            Section {
+                Button {
+                    start()
+                } label: {
+                    Label("gachaKit.getRecord.readyStart.start".i18nGachaKit, systemSymbol: .playCircle)
+                }
+                if let urlStr = gachaFetchVM.client?.urlString {
+                    Button {
+                        Clipboard.currentString = urlStr
+                    } label: {
+                        Label("gachaKit.getRecord.readyStart.copyThisURL".i18nGachaKit, systemSymbol: .docOnClipboard)
+                    }
+                }
             }
-            Button {
-                fireTask()
-            } label: {
-                Label("gachaKit.getRecord.readyStart.fire".i18nGachaKit, systemSymbol: .arrowClockwiseCircle)
+            Section {
+                Button {
+                    reinit()
+                } label: {
+                    Label("gachaKit.getRecord.readyStart.reinit".i18nGachaKit, systemSymbol: .arrowClockwiseCircle)
+                }
             }
         }
 
         // MARK: Private
 
         private let start: () -> Void
-        private let fireTask: () -> Void
+        private let reinit: () -> Void
+        @Environment(VMType.self) private var gachaFetchVM
     }
 }
 
@@ -396,9 +409,9 @@ extension GachaFetchView4Game {
     private struct FinishedView: View {
         // MARK: Lifecycle
 
-        init(typeFetchedCount: [GachaType: Int], fireTask: @escaping () -> Void) {
+        init(typeFetchedCount: [GachaType: Int], reinit: @escaping () -> Void) {
             self.typeFetchedCount = typeFetchedCount
-            self.fireTask = fireTask
+            self.reinit = reinit
         }
 
         // MARK: Internal
@@ -412,7 +425,7 @@ extension GachaFetchView4Game {
                         .foregroundColor(.green)
                 }
                 Button {
-                    fireTask()
+                    reinit()
                 } label: {
                     Label("gachaKit.getRecord.finished.initialize".i18nGachaKit, systemSymbol: .arrowClockwiseCircle)
                 }
@@ -435,7 +448,7 @@ extension GachaFetchView4Game {
         // MARK: Private
 
         private let typeFetchedCount: [GachaType: Int]
-        private let fireTask: () -> Void
+        private let reinit: () -> Void
 
         private var newRecordCount: String {
             let sortedTypeFechedCount = typeFetchedCount.sorted { $0.key.rawValue < $1.key.rawValue }

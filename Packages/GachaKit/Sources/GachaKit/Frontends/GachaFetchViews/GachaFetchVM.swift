@@ -77,6 +77,8 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     public var cachedItems: [PZGachaEntrySendable] = []
     public var gachaTypeDateCounts: [GachaTypeDateCount] = []
 
+    public private(set) var client: GachaClient<GachaType>?
+
     // MARK: Internal
 
     func load(urlString: String) {
@@ -152,7 +154,6 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
 
     // MARK: Private
 
-    private var client: GachaClient<GachaType>?
     private var task: Task<Void, Never>?
 
     private var mainContext: ModelContext {
