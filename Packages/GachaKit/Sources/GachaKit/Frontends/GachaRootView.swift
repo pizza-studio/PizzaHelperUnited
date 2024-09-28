@@ -44,6 +44,7 @@ public struct GachaRootView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     GachaExportToolbarButton(gpid: theVM.currentGPID)?
                         .environment(theVM)
+                        .disabled(theVM.taskState == .busy)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Menu {
