@@ -2327,6 +2327,202 @@
         }
       }
     },
+    "gachaKit.ParseGachaURLError.invalidServer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Server invalid."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] サーバー情報は使えぬ。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 服务器资料值不合理。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 伺服器資料值不合理。"
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.invalidURL" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] URL invalid."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 該当URLは使えぬ。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] URL 不合理。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] URL 不合理。"
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.noAuthenticationKey" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Authentication key missing."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 認証用「key」が欠如。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 认证用密钥缺失。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 認證用密鑰缺失。"
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.noAuthenticationKeyVersion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] The version intel of `key` is missing in the authentication key."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 認証用「key」のバージョンが不明。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 认证用密钥版本资讯缺失。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 認證用密鑰版本資訊缺失。"
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.noServer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Server intel missing."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] サーバー情報欠如。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 服务器资讯缺失。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 伺服器資訊缺失。"
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.noSignType" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Sign type missing."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Signのタイプ情報が欠如。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Sign 类型资讯缺失。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Sign 類型資訊缺失。"
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.urlGenerationFailure" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Failed from generating gacha URL."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] ガチャ記録専用URL、作成失敗。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 没能成功生成抽卡 URL。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] 沒能成功生成抽卡 URL。"
+          }
+        }
+      }
+    },
     "gachaKit.poolFilterLabel.byGame.GI" : {
       "localizations" : {
         "en" : {
