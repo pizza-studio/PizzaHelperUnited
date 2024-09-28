@@ -49,7 +49,7 @@ struct TestAccountSectionView: View {
         withAnimation {
             status = .testing
         }
-        let profileSendable = profile.makeSendable()
+        let profileSendable = profile.asSendable
         Task {
             do {
                 _ = try await profileSendable.getDailyNote()

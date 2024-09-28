@@ -84,7 +84,7 @@ extension DetailPortalViewModel {
         if case let .progress(task) = taskStatus4CharInventory { task.cancel() }
         let task = Task {
             do {
-                guard let profile = self.currentProfile?.makeSendable(),
+                guard let profile = self.currentProfile?.asSendable,
                       let queryResult = try await HoYo.getCharacterInventory(for: profile)
                 else { return }
                 Task.detached { @MainActor in
@@ -112,7 +112,7 @@ extension DetailPortalViewModel {
         if case let .progress(task) = taskStatus4Ledger { task.cancel() }
         let task = Task {
             do {
-                guard let profile = self.currentProfile?.makeSendable(),
+                guard let profile = self.currentProfile?.asSendable,
                       let queryResult = try await HoYo.getLedgerData(for: profile)
                 else { return }
                 Task.detached { @MainActor in
@@ -140,7 +140,7 @@ extension DetailPortalViewModel {
         if case let .progress(task) = taskStatus4TravelStats { task.cancel() }
         let task = Task {
             do {
-                guard let profile = self.currentProfile?.makeSendable(),
+                guard let profile = self.currentProfile?.asSendable,
                       let queryResult = try await HoYo.getTravelStatsData(for: profile)
                 else { return }
                 Task.detached { @MainActor in
@@ -168,7 +168,7 @@ extension DetailPortalViewModel {
         if case let .progress(task) = taskStatus4AbyssReport { task.cancel() }
         let task = Task {
             do {
-                guard let profile = self.currentProfile?.makeSendable(),
+                guard let profile = self.currentProfile?.asSendable,
                       let queryResult = try await HoYo.getAbyssReportSet(for: profile)
                 else { return }
                 Task.detached { @MainActor in
@@ -197,7 +197,7 @@ extension DetailPortalViewModel {
     func commitAbyssCollectionData() async {
         guard AbyssCollector.isCommissionPermittedByUser else { return }
         Task(priority: .background) { @MainActor in
-            guard let profile = currentProfile?.makeSendable() else { return }
+            guard let profile = currentProfile?.asSendable else { return }
             guard profile.game == .genshinImpact else { return }
             if case let .progress(task) = taskStatus4TravelStats {
                 await task.value
