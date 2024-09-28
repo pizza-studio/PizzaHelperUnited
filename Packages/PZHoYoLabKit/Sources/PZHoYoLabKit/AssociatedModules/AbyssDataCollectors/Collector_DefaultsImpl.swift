@@ -17,6 +17,11 @@ extension Defaults.Keys {
         default: false,
         suite: .baseSuite
     )
+    public static let askedIfAllowAbyssDataCollection = Key<Bool>(
+        "askedIfAllowAbyssDataCollection",
+        default: false,
+        suite: .baseSuite
+    )
     public static let hasUploadedAvatarHoldingDataMD5 = Key<[String]>(
         "hasUploadedAvatarHoldingDataMD5",
         default: .init(),
