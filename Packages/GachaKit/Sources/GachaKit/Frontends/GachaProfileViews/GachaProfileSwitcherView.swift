@@ -58,7 +58,7 @@ public struct GachaProfileSwitcherView: View {
             .compositingGroup()
         } label: {
             if let profile = theVM.currentGPID {
-                Text(profile.uidWithGame).monospacedDigit()
+                Text(profile.uidWithGame).fontWidth(.condensed)
             } else {
                 Text("gachaKit.gachaProfileMenu.chooseProfile".i18nGachaKit)
             }
