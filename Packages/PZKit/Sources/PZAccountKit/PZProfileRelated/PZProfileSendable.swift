@@ -25,7 +25,7 @@ public struct PZProfileSendable: Sendable {
 }
 
 extension PZProfileMO {
-    public func makeSendable() -> PZProfileSendable {
+    public var asSendable: PZProfileSendable {
         .init(
             game: game,
             server: server,

@@ -26,6 +26,6 @@ extension PZProfileSendable {
 
 extension PZProfileMO {
     public func getDailyNote() async throws -> DailyNoteProtocol {
-        try await makeSendable().getDailyNote()
+        try await asSendable.getDailyNote()
     }
 }

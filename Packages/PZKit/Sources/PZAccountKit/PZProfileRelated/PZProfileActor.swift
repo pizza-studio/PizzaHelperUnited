@@ -98,4 +98,8 @@ extension PZProfileActor {
         }
         try context.save()
     }
+
+    public func getSendableProfiles() -> [PZProfileSendable] {
+        (try? modelContext.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
+    }
 }
