@@ -12,6 +12,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
 
     public init(gachaURLString: String) throws(ParseGachaURLError) {
         self.authentication = try Self.parseGachaURL(by: gachaURLString)
+        self.urlString = gachaURLString
     }
 
     // MARK: Public
@@ -51,6 +52,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
     }
 
     public var pagination: Pagination = .init()
+    public var urlString: String
 
     public func makeAsyncIterator() -> Self { self }
 
