@@ -162,7 +162,7 @@ extension GachaFetchView4Game {
         @State private var urlAwaitVM = URLAwaitVM()
 
         @MainActor @ViewBuilder private var genshinPZProfileList: some View {
-            if !pzProfiles.isEmpty {
+            if GachaType.game == .genshinImpact, !pzProfiles.isEmpty {
                 Section {
                     ForEach(pzProfiles, id: \.uid) { pzProfile in
                         Button {
