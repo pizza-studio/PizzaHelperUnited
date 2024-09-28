@@ -23,6 +23,7 @@ public enum GachaError: Error, Sendable {
 // MARK: - ParseGachaURLError
 
 public enum ParseGachaURLError: String, Error, LocalizedError {
+    case urlGenerationFailure
     case invalidURL
     case noAuthenticationKey
     case noAuthenticationKeyVersion

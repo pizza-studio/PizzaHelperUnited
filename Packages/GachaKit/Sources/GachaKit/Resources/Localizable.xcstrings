@@ -1739,6 +1739,34 @@
         }
       }
     },
+    "gachaKit.getRecord.quickFetch4GenshinMiyousheUIDs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "or tap an account to fetch (Miyoushe Genshin UIDs only):"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あるいは下記のいずれの（米遊社の原神UIDのみ）アカウントをタップして直接取得："
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "或点击下述米游社原神 UID 直接获取记录:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "或點擊下述米遊社原神 UID 直接獲取記錄:"
+          }
+        }
+      }
+    },
     "gachaKit.getRecord.readyStart.fire" : {
       "localizations" : {
         "en" : {
