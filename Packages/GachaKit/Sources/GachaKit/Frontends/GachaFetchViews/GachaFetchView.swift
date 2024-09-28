@@ -30,10 +30,10 @@ public struct GachaFetchView: View {
         .environment(gachaRootVM)
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    fileprivate let game: Pizza.SupportedGame
-    @Environment(GachaVM.self) fileprivate var gachaRootVM
+    private let game: Pizza.SupportedGame
+    @Environment(GachaVM.self) private var gachaRootVM
 }
 
 // MARK: - GachaFetchView4Game
@@ -41,13 +41,13 @@ public struct GachaFetchView: View {
 private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
     // MARK: Lifecycle
 
-    public init() {}
+    init() {}
 
-    // MARK: Public
+    // MARK: Internal
 
-    public typealias VMType = GachaFetchVM<GachaType>
+    typealias VMType = GachaFetchVM<GachaType>
 
-    @MainActor public var body: some View {
+    @MainActor var body: some View {
         NavigationStack {
             Form {
                 switch gachaVM4Fetch.status {
@@ -100,25 +100,25 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @State fileprivate var gachaVM4Fetch: VMType = .init()
-    @Environment(GachaVM.self) fileprivate var gachaRootVM
+    @State private var gachaVM4Fetch: VMType = .init()
+    @Environment(GachaVM.self) private var gachaRootVM
 }
 
 // MARK: GachaFetchView4Game.WaitingForURLView
 
 extension GachaFetchView4Game {
-    fileprivate struct WaitingForURLView: View {
+    private struct WaitingForURLView: View {
         // MARK: Lifecycle
 
-        public init(completion: @escaping (String) -> Void) {
+        init(completion: @escaping (String) -> Void) {
             self.completion = completion
         }
 
-        // MARK: Public
+        // MARK: Internal
 
-        @MainActor public var body: some View {
+        @MainActor var body: some View {
             Section {
                 Button {
                     let urlString = Clipboard.currentString
@@ -147,29 +147,29 @@ extension GachaFetchView4Game {
             }
         }
 
-        // MARK: Fileprivate
+        // MARK: Private
 
-        fileprivate let completion: (String) throws -> Void
-        @State fileprivate var error: ParseGachaURLError?
-        @State fileprivate var isErrorAlertVisible: Bool = false
-        @State fileprivate var isPasteBoardNoDataAlertVisible: Bool = false
+        private let completion: (String) throws -> Void
+        @State private var error: ParseGachaURLError?
+        @State private var isErrorAlertVisible: Bool = false
+        @State private var isPasteBoardNoDataAlertVisible: Bool = false
     }
 }
 
 // MARK: GachaFetchView4Game.WaitingForStartView
 
 extension GachaFetchView4Game {
-    fileprivate struct WaitingForStartView: View {
+    private struct WaitingForStartView: View {
         // MARK: Lifecycle
 
-        public init(start: @escaping () -> Void, fireTask: @escaping () -> Void) {
+        init(start: @escaping () -> Void, fireTask: @escaping () -> Void) {
             self.start = start
             self.fireTask = fireTask
         }
 
-        // MARK: Public
+        // MARK: Internal
 
-        @MainActor public var body: some View {
+        @MainActor var body: some View {
             Button {
                 start()
             } label: {
@@ -182,26 +182,26 @@ extension GachaFetchView4Game {
             }
         }
 
-        // MARK: Fileprivate
+        // MARK: Private
 
-        fileprivate let start: () -> Void
-        fileprivate let fireTask: () -> Void
+        private let start: () -> Void
+        private let fireTask: () -> Void
     }
 }
 
 // MARK: GachaFetchView4Game.InProgressView
 
 extension GachaFetchView4Game {
-    fileprivate struct InProgressView: View {
+    private struct InProgressView: View {
         // MARK: Lifecycle
 
-        public init(cancel: @escaping () -> Void) {
+        init(cancel: @escaping () -> Void) {
             self.cancel = cancel
         }
 
-        // MARK: Public
+        // MARK: Internal
 
-        @MainActor public var body: some View {
+        @MainActor var body: some View {
             Section {
                 Label {
                     Text("gachaKit.getRecord.inProgress.obtaining".i18nGachaKit)
@@ -216,19 +216,19 @@ extension GachaFetchView4Game {
             }
         }
 
-        // MARK: Fileprivate
+        // MARK: Private
 
-        fileprivate let cancel: () -> Void
+        private let cancel: () -> Void
     }
 }
 
 // MARK: GachaFetchView4Game.GotSomeItemView
 
 extension GachaFetchView4Game {
-    fileprivate struct GotSomeItemView: View {
+    private struct GotSomeItemView: View {
         // MARK: Lifecycle
 
-        public init(page: Int, gachaType: GachaType, newItemCount: Int, cancel: @escaping () -> Void) {
+        init(page: Int, gachaType: GachaType, newItemCount: Int, cancel: @escaping () -> Void) {
             self.page = page
             self.gachaType = gachaType
             self.poolType = gachaType.expressible
@@ -236,9 +236,9 @@ extension GachaFetchView4Game {
             self.cancel = cancel
         }
 
-        // MARK: Public
+        // MARK: Internal
 
-        @MainActor public var body: some View {
+        @MainActor var body: some View {
             Section {
                 Label {
                     Text("gachaKit.getRecord.gotSome.obtaining".i18nGachaKit)
@@ -262,32 +262,32 @@ extension GachaFetchView4Game {
             }
         }
 
-        // MARK: Fileprivate
+        // MARK: Private
 
-        fileprivate let page: Int
-        fileprivate let gachaType: GachaType
-        fileprivate let poolType: GachaPoolExpressible
-        fileprivate let newItemCount: Int
-        fileprivate let cancel: () -> Void
+        private let page: Int
+        private let gachaType: GachaType
+        private let poolType: GachaPoolExpressible
+        private let newItemCount: Int
+        private let cancel: () -> Void
     }
 }
 
 // MARK: GachaFetchView4Game.FailFetchingView
 
 extension GachaFetchView4Game {
-    fileprivate struct FailFetchingView: View {
+    private struct FailFetchingView: View {
         // MARK: Lifecycle
 
-        public init(page: Int, gachaType: GachaType, error: Error, retry: @escaping () -> Void) {
+        init(page: Int, gachaType: GachaType, error: Error, retry: @escaping () -> Void) {
             self.page = page
             self.gachaType = gachaType
             self.error = error
             self.retry = retry
         }
 
-        // MARK: Public
+        // MARK: Internal
 
-        @MainActor public var body: some View {
+        @MainActor var body: some View {
             Label {
                 Text(verbatim: "\(error)")
             } icon: {
@@ -301,29 +301,29 @@ extension GachaFetchView4Game {
             }
         }
 
-        // MARK: Fileprivate
+        // MARK: Private
 
-        fileprivate let page: Int
-        fileprivate let gachaType: GachaType
-        fileprivate let error: Error
-        fileprivate let retry: () -> Void
+        private let page: Int
+        private let gachaType: GachaType
+        private let error: Error
+        private let retry: () -> Void
     }
 }
 
 // MARK: GachaFetchView4Game.FinishedView
 
 extension GachaFetchView4Game {
-    fileprivate struct FinishedView: View {
+    private struct FinishedView: View {
         // MARK: Lifecycle
 
-        public init(typeFetchedCount: [GachaType: Int], fireTask: @escaping () -> Void) {
+        init(typeFetchedCount: [GachaType: Int], fireTask: @escaping () -> Void) {
             self.typeFetchedCount = typeFetchedCount
             self.fireTask = fireTask
         }
 
-        // MARK: Public
+        // MARK: Internal
 
-        @MainActor public var body: some View {
+        @MainActor var body: some View {
             Section {
                 Label {
                     Text("gachaKit.getRecord.finished.succeeded".i18nGachaKit)
@@ -352,12 +352,12 @@ extension GachaFetchView4Game {
             }
         }
 
-        // MARK: Fileprivate
+        // MARK: Private
 
-        fileprivate let typeFetchedCount: [GachaType: Int]
-        fileprivate let fireTask: () -> Void
+        private let typeFetchedCount: [GachaType: Int]
+        private let fireTask: () -> Void
 
-        fileprivate var newRecordCount: String {
+        private var newRecordCount: String {
             let sortedTypeFechedCount = typeFetchedCount.sorted { $0.key.rawValue < $1.key.rawValue }
             return sortedTypeFechedCount.map { gachaType, count in
                 "\(gachaType.description) - \(count); "
@@ -369,12 +369,12 @@ extension GachaFetchView4Game {
 // MARK: GachaFetchView4Game.GetGachaChart
 
 extension GachaFetchView4Game {
-    fileprivate struct GetGachaChart: View {
-        // MARK: Public
+    private struct GetGachaChart: View {
+        // MARK: Internal
 
-        @Binding public var data: [VMType.GachaTypeDateCount]
+        @Binding var data: [VMType.GachaTypeDateCount]
 
-        @MainActor public var body: some View {
+        @MainActor var body: some View {
             Chart(data) {
                 LineMark(
                     x: .value("gachaKit.getRecord.chart.date".i18nGachaKit, $0.date),
@@ -392,9 +392,9 @@ extension GachaFetchView4Game {
             // NOTE: 上文 `chartForegroundStyleScale` 能接收的 KeyValuePairs 无法动态合成。
         }
 
-        // MARK: Fileprivate
+        // MARK: Private
 
-        fileprivate var colorMap: KeyValuePairs<String, Color> {
+        private var colorMap: KeyValuePairs<String, Color> {
             switch GachaType.game {
             case .genshinImpact: [
                     GachaPoolExpressible.giCharacterEventWish.localizedTitle: .blue,
