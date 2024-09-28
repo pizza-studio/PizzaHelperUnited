@@ -56,7 +56,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                 switch gachaVM4Fetch.status {
                 case .waitingForURL:
                     WaitingForURLView { urlString in
-                        gachaVM4Fetch.load(urlString: urlString)
+                        try gachaVM4Fetch.load(urlString: urlString)
                     }
                 case let .readyToFire(start: start, reinit: initialize):
                     ReadyToFireView(start: start, reinit: initialize)
@@ -116,7 +116,7 @@ extension GachaFetchView4Game {
     private struct WaitingForURLView: View {
         // MARK: Lifecycle
 
-        init(completion: @escaping (String) -> Void) {
+        init(completion: @escaping (String) throws -> Void) {
             self.completion = completion
         }
 
@@ -219,18 +219,13 @@ extension GachaFetchView4Game {
         }
 
         private func handleURLString(_ urlString: String) {
-            if urlString.hasPrefix("https://"), urlString.contains("api/getGachaLog") {
-                do {
-                    try completion(urlString)
-                } catch let error as ParseGachaURLError {
-                    self.error = error
-                    self.isErrorAlertVisible.toggle()
-                } catch {
-                    fatalError()
-                }
-            } else {
-                error = .invalidURL
-                isErrorAlertVisible.toggle()
+            do {
+                try completion(urlString)
+            } catch let error as ParseGachaURLError {
+                self.error = error
+                self.isErrorAlertVisible.toggle()
+            } catch {
+                fatalError()
             }
         }
 

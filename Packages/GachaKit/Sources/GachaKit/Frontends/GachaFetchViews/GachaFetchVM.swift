@@ -81,12 +81,8 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
 
     // MARK: Internal
 
-    func load(urlString: String) {
-        do {
-            client = try .init(gachaURLString: urlString)
-        } catch {
-            setFailFetching(page: 0, gachaType: .knownCases[0], error: error)
-        }
+    func load(urlString: String) throws {
+        client = try .init(gachaURLString: urlString)
         setPending()
     }
 
