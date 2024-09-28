@@ -166,15 +166,19 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     }
 
     private func setFailFetching(page: Int, gachaType: GachaType, error: Error) {
-        withAnimation {
-            self.status = .failFetching(
-                page: page,
-                gachaType: gachaType,
-                error: error,
-                retry: {
-                    self.initialize()
-                }
-            )
+        if let task, task.isCancelled {
+            setFinished()
+        } else {
+            withAnimation {
+                self.status = .failFetching(
+                    page: page,
+                    gachaType: gachaType,
+                    error: error,
+                    retry: {
+                        self.initialize()
+                    }
+                )
+            }
         }
     }
 
