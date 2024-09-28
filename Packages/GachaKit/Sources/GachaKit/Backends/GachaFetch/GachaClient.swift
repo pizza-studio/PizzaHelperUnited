@@ -95,7 +95,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
                     page: pagination.page + 1,
                     size: pagination.size,
                     endID: endResult.id,
-                    gachaType: .init(rawValue: endResult.gachaType)
+                    gachaType: pagination.gachaType
                 )
             } else if let nextGachaType = pagination.gachaType.next() {
                 pagination = .init(gachaType: nextGachaType)
