@@ -34,6 +34,7 @@ struct DetailPortalTabPage: View {
             .navigationTitle("tab.details.fullTitle".i18nPZHelper)
             .apply(hookNavigationDestinations)
             .apply(hookToolbar)
+            .apply(hookAlert4AbyssCollectionUserConscent)
             .onAppear {
                 if let profile = delegate.currentProfile, !profiles.contains(profile) {
                     delegate.currentProfile = nil
@@ -192,6 +193,30 @@ struct DetailPortalTabPage: View {
         }
     }
 
+    @MainActor @ViewBuilder
+    func hookAlert4AbyssCollectionUserConscent(_ content: some View) -> some View {
+        if delegate.currentProfile != nil {
+            content
+                .alert(
+                    "settings.privacy.abyssDataCollect".i18nPZHelper,
+                    isPresented: isAbyssDataCollectionConscentAlertVisible
+                ) {
+                    Button("sys.yes".i18nBaseKit) {
+                        Defaults[.allowAbyssDataCollection] = true
+                        askedIfAllowAbyssDataCollection = false
+                    }
+                    Button("sys.no".i18nBaseKit) {
+                        Defaults[.allowAbyssDataCollection] = false
+                        askedIfAllowAbyssDataCollection = false
+                    }
+                } message: {
+                    Text("settings.privacy.abyssDataCollect.detail".i18nPZHelper)
+                }
+        } else {
+            content
+        }
+    }
+
     // MARK: Private
 
     @State private var sharedDB: Enka.Sputnik = .shared
@@ -202,6 +227,14 @@ struct DetailPortalTabPage: View {
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
     @Default(.queriedEnkaProfiles4GI) private var profiles4GI
     @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
+    @Default(.askedIfAllowAbyssDataCollection) private var askedIfAllowAbyssDataCollection: Bool
+
+    private var isAbyssDataCollectionConscentAlertVisible: Binding<Bool> {
+        .init(
+            get: { !askedIfAllowAbyssDataCollection },
+            set: { askedIfAllowAbyssDataCollection = !$0 }
+        )
+    }
 
     private var sortedProfiles: [PZProfileMO] {
         profiles.sorted { $0.priority < $1.priority }
