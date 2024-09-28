@@ -23,4 +23,28 @@
         - 该行为函式自然是得设定成可复写的，或者设计成在接入 Asset SPM 的情况下自动以 Protocol 的方式优先请求本地素材。
     - DailyNote 的角色肖像素材、以及玩家游戏进度统计画面的图示素材……这些内容是直接从米游社伺服器载入的，不属于 Asset SPM 的管辖范围。
 
+统一介绍一下本专案的所有 SPM 组件：
+
+- 最基层：PZKit，内含：
+    - PZBaseKit，最最基层的包，包含了 Foundation 扩展、OS 扩展、UserDefaults Keys 等。
+    - PZAccountKit：依赖 PZBaseKit 但包含下述内容。
+        - 本地帐号 SwiftData MO 与 DataActor 以及相关的衍生内容。
+        - HoYoLAB / Miyoushe API 的共用部分。某些与 Watch 和 Widget 无关的内容不在这个包内。
+- 共用扩展 Kit（全平台），会成为其他进阶扩展包的依赖项：
+    - WallpaperKit：画廊包，定义了 App 的视图背景、Widget 背景、LiveActivity 背景。
+- 共用扩展 Kit（iOS & macOS 限定，无法用于 iOS），会成为其他包的依赖项：
+    - EnkaKit：与 Enka Networks 展柜支持有关的包，但也负责了 iOS & macOS 平台的所有角色肖像显示。
+- 进阶扩展 Kit（iOS & macOS 限定，无法用于 iOS）：
+    - AbyssRankKit：原神深渊榜单，仅用来获取和显示深渊榜单内容资料。
+    - GachaKit：抽卡记录管理模组（依赖 SwiftData），功能如下：
+        - 完整的 UIGFv4 / SRGF / GIGF 抽卡记录导入支持、以及前两者的导出支持。
+        - 线上抓取抽卡记录，需要用户自备抽卡 URL。
+        - 借由 iCloud 从旧版披萨助手继承抽卡记录。
+    - GITodayMaterialsKit：原神每日材料。
+    - PZDictionaryKit：披萨辞典。
+    - PZHoYoLabKit：深渊战报、原石摩拉星琼车票帐簿、角色库存清单视图、胡桃深渊战报上传、旅行开拓统计。
+- App Package：
+    - PZHelper：iOS & macOS 版主程式包。
+    - PZHelper-Watch：目前是空包，暂时预留着计划用来承载 Apple Watch 版统一披萨助手的主程式内容。对 WallpaperKit、PZKit (PZBaseKit + PZAccountKit) 有依赖。
+
 $ EOF.
