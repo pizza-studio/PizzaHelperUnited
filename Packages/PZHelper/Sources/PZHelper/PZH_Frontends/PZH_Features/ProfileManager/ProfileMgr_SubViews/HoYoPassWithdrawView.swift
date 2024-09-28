@@ -65,11 +65,11 @@ struct HoYoPassWithdrawView: View {
             Section {
                 if Self.isMiyousheInstalled {
                     Link(destination: URL(string: Self.miyousheHeader + "me")!) {
-                        Text("profileMgr.qr_code_login.open_miyoushe".i18nPZHelper)
+                        Text("profileMgr.account.qr_code_login.open_miyoushe".i18nPZHelper)
                     }
                 } else {
                     Link(destination: URL(string: Self.miyousheStorePage)!) {
-                        Text("profileMgr.qr_code_login.open_miyoushe_mas_page".i18nPZHelper)
+                        Text("profileMgr.account.qr_code_login.open_miyoushe_mas_page".i18nPZHelper)
                     }
                 }
                 NavigationLink {
