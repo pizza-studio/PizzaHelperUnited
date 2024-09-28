@@ -93,7 +93,7 @@ extension GachaExchangeView {
             gpid.photoView.frame(width: 35, height: 35)
             HStack {
                 Group {
-                    if let name = nameIDMap[gpid.uidWithGame] {
+                    if let name = nameIDMap[gpid.uidWithGame] ?? gpid.profileName {
                         VStack(alignment: .leading) {
                             Text(name)
                                 .fontWeight(.medium)
