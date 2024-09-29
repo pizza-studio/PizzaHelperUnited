@@ -51,6 +51,35 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.deviceID = ThisDevice.identifier4Vendor.description
     }
 
+    /// Non-public.
+    init(
+        game: Pizza.SupportedGame,
+        server: HoYo.Server,
+        uid: String,
+        uuid: UUID,
+        allowNotification: Bool,
+        cookie: String,
+        deviceFingerPrint: String,
+        name: String,
+        priority: Int,
+        serverRawValue: String,
+        sTokenV2: String?,
+        deviceID: String
+    ) {
+        self.game = game
+        self.server = server
+        self.uid = uid
+        self.uuid = uuid
+        self.allowNotification = allowNotification
+        self.cookie = cookie
+        self.deviceFingerPrint = deviceFingerPrint
+        self.name = name
+        self.priority = priority
+        self.serverRawValue = serverRawValue
+        self.sTokenV2 = sTokenV2
+        self.deviceID = deviceID
+    }
+
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.deviceID = UUID().uuidString

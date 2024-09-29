@@ -102,4 +102,13 @@ extension PZProfileActor {
     public func getSendableProfiles() -> [PZProfileSendable] {
         (try? modelContext.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
     }
+
+    public func migrateOldAccountMatchingUUID(_ uuid: String) async throws {
+        let profiles = getSendableProfiles()
+        let firstMatched = profiles.first { $0.uuid.uuidString == uuid }
+        guard firstMatched == nil else { return }
+        guard let newProfile = try? await AccountMOSputnik.shared.queryAccountDataMO(uuid: uuid) else { return }
+        modelContext.insert(newProfile.asMO)
+        try modelContext.save()
+    }
 }
