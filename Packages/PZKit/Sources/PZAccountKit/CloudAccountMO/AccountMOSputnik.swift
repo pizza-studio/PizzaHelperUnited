@@ -28,6 +28,36 @@ public final class AccountMOSputnik {
 
     public static let shared = try! AccountMOSputnik(persistence: .cloud, backgroundContext: false)
 
+    public func queryAccountDataMO(uuid givenUUID: String) throws -> PZProfileSendable? {
+        var result: [(AccountMOProtocol, Pizza.SupportedGame)] = []
+        try Pizza.SupportedGame.allCases.forEach { game in
+            try theDB(for: game)?.perform { ctx in
+                switch game {
+                case .genshinImpact:
+                    try ctx.fetch(AccountMO4GI.all).forEach {
+                        let decoded = try $0.decode()
+                        if decoded.uuid.uuidString == givenUUID {
+                            result.append((decoded, .genshinImpact))
+                        }
+                    }
+                case .starRail:
+                    try ctx.fetch(AccountMO4HSR.all).forEach {
+                        let decoded = try $0.decode()
+                        if decoded.uuid.uuidString == givenUUID {
+                            result.append((decoded, .starRail))
+                        }
+                    }
+                case .zenlessZone: return
+                }
+            }
+        }
+        guard let firstResult = result.first else { return nil }
+        let game = firstResult.1
+        let oldProfileMO = firstResult.0
+        let newMO = PZProfileMO(game: game, uid: oldProfileMO.uid, configuration: oldProfileMO)
+        return newMO?.asSendable
+    }
+
     public func allAccountDataMO(for game: Pizza.SupportedGame) throws -> [AccountMOProtocol] {
         try theDB(for: game)?.perform { ctx in
             switch game {
