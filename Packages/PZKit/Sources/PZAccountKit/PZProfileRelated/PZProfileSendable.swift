@@ -42,3 +42,22 @@ extension PZProfileMO {
         )
     }
 }
+
+extension PZProfileSendable {
+    public var asMO: PZProfileMO {
+        .init(
+            game: game,
+            server: server,
+            uid: uid,
+            uuid: uuid,
+            allowNotification: allowNotification,
+            cookie: cookie,
+            deviceFingerPrint: deviceFingerPrint,
+            name: name,
+            priority: priority,
+            serverRawValue: serverRawValue,
+            sTokenV2: sTokenV2,
+            deviceID: deviceID
+        )
+    }
+}
