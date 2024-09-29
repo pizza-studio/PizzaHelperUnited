@@ -225,6 +225,7 @@ extension ProfileManagerPageContent {
                         unsavedFP: $profile.deviceFingerPrint,
                         deviceID: $profile.deviceID,
                         region: $region,
+                        game: game,
                         importAllUIDs: $importAllUIDs
                     )
                 } header: {
@@ -278,6 +279,16 @@ extension ProfileManagerPageContent {
         @Environment(\.modelContext) private var modelContext
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
         @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
+
+        private var game: Binding<Pizza.SupportedGame> {
+            .init(
+                get: { profile.server.game },
+                set: { newGame in
+                    profile.server.changeGame(to: newGame)
+                    region.changeGame(to: newGame)
+                }
+            )
+        }
     }
 }
 
@@ -291,6 +302,7 @@ private struct RequireLoginView: View {
         unsavedFP: Binding<String>,
         deviceID: Binding<String>,
         region: Binding<HoYo.AccountRegion>,
+        game: Binding<Pizza.SupportedGame>,
         importAllUIDs: Binding<Bool>
     ) {
         self._unsavedCookie = unsavedCookie
@@ -298,6 +310,7 @@ private struct RequireLoginView: View {
         self._deviceID = deviceID
         self._region = region
         self._importAllUIDs = importAllUIDs
+        self._game = game
     }
 
     // MARK: Internal
@@ -307,10 +320,10 @@ private struct RequireLoginView: View {
     @MainActor var body: some View {
         VStack {
             Text("settings.profile.pleaseSelectGame".i18nPZHelper).frame(maxWidth: .infinity, alignment: .leading)
-            Picker("".description, selection: $region) {
+            Picker("".description, selection: $game) {
                 ForEach(Pizza.SupportedGame.allCases) { currentGame in
                     Text(currentGame.localizedDescriptionTrimmed)
-                        .tag(region.withGame(currentGame))
+                        .tag(currentGame)
                 }
             }
             .pickerStyle(.segmented)
@@ -356,6 +369,7 @@ private struct RequireLoginView: View {
     @Binding private var unsavedCookie: String
     @Binding private var unsavedFP: String
     @Binding private var region: HoYo.AccountRegion
+    @Binding private var game: Pizza.SupportedGame
 
     private var loginLabelText: String {
         unsavedCookie.isEmpty
