@@ -3120,25 +3120,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import all UIDs of both games from this account"
+            "value" : "Import all UIDs of these games from this account"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "該当アカウントの両ゲームの全てのUIDを一気に読み込む"
+            "value" : "該当アカウントのこれらのゲームの全てのUIDを一気に読み込む"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一次性读入该账号下的这两款游戏的所有区服的 UID"
+            "value" : "一次性读入该账号下的这几款游戏的所有区服的 UID"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一次性匯入該帳號下的這兩款遊戲的所有區服的 UID"
+            "value" : "一次性匯入該帳號下的這幾款遊戲的所有區服的 UID"
           }
         }
       }
