@@ -119,11 +119,12 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
 
     func checkIDAndUIDExists(uid: String, id: String) -> Bool {
         let gameStr = GachaType.game.rawValue
-        let request = FetchDescriptor<PZGachaEntryMO>(
+        var request = FetchDescriptor<PZGachaEntryMO>(
             predicate: #Predicate {
                 $0.id == id && $0.uid == uid && $0.game == gameStr
             }
         )
+        request.propertiesToFetch = [\.id, \.uid, \.game]
         do {
             let gachaItemMOCount = try mainContext.fetchCount(request)
             return gachaItemMOCount > 0
