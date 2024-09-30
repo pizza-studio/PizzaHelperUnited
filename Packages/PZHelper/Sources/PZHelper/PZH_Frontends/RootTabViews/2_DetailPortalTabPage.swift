@@ -195,7 +195,7 @@ struct DetailPortalTabPage: View {
 
     @MainActor @ViewBuilder
     func hookAlert4AbyssCollectionUserConscent(_ content: some View) -> some View {
-        if delegate.currentProfile != nil {
+        if delegate.currentProfile?.game == .genshinImpact {
             content
                 .alert(
                     "settings.privacy.abyssDataCollect".i18nPZHelper,
