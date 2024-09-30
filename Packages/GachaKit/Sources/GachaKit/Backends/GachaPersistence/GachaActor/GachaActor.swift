@@ -117,8 +117,10 @@ extension GachaActor {
         -> Int {
         var insertedEntriesCount = 0
         try modelContext.transaction {
+            var existingIDsDescriptor = FetchDescriptor<PZGachaEntryMO>()
+            existingIDsDescriptor.propertiesToFetch = [\.id]
             var allExistingEntryIDs: Set<String> = .init(
-                try modelContext.fetch(FetchDescriptor<PZGachaEntryMO>()).map(\.id)
+                try modelContext.fetch(existingIDsDescriptor).map(\.id)
             )
             if overrideDuplicatedEntries {
                 let allNewEntryIDs: Set<String> = .init(sources.map(\.id))
