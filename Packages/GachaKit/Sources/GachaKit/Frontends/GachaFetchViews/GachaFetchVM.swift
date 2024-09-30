@@ -107,7 +107,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                 }.map(\.count).reduce(.zero, +),
                 gachaType: .init(rawValue: item.gachaType)
             )
-            gachaTypeDateCounts.append(count)
+            withAnimation {
+                gachaTypeDateCounts.append(count)
+            }
         }
         func predicateElement(_ element: GachaTypeDateCount) -> Bool {
             (element.date >= itemExpr.time) && (element.gachaType.rawValue == item.gachaType)
