@@ -3296,13 +3296,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "五星平均抽数"
+            "value" : "限定五星平均抽数"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "五星平均抽數"
+            "value" : "限定五星平均抽數"
           }
         }
       }
@@ -3324,13 +3324,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "限定五星平均抽数"
+            "value" : "五星平均抽数"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "限定五星平均抽數"
+            "value" : "五星平均抽數"
           }
         }
       }
