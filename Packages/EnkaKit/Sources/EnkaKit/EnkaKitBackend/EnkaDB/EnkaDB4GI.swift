@@ -121,6 +121,7 @@ extension Enka.EnkaDB4GI {
         namecards = new.namecards
         profilePictures = new.profilePictures
         isExpired = false
+        saveSelfToUserDefaults()
     }
 }
 
