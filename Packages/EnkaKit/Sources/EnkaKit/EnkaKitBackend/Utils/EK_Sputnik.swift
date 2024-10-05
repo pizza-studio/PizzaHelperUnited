@@ -113,17 +113,22 @@ extension Enka.Sputnik {
     ) async throws
         -> T {
         var dataToParse = Data([])
+        var urlFinal4Debug: URL?
         do {
+            let url = serverType.enkaDBSourceURL(type: dataType)
+            urlFinal4Debug = url
             let (data, _) = try await URLSession.shared.data(
-                for: URLRequest(url: serverType.enkaDBSourceURL(type: dataType))
+                for: URLRequest(url: url)
             )
             dataToParse = data
         } catch {
             print(error.localizedDescription)
             print("// [Enka.Sputnik.fetchEnkaDBData] Attempting to use alternative JSON server source.")
             do {
+                let url2 = serverType.viceVersa.enkaDBSourceURL(type: dataType)
+                urlFinal4Debug = url2
                 let (data, _) = try await URLSession.shared.data(
-                    for: URLRequest(url: serverType.viceVersa.enkaDBSourceURL(type: dataType))
+                    for: URLRequest(url: url2)
                 )
                 dataToParse = data
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
@@ -149,6 +154,7 @@ extension Enka.Sputnik {
             }
             print(error)
             print(error.localizedDescription)
+            print("SOURCE URL: \(urlFinal4Debug?.absoluteString ?? "------")")
             throw error
         }
     }
