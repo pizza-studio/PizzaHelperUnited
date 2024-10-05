@@ -57,7 +57,7 @@ extension Enka {
             var urlStr: String = {
                 switch self {
                 case .mainlandChina: "https://www.gitlink.org.cn/api/ShikiSuen/EnkaDBGenerator/raw/"
-                case .enkaGlobal: "https://raw.githubusercontent.com/ShikiSuen/EnkaDBGenerator/master/"
+                case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/EnkaDBGenerator/master/"
                 }
             }()
             // swiftlint:disable force_unwrapping
