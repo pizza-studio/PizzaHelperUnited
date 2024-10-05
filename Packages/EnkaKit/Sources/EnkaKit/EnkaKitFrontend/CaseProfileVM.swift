@@ -45,7 +45,7 @@ final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
                 // 检查本地 EnkaDB 是否过期，过期了的话就尝试更新。
                 if enkaDB.checkIfExpired(against: profile) {
                     let factoryDB = try CoordinatedDB(locTag: Enka.currentLangTag)
-                    if factoryDB.checkIfExpired(against: profile) {
+                    if !factoryDB.checkIfExpired(against: profile) {
                         enkaDB.update(new: factoryDB)
                     } else {
                         try await enkaDB.onlineUpdate()
