@@ -222,5 +222,8 @@ public struct GachaExportSections: View {
                     Text(verbatim: msgPack.message)
                 }
             )
+            .onChange(of: isExportResultAvailable) {
+                theVM.forceStopTheTask()
+            }
     }
 }
