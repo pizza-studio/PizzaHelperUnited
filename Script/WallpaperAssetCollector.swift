@@ -212,6 +212,8 @@ var allCharIDs: [String] = []
 
 try await EnkaCharacterDictValueType.getRemoteMap().forEach { key, _ in
     guard key.count == 8, !key.hasPrefix("10000007"), !key.hasPrefix("10000005") else { return } // 主角没有名片。
+    // TODO: 此处增加检查。如果连 Hakushin 都没列出当前迭代的 characterID 的话，
+    // 那么这个 characterID 对应的就是测试角色、得排除。
     allCharIDs.append(key)
 }
 
@@ -308,11 +310,20 @@ struct HakushinChar: Decodable {
 
 for charID in allCharIDs {
     let url = "https://api.hakush.in/gi/data/zh/character/\(charID).json".asURL
-    let (data, _) = try await URLSession.shared.data(from: url)
-    let hakushinObj = try JSONDecoder().decode(HakushinChar.self, from: data)
-    let nameCardID = hakushinObj.CharaInfo.Namecard.Id
-    let matched = assetObjects.first { $0.id == nameCardID.description }
-    matched?.bindedCharID = charID
+    do {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let hakushinObj = try JSONDecoder().decode(HakushinChar.self, from: data)
+        let nameCardID = hakushinObj.CharaInfo.Namecard.Id
+        let matched = assetObjects.first { $0.id == nameCardID.description }
+        matched?.bindedCharID = charID
+    } catch {
+        print("------------------------")
+        print("FAILED FROM HANDLING SOURCE URL: \(url.absoluteString)")
+        print("------------------------")
+        print(error)
+        print("------------------------")
+        continue
+    }
 }
 
 // MARK: - Add supplemental charIDs for chars with costumes.
