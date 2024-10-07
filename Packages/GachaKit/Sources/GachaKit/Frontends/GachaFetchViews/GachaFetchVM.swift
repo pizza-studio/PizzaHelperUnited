@@ -20,11 +20,12 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     public struct GachaTypeDateCount: Hashable, Identifiable {
         // MARK: Lifecycle
 
-        public init(date: Date, count: Int, gachaType: GachaType) {
+        public init(date: Date, count: Int, gachaType: GachaType, id: String) {
             self.date = date
             self.count = count
             self.gachaType = gachaType
             self.poolType = gachaType.expressible
+            self.id = id
         }
 
         // MARK: Public
@@ -33,10 +34,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
         public var count: Int
         public let gachaType: GachaType
         public let poolType: GachaPoolExpressible
-
-        public var id: Int {
-            hashValue
-        }
+        public let id: String
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(date)
@@ -105,7 +103,8 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                 count: gachaTypeDateCounts.filter { data in
                     (data.date < itemExpr.time) && (data.gachaType == .init(rawValue: item.gachaType))
                 }.map(\.count).reduce(.zero, +),
-                gachaType: .init(rawValue: item.gachaType)
+                gachaType: .init(rawValue: item.gachaType),
+                id: itemExpr.id
             )
             withAnimation {
                 gachaTypeDateCounts.append(count)
