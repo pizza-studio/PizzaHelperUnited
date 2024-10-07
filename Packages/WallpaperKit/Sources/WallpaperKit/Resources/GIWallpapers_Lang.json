@@ -213,7 +213,9 @@
     "210215" : "Natlan – Die Rückkehr der Flamme",
     "210216" : "Errungenschaft – Herrscher der Nacht",
     "210217" : "Erlebnispass – Urfeuer",
-    "210218" : "Feierlichkeit – Süß und knackig"
+    "210218" : "Feierlichkeit – Süß und knackig",
+    "210219" : "Xilonen – Immer im Rhythmus",
+    "210220" : "Erlebnispass – Sabzeruz"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -429,7 +431,9 @@
     "210215" : "Natlan: Return of the Flame",
     "210216" : "Achievement: Lord of the Night",
     "210217" : "Travel Notes: Primal Fire",
-    "210218" : "Celebration: Crispy and Sweet"
+    "210218" : "Celebration: Crispy and Sweet",
+    "210219" : "Xilonen: Cue Point",
+    "210220" : "Travel Notes: Sabzeruz"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -645,7 +649,9 @@
     "210215" : "Natlan - Retorno del fuego",
     "210216" : "Logro - Señora de la Noche",
     "210217" : "PB - Fuego primigenio",
-    "210218" : "Celebración - Dulce y crujiente"
+    "210218" : "Celebración - Dulce y crujiente",
+    "210219" : "Xilonen - Ritmo",
+    "210220" : "PB - Sabzeruz"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -861,7 +867,9 @@
     "210215" : "Natlan - Aux flammes",
     "210216" : "Succès - Seigneur de la nuit",
     "210217" : "PB - Feu primaire",
-    "210218" : "Célébration - Doux et croquant"
+    "210218" : "Célébration - Doux et croquant",
+    "210219" : "Xilonen - En rythme",
+    "210220" : "PB - Sabzeruz"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1077,7 +1085,9 @@
     "210215" : "Natlan: Kembalinya Kobaran Api",
     "210216" : "Achievement: Penguasa Malam",
     "210217" : "Catatan Perjalanan: Api Purbakala",
-    "210218" : "Perayaan: Renyah dan Manis"
+    "210218" : "Perayaan: Renyah dan Manis",
+    "210219" : "Xilonen: Cue Point",
+    "210220" : "Catatan Perjalanan: Sabzeruz"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1293,7 +1303,9 @@
     "210215" : "Natlan: Ritorno della Fiamma",
     "210216" : "Obiettivo: Signora della Notte",
     "210217" : "Appunti di viaggio: Fiamma primordiale",
-    "210218" : "Celebrazione: Croccante e dolce"
+    "210218" : "Celebrazione: Croccante e dolce",
+    "210219" : "Xilonen: Ritmo",
+    "210220" : "Appunti di viaggio: Sabzeruz"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1509,7 +1521,9 @@
     "210215" : "ナタ·帰火",
     "210216" : "アチーブメント·夜の主",
     "210217" : "紀行·源火",
-    "210218" : "祭典·あまあまサクサク"
+    "210218" : "祭典·あまあまサクサク",
+    "210219" : "シロネン・律動",
+    "210220" : "紀行・神誕"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -1725,7 +1739,9 @@
     "210215" : "나타·돌아온 불",
     "210216" : "업적·밤의 주인",
     "210217" : "기행·불의 근원",
-    "210218" : "축전·바삭바삭"
+    "210218" : "축전·바삭바삭",
+    "210219" : "실로닌·리듬",
+    "210220" : "기행·탄신"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -1940,8 +1956,10 @@
     "210214" : "Conquista: Sorte Felina",
     "210215" : "Natlan: Retorno da Chama",
     "210216" : "Conquista: Lorde da Noite",
-    "210217" : "Passe de Batalha:: Fogo Original",
-    "210218" : "Celebração: Doce e Crocante"
+    "210217" : "Passe de Batalha: Fogo Original",
+    "210218" : "Celebração: Doce e Crocante",
+    "210219" : "Xilonen: Ritmo",
+    "210220" : "Passe de Batalha: Nascimento Divino"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2157,7 +2175,9 @@
     "210215" : "Возвращение огня",
     "210216" : "Владыка ночи",
     "210217" : "Первозданный огонь",
-    "210218" : "Хрустящие и сладкие"
+    "210218" : "Хрустящие и сладкие",
+    "210219" : "Ритм",
+    "210220" : "Сабзеруз"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2373,7 +2393,9 @@
     "210215" : "Natlan - เพลิงหวน",
     "210216" : "ความสำเร็จ - เจ้าแห่งรัตติกาล",
     "210217" : "บันทึก - เพลิงปฐมกาล",
-    "210218" : "การฉลอง - ทั้งหวานทั้งกรอบ"
+    "210218" : "การฉลอง - ทั้งหวานทั้งกรอบ",
+    "210219" : "Xilonen - จังหวะ",
+    "210220" : "บันทึก - Sabzeruz"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -2589,7 +2611,9 @@
     "210215" : "Natlan: Alevin Dönüşü",
     "210216" : "Başarım: Gece Lordu",
     "210217" : "Gezi Notları: Kadim Ateş",
-    "210218" : "Kutlama: Çıtır ve Tatlı"
+    "210218" : "Kutlama: Çıtır ve Tatlı",
+    "210219" : "Xilonen: Şarkı Geçiş Yeri",
+    "210220" : "Gezi Notları: Sabzeruz"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -2805,7 +2829,9 @@
     "210215" : "Natlan - Lửa Trở Về",
     "210216" : "Thành Tựu - Chủ Nhân Màn Đêm",
     "210217" : "Nhật Ký Hành Trình - Lửa Nguồn",
-    "210218" : "Lễ Hội – Giòn Và Ngọt"
+    "210218" : "Lễ Hội – Giòn Và Ngọt",
+    "210219" : "Xilonen - Nhịp Điệu",
+    "210220" : "Nhật Ký Hành Trình - Sabzeruz"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3021,7 +3047,9 @@
     "210215" : "纳塔·归火",
     "210216" : "成就·夜主",
     "210217" : "纪行·源火",
-    "210218" : "庆典·甘脆"
+    "210218" : "庆典·甘脆",
+    "210219" : "希诺宁·律动",
+    "210220" : "纪行·神诞"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3237,6 +3265,8 @@
     "210215" : "納塔·歸火",
     "210216" : "成就·夜主",
     "210217" : "紀行·源火",
-    "210218" : "慶典·甘脆"
+    "210218" : "慶典·甘脆",
+    "210219" : "希諾寧·律動",
+    "210220" : "紀行·神誕"
   }
 }
