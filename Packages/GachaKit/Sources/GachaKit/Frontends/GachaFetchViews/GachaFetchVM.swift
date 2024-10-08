@@ -248,18 +248,15 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
             do {
                 for try await (gachaType, result) in client {
                     setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
-                    Task.detached { @MainActor @Sendable [weak self] in
-                        guard let self else { return }
-                        for item in result.listConverted {
-                            withAnimation {
-                                self.updateCachedItems(item)
-                                self.updateGachaDateCounts(item)
-                            }
-                            try? await insert(item)
-                            try? await Task.sleep(for: .seconds(0.5 / 20.0))
+                    for item in result.listConverted {
+                        withAnimation {
+                            self.updateCachedItems(item)
+                            self.updateGachaDateCounts(item)
                         }
-                        try? mainContext.save()
+                        try? await insert(item)
+                        try? await Task.sleep(for: .seconds(0.5 / 20.0))
                     }
+                    try? mainContext.save()
                 }
                 setFinished()
             } catch {
