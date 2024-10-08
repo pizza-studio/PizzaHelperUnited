@@ -38,6 +38,8 @@ extension EnkaDBProtocol {
     public typealias SummarizedType = Enka.ProfileSummarized<Self>
 
     public var game: Enka.GameType { Self.game }
+
+    /// 这个 Symbol 目前还没派上用场，回头得另议与此有关的处置方案。
     public var needsUpdate: Bool {
         let previousDate = Defaults[.lastEnkaDBDataCheckDate]
         let expired = Calendar.current.date(byAdding: .hour, value: 2, to: previousDate)! < Date()
