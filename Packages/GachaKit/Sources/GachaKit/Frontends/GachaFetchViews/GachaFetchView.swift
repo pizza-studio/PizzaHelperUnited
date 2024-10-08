@@ -481,7 +481,10 @@ extension GachaFetchView4Game {
         @Binding var data: [VMType.GachaTypeDateCount]
 
         @MainActor var body: some View {
-            Chart(data) {
+            let sorted = data.sorted {
+                $0.date < $1.date
+            }
+            Chart(sorted) {
                 LineMark(
                     x: .value("gachaKit.getRecord.chart.date".i18nGachaKit, $0.date),
                     y: .value("gachaKit.getRecord.chart.count".i18nGachaKit, $0.count)
