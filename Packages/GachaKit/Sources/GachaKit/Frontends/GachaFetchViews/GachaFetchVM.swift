@@ -251,11 +251,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                     Task.detached { @MainActor @Sendable [weak self] in
                         guard let self else { return }
                         for item in result.listConverted {
-                            Task {
-                                withAnimation {
-                                    self.updateCachedItems(item)
-                                    self.updateGachaDateCounts(item)
-                                }
+                            withAnimation {
+                                self.updateCachedItems(item)
+                                self.updateGachaDateCounts(item)
                             }
                             try? await insert(item)
                             try? await Task.sleep(for: .seconds(0.5 / 20.0))
