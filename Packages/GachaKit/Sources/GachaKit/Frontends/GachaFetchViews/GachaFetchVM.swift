@@ -20,9 +20,16 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     public struct GachaTypeDateCount: Hashable, Identifiable {
         // MARK: Lifecycle
 
-        public init(date: Date, count: Int, gachaType: GachaType, id: String) {
+        public init(
+            date: Date,
+            count: Int,
+            countAsMergedPool: Int,
+            gachaType: GachaType,
+            id: String
+        ) {
             self.date = date
             self.count = count
+            self.countAsMergedPool = countAsMergedPool
             self.gachaType = gachaType
             self.poolType = gachaType.expressible
             self.id = id
@@ -32,13 +39,17 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
 
         public let date: Date
         public var count: Int
+        public var countAsMergedPool: Int // 将原神的两个平行限定卡池合并计算，仅用于图表显示。
         public let gachaType: GachaType
         public let poolType: GachaPoolExpressible
         public let id: String
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(date)
+            hasher.combine(count)
+            hasher.combine(countAsMergedPool)
             hasher.combine(gachaType)
+            hasher.combine(id)
         }
     }
 
@@ -103,6 +114,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                 count: gachaTypeDateCounts.filter { data in
                     (data.date < itemExpr.time) && (data.gachaType == .init(rawValue: item.gachaType))
                 }.map(\.count).reduce(.zero, +),
+                countAsMergedPool: gachaTypeDateCounts.filter { data in
+                    (data.date < itemExpr.time) && (data.poolType == itemExpr.pool)
+                }.map(\.count).reduce(.zero, +),
                 gachaType: .init(rawValue: item.gachaType),
                 id: itemExpr.id
             )
@@ -115,6 +129,12 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
         }
         gachaTypeDateCounts.indicesMeeting(condition: predicateElement)?.forEach { index in
             self.gachaTypeDateCounts[index].count += 1
+        }
+        func predicateElementByMergedPool(_ element: GachaTypeDateCount) -> Bool {
+            (element.date >= itemExpr.time) && (element.poolType == itemExpr.pool)
+        }
+        gachaTypeDateCounts.indicesMeeting(condition: predicateElementByMergedPool)?.forEach { index in
+            self.gachaTypeDateCounts[index].countAsMergedPool += 1
         }
     }
 
