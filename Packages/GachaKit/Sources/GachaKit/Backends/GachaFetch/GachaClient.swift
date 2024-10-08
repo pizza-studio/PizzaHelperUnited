@@ -72,23 +72,13 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
 
             var result = try GachaResult.decodeFromMiHoYoAPIJSONResult(data: data)
 
-            result.listConverted = try await withThrowingTaskGroup(
-                of: PZGachaEntrySendable.self,
-                returning: [PZGachaEntrySendable].self,
-                body: { taskGroup in
-                    result.list.forEach { entryRaw in
-                        taskGroup.addTask {
-                            try await entryRaw.toGachaEntrySendable(
-                                game: GachaType.game, fixItemIDs: GachaType.game == .genshinImpact
-                            )
-                        }
-                    }
-
-                    return try await taskGroup.reduce(into: []) { partialResult, entry in
-                        partialResult.append(entry)
-                    }
-                }
-            )
+            result.listConverted = []
+            for entryRaw in result.list {
+                let translatedEntry = try await entryRaw.toGachaEntrySendable(
+                    game: GachaType.game, fixItemIDs: GachaType.game == .genshinImpact
+                )
+                result.listConverted.append(translatedEntry)
+            }
 
             if let endResult = result.list.last {
                 pagination = .init(
