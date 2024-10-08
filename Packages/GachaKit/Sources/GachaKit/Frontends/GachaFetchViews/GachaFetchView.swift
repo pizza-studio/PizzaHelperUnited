@@ -487,7 +487,7 @@ extension GachaFetchView4Game {
             Chart(sorted) {
                 LineMark(
                     x: .value("gachaKit.getRecord.chart.date".i18nGachaKit, $0.date),
-                    y: .value("gachaKit.getRecord.chart.count".i18nGachaKit, $0.count)
+                    y: .value("gachaKit.getRecord.chart.count".i18nGachaKit, $0.countAsMergedPool)
                 )
                 .foregroundStyle(
                     by: .value(
