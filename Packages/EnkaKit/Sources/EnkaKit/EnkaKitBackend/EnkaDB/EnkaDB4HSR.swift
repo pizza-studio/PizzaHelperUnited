@@ -221,6 +221,7 @@ extension Enka.EnkaDB4HSR {
 
 extension Enka.EnkaDB4HSR {
     public func checkIfExpired(against givenProfile: QueriedProfile) -> Bool {
+        guard Enka.currentLangTag == locTag else { return true }
         // 星穹铁道直接拿角色、武器、圣遗物 ID 来查询就好。
         // 先检查角色 ID：
         var newIDs = Set<String>(givenProfile.avatarDetailList.map(\.id))
