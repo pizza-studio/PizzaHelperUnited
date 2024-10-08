@@ -124,17 +124,16 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol> {
                 gachaTypeDateCounts.append(count)
             }
         }
-        func predicateElement(_ element: GachaTypeDateCount) -> Bool {
-            (element.date >= itemExpr.time) && (element.gachaType.rawValue == item.gachaType)
-        }
-        gachaTypeDateCounts.indicesMeeting(condition: predicateElement)?.forEach { index in
-            self.gachaTypeDateCounts[index].count += 1
-        }
         func predicateElementByMergedPool(_ element: GachaTypeDateCount) -> Bool {
             (element.date >= itemExpr.time) && (element.poolType == itemExpr.pool)
         }
         gachaTypeDateCounts.indicesMeeting(condition: predicateElementByMergedPool)?.forEach { index in
+            // 先处理将原神的两个限定卡池合并计算时的情形，回头绘制图表时会用到。
             self.gachaTypeDateCounts[index].countAsMergedPool += 1
+            // 再分开处理原神的两个限定卡池各自的情形。
+            if self.gachaTypeDateCounts[index].gachaType.rawValue == item.gachaType {
+                self.gachaTypeDateCounts[index].count += 1
+            }
         }
     }
 
