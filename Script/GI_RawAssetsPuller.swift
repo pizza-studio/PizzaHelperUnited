@@ -252,6 +252,13 @@ struct AvatarExcelConfigData: Hashable, Codable, Identifiable {
         guard skillDepotId != 101 else { return false }
         guard !iconName.hasSuffix("_Kate") else { return false }
         guard id.description.prefix(2) != "11" else { return false }
+        // 回头注意检查这句是否在今后的版本需要删掉。
+        additionalCheck: do {
+            guard id > 100000 else { break additionalCheck }
+            guard let fifthDigitStr = id.description.prefix(5).last?.description else { break additionalCheck }
+            guard let fifthDigit = Int(fifthDigitStr) else { break additionalCheck }
+            guard fifthDigit < 9 else { return false }
+        }
         return true
     }
 }
