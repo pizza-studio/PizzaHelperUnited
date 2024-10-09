@@ -92,6 +92,15 @@ extension EnkaDBProtocol {
 // MARK: - Translation APIs.
 
 extension EnkaDBProtocol {
+    public var locTagMismatchingTheSystem: Bool {
+        Enka.currentLangTag != locTag
+    }
+
+    public func updateIfLocTagMismatches() async throws {
+        guard locTagMismatchingTheSystem else { return }
+        try await onlineUpdate()
+    }
+
     public func getFailableTranslationFor(id: String, realName: Bool = true) -> String? {
         // 处理雷电国崩的自订姓名。
         if realName, let matchedRealName = Enka.JSONType.bundledRealNameTable[locTag]?[id] {
