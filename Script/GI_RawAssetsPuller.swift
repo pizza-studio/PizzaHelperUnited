@@ -253,7 +253,7 @@ struct AvatarExcelConfigData: Hashable, Codable, Identifiable {
         guard !iconName.hasSuffix("_Kate") else { return false }
         guard id.description.prefix(2) != "11" else { return false }
         // 回头注意检查这句是否在今后的版本需要删掉。
-        guard !id.description.hasPrefix("100009") else { return false}
+        guard !id.description.hasPrefix("100009") else { return false }
         return true
     }
 }
