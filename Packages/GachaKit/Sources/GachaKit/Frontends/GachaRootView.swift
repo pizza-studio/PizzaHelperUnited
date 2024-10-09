@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import AlertToast
+import EnkaKit
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
@@ -155,5 +156,14 @@ extension GachaRootView {
                 .font(.footnote).foregroundStyle(.secondary)
         }
         .formStyle(.grouped)
+        .task {
+            theVM.fireTask(
+                cancelPreviousTask: false,
+                givenTask: {
+                    try? await Enka.Sputnik.shared.db4HSR.updateIfLocTagMismatches()
+                    try? await Enka.Sputnik.shared.db4GI.updateIfLocTagMismatches()
+                }
+            )
+        }
     }
 }
