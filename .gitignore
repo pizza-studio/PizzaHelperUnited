@@ -98,3 +98,6 @@ BuildTools/.build
 
 **/.swiftpm
 Package.resolved
+*/.index-build
+*/.index-build/*
+.index-build
