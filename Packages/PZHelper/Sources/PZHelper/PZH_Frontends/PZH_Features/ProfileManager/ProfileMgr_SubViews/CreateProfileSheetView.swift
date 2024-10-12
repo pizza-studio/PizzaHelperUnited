@@ -350,7 +350,7 @@ private struct RequireLoginView: View {
         NavigationLink {
             handleSheetNavigation()
         } label: {
-            Text(loginLabelText + " \(region.localizedDescription)\n(\(region.game.localizedDescription))")
+            Text(loginLabelText + " \(region.localizedDescription)\n(\(game.localizedDescription))")
                 .fontWeight(.bold)
                 .fontWidth(.condensed)
                 .multilineTextAlignment(.center)
@@ -384,7 +384,7 @@ private struct RequireLoginView: View {
             case .hoyoLab:
                 GetCookieWebView(
                     cookie: $unsavedCookie,
-                    region: region
+                    region: region.withGame(game)
                 )
             case .miyoushe:
                 GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP, deviceID: $deviceID)
