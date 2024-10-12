@@ -49,6 +49,7 @@ extension HoYo {
         deviceId: String?
     ) async throws
         -> CharInventory4GI {
+        await HoYo.waitFor450ms()
         let queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
             .init(name: "server", value: server.rawValue),
@@ -87,6 +88,7 @@ extension HoYo {
         deviceId: String?
     ) async throws
         -> CharInventory4HSR {
+        await HoYo.waitFor450ms()
         var queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
             .init(name: "server", value: server.rawValue),
