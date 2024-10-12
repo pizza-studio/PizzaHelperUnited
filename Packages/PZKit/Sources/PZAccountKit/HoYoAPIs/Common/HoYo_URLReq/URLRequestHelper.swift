@@ -4,6 +4,8 @@
 
 import Foundation
 
+// MARK: - URLRequestHelper
+
 /// Abstract class help generate api url request
 enum URLRequestHelper {
     /// Calculate the DS used in url request headers
@@ -28,5 +30,51 @@ enum URLRequestHelper {
         let verification = "salt=\(salt)&t=\(time)&r=\(randomNumber)&b=\(bodyString)&q=\(query)".md5
 
         return time + "," + randomNumber + "," + verification
+    }
+}
+
+extension HoYo {
+    fileprivate static let taskBuffer: URLAsyncTaskStack = .init()
+
+    public static func waitFor450ms() async {
+        await Self.taskBuffer.addTask {
+            try await Task.sleep(nanoseconds: 450_000_000) // 300ms sleep
+        }
+    }
+}
+
+// MARK: - URLAsyncTaskStack
+
+private actor URLAsyncTaskStack {
+    // MARK: Internal
+
+    func addTask(_ task: @escaping () async throws -> Void) async {
+        // Add the task to the queue and await its execution in sequence
+        tasks.append(task)
+
+        // If this is the only task, start processing the queue
+        if tasks.count == 1 {
+            await processNextTask()
+        }
+    }
+
+    func cancelAllTasks() {
+        tasks.removeAll()
+    }
+
+    // MARK: Private
+
+    private var tasks: [() async throws -> Void] = []
+
+    private func processNextTask() async {
+        while !tasks.isEmpty {
+            let currentTask = tasks.removeFirst()
+            do {
+                // Execute the current task
+                try await currentTask()
+            } catch let error as NSError {
+                print("Task failed with error: \(error)")
+            }
+        }
     }
 }
