@@ -2282,7 +2282,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "古いピザプリのiCloudデータからガチャ記録を引き継ぐ"
+            "value" : "古いピザアプリのiCloudデータからガチャ記録を引き継ぐ"
           }
         },
         "zh-Hans" : {
@@ -2310,7 +2310,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "古いピザプリのiCloudデータからガチャ記録を点検"
+            "value" : "古いピザアプリのiCloudデータからガチャ記録を点検"
           }
         },
         "zh-Hans" : {
