@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "accountRegion.name.hoyoLab" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -30,6 +31,7 @@
       }
     },
     "accountRegion.name.miyoushe" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -226,6 +228,7 @@
       }
     },
     "server.location.asia" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -254,6 +257,7 @@
       }
     },
     "server.location.celestia" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -282,6 +286,7 @@
       }
     },
     "server.location.celestia.GI" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -310,6 +315,7 @@
       }
     },
     "server.location.celestia.HSR" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -338,6 +344,7 @@
       }
     },
     "server.location.celestia.ZZZ" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -366,6 +373,7 @@
       }
     },
     "server.location.europe" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -394,6 +402,7 @@
       }
     },
     "server.location.hkMacauTaiwan" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -422,6 +431,7 @@
       }
     },
     "server.location.irminsul" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -450,6 +460,7 @@
       }
     },
     "server.location.irminsul.GI" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -478,6 +489,7 @@
       }
     },
     "server.location.irminsul.HSR" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -506,6 +518,7 @@
       }
     },
     "server.location.unitedStates" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
