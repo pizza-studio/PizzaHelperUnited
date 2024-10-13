@@ -153,7 +153,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
 
     @MainActor @ViewBuilder
     func blankView() -> some View {
-        Text("🗑️")
+        Text(verbatim: "🗑️")
     }
 
     // MARK: Private
