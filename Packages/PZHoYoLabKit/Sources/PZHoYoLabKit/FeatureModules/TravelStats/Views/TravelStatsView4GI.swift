@@ -17,7 +17,7 @@ public struct TravelStatsView4GI: TravelStatsView {
 
     public typealias StatsData = HoYo.TravelStatsData4GI
 
-    public static let navTitle = "hylKit.travelStats4HSR.navTitle".i18nHYLKit
+    public static let navTitle = "hylKit.travelStats4GI.navTitle".i18nHYLKit
 
     public static var treasureBoxImage: Image { Image("gi_travelStats_treasureBox_gradeHigh", bundle: .module) }
 

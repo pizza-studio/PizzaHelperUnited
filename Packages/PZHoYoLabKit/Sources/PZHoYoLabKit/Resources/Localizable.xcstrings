@@ -169,34 +169,6 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.floor" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Floor %lld"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "第%lld層"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "第%lld层"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "第%lld層"
-          }
-        }
-      }
-    },
     "hylKit.abyssReport.gi.stat.mostDamageTaken" : {
       "localizations" : {
         "en" : {
@@ -305,34 +277,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "元素爆發次數"
-          }
-        }
-      }
-    },
-    "hylKit.abyssReport.gi.stat.room" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chamber %lld"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "第%lld間"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "第%lld间"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "第%lld間"
           }
         }
       }
@@ -986,34 +930,6 @@
         }
       }
     },
-    "hylKit.inventoryView.characters.ownedCharacters.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Owned Characters"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "の全てのキャラクター"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "的所有角色"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "的所有角色"
-          }
-        }
-      }
-    },
     "hylKit.inventoryView.characters.title" : {
       "localizations" : {
         "en" : {
@@ -1099,6 +1015,7 @@
       }
     },
     "hylKit.ledger4GI.action.name.byAbyss" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1127,6 +1044,7 @@
       }
     },
     "hylKit.ledger4GI.action.name.byActivity" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1155,6 +1073,7 @@
       }
     },
     "hylKit.ledger4GI.action.name.byAdventure" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1183,6 +1102,7 @@
       }
     },
     "hylKit.ledger4GI.action.name.byEvent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1211,6 +1131,7 @@
       }
     },
     "hylKit.ledger4GI.action.name.byMail" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1239,6 +1160,7 @@
       }
     },
     "hylKit.ledger4GI.action.name.byOther" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1267,6 +1189,7 @@
       }
     },
     "hylKit.ledger4GI.action.name.byTask" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1519,6 +1442,7 @@
       }
     },
     "hylKit.ledger4HSR.action.name.byAbyss" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1547,6 +1471,7 @@
       }
     },
     "hylKit.ledger4HSR.action.name.byAdventure" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1575,6 +1500,7 @@
       }
     },
     "hylKit.ledger4HSR.action.name.byDailyTraining" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1603,6 +1529,7 @@
       }
     },
     "hylKit.ledger4HSR.action.name.byEvent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1631,6 +1558,7 @@
       }
     },
     "hylKit.ledger4HSR.action.name.byMail" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1659,6 +1587,7 @@
       }
     },
     "hylKit.ledger4HSR.action.name.byOther" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1687,6 +1616,7 @@
       }
     },
     "hylKit.ledger4HSR.action.name.byUniverse" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2611,6 +2541,7 @@
       }
     },
     "pieChart.total" : {
+      "comment" : "total",
       "localizations" : {
         "en" : {
           "stringUnit" : {
