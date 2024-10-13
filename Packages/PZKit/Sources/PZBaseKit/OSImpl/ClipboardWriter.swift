@@ -21,7 +21,7 @@ public enum Clipboard {
             return UIPasteboard.general.string ?? ""
             #endif
             #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-            return NSPasteboard.general.string(forType: .string)
+            return NSPasteboard.general.string(forType: .string) ?? ""
             #endif
         }
         set {
