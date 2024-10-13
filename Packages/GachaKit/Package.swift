@@ -36,7 +36,7 @@ let package = Package(
             url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")
         ),
         .package(
-            url: "https://github.com/toastersocks/MultiPicker", .upToNextMajor(from: "1.1.0")
+            url: "https://github.com/pizza-studio/MultiPicker-macOS", .upToNextMajor(from: "1.1.1")
         ),
     ],
     targets: [
@@ -54,7 +54,7 @@ let package = Package(
                 .product(name: "Defaults", package: "Defaults"),
                 .product(name: "CoreXLSX", package: "CoreXLSX"),
                 .product(name: "AlertToast", package: "AlertToast"),
-                .product(name: "MultiPicker", package: "MultiPicker"),
+                .product(name: "MultiPicker", package: "MultiPicker-macOS"),
             ],
             resources: [
                 .process("Resources/"),
