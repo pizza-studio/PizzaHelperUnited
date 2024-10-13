@@ -1,0 +1,63 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+import AppIntents
+import Foundation
+
+// MARK: - AutoRotationUsingResinWidgetStyleAppEnum
+
+@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
+public enum AutoRotationUsingResinWidgetStyleAppEnum: String, AppEnum {
+    case byDefault = "default"
+    case timer
+    case time
+    case roundMeter = "circle"
+
+    // MARK: Public
+
+    public static let typeDisplayRepresentation =
+        TypeDisplayRepresentation(name: "appEnum.AutoRotationUsingResinWidgetStyle.title")
+    public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+        .byDefault: "appEnum.AutoRotationUsingResinWidgetStyle.byDefault",
+        .timer: "appEnum.AutoRotationUsingResinWidgetStyle.asTimerCountDown",
+        .time: "appEnum.AutoRotationUsingResinWidgetStyle.asTimeStampWhenWillAccomplish",
+        .roundMeter: "appEnum.AutoRotationUsingResinWidgetStyle.asRoundMeter",
+    ]
+}
+
+// MARK: - ExpeditionShowingMethodAppEnum
+
+@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
+public enum ExpeditionShowingMethodAppEnum: String, AppEnum {
+    case byTimePoint
+    case byTimeInterval
+    case byNum
+
+    // MARK: Public
+
+    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEnum.expeditionShowingMethod.title")
+    public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+        .byTimePoint: "appEnum.expeditionShowingMethod.byTimeStampWhenAccomplished",
+        .byTimeInterval: "appEnum.expeditionShowingMethod.byTimeRemained",
+        .byNum: "appEnum.expeditionShowingMethod.byAttendantsCount",
+    ]
+}
+
+// MARK: - WeeklyBossesShowingMethodAppEnum
+
+@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
+public enum WeeklyBossesShowingMethodAppEnum: String, AppEnum {
+    case disappearAfterCompleted
+    case alwaysShow
+    case neverShow
+
+    // MARK: Public
+
+    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEnum.WeeklyBossesShowingMethod.title")
+    public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+        .disappearAfterCompleted: "appEnum.WeeklyBossesShowingMethod.hiddenIfAllCompleted",
+        .alwaysShow: "appEnum.WeeklyBossesShowingMethod.alwaysVisible",
+        .neverShow: "appEnum.WeeklyBossesShowingMethod.alwaysHidden",
+    ]
+}
