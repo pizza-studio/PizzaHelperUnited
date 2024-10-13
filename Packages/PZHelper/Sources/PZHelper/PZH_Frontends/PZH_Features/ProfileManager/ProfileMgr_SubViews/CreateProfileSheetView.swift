@@ -233,11 +233,11 @@ extension ProfileManagerPageContent {
                 } footer: {
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("profile.login.manual.1".i18nPZHelper)
+                            Text("profileMgr.login.manual.1".i18nPZHelper)
                             NavigationLink {
                                 ProfileConfigEditorView(unsavedProfile: profile)
                             } label: {
-                                Text("profile.login.manual.2".i18nPZHelper)
+                                Text("profileMgr.login.manual.2")
                                     .font(.footnote)
                             }
                         }
