@@ -361,7 +361,7 @@ private struct AssignmentView4HSR: View {
             if assignment.remainingTime > 0 {
                 (
                     Text(assignment.finishedTime, style: .relative)
-                        + Text("\n")
+                        + Text(verbatim: "\n")
                         + Text(dateFormatter.string(from: assignment.finishedTime))
                 )
                 .multilineTextAlignment(.leading)
@@ -393,28 +393,7 @@ private struct DailyNoteCardErrorView: View {
             Image(systemSymbol: .questionmarkCircle)
                 .foregroundColor(.yellow)
         }
-//        switch error {
-//        case MiHoYoAPIError.verificationNeeded:
-//            Label {
-//                Text("app.dailynote.card.error.need_verification.button".i18nPZHelper)
-//            } icon: {
-//                Image(systemSymbol: .questionmarkCircle)
-//                    .foregroundColor(.yellow)
-//            }
-//        default:
-//            Label {
-//                Text("app.dailynote.card.error.other_error.button".i18nPZHelper)
-//            } icon: {
-//                Image(systemSymbol: .exclamationmarkCircle)
-//                    .foregroundColor(.red)
-//            }
-//        }
     }
-
-    // MARK: Private
-
-    // @State private var isEditProfileSheetShown: Bool = false
-    // @State private var alertToastEventStatus = AlertToastEventStatus()
 }
 
 private let dateFormatter: DateFormatter = {

@@ -141,62 +141,6 @@
         }
       }
     },
-    "app.dailynote.card.error.need_verification.button" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verification Needed"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "人間認証が必要です"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "需要验证"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "需要人機驗證"
-          }
-        }
-      }
-    },
-    "app.dailynote.card.error.other_error.button" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Other Error (Press to show)"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "他のエラー（タップで読む）"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "其他错误（点击查看）"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "其它錯誤（點此檢視）"
-          }
-        }
-      }
-    },
     "app.dailynote.card.error.pleaseCheckAtProfileMgr" : {
       "localizations" : {
         "en" : {
@@ -310,34 +254,6 @@
         }
       }
     },
-    "app.dailynote.card.resinFull" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resin is fully capped"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "樹脂が全て回復しました"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "树脂已全部回满"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "樹脂已全部回滿"
-          }
-        }
-      }
-    },
     "app.dailynote.card.simulated_universe.label" : {
       "localizations" : {
         "en" : {
@@ -395,7 +311,7 @@
       }
     },
     "app.dailynote.card.transformer" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -424,7 +340,7 @@
       }
     },
     "app.dailynote.card.weeklyBoss" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -816,6 +732,62 @@
         }
       }
     },
+    "Error: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラー: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤: %@"
+          }
+        }
+      }
+    },
+    "FAQ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "よくある質問"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "常见问题解答"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "常見問題解答"
+          }
+        }
+      }
+    },
     "profile.accountConnectivity.buttonTitle" : {
       "localizations" : {
         "en" : {
@@ -849,7 +821,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Allow Notification"
+            "value" : "Allow Notifications"
           }
         },
         "ja" : {
@@ -1036,62 +1008,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "遊戲區服"
-          }
-        }
-      }
-    },
-    "profile.login.manual.1" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Or:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "或いは:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "或者:"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "或者:"
-          }
-        }
-      }
-    },
-    "profile.login.manual.2" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manually configure a new profile"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "新規プロファイルの情報を自主記入"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "手动配置新的本地账号"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "手動配置新的本機帳號"
           }
         }
       }
@@ -1601,34 +1517,6 @@
         }
       }
     },
-    "profileMgr.create.server.os.notsupport" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Global Servers (not supported yet)"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "グローバルプレーヤー（国際サーバーには現在対応しておりません）"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "国际服（暂不支持）"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "國際伺服器（暫不支援）"
-          }
-        }
-      }
-    },
     "profileMgr.delete.title" : {
       "localizations" : {
         "en" : {
@@ -1769,118 +1657,6 @@
         }
       }
     },
-    "profileMgr.explanation.1" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To get resin and other data from HoYoLAB / Miyoushe, UID and login cookie of your account is needed. After logging into HoYoLAB / Miyoushe, we will store them locally as well as on your private iCloud. Then our app will use the stored UID and cookie to get the resin and other information in a way similar to HoYoLAB / Miyoushe app, then display them on your widget. Your private information will not be sent to other places other than HoYoLAB / Miyoushe and iCloud, including us, so your personal information will be very secure. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HoYoLAB / 米遊社から樹脂・開拓力やその他のデータを取得するためには、アカウントのUIDとログインクッキーが必要です。HoYoLAB / 米遊社 にログインした後、これらの情報をこの端末および iCloud に保存します。その後、アプリはその保存されたUIDとクッキーを用いて、HoYoLAB / 米遊社アプリと同様の方法で樹脂（および・開拓力やその他の情報を取得し、ウィジェットに表示します。貴殿の個人情報は HoYoLAB / 米遊社および iCloud 以外の場所には送信されず、我ら開発チーム自身にも送信されないので、ご安心くださいませ。このアプリはオープンソースのプロジェクト（FOSS）であり、誰でもこのプログラムのすべての基盤となる動作を確認し、監視することができます。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登入后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "為了請求您的遊戲內的資料，我們需要獲取您的UID和Cookie，這是獲取資料的必要參數。您在接下來的網頁登入後，我們會在本機和iCloud存儲您的個人資料。然後我們通過類似米遊社 / HoYoLAB 的方式獲取您的遊戲內的資料。您的個人資訊不會傳送給任何人，包括我們自己。您的個人資訊將會是非常安全的。敝軟體是開放原始碼軟體，每個人都可以檢查和監督敝軟體的全部底層行為。"
-          }
-        }
-      }
-    },
-    "profileMgr.explanation.2" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This procedure is not an illegal procedure such as plug-ins. This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "本プログラムは、プラグインなどの不正プログラムではありません。 本プログラムは、HoYoverseの二次創作ルールの該当する内容を遵守しています。 このAppはオープンソース プログラムであり、誰もがこのプログラムの基本的な動作をすべてチェックおよび監視できます。 詳しくは、設定-FAQをご覧ください。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "本程序不属于外挂等违法程序。本程序遵守米哈游二次创作规则的相关内容。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。具体内容参见「设定 - FAQ」章节。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "敝軟體不屬於外掛等違法程式。敝軟體遵守米哈遊二次創作規則的相關內容。敝軟體是開放原始碼程式，每個人都可以檢查和監督敝軟體的全部底層行為。具體內容參見「設定 - FAQ」章節。"
-          }
-        }
-      }
-    },
-    "profileMgr.explanation.title.1" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "How this App work?"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "進め方について"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "关于我们的工作原理"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "關於我們的工作原理"
-          }
-        }
-      }
-    },
-    "profileMgr.explanation.title.2" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "About your account security"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アカウントの安全性について"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "关于您的账号安全"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "關於您的帳號安全"
-          }
-        }
-      }
-    },
     "profileMgr.importLegacyProfiles.title" : {
       "localizations" : {
         "en" : {
@@ -1905,62 +1681,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "匯入舊版 App 的本機帳號"
-          }
-        }
-      }
-    },
-    "profileMgr.label.detail" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Account Detail"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アカウントの詳細情報"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "账号详情"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "帳號詳情"
-          }
-        }
-      }
-    },
-    "profileMgr.label.nickname" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nickname"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ニックネーム"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "昵称"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暱稱"
           }
         }
       }
@@ -1994,7 +1714,7 @@
       }
     },
     "profileMgr.login.error.no.profileMgr.found" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2022,58 +1742,30 @@
         }
       }
     },
-    "profileMgr.login.manageLink.shortened" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manage"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "管理"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "管理"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "管理"
-          }
-        }
-      }
-    },
     "profileMgr.login.manual.1" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You can also"
+            "value" : "Or:"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "または"
+            "value" : "或いは:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "你也可以"
+            "value" : "或者:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "你也可以"
+            "value" : "或者:"
           }
         }
       }
@@ -2131,34 +1823,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "抱歉，該伺服器的登入功能暫時無法使用。我們正在努力尋求解決方案。目前您仍可以藉由「自行填寫有效的米遊社 / HoYoLAB Cookie」的方式來手動登入。"
-          }
-        }
-      }
-    },
-    "profileMgr.login.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please Finish Login"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ログインしてください"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请完成登入"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "請完成登入"
           }
         }
       }
@@ -2275,90 +1939,6 @@
         }
       }
     },
-    "profileMgr.new.test" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Test connection"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アカウントをテスト"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "测试账号连接"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "測試帳號連接"
-          }
-        }
-      }
-    },
-    "profileMgr.PlayerDetail.EmptyAvatarsFetched" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Either no characters found in the Character Showcase, or Enka failed from retrieving the player's data from the game server."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キャラ陳列には誰もござぬか、あるいは Enka にてゲームサーバーからプレーヤー資料を取り出すのはできなかった。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "账号未展示角色详情，或 Enka 未能成功从游戏服务器取得玩家数据。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "帳號未展示角色詳情，或 Enka 沒能成功從遊戲伺服器取得玩家資料。"
-          }
-        }
-      }
-    },
-    "profileMgr.qr_code_login.check_scanned" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I have scanned. Please check. "
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "スキャン済み、ご検査を"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已扫描，请检查"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已掃描，請檢查"
-          }
-        }
-      }
-    },
     "profileMgr.regenerateDeviceFingerPrint.label" : {
       "localizations" : {
         "en" : {
@@ -2383,62 +1963,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新生成設備指紋"
-          }
-        }
-      }
-    },
-    "profileMgr.regenerateSTokenV2.label" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regenerate STokenV2"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "STokenV2を作り直す"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新生成STokenV2"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新生成 STokenV2"
-          }
-        }
-      }
-    },
-    "profileMgr.setting.allownotification" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Allow notifications"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通知を許可"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "允许通知"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "允許通知"
           }
         }
       }
@@ -3223,35 +2747,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "帳號種類:"
-          }
-        }
-      }
-    },
-    "settings.requireLoginView.loginViaMiyousheOrHoyoLab" : {
-      "comment" : "Add account",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Login via HoYoLAB / Miyoushe"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HoYoLAB・米遊社通行証ログイン"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "登入米游社 / HoYoLAB 通行证"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "登入米遊社 / HoYoLAB 通行證"
           }
         }
       }
