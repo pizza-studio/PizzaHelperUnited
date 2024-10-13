@@ -47,35 +47,6 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
 extension View {
     @MainActor
     public func corneredTag(
-        _ stringKey: LocalizedStringKey,
-        alignment: Alignment,
-        textSize: CGFloat = 12,
-        opacity: CGFloat = 1,
-        enabled: Bool = true,
-        padding: CGFloat = 0
-    )
-        -> some View {
-        guard stringKey != "", enabled else { return AnyView(self) }
-        return AnyView(
-            ZStack(alignment: alignment) {
-                self
-                Text(stringKey)
-                    .font(.system(size: textSize))
-                    .fontWidth(.condensed)
-                    .fontWeight(.medium)
-                    .padding(.horizontal, 0.3 * textSize)
-                    .adjustedBlurMaterialBackground().clipShape(Capsule())
-                    .opacity(opacity)
-                    .padding(padding)
-                    .fixedSize()
-                    .foregroundStyle(.white)
-                    .environment(\.colorScheme, .dark)
-            }
-        )
-    }
-
-    @MainActor
-    public func corneredTag(
         verbatim stringVerbatim: String,
         alignment: Alignment,
         textSize: CGFloat = 12,
