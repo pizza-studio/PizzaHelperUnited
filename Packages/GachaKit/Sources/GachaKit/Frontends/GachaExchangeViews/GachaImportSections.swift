@@ -406,7 +406,11 @@ private struct FallbackTimeZonePicker: View {
                 Text(verbatim: "\(timeZoneName) \(identifier)").monospacedDigit().tag(timeZone)
             }
         }
+        #if os(iOS) || targetEnvironment(macCatalyst)
         .pickerStyle(.navigationLink)
+        #elseif os(macOS)
+        .pickerStyle(.menu)
+        #endif
     }
 
     // MARK: Fileprivate
