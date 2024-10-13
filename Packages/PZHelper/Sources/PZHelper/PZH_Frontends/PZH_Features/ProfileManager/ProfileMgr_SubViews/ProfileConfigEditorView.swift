@@ -39,12 +39,12 @@ struct ProfileConfigEditorView: View {
                     unsavedProfile.serverRawValue = unsavedProfile.server.rawValue
                 }
                 LabeledContent {
-                    TextField("UID", text: $unsavedProfile.uid, prompt: Text("UID"))
+                    TextField("UID".description, text: $unsavedProfile.uid, prompt: Text(verbatim: "UID"))
                     #if os(iOS) || targetEnvironment(macCatalyst)
                         .keyboardType(.numberPad)
                     #endif
                         .multilineTextAlignment(.trailing)
-                } label: { Text("UID") }
+                } label: { Text(verbatim: "UID") }
                     .onChange(of: unsavedProfile.uid, initial: true) { _, _ in
                         let server = HoYo.Server(uid: unsavedProfile.uid, game: unsavedProfile.game)
                         guard let server else { return }

@@ -149,7 +149,7 @@ extension ProfileConfigViewContents {
             Section {
                 // 如果该帐号绑定的UID不止一个，则显示Picker选择帐号
                 if fetchedAccounts.count > 1 {
-                    Picker("account.label.select", selection: selectedAccount) {
+                    Picker("profileMgr.label.select", selection: selectedAccount) {
                         ForEach(
                             fetchedAccounts,
                             id: \.gameUid
