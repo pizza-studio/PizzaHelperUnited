@@ -730,6 +730,7 @@
       }
     },
     "gachaKit.exchange.navTitle.exportData" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -758,6 +759,7 @@
       }
     },
     "gachaKit.exchange.navTitle.importData" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -814,6 +816,7 @@
       }
     },
     "gachaKit.exchange.tabTitle.exportData" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -842,6 +845,7 @@
       }
     },
     "gachaKit.exchange.tabTitle.importData" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -898,6 +902,7 @@
       }
     },
     "gachaKit.exportPackageMethod.allOwners" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -926,6 +931,7 @@
       }
     },
     "gachaKit.exportPackageMethod.singleOwner" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -954,6 +960,7 @@
       }
     },
     "gachaKit.exportPackageMethod.specifiedOwners" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1569,34 +1576,6 @@
         }
       }
     },
-    "gachaKit.getRecord.gotSome.cancel" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stop"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ストップ"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "停止"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "停止"
-          }
-        }
-      }
-    },
     "gachaKit.getRecord.gotSome.gotNewRecords" : {
       "extractionState" : "migrated",
       "localizations" : {
@@ -2075,34 +2054,6 @@
         }
       }
     },
-    "gachaKit.import.obsoleteFormats.header" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obsolete Standards"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "廃止済みの規格"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已被淘汰的规格"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已被淘汰的規格"
-          }
-        }
-      }
-    },
     "gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID" : {
       "localizations" : {
         "en" : {
@@ -2356,6 +2307,7 @@
       }
     },
     "gachaKit.ParseGachaURLError.invalidServer" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2384,6 +2336,7 @@
       }
     },
     "gachaKit.ParseGachaURLError.invalidURL" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2412,6 +2365,7 @@
       }
     },
     "gachaKit.ParseGachaURLError.noAuthenticationKey" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2440,6 +2394,7 @@
       }
     },
     "gachaKit.ParseGachaURLError.noAuthenticationKeyVersion" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2468,6 +2423,7 @@
       }
     },
     "gachaKit.ParseGachaURLError.noServer" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2496,6 +2452,7 @@
       }
     },
     "gachaKit.ParseGachaURLError.noSignType" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2524,6 +2481,7 @@
       }
     },
     "gachaKit.ParseGachaURLError.urlGenerationFailure" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2552,6 +2510,7 @@
       }
     },
     "gachaKit.poolFilterLabel.byGame.GI" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2580,6 +2539,7 @@
       }
     },
     "gachaKit.poolFilterLabel.byGame.HSR" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2608,6 +2568,7 @@
       }
     },
     "gachaKit.poolFilterLabel.byGame.ZZZ" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2636,6 +2597,7 @@
       }
     },
     "gachaKit.poolType.giBeginnersWish" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2664,6 +2626,7 @@
       }
     },
     "gachaKit.poolType.giCharacterEventWish" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2692,6 +2655,7 @@
       }
     },
     "gachaKit.poolType.giChronicledWish" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2720,6 +2684,7 @@
       }
     },
     "gachaKit.poolType.giStandardWish" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2748,6 +2713,7 @@
       }
     },
     "gachaKit.poolType.giUnknown" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2776,6 +2742,7 @@
       }
     },
     "gachaKit.poolType.giWeaponEventWish" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2804,6 +2771,7 @@
       }
     },
     "gachaKit.poolType.srCharacterEventWarp" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2832,6 +2800,7 @@
       }
     },
     "gachaKit.poolType.srDepartureWarp" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2860,6 +2829,7 @@
       }
     },
     "gachaKit.poolType.srLightConeEventWarp" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2888,6 +2858,7 @@
       }
     },
     "gachaKit.poolType.srStellarWarp" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2916,6 +2887,7 @@
       }
     },
     "gachaKit.poolType.srUnknown" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2944,6 +2916,7 @@
       }
     },
     "gachaKit.poolType.zzBangbooChannel" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2972,6 +2945,7 @@
       }
     },
     "gachaKit.poolType.zzExclusiveChannel" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3000,6 +2974,7 @@
       }
     },
     "gachaKit.poolType.zzStableChannel" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3028,6 +3003,7 @@
       }
     },
     "gachaKit.poolType.zzUnknown" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3056,6 +3032,7 @@
       }
     },
     "gachaKit.poolType.zzWEngineChannel" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
