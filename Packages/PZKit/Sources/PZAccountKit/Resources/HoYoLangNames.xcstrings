@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "hoyo.lang.chs" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -60,6 +61,7 @@
       }
     },
     "hoyo.lang.cht" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -118,6 +120,7 @@
       }
     },
     "hoyo.lang.de" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -176,6 +179,7 @@
       }
     },
     "hoyo.lang.en" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -234,6 +238,7 @@
       }
     },
     "hoyo.lang.es" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -292,6 +297,7 @@
       }
     },
     "hoyo.lang.fr" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -350,6 +356,7 @@
       }
     },
     "hoyo.lang.id" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -408,6 +415,7 @@
       }
     },
     "hoyo.lang.it" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -466,6 +474,7 @@
       }
     },
     "hoyo.lang.jp" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -524,6 +533,7 @@
       }
     },
     "hoyo.lang.kr" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -582,6 +592,7 @@
       }
     },
     "hoyo.lang.pt" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -640,6 +651,7 @@
       }
     },
     "hoyo.lang.ru" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -698,6 +710,7 @@
       }
     },
     "hoyo.lang.th" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -756,6 +769,7 @@
       }
     },
     "hoyo.lang.tr" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -814,6 +828,7 @@
       }
     },
     "hoyo.lang.vi" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
