@@ -94,7 +94,7 @@ extension SnapHutao.AbyssDataPack {
             .init(
                 avatarId: avatar.id,
                 weaponId: avatar.weapon.id,
-                reliquarySetIds: avatar.reliquaries.map(\.set.id),
+                reliquarySetIds: avatar.relicSetIDs ?? [],
                 activedConstellationNumber: avatar.activedConstellationNum
             )
         }

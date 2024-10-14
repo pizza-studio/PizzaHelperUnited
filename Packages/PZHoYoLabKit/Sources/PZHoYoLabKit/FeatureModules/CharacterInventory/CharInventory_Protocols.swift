@@ -31,7 +31,7 @@ public protocol HYAvatar: Codable, Sendable, Equatable, Hashable, Identifiable {
 extension HYAvatar {
     public var firstCostumeID: Int? {
         guard let this = self as? HoYo.CharInventory4GI.HYAvatar4GI else { return nil }
-        return this.costumes.first?.id
+        return this.costumeIDs?.first
     }
 }
 
