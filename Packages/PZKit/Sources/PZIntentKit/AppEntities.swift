@@ -8,7 +8,6 @@ import Foundation
 // MARK: - AccountIntentAppEntity
 
 /// Local Profile Intent Entity. Named 'Account' here for compatibility purposes.
-@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
 public struct AccountIntentAppEntity: AppEntity {
     // MARK: Lifecycle
 
@@ -52,7 +51,6 @@ public struct AccountIntentAppEntity: AppEntity {
 
 // MARK: - WidgetBackgroundAppEntity
 
-@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
 public struct WidgetBackgroundAppEntity: AppEntity {
     // MARK: Lifecycle
 

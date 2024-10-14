@@ -7,7 +7,6 @@ import Foundation
 
 // MARK: - AutoRotationUsingResinWidgetStyleAppEnum
 
-@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
 public enum AutoRotationUsingResinWidgetStyleAppEnum: String, AppEnum {
     case byDefault = "default"
     case timer
@@ -28,7 +27,6 @@ public enum AutoRotationUsingResinWidgetStyleAppEnum: String, AppEnum {
 
 // MARK: - ExpeditionShowingMethodAppEnum
 
-@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
 public enum ExpeditionShowingMethodAppEnum: String, AppEnum {
     case byTimePoint
     case byTimeInterval
@@ -36,7 +34,8 @@ public enum ExpeditionShowingMethodAppEnum: String, AppEnum {
 
     // MARK: Public
 
-    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEnum.expeditionShowingMethod.title")
+    public static let typeDisplayRepresentation =
+        TypeDisplayRepresentation(name: "appEnum.expeditionShowingMethod.title")
     public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .byTimePoint: "appEnum.expeditionShowingMethod.byTimeStampWhenAccomplished",
         .byTimeInterval: "appEnum.expeditionShowingMethod.byTimeRemained",
@@ -46,7 +45,6 @@ public enum ExpeditionShowingMethodAppEnum: String, AppEnum {
 
 // MARK: - WeeklyBossesShowingMethodAppEnum
 
-@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
 public enum WeeklyBossesShowingMethodAppEnum: String, AppEnum {
     case disappearAfterCompleted
     case alwaysShow
@@ -54,7 +52,8 @@ public enum WeeklyBossesShowingMethodAppEnum: String, AppEnum {
 
     // MARK: Public
 
-    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEnum.WeeklyBossesShowingMethod.title")
+    public static let typeDisplayRepresentation =
+        TypeDisplayRepresentation(name: "appEnum.WeeklyBossesShowingMethod.title")
     public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .disappearAfterCompleted: "appEnum.WeeklyBossesShowingMethod.hiddenIfAllCompleted",
         .alwaysShow: "appEnum.WeeklyBossesShowingMethod.alwaysVisible",
