@@ -4,6 +4,8 @@
 
 import PZAccountKit
 
+// MARK: - HoYo.CharInventory4GI
+
 extension HoYo {
     public struct CharInventory4GI: CharacterInventory {
         public typealias AvatarType = HYAvatar4GI
@@ -12,70 +14,15 @@ extension HoYo {
         public struct HYAvatar4GI: HYAvatar {
             // MARK: Public
 
-            public struct Costume4GI: Codable, Sendable, Hashable {
-                public var id: Int
-                public var name: String
-                public var icon: String
-            }
-
-            public struct Artifact4GI: Codable, Sendable, Hashable {
-                // MARK: Public
-
-                public struct Set: Codable, Sendable, Hashable {
-                    public struct Affix: Codable, Sendable, Hashable {
-                        // MARK: Public
-
-                        public var activationNumber: Int
-                        public var effect: String
-
-                        // MARK: Internal
-
-                        enum CodingKeys: String, CodingKey {
-                            case activationNumber = "activation_number"
-                            case effect
-                        }
-                    }
-
-                    public var id: Int
-                    public var name: String
-                    public var affixes: [Affix]
-                }
-
-                public var pos: Int
-                public var rarity: Int
-                public var set: Set
-                public var id: Int
-                public var posName: String
-                public var level: Int
-                public var name: String
-                public var icon: String
-
-                // MARK: Internal
-
-                enum CodingKeys: String, CodingKey {
-                    case pos
-                    case rarity
-                    case set
-                    case id
-                    case posName = "pos_name"
-                    case level
-                    case name
-                    case icon
-                }
-            }
-
             public struct Weapon4GI: Codable, Sendable, Hashable {
                 // MARK: Public
 
-                public var rarity: Int
-                public var icon: String
                 public var id: Int
-                public var typeName: String
+                public var icon: String
+                public var type: Int
+                public var rarity: Int
                 public var level: Int
                 public var affixLevel: Int
-                public var type: Int
-                public var promoteLevel: Int
-                public var desc: String
 
                 // MARK: Internal
 
@@ -83,50 +30,24 @@ extension HoYo {
                     case rarity
                     case icon
                     case id
-                    case typeName = "type_name"
+                    case type
                     case level
                     case affixLevel = "affix_level"
-                    case type
-                    case promoteLevel = "promote_level"
-                    case desc
-                }
-            }
-
-            public struct Constellation4GI: Codable, Sendable, Hashable {
-                // MARK: Public
-
-                public var effect: String
-                public var id: Int
-                public var icon: String
-                public var name: String
-                public var pos: Int
-                public var isActived: Bool
-
-                // MARK: Internal
-
-                enum CodingKeys: String, CodingKey {
-                    case effect
-                    case id
-                    case icon
-                    case name
-                    case pos
-                    case isActived = "is_actived"
                 }
             }
 
             public var id: Int
-            public var element: String
-            public var costumes: [Costume4GI]
-            public var reliquaries: [Artifact4GI]
-            public var level: Int
-            public var image: String
             public var icon: String
-            public var weapon: Weapon4GI
-            public var fetter: Int
-            public var constellations: [Constellation4GI]
-            public var activedConstellationNum: Int
             public var name: String
+            public var element: String
+            public var fetter: Int
+            public var level: Int
             public var rarity: Int
+            public var activedConstellationNum: Int
+            public var image: String
+            public var weapon: Weapon4GI
+            public var relicSetIDs: [Int]? // 备用栏位。原始解读资料里面没有这一项。
+            public var costumeIDs: [Int]? // 备用栏位。原始解读资料里面没有这一项。
 
             public var isProtagonist: Bool {
                 switch id {
@@ -148,20 +69,61 @@ extension HoYo {
             enum CodingKeys: String, CodingKey {
                 case id
                 case element
-                case costumes
-                case reliquaries
                 case level
                 case image
                 case icon
                 case weapon
                 case fetter
-                case constellations
                 case activedConstellationNum = "actived_constellation_num"
                 case name
                 case rarity
             }
         }
 
-        public var avatars: [HYAvatar4GI]
+        public var list: [HYAvatar4GI]
+
+        public var avatars: [HYAvatar4GI] { list }
+    }
+}
+
+extension HoYo.CharInventory4GI {
+    public struct AvatarDetailPackage4GI: Codable, Sendable, Hashable, DecodableFromMiHoYoAPIJSONResult {
+        public var list: [AvatarDetail4GI]
+    }
+
+    /// 此处仅取用会用到的资讯。
+    public struct AvatarDetail4GI: Codable, Sendable, Hashable {
+        public struct Costume4GI: Codable, Sendable, Hashable {
+            public var id: Int
+            public var name: String
+            public var icon: String
+        }
+
+        public struct Relic4GI: Codable, Sendable, Hashable {
+            public var id: Int
+            public var set: RelicSet4GI
+        }
+
+        public struct RelicSet4GI: Codable, Sendable, Hashable {
+            public struct RelicSetAffix4GI: Codable, Sendable, Hashable {
+                // MARK: Public
+
+                public let activationNumber: Int
+
+                // MARK: Internal
+
+                enum CodingKeys: String, CodingKey {
+                    case activationNumber = "activation_number"
+                }
+            }
+
+            public let id: Int
+            public let name: String
+            public let affixes: [RelicSetAffix4GI]
+        }
+
+        public var base: HYAvatar4GI
+        public var relics: [Relic4GI]?
+        public var costumes: [Costume4GI]?
     }
 }

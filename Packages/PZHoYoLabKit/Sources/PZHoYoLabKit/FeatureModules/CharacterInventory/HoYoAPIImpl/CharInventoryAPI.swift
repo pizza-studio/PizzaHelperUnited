@@ -65,7 +65,9 @@ extension HoYo {
             }
         }()
 
-        let request = try await Self.generateRecordAPIRequest(
+        // QUERYING THE LIST.
+
+        let request1 = try await Self.generateRecordAPIRequest(
             httpMethod: .post, // 不是 .get。
             region: server.region,
             path: server.region.characterInventoryRetrievalPath,
@@ -74,10 +76,59 @@ extension HoYo {
             deviceID: deviceId,
             additionalHeaders: additionalHeaders
         )
+        request1.printDebugIntelIfDebugMode()
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let (data1, _) = try await URLSession.shared.data(for: request1)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        // TODO: Remove the following after the operation completes.
+        #if DEBUG
+        print("-----------------------------------")
+        print(String(data: data1, encoding: .utf8)!)
+        print("-----------------------------------")
+        #endif
+        var decodedResult = try CharInventory4GI.decodeFromMiHoYoAPIJSONResult(data: data1)
+
+        // QUERYING DETAILS.
+
+        let postBody: NSDictionary = [
+            "character_ids": decodedResult.avatars.map(\.id),
+            "role_id": uid,
+            "server": server.rawValue,
+            "sort_type": "1",
+        ]
+
+        let request2 = try await Self.generateRecordAPIRequest(
+            httpMethod: .post, // 不是 .get。
+            region: server.region,
+            path: server.region.characterInventoryDetailRetrievalPath,
+            queryItems: queryItems,
+            body: try? JSONSerialization.data(withJSONObject: postBody, options: []),
+            cookie: cookie,
+            deviceID: deviceId,
+            additionalHeaders: additionalHeaders
+        )
+        request2.printDebugIntelIfDebugMode()
+
+        let (data2, _) = try await URLSession.shared.data(for: request2)
+
+        // TODO: Remove the following after the operation completes.
+        #if DEBUG
+        print("-----------------------------------")
+        print(String(data: data2, encoding: .utf8)!)
+        print("-----------------------------------")
+        #endif
+        let decodedDetails = try CharInventory4GI.AvatarDetailPackage4GI.decodeFromMiHoYoAPIJSONResult(data: data2)
+
+        // Insert new data.
+
+        let newAvatars: [CharInventory4GI.HYAvatar4GI] = decodedDetails.list.map { avatarDetailObj in
+            var newAvatar = avatarDetailObj.base
+            newAvatar.costumeIDs = avatarDetailObj.costumes?.map(\.id) ?? []
+            newAvatar.relicSetIDs = avatarDetailObj.relics?.map(\.set.id) ?? []
+            return newAvatar
+        }
+        decodedResult.list = newAvatars
+        return decodedResult
     }
 
     fileprivate static func characterInventory4HSR(
@@ -133,13 +184,26 @@ extension HoYo {
 
 extension HoYo.AccountRegion {
     public var characterInventoryRetrievalPath: String {
+        // 备忘：目前的方法无法拿到原神角色的圣遗物套装资讯。
+        // 回头得修改成这个步骤：先从「/character/list/」拿到所有库存角色 ID 阵列，再用「/character/detail/」请求详情。
         switch (self, game) {
-        case (.hoyoLab, .genshinImpact): "/game_record/app/genshin/api/character"
-        case (.miyoushe, .genshinImpact): "/game_record/app/genshin/api/character"
+        case (.hoyoLab, .genshinImpact): "/game_record/app/genshin/api/character/list"
+        case (.miyoushe, .genshinImpact): "/game_record/app/genshin/api/character/list"
         case (.hoyoLab, .starRail): "/game_record/app/hkrpg/api/avatar/info"
         case (.miyoushe, .starRail): "/game_record/app/hkrpg/api/avatar/basic"
         case (.hoyoLab, .zenlessZone): "/event/game_record_zzz/api/zzz/avatar/basic" // 乱填，暂不实作。
         case (.miyoushe, .zenlessZone): "/event/game_record_zzz/api/zzz/avatar/basic" // 乱填，暂不实作。
+        }
+    }
+
+    public var characterInventoryDetailRetrievalPath: String {
+        switch (self, game) {
+        case (.hoyoLab, .genshinImpact): "/game_record/app/genshin/api/character/detail"
+        case (.miyoushe, .genshinImpact): "/game_record/app/genshin/api/character/detail"
+        case (.hoyoLab, .starRail): "/game_record/app/hkrpg/api/avatar/info"
+        case (.miyoushe, .starRail): "/game_record/app/hkrpg/api/avatar/info"
+        case (.hoyoLab, .zenlessZone): "/event/game_record_zzz/api/zzz/avatar/info" // 乱填，暂不实作。
+        case (.miyoushe, .zenlessZone): "/event/game_record_zzz/api/zzz/avatar/info" // 乱填，暂不实作。
         }
     }
 }
