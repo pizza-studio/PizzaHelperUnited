@@ -17,14 +17,18 @@ extension DecodableFromMiHoYoAPIJSONResult {
         do {
             result = try decoder.decode(MiHoYoAPIJSONResult<Self>.self, from: data)
         } catch {
-            throw MiHoYoAPIError(
-                retcode: -114514, message: """
-                DECODE ITEM: \(String(data: data, encoding: .utf8)!)
-                --------------
-                rawError:
-                \(error)
-                """
-            )
+            let errorMessage = """
+            DECODE ITEM: \(String(data: data, encoding: .utf8)!)
+            --------------
+            rawError:
+            \(error)
+            """
+            #if DEBUG
+            print("-----------------------------------")
+            print(errorMessage)
+            print("-----------------------------------")
+            #endif
+            throw MiHoYoAPIError(retcode: -114514, message: errorMessage)
         }
         if result.retcode == 0 {
             // swiftlint:disable:next force_unwrapping
