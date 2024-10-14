@@ -35,6 +35,13 @@ extension Enka.GameElement {
         case "Ice": self = .cryo
         case "Imaginary": self = .fantastico
         case "Quantum": self = .posesto
+        case "Anemo": self = .anemo
+        case "Cryo": self = .cryo
+        case "Dendro": self = .dendro
+        case "Electro": self = .electro
+        case "Geo": self = .geo
+        case "Hydro": self = .hydro
+        case "Pyro": self = .pyro
         default: return nil
         }
     }

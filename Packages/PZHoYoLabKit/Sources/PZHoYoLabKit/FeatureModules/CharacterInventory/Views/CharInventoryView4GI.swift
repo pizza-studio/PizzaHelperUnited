@@ -188,18 +188,18 @@ private struct AvatarListItem4GI: View {
                             .lineLimit(1)
                         Spacer()
                     }
-                    HStack(spacing: 0) {
-                        ForEach(avatar.reliquaries, id: \.id) { reliquary in
-                            AsyncImage(url: reliquary.icon.asURL) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            } placeholder: {
-                                ProgressView()
-                            }
-                        }
-                        .frame(width: 20, height: 20)
-                    }.frame(height: 20)
+                    //  HStack(spacing: 0) {
+                    //      ForEach(avatar.reliquaries, id: \.id) { reliquary in
+                    //          AsyncImage(url: reliquary.icon.asURL) { image in
+                    //              image
+                    //                  .resizable()
+                    //                  .aspectRatio(contentMode: .fit)
+                    //          } placeholder: {
+                    //              ProgressView()
+                    //          }
+                    //      }
+                    //      .frame(width: 20, height: 20)
+                    //  }.frame(height: 20)
                 }
             }
             if !condensed {
