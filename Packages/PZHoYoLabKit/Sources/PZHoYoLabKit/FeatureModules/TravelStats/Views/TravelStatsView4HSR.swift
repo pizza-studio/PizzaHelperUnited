@@ -36,7 +36,7 @@ public struct TravelStatsView4HSR: TravelStatsView {
                 )
                 if !data.stats.abyssProcess.isEmpty {
                     TravelStatLabel(
-                        label: "hylKit.travelStats4HSR.abyss",
+                        label: "hylKit.travelStats4HSR.mostRecentChallenge",
                         value: data.stats.abyssProcess
                     )
                 }
