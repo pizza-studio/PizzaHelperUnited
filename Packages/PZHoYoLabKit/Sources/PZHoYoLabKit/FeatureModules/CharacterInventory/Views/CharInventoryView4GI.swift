@@ -188,18 +188,39 @@ private struct AvatarListItem4GI: View {
                             .lineLimit(1)
                         Spacer()
                     }
-                    //  HStack(spacing: 0) {
-                    //      ForEach(avatar.reliquaries, id: \.id) { reliquary in
-                    //          AsyncImage(url: reliquary.icon.asURL) { image in
-                    //              image
-                    //                  .resizable()
-                    //                  .aspectRatio(contentMode: .fit)
-                    //          } placeholder: {
-                    //              ProgressView()
-                    //          }
-                    //      }
-                    //      .frame(width: 20, height: 20)
-                    //  }.frame(height: 20)
+                    HStack(spacing: 0) {
+                        // 此处的 relicSetIDs 与 relicIconURLs 的容量必定相等，无须额外的 sanity check。
+                        if let relicSetIDs = avatar.relicSetIDs, let relicIconURLs = avatar.relicIconURLs {
+                            ForEach(Array(relicSetIDs.enumerated()), id: \.offset) { offset, relicSetID in
+                                let relicSetIDStr = relicSetID.description.dropFirst().dropLast().description
+                                if let artifactType = Enka.ArtifactType(typeID: offset + 1, game: .genshinImpact) {
+                                    Group {
+                                        let assetName = "gi_relic_\(relicSetIDStr)_\(artifactType.assetSuffix)"
+                                        if let img = Enka.queryImageAssetSUI(for: assetName) {
+                                            img.resizable()
+                                                .frame(width: 22.5, height: 22.5)
+                                                .clipped()
+                                                .scaledToFit()
+                                                .frame(width: 20, height: 20)
+                                        } else {
+                                            AsyncImage(url: relicIconURLs[offset].asURL) { image in
+                                                image.resizable()
+                                                    .frame(width: 22.5, height: 22.5)
+                                                    .clipped()
+                                                    .scaledToFit()
+                                                    .frame(width: 20, height: 20)
+                                            } placeholder: {
+                                                ProgressView()
+                                            }
+                                            .clipShape(Circle())
+                                        }
+                                    }
+                                    .scaledToFit()
+                                    .frame(width: 20, height: 20)
+                                }
+                            }
+                        }
+                    }.frame(height: 20)
                 }
             }
             if !condensed {

@@ -46,6 +46,8 @@ extension HoYo {
             public var activedConstellationNum: Int
             public var image: String
             public var weapon: Weapon4GI
+            public var relicIconURLs: [String]? // 备用栏位。原始解读资料里面没有这一项。
+            public var relicIDs: [Int]? // 备用栏位。原始解读资料里面没有这一项。
             public var relicSetIDs: [Int]? // 备用栏位。原始解读资料里面没有这一项。
             public var costumeIDs: [Int]? // 备用栏位。原始解读资料里面没有这一项。
 
@@ -102,6 +104,7 @@ extension HoYo.CharInventory4GI {
         public struct Relic4GI: Codable, Sendable, Hashable {
             public var id: Int
             public var set: RelicSet4GI
+            public var icon: String
         }
 
         public struct RelicSet4GI: Codable, Sendable, Hashable {
