@@ -14,9 +14,8 @@ import SwiftUI
 public struct CharacterInventoryView4HSR: CharacterInventoryView {
     // MARK: Lifecycle
 
-    public init(data: InventoryData, isMiyousheUID: Bool) {
+    public init(data: InventoryData) {
         self.data = data
-        self.isMiyousheUID = isMiyousheUID
     }
 
     // MARK: Public
@@ -31,11 +30,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(characterStats, bundle: .module)
                     if expanded {
-                        if !isMiyousheUID {
-                            Text(goldStats, bundle: .module)
-                        } else {
-                            Text("hylKit.inventoryView.characters.miyousheLimitationNotes".i18nHYLKit)
-                        }
+                        Text(goldStats, bundle: .module)
                     }
                 }.font(.footnote)
             }.listRowMaterialBackground()
@@ -81,7 +76,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
     func renderAllAvatarListFull() -> some View {
         Section {
             ForEach(showingAvatars, id: \.id) { avatar in
-                AvatarListItemHSR(avatar: avatar, condensed: false, limited: isMiyousheUID)
+                AvatarListItemHSR(avatar: avatar, condensed: false)
                     .padding(.horizontal)
                     .padding(.vertical, 4)
                     .background {
@@ -121,8 +116,6 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
 
     // MARK: Private
 
-    private let isMiyousheUID: Bool
-
     @State private var allAvatarListDisplayType: InventoryViewFilterType = .all
     @State private var expanded: Bool = true
     @State private var containerSize: CGSize = .init(width: 320, height: 320)
@@ -143,10 +136,9 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
 private struct AvatarListItemHSR: View {
     // MARK: Lifecycle
 
-    public init(avatar: HoYo.CharInventory4HSR.HYAvatar4HSR, condensed: Bool, limited: Bool = false) {
+    public init(avatar: HoYo.CharInventory4HSR.HYAvatar4HSR, condensed: Bool) {
         self.avatar = avatar
         self.condensed = condensed
-        self.limited = limited // 是否被米游社限制了可提供的资料种类。
     }
 
     // MARK: Public
@@ -216,49 +208,34 @@ private struct AvatarListItemHSR: View {
                         Spacer().frame(height: 20)
                     }
                 }
-                if !limited {
-                    if let equip = avatar.equip {
-                        ZStack(alignment: .bottomLeading) {
-                            Group {
-                                if let img = Enka.queryImageAssetSUI(for: "hsr_light_cone_\(equip.id)") {
-                                    img.resizable()
+                if let equip = avatar.equip {
+                    ZStack(alignment: .bottomLeading) {
+                        Group {
+                            if let img = Enka.queryImageAssetSUI(for: "hsr_light_cone_\(equip.id)") {
+                                img.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            } else {
+                                AsyncImage(url: equip.icon.asURL) { image in
+                                    image
+                                        .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                } else {
-                                    AsyncImage(url: equip.icon.asURL) { image in
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
-                                    .clipShape(Circle())
+                                } placeholder: {
+                                    ProgressView()
                                 }
+                                .clipShape(Circle())
                             }
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
                         }
-                        .corneredTag(
-                            verbatim: "❖\(equip.rank)",
-                            alignment: .topLeading
-                        )
-                        .corneredTag(
-                            verbatim: "Lv.\(equip.level)",
-                            alignment: .bottomTrailing
-                        )
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
                     }
-                } else {
-                    if let commonCharData = Enka.Sputnik.shared.db4HSR.characters[avatar.id.description],
-                       let lifePath = Enka.LifePath(rawValue: commonCharData.avatarBaseType) {
-                        Enka.queryImageAssetSUI(for: lifePath.iconAssetName)?
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                            .padding(10)
-                            .background {
-                                Color.black.opacity(0.2).clipShape(Circle())
-                            }
-                            .frame(width: 50, height: 50)
-                    }
+                    .corneredTag(
+                        verbatim: "❖\(equip.rank)",
+                        alignment: .topLeading
+                    )
+                    .corneredTag(
+                        verbatim: "Lv.\(equip.level)",
+                        alignment: .bottomTrailing
+                    )
                 }
             }
         }
@@ -267,7 +244,6 @@ private struct AvatarListItemHSR: View {
     // MARK: Private
 
     private let avatar: HoYo.CharInventory4HSR.HYAvatar4HSR
-    private let limited: Bool
 
     @State private var condensed: Bool
 
