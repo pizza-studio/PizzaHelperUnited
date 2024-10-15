@@ -286,7 +286,7 @@ private struct AvatarListItemHSR: View {
     private func queryArtifactImg(for target: any HoyoArtifactProtocol4HSR) -> Image? {
         guard let neutralData = Enka.Sputnik.shared.db4HSR.artifacts[target.id.description] else { return nil }
         guard let type = Enka.ArtifactType(typeID: target.pos, game: .starRail) else { return nil } // Might need fix.
-        let assetName = "relic_\(neutralData.setID)_\(type.assetSuffix)"
+        let assetName = "hsr_relic_\(neutralData.setID)_\(type.assetSuffix)"
         return Enka.queryImageAssetSUI(for: assetName)
     }
 }
