@@ -89,7 +89,9 @@ extension CharacterInventoryView {
             }
 
             if let avatar = avatar as? HoYo.CharInventory4GI.AvatarType {
-                weaponGold += avatar.weapon.affixLevel
+                if avatar.weapon.rarity == 5 {
+                    weaponGold += avatar.weapon.affixLevel
+                }
             } else if let avatar = avatar as? HoYo.CharInventory4HSR.AvatarType {
                 if let equip = avatar.equip, equip.rarity == 5 {
                     weaponGold += equip.rank
