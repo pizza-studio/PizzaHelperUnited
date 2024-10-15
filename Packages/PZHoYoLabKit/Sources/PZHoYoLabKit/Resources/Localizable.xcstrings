@@ -2344,34 +2344,6 @@
         }
       }
     },
-    "hylKit.travelStats4HSR.abyss" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forgotten Hall"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "忘却の庭"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "忘却之庭"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "忘卻之庭"
-          }
-        }
-      }
-    },
     "hylKit.travelStats4HSR.achievements" : {
       "localizations" : {
         "en" : {
@@ -2480,6 +2452,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "活躍天數"
+          }
+        }
+      }
+    },
+    "hylKit.travelStats4HSR.mostRecentChallenge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Challenge"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近完成した挑戦"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近期挑战"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近期挑戰"
           }
         }
       }
