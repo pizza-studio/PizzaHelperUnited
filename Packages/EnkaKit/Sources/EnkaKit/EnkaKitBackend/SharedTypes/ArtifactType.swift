@@ -65,11 +65,11 @@ extension Enka {
             case .hsrFoot: 3
             case .hsrObject: 0
             case .hsrNeck: 1
-            case .giFlower: 0
-            case .giPlume: 1
-            case .giSands: 2
-            case .giGoblet: 3
-            case .giCirclet: 4
+            case .giFlower: 4
+            case .giPlume: 2
+            case .giSands: 5
+            case .giGoblet: 1
+            case .giCirclet: 3
             }
         }
 

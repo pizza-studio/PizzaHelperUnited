@@ -125,6 +125,8 @@ extension HoYo {
             var newAvatar = avatarDetailObj.base
             newAvatar.costumeIDs = avatarDetailObj.costumes?.map(\.id) ?? []
             newAvatar.relicSetIDs = avatarDetailObj.relics?.map(\.set.id) ?? []
+            newAvatar.relicIDs = avatarDetailObj.relics?.map(\.id) ?? []
+            newAvatar.relicIconURLs = avatarDetailObj.relics?.map(\.icon) ?? []
             return newAvatar
         }
         decodedResult.list = newAvatars
