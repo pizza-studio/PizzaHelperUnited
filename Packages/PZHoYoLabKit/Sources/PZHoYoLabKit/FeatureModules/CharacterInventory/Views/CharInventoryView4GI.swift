@@ -14,9 +14,8 @@ import SwiftUI
 public struct CharacterInventoryView4GI: CharacterInventoryView {
     // MARK: Lifecycle
 
-    public init(data: InventoryData, isMiyousheUID: Bool) {
+    public init(data: InventoryData) {
         self.data = data
-        _ = isMiyousheUID // Keep this to avoid formatters from removing the parameter.
     }
 
     // MARK: Public

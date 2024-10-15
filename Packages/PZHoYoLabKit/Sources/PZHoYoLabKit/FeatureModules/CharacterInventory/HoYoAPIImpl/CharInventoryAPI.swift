@@ -142,7 +142,8 @@ extension HoYo {
     ) async throws
         -> CharInventory4HSR {
         await HoYo.waitFor450ms()
-        var queryItems: [URLQueryItem] = [
+        let queryItems: [URLQueryItem] = [
+            .init(name: "need_wiki", value: "false"),
             .init(name: "role_id", value: uid),
             .init(name: "server", value: server.rawValue),
         ]
@@ -157,22 +158,14 @@ extension HoYo {
             }
         }()
 
-        var newCookie = cookie
-        switch server.region {
-        case .miyoushe:
-            queryItems.insert(.init(name: "rolePageAccessNotAllowed", value: ""), at: 0)
-            let cookieToken = try await cookieToken(game: .starRail, cookie: cookie, queryItems: queryItems)
-            newCookie = "account_id=\(cookieToken.uid); cookie_token=\(cookieToken.cookieToken); " + cookie
-        case .hoyoLab:
-            queryItems.insert(.init(name: "need_wiki", value: "false"), at: 0)
-        }
+        // QUERYING DETAILS.
 
         let request = try await Self.generateRecordAPIRequest(
             httpMethod: .get, // 不是 .post。
             region: server.region,
-            path: server.region.characterInventoryRetrievalPath,
+            path: server.region.characterInventoryDetailRetrievalPath,
             queryItems: queryItems,
-            cookie: newCookie,
+            cookie: cookie,
             deviceID: deviceId,
             additionalHeaders: additionalHeaders
         )
@@ -186,12 +179,10 @@ extension HoYo {
 
 extension HoYo.AccountRegion {
     public var characterInventoryRetrievalPath: String {
-        // 备忘：目前的方法无法拿到原神角色的圣遗物套装资讯。
-        // 回头得修改成这个步骤：先从「/character/list/」拿到所有库存角色 ID 阵列，再用「/character/detail/」请求详情。
         switch (self, game) {
         case (.hoyoLab, .genshinImpact): "/game_record/app/genshin/api/character/list"
         case (.miyoushe, .genshinImpact): "/game_record/app/genshin/api/character/list"
-        case (.hoyoLab, .starRail): "/game_record/app/hkrpg/api/avatar/info"
+        case (.hoyoLab, .starRail): "/game_record/app/hkrpg/api/avatar/basic"
         case (.miyoushe, .starRail): "/game_record/app/hkrpg/api/avatar/basic"
         case (.hoyoLab, .zenlessZone): "/event/game_record_zzz/api/zzz/avatar/basic" // 乱填，暂不实作。
         case (.miyoushe, .zenlessZone): "/event/game_record_zzz/api/zzz/avatar/basic" // 乱填，暂不实作。

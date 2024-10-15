@@ -15,8 +15,8 @@ public protocol CharacterInventory: Codable, Hashable, Sendable, DecodableFromMi
 
 extension CharacterInventory {
     @MainActor @ViewBuilder
-    public func asView(isMiyousheUID: Bool) -> some View {
-        ViewType(data: self, isMiyousheUID: isMiyousheUID)
+    public func asView() -> some View {
+        ViewType(data: self)
     }
 }
 
@@ -40,7 +40,7 @@ extension HYAvatar {
 @MainActor
 public protocol CharacterInventoryView: View {
     associatedtype InventoryData: CharacterInventory where Self == InventoryData.ViewType
-    init(data: InventoryData, isMiyousheUID: Bool)
+    init(data: InventoryData)
     var data: InventoryData { get }
     @MainActor @ViewBuilder var body: Self.Body { get }
 }

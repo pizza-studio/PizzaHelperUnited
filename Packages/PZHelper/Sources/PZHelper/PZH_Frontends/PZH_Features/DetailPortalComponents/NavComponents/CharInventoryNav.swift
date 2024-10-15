@@ -72,15 +72,11 @@ public struct CharInventoryNav: View {
                     Text("dpv.characterInventory.notice.EmptyInventoryResult".i18nPZHelper).font(.caption)
                 } else {
                     if let data = data as? HoYo.CharInventory4GI {
-                        NavigationLink(destination: data.asView(isMiyousheUID: false)) {
+                        NavigationLink(destination: data.asView()) {
                             thisLabel
                         }
                     } else if let data = data as? HoYo.CharInventory4HSR {
-                        let isMiyousheUID = switch profile.server.region {
-                        case .hoyoLab: false
-                        case .miyoushe: true
-                        }
-                        NavigationLink(destination: data.asView(isMiyousheUID: isMiyousheUID)) {
+                        NavigationLink(destination: data.asView()) {
                             thisLabel
                         }
                     }
