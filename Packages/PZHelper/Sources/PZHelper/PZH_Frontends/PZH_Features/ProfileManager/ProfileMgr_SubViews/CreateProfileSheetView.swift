@@ -139,27 +139,27 @@ extension ProfileManagerPageContent {
             Task(priority: .userInitiated) { @MainActor in
                 if !profile.cookie.isEmpty {
                     do {
-                        var map = [Pizza.SupportedGame: FetchedAccount]()
+                        var map = [(Pizza.SupportedGame, FetchedAccount)]()
 
                         try await HoYo.getUserGameRolesByCookie(
                             region: region.withGame(.genshinImpact),
                             cookie: profile.cookie
                         ).forEach {
-                            map[.genshinImpact] = $0
+                            map.append((.genshinImpact, $0))
                         }
 
                         try await HoYo.getUserGameRolesByCookie(
                             region: region.withGame(.starRail),
                             cookie: profile.cookie
                         ).forEach {
-                            map[.starRail] = $0
+                            map.append((.starRail, $0))
                         }
 
                         try await HoYo.getUserGameRolesByCookie(
                             region: region.withGame(.zenlessZone),
                             cookie: profile.cookie
                         ).forEach {
-                            map[.zenlessZone] = $0
+                            map.append((.zenlessZone, $0))
                         }
 
                         for (game, fetchedAccount) in map {
