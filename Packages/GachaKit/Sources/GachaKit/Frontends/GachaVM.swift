@@ -249,6 +249,9 @@ extension GachaVM {
             ),
             cancelPreviousTask: immediately,
             givenTask: {
+                defer {
+                    url.stopAccessingSecurityScopedResource()
+                }
                 var fetchedFile: UIGFv4
                 let decoder = JSONDecoder()
                 switch format {
