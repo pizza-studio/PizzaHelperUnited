@@ -104,13 +104,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "米游社 / HoYoLAB 账户设定内的资料公开权限不足。"
+            "value" : "米游社 / HoYoLAB 账号设定内的资料公开权限不足。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "米遊社 / HoYoLAB 帳戶設定內的資料公開權限不足。"
+            "value" : "米遊社 / HoYoLAB 帳號設定內的資料公開權限不足。"
           }
         }
       }
