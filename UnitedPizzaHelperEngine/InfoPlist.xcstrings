@@ -7,25 +7,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "United Pizza Helper"
+            "value" : "United Pizza Engine"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "統一ピザ助手"
+            "value" : "統一ピザエンジン"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一桶披萨助手"
+            "value" : "统一披萨引擎"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一桶披薩助手"
+            "value" : "統一披薩引擎"
           }
         }
       }
@@ -36,25 +36,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "United Pizza Helper"
+            "value" : "United Pizza Engine"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "統一ピザ助手"
+            "value" : "統一ピザエンジン"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一桶披萨助手"
+            "value" : "统一披萨引擎"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一桶披薩助手"
+            "value" : "統一披薩引擎"
           }
         }
       }
