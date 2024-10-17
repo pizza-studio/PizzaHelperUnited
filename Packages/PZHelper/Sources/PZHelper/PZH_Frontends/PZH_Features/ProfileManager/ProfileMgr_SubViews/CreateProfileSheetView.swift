@@ -40,7 +40,7 @@ extension ProfileManagerPageContent {
                             Button("sys.done".i18nBaseKit) {
                                 saveProfile()
                                 // globalDailyNoteCardRefreshSubject.send(())
-                                alertToastEventStatus.isDoneButtonTapped.toggle()
+                                alertToastEventStatus.isProfileTaskSucceeded.toggle()
                             }
                             .disabled(status != .gotProfile)
                         }
@@ -166,7 +166,7 @@ extension ProfileManagerPageContent {
                             try await handleSingleFetchedUnit(fetchedAccount, game: game)
                         }
 
-                        alertToastEventStatus.isDoneButtonTapped.toggle()
+                        alertToastEventStatus.isProfileTaskSucceeded.toggle()
                         try modelContext.save()
                         isShown.toggle()
                     } catch {
