@@ -6,6 +6,6 @@ import Observation
 
 @Observable
 final class AlertToastEventStatus {
-    public var isDoneButtonTapped = false
-    public var isLoginSucceeded = false
+    public var isProfileTaskSucceeded = false
+    public var isFailureSituationTriggered = false
 }
