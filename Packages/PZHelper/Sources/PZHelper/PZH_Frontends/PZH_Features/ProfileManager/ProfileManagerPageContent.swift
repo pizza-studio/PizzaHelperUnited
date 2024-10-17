@@ -80,18 +80,26 @@ struct ProfileManagerPageContent: View {
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
         .onAppear(perform: bleachInvalidProfiles)
-        #if os(iOS) || targetEnvironment(macCatalyst)
-            .toolbar { EditButton() }
-        #endif
-            .toast(isPresenting: $alertToastEventStatus.isDoneButtonTapped) {
-                AlertToast(
-                    displayMode: .alert,
-                    type: .complete(.green),
-                    title: "profileMgr.added.succeeded".i18nPZHelper
-                )
+        .toolbar {
+            #if os(iOS) || targetEnvironment(macCatalyst)
+            ToolbarItem(placement: .confirmationAction) {
+                Button((isEditMode.isEditing) ? "sys.done".i18nBaseKit : "sys.edit".i18nBaseKit) {
+                    withAnimation {
+                        isEditMode = (isEditMode.isEditing) ? .inactive : .active
+                    }
+                }
             }
+            #endif
+        }
+        .toast(isPresenting: $alertToastEventStatus.isDoneButtonTapped) {
+            AlertToast(
+                displayMode: .alert,
+                type: .complete(.green),
+                title: "profileMgr.added.succeeded".i18nPZHelper
+            )
+        }
         #if os(iOS) || targetEnvironment(macCatalyst)
-            .environment(\.editMode, $isEditMode)
+        .environment(\.editMode, $isEditMode)
         #endif
     }
 
