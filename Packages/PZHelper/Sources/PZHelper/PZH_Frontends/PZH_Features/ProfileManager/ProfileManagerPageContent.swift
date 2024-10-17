@@ -8,6 +8,7 @@ import EnkaKit
 import Observation
 import PZAccountKit
 import PZBaseKit
+import SFSafeSymbols
 import SwiftData
 import SwiftUI
 
@@ -90,12 +91,23 @@ struct ProfileManagerPageContent: View {
                 }
             }
             #endif
+            ToolbarItem(placement: .confirmationAction) {
+                ProfileBackupRestoreMenu(importCompletionHandler: handleImportProfilePackResult)
+                    .disabled(isBusy || isEditMode.isEditing)
+            }
         }
-        .toast(isPresenting: $alertToastEventStatus.isDoneButtonTapped) {
+        .toast(isPresenting: $alertToastEventStatus.isProfileTaskSucceeded) {
             AlertToast(
                 displayMode: .alert,
                 type: .complete(.green),
-                title: "profileMgr.added.succeeded".i18nPZHelper
+                title: "profileMgr.toast.taskSucceeded".i18nPZHelper
+            )
+        }
+        .toast(isPresenting: $alertToastEventStatus.isFailureSituationTriggered) {
+            AlertToast(
+                displayMode: .alert,
+                type: .complete(.green),
+                title: "profileMgr.toast.taskFailed".i18nPZHelper
             )
         }
         #if os(iOS) || targetEnvironment(macCatalyst)
@@ -186,8 +198,20 @@ struct ProfileManagerPageContent: View {
 
     private func addProfile(_ profile: PZProfileMO) {
         withAnimation {
-            modelContext.insert(profile)
-            try? modelContext.save()
+            do {
+                let uuid = profile.uuid
+                try modelContext.delete(
+                    model: PZProfileMO.self,
+                    where: #Predicate { obj in
+                        obj.uuid == uuid
+                    },
+                    includeSubclasses: false
+                )
+                modelContext.insert(profile)
+                try modelContext.save()
+            } catch {
+                return
+            }
         }
     }
 
@@ -253,6 +277,32 @@ struct ProfileManagerPageContent: View {
         profiles.filter(\.isInvalid).forEach { profile in
             modelContext.delete(profile)
             try? modelContext.save()
+        }
+    }
+
+    private func handleImportProfilePackResult(_ result: Result<URL, any Error>) {
+        switch result {
+        case .failure:
+            alertToastEventStatus.isFailureSituationTriggered.toggle()
+        case let .success(url):
+            defer {
+                url.stopAccessingSecurityScopedResource()
+            }
+            guard url.startAccessingSecurityScopedResource() else {
+                alertToastEventStatus.isFailureSituationTriggered.toggle()
+                return
+            }
+            do {
+                let data: Data = try Data(contentsOf: url)
+                let decoded = try JSONDecoder().decode([PZProfileSendable].self, from: data)
+                decoded.forEach { profileSendable in
+                    addProfile(profileSendable.asMO)
+                }
+            } catch {
+                alertToastEventStatus.isFailureSituationTriggered.toggle()
+                return
+            }
+            alertToastEventStatus.isProfileTaskSucceeded.toggle()
         }
     }
 }

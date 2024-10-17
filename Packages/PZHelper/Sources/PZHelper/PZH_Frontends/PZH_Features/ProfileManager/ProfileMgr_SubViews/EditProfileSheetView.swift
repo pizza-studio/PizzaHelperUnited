@@ -35,14 +35,14 @@ extension ProfileManagerPageContent {
                                         isShown.toggle()
                                         Broadcaster.shared.requireOSNotificationCenterAuthorization()
                                         Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-                                        alertToastEventStatus.isDoneButtonTapped.toggle()
+                                        alertToastEventStatus.isProfileTaskSucceeded.toggle()
                                     } catch {
                                         saveProfileError = .saveDataError(error)
                                         isSaveProfileFailAlertShown.toggle()
                                     }
                                 } else {
                                     isShown.toggle()
-                                    alertToastEventStatus.isDoneButtonTapped.toggle()
+                                    alertToastEventStatus.isProfileTaskSucceeded.toggle()
                                 }
                             }
                         }
