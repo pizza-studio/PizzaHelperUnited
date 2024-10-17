@@ -17,8 +17,6 @@
 		5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */; };
 		5BFB9D2A2C6BBCE700DC648F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */; };
 		5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */; };
-		5BFD6B922C628CD8000A63E9 /* DemoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B912C628CD8000A63E9 /* DemoContentView.swift */; };
-		5BFD6B942C628CD8000A63E9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B932C628CD8000A63E9 /* Item.swift */; };
 		5BFD6B962C628CDA000A63E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B952C628CDA000A63E9 /* Assets.xcassets */; };
 		5BFD6B992C628CDA000A63E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */; };
 		5BFD6BAF2C628EE5000A63E9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6BAB2C628EDA000A63E9 /* LICENSE */; };
@@ -51,8 +49,6 @@
 		5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		5BFD6B8C2C628CD8000A63E9 /* United Pizza Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "United Pizza Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedPizzaHelperApp.swift; sourceTree = "<group>"; };
-		5BFD6B912C628CD8000A63E9 /* DemoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoContentView.swift; sourceTree = "<group>"; };
-		5BFD6B932C628CD8000A63E9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5BFD6B952C628CDA000A63E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5BFD6B9A2C628CDA000A63E9 /* UnitedPizzaHelperEngine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UnitedPizzaHelperEngine.entitlements; sourceTree = "<group>"; };
@@ -159,8 +155,6 @@
 			children = (
 				5B560A162C6BB64300175FB1 /* Info.plist */,
 				5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */,
-				5BFD6B912C628CD8000A63E9 /* DemoContentView.swift */,
-				5BFD6B932C628CD8000A63E9 /* Item.swift */,
 				5BFD6B952C628CDA000A63E9 /* Assets.xcassets */,
 				5BFD6B9A2C628CDA000A63E9 /* UnitedPizzaHelperEngine.entitlements */,
 				5BFD6B972C628CDA000A63E9 /* Preview Content */,
@@ -300,8 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BFD6B922C628CD8000A63E9 /* DemoContentView.swift in Sources */,
-				5BFD6B942C628CD8000A63E9 /* Item.swift in Sources */,
 				5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
