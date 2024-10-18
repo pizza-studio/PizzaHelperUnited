@@ -70,7 +70,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
             try? await Task.sleep(nanoseconds: UInt64(sleepNS * 1_000_000_000))
             let (data, _) = try await URLSession.shared.data(for: request)
 
-            var result = try GachaResult.decodeFromMiHoYoAPIJSONResult(data: data)
+            var result = try GachaResult.decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "GachaClient().next()")
 
             result.listConverted = []
             for entryRaw in result.list {

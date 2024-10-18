@@ -94,7 +94,7 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.AbyssReportData4GI()")
     }
 
     fileprivate static func abyssReportData4HSR(
@@ -150,7 +150,7 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.abyssReportData4HSR()")
     }
 }
 

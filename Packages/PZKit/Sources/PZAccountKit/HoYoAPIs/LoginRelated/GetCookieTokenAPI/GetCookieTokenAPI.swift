@@ -23,7 +23,7 @@ extension HoYo {
         )
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        let result = try GetCookieTokenResult.decodeFromMiHoYoAPIJSONResult(data: data)
+        let result = try GetCookieTokenResult.decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.cookieToken()")
 
         return result
     }
