@@ -219,7 +219,7 @@ extension AbyssCollector {
                 if ["uid existed", "Insert Failed"].contains(decoded.message) {
                     saveMD5()
                 }
-                throw ACError.getResponseError("Final Server Response is not 0.")
+                throw ACError.getResponseError("Final Server Response is not 0. MSG: \(decoded.message ?? "")")
             }
         } catch {
             if error is DecodingError {
