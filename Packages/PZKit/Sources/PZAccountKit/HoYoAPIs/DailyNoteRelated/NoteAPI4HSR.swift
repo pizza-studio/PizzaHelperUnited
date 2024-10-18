@@ -99,7 +99,7 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.generalNote4HSR()")
 //        #endif
     }
 
@@ -131,6 +131,6 @@ extension HoYo {
         )
 
         let (data, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.widgetNote4HSR()")
     }
 }

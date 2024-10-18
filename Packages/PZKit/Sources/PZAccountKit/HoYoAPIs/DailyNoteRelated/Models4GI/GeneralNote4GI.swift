@@ -67,6 +67,9 @@ extension GeneralNote4GI {
     public static func exampleData() -> GeneralNote4GI {
         let exampleURL = Bundle.module.url(forResource: "gi_general_note_example", withExtension: "json")!
         let exampleData = try! Data(contentsOf: exampleURL)
-        return try! GeneralNote4GI.decodeFromMiHoYoAPIJSONResult(data: exampleData)
+        return try! GeneralNote4GI.decodeFromMiHoYoAPIJSONResult(
+            data: exampleData,
+            debugTag: "GeneralNote4GI.exampleData()"
+        )
     }
 }

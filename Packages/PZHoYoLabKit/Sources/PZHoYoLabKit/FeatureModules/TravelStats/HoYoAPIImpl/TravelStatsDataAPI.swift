@@ -78,7 +78,7 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.travelStatsData4GI()")
     }
 
     private static func travelStatsData4HSR(
@@ -121,7 +121,7 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.travelStatsData4HSR()")
     }
 }
 

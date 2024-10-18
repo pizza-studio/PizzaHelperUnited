@@ -86,7 +86,8 @@ extension HoYo {
         print(String(data: data1, encoding: .utf8)!)
         print("-----------------------------------")
         #endif
-        var decodedResult = try CharInventory4GI.decodeFromMiHoYoAPIJSONResult(data: data1)
+        var decodedResult = try CharInventory4GI
+            .decodeFromMiHoYoAPIJSONResult(data: data1, debugTag: "HoYo.characterInventory4GI().1")
 
         // QUERYING DETAILS.
 
@@ -117,7 +118,8 @@ extension HoYo {
         print(String(data: data2, encoding: .utf8)!)
         print("-----------------------------------")
         #endif
-        let decodedDetails = try CharInventory4GI.AvatarDetailPackage4GI.decodeFromMiHoYoAPIJSONResult(data: data2)
+        let decodedDetails = try CharInventory4GI.AvatarDetailPackage4GI
+            .decodeFromMiHoYoAPIJSONResult(data: data2, debugTag: "HoYo.characterInventory4GI().2")
 
         // Insert new data.
 
@@ -173,7 +175,7 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.characterInventory4HSR()")
     }
 }
 

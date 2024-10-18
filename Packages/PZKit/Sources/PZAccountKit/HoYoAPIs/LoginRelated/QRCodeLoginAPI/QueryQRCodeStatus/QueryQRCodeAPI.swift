@@ -22,6 +22,6 @@ extension HoYo {
         request.httpBody = bodyData
 
         let (resultData, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: resultData)
+        return try .decodeFromMiHoYoAPIJSONResult(data: resultData, debugTag: "HoYo.queryQRCodeStatus()")
     }
 }
