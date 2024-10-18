@@ -25,7 +25,7 @@ public struct GachaChartVertical: View {
         if !pentaStars.isEmpty {
             // 这里必须用 LazyVStack，否则真的要卡到死。
             LazyVStack(spacing: -12) {
-                ForEach(pentaStars.chunked(into: 5), id: \.first!.id) { chunk in
+                ForEach(shouldChunk ? pentaStars.chunked(into: 5) : [pentaStars], id: \.first!.id) { chunk in
                     let isFirst = Bool(equalCheck: pentaStars.first?.id, against: chunk.first?.id)
                     let isLast = Bool(equalCheck: pentaStars.last?.id, against: chunk.last?.id)
                     subChart(
@@ -47,6 +47,19 @@ public struct GachaChartVertical: View {
     fileprivate let poolType: GachaPoolExpressible
     fileprivate let givenGPID: GachaProfileID
     @Environment(GachaVM.self) fileprivate var theVM
+
+    fileprivate var shouldChunk: Bool {
+        if #available(iOS 18, *) {
+            return false
+        }
+        if #available(macOS 15, *) {
+            return false
+        }
+        if #available(macCatalyst 18, *) {
+            return false
+        }
+        return true
+    }
 
     fileprivate var pentaStarEntries: [GachaEntryExpressible] {
         theVM.currentPentaStars
