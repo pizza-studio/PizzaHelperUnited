@@ -32,6 +32,7 @@ let package = Package(
         .package(path: "../GachaKit"),
         .package(path: "../PZKit"),
         .package(path: "../PZHoYoLabKit"),
+        .package(path: "../PZInGameEventKit"),
         .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
     ],
@@ -48,6 +49,7 @@ let package = Package(
                 .product(name: "GITodayMaterialsKit", package: "GITodayMaterialsKit"),
                 .product(name: "PZDictionaryKit", package: "PZDictionaryKit"),
                 .product(name: "PZHoYoLabKit", package: "PZHoYoLabKit"),
+                .product(name: "PZInGameEventKit", package: "PZInGameEventKit"),
                 .product(name: "WallpaperKit", package: "WallpaperKit"),
             ],
             swiftSettings: sharedSwiftSettings
