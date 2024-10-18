@@ -3,14 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B2A65FB2C69204600BAEE7E /* EnkaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A65FA2C69204600BAEE7E /* EnkaKit */; };
-		5B2A65FD2C69205100BAEE7E /* PizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A65FC2C69205100BAEE7E /* PizzaKit */; };
-		5B2A65FF2C69205700BAEE7E /* PZBaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A65FE2C69205700BAEE7E /* PZBaseKit */; };
-		5B2A66012C69205900BAEE7E /* PZAccountKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B2A66002C69205900BAEE7E /* PZAccountKit */; };
+		5B2DC8292CC2A78A00958F85 /* PZInGameEventKit in Resources */ = {isa = PBXBuildFile; fileRef = 5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */; };
 		5B560A0F2C6BB5BB00175FB1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */; };
 		5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A172C6BBB8300175FB1 /* Settings.bundle */; };
 		5BD0D0F52C6A653500DA8099 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD0D0F42C6A653500DA8099 /* PZHelper */; };
@@ -24,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		5B1641342C8320D600C4698C /* PZDictionaryKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZDictionaryKit; sourceTree = "<group>"; };
+		5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZInGameEventKit; sourceTree = "<group>"; };
 		5B4CDE852C8482D700298C69 /* PZHoYoLabKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHoYoLabKit; sourceTree = "<group>"; };
 		5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		5B560A162C6BB64300175FB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,10 +61,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD0D0F52C6A653500DA8099 /* PZHelper in Frameworks */,
-				5B2A65FF2C69205700BAEE7E /* PZBaseKit in Frameworks */,
-				5B2A65FD2C69205100BAEE7E /* PizzaKit in Frameworks */,
-				5B2A65FB2C69204600BAEE7E /* EnkaKit in Frameworks */,
-				5B2A66012C69205900BAEE7E /* PZAccountKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +120,7 @@
 				5B4CDE852C8482D700298C69 /* PZHoYoLabKit */,
 				5BF32D8C2C62A2E4008C9949 /* PZKit */,
 				5BDDF2772C760281006D4BFE /* WallpaperKit */,
+				5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -201,10 +196,6 @@
 			);
 			name = UnitedPizzaHelperEngine;
 			packageProductDependencies = (
-				5B2A65FA2C69204600BAEE7E /* EnkaKit */,
-				5B2A65FC2C69205100BAEE7E /* PizzaKit */,
-				5B2A65FE2C69205700BAEE7E /* PZBaseKit */,
-				5B2A66002C69205900BAEE7E /* PZAccountKit */,
 				5BD0D0F42C6A653500DA8099 /* PZHelper */,
 			);
 			productName = UnitedPizzaHelperEngine;
@@ -239,7 +230,6 @@
 			);
 			mainGroup = 5BFD6B832C628CD8000A63E9;
 			packageReferences = (
-				5BF32D8E2C62A2F6008C9949 /* XCLocalSwiftPackageReference "Packages/PZKit" */,
 			);
 			productRefGroup = 5BFD6B8D2C628CD8000A63E9 /* Products */;
 			projectDirPath = "";
@@ -260,6 +250,7 @@
 				5BFD6BAF2C628EE5000A63E9 /* LICENSE in Resources */,
 				5BFD6B992C628CDA000A63E9 /* Preview Assets.xcassets in Resources */,
 				5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */,
+				5B2DC8292CC2A78A00958F85 /* PZInGameEventKit in Resources */,
 				5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */,
 				5BFD6B962C628CDA000A63E9 /* Assets.xcassets in Resources */,
 			);
@@ -536,30 +527,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		5BF32D8E2C62A2F6008C9949 /* XCLocalSwiftPackageReference "Packages/PZKit" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/PZKit;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		5B2A65FA2C69204600BAEE7E /* EnkaKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = EnkaKit;
-		};
-		5B2A65FC2C69205100BAEE7E /* PizzaKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PizzaKit;
-		};
-		5B2A65FE2C69205700BAEE7E /* PZBaseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PZBaseKit;
-		};
-		5B2A66002C69205900BAEE7E /* PZAccountKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PZAccountKit;
-		};
 		5BD0D0F42C6A653500DA8099 /* PZHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PZHelper;
