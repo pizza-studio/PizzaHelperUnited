@@ -90,7 +90,7 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.ledgerData4GI()")
     }
 
     fileprivate static func ledgerData4HSR(
@@ -136,7 +136,7 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.ledgerData4HSR()")
     }
 }
 

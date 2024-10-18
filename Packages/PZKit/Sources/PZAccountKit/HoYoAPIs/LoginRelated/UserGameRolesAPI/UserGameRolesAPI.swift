@@ -23,7 +23,10 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        let list = try FetchedAccountDecodeHelper.decodeFromMiHoYoAPIJSONResult(data: data)
+        let list = try FetchedAccountDecodeHelper.decodeFromMiHoYoAPIJSONResult(
+            data: data,
+            debugTag: "HoYo.getUserGameRolesByCookie()"
+        )
         return list.list
     }
 }

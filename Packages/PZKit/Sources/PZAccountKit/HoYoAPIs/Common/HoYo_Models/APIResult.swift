@@ -11,14 +11,14 @@ public protocol DecodableFromMiHoYoAPIJSONResult: Decodable {}
 
 extension DecodableFromMiHoYoAPIJSONResult {
     /// Decodes data from MiHoYoAPI JSON results
-    public static func decodeFromMiHoYoAPIJSONResult(data: Data) throws -> Self {
+    public static func decodeFromMiHoYoAPIJSONResult(data: Data, debugTag: String) throws -> Self {
         let decoder = JSONDecoder()
         let result: MiHoYoAPIJSONResult<Self>
         do {
             result = try decoder.decode(MiHoYoAPIJSONResult<Self>.self, from: data)
         } catch {
             let errorMessage = """
-            DECODE ITEM: \(String(data: data, encoding: .utf8)!)
+            [DEBUG TAG: \(debugTag)] DECODE ITEM: \(String(data: data, encoding: .utf8)!)
             --------------
             rawError:
             \(error)

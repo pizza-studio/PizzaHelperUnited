@@ -24,7 +24,7 @@ extension HoYo {
         request.setValue("bll8iq97cem8", forHTTPHeaderField: "x-rpc-app_id")
 
         let (result, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: result)
+        return try .decodeFromMiHoYoAPIJSONResult(data: result, debugTag: "HoYo.gameToken2StokenV2()")
     }
 
     public static func stoken2LTokenV1(mid: String, stoken: String) async throws -> Stoken2LTokenV1Data {
@@ -35,6 +35,6 @@ extension HoYo {
         request.setValue("mid=\(mid); stoken=\(stoken); ", forHTTPHeaderField: "cookie")
 
         let (result, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: result)
+        return try .decodeFromMiHoYoAPIJSONResult(data: result, debugTag: "HoYo.stoken2LTokenV1()")
     }
 }

@@ -41,7 +41,8 @@ extension HoYo {
         request.httpBody = try JSONEncoder().encode(body)
         request.httpMethod = "POST"
         let (data, _) = try await URLSession.shared.data(for: request)
-        let fingerPrint = try DeviceFingerPrintResult.decodeFromMiHoYoAPIJSONResult(data: data)
+        let fingerPrint = try DeviceFingerPrintResult
+            .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.getDeviceFingerPrint()")
             .device_fp
         return .init(deviceFP: fingerPrint, seedID: seedID, seedTime: seedTime)
     }

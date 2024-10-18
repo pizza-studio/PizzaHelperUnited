@@ -46,7 +46,7 @@ extension GeneralNote4HSR {
         // swiftlint:disable force_unwrapping
         let exampleData = try! Data(contentsOf: exampleURL)
         return try! GeneralNote4HSR.decodeFromMiHoYoAPIJSONResult(
-            data: exampleData
+            data: exampleData, debugTag: "GeneralNote4HSR.exampleData()"
         ) as Note4HSR
         // swiftlint:enable force_try
         // swiftlint:enable force_unwrapping
