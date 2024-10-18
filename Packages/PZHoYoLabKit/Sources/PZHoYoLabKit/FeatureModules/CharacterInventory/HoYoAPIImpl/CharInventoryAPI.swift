@@ -80,12 +80,11 @@ extension HoYo {
 
         let (data1, _) = try await URLSession.shared.data(for: request1)
 
-        // TODO: Remove the following after the operation completes.
-        #if DEBUG
-        print("-----------------------------------")
-        print(String(data: data1, encoding: .utf8)!)
-        print("-----------------------------------")
-        #endif
+        // #if DEBUG
+        // print("-----------------------------------")
+        // print(String(data: data1, encoding: .utf8)!)
+        // print("-----------------------------------")
+        // #endif
         var decodedResult = try CharInventory4GI
             .decodeFromMiHoYoAPIJSONResult(data: data1, debugTag: "HoYo.characterInventory4GI().1")
 
@@ -112,12 +111,11 @@ extension HoYo {
 
         let (data2, _) = try await URLSession.shared.data(for: request2)
 
-        // TODO: Remove the following after the operation completes.
-        #if DEBUG
-        print("-----------------------------------")
-        print(String(data: data2, encoding: .utf8)!)
-        print("-----------------------------------")
-        #endif
+        // #if DEBUG
+        // print("-----------------------------------")
+        // print(String(data: data2, encoding: .utf8)!)
+        // print("-----------------------------------")
+        // #endif
         let decodedDetails = try CharInventory4GI.AvatarDetailPackage4GI
             .decodeFromMiHoYoAPIJSONResult(data: data2, debugTag: "HoYo.characterInventory4GI().2")
 
