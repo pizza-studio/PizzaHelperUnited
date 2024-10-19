@@ -142,6 +142,7 @@
       }
     },
     "igev.gi.gameEvents.viewAll.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
