@@ -118,9 +118,9 @@
 				5BD0D0F22C6A633700DA8099 /* PZHelper */,
 				5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */,
 				5B4CDE852C8482D700298C69 /* PZHoYoLabKit */,
+				5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */,
 				5BF32D8C2C62A2E4008C9949 /* PZKit */,
 				5BDDF2772C760281006D4BFE /* WallpaperKit */,
-				5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
