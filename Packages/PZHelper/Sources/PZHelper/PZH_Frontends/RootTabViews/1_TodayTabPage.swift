@@ -18,9 +18,27 @@ struct TodayTabPage: View {
     @MainActor var body: some View {
         NavigationStack {
             Form {
+                Group {
+                    switch game {
+                    case .genshinImpact where !profiles.isEmpty:
+                        GIOngoingEvents.EventListSection()
+                        todayMaterialNav
+                    case .starRail where !profiles.isEmpty:
+                        NavigationLink(NewsKitHSR.NewsView.navEntryName) {
+                            NewsKitHSR.NewsView()
+                        }
+                    case .zenlessZone where !profiles.isEmpty:
+                        EmptyView()
+                    default:
+                        GIOngoingEvents.EventListSection()
+                        todayMaterialNav
+                        NavigationLink(NewsKitHSR.NewsView.navEntryName) {
+                            NewsKitHSR.NewsView()
+                        }
+                    }
+                }
+                .listRowMaterialBackground()
                 if profiles.isEmpty {
-                    GIOngoingEvents.EventListSection()
-                    todayMaterialNav
                     Label {
                         Text("app.dailynote.noCard.suggestion".i18nPZHelper)
                     } icon: {
@@ -29,10 +47,6 @@ struct TodayTabPage: View {
                     }
                     .listRowMaterialBackground()
                 } else {
-                    if game == .genshinImpact || game == nil {
-                        GIOngoingEvents.EventListSection()
-                        todayMaterialNav
-                    }
                     ForEach(filteredProfiles) { profile in
                         InAppDailyNoteCardView(profile: profile)
                             .listRowMaterialBackground()
