@@ -1488,64 +1488,6 @@
         }
       }
     },
-    "profileMgr.toast.taskFailed" : {
-      "extractionState" : "migrated",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Failed"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "失敗"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "添加失败"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "添加失敗"
-          }
-        }
-      }
-    },
-    "profileMgr.toast.taskSucceeded" : {
-      "extractionState" : "migrated",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完了"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "添加成功"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "添加成功"
-          }
-        }
-      }
-    },
     "profileMgr.delete.title" : {
       "localizations" : {
         "en" : {
@@ -2220,6 +2162,64 @@
         }
       }
     },
+    "profileMgr.toast.taskFailed" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "失敗"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加失败"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加失敗"
+          }
+        }
+      }
+    },
+    "profileMgr.toast.taskSucceeded" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加成功"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加成功"
+          }
+        }
+      }
+    },
     "profileMgr.withdraw.entrylink.title" : {
       "localizations" : {
         "en" : {
@@ -2608,6 +2608,62 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通用設定"
+          }
+        }
+      }
+    },
+    "settings.display.timeZone4GI.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The TimeZone settings in this section is for displaying at least the following intelligence (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この時間帯設定は下記の（原神についての）情報を正しく表示するためである：深境螺旋の統計、毎日の材料、公式のゲームイベント情報など。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该时区设定仅用于正确显示至少下述通用原神资讯：深境螺旋排行榜、每日材料、官方游戏活动，等。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該時區設定僅用於正確顯示至少下述通用原神資訊：深境螺旋排行榜、每日材料、官方遊戲活動，等。"
+          }
+        }
+      }
+    },
+    "settings.display.timeZone4GI.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TimeZone for displaying GI universal intelligence"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般情報表示用時間帯（原神）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原神通用资讯显示专用时区"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原神通用資訊顯示專用時區"
           }
         }
       }
