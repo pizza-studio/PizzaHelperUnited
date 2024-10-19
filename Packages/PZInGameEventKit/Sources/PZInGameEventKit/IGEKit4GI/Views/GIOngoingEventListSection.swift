@@ -101,6 +101,7 @@ extension GIOngoingEvents.EventListSection {
                             }
                         }
                     }
+                    .id(defaultServer4GI)
                 } header: {
                     HStack(spacing: 2) {
                         Text("igev.gi.gameEvents.pendingEvents.title", bundle: .module)
@@ -190,7 +191,7 @@ extension GIOngoingEvents.EventListSection {
         // MARK: Private
 
         @Environment(\.colorScheme) private var colorScheme
-
+        @Default(.defaultServer) private var defaultServer4GI: String
         @Binding public var eventContents: [EventModel]
 
         private var viewBackgroundColor: UIColor {
