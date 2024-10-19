@@ -163,7 +163,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
     @State private var showTabViewIndex = false
     @State private var showingCharacterIdentifier: String
     @State private var profile: Enka.ProfileSummarized<DBType>
-    @State private var orientation = DeviceOrientation()
+    @StateObject private var orientation = DeviceOrientation()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
 

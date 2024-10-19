@@ -118,7 +118,7 @@ struct ProfileManagerPageContent: View {
     // MARK: Private
 
     @State private var sheetType: SheetType?
-    @State private var alertToastEventStatus = AlertToastEventStatus()
+    @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var isBusy = false
     @State private var errorMessage: String?
 

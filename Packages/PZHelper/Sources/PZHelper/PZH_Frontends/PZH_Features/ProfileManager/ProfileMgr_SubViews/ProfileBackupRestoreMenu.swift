@@ -79,7 +79,7 @@ struct ProfileBackupRestoreMenu: View {
 
     @Environment(\.modelContext) fileprivate var modelContext
     @Query(sort: \PZProfileMO.priority) fileprivate var profiles: [PZProfileMO]
-    fileprivate let theVM = Coordinator()
+    @StateObject fileprivate var theVM = Coordinator()
     fileprivate let importCompletionHandler: (Result<URL, any Error>) -> Void
 }
 

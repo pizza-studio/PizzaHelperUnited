@@ -25,7 +25,9 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
         self.appendedContent = appendedContent
         self.theDB = theDB
         self.pzProfile = pzProfile
-        self.delegate = .init(uid: pzProfile.uid, theDB: theDB)
+        self._delegate = .init(
+            wrappedValue: .init(uid: pzProfile.uid, theDB: theDB)
+        )
     }
 
     // MARK: Public
@@ -147,8 +149,8 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     private let appendedContent: () -> T
     private var theDB: QueryDB
-    @State private var delegate: CaseProfileVM<QueryDB>
-    @State private var broadcaster = Broadcaster.shared
+    @StateObject private var delegate: CaseProfileVM<QueryDB>
+    @StateObject private var broadcaster = Broadcaster.shared
 
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(pzProfile.uid) else { return false }

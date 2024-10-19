@@ -220,8 +220,8 @@ struct DetailPortalTabPage: View {
     // MARK: Private
 
     @State private var sharedDB: Enka.Sputnik = .shared
-    @State private var delegate: DetailPortalViewModel = .init()
-    @State private var broadcaster = Broadcaster.shared
+    @StateObject private var delegate: DetailPortalViewModel = .init()
+    @StateObject private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
