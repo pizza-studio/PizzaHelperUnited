@@ -446,13 +446,17 @@ extension XLSXFile {
 
         // MARK: Public
 
-        public var errorDescription: String? {
+        public var localizedDescription: String {
             switch self {
             case let .errorWithMessage(msg): msg
             case .rawDataMissing: "app.gacha.import.fail.rawDataNotExist".i18nGachaKit
             case .tableDataMissing: "app.gacha.import.fail.dataTableMissingData".i18nGachaKit
             }
         }
+
+        public var errorDescription: String? { localizedDescription }
+
+        public var description: String { localizedDescription }
     }
 
     private struct ParsedRow {

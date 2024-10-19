@@ -112,6 +112,8 @@ extension GachaKit {
 
         public var errorDescription: String? { localizedDescription }
 
+        public var description: String { localizedDescription }
+
         public var localizedDescription: String {
             switch self {
             case let .timeRawValueNotParsable(rawString):

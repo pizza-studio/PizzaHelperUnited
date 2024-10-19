@@ -24,6 +24,8 @@ public enum GachaFetchModelError: Error, LocalizedError {
 
     // MARK: Public
 
+    public var description: String { localizedDescription }
+
     public var localizedDescription: String {
         switch self {
         case let .retrievalFailure(retCode, message):
