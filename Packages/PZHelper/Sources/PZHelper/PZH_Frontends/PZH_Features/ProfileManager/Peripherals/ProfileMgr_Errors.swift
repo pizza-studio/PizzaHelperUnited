@@ -51,9 +51,13 @@ enum GetAccountError: LocalizedError {
     case source(Error)
     case customize(String)
 
-    // MARK: Internal
+    // MARK: Public
 
-    var errorDescription: String? {
+    public var errorDescription: String? { localizedDescription }
+
+    public var description: String { localizedDescription }
+
+    public var localizedDescription: String {
         switch self {
         case let .source(error): error.localizedDescription
         case let .customize(message): message
