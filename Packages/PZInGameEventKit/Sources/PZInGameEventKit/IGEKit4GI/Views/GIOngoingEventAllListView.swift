@@ -4,6 +4,7 @@
 
 #if !os(watchOS)
 
+import Defaults
 import PZBaseKit
 import SwiftUI
 import WallpaperKit
@@ -57,11 +58,12 @@ struct GIOngoingEventAllListView: View {
                         NavigationLink(
                             destination: eventDetail(event: content)
                         ) {
-                            CardView(content: content)
+                            cardView(content: content)
                         }
                     }
                 }
             }
+            .id(defaultServer4GI)
         }
         .scrollContentBackground(.hidden)
         .listContainerBackground()
@@ -73,7 +75,7 @@ struct GIOngoingEventAllListView: View {
     // MARK: CARD VIEW
 
     @ViewBuilder
-    func CardView(content: EventModel) -> some View {
+    func cardView(content: EventModel) -> some View {
         VStack {
             ZStack {
                 HStack {
@@ -180,6 +182,8 @@ struct GIOngoingEventAllListView: View {
     }
 
     // MARK: Private
+
+    @Default(.defaultServer) private var defaultServer4GI: String
 
     private let eventContents: [EventModel]
 }

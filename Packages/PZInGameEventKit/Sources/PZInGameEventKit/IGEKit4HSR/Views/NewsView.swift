@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import PZBaseKit
 import SwiftUI
 
@@ -92,6 +93,9 @@ extension NewsKitHSR {
             .refreshable {
                 coordinator.updateData()
             }
+            .onChange(of: defaultServer) {
+                coordinator.updateData()
+            }
         }
 
         // swiftlint:enable sf_safe_symbol
@@ -99,7 +103,7 @@ extension NewsKitHSR {
         // MARK: Private
 
         @ObservedObject private var coordinator: Coordinator = .init()
-
+        @Default(.defaultServer) private var defaultServer: String
         @State private var currentTab: NewsKitHSR.NewsType = .notices
 
         private var currentPageTitle: String {
