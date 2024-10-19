@@ -16,6 +16,13 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../PZKit"),
+        .package(path: "../WallpaperKit"),
+        .package(
+            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "8.2.0")
+        ),
+        .package(
+            url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")
+        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -23,7 +30,11 @@ let package = Package(
         .target(
             name: "PZInGameEventKit",
             dependencies: [
+                .product(name: "PZAccountKit", package: "PZKit"),
                 .product(name: "PZBaseKit", package: "PZKit"),
+                .product(name: "WallpaperKit", package: "WallpaperKit"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+                .product(name: "Defaults", package: "Defaults"),
             ],
             resources: [
                 .process("Resources/"),

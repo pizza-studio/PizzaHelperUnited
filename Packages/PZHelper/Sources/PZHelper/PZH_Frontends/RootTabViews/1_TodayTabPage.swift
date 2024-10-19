@@ -6,6 +6,7 @@ import Foundation
 import GITodayMaterialsKit
 import PZAccountKit
 import PZBaseKit
+import PZInGameEventKit
 import SwiftData
 import SwiftUI
 
@@ -18,6 +19,7 @@ struct TodayTabPage: View {
         NavigationStack {
             Form {
                 if profiles.isEmpty {
+                    GIOngoingEvents.EventListSection()
                     todayMaterialNav
                     Label {
                         Text("app.dailynote.noCard.suggestion".i18nPZHelper)
@@ -28,6 +30,7 @@ struct TodayTabPage: View {
                     .listRowMaterialBackground()
                 } else {
                     if game == .genshinImpact || game == nil {
+                        GIOngoingEvents.EventListSection()
                         todayMaterialNav
                     }
                     ForEach(filteredProfiles) { profile in

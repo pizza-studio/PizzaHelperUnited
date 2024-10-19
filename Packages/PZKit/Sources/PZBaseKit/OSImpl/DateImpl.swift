@@ -76,11 +76,19 @@ public func relativeTimePointFromNow(second: Int) -> String {
 
 // 计算日期相差天数
 extension Date {
+    public struct IntervalDate {
+        public let month: Int?
+        public let day: Int?
+        public let hour: Int?
+        public let minute: Int?
+        public let second: Int?
+    }
+
     public static func - (
         recent: Date,
         previous: Date
     )
-        -> (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?) {
+        -> IntervalDate {
         let day = Calendar.current.dateComponents(
             [.day],
             from: previous,
@@ -107,7 +115,7 @@ extension Date {
             to: recent
         ).second
 
-        return (
+        return IntervalDate(
             month: month,
             day: day,
             hour: hour,

@@ -171,12 +171,13 @@ public struct AbyssRankView: View {
 
     @StateObject private var vmAbyssRank: AbyssRankViewModel = .init()
 
-    private static func getRemainDays(_ endAt: String) -> IntervalDate? {
+    private static func getRemainDays(_ endAt: String) -> Date.IntervalDate? {
         let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = (HoYo.Server(rawValue: Defaults[.defaultServer]) ?? HoYo.Server.asia(.genshinImpact))
-            .timeZone
+        let cachedServerRawValue = Defaults[.defaultServer]
+        let cachedServerTyped = HoYo.Server(rawValue: cachedServerRawValue) ?? .asia(.genshinImpact)
+        dateFormatter.timeZone = cachedServerTyped.timeZone
         let endDate = dateFormatter.date(from: endAt)
         guard let endDate = endDate else {
             return nil
