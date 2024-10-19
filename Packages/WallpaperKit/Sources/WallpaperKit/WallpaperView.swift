@@ -18,6 +18,7 @@ extension Wallpaper {
 
 // MARK: - AppWallpaperView
 
+#if !os(watchOS)
 public struct AppWallpaperView: View {
     // MARK: Lifecycle
 
@@ -89,3 +90,4 @@ public struct AppWallpaperView: View {
     @Default(.background4App) private var wallpaper: Wallpaper
     @Environment(\.colorScheme) private var colorScheme
 }
+#endif
