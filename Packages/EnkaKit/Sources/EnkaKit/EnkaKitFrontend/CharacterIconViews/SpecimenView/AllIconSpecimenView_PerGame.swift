@@ -148,7 +148,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     @State private var game: Enka.GameType
     @State private var supplementalIDs: [String]
-    @State private var orientation = DeviceOrientation()
+    @StateObject private var orientation = DeviceOrientation()
 }
 
 #if DEBUG

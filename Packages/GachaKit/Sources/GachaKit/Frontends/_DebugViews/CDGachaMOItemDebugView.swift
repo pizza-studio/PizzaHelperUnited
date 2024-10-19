@@ -71,7 +71,7 @@ public struct CDGachaMODebugView: View {
 
     static let oldGachaGames: [Pizza.SupportedGame] = [.genshinImpact, .starRail]
 
-    @State var delegate = CDGachaMODebugVM()
+    @StateObject var delegate = CDGachaMODebugVM()
 }
 
 // MARK: CDGachaMODebugView.CDGachaMODebugVM

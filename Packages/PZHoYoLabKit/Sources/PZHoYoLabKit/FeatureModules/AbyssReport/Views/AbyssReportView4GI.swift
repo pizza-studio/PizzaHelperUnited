@@ -75,7 +75,7 @@ public struct AbyssReportView4GI: AbyssReportView {
     // MARK: Private
 
     @State private var containerWidth: CGFloat = ThisDevice.basicWindowSize.width
-    @State private var orientation = DeviceOrientation()
+    @StateObject private var orientation = DeviceOrientation()
     @Namespace private var animation
 
     private var columns: Int { min(max(Int(floor($containerWidth.wrappedValue / 200)), 2), 4) }

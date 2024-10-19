@@ -86,7 +86,7 @@ public struct PZDictionaryView: View {
 
     // MARK: Private
 
-    @State private var viewModel: Coordinator = .init()
+    @StateObject private var viewModel: Coordinator = .init()
 
     private var searchFieldPlacement: SearchFieldPlacement {
         #if os(iOS) || targetEnvironment(macCatalyst)

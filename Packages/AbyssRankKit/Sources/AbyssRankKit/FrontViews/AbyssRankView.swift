@@ -169,7 +169,7 @@ public struct AbyssRankView: View {
         }
     }()
 
-    @State private var vmAbyssRank: AbyssRankViewModel = .init()
+    @StateObject private var vmAbyssRank: AbyssRankViewModel = .init()
 
     private static func getRemainDays(_ endAt: String) -> IntervalDate? {
         let dateFormatter = DateFormatter.Gregorian()

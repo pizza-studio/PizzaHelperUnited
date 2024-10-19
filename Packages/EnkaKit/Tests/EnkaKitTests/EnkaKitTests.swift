@@ -22,7 +22,7 @@ final class ArtifactRatingTests: XCTestCase {
 
 // MARK: - EnkaKitTests
 
-@MainActor 
+@MainActor
 final class EnkaKitTests: XCTestCase {
     func testDecodingPropertyAndElement() throws {
         let jsonStr1 = #"{"PropType": "GrassAddedRatio"}"#

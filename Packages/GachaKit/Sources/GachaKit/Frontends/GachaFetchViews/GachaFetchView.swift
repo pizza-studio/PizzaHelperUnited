@@ -106,7 +106,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
 
     // MARK: Private
 
-    @State private var gachaVM4Fetch: VMType = .init()
+    @StateObject private var gachaVM4Fetch: VMType = .init()
     @Environment(GachaVM.self) private var gachaRootVM
 }
 
@@ -159,7 +159,7 @@ extension GachaFetchView4Game {
         @State private var error: ParseGachaURLError?
         @State private var subError: Error?
         @State private var isErrorAlertVisible: Bool = false
-        @State private var urlAwaitVM = URLAwaitVM()
+        @StateObject private var urlAwaitVM = URLAwaitVM()
 
         @MainActor @ViewBuilder private var genshinPZProfileList: some View {
             if GachaType.game == .genshinImpact, !pzProfiles.isEmpty {

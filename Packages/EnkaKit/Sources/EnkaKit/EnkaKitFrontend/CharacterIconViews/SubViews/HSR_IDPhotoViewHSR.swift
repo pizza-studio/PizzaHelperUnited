@@ -18,9 +18,9 @@ public struct IDPhotoView4HSR: View {
         imageHandler: ((Image) -> Image)? = nil
     ) {
         guard Defaults[.useGenshinStyleCharacterPhotos] || forceRender else { return nil }
-        self.pid = pid
         guard let coordinator = Self.Coordinator(pid: pid) else { return nil }
-        self.coordinator = coordinator
+        self._coordinator = .init(wrappedValue: coordinator)
+        self.pid = pid
         let lifePathStr = Enka.Sputnik.shared.db4HSR.characters[pid]?.avatarBaseType
         guard let lifePathStr, let lifePath = Enka.LifePath(rawValue: lifePathStr) else { return nil }
         self.size = size
@@ -199,5 +199,5 @@ public struct IDPhotoView4HSR: View {
     private let iconType: IconType
     private let pathTotemVisible: Bool
     private let lifePath: Enka.LifePath
-    private let coordinator: Coordinator
+    @StateObject private var coordinator: Coordinator
 }

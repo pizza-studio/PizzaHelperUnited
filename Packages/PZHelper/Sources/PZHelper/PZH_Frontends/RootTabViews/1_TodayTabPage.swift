@@ -75,7 +75,7 @@ struct TodayTabPage: View {
 
     // MARK: Private
 
-    @State private var broadcaster = Broadcaster.shared
+    @StateObject private var broadcaster = Broadcaster.shared
     @State private var game: Pizza.SupportedGame? = .none
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
