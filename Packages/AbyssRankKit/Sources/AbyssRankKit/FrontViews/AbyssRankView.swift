@@ -29,7 +29,7 @@ public struct AbyssRankView: View {
             case .abyssAvatarsUtilization:
                 ShowAvatarPercentageViewWithSection()
             case .pvpUtilization:
-                if Self.getRemainDays("2023-04-01 00:04:00")!.second! < 0 {
+                if getRemainDays("2023-04-01 00:04:00")!.second! < 0 {
                     ShowAvatarPercentageViewWithSection()
                 } else {
                     VStack {
@@ -170,13 +170,13 @@ public struct AbyssRankView: View {
     }()
 
     @StateObject private var vmAbyssRank: AbyssRankViewModel = .init()
+    @Default(.defaultServer) private var defaultServer4GI: String
 
-    private static func getRemainDays(_ endAt: String) -> Date.IntervalDate? {
+    private func getRemainDays(_ endAt: String) -> Date.IntervalDate? {
         let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        let cachedServerRawValue = Defaults[.defaultServer]
-        let cachedServerTyped = HoYo.Server(rawValue: cachedServerRawValue) ?? .asia(.genshinImpact)
+        let cachedServerTyped = HoYo.Server(rawValue: defaultServer4GI) ?? .asia(.genshinImpact)
         dateFormatter.timeZone = cachedServerTyped.timeZone
         let endDate = dateFormatter.date(from: endAt)
         guard let endDate = endDate else {
