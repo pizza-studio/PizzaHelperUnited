@@ -18,15 +18,17 @@ import SwiftUI
 public final class GachaVM: TaskManagedVM {
     // MARK: Lifecycle
 
-    public init(modelContext: ModelContext) {
-        self.pzProfileMOContext = modelContext
+    public init(modelContext: ModelContext? = nil) {
+        self.pzProfileMOContext = modelContext ?? GachaActor.shared.modelExecutor.modelContext
         super.init()
         super.assignableErrorHandlingTask = { _ in
-            GachaActor.shared.modelExecutor.modelContext.rollback()
+            self.pzProfileMOContext.rollback()
         }
     }
 
     // MARK: Public
+
+    public static var shared = GachaVM()
 
     public var pzProfileMOContext: ModelContext
     public var hasInheritableGachaEntries: Bool = false
@@ -46,6 +48,14 @@ public final class GachaVM: TaskManagedVM {
     public var currentPoolType: GachaPoolExpressible? {
         didSet {
             updateCurrentPentaStars()
+        }
+    }
+
+    public func assignNewContext(modelContext: ModelContext) {
+        forceStopTheTask()
+        pzProfileMOContext = modelContext
+        super.assignableErrorHandlingTask = { _ in
+            self.pzProfileMOContext.rollback()
         }
     }
 

@@ -45,7 +45,7 @@ public struct ContentView: View {
         .onChange(of: selection) {
             simpleTaptic(type: .selection)
         }
-        .environment(GachaVM(modelContext: modelContext))
+        .environment(GachaVM.shared)
         // .initializeApp()
     }
 
