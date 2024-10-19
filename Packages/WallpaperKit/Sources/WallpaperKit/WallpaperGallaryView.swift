@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - WallpaperGalleryViewContent
 
+#if !os(watchOS)
 public struct WallpaperGalleryViewContent: View {
     // MARK: Lifecycle
 
@@ -147,4 +148,5 @@ public struct WallpaperGalleryViewContent: View {
 #Preview {
     WallpaperGalleryViewContent()
 }
+#endif
 #endif

@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - NavigationBackground
 
+#if !os(watchOS)
 extension View {
     @MainActor @ViewBuilder
     public func listContainerBackground(wallpaperOverride: Wallpaper? = nil) -> some View {
@@ -15,6 +16,7 @@ extension View {
         }
     }
 }
+#endif
 
 extension String {
     public var i18nWPKit: String {
