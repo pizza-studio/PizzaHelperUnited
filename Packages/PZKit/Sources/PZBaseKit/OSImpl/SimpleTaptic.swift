@@ -23,7 +23,7 @@ public enum SimpleTapticType {
 // swiftlint:disable:next cyclomatic_complexity
 @MainActor
 public func simpleTaptic(type: SimpleTapticType) {
-    #if canImport(UIKit)
+    #if canImport(UIKit) && !os(watchOS)
     let feedbackGenerator = UINotificationFeedbackGenerator()
     switch type {
     case .success:

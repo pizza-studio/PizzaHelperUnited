@@ -16,7 +16,7 @@ import AppKit
 import WatchKit
 #endif
 
-#if os(macOS) || os(iOS) || targetEnvironment(macCatalyst)
+#if !os(watchOS)
 @MainActor
 public enum ThisDevice {
     // MARK: Public
@@ -172,6 +172,7 @@ public enum OS: Int {
 
 // MARK: - Window Size Helpers
 
+#if os(macOS) || os(iOS) || targetEnvironment(macCatalyst)
 extension ThisDevice {
     public static var basicWindowSize: CGSize {
         DeviceOrientation.basicWindowSize
@@ -336,6 +337,7 @@ extension ThisDevice {
         #endif
     }
 }
+#endif
 
 #if canImport(UIKit)
 extension UIEdgeInsets {
