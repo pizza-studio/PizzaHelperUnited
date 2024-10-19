@@ -4,13 +4,14 @@
 
 @preconcurrency import Defaults
 import enum EnkaDBModels.EnkaDBModelsGI
+import Foundation
 import Observation
 
 // MARK: - Enka.EnkaDB4GI
 
 extension Enka {
     @Observable
-    public final class EnkaDB4GI: EnkaDBProtocol, Codable, @unchecked Sendable {
+    public final class EnkaDB4GI: ObservableObject, EnkaDBProtocol, Codable, @unchecked Sendable {
         // MARK: Lifecycle
 
         required public convenience init(host: Enka.HostType) async throws {

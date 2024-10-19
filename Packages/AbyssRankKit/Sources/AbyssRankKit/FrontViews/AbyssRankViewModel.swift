@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - AbyssRankViewModel
 
 @Observable @MainActor
-final class AbyssRankViewModel {
+final class AbyssRankViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init() {

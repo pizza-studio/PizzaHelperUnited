@@ -8,7 +8,7 @@ import SwiftUI
 
 @Observable
 @MainActor
-open class TaskManagedVM {
+open class TaskManagedVM: ObservableObject {
     // MARK: Lifecycle
 
     public init() {}

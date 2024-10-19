@@ -231,7 +231,7 @@ struct GetCookieQRCodeView: View {
 
 // Credit: Bill Haku for the fix.
 @Observable
-final class GetCookieQRCodeViewModel: @unchecked Sendable {
+final class GetCookieQRCodeViewModel: ObservableObject, @unchecked Sendable {
     // MARK: Lifecycle
 
     init() {
