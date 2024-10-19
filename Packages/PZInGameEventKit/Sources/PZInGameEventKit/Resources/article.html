@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="stylesheet"
+			href="https://gi.pizzastudio.org/service/event.css"
+		/>
+		<title>Document</title>
+	</head>
+	<body id="body" class="">
+		<div id="article-container" class="overflow-y-scroll border-amberDark-300">
+			<div class="lg:max-h-full">
+				<div class="no-scrollbar no-scroll mx-2 lg:mx-0">
+					<img
+						id="article-banner-img"
+						src=""
+						alt=""
+						class="mx-auto mt-4 w-full rounded-2xl md:w-4/5 lg:w-4/5 xl:w-4/5"
+					/>
+					<div
+						id="article-description"
+						class="testTable default-table margin-bottom-fix p-2 font-light leading-relaxed lg:p-4"
+					>
+						<!--        description-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			window.webkit.messageHandlers.getArticleInfoBeforeLoaded.postMessage(
+				null
+			);
+
+			function updateArticleInfo(articleInfo) {
+				const { themeClass, banner, nameFull, description } = articleInfo;
+				document.getElementById("body").className = themeClass;
+				document.getElementById("article-banner-img").src = banner;
+				document.getElementById("article-banner-img").alt = nameFull;
+				document.getElementById("article-description").innerHTML = description;
+			}
+		</script>
+	</body>
+</html>
