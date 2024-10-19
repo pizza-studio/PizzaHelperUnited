@@ -13,9 +13,13 @@ enum RequestError: Error, LocalizedError {
     case decodeError(String)
     case errorWithCode(Int)
 
-    // MARK: Internal
+    // MARK: Public
 
-    var localizedDescription: String {
+    public var errorDescription: String? { localizedDescription }
+
+    public var description: String { localizedDescription }
+
+    public var localizedDescription: String {
         func wrapString(_ str: String) -> String {
             "=======\n\(str)\n======="
         }
