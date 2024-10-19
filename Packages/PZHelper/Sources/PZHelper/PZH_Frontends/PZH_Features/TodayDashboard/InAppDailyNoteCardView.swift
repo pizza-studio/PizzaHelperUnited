@@ -12,7 +12,7 @@ struct InAppDailyNoteCardView: View {
     // MARK: Lifecycle
 
     init(profile: PZProfileMO) {
-        self.theVM = DailyNoteViewModel(profile: profile)
+        self._theVM = .init(wrappedValue: DailyNoteViewModel(profile: profile))
     }
 
     // MARK: Internal
@@ -49,7 +49,7 @@ struct InAppDailyNoteCardView: View {
 
     // MARK: Private
 
-    @State private var theVM: DailyNoteViewModel
+    @StateObject private var theVM: DailyNoteViewModel
     @State private var broadcaster = Broadcaster.shared
 }
 
