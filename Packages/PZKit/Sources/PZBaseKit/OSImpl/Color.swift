@@ -62,6 +62,7 @@ extension UIColor {
 #endif
 
 extension Color {
+    #if !os(watchOS)
     public static var colorSystemGray6: Color {
         #if os(OSX)
         Color(nsColor: .systemGray).opacity(0.3333)
@@ -77,6 +78,7 @@ extension Color {
         Color(uiColor: .systemBackground)
         #endif
     }
+    #endif
 
     public func addSaturation(_ added: CGFloat) -> Color {
         let uiColor = UIColor(self)
