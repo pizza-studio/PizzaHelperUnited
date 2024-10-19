@@ -7,6 +7,7 @@ import XCTest
 
 // MARK: - ArtifactRatingTests
 
+@MainActor
 final class ArtifactRatingTests: XCTestCase {
     func testInitializingBundledArtifactRatingDB() async throws {
         let dictA = ArtifactRating.ModelDB(game: .starRail)
@@ -21,6 +22,7 @@ final class ArtifactRatingTests: XCTestCase {
 
 // MARK: - EnkaKitTests
 
+@MainActor 
 final class EnkaKitTests: XCTestCase {
     func testDecodingPropertyAndElement() throws {
         let jsonStr1 = #"{"PropType": "GrassAddedRatio"}"#
