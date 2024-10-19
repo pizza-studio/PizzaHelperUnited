@@ -167,7 +167,7 @@ extension PZDictionaryView {
 
 extension PZDictionaryView {
     @Observable
-    final class Coordinator: @unchecked Sendable {
+    final class Coordinator: ObservableObject, @unchecked Sendable {
         // MARK: Lifecycle
 
         init() {

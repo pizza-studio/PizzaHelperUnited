@@ -15,7 +15,7 @@ import SwiftUI
 // 注：这个 Class 不负责管理 Enka 展柜的 Raw Profile。
 
 @Observable
-public final class DetailPortalViewModel {
+public final class DetailPortalViewModel: ObservableObject {
     // MARK: Lifecycle
 
     @MainActor

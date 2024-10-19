@@ -62,7 +62,7 @@ public struct IDPhotoView4HSR: View {
     // MARK: Internal
 
     @Observable
-    final class Coordinator {
+    final class Coordinator: ObservableObject {
         // MARK: Lifecycle
 
         public init?(pid: String) {

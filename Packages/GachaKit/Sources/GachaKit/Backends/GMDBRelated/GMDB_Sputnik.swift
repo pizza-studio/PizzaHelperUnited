@@ -29,7 +29,7 @@ extension GachaMeta {
     public static let sharedDB = GachaMeta.DBSet()
 
     @Observable
-    public final class DBSet: @unchecked Sendable {
+    public final class DBSet: ObservableObject, @unchecked Sendable {
         // MARK: Lifecycle
 
         public init() {
