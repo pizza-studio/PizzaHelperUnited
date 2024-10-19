@@ -17,7 +17,7 @@ import UIKit
 
 @Observable
 @MainActor
-public final class DeviceOrientation {
+public final class DeviceOrientation: ObservableObject {
     // MARK: Lifecycle
 
     public init() {

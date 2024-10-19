@@ -14,7 +14,7 @@ import Observation
 
 extension Enka {
     @Observable
-    public final class Sputnik: @unchecked Sendable {
+    public final class Sputnik: ObservableObject, @unchecked Sendable {
         // MARK: Lifecycle
 
         private init() {

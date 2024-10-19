@@ -13,7 +13,7 @@ import PZBaseKit
 
 extension ArtifactRating {
     @Observable @MainActor
-    public final class ARSputnik {
+    public final class ARSputnik: ObservableObject {
         // MARK: Lifecycle
 
         private init() {
