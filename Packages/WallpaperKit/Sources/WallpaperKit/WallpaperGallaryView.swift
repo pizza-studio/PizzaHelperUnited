@@ -81,7 +81,7 @@ public struct WallpaperGalleryViewContent: View {
     // MARK: Private
 
     @Namespace private var animation
-    @State private var orientation = DeviceOrientation()
+    @StateObject private var orientation = DeviceOrientation()
     @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
     @State private var containerSize: CGSize = .zero

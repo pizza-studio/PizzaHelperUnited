@@ -14,7 +14,7 @@ public struct TravelStatsNav: View {
     // MARK: Lifecycle
 
     public init(theVM: DetailPortalViewModel) {
-        self.theVM = theVM
+        self._theVM = .init(wrappedValue: theVM)
     }
 
     // MARK: Public
@@ -91,6 +91,6 @@ public struct TravelStatsNav: View {
 
     // MARK: Private
 
-    @State private var theVM: DetailPortalViewModel
-    @State private var broadcaster = Broadcaster.shared
+    @StateObject private var theVM: DetailPortalViewModel
+    @StateObject private var broadcaster = Broadcaster.shared
 }

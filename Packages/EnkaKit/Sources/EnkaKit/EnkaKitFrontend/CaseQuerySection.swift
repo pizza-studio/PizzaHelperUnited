@@ -163,7 +163,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
     private var theDB: QueryDB
-    @State private var delegate: CaseProfileVM<QueryDB> = .init()
+    @StateObject private var delegate: CaseProfileVM<QueryDB> = .init()
 
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(givenUID) else { return false }

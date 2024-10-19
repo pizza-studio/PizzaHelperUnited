@@ -19,8 +19,8 @@ struct IDPhotoFallbackView4HSR: View {
     ) {
         let coordinator = Self.Coordinator(pid: pid)
         guard let coordinator = coordinator else { return nil }
+        self._coordinator = .init(wrappedValue: coordinator)
         self.pid = pid
-        self.coordinator = coordinator
         self.size = size
         self.iconType = type
         self.imageHandler = imageHandler ?? { $0 }
@@ -143,5 +143,5 @@ struct IDPhotoFallbackView4HSR: View {
     private let imageHandler: (Image) -> Image
     private let size: CGFloat
     private let iconType: IDPhotoView4HSR.IconType
-    private let coordinator: Coordinator
+    @StateObject private var coordinator: Coordinator
 }
