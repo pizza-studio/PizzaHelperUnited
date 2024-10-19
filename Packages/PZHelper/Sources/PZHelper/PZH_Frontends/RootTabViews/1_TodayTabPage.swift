@@ -21,8 +21,9 @@ struct TodayTabPage: View {
                 Group {
                     switch game {
                     case .genshinImpact where !profiles.isEmpty:
-                        GIOngoingEvents.EventListSection()
-                        todayMaterialNav
+                        GIOngoingEvents.EventListSection {
+                            todayMaterialNav
+                        }
                     case .starRail where !profiles.isEmpty:
                         NavigationLink(NewsKitHSR.NewsView.navEntryName) {
                             NewsKitHSR.NewsView()
@@ -30,10 +31,13 @@ struct TodayTabPage: View {
                     case .zenlessZone where !profiles.isEmpty:
                         EmptyView()
                     default:
-                        GIOngoingEvents.EventListSection()
-                        todayMaterialNav
-                        NavigationLink(NewsKitHSR.NewsView.navEntryName) {
-                            NewsKitHSR.NewsView()
+                        GIOngoingEvents.EventListSection {
+                            Group {
+                                NavigationLink(NewsKitHSR.NewsView.navEntryName) {
+                                    NewsKitHSR.NewsView()
+                                }
+                                todayMaterialNav
+                            }
                         }
                     }
                 }

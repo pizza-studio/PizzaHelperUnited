@@ -13,15 +13,17 @@ import SwiftUI
 // MARK: - GIOngoingEvents.EventListSection
 
 extension GIOngoingEvents {
-    public struct EventListSection: View {
+    public struct EventListSection<TT: View>: View {
         // MARK: Lifecycle
 
-        public init() {}
+        public init(peripheralViews: @escaping (() -> TT) = { EmptyView() }) {
+            self.peripheralViews = peripheralViews
+        }
 
         // MARK: Public
 
         @MainActor public var body: some View {
-            MainComponent(eventContents: $eventContents)
+            MainComponent(eventContents: $eventContents, peripheralViews: peripheralViews)
                 .listRowMaterialBackground()
                 .onChange(of: scenePhase) { _, newPhase in
                     switch newPhase {
@@ -64,61 +66,46 @@ extension GIOngoingEvents {
         @Environment(\.scenePhase) private var scenePhase
 
         @State private var eventContents: [EventModel] = []
+        private let peripheralViews: () -> TT
     }
 }
 
 // MARK: - GIOngoingEvents.EventListSection.MainComponent
 
 extension GIOngoingEvents.EventListSection {
-    fileprivate struct MainComponent: View {
+    fileprivate struct MainComponent<T: View>: View {
         // MARK: Public
 
         @MainActor public var body: some View {
-            if !eventContents.isEmpty {
-                let navLink =
-                    NavigationLink {
-                        GIOngoingEventAllListView(eventContents: eventContents)
-                    } label: {
-                        HStack(spacing: 2) {
-                            Text("igev.gi.gameEvents.viewAll.title", bundle: .module)
-                            Image(systemSymbol: .chevronForward)
+            Section {
+                peripheralViews()
+                if !$eventContents.animation().wrappedValue.isEmpty {
+                    VStack {
+                        NavigationLink {
+                            GIOngoingEventAllListView(eventContents: eventContents)
+                        } label: {
+                            Text("igev.gi.gameEvents.pendingEvents.title", bundle: .module)
                         }
-                    }
-                Section {
-                    VStack(spacing: 7) {
-                        let eventContentsValid = validEventContents.prefix(3)
-                        if eventContentsValid.isEmpty {
-                            HStack {
-                                Spacer()
-                                Text("igev.gi.gameEvents.noCurrentEventInfo", bundle: .module)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                Spacer()
-                            }
-                        } else {
-                            ForEach(eventContentsValid, id: \.id) { content in
-                                eventItem(event: content)
+                        VStack(spacing: 7) {
+                            let eventContentsValid = validEventContents.prefix(3)
+                            if eventContentsValid.isEmpty {
+                                HStack {
+                                    Spacer()
+                                    Text("igev.gi.gameEvents.noCurrentEventInfo", bundle: .module)
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                    Spacer()
+                                }
+                            } else {
+                                ForEach(eventContentsValid, id: \.id) { content in
+                                    eventItem(event: content)
+                                }
                             }
                         }
+                        .padding(.top, 2)
+                        .id(defaultServer4GI)
                     }
-                    .id(defaultServer4GI)
-                } header: {
-                    HStack(spacing: 2) {
-                        Text("igev.gi.gameEvents.pendingEvents.title", bundle: .module)
-                            .foregroundColor(.primary)
-                            .font(.headline)
-                        Spacer()
-                        navLink
-                            .secondaryColorVerseBackground()
-                            .font(.caption)
-                    }
-                }
-                .background {
-                    navLink
-                        .opacity(0)
-                }
-            } else {
-                Section {
+                } else {
                     ProgressView()
                 }
             }
@@ -193,6 +180,7 @@ extension GIOngoingEvents.EventListSection {
         @Environment(\.colorScheme) private var colorScheme
         @Default(.defaultServer) private var defaultServer4GI: String
         @Binding public var eventContents: [EventModel]
+        public let peripheralViews: () -> T
 
         private var viewBackgroundColor: UIColor {
             colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
