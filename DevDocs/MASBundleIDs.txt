@@ -1,0 +1,24 @@
+// 本文只是用来备忘一些在 MAS 版披萨小助手（也就是一开始的原神披萨助手）所用的 BundleID 资料。
+// 虽然更新过的版本会是使用统一披萨引擎的统一披萨助手，但相关的 BundleID 资讯不能变动（因为是对原神披萨助手的原位升级顶替）。
+
+Canglong.GenshinPizzaHepler.WatchApp.WatchWidgetExtension
+Canglong.GenshinPizzaHepler.WatchApp.WatchIntent
+Canglong.GenshinPizzaHepler.WatchApp
+
+Canglong.GenshinPizzaHepler.AccountIntent
+Canglong.GenshinPizzaHepler.ResinStatusWidget
+
+iCloud.com.Canglong.GenshinPizzaHepler
+group.Canglong.GenshinPizzaHepler
+
+=============
+The following one equals to:
+'~/Library/Group Containers/group.GenshinPizzaHelper/AccountConfiguration.splite'
+---------------------
+let containerURL = FileManager.default
+            .containerURL(
+                forSecurityApplicationGroupIdentifier: "group.GenshinPizzaHelper"
+            )!
+        let storeURL = containerURL
+            .appendingPathComponent("AccountConfiguration.splite")
+---------------------
