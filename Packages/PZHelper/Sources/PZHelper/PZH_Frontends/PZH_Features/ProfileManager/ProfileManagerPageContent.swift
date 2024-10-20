@@ -298,6 +298,8 @@ struct ProfileManagerPageContent: View {
                 decoded.forEach { profileSendable in
                     addProfile(profileSendable.asMO)
                 }
+                Broadcaster.shared.requireOSNotificationCenterAuthorization()
+                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
             } catch {
                 alertToastEventStatus.isFailureSituationTriggered.toggle()
                 return
