@@ -152,7 +152,6 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
     public static let modelName: String = "AccountMO4GI"
     public static let relations = Relations()
     public static let attributes: Set<Attribute<AccountMO4GI>> = [
-        .init(\.allowNotification, "allowNotification"),
         .init(\.cookie, "cookie"),
         .init(\.deviceFingerPrint, "deviceFingerPrint"),
         .init(\.name, "name"),
@@ -171,9 +170,10 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
     public var sTokenV2: String? = ""
     public var uid: String = "YJSNPI"
     public var uuid: UUID = .init()
-    public var allowNotification: Bool = false
     public var cookie: String = ""
     public var deviceFingerPrint: String = ""
+
+    public var allowNotification: Bool { get { false } set { _ = newValue } }
 }
 
 // MARK: - AccountMO4HSR
