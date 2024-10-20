@@ -84,7 +84,7 @@ extension PZProfileActor {
     }
 
     @MainActor
-    public static func migrateOldAccountsIntoProfiles() throws {
+    public static func migrateOldAccountsIntoProfiles(resetNotifications: Bool = true) throws {
         let context = Self.shared.modelContainer.mainContext
         let allExistingUUIDs: [String] = try context.fetch(FetchDescriptor<PZProfileMO>())
             .map(\.uuid.uuidString)
@@ -95,6 +95,10 @@ extension PZProfileActor {
                 theEntry.name += " (Imported)"
             }
             context.insert(theEntry)
+        }
+        if resetNotifications {
+            Broadcaster.shared.requireOSNotificationCenterAuthorization()
+            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
         }
         try context.save()
     }
