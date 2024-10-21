@@ -29,3 +29,9 @@ public let iCloudContainerName: String = {
     if bID.hasPrefix("Canglong.HSRPizzaHelper") { return "iCloud.com.Canglong.HSRPizzaHelper" }
     return fallback
 }()
+
+extension Pizza {
+    public static let isAppStoreRelease: Bool = {
+        Bundle.main.bundleIdentifier?.hasPrefix("Canglong.GenshinPizzaHepler") ?? false
+    }()
+}
