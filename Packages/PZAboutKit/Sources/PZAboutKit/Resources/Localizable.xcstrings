@@ -29,6 +29,146 @@
         }
       }
     },
+    "aboutKit.donation.item.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional Donations"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "寄付アイテム"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "捐赠项目"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "捐贈項目"
+          }
+        }
+      }
+    },
+    "aboutKit.donation.item.pay" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PAY"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "寄付を送る"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支付"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支付"
+          }
+        }
+      }
+    },
+    "aboutKit.donation.msg" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app does not have paywalls. However, we do accept donations. Please note that the following is all no-cost donations and we will not provide you with any additional services. \n\nWe promise that your donation will only be used to cover the direct costs of the App development process, including but not limited to the annual fee for Apple Developer Program, etc. Any amount donated beyond this cost will be re-donated in full. We appreciate your support."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "弊アプリにはペイウォールはございません。すなわち、お金を使わなくても全ての機能は使えます。だが、寄付（Donation）は受け付けております。開発チームは下記の寄付に対する「サービスなどのような」義務は一切ございません（即ち「無償寄付」ということである）ので、ご存じくださいませ。\n\n下記の寄付金はアプリの開発における直接的なコストのみに使用されることを、我らはお約束いたします。そのコストには Apple デベロッパープログラムの年会費などが含まれますが、それに限定されるものではありません。コストを超える寄付金は(慈善団体に)全額再寄付いたします。ご支援、誠に感謝申し上げます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝应用无须付费即可全功能使用、不存在所谓的「付费墙」。然而，我们接受捐赠。请注意，以下捐赠均为免费捐赠，我们不会为您提供任何额外的服务。\n\n我们承诺，您的捐款将仅用于支付应用开发过程中产生的直接费用，包括但不限于 Apple 开发者计划的年费等。超出成本的捐款将全额再次捐出。感谢您的支持。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝應用無須付費即可全功能使用、不存在所謂的「付費牆」。然而，我們接受捐贈。請注意，以下捐贈皆為免費捐贈，我們不會為您提供任何額外的服務。\n\n我們承諾，您的捐款將僅用於支付應用開發過程中的直接成本，包括但不限於 Apple 開發者計劃的年費等。超過成本的捐款將全額再次捐出。感謝您的支持。"
+          }
+        }
+      }
+    },
+    "aboutKit.donation.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donate Us"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "寄付を送る"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞助开发"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "贊助開發"
+          }
+        }
+      }
+    },
+    "aboutKit.donation.specialThanks" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Special Thanks"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特別に感謝致します"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特别鸣谢"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特別鳴謝"
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }
