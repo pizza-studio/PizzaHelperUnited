@@ -18,7 +18,7 @@ extension NewsKitHSR {
 
         public let data: any NewsElement
 
-        public var body: some View {
+        @MainActor public var body: some View {
             coreBody
                 .fontWidth(.condensed)
         }
