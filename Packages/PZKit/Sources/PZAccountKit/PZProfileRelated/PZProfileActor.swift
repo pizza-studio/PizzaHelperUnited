@@ -110,7 +110,7 @@ extension PZProfileActor {
     /// - Parameter resetNotifications: Recheck permissions for notifications && reload all timelines across widgets.
     @MainActor
     public static func attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: Bool = true) {
-        guard !Defaults[.oldAccountMOAlreadyAutoInherited] else { return }
+        guard Pizza.isAppStoreRelease, !Defaults[.oldAccountMOAlreadyAutoInherited] else { return }
         do {
             try migrateOldAccountsIntoProfiles(resetNotifications: resetNotifications)
         } catch {
