@@ -31,6 +31,7 @@ let package = Package(
         .package(path: "../EnkaKit"),
         .package(path: "../GachaKit"),
         .package(path: "../PZKit"),
+        .package(path: "../PZAboutKit"),
         .package(path: "../PZHoYoLabKit"),
         .package(path: "../PZInGameEventKit"),
         .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
@@ -42,6 +43,7 @@ let package = Package(
             dependencies: [
                 .product(name: "AlertToast", package: "AlertToast"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+                .product(name: "PZAboutKit", package: "PZAboutKit"),
                 .product(name: "PizzaKit", package: "PZKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "GachaKit", package: "GachaKit"),
