@@ -23,7 +23,7 @@ extension PZHelper {
             #endif
                 .onAppear {
                     if !isApplicationBooted {
-                        oobeTasks()
+                        startupTasks()
                     }
                     isApplicationBooted = true
                 }
@@ -37,8 +37,8 @@ extension PZHelper {
 
 extension PZHelper {
     @MainActor
-    fileprivate static func oobeTasks() {
+    fileprivate static func startupTasks() {
         PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
-        IAPManager.performOOBETasks()
+        IAPManager.performStartupTasks()
     }
 }
