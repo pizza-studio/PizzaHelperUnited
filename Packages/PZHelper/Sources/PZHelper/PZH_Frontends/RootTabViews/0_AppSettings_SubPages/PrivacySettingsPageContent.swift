@@ -10,7 +10,7 @@ import SwiftUI
 struct PrivacySettingsPageContent: View {
     // MARK: Internal
 
-    var body: some View {
+    @MainActor var body: some View {
         List {
             Section {
                 Toggle(isOn: $allowAbyssDataCollection) {
