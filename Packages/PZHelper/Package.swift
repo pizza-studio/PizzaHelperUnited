@@ -16,7 +16,7 @@ let sharedSwiftSettings: [SwiftSetting] = [
 let package = Package(
     name: "PZHelper",
     defaultLocalization: "en",
-    platforms: [.iOS(.v17), .macOS(.v14), .macCatalyst(.v17), .visionOS(.v1)],
+    platforms: [.iOS(.v17), .macOS(.v14), .watchOS(.v10), .macCatalyst(.v17), .visionOS(.v1)],
     products: [
         .library(
             name: "PZHelper",
@@ -32,6 +32,7 @@ let package = Package(
         .package(path: "../GachaKit"),
         .package(path: "../PZKit"),
         .package(path: "../PZAboutKit"),
+        .package(path: "../PZWidgetsKit"),
         .package(path: "../PZHoYoLabKit"),
         .package(path: "../PZInGameEventKit"),
         .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
@@ -44,6 +45,7 @@ let package = Package(
                 .product(name: "AlertToast", package: "AlertToast"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "PZAboutKit", package: "PZAboutKit"),
+                .product(name: "PZWidgetsKit", package: "PZWidgetsKit"),
                 .product(name: "PizzaKit", package: "PZKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "GachaKit", package: "GachaKit"),
