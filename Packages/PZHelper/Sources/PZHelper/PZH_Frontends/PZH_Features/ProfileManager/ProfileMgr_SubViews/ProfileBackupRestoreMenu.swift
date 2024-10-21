@@ -13,11 +13,12 @@ import UniformTypeIdentifiers
 
 // MARK: - ProfileBackupRestoreMenu
 
-struct ProfileBackupRestoreMenu: View {
+struct ProfileBackupRestoreMenu<T: View>: View {
     // MARK: Lifecycle
 
-    public init(importCompletionHandler: @escaping (Result<URL, any Error>) -> Void) {
+    public init(importCompletionHandler: @escaping (Result<URL, any Error>) -> Void, extraItem: (() -> T)? = nil) {
         self.importCompletionHandler = importCompletionHandler
+        self.extraItem = extraItem
     }
 
     // MARK: Public
@@ -36,6 +37,10 @@ struct ProfileBackupRestoreMenu: View {
                 theVM.isImporterVisible = true
             } label: {
                 Label("profileMgr.exchange.import.menuTitle".i18nPZHelper, systemSymbol: .squareAndArrowDownOnSquare)
+            }
+            if let extraItem {
+                Divider()
+                extraItem()
             }
         } label: {
             Image(systemSymbol: .externaldriveFillBadgePersonCrop)
@@ -81,6 +86,7 @@ struct ProfileBackupRestoreMenu: View {
     @Query(sort: \PZProfileMO.priority) fileprivate var profiles: [PZProfileMO]
     @StateObject fileprivate var theVM = Coordinator()
     fileprivate let importCompletionHandler: (Result<URL, any Error>) -> Void
+    fileprivate let extraItem: (() -> T)?
 }
 
 extension ProfileBackupRestoreMenu {
