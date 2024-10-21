@@ -4,7 +4,7 @@
 
 #if !os(watchOS)
 
-import Defaults
+@preconcurrency import Defaults
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
