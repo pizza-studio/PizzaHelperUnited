@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @preconcurrency import CoreData
+@preconcurrency import Defaults
 import Foundation
 import PZBaseKit
 import SwiftData
@@ -101,6 +102,17 @@ extension PZProfileActor {
             Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
         }
         try context.save()
+    }
+
+    @MainActor
+    public static func attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: Bool = true) {
+        guard !Defaults[.oldAccountMOAlreadyAutoInherited] else { return }
+        do {
+            try migrateOldAccountsIntoProfiles(resetNotifications: resetNotifications)
+        } catch {
+            return
+        }
+        Defaults[.oldAccountMOAlreadyAutoInherited] = true
     }
 
     public func getSendableProfiles() -> [PZProfileSendable] {
