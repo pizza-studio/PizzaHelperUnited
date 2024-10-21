@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B10D8152CC6667600245B77 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5B10D8142CC6667600245B77 /* PZHelper */; };
+		5B10D8252CC6698300245B77 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B10D8242CC6698300245B77 /* StoreKit.framework */; };
 		5B2DC8292CC2A78A00958F85 /* PZInGameEventKit in Resources */ = {isa = PBXBuildFile; fileRef = 5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */; };
 		5B560A0F2C6BB5BB00175FB1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */; };
 		5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A172C6BBB8300175FB1 /* Settings.bundle */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B10D7F12CC6636C00245B77 /* Pizza Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pizza Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B10D8242CC6698300245B77 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5B1641342C8320D600C4698C /* PZDictionaryKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZDictionaryKit; sourceTree = "<group>"; };
 		5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZInGameEventKit; sourceTree = "<group>"; };
 		5B4CDE852C8482D700298C69 /* PZHoYoLabKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHoYoLabKit; sourceTree = "<group>"; };
@@ -55,7 +59,30 @@
 		5BFD6BAB2C628EDA000A63E9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5B10D8172CC6668000245B77 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5B10D7F02CC6636C00245B77 /* ThePizzaHelper */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5B10D7F22CC6636C00245B77 /* ThePizzaHelper */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5B10D8172CC6668000245B77 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ThePizzaHelper; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		5B10D7EE2CC6636C00245B77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B10D8152CC6667600245B77 /* PZHelper in Frameworks */,
+				5B10D8252CC6698300245B77 /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BFD6B892C628CD8000A63E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -70,6 +97,7 @@
 		5B2A65F92C69204600BAEE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B10D8242CC6698300245B77 /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +158,7 @@
 			children = (
 				5BF32D8D2C62A2E4008C9949 /* Packages */,
 				5BFD6BA82C628ECD000A63E9 /* RepoRoot */,
+				5B10D7F22CC6636C00245B77 /* ThePizzaHelper */,
 				5BFD6B8E2C628CD8000A63E9 /* UnitedPizzaHelperEngine */,
 				5B2A65F92C69204600BAEE7E /* Frameworks */,
 				5BFD6B8D2C628CD8000A63E9 /* Products */,
@@ -141,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				5BFD6B8C2C628CD8000A63E9 /* United Pizza Engine.app */,
+				5B10D7F12CC6636C00245B77 /* Pizza Helper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,13 +178,13 @@
 		5BFD6B8E2C628CD8000A63E9 /* UnitedPizzaHelperEngine */ = {
 			isa = PBXGroup;
 			children = (
-				5B560A162C6BB64300175FB1 /* Info.plist */,
-				5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */,
 				5BFD6B952C628CDA000A63E9 /* Assets.xcassets */,
-				5BFD6B9A2C628CDA000A63E9 /* UnitedPizzaHelperEngine.entitlements */,
-				5BFD6B972C628CDA000A63E9 /* Preview Content */,
-				5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */,
+				5B560A162C6BB64300175FB1 /* Info.plist */,
 				5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */,
+				5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */,
+				5BFD6B972C628CDA000A63E9 /* Preview Content */,
+				5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */,
+				5BFD6B9A2C628CDA000A63E9 /* UnitedPizzaHelperEngine.entitlements */,
 			);
 			path = UnitedPizzaHelperEngine;
 			sourceTree = "<group>";
@@ -181,6 +211,30 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B10D7F02CC6636C00245B77 /* ThePizzaHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B10D7FF2CC6636E00245B77 /* Build configuration list for PBXNativeTarget "ThePizzaHelper" */;
+			buildPhases = (
+				5B10D8262CC66A7600245B77 /* ShellScript */,
+				5B10D7ED2CC6636C00245B77 /* Sources */,
+				5B10D7EE2CC6636C00245B77 /* Frameworks */,
+				5B10D7EF2CC6636C00245B77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5B10D7F22CC6636C00245B77 /* ThePizzaHelper */,
+			);
+			name = ThePizzaHelper;
+			packageProductDependencies = (
+				5B10D8142CC6667600245B77 /* PZHelper */,
+			);
+			productName = ThePizzaHelper;
+			productReference = 5B10D7F12CC6636C00245B77 /* Pizza Helper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		5BFD6B8B2C628CD8000A63E9 /* UnitedPizzaHelperEngine */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BFD6B9D2C628CDA000A63E9 /* Build configuration list for PBXNativeTarget "UnitedPizzaHelperEngine" */;
@@ -209,9 +263,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					5B10D7F02CC6636C00245B77 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					5BFD6B8B2C628CD8000A63E9 = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -235,12 +292,20 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				5B10D7F02CC6636C00245B77 /* ThePizzaHelper */,
 				5BFD6B8B2C628CD8000A63E9 /* UnitedPizzaHelperEngine */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B10D7EF2CC6636C00245B77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BFD6B8A2C628CD8000A63E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,6 +324,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5B10D8262CC66A7600245B77 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
 		5BB3A4E72C69232400653C89 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -281,6 +364,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B10D7ED2CC6636C00245B77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BFD6B882C628CD8000A63E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +382,102 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		5B10D7FD2CC6636E00245B77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3000;
+				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ThePizzaHelper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 5.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
+				PRODUCT_NAME = "Pizza Helper";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		5B10D7FE2CC6636E00245B77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3000;
+				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ThePizzaHelper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 5.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
+				PRODUCT_NAME = "Pizza Helper";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 		5BFD6B9B2C628CDA000A63E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -437,7 +623,8 @@
 				INFOPLIST_FILE = UnitedPizzaHelperEngine/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "United Pizza Engine";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -479,7 +666,8 @@
 				INFOPLIST_FILE = UnitedPizzaHelperEngine/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "United Pizza Engine";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -505,6 +693,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B10D7FF2CC6636E00245B77 /* Build configuration list for PBXNativeTarget "ThePizzaHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B10D7FD2CC6636E00245B77 /* Debug */,
+				5B10D7FE2CC6636E00245B77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5BFD6B872C628CD8000A63E9 /* Build configuration list for PBXProject "UnitedPizzaHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -526,6 +723,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5B10D8142CC6667600245B77 /* PZHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZHelper;
+		};
 		5BD0D0F42C6A653500DA8099 /* PZHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PZHelper;
