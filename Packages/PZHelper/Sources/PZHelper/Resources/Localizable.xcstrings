@@ -3005,6 +3005,34 @@
         }
       }
     },
+    "settings.section.appStoreRelated.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store and Donation"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store とお寄付"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store 与赞助"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store 與贊助"
+          }
+        }
+      }
+    },
     "settings.section.otherSettings.header" : {
       "localizations" : {
         "en" : {

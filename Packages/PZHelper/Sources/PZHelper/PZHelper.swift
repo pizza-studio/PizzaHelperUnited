@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZAboutKit
 import PZAccountKit
 import SwiftData
 import SwiftUI
@@ -21,7 +22,7 @@ extension PZHelper {
             #endif
                 .onAppear {
                     if !isApplicationBooted {
-                        PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+                        oobeTasks()
                     }
                     isApplicationBooted = true
                 }
@@ -31,4 +32,12 @@ extension PZHelper {
     }
 
     @MainActor public private(set) static var isApplicationBooted = false
+}
+
+extension PZHelper {
+    @MainActor
+    fileprivate static func oobeTasks() {
+        PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+        IAPManager.performOOBETasks()
+    }
 }

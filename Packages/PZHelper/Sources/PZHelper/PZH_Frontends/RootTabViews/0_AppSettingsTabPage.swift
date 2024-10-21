@@ -4,6 +4,7 @@
 
 @preconcurrency import Defaults
 import EnkaKit
+import PZAboutKit
 import PZBaseKit
 import SwiftUI
 
@@ -46,6 +47,16 @@ struct AppSettingsTabPage: View {
                 } header: {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
                 }
+
+                if Pizza.isAppStoreRelease {
+                    Section {
+                        ASReviewHandler.makeRatingButton()
+                        DonationView.makeNav()
+                    } header: {
+                        Text("settings.section.appStoreRelated.header".i18nPZHelper)
+                    }
+                }
+
                 Section {
                     NavigationLink(
                         value: Nav.privacySettings,
