@@ -41,7 +41,7 @@ struct GIOngoingEventAllListView: View {
         colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 
-    var body: some View {
+    @MainActor var body: some View {
         ScrollView {
             VStack {
                 if eventContents.filter({
