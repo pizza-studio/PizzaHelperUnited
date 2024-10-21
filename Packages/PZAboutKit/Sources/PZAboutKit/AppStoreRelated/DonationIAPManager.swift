@@ -6,22 +6,50 @@ import Foundation
 import PZBaseKit
 @preconcurrency import StoreKit
 
+extension IAPManager {
+    fileprivate static let productIDs = [
+        "Canglong.GenshinPizzaHepler.IAP.6",
+        "Canglong.GenshinPizzaHepler.IAP.30",
+        "Canglong.GenshinPizzaHepler.IAP.98",
+        "Canglong.GenshinPizzaHepler.IAP.198",
+        "Canglong.GenshinPizzaHepler.IAP.328",
+        "Canglong.GenshinPizzaHepler.IAP.648",
+    ]
+}
+
+// MARK: - IAPManager
+
 @Observable
 public class IAPManager: NSObject, ObservableObject, SKProductsRequestDelegate,
     SKPaymentTransactionObserver {
+    // MARK: Lifecycle
+
+    public override init() {
+        super.init()
+    }
+
     // MARK: Public
 
     @MainActor public static let shared = IAPManager()
 
-    public var myProducts = [SKProduct]()
-    public var transactionState: SKPaymentTransactionState?
-    public var request: SKProductsRequest = .init()
+    public private(set) var myProducts = [SKProduct]()
+    public private(set) var transactionState: SKPaymentTransactionState?
+    public private(set) var request: SKProductsRequest = .init()
+
+    @MainActor
+    public static func performOOBETasks() {
+        if Pizza.isAppStoreRelease {
+            SKPaymentQueue.default().add(Self.shared)
+            Self.shared.getProducts(productIDs: productIDs)
+        }
+    }
 
     // As soon as we receive a response from App Store Connect, this function is called.
     public func productsRequest(
         _ request: SKProductsRequest,
         didReceive response: SKProductsResponse
     ) {
+        guard Pizza.isAppStoreRelease else { return }
         print("Did receive Store Kit response")
 
         if !response.products.isEmpty {
@@ -42,18 +70,21 @@ public class IAPManager: NSObject, ObservableObject, SKProductsRequestDelegate,
         }
     }
 
-    public func getProducts(productIDs: [String]) {
+    public func getProducts(productIDs: [String]? = nil) {
+        guard Pizza.isAppStoreRelease else { return }
         print("Start requesting products …")
-        let request = SKProductsRequest(productIdentifiers: Set(productIDs))
+        let request = SKProductsRequest(productIdentifiers: Set(productIDs ?? Self.productIDs))
         request.delegate = self
         request.start()
     }
 
     public func request(_ request: SKRequest, didFailWithError error: Error) {
+        guard Pizza.isAppStoreRelease else { return }
         print("Request did fail: \(error)")
     }
 
     public func purchaseProduct(product: SKProduct) {
+        guard Pizza.isAppStoreRelease else { return }
         if SKPaymentQueue.canMakePayments() {
             let payment = SKPayment(product: product)
             SKPaymentQueue.default().add(payment)
@@ -66,23 +97,19 @@ public class IAPManager: NSObject, ObservableObject, SKProductsRequestDelegate,
         _ queue: SKPaymentQueue,
         updatedTransactions transactions: [SKPaymentTransaction]
     ) {
+        guard Pizza.isAppStoreRelease else { return }
         for transaction in transactions {
+            let key4UserDef = transaction.payment.productIdentifier
             // 因为这里无法事先预知 Transaction 的内容，所以不适合使用 SindreSorhus_Defaults。
             switch transaction.transactionState {
             case .purchasing:
                 transactionState = .purchasing
             case .purchased:
-                UserDefaults.baseSuite.setValue(
-                    true,
-                    forKey: transaction.payment.productIdentifier
-                )
+                UserDefaults.baseSuite.setValue(true, forKey: key4UserDef)
                 queue.finishTransaction(transaction)
                 transactionState = .purchased
             case .restored:
-                UserDefaults.baseSuite.setValue(
-                    true,
-                    forKey: transaction.payment.productIdentifier
-                )
+                UserDefaults.baseSuite.setValue(true, forKey: key4UserDef)
                 queue.finishTransaction(transaction)
                 transactionState = .restored
             case .deferred, .failed:
