@@ -6,38 +6,26 @@ import Foundation
 
 public let appGame: Pizza.SupportedGame? = .none
 
-#if PizzaHelper4Genshin
-public let sharedBundleIDHeader = "Canglong.GenshinPizzaHepler"
-public let appGroupID = "group.GenshinPizzaHelper"
-public let iCloudContainerName: String = "iCloud.com.Canglong.GenshinPizzaHepler"
-#elseif PizzaHelper4HSR
-public let sharedBundleIDHeader = "Canglong.HSRPizzaHelper"
-public let appGroupID = "group.Canglong.HSRPizzaHelper"
-public let iCloudContainerName: String = "iCloud.com.Canglong.HSRPizzaHelper"
-#else
-
 public let sharedBundleIDHeader: String = {
-    switch Bundle.main.bundleIdentifier {
-    case "Canglong.GenshinPizzaHepler": "Canglong.GenshinPizzaHepler"
-    case "Canglong.HSRPizzaHelper": "Canglong.HSRPizzaHelper"
-    default: "org.pizzastudio.UnitedPizzaHelper"
-    }
+    let fallback = "org.pizzastudio.UnitedPizzaHelper"
+    guard let bID = Bundle.main.bundleIdentifier else { return fallback }
+    if bID.hasPrefix("Canglong.GenshinPizzaHepler") { return "Canglong.GenshinPizzaHepler" }
+    if bID.hasPrefix("Canglong.HSRPizzaHelper") { return "Canglong.HSRPizzaHelper" }
+    return fallback
 }()
 
 public let appGroupID: String = {
-    switch Bundle.main.bundleIdentifier {
-    case "Canglong.GenshinPizzaHepler": "group.GenshinPizzaHelper"
-    case "Canglong.HSRPizzaHelper": "group.Canglong.HSRPizzaHelper"
-    default: "group.pizzastudio.UnitedPizzaHelper"
-    }
+    let fallback = "group.pizzastudio.UnitedPizzaHelper"
+    guard let bID = Bundle.main.bundleIdentifier else { return fallback }
+    if bID.hasPrefix("Canglong.GenshinPizzaHepler") { return "group.GenshinPizzaHelper" }
+    if bID.hasPrefix("Canglong.HSRPizzaHelper") { return "group.Canglong.HSRPizzaHelper" }
+    return fallback
 }()
 
 public let iCloudContainerName: String = {
-    switch Bundle.main.bundleIdentifier {
-    case "Canglong.GenshinPizzaHepler": "iCloud.com.Canglong.GenshinPizzaHepler"
-    case "Canglong.HSRPizzaHelper": "iCloud.com.Canglong.HSRPizzaHelper"
-    default: "iCloud.com.Canglong.UnitedPizzaHelper"
-    }
+    let fallback = "iCloud.com.Canglong.UnitedPizzaHelper"
+    guard let bID = Bundle.main.bundleIdentifier else { return fallback }
+    if bID.hasPrefix("Canglong.GenshinPizzaHepler") { return "iCloud.com.Canglong.GenshinPizzaHepler" }
+    if bID.hasPrefix("Canglong.HSRPizzaHelper") { return "iCloud.com.Canglong.HSRPizzaHelper" }
+    return fallback
 }()
-
-#endif
