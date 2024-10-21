@@ -172,7 +172,8 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
 
     public static let game: Pizza.SupportedGame = .genshinImpact
     public static let alternativeSQLiteDBURL: URL? = {
-        guard appGroupID == "group.GenshinPizzaHelper" else { return URL?.none }
+        // 下述命令等价于判断「appGroupID == "group.GenshinPizzaHelper"」。
+        guard Pizza.isAppStoreRelease else { return URL?.none }
         let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID)
         guard let containerURL else { return URL?.none }
         let storeURL = containerURL.appendingPathComponent("AccountConfiguration.splite")
