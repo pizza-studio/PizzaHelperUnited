@@ -9,7 +9,7 @@ Canglong.GenshinPizzaHepler.AccountIntent
 Canglong.GenshinPizzaHepler.ResinStatusWidget
 
 iCloud.com.Canglong.GenshinPizzaHepler
-group.Canglong.GenshinPizzaHepler
+group.GenshinPizzaHelper
 
 =============
 The following one equals to:
