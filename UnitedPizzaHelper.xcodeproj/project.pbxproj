@@ -12,7 +12,11 @@
 		5B2DC8292CC2A78A00958F85 /* PZInGameEventKit in Resources */ = {isa = PBXBuildFile; fileRef = 5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */; };
 		5B560A0F2C6BB5BB00175FB1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */; };
 		5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A172C6BBB8300175FB1 /* Settings.bundle */; };
+		5B71ED582CC6B6B100807C0B /* PZWidgetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71ED572CC6B6B100807C0B /* PZWidgetsKit */; };
 		5BD0D0F52C6A653500DA8099 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD0D0F42C6A653500DA8099 /* PZHelper */; };
+		5BD7442A2CC6B262007DE385 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD744292CC6B262007DE385 /* WidgetKit.framework */; };
+		5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7442B2CC6B262007DE385 /* SwiftUI.framework */; };
+		5BD7443D2CC6B264007DE385 /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5BD744282CC6B262007DE385 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */; };
 		5BFB9D2A2C6BBCE700DC648F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */; };
 		5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */; };
@@ -20,6 +24,30 @@
 		5BFD6B992C628CDA000A63E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */; };
 		5BFD6BAF2C628EE5000A63E9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6BAB2C628EDA000A63E9 /* LICENSE */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5BD7443B2CC6B264007DE385 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BFD6B842C628CD8000A63E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BD744272CC6B262007DE385;
+			remoteInfo = WidgetExtensionExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5BD7443F2CC6B265007DE385 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5BD7443D2CC6B264007DE385 /* WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5B10D7F12CC6636C00245B77 /* Pizza Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pizza Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +63,9 @@
 		5BCAFCE12C8C5B2600347A09 /* AbyssRankKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AbyssRankKit; sourceTree = "<group>"; };
 		5BD0D0F22C6A633700DA8099 /* PZHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHelper; sourceTree = "<group>"; };
 		5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "PZHelper-Watch"; sourceTree = "<group>"; };
+		5BD744282CC6B262007DE385 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BD744292CC6B262007DE385 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5BD7442B2CC6B262007DE385 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5BDDF26A2C75FEB8006D4BFE /* heic_sips.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = heic_sips.sh; sourceTree = "<group>"; };
 		5BDDF26C2C75FEB8006D4BFE /* _assetUpdate4GI.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _assetUpdate4GI.sh; sourceTree = "<group>"; };
@@ -69,10 +100,18 @@
 			);
 			target = 5B10D7F02CC6636C00245B77 /* ThePizzaHelper */;
 		};
+		5BD744432CC6B265007DE385 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5BD744272CC6B262007DE385 /* WidgetExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5B10D7F22CC6636C00245B77 /* ThePizzaHelper */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5B10D8172CC6668000245B77 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ThePizzaHelper; sourceTree = "<group>"; };
+		5BD7442D2CC6B262007DE385 /* WidgetExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5BD744432CC6B265007DE385 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = WidgetExtension; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +121,16 @@
 			files = (
 				5B10D8152CC6667600245B77 /* PZHelper in Frameworks */,
 				5B10D8252CC6698300245B77 /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BD744252CC6B262007DE385 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B71ED582CC6B6B100807C0B /* PZWidgetsKit in Frameworks */,
+				5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */,
+				5BD7442A2CC6B262007DE385 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				5B10D8242CC6698300245B77 /* StoreKit.framework */,
+				5BD744292CC6B262007DE385 /* WidgetKit.framework */,
+				5BD7442B2CC6B262007DE385 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -163,6 +214,7 @@
 				5BF32D8D2C62A2E4008C9949 /* Packages */,
 				5BFD6BA82C628ECD000A63E9 /* RepoRoot */,
 				5B10D7F22CC6636C00245B77 /* ThePizzaHelper */,
+				5BD7442D2CC6B262007DE385 /* WidgetExtension */,
 				5BFD6B8E2C628CD8000A63E9 /* UnitedPizzaHelperEngine */,
 				5B2A65F92C69204600BAEE7E /* Frameworks */,
 				5BFD6B8D2C628CD8000A63E9 /* Products */,
@@ -175,6 +227,7 @@
 			children = (
 				5BFD6B8C2C628CD8000A63E9 /* United Pizza Engine.app */,
 				5B10D7F12CC6636C00245B77 /* Pizza Helper.app */,
+				5BD744282CC6B262007DE385 /* WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,10 +276,12 @@
 				5B10D7ED2CC6636C00245B77 /* Sources */,
 				5B10D7EE2CC6636C00245B77 /* Frameworks */,
 				5B10D7EF2CC6636C00245B77 /* Resources */,
+				5BD7443F2CC6B265007DE385 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5BD7443C2CC6B264007DE385 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5B10D7F22CC6636C00245B77 /* ThePizzaHelper */,
@@ -238,6 +293,29 @@
 			productName = ThePizzaHelper;
 			productReference = 5B10D7F12CC6636C00245B77 /* Pizza Helper.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5BD744272CC6B262007DE385 /* WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BD744422CC6B265007DE385 /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
+			buildPhases = (
+				5BD744242CC6B262007DE385 /* Sources */,
+				5BD744252CC6B262007DE385 /* Frameworks */,
+				5BD744262CC6B262007DE385 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5BD7442D2CC6B262007DE385 /* WidgetExtension */,
+			);
+			name = WidgetExtension;
+			packageProductDependencies = (
+				5B71ED572CC6B6B100807C0B /* PZWidgetsKit */,
+			);
+			productName = WidgetExtensionExtension;
+			productReference = 5BD744282CC6B262007DE385 /* WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		5BFD6B8B2C628CD8000A63E9 /* UnitedPizzaHelperEngine */ = {
 			isa = PBXNativeTarget;
@@ -273,6 +351,9 @@
 					5B10D7F02CC6636C00245B77 = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					5BD744272CC6B262007DE385 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					5BFD6B8B2C628CD8000A63E9 = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -297,6 +378,7 @@
 			projectRoot = "";
 			targets = (
 				5B10D7F02CC6636C00245B77 /* ThePizzaHelper */,
+				5BD744272CC6B262007DE385 /* WidgetExtension */,
 				5BFD6B8B2C628CD8000A63E9 /* UnitedPizzaHelperEngine */,
 			);
 		};
@@ -304,6 +386,13 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		5B10D7EF2CC6636C00245B77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BD744262CC6B262007DE385 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -375,6 +464,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BD744242CC6B262007DE385 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BFD6B882C628CD8000A63E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,6 +480,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5BD7443C2CC6B264007DE385 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BD744272CC6B262007DE385 /* WidgetExtension */;
+			targetProxy = 5BD7443B2CC6B264007DE385 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5B10D7FD2CC6636E00245B77 /* Debug */ = {
@@ -479,6 +583,81 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		5BD744402CC6B265007DE385 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5BD744412CC6B265007DE385 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -706,6 +885,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5BD744422CC6B265007DE385 /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BD744402CC6B265007DE385 /* Debug */,
+				5BD744412CC6B265007DE385 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5BFD6B872C628CD8000A63E9 /* Build configuration list for PBXProject "UnitedPizzaHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -730,6 +918,10 @@
 		5B10D8142CC6667600245B77 /* PZHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PZHelper;
+		};
+		5B71ED572CC6B6B100807C0B /* PZWidgetsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZWidgetsKit;
 		};
 		5BD0D0F42C6A653500DA8099 /* PZHelper */ = {
 			isa = XCSwiftPackageProductDependency;
