@@ -92,8 +92,11 @@ struct ProfileManagerPageContent: View {
             }
             #endif
             ToolbarItem(placement: .confirmationAction) {
-                ProfileBackupRestoreMenu(importCompletionHandler: handleImportProfilePackResult)
-                    .disabled(isBusy || isEditMode.isEditing)
+                ProfileBackupRestoreMenu(
+                    importCompletionHandler: handleImportProfilePackResult,
+                    extraItem: extraMenuItems
+                )
+                .disabled(isBusy || isEditMode.isEditing)
             }
         }
         .toast(isPresenting: $alertToastEventStatus.isProfileTaskSucceeded) {
@@ -154,6 +157,22 @@ struct ProfileManagerPageContent: View {
         // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
         // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
         .navigationBarBackButtonHidden(true)
+    }
+
+    @MainActor
+    private func extraMenuItems() -> (some View)? {
+        if PZProfileActor.hasOldAccountDataDetected() {
+            Button {
+                importLegacyData()
+            } label: {
+                Label(
+                    "profileMgr.importLegacyProfiles.title".i18nPZHelper,
+                    systemSymbol: .tray2Fill
+                )
+            }
+        } else {
+            nil
+        }
     }
 
     @MainActor @ViewBuilder
