@@ -19,8 +19,16 @@ extension PZHelper {
             #if targetEnvironment(macCatalyst)
                 .frame(minWidth: 600, minHeight: 800)
             #endif
+                .onAppear {
+                    if !isApplicationBooted {
+                        PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+                    }
+                    isApplicationBooted = true
+                }
         }
         .windowResizability(.contentMinSize)
         .modelContainer(PZProfileActor.shared.modelContainer)
     }
+
+    @MainActor public private(set) static var isApplicationBooted = false
 }
