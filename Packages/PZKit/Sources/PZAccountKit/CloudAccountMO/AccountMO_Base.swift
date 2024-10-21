@@ -66,6 +66,7 @@ public protocol AccountMOProtocol: Codable, ProfileMOBasicProtocol {
     static var containerName: String { get }
     static var cloudContainerID: String { get }
     static var game: Pizza.SupportedGame { get }
+    static var alternativeSQLiteDBURL: URL? { get }
 }
 
 extension AccountMOProtocol {
@@ -101,8 +102,15 @@ extension AccountMOProtocol {
                 forKey: "NSPersistentStoreRemoteChangeNotificationOptionKey"
             )
         }
-        if let containerURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first,
-           persistence != .inMemory {
+        checkIfNotInRAM: if persistence != .inMemory {
+            checkGame: switch game {
+            case .genshinImpact:
+                guard let alternativeSQLiteDBURL else { break checkGame }
+                container.persistentStoreDescriptions.first?.url = alternativeSQLiteDBURL
+            default: break checkGame
+            }
+            let containerURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+            guard let containerURL else { break checkIfNotInRAM }
             let storeURL = containerURL.appendingPathComponent("\(sharedBundleIDHeader)/\(modelName).sqlite")
             container.persistentStoreDescriptions.first?.url = storeURL
         }
@@ -163,6 +171,14 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
     ]
 
     public static let game: Pizza.SupportedGame = .genshinImpact
+    public static let alternativeSQLiteDBURL: URL? = {
+        guard appGroupID == "group.GenshinPizzaHelper" else { return URL?.none }
+        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID)
+        guard let containerURL else { return URL?.none }
+        let storeURL = containerURL.appendingPathComponent("AccountConfiguration.splite")
+        let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+        return exists ? storeURL : URL?.none
+    }()
 
     public var name: String = ""
     public var priority: Int = 0
@@ -206,6 +222,7 @@ struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol {
     ]
 
     public static let game: Pizza.SupportedGame = .starRail
+    public static let alternativeSQLiteDBURL: URL? = nil
 
     public var name: String = ""
     public var priority: Int = 0
