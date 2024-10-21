@@ -49,6 +49,7 @@
 		5BDDF2762C7601AA006D4BFE /* GachaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GachaKit; sourceTree = "<group>"; };
 		5BDDF2772C760281006D4BFE /* WallpaperKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WallpaperKit; sourceTree = "<group>"; };
 		5BF32D8C2C62A2E4008C9949 /* PZKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZKit; sourceTree = "<group>"; };
+		5BFA62062CC6B0D30084F302 /* PZWidgetsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZWidgetsKit; sourceTree = "<group>"; };
 		5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		5BFD6B8C2C628CD8000A63E9 /* United Pizza Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "United Pizza Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedPizzaHelperApp.swift; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 				5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */,
 				5B4CDE852C8482D700298C69 /* PZHoYoLabKit */,
 				5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */,
+				5BFA62062CC6B0D30084F302 /* PZWidgetsKit */,
 				5BF32D8C2C62A2E4008C9949 /* PZKit */,
 				5BDDF2772C760281006D4BFE /* WallpaperKit */,
 			);
