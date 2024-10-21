@@ -9,7 +9,7 @@ import PZBaseKit
 extension Defaults.Keys {
     public static let oldAccountMOAlreadyAutoInherited = Key<Bool>(
         "oldAccountMOAlreadyAutoInherited",
-        default: appGroupID != "group.GenshinPizzaHelper",
+        default: !Pizza.isAppStoreRelease,
         suite: .baseSuite
     )
 }
