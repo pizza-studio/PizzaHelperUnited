@@ -60,3 +60,131 @@ extension Defaults.Keys {
         suite: .baseSuite
     )
 }
+
+// MARK: - MainWidgetProvider
+
+extension Defaults.Keys {
+    public static let mainWidgetSyncFrequencyInMinute = Key<Double>(
+        "mainWidgetSyncFrequencyInMinute",
+        default: 60,
+        suite: .baseSuite
+    )
+    public static let lockscreenWidgetSyncFrequencyInMinute = Key<Double>(
+        "lockscreenWidgetSyncFrequencyInMinute",
+        default: 60,
+        suite: .baseSuite
+    )
+    public static let lockscreenWidgetRefreshFrequencyInMinute = Key<Double>(
+        "lockscreenWidgetRefreshFrequencyInMinute",
+        default: 30,
+        suite: .baseSuite
+    )
+    public static let homeCoinRefreshFrequencyInHour = Key<Double>(
+        "homeCoinRefreshFrequencyInHour",
+        default: 30,
+        suite: .baseSuite
+    )
+    public static let watchWidgetUseSimplifiedMode = Key<Bool>(
+        "watchWidgetUseSimplifiedMode",
+        default: true,
+        suite: .baseSuite
+    )
+}
+
+// MARK: - ResinRecoveryActivityController
+
+extension Defaults.Keys {
+    public static let autoDeliveryResinTimerLiveActivity = Key<Bool>(
+        "autoDeliveryResinTimerLiveActivity",
+        default: false,
+        suite: .baseSuite
+    )
+    public static let resinRecoveryLiveActivityShowExpedition = Key<Bool>(
+        "resinRecoveryLiveActivityShowExpedition",
+        default: true,
+        suite: .baseSuite
+    )
+    public static let resinRecoveryLiveActivityBackgroundOptions =
+        Key<[String]>("resinRecoveryLiveActivityBackgroundOptions", default: .init(), suite: .baseSuite)
+    public static let autoUpdateResinRecoveryTimerUsingReFetchData =
+        Key<Bool>("autoUpdateResinRecoveryTimerUsingReFetchData", default: true, suite: .baseSuite)
+    public static let resinRecoveryLiveActivityUseEmptyBackground =
+        Key<Bool>("resinRecoveryLiveActivityUseEmptyBackground", default: false, suite: .baseSuite)
+    public static let resinRecoveryLiveActivityUseCustomizeBackground =
+        Key<Bool>("resinRecoveryLiveActivityUseCustomizeBackground", default: false, suite: .baseSuite)
+}
+
+// MARK: - UserNotificationCenter
+
+extension Defaults.Keys {
+    public static let allowResinNotification = Key<Bool>("allowResinNotification", default: true, suite: .baseSuite)
+    // 得保留「resinNotificationNum」原始 rawValue 命名，不然无法继承用户既有设定。
+    public static let resinNotificationThreshold = Key<Double>(
+        "resinNotificationNum",
+        default: 180,
+        suite: .baseSuite
+    )
+    public static let allowFullResinNotification = Key<Bool>(
+        "allowFullResinNotification",
+        default: true,
+        suite: .baseSuite
+    )
+    public static let allowHomeCoinNotification = Key<Bool>(
+        "allowHomeCoinNotification",
+        default: true,
+        suite: .baseSuite
+    )
+    public static let homeCoinNotificationHourBeforeFull = Key<Double>(
+        "homeCoinNotificationHourBeforeFull",
+        default: 8,
+        suite: .baseSuite
+    )
+    public static let allowExpeditionNotification = Key<Bool>(
+        "allowExpeditionNotification",
+        default: true,
+        suite: .baseSuite
+    )
+    public static let noticeExpeditionMethodRawValue = Key<Int>(
+        "noticeExpeditionMethodRawValue",
+        default: 1,
+        suite: .baseSuite
+    )
+    public static let allowWeeklyBossesNotification = Key<Bool>(
+        "allowWeeklyBossesNotification",
+        default: true,
+        suite: .baseSuite
+    )
+    public static let allowTransformerNotification = Key<Bool>(
+        "allowTransformerNotification",
+        default: true,
+        suite: .baseSuite
+    )
+    public static let allowDailyTaskNotification = Key<Bool>(
+        "allowDailyTaskNotification",
+        default: true,
+        suite: .baseSuite
+    )
+
+    public static let weeklyBossesNotificationTimePointData = Key<Data>(
+        "weeklyBossesNotificationTimePointData",
+        default: try! JSONEncoder().encode(DateComponents(
+            calendar: Calendar.current,
+            hour: 19,
+            minute: 0,
+            weekday: 7
+        )),
+        suite: .baseSuite
+    )
+
+    public static let dailyTaskNotificationTimePointData = Key<Data>(
+        "dailyTaskNotificationTimePointData",
+        default: try! JSONEncoder().encode(DateComponents(calendar: Calendar.current, hour: 19, minute: 0)),
+        suite: .baseSuite
+    )
+
+    public static let notificationIgnoreUidsData = Key<Data>(
+        "notificationIgnoreUidsData",
+        default: try! JSONEncoder().encode([String]()),
+        suite: .baseSuite
+    )
+}
