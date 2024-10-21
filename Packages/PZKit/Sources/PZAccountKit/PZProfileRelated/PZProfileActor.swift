@@ -90,14 +90,16 @@ extension PZProfileActor {
         let allExistingUUIDs: [String] = try context.fetch(FetchDescriptor<PZProfileMO>())
             .map(\.uuid.uuidString)
         let oldData = try AccountMOSputnik.shared.allAccountDataAsPZProfileMO()
+        var count = 0
         oldData.forEach { theEntry in
             if allExistingUUIDs.contains(theEntry.uuid.uuidString) {
                 theEntry.uuid = .init()
                 theEntry.name += " (Imported)"
             }
             context.insert(theEntry)
+            count += 1
         }
-        if resetNotifications {
+        if resetNotifications, count > 0 {
             Broadcaster.shared.requireOSNotificationCenterAuthorization()
             Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
         }
