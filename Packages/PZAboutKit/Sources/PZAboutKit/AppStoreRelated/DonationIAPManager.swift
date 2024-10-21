@@ -37,7 +37,7 @@ public class IAPManager: NSObject, ObservableObject, SKProductsRequestDelegate,
     public private(set) var request: SKProductsRequest = .init()
 
     @MainActor
-    public static func performOOBETasks() {
+    public static func performStartupTasks() {
         if Pizza.isAppStoreRelease {
             SKPaymentQueue.default().add(Self.shared)
             Self.shared.getProducts(productIDs: productIDs)

@@ -106,6 +106,8 @@ extension PZProfileActor {
         try context.save()
     }
 
+    /// An OOBE task attempts inheriting old AccountMOs from the previous Pizza Apps using obsolete engines.
+    /// - Parameter resetNotifications: Recheck permissions for notifications && reload all timelines across widgets.
     @MainActor
     public static func attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: Bool = true) {
         guard !Defaults[.oldAccountMOAlreadyAutoInherited] else { return }
