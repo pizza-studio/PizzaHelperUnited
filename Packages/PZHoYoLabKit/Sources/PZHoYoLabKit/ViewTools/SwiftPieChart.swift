@@ -231,7 +231,7 @@ struct PieChartRows: View {
         return result
     }
 
-    var body: some View {
+    @MainActor var body: some View {
         VStack {
             ForEach(dataSets, id: \.self) { valueSet in
                 HStack {
@@ -282,7 +282,7 @@ struct PieSlice: View {
             .radians / 2.0
     }
 
-    var body: some View {
+    @MainActor var body: some View {
         GeometryReader { geometry in
             ZStack {
                 Path { path in
