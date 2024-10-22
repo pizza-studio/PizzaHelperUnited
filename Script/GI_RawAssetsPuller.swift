@@ -475,6 +475,7 @@ let dataDict = try await withThrowingTaskGroup(
 ) { taskGroup in
     urlDict.forEach { fileNameStem, urlString in
         taskGroup.addTask {
+            await URLAsyncTaskStack.waitFor200ms()
             let (data, _) = try await URLSession.shared.data(from: URL(string: urlString)!)
             return (fileNameStem, data)
         }
@@ -519,4 +520,52 @@ do {
 } catch {
     assertionFailure(error.localizedDescription)
     exit(1)
+}
+
+// MARK: - URLAsyncTaskStack
+
+private actor URLAsyncTaskStack {
+    // MARK: Public
+
+    public static func waitFor200ms() async {
+        await Self.taskBuffer.addTask {
+            try await Task.sleep(nanoseconds: 200_000_000) // 300ms sleep
+        }
+    }
+
+    // MARK: Internal
+
+    func addTask(_ task: @escaping () async throws -> Void) async {
+        // Add the task to the queue and await its execution in sequence
+        tasks.append(task)
+
+        // If this is the only task, start processing the queue
+        if tasks.count == 1 {
+            await processNextTask()
+        }
+    }
+
+    func cancelAllTasks() {
+        tasks.removeAll()
+    }
+
+    // MARK: Fileprivate
+
+    fileprivate static let taskBuffer: URLAsyncTaskStack = .init()
+
+    // MARK: Private
+
+    private var tasks: [() async throws -> Void] = []
+
+    private func processNextTask() async {
+        while !tasks.isEmpty {
+            let currentTask = tasks.removeFirst()
+            do {
+                // Execute the current task
+                try await currentTask()
+            } catch let error as NSError {
+                print("Task failed with error: \(error)")
+            }
+        }
+    }
 }
