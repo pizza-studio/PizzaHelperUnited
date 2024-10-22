@@ -25,18 +25,18 @@ struct UtilsTabPage: View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
                 Section {
-                    NavigationLink(value: Nav.giAbyssRank) {
-                        Label {
-                            Text(AbyssRankView.navTitle)
-                        } icon: {
-                            AbyssRankView.navIcon.resizable().aspectRatio(contentMode: .fit)
-                        }
-                    }
                     NavigationLink(value: Nav.gachaManager) {
                         Label {
                             Text(GachaRootView.navTitle)
                         } icon: {
                             GachaRootView.navIcon.resizable().aspectRatio(contentMode: .fit)
+                        }
+                    }
+                    NavigationLink(value: Nav.giAbyssRank) {
+                        Label {
+                            Text(AbyssRankView.navTitle)
+                        } icon: {
+                            AbyssRankView.navIcon.resizable().aspectRatio(contentMode: .fit)
                         }
                     }
                 }
