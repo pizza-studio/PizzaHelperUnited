@@ -157,14 +157,12 @@ extension UIGFv4 {
     }
 
     public var gpidIfContainingOnlyOneSingleProfile: GachaProfileID? {
-        if let giProfiles, giProfiles.count == 1, let firstProfile = giProfiles.first {
-            return firstProfile.gachaProfileID
-        } else if let hsrProfiles, hsrProfiles.count == 1, let firstProfile = hsrProfiles.first {
-            return firstProfile.gachaProfileID
-        } else if let zzzProfiles, zzzProfiles.count == 1, let firstProfile = zzzProfiles.first {
-            return firstProfile.gachaProfileID
-        }
-        return nil
+        var ids = Set<GachaProfileID>()
+        giProfiles?.forEach { ids.insert($0.gachaProfileID) }
+        hsrProfiles?.forEach { ids.insert($0.gachaProfileID) }
+        zzzProfiles?.forEach { ids.insert($0.gachaProfileID) }
+        guard ids.count == 1, let first = ids.randomElement() else { return nil }
+        return first
     }
 
     private static let initials = "UIGFv4_"
