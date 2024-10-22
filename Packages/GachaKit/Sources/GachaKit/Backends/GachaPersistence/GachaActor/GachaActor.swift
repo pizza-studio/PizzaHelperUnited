@@ -67,13 +67,23 @@ extension GachaActor {
     public static let schema = Schema([PZGachaEntryMO.self, PZGachaProfileMO.self])
 
     public static var modelConfig: ModelConfiguration {
-        ModelConfiguration(
-            "PZGachaKitDB",
-            schema: Self.schema,
-            isStoredInMemoryOnly: false,
-            groupContainer: .none,
-            cloudKitDatabase: .private(iCloudContainerName)
-        )
+        if Pizza.isAppStoreRelease {
+            return ModelConfiguration(
+                "PZGachaKitDB",
+                schema: Self.schema,
+                isStoredInMemoryOnly: false,
+                groupContainer: .identifier(appGroupID),
+                cloudKitDatabase: .private(iCloudContainerName)
+            )
+        } else {
+            return ModelConfiguration(
+                "PZGachaKitDB",
+                schema: Self.schema,
+                isStoredInMemoryOnly: false,
+                groupContainer: .none,
+                cloudKitDatabase: .private(iCloudContainerName)
+            )
+        }
     }
 }
 

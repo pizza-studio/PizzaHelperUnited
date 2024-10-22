@@ -28,12 +28,22 @@ public actor PZProfileActor {
     public static let schema = Schema([PZProfileMO.self])
 
     public static var modelConfig: ModelConfiguration {
-        ModelConfiguration(
-            schema: Self.schema,
-            isStoredInMemoryOnly: false,
-            groupContainer: .none,
-            cloudKitDatabase: .private(iCloudContainerName)
-        )
+        if Pizza.isAppStoreRelease {
+            return ModelConfiguration(
+                "PZProfileMODB",
+                schema: Self.schema,
+                isStoredInMemoryOnly: false,
+                groupContainer: .identifier(appGroupID),
+                cloudKitDatabase: .private(iCloudContainerName)
+            )
+        } else {
+            return ModelConfiguration(
+                schema: Self.schema,
+                isStoredInMemoryOnly: false,
+                groupContainer: .none,
+                cloudKitDatabase: .private(iCloudContainerName)
+            )
+        }
     }
 
     public static func makeContainer() -> ModelContainer {

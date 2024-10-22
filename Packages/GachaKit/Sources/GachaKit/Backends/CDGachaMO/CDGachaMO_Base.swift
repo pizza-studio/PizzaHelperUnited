@@ -25,6 +25,7 @@ public protocol CDGachaMOProtocol: Sendable {
     static var containerName: String { get }
     static var cloudContainerID: String { get }
     static var game: Pizza.SupportedGame { get }
+    static var alternativeSQLiteDBURL: URL? { get }
 }
 
 extension CDGachaMOProtocol {
@@ -34,6 +35,15 @@ extension CDGachaMOProtocol {
     public var containerName: String { Self.containerName }
     public var game: Pizza.SupportedGame { Self.game }
     public var cloudContainerID: String { Self.cloudContainerID }
+
+    public static var primarySQLiteDBURL: URL? {
+        let containerURL = Pizza.isAppStoreRelease
+            ? groupContainerURL
+            : FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+        guard let containerURL else { return nil }
+        let prefix = Pizza.isAppStoreRelease ? "" : "\(sharedBundleIDHeader)/"
+        return containerURL.appendingPathComponent("\(prefix + modelName).sqlite")
+    }
 
     public static func getManagedObjModel() -> NSManagedObjectModel {
         .init(
@@ -61,9 +71,9 @@ extension CDGachaMOProtocol {
                 forKey: "NSPersistentStoreRemoteChangeNotificationOptionKey"
             )
         }
-        if let containerURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first,
-           persistence != .inMemory {
-            let storeURL = containerURL.appendingPathComponent("\(sharedBundleIDHeader)/\(modelName).sqlite")
+        checkIfNotInRAM: if persistence != .inMemory {
+            let storeURL = alternativeSQLiteDBURL ?? primarySQLiteDBURL
+            guard let storeURL else { break checkIfNotInRAM }
             container.persistentStoreDescriptions.first?.url = storeURL
         }
 
@@ -119,6 +129,15 @@ struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol {
     ]
 
     public static let game: Pizza.SupportedGame = .genshinImpact
+
+    public static let alternativeSQLiteDBURL: URL? = {
+        // 下述命令等价于判断「appGroupID == "group.GenshinPizzaHelper"」。
+        guard Pizza.isAppStoreRelease else { return URL?.none }
+        guard let containerURL = groupContainerURL else { return URL?.none }
+        let storeURL = containerURL.appendingPathComponent("PizzaGachaLog.splite")
+        let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+        return exists ? storeURL : URL?.none
+    }()
 
     public var count: Int = 1
     public var gachaType: Int = 301
@@ -177,6 +196,10 @@ struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol {
     ]
 
     public static let game: Pizza.SupportedGame = .starRail
+
+    /// 安全起见，穹披助手的资料只能云继承，因为穹披助手将两个 CoreDataMO 写到一个 Container 里面了。这样处理起来非常棘手。
+    /// 新披萨助手只是原神披萨助手的原位升级、与穹披助手仍旧彼此独立，这里弄本地继承的话反而可能会破坏穹披助手的本地资料。
+    public static let alternativeSQLiteDBURL: URL? = nil
 
     public var count: Int = 1
     public var gachaID: String = ""

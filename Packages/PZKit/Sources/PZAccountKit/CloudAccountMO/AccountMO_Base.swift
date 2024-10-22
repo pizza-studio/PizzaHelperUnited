@@ -76,6 +76,15 @@ extension AccountMOProtocol {
     public var game: Pizza.SupportedGame { Self.game }
     public var cloudContainerID: String { Self.cloudContainerID }
 
+    public static var primarySQLiteDBURL: URL? {
+        let containerURL = Pizza.isAppStoreRelease
+            ? groupContainerURL
+            : FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+        guard let containerURL else { return nil }
+        let prefix = Pizza.isAppStoreRelease ? "" : "\(sharedBundleIDHeader)/"
+        return containerURL.appendingPathComponent("\(prefix + modelName).sqlite")
+    }
+
     public static func getManagedObjModel() -> NSManagedObjectModel {
         .init(
             contentsOf: Bundle.module.url(forResource: Self.modelName, withExtension: "momd")!
@@ -103,15 +112,8 @@ extension AccountMOProtocol {
             )
         }
         checkIfNotInRAM: if persistence != .inMemory {
-            checkGame: switch game {
-            case .genshinImpact:
-                guard let alternativeSQLiteDBURL else { break checkGame }
-                container.persistentStoreDescriptions.first?.url = alternativeSQLiteDBURL
-            default: break checkGame
-            }
-            let containerURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
-            guard let containerURL else { break checkIfNotInRAM }
-            let storeURL = containerURL.appendingPathComponent("\(sharedBundleIDHeader)/\(modelName).sqlite")
+            let storeURL = alternativeSQLiteDBURL ?? primarySQLiteDBURL
+            guard let storeURL else { break checkIfNotInRAM }
             container.persistentStoreDescriptions.first?.url = storeURL
         }
 
@@ -174,8 +176,7 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
     public static let alternativeSQLiteDBURL: URL? = {
         // 下述命令等价于判断「appGroupID == "group.GenshinPizzaHelper"」。
         guard Pizza.isAppStoreRelease else { return URL?.none }
-        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID)
-        guard let containerURL else { return URL?.none }
+        guard let containerURL = groupContainerURL else { return URL?.none }
         let storeURL = containerURL.appendingPathComponent("AccountConfiguration.splite")
         let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
         return exists ? storeURL : URL?.none
@@ -223,6 +224,9 @@ struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol {
     ]
 
     public static let game: Pizza.SupportedGame = .starRail
+
+    /// 安全起见，穹披助手的资料只能云继承，因为穹披助手将两个 CoreDataMO 写到一个 Container 里面了。这样处理起来非常棘手。
+    /// 新披萨助手只是原神披萨助手的原位升级、与穹披助手仍旧彼此独立，这里弄本地继承的话反而可能会破坏穹披助手的本地资料。
     public static let alternativeSQLiteDBURL: URL? = nil
 
     public var name: String = ""
