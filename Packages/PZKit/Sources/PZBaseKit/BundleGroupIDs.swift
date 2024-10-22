@@ -30,6 +30,8 @@ public let iCloudContainerName: String = {
     return fallback
 }()
 
+public let groupContainerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID)
+
 extension Pizza {
     public static let isAppStoreRelease: Bool = {
         Bundle.main.bundleIdentifier?.hasPrefix("Canglong.GenshinPizzaHepler") ?? false
