@@ -4,12 +4,11 @@
 
 import Foundation
 import PZAccountKit
+import PZBaseKit
 import PZIntentKit
 import WidgetKit
 
 struct LockScreenHomeCoinWidgetProvider: TimelineProvider {
-    // MARK: Internal
-
     func placeholder(in context: Context) -> AccountOnlyEntry {
         AccountOnlyEntry(
             date: Date(),
@@ -29,7 +28,12 @@ struct LockScreenHomeCoinWidgetProvider: TimelineProvider {
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<AccountOnlyEntry>) -> Void) {
+    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<AccountOnlyEntry>) -> Void) {}
+
+    func getTimelineAsync(
+        in context: Context,
+        completion: @escaping @Sendable (Timeline<AccountOnlyEntry>) -> Void
+    ) async {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         let refreshDate = Calendar.current.date(
@@ -38,14 +42,15 @@ struct LockScreenHomeCoinWidgetProvider: TimelineProvider {
             to: currentDate
         )!
 
-        let configs = dataActor.getSendableProfiles()
+        let configs = await PZProfileActor.shared.getSendableProfiles()
 
         guard !configs.isEmpty else {
             let entry = AccountOnlyEntry(
                 date: currentDate,
-                result: .failure(.noFetchInfo)
+                result: .failure(FetchError.noFetchInfo),
+                accountUUIDString: nil
             )
-            let timeline = Timeline(
+            let timeline = Timeline<AccountOnlyEntry>(
                 entries: [entry],
                 policy: .after(refreshDate)
             )
@@ -122,8 +127,4 @@ struct LockScreenHomeCoinWidgetProvider: TimelineProvider {
             print("Widget Fetch succeed")
         }
     }
-
-    // MARK: Private
-
-    private let dataActor = PZProfileActor(modelContainer: PZProfileActor.shared.modelContainer)
 }
