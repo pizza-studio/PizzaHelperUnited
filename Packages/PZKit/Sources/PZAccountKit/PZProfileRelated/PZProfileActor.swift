@@ -23,7 +23,7 @@ public actor PZProfileActor {
 
     // MARK: Public
 
-    @MainActor public static let shared = PZProfileActor()
+    public static let shared = PZProfileActor()
 
     public static let schema = Schema([PZProfileMO.self])
 
