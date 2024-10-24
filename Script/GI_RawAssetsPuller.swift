@@ -549,11 +549,9 @@ private actor URLAsyncTaskStack {
         tasks.removeAll()
     }
 
-    // MARK: Fileprivate
-
-    fileprivate static let taskBuffer: URLAsyncTaskStack = .init()
-
     // MARK: Private
+
+    private static let taskBuffer: URLAsyncTaskStack = .init()
 
     private var tasks: [() async throws -> Void] = []
 
