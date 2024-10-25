@@ -89,7 +89,7 @@ private struct NoteView: View {
                     .scaledToFit()
                     .frame(height: iconFrame)
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(note.energy.progress.current)")
+                    Text(verbatim: "\(note.energy.currentEnergyAmountDynamic)")
                         .font(.title)
                     Text(verbatim: " / \(note.energy.progress.max)")
                         .font(.caption)
@@ -213,7 +213,7 @@ private struct NoteView: View {
                     .scaleEffect(1.1)
                     .frame(width: iconFrame, height: iconFrame)
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(resinIntel.currentResin)")
+                    Text(verbatim: "\(resinIntel.currentResinDynamic)")
                         .font(.title)
                     Text(verbatim: " / \(resinIntel.maxResin)")
                         .font(.caption)
