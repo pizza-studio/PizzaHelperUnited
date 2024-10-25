@@ -1,7 +1,176 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
 
+    },
+    " / %lld" : {
+
+    },
+    " %@" : {
+
+    },
+    "…" : {
+
+    },
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld  %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld  %2$@"
+          }
+        }
+      }
+    },
+    "%lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "%lld天" : {
+
+    },
+    "app.dailynote.card.dailyTask.label" : {
+
+    },
+    "app.dailynote.card.expedition.label" : {
+
+    },
+    "app.dailynote.card.homeCoin.label" : {
+
+    },
+    "app.dailynote.card.resin.label" : {
+
+    },
+    "app.title.full" : {
+
+    },
+    "error.cookieInvalid:%lld" : {
+      "comment" : "错误码%@：Cookie失效，请重新登录"
+    },
+    "error.uidError:%lld" : {
+      "comment" : "错误码%@：UID有误"
+    },
+    "error.uidNotMatch:%lld" : {
+      "comment" : "错误码%@：米游社账号与UID不匹配"
+    },
+    "error.unknown:%lld" : {
+      "comment" : "error.unknown:%lld"
+    },
+    "infoBlock.refilledAt:%@" : {
+
+    },
+    "infoBlock.resionFullyFilledDescription" : {
+
+    },
+    "infoBlock.transformerAvailable" : {
+
+    },
+    "Refresh" : {
+
+    },
+    "settings.resinTimer.error.unknown:%@" : {
+
+    },
+    "widget.currentResin" : {
+
+    },
+    "widget.expedition.timeToAllCompletion" : {
+
+    },
+    "widget.intro.autoDisplay" : {
+
+    },
+    "widget.intro.autoRotation" : {
+
+    },
+    "widget.intro.dailyCommission" : {
+
+    },
+    "widget.intro.expedition" : {
+
+    },
+    "widget.intro.generalInfo" : {
+
+    },
+    "widget.intro.generalInfo.detail" : {
+
+    },
+    "widget.intro.homeCoin" : {
+
+    },
+    "widget.intro.resin" : {
+
+    },
+    "widget.intro.resin.2" : {
+
+    },
+    "widget.material.description" : {
+
+    },
+    "widget.material.title" : {
+
+    },
+    "widget.next20Resin:%lld" : {
+
+    },
+    "widget.nextMaxResin" : {
+
+    },
+    "widget.resin.full" : {
+
+    },
+    "widget.resin.refillTime.countdown.show.title" : {
+
+    },
+    "widget.resin.refillTime.countdown.title" : {
+
+    },
+    "widget.resin.refillTime.show.title" : {
+
+    },
+    "widget.resin.refillTime.title" : {
+
+    },
+    "widget.status.enquiry.title" : {
+
+    },
+    "widget.status.not_received" : {
+
+    },
+    "widget.status.title" : {
+
+    },
+    "widgetError.accountSelectionNeeded" : {
+
+    },
+    "widgetError.noAccountFound" : {
+
+    },
+    "WidgetRefreshIntent.Refresh" : {
+
+    },
+    "已完成" : {
+
+    },
+    "未完成" : {
+
+    },
+    "树脂" : {
+
+    }
   },
   "version" : "1.0"
 }
