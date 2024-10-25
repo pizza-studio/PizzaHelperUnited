@@ -359,7 +359,7 @@ private struct PopFileButton: View {
 
     // MARK: Public
 
-    public var body: some View {
+    @MainActor public var body: some View {
         Button {
             isFileImporterShown.toggle()
         } label: {
