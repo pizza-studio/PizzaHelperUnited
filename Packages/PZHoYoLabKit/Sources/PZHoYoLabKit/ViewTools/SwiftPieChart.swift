@@ -51,7 +51,7 @@ public struct PieChartView: View {
     public var widthFraction: CGFloat
     public var innerRadiusFraction: CGFloat
 
-    public var body: some View {
+    @MainActor public var body: some View {
         GeometryReader { geometry in
             VStack {
                 ZStack {
