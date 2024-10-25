@@ -89,6 +89,10 @@ public struct AssignmentInfo4HSR: Sendable {
         }.reduce(0, +)
     }
 
+    public var allCompleted: Bool {
+        assignments.first { $0.status == .onGoing } == nil
+    }
+
     // MARK: Private
 
     // MARK: CodingKeys
