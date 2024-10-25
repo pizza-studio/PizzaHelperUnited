@@ -12,6 +12,24 @@ public protocol DailyNoteProtocol: Sendable {
 
 extension DailyNoteProtocol {
     public var game: Pizza.SupportedGame { Self.game }
+
+    public var staminaIntel: (existing: Int, max: Int) {
+        switch self {
+        case let dailyNote as any Note4GI:
+            let existing: Int = dailyNote.resinInfo.currentResinDynamic
+            let max = dailyNote.resinInfo.maxResin
+            return (existing, max)
+        case let dailyNote as Note4HSR:
+            let existing: Int = dailyNote.staminaInfo.currentStamina
+            let max = dailyNote.staminaInfo.maxStamina
+            return (existing, max)
+        case let dailyNote as Note4ZZZ:
+            let existing: Int = dailyNote.energy.currentEnergyAmountDynamic
+            let max = dailyNote.energy.progress.max
+            return (existing, max)
+        default: return (0, 0)
+        }
+    }
 }
 
 extension PZProfileSendable {
