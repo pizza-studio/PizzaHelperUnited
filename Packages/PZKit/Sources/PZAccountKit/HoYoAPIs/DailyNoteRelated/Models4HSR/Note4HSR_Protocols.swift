@@ -19,4 +19,10 @@ public protocol Note4HSR: BenchmarkTimeEditable, DailyNoteProtocol {
 
 extension Note4HSR {
     public static var game: Pizza.SupportedGame { .starRail }
+
+    public var expeditionProgressCounts: (ongoing: Int, all: Int) {
+        let numerator = assignmentInfo.onGoingAssignmentNumber
+        let denominator = assignmentInfo.totalAssignmentNumber
+        return (numerator, denominator)
+    }
 }

@@ -10,7 +10,7 @@ extension GeneralNote4GI: Decodable {
         self.dailyTaskInfo = try container.decode(DailyTaskInfo4GI.self)
         self.resinInfo = try container.decode(ResinInfo4GI.self)
         self.weeklyBossesInfo = try container.decode(WeeklyBossesInfo4GI.self)
-        self.expeditionInfo4GI = try container.decode(ExpeditionInfo4GI.self)
+        self.expeditions = try container.decode(ExpeditionInfo4GI.self)
         self.transformerInfo = try container.decode(TransformerInfo4GI.self)
         self.homeCoinInfo = try container.decode(HomeCoinInfo4GI.self)
     }
