@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
 import PZBaseKit
 
 // MARK: - DailyNoteProtocol
@@ -12,6 +13,18 @@ public protocol DailyNoteProtocol: Sendable {
 
 extension DailyNoteProtocol {
     public var game: Pizza.SupportedGame { Self.game }
+
+    public var staminaFullTimeOnFinish: Date {
+        switch self {
+        case let dailyNote as any Note4GI:
+            return dailyNote.resinInfo.resinRecoveryTime
+        case let dailyNote as Note4HSR:
+            return dailyNote.staminaInfo.fullTime
+        case let dailyNote as Note4ZZZ:
+            return dailyNote.energy.timeOnFinish
+        default: return .now
+        }
+    }
 
     public var staminaIntel: (existing: Int, max: Int) {
         switch self {
@@ -28,6 +41,16 @@ extension DailyNoteProtocol {
             let max = dailyNote.energy.progress.max
             return (existing, max)
         default: return (0, 0)
+        }
+    }
+
+    public var maxPrimaryStamina: Int { Self.maxPrimaryStamina }
+
+    public static var maxPrimaryStamina: Int {
+        switch game {
+        case .genshinImpact: 200
+        case .starRail: 240
+        case .zenlessZone: 240
         }
     }
 }
