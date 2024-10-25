@@ -266,3 +266,50 @@ extension Bool {
         self = lhs == rhs
     }
 }
+
+// MARK: - Date.RelationIdentifier
+
+extension Date {
+    public enum RelationIdentifier {
+        case today
+        case tomorrow
+        case other
+
+        // MARK: Public
+
+        public static func getRelationIdentifier(
+            of date: Date,
+            from benchmarkDate: Date = Date()
+        )
+            -> Self {
+            let dayDiffer = Calendar.current.component(.day, from: date) - Calendar
+                .current.component(.day, from: benchmarkDate)
+            switch dayDiffer {
+            case 0: return .today
+            case 1: return .tomorrow
+            default: return .other
+            }
+        }
+    }
+
+    public func getRelativeDateString(benchmarkDate: Date = Date()) -> String {
+        let relationIdentifier: RelationIdentifier = .getRelationIdentifier(of: self)
+        let formatter = DateFormatter.Gregorian()
+        var component = Locale.Components(locale: Locale.current)
+        component.hourCycle = .zeroToTwentyThree
+        formatter.locale = Locale(components: component)
+        formatter.dateFormat = "H:mm"
+        let datePrefix: String
+        switch relationIdentifier {
+        case .today:
+            datePrefix = "date.relative.today"
+            return datePrefix.i18nBaseKit + formatter.string(from: self)
+        case .tomorrow:
+            datePrefix = "date.relative.tomorrow"
+            return datePrefix.i18nBaseKit + formatter.string(from: self)
+        case .other:
+            formatter.dateFormat = "EEE H:mm"
+            return formatter.string(from: self)
+        }
+    }
+}
