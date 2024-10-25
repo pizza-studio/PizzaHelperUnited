@@ -58,7 +58,7 @@ public struct GeneralNote4GI: Note4GI {
     public let dailyTaskInfo: DailyTaskInfo4GI
     public let resinInfo: ResinInfo4GI
     public let weeklyBossesInfo: WeeklyBossesInfo4GI
-    public let expeditionInfo4GI: ExpeditionInfo4GI
+    public let expeditions: ExpeditionInfo4GI
     public let transformerInfo: TransformerInfo4GI
     public let homeCoinInfo: HomeCoinInfo4GI
 }

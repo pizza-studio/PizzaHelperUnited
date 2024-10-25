@@ -294,7 +294,7 @@ private struct NoteView: View {
         }
         // Expedition
         InformationRowView("app.dailynote.card.expedition.label".i18nPZHelper) {
-            let expeditionInfo = dailyNote.expeditionInfo4GI
+            let expeditionInfo = dailyNote.expeditions
             HStack(spacing: 10) {
                 AccountKit.imageAsset("gi_note_expedition")
                     .resizable()
