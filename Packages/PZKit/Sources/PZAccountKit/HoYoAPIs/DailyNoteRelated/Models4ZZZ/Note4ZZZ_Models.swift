@@ -123,3 +123,19 @@ extension Note4ZZZ {
         }
     }
 }
+
+extension Note4ZZZ.Energy {
+    // MARK: Public
+
+    /// Each primary stamina needs 6 minutes to recover
+    public static let eachStaminaRecoveryTime: TimeInterval = 60 * 6
+
+    /// Each backup stamina needs 6 minutes to recover
+    public static let eachBackupStaminaRecoveryTime: TimeInterval = 60 * 18
+
+    public var currentEnergyAmountDynamic: Int {
+        let baseValue = progress.current
+        let timePassedSinceLastFetch = Date.now.timeIntervalSince1970 - fetchedTime.timeIntervalSince1970
+        return baseValue + Int(ceil(timePassedSinceLastFetch / Self.eachStaminaRecoveryTime))
+    }
+}
