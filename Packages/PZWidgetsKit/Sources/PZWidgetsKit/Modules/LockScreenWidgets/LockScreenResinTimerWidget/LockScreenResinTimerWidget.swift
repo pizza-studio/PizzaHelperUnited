@@ -22,8 +22,8 @@ struct LockScreenResinTimerWidget: Widget {
             LockScreenResinTimerWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.stamina.refillTime.countdown.title")
-        .description("pzWidgetsKit.stamina.refillTime.countdown.show.title")
+        .configurationDisplayName("pzWidgetsKit.stamina.refillTime.countdown.title".i18nWidgets)
+        .description("pzWidgetsKit.stamina.refillTime.countdown.show.title".i18nWidgets)
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCircular])
         #else

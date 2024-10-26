@@ -22,8 +22,8 @@ struct LockScreenExpeditionWidget: Widget {
             LockScreenExpeditionWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.expedition")
-        .description("pzWidgetsKit.cfgName.expedition")
+        .configurationDisplayName("pzWidgetsKit.expedition".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.expedition".i18nWidgets)
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else

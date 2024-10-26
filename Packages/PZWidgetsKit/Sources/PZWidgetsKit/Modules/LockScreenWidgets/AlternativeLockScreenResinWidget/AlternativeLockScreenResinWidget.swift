@@ -22,8 +22,8 @@ struct AlternativeLockScreenResinWidget: Widget {
             AlternativeLockScreenResinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.cfgName.stamina")
-        .description("pzWidgetsKit.cfgName.stamina.detail.2")
+        .configurationDisplayName("pzWidgetsKit.cfgName.stamina".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.stamina.detail.2".i18nWidgets)
         .supportedFamilies([.accessoryCircular])
     }
 }

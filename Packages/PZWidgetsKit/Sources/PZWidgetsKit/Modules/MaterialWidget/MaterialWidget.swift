@@ -22,8 +22,8 @@ struct MaterialWidget: Widget {
         ) { entry in
             MaterialWidgetView(entry: entry)
         }
-        .configurationDisplayName("pzWidgetsKit.material.title")
-        .description("pzWidgetsKit.material.description")
+        .configurationDisplayName("pzWidgetsKit.material.title".i18nWidgets)
+        .description("pzWidgetsKit.material.description".i18nWidgets)
         .supportedFamilies([.systemMedium])
         .containerBackgroundRemovable(false)
     }

@@ -22,8 +22,8 @@ struct LockScreenHomeCoinWidget: Widget {
             LockScreenHomeCoinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.homeCoin")
-        .description("pzWidgetsKit.cfgName.homeCoin")
+        .configurationDisplayName("pzWidgetsKit.homeCoin".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.homeCoin".i18nWidgets)
         #if os(watchOS)
             .supportedFamilies([
                 .accessoryCircular,

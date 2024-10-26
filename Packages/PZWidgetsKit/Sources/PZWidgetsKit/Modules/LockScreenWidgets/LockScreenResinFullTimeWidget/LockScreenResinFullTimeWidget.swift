@@ -22,8 +22,8 @@ struct LockScreenResinFullTimeWidget: Widget {
             LockScreenResinFullTimeWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.stamina.refillTime.title")
-        .description("pzWidgetsKit.stamina.refillTime.show.title")
+        .configurationDisplayName("pzWidgetsKit.stamina.refillTime.title".i18nWidgets)
+        .description("pzWidgetsKit.stamina.refillTime.show.title".i18nWidgets)
         .supportedFamilies([.accessoryCircular])
         .contentMarginsDisabled()
     }

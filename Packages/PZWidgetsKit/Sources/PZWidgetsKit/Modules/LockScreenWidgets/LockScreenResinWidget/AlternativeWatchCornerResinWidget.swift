@@ -21,8 +21,8 @@ struct AlternativeWatchCornerResinWidget: Widget {
         ) { entry in
             AlternativeWatchCornerResinWidgetView(entry: entry)
         }
-        .configurationDisplayName("pzWidgetsKit.cfgName.stamina")
-        .description("pzWidgetsKit.cfgName.stamina.detail")
+        .configurationDisplayName("pzWidgetsKit.cfgName.stamina".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.stamina.detail".i18nWidgets)
         #if os(watchOS)
             .supportedFamilies([.accessoryCorner])
         #endif
