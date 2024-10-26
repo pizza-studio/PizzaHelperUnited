@@ -44,11 +44,12 @@ struct WidgetBackgroundView: View {
             if let backgroundImageName {
                 let backgroundImage: Image = {
                     if NSDataAsset(name: backgroundImageName, bundle: .module) != nil {
-                        return Image(backgroundImageName, bundle: .main)
-                    } else {
-                        NSLog("[OPHelper] Asset missing in PZWidgetsKit: \(backgroundImageName)")
+                        return Image(backgroundImageName, bundle: .module)
                     }
                     let wallpaper = Wallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
+                    if wallpaper == nil {
+                        NSLog("[OPHelper] Asset missing in PZWidgetsKit: \(backgroundImageName)")
+                    }
                     return (wallpaper ?? .defaultValue(for: nil)).image4LiveActivity
                 }()
 
