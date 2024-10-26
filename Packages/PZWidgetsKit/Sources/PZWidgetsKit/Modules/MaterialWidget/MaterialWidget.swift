@@ -22,8 +22,8 @@ struct MaterialWidget: Widget {
         ) { entry in
             MaterialWidgetView(entry: entry)
         }
-        .configurationDisplayName("widget.material.title")
-        .description("widget.material.description")
+        .configurationDisplayName("pzWidgetsKit.material.title")
+        .description("pzWidgetsKit.material.description")
         .supportedFamilies([.systemMedium])
         .containerBackgroundRemovable(false)
     }
@@ -54,7 +54,7 @@ struct MaterialWidgetView: View {
             VStack(alignment: .leading, spacing: 1) {
                 Text(weekday)
                     .font(.caption)
-                    .foregroundColor(Color("textColor.calendarWeekday"))
+                    .foregroundColor(Color("textColor.calendarWeekday", bundle: .module))
                     .bold()
                     .shadow(radius: 2)
                 HStack(spacing: 6) {
@@ -72,7 +72,9 @@ struct MaterialWidgetView: View {
                                 talentMaterials
                         )
                     } else {
-                        Image("派蒙挺胸").resizable().scaledToFit()
+                        Image(systemSymbol: .checkmarkCircleFill)
+                            .resizable()
+                            .scaledToFit()
                             .clipShape(Circle())
                     }
                 }
@@ -86,7 +88,7 @@ struct MaterialWidgetView: View {
             }
             Spacer()
         }
-        .foregroundColor(Color("textColor3"))
+        .foregroundColor(Color("textColor3", bundle: .module))
         .myWidgetContainerBackground(withPadding: 0) {
             WidgetBackgroundView(
                 background: .randomNamecardBackground,
@@ -128,7 +130,7 @@ private struct EventView: View {
     @ViewBuilder
     func eventItem(event: EventModel) -> some View {
         HStack {
-            Text(" \(getLocalizedContent(event.name))")
+            Text(verbatim: " \(getLocalizedContent(event.name))")
                 .lineLimit(1)
             Spacer()
             Text(timeIntervalFormattedString(getRemainTimeInterval(

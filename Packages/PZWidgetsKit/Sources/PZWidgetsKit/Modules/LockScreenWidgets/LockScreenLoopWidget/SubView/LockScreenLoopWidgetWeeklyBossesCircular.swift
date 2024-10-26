@@ -16,13 +16,13 @@ struct LockScreenLoopWidgetWeeklyBossesCircular: View {
 
     @MainActor var body: some View {
         VStack(spacing: 0) {
-            Image("icon.weeklyBosses")
+            Image("icon.weeklyBosses", bundle: .module)
                 .resizable()
                 .scaledToFit()
                 .apply { imageView in
                     if widgetRenderingMode == .fullColor {
                         imageView
-                            .foregroundColor(Color("iconColor.weeklyBosses"))
+                            .foregroundColor(Color("iconColor.weeklyBosses", bundle: .module))
                     } else {
                         imageView
                     }
@@ -33,7 +33,7 @@ struct LockScreenLoopWidgetWeeklyBossesCircular: View {
                 case let data as GeneralNote4GI:
                     let numerator = data.weeklyBossesInfo.remainResinDiscount
                     let denominator = data.weeklyBossesInfo.totalResinDiscount
-                    Text("\(numerator) / \(denominator)")
+                    Text(verbatim: "\(numerator) / \(denominator)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 default:
                     Image(systemSymbol: .ellipsis)

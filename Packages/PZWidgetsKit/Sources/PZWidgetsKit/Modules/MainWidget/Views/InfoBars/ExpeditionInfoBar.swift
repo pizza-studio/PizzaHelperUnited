@@ -34,18 +34,18 @@ struct ExpeditionInfoBar: View {
         case let dailyNote as Note4ZZZ: EmptyView() /// ZZZ has no expedition API results.
         default:
             HStack(alignment: .center, spacing: 8) {
-                Image("派遣探索")
+                AccountKit.imageAsset("gi_note_expedition")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 25)
                     .shadow(color: .white, radius: 1)
                 isExpeditionAllCompleteImage
                     .frame(maxWidth: 13, maxHeight: 13)
-                    .foregroundColor(Color("textColor3"))
+                    .foregroundColor(Color("textColor3", bundle: .module))
                 let completionIntel = completionIntel
                 Text(verbatim: "\(completionIntel.ongoing) / \(completionIntel.all)")
                     .lineLimit(1)
-                    .foregroundColor(Color("textColor3"))
+                    .foregroundColor(Color("textColor3", bundle: .module))
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
             }

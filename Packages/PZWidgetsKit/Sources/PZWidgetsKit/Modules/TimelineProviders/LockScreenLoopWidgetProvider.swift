@@ -32,7 +32,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
     typealias Intent = SelectAccountAndShowWhichInfoIntent
 
     // 填入在手表上显示的Widget配置内容，例如："的原粹树脂"
-    let recommendationsTag: String
+    let recommendationsTag: LocalizedStringResource
 
     func recommendations() -> [AppIntentRecommendation<Intent>] {
         let configs = PZProfileActor.getSendableProfiles()
@@ -44,7 +44,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
             )
             return .init(
                 intent: intent,
-                description: config.name + recommendationsTag.i18nWidgets
+                description: config.name + String(localized: recommendationsTag)
             )
         }
     }
@@ -143,14 +143,14 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
 
         guard let firstProfile = configs.first else {
             print("Config is empty")
-            return makeFallbackResult(error: .noAccountFound)
+            return makeFallbackResult(error: .noProfileFound)
         }
 
         guard let intent = configuration.account else {
             print("no account intent got")
             guard let firstConfig = configs.first, configs.count == 1 else {
                 print("Need to choose account")
-                return makeFallbackResult(error: .accountSelectionNeeded)
+                return makeFallbackResult(error: .profileSelectionNeeded)
             }
             // 如果还未选择账号且只有一个账号，默认获取第一个
             return await getTimelineEntries(config: firstConfig)
@@ -166,7 +166,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
         guard let firstMatchedProfile else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             print("Need to choose account")
-            return makeFallbackResult(error: .accountSelectionNeeded)
+            return makeFallbackResult(error: .profileSelectionNeeded)
         }
 
         return await getTimelineEntries(config: firstMatchedProfile)

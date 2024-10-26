@@ -36,8 +36,8 @@ struct MaterialView: View {
                 }
             }
         } else {
-            Text("widget.material.sunday".i18nWidgets)
-                .foregroundColor(Color("textColor3"))
+            Text("pzWidgetsKit.material.sunday", bundle: .module)
+                .foregroundColor(Color("textColor3", bundle: .module))
                 .font(.caption)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)

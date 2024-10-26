@@ -170,14 +170,22 @@ extension CreateLiveActivityError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .notAllowed:
-            return "settings.resinTimer.error.systemSettings".i18nWidgets
+            return .init(localized: errorDescriptionKeys)
         case .noInfo:
-            return "settings.resinTimer.error.noInfo".i18nWidgets
+            return .init(localized: errorDescriptionKeys)
         case let .otherError(message):
-            return String(
-                format: NSLocalizedString("settings.resinTimer.error.unknown:%@", comment: ""),
-                message
-            )
+            return String(format: .init(localized: errorDescriptionKeys), message)
+        }
+    }
+
+    private var errorDescriptionKeys: LocalizedStringResource {
+        switch self {
+        case .notAllowed:
+            return "settings.resinTimer.error.systemSettings"
+        case .noInfo:
+            return "settings.resinTimer.error.noInfo"
+        case .otherError:
+            return "settings.resinTimer.error.unknown:%@"
         }
     }
 }

@@ -17,13 +17,13 @@ struct LockScreenResinTimerWidget: Widget {
         AppIntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "widget.resin.refillTime.countdown.ofSb")
+            provider: LockScreenWidgetProvider(recommendationsTag: "pzWidgetsKit.stamina.refillTime.countdown.ofSb")
         ) { entry in
             LockScreenResinTimerWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("widget.resin.refillTime.countdown.title")
-        .description("widget.resin.refillTime.countdown.show.title")
+        .configurationDisplayName("pzWidgetsKit.stamina.refillTime.countdown.title")
+        .description("pzWidgetsKit.stamina.refillTime.countdown.show.title")
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCircular])
         #else

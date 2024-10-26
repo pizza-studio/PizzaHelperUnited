@@ -43,39 +43,39 @@ struct DailyTaskInfoBar: View {
 
     @MainActor var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            Image("每日任务")
+            AccountKit.imageAsset("gi_note_dailyTask")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isTaskRewardReceivedImage
                 .frame(maxWidth: 13, maxHeight: 13)
-                .foregroundColor(Color("textColor3"))
+                .foregroundColor(Color("textColor3", bundle: .module))
 
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Group {
                     switch dailyNote {
                     case let dailyNote as any Note4GI:
                         let dailyTaskInfo = dailyNote.dailyTaskInfo
-                        Text("\(dailyTaskInfo.finishedTaskCount)")
-                        Text(" / \(dailyTaskInfo.totalTaskCount)")
+                        Text(verbatim: "\(dailyTaskInfo.finishedTaskCount)")
+                        Text(verbatim: " / \(dailyTaskInfo.totalTaskCount)")
                         if !dailyTaskInfo.isExtraRewardReceived,
                            dailyTaskInfo.finishedTaskCount == dailyTaskInfo.totalTaskCount {
-                            Text("widget.status.not_received")
+                            Text("pzWidgetsKit.status.not_received", bundle: .module)
                         }
                     case let dailyNote as WidgetNote4HSR:
                         let dailyTaskInfo = dailyNote.dailyTrainingInfo
-                        Text("\(dailyTaskInfo.currentScore)")
-                        Text(" / \(dailyTaskInfo.maxScore)")
+                        Text(verbatim: "\(dailyTaskInfo.currentScore)")
+                        Text(verbatim: " / \(dailyTaskInfo.maxScore)")
                     case let dailyNote as Note4ZZZ: // Vitality
                         let dailyTaskInfo = dailyNote.vitality
-                        Text("\(dailyTaskInfo.current)")
-                        Text(" / \(dailyTaskInfo.max)")
+                        Text(verbatim: "\(dailyTaskInfo.current)")
+                        Text(verbatim: " / \(dailyTaskInfo.max)")
                     default: EmptyView()
                     }
                 }
                 .lineLimit(1)
-                .foregroundColor(Color("textColor3"))
+                .foregroundColor(Color("textColor3", bundle: .module))
                 .font(.system(.caption, design: .rounded))
                 .minimumScaleFactor(0.2)
             }

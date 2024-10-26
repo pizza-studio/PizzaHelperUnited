@@ -17,13 +17,13 @@ struct LockScreenResinFullTimeWidget: Widget {
         AppIntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "widget.resin.refillTime.ofSb")
+            provider: LockScreenWidgetProvider(recommendationsTag: "pzWidgetsKit.stamina.refillTime.ofSb")
         ) { entry in
             LockScreenResinFullTimeWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("widget.resin.refillTime.title")
-        .description("widget.resin.refillTime.show.title")
+        .configurationDisplayName("pzWidgetsKit.stamina.refillTime.title")
+        .description("pzWidgetsKit.stamina.refillTime.show.title")
         .supportedFamilies([.accessoryCircular])
         .contentMarginsDisabled()
     }

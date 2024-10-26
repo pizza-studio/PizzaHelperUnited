@@ -31,7 +31,7 @@ struct MainInfo: View {
                         .minimumScaleFactor(0.5)
                 }
                 .font(.footnote)
-                .foregroundColor(Color("textColor3"))
+                .foregroundColor(Color("textColor3", bundle: .module))
                 Spacer()
             }
 
@@ -41,9 +41,14 @@ struct MainInfo: View {
                     .font(.system(size: 50, design: .rounded))
                     .fontWeight(.medium)
                     .minimumScaleFactor(0.1)
-                    .foregroundColor(Color("textColor3"))
+                    .foregroundColor(Color("textColor3", bundle: .module))
                     .shadow(radius: 1)
-                Image("树脂")
+                let staminaIconName = switch dailyNote.game {
+                case .genshinImpact: "gi_note_resin"
+                case .starRail: "hsr_note_trailblazePower"
+                case .zenlessZone: "zzz_note_battery"
+                }
+                AccountKit.imageAsset(staminaIconName)
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 30)
@@ -57,7 +62,7 @@ struct MainInfo: View {
                 Button(intent: WidgetRefreshIntent()) {
                     Image(systemSymbol: .arrowClockwiseCircle)
                         .font(.title3)
-                        .foregroundColor(Color("textColor3"))
+                        .foregroundColor(Color("textColor3", bundle: .module))
                         .clipShape(.circle)
                 }
                 .buttonStyle(.plain)
@@ -70,7 +75,7 @@ struct MainInfo: View {
 // MARK: - WidgetRefreshIntent
 
 struct WidgetRefreshIntent: AppIntent {
-    static let title: LocalizedStringResource = "WidgetRefreshIntent.Refresh"
+    static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
 
     func perform() async throws -> some IntentResult {
         .result()

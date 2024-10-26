@@ -16,6 +16,18 @@ struct LockScreenResinWidgetCorner: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
+    var staminaMonochromeIconAssetName: String {
+        switch result {
+        case let .success(data):
+            return switch data.game {
+            case .genshinImpact: "icon.resin"
+            case .starRail: "icon.trailblazePower"
+            case .zenlessZone: "icon.zzzBattery"
+            }
+        case .failure: return "icon.resin"
+        }
+    }
+
     var text: String {
         switch result {
         case let .success(data):
@@ -27,12 +39,12 @@ struct LockScreenResinWidgetCorner: View {
                 return "\(staminaIntel.existing), \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: timeOnFinish))!), \(PZWidgets.dateFormatter.string(from: timeOnFinish))"
             }
         case .failure:
-            return "app.dailynote.card.resin.label".i18nWidgets
+            return "pzWidgetsKit.stamina.label".i18nWidgets
         }
     }
 
     @MainActor var body: some View {
-        Image("icon.resin")
+        Image(staminaMonochromeIconAssetName, bundle: .module)
             .resizable()
             .scaledToFit()
             .padding(4)

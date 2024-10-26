@@ -21,23 +21,23 @@ struct WeeklyBossesInfoBar: View {
 
     @MainActor var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            Image("征讨领域")
+            AccountKit.imageAsset("gi_note_weeklyBosses")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isWeeklyBossesFinishedImage
                 .frame(width: 13, height: 13)
-                .foregroundColor(Color("textColor3"))
+                .foregroundColor(Color("textColor3", bundle: .module))
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                Text("\(weeklyBossesInfo.remainResinDiscount)")
+                Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
                     .lineLimit(1)
-                    .foregroundColor(Color("textColor3"))
+                    .foregroundColor(Color("textColor3", bundle: .module))
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)
-                Text(" / \(weeklyBossesInfo.totalResinDiscount)")
+                Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
                     .lineLimit(1)
-                    .foregroundColor(Color("textColor3"))
+                    .foregroundColor(Color("textColor3", bundle: .module))
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
             }

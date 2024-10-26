@@ -22,7 +22,7 @@ struct LockScreenExpeditionWidgetCorner: View {
             case let data as any Note4GI:
                 let timeDescription: String = {
                     if data.expeditions.allCompleted {
-                        return "widget.status.done".i18nWidgets
+                        return "pzWidgetsKit.status.done".i18nWidgets
                     } else {
                         if let expeditionInformation = data.expeditions as? GeneralNote4GI
                             .ExpeditionInfo4GI {
@@ -39,7 +39,7 @@ struct LockScreenExpeditionWidgetCorner: View {
             case let data as Note4HSR:
                 let timeDescription: String = {
                     if data.assignmentInfo.allCompleted {
-                        return "widget.status.done".i18nWidgets
+                        return "pzWidgetsKit.status.done".i18nWidgets
                     } else if let maxFinishTime = data.assignmentInfo.assignments.map(\.finishedTime).max() {
                         return formatter.string(from: maxFinishTime)
                     } else {
@@ -54,12 +54,12 @@ struct LockScreenExpeditionWidgetCorner: View {
                 return ""
             }
         case .failure:
-            return "app.dailynote.card.expedition.label".i18nWidgets
+            return "pzWidgetsKit.expedition".i18nWidgets
         }
     }
 
     @MainActor var body: some View {
-        Image("icon.expedition")
+        Image("icon.expedition", bundle: .module)
             .resizable()
             .scaledToFit()
             .padding(3.5)

@@ -21,8 +21,8 @@ struct MainWidget: Widget {
         ) { entry in
             WidgetViewEntryView(entry: entry)
         }
-        .configurationDisplayName("widget.status.title")
-        .description("widget.status.enquiry.title")
+        .configurationDisplayName("pzWidgetsKit.status.title")
+        .description("pzWidgetsKit.status.enquiry.title")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
         .containerBackgroundRemovable(false)
     }

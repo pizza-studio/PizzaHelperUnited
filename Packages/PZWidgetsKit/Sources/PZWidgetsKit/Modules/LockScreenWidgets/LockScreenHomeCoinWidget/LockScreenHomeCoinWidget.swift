@@ -22,8 +22,8 @@ struct LockScreenHomeCoinWidget: Widget {
             LockScreenHomeCoinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("app.dailynote.card.homeCoin.label")
-        .description("widget.intro.homeCoin")
+        .configurationDisplayName("pzWidgetsKit.homeCoin")
+        .description("pzWidgetsKit.cfgName.homeCoin")
         #if os(watchOS)
             .supportedFamilies([
                 .accessoryCircular,

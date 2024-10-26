@@ -16,6 +16,18 @@ struct LockScreenResinWidgetCircular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
+    var staminaMonochromeIconAssetName: String {
+        switch result {
+        case let .success(data):
+            return switch data.game {
+            case .genshinImpact: "icon.resin"
+            case .starRail: "icon.trailblazePower"
+            case .zenlessZone: "icon.zzzBattery"
+            }
+        case .failure: return "icon.resin"
+        }
+    }
+
     @MainActor var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
@@ -33,7 +45,7 @@ struct LockScreenResinWidgetCircular: View {
                         endPoint: .bottom
                     )
                     .mask(
-                        Image("icon.resin")
+                        Image(staminaMonochromeIconAssetName, bundle: .module)
                             .resizable()
                             .scaledToFit()
                     )
@@ -44,7 +56,7 @@ struct LockScreenResinWidgetCircular: View {
                 }
                 .gaugeStyle(
                     ProgressGaugeStyle(
-                        circleColor: Color("iconColor.resin.middle")
+                        circleColor: Color("iconColor.resin.middle", bundle: .module)
                     )
                 )
             case .failure:
@@ -59,7 +71,7 @@ struct LockScreenResinWidgetCircular: View {
                         endPoint: .bottom
                     )
                     .mask(
-                        Image("icon.resin")
+                        Image(staminaMonochromeIconAssetName, bundle: .module)
                             .resizable()
                             .scaledToFit()
                     )
@@ -68,7 +80,7 @@ struct LockScreenResinWidgetCircular: View {
                 }
                 .gaugeStyle(
                     ProgressGaugeStyle(
-                        circleColor: Color("iconColor.resin.middle")
+                        circleColor: Color("iconColor.resin.middle", bundle: .module)
                     )
                 )
             }
@@ -77,7 +89,7 @@ struct LockScreenResinWidgetCircular: View {
             case let .success(data):
                 let staminaIntel = data.staminaIntel
                 Gauge(value: Double(staminaIntel.existing) / Double(staminaIntel.max)) {
-                    Image("icon.resin")
+                    Image(staminaMonochromeIconAssetName, bundle: .module)
                         .resizable()
                         .scaledToFit()
                 } currentValueLabel: {
@@ -88,7 +100,7 @@ struct LockScreenResinWidgetCircular: View {
                 .gaugeStyle(ProgressGaugeStyle())
             case .failure:
                 Gauge(value: Double(213), in: 0.0 ... Double(213)) {
-                    Image("icon.resin")
+                    Image(staminaMonochromeIconAssetName, bundle: .module)
                         .resizable()
                         .scaledToFit()
                 } currentValueLabel: {
