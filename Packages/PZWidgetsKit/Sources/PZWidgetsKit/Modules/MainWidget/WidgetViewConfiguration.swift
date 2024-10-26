@@ -132,88 +132,88 @@ extension WidgetBackground {
         switch id {
         case "app.background.purple":
             return [
-                Color("bgColor.purple.1"),
-                Color("bgColor.purple.2"),
-                Color("bgColor.purple.3"),
+                Color("bgColor.purple.1", bundle: .module),
+                Color("bgColor.purple.2", bundle: .module),
+                Color("bgColor.purple.3", bundle: .module),
             ]
         case "app.background.gold":
             return [
-                Color("bgColor.yellow.1"),
-                Color("bgColor.yellow.2"),
-                Color("bgColor.yellow.3"),
+                Color("bgColor.yellow.1", bundle: .module),
+                Color("bgColor.yellow.2", bundle: .module),
+                Color("bgColor.yellow.3", bundle: .module),
             ]
         case "app.background.gray":
             return [
-                Color("bgColor.gray.1"),
-                Color("bgColor.gray.2"),
-                Color("bgColor.gray.3"),
+                Color("bgColor.gray.1", bundle: .module),
+                Color("bgColor.gray.2", bundle: .module),
+                Color("bgColor.gray.3", bundle: .module),
             ]
         case "app.background.green":
             return [
-                Color("bgColor.green.1"),
-                Color("bgColor.green.2"),
-                Color("bgColor.green.3"),
+                Color("bgColor.green.1", bundle: .module),
+                Color("bgColor.green.2", bundle: .module),
+                Color("bgColor.green.3", bundle: .module),
             ]
         case "app.background.blue":
             return [
-                Color("bgColor.blue.1"),
-                Color("bgColor.blue.2"),
-                Color("bgColor.blue.3"),
+                Color("bgColor.blue.1", bundle: .module),
+                Color("bgColor.blue.2", bundle: .module),
+                Color("bgColor.blue.3", bundle: .module),
             ]
         case "app.background.red":
             return [
-                Color("bgColor.red.1"),
-                Color("bgColor.red.2"),
-                Color("bgColor.red.3"),
+                Color("bgColor.red.1", bundle: .module),
+                Color("bgColor.red.2", bundle: .module),
+                Color("bgColor.red.3", bundle: .module),
             ]
 
         case "game.elements.anemo":
             return [
-                Color("bgColor.wind.1"),
-                Color("bgColor.wind.2"),
-                Color("bgColor.wind.3"),
+                Color("bgColor.wind.1", bundle: .module),
+                Color("bgColor.wind.2", bundle: .module),
+                Color("bgColor.wind.3", bundle: .module),
             ]
         case "game.elements.hydro":
             return [
-                Color("bgColor.water.1"),
-                Color("bgColor.water.2"),
-                Color("bgColor.water.3"),
+                Color("bgColor.water.1", bundle: .module),
+                Color("bgColor.water.2", bundle: .module),
+                Color("bgColor.water.3", bundle: .module),
             ]
         case "game.elements.cryo":
             return [
-                Color("bgColor.ice.1"),
-                Color("bgColor.ice.2"),
-                Color("bgColor.ice.3"),
+                Color("bgColor.ice.1", bundle: .module),
+                Color("bgColor.ice.2", bundle: .module),
+                Color("bgColor.ice.3", bundle: .module),
             ]
         case "game.elements.pyro":
             return [
-                Color("bgColor.fire.1"),
-                Color("bgColor.fire.2"),
-                Color("bgColor.fire.3"),
+                Color("bgColor.fire.1", bundle: .module),
+                Color("bgColor.fire.2", bundle: .module),
+                Color("bgColor.fire.3", bundle: .module),
             ]
         case "game.elements.geo":
             return [
-                Color("bgColor.stone.1"),
-                Color("bgColor.stone.2"),
-                Color("bgColor.stone.3"),
+                Color("bgColor.stone.1", bundle: .module),
+                Color("bgColor.stone.2", bundle: .module),
+                Color("bgColor.stone.3", bundle: .module),
             ]
         case "game.elements.electro":
             return [
-                Color("bgColor.thunder.1"),
-                Color("bgColor.thunder.2"),
-                Color("bgColor.thunder.3"),
+                Color("bgColor.thunder.1", bundle: .module),
+                Color("bgColor.thunder.2", bundle: .module),
+                Color("bgColor.thunder.3", bundle: .module),
             ]
         case "game.elements.dendro":
             return [
-                Color("bgColor.glass.1"),
-                Color("bgColor.glass.2"),
-                Color("bgColor.glass.3"),
+                Color("bgColor.glass.1", bundle: .module),
+                Color("bgColor.glass.2", bundle: .module),
+                Color("bgColor.glass.3", bundle: .module),
             ]
         case "app.background.intertwinedFate":
             return [
-                Color("bgColor.intertwinedFate.1"),
-                Color("bgColor.intertwinedFate.2"),
-                Color("bgColor.intertwinedFate.3"),
+                Color("bgColor.intertwinedFate.1", bundle: .module),
+                Color("bgColor.intertwinedFate.2", bundle: .module),
+                Color("bgColor.intertwinedFate.3", bundle: .module),
             ]
         default:
             return []

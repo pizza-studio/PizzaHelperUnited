@@ -28,12 +28,12 @@ struct LockScreenHomeCoinWidgetCorner: View {
                 return "WRONG_GAME"
             }
         case .failure:
-            return "app.dailynote.card.homeCoin.label".i18nWidgets
+            return "pzWidgetsKit.homeCoin".i18nWidgets
         }
     }
 
     @MainActor var body: some View {
-        Image("icon.homeCoin")
+        Image("icon.homeCoin", bundle: .module)
             .resizable()
             .scaledToFit()
             .padding(3)

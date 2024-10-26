@@ -26,8 +26,8 @@ struct LockScreenAllInfoWidget: Widget {
             LockScreenAllInfoWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("widget.intro.generalInfo")
-        .description("widget.intro.generalInfo.detail")
+        .configurationDisplayName("pzWidgetsKit.cfgName.generalInfo")
+        .description("pzWidgetsKit.cfgName.generalInfo.detail")
         .supportedFamilies([.accessoryRectangular])
     }
 }
@@ -64,6 +64,18 @@ struct LockScreenAllInfoWidgetView: View {
         }
     }
 
+    var staminaMonochromeIconAssetName: String {
+        switch result {
+        case let .success(data):
+            return switch data.game {
+            case .genshinImpact: "icon.resin"
+            case .starRail: "icon.trailblazePower"
+            case .zenlessZone: "icon.zzzBattery"
+            }
+        case .failure: return "icon.resin"
+        }
+    }
+
     @MainActor var body: some View {
         Group {
             switch result {
@@ -77,50 +89,57 @@ struct LockScreenAllInfoWidgetView: View {
                     GridRow(alignment: .lastTextBaseline) {
                         switch data {
                         case let data as any Note4GI:
-                            Text("\(Image("icon.resin"))")
+                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .module))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
-                                .foregroundColor(widgetRenderingMode == .fullColor ? Color("iconColor.resin") : nil)
-                            Text("\(data.resinInfo.currentResinDynamic)")
+                                .foregroundColor(widgetRenderingMode == .fullColor ? Color(
+                                    "iconColor.resin",
+                                    bundle: .module
+                                ) : nil)
+                            Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                         case let data as Note4HSR:
-                            Text("\(Image("icon.resin"))")
+                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .module))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
-                                .foregroundColor(widgetRenderingMode == .fullColor ? Color("iconColor.resin") : nil)
+                                .foregroundColor(widgetRenderingMode == .fullColor ? Color(
+                                    "iconColor.resin",
+                                    bundle: .module
+                                ) : nil)
                             Text(verbatim: "\(data.staminaInfo.currentStamina)")
                         case let data as Note4ZZZ:
-                            Text("\(Image("icon.resin"))")
+                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .module))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
-                                .foregroundColor(widgetRenderingMode == .fullColor ? Color("iconColor.resin") : nil)
+                                .foregroundColor(widgetRenderingMode == .fullColor ? Color(
+                                    "iconColor.resin",
+                                    bundle: .module
+                                ) : nil)
                             Text(verbatim: "\(data.energy.currentEnergyAmountDynamic)")
                         default: EmptyView()
                         }
                         Spacer()
                         switch data {
                         case let data as any Note4GI:
-                            Text("\(Image("icon.expedition"))")
+                            Text(verbatim: "\(Image("icon.expedition", bundle: .module))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
                                 .foregroundColor(
-                                    widgetRenderingMode == .fullColor ? Color("iconColor.expedition") : nil
+                                    widgetRenderingMode == .fullColor ? Color("iconColor.expedition", bundle: .module) :
+                                        nil
                                 )
                             HStack(
                                 alignment: .lastTextBaseline,
                                 spacing: 0
                             ) {
-                                Text(
-                                    "\(data.expeditions.ongoingExpeditionCount)"
-                                )
-                                Text(
-                                    " / \(data.expeditions.maxExpeditionsCount)"
-                                )
-                                .font(.caption)
+                                Text(verbatim: "\(data.expeditions.ongoingExpeditionCount)")
+                                Text(verbatim: " / \(data.expeditions.maxExpeditionsCount)")
+                                    .font(.caption)
                             }
                         case let data as Note4HSR:
                             let expeditionDataPair = data.expeditionProgressCounts
                             let numerator = expeditionDataPair.ongoing
                             let denominator = expeditionDataPair.all
-                            Text("\(Image("icon.expedition"))")
+                            Text(verbatim: "\(Image("icon.expedition", bundle: .module))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
                                 .foregroundColor(
-                                    widgetRenderingMode == .fullColor ? Color("iconColor.expedition") : nil
+                                    widgetRenderingMode == .fullColor ? Color("iconColor.expedition", bundle: .module) :
+                                        nil
                                 )
                             HStack(
                                 alignment: .lastTextBaseline,
@@ -139,19 +158,23 @@ struct LockScreenAllInfoWidgetView: View {
                     GridRow(alignment: .lastTextBaseline) {
                         switch data {
                         case let data as any Note4GI:
-                            Text("\(Image("icon.homeCoin"))")
+                            Text(verbatim: "\(Image("icon.homeCoin", bundle: .module))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
                                 .foregroundColor(
-                                    widgetRenderingMode == .fullColor ? Color("iconColor.homeCoin") : nil
+                                    widgetRenderingMode == .fullColor ? Color("iconColor.homeCoin", bundle: .module) :
+                                        nil
                                 )
-                            Text("\(data.homeCoinInfo.currentHomeCoinDynamic)")
+                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoinDynamic)")
                         case let data as Note4HSR:
                             if let data = data as? WidgetNote4HSR {
                                 // Simulated Universe
-                                Text("\(Image(systemSymbol: .globeBadgeChevronBackward))")
+                                Text(verbatim: "\(Image(systemSymbol: .globeBadgeChevronBackward))")
                                     .widgetAccentable(widgetRenderingMode == .fullColor)
                                     .foregroundColor(
-                                        widgetRenderingMode == .fullColor ? Color("iconColor.homeCoin") : nil
+                                        widgetRenderingMode == .fullColor ? Color(
+                                            "iconColor.homeCoin",
+                                            bundle: .module
+                                        ) : nil
                                     )
                                 let currentScore = data.simulatedUniverseInfo.currentScore
                                 let maxScore = data.simulatedUniverseInfo.maxScore
@@ -165,26 +188,30 @@ struct LockScreenAllInfoWidgetView: View {
                         Spacer()
                         switch data {
                         case let data as any Note4GI:
-                            Text("\(Image("icon.dailyTask"))")
+                            Text(verbatim: "\(Image("icon.dailyTask", bundle: .module))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
                                 .foregroundColor(
-                                    widgetRenderingMode == .fullColor ? Color("iconColor.dailyTask") : nil
+                                    widgetRenderingMode == .fullColor ? Color("iconColor.dailyTask", bundle: .module) :
+                                        nil
                                 )
                             HStack(
                                 alignment: .lastTextBaseline,
                                 spacing: 0
                             ) {
-                                Text("\(data.dailyTaskInfo.finishedTaskCount)")
-                                Text(" / \(data.dailyTaskInfo.totalTaskCount)")
+                                Text(verbatim: "\(data.dailyTaskInfo.finishedTaskCount)")
+                                Text(verbatim: " / \(data.dailyTaskInfo.totalTaskCount)")
                                     .font(.caption)
                             }
                         case let data as Note4HSR:
                             if let data = data as? WidgetNote4HSR {
                                 // Daily Training
-                                Text("\(Image("icon.dailyTask"))")
+                                Text(verbatim: "\(Image("icon.dailyTask", bundle: .module))")
                                     .widgetAccentable(widgetRenderingMode == .fullColor)
                                     .foregroundColor(
-                                        widgetRenderingMode == .fullColor ? Color("iconColor.dailyTask") : nil
+                                        widgetRenderingMode == .fullColor ? Color(
+                                            "iconColor.dailyTask",
+                                            bundle: .module
+                                        ) : nil
                                     )
                                 HStack(
                                     alignment: .lastTextBaseline,
@@ -214,22 +241,29 @@ struct LockScreenAllInfoWidgetView: View {
                     // ROW 3
                     if let data = data as? GeneralNote4GI {
                         GridRow(alignment: .lastTextBaseline) {
-                            Text("\(Image("icon.transformer"))")
+                            Text(verbatim: "\(Image("icon.transformer", bundle: .module))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
                                 .foregroundColor(
-                                    widgetRenderingMode == .fullColor ? Color("iconColor.transformer") : nil
+                                    widgetRenderingMode == .fullColor ? Color(
+                                        "iconColor.transformer",
+                                        bundle: .module
+                                    ) :
+                                        nil
                                 )
                             let day = Calendar.current.dateComponents(
                                 [.day],
                                 from: Date(),
                                 to: data.transformerInfo.recoveryTime
                             ).day!
-                            Text("\(day)天")
+                            Text("pzWidgetsKit.unit.day:\(day)", bundle: .module)
                             Spacer()
-                            Text("\(Image("icon.weeklyBosses"))")
+                            Text(verbatim: "\(Image("icon.weeklyBosses", bundle: .module))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
                                 .foregroundColor(
-                                    widgetRenderingMode == .fullColor ? Color("iconColor.weeklyBosses") : nil
+                                    widgetRenderingMode == .fullColor ? Color(
+                                        "iconColor.weeklyBosses",
+                                        bundle: .module
+                                    ) : nil
                                 )
                             HStack(
                                 alignment: .lastTextBaseline,
@@ -250,11 +284,11 @@ struct LockScreenAllInfoWidgetView: View {
                     verticalSpacing: 2
                 ) {
                     GridRow(alignment: .lastTextBaseline) {
-                        Text("\(Image("icon.resin"))")
+                        Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .module))")
                             .widgetAccentable(widgetRenderingMode == .fullColor)
                         Text(Image(systemSymbol: .ellipsis))
                         Spacer()
-                        Text("\(Image("icon.expedition"))")
+                        Text(verbatim: "\(Image("icon.expedition", bundle: .module))")
                             .widgetAccentable(widgetRenderingMode == .fullColor)
                         HStack(
                             alignment: .lastTextBaseline,
@@ -265,11 +299,11 @@ struct LockScreenAllInfoWidgetView: View {
                         Spacer()
                     }
                     GridRow(alignment: .lastTextBaseline) {
-                        Text("\(Image("icon.homeCoin"))")
+                        Text(verbatim: "\(Image("icon.homeCoin", bundle: .module))")
                             .widgetAccentable(widgetRenderingMode == .fullColor)
-                        Text("\(Image(systemSymbol: .ellipsis))")
+                        Text(verbatim: "\(Image(systemSymbol: .ellipsis))")
                         Spacer()
-                        Text("\(Image("icon.dailyTask"))")
+                        Text(verbatim: "\(Image("icon.dailyTask", bundle: .module))")
                             .widgetAccentable(widgetRenderingMode == .fullColor)
                         HStack(
                             alignment: .lastTextBaseline,
@@ -279,11 +313,11 @@ struct LockScreenAllInfoWidgetView: View {
                         }
                     }
                     GridRow(alignment: .lastTextBaseline) {
-                        Text("\(Image("icon.transformer"))")
+                        Text(verbatim: "\(Image("icon.transformer", bundle: .module))")
                             .widgetAccentable(widgetRenderingMode == .fullColor)
                         Text(Image(systemSymbol: .ellipsis))
                         Spacer()
-                        Text("\(Image("icon.weeklyBosses"))")
+                        Text(verbatim: "\(Image("icon.weeklyBosses", bundle: .module))")
                             .widgetAccentable(widgetRenderingMode == .fullColor)
                         HStack(
                             alignment: .lastTextBaseline,

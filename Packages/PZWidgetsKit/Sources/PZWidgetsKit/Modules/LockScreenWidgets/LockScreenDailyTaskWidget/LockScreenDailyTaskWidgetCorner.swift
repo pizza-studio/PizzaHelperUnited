@@ -15,7 +15,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
     @MainActor var body: some View {
         switch result {
         case let .success(data):
-            Image("icon.dailyTask")
+            Image("icon.dailyTask", bundle: .module)
                 .resizable()
                 .scaledToFit()
                 .padding(3.5)
@@ -25,7 +25,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
                         let valNow = data.dailyTaskInfo.finishedTaskCount
                         let valMax = data.dailyTaskInfo.totalTaskCount
                         Gauge(value: Double(valNow), in: 0 ... Double(valMax)) {
-                            Text("app.dailynote.card.dailyTask.label")
+                            Text("pzWidgetsKit.dailyTask", bundle: .module)
                         } currentValueLabel: {
                             Text(verbatim: "\(valNow) / \(valMax)")
                         } minimumValueLabel: {
@@ -37,7 +37,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
                         let valNow = data.dailyTrainingInfo.currentScore
                         let valMax = data.dailyTrainingInfo.maxScore
                         Gauge(value: Double(valNow), in: 0 ... Double(valMax)) {
-                            Text("app.dailynote.card.dailyTask.label")
+                            Text("pzWidgetsKit.dailyTask", bundle: .module)
                         } currentValueLabel: {
                             Text(verbatim: "\(valNow) / \(valMax)")
                         } minimumValueLabel: {
@@ -50,11 +50,11 @@ struct LockScreenDailyTaskWidgetCorner: View {
                     }
                 }
         case .failure:
-            Image("icon.dailyTask")
+            Image("icon.dailyTask", bundle: .module)
                 .resizable()
                 .scaledToFit()
                 .padding(4.5)
-                .widgetLabel("app.dailynote.card.dailyTask.label".i18nWidgets)
+                .widgetLabel("pzWidgetsKit.dailyTask".i18nWidgets)
         }
     }
 }

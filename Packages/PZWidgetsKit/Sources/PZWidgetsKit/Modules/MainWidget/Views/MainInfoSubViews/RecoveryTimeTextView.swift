@@ -25,12 +25,12 @@ struct RecoveryTimeText: View {
         }
         .font(.caption)
         .minimumScaleFactor(0.2)
-        .foregroundColor(Color("textColor3"))
+        .foregroundColor(Color("textColor3", bundle: .module))
     }
 
     @MainActor
     func makeContentText() -> (text: Text, isFull: Bool) {
-        let textFull = Text("infoBlock.resionFullyFilledDescription")
+        let textFull = Text("pzWidgetsKit.infoBlock.staminaFullyFilledDescription", bundle: .module)
         switch data {
         case let data as any Note4GI:
             let resinInfo = data.resinInfo

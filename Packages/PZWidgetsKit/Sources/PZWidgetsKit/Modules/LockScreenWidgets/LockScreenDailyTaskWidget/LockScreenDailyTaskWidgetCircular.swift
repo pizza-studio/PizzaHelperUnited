@@ -15,13 +15,13 @@ struct LockScreenDailyTaskWidgetCircular: View {
 
     @MainActor var body: some View {
         VStack(spacing: 0) {
-            Image("icon.dailyTask")
+            Image("icon.dailyTask", bundle: .module)
                 .resizable()
                 .scaledToFit()
                 .apply { imageView in
                     if widgetRenderingMode == .fullColor {
                         imageView
-                            .foregroundColor(Color("iconColor.dailyTask"))
+                            .foregroundColor(Color("iconColor.dailyTask", bundle: .module))
                     } else {
                         imageView
                     }
@@ -30,10 +30,10 @@ struct LockScreenDailyTaskWidgetCircular: View {
             case let .success(data):
                 switch data {
                 case let data as any Note4GI:
-                    Text("\(data.dailyTaskInfo.finishedTaskCount) / \(data.dailyTaskInfo.totalTaskCount)")
+                    Text(verbatim: "\(data.dailyTaskInfo.finishedTaskCount) / \(data.dailyTaskInfo.totalTaskCount)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 case let data as WidgetNote4HSR:
-                    Text("\(data.dailyTrainingInfo.currentScore) / \(data.dailyTrainingInfo.maxScore)")
+                    Text(verbatim: "\(data.dailyTrainingInfo.currentScore) / \(data.dailyTrainingInfo.maxScore)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 default:
                     Image(systemSymbol: .ellipsis)

@@ -15,6 +15,18 @@ struct LockScreenResinWidgetInline: View {
     let entry: any TimelineEntry
     let result: Result<any DailyNoteProtocol, any Error>
 
+    var staminaMonochromeIconAssetName: String {
+        switch result {
+        case let .success(data):
+            return switch data.game {
+            case .genshinImpact: "icon.resin"
+            case .starRail: "icon.trailblazePower"
+            case .zenlessZone: "icon.zzzBattery"
+            }
+        case .failure: return "icon.resin"
+        }
+    }
+
     @MainActor var body: some View {
         switch result {
         case let .success(data):
@@ -25,14 +37,15 @@ struct LockScreenResinWidgetInline: View {
             } else {
                 Image(systemSymbol: .moonFill)
             }
-            Text(
-                "\(staminaStaus.existing)  \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: data.staminaFullTimeOnFinish))!)"
-            )
+            let trailingText = PZWidgets.intervalFormatter.string(
+                from: TimeInterval.sinceNow(to: data.staminaFullTimeOnFinish)
+            )!
+            Text(verbatim: "\(staminaStaus.existing)  \(trailingText)")
         // 似乎不能插入自定义的树脂图片，也许以后会开放
-//                Image("icon.resin")
+//                Image(staminaMonochromeIconAssetName, bundle: .module)
         case .failure:
             Image(systemSymbol: .moonFill)
-            Text("…")
+            Text(verbatim: "…")
         }
     }
 }

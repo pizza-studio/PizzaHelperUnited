@@ -23,13 +23,13 @@ struct LockScreenLoopWidgetTransformerCircular: View {
 
     @MainActor var body: some View {
         VStack(spacing: 0) {
-            Image("icon.transformer")
+            Image("icon.transformer", bundle: .module)
                 .resizable()
                 .scaledToFit()
                 .apply { imageView in
                     if widgetRenderingMode == .fullColor {
                         imageView
-                            .foregroundColor(Color("iconColor.transformer"))
+                            .foregroundColor(Color("iconColor.transformer", bundle: .module))
                     } else {
                         imageView
                     }
@@ -40,7 +40,7 @@ struct LockScreenLoopWidgetTransformerCircular: View {
                 case let data as GeneralNote4GI:
                     let recovertyTime = data.transformerInfo.recoveryTime
                     if recovertyTime.timeIntervalSince(.now) <= 0 {
-                        Text("infoBlock.transformerAvailable")
+                        Text("pzWidgetsKit.infoBlock.transformerAvailable", bundle: .module)
                             .font(.system(.body, design: .rounded).weight(.medium))
                     } else {
                         Text(intervalFormatter.string(from: TimeInterval.sinceNow(to: recovertyTime))!)

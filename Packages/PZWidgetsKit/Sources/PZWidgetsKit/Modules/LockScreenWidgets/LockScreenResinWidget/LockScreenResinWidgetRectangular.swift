@@ -17,6 +17,18 @@ struct LockScreenResinWidgetRectangular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
+    var staminaMonochromeIconAssetName: String {
+        switch result {
+        case let .success(data):
+            return switch data.game {
+            case .genshinImpact: "icon.resin"
+            case .starRail: "icon.trailblazePower"
+            case .zenlessZone: "icon.zzzBattery"
+            }
+        case .failure: return "icon.resin"
+        }
+    }
+
     @MainActor var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
@@ -27,22 +39,23 @@ struct LockScreenResinWidgetRectangular: View {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let size: CGFloat = 40
-                            Text("\(staminaIntel.existing)")
+                            Text(verbatim: "\(staminaIntel.existing)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text("\(Image("icon.resin"))")
+                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .module))")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
-                        .foregroundColor(Color("iconColor.resin.middle"))
+                        .foregroundColor(Color("iconColor.resin.middle", bundle: .module))
                         if staminaIntel.existing >= staminaIntel.max {
-                            Text("widget.resin.full")
+                            Text("pzWidgetsKit.stamina.full", bundle: .module)
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                         } else {
                             Text(
-                                "infoBlock.refilledAt:\(PZWidgets.dateFormatter.string(from: data.staminaFullTimeOnFinish))"
+                                "pzWidgetsKit.infoBlock.refilledAt:\(PZWidgets.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
+                                bundle: .module
                             )
                             .lineLimit(2)
                             .font(.footnote)
@@ -60,13 +73,13 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(Image(systemSymbol: .ellipsis))
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text("\(Image("icon.resin"))")
+                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .module))")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
                         .foregroundColor(.cyan)
-                        Text(Image("icon.resin"))
+                        Text(Image(staminaMonochromeIconAssetName, bundle: .module))
                             .font(.footnote)
                             .fixedSize(horizontal: false, vertical: true)
                     }
@@ -81,23 +94,24 @@ struct LockScreenResinWidgetRectangular: View {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let size: CGFloat = 40
-                            Text("\(staminaIntel.existing)")
+                            Text(verbatim: "\(staminaIntel.existing)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text("\(Image("icon.resin"))")
+                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .module))")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .foregroundColor(.primary)
                         .widgetAccentable()
                         if staminaIntel.existing >= staminaIntel.max {
-                            Text("widget.resin.full")
+                            Text("pzWidgetsKit.stamina.full", bundle: .module)
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .foregroundColor(.gray)
                         } else {
                             Text(
-                                "infoBlock.refilledAt:\(PZWidgets.dateFormatter.string(from: data.staminaFullTimeOnFinish))"
+                                "pzWidgetsKit.infoBlock.refilledAt:\(PZWidgets.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
+                                bundle: .module
                             )
                             .lineLimit(2)
                             .font(.footnote)
@@ -115,12 +129,12 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(Image(systemSymbol: .ellipsis))
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text("\(Image("icon.resin"))")
+                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .module))")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
-                        Text(Image("icon.resin"))
+                        Text(Image(staminaMonochromeIconAssetName, bundle: .module))
                             .font(.footnote)
                             .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(.gray)

@@ -5,19 +5,19 @@
 import Foundation
 
 enum WidgetError: CustomLocalizedStringResourceConvertible, LocalizedError {
-    case accountSelectionNeeded
-    case noAccountFound
+    case profileSelectionNeeded
+    case noProfileFound
 
     // MARK: Internal
 
     var localizedStringResource: LocalizedStringResource {
         switch self {
-        case .accountSelectionNeeded:
+        case .profileSelectionNeeded:
             /// "请长按进入小组件重新设置账号信息"
-            "widgetError.accountSelectionNeeded"
-        case .noAccountFound:
+            "pzWidgetsKit.widgetError.profileSelectionNeeded"
+        case .noProfileFound:
             /// "请进入App设置账号信息"
-            "widgetError.noAccountFound"
+            "pzWidgetsKit.widgetError.noProfileFound"
         }
     }
 

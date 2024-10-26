@@ -22,8 +22,8 @@ struct AlternativeLockScreenResinWidget: Widget {
             AlternativeLockScreenResinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("app.dailynote.card.resin.label")
-        .description("widget.intro.resin.2")
+        .configurationDisplayName("pzWidgetsKit.cfgName.stamina")
+        .description("pzWidgetsKit.cfgName.stamina.detail.2")
         .supportedFamilies([.accessoryCircular])
     }
 }

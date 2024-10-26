@@ -17,6 +17,18 @@ struct LockScreenResinFullTimeWidgetCircular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
+    var staminaMonochromeIconAssetName: String {
+        switch result {
+        case let .success(data):
+            return switch data.game {
+            case .genshinImpact: "icon.resin"
+            case .starRail: "icon.trailblazePower"
+            case .zenlessZone: "icon.zzzBattery"
+            }
+        case .failure: return "icon.resin"
+        }
+    }
+
     @MainActor var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
@@ -33,7 +45,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                         endPoint: .bottom
                     )
                     .mask(
-                        Image("icon.resin")
+                        Image(staminaMonochromeIconAssetName, bundle: .module)
                             .resizable()
                             .scaledToFit()
                     )
@@ -45,7 +57,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                             VStack(spacing: -2) {
                                 if data.resinInfo.currentResinDynamic != data
                                     .resinInfo.maxResin {
-                                    Text("\(data.resinInfo.currentResinDynamic)")
+                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                                         .font(.system(
                                             size: 20,
                                             weight: .medium,
@@ -74,7 +86,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                         .minimumScaleFactor(0.1)
                                         .foregroundColor(.secondary)
                                 } else {
-                                    Text("\(data.resinInfo.currentResinDynamic)")
+                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                                         .font(.system(
                                             size: 20,
                                             weight: .medium,
@@ -84,14 +96,14 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                 }
                             }
                         default:
-                            Image("icon.resin")
+                            Image(staminaMonochromeIconAssetName, bundle: .module)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 10)
                             Image(systemSymbol: .ellipsis)
                         }
                     case .failure:
-                        Image("icon.resin")
+                        Image(staminaMonochromeIconAssetName, bundle: .module)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 10)
@@ -108,7 +120,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
             ZStack {
                 AccessoryWidgetBackground()
                 VStack(spacing: -0.5) {
-                    Image("icon.resin")
+                    Image(staminaMonochromeIconAssetName, bundle: .module)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 9)
@@ -119,7 +131,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                             VStack(spacing: -2) {
                                 if data.resinInfo.currentResinDynamic != data
                                     .resinInfo.maxResin {
-                                    Text("\(data.resinInfo.currentResinDynamic)")
+                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                                         .font(.system(
                                             size: 20,
                                             weight: .medium,
@@ -144,7 +156,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                         ))
                                         .minimumScaleFactor(0.1)
                                 } else {
-                                    Text("\(data.resinInfo.currentResinDynamic)")
+                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                                         .font(.system(
                                             size: 20,
                                             weight: .medium,
@@ -154,14 +166,14 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                 }
                             }
                         default:
-                            Image("icon.resin")
+                            Image(staminaMonochromeIconAssetName, bundle: .module)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 10)
                             Image(systemSymbol: .ellipsis)
                         }
                     case .failure:
-                        Image("icon.resin")
+                        Image(staminaMonochromeIconAssetName, bundle: .module)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 10)

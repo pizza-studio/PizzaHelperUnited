@@ -29,18 +29,18 @@ struct HomeCoinInfoBar: View {
 
     @MainActor var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            Image("洞天宝钱")
+            AccountKit.imageAsset("gi_note_teapot_coin")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isHomeCoinFullImage
                 .frame(maxWidth: 13, maxHeight: 13)
-                .foregroundColor(Color("textColor3"))
+                .foregroundColor(Color("textColor3", bundle: .module))
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                Text("\(homeCoinInfo.currentHomeCoinDynamic)")
+                Text(verbatim: "\(homeCoinInfo.currentHomeCoinDynamic)")
                     .lineLimit(1)
-                    .foregroundColor(Color("textColor3"))
+                    .foregroundColor(Color("textColor3", bundle: .module))
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)
             }

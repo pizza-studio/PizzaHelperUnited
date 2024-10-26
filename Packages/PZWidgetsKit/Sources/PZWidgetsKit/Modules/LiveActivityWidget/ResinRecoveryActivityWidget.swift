@@ -29,20 +29,20 @@ struct ResinRecoveryActivityWidget: Widget {
                         Image(systemSymbol: .personFill)
                         Text(context.attributes.accountName)
                     }
-                    .foregroundColor(Color("textColor.appIconLike"))
+                    .foregroundColor(Color("textColor.appIconLike", bundle: .module))
                     .font(.caption2)
                     .padding(.leading)
                 }
                 .contentMargins(.trailing, 15)
                 DynamicIslandExpandedRegion(.trailing) {
                     HStack(alignment: .center, spacing: 4) {
-                        Image("AppIconSmall")
+                        Image("AppIcon")
                             .resizable()
                             .scaledToFit()
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                             .frame(width: 15)
-                        Text("app.title.full")
-                            .foregroundColor(Color("textColor.appIconLike"))
+                        Text("app.title.full".i18nBaseKit)
+                            .foregroundColor(Color("textColor.appIconLike", bundle: .module))
                             .font(.caption2)
                     }
                     .padding(.trailing)
@@ -52,13 +52,16 @@ struct ResinRecoveryActivityWidget: Widget {
                     HStack {
                         if Date() < context.state.next20ResinRecoveryTime {
                             HStack {
-                                Image("树脂")
+                                AccountKit.imageAsset(resinImageAssetName(context))
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxHeight: 40)
                                 VStack(alignment: .leading) {
-                                    Text("widget.next20Resin:\(context.state.next20ResinCount)")
-                                        .font(.caption2)
+                                    Text(
+                                        "pzWidgetsKit.next20Stamina:\(context.state.next20ResinCount)",
+                                        bundle: .module
+                                    )
+                                    .font(.caption2)
                                     Text(
                                         timerInterval: Date() ... context.state
                                             .next20ResinRecoveryTime,
@@ -67,7 +70,7 @@ struct ResinRecoveryActivityWidget: Widget {
                                     .multilineTextAlignment(.leading)
                                     .font(.system(.title2, design: .rounded))
                                     .foregroundColor(
-                                        Color("textColor.originResin")
+                                        Color("textColor.originResin", bundle: .module)
                                     )
                                 }
                                 .gridColumnAlignment(.leading)
@@ -75,15 +78,14 @@ struct ResinRecoveryActivityWidget: Widget {
                             }
                         }
                         Spacer()
-                        if Date() < context.state
-                            .resinRecoveryTime {
+                        if Date() < context.state.resinRecoveryTime {
                             HStack {
-                                Image("浓缩树脂")
+                                AccountKit.imageAsset("gi_note_resin_condensed")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxHeight: 40)
                                 VStack(alignment: .leading) {
-                                    Text("widget.nextMaxResin")
+                                    Text("pzWidgetsKit.nextMaxStamina", bundle: .module)
                                         .font(.caption2)
 
                                     Text(
@@ -94,7 +96,7 @@ struct ResinRecoveryActivityWidget: Widget {
                                     .multilineTextAlignment(.leading)
                                     .font(.system(.title2, design: .rounded))
                                     .foregroundColor(
-                                        Color("textColor.originResin")
+                                        Color("textColor.originResin", bundle: .module)
                                     )
                                 }
                                 .gridColumnAlignment(.leading)
@@ -102,10 +104,10 @@ struct ResinRecoveryActivityWidget: Widget {
                             }
                         }
                     }
-                    .foregroundColor(Color("textColor3"))
+                    .foregroundColor(Color("textColor3", bundle: .module))
                 }
             } compactLeading: {
-                Image("树脂").resizable().scaledToFit()
+                AccountKit.imageAsset(resinImageAssetName(context)).resizable().scaledToFit()
             } compactTrailing: {
                 if Date() < context.state
                     .next20ResinRecoveryTime {
@@ -118,11 +120,19 @@ struct ResinRecoveryActivityWidget: Widget {
                     .monospacedDigit()
                     .multilineTextAlignment(.center)
                     .frame(width: 60)
-                    .foregroundColor(Color("textColor2"))
+                    .foregroundColor(Color("textColor2", bundle: .module))
                 }
             } minimal: {
-                Image("树脂").resizable().scaledToFit()
+                AccountKit.imageAsset(resinImageAssetName(context)).resizable().scaledToFit()
             }
+        }
+    }
+
+    func resinImageAssetName(_ context: ActivityViewContext<ResinRecoveryAttributes>) -> String {
+        switch context.state.game {
+        case .genshinImpact: "gi_note_resin"
+        case .starRail: "hsr_note_trailblazePower"
+        case .zenlessZone: "zzz_note_battery"
         }
     }
 }
@@ -133,6 +143,14 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
     @Default(.resinRecoveryLiveActivityBackgroundOptions) var resinRecoveryLiveActivityBackgroundOptions: [String]
 
     var useNoBackground: Bool { context.state.background == .noBackground }
+
+    var resinImageAssetName: String {
+        switch context.state.game {
+        case .genshinImpact: "gi_note_resin"
+        case .starRail: "hsr_note_trailblazePower"
+        case .zenlessZone: "zzz_note_battery"
+        }
+    }
 
     @MainActor var body: some View {
         let mainContent = contentView
@@ -179,12 +197,12 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
             Grid(verticalSpacing: 7) {
                 if #available(iOS 17, *) {
                     GridRow {
-                        Image("树脂")
+                        AccountKit.imageAsset(resinImageAssetName)
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 38)
                         VStack(alignment: .leading) {
-                            Text("widget.currentResin")
+                            Text("pzWidgetsKit.currentStamina", bundle: .module)
                                 .font(.caption2)
                             HStack(alignment: .lastTextBaseline, spacing: 0) {
                                 Text(verbatim: "\(context.state.currentResin)")
@@ -199,12 +217,12 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                     if context.state.showNext20Resin,
                        Date() < context.state.next20ResinRecoveryTime {
                         GridRow {
-                            Image("树脂")
+                            AccountKit.imageAsset(resinImageAssetName)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxHeight: 38)
                             VStack(alignment: .leading) {
-                                Text("widget.next20Resin:\(context.state.next20ResinCount)")
+                                Text("pzWidgetsKit.next20Stamina:\(context.state.next20ResinCount)", bundle: .module)
                                     .font(.caption2)
                                 Text(
                                     timerInterval: Date() ... context.state
@@ -218,15 +236,14 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                         }
                     }
                 }
-                if Date() < context.state
-                    .resinRecoveryTime {
+                if context.state.game == .genshinImpact, Date() < context.state.resinRecoveryTime {
                     GridRow {
-                        Image("浓缩树脂")
+                        AccountKit.imageAsset("gi_note_resin_condensed")
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 35)
                         VStack(alignment: .leading) {
-                            Text("widget.nextMaxResin")
+                            Text("pzWidgetsKit.nextMaxStamina", bundle: .module)
                                 .font(.caption2)
                             Text(
                                 timerInterval: Date() ... context.state
@@ -240,16 +257,14 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                         //                    .frame(width: 140)
                     }
                 }
-                if context.state.showExpedition,
-                   let time = context.state.expeditionAllCompleteTime,
-                   Date() < time {
+                if context.state.showExpedition, let time = context.state.expeditionAllCompleteTime, Date() < time {
                     GridRow {
-                        Image("派遣探索")
+                        AccountKit.imageAsset("gi_note_expedition")
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 29)
                         VStack(alignment: .leading) {
-                            Text("widget.expedition.timeToAllCompletion")
+                            Text("pzWidgetsKit.expedition.timeToAllCompletion", bundle: .module)
                                 .font(.caption2)
                             Text(
                                 timerInterval: Date() ... time,
@@ -287,13 +302,13 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
             }
         }
         .shadow(radius: useNoBackground ? 0 : 0.8)
-        .foregroundColor(useNoBackground ? .primary : Color("textColor3"))
+        .foregroundColor(useNoBackground ? .primary : Color("textColor3", bundle: .module))
         .padding()
     }
 }
 
 struct ResinTimerRefreshIntent: AppIntent {
-    static let title: LocalizedStringResource = "Refresh"
+    static let title: LocalizedStringResource = "pzWidgetsKit.Refresh"
 
     func perform() async throws -> some IntentResult {
         let activities = ResinRecoveryActivityController.shared.currentActivities
@@ -313,7 +328,7 @@ struct ResinTimerRefreshIntent: AppIntent {
 // MARK: - ResinTimerRerenderIntent
 
 struct ResinTimerRerenderIntent: AppIntent {
-    static let title: LocalizedStringResource = "Refresh"
+    static let title: LocalizedStringResource = "pzWidgetsKit.Refresh"
 
     func perform() async throws -> some IntentResult {
         Task {

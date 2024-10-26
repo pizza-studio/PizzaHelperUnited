@@ -16,6 +16,18 @@ struct LockScreenResinTimerWidgetCircular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
+    var staminaMonochromeIconAssetName: String {
+        switch result {
+        case let .success(data):
+            return switch data.game {
+            case .genshinImpact: "icon.resin"
+            case .starRail: "icon.trailblazePower"
+            case .zenlessZone: "icon.zzzBattery"
+            }
+        case .failure: return "icon.resin"
+        }
+    }
+
     @MainActor var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
@@ -32,7 +44,7 @@ struct LockScreenResinTimerWidgetCircular: View {
                         endPoint: .bottom
                     )
                     .mask(
-                        Image("icon.resin")
+                        Image(staminaMonochromeIconAssetName, bundle: .module)
                             .resizable()
                             .scaledToFit()
                     )
@@ -56,36 +68,36 @@ struct LockScreenResinTimerWidgetCircular: View {
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
                                     .frame(width: 50)
-                                    Text("\(data.resinInfo.currentResinDynamic)")
+                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                                         .font(.system(
                                             .body,
                                             design: .rounded,
                                             weight: .medium
                                         ))
                                         .foregroundColor(
-                                            Color("textColor.originResin")
+                                            Color("textColor.originResin", bundle: .module)
                                         )
                                 } else {
-                                    Text("\(data.resinInfo.currentResinDynamic)")
+                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                                         .font(.system(
                                             size: 20,
                                             weight: .medium,
                                             design: .rounded
                                         ))
                                         .foregroundColor(
-                                            Color("textColor.originResin")
+                                            Color("textColor.originResin", bundle: .module)
                                         )
                                 }
                             }
                         default:
-                            Image("icon.resin")
+                            Image(staminaMonochromeIconAssetName, bundle: .module)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 10)
                             Image(systemSymbol: .ellipsis)
                         }
                     case .failure:
-                        Image("icon.resin")
+                        Image(staminaMonochromeIconAssetName, bundle: .module)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 10)
@@ -101,7 +113,7 @@ struct LockScreenResinTimerWidgetCircular: View {
             ZStack {
                 AccessoryWidgetBackground()
                 VStack(spacing: 3) {
-                    Image("icon.resin")
+                    Image(staminaMonochromeIconAssetName, bundle: .module)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 10)
@@ -124,14 +136,14 @@ struct LockScreenResinTimerWidgetCircular: View {
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
                                     .frame(width: 50)
-                                    Text("\(data.resinInfo.currentResinDynamic)")
+                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                                         .font(.system(
                                             .body,
                                             design: .rounded,
                                             weight: .medium
                                         ))
                                 } else {
-                                    Text("\(data.resinInfo.currentResinDynamic)")
+                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                                         .font(.system(
                                             size: 20,
                                             weight: .medium,
@@ -140,14 +152,14 @@ struct LockScreenResinTimerWidgetCircular: View {
                                 }
                             }
                         default:
-                            Image("icon.resin")
+                            Image(staminaMonochromeIconAssetName, bundle: .module)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 10)
                             Image(systemSymbol: .ellipsis)
                         }
                     case .failure:
-                        Image("icon.resin")
+                        Image(staminaMonochromeIconAssetName, bundle: .module)
                             .resizable()
                             .scaledToFit()
                             .frame(height: 10)

@@ -21,8 +21,8 @@ struct AlternativeWatchCornerResinWidget: Widget {
         ) { entry in
             AlternativeWatchCornerResinWidgetView(entry: entry)
         }
-        .configurationDisplayName("树脂")
-        .description("widget.intro.resin")
+        .configurationDisplayName("pzWidgetsKit.cfgName.stamina")
+        .description("pzWidgetsKit.cfgName.stamina.detail")
         #if os(watchOS)
             .supportedFamilies([.accessoryCorner])
         #endif
@@ -38,6 +38,18 @@ struct AlternativeWatchCornerResinWidgetView: View {
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
 
+    var staminaMonochromeIconAssetName: String {
+        switch result {
+        case let .success(data):
+            return switch data.game {
+            case .genshinImpact: "icon.resin"
+            case .starRail: "icon.trailblazePower"
+            case .zenlessZone: "icon.zzzBattery"
+            }
+        case .failure: return "icon.resin"
+        }
+    }
+
     @MainActor var body: some View {
         switch result {
         case let .success(data):
@@ -51,7 +63,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
     func resinView(data: any DailyNoteProtocol) -> some View {
         switch data {
         case let data as any Note4GI:
-            Image("icon.resin")
+            Image(staminaMonochromeIconAssetName, bundle: .module)
                 .resizable()
                 .scaledToFit()
                 .padding(4)
@@ -61,18 +73,18 @@ struct AlternativeWatchCornerResinWidgetView: View {
                         value: Double(resinInfo.currentResinDynamic),
                         in: 0 ... Double(resinInfo.maxResin)
                     ) {
-                        Text("app.dailynote.card.resin.label")
+                        Text("pzWidgetsKit.stamina", bundle: .module)
                     } currentValueLabel: {
-                        Text("\(resinInfo.currentResinDynamic)")
+                        Text(verbatim: "\(resinInfo.currentResinDynamic)")
                     } minimumValueLabel: {
-                        Text("\(resinInfo.currentResinDynamic)")
+                        Text(verbatim: "\(resinInfo.currentResinDynamic)")
                     } maximumValueLabel: {
-                        Text("")
+                        Text(verbatim: "")
                     }
                 }
         case let data as Note4HSR:
             let staminaInfo = data.staminaInfo
-            Image("icon.resin")
+            Image(staminaMonochromeIconAssetName, bundle: .module)
                 .resizable()
                 .scaledToFit()
                 .padding(4)
@@ -81,18 +93,18 @@ struct AlternativeWatchCornerResinWidgetView: View {
                         value: Double(staminaInfo.currentStamina),
                         in: 0 ... Double(staminaInfo.maxStamina)
                     ) {
-                        Text("app.dailynote.card.resin.label")
+                        Text("pzWidgetsKit.stamina", bundle: .module)
                     } currentValueLabel: {
                         Text(staminaInfo.currentStamina.description)
                     } minimumValueLabel: {
                         Text(staminaInfo.currentStamina.description)
                     } maximumValueLabel: {
-                        Text("")
+                        Text(verbatim: "")
                     }
                 }
         case let data as Note4ZZZ:
             let energyInfo = data.energy
-            Image("icon.resin")
+            Image(staminaMonochromeIconAssetName, bundle: .module)
                 .resizable()
                 .scaledToFit()
                 .padding(4)
@@ -101,13 +113,13 @@ struct AlternativeWatchCornerResinWidgetView: View {
                         value: Double(energyInfo.currentEnergyAmountDynamic),
                         in: 0 ... Double(energyInfo.progress.max)
                     ) {
-                        Text("app.dailynote.card.resin.label")
+                        Text("pzWidgetsKit.stamina", bundle: .module)
                     } currentValueLabel: {
                         Text(energyInfo.currentEnergyAmountDynamic.description)
                     } minimumValueLabel: {
                         Text(energyInfo.currentEnergyAmountDynamic.description)
                     } maximumValueLabel: {
-                        Text("")
+                        Text(verbatim: "")
                     }
                 }
         default: EmptyView()
@@ -116,7 +128,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
 
     @ViewBuilder
     func failureView() -> some View {
-        Image("icon.resin")
+        Image(staminaMonochromeIconAssetName, bundle: .module)
             .resizable()
             .scaledToFit()
             .padding(6)

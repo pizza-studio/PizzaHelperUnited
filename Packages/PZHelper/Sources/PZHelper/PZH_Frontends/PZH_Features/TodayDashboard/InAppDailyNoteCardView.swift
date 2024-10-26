@@ -207,7 +207,12 @@ private struct NoteView: View {
         InformationRowView("app.dailynote.card.resin.label".i18nPZHelper) {
             let resinIntel = dailyNote.resinInfo
             HStack(spacing: 10) {
-                AccountKit.imageAsset("gi_note_resin")
+                let staminaIconName = switch dailyNote.game {
+                case .genshinImpact: "gi_note_resin"
+                case .starRail: "hsr_note_trailblazePower"
+                case .zenlessZone: "zzz_note_battery"
+                }
+                AccountKit.imageAsset(staminaIconName)
                     .resizable()
                     .scaledToFit()
                     .scaleEffect(1.1)
