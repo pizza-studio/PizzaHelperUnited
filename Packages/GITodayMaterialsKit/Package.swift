@@ -33,6 +33,9 @@ let package = Package(
                 .product(name: "WallpaperKit", package: "WallpaperKit"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
+            ],
+            resources: [
+                .process("Resources/"),
             ]
         ),
         .testTarget(
