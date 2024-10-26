@@ -29,18 +29,23 @@ struct ResinRecoveryAttributes: ActivityAttributes, Sendable {
             self.resinRecoveryTime = dailyNote.staminaFullTimeOnFinish
             switch dailyNote {
             case let data as WidgetNote4GI:
+                self.game = .genshinImpact
                 self.expeditionAllCompleteTime = nil
                 self.showExpedition = showExpedition
             case let data as GeneralNote4GI:
+                self.game = .genshinImpact
                 self.expeditionAllCompleteTime = data.expeditions.expeditions.map(\.finishTime).max() ?? .now
                 self.showExpedition = showExpedition
             case let data as Note4HSR:
+                self.game = .starRail
                 self.expeditionAllCompleteTime = data.assignmentInfo.assignments.map(\.finishedTime).max() ?? .now
                 self.showExpedition = showExpedition
             case let data as Note4ZZZ:
+                self.game = .zenlessZone
                 self.showExpedition = false
                 self.expeditionAllCompleteTime = nil
             default:
+                self.game = .genshinImpact // 乱填。
                 self.showExpedition = false
                 self.expeditionAllCompleteTime = nil
             }
@@ -48,6 +53,7 @@ struct ResinRecoveryAttributes: ActivityAttributes, Sendable {
 
         // MARK: Internal
 
+        let game: Pizza.SupportedGame
         let resinCountWhenUpdated: Int
         let resinRecoveryTime: Date
         let expeditionAllCompleteTime: Date?

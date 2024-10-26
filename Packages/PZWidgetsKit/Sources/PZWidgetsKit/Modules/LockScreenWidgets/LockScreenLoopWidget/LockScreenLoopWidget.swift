@@ -24,8 +24,8 @@ struct LockScreenLoopWidget: Widget {
             LockScreenLoopWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("widget.intro.autoRotation")
-        .description("widget.intro.autoDisplay")
+        .configurationDisplayName("pzWidgetsKit.cfgName.autoRotation")
+        .description("pzWidgetsKit.cfgName.autoDisplay")
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else

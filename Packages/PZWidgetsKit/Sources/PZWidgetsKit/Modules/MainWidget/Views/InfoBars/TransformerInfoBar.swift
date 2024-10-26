@@ -31,7 +31,7 @@ struct TransformerInfoBar: View {
 
     @MainActor var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            Image("参量质变仪")
+            AccountKit.imageAsset("gi_note_transformer")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
@@ -39,12 +39,14 @@ struct TransformerInfoBar: View {
             isTransformerCompleteImage
 
                 .frame(maxWidth: 13, maxHeight: 13)
-                .foregroundColor(Color("textColor3"))
+                .foregroundColor(Color("textColor3", bundle: .module))
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Text(
-                    PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: transformerInfo.recoveryTime))!
+                    verbatim: PZWidgets.intervalFormatter.string(
+                        from: TimeInterval.sinceNow(to: transformerInfo.recoveryTime)
+                    )!
                 )
-                .foregroundColor(Color("textColor3"))
+                .foregroundColor(Color("textColor3", bundle: .module))
                 .lineLimit(1)
                 .font(.system(.body, design: .rounded))
                 .minimumScaleFactor(0.2)

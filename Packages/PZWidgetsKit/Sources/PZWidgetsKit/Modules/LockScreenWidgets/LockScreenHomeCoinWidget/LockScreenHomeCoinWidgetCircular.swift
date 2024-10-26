@@ -17,13 +17,13 @@ struct LockScreenHomeCoinWidgetCircular: View {
 
     @MainActor var body: some View {
         VStack(spacing: 0) {
-            Image("icon.homeCoin")
+            Image("icon.homeCoin", bundle: .module)
                 .resizable()
                 .scaledToFit()
                 .apply { imageView in
                     if widgetRenderingMode == .fullColor {
                         imageView
-                            .foregroundColor(Color("iconColor.homeCoin.lightBlue"))
+                            .foregroundColor(Color("iconColor.homeCoin.lightBlue", bundle: .module))
                     } else {
                         imageView
                     }
@@ -32,7 +32,7 @@ struct LockScreenHomeCoinWidgetCircular: View {
             case let .success(data):
                 switch data {
                 case let data as any Note4GI:
-                    Text("\(data.homeCoinInfo.currentHomeCoinDynamic)")
+                    Text(verbatim: "\(data.homeCoinInfo.currentHomeCoinDynamic)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 default:
                     Image(systemSymbol: .ellipsis)

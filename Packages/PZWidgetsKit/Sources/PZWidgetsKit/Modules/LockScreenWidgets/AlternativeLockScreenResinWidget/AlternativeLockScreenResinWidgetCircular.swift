@@ -15,9 +15,21 @@ struct AlternativeLockScreenResinWidgetCircular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
+    var staminaMonochromeIconAssetName: String {
+        switch result {
+        case let .success(data):
+            return switch data.game {
+            case .genshinImpact: "icon.resin"
+            case .starRail: "icon.trailblazePower"
+            case .zenlessZone: "icon.zzzBattery"
+            }
+        case .failure: return "icon.resin"
+        }
+    }
+
     @MainActor var body: some View {
         VStack(spacing: 0) {
-            let img = Image("icon.resin")
+            let img = Image(staminaMonochromeIconAssetName, bundle: .module)
                 .resizable()
                 .scaledToFit()
             switch widgetRenderingMode {
@@ -40,7 +52,7 @@ struct AlternativeLockScreenResinWidgetCircular: View {
             case let .success(data):
                 switch data {
                 case let data as any Note4GI:
-                    Text("\(data.resinInfo.currentResinDynamic)")
+                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                         .minimumScaleFactor(0.1)
                 default:

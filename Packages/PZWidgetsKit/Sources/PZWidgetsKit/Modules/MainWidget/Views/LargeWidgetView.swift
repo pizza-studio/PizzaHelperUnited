@@ -73,18 +73,23 @@ struct LargeWidgetView: View {
                     Text(accountName)
                 }
                 .font(.footnote)
-                .foregroundColor(Color("textColor3"))
+                .foregroundColor(Color("textColor3", bundle: .module))
             }
             HStack(alignment: .firstTextBaseline, spacing: 2) {
+                let staminaIconName = switch dailyNote.game {
+                case .genshinImpact: "gi_note_resin"
+                case .starRail: "hsr_note_trailblazePower"
+                case .zenlessZone: "zzz_note_battery"
+                }
                 switch dailyNote {
                 case let dailyNote as any Note4GI:
-                    Text("\(dailyNote.resinInfo.currentResinDynamic)")
+                    Text(verbatim: "\(dailyNote.resinInfo.currentResinDynamic)")
                         .font(.system(size: 50, design: .rounded))
                         .fontWeight(.medium)
                         .minimumScaleFactor(0.1)
-                        .foregroundColor(Color("textColor3"))
+                        .foregroundColor(Color("textColor3", bundle: .module))
                         .shadow(radius: 1)
-                    Image("树脂")
+                    AccountKit.imageAsset(staminaIconName)
                         .resizable()
                         .scaledToFit()
                         .frame(maxHeight: 30)
@@ -93,13 +98,13 @@ struct LargeWidgetView: View {
                         }
                         .shadow(radius: 0.8)
                 case let dailyNote as Note4HSR:
-                    Text("\(dailyNote.staminaInfo.currentStamina)")
+                    Text(verbatim: "\(dailyNote.staminaInfo.currentStamina)")
                         .font(.system(size: 50, design: .rounded))
                         .fontWeight(.medium)
                         .minimumScaleFactor(0.1)
-                        .foregroundColor(Color("textColor3"))
+                        .foregroundColor(Color("textColor3", bundle: .module))
                         .shadow(radius: 1)
-                    Image("开拓力")
+                    AccountKit.imageAsset(staminaIconName)
                         .resizable()
                         .scaledToFit()
                         .frame(maxHeight: 30)
@@ -108,13 +113,13 @@ struct LargeWidgetView: View {
                         }
                         .shadow(radius: 0.8)
                 case let dailyNote as Note4ZZZ:
-                    Text("\(dailyNote.energy.currentEnergyAmountDynamic)")
+                    Text(verbatim: "\(dailyNote.energy.currentEnergyAmountDynamic)")
                         .font(.system(size: 50, design: .rounded))
                         .fontWeight(.medium)
                         .minimumScaleFactor(0.1)
-                        .foregroundColor(Color("textColor3"))
+                        .foregroundColor(Color("textColor3", bundle: .module))
                         .shadow(radius: 1)
-                    Image("绝区电量")
+                    AccountKit.imageAsset(staminaIconName)
                         .resizable()
                         .scaledToFit()
                         .frame(maxHeight: 30)
@@ -126,8 +131,8 @@ struct LargeWidgetView: View {
                 }
             }
             HStack {
-                Image("hourglass.circle")
-                    .foregroundColor(Color("textColor3"))
+                Image(systemSymbol: .hourglassCircle)
+                    .foregroundColor(Color("textColor3", bundle: .module))
                     .font(.title3)
                 RecoveryTimeText(entry: entry, data: dailyNote)
             }

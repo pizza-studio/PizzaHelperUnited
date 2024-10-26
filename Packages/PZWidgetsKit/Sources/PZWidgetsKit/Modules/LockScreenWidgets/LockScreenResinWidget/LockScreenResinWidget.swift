@@ -24,8 +24,8 @@ struct LockScreenResinWidget: Widget {
             LockScreenResinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("app.dailynote.card.resin.label")
-        .description("widget.intro.resin")
+        .configurationDisplayName("pzWidgetsKit.stamina")
+        .description("pzWidgetsKit.cfgName.stamina.detail")
         #if os(watchOS)
             .supportedFamilies([
                 .accessoryCircular,

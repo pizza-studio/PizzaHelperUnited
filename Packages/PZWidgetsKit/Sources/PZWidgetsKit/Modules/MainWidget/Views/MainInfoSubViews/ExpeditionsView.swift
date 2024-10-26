@@ -44,16 +44,20 @@ struct EachExpeditionView: View {
                 }
             } else {
                 VStack(alignment: .leading) {
-                    Text(expedition.isFinished ? "已完成" : "未完成")
-                        .lineLimit(1)
-                        .font(.footnote)
-                        .minimumScaleFactor(0.4)
+                    Text(
+                        expedition.isFinished
+                            ? "pzWidgetsKit.expedition.status.finished"
+                            : "pzWidgetsKit.expedition.status.pending"
+                    )
+                    .lineLimit(1)
+                    .font(.footnote)
+                    .minimumScaleFactor(0.4)
                     percentageBar(1)
                         .environment(\.colorScheme, .light)
                 }
             }
         }
-        .foregroundColor(Color("textColor3"))
+        .foregroundColor(Color("textColor3", bundle: .module))
     }
 
     @ViewBuilder

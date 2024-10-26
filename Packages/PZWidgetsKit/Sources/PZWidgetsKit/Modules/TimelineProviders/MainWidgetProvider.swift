@@ -118,14 +118,14 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
 
         guard let firstProfile = configs.first else {
             print("Config is empty")
-            return makeFallbackResult(error: .noAccountFound)
+            return makeFallbackResult(error: .noProfileFound)
         }
 
         guard let intent = configuration.accountIntent else {
             print("no account intent got")
             guard let firstConfig = configs.first, configs.count == 1 else {
                 print("Need to choose account")
-                return makeFallbackResult(error: .accountSelectionNeeded)
+                return makeFallbackResult(error: .profileSelectionNeeded)
             }
             viewConfig = WidgetViewConfiguration(configuration, nil)
             // 如果还未选择账号且只有一个账号，默认获取第一个
@@ -143,7 +143,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         guard let firstMatchedProfile else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             print("Need to choose account")
-            return makeFallbackResult(error: .accountSelectionNeeded)
+            return makeFallbackResult(error: .profileSelectionNeeded)
         }
 
         return await getTimelineEntries(config: firstMatchedProfile, viewConfig: viewConfig)

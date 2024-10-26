@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import SwiftUI
+import WallpaperKit
 import WidgetKit
 
 struct WidgetBackgroundView: View {
@@ -28,7 +29,7 @@ struct WidgetBackgroundView: View {
 
             if let backgroundIconName = backgroundIconName {
                 GeometryReader { g in
-                    Image(backgroundIconName)
+                    Image(backgroundIconName, bundle: .module)
                         .resizable()
                         .scaledToFill()
                         .opacity(0.05)
@@ -40,39 +41,40 @@ struct WidgetBackgroundView: View {
                 }
             }
 
-            if let backgroundImage = UIImage(named: backgroundImageName ?? "") {
+            if let backgroundImageName {
+                let backgroundImage: Image = {
+                    if NSDataAsset(name: backgroundImageName, bundle: .module) != nil {
+                        return Image(backgroundImageName, bundle: .main)
+                    } else {
+                        NSLog("[OPHelper] Asset missing in PZWidgetsKit: \(backgroundImageName)")
+                    }
+                    let wallpaper = Wallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
+                    return (wallpaper ?? .defaultValue(for: nil)).image4LiveActivity
+                }()
+
                 switch widgetFamily {
                 case .systemLarge, .systemSmall:
                     GeometryReader { g in
-                        Image(uiImage: backgroundImage)
+                        backgroundImage
                             .resizable()
                             .scaledToFill()
                             .offset(x: -g.size.width)
                     }
                     .onAppear {
                         NSLog(
-                            "[OPHelper] Successfully initialized UIImage: " +
-                                (backgroundImageName ?? "File name nulled.")
+                            "[OPHelper] Successfully initialized UIImage: " + backgroundImageName
                         )
                     }
                 default:
                     // 包括 .systemMedium
-                    Image(uiImage: backgroundImage)
+                    backgroundImage
                         .resizable()
                         .scaledToFill()
                         .onAppear {
                             NSLog(
-                                "[OPHelper] Successfully initialized UIImage: " +
-                                    (backgroundImageName ?? "File name nulled.")
+                                "[OPHelper] Successfully initialized UIImage: " + backgroundImageName
                             )
                         }
-                }
-            } else {
-                EmptyView().onAppear {
-                    NSLog(
-                        "[OPHelper] Failed from initializing UIImage: " +
-                            (backgroundImageName ?? "File name nulled.")
-                    )
                 }
             }
 
