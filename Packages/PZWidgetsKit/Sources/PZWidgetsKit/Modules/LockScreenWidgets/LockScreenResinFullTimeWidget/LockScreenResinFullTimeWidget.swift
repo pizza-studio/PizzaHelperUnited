@@ -4,7 +4,7 @@
 
 import Foundation
 import PZAccountKit
-import PZIntentKit
+@_exported import PZIntentKit
 import SwiftUI
 import WidgetKit
 

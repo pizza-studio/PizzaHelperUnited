@@ -8,7 +8,7 @@ import GITodayMaterialsKit
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
-import PZIntentKit
+@_exported import PZIntentKit
 import SwiftUI
 import WidgetKit
 

@@ -8,7 +8,7 @@ import ActivityKit
 import Foundation
 import PZAccountKit
 import PZBaseKit
-import PZIntentKit
+@_exported import PZIntentKit
 import WallpaperKit
 
 final class ResinRecoveryActivityController: Sendable {

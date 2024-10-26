@@ -5,7 +5,7 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
-import PZIntentKit
+@_exported import PZIntentKit
 #if canImport(ActivityKit)
 import ActivityKit
 

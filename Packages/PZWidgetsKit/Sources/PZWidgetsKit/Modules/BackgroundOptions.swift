@@ -5,7 +5,7 @@
 import Defaults
 import Foundation
 import PZBaseKit
-import PZIntentKit
+@_exported import PZIntentKit
 import SwiftUI
 import WallpaperKit
 
