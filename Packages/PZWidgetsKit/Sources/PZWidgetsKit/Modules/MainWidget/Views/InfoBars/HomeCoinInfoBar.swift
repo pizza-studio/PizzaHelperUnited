@@ -4,7 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
-import PZIntentKit
+@_exported import PZIntentKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
