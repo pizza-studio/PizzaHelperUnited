@@ -101,7 +101,7 @@ public struct GITodayMaterialsView: View {
                 }
                 .frame(height: 96)
             } label: {
-                Image(material.nameTag, bundle: .module)
+                material.iconObj
                     .resizable().aspectRatio(contentMode: .fit)
                     .frame(width: 96, height: 96)
                     .scaleEffect(1)
@@ -130,17 +130,6 @@ public struct GITodayMaterialsView: View {
         data.filter {
             guard $0.isWeapon == isWeapon else { return false }
             return $0.availableWeekDay == weekday || weekday == nil
-        }
-    }
-}
-
-extension GITodayMaterial.AvailableWeekDay? {
-    public var localizedName: String {
-        switch self {
-        case .MonThu: "todayMaterialsKit.week.MR".i18nTodayMaterials
-        case .TueFri: "todayMaterialsKit.week.TF".i18nTodayMaterials
-        case .WedSat: "todayMaterialsKit.week.WS".i18nTodayMaterials
-        case .none: "todayMaterialsKit.week.SU".i18nTodayMaterials
         }
     }
 }

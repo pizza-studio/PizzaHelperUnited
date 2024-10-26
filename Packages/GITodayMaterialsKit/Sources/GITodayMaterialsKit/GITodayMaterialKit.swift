@@ -11,9 +11,17 @@ import AppKit
 #endif
 
 extension GITodayMaterial {
-    @MainActor public static let bundledData: [Self] = {
-        let bundledRawData = NSDataAsset(name: "BundledGIDailyMaterialsData", bundle: .module)!
-        return try! JSONDecoder().decode([Self].self, from: bundledRawData.data)
+    public static let bundledData: [Self] = {
+        guard let url = Bundle.module.url(
+            forResource: "BundledGIDailyMaterialsData", withExtension: "json"
+        ) else { return [] }
+        do {
+            let data = try Data(contentsOf: url)
+            return try JSONDecoder().decode([Self].self, from: data)
+        } catch {
+            NSLog("EnkaKit: Cannot access BundledGIDailyMaterialsData.json.")
+            return []
+        }
     }()
 }
 
