@@ -133,6 +133,11 @@ extension PZProfileActor {
         (try? modelContext.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
     }
 
+    public static func getSendableProfiles() -> [PZProfileSendable] {
+        let context = ModelContext(shared.modelContainer)
+        return (try? context.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
+    }
+
     public func migrateOldAccountMatchingUUID(_ uuid: String) async throws {
         let profiles = getSendableProfiles()
         let firstMatched = profiles.first { $0.uuid.uuidString == uuid }
