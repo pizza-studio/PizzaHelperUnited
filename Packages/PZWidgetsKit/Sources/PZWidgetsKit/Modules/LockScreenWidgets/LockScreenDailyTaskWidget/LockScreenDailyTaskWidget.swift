@@ -22,8 +22,8 @@ struct LockScreenDailyTaskWidget: Widget {
             LockScreenDailyTaskWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.dailyTask")
-        .description("pzWidgetsKit.cfgName.dailyCommission")
+        .configurationDisplayName("pzWidgetsKit.dailyTask".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.dailyCommission".i18nWidgets)
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else

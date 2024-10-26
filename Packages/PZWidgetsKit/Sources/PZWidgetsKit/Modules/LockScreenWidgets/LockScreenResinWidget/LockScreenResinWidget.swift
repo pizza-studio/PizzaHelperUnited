@@ -24,8 +24,8 @@ struct LockScreenResinWidget: Widget {
             LockScreenResinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.stamina")
-        .description("pzWidgetsKit.cfgName.stamina.detail")
+        .configurationDisplayName("pzWidgetsKit.stamina".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.stamina.detail".i18nWidgets)
         #if os(watchOS)
             .supportedFamilies([
                 .accessoryCircular,
