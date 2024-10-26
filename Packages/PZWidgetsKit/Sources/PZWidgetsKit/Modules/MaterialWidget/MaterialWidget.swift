@@ -91,7 +91,7 @@ struct MaterialWidgetView: View {
         .foregroundColor(Color("textColor3", bundle: .module))
         .myWidgetContainerBackground(withPadding: 0) {
             WidgetBackgroundView(
-                background: .randomNamecardBackground,
+                background: .randomNamecardBackground4Game(.genshinImpact),
                 darkModeOn: true
             )
         }
