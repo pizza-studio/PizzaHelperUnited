@@ -26,8 +26,8 @@ struct LockScreenAllInfoWidget: Widget {
             LockScreenAllInfoWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("pzWidgetsKit.cfgName.generalInfo")
-        .description("pzWidgetsKit.cfgName.generalInfo.detail")
+        .configurationDisplayName("pzWidgetsKit.cfgName.generalInfo".i18nWidgets)
+        .description("pzWidgetsKit.cfgName.generalInfo.detail".i18nWidgets)
         .supportedFamilies([.accessoryRectangular])
     }
 }
