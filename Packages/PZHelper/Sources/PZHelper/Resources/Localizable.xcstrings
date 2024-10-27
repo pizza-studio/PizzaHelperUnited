@@ -805,7 +805,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "测试帐号连接"
+            "value" : "测试账号连接"
           }
         },
         "zh-Hant" : {
@@ -1393,7 +1393,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "关于您的帐号安全"
+            "value" : "关于您的账号安全"
           }
         },
         "zh-Hant" : {
@@ -1449,7 +1449,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "有几点需要您事先知悉的事项：\n\n→ 敝 App 无法用来完成米游社 / HoYoLAB 新帐号的注册与删除。这类流程得通过米游社 / HoYoLAB App 等由 MiHoYo / Cognosphere 官方提供的相关服务来完成（可参见当前画面右上角的管理链接）。\n\n→ 任何用于敝 App 的米游社 / HoYoLAB 新帐号均已经至少用来游玩过该游戏（您在上文亲自指定的游戏），否则在技术上无法用于敝 App。\n\n→ 任何用于敝 App 的米游社 / HoYoLAB 帐号下的游戏帐号，除非手动在游戏内启用展柜等相关内容的公开显示，否则敝 App 无权显示相关内容。"
+            "value" : "有几点需要您事先知悉的事项：\n\n→ 敝 App 无法用来完成米游社 / HoYoLAB 新账号的注册与删除。这类流程得通过米游社 / HoYoLAB App 等由 MiHoYo / Cognosphere 官方提供的相关服务来完成（可参见当前画面右上角的管理链接）。\n\n→ 任何用于敝 App 的米游社 / HoYoLAB 新账号均已经至少用来游玩过该游戏（您在上文亲自指定的游戏），否则在技术上无法用于敝 App。\n\n→ 任何用于敝 App 的米游社 / HoYoLAB 账号下的游戏账号，除非手动在游戏内启用展柜等相关内容的公开显示，否则敝 App 无权显示相关内容。"
           }
         },
         "zh-Hant" : {

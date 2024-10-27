@@ -3,7 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 extension Enka {
-    /// 任何需要解读 pfp 里面的 avatarID 与 CostumeID 的帐号
+    /// 任何需要解读 pfp 里面的 avatarID 与 CostumeID 的账号
     /// 都只可能在这两个栏位填入原神 4.1 之前的角色与皮肤。
     /// 所以只需要这个静态表格。
     static let costumeReverseQueryTable: [Int: Int] = [

@@ -53,7 +53,7 @@ extension Enka {
                 self.avatarId = try container.decodeIfPresent(Int.self, forKey: .avatarId)
                 self.costumeId = try container.decodeIfPresent(Int.self, forKey: .costumeId)
                 if theID == nil {
-                    // 针对自原神 4.1 版发行开始起没改过肖像的玩家帐号实施兼容处理。
+                    // 针对自原神 4.1 版发行开始起没改过肖像的玩家账号实施兼容处理。
                     let candidate1: Int? = Enka.costumeReverseQueryTable[costumeId ?? -114_514]
                     let candidate2: Int? = Enka.costumeReverseQueryTable[avatarId ?? -114_514]
                     self.id = candidate1 ?? candidate2 ?? 1
