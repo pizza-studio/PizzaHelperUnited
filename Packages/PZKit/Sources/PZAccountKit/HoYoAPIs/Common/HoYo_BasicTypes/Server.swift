@@ -8,7 +8,7 @@ import PZBaseKit
 // MARK: - HoYo.Server
 
 extension HoYo {
-    /// 统一披萨助手引擎不再将 Server 作为要在本地帐号里面记入的资料。
+    /// 统一披萨助手引擎不再将 Server 作为要在本地账号里面记入的资料。
     /// 该类型专门用来从 UID 倒推伺服器、或用于米哈游伺服器的 JSON 解码。
     public enum Server: Sendable {
         case celestia(Pizza.SupportedGame)

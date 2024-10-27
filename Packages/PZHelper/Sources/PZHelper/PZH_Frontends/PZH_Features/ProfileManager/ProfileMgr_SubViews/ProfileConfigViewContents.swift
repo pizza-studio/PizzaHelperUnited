@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - ProfileConfigViewContents
 
-// TODO: 该页面为半成品状态，暂时仅支持对帐号内容的直接静态编辑。
+// TODO: 该页面为半成品状态，暂时仅支持对账号内容的直接静态编辑。
 
 /// 就是原先的 EditAccountView。
 struct ProfileConfigViewContents: View {
@@ -147,7 +147,7 @@ extension ProfileConfigViewContents {
 
         @MainActor var body: some View {
             Section {
-                // 如果该帐号绑定的UID不止一个，则显示Picker选择帐号
+                // 如果该账号绑定的UID不止一个，则显示Picker选择账号
                 if fetchedAccounts.count > 1 {
                     Picker("profileMgr.label.select", selection: selectedAccount) {
                         ForEach(
