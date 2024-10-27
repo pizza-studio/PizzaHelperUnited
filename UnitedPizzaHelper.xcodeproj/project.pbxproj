@@ -151,8 +151,8 @@
 		5B0A42DA2CCE508D004463D5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info-Watch.plist,
 				Assets.xcassets,
+				"Info-Watch.plist",
 				Info.plist,
 				Localizable.xcstrings,
 				Modules/BackgroundOptions.swift,
@@ -240,7 +240,7 @@
 		5BD744432CC6B265007DE385 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info-Watch.plist,
+				"Info-Watch.plist",
 				Info.plist,
 			);
 			target = 5BD744272CC6B262007DE385 /* WidgetExtension */;
