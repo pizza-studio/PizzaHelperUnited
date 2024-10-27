@@ -21,13 +21,6 @@ let package = Package(
     platforms: [.iOS(.v17), .macOS(.v14), .watchOS(.v10), .macCatalyst(.v17), .visionOS(.v1)],
     products: buildProducts {
         Product.library(
-            name: "PizzaKit",
-            targets: buildStrings {
-                "PZBaseKit"
-                "PZAccountKit"
-            }
-        )
-        Product.library(
             name: "PZBaseKit",
             targets: ["PZBaseKit"]
         )
