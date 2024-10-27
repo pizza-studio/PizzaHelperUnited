@@ -62,10 +62,17 @@ struct EachExpeditionView: View {
     @ViewBuilder
     func webView(url: URL) -> some View {
         GeometryReader { g in
-            NetworkImage(url: expedition.iconURL)
-                .scaleEffect(1.5)
-                .scaledToFit()
-                .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
+            switch expedition.game {
+            case .genshinImpact:
+                NetworkImage(url: expedition.iconURL)
+                    .scaleEffect(1.5)
+                    .scaledToFit()
+                    .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
+            case .starRail:
+                NetworkImage(url: expedition.iconURL)
+                    .scaledToFit()
+            default: EmptyView()
+            }
         }
         .frame(maxWidth: 50, maxHeight: 50)
     }
