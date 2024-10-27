@@ -10,6 +10,7 @@ import WidgetKit
 
 // MARK: - AlternativeWatchCornerResinWidget
 
+@available(macOS, unavailable)
 struct AlternativeWatchCornerResinWidget: Widget {
     let kind: String = "AlternativeWatchCornerResinWidget"
 
@@ -31,6 +32,7 @@ struct AlternativeWatchCornerResinWidget: Widget {
 
 // MARK: - AlternativeWatchCornerResinWidgetView
 
+@available(macOS, unavailable)
 struct AlternativeWatchCornerResinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry

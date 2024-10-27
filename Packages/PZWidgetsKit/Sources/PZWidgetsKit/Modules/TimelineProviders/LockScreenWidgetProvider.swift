@@ -20,6 +20,7 @@ struct AccountOnlyEntry: TimelineEntry {
 
 // MARK: - LockScreenWidgetProvider
 
+@available(macOS, unavailable)
 struct LockScreenWidgetProvider: AppIntentTimelineProvider {
     typealias Entry = AccountOnlyEntry
     typealias Intent = SelectOnlyAccountIntent

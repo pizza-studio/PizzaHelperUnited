@@ -8,6 +8,7 @@ import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
+@available(macOS, unavailable)
 struct LockScreenExpeditionWidgetCircular: View {
     // MARK: Internal
 
