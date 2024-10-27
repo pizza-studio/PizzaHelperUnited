@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - GeneralNote4GI
 
@@ -23,6 +24,8 @@ public struct GeneralNote4GI: Note4GI {
 
     public struct ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI, Sendable {
         public struct Expedition: PZAccountKit.Expedition, Sendable {
+            public static let game: Pizza.SupportedGame = .genshinImpact
+
             public let finishTime: Date
             public let iconURL: URL
 

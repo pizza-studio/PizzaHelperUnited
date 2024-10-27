@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - AssignmentInfo4HSR
 
@@ -23,6 +24,8 @@ public struct AssignmentInfo4HSR: Sendable {
         }
 
         public static let totalTime: TimeInterval = 20 * 60 * 60
+
+        public static let game: Pizza.SupportedGame = .starRail
 
         @BenchmarkTime public var benchmarkTime: Date
 
