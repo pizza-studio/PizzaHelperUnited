@@ -16,9 +16,21 @@ import AppKit
 import WatchKit
 #endif
 
-#if !os(watchOS)
+// MARK: - ThisDevice
+
 @MainActor
-public enum ThisDevice {
+public enum ThisDevice {}
+
+#if os(watchOS)
+extension ThisDevice {
+    public static let identifier4Vendor: String = UUID().uuidString
+
+    public nonisolated static func getDeviceID4Vendor(_: String? = nil) async -> String {
+        await identifier4Vendor
+    }
+}
+#else
+extension ThisDevice {
     // MARK: Public
 
     public static let modelIdentifier: String = {
@@ -55,7 +67,7 @@ public enum ThisDevice {
         #endif
     }()
 
-    nonisolated public static func getDeviceID4Vendor(_ overridedValue: String? = nil) async -> String {
+    public nonisolated static func getDeviceID4Vendor(_ overridedValue: String? = nil) async -> String {
         guard let overridedValue else { return await identifier4Vendor.description }
         return overridedValue
     }
@@ -71,7 +83,11 @@ public enum ThisDevice {
             defer { if iterator != IO_OBJECT_NULL { IOObjectRelease(iterator) } }
 
             guard let matchingDict = IOBSDNameMatching(default_port, 0, name) else { return nil }
-            let matchingStatus = IOServiceGetMatchingServices(default_port, matchingDict as CFDictionary, &iterator)
+            let matchingStatus = IOServiceGetMatchingServices(
+                default_port,
+                matchingDict as CFDictionary,
+                &iterator
+            )
             guard matchingStatus == KERN_SUCCESS, iterator != IO_OBJECT_NULL else { return nil }
 
             var candidate = IOIteratorNext(iterator)
