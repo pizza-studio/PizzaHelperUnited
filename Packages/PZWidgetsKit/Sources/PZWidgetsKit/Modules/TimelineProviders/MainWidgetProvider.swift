@@ -123,13 +123,13 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
 
         guard let intent = configuration.accountIntent else {
             print("no account intent got")
-            guard let firstConfig = configs.first, configs.count == 1 else {
+            guard configs.count == 1 else {
                 print("Need to choose account")
                 return makeFallbackResult(error: .profileSelectionNeeded)
             }
             viewConfig = WidgetViewConfiguration(configuration, nil)
             // 如果还未选择账号且只有一个账号，默认获取第一个
-            return await getTimelineEntries(config: firstConfig, viewConfig: .init())
+            return await getTimelineEntries(config: firstProfile, viewConfig: .init())
         }
 
         viewConfig = WidgetViewConfiguration(configuration, nil)

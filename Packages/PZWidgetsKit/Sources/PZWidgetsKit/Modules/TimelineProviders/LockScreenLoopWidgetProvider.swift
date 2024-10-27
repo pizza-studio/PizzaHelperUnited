@@ -149,12 +149,12 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
 
         guard let intent = configuration.account else {
             print("no account intent got")
-            guard let firstConfig = configs.first, configs.count == 1 else {
+            guard configs.count == 1 else {
                 print("Need to choose account")
                 return makeFallbackResult(error: .profileSelectionNeeded)
             }
             // 如果还未选择账号且只有一个账号，默认获取第一个
-            return await getTimelineEntries(config: firstConfig)
+            return await getTimelineEntries(config: firstProfile)
         }
 
         let selectedAccountUUID = intent.id
