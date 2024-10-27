@@ -9,6 +9,7 @@ import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
+@available(watchOS, unavailable)
 struct HomeCoinInfoBar: View {
     let entry: any TimelineEntry
     let homeCoinInfo: GeneralNote4GI.HomeCoinInfo4GI

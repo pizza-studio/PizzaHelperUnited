@@ -6,10 +6,11 @@ import SwiftUI
 import WallpaperKit
 import WidgetKit
 
+@available(watchOS, unavailable)
 struct WidgetBackgroundView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.widgetFamily) var widgetFamily: WidgetFamily
-    let background: WidgetBackground
+    let background: WidgetBackgroundAppEntity
     let darkModeOn: Bool
 
     @State var proxy: GeometryProxy?

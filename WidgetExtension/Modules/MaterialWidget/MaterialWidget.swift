@@ -14,6 +14,7 @@ import WidgetKit
 
 // MARK: - MaterialWidget
 
+@available(watchOS, unavailable)
 struct MaterialWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(
@@ -31,6 +32,7 @@ struct MaterialWidget: Widget {
 
 // MARK: - MaterialWidgetView
 
+@available(watchOS, unavailable)
 struct MaterialWidgetView: View {
     let entry: MaterialWidgetEntry
 
@@ -100,6 +102,7 @@ struct MaterialWidgetView: View {
 
 // MARK: - EventView
 
+@available(watchOS, unavailable)
 private struct EventView: View {
     let events: [EventModel]
 
@@ -189,6 +192,7 @@ private struct EventView: View {
 
 // MARK: - MaterialRow
 
+@available(watchOS, unavailable)
 private struct MaterialRow: View {
     let materials: [GITodayMaterial]
 
@@ -204,6 +208,7 @@ private struct MaterialRow: View {
     }
 }
 
+@available(watchOS, unavailable)
 extension View {
     fileprivate func myWidgetContainerBackground<V: View>(
         withPadding padding: CGFloat,
@@ -216,6 +221,7 @@ extension View {
 
 // MARK: - ContainerBackgroundModifier
 
+@available(watchOS, unavailable)
 private struct ContainerBackgroundModifier<V: View>: ViewModifier {
     let padding: CGFloat
     let background: () -> V

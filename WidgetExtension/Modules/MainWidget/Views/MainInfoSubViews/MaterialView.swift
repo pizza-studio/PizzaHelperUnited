@@ -5,6 +5,7 @@
 import GITodayMaterialsKit
 import SwiftUI
 
+@available(watchOS, unavailable)
 struct MaterialView: View {
     var today: MaterialWeekday? = .today()
 

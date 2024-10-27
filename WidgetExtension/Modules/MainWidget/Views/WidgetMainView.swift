@@ -8,6 +8,7 @@ import PZBaseKit
 import SwiftUI
 import WidgetKit
 
+@available(watchOS, unavailable)
 struct WidgetMainView: View {
     let entry: any TimelineEntry
     @Environment(\.widgetFamily) var family: WidgetFamily

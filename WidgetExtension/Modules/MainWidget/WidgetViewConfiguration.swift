@@ -9,13 +9,9 @@ import PZBaseKit
 import SwiftUI
 import WallpaperKit
 
-typealias WidgetBackground = WidgetBackgroundAppEntity
-typealias ExpeditionShowingMethod = ExpeditionShowingMethodAppEnum
-
-extension WidgetBackgroundAppEntity {}
-
 // MARK: - WidgetViewConfiguration
 
+@available(watchOS, unavailable)
 struct WidgetViewConfiguration {
     // MARK: Lifecycle
 
@@ -75,11 +71,11 @@ struct WidgetViewConfiguration {
     let showMaterialsInLargeSizeWidget: Bool
 
     var randomBackground: Bool
-    var selectedBackgrounds: [WidgetBackground]
+    var selectedBackgrounds: [WidgetBackgroundAppEntity]
 
-    var background: WidgetBackground {
+    var background: WidgetBackgroundAppEntity {
         guard !randomBackground else {
-            return WidgetBackground.randomElementOrNamecardBackground
+            return WidgetBackgroundAppEntity.randomElementOrNamecardBackground
         }
         if selectedBackgrounds.isEmpty {
             return .defaultBackground
@@ -95,12 +91,14 @@ struct WidgetViewConfiguration {
 
 // MARK: - ExpeditionViewConfiguration
 
+@available(watchOS, unavailable)
 struct ExpeditionViewConfiguration {
     let noticeExpeditionWhenAllCompleted: Bool
-    let expeditionShowingMethod: ExpeditionShowingMethod
+    let expeditionShowingMethod: ExpeditionShowingMethodAppEnum
 }
 
-extension WidgetBackground {
+@available(watchOS, unavailable)
+extension WidgetBackgroundAppEntity {
     var imageName: String? {
         if BackgroundOptions.namecards.contains(id) {
             return id

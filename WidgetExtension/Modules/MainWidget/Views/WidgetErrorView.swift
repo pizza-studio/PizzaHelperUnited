@@ -7,6 +7,7 @@ import PZBaseKit
 // @_exported import PZIntentKit
 import SwiftUI
 
+@available(watchOS, unavailable)
 struct WidgetErrorView: View {
     let error: any Error
     let message: String
