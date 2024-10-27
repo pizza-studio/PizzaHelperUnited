@@ -11,7 +11,6 @@ import SwiftUI
 
 struct ExpeditionsView: View {
     let expeditions: [any Expedition]
-    var useAsyncImage: Bool = false
 
     @MainActor var body: some View {
         VStack {
@@ -63,14 +62,10 @@ struct EachExpeditionView: View {
     @ViewBuilder
     func webView(url: URL) -> some View {
         GeometryReader { g in
-            AsyncImage(url: expedition.iconURL) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }
-            .scaleEffect(1.5)
-            .scaledToFit()
-            .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
+            NetworkImage(url: expedition.iconURL)
+                .scaleEffect(1.5)
+                .scaledToFit()
+                .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
         }
         .frame(maxWidth: 50, maxHeight: 50)
     }
