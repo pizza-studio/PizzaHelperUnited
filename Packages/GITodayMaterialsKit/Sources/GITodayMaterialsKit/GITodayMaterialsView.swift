@@ -7,6 +7,7 @@ import WallpaperKit
 
 // MARK: - GITodayMaterialsView
 
+@available(watchOS, unavailable)
 public struct GITodayMaterialsView<T: View>: View {
     // MARK: Lifecycle
 
@@ -131,7 +132,7 @@ public struct GITodayMaterialsView<T: View>: View {
     }
 }
 
-#if DEBUG
+#if DEBUG && !os(watchOS)
 
 #Preview {
     NavigationStack {
