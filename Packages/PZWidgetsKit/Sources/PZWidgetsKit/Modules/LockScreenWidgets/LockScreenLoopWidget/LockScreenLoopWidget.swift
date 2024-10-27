@@ -166,7 +166,7 @@ enum LockScreenLoopWidgetType: CaseIterable {
                 } else {
                     return .resin
                 }
-            case let data as Note4ZZZ: return .resin
+            case _ as Note4ZZZ: return .resin
             default: return .resin
             }
         case .failure:

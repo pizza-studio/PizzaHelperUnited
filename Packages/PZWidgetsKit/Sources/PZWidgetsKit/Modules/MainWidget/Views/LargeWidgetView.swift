@@ -52,7 +52,7 @@ struct LargeWidgetView: View {
                         }
                     }
                     .containerRelativeFrame(.horizontal) { length, _ in length / 8 * 3 }
-                case let dailyNote as Note4ZZZ:
+                case _ as Note4ZZZ:
                     EmptyView()
                 default: EmptyView()
                 }
