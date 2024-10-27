@@ -51,12 +51,15 @@ extension NewsKitHSR {
 // MARK: - View + View
 
 #if hasFeature(RetroactiveAttribute)
+@available(watchOS, unavailable)
 extension [any NewsElement]: @retroactive View {}
 #else
+@available(watchOS, unavailable)
 extension [any NewsElement]: View {}
 #endif
 
 extension [any NewsElement] {
+    @available(watchOS, unavailable)
     @MainActor @ViewBuilder public var body: some View {
         Form {
             ForEach(self, id: \.id) { newsElement in
@@ -65,6 +68,8 @@ extension [any NewsElement] {
             }
         }
         .scrollContentBackground(.hidden)
-        .listContainerBackground()
+        #if !os(watchOS)
+            .listContainerBackground()
+        #endif
     }
 }

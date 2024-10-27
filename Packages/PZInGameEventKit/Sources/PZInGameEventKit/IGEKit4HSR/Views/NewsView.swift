@@ -6,7 +6,10 @@
 import PZBaseKit
 import SwiftUI
 
+// MARK: - NewsKitHSR.NewsView
+
 extension NewsKitHSR {
+    @available(watchOS, unavailable)
     public struct NewsView: View {
         // MARK: Lifecycle
 
@@ -21,6 +24,7 @@ extension NewsKitHSR {
         // MARK: Public
 
         @Observable @MainActor
+        @available(watchOS, unavailable)
         public class Coordinator: ObservableObject {
             // MARK: Lifecycle
 
@@ -124,6 +128,7 @@ extension NewsKitHSR {
     }
 }
 
+#if !os(watchOS)
 #Preview {
     let sampleEventData = """
     [
@@ -183,3 +188,4 @@ extension NewsKitHSR {
 
     return NewsKitHSR.NewsView(aggregated)
 }
+#endif
