@@ -151,7 +151,7 @@ struct LockScreenAllInfoWidgetView: View {
                                 Text(verbatim: " / \(denominator)")
                                     .font(.caption)
                             }
-                        case let data as Note4ZZZ: EmptyView() // ZZZ has no expedition API results yet.
+                        case _ as Note4ZZZ: EmptyView() // ZZZ has no expedition API results yet.
                         default: EmptyView()
                         }
                         Spacer()
@@ -184,7 +184,7 @@ struct LockScreenAllInfoWidgetView: View {
                             } else {
                                 EmptyView()
                             }
-                        case let data as Note4ZZZ: EmptyView() // TODO: 可以额外扩充其他内容。
+                        case _ as Note4ZZZ: EmptyView() // TODO: 可以额外扩充其他内容。
                         default: EmptyView()
                         }
                         Spacer()

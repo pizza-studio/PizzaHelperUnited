@@ -74,7 +74,7 @@ struct DetailInfo: View {
                     ExpeditionInfoBar(dailyNote: dailyNote)
                 }
             // TODO: 模擬宇宙，等。
-            case let dailyNote as Note4ZZZ:
+            case _ as Note4ZZZ:
                 // TODO: 刮刮乐，等。
                 EmptyView()
             default:

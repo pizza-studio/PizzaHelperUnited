@@ -15,7 +15,7 @@ struct ExpeditionInfoBar: View {
         switch dailyNote {
         case let dailyNote as any Note4GI: return dailyNote.expeditionProgressCounts
         case let dailyNote as Note4HSR: return dailyNote.expeditionProgressCounts
-        case let dailyNote as Note4ZZZ: return (0, 0)
+        case _ as Note4ZZZ: return (0, 0)
         default: return (0, 0)
         }
     }
@@ -31,7 +31,7 @@ struct ExpeditionInfoBar: View {
 
     @MainActor var body: some View {
         switch dailyNote {
-        case let dailyNote as Note4ZZZ: EmptyView() /// ZZZ has no expedition API results.
+        case _ as Note4ZZZ: EmptyView() /// ZZZ has no expedition API results.
         default:
             HStack(alignment: .center, spacing: 8) {
                 AccountKit.imageAsset("gi_note_expedition")

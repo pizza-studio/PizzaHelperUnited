@@ -28,7 +28,7 @@ struct ResinRecoveryAttributes: ActivityAttributes, Sendable {
             self.resinCountWhenUpdated = staminaIntel.existing
             self.resinRecoveryTime = dailyNote.staminaFullTimeOnFinish
             switch dailyNote {
-            case let data as WidgetNote4GI:
+            case _ as WidgetNote4GI:
                 self.game = .genshinImpact
                 self.expeditionAllCompleteTime = nil
                 self.showExpedition = showExpedition
@@ -40,7 +40,7 @@ struct ResinRecoveryAttributes: ActivityAttributes, Sendable {
                 self.game = .starRail
                 self.expeditionAllCompleteTime = data.assignmentInfo.assignments.map(\.finishedTime).max() ?? .now
                 self.showExpedition = showExpedition
-            case let data as Note4ZZZ:
+            case _ as Note4ZZZ:
                 self.game = .zenlessZone
                 self.showExpedition = false
                 self.expeditionAllCompleteTime = nil
