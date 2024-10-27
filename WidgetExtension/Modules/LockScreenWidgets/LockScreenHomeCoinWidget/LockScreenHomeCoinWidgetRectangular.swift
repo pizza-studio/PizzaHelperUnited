@@ -298,12 +298,12 @@ private func format(_ date: Date) -> String {
     let datePrefix: String
     switch relationIdentifier {
     case .today:
-        datePrefix = "app.today"
+        datePrefix = "date.relative.today".i18nBaseKit
     case .tomorrow:
-        datePrefix = "app.tomorrow"
+        datePrefix = "date.relative.tomorrow".i18nBaseKit
     case .other:
         datePrefix = ""
         formatter.dateFormat = "EEE H:mm"
     }
-    return datePrefix.i18nWidgets + formatter.string(from: date)
+    return datePrefix + formatter.string(from: date)
 }
