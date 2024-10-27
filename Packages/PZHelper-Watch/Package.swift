@@ -30,7 +30,8 @@ let package = Package(
         .target(
             name: "PZHelper-Watch",
             dependencies: [
-                .product(name: "PizzaKit", package: "PZKit"),
+                .product(name: "PZAccountKit", package: "PZKit"),
+                .product(name: "PZBaseKit", package: "PZKit"),
             ],
             swiftSettings: sharedSwiftSettings
         ),
