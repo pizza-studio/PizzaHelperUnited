@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import EnkaKit
 import Foundation
 import GITodayMaterialsKit
 import PZAccountKit
@@ -85,9 +86,17 @@ struct TodayTabPage: View {
 
     @MainActor @ViewBuilder var todayMaterialNav: some View {
         let navName =
-            "\(GITodayMaterialsView.navTitle) (\(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed))"
+            "\(GITodayMaterialsView<EmptyView>.navTitle) (\(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed))"
         NavigationLink {
-            GITodayMaterialsView()
+            GITodayMaterialsView { isWeapon, itemID in
+                if isWeapon {
+                    Enka.queryImageAssetSUI(for: "gi_weapon_\(itemID)")?
+                        .resizable().aspectRatio(contentMode: .fit)
+                        .frame(height: 64)
+                } else {
+                    CharacterIconView(charID: itemID, cardSize: 64)
+                }
+            }
         } label: {
             Text(navName)
         }
