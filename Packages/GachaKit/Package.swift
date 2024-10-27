@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "GachaKit",
+    name: "GachaKitPKG",
     defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14), .macCatalyst(.v17), .visionOS(.v1)],
     products: [
