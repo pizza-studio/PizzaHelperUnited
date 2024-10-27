@@ -2,17 +2,17 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import EnkaKit
 import SwiftUI
 import WallpaperKit
 
 // MARK: - GITodayMaterialsView
 
-public struct GITodayMaterialsView: View {
+public struct GITodayMaterialsView<T: View>: View {
     // MARK: Lifecycle
 
-    public init() {
+    public init(@ViewBuilder querier: @escaping (Bool, String) -> T) {
         self.data = Material.bundledData
+        self.querier = querier
         switch Calendar.current.component(.weekday, from: Date.now) {
         case 2, 5: self.weekday = .MonThu
         case 3, 6: self.weekday = .TueFri
@@ -23,7 +23,9 @@ public struct GITodayMaterialsView: View {
 
     // MARK: Public
 
-    public static let navTitle = "todayMaterialsKit.navTitle".i18nTodayMaterials
+    public static var navTitle: String {
+        "todayMaterialsKit.navTitle".i18nTodayMaterials
+    }
 
     @MainActor public var body: some View {
         Form {
@@ -84,13 +86,7 @@ public struct GITodayMaterialsView: View {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 4) {
                             ForEach(material.costedBy.reversed(), id: \.self) { itemID in
-                                if material.isWeapon {
-                                    Enka.queryImageAssetSUI(for: "gi_weapon_\(itemID)")?
-                                        .resizable().aspectRatio(contentMode: .fit)
-                                        .frame(height: 64)
-                                } else {
-                                    CharacterIconView(charID: itemID, cardSize: 64)
-                                }
+                                querier(material.isWeapon, itemID)
                             }
                         }
                     }
@@ -125,6 +121,7 @@ public struct GITodayMaterialsView: View {
     @State private var weekday: Material.AvailableWeekDay?
     @State private var initialized: Bool = false
     private let data: [Material]
+    private let querier: (Bool, String) -> T
 
     private var materialsFiltered: [Material] {
         data.filter {
@@ -138,7 +135,9 @@ public struct GITodayMaterialsView: View {
 
 #Preview {
     NavigationStack {
-        GITodayMaterialsView()
+        GITodayMaterialsView { _, _ in
+            EmptyView()
+        }
     }
 }
 
