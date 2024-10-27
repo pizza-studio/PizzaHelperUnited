@@ -25,12 +25,7 @@ let package = Package(
             targets: buildStrings {
                 "PZBaseKit"
                 "PZAccountKit"
-                "PZIntentKit"
             }
-        )
-        Product.library(
-            name: "PZIntentKit",
-            targets: ["PZIntentKit"]
         )
         Product.library(
             name: "PZBaseKit",
@@ -63,7 +58,6 @@ let package = Package(
             },
             swiftSettings: sharedSwiftSettings
         )
-        Target.target(name: "PZIntentKit")
         Target.target(
             name: "PZAccountKit",
             dependencies: buildTargetDependencies {
