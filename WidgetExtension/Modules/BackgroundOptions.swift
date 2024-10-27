@@ -26,6 +26,9 @@ enum BackgroundOptions {
         "game.elements.geo",
         "game.elements.electro",
         "game.elements.dendro",
+        "game.elements.fantastico",
+        "game.elements.posesto",
+        "game.elements.physico",
         "app.background.intertwinedFate",
     ]
     static let elements: [String] = [
@@ -36,14 +39,19 @@ enum BackgroundOptions {
         "game.elements.geo",
         "game.elements.electro",
         "game.elements.dendro",
+        "game.elements.fantastico",
+        "game.elements.posesto",
+        "game.elements.physico",
     ]
     static let namecards: [String] = Wallpaper.allCases.map(\.assetName4LiveActivity)
 
-    static let allOptions: [(String, String)] = (Self.colors + Self.elements).map { ($0, $0) } + Wallpaper.allCases
-        .map(\.asBackgroundOption)
+    static let allOptions: [(String, String)] = (Self.colors + Self.elements).map {
+        ($0, $0.i18nWidgets)
+    } + Wallpaper.allCases.map(\.asBackgroundOption)
 
-    static let elementsAndNamecard: [(String, String)] = Self.elements.map { ($0, $0) } + Wallpaper.allCases
-        .map(\.asBackgroundOption)
+    static let elementsAndNamecard: [(String, String)] = Self.elements.map {
+        ($0, $0.i18nWidgets)
+    } + Wallpaper.allCases.map(\.asBackgroundOption)
 }
 
 extension WidgetBackgroundAppEntity {

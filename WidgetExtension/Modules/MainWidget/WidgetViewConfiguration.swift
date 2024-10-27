@@ -110,19 +110,25 @@ extension WidgetBackground {
     var iconName: String? {
         switch id {
         case "game.elements.anemo":
-            return "风元素图标"
+            return "element_Anemo"
         case "game.elements.hydro":
-            return "水元素图标"
+            return "element_Hydro"
         case "game.elements.cryo":
-            return "冰元素图标"
+            return "element_Cryo"
         case "game.elements.pyro":
-            return "火元素图标"
+            return "element_Pyro"
         case "game.elements.geo":
-            return "岩元素图标"
+            return "element_Geo"
         case "game.elements.electro":
-            return "雷元素图标"
+            return "element_Electro"
         case "game.elements.dendro":
-            return "草元素图标"
+            return "element_Dendro"
+        case "game.elements.fantastico":
+            return "element_Fantastico"
+        case "game.elements.posesto":
+            return "element_Posesto"
+        case "game.elements.physico":
+            return "element_Physico"
         default:
             return nil
         }
@@ -132,82 +138,99 @@ extension WidgetBackground {
         switch id {
         case "app.background.purple":
             return [
-                Color("bgColor.purple.1", bundle: .main),
-                Color("bgColor.purple.2", bundle: .main),
-                Color("bgColor.purple.3", bundle: .main),
+                Color.purple,
+                Color.purple.addBrightness(-0.15),
+                Color.purple.addBrightness(-0.3),
             ]
         case "app.background.gold":
             return [
-                Color("bgColor.yellow.1", bundle: .main),
-                Color("bgColor.yellow.2", bundle: .main),
-                Color("bgColor.yellow.3", bundle: .main),
+                Color.yellow,
+                Color.yellow.addBrightness(-0.15),
+                Color.yellow.addBrightness(-0.3),
             ]
         case "app.background.gray":
             return [
-                Color("bgColor.gray.1", bundle: .main),
-                Color("bgColor.gray.2", bundle: .main),
-                Color("bgColor.gray.3", bundle: .main),
+                Color.gray,
+                Color.gray.addBrightness(-0.15),
+                Color.gray.addBrightness(-0.3),
             ]
         case "app.background.green":
             return [
-                Color("bgColor.green.1", bundle: .main),
-                Color("bgColor.green.2", bundle: .main),
-                Color("bgColor.green.3", bundle: .main),
+                Color.green,
+                Color.green.addBrightness(-0.15),
+                Color.green.addBrightness(-0.3),
             ]
         case "app.background.blue":
             return [
-                Color("bgColor.blue.1", bundle: .main),
-                Color("bgColor.blue.2", bundle: .main),
-                Color("bgColor.blue.3", bundle: .main),
+                Color.blue,
+                Color.blue.addBrightness(-0.15),
+                Color.blue.addBrightness(-0.3),
             ]
         case "app.background.red":
             return [
-                Color("bgColor.red.1", bundle: .main),
-                Color("bgColor.red.2", bundle: .main),
-                Color("bgColor.red.3", bundle: .main),
+                Color.red,
+                Color.red.addBrightness(-0.15),
+                Color.red.addBrightness(-0.3),
             ]
-
         case "game.elements.anemo":
             return [
-                Color("bgColor.wind.1", bundle: .main),
-                Color("bgColor.wind.2", bundle: .main),
-                Color("bgColor.wind.3", bundle: .main),
+                Color.mint,
+                Color.mint.addBrightness(-0.15),
+                Color.mint.addBrightness(-0.3),
             ]
         case "game.elements.hydro":
             return [
-                Color("bgColor.water.1", bundle: .main),
-                Color("bgColor.water.2", bundle: .main),
-                Color("bgColor.water.3", bundle: .main),
+                Color.blue,
+                Color.blue.addBrightness(-0.15),
+                Color.blue.addBrightness(-0.3),
             ]
         case "game.elements.cryo":
             return [
-                Color("bgColor.ice.1", bundle: .main),
-                Color("bgColor.ice.2", bundle: .main),
-                Color("bgColor.ice.3", bundle: .main),
+                Color.cyan,
+                Color.cyan.addBrightness(-0.15),
+                Color.cyan.addBrightness(-0.3),
             ]
         case "game.elements.pyro":
             return [
-                Color("bgColor.fire.1", bundle: .main),
-                Color("bgColor.fire.2", bundle: .main),
-                Color("bgColor.fire.3", bundle: .main),
+                Color.red,
+                Color.red.addBrightness(-0.15),
+                Color.red.addBrightness(-0.3),
             ]
         case "game.elements.geo":
             return [
-                Color("bgColor.stone.1", bundle: .main),
-                Color("bgColor.stone.2", bundle: .main),
-                Color("bgColor.stone.3", bundle: .main),
+                Color.orange,
+                Color.orange.addBrightness(-0.15),
+                Color.orange.addBrightness(-0.3),
             ]
         case "game.elements.electro":
             return [
-                Color("bgColor.thunder.1", bundle: .main),
-                Color("bgColor.thunder.2", bundle: .main),
-                Color("bgColor.thunder.3", bundle: .main),
+                Color.purple,
+                Color.purple.addBrightness(-0.15),
+                Color.purple.addBrightness(-0.3),
             ]
         case "game.elements.dendro":
             return [
-                Color("bgColor.glass.1", bundle: .main),
-                Color("bgColor.glass.2", bundle: .main),
-                Color("bgColor.glass.3", bundle: .main),
+                Color.green,
+                Color.green.addBrightness(-0.15),
+                Color.green.addBrightness(-0.3),
+            ]
+        case "game.elements.posesto":
+            return [
+                Color.indigo,
+                Color.indigo.addBrightness(-0.15),
+                Color.indigo.addBrightness(-0.3),
+            ]
+        case "game.elements.fantastico":
+            return [
+                Color.yellow,
+                Color.yellow.addBrightness(-0.15),
+                Color.yellow.addBrightness(-0.3),
+            ]
+        case "game.elements.physico":
+            return [
+                Color.gray,
+                Color.gray.addBrightness(-0.15),
+                Color.gray.addBrightness(-0.3),
             ]
         case "app.background.intertwinedFate":
             return [
