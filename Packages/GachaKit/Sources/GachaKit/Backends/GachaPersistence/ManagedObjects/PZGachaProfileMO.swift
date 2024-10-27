@@ -43,10 +43,6 @@ public final class PZGachaProfileMO: GachaProfileIDProtocol {
         GachaProfileID(uid: uid, game: game, profileName: profileName)
     }
 
-    public var uidWithGame: String {
-        "\(game.uidPrefix)-\(uid)"
-    }
-
     public var id: String { uidWithGame }
 }
 
@@ -82,10 +78,6 @@ public struct GachaProfileID: GachaProfileIDProtocol, Sendable {
         PZGachaProfileMO(uid: uid, game: game, profileName: profileName)
     }
 
-    public var uidWithGame: String {
-        "\(game.uidPrefix)-\(uid)"
-    }
-
     public var id: String { uidWithGame }
 }
 
@@ -104,5 +96,9 @@ extension GachaProfileIDProtocol {
 
     @MainActor @ViewBuilder var profileNameView: some View {
         Enka.ProfileNameView(uid: uid, game: game, name: profileName)
+    }
+
+    public var uidWithGame: String {
+        "\(game.uidPrefix)-\(uid)"
     }
 }
