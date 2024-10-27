@@ -60,4 +60,8 @@ extension PZProfileSendable {
             deviceID: deviceID
         )
     }
+
+    public var uidWithGame: String {
+        "\(game.uidPrefix)-\(uid)"
+    }
 }
