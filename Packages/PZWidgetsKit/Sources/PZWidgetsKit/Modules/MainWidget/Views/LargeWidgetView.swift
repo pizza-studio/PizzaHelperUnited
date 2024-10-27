@@ -40,7 +40,7 @@ struct LargeWidgetView: View {
                             MaterialView()
                         }
                     }
-                    .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
+                    .containerRelativeFrame(.horizontal) { length, _ in length / 8 * 3 }
                 case let dailyNote as Note4HSR:
                     VStack(alignment: .leading) {
                         ExpeditionsView(
@@ -51,7 +51,7 @@ struct LargeWidgetView: View {
                             MaterialView()
                         }
                     }
-                    .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
+                    .containerRelativeFrame(.horizontal) { length, _ in length / 8 * 3 }
                 case let dailyNote as Note4ZZZ:
                     EmptyView()
                 default: EmptyView()
