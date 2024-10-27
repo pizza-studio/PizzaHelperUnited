@@ -46,10 +46,7 @@ struct LargeWidgetView: View {
                         ExpeditionsView(
                             expeditions: dailyNote.assignmentInfo.assignments
                         )
-                        if viewConfig.showMaterialsInLargeSizeWidget {
-                            Spacer(minLength: 15)
-                            MaterialView()
-                        }
+                        Spacer()
                     }
                     .containerRelativeFrame(.horizontal) { length, _ in length / 8 * 3 }
                 case _ as Note4ZZZ:

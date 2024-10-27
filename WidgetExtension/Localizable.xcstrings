@@ -1885,25 +1885,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sunday"
+            "value" : "All materials are available in Sunday"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "日曜日"
+            "value" : "日曜日：すべての素材が入手可能"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "周日"
+            "value" : "今天是周日，素材全开放"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "週日"
+            "value" : "今天是週日，素材全開放"
           }
         }
       }
