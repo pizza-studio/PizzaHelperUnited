@@ -28,10 +28,14 @@ extension Enka {
     public static func queryImageAssetSUI(for assetName: String) -> Image? {
         #if os(macOS)
         let instance = Bundle.module.image(forResource: assetName)
-        #elseif os(iOS)
-        let instance = UIImage(named: assetName, in: Bundle.module, compatibleWith: nil)
-        #endif
         guard instance != nil else { return nil }
         return Image(assetName, bundle: Bundle.module)
+        #elseif os(iOS)
+        let instance = UIImage(named: assetName, in: Bundle.module, compatibleWith: nil)
+        guard instance != nil else { return nil }
+        return Image(assetName, bundle: Bundle.module)
+        #else
+        return nil
+        #endif
     }
 }
