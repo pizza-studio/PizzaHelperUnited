@@ -4,6 +4,8 @@
 
 import AppIntents
 import Foundation
+import PZAccountKit
+import PZBaseKit
 
 // MARK: - AccountIntentAppEntity
 
@@ -18,28 +20,44 @@ public struct AccountIntentAppEntity: AppEntity {
 
     // MARK: Public
 
-    public struct AccountIntentAppEntityQuery: EntityQuery {
+    public struct AccountIntentAppEntityQuerier: EntityQuery {
         // MARK: Lifecycle
 
         public init() {}
 
         // MARK: Public
 
-        public func entities(for identifiers: [AccountIntentAppEntity.ID]) async throws -> [AccountIntentAppEntity] {
-            // TODO: return AccountIntentAppEntity entities with the specified identifiers here.
-            []
+        public typealias Entity = AccountIntentAppEntity
+
+        public func entities(for identifiers: [Self.Entity.ID]) async throws -> [Self.Entity] {
+            let accounts = await PZProfileActor.shared.getSendableProfiles().filter {
+                identifiers.contains($0.uuid.uuidString)
+            }
+            return accounts.map {
+                Self.Entity(
+                    id: $0.uuid.uuidString,
+                    displayString: $0.name + " (\($0.server.localizedDescriptionByGameAndRegion))"
+                )
+            }
         }
 
-        public func suggestedEntities() async throws -> [AccountIntentAppEntity] {
-            // TODO: return likely AccountIntentAppEntity entities here.
-            // This method is optional; the default implementation returns an empty array.
-            []
+        public func suggestedEntities() async throws -> Self.Result {
+            await PZProfileActor.shared.getSendableProfiles().map {
+                Self.Entity(
+                    id: $0.uuid.uuidString,
+                    displayString: $0.name + " (\($0.server.localizedDescriptionByGameAndRegion))"
+                )
+            }
+        }
+
+        public func defaultResult() async -> Entity? {
+            try? await suggestedEntities().first
         }
     }
 
     public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEntity.localeProfile")
 
-    public static let defaultQuery = AccountIntentAppEntityQuery()
+    public static let defaultQuery = AccountIntentAppEntityQuerier()
 
     public var id: String // if your identifier is not a String, conform the entity to EntityIdentifierConvertible.
     public var displayString: String
@@ -61,29 +79,36 @@ public struct WidgetBackgroundAppEntity: AppEntity {
 
     // MARK: Public
 
-    public struct WidgetBackgroundAppEntityQuery: EntityQuery {
+    public struct WidgetBackgroundAppEntityQuerier: EntityQuery {
         // MARK: Lifecycle
 
         public init() {}
 
         // MARK: Public
 
-        public func entities(for identifiers: [WidgetBackgroundAppEntity.ID]) async throws
-            -> [WidgetBackgroundAppEntity] {
-            // TODO: return WidgetBackgroundAppEntity entities with the specified identifiers here.
-            []
+        public typealias Entity = WidgetBackgroundAppEntity
+
+        public func entities(for identifiers: [Self.Entity.ID]) async throws -> [Self.Entity] {
+            let matched = BackgroundOptions.allOptions.filter { identifiers.contains($0.0) }
+            return matched.map {
+                .init(id: $0.0, displayString: $0.1)
+            }
         }
 
-        public func suggestedEntities() async throws -> [WidgetBackgroundAppEntity] {
-            // TODO: return likely WidgetBackgroundAppEntity entities here.
-            // This method is optional; the default implementation returns an empty array.
-            []
+        public func suggestedEntities() async throws -> Self.Result {
+            BackgroundOptions.allOptions.map {
+                .init(id: $0.0, displayString: $0.1)
+            }
+        }
+
+        public func defaultResult() async -> Self.Entity? {
+            Entity.defaultBackground
         }
     }
 
     public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEntity.widgetBackground")
 
-    public static let defaultQuery = WidgetBackgroundAppEntityQuery()
+    public static let defaultQuery = WidgetBackgroundAppEntityQuerier()
 
     public var id: String // if your identifier is not a String, conform the entity to EntityIdentifierConvertible.
     public var displayString: String
