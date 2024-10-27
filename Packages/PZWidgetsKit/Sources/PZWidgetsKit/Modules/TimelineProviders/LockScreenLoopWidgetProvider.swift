@@ -27,6 +27,7 @@ struct AccountAndShowWhichInfoIntentEntry: TimelineEntry {
 // MARK: - LockScreenLoopWidgetProvider
 
 /// This struct actually "inherits" from LockScreenWidgetProvider with extra options.
+@available(macOS, unavailable)
 struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
     typealias Entry = AccountAndShowWhichInfoIntentEntry
     typealias Intent = SelectAccountAndShowWhichInfoIntent

@@ -19,6 +19,7 @@ extension PZWidgets {
         MainWidget()
         MaterialWidget()
         #endif
+        #if os(iOS) && !targetEnvironment(macCatalyst)
         LockScreenResinWidget()
         LockScreenLoopWidget()
         LockScreenAllInfoWidget()
@@ -28,5 +29,6 @@ extension PZWidgets {
         LockScreenDailyTaskWidget()
         LockScreenExpeditionWidget()
         AlternativeLockScreenResinWidget()
+        #endif
     }
 }

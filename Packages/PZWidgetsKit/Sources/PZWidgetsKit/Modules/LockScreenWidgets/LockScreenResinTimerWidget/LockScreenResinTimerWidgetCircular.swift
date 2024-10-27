@@ -10,6 +10,7 @@ import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
+@available(macOS, unavailable)
 struct LockScreenResinTimerWidgetCircular: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

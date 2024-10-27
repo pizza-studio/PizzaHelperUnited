@@ -10,6 +10,7 @@ import WidgetKit
 
 // MARK: - AlternativeLockScreenResinWidget
 
+@available(macOS, unavailable)
 struct AlternativeLockScreenResinWidget: Widget {
     let kind: String = "AlternativeLockScreenResinWidget"
 
@@ -30,6 +31,7 @@ struct AlternativeLockScreenResinWidget: Widget {
 
 // MARK: - AlternativeLockScreenResinWidgetView
 
+@available(macOS, unavailable)
 struct AlternativeLockScreenResinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry

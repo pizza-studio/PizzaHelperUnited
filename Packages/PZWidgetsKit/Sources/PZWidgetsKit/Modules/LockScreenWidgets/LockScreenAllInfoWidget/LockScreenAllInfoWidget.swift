@@ -12,6 +12,7 @@ import WidgetKit
 
 // MARK: - LockScreenAllInfoWidget
 
+@available(macOS, unavailable)
 struct LockScreenAllInfoWidget: Widget {
     let kind: String = "LockScreenAllInfoWidget"
 
@@ -34,6 +35,7 @@ struct LockScreenAllInfoWidget: Widget {
 
 // MARK: - LockScreenAllInfoWidgetView
 
+@available(macOS, unavailable)
 struct LockScreenAllInfoWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

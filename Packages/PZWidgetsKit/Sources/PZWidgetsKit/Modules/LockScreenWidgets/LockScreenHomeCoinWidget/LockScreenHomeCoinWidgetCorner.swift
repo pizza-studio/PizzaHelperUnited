@@ -10,6 +10,7 @@ import WidgetKit
 
 // MARK: - LockScreenHomeCoinWidgetCorner
 
+@available(macOS, unavailable)
 struct LockScreenHomeCoinWidgetCorner: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

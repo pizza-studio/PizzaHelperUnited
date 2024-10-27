@@ -9,6 +9,7 @@ import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
+@available(macOS, unavailable)
 struct LockScreenLoopWidgetWeeklyBossesCircular: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
 
