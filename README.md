@@ -8,6 +8,13 @@ This is the new repository for **The Pizza Helper** (starting from v5).
 
 This project is currently under heavy construction, using Swift 6 and targeting iOS 17.4 and later.
 
+### Regarding Pizza Helper:
+
+- It was initially designed as a simple Widget app for checking Original Resins and Trailblaze Power.
+- Its support for Enka Character ShowCase and Gacha Record Management system comes later.
+- Then both Miyoushe and HoYoLAB enhanced their utility features a little. At this point, Pizza Helper is not meant to be a total substitution of them but just to make things easier to use.
+- Pizza Helper also allows users to manage their gacha records. Their data is stored both locally on their devices and on their private iCloud.
+
 ### Supported Games
 
 - Genshin Impact (full support).
