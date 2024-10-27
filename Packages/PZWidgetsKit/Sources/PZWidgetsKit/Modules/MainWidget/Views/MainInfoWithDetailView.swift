@@ -30,7 +30,7 @@ struct MainInfoWithDetail: View {
             Spacer()
             DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig)
                 .padding([.vertical])
-                .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
+                .containerRelativeFrame(.horizontal) { length, _ in length / 8 * 3 }
             Spacer()
         }
     }
