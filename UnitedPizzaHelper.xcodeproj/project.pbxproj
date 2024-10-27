@@ -12,13 +12,19 @@
 		5B2DC8292CC2A78A00958F85 /* PZInGameEventKit in Resources */ = {isa = PBXBuildFile; fileRef = 5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */; };
 		5B560A0F2C6BB5BB00175FB1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */; };
 		5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A172C6BBB8300175FB1 /* Settings.bundle */; };
-		5B71ED582CC6B6B100807C0B /* PZWidgetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71ED572CC6B6B100807C0B /* PZWidgetsKit */; };
 		5BD0D0F52C6A653500DA8099 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD0D0F42C6A653500DA8099 /* PZHelper */; };
 		5BD7442A2CC6B262007DE385 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD744292CC6B262007DE385 /* WidgetKit.framework */; };
 		5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7442B2CC6B262007DE385 /* SwiftUI.framework */; };
 		5BD7443D2CC6B264007DE385 /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5BD744282CC6B262007DE385 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */; };
 		5BFB9D2A2C6BBCE700DC648F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */; };
+		5BFCA0542CCDFFE300F182C7 /* PZBaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0532CCDFFE300F182C7 /* PZBaseKit */; };
+		5BFCA0562CCDFFEA00F182C7 /* PZAccountKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0552CCDFFEA00F182C7 /* PZAccountKit */; };
+		5BFCA0582CCDFFEE00F182C7 /* WallpaperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0572CCDFFEE00F182C7 /* WallpaperKit */; };
+		5BFCA05A2CCDFFFC00F182C7 /* PZInGameEventKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0592CCDFFFC00F182C7 /* PZInGameEventKit */; };
+		5BFCA05D2CCE002700F182C7 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA05C2CCE002700F182C7 /* SFSafeSymbols */; };
+		5BFCA0602CCE003A00F182C7 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA05F2CCE003A00F182C7 /* Defaults */; };
+		5BFCA19B2CCE022200F182C7 /* GITodayMaterialsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA19A2CCE022200F182C7 /* GITodayMaterialsKit */; };
 		5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */; };
 		5BFD6B962C628CDA000A63E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B952C628CDA000A63E9 /* Assets.xcassets */; };
 		5BFD6B992C628CDA000A63E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */; };
@@ -80,7 +86,6 @@
 		5BDDF2762C7601AA006D4BFE /* GachaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GachaKit; sourceTree = "<group>"; };
 		5BDDF2772C760281006D4BFE /* WallpaperKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WallpaperKit; sourceTree = "<group>"; };
 		5BF32D8C2C62A2E4008C9949 /* PZKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZKit; sourceTree = "<group>"; };
-		5BFA62062CC6B0D30084F302 /* PZWidgetsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZWidgetsKit; sourceTree = "<group>"; };
 		5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		5BFD6B8C2C628CD8000A63E9 /* United Pizza Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "United Pizza Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedPizzaHelperApp.swift; sourceTree = "<group>"; };
@@ -128,9 +133,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B71ED582CC6B6B100807C0B /* PZWidgetsKit in Frameworks */,
 				5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */,
+				5BFCA05A2CCDFFFC00F182C7 /* PZInGameEventKit in Frameworks */,
+				5BFCA0602CCE003A00F182C7 /* Defaults in Frameworks */,
+				5BFCA0542CCDFFE300F182C7 /* PZBaseKit in Frameworks */,
+				5BFCA0562CCDFFEA00F182C7 /* PZAccountKit in Frameworks */,
+				5BFCA0582CCDFFEE00F182C7 /* WallpaperKit in Frameworks */,
+				5BFCA05D2CCE002700F182C7 /* SFSafeSymbols in Frameworks */,
 				5BD7442A2CC6B262007DE385 /* WidgetKit.framework in Frameworks */,
+				5BFCA19B2CCE022200F182C7 /* GITodayMaterialsKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +212,6 @@
 				5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */,
 				5B4CDE852C8482D700298C69 /* PZHoYoLabKit */,
 				5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */,
-				5BFA62062CC6B0D30084F302 /* PZWidgetsKit */,
 				5BF32D8C2C62A2E4008C9949 /* PZKit */,
 				5BDDF2772C760281006D4BFE /* WallpaperKit */,
 			);
@@ -311,7 +321,13 @@
 			);
 			name = WidgetExtension;
 			packageProductDependencies = (
-				5B71ED572CC6B6B100807C0B /* PZWidgetsKit */,
+				5BFCA0532CCDFFE300F182C7 /* PZBaseKit */,
+				5BFCA0552CCDFFEA00F182C7 /* PZAccountKit */,
+				5BFCA0572CCDFFEE00F182C7 /* WallpaperKit */,
+				5BFCA0592CCDFFFC00F182C7 /* PZInGameEventKit */,
+				5BFCA05C2CCE002700F182C7 /* SFSafeSymbols */,
+				5BFCA05F2CCE003A00F182C7 /* Defaults */,
+				5BFCA19A2CCE022200F182C7 /* GITodayMaterialsKit */,
 			);
 			productName = WidgetExtensionExtension;
 			productReference = 5BD744282CC6B262007DE385 /* WidgetExtension.appex */;
@@ -372,6 +388,8 @@
 			);
 			mainGroup = 5BFD6B832C628CD8000A63E9;
 			packageReferences = (
+				5BFCA05B2CCE002700F182C7 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				5BFCA05E2CCE003A00F182C7 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 5BFD6B8D2C628CD8000A63E9 /* Products */;
 			projectDirPath = "";
@@ -613,13 +631,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,4";
+				WATCHOS_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Debug;
 		};
@@ -650,14 +669,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator watchos watchsimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,4";
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Release;
 		};
@@ -914,18 +934,63 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		5BFCA05B2CCE002700F182C7 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
+		5BFCA05E2CCE003A00F182C7 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		5B10D8142CC6667600245B77 /* PZHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PZHelper;
 		};
-		5B71ED572CC6B6B100807C0B /* PZWidgetsKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PZWidgetsKit;
-		};
 		5BD0D0F42C6A653500DA8099 /* PZHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PZHelper;
+		};
+		5BFCA0532CCDFFE300F182C7 /* PZBaseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZBaseKit;
+		};
+		5BFCA0552CCDFFEA00F182C7 /* PZAccountKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZAccountKit;
+		};
+		5BFCA0572CCDFFEE00F182C7 /* WallpaperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WallpaperKit;
+		};
+		5BFCA0592CCDFFFC00F182C7 /* PZInGameEventKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZInGameEventKit;
+		};
+		5BFCA05C2CCE002700F182C7 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BFCA05B2CCE002700F182C7 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		5BFCA05F2CCE003A00F182C7 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BFCA05E2CCE003A00F182C7 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		5BFCA19A2CCE022200F182C7 /* GITodayMaterialsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GITodayMaterialsKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
