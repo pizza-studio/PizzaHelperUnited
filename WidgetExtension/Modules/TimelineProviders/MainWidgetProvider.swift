@@ -12,6 +12,7 @@ import WidgetKit
 
 // MARK: - ResinEntry
 
+@available(watchOS, unavailable)
 struct ResinEntry: TimelineEntry {
     let date: Date
     let result: Result<any DailyNoteProtocol, any Error>
@@ -23,9 +24,12 @@ struct ResinEntry: TimelineEntry {
 
 // MARK: - MainWidgetProvider
 
+@available(watchOS, unavailable)
 struct MainWidgetProvider: AppIntentTimelineProvider {
     typealias Entry = ResinEntry
     typealias Intent = SelectAccountIntent
+
+    func recommendations() -> [AppIntentRecommendation<SelectAccountIntent>] { [] }
 
     func placeholder(in context: Context) -> Entry {
         Entry(

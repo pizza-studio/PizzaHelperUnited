@@ -11,6 +11,7 @@ import WidgetKit
 
 // MARK: - RecoveryTimeText
 
+@available(watchOS, unavailable)
 struct RecoveryTimeText: View {
     let entry: any TimelineEntry
     let data: any DailyNoteProtocol

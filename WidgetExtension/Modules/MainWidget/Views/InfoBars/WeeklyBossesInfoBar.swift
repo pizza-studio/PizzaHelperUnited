@@ -8,6 +8,7 @@ import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
+@available(watchOS, unavailable)
 struct WeeklyBossesInfoBar: View {
     let weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI
 

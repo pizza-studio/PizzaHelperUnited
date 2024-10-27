@@ -17,6 +17,7 @@ typealias MaterialWeekday = GITodayMaterial.AvailableWeekDay
 
 // MARK: - MaterialWidgetEntry
 
+@available(watchOS, unavailable)
 struct MaterialWidgetEntry: TimelineEntry {
     // MARK: Lifecycle
 
@@ -41,6 +42,7 @@ struct MaterialWidgetEntry: TimelineEntry {
 
 // MARK: - WeaponMaterialProvider
 
+@available(watchOS, unavailable)
 struct WeaponMaterialProvider {
     var weekday: MaterialWeekday? = .today()
 
@@ -53,6 +55,7 @@ struct WeaponMaterialProvider {
 
 // MARK: - TalentMaterialProvider
 
+@available(watchOS, unavailable)
 struct TalentMaterialProvider {
     var weekday: MaterialWeekday? = .today()
 
@@ -65,6 +68,7 @@ struct TalentMaterialProvider {
 
 // MARK: - MaterialWidgetProvider
 
+@available(watchOS, unavailable)
 struct MaterialWidgetProvider: TimelineProvider {
     typealias Entry = MaterialWidgetEntry
 
@@ -111,6 +115,31 @@ struct MaterialWidgetProvider: TimelineProvider {
                     )
                 )
             }
+        }
+    }
+}
+
+@available(watchOS, unavailable)
+extension View {
+    fileprivate func myWidgetContainerBackground<V: View>(
+        withPadding padding: CGFloat,
+        @ViewBuilder _ content: @escaping () -> V
+    )
+        -> some View {
+        modifier(ContainerBackgroundModifier(padding: padding, background: content))
+    }
+}
+
+// MARK: - ContainerBackgroundModifier
+
+@available(watchOS, unavailable)
+private struct ContainerBackgroundModifier<V: View>: ViewModifier {
+    let padding: CGFloat
+    let background: () -> V
+
+    func body(content: Content) -> some View {
+        content.containerBackground(for: .widget) {
+            background()
         }
     }
 }

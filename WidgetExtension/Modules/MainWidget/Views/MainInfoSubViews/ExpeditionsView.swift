@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - ExpeditionsView
 
+@available(watchOS, unavailable)
 struct ExpeditionsView: View {
     let expeditions: [any Expedition]
 
@@ -23,6 +24,7 @@ struct ExpeditionsView: View {
 
 // MARK: - EachExpeditionView
 
+@available(watchOS, unavailable)
 struct EachExpeditionView: View {
     let expedition: any Expedition
     let viewConfig: WidgetViewConfiguration = .defaultConfig

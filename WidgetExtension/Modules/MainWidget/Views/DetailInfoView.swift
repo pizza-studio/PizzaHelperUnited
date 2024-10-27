@@ -11,6 +11,7 @@ import WidgetKit
 
 // MARK: - DetailInfo
 
+@available(watchOS, unavailable)
 struct DetailInfo: View {
     // MARK: Lifecycle
 

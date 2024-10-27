@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - TransformerInfoBar
 
+@available(watchOS, unavailable)
 struct TransformerInfoBar: View {
     let transformerInfo: GeneralNote4GI.TransformerInfo4GI
 

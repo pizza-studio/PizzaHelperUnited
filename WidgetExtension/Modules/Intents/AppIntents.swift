@@ -110,3 +110,20 @@ public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfiguratio
         .result()
     }
 }
+
+// MARK: - WidgetRefreshIntent
+
+@available(watchOS, unavailable)
+public struct WidgetRefreshIntent: AppIntent {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
+    public static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
+
+    public func perform() async throws -> some IntentResult {
+        .result()
+    }
+}
