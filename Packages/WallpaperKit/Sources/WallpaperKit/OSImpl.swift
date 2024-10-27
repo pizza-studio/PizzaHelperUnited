@@ -7,16 +7,16 @@ import SwiftUI
 
 // MARK: - NavigationBackground
 
-#if !os(watchOS)
 extension View {
     @MainActor @ViewBuilder
     public func listContainerBackground(wallpaperOverride: Wallpaper? = nil) -> some View {
         background(alignment: .topTrailing) {
+            #if !os(watchOS)
             AppWallpaperView(forLiveActivity: false, blur: true)
+            #endif
         }
     }
 }
-#endif
 
 extension String {
     public var i18nWPKit: String {
