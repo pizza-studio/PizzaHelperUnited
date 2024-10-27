@@ -1,7 +1,9 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZAccountKit
 
 // MARK: - PZWidgets
 
@@ -23,4 +25,9 @@ extension PZWidgets {
         dateComponentFormatter.unitsStyle = .brief
         return dateComponentFormatter
     }()
+
+    @MainActor
+    public static func attemptToAutoInheritOldAccountsIntoProfiles() {
+        PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+    }
 }
