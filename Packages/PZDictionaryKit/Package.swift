@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "PZDictionaryKit",
+    name: "PZDictionaryKitPKG",
     defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14), .macCatalyst(.v17), .visionOS(.v1)],
     products: [
