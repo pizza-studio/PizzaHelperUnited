@@ -32,12 +32,12 @@ let package = Package(
         .target(
             name: "PZWidgetsKit",
             dependencies: [
+                "PZIntentKit",
                 .product(name: "PZAccountKit", package: "PZKit"),
                 .product(name: "PZBaseKit", package: "PZKit"),
                 .product(name: "PZInGameEventKit", package: "PZInGameEventKit"),
                 .product(name: "GITodayMaterialsKit", package: "GITodayMaterialsKit"),
                 .product(name: "WallpaperKit", package: "WallpaperKit"),
-                .product(name: "PZIntentKit", package: "PZKit"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
             ],
@@ -45,6 +45,7 @@ let package = Package(
                 .process("Resources/"),
             ]
         ),
+        .target(name: "PZIntentKit"),
         .testTarget(
             name: "PZWidgetsKitTests",
             dependencies: ["PZWidgetsKit"]
