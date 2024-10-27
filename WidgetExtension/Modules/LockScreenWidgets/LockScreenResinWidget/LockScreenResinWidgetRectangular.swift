@@ -43,7 +43,7 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(verbatim: "\(staminaIntel.existing)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
@@ -74,7 +74,7 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(Image(systemSymbol: .ellipsis))
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
@@ -98,7 +98,7 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(verbatim: "\(staminaIntel.existing)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
@@ -130,7 +130,7 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(Image(systemSymbol: .ellipsis))
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
