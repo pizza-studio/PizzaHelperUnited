@@ -10,6 +10,7 @@ import WidgetKit
 
 // MARK: - LockScreenLoopWidgetCircular
 
+@available(macOS, unavailable)
 struct LockScreenLoopWidgetCircular: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

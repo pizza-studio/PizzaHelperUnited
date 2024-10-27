@@ -11,6 +11,7 @@ import WidgetKit
 
 // MARK: - LockScreenResinWidgetInline
 
+@available(macOS, unavailable)
 struct LockScreenResinWidgetInline: View {
     let entry: any TimelineEntry
     let result: Result<any DailyNoteProtocol, any Error>

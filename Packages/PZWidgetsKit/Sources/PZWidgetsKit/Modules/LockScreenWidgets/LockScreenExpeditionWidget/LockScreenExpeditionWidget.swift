@@ -10,6 +10,7 @@ import WidgetKit
 
 // MARK: - LockScreenExpeditionWidget
 
+@available(macOS, unavailable)
 struct LockScreenExpeditionWidget: Widget {
     let kind: String = "LockScreenExpeditionWidget"
 
@@ -34,6 +35,7 @@ struct LockScreenExpeditionWidget: Widget {
 
 // MARK: - LockScreenExpeditionWidgetView
 
+@available(macOS, unavailable)
 struct LockScreenExpeditionWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry

@@ -9,6 +9,7 @@ import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
+@available(macOS, unavailable)
 struct AlternativeLockScreenResinWidgetCircular: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

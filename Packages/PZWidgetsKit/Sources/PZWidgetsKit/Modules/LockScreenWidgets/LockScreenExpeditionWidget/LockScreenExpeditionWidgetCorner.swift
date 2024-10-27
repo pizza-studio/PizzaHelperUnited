@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - LockScreenExpeditionWidgetCorner
 
+@available(macOS, unavailable)
 struct LockScreenExpeditionWidgetCorner: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
 

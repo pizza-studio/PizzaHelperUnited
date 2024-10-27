@@ -11,6 +11,7 @@ import WidgetKit
 
 // MARK: - LockScreenResinFullTimeWidgetCircular
 
+@available(macOS, unavailable)
 struct LockScreenResinFullTimeWidgetCircular: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

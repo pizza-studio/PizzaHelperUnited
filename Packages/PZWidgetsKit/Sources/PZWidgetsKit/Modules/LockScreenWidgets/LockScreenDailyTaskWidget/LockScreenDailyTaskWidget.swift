@@ -10,6 +10,7 @@ import WidgetKit
 
 // MARK: - LockScreenDailyTaskWidget
 
+@available(macOS, unavailable)
 struct LockScreenDailyTaskWidget: Widget {
     let kind: String = "LockScreenDailyTaskWidget"
 
@@ -34,6 +35,7 @@ struct LockScreenDailyTaskWidget: Widget {
 
 // MARK: - LockScreenDailyTaskWidgetView
 
+@available(macOS, unavailable)
 struct LockScreenDailyTaskWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry

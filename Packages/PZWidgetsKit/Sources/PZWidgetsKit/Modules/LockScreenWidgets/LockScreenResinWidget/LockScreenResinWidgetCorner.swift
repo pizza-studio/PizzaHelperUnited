@@ -10,6 +10,7 @@ import WidgetKit
 
 // MARK: - LockScreenResinWidgetCorner
 
+@available(macOS, unavailable)
 struct LockScreenResinWidgetCorner: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

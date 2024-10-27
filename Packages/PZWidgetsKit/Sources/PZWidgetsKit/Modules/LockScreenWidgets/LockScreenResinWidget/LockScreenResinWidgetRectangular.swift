@@ -11,6 +11,7 @@ import WidgetKit
 
 // MARK: - LockScreenResinWidgetRectangular
 
+@available(macOS, unavailable)
 struct LockScreenResinWidgetRectangular: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
