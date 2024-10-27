@@ -41,7 +41,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                             let size: CGFloat = 10
                             HStack(alignment: .lastTextBaseline, spacing: 0) {
                                 let iconSize: CGFloat = size * 4 / 5
-                                Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                                Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
                                     .font(.system(size: iconSize))
                                     .offset(x: -2)
                                 Text("pzWidgetsKit.stamina", bundle: .main)
@@ -55,7 +55,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                             Spacer()
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
                                 let iconSize: CGFloat = size * 8 / 9
-                                Text(verbatim: "\(Image("icon.homeCoin", bundle: .main))")
+                                Text("\(Image("icon.homeCoin", bundle: .main))")
                                     .font(.system(size: iconSize))
                                 Text("pzWidgetsKit.homeCoin", bundle: .main)
                                     .font(.system(
@@ -114,7 +114,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                         HStack(alignment: .lastTextBaseline, spacing: 0) {
                             let size: CGFloat = 20
                             let iconSize: CGFloat = size * 4 / 5
-                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
                                 .font(.system(size: iconSize))
                                 .offset(x: -2)
                             Text(verbatim: "…")
@@ -127,7 +127,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let size: CGFloat = 20
                             let iconSize: CGFloat = size * 8 / 9
-                            Text(verbatim: "\(Image("icon.homeCoin", bundle: .main))")
+                            Text("\(Image("icon.homeCoin", bundle: .main))")
                                 .font(.system(size: iconSize))
                             Text(verbatim: "…")
                                 .font(.system(
@@ -158,7 +158,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                             let size: CGFloat = 10
                             HStack(alignment: .lastTextBaseline, spacing: 0) {
                                 let iconSize: CGFloat = size * 4 / 5
-                                Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                                Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
                                     .font(.system(size: iconSize))
                                     .offset(x: -2)
                                 Text("pzWidgetsKit.stamina", bundle: .main)
@@ -171,7 +171,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                             Spacer()
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
                                 let iconSize: CGFloat = size * 8 / 9
-                                Text(verbatim: "\(Image("icon.homeCoin", bundle: .main))")
+                                Text("\(Image("icon.homeCoin", bundle: .main))")
                                     .font(.system(size: iconSize))
                                 Text("pzWidgetsKit.homeCoin", bundle: .main)
                                     .font(.system(
@@ -229,7 +229,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                         let size: CGFloat = 10
                         HStack(alignment: .lastTextBaseline, spacing: 0) {
                             let iconSize: CGFloat = size * 4 / 5
-                            Text(verbatim: "\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
                                 .font(.system(size: iconSize))
                                 .offset(x: -2)
                             Text("pzWidgetsKit.stamina", bundle: .main)
@@ -242,7 +242,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                         Spacer()
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let iconSize: CGFloat = size * 8 / 9
-                            Text(verbatim: "\(Image("icon.homeCoin", bundle: .main))")
+                            Text("\(Image("icon.homeCoin", bundle: .main))")
                                 .font(.system(size: iconSize))
                             Text("pzWidgetsKit.homeCoin", bundle: .main)
                                 .font(.system(
