@@ -54,13 +54,6 @@ extension ExpeditionInfo4GI {
     }
 }
 
-// MARK: - Expedition
-
-public protocol Expedition {
-    var isFinished: Bool { get }
-    var iconURL: URL { get }
-}
-
 // MARK: - HomeCoinInfo4GI
 
 public protocol HomeCoinInfo4GI {
