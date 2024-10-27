@@ -8,6 +8,7 @@ import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
+@available(watchOS, unavailable)
 struct DailyTaskInfoBar: View {
     let dailyNote: any DailyNoteProtocol
 

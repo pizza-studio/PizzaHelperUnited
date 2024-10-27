@@ -13,6 +13,7 @@ import WidgetKit
 
 // MARK: - MainInfo
 
+@available(watchOS, unavailable)
 struct MainInfo: View {
     let entry: any TimelineEntry
     let dailyNote: any DailyNoteProtocol
@@ -69,15 +70,5 @@ struct MainInfo: View {
                 RecoveryTimeText(entry: entry, data: dailyNote)
             }
         }
-    }
-}
-
-// MARK: - WidgetRefreshIntent
-
-struct WidgetRefreshIntent: AppIntent {
-    static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
-
-    func perform() async throws -> some IntentResult {
-        .result()
     }
 }

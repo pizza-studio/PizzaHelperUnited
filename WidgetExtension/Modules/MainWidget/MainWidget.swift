@@ -10,6 +10,7 @@ import WidgetKit
 
 // MARK: - MainWidget
 
+@available(watchOS, unavailable)
 struct MainWidget: Widget {
     let kind: String = "WidgetView"
 
@@ -30,6 +31,7 @@ struct MainWidget: Widget {
 
 // MARK: - WidgetViewEntryView
 
+@available(watchOS, unavailable)
 struct WidgetViewEntryView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: MainWidgetProvider.Entry
@@ -89,12 +91,12 @@ struct WidgetViewEntryView: View {
     }
 }
 
+@available(watchOS, unavailable)
 extension View {
     fileprivate func myContainerBackground(viewConfig: WidgetViewConfiguration) -> some View {
         modifier(ContainerBackgroundModifier(viewConfig: viewConfig))
     }
 
-    @available(iOSApplicationExtension 17.0, *)
     fileprivate func containerBackgroundStandbyDetector(viewConfig: WidgetViewConfiguration) -> some View {
         modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
     }
@@ -102,6 +104,7 @@ extension View {
 
 // MARK: - ContainerBackgroundModifier
 
+@available(watchOS, unavailable)
 private struct ContainerBackgroundModifier: ViewModifier {
     var viewConfig: WidgetViewConfiguration
 
@@ -116,6 +119,7 @@ private struct ContainerBackgroundModifier: ViewModifier {
 
 // MARK: - ContainerBackgroundStandbyDetector
 
+@available(watchOS, unavailable)
 private struct ContainerBackgroundStandbyDetector: ViewModifier {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode
     @Environment(\.widgetContentMargins) var widgetContentMargins: EdgeInsets
