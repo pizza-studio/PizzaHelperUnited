@@ -42,7 +42,11 @@ extension ProfileMOBasicProtocol {
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(uid) else { return false }
         /// 绝区零的国服 UID 是八位。
+        #if os(watchOS)
+        return (100_000_00 ... Int(Int32.max)).contains(givenUIDInt)
+        #else
         return (100_000_00 ... 9_999_999_999).contains(givenUIDInt)
+        #endif
     }
 }
 
