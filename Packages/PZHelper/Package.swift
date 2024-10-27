@@ -36,6 +36,7 @@ let package = Package(
         .package(path: "../PZInGameEventKit"),
         .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
+        .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "8.2.0")),
     ],
     targets: [
         .target(
@@ -49,6 +50,7 @@ let package = Package(
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "GachaKit", package: "GachaKit"),
                 .product(name: "AbyssRankKit", package: "AbyssRankKit"),
+                .product(name: "Defaults", package: "Defaults"),
                 .product(name: "GITodayMaterialsKit", package: "GITodayMaterialsKit"),
                 .product(name: "PZDictionaryKit", package: "PZDictionaryKit"),
                 .product(name: "PZHoYoLabKit", package: "PZHoYoLabKit"),
