@@ -23,7 +23,7 @@
 		5B2DC8292CC2A78A00958F85 /* PZInGameEventKit in Resources */ = {isa = PBXBuildFile; fileRef = 5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */; };
 		5B560A0F2C6BB5BB00175FB1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */; };
 		5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A172C6BBB8300175FB1 /* Settings.bundle */; };
-		5B6F380C2CCE4EDE0081A23D /* PizzaWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B6F380C2CCE4EDE0081A23D /* PizzaWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BD0D0F52C6A653500DA8099 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD0D0F42C6A653500DA8099 /* PZHelper */; };
 		5BD7442A2CC6B262007DE385 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD744292CC6B262007DE385 /* WidgetKit.framework */; };
 		5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7442B2CC6B262007DE385 /* SwiftUI.framework */; };
@@ -757,6 +757,7 @@
 		};
 		5B6F380B2CCE4EDE0081A23D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 5B6F37FE2CCE4EDC0081A23D /* PizzaWatchApp */;
 			targetProxy = 5B6F380A2CCE4EDE0081A23D /* PBXContainerItemProxy */;
 		};
