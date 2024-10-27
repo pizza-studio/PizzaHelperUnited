@@ -2,14 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import PZHelper_Watch
 import SwiftUI
 
-@main
-struct WatchApp_Watch_AppApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+// MARK: - NotificationView
+
+struct NotificationView: View {
+    var body: some View {
+        EmptyView()
     }
 }
