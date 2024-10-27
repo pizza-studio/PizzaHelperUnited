@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - AccountMOItemDebugView
 
+@available(watchOS, unavailable)
 public struct AccountMOItemDebugView: View {
     // MARK: Lifecycle
 
@@ -59,6 +60,7 @@ public struct AccountMOItemDebugView: View {
 
 // MARK: - AccountMODebugView
 
+@available(watchOS, unavailable)
 public struct AccountMODebugView: View {
     // MARK: Lifecycle
 
