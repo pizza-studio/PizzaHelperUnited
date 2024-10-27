@@ -14,7 +14,7 @@ let sharedSwiftSettings: [SwiftSetting] = [
 ]
 
 let package = Package(
-    name: "PZHelper-Watch",
+    name: "PZHelper-WatchPKG",
     defaultLocalization: "en",
     platforms: [.watchOS(.v10)],
     products: [

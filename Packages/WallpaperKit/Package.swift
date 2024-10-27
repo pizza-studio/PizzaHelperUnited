@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "WallpaperKit",
+    name: "WallpaperKitPKG",
     defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14), .watchOS(.v10), .macCatalyst(.v17), .visionOS(.v1)],
     products: [
