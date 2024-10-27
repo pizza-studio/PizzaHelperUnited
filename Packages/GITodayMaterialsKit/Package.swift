@@ -16,7 +16,6 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../PZKit"),
-        .package(path: "../EnkaKit"),
         .package(path: "../WallpaperKit"),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
         .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "8.2.0")),
@@ -29,7 +28,6 @@ let package = Package(
             dependencies: [
                 .product(name: "PZBaseKit", package: "PZKit"),
                 .product(name: "PZAccountKit", package: "PZKit"),
-                .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "WallpaperKit", package: "WallpaperKit"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
