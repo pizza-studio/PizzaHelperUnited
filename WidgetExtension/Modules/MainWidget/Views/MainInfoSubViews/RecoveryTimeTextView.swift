@@ -37,7 +37,6 @@ struct RecoveryTimeText: View {
             if resinInfo.currentResinDynamic < resinInfo.maxResin {
                 let compoundedText = """
                 \(PZWidgets.dateFormatter.string(from: resinInfo.resinRecoveryTime))
-
                 \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: resinInfo.resinRecoveryTime))!)
                 """
                 return (Text(compoundedText), false)
@@ -49,7 +48,6 @@ struct RecoveryTimeText: View {
             if staminaInfo.currentStamina < staminaInfo.maxStamina {
                 let compoundedText = """
                 \(PZWidgets.dateFormatter.string(from: staminaInfo.fullTime))
-
                 \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: staminaInfo.fullTime))!)
                 """
                 return (Text(compoundedText), false)
@@ -61,7 +59,6 @@ struct RecoveryTimeText: View {
             if energyInfo.currentEnergyAmountDynamic < energyInfo.progress.max {
                 let compoundedText = """
                 \(PZWidgets.dateFormatter.string(from: energyInfo.timeOnFinish))
-
                 \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: energyInfo.timeOnFinish))!)
                 """
                 return (Text(compoundedText), false)
