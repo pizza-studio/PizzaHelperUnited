@@ -12,7 +12,7 @@ import SwiftData
 public final class PZProfileMO: Codable, ProfileMOProtocol {
     // MARK: Lifecycle
 
-    /// 专门用来从旧版 AccountMO 迁移到全新的 PZProfileMO 帐号体系的建构子。
+    /// 专门用来从旧版 AccountMO 迁移到全新的 PZProfileMO 账号体系的建构子。
     /// - Parameters:
     ///   - game: 游戏。
     ///   - uid: UID。

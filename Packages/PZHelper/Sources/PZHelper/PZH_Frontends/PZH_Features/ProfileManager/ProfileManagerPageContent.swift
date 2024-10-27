@@ -250,7 +250,7 @@ struct ProfileManagerPageContent: View {
 
             defer {
                 if clearEnkaCache {
-                    // 特殊处理：当且仅当当前删掉的帐号不是重复的本地帐号的时候，才清空展柜缓存。
+                    // 特殊处理：当且仅当当前删掉的账号不是重复的本地账号的时候，才清空展柜缓存。
                     let remainingUIDs = profiles.map(\.uid)
                     idsToDrop.forEach { currentUID, currentGame in
                         if !remainingUIDs.contains(currentUID) {
