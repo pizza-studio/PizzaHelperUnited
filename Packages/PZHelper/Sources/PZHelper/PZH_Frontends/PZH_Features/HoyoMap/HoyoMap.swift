@@ -89,28 +89,6 @@ extension HoYo.AccountRegion {
             "https://webstatic.mihoyo.com/zzz/app/interactive-map/index.html".asURL // 乱填的。
         }
     }
-
-    fileprivate func menuTitle(showEmoji: Bool) -> String {
-        var localizedTitle = localizedMapTitle
-        if showEmoji {
-            switch self {
-            case .hoyoLab: localizedTitle.append(" 🇨🇳")
-            case .miyoushe: localizedTitle.append(" 🌏")
-            }
-        }
-        return localizedTitle
-    }
-
-    private var localizedMapTitle: String {
-        switch (self, game) {
-        case (.hoyoLab, .genshinImpact): "tools.hoyoMap.os.gi"
-        case (.miyoushe, .genshinImpact): ""
-        case (.hoyoLab, .starRail): ""
-        case (.miyoushe, .starRail): ""
-        case (.hoyoLab, .zenlessZone): ""
-        case (.miyoushe, .zenlessZone): ""
-        }
-    }
 }
 
 #if !canImport(UIKit) && canImport(AppKit)
