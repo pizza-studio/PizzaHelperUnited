@@ -50,11 +50,11 @@ public struct GachaBigChartView: View {
         return GachaPoolExpressible.getKnownCases(by: game)
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @Environment(GachaVM.self) fileprivate var theVM
+    @Environment(GachaVM.self) private var theVM
 
-    @ViewBuilder fileprivate var contentFilterSection: some View {
+    @ViewBuilder private var contentFilterSection: some View {
         if let theProfile = theVM.currentGPID {
             Section {
                 let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)

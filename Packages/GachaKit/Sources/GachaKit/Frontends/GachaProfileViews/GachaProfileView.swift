@@ -55,11 +55,11 @@ public struct GachaProfileView: View {
         return GachaPoolExpressible.getKnownCases(by: game)
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @Environment(GachaVM.self) fileprivate var theVM
+    @Environment(GachaVM.self) private var theVM
 
-    @ViewBuilder fileprivate var poolPickerSection: some View {
+    @ViewBuilder private var poolPickerSection: some View {
         if let theProfile = theVM.currentGPID {
             Section {
                 let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)

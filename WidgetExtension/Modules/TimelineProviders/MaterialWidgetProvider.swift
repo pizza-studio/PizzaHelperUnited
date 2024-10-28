@@ -121,7 +121,7 @@ struct MaterialWidgetProvider: TimelineProvider {
 
 @available(watchOS, unavailable)
 extension View {
-    fileprivate func myWidgetContainerBackground<V: View>(
+    private func myWidgetContainerBackground<V: View>(
         withPadding padding: CGFloat,
         @ViewBuilder _ content: @escaping () -> V
     )

@@ -144,14 +144,14 @@ public struct GachaExportSections: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: private
 
-    @Environment(GachaVM.self) fileprivate var theVM
-    @State fileprivate var packageMethod: GachaExchange.ExportPackageMethod = .allOwners
-    @State fileprivate var specifiedProfiles: Set<GachaProfileID> = []
-    @State fileprivate var exportFormat: GachaExchange.ExportableFormat = .asUIGFv4
-    @State fileprivate var documentLanguage: GachaLanguage = .current
-    @State fileprivate var fileSaveActionResult: Result<URL, any Error>?
+    @Environment(GachaVM.self) private var theVM
+    @State private var packageMethod: GachaExchange.ExportPackageMethod = .allOwners
+    @State private var specifiedProfiles: Set<GachaProfileID> = []
+    @State private var exportFormat: GachaExchange.ExportableFormat = .asUIGFv4
+    @State private var documentLanguage: GachaLanguage = .current
+    @State private var fileSaveActionResult: Result<URL, any Error>?
 
     var isComDlg32Visible: Binding<Bool> {
         .init(get: {

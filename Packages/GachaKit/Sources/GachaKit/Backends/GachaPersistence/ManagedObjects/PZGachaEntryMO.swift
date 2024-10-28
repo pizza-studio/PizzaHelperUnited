@@ -91,9 +91,9 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
         try container.encode(gachaID, forKey: .gachaID)
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    fileprivate enum CodingKeys: CodingKey {
+    private enum CodingKeys: CodingKey {
         case game
         case uid
         case gachaType

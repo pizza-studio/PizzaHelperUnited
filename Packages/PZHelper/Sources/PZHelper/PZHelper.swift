@@ -37,7 +37,7 @@ extension PZHelper {
 
 extension PZHelper {
     @MainActor
-    fileprivate static func startupTasks() {
+    private static func startupTasks() {
         PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
         IAPManager.performStartupTasks()
     }

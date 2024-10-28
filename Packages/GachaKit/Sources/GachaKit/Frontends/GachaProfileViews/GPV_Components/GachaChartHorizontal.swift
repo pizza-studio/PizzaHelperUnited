@@ -29,17 +29,17 @@ public struct GachaChartHorizontal: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    fileprivate let poolType: GachaPoolExpressible
-    fileprivate let givenGPID: GachaProfileID
-    @Environment(GachaVM.self) fileprivate var theVM
+    private let poolType: GachaPoolExpressible
+    private let givenGPID: GachaProfileID
+    @Environment(GachaVM.self) private var theVM
 
-    fileprivate var pentaStarEntries: [GachaEntryExpressible] {
+    private var pentaStarEntries: [GachaEntryExpressible] {
         theVM.currentPentaStars
     }
 
-    fileprivate var colors: [Color] {
+    private var colors: [Color] {
         pentaStarEntries.map { neta in
             switch neta.drawCount {
             case ..<0: .gray
@@ -53,7 +53,7 @@ public struct GachaChartHorizontal: View {
     }
 
     @ViewBuilder
-    fileprivate func chart() -> some View {
+    private func chart() -> some View {
         ScrollView(.horizontal) {
             Chart {
                 ForEach(pentaStarEntries) { entry in
@@ -90,7 +90,7 @@ public struct GachaChartHorizontal: View {
         }
     }
 
-    fileprivate func matchedEntry(
+    private func matchedEntry(
         from source: [GachaEntryExpressible],
         with value: String
     )
@@ -99,7 +99,7 @@ public struct GachaChartHorizontal: View {
     }
 
     @ChartContentBuilder
-    fileprivate func drawChartContent(for entry: GachaEntryExpressible) -> some ChartContent {
+    private func drawChartContent(for entry: GachaEntryExpressible) -> some ChartContent {
         BarMark(
             x: .value("gachaKit.chart.character".i18nGachaKit, entry.id),
             y: .value("gachaKit.chart.pullCount".i18nGachaKit, entry.drawCount),
@@ -113,7 +113,7 @@ public struct GachaChartHorizontal: View {
     }
 
     @ChartContentBuilder
-    fileprivate func drawChartContentRuleMarks() -> some ChartContent {
+    private func drawChartContentRuleMarks() -> some ChartContent {
         RuleMark(y: .value(
             "gachaKit.chart.average".i18nGachaKit,
             pentaStarEntries.map { $0.drawCount }

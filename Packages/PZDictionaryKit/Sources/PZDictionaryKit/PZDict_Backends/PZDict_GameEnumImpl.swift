@@ -6,7 +6,7 @@ import Foundation
 import PZBaseKit
 
 extension Pizza.SupportedGame {
-    fileprivate var dictionaryServerHost: String {
+    private var dictionaryServerHost: String {
         switch self {
         case .genshinImpact: "gidict-api.pizzastudio.org"
         case .starRail: "hsrdict-api.pizzastudio.org"

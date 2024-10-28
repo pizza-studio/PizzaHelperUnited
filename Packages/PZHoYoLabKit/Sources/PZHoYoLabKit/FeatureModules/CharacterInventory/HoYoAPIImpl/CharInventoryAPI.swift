@@ -41,7 +41,7 @@ extension HoYo {
 }
 
 extension HoYo {
-    fileprivate static func characterInventory4GI(
+    private static func characterInventory4GI(
         server: Server,
         uid: String,
         cookie: String,
@@ -133,7 +133,7 @@ extension HoYo {
         return decodedResult
     }
 
-    fileprivate static func characterInventory4HSR(
+    private static func characterInventory4HSR(
         server: Server,
         uid: String,
         cookie: String,

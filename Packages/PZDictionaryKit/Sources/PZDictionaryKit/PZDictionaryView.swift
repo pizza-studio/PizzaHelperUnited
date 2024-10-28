@@ -100,7 +100,7 @@ public struct PZDictionaryView: View {
 // MARK: PZDictionaryView.DictionaryTranslationDetailView
 
 extension PZDictionaryView {
-    fileprivate struct DictionaryTranslationDetailView: View {
+    private struct DictionaryTranslationDetailView: View {
         // MARK: Internal
 
         let translation: TranslationResult.Translation

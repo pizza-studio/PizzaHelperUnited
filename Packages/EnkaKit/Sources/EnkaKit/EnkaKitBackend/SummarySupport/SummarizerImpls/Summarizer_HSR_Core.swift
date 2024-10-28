@@ -118,7 +118,7 @@ extension Enka.QueriedProfileHSR.QueriedAvatar {
 }
 
 extension Enka.QueriedProfileHSR.QueriedAvatar {
-    fileprivate static func updateFlat(
+    private static func updateFlat(
         for panel: inout MutableAvatarPropertyPanel,
         flat: Enka.QueriedProfileHSR.EquipmentFlat?
     ) {

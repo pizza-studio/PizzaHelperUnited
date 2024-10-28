@@ -37,7 +37,7 @@ extension HoYo {
         }
     }
 
-    fileprivate static func generateAuthenticationKey4GI(
+    private static func generateAuthenticationKey4GI(
         profile: PZProfileSendable
     ) async throws
         -> GenAuthKeyResult {
@@ -183,7 +183,7 @@ public struct GenAuthKeyResult: Codable {
 }
 
 extension HoYo {
-    fileprivate static func assembleMiyousheGIGachaURLByAPI(
+    private static func assembleMiyousheGIGachaURLByAPI(
         server: HoYo.Server,
         authkey: GenAuthKeyResult.GenAuthKeyData,
         gachaType: GachaTypeGI,

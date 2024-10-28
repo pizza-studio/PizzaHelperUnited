@@ -75,10 +75,10 @@ public struct GachaExchangeView: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @State fileprivate var currentPage: Page = .exportData
-    @Environment(GachaVM.self) fileprivate var theVM
+    @State private var currentPage: Page = .exportData
+    @Environment(GachaVM.self) private var theVM
 }
 
 extension GachaExchangeView {
