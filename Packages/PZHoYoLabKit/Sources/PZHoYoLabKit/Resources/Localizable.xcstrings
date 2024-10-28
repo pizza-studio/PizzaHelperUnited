@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "hylKit.abyssReport.floor.1stHalf" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -30,6 +31,7 @@
       }
     },
     "hylKit.abyssReport.floor.2ndHalf" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -58,6 +60,7 @@
       }
     },
     "hylKit.abyssReport.floor.thisFloorIsSkipped" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -114,6 +117,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.battle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -142,6 +146,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.deepest" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -170,6 +175,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.mostDamageTaken" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -198,6 +204,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.mostDefeats" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -226,6 +233,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.mostESkills" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -254,6 +262,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.mostQSkills" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -282,6 +291,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.star" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -310,6 +320,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.strongest" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -338,6 +349,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.summary" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -366,6 +378,7 @@
       }
     },
     "hylKit.abyssReport.gi.stat.win" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -394,6 +407,7 @@
       }
     },
     "hylKit.abyssReport.hsr.stat.maxFloorConquered" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -422,6 +436,7 @@
       }
     },
     "hylKit.abyssReport.hsr.stat.numOfBattles" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -450,6 +465,7 @@
       }
     },
     "hylKit.abyssReport.hsr.stat.seasonID" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -478,6 +494,7 @@
       }
     },
     "hylKit.abyssReport.hsr.stat.starsGained" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -506,6 +523,7 @@
       }
     },
     "hylKit.abyssReport.hsr.stats.header" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -534,6 +552,7 @@
       }
     },
     "hylKit.abyssReport.noDataAvailableForThisSeason" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -591,6 +610,7 @@
     },
     "hylKit.abyssReport.seasonPicker.current" : {
       "comment" : "Shortened ",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -620,6 +640,7 @@
     },
     "hylKit.abyssReport.seasonPicker.previous" : {
       "comment" : "Shortened",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -648,6 +669,7 @@
       }
     },
     "hylKit.abyssReportView4GI.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -676,6 +698,7 @@
       }
     },
     "hylKit.abyssReportView4GI.navTitle.tiny" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -704,6 +727,7 @@
       }
     },
     "hylKit.abyssReportView4HSR.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -732,6 +756,7 @@
       }
     },
     "hylKit.abyssReportView4HSR.navTitle.tiny" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -816,7 +841,7 @@
       }
     },
     "hylKit.inventoryView.characters.filter.4star" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -845,7 +870,7 @@
       }
     },
     "hylKit.inventoryView.characters.filter.5star" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -874,7 +899,7 @@
       }
     },
     "hylKit.inventoryView.characters.filter.all" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -903,6 +928,7 @@
       }
     },
     "hylKit.inventoryView.characters.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -931,6 +957,7 @@
       }
     },
     "hylKit.inventoryView.collapse.tabText" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -959,6 +986,7 @@
       }
     },
     "hylKit.inventoryView.expand.tabText" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1386,6 +1414,7 @@
       }
     },
     "hylKit.ledger4GI.view.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1813,6 +1842,7 @@
       }
     },
     "hylKit.ledger4HSR.view.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2289,6 +2319,7 @@
       }
     },
     "hylKit.travelStats4GI.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2485,6 +2516,7 @@
       }
     },
     "hylKit.travelStats4HSR.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

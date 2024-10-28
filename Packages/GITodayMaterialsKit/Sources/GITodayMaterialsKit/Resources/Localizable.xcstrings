@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "todayMaterialsKit.character.short" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -59,6 +60,7 @@
       }
     },
     "todayMaterialsKit.weapon.short" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -87,6 +89,7 @@
       }
     },
     "todayMaterialsKit.week.MR" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -115,6 +118,7 @@
       }
     },
     "todayMaterialsKit.week.SU" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -143,6 +147,7 @@
       }
     },
     "todayMaterialsKit.week.TF" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -171,6 +176,7 @@
       }
     },
     "todayMaterialsKit.week.WS" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

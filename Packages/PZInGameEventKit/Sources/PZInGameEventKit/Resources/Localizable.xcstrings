@@ -142,7 +142,7 @@
       }
     },
     "igev.gi.gameEvents.viewAll.title" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -171,6 +171,7 @@
       }
     },
     "igev.hsr.news.Events" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -199,6 +200,7 @@
       }
     },
     "igev.hsr.news.Intels" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -227,6 +229,7 @@
       }
     },
     "igev.hsr.news.navEntryName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -255,6 +258,7 @@
       }
     },
     "igev.hsr.news.Notices" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

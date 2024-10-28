@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "aboutKit.appStoreReview.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -114,6 +115,7 @@
       }
     },
     "aboutKit.donation.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

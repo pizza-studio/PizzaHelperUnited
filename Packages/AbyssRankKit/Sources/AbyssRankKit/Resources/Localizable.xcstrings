@@ -88,6 +88,7 @@
       }
     },
     "abyssRankKit.half.1" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -116,6 +117,7 @@
       }
     },
     "abyssRankKit.half.2" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -144,6 +146,7 @@
       }
     },
     "abyssRankKit.rank.faq" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -200,6 +203,7 @@
       }
     },
     "abyssRankKit.rank.holdingRate.36star" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -228,6 +232,7 @@
       }
     },
     "abyssRankKit.rank.holdingRate.all" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -256,6 +261,7 @@
       }
     },
     "abyssRankKit.rank.note.1" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -284,6 +290,7 @@
       }
     },
     "abyssRankKit.rank.note.2" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -340,6 +347,7 @@
       }
     },
     "abyssRankKit.rank.season.1" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -368,6 +376,7 @@
       }
     },
     "abyssRankKit.rank.season.2" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -396,6 +405,7 @@
       }
     },
     "abyssRankKit.rank.season.both" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -424,6 +434,7 @@
       }
     },
     "abyssRankKit.rank.season.unit" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -480,6 +491,7 @@
       }
     },
     "abyssRankKit.rank.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -508,6 +520,7 @@
       }
     },
     "abyssRankKit.rank.usageRate.characters" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -536,6 +549,7 @@
       }
     },
     "abyssRankKit.rank.usageRate.characterSansRestart" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -766,6 +780,7 @@
       }
     },
     "abyssRankKit.rank.usageRate.teams" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
