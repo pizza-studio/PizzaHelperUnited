@@ -237,7 +237,7 @@ extension ProfileManagerPageContent {
                             NavigationLink {
                                 ProfileConfigEditorView(unsavedProfile: profile)
                             } label: {
-                                Text("profileMgr.login.manual.2")
+                                Text("profileMgr.login.manual.2".i18nPZHelper)
                                     .font(.footnote)
                             }
                         }
