@@ -20,7 +20,7 @@ extension ProfileManagerPageContent {
 
         // MARK: Internal
 
-        @MainActor var body: some View {
+        var body: some View {
             NavigationStack {
                 Form {
                     switch status {
@@ -207,7 +207,7 @@ extension ProfileManagerPageContent {
             }
         }
 
-        @MainActor @ViewBuilder
+        @ViewBuilder
         func menuForManagingHoYoLabProfiles() -> some View {
             Menu {
                 HoYoPassWithdrawView.linksForManagingHoYoLabAccounts
@@ -216,7 +216,7 @@ extension ProfileManagerPageContent {
             }
         }
 
-        @MainActor @ViewBuilder
+        @ViewBuilder
         func pendingView() -> some View {
             Group {
                 Section {
@@ -254,12 +254,12 @@ extension ProfileManagerPageContent {
             .interactiveDismissDisabled()
         }
 
-        @MainActor @ViewBuilder
+        @ViewBuilder
         func gotCookieView() -> some View {
             ProgressView()
         }
 
-        @MainActor @ViewBuilder
+        @ViewBuilder
         func gotProfileView() -> some View {
             ProfileConfigViewContents(profile: profile, fetchedAccounts: fetchedAccounts)
         }
@@ -317,7 +317,7 @@ private struct RequireLoginView: View {
 
     @Binding var deviceID: String
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack {
             Text("settings.profile.pleaseSelectGame".i18nPZHelper).frame(maxWidth: .infinity, alignment: .leading)
             Picker("".description, selection: $game) {
@@ -377,7 +377,7 @@ private struct RequireLoginView: View {
             : "settings.profile.clickHereToLogin.reLogin".i18nPZHelper
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func handleSheetNavigation() -> some View {
         Group {
             switch region {
@@ -414,7 +414,7 @@ private enum AddProfileStatus {
 private struct ExplanationView: View {
     // MARK: Internal
 
-    @MainActor var body: some View {
+    var body: some View {
         Group {
             VStack(alignment: .leading, spacing: 9) {
                 Text(verbatim: beareOfTextHeader)

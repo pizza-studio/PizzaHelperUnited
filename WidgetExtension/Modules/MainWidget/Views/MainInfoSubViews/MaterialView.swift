@@ -12,7 +12,7 @@ struct MaterialView: View {
     var talentMaterialProvider: TalentMaterialProvider { .init(weekday: today) }
     var weaponMaterialProvider: WeaponMaterialProvider { .init(weekday: today) }
 
-    @MainActor var body: some View {
+    var body: some View {
         if today != nil {
             VStack {
                 HStack(spacing: -5) {

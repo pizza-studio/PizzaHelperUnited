@@ -21,7 +21,7 @@ public struct EachAvatarStatView: View {
 
     public let data: Enka.AvatarSummarized
 
-    @MainActor public var body: some View {
+    public var body: some View {
         // 按照 iPhone SE2-SE3 的标准画面解析度（375 × 667）制作。
         LazyVStack(spacing: outerContentSpacing) {
             data.mainInfo.asView(fontSize: fontSize)
@@ -63,7 +63,7 @@ public struct EachAvatarStatView: View {
 
     @Default(.artifactRatingRules) var artifactRatingRules: ArtifactRating.Rules
 
-    @MainActor @ViewBuilder var artifactRatingSummaryRow: some View {
+    @ViewBuilder var artifactRatingSummaryRow: some View {
         if artifactRatingRules.contains(.enabled), let ratingResult = data.artifactRatingResult {
             HStack {
                 Text(verbatim: " → " + data.mainInfo.terms.artifactRatingName)
@@ -83,7 +83,7 @@ public struct EachAvatarStatView: View {
         }
     }
 
-    @MainActor @ViewBuilder var artifactGrid: some View {
+    @ViewBuilder var artifactGrid: some View {
         let gridColumnsFixed = [GridItem](repeating: .init(), count: 2)
         LazyVGrid(columns: gridColumnsFixed, spacing: outerContentSpacing) {
             ForEach(data.artifacts) { currentArtifact in
@@ -94,7 +94,7 @@ public struct EachAvatarStatView: View {
         .padding(.bottom, 18 * Self.zoomFactor)
     }
 
-    @MainActor @ViewBuilder var propsPanelBackground: some View {
+    @ViewBuilder var propsPanelBackground: some View {
         Color.black.opacity(0.2)
             .clipShape(
                 .rect(
@@ -106,7 +106,7 @@ public struct EachAvatarStatView: View {
             )
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func renderPropertyGrid() -> some View {
         let gridColumnsFixed = [GridItem](repeating: .init(.flexible()), count: 2)
         LazyVGrid(columns: gridColumnsFixed, spacing: 0) {
@@ -476,7 +476,7 @@ private struct WeaponPanelView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         HStack(spacing: fontSize * 0.4) {
             background
                 .frame(width: fontSize * 4.46, height: fontSize * 4.46)
@@ -523,7 +523,7 @@ private struct WeaponPanelView: View {
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder var background: some View {
+    @ViewBuilder var background: some View {
         switch weapon.game {
         case .starRail:
             Color.primary.opacity(0.075)
@@ -584,7 +584,7 @@ private struct ArtifactView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         coreBody(fontSize: fontSize, langTag: langTag)
             .padding(.vertical, fontSize * 0.13)
             .padding(.horizontal, fontSize * 0.3)
@@ -613,7 +613,7 @@ private struct ArtifactView: View {
         return ""
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func coreBody(fontSize: CGFloat, langTag: String) -> some View {
         HStack(alignment: .top) {
             Color.clear.frame(width: fontSize * 2.6)
@@ -672,7 +672,7 @@ private struct ArtifactView: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func handleArtifactIcon(fontSize: CGFloat, content: (some View)?) -> some View {
         if artifact.game == .starRail {
             content
@@ -745,7 +745,7 @@ public struct AttributeTagPair: View {
     public let shortenedTitle: String
     public let iconImg: Image?
 
-    @MainActor public var body: some View {
+    public var body: some View {
         HStack(spacing: 0) {
             iconImg?
                 .aspectRatio(contentMode: .fit)

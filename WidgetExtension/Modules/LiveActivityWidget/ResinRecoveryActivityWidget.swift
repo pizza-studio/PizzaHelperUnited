@@ -152,7 +152,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         let mainContent = contentView
         #if !os(watchOS)
             .background {

@@ -20,7 +20,7 @@ struct DetailPortalTabPage: View {
 
     // MARK: Internal
 
-    @MainActor var body: some View {
+    var body: some View {
         NavigationStack {
             Form {
                 formContent
@@ -43,7 +43,7 @@ struct DetailPortalTabPage: View {
         }
     }
 
-    @MainActor @ViewBuilder var formContent: some View {
+    @ViewBuilder var formContent: some View {
         let query4GI = CaseQuerySection(theDB: sharedDB.db4GI, focus: $uidInputFieldFocus)
             .listRowMaterialBackground()
         let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)
@@ -82,7 +82,7 @@ struct DetailPortalTabPage: View {
         }
     }
 
-    @MainActor @ViewBuilder var profileSwitcherMenuLabel: some View {
+    @ViewBuilder var profileSwitcherMenuLabel: some View {
         LabeledContent {
             let dimension: CGFloat = 30
             Group {
@@ -120,7 +120,7 @@ struct DetailPortalTabPage: View {
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func profileSwitcherMenu() -> some View {
         Menu {
             Button {
@@ -152,7 +152,7 @@ struct DetailPortalTabPage: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func hookNavigationDestinations(_ content: some View) -> some View {
         content
             .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
@@ -173,7 +173,7 @@ struct DetailPortalTabPage: View {
             }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func hookToolbar(_ content: some View) -> some View {
         if !sortedProfiles.isEmpty {
             content.toolbar {
@@ -193,7 +193,7 @@ struct DetailPortalTabPage: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func hookAlert4AbyssCollectionUserConscent(_ content: some View) -> some View {
         if delegate.currentProfile?.game == .genshinImpact {
             content

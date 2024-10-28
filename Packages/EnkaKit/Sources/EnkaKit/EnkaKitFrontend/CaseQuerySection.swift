@@ -21,7 +21,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Section {
             queryInputSection()
             if let result = delegate.currentInfo {
@@ -85,7 +85,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     var focused: FocusState<Bool>.Binding?
     @FocusState var backupFocus: Bool
 
-    @MainActor @ViewBuilder var textFieldView: some View {
+    @ViewBuilder var textFieldView: some View {
         TextField("UID".description, text: $givenUID)
             .focused(focused ?? $backupFocus)
             .onReceive(Just(givenUID)) { _ in formatText() }
@@ -100,7 +100,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
             .disabled(delegate.taskState == .busy)
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func sectionHeader() -> some View {
         switch QueryDB.game {
         case .genshinImpact:
@@ -112,7 +112,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func sectionFooterWithExplainTexts() -> some View {
         switch QueryDB.game {
         case .genshinImpact:
@@ -124,7 +124,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func queryInputSection() -> some View {
         HStack {
             textFieldView

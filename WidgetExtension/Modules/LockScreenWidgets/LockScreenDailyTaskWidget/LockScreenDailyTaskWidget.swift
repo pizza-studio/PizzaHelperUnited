@@ -39,7 +39,7 @@ struct LockScreenDailyTaskWidget: Widget {
 struct LockScreenDailyTaskWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
-    @MainActor var body: some View {
+    var body: some View {
         Group {
             switch family {
             #if os(watchOS)

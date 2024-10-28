@@ -17,7 +17,7 @@ extension Enka {
 
         // MARK: Public
 
-        @MainActor public var body: some View {
+        public var body: some View {
             mainView
                 .alert(
                     "settings.display.customizingNameForKunikuzushi.prompt".i18nEnka,
@@ -41,7 +41,7 @@ extension Enka {
 
         // MARK: Internal
 
-        @MainActor @ViewBuilder var mainView: some View {
+        @ViewBuilder var mainView: some View {
             Section {
                 Toggle(isOn: $artifactRatingRules.bind(.enabled, animate: true).animation()) {
                     Text("settings.display.artifactRating.enabled".i18nEnka)

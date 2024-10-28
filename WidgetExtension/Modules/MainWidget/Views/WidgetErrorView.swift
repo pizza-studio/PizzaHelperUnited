@@ -12,7 +12,7 @@ struct WidgetErrorView: View {
     let error: any Error
     let message: String
 
-    @MainActor var body: some View {
+    var body: some View {
         Text(error.localizedDescription)
             .font(.title3)
             .foregroundColor(.gray)

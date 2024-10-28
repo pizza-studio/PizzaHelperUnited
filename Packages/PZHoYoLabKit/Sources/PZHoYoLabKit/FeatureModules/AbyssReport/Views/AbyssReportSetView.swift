@@ -21,12 +21,12 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
 
     public let data: SetData
 
-    @MainActor public var body: some View {
+    public var body: some View {
         container
             .navBarTitleDisplayMode(.inline)
     }
 
-    @MainActor @ViewBuilder public var container: some View {
+    @ViewBuilder public var container: some View {
         Group {
             if showPreviousSeason, hasPreviousSeasonContent {
                 previousSeasonContent
@@ -60,11 +60,11 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder var currentSeasonContent: some View {
+    @ViewBuilder var currentSeasonContent: some View {
         data.current.asView()
     }
 
-    @MainActor @ViewBuilder var previousSeasonContent: some View {
+    @ViewBuilder var previousSeasonContent: some View {
         data.previous?.asView()
     }
 

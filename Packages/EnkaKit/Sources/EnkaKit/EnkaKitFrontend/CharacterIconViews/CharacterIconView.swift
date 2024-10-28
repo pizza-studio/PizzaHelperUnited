@@ -57,7 +57,7 @@ public struct CharacterIconView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         switch (game, isCard) {
         case (.starRail, true): cardIconHSR
         case (.starRail, false): normalIconHSR
@@ -69,7 +69,7 @@ public struct CharacterIconView: View {
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder var cardIconGI: some View {
+    @ViewBuilder var cardIconGI: some View {
         if let fetched = Enka.queryImageAssetSUI(for: "gi_character_\(charIDGuarded)") {
             fetched
                 .resizable()
@@ -86,7 +86,7 @@ public struct CharacterIconView: View {
         }
     }
 
-    @MainActor @ViewBuilder var normalIconGI: some View {
+    @ViewBuilder var normalIconGI: some View {
         if let fetched = Enka.queryImageAssetSUI(for: "gi_character_\(charIDGuarded)") {
             let newResult = fetched
                 .resizable()
@@ -118,7 +118,7 @@ public struct CharacterIconView: View {
         }
     }
 
-    @MainActor @ViewBuilder var cardIconHSR: some View {
+    @ViewBuilder var cardIconHSR: some View {
         if useGenshinStyleIcon,
            let idPhotoView = IDPhotoView4HSR(pid: charIDGuarded, size, .asCard) {
             idPhotoView
@@ -143,7 +143,7 @@ public struct CharacterIconView: View {
         }
     }
 
-    @MainActor @ViewBuilder var normalIconHSR: some View {
+    @ViewBuilder var normalIconHSR: some View {
         if useGenshinStyleIcon,
            let idPhotoView = IDPhotoView4HSR(pid: charIDGuarded, size, cutType) {
             idPhotoView
@@ -236,7 +236,7 @@ public struct CharacterIconView: View {
         }
     }
 
-    @MainActor @ViewBuilder private var blankQuestionedView: some View {
+    @ViewBuilder private var blankQuestionedView: some View {
         Circle().background(.gray).overlay {
             Text(verbatim: "?").foregroundStyle(.white).fontWeight(.black)
         }.frame(width: size, height: size)
@@ -245,7 +245,7 @@ public struct CharacterIconView: View {
             .compositingGroup()
     }
 
-    @MainActor @ViewBuilder private var namecardBg4GI: some View {
+    @ViewBuilder private var namecardBg4GI: some View {
         let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: charID)
         wallPaper.image4CellphoneWallpaper
             .resizable()
@@ -278,7 +278,7 @@ public struct CharacterIconView: View {
         return element
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func turnImageAsBlurredBackground4GI(_ image: Image) -> some View {
         ZStack {
             if useNameCardBackgrounds {

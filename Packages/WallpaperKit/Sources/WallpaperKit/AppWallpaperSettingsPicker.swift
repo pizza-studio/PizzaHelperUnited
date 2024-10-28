@@ -13,7 +13,7 @@ public struct AppWallpaperSettingsPicker: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Picker("settings.display.appBackground".i18nWPKit, selection: $background4App) {
             ForEach(Wallpaper.allCases) { wallpaper in
                 Label {

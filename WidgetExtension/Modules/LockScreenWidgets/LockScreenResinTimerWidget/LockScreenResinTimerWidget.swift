@@ -39,7 +39,7 @@ struct LockScreenResinTimerWidget: Widget {
 struct LockScreenResinTimerWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
-    @MainActor var body: some View {
+    var body: some View {
         switch family {
         case .accessoryCircular:
             Group {

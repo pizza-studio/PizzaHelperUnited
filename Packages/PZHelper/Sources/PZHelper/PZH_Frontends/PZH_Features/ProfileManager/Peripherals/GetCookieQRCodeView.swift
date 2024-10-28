@@ -121,7 +121,7 @@ struct GetCookieQRCodeView: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func errorView() -> some View {
         if let error = viewModel.error {
             Label {
@@ -135,7 +135,7 @@ struct GetCookieQRCodeView: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func qrImageView(_ image: Image) -> some View {
         HStack(alignment: .center) {
             Spacer()
@@ -162,7 +162,7 @@ struct GetCookieQRCodeView: View {
         }
     }
 
-    @MainActor public var body: some View {
+    public var body: some View {
         NavigationStack {
             List {
                 Section {

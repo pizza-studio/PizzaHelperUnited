@@ -7,7 +7,7 @@ import SwiftUI
 public struct ShowCaseEmptyInfoView: View {
     public let game: Enka.GameType
 
-    @MainActor public var body: some View {
+    public var body: some View {
         VStack(alignment: .leading) {
             Text("enka.showCase.emptyShowCase.description".i18nEnka)
                 .font(.footnote)

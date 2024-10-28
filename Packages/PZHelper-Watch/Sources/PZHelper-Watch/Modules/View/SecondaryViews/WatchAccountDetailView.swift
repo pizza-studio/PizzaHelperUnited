@@ -104,7 +104,7 @@ struct WatchAccountDetailView: View {
         .navigationTitle(accountName ?? "")
     }
 
-    @MainActor @ViewBuilder var expeditionsList: some View {
+    @ViewBuilder var expeditionsList: some View {
         switch data {
         case let data as any Note4GI:
             Divider()

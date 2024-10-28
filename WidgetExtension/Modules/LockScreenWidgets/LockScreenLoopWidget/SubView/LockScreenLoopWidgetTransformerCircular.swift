@@ -22,7 +22,7 @@ struct LockScreenLoopWidgetTransformerCircular: View {
         return dateComponentFormatter
     }()
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack(spacing: 0) {
             Image("icon.transformer", bundle: .main)
                 .resizable()

@@ -18,7 +18,7 @@ public struct AccountMOItemDebugView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Section {
             LabeledContent("game".description) {
                 Text(verbatim: accountMO.game.localizedShortName)
@@ -68,7 +68,7 @@ public struct AccountMODebugView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Form {
             ForEach(try! Self.sputnik.allAccountDataMO(for: game), id: \.uuid) { accountMO in
                 AccountMOItemDebugView(accountMO: accountMO)

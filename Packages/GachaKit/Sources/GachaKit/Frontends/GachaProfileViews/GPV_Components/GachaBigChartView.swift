@@ -15,7 +15,7 @@ public struct GachaBigChartView: View {
 
     public static let navTitle = "gachaKit.profile.bigChart".i18nGachaKit
 
-    @MainActor public var body: some View {
+    public var body: some View {
         NavigationStack {
             Form {
                 contentFilterSection
@@ -54,7 +54,7 @@ public struct GachaBigChartView: View {
 
     @Environment(GachaVM.self) fileprivate var theVM
 
-    @MainActor @ViewBuilder fileprivate var contentFilterSection: some View {
+    @ViewBuilder fileprivate var contentFilterSection: some View {
         if let theProfile = theVM.currentGPID {
             Section {
                 let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)

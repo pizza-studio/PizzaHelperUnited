@@ -16,7 +16,7 @@ struct RecoveryTimeText: View {
     let entry: any TimelineEntry
     let data: any DailyNoteProtocol
 
-    @MainActor var body: some View {
+    var body: some View {
         Group {
             let textData = makeContentText()
             switch textData.isFull {

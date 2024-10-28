@@ -23,7 +23,7 @@ public struct GachaEntryBar: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         HStack {
             HStack {
                 entry.icon(35)

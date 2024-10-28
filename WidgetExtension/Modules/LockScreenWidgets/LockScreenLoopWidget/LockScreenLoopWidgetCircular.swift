@@ -21,7 +21,7 @@ struct LockScreenLoopWidgetCircular: View {
 
     let resinStyle: AutoRotationUsingResinWidgetStyleAppEnum
 
-    @MainActor var body: some View {
+    var body: some View {
         switch LockScreenLoopWidgetType.autoChoose(entry: entry, result: result) {
         case .resin:
             switch resinStyle {

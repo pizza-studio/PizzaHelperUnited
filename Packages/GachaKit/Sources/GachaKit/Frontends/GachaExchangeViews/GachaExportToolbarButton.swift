@@ -16,7 +16,7 @@ public struct GachaExportToolbarButton: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         let msgPack = fileSaveActionResultMessagePack
         Menu {
             Menu {

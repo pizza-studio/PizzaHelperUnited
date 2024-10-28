@@ -27,7 +27,7 @@ public struct AbyssReportView4GI: AbyssReportView {
 
     public var data: AbyssReportData
 
-    @MainActor public var body: some View {
+    public var body: some View {
         contents.overlay {
             GeometryReader { geometry in
                 Color.clear.onAppear {
@@ -41,7 +41,7 @@ public struct AbyssReportView4GI: AbyssReportView {
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder var contents: some View {
+    @ViewBuilder var contents: some View {
         Form {
             stats
             floorList
@@ -50,7 +50,7 @@ public struct AbyssReportView4GI: AbyssReportView {
         .scrollContentBackground(.hidden)
     }
 
-    @MainActor @ViewBuilder var stats: some View {
+    @ViewBuilder var stats: some View {
         Section {
             StaggeredGrid(
                 columns: columns,
@@ -82,7 +82,7 @@ public struct AbyssReportView4GI: AbyssReportView {
 }
 
 extension AbyssReportView4GI {
-    @MainActor @ViewBuilder fileprivate var floorList: some View {
+    @ViewBuilder fileprivate var floorList: some View {
         ForEach(data.floors.reversed(), id: \.index) { floorData in
             Section {
                 LazyVStack {
@@ -106,7 +106,7 @@ extension AbyssReportView4GI {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     fileprivate func drawBattleRoom(levelData: HoYo.AbyssReport4GI.Floor.Level) -> some View {
         LazyVStack {
             HStack {
@@ -128,7 +128,7 @@ extension AbyssReportView4GI {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func drawLevelInnerContents(
         _ levelData: HoYo.AbyssReport4GI.Floor.Level,
         vertical: Bool,
@@ -157,7 +157,7 @@ extension AbyssReportView4GI {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     fileprivate func drawBattleNode(
         _ node: HoYo.AbyssReport4GI.Floor.Level.Battle,
         label: String = "",
@@ -220,7 +220,7 @@ extension AbyssReportView4GI {
         .frame(maxWidth: .infinity)
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     fileprivate func drawAbyssValueCell(_ cellData: AbyssValueCell) -> some View {
         HStack(alignment: .center) {
             VStack(alignment: .center) {

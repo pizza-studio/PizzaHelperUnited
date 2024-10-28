@@ -41,7 +41,7 @@ struct LockScreenLoopWidget: Widget {
 struct LockScreenLoopWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenLoopWidgetProvider.Entry
-    @MainActor var body: some View {
+    var body: some View {
         Group {
             switch family {
             #if os(watchOS)

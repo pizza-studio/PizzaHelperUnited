@@ -16,7 +16,7 @@ import SwiftUI
 struct TodayTabPage: View {
     // MARK: Internal
 
-    @MainActor var body: some View {
+    var body: some View {
         NavigationStack {
             Form {
                 Group {
@@ -84,7 +84,7 @@ struct TodayTabPage: View {
         }
     }
 
-    @MainActor @ViewBuilder var todayMaterialNav: some View {
+    @ViewBuilder var todayMaterialNav: some View {
         let navName =
             "\(GITodayMaterialsView<EmptyView>.navTitle) (\(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed))"
         NavigationLink {
@@ -117,7 +117,7 @@ struct TodayTabPage: View {
         }
     }
 
-    @MainActor @ViewBuilder private var gamePicker: some View {
+    @ViewBuilder private var gamePicker: some View {
         Picker("".description, selection: $game.animation()) {
             Text(Pizza.SupportedGame?.none.localizedShortName)
                 .tag(nil as Pizza.SupportedGame?)

@@ -13,7 +13,7 @@ import SwiftUI
 struct ExpeditionsView: View {
     let expeditions: [any Expedition]
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack {
             ForEach(expeditions, id: \.iconURL) { expedition in
                 EachExpeditionView(expedition: expedition)
@@ -29,7 +29,7 @@ struct EachExpeditionView: View {
     let expedition: any Expedition
     let viewConfig: WidgetViewConfiguration = .defaultConfig
 
-    @MainActor var body: some View {
+    var body: some View {
         HStack {
             webView(url: expedition.iconURL)
             if let expedition = expedition as? GeneralNote4GI.ExpeditionInfo4GI.Expedition {

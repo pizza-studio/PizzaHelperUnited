@@ -15,7 +15,7 @@ struct LockScreenLoopWidgetCorner: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
-    @MainActor var body: some View {
+    var body: some View {
         switch LockScreenLoopWidgetType.autoChoose(entry: entry, result: result) {
         case .resin:
             LockScreenResinWidgetCorner(entry: entry, result: result)

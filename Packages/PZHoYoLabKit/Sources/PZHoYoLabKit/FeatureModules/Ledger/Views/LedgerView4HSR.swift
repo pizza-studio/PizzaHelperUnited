@@ -25,7 +25,7 @@ public struct LedgerView4HSR: LedgerView {
 
     public let data: LedgerData
 
-    @MainActor public var body: some View {
+    public var body: some View {
         List {
             Section {
                 LabelWithDescription(
@@ -91,7 +91,7 @@ public struct LedgerView4HSR: LedgerView {
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder internal var footerChart: some View {
+    @ViewBuilder internal var footerChart: some View {
         HStack(alignment: .center) {
             Spacer()
             PieChartView(
@@ -136,7 +136,7 @@ public struct LedgerView4HSR: LedgerView {
             colorScheme == .dark ? 0 : -0.35
         }
 
-        @MainActor var body: some View {
+        var body: some View {
             Label {
                 VStack(alignment: .leading) {
                     HStack {

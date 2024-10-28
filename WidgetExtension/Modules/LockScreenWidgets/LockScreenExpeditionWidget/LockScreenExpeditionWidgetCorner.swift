@@ -59,7 +59,7 @@ struct LockScreenExpeditionWidgetCorner: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         Image("icon.expedition", bundle: .main)
             .resizable()
             .scaledToFit()

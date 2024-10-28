@@ -13,7 +13,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
-    @MainActor var body: some View {
+    var body: some View {
         switch result {
         case let .success(data):
             Image("icon.dailyTask", bundle: .main)

@@ -78,7 +78,7 @@ struct LockScreenAllInfoWidgetView: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         Group {
             switch result {
             case let .success(data):

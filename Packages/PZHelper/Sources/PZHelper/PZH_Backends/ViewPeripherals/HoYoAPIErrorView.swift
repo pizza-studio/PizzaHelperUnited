@@ -14,7 +14,7 @@ struct HoYoAPIErrorView: View {
     let error: Error
     let completion: () -> Void
 
-    @MainActor var body: some View {
+    var body: some View {
         if case .verificationNeeded = error as? MiHoYoAPIError {
             VerificationNeededView(profile: profile, challengePath: apiPath) {
                 completion()
@@ -71,7 +71,7 @@ extension HoYoAPIErrorView {
             }
         }
 
-        @MainActor var body: some View {
+        var body: some View {
             VStack {
                 Button {
                     status = .progressing

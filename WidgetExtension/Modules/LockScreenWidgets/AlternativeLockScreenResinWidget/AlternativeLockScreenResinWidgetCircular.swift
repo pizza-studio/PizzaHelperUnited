@@ -28,7 +28,7 @@ struct AlternativeLockScreenResinWidgetCircular: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack(spacing: 0) {
             let img = Image(staminaMonochromeIconAssetName, bundle: .main)
                 .resizable()

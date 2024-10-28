@@ -16,7 +16,7 @@ public struct GachaEntryNameView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Text(nameLocalized())
     }
 

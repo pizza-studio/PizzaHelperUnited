@@ -62,7 +62,7 @@ struct LockScreenResinFullTimeWidgetView: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         Group {
             LockScreenResinFullTimeWidgetCircular(entry: entry, result: result)
         }

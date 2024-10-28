@@ -18,7 +18,7 @@ public struct GachaProfileDetailedListView: View {
 
     public static let navTitle = "gachaKit.profile.detailedList".i18nGachaKit
 
-    @MainActor public var body: some View {
+    public var body: some View {
         NavigationStack {
             Form {
                 contentFilterSection
@@ -80,7 +80,7 @@ public struct GachaProfileDetailedListView: View {
     @State fileprivate var showDate = false
     @State fileprivate var chosenRarity: GachaItemRankType = .rank5
 
-    @MainActor @ViewBuilder fileprivate var contentFilterSection: some View {
+    @ViewBuilder fileprivate var contentFilterSection: some View {
         if let theProfile = theVM.currentGPID {
             Section {
                 let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)

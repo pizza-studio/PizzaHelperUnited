@@ -51,7 +51,7 @@ struct MaterialWidgetView: View {
         return formatter.string(from: Date())
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 1) {
                 Text(weekday)
@@ -106,7 +106,7 @@ struct MaterialWidgetView: View {
 private struct EventView: View {
     let events: [EventModel]
 
-    @MainActor var body: some View {
+    var body: some View {
         HStack(spacing: 4) {
             Rectangle()
                 .frame(width: 2, height: 77.5)
@@ -196,7 +196,7 @@ private struct EventView: View {
 private struct MaterialRow: View {
     let materials: [GITodayMaterial]
 
-    @MainActor var body: some View {
+    var body: some View {
         HStack(spacing: 0) {
             ForEach(materials, id: \.nameTag) { material in
                 material.iconObj
