@@ -15,7 +15,7 @@ public struct GachaProfileSwitcherView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         profileSwitcherMenu()
             .saturation(theVM.taskState == .busy ? 0 : 1)
             .disabled(theVM.taskState == .busy || !theVM.hasGPID.wrappedValue)
@@ -31,7 +31,7 @@ public struct GachaProfileSwitcherView: View {
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder var profileSwitcherMenuLabel: some View {
+    @ViewBuilder var profileSwitcherMenuLabel: some View {
         LabeledContent {
             let dimension: CGFloat = 30
             Group {
@@ -68,7 +68,7 @@ public struct GachaProfileSwitcherView: View {
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func profileSwitcherMenu() -> some View {
         let nameIDMap = theVM.nameIDMap
         if !sortedGPIDs.isEmpty {

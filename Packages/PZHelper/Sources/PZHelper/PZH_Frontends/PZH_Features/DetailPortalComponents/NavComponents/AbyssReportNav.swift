@@ -20,7 +20,7 @@ public struct AbyssReportNav: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         if let profile = theVM.currentProfile {
             coreBody(profile: profile)
                 .onChange(of: broadcaster.eventForRefreshingCurrentPage) {
@@ -29,7 +29,7 @@ public struct AbyssReportNav: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func coreBody(profile: PZProfileMO) -> some View {
         switch theVM.taskStatus4AbyssReport {
         case .progress:

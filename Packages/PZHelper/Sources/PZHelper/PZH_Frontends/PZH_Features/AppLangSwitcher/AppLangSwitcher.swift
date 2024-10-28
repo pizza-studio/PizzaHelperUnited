@@ -37,7 +37,7 @@ struct AppLanguageSwitcher: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         #if os(iOS) && !targetEnvironment(macCatalyst)
         Button {
             UIApplication.shared.open(UIApplication.openSettingsURLString.asURL)

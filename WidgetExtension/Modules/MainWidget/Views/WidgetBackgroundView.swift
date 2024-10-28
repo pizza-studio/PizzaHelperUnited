@@ -18,7 +18,7 @@ struct WidgetBackgroundView: View {
     var backgroundColors: [Color] { background.colors }
     var backgroundIconName: String? { background.iconName }
     var backgroundImageName: String? { background.imageName }
-    @MainActor var body: some View {
+    var body: some View {
         ZStack {
             if !backgroundColors.isEmpty {
                 LinearGradient(

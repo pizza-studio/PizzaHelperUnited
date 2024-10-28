@@ -23,7 +23,7 @@ public struct TravelStatsView4GI: TravelStatsView {
 
     public let data: StatsData
 
-    @MainActor public var body: some View {
+    public var body: some View {
         List {
             Section {
                 TravelStatLabel(
@@ -133,7 +133,7 @@ public struct TravelStatsView4GI: TravelStatsView {
             @Environment(\.colorScheme) private var colorScheme
             let worldData: HoYo.TravelStatsData4GI.WorldExploration
 
-            @MainActor var body: some View {
+            var body: some View {
                 Label {
                     Text(verbatim: worldData.name)
                     Spacer()
@@ -175,7 +175,7 @@ public struct TravelStatsView4GI: TravelStatsView {
 
         let worldData: HoYo.TravelStatsData4GI.WorldExploration
 
-        @MainActor var body: some View {
+        var body: some View {
             if !worldData.offerings.isEmpty {
                 DisclosureGroup {
                     ForEach(worldData.offerings, id: \.name) { offering in

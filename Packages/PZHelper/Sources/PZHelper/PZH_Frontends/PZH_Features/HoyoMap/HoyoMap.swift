@@ -17,7 +17,7 @@ struct HoYoMapView: View {
 
     public static let navTitle = "tools.hoyoMap.navTitle".i18nPZHelper
 
-    @MainActor public var body: some View {
+    public var body: some View {
         let region = currentRegion
         Group {
             switch (region, region.game) {

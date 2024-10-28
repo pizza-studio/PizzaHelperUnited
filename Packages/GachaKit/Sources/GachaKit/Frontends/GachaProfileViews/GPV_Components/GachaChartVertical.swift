@@ -19,7 +19,7 @@ public struct GachaChartVertical: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         let pentaStars = pentaStarEntries
         let avrgCount: Int = pentaStars.map(\.drawCount).reduce(0, +) / max(pentaStars.count, 1)
         if !pentaStars.isEmpty {
@@ -69,7 +69,7 @@ public struct GachaChartVertical: View {
         GachaProfileView.GachaStatsSection.ApprisedLevel.one.appraiserIcon(game: givenGPID.game)
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     fileprivate func subChart(
         givenEntries: [GachaEntryExpressible],
         averagePullsCount: Int,

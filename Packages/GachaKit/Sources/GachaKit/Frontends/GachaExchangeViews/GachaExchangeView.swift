@@ -27,7 +27,7 @@ public struct GachaExchangeView: View {
         }
     }
 
-    @MainActor public var body: some View {
+    public var body: some View {
         NavigationStack {
             Form {
                 Group {
@@ -82,7 +82,7 @@ public struct GachaExchangeView: View {
 }
 
 extension GachaExchangeView {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public static func drawGPID(
         _ gpid: GachaProfileID,
         nameIDMap: [String: String],

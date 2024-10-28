@@ -24,7 +24,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
 
     public let data: InventoryData
 
-    @MainActor public var body: some View {
+    public var body: some View {
         List {
             Section {
                 VStack(alignment: .leading, spacing: 3) {
@@ -72,7 +72,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func renderAllAvatarListFull() -> some View {
         Section {
             ForEach(showingAvatars, id: \.id) { avatar in
@@ -91,7 +91,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func renderAllAvatarListCondensed() -> some View {
         StaggeredGrid(
             columns: lineCapacity, outerPadding: false,
@@ -143,7 +143,7 @@ private struct AvatarListItem4GI: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         HStack(spacing: condensed ? 0 : 3) {
             ZStack(alignment: .bottomLeading) {
                 Group {
@@ -266,7 +266,7 @@ private struct AvatarListItem4GI: View {
         condensed ? "" : "♡\(avatar.fetter)"
     }
 
-    @MainActor @ViewBuilder private var charName: some View {
+    @ViewBuilder private var charName: some View {
         let charStr: String = if let charIdExp = Enka.AvatarSummarized.CharacterID(id: avatar.id.description) {
             charIdExp.nameObj.i18n(theDB: Enka.Sputnik.shared.db4GI, officialNameOnly: !useRealName)
         } else {

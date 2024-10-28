@@ -44,7 +44,7 @@ struct LockScreenResinWidgetCorner: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         Image(staminaMonochromeIconAssetName, bundle: .main)
             .resizable()
             .scaledToFit()

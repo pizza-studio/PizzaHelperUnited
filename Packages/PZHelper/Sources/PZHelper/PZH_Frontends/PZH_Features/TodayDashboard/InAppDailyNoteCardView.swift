@@ -17,7 +17,7 @@ struct InAppDailyNoteCardView: View {
 
     // MARK: Internal
 
-    @MainActor var body: some View {
+    var body: some View {
         Section {
             switch theVM.dailyNoteStatus {
             case let .succeed(dailyNote, _):
@@ -61,7 +61,7 @@ private struct NoteView: View {
     let profile: PZProfileMO
     let givenNote: any DailyNoteProtocol
 
-    @MainActor var body: some View {
+    var body: some View {
         switch givenNote {
         case let note as any Note4GI: getBody4GI(note: note)
         case let note as Note4HSR: getBody4HSR(note: note)
@@ -74,7 +74,7 @@ private struct NoteView: View {
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func getBody4ZZZ(note: Note4ZZZ) -> some View {
         // Energy. 绝区电量。这里注意本地化不要直接写「电量」，免得被 App Store 审委会认为有歧义。
         VStack {
@@ -127,7 +127,7 @@ private struct NoteView: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func getBody4HSR(note: Note4HSR) -> some View {
         // Trailblaze_Power
         VStack {
@@ -199,7 +199,7 @@ private struct NoteView: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func getBody4GI(note dailyNote: any Note4GI) -> some View {
         let iconFrame: CGFloat = 40
 

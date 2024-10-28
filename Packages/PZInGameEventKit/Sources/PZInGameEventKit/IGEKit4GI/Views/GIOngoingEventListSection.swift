@@ -22,7 +22,7 @@ extension GIOngoingEvents {
 
         // MARK: Public
 
-        @MainActor public var body: some View {
+        public var body: some View {
             MainComponent(eventContents: $eventContents, peripheralViews: peripheralViews)
                 .listRowMaterialBackground()
                 .onChange(of: scenePhase) { _, newPhase in
@@ -76,7 +76,7 @@ extension GIOngoingEvents.EventListSection {
     fileprivate struct MainComponent<T: View>: View {
         // MARK: Public
 
-        @MainActor public var body: some View {
+        public var body: some View {
             Section {
                 peripheralViews()
                 if !$eventContents.animation().wrappedValue.isEmpty {
@@ -125,7 +125,7 @@ extension GIOngoingEvents.EventListSection {
             }
         }
 
-        @MainActor @ViewBuilder
+        @ViewBuilder
         func eventItem(event: EventModel) -> some View {
             HStack {
                 Text(verbatim: " \(getLocalizedContent(event.name))")

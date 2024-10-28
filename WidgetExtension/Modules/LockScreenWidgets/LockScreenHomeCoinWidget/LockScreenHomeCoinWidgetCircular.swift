@@ -16,7 +16,7 @@ struct LockScreenHomeCoinWidgetCircular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack(spacing: 0) {
             Image("icon.homeCoin", bundle: .main)
                 .resizable()

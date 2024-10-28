@@ -31,7 +31,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
         case avatarProfilePair(String, DB.SummarizedType)
     }
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Group {
             if asCardIcons {
                 showAsCardIcons
@@ -44,7 +44,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
         }
     }
 
-    @MainActor @ViewBuilder public var showAsCardIcons: some View {
+    @ViewBuilder public var showAsCardIcons: some View {
         if profile.summarizedAvatars.isEmpty {
             ShowCaseEmptyInfoView(game: profile.game)
         } else {
@@ -75,7 +75,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder var showAsList: some View {
+    @ViewBuilder var showAsList: some View {
         List {
             listHeader
                 .listRowMaterialBackground()
@@ -106,7 +106,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
         .navBarTitleDisplayMode(.inline)
     }
 
-    @MainActor @ViewBuilder var listHeader: some View {
+    @ViewBuilder var listHeader: some View {
         Section {
             HStack(spacing: 0) {
                 let levelTag = "\(extraTerms.levelNameShortened)\(profile.rawInfo.level)"
@@ -149,7 +149,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func makeLabelForNavLink(avatar: Enka.AvatarSummarized) -> some View {
         HStack(alignment: .center) {
             let intel = avatar.mainInfo

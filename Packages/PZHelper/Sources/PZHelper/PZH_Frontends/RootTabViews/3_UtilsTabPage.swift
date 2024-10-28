@@ -21,7 +21,7 @@ struct UtilsTabPage: View {
         case hoyoMap
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
                 Section {
@@ -90,7 +90,7 @@ struct UtilsTabPage: View {
 
     @State private var nav: Nav?
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func navigationDetail(selection: Binding<Nav?>) -> some View {
         NavigationStack {
             switch selection.wrappedValue {

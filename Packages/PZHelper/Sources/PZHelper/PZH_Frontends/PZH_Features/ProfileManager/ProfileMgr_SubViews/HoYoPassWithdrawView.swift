@@ -22,7 +22,7 @@ struct HoYoPassWithdrawView: View {
 
     // MARK: Internal
 
-    @MainActor var body: some View {
+    var body: some View {
         let urlStrHoYoLab = "https://account.hoyoverse.com/#/account/safetySettings"
         let urlStrMiyoushe = "https://user.mihoyo.com/#/account/closeAccount"
         List {

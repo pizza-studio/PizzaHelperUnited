@@ -14,7 +14,7 @@ public struct CDGachaMODebugView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Form {
             if delegate.taskState == .busy {
                 ProgressView()

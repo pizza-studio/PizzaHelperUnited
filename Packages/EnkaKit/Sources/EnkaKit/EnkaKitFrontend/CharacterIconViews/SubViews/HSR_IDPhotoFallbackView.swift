@@ -28,7 +28,7 @@ struct IDPhotoFallbackView4HSR: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         coreBody.compositingGroup()
     }
 
@@ -74,7 +74,7 @@ struct IDPhotoFallbackView4HSR: View {
         }
     }
 
-    @MainActor @ViewBuilder var cardView: some View {
+    @ViewBuilder var cardView: some View {
         imageObj
             .scaledToFill()
             .frame(width: size * iconType.rawValue, height: size * iconType.rawValue)
@@ -89,7 +89,7 @@ struct IDPhotoFallbackView4HSR: View {
             .contentShape(RoundedRectangle(cornerRadius: size / 10))
     }
 
-    @MainActor @ViewBuilder var circleIconView: some View {
+    @ViewBuilder var circleIconView: some View {
         let ratio = 179.649 / 1024
         let cornerRadius = ratio * size
         let roundCornerRadius = size / 2
@@ -114,7 +114,7 @@ struct IDPhotoFallbackView4HSR: View {
             .aspectRatio(contentMode: .fit)
     }
 
-    @MainActor @ViewBuilder var backgroundObj: some View {
+    @ViewBuilder var backgroundObj: some View {
         Group {
             coordinator.backgroundImage
                 .resizable()

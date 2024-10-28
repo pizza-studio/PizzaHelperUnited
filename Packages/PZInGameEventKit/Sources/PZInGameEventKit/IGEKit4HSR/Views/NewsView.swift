@@ -58,7 +58,7 @@ extension NewsKitHSR {
         public var data: NewsKitHSR.AggregatedResult { coordinator.data }
 
         // swiftlint:disable sf_safe_symbol
-        @MainActor public var body: some View {
+        public var body: some View {
             NavigationStack {
                 currentTabContent
                     .overlay {

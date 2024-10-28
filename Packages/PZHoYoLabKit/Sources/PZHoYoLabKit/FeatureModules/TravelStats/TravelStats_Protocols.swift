@@ -57,7 +57,7 @@ struct TravelStatLabel: View {
     let label: LocalizedStringKey
     let value: String
 
-    @MainActor var body: some View {
+    var body: some View {
         if let symbol {
             Label {
                 HStack {

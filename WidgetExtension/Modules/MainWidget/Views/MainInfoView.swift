@@ -21,7 +21,7 @@ struct MainInfo: View {
     let accountName: String?
     let accountNameTest = "account.manage.title"
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {

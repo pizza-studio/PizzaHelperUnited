@@ -18,7 +18,7 @@ public struct WallpaperGalleryViewContent: View {
 
     public static let navTitle: String = "wallpaperGallery.navTitle".i18nWPKit
 
-    @MainActor public var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             coreBodyView.onAppear {
                 containerSize = geometry.size
@@ -50,7 +50,7 @@ public struct WallpaperGalleryViewContent: View {
         max(Int(floor($containerSize.wrappedValue.width / 240)), 1)
     }
 
-    @MainActor @ViewBuilder var coreBodyView: some View {
+    @ViewBuilder var coreBodyView: some View {
         StaggeredGrid(columns: columns, list: searchResults, content: { currentCard in
             draw(wallpaper: currentCard)
                 .matchedGeometryEffect(id: currentCard.id, in: animation)
@@ -128,7 +128,7 @@ public struct WallpaperGalleryViewContent: View {
         return result
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func draw(wallpaper: Wallpaper) -> some View {
         wallpaper.image4LiveActivity
             .resizable()

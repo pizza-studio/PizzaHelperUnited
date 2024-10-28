@@ -21,7 +21,7 @@ struct ProfileConfigViewContents: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         RequireLoginView(
             unsavedCookie: $profile.cookie,
             unsavedFP: $profile.deviceFingerPrint,
@@ -92,7 +92,7 @@ extension ProfileConfigViewContents {
 
         let region: HoYo.AccountRegion
 
-        @MainActor var body: some View {
+        var body: some View {
             NavigationLink {
                 handleSheetNavigation()
             } label: {
@@ -105,7 +105,7 @@ extension ProfileConfigViewContents {
 
         // MARK: Private
 
-        @MainActor @ViewBuilder
+        @ViewBuilder
         private func handleSheetNavigation() -> some View {
             Group {
                 switch region {
@@ -145,7 +145,7 @@ extension ProfileConfigViewContents {
 
         let fetchedAccounts: [FetchedAccount]
 
-        @MainActor var body: some View {
+        var body: some View {
             Section {
                 // 如果该账号绑定的UID不止一个，则显示Picker选择账号
                 if fetchedAccounts.count > 1 {

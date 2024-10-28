@@ -10,7 +10,7 @@ public struct GachaProfileManagementView: View {
 
     public static let navTitle = "gachaKit.management.navTitle".i18nGachaKit
 
-    @MainActor public var body: some View {
+    public var body: some View {
         NavigationStack {
             Form {
                 if theVM.hasGPID.wrappedValue {

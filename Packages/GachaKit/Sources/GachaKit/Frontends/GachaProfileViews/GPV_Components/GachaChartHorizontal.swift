@@ -17,7 +17,7 @@ public struct GachaChartHorizontal: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         if pentaStarEntries.isEmpty {
             Text("gachaKit.chart.noPentaStarsFound".i18nGachaKit)
                 .font(.caption)
@@ -52,7 +52,7 @@ public struct GachaChartHorizontal: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     fileprivate func chart() -> some View {
         ScrollView(.horizontal) {
             Chart {

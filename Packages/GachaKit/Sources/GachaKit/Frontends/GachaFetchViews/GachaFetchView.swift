@@ -22,7 +22,7 @@ public struct GachaFetchView: View {
 
     public static let navTitle = "gachaKit.getRecord.title".i18nGachaKit
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Group {
             switch game {
             case .genshinImpact: GachaFetchView4Game<GachaTypeGI>()
@@ -50,7 +50,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
 
     typealias VMType = GachaFetchVM<GachaType>
 
-    @MainActor var body: some View {
+    var body: some View {
         NavigationStack {
             Form {
                 switch gachaVM4Fetch.status {
@@ -122,7 +122,7 @@ extension GachaFetchView4Game {
 
         // MARK: Internal
 
-        @MainActor var body: some View {
+        var body: some View {
             Group {
                 Section {
                     let alertIntelPack = packAlertIntel()
@@ -161,7 +161,7 @@ extension GachaFetchView4Game {
         @State private var isErrorAlertVisible: Bool = false
         @StateObject private var urlAwaitVM = URLAwaitVM()
 
-        @MainActor @ViewBuilder private var genshinPZProfileList: some View {
+        @ViewBuilder private var genshinPZProfileList: some View {
             if GachaType.game == .genshinImpact, !pzProfiles.isEmpty {
                 Section {
                     ForEach(pzProfiles, id: \.uid) { pzProfile in
@@ -256,7 +256,7 @@ extension GachaFetchView4Game {
 
         // MARK: Internal
 
-        @MainActor var body: some View {
+        var body: some View {
             Section {
                 Button {
                     start()
@@ -307,7 +307,7 @@ extension GachaFetchView4Game {
 
         // MARK: Internal
 
-        @MainActor var body: some View {
+        var body: some View {
             Section {
                 Label {
                     Text("gachaKit.getRecord.inProgress.obtaining".i18nGachaKit)
@@ -344,7 +344,7 @@ extension GachaFetchView4Game {
 
         // MARK: Internal
 
-        @MainActor var body: some View {
+        var body: some View {
             Section {
                 Label {
                     Text("gachaKit.getRecord.gotSome.obtaining".i18nGachaKit)
@@ -393,7 +393,7 @@ extension GachaFetchView4Game {
 
         // MARK: Internal
 
-        @MainActor var body: some View {
+        var body: some View {
             Label {
                 Text(verbatim: "\(error)")
             } icon: {
@@ -429,7 +429,7 @@ extension GachaFetchView4Game {
 
         // MARK: Internal
 
-        @MainActor var body: some View {
+        var body: some View {
             Section {
                 Label {
                     Text("gachaKit.getRecord.finished.succeeded".i18nGachaKit)
@@ -480,7 +480,7 @@ extension GachaFetchView4Game {
 
         @Binding var data: [VMType.GachaTypeDateCount]
 
-        @MainActor var body: some View {
+        var body: some View {
             let sorted = data.sorted {
                 $0.date < $1.date
             }

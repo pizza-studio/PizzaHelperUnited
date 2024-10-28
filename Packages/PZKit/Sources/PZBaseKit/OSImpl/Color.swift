@@ -98,7 +98,7 @@ extension Color {
         ))
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public static func accessibilityAccent(_ scheme: ColorScheme? = nil) -> Color {
         Color.primary.opacity(scheme == .dark ? 0.9 : 0.7)
     }

@@ -11,7 +11,7 @@ import SwiftUI
 struct CloudAccountSettingsPageContent: View {
     // MARK: Internal
 
-    @MainActor var body: some View {
+    var body: some View {
         AccountMODebugView()
             .navigationTitle("# CloudKit Debug".description)
     }

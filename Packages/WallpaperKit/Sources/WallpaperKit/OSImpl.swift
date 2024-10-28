@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - NavigationBackground
 
 extension View {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func listContainerBackground(wallpaperOverride: Wallpaper? = nil) -> some View {
         background(alignment: .topTrailing) {
             #if !os(watchOS)

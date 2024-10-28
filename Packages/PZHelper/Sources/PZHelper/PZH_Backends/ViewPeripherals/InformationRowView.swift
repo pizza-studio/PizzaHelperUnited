@@ -18,7 +18,7 @@ struct InformationRowView<L: View>: View {
 
     let title: String
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack(alignment: .leading) {
             Text(title).bold()
             labelContent()

@@ -20,7 +20,7 @@ extension GachaProfileView {
 
         // MARK: Public
 
-        @MainActor public var body: some View {
+        public var body: some View {
             Section {
                 HStack {
                     Label(
@@ -127,7 +127,7 @@ extension GachaProfileView {
             entries.firstIndex(where: { $0.rarity == .rank5 }) ?? entries.count
         }
 
-        @MainActor @ViewBuilder
+        @ViewBuilder
         fileprivate func guestEvaluatorView() -> some View {
             VStack {
                 HStack {

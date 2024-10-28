@@ -15,7 +15,7 @@ public struct GachaProfileView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         poolPickerSection
         if let gpid = theVM.currentGPID {
             GachaEntryExpiredRow(alwaysVisible: false, games: [gpid.game])
@@ -59,7 +59,7 @@ public struct GachaProfileView: View {
 
     @Environment(GachaVM.self) fileprivate var theVM
 
-    @MainActor @ViewBuilder fileprivate var poolPickerSection: some View {
+    @ViewBuilder fileprivate var poolPickerSection: some View {
         if let theProfile = theVM.currentGPID {
             Section {
                 let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)

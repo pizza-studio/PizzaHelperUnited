@@ -27,7 +27,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     public var data: AbyssReportData
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Form {
             if data.hasData {
                 contents
@@ -41,19 +41,19 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder var blankView: some View {
+    @ViewBuilder var blankView: some View {
         Section {
             Text(verbatim: "hylKit.abyssReport.noDataAvailableForThisSeason".i18nHYLKit)
         }
         .listRowMaterialBackground()
     }
 
-    @MainActor @ViewBuilder var contents: some View {
+    @ViewBuilder var contents: some View {
         stats
         floorList
     }
 
-    @MainActor @ViewBuilder var stats: some View {
+    @ViewBuilder var stats: some View {
         Section {
             LabeledContent {
                 Text(verbatim: data.maxFloorNumStr)
@@ -80,7 +80,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
         .listRowMaterialBackground()
     }
 
-    @MainActor @ViewBuilder var floorList: some View {
+    @ViewBuilder var floorList: some View {
         ForEach(data.allFloorDetail, id: \.mazeID) { floorData in
             Section {
                 if floorData.isSkipped {
@@ -113,7 +113,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func drawFloorInnerContents(
         _ floorData: HoYo.AbyssReport4HSR.FHFloorDetail,
         vertical: Bool,
@@ -143,7 +143,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func drawBattleNode(_ node: HoYo.AbyssReport4HSR.FHNode, label: String = "", spacers: Bool = true) -> some View {
         HStack {
             if !label.isEmpty {

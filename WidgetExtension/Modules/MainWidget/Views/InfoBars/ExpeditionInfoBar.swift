@@ -30,7 +30,7 @@ struct ExpeditionInfoBar: View {
             )
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         switch dailyNote {
         case _ as Note4ZZZ: EmptyView() /// ZZZ has no expedition API results.
         default:

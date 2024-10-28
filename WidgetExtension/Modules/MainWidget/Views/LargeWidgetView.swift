@@ -18,7 +18,7 @@ struct LargeWidgetView: View {
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack {
             Spacer()
             HStack {
@@ -61,7 +61,7 @@ struct LargeWidgetView: View {
         .padding()
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func mainInfo() -> some View {
         VStack(alignment: .leading, spacing: 5) {
 //            Spacer()

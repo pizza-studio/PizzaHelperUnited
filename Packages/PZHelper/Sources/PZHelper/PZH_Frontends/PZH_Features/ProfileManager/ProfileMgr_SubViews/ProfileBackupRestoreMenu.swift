@@ -23,7 +23,7 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 
     // MARK: Public
 
-    @MainActor @ViewBuilder public var body: some View {
+    @ViewBuilder public var body: some View {
         @Bindable var theVM = theVM
         let msgPack = theVM.fileSaveActionResultMessagePack
         Menu {

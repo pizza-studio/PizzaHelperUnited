@@ -28,7 +28,7 @@ struct LockScreenResinWidgetInline: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         switch result {
         case let .success(data):
             let staminaStaus = data.staminaIntel

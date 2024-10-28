@@ -19,7 +19,7 @@ extension ProfileManagerPageContent {
 
         // MARK: Internal
 
-        @MainActor var body: some View {
+        var body: some View {
             NavigationStack {
                 Form {
                     ProfileConfigViewContents(profile: profile)
