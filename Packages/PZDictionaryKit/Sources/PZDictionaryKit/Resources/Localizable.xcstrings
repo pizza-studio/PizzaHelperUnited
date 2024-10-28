@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "tool.dictionary.detail.copy_succeeded" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -30,6 +31,7 @@
       }
     },
     "tool.dictionary.detail.target.header" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -58,6 +60,7 @@
       }
     },
     "tool.dictionary.detail.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -86,6 +89,7 @@
       }
     },
     "tool.dictionary.detail.translations.header" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -114,6 +118,7 @@
       }
     },
     "tool.dictionary.fetch_more" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -142,6 +147,7 @@
       }
     },
     "tool.dictionary.language.english" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -170,6 +176,7 @@
       }
     },
     "tool.dictionary.language.french" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -198,6 +205,7 @@
       }
     },
     "tool.dictionary.language.german" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -226,6 +234,7 @@
       }
     },
     "tool.dictionary.language.indonesian" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -254,6 +263,7 @@
       }
     },
     "tool.dictionary.language.japanese" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -282,6 +292,7 @@
       }
     },
     "tool.dictionary.language.korean" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -310,6 +321,7 @@
       }
     },
     "tool.dictionary.language.portuguese" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -338,6 +350,7 @@
       }
     },
     "tool.dictionary.language.russian" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -366,6 +379,7 @@
       }
     },
     "tool.dictionary.language.simplified_chinese" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -394,6 +408,7 @@
       }
     },
     "tool.dictionary.language.spanish" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -422,6 +437,7 @@
       }
     },
     "tool.dictionary.language.thai" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -450,6 +466,7 @@
       }
     },
     "tool.dictionary.language.traditional_chinese" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -478,6 +495,7 @@
       }
     },
     "tool.dictionary.language.vietnamese" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -506,6 +524,7 @@
       }
     },
     "tool.dictionary.not_found" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -534,6 +553,7 @@
       }
     },
     "tool.dictionary.prompt_for_keywords" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -562,6 +582,7 @@
       }
     },
     "tool.dictionary.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

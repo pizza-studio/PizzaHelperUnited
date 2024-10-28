@@ -234,6 +234,7 @@
       }
     },
     "game.all.shortNameEX" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -262,6 +263,7 @@
       }
     },
     "game.genshin.i18nName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -290,6 +292,7 @@
       }
     },
     "game.genshin.i18nNameTrimmed" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -318,6 +321,7 @@
       }
     },
     "game.genshin.shortNameEX" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -346,6 +350,7 @@
       }
     },
     "game.genshin.titleMarkedName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -374,6 +379,7 @@
       }
     },
     "game.starRail.i18nName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -402,6 +408,7 @@
       }
     },
     "game.starRail.i18nNameTrimmed" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -430,6 +437,7 @@
       }
     },
     "game.starRail.shortNameEX" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -458,6 +466,7 @@
       }
     },
     "game.starRail.titleMarkedName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -486,6 +495,7 @@
       }
     },
     "game.zenlessZone.i18nName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -514,6 +524,7 @@
       }
     },
     "game.zenlessZone.i18nNameTrimmed" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -542,6 +553,7 @@
       }
     },
     "game.zenlessZone.shortNameEX" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -570,6 +582,7 @@
       }
     },
     "game.zenlessZone.titleMarkedName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

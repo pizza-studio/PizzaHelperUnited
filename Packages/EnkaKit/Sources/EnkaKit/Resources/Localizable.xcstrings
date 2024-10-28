@@ -170,6 +170,7 @@
       }
     },
     "enka.genshinStylePhotosForHSR.featureOption.disclaimer" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -198,6 +199,7 @@
       }
     },
     "enka.photoSpecimen.credit.genshin" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -226,6 +228,7 @@
       }
     },
     "enka.photoSpecimen.credit.starRail" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -254,6 +257,7 @@
       }
     },
     "enka.photoSpecimen.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -282,6 +286,7 @@
       }
     },
     "enka.showCase.emptyShowCase.description" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -310,6 +315,7 @@
       }
     },
     "settings.display.artifactRating.considerHyperBloomElectroRoles" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -338,6 +344,7 @@
       }
     },
     "settings.display.artifactRating.considerHyperBloomElectroRoles.explanation" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -366,6 +373,7 @@
       }
     },
     "settings.display.artifactRating.considerSwirls" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -394,6 +402,7 @@
       }
     },
     "settings.display.artifactRating.considerSwirls.explanation" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -422,6 +431,7 @@
       }
     },
     "settings.display.artifactRating.enabled" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -450,6 +460,7 @@
       }
     },
     "settings.display.artifactRating.sectionTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -478,6 +489,7 @@
       }
     },
     "settings.display.customizingNameForKunikuzushi" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -506,6 +518,7 @@
       }
     },
     "settings.display.customizingNameForKunikuzushi.currentValueLabel" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -534,6 +547,7 @@
       }
     },
     "settings.display.customizingNameForKunikuzushi.prompt" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -562,6 +576,7 @@
       }
     },
     "settings.display.enkaStatus.defaultDBQueryHost" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -590,6 +605,7 @@
       }
     },
     "settings.display.enkaStatus.defaultDBQueryHost.explanation" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -618,6 +634,7 @@
       }
     },
     "settings.display.enkaStatus.defaultDBQueryHost.GitHub" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -646,6 +663,7 @@
       }
     },
     "settings.display.enkaStatus.defaultDBQueryHost.GitLink" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -674,6 +692,7 @@
       }
     },
     "settings.display.enkaStatus.lastEnkaDBCheckDate" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -702,6 +721,7 @@
       }
     },
     "settings.display.enkaStatus.sectionTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -730,6 +750,7 @@
       }
     },
     "settings.display.showCase.colorizeArtifactSubPropCounts" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -758,6 +779,7 @@
       }
     },
     "settings.display.showCase.colorizeArtifactSubPropCounts.explain" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -786,6 +808,7 @@
       }
     },
     "settings.display.showCase.forceCharacterWeaponNameFixed" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -814,6 +837,7 @@
       }
     },
     "settings.display.showCase.forceCharacterWeaponNameFixed.explain" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -842,6 +866,7 @@
       }
     },
     "settings.display.showCase.namingPrefs.sectionTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -870,6 +895,7 @@
       }
     },
     "settings.display.showCase.sectionTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -898,6 +924,7 @@
       }
     },
     "settings.display.showCase.useGenshinStyleCharacterPhotos" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -926,6 +953,7 @@
       }
     },
     "settings.display.showCase.useNameCardBGWithGICharacters" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -954,6 +982,7 @@
       }
     },
     "settings.display.showCase.useRealCharacterNames" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

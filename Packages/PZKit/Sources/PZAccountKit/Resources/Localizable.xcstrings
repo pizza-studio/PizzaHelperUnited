@@ -60,6 +60,7 @@
       }
     },
     "MiHoYoAPIError.fingerPrintInvalidOrMissing" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -88,6 +89,7 @@
       }
     },
     "MiHoYoAPIError.insufficientDataVisibility" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -116,6 +118,7 @@
       }
     },
     "MiHoYoAPIError.reloginRequired" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -144,6 +147,7 @@
       }
     },
     "MiHoYoAPIError.serverUnderMaintenanceUpgrade" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -172,6 +176,7 @@
       }
     },
     "MiHoYoAPIError.sTokenV2InvalidOrMissing" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -200,6 +205,7 @@
       }
     },
     "MiHoYoAPIError.verificationNeeded" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
