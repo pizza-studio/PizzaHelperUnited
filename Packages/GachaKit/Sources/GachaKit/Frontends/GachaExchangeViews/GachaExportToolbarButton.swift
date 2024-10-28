@@ -125,10 +125,10 @@ public struct GachaExportToolbarButton: View {
         .init(get: { fileSaveActionResult != nil }, set: { _ in })
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    fileprivate let specifiedProfile: GachaProfileID
-    fileprivate let packageMethod: GachaExchange.ExportPackageMethod
-    @State fileprivate var fileSaveActionResult: Result<URL, any Error>?
-    @Environment(GachaVM.self) fileprivate var theVM
+    private let specifiedProfile: GachaProfileID
+    private let packageMethod: GachaExchange.ExportPackageMethod
+    @State private var fileSaveActionResult: Result<URL, any Error>?
+    @Environment(GachaVM.self) private var theVM
 }

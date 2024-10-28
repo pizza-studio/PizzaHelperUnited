@@ -52,12 +52,12 @@ public struct GachaImportSections: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @Environment(GachaVM.self) fileprivate var theVM
-    @State fileprivate var format: GachaExchange.ImportableFormat = .asUIGFv4
-    @State fileprivate var chosenGPID: Set<GachaProfileID> = []
-    @State fileprivate var overrideDuplicatedEntriesOnImport: Bool = false
+    @Environment(GachaVM.self) private var theVM
+    @State private var format: GachaExchange.ImportableFormat = .asUIGFv4
+    @State private var chosenGPID: Set<GachaProfileID> = []
+    @State private var overrideDuplicatedEntriesOnImport: Bool = false
 }
 
 // MARK: GachaImportSections.SceneStep
@@ -248,7 +248,7 @@ extension GachaImportSections {
     }
 
     @ViewBuilder
-    fileprivate func makeDateLabel(unixTimeStamp: String) -> some View {
+    private func makeDateLabel(unixTimeStamp: String) -> some View {
         if let timeInterval: TimeInterval = Double(unixTimeStamp) {
             let date = Date(timeIntervalSince1970: timeInterval)
             LabeledContent {
@@ -381,12 +381,12 @@ private struct PopFileButton: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    fileprivate let title: String
-    fileprivate let allowedContentTypes: [UTType]
-    fileprivate let completion: (Result<URL, Error>) -> Void
-    @State fileprivate var isFileImporterShown: Bool = false
+    private let title: String
+    private let allowedContentTypes: [UTType]
+    private let completion: (Result<URL, Error>) -> Void
+    @State private var isFileImporterShown: Bool = false
 }
 
 // MARK: - FallbackTimeZonePicker
@@ -413,11 +413,11 @@ private struct FallbackTimeZonePicker: View {
         #endif
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @Default(.fallbackTimeForGIGFFileImport) fileprivate var fallbackTimeZone: TimeZone?
+    @Default(.fallbackTimeForGIGFFileImport) private var fallbackTimeZone: TimeZone?
 
-    fileprivate var tagPairs: [(timeZoneName: String, identifier: String, timeZone: TimeZone?)] {
+    private var tagPairs: [(timeZoneName: String, identifier: String, timeZone: TimeZone?)] {
         var results: [(timeZoneName: String, identifier: String, timeZone: TimeZone)] = []
         TimeZone.knownTimeZoneIdentifiers.forEach { identifier in
             guard identifier != "GMT", let zone = TimeZone(identifier: identifier) else { return }

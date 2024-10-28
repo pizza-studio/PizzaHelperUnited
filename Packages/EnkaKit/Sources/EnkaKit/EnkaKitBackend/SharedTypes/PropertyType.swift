@@ -124,13 +124,13 @@ extension Enka.PropertyType: Codable, CodingKeyRepresentable {
 }
 
 extension Enka.PropertyType {
-    fileprivate init?(enkaPropIDStr4GI: String) {
+    private init?(enkaPropIDStr4GI: String) {
         guard let propID = Int(enkaPropIDStr4GI) else { return nil }
         guard let matched = Self(enkaPropID4GI: propID) else { return nil }
         self = matched
     }
 
-    fileprivate init?(enkaPropID4GI propID: Int) {
+    private init?(enkaPropID4GI propID: Int) {
         switch propID {
         case 1: self = .baseHP
         case 4: self = .baseAttack

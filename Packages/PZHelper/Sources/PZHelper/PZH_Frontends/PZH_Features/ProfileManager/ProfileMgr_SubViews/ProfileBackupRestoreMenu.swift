@@ -80,17 +80,17 @@ struct ProfileBackupRestoreMenu<T: View>: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @Environment(\.modelContext) fileprivate var modelContext
-    @Query(sort: \PZProfileMO.priority) fileprivate var profiles: [PZProfileMO]
-    @StateObject fileprivate var theVM = Coordinator()
-    fileprivate let importCompletionHandler: (Result<URL, any Error>) -> Void
-    fileprivate let extraItem: (() -> T)?
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
+    @StateObject private var theVM = Coordinator()
+    private let importCompletionHandler: (Result<URL, any Error>) -> Void
+    private let extraItem: (() -> T)?
 }
 
 extension ProfileBackupRestoreMenu {
-    fileprivate func prepareAllExportableProfiles() -> [PZProfileSendable] {
+    private func prepareAllExportableProfiles() -> [PZProfileSendable] {
         profiles.map(\.asSendable)
     }
 }
@@ -99,7 +99,7 @@ extension ProfileBackupRestoreMenu {
 
 extension ProfileBackupRestoreMenu {
     @Observable
-    fileprivate final class Coordinator: TaskManagedVM {
+    private final class Coordinator: TaskManagedVM {
         var fileSaveActionResult: Result<URL, any Error>?
         var currentExportableDocument: Result<PZProfilesDocument, Error>?
         var isImporterVisible: Bool = false

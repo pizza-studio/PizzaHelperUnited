@@ -58,9 +58,9 @@ extension Enka {
         public static let shared = Sputnik()
         public static let commonActor = DBActor()
 
-        public fileprivate(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
-        public fileprivate(set) var db4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
-        public fileprivate(set) var eventForResummarizingEnkaProfiles: UUID = .init()
+        public private(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
+        public private(set) var db4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
+        public private(set) var eventForResummarizingEnkaProfiles: UUID = .init()
 
         public func tellViewsToResummarizeEnkaProfiles() {
             eventForResummarizingEnkaProfiles = .init()

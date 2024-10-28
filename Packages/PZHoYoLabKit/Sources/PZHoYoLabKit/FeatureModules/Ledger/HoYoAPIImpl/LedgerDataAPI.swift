@@ -43,7 +43,7 @@ extension HoYo {
 }
 
 extension HoYo {
-    fileprivate static func ledgerData4GI(
+    private static func ledgerData4GI(
         month: Int, uid: String, server: Server, cookie: String
     ) async throws
         -> LedgerData4GI {
@@ -93,7 +93,7 @@ extension HoYo {
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.ledgerData4GI()")
     }
 
-    fileprivate static func ledgerData4HSR(
+    private static func ledgerData4HSR(
         month: String, uid: String, server: Server, cookie: String
     ) async throws
         -> LedgerData4HSR {

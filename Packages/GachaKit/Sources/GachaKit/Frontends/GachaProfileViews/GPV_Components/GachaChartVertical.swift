@@ -42,13 +42,13 @@ public struct GachaChartVertical: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    fileprivate let poolType: GachaPoolExpressible
-    fileprivate let givenGPID: GachaProfileID
-    @Environment(GachaVM.self) fileprivate var theVM
+    private let poolType: GachaPoolExpressible
+    private let givenGPID: GachaProfileID
+    @Environment(GachaVM.self) private var theVM
 
-    fileprivate var shouldChunk: Bool {
+    private var shouldChunk: Bool {
         if #available(iOS 18, *) {
             return false
         }
@@ -61,16 +61,16 @@ public struct GachaChartVertical: View {
         return true
     }
 
-    fileprivate var pentaStarEntries: [GachaEntryExpressible] {
+    private var pentaStarEntries: [GachaEntryExpressible] {
         theVM.currentPentaStars
     }
 
-    fileprivate var surinukedIcon: Image {
+    private var surinukedIcon: Image {
         GachaProfileView.GachaStatsSection.ApprisedLevel.one.appraiserIcon(game: givenGPID.game)
     }
 
     @ViewBuilder
-    fileprivate func subChart(
+    private func subChart(
         givenEntries: [GachaEntryExpressible],
         averagePullsCount: Int,
         isFirst: Bool,
@@ -105,7 +105,7 @@ public struct GachaChartVertical: View {
         .chartLegend(.hidden)
     }
 
-    fileprivate func matchedEntries(
+    private func matchedEntries(
         among source: [GachaEntryExpressible],
         with value: String
     )
@@ -113,7 +113,7 @@ public struct GachaChartVertical: View {
         source.filter { $0.id == value }
     }
 
-    fileprivate func colors(entries: [GachaEntryExpressible]) -> [Color] {
+    private func colors(entries: [GachaEntryExpressible]) -> [Color] {
         entries.map { neta in
             switch neta.drawCount {
             case ..<0: .gray
@@ -127,7 +127,7 @@ public struct GachaChartVertical: View {
     }
 
     @ChartContentBuilder
-    fileprivate func drawChartContent(for entry: GachaEntryExpressible) -> some ChartContent {
+    private func drawChartContent(for entry: GachaEntryExpressible) -> some ChartContent {
         BarMark(
             x: .value("gachaKit.chart.pullCount".i18nGachaKit, entry.drawCount),
             y: .value("gachaKit.chart.character".i18nGachaKit, entry.id),
@@ -150,7 +150,7 @@ public struct GachaChartVertical: View {
     }
 
     @AxisContentBuilder
-    fileprivate func axisContentY(entries givenEntries: [GachaEntryExpressible]) -> some AxisContent {
+    private func axisContentY(entries givenEntries: [GachaEntryExpressible]) -> some AxisContent {
         AxisMarks(preset: .aligned, position: .leading) { value in
             AxisValueLabel(content: {
                 if let id = value.as(String.self),
@@ -177,7 +177,7 @@ public struct GachaChartVertical: View {
     }
 
     @AxisContentBuilder
-    fileprivate func axisContentX(isLast: Bool) -> some AxisContent {
+    private func axisContentX(isLast: Bool) -> some AxisContent {
         AxisMarks(values: [0, 25, 50, 75, 100]) { _ in
             AxisGridLine()
             if isLast {

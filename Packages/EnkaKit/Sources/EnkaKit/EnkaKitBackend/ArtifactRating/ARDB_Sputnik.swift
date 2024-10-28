@@ -75,7 +75,7 @@ extension ArtifactRating.ARSputnik {
         case countDB4GI = "CountDB4GI.json"
     }
 
-    fileprivate static func fetchARDBData<T: Codable>(
+    private static func fetchARDBData<T: Codable>(
         from serverType: Enka.HostType? = nil,
         type dataType: RemoteSourceFile,
         decodingTo: T.Type

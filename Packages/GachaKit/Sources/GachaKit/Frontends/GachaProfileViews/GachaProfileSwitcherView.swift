@@ -101,13 +101,13 @@ public struct GachaProfileSwitcherView: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @Query(sort: \PZProfileMO.priority) fileprivate var pzProfiles: [PZProfileMO]
-    @Environment(\.modelContext) fileprivate var modelContext
-    @Environment(GachaVM.self) fileprivate var theVM
+    @Query(sort: \PZProfileMO.priority) private var pzProfiles: [PZProfileMO]
+    @Environment(\.modelContext) private var modelContext
+    @Environment(GachaVM.self) private var theVM
 
-    fileprivate var sortedGPIDs: [GachaProfileID] {
+    private var sortedGPIDs: [GachaProfileID] {
         theVM.allGPIDs.wrappedValue
     }
 }

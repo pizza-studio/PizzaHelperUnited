@@ -23,7 +23,7 @@ public struct SRGFv1: Codable, Hashable, Sendable {
 }
 
 extension SRGFv1 {
-    fileprivate static func makeDecodingError(_ key: CodingKey) -> Error {
+    private static func makeDecodingError(_ key: CodingKey) -> Error {
         let keyName = key.description
         var msg = "\(keyName) value is invalid or empty. "
         msg += "// \(keyName) 不得是空值或不可用值。 "

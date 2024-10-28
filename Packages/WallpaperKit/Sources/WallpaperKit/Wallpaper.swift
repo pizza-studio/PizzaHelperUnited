@@ -72,28 +72,28 @@ extension Wallpaper: _DefaultsSerializable {}
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
 extension Wallpaper {
-    fileprivate static let bundledLangDB4PZ: [String: String] = {
+    private static let bundledLangDB4PZ: [String: String] = {
         let url = Bundle.module.url(forResource: "PizzaWallpapers", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
     }()
 
-    fileprivate static let bundledLangDB4ZZZ: [String: String] = {
+    private static let bundledLangDB4ZZZ: [String: String] = {
         let url = Bundle.module.url(forResource: "ZZZWallpapers", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
     }()
 
-    fileprivate static let bundledLangDB4HSR: [String: String] = {
+    private static let bundledLangDB4HSR: [String: String] = {
         let url = Bundle.module.url(forResource: "HSRWallpapers", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let dbs = try! JSONDecoder().decode([String: [String: String]].self, from: data)
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
     }()
 
-    fileprivate static let bundledLangDB4GI: [String: String] = {
+    private static let bundledLangDB4GI: [String: String] = {
         let assetNameTag = "GIWallpapers_Lang"
         let url = Bundle.module.url(forResource: assetNameTag, withExtension: "json")!
         let data = try! Data(contentsOf: url)
@@ -101,7 +101,7 @@ extension Wallpaper {
         return dbs[Locale.langCodeForEnkaAPI] ?? dbs["en"]!
     }()
 
-    fileprivate static let bundledLangDB4GIRealName: [String: String] = {
+    private static let bundledLangDB4GIRealName: [String: String] = {
         let assetNameTag = "GIWallpapers_Lang_RealName"
         let url = Bundle.module.url(forResource: assetNameTag, withExtension: "json")!
         let data = try! Data(contentsOf: url)

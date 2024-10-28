@@ -7,7 +7,7 @@ import PZBaseKit
 @preconcurrency import StoreKit
 
 extension IAPManager {
-    fileprivate static let productIDs = [
+    private static let productIDs = [
         "Canglong.GenshinPizzaHepler.IAP.6",
         "Canglong.GenshinPizzaHepler.IAP.30",
         "Canglong.GenshinPizzaHepler.IAP.98",
