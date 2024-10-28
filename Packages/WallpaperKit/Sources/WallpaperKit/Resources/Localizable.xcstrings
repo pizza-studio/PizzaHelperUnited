@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "settings.display.appBackground" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -30,6 +31,7 @@
       }
     },
     "wallpaperGallery.navTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -58,6 +60,7 @@
       }
     },
     "wpKit.assign.background4App" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -86,6 +89,7 @@
       }
     },
     "wpKit.assign.background4LiveActivity" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -114,6 +118,7 @@
       }
     },
     "wpKit.gamePicker.Pizza.shortName" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
