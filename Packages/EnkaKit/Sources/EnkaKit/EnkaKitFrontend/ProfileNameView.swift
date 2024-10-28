@@ -22,7 +22,7 @@ extension Enka {
         public let game: Enka.GameType
         public let profileName: String?
 
-        @MainActor public var body: some View {
+        public var body: some View {
             if let profileName {
                 Text(profileName)
             } else {

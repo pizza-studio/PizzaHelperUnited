@@ -12,7 +12,7 @@ import SwiftUI
 struct DailyTaskInfoBar: View {
     let dailyNote: any DailyNoteProtocol
 
-    @MainActor @ViewBuilder var isTaskRewardReceivedImage: some View {
+    @ViewBuilder var isTaskRewardReceivedImage: some View {
         switch dailyNote {
         case let dailyNote as any Note4GI:
             let dailyTaskInfo = dailyNote.dailyTaskInfo
@@ -42,7 +42,7 @@ struct DailyTaskInfoBar: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         HStack(alignment: .center, spacing: 8) {
             AccountKit.imageAsset("gi_note_dailyTask")
                 .resizable()

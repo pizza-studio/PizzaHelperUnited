@@ -28,7 +28,7 @@ struct HomeCoinInfoBar: View {
             )
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         HStack(alignment: .center, spacing: 8) {
             AccountKit.imageAsset("gi_note_teapot_coin")
                 .resizable()

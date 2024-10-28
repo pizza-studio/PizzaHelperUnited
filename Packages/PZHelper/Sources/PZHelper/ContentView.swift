@@ -18,7 +18,7 @@ public struct ContentView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         TabView(selection: index) {
             ForEach(NavItems.allCases) { navCase in
                 if navCase.isExposed {
@@ -51,7 +51,7 @@ public struct ContentView: View {
 
     // MARK: Internal
 
-    enum NavItems: Int, View, CaseIterable, Identifiable, Sendable {
+    enum NavItems: Int, View, CaseIterable, Identifiable {
         case today = 1
         case showcaseDetail = 2
         case utils = 3
@@ -59,7 +59,7 @@ public struct ContentView: View {
 
         // MARK: Public
 
-        @MainActor @ViewBuilder public var body: some View {
+        public var body: some View {
             switch self {
             case .today:
                 TodayTabPage()
@@ -80,7 +80,7 @@ public struct ContentView: View {
             }
         }
 
-        @MainActor @ViewBuilder public var label: some View {
+        public var label: some View {
             switch self {
             case .today: Label("tab.today".i18nPZHelper, systemSymbol: .windshieldFrontAndWiperAndDrop)
             case .showcaseDetail: Label("tab.details".i18nPZHelper, systemSymbol: .personTextRectangleFill)

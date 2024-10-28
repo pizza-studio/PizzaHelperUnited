@@ -13,7 +13,7 @@ import WallpaperKit
 struct UISettingsPageContent: View {
     // MARK: Internal
 
-    @MainActor var body: some View {
+    var body: some View {
         Form {
             Section {
                 AppWallpaperSettingsPicker()
@@ -34,7 +34,7 @@ struct UISettingsPageContent: View {
         .navigationTitle("settings.uiSettings.title".i18nPZHelper)
     }
 
-    @MainActor @ViewBuilder var defaultServerSelector4GI: some View {
+    @ViewBuilder var defaultServerSelector4GI: some View {
         VStack {
             Picker(selection: $defaultServer4GI) {
                 ForEach(HoYo.Server.allCases4GI) { server in

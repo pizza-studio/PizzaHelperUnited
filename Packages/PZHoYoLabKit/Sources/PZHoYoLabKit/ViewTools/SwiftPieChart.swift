@@ -51,7 +51,7 @@ public struct PieChartView: View {
     public var widthFraction: CGFloat
     public var innerRadiusFraction: CGFloat
 
-    @MainActor public var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             VStack {
                 ZStack {
@@ -231,7 +231,7 @@ struct PieChartRows: View {
         return result
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack {
             ForEach(dataSets, id: \.self) { valueSet in
                 HStack {
@@ -282,7 +282,7 @@ struct PieSlice: View {
             .radians / 2.0
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         GeometryReader { geometry in
             ZStack {
                 Path { path in

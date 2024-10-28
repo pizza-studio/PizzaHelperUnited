@@ -23,7 +23,7 @@ public struct TravelStatsView4HSR: TravelStatsView {
 
     public let data: StatsData
 
-    @MainActor public var body: some View {
+    public var body: some View {
         List {
             Section {
                 TravelStatLabel(

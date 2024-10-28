@@ -52,7 +52,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         switch result {
         case let .success(data):
             resinView(data: data)

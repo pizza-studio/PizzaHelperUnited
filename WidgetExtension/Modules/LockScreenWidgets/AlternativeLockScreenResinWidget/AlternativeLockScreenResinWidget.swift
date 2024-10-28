@@ -61,7 +61,7 @@ struct AlternativeLockScreenResinWidgetView: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         AlternativeLockScreenResinWidgetCircular(entry: entry, result: result)
             .widgetURL(url)
     }

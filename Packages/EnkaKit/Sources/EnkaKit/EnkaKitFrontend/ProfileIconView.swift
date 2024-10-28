@@ -49,7 +49,7 @@ extension Enka {
         public let uid: String
         public let game: Enka.GameType
 
-        @MainActor public var body: some View {
+        public var body: some View {
             switch game {
             case .genshinImpact:
                 if let profile = profiles4GI[uid] {

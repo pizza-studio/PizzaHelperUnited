@@ -27,7 +27,7 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
         case horizontal, vertical
     }
 
-    @MainActor public var body: some View {
+    public var body: some View {
         if OS.type == .macOS {
             let mark: String = (direction == .horizontal) ? "⇆ " : "⇅ "
             (Text(verbatim: mark) + Text("operation.scrolling.guide", bundle: Bundle.module))
@@ -78,17 +78,17 @@ extension View {
 // MARK: - Blur Background
 
 extension View {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func blurMaterialBackground() -> some View {
         modifier(BlurMaterialBackground())
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func adjustedBlurMaterialBackground() -> some View {
         modifier(AdjustedBlurMaterialBackground())
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func listRowMaterialBackground() -> some View {
         listRowBackground(
             Color.clear.background(.thinMaterial, in: Rectangle())
@@ -99,7 +99,7 @@ extension View {
 // MARK: - BlurMaterialBackground
 
 struct BlurMaterialBackground: ViewModifier {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func body(content: Content) -> some View {
         content.background(
             .regularMaterial,
@@ -117,7 +117,7 @@ struct BlurMaterialBackground: ViewModifier {
 struct AdjustedBlurMaterialBackground: ViewModifier {
     // MARK: Public
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func body(content: Content) -> some View {
         Group {
             if colorScheme == .dark {
@@ -190,7 +190,7 @@ public struct Divided<Content: View>: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         _VariadicView.Tree(DividedLayout()) {
             content
         }
@@ -199,7 +199,7 @@ public struct Divided<Content: View>: View {
     // MARK: Internal
 
     struct DividedLayout: _VariadicView_MultiViewRoot {
-        @MainActor @ViewBuilder
+        @ViewBuilder
         public func body(children: _VariadicView.Children) -> some View {
             let last = children.last?.id
 
@@ -219,7 +219,7 @@ public struct Divided<Content: View>: View {
 // MARK: - View.restoreAppTint.
 
 extension View {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func restoreSystemTint() -> some View {
         // tint(.init(uiColor: UIColor.tintColor))
         tint(.accentColor)
@@ -229,7 +229,7 @@ extension View {
 // MARK: - View.headerFooterVisibilityEnhanced
 
 extension View {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func secondaryColorVerseBackground() -> some View {
         foregroundColor(.primary.opacity(0.75))
     }
@@ -240,7 +240,7 @@ extension View {
 public struct AccentVerseBackground: ViewModifier {
     // MARK: Public
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func body(content: Content) -> some View {
         switch colorScheme {
         case .light:
@@ -262,7 +262,7 @@ public struct AccentVerseBackground: ViewModifier {
 }
 
 extension View {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func accentVerseBackground() -> some View {
         modifier(AccentVerseBackground())
     }
@@ -313,7 +313,7 @@ extension View {
 // MARK: - NavBarTitleDisplayMode.
 
 extension View {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func navBarTitleDisplayMode(_ mode: NavBarTitleDisplayMode?) -> some View {
         #if os(iOS) || targetEnvironment(macCatalyst)
         switch mode {

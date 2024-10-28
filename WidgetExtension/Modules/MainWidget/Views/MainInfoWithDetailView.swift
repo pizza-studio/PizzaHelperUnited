@@ -18,7 +18,7 @@ struct MainInfoWithDetail: View {
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
 
-    @MainActor var body: some View {
+    var body: some View {
         HStack {
             Spacer()
             MainInfo(

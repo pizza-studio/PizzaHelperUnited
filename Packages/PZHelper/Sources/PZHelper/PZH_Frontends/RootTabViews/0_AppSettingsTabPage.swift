@@ -22,7 +22,7 @@ struct AppSettingsTabPage: View {
         case otherSettings
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
                 Section {
@@ -99,7 +99,7 @@ struct AppSettingsTabPage: View {
 
     @Default(.appLanguage) private var appLanguage: [String]?
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func navigationDetail(selection: Binding<Nav?>) -> some View {
         NavigationStack {
             switch selection.wrappedValue {

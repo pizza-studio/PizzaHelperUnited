@@ -32,7 +32,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         listHeader
         Section {
             switch delegate.taskState {
@@ -75,7 +75,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     @State var pzProfile: any ProfileMOProtocol
 
-    @MainActor @ViewBuilder var listHeader: some View {
+    @ViewBuilder var listHeader: some View {
         let extraTerms = Enka.ExtraTerms(lang: theDB.locTag, game: theDB.game)
         let rawInfo = guardedEnkaProfile
         Section {

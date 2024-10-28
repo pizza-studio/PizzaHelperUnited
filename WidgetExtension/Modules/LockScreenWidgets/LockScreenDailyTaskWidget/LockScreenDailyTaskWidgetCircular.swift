@@ -14,7 +14,7 @@ struct LockScreenDailyTaskWidgetCircular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack(spacing: 0) {
             Image("icon.dailyTask", bundle: .main)
                 .resizable()

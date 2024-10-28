@@ -47,7 +47,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hasha
     public var showsIndicators: Bool
     public var spacing: CGFloat
 
-    @MainActor public var body: some View {
+    public var body: some View {
         if scroll {
             ScrollView(.vertical, showsIndicators: showsIndicators) {
                 innerContent
@@ -85,7 +85,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hasha
 
     @State var scroll: Bool
 
-    @MainActor @ViewBuilder var innerContent: some View {
+    @ViewBuilder var innerContent: some View {
         HStack(alignment: .top) {
             ForEach(setUpList(), id: \.self) { columnsData in
 

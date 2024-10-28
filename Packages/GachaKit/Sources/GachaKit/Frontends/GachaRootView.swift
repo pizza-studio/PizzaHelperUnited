@@ -24,7 +24,7 @@ public struct GachaRootView: View {
 
     public static var navIcon: Image { Image("GachaRecordMgr_NavIcon", bundle: .module) }
 
-    @MainActor public var body: some View {
+    public var body: some View {
         coreBody
             .navigationTitle(theVM.currentGPIDTitle ?? Self.navTitle)
             .navBarTitleDisplayMode(.large)
@@ -143,7 +143,7 @@ public struct GachaRootView: View {
 }
 
 extension GachaRootView {
-    @MainActor @ViewBuilder public var coreBody: some View {
+    @ViewBuilder public var coreBody: some View {
         Form {
             if theVM.currentGPID != nil {
                 GachaProfileView()

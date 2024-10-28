@@ -36,13 +36,13 @@ public protocol AbyssReportView: View {
     init(data: AbyssReportData)
     var data: AbyssReportData { get }
     static var navTitle: String { get }
-    @MainActor @ViewBuilder var body: Self.Body { get }
+    @ViewBuilder var body: Self.Body { get }
 }
 
 // MARK: - Debug
 
 extension AbyssReportView {
-    @MainActor @ViewBuilder public var debugBody: some View {
+    @ViewBuilder public var debugBody: some View {
         VStack {
             Text(verbatim: "Abyss Report Loaded Successfully.")
             Button {

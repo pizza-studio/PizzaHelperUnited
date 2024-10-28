@@ -34,7 +34,7 @@ struct DetailInfo: View {
     let viewConfig: WidgetViewConfiguration
     let spacing: CGFloat
 
-    @MainActor var body: some View {
+    var body: some View {
         VStack(alignment: .leading, spacing: spacing) {
             switch dailyNote {
             case let dailyNote as any Note4GI:

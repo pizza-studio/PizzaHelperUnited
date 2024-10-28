@@ -17,7 +17,7 @@ public struct AnonymousIconView: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         switch cutType {
         case .card: Self.rawImage4SUI
             .aspectRatio(contentMode: .fill)

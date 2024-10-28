@@ -12,7 +12,7 @@ public struct DonationView: View {
 
     public static let navTitle = "aboutKit.donation.navTitle".i18nAboutKit
 
-    @MainActor public var body: some View {
+    public var body: some View {
         List {
             Section {
                 Text("aboutKit.donation.msg", bundle: .module)
@@ -66,7 +66,7 @@ public struct DonationView: View {
         .navBarTitleDisplayMode(.inline)
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public static func makeNav() -> some View {
         NavigationLink {
             DonationView(iapManager: .shared)

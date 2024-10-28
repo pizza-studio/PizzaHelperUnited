@@ -16,7 +16,7 @@ public struct GachaEntryExpiredRow: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         if isVisible {
             VStack {
                 Button {

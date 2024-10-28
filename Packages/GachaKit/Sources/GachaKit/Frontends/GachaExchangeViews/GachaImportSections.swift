@@ -14,14 +14,14 @@ import UniformTypeIdentifiers
 public struct GachaImportSections: View {
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         currentPage()
             .animation(.default, value: theVM.currentSceneStep4Import)
     }
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func makeFormatPicker() -> some View {
         LabeledContent {
             Picker(
@@ -40,7 +40,7 @@ public struct GachaImportSections: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func buttonToStepOne() -> some View {
         if theVM.taskState != .busy {
             Button("gachaKit.exchange.backAndReselectFile.button".i18nGachaKit) {
@@ -89,7 +89,7 @@ extension GachaImportSections {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func currentPage() -> some View {
         @Bindable var theVM = theVM
         switch $theVM.currentSceneStep4Import.animation().wrappedValue {
@@ -104,7 +104,7 @@ extension GachaImportSections {
 // MARK: - Scene Page - Choose Format
 
 extension GachaImportSections {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func body4SceneStepChooseFormat() -> some View {
         Section {
             makeFormatPicker()
@@ -174,7 +174,7 @@ extension GachaImportSections {
 // MARK: - Scene Page - Choose Profiles
 
 extension GachaImportSections {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func body4SceneStepChooseProfiles(_ source: UIGFv4) -> some View {
         buttonToStepOne()
 
@@ -247,7 +247,7 @@ extension GachaImportSections {
         .selectionIndicatorPosition(.trailing)
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     fileprivate func makeDateLabel(unixTimeStamp: String) -> some View {
         if let timeInterval: TimeInterval = Double(unixTimeStamp) {
             let date = Date(timeIntervalSince1970: timeInterval)
@@ -294,7 +294,7 @@ extension GachaImportSections {
 // MARK: - Scene Page - Ready to Import
 
 extension GachaImportSections {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func body4SceneStepImportResultPresentation(_ result: [GachaProfileID: Int]) -> some View {
         Section {
             Label {
@@ -333,7 +333,7 @@ extension GachaImportSections {
 // MARK: - Scene Page - Error
 
 extension GachaImportSections {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func errorView(_ error: Error) -> some View {
         Section {
             buttonToStepOne()
@@ -359,7 +359,7 @@ private struct PopFileButton: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Button {
             isFileImporterShown.toggle()
         } label: {

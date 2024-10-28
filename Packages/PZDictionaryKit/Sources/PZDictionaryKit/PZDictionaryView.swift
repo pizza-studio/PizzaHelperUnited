@@ -18,7 +18,7 @@ public struct PZDictionaryView: View {
 
     public static let navTitle = "tool.dictionary.title".i18nDictKit
 
-    @MainActor public var body: some View {
+    public var body: some View {
         List {
             if let currentResult = viewModel.currentResult {
                 if currentResult.translations.isEmpty {
@@ -105,7 +105,7 @@ extension PZDictionaryView {
 
         let translation: TranslationResult.Translation
 
-        @MainActor var body: some View {
+        var body: some View {
             List {
                 Section {
                     Text(translation.target)

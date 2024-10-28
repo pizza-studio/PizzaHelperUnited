@@ -101,7 +101,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         coreBodyView.overlay {
             GeometryReader { geometry in
                 Color.clear.onAppear {
@@ -129,7 +129,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
         (($containerSize.wrappedValue.width / Double(columns)) - 8.0).rounded(.down)
     }
 
-    @MainActor @ViewBuilder var coreBodyView: some View {
+    @ViewBuilder var coreBodyView: some View {
         CharSpecimen.renderAllSpecimen(
             for: game,
             scroll: scroll,

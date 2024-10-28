@@ -28,7 +28,7 @@ public struct GITodayMaterialsView<T: View>: View {
         "todayMaterialsKit.navTitle".i18nTodayMaterials
     }
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Form {
             content
                 .listRowMaterialBackground()

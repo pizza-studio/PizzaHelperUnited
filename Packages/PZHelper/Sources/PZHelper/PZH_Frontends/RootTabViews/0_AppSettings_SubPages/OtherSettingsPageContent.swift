@@ -10,7 +10,7 @@ import SwiftUI
 struct OtherSettingsPageContent: View {
     // MARK: Internal
 
-    @MainActor var body: some View {
+    var body: some View {
         Form {
             Text(verbatim: "# under construction")
         }

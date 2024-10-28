@@ -33,7 +33,7 @@ struct LockScreenHomeCoinWidgetCorner: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         Image("icon.homeCoin", bundle: .main)
             .resizable()
             .scaledToFit()

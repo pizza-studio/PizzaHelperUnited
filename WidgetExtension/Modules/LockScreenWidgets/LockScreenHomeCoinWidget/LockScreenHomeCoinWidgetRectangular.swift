@@ -29,7 +29,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
         }
     }
 
-    @MainActor var body: some View {
+    var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
             switch result {

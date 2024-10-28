@@ -13,7 +13,7 @@ import UniformTypeIdentifiers
 public struct GachaExportSections: View {
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Section {
             makeFormatPicker()
             VStack {
@@ -117,7 +117,7 @@ public struct GachaExportSections: View {
 
     // MARK: Internal
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func makeFormatPicker() -> some View {
         let formatsToEnumerate: [GachaExchange.ExportableFormat] = switch packageMethod {
         case let .singleOwner(gpid): packageMethod.supportedExportableFormats(by: gpid.game)
@@ -197,7 +197,7 @@ public struct GachaExportSections: View {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func hookAlertAndComDlg32(target: some View) -> some View {
         let msgPack = fileSaveActionResultMessagePack
         target
