@@ -73,40 +73,40 @@ extension GachaProfileView {
             }
         }
 
-        // MARK: Fileprivate
+        // MARK: Private
 
-        fileprivate static let fmtPerc: NumberFormatter = {
+        private static let fmtPerc: NumberFormatter = {
             let fmt = NumberFormatter()
             fmt.maximumFractionDigits = 2
             fmt.numberStyle = .percent
             return fmt
         }()
 
-        @Environment(GachaVM.self) fileprivate var theVM
+        @Environment(GachaVM.self) private var theVM
 
-        fileprivate let poolType: GachaPoolExpressible
-        fileprivate let givenGPID: GachaProfileID
+        private let poolType: GachaPoolExpressible
+        private let givenGPID: GachaProfileID
 
-        fileprivate var entries: [GachaEntryExpressible] {
+        private var entries: [GachaEntryExpressible] {
             theVM.mappedEntriesByPools[poolType] ?? []
         }
 
-        fileprivate var pentaStarEntries: [GachaEntryExpressible] {
+        private var pentaStarEntries: [GachaEntryExpressible] {
             theVM.currentPentaStars
         }
 
-        fileprivate var pentaStarsNotSurinuked: [GachaEntryExpressible] {
+        private var pentaStarsNotSurinuked: [GachaEntryExpressible] {
             theVM.currentPentaStars.filter { entry in
                 !entry.isSurinuked
             }
         }
 
-        fileprivate var limitedDrawCount: Int {
+        private var limitedDrawCount: Int {
             pentaStarEntries.map(\.drawCount).reduce(0, +) / max(pentaStarsNotSurinuked.count, 1)
         }
 
         // 如果获得的第一个五星是限定，默认其不歪
-        fileprivate var surinukeEvasionRate: Double {
+        private var surinukeEvasionRate: Double {
             // 歪次数 = 非限定五星数量
             let countSurinuked = Double(pentaStarEntries.count - pentaStarsNotSurinuked.count)
             // 小保底次数 = 限定五星数量
@@ -118,17 +118,17 @@ extension GachaProfileView {
             return 1.0 - countSurinuked / countEnsured
         }
 
-        fileprivate var average5StarDraw: Int { pentaStarEntries.map { $0.drawCount }
+        private var average5StarDraw: Int { pentaStarEntries.map { $0.drawCount }
             .reduce(0) { $0 + $1 } /
             max(pentaStarEntries.count, 1)
         }
 
-        fileprivate var drawCountableAmount: Int {
+        private var drawCountableAmount: Int {
             entries.firstIndex(where: { $0.rarity == .rank5 }) ?? entries.count
         }
 
         @ViewBuilder
-        fileprivate func guestEvaluatorView() -> some View {
+        private func guestEvaluatorView() -> some View {
             VStack {
                 HStack {
                     Text(LocalizedStringKey(stringLiteral: poolType.appraiserDescriptionKey), bundle: .module)

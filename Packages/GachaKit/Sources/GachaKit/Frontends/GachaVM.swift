@@ -59,9 +59,9 @@ public final class GachaVM: TaskManagedVM {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    fileprivate static func defaultPoolType(for game: Pizza.SupportedGame?) -> GachaPoolExpressible? {
+    private static func defaultPoolType(for game: Pizza.SupportedGame?) -> GachaPoolExpressible? {
         switch game {
         case .genshinImpact: .giCharacterEventWish
         case .starRail: .srCharacterEventWarp
@@ -413,7 +413,7 @@ extension GachaVM {
         })
     }
 
-    fileprivate func getCurrentPentaStars(
+    private func getCurrentPentaStars(
         from mappedEntries: [GachaPoolExpressible: [GachaEntryExpressible]]? = nil
     )
         -> [GachaEntryExpressible] {

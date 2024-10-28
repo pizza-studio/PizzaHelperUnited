@@ -64,11 +64,9 @@ public struct GachaEntryNameView: View {
         }
     }
 
-    // MARK: Fileprivate
-
-    @Environment(GachaVM.self) fileprivate var theVM
-
     // MARK: Private
+
+    @Environment(GachaVM.self) private var theVM
 
     private let entry: GachaEntryExpressible
 }

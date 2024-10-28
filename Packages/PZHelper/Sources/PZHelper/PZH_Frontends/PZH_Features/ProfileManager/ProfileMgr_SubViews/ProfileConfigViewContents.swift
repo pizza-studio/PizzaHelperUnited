@@ -83,7 +83,7 @@ struct ProfileConfigViewContents: View {
 // MARK: ProfileConfigViewContents.RequireLoginView
 
 extension ProfileConfigViewContents {
-    fileprivate struct RequireLoginView: View {
+    private struct RequireLoginView: View {
         // MARK: Internal
 
         @Binding var unsavedCookie: String
@@ -131,7 +131,7 @@ extension ProfileConfigViewContents {
 
     // MARK: - SelectAccountView
 
-    fileprivate struct SelectAccountView: View {
+    private struct SelectAccountView: View {
         // MARK: Lifecycle
 
         init(profile: PZProfileMO, fetchedAccounts: [FetchedAccount]) {

@@ -74,13 +74,13 @@ public struct GachaProfileDetailedListView: View {
         } ?? []
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @Environment(GachaVM.self) fileprivate var theVM
-    @State fileprivate var showDate = false
-    @State fileprivate var chosenRarity: GachaItemRankType = .rank5
+    @Environment(GachaVM.self) private var theVM
+    @State private var showDate = false
+    @State private var chosenRarity: GachaItemRankType = .rank5
 
-    @ViewBuilder fileprivate var contentFilterSection: some View {
+    @ViewBuilder private var contentFilterSection: some View {
         if let theProfile = theVM.currentGPID {
             Section {
                 let labelName = GachaPoolExpressible.getPoolFilterLabel(by: theProfile.game)

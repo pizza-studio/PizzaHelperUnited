@@ -160,7 +160,7 @@ enum PSAServer {
 }
 
 extension PSAServer {
-    fileprivate static func handleHTTPMethodResults<T>(
+    private static func handleHTTPMethodResults<T>(
         from requestResultGenerator: @escaping () async throws -> FetchHomeModel<T>,
         completionHandler: @escaping (Result<FetchHomeModel<T>, PSAServerError>) -> Void
     ) async {

@@ -41,13 +41,13 @@ public struct GachaEntryExpiredRow: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    fileprivate let alwaysVisible: Bool
-    fileprivate let games: [Pizza.SupportedGame?]?
-    @Environment(GachaVM.self) fileprivate var theVM
+    private let alwaysVisible: Bool
+    private let games: [Pizza.SupportedGame?]?
+    @Environment(GachaVM.self) private var theVM
 
-    fileprivate var isVisible: Bool {
+    private var isVisible: Bool {
         if case .databaseExpired = theVM.currentError as? GachaMeta.GMDBError {
             return true
         }

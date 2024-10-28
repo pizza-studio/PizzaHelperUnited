@@ -90,9 +90,9 @@ public struct GachaProfileManagementView: View {
         }
     }
 
-    // MARK: Fileprivate
+    // MARK: Private
 
-    @State fileprivate var isRemovalConfirmationAlertShown: Bool = false
-    @Environment(GachaVM.self) fileprivate var theVM
-    @Environment(\.presentationMode) fileprivate var presentationMode: Binding<PresentationMode>
+    @State private var isRemovalConfirmationAlertShown: Bool = false
+    @Environment(GachaVM.self) private var theVM
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 }

@@ -53,7 +53,7 @@ extension HoYo {
 }
 
 extension HoYo {
-    fileprivate static func abyssReportData4GI(
+    private static func abyssReportData4GI(
         isPreviousRound: Bool = false,
         server: Server,
         uid: String,
@@ -97,7 +97,7 @@ extension HoYo {
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.AbyssReportData4GI()")
     }
 
-    fileprivate static func abyssReportData4HSR(
+    private static func abyssReportData4HSR(
         isPreviousRound: Bool = false,
         server: Server,
         uid: String,

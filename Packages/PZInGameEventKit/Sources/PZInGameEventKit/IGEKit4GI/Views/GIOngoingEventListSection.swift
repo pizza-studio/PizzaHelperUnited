@@ -73,7 +73,7 @@ extension GIOngoingEvents {
 // MARK: - GIOngoingEvents.EventListSection.MainComponent
 
 extension GIOngoingEvents.EventListSection {
-    fileprivate struct MainComponent<T: View>: View {
+    private struct MainComponent<T: View>: View {
         // MARK: Public
 
         public var body: some View {

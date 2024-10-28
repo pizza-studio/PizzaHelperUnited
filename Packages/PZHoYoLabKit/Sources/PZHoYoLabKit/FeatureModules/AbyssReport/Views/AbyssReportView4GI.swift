@@ -82,7 +82,7 @@ public struct AbyssReportView4GI: AbyssReportView {
 }
 
 extension AbyssReportView4GI {
-    @ViewBuilder fileprivate var floorList: some View {
+    @ViewBuilder private var floorList: some View {
         ForEach(data.floors.reversed(), id: \.index) { floorData in
             Section {
                 LazyVStack {
@@ -107,7 +107,7 @@ extension AbyssReportView4GI {
     }
 
     @ViewBuilder
-    fileprivate func drawBattleRoom(levelData: HoYo.AbyssReport4GI.Floor.Level) -> some View {
+    private func drawBattleRoom(levelData: HoYo.AbyssReport4GI.Floor.Level) -> some View {
         LazyVStack {
             HStack {
                 Text("hylKit.abyssReport.room.title:\(levelData.index.description)", bundle: .module)
@@ -158,7 +158,7 @@ extension AbyssReportView4GI {
     }
 
     @ViewBuilder
-    fileprivate func drawBattleNode(
+    private func drawBattleNode(
         _ node: HoYo.AbyssReport4GI.Floor.Level.Battle,
         label: String = "",
         spacers: Bool = true
@@ -221,7 +221,7 @@ extension AbyssReportView4GI {
     }
 
     @ViewBuilder
-    fileprivate func drawAbyssValueCell(_ cellData: AbyssValueCell) -> some View {
+    private func drawAbyssValueCell(_ cellData: AbyssValueCell) -> some View {
         HStack(alignment: .center) {
             VStack(alignment: .center) {
                 Text(verbatim: cellData.value)

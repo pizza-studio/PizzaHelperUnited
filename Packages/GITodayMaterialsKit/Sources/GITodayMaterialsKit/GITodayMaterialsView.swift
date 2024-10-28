@@ -112,11 +112,9 @@ public struct GITodayMaterialsView<T: View>: View {
         }
     }
 
-    // MARK: Fileprivate
-
-    fileprivate typealias Material = GITodayMaterial
-
     // MARK: Private
+
+    private typealias Material = GITodayMaterial
 
     @State private var isWeapon: Bool = false
     @State private var weekday: Material.AvailableWeekDay?

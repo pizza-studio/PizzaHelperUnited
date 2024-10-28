@@ -34,7 +34,7 @@ enum URLRequestHelper {
 }
 
 extension HoYo {
-    fileprivate static let taskBuffer: URLAsyncTaskStack = .init()
+    private static let taskBuffer: URLAsyncTaskStack = .init()
 
     public static func waitFor450ms() async {
         await Self.taskBuffer.addTask {

@@ -27,7 +27,7 @@ public struct GachaEntryExpressible: Identifiable, Equatable, Sendable, Hashable
     /// Name Raw Value in the DB.
     public let name: String
 
-    // MARK: Fileprivate
+    // MARK: private
 }
 
 extension GachaEntryExpressible {
