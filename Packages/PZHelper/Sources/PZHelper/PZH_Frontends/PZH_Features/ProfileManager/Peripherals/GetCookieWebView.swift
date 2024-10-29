@@ -33,14 +33,22 @@ struct GetCookieWebView: View {
 
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(alignment: .leading) {
                 CookieGetterWebView(
                     url: getAccountPageLoginURL(region: region),
                     dataStore: dataStore,
                     httpHeaderFields: getHTTPHeaderFields(region: region)
                 )
-                Text("profileMgr.accountLogin.instruction".i18nPZHelper)
-                    .font(.footnote).padding()
+                VStack(alignment: .leading) {
+                    Text("profileMgr.accountLogin.instruction".i18nPZHelper)
+                        .font(.footnote)
+                    Text("profileMgr.accountLogin.instruction.specialWarning".i18nPZHelper)
+                        .font(.footnote)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.orange)
+                        .padding(.bottom)
+                }
+                .padding()
             }
             .navigationTitle("profileMgr.accountLogin.pleaseFinish.title".i18nPZHelper)
             .navBarTitleDisplayMode(.inline)
@@ -60,12 +68,54 @@ struct GetCookieWebView: View {
                     }
                 }
             }
-            .alert("profileMgr.accountLogin.instruction".i18nPZHelper, isPresented: $showAlert) {
-                Button("sys.done".i18nBaseKit) {
-                    Task.detached { @MainActor in
-                        showAlert = false
-                    }
+        }
+        .overlay {
+            if $showAlert.animation().wrappedValue {
+                ZStack(alignment: .center) {
+                    Color.black.opacity(0.5)
+                        .blurMaterialBackground()
+                    Color.clear
+                        .containerRelativeFrame(.horizontal) { length, _ in
+                            min(400, length * 0.8)
+                        }
+                        .overlay {
+                            VStack(alignment: .center, spacing: 12) {
+                                Text("profileMgr.accountLogin.attention.title".i18nPZHelper)
+                                    .font(.largeTitle)
+                                Text("profileMgr.accountLogin.instruction".i18nPZHelper)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text("profileMgr.accountLogin.instruction.specialWarning".i18nPZHelper)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundStyle(.orange)
+                                    .fontWeight(.medium)
+                                Text("profileMgr.accountLogin.instruction.passwordInputSafetyExplanation".i18nPZHelper)
+                                    .multilineTextAlignment(.leading)
+                                    .font(.caption)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundStyle(.secondary)
+                                    .fontWeight(.medium)
+                                Button {
+                                    Task.detached { @MainActor in
+                                        showAlert = false
+                                    }
+                                } label: {
+                                    Text("sys.affirmative".i18nBaseKit)
+                                        .frame(minWidth: 60)
+                                }
+                                .buttonStyle(.borderedProminent)
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 24)
+                            .background {
+                                Color.colorSysBackground
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .shadow(radius: 8)
+                            }
+                        }
                 }
+                .environment(\.colorScheme, .dark)
             }
         }
     }
