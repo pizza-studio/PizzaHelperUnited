@@ -667,6 +667,36 @@
         }
       }
     },
+    "sys.affirmative" : {
+      "comment" : "This sounds formal than `sys.ok`.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affirmative"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "承知した"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我已了解"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我已了解"
+          }
+        }
+      }
+    },
     "sys.back" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -872,6 +902,7 @@
       }
     },
     "sys.ok" : {
+      "comment" : "This sounds casual comparing to the formal calling `sys.affirmative`.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

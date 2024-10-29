@@ -1334,6 +1334,35 @@
         }
       }
     },
+    "profileMgr.accountLogin.attention.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attention"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ご注意を"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请留意"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請留意"
+          }
+        }
+      }
+    },
     "profileMgr.accountLogin.explanation.1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1456,25 +1485,83 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Click \"Done\" after you finish login to HoYoLAB in the following webpage. If you are prompted for CAPTCHA, please finish it.\n\nREMINDER: 3rd-party sign-in services like Google, Facebook, Twitter, Sign-in-with-Apple, etc. ARE NOT TECHNICALLY SUPPORTABLE IN THIS APP, please sign in with your username & password."
+            "value" : "Click the \"Done\" button at the top-trailing corner of the app screen after you finish login to HoYoLAB in the following webpage. If you are prompted for CAPTCHA, please finish it."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "次のウェブページでHoYoLABへのログインが完了したら、「完了」をタップしてください。人間認証 (CAPTCHA) が出た場合、それを完成してください。\n\nSNSアカウントでログインできません。アカウントとパスワードでログインしてください。"
+            "value" : "次のウェブページでHoYoLABへのログインが完了したら、アプリ画面の右上の隅にある「完了」ボタンをタップしてください。人間認証 (CAPTCHA) が出た場合、それを完成してください。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请在打开的网页完成登入 HoYoLab 操作后点击「完成」。如果弹出人机验证的话，请完成之。\n\n通过Google，Facebook或Twitter等第三方服务登入 HoYoLAB 的方式不受敝 App 支持，请使用账号密码登入。"
+            "value" : "请在打开的网页完成登入 HoYoLab 操作后点击「完成」。如果弹出人机验证的话，请完成之。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請在打開的網頁完成登入 HoYoLab 操作後點擊「完成」。如果彈出人機驗證的話，請完成之。\n\n通過Google，Facebook或Twitter等第三方服務登入 HoYoLAB 的方式不受敝 App支援，請使用帳號密碼登入。"
+            "value" : "請在打開的網頁完成登入 HoYoLab 操作後點擊「完成」。如果彈出人機驗證的話，請完成之。"
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.instruction.passwordInputSafetyExplanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To ensure you feel safe with this, here’s how it works: Your password input is protected by macOS built-in SecureEventInputAPI (or its equivalent on iOS), and then it will be directly handled by HoYoLAB login webpage. This is the nature of how WKWebView gets designed by Apple. Nobody else can interfere / intercept this process, nor this app. You can see that you cannot switch to 3rd-party input methods while the password is receiving inputs from the user."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安全に感じられるように、その仕組みをご紹介させていただきます：貴殿のパスワード入力は、macOS に組み込まれた SecureEventInput API（iOS にも似ている API もある）によって保護され、その後 HoYoLAB のログインウェブページで直接処理されます。これは、Apple の WKWebView のデザインのためです。他の誰もこのプロセスに干渉したり、傍受したりすることはできず、このアプリも同様です。パスワードがユーザーからの入力を受け取っている間、サードパーティの入力方式に切り替えることができないことがわかります。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登入网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括敝应用。您会发现，在密码接收来自使用者的输入的过程中，您无法切换到第三方输入法。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "為了確保您對此感到安全，這里介紹一下運作方式：您的密碼輸入受到 macOS 內建的 SecureEventInputAPI（或 iOS 上的等效功能）的保護，然後將直接由 HoYoLAB 登入網頁處理。這是 Apple 對 WKWebView 的設計使然。其他人無法干擾或截聽這個過程，包括敝應用。您會發現，在密碼接收來自使用者的輸入的過程中，您無法切換到第三方輸入法。"
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.instruction.specialWarning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 3rd-party sign-in services like Google, Facebook, Twitter, Sign-in-with-Apple, etc. ARE NOT TECHNICALLY SUPPORTABLE IN THIS APP, please sign in with your username & password."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ SNSアカウントでログインする機能は技術的にはこのアプリで実装できません。アカウントとパスワードでログインしてください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 通过 Google，Facebook，Twitter 或 Sign-in-with-Apple 等第三方服务登入 HoYoLAB 的方式不受敝 App 支持，请使用账号密码登入。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 通過 Google，Facebook，Twitter 或 Sign-in-with-Apple 等第三方服務登入 HoYoLAB 的方式不受敝 App支援，請使用帳號密碼登入。"
           }
         }
       }
