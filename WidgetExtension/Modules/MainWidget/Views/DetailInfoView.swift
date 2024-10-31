@@ -38,8 +38,8 @@ struct DetailInfo: View {
         VStack(alignment: .leading, spacing: spacing) {
             switch dailyNote {
             case let dailyNote as any Note4GI:
-                if dailyNote.homeCoinInfo.maxHomeCoin != 0, let gNote = dailyNote as? GeneralNote4GI {
-                    HomeCoinInfoBar(entry: entry, homeCoinInfo: gNote.homeCoinInfo)
+                if dailyNote.homeCoinInfo.maxHomeCoin != 0 {
+                    HomeCoinInfoBar(entry: entry, homeCoinInfo: dailyNote.homeCoinInfo)
                 }
 
                 if dailyNote.dailyTaskInfo.totalTaskCount != 0 {
