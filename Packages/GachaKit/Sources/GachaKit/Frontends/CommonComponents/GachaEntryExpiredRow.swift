@@ -20,6 +20,7 @@ public struct GachaEntryExpiredRow: View {
         if isVisible {
             VStack {
                 Button {
+                    theVM.currentError = nil
                     theVM.currentSceneStep4Import = .chooseFormat
                     theVM.updateGMDB(for: games)
                 } label: {
