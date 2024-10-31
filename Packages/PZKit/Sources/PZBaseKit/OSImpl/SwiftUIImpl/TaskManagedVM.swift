@@ -47,7 +47,7 @@ open class TaskManagedVM: ObservableObject {
 
     public func forceStopTheTask() {
         task?.cancel()
-        // taskState = .standBy
+        taskState = .standBy
     }
 
     /// 不要在子 class 内 override 这个方法，因为一点儿屌用也没有。
