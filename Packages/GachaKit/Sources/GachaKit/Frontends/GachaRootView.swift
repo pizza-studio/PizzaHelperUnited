@@ -156,14 +156,5 @@ extension GachaRootView {
                 .font(.footnote).foregroundStyle(.secondary)
         }
         .formStyle(.grouped)
-        .task {
-            theVM.fireTask(
-                cancelPreviousTask: false,
-                givenTask: {
-                    try? await Enka.Sputnik.shared.db4HSR.updateIfLocTagMismatches()
-                    try? await Enka.Sputnik.shared.db4GI.updateIfLocTagMismatches()
-                }
-            )
-        }
     }
 }
