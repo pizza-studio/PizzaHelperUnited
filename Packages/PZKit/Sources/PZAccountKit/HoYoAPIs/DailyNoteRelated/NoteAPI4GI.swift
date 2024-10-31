@@ -27,6 +27,14 @@ extension HoYo {
         switch server.region {
         case .miyoushe:
             if cookie.contains("stoken=v2_") {
+                let firstResult = try? await generalNote4GI(
+                    server: server,
+                    uid: uid,
+                    cookie: cookie,
+                    deviceFingerPrint: deviceFingerPrint,
+                    deviceID: deviceID
+                )
+                if let firstResult { return firstResult }
                 return try await widgetNote4GI(
                     cookie: cookie,
                     deviceFingerPrint: deviceFingerPrint,
