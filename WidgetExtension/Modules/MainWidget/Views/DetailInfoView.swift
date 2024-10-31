@@ -68,11 +68,14 @@ struct DetailInfo: View {
                     }
                 }
             case let dailyNote as Note4HSR:
-                if let dailyNote = dailyNote as? WidgetNote4HSR, dailyNote.assignmentInfo.totalAssignmentNumber != 0 {
+                if let dailyNote = dailyNote as? WidgetNote4HSR {
                     DailyTaskInfoBar(dailyNote: dailyNote)
                 }
                 if dailyNote.assignmentInfo.totalAssignmentNumber != 0 {
                     ExpeditionInfoBar(dailyNote: dailyNote)
+                }
+                if let dailyNote = dailyNote as? WidgetNote4HSR {
+                    SimulUnivInfoBar(dailyNote: dailyNote)
                 }
             // TODO: 模擬宇宙，等。
             case _ as Note4ZZZ:
