@@ -132,15 +132,18 @@ extension GachaActor {
             var allExistingEntryIDs: Set<String> = .init(
                 try modelContext.fetch(existingIDsDescriptor).map(\.id)
             )
-            if overrideDuplicatedEntries {
+            if overrideDuplicatedEntries, !allExistingEntryIDs.isEmpty {
                 let allNewEntryIDs: Set<String> = .init(sources.map(\.id))
                 let entryIDsToRemove = allExistingEntryIDs.intersection(allNewEntryIDs)
-                try modelContext.delete(
-                    model: PZGachaEntryMO.self,
-                    where: #Predicate { matchedEntryMO in
-                        entryIDsToRemove.contains(matchedEntryMO.id)
-                    }
-                )
+                // 注意：空集合在 intersection 其他集合时，结果恐不为空。
+                if !entryIDsToRemove.isEmpty {
+                    try modelContext.delete(
+                        model: PZGachaEntryMO.self,
+                        where: #Predicate { matchedEntryMO in
+                            entryIDsToRemove.contains(matchedEntryMO.id)
+                        }
+                    )
+                }
                 allExistingEntryIDs.subtract(entryIDsToRemove)
             }
             var profiles: Set<GachaProfileID> = .init()
