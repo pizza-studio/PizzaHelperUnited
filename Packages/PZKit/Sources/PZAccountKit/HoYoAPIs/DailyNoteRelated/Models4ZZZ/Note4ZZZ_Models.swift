@@ -136,7 +136,7 @@ extension Note4ZZZ.Energy {
     public var currentEnergyAmountDynamic: Int {
         let baseValue = progress.current
         let timePassedSinceLastFetch = Date.now.timeIntervalSince1970 - fetchedTime.timeIntervalSince1970
-        return baseValue + Int(ceil(timePassedSinceLastFetch / Self.eachStaminaRecoveryTime))
+        return baseValue + Int((timePassedSinceLastFetch / Self.eachStaminaRecoveryTime).rounded(.down))
     }
 
     public var timeOnFinish: Date {
