@@ -96,7 +96,7 @@ extension PZAbyssDB {
         /// 获胜次数
         public let winCount: Int
 
-        /// 返回结尾只有0或1的abyssSeason信息
+        /// 返回结尾只有0或1的abyssSeason资讯
         public func getLocalAbyssSeason() -> Int {
             if abyssSeason % 2 == 0 {
                 (abyssSeason / 10) * 10
