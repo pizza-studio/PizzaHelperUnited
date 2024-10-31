@@ -129,9 +129,13 @@ struct LargeWidgetView: View {
                 }
             }
             HStack {
-                Image(systemSymbol: .hourglassCircle)
-                    .foregroundColor(Color("textColor3", bundle: .main))
-                    .font(.title3)
+                Button(intent: WidgetRefreshIntent()) {
+                    Image(systemSymbol: .arrowClockwiseCircle)
+                        .font(.title3)
+                        .foregroundColor(Color("textColor3", bundle: .main))
+                        .clipShape(.circle)
+                }
+                .buttonStyle(.plain)
                 RecoveryTimeText(entry: entry, data: dailyNote)
             }
         }
