@@ -2048,7 +2048,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这部设备上的 GachaMetaDB 已经过期、无法正常用来处理来自该应用的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB 资料库包含了用以映射 ItemID 及其翻译的重要資訊，且记载了每个抽卡物品的稀有等级查询表。"
+            "value" : "这部设备上的 GachaMetaDB 已经过期、无法正常用来处理来自该应用的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB 资料库包含了用以映射 ItemID 及其翻译的重要资讯，且记载了每个抽卡物品的稀有等级查询表。"
           }
         },
         "zh-Hant" : {

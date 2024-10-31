@@ -40,7 +40,7 @@ extension Enka {
 
         public static var game: Enka.GameType { .genshinImpact }
 
-        /// 账号基本信息
+        /// 账号基本资讯
         public var detailInfo: QueriedProfileGI?
         public var ttl: Int?
         /// Enka 偶尔会返回错误讯息。
@@ -69,7 +69,7 @@ extension Enka {
 
         // MARK: Private
 
-        /// 正在展示的角色的详细信息
+        /// 正在展示的角色的详细资讯
         private var avatarInfoList: [QueriedProfileGI.QueriedAvatar]?
     }
 }

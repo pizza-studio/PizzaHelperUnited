@@ -96,7 +96,7 @@ extension Enka {
         public var towerFloorIndex: Int?
         /// 本期深境螺旋间数
         public var towerLevelIndex: Int?
-        /// 正在展示角色信息列表（ID与等级）
+        /// 正在展示角色资讯列表（ID与等级）
         public var showAvatarInfoList: [ShowAvatarInfoRAW]?
         /// 正在展示名片ID的列表
         public var showNameCardIdList: [Int]?
