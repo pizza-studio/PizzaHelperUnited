@@ -233,6 +233,35 @@
         }
       }
     },
+    "app.dailynote.card.parametricTransformer.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parametric Transformer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参量物質変化器"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参量质变仪"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "參量質變儀"
+          }
+        }
+      }
+    },
     "app.dailynote.card.resin.label" : {
       "comment" : "Watch App",
       "extractionState" : "manual",
