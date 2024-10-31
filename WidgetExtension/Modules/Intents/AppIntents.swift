@@ -65,7 +65,7 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
         default: .byNum
     ) public var expeditionShowingMethod: ExpeditionShowingMethodAppEnum?
 
-    @Parameter(title: "intent.field.weeklyBossesShowingMethod", default: .neverShow)
+    @Parameter(title: "intent.field.weeklyBossesShowingMethod", default: .alwaysShow)
     public var weeklyBossesShowingMethod: WeeklyBossesShowingMethodAppEnum?
 
     @Parameter(title: "intent.field.followSystemDarkMode", default: true) public var isDarkModeOn: Bool?
