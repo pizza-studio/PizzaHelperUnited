@@ -13,10 +13,10 @@ enum WidgetError: CustomLocalizedStringResourceConvertible, LocalizedError {
     var localizedStringResource: LocalizedStringResource {
         switch self {
         case .profileSelectionNeeded:
-            /// "请长按进入小组件重新设置账号信息"
+            /// "请长按进入小组件重新设置账号资讯"
             "pzWidgetsKit.widgetError.profileSelectionNeeded"
         case .noProfileFound:
-            /// "请进入App设置账号信息"
+            /// "请进入App设置账号资讯"
             "pzWidgetsKit.widgetError.noProfileFound"
         }
     }
