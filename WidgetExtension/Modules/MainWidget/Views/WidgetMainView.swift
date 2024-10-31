@@ -17,36 +17,33 @@ struct WidgetMainView: View {
     let accountName: String?
 
     var body: some View {
+        let profileName = viewConfig.showAccountName ? accountName : nil
+        let defaultValue = MainInfoWithDetail(
+            entry: entry,
+            dailyNote: dailyNote,
+            viewConfig: viewConfig,
+            accountName: profileName
+        )
         switch family {
         case .systemSmall:
             MainInfo(
                 entry: entry,
                 dailyNote: dailyNote,
                 viewConfig: viewConfig,
-                accountName: viewConfig.showAccountName ? accountName : nil
+                accountName: profileName
             )
             .padding()
         case .systemMedium:
-            MainInfoWithDetail(
-                entry: entry,
-                dailyNote: dailyNote,
-                viewConfig: viewConfig,
-                accountName: viewConfig.showAccountName ? accountName : nil
-            )
+            defaultValue
         case .systemLarge:
             LargeWidgetView(
                 entry: entry,
                 dailyNote: dailyNote,
                 viewConfig: viewConfig,
-                accountName: viewConfig.showAccountName ? accountName : nil
+                accountName: profileName
             )
         default:
-            MainInfoWithDetail(
-                entry: entry,
-                dailyNote: dailyNote,
-                viewConfig: viewConfig,
-                accountName: viewConfig.showAccountName ? accountName : nil
-            )
+            defaultValue
         }
     }
 }
