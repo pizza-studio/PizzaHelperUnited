@@ -20,7 +20,7 @@ struct WidgetViewConfiguration {
         self.showTransformer = intent.showTransformer ?? true
         self.weeklyBossesShowingMethod = intent.weeklyBossesShowingMethod ?? .disappearAfterCompleted
         self.randomBackground = intent.randomBackground ?? false
-        if let backgrounds = intent.background {
+        if let backgrounds = intent.chosenBackgrounds {
             self.selectedBackgrounds = backgrounds.isEmpty ? [.defaultBackground] : backgrounds
         } else {
             self.selectedBackgrounds = [.defaultBackground]

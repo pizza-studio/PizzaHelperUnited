@@ -53,7 +53,10 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
 
     @Parameter(title: "intent.field.useRandomWallpaper") public var randomBackground: Bool?
 
-    @Parameter(title: "intent.field.wallpaper") public var background: [WidgetBackgroundAppEntity]?
+    /// This property, as an array with typed contents, is not inheritable from SiriKit Intents.
+    /// If not changing the field name to a new one, the previous data will hinder this property
+    /// from being configured by the user. Hence the change from `background` to `chosenBackgrounds`.
+    @Parameter(title: "intent.field.wallpaper") public var chosenBackgrounds: [WidgetBackgroundAppEntity]?
 
     @Parameter(title: "intent.field.showTransformer", default: true) public var showTransformer: Bool?
 
