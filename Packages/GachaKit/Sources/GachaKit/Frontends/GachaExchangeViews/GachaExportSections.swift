@@ -216,6 +216,7 @@ public struct GachaExportSections: View {
                 actions: {
                     Button("sys.ok".i18nBaseKit) {
                         fileSaveActionResult = nil
+                        theVM.forceStopTheTask()
                     }
                 },
                 message: {
