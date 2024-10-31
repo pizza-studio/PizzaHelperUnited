@@ -67,12 +67,16 @@ public struct GachaExportToolbarButton: View {
                     actions: {
                         Button("sys.ok".i18nBaseKit) {
                             fileSaveActionResult = nil
+                            theVM.forceStopTheTask()
                         }
                     },
                     message: {
                         Text(verbatim: msgPack.message)
                     }
                 )
+                .onChange(of: isExportResultAvailable) {
+                    theVM.forceStopTheTask()
+                }
         }
         .onDisappear {
             theVM.currentExportableDocument = nil
