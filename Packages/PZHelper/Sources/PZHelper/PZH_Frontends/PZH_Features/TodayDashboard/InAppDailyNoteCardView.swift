@@ -224,17 +224,14 @@ private struct NoteView: View {
                         .font(.caption)
                     Spacer()
                     if resinIntel.resinRecoveryTime > Date() {
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(dateFormatter.string(from: resinIntel.resinRecoveryTime))
-                                + Text(verbatim: "\n")
-                                +
-                                Text(
-                                    dateComponentsFormatter
-                                        .string(from: TimeInterval.sinceNow(to: resinIntel.resinRecoveryTime))!
-                                )
-                        }
-                        .multilineTextAlignment(.trailing)
-                        .font(.caption2)
+                        let fullyChargedTime = resinIntel.resinRecoveryTime
+                        let nestedString = """
+                        \(dateFormatter.string(from: fullyChargedTime))
+                        \(dateComponentsFormatter.string(from: TimeInterval.sinceNow(to: fullyChargedTime))!)
+                        """
+                        Text(verbatim: nestedString)
+                            .multilineTextAlignment(.trailing)
+                            .font(.caption2)
                     }
                 }
             }
@@ -282,17 +279,14 @@ private struct NoteView: View {
                         .font(.caption)
                     Spacer()
                     if homeCoin.fullTime > Date() {
-                        (
-                            Text(dateFormatter.string(from: homeCoin.fullTime))
-                                + Text(verbatim: "\n")
-                                +
-                                Text(
-                                    dateComponentsFormatter
-                                        .string(from: TimeInterval.sinceNow(to: homeCoin.fullTime))!
-                                )
-                        )
-                        .multilineTextAlignment(.trailing)
-                        .font(.caption2)
+                        let fullyChargedTime = homeCoin.fullTime
+                        let nestedString = """
+                        \(dateFormatter.string(from: fullyChargedTime))
+                        \(dateComponentsFormatter.string(from: TimeInterval.sinceNow(to: fullyChargedTime))!)
+                        """
+                        Text(verbatim: nestedString)
+                            .multilineTextAlignment(.trailing)
+                            .font(.caption2)
                     }
                 }
             }
@@ -348,14 +342,13 @@ private struct NoteView: View {
 
                         // Time
                         if paraTransIntel.recoveryTime > .now {
-                            (
-                                Text(paraTransIntel.recoveryTime, style: .relative)
-                                    + Text(verbatim: "\n")
-                                    + Text(dateFormatter.string(from: paraTransIntel.recoveryTime))
-                            )
-                            .multilineTextAlignment(.leading)
-                            .font(.caption2)
-                            .fontWidth(.condensed)
+                            let nestedString = """
+                            \(dateFormatter.string(from: paraTransIntel.recoveryTime))
+                            \(dateFormatter.string(from: paraTransIntel.recoveryTime))
+                            """
+                            Text(verbatim: nestedString)
+                                .multilineTextAlignment(.trailing)
+                                .font(.caption2)
                         } else {
                             Image(systemSymbol: .checkmarkCircle)
                                 .foregroundColor(.green)
