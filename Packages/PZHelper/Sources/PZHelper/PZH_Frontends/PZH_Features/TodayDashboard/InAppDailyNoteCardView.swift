@@ -333,6 +333,37 @@ private struct NoteView: View {
                 }
             }
         }
+        // Parametric Transformer
+        if let dailyNote = dailyNote as? GeneralNote4GI, dailyNote.transformerInfo.obtained {
+            let paraTransIntel = dailyNote.transformerInfo
+            InformationRowView("app.dailynote.card.parametricTransformer.label".i18nPZHelper) {
+                HStack(spacing: 10) {
+                    AccountKit.imageAsset("gi_note_transformer")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
+                        .frame(width: iconFrame, height: iconFrame)
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        Spacer()
+
+                        // Time
+                        if paraTransIntel.recoveryTime > .now {
+                            (
+                                Text(paraTransIntel.recoveryTime, style: .relative)
+                                    + Text(verbatim: "\n")
+                                    + Text(dateFormatter.string(from: paraTransIntel.recoveryTime))
+                            )
+                            .multilineTextAlignment(.leading)
+                            .font(.caption2)
+                            .fontWidth(.condensed)
+                        } else {
+                            Image(systemSymbol: .checkmarkCircle)
+                                .foregroundColor(.green)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
