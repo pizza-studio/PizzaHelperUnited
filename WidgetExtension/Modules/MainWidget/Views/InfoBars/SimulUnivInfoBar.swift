@@ -14,29 +14,29 @@ import SwiftUI
 struct SimulUnivInfoBar: View {
     let dailyNote: any DailyNoteProtocol
 
-    var isSimulUnivAllCompleteImage: some View {
-        Image(systemSymbol: .ellipsis)
-            .overlayImageWithRingProgressBar(
-                1,
-                scaler: 1,
-                offset: (0.3, 0)
-            )
-    }
-
     var body: some View {
         switch dailyNote {
         case let dailyNote as WidgetNote4HSR:
+            let intel = dailyNote.simulatedUniverseInfo
+            let currentScore = intel.currentScore
+            let maxScore = intel.maxScore
+            let isFinished = currentScore == maxScore
             HStack(alignment: .center, spacing: 8) {
                 AccountKit.imageAsset("hsr_note_simulatedUniverse")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 25)
                     .shadow(color: .white, radius: 1)
-                isSimulUnivAllCompleteImage
+                Image(systemSymbol: isFinished ? .checkmark : .ellipsis)
+                    .overlayImageWithRingProgressBar(
+                        1,
+                        scaler: 1,
+                        offset: (0.3, 0)
+                    )
                     .frame(maxWidth: 13, maxHeight: 13)
                     .foregroundColor(Color("textColor3", bundle: .main))
-                let intel = dailyNote.simulatedUniverseInfo
-                Text(verbatim: "\(intel.currentScore) / \(intel.maxScore)")
+                let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
+                Text(verbatim: "\(ratio)%")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .font(.system(.caption, design: .rounded))
