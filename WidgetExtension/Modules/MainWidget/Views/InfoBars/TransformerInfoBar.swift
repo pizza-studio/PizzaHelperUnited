@@ -14,16 +14,11 @@ import SwiftUI
 struct TransformerInfoBar: View {
     let transformerInfo: GeneralNote4GI.TransformerInfo4GI
 
-    var percentage: Double {
-        let second = transformerInfo.recoveryTime.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
-        return second / Double(7 * 24 * 60 * 60)
-    }
-
     var isTransformerCompleteImage: some View {
-        (transformerInfo.recoveryTime <= Date())
+        (transformerInfo.isAvailable)
             ? Image(systemSymbol: .exclamationmark)
             .overlayImageWithRingProgressBar(
-                percentage,
+                transformerInfo.percentage,
                 scaler: 0.78
             )
             : Image(systemSymbol: .hourglass)
@@ -38,19 +33,23 @@ struct TransformerInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isTransformerCompleteImage
-
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3", bundle: .main))
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                Text(
-                    verbatim: PZWidgets.intervalFormatter.string(
-                        from: TimeInterval.sinceNow(to: transformerInfo.recoveryTime)
-                    )!
-                )
-                .foregroundColor(Color("textColor3", bundle: .main))
-                .lineLimit(1)
-                .font(.system(.body, design: .rounded))
-                .minimumScaleFactor(0.2)
+                if transformerInfo.isAvailable {
+                    Image(systemSymbol: .checkmarkCircle)
+                        .frame(maxWidth: 16)
+                } else {
+                    Text(
+                        verbatim: PZWidgets.intervalFormatter.string(
+                            from: TimeInterval.sinceNow(to: transformerInfo.recoveryTime)
+                        )!
+                    )
+                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .lineLimit(1)
+                    .font(.system(.body, design: .rounded))
+                    .minimumScaleFactor(0.2)
+                }
             }
         }
     }
