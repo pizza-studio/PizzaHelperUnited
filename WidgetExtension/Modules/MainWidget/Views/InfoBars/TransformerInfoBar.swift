@@ -40,11 +40,20 @@ struct TransformerInfoBar: View {
                     Image(systemSymbol: .checkmarkCircle)
                         .frame(maxWidth: 16)
                 } else {
-                    Text(
-                        verbatim: PZWidgets.intervalFormatter.string(
-                            from: TimeInterval.sinceNow(to: transformerInfo.recoveryTime)
-                        )!
-                    )
+                    let remainingDays = transformerInfo.remainingDays
+                    Group {
+                        if remainingDays > 0 {
+                            Text("pzWidgetsKit.unit.day:\(remainingDays)", bundle: .main)
+                        } else {
+                            Text(
+                                verbatim: PZWidgets.intervalFormatter.string(
+                                    from: TimeInterval.sinceNow(
+                                        to: transformerInfo.recoveryTime
+                                    )
+                                )!
+                            )
+                        }
+                    }
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .lineLimit(1)
                     .font(.system(.body, design: .rounded))
