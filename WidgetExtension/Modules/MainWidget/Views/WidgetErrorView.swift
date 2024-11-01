@@ -13,9 +13,19 @@ struct WidgetErrorView: View {
     let message: String
 
     var body: some View {
-        Text(error.localizedDescription)
-            .font(.title3)
-            .foregroundColor(.gray)
+        HStack(alignment: .top) {
+            Button(intent: WidgetRefreshIntent()) {
+                Image(systemSymbol: .arrowClockwiseCircle)
+                    .font(.title3)
+                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .clipShape(.circle)
+            }
+            .buttonStyle(.plain)
             .padding()
+            Text(error.localizedDescription)
+                .bold()
+                .foregroundColor(.gray)
+        }
+        .padding(20)
     }
 }
