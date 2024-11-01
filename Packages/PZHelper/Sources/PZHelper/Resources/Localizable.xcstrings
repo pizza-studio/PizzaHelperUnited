@@ -3462,7 +3462,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI設定"
+            "value" : "UI 設定"
           }
         },
         "zh-Hans" : {
@@ -3474,7 +3474,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI設定"
+            "value" : "UI 設定"
           }
         }
       }
