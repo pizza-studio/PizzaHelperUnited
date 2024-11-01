@@ -212,7 +212,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Locale Profile"
+            "value" : "Local Profile"
           }
         },
         "ja" : {
@@ -1006,7 +1006,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Locale profile"
+            "value" : "Local profile"
           }
         },
         "ja" : {
