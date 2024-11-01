@@ -152,7 +152,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please go to the Settings Page to check possible connectivity issues with this locale profile."
+            "value" : "Please go to the Settings Page to check possible connectivity issues with this local profile."
           }
         },
         "ja" : {
@@ -1834,7 +1834,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Failed from dumping all locale profiles."
+            "value" : "Failed from dumping all local profiles."
           }
         },
         "ja" : {
@@ -1863,7 +1863,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully dumped all locale profiles into file:"
+            "value" : "Successfully dumped all local profiles into file:"
           }
         },
         "ja" : {
@@ -1921,7 +1921,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully dumped all locale profiles."
+            "value" : "Successfully dumped all local profiles."
           }
         },
         "ja" : {
@@ -2180,7 +2180,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Locale Profile"
+            "value" : "Local Profile"
           }
         },
         "ja" : {
@@ -2788,7 +2788,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Force-push your locale profiles to paired Apple Watch"
+            "value" : "Force-push your local profiles to paired Apple Watch"
           }
         },
         "ja" : {
