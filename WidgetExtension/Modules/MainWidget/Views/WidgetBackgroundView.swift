@@ -33,6 +33,7 @@ struct WidgetBackgroundView: View {
                     Image(backgroundIconName, bundle: .main)
                         .resizable()
                         .scaledToFill()
+                        .brightness(0.2)
                         .opacity(0.05)
                         .padding()
                         .frame(width: g.size.width, height: g.size.height)
