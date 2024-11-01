@@ -13,8 +13,6 @@ struct WidgetBackgroundView: View {
     let background: WidgetBackgroundAppEntity
     let darkModeOn: Bool
 
-    @State var proxy: GeometryProxy?
-
     var backgroundColors: [Color] { background.colors }
     var backgroundIconName: String? { background.iconName }
     var backgroundImageName: String? { background.imageName }
@@ -37,9 +35,6 @@ struct WidgetBackgroundView: View {
                         .opacity(0.05)
                         .padding()
                         .frame(width: g.size.width, height: g.size.height)
-                        .onAppear {
-                            proxy = g
-                        }
                 }
             }
 
