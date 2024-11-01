@@ -1977,19 +1977,19 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld点スタミナまで"
+            "value" : "%lld 点スタミナまで"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "距离%lld点体力:"
+            "value" : "距离 %lld 点体力:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "距离%lld點體力:"
+            "value" : "距离 %lld 點體力:"
           }
         }
       }
@@ -2390,7 +2390,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "日"
+                  "value" : "%lld 日"
                 }
               }
             }
@@ -2402,7 +2402,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "天"
+                  "value" : "%lld 天"
                 }
               }
             }
@@ -2414,7 +2414,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "天"
+                  "value" : "%lld 天"
                 }
               }
             }
