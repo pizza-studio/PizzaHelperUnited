@@ -160,36 +160,6 @@ struct LockScreenAllInfoWidgetView: View {
                     GridRow(alignment: .lastTextBaseline) {
                         switch data {
                         case let data as any Note4GI:
-                            Text("\(Image("icon.homeCoin", bundle: .main))")
-                                .widgetAccentable(widgetRenderingMode == .fullColor)
-                                .foregroundColor(
-                                    widgetRenderingMode == .fullColor ? Color("iconColor.homeCoin", bundle: .main) :
-                                        nil
-                                )
-                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoinDynamic)")
-                        case let data as Note4HSR:
-                            if let data = data as? WidgetNote4HSR {
-                                // Simulated Universe
-                                Text("\(Image(systemSymbol: .globeBadgeChevronBackward))")
-                                    .widgetAccentable(widgetRenderingMode == .fullColor)
-                                    .foregroundColor(
-                                        widgetRenderingMode == .fullColor ? Color(
-                                            "iconColor.homeCoin",
-                                            bundle: .main
-                                        ) : nil
-                                    )
-                                let currentScore = data.simulatedUniverseInfo.currentScore
-                                let maxScore = data.simulatedUniverseInfo.maxScore
-                                Text(verbatim: "\(currentScore) / \(maxScore)")
-                            } else {
-                                EmptyView()
-                            }
-                        case _ as Note4ZZZ: EmptyView() // TODO: 可以额外扩充其他内容。
-                        default: EmptyView()
-                        }
-                        Spacer()
-                        switch data {
-                        case let data as any Note4GI:
                             Text("\(Image("icon.dailyTask", bundle: .main))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
                                 .foregroundColor(
@@ -228,7 +198,7 @@ struct LockScreenAllInfoWidgetView: View {
                             }
                         case let data as Note4ZZZ:
                             // Vitality
-                            Text(verbatim: "VITALITY")
+                            Text("\(Image("icon.dailyTask", bundle: .main))")
                             HStack(
                                 alignment: .lastTextBaseline,
                                 spacing: 0
@@ -237,6 +207,37 @@ struct LockScreenAllInfoWidgetView: View {
                                 Text(verbatim: " / \(data.vitality.max)")
                                     .font(.caption)
                             }
+                        default: EmptyView()
+                        }
+                        Spacer()
+                        switch data {
+                        case let data as any Note4GI:
+                            Text("\(Image("icon.homeCoin", bundle: .main))")
+                                .widgetAccentable(widgetRenderingMode == .fullColor)
+                                .foregroundColor(
+                                    widgetRenderingMode == .fullColor ? Color("iconColor.homeCoin", bundle: .main) :
+                                        nil
+                                )
+                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoinDynamic)")
+                        case let data as Note4HSR:
+                            if let data = data as? WidgetNote4HSR {
+                                // Simulated Universe
+                                Text("\(Image("icon.simulatedUniverse", bundle: .main))")
+                                    .widgetAccentable(widgetRenderingMode == .fullColor)
+                                    .foregroundColor(
+                                        widgetRenderingMode == .fullColor ? Color(
+                                            "iconColor.homeCoin",
+                                            bundle: .main
+                                        ) : nil
+                                    )
+                                let currentScore = data.simulatedUniverseInfo.currentScore
+                                let maxScore = data.simulatedUniverseInfo.maxScore
+                                let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
+                                Text(verbatim: "\(ratio)%")
+                            } else {
+                                EmptyView()
+                            }
+                        case _ as Note4ZZZ: EmptyView() // TODO: 可以额外扩充其他内容。
                         default: EmptyView()
                         }
                     }
