@@ -40,7 +40,7 @@ struct LockScreenLoopWidgetTransformerCircular: View {
                 switch data {
                 case let data as GeneralNote4GI:
                     let recovertyTime = data.transformerInfo.recoveryTime
-                    if recovertyTime.timeIntervalSince(.now) <= 0 {
+                    if data.transformerInfo.isAvailable {
                         Text("pzWidgetsKit.infoBlock.transformerAvailable", bundle: .main)
                             .font(.system(.body, design: .rounded).weight(.medium))
                     } else {
