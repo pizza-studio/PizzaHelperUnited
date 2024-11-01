@@ -379,6 +379,36 @@
         }
       }
     },
+    "app.dailynote.card.unit.days" : {
+      "comment" : "Only one or two characters are allowed.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天"
+          }
+        }
+      }
+    },
     "app.dailynote.card.weeklyBoss" : {
       "extractionState" : "manual",
       "localizations" : {

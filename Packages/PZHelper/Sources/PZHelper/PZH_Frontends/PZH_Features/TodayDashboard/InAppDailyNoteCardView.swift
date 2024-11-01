@@ -204,7 +204,7 @@ private struct NoteView: View {
         let iconFrame: CGFloat = 40
 
         // Resin
-        InformationRowView("app.dailynote.card.resin.label".i18nPZHelper) {
+        VStack(alignment: .leading) {
             let resinIntel = dailyNote.resinInfo
             HStack(spacing: 10) {
                 let staminaIconName = switch dailyNote.game {
@@ -232,12 +232,63 @@ private struct NoteView: View {
                         Text(verbatim: nestedString)
                             .multilineTextAlignment(.trailing)
                             .font(.caption2)
+                            .fontWidth(.compressed)
                     }
                 }
+                // Parametric Transformer
+                if let dailyNote = dailyNote as? GeneralNote4GI, dailyNote.transformerInfo.obtained {
+                    let paraTransIntel = dailyNote.transformerInfo
+                    VStack(alignment: .leading) {
+                        HStack(spacing: 4) {
+                            AccountKit.imageAsset("gi_note_transformer")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: iconFrame - 6, height: iconFrame - 6)
+                            HStack(alignment: .lastTextBaseline, spacing: 0) {
+                                // Time
+                                if !paraTransIntel.isAvailable {
+                                    if paraTransIntel.remainingDays > 0 {
+                                        HStack(alignment: .lastTextBaseline, spacing: 4) {
+                                            Text(verbatim: "\(paraTransIntel.remainingDays)")
+                                                .font(.title)
+                                            Text(verbatim: "app.dailynote.card.unit.days".i18nPZHelper)
+                                                .font(.caption)
+                                                .fontWidth(.compressed)
+                                        }
+                                    } else {
+                                        let recoveryTime = paraTransIntel.recoveryTime
+                                        let nestedString = """
+                                        \(dateFormatter.string(from: recoveryTime))
+                                        \(
+                                            dateComponentsFormatter
+                                                .string(from: TimeInterval.sinceNow(to: recoveryTime))!
+                                        )
+                                        """
+                                        Text(verbatim: nestedString)
+                                            .multilineTextAlignment(.trailing)
+                                            .font(.caption2)
+                                            .fontWidth(.compressed)
+                                    }
+                                } else {
+                                    Image(systemSymbol: .checkmarkCircle)
+                                        .foregroundColor(.green)
+                                        .frame(width: 20, height: 20)
+                                }
+                            }
+                        }
+                    }
+                    .help(Text("app.dailynote.card.parametricTransformer.label".i18nPZHelper))
+                    .padding(.horizontal, 6)
+                    .background(
+                        .regularMaterial,
+                        in: RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    )
+                }
             }
-        }
+        }.help(Text("app.dailynote.card.resin.label".i18nPZHelper))
+
         // Daily Task
-        InformationRowView("app.dailynote.card.dailyTask.label".i18nPZHelper) {
+        VStack(alignment: .leading) {
             let dailyTask = dailyNote.dailyTaskInfo
             HStack(spacing: 10) {
                 AccountKit.imageAsset("gi_note_dailyTask")
@@ -255,16 +306,45 @@ private struct NoteView: View {
                         case true:
                             Text("app.dailynote.card.dailyTask.extraReward.received".i18nPZHelper)
                                 .font(.caption2)
+                                .fontWidth(.compressed)
                         case false:
                             Text("app.dailynote.card.dailyTask.extraReward.notReceived".i18nPZHelper)
                                 .font(.caption2)
+                                .fontWidth(.compressed)
                         }
                     }
                 }
+                if let dailyNote = dailyNote as? GeneralNote4GI {
+                    HStack(spacing: 4) {
+                        AccountKit.imageAsset("gi_note_weeklyBosses")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: iconFrame - 6, height: iconFrame - 6)
+                        let weeklyBossesInfo = dailyNote.weeklyBossesInfo
+                        if weeklyBossesInfo.remainResinDiscount == 0 {
+                            Image(systemSymbol: .checkmarkCircle)
+                                .foregroundColor(.green)
+                                .frame(width: 20, height: 20)
+                        } else {
+                            HStack(alignment: .lastTextBaseline, spacing: 0) {
+                                Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
+                                    .font(.title)
+                                Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
+                                    .font(.caption)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 6)
+                    .background(
+                        .regularMaterial,
+                        in: RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    )
+                }
             }
-        }
+        }.help(Text("app.dailynote.card.dailyTask.label".i18nPZHelper))
+
         // Coin
-        InformationRowView("app.dailynote.card.homeCoin.label".i18nPZHelper) {
+        VStack(alignment: .leading) {
             let homeCoin = dailyNote.homeCoinInfo
             HStack(spacing: 10) {
                 AccountKit.imageAsset("gi_note_teapot_coin")
@@ -287,12 +367,14 @@ private struct NoteView: View {
                         Text(verbatim: nestedString)
                             .multilineTextAlignment(.trailing)
                             .font(.caption2)
+                            .fontWidth(.compressed)
                     }
                 }
             }
-        }
+        }.help(Text("app.dailynote.card.homeCoin.label".i18nPZHelper))
+
         // Expedition
-        InformationRowView("app.dailynote.card.expedition.label".i18nPZHelper) {
+        VStack(alignment: .leading) {
             let expeditionInfo = dailyNote.expeditions
             HStack(spacing: 10) {
                 AccountKit.imageAsset("gi_note_expedition")
@@ -306,7 +388,7 @@ private struct NoteView: View {
                     Text(verbatim: " / \(expeditionInfo.maxExpeditionsCount)")
                         .font(.caption)
                     Spacer()
-                    HStack {
+                    HStack(spacing: 0) {
                         ForEach(expeditionInfo.expeditions, id: \.iconURL) { expedition in
                             AsyncImage(url: expedition.iconURL) { image in
                                 GeometryReader { g in
@@ -326,37 +408,7 @@ private struct NoteView: View {
                     }
                 }
             }
-        }
-        // Parametric Transformer
-        if let dailyNote = dailyNote as? GeneralNote4GI, dailyNote.transformerInfo.obtained {
-            let paraTransIntel = dailyNote.transformerInfo
-            InformationRowView("app.dailynote.card.parametricTransformer.label".i18nPZHelper) {
-                HStack(spacing: 10) {
-                    AccountKit.imageAsset("gi_note_transformer")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
-                        .frame(width: iconFrame, height: iconFrame)
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        Spacer()
-
-                        // Time
-                        if paraTransIntel.recoveryTime > .now {
-                            let nestedString = """
-                            \(dateFormatter.string(from: paraTransIntel.recoveryTime))
-                            \(dateFormatter.string(from: paraTransIntel.recoveryTime))
-                            """
-                            Text(verbatim: nestedString)
-                                .multilineTextAlignment(.trailing)
-                                .font(.caption2)
-                        } else {
-                            Image(systemSymbol: .checkmarkCircle)
-                                .foregroundColor(.green)
-                        }
-                    }
-                }
-            }
-        }
+        }.help("app.dailynote.card.expedition.label".i18nPZHelper)
     }
 }
 
@@ -365,7 +417,7 @@ private struct NoteView: View {
 private struct AssignmentView4HSR: View {
     // MARK: Public
 
-    @MainActor public var body: some View {
+    public var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .center, spacing: 4) {
                 // Avatar Icon
@@ -395,7 +447,7 @@ private struct AssignmentView4HSR: View {
                 )
                 .multilineTextAlignment(.leading)
                 .font(.caption2)
-                .fontWidth(.condensed)
+                .fontWidth(.compressed)
             } else {
                 Image(systemSymbol: .checkmarkCircle)
                     .foregroundColor(.green)
@@ -415,7 +467,7 @@ private struct DailyNoteCardErrorView: View {
     public let profile: PZProfileMO
     public var error: Error
 
-    @MainActor public var body: some View {
+    public var body: some View {
         Label {
             Text("app.dailynote.card.error.pleaseCheckAtProfileMgr".i18nPZHelper)
         } icon: {
