@@ -13,7 +13,7 @@ struct WeeklyBossesInfoBar: View {
     let weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI
 
     var isWeeklyBossesFinishedImage: some View {
-        (weeklyBossesInfo.remainResinDiscount == weeklyBossesInfo.totalResinDiscount)
+        (weeklyBossesInfo.remainResinDiscount == 0)
             ? Image(systemSymbol: .checkmark)
             .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
             : Image(systemSymbol: .questionmark)
