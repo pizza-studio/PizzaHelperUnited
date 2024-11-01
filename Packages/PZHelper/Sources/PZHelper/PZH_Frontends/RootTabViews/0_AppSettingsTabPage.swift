@@ -48,6 +48,8 @@ struct AppSettingsTabPage: View {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
                 }
 
+                WatchDataPusherButton()
+
                 if Pizza.isAppStoreRelease {
                     Section {
                         ASReviewHandler.makeRatingButton()

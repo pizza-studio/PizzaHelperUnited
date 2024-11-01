@@ -2782,6 +2782,93 @@
         }
       }
     },
+    "settings.appleWatchPusher.force_push" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force-push your locale profiles to paired Apple Watch"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該当端末の全てのプロファイルをペアリング済みのApple Watchに押し込む"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将本地账号全部推送至已配对的 Apple Watch"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將本機帳號全部推送至已配對的 Apple Watch"
+          }
+        }
+      }
+    },
+    "settings.appleWatchPusher.force_push.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is useful when the synchronization-via-iCloud feature defects on your Apple Watch."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple WatchでのiCloud経由のプロファイル同期が利用できぬ場合にのみ役立つ機能である。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在您的Apple Watch上无法借由iCloud同步本地账号时，得使用该功能。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在您的Apple Watch上無法藉由iCloud同步本機帳號時，得使用該功能。"
+          }
+        }
+      }
+    },
+    "settings.appleWatchPusher.force_push.received" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully retrieved the following local profiles from iOS device:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS 端末から下記のプロファイルを受け取りました: "
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成功从 iOS 设备接收到下述本地账号:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成功從 iOS 裝置接收到下述本機帳號:"
+          }
+        }
+      }
+    },
     "settings.disclaimer.requiringAppRebootToApplySettings" : {
       "extractionState" : "manual",
       "localizations" : {
