@@ -256,8 +256,18 @@ struct LockScreenAllInfoWidgetView: View {
                                 [.day],
                                 from: Date(),
                                 to: data.transformerInfo.recoveryTime
-                            ).day!
-                            Text("pzWidgetsKit.unit.day:\(day)", bundle: .main)
+                            ).day
+                            if let day {
+                                Text("pzWidgetsKit.unit.day:\(day)", bundle: .main)
+                            } else if let mins = Calendar.current.dateComponents(
+                                [.minute],
+                                from: Date(),
+                                to: data.transformerInfo.recoveryTime
+                            ).minute {
+                                Text("pzWidgetsKit.unit.minute:\(mins)", bundle: .main)
+                            } else {
+                                Text("\(Image(systemSymbol: .checkmarkCircle))")
+                            }
                             Spacer()
                             Text("\(Image("icon.weeklyBosses", bundle: .main))")
                                 .widgetAccentable(widgetRenderingMode == .fullColor)
