@@ -79,7 +79,6 @@ struct DetailInfo: View {
                 }
             case _ as Note4ZZZ:
                 DailyTaskInfoBar(dailyNote: dailyNote)
-                // TODO: 刮刮乐，等。
             default:
                 EmptyView()
             }

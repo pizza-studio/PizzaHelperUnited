@@ -421,25 +421,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please wait for the data to sync from iCloud"
+            "value" : "Please wait for the data to sync from iCloud. If you are on TestFlight, you probably have to force-push the local profiles to this watch from the iOS version of this app."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "プロファイル資料がiCloudから同期してくるのを待ってください"
+            "value" : "プロファイル資料がiCloudから同期してくるのを待ってください。TestFlight の場合、弊アプリのiOS版から該当端末へ押し込む必要もある場合がございます。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请等待账号从iCloud同步"
+            "value" : "请等待账号从iCloud同步。如果您使用的是 TestFlight 版本的话，您可能需要通过敝应用的 iOS 版强制向当前手表推送本地账号资料。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請等待帳號從iCloud同步"
+            "value" : "請等待帳號從iCloud同步。如果您使用的是 TestFlight 版本的話，您可能需要藉由敝應用的 iOS 版強制向當前手錶推送本機帳號資料。"
           }
         }
       }
