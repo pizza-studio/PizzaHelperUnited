@@ -101,15 +101,31 @@ extension WatchConnectivityManager: WCSessionDelegate {
         print("Received accounts")
         let data = try! JSONSerialization.data(withJSONObject: message as NSDictionary)
         let accountReceived = try! JSONDecoder().decode(PZProfileMO.self, from: data)
-
-        let context = ModelContext(PZProfileActor.shared.modelContainer)
-        context.insert(accountReceived)
-        do {
-            try context.save()
-        } catch {
-            print("save account failed: \(error)")
-        }
         // sharedAccounts.append(accountReceived)
+
+        var existingUUID = accountReceived.uuid
+        let context = ModelContext(PZProfileActor.shared.modelContainer)
+        // 開始處理資料插入。
+        let descriptor = FetchDescriptor<PZProfileMO>()
+        var fetched = (try? context.fetch(descriptor)) ?? []
+        // 如果有既有重複記錄的話，先刪得只剩一個，然後覆蓋其所有資料欄目值。
+        if !fetched.isEmpty {
+            fetched.sort { $0.priority < $1.priority }
+            while fetched.count > 1, let lastObj = fetched.last, let firstObj = fetched.first {
+                context.delete(lastObj)
+                fetched.removeLast()
+                guard fetched.count == 1 else { continue }
+            }
+        } else {
+            // 沒有的話，直接插入。
+            context.insert(accountReceived)
+            do {
+                try context.save()
+            } catch {
+                print("save account failed: \(error)")
+            }
+        }
+        // 處理結束。
     }
 
     public func session(

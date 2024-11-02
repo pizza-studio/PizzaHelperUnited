@@ -82,7 +82,6 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
 
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.deviceID = UUID().uuidString
         self.allowNotification = try container.decode(Bool.self, forKey: .allowNotification)
         self.cookie = try container.decode(String.self, forKey: .cookie)
         self.deviceFingerPrint = try container.decode(String.self, forKey: .deviceFingerPrint)
@@ -167,6 +166,7 @@ public struct FakePZProfileMO: ProfileMOProtocol {
     public init(game: PZBaseKit.Pizza.SupportedGame, uid: String) {
         self.game = game
         self.uid = uid
+        self.server = .asia(game)
     }
 
     // MARK: Public
@@ -181,6 +181,8 @@ public struct FakePZProfileMO: ProfileMOProtocol {
     public var serverRawValue: String = ""
     public var sTokenV2: String? = ""
     public var uuid: UUID = .init()
+    public var deviceID: String = ""
+    public var server: HoYo.Server = .asia(.genshinImpact)
 
     public var id: UUID { uuid }
 }
