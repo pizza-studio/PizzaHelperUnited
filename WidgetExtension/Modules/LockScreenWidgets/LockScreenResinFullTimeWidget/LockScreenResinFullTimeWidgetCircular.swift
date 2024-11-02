@@ -53,61 +53,49 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                     .frame(height: 9)
                     switch result {
                     case let .success(data):
-                        switch data {
-                        case let data as any Note4GI:
-                            VStack(spacing: -2) {
-                                if data.resinInfo.currentResinDynamic != data
-                                    .resinInfo.maxResin {
-                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                                        .font(.system(
-                                            size: 20,
-                                            weight: .medium,
-                                            design: .rounded
-                                        ))
-                                        .widgetAccentable()
-                                    let dateString: String = {
-                                        let formatter = DateFormatter()
-                                        formatter.dateFormat = "HH:mm"
-                                        formatter
-                                            .locale =
-                                            Locale(identifier: "en_US_POSIX")
-                                        return formatter
-                                            .string(
-                                                from: Date(
-                                                    timeIntervalSinceNow: TimeInterval
-                                                        .sinceNow(to: data.resinInfo.resinRecoveryTime)
-                                                )
+                        let staminaIntel = data.staminaIntel
+                        let timeOnFinish = data.staminaFullTimeOnFinish
+                        VStack(spacing: -2) {
+                            if staminaIntel.existing != staminaIntel.max {
+                                Text(verbatim: "\(staminaIntel.existing)")
+                                    .font(.system(
+                                        size: 20,
+                                        weight: .medium,
+                                        design: .rounded
+                                    ))
+                                    .widgetAccentable()
+                                let dateString: String = {
+                                    let formatter = DateFormatter()
+                                    formatter.dateFormat = "HH:mm"
+                                    formatter
+                                        .locale =
+                                        Locale(identifier: "en_US_POSIX")
+                                    return formatter
+                                        .string(
+                                            from: Date(
+                                                timeIntervalSinceNow: TimeInterval
+                                                    .sinceNow(to: timeOnFinish)
                                             )
-                                    }()
-                                    Text(dateString)
-                                        .font(.system(
-                                            .caption,
-                                            design: .monospaced
-                                        ))
-                                        .minimumScaleFactor(0.1)
-                                        .foregroundColor(.secondary)
-                                } else {
-                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                                        .font(.system(
-                                            size: 20,
-                                            weight: .medium,
-                                            design: .rounded
-                                        ))
-                                        .widgetAccentable()
-                                }
+                                        )
+                                }()
+                                Text(dateString)
+                                    .font(.system(
+                                        .caption,
+                                        design: .monospaced
+                                    ))
+                                    .minimumScaleFactor(0.1)
+                                    .foregroundColor(.secondary)
+                            } else {
+                                Text(verbatim: "\(staminaIntel.existing)")
+                                    .font(.system(
+                                        size: 20,
+                                        weight: .medium,
+                                        design: .rounded
+                                    ))
+                                    .widgetAccentable()
                             }
-                        default:
-                            Image(staminaMonochromeIconAssetName, bundle: .main)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 10)
-                            Image(systemSymbol: .ellipsis)
                         }
                     case .failure:
-                        Image(staminaMonochromeIconAssetName, bundle: .main)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 10)
                         Image(systemSymbol: .ellipsis)
                     }
                 }
@@ -127,57 +115,45 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                         .frame(height: 9)
                     switch result {
                     case let .success(data):
-                        switch data {
-                        case let data as any Note4GI:
-                            VStack(spacing: -2) {
-                                if data.resinInfo.currentResinDynamic != data
-                                    .resinInfo.maxResin {
-                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                                        .font(.system(
-                                            size: 20,
-                                            weight: .medium,
-                                            design: .rounded
-                                        ))
-                                        .widgetAccentable()
-                                    let dateString: String = {
-                                        let formatter = DateFormatter()
-                                        formatter.dateFormat = "HH:mm"
-                                        return formatter
-                                            .string(
-                                                from: Date(
-                                                    timeIntervalSinceNow: TimeInterval
-                                                        .sinceNow(to: data.resinInfo.resinRecoveryTime)
-                                                )
+                        let staminaIntel = data.staminaIntel
+                        let timeOnFinish = data.staminaFullTimeOnFinish
+                        VStack(spacing: -2) {
+                            if staminaIntel.existing != staminaIntel.max {
+                                Text(verbatim: "\(staminaIntel.existing)")
+                                    .font(.system(
+                                        size: 20,
+                                        weight: .medium,
+                                        design: .rounded
+                                    ))
+                                    .widgetAccentable()
+                                let dateString: String = {
+                                    let formatter = DateFormatter()
+                                    formatter.dateFormat = "HH:mm"
+                                    return formatter
+                                        .string(
+                                            from: Date(
+                                                timeIntervalSinceNow: TimeInterval
+                                                    .sinceNow(to: timeOnFinish)
                                             )
-                                    }()
-                                    Text(dateString)
-                                        .font(.system(
-                                            .caption,
-                                            design: .monospaced
-                                        ))
-                                        .minimumScaleFactor(0.1)
-                                } else {
-                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                                        .font(.system(
-                                            size: 20,
-                                            weight: .medium,
-                                            design: .rounded
-                                        ))
-                                        .widgetAccentable()
-                                }
+                                        )
+                                }()
+                                Text(dateString)
+                                    .font(.system(
+                                        .caption,
+                                        design: .monospaced
+                                    ))
+                                    .minimumScaleFactor(0.1)
+                            } else {
+                                Text(verbatim: "\(staminaIntel.existing)")
+                                    .font(.system(
+                                        size: 20,
+                                        weight: .medium,
+                                        design: .rounded
+                                    ))
+                                    .widgetAccentable()
                             }
-                        default:
-                            Image(staminaMonochromeIconAssetName, bundle: .main)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 10)
-                            Image(systemSymbol: .ellipsis)
                         }
                     case .failure:
-                        Image(staminaMonochromeIconAssetName, bundle: .main)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 10)
                         Image(systemSymbol: .ellipsis)
                     }
                 }
