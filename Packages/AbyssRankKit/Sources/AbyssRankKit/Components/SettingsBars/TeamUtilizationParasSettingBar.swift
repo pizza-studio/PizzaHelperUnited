@@ -66,7 +66,7 @@ struct TeamUtilizationAPIParameters: Sendable, Equatable {
 
     func detail() -> String {
         String(
-            format: NSLocalizedString("abyssRankKit.collection.2:%@%@%lld%@", comment: "detail"),
+            format: "abyssRankKit.collection.2:%@%@%lld%@".i18nAbyssRank,
             serverChoice.describe(),
             season.describe(),
             floor,

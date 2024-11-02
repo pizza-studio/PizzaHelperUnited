@@ -46,7 +46,7 @@ struct AvatarHoldingAPIParameters: Sendable, Equatable {
             return formatter.string(from: date)
         }()
         return String(
-            format: NSLocalizedString("abyssRankKit.rank.note.3", comment: ""),
+            format: "abyssRankKit.rank.note.3".i18nAbyssRank,
             dateString
         )
     }
