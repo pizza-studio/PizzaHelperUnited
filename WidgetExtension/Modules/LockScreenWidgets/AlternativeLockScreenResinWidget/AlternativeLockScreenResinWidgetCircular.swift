@@ -51,14 +51,9 @@ struct AlternativeLockScreenResinWidgetCircular: View {
             // ------------
             switch result {
             case let .success(data):
-                switch data {
-                case let data as any Note4GI:
-                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                        .minimumScaleFactor(0.1)
-                default:
-                    Image(systemSymbol: .ellipsis)
-                }
+                Text(verbatim: "\(data.staminaIntel.existing)")
+                    .font(.system(.body, design: .rounded).weight(.medium))
+                    .minimumScaleFactor(0.1)
             case .failure:
                 Image(systemSymbol: .ellipsis)
             }
