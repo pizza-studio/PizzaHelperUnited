@@ -221,7 +221,49 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                         .font(.footnote)
                         .foregroundColor(.secondary)
                     }
-                default: EmptyView()
+                default:
+                    let staminaIntel = data.staminaIntel
+                    Grid(alignment: .leading) {
+                        GridRow {
+                            let size: CGFloat = 10
+                            HStack(alignment: .lastTextBaseline, spacing: 0) {
+                                let iconSize: CGFloat = size * 4 / 5
+                                Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                                    .font(.system(size: iconSize))
+                                    .offset(x: -2)
+                                Text("pzWidgetsKit.stamina", bundle: .main)
+                                    .font(.system(
+                                        size: size,
+                                        weight: .medium,
+                                        design: .rounded
+                                    ))
+                            }
+                            Spacer()
+                        }
+                        GridRow(alignment: .lastTextBaseline) {
+                            let size: CGFloat = 23
+                            Text(verbatim: "\(staminaIntel.existing)")
+                                .font(.system(
+                                    size: size,
+                                    weight: .medium,
+                                    design: .rounded
+                                ))
+                            Spacer()
+                        }
+                        .fixedSize()
+                        .foregroundColor(.primary)
+                        .widgetAccentable()
+                        GridRow(alignment: .lastTextBaseline) {
+                            if staminaIntel.existing >= staminaIntel.max {
+                                Text("pzWidgetsKit.stamina.full", bundle: .main)
+                            } else {
+                                Text(verbatim: "\(format(data.staminaFullTimeOnFinish))")
+                            }
+                            Spacer()
+                        }
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                    }
                 }
             case .failure:
                 Grid(alignment: .leading) {
