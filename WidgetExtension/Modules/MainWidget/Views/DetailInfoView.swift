@@ -77,10 +77,9 @@ struct DetailInfo: View {
                 if let dailyNote = dailyNote as? WidgetNote4HSR {
                     SimulUnivInfoBar(dailyNote: dailyNote)
                 }
-            // TODO: 模擬宇宙，等。
             case _ as Note4ZZZ:
+                DailyTaskInfoBar(dailyNote: dailyNote)
                 // TODO: 刮刮乐，等。
-                EmptyView()
             default:
                 EmptyView()
             }
