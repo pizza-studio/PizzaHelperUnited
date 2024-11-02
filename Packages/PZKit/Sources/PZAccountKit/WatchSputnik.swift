@@ -10,10 +10,10 @@ import WatchConnectivity
 
 // MARK: - NotificationMessage
 
-// MARK: - WatchConnectivityManager
+// MARK: - AppleWatchSputnik
 
 @Observable
-public final class WatchConnectivityManager: NSObject, ObservableObject {
+public final class AppleWatchSputnik: NSObject, ObservableObject {
     // MARK: Lifecycle
 
     private override init() {
@@ -32,7 +32,7 @@ public final class WatchConnectivityManager: NSObject, ObservableObject {
         public let text: String
     }
 
-    @MainActor public static let shared = WatchConnectivityManager()
+    @MainActor public static let shared = AppleWatchSputnik()
 
     public static var isSupported: Bool {
         WCSession.isSupported()
@@ -62,7 +62,7 @@ public final class WatchConnectivityManager: NSObject, ObservableObject {
         }
     }
 
-    public func sendAccounts(_ account: PZProfileMO, _ message: String) {
+    public func sendAccounts(_ accounts: [PZProfileSendable], _ message: String) {
         print("Send account")
         guard WCSession.default.activationState == .activated else {
             return
@@ -77,7 +77,12 @@ public final class WatchConnectivityManager: NSObject, ObservableObject {
         }
         #endif
 
-        let jsonData = try! JSONEncoder().encode(account)
+        var accountMap = [String: PZProfileSendable]()
+        accounts.forEach {
+            accountMap[$0.uidWithGame] = $0
+        }
+
+        let jsonData = try! JSONEncoder().encode(accountMap)
         let nsDictData = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
 
         WCSession.default.sendMessage(nsDictData, replyHandler: nil) { error in
@@ -93,37 +98,50 @@ public final class WatchConnectivityManager: NSObject, ObservableObject {
 
 // MARK: WCSessionDelegate
 
-extension WatchConnectivityManager: WCSessionDelegate {
+extension AppleWatchSputnik: WCSessionDelegate {
     public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         if let notificationText = message[kMessageKey] as? String {
             notificationMessage = NotificationMessage(text: notificationText)
         }
         print("Received accounts")
         let data = try! JSONSerialization.data(withJSONObject: message as NSDictionary)
-        let accountReceived = try! JSONDecoder().decode(PZProfileMO.self, from: data)
+        var accountMapReceived = try! JSONDecoder().decode([String: PZProfileSendable].self, from: data)
         // sharedAccounts.append(accountReceived)
 
-        var existingUUID = accountReceived.uuid
         let context = ModelContext(PZProfileActor.shared.modelContainer)
         // 開始處理資料插入。
         let descriptor = FetchDescriptor<PZProfileMO>()
         var fetched = (try? context.fetch(descriptor)) ?? []
         // 如果有既有重複記錄的話，先刪得只剩一個，然後覆蓋其所有資料欄目值。
         if !fetched.isEmpty {
-            fetched.sort { $0.priority < $1.priority }
-            while fetched.count > 1, let lastObj = fetched.last, let firstObj = fetched.first {
-                context.delete(lastObj)
-                fetched.removeLast()
-                guard fetched.count == 1 else { continue }
+            var uidHandled = Set<String>()
+            fetched.forEach { oldProfile in
+                let matched = accountMapReceived[oldProfile.uidWithGame]
+                guard let matched else {
+                    // 删除已经不存在的 Profile。
+                    context.delete(oldProfile)
+                    return
+                }
+                if !uidHandled.contains(oldProfile.uidWithGame) {
+                    let uuidBackup = oldProfile.uuid
+                    oldProfile.inherit(from: matched.asMO)
+                    oldProfile.uuid = uuidBackup
+                    uidHandled.insert(oldProfile.uidWithGame)
+                } else {
+                    // 删除已经处理过的重复的 Profile。
+                    context.delete(oldProfile)
+                    return
+                }
             }
-        } else {
-            // 沒有的話，直接插入。
-            context.insert(accountReceived)
-            do {
-                try context.save()
-            } catch {
-                print("save account failed: \(error)")
-            }
+            // 筛选掉已经处理过的传入的 profile，然后就只剩下需要全新插入的 profile。
+            uidHandled.forEach { accountMapReceived.removeValue(forKey: $0) }
+        }
+        accountMapReceived.values.forEach { context.insert($0.asMO) }
+
+        do {
+            try context.save()
+        } catch {
+            print("save account failed: \(error)")
         }
         // 處理結束。
     }

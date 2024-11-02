@@ -12,18 +12,18 @@ struct WatchDataPusherButton: View {
     // MARK: Internal
 
     var body: some View {
-        if WatchConnectivityManager.isSupported {
+        if AppleWatchSputnik.isSupported {
             Section {
                 Button {
                     var accountInfo = "settings.appleWatchPusher.force_push.received".i18nPZHelper
                     accountInfo += "\n"
                     for account in pzProfiles {
                         accountInfo += "\(account.name) (\(account.uidWithGame))\n"
-                        accountInfo += "\n"
                     }
-                    for account in pzProfiles {
-                        WatchConnectivityManager.shared.sendAccounts(account, accountInfo)
-                    }
+                    AppleWatchSputnik.shared.sendAccounts(
+                        pzProfiles.map(\.asSendable),
+                        accountInfo
+                    )
                 } label: {
                     Label(
                         "settings.appleWatchPusher.force_push".i18nPZHelper,
