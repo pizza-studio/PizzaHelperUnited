@@ -57,16 +57,18 @@ struct WatchWidgetSettingView: View {
                     HStack {
                         Text("watch.widget.settings.sync.frequency.title", bundle: .module)
                         Spacer()
-                        Text(String(
-                            format: NSLocalizedString("watch.widget.settings.sync.speed:%@", comment: ""),
-                            lockscreenWidgetRefreshFrequencyFormated
-                        ))
+                        Text(
+                            "watch.widget.settings.sync.speed:\(lockscreenWidgetRefreshFrequencyFormated)",
+                            bundle: .module
+                        )
                         .foregroundColor(.accentColor)
                     }
                 }
             }
             Section {
-                Toggle("watch.widget.simplifiedMode.title", isOn: $watchWidgetUseSimplifiedMode)
+                Toggle(isOn: $watchWidgetUseSimplifiedMode) {
+                    Text("watch.widget.simplifiedMode.title", bundle: .module)
+                }
             } footer: {
                 Text("watch.widget.simplifiedMode.note", bundle: .module)
             }
@@ -79,10 +81,7 @@ struct WatchWidgetSettingView: View {
                             Text("watch.widget.realmCurrency.speed", bundle: .module)
                             Spacer()
                             Text(String(
-                                format: NSLocalizedString(
-                                    "watch.realmCurrency.speed.detail",
-                                    comment: ""
-                                ),
+                                format: "watch.realmCurrency.speed.detail".i18nWatch,
                                 Int(homeCoinRefreshFrequency)
                             ))
                             .foregroundColor(.accentColor)
@@ -120,10 +119,10 @@ private struct QueryFrequencySettingView: View {
     var body: some View {
         VStack {
             Text("watch.widget.settings.sync.frequency.title", bundle: .module).foregroundColor(.accentColor)
-            Text(String(
-                format: NSLocalizedString("watch.widget.settings.sync.speed:%@", comment: ""),
-                lockscreenWidgetRefreshFrequencyFormated
-            ))
+            Text(
+                "watch.widget.settings.sync.speed:\(lockscreenWidgetRefreshFrequencyFormated)",
+                bundle: .module
+            )
             .font(.title3)
             Slider(
                 value: $lockscreenWidgetSyncFrequencyInMinute,
@@ -146,7 +145,7 @@ private struct HomeCoinRecoverySettingView: View {
         VStack {
             Text("watch.widget.realmCurrency.speed", bundle: .module).foregroundColor(.accentColor)
             Text(String(
-                format: NSLocalizedString("watch.realmCurrency.speed.detail", comment: ""),
+                format: "watch.realmCurrency.speed.detail".i18nWatch,
                 Int(homeCoinRefreshFrequency)
             ))
             .font(.title3)
