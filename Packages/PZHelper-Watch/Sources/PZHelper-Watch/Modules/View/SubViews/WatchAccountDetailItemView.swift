@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct WatchAccountDetailItemView: View {
-    var title: String
+    var title: LocalizedStringKey
     var value: String
     var icon: Image?
 
@@ -18,7 +18,7 @@ struct WatchAccountDetailItemView: View {
                         .frame(width: 15, height: 15)
                         .scaledToFit()
                 }
-                Text(LocalizedStringKey(title))
+                Text(title, bundle: .module)
                     .foregroundColor(.gray)
                     .font(.subheadline)
                     .lineLimit(1)

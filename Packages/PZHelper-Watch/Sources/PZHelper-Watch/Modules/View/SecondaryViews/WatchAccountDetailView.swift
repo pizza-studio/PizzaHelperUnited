@@ -22,78 +22,68 @@ struct WatchAccountDetailView: View {
                     Divider()
                     VStack(alignment: .leading, spacing: 5) {
                         switch data {
-                        case let data as GeneralNote4GI:
+                        case let data as any Note4GI:
                             WatchAccountDetailItemView(
-                                title: "app.dailynote.card.dailyTask.label",
+                                title: "watch.dailyNote.card.dailyTask.label",
                                 value: "\(data.dailyTaskInfo.finishedTaskCount) / \(data.dailyTaskInfo.totalTaskCount)",
-                                icon: Image("每日任务")
+                                icon: AccountKit.imageAsset("gi_note_dailyTask")
                             )
                             Divider()
                             WatchAccountDetailItemView(
-                                title: "app.dailynote.card.homeCoin.label",
+                                title: "watch.dailyNote.card.homeCoin.label",
                                 value: "\(data.homeCoinInfo.currentHomeCoin)",
-                                icon: Image("洞天宝钱")
+                                icon: AccountKit.imageAsset("gi_note_teapot_coin")
                             )
                             Divider()
                             WatchAccountDetailItemView(
-                                title: "app.dailynote.card.transformer",
-                                value: intervalFormatter
-                                    .string(
-                                        from: TimeInterval
-                                            .sinceNow(to: data.transformerInfo.recoveryTime)
-                                    )!,
-                                icon: Image("参量质变仪")
-                            )
-                            Divider()
-                            WatchAccountDetailItemView(
-                                title: "app.dailynote.card.weeklyBoss",
-                                value: "\(data.weeklyBossesInfo.remainResinDiscount) / \(data.weeklyBossesInfo.totalResinDiscount)",
-                                icon: Image("征讨领域")
-                            )
-                            Divider()
-                            WatchAccountDetailItemView(
-                                title: "app.dailynote.card.expedition.label",
+                                title: "watch.dailyNote.card.expedition.label",
                                 value: "\(data.expeditions.ongoingExpeditionCount) / \(data.expeditions.maxExpeditionsCount)",
-                                icon: Image("派遣探索")
+                                icon: AccountKit.imageAsset("gi_note_expedition")
                             )
-                        case let data as WidgetNote4GI:
+                            if let data = data as? GeneralNote4GI {
+                                Divider()
+                                WatchAccountDetailItemView(
+                                    title: "watch.dailyNote.card.transformer",
+                                    value: intervalFormatter
+                                        .string(
+                                            from: TimeInterval
+                                                .sinceNow(to: data.transformerInfo.recoveryTime)
+                                        )!,
+                                    icon: AccountKit.imageAsset("gi_note_transformer")
+                                )
+                                Divider()
+                                WatchAccountDetailItemView(
+                                    title: "watch.dailyNote.card.weeklyBoss",
+                                    value: "\(data.weeklyBossesInfo.remainResinDiscount) / \(data.weeklyBossesInfo.totalResinDiscount)",
+                                    icon: AccountKit.imageAsset("gi_note_weeklyBosses")
+                                )
+                            }
+                        case let data as Note4HSR:
+                            if let data = data as? WidgetNote4HSR {
+                                WatchAccountDetailItemView(
+                                    title: "watch.dailyNote.card.dailyTask.label",
+                                    value: "\(data.dailyTrainingInfo.currentScore) / \(data.dailyTrainingInfo.maxScore)",
+                                    icon: AccountKit.imageAsset("gi_note_dailyTask")
+                                )
+                                Divider()
+                                WatchAccountDetailItemView(
+                                    title: "watch.dailyNote.card.simulatedUniverse.label",
+                                    value: "\(data.dailyTrainingInfo.currentScore) / \(data.dailyTrainingInfo.maxScore)",
+                                    icon: AccountKit.imageAsset("hsr_note_simulatedUniverse")
+                                )
+                                Divider()
+                            }
                             WatchAccountDetailItemView(
-                                title: "app.dailynote.card.dailyTask.label",
-                                value: "\(data.dailyTaskInfo.finishedTaskCount) / \(data.dailyTaskInfo.totalTaskCount)",
-                                icon: Image("每日任务")
-                            )
-                            Divider()
-                            WatchAccountDetailItemView(
-                                title: "app.dailynote.card.homeCoin.label",
-                                value: "\(data.homeCoinInfo.currentHomeCoin)",
-                                icon: Image("洞天宝钱")
-                            )
-                            Divider()
-                            WatchAccountDetailItemView(
-                                title: "app.dailynote.card.expedition.label",
-                                value: "\(data.expeditions.ongoingExpeditionCount) / \(data.expeditions.maxExpeditionsCount)",
-                                icon: Image("派遣探索")
-                            )
-                        case let data as GeneralNote4HSR:
-                            WatchAccountDetailItemView(
-                                title: "app.dailynote.card.expedition.label",
+                                title: "watch.dailyNote.card.expedition.label",
                                 value: "\(data.assignmentInfo.onGoingAssignmentNumber) / \(data.assignmentInfo.totalAssignmentNumber)",
-                                icon: Image("派遣探索")
+                                icon: AccountKit.imageAsset("gi_note_expedition")
                             )
-                        case let data as WidgetNote4HSR:
+                        case let data as Note4ZZZ:
                             WatchAccountDetailItemView(
-                                title: "app.dailynote.card.dailyTask.label",
-                                value: "\(data.dailyTrainingInfo.currentScore) / \(data.dailyTrainingInfo.maxScore)",
-                                icon: Image("每日任务")
+                                title: "watch.dailyNote.card.vitality.label",
+                                value: "\(data.vitality.current) / \(data.vitality.max)",
+                                icon: AccountKit.imageAsset("gi_note_dailyTask")
                             )
-                            Divider()
-                            WatchAccountDetailItemView(
-                                title: "app.dailynote.card.expedition.label",
-                                value: "\(data.assignmentInfo.onGoingAssignmentNumber) / \(data.assignmentInfo.totalAssignmentNumber)",
-                                icon: Image("派遣探索")
-                            )
-                        case _ as Note4ZZZ:
-                            EmptyView()
                         // TODO: 絕區零的其他內容擴充。
                         default: EmptyView()
                         }
