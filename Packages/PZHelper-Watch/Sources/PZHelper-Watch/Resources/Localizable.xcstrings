@@ -304,6 +304,7 @@
       }
     },
     "watch.realmCurrency.speed.detail" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -500,6 +501,7 @@
       }
     },
     "watch.widget.settings.sync.speed:%@" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
