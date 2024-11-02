@@ -111,7 +111,7 @@ extension AppleWatchSputnik: WCSessionDelegate {
         let context = ModelContext(PZProfileActor.shared.modelContainer)
         // 開始處理資料插入。
         let descriptor = FetchDescriptor<PZProfileMO>()
-        var fetched = (try? context.fetch(descriptor)) ?? []
+        let fetched = (try? context.fetch(descriptor)) ?? []
         // 如果有既有重複記錄的話，先刪得只剩一個，然後覆蓋其所有資料欄目值。
         if !fetched.isEmpty {
             var uidHandled = Set<String>()
