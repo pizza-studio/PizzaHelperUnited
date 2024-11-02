@@ -36,7 +36,8 @@ struct LockScreenHomeCoinWidgetCircular: View {
                     Text(verbatim: "\(data.homeCoinInfo.currentHomeCoinDynamic)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 default:
-                    Image(systemSymbol: .ellipsis)
+                    Text(verbatim: "WRONG GAME").fixedSize().fontWidth(.compressed)
+                        .minimumScaleFactor(0.2)
                 }
             case .failure:
                 Image(systemSymbol: .ellipsis)
