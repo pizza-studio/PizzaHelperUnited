@@ -80,7 +80,7 @@ public struct ContentView: View {
 
     // MARK: Private
 
-    @StateObject private var connectivityManager = WatchConnectivityManager.shared
+    @StateObject private var connectivityManager = AppleWatchSputnik.shared
 }
 
 // MARK: - DetailNavigator

@@ -138,6 +138,22 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         try container.encode(deviceID, forKey: .deviceID)
     }
 
+    /// 此处得重复一遍该 Protocol 方法，不然就只能针对 var 变数使用该函式了。
+    public func inherit(from target: some ProfileMOProtocol) {
+        uid = target.uid
+        uuid = target.uuid
+        allowNotification = target.allowNotification
+        cookie = target.cookie
+        deviceFingerPrint = target.deviceFingerPrint
+        name = target.name
+        priority = target.priority
+        serverRawValue = target.serverRawValue
+        sTokenV2 = target.sTokenV2
+        deviceID = target.deviceID
+        game = target.game
+        server = target.server
+    }
+
     // MARK: Private
 
     private enum CodingKeys: CodingKey {
