@@ -28,15 +28,13 @@ extension Date {
 
 public func secondsToHoursMinutes(_ seconds: Int) -> String {
     if seconds / 3600 > 24 {
-        let cn = "unit.daysOf:%lld"
         return String(
-            format: NSLocalizedString(cn, comment: "day"),
+            format: "unit.daysOf:%lld".i18nBaseKit,
             seconds / (3600 * 24)
         )
     }
-    let cn = "unit.HHMM:%lldHH%lldMM"
     return String(
-        format: NSLocalizedString(cn, comment: "day"),
+        format: "unit.HHMM:%lldHH%lldMM".i18nBaseKit,
         seconds / 3600,
         (seconds % 3600) / 60
     )
