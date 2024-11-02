@@ -6,7 +6,7 @@ import PZHelper_Watch
 import SwiftUI
 
 @main
-struct WatchApp_Watch_AppApp: App {
+struct PizzaWatchApp: App {
     var body: some Scene {
         PZHelperWatch.makeMainScene()
     }
