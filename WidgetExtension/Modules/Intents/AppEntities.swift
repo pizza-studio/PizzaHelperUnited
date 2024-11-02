@@ -36,7 +36,7 @@ public struct AccountIntentAppEntity: AppEntity {
             return accounts.map {
                 Self.Entity(
                     id: $0.uuid.uuidString,
-                    displayString: $0.name + " (\($0.uidWithGame))"
+                    displayString: $0.name + "\n(\($0.uidWithGame))"
                 )
             }
         }
@@ -45,7 +45,7 @@ public struct AccountIntentAppEntity: AppEntity {
             await PZProfileActor.shared.getSendableProfiles().map {
                 Self.Entity(
                     id: $0.uuid.uuidString,
-                    displayString: $0.name + " (\($0.uidWithGame))"
+                    displayString: $0.name + "\n(\($0.uidWithGame))"
                 )
             }
         }
