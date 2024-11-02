@@ -52,56 +52,44 @@ struct LockScreenResinTimerWidgetCircular: View {
                     .frame(height: 10)
                     switch result {
                     case let .success(data):
-                        switch data {
-                        case let data as any Note4GI:
-                            VStack(spacing: 1) {
-                                if data.resinInfo.currentResinDynamic != data
-                                    .resinInfo.maxResin {
-                                    Text(
-                                        Date(
-                                            timeIntervalSinceNow: TimeInterval
-                                                .sinceNow(to: data.resinInfo.resinRecoveryTime)
-                                        ),
-                                        style: .timer
+                        let staminaIntel = data.staminaIntel
+                        let timeOnFinish = data.staminaFullTimeOnFinish
+                        VStack(spacing: 1) {
+                            if staminaIntel.existing != staminaIntel.max {
+                                Text(
+                                    Date(
+                                        timeIntervalSinceNow: TimeInterval
+                                            .sinceNow(to: timeOnFinish)
+                                    ),
+                                    style: .timer
+                                )
+                                .multilineTextAlignment(.center)
+                                .font(.system(.body, design: .monospaced))
+                                .minimumScaleFactor(0.1)
+                                .widgetAccentable()
+                                .frame(width: 50)
+                                Text(verbatim: "\(staminaIntel.existing)")
+                                    .font(.system(
+                                        .body,
+                                        design: .rounded,
+                                        weight: .medium
+                                    ))
+                                    .foregroundColor(
+                                        Color("textColor.originResin", bundle: .main)
                                     )
-                                    .multilineTextAlignment(.center)
-                                    .font(.system(.body, design: .monospaced))
-                                    .minimumScaleFactor(0.1)
-                                    .widgetAccentable()
-                                    .frame(width: 50)
-                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                                        .font(.system(
-                                            .body,
-                                            design: .rounded,
-                                            weight: .medium
-                                        ))
-                                        .foregroundColor(
-                                            Color("textColor.originResin", bundle: .main)
-                                        )
-                                } else {
-                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                                        .font(.system(
-                                            size: 20,
-                                            weight: .medium,
-                                            design: .rounded
-                                        ))
-                                        .foregroundColor(
-                                            Color("textColor.originResin", bundle: .main)
-                                        )
-                                }
+                            } else {
+                                Text(verbatim: "\(staminaIntel.existing)")
+                                    .font(.system(
+                                        size: 20,
+                                        weight: .medium,
+                                        design: .rounded
+                                    ))
+                                    .foregroundColor(
+                                        Color("textColor.originResin", bundle: .main)
+                                    )
                             }
-                        default:
-                            Image(staminaMonochromeIconAssetName, bundle: .main)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 10)
-                            Image(systemSymbol: .ellipsis)
                         }
                     case .failure:
-                        Image(staminaMonochromeIconAssetName, bundle: .main)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 10)
                         Image(systemSymbol: .ellipsis)
                     }
                 }
@@ -120,50 +108,38 @@ struct LockScreenResinTimerWidgetCircular: View {
                         .frame(height: 10)
                     switch result {
                     case let .success(data):
-                        switch data {
-                        case let data as any Note4GI:
-                            VStack(spacing: 1) {
-                                if data.resinInfo.currentResinDynamic != data
-                                    .resinInfo.maxResin {
-                                    Text(
-                                        Date(
-                                            timeIntervalSinceNow: TimeInterval
-                                                .sinceNow(to: data.resinInfo.resinRecoveryTime)
-                                        ),
-                                        style: .timer
-                                    )
-                                    .multilineTextAlignment(.center)
-                                    .font(.system(.body, design: .monospaced))
-                                    .minimumScaleFactor(0.1)
-                                    .widgetAccentable()
-                                    .frame(width: 50)
-                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                                        .font(.system(
-                                            .body,
-                                            design: .rounded,
-                                            weight: .medium
-                                        ))
-                                } else {
-                                    Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                                        .font(.system(
-                                            size: 20,
-                                            weight: .medium,
-                                            design: .rounded
-                                        ))
-                                }
+                        let staminaIntel = data.staminaIntel
+                        let timeOnFinish = data.staminaFullTimeOnFinish
+                        VStack(spacing: 1) {
+                            if staminaIntel.existing != staminaIntel.max {
+                                Text(
+                                    Date(
+                                        timeIntervalSinceNow: TimeInterval
+                                            .sinceNow(to: timeOnFinish)
+                                    ),
+                                    style: .timer
+                                )
+                                .multilineTextAlignment(.center)
+                                .font(.system(.body, design: .monospaced))
+                                .minimumScaleFactor(0.1)
+                                .widgetAccentable()
+                                .frame(width: 50)
+                                Text(verbatim: "\(staminaIntel.existing)")
+                                    .font(.system(
+                                        .body,
+                                        design: .rounded,
+                                        weight: .medium
+                                    ))
+                            } else {
+                                Text(verbatim: "\(staminaIntel.existing)")
+                                    .font(.system(
+                                        size: 20,
+                                        weight: .medium,
+                                        design: .rounded
+                                    ))
                             }
-                        default:
-                            Image(staminaMonochromeIconAssetName, bundle: .main)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 10)
-                            Image(systemSymbol: .ellipsis)
                         }
                     case .failure:
-                        Image(staminaMonochromeIconAssetName, bundle: .main)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 10)
                         Image(systemSymbol: .ellipsis)
                     }
                 }
