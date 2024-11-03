@@ -100,50 +100,51 @@ public final class AppleWatchSputnik: NSObject, ObservableObject {
 
 extension AppleWatchSputnik: WCSessionDelegate {
     public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
-        if let notificationText = message[kMessageKey] as? String {
-            notificationMessage = NotificationMessage(text: notificationText)
-        }
-        print("Received accounts")
-        let data = try! JSONSerialization.data(withJSONObject: message as NSDictionary)
-        var accountMapReceived = try! JSONDecoder().decode([String: PZProfileSendable].self, from: data)
-        // sharedAccounts.append(accountReceived)
-
-        let context = ModelContext(PZProfileActor.shared.modelContainer)
-        // 開始處理資料插入。
-        let descriptor = FetchDescriptor<PZProfileMO>()
-        let fetched = (try? context.fetch(descriptor)) ?? []
-        // 如果有既有重複記錄的話，先刪得只剩一個，然後覆蓋其所有資料欄目值。
-        if !fetched.isEmpty {
-            var uidHandled = Set<String>()
-            fetched.forEach { oldProfile in
-                let matched = accountMapReceived[oldProfile.uidWithGame]
-                guard let matched else {
-                    // 删除已经不存在的 Profile。
-                    context.delete(oldProfile)
-                    return
-                }
-                if !uidHandled.contains(oldProfile.uidWithGame) {
-                    let uuidBackup = oldProfile.uuid
-                    oldProfile.inherit(from: matched.asMO)
-                    oldProfile.uuid = uuidBackup
-                    uidHandled.insert(oldProfile.uidWithGame)
-                } else {
-                    // 删除已经处理过的重复的 Profile。
-                    context.delete(oldProfile)
-                    return
-                }
-            }
-            // 筛选掉已经处理过的传入的 profile，然后就只剩下需要全新插入的 profile。
-            uidHandled.forEach { accountMapReceived.removeValue(forKey: $0) }
-        }
-        accountMapReceived.values.forEach { context.insert($0.asMO) }
-
+        #if os(watchOS)
         do {
+            let data = try JSONSerialization.data(withJSONObject: message as NSDictionary)
+            var accountMapReceived = try JSONDecoder().decode([String: PZProfileSendable].self, from: data)
+            // sharedAccounts.append(accountReceived)
+            if let notificationText = message[kMessageKey] as? String {
+                notificationMessage = NotificationMessage(text: notificationText)
+            }
+            print("Received profiles")
+
+            let context = ModelContext(PZProfileActor.shared.modelContainer)
+            // 開始處理資料插入。
+            let descriptor = FetchDescriptor<PZProfileMO>()
+            let fetched = (try? context.fetch(descriptor)) ?? []
+            // 如果有既有重複記錄的話，先刪得只剩一個，然後覆蓋其所有資料欄目值。
+            if !fetched.isEmpty {
+                var uidHandled = Set<String>()
+                fetched.forEach { oldProfile in
+                    let matched = accountMapReceived[oldProfile.uidWithGame]
+                    guard let matched else {
+                        // 删除已经不存在的 Profile。
+                        context.delete(oldProfile)
+                        return
+                    }
+                    if !uidHandled.contains(oldProfile.uidWithGame) {
+                        let uuidBackup = oldProfile.uuid
+                        oldProfile.inherit(from: matched.asMO)
+                        oldProfile.uuid = uuidBackup
+                        uidHandled.insert(oldProfile.uidWithGame)
+                    } else {
+                        // 删除已经处理过的重复的 Profile。
+                        context.delete(oldProfile)
+                        return
+                    }
+                }
+                // 筛选掉已经处理过的传入的 profile，然后就只剩下需要全新插入的 profile。
+                uidHandled.forEach { accountMapReceived.removeValue(forKey: $0) }
+            }
+            accountMapReceived.values.forEach { context.insert($0.asMO) }
+            // 處理結束。
             try context.save()
         } catch {
-            print("save account failed: \(error)")
+            print("save profile failed: \(error)")
         }
-        // 處理結束。
+        #endif
     }
 
     public func session(
