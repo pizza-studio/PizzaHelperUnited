@@ -64,29 +64,9 @@ extension Defaults.Keys {
 // MARK: - MainWidgetProvider
 
 extension Defaults.Keys {
-    public static let mainWidgetSyncFrequencyInMinute = Key<Double>(
-        "mainWidgetSyncFrequencyInMinute",
-        default: 60,
-        suite: .baseSuite
-    )
-    public static let lockscreenWidgetSyncFrequencyInMinute = Key<Double>(
-        "lockscreenWidgetSyncFrequencyInMinute",
-        default: 60,
-        suite: .baseSuite
-    )
-    public static let lockscreenWidgetRefreshFrequencyInMinute = Key<Double>(
-        "lockscreenWidgetRefreshFrequencyInMinute",
-        default: 30,
-        suite: .baseSuite
-    )
-    public static let homeCoinRefreshFrequencyInHour = Key<Double>(
-        "homeCoinRefreshFrequencyInHour",
-        default: 30,
-        suite: .baseSuite
-    )
-    public static let watchWidgetUseSimplifiedMode = Key<Bool>(
-        "watchWidgetUseSimplifiedMode",
-        default: true,
+    public static let allWidgetSyncFrequencyByMinutes = Key<Double>(
+        "allWidgetSyncFrequencyByMinutes",
+        default: 15,
         suite: .baseSuite
     )
 }

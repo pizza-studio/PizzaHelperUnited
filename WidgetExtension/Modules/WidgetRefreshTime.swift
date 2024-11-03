@@ -5,11 +5,6 @@
 @preconcurrency import Defaults
 import Foundation
 
-var widgetRefreshByMinute: Int {
-//    if Int(Defaults[.lockscreenWidgetSyncFrequencyInMinute]) != 0 {
-//        Int(Defaults[.lockscreenWidgetSyncFrequencyInMinute])
-//    } else {
-//        60
-//    }
-    15
+public var widgetRefreshByMinute: Int {
+    Int(Defaults[.allWidgetSyncFrequencyByMinutes].rounded(.down))
 }

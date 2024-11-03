@@ -15,15 +15,15 @@ struct HomeCoinInfoBar: View {
     let homeCoinInfo: PZAccountKit.HomeCoinInfo4GI
 
     var isHomeCoinFullImage: some View {
-        (homeCoinInfo.currentHomeCoinDynamic == homeCoinInfo.maxHomeCoin)
+        (homeCoinInfo.currentHomeCoin == homeCoinInfo.maxHomeCoin)
             ? Image(systemSymbol: .exclamationmark)
             .overlayImageWithRingProgressBar(
-                Double(homeCoinInfo.currentHomeCoinDynamic) / Double(homeCoinInfo.maxHomeCoin),
+                Double(homeCoinInfo.currentHomeCoin) / Double(homeCoinInfo.maxHomeCoin),
                 scaler: 0.78
             )
             : Image(systemSymbol: .leafFill)
             .overlayImageWithRingProgressBar(
-                Double(homeCoinInfo.currentHomeCoinDynamic) /
+                Double(homeCoinInfo.currentHomeCoin) /
                     Double(homeCoinInfo.maxHomeCoin)
             )
     }
@@ -39,7 +39,7 @@ struct HomeCoinInfoBar: View {
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3", bundle: .main))
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                Text(verbatim: "\(homeCoinInfo.currentHomeCoinDynamic)")
+                Text(verbatim: "\(homeCoinInfo.currentHomeCoin)")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .font(.system(.body, design: .rounded))

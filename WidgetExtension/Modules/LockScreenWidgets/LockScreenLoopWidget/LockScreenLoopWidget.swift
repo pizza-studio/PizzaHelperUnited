@@ -109,7 +109,7 @@ enum LockScreenLoopWidgetType: CaseIterable {
         case let .success(data):
             switch data {
             case let data as any Note4GI:
-                let homeCoinInfoScore = Double(data.homeCoinInfo.currentHomeCoinDynamic) /
+                let homeCoinInfoScore = Double(data.homeCoinInfo.currentHomeCoin) /
                     Double(data.homeCoinInfo.maxHomeCoin)
                 let resinInfoScore = 1.1 * Double(data.resinInfo.currentResinDynamic) /
                     Double(data.resinInfo.maxResin)

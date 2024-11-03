@@ -15,18 +15,13 @@ import WidgetKit
 struct WatchWidgetSettingView: View {
     // MARK: Internal
 
-    @Query(sort: \PZProfileMO.priority) private var accounts: [PZProfileMO]
-    @Default(.lockscreenWidgetSyncFrequencyInMinute) private var lockscreenWidgetSyncFrequencyInMinute: Double
-    @Default(.homeCoinRefreshFrequencyInHour) private var homeCoinRefreshFrequency: Double
-    @Default(.watchWidgetUseSimplifiedMode) private var watchWidgetUseSimplifiedMode: Bool
-
     var lockscreenWidgetRefreshFrequencyFormated: String {
         let formatter = DateComponentsFormatter()
         formatter.maximumUnitCount = 2
         formatter.unitsStyle = .short
         formatter.zeroFormattingBehavior = .dropAll
         return formatter
-            .string(from: lockscreenWidgetSyncFrequencyInMinute * 60.0)!
+            .string(from: allWidgetSyncFrequencyByMinutes * 60.0)!
     }
 
     var body: some View {
@@ -65,47 +60,20 @@ struct WatchWidgetSettingView: View {
                     }
                 }
             }
-            Section {
-                Toggle(isOn: $watchWidgetUseSimplifiedMode) {
-                    Text("watch.widget.simplifiedMode.title", bundle: .module)
-                }
-            } footer: {
-                Text("watch.widget.simplifiedMode.note", bundle: .module)
-            }
-            if watchWidgetUseSimplifiedMode {
-                Section {
-                    NavigationLink {
-                        HomeCoinRecoverySettingView()
-                    } label: {
-                        HStack {
-                            Text("watch.widget.realmCurrency.speed", bundle: .module)
-                            Spacer()
-                            Text(String(
-                                format: "watch.realmCurrency.speed.detail".i18nWatch,
-                                Int(homeCoinRefreshFrequency)
-                            ))
-                            .foregroundColor(.accentColor)
-                        }
-                    }
-                } footer: {
-                    Text("watch.widget.simplifiedMode.note.realmCurrency", bundle: .module)
-                }
-            }
-        }
-        .onChange(of: watchWidgetUseSimplifiedMode) { _, _ in
-            WidgetCenter.shared.invalidateConfigurationRecommendations()
         }
     }
 
     // MARK: Private
 
-    @Environment(\.modelContext) var modelContext
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \PZProfileMO.priority) private var accounts: [PZProfileMO]
+    @Default(.allWidgetSyncFrequencyByMinutes) private var allWidgetSyncFrequencyByMinutes: Double
 }
 
 // MARK: - QueryFrequencySettingView
 
 private struct QueryFrequencySettingView: View {
-    @Default(.lockscreenWidgetSyncFrequencyInMinute) var lockscreenWidgetSyncFrequencyInMinute: Double
+    // MARK: Internal
 
     var lockscreenWidgetRefreshFrequencyFormated: String {
         let formatter = DateComponentsFormatter()
@@ -113,7 +81,7 @@ private struct QueryFrequencySettingView: View {
         formatter.unitsStyle = .short
         formatter.zeroFormattingBehavior = .dropAll
         return formatter
-            .string(from: lockscreenWidgetSyncFrequencyInMinute * 60.0)!
+            .string(from: allWidgetSyncFrequencyByMinutes * 60.0)!
     }
 
     var body: some View {
@@ -125,38 +93,17 @@ private struct QueryFrequencySettingView: View {
             )
             .font(.title3)
             Slider(
-                value: $lockscreenWidgetSyncFrequencyInMinute,
+                value: $allWidgetSyncFrequencyByMinutes,
                 in: 30 ... 300,
                 step: 10,
                 label: {
-                    Text(verbatim: "\(lockscreenWidgetSyncFrequencyInMinute)")
+                    Text(verbatim: "\(allWidgetSyncFrequencyByMinutes)")
                 }
             )
         }
     }
-}
 
-// MARK: - HomeCoinRecoverySettingView
+    // MARK: Private
 
-private struct HomeCoinRecoverySettingView: View {
-    @Default(.homeCoinRefreshFrequencyInHour) var homeCoinRefreshFrequency: Double
-
-    var body: some View {
-        VStack {
-            Text("watch.widget.realmCurrency.speed", bundle: .module).foregroundColor(.accentColor)
-            Text(String(
-                format: "watch.realmCurrency.speed.detail".i18nWatch,
-                Int(homeCoinRefreshFrequency)
-            ))
-            .font(.title3)
-            Slider(
-                value: $homeCoinRefreshFrequency,
-                in: 4 ... 30,
-                step: 2,
-                label: {
-                    Text(verbatim: "\(homeCoinRefreshFrequency)")
-                }
-            )
-        }
-    }
+    @Default(.allWidgetSyncFrequencyByMinutes) private var allWidgetSyncFrequencyByMinutes: Double
 }
