@@ -2001,6 +2001,34 @@
         }
       }
     },
+    "profileMgr.lastTimeResetLocalProfileDB:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous DB Reset: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前回のデータベース再構築: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近期资料库重建: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近期資料庫重建: %@"
+          }
+        }
+      }
+    },
     "profileMgr.login.error.no.profileMgr.found" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2228,6 +2256,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新增本機帳號"
+          }
+        }
+      }
+    },
+    "profileMgr.noLocalProfileFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No local profile found."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロファイルが見つかりませんでした。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚未发现本地账号。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚未發現本機帳號。"
           }
         }
       }

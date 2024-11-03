@@ -70,10 +70,28 @@ struct ProfileManagerPageContent: View {
                 }
                 .onDelete(perform: deleteItems)
                 .onMove(perform: moveItems)
-                if profiles.isEmpty, PZProfileActor.hasOldAccountDataDetected() {
-                    Button("profileMgr.importLegacyProfiles.title".i18nPZHelper) {
-                        importLegacyData()
+                if profiles.isEmpty {
+                    if lastTimeResetLocalProfileDB != nil {
+                        Text("profileMgr.noLocalProfileFound".i18nPZHelper)
+                            .font(.footnote)
                     }
+                }
+            } header: {
+                if let lastTimeResetLocalProfileDB {
+                    let dateStr = Self.dateTimeFormatter.string(from: lastTimeResetLocalProfileDB)
+                    // 如果是最近 2 小时内发生的，则以红色显示。
+                    let isRecent = Swift.abs(lastTimeResetLocalProfileDB.timeIntervalSinceNow) > 7200
+                    Text(
+                        "profileMgr.lastTimeResetLocalProfileDB:\(dateStr)",
+                        bundle: .module
+                    )
+                    .foregroundStyle(isRecent ? Color.red : Color.primary)
+                    .textCase(.none)
+                }
+            }
+            if profiles.isEmpty, PZProfileActor.hasOldAccountDataDetected() {
+                Button("profileMgr.importLegacyProfiles.title".i18nPZHelper) {
+                    importLegacyData()
                 }
             }
         }
@@ -120,11 +138,19 @@ struct ProfileManagerPageContent: View {
 
     // MARK: Private
 
+    private static let dateTimeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = .autoupdatingCurrent
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
+
     @State private var sheetType: SheetType?
     @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var isBusy = false
     @State private var errorMessage: String?
-
+    @Default(.lastTimeResetLocalProfileDB) private var lastTimeResetLocalProfileDB: Date?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
