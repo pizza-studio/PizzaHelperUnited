@@ -8,6 +8,14 @@ import Foundation
 import PZBaseKit
 import SwiftData
 
+extension Defaults.Keys {
+    public static let lastTimeResetLocalProfileDB = Key<Date?>(
+        "lastTimeResetLocalProfileDB",
+        default: nil,
+        suite: .baseSuite
+    )
+}
+
 // MARK: - PZProfileActor
 
 @ModelActor
@@ -53,6 +61,7 @@ public actor PZProfileActor {
         } catch {
             secondAttempt: do {
                 try FileManager.default.removeItem(at: config.url)
+                Defaults[.lastTimeResetLocalProfileDB] = .now
                 do {
                     return try ModelContainer(for: Self.schema, configurations: [config])
                 } catch {
