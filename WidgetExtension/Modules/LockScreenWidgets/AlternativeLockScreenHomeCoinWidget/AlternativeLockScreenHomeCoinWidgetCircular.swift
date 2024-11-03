@@ -44,7 +44,8 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
                     } currentValueLabel: {
                         Text(verbatim: "\(coinIntel.currentHomeCoin)")
                             .font(.system(.title3, design: .rounded))
-                            .minimumScaleFactor(0.1)
+                            .fixedSize()
+                            .minimumScaleFactor(0.2)
                     }
                     .gaugeStyle(
                         ProgressGaugeStyle(
@@ -96,7 +97,8 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
                     } currentValueLabel: {
                         Text(verbatim: "\(coinIntel.currentHomeCoin)")
                             .font(.system(.title3, design: .rounded))
-                            .minimumScaleFactor(0.1)
+                            .fixedSize()
+                            .minimumScaleFactor(0.2)
                     }
                     .gaugeStyle(ProgressGaugeStyle())
                 default:

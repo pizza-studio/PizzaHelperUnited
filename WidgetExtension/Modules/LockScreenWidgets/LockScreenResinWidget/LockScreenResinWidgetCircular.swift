@@ -53,7 +53,8 @@ struct LockScreenResinWidgetCircular: View {
                 } currentValueLabel: {
                     Text(verbatim: "\(staminaIntel.existing)")
                         .font(.system(.title3, design: .rounded))
-                        .minimumScaleFactor(0.1)
+                        .fixedSize()
+                        .minimumScaleFactor(0.2)
                 }
                 .gaugeStyle(
                     ProgressGaugeStyle(
@@ -96,7 +97,8 @@ struct LockScreenResinWidgetCircular: View {
                 } currentValueLabel: {
                     Text(verbatim: "\(staminaIntel.existing)")
                         .font(.system(.title3, design: .rounded))
-                        .minimumScaleFactor(0.1)
+                        .fixedSize()
+                        .minimumScaleFactor(0.2)
                 }
                 .gaugeStyle(ProgressGaugeStyle())
             case .failure:
