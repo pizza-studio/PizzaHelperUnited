@@ -76,7 +76,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                                     design: .rounded
                                 ))
                             Spacer()
-                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoinDynamic)")
+                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
                                 .font(.system(
                                     size: size,
                                     weight: .medium,
@@ -95,7 +95,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                                 Text(verbatim: "\(format(data.resinInfo.resinRecoveryTime))")
                             }
                             Spacer()
-                            if data.homeCoinInfo.currentHomeCoinDynamic >= data
+                            if data.homeCoinInfo.currentHomeCoin >= data
                                 .homeCoinInfo.maxHomeCoin {
                                 Text("pzWidgetsKit.stamina.full", bundle: .main)
                             } else {
@@ -191,7 +191,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                                     design: .rounded
                                 ))
                             Spacer()
-                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoinDynamic)")
+                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
                                 .font(.system(
                                     size: size,
                                     weight: .medium,
@@ -210,7 +210,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                                 Text(verbatim: "\(format(data.resinInfo.resinRecoveryTime))")
                             }
                             Spacer()
-                            if data.homeCoinInfo.currentHomeCoinDynamic >= data
+                            if data.homeCoinInfo.currentHomeCoin >= data
                                 .homeCoinInfo.maxHomeCoin {
                                 Text("pzWidgetsKit.stamina.full", bundle: .main)
                             } else {
