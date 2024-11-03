@@ -29,6 +29,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
     let recommendationsTag: LocalizedStringResource
 
     func recommendations() -> [AppIntentRecommendation<Intent>] {
+        #if os(watchOS)
         let configs = PZProfileActor.getSendableProfiles()
         return configs.map { config in
             let intent = Intent()
@@ -41,6 +42,9 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
                 description: config.name + String(localized: recommendationsTag)
             )
         }
+        #else
+        return []
+        #endif
     }
 
     func placeholder(in context: Context) -> Entry {
