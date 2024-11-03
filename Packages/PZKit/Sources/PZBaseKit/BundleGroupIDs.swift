@@ -36,4 +36,9 @@ extension Pizza {
     public static let isAppStoreRelease: Bool = {
         Bundle.main.bundleIdentifier?.hasPrefix("Canglong.GenshinPizzaHepler") ?? false
     }()
+
+    public static let isWidgetExtension: Bool = {
+        guard let bID = Bundle.main.bundleIdentifier?.lowercased() else { return false }
+        return bID.hasSuffix("extension") || bID.hasSuffix("widget")
+    }()
 }
