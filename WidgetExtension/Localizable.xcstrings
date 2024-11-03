@@ -1512,6 +1512,35 @@
         }
       }
     },
+    "pzWidgetsKit.cfgName.homeCoin.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternative Realm Currency (GI)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "洞天寶錢 (原神) (改二)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "洞天宝钱 (原神) (排版二)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "洞天寶錢 (原神) (排版二)"
+          }
+        }
+      }
+    },
     "pzWidgetsKit.cfgName.stamina" : {
       "extractionState" : "manual",
       "localizations" : {

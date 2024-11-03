@@ -26,6 +26,7 @@ extension PZWidgets {
         LockScreenResinTimerWidget()
         LockScreenResinFullTimeWidget()
         LockScreenHomeCoinWidget()
+        AlternativeLockScreenHomeCoinWidget()
         LockScreenDailyTaskWidget()
         LockScreenExpeditionWidget()
         AlternativeLockScreenResinWidget()
