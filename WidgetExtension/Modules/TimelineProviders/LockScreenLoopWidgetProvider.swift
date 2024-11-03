@@ -92,7 +92,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
             )!
         }
 
-        let configs = PZProfileActor.getSendableProfiles()
+        let configs = await PZProfileActor.shared.getSendableProfiles()
         let style = configuration.usingResinStyle ?? .byDefault
 
         func makeFallbackResult(error: WidgetError) -> Timeline<Entry> {
