@@ -261,6 +261,12 @@
             "value" : "Pending"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "進捗中"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -299,35 +305,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "管理本機帳號"
-          }
-        }
-      }
-    },
-    "watch.realmCurrency.speed.detail" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld per hour"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "一時間に%lld個"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "每小时%lld个"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "每小時%lld個"
           }
         }
       }
@@ -444,34 +421,6 @@
         }
       }
     },
-    "watch.widget.realmCurrency.speed" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Realm Currency Recovery speed"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "洞天宝銭回復速度"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "洞天宝钱回复速度"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "洞天寶錢充填速度"
-          }
-        }
-      }
-    },
     "watch.widget.settings.sync.frequency.title" : {
       "localizations" : {
         "en" : {
@@ -525,90 +474,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "每%@"
-          }
-        }
-      }
-    },
-    "watch.widget.simplifiedMode.note" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Miyoushe-UIDs only. Re-adding the widget after edit this configuration."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(米遊社のUIDのみ) このオプションを編集した後、ウィジェットを再度追加します。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(仅米游社 UID) 更改该项需要重新添加小组件。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(僅米遊社 UID) 更改該項需要重新添加小工具。"
-          }
-        }
-      }
-    },
-    "watch.widget.simplifiedMode.note.realmCurrency" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(Simplified mode only) Not set correctly may result in an inaccurate amount of Realm Currency."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(簡潔モードのみ) 正しく設定しないと、洞天宝銭の数が不正確になる場合があります。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "（僅簡潔模式）未正確設定可能導致洞天寶錢數量不準確。"
-          }
-        }
-      }
-    },
-    "watch.widget.simplifiedMode.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enable Simplified Mode"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "簡潔モードを起用する"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "启用简洁模式"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "啟用簡潔模式"
           }
         }
       }
