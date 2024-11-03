@@ -27,12 +27,18 @@ public struct ContentView: View {
     public var body: some View {
         NavigationStack {
             if accounts.isEmpty {
-                VStack {
-                    Text("watch.sync.tips", bundle: .module)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical)
-                    Image(systemSymbol: .icloudAndArrowDown)
-                    ProgressView()
+                List {
+                    Section {
+                        LabeledContent {
+                            Text("watch.sync.tips", bundle: .module)
+                        } label: {
+                            VStack {
+                                Image(systemSymbol: .icloudAndArrowDown).fixedSize()
+                                ProgressView()
+                            }
+                            .fixedSize()
+                        }
+                    }
                 }
             } else {
                 List {
