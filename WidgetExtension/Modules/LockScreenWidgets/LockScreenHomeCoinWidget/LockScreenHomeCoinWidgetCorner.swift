@@ -22,7 +22,7 @@ struct LockScreenHomeCoinWidgetCorner: View {
         case let .success(data):
             switch data {
             case let data as any Note4GI:
-                let currentAmount = data.homeCoinInfo.currentHomeCoinDynamic
+                let currentAmount = data.homeCoinInfo.currentHomeCoin
                 let fullTime = TimeInterval.sinceNow(to: data.homeCoinInfo.fullTime)
                 return "\(currentAmount), \(PZWidgets.intervalFormatter.string(from: fullTime)!)"
             default:

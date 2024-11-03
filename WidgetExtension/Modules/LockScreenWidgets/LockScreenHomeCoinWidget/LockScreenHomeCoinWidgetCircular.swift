@@ -33,7 +33,7 @@ struct LockScreenHomeCoinWidgetCircular: View {
             case let .success(data):
                 switch data {
                 case let data as any Note4GI:
-                    Text(verbatim: "\(data.homeCoinInfo.currentHomeCoinDynamic)")
+                    Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 default:
                     Text(verbatim: "WRONG GAME").fixedSize().fontWidth(.compressed)

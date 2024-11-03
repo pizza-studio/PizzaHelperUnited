@@ -218,7 +218,7 @@ struct LockScreenAllInfoWidgetView: View {
                                     widgetRenderingMode == .fullColor ? Color("iconColor.homeCoin", bundle: .main) :
                                         nil
                                 )
-                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoinDynamic)")
+                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
                         case let data as Note4HSR:
                             if let data = data as? WidgetNote4HSR {
                                 // Simulated Universe
