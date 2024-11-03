@@ -41,7 +41,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
             let intent = Intent()
             intent.account = .init(
                 id: config.uuid.uuidString,
-                displayString: config.name + " (\(config.uidWithGame))"
+                displayString: config.name + "\n(\(config.uidWithGame))"
             )
             return .init(
                 intent: intent,
