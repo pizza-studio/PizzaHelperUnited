@@ -16,6 +16,21 @@ struct AccountOnlyEntry: TimelineEntry {
     let result: Result<any DailyNoteProtocol, any Error>
     var accountName: String?
     let accountUUIDString: String?
+
+    var relevance: TimelineEntryRelevance? {
+        switch result {
+        case let .success(data):
+            if data.staminaFullTimeOnFinish >= .now {
+                return .init(score: 10)
+            }
+            let stamina = data.staminaIntel
+            return .init(
+                score: 10 * Float(stamina.existing) / Float(stamina.max)
+            )
+        case .failure:
+            return .init(score: 0)
+        }
+    }
 }
 
 // MARK: - LockScreenWidgetProvider

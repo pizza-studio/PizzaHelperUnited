@@ -22,6 +22,21 @@ struct AccountAndShowWhichInfoIntentEntry: TimelineEntry {
     let accountUUIDString: String?
 
     var usingResinStyle: AutoRotationUsingResinWidgetStyleAppEnum
+
+    var relevance: TimelineEntryRelevance? {
+        switch result {
+        case let .success(data):
+            if data.staminaFullTimeOnFinish >= .now {
+                return .init(score: 10)
+            }
+            let stamina = data.staminaIntel
+            return .init(
+                score: 10 * Float(stamina.existing) / Float(stamina.max)
+            )
+        case .failure:
+            return .init(score: 0)
+        }
+    }
 }
 
 // MARK: - LockScreenLoopWidgetProvider
