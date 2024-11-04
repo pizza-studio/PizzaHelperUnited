@@ -147,6 +147,10 @@ struct TestAccountSectionView: View {
                 popVerificationWebSheet()
             } label: {
                 Text("profileMgr.test.verify.button".i18nPZHelper)
+                    .frame(maxWidth: .infinity, minHeight: 40)
+                    .background(Color.blue)
+                    .cornerRadius(4)
+                    .contentShape(Rectangle()) // Make the entire button tappable
             }
             .onAppear {
                 popVerificationWebSheet()
