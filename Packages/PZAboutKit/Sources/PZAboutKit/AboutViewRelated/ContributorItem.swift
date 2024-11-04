@@ -36,9 +36,9 @@ struct ContributorItem: View {
         self.isExpanded = isExpanded
         self.asMainMember = main
         self.iconName = icon
-        self.title = .init(localized: titleKey)
+        self.title = .init(localized: titleKey, bundle: .module)
         if let subtitleKey {
-            self.subtitle = .init(localized: subtitleKey)
+            self.subtitle = .init(localized: subtitleKey, bundle: .module)
         } else {
             self.subtitle = ""
         }

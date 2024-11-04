@@ -1,6 +1,203 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "aboutKit.3rdParty.headline" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Our app uses the following open source components and third-party APIs, and we would like to thank their authors."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "弊アプリは次のFOSSコンポーネントと他者 API を使用しており、それらの作成者に感謝します。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝应用软件使用了以下开源组件和第三方API，在此向其作者表示感谢。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝應用軟體使用了以下開放原始碼組件和第三方API，在此向其作者表示感謝。"
+          }
+        }
+      }
+    },
+    "aboutKit.3rdParty.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acknowledgement for open source components and third-party APIs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS コンポーネントおよび他者 API に対する謝辞"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开源组件与第三方API致谢"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開放原始碼組件與第三方API致謝"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About The Pizza Helper"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ピザ助手(無印)について"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于披萨小助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於披薩小助手"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle.app" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About the App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリについて"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于该应用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於該應用"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle.crew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About the Crew"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発チームについて"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于开发者"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於開發者"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.tab.app" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.tab.crew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crew"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チーム"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开发组"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開發組"
+          }
+        }
+      }
+    },
     "aboutKit.appStoreReview.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -26,6 +223,90 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在 App Store 評分"
+          }
+        }
+      }
+    },
+    "aboutKit.chatrooms.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chatrooms"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チャットルーム"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聊天室"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聊天室"
+          }
+        }
+      }
+    },
+    "aboutKit.chatrooms.joinQQGroup" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Join QQ Chat Group"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQチャットグループに参加"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加入 QQ 群"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加入 QQ 群"
+          }
+        }
+      }
+    },
+    "aboutKit.chatrooms.joinTelegram" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Join Telegram Channel"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegramチャンネルに参加"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加入电报频道"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加入電報頻道"
           }
         }
       }
@@ -77,9 +358,62 @@
               }
             }
           }
+        },
+        "ja" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mac App Store"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "App Store"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mac App Store"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "App Store"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hant" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mac App Store"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "App Store"
+                }
+              }
+            }
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "aboutKit.contactMethod.bilibili" : {
       "localizations" : {
@@ -116,9 +450,26 @@
             "state" : "translated",
             "value" : "BlueSky"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "aboutKit.contactMethod.discord" : {
       "localizations" : {
@@ -127,9 +478,26 @@
             "state" : "translated",
             "value" : "Discord"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "aboutKit.contactMethod.douyin" : {
       "localizations" : {
@@ -166,9 +534,26 @@
             "state" : "translated",
             "value" : "Facebook"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "aboutKit.contactMethod.github" : {
       "localizations" : {
@@ -177,9 +562,26 @@
             "state" : "translated",
             "value" : "GitHub"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "aboutKit.contactMethod.homepage" : {
       "localizations" : {
@@ -300,9 +702,26 @@
             "state" : "translated",
             "value" : "QQ"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "aboutKit.contactMethod.telegram" : {
       "localizations" : {
@@ -367,9 +786,26 @@
             "state" : "translated",
             "value" : "X (Twitter)"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "aboutKit.contactMethod.youtube" : {
       "localizations" : {
@@ -378,9 +814,624 @@
             "state" : "translated",
             "value" : "YouTube"
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
         }
-      },
-      "shouldTranslate" : false
+      }
+    },
+    "aboutKit.contributor.subtitleAsAssetCrew.koni" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon Illustrator, The Pizza Helper (v5)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリアイコン絵師（ピザ助手 (無印) v5）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 图示绘师 (统一披萨小助手 v5)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 圖示繪師 (統一披薩小助手 v5)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsAssetCrew.lava" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon Illustrator, Pizza Helper for HSR"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリアイコン絵師（崩スタピザ助手）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 图示绘师 (星铁披萨小助手)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 圖示繪師 (星鐵披薩小助手)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsAssetCrew.xinzoruo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon Illustrator, Pizza Helper for Genshin (v4)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリアイコン絵師（原神ピザ助手 v4）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 图示绘师 (原神披萨小助手 v4)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 圖示繪師 (原神披薩小助手 v4)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsAssetCrew.yulijushi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miscellaneous Asset Contributor"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一部の雑多素材提供者"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分杂项素材贡献者"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分雜項素材貢獻者"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsMainCrew.hakubill" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Dev, Pizza Helper for HSR\n- Dev, Pizza Helper for Genshin (v1-v4)\n- Dev, Pizza Helper for Blue Archive\n- Dev, The Pizza Helper (v5)\n- Public Relations (Overseas)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- プログラマー（崩スタピザ）\n- プログラマー（原神ピザ v1-v4）\n- プログラマー（BAピザ）\n- プログラマー（ピザ助手 (無印) v5）\n- PR (中国大陸以外)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 程式师（星铁披萨小助手）\n- 程式师（原神披萨小助手 v1-v4）\n- 程式师（蔚蓝档案披萨小助手）\n- 公关（海外）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 程式師（星鐵披薩小助手）\n- 程式師（原神披薩小助手 v1-v4）\n- 程式師（蔚藍檔案披薩小助手）\n- 公關（海外）"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsMainCrew.lava" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Team Leader & Founder\n- Dev, The Pizza Helper (v5)\n- Dev, Pizza Helper for HSR\n- Dev, Pizza Helper for Genshin (v1-v4)\n- Public Relations (Mainland China)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- チームリーダー＆プロジェクト創立者\n- プログラマー（ピザ助手 (無印) v5）\n- プログラマー（崩スタピザ）\n- プログラマー（原神ピザ v1-v4）\n- PR (中国大陸)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 专案创始人＆专案总监\n- 程式师（统一披萨小助手 v5）\n- 程式师（原神披萨小助手 v1-v4）\n- 程式师（星铁披萨小助手）\n- 公关（中国内陆）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 專案創始人＆專案總監\n- 程式師（統一披薩小助手 v5）\n- 程式師（原神披薩小助手 v1-v4）\n- 程式師（星鐵披薩小助手）\n- 公關（中國內陸）"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsMainCrew.shikisuen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Engine Architect & Dev, The Pizza Helper (v5)\n- Maintainer, Pizza Helper for HSR\n- Maintainer, Pizza Helper for Genshin (v3-v4)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- エンジン建築士＆プログラマー（ピザ助手 (無印) v5）\n- ソフトウェア保守（崩スタピザ）\n- ソフトウェア保守（原神ピザ v3-v4）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 引擎架构师＆程式师（统一披萨小助手 v5）\n- 参与维护（原神披萨小助手 v3-v4）\n- 参与维护（星铁披萨小助手）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 引擎架構師＆程式師（統一披薩小助手 v5）\n- 參與維護（原神披薩小助手 v3-v4）\n- 參與維護（星鐵披薩小助手）"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.category.assets" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some Asset Contributors"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一部の素材提供者"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分素材提供者"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分素材提供者"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.category.i18n.current" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some Localization Contributors"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一部のアプリ翻訳提供者"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分翻译提供者"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分翻譯提供者"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.category.i18n.previous" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some Previous Localization Contributors"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これ以前の一部のアプリ翻訳提供者"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分翻译提供者（旧版）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分翻譯提供者（舊版）"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.category.mainCrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Main Developer Team"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開発チーム"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开发团队"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開發團隊"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.art34222" : {
+      "comment" : "Localization Contributor (RU)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.hakubill" : {
+      "comment" : "Crew Member",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haku Bill (水里的碳酸钙)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haku Bill (水中炭酸ｶﾙｼｳﾑ)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "水里的碳酸钙 (Haku Bill)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "水裡的碳酸鈣 (Haku Bill)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.koni" : {
+      "comment" : "App Icon Illustrator (v5)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.lava" : {
+      "comment" : "Crew Member",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.ngo" : {
+      "comment" : "Localization Contributor (VI)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.qi" : {
+      "comment" : "Localization Contributor (FR)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.shikisuen" : {
+      "comment" : "Crew Member",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiki Suen (孙志贵)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "孫 志貴（ｺﾉｲﾄ ｼｷ; Shiki Suen）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "孙志贵 (Shiki Suen)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "孫志貴 (Shiki Suen)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.tao" : {
+      "comment" : "Localization Contributor (JA)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.xinzoruo" : {
+      "comment" : "App Icon Illustrator (v4)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xinzoruo (心臓弱眞君)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "心臓弱眞君 (Xinzoruo)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "心臓弱眞君 (Xinzoruo)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "心臓弱眞君 (Xinzoruo)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.yulijushi" : {
+      "comment" : "Image Asset Contributor (v4)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuli Jushi (郁离居士)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "郁離居士"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "郁离居士"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "郁離居士"
+          }
+        }
+      }
     },
     "aboutKit.donation.item.header" : {
       "localizations" : {
@@ -519,6 +1570,314 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "特別鳴謝"
+          }
+        }
+      }
+    },
+    "aboutKit.eula.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EULA & User Policy"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用者許諾契約"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最终用户许可协议"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用者授權合約"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pizzaStudio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Studio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Studio (ピザスチューディオ)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "披萨工作室"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "披薩工作室"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pizzaStudio.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A FOSS developer team."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSSアプリを開発するチーム。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "某个免费自由软件开发团队。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "某個免費自由軟體開發團體。"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ピザ助手（無印）"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "披萨小助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "披薩小助手"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The successor of both PizzaHelper4Genshin and PizzaHelper4HSR. Powered by the next-generation United Pizza Engine."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今までの「原神ピザ」と「崩スタピザ」を統合し、両アプリの後継者として、次世代エンジン『統一ピザエンジン』で開発したアプリである。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是「原神披萨小助手」与「星铁披萨小助手」的继任者，受次世代「统一披萨引擎」的加持。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是「原神披薩小助手」與「星鐵披薩小助手」的繼任者，受次世代「統一披薩引擎」的加持。"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4BA" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Helper for Blue Archive"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BAピザ助手"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蔚蓝档案披萨小助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蔚藍檔案披薩小助手"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4BA.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A good utility for every Sensei."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先生たちの用心棒。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "施教之神器。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "施教之神器。"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4GI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Helper for Genshin"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原神ピザ助手"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原神披萨小助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原神披薩小助手"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4GI.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deprecated and integrated into The Pizza Helper."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "淘汰済み。全ての機能はすでに「ピザ助手（無印）」に搭載されておる。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已淘汰。相关功能被并入以统一披萨引擎加持的披萨小助手。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已淘汰。相關功能被併入以統一披薩引擎加持的披薩小助手。"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4HSR" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Helper for HSR"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩スタピザ助手"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "星铁披萨小助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "星鐵披薩小助手"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4HSR.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deprecated and integrated into The Pizza Helper."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "淘汰済み。全ての機能はすでに「ピザ助手（無印）」に搭載されておる。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已淘汰。相关功能被并入以统一披萨引擎加持的披萨小助手。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已淘汰。相關功能被併入以統一披薩引擎加持的披薩小助手。"
           }
         }
       }
