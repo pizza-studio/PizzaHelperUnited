@@ -95,6 +95,8 @@ struct AppAboutViewSections: View {
                 Text(verbatim: versionStr)
                     .textCase(.none)
             }
+        } footer: {
+            Text(verbatim: "桂ICP备2023009538号-2A")
         }
 
         Section {
