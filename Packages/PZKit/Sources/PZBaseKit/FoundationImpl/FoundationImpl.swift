@@ -26,6 +26,31 @@ extension URLRequest {
     }
 }
 
+// MARK: - Ask Bundle to tell App Build Number.
+
+extension Bundle {
+    public static func getAppVersionAndBuild() throws -> (version: String, build: String) {
+        guard let infoDictionary = Bundle.main.infoDictionary else {
+            throw NSError(
+                domain: "AppInfoError",
+                code: 213,
+                userInfo: [NSLocalizedDescriptionKey: "Failed to get the app's Info.plist."]
+            )
+        }
+
+        guard let version = infoDictionary["CFBundleShortVersionString"] as? String,
+              let build = infoDictionary["CFBundleVersion"] as? String else {
+            throw NSError(
+                domain: "AppInfoError",
+                code: 233,
+                userInfo: [NSLocalizedDescriptionKey: "Version or build number is missing."]
+            )
+        }
+
+        return (version, build)
+    }
+}
+
 // MARK: - Swift Extension to round doubles.
 
 extension Double {
