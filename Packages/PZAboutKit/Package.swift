@@ -29,7 +29,6 @@ let package = Package(
         .target(
             name: "PZAboutKit",
             dependencies: [
-                .product(name: "PZAccountKit", package: "PZKit"),
                 .product(name: "PZBaseKit", package: "PZKit"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
