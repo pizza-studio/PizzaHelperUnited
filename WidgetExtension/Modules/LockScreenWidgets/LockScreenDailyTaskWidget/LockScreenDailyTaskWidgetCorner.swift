@@ -27,40 +27,24 @@ struct LockScreenDailyTaskWidgetCorner: View {
                         let valMax = data.dailyTaskInfo.totalTaskCount
                         Gauge(value: Double(valNow), in: 0 ... Double(valMax)) {
                             Text("pzWidgetsKit.dailyTask", bundle: .main)
-                                .fixedSize()
-                                .minimumScaleFactor(0.2)
                         } currentValueLabel: {
                             Text(verbatim: "\(valNow) / \(valMax)")
-                                .fixedSize()
-                                .minimumScaleFactor(0.2)
                         } minimumValueLabel: {
                             Text(verbatim: "  \(valNow)/\(valMax)  ")
-                                .fixedSize()
-                                .minimumScaleFactor(0.2)
                         } maximumValueLabel: {
                             Text(verbatim: "")
-                                .fixedSize()
-                                .minimumScaleFactor(0.2)
                         }
                     case let data as WidgetNote4HSR:
                         let valNow = data.dailyTrainingInfo.currentScore
                         let valMax = data.dailyTrainingInfo.maxScore
                         Gauge(value: Double(valNow), in: 0 ... Double(valMax)) {
                             Text("pzWidgetsKit.dailyTask", bundle: .main)
-                                .fixedSize()
-                                .minimumScaleFactor(0.2)
                         } currentValueLabel: {
                             Text(verbatim: "\(valNow) / \(valMax)")
-                                .fixedSize()
-                                .minimumScaleFactor(0.2)
                         } minimumValueLabel: {
                             Text(verbatim: "  \(valNow)/\(valMax)  ")
-                                .fixedSize()
-                                .minimumScaleFactor(0.2)
                         } maximumValueLabel: {
                             Text(verbatim: "")
-                                .fixedSize()
-                                .minimumScaleFactor(0.2)
                         }
                     default:
                         Image(systemSymbol: .ellipsis)
