@@ -76,20 +76,12 @@ struct AlternativeWatchCornerResinWidgetView: View {
                         in: 0 ... Double(resinInfo.maxResin)
                     ) {
                         Text("pzWidgetsKit.stamina", bundle: .main)
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     } currentValueLabel: {
                         Text(verbatim: "\(resinInfo.currentResinDynamic)")
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     } minimumValueLabel: {
                         Text(verbatim: "\(resinInfo.currentResinDynamic)")
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     } maximumValueLabel: {
                         Text(verbatim: "")
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     }
                 }
         case let data as Note4HSR:
@@ -104,20 +96,12 @@ struct AlternativeWatchCornerResinWidgetView: View {
                         in: 0 ... Double(staminaInfo.maxStamina)
                     ) {
                         Text("pzWidgetsKit.stamina", bundle: .main)
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     } currentValueLabel: {
                         Text(staminaInfo.currentStamina.description)
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     } minimumValueLabel: {
                         Text(staminaInfo.currentStamina.description)
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     } maximumValueLabel: {
                         Text(verbatim: "")
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     }
                 }
         case let data as Note4ZZZ:
@@ -132,20 +116,12 @@ struct AlternativeWatchCornerResinWidgetView: View {
                         in: 0 ... Double(energyInfo.progress.max)
                     ) {
                         Text("pzWidgetsKit.stamina", bundle: .main)
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     } currentValueLabel: {
                         Text(energyInfo.currentEnergyAmountDynamic.description)
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     } minimumValueLabel: {
                         Text(energyInfo.currentEnergyAmountDynamic.description)
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     } maximumValueLabel: {
                         Text(verbatim: "")
-                            .fixedSize()
-                            .minimumScaleFactor(0.2)
                     }
                 }
         default: EmptyView()
@@ -161,8 +137,6 @@ struct AlternativeWatchCornerResinWidgetView: View {
             .widgetLabel {
                 Gauge(value: 114, in: 114 ... 514) {
                     Text(verbatim: "……")
-                        .fixedSize()
-                        .minimumScaleFactor(0.2)
                 }
             }
     }
