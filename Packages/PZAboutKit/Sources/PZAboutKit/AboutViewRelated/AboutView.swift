@@ -93,6 +93,7 @@ struct AppAboutViewSections: View {
             if let versionIntel = try? Bundle.getAppVersionAndBuild() {
                 let versionStr = "\(versionIntel.version) Build \(versionIntel.build)"
                 Text(verbatim: versionStr)
+                    .textCase(.none)
             }
         }
 
