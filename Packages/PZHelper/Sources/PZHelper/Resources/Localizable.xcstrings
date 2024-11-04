@@ -2353,25 +2353,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please tap here to enter the verification code. "
+            "value" : "Please tap here to finish the captcha verification. "
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ここをタップして人間認証"
+            "value" : "ここをタップして人間認証を"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请点击这里输入验证码"
+            "value" : "请点击这里完成人机验证"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請點擊這裡進行人機驗證"
+            "value" : "請點擊這裡完成人機驗證"
           }
         }
       }
