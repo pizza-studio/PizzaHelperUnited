@@ -1,0 +1,785 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>EULA</title>
+		<style>
+			/* General reset */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+					Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+				background-color: #ffffff;
+				color: #24292e;
+				line-height: 1.5;
+				padding: 2rem;
+				transition: background-color 0.3s, color 0.3s;
+			}
+			/* Dark mode */
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: #0d1117;
+					color: #c9d1d9;
+				}
+				header {
+					border-bottom: none;
+				}
+				.language-selector {
+					background-color: #161b22;
+					color: #c9d1d9;
+					border: 1px solid #30363d;
+				}
+				blockquote {
+					color: #8b949e;
+					border-left: 0.25em solid #30363d;
+				}
+				code,
+				pre {
+					background-color: #161b22;
+					border: 1px solid #30363d;
+				}
+			}
+			header {
+				align-items: leading;
+			}
+			.language-selector {
+				font-size: 1rem;
+				padding: 0.5rem;
+				border: 1px solid #d0d7de;
+				border-radius: 6px;
+				background-color: #f6f8fa;
+				color: #24292e;
+			}
+			hr {
+				opacity: 0.1;
+			}
+			main {
+				padding: 0;
+			}
+			@media (max-width: 600px) {
+				body {
+					padding: 1rem;
+				}
+			}
+			/* GitHub Markdown CSS */
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin-top: 1em;
+				margin-bottom: 0.5em;
+				font-weight: 600;
+				line-height: 1.25;
+			}
+			h1 {
+				text-align: center;
+				margin-top: 1em;
+				margin-bottom: 1em;
+			}
+			p {
+				margin-bottom: 1em;
+			}
+			a {
+				color: #0366d6;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			ul,
+			ol {
+				padding-left: 2em;
+				margin-bottom: 1em;
+			}
+			blockquote {
+				padding: 0.5em 1em;
+				color: #6a737d;
+				border-left: 0.25em solid #d0d7de;
+				margin-bottom: 0.5em; /* Reduced space at the bottom */
+			}
+			code {
+				font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+					Courier, monospace;
+				font-size: 85%;
+				background-color: #f6f8fa;
+				padding: 0.2em 0.4em;
+				border-radius: 6px;
+			}
+			pre {
+				font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+					Courier, monospace;
+				font-size: 85%;
+				line-height: 1.45;
+				background-color: #f6f8fa;
+				padding: 1em;
+				border-radius: 6px;
+				overflow: auto;
+				border: none;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 1em;
+			}
+			th,
+			td {
+				border: 1px solid #d0d7de;
+				padding: 0.6em;
+			}
+			th {
+				background-color: #f6f8fa;
+				font-weight: 600;
+			}
+			/* Hide all content divs by default */
+			.content {
+				display: none;
+			}
+			/* Show content div when it is active */
+			.content.active {
+				display: block;
+			}
+		</style>
+		<script>
+			function changeLanguage() {
+				const language = document.getElementById("language-selector").value;
+				const contentDivs = document.querySelectorAll(".content");
+				contentDivs.forEach((div) => div.classList.remove("active"));
+				const selectedContent = document.getElementById(`content-${language}`);
+				if (selectedContent) {
+					selectedContent.classList.add("active");
+				}
+			}
+
+			function detectLanguage() {
+				const browserLang = navigator.language || navigator.userLanguage;
+				const supportedLanguages = ["en-US", "zh-Hant", "zh-Hans", "ja-JP"];
+				// Default to "zh-Hans" if the browser's language is not supported
+				let language = supportedLanguages.includes(browserLang)
+					? browserLang
+					: "zh-Hans";
+				document.getElementById("language-selector").value = language;
+				changeLanguage(); // Call changeLanguage to set the correct content visibility
+			}
+
+			window.onload = detectLanguage; // Initialize on page load
+		</script>
+	</head>
+	<body>
+		<header>
+			<select
+				id="language-selector"
+				class="language-selector"
+				onchange="changeLanguage()"
+			>
+				<option value="en-US">English</option>
+				<option value="zh-Hant">繁體中文</option>
+				<option value="zh-Hans">简体中文</option>
+				<option value="ja-JP">日本語</option>
+			</select>
+		</header>
+		<main>
+			<div id="content-en-US" class="content" lang="en">
+				<hr />
+
+				<h1><strong>The Pizza Helper User Agreement and Disclaimer</strong></h1>
+
+				<blockquote>
+					All translations of this document are for reference purposes only. The
+					original Simplified Chinese version of this document is the only
+					legally binding version.
+				</blockquote>
+
+				<p>
+					Users are specially reminded to read and fully understand this "The
+					Pizza Helper User Agreement and Disclaimer" (hereinafter referred to
+					as "this Agreement"), including clauses that exempt the developer's
+					liability and those that restrict user rights. Before using this
+					application and its related services, users must carefully review this
+					Agreement and decide whether to accept it (minors should read it with
+					their legal guardians). If users do not agree with all the terms in
+					this Agreement, they are not authorized to use the relevant services.
+					By using the services, the user agrees to be bound by the terms of
+					this Agreement.
+				</p>
+
+				<p>
+					This Agreement is a contract between you (hereinafter referred to as
+					"User") and our team (hereinafter referred to as "Developer")
+					regarding your use of the application. It outlines the rights and
+					obligations between the User and the Developer concerning the service
+					of the application. "User" refers to any individual or entity that
+					downloads, uses, or browses this service.
+				</p>
+
+				<p>
+					Once the user accepts this Agreement, they are bound by all its terms,
+					including any modifications the Developer may make at any time. The
+					Developer reserves the right to update this Agreement, and the updated
+					terms shall become effective immediately upon publication without
+					prior notice. Users can always view the latest version of this
+					Agreement within the application. If, after the modification, the user
+					does not agree, they should cease using the service; continuing to use
+					the service implies acceptance of the revised terms.
+				</p>
+
+				<hr />
+
+				<h4 id="toc_0">Article 1: Usage Rules</h4>
+
+				<ol>
+					<li>
+						<p>
+							The User acknowledges and agrees that this application serves only
+							as a platform for sharing, transmitting, and accessing
+							information. Users are responsible for their actions, including
+							the content they transmit and the consequences thereof. Users must
+							evaluate the accuracy, completeness, and usefulness of the content
+							and bear any risks arising from its use. The Developer is not
+							responsible for any damages caused by user actions.
+						</p>
+					</li>
+					<li>
+						<p>
+							Content transmitted within or through the service does not
+							represent the Developer's views. The Developer is not liable for
+							such content. Users are fully responsible for ensuring the
+							truthfulness, legality, harmlessness, and validity of their
+							transmitted content and must bear any related legal liabilities.
+						</p>
+					</li>
+					<li>
+						<p>
+							The Developer reserves the right to modify, suspend, limit,
+							terminate, or revoke all or part of the services without prior
+							notice, and users must assume this risk.
+						</p>
+					</li>
+					<li>
+						<p>
+							The service may include advertisements, and users agree to see
+							advertisements provided by the Developer, third-party suppliers,
+							or partners.
+						</p>
+					</li>
+					<li>
+						<p>Users must not use the application to transmit content that:</p>
+
+						<ul>
+							<li>
+								Violates the basic principles of the Constitution of the
+								People's Republic of China;
+							</li>
+							<li>
+								Jeopardizes national security, damages national honor or
+								interests, or incites ethnic discrimination;
+							</li>
+							<li>
+								Spreads false information, or contains pornography, violence, or
+								other prohibited content;
+							</li>
+							<li>Is forbidden by laws and regulations.</li>
+						</ul>
+					</li>
+					<li>
+						<p>
+							The Developer has the right to take action against violations,
+							including deleting illegal content, terminating services, blocking
+							accounts, and reporting to authorities.
+						</p>
+					</li>
+				</ol>
+
+				<hr />
+
+				<h4 id="toc_1">Article 2: Privacy Protection</h4>
+
+				<p>
+					This application does not transmit user data to the Developer's
+					servers. User information is used solely for service interaction and
+					personalization. The Developer does not collect any private
+					information.
+				</p>
+
+				<hr />
+
+				<h4 id="toc_2">Article 3: Trademarks and Intellectual Property</h4>
+
+				<ol>
+					<li>
+						Except for specially indicated content, image materials used in this
+						application are from miHoYo, who retain full rights to these assets.
+						Other trademarks, service names, or developer logos are owned by the
+						Developer. Users are not allowed to use these trademarks without
+						prior written consent.
+					</li>
+				</ol>
+
+				<hr />
+
+				<h4 id="toc_3">Article 4: Legal Liability and Disclaimer</h4>
+
+				<ol>
+					<li>
+						<p>
+							Users agree to indemnify the Developer and its partners against
+							claims or damages, including legal fees, arising from their
+							violation of this Agreement.
+						</p>
+					</li>
+					<li>
+						<p>
+							The Developer is not liable for losses caused by communication
+							line failures, technical issues, or force majeure.
+						</p>
+					</li>
+					<li>
+						<p>
+							Users must understand that interactions facilitated by the service
+							are their personal responsibility, and the Developer is not liable
+							for impacts caused by changes on miHoYo’s side.
+						</p>
+					</li>
+					<li>
+						<p>
+							Content provided is protected by intellectual property laws, and
+							unauthorized use or modification is prohibited.
+						</p>
+					</li>
+					<li>
+						<p>
+							The Developer is not liable for special or consequential damages,
+							even if foreseen. The Developer’s total liability is capped at the
+							fees paid by the User for the service.
+						</p>
+					</li>
+				</ol>
+
+				<hr />
+
+				<h4 id="toc_4">Article 5: Miscellaneous</h4>
+
+				<ol>
+					<li>
+						<p>
+							The Developer reminds users of liability exemptions and encourages
+							minors to review with guardians. This Agreement is governed by the
+							laws of the People's Republic of China. Disputes will be resolved
+							in the Developer's local court.
+						</p>
+					</li>
+					<li>
+						<p>Partial invalidity of terms does not affect other provisions.</p>
+					</li>
+					<li>
+						<p>Copyright and interpretation rights belong to the Developer.</p>
+					</li>
+				</ol>
+			</div>
+			<div id="content-zh-Hant" class="content active" lang="zh-Hant">
+				<hr />
+
+				<h1><strong>披薩小助手使用者授權合約與免責聲明</strong></h1>
+
+				<blockquote>
+					本文件的所有翻譯版本僅供參考，唯有簡體中文原版具法律效力。
+				</blockquote>
+
+				<p>
+					特別提醒使用者務必詳細閱讀並充分理解本《披薩小助手使用者授權合約與免責聲明》（以下簡稱「本合約」）之內容，尤其是涉及免責條款及對使用者權利之限制條款。使用者在使用敝應用程式及相關服務前，應仔細審閱本合約，並選擇是否接受（未成年人應在法定監護人陪同下審閱）。若使用者不同意本合約所列全部條款，則無權使用相關服務。使用者一經使用，即視為同意接受本合約各項條款之約束。
+				</p>
+
+				<p>
+					本合約為您（以下簡稱「使用者」）與本團隊（以下簡稱「開發者」）就使用者使用敝應用程式服務所訂立之協議。合約說明使用者與開發者間有關敝應用程式服務之權利義務。「使用者」係指下載、使用或瀏覽本服務之個人或機構。
+				</p>
+
+				<p>
+					一旦使用者接受本合約，則同意受其所有條款拘束，包括接受開發者隨時對服務條款進行之修訂。開發者有權隨時更新本合約條款，並於公佈後生效，無須另行通知。使用者可隨時在敝應用程式查閱最新版本之合約條款。若合約條款經修訂後，使用者不同意，請即時停止使用服務；使用者繼續使用服務，則視為已接受修訂後之條款。
+				</p>
+
+				<hr />
+
+				<h3 id="toc_0">第一條 使用規則</h3>
+
+				<ol>
+					<li>
+						<p>
+							使用者確認並同意，敝應用程式僅提供資訊分享、傳送及獲取平台，使用者須對自身行為負責，包括其傳送之內容及因此產生之後果。使用者應自行判斷應用程式內容之準確性、完整性與實用性，並承擔因此使用所產生之風險。開發者對於因使用者行為所導致之任何損害不承擔任何責任。
+						</p>
+					</li>
+					<li>
+						<p>
+							使用者於應用程式中或透過服務所發佈之內容不代表開發者之觀點，開發者不為此負責。使用者應確保傳送內容之真實性、合法性、無害性及有效性，並自負相關法律責任。
+						</p>
+					</li>
+					<li>
+						<p>
+							開發者保有因業務需求而未經事前通知變更、暫停、限制或終止全部或部分服務之權利，使用者須自行承擔此風險。
+						</p>
+					</li>
+					<li>
+						<p>
+							敝應用程式服務可能包含廣告，使用者同意於使用過程中接受來自敝應用程式及第三方供應商、合作夥伴之廣告展示。
+						</p>
+					</li>
+					<li>
+						<p>使用者不得利用應用程式傳送下列內容：</p>
+
+						<ul>
+							<li>違反中華人民共和國憲法基本原則或危害國家安全之內容；</li>
+							<li>損害國家榮譽、利益，或煽動民族歧視、破壞民族團結之內容；</li>
+							<li>傳播不實之資訊、淫穢、暴力、恐怖等法律禁止之內容；</li>
+							<li>其他在地法律及行政規範所禁止之內容。</li>
+						</ul>
+					</li>
+					<li>
+						<p>
+							開發者有權依合理判斷對違反本合約及相關法律規範之行為採取措施，包括刪除違法內容、終止服務資格、封鎖使用者帳號及向主管機關報告等。
+						</p>
+					</li>
+				</ol>
+
+				<hr />
+
+				<h3 id="toc_1">第二條 隱私保護</h3>
+
+				<p>
+					敝應用程式不會傳送使用者資料至開發者伺服器。使用者所有個人資料僅用於與相關服務的互動及個人化功能，開發者不蒐集使用者隱私資訊。
+				</p>
+
+				<hr />
+
+				<h3 id="toc_2">第三條 商標與智慧財產權</h3>
+
+				<ol>
+					<li>
+						除特定標註外，敝應用程式之圖像素材來自米哈游網絡科技股份有限公司，該公司保有素材之一切權利。應用程式中涉及之開發者標誌、商標及服務名稱，屬開發者之智慧財產，未經書面同意，不得使用或向他人表示擁有展示、使用或處理標誌之權利。
+					</li>
+				</ol>
+
+				<hr />
+
+				<h3 id="toc_3">第四條 法律責任與免責</h3>
+
+				<ol>
+					<li>
+						<p>
+							使用者違反本合約條款，造成第三方索賠、需求或損失（包括律師費），應賠償開發者及合作夥伴，並使之免受損害。
+						</p>
+					</li>
+					<li>
+						<p>
+							開發者不對因通信線路中斷、技術問題、系統不穩定或不可抗力原因所造成之損失承擔責任。
+						</p>
+					</li>
+					<li>
+						<p>
+							使用者應理解，本服務內容為協助使用者便利與米哈游進行網路交互，相關操作屬於個人行為，開發者不負責因米哈游服務變動所導致之影響。
+						</p>
+					</li>
+					<li>
+						<p>
+							所有資訊內容受智慧財產權保護，使用者僅能在獲授權範圍內使用，並不得擅自修改或創作衍生產品。
+						</p>
+					</li>
+					<li>
+						<p>
+							開發者對於間接性、懲罰性或特別損害概不負責，即使事先知悉可能性。無論合約有無相反條款，開發者責任總額不超過使用者支付之費用。
+						</p>
+					</li>
+				</ol>
+
+				<hr />
+
+				<h3 id="toc_4">第五條 其他條款</h3>
+
+				<ol>
+					<li>
+						<p>
+							開發者提醒使用者注意合約中之免責條款，未成年人應由法定監護人陪同審閱。本合約最終解釋及修改權歸開發者所有。
+						</p>
+					</li>
+					<li><p>合約部分條款無效不影響其他條款效力。</p></li>
+					<li>
+						<p>
+							合約之效力、解釋及爭議解決以中華人民共和國法律為準據法。如有爭議，雙方應先行協商解決，若協商不成，使用者同意由開發者住所地法院管轄。
+						</p>
+					</li>
+					<li><p>本合約版權屬開發者所有，保留一切解釋與修改之權利。</p></li>
+				</ol>
+
+				<hr />
+			</div>
+			<div id="content-zh-Hans" class="content" lang="zh-Hans">
+				<hr />
+
+				<h1><strong>披萨小助手用户许可协议与免责声明</strong></h1>
+
+				<blockquote>
+					本文件的所有翻译版本仅供参考，唯有简体中文原版具有法律效力。
+				</blockquote>
+
+				<p>
+					特别提醒用户务必详细阅读并充分理解本《披萨小助手用户许可协议与免责声明》（以下简称「本合约」）之内容，尤其是涉及免责条款及对用户权利之限制条款。用户在使用敝应用程序及相关服务前，应仔细审阅本合约，并选择是否接受（未成年人应在法定监护人陪同下审阅）。若用户不同意本合约所列全部条款，则无权使用相关服务。用户一经使用，即视为同意接受本合约各项条款之约束。
+				</p>
+
+				<p>
+					本合约为您（以下简称「用户」）与本团队（以下简称「开发者」）就用户使用敝应用程序服务所订立之协议。合约说明用户与开发者间有关敝应用程序服务之权利义务。「用户」系指下载、使用或浏览本服务之个人或机构。
+				</p>
+
+				<p>
+					一旦用户接受本合约，则同意受其所有条款拘束，包括接受开发者随时对服务条款进行之修订。开发者有权随时更新本合约条款，并于公布后生效，无须另行通知。用户可随时在敝应用程序查阅最新版本之合约条款。若合约条款经修订后，用户不同意，请即时停止使用服务；用户继续使用服务，则视为已接受修订后之条款。
+				</p>
+
+				<hr />
+
+				<h3 id="toc_0">第一条 使用规则</h3>
+
+				<ol>
+					<li>
+						<p>
+							用户确认并同意，敝应用程序仅提供资讯分享、传送及获取平台，用户须对自身行为负责，包括其传送之内容及因此产生之后果。用户应自行判断应用程序内容之准确性、完整性与实用性，并承担因此使用所产生之风险。开发者对于因用户行为所导致之任何损害不承担任何责任。
+						</p>
+					</li>
+					<li>
+						<p>
+							用户于应用程序中或透过服务所发布之内容不代表开发者之观点，开发者不为此负责。用户应确保传送内容之真实性、合法性、无害性及有效性，并自负相关法律责任。
+						</p>
+					</li>
+					<li>
+						<p>
+							开发者保有因业务需求而未经事前通知变更、暂停、限制或终止全部或部分服务之权利，用户须自行承担此风险。
+						</p>
+					</li>
+					<li>
+						<p>
+							敝应用程序服务可能包含广告，用户同意于使用过程中接受来自敝应用程序及第三方供应商、合作伙伴之广告展示。
+						</p>
+					</li>
+					<li>
+						<p>用户不得利用应用程序传送下列内容：</p>
+
+						<ul>
+							<li>违反中华人民共和国宪法基本原则或危害国家安全之内容；</li>
+							<li>损害国家荣誉、利益，或煽动民族歧视、破坏民族团结之内容；</li>
+							<li>传播不实之资讯、淫秽、暴力、恐怖等法律禁止之内容；</li>
+							<li>其他在地法律及行政规范所禁止之内容。</li>
+						</ul>
+					</li>
+					<li>
+						<p>
+							开发者有权依合理判断对违反本合约及相关法律规范之行为采取措施，包括删除违法内容、终止服务资格、封锁用户账号及向主管机关报告等。
+						</p>
+					</li>
+				</ol>
+
+				<hr />
+
+				<h3 id="toc_1">第二条 隐私保护</h3>
+
+				<p>
+					敝应用程序不会传送用户资料至开发者服务器。用户所有个人资料仅用于与相关服务的互动及个人化功能，开发者不搜集用户隐私资讯。
+				</p>
+
+				<hr />
+
+				<h3 id="toc_2">第三条 商标与知识产权</h3>
+
+				<ol>
+					<li>
+						除特定标注外，敝应用程序之图像素材来自米哈游网络科技股份有限公司，该公司保有素材之一切权利。应用程序中涉及之开发者标志、商标及服务名称，属开发者之智慧财产，未经书面同意，不得使用或向他人表示拥有展示、使用或处理标志之权利。
+					</li>
+				</ol>
+
+				<hr />
+
+				<h3 id="toc_3">第四条 法律责任与免责</h3>
+
+				<ol>
+					<li>
+						<p>
+							用户违反本合约条款，造成第三方索赔、需求或损失（包括律师费），应赔偿开发者及合作伙伴，并使之免受损害。
+						</p>
+					</li>
+					<li>
+						<p>
+							开发者不对因通信线路中断、技术问题、系统不稳定或不可抗力原因所造成之损失承担责任。
+						</p>
+					</li>
+					<li>
+						<p>
+							用户应理解，本服务内容为协助用户便利与米哈游进行网络交互，相关操作属于个人行为，开发者不负责因米哈游服务变动所导致之影响。
+						</p>
+					</li>
+					<li>
+						<p>
+							所有资讯内容受知识产权保护，用户仅能在获授权范围内使用，并不得擅自修改或创作衍生产品。
+						</p>
+					</li>
+					<li>
+						<p>
+							开发者对于间接性、惩罚性或特别损害概不负责，即使事先知悉可能性。无论合约有无相反条款，开发者责任总额不超过用户支付之费用。
+						</p>
+					</li>
+				</ol>
+
+				<hr />
+
+				<h3 id="toc_4">第五条 其他条款</h3>
+
+				<ol>
+					<li>
+						<p>
+							开发者提醒用户注意合约中之免责条款，未成年人应由法定监护人陪同审阅。本合约最终解释及修改权归开发者所有。
+						</p>
+					</li>
+					<li><p>合约部分条款无效不影响其他条款效力。</p></li>
+					<li>
+						<p>
+							合约之效力、解释及争议解决以中华人民共和国法律为准据法。如有争议，双方应先行协商解决，若协商不成，用户同意由开发者住所地法院管辖。
+						</p>
+					</li>
+					<li><p>本合约版权属开发者所有，保留一切解释与修改之权利。</p></li>
+				</ol>
+
+				<hr />
+			</div>
+			<div id="content-ja-JP" class="content" lang="ja">
+				<h1><strong>ピザ助手アプリ使用者許諾契約及び免責声明</strong></h1>
+
+				<blockquote>
+					本書の全ての翻訳は参考のためのみ提供され、簡体字中国語の原本のみが法的効力を有す。
+				</blockquote>
+
+				<p>
+					使用者各位、本「ピザ助手アプリ使用者許諾契約及び免責声明」（以下「本契約」という）の内容を慎重に読了し、充分に理解することを要請す。特に、開発者の責任免除条項及び使用者の権利に関する制限条項について留意すべきである。未成年者は法定後見人の同伴の下、これを読了すべし。本契約の諸条件に同意しない場合、当アプリ及び関連サービスを利用することはできぬものとす。使用者が本サービスを利用する際は、本契約に拘束されることを承認したものと見なされる。
+				</p>
+
+				<p>
+					本契約は、使用者（以下「使用者」と称する）と本チーム（以下「開発者」と称する）との間におけるアプリケーション利用に関する契約であり、両者の権利義務を明記するものである。「使用者」とは、本サービスをダウンロード、使用または閲覧する個人または団体を指す。
+				</p>
+
+				<p>
+					使用者が本契約を受諾した時点で、その全ての条項に拘束されることとなり、開発者はサービス条項を随時修正する権利を有することに同意す。開発者は本契約を改訂し、新たな条項は告知なく効力を生ずる。使用者は常にアプリ内で最新の契約を確認すべきである。修正後の条項に同意しない場合、速やかにサービスの利用を中止すること。引き続き利用する場合は、修正条項に同意したものとみなされる。
+				</p>
+
+				<hr />
+
+				<h4 id="toc_0">第1条 使用規則</h4>
+
+				<ol>
+					<li>
+						<p>
+							使用者は、当アプリが情報共有、送信及び取得のためのプラットフォームであることを理解し、自身の行為について全責任を負うものとす。使用者は、正確性、完全性及び有用性について自己判断に基づき内容を利用し、それに起因するリスクを負担することを承諾す。開発者は使用者の行為による損害について一切責任を負わぬ。
+						</p>
+					</li>
+					<li>
+						<p>
+							当アプリ内または本サービスを通じて発信された内容は、開発者の意見を反映するものではなく、開発者はその内容に関し一切の責任を負わぬ。使用者は、送信する情報の真実性、合法性、無害性及び有効性について全責任を負い、法的責任を全うするものとす。
+						</p>
+					</li>
+					<li>
+						<p>
+							開発者は業務上の必要に応じ、通知なくサービス内容を変更、停止、制限又は終了する権利を有し、使用者はそのリスクを承諾す。
+						</p>
+					</li>
+					<li>
+						<p>
+							当アプリには広告が含まれることがあり、使用者は開発者及び第三者の広告が表示されることを了承するものとす。
+						</p>
+					</li>
+					<li>
+						<p>使用者は、次の内容を送信してはならぬ：</p>
+
+						<ul>
+							<li>中華人民共和国憲法の基本原則に反するもの；</li>
+							<li>国家の安全、名誉又は利益を損なうもの；</li>
+							<li>虚偽の情報、淫乱、暴力等法律で禁止された内容；</li>
+							<li>その他、法律及び規則により禁止される内容。</li>
+						</ul>
+					</li>
+					<li>
+						<p>
+							開発者は違反行為に対して、法律に基づき適切な措置を講じる権利を有す。
+						</p>
+					</li>
+				</ol>
+
+				<hr />
+
+				<h4 id="toc_1">第2条 プライバシー保護</h4>
+
+				<p>
+					当アプリは、使用者のデータを開発者のサーバーに送信しない。使用者情報は、サービスの操作及び個人化のためにのみ使用される。開発者は個人情報を収集しない。
+				</p>
+
+				<hr />
+
+				<h4 id="toc_2">第3条 商標及び知的財産権</h4>
+
+				<ol>
+					<li>
+						特に明記されていない限り、当アプリに使用される画像素材は（中国上海の）株式会社米哈遊（miHoYo）に帰属し、同社が全ての権利を保持す。他の商標、サービス名又は開発者のロゴは開発者に帰属し、書面による事前の許可なく使用することはできぬ。
+					</li>
+				</ol>
+
+				<hr />
+
+				<h4 id="toc_3">第4条 法的責任及び免責事項</h4>
+
+				<ol>
+					<li>
+						<p>
+							使用者は、本契約の違反に起因して発生した請求又は損害（法的費用を含む）について、開発者及びそのパートナーを補償することに同意す。
+						</p>
+					</li>
+					<li>
+						<p>
+							通信回線の不具合、技術的な問題又は不可抗力により生じた損失について、開発者は責任を負わぬ。
+						</p>
+					</li>
+					<li>
+						<p>
+							使用者は、サービスを介したやり取りが自己の責任にて行われるものであり、miHoYo側の変更によって生じる影響について開発者は責任を負わぬ。
+						</p>
+					</li>
+					<li>
+						<p>
+							提供された内容は知的財産権により保護されており、無断使用又は改変は禁じられる。
+						</p>
+					</li>
+					<li>
+						<p>
+							開発者は、たとえ予見可能であっても特別又は結果的損害について責任を負わぬ。開発者の責任は、使用者がサービスに支払った料金を上限とす。
+						</p>
+					</li>
+				</ol>
+
+				<hr />
+
+				<h4 id="toc_4">第5条 雑則</h4>
+
+				<ol>
+					<li>
+						<p>
+							開発者は、責任免除条項に対する注意喚起を行い、未成年者には後見人と共にこれを確認することを推奨す。本契約は中華人民共和国の法律に準拠するものとし、紛争は開発者の管轄裁判所にて解決するものとす。
+						</p>
+					</li>
+					<li>
+						<p>
+							本契約の一部が無効とされた場合でも、他の条項には影響を与えぬものとす。
+						</p>
+					</li>
+					<li><p>本契約の著作権及び解釈権は、開発者に帰属するものとす。</p></li>
+				</ol>
+
+				<hr />
+			</div>
+		</main>
+	</body>
+</html>
