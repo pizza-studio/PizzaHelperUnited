@@ -72,11 +72,17 @@ struct ContributorItem: View {
                 .frame(width: 50, height: 50)
             VStack(alignment: .leading) {
                 Group {
-                    Text(verbatim: title).fontWidth(.condensed).fontWeight(.heavy)
+                    Text(verbatim: title)
+                        .fontWidth(.condensed)
+                        .fontWeight(.heavy)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
                     if !subtitle.isEmpty {
                         Text(verbatim: subtitle)
                             .font(.caption2)
                             .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .multilineTextAlignment(.leading)
                     }
                 }
             }
@@ -105,10 +111,13 @@ struct ContributorItem: View {
                     Text(verbatim: title)
                         .fontWidth(.condensed).fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
                     if !subtitle.isEmpty {
                         Text(verbatim: subtitle)
                             .font(.caption2)
                             .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .multilineTextAlignment(.leading)
                     }
                 }
             } icon: {
