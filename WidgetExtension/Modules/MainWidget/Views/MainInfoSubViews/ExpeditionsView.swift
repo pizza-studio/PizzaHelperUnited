@@ -39,7 +39,7 @@ struct EachExpeditionView: View {
                         .font(.footnote)
                         .minimumScaleFactor(0.4)
                     let totalSecond = 20.0 * 60.0 * 60.0
-                    let percentage = TimeInterval.sinceNow(to: expedition.finishTime) / totalSecond
+                    let percentage = 1.0 - (TimeInterval.sinceNow(to: expedition.finishTime) / totalSecond)
                     percentageBar(percentage)
                         .environment(\.colorScheme, .light)
                 }
