@@ -1719,25 +1719,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The successor of both PizzaHelper4Genshin and PizzaHelper4HSR. Powered by the next-generation United Pizza Engine."
+            "value" : "- The successor of both PizzaHelper4Genshin and PizzaHelper4HSR. Powered by the next-generation United Pizza Engine.\n- The program part of this software is open-sourced under AGPLv3 License.\n- The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.\n- The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "今までの「原神ピザ」と「崩スタピザ」を統合し、両アプリの後継者として、次世代エンジン『統一ピザエンジン』で開発したアプリである。"
+            "value" : "- 今までの「原神ピザ」と「崩スタピザ」を統合し、両アプリの後継者として、次世代エンジン『統一ピザエンジン』で開発したアプリである。\n- 本ソフトウェアはAGPLv3ライセンスのもと、オープンソースとして提供される。\n- アプリ「ピザ助手（無印）」およびその前身は、miHoYo株式会社またはその子会社とは一切関係ない。\n- 以下のタイトルのゲーム内容および資料は、株式会社米哈遊(miHoYo)の商標および著作権である：『崩壊：星穹鉄道（スターレイル）』、『原神』、『ゼンレスゾンゼロ（絶区ゼロ）』。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "是「原神披萨小助手」与「星铁披萨小助手」的继任者，受次世代「统一披萨引擎」的加持。"
+            "value" : "- 是「原神披萨小助手」与「星铁披萨小助手」的继任者，受次世代「统一披萨引擎」的加持。\n- 敝应用的程式部分以 AGPLv3 许可证释出原始程式码。\n- 披萨小助手及其前身与米哈游股份有限公司（及其子公司）无牵涉。\n- 下述游戏的商标与内容材料均归米哈游股份有限公司所有：《原神》《崩坏：星穹铁道》《绝区零》。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "是「原神披薩小助手」與「星鐵披薩小助手」的繼任者，受次世代「統一披薩引擎」的加持。"
+            "value" : "- 是「原神披薩小助手」與「星鐵披薩小助手」的繼任者，受次世代「統一披薩引擎」的加持。\n- 敝應用的程式部分以 AGPLv3 許可證釋出原始程式碼。\n- 披薩小助手及其前身與米哈遊股份有限公司（及其子公司）無牽涉。\n- 下述遊戲的商標與內容材料均歸米哈遊股份有限公司所有：《原神》《崩壞：星穹鐵道》《絕區零》。"
           }
         }
       }
