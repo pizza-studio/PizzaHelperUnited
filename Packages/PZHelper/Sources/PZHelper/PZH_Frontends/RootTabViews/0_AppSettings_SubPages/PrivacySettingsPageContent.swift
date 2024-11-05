@@ -20,6 +20,8 @@ struct PrivacySettingsPageContent: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("settings.privacy.abyssDataCollect.detail".i18nPZHelper)
                         .font(.footnote)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     NavigationLink {
                         WebBrowserView(url: Self.privacyFAQURL.absoluteString)
                             .navigationTitle("FAQ")
@@ -27,8 +29,11 @@ struct PrivacySettingsPageContent: View {
                     } label: {
                         Text("settings.privacy.abyssDataCollect.faqLink".i18nPZHelper)
                             .font(.footnote)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
         .navigationTitle("settings.privacy.title".i18nPZHelper)
