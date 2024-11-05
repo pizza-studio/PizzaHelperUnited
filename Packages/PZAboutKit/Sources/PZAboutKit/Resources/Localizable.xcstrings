@@ -57,6 +57,34 @@
         }
       }
     },
+    "aboutKit.3rdParty.navTitle.shortened" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3rd-Party Components"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他者コンポーネント"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第三方组件"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第三方組件"
+          }
+        }
+      }
+    },
     "aboutKit.aboutView.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
