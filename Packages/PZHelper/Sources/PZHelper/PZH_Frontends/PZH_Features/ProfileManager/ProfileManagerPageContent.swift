@@ -77,17 +77,7 @@ struct ProfileManagerPageContent: View {
                     }
                 }
             } header: {
-                if let lastTimeResetLocalProfileDB {
-                    let dateStr = Self.dateTimeFormatter.string(from: lastTimeResetLocalProfileDB)
-                    // 如果是最近 2 小时内发生的，则以红色显示。
-                    let isRecent = Swift.abs(lastTimeResetLocalProfileDB.timeIntervalSinceNow) > 7200
-                    Text(
-                        "profileMgr.lastTimeResetLocalProfileDB:\(dateStr)",
-                        bundle: .module
-                    )
-                    .foregroundStyle(isRecent ? Color.red : Color.primary)
-                    .textCase(.none)
-                }
+                drawDBResetDate()
             }
             if profiles.isEmpty, PZProfileActor.hasOldAccountDataDetected() {
                 Button("profileMgr.importLegacyProfiles.title".i18nPZHelper) {
@@ -99,41 +89,44 @@ struct ProfileManagerPageContent: View {
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
         .onAppear(perform: bleachInvalidProfiles)
-        .toolbar {
-            #if os(iOS) || targetEnvironment(macCatalyst)
-            ToolbarItem(placement: .confirmationAction) {
-                Button((isEditMode.isEditing) ? "sys.done".i18nBaseKit : "sys.edit".i18nBaseKit) {
-                    withAnimation {
-                        isEditMode = (isEditMode.isEditing) ? .inactive : .active
+        .apply { content in
+            content
+                .toolbar {
+                    #if os(iOS) || targetEnvironment(macCatalyst)
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button((isEditMode.isEditing) ? "sys.done".i18nBaseKit : "sys.edit".i18nBaseKit) {
+                            withAnimation {
+                                isEditMode = (isEditMode.isEditing) ? .inactive : .active
+                            }
+                        }
+                    }
+                    #endif
+                    ToolbarItem(placement: .confirmationAction) {
+                        ProfileBackupRestoreMenu(
+                            importCompletionHandler: handleImportProfilePackResult,
+                            extraItem: extraMenuItems
+                        )
+                        .disabled(isBusy || isEditMode.isEditing)
                     }
                 }
-            }
+                .toast(isPresenting: $alertToastEventStatus.isProfileTaskSucceeded) {
+                    AlertToast(
+                        displayMode: .alert,
+                        type: .complete(.green),
+                        title: "profileMgr.toast.taskSucceeded".i18nPZHelper
+                    )
+                }
+                .toast(isPresenting: $alertToastEventStatus.isFailureSituationTriggered) {
+                    AlertToast(
+                        displayMode: .alert,
+                        type: .complete(.green),
+                        title: "profileMgr.toast.taskFailed".i18nPZHelper
+                    )
+                }
+            #if os(iOS) || targetEnvironment(macCatalyst)
+                .environment(\.editMode, $isEditMode)
             #endif
-            ToolbarItem(placement: .confirmationAction) {
-                ProfileBackupRestoreMenu(
-                    importCompletionHandler: handleImportProfilePackResult,
-                    extraItem: extraMenuItems
-                )
-                .disabled(isBusy || isEditMode.isEditing)
-            }
         }
-        .toast(isPresenting: $alertToastEventStatus.isProfileTaskSucceeded) {
-            AlertToast(
-                displayMode: .alert,
-                type: .complete(.green),
-                title: "profileMgr.toast.taskSucceeded".i18nPZHelper
-            )
-        }
-        .toast(isPresenting: $alertToastEventStatus.isFailureSituationTriggered) {
-            AlertToast(
-                displayMode: .alert,
-                type: .complete(.green),
-                title: "profileMgr.toast.taskFailed".i18nPZHelper
-            )
-        }
-        #if os(iOS) || targetEnvironment(macCatalyst)
-        .environment(\.editMode, $isEditMode)
-        #endif
     }
 
     // MARK: Private
@@ -238,6 +231,21 @@ struct ProfileManagerPageContent: View {
             } label: {
                 Text("profileMgr.delete.title".i18nPZHelper)
             }
+        }
+    }
+
+    @ViewBuilder
+    private func drawDBResetDate() -> some View {
+        if let lastTimeResetLocalProfileDB {
+            let dateStr = Self.dateTimeFormatter.string(from: lastTimeResetLocalProfileDB)
+            // 如果是最近 2 小时内发生的，则以红色显示。
+            let isRecent = Swift.abs(lastTimeResetLocalProfileDB.timeIntervalSinceNow) > 7200
+            Text(
+                "profileMgr.lastTimeResetLocalProfileDB:\(dateStr)",
+                bundle: .module
+            )
+            .foregroundStyle(isRecent ? Color.red : Color.primary)
+            .textCase(.none)
         }
     }
 
