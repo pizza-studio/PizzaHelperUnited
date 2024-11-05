@@ -73,11 +73,6 @@ struct AppAboutViewSections: View {
 
     typealias Link = LinkLabelItem.ItemType
 
-    static let navTitle4EULA: String = {
-        let key: String.LocalizationValue = "aboutKit.eula.title"
-        return .init(localized: key, bundle: .module)
-    }()
-
     var body: some View {
         Section {
             ContributorItem(
@@ -151,21 +146,8 @@ struct AppAboutViewSections: View {
 
         // TODO: 择日单独设立授权合约之页面。
         Section {
-            NavigationLink(Self.navTitle4EULA) {
-                let fileURL = Bundle.module.url(forResource: "EULA", withExtension: "html")
-                let url: String = {
-                    switch Locale.preferredLanguages.first?.prefix(2) {
-                    case "zh":
-                        return "https://hsr.pizzastudio.org/static/policy"
-                    case "ja":
-                        return "https://hsr.pizzastudio.org/static/policy_ja"
-                    default:
-                        return "https://hsr.pizzastudio.org/static/policy_en"
-                    }
-                }()
-                WebBrowserView(url: fileURL?.absoluteString ?? url)
-                    .navigationTitle(Self.navTitle4EULA)
-                    .navigationBarTitleDisplayMode(.inline)
+            NavigationLink(EULAView.navTitle4EULA) {
+                EULAView()
             }
             NavigationLink(destination: ListOf3rdPartyComponentsView()) {
                 Text(ListOf3rdPartyComponentsView.navTitle)
