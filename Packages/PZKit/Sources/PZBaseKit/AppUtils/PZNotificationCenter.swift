@@ -4,7 +4,7 @@
 
 @preconcurrency import UserNotifications
 
-enum PZNotificationCenter {
+public enum PZNotificationCenter {
     public static let center = UNUserNotificationCenter.current()
 
     public static func printAllNotifications() async {
