@@ -1,0 +1,202 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>EULA</title>
+		<style>
+			/* General reset */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+					Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+				background-color: #ffffff;
+				color: #24292e;
+				line-height: 1.5;
+				padding: 2rem;
+				transition: background-color 0.3s, color 0.3s;
+			}
+			/* Dark mode */
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: #0d1117;
+					color: #c9d1d9;
+				}
+				header {
+					border-bottom: none;
+				}
+				.language-selector {
+					background-color: #161b22;
+					color: #c9d1d9;
+					border: 1px solid #30363d;
+				}
+				blockquote {
+					color: #8b949e;
+					border-left: 0.25em solid #30363d;
+				}
+				code,
+				pre {
+					background-color: #161b22;
+					border: 1px solid #30363d;
+				}
+			}
+			header {
+				align-items: leading;
+			}
+			.language-selector {
+				font-size: 1rem;
+				padding: 0.5rem;
+				border: 1px solid #d0d7de;
+				border-radius: 6px;
+				background-color: #f6f8fa;
+				color: #24292e;
+			}
+			hr {
+				opacity: 0.1;
+			}
+			main {
+				padding: 0;
+			}
+			@media (max-width: 600px) {
+				body {
+					padding: 1rem;
+				}
+			}
+			/* GitHub Markdown CSS */
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin-top: 1em;
+				margin-bottom: 0.5em;
+				font-weight: 600;
+				line-height: 1.25;
+			}
+			h1 {
+				text-align: center;
+				margin-top: 1em;
+				margin-bottom: 1em;
+			}
+			p {
+				margin-bottom: 1em;
+			}
+			a {
+				color: #0366d6;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			ul,
+			ol {
+				padding-left: 2em;
+				margin-bottom: 1em;
+			}
+			blockquote {
+				padding: 0.5em 1em;
+				color: #6a737d;
+				border-left: 0.25em solid #d0d7de;
+				margin-bottom: 0.5em; /* Reduced space at the bottom */
+			}
+			code {
+				font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+					Courier, monospace;
+				font-size: 85%;
+				background-color: #f6f8fa;
+				padding: 0.2em 0.4em;
+				border-radius: 6px;
+			}
+			pre {
+				font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+					Courier, monospace;
+				font-size: 85%;
+				line-height: 1.45;
+				background-color: #f6f8fa;
+				padding: 1em;
+				border-radius: 6px;
+				overflow: auto;
+				border: none;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 1em;
+			}
+			th,
+			td {
+				border: 1px solid #d0d7de;
+				padding: 0.6em;
+			}
+			th {
+				background-color: #f6f8fa;
+				font-weight: 600;
+			}
+			/* Hide all content divs by default */
+			.content {
+				display: none;
+			}
+			/* Show content div when it is active */
+			.content.active {
+				display: block;
+			}
+		</style>
+		<script>
+			function changeLanguage() {
+				const language = document.getElementById("language-selector").value;
+				const contentDivs = document.querySelectorAll(".content");
+				contentDivs.forEach((div) => div.classList.remove("active"));
+				const selectedContent = document.getElementById(`content-${language}`);
+				if (selectedContent) {
+					selectedContent.classList.add("active");
+				}
+			}
+
+			function detectLanguage() {
+				const browserLang = navigator.language || navigator.userLanguage;
+				const supportedLanguages = ["en-US", "zh-Hant", "zh-Hans", "ja-JP"];
+				// Default to "zh-Hans" if the browser's language is not supported
+				let language = supportedLanguages.includes(browserLang)
+					? browserLang
+					: "zh-Hans";
+				document.getElementById("language-selector").value = language;
+				changeLanguage(); // Call changeLanguage to set the correct content visibility
+			}
+
+			window.onload = detectLanguage; // Initialize on page load
+		</script>
+	</head>
+	<body>
+		<header>
+			<select
+				id="language-selector"
+				class="language-selector"
+				onchange="changeLanguage()"
+			>
+				<option value="en-US">English</option>
+				<option value="zh-Hant">繁體中文 (Traditional Chinese)</option>
+				<option value="zh-Hans">简体中文 (Simplified Chinese)</option>
+				<option value="ja-JP">日本語 (Nihongo)</option>
+			</select>
+			<span> ← 🌐</span>
+		</header>
+		<main>
+			<div id="content-en-US" class="content" lang="en">
+
+			</div>
+			<div id="content-zh-Hant" class="content active" lang="zh-Hant">
+
+			</div>
+			<div id="content-zh-Hans" class="content" lang="zh-Hans">
+				
+			</div>
+			<div id="content-ja-JP" class="content" lang="ja">
+				
+			</div>
+		</main>
+	</body>
+</html>
