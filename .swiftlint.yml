@@ -72,12 +72,13 @@ custom_rules:
     severity: warning
 
 excluded:
-  - .git*
-  - Packages/Build/*
-  - Build/*
-  - "*/.build/*"
-  - "*/resource_bundle_accessor.swift"
-  - Packages/*/.build/*
+  - .git**
+  - Packages/Build/**
+  - Build/**
+  - "**/.build/**"
+  - "**/.index-build/**"
+  - "**/resource_bundle_accessor.swift"
+  - Packages/**/.build/**
   - resource_bundle_accessor.swift
   - Pods
   - R.generated.swift
