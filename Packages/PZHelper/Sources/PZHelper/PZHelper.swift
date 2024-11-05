@@ -51,6 +51,7 @@ private struct AppInitializer: ViewModifier {
         content
             .cleanApplicationIconBadgeNumber()
             .checkAndReloadWidgetTimeline()
+            .hookEULACheckerOnOOBE()
     }
 }
 
