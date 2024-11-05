@@ -16,6 +16,7 @@ extension PZHelper {
     public static func makeMainScene() -> some Scene {
         WindowGroup {
             ContentView()
+                .initializeApp()
                 .environment(\.horizontalSizeClass, .compact)
                 .defaultAppStorage(.baseSuite)
             #if targetEnvironment(macCatalyst)
@@ -40,5 +41,21 @@ extension PZHelper {
     private static func startupTasks() {
         PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
         IAPManager.performStartupTasks()
+    }
+}
+
+// MARK: - AppInitializer
+
+private struct AppInitializer: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .cleanApplicationIconBadgeNumber()
+            .checkAndReloadWidgetTimeline()
+    }
+}
+
+extension View {
+    func initializeApp() -> some View {
+        modifier(AppInitializer())
     }
 }
