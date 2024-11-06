@@ -106,7 +106,7 @@ struct ProfileManagerPageContent: View {
                             importCompletionHandler: handleImportProfilePackResult,
                             extraItem: extraMenuItems
                         )
-                        .disabled(isBusy || isEditMode.isEditing)
+                        .disabled(isBusy || isEditing)
                     }
                 }
                 .toast(isPresenting: $alertToastEventStatus.isProfileTaskSucceeded) {
@@ -147,6 +147,14 @@ struct ProfileManagerPageContent: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
+
+    private var isEditing: Bool {
+        #if os(iOS) || targetEnvironment(macCatalyst)
+        return isEditMode.isEditing
+        #else
+        return false
+        #endif
+    }
 
     private var isSheetShown: Binding<Bool> {
         .init {
