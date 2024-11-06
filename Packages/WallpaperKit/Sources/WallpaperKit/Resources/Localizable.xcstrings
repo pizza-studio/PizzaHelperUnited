@@ -30,6 +30,35 @@
         }
       }
     },
+    "settings.resinTimer.background.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer Background"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタミナタイマー背景画像"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "玩家体力计时器背景图像"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "玩家體力計時器背景圖像"
+          }
+        }
+      }
+    },
     "wallpaperGallery.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
