@@ -3362,6 +3362,287 @@
         }
       }
     },
+    "settings.resinTimer.autoInit.toggle.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically initiate Stamina Timer Live Activity"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタミナタイマーのライブアクティビティを自動的に起こす"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自动发起玩家体力计时器的实时活动"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動發起玩家體力計時器的即時動態"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.background.choose" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Background"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "背景画像をご指定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指定背景图像"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指定背景圖像"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.dynamicIsland.howToHide.answer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can slide the Dynamic Island from left / right to the middle to hide it. \nSwipe left on the Stamina Timer on the lock screen to turn off the resin timer and the Dynamic Island."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Island は、左または右から中央にスライドさせることで非表示にできます。\nロック画面でスタミナタイマーを左にスワイプすると、スタミナタイマーとDynamic Islandが閉じ消しになります。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以将动态岛从左边或右边滑动至中间以隐藏它。\n在锁定画面上向左滑动玩家体力计时器，即可关闭玩家体力计时器和动态岛。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以將動態島從左邊或右邊滑動至中間以隱藏它。\n在鎖定畫面上向左滑動玩家體力計時器，即可關閉玩家體力計時器和動態島。"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.explanation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタミナタイマーは、弊アプリが iOS のライブアクティビティ機能を利用する方法です。「今日」タブでいずれのプロファイルの「リアルタイム便箋」の右にある三点アイコンをクリックすると、スタミナタイマーのライブアクティビティが開始されます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "玩家体力计时器是此应用如何利用iOS的实时活动功能的方式。您可以点击今日标签下的任一本地账号的实时便笺旁边的三个点圆圈来启动它。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "玩家體力計時器是此應用如何利用iOS的即時動態功能的方式。您可以點擊今日標籤下的任一本機帳號的實時便箋旁邊的三個點圓圈來啟動它。"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.gotoSystemSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to System Settings to enable Live Activity for this app"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム設定に移動して、弊アプリのライブアクティビティを有効にしてください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前往系统设定以启用敝 App 的实时活动"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前往系統設定以啟用敝 App 的即時動態"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.randomBackground.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Random Background"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任意の背景画像を起用"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用随机背景图像"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟用隨機背景圖像"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.realtimeActivity.notEnabled" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Activity for this app is not permitted by the system"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システムから弊アプリへ「ライブアクティビティの権限」を下されておりませんでした"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "系统尚未准许本 App 的实时活动权限"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "系統尚未准許本 App 的即時動態權限"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.settings.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタミナタイマーの設定"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "玩家体力计时器设定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "玩家體力計時器設定"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.showExpedition.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Expedition"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "派遣依頼の情報も表示する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示派遣委托"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示派遣委託"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.useTransparentBackground.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Glass Material Background"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ガラス材質を背景画像とす"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以玻璃材质为背景图像"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以玻璃材質為背景圖像"
+          }
+        }
+      }
+    },
     "settings.section.appStoreRelated.header" : {
       "extractionState" : "manual",
       "localizations" : {

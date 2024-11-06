@@ -6,6 +6,8 @@
 import PZBaseKit
 import SwiftUI
 
+// MARK: - AppWallpaperSettingsPicker
+
 public struct AppWallpaperSettingsPicker: View {
     // MARK: Lifecycle
 
@@ -72,4 +74,80 @@ public struct AppWallpaperSettingsPicker: View {
         }
         return result
     }
+}
+
+// MARK: - LiveActivityBackgroundPicker
+
+public struct LiveActivityBackgroundPicker: View {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
+    public var body: some View {
+        EmptyView()
+//      List {
+//          ForEach(searchResults, id: \.rawValue) { backgroundImageView in
+//              HStack {
+//                  Label {
+//                      Text(
+//                          backgroundImageView.localized
+//                      )
+//                  } icon: {
+//                      GeometryReader { g in
+//                          Image(backgroundImageView.fileName)
+//                              .resizable()
+//                              .scaledToFill()
+//                              .offset(x: -g.size.width)
+//                      }
+//                      .clipShape(Circle())
+//                      .frame(width: 30, height: 30)
+//                  }
+//                  Spacer()
+//                  if resinRecoveryLiveActivityBackgroundOptions.contains(backgroundImageView.fileName) {
+//                      Button {
+//                          resinRecoveryLiveActivityBackgroundOptions
+//                              .removeAll { name in
+//                                  name == backgroundImageView.fileName
+//                              }
+//                      } label: {
+//                          Image(systemSymbol: .checkmarkCircleFill)
+//                              .foregroundColor(.accentColor)
+//                      }
+//                  } else {
+//                      Button {
+//                          resinRecoveryLiveActivityBackgroundOptions
+//                              .append(backgroundImageView.fileName)
+//                      } label: {
+//                          Image(systemSymbol: .checkmarkCircle)
+//                              .foregroundColor(.accentColor)
+//                      }
+//                  }
+//              }
+//          }
+//      }
+//      .searchable(text: $searchText)
+//      .navigationTitle("settings.timer.chooseBackground")
+//      .navigationBarTitleDisplayMode(.inline)
+    }
+
+    // MARK: Internal
+
+    var searchResults: [Wallpaper] {
+        []
+        // if searchText.isEmpty {
+        //     Wallpaper.allCases(for: game)
+        // } else {
+        //    Wallpaper.allCases(for: game).filter { wallpaper in
+        //         wallpaperName(for: wallpaper).lowercased().contains(searchText.lowercased())
+        //    }
+        //  }
+    }
+
+    // MARK: Private
+
+    @State private var searchText = ""
+    @Default(.resinRecoveryLiveActivityBackgroundOptions)
+    private var resinRecoveryLiveActivityBackgroundOptions: [String]
 }
