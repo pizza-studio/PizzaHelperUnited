@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@preconcurrency import Defaults
 import Foundation
 import PZAccountKit
 
@@ -29,5 +30,11 @@ extension PZWidgets {
     @MainActor
     public static func attemptToAutoInheritOldAccountsIntoProfiles() {
         PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+    }
+
+    public static func getAllProfiles() -> [PZProfileSendable] {
+        Defaults[.pzProfiles].values.sorted {
+            $0.priority < $1.priority
+        }
     }
 }
