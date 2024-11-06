@@ -14,6 +14,7 @@ import WidgetKit
 
 struct AccountAndShowWhichInfoIntentEntry: TimelineEntry {
     let date: Date
+    let timestampOnCreation: Date = .now
     let result: Result<any DailyNoteProtocol, any Error>
     var accountName: String?
 
