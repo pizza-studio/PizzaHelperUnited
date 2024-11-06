@@ -27,7 +27,7 @@ public struct EULAView: View {
         NavigationStack {
             WebBrowserView(url: Self.urlString)
                 .navigationTitle(Self.navTitle4EULA)
-                .navigationBarTitleDisplayMode(.inline)
+                .navBarTitleDisplayMode(.inline)
                 .apply { content in
                     if !isOOBE {
                         content
