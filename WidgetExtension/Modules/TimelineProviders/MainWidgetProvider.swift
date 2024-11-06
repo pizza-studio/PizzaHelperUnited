@@ -83,7 +83,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             to: currentDate
         )!
 
-        let configs = await PZProfileActor.shared.getSendableProfiles()
+        let configs = PZWidgets.getAllProfiles()
 
         var viewConfig: WidgetViewConfiguration = .defaultConfig
 
