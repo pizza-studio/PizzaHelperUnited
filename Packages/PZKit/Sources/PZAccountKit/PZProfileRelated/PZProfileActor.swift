@@ -8,14 +8,6 @@ import Foundation
 import PZBaseKit
 import SwiftData
 
-extension Defaults.Keys {
-    public static let lastTimeResetLocalProfileDB = Key<Date?>(
-        "lastTimeResetLocalProfileDB",
-        default: nil,
-        suite: .baseSuite
-    )
-}
-
 // MARK: - PZProfileActor
 
 @ModelActor
@@ -156,5 +148,20 @@ extension PZProfileActor {
         guard let newProfile = try? await AccountMOSputnik.shared.queryAccountDataMO(uuid: uuid) else { return }
         modelContext.insert(newProfile.asMO)
         try modelContext.save()
+    }
+}
+
+// MARK: - Backup and Restore
+
+extension PZProfileActor {
+    public func syncAllDataToUserDefaults() {
+        var existingKeys = Set<String>(Defaults[.pzProfiles].keys)
+        let profiles = getSendableProfiles()
+        profiles.forEach {
+            Defaults[.pzProfiles][$0.uuid.uuidString] = $0
+            existingKeys.remove($0.uuid.uuidString)
+        }
+        existingKeys.forEach { Defaults[.pzProfiles].removeValue(forKey: $0) }
+        UserDefaults.profileSuite.synchronize()
     }
 }

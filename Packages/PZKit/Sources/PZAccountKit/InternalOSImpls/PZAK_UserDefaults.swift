@@ -6,10 +6,28 @@
 @preconcurrency import Foundation
 import PZBaseKit
 
+extension UserDefaults {
+    public static let profileSuite = UserDefaults.baseSuite
+}
+
 extension Defaults.Keys {
     public static let oldAccountMOAlreadyAutoInherited = Key<Bool>(
         "oldAccountMOAlreadyAutoInherited",
         default: !Pizza.isAppStoreRelease,
         suite: .baseSuite
     )
+    public static let lastTimeResetLocalProfileDB = Key<Date?>(
+        "lastTimeResetLocalProfileDB",
+        default: nil,
+        suite: .baseSuite
+    )
+    public static let pzProfiles = Key<[String: PZProfileSendable]>(
+        "pzProfiles",
+        default: [:],
+        suite: .profileSuite // !! IMPORTANT !!
+    )
 }
+
+// MARK: - PZProfileSendable + _DefaultsSerializable
+
+extension PZProfileSendable: _DefaultsSerializable {}
