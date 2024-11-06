@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@preconcurrency import Defaults
 import PZAccountKit
 import PZBaseKit
 import PZWidgetsKit
@@ -13,7 +14,21 @@ struct InAppDailyNoteCardView: View {
     // MARK: Lifecycle
 
     init(profile: PZProfileMO) {
-        self._theVM = .init(wrappedValue: DailyNoteViewModel(profile: profile))
+        self._theVM = .init(
+            wrappedValue: DailyNoteViewModel(profile: profile) { dailyNote in
+                #if canImport(ActivityKit)
+                if Defaults[.autoDeliveryResinTimerLiveActivity] {
+                    Task {
+                        // let accounts = AccountModel.shared.fetchAccountConfigs()
+                        try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(
+                            for: profile.asSendable,
+                            data: dailyNote
+                        )
+                    }
+                }
+                #endif
+            }
+        )
     }
 
     // MARK: Internal
