@@ -15,6 +15,7 @@ import WidgetKit
 @available(watchOS, unavailable)
 struct ResinEntry: TimelineEntry {
     let date: Date
+    let timestampOnCreation: Date = .now
     let result: Result<any DailyNoteProtocol, any Error>
     let viewConfig: WidgetViewConfiguration
     var accountName: String?
