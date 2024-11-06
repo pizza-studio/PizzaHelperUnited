@@ -7,6 +7,7 @@ import PZAccountKit
 import PZBaseKit
 import PZWidgetsKit
 import SwiftUI
+@preconcurrency import UserNotifications
 import WallpaperKit
 
 // MARK: - LiveActivitySettingNavigator
@@ -168,13 +169,13 @@ struct LiveActivitySettingsPageContents: View {
     }
 
     private func syncLiveActivityToggleSettings() {
-        UNUserNotificationCenter.current()
-            .getNotificationSettings { _ in
-                withAnimation {
-                    allowLiveActivity =
-                        ResinRecoveryActivityController
-                            .shared.allowLiveActivity
-                }
+        Task { @MainActor in
+            await UNUserNotificationCenter.current().notificationSettings()
+            withAnimation {
+                allowLiveActivity =
+                    ResinRecoveryActivityController
+                        .shared.allowLiveActivity
             }
+        }
     }
 }
