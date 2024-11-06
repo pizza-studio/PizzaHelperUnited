@@ -53,18 +53,20 @@ struct DetailPortalTabPage: View {
             case .genshinImpact:
                 ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile) {
                     CharInventoryNav(theVM: delegate)
+                } onTapGestureAction: {
+                    uidInputFieldFocus = false
                 }
                 .listRowMaterialBackground()
                 .id(profile.uidWithGame) // 很重要，否则在同款游戏之间的账号切换不会生效。
-                .onTapGesture { uidInputFieldFocus = false }
                 query4GI
             case .starRail:
                 ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile) {
                     CharInventoryNav(theVM: delegate)
+                } onTapGestureAction: {
+                    uidInputFieldFocus = false
                 }
                 .listRowMaterialBackground()
                 .id(profile.uidWithGame) // 很重要，否则在同款游戏之间的账号切换不会生效。
-                .onTapGesture { uidInputFieldFocus = false }
                 query4HSR
             case .zenlessZone: EmptyView()
             }
