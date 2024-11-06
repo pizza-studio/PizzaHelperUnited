@@ -2318,6 +2318,35 @@
         }
       }
     },
+    "profileMgr.syncAllProfilesToUserDefaults.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manually Sync Profiles To Widgets"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手動でプロファイルをウィジェットに同期する"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手动将本地账户同步至小组件"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手動將本機帳戶同步至小工具"
+          }
+        }
+      }
+    },
     "profileMgr.test.footer.recommend_device_fp" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -40,6 +40,9 @@ extension PZHelper {
     @MainActor
     private static func startupTasks() {
         PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+        Task {
+            await PZProfileActor.shared.syncAllDataToUserDefaults()
+        }
         IAPManager.performStartupTasks()
     }
 }
@@ -49,6 +52,7 @@ extension PZHelper {
 private struct AppInitializer: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .syncProfilesToUserDefaults()
             .cleanApplicationIconBadgeNumber()
             .checkAndReloadWidgetTimeline()
             .hookEULACheckerOnOOBE()

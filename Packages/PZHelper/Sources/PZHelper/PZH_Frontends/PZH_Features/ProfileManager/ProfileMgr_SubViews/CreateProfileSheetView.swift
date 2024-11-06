@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@preconcurrency import Defaults
 import PZAccountKit
 import PZBaseKit
 import SwiftData
@@ -90,6 +91,8 @@ extension ProfileManagerPageContent {
             do {
                 modelContext.insert(profile)
                 try modelContext.save()
+                Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
+                UserDefaults.profileSuite.synchronize()
                 isShown.toggle()
                 Broadcaster.shared.requireOSNotificationCenterAuthorization()
                 Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
@@ -168,6 +171,7 @@ extension ProfileManagerPageContent {
 
                         alertToastEventStatus.isProfileTaskSucceeded.toggle()
                         try modelContext.save()
+                        await PZProfileActor.shared.syncAllDataToUserDefaults()
                         isShown.toggle()
                     } catch {
                         getAccountError = .source(error)

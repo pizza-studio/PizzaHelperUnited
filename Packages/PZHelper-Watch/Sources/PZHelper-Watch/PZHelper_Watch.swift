@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 import SwiftData
 import SwiftUI
 
@@ -22,6 +23,11 @@ extension PZHelperWatch {
                         startupTasks()
                     }
                     isApplicationBooted = true
+                }
+                .onAppBecomeActive {
+                    Task { @MainActor in
+                        await PZProfileActor.shared.syncAllDataToUserDefaults()
+                    }
                 }
         }
         .modelContainer(PZProfileActor.shared.modelContainer)
