@@ -8,8 +8,6 @@ import Foundation
 import SwiftData
 import WatchConnectivity
 
-// MARK: - NotificationMessage
-
 // MARK: - AppleWatchSputnik
 
 @Observable
