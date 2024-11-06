@@ -18,8 +18,9 @@ public final class DailyNoteViewModel: ObservableObject, Sendable {
     /// Initializes a new instance of the view model.
     ///
     /// - Parameter account: The account for which the daily note will be fetched.
-    public init(profile: PZProfileMO) {
+    public init(profile: PZProfileMO, extraTaskAfterFetch: ((any DailyNoteProtocol) -> Void)? = nil) {
         self.profile = profile
+        self.extraTask = extraTaskAfterFetch
         getDailyNoteUncheck()
     }
 
@@ -68,7 +69,7 @@ public final class DailyNoteViewModel: ObservableObject, Sendable {
                 withAnimation {
                     dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
                 }
-                // TODO: ActivityKit Implementations.
+                extraTask?(result)
             } catch {
                 withAnimation {
                     dailyNoteStatus = .failure(error: AnyLocalizedError(error))
@@ -77,4 +78,8 @@ public final class DailyNoteViewModel: ObservableObject, Sendable {
         }
         dailyNoteStatus = .progress(task)
     }
+
+    // MARK: Private
+
+    private let extraTask: ((any DailyNoteProtocol) -> Void)?
 }
