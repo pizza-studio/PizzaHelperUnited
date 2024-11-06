@@ -33,7 +33,7 @@ extension NewsKitHSR {
 
     public static func fetchAndAggregate() async throws -> AggregatedResult {
         AggregatedResult(
-            events: try await NewsKitHSR.EventElement.queryData().filter(\.isValid).sorted { $0.endAt < $1.endAt },
+            events: try await NewsKitHSR.EventElement.queryData().sorted { $0.createdAt > $1.createdAt },
             intels: try await NewsKitHSR.IntelElement.queryData().sorted { $0.createdAt > $1.createdAt },
             notices: try await NewsKitHSR.NoticeElement.queryData().sorted { $0.createdAt > $1.createdAt }
         )
@@ -76,14 +76,14 @@ extension NewsElement {
             )
             dataToParse = data
         } catch {
-            print(error.localizedDescription)
+            print(error)
             throw error
         }
         do {
             let requestResult = try JSONDecoder().decode([Self].self, from: dataToParse)
             return requestResult
         } catch {
-            print(error.localizedDescription)
+            print(error)
             throw error
         }
     }
@@ -92,23 +92,7 @@ extension NewsElement {
 // MARK: - NewsKitHSR.EventElement + NewsElement
 
 extension NewsKitHSR.EventElement: NewsElement {
-    public var dateStarted: Date { Date(timeIntervalSince1970: Double(startAt)) }
-
-    public var dateEnded: Date { Date(timeIntervalSince1970: Double(endAt)) }
-
-    public var dateStartedStr: String {
-        let theDate = Date(timeIntervalSince1970: Double(startAt))
-        return NewsKitHSR.dateFormatter.string(from: theDate)
-    }
-
-    public var dateEndedStr: String {
-        let theDate = Date(timeIntervalSince1970: Double(endAt))
-        return NewsKitHSR.dateFormatter.string(from: theDate)
-    }
-
-    public var isValid: Bool {
-        Date.now.timeIntervalSince1970 < Double(endAt)
-    }
+    public var isValid: Bool { true }
 }
 
 // MARK: - NewsKitHSR.IntelElement + NewsElement
