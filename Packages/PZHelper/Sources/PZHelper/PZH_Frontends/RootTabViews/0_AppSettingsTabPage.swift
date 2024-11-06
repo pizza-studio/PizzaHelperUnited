@@ -17,6 +17,7 @@ struct AppSettingsTabPage: View {
         case profileManager
         case faq
         case cloudAccountSettings
+        case liveActivitySettings
         case uiSettings
         case privacySettings
         case otherSettings
@@ -48,6 +49,8 @@ struct AppSettingsTabPage: View {
                 } header: {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
                 }
+
+                LiveActivitySettingNavigator(selectedView: $nav)
 
                 WatchDataPusherButton()
 
@@ -126,6 +129,7 @@ struct AppSettingsTabPage: View {
                     .navBarTitleDisplayMode(.inline)
             case .cloudAccountSettings: CloudAccountSettingsPageContent()
             case .uiSettings: UISettingsPageContent()
+            case .liveActivitySettings: LiveActivitySettingsPageContents()
             case .privacySettings: PrivacySettingsPageContent()
             case .otherSettings: OtherSettingsPageContent()
             case .none: UISettingsPageContent()

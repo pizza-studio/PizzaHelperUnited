@@ -173,11 +173,13 @@ public final class ResinRecoveryActivityController: Sendable {
     }
     #endif
 
-    #if canImport(ActivityKit)
     public var allowLiveActivity: Bool {
-        ActivityAuthorizationInfo().areActivitiesEnabled
+        #if canImport(ActivityKit)
+        return ActivityAuthorizationInfo().areActivitiesEnabled
+        #else
+        return false
+        #endif
     }
-    #endif
 
     public var background: ResinRecoveryActivityBackground {
         if Defaults[.resinRecoveryLiveActivityUseEmptyBackground] {
