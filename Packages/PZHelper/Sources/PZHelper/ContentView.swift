@@ -5,8 +5,10 @@
 @preconcurrency import Defaults
 import EnkaKit
 import GachaKit
+import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
+import SwiftData
 import SwiftUI
 
 // MARK: - ContentView
@@ -24,6 +26,11 @@ public struct ContentView: View {
                 if navCase.isExposed {
                     navCase
                 }
+            }
+        }
+        .onChange(of: accounts) {
+            Task { @MainActor in
+                await PZProfileActor.shared.syncAllDataToUserDefaults()
             }
         }
         #if targetEnvironment(macCatalyst)
@@ -46,7 +53,6 @@ public struct ContentView: View {
             simpleTaptic(type: .selection)
         }
         .environment(GachaVM.shared)
-        // .initializeApp()
     }
 
     // MARK: Internal
@@ -103,6 +109,8 @@ public struct ContentView: View {
     }
 
     @Default(.appTabIndex) var appIndex: Int
+
+    @Query(sort: \PZProfileMO.priority) var accounts: [PZProfileMO]
 
     var index: Binding<Int> { Binding(
         get: { selection },

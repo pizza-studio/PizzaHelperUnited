@@ -74,6 +74,11 @@ public struct ContentView: View {
                 dismissButton: .default(Text(verbatim: "sys.done".i18nBaseKit))
             )
         }
+        .onChange(of: accounts) {
+            Task { @MainActor in
+                await PZProfileActor.shared.syncAllDataToUserDefaults()
+            }
+        }
     }
 
     // MARK: Internal
