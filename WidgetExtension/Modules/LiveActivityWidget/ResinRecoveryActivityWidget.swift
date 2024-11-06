@@ -221,60 +221,32 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         #endif
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .activityBackgroundTint(.clear)
-        if #available(iOS 17, *) {
-            Button(intent: ResinTimerRerenderIntent()) {
-                mainContent
-            }
-            .buttonStyle(.plain)
-            .ignoresSafeArea()
-        } else {
+        Button(intent: ResinTimerRerenderIntent()) {
             mainContent
         }
+        .buttonStyle(.plain)
+        .ignoresSafeArea()
     }
 
     @ViewBuilder var contentView: some View {
         HStack {
             Grid(verticalSpacing: 7) {
-                if #available(iOS 17, *) {
-                    GridRow {
-                        AccountKit.imageAsset(resinImageAssetName)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 38)
-                        VStack(alignment: .leading) {
-                            Text("pzWidgetsKit.currentStamina", bundle: .main)
-                                .font(.caption2)
-                            HStack(alignment: .lastTextBaseline, spacing: 0) {
-                                Text(verbatim: "\(context.state.currentResin)")
-                                    .font(.system(.title2, design: .rounded))
-                                Text(verbatim: " / \(context.state.maxResin)")
-                                    .font(.caption)
-                            }
-                        }
-                        .gridColumnAlignment(.leading)
-                    }
-                } else {
-                    if context.state.showNext20Resin,
-                       Date() < context.state.next20ResinRecoveryTime {
-                        GridRow {
-                            AccountKit.imageAsset(resinImageAssetName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxHeight: 38)
-                            VStack(alignment: .leading) {
-                                Text("pzWidgetsKit.next20Stamina:\(context.state.next20ResinCount)", bundle: .main)
-                                    .font(.caption2)
-                                Text(
-                                    timerInterval: Date() ... context.state
-                                        .next20ResinRecoveryTime,
-                                    countsDown: true
-                                )
-                                .multilineTextAlignment(.leading)
+                GridRow {
+                    AccountKit.imageAsset(resinImageAssetName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 38)
+                    VStack(alignment: .leading) {
+                        Text("pzWidgetsKit.currentStamina", bundle: .main)
+                            .font(.caption2)
+                        HStack(alignment: .lastTextBaseline, spacing: 0) {
+                            Text(verbatim: "\(context.state.currentResin)")
                                 .font(.system(.title2, design: .rounded))
-                            }
-                            .gridColumnAlignment(.leading)
+                            Text(verbatim: " / \(context.state.maxResin)")
+                                .font(.caption)
                         }
                     }
+                    .gridColumnAlignment(.leading)
                 }
                 if Date() < context.state.resinRecoveryTime {
                     GridRow {
@@ -318,24 +290,14 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
             Spacer()
             VStack {
                 Spacer()
-                if #available(iOS 17, *) {
-                    Button(intent: ResinTimerRefreshIntent()) {
-                        HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            Text(context.attributes.accountName)
-                            Image(systemSymbol: .arrowTriangle2CirclepathCircle)
-                        }
-                    }
-                    .buttonStyle(.plain)
-                    .font(.footnote)
-                } else {
+                Button(intent: ResinTimerRefreshIntent()) {
                     HStack(alignment: .lastTextBaseline, spacing: 2) {
-                        Image(systemSymbol: .personFill)
                         Text(context.attributes.accountName)
+                        Image(systemSymbol: .arrowTriangle2CirclepathCircle)
                     }
-                    .font(.footnote)
-                    .padding(.top, 3)
-                    .padding(.leading, 3)
                 }
+                .buttonStyle(.plain)
+                .font(.footnote)
             }
         }
         .shadow(radius: useNoBackground ? 0 : 0.8)
