@@ -245,14 +245,6 @@ public final class ResinRecoveryActivityController: Sendable {
                     print(state)
                 }
             }
-//            Task {
-//                if #available(iOSApplicationExtension 16.2, *) {
-//                    for await content in deliveryActivity.contentUpdates {
-//                        print(content)
-//                    }
-//                }
-//            }
-
         } catch {
             print(
                 "Error requesting pizza delivery Live Activity \(error.localizedDescription)."

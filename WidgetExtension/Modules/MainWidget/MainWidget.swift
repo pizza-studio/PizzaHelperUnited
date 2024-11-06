@@ -64,13 +64,6 @@ struct WidgetViewEntryView: View {
 
     @ViewBuilder var body: some View {
         ZStack {
-            if #available(iOS 17, *) {
-            } else {
-                WidgetBackgroundView(
-                    background: viewConfig.background,
-                    darkModeOn: viewConfig.isDarkModeOn
-                )
-            }
             switch result {
             case let .success(dailyNote):
                 WidgetMainView(
@@ -109,11 +102,7 @@ private struct ContainerBackgroundModifier: ViewModifier {
     var viewConfig: WidgetViewConfiguration
 
     func body(content: Content) -> some View {
-        if #available(iOS 17, *) {
-            content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
-        } else {
-            content
-        }
+        content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
     }
 }
 

@@ -6,8 +6,6 @@ import PZBaseKit
 import SwiftUI
 import WidgetKit
 
-// MARK: - WidgetsBundleiOS16
-
 extension PZWidgets {
     @WidgetBundleBuilder @MainActor @preconcurrency public static var widgets: some Widget {
         #if canImport(ActivityKit)
