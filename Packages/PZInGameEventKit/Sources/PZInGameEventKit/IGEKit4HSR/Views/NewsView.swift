@@ -25,7 +25,7 @@ extension NewsKitHSR {
 
         @Observable @MainActor
         @available(watchOS, unavailable)
-        public class Coordinator: ObservableObject {
+        public class Coordinator: ObservableObject, Sendable {
             // MARK: Lifecycle
 
             public init(data: NewsKitHSR.AggregatedResult) {
@@ -39,10 +39,15 @@ extension NewsKitHSR {
             // MARK: Public
 
             public func updateData() {
-                Task { @MainActor [self] in
-                    isLoading = true
-                    data = await (try? NewsKitHSR.fetchAndAggregate()) ?? .init()
-                    isLoading = false
+                Task { @MainActor in
+                    withAnimation {
+                        isLoading = true
+                    }
+                    let newData = await (try? NewsKitHSR.fetchAndAggregate()) ?? .init()
+                    withAnimation {
+                        data = newData
+                        isLoading = false
+                    }
                 }
             }
 
@@ -79,7 +84,7 @@ extension NewsKitHSR {
                         }
                         #endif
                         ToolbarItem(placement: .confirmationAction) {
-                            Picker("".description, selection: $currentTab) {
+                            Picker("".description, selection: $currentTab.animation()) {
                                 Label("igev.hsr.news.Notices".i18nIGEV, systemImage: "info.circle")
                                     .tag(NewsKitHSR.NewsType.notices)
                                 Label("igev.hsr.news.Events".i18nIGEV, systemImage: "calendar.badge.clock")
