@@ -276,12 +276,9 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                         }
                     }
                 }
-                if context.state.game == .genshinImpact, Date() < context.state.resinRecoveryTime {
+                if Date() < context.state.resinRecoveryTime {
                     GridRow {
-                        AccountKit.imageAsset("gi_note_resin_condensed")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 35)
+                        Image(systemSymbol: .evChargerArrowtriangleRight)
                         VStack(alignment: .leading) {
                             Text("pzWidgetsKit.nextMaxStamina", bundle: .main)
                                 .font(.caption2)
