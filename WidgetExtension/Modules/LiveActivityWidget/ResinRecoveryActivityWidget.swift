@@ -9,11 +9,44 @@ import AppIntents
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 // @_exported import PZIntentKit
 import SFSafeSymbols
 import SwiftUI
 import WallpaperKit
 import WidgetKit
+
+struct ResinTimerRefreshIntent: AppIntent {
+    static let title: LocalizedStringResource = "pzWidgetsKit.Refresh"
+
+    func perform() async throws -> some IntentResult {
+        let activities = ResinRecoveryActivityController.shared.currentActivities
+        let accounts = await PZProfileActor.shared.getSendableProfiles()
+        for activity in activities {
+            let account = accounts.first(where: { account in
+                account.uuid == activity.attributes.accountUUID
+            })
+            guard let account else { continue }
+            let result = try await account.getDailyNote()
+            ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: account, data: result)
+        }
+        return .result()
+    }
+}
+
+struct ResinTimerRerenderIntent: AppIntent {
+    static let title: LocalizedStringResource = "pzWidgetsKit.Refresh"
+
+    func perform() async throws -> some IntentResult {
+        Task {
+            let activities = ResinRecoveryActivityController.shared.currentActivities
+            for activity in activities {
+                await activity.update(activity.content)
+            }
+        }
+        return .result()
+    }
+}
 
 struct ResinRecoveryActivityWidget: Widget {
     var body: some WidgetConfiguration {
@@ -307,40 +340,4 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
     }
 }
 
-struct ResinTimerRefreshIntent: AppIntent {
-    static let title: LocalizedStringResource = "pzWidgetsKit.Refresh"
-
-    func perform() async throws -> some IntentResult {
-        let activities = ResinRecoveryActivityController.shared.currentActivities
-        let accounts = await PZProfileActor.shared.getSendableProfiles()
-        for activity in activities {
-            let account = accounts.first(where: { account in
-                account.uuid == activity.attributes.accountUUID
-            })
-            guard let account else { continue }
-            let result = try await account.getDailyNote()
-            ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: account, data: result)
-        }
-        return .result()
-    }
-}
-
-// MARK: - ResinTimerRerenderIntent
-
-struct ResinTimerRerenderIntent: AppIntent {
-    static let title: LocalizedStringResource = "pzWidgetsKit.Refresh"
-
-    func perform() async throws -> some IntentResult {
-        Task {
-            let activities = ResinRecoveryActivityController.shared.currentActivities
-            for activity in activities {
-                await activity.update(activity.content)
-            }
-        }
-        return .result()
-    }
-}
-
 #endif
-
-// MARK: - ResinTimerRefreshIntent

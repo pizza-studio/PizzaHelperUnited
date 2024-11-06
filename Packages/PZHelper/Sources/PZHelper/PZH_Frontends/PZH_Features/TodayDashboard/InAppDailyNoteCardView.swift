@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 
 // MARK: - InAppDailyNoteCardView
@@ -37,6 +38,24 @@ struct InAppDailyNoteCardView: View {
                 Text(theVM.profile.name)
                 Spacer()
                 Text(theVM.profile.uidWithGame)
+                switch theVM.dailyNoteStatus {
+                case let .succeed(dailyNote, _):
+                    #if canImport(ActivityKit)
+                    Menu {
+                        EnableLiveActivityButton(
+                            for: theVM.profile.asSendable,
+                            dailyNote: dailyNote
+                        )
+                    } label: {
+                        Image(systemSymbol: .ellipsisCircle)
+                            .secondaryColorVerseBackground()
+                    }
+                    #else
+                    EmptyView()
+                    #endif
+                default:
+                    EmptyView()
+                }
             }
             .secondaryColorVerseBackground()
             .textCase(.none)

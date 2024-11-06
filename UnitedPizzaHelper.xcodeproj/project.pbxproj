@@ -29,6 +29,8 @@
 		5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7442B2CC6B262007DE385 /* SwiftUI.framework */; };
 		5BD7443D2CC6B264007DE385 /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5BD744282CC6B262007DE385 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */; };
+		5BDB94A42CDB57E100488574 /* PZWidgetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDB94A32CDB57E100488574 /* PZWidgetsKit */; };
+		5BDB94A62CDB57E600488574 /* PZWidgetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDB94A52CDB57E600488574 /* PZWidgetsKit */; };
 		5BFB9D2A2C6BBCE700DC648F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */; };
 		5BFCA0542CCDFFE300F182C7 /* PZBaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0532CCDFFE300F182C7 /* PZBaseKit */; };
 		5BFCA0562CCDFFEA00F182C7 /* PZAccountKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0552CCDFFEA00F182C7 /* PZAccountKit */; };
@@ -123,6 +125,7 @@
 		5BD744292CC6B262007DE385 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5BD7442B2CC6B262007DE385 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5BDB94A22CDB578300488574 /* PZWidgetsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZWidgetsKit; sourceTree = "<group>"; };
 		5BDDF26A2C75FEB8006D4BFE /* heic_sips.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = heic_sips.sh; sourceTree = "<group>"; };
 		5BDDF26C2C75FEB8006D4BFE /* _assetUpdate4GI.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _assetUpdate4GI.sh; sourceTree = "<group>"; };
 		5BDDF26D2C75FEB8006D4BFE /* _assetUpdate4HSR.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _assetUpdate4HSR.sh; sourceTree = "<group>"; };
@@ -211,6 +214,7 @@
 				5B258E292CCE8A1300131992 /* PZBaseKit in Frameworks */,
 				5B258E2F2CCE8A1D00131992 /* WallpaperKit in Frameworks */,
 				5B258E232CCE8A0500131992 /* Defaults in Frameworks */,
+				5BDB94A62CDB57E600488574 /* PZWidgetsKit in Frameworks */,
 				5B258E2B2CCE8A1700131992 /* PZInGameEventKit in Frameworks */,
 				5B258C832CCE890300131992 /* SwiftUI.framework in Frameworks */,
 				5B258E252CCE8A0900131992 /* GITodayMaterialsKit in Frameworks */,
@@ -235,6 +239,7 @@
 				5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */,
 				5BFCA05A2CCDFFFC00F182C7 /* PZInGameEventKit in Frameworks */,
 				5BFCA0602CCE003A00F182C7 /* Defaults in Frameworks */,
+				5BDB94A42CDB57E100488574 /* PZWidgetsKit in Frameworks */,
 				5BFCA0542CCDFFE300F182C7 /* PZBaseKit in Frameworks */,
 				5BFCA0562CCDFFEA00F182C7 /* PZAccountKit in Frameworks */,
 				5BFCA0582CCDFFEE00F182C7 /* WallpaperKit in Frameworks */,
@@ -312,6 +317,7 @@
 				5B4CDE852C8482D700298C69 /* PZHoYoLabKit */,
 				5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */,
 				5BF32D8C2C62A2E4008C9949 /* PZKit */,
+				5BDB94A22CDB578300488574 /* PZWidgetsKit */,
 				5BDDF2772C760281006D4BFE /* WallpaperKit */,
 			);
 			path = Packages;
@@ -434,6 +440,7 @@
 				5B258E2A2CCE8A1700131992 /* PZInGameEventKit */,
 				5B258E2C2CCE8A1900131992 /* SFSafeSymbols */,
 				5B258E2E2CCE8A1D00131992 /* WallpaperKit */,
+				5BDB94A52CDB57E600488574 /* PZWidgetsKit */,
 			);
 			productName = WatchExtensionExtension;
 			productReference = 5B258C812CCE890300131992 /* PizzaWatchAppExtension.appex */;
@@ -488,6 +495,7 @@
 				5BFCA05C2CCE002700F182C7 /* SFSafeSymbols */,
 				5BFCA05F2CCE003A00F182C7 /* Defaults */,
 				5BFCA19A2CCE022200F182C7 /* GITodayMaterialsKit */,
+				5BDB94A32CDB57E100488574 /* PZWidgetsKit */,
 			);
 			productName = WidgetExtensionExtension;
 			productReference = 5BD744282CC6B262007DE385 /* WidgetExtension.appex */;
@@ -735,6 +743,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -783,6 +792,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -826,6 +836,7 @@
 				INFOPLIST_FILE = WatchExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler.WatchApp;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -860,6 +871,7 @@
 				INFOPLIST_FILE = WatchExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler.WatchApp;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -896,6 +908,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchApp/PizzaWatchApp-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper Watch App";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -930,6 +943,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchApp/PizzaWatchApp-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper Watch App";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -964,6 +978,7 @@
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1002,6 +1017,7 @@
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1173,6 +1189,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -1216,6 +1233,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -1358,6 +1376,14 @@
 		5BD0D0F42C6A653500DA8099 /* PZHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PZHelper;
+		};
+		5BDB94A32CDB57E100488574 /* PZWidgetsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZWidgetsKit;
+		};
+		5BDB94A52CDB57E600488574 /* PZWidgetsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZWidgetsKit;
 		};
 		5BFCA0532CCDFFE300F182C7 /* PZBaseKit */ = {
 			isa = XCSwiftPackageProductDependency;
