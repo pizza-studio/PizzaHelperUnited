@@ -7,10 +7,10 @@ import Foundation
 import PZBaseKit
 
 extension Defaults.Keys {
-    // Background wallpaper for live activity view. Nulled value means random value.
-    public static let background4LiveActivity = Key<Wallpaper?>(
-        "background4LiveActivity",
-        default: Wallpaper.defaultValue(for: appGame),
+    // Background wallpapers for live activity view.
+    public static let backgrounds4LiveActivity = Key<Set<Wallpaper>>(
+        "backgrounds4LiveActivity",
+        default: [Wallpaper.defaultValue(for: appGame)],
         suite: .baseSuite
     )
     // Background wallpaper for app view.
