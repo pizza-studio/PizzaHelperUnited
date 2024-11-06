@@ -30,7 +30,7 @@ public struct AccountIntentAppEntity: AppEntity {
         public typealias Entity = AccountIntentAppEntity
 
         public func entities(for identifiers: [Self.Entity.ID]) async throws -> [Self.Entity] {
-            let accounts = await PZProfileActor.shared.getSendableProfiles().filter {
+            let accounts = PZWidgets.getAllProfiles().filter {
                 identifiers.contains($0.uuid.uuidString)
             }
             return accounts.map {
@@ -42,7 +42,7 @@ public struct AccountIntentAppEntity: AppEntity {
         }
 
         public func suggestedEntities() async throws -> Self.Result {
-            await PZProfileActor.shared.getSendableProfiles().map {
+            PZWidgets.getAllProfiles().map {
                 Self.Entity(
                     id: $0.uuid.uuidString,
                     displayString: $0.name + "\n(\($0.uidWithGame))"

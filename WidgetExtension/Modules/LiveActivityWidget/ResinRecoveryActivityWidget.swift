@@ -21,7 +21,7 @@ struct ResinTimerRefreshIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         let activities = ResinRecoveryActivityController.shared.currentActivities
-        let accounts = await PZProfileActor.shared.getSendableProfiles()
+        let accounts = PZWidgets.getAllProfiles()
         for activity in activities {
             let account = accounts.first(where: { account in
                 account.uuid == activity.attributes.accountUUID

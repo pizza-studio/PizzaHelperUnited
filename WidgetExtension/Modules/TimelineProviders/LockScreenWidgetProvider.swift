@@ -108,7 +108,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
             )!
         }
 
-        let configs = await PZProfileActor.shared.getSendableProfiles()
+        let configs = PZWidgets.getAllProfiles()
 
         func makeFallbackResult(error: WidgetError) -> Timeline<Entry> {
             let entry = Entry(
