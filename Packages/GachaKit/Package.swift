@@ -36,7 +36,7 @@ let package = Package(
             url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")
         ),
         .package(
-            url: "https://github.com/pizza-studio/MultiPicker-macOS", .upToNextMajor(from: "1.1.1")
+            url: "https://github.com/pizza-studio/MultiPicker-macOS", .upToNextMajor(from: "1.1.2")
         ),
     ],
     targets: [
