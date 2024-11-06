@@ -193,27 +193,30 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         let mainContent = contentView
         #if !os(watchOS)
             .background {
-                let randomCardBg: Image = (Wallpaper.allCases.randomElement() ?? .defaultValue(for: nil))
-                    .image4LiveActivity
-                switch context.state.background {
-                case .random:
-                    randomCardBg
-                        .resizable()
-                        .scaledToFill()
-                    Color.black
-                        .opacity(0.3)
-                case .customize:
-                    let chosenCardBackgrounds = Wallpaper.allCases.filter { wallpaper in
-                        backgroundIDs.contains(wallpaper.assetName4LiveActivity)
+                Group {
+                    let randomCardBg: Image = (Wallpaper.allCases.randomElement() ?? .defaultValue(for: nil))
+                        .image4LiveActivity
+                    switch context.state.background {
+                    case .random:
+                        randomCardBg
+                            .resizable()
+                            .scaledToFill()
+                        Color.black
+                            .opacity(0.3)
+                    case .customize:
+                        let chosenCardBackgrounds = Wallpaper.allCases.filter { wallpaper in
+                            backgroundIDs.contains(wallpaper.assetName4LiveActivity)
+                        }
+                        (chosenCardBackgrounds.randomElement()?.image4LiveActivity ?? randomCardBg)
+                            .resizable()
+                            .scaledToFill()
+                        Color.black
+                            .opacity(0.3)
+                    case .noBackground:
+                        EmptyView()
                     }
-                    (chosenCardBackgrounds.randomElement()?.image4LiveActivity ?? randomCardBg)
-                        .resizable()
-                        .scaledToFill()
-                    Color.black
-                        .opacity(0.3)
-                case .noBackground:
-                    EmptyView()
                 }
+                .scaleEffect(1.01) // HSR 的名片有光边。
             }
         #endif
             .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -81,5 +81,6 @@ struct WidgetBackgroundView: View {
                     .opacity(0.3)
             }
         }
+        .scaleEffect(1.01) // HSR 的名片有光边。
     }
 }
