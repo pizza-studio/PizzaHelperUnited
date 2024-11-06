@@ -30,6 +30,7 @@ let package = Package(
         .package(path: "../WallpaperKit"),
         .package(path: "../EnkaKit"),
         .package(path: "../GachaKit"),
+        .package(path: "../PZWidgetsKit"),
         .package(path: "../PZKit"),
         .package(path: "../PZAboutKit"),
         .package(path: "../PZHoYoLabKit"),
@@ -56,6 +57,7 @@ let package = Package(
                 .product(name: "PZHoYoLabKit", package: "PZHoYoLabKit"),
                 .product(name: "PZInGameEventKit", package: "PZInGameEventKit"),
                 .product(name: "WallpaperKit", package: "WallpaperKit"),
+                .product(name: "PZWidgetsKit", package: "PZWidgetsKit"),
             ],
             swiftSettings: sharedSwiftSettings
         ),
