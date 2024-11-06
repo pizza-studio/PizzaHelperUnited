@@ -173,15 +173,8 @@ private struct MyContainerBackground<B: View>: ViewModifier {
     let background: () -> B
 
     func body(content: Content) -> some View {
-        if #available(iOS 17.0, iOSApplicationExtension 17.0, watchOS 10.0, *) {
-            content.containerBackground(for: .widget) {
-                background()
-            }
-        } else {
-            content
-                .background {
-                    background()
-                }
+        content.containerBackground(for: .widget) {
+            background()
         }
     }
 }
