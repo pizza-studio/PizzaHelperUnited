@@ -84,8 +84,6 @@ extension Defaults.Keys {
         default: true,
         suite: .baseSuite
     )
-    public static let resinRecoveryLiveActivityBackgroundOptions =
-        Key<[String]>("resinRecoveryLiveActivityBackgroundOptions", default: .init(), suite: .baseSuite)
     public static let autoUpdateResinRecoveryTimerUsingReFetchData =
         Key<Bool>("autoUpdateResinRecoveryTimerUsingReFetchData", default: true, suite: .baseSuite)
     public static let resinRecoveryLiveActivityUseEmptyBackground =
