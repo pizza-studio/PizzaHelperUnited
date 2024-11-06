@@ -19,6 +19,9 @@ public actor PZProfileActor {
         modelExecutor = DefaultSerialModelExecutor(
             modelContext: .init(modelContainer)
         )
+        Task { @MainActor in
+            await syncAllDataToUserDefaults()
+        }
     }
 
     // MARK: Public
@@ -148,6 +151,8 @@ extension PZProfileActor {
         guard let newProfile = try? await AccountMOSputnik.shared.queryAccountDataMO(uuid: uuid) else { return }
         modelContext.insert(newProfile.asMO)
         try modelContext.save()
+        Defaults[.pzProfiles][newProfile.uuid.uuidString] = newProfile
+        UserDefaults.profileSuite.synchronize()
     }
 }
 

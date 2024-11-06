@@ -186,7 +186,7 @@ struct ProfileManagerPageContent: View {
         .navigationBarBackButtonHidden(true)
     }
 
-    @MainActor
+    @MainActor @ViewBuilder
     private func extraMenuItems() -> (some View)? {
         if PZProfileActor.hasOldAccountDataDetected() {
             Button {
@@ -197,8 +197,17 @@ struct ProfileManagerPageContent: View {
                     systemSymbol: .tray2Fill
                 )
             }
-        } else {
-            nil
+        }
+        Divider()
+        Button {
+            Task { @MainActor in
+                await PZProfileActor.shared.syncAllDataToUserDefaults()
+            }
+        } label: {
+            Label(
+                "profileMgr.syncAllProfilesToUserDefaults.title".i18nPZHelper,
+                systemSymbol: .clockArrow2Circlepath
+            )
         }
     }
 
@@ -234,8 +243,11 @@ struct ProfileManagerPageContent: View {
                 sheetType = .editExistingProfile(profile)
             }
             Button(role: .destructive) {
+                let uuidToDelete = profile.uuid
                 modelContext.delete(profile)
                 try? modelContext.save()
+                Defaults[.pzProfiles].removeValue(forKey: uuidToDelete.uuidString)
+                UserDefaults.profileSuite.synchronize()
             } label: {
                 Text("profileMgr.delete.title".i18nPZHelper)
             }
@@ -257,7 +269,7 @@ struct ProfileManagerPageContent: View {
         }
     }
 
-    private func addProfile(_ profile: PZProfileMO) {
+    private func addProfile(_ profile: PZProfileMO, inBatchQueue: Bool = true) {
         withAnimation {
             do {
                 let uuid = profile.uuid
@@ -270,6 +282,10 @@ struct ProfileManagerPageContent: View {
                 )
                 modelContext.insert(profile)
                 try modelContext.save()
+                Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
+                if !inBatchQueue {
+                    UserDefaults.profileSuite.synchronize()
+                }
             } catch {
                 return
             }
@@ -284,9 +300,11 @@ struct ProfileManagerPageContent: View {
     private func deleteItems(offsets: IndexSet, clearEnkaCache: Bool) {
         withAnimation {
             var idsToDrop: [(String, Pizza.SupportedGame)] = []
+            var uuidsToDrop: [UUID] = []
             offsets.map {
                 let returned = profiles[$0]
                 idsToDrop.append((returned.uid, returned.game))
+                uuidsToDrop.append(returned.uuid)
                 return returned
             }.forEach(modelContext.delete)
 
@@ -307,6 +325,9 @@ struct ProfileManagerPageContent: View {
             }
 
             try? modelContext.save()
+            uuidsToDrop.forEach {
+                Defaults[.pzProfiles].removeValue(forKey: $0.uuidString)
+            }
         }
     }
 
@@ -336,8 +357,11 @@ struct ProfileManagerPageContent: View {
 
     private func bleachInvalidProfiles() {
         profiles.filter(\.isInvalid).forEach { profile in
+            let uuidToRemove = profile.uuid
             modelContext.delete(profile)
             try? modelContext.save()
+            Defaults[.pzProfiles].removeValue(forKey: uuidToRemove.uuidString)
+            UserDefaults.profileSuite.synchronize()
         }
     }
 
@@ -359,6 +383,7 @@ struct ProfileManagerPageContent: View {
                 decoded.forEach { profileSendable in
                     addProfile(profileSendable.asMO)
                 }
+                UserDefaults.profileSuite.synchronize()
                 Broadcaster.shared.requireOSNotificationCenterAuthorization()
                 Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
             } catch {

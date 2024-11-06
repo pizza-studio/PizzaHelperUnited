@@ -33,9 +33,12 @@ struct WatchWidgetSettingView: View {
                 .onDelete(perform: { indexSet in
                     for offset in indexSet {
                         let account = accounts[offset]
+                        let uuidToRemove = account.uuid
                         modelContext.delete(account)
                         do {
                             try modelContext.save()
+                            Defaults[.pzProfiles].removeValue(forKey: uuidToRemove.uuidString)
+                            UserDefaults.profileSuite.synchronize()
                         } catch {
                             print(error)
                         }

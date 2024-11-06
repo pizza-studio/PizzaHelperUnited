@@ -4,6 +4,7 @@
 
 #if canImport(WatchConnectivity)
 import CoreData
+@preconcurrency import Defaults
 import Foundation
 import SwiftData
 import WatchConnectivity
@@ -139,6 +140,11 @@ extension AppleWatchSputnik: WCSessionDelegate {
             accountMapReceived.values.forEach { context.insert($0.asMO) }
             // 處理結束。
             try context.save()
+            Defaults[.pzProfiles].removeAll()
+            accountMapReceived.values.forEach {
+                Defaults[.pzProfiles][$0.uuid.uuidString] = $0
+            }
+            UserDefaults.profileSuite.synchronize()
         } catch {
             print("save profile failed: \(error)")
         }

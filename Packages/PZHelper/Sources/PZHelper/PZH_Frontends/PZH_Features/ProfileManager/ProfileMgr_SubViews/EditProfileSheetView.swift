@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@preconcurrency import Defaults
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
@@ -32,6 +33,8 @@ extension ProfileManagerPageContent {
                                 if modelContext.hasChanges {
                                     do {
                                         try modelContext.save()
+                                        Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
+                                        UserDefaults.profileSuite.synchronize()
                                         isShown.toggle()
                                         Broadcaster.shared.requireOSNotificationCenterAuthorization()
                                         Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
