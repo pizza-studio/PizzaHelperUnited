@@ -20,11 +20,13 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     public init(
         theDB: QueryDB,
         pzProfile: any ProfileMOProtocol,
-        appendedContent: @escaping (() -> T) = { EmptyView() }
+        appendedContent: @escaping (() -> T) = { EmptyView() },
+        onTapGestureAction: (() -> Void)? = nil
     ) {
         self.appendedContent = appendedContent
         self.theDB = theDB
         self.pzProfile = pzProfile
+        self.onTapGestureAction = onTapGestureAction
         self._delegate = .init(
             wrappedValue: .init(uid: pzProfile.uid, theDB: theDB)
         )
@@ -35,20 +37,25 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     public var body: some View {
         listHeader
         Section {
-            switch delegate.taskState {
-            case .standBy:
-                if let result = guardedEnkaProfile {
-                    ShowCaseListView(profile: result, enkaDB: theDB, asCardIcons: true)
-                        .id(result.hashValue)
+            Group {
+                switch delegate.taskState {
+                case .standBy:
+                    if let result = guardedEnkaProfile {
+                        ShowCaseListView(profile: result, enkaDB: theDB, asCardIcons: true)
+                            .id(result.hashValue)
+                    }
+                case .busy:
+                    if let result = guardedEnkaProfile {
+                        ShowCaseListView(profile: result, enkaDB: theDB, asCardIcons: true)
+                            .id(result.hashValue)
+                            .disabled(delegate.taskState == .busy)
+                            .saturation(delegate.taskState == .busy ? 0 : 1)
+                    }
+                    InfiniteProgressBar().id(UUID())
                 }
-            case .busy:
-                if let result = guardedEnkaProfile {
-                    ShowCaseListView(profile: result, enkaDB: theDB, asCardIcons: true)
-                        .id(result.hashValue)
-                        .disabled(delegate.taskState == .busy)
-                        .saturation(delegate.taskState == .busy ? 0 : 1)
-                }
-                InfiniteProgressBar().id(UUID())
+            }
+            .onTapGesture {
+                onTapGestureAction?()
             }
             if let error = delegate.currentError {
                 Button {
@@ -64,9 +71,6 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
             delegate.forceStopTheTask()
         }
         .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
-            triggerUpdateTask()
-        }
-        .refreshable {
             triggerUpdateTask()
         }
     }
@@ -148,6 +152,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
     private let appendedContent: () -> T
+    private let onTapGestureAction: (() -> Void)?
     private var theDB: QueryDB
     @StateObject private var delegate: CaseProfileVM<QueryDB>
     @StateObject private var broadcaster = Broadcaster.shared
