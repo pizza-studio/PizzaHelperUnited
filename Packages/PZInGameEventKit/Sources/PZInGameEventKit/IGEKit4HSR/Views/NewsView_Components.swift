@@ -31,16 +31,8 @@ extension NewsKitHSR {
                     .foregroundStyle(.primary.opacity(0.8))
             } footer: {
                 HStack {
-                    if let event = data as? NewsKitHSR.EventElement {
-                        Text(verbatim: event.dateStartedStr)
-                        Spacer()
-                        Text(verbatim: "→")
-                        Spacer()
-                        Text(verbatim: event.dateEndedStr)
-                    } else {
-                        Text(verbatim: data.dateCreatedStr)
-                        Spacer()
-                    }
+                    Text(verbatim: data.dateCreatedStr)
+                    Spacer()
                 }.frame(maxWidth: .infinity)
             }
             .compositingGroup()
@@ -62,7 +54,7 @@ extension [any NewsElement] {
     @available(watchOS, unavailable)
     @MainActor @ViewBuilder public var body: some View {
         Form {
-            ForEach(self, id: \.id) { newsElement in
+            ForEach(self, id: \.hashValue) { newsElement in
                 NewsKitHSR.NewsElementView(newsElement)
                     .listRowMaterialBackground()
             }

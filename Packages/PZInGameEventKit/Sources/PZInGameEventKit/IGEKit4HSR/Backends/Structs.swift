@@ -21,7 +21,6 @@ extension NewsKitHSR {
         public let id: String
         public let createdAt: Int
         public let description: String
-        public let endAt, startAt: Int
         public let title: String
         public let url: String
     }
