@@ -9,9 +9,18 @@ import SwiftData
 import SwiftUI
 
 struct WatchDataPusherButton: View {
+    // MARK: Lifecycle
+
+    init?() {
+        #if !canImport(WatchConnectivity)
+        return nil
+        #endif
+    }
+
     // MARK: Internal
 
     var body: some View {
+        #if canImport(WatchConnectivity)
         if AppleWatchSputnik.isSupported {
             Section {
                 Button {
@@ -37,6 +46,9 @@ struct WatchDataPusherButton: View {
                     .textCase(.none)
             }
         }
+        #else
+        EmptyView()
+        #endif
     }
 
     // MARK: Private
