@@ -171,9 +171,13 @@ struct ResinRecoveryActivityWidget: Widget {
 }
 
 struct ResinRecoveryActivityWidgetLockScreenView: View {
+    // MARK: Internal
+
     @State var context: ActivityViewContext<ResinRecoveryAttributes>
 
-    @Default(.resinRecoveryLiveActivityBackgroundOptions) var resinRecoveryLiveActivityBackgroundOptions: [String]
+    var backgroundIDs: [String] {
+        backgrounds4LiveActivity.map(\.assetName4LiveActivity)
+    }
 
     var useNoBackground: Bool { context.state.background == .noBackground }
 
@@ -200,7 +204,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                         .opacity(0.3)
                 case .customize:
                     let chosenCardBackgrounds = Wallpaper.allCases.filter { wallpaper in
-                        resinRecoveryLiveActivityBackgroundOptions.contains(wallpaper.assetName4LiveActivity)
+                        backgroundIDs.contains(wallpaper.assetName4LiveActivity)
                     }
                     (chosenCardBackgrounds.randomElement()?.image4LiveActivity ?? randomCardBg)
                         .resizable()
@@ -338,6 +342,10 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         .foregroundColor(useNoBackground ? .primary : Color("textColor3", bundle: .main))
         .padding()
     }
+
+    // MARK: Private
+
+    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
 }
 
 #endif

@@ -188,7 +188,7 @@ public final class ResinRecoveryActivityController: Sendable {
             return .random
         } else {
             Self.backgroundSettingsSanityCheck()
-            let backgrounds = Defaults[.resinRecoveryLiveActivityBackgroundOptions]
+            let backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
             if backgrounds.isEmpty {
                 return .customize([Wallpaper.defaultValue(for: nil).assetName4LiveActivity])
             } else {
@@ -198,14 +198,14 @@ public final class ResinRecoveryActivityController: Sendable {
     }
 
     public static func backgroundSettingsSanityCheck() {
-        let backgrounds = Defaults[.resinRecoveryLiveActivityBackgroundOptions]
+        let backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
         guard !backgrounds.isEmpty else { return }
         let allValidValues = Wallpaper.allCases.map(\.assetName4LiveActivity)
         for entry in backgrounds {
             guard !allValidValues.contains(entry) else { continue }
             // 之前的剔除方法无效，现在改了判定规则：
             // 只要发现不合规的 UserDefault 资料，那就全部清空。
-            Defaults[.resinRecoveryLiveActivityBackgroundOptions].removeAll()
+            Defaults[.backgrounds4LiveActivity].removeAll()
             return
         }
     }
