@@ -113,10 +113,13 @@ struct ResinRecoveryActivityWidget: Widget {
                         Spacer()
                         if Date() < context.state.resinRecoveryTime {
                             HStack {
-                                Image(systemSymbol: .evChargerArrowtriangleRight)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(maxHeight: 40)
+                                Color.clear.frame(width: 40, height: 40, alignment: .center)
+                                    .overlay {
+                                        Image(systemSymbol: .evChargerArrowtriangleRight)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(maxHeight: 24)
+                                    }
                                 VStack(alignment: .leading) {
                                     Text("pzWidgetsKit.nextMaxStamina", bundle: .main)
                                         .font(.caption2)
@@ -250,10 +253,14 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                 }
                 if Date() < context.state.resinRecoveryTime {
                     GridRow {
-                        Image(systemSymbol: .evChargerArrowtriangleRight)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 38)
+                        Color.clear.frame(width: 38, height: 38, alignment: .center)
+                            .overlay {
+                                Image(systemSymbol: .evChargerArrowtriangleRight)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight: 22)
+                                    .padding(.leading, 6)
+                            }
                         VStack(alignment: .leading) {
                             Text("pzWidgetsKit.nextMaxStamina", bundle: .main)
                                 .font(.caption2)
