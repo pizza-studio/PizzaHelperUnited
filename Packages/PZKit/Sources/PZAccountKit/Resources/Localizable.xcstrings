@@ -83,7 +83,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI錯誤] Cookie 尚未包含裝置指紋資料、或相關資料失效。"
+            "value" : "[HoYoAPI錯誤] Cookie 尚未包含設備指紋資料、或相關資料失效。"
           }
         }
       }

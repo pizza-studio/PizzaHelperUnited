@@ -987,6 +987,35 @@
         }
       }
     },
+    "profile.label.fp.extraNotice.zzz" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Zenless Zone Zero UIDs governed by Miyoushe require the user to manually fill in his / her device fingerprint by himself / herself."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ 米遊社の下に管理されていたゼンレスゾンゼロのUIDをご使用の場合、ご自分でデバイス指紋をご記入くださいませ。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ 凡受米游社管理之绝区零 UID 者，得自备设备指纹。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ 凡受米遊社管理之絕區零 UID 者，得自備設備指紋。"
+          }
+        }
+      }
+    },
     "profile.label.game" : {
       "extractionState" : "manual",
       "localizations" : {
