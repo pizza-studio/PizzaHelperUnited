@@ -118,25 +118,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Query ShowCase With UID (Genshin Impact)"
+            "value" : "Query ShowCase (Genshin Impact)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UID でショーケースを調べる (原神)"
+            "value" : "ショーケースを調べる (原神)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以 UID 查询展柜 (原神)"
+            "value" : "查询展柜 (原神)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以 UID 查詢展櫃 (原神)"
+            "value" : "查詢展櫃 (原神)"
           }
         }
       }
@@ -146,25 +146,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Query ShowCase With UID (Star Rail)"
+            "value" : "Query ShowCase (Star Rail)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UID でショーケースを調べる (スターレイル)"
+            "value" : "ショーケースを調べる (スターレイル)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以 UID 查询展柜 (星穹铁道)"
+            "value" : "查询展柜 (星穹铁道)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以 UID 查詢展櫃 (星穹鐵道)"
+            "value" : "查詢展櫃 (星穹鐵道)"
           }
         }
       }
