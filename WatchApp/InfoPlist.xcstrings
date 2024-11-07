@@ -61,7 +61,7 @@
     },
     "NSHumanReadableCopyright" : {
       "comment" : "Copyright (human-readable)",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -91,7 +91,7 @@
     },
     "NSPhotoLibraryAddUsageDescription" : {
       "comment" : "Privacy - Photo Library Additions Usage Description",
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
