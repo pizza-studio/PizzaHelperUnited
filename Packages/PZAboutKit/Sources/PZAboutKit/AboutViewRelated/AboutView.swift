@@ -133,15 +133,21 @@ struct AppAboutViewSections: View {
                 Link.qqGroup(id: "829996515")
                 Link.qqGroup(id: "736320270")
             }
-
-            Link.discord(url: "https://discord.gg/g8nCgKsaMe").asView
-                .fontWidth(.condensed).fontWeight(.bold)
+            .alignmentGuide(.listRowSeparatorLeading) { d in
+                d[.leading] + 40
+            }
 
             ContributorItem(main: false, icon: "icon.telegram", titleKey: "aboutKit.chatrooms.joinTelegram") {
                 Link.telegram(id: "ophelper_zh", titleOverride: "Telegram 中文频道", verbatim: true)
                 Link.telegram(id: "ophelper_en", titleOverride: "Telegram English Channel", verbatim: true)
                 Link.telegram(id: "ophelper_ru", titleOverride: "Telegram Русскоязычный Канал", verbatim: true)
             }
+            .alignmentGuide(.listRowSeparatorLeading) { d in
+                d[.leading] + 40
+            }
+
+            Link.discord(url: "https://discord.gg/g8nCgKsaMe").asView
+                .fontWidth(.condensed).fontWeight(.bold)
         }
 
         // TODO: 择日单独设立授权合约之页面。
