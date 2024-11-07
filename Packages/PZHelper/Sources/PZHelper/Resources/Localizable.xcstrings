@@ -36,25 +36,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Extra Reward Available"
+            "value" : "Extra Reward\nAvailable"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "追加報酬未受取"
+            "value" : "追加報酬\n未受取"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "额外奖励待领取"
+            "value" : "额外奖励\n待领取"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "額外獎勵待領取"
+            "value" : "額外獎勵\n待領取"
           }
         }
       }
@@ -65,25 +65,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Extra Reward Retrieved"
+            "value" : "Extra Reward\nRetrieved"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "追加報酬受取済"
+            "value" : "追加報酬\n受取済"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已领取额外奖励"
+            "value" : "额外奖励\n已领取"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已領取額外獎勵"
+            "value" : "額外獎勵\n已領取"
           }
         }
       }

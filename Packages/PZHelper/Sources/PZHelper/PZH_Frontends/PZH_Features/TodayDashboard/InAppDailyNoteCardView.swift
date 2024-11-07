@@ -136,8 +136,8 @@ private struct DailyNoteCardView4GI: View {
     // MARK: Public
 
     public var body: some View {
-        drawResinAndParametricTransformer()
-        drawDailyTaskAndWeeklyBosses()
+        drawResinAndWeeklyBosses()
+        drawDailyTaskAndParametricTransformer()
         drawRealmCurrencyStatus()
         drawExpeditions()
     }
@@ -145,7 +145,7 @@ private struct DailyNoteCardView4GI: View {
     // MARK: Internal
 
     @ViewBuilder
-    func drawResinAndParametricTransformer() -> some View {
+    func drawResinAndWeeklyBosses() -> some View {
         VStack(alignment: .leading) {
             let resinIntel = dailyNote.resinInfo
             HStack(spacing: 10) {
@@ -172,6 +172,68 @@ private struct DailyNoteCardView4GI: View {
                             .fontWidth(.compressed)
                     }
                 }
+                // Weekly Bosses
+                if let dailyNote = dailyNote as? GeneralNote4GI {
+                    HStack(spacing: 4) {
+                        AccountKit.imageAsset("gi_note_weeklyBosses")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: iconFrame - 6, height: iconFrame - 6)
+                        let weeklyBossesInfo = dailyNote.weeklyBossesInfo
+                        if weeklyBossesInfo.remainResinDiscount == 0 {
+                            Image(systemSymbol: .checkmarkCircle)
+                                .foregroundColor(.green)
+                                .frame(width: 20, height: 20)
+                        } else {
+                            HStack(alignment: .lastTextBaseline, spacing: 0) {
+                                Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
+                                    .font(.title)
+                                Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
+                                    .font(.caption)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 6)
+                    .background(
+                        .regularMaterial,
+                        in: RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    )
+                }
+            }
+        }.help(Text("app.dailynote.card.resin.label".i18nPZHelper))
+    }
+
+    @ViewBuilder
+    func drawDailyTaskAndParametricTransformer() -> some View {
+        VStack(alignment: .leading) {
+            let dailyTask = dailyNote.dailyTaskInfo
+            HStack(spacing: 10) {
+                AccountKit.imageAsset("gi_note_dailyTask")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: iconFrame, height: iconFrame)
+                HStack(alignment: .lastTextBaseline, spacing: 0) {
+                    Text(verbatim: "\(dailyTask.finishedTaskCount)")
+                        .font(.title)
+                    Text(verbatim: " / \(dailyTask.totalTaskCount)")
+                        .font(.caption)
+                    Spacer()
+                    if dailyTask.finishedTaskCount == dailyTask.totalTaskCount {
+                        switch dailyTask.isExtraRewardReceived {
+                        case true:
+                            Text("app.dailynote.card.dailyTask.extraReward.received".i18nPZHelper)
+                                .font(.caption2)
+                                .fontWidth(.compressed)
+                                .multilineTextAlignment(.trailing)
+                        case false:
+                            Text("app.dailynote.card.dailyTask.extraReward.notReceived".i18nPZHelper)
+                                .font(.caption2)
+                                .fontWidth(.compressed)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
+                }
+
                 // Parametric Transformer
                 if let dailyNote = dailyNote as? GeneralNote4GI, dailyNote.transformerInfo.obtained {
                     let paraTransIntel = dailyNote.transformerInfo
@@ -215,64 +277,6 @@ private struct DailyNoteCardView4GI: View {
                         }
                     }
                     .help(Text("app.dailynote.card.parametricTransformer.label".i18nPZHelper))
-                    .padding(.horizontal, 6)
-                    .background(
-                        .regularMaterial,
-                        in: RoundedRectangle(cornerRadius: 6, style: .continuous)
-                    )
-                }
-            }
-        }.help(Text("app.dailynote.card.resin.label".i18nPZHelper))
-    }
-
-    @ViewBuilder
-    func drawDailyTaskAndWeeklyBosses() -> some View {
-        VStack(alignment: .leading) {
-            let dailyTask = dailyNote.dailyTaskInfo
-            HStack(spacing: 10) {
-                AccountKit.imageAsset("gi_note_dailyTask")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: iconFrame, height: iconFrame)
-                HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(dailyTask.finishedTaskCount)")
-                        .font(.title)
-                    Text(verbatim: " / \(dailyTask.totalTaskCount)")
-                        .font(.caption)
-                    Spacer()
-                    if dailyTask.finishedTaskCount == dailyTask.totalTaskCount {
-                        switch dailyTask.isExtraRewardReceived {
-                        case true:
-                            Text("app.dailynote.card.dailyTask.extraReward.received".i18nPZHelper)
-                                .font(.caption2)
-                                .fontWidth(.compressed)
-                        case false:
-                            Text("app.dailynote.card.dailyTask.extraReward.notReceived".i18nPZHelper)
-                                .font(.caption2)
-                                .fontWidth(.compressed)
-                        }
-                    }
-                }
-                if let dailyNote = dailyNote as? GeneralNote4GI {
-                    HStack(spacing: 4) {
-                        AccountKit.imageAsset("gi_note_weeklyBosses")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: iconFrame - 6, height: iconFrame - 6)
-                        let weeklyBossesInfo = dailyNote.weeklyBossesInfo
-                        if weeklyBossesInfo.remainResinDiscount == 0 {
-                            Image(systemSymbol: .checkmarkCircle)
-                                .foregroundColor(.green)
-                                .frame(width: 20, height: 20)
-                        } else {
-                            HStack(alignment: .lastTextBaseline, spacing: 0) {
-                                Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
-                                    .font(.title)
-                                Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
-                                    .font(.caption)
-                            }
-                        }
-                    }
                     .padding(.horizontal, 6)
                     .background(
                         .regularMaterial,
