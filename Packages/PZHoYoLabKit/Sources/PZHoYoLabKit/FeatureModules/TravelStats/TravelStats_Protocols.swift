@@ -64,6 +64,7 @@ struct TravelStatLabel: View {
                     Text(label, bundle: .module)
                     Spacer()
                     Text(verbatim: value)
+                        .foregroundStyle(.secondary)
                 }
             } icon: {
                 symbol.resizable().scaledToFit()
@@ -74,6 +75,7 @@ struct TravelStatLabel: View {
                 Text(label, bundle: .module)
                 Spacer()
                 Text(verbatim: value)
+                    .foregroundStyle(.secondary)
             }
         }
     }
