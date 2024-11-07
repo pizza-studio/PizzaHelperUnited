@@ -113,7 +113,7 @@ struct ResinRecoveryActivityWidget: Widget {
                         Spacer()
                         if Date() < context.state.resinRecoveryTime {
                             HStack {
-                                AccountKit.imageAsset("gi_note_resin_condensed")
+                                Image(systemSymbol: .evChargerArrowtriangleRight)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxHeight: 40)
@@ -251,6 +251,9 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                 if Date() < context.state.resinRecoveryTime {
                     GridRow {
                         Image(systemSymbol: .evChargerArrowtriangleRight)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 38)
                         VStack(alignment: .leading) {
                             Text("pzWidgetsKit.nextMaxStamina", bundle: .main)
                                 .font(.caption2)
