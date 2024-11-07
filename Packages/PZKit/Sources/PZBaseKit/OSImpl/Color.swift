@@ -10,7 +10,6 @@ public typealias UIColor = NSColor
 #endif
 
 extension UIColor {
-    #if !canImport(UIKit) && canImport(AppKit)
     public func modified(
         withAdditionalHue hue: CGFloat,
         additionalSaturation: CGFloat,
@@ -22,12 +21,23 @@ extension UIColor {
         var currentBrigthness: CGFloat = 0.0
         var currentAlpha: CGFloat = 0.0
 
+        #if !canImport(UIKit) && canImport(AppKit)
         getHue(
             &currentHue,
             saturation: &currentSaturation,
             brightness: &currentBrigthness,
             alpha: &currentAlpha
         )
+        #else
+        let isSucceeded: Bool = getHue(
+            &currentHue,
+            saturation: &currentSaturation,
+            brightness: &currentBrigthness,
+            alpha: &currentAlpha
+        )
+        guard isSucceeded else { return self }
+        #endif
+
         return UIColor(
             hue: currentHue + hue,
             saturation: currentSaturation + additionalSaturation,
@@ -35,35 +45,6 @@ extension UIColor {
             alpha: currentAlpha
         )
     }
-    #else
-    public func modified(
-        withAdditionalHue hue: CGFloat,
-        additionalSaturation: CGFloat,
-        additionalBrightness: CGFloat
-    )
-        -> UIColor {
-        var currentHue: CGFloat = 0.0
-        var currentSaturation: CGFloat = 0.0
-        var currentBrigthness: CGFloat = 0.0
-        var currentAlpha: CGFloat = 0.0
-
-        if getHue(
-            &currentHue,
-            saturation: &currentSaturation,
-            brightness: &currentBrigthness,
-            alpha: &currentAlpha
-        ) {
-            return UIColor(
-                hue: currentHue + hue,
-                saturation: currentSaturation + additionalSaturation,
-                brightness: currentBrigthness + additionalBrightness,
-                alpha: currentAlpha
-            )
-        } else {
-            return self
-        }
-    }
-    #endif
 }
 
 #if !canImport(UIKit) && canImport(AppKit)
