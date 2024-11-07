@@ -52,6 +52,9 @@ struct ContributorItem: View {
     var body: some View {
         switch asMainMember {
         case false: drawAsSomethingElse()
+            .alignmentGuide(.listRowSeparatorLeading) { d in
+                d[.leading] + 40
+            }
         case true: drawAsMainMember()
         }
     }

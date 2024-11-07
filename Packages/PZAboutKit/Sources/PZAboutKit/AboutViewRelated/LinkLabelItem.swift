@@ -261,6 +261,9 @@ struct LinkLabelItem: View {
                     .resizable()
                     .scaledToFit()
             }
+            .alignmentGuide(.listRowSeparatorLeading) { d in
+                d[.leading] + 40
+            }
         }
     }
 
