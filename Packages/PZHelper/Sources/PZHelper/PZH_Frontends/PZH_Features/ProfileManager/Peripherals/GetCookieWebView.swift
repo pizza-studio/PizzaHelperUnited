@@ -39,16 +39,25 @@ struct GetCookieWebView: View {
                     dataStore: dataStore,
                     httpHeaderFields: getHTTPHeaderFields(region: region)
                 )
-                VStack(alignment: .leading) {
-                    Text("profileMgr.accountLogin.instruction".i18nPZHelper)
-                        .font(.footnote)
-                    Text("profileMgr.accountLogin.instruction.specialWarning".i18nPZHelper)
-                        .font(.footnote)
-                        .fontWeight(.medium)
-                        .foregroundStyle(.orange)
-                        .padding(.bottom)
+                #if os(iOS) && !targetEnvironment(macCatalyst)
+                .onReceive(keyboardPublisher) { keyboardComesOut in
+                    withAnimation {
+                        isKeyboardVisible = keyboardComesOut
+                    }
                 }
-                .padding()
+                #endif
+                if !isKeyboardVisible {
+                    VStack(alignment: .leading) {
+                        Text("profileMgr.accountLogin.instruction".i18nPZHelper)
+                            .font(.footnote)
+                        Text("profileMgr.accountLogin.instruction.specialWarning".i18nPZHelper)
+                            .font(.footnote)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.orange)
+                            .padding(.bottom)
+                    }
+                    .padding()
+                }
             }
             .navigationTitle("profileMgr.accountLogin.pleaseFinish.title".i18nPZHelper)
             .navBarTitleDisplayMode(.inline)
@@ -151,6 +160,8 @@ struct GetCookieWebView: View {
             }
         }
     }
+
+    @State private var isKeyboardVisible = false
 }
 
 // MARK: - CookieGetterWebView
@@ -376,3 +387,31 @@ private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String]
         ]
     }
 }
+
+#if os(iOS) && !targetEnvironment(macCatalyst)
+import Combine
+import UIKit
+
+/// Publisher to read keyboard changes.
+private protocol KeyboardReadable {
+    var keyboardPublisher: AnyPublisher<Bool, Never> { get }
+}
+
+extension KeyboardReadable {
+    fileprivate var keyboardPublisher: AnyPublisher<Bool, Never> {
+        Publishers.Merge(
+            NotificationCenter.default
+                .publisher(for: UIResponder.keyboardWillShowNotification)
+                .map { _ in true },
+
+            NotificationCenter.default
+                .publisher(for: UIResponder.keyboardWillHideNotification)
+                .map { _ in false }
+        )
+        .eraseToAnyPublisher()
+    }
+}
+
+extension GetCookieWebView: KeyboardReadable {}
+
+#endif
