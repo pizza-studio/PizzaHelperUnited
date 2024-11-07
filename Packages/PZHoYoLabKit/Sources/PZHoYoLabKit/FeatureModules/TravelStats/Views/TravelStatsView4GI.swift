@@ -135,10 +135,14 @@ public struct TravelStatsView4GI: TravelStatsView {
 
             var body: some View {
                 Label {
-                    Text(verbatim: worldData.name)
-                    Spacer()
-                    let explorationRate = Double(worldData.explorationPercentage) / Double(1000)
-                    Text(Self.calculatePercentage(value: explorationRate))
+                    HStack {
+                        Text(verbatim: worldData.name)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        let explorationRate = Double(worldData.explorationPercentage) / Double(1000)
+                        Text(Self.calculatePercentage(value: explorationRate))
+                            .foregroundStyle(.secondary)
+                    }
                 } icon: {
                     if let url = URL(string: worldData.icon) {
                         AsyncImage(url: url, content: { image in
@@ -180,9 +184,13 @@ public struct TravelStatsView4GI: TravelStatsView {
                 DisclosureGroup {
                     ForEach(worldData.offerings, id: \.name) { offering in
                         Label {
-                            Text(verbatim: offering.name)
-                            Spacer()
-                            Text(verbatim: "Lv. \(offering.level)")
+                            HStack {
+                                Text(verbatim: offering.name)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text(verbatim: "Lv. \(offering.level)")
+                                    .foregroundStyle(.secondary)
+                            }
                         } icon: {
                             if let url = URL(string: offering.icon) {
                                 AsyncImage(url: url, content: { image in
