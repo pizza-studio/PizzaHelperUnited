@@ -1830,25 +1830,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Refilled At %@"
+            "value" : "Till %@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ にて全回復"
+            "value" : "%@ 満載"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "回满时间: ￼"
+            "value" : "%@ 回满"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "回滿時間: %@"
+            "value" : "%@ 回滿"
           }
         }
       }
