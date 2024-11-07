@@ -3225,25 +3225,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please choose a gacha profile."
+            "value" : "Please choose a gacha profile. If you can’t see one, then please import some gacha records first."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ガチャUIDをご選択ください。"
+            "value" : "ガチャUIDをご選択ください。それが表示していないのなら、まずガチャ記録を入れてください。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请选择一个抽卡UID。"
+            "value" : "请选择一个抽卡UID。如果看不到相关选项的话，请先导入抽卡记录。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請選擇一個抽卡UID。"
+            "value" : "請選擇一個抽卡UID。如果看不到相關選項的話，請先匯入抽卡記錄。"
           }
         }
       }
