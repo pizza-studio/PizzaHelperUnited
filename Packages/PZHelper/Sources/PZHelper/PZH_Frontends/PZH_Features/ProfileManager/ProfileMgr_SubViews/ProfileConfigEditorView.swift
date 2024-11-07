@@ -83,6 +83,8 @@ struct ProfileConfigEditorView: View {
             } header: {
                 Text("profile.label.fp".i18nPZHelper)
                     .textCase(.none)
+            } footer: {
+                warningAboutDeviceFP
             }
         }
         .formStyle(.grouped)
@@ -97,6 +99,13 @@ struct ProfileConfigEditorView: View {
             get: { unsavedProfile.sTokenV2 ?? "" },
             set: { unsavedProfile.sTokenV2 = $0 }
         )
+    }
+
+    @ViewBuilder private var warningAboutDeviceFP: some View {
+        if unsavedProfile.game == .zenlessZone, case .miyoushe = unsavedProfile.server.region {
+            Text("profile.label.fp.extraNotice.zzz".i18nPZHelper)
+                .foregroundStyle(.orange)
+        }
     }
 
     private func requiresSTokenV2(for region: HoYo.AccountRegion) -> Bool {

@@ -8,8 +8,6 @@ import SwiftUI
 
 // MARK: - ProfileConfigViewContents
 
-// TODO: 该页面为半成品状态，暂时仅支持对账号内容的直接静态编辑。
-
 /// 就是原先的 EditAccountView。
 struct ProfileConfigViewContents: View {
     // MARK: Lifecycle
@@ -62,7 +60,11 @@ struct ProfileConfigViewContents: View {
             }
         }
 
-        TestAccountSectionView(profile: profile)
+        Section {
+            TestAccountSectionView(profile: profile)
+        } footer: {
+            warningAboutDeviceFP
+        }
     }
 
     // MARK: Private
@@ -76,6 +78,13 @@ struct ProfileConfigViewContents: View {
             profile.allowNotification
         } set: { newValue in
             profile.allowNotification = newValue
+        }
+    }
+
+    @ViewBuilder private var warningAboutDeviceFP: some View {
+        if profile.game == .zenlessZone, case .miyoushe = profile.server.region {
+            Text("profile.label.fp.extraNotice.zzz".i18nPZHelper)
+                .foregroundStyle(.orange)
         }
     }
 }
