@@ -11,7 +11,7 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 struct ExpeditionsView: View {
-    let expeditions: [any Expedition]
+    let expeditions: [any ExpeditionTask]
 
     var body: some View {
         VStack {
@@ -26,25 +26,23 @@ struct ExpeditionsView: View {
 
 @available(watchOS, unavailable)
 struct EachExpeditionView: View {
-    let expedition: any Expedition
+    let expedition: any ExpeditionTask
     let viewConfig: WidgetViewConfiguration = .defaultConfig
 
     var body: some View {
         HStack {
             webView(url: expedition.iconURL)
-            if let expedition = expedition as? GeneralNote4GI.ExpeditionInfo4GI.Expedition {
-                VStack(alignment: .leading) {
-                    Text(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: expedition.finishTime))!)
+            VStack(alignment: .leading) {
+                if let finishTime = expedition.timeOnFinish {
+                    Text(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: finishTime))!)
                         .lineLimit(1)
                         .font(.footnote)
                         .minimumScaleFactor(0.4)
                     let totalSecond = 20.0 * 60.0 * 60.0
-                    let percentage = 1.0 - (TimeInterval.sinceNow(to: expedition.finishTime) / totalSecond)
+                    let percentage = 1.0 - (TimeInterval.sinceNow(to: finishTime) / totalSecond)
                     percentageBar(percentage)
                         .environment(\.colorScheme, .light)
-                }
-            } else {
-                VStack(alignment: .leading) {
+                } else {
                     Text(
                         expedition.isFinished
                             ? "pzWidgetsKit.expedition.status.finished"
@@ -53,7 +51,7 @@ struct EachExpeditionView: View {
                     .lineLimit(1)
                     .font(.footnote)
                     .minimumScaleFactor(0.4)
-                    percentageBar(1)
+                    percentageBar(expedition.isFinished ? 1 : 0.5)
                         .environment(\.colorScheme, .light)
                 }
             }

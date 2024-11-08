@@ -20,39 +20,21 @@ struct LockScreenExpeditionWidgetCorner: View {
         case let .success(data):
             /// ZZZ Has no expedition intels available through API yet.
             switch data {
-            case let data as any Note4GI:
+            case _ as Note4ZZZ: return "WRONG_GAME"
+            default:
                 let timeDescription: String = {
-                    if data.expeditions.allCompleted {
+                    if data.allExpeditionsAccomplished {
                         return "pzWidgetsKit.status.done".i18nWidgets
-                    } else {
-                        if let expeditionInformation = data.expeditions as? GeneralNote4GI
-                            .ExpeditionInfo4GI {
-                            return formatter.string(from: expeditionInformation.expeditions.map(\.finishTime).max()!)
-                        } else {
-                            return ""
-                        }
-                    }
-                }()
-
-                let numerator = data.expeditionProgressCounts.ongoing
-                let denominator = data.expeditionProgressCounts.all
-                return "\(numerator) / \(denominator) \(timeDescription)"
-            case let data as Note4HSR:
-                let timeDescription: String = {
-                    if data.assignmentInfo.allCompleted {
-                        return "pzWidgetsKit.status.done".i18nWidgets
-                    } else if let maxFinishTime = data.assignmentInfo.assignments.map(\.finishedTime).max() {
+                    } else if let maxFinishTime = data.expeditionTotalETA {
                         return formatter.string(from: maxFinishTime)
                     } else {
                         return ""
                     }
                 }()
 
-                let numerator = data.expeditionProgressCounts.ongoing
-                let denominator = data.expeditionProgressCounts.all
+                let numerator = data.expeditionCompletionStatus.finished
+                let denominator = data.expeditionCompletionStatus.all
                 return "\(numerator) / \(denominator) \(timeDescription)"
-            default:
-                return ""
             }
         case .failure:
             return "pzWidgetsKit.expedition".i18nWidgets

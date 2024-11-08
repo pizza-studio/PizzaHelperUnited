@@ -38,7 +38,7 @@ struct MainInfo: View {
 
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 let staminaIntel = dailyNote.staminaIntel
-                Text(staminaIntel.existing.description)
+                Text(staminaIntel.finished.description)
                     .font(.system(size: 50, design: .rounded))
                     .fontWeight(.medium)
                     .minimumScaleFactor(0.1)

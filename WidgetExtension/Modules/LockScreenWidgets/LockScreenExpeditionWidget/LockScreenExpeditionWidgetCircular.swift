@@ -45,13 +45,13 @@ struct LockScreenExpeditionWidgetCircular: View {
         /// ZZZ Has no expedition intels available through API yet.
         switch data {
         case let data as any Note4GI:
-            let numerator = data.expeditionProgressCounts.ongoing
-            let denominator = data.expeditionProgressCounts.all
+            let numerator = data.expeditionCompletionStatus.finished
+            let denominator = data.expeditionCompletionStatus.all
             let result = "\(numerator) / \(denominator)"
             return Text(verbatim: result)
         case let data as Note4HSR:
-            let numerator = data.expeditionProgressCounts.ongoing
-            let denominator = data.expeditionProgressCounts.all
+            let numerator = data.expeditionCompletionStatus.finished
+            let denominator = data.expeditionCompletionStatus.all
             let result = "\(numerator) / \(denominator)"
             return Text(verbatim: result)
         default:

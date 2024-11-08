@@ -29,7 +29,7 @@ struct WatchResinDetailView: View {
                 Text("watch.stamina", bundle: .module)
                     .foregroundColor(.gray)
             }
-            Text(verbatim: "\(dailyNote.staminaIntel.existing)")
+            Text(verbatim: "\(dailyNote.staminaIntel.finished)")
                 .font(.system(size: 40, design: .rounded))
                 .fontWeight(.medium)
             recoveryTimeText()

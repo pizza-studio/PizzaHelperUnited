@@ -105,34 +105,29 @@ enum LockScreenLoopWidgetType: CaseIterable {
 
     static func autoChoose(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>)
         -> Self {
+        // TODO: 此处恐需在本地 API 优化之后针对绝区零全部重新调整。
+        let today8pmPassed: Bool = Date() > Calendar.current.date(
+            bySettingHour: 20,
+            minute: 0,
+            second: 0,
+            of: Date()
+        )!
         switch result {
         case let .success(data):
+            let dailyTaskInfoScore: Double = {
+                guard data.hasDailyTaskIntel else { return 0 }
+                guard data.allDailyTasksAccomplished ?? false else {
+                    return today8pmPassed ? 1.2 : 0.8
+                }
+                return 0.0
+            }()
             switch data {
             case let data as any Note4GI:
                 let homeCoinInfoScore = Double(data.homeCoinInfo.currentHomeCoin) /
                     Double(data.homeCoinInfo.maxHomeCoin)
                 let resinInfoScore = 1.1 * Double(data.resinInfo.currentResinDynamic) /
                     Double(data.resinInfo.maxResin)
-                let expeditionInfoScore = if data.expeditions.allCompleted { 120.0 / 160.0 } else { 0.0 }
-                let dailyTaskInfoScore = if Date() > Calendar.current
-                    .date(bySettingHour: 20, minute: 0, second: 0, of: Date())! {
-                    if data.dailyTaskInfo.finishedTaskCount != data.dailyTaskInfo.totalTaskCount {
-                        0.8
-                    } else {
-                        if data.dailyTaskInfo.isExtraRewardReceived {
-                            0.0
-                        } else {
-                            1.2
-                        }
-                    }
-                } else {
-                    if !data.dailyTaskInfo.isExtraRewardReceived,
-                       data.dailyTaskInfo.finishedTaskCount == data.dailyTaskInfo.totalTaskCount {
-                        1.2
-                    } else {
-                        0.0
-                    }
-                }
+                let expeditionInfoScore = if data.allExpeditionsAccomplished { 0.75 } else { 0.0 }
                 if homeCoinInfoScore > 0.8, homeCoinInfoScore > resinInfoScore {
                     return .homeCoin
                 } else if expeditionInfoScore > resinInfoScore {
@@ -144,21 +139,7 @@ enum LockScreenLoopWidgetType: CaseIterable {
                 }
             case let data as any Note4HSR:
                 let resinInfoScore = 1.1 * Double(data.staminaInfo.currentStamina) / Double(data.staminaInfo.maxStamina)
-                let expeditionInfoScore = if data.assignmentInfo.allCompleted { 120.0 / 160.0 } else { 0.0 }
-                let dailyTaskInfoScore: Double = {
-                    guard let dailyNote = data as? WidgetNote4HSR else { return 0 }
-                    let today8pmPassed: Bool = Date() > Calendar.current.date(
-                        bySettingHour: 20,
-                        minute: 0,
-                        second: 0,
-                        of: Date()
-                    )!
-                    if dailyNote.dailyTrainingInfo.currentScore != dailyNote.dailyTrainingInfo.maxScore {
-                        return today8pmPassed ? 0.8 : 0.0
-                    } else {
-                        return 1.2
-                    }
-                }()
+                let expeditionInfoScore = if data.allExpeditionsAccomplished { 0.75 } else { 0.0 }
                 if expeditionInfoScore > resinInfoScore {
                     return .expedition
                 } else if dailyTaskInfoScore > resinInfoScore {

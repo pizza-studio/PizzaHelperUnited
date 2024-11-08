@@ -11,7 +11,7 @@ public protocol Note4GI: DailyNoteProtocol {
     associatedtype DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI
     var dailyTaskInfo: DailyTaskInfo4GI { get }
     associatedtype ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI
-    var expeditions: ExpeditionInfo4GI { get }
+    var expeditionInfo: ExpeditionInfo4GI { get }
     associatedtype HomeCoinInfo4GI: PZAccountKit.HomeCoinInfo4GI
     var homeCoinInfo: HomeCoinInfo4GI { get }
     associatedtype ResinInfo4GI: PZAccountKit.ResinInfo4GI
@@ -20,12 +20,6 @@ public protocol Note4GI: DailyNoteProtocol {
 
 extension Note4GI {
     public static var game: Pizza.SupportedGame { .genshinImpact }
-
-    public var expeditionProgressCounts: (ongoing: Int, all: Int) {
-        let numerator = expeditions.ongoingExpeditionCount
-        let denominator = expeditions.maxExpeditionsCount
-        return (numerator, denominator)
-    }
 }
 
 // MARK: - DailyTaskInfo4GI
@@ -40,18 +34,8 @@ public protocol DailyTaskInfo4GI {
 
 public protocol ExpeditionInfo4GI {
     var maxExpeditionsCount: Int { get }
-    associatedtype Expedition: PZAccountKit.Expedition
+    associatedtype Expedition: ExpeditionTask
     var expeditions: [Expedition] { get }
-}
-
-extension ExpeditionInfo4GI {
-    public var ongoingExpeditionCount: Int {
-        expeditions.filter { !$0.isFinished }.count
-    }
-
-    public var allCompleted: Bool {
-        expeditions.filter { !$0.isFinished }.isEmpty
-    }
 }
 
 // MARK: - HomeCoinInfo4GI

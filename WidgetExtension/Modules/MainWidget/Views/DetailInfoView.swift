@@ -36,17 +36,16 @@ struct DetailInfo: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: spacing) {
+            if dailyNote.hasDailyTaskIntel {
+                DailyTaskInfoBar(dailyNote: dailyNote)
+            }
             switch dailyNote {
             case let dailyNote as any Note4GI:
                 if dailyNote.homeCoinInfo.maxHomeCoin != 0 {
                     HomeCoinInfoBar(entry: entry, homeCoinInfo: dailyNote.homeCoinInfo)
                 }
 
-                if dailyNote.dailyTaskInfo.totalTaskCount != 0 {
-                    DailyTaskInfoBar(dailyNote: dailyNote)
-                }
-
-                if dailyNote.expeditions.maxExpeditionsCount != 0 {
+                if dailyNote.hasExpeditions {
                     ExpeditionInfoBar(dailyNote: dailyNote)
                 }
 
@@ -68,17 +67,14 @@ struct DetailInfo: View {
                     }
                 }
             case let dailyNote as Note4HSR:
-                if let dailyNote = dailyNote as? WidgetNote4HSR {
-                    DailyTaskInfoBar(dailyNote: dailyNote)
-                }
-                if dailyNote.assignmentInfo.totalAssignmentNumber != 0 {
+                if dailyNote.hasExpeditions {
                     ExpeditionInfoBar(dailyNote: dailyNote)
                 }
                 if let dailyNote = dailyNote as? WidgetNote4HSR {
                     SimulUnivInfoBar(dailyNote: dailyNote)
                 }
             case _ as Note4ZZZ:
-                DailyTaskInfoBar(dailyNote: dailyNote)
+                EmptyView() // TODO: Needs further implementation.
             default:
                 EmptyView()
             }

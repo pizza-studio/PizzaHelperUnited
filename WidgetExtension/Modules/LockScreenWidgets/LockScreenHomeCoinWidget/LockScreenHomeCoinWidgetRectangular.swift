@@ -242,7 +242,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                         }
                         GridRow(alignment: .lastTextBaseline) {
                             let size: CGFloat = 23
-                            Text(verbatim: "\(staminaIntel.existing)")
+                            Text(verbatim: "\(staminaIntel.finished)")
                                 .font(.system(
                                     size: size,
                                     weight: .medium,
@@ -254,7 +254,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                         .foregroundColor(.primary)
                         .widgetAccentable()
                         GridRow(alignment: .lastTextBaseline) {
-                            if staminaIntel.existing >= staminaIntel.max {
+                            if staminaIntel.isAccomplished {
                                 Text("pzWidgetsKit.stamina.full", bundle: .main)
                             } else {
                                 Text(verbatim: "\(format(data.staminaFullTimeOnFinish))")

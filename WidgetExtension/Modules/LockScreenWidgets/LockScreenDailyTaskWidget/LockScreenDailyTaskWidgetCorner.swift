@@ -21,10 +21,10 @@ struct LockScreenDailyTaskWidgetCorner: View {
                 .scaledToFit()
                 .padding(3.5)
                 .widgetLabel {
-                    switch data {
-                    case let data as any Note4GI:
-                        let valNow = data.dailyTaskInfo.finishedTaskCount
-                        let valMax = data.dailyTaskInfo.totalTaskCount
+                    if data.hasDailyTaskIntel {
+                        let sitrep = data.dailyTaskCompletionStatus
+                        let valNow = sitrep.finished
+                        let valMax = sitrep.all
                         Gauge(value: Double(valNow), in: 0 ... Double(valMax)) {
                             Text("pzWidgetsKit.dailyTask", bundle: .main)
                         } currentValueLabel: {
@@ -34,19 +34,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
                         } maximumValueLabel: {
                             Text(verbatim: "")
                         }
-                    case let data as WidgetNote4HSR:
-                        let valNow = data.dailyTrainingInfo.currentScore
-                        let valMax = data.dailyTrainingInfo.maxScore
-                        Gauge(value: Double(valNow), in: 0 ... Double(valMax)) {
-                            Text("pzWidgetsKit.dailyTask", bundle: .main)
-                        } currentValueLabel: {
-                            Text(verbatim: "\(valNow) / \(valMax)")
-                        } minimumValueLabel: {
-                            Text(verbatim: "  \(valNow)/\(valMax)  ")
-                        } maximumValueLabel: {
-                            Text(verbatim: "")
-                        }
-                    default:
+                    } else {
                         Image(systemSymbol: .ellipsis)
                     }
                 }

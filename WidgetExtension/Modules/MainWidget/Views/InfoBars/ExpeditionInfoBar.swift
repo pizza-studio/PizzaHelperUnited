@@ -12,13 +12,8 @@ import SwiftUI
 struct ExpeditionInfoBar: View {
     let dailyNote: any DailyNoteProtocol
 
-    var completionIntel: (ongoing: Int, all: Int) {
-        switch dailyNote {
-        case let dailyNote as any Note4GI: return dailyNote.expeditionProgressCounts
-        case let dailyNote as Note4HSR: return dailyNote.expeditionProgressCounts
-        case _ as Note4ZZZ: return (0, 0)
-        default: return (0, 0)
-        }
+    var completionIntel: FieldCompletionIntel<Int> {
+        dailyNote.expeditionCompletionStatus
     }
 
     var isExpeditionAllCompleteImage: some View {
@@ -44,7 +39,7 @@ struct ExpeditionInfoBar: View {
                     .frame(maxWidth: 13, maxHeight: 13)
                     .foregroundColor(Color("textColor3", bundle: .main))
                 let completionIntel = completionIntel
-                Text(verbatim: "\(completionIntel.ongoing) / \(completionIntel.all)")
+                Text(verbatim: "\(completionIntel.finished) / \(completionIntel.all)")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .font(.system(.caption, design: .rounded))

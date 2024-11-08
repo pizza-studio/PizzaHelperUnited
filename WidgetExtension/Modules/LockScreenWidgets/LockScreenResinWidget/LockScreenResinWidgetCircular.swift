@@ -35,7 +35,7 @@ struct LockScreenResinWidgetCircular: View {
             switch result {
             case let .success(data):
                 let staminaIntel = data.staminaIntel
-                Gauge(value: Double(staminaIntel.existing) / Double(staminaIntel.max)) {
+                Gauge(value: Double(staminaIntel.finished) / Double(staminaIntel.all)) {
                     LinearGradient(
                         colors: [
                             .init("iconColor.resin.dark"),
@@ -51,7 +51,7 @@ struct LockScreenResinWidgetCircular: View {
                             .scaledToFit()
                     )
                 } currentValueLabel: {
-                    let value = "\(staminaIntel.existing)"
+                    let value = "\(staminaIntel.finished)"
                     Text(verbatim: value)
                         .font(.title3)
                         .fontWidth(value.count > 3 ? .condensed : .standard)
@@ -91,12 +91,12 @@ struct LockScreenResinWidgetCircular: View {
             switch result {
             case let .success(data):
                 let staminaIntel = data.staminaIntel
-                Gauge(value: Double(staminaIntel.existing) / Double(staminaIntel.max)) {
+                Gauge(value: Double(staminaIntel.finished) / Double(staminaIntel.all)) {
                     Image(staminaMonochromeIconAssetName, bundle: .main)
                         .resizable()
                         .scaledToFit()
                 } currentValueLabel: {
-                    let value = "\(staminaIntel.existing)"
+                    let value = "\(staminaIntel.finished)"
                     Text(verbatim: value)
                         .font(.title3)
                         .fontWidth(value.count > 3 ? .condensed : .standard)

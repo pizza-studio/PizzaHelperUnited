@@ -40,7 +40,7 @@ struct LockScreenResinWidgetRectangular: View {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let size: CGFloat = 40
-                            Text(verbatim: "\(staminaIntel.existing)")
+                            Text(verbatim: "\(staminaIntel.finished)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
@@ -49,7 +49,7 @@ struct LockScreenResinWidgetRectangular: View {
                         }
                         .widgetAccentable()
                         .foregroundColor(Color("iconColor.resin.middle", bundle: .main))
-                        if staminaIntel.existing >= staminaIntel.max {
+                        if staminaIntel.isAccomplished {
                             Text("pzWidgetsKit.stamina.full", bundle: .main)
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -95,7 +95,7 @@ struct LockScreenResinWidgetRectangular: View {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let size: CGFloat = 40
-                            Text(verbatim: "\(staminaIntel.existing)")
+                            Text(verbatim: "\(staminaIntel.finished)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
@@ -104,7 +104,7 @@ struct LockScreenResinWidgetRectangular: View {
                         }
                         .foregroundColor(.primary)
                         .widgetAccentable()
-                        if staminaIntel.existing >= staminaIntel.max {
+                        if staminaIntel.isAccomplished {
                             Text("pzWidgetsKit.stamina.full", bundle: .main)
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
