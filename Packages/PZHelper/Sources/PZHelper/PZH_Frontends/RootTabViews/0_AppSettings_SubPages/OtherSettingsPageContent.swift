@@ -26,11 +26,11 @@ struct OtherSettingsPageContent: View {
                         Text(verbatim: "Arranged Notifications")
                     }
                 } footer: {
-                    Text("The Pizza Helper v\(appVersion) (\(buildVersion))")
+                    Text(verbatim: "The Pizza Helper v\(appVersion) (\(buildVersion))")
                 }
             }
             .formStyle(.grouped)
-            .navigationTitle("Develop Settings")
+            .navigationTitle("Develop Settings".description)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
