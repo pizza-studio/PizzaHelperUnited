@@ -15,6 +15,11 @@ extension PZNotificationCenter {
             .send()
     }
 
+    public static func bleachNotificationsIfDisabled(for profile: PZProfileSendable) {
+        guard !profile.allowNotification else { return }
+        deleteDailyNoteNotification(for: profile)
+    }
+
     public static func deleteDailyNoteNotification(for profile: PZProfileSendable) {
         Task { @MainActor in
             let requests = await center.pendingNotificationRequests()

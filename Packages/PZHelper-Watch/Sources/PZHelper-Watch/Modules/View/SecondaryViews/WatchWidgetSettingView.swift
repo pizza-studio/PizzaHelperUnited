@@ -34,6 +34,7 @@ struct WatchWidgetSettingView: View {
                     for offset in indexSet {
                         let account = accounts[offset]
                         let uuidToRemove = account.uuid
+                        PZNotificationCenter.deleteDailyNoteNotification(for: account.asSendable)
                         modelContext.delete(account)
                         do {
                             try modelContext.save()
