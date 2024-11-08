@@ -111,6 +111,7 @@ extension PZProfileActor {
                 theEntry.name += " (Imported)"
             }
             context.insert(theEntry)
+            PZNotificationCenter.bleachNotificationsIfDisabled(for: theEntry.asSendable)
             count += 1
         }
         if resetNotifications, count > 0 {
@@ -151,6 +152,7 @@ extension PZProfileActor {
         guard let newProfile = try? await AccountMOSputnik.shared.queryAccountDataMO(uuid: uuid) else { return }
         modelContext.insert(newProfile.asMO)
         try modelContext.save()
+        PZNotificationCenter.bleachNotificationsIfDisabled(for: newProfile)
         Defaults[.pzProfiles][newProfile.uuid.uuidString] = newProfile
         UserDefaults.profileSuite.synchronize()
     }

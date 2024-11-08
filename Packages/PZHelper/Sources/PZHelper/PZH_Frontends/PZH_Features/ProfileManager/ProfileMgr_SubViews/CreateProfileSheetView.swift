@@ -91,6 +91,7 @@ extension ProfileManagerPageContent {
             do {
                 modelContext.insert(profile)
                 try modelContext.save()
+                PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                 Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
                 UserDefaults.profileSuite.synchronize()
                 isShown.toggle()
@@ -133,6 +134,7 @@ extension ProfileManagerPageContent {
                 firstDuplicate.deviceFingerPrint = profile.deviceFingerPrint
             } else {
                 modelContext.insert(newProfile)
+                PZNotificationCenter.bleachNotificationsIfDisabled(for: newProfile.asSendable)
             }
             status = .gotProfile
         }
@@ -171,6 +173,7 @@ extension ProfileManagerPageContent {
 
                         alertToastEventStatus.isProfileTaskSucceeded.toggle()
                         try modelContext.save()
+                        PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                         await PZProfileActor.shared.syncAllDataToUserDefaults()
                         isShown.toggle()
                     } catch {
