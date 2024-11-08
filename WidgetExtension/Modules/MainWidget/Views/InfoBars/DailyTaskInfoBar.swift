@@ -13,32 +13,24 @@ struct DailyTaskInfoBar: View {
     let dailyNote: any DailyNoteProtocol
 
     @ViewBuilder var isTaskRewardReceivedImage: some View {
-        switch dailyNote {
-        case let dailyNote as any Note4GI:
-            let dailyTaskInfo = dailyNote.dailyTaskInfo
-            if !dailyTaskInfo.isExtraRewardReceived {
-                if dailyTaskInfo.finishedTaskCount == dailyTaskInfo.totalTaskCount {
-                    Image(systemSymbol: .exclamationmark)
-                        .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
+        if dailyNote.hasDailyTaskIntel {
+            let sitrep = dailyNote.dailyTaskCompletionStatus
+            Group {
+                if sitrep.isAccomplished {
+                    if let extraRewardClaimed = dailyNote.claimedRewardsFromKatheryne {
+                        Image(systemSymbol: extraRewardClaimed ? .checkmark : .exclamationmark)
+                            .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
+                    } else {
+                        Image(systemSymbol: .checkmark)
+                            .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
+                    }
                 } else {
-                    Image(systemSymbol: .questionmark)
-                        .overlayImageWithRingProgressBar(1.0)
+                    Image(systemSymbol: .ellipsis)
+                        .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
                 }
-            } else {
-                Image(systemSymbol: .checkmark)
-                    .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
             }
-        case let dailyNote as WidgetNote4HSR:
-            let dailyTaskInfo = dailyNote.dailyTrainingInfo
-            let allFinished = dailyTaskInfo.currentScore == dailyTaskInfo.maxScore
-            Image(systemSymbol: allFinished ? .checkmark : .exclamationmark)
-                .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
-        case let dailyNote as Note4ZZZ: // Vitality
-            let dailyTaskInfo = dailyNote.vitality
-            let allFinished = dailyTaskInfo.current == dailyTaskInfo.max
-            Image(systemSymbol: allFinished ? .checkmark : .exclamationmark)
-                .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
-        default: EmptyView()
+        } else {
+            EmptyView()
         }
     }
 
@@ -55,24 +47,13 @@ struct DailyTaskInfoBar: View {
 
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Group {
-                    switch dailyNote {
-                    case let dailyNote as any Note4GI:
-                        let dailyTaskInfo = dailyNote.dailyTaskInfo
-                        Text(verbatim: "\(dailyTaskInfo.finishedTaskCount)")
-                        Text(verbatim: " / \(dailyTaskInfo.totalTaskCount)")
-                        if !dailyTaskInfo.isExtraRewardReceived,
-                           dailyTaskInfo.finishedTaskCount == dailyTaskInfo.totalTaskCount {
-                            Text("pzWidgetsKit.status.not_received", bundle: .main)
-                        }
-                    case let dailyNote as WidgetNote4HSR:
-                        let dailyTaskInfo = dailyNote.dailyTrainingInfo
-                        Text(verbatim: "\(dailyTaskInfo.currentScore)")
-                        Text(verbatim: " / \(dailyTaskInfo.maxScore)")
-                    case let dailyNote as Note4ZZZ: // Vitality
-                        let dailyTaskInfo = dailyNote.vitality
-                        Text(verbatim: "\(dailyTaskInfo.current)")
-                        Text(verbatim: " / \(dailyTaskInfo.max)")
-                    default: EmptyView()
+                    let sitrep = dailyNote.dailyTaskCompletionStatus
+                    Text(verbatim: "\(sitrep.finished)")
+                    Text(verbatim: " / \(sitrep.all)")
+                    if sitrep.isAccomplished,
+                       let extraRewardClaimed = dailyNote.claimedRewardsFromKatheryne,
+                       !extraRewardClaimed {
+                        Text("pzWidgetsKit.status.not_received", bundle: .main)
                     }
                 }
                 .lineLimit(1)

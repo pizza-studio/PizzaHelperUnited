@@ -31,9 +31,9 @@ struct LockScreenResinWidgetInline: View {
     var body: some View {
         switch result {
         case let .success(data):
-            let staminaStaus = data.staminaIntel
+            let staminaStatus = data.staminaIntel
 
-            if staminaStaus.existing >= staminaStaus.max {
+            if staminaStatus.isAccomplished {
                 Image(systemSymbol: .moonStarsFill)
             } else {
                 Image(systemSymbol: .moonFill)
@@ -41,7 +41,7 @@ struct LockScreenResinWidgetInline: View {
             let trailingText = PZWidgets.intervalFormatter.string(
                 from: TimeInterval.sinceNow(to: data.staminaFullTimeOnFinish)
             )!
-            Text(verbatim: "\(staminaStaus.existing)  \(trailingText)")
+            Text(verbatim: "\(staminaStatus.finished)  \(trailingText)")
         // 似乎不能插入自定义的树脂图片，也许以后会开放
 //                Image(staminaMonochromeIconAssetName, bundle: .main)
         case .failure:

@@ -56,8 +56,8 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                         let staminaIntel = data.staminaIntel
                         let timeOnFinish = data.staminaFullTimeOnFinish
                         VStack(spacing: -2) {
-                            if staminaIntel.existing != staminaIntel.max {
-                                Text(verbatim: "\(staminaIntel.existing)")
+                            if staminaIntel.finished != staminaIntel.all {
+                                Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,
@@ -86,7 +86,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                     .minimumScaleFactor(0.1)
                                     .foregroundColor(.secondary)
                             } else {
-                                Text(verbatim: "\(staminaIntel.existing)")
+                                Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,
@@ -118,8 +118,8 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                         let staminaIntel = data.staminaIntel
                         let timeOnFinish = data.staminaFullTimeOnFinish
                         VStack(spacing: -2) {
-                            if staminaIntel.existing != staminaIntel.max {
-                                Text(verbatim: "\(staminaIntel.existing)")
+                            if staminaIntel.finished != staminaIntel.all {
+                                Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,
@@ -144,7 +144,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                     ))
                                     .minimumScaleFactor(0.1)
                             } else {
-                                Text(verbatim: "\(staminaIntel.existing)")
+                                Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,

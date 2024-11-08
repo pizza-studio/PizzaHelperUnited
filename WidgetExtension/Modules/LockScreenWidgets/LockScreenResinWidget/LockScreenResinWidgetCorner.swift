@@ -34,10 +34,10 @@ struct LockScreenResinWidgetCorner: View {
         case let .success(data):
             let staminaIntel = data.staminaIntel
             let timeOnFinish = data.staminaFullTimeOnFinish
-            if staminaIntel.existing >= staminaIntel.max {
+            if staminaIntel.isAccomplished {
                 return "\(data.maxPrimaryStamina), " + "已回满".i18nWidgets
             } else {
-                return "\(staminaIntel.existing), \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: timeOnFinish))!), \(PZWidgets.dateFormatter.string(from: timeOnFinish))"
+                return "\(staminaIntel.finished), \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: timeOnFinish))!), \(PZWidgets.dateFormatter.string(from: timeOnFinish))"
             }
         case .failure:
             return "pzWidgetsKit.stamina.label".i18nWidgets

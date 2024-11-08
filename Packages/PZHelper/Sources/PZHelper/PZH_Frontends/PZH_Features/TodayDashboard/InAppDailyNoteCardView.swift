@@ -206,32 +206,30 @@ private struct DailyNoteCardView4GI: View {
     @ViewBuilder
     func drawDailyTaskAndParametricTransformer() -> some View {
         VStack(alignment: .leading) {
-            let dailyTask = dailyNote.dailyTaskInfo
+            let sitrep = dailyNote.dailyTaskCompletionStatus
             HStack(spacing: 10) {
                 AccountKit.imageAsset("gi_note_dailyTask")
                     .resizable()
                     .scaledToFit()
                     .frame(width: iconFrame, height: iconFrame)
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(dailyTask.finishedTaskCount)")
-                        .font(.title)
-                    Text(verbatim: " / \(dailyTask.totalTaskCount)")
-                        .font(.caption)
+                    Text(verbatim: "\(sitrep.finished)").font(.title)
+                    Text(verbatim: " / \(sitrep.all)").font(.caption)
                     Spacer()
-                    if dailyTask.finishedTaskCount == dailyTask.totalTaskCount {
-                        switch dailyTask.isExtraRewardReceived {
-                        case true:
-                            Text("app.dailynote.card.dailyTask.extraReward.received".i18nPZHelper)
-                                .font(.caption2)
-                                .fontWidth(.compressed)
-                                .multilineTextAlignment(.trailing)
-                        case false:
-                            Text("app.dailynote.card.dailyTask.extraReward.notReceived".i18nPZHelper)
-                                .font(.caption2)
-                                .fontWidth(.compressed)
-                                .multilineTextAlignment(.trailing)
+                    Group {
+                        if sitrep.isAccomplished,
+                           let extraRewardClaimed = dailyNote.claimedRewardsFromKatheryne {
+                            switch extraRewardClaimed {
+                            case true:
+                                Text("app.dailynote.card.dailyTask.extraReward.received".i18nPZHelper)
+                            case false:
+                                Text("app.dailynote.card.dailyTask.extraReward.notReceived".i18nPZHelper)
+                            }
                         }
                     }
+                    .font(.caption2)
+                    .fontWidth(.compressed)
+                    .multilineTextAlignment(.trailing)
                 }
 
                 // Parametric Transformer
@@ -322,7 +320,7 @@ private struct DailyNoteCardView4GI: View {
     @ViewBuilder
     func drawExpeditions() -> some View {
         VStack(alignment: .leading) {
-            let expeditionInfo = dailyNote.expeditions
+            let expeditionIntel = dailyNote.expeditionCompletionStatus
             HStack(spacing: 10) {
                 AccountKit.imageAsset("gi_note_expedition")
                     .resizable()
@@ -330,13 +328,13 @@ private struct DailyNoteCardView4GI: View {
                     .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
                     .frame(width: iconFrame, height: iconFrame)
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(expeditionInfo.ongoingExpeditionCount)")
+                    Text(verbatim: "\(expeditionIntel.finished)")
                         .font(.title)
-                    Text(verbatim: " / \(expeditionInfo.maxExpeditionsCount)")
+                    Text(verbatim: " / \(expeditionIntel.all)")
                         .font(.caption)
                     Spacer()
                     HStack(spacing: 0) {
-                        ForEach(expeditionInfo.expeditions, id: \.iconURL) { expedition in
+                        ForEach(dailyNote.expeditionTasks, id: \.iconURL) { expedition in
                             AsyncImage(url: expedition.iconURL) { image in
                                 GeometryReader { g in
                                     image.resizable().scaleEffect(1.4)
@@ -423,9 +421,8 @@ private struct DailyNoteCardView4HSR: View {
             HStack {
                 Text("app.dailynote.card.daily_training.label".i18nPZHelper).bold()
                 Spacer()
-                let currentScore = dailyNote.dailyTrainingInfo.currentScore
-                let maxScore = dailyNote.dailyTrainingInfo.maxScore
-                Text(verbatim: "\(currentScore)/\(maxScore)")
+                let sitrep = dailyNote.dailyTaskCompletionStatus
+                Text(verbatim: "\(sitrep.finished)/\(sitrep.all)")
             }
             HStack {
                 Text("app.dailynote.card.simulated_universe.label".i18nPZHelper).bold()
@@ -444,9 +441,8 @@ private struct DailyNoteCardView4HSR: View {
             HStack {
                 Text("app.dailynote.card.dispatch.label".i18nPZHelper).bold()
                 Spacer()
-                let onGoingAssignmentNumber = dailyNote.assignmentInfo.onGoingAssignmentNumber
-                let totalAssignmentNumber = dailyNote.assignmentInfo.totalAssignmentNumber
-                Text(verbatim: "\(onGoingAssignmentNumber)/\(totalAssignmentNumber)")
+                let completionIntel = dailyNote.expeditionCompletionStatus
+                Text(verbatim: "\(completionIntel.finished)/\(completionIntel.all)")
             }
             VStack(spacing: 15) {
                 StaggeredGrid(
@@ -554,7 +550,8 @@ private struct DailyNoteCardView4ZZZ: View {
         HStack {
             Text("app.dailynote.card.zzzVitality.label".i18nPZHelper).bold()
             Spacer()
-            Text(verbatim: "\(dailyNote.vitality.current)/\(dailyNote.vitality.max)")
+            let sitrep = dailyNote.dailyTaskCompletionStatus
+            Text(verbatim: "\(sitrep.finished)/\(sitrep.all)")
         }
         HStack {
             Text("app.dailynote.card.zzzVHSStoreInOperationState.label".i18nPZHelper).bold()

@@ -22,39 +22,24 @@ struct LargeWidgetView: View {
         VStack {
             Spacer()
             HStack {
-                Spacer()
+                Spacer() // Leading Spacer.
                 VStack(alignment: .leading) {
                     mainInfo()
                     Spacer(minLength: 18)
                     DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
                 }
-
-                Spacer(minLength: 30)
-                switch dailyNote {
-                case let dailyNote as any Note4GI:
-                    VStack(alignment: .leading) {
-                        ExpeditionsView(
-                            expeditions: dailyNote.expeditions.expeditions
-                        )
-                        if viewConfig.showMaterialsInLargeSizeWidget {
-                            Spacer(minLength: 15)
-                            MaterialView()
-                        }
+                Spacer(minLength: 30) // Middle Vertical Spacer.
+                VStack(alignment: .leading) {
+                    ExpeditionsView(
+                        expeditions: dailyNote.expeditionTasks
+                    )
+                    Spacer(minLength: 15)
+                    if dailyNote.game == .genshinImpact, viewConfig.showMaterialsInLargeSizeWidget {
+                        MaterialView()
                     }
-                    .containerRelativeFrame(.horizontal) { length, _ in length / 8 * 3 }
-                case let dailyNote as Note4HSR:
-                    VStack(alignment: .leading) {
-                        ExpeditionsView(
-                            expeditions: dailyNote.assignmentInfo.assignments
-                        )
-                        Spacer()
-                    }
-                    .containerRelativeFrame(.horizontal) { length, _ in length / 8 * 3 }
-                case _ as Note4ZZZ:
-                    EmptyView()
-                default: EmptyView()
                 }
-                Spacer()
+                .containerRelativeFrame(.horizontal) { length, _ in length / 8 * 3 }
+                Spacer() // Trailing Spacer.
             }
             Spacer()
         }

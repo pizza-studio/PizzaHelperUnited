@@ -15,7 +15,7 @@ public struct WidgetNote4GI: Note4GI {
     }
 
     public struct ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI, Sendable {
-        public struct Expedition: PZAccountKit.Expedition, Sendable {
+        public struct Expedition: PZAccountKit.ExpeditionTask, Sendable {
             public static let game: Pizza.SupportedGame = .genshinImpact
 
             public let isFinished: Bool
@@ -40,7 +40,7 @@ public struct WidgetNote4GI: Note4GI {
     }
 
     public let dailyTaskInfo: DailyTaskInfo4GI
-    public let expeditions: ExpeditionInfo4GI
+    public let expeditionInfo: ExpeditionInfo4GI
     public let homeCoinInfo: HomeCoinInfo4GI
     public let resinInfo: ResinInfo4GI
 }

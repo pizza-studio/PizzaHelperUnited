@@ -27,7 +27,7 @@ struct AccountOnlyEntry: TimelineEntry {
             }
             let stamina = data.staminaIntel
             return .init(
-                score: 10 * Float(stamina.existing) / Float(stamina.max)
+                score: 10 * Float(stamina.finished) / Float(stamina.all)
             )
         case .failure:
             return .init(score: 0)
