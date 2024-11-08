@@ -8,10 +8,16 @@ import PZBaseKit
 extension PZProfileSendable {
     public func getDailyNote() async throws -> DailyNoteProtocol {
         await HoYo.waitFor450ms()
-        return switch game {
-        case .genshinImpact: try await HoYo.note4GI(profile: self)
-        case .starRail: try await HoYo.note4HSR(profile: self)
-        case .zenlessZone: try await HoYo.note4ZZZ(profile: self)
+        do {
+            let result = switch game {
+            case .genshinImpact: try await HoYo.note4GI(profile: self)
+            case .starRail: try await HoYo.note4HSR(profile: self)
+            case .zenlessZone: try await HoYo.note4ZZZ(profile: self)
+            }
+            PZNotificationCenter.scheduleNotification(for: self, dailyNote: result)
+            return result
+        } catch {
+            throw error
         }
     }
 }
