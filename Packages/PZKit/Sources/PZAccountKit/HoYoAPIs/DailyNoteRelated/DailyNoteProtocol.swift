@@ -99,7 +99,7 @@ extension DailyNoteProtocol {
 
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: Expedition
-    public var hasExpeditions: Bool { expeditionTasks.isEmpty }
+    public var hasExpeditions: Bool { !expeditionTasks.isEmpty }
 
     /// DailyNoteProtocol: Expedition
     public var expeditionTasks: [ExpeditionTask] {
