@@ -169,30 +169,30 @@
         }
       }
     },
-    "watch.dailyNote.card.weeklyBoss" : {
+    "watch.dailyNote.card.weeklyBosses" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[GI] Weekly Bosses"
+            "value" : "[GI] Trounce Blossom"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "歴戦余韻 (原神)"
+            "value" : "征討の花 (原神)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "历战余响 (原神)"
+            "value" : "征讨之花 (原神)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "歷戰餘響 (原神)"
+            "value" : "征討之花 (原神)"
           }
         }
       }
