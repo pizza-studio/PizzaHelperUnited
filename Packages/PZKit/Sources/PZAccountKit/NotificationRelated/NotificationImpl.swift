@@ -11,8 +11,10 @@ import PZBaseKit
 
 extension PZNotificationCenter {
     public static func scheduleNotification(for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol) {
+        #if !os(watchOS)
         NotificationSputnik(profile: profile, dailyNote: dailyNote)
             .send()
+        #endif
     }
 
     public static func bleachNotificationsIfDisabled(for profile: PZProfileSendable) {
