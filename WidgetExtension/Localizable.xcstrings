@@ -616,7 +616,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "历战馀响树脂折扣 (原神)"
+            "value" : "历战余响树脂折扣 (原神)"
           }
         },
         "zh-Hant" : {
@@ -1080,7 +1080,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 顯示參量質變儀的狀態"
+            "value" : "[原神] 顯示參數質變儀的狀態"
           }
         }
       }
@@ -1102,7 +1102,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 显示历战馀响树脂折扣"
+            "value" : "[原神] 显示历战余响树脂折扣"
           }
         },
         "zh-Hant" : {
