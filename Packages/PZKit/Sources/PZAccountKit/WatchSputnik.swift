@@ -6,6 +6,7 @@
 import CoreData
 @preconcurrency import Defaults
 import Foundation
+import PZBaseKit
 import SwiftData
 import WatchConnectivity
 
@@ -120,6 +121,7 @@ extension AppleWatchSputnik: WCSessionDelegate {
                     let matched = accountMapReceived[oldProfile.uidWithGame]
                     guard let matched else {
                         // 删除已经不存在的 Profile。
+                        PZNotificationCenter.deleteDailyNoteNotification(for: oldProfile.asSendable)
                         context.delete(oldProfile)
                         return
                     }
@@ -127,9 +129,11 @@ extension AppleWatchSputnik: WCSessionDelegate {
                         let uuidBackup = oldProfile.uuid
                         oldProfile.inherit(from: matched.asMO)
                         oldProfile.uuid = uuidBackup
+                        PZNotificationCenter.bleachNotificationsIfDisabled(for: oldProfile.asSendable)
                         uidHandled.insert(oldProfile.uidWithGame)
                     } else {
                         // 删除已经处理过的重复的 Profile。
+                        PZNotificationCenter.deleteDailyNoteNotification(for: oldProfile.asSendable)
                         context.delete(oldProfile)
                         return
                     }
@@ -137,7 +141,10 @@ extension AppleWatchSputnik: WCSessionDelegate {
                 // 筛选掉已经处理过的传入的 profile，然后就只剩下需要全新插入的 profile。
                 uidHandled.forEach { accountMapReceived.removeValue(forKey: $0) }
             }
-            accountMapReceived.values.forEach { context.insert($0.asMO) }
+            accountMapReceived.values.forEach {
+                context.insert($0.asMO)
+                PZNotificationCenter.bleachNotificationsIfDisabled(for: $0)
+            }
             // 處理結束。
             try context.save()
             Defaults[.pzProfiles].removeAll()

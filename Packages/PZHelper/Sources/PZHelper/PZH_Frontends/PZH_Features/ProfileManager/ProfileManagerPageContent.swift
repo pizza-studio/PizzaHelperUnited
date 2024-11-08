@@ -244,6 +244,7 @@ struct ProfileManagerPageContent: View {
             }
             Button(role: .destructive) {
                 let uuidToDelete = profile.uuid
+                PZNotificationCenter.deleteDailyNoteNotification(for: profile.asSendable)
                 modelContext.delete(profile)
                 try? modelContext.save()
                 Defaults[.pzProfiles].removeValue(forKey: uuidToDelete.uuidString)
@@ -273,6 +274,7 @@ struct ProfileManagerPageContent: View {
         withAnimation {
             do {
                 let uuid = profile.uuid
+                PZNotificationCenter.deleteDailyNoteNotification(for: profile.asSendable)
                 try modelContext.delete(
                     model: PZProfileMO.self,
                     where: #Predicate { obj in
@@ -282,6 +284,7 @@ struct ProfileManagerPageContent: View {
                 )
                 modelContext.insert(profile)
                 try modelContext.save()
+                PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                 Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
                 if !inBatchQueue {
                     UserDefaults.profileSuite.synchronize()
@@ -358,6 +361,7 @@ struct ProfileManagerPageContent: View {
     private func bleachInvalidProfiles() {
         profiles.filter(\.isInvalid).forEach { profile in
             let uuidToRemove = profile.uuid
+            PZNotificationCenter.deleteDailyNoteNotification(for: profile.asSendable)
             modelContext.delete(profile)
             try? modelContext.save()
             Defaults[.pzProfiles].removeValue(forKey: uuidToRemove.uuidString)

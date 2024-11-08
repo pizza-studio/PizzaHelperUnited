@@ -33,6 +33,7 @@ extension ProfileManagerPageContent {
                                 if modelContext.hasChanges {
                                     do {
                                         try modelContext.save()
+                                        PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                                         Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
                                         UserDefaults.profileSuite.synchronize()
                                         isShown.toggle()
