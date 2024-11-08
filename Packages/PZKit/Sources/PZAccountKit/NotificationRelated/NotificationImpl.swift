@@ -256,6 +256,10 @@ extension NotificationSputnik {
     @MainActor
     private func scheduleStaminaFullNotification() async throws {
         let timeOnFinish = dailyNote.staminaFullTimeOnFinish
+        guard timeOnFinish > .now else {
+            await deleteNotification(.staminaFull)
+            return
+        }
         let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date.now.timeIntervalSince1970
         let content = UNMutableNotificationContent()
         content.title = String(
@@ -267,10 +271,6 @@ extension NotificationSputnik {
             profile.name
         )
         content.badge = 1
-        guard timeOnFinish < .now else {
-            await deleteNotification(.staminaFull)
-            return
-        }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: remainingSecs, repeats: false)
         let id = getID(for: .staminaFull)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
