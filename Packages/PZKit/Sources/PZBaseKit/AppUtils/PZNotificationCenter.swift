@@ -5,7 +5,7 @@
 @preconcurrency import UserNotifications
 
 public enum PZNotificationCenter {
-    public static let center = UNUserNotificationCenter.current()
+    @MainActor public static let center = UNUserNotificationCenter.current()
 
     public static func printAllNotifications() async {
         await center.pendingNotificationRequests().forEach { request in
