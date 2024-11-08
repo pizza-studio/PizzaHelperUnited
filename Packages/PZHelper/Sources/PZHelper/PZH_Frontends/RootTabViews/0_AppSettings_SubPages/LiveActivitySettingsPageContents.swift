@@ -77,6 +77,9 @@ struct LiveActivitySettingsPageContents: View {
                         .font(.caption)
                 }
                 .frame(maxWidth: .infinity)
+                .alignmentGuide(.listRowSeparatorLeading) { d in
+                    d[.leading]
+                }
                 if !allowLiveActivity {
                     Label {
                         Text("settings.resinTimer.realtimeActivity.notEnabled", bundle: .module)
