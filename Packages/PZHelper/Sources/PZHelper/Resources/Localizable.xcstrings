@@ -386,25 +386,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Weekly Boss"
+            "value" : "Trounce Blossom"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "週ボス"
+            "value" : "征討の花"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "周本折扣"
+            "value" : "征讨之花"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "週本折扣"
+            "value" : "征討之花"
           }
         }
       }

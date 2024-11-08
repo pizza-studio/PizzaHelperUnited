@@ -604,25 +604,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Weekly Bosses Display"
+            "value" : "Trounce Blossom Display"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "歴戦余韻の樹脂値引き (原神)"
+            "value" : "征討の花の樹脂値引き (原神)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "历战余响树脂折扣 (原神)"
+            "value" : "征讨之花树脂折扣 (原神)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "歷戰餘響樹脂折扣 (原神)"
+            "value" : "征討之花樹脂折扣 (原神)"
           }
         }
       }
@@ -1090,25 +1090,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[GI] Show weekly bosses"
+            "value" : "[GI] Show trounce blossom resin discounts"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 歴戦余韻の樹脂値引きを表示する"
+            "value" : "[原神] 征討の花の樹脂値引きを表示する"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 显示历战余响树脂折扣"
+            "value" : "[原神] 显示征讨之花树脂折扣"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 顯示歷戰餘響樹脂折扣"
+            "value" : "[原神] 顯示征討之花樹脂折扣"
           }
         }
       }
@@ -1202,25 +1202,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Weekly Bosses Display"
+            "value" : "Trounce Blossom Display"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 歴戦余韻の樹脂値引きを表示する"
+            "value" : "[原神] 征討の花の樹脂値引きを表示する"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 顯示歷戰餘響樹脂折扣"
+            "value" : "[原神] 显示征讨之花树脂折扣"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[原神] 顯示歷戰餘響樹脂折扣"
+            "value" : "[原神] 顯示征討之花樹脂折扣"
           }
         }
       }
