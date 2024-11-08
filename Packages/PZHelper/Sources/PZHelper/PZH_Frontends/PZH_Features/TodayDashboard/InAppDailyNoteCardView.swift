@@ -172,7 +172,7 @@ private struct DailyNoteCardView4GI: View {
                             .fontWidth(.compressed)
                     }
                 }
-                // Weekly Bosses
+                // Trounce Blossom (Weekly Bosses)
                 if let dailyNote = dailyNote as? GeneralNote4GI {
                     HStack(spacing: 4) {
                         AccountKit.imageAsset("gi_note_weeklyBosses")
