@@ -110,7 +110,7 @@ extension Defaults.Keys {
 
     /// Stamina, Additional Threshold
     public static let staminaAdditionalNotificationThresholds = Key<[Int]>(
-        "notificationSettings4StaminaAdditionalThresholds", default: [150], suite: .baseSuite
+        "notificationSettings4StaminaAdditionalThresholds", default: [190, 230], suite: .baseSuite
     )
 
     /// Expedition, Toggle
