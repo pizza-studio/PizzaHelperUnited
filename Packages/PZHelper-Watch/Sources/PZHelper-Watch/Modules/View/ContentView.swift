@@ -132,7 +132,7 @@ private struct DetailNavigator: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 25, height: 25)
-                                Text(verbatim: "\(dailyNote.staminaIntel.existing)")
+                                Text(verbatim: "\(dailyNote.staminaIntel.finished)")
                             }
                         }
                         Spacer()

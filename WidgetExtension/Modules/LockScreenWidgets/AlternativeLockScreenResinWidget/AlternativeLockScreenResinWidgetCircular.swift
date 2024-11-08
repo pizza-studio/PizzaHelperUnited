@@ -51,7 +51,7 @@ struct AlternativeLockScreenResinWidgetCircular: View {
             // ------------
             switch result {
             case let .success(data):
-                Text(verbatim: "\(data.staminaIntel.existing)")
+                Text(verbatim: "\(data.staminaIntel.finished)")
                     .font(.system(.body, design: .rounded).weight(.medium))
                     .minimumScaleFactor(0.1)
             case .failure:

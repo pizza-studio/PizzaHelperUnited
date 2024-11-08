@@ -55,7 +55,7 @@ struct LockScreenResinTimerWidgetCircular: View {
                         let staminaIntel = data.staminaIntel
                         let timeOnFinish = data.staminaFullTimeOnFinish
                         VStack(spacing: 1) {
-                            if staminaIntel.existing != staminaIntel.max {
+                            if staminaIntel.finished != staminaIntel.all {
                                 Text(
                                     Date(
                                         timeIntervalSinceNow: TimeInterval
@@ -68,7 +68,7 @@ struct LockScreenResinTimerWidgetCircular: View {
                                 .minimumScaleFactor(0.1)
                                 .widgetAccentable()
                                 .frame(width: 50)
-                                Text(verbatim: "\(staminaIntel.existing)")
+                                Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         .body,
                                         design: .rounded,
@@ -78,7 +78,7 @@ struct LockScreenResinTimerWidgetCircular: View {
                                         Color("textColor.originResin", bundle: .main)
                                     )
                             } else {
-                                Text(verbatim: "\(staminaIntel.existing)")
+                                Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,
@@ -111,7 +111,7 @@ struct LockScreenResinTimerWidgetCircular: View {
                         let staminaIntel = data.staminaIntel
                         let timeOnFinish = data.staminaFullTimeOnFinish
                         VStack(spacing: 1) {
-                            if staminaIntel.existing != staminaIntel.max {
+                            if staminaIntel.finished != staminaIntel.all {
                                 Text(
                                     Date(
                                         timeIntervalSinceNow: TimeInterval
@@ -124,14 +124,14 @@ struct LockScreenResinTimerWidgetCircular: View {
                                 .minimumScaleFactor(0.1)
                                 .widgetAccentable()
                                 .frame(width: 50)
-                                Text(verbatim: "\(staminaIntel.existing)")
+                                Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         .body,
                                         design: .rounded,
                                         weight: .medium
                                     ))
                             } else {
-                                Text(verbatim: "\(staminaIntel.existing)")
+                                Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,

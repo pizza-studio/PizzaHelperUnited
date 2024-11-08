@@ -85,25 +85,16 @@ public struct ResinRecoveryAttributes: Sendable {
         ) {
             self.background = background
             let staminaIntel = dailyNote.staminaIntel
-            self.maxResin = staminaIntel.max
-            self.resinCountWhenUpdated = staminaIntel.existing
+            self.maxResin = staminaIntel.all
+            self.resinCountWhenUpdated = staminaIntel.finished
             self.resinRecoveryTime = dailyNote.staminaFullTimeOnFinish
             self.game = dailyNote.game
-            switch dailyNote {
-            case _ as WidgetNote4GI:
-                self.expeditionAllCompleteTime = nil
-                self.showExpedition = showExpedition
-            case let data as GeneralNote4GI:
-                self.expeditionAllCompleteTime = data.expeditions.expeditions.map(\.finishTime).max() ?? .now
-                self.showExpedition = showExpedition
-            case let data as Note4HSR:
-                self.expeditionAllCompleteTime = data.assignmentInfo.assignments.map(\.finishedTime).max() ?? .now
-                self.showExpedition = showExpedition
-            case _ as Note4ZZZ:
-                self.showExpedition = false
-                self.expeditionAllCompleteTime = nil
-            default:
-                self.showExpedition = false
+            // Expeditions.
+            self.showExpedition = !(dailyNote is Note4ZZZ) && showExpedition
+            if showExpedition {
+                let maxTime = dailyNote.expeditionTotalETA
+                self.expeditionAllCompleteTime = maxTime ?? .now
+            } else {
                 self.expeditionAllCompleteTime = nil
             }
         }

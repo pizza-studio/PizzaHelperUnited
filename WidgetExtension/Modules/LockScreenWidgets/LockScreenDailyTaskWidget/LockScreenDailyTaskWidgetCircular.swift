@@ -29,14 +29,11 @@ struct LockScreenDailyTaskWidgetCircular: View {
                 }
             switch result {
             case let .success(data):
-                switch data {
-                case let data as any Note4GI:
-                    Text(verbatim: "\(data.dailyTaskInfo.finishedTaskCount) / \(data.dailyTaskInfo.totalTaskCount)")
+                if data.hasDailyTaskIntel {
+                    let sitrep = data.dailyTaskCompletionStatus
+                    Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
                         .font(.system(.body, design: .rounded).weight(.medium))
-                case let data as WidgetNote4HSR:
-                    Text(verbatim: "\(data.dailyTrainingInfo.currentScore) / \(data.dailyTrainingInfo.maxScore)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                default:
+                } else {
                     Text(verbatim: "WRONG GAME").fixedSize().fontWidth(.compressed)
                         .minimumScaleFactor(0.2)
                 }

@@ -8,7 +8,7 @@ extension WidgetNote4GI: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         self.dailyTaskInfo = try container.decode(WidgetNote4GI.DailyTaskInfo4GI.self)
-        self.expeditions = try container.decode(WidgetNote4GI.ExpeditionInfo4GI.self)
+        self.expeditionInfo = try container.decode(WidgetNote4GI.ExpeditionInfo4GI.self)
         self.homeCoinInfo = try container.decode(WidgetNote4GI.HomeCoinInfo4GI.self)
         self.resinInfo = try container.decode(WidgetNote4GI.ResinInfo4GI.self)
     }

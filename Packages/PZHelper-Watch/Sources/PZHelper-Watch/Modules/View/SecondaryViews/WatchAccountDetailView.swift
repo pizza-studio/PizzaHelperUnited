@@ -21,23 +21,33 @@ struct WatchAccountDetailView: View {
                     WatchResinDetailView(dailyNote: data)
                     Divider()
                     VStack(alignment: .leading, spacing: 5) {
-                        switch data {
-                        case let data as any Note4GI:
+                        if data.hasDailyTaskIntel {
+                            let sitrep = data.dailyTaskCompletionStatus
+                            let titleKey: LocalizedStringKey = switch data.game {
+                            case .genshinImpact: "watch.dailyNote.card.dailyTask.label"
+                            case .starRail: "watch.dailyNote.card.dailyTask.label"
+                            case .zenlessZone: "watch.dailyNote.card.vitality.label"
+                            }
                             WatchAccountDetailItemView(
-                                title: "watch.dailyNote.card.dailyTask.label",
-                                value: "\(data.dailyTaskInfo.finishedTaskCount) / \(data.dailyTaskInfo.totalTaskCount)",
+                                title: titleKey,
+                                value: "\(sitrep.finished) / \(sitrep.all)",
                                 icon: AccountKit.imageAsset("gi_note_dailyTask")
                             )
                             Divider()
+                        }
+
+                        switch data {
+                        case let data as any Note4GI:
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.homeCoin.label",
                                 value: "\(data.homeCoinInfo.currentHomeCoin)",
                                 icon: AccountKit.imageAsset("gi_note_teapot_coin")
                             )
                             Divider()
+                            let expeditionIntel = data.expeditionCompletionStatus
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.expedition.label",
-                                value: "\(data.expeditions.ongoingExpeditionCount) / \(data.expeditions.maxExpeditionsCount)",
+                                value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
                                 icon: AccountKit.imageAsset("gi_note_expedition")
                             )
                             if let data = data as? GeneralNote4GI {
@@ -61,29 +71,20 @@ struct WatchAccountDetailView: View {
                         case let data as Note4HSR:
                             if let data = data as? WidgetNote4HSR {
                                 WatchAccountDetailItemView(
-                                    title: "watch.dailyNote.card.dailyTask.label",
-                                    value: "\(data.dailyTrainingInfo.currentScore) / \(data.dailyTrainingInfo.maxScore)",
-                                    icon: AccountKit.imageAsset("gi_note_dailyTask")
-                                )
-                                Divider()
-                                WatchAccountDetailItemView(
                                     title: "watch.dailyNote.card.simulatedUniverse.label",
-                                    value: "\(data.dailyTrainingInfo.currentScore) / \(data.dailyTrainingInfo.maxScore)",
+                                    value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
                                     icon: AccountKit.imageAsset("hsr_note_simulatedUniverse")
                                 )
                                 Divider()
                             }
+                            let expeditionIntel = data.expeditionCompletionStatus
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.expedition.label",
-                                value: "\(data.assignmentInfo.onGoingAssignmentNumber) / \(data.assignmentInfo.totalAssignmentNumber)",
+                                value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
                                 icon: AccountKit.imageAsset("gi_note_expedition")
                             )
-                        case let data as Note4ZZZ:
-                            WatchAccountDetailItemView(
-                                title: "watch.dailyNote.card.vitality.label",
-                                value: "\(data.vitality.current) / \(data.vitality.max)",
-                                icon: AccountKit.imageAsset("gi_note_dailyTask")
-                            )
+                        case _ as Note4ZZZ:
+                            EmptyView()
                         // TODO: 絕區零的其他內容擴充。
                         default: EmptyView()
                         }
@@ -96,37 +97,22 @@ struct WatchAccountDetailView: View {
 
     @ViewBuilder var expeditionsList: some View {
         switch data {
-        case let data as any Note4GI:
-            Divider()
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(
-                    data.expeditions.expeditions,
-                    id: \.iconURL
-                ) { expedition in
-                    WatchEachExpeditionView(
-                        expedition: expedition,
-                        useAsyncImage: true
-                    )
-                    .frame(maxHeight: 40)
-                }
-            }
-        case let data as Note4HSR:
-            Divider()
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(
-                    data.assignmentInfo.assignments,
-                    id: \.iconURL
-                ) { expedition in
-                    WatchEachExpeditionView(
-                        expedition: expedition,
-                        useAsyncImage: true
-                    )
-                    .frame(maxHeight: 40)
-                }
-            }
         case _ as Note4ZZZ:
             EmptyView()
-        default: EmptyView()
+        default:
+            Divider()
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(
+                    data.expeditionTasks,
+                    id: \.iconURL
+                ) { expedition in
+                    WatchEachExpeditionView(
+                        expedition: expedition,
+                        useAsyncImage: true
+                    )
+                    .frame(maxHeight: 40)
+                }
+            }
         }
     }
 }
@@ -134,7 +120,7 @@ struct WatchAccountDetailView: View {
 // MARK: - WatchEachExpeditionView
 
 private struct WatchEachExpeditionView: View {
-    let expedition: any Expedition
+    let expedition: any ExpeditionTask
     var useAsyncImage: Bool = false
     var animationDelay: Double = 0
 
@@ -151,17 +137,15 @@ private struct WatchEachExpeditionView: View {
                 ProgressView()
             })
             .frame(width: 25, height: 25)
-            if let expedition = expedition as? GeneralNote4GI.ExpeditionInfo4GI.Expedition {
-                VStack(alignment: .leading) {
-                    Text(intervalFormatter.string(from: TimeInterval.sinceNow(to: expedition.finishTime))!)
+            VStack(alignment: .leading) {
+                if let finishTime = expedition.timeOnFinish {
+                    Text(intervalFormatter.string(from: TimeInterval.sinceNow(to: finishTime))!)
                         .font(.footnote)
-                    percentageBar(TimeInterval.sinceNow(to: expedition.finishTime) / Double(20 * 60 * 60))
-                }
-            } else {
-                VStack(alignment: .leading) {
+                    percentageBar(TimeInterval.sinceNow(to: finishTime) / Double(20 * 60 * 60))
+                } else {
                     Text(expedition.isFinished ? "watch.finished" : "watch.pending", bundle: .module)
                         .font(.footnote)
-                    percentageBar(expedition.isFinished ? 0 : 1)
+                    percentageBar(expedition.isFinished ? 0.5 : 1)
                 }
             }
         }
