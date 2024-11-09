@@ -25,13 +25,11 @@ struct LiveActivitySettingNavigator: View {
     // MARK: Internal
 
     var body: some View {
-        Section {
-            NavigationLink(value: AppSettingsTabPage.Nav.liveActivitySettings) {
-                Label {
-                    Text("settings.resinTimer.settings.navTitle", bundle: .module)
-                } icon: {
-                    Image(systemSymbol: .timer)
-                }
+        NavigationLink(value: AppSettingsTabPage.Nav.liveActivitySettings) {
+            Label {
+                Text("settings.resinTimer.settings.navTitle", bundle: .module)
+            } icon: {
+                Image(systemSymbol: .timer)
             }
         }
     }
@@ -43,9 +41,9 @@ struct LiveActivitySettingNavigator: View {
     @State private var isAlertShow: Bool = false
 }
 
-// MARK: - LiveActivitySettingsPageContents
+// MARK: - LiveActivitySettingsPageContent
 
-struct LiveActivitySettingsPageContents: View {
+struct LiveActivitySettingsPageContent: View {
     // MARK: Internal
 
     @Environment(\.scenePhase) var scenePhase

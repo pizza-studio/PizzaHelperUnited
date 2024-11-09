@@ -129,7 +129,7 @@ struct AppSettingsTabPage: View {
                     .navBarTitleDisplayMode(.inline)
             case .cloudAccountSettings: CloudAccountSettingsPageContent()
             case .uiSettings: UISettingsPageContent()
-            case .liveActivitySettings: LiveActivitySettingsPageContents()
+            case .liveActivitySettings: LiveActivitySettingsPageContent()
             case .privacySettings: PrivacySettingsPageContent()
             case .otherSettings: OtherSettingsPageContent()
             case .none: UISettingsPageContent()
