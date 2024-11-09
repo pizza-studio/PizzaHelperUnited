@@ -187,10 +187,12 @@ extension NotificationSputnik {
     func refreshPendingNotifications() {
         Task { @MainActor in
             do {
+                // 如果没有权限的话，会先试图触发请求权限。
+                let notificationAllowedByOS = (try? await PZNotificationCenter.requestAuthorization()) ?? false
                 // 先清空既有的通知，包括可能已经过期的排定通知。
                 PZNotificationCenter.deleteDailyNoteNotification(for: profile)
                 // 然后检查此账号是否启用了通知，否则直接中断。
-                guard profile.allowNotification else { return }
+                guard notificationAllowedByOS, profile.allowNotification else { return }
                 // STAMINA
                 if Defaults[.allowStaminaNotification] {
                     try await scheduleStaminaFullNotification()
