@@ -76,87 +76,6 @@ public enum DailyNoteNotificationType: String {
     case hsrSimulatedUniverse
 }
 
-// MARK: - DailyNoteNotificationSetting
-
-public enum DailyNoteNotificationSetting {
-    public enum ExpeditionNotificationSetting: String, _DefaultsSerializable, CustomStringConvertible, CaseIterable {
-        case onlySummary
-        case forEachExpedition
-
-        // MARK: Public
-
-        public var description: String {
-            String(localized: descriptionKey, bundle: .module)
-        }
-
-        public var descriptionKey: String.LocalizationValue {
-            switch self {
-            case .onlySummary:
-                return "notification.expedition.method.summary"
-            case .forEachExpedition:
-                return "notification.expedition.method.each"
-            }
-        }
-    }
-
-    public enum ManualNotificationSetting: Codable, _DefaultsSerializable {
-        case disallowed
-        case notifyAt(weekday: Int = 0, hour: Int, minute: Int)
-    }
-}
-
-extension Defaults.Keys {
-    /// Stamina, Toggle
-    public static let allowStaminaNotification = Key<Bool>(
-        "notificationSettings4StaminaToggle", default: true, suite: .baseSuite
-    )
-
-    /// Stamina, Additional Threshold
-    public static let staminaAdditionalNotificationThresholds = Key<[Int]>(
-        "notificationSettings4StaminaAdditionalThresholds", default: [190, 230], suite: .baseSuite
-    )
-
-    /// Expedition, Toggle
-    public static let allowExpeditionNotification = Key<Bool>(
-        "notificationSettings4ExpeditionsToggle", default: true, suite: .baseSuite
-    )
-
-    /// Expedition, Notification Method
-    public static let expeditionNotificationSetting = Key<DailyNoteNotificationSetting.ExpeditionNotificationSetting>(
-        "notificationSettings4Expeditions", default: .onlySummary, suite: .baseSuite
-    )
-
-    /// Daily Task, Notification TimeStamp (Daily)
-    public static let dailyTaskNotificationSetting = Key<DailyNoteNotificationSetting.ManualNotificationSetting>(
-        "notificationSettings4DailyTask", default: .notifyAt(hour: 19, minute: 0), suite: .baseSuite
-    )
-
-    /// Katheryne Daily Rewards, Notification TimeStamp (Daily)
-    public static let giKatheryneNotificationSetting = Key<DailyNoteNotificationSetting.ManualNotificationSetting>(
-        "notificationSettings4GIKatheryne", default: .notifyAt(hour: 19, minute: 0), suite: .baseSuite
-    )
-
-    /// Realm Currency (GI), Toggle // 可预知完成时间。
-    public static let allowGIRealmCurrencyNotification = Key<Bool>(
-        "notificationSettings4GIRealmCurrencyToggle", default: true, suite: .baseSuite
-    )
-
-    /// Parametric Transformer (GI), Toggle // 可预知完成时间。
-    public static let allowGITransformerNotification = Key<Bool>(
-        "notificationSettings4GITransformerToggle", default: true, suite: .baseSuite
-    )
-
-    /// Trounce Blossom (Weekly Bosses) (GI), Notification TimeStamp (Weekly)
-    public static let giTrounceBlossomNotificationSetting = Key<DailyNoteNotificationSetting.ManualNotificationSetting>(
-        "notificationSettings4GITrounceBlossom", default: .notifyAt(weekday: 7, hour: 19, minute: 0), suite: .baseSuite
-    )
-
-    /// Simulated Universe, Notification TimeStamp (Weekly)
-    public static let hsrSimulUnivNotificationSetting = Key<DailyNoteNotificationSetting.ManualNotificationSetting>(
-        "notificationSettings4HSRSimulUniv", default: .notifyAt(weekday: 7, hour: 19, minute: 0), suite: .baseSuite
-    )
-}
-
 // MARK: - NotificationSputnik
 
 private struct NotificationSputnik {
@@ -171,6 +90,7 @@ private struct NotificationSputnik {
 
     fileprivate let profile: PZProfileSendable
     fileprivate let dailyNote: any DailyNoteProtocol
+    fileprivate let options: NotificationOptions = Defaults[.notificationOptions]
 
     fileprivate let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -194,21 +114,21 @@ extension NotificationSputnik {
                 // 然后检查此账号是否启用了通知，否则直接中断。
                 guard notificationAllowedByOS, profile.allowNotification else { return }
                 // STAMINA
-                if Defaults[.allowStaminaNotification] {
+                if options.allowStaminaNotification {
                     try await scheduleStaminaFullNotification()
-                    if case let .notifyAt(_, hour, minute) = Defaults[.giKatheryneNotificationSetting] {
+                    if case let .notifyAt(_, hour, minute) = options.giKatheryneNotificationSetting {
                         try await scheduleGIKatheryneRewardsNotification(hour: hour, minute: minute)
                     }
                     // 去除可能重复的通知阈值。
-                    var thresholds = Defaults[.staminaAdditionalNotificationThresholds]
+                    var thresholds = options.staminaAdditionalNotificationThresholds
                     thresholds = Array(Set(thresholds)).sorted()
                     for number in thresholds {
                         try await scheduleStaminaNotification(to: number)
                     }
                 }
                 // EXPEDITION
-                if Defaults[.allowExpeditionNotification], dailyNote.hasExpeditions {
-                    switch Defaults[.expeditionNotificationSetting] {
+                if options.allowExpeditionNotification, dailyNote.hasExpeditions {
+                    switch options.expeditionNotificationSetting {
                     case .onlySummary:
                         try await scheduleExpeditionSummaryNotification()
                     case .forEachExpedition:
@@ -219,19 +139,19 @@ extension NotificationSputnik {
                     }
                 }
                 // DAILY TASK
-                if case let .notifyAt(_, hour, minute) = Defaults[.dailyTaskNotificationSetting] {
+                if case let .notifyAt(_, hour, minute) = options.dailyTaskNotificationSetting {
                     try await scheduleDailyTaskNotification(hour: hour, minute: minute)
                 }
                 // REALM CURRENCY (GI)
-                if Defaults[.allowGIRealmCurrencyNotification] {
+                if options.allowGIRealmCurrencyNotification {
                     try await scheduleGIRealmCurrencyNotification()
                 }
                 // PARAMETRIC TRANSFORMER (GI)
-                if Defaults[.allowGITransformerNotification] {
+                if options.allowGITransformerNotification {
                     try await scheduleGITransformerNotification()
                 }
                 // TROUNCE BLOSSOM RESIN DISCOUNTS (GI)
-                if case let .notifyAt(weekday, hour, minute) = Defaults[.giTrounceBlossomNotificationSetting] {
+                if case let .notifyAt(weekday, hour, minute) = options.giTrounceBlossomNotificationSetting {
                     try await scheduleGITrounceBlossomNotification(
                         weekday: Swift.max(0, Swift.min(7, weekday)),
                         hour: hour,
@@ -239,7 +159,7 @@ extension NotificationSputnik {
                     )
                 }
                 // SIMULATED UNIVERSE (HSR)
-                if case let .notifyAt(weekday, hour, minute) = Defaults[.hsrSimulUnivNotificationSetting] {
+                if case let .notifyAt(weekday, hour, minute) = options.hsrSimulUnivNotificationSetting {
                     try await scheduleHSRSimulatedUniverseNotification(
                         weekday: Swift.max(0, Swift.min(7, weekday)),
                         hour: hour,
@@ -317,7 +237,7 @@ extension NotificationSputnik {
         try await center.add(request)
     }
 
-    /// 星穹铁道的话，恐仅对米游社帐号有效，因为国际服的星穹铁道的探索派遣没有预计完成时间。
+    /// 星穹铁道的话，恐仅对米游社账号有效，因为国际服的星穹铁道的探索派遣没有预计完成时间。
     @MainActor
     private func scheduleExpeditionSummaryNotification() async throws {
         guard dailyNote.hasExpeditions else { return }
