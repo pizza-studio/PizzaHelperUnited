@@ -29,13 +29,13 @@ extension PZNotificationCenter {
                 withIdentifiers: requests
                     .map(\.identifier)
                     .filter { id in
-                        id.contains(profile.uuid.uuidString)
+                        id.contains(profile.uuid.uuidString) || id.contains(profile.uidWithGame)
                     }
             )
         }
     }
 
-    public static func deleteDailyNoteNotification(for type: DailyNoteNotificationType) async throws {
+    public static func deleteDailyNoteNotification(of type: DailyNoteNotificationType) async throws {
         let requests = await center.pendingNotificationRequests()
         await center.removePendingNotificationRequests(
             withIdentifiers: requests
@@ -52,7 +52,8 @@ extension PZNotificationCenter {
             withIdentifiers: requests
                 .map(\.identifier)
                 .filter { id in
-                    id.starts(with: type.rawValue) && id.contains(profile.uuid.uuidString)
+                    id.starts(with: type.rawValue)
+                        && (id.contains(profile.uuid.uuidString) || id.contains(profile.uidWithGame))
                 }
         )
     }
@@ -245,7 +246,7 @@ extension NotificationSputnik {
     }
 
     private func getID(for type: DailyNoteNotificationType, extraID: String = "") -> String {
-        type.rawValue + profile.uuid.uuidString + extraID
+        type.rawValue + profile.uidWithGame + extraID
     }
 
     private func deleteNotification(_ type: DailyNoteNotificationType) async {
