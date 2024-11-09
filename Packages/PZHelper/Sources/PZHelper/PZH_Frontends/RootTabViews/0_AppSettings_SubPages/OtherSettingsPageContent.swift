@@ -17,9 +17,16 @@ struct OtherSettingsPageContent: View {
         NavigationStack {
             Form {
                 Section {
-                    Button { Defaults.removeAll() } label: {
+                    Button {
+                        let profiles = Defaults[.pzProfiles]
+                        Defaults.removeAll()
+                        Defaults[.pzProfiles] = profiles
+                        UserDefaults.baseSuite.synchronize()
+                    } label: {
                         Text(verbatim: "Clean All User Defaults Key")
                     }
+                }
+                Section {
                     NavigationLink {
                         arrangedNotificationsView
                     } label: {
