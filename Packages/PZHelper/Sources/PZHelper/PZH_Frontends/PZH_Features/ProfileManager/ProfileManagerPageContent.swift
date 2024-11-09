@@ -94,7 +94,7 @@ struct ProfileManagerPageContent: View {
                 .toolbar {
                     #if os(iOS) || targetEnvironment(macCatalyst)
                     ToolbarItem(placement: .confirmationAction) {
-                        Button((isEditMode.isEditing) ? "sys.done".i18nBaseKit : "sys.edit".i18nBaseKit) {
+                        Button(isEditMode.isEditing ? "sys.done".i18nBaseKit : "sys.edit".i18nBaseKit) {
                             withAnimation {
                                 isEditMode = (isEditMode.isEditing) ? .inactive : .active
                             }
