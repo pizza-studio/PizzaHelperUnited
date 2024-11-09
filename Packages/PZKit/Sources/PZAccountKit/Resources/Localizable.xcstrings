@@ -429,62 +429,6 @@
         }
       }
     },
-    "notification.trounceBlossom.body:%@%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ has %2$@ chance(s) left for Trounce Blossom resin consumption discount."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%1$@」は原神での今週の征討の花（※）で使える樹脂値引きはまだ %2$@ 回残っております。// ※「名前を覚えるべき強敵」と「奔狼の領主」を示す。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%1$@」本周还剩%2$@次原神征讨之花树脂折扣次数。这包括「值得铭记的强敌」与「奔狼的领主」。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%1$@」本週還剩%2$@次原神征討之花樹脂折扣次數。這包括「值得銘記的強敵」與「奔狼的領主」。"
-          }
-        }
-      }
-    },
-    "notification.trounceBlossom.title:%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reminder: Genshin Trounce Blossom for %@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%@」の原神征討の花の樹脂値引き"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%@」原神征讨之花树脂折扣提醒"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%@」原神征討之花樹脂折扣提醒"
-          }
-        }
-      }
-    },
     "notification.katheryneRewardsAvailable.body:%@" : {
       "localizations" : {
         "en" : {
@@ -760,7 +704,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%@」玩家體力提醒"
+            "value" : "「%@」的玩家體力已回滿。"
           }
         }
       }
@@ -788,7 +732,63 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%@」的玩家體力已回滿。"
+            "value" : "「%@」玩家體力提醒"
+          }
+        }
+      }
+    },
+    "notification.trounceBlossom.body:%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ has %2$@ chance(s) left for Trounce Blossom resin consumption discount."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%1$@」は原神での今週の征討の花（※）で使える樹脂値引きはまだ %2$@ 回残っております。// ※「名前を覚えるべき強敵」と「奔狼の領主」を示す。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%1$@」本周还剩%2$@次原神征讨之花树脂折扣次数。这包括「值得铭记的强敌」与「奔狼的领主」。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%1$@」本週還剩%2$@次原神征討之花樹脂折扣次數。這包括「值得銘記的強敵」與「奔狼的領主」。"
+          }
+        }
+      }
+    },
+    "notification.trounceBlossom.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Genshin Trounce Blossom for %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」の原神征討の花の樹脂値引き"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」原神征讨之花树脂折扣提醒"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」原神征討之花樹脂折扣提醒"
           }
         }
       }
