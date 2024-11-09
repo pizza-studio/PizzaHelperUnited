@@ -14,7 +14,7 @@ extension PZProfileSendable {
             case .starRail: try await HoYo.note4HSR(profile: self)
             case .zenlessZone: try await HoYo.note4ZZZ(profile: self)
             }
-            PZNotificationCenter.scheduleNotification(for: self, dailyNote: result)
+            PZNotificationCenter.refreshScheduledNotifications(for: self, dailyNote: result)
             return result
         } catch {
             throw error
