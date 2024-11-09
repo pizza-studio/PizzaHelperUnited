@@ -263,7 +263,7 @@ extension NotificationSputnik {
         }
         let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date.now.timeIntervalSince1970
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.stamina.title:%@", bundle: .module),
             profile.name
@@ -287,7 +287,7 @@ extension NotificationSputnik {
         let timeOnFinish = dailyNote.staminaFullTimeOnFinish
         let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date.now.timeIntervalSince1970
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.stamina.title:%@", bundle: .module),
             profile.name
@@ -319,7 +319,7 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.expedition.title:%@", bundle: .module),
             profile.name
@@ -341,7 +341,7 @@ extension NotificationSputnik {
         guard dailyNote.hasExpeditions else { return }
         guard let eta = expedition.timeOnFinish, eta.timeIntervalSinceNow > 0 else { return }
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.expedition.title:%@", bundle: .module),
             profile.name
@@ -368,7 +368,7 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.dailyTask.title:%@", bundle: .module),
             profile.name
@@ -406,7 +406,7 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.katheryneRewardsAvailable.title:%@", bundle: .module),
             profile.name
@@ -432,7 +432,7 @@ extension NotificationSputnik {
         }
         guard let eta = dailyNote.realmCurrencyIntel?.fullTime, eta.timeIntervalSinceNow > 0 else { return }
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.realmCurrency.title:%@", bundle: .module),
             profile.name
@@ -460,7 +460,7 @@ extension NotificationSputnik {
         let eta = intel.recoveryTime
         guard eta.timeIntervalSinceNow > 0 else { return }
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.parametricTransformer.title:%@", bundle: .module),
             profile.name
@@ -489,7 +489,7 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.trounceBlossom.title:%@", bundle: .module),
             profile.name
@@ -522,7 +522,7 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        let gameTag = "[\(profile.game.uidPrefix)] "
+        let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
             format: String(localized: "notification.simulatedUniverse.title:%@", bundle: .module),
             profile.name
