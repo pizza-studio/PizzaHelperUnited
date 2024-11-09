@@ -16,6 +16,11 @@ public enum PZNotificationCenter {
         }
     }
 
+    public static func removeAllPendingNotifications() async {
+        let identifiers = await center.pendingNotificationRequests().map(\.identifier)
+        await center.removePendingNotificationRequests(withIdentifiers: identifiers)
+    }
+
     public static func getAllNotificationsDescriptions() async -> [String] {
         var strings = [String]()
         await center.pendingNotificationRequests().forEach { request in
