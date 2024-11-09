@@ -18,6 +18,7 @@ struct AppSettingsTabPage: View {
         case faq
         case cloudAccountSettings
         case liveActivitySettings
+        case notificationSettings
         case uiSettings
         case privacySettings
         case otherSettings
@@ -50,7 +51,14 @@ struct AppSettingsTabPage: View {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
                 }
 
-                LiveActivitySettingNavigator(selectedView: $nav)
+                Section {
+                    NavigationLink(value: Nav.notificationSettings) {
+                        Label(NotificationSettingsPageContent.navTitle, systemSymbol: .bellBadge)
+                    }
+                    LiveActivitySettingNavigator(selectedView: $nav)
+                } header: {
+                    Text(NotificationSettingsPageContent.navTitleShortened)
+                }
 
                 WatchDataPusherButton()
 
@@ -130,6 +138,7 @@ struct AppSettingsTabPage: View {
             case .cloudAccountSettings: CloudAccountSettingsPageContent()
             case .uiSettings: UISettingsPageContent()
             case .liveActivitySettings: LiveActivitySettingsPageContent()
+            case .notificationSettings: NotificationSettingsPageContent()
             case .privacySettings: PrivacySettingsPageContent()
             case .otherSettings: OtherSettingsPageContent()
             case .none: UISettingsPageContent()
