@@ -10,10 +10,12 @@ import PZBaseKit
 @MainActor private var center: UNUserNotificationCenter { PZNotificationCenter.center }
 
 extension PZNotificationCenter {
-    public static func scheduleNotification(for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol) {
+    public static func refreshScheduledNotifications(
+        for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol
+    ) {
         #if !os(watchOS)
         NotificationSputnik(profile: profile, dailyNote: dailyNote)
-            .send()
+            .refreshPendingNotifications()
         #endif
     }
 
@@ -182,9 +184,12 @@ private struct NotificationSputnik {
 extension NotificationSputnik {
     // MARK: Internal
 
-    func send() {
+    func refreshPendingNotifications() {
         Task { @MainActor in
             do {
+                // 先清空既有的通知，包括可能已经过期的排定通知。
+                PZNotificationCenter.deleteDailyNoteNotification(for: profile)
+                // 然后检查此账号是否启用了通知，否则直接中断。
                 guard profile.allowNotification else { return }
                 // STAMINA
                 if Defaults[.allowStaminaNotification] {
