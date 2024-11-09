@@ -384,6 +384,10 @@ extension NotificationSputnik {
     /// 凯瑟琳每日奖励。
     @MainActor
     private func scheduleGIKatheryneRewardsNotification(hour: Int, minute: Int) async throws {
+        guard profile.game == .genshinImpact else {
+            await deleteNotification(.giRewardsFromKatheryne)
+            return
+        }
         guard dailyNote.hasDailyTaskIntel else { return }
         let sitrep = dailyNote.dailyTaskCompletionStatus
         guard !sitrep.isAccomplished else {
@@ -391,7 +395,7 @@ extension NotificationSputnik {
             return
         }
         // 只有尚未领取时才提醒。
-        guard dailyNote.claimedRewardsFromKatheryne ?? true else {
+        guard dailyNote.claimedRewardsFromKatheryne ?? false else {
             await deleteNotification(.giRewardsFromKatheryne)
             return
         }
@@ -415,6 +419,10 @@ extension NotificationSputnik {
     /// 洞天宝钱。
     @MainActor
     private func scheduleGIRealmCurrencyNotification() async throws {
+        guard profile.game == .genshinImpact else {
+            await deleteNotification(.giRealmCurrency)
+            return
+        }
         guard let eta = dailyNote.realmCurrencyIntel?.fullTime, eta.timeIntervalSinceNow > 0 else { return }
         let content = UNMutableNotificationContent()
         content.title = String(
@@ -435,6 +443,10 @@ extension NotificationSputnik {
     /// 参量质变仪。
     @MainActor
     private func scheduleGITransformerNotification() async throws {
+        guard profile.game == .genshinImpact else {
+            await deleteNotification(.giParametricTransformer)
+            return
+        }
         guard let intel = dailyNote.parametricTransformerIntel else { return }
         guard intel.obtained else { return }
         let eta = intel.recoveryTime
@@ -458,6 +470,10 @@ extension NotificationSputnik {
     /// 原神征讨之花树脂折扣，用光了的话不再提醒。
     @MainActor
     private func scheduleGITrounceBlossomNotification(weekday: Int, hour: Int, minute: Int) async throws {
+        guard profile.game == .genshinImpact else {
+            await deleteNotification(.giTrounceBlossomResinDiscounts)
+            return
+        }
         guard let trounceBlossom = dailyNote.trounceBlossomIntel else { return }
         guard trounceBlossom.remainResinDiscount > 0 else {
             await deleteNotification(.giTrounceBlossomResinDiscounts)
@@ -486,6 +502,10 @@ extension NotificationSputnik {
     /// 模拟宇宙。
     @MainActor
     private func scheduleHSRSimulatedUniverseNotification(weekday: Int, hour: Int, minute: Int) async throws {
+        guard profile.game == .starRail else {
+            await deleteNotification(.hsrSimulatedUniverse)
+            return
+        }
         guard let simulatedUniverse = dailyNote.simulatedUniverseIntel else { return }
         guard simulatedUniverse.currentScore < simulatedUniverse.maxScore else {
             await deleteNotification(.hsrSimulatedUniverse)
