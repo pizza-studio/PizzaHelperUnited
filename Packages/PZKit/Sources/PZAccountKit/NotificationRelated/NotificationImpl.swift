@@ -263,13 +263,14 @@ extension NotificationSputnik {
         }
         let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date.now.timeIntervalSince1970
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.stamina.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.stamina.full.body:%@", bundle: .module),
-            profile.name
+            "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: remainingSecs, repeats: false)
@@ -286,13 +287,14 @@ extension NotificationSputnik {
         let timeOnFinish = dailyNote.staminaFullTimeOnFinish
         let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date.now.timeIntervalSince1970
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.stamina.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.stamina.customize.body:%@%@%@", bundle: .module),
-            profile.name,
+            "\(profile.name) (\(profile.uidWithGame))",
             threshold.description,
             dateFormatter.string(from: timeOnFinish)
         )
@@ -317,13 +319,14 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.expedition.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.expedition.summary.body:%@", bundle: .module),
-            profile.name
+            "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: eta.timeIntervalSinceNow, repeats: false)
@@ -338,13 +341,14 @@ extension NotificationSputnik {
         guard dailyNote.hasExpeditions else { return }
         guard let eta = expedition.timeOnFinish, eta.timeIntervalSinceNow > 0 else { return }
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.expedition.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.expedition.each.body:%@%@", bundle: .module),
-            profile.name,
+            "\(profile.name) (\(profile.uidWithGame))",
             index.description
         )
         content.badge = 1
@@ -364,13 +368,14 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.dailyTask.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.dailyTask.body:%@%@%@", bundle: .module),
-            profile.name,
+            "\(profile.name) (\(profile.uidWithGame))",
             sitrep.finished.description,
             sitrep.all.description
         )
@@ -401,13 +406,14 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.katheryneRewardsAvailable.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.katheryneRewardsAvailable.body:%@", bundle: .module),
-            profile.name
+            "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
         let dateComponents = DateComponents(calendar: .current, hour: hour, minute: minute)
@@ -426,13 +432,14 @@ extension NotificationSputnik {
         }
         guard let eta = dailyNote.realmCurrencyIntel?.fullTime, eta.timeIntervalSinceNow > 0 else { return }
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.realmCurrency.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.realmCurrency.body:%@", bundle: .module),
-            profile.name
+            "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: eta.timeIntervalSinceNow, repeats: false)
@@ -453,13 +460,14 @@ extension NotificationSputnik {
         let eta = intel.recoveryTime
         guard eta.timeIntervalSinceNow > 0 else { return }
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.parametricTransformer.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.parametricTransformer.body:%@", bundle: .module),
-            profile.name
+            "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: eta.timeIntervalSinceNow, repeats: false)
@@ -481,13 +489,14 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.trounceBlossom.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.trounceBlossom.body:%@%@", bundle: .module),
-            profile.name,
+            "\(profile.name) (\(profile.uidWithGame))",
             trounceBlossom.remainResinDiscount.description
         )
         content.badge = 1
@@ -513,13 +522,14 @@ extension NotificationSputnik {
             return
         }
         let content = UNMutableNotificationContent()
-        content.title = String(
+        let gameTag = "[\(profile.game.uidPrefix)] "
+        content.title = gameTag + String(
             format: String(localized: "notification.simulatedUniverse.title:%@", bundle: .module),
             profile.name
         )
         content.body = String(
             format: String(localized: "notification.simulatedUniverse.body:%@%@%@", bundle: .module),
-            profile.name,
+            "\(profile.name) (\(profile.uidWithGame))",
             simulatedUniverse.currentScore.description,
             simulatedUniverse.maxScore.description
         )
