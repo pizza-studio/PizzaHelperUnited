@@ -111,6 +111,15 @@ private struct EventView: View {
             Rectangle()
                 .frame(width: 2, height: 77.5)
                 .offset(x: 1)
+            if events.isEmpty {
+                Button(intent: WidgetRefreshIntent()) {
+                    Image(systemSymbol: .arrowClockwiseCircle)
+                        .font(.title3)
+                        .foregroundColor(Color("textColor3", bundle: .main))
+                        .clipShape(.circle)
+                }
+                .buttonStyle(.plain)
+            }
             VStack(spacing: 7) {
                 ForEach(
                     events
