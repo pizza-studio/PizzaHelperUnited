@@ -10885,7 +10885,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本地账号管理器画面也可修改上述设定。定。"
+            "value" : "本地账号管理器画面也可修改上述设定。"
           }
         },
         "zh-Hant" : {
@@ -10973,6 +10973,7 @@
       }
     },
     "settings.notification.profilesReceivingNotifications.navTitle.shortened" : {
+      "comment" : "This is the short form of `settings.notification.profilesReceivingNotifications.navTitle`. Please do consider its length since iPhone screen width is pretty narrow.",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -11037,13 +11038,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "每个本地账号的开关"
+            "value" : "通知开关"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "每個本機帳號的開關"
+            "value" : "通知開關"
           }
         }
       }
