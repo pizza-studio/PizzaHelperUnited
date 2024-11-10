@@ -14,6 +14,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
     case koni
     case xinzoruo
     case yulijushi
+    case pan93412
     case taotao
     case art34222
     case ngo
@@ -41,6 +42,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .shikisuen: "avatar.shikisuen"
         case .art34222: "avatar.art34222"
         case .yulijushi: "avatar.jushi"
+        case .pan93412: "avatar.Pan93412"
         case .koni: "avatar.koni"
         case .ngo: "avatar.ngo"
         case .qiFrench: "avatar.qi"
@@ -56,6 +58,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .shikisuen: "aboutKit.contributors.name.shikisuen"
         case .art34222: "aboutKit.contributors.name.art34222"
         case .yulijushi: "aboutKit.contributors.name.yulijushi"
+        case .pan93412: "aboutKit.contributors.name.pan93412"
         case .koni: "aboutKit.contributors.name.koni"
         case .ngo: "aboutKit.contributors.name.ngo"
         case .qiFrench: "aboutKit.contributors.name.qi"
@@ -87,7 +90,10 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
             LinkType.twitter(id: "ShikiSuen")
             LinkType.bilibiliSpace(bUID: "911304")
             LinkType.github(userID: "ShikiSuen")
+            LinkType.blueSky(id: "shikisuen")
         case .art34222: nil
+        case .pan93412:
+            LinkType.github(userID: "pan93412")
         case .yulijushi:
             LinkType.qqPersonal(id: "2251435011")
         case .koni:
@@ -130,7 +136,8 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
     public var subtitleAsL10nLanguagesCurrent: String? {
         // 回头把新的翻译者记录在此处即可。
         switch self {
-        case .shikisuen: "zh-Hant, en-US, ja-JP"
+        case .shikisuen: "zh-Hans, zh-Hant, en-US, ja-JP"
+        case .pan93412: "[GPT] fil, fr, de, it, ko-KR, ru, es, vi"
         default: nil
         }
     }

@@ -2939,6 +2939,83 @@
         }
       }
     },
+    "aboutKit.contributors.category.i18n.current.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Hauptsprachen dieser App sind Englisch, Traditionelles Chinesisch, Vereinfachtes Chinesisch und Japanisch. Alle anderen Sprachen sind Sekundärsprachen, da niemand im Entwicklerteam sie verstehen oder verwenden kann. Wir verwenden ChatGPT, um eine erste Übersetzung für diese Sprachen vorzubereiten und freuen uns über Freiwillige, die die Übersetzung verbessern möchten. Es wird viel einfacher, wenn die Teilnehmenden einen Mac mit Xcode 16 (oder einer neueren Version) haben."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The primary languages of this app are English, Traditional Chinese, Simplified Chinese, and Japanese. All other languages are secondary, as no one in the development team can fluently understand or use them. We rely on ChatGPT to create draft translations for these languages, and we warmly welcome volunteers who wish to help improve them. Having a Mac with Xcode 16 (or a later version) installed will make it much easier for contributors to participate."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los idiomas principales de esta aplicación son inglés, chino tradicional, chino simplificado y japonés. Todos los demás idiomas son secundarios, ya que nadie en el equipo de desarrollo puede entenderlos o utilizarlos. Utilizamos ChatGPT para preparar una traducción preliminar para estos idiomas y damos la bienvenida a los voluntarios que quieran mejorar la traducción. Todo será mucho más fácil si los participantes tienen un Mac con Xcode 16 (o una versión más reciente) instalado."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang mga pangunahing wika ng app na ito ay Ingles, Tradisyunal na Tsino, Pinasimpleng Tsino, at Hapon. Ang lahat ng iba pang mga wika ay mga sekundaryang wika dahil walang sinuman sa pangkat ng mga developer ang nakakaintindi o nakakagamit ng mga ito. Ginagamit namin ang ChatGPT upang ihanda ang isang draft na pagsasalin para sa mga wikang ito, at tinatanggap namin ang mga boluntaryong nais magpabuti sa pagsasalin. Mas magiging madali ang mga bagay kung may Mac na may Xcode 16 (o mas bagong bersyon) ang mga kalahok."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les langues principales de cette application sont l'anglais, le chinois traditionnel, le chinois simplifié et le japonais. Toutes les autres langues sont secondaires, car aucun membre de l'équipe de développement ne peut les comprendre ou les utiliser. Nous utilisons ChatGPT pour préparer une traduction préliminaire pour ces langues, et nous accueillons les volontaires qui souhaitent améliorer la traduction. Les choses seront beaucoup plus faciles si les participants disposent d'un Mac avec Xcode 16 (ou une version plus récente) installé."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le lingue principali di questa app sono inglese, cinese tradizionale, cinese semplificato e giapponese. Tutte le altre lingue sono secondarie poiché nessun membro del team di sviluppo è in grado di comprenderle o utilizzarle. Utilizziamo ChatGPT per preparare una traduzione preliminare per queste lingue e accogliamo volentieri i volontari che desiderano migliorare la traduzione. Sarà molto più facile se i partecipanti hanno un Mac con Xcode 16 (o versione più recente) installato."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "弊アプリの主要言語は、英語、繁体字中国語、簡体字中国語、日本語です。他の言語は補助的な言語であり、開発チームのメンバーは理解または使用できません。これらの言語には、ChatGPT で翻訳の下書きを作成していますが、翻訳改善を希望するボランティアの方々を歓迎します。Xcode 16（またはそれ以降のバージョン）をインストールした Mac があると、作業が大変楽になります。なお、既存の和訳にも文法的な間違いに対するご意見もよろしくお願いいたします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 앱의 주요 언어는 영어, 번체 중국어, 간체 중국어 및 일본어입니다. 다른 언어는 보조 언어이며, 개발 팀 중 누구도 이를 이해하거나 사용할 수 없습니다. 이러한 언어에 대해 ChatGPT를 사용해 초안을 준비하였으며, 번역 개선을 원하는 자원봉사자들을 환영합니다. Xcode 16(또는 그 이상 버전)이 설치된 Mac을 보유한 참여자는 작업이 훨씬 더 수월할 것입니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Основные языки этого приложения — английский, традиционный китайский, упрощенный китайский и японский. Все остальные языки являются второстепенными, так как никто из команды разработчиков не может их понимать или использовать. Мы используем ChatGPT для подготовки чернового перевода для этих языков и приветствуем добровольцев, желающих улучшить перевод. Процесс будет значительно проще, если у участника есть Mac с установленным Xcode 16 (или более новой версией)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Các ngôn ngữ chính của ứng dụng này là tiếng Anh, tiếng Trung phồn thể, tiếng Trung giản thể và tiếng Nhật. Tất cả các ngôn ngữ khác là ngôn ngữ phụ, vì không ai trong nhóm phát triển có thể hiểu hoặc sử dụng chúng. Chúng tôi sử dụng ChatGPT để chuẩn bị bản dịch nháp cho các ngôn ngữ này và chào đón những tình nguyện viên muốn cải thiện bản dịch. Công việc sẽ dễ dàng hơn nhiều nếu người tham gia có một máy Mac với Xcode 16 (hoặc phiên bản mới hơn) được cài đặt."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝应用的主要语言为英文、繁体中文、简体中文及日文。其他语言属次要语言，因为开发团队中无人能理解或使用这些语言。我们使用 ChatGPT 为这些语言准备了一份翻译草稿，并欢迎有志之士协助改善翻译。若参加者拥有安装了 Xcode 16（或更新版本）的 Mac 电脑，将会大幅简化翻译作业。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝應用的主要語言為英文、繁體中文、簡體中文及日文。其他語言屬次要語言，因為開發團隊中無人能理解或使用這些語言。我們使用 ChatGPT 為這些語言準備了一份翻譯草稿，並歡迎有志之士協助改善翻譯。若參加者擁有安裝了 Xcode 16（或更新版本）的 Mac 電腦，將會大幅簡化翻譯作業。"
+          }
+        }
+      }
+    },
     "aboutKit.contributors.category.i18n.previous" : {
       "localizations" : {
         "de" : {
@@ -3151,7 +3228,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hội viên Đóng góp Nội dung Địa phương (RU)"
+            "value" : "Art34222"
           }
         },
         "zh-Hans" : {
@@ -3174,7 +3251,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haku Bill (Kalziumkarbonat im Wasser)"
+            "value" : "Haku Bill (水里的碳酸钙)"
           }
         },
         "en" : {
@@ -3186,25 +3263,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haku Bill (Carbonato de calcio en el agua)"
+            "value" : "Haku Bill (水里的碳酸钙)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haku Bill (Kaltsyum Karbonat sa Tubig)"
+            "value" : "Haku Bill (水里的碳酸钙)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haku Bill (碳酸钙 dans l'eau)"
+            "value" : "Haku Bill (水里的碳酸钙)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haku Bill (Carbonato di calcio nell'acqua)"
+            "value" : "Haku Bill (水里的碳酸钙)"
           }
         },
         "ja" : {
@@ -3216,19 +3293,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "하쿠 빌 (물 속의 탄산칼슘)"
+            "value" : "Haku Bill (水里的碳酸钙)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Хаку Билл (кальций в воде)"
+            "value" : "Haku Bill (水里的碳酸钙)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haku Bill (Canxi cacbonat trong nước)"
+            "value" : "Haku Bill (水里的碳酸钙)"
           }
         },
         "zh-Hans" : {
@@ -3293,13 +3370,13 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "코니"
+            "value" : "Koni"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Кони"
+            "value" : "Koni"
           }
         },
         "vi" : {
@@ -3370,13 +3447,13 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "용암 (CanglongCL)"
+            "value" : "Lava (CanglongCL)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Лава (CanglongCL)"
+            "value" : "Lava (CanglongCL)"
           }
         },
         "vi" : {
@@ -3476,6 +3553,82 @@
         }
       }
     },
+    "aboutKit.contributors.name.pan93412" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        }
+      }
+    },
     "aboutKit.contributors.name.qi" : {
       "comment" : "Localization Contributor (FR)",
       "localizations" : {
@@ -3530,7 +3683,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ци"
+            "value" : "Qi"
           }
         },
         "vi" : {
@@ -3601,19 +3754,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "시키 순 (孙志贵)"
+            "value" : "Shiki Suen (孙志贵)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Шики Сюэнь (Сун Чжи Гуй)"
+            "value" : "Shiki Suen (孙志贵)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Shiki Suen (Tôn Chí Quý)"
+            "value" : "Shiki Suen (孙志贵)"
           }
         },
         "zh-Hans" : {
@@ -3713,7 +3866,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Xinzoruo (Herzschwacher Wahrer Herr)"
+            "value" : "Xinzoruo (心臓弱眞君)"
           }
         },
         "en" : {
@@ -3755,19 +3908,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "신장약진군"
+            "value" : "Xinzoruo (心臓弱眞君)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Синдзоруо (心臓弱眞君)"
+            "value" : "Xinzoruo (心臓弱眞君)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Xinzoruo (Tâm Tạng Nhược Chân Quân)"
+            "value" : "Xinzoruo (心臓弱眞君)"
           }
         },
         "zh-Hans" : {
@@ -3832,13 +3985,13 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "유리거사 (郁离居士)"
+            "value" : "Yuli Jushi (郁离居士)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Юли Цзюши (郁离居士)"
+            "value" : "Yuli Jushi (郁离居士)"
           }
         },
         "vi" : {

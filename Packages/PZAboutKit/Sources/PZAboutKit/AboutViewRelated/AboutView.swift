@@ -229,6 +229,8 @@ struct DevCrewViewSections: View {
         } header: {
             Text("aboutKit.contributors.category.i18n.current", bundle: .module)
                 .textCase(.none)
+        } footer: {
+            Text("aboutKit.contributors.category.i18n.current.description", bundle: .module)
         }
 
         Section {
