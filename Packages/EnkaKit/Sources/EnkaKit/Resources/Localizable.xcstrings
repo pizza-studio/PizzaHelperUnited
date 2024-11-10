@@ -3,16 +3,64 @@
   "strings" : {
     "enka.ASCV.summarzeToClipboard.asMD" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als Markdown in die Zwischenablage zusammenfassen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Summarize to Clipboard as Markdown"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumir al Portapapeles como Markdown"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résumer dans le Presse-papiers en Markdown"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riassumi negli Appunti come Markdown"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "MarkDownとしてクリップボードに書き込む"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마크다운으로 클립보드에 요약"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скопировать в буфер как Markdown"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ibuod sa Clipboard bilang Markdown"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tóm tắt vào Clipboard dưới dạng Markdown"
           }
         },
         "zh-Hans" : {
@@ -31,16 +79,64 @@
     },
     "enka.ASCV.summarzeToClipboard.asText" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als einfachen Text in die Zwischenablage zusammenfassen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Summarize to Clipboard as Plain Text"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumir al Portapapeles como Texto Plano"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résumé vers le presse-papiers en tant que texte brut"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riassumi negli Appunti come Testo Semplice"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "プレーンテキストとしてクリップボードに書き込む"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "클립보드에 서식을 제거한 텍스트로 요약"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скопировать в буфер как обычный текст"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilagay sa Clipboard bilang Plain Text"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tóm tắt vào Clipboard dưới dạng Văn bản Thuần túy"
           }
         },
         "zh-Hans" : {
@@ -59,16 +155,64 @@
     },
     "enka.CaseQuery.showCaseAPIServiceProviders.explain.GI" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ShowCase-Abfrageergebnisanbieter hängt davon ab, welchem Server die UID zugeordnet ist:\n* MicroGG (Celestia- und Irminsul-Server).\n* Enka-Netzwerke (Alle anderen Server)."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ShowCase Query Result Provider depends on which server the UID belongs to:\n* MicroGG (Celestia and Irminsul server).\n* Enka Networks (All other servers)."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ShowCase Query Result Provider depende de a qué servidor pertenece el UID: * MicroGG (servidor Celestia e Irminsul). * Enka Networks (todos los demás servidores)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le fournisseur de résultats de requête ShowCase dépend du serveur auquel l'UID appartient : * MicroGG (serveur Celestia et Irminsul) * Enka Networks (tous les autres serveurs)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il Fornitore di Risultati di ShowCase Query dipende dal server a cui appartiene l'UID:\n* MicroGG (server Celestia e Irminsul).\n* Enka Networks (tutti gli altri server)."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショーケースのデータのAPI提供者:\n* 天空の島と世界樹サーバー限定: MicroGG。\n* 他のすべてのサーバー: Enka Networks。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ShowCase 쿼리 결과 제공자는 UID가 속한 서버에 따라 다릅니다: * MicroGG (Celestia 및 Irminsul 서버). * Enka Networks (기타 모든 서버)."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Диспетчер результатов ShowCase Query зависит от сервера, к которому принадлежит UID: * MicroGG (серверы Celestia и Irminsul). * Enka Networks (все остальные сервера)."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang ShowCase Query Result Provider ay nakasalalay sa kung aling server ang kinabibilangan ng UID:\n* MicroGG (server ng Celestia at Irminsul). \n* Enka Networks (Lahat ng ibang server)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhà cung cấp Kết Quả Truy Vấn ShowCase phụ thuộc vào máy chủ mà UID thuộc về:\n* MicroGG (máy chủ Celestia và Irminsul).\n* Enka Networks (Tất cả các máy chủ khác)."
           }
         },
         "zh-Hans" : {
@@ -87,16 +231,64 @@
     },
     "enka.CaseQuery.showCaseAPIServiceProviders.explain.HSR" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der ShowCase Query Result Provider hängt davon ab, zu welchem Server die UID gehört: \n* MiHoMo Origin (Celestia-AstralExpress und Irminsul-Nameless Server) \n* Enka Networks (Alle anderen Server)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ShowCase Query Result Provider depends on which server the UID belongs to:\n* MiHoMo Origin (Celestia-AstralExpress and Irminsul-Nameless server).\n* Enka Networks (All other servers)."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El proveedor de resultados de consulta de ShowCase depende de a qué servidor pertenece el UID: * MiHoMo Origin (servidor Celestia-AstralExpress e Irminsul-Nameless). * Enka Networks (todos los demás servidores)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le fournisseur de résultats de requête ShowCase dépend du serveur auquel l'UID appartient :\n* MiHoMo Origin (serveurs Celestia-AstralExpress et Irminsul-Nameless).\n* Enka Networks (tous les autres serveurs)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il fornitore dei risultati di ShowCase Query dipende da quale server appartiene l'UID:\n* MiHoMo Origin (server Celestia-AstralExpress e Irminsul-Nameless).\n* Enka Networks (tutti gli altri server)."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショーケースのデータのAPI提供者:\n* 天空の島(星穹列車)と世界樹(ナナシビト)サーバー限定: MiHoMo Origin。\n* 他のすべてのサーバー: Enka Networks。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ShowCase 쿼리 결과 제공자는 UID가 속한 서버에 따라 다릅니다: \n* MiHoMo Origin (Celestia-AstralExpress 및 Irminsul-Nameless 서버).\n* Enka Networks (다른 모든 서버)."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поставщик результатов запроса ShowCase зависит от сервера, которому принадлежит UID:\n* MiHoMo Origin (сервер Celestia-AstralExpress и Irminsul-Nameless).\n* Enka Networks (все остальные серверы)."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang Tagapagbigay ng Resulta ng ShowCase Query ay nakadepende sa kung aling server kabilang ang UID: \n* MiHoMo Origin (Celestia-AstralExpress at Irminsul-Nameless server).\n* Enka Networks (Lahat ng ibang server)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhà cung cấp Kết quả Truy vấn ShowCase phụ thuộc vào máy chủ mà UID thuộc về:\n* MiHoMo Origin (máy chủ Celestia-AstralExpress và Irminsul-Nameless).\n* Enka Networks (Tất cả các máy chủ khác)."
           }
         },
         "zh-Hans" : {
@@ -115,7 +307,31 @@
     },
     "enka.CaseQuery.title.GI" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abfrage Vitrine (Genshin Impact)"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Query ShowCase (Genshin Impact)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta ShowCase (Genshin Impact)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requête ShowCase (Genshin Impact)"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Query ShowCase (Genshin Impact)"
@@ -125,6 +341,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショーケースを調べる (原神)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "쿼리 쇼케이스 (원신)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запрос витрины (Genshin Impact)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Query ShowCase (Genshin Impact)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Truy vấn ShowCase (Genshin Impact)"
           }
         },
         "zh-Hans" : {
@@ -143,16 +383,64 @@
     },
     "enka.CaseQuery.title.HSR" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anfrage Schaukasten (Star Rail)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Query ShowCase (Star Rail)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consultar ShowCase (Star Rail)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher la vitrine (Star Rail)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vetrina query (Star Rail)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショーケースを調べる (スターレイル)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "쿼리 쇼케이스 (스타 레일)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запрос витрины (Звёздный путь)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Query ShowCase (Star Rail)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tìm kiếm ShowCase (Star Rail)"
           }
         },
         "zh-Hans" : {
@@ -172,16 +460,64 @@
     "enka.genshinStylePhotosForHSR.featureOption.disclaimer" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Set von ID-Fotos ist möglicherweise unter bestimmten Umständen in dieser App nicht anwendbar. Außerdem ein Hinweis: Die Genshin-Charakter-ID-Fotos stammen **NICHT aus geleakten Charakterdesign-Assets von Hoyoverse / Cognosphere / MiHoYo**. Stattdessen werden diese Assets mit [den von MiHoYo öffentlich freigegebenen MikuMikuDance-Modellen](https://www.aplaybox.com/u/516827875) gerendert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875)."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este conjunto de fotos de identificación podría no ser aplicable en ciertas circunstancias en esta aplicación. Además, un aviso: Las fotos de identificación de personajes al estilo Genshin **NO provienen de activos de diseño de personajes filtrados de Hoyoverse / Cognosphere / MiHoYo**. En su lugar, estos activos se renderizan utilizando [los modelos de MikuMikuDance publicados por MiHoYo en público](https://www.aplaybox.com/u/516827875)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cet ensemble de photos d'identité pourrait ne pas être applicable dans certaines circonstances de cette application. De plus, un avertissement : Les photos d'identité de personnages de style Genshin **NE PROVIENNENT PAS des assets de conception de personnages divulgués par Hoyoverse / Cognosphere / MiHoYo**. Au contraire, ces assets sont rendus à l'aide [des modèles MikuMikuDance publiés par MiHoYo dans le public](https://www.aplaybox.com/u/516827875)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo set di foto ID potrebbe non essere applicabile in determinate circostanze in questa app. Inoltre, un disclaimer: Le foto ID dei personaggi in stile Genshin **NON provengono da design di personaggi trapelati da Hoyoverse / Cognosphere / MiHoYo**. Al contrario, queste risorse sono renderizzate utilizzando [i modelli MikuMikuDance rilasciati pubblicamente da MiHoYo](https://www.aplaybox.com/u/516827875)."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "これらの画像は弊アプリで効かぬ場合はございます。なお：弊アプリで使用していた「原神のキャラ写真スタイルに基づいたキャラ写真」素材は、**情報漏洩者からの素材でなく**、「[MiHoYo公式提供したミクミクダンス用モデル](https://www.aplaybox.com/u/516827875)」を使って作ったものである。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 ID 사진 세트는 이 앱에서 특정 상황에서는 적용되지 않을 수 있습니다. 또한 다음을 명시합니다: Genshin 스타일의 캐릭터 ID 사진은 HoYoverse / Cognosphere / MiHoYo에서 유출된 캐릭터 디자인 에셋이 **아닙니다.** 대신, 이 에셋은 [MiHoYo가 공개한 MikuMikuDance 모델을 사용하여 렌더링되었습니다](https://www.aplaybox.com/u/516827875)."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этот набор фотографий удостоверений личности может не подходить в определенных обстоятельствах в этом приложении. Также отказ от ответственности: фотографии удостоверений личности в стиле Genshin **НЕ являются утечкой дизайнерских активов персонажей от Hoyoverse / Cognosphere / MiHoYo**. Вместо этого эти активы создаются с использованием [моделей MikuMikuDance, выпущенных MiHoYo в открытый доступ](https://www.aplaybox.com/u/516827875)."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang hanay ng ID photos na ito ay maaaring hindi naaangkop sa ilang pagkakataon sa app na ito. Gayundin, isang disclaimer: Ang mga ID photos ng karakter na Genshin-style ay **HINDI mula sa leaked na disenyo ng mga karakter mula sa Hoyoverse / Cognosphere / MiHoYo**. Sa halip, ang mga asset na ito ay nilikha gamit ang [mga MikuMikuDance models na inilabas ng MiHoYo sa publiko](https://www.aplaybox.com/u/516827875)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tập hợp ảnh ID này có thể không được áp dụng trong một số trường hợp nhất định trong ứng dụng này. Ngoài ra, một tuyên bố miễn trách nhiệm: Ảnh ID nhân vật kiểu Genshin **KHÔNG phải từ các tài sản thiết kế nhân vật bị rò rỉ từ Hoyoverse / Cognosphere / MiHoYo**. Thay vào đó, các tài sản này được tạo ra bằng cách sử dụng [các mô hình MikuMikuDance do MiHoYo phát hành công khai](https://www.aplaybox.com/u/516827875)."
           }
         },
         "zh-Hans" : {
@@ -201,16 +537,64 @@
     "enka.photoSpecimen.credit.genshin" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die im Hintergrund verwendeten Totem-Assets für ID-Fotos von Genshin Impact-Charakteren in dieser App stammen von Star Rail (ausgenommen Geo, Dendro und Hydro) und repräsentieren das Teyvat-Element jedes Charakters. Diese Totems sind nur sichtbar, wenn \"Namenskarten-Hintergründe für Genshin-Charakter-ID-Fotos und Vorzeige-Bau-Panels verwenden\" deaktiviert ist."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "The background totem assets used for ID Photos of Genshin Impact characters in this app are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. These totems is visible only if “Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels” is disabled."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los elementos de tótem de fondo utilizados para las fotos de identificación de personajes de Genshin Impact en esta aplicación son de Star Rail (excluyendo Geo, Dendro y Hydro), representando el elemento Teyvat de cada personaje. Estos tótems son visibles solo si la opción \"Usar fondos de tarjetas de presentación para fotos de identificación de personajes de Genshin y paneles de construcción de conjuntos\" está deshabilitada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les ressources totémiques de fond utilisées pour les photos d'identité des personnages de Genshin Impact dans cette application proviennent de Star Rail (à l'exception de Geo, Dendro et Hydro), représentant l'élément Teyvat de chaque personnage. Ces totems ne sont visibles que si \"Utiliser les arrière-plans des cartes de nom pour les photos d'identité des personnages de Genshin et les panneaux de construction ShowCase\" est désactivé."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli asset dei totem di sfondo utilizzati per le foto ID dei personaggi di Genshin Impact in questa app provengono da Star Rail (esclusi Geo, Dendro e Hydro), rappresentando l'elemento di Teyvat di ciascun personaggio. Questi totem sono visibili solo se \"Usa sfondi con nome per le foto ID dei personaggi di Genshin e i pannelli della vetrina\" è disabilitato."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "弊アプリ内の『原神』キャラクターの画像の背景紋様は、キャラクターの元素能力属性を示します。その紋様の素材は『崩壊：スターレイル』からの素材です（草、水、岩属性の紋様は例外）。「原神のキャラクターの画像とビルド画面には名刺背景を起用」がONにされている限り、その紋様は見えません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 앱에서 Genshin Impact 캐릭터의 ID 사진에 사용된 배경 토템 자산은 교토, 나무, 물을 제외하고 스타 레일에서 가져온 것으로, 각 캐릭터의 티바트 원소를 나타냅니다. 이 토템은 \"Genshin 캐릭터의 ID 사진 및 ShowCase 빌드 패널에 이름 카드 배경 사용\"이 비활성화된 경우에만 표시됩니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фоны тотемов, используемые для ID-фотографий персонажей Genshin Impact в этом приложении, взяты из Star Rail (за исключением Гео, Дендр и Гидро), представляя элемент Тейвата каждого персонажа. Эти тотемы видны только если отключена опция «Использовать фоны Namecard для ID-фотографий персонажей Genshin и панелей ShowCase Build»."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang mga background totem asset na ginamit para sa ID Photos ng mga character ng Genshin Impact sa app na ito ay mula sa Star Rail (hindi kasama ang Geo, Dendro, at Hydro), na kumakatawan sa Teyvat Element ng bawat karakter. Ang mga totem na ito ay makikita lamang kung naka-disable ang “Gumamit ng Namecard backgrounds para sa ID Photos ng Genshin Characters at ShowCase Build panels.”"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Các yếu tố totem nền được sử dụng cho Ảnh ID của các nhân vật Genshin Impact trong ứng dụng này là từ Star Rail (trừ Geo, Dendro và Hydro), đại diện cho Nguyên tố Teyvat của mỗi nhân vật. Các totem này chỉ hiển thị khi “Sử dụng nền Namecard cho Ảnh ID Nhân vật Genshin và các bảng Build ShowCase” bị tắt."
           }
         },
         "zh-Hans" : {
@@ -230,16 +614,64 @@
     "enka.photoSpecimen.credit.starRail" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die im Hintergrund verwendeten Totem-Assets für ID-Fotos von Star Rail in dieser App repräsentieren sowohl ihre Lebenswege als auch ihre elementaren Kräfte. Das Element wird durch die zur Darstellung des Totems verwendete Farbe repräsentiert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "The background totem assets used for ID Photos of Star Rail in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los elementos de tótem de fondo utilizados para las Fotos de Identificación de Star Rail en esta aplicación sirven para representar tanto sus caminos de vida como sus poderes elementales. El elemento está representado por el color utilizado para renderizar el tótem."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les totems de fond utilisés pour les photos d'identité de Star Rail dans cette application représentent à la fois leur chemin de vie et leurs pouvoirs élémentaires. L'élément est représenté par la couleur utilisée pour rendre le totem."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli asset dei totem di sfondo utilizzati per le foto d'identità di Star Rail in questa app servono per rappresentare sia i loro percorsi di vita che i loro poteri elementali. L'elemento è rappresentato dal colore utilizzato per rendere il totem."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "弊アプリ内の「崩壊：スターレイル」キャラクターの画像の背景紋様は、キャラクターの「運命の途」と「元素能力属性」両方を示します。「元素能力属性」は紋様の色彩で表現します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 앱의 스타 레일 ID 사진에 사용된 배경 토템 자산은 각각의 인생 경로와 원소력을 나타냅니다. 원소는 토템을 렌더링할 때 사용된 색상으로 표현됩니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используемые в этом приложении фоны тотемов для ID-фотографий Star Rail представляют как их жизненные пути, так и их элементальные силы. Элемент представлен цветом, используемым для отображения тотема."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang mga background na totem asset na ginamit para sa ID Photos ng Star Rail sa app na ito ay kumakatawan sa kanilang mga landas ng buhay at ng kanilang mga kapangyarihang elemental. Ang element ay kinakatawan ng kulay na ginamit para sa pag-render ng totem."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Các tài sản tượng trưng nền được sử dụng cho Hình ảnh ID của Star Rail trong ứng dụng này để biểu thị cả con đường cuộc sống và sức mạnh nguyên tố của họ. Nguyên tố được biểu thị bằng màu sắc được sử dụng để hiển thị tượng trưng."
           }
         },
         "zh-Hans" : {
@@ -259,16 +691,64 @@
     "enka.photoSpecimen.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID-Foto-Beispiel für alle Zeichen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ID Photo Specimen for all characters"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Especimen de foto de identificación para todos los caracteres"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo d'identité spécimen pour tous les caractères"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campione foto ID per tutti i caratteri"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "身分証明用写真一覧 (全キャラ)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 문자용 ID 사진 견본"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Образец фотографии удостоверения для всех персонажей"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Larawan ng ID para sa lahat ng tauhan"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ảnh ID mẫu cho tất cả các ký tự"
           }
         },
         "zh-Hans" : {
@@ -288,16 +768,64 @@
     "enka.showCase.emptyShowCase.description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entweder keine detailliert exponierbaren Charaktere in der Vitrine oder (im Fall von Genshin Impact) hat der UID-Besitzer \"Charakterdetails anzeigen\" im Spiel nicht aktiviert. Wenn Sie der UID-Besitzer sind, können Sie der folgenden Anleitung folgen, um die Vitrine im Spiel zu konfigurieren."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Either no detail-exposable characters in the showcase or (in case of Genshin Impact) the UID owner didn't enable \"Show Character Details\" in the game. If you are the UID owner, you may follow the following screenshot to config the showcase in the game."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O no hay personajes con detalles expuestos en la exhibición o (en el caso de Genshin Impact) el propietario del UID no habilitó \"Mostrar detalles del personaje\" en el juego. Si eres el propietario del UID, puedes seguir la siguiente captura de pantalla para configurar la exhibición en el juego."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soit aucun personnage dont les détails peuvent être exposés dans la vitrine ou (dans le cas de Genshin Impact) le propriétaire du UID n'a pas activé \"Afficher les détails des personnages\" dans le jeu. Si vous êtes le propriétaire du UID, vous pouvez suivre la capture d'écran suivante pour configurer la vitrine dans le jeu."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non ci sono personaggi con dettagli esponibili nella vetrina oppure (nel caso di Genshin Impact) il proprietario del UID non ha abilitato l'opzione \"Mostra Dettagli Personaggio\" nel gioco. Se sei il proprietario del UID, puoi seguire lo screenshot seguente per configurare la vetrina nel gioco."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ショーケースにはキャラはいないか、或いは（原神の場合）UIDの所有者がゲーム内で「キャラ詳細を表示」を有効にしていない可能性があります。UIDの所有者は貴殿である場合、以下のスクリーンショットをご参考してゲーム内でショーケースを設定してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "쇼케이스에 세부 정보를 노출할 수 있는 캐릭터가 없거나 (원신의 경우) UID 소유자가 게임에서 \"캐릭터 세부 정보 표시\"를 활성화하지 않았습니다. 당신이 UID 소유자라면, 아래 스크린샷을 따라 게임 내에서 쇼케이스를 설정할 수 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Либо в витрине нет персонажей с возможностью показать детали, либо (в случае Genshin Impact) владелец UID не включил \"Показать детали персонажа\" в игре. Если вы владелец UID, следуйте приведенной ниже инструкции, чтобы настроить витрину в игре."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walang mga karakter na maaaring ipakita sa showcase o (sa kaso ng Genshin Impact) hindi pinagana ng may-ari ng UID ang \"Ipakita ang mga Detalye ng Karakter\" sa laro. Kung ikaw ang may-ari ng UID, maaari mong sundin ang sumusunod na screenshot upang i-configure ang showcase sa laro."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có nhân vật nào có thể hiển thị chi tiết trong phần trưng bày hoặc (trong trường hợp Genshin Impact) chủ sở hữu UID chưa bật \"Hiển thị Chi tiết Nhân vật\" trong trò chơi. Nếu bạn là chủ sở hữu UID, bạn có thể làm theo ảnh chụp màn hình sau để cấu hình phần trưng bày trong trò chơi."
           }
         },
         "zh-Hans" : {
@@ -317,16 +845,64 @@
     "settings.display.artifactRating.considerHyperBloomElectroRoles" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstützung von Elektro-Hyperbloom-Builds"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accommodating electro hyperbloom builds"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acomodando configuraciones de hiperflores eléctricas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adaptation aux constructions éclosion hyper électro"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accogliere configurazioni elettro iperfioritura"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "雷属性キャラの超開花ビルドも考慮する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전기 하이퍼블룸 빌드를 수용하기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включение билдов с электром гиперцветением"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagtanggap sa mga gawaing electro hyperbloom"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xây dựng điện siêu nở linh hoạt"
           }
         },
         "zh-Hans" : {
@@ -346,16 +922,64 @@
     "settings.display.artifactRating.considerHyperBloomElectroRoles.explanation" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur Genshin. Zum Beispiel: Raiden Shogun mit über 900 Elementar-Meisterschaft (und verwandte 4er-Artefakt-Sets) kann mit Baizhu, Furina und Nahida das stärkste vollautomatische, ferngesteuerte Hyperbloom-Team bilden. Dies widerspricht dem ursprünglichen Charakterdesign von Raiden Shogun, ist jedoch eine akzeptable und effektive Wahl mit deutlich reduziertem Arbeitsaufwand beim Aufbau des gesamten Teams und einer deutlich größeren Reichweite als Shinobu-Yukuaki-basierte Nahkampf-Hyperbloom-Teams. Ähnliche Situationen können auf andere Elektro-Charaktere in Genshin Impact zutreffen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Genshin Only. E.g.: Raiden Shogun with over-900 elemental master (and related 4-piece artifact sets) can team up with Baizhu, Furina, and Nahida to be the strongest full-auto guided remote hyperbloom team. This disobeys the initial character design of Raiden Shogun but is an acceptable and effective choice with significantly-reduced workload of building-up the entire team with significantly larger firing range than Shinobu-Yukuaki-based close-combat hyperbloom teams. Similar situations may apply to other electro characters in Genshin Impact."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo para Genshin. Por ejemplo: Raiden Shogun con más de 900 de maestría elemental (y conjuntos de artefactos de cuatro piezas relacionados) puede formar equipo con Baizhu, Furina y Nahida para ser el equipo de hiperbloom remoto guiado completamente automático más fuerte. Esto contradice el diseño inicial del personaje de Raiden Shogun pero es una elección aceptable y efectiva con una carga de trabajo significativamente reducida para construir todo el equipo con un alcance de disparo significativamente mayor que los equipos de hiperbloom de combate cuerpo a cuerpo basados en Shinobu-Yukuaki. Situaciones similares pueden aplicarse a otros personajes electro en Genshin Impact."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uniquement Genshin. Par exemple : La Shogun Raiden avec plus de 900 de maîtrise élémentaire (et les sets d'artefacts 4 pièces associés) peut faire équipe avec Baizhu, Furina et Nahida pour être la plus forte équipe hyperbloom télécommandée full-auto. Cela désobéit à la conception initiale du personnage de la Shogun Raiden mais est un choix acceptable et efficace avec une charge de travail considérablement réduite pour la mise en place de toute l'équipe avec une portée de tir nettement plus grande que les équipes hyperbloom de combat rapproché basées sur Shinobu-Yukuaki. Des situations similaires peuvent s'appliquer à d'autres personnages électro de Genshin Impact."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo Genshin. Ad esempio: Raiden Shogun con oltre 900 di maestria elementale (e i relativi set di artefatti a 4 pezzi) può unirsi a Baizhu, Furina e Nahida per essere la squadra più forte di iperbloom guidato a distanza completamente automatica. Questo disobbedisce al design iniziale del personaggio di Raiden Shogun, ma è una scelta accettabile ed efficace con un carico di lavoro significativamente ridotto per costruire l'intera squadra con una portata di tiro significativamente più ampia rispetto alle squadre di iperbloom da combattimento ravvicinato basate su Shinobu-Yukuaki. Situazioni simili possono applicarsi ad altri personaggi elettro in Genshin Impact."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "原神限定の聖遺物評判ルールです。900点以上の元素熟知を持って元素熟知系聖遺物セットを装備した雷電将軍は白朮＆フリーナ＆ナヒーダと組むと、最強の全自動超開花チームになり、そしてキャラクターの養成にかかる時間もめっちゃ少なくなり、さらに（忍＆行秋系超開花チームと比べると）射程距離はめっちゃ遠いです。雷電将軍の数値モデルと反する養成方法ですが、かなり強い超開花チームです。このようなことは他の雷系キャラにもある可能性があるので、このルールのオプションを用意しました。スターレイルのキャラクターにはこのルールが通用しません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원신 전용. 예: 900 이상의 원소 숙달도를 가진 라이덴 쇼군(관련 4세트 유물 포함)은 바이쥬, 푸리나, 나히다와 팀을 이루어 가장 강력한 풀 오토 가이드 원격 초개화 팀이 될 수 있습니다. 이는 라이덴 쇼군의 초기 캐릭터 디자인에 어긋나지만, 신오부-유쿠아키 기반의 근접 초개화 팀보다 훨씬 넓은 사정거리를 가지고 전체 팀을 구성하는 데 드는 부담이 크게 줄어든, 허용 가능하고 효과적인 선택입니다. 비슷한 상황이 원신 임팩트의 다른 전기 캐릭터에게도 적용될 수 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Только для Genshin. Например: Райден Сёгун с более чем 900 мастерства стихий (и соответствующими наборами артефактов из 4 предметов) может объединиться с Байчжу, Фуриной и Нахидой, чтобы стать сильнейшей командой для полной автоуправляемой гипервзрывной атаки. Это нарушает первоначальный дизайн персонажа Райден Сёгун, но является приемлемым и эффективным выбором с значительно сокращенной нагрузкой на сборку всей команды и значительно большей дальностью стрельбы по сравнению с гипервзрывными командами ближнего боя на основе Синобу-Юкаи. Аналогичные ситуации могут применяться и к другим электро персонажам в Genshin Impact."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genshin Lamang. Halimbawa: Maaaring magsama-sama si Raiden Shogun na may higit sa 900 na elemental master (at kaugnay na 4-piece na artifact set) kasama sina Baizhu, Furina, at Nahida para maging pinakamalakas na full-auto guided remote hyperbloom team. Ito ay lumalabag sa paunang disenyo ng karakter ni Raiden Shogun ngunit isang katanggap-tanggap at epektibong pagpili na may makabuluhang nabawasan na trabaho sa pagbuo ng buong team na may mas malawak na firing range kaysa sa Shinobu-Yukuaki-based close-combat hyperbloom teams. Ang mga katulad na sitwasyon ay maaaring ilapat sa iba pang electro character sa Genshin Impact."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chỉ Genshin. Ví dụ: Raiden Shogun với trên 900 tinh thông nguyên tố (và các bộ thánh di vật 4 món liên quan) có thể kết hợp với Baizhu, Furina và Nahida để trở thành đội mạnh nhất tự động hướng dẫn từ xa hyperbloom. Điều này trái ngược với thiết kế nhân vật ban đầu của Raiden Shogun nhưng là một lựa chọn chấp nhận được và hiệu quả với giảm đáng kể khối lượng công việc trong việc xây dựng cả đội với khoảng cách bắn lớn hơn nhiều so với các đội hyperbloom cận chiến dựa trên Shinobu-Yukugaki. Các tình huống tương tự có thể áp dụng cho các nhân vật điện khác trong Genshin Impact."
           }
         },
         "zh-Hans" : {
@@ -375,16 +999,64 @@
     "settings.display.artifactRating.considerSwirls" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berücksichtigen Sie Katalyse-Reaktionen, die mit Anemo-Charakteren ausgelöst werden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consider catalysis reactions triggered with anemo characters"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Considera reacciones de catálisis activadas con personajes de anemo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envisager les réactions de catalyse déclenchées avec des personnages Anémo"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prendi in considerazione le reazioni di catalisi attivate con personaggi anemo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "風属性キャラの拡散で起こした超激化反応も考慮する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "풍속 캐릭터로 촉발되는 촉매 반응을 고려하십시오"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рассмотрите реакции катализа, инициированные ане́мо-персонажами"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isaalang-alang ang mga reaksyon ng pagkatalis na na-trigger ng mga karakter na anemo"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xem xét các phản ứng xúc tác kích hoạt với các nhân vật nguyên tố phong"
           }
         },
         "zh-Hans" : {
@@ -404,16 +1076,64 @@
     "settings.display.artifactRating.considerSwirls.explanation" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur Genshin. Zum Beispiel: Kaedehara Kazuha mit einem 4-teiligen Thundering Fury Artefakt-Set wird jetzt als akzeptable Wahl betrachtet, um Dendro-Katalyse auszulösen. Ähnliche Situationen können für andere Anemo-Charaktere in Genshin Impact zutreffen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Genshin Only. E.g.: Kaedehara Kazuha with 4-piece Thundering Fury artifact suite is now considered as an acceptable choice to trigger dendro catalysis. Similar situations may apply to other anemo characters in Genshin Impact."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo Genshin. Por ejemplo: Kaedehara Kazuha con el conjunto de 4 piezas de artefactos de Furia Atronadora ahora se considera una opción aceptable para activar la catálisis con dendro. Situaciones similares pueden aplicar a otros personajes anemo en Genshin Impact."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genshin uniquement. Par exemple : Kaedehara Kazuha avec un ensemble d'artefacts de 4 pièces Fureur tonitruante est désormais considéré comme un choix acceptable pour déclencher la catalyse dendro. Des situations similaires peuvent s'appliquer à d'autres personnages anémo dans Genshin Impact."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo Genshin. Ad esempio: Kaedehara Kazuha con il set artefatto da 4 pezzi Furia Tonante è ora considerato una scelta accettabile per innescare la catalisi dendro. Situazioni simili possono applicarsi ad altri personaggi anemo in Genshin Impact."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "原神限定の聖遺物評判ルールです。「雷のような怒り」聖遺物の４セットを装備した楓原万葉は超激化反応にお役立てると今はそう認識されております。このようなことは他の風系キャラにもある可能性があるので、このルールのオプションを用意しました。スターレイルのキャラクターにはこのルールが通用しません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원신만 해당. 예: 카에데하라 카즈하가 4세트 번개 격노 성유물을 장착한 경우, 이제 풀 촉매 작용을 발동시키기 위한 적절한 선택으로 간주됩니다. 유사한 상황이 원신 임팩트의 다른 바람 캐릭터에 적용될 수 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Только для Genshin. Например, Каэдэхара Кадзуха с набором артефактов из четырех частей Громовой Ярости теперь считается приемлемым выбором для активации дендро-катализа. Похожие ситуации могут применяться к другим анемо персонажам в Genshin Impact."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genshin Lamang. Halimbawa: Si Kaedehara Kazuha na may 4-pinagsamang Thundering Fury artifact suite ay itinuturing na ngayong katanggap-tanggap na pagpipilian upang i-trigger ang dendro catalysis. Maaring mag-apply ang katulad na sitwasyon sa iba pang anemo character sa Genshin Impact."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chỉ dành cho Genshin. Ví dụ: Kaedehara Kazuha với bộ thánh di vật Thundering Fury 4 món hiện được coi là sự lựa chọn chấp nhận được để kích hoạt phản ứng dendro. Các nhân vật anemo khác trong Genshin Impact có thể gặp các tình huống tương tự."
           }
         },
         "zh-Hans" : {
@@ -433,16 +1153,64 @@
     "settings.display.artifactRating.enabled" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeige die Kompatibilitätsbewertungen von Artefakten in der Ausstellung an"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show artifact compatibility ratings in showcase"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar las calificaciones de compatibilidad de artefactos en la vitrina"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les évaluations de compatibilité des artefacts dans la vitrine"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra le valutazioni di compatibilità degli artefatti nella vetrina"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャラのビルド画面で聖遺物適合度を表示する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "쇼케이스에서 아티팩트 호환성 등급 표시"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показывать рейтинги совместимости артефактов в витрине"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang mga rating ng pagkakatugma ng artifact sa showcase"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiển thị xếp hạng tương thích của hiện vật trong phòng trưng bày"
           }
         },
         "zh-Hans" : {
@@ -462,16 +1230,64 @@
     "settings.display.artifactRating.sectionTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewertungseinstellungen für Artefakte"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Artifact Rating Preferences"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferencias de calificación de artefactos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Préférences d'évaluation des artefacts"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferenze di valutazione dell'artefatto"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "聖遺物適合度評判に関する設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아티팩트 등급 설정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предпочтения рейтинга артефакта"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Kagustuhan sa Pagrarate ng Artifact"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tùy chọn Đánh giá Vật phẩm"
           }
         },
         "zh-Hans" : {
@@ -491,16 +1307,64 @@
     "settings.display.customizingNameForKunikuzushi" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Den Namen für Wanderer anpassen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Customize the name for Wanderer"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personaliza el nombre para Wanderer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personnaliser le nom pour Wanderer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizza il nome di Vagabondo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "放浪者の名前を指定する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "방랑자의 이름을 사용자 정의합니다"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройте имя для Странника"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-customize ang pangalan para sa Wanderer"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tùy chỉnh tên cho Wanderer"
           }
         },
         "zh-Hans" : {
@@ -520,16 +1384,64 @@
     "settings.display.customizingNameForKunikuzushi.currentValueLabel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Angepasster Name für Wanderer"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Customized name for Wanderer"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre personalizado para Viajero"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom personnalisé pour le Vagabond"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome personalizzato per Viaggiatore"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "指定済みの名前"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "방랑자 맞춤 이름"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пользовательское имя для Странника"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pasadyang pangalan para sa Manlalakbay"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tên tùy chỉnh cho Kẻ Lang Thang"
           }
         },
         "zh-Hans" : {
@@ -549,16 +1461,64 @@
     "settings.display.customizingNameForKunikuzushi.prompt" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte geben Sie Ihren bevorzugten Namen für Wanderer (Kunikuzushi) ein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Please enter your preferred name for Wanderer (Kunikuzushi)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, introduce tu nombre preferido para Wanderer (Kunikuzushi)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez entrer votre nom préféré pour Wanderer (Kunikuzushi)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci il tuo nome preferito per Wanderer (Kunikuzushi)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "放浪者（雷電国崩）の名前をお好きにしてご記入ください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "방랑자(쿠니쿠즈시)에 대한 선호 이름을 입력하세요"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите предпочитаемое имя для Странника (Куникузуши)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakisulat ang iyong nais na pangalan para sa Wanderer (Kunikuzushi)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng nhập tên ưa thích của bạn cho Wanderer (Kunikuzushi)"
           }
         },
         "zh-Hans" : {
@@ -578,16 +1538,64 @@
     "settings.display.enkaStatus.defaultDBQueryHost" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktueller EnkaDB-Abfragehost"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Current EnkaDB Query Host"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Host de consulta actual de EnkaDB"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hôte de requête EnkaDB actuel"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Host di interrogazione corrente EnkaDB"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "今の使用中のEnkaDBのクエリーホスト"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 EnkaDB 쿼리 호스트"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущий хост запроса EnkaDB"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasalukuyang Host ng EnkaDB Query"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy chủ truy vấn EnkaDB hiện tại"
           }
         },
         "zh-Hans" : {
@@ -604,48 +1612,67 @@
         }
       }
     },
-    "settings.display.enkaStatus.defaultDBQueryHost.explanation" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This settings automatically changes when the current setting fails on access."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "接続故障すると、このオプションは自動的に変わります。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "该设定会在连接失败时自动变更。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "該設定會在連線失敗時自動變更。"
-          }
-        }
-      }
-    },
     "settings.display.enkaStatus.defaultDBQueryHost.GitHub" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übersee"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Overseas"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Internacional"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outre-mer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oltremare"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "海外のサーバー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "해외"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зарубежный"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sa ibang bansa"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nước ngoài"
           }
         },
         "zh-Hans" : {
@@ -665,16 +1692,64 @@
     "settings.display.enkaStatus.defaultDBQueryHost.GitLink" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Festlandchina"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mainland China"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "China continental"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chine continentale"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cina continentale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "中国大陸のサーバー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중국 본토"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Материковый Китай"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tsina Mainand"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trung Quốc đại lục"
           }
         },
         "zh-Hans" : {
@@ -691,19 +1766,144 @@
         }
       }
     },
+    "settings.display.enkaStatus.defaultDBQueryHost.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung ändert sich automatisch, wenn die aktuelle Einstellung beim Zugriff fehlschlägt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This settings automatically changes when the current setting fails on access."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta configuración cambia automáticamente cuando la configuración actual falla al acceder."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce paramètre change automatiquement lorsque le paramètre actuel échoue lors de l'accès."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa impostazione cambia automaticamente quando l'impostazione attuale non riesce ad accedere."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接続故障すると、このオプションは自動的に変わります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 설정이 액세스에 실패하면 이 설정이 자동으로 변경됩니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эти настройки автоматически изменяются, когда текущие настройки не работают при доступе."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awtomatikong nagbabago ang setting na ito kapag nabigo ang kasalukuyang setting sa pag-access."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt này tự động thay đổi khi cài đặt hiện tại gặp lỗi khi truy cập."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该设定会在连接失败时自动变更。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該設定會在連線失敗時自動變更。"
+          }
+        }
+      }
+    },
     "settings.display.enkaStatus.lastEnkaDBCheckDate" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenbankaktualisierungen wurden zuvor überprüft um:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Database updates are previously checked at:"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las actualizaciones de la base de datos se verifican previamente en:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les mises à jour de la base de données sont préalablement vérifiées à :"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli aggiornamenti del database sono stati precedentemente controllati a:"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "前回のデータベースアップデート点検をした時点"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "데이터베이스 업데이트가 이전에 확인된 시간:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверка обновлений базы данных выполнялась ранее в:"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang mga update sa database ay dating nasuri sa:"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Các cập nhật cơ sở dữ liệu đã được kiểm tra trước tại:"
           }
         },
         "zh-Hans" : {
@@ -723,16 +1923,64 @@
     "settings.display.enkaStatus.sectionTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status der Enka-Datenbank auf dem Gerät"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "On-Device Enka Database Status"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de la Base de Datos Enka en el Dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statut de la base de données Enka sur l'appareil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stato del database Enka sul dispositivo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "該当端末での EnkaDB 資料の状況"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기기 내 엔카 데이터베이스 상태"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Статус локальной базы данных Enka"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status ng Enka Database sa Device"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trạng thái cơ sở dữ liệu Enka trên thiết bị"
           }
         },
         "zh-Hans" : {
@@ -752,16 +2000,64 @@
     "settings.display.showCase.colorizeArtifactSubPropCounts" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Färben Sie die Untereigenschaften der Artefakte, um ihre Anzahl zu unterscheiden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Colorize the sub-properties of artifacts to differentiate their counts"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colorea las subpropiedades de los artefactos para diferenciar sus conteos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colorer les sous-propriétés des artefacts pour différencier leurs comptes"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colorare le sotto-proprietà degli artefatti per differenziare i loro conteggi"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "聖遺物のサブステータスの重複数を色付きで反映する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유물의 하위 속성을 색칠하여 개수를 구별하십시오"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Окрасьте под-свойства артефактов, чтобы различать их количество"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kulay-an ang mga sub-katangian ng mga artifact upang mabukod ang kanilang mga bilang"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tô màu các thuộc tính phụ của hiện vật để phân biệt số lượng của chúng"
           }
         },
         "zh-Hans" : {
@@ -781,16 +2077,64 @@
     "settings.display.showCase.colorizeArtifactSubPropCounts.explain" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von niedrigster bis höchster: Grau, DemiWeiß, Weiß, Orange, Gelb, Rot."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "From the lowest to highest: Gray, DemiWhite, White, Orange, Yellow, Red."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De menor a mayor: Gris, SemiBlanco, Blanco, Naranja, Amarillo, Rojo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du plus bas au plus élevé : Gris, DemiBlanc, Blanc, Orange, Jaune, Rouge."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dal più basso al più alto: Grigio, DemiBianco, Bianco, Arancione, Giallo, Rosso."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "最低から最高まで数えると：灰色、淡白色、白色、オレンジ色、黄色、赤色。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최저에서 최고까지: 회색, 데미화이트, 백색, 주황색, 노란색, 빨간색."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "От самого низкого к самому высокому: Серый, ПолуБелый, Белый, Оранжевый, Желтый, Красный."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mula pinakamababa hanggang pinakamataas: Gray, DemiWhite, White, Orange, Yellow, Red."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Từ thấp nhất đến cao nhất: Xám, Bán Trắng, Trắng, Cam, Vàng, Đỏ."
           }
         },
         "zh-Hans" : {
@@ -810,16 +2154,64 @@
     "settings.display.showCase.forceCharacterWeaponNameFixed" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erzwungene Korrektur des Namens bestimmter Zeichen / Waffen, die in bestimmten Sprachen geschrieben sind"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Force-fixing the name of certain characters / weapons written in certain languages"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corrección forzada del nombre de ciertos personajes / armas escritos en ciertos idiomas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correction forcée du nom de certains personnages / armes écrits dans certaines langues"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correzione forzata del nome di alcuni personaggi/armi scritti in certe lingue"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "特定の言語でのキャラ・武器の名前の表記を訂正する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "특정 언어로 작성된 특정 캐릭터/무기의 이름 강제 수정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Принудительное исправление имен некоторых персонажей / оружия, написанных на определенных языках"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pag-aayos ng pangalan ng ilang mga karakter / armas na nakasulat sa ilang mga wika"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sửa tên bắt buộc của một số ký tự / vũ khí được viết bằng một số ngôn ngữ nhất định"
           }
         },
         "zh-Hans" : {
@@ -839,16 +2231,64 @@
     "settings.display.showCase.forceCharacterWeaponNameFixed.explain" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung ist nur für vereinfachtes und traditionelles chinesisches UI."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "This setting is only for Simplified & Traditional Chinese UI."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta configuración es solo para la interfaz de usuario en chino simplificado y tradicional"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce paramètre est uniquement pour l'interface utilisateur en chinois simplifié et traditionnel."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa impostazione è solo per l'interfaccia utente in cinese semplificato e tradizionale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "簡体中国語のUIで（苗字としての）「钟・钟离」を「锺・锺离」と訂正します。繁体中国語UIの場合、「堇」を「菫」と訂正します。他のこのような状況も同じことをします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 설정은 간체 및 번체 중국어 UI에만 해당됩니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эта настройка предназначена только для упрощенного и традиционного китайского интерфейса пользователя."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang setting na ito ay para lamang sa Simplified at Traditional Chinese na UI."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt này chỉ dành cho giao diện người dùng tiếng Trung Giản thể và Phồn thể."
           }
         },
         "zh-Hans" : {
@@ -868,16 +2308,64 @@
     "settings.display.showCase.namingPrefs.sectionTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benennungspräferenzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Naming Preferences"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferencias de nombres"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Préférences de nomination"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferenze di denominazione"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "名前の設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이름 설정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки именования"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Kagustuhan sa Pangalan"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tùy chọn Đặt tên"
           }
         },
         "zh-Hans" : {
@@ -897,16 +2385,64 @@
     "settings.display.showCase.sectionTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Charaktererstellungsseite & Showcase"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Character Build Page & ShowCase"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Página de Construcción de Personajes y Vitrina"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page de construction de personnage & Vitrine"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagina di Costruzione del Personaggio & Vetrina"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャラのビルド画面とショーケース"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "캐릭터 빌드 페이지 및 쇼케이스"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Страница Характера и Показатель"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pahina ng Pagbuo ng Tauhan & Pagpapakita"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trang Xây Dựng Nhân Vật & Trình Diễn"
           }
         },
         "zh-Hans" : {
@@ -926,16 +2462,64 @@
     "settings.display.showCase.useGenshinStyleCharacterPhotos" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwende Fotos im Genshin-Stil für Star Rail-Charaktere"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Use Genshin-style character photos for Star Rail characters"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar fotos de personajes al estilo Genshin para personajes de Star Rail"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser des photos de personnages de style Genshin pour les personnages de Star Rail"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa foto dei personaggi in stile Genshin per i personaggi di Star Rail"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "スターレイルのキャラに対して原神スタイルのキャラ写真を起用"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "스타 레일 캐릭터에 원신 스타일의 캐릭터 사진 사용"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используйте фотографии персонажей в стиле Genshin для персонажей Star Rail"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gumamit ng Genshin-style na mga larawan ng karakter para sa mga karakter ng Star Rail"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sử dụng ảnh nhân vật phong cách Genshin cho các nhân vật Star Rail"
           }
         },
         "zh-Hans" : {
@@ -955,16 +2539,64 @@
     "settings.display.showCase.useNameCardBGWithGICharacters" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwenden Sie Visitenkarten-Hintergründe für Genshin-Charaktere ID-Fotos und Showcase-Build-Panels"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa fondos de Tarjetas de Presentación para las Fotos de Identificación de Personajes de Genshin y paneles de Construcción de Escaparate"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilisez des arrière-plans de cartes de visite pour les photos d'identité des personnages de Genshin et les panneaux ShowCase Build"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa sfondi di Namecard per le foto ID dei personaggi di Genshin e i pannelli della vetrina di Build"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "原神のキャラクターの画像とビルド画面には名刺背景を起用"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원신 캐릭터의 ID 사진과 쇼케이스 빌드 패널에 명함 배경 사용"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используйте фоны визиток для фотографий персонажей в Genshin и панелей сборки витрины"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gumamit ng mga background ng Namecard para sa mga ID Photos ng Genshin Characters at mga panel ng ShowCase Build"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sử dụng nền Thẻ Tên cho ảnh ID của Nhân Vật Genshin và các bảng ShowCase Build"
           }
         },
         "zh-Hans" : {
@@ -984,16 +2616,64 @@
     "settings.display.showCase.useRealCharacterNames" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stattdessen echte Namen der Charaktere anzeigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show characters’ real names instead"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar los nombres reales de los personajes en su lugar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les vrais noms des personnages à la place"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra invece i veri nomi dei personaggi"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "一部のキャラの本名を表示する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "캐릭터의 실제 이름을 대신 표시합니다"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показывать настоящие имена персонажей вместо этого"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang tunay na pangalan ng mga karakter sa halip"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiển thị tên thật của nhân vật thay thế"
           }
         },
         "zh-Hans" : {

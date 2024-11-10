@@ -16,6 +16,12 @@
             "value" : "Admonition"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advertencia"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -44,6 +50,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги О Наставлениях"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babala"
           }
         },
         "vi" : {
@@ -81,6 +93,12 @@
             "value" : "Ballad"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balada"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -109,6 +127,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги О Поэзии"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balada"
           }
         },
         "vi" : {
@@ -146,6 +170,12 @@
             "value" : "Conflict"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conflicto"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -174,6 +204,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Раздоре"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagkakasalungatan"
           }
         },
         "vi" : {
@@ -211,6 +247,12 @@
             "value" : "Contention"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contención"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -239,6 +281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Соперничестве"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alitan"
           }
         },
         "vi" : {
@@ -276,6 +324,12 @@
             "value" : "Diligence"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diligencia"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -304,6 +358,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги Об Усердии"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasipagan"
           }
         },
         "vi" : {
@@ -341,6 +401,12 @@
             "value" : "Elegance"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegancia"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -369,6 +435,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги Об Изяществе"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kariktan"
           }
         },
         "vi" : {
@@ -406,6 +478,12 @@
             "value" : "Equity"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acciones"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -434,6 +512,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Беспристрастии"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagkakapantay-pantay"
           }
         },
         "vi" : {
@@ -471,6 +555,12 @@
             "value" : "Freedom"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libertad"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -499,6 +589,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги О Свободе"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalayaan"
           }
         },
         "vi" : {
@@ -536,6 +632,12 @@
             "value" : "Gold"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oro"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -564,6 +666,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги О Золоте"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ginto"
           }
         },
         "vi" : {
@@ -601,6 +709,12 @@
             "value" : "Ingenuity"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingenio"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -629,6 +743,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги Об Остроумии"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katalinuhan"
           }
         },
         "vi" : {
@@ -666,6 +786,12 @@
             "value" : "Justice"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Justicia"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -694,6 +820,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Справедливости"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katarungan"
           }
         },
         "vi" : {
@@ -731,6 +863,12 @@
             "value" : "Kindling"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Astillas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -759,6 +897,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сжигании"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panggatong"
           }
         },
         "vi" : {
@@ -796,6 +940,12 @@
             "value" : "Light"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luz"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -824,6 +974,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги О Свете"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liwanag"
           }
         },
         "vi" : {
@@ -861,6 +1017,12 @@
             "value" : "Order"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordenar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -889,6 +1051,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Порядке"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Order"
           }
         },
         "vi" : {
@@ -926,6 +1094,12 @@
             "value" : "Praxis"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Praxis"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -954,6 +1128,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги О Честности"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gawain"
           }
         },
         "vi" : {
@@ -991,6 +1171,12 @@
             "value" : "Prosperity"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prosperidad"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1019,6 +1205,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги О Процветании"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasaganaan"
           }
         },
         "vi" : {
@@ -1056,6 +1248,12 @@
             "value" : "Resistance"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resistencia"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1084,6 +1282,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги О Борьбе"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagtutol"
           }
         },
         "vi" : {
@@ -1121,6 +1325,12 @@
             "value" : "Transience"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transitoriedad"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1149,6 +1359,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Книги О Бренности"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagka-madalian"
           }
         },
         "vi" : {
@@ -1186,6 +1402,12 @@
             "value" : "Aerosiderite"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aerosiderita"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1214,6 +1436,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чёрный Сидерит"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aerosiderite"
           }
         },
         "vi" : {
@@ -1251,6 +1479,12 @@
             "value" : "Ancient Chord"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acorde Antiguo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1279,6 +1513,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Древней Струны"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sinaunang Kordyon"
           }
         },
         "vi" : {
@@ -1316,6 +1556,12 @@
             "value" : "Boreal Wolf"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobo Boreal"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1344,6 +1590,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Арктический Волк"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boreal na Lobo"
           }
         },
         "vi" : {
@@ -1381,6 +1633,12 @@
             "value" : "Decarabian"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decarabian"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1409,6 +1667,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Декабриан"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decarabian"
           }
         },
         "vi" : {
@@ -1446,6 +1710,12 @@
             "value" : "Dewdrop"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gota de rocío"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1474,6 +1744,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чистой Капли Росы"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patak ng hamog"
           }
         },
         "vi" : {
@@ -1511,6 +1787,12 @@
             "value" : "Distant Sea"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mar lejano"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1539,6 +1821,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Внешнее Море"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malayong Dagat"
           }
         },
         "vi" : {
@@ -1576,6 +1864,12 @@
             "value" : "Mist Veiled"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niebla Velada"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1604,6 +1898,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заоблачное Море"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kinukubli ng Ulap"
           }
         },
         "vi" : {
@@ -1641,6 +1941,12 @@
             "value" : "Gladiator"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gladiador"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1669,6 +1975,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Львиный Клык"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mandirigma"
           }
         },
         "vi" : {
@@ -1706,6 +2018,12 @@
             "value" : "Guyun"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guyun"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1734,6 +2052,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Гуюнь"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guyun"
           }
         },
         "vi" : {
@@ -1771,6 +2095,12 @@
             "value" : "Mask"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máscara"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1799,6 +2129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Маска"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maskara"
           }
         },
         "vi" : {
@@ -1836,6 +2172,12 @@
             "value" : "Narukami"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narukami"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1864,6 +2206,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Наруками"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narukami"
           }
         },
         "vi" : {
@@ -1901,6 +2249,12 @@
             "value" : "Night-Wind"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viento de la Noche"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1929,6 +2283,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ночного Ветра"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hatinggabi-Hangin"
           }
         },
         "vi" : {
@@ -1966,6 +2326,12 @@
             "value" : "Oasis Garden"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jardín Oasis"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1994,6 +2360,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Цветущий Оазис"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardin ng Oasis"
           }
         },
         "vi" : {
@@ -2031,6 +2403,12 @@
             "value" : "Pristine Sea"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mar de Agua Pura"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2059,6 +2437,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чаша Непорочного Моря"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Makintab na Dagat"
           }
         },
         "vi" : {
@@ -2096,6 +2480,12 @@
             "value" : "Sacred Lord"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Señor Sagrado"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2124,6 +2514,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Святого Мудреца"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banal na Panginoon"
           }
         },
         "vi" : {
@@ -2161,6 +2557,12 @@
             "value" : "Sacrificial Heart"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corazón Sacrificial"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2189,6 +2591,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Жертвенного Сердца"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pusong Handog"
           }
         },
         "vi" : {
@@ -2226,6 +2634,12 @@
             "value" : "Scorching Might"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poder Abrasador"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2254,6 +2668,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пылающая Мощь"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nag-aalab na Lakas"
           }
         },
         "vi" : {
@@ -2291,6 +2711,12 @@
             "value" : "Forest Dew"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rocío del Bosque"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2319,6 +2745,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ледяная Роса"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hamog sa Kagubatan"
           }
         },
         "vi" : {

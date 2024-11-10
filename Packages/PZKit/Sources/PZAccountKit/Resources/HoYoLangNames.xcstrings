@@ -4,10 +4,22 @@
     "hoyo.lang.chs" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vereinfachtes Chinesisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Simplified Chinese"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chino simplificado"
           }
         },
         "fr" : {
@@ -40,6 +52,12 @@
             "value" : "Упрощенный Китайский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pinapayak na Tsino"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -63,10 +81,22 @@
     "hoyo.lang.cht" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traditionelles Chinesisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traditional Chinese"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chino tradicional"
           }
         },
         "fr" : {
@@ -99,6 +129,12 @@
             "value" : "Традиционный Китайский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tradisyonal na Tsino"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -122,10 +158,22 @@
     "hoyo.lang.de" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deutsch (Deutsch)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deutsch (German)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alemán (German)"
           }
         },
         "fr" : {
@@ -158,6 +206,12 @@
             "value" : "Немецкий"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aleman (German)"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -181,10 +235,22 @@
     "hoyo.lang.en" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Englisch (Vereinigte Staaten)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "English (United States)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inglés (Estados Unidos)"
           }
         },
         "fr" : {
@@ -217,6 +283,12 @@
             "value" : "Английский (Соединенные Штаты)"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingles (Estados Unidos)"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -240,10 +312,22 @@
     "hoyo.lang.es" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spanisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Spanish"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Español"
           }
         },
         "fr" : {
@@ -276,6 +360,12 @@
             "value" : "Испанский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espanyol"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -299,10 +389,22 @@
     "hoyo.lang.fr" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Französisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "French"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Francés"
           }
         },
         "fr" : {
@@ -335,6 +437,12 @@
             "value" : "Французский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pranses"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -358,10 +466,22 @@
     "hoyo.lang.id" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indonesisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Indonesian"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indonesio"
           }
         },
         "fr" : {
@@ -394,6 +514,12 @@
             "value" : "Индонезийский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indonesian"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -417,10 +543,22 @@
     "hoyo.lang.it" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italienisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Italian"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italiano"
           }
         },
         "fr" : {
@@ -453,6 +591,12 @@
             "value" : "Итальянский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italyano"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -476,10 +620,22 @@
     "hoyo.lang.jp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Japanisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Japanese"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Japonés"
           }
         },
         "fr" : {
@@ -512,6 +668,12 @@
             "value" : "Японский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapones"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -535,10 +697,22 @@
     "hoyo.lang.kr" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koreanisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Korean"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coreano"
           }
         },
         "fr" : {
@@ -571,6 +745,12 @@
             "value" : "Корейский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koreano"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -594,10 +774,22 @@
     "hoyo.lang.pt" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portugiesisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Portuguese"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portugués"
           }
         },
         "fr" : {
@@ -630,6 +822,12 @@
             "value" : "Португальский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portuges"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -653,10 +851,22 @@
     "hoyo.lang.ru" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Russisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Russian"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruso"
           }
         },
         "fr" : {
@@ -689,6 +899,12 @@
             "value" : "Русский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruso"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -712,10 +928,22 @@
     "hoyo.lang.th" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thailändisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thai"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tailandés"
           }
         },
         "fr" : {
@@ -748,6 +976,12 @@
             "value" : "Тайский"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thai"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -771,10 +1005,22 @@
     "hoyo.lang.tr" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Türkisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Turkish"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turco"
           }
         },
         "fr" : {
@@ -807,6 +1053,12 @@
             "value" : "Турецкий"
           }
         },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turko"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -830,10 +1082,22 @@
     "hoyo.lang.vi" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vietnamesisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vietnamese"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vietnamita"
           }
         },
         "fr" : {
@@ -864,6 +1128,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вьетнамский"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biyetnames"
           }
         },
         "vi" : {

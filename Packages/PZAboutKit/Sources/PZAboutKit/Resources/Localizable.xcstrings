@@ -3,16 +3,64 @@
   "strings" : {
     "aboutKit.3rdParty.headline" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsere App verwendet die folgenden Open-Source-Komponenten und Drittanbieter-APIs, und wir möchten deren Autoren danken."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Our app uses the following open source components and third-party APIs, and we would like to thank their authors."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuestra aplicación utiliza los siguientes componentes de código abierto y APIs de terceros, y nos gustaría agradecer a sus autores."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notre application utilise les composants open source suivants et des API tierces, et nous tenons à remercier leurs auteurs."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La nostra app utilizza i seguenti componenti open source e API di terze parti, e desideriamo ringraziare i loro autori."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "弊アプリは次のFOSSコンポーネントと他者 API を使用しており、それらの作成者に感謝します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저희 앱은 다음 오픈 소스 구성 요소 및 타사 API를 사용하며, 저자들에게 감사의 말씀을 전합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наше приложение использует следующие компоненты с открытым исходным кодом и сторонние API, и мы хотим поблагодарить их авторов."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gumagamit ang aming app ng mga sumusunod na open source na bahagi at third-party na mga API, at nais naming pasalamatan ang kanilang mga may-akda."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ứng dụng của chúng tôi sử dụng các thành phần mã nguồn mở và API bên thứ ba sau, và chúng tôi xin cảm ơn các tác giả của chúng."
           }
         },
         "zh-Hans" : {
@@ -31,16 +79,64 @@
     },
     "aboutKit.3rdParty.navTitle" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anerkennung für Open-Source-Komponenten und Drittanbieter-APIs"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acknowledgement for open source components and third-party APIs"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reconocimiento por componentes de código abierto y API de terceros"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remerciements pour les composants open source et les API tierces"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riconoscimento per i componenti open source e le API di terze parti"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "FOSS コンポーネントおよび他者 API に対する謝辞"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오픈 소스 구성 요소 및 타사 API에 대한 인정"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подтверждение для компонентов с открытым исходным кодом и сторонних API"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagkilala para sa mga sangkap na open source at mga third-party API"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thừa nhận các thành phần mã nguồn mở và các API của bên thứ ba"
           }
         },
         "zh-Hans" : {
@@ -59,16 +155,64 @@
     },
     "aboutKit.3rdParty.navTitle.shortened" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komponenten von Drittanbietern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "3rd-Party Components"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Componentes de terceros"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Composants tiers"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Componenti di terze parti"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "他者コンポーネント"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "타사 구성 요소"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сторонние компоненты"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Bahagi ng Ikatlong Partido"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thành phần bên thứ ba"
           }
         },
         "zh-Hans" : {
@@ -88,16 +232,64 @@
     "aboutKit.aboutView.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über den Pizza-Helfer"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "About The Pizza Helper"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de The Pizza Helper"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de Pizza Helper"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni su The Pizza Helper"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ピザ助手(無印)について"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "피자 도우미 정보"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О программе The Pizza Helper"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tungkol sa Pizza Helper"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Về Trợ Lý Pizza"
           }
         },
         "zh-Hans" : {
@@ -116,16 +308,64 @@
     },
     "aboutKit.aboutView.navTitle.app" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über die App"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "About the App"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de la aplicación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de l'application"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni sull'app"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリについて"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 정보"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О приложении"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tungkol sa App"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thông tin ứng dụng"
           }
         },
         "zh-Hans" : {
@@ -144,16 +384,64 @@
     },
     "aboutKit.aboutView.navTitle.crew" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über die Crew"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "About the Crew"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre la tripulación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de l'équipage"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni sull'equipaggio"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "開発チームについて"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "승무원 소개"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О экипаже"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tungkol sa Crew"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Về Phi hành đoàn"
           }
         },
         "zh-Hans" : {
@@ -172,7 +460,31 @@
     },
     "aboutKit.aboutView.tab.app" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplicación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Application"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "App"
@@ -182,6 +494,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приложение"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ứng dụng"
           }
         },
         "zh-Hans" : {
@@ -200,16 +536,64 @@
     },
     "aboutKit.aboutView.tab.crew" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Besatzung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crew"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tripulación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Équipe"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equipaggio"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "チーム"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "승무원"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экипаж"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koponan"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đội ngũ"
           }
         },
         "zh-Hans" : {
@@ -229,16 +613,64 @@
     "aboutKit.appStoreReview.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im App Store bewerten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Review on App Store"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reseña en App Store"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laisser un avis sur l'App Store"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recensisci su App Store"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Store でご評価を"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 스토어에서 리뷰 작성"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оставить отзыв в App Store"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suriin sa App Store"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đánh giá trên App Store"
           }
         },
         "zh-Hans" : {
@@ -257,16 +689,64 @@
     },
     "aboutKit.chatrooms.header" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chatrooms"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chatrooms"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salas de chat"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salles de chat"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chatroom"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "チャットルーム"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채팅방"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чаты"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Silid-chat"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phòng trò chuyện"
           }
         },
         "zh-Hans" : {
@@ -285,16 +765,64 @@
     },
     "aboutKit.chatrooms.joinQQGroup" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ-Chatgruppe beitreten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Join QQ Chat Group"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Únete al grupo de chat de QQ"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejoindre le groupe de chat QQ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unisciti al gruppo chat QQ"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "QQチャットグループに参加"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ 채팅 그룹에 참여"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Присоединиться к группе чата QQ"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sumali sa QQ Chat Group"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tham gia Nhóm Chat QQ"
           }
         },
         "zh-Hans" : {
@@ -313,16 +841,64 @@
     },
     "aboutKit.chatrooms.joinTelegram" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram-Kanal beitreten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Join Telegram Channel"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unirse al canal de Telegram"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejoindre le canal Telegram"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unisciti al canale Telegram"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telegramチャンネルに参加"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "텔레그램 채널 참가"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Присоединиться к каналу в Telegram"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sumali sa Telegram Channel"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tham gia kênh Telegram"
           }
         },
         "zh-Hans" : {
@@ -341,16 +917,64 @@
     },
     "aboutKit.contactMethod.163MusicArtistHP" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NetEase Music Künstlerseite"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "NetEase Music Artist Page"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Página del Artista de NetEase Music"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page de l'artiste NetEase Music"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagina Artista NetEase Music"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "NetEase 作曲家作品HP"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "넷이즈 뮤직 아티스트 페이지"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Страница исполнителя в NetEase Music"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pahina ng Artista sa NetEase Music"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trang Nghệ Sĩ NetEase Music"
           }
         },
         "zh-Hans" : {
@@ -369,6 +993,12 @@
     },
     "aboutKit.contactMethod.appStore" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        },
         "en" : {
           "variations" : {
             "device" : {
@@ -387,6 +1017,24 @@
             }
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Méthode de contact App Store"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metodo di contatto App Store"
+          }
+        },
         "ja" : {
           "variations" : {
             "device" : {
@@ -403,6 +1051,30 @@
                 }
               }
             }
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 스토어"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "оценка в App Store"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paraan ng Pakikipag-ugnayan: App Store"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cửa hàng ứng dụng"
           }
         },
         "zh-Hans" : {
@@ -445,7 +1117,31 @@
     },
     "aboutKit.contactMethod.bilibili" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilibili"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilibili"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilibili"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilibili"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bilibili"
@@ -455,6 +1151,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ビリビリ (Bilibili)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilibili"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilibili"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilibili"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilibili"
           }
         },
         "zh-Hans" : {
@@ -473,13 +1193,61 @@
     },
     "aboutKit.contactMethod.blueSky" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "BlueSky"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "블루스카이"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ГолубоеНебо"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "BlueSky"
@@ -501,7 +1269,31 @@
     },
     "aboutKit.contactMethod.discord" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Discord"
@@ -511,6 +1303,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Discord"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "디스코드"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дискорд"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bất hòa"
           }
         },
         "zh-Hans" : {
@@ -529,7 +1345,31 @@
     },
     "aboutKit.contactMethod.douyin" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Douyin (TikTok CN)"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Douyin (TikTok CN)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Douyin (TikTok CN)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Douyin (TikTok CN)"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Douyin (TikTok CN)"
@@ -539,6 +1379,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "抖音 (ドウイン)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "틱톡 중국 버전 (Douyin)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Douyin (ТикТок Китай)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Douyin (TikTok CN)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Douyin (TikTok Trung Quốc)"
           }
         },
         "zh-Hans" : {
@@ -557,13 +1421,61 @@
     },
     "aboutKit.contactMethod.facebook" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Facebook"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "페이스북"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Facebook"
@@ -585,13 +1497,61 @@
     },
     "aboutKit.contactMethod.github" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitHub"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitHub"
@@ -613,16 +1573,64 @@
     },
     "aboutKit.contactMethod.homepage" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startseite"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Home Page"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Página de inicio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page d'accueil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagina principale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "HP"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "홈 페이지"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Главная страница"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pahina ng Tahanan"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trang chủ"
           }
         },
         "zh-Hans" : {
@@ -641,16 +1649,64 @@
     },
     "aboutKit.contactMethod.officialWebsite" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offizielle Startseite"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Official Home Page"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Página Oficial de Inicio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page d'accueil officielle"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagina Ufficiale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "公式HP"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공식 홈 페이지"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Официальная домашняя страница"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opisyal na Home Page"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trang chủ chính thức"
           }
         },
         "zh-Hans" : {
@@ -669,16 +1725,64 @@
     },
     "aboutKit.contactMethod.qq.channel" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ-Kanal"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "QQ Channel"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canal de QQ"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canal QQ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canale QQ"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "QQチャネル"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ 채널"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Канал QQ"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Channel ng QQ"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kênh QQ"
           }
         },
         "zh-Hans" : {
@@ -697,16 +1801,64 @@
     },
     "aboutKit.contactMethod.qq.group.initials" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gruppe: "
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Group: "
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grupo: "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Groupe :"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gruppo: "
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "グループ: "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그룹: "
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Группа:"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grupo: "
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhóm: "
           }
         },
         "zh-Hans" : {
@@ -725,13 +1877,61 @@
     },
     "aboutKit.contactMethod.qq.personal" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "QQ"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "QQ"
@@ -753,7 +1953,31 @@
     },
     "aboutKit.contactMethod.telegram" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telegram"
@@ -763,6 +1987,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telegram"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "텔레그램"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Телеграм"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điện tín"
           }
         },
         "zh-Hans" : {
@@ -781,16 +2029,64 @@
     },
     "aboutKit.contactMethod.tiktok" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok Global"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "TikTok Global"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok Global"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok Global"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok Globale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "TikTok (国際版)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "틱톡 글로벌"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТикТок Глобал"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok Global"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok Toàn cầu"
           }
         },
         "zh-Hans" : {
@@ -809,13 +2105,61 @@
     },
     "aboutKit.contactMethod.twitter" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "X (Twitter)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (트위터)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Твиттер)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "X (Twitter)"
@@ -837,13 +2181,61 @@
     },
     "aboutKit.contactMethod.youtube" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "YouTube"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유튜브"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "YouTube"
@@ -865,16 +2257,64 @@
     },
     "aboutKit.contributor.subtitleAsAssetCrew.koni" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Symbol Illustrator, Der Pizza Helfer (v5)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Icon Illustrator, The Pizza Helper (v5)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilustrador de iconos de aplicaciones, El Ayudante de Pizza (v5)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrateur d'icônes d'application, L'assistant pizza (v5)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrazione Icona App, L'assistente della Pizza (v5)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリアイコン絵師（ピザ助手 (無印) v5）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 아이콘 일러스트레이터, 피자 도우미 (v5)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иллюстратор значков приложения, помощник по пицце (v5)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrator ng App Icon, Ang Katulong ng Pizza (v5)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trình minh họa Biểu tượng Ứng dụng, Trợ lý Pizza (v5)"
           }
         },
         "zh-Hans" : {
@@ -893,16 +2333,64 @@
     },
     "aboutKit.contributor.subtitleAsAssetCrew.lava" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Symbol-Illustrator, Pizza-Helfer für HSR"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Icon Illustrator, Pizza Helper for HSR"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilustrador de Iconos de Aplicación, Ayudante de Pizza para HSR"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrateur d'icônes d'application, assistant pizza pour HSR"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustratore di Icone App, Assistente per la Pizza per HSR"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリアイコン絵師（崩スタピザ助手）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 아이콘 일러스트레이터, HSR를 위한 피자 도우미"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иллюстратор иконок приложения, помощник по пицце для HSR"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrador ng Icon ng App, Pantulong sa Pizza para sa HSR"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Người tạo biểu tượng ứng dụng, trợ lý Pizza cho HSR"
           }
         },
         "zh-Hans" : {
@@ -921,16 +2409,64 @@
     },
     "aboutKit.contributor.subtitleAsAssetCrew.xinzoruo" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Symbol-Illustrator, Pizza-Helfer für Genshin (v4)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Icon Illustrator, Pizza Helper for Genshin (v4)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilustrador de Iconos de Aplicación, Ayudante de Pizza para Genshin (v4)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrateur d'icônes d'application, Aide pizza pour Genshin (v4)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustratore di icone per app, Assistente di Pizza per Genshin (v4)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "アプリアイコン絵師（原神ピザ助手 v4）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 아이콘 일러스트레이터, 원신의 피자 도우미 (v4)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иллюстратор иконок приложения, Помощник по пицце для Genshin (v4)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrador ng Icon ng App, Taga-tulong sa Pizza para sa Genshin (v4)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Người thiết kế biểu tượng ứng dụng, Trợ thủ Pizza cho Genshin (v4)"
           }
         },
         "zh-Hans" : {
@@ -949,16 +2485,64 @@
     },
     "aboutKit.contributor.subtitleAsAssetCrew.yulijushi" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschiedene Vermögenswerte Beitragszahler"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Miscellaneous Asset Contributor"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colaborador de Activos Diversos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contributeur d'Actifs Divers"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contributore di Risorse Varie"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "一部の雑多素材提供者"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기타 자산 기여자"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разное: Вкладчик активов"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iba't ibang Kontribyutor ng Ari-arian"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Người đóng góp tài sản khác nhau"
           }
         },
         "zh-Hans" : {
@@ -977,16 +2561,64 @@
     },
     "aboutKit.contributor.subtitleAsMainCrew.hakubill" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Entwickler, Pizza Helfer für HSR - Entwickler, Pizza Helfer für Genshin (v1-v4) - Entwickler, Pizza Helfer für Blue Archive - Entwickler, Der Pizza Helfer (v5) - Öffentlichkeitsarbeit (Ausland)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "- Dev, Pizza Helper for HSR\n- Dev, Pizza Helper for Genshin (v1-v4)\n- Dev, Pizza Helper for Blue Archive\n- Dev, The Pizza Helper (v5)\n- Public Relations (Overseas)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Desarrollador, Asistente de Pizza para HSR - Desarrollador, Asistente de Pizza para Genshin (v1-v4) - Desarrollador, Asistente de Pizza para Blue Archive - Desarrollador, El Asistente de Pizza (v5) - Relaciones Públicas (Internacional)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Développeur, Aide-Pizza pour HSR\n- Développeur, Aide-Pizza pour Genshin (v1-v4)\n- Développeur, Aide-Pizza pour Blue Archive\n- Développeur, L'Aide-Pizza (v5)\n- Relations Publiques (Internationale)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Dev, Helper Pizza per HSR - Dev, Helper Pizza per Genshin (v1-v4) - Dev, Helper Pizza per Blue Archive - Dev, Il Helper Pizza (v5) - Relazioni Pubbliche (Estero)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "- プログラマー（崩スタピザ）\n- プログラマー（原神ピザ v1-v4）\n- プログラマー（BAピザ）\n- プログラマー（ピザ助手 (無印) v5）\n- PR (中国大陸以外)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 개발자, HSR 피자 도우미 - 개발자, 원신 피자 도우미 (v1-v4) - 개발자, 블루 아카이브 피자 도우미 - 개발자, 피자 도우미 (v5) - 해외 홍보 담당"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Разработчик, помощник Pizza для HSR\n- Разработчик, помощник Pizza для Genshin (v1-v4)\n- Разработчик, помощник Pizza для Blue Archive\n- Разработчик, помощник Pizza (v5)\n- Связи с общественностью (за рубежом)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Dev, Pizza Helper para sa HSR  \n- Dev, Pizza Helper para sa Genshin (v1-v4)  \n- Dev, Pizza Helper para sa Blue Archive  \n- Dev, The Pizza Helper (v5)  \n- Pampublikong Relasyon (Pang-ibayong Dagat)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Phát triển, Pizza Helper cho HSR - Phát triển, Pizza Helper cho Genshin (v1-v4) - Phát triển, Pizza Helper cho Blue Archive - Phát triển, The Pizza Helper (v5) - Quan hệ công chúng (Quốc tế)"
           }
         },
         "zh-Hans" : {
@@ -1005,16 +2637,64 @@
     },
     "aboutKit.contributor.subtitleAsMainCrew.lava" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Teamleiter & Gründer\n- Entwickler, Der Pizza Helfer (v5)\n- Entwickler, Pizza Helfer für HSR\n- Entwickler, Pizza Helfer für Genshin (v1-v4)\n- Öffentlichkeitsarbeit (Festlandchina)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "- Team Leader & Founder\n- Dev, The Pizza Helper (v5)\n- Dev, Pizza Helper for HSR\n- Dev, Pizza Helper for Genshin (v1-v4)\n- Public Relations (Mainland China)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Líder de equipo y fundador  \n- Desarrollador, The Pizza Helper (v5)  \n- Desarrollador, Pizza Helper para HSR  \n- Desarrollador, Pizza Helper para Genshin (v1-v4)  \n- Relaciones públicas (China continental)  "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Chef d'équipe et fondateur\n- Développeur, L'Aide Pizza (v5)\n- Développeur, L'Aide Pizza pour HSR\n- Développeur, L'Aide Pizza pour Genshin (v1-v4)\n- Relations publiques (Chine continentale)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Team Leader e Fondatore\n- Sviluppatore, The Pizza Helper (v5)\n- Sviluppatore, Pizza Helper per HSR\n- Sviluppatore, Pizza Helper per Genshin (v1-v4)\n- Relazioni Pubbliche (Cina Continentale)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "- チームリーダー＆プロジェクト創立者\n- プログラマー（ピザ助手 (無印) v5）\n- プログラマー（崩スタピザ）\n- プログラマー（原神ピザ v1-v4）\n- PR (中国大陸)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 팀 리더 및 창립자 - 개발자, 피자 도우미(v5) - 개발자, HSR 피자 도우미 - 개발자, Genshin 피자 도우미(v1-v4) - 대외홍보(중국 본토)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Лидер команды и основатель - Разработчик, The Pizza Helper (v5) - Разработчик, Pizza Helper для HSR - Разработчик, Pizza Helper для Genshin (v1-v4) - Связи с общественностью (Китай)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Pinuno ng Koponan at Tagapagtatag\n- Dev, The Pizza Helper (v5)\n- Dev, Pizza Helper para sa HSR\n- Dev, Pizza Helper para sa Genshin (v1-v4)\n- Pampublikong Relasyon (Mainland China)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Trưởng nhóm & Người sáng lập - Phát triển, The Pizza Helper (v5) - Phát triển, Pizza Helper cho HSR - Phát triển, Pizza Helper cho Genshin (v1-v4) - Quan hệ công chúng (Trung Quốc đại lục)"
           }
         },
         "zh-Hans" : {
@@ -1033,16 +2713,64 @@
     },
     "aboutKit.contributor.subtitleAsMainCrew.shikisuen" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Engine Architect & Entwickler, Der Pizza-Helfer (v5) - Betreuer, Pizza-Helfer für HSR - Betreuer, Pizza-Helfer für Genshin (v3-v4)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "- Engine Architect & Dev, The Pizza Helper (v5)\n- Maintainer, Pizza Helper for HSR\n- Maintainer, Pizza Helper for Genshin (v3-v4)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Arquitecto de Motor y Desarrollador, The Pizza Helper (v5)\n- Mantenedor, Pizza Helper para HSR\n- Mantenedor, Pizza Helper para Genshin (v3-v4)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Architecte et développeur du moteur, The Pizza Helper (v5) - Responsable, Pizza Helper pour HSR - Responsable, Pizza Helper pour Genshin (v3-v4)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Architetto e sviluppatore del motore, The Pizza Helper (v5) - Manutentore, Pizza Helper per HSR - Manutentore, Pizza Helper per Genshin (v3-v4)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "- エンジン建築士＆プログラマー（ピザ助手 (無印) v5）\n- ソフトウェア保守（崩スタピザ）\n- ソフトウェア保守（原神ピザ v3-v4）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 엔진 설계자 및 개발자, 피자 헬퍼 (v5)  \n- 유지 보수 담당자, HSR용 피자 헬퍼  \n- 유지 보수 담당자, Genshin용 피자 헬퍼 (v3-v4)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Инженер-разработчик, Помощник пиццайоло (v5) - Ответственный за сопровождение, Помощник пиццайоло для HSR - Ответственный за сопровождение, Помощник пиццайоло для Genshin (v3-v4)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Arkitekto ng Engine at Dev, Ang Pizza Helper (v5)\n- Tagapangalaga, Pizza Helper para sa HSR\n- Tagapangalaga, Pizza Helper para sa Genshin (v3-v4)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Kiến trúc sư & Nhà phát triển Công cụ, The Pizza Helper (v5) - Người duy trì, Pizza Helper for HSR - Người duy trì, Pizza Helper for Genshin (v3-v4)"
           }
         },
         "zh-Hans" : {
@@ -1061,16 +2789,64 @@
     },
     "aboutKit.contributors.category.assets" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einige Asset-Beitragende"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Some Asset Contributors"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algunos contribuyentes de recursos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certains Contributeurs de Ressources"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alcuni Contributori di Risorse"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "一部の素材提供者"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일부 자산 기여자"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Некоторые участники активов"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilang mga Nag-ambag ng Ari-arian"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một số Người Đóng góp Tài sản"
           }
         },
         "zh-Hans" : {
@@ -1089,16 +2865,64 @@
     },
     "aboutKit.contributors.category.i18n.current" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einige Lokalisierungsmitwirkende"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Some Localization Contributors"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algunos Colaboradores de Localización"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certains contributeurs à la localisation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alcuni Contributori di Localizzazione"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "一部のアプリ翻訳提供者"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일부 현지화 기여자"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Некоторые участники локализации"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilang Nag-aambag sa Lokal na Wika"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một số người đóng góp bản địa hóa"
           }
         },
         "zh-Hans" : {
@@ -1117,16 +2941,64 @@
     },
     "aboutKit.contributors.category.i18n.previous" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einige frühere Localization-Mitwirkende"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Some Previous Localization Contributors"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algunos Colaboradores Anteriores de Localización"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certains contributeurs précédents à la localisation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alcuni Precedenti Collaboratori alla Localizzazione"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "これ以前の一部のアプリ翻訳提供者"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이전 로컬라이제이션 기여자"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Некоторые предыдущие участники локализации"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilang mga Naunang Tagapag-ambag ng Lokalisasyon"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một số người đóng góp bản địa hóa trước đây"
           }
         },
         "zh-Hans" : {
@@ -1145,16 +3017,64 @@
     },
     "aboutKit.contributors.category.mainCrew" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hauptentwicklungsteam"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Main Developer Team"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equipo Principal de Desarrolladores"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Équipe principale de développeurs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Team di Sviluppo Principale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "開発チーム"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "주요 개발 팀"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Основная команда разработчиков"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pangunahing Koponan ng Mga Developer"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhóm Phát Triển Chính"
           }
         },
         "zh-Hans" : {
@@ -1174,7 +3094,31 @@
     "aboutKit.contributors.name.art34222" : {
       "comment" : "Localization Contributor (RU)",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Art34222"
@@ -1184,6 +3128,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Art34222"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hội viên Đóng góp Nội dung Địa phương (RU)"
           }
         },
         "zh-Hans" : {
@@ -1203,16 +3171,64 @@
     "aboutKit.contributors.name.hakubill" : {
       "comment" : "Crew Member",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haku Bill (Kalziumkarbonat im Wasser)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Haku Bill (水里的碳酸钙)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haku Bill (Carbonato de calcio en el agua)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haku Bill (碳酸钙 dans l'eau)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haku Bill (Carbonato di calcio nell'acqua)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Haku Bill (水中炭酸ｶﾙｼｳﾑ)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "하쿠 빌 (물 속의 탄산칼슘)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хаку Билл (кальций в воде)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haku Bill (Kaltsyum Karbonat sa Tubig)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haku Bill (Canxi cacbonat trong nước)"
           }
         },
         "zh-Hans" : {
@@ -1232,13 +3248,61 @@
     "aboutKit.contributors.name.koni" : {
       "comment" : "App Icon Illustrator (v5)",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Koni"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "코니"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кони"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Koni"
@@ -1261,13 +3325,61 @@
     "aboutKit.contributors.name.lava" : {
       "comment" : "Crew Member",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lava (CanglongCL)"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "용암 (CanglongCL)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лава (CanglongCL)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lava (CanglongCL)"
@@ -1290,13 +3402,61 @@
     "aboutKit.contributors.name.ngo" : {
       "comment" : "Localization Contributor (VI)",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ngô Phi Phương"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ngô Phi Phương"
@@ -1319,13 +3479,61 @@
     "aboutKit.contributors.name.qi" : {
       "comment" : "Localization Contributor (FR)",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Qi"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ци"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Qi"
@@ -1348,7 +3556,31 @@
     "aboutKit.contributors.name.shikisuen" : {
       "comment" : "Crew Member",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiki Suen (孙志贵)"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiki Suen (孙志贵)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiki Suen (孙志贵)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiki Suen (孙志贵)"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Shiki Suen (孙志贵)"
@@ -1358,6 +3590,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "孫 志貴（ｺﾉｲﾄ ｼｷ; Shiki Suen）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시키 순 (孙志贵)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шики Сюэнь (Сун Чжи Гуй)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiki Suen (孙志贵)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiki Suen (Tôn Chí Quý)"
           }
         },
         "zh-Hans" : {
@@ -1377,13 +3633,61 @@
     "aboutKit.contributors.name.tao" : {
       "comment" : "Localization Contributor (JA)",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "たお👻🍑"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        },
+        "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "たお👻🍑"
@@ -1406,7 +3710,31 @@
     "aboutKit.contributors.name.xinzoruo" : {
       "comment" : "App Icon Illustrator (v4)",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xinzoruo (Herzschwacher Wahrer Herr)"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xinzoruo (心臓弱眞君)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xinzoruo (心臓弱眞君)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xinzoruo (心臓弱眞君)"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xinzoruo (心臓弱眞君)"
@@ -1416,6 +3744,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "心臓弱眞君 (Xinzoruo)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "신장약진군"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синдзоруо (心臓弱眞君)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xinzoruo (心臓弱眞君)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xinzoruo (Tâm Tạng Nhược Chân Quân)"
           }
         },
         "zh-Hans" : {
@@ -1435,7 +3787,31 @@
     "aboutKit.contributors.name.yulijushi" : {
       "comment" : "Image Asset Contributor (v4)",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuli Jushi (郁离居士)"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuli Jushi (郁离居士)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuli Jushi (郁离居士)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuli Jushi (郁离居士)"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yuli Jushi (郁离居士)"
@@ -1445,6 +3821,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "郁離居士"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유리거사 (郁离居士)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Юли Цзюши (郁离居士)"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuli Jushi (郁离居士)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuli Jushi (郁离居士)"
           }
         },
         "zh-Hans" : {
@@ -1463,16 +3863,64 @@
     },
     "aboutKit.donation.item.header" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optionale Spenden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Optional Donations"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donaciones opcionales"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dons facultatifs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donazioni facoltative"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "寄付アイテム"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택적 기부"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добровольные пожертвования"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opsyonal na mga Donasyon"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đóng góp Tùy chọn"
           }
         },
         "zh-Hans" : {
@@ -1491,16 +3939,64 @@
     },
     "aboutKit.donation.item.pay" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZAHLEN"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "PAY"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PAGAR"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PAYER"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PAGA"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "寄付を送る"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "결제"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОПЛАТА"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BAYAR"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "THANH TOÁN"
           }
         },
         "zh-Hans" : {
@@ -1519,16 +4015,64 @@
     },
     "aboutKit.donation.msg" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese App hat keine Bezahlschranken. Wir akzeptieren jedoch Spenden. Bitte beachten Sie, dass es sich bei den folgenden Spenden ausschließlich um kostenlose Spenden handelt und wir Ihnen keine zusätzlichen Dienstleistungen anbieten.\n\nWir versprechen, dass Ihre Spende nur zur Deckung der direkten Kosten des App-Entwicklungsprozesses verwendet wird, einschließlich aber nicht beschränkt auf die jährliche Gebühr für das Apple Developer Program usw. Jeder über diesen Betrag hinausgehende gespendete Betrag wird in voller Höhe weitergespendet. Wir schätzen Ihre Unterstützung."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "This app does not have paywalls. However, we do accept donations. Please note that the following is all no-cost donations and we will not provide you with any additional services. \n\nWe promise that your donation will only be used to cover the direct costs of the App development process, including but not limited to the annual fee for Apple Developer Program, etc. Any amount donated beyond this cost will be re-donated in full. We appreciate your support."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta aplicación no tiene muros de pago. Sin embargo, aceptamos donaciones. Tenga en cuenta que las siguientes son donaciones sin costo adicional y no le proporcionaremos servicios adicionales.\n\nPrometemos que su donación solo se usará para cubrir los costos directos del proceso de desarrollo de la aplicación, incluidos, pero no limitados a, la tarifa anual del Programa de Desarrolladores de Apple, etc. Cualquier cantidad donada más allá de este costo será donada nuevamente en su totalidad. Agradecemos su apoyo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette application n'a pas de murs payants. Cependant, nous acceptons les dons. Veuillez noter que les dons suivants sont tous sans frais et que nous ne vous fournirons aucun service supplémentaire.\n\nNous vous promettons que votre don ne servira qu'à couvrir les coûts directs du processus de développement de l'application, y compris, mais sans s'y limiter, les frais annuels du programme Apple Developer, etc. Tout montant donné au-delà de ce coût sera intégralement redonné. Nous apprécions votre soutien."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa app non ha barriere a pagamento. Tuttavia, accettiamo donazioni. Si prega di notare che le seguenti sono tutte donazioni a costo zero e non vi forniremo alcun servizio aggiuntivo.\n\nPromettiamo che la vostra donazione sarà utilizzata solo per coprire i costi diretti del processo di sviluppo dell'app, incluso ma non limitato al costo annuale per il programma Apple Developer, ecc. Qualsiasi importo donato oltre questo costo sarà ridonato completamente. Apprezziamo il vostro supporto."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "弊アプリにはペイウォールはございません。すなわち、お金を使わなくても全ての機能は使えます。だが、寄付（Donation）は受け付けております。開発チームは下記の寄付に対する「サービスなどのような」義務は一切ございません（即ち「無償寄付」ということである）ので、ご存じくださいませ。\n\n下記の寄付金はアプリの開発における直接的なコストのみに使用されることを、我らはお約束いたします。そのコストには Apple デベロッパープログラムの年会費などが含まれますが、それに限定されるものではありません。コストを超える寄付金は(慈善団体に)全額再寄付いたします。ご支援、誠に感謝申し上げます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 앱은 유료 장벽이 없습니다. 그러나 기부는 받습니다. 다음 내용은 모두 무료 기부임을 유의하시기 바라며, 추가적인 서비스를 제공하지 않습니다.\n\n귀하의 기부는 Apple 개발자 프로그램 연간 요금 등을 포함하여 앱 개발 프로세스의 직접 비용만을 충당하는 데 사용될 것임을 약속드립니다. 이 비용을 초과하는 기부금은 전액 재기부됩니다. 여러분의 지원에 감사드립니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это приложение не имеет платных стен. Однако мы принимаем пожертвования. Обратите внимание, что следующие пожертвования абсолютно бесплатны, и мы не предоставим вам никаких дополнительных услуг.\n\nМы обещаем, что ваше пожертвование будет использовано только для покрытия прямых затрат на разработку приложения, включая, но не ограничиваясь ежегодным взносом за программу Apple Developer Program и т.д. Любая сумма, пожертвованная сверх этих затрат, будет полностью передана на благотворительность. Мы ценим вашу поддержку."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang app na ito ay walang paywalls. Gayunpaman, tumatanggap kami ng mga donasyon. Pakitandaan na ang mga ito ay walang-bayad na donasyon at wala kaming ibibigay na karagdagang serbisyo.  \n\nIpinapangako namin na ang iyong donasyon ay gagamitin lamang upang masakop ang diretsong gastos sa proseso ng pag-develop ng App, kabilang ngunit hindi limitado sa taunang bayad para sa Apple Developer Program, atbp. Anumang halaga na idinonate na lampas sa gastusin na ito ay muling ibibigay ng buo. Ngayon ang iyong suporta."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ứng dụng này không có rào cản thanh toán. Tuy nhiên, chúng tôi có nhận đóng góp. Vui lòng lưu ý rằng tất cả các đóng góp dưới đây đều không có chi phí và chúng tôi sẽ không cung cấp cho bạn bất kỳ dịch vụ bổ sung nào.\n\nChúng tôi cam kết rằng khoản đóng góp của bạn sẽ chỉ được sử dụng để trang trải chi phí trực tiếp của quy trình phát triển ứng dụng, bao gồm nhưng không giới hạn ở phí thường niên cho Chương trình Nhà phát triển Apple, v.v. Bất kỳ khoản tiền nào được tặng vượt quá chi phí này sẽ được tặng lại toàn bộ. Chúng tôi đánh giá cao sự hỗ trợ của bạn."
           }
         },
         "zh-Hans" : {
@@ -1548,16 +4092,64 @@
     "aboutKit.donation.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spenden Sie uns"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Donate Us"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dónanos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites un don"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donaci"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "寄付を送る"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기부하기"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожертвуйте нам"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mag-donate sa Amin"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quyên góp cho chúng tôi"
           }
         },
         "zh-Hans" : {
@@ -1576,16 +4168,64 @@
     },
     "aboutKit.donation.specialThanks" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Besonderer Dank"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Special Thanks"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agradecimientos Especiales"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remerciements spéciaux"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ringraziamenti speciali"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "特別に感謝致します"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "특별 감사"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Особая благодарность"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espesyal na Pasasalamat"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lời Cảm Ơn Đặc Biệt"
           }
         },
         "zh-Hans" : {
@@ -1604,16 +4244,64 @@
     },
     "aboutKit.eula.title" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EULA & Benutzervereinbarung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "EULA & User Policy"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EULA y Política de Usuario"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CLUF et Politique d'utilisateur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accordo di Licenza con l'Utente Finale e Politica degli Utenti"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用者許諾契約"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최종 사용자 라이선스 계약 및 사용자 정책"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лицензионное соглашение и политика пользователя"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EULA at Patakaran ng Gumagamit"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chính sách Người dùng & EULA"
           }
         },
         "zh-Hans" : {
@@ -1632,7 +4320,31 @@
     },
     "aboutKit.ourApps.pizzaStudio" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Studio"
+          }
+        },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Studio"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estudio de Pizza"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Studio Pizza"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pizza Studio"
@@ -1642,6 +4354,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pizza Studio (ピザスチューディオ)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "피자 스튜디오"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пицца Студия"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Studio"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xưởng Pizza"
           }
         },
         "zh-Hans" : {
@@ -1660,16 +4396,64 @@
     },
     "aboutKit.ourApps.pizzaStudio.description" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein FOSS-Entwicklungsteam."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "A FOSS developer team."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un equipo de desarrolladores de FOSS"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une équipe de développeurs FOSS"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un team di sviluppatori FOSS"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "FOSSアプリを開発するチーム。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FOSS 개발자 팀"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Команда разработчиков с открытым исходным кодом"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isang koponan ng mga developer ng FOSS"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một nhóm phát triển FOSS"
           }
         },
         "zh-Hans" : {
@@ -1688,16 +4472,64 @@
     },
     "aboutKit.ourApps.pzHelper" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Pizza Helfer"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "The Pizza Helper"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El Ayudante de Pizza"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'Assistant Pizza"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'assistente per la pizza"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ピザ助手（無印）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "피자 도우미"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помощник пиццы"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang Tumulong sa Pizza"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trợ Lý Pizza"
           }
         },
         "zh-Hans" : {
@@ -1716,16 +4548,64 @@
     },
     "aboutKit.ourApps.pzHelper.description" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Der Nachfolger von PizzaHelper4Genshin und PizzaHelper4HSR. Angetrieben von der nächsten Generation der United Pizza Engine. - Der Programmbestandteil dieser Software ist unter der AGPLv3-Lizenz quelloffen. - Der Pizza Helper und seine Vorgänger stehen in keiner Verbindung zu miHoYo Co., Ltd. noch deren Tochtergesellschaften. - Die Spielinhalte und Materialien der folgenden Titel sind Marken und urheberrechtlich geschützt durch miHoYo Co., Ltd.: „Star Rail (HSR)“, „Genshin Impact“, „Zenless Zone Zero“."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "- The successor of both PizzaHelper4Genshin and PizzaHelper4HSR. Powered by the next-generation United Pizza Engine.\n- The program part of this software is open-sourced under AGPLv3 License.\n- The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.\n- The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- El sucesor de ambos PizzaHelper4Genshin y PizzaHelper4HSR. Impulsado por el motor unificado de pizza de próxima generación.\n- La parte del programa de este software es de código abierto bajo la licencia AGPLv3.\n- El asistente de pizza y sus predecesores no están afiliados con miHoYo Co., Ltd. ni sus subsidiarias.\n- Los contenidos y materiales de los siguientes títulos son marcas registradas y derechos de autor de miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Le successeur de PizzaHelper4Genshin et de PizzaHelper4HSR. Alimenté par le moteur Pizza Engine de nouvelle génération. - La partie logicielle de ce programme est en open source sous la licence AGPLv3. - Le Pizza Helper et ses prédécesseurs ne sont pas affiliés à miHoYo Co., Ltd. ni à ses filiales. - Les contenus et matériaux des jeux suivants sont des marques déposées et des droits d'auteur de miHoYo Co., Ltd. : \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Il successore di entrambi PizzaHelper4Genshin e PizzaHelper4HSR. Alimentato dal motore unificato di nuova generazione United Pizza Engine. - La parte del programma di questo software è open-source sotto licenza AGPLv3. - Pizza Helper e i suoi predecessori non sono affiliati con miHoYo Co., Ltd. né con le sue sussidiarie. - I contenuti e i materiali di gioco dei seguenti titoli sono marchi e diritti d'autore di miHoYo Co., Ltd.: \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "- 今までの「原神ピザ」と「崩スタピザ」を統合し、両アプリの後継者として、次世代エンジン『統一ピザエンジン』で開発したアプリである。\n- 本ソフトウェアはAGPLv3ライセンスのもと、オープンソースとして提供される。\n- アプリ「ピザ助手（無印）」およびその前身は、miHoYo株式会社またはその子会社とは一切関係ない。\n- 以下のタイトルのゲーム内容および資料は、株式会社米哈遊(miHoYo)の商標および著作権である：『崩壊：星穹鉄道（スターレイル）』、『原神』、『ゼンレスゾンゼロ（絶区ゼロ）』。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- PizzaHelper4Genshin 및 PizzaHelper4HSR의 후계자. 차세대 United Pizza Engine으로 구동됩니다.\n- 이 소프트웨어의 프로그램 부분은 AGPLv3 라이센스 하에 오픈 소스입니다.\n- Pizza Helper와 그 전신은 miHoYo Co., Ltd. 및 그 자회사와 관련이 없습니다.\n- 다음 타이틀의 게임 콘텐츠와 자료는 miHoYo Co., Ltd.의 상표 및 저작권입니다: \"스타 레일(HSR)\", \"원신\", \"젠레스 존 제로\"."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Преемник как PizzaHelper4Genshin, так и PizzaHelper4HSR. Работает на новейшем United Pizza Engine. \n- Программная часть этого программного обеспечения распространяется с открытым исходным кодом под лицензией AGPLv3. \n- Pizza Helper и его предшественники не связаны с miHoYo Co., Ltd. или его дочерними компаниями. \n- Игровые материалы и контент следующих игр являются товарными знаками и охраняются авторскими правами miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”."
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Ang kahalili ng parehong PizzaHelper4Genshin at PizzaHelper4HSR. Pinapagana ng next-generation na United Pizza Engine. - Ang bahagi ng programa ng software na ito ay open-sourced sa ilalim ng AGPLv3 License. - Ang Pizza Helper at ang mga nauna nitong bersyon ay hindi kaanib sa miHoYo Co., Ltd. ni sa mga subsidiaries nito. - Ang mga nilalaman ng laro at mga materyales ng mga sumusunod na pamagat ay trademarks at copyrights ng miHoYo Co., Ltd.: \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Người kế nhiệm của cả PizzaHelper4Genshin và PizzaHelper4HSR. Được hỗ trợ bởi động cơ Pizza Thống Nhất thế hệ tiếp theo. - Phần chương trình của phần mềm này được mã nguồn mở theo Giấy phép AGPLv3. - Pizza Helper và những người tiền nhiệm của nó không liên quan tới công ty miHoYo Co., Ltd. cũng như các công ty con của nó. - Nội dung và tài liệu trò chơi của các tựa đề sau đây là nhãn hiệu và bản quyền của miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”."
           }
         },
         "zh-Hans" : {
@@ -1744,16 +4624,64 @@
     },
     "aboutKit.ourApps.pzHelper4BA" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza-Helfer für Blue Archive"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pizza Helper for Blue Archive"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistente de Pizza para Blue Archive"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistant Pizza pour Blue Archive"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Helper per Blue Archive"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "BAピザ助手"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "블루 아카이브 피자 도우미"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помощник по пицце для Blue Archive"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taga-tulong ng Pizza para sa Blue Archive"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trợ Lý Pizza cho Blue Archive"
           }
         },
         "zh-Hans" : {
@@ -1772,16 +4700,64 @@
     },
     "aboutKit.ourApps.pzHelper4BA.description" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein gutes Werkzeug für jeden Sensei"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "A good utility for every Sensei."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una buena utilidad para cada Sensei."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un bon utilitaire pour chaque Sensei"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un buon strumento per ogni Sensei"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "先生たちの用心棒。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 센세이를 위한 좋은 유틸리티"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полезный инструмент для каждого Сенсея"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isang magandang utility para sa bawat Sensei."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một tiện ích tốt cho mọi Sensei"
           }
         },
         "zh-Hans" : {
@@ -1800,16 +4776,64 @@
     },
     "aboutKit.ourApps.pzHelper4GI" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza-Helfer für Genshin"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pizza Helper for Genshin"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistente de Pizza para Genshin"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistant Pizza pour Genshin"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Helper per Genshin"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "原神ピザ助手"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "피자 헬퍼 포 원신"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помощник по пицце для Геншин"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katulong sa Pizza para sa Genshin"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trợ lý Pizza cho Genshin"
           }
         },
         "zh-Hans" : {
@@ -1828,16 +4852,64 @@
     },
     "aboutKit.ourApps.pzHelper4GI.description" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veraltet und in den Pizza-Helfer integriert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deprecated and integrated into The Pizza Helper."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obsoleto e integrado en The Pizza Helper"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obsolète et intégré dans The Pizza Helper."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deprecato e integrato in The Pizza Helper"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "淘汰済み。全ての機能はすでに「ピザ助手（無印）」に搭載されておる。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "피자 도우미에 통합되어 더 이상 사용되지 않음"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устарело и интегрировано в The Pizza Helper"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindi na ginagamit at isinama sa The Pizza Helper"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã ngừng sử dụng và được tích hợp vào Trợ lý Pizza"
           }
         },
         "zh-Hans" : {
@@ -1856,16 +4928,64 @@
     },
     "aboutKit.ourApps.pzHelper4HSR" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza-Helfer für HSR"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pizza Helper for HSR"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistente de Pizza para HSR"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistant Pizza pour HSR"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistente Pizza per HSR"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "崩スタピザ助手"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HSR 피자 도우미"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помощник по пицце для HSR"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Katulong para sa HSR"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trợ lý Pizza cho HSR"
           }
         },
         "zh-Hans" : {
@@ -1884,16 +5004,64 @@
     },
     "aboutKit.ourApps.pzHelper4HSR.description" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veraltet und in The Pizza Helper integriert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deprecated and integrated into The Pizza Helper."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obsoleto e integrado en The Pizza Helper."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obsolète et intégré dans The Pizza Helper"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obsoleto e integrato in The Pizza Helper."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "淘汰済み。全ての機能はすでに「ピザ助手（無印）」に搭載されておる。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "피자 도우미에 통합되어 더 이상 사용되지 않습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устарело и интегрировано в The Pizza Helper"
+          }
+        },
+        "tl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindi na ginagamit at isinama sa The Pizza Helper."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không sử dụng nữa và đã được tích hợp vào The Pizza Helper."
           }
         },
         "zh-Hans" : {
