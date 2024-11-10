@@ -48,6 +48,15 @@ extension EnkaDBProtocol {
 
     @MainActor
     @discardableResult
+    public func reinit() throws -> Self {
+        let newDB = try Self(locTag: Enka.currentLangTag)
+        newDB.saveSelfToUserDefaults()
+        update(new: newDB)
+        return self
+    }
+
+    @MainActor
+    @discardableResult
     public func onlineUpdate() async throws -> Self {
         let newDB = try await Self(host: Defaults[.defaultDBQueryHost])
         newDB.saveSelfToUserDefaults()
@@ -96,9 +105,9 @@ extension EnkaDBProtocol {
         Enka.currentLangTag != locTag
     }
 
-    public func updateIfLocTagMismatches() async throws {
+    public func reinitIfLocMismatches() async throws {
         guard locTagMismatchingTheSystem else { return }
-        try await onlineUpdate()
+        try await reinit()
     }
 
     public func getFailableTranslationFor(id: String, realName: Bool = true) -> String? {

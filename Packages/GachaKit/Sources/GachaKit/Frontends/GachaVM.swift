@@ -28,8 +28,8 @@ public final class GachaVM: TaskManagedVM {
         fireTask(
             cancelPreviousTask: false,
             givenTask: {
-                try? await Enka.Sputnik.shared.db4HSR.updateIfLocTagMismatches()
-                try? await Enka.Sputnik.shared.db4GI.updateIfLocTagMismatches()
+                try? await Enka.Sputnik.shared.db4HSR.reinitIfLocMismatches()
+                try? await Enka.Sputnik.shared.db4GI.reinitIfLocMismatches()
             }
         )
     }
