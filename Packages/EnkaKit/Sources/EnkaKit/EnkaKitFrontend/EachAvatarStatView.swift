@@ -753,6 +753,7 @@ public struct AttributeTagPair: View {
             Text(shortenedTitle)
                 .fixedSize()
                 .lineLimit(1)
+                .minimumScaleFactor(0.5)
             Spacer().frame(minWidth: 1)
             Text(valueStr)
                 .fixedSize()
