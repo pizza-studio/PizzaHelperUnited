@@ -6,7 +6,15 @@ public enum AppLanguage: String, CaseIterable, Identifiable {
     case en
     case zhHans = "zh-Hans"
     case zhHant = "zh-Hant"
-    case ja
+    case ja // Nihongo
+    case ko // Korean
+    case de // Deutsch
+    case fr // French
+    case es // Spanish
+    case it // Italian
+    case ru // Russian
+    case vi // Vietnamese
+    case fil // Filipino
 
     // MARK: Public
 
