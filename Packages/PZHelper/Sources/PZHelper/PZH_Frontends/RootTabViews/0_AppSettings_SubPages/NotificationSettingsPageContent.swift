@@ -247,6 +247,10 @@ private struct NotificationSettingDetailContent: View {
             ) {
                 Text(verbatim: ProfilesNotificationPermissionView.navTitle)
             }
+        } header: {
+            Text("settings.notification.faq.howNotificationsGetScheduled", bundle: .module)
+                .textCase(.none)
+                .padding([.bottom])
         } footer: {
             #if targetEnvironment(macCatalyst)
             Text("settings.notification.dateTimePicker.macCatalystNotice", bundle: .module)

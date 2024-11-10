@@ -3352,6 +3352,34 @@
         }
       }
     },
+    "settings.notification.faq.howNotificationsGetScheduled" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note intel for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note intel, in cases where the relevant preferences permit it."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "敝アプリまたはその付属のウィジェットは、特定のローカルプロファイルに対するリアルタイム便箋情報を取得する際に、そのプロファイルに関する通知を自動で再予定しようとします。該当プロファイルの新しい通知を予定するたびに、以前に（そのプロファイルのために）予定された不適切な未送信通知があれば、それらを自動的に削除しようとします。通知は、システム設定が本アプリの通知送信を許可しており、さらに本アプリがリアルタイム便箋情報の取得に成功した場合に限り、関連の通知設定が許可されている状況でのみ予定されます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "敝 App 或其随赠的小工具会尝试在针对某个本地账号获取实时便笺资讯时自动重新排定相关的通知。在每次排定时，都会尝试主动清除之前针对该本地账号所排定的任何不合理的尚未推送的通知。当且仅当系统设定允许敝 App 推送系统通知、且敝 App 有成功获取到实时便笺资讯时，才会在相关的偏好设定允许的情况下对相关的通知进行排定。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "敝 App 或其隨贈的小工具會嘗試在針對某個本機帳號獲取實時便箋資訊時自動重新排定相關的通知。在每次排定時，都會嘗試主動清除之前針對該本機帳號所排定的任何不合理的尚未推送的通知。當且僅當系統設定允許敝 App 推送系統通知、且敝 App 有成功獲取到實時便箋資訊時，才會在相關的偏好設定允許的情況下對相關的通知進行排定。"
+          }
+        }
+      }
+    },
     "settings.notification.giRealmCurrency.allow" : {
       "localizations" : {
         "en" : {
