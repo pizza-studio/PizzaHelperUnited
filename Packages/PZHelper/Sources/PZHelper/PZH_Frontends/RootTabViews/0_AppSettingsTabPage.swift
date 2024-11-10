@@ -40,6 +40,7 @@ struct AppSettingsTabPage: View {
                     }
                 } header: {
                     Text("settings.section.profileManagement.header".i18nPZHelper)
+                        .textCase(.none)
                 }
 
                 Section {
@@ -49,6 +50,7 @@ struct AppSettingsTabPage: View {
                     }
                 } header: {
                     Text("settings.section.visualSettings.header".i18nPZHelper)
+                        .textCase(.none)
                 }
 
                 Section {
@@ -58,6 +60,7 @@ struct AppSettingsTabPage: View {
                     LiveActivitySettingNavigator(selectedView: $nav)
                 } header: {
                     Text(NotificationSettingsPageContent.navTitleShortened)
+                        .textCase(.none)
                 }
 
                 WatchDataPusherButton()
@@ -68,6 +71,7 @@ struct AppSettingsTabPage: View {
                         DonationView.makeNav()
                     } header: {
                         Text("settings.section.appStoreRelated.header".i18nPZHelper)
+                            .textCase(.none)
                     }
                 }
 
@@ -88,6 +92,7 @@ struct AppSettingsTabPage: View {
                     )
                 } header: {
                     Text(verbatim: "settings.section.otherSettings.header".i18nPZHelper)
+                        .textCase(.none)
                 }
 
                 #if DEBUG
