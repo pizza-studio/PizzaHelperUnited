@@ -13,7 +13,7 @@ import UserNotifications
 private struct UserDefaultsProfileSynchronizer: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .onAppBecomeActive {
+            .onAppear {
                 Task { @MainActor in
                     await PZProfileActor.shared.syncAllDataToUserDefaults()
                 }

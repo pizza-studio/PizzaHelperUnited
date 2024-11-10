@@ -12,8 +12,10 @@ import UserNotifications
 private struct ApplicationIconBadgeNumberCleaner: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .onAppBecomeActive {
-                PZNotificationCenter.center.setBadgeCount(0)
+            .onAppear {
+                Task { @MainActor in
+                    try? await PZNotificationCenter.center.setBadgeCount(0)
+                }
             }
     }
 }
