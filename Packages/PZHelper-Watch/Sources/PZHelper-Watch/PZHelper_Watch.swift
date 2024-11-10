@@ -23,8 +23,6 @@ extension PZHelperWatch {
                         startupTasks()
                     }
                     isApplicationBooted = true
-                }
-                .onAppBecomeActive {
                     Task { @MainActor in
                         await PZProfileActor.shared.syncAllDataToUserDefaults()
                     }

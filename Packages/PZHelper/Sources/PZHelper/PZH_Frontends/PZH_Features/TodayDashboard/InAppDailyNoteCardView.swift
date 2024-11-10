@@ -81,7 +81,7 @@ struct InAppDailyNoteCardView: View {
         .onChange(of: broadcaster.eventForRefreshingCurrentPage) {
             theVM.getDailyNoteUncheck()
         }
-        .onAppBecomeActive {
+        .onAppear {
             theVM.getDailyNote()
         }
     }
