@@ -70,6 +70,11 @@ public struct AccountMODebugView: View {
 
     public var body: some View {
         Form {
+            Text(
+                verbatim:
+                "This view enumerates all accountMO data from previous PizzaHelper4Genshin and PizzaHelper4HSR."
+            )
+            .font(.caption)
             ForEach(try! Self.sputnik.allAccountDataMO(for: game), id: \.uuid) { accountMO in
                 AccountMOItemDebugView(accountMO: accountMO)
             }
@@ -78,7 +83,7 @@ public struct AccountMODebugView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Picker("".description, selection: $game.animation()) {
-                    ForEach(Pizza.SupportedGame.allCases) { enumeratedGame in
+                    ForEach(casesOfGames) { enumeratedGame in
                         Text(enumeratedGame.localizedShortName)
                             .tag(enumeratedGame)
                     }
@@ -91,9 +96,10 @@ public struct AccountMODebugView: View {
         }
     }
 
-    // MARK: Internal
+    // MARK: Private
 
-    @MainActor static let sputnik: AccountMOSputnik = .shared
+    @MainActor private static let sputnik: AccountMOSputnik = .shared
 
-    @State var game: Pizza.SupportedGame = .genshinImpact
+    @State private var game: Pizza.SupportedGame = .genshinImpact
+    private let casesOfGames: [Pizza.SupportedGame] = [.genshinImpact, .starRail]
 }
