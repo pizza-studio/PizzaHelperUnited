@@ -16,6 +16,18 @@
             "value" : "Admonition"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advertencia"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babala"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -79,6 +91,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ballad"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balada"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balada"
           }
         },
         "fr" : {
@@ -146,6 +170,18 @@
             "value" : "Conflict"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conflicto"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagkakasalungatan"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -209,6 +245,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contention"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contención"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alitan"
           }
         },
         "fr" : {
@@ -276,6 +324,18 @@
             "value" : "Diligence"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diligencia"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasipagan"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -339,6 +399,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elegance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegancia"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kariktan"
           }
         },
         "fr" : {
@@ -406,6 +478,18 @@
             "value" : "Equity"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acciones"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagkakapantay-pantay"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -469,6 +553,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Freedom"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libertad"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalayaan"
           }
         },
         "fr" : {
@@ -536,6 +632,18 @@
             "value" : "Gold"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oro"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ginto"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -599,6 +707,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ingenuity"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingenio"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katalinuhan"
           }
         },
         "fr" : {
@@ -666,6 +786,18 @@
             "value" : "Justice"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Justicia"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katarungan"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -729,6 +861,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kindling"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Astillas"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panggatong"
           }
         },
         "fr" : {
@@ -796,6 +940,18 @@
             "value" : "Light"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luz"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liwanag"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -856,6 +1012,18 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Order"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordenar"
+          }
+        },
+        "fil" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Order"
@@ -926,6 +1094,18 @@
             "value" : "Praxis"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Praxis"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gawain"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -989,6 +1169,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prosperity"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prosperidad"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasaganaan"
           }
         },
         "fr" : {
@@ -1056,6 +1248,18 @@
             "value" : "Resistance"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resistencia"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagtutol"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1121,6 +1325,18 @@
             "value" : "Transience"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transitoriedad"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagka-madalian"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1181,6 +1397,18 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aerosiderite"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aerosiderita"
+          }
+        },
+        "fil" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aerosiderite"
@@ -1251,6 +1479,18 @@
             "value" : "Ancient Chord"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acorde Antiguo"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sinaunang Kordyon"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1316,6 +1556,18 @@
             "value" : "Boreal Wolf"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobo Boreal"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boreal na Lobo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1376,6 +1628,18 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decarabian"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decarabian"
+          }
+        },
+        "fil" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Decarabian"
@@ -1446,6 +1710,18 @@
             "value" : "Dewdrop"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gota de rocío"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patak ng hamog"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1509,6 +1785,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Distant Sea"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mar lejano"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malayong Dagat"
           }
         },
         "fr" : {
@@ -1576,6 +1864,18 @@
             "value" : "Mist Veiled"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niebla Velada"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kinukubli ng Ulap"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1641,6 +1941,18 @@
             "value" : "Gladiator"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gladiador"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mandirigma"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1701,6 +2013,18 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guyun"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guyun"
+          }
+        },
+        "fil" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guyun"
@@ -1771,6 +2095,18 @@
             "value" : "Mask"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máscara"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maskara"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1831,6 +2167,18 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narukami"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narukami"
+          }
+        },
+        "fil" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Narukami"
@@ -1901,6 +2249,18 @@
             "value" : "Night-Wind"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viento de la Noche"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hatinggabi-Hangin"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1964,6 +2324,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oasis Garden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jardín Oasis"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardin ng Oasis"
           }
         },
         "fr" : {
@@ -2031,6 +2403,18 @@
             "value" : "Pristine Sea"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mar de Agua Pura"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Makintab na Dagat"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2094,6 +2478,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sacred Lord"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Señor Sagrado"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banal na Panginoon"
           }
         },
         "fr" : {
@@ -2161,6 +2557,18 @@
             "value" : "Sacrificial Heart"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corazón Sacrificial"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pusong Handog"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2226,6 +2634,18 @@
             "value" : "Scorching Might"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poder Abrasador"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nag-aalab na Lakas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2289,6 +2709,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Forest Dew"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rocío del Bosque"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hamog sa Kagubatan"
           }
         },
         "fr" : {
