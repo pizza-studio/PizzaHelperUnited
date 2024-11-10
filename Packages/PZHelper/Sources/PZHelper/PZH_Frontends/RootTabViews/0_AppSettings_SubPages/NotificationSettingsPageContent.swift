@@ -287,6 +287,8 @@ private struct NotificationSettingDetailContent: View {
             .disabled(!options.allowExpeditionNotification)
         } header: {
             Text("settings.notification.expedition.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.expedition.footer", bundle: .module)
         }
 
         // 每日任务

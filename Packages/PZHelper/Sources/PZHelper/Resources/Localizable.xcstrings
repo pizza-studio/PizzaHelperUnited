@@ -3268,6 +3268,34 @@
         }
       }
     },
+    "settings.notification.expedition.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* Genshin Impact and Star Rail only."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "※ スターレイルと原神のみ。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "※ 星穹铁道與原神限定。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "※ 星穹铁道与原神限定。"
+          }
+        }
+      }
+    },
     "settings.notification.expedition.header" : {
       "localizations" : {
         "en" : {
@@ -3363,7 +3391,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 原神限定。"
+            "value" : "※ 原神のみ。"
           }
         },
         "zh-Hans" : {
@@ -3447,7 +3475,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 原神限定。"
+            "value" : "※ 原神のみ。"
           }
         },
         "zh-Hans" : {
@@ -3531,7 +3559,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 原神限定。"
+            "value" : "※ 原神のみ。"
           }
         },
         "zh-Hans" : {
@@ -3565,13 +3593,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "征讨之花剩余折扣次数提醒"
+            "value" : "征讨之花剩余树脂折扣次数提醒"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "征討之花剩餘折扣次數提醒"
+            "value" : "征討之花剩餘樹脂折扣次數提醒"
           }
         }
       }
@@ -3671,7 +3699,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ スターレイル限定。"
+            "value" : "※ スターレイルのみ。"
           }
         },
         "zh-Hans" : {
@@ -3839,7 +3867,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 原神限定。"
+            "value" : "※ 原神のみ。"
           }
         },
         "zh-Hans" : {
