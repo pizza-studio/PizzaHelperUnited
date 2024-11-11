@@ -11,9 +11,15 @@ import SwiftUI
 // MARK: - AppSettingsTabPage
 
 struct AppSettingsTabPage: View {
+    // MARK: Lifecycle
+
+    init(nav: Nav? = nil) {
+        self.nav = nav
+    }
+
     // MARK: Internal
 
-    enum Nav {
+    enum Nav: Int {
         case profileManager
         case faq
         case cloudAccountSettings
