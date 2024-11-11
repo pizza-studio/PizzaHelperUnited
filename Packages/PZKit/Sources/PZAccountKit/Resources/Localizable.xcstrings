@@ -155,6 +155,83 @@
         }
       }
     },
+    "MiHoYoAPIError.countryRegionRestriction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] Das Netzwerkumfeld an Ihrem aktuellen geografischen Standort liegt außerhalb des Servicebereichs von HoYoLAB."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] The network environment in your current geo location is out of HoYoLAB service perimeter."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] El entorno de red en su ubicación geográfica actual está fuera del perímetro de servicio de HoYoLAB."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] Ang network environment sa iyong kasalukuyang lokasyon ay nasa labas ng saklaw ng serbisyo ng HoYoLAB."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] L’environnement réseau de votre position géographique actuelle est en dehors du périmètre de service de HoYoLAB."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] L'ambiente di rete nella tua posizione geografica attuale è al di fuori del perimetro di servizio di HoYoLAB."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIエラー] 該当端末の所在地理上の位置のネットワーク環境は HoYoLAB のサービス対象範囲外とされております。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPI오류] 현재 위치의 네트워크 환경은 HoYoLAB 서비스 범위 밖에 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] Сетевое окружение в вашем текущем географическом местоположении находится вне зоны обслуживания HoYoLAB."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] Môi trường mạng tại vị trí địa lý hiện tại của bạn nằm ngoài phạm vi dịch vụ của HoYoLAB."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPI错误] 您当前的地理位置的网络环境处于 HoYoLAB 服务范围之外。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPI錯誤] 您當前的地理位置的網路環境處於 HoYoLAB 服務範圍之外。"
+          }
+        }
+      }
+    },
     "MiHoYoAPIError.fingerPrintInvalidOrMissing" : {
       "extractionState" : "manual",
       "localizations" : {
