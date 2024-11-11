@@ -37,34 +37,15 @@ extension Enka {
             }
         }
 
-        public var srsModelURL: URL {
-            var urlStr: String = {
-                switch self {
-                case .mainlandChina: "https://www.gitlink.org.cn/api/ShikiSuen/StarRailScore/raw/"
-                case .enkaGlobal: "https://raw.githubusercontent.com/Mar-7th/StarRailScore/master/"
-                }
-            }()
-            urlStr += "score.json"
-            if self == .mainlandChina {
-                urlStr = Self.gitLinkURLWrapper(urlStr, branch: "master")
-            }
-            // swiftlint:disable force_unwrapping
-            return .init(string: urlStr)!
-            // swiftlint:enable force_unwrapping
-        }
-
         public func enkaDBSourceURL(type: Enka.JSONType) -> URL {
             var urlStr: String = {
                 switch self {
-                case .mainlandChina: "https://www.gitlink.org.cn/api/ShikiSuen/EnkaDBGenerator/raw/"
-                case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/EnkaDBGenerator/master/"
+                case .mainlandChina: "https://raw.gitcode.com/SHIKISUEN/EnkaDBGenerator/raw/main/"
+                case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/EnkaDBGenerator/main/"
                 }
             }()
             // swiftlint:disable force_unwrapping
             urlStr += type.repoFileInternalPath
-            if self == .mainlandChina {
-                urlStr = Self.gitLinkURLWrapper(urlStr, branch: "main")
-            }
             return .init(string: urlStr)!
             // swiftlint:enable force_unwrapping
         }
@@ -73,12 +54,6 @@ extension Enka {
             // swiftlint:disable force_unwrapping
             .init(string: profileQueryURLPrefix(game) + uid + profileQueryURLSuffix(game))!
             // swiftlint:enable force_unwrapping
-        }
-
-        // MARK: Internal
-
-        static func gitLinkURLWrapper(_ urlStr: String, branch: String) -> String {
-            "https://gitlink.org.cn/attachments/entries/get_file?download_url=\(urlStr)?ref=\(branch)"
         }
 
         // MARK: Private
