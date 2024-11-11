@@ -7,7 +7,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pizza-Helfer"
+            "value" : "Pizza Helper"
           }
         },
         "en" : {
@@ -19,25 +19,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Asistente de Pizza"
+            "value" : "Pizza Helper"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Katulong ng Pizza"
+            "value" : "Pizza Helper"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Assistant Pizza"
+            "value" : "Pizza Helper"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Assistente Pizza"
+            "value" : "Pizza Helper"
           }
         },
         "ja" : {
@@ -49,19 +49,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "피자 도우미"
+            "value" : "Pizza Helper"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Помощник пиццы"
+            "value" : "Pizza Helper"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trợ lý Pizza"
+            "value" : "Pizza Helper"
           }
         },
         "zh-Hans" : {
@@ -84,7 +84,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der Pizza-Helfer"
+            "value" : "The Pizza Helper"
           }
         },
         "en" : {
@@ -96,25 +96,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El Asistente de Pizza"
+            "value" : "The Pizza Helper"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang Pantulong sa Pizza"
+            "value" : "The Pizza Helper"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'assistant Pizza"
+            "value" : "The Pizza Helper"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'Assistente per la Pizza"
+            "value" : "The Pizza Helper"
           }
         },
         "ja" : {
@@ -126,19 +126,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "피자 도우미"
+            "value" : "The Pizza Helper"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Помощник по Пицце"
+            "value" : "The Pizza Helper"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trợ Lý Pizza"
+            "value" : "The Pizza Helper"
           }
         },
         "zh-Hans" : {
