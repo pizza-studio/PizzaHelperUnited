@@ -115,3 +115,54 @@ extension GachaExchangeView {
         }.padding(.vertical, 4)
     }
 }
+
+// MARK: GachaExchangeView.GachaProfileDoppelPicker
+
+extension GachaExchangeView {
+    public struct GachaProfileDoppelPicker: View {
+        // MARK: Lifecycle
+
+        public init(
+            among sortedGPIDs: [GachaProfileID],
+            chosenOnes: Binding<Set<GachaProfileID>>,
+            nameIDMap: [String: String] = [:]
+        ) {
+            self.sortedGPIDs = sortedGPIDs
+            self.nameIDMap = nameIDMap
+            self._specifiedProfiles = chosenOnes
+        }
+
+        // MARK: Public
+
+        public var body: some View {
+            ForEach(sortedGPIDs) { gpid in
+                Toggle(
+                    isOn: toggleBinding(for: gpid).animation()
+                ) {
+                    GachaExchangeView.drawGPID(
+                        gpid,
+                        nameIDMap: nameIDMap,
+                        isChosen: specifiedProfiles.contains(gpid)
+                    ).tag(gpid)
+                }
+            }
+        }
+
+        // MARK: Private
+
+        private let sortedGPIDs: [GachaProfileID]
+        private let nameIDMap: [String: String]
+        @Binding private var specifiedProfiles: Set<GachaProfileID>
+
+        private func toggleBinding(for profile: GachaProfileID) -> Binding<Bool> {
+            .init {
+                specifiedProfiles.contains(profile)
+            } set: { newValue in
+                switch newValue {
+                case true: specifiedProfiles.insert(profile)
+                case false: specifiedProfiles.remove(profile)
+                }
+            }
+        }
+    }
+}
