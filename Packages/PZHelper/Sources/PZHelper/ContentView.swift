@@ -21,8 +21,8 @@ public struct ContentView: View {
     // MARK: Public
 
     public var body: some View {
-        TabView(selection: index) {
-            ForEach(NavItems.allCases) { navCase in
+        TabView(selection: $tabNavVM.rootTabNav.animation()) {
+            ForEach(TabNav.allCases) { navCase in
                 if navCase.isExposed {
                     navCase
                 }
@@ -49,7 +49,7 @@ public struct ContentView: View {
         }
         #endif
         .tint(tintForCurrentTab)
-        .onChange(of: selection) {
+        .onChange(of: tabNavVM.rootTabNav.rootID) {
             simpleTaptic(type: .selection)
         }
         .environment(GachaVM.shared)
@@ -57,31 +57,55 @@ public struct ContentView: View {
 
     // MARK: Internal
 
-    enum NavItems: Int, View, CaseIterable, Identifiable {
-        case today = 1
-        case showcaseDetail = 2
-        case utils = 3
-        case appSettings = 0
+    enum TabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
+        case today
+        case showcaseDetail
+        case utils
+        case appSettings(AppSettingsTabPage.Nav? = nil)
+
+        // MARK: Lifecycle
+
+        public init?(rootID: Int) {
+            let matched = Self.allCases.first { $0.rootID == rootID }
+            guard let matched else { return nil }
+            self = matched
+        }
 
         // MARK: Public
 
-        public var body: some View {
+        nonisolated public var id: Int {
+            switch self {
+            case let .appSettings(subNav): rootID + (subNav?.rawValue ?? 0) * 100
+            default: rootID
+            }
+        }
+
+        nonisolated public var rootID: Int {
+            switch self {
+            case .today: 1
+            case .showcaseDetail: 2
+            case .utils: 3
+            case .appSettings: 0
+            }
+        }
+
+        @MainActor @ViewBuilder public var body: some View {
             switch self {
             case .today:
                 TodayTabPage()
-                    .tag(rawValue) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                    .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
                     .tabItem { label }
             case .showcaseDetail:
                 DetailPortalTabPage()
-                    .tag(rawValue) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                    .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
                     .tabItem { label }
             case .utils:
                 UtilsTabPage()
-                    .tag(rawValue) // .toolbarBackground(.thinMaterial, for: .tabBar)
+                    .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
                     .tabItem { label }
-            case .appSettings:
-                AppSettingsTabPage()
-                    .tag(rawValue) // .toolbarBackground(.thinMaterial, for: .tabBar)
+            case let .appSettings(subNav):
+                AppSettingsTabPage(nav: subNav)
+                    .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
                     .tabItem { label }
             }
         }
@@ -97,14 +121,19 @@ public struct ContentView: View {
 
         // MARK: Internal
 
+        nonisolated static let allCases: [ContentView.TabNav] = [
+            .today,
+            .showcaseDetail,
+            .utils,
+            .appSettings(nil),
+        ]
+
         static var exposedCaseTags: [Int] {
             [1, 2, 3, 0]
         }
 
-        nonisolated var id: Int { rawValue }
-
         var isExposed: Bool {
-            Self.exposedCaseTags.contains(rawValue)
+            Self.exposedCaseTags.contains(rootID)
         }
     }
 
@@ -112,37 +141,44 @@ public struct ContentView: View {
 
     @Query(sort: \PZProfileMO.priority) var accounts: [PZProfileMO]
 
-    var index: Binding<Int> { Binding(
-        get: { selection },
-        set: {
-            if $0 != selection {
-                Broadcaster.shared.stopRootTabTasks()
-                if $0 == 1 {
-                    Broadcaster.shared.todayTabDidSwitchTo()
-                }
-            }
-            selection = $0
-            appIndex = $0
-            UserDefaults.baseSuite.synchronize()
-        }
-    ) }
-
     // MARK: Private
-
-    @State private var selection: Int = {
-        guard Defaults[.restoreTabOnLaunching] else { return 0 }
-        guard NavItems.allCases.map(\.rawValue).contains(Defaults[.appTabIndex]) else { return 0 }
-        return Defaults[.appTabIndex]
-    }()
 
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.modelContext) private var modelContext
+    @StateObject private var tabNavVM = GlobalNavVM.shared
 
     private var tintForCurrentTab: Color {
-        switch NavItems(rawValue: selection) {
+        switch TabNav(rootID: tabNavVM.rootTabNav.rootID) {
         case .today: Color.accessibilityAccent(colorScheme)
         case .showcaseDetail: Color.accessibilityAccent(colorScheme)
         default: .accentColor
+        }
+    }
+}
+
+// MARK: - GlobalNavVM
+
+@Observable @MainActor
+final class GlobalNavVM: Sendable, ObservableObject {
+    static let shared = GlobalNavVM()
+
+    var rootTabNav: ContentView.TabNav = {
+        let initSelection: Int = {
+            guard Defaults[.restoreTabOnLaunching] else { return 1 }
+            let allBaseID = ContentView.TabNav.allCases.map(\.id)
+            guard allBaseID.contains(Defaults[.appTabIndex]) else { return 1 }
+            return Defaults[.appTabIndex]
+        }()
+        return .init(rootID: initSelection) ?? .today
+    }() {
+        willSet {
+            guard rootTabNav != newValue else { return }
+            Defaults[.appTabIndex] = newValue.rootID
+            UserDefaults.baseSuite.synchronize()
+            Broadcaster.shared.stopRootTabTasks()
+            if newValue == .today {
+                Broadcaster.shared.todayTabDidSwitchTo()
+            }
         }
     }
 }
