@@ -100,7 +100,15 @@ private struct DailyNoteCardErrorView: View {
 
     public var body: some View {
         Label {
-            Text("app.dailynote.card.error.pleaseCheckAtProfileMgr".i18nPZHelper)
+            VStack {
+                Text("app.dailynote.card.error.pleaseCheckAtProfileMgr".i18nPZHelper)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(error.localizedDescription).font(.caption)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 0.5)
+            }
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
         } icon: {
             Image(systemSymbol: .questionmarkCircle)
                 .foregroundColor(.yellow)
