@@ -4,6 +4,7 @@
 
 import Combine
 @preconcurrency import Defaults
+import EnkaKit
 import Foundation
 import GachaMetaDB
 import GachaMetaGeneratorModule
@@ -157,26 +158,32 @@ extension HoYo.AccountRegion {
         }
     }
 
-    public var gachaMetaDBRemoteURL: URL {
-        var urlStr = ""
-        switch (self, game) {
-        case (.miyoushe, .genshinImpact):
-            urlStr += #"https://gitlink.org.cn/attachments/entries/get_file?download_url="#
-            urlStr += #"https://www.gitlink.org.cn/api/ShikiSuen/GachaMetaGenerator/raw/"#
-            urlStr += #"Sources%2FGachaMetaDB%2FResources%2FOUTPUT-GI.json?ref=main"#
-        case (.hoyoLab, .genshinImpact):
-            urlStr += #"https://raw.githubusercontent.com/pizza-studio/"#
-            urlStr += #"GachaMetaGenerator/main/Sources/GachaMetaDB/Resources/OUTPUT-GI.json"#
-        case (.miyoushe, .starRail):
-            urlStr += #"https://gitlink.org.cn/attachments/entries/get_file?download_url="#
-            urlStr += #"https://www.gitlink.org.cn/api/ShikiSuen/GachaMetaGenerator/raw/"#
-            urlStr += #"Sources%2FGachaMetaDB%2FResources%2FOUTPUT-GI.json?ref=main"#
-        case (.hoyoLab, .starRail):
-            urlStr += #"https://raw.githubusercontent.com/pizza-studio/"#
-            urlStr += #"GachaMetaGenerator/main/Sources/GachaMetaDB/Resources/OUTPUT-GI.json"#
-        case (_, .zenlessZone): // 暂不支持，乱填。
-            urlStr += "/dev/null"
+    fileprivate var gachaMetaDBRemoteURL: URL {
+        switch self {
+        case .miyoushe: Enka.HostType.mainlandChina.getRemoteGMDBFileURL(game: game)
+        case .hoyoLab: Enka.HostType.enkaGlobal.getRemoteGMDBFileURL(game: game)
         }
-        return URL(string: urlStr)!
+    }
+}
+
+extension Enka.HostType {
+    fileprivate func getRemoteGMDBFileURL(game: Pizza.SupportedGame) -> URL {
+        let baseStr: String = switch game {
+        case .genshinImpact:
+            gmDBSourceURLPrefix + "OUTPUT-GI.json"
+        case .starRail:
+            gmDBSourceURLPrefix + "OUTPUT-HSR.json"
+        case .zenlessZone:
+            "/dev/null"
+        }
+        return baseStr.asURL
+    }
+
+    fileprivate var gmDBSourceURLPrefix: String {
+        let prefix = switch self {
+        case .mainlandChina: "https://raw.gitcode.com/SHIKISUEN/GachaMetaGenerator/raw/main/"
+        case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/GachaMetaGenerator/main/"
+        }
+        return prefix + "Sources/GachaMetaDB/Resources/"
     }
 }

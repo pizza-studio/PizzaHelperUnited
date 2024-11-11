@@ -69,13 +69,13 @@ extension ArtifactRating.ARSputnik {
         }
     }
 
-    fileprivate enum RemoteSourceFile: String {
+    enum RemoteSourceFile: String {
         case arDB4GI = "ARDB4GI.json"
         case arDB4HSR = "ARDB4HSR.json"
         case countDB4GI = "CountDB4GI.json"
     }
 
-    private static func fetchARDBData<T: Codable>(
+    static func fetchARDBData<T: Codable>(
         from serverType: Enka.HostType? = nil,
         type dataType: RemoteSourceFile,
         decodingTo: T.Type
@@ -127,16 +127,12 @@ extension ArtifactRating.ARSputnik {
 extension Enka.HostType {
     fileprivate func getRemoteARDBFileURL(type: ArtifactRating.ARSputnik.RemoteSourceFile) -> URL {
         let baseStr = arDBSourceURLPrefix + type.rawValue
-        let urlStr: String = switch self {
-        case .mainlandChina: Self.gitLinkURLWrapper(baseStr, branch: "main")
-        case .enkaGlobal: baseStr
-        }
-        return urlStr.asURL
+        return baseStr.asURL
     }
 
     fileprivate var arDBSourceURLPrefix: String {
         let prefix = switch self {
-        case .mainlandChina: "https://www.gitlink.org.cn/api/ShikiSuen/ArtifactRatingDB/raw/"
+        case .mainlandChina: "https://raw.gitcode.com/SHIKISUEN/ArtifactRatingDB/raw/main/"
         case .enkaGlobal: "https://raw.githubusercontent.com/pizza-studio/ArtifactRatingDB/main/"
         }
         return prefix + "Sources/ArtifactRatingDB/Resources/"
