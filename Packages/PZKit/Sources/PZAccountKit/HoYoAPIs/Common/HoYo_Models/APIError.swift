@@ -4,6 +4,8 @@
 
 import Foundation
 
+// MARK: - MiHoYoAPIError
+
 public enum MiHoYoAPIError: Error, LocalizedError {
     case verificationNeeded
     case fingerPrintInvalidOrMissing
@@ -11,6 +13,7 @@ public enum MiHoYoAPIError: Error, LocalizedError {
     case reloginRequired
     case serverUnderMaintenanceUpgrade
     case insufficientDataVisibility
+    case countryRegionRestriction
     case other(retcode: Int, message: String)
 
     // MARK: Lifecycle
@@ -22,6 +25,8 @@ public enum MiHoYoAPIError: Error, LocalizedError {
         case 10102: .insufficientDataVisibility
         case -100, 10001: .reloginRequired
         case 10307: .serverUnderMaintenanceUpgrade
+        case 403 where message.contains("Our services are not available in your country or region"):
+            .countryRegionRestriction
         default: .other(retcode: retcode, message: message)
         }
     }
@@ -38,11 +43,23 @@ public enum MiHoYoAPIError: Error, LocalizedError {
         case .reloginRequired: "MiHoYoAPIError.reloginRequired".i18nAK
         case .serverUnderMaintenanceUpgrade: "MiHoYoAPIError.serverUnderMaintenanceUpgrade".i18nAK
         case .insufficientDataVisibility: "MiHoYoAPIError.insufficientDataVisibility".i18nAK
+        case .countryRegionRestriction: "MiHoYoAPIError.countryRegionRestriction".i18nAK
         case let .other(retcode, message): "[HoYoAPIErr] Ret: \(retcode); Msg: \(message)"
         }
     }
 
     public var errorDescription: String? {
         localizedDescription
+    }
+}
+
+// MARK: MiHoYoAPIError.HoYoLABServerMsg
+
+extension MiHoYoAPIError {
+    struct HoYoLABServerMsg: Codable, Sendable, Hashable, CustomStringConvertible {
+        let error: Int
+        let message: String
+
+        var description: String { "[HoYoAPIErr] Ret: \(error); Msg: \(message)" }
     }
 }
