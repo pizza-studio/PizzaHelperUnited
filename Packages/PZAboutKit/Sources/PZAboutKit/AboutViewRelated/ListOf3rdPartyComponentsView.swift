@@ -34,10 +34,6 @@ struct ListOf3rdPartyComponentsView: View {
                         https://github.com/CoreOffice/CoreXLSX
                         """).textSelection(.enabled)
                         Text(verbatim: """
-                        Multipicker - James Pamplona
-                        https://github.com/toastersocks/MultiPicker
-                        """).textSelection(.enabled)
-                        Text(verbatim: """
                         AlertToast - elai950
                         https://github.com/elai950/AlertToast
                         """).textSelection(.enabled)

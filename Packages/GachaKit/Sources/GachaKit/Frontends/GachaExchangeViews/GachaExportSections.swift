@@ -3,12 +3,13 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import GachaMetaDB
-import MultiPicker
 import PZBaseKit
 import SFSafeSymbols
 import SwiftData
 import SwiftUI
 import UniformTypeIdentifiers
+
+// MARK: - GachaExportSections
 
 public struct GachaExportSections: View {
     // MARK: Public
@@ -93,26 +94,17 @@ public struct GachaExportSections: View {
         }
 
         Section {
-            // Do NOT animate this. Animating this doesn't make any sense.
-            MultiPicker("".description, selection: $specifiedProfiles) {
-                let nameIDMap = theVM.nameIDMap
-                let sortedGPIDs = theVM.allGPIDs.wrappedValue
-                ForEach(sortedGPIDs) { gpid in
-                    GachaExchangeView.drawGPID(
-                        gpid,
-                        nameIDMap: nameIDMap,
-                        isChosen: specifiedProfiles.contains(gpid)
-                    ).mpTag(gpid)
-                }
-            }
-            .labelsHidden()
+            let sortedGPIDs = theVM.allGPIDs.wrappedValue
+            GachaExchangeView.GachaProfileDoppelPicker(
+                among: sortedGPIDs,
+                chosenOnes: $specifiedProfiles,
+                nameIDMap: theVM.nameIDMap
+            )
         } header: {
             Text("gachaKit.exchange.chooseProfiles.export.prompt".i18nGachaKit)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }
-        .mpPickerStyle(.inline)
-        .selectionIndicatorPosition(.trailing)
     }
 
     // MARK: Internal
@@ -223,7 +215,7 @@ public struct GachaExportSections: View {
                     Text(verbatim: msgPack.message)
                 }
             )
-            .onChange(of: isExportResultAvailable) {
+            .onChange(of: isExportResultAvailable.wrappedValue) {
                 theVM.forceStopTheTask()
             }
     }
