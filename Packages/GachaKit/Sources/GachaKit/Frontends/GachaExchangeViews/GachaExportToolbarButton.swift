@@ -74,7 +74,7 @@ public struct GachaExportToolbarButton: View {
                         Text(verbatim: msgPack.message)
                     }
                 )
-                .onChange(of: isExportResultAvailable) {
+                .onChange(of: isExportResultAvailable.wrappedValue) {
                     theVM.forceStopTheTask()
                 }
         }

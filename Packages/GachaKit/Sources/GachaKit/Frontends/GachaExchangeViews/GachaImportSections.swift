@@ -3,7 +3,6 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @preconcurrency import Defaults
-import MultiPicker
 import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
@@ -224,27 +223,17 @@ extension GachaImportSections {
         }
 
         Section {
-            // Do NOT animate this. Animating this doesn't make any sense.
-            MultiPicker("".description, selection: $chosenGPID) {
-                let nameIDMap = theVM.nameIDMap
-                let sortedGPIDs = source.extractGachaProfileIDs()
-                ForEach(sortedGPIDs) { gpid in
-                    GachaExchangeView.drawGPID(
-                        gpid,
-                        nameIDMap: nameIDMap,
-                        isChosen: chosenGPID.contains(gpid)
-                    )
-                    .mpTag(gpid)
-                }
-            }
-            .labelsHidden()
+            let sortedGPIDs = source.extractGachaProfileIDs()
+            GachaExchangeView.GachaProfileDoppelPicker(
+                among: sortedGPIDs,
+                chosenOnes: $chosenGPID,
+                nameIDMap: theVM.nameIDMap
+            )
         } header: {
             Text("gachaKit.exchange.chooseProfiles.import.prompt".i18nGachaKit)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }
-        .mpPickerStyle(.inline)
-        .selectionIndicatorPosition(.trailing)
     }
 
     @ViewBuilder
