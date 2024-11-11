@@ -94,11 +94,11 @@ private struct ProfilesNotificationPermissionView: View {
     var body: some View {
         Form {
             Section {
-                ForEach(pzProfiles) { account in
+                ForEach(pzProfiles) { profile in
                     Toggle(
-                        isOn: allowNotificationBinding(for: account).animation()
+                        isOn: allowNotificationBinding(for: profile).animation()
                     ) {
-                        Text(verbatim: "\(account.name) (\(account.uidWithGame))")
+                        Self.drawLocalProfile(profile, isChosen: profile.allowNotification)
                     }
                 }
             } footer: {
@@ -114,6 +114,31 @@ private struct ProfilesNotificationPermissionView: View {
 
     @Query(sort: \PZProfileMO.priority) private var pzProfiles: [PZProfileMO]
     @Environment(\.modelContext) private var modelContext
+
+    @ViewBuilder
+    private static func drawLocalProfile(
+        _ profile: PZProfileMO,
+        isChosen: Bool = false
+    )
+        -> some View {
+        HStack {
+            profile.asIcon4SUI().frame(width: 35, height: 35)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(profile.name)
+                        .fontWeight(.medium)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(profile.uidWithGame)
+                        .font(.caption2)
+                        .fontDesign(.monospaced)
+                        .opacity(0.8)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .foregroundStyle(isChosen ? .primary : .secondary)
+                Spacer()
+            }
+        }.padding(.vertical, 4)
+    }
 
     private func allowNotificationBinding(for profile: PZProfileMO) -> Binding<Bool> {
         .init {
