@@ -18,6 +18,19 @@ final class ArtifactRatingTests: XCTestCase {
         let c = ArtifactRating.ARSputnik.shared.countDB4GI
         print(c)
     }
+
+    func testFetchingRemoteData() async throws {
+        _ = try await ArtifactRating.ARSputnik.fetchARDBData(
+            from: .mainlandChina,
+            type: .arDB4GI,
+            decodingTo: ArtifactRating.ModelDB.self
+        )
+        _ = try await ArtifactRating.ARSputnik.fetchARDBData(
+            from: .mainlandChina,
+            type: .arDB4HSR,
+            decodingTo: ArtifactRating.ModelDB.self
+        )
+    }
 }
 
 // MARK: - EnkaKitTests
