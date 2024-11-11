@@ -2,56 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@\n"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        }
-      },
       "shouldTranslate" : false
     },
     "app.background.blue" : {
@@ -6480,7 +6430,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.Einheit.Tag:%lld"
+            "value" : "%lld tage"
           }
         },
         "en" : {
@@ -6504,25 +6454,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unidad.día:%lld"
+            "value" : "%lld días"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.yunit.arao:%lld"
+            "value" : "%lld araw"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "unité.jour:%lld"
+            "value" : "%lld jours"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unit.giorno:%lld"
+            "value" : "%lld giorni"
           }
         },
         "ja" : {
@@ -6540,19 +6490,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unit.day:%lld"
+            "value" : "%lld일"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unit.day:%lld"
+            "value" : "%lld дня"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pqWidgetsKit.đơn vị.ngày:%lld"
+            "value" : "%lld ngày"
           }
         },
         "zh-Hans" : {
@@ -6586,7 +6536,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.einheit.minute:%lld"
+            "value" : "%lldmin"
           }
         },
         "en" : {
@@ -6610,25 +6560,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unidad.minuto:%lld"
+            "value" : "%lldmin"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unit.minute:%lld"
+            "value" : "%lldmin"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "minute : %lld"
+            "value" : "%lldmin"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unit.minuti:%lld"
+            "value" : "%lldmin"
           }
         },
         "ja" : {
@@ -6646,19 +6596,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unit.minute:%lld"
+            "value" : "%lld분"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unit.minute:%lld"
+            "value" : "%lldмин"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "pzWidgetsKit.unit.minute:%lld"
+            "value" : "%lld phút"
           }
         },
         "zh-Hans" : {
