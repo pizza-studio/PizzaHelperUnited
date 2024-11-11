@@ -17,18 +17,20 @@ extension DecodableFromMiHoYoAPIJSONResult {
         do {
             result = try decoder.decode(MiHoYoAPIJSONResult<Self>.self, from: data)
         } catch {
-            let errorMessage = """
-            [DEBUG TAG: \(debugTag)] DECODE ITEM: \(String(data: data, encoding: .utf8)!)
-            --------------
-            rawError:
-            \(error)
-            """
-            #if DEBUG
-            print("-----------------------------------")
-            print(errorMessage)
-            print("-----------------------------------")
-            #endif
-            throw MiHoYoAPIError(retcode: -114514, message: errorMessage)
+            let extractedServerMsg = try? decoder.decode(MiHoYoAPIError.HoYoLABServerMsg.self, from: data)
+            if let extractedServerMsg {
+                printDebugMsg(extractedServerMsg)
+                throw MiHoYoAPIError(retcode: extractedServerMsg.error, message: extractedServerMsg.message)
+            } else {
+                let errorMessage = """
+                [DEBUG TAG: \(debugTag)] DECODE ITEM: \(String(data: data, encoding: .utf8)!)
+                --------------
+                rawError:
+                \(error)
+                """
+                printDebugMsg(errorMessage)
+                throw MiHoYoAPIError(retcode: -114514, message: errorMessage)
+            }
         }
         if result.retcode == 0 {
             // swiftlint:disable:next force_unwrapping
@@ -36,6 +38,14 @@ extension DecodableFromMiHoYoAPIJSONResult {
         } else {
             throw MiHoYoAPIError(retcode: result.retcode, message: result.message)
         }
+    }
+
+    private static func printDebugMsg(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+        #if DEBUG
+        print("-----------------------------------")
+        print(items, separator: separator, terminator: terminator)
+        print("-----------------------------------")
+        #endif
     }
 }
 
