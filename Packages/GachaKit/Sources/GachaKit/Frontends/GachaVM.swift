@@ -397,8 +397,9 @@ extension GachaVM {
     public var allGPIDs: Binding<[GachaProfileID]> {
         .init(get: {
             let context = GachaActor.shared.modelContainer.mainContext
-            let result = try? context.fetch(FetchDescriptor<PZGachaProfileMO>()).map(\.asSendable)
-            return result?.sorted { $0.uidWithGame < $1.uidWithGame } ?? []
+            let resultRAW = try? context.fetch(FetchDescriptor<PZGachaProfileMO>()).map(\.asSendable)
+            let result = resultRAW?.sorted { $0.uidWithGame < $1.uidWithGame } ?? []
+            return result.reduce(into: [GachaProfileID]()) { if !$0.contains($1) { $0.append($1) } }
         }, set: { _ in
 
         })
