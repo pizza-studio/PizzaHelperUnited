@@ -8,6 +8,8 @@ This is the new repository for **The Pizza Helper** (starting from v5).
 
 This project is currently under heavy construction, using Swift 6 and targeting iOS 17.4 and later.
 
+> For public documents (e.g. Privacy Policy and EULA, etc.) please check the `EndUserPublicDocs` folder in this repository. The GitHub Wiki of this repository may be out of date in rare circumstances. Public documents are only provided in primary languages (English, Simplified Chinese, Traditional Chinese, and Japanese).
+
 ### Regarding Pizza Helper:
 
 - It was initially designed as a simple Widget app for checking Original Resins and Trailblaze Power.
