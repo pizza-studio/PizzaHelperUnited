@@ -1,0 +1,724 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>EULA</title>
+	<style>
+		/* General reset */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+				Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+			background-color: #ffffff;
+			color: #24292e;
+			line-height: 1.5;
+			padding: 2rem;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		/* Dark mode */
+		@media (prefers-color-scheme: dark) {
+			body {
+				background-color: #0d1117;
+				color: #c9d1d9;
+			}
+
+			header {
+				border-bottom: none;
+			}
+
+			.language-selector {
+				background-color: #161b22;
+				color: #c9d1d9;
+				border: 1px solid #30363d;
+			}
+
+			blockquote {
+				color: #8b949e;
+				border-left: 0.25em solid #30363d;
+			}
+
+			code,
+			pre {
+				background-color: #161b22;
+				border: 1px solid #30363d;
+			}
+		}
+
+		header {
+			align-items: leading;
+		}
+
+		.language-selector {
+			font-size: 1rem;
+			padding: 0.5rem;
+			border: 1px solid #d0d7de;
+			border-radius: 6px;
+			background-color: #f6f8fa;
+			color: #24292e;
+		}
+
+		hr {
+			opacity: 0.1;
+		}
+
+		main {
+			padding: 0;
+		}
+
+		@media (max-width: 600px) {
+			body {
+				padding: 1rem;
+			}
+		}
+
+		/* GitHub Markdown CSS */
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin-top: 1em;
+			margin-bottom: 0.5em;
+			font-weight: 600;
+			line-height: 1.25;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 1em;
+			margin-bottom: 1em;
+		}
+
+		p {
+			margin-bottom: 1em;
+		}
+
+		a {
+			color: #0366d6;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		ul,
+		ol {
+			padding-left: 2em;
+			margin-bottom: 1em;
+		}
+
+		blockquote {
+			padding: 0.5em 1em;
+			color: #6a737d;
+			border-left: 0.25em solid #d0d7de;
+			margin-bottom: 0.5em;
+			/* Reduced space at the bottom */
+		}
+
+		code {
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+				Courier, monospace;
+			font-size: 85%;
+			padding: 0.2em 0.4em;
+			border-radius: 6px;
+		}
+
+		pre {
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+				Courier, monospace;
+			font-size: 85%;
+			line-height: 1.45;
+			background-color: #f6f8fa;
+			padding: 1em;
+			border-radius: 6px;
+			overflow: auto;
+			border: none;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 1em;
+		}
+
+		th,
+		td {
+			border: 1px solid #d0d7de;
+			padding: 0.6em;
+		}
+
+		th {
+			background-color: #f6f8fa;
+			font-weight: 600;
+		}
+
+		/* Hide all content divs by default */
+		.content {
+			display: none;
+		}
+
+		/* Show content div when it is active */
+		.content.active {
+			display: block;
+		}
+	</style>
+	<script>
+		function changeLanguage() {
+			const language = document.getElementById("language-selector").value;
+			const contentDivs = document.querySelectorAll(".content");
+			contentDivs.forEach((div) => div.classList.remove("active"));
+			const selectedContent = document.getElementById(`content-${language}`);
+			if (selectedContent) {
+				selectedContent.classList.add("active");
+			}
+		}
+
+		function detectLanguage() {
+			const browserLang = navigator.language || navigator.userLanguage;
+			const supportedLanguages = ["en-US", "zh-Hant", "zh-Hans", "ja-JP"];
+			// Default to "zh-Hans" if the browser's language is not supported
+			let language = supportedLanguages.includes(browserLang)
+				? browserLang
+				: "zh-Hans";
+			document.getElementById("language-selector").value = language;
+			changeLanguage(); // Call changeLanguage to set the correct content visibility
+		}
+
+		window.onload = detectLanguage; // Initialize on page load
+	</script>
+</head>
+
+<body>
+	<header>
+		<select id="language-selector" class="language-selector" onchange="changeLanguage()">
+			<option value="en-US">English</option>
+			<option value="zh-Hant">繁體中文 (Traditional Chinese)</option>
+			<option value="zh-Hans">简体中文 (Simplified Chinese)</option>
+			<option value="ja-JP">日本語 (Japanese)</option>
+		</select>
+		<span> ← 🌐</span>
+	</header>
+	<main>
+		<div id="content-en-US" class="content" lang="en">
+
+			<h1 id="toc_0">The Pizza Helper FAQ</h1>
+
+			<p>This document only addresses questions not covered by <em>The Pizza Helper Privacy Policy</em> and
+				<em>The Pizza Helper End-User License Agreement and Disclaimer</em>.
+			</p>
+
+			<h2 id="toc_1">// Security Concerns</h2>
+
+			<h4 id="toc_2">Q: Is there an Android version of The Pizza Helper?</h4>
+
+			<p>Currently, there are no plans to develop an Android version.</p>
+
+			<h4 id="toc_3">Q: Will using this tool result in my game account being suspended?</h4>
+
+			<p>Based on feedback received so far, there have been no reports of this happening. According to
+				confirmation from enthusiastic players who contacted miHoYo&#39;s dedicated customer service, the
+				response was that game accounts will not be suspended. (<em>The Pizza Helper End-User License Agreement
+					and Disclaimer</em> mentions: <strong>The developer is not responsible for any damages caused by
+					user actions</strong>.)</p>
+
+			<h4 id="toc_4">Q: Is it safe for me to login my Miyoushe / HoYoLAB account via The Pizza Helper?</h4>
+
+			<p><strong>Miyoushe account logins in this app is through QRCode scan which does not need a password
+					input</strong>; For HoYoLAB accounts, <strong>the process is protected by different methods supplied
+					by Apple which varies by your device type</strong>: if iOS, the system-provided secure input
+				keyboard on your screen is the one retrieving your password input; if macOS, the system-provided
+				hardware-level SecureEventInput API directly retrieving your physical keyboard inputs. <strong>Both
+					inputs will be directly passed through WKWebView to HoYoLAB login page</strong>. Then the server
+				generates the device-specific Cookie which this app utilizes for servicing the user&#39;s information
+				needs. <strong>This entire process is not interceptable by anyone else (nor The Pizza Helper
+					app)</strong>. Thanks to Apple for making these security efforts.</p>
+
+			<h4 id="toc_5">Q: How does The Pizza Helper handle users&#39; gacha records?</h4>
+
+			<p>As mentioned in <em>The Pizza Helper Privacy Policy</em>, players&#39; gacha records are stored only in
+				these three locations:</p>
+
+			<ul>
+				<li>The Apple device you use for The Pizza Helper.</li>
+				<li>The iCloud private cloud space of the Apple ID currently signed in to iCloud Drive on that device.
+				</li>
+				<li>Any other digital devices logged into that Apple ID with iCloud Drive enabled and The Pizza Helper
+					installed.</li>
+			</ul>
+
+			<p>Although The Pizza Helper allows users to import and export gacha records, the development team does not
+				recommend sharing these records to any third-party websites that may disclose statistical results
+				without permission.</p>
+
+			<h2 id="toc_6">// App and Development Team</h2>
+
+			<h4 id="toc_7">Q: I am a refugee of the Pizza Helper for HSR. What should I be aware of when migrating to
+				this new app?</h4>
+
+			<ol>
+				<li>
+					<p><strong>Data Sync</strong>: Although the new unified Pizza Helper engine can read cloud data from
+						Pizza Helper for HSR on the same Apple ID via iCloud, the data synchronization may take time and
+						can be affected by factors like connection status. For a more reliable migration, you can export
+						your local accounts from Pizza Helper for HSR as a JSON file (profile package) and import it
+						into the new version of The Pizza Helper. Gacha records can also be migrated using a similar
+						method (via file exchange conforming to UIGF v4 format).</p>
+				</li>
+				<li>
+					<p><strong>Widgets</strong>: All widgets in the new The Pizza Helper that seem to be designed for
+						Genshin Impact can now also display Star Rail content (excluding Genshin-specific widgets like
+						the Realm Currency). Simply select the local profile dedicated to Star Rail in the widget
+						settings. The Stamina Timer, implemented using iOS&#39;s built-in Live Activity feature, can
+						also be used to show the Trailblaze Power refill status in Star Rail. Custom background support
+						for widgets will be delayed for some time and may be implemented later, depending on conditions.
+					</p>
+				</li>
+			</ol>
+
+			<h4 id="toc_8">Q: How does The Pizza Helper work?</h4>
+
+			<p>The miHoYo / HoYoLAB client app requests game-related information from the miHoYo / Cognosphere server
+				backend. This method can retrieve some game state information (such as stamina refill progress, etc.).
+				The Pizza Helper uses your UID and Cookie information to replicate this query process and request this
+				data from the corresponding server backend on your behalf, displaying it in The Pizza Helper&#39;s main
+				interface and widgets. The Privacy Policy already explained how the Cookies will be used.</p>
+
+			<h4 id="toc_9">Q: Will there be any charges in the future?</h4>
+
+			<p>miHoYo does not allow charging or embedding ads, so all features of The Pizza Helper are freely
+				available. </p>
+
+			<p>The Pizza Helper does accept voluntary donations from users, and the development team does not have any
+				obligations to the donors. These donations will be used for app development and maintenance of
+				associated network infrastructure. Of course, the annual fee for the Apple Developer Program membership
+				required to distribute software via the Apple App Store will be reimbursed from this donation fund. If
+				large donations are received, the team may publicly acknowledge the contributors. The team may also
+				consider donating any unused funds to charitable causes at an appropriate time.</p>
+
+			<h4 id="toc_10">Q: How do widgets automatically update a player&#39;s account status for Original Resin /
+				Trailblaze Power / ZZZ Energy?</h4>
+
+			<p>These are collectively referred to as &quot;player stamina&quot; in The Pizza Helper. Based on past
+				experience, iOS and macOS widgets reload every eight minutes. Since version 5.0, The Pizza Helper&#39;s
+				widgets will attempt to request real-time data from the Miyoushe / HoYoLAB servers every 15 minutes
+				(including the corresponding UID&#39;s Original Resin / Trailblaze Power / ZZZ Energy status). Desktop
+				widgets also include a refresh button for reloading content. When you open The Pizza Helper app, all
+				widgets will automatically request real-time data again. If you haven’t consumed stamina in-game, the
+				stamina discrepancy shown in the widgets should not exceed 1.</p>
+
+			<h4 id="toc_11">Q: How can I learn more about the development team or discuss other topics?</h4>
+
+			<p>You can find the development team&#39;s QQ channel and Discord channel in the &quot;About&quot; section
+				of The Pizza Helper. Since April 2023, the development team has grown to three members (Lava; Bill Haku;
+				Shiki Suen). You can click &quot;Development Team&quot; at the top-right corner of the &quot;About&quot;
+				section to see their contact details.</p>
+
+			<h4 id="toc_12">Q: Any plan on implementing advanced features regarding Zenless Zone Zero? e.g. Gacha Record
+				Management, etc.</h4>
+
+			<p>These features won&#39;t be considered to implment in at least a year. There were too many reasons and
+				concerns behind this decision, but one of them is that we are almost running out of our available time
+				on this project.</p>
+
+			<h2 id="toc_13">// Technical Issues</h2>
+
+			<blockquote>
+				This section discusses issues starting from The Pizza Helper version 5.0.
+			</blockquote>
+
+			<h4 id="toc_14">Q: The iOS lock screen widgets are not loading content. How can I fix this?</h4>
+
+			<p>This is likely because the widget is stuck in the data retrieval state. You can enter the lock screen
+				widgets&#39; edit mode, modify the widget content, and reselect the local profile (even if it&#39;s the
+				same as the previous one). This will trigger the content update process.</p>
+
+			<h4 id="toc_15">Q: Apple Watch is unable to sync accounts from iCloud?</h4>
+
+			<p>For iOS 18: First, turn off The Pizza Helper&#39;s iCloud sync feature, then turn it back on. Open The
+				Pizza Helper app and leave it idle for a minute, then try syncing through the Apple Watch app. Please
+				consult Apple Support for further instructions.</p>
+
+			<h4 id="toc_16">Q: Can&#39;t find widgets when trying to add them?</h4>
+
+			<p>Try restarting the system and wait 10 minutes. If that doesn’t work, try turning off and on The Pizza
+				Helper&#39;s notifications. This has a high chance of resolving the issue. If you&#39;re on macOS and
+				the problem persists, please contact Apple Support to ensure that the app is installed in the correct
+				location or is not duplicated in multiple locations.</p>
+
+			<h4 id="toc_17">Q: Error codes -1 (data not retrieved) or 10102, 10103, 10104 (Cookie and UID mismatch)</h4>
+
+			<p>Check whether the real-time notes feature in Miyoushe or HoYoLAB is enabled and retrieve a new Cookie.
+				Also, make sure the logged-in account is correct.</p>
+
+			<h4 id="toc_18">Q: Error code 10001 (Cookie error or expired Cookie)</h4>
+
+			<p>It is recommended to log in again with the corresponding local profile. This process will retrieve a new
+				Cookie.</p>
+
+			<h4 id="toc_19">Q: Error code 1008 (UID error)</h4>
+
+			<p>Check if the UID corresponds to the server you selected (note: this refers to the Genshin Impact / Star
+				Rail / Honkai: Star Rail UID, not the Miyoushe Passport ID Number). If you can&#39;t resolve the issue,
+				please report it to us. Since version 5.0, The Pizza Helper will automatically attempt to determine the
+				server when entering the UID in the local profile management screen.</p>
+
+			<p>$ EOF.</p>
+
+
+		</div>
+		<div id="content-zh-Hant" class="content active" lang="zh-Hant">
+
+			<h1 id="toc_0">披薩小助手常見問題解答（FAQ）</h1>
+
+			<p>本文僅解答那些無法由《披薩小助手隱私政策》與《披薩小助手使用者授權合約與免責聲明（EULA）》回答的問題。</p>
+
+			<h2 id="toc_1">// 安全疑慮</h2>
+
+			<h4 id="toc_2">Q: 披薩小助手有沒有 Android 版本？</h4>
+
+			<p>暫無開發 Android 版本之計劃。</p>
+
+			<h4 id="toc_3">Q: 使用該工具是否會導致遊戲帳號被停權？</h4>
+
+			<p>根據到目前為止的反饋來看，迄今為止尚無先例。根據熱心玩家向米哈遊專屬客服的求證，得到的答覆是遊戲帳號不會被停權。（《披薩小助手使用者授權合約與免責聲明（EULA）》有提及：<strong>開發者對於因使用者行為所導致之任何損害不承擔任何責任</strong>。）
+			</p>
+
+			<h4 id="toc_4">Q: 我藉由披薩小助手登入米遊社 / HoYoLAB 帳號的過程是安全的嗎？</h4>
+
+			<p>披薩小助手<strong>對米游社帳號是採取 QRCode 掃碼登入的、不會牽涉到帳號盜取的嫌疑</strong>；對 HoYoLAB 帳號雖然需要密碼登入，但使用者對自己帳號的密碼輸入是<strong>直接由
+					iOS 系統的安全鍵盤接管（macOS 平台則是 SecureEventInput 模式從硬體層面接管所有的鍵盤輸入訊號）、然後直接被 iOS / macOS 內建的 WKWebView 轉交給
+					HoYoLAB 完成登入</strong>、才產生了可以由披薩小助手在所處裝置賴以使用的
+				Cookie。<strong>整個登入過程當中，披薩小助手始終無權截獲使用者對密碼的鍵盤輸入</strong>。感謝 Apple 一直以來致力於對資訊安全環境的營造。</p>
+
+			<h4 id="toc_5">Q: 披薩小助手會怎麼處理使用者的抽卡記錄？</h4>
+
+			<p>在《披薩小助手隱私政策》有提及：玩家的抽卡記錄只會被披薩小助手存放在這三個位置：</p>
+
+			<ul>
+				<li>閣下使用披薩小助手時之 Apple 數位裝置。</li>
+				<li>以及該數位裝置當時所已經登入使用 iCloud Drive 的 Apple ID 之自身的 iCloud 私有雲空間。</li>
+				<li>以及任何被登入該 Apple ID 使用 iCloud Drive 且有安裝披薩小助手之數位裝置。</li>
+			</ul>
+
+			<p>雖然披薩小助手允許使用者匯入、匯出抽卡記錄，但開發團隊不建議您將這些資料上交給任何可能會擅自公開統計結果的第三方網站。</p>
+
+			<h2 id="toc_6">// App 與開發團隊</h2>
+
+			<h4 id="toc_7">Q: 我是星鐵披薩小助手的使用者，請問在遷移過來時需要注意什麼？</h4>
+
+			<p>一是資料同步：雖然基於統一披薩引擎的全新的披薩小助手可以藉由 iCloud 讀取到同一 Apple ID
+				下的星鐵披薩小助手的雲端資料，但同步讀取資料是需要時間的、且可能受到包括連線狀態等多方因素之影響。如希望能有更穩妥的遷移手段的話，您可以藉由星鐵披薩小助手將其本機帳號全部匯出為一個
+				JSON、再匯入到目前的新版披薩小助手內。抽卡記錄也可以用類似的手段遷移（使用 UIGF v4 格式）。</p>
+
+			<p>二是小工具（小組件）：全新的披薩小助手的所有看似給原神設計的小工具都是可以顯示星穹鐵道的內容的（洞天寶錢等原神專屬小工具除外），直接在小工具設定裡面選擇您創建的星穹鐵道專用的本機帳號即可。依賴 iOS
+				內建的即時動態（Live Activity）功能實作的玩家體力計時器也可以用來顯示星穹鐵道的開拓力回滿狀態。對於小工具的自訂背景的功能支持會欠奉一段時間，待諸多條件允許之後可能會再行實作。</p>
+
+			<h4 id="toc_8">Q: 披薩小助手的工作原理是什麼？</h4>
+
+			<p>米游社 / HoYoLAB 客體應用（client app）會藉由向米哈遊 / Cognosphere
+				的伺服器的後端請求遊戲內的一些資訊。這個手段可以查詢到一些與此有關的遊戲狀態資訊（比如玩家體力的回滿進度，等）。披薩小助手使用您的 UID 與 Cookie 資訊可以重複這個查詢過程、代替您使用這兩款 App
+				向對應的伺服器的後端請求遊戲內的這些資訊、並展示於披薩小助手的主介面與小工具當中。《披薩小助手隱私政策》已經解釋了與這些 Cookies 的使用有關的內容。</p>
+
+			<h4 id="toc_9">Q: 未來會收費嗎？</h4>
+
+			<p>米哈遊不允許收費或植入收費廣告，所以披薩小助手的所有功能都是免費提供開放使用的。</p>
+
+			<p>披薩小助手倒是有在接受來自使用者的自發捐贈，且敝團隊不會因此對捐贈者產生任何義務。這類捐贈內容會用於 App 開發、及其連帶網路設施的維護。當然，藉由 Apple App Store 發行軟體所必須的
+				Apple Developer Program 會員身分的年費也會從這筆捐贈金報銷。如有收到大宗捐贈的話，敝團隊可能會公示他們的貢獻。敝團隊也可能會考慮在適當的時間點將用不完的經費捐贈給社會公益之用途。
+			</p>
+
+			<h4 id="toc_10">Q: 小工具（小組件）是怎樣自動更新玩家的帳號的原粹樹脂 / 開拓力 / 絕區電量狀態的？</h4>
+
+			<p>這些在披薩小助手被統稱為「玩家體力（Stamina）」。根據既往的經驗來看，iOS 與 macOS 的小工具每八分鐘會重新載入一次當前的內容。同時，披薩小助手的小工具從 5.0 版開始會每隔 15
+				分鐘嘗試向米遊社 / HoYoLAB 伺服器請求一次最新的實時便箋資料（裡面包括了對應 UID 的原粹樹脂 / 開拓力 /
+				絕區電量狀態等資訊）。桌面小工具額外會有用於重載內容專用的刷新按鈕。開啟披薩小助手本體 App
+				時，所有小工具都會自動重新請求一次實時便箋資料。如果您未曾登入遊戲消耗過玩家體力的話，理論上藉由小工具顯示的玩家體力的誤差不會超過 1。</p>
+
+			<h4 id="toc_11">Q: 開發團隊的自我介紹呢？如何解決其他疑問和討論其他話題？</h4>
+
+			<p>各位可以在披薩小助手的「關於」畫面找到披薩小助手的 QQ 頻道和 Discord 頻道。從 2023 年四月開始，開發團隊變成了三個人（Lava; Bill Haku; Shiki
+				Suen）。各位可以在「關於」畫面的右上角點一下「開發組」就能看到他們的聯絡資料。</p>
+
+			<h4 id="toc_12">Q: 請問何時會實作與絕區零有關的進階功能？比如抽卡記錄管理之類的。</h4>
+
+			<p>至少一年內不會實作。原因有很多，但開發團隊分身乏術也是重要原因之一。</p>
+
+			<h2 id="toc_13">// 技術故障</h2>
+
+			<blockquote>
+				本章節內容以披薩小助手 5.0 版開始的版本為討論情形。
+			</blockquote>
+
+			<h4 id="toc_14">Q: iOS 鎖屏小工具（小組件）無法加載出內容，怎麼解決？</h4>
+
+			<p>這有很大概率是小工具卡在資料獲取狀態了。可以進入鎖屏小工具編輯狀態，編輯對應的小工具的內容，重新選擇本機帳號（哪怕選擇的還是之前的本機帳號），這樣可以觸發鎖屏小工具的內容更新流程。</p>
+
+			<h4 id="toc_15">Q: Apple Watch 無法從 iCloud 同步帳號？</h4>
+
+			<p>以 iOS 18 為例：先關閉披薩小助手的 iCloud 同步功能、再重新打開，並進入披薩小助手的本體應用、再靜置一分鐘，隨後打開 Apple Watch App 嘗試同步即可。具體操作方法為：在 iPhone
+				上點按「設定」-「你的 Apple 帳號」-「iCloud」-「儲存至 iCloud」，然後把頁面往下翻，找到披薩小助手的開關，關掉之後再重新點開就可以了。</p>
+
+			<h4 id="toc_16">Q: 嘗試添加小工具（小組件）時，找不到小工具。</h4>
+
+			<p>請嘗試重新啟動系統後靜置十分鐘、不行的話再試試關閉再打開披薩小助手的通知，有較大概率解決。如果您在用 macOS 的且這樣做之後該問題仍舊存在的話，請洽 Apple Support 讓他們的專員引導您確認
+				App 是否被安裝到了正確的位置、或者在不同的位置有重複安裝。</p>
+
+			<h4 id="toc_17">Q: 錯誤碼 -1（未獲取到數據）或 錯誤碼 10102、10103、10104（Cookie 與 UID 不對應）</h4>
+
+			<p>檢查是否開啟米遊社的實時便箋（或 HoYoLAB 的實時便箋）功能，並重新獲取 Cookie。另請注意登入的帳號本身是否正確。</p>
+
+			<h4 id="toc_18">Q: 錯誤碼 10001 （Cookie 有誤或 Cookie 失效）</h4>
+
+			<p>建議將對應的本機帳號重新登入。這個過程會重新獲取 Cookie。</p>
+
+			<h4 id="toc_19">Q: 錯誤碼 1008（UID 有誤）</h4>
+
+			<p>檢查 UID 是否與您選擇的伺服器彼此對應（注意：是原神/星穹鐵道/絕區零的UID，不是米遊社通行證帳號的 ID 數字）。如無法解決，請向我們反饋。另：披薩小助手自從 v5.0
+				版本開始，會在藉由本機帳號管理畫面輸入 UID 時自動嘗試判定所屬的伺服器。</p>
+
+			<p>$ EOF.</p>
+
+
+		</div>
+		<div id="content-zh-Hans" class="content" lang="zh-Hans">
+
+			<h1 id="toc_0">披萨小助手常见问题解答（FAQ）</h1>
+
+			<p>本文仅解答那些无法由《披萨小助手隐私政策》与《披萨小助手用户许可协议与免责声明（EULA）》回答的问题。</p>
+
+			<h2 id="toc_1">// 安全疑虑</h2>
+
+			<h4 id="toc_2">Q: 披萨小助手有没有 Android 版本？</h4>
+
+			<p>暂无开发 Android 版本之计划。</p>
+
+			<h4 id="toc_3">Q: 使用该工具是否会导致游戏账号被停权？</h4>
+
+			<p>根据到目前为止的反馈来看，迄今为止尚无先例。根据热心玩家向米哈游专属客服的求证，得到的答覆是游戏账号不会被停权。（《披萨小助手用户许可协议与免责声明（EULA）》有提及：<strong>开发者对于因用户行为所导致之任何损害不承担任何责任</strong>。）
+			</p>
+
+			<h4 id="toc_4">Q: 我通过披萨小助手登入米游社 / HoYoLAB 帐号的过程是安全的吗？</h4>
+
+			<p>披萨小助手<strong>对米游社账号是采取 QRCode 扫码登入的、不会牵涉到账号盗取的嫌疑</strong>；对 HoYoLAB 账号虽然需要密码登入，但用户对自己账号的密码输入是<strong>直接由
+					iOS 系统的安全键盘接管（macOS 平台则是 SecureEventInput 模式从硬件层面接管所有的键盘输入讯号）、然后直接被 iOS / macOS 内建的 WKWebView 转交给
+					HoYoLAB 完成登入</strong>、才产生了可以由披萨小助手在所处设备赖以使用的
+				Cookie。<strong>整个登入过程当中，披萨小助手始终无权截获用户对密码的键盘输入</strong>。感谢 Apple 一直以来致力于对资讯安全环境的营造。</p>
+
+			<h4 id="toc_5">Q: 披萨小助手会怎么处理用户的抽卡记录？</h4>
+
+			<p>在《披萨小助手隐私政策》有提及：玩家的抽卡记录只会被披萨小助手存放在这三个位置：</p>
+
+			<ul>
+				<li>阁下使用披萨小助手时之 Apple 数字设备。</li>
+				<li>以及该数字设备当时所已经登入使用 iCloud Drive 的 Apple ID 之自身的 iCloud 私有云空间。</li>
+				<li>以及任何被登入该 Apple ID 使用 iCloud Drive 且有安装披萨小助手之数字设备。</li>
+			</ul>
+
+			<p>虽然披萨小助手允许用户导入、导出抽卡记录，但开发团队不建议您将这些资料上交给任何可能会擅自公开统计结果的第三方网站。</p>
+
+			<h2 id="toc_6">// App 与开发团队</h2>
+
+			<h4 id="toc_7">Q: 我是星铁披萨小助手的用户，请问在迁移过来时需要注意什么？</h4>
+
+			<p>一是资料同步：虽然基于统一披萨引擎的全新的披萨小助手可以通过 iCloud 读取到同一 Apple ID
+				下的星铁披萨小助手的云端资料，但同步读取资料是需要时间的、且可能受到包括网络连接状态等多方因素之影响。如希望能有更稳妥的迁移手段的话，您可以通过星铁披萨小助手将其本地账号全部导出为一个
+				JSON、再导入到目前的新版披萨小助手内。抽卡记录也可以用类似的手段迁移（使用 UIGF v4 格式）。</p>
+
+			<p>二是小工具（小组件）：全新的披萨小助手的所有看似给原神设计的小工具都是可以显示星穹铁道的内容的（洞天宝钱等原神专属小工具除外），直接在小工具设定里面选择您创建的星穹铁道专用的本地账号即可。依赖 iOS
+				内建的实时活动（Live Activity）功能实作的玩家体力计时器也可以用来显示星穹铁道的开拓力回满状态。对于小工具的自订背景的功能支持会欠奉一段时间，待诸多条件允许之后可能会再行实作。</p>
+
+			<h4 id="toc_8">Q: 披萨小助手的工作原理是什么？</h4>
+
+			<p>米游社 / HoYoLAB 客户端应用（client app）会通过向米哈游 / Cognosphere
+				的服务器的后端请求游戏内的一些资讯。这个手段可以查询到一些与此有关的游戏状态资讯（比如玩家体力的回满进度，等）。披萨小助手使用您的 UID 与 Cookie 资讯可以重复这个查询过程、代替您使用这两款 App
+				向对应的服务器的后端请求游戏内的这些资讯、并展示于披萨小助手的主界面与小工具当中。《披萨小助手隐私政策》已经解释了与这些 Cookies 的使用有关的内容。</p>
+
+			<h4 id="toc_9">Q: 未来会收费吗？</h4>
+
+			<p>米哈游不允许收费或植入收费广告，所以披萨小助手的所有功能都是免费提供开放使用的。</p>
+
+			<p>披萨小助手倒是有在接受来自用户的自发捐赠，且敝团队不会因此对捐赠者产生任何义务。这类捐赠内容会用于 App 开发、及其连带网络设施的维护。当然，通过 Apple App Store 发行软件所必须的 Apple
+				Developer Program 会员身分的年费也会从这笔捐赠金报销。如有收到大宗捐赠的话，敝团队可能会公示他们的贡献。敝团队也可能会考虑在适当的时间点将用不完的经费捐赠给社会公益之用途。</p>
+
+			<h4 id="toc_10">Q: 小工具（小组件）是怎样自动更新玩家的账号的原粹树脂 / 开拓力 / 绝区电量状态的？</h4>
+
+			<p>这些在披萨小助手被统称为「玩家体力（Stamina）」。根据既往的经验来看，iOS 与 macOS 的小工具每八分钟会重新载入一次当前的内容。同时，披萨小助手的小工具从 5.0 版开始会每隔 15
+				分钟尝试向米游社 / HoYoLAB 服务器请求一次最新的实时便笺资料（里面包括了对应 UID 的原粹树脂 / 开拓力 /
+				绝区电量状态等资讯）。桌面小工具额外会有用于重载内容专用的刷新按钮。开启披萨小助手本体 App
+				时，所有小工具都会自动重新请求一次实时便笺资料。如果您未曾登入游戏消耗过玩家体力的话，理论上通过小工具显示的玩家体力的误差不会超过 1。</p>
+
+			<h4 id="toc_11">Q: 开发团队的自我介绍呢？如何解决其他疑问和讨论其他话题？</h4>
+
+			<p>各位可以在披萨小助手的「关于」画面找到披萨小助手的 QQ 频道和 Discord 频道。从 2023 年四月开始，开发团队变成了三个人（Lava; Bill Haku; Shiki
+				Suen）。各位可以在「关于」画面的右上角点一下「开发组」就能看到他们的联络资料。</p>
+
+			<h4 id="toc_12">Q: 请问何时会实作与绝区零有关的进阶功能？比如抽卡记录管理之类的。</h4>
+
+			<p>至少一年内不会实作。原因有很多，但开发团队分身乏术也是重要原因之一。</p>
+
+			<h2 id="toc_13">// 技术故障</h2>
+
+			<blockquote>
+				本章节内容以披萨小助手 5.0 版开始的版本为讨论情形。
+			</blockquote>
+
+			<h4 id="toc_14">Q: iOS 锁屏小工具（小组件）无法加载出内容，怎么解决？</h4>
+
+			<p>这有很大概率是小工具卡在资料获取状态了。可以进入锁屏小工具编辑状态，编辑对应的小工具的内容，重新选择本地账号（哪怕选择的还是之前的本地账号），这样可以触发锁屏小工具的内容更新流程。</p>
+
+			<h4 id="toc_15">Q: Apple Watch 无法从 iCloud 同步账号？</h4>
+
+			<p>以 iOS 18 为例：先关闭披萨小助手的 iCloud 同步功能、再重新打开，并进入披萨小助手的本体应用、再静置一分钟，随后打开 Apple Watch App 尝试同步即可。具体操作方法为：在 iPhone
+				上点按「设定」-「你的 Apple 账号」-「iCloud」-「储存至 iCloud」，然后把页面往下翻，找到披萨小助手的开关，关掉之后再重新点开就可以了。</p>
+
+			<h4 id="toc_16">Q: 尝试添加小工具（小组件）时，找不到小工具。</h4>
+
+			<p>请尝试重新启动系统后静置十分钟、不行的话再试试关闭再打开披萨小助手的通知，有较大概率解决。如果您在用 macOS 的且这样做之后该问题仍旧存在的话，请洽 Apple Support 让他们的专员引导您确认
+				App 是否被安装到了正确的位置、或者在不同的位置有重复安装。</p>
+
+			<h4 id="toc_17">Q: 错误码 -1（未获取到数据）或 错误码 10102、10103、10104（Cookie 与 UID 不对应）</h4>
+
+			<p>检查是否开启米游社的实时便笺（或 HoYoLAB 的实时便笺）功能，并重新获取 Cookie。另请注意登入的账号本身是否正确。</p>
+
+			<h4 id="toc_18">Q: 错误码 10001 （Cookie 有误或 Cookie 失效）</h4>
+
+			<p>建议将对应的本地账号重新登入。这个过程会重新获取 Cookie。</p>
+
+			<h4 id="toc_19">Q: 错误码 1008（UID 有误）</h4>
+
+			<p>检查 UID 是否与您选择的服务器彼此对应（注意：是原神/星穹铁道/绝区零的UID，不是米游社通行证账号的 ID 数字）。如无法解决，请向我们反馈。另：披萨小助手自从 v5.0
+				版本开始，会在通过本地账号管理画面输入 UID 时自动尝试判定所属的服务器。</p>
+
+			<p>$ EOF.</p>
+
+
+		</div>
+		<div id="content-ja-JP" class="content" lang="ja">
+
+			<h1 id="toc_0">ピザ助手 FAQ</h1>
+
+			<p>この文書は、「ピザ助手 プライバシーポリシー」および「ピザ助手アプリ使用者許諾契約及び免責声明」で言及されていない内容のみの質問に対応しています。</p>
+
+			<h2 id="toc_1">// セキュリティに関する懸念</h2>
+
+			<h4 id="toc_2">Q: ピザ助手のAndroid版はございますか？</h4>
+
+			<p>現在、Android版の開発予定はございません。</p>
+
+			<h4 id="toc_3">Q: このツールを使用すると、ゲームアカウントが停止されることはございますか？</h4>
+
+			<p>これまでそのような報告はございません。miHoYoの専用カスタマーサービスに連絡した熱心なプレイヤーからの確認によれば、ゲームアカウントが停止されることはないとのことです。(<em>ピザ助手アプリ使用者許諾契約及び免責声明</em>
+				には次のように記載されています: <strong>開発者は使用者の行為による損害について一切責任を負わぬ</strong>。）</p>
+
+			<h4 id="toc_4">Q: ピザ助手を通じて、米遊社 / HoYoLABアカウントにログインしても安全ですか？</h4>
+
+			<p><strong>米遊社アカウントへのログインはQRコードスキャンを通じて行われ、パスワードの入力は不要です</strong>。HoYoLABアカウントの場合、<strong>iOSデバイスではシステム提供のセキュアな入力キーボードがパスワードの入力を取得し、macOSではハードウェアレベルのSecureEventInput
+					APIが直接物理キーボードの入力を取得します</strong>。<strong>両方の入力はWKWebViewを通じてHoYoLABのログインページに直接渡されます</strong>。その後、サーバーはデバイス固有のクッキーを生成し、このアプリは使用者の「情報のニーズ」に応じてそれを利用します。<strong>この過程は他の誰にも（ピザ助手アプリにも）傍受されません</strong>。Appleのセキュリティ対策に感謝します。
+			</p>
+
+			<h4 id="toc_5">Q: ピザ助手は使用者のガチャ記録をどのように扱いますか？</h4>
+
+			<p><em>ピザ助手 プライバシーポリシー</em> に記載されているように、プレイヤーのガチャ記録は以下の3つの場所にのみ保存されます（柔らかい日本語で言い直します）：</p>
+
+			<ul>
+				<li>使用者が当アプリを使用しているApple製のデジタルデバイス。</li>
+				<li>使用者のApple IDに紐づけられているiCloud個人クラウド空間。</li>
+				<li>同じApple IDにてiCloud Driveにログインし、当アプリがインストールされている他のデジタルデバイス。</li>
+			</ul>
+
+			<p>ピザ助手は使用者がガチャ記録をインポートおよびエクスポートできるようにしていますが、開発チームはこれらの記録を「勝手に統計結果を公開する第三者とそのウェブサイト」に共有することを推奨していません。</p>
+
+			<h2 id="toc_6">// アプリと開発チーム</h2>
+
+			<h4 id="toc_7">Q: 『崩スタピザ助手』の使用者です。この新しい『ピザ助手（無印）』に移行する際に注意すべきことはございますか？</h4>
+
+			<ol>
+				<li>
+					<p><strong>データ同期</strong>：新しい『統一ピザ助手エンジン』で稼働している『ピザ助手（無印）』は、同じApple
+						IDでiCloudを通じて『崩スタピザ助手』のクラウドデータを読み取ることができますが、データ同期には時間がかかる場合があり、接続状態などの要因によって影響を受けることがございます。より確実な移行を行うためには、『崩スタピザ助手』からローカルアカウントをJSONファイル（プロファイル統括パッケージ）として書き出し、『ピザ助手（無印）』に読み込むすることをお勧めします。ガチャ記録も同様の方法で移行できます（UIGF
+						v4形式に準拠したファイル交換を通じて）。</p>
+				</li>
+				<li>
+					<p><strong>ウィジェット</strong>：『ピザ助手（無印）』では、『原神』専用のウィジェットも『スターレイル』のコンテンツを表示できるようになりました（洞天集宝盆などの『原神』固有のウィジェットは除く）。ウィジェット設定で『スターレイル』用のローカルプロファイルを選択してください。iOSの組み込みLive
+						Activity機能を使って実装されたスタミナタイマーも、『スターレイル』での開拓力の補充状況を表示するために使用できます。ウィジェットのカスタム背景サポートは一時的に遅れる可能性があり、条件によって後で実装される予定です。
+					</p>
+				</li>
+			</ol>
+
+			<h4 id="toc_8">Q: ピザ助手はどのように動作しますか？</h4>
+
+			<p>miHoYo / HoYoLABクライアントアプリは、miHoYo /
+				Cognosphereサーバーバックエンドからゲーム関連の情報をリクエストします。この方法では、ゲームの状態情報（例えば、スタミナの補充進行状況など）を取得できます。ピザ助手は、あなたのUIDとクッキー情報を使用してこのクエリ過程を再現し、あなたの代わりに対応するサーバーバックエンドからデータをリクエストし、その情報をピザ助手のメインインターフェースやウィジェットに表示します。Cookies
+				の取り扱いの安全配慮について、プライバシーポリシーで既に説明済みですので、その説明をご参考にしてください。</p>
+
+			<h4 id="toc_9">Q: 将来的に料金が発生することはございますか？</h4>
+
+			<p>miHoYoは課金や広告の埋め込みを許可していないため、ピザ助手のすべての機能は無料で利用できます。</p>
+
+			<p>ピザ助手は使用者からの任意の寄付を受け入れていますが、開発チームは寄付者に対して義務を負いません。これらの寄付はアプリの開発や関連するネットワークインフラの維持に使用されます。もちろん、Apple
+				Developer
+				Programメンバーシップの年間費用もこの寄付金から支払われます。大きな寄付を受けた場合、チームは寄付者を公に認めることがございます。チームはまた、適切なタイミングで未使用の寄付金を慈善団体に寄付することを検討することがございます。
+			</p>
+
+			<h4 id="toc_10">Q: ウィジェットはどのようにしてプレイヤーのアカウントステータス（天然樹脂、開拓力、ZZZエネルギー）を自動更新しますか？</h4>
+
+			<p>これらはピザ助手内で「プレイヤースタミナ」として総称されます。過去の経験に基づき、iOSおよびmacOSのウィジェットは8分ごとにリロードされます。バージョン5.0以降、ピザ助手のウィジェットは、米遊社 /
+				HoYoLABサーバーから15分ごとにリアルタイムデータをリクエストしようと試みます（対応するUIDの天然樹脂、開拓力、ZZZエネルギーステータスを含む）。デスクトップウィジェットには、コンテンツを再読み込みするためのリフレッシュボタンも含まれています。ピザ助手アプリを開くと、すべてのウィジェットは自動的にリアルタイムデータを再リクエストします。ゲーム内でスタミナを消費していない場合、ウィジェットに表示されるスタミナの差異は1を超えることはございません。
+			</p>
+
+			<h4 id="toc_11">Q: 開発チームについてもっと知りたい、または他のトピックについて話し合いたいですか？</h4>
+
+			<p>開発チームのQQチャンネルやDiscordチャンネルは、ピザ助手の「設定」セクションにございます。2023年4月から、開発チームは3人のメンバー（Lava、Bill Haku、Shiki
+				Suen）で構成されています。「設定」セクションの右上隅にある「開発チーム」をクリックすると、彼らの連絡先情報を見ることができます。</p>
+
+			<h2 id="toc_12">// 技術的な問題</h2>
+
+			<blockquote>
+				このセクションでは、ピザ助手（無印）バージョン5.0以降の問題について説明します。
+			</blockquote>
+
+			<h4 id="toc_13">Q: iOSのロック画面ウィジェットがコンテンツを読み込まない。どうすれば修正できますか？</h4>
+
+			<p>これは、ウィジェットがデータ取得状態で固まっている可能性がございます。ロック画面ウィジェットの編集モードに入り、ウィジェットの内容を変更し、ローカルプロファイルを再選択してください（前のものと同じでも構いません）。これにより、コンテンツの更新過程がトリガーされます。
+			</p>
+
+			<h4 id="toc_14">Q: Apple WatchがiCloudからアカウントを同期できません？</h4>
+
+			<p>iOS 18の場合：まず、ピザ助手のiCloud同期機能をオフにし、再度オンにします。その後、ピザ助手アプリを開いて1分ほど放置し、Apple
+				Watchアプリを通じて同期を試みてください。さらにサポートが必要な場合は、Apple Supportにお問い合わせください。</p>
+
+			<h4 id="toc_15">Q: ウィジェットを追加しようとすると見つからない？</h4>
+
+			<p>システムを再起動し、10分ほど待ってください。それでも解決しない場合は、ピザ助手の通知をオフにした後、再度オンにしてみてください。これで問題が解決する可能性が高いです。macOSで問題が解決しない場合は、Apple
+				Supportに連絡して、アプリが正しい場所にインストールされているか、重複してインストールされていないか確認してください。</p>
+
+			<h4 id="toc_16">Q: エラーコード-1（データが取得できない）または10102、10103、10104（クッキーとUIDの不一致）</h4>
+
+			<p>米遊社またはHoYoLABでリアルタイムノート機能が有効になっているか確認し、新しいクッキーを取得してください。また、ログインしているアカウントが正しいことを確認してください。</p>
+
+			<h4 id="toc_17">Q: エラーコード10001（クッキーエラーまたはクッキーの期限切れ）</h4>
+
+			<p>対応するローカルプロファイルで再度ログインすることをお勧めします。この過程で新しいクッキーが取得されます。</p>
+
+			<h4 id="toc_18">Q: エラーコード1008（UIDエラー）</h4>
+
+			<p>UIDが選択したサーバーに対応しているか確認してください（注意：これは『原神』 / 『スターレイル』 / Honkai: 『スターレイル』のUIDであり、米遊社 Passport
+				ID番号ではございません）。問題が解決しない場合は、報告してください。バージョン5.0以降、ピザ助手はローカルプロファイル管理画面でUIDを入力する際にサーバーを自動的に判定しようとします。</p>
+
+			<p>$ EOF.</p>
+
+
+		</div>
+	</main>
+</body>
+
+</html>

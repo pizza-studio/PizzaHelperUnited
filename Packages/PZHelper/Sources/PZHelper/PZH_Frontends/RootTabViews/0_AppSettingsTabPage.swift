@@ -126,10 +126,7 @@ struct AppSettingsTabPage: View {
     // MARK: Private
 
     private static let faqURLString: String = {
-        switch Bundle.main.preferredLocalizations.first?.prefix(2) {
-        case "zh": "https://gi.pizzastudio.org/static/faq.html"
-        default: "https://gi.pizzastudio.org/static/faq_en.html"
-        }
+        Bundle.module.url(forResource: "FAQ", withExtension: "html")!.absoluteString
     }()
 
     @State private var nav: Nav?

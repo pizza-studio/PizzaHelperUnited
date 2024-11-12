@@ -27,9 +27,9 @@
 
 其他资讯皆存于下述三类之位置：
 
-- 阁下使用敝应用时之 Apple 数位装置。
-- 以及该数位装置当时所已经登入使用 iCloud Drive 的 Apple ID 之自身的 iCloud 私有云空间。
-- 以及任何被登入该 Apple ID 使用 iCloud Drive 且有安装敝应用之数位装置。
+- 阁下使用敝应用时之 Apple 数字设备。
+- 以及该数字设备当时所已经登入使用 iCloud Drive 的 Apple ID 之自身的 iCloud 私有云空间。
+- 以及任何被登入该 Apple ID 使用 iCloud Drive 且有安装敝应用之数字设备。
 
 除上述情形外，敝应用程序不会传送其他类型之使用者资料至开发者伺服器。使用者所有个人资料仅用于与相关服务的互动及个人化功能，开发者不搜集除上述所陈项目以外之使用者资讯。
 
@@ -41,9 +41,9 @@
 
 本应用程序的相关功能虽依赖 Cookies 运作，但这一类 Cookies 只可能因此出现在下述三类位置：
 
-- 阁下使用敝应用时的 Apple 数位装置。
-- 以及该数位装置当时所已经登入使用 iCloud Drive 的 Apple ID 的自身的 iCloud 私有云空间。
-- 以及任何被登入该 Apple ID 使用 iCloud Drive 且有安装敝应用的数位装置。
+- 阁下使用敝应用时的 Apple 数字设备。
+- 以及该数字设备当时所已经登入使用 iCloud Drive 的 Apple ID 的自身的 iCloud 私有云空间。
+- 以及任何被登入该 Apple ID 使用 iCloud Drive 且有安装敝应用的数字设备。
 
 开发者不搜集使用者的任何 Cookies 资料。
 
