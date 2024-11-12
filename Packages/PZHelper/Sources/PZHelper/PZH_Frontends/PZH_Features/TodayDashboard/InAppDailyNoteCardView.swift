@@ -75,6 +75,13 @@ struct InAppDailyNoteCardView: View {
             .secondaryColorVerseBackground()
             .textCase(.none)
         }
+        .contextMenu {
+            Button {
+                globalNavVM.rootTabNav = .appSettings(.profileManager)
+            } label: {
+                Text(verbatim: "Jump to Profile Manager")
+            }
+        }
         .onChange(of: broadcaster.eventForJustSwitchedToTodayTab) {
             theVM.getDailyNote()
         }
@@ -88,6 +95,7 @@ struct InAppDailyNoteCardView: View {
 
     // MARK: Private
 
+    @Environment(GlobalNavVM.self) private var globalNavVM
     @StateObject private var theVM: DailyNoteViewModel
     @StateObject private var broadcaster = Broadcaster.shared
 }
