@@ -49,11 +49,10 @@ public struct ContentView: View {
         }
         #endif
         .tint(tintForCurrentTab)
-        .onChange(of: tabNavVM.rootTabNav) {
+        .onChange(of: tabNavVM.rootTabNav.rootID) {
             simpleTaptic(type: .selection)
         }
         .environment(GachaVM.shared)
-        .environment(tabNavVM)
     }
 
     // MARK: Internal
@@ -137,6 +136,8 @@ public struct ContentView: View {
             Self.exposedCaseTags.contains(rootID)
         }
     }
+
+    @Default(.appTabIndex) var appIndex: Int
 
     @Query(sort: \PZProfileMO.priority) var accounts: [PZProfileMO]
 
