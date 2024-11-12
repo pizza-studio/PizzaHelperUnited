@@ -7,9 +7,9 @@ import Foundation
 import PZBaseKit
 import SwiftUI
 
-// MARK: - EULAView
+// MARK: - PrivacyPolicyView
 
-public struct EULAView: View {
+public struct PrivacyPolicyView: View {
     // MARK: Lifecycle
 
     public init(isOOBE: Bool = false) {
@@ -19,7 +19,7 @@ public struct EULAView: View {
     // MARK: Public
 
     public static let navTitle: String = {
-        let key: String.LocalizationValue = "aboutKit.eula.title"
+        let key: String.LocalizationValue = "aboutKit.PrivacyPolicy.title"
         return .init(localized: key, bundle: .module)
     }()
 
@@ -42,7 +42,7 @@ public struct EULAView: View {
                                 }
                                 ToolbarItem(placement: .confirmationAction) {
                                     Button("sys.agree".i18nBaseKit) {
-                                        Defaults[.isEULAConfirmed] = true
+                                        Defaults[.isPrivacyPolicyConfirmed] = true
                                         UserDefaults.baseSuite.synchronize()
                                         presentationMode.wrappedValue.dismiss()
                                     }
@@ -56,7 +56,7 @@ public struct EULAView: View {
     // MARK: Private
 
     private static let urlString: String = {
-        let fileURL = Bundle.module.url(forResource: "EULA", withExtension: "html")
+        let fileURL = Bundle.module.url(forResource: "PRIVACY_POLICY", withExtension: "html")
         let url: String = {
             switch Locale.preferredLanguages.first?.prefix(2) {
             case "zh":
@@ -75,5 +75,9 @@ public struct EULAView: View {
 }
 
 extension Defaults.Keys {
-    public static let isEULAConfirmed = Key<Bool>("isEULAConfirmed", default: false, suite: .baseSuite)
+    public static let isPrivacyPolicyConfirmed = Key<Bool>(
+        "isPrivacyPolicyConfirmed",
+        default: false,
+        suite: .baseSuite
+    )
 }

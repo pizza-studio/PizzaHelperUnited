@@ -152,8 +152,11 @@ struct AppAboutViewSections: View {
 
         // TODO: 择日单独设立授权合约之页面。
         Section {
-            NavigationLink(EULAView.navTitle4EULA) {
+            NavigationLink(EULAView.navTitle) {
                 EULAView()
+            }
+            NavigationLink(PrivacyPolicyView.navTitle) {
+                PrivacyPolicyView()
             }
             NavigationLink(destination: ListOf3rdPartyComponentsView()) {
                 Text(ListOf3rdPartyComponentsView.navTitle)
