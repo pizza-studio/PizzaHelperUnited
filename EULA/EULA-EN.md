@@ -21,15 +21,16 @@ Upon acceptance of this Agreement, the User is bound by all its terms, including
 4. The service may include advertisements, and the User agrees to view advertisements provided by the Developer, third-party suppliers, or partners.
 
 5. The User shall not engage in, nor upload, copy, or disseminate, any of the following content through this application or its services:
-   1. Content that defies the fundamental principles set forth in the Constitution of the People’s Republic of China;
-   2. Content that endangers national security, divulges state secrets, subverts state power, or compromises national unity;
-   3. Content that harms national honor or interests;
-   4. Content that incites ethnic hatred or discrimination, or disrupts ethnic unity;
-   5. Content that violates national religious policies, promotes cults, or advocates feudal superstitions;
-   6. Content that spreads rumors, disrupts social order, or undermines social stability;
-   7. Content that disseminates obscenity, pornography, gambling, violence, murder, terror, or incites crime;
-   8. Content that insults or defames others, or infringes upon the lawful rights of others;
-   9. Content containing other information prohibited by laws and administrative regulations.
+
+    1. Content that defies the fundamental principles set forth in the Constitution of the People’s Republic of China;
+    2. Content that endangers national security, divulges state secrets, subverts state power, or compromises national unity;
+    3. Content that harms national honor or interests;
+    4. Content that incites ethnic hatred or discrimination, or disrupts ethnic unity;
+    5. Content that violates national religious policies, promotes cults, or advocates feudal superstitions;
+    6. Content that spreads rumors, disrupts social order, or undermines social stability;
+    7. Content that disseminates obscenity, pornography, gambling, violence, murder, terror, or incites crime;
+    8. Content that insults or defames others, or infringes upon the lawful rights of others;
+    9. Content containing other information prohibited by laws and administrative regulations.
 
 6. The Developer has the right to take action against violations, including deleting illegal content, terminating services, blocking accounts, and reporting to authorities.
 
@@ -37,17 +38,24 @@ Upon acceptance of this Agreement, the User is bound by all its terms, including
 
 ### **Article 2: Privacy Protection**
 
-Should the User agree, the Developer shall collect information related to the Spiral Abyss. This includes the following:
+This application requires submitting the UID number to query the in-game character showcase information through Enka Networks' public query service. The UID number itself can only be used to locate the corresponding player within the Mihoyo game and cannot be used by anyone outside of Mihoyo, Inc. to reverse-engineer the player's true identity. However, the UID may reveal the country or region of the game server the player is located on. It is important to note that, as Enka Networks is a public query service, the character nickname and signature obtained through the given UID might expose the player's personal privacy, depending on the information they have included in their nickname and signature. Since this information is voluntarily made public by the player in the game, the Developer of this application do not bear any responsibility in this regard.
+
+For cases other than the above exception: Should the User agree, the Developer shall collect information related to the Spiral Abyss. This includes the following:
 
 - If the User has achieved full stars in the current season of the Spiral Abyss:
-   - Characters used in the User's Spiral Abyss challenges from floors 9 to 12.
-   - The User's Spiral Abyss combat leaderboard.
-   - All of the User's owned characters and their character build details.
-   - The User's game UID number. **Note**: This number is used to ensure the User's data is not resubmitted and to permanently filter out any data from potential cheaters.
+
+    - Characters used in the User's Spiral Abyss challenges from floors 9 to 12.
+    - The User's Spiral Abyss combat leaderboard.
+    - All of the User's owned characters and their character build details.
+    - The User's game UID number. **Note**: This number is used to ensure the User's data is not resubmitted and to permanently filter out any data from potential cheaters.
 
 The collected information does not include any personally identifiable information, device details, or account information, thereby ensuring the protection of the User's privacy.
 
-All other information is stored within the User's device or their private iCloud. The Developer does not collect any data beyond what is mentioned above.
+All other information is stored in the following three locations:
+
+- The Apple digital device you use with this application.
+- The iCloud private space associated with the Apple ID that is logged into iCloud Drive on that digital device.
+- Any digital device logged into the same Apple ID using iCloud Drive and has the application installed.
 
 This application does not transmit User data to the Developer's servers, except for the cases listed above. The collected information is used solely for service interaction and personalization. The Developer does not collect any other types of User information.
 
