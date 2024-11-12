@@ -32,20 +32,16 @@ struct LockScreenResinWidgetInline: View {
         switch result {
         case let .success(data):
             let staminaStatus = data.staminaIntel
-
+            let gameTag = data.game.uidPrefix
             if staminaStatus.isAccomplished {
-                Image(systemSymbol: .moonStarsFill)
+                Text(verbatim: "\(gameTag): \(staminaStatus.all) @ 100%")
             } else {
-                Image(systemSymbol: .moonFill)
+                let trailingText = PZWidgets.intervalFormatter.string(
+                    from: TimeInterval.sinceNow(to: data.staminaFullTimeOnFinish)
+                )!
+                Text(verbatim: "\(gameTag): \(staminaStatus.finished)  \(trailingText)")
             }
-            let trailingText = PZWidgets.intervalFormatter.string(
-                from: TimeInterval.sinceNow(to: data.staminaFullTimeOnFinish)
-            )!
-            Text(verbatim: "\(staminaStatus.finished)  \(trailingText)")
-        // 似乎不能插入自定义的树脂图片，也许以后会开放
-//                Image(staminaMonochromeIconAssetName, bundle: .main)
         case .failure:
-            Image(systemSymbol: .moonFill)
             Text(verbatim: "…")
         }
     }
