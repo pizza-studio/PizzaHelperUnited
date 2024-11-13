@@ -21,7 +21,7 @@ extension Defaults.Keys {
     /// Remembering the most-recent tab index.
     public static let appTabIndex = Key<Int>(
         "appTabIndex",
-        default: 0,
+        default: 1,
         suite: .baseSuite
     )
 
