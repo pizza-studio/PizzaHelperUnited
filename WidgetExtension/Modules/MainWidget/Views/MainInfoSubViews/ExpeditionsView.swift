@@ -33,7 +33,7 @@ struct EachExpeditionView: View {
         HStack {
             webView(url: expedition.iconURL)
             VStack(alignment: .leading) {
-                if let finishTime = expedition.timeOnFinish {
+                if !expedition.isFinished, let finishTime = expedition.timeOnFinish {
                     Text(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: finishTime))!)
                         .lineLimit(1)
                         .font(.footnote)
