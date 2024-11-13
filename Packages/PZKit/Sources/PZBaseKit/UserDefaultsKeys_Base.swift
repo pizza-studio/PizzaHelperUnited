@@ -43,14 +43,14 @@ extension Defaults.Keys {
     /// 该选项仅对中文介面可见。
     public static let forceCharacterWeaponNameFixed = Key<Bool>(
         "forceCharacterWeaponNameFixed",
-        default: true,
+        default: Pizza.isDebug,
         suite: .baseSuite
     )
 
     /// Whether displaying real names for certain characters, not affecting SRGF imports & exports.
     public static let useRealCharacterNames = Key<Bool>(
         "useRealCharacterNames",
-        default: true,
+        default: Pizza.isDebug,
         suite: .baseSuite
     )
 
