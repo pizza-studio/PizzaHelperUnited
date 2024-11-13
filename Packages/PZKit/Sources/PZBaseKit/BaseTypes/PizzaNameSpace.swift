@@ -2,4 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-public enum Pizza {}
+public enum Pizza {
+    public static let isDebug: Bool = {
+        #if DEBUG
+        true
+        #else
+        false
+        #endif
+    }()
+}
