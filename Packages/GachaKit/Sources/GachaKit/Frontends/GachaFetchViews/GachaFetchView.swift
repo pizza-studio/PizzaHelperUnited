@@ -358,12 +358,19 @@ extension GachaFetchView4Game {
                 }
             } footer: {
                 HStack {
-                    Text(verbatim: GachaPoolExpressible.getPoolFilterLabel(by: GachaType.game) + ":")
-                    Text(verbatim: poolType.localizedTitle + " (\(gachaType.rawValue))")
+                    VStack(alignment: .leading) {
+                        Text(verbatim: GachaPoolExpressible.getPoolFilterLabel(by: GachaType.game) + ":")
+                            .multilineTextAlignment(.leading)
+                        Text(verbatim: poolType.localizedTitle + " (\(gachaType.rawValue))")
+                            .multilineTextAlignment(.leading)
+                    }
                     Spacer()
-                    Text(String(format: "gachaKit.getRecord.gotSome.page".i18nGachaKit, page))
-                    Spacer()
-                    Text(String(format: "gachaKit.getRecord.gotSome.gotNewRecords".i18nGachaKit, newItemCount))
+                    VStack(alignment: .trailing) {
+                        Text(String(format: "gachaKit.getRecord.gotSome.page".i18nGachaKit, page))
+                            .multilineTextAlignment(.trailing)
+                        Text(String(format: "gachaKit.getRecord.gotSome.gotNewRecords".i18nGachaKit, newItemCount))
+                            .multilineTextAlignment(.trailing)
+                    }
                 }
             }
         }
