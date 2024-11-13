@@ -45,7 +45,7 @@ struct WidgetBackgroundView: View {
                     }
                     let wallpaper = Wallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
                     if wallpaper == nil {
-                        NSLog("[OPHelper] Asset missing in PZWidgetsKit: \(backgroundImageName)")
+                        NSLog("[PZHelper] Asset missing in PZWidgetsKit: \(backgroundImageName)")
                     }
                     return (wallpaper ?? .defaultValue(for: nil)).image4LiveActivity
                 }()
@@ -60,7 +60,7 @@ struct WidgetBackgroundView: View {
                     }
                     .onAppear {
                         NSLog(
-                            "[OPHelper] Successfully initialized UIImage: " + backgroundImageName
+                            "[PZHelper] Successfully initialized UIImage: " + backgroundImageName
                         )
                     }
                 default:
@@ -70,7 +70,7 @@ struct WidgetBackgroundView: View {
                         .scaledToFill()
                         .onAppear {
                             NSLog(
-                                "[OPHelper] Successfully initialized UIImage: " + backgroundImageName
+                                "[PZHelper] Successfully initialized UIImage: " + backgroundImageName
                             )
                         }
                 }
