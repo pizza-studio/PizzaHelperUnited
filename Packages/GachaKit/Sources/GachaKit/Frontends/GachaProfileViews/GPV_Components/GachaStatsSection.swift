@@ -23,10 +23,12 @@ extension GachaProfileView {
         public var body: some View {
             Section {
                 HStack {
-                    Label(
-                        "gachaKit.stats.sincePreviousPentaStar".i18nGachaKit,
-                        systemSymbol: .flagFill
-                    )
+                    Label {
+                        Text("gachaKit.stats.sincePreviousPentaStar".i18nGachaKit)
+                            .fontWidth(.condensed)
+                    } icon: {
+                        Image(systemSymbol: .flagFill)
+                    }
                     Spacer()
                     Text(
                         String(
@@ -34,39 +36,52 @@ extension GachaProfileView {
                             drawCountableAmount
                         )
                     )
+                    .fontWidth(.condensed)
                 }
                 HStack {
-                    Label(
-                        "gachaKit.stats.totalPulls".i18nGachaKit,
-                        systemSymbol: .handTapFill
-                    )
+                    Label {
+                        Text("gachaKit.stats.totalPulls".i18nGachaKit)
+                            .fontWidth(.condensed)
+                    } icon: {
+                        Image(systemSymbol: .handTapFill)
+                    }
                     Spacer()
                     Text(entries.count.description)
+                        .fontWidth(.condensed)
                 }
                 HStack {
-                    Label(
-                        "gachaKit.stats.avaragePulls4PentaStars".i18nGachaKit,
-                        systemSymbol: .star
-                    )
+                    Label {
+                        Text("gachaKit.stats.avaragePulls4PentaStars".i18nGachaKit)
+                            .fontWidth(.condensed)
+                    } icon: {
+                        Image(systemSymbol: .star)
+                    }
                     Spacer()
                     Text(average5StarDraw.description)
+                        .fontWidth(.condensed)
                 }
                 if poolType.isSurinukable, theVM.taskState != .busy {
                     HStack {
-                        Label(
-                            "gachaKit.stats.avaragePulls4LimitedPentaStars".i18nGachaKit,
-                            systemSymbol: .starFill
-                        )
+                        Label {
+                            Text("gachaKit.stats.avaragePulls4LimitedPentaStars".i18nGachaKit)
+                                .fontWidth(.condensed)
+                        } icon: {
+                            Image(systemSymbol: .starFill)
+                        }
                         Spacer()
                         Text(limitedDrawCount.description)
+                            .fontWidth(.condensed)
                     }
                     HStack {
-                        Label(
-                            "gachaKit.stats.surinukeEvasionRate".i18nGachaKit,
-                            systemSymbol: .chartPieFill
-                        )
+                        Label {
+                            Text("gachaKit.stats.surinukeEvasionRate".i18nGachaKit)
+                                .fontWidth(.condensed)
+                        } icon: {
+                            Image(systemSymbol: .chartPieFill)
+                        }
                         Spacer()
                         Text(Self.fmtPerc.string(from: surinukeEvasionRate as NSNumber) ?? "N/A")
+                            .fontWidth(.condensed)
                     }
                     guestEvaluatorView()
                 }

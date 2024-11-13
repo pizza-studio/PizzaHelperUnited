@@ -5171,7 +5171,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Get Record"
+            "value" : "Get Records"
           }
         },
         "es" : {
@@ -9015,37 +9015,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld Zugriffe"
+            "value" : "%lld"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld pulls"
+            "value" : "%lld"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld extracciones"
+            "value" : "%lld"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld hiláhila"
+            "value" : "%lld"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld tirages"
+            "value" : "%lld"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld tentativi"
+            "value" : "%lld"
           }
         },
         "ja" : {
@@ -9057,19 +9057,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld 회 당김"
+            "value" : "%lld"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld пулов"
+            "value" : "%lld"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld lượt kéo"
+            "value" : "%lld"
           }
         },
         "zh-Hans" : {
