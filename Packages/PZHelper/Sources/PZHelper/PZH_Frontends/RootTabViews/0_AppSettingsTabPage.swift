@@ -40,7 +40,7 @@ struct AppSettingsTabPage: View {
                     }
                     NavigationLink(value: Nav.faq) {
                         Label(
-                            "settings.misc.faq".i18nPZHelper,
+                            FAQView.navTitle,
                             systemSymbol: .personFillQuestionmark
                         )
                     }
@@ -125,10 +125,6 @@ struct AppSettingsTabPage: View {
 
     // MARK: Private
 
-    private static let faqURLString: String = {
-        Bundle.module.url(forResource: "FAQ", withExtension: "html")!.absoluteString
-    }()
-
     @State private var nav: Nav?
     @State private var sharedDB = Enka.Sputnik.shared
 
@@ -139,10 +135,7 @@ struct AppSettingsTabPage: View {
         NavigationStack {
             switch selection.wrappedValue {
             case .profileManager: ProfileManagerPageContent()
-            case .faq:
-                WebBrowserView(url: Self.faqURLString)
-                    .navigationTitle("settings.misc.faq".i18nPZHelper)
-                    .navBarTitleDisplayMode(.inline)
+            case .faq: FAQView()
             case .cloudAccountSettings: CloudAccountSettingsPageContent()
             case .uiSettings: UISettingsPageContent()
             case .liveActivitySettings: LiveActivitySettingsPageContent()
