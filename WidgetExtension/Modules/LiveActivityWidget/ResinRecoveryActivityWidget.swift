@@ -74,7 +74,7 @@ struct ResinRecoveryActivityWidget: Widget {
                             .scaledToFit()
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                             .frame(width: 15)
-                        Text("app.title.full".i18nBaseKit)
+                        Text("app.title.short".i18nBaseKit)
                             .foregroundColor(Color("textColor.appIconLike", bundle: .main))
                             .font(.caption2)
                     }
