@@ -131,6 +131,20 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
                 .font(.system(.title))
                 .monospaced()
                 .fontWidth(.condensed)
+            let buttonDimension = ceil(Font.baseFontSize * 2)
+            #if os(iOS) && !targetEnvironment(macCatalyst)
+            if (focused ?? $backupFocus).wrappedValue {
+                ZStack {
+                    Button(action: dropFieldFocus) {
+                        Image(systemSymbol: SFSymbol.keyboardChevronCompactDown)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .buttonStyle(.borderless)
+                }
+                .frame(width: buttonDimension, height: buttonDimension)
+            }
+            #endif
             ZStack {
                 if delegate.taskState == .busy {
                     ProgressView()
@@ -144,10 +158,11 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
                     .disabled(delegate.taskState == .busy || !isUIDValid)
                 }
             }
-            .frame(height: ceil(Font.baseFontSize * 2))
+            .frame(width: buttonDimension, height: buttonDimension)
         }
     }
 
+    @MainActor
     func dropFieldFocus() {
         focused?.wrappedValue = false
         backupFocus = false
