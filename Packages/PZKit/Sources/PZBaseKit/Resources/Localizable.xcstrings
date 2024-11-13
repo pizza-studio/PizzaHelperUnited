@@ -629,19 +629,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nihongo"
+            "value" : "Japanese"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nihongo"
+            "value" : "Japanese"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nihongo"
+            "value" : "Japanese"
           }
         },
         "fr" : {
@@ -653,7 +653,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nihongo"
+            "value" : "Japanese"
           }
         },
         "ja" : {
@@ -671,13 +671,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nihongo"
+            "value" : "Japanese"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nihongo"
+            "value" : "Japanese"
           }
         },
         "zh-Hans" : {
