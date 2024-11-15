@@ -58,6 +58,7 @@ public struct WallpaperGalleryViewContent: View {
                     Button("wpKit.assign.background4App".i18nWPKit) {
                         background4App = currentCard
                     }
+                    #if !targetEnvironment(macCatalyst) && !os(macOS)
                     Button("wpKit.assign.backgrounds4LiveActivity".i18nWPKit) {
                         if backgrounds4LiveActivity.contains(currentCard) {
                             backgrounds4LiveActivity.remove(currentCard)
@@ -65,6 +66,7 @@ public struct WallpaperGalleryViewContent: View {
                             backgrounds4LiveActivity.insert(currentCard)
                         }
                     }
+                    #endif
                 }
         })
         .searchable(text: $searchText, placement: searchFieldPlacement)
