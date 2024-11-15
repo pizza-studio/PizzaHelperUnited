@@ -2256,77 +2256,78 @@
       }
     },
     "aboutKit.contributor.subtitleAsAssetCrew.koni" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App-Symbol Illustrator, Der Pizza Helfer (v5)"
+            "value" : "App-Symbol Illustrator, The Pizza Helper (v5 Engine Testflight)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Icon Illustrator, The Pizza Helper (v5)"
+            "value" : "App Icon Illustrator, The Pizza Helper (v5 Engine Testflight)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ilustrador de iconos de aplicaciones, El Ayudante de Pizza (v5)"
+            "value" : "Ilustrador de iconos de aplicaciones, The Pizza Helper (v5 Engine Testflight)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrator ng App Icon, Ang Katulong ng Pizza (v5)"
+            "value" : "Illustrator ng App Icon, The Pizza Helper (v5 Engine Testflight)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrateur d'icônes d'application, L'assistant pizza (v5)"
+            "value" : "Illustrateur d'icônes d'application, The Pizza Helper (v5 Engine Testflight)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrazione Icona App, L'assistente della Pizza (v5)"
+            "value" : "Illustrazione Icona App, The Pizza Helper (v5 Engine Testflight)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アプリアイコン絵師（ピザ助手 (無印) v5）"
+            "value" : "アプリアイコン絵師（ピザ助手 (無印) v5 エンジンTestflight）"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 아이콘 일러스트레이터, 피자 도우미 (v5)"
+            "value" : "앱 아이콘 일러스트레이터, 피자 도우미 (v5 Engine Testflight)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Иллюстратор значков приложения, помощник по пицце (v5)"
+            "value" : "Иллюстратор значков приложения, The Pizza Helper (v5 Engine Testflight)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trình minh họa Biểu tượng Ứng dụng, Trợ lý Pizza (v5)"
+            "value" : "Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5 Engine Testflight)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 图示绘师 (统一披萨小助手 v5)"
+            "value" : "App 图示绘师 (统一披萨小助手 v5 引擎 TF 测试)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 圖示繪師 (統一披薩小助手 v5)"
+            "value" : "App 圖示繪師 (統一披薩小助手 v5 引擎 TF 测试)"
           }
         }
       }
@@ -2336,7 +2337,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App-Symbol-Illustrator, Pizza-Helfer für HSR"
+            "value" : "App-Symbol-Illustrator, Pizza Helper for HSR"
           }
         },
         "en" : {
@@ -2348,25 +2349,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ilustrador de Iconos de Aplicación, Ayudante de Pizza para HSR"
+            "value" : "Ilustrador de Iconos de Aplicación, Pizza Helper for HSR"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrador ng Icon ng App, Pantulong sa Pizza para sa HSR"
+            "value" : "Illustrador ng Icon ng App, Pizza Helper for HSR"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrateur d'icônes d'application, assistant pizza pour HSR"
+            "value" : "Illustrateur d'icônes d'application, Pizza Helper for HSR"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustratore di Icone App, Assistente per la Pizza per HSR"
+            "value" : "Illustratore di Icone App, Pizza Helper for HSR"
           }
         },
         "ja" : {
@@ -2384,13 +2385,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Иллюстратор иконок приложения, помощник по пицце для HSR"
+            "value" : "Иллюстратор иконок приложения, Pizza Helper for HSR"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Người tạo biểu tượng ứng dụng, trợ lý Pizza cho HSR"
+            "value" : "Người tạo biểu tượng ứng dụng, Pizza Helper for HSR"
           }
         },
         "zh-Hans" : {
@@ -2412,73 +2413,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App-Symbol-Illustrator, Pizza-Helfer für Genshin (v4)"
+            "value" : "App-Symbol-Illustrator, Pizza Helper for Genshin (v4)\nApp-Symbol Illustrator, The Pizza Helper (v5)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Icon Illustrator, Pizza Helper for Genshin (v4)"
+            "value" : "App Icon Illustrator, Pizza Helper for Genshin (v4)\nApp Icon Illustrator, The Pizza Helper (v5)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ilustrador de Iconos de Aplicación, Ayudante de Pizza para Genshin (v4)"
+            "value" : "Ilustrador de Iconos de Aplicación, Pizza Helper for Genshin (v4)\nIlustrador de iconos de aplicaciones, The Pizza Helper (v5)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrador ng Icon ng App, Taga-tulong sa Pizza para sa Genshin (v4)"
+            "value" : "Illustrador ng Icon ng App, Pizza Helper for Genshin (v4)\nIllustrator ng App Icon, The Pizza Helper (v5)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrateur d'icônes d'application, Aide pizza pour Genshin (v4)"
+            "value" : "Illustrateur d'icônes d'application, Pizza Helper for Genshin (v4)\nIllustrateur d'icônes d'application, The Pizza Helper (v5)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustratore di icone per app, Assistente di Pizza per Genshin (v4)"
+            "value" : "Illustratore di icone per app, Pizza Helper for Genshin (v4)\nIllustrazione Icona App, The Pizza Helper (v5)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アプリアイコン絵師（原神ピザ助手 v4）"
+            "value" : "アプリアイコン絵師（原神ピザ助手 v4）\nアプリアイコン絵師（ピザ助手 (無印) v5）"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 아이콘 일러스트레이터, 원신의 피자 도우미 (v4)"
+            "value" : "앱 아이콘 일러스트레이터, 원신의 피자 도우미 (v4)\n앱 아이콘 일러스트레이터, 피자 도우미 (v5)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Иллюстратор иконок приложения, Помощник по пицце для Genshin (v4)"
+            "value" : "Иллюстратор иконок приложения, Pizza Helper for Genshin (v4)\nИллюстратор значков приложения, The Pizza Helper (v5)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Người thiết kế biểu tượng ứng dụng, Trợ thủ Pizza cho Genshin (v4)"
+            "value" : "Người thiết kế biểu tượng ứng dụng, Pizza Helper for Genshin (v4)\nTrình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 图示绘师 (原神披萨小助手 v4)"
+            "value" : "App 图示绘师 (原神披萨小助手 v4)\nApp 图示绘师 (统一披萨小助手 v5)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 圖示繪師 (原神披薩小助手 v4)"
+            "value" : "App 圖示繪師 (原神披薩小助手 v4)\nApp 圖示繪師 (統一披薩小助手 v5)"
           }
         }
       }
@@ -4729,7 +4730,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'Assistant Pizza"
+            "value" : "The Pizza Helper"
           }
         },
         "it" : {
