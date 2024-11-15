@@ -34,12 +34,12 @@ struct WeeklyBossesInfoBar: View {
                 Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
-                    .font(.system(.body, design: .rounded))
+                    .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
                 Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
-                    .font(.system(.caption, design: .rounded))
+                    .font(.system(.footnote, design: .rounded))
                     .minimumScaleFactor(0.2)
             }
         }

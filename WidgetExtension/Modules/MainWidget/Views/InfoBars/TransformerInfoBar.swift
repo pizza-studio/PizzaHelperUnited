@@ -56,7 +56,7 @@ struct TransformerInfoBar: View {
                     }
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .lineLimit(1)
-                    .font(.system(.body, design: .rounded))
+                    .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
                 }
             }
