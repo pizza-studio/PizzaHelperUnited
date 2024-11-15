@@ -13,9 +13,9 @@ extension ProfileManagerPageContent {
     struct EditProfileSheetView: View {
         // MARK: Lifecycle
 
-        init(profile: PZProfileMO, isShown: Binding<Bool>) {
-            self._isShown = isShown
-            self.profile = profile
+        init(profile: PZProfileMO, sheetType: Binding<SheetType?>) {
+            self._sheetType = sheetType
+            self._profile = State(wrappedValue: profile)
         }
 
         // MARK: Internal
@@ -36,7 +36,7 @@ extension ProfileManagerPageContent {
                                         PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                                         Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
                                         UserDefaults.profileSuite.synchronize()
-                                        isShown.toggle()
+                                        sheetType = nil
                                         Broadcaster.shared.requireOSNotificationCenterAuthorization()
                                         Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                                         alertToastEventStatus.isProfileTaskSucceeded.toggle()
@@ -45,7 +45,7 @@ extension ProfileManagerPageContent {
                                         isSaveProfileFailAlertShown.toggle()
                                     }
                                 } else {
-                                    isShown.toggle()
+                                    sheetType = nil
                                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
                                 }
                             }
@@ -53,7 +53,7 @@ extension ProfileManagerPageContent {
                         ToolbarItem(placement: .cancellationAction) {
                             Button("sys.cancel".i18nBaseKit) {
                                 modelContext.rollback()
-                                isShown.toggle()
+                                sheetType = nil
                             }
                         }
                     }
@@ -62,7 +62,7 @@ extension ProfileManagerPageContent {
 
         // MARK: Private
 
-        @Binding private var isShown: Bool
+        @Binding private var sheetType: SheetType?
         @State private var profile: PZProfileMO
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
