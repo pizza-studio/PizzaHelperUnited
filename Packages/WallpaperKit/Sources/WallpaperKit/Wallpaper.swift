@@ -42,7 +42,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable, Sendable {
         case .genshinImpact: "NC\(id)"
         case .starRail: "LA_WP\(id)"
         case .zenlessZone: "ZZ\(id)"
-        case .none: "PZA\(id)"
+        case .none: "PZLA\(id)"
         }
     }
 
@@ -51,7 +51,7 @@ public struct Wallpaper: Identifiable, Codable, Hashable, Sendable {
         case .genshinImpact: Self.bundledLangDB4GI[id] ?? "NC(\(id))"
         case .starRail: Self.bundledLangDB4HSR[id] ?? "WP(\(id))"
         case .zenlessZone: Self.bundledLangDB4ZZZ[id] ?? "ZZ\(id)"
-        case .none: Self.bundledLangDB4PZ[id] ?? "PZA\(id)"
+        case .none: Self.bundledLangDB4PZ[id] ?? "PZLA\(id)"
         }
     }
 
@@ -117,7 +117,7 @@ extension Wallpaper {
         case .genshinImpact: allCases.first { $0.id == "210018" }!
         case .starRail: allCases.first { $0.id == "221000" }!
         case .zenlessZone: allCases.first { $0.id == "990001" }!
-        case .none: allCases.first { $0.id == "110001" }!
+        case .none: allCases.first { $0.id == "110000" }!
         }
     }
 
