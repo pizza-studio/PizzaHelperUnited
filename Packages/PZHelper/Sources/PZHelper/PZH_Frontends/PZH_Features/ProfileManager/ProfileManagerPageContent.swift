@@ -156,23 +156,15 @@ struct ProfileManagerPageContent: View {
         #endif
     }
 
-    private var isSheetShown: Binding<Bool> {
-        .init {
-            sheetType != nil
-        } set: { newValue in
-            if !newValue { sheetType = nil }
-        }
-    }
-
     @ViewBuilder
     private func handleSheetNavigation(_ sheetType: SheetType) -> some View {
         Group {
             switch sheetType {
             case let .createNewProfile(newProfile):
-                CreateProfileSheetView(profile: newProfile, isShown: isSheetShown)
+                CreateProfileSheetView(profile: newProfile, sheetType: $sheetType)
                     .environment(alertToastEventStatus)
             case let .editExistingProfile(profile):
-                EditProfileSheetView(profile: profile, isShown: isSheetShown)
+                EditProfileSheetView(profile: profile, sheetType: $sheetType)
                     .environment(alertToastEventStatus)
             }
         }
