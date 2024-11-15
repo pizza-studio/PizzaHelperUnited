@@ -4,6 +4,7 @@
 
 @preconcurrency import Defaults
 import PZBaseKit
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - WallpaperGalleryViewContent
@@ -58,13 +59,21 @@ public struct WallpaperGalleryViewContent: View {
                     Button("wpKit.assign.background4App".i18nWPKit) {
                         background4App = currentCard
                     }
-                    #if !targetEnvironment(macCatalyst) && !os(macOS)
-                    Button("wpKit.assign.backgrounds4LiveActivity".i18nWPKit) {
-                        if backgrounds4LiveActivity.contains(currentCard) {
+                    #if canImport(ActivityKit)
+                    let alreadyChosenAsLABG = backgrounds4LiveActivity.contains(currentCard)
+                    Button {
+                        if alreadyChosenAsLABG {
                             backgrounds4LiveActivity.remove(currentCard)
                         } else {
+                            liveActivityUseEmptyBackground = false
+                            liveActivityUseCustomizeBackground = true
                             backgrounds4LiveActivity.insert(currentCard)
                         }
+                    } label: {
+                        Label(
+                            "wpKit.assign.backgrounds4LiveActivity".i18nWPKit,
+                            systemSymbol: alreadyChosenAsLABG ? nil : .checkmark
+                        )
                     }
                     #endif
                 }
@@ -92,11 +101,13 @@ public struct WallpaperGalleryViewContent: View {
     @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
     @State private var containerSize: CGSize = .zero
-    @Default(.background4App) private var background4App: Wallpaper
-    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
+    @Default(.background4App) private var background4App: Wallpaper
+    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
+    @Default(.resinRecoveryLiveActivityUseEmptyBackground) private var liveActivityUseEmptyBackground: Bool
+    @Default(.resinRecoveryLiveActivityUseCustomizeBackground) private var liveActivityUseCustomizeBackground: Bool
 
     private var searchFieldPlacement: SearchFieldPlacement {
         #if os(iOS) || targetEnvironment(macCatalyst)
