@@ -62,7 +62,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
                 framedCoreView(avatar)
             }
         }
-        #if !os(OSX)
+        #if !os(macOS)
         .tabViewStyle(
             .page(indexDisplayMode: showTabViewIndex ? .automatic : .never)
         )
@@ -107,7 +107,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
                 }
             }
         }
-        #if !os(OSX)
+        #if !os(macOS)
         .statusBarHidden(true)
         #endif
     }

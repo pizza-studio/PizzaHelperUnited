@@ -144,7 +144,7 @@ struct AdjustedBlurMaterialBackground: ViewModifier {
 
 extension Font {
     public static let baseFontSize: CGFloat = {
-        #if os(OSX)
+        #if os(macOS)
         return NSFont.systemFontSize
         #elseif targetEnvironment(macCatalyst)
         return UIFont.systemFontSize / 0.77
@@ -158,7 +158,7 @@ extension Font {
     }()
 
     public static let baseFontSizeSmall: CGFloat = {
-        #if os(OSX)
+        #if os(macOS)
         return NSFont.smallSystemFontSize
         #elseif targetEnvironment(macCatalyst)
         return UIFont.smallSystemFontSize / 0.77

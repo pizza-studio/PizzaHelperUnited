@@ -76,7 +76,7 @@ extension NewsKitHSR {
                         }
                     }
                     .toolbar {
-                        #if os(OSX) || targetEnvironment(macCatalyst)
+                        #if os(macOS) || targetEnvironment(macCatalyst)
                         ToolbarItem(placement: .confirmationAction) {
                             Button("".description, systemImage: "arrow.clockwise") {
                                 coordinator.updateData()

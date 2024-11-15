@@ -7,6 +7,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftData
 import SwiftUI
+import UserNotifications
 
 // MARK: - NotificationSettingsPageContent
 
@@ -72,7 +73,12 @@ struct NotificationSettingsPageContent: View {
     @State private var authorizationStatus: UNAuthorizationStatus?
 
     private var allowPushNotification: Bool {
-        authorizationStatus == .authorized || authorizationStatus == .provisional || authorizationStatus == .ephemeral
+        let result = authorizationStatus == .authorized || authorizationStatus == .provisional
+        #if os(macOS)
+        return result
+        #else
+        return result || authorizationStatus == .ephemeral
+        #endif
     }
 }
 
@@ -238,12 +244,17 @@ private struct StaminaNotificationThresholdConfigView: View {
         }
         .navigationTitle(Self.navTitle)
         .navBarTitleDisplayMode(.large)
-        .environment(\.editMode, $isEditMode)
+        #if os(iOS) || targetEnvironment(macCatalyst)
+            .environment(\.editMode, $isEditMode)
+        #endif
     }
 
     // MARK: Private
 
+    #if os(iOS) || targetEnvironment(macCatalyst)
     @State private var isEditMode: EditMode = .inactive
+    #endif
+
     @State private var isActivated: Bool = false
     @State private var isNumberExistAlertVisible: Bool = false
     @State private var newNumber: Double = 140.0

@@ -57,7 +57,7 @@ extension UIColor {
 extension Color {
     #if !os(watchOS)
     public static var colorSystemGray6: Color {
-        #if os(OSX)
+        #if os(macOS)
         Color(nsColor: .systemGray).opacity(0.3333)
         #else
         Color(uiColor: .systemGray6)
@@ -65,7 +65,7 @@ extension Color {
     }
 
     public static var colorSysBackground: Color {
-        #if os(OSX)
+        #if os(macOS)
         Color(nsColor: .textBackgroundColor).opacity(0.3333)
         #else
         Color(uiColor: .systemBackground)
