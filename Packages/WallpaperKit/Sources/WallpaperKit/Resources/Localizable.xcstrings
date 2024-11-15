@@ -309,7 +309,7 @@
         }
       }
     },
-    "wpKit.assign.background4LiveActivity" : {
+    "wpKit.assign.backgrounds4LiveActivity" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
