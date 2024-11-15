@@ -11,8 +11,8 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
     case lava
     case hakubill
     case shikisuen
-    case koni
     case xinzoruo
+    case koni
     case yulijushi
     case pan93412
     case taotao
