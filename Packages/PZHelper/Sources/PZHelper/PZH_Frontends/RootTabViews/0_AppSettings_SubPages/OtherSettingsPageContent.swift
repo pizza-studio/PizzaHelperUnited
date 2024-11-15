@@ -38,7 +38,7 @@ struct OtherSettingsPageContent: View {
             }
             .formStyle(.grouped)
             .navigationTitle("Develop Settings".description)
-            .navigationBarTitleDisplayMode(.inline)
+            .navBarTitleDisplayMode(.inline)
         }
     }
 
