@@ -14,8 +14,8 @@ extension ProfileManagerPageContent {
     struct CreateProfileSheetView: View {
         // MARK: Lifecycle
 
-        init(profile: PZProfileMO, isShown: Binding<Bool>) {
-            self._isShown = isShown
+        init(profile: PZProfileMO, sheetType: Binding<SheetType?>) {
+            self._sheetType = sheetType
             self._profile = State(wrappedValue: profile)
         }
 
@@ -53,7 +53,7 @@ extension ProfileManagerPageContent {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {
                             modelContext.rollback()
-                            isShown.toggle()
+                            sheetType = nil
                         }
                     }
                 }
@@ -94,7 +94,7 @@ extension ProfileManagerPageContent {
                 PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                 Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
                 UserDefaults.profileSuite.synchronize()
-                isShown.toggle()
+                sheetType = nil
                 Broadcaster.shared.requireOSNotificationCenterAuthorization()
                 Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
             } catch {
@@ -175,7 +175,7 @@ extension ProfileManagerPageContent {
                         try modelContext.save()
                         PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                         await PZProfileActor.shared.syncAllDataToUserDefaults()
-                        isShown.toggle()
+                        sheetType = nil
                     } catch {
                         getAccountError = .source(error)
                         isGetAccountFailAlertShown.toggle()
@@ -282,7 +282,7 @@ extension ProfileManagerPageContent {
         @State private var profile: PZProfileMO
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
-        @Binding private var isShown: Bool
+        @Binding private var sheetType: SheetType?
         @Environment(\.modelContext) private var modelContext
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
         @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
