@@ -8,6 +8,8 @@ import WidgetKit
 
 @available(watchOS, unavailable)
 struct WidgetBackgroundView: View {
+    // MARK: Internal
+
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.widgetFamily) var widgetFamily: WidgetFamily
     let background: WidgetBackgroundAppEntity
@@ -75,12 +77,12 @@ struct WidgetBackgroundView: View {
                         }
                 }
             }
-
-            if colorScheme == .dark, darkModeOn {
-                Color.black
-                    .opacity(0.3)
-            }
         }
+        .brightness(shouldEnforceDark ? -0.5 : -0.3)
         .scaleEffect(1.01) // HSR 的名片有光边。
     }
+
+    // MARK: Private
+
+    private var shouldEnforceDark: Bool { colorScheme == .dark && darkModeOn }
 }
