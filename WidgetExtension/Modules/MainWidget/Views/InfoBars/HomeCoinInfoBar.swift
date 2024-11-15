@@ -42,7 +42,7 @@ struct HomeCoinInfoBar: View {
                 Text(verbatim: "\(homeCoinInfo.currentHomeCoin)")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
-                    .font(.system(.body, design: .rounded))
+                    .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
             }
         }
