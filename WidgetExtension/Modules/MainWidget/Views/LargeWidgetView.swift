@@ -20,15 +20,15 @@ struct LargeWidgetView: View {
 
     var body: some View {
         VStack {
-            Spacer()
             HStack {
-                Spacer() // Leading Spacer.
+                Spacer()
+                    .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 1 }
                 VStack(alignment: .leading) {
                     mainInfo()
                     Spacer(minLength: 18)
                     DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
                 }
-                Spacer(minLength: 30) // Middle Vertical Spacer.
+                .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 4 }
                 VStack(alignment: .leading) {
                     ExpeditionsView(
                         expeditions: dailyNote.expeditionTasks
@@ -38,12 +38,14 @@ struct LargeWidgetView: View {
                         MaterialView()
                     }
                 }
-                .containerRelativeFrame(.horizontal) { length, _ in length / 8 * 3 }
-                Spacer() // Trailing Spacer.
+                .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 4 }
+                Spacer()
+                    .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 1 }
             }
-            Spacer()
         }
+        .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 8 }
         .padding()
+        .padding(.horizontal)
     }
 
     @ViewBuilder
