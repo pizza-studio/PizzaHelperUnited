@@ -93,7 +93,7 @@ struct IDPhotoFallbackView4HSR: View {
         let ratio = 179.649 / 1024
         let cornerRadius = ratio * size
         let roundCornerRadius = size / 2
-        let roundRect = iconType == .cutFaceRoundedRect
+        let roundRect = iconType == .cutHeadRoundRect
         imageObj
             .scaledToFill()
             .frame(width: size * iconType.rawValue, height: size * iconType.rawValue)
