@@ -49,7 +49,7 @@ struct WidgetBackgroundView: View {
                     if wallpaper == nil {
                         NSLog("[PZHelper] Asset missing in PZWidgetsKit: \(backgroundImageName)")
                     }
-                    return (wallpaper ?? .defaultValue(for: nil)).image4LiveActivity
+                    return (wallpaper ?? .defaultValue()).image4LiveActivity
                 }()
 
                 switch widgetFamily {

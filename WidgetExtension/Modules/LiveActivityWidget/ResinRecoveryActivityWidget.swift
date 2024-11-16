@@ -196,7 +196,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         #if !os(watchOS)
             .background {
                 Group {
-                    let randomCardBg: Image = (Wallpaper.allCases.randomElement() ?? .defaultValue(for: nil))
+                    let randomCardBg: Image = (Wallpaper.allCases.randomElement() ?? .defaultValue())
                         .image4LiveActivity
                     switch context.state.background {
                     case .random:

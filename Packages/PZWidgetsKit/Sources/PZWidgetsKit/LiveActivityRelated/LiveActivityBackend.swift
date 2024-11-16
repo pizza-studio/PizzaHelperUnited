@@ -177,7 +177,7 @@ public final class ResinRecoveryActivityController: Sendable {
             Self.backgroundSettingsSanityCheck()
             let backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
             if backgrounds.isEmpty {
-                return .customize([Wallpaper.defaultValue(for: nil).assetName4LiveActivity])
+                return .customize([Wallpaper.defaultValue().assetName4LiveActivity])
             } else {
                 return .customize(backgrounds)
             }
