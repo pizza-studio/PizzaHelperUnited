@@ -41,16 +41,10 @@ struct WidgetBackgroundView: View {
             }
 
             if let backgroundImageName {
-                let backgroundImage: Image = {
-                    if NSDataAsset(name: backgroundImageName, bundle: .main) != nil {
-                        return Image(backgroundImageName, bundle: .main)
-                    }
-                    let wallpaper = Wallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
-                    if wallpaper == nil {
-                        NSLog("[PZHelper] Asset missing in PZWidgetsKit: \(backgroundImageName)")
-                    }
-                    return (wallpaper ?? .defaultValue()).image4LiveActivity
-                }()
+                let wpMaybe = Wallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
+                let wallpaper = (wpMaybe ?? .defaultValue())
+                let backgroundImage = wallpaper.image4LiveActivity
+                let isGenshinImpact = wallpaper.game == .genshinImpact
 
                 switch widgetFamily {
                 case .systemLarge, .systemSmall:
@@ -58,7 +52,7 @@ struct WidgetBackgroundView: View {
                         backgroundImage
                             .resizable()
                             .scaledToFill()
-                            .offset(x: -g.size.width)
+                            .offset(x: isGenshinImpact ? -g.size.width : 0)
                     }
                     .onAppear {
                         NSLog(
