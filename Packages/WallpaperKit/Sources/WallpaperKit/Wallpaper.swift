@@ -112,12 +112,11 @@ extension Wallpaper {
 
 extension Wallpaper {
     public static func defaultValue(for game: Pizza.SupportedGame? = nil) -> Self {
-        let allCases = allCases(for: game)
-        return switch game ?? appGame {
-        case .genshinImpact: allCases.first { $0.id == "210018" }!
-        case .starRail: allCases.first { $0.id == "221000" }!
-        case .zenlessZone: allCases.first { $0.id == "990001" }!
-        case .none: allCases.first { $0.id == "110000" }!
+        switch game ?? appGame {
+        case .genshinImpact: .init(game: .genshinImpact, id: "210042", bindedCharID: nil)
+        case .starRail: .init(game: .genshinImpact, id: "221000", bindedCharID: nil)
+        case .zenlessZone: .init(game: .genshinImpact, id: "990001", bindedCharID: nil)
+        case .none: .init(game: .genshinImpact, id: "210042", bindedCharID: nil)
         }
     }
 
