@@ -37,12 +37,12 @@ public struct IDPhotoView4HSR: View {
         case cutShoulder = 1.15
         case cutHead = 1.5
         case cutFace = 2
-        case cutFaceRoundedRect = 1.999
+        case cutHeadRoundRect = 1.6
 
         // MARK: Internal
 
         var pathTotemVisible: Bool {
-            ![.cutFace, .cutFaceRoundedRect].contains(self)
+            ![.cutFace].contains(self)
         }
 
         func shiftedAmount(containerSize size: CGFloat) -> CGFloat {
@@ -124,7 +124,7 @@ public struct IDPhotoView4HSR: View {
         let ratio = 179.649 / 1024
         let cornerRadius = ratio * size
         let roundCornerRadius = size / 2
-        let roundRect = iconType == .cutFaceRoundedRect
+        let roundRect = iconType == .cutHeadRoundRect
         imageObj
             .scaledToFill()
             .frame(width: size * iconType.rawValue, height: size * iconType.rawValue)
