@@ -168,22 +168,6 @@ public final class ResinRecoveryActivityController: Sendable {
         #endif
     }
 
-    public var background: ResinRecoveryActivityBackground {
-        if Defaults[.resinRecoveryLiveActivityUseEmptyBackground] {
-            return .noBackground
-        } else if !Defaults[.resinRecoveryLiveActivityUseCustomizeBackground] {
-            return .random
-        } else {
-            Self.backgroundSettingsSanityCheck()
-            let backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
-            if backgrounds.isEmpty {
-                return .customize([Wallpaper.defaultValue().assetName4LiveActivity])
-            } else {
-                return .customize(backgrounds)
-            }
-        }
-    }
-
     public static func backgroundSettingsSanityCheck() {
         let backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
         guard !backgrounds.isEmpty else { return }
@@ -197,17 +181,33 @@ public final class ResinRecoveryActivityController: Sendable {
         }
     }
 
-    public func createResinRecoveryTimerActivity(for account: PZProfileSendable, data: some DailyNoteProtocol) throws {
+    public func getBackground(for game: Pizza.SupportedGame? = nil) -> ResinRecoveryActivityBackground {
+        if Defaults[.resinRecoveryLiveActivityUseEmptyBackground] {
+            return .noBackground
+        } else if !Defaults[.resinRecoveryLiveActivityUseCustomizeBackground] {
+            return .random
+        } else {
+            Self.backgroundSettingsSanityCheck()
+            let backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
+            if backgrounds.isEmpty {
+                return .customize([Wallpaper.defaultValue(for: game).assetName4LiveActivity])
+            } else {
+                return .customize(backgrounds)
+            }
+        }
+    }
+
+    public func createResinRecoveryTimerActivity(for profile: PZProfileSendable, data: some DailyNoteProtocol) throws {
         #if canImport(ActivityKit)
         guard allowLiveActivity else {
             throw CreateLiveActivityError.notAllowed
         }
-        let accountName = account.name
-        let accountUUID: UUID = account.uuid
+        let accountName = profile.name
+        let accountUUID: UUID = profile.uuid
 
         guard !currentActivities.map({ $0.attributes.accountUUID })
             .contains(accountUUID) else {
-            updateResinRecoveryTimerActivity(for: account, data: data)
+            updateResinRecoveryTimerActivity(for: profile, data: data)
             return
         }
         let attributes: ResinRecoveryAttributes = .init(
@@ -217,7 +217,7 @@ public final class ResinRecoveryActivityController: Sendable {
         let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
             dailyNote: data,
             showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
-            background: background
+            background: getBackground(for: profile.game)
         )
 
         print(status.currentResin)
@@ -246,22 +246,22 @@ public final class ResinRecoveryActivityController: Sendable {
         #endif
     }
 
-    public func updateResinRecoveryTimerActivity(for account: PZProfileSendable, data: some DailyNoteProtocol) {
+    public func updateResinRecoveryTimerActivity(for profile: PZProfileSendable, data: some DailyNoteProtocol) {
         #if canImport(ActivityKit)
         Task {
             let filtered = currentActivities.filter { activity in
-                activity.attributes.accountUUID == account.uuid
+                activity.attributes.accountUUID == profile.uuid
             }
 
             for activity in filtered {
                 if Date.now >= data.staminaFullTimeOnFinish {
-                    endActivity(for: account)
+                    endActivity(for: profile)
                     continue
                 }
                 let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
                     dailyNote: data,
                     showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
-                    background: background
+                    background: getBackground(for: profile.game)
                 )
 
                 await activity.update(
