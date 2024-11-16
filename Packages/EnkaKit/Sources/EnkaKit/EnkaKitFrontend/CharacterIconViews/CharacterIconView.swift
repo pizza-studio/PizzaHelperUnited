@@ -203,7 +203,7 @@ public struct CharacterIconView: View {
 
     private var cutType: IDPhotoView4HSR.IconType {
         if !circleClipped, !isCard {
-            .cutFaceRoundedRect
+            .cutHeadRoundRect
         } else {
             clipToHead ? .cutHead : .cutShoulder
         }
