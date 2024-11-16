@@ -78,7 +78,7 @@ struct WidgetBackgroundView: View {
                 }
             }
         }
-        .brightness(shouldEnforceDark ? -0.5 : -0.3)
+        .brightness(shouldEnforceDark ? -0.15 : 0)
         .scaleEffect(1.01) // HSR 的名片有光边。
     }
 
