@@ -431,7 +431,7 @@ extension GIGF {
 }
 
 extension GachaLanguage {
-    fileprivate func makeRevDB() -> [String: Int] {
+    func makeRevDB() -> [String: Int] {
         GachaMeta.sharedDB.mainDB4GI.generateHotReverseQueryDict(for: rawValue) ?? [:]
     }
 }
