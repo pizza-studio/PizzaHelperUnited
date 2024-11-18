@@ -66,6 +66,9 @@ public final class CDGachaMOSputnik: Sendable {
         var genshinDataRAW: [CDGachaMO4GI] = try allGachaDataMO(for: .genshinImpact).compactMap { $0 as? CDGachaMO4GI }
         // Fix Genshin ItemIDs.
         genshinDataRAW.fixItemIDs(with: .langCHS)
+        if genshinDataRAW.mightHaveNonCHSLanguageTag {
+            try genshinDataRAW.updateLanguage(.langCHS)
+        }
         for idx in 0 ..< genshinDataRAW.count {
             let currentObj = genshinDataRAW[idx]
             guard Int(currentObj.itemId) == nil else { continue }
@@ -172,5 +175,33 @@ extension [CDGachaMO4GI] {
             languages.removeFirst()
             if !languages.isEmpty { self = listBackup }
         }
+    }
+
+    /// 将当前 CDGachaMO4GI 的物品分类与名称转换成给定的语言。
+    /// - Parameter lang: 给定的语言。
+    mutating func updateLanguage(_ lang: GachaLanguage) throws {
+        var newItemContainer = Self()
+        // 君子协定：这里要求 UIGFGachaItem 的 itemID 必须是有效值，否则会出现灾难性的后果。
+        try forEach { currentItem in
+            guard Int(currentItem.itemId) != nil else {
+                throw GachaMeta.GMDBError.itemIDInvalid(name: currentItem.name, game: currentItem.game)
+            }
+            let lang = lang.sanitized(by: currentItem.game)
+            let theDB: [String: GachaItemMetadata] = switch currentItem.game {
+            case .genshinImpact: GachaMeta.sharedDB.mainDB4GI
+            case .starRail: GachaMeta.sharedDB.mainDB4HSR
+            case .zenlessZone: [:] // 目前暂时不处理绝区零。
+            }
+            var newItem = currentItem
+            let itemTypeRaw: GachaItemType = .init(itemID: newItem.itemId, game: currentItem.game)
+            newItem.itemType = itemTypeRaw.getTranslatedRaw(for: lang, game: currentItem.game)
+            if let newName = theDB.plainQueryForNames(itemID: newItem.itemId, langID: lang.rawValue) {
+                newItem.name = newName
+            } else {
+                throw GachaMeta.GMDBError.databaseExpired(game: currentItem.game)
+            }
+            newItemContainer.append(newItem)
+        }
+        self = newItemContainer
     }
 }
