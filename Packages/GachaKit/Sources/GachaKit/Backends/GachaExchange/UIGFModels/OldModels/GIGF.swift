@@ -401,16 +401,11 @@ extension GIGF {
             languages.append(.langCHS) // 垫底语言。
         }
 
-        let sharedDBSet = GachaMeta.sharedDB
         var revDB = [String: Int]()
         let listBackup = list
         languageEnumeration: while !languages.isEmpty, let language = languages.first {
             var languageMismatchDetected = false
-            switch language {
-            case .langCHS: revDB = sharedDBSet.reversedDB4GI
-            default: revDB = language.makeRevDB()
-            }
-
+            revDB = language.makeRevDB()
             listItemEnumeration: for listIndex in 0 ..< list.count {
                 guard Int(list[listIndex].itemID) == nil else { continue }
                 /// 只要没查到结果，就可以认定当前的语言匹配有误。

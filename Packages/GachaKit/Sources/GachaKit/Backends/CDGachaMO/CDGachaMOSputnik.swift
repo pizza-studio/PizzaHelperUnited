@@ -151,16 +151,11 @@ extension [CDGachaMO4GI] {
             languages.append(.langCHS) // 垫底语言。
         }
 
-        let sharedDBSet = GachaMeta.sharedDB
         var revDB = [String: Int]()
         let listBackup = self
         languageEnumeration: while !languages.isEmpty, let language = languages.first {
             var languageMismatchDetected = false
-            switch language {
-            case .langCHS: revDB = sharedDBSet.reversedDB4GI
-            default: revDB = language.makeRevDB()
-            }
-
+            revDB = language.makeRevDB() // Just in case.
             listItemEnumeration: for listIndex in 0 ..< count {
                 guard Int(self[listIndex].itemId) == nil else { continue }
                 /// 只要没查到结果，就可以认定当前的语言匹配有误。
