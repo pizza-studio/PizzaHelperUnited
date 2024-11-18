@@ -40,7 +40,9 @@ public struct CDGachaMODebugView: View {
             }
             ForEach(delegate.managedObjs, id: \.enumID) { gachaItemMO in
                 let theEntry = gachaItemMO.asPZGachaEntrySendable.expressible
+                let isWrecked = theEntry.itemID.isEmpty
                 GachaEntryBar(entry: theEntry, showDate: true, debug: true, debugMenu: true)
+                    .foregroundStyle(isWrecked ? Color.red : Color.primary)
             }
         }
         .formStyle(.grouped)
