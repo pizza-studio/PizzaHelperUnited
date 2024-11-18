@@ -48,7 +48,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%d일 남음"
+            "value" : "%lld 일 남음"
           }
         },
         "ru" : {
