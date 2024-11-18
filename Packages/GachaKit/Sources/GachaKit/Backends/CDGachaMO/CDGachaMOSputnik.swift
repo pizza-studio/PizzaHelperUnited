@@ -33,12 +33,29 @@ public final class CDGachaMOSputnik: Sendable {
         ((try? await countAllCDGachaMOAsPZGachaEntryMO()) ?? 0) > 0
     }
 
-    public func allGachaDataMO(for game: Pizza.SupportedGame) throws -> [CDGachaMOProtocol] {
+    public func allGachaDataMO(for game: Pizza.SupportedGame, fixItemIDs: Bool = true) throws -> [CDGachaMOProtocol] {
         try theDB(for: game)?.perform { ctx in
             switch game {
-            case .genshinImpact: try ctx.fetch(CDGachaMO4GI.all).map { try $0.decode() }
-            case .starRail: try ctx.fetch(CDGachaMO4HSR.all).map { try $0.decode() }
-            case .zenlessZone: []
+            case .genshinImpact:
+                var genshinDataRAW = try ctx.fetch(CDGachaMO4GI.all).map { try $0.decode() }
+                if fixItemIDs {
+                    // Fix Genshin ItemIDs.
+                    genshinDataRAW.fixItemIDs(with: .langCHS)
+                    if genshinDataRAW.mightHaveNonCHSLanguageTag {
+                        try genshinDataRAW.updateLanguage(.langCHS)
+                    }
+                    for idx in 0 ..< genshinDataRAW.count {
+                        let currentObj = genshinDataRAW[idx]
+                        guard Int(currentObj.itemId) == nil else { continue }
+                        Task { @MainActor in
+                            try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                        }
+                        throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
+                    }
+                }
+                return genshinDataRAW
+            case .starRail: return try ctx.fetch(CDGachaMO4HSR.all).map { try $0.decode() }
+            case .zenlessZone: return []
             }
         } ?? []
     }
@@ -63,23 +80,9 @@ public final class CDGachaMOSputnik: Sendable {
 
     public func allCDGachaMOAsPZGachaEntryMO() throws -> [PZGachaEntrySendable] {
         // Genshin.
-        var genshinDataRAW: [CDGachaMO4GI] = try allGachaDataMO(for: .genshinImpact).compactMap { $0 as? CDGachaMO4GI }
-        // Fix Genshin ItemIDs.
-        genshinDataRAW.fixItemIDs(with: .langCHS)
-        if genshinDataRAW.mightHaveNonCHSLanguageTag {
-            try genshinDataRAW.updateLanguage(.langCHS)
-        }
-        for idx in 0 ..< genshinDataRAW.count {
-            let currentObj = genshinDataRAW[idx]
-            guard Int(currentObj.itemId) == nil else { continue }
-            Task { @MainActor in
-                try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
-            }
-            throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
-        }
-        let genshinData = genshinDataRAW.map(\.asPZGachaEntrySendable)
+        let genshinData = try allGachaDataMO(for: .genshinImpact, fixItemIDs: true).map(\.asPZGachaEntrySendable)
         // StarRail.
-        let hsrData: [PZGachaEntrySendable]? = try allGachaDataMO(for: .starRail).map(\.asPZGachaEntrySendable)
+        let hsrData = try allGachaDataMO(for: .starRail).map(\.asPZGachaEntrySendable)
         let dataSet: [PZGachaEntrySendable] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
         return dataSet
     }
