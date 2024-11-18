@@ -17,3 +17,13 @@ extension String.LocalizationValue {
         String(localized: self, bundle: .module)
     }
 }
+
+extension StringProtocol {
+    public var isInt: Bool {
+        Int(self) != nil
+    }
+
+    public var isNotInt: Bool {
+        Int(self) == nil
+    }
+}

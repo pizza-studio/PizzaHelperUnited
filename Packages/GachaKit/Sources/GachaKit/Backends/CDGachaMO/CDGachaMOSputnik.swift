@@ -136,7 +136,7 @@ extension [CDGachaMO4GI] {
     }
 
     public mutating func fixItemIDs(with givenLanguage: GachaLanguage? = nil) {
-        let needsItemIDFix = !filter { $0.itemId.isEmpty }.isEmpty
+        let needsItemIDFix = !filter(\.itemId.isNotInt).isEmpty
         guard !isEmpty, needsItemIDFix else { return }
         var languages: [HoYo.APILang] = [.langCHS]
         if mightHaveNonCHSLanguageTag, !possibleLanguages.isEmpty {
@@ -180,7 +180,7 @@ extension [CDGachaMO4GI] {
         var newItemContainer = Self()
         // 君子协定：这里要求 UIGFGachaItem 的 itemID 必须是有效值，否则会出现灾难性的后果。
         try forEach { currentItem in
-            guard Int(currentItem.itemId) != nil else {
+            guard currentItem.itemId.isInt else {
                 throw GachaMeta.GMDBError.itemIDInvalid(name: currentItem.name, game: currentItem.game)
             }
             let lang = lang.sanitized(by: currentItem.game)
