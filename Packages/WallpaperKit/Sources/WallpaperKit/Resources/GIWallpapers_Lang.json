@@ -215,7 +215,12 @@
     "210217" : "Erlebnispass – Urfeuer",
     "210218" : "Feierlichkeit – Süß und knackig",
     "210219" : "Xilonen – Immer im Rhythmus",
-    "210220" : "Erlebnispass – Sabzeruz"
+    "210220" : "Erlebnispass – Sabzeruz",
+    "210221" : "Chasca – Volle Munition",
+    "210222" : "Ororon – Nachtschatten",
+    "210223" : "Natlan – Leere Träume",
+    "210224" : "Errungenschaft – Kampfeswille",
+    "210225" : "Erlebnispass – Geisterweber"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -433,7 +438,12 @@
     "210217" : "Travel Notes: Primal Fire",
     "210218" : "Celebration: Crispy and Sweet",
     "210219" : "Xilonen: Cue Point",
-    "210220" : "Travel Notes: Sabzeruz"
+    "210220" : "Travel Notes: Sabzeruz",
+    "210221" : "Chasca: Fully Loaded",
+    "210222" : "Ororon: Nightshade",
+    "210223" : "Natlan: Fleeting Dreams",
+    "210224" : "Achievement: Fighting Spirit",
+    "210225" : "Travel Notes: Spiritweaver"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -651,7 +661,12 @@
     "210217" : "PB - Fuego primigenio",
     "210218" : "Celebración - Dulce y crujiente",
     "210219" : "Xilonen - Ritmo",
-    "210220" : "PB - Sabzeruz"
+    "210220" : "PB - Sabzeruz",
+    "210221" : "Chasca - Munición cargada",
+    "210222" : "Ororon - Noctívago",
+    "210223" : "Natlan - Sueños efímeros",
+    "210224" : "Logro - Espíritu combativo",
+    "210225" : "PB - Tejespíritus"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -869,7 +884,12 @@
     "210217" : "PB - Feu primaire",
     "210218" : "Célébration - Doux et croquant",
     "210219" : "Xilonen - En rythme",
-    "210220" : "PB - Sabzeruz"
+    "210220" : "PB - Sabzeruz",
+    "210221" : "Chasca - Chargée à bloc",
+    "210222" : "Ororon - Nocturnal",
+    "210223" : "Natlan - Rêves éphémères",
+    "210224" : "Succès - Esprit combatif",
+    "210225" : "PB - Spiritissage"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1087,7 +1107,12 @@
     "210217" : "Catatan Perjalanan: Api Purbakala",
     "210218" : "Perayaan: Renyah dan Manis",
     "210219" : "Xilonen: Cue Point",
-    "210220" : "Catatan Perjalanan: Sabzeruz"
+    "210220" : "Catatan Perjalanan: Sabzeruz",
+    "210221" : "Chasca: Fully Loaded",
+    "210222" : "Ororon: Nightshade",
+    "210223" : "Natlan: Fleeting Dreams",
+    "210224" : "Achievement: Tekad Bertarung",
+    "210225" : "Catatan Perjalanan: Penenun Roh"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1305,7 +1330,12 @@
     "210217" : "Appunti di viaggio: Fiamma primordiale",
     "210218" : "Celebrazione: Croccante e dolce",
     "210219" : "Xilonen: Ritmo",
-    "210220" : "Appunti di viaggio: Sabzeruz"
+    "210220" : "Appunti di viaggio: Sabzeruz",
+    "210221" : "Chasca: Colpo in canna",
+    "210222" : "Ororon: Ombra notturna",
+    "210223" : "Natlan: Sogni fugaci",
+    "210224" : "Obiettivo: Spirito combattivo",
+    "210225" : "Appunti di viaggio: Tessispiriti"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1523,7 +1553,12 @@
     "210217" : "紀行·源火",
     "210218" : "祭典·あまあまサクサク",
     "210219" : "シロネン・律動",
-    "210220" : "紀行・神誕"
+    "210220" : "紀行・神誕",
+    "210221" : "チャスカ・全弾",
+    "210222" : "オロルン・夜陰",
+    "210223" : "ナタ・空夢",
+    "210224" : "アチーブメント・戦意",
+    "210225" : "紀行・霊織"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -1741,7 +1776,12 @@
     "210217" : "기행·불의 근원",
     "210218" : "축전·바삭바삭",
     "210219" : "실로닌·리듬",
-    "210220" : "기행·탄신"
+    "210220" : "기행·탄신",
+    "210221" : "차스카·전탄 장전",
+    "210222" : "올로룬·밤그늘",
+    "210223" : "나타·헛된 꿈",
+    "210224" : "업적·투지",
+    "210225" : "기행·영혼의 두루마리"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -1959,7 +1999,12 @@
     "210217" : "Passe de Batalha: Fogo Original",
     "210218" : "Celebração: Doce e Crocante",
     "210219" : "Xilonen: Ritmo",
-    "210220" : "Passe de Batalha: Nascimento Divino"
+    "210220" : "Passe de Batalha: Nascimento Divino",
+    "210221" : "Chasca: Carga Máxima",
+    "210222" : "Ororon: Beladona",
+    "210223" : "Natlan: Sonhos Passageiros",
+    "210224" : "Conquista: Espírito de Luta",
+    "210225" : "Passe de Batalha: Tear Espiritual"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2177,7 +2222,12 @@
     "210217" : "Первозданный огонь",
     "210218" : "Хрустящие и сладкие",
     "210219" : "Ритм",
-    "210220" : "Сабзеруз"
+    "210220" : "Сабзеруз",
+    "210221" : "Полный барабан",
+    "210222" : "Ночное укрытие",
+    "210223" : "Мимолётные грёзы",
+    "210224" : "Боевой дух",
+    "210225" : "Плетение душ"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2395,7 +2445,12 @@
     "210217" : "บันทึก - เพลิงปฐมกาล",
     "210218" : "การฉลอง - ทั้งหวานทั้งกรอบ",
     "210219" : "Xilonen - จังหวะ",
-    "210220" : "บันทึก - Sabzeruz"
+    "210220" : "บันทึก - Sabzeruz",
+    "210221" : "Chasca - กระหน่ำยิง",
+    "210222" : "Ororon - ราตรีที่มืดมิด",
+    "210223" : "Natlan - ความฝันที่ว่างเปล่า",
+    "210224" : "ความสำเร็จ - จิตวิญญาณแห่งการต่อสู้",
+    "210225" : "บันทึก - ทอจิตวิญญาณ"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -2613,7 +2668,12 @@
     "210217" : "Gezi Notları: Kadim Ateş",
     "210218" : "Kutlama: Çıtır ve Tatlı",
     "210219" : "Xilonen: Şarkı Geçiş Yeri",
-    "210220" : "Gezi Notları: Sabzeruz"
+    "210220" : "Gezi Notları: Sabzeruz",
+    "210221" : "Chasca: Dolu Silindir",
+    "210222" : "Ororon: Gece Gölgesi",
+    "210223" : "Natlan: Uçup Giden Rüyalar",
+    "210224" : "Başarım: Savaşçı Ruhu",
+    "210225" : "Gezi Notları: Ruh Dokuyan"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -2831,7 +2891,12 @@
     "210217" : "Nhật Ký Hành Trình - Lửa Nguồn",
     "210218" : "Lễ Hội – Giòn Và Ngọt",
     "210219" : "Xilonen - Nhịp Điệu",
-    "210220" : "Nhật Ký Hành Trình - Sabzeruz"
+    "210220" : "Nhật Ký Hành Trình - Sabzeruz",
+    "210221" : "Chasca - Đầy Đạn",
+    "210222" : "Ororon - Cảnh Đêm",
+    "210223" : "Natlan - Giấc Mộng Trống Rỗng",
+    "210224" : "Thành Tựu - Chiến Ý",
+    "210225" : "Nhật Ký Hành Trình - Dệt Linh"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3049,7 +3114,12 @@
     "210217" : "纪行·源火",
     "210218" : "庆典·甘脆",
     "210219" : "希诺宁·律动",
-    "210220" : "纪行·神诞"
+    "210220" : "纪行·神诞",
+    "210221" : "恰斯卡·全弹",
+    "210222" : "欧洛伦·夜翳",
+    "210223" : "纳塔·空梦",
+    "210224" : "成就·战意",
+    "210225" : "纪行·灵织"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3267,6 +3337,11 @@
     "210217" : "紀行·源火",
     "210218" : "慶典·甘脆",
     "210219" : "希諾寧·律動",
-    "210220" : "紀行·神誕"
+    "210220" : "紀行·神誕",
+    "210221" : "恰斯卡·全彈",
+    "210222" : "歐洛倫·夜翳",
+    "210223" : "納塔·空夢",
+    "210224" : "成就·戰意",
+    "210225" : "紀行·靈織"
   }
 }
