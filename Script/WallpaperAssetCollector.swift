@@ -130,10 +130,24 @@ public enum GenshinLang: String, CaseIterable, Sendable, Identifiable {
         rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending(".json")
     }
 
-    public var url: URL! {
-        URL(string: """
-        https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/master/TextMap/\(filename)
-        """)
+    public var urls: [URL] {
+        filenamesForChunks.compactMap { currentFileName in
+            URL(string: """
+            https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/master/TextMap/\(currentFileName)
+            """)
+        }
+    }
+
+    // MARK: Internal
+
+    var filenamesForChunks: [String] {
+        switch self {
+        case .langTH: [
+                rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending("_1.json"),
+                rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending("_2.json"),
+            ]
+        default: [filename]
+        }
     }
 }
 
@@ -422,11 +436,17 @@ func makeLanguageMeta() async throws {
     ) { taskGroup in
         GenshinLang.allCases.forEach { locale in
             taskGroup.addTask {
-                let (data, _) = try await URLSession.shared.data(from: locale.url)
-                var dict = try JSONDecoder().decode([String: String].self, from: data)
-                let keysToRemove = await Set<String>(dict.keys).subtracting(allNameTextMapHashesNeeded)
-                keysToRemove.forEach { dict.removeValue(forKey: $0) }
-                return (subDict: dict, lang: locale)
+                var finalDict = [String: String]()
+                for url in locale.urls {
+                    let (data, _) = try await URLSession.shared.data(from: url)
+                    let dict = try JSONDecoder().decode([String: String].self, from: data)
+                    dict.forEach { key, value in
+                        finalDict[key] = value
+                    }
+                }
+                let keysToRemove = await Set<String>(finalDict.keys).subtracting(allNameTextMapHashesNeeded)
+                keysToRemove.forEach { finalDict.removeValue(forKey: $0) }
+                return (subDict: finalDict, lang: locale)
             }
         }
         var results = [String: [String: String]]()
