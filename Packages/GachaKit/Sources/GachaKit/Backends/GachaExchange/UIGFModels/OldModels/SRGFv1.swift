@@ -116,7 +116,7 @@ extension SRGFv1 {
             if Int(id) == nil { error = SRGFv1.makeDecodingError(CodingKeys.id) }
 
             self.itemID = try container.decode(String.self, forKey: .itemID)
-            if Int(itemID) == nil { error = SRGFv1.makeDecodingError(CodingKeys.itemID) }
+            if !itemID.isInt { error = SRGFv1.makeDecodingError(CodingKeys.itemID) }
 
             self.itemType = try container.decodeIfPresent(String.self, forKey: .itemType)
             if itemType?.isEmpty ?? false { error = SRGFv1.makeDecodingError(CodingKeys.itemType) }

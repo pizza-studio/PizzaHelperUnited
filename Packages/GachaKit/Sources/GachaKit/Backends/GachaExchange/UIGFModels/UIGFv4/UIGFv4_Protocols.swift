@@ -92,7 +92,7 @@ extension Array where Element: UIGFGachaItemProtocol {
         var newItemContainer = Self()
         // 君子协定：这里要求 UIGFGachaItem 的 itemID 必须是有效值，否则会出现灾难性的后果。
         try forEach { currentItem in
-            guard Int(currentItem.itemID) != nil else {
+            guard currentItem.itemID.isInt else {
                 throw GachaMeta.GMDBError.itemIDInvalid(name: currentItem.name ?? "", game: currentItem.game)
             }
             let lang = lang.sanitized(by: currentItem.game)

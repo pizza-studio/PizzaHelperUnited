@@ -47,7 +47,7 @@ extension UIGFv4 {
             if Int(id) == nil { error = UIGFv4.makeDecodingError(CodingKeys.id) }
 
             self.itemID = try container.decode(String.self, forKey: .itemID)
-            if Int(itemID) == nil { error = UIGFv4.makeDecodingError(CodingKeys.itemID) }
+            if !itemID.isInt { error = UIGFv4.makeDecodingError(CodingKeys.itemID) }
 
             self.itemType = try container.decodeIfPresent(String.self, forKey: .itemType)
             if itemType?.isEmpty ?? false { error = UIGFv4.makeDecodingError(CodingKeys.itemType) }
