@@ -167,7 +167,9 @@ extension AbyssCollector {
         encoder.outputFormatting = [.sortedKeys]
         let dataToSend = try encoder.encode(dataPack)
 
+        #if !DEBUG
         guard !Defaults[md5Key].contains(md5) else { throw ACError.alreadyUploaded }
+        #endif
 
         func saveMD5() {
             Defaults[md5Key].append(md5)
