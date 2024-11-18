@@ -24,7 +24,7 @@ extension GachaFetchModels.PageFetched.FetchedEntry {
             newEntry.time = time
         }
 
-        if fixItemIDs, game == .genshinImpact, itemID.isEmpty {
+        if fixItemIDs, game == .genshinImpact, itemID.isNotInt {
             var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
             if newItemID == nil {
                 try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
@@ -61,7 +61,7 @@ extension GachaFetchModels.PageFetched {
 
 extension PZGachaEntryProtocol {
     public mutating func fixItemID() async throws {
-        guard Pizza.SupportedGame(rawValue: game) == .genshinImpact, itemID.isEmpty else { return }
+        guard Pizza.SupportedGame(rawValue: game) == .genshinImpact, itemID.isNotInt else { return }
         var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
         if newItemID == nil {
             try await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
@@ -75,7 +75,7 @@ extension PZGachaEntryProtocol {
 
     public func asItemIDFixed() async throws -> Self {
         guard Pizza.SupportedGame(rawValue: game) == .genshinImpact else { return self }
-        guard itemID.isEmpty else { return self }
+        guard itemID.isNotInt else { return self }
         var result = self
         var newItemID = GachaMeta.sharedDB.reverseQuery4GI(for: name)
         if newItemID == nil {

@@ -131,7 +131,7 @@ public struct GIGF: Decodable {
     public internal(set) var list: [GIGFGachaItem]
 
     public var needsItemIDFix: Bool {
-        !list.filter { $0.itemID.isEmpty }.isEmpty
+        !list.filter(\.itemID.isNotInt).isEmpty
     }
 
     // MARK: Internal
@@ -296,19 +296,19 @@ extension GIGF {
         list.forEach { v2Item in
             var newItemID = v2Item.itemID
             var newName = v2Item.name
-            if newItemID.isEmpty {
+            if newItemID.isNotInt {
                 if let newItemIDInt = revDB[v2Item.name] {
                     newItemID = newItemIDInt.description
                 }
             }
-            if !newItemID.isEmpty {
+            if newItemID.isInt {
                 newName = GachaMeta.sharedDB.mainDB4GI.plainQueryForNames(
                     itemID: newItemID, langID: self.info.lang.rawValue
                 ) ?? v2Item.name
             }
 
             var maybeRankType: String? = v2Item.rankType?.rawValue.description ?? nil
-            if maybeRankType == nil, !newItemID.isEmpty,
+            if maybeRankType == nil, newItemID.isInt,
                let intMaybeRankType = mainDB.plainQueryForRarity(itemID: newItemID) {
                 maybeRankType = intMaybeRankType.description
             }
