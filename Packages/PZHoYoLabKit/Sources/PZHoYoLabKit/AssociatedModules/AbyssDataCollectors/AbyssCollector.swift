@@ -19,7 +19,7 @@ extension AbyssCollector {
     >
 
     public struct ResponseModel: Codable, Sendable {
-        public let retcode: Int?
+        public let retCode: Int?
         public let message: String?
     }
 
@@ -211,7 +211,8 @@ extension AbyssCollector {
             }
 
             let decoded = try JSONDecoder().decode(ResponseModel.self, from: data)
-            switch decoded.retcode {
+            print(decoded)
+            switch decoded.retCode {
             case 0:
                 saveMD5()
                 return .success(decoded)
