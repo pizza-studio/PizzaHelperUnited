@@ -4,6 +4,7 @@
 
 @preconcurrency import CoreData
 import GachaMetaDB
+@preconcurrency import NaturalLanguage
 import PZAccountKit
 import PZBaseKit
 @preconcurrency import Sworm
@@ -62,21 +63,18 @@ public final class CDGachaMOSputnik: Sendable {
 
     public func allCDGachaMOAsPZGachaEntryMO() throws -> [PZGachaEntrySendable] {
         // Genshin.
-        var genshinData: [PZGachaEntrySendable] = try allGachaDataMO(for: .genshinImpact).map(\.asPZGachaEntrySendable)
+        var genshinDataRAW: [CDGachaMO4GI] = try allGachaDataMO(for: .genshinImpact).compactMap { $0 as? CDGachaMO4GI }
         // Fix Genshin ItemIDs.
-        let revDB = GachaMeta.sharedDB.mainDB4GI.generateHotReverseQueryDict(for: HoYo.APILang.langCHS.rawValue) ?? [:]
-        for idx in 0 ..< genshinData.count {
-            let currentObj = genshinData[idx]
-            guard Int(currentObj.itemID) == nil else { continue }
-            if let newItemIDInt = revDB[currentObj.name] {
-                genshinData[idx].itemID = newItemIDInt.description
-            } else {
-                Task { @MainActor in
-                    try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
-                }
-                throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
+        genshinDataRAW.fixItemIDs(with: .langCHS)
+        for idx in 0 ..< genshinDataRAW.count {
+            let currentObj = genshinDataRAW[idx]
+            guard Int(currentObj.itemId) == nil else { continue }
+            Task { @MainActor in
+                try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
             }
+            throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
         }
+        let genshinData = genshinDataRAW.map(\.asPZGachaEntrySendable)
         // StarRail.
         let hsrData: [PZGachaEntrySendable]? = try allGachaDataMO(for: .starRail).map(\.asPZGachaEntrySendable)
         let dataSet: [PZGachaEntrySendable] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
@@ -97,4 +95,82 @@ public final class CDGachaMOSputnik: Sendable {
 
     private let db4GI: PersistentContainer
     private let db4HSR: PersistentContainer
+}
+
+// MARK: - Language parser (duplicated from GIGF with modifications)
+
+extension [CDGachaMO4GI] {
+    fileprivate static let recognizer = NLLanguageRecognizer()
+
+    fileprivate static func guessLanguages(for text: String) -> [GachaLanguage] {
+        recognizer.languageConstraints = GachaLanguage.allCases.compactMap { $0.nlLanguage }
+        Self.recognizer.processString(text)
+        return Self.recognizer.languageHypotheses(withMaximum: 114514).sorted {
+            $0.value > $1.value
+        }.compactMap { tag in
+            GachaLanguage(langTag: tag.key.rawValue)
+        }
+    }
+
+    fileprivate var lingualDataForAnalysis: String {
+        var result = Set<String>()
+        forEach { currentItem in
+            result.insert(currentItem.name)
+            result.insert(currentItem.itemType)
+        }
+        return result.joined(separator: "\n")
+    }
+
+    public var possibleLanguages: [GachaLanguage] {
+        Self.guessLanguages(for: lingualDataForAnalysis)
+    }
+
+    public var mightHaveNonCHSLanguageTag: Bool {
+        guard !isEmpty, let maybeLang = possibleLanguages.first else { return false }
+        return maybeLang != .langCHS
+    }
+
+    public mutating func fixItemIDs(with givenLanguage: GachaLanguage? = nil) {
+        let needsItemIDFix = !filter { $0.itemId.isEmpty }.isEmpty
+        guard !isEmpty, needsItemIDFix else { return }
+        var languages: [HoYo.APILang] = [.langCHS]
+        if mightHaveNonCHSLanguageTag, !possibleLanguages.isEmpty {
+            languages = possibleLanguages
+        }
+        if let givenLanguage {
+            languages.removeAll { $0 == givenLanguage }
+            languages.insert(givenLanguage, at: 0)
+        }
+
+        if !languages.contains(.langCHS) {
+            languages.append(.langCHS) // 垫底语言。
+        }
+
+        let sharedDBSet = GachaMeta.sharedDB
+        var revDB = [String: Int]()
+        let listBackup = self
+        languageEnumeration: while !languages.isEmpty, let language = languages.first {
+            var languageMismatchDetected = false
+            switch language {
+            case .langCHS: revDB = sharedDBSet.reversedDB4GI
+            default: revDB = language.makeRevDB()
+            }
+
+            listItemEnumeration: for listIndex in 0 ..< count {
+                guard Int(self[listIndex].itemId) == nil else { continue }
+                /// 只要没查到结果，就可以认定当前的语言匹配有误。
+                guard let newItemID = revDB[self[listIndex].name] else {
+                    languageMismatchDetected = true
+                    break listItemEnumeration
+                }
+                self[listIndex].itemId = newItemID.description
+            }
+
+            /// 检测无误的话，就退出处理。
+            guard languageMismatchDetected else { break languageEnumeration }
+            /// 处理语言有误时的情况：将 list 还原成修改前的状态，再测试下一个语言。
+            languages.removeFirst()
+            if !languages.isEmpty { self = listBackup }
+        }
+    }
 }
