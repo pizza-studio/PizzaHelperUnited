@@ -129,8 +129,7 @@ extension [CDGachaMO4GI] {
     }
 
     public var mightHaveNonCHSLanguageTag: Bool {
-        guard !isEmpty, let maybeLang = possibleLanguages.first else { return false }
-        return maybeLang != .langCHS
+        possibleLanguages != [.langCHS]
     }
 
     public mutating func fixItemIDs(with givenLanguage: GachaLanguage? = nil) {
