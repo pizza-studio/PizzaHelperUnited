@@ -198,7 +198,7 @@ private struct StaminaNotificationThresholdConfigView: View {
                             isNumberExistAlertVisible.toggle()
                         }
                     } label: {
-                        Text("sys.save".i18nBaseKit)
+                        Text("sys.add".i18nBaseKit)
                     }
                 } else {
                     Button {
