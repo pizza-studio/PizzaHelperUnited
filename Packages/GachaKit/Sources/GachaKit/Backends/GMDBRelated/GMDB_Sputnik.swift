@@ -118,6 +118,124 @@ extension GachaMeta.Sputnik {
     }
 }
 
+// MARK: - GachaMeta.Trie
+
+extension GachaMeta {
+    class Trie {
+        // MARK: Lifecycle
+
+        public init() {}
+
+        public init(words: [String]) {
+            words.forEach(insert)
+        }
+
+        // MARK: Internal
+
+        func insert(_ word: String) {
+            var currentNode = root
+            for char in word {
+                if currentNode.children[char] == nil {
+                    currentNode.children[char] = Node()
+                }
+                currentNode = currentNode.children[char]!
+            }
+            currentNode.isWord = true
+        }
+
+        // 在 Trie 中查找接近的词语
+        func findSimilarWords(
+            against word: String,
+            maxDistance: Int
+        )
+            -> [String] {
+            let trie = self
+            var matchedWords: [String] = []
+            let initialDistance = Array(0 ... word.count) // 初始化编辑距离
+            trie.getRoot().InternalSearch(
+                target: word,
+                currentWord: "",
+                maxDistance: Double(maxDistance),
+                currentDistance: initialDistance.map(Double.init),
+                results: &matchedWords
+            )
+            return matchedWords
+        }
+
+        // MARK: Fileprivate
+
+        fileprivate class Node {
+            var children: [Character: Node] = [:]
+            var isWord: Bool = false
+        }
+
+        fileprivate func getRoot() -> Node {
+            root
+        }
+
+        // MARK: Private
+
+        private let root = Node()
+    }
+}
+
+extension GachaMeta.Trie.Node {
+    /// key 应该是米哈游官方用字，而 value 是其可能的笔画相似的错别字或非官方用字。
+    /// 抽卡记录的原始数据原则上只能使用米哈游官方用字，哪怕米哈游自己用了错别字。
+    private static let similarCharacters: [Character: [Character]] = [
+        "曚": ["朦"],
+    ]
+
+    fileprivate func InternalSearch(
+        target: String,
+        currentWord: String,
+        maxDistance: Double,
+        currentDistance: [Double],
+        results: inout [String],
+        similarCharacters: [Character: [Character]]? = nil
+    ) {
+        let similarCharacters = similarCharacters ?? Self.similarCharacters
+        // 如果当前节点是一个完整单词，并且编辑距离符合条件
+        if isWord, let lastDistance = currentDistance.last, lastDistance <= maxDistance {
+            results.append(currentWord)
+        }
+
+        // 遍历节点的每个子节点
+        children.forEach { char, childNode in
+            var nextDistance: [Double] = [currentDistance[0] + 1] // 第 0 列: 插入操作
+            for (i, targetChar) in target.enumerated() {
+                let cost: Double
+                if char == targetChar {
+                    cost = 0
+                } else if similarCharacters[char]?.contains(targetChar) == true {
+                    cost = 0.5
+                } else {
+                    cost = 1
+                }
+                nextDistance.append(
+                    min(
+                        currentDistance[i + 1] + 1, // 删除
+                        nextDistance[i] + 1, // 插入
+                        currentDistance[i] + cost // 替换或相似
+                    )
+                )
+            }
+
+            // 如果最小编辑距离在允许范围内，继续搜寻子节点
+            if nextDistance.min()! <= maxDistance {
+                childNode.InternalSearch(
+                    target: target,
+                    currentWord: currentWord + String(char),
+                    maxDistance: maxDistance,
+                    currentDistance: nextDistance,
+                    results: &results,
+                    similarCharacters: similarCharacters
+                )
+            }
+        }
+    }
+}
+
 // MARK: - GachaMeta.GMDBError
 
 extension GachaMeta {

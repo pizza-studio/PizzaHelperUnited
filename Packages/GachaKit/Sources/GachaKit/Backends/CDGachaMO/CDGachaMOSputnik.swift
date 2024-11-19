@@ -152,14 +152,32 @@ extension [CDGachaMO4GI] {
         }
 
         var revDB = [String: Int]()
+        var revDBDeducted = [String: Int]() // 复用表。
         let listBackup = self
         languageEnumeration: while !languages.isEmpty, let language = languages.first {
             var languageMismatchDetected = false
             revDB = language.makeRevDB() // Just in case.
             listItemEnumeration: for listIndex in 0 ..< count {
-                guard Int(self[listIndex].itemId) == nil else { continue }
+                guard self[listIndex].itemId.isNotInt else { continue }
                 /// 只要没查到结果，就可以认定当前的语言匹配有误。
-                guard let newItemID = revDB[self[listIndex].name] else {
+                lazy var trie = GachaMeta.Trie(words: [String](revDB.keys))
+                let itemNameFromOldCDMO = self[listIndex].name
+                let newItemID: Int?
+                if !revDB.keys.contains(itemNameFromOldCDMO), !revDBDeducted.keys.contains(itemNameFromOldCDMO) {
+                    /// 只允许有最多一个错别字。
+                    let matched = trie.findSimilarWords(against: itemNameFromOldCDMO, maxDistance: 1)
+                    if matched.count == 1, let matchedUniqueResult = matched.first {
+                        /// 如果只有一个匹配结果的话，那应该就是正确结果。
+                        revDBDeducted[itemNameFromOldCDMO] = revDB[matchedUniqueResult] // 将该结果留着复用。
+                        newItemID = revDB[matchedUniqueResult]
+                    } else {
+                        /// 如果有多个匹配结果的话，现阶段不处理。回头实作一个画面让用户确认。
+                        newItemID = nil
+                    }
+                } else {
+                    newItemID = revDB[itemNameFromOldCDMO] ?? revDBDeducted[itemNameFromOldCDMO]
+                }
+                guard let newItemID else {
                     languageMismatchDetected = true
                     break listItemEnumeration
                 }
