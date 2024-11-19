@@ -100,7 +100,9 @@ extension PZGachaEntryProtocol {
         switch game {
         case .genshinImpact:
             guard Int(gachaID) != nil else {
-                throw GachaMeta.GMDBError.itemIDInvalid(name: name, game: .genshinImpact)
+                throw GachaMeta.GMDBError.itemIDInvalid(
+                    name: name, game: .genshinImpact, uid: uid
+                )
             }
             return UIGFv4.GachaItemGI(
                 count: count,
