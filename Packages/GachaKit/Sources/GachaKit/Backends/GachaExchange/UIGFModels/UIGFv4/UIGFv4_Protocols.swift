@@ -93,7 +93,9 @@ extension Array where Element: UIGFGachaItemProtocol {
         // 君子协定：这里要求 UIGFGachaItem 的 itemID 必须是有效值，否则会出现灾难性的后果。
         try forEach { currentItem in
             guard currentItem.itemID.isInt else {
-                throw GachaMeta.GMDBError.itemIDInvalid(name: currentItem.name ?? "", game: currentItem.game)
+                throw GachaMeta.GMDBError.itemIDInvalid(
+                    name: currentItem.name ?? "", game: currentItem.game, uid: nil
+                )
             }
             let lang = lang.sanitized(by: currentItem.game)
             let theDB: [String: GachaItemMetadata] = switch currentItem.game {

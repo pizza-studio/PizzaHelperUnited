@@ -125,7 +125,7 @@ extension GachaMeta {
         case emptyFetchResult
         case resultFetchFailure(subError: Error)
         case databaseExpired(game: Pizza.SupportedGame)
-        case itemIDInvalid(name: String, game: Pizza.SupportedGame)
+        case itemIDInvalid(name: String, game: Pizza.SupportedGame, uid: String?)
 
         // MARK: Public
 
@@ -142,9 +142,14 @@ extension GachaMeta {
                     .i18nGachaKit + " // \(subError.localizedDescription)"
             case .databaseExpired:
                 "gachaKit.GachaMetaDBError.DatabaseExpired".i18nGachaKit
-            case let .itemIDInvalid(name, game):
-                "gachaKit.GachaMetaDBError.itemIDInvalid"
-                    .i18nGachaKit + " // \(name) @ \(game.localizedShortName)"
+            case let .itemIDInvalid(name, game, uid):
+                if let uid {
+                    "gachaKit.GachaMetaDBError.itemIDInvalid"
+                        .i18nGachaKit + " // \(name) @ \(game.localizedShortName) (\(uid))"
+                } else {
+                    "gachaKit.GachaMetaDBError.itemIDInvalid"
+                        .i18nGachaKit + " // \(name) @ \(game.localizedShortName)"
+                }
             }
         }
     }
