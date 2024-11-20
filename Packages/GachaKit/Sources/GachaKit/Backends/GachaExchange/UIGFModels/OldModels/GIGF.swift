@@ -411,21 +411,21 @@ extension GIGF {
                 guard list[listIndex].itemID.isNotInt else { continue }
                 /// 只要没查到结果，就可以认定当前的语言匹配有误。
                 lazy var trie = GachaMeta.Trie(words: [String](revDB.keys))
-                let itemNameFromOldCDMO = list[listIndex].name
+                let oldItemName = list[listIndex].name
                 let newItemID: Int?
-                if !revDB.keys.contains(itemNameFromOldCDMO), !revDBDeducted.keys.contains(itemNameFromOldCDMO) {
+                matchText: if !revDB.keys.contains(oldItemName), !revDBDeducted.keys.contains(oldItemName) {
                     /// 只允许有最多一个错别字。
-                    let matched = trie.findSimilarWords(against: itemNameFromOldCDMO, maxDistance: 1)
-                    if matched.count == 1, let matchedUniqueResult = matched.first {
-                        /// 如果只有一个匹配结果的话，那应该就是正确结果。
-                        revDBDeducted[itemNameFromOldCDMO] = revDB[matchedUniqueResult] // 将该结果留着复用。
-                        newItemID = revDB[matchedUniqueResult]
-                    } else {
-                        /// 如果有多个匹配结果的话，现阶段不处理。回头实作一个画面让用户确认。
-                        newItemID = nil
-                    }
+                    let matched = trie.findSimilarWords(against: oldItemName, maxDistance: 1)
+                    /// 如果有多个匹配结果的话，现阶段不处理。回头实作一个画面让用户确认。
+                    guard matched.count == 1 else { newItemID = nil; break matchText }
+                    guard let newItemName = matched.first else { newItemID = nil; break matchText }
+                    /// 文字数量得相等。（Swift 的 String.count 是语言学上的字符长度，这与 Cpp 不同。）
+                    guard newItemName.count == oldItemName.count else { newItemID = nil; break matchText }
+                    /// 如果只有一个匹配结果的话，那应该就是正确结果。
+                    revDBDeducted[oldItemName] = revDB[newItemName] // 将该结果留着复用。
+                    newItemID = revDB[newItemName]
                 } else {
-                    newItemID = revDB[itemNameFromOldCDMO] ?? revDBDeducted[itemNameFromOldCDMO]
+                    newItemID = revDB[oldItemName] ?? revDBDeducted[oldItemName]
                 }
                 guard let newItemID else {
                     languageMismatchDetected = true
