@@ -323,11 +323,6 @@ extension NotificationSputnik {
             return
         }
         guard dailyNote.hasDailyTaskIntel else { return }
-        let sitrep = dailyNote.dailyTaskCompletionStatus
-        guard !sitrep.isAccomplished else {
-            await deleteNotification(.giRewardsFromKatheryne)
-            return
-        }
         // 只有尚未领取时才提醒。
         guard dailyNote.claimedRewardsFromKatheryne ?? false else {
             await deleteNotification(.giRewardsFromKatheryne)
