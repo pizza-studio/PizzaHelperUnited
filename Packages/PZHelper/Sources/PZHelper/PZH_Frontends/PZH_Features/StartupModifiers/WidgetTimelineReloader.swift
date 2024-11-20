@@ -19,7 +19,7 @@ extension View {
 private struct WidgetTimelineReloader: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .onAppear {
+            .onAppBecomeActive {
                 reloadAllTimelines()
             }
     }
