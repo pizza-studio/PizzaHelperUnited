@@ -185,9 +185,12 @@ private struct StaminaNotificationThresholdConfigView: View {
                             isActivated.toggle()
                         }
                     }
-                    Slider(value: $newNumber, in: 10.0 ... 240.0, step: 5.0) {
+                    Slider(value: $newNumber, in: 10.0 ... Double(game.maxPrimaryStamina), step: 5.0) {
                         Text(verbatim: "\(numberToSave)")
                             .foregroundColor(isNewThresholdValid ? .primary : .red)
+                    }
+                    .onChange(of: game) {
+                        newNumber = min(newNumber, Double(game.maxPrimaryStamina))
                     }
                     Button {
                         if isNewThresholdValid {
