@@ -23,12 +23,32 @@ public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSeriali
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.allowStaminaNotification = try container.decode(Bool.self, forKey: .allowStaminaNotification)
+        // 此处有必要使用 nullable decoding，因为相同的名称之前的类型是 [Int]。
+        // 如果不手动实作 init 在这里用 nullable decoding 的话，必然会导致解码失败、导致整个通知设定内容丢失、被全部重建。
         let readableThresholds = try? container.decode(
             [StaminaThreshold].self,
             forKey: .staminaAdditionalNotificationThresholds
         )
+        let readableOldThresholds = try? container.decode(
+            [Int].self,
+            forKey: .staminaAdditionalNotificationThresholds
+        )
         if let readableThresholds {
             self.staminaAdditionalNotificationThresholds = readableThresholds
+        } else if let readableOldThresholds {
+            readableOldThresholds.forEach { threshold in
+                staminaAdditionalNotificationThresholds.append(
+                    .init(game: .starRail, threshold: threshold)
+                )
+                staminaAdditionalNotificationThresholds.append(
+                    .init(game: .zenlessZone, threshold: threshold)
+                )
+                if threshold <= 200 {
+                    staminaAdditionalNotificationThresholds.append(
+                        .init(game: .genshinImpact, threshold: threshold)
+                    )
+                }
+            }
         }
         self.allowExpeditionNotification = try container.decode(Bool.self, forKey: .allowExpeditionNotification)
         self.expeditionNotificationSetting = try container.decode(
