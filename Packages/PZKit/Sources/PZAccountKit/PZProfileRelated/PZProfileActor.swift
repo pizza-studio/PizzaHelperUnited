@@ -15,12 +15,24 @@ public actor PZProfileActor {
     // MARK: Lifecycle
 
     public init(unitTests: Bool = false) {
-        modelContainer = unitTests ? Self.makeContainer4UnitTests() : Self.makeContainer()
+        var isReset = false
+        if unitTests {
+            modelContainer = Self.makeContainer4UnitTests()
+        } else {
+            let newContainer = Self.makeContainer()
+            modelContainer = newContainer.container
+            isReset = newContainer.isReset
+        }
         modelExecutor = DefaultSerialModelExecutor(
             modelContext: .init(modelContainer)
         )
         Task { @MainActor in
-            await syncAllDataToUserDefaults()
+            // 处理资料库被重设的情形。
+            if isReset {
+                await failSafeRestoreAllDataFromUserDefaults()
+            } else {
+                await syncAllDataToUserDefaults()
+            }
         }
     }
 
@@ -49,16 +61,16 @@ public actor PZProfileActor {
         }
     }
 
-    public static func makeContainer() -> ModelContainer {
+    public static func makeContainer() -> (container: ModelContainer, isReset: Bool) {
         let config = Self.modelConfig
         do {
-            return try ModelContainer(for: Self.schema, configurations: [config])
+            return (try ModelContainer(for: Self.schema, configurations: [config]), false)
         } catch {
             secondAttempt: do {
                 try FileManager.default.removeItem(at: config.url)
                 Defaults[.lastTimeResetLocalProfileDB] = .now
                 do {
-                    return try ModelContainer(for: Self.schema, configurations: [config])
+                    return (try ModelContainer(for: Self.schema, configurations: [config]), true)
                 } catch {
                     break secondAttempt
                 }
@@ -170,5 +182,17 @@ extension PZProfileActor {
         }
         existingKeys.forEach { Defaults[.pzProfiles].removeValue(forKey: $0) }
         UserDefaults.profileSuite.synchronize()
+    }
+
+    private func failSafeRestoreAllDataFromUserDefaults() {
+        do {
+            let existingCount = try modelContext.fetchCount(FetchDescriptor<PZProfileMO>())
+            let backupProfiles = Defaults[.pzProfiles].values.sorted { $0.priority < $1.priority }
+            guard existingCount == 0, !backupProfiles.isEmpty else { return }
+            backupProfiles.map(\.asMO).forEach(modelContext.insert)
+            try modelContext.save()
+        } catch {
+            print(error)
+        }
     }
 }
