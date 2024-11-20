@@ -40,7 +40,7 @@ public final class CDGachaMOSputnik: Sendable {
                 var genshinDataRAW = try ctx.fetch(CDGachaMO4GI.all).map { try $0.decode() }
                 if fixItemIDs {
                     // Fix Genshin ItemIDs.
-                    genshinDataRAW.fixItemIDs(with: .langCHS)
+                    genshinDataRAW.fixItemIDs()
                     if genshinDataRAW.mightHaveNonCHSLanguageTag {
                         try genshinDataRAW.updateLanguage(.langCHS)
                     }
