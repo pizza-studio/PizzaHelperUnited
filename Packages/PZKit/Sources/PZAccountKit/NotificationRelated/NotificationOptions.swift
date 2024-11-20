@@ -42,6 +42,11 @@ public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSeriali
         case notifyAt(weekday: Int = 0, hour: Int, minute: Int)
     }
 
+    public struct StaminaThreshold: Codable, Sendable, Hashable {
+        public let game: Pizza.SupportedGame
+        public let threshold: Int
+    }
+
     /// Stamina, Toggle
     public var allowStaminaNotification: Bool = true {
         willSet {
@@ -53,8 +58,21 @@ public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSeriali
         }
     }
 
-    /// Stamina, Additional Threshold
+    /// Stamina, Additional Threshold // TODO: Deletion.
     public var staminaAdditionalNotificationThresholds: [Int] = [190, 230] {
+        willSet {
+            Task {
+                try? await PZNotificationCenter.deleteDailyNoteNotification(of: .staminaPerThreshold)
+            }
+        }
+    }
+
+    /// Stamina, Additional Threshold (by Game)
+    public var additionalStaminaNotificationThresholds: [StaminaThreshold] = [
+        StaminaThreshold(game: .genshinImpact, threshold: 190),
+        StaminaThreshold(game: .starRail, threshold: 230),
+        StaminaThreshold(game: .zenlessZone, threshold: 230),
+    ] {
         willSet {
             Task {
                 try? await PZNotificationCenter.deleteDailyNoteNotification(of: .staminaPerThreshold)
@@ -138,6 +156,12 @@ public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSeriali
                 try? await PZNotificationCenter.deleteDailyNoteNotification(of: .hsrSimulatedUniverse)
             }
         }
+    }
+}
+
+extension [NotificationOptions.StaminaThreshold] {
+    public func byGame(_ game: Pizza.SupportedGame) -> Self {
+        filter { $0.game == game }.sorted { $0.threshold < $1.threshold }
     }
 }
 
