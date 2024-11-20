@@ -87,7 +87,13 @@ extension DailyNoteProtocol {
 
     /// DailyNoteProtocol: Stamina
     public static var maxPrimaryStamina: Int {
-        switch game {
+        game.maxPrimaryStamina
+    }
+}
+
+extension Pizza.SupportedGame {
+    public var maxPrimaryStamina: Int {
+        switch self {
         case .genshinImpact: 200
         case .starRail: 240
         case .zenlessZone: 240
