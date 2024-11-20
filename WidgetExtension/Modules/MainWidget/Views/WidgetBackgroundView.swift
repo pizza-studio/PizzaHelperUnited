@@ -15,20 +15,17 @@ struct WidgetBackgroundView: View {
     let background: WidgetBackgroundAppEntity
     let darkModeOn: Bool
 
-    var backgroundColors: [Color] { background.colors }
-    var backgroundIconName: String? { background.iconName }
-    var backgroundImageName: String? { background.imageName }
     var body: some View {
         ZStack {
-            if !backgroundColors.isEmpty {
+            if !background.colors.isEmpty {
                 LinearGradient(
-                    colors: backgroundColors,
+                    colors: background.colors,
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
             }
 
-            if let backgroundIconName = backgroundIconName {
+            if let backgroundIconName = background.iconName {
                 GeometryReader { g in
                     Image(backgroundIconName, bundle: .main)
                         .resizable()
@@ -40,7 +37,7 @@ struct WidgetBackgroundView: View {
                 }
             }
 
-            if let backgroundImageName {
+            if let backgroundImageName = background.imageName {
                 let wpMaybe = Wallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
                 let wallpaper = (wpMaybe ?? .defaultValue())
                 let backgroundImage = wallpaper.image4LiveActivity
@@ -73,6 +70,7 @@ struct WidgetBackgroundView: View {
             }
         }
         .brightness(shouldEnforceDark ? -0.15 : 0)
+        .saturation(shouldEnforceDark ? 0.85 : 1)
         .scaleEffect(1.01) // HSR 的名片有光边。
     }
 
