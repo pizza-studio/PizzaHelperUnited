@@ -16,6 +16,49 @@ extension Defaults.Keys {
 // MARK: - NotificationOptions
 
 public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSerializable {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.allowStaminaNotification = try container.decode(Bool.self, forKey: .allowStaminaNotification)
+        let readableThresholds = try? container.decode(
+            [StaminaThreshold].self,
+            forKey: .staminaAdditionalNotificationThresholds
+        )
+        if let readableThresholds {
+            self.staminaAdditionalNotificationThresholds = readableThresholds
+        }
+        self.allowExpeditionNotification = try container.decode(Bool.self, forKey: .allowExpeditionNotification)
+        self.expeditionNotificationSetting = try container.decode(
+            ExpeditionNotificationSetting.self, forKey: .expeditionNotificationSetting
+        )
+        self.dailyTaskNotificationSetting = try container.decode(
+            ManualSetting.self,
+            forKey: .dailyTaskNotificationSetting
+        )
+        self.giKatheryneNotificationSetting = try container.decode(
+            ManualSetting.self,
+            forKey: .giKatheryneNotificationSetting
+        )
+        self.allowGIRealmCurrencyNotification = try container.decode(
+            Bool.self,
+            forKey: .allowGIRealmCurrencyNotification
+        )
+        self.allowGITransformerNotification = try container.decode(Bool.self, forKey: .allowGITransformerNotification)
+        self.giTrounceBlossomNotificationSetting = try container.decode(
+            ManualSetting.self,
+            forKey: .giTrounceBlossomNotificationSetting
+        )
+        self.hsrSimulUnivNotificationSetting = try container.decode(
+            ManualSetting.self,
+            forKey: .hsrSimulUnivNotificationSetting
+        )
+    }
+
+    // MARK: Public
+
     public enum ExpeditionNotificationSetting: String, CustomStringConvertible, CaseIterable, Sendable, Hashable,
         Codable {
         case onlySummary
@@ -43,6 +86,15 @@ public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSeriali
     }
 
     public struct StaminaThreshold: Codable, Sendable, Hashable {
+        // MARK: Lifecycle
+
+        public init(game: Pizza.SupportedGame, threshold: Int) {
+            self.game = game
+            self.threshold = threshold
+        }
+
+        // MARK: Public
+
         public let game: Pizza.SupportedGame
         public let threshold: Int
     }
@@ -58,17 +110,8 @@ public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSeriali
         }
     }
 
-    /// Stamina, Additional Threshold // TODO: Deletion.
-    public var staminaAdditionalNotificationThresholds: [Int] = [190, 230] {
-        willSet {
-            Task {
-                try? await PZNotificationCenter.deleteDailyNoteNotification(of: .staminaPerThreshold)
-            }
-        }
-    }
-
     /// Stamina, Additional Threshold (by Game)
-    public var additionalStaminaNotificationThresholds: [StaminaThreshold] = [
+    public var staminaAdditionalNotificationThresholds: [StaminaThreshold] = [
         StaminaThreshold(game: .genshinImpact, threshold: 190),
         StaminaThreshold(game: .starRail, threshold: 230),
         StaminaThreshold(game: .zenlessZone, threshold: 230),
@@ -156,6 +199,21 @@ public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSeriali
                 try? await PZNotificationCenter.deleteDailyNoteNotification(of: .hsrSimulatedUniverse)
             }
         }
+    }
+
+    // MARK: Private
+
+    private enum CodingKeys: CodingKey {
+        case allowStaminaNotification
+        case staminaAdditionalNotificationThresholds
+        case allowExpeditionNotification
+        case expeditionNotificationSetting
+        case dailyTaskNotificationSetting
+        case giKatheryneNotificationSetting
+        case allowGIRealmCurrencyNotification
+        case allowGITransformerNotification
+        case giTrounceBlossomNotificationSetting
+        case hsrSimulUnivNotificationSetting
     }
 }
 

@@ -192,7 +192,9 @@ private struct StaminaNotificationThresholdConfigView: View {
                     Button {
                         if isNewThresholdValid {
                             withAnimation {
-                                options.staminaAdditionalNotificationThresholds.append(numberToSave)
+                                options.staminaAdditionalNotificationThresholds.append(
+                                    NotificationOptions.StaminaThreshold(game: game, threshold: numberToSave)
+                                )
                             }
                         } else {
                             isNumberExistAlertVisible.toggle()
@@ -211,7 +213,10 @@ private struct StaminaNotificationThresholdConfigView: View {
                 }
             }
             .alert(
-                "settings.notification.staminaThresholds.valueAlreadyExist",
+                String(
+                    localized: "settings.notification.staminaThresholds.valueAlreadyExist",
+                    bundle: .module
+                ),
                 isPresented: $isNumberExistAlertVisible
             ) {
                 Button("sys.ok".i18nBaseKit) {
@@ -219,12 +224,23 @@ private struct StaminaNotificationThresholdConfigView: View {
                 }
             }
             Section {
-                ForEach(options.staminaAdditionalNotificationThresholds.sorted(by: <), id: \.self) { number in
+                ForEach(thresholdsForCurrentGame, id: \.self) { number in
                     Text(verbatim: "\(number)")
+                        .id(number)
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                options.staminaAdditionalNotificationThresholds.removeAll {
+                                    $0.game == game && $0.threshold == number
+                                }
+                                UserDefaults.baseSuite.synchronize()
+                            } label: {
+                                Text("sys.delete".i18nBaseKit)
+                            }
+                        }
                 }
                 .onDelete(perform: deleteItems)
             } header: {
-                Text("settings.notification.staminaThresholds.header", bundle: .module).textCase(.none)
+                Text("settings.notification.staminaThresholds.header", bundle: .module)
                     .textCase(.none)
             } footer: {
                 Text("settings.notification.staminaThresholds.footer", bundle: .module)
@@ -241,6 +257,10 @@ private struct StaminaNotificationThresholdConfigView: View {
                 }
             }
             #endif
+            ToolbarItem(placement: .confirmationAction) {
+                gamePicker
+                    .pickerStyle(.segmented)
+            }
         }
         .navigationTitle(Self.navTitle)
         .navBarTitleDisplayMode(.large)
@@ -258,14 +278,33 @@ private struct StaminaNotificationThresholdConfigView: View {
     @State private var isActivated: Bool = false
     @State private var isNumberExistAlertVisible: Bool = false
     @State private var newNumber: Double = 140.0
+    @State private var game: Pizza.SupportedGame = .genshinImpact
     @Default(.notificationOptions) private var options: NotificationOptions
 
-    private var isNewThresholdValid: Bool { !options.staminaAdditionalNotificationThresholds.contains(numberToSave) }
+    private var isNewThresholdValid: Bool { !thresholdsForCurrentGame.contains(numberToSave) }
     private var numberToSave: Int { Int(newNumber) }
+
+    private var thresholdsForCurrentGame: [Int] {
+        options.staminaAdditionalNotificationThresholds.byGame(game).map(\.threshold)
+    }
+
+    @ViewBuilder private var gamePicker: some View {
+        Picker("".description, selection: $game.animation()) {
+            ForEach(Pizza.SupportedGame.allCases) { game in
+                Text(game.localizedShortName).tag(game)
+            }
+        }
+    }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            options.staminaAdditionalNotificationThresholds.remove(atOffsets: offsets)
+            var currentValues = thresholdsForCurrentGame
+            currentValues.remove(atOffsets: offsets)
+            options.staminaAdditionalNotificationThresholds.removeAll { $0.game == game }
+            options.staminaAdditionalNotificationThresholds.append(contentsOf: {
+                currentValues.map { NotificationOptions.StaminaThreshold(game: game, threshold: $0) }
+            }())
+            UserDefaults.baseSuite.synchronize()
         }
     }
 }
