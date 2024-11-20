@@ -173,47 +173,7 @@ private struct StaminaNotificationThresholdConfigView: View {
     var body: some View {
         List {
             Section {
-                if isActivated {
-                    HStack {
-                        Text("settings.notification.staminaThresholds.add.title", bundle: .module)
-                        Spacer()
-                        Text(verbatim: "\(numberToSave)")
-                            .foregroundColor(isNewThresholdValid ? .primary : .red)
-                    }
-                    .onTapGesture {
-                        withAnimation {
-                            isActivated.toggle()
-                        }
-                    }
-                    Slider(value: $newNumber, in: 10.0 ... Double(game.maxPrimaryStamina), step: 5.0) {
-                        Text(verbatim: "\(numberToSave)")
-                            .foregroundColor(isNewThresholdValid ? .primary : .red)
-                    }
-                    .onChange(of: game) {
-                        newNumber = min(newNumber, Double(game.maxPrimaryStamina))
-                    }
-                    Button {
-                        if isNewThresholdValid {
-                            withAnimation {
-                                options.staminaAdditionalNotificationThresholds.append(
-                                    NotificationOptions.StaminaThreshold(game: game, threshold: numberToSave)
-                                )
-                            }
-                        } else {
-                            isNumberExistAlertVisible.toggle()
-                        }
-                    } label: {
-                        Text("sys.add".i18nBaseKit)
-                    }
-                } else {
-                    Button {
-                        withAnimation {
-                            isActivated.toggle()
-                        }
-                    } label: {
-                        Text("settings.notification.staminaThresholds.add.title", bundle: .module)
-                    }
-                }
+                valueInsertionControls
             }
             .alert(
                 String(
@@ -299,6 +259,53 @@ private struct StaminaNotificationThresholdConfigView: View {
         }
     }
 
+    @ViewBuilder private var valueInsertionControls: some View {
+        if isActivated {
+            HStack {
+                Text("settings.notification.staminaThresholds.add.title", bundle: .module)
+                Spacer()
+                Text(verbatim: "\(numberToSave)")
+                    .foregroundColor(isNewThresholdValid ? .primary : .red)
+            }
+            .onTapGesture {
+                withAnimation {
+                    isActivated.toggle()
+                }
+            }
+            Slider(value: $newNumber, in: 10.0 ... Double(game.maxPrimaryStamina), step: 5.0) {
+                Text(verbatim: "\(numberToSave)")
+                    .foregroundColor(isNewThresholdValid ? .primary : .red)
+            }
+            .onChange(of: game) {
+                newNumber = min(newNumber, Double(game.maxPrimaryStamina))
+            }
+            Button {
+                if isNewThresholdValid {
+                    withAnimation {
+                        options.staminaAdditionalNotificationThresholds.append(
+                            NotificationOptions.StaminaThreshold(game: game, threshold: numberToSave)
+                        )
+                        isActivated.toggle()
+                    }
+                } else {
+                    withAnimation {
+                        isNumberExistAlertVisible.toggle()
+                    }
+                }
+            } label: {
+                Text("sys.add".i18nBaseKit)
+            }
+        } else {
+            Button {
+                withAnimation {
+                    isActivated.toggle()
+                }
+            } label: {
+                Text("settings.notification.staminaThresholds.add.title", bundle: .module)
+            }
+        }
+    }
+
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             var currentValues = thresholdsForCurrentGame
@@ -378,9 +385,7 @@ private struct NotificationSettingDetailContent: View {
             Toggle(isOn: options.allowDailyTaskNotification.animation()) {
                 Text("settings.notification.dailyTask.toggle", bundle: .module)
             }
-            if let bindingDate = Binding(
-                options.dailyTaskNotificationTime
-            ) {
+            handleBindingDate(options.dailyTaskNotificationTime) { bindingDate in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
                     Text("settings.notification.dailyTask.datePicker", bundle: .module)
                 }
@@ -396,9 +401,7 @@ private struct NotificationSettingDetailContent: View {
             Toggle(isOn: options.allowGIKatheryneNotification.animation()) {
                 Text("settings.notification.katheryneRewards.toggle", bundle: .module)
             }
-            if let bindingDate = Binding(
-                options.giKatheryneNotificationTime
-            ) {
+            handleBindingDate(options.giKatheryneNotificationTime) { bindingDate in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
                     Text("settings.notification.katheryneRewards.datePicker", bundle: .module)
                 }
@@ -436,8 +439,10 @@ private struct NotificationSettingDetailContent: View {
             Toggle(isOn: options.allowGITrounceBlossomNotification.animation()) {
                 Text("settings.notification.giTrounceBlossom.toggle", bundle: .module)
             }
-            if let bindingDate = Binding(options.giTrounceBlossomNotificationTime),
-               let bindingWeekday = Binding(options.giTrounceBlossomNotificationWeekday) {
+            handleBindingDateAndWeekdays(
+                options.giTrounceBlossomNotificationTime,
+                options.giTrounceBlossomNotificationWeekday
+            ) { bindingDate, bindingWeekday in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
                     Text("settings.notification.giTrounceBlossom.datePicker", bundle: .module)
                 }
@@ -460,8 +465,10 @@ private struct NotificationSettingDetailContent: View {
             Toggle(isOn: options.allowHSRSimulUnivNotification.animation()) {
                 Text("settings.notification.hsrSimulatedUniverse.toggle", bundle: .module)
             }
-            if let bindingDate = Binding(options.hsrSimulUnivNotificationTime),
-               let bindingWeekday = Binding(options.hsrSimulUnivNotificationWeekday) {
+            handleBindingDateAndWeekdays(
+                options.hsrSimulUnivNotificationTime,
+                options.hsrSimulUnivNotificationWeekday
+            ) { bindingDate, bindingWeekday in
                 DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
                     Text("settings.notification.hsrSimulatedUniverse.datePicker", bundle: .module)
                 }
@@ -483,4 +490,28 @@ private struct NotificationSettingDetailContent: View {
     // MARK: Internal
 
     @Default(.notificationOptions) var options: NotificationOptions
+
+    // MARK: Private
+
+    @ViewBuilder
+    private func handleBindingDateAndWeekdays<T: View>(
+        _ date: Binding<Date?>, _ weekday: Binding<Weekday?>,
+        @ViewBuilder viewRenderer: (Binding<Date>, Binding<Weekday>) -> T
+    )
+        -> some View {
+        if let bindingDate = Binding(date), let bindingWeekday = Binding(weekday) {
+            viewRenderer(bindingDate, bindingWeekday)
+        }
+    }
+
+    @ViewBuilder
+    private func handleBindingDate<T: View>(
+        _ date: Binding<Date?>,
+        @ViewBuilder viewRenderer: (Binding<Date>) -> T
+    )
+        -> some View {
+        if let bindingDate = Binding(date) {
+            viewRenderer(bindingDate)
+        }
+    }
 }
