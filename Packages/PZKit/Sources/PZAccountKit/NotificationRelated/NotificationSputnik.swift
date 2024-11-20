@@ -120,8 +120,9 @@ extension NotificationSputnik {
                         try await scheduleGIKatheryneRewardsNotification(hour: hour, minute: minute)
                     }
                     // 去除可能重复的通知阈值。
-                    var thresholds = options.staminaAdditionalNotificationThresholds
-                    thresholds = Array(Set(thresholds)).sorted()
+                    var thresholds = options.additionalStaminaNotificationThresholds
+                        .byGame(profile.game).map(\.threshold)
+                    thresholds = Array(Set(thresholds)) // Already sorted while being filtered by game.
                     for number in thresholds {
                         try await scheduleStaminaNotification(to: number)
                     }
