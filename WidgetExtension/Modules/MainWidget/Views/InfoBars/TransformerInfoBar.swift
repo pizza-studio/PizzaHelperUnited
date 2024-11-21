@@ -15,7 +15,7 @@ struct TransformerInfoBar: View {
 
     var isTransformerCompleteImage: some View {
         (transformerInfo.isAvailable)
-            ? Image(systemSymbol: .exclamationmark)
+            ? Image(systemSymbol: .checkmark)
             .overlayImageWithRingProgressBar(
                 transformerInfo.percentage,
                 scaler: 0.78
@@ -35,12 +35,11 @@ struct TransformerInfoBar: View {
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3", bundle: .main))
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                if transformerInfo.isAvailable {
-                    Image(systemSymbol: .checkmarkCircle)
-                        .frame(maxWidth: 16)
-                } else {
-                    let remainingDays = transformerInfo.remainingDays
-                    Group {
+                Group {
+                    if transformerInfo.isAvailable {
+                        Text("pzWidgetsKit.infoBlock.transformerAvailable", bundle: .main)
+                    } else {
+                        let remainingDays = transformerInfo.remainingDays
                         if remainingDays > 0 {
                             Text("pzWidgetsKit.unit.day:\(remainingDays)", bundle: .main)
                         } else {
@@ -53,11 +52,11 @@ struct TransformerInfoBar: View {
                             )
                         }
                     }
-                    .foregroundColor(Color("textColor3", bundle: .main))
-                    .lineLimit(1)
-                    .font(.system(.caption, design: .rounded))
-                    .minimumScaleFactor(0.2)
                 }
+                .foregroundColor(Color("textColor3", bundle: .main))
+                .lineLimit(1)
+                .font(.system(.caption, design: .rounded))
+                .minimumScaleFactor(0.2)
             }
         }
     }
