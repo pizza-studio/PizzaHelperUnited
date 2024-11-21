@@ -34,15 +34,18 @@ struct ExpeditionInfoBar: View {
                     .scaledToFit()
                     .frame(width: 25)
                     .shadow(color: .white, radius: 1)
+                    .widgetLegibilityShadow(isText: false)
                 isExpeditionAllCompleteImage
                     .frame(maxWidth: 13, maxHeight: 13)
                     .foregroundColor(Color("textColor3", bundle: .main))
+                    .widgetLegibilityShadow()
                 let completionIntel = completionIntel
                 Text(verbatim: "\(completionIntel.finished) / \(completionIntel.all)")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
+                    .widgetLegibilityShadow()
             }
         }
     }

@@ -37,6 +37,7 @@ struct EachExpeditionView: View {
                         .lineLimit(1)
                         .font(.footnote)
                         .minimumScaleFactor(0.4)
+                        .widgetLegibilityShadow()
                     let totalSecond = 20.0 * 60.0 * 60.0
                     let percentage = 1.0 - (TimeInterval.sinceNow(to: finishTime) / totalSecond)
                     percentageBar(percentage)
@@ -50,6 +51,7 @@ struct EachExpeditionView: View {
                     .lineLimit(1)
                     .font(.footnote)
                     .minimumScaleFactor(0.4)
+                    .widgetLegibilityShadow()
                     percentageBar(expedition.isFinished ? 1 : 0.5)
                         .environment(\.colorScheme, .light)
                 }
@@ -71,7 +73,7 @@ struct EachExpeditionView: View {
             case .starRail:
                 let leaderAvatar = NetworkImage(url: expedition.iconURL)
                     .scaledToFit()
-                    .background { Color.secondary.opacity(0.5).clipShape(.circle) }
+                    .background(.ultraThinMaterial, in: .circle)
                 if let copilotURL {
                     ZStack {
                         leaderAvatar
@@ -79,8 +81,8 @@ struct EachExpeditionView: View {
                             .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .topLeading)
                         NetworkImage(url: copilotURL)
                             .scaledToFit()
+                            .background(.thinMaterial, in: .circle)
                             .frame(maxWidth: outerSize / 2, maxHeight: outerSize / 2)
-                            .background { Color.secondary.opacity(0.8).clipShape(.circle) }
                             .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .bottomTrailing)
                     }
                     .frame(maxWidth: outerSize, maxHeight: outerSize)
@@ -91,7 +93,7 @@ struct EachExpeditionView: View {
             }
         }
         .frame(maxWidth: outerSize, maxHeight: outerSize)
-        .environment(\.colorScheme, .dark)
+        .environment(\.colorScheme, .light)
     }
 
     @ViewBuilder
@@ -106,6 +108,7 @@ struct EachExpeditionView: View {
                 .frame(width: g.size.width, height: g.size.height)
                 .foregroundStyle(.ultraThinMaterial)
                 .opacity(0.6)
+                .environment(\.colorScheme, .light)
                 RoundedRectangle(
                     cornerRadius: cornerRadius,
                     style: .continuous
