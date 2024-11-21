@@ -52,28 +52,24 @@ struct MaterialWidgetView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: 1) {
-                Text(weekday)
-                    .font(.caption)
-                    .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
-                    .bold()
-                    .shadow(radius: 2)
-                    .widgetLegibilityShadow()
-                HStack(spacing: 6) {
+            HStack {
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(weekday)
+                        .font(.caption)
+                        .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
+                        .bold()
                     Text(dayOfMonth)
                         .font(.system(
                             size: 35,
                             weight: .regular,
                             design: .rounded
                         ))
-                        .shadow(radius: 5)
-                        .widgetLegibilityShadow()
+                }
+                .widgetLegibilityShadow()
+                HStack(spacing: 6) {
                     Spacer()
                     if entry.materialWeekday != nil {
-                        MaterialRow(
-                            materials: weaponMaterials +
-                                talentMaterials
-                        )
+                        MaterialView(alternativeLayout: true)
                     } else {
                         Image(systemSymbol: .checkmarkCircleFill)
                             .resizable()
@@ -199,25 +195,6 @@ private struct EventView: View {
         default:
             return content.EN
         }
-    }
-}
-
-// MARK: - MaterialRow
-
-@available(watchOS, unavailable)
-private struct MaterialRow: View {
-    let materials: [GITodayMaterial]
-
-    var body: some View {
-        HStack(spacing: 0) {
-            ForEach(materials, id: \.nameTag) { material in
-                material.iconObj
-                    .resizable()
-                    .scaledToFit()
-            }
-        }
-        .shadow(radius: 1)
-        .widgetLegibilityShadow(isText: false)
     }
 }
 
