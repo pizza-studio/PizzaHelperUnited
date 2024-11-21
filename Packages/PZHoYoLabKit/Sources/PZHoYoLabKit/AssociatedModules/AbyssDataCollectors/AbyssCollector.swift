@@ -56,7 +56,7 @@ extension AbyssCollector {
         case getResponseError(String)
         case respDecodingError(String)
         case wrongGame
-        case insufficientStars
+        case ungainedStarsDetected
         case avatarMismatch
         case abyssDataNotSupplied
         case inventoryDataNotSupplied
