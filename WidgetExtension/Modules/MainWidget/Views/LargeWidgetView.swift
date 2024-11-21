@@ -27,7 +27,7 @@ struct LargeWidgetView: View {
                     Spacer(minLength: 18)
                     DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
                 }
-                .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 4 }
+                .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in length / 10 * 4 }
                 VStack(alignment: .leading) {
                     ExpeditionsView(
                         expeditions: dailyNote.expeditionTasks
@@ -37,7 +37,7 @@ struct LargeWidgetView: View {
                         MaterialView()
                     }
                 }
-                .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 4 }
+                .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in length / 10 * 4 }
                 Spacer()
                     .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 1 }
             }
