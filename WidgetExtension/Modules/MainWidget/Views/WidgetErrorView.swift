@@ -24,7 +24,7 @@ struct WidgetErrorView: View {
             .padding()
             Text(error.localizedDescription)
                 .bold()
-                .foregroundColor(.gray)
+                .foregroundColor(Color("textColor3", bundle: .main))
                 .widgetLegibilityShadow()
         }
         .padding(20)
