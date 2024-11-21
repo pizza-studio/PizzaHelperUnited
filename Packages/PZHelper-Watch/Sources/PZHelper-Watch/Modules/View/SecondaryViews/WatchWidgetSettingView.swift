@@ -21,7 +21,7 @@ struct WatchWidgetSettingView: View {
         formatter.unitsStyle = .short
         formatter.zeroFormattingBehavior = .dropAll
         return formatter
-            .string(from: allWidgetSyncFrequencyByMinutes * 60.0)!
+            .string(from: allWidgetsSyncFrequencyByMinutes * 60.0)!
     }
 
     var body: some View {
@@ -71,7 +71,7 @@ struct WatchWidgetSettingView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var accounts: [PZProfileMO]
-    @Default(.allWidgetSyncFrequencyByMinutes) private var allWidgetSyncFrequencyByMinutes: Double
+    @Default(.allWidgetsSyncFrequencyByMinutes) private var allWidgetsSyncFrequencyByMinutes: Double
 }
 
 // MARK: - QueryFrequencySettingView
@@ -85,7 +85,7 @@ private struct QueryFrequencySettingView: View {
         formatter.unitsStyle = .short
         formatter.zeroFormattingBehavior = .dropAll
         return formatter
-            .string(from: allWidgetSyncFrequencyByMinutes * 60.0)!
+            .string(from: allWidgetsSyncFrequencyByMinutes * 60.0)!
     }
 
     var body: some View {
@@ -97,11 +97,11 @@ private struct QueryFrequencySettingView: View {
             )
             .font(.title3)
             Slider(
-                value: $allWidgetSyncFrequencyByMinutes,
+                value: $allWidgetsSyncFrequencyByMinutes,
                 in: 30 ... 300,
                 step: 10,
                 label: {
-                    Text(verbatim: "\(allWidgetSyncFrequencyByMinutes)")
+                    Text(verbatim: "\(allWidgetsSyncFrequencyByMinutes)")
                 }
             )
         }
@@ -109,5 +109,5 @@ private struct QueryFrequencySettingView: View {
 
     // MARK: Private
 
-    @Default(.allWidgetSyncFrequencyByMinutes) private var allWidgetSyncFrequencyByMinutes: Double
+    @Default(.allWidgetsSyncFrequencyByMinutes) private var allWidgetsSyncFrequencyByMinutes: Double
 }

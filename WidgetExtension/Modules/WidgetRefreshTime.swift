@@ -6,5 +6,5 @@
 import Foundation
 
 public var widgetRefreshByMinute: Int {
-    Int(Defaults[.allWidgetSyncFrequencyByMinutes].rounded(.down))
+    Int(Defaults[.allWidgetsSyncFrequencyByMinutes].rounded(.down))
 }
