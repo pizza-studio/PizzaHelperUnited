@@ -20,6 +20,8 @@ public struct WidgetNote4GI: Note4GI {
 
             public let isFinished: Bool
             public let iconURL: URL
+
+            public var iconURL4Copilot: URL? { nil }
         }
 
         public let maxExpeditionsCount: Int
