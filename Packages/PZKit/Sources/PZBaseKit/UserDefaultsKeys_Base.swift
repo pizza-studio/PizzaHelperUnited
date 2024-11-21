@@ -64,9 +64,9 @@ extension Defaults.Keys {
 // MARK: - MainWidgetProvider
 
 extension Defaults.Keys {
-    public static let allWidgetSyncFrequencyByMinutes = Key<Double>(
-        "allWidgetSyncFrequencyByMinutes",
-        default: 15,
+    public static let allWidgetsSyncFrequencyByMinutes = Key<Double>(
+        "allWidgetsSyncFrequencyByMinutes",
+        default: 6,
         suite: .baseSuite
     )
 }
