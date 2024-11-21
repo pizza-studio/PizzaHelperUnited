@@ -175,7 +175,7 @@ extension PZAbyssDB.AbyssDataPack {
             abyssData = try await HoYo.abyssReportData4GI(for: profile)
         }
         guard let abyssData else { throw AbyssCollector.ACError.abyssDataNotSupplied }
-        guard abyssData.totalStar == 36 else { throw AbyssCollector.ACError.insufficientStars }
+        guard abyssData.totalStar == 36 else { throw AbyssCollector.ACError.ungainedStarsDetected }
 
         let component = Calendar.current.dateComponents(
             [.year, .month, .day],
@@ -205,11 +205,6 @@ extension PZAbyssDB.AbyssDataPack {
         self.owningChars = travelStats.avatars.map { $0.id }
         self.abyssRank = .init(data: abyssData)
         self.submitDetails = .new(from: abyssData)
-        print(submitDetails.count)
-        guard submitDetails.count == 4 * 3 * 2 else {
-            print("[Failure] SubmitDetails only has \(submitDetails.count) stars.")
-            throw AbyssCollector.ACError.insufficientStars
-        }
         self.battleCount = abyssData.totalBattleTimes
         self.winCount = abyssData.totalWinTimes
     }

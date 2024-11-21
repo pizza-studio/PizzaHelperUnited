@@ -84,7 +84,7 @@ extension SnapHutao.AbyssDataPack {
             abyssData = try await HoYo.abyssReportData4GI(for: profile)
         }
         guard let abyssData else { throw AbyssCollector.ACError.abyssDataNotSupplied }
-        guard abyssData.totalStar == 36 else { throw AbyssCollector.ACError.insufficientStars }
+        guard abyssData.totalStar == 36 else { throw AbyssCollector.ACError.ungainedStarsDetected }
         var inventoryData = inventoryData
         if inventoryData == nil {
             inventoryData = try await HoYo.characterInventory4GI(for: profile)
