@@ -916,6 +916,7 @@
       }
     },
     "aboutKit.contactMethod.163MusicArtistHP" : {
+      "extractionState" : "manual"   ,
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -992,6 +993,7 @@
       }
     },
     "aboutKit.contactMethod.appStore" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1116,6 +1118,7 @@
       }
     },
     "aboutKit.contactMethod.bilibili" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1192,6 +1195,7 @@
       }
     },
     "aboutKit.contactMethod.blueSky" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1268,6 +1272,7 @@
       }
     },
     "aboutKit.contactMethod.discord" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1344,6 +1349,7 @@
       }
     },
     "aboutKit.contactMethod.douyin" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1420,6 +1426,7 @@
       }
     },
     "aboutKit.contactMethod.facebook" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1496,6 +1503,7 @@
       }
     },
     "aboutKit.contactMethod.github" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1572,6 +1580,7 @@
       }
     },
     "aboutKit.contactMethod.homepage" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1648,6 +1657,7 @@
       }
     },
     "aboutKit.contactMethod.officialWebsite" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1724,6 +1734,7 @@
       }
     },
     "aboutKit.contactMethod.qq.channel" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1876,6 +1887,7 @@
       }
     },
     "aboutKit.contactMethod.qq.personal" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1952,6 +1964,7 @@
       }
     },
     "aboutKit.contactMethod.telegram" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2028,6 +2041,7 @@
       }
     },
     "aboutKit.contactMethod.tiktok" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2104,6 +2118,7 @@
       }
     },
     "aboutKit.contactMethod.twitter" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2180,6 +2195,7 @@
       }
     },
     "aboutKit.contactMethod.youtube" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2409,6 +2425,7 @@
       }
     },
     "aboutKit.contributor.subtitleAsAssetCrew.xinzoruo" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2485,6 +2502,7 @@
       }
     },
     "aboutKit.contributor.subtitleAsAssetCrew.yulijushi" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2561,6 +2579,7 @@
       }
     },
     "aboutKit.contributor.subtitleAsMainCrew.hakubill" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2713,6 +2732,7 @@
       }
     },
     "aboutKit.contributor.subtitleAsMainCrew.shikisuen" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {

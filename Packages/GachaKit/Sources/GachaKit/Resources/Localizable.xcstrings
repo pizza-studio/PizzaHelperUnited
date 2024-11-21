@@ -5402,7 +5402,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GachaMetaDB is out of date for handling certain gacha item entries in either the local app gacha entry database or from external sources. This DB contains crucial intel for mapping ItemIDs and their translations, plus telling the rarity type of each gacha item."
+            "value" : "GachaMetaDB is out of date for handling certain gacha item entries in either the local app gacha entry database or from external sources. This DB contains crucial info for mapping ItemIDs and their translations, plus telling the rarity type of each gacha item."
           }
         },
         "es" : {
@@ -6557,7 +6557,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] The version intel of `key` is missing in the authentication key."
+            "value" : "[ParseGachaURLError] The version info of `key` is missing in the authentication key."
           }
         },
         "es" : {
@@ -6634,7 +6634,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] Server intel missing."
+            "value" : "[ParseGachaURLError] Server info is missing."
           }
         },
         "es" : {

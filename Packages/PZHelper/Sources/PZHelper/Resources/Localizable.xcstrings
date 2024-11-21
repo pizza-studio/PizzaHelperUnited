@@ -5621,6 +5621,7 @@
       }
     },
     "profileMgr.login.manual.2" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -8017,7 +8018,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The TimeZone settings in this section is for displaying at least the following intelligence (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc."
+            "value" : "The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc."
           }
         },
         "es" : {
@@ -8094,7 +8095,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TimeZone for displaying GI universal intelligence"
+            "value" : "TimeZone for displaying GI universal information"
           }
         },
         "es" : {
@@ -8854,7 +8855,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note intel for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note intel, in cases where the relevant preferences permit it."
+            "value" : "This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note data for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note data, in cases where the relevant preferences permit it."
           }
         },
         "es" : {

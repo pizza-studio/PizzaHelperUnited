@@ -3529,7 +3529,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Automatically display your most-wanted intels"
+            "value" : "Automatically display your most-wanted information"
           }
         },
         "es" : {
@@ -3837,7 +3837,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "General Intels"
+            "value" : "General Information"
           }
         },
         "es" : {
@@ -3914,7 +3914,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All intels, in one view, just one glance"
+            "value" : "All info, in one view, just one glance"
           }
         },
         "es" : {
