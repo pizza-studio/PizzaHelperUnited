@@ -310,37 +310,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Laufende Ereignisse (GI)"
+            "value" : "Laufende Ereignisse (Genshin)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ongoing Events (GI)"
+            "value" : "Ongoing Events (Genshin)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eventos en curso (GI)"
+            "value" : "Eventos en curso (Genshin)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mga Nagaganap na Kaganapan (GI)"
+            "value" : "Mga Nagaganap na Kaganapan (Genshin)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Événements en cours (GI)"
+            "value" : "Événements en cours (Genshin)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eventi in corso (GI)"
+            "value" : "Eventi in corso (Genshin)"
           }
         },
         "ja" : {
@@ -352,19 +352,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "진행 중인 이벤트 (GI)"
+            "value" : "진행 중인 이벤트 (원신)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Текущие события (GI)"
+            "value" : "Текущие события (Genshin)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sự kiện đang diễn ra (GI)"
+            "value" : "Sự kiện đang diễn ra (Genshin)"
           }
         },
         "zh-Hans" : {
