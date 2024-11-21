@@ -7,6 +7,16 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 struct MaterialView: View {
+    // MARK: Lifecycle
+
+    init(alternativeLayout: Bool = false, today: MaterialWeekday? = nil) {
+        self.alternativeLayout = alternativeLayout
+        self.today = today ?? .today()
+    }
+
+    // MARK: Internal
+
+    let alternativeLayout: Bool
     var today: MaterialWeekday? = .today()
 
     var talentMaterialProvider: TalentMaterialProvider { .init(weekday: today) }
@@ -14,29 +24,60 @@ struct MaterialView: View {
 
     var body: some View {
         if today != nil {
-            VStack {
-                HStack(spacing: -5) {
-                    ForEach(
-                        weaponMaterialProvider.todaysMaterials,
-                        id: \.nameTag
-                    ) { material in
-                        material.iconObj
-                            .resizable()
-                            .scaledToFit()
+            if alternativeLayout {
+                GeometryReader { g in
+                    ZStack {
+                        HStack(spacing: g.size.height * 0.3) {
+                            ForEach(
+                                weaponMaterialProvider.todaysMaterials,
+                                id: \.nameTag
+                            ) { material in
+                                material.iconObj
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                        }
+                        .padding([.trailing, .bottom], g.size.height * 0.2)
+                        HStack(spacing: g.size.height * 0.3) {
+                            ForEach(
+                                talentMaterialProvider.todaysMaterials,
+                                id: \.nameTag
+                            ) { material in
+                                material.iconObj
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                        }
+                        .padding([.top], g.size.height * 0.2)
+                        .padding([.leading], g.size.height * 0.7)
+                    }
+                    .widgetLegibilityShadow(isText: false)
+                }
+            } else {
+                VStack {
+                    HStack(spacing: -5) {
+                        ForEach(
+                            weaponMaterialProvider.todaysMaterials,
+                            id: \.nameTag
+                        ) { material in
+                            material.iconObj
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    HStack(spacing: -5) {
+                        ForEach(
+                            talentMaterialProvider.todaysMaterials,
+                            id: \.nameTag
+                        ) { material in
+                            material.iconObj
+                                .resizable()
+                                .scaledToFit()
+                        }
                     }
                 }
-                HStack(spacing: -5) {
-                    ForEach(
-                        talentMaterialProvider.todaysMaterials,
-                        id: \.nameTag
-                    ) { material in
-                        material.iconObj
-                            .resizable()
-                            .scaledToFit()
-                    }
-                }
+                .widgetLegibilityShadow(isText: false)
             }
-            .widgetLegibilityShadow(isText: false)
         } else {
             Text("pzWidgetsKit.material.sunday", bundle: .main)
                 .foregroundColor(Color("textColor3", bundle: .main))
