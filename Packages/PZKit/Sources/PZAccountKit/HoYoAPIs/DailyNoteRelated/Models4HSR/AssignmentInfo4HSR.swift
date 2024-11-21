@@ -60,6 +60,11 @@ public struct AssignmentInfo4HSR: Sendable {
         /// Conforming to `Expedition` protocol.
         public var iconURL: URL { avatarIconURLs.first! }
 
+        /// Conforming to `Expedition` protocol.
+        public var iconURL4Copilot: URL? {
+            avatarIconURLs.count == 2 ? avatarIconURLs.last : nil
+        }
+
         // MARK: Private
 
         // MARK: CodingKeys
