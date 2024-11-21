@@ -30,7 +30,7 @@ struct EachExpeditionView: View {
 
     var body: some View {
         HStack {
-            webView(url: expedition.iconURL)
+            webView(url: expedition.iconURL, copilotURL: expedition.iconURL4Copilot)
             VStack(alignment: .leading) {
                 if !expedition.isFinished, let finishTime = expedition.timeOnFinish {
                     Text(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: finishTime))!)
@@ -59,7 +59,8 @@ struct EachExpeditionView: View {
     }
 
     @ViewBuilder
-    func webView(url: URL) -> some View {
+    func webView(url: URL, copilotURL: URL?) -> some View {
+        let outerSize: CGFloat = 50
         GeometryReader { g in
             switch expedition.game {
             case .genshinImpact:
@@ -68,12 +69,29 @@ struct EachExpeditionView: View {
                     .scaledToFit()
                     .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
             case .starRail:
-                NetworkImage(url: expedition.iconURL)
+                let leaderAvatar = NetworkImage(url: expedition.iconURL)
                     .scaledToFit()
+                    .background { Color.secondary.opacity(0.5).clipShape(.circle) }
+                if let copilotURL {
+                    ZStack {
+                        leaderAvatar
+                            .frame(maxWidth: outerSize * 0.7, maxHeight: outerSize * 0.7)
+                            .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .topLeading)
+                        NetworkImage(url: copilotURL)
+                            .scaledToFit()
+                            .frame(maxWidth: outerSize / 2, maxHeight: outerSize / 2)
+                            .background { Color.secondary.opacity(0.8).clipShape(.circle) }
+                            .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .bottomTrailing)
+                    }
+                    .frame(maxWidth: outerSize, maxHeight: outerSize)
+                } else {
+                    leaderAvatar
+                }
             default: EmptyView()
             }
         }
-        .frame(maxWidth: 50, maxHeight: 50)
+        .frame(maxWidth: outerSize, maxHeight: outerSize)
+        .environment(\.colorScheme, .dark)
     }
 
     @ViewBuilder
