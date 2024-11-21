@@ -26,14 +26,14 @@ struct MainInfoWithDetail: View {
                 viewConfig: viewConfig,
                 accountName: accountName
             )
-            .containerRelativeFrame(.horizontal) { length, _ in length / 9 * 4 }
+            .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in length / 9 * 4 }
             Spacer() // Middle Vertical Spacer.
             DetailInfo(
                 entry: entry,
                 dailyNote: dailyNote,
                 viewConfig: viewConfig
             )
-            .containerRelativeFrame(.horizontal) { length, _ in length / 9 * 4 }
+            .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in length / 9 * 4 }
             Spacer()
         }
         .padding()
