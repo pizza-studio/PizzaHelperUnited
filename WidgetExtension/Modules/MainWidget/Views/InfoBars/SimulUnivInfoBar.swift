@@ -26,20 +26,19 @@ struct SimulUnivInfoBar: View {
                     .scaledToFit()
                     .frame(width: 25)
                     .shadow(color: .white, radius: 1)
+                    .widgetLegibilityShadow(isText: false)
                 Image(systemSymbol: isFinished ? .checkmark : .ellipsis)
-                    .overlayImageWithRingProgressBar(
-                        1,
-                        scaler: 1,
-                        offset: (0.3, 0)
-                    )
+                    .overlayImageWithRingProgressBar(1, scaler: 1, offset: (0.3, 0))
                     .frame(maxWidth: 13, maxHeight: 13)
                     .foregroundColor(Color("textColor3", bundle: .main))
+                    .widgetLegibilityShadow()
                 let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
                 Text(verbatim: "\(ratio)%")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
+                    .widgetLegibilityShadow()
             }
         default:
             EmptyView()

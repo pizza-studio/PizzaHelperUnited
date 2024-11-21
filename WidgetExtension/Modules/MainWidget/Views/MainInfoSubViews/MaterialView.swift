@@ -36,12 +36,14 @@ struct MaterialView: View {
                     }
                 }
             }
+            .widgetLegibilityShadow(isText: false)
         } else {
             Text("pzWidgetsKit.material.sunday", bundle: .main)
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .font(.caption)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
+                .widgetLegibilityShadow()
         }
     }
 }

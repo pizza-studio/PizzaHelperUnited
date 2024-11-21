@@ -58,6 +58,7 @@ struct MaterialWidgetView: View {
                     .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
                     .bold()
                     .shadow(radius: 2)
+                    .widgetLegibilityShadow()
                 HStack(spacing: 6) {
                     Text(dayOfMonth)
                         .font(.system(
@@ -66,6 +67,7 @@ struct MaterialWidgetView: View {
                             design: .rounded
                         ))
                         .shadow(radius: 5)
+                        .widgetLegibilityShadow()
                     Spacer()
                     if entry.materialWeekday != nil {
                         MaterialRow(
@@ -77,6 +79,7 @@ struct MaterialWidgetView: View {
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
+                            .widgetLegibilityShadow(isText: false)
                     }
                 }
                 .frame(height: 35)
@@ -86,6 +89,7 @@ struct MaterialWidgetView: View {
             .padding(.bottom, 12)
             if let events = entry.events, !events.isEmpty {
                 EventView(events: events)
+                    .widgetLegibilityShadow()
             }
             Spacer()
         }
@@ -213,6 +217,7 @@ private struct MaterialRow: View {
             }
         }
         .shadow(radius: 1)
+        .widgetLegibilityShadow(isText: false)
     }
 }
 
