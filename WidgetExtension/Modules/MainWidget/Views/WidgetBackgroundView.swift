@@ -49,7 +49,7 @@ struct WidgetBackgroundView: View {
                         backgroundImage
                             .resizable()
                             .scaledToFill()
-                            .offset(x: isGenshinImpact ? -g.size.width : 0)
+                            .offset(x: isGenshinImpact ? -g.size.width : g.size.width * -0.5)
                     }
                     .onAppear {
                         NSLog(
@@ -68,9 +68,10 @@ struct WidgetBackgroundView: View {
                         }
                 }
             }
+
+            Color.black.opacity(shouldEnforceDark ? 0.25 : 0.15) // 调整白点强度
+                .blendMode(.multiply) // 很重要。
         }
-        .brightness(shouldEnforceDark ? -0.15 : 0)
-        .saturation(shouldEnforceDark ? 0.85 : 1)
         .scaleEffect(1.01) // HSR 的名片有光边。
     }
 
