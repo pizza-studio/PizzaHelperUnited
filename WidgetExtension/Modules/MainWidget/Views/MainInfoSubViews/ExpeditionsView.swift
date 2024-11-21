@@ -41,7 +41,6 @@ struct EachExpeditionView: View {
                     let totalSecond = 20.0 * 60.0 * 60.0
                     let percentage = 1.0 - (TimeInterval.sinceNow(to: finishTime) / totalSecond)
                     percentageBar(percentage)
-                        .environment(\.colorScheme, .light)
                 } else {
                     Text(
                         expedition.isFinished
@@ -53,7 +52,6 @@ struct EachExpeditionView: View {
                     .minimumScaleFactor(0.4)
                     .widgetLegibilityShadow()
                     percentageBar(expedition.isFinished ? 1 : 0.5)
-                        .environment(\.colorScheme, .light)
                 }
             }
         }
@@ -106,7 +104,9 @@ struct EachExpeditionView: View {
                     style: .continuous
                 )
                 .frame(width: g.size.width, height: g.size.height)
-                .foregroundStyle(.ultraThinMaterial)
+                .foregroundStyle(.regularMaterial)
+                .brightness(-0.3)
+                .environment(\.colorScheme, .light)
                 .opacity(0.6)
                 .environment(\.colorScheme, .light)
                 RoundedRectangle(
@@ -117,10 +117,10 @@ struct EachExpeditionView: View {
                     width: g.size.width * percentage,
                     height: g.size.height
                 )
-                .foregroundStyle(.thickMaterial)
+                .foregroundStyle(.white)
             }
             .aspectRatio(30 / 1, contentMode: .fit)
-//                .preferredColorScheme(.light)
+            .compositingGroup()
         }
         .frame(height: 7)
     }
