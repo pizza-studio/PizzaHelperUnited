@@ -30,6 +30,7 @@ public struct GeneralNote4GI: Note4GI {
             public let iconURL: URL
 
             public var isFinished: Bool { finishTime <= Date() }
+            public var iconURL4Copilot: URL? { nil }
         }
 
         public let maxExpeditionsCount: Int
