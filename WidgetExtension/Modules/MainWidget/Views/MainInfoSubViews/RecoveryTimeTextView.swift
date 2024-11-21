@@ -26,6 +26,7 @@ struct RecoveryTimeText: View {
         .font(.caption)
         .minimumScaleFactor(0.2)
         .foregroundColor(Color("textColor3", bundle: .main))
+        .widgetLegibilityShadow()
     }
 
     @MainActor

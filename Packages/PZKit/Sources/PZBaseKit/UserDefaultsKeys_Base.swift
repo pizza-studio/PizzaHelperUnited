@@ -69,6 +69,12 @@ extension Defaults.Keys {
         default: 6,
         suite: .baseSuite
     )
+
+    public static let widgetContentLegibilityShadowOpacity = Key<Double>(
+        "widgetContentLegibilityShadowOpacity",
+        default: 0.7,
+        suite: .baseSuite
+    )
 }
 
 // MARK: - ResinRecoveryActivityController
