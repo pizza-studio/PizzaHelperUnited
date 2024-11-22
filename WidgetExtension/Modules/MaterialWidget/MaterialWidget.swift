@@ -35,9 +35,6 @@ struct MaterialWidget: Widget {
 struct MaterialWidgetView: View {
     let entry: MaterialWidgetEntry
 
-    var weaponMaterials: [GITodayMaterial] { entry.weaponMaterials }
-    var talentMaterials: [GITodayMaterial] { entry.talentMateirals }
-
     var weekday: String {
         let formatter = DateFormatter.Gregorian()
         formatter.dateFormat = "EEE"
@@ -52,7 +49,7 @@ struct MaterialWidgetView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack {
+            HStack(alignment: .bottom) {
                 VStack(alignment: .leading, spacing: 1) {
                     Text(weekday)
                         .font(.caption)
@@ -65,19 +62,16 @@ struct MaterialWidgetView: View {
                             design: .rounded
                         ))
                 }
-                .widgetLegibilityShadow()
-                HStack(spacing: 6) {
-                    Spacer()
+                .legibilityShadow()
+                ZStack(alignment: .trailing) {
                     if entry.materialWeekday != nil {
                         MaterialView(alternativeLayout: true)
-                            .padding(.leading)
-                            .padding(.leading) // This duplication is intended.
                     } else {
                         Image(systemSymbol: .checkmarkCircleFill)
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
-                            .widgetLegibilityShadow(isText: false)
+                            .legibilityShadow(isText: false)
                     }
                 }
                 .frame(height: 35)
@@ -87,7 +81,7 @@ struct MaterialWidgetView: View {
             .padding(.bottom, 12)
             if let events = entry.events, !events.isEmpty {
                 EventView(events: events)
-                    .widgetLegibilityShadow()
+                    .legibilityShadow()
             }
             Spacer()
         }

@@ -19,72 +19,17 @@ struct MaterialView: View {
     let alternativeLayout: Bool
     var today: MaterialWeekday? = .today()
 
-    var talentMaterialProvider: TalentMaterialProvider { .init(weekday: today) }
-    var weaponMaterialProvider: WeaponMaterialProvider { .init(weekday: today) }
-
     var body: some View {
-        if today != nil {
-            if alternativeLayout {
-                GeometryReader { g in
-                    ZStack {
-                        HStack(spacing: g.size.height * 0.3) {
-                            ForEach(
-                                weaponMaterialProvider.todaysMaterials,
-                                id: \.nameTag
-                            ) { material in
-                                material.iconObj
-                                    .resizable()
-                                    .scaledToFit()
-                            }
-                        }
-                        .padding([.trailing, .bottom], g.size.height * 0.2)
-                        HStack(spacing: g.size.height * 0.3) {
-                            ForEach(
-                                talentMaterialProvider.todaysMaterials,
-                                id: \.nameTag
-                            ) { material in
-                                material.iconObj
-                                    .resizable()
-                                    .scaledToFit()
-                            }
-                        }
-                        .padding([.top], g.size.height * 0.2)
-                        .padding([.leading], g.size.height * 0.7)
-                    }
-                    .widgetLegibilityShadow(isText: false)
-                }
-            } else {
-                VStack {
-                    HStack(spacing: -5) {
-                        ForEach(
-                            weaponMaterialProvider.todaysMaterials,
-                            id: \.nameTag
-                        ) { material in
-                            material.iconObj
-                                .resizable()
-                                .scaledToFit()
-                        }
-                    }
-                    HStack(spacing: -5) {
-                        ForEach(
-                            talentMaterialProvider.todaysMaterials,
-                            id: \.nameTag
-                        ) { material in
-                            material.iconObj
-                                .resizable()
-                                .scaledToFit()
-                        }
-                    }
-                }
-                .widgetLegibilityShadow(isText: false)
-            }
-        } else {
+        GITodayMaterialsView4Widgets(
+            alternativeLayout: alternativeLayout,
+            today: today
+        ) {
             Text("pzWidgetsKit.material.sunday", bundle: .main)
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .font(.caption)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
-                .widgetLegibilityShadow()
+                .legibilityShadow()
         }
     }
 }

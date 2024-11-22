@@ -55,7 +55,7 @@ struct LargeWidgetView: View {
                 }
                 .font(.footnote)
                 .foregroundColor(Color("textColor3", bundle: .main))
-                .widgetLegibilityShadow()
+                .legibilityShadow()
             }
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 let staminaIconName = switch dailyNote.game {
@@ -68,7 +68,7 @@ struct LargeWidgetView: View {
                     .fontWeight(.medium)
                     .minimumScaleFactor(0.1)
                     .foregroundColor(Color("textColor3", bundle: .main))
-                    .widgetLegibilityShadow()
+                    .legibilityShadow()
                 AccountKit.imageAsset(staminaIconName)
                     .resizable()
                     .scaledToFit()
@@ -76,7 +76,7 @@ struct LargeWidgetView: View {
                     .alignmentGuide(.firstTextBaseline) { context in
                         context[.bottom] - 0.17 * context.height
                     }
-                    .widgetLegibilityShadow(isText: false)
+                    .legibilityShadow(isText: false)
             }
             HStack {
                 Button(intent: WidgetRefreshIntent()) {
@@ -84,7 +84,7 @@ struct LargeWidgetView: View {
                         .font(.title3)
                         .foregroundColor(Color("textColor3", bundle: .main))
                         .clipShape(.circle)
-                        .widgetLegibilityShadow()
+                        .legibilityShadow()
                 }
                 .buttonStyle(.plain)
                 RecoveryTimeText(entry: entry, data: dailyNote)

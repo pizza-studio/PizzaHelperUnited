@@ -23,10 +23,9 @@ struct MaterialWidgetEntry: TimelineEntry {
     init(events: [EventModel]?) {
         self.date = Date()
         self.materialWeekday = .today()
-        self.talentMateirals = TalentMaterialProvider(weekday: materialWeekday)
-            .todaysMaterials
-        self.weaponMaterials = WeaponMaterialProvider(weekday: materialWeekday)
-            .todaysMaterials
+        let supplier = GITodayMaterial.Supplier(weekday: materialWeekday)
+        self.talentMaterials = supplier.talentMaterials
+        self.weaponMaterials = supplier.weaponMaterials
         self.events = events
     }
 
@@ -34,35 +33,9 @@ struct MaterialWidgetEntry: TimelineEntry {
 
     let date: Date
     let materialWeekday: MaterialWeekday?
-    let talentMateirals: [GITodayMaterial]
+    let talentMaterials: [GITodayMaterial]
     let weaponMaterials: [GITodayMaterial]
     let events: [EventModel]?
-}
-
-// MARK: - WeaponMaterialProvider
-
-@available(watchOS, unavailable)
-struct WeaponMaterialProvider {
-    var weekday: MaterialWeekday? = .today()
-
-    var todaysMaterials: [GITodayMaterial] {
-        GITodayMaterial.bundledData.filter {
-            $0.availableWeekDay == weekday && $0.isWeapon
-        }
-    }
-}
-
-// MARK: - TalentMaterialProvider
-
-@available(watchOS, unavailable)
-struct TalentMaterialProvider {
-    var weekday: MaterialWeekday? = .today()
-
-    var todaysMaterials: [GITodayMaterial] {
-        GITodayMaterial.bundledData.filter {
-            $0.availableWeekDay == weekday && !$0.isWeapon
-        }
-    }
 }
 
 // MARK: - MaterialWidgetProvider

@@ -23,6 +23,32 @@ extension GITodayMaterial {
             return []
         }
     }()
+
+    // MARK: - TodayMaterialsSupplier
+
+    public struct Supplier {
+        // MARK: Lifecycle
+
+        public init(weekday: GITodayMaterial.AvailableWeekDay? = nil) {
+            self.weekday = weekday
+        }
+
+        // MARK: Public
+
+        public var weekday: GITodayMaterial.AvailableWeekDay? = .today()
+
+        public var weaponMaterials: [GITodayMaterial] {
+            GITodayMaterial.bundledData.filter {
+                $0.availableWeekDay == weekday && $0.isWeapon
+            }
+        }
+
+        public var talentMaterials: [GITodayMaterial] {
+            GITodayMaterial.bundledData.filter {
+                $0.availableWeekDay == weekday && !$0.isWeapon
+            }
+        }
+    }
 }
 
 extension String {

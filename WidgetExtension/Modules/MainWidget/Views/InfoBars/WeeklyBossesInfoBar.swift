@@ -26,11 +26,11 @@ struct WeeklyBossesInfoBar: View {
                 .scaledToFit()
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
-                .widgetLegibilityShadow(isText: false)
+                .legibilityShadow(isText: false)
             isWeeklyBossesFinishedImage
                 .frame(width: 13, height: 13)
                 .foregroundColor(Color("textColor3", bundle: .main))
-                .widgetLegibilityShadow()
+                .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
                     .lineLimit(1)
@@ -43,7 +43,7 @@ struct WeeklyBossesInfoBar: View {
                     .font(.system(.footnote, design: .rounded))
                     .minimumScaleFactor(0.2)
             }
-            .widgetLegibilityShadow(isText: false)
+            .legibilityShadow(isText: false)
         }
     }
 }
