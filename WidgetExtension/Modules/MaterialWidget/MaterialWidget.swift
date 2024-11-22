@@ -63,6 +63,7 @@ struct MaterialWidgetView: View {
                         ))
                 }
                 .legibilityShadow()
+                Spacer()
                 ZStack(alignment: .trailing) {
                     if entry.materialWeekday != nil {
                         MaterialView(alternativeLayout: true)
