@@ -88,7 +88,7 @@ extension EnkaDBProtocol {
             QueriedProfile.locallyCachedData[uid] = newMerged
             return newMerged
         } catch {
-            let msg = "\(error)"
+            let msg = error.localizedDescription + "\n-------\n// \(error)"
             print(msg)
             switch error {
             case Enka.EKError.queryFailure: throw error
