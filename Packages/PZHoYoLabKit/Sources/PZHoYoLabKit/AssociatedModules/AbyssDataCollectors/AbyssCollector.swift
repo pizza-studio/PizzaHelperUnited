@@ -222,7 +222,13 @@ extension AbyssCollector {
                 if ["uid existed", "Insert Failed"].contains(decoded.message) {
                     saveMD5()
                 }
-                throw ACError.getResponseError("Final Server Response is not 0. MSG: \(decoded.message ?? "")")
+                let errorMSG = """
+                [PizzaAbyssDB Upload Error] Final Server Response is not 0. MSG: \(
+                    decoded.message ?? ""
+                ); UID: \(profile.uidWithGame);
+                """
+                NSLog(errorMSG)
+                throw ACError.getResponseError(errorMSG)
             }
         } catch {
             if error is DecodingError {
