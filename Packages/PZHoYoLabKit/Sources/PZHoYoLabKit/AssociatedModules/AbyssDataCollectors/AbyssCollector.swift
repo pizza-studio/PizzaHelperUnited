@@ -23,10 +23,10 @@ extension AbyssCollector {
         public let message: String?
     }
 
-    public enum CommissionType: CaseIterable, Sendable {
+    public enum CommissionType: String, CaseIterable, Sendable {
+        case hutaoDB
         case pzAvatarHolding
         case pzAbyssDB
-        case hutaoDB
 
         // MARK: Internal
 
@@ -223,7 +223,7 @@ extension AbyssCollector {
                     saveMD5()
                 }
                 let errorMSG = """
-                [PizzaAbyssDB Upload Error] Final Server Response is not 0. MSG: \(
+                [Upload Error || \(dataPackType)] Final Server Response is not 0. MSG: \(
                     decoded.message ?? ""
                 ); UID: \(profile.uidWithGame);
                 """
