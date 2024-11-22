@@ -5379,13 +5379,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择你的 UID"
+            "value" : "选择您的 UID"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選擇你的 UID"
+            "value" : "選擇您的 UID"
           }
         }
       }
@@ -5686,13 +5686,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手动配置你的本地账号"
+            "value" : "手动配置您的本地账号"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手動設定你的本機帳號"
+            "value" : "手動設定您的本機帳號"
           }
         }
       }
@@ -6302,13 +6302,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手动将本地账户同步至小组件"
+            "value" : "手动将本地账号同步至小组件"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手動將本機帳戶同步至小工具"
+            "value" : "手動將本機帳號同步至小工具"
           }
         }
       }
