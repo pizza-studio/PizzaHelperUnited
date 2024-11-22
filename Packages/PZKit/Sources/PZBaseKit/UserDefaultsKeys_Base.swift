@@ -70,8 +70,8 @@ extension Defaults.Keys {
         suite: .baseSuite
     )
 
-    public static let widgetContentLegibilityShadowOpacity = Key<Double>(
-        "widgetContentLegibilityShadowOpacity",
+    public static let contentLegibilityShadowOpacity = Key<Double>(
+        "contentLegibilityShadowOpacity",
         default: 0.7,
         suite: .baseSuite
     )

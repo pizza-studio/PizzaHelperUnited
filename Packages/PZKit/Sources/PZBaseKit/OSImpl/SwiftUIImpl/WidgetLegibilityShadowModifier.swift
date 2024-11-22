@@ -5,14 +5,14 @@
 @preconcurrency import Defaults
 import SwiftUI
 
-// MARK: - WidgetLegibilityShadowModifier
+// MARK: - LegibilityShadowModifier
 
-private struct WidgetLegibilityShadowModifier: ViewModifier {
+private struct LegibilityShadowModifier: ViewModifier {
     let isText: Bool
-    @Default(.widgetContentLegibilityShadowOpacity) var widgetContentLegibilityShadowOpacity: Double
+    @Default(.contentLegibilityShadowOpacity) var contentLegibilityShadowOpacity: Double
 
     var opacity: CGFloat {
-        widgetContentLegibilityShadowOpacity * (isText ? 1 : 0.7)
+        contentLegibilityShadowOpacity * (isText ? 1 : 0.7)
     }
 
     func body(content: Content) -> some View {
@@ -27,7 +27,7 @@ private struct WidgetLegibilityShadowModifier: ViewModifier {
 }
 
 extension View {
-    func widgetLegibilityShadow(isText: Bool = true) -> some View {
-        modifier(WidgetLegibilityShadowModifier(isText: isText))
+    public func legibilityShadow(isText: Bool = true) -> some View {
+        modifier(LegibilityShadowModifier(isText: isText))
     }
 }

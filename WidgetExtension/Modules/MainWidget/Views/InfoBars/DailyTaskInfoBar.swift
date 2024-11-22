@@ -40,11 +40,11 @@ struct DailyTaskInfoBar: View {
                 .scaledToFit()
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
-                .widgetLegibilityShadow(isText: false)
+                .legibilityShadow(isText: false)
             isTaskRewardReceivedImage
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3", bundle: .main))
-                .widgetLegibilityShadow()
+                .legibilityShadow()
 
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Group {
@@ -62,7 +62,7 @@ struct DailyTaskInfoBar: View {
                 .font(.system(.caption, design: .rounded))
                 .minimumScaleFactor(0.2)
             }
-            .widgetLegibilityShadow()
+            .legibilityShadow()
         }
     }
 }

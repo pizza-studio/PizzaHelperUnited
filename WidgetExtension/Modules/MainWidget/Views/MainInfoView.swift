@@ -66,7 +66,7 @@ struct MainInfo: View {
                         .clipShape(.circle)
                 }
                 .buttonStyle(.plain)
-                .widgetLegibilityShadow()
+                .legibilityShadow()
                 RecoveryTimeText(entry: entry, data: dailyNote)
             }
         }
