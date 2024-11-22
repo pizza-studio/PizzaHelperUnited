@@ -29,6 +29,7 @@ struct MainInfo: View {
                         .allowsTightening(true)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
+                        .legibilityShadow()
                 }
                 .font(.footnote)
                 .foregroundColor(Color("textColor3", bundle: .main))
@@ -42,7 +43,7 @@ struct MainInfo: View {
                     .fontWeight(.medium)
                     .minimumScaleFactor(0.1)
                     .foregroundColor(Color("textColor3", bundle: .main))
-                    .shadow(radius: 1)
+                    .legibilityShadow()
                 let staminaIconName = switch dailyNote.game {
                 case .genshinImpact: "gi_note_resin"
                 case .starRail: "hsr_note_trailblazePower"
@@ -55,8 +56,9 @@ struct MainInfo: View {
                     .alignmentGuide(.firstTextBaseline) { context in
                         context[.bottom] - 0.17 * context.height
                     }
-                    .shadow(radius: 0.8)
+                    .legibilityShadow(isText: false)
             }
+            .legibilityShadow()
             Spacer()
             HStack {
                 Button(intent: WidgetRefreshIntent()) {
