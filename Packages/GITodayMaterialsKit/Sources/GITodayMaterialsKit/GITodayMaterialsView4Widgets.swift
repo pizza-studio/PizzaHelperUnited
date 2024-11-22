@@ -49,41 +49,60 @@ public struct GITodayMaterialsView4Widgets<T: View>: View {
             }
             .legibilityShadow(isText: false)
         } else {
-            GeometryReader { g in
-                ZStack {
-                    HStack(spacing: g.size.height * 0.3) {
-                        ForEach(
-                            supplier.weaponMaterials,
-                            id: \.nameTag
-                        ) { material in
-                            material.iconObj
-                                .resizable()
-                                .scaledToFit()
-                        }
+            ZStack(alignment: .trailing) {
+                HStack(spacing: containerSize.height * 0.3) {
+                    ForEach(
+                        supplier.weaponMaterials,
+                        id: \.nameTag
+                    ) { material in
+                        material.iconObj
+                            .resizable()
+                            .scaledToFit()
                     }
-                    .padding([.trailing, .bottom], g.size.height * 0.2)
-                    HStack(spacing: g.size.height * 0.3) {
-                        ForEach(
-                            supplier.talentMaterials,
-                            id: \.nameTag
-                        ) { material in
-                            material.iconObj
-                                .resizable()
-                                .scaledToFit()
-                        }
-                    }
-                    .padding([.top], g.size.height * 0.2)
-                    .padding([.leading], g.size.height * 0.7)
                 }
                 .legibilityShadow(isText: false)
+                .brightness(-0.2)
+                .padding([.bottom], containerSize.height * 0.2)
+                .padding([.trailing], containerSize.height * 0.4)
+                HStack(spacing: containerSize.height * 0.3) {
+                    ForEach(
+                        supplier.talentMaterials,
+                        id: \.nameTag
+                    ) { material in
+                        material.iconObj
+                            .resizable()
+                            .scaledToFit()
+                    }
+                }
+                .legibilityShadow()
+                .padding([.top], containerSize.height * 0.2)
+                .padding([.leading], containerSize.height * 0.4)
+            }
+            .overlay {
+                GeometryReader { proxy in
+                    Color.clear.onAppear {
+                        containerSize = proxy.size
+                    }
+                }
             }
         }
     }
 
     // MARK: Private
 
+    @State private var containerSize: CGSize = .init(width: 250, height: 40)
     private let alternativeLayout: Bool
     private let today: GITodayMaterial.AvailableWeekDay?
     private let promptOnSunday: () -> T
     private let supplier: GITodayMaterial.Supplier
 }
+
+//
+// #Preview {
+//  HStack {
+//    Spacer()
+//    GITodayMaterialsView4Widgets(alternativeLayout: true, today: .TueFri)
+//      .frame(height: 35)
+//    Spacer()
+//  }.frame(width: 420, height: 200)
+// }
