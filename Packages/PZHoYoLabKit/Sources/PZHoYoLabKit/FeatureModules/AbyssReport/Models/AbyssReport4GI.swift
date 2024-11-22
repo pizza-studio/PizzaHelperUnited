@@ -4,6 +4,8 @@
 
 import PZAccountKit
 
+// MARK: - HoYo.AbyssReport4GI
+
 extension HoYo {
     public struct AbyssReport4GI: AbyssReport {
         // MARK: Public
@@ -179,5 +181,16 @@ extension HoYo {
             case revealRank = "reveal_rank"
             case totalStar = "total_star"
         }
+    }
+}
+
+extension HoYo.AbyssReport4GI {
+    public var hasSufficientStarsForUpload: Bool {
+        var finalFloorIndex = 0
+        for floor in floors where floor.index >= 9 {
+            guard floor.star == floor.maxStar else { return false }
+            finalFloorIndex = Swift.max(floor.index, finalFloorIndex)
+        }
+        return finalFloorIndex >= 12
     }
 }
