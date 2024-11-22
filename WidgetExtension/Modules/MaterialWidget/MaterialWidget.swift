@@ -70,6 +70,8 @@ struct MaterialWidgetView: View {
                     Spacer()
                     if entry.materialWeekday != nil {
                         MaterialView(alternativeLayout: true)
+                            .padding(.leading)
+                            .padding(.leading) // This duplication is intended.
                     } else {
                         Image(systemSymbol: .checkmarkCircleFill)
                             .resizable()
