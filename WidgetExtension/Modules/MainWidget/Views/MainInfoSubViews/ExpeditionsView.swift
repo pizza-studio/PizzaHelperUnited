@@ -37,7 +37,7 @@ struct EachExpeditionView: View {
                         .lineLimit(1)
                         .font(.footnote)
                         .minimumScaleFactor(0.4)
-                        .widgetLegibilityShadow()
+                        .legibilityShadow()
                     let totalSecond = 20.0 * 60.0 * 60.0
                     let percentage = 1.0 - (TimeInterval.sinceNow(to: finishTime) / totalSecond)
                     percentageBar(percentage)
@@ -50,7 +50,7 @@ struct EachExpeditionView: View {
                     .lineLimit(1)
                     .font(.footnote)
                     .minimumScaleFactor(0.4)
-                    .widgetLegibilityShadow()
+                    .legibilityShadow()
                     percentageBar(expedition.isFinished ? 1 : 0.5)
                 }
             }
