@@ -104,6 +104,11 @@ extension PZAbyssDB {
                 (abyssSeason / 10) * 10 + 1
             }
         }
+
+        /// Just a reference for the Server side implementation.
+        public func hasSufficientBattles() -> Bool {
+            6 == submitDetails.filter { $0.floor == 12 }.count
+        }
     }
 
     // MARK: - AccountSpiralAbyssDetail
@@ -175,7 +180,7 @@ extension PZAbyssDB.AbyssDataPack {
             abyssData = try await HoYo.abyssReportData4GI(for: profile)
         }
         guard let abyssData else { throw AbyssCollector.ACError.abyssDataNotSupplied }
-        guard abyssData.totalStar == 36 else { throw AbyssCollector.ACError.ungainedStarsDetected }
+        guard abyssData.hasSufficientStarsForUpload else { throw AbyssCollector.ACError.ungainedStarsDetected }
 
         let component = Calendar.current.dateComponents(
             [.year, .month, .day],
