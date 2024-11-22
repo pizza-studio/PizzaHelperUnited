@@ -169,9 +169,9 @@ struct AppAboutViewSections: View {
     private var groupFooterText: String {
         var text = ""
         if Locale.isUILanguageSimplifiedChinese {
-            text = "我们推荐您加入QQ频道。QQ群都即将满员，而在频道你可以与更多朋友们交流，第一时间获取来自开发者的消息，同时还有官方消息的转发和其他更多功能！"
+            text = "我们推荐您加入QQ频道。QQ群都即将满员，而在QQ频道则可以与更多朋友们交流，第一时间获取来自开发者的消息，同时还有官方消息的转发和其他更多功能！"
         } else if Locale.isUILanguageTraditionalChinese {
-            text = "我們推薦您加入QQ頻道。QQ群都即將滿員，而在頻道你可以與更多朋友們交流，第一時間獲取來自開發者的消息，同時還有官方消息的轉發和其他更多功能！"
+            text = "我們推薦您加入QQ頻道。QQ群都即將滿員，而在QQ頻道則可以與更多朋友們交流，第一時間獲取來自開發者的消息，同時還有官方消息的轉發和其他更多功能！"
         }
         return text
     }
