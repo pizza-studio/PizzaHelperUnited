@@ -55,10 +55,13 @@ public struct StaminaInfo4HSR: Sendable {
 
     public let isReserveStaminaFull: Bool
 
+    /// Reserved Stamina when data is fetched.
+    public let currentReserveStamina: Int
+
+    public var maxReserveStamina: Int { 2400 }
+
     // MARK: Private
 
-    /// Reserved Stamina when data is fetched.
-    private let _currentReserveStamina: Int
     /// Stamina when data is fetched.
     private let _currentStamina: Int
     /// Recovery time interval when data is fetched.
@@ -82,7 +85,7 @@ extension StaminaInfo4HSR: Decodable {
         self.maxStamina = try container.decode(Int.self, forKey: .maxStamina)
         self._currentStamina = try container.decode(Int.self, forKey: .currentStamina)
         self._staminaRecoverTime = try TimeInterval(container.decode(Int.self, forKey: .staminaRecoverTime))
-        self._currentReserveStamina = (try? container.decode(Int.self, forKey: .currentReserveStamina)) ?? 0
+        self.currentReserveStamina = try container.decode(Int.self, forKey: .currentReserveStamina)
         self.isReserveStaminaFull = (try? container.decode(Bool.self, forKey: .isReserveStaminaFull)) ?? false
     }
 
