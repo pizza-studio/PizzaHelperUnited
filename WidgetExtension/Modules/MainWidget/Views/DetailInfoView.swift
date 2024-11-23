@@ -35,11 +35,9 @@ struct DetailInfo: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: spacing) {
-            if dailyNote.hasDailyTaskIntel {
-                DailyTaskInfoBar(dailyNote: dailyNote)
-            }
             switch dailyNote {
             case let dailyNote as any Note4GI:
+                drawDailyTaskCompletionStatus()
                 if dailyNote.homeCoinInfo.maxHomeCoin != 0 {
                     HomeCoinInfoBar(entry: entry, homeCoinInfo: dailyNote.homeCoinInfo)
                 }
@@ -66,6 +64,8 @@ struct DetailInfo: View {
                     }
                 }
             case let dailyNote as Note4HSR:
+                ReservedTrailblazePowerInfoBar(tbPowerIntel: dailyNote.staminaInfo)
+                drawDailyTaskCompletionStatus()
                 if dailyNote.hasExpeditions {
                     ExpeditionInfoBar(dailyNote: dailyNote)
                 }
@@ -73,11 +73,20 @@ struct DetailInfo: View {
                     SimulUnivInfoBar(dailyNote: dailyNote)
                 }
             case _ as Note4ZZZ:
-                EmptyView() // TODO: Needs further implementation.
+                drawDailyTaskCompletionStatus()
             default:
                 EmptyView()
             }
         }
         .padding(.trailing)
+    }
+
+    // MARK: Private
+
+    @ViewBuilder
+    private func drawDailyTaskCompletionStatus() -> some View {
+        if dailyNote.hasDailyTaskIntel {
+            DailyTaskInfoBar(dailyNote: dailyNote)
+        }
     }
 }
