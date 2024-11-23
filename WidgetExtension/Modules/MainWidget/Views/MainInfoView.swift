@@ -58,7 +58,6 @@ struct MainInfo: View {
                     }
                     .legibilityShadow(isText: false)
             }
-            .legibilityShadow()
             Spacer()
             HStack {
                 Button(intent: WidgetRefreshIntent()) {
