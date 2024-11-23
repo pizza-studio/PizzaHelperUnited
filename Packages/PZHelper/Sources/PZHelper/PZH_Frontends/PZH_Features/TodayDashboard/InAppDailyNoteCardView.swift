@@ -392,20 +392,25 @@ private struct DailyNoteCardView4HSR: View {
     @ViewBuilder
     func drawTrailblazePower() -> some View {
         VStack {
+            let reservedStamina = dailyNote.staminaInfo.currentReserveStamina
+            let hasReservedStamina = reservedStamina > 0
+            let deltaExMax = hasReservedStamina ? dailyNote.staminaInfo.maxReserveStamina : 0
+            let maxStamina: Int = dailyNote.staminaInfo.maxStamina + deltaExMax
             HStack {
                 Text("app.dailynote.card.trailblazePower.label".i18nPZHelper).bold()
                 Spacer()
             }
             HStack(spacing: 10) {
                 let iconFrame: CGFloat = 40
-                AccountKit.imageAsset("hsr_note_trailblazePower")
+                let iconNAme = hasReservedStamina ? "hsr_note_trailblazePowerReserved" : "hsr_note_trailblazePower"
+                AccountKit.imageAsset(iconNAme)
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(dailyNote.staminaInfo.currentStamina)")
+                    Text(verbatim: "\(dailyNote.staminaInfo.currentStamina + reservedStamina)")
                         .font(.title)
-                    Text(verbatim: " / \(dailyNote.staminaInfo.maxStamina)")
+                    Text(verbatim: " / \(maxStamina)")
                         .font(.caption)
                     Spacer()
                     if dailyNote.staminaInfo.fullTime > Date() {
