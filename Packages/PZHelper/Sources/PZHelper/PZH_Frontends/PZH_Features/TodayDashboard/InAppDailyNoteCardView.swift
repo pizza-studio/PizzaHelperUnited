@@ -395,22 +395,37 @@ private struct DailyNoteCardView4HSR: View {
             let reservedStamina = dailyNote.staminaInfo.currentReserveStamina
             let hasReservedStamina = reservedStamina > 0
             let deltaExMax = hasReservedStamina ? dailyNote.staminaInfo.maxReserveStamina : 0
-            let maxStamina: Int = dailyNote.staminaInfo.maxStamina + deltaExMax
             HStack {
                 Text("app.dailynote.card.trailblazePower.label".i18nPZHelper).bold()
                 Spacer()
+                if hasReservedStamina {
+                    HStack {
+                        AccountKit.imageAsset("hsr_note_trailblazePowerReserved")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: iconFrame / 2)
+
+                        Text(verbatim: "\(reservedStamina)").fontWeight(.heavy)
+                            + Text(verbatim: "/\(deltaExMax)").fontWidth(.compressed)
+                    }
+                    .fixedSize(horizontal: true, vertical: false)
+                    .padding(.horizontal, 6)
+                    .background(
+                        .regularMaterial,
+                        in: RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    )
+                }
             }
             HStack(spacing: 10) {
                 let iconFrame: CGFloat = 40
-                let iconNAme = hasReservedStamina ? "hsr_note_trailblazePowerReserved" : "hsr_note_trailblazePower"
-                AccountKit.imageAsset(iconNAme)
+                AccountKit.imageAsset("hsr_note_trailblazePower")
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
-                    Text(verbatim: "\(dailyNote.staminaInfo.currentStamina + reservedStamina)")
+                    Text(verbatim: "\(dailyNote.staminaInfo.currentStamina)")
                         .font(.title)
-                    Text(verbatim: " / \(maxStamina)")
+                    Text(verbatim: " / \(dailyNote.staminaInfo.maxStamina)")
                         .font(.caption)
                     Spacer()
                     if dailyNote.staminaInfo.fullTime > Date() {
