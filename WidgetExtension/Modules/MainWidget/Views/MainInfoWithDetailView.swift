@@ -40,6 +40,5 @@ struct MainInfoWithDetail: View {
         .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 8 }
         .padding()
         .padding(.horizontal)
-        .padding(.leading)
     }
 }
