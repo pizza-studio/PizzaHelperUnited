@@ -2678,8 +2678,8 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       <trans-unit id="settings.resinTimer.dynamicIsland.howToHide.answer" xml:space="preserve">
         <source>You can slide the Dynamic Island from left / right to the middle to hide it. 
 Swipe left on the Stamina Timer on the lock screen to turn off the resin timer and the Dynamic Island.</source>
-        <target state="translated">您可以将动态岛从左边或右边滑动至中间以隐藏它。
-在锁定画面上向左滑动玩家体力计时器，即可关闭玩家体力计时器和动态岛。</target>
+        <target state="translated">您可以将灵动岛从左边或右边滑动至中间以隐藏它。
+在锁定画面上向左滑动玩家体力计时器，即可关闭玩家体力计时器和灵动岛。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.resinTimer.explanation" xml:space="preserve">
