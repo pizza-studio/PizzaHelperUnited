@@ -54,11 +54,11 @@ struct DetailInfo: View {
                     case .neverShow:
                         EmptyView()
                     case .disappearAfterCompleted where !dailyNote.weeklyBossesInfo.allDiscountsAreUsedUp:
-                        WeeklyBossesInfoBar(
+                        TrounceBlossomInfoBar(
                             weeklyBossesInfo: dailyNote.weeklyBossesInfo
                         )
                     case .alwaysShow:
-                        WeeklyBossesInfoBar(weeklyBossesInfo: dailyNote.weeklyBossesInfo)
+                        TrounceBlossomInfoBar(weeklyBossesInfo: dailyNote.weeklyBossesInfo)
                     default: EmptyView()
                     }
                 }
@@ -69,6 +69,9 @@ struct DetailInfo: View {
                     ExpeditionInfoBar(dailyNote: dailyNote)
                 }
                 SimulUnivInfoBar(dailyNote: dailyNote)
+                if let eowIntel = dailyNote.echoOfWarIntel {
+                    EchoOfWarInfoBar(eowIntel: eowIntel)
+                }
             case _ as Note4ZZZ:
                 drawDailyTaskCompletionStatus()
             default:
