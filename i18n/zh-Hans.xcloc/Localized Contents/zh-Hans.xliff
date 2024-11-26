@@ -4028,7 +4028,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。</target>
+        <target state="translated">该许可将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4066,7 +4066,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。</target>
+        <target state="translated">该许可将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4104,7 +4104,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。</target>
+        <target state="translated">该许可将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
