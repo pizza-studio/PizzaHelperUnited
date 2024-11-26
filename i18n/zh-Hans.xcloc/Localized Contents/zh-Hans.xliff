@@ -235,7 +235,7 @@
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.considerHyperBloomElectroRoles.explanation" xml:space="preserve">
         <source>Genshin Only. E.g.: Raiden Shogun with over-900 elemental master (and related 4-piece artifact sets) can team up with Baizhu, Furina, and Nahida to be the strongest full-auto guided remote hyperbloom team. This disobeys the initial character design of Raiden Shogun but is an acceptable and effective choice with significantly-reduced workload of building-up the entire team with significantly larger firing range than Shinobu-Yukuaki-based close-combat hyperbloom teams. Similar situations may apply to other electro characters in Genshin Impact.</source>
-        <target state="translated">举例：雷电将军在堆有至少 900 点元素精通（且使用有助于超绽放的圣遗物套装）的情况下可以与芙宁娜＆纳西妲＆白朮组成最强的远程全自动脱手超绽放阵容。该阵容违背了雷电将军的数值模型，但培养角色所需的时间成本显著降低、且拥有比以久岐忍＆行秋为核心的近战超绽放阵容更远的射程范围。其余雷系角色可能会有类似的情况。该选项对星穹铁道角色无效。</target>
+        <target state="translated">举例：雷电将军在堆有至少 900 点元素精通（且使用有助于超绽放的圣遗物套装）的情况下可以与芙宁娜＆纳西妲＆白术组成最强的远程全自动脱手超绽放阵容。该阵容违背了雷电将军的数值模型，但培养角色所需的时间成本显著降低、且拥有比以久岐忍＆行秋为核心的近战超绽放阵容更远的射程范围。其余雷系角色可能会有类似的情况。该选项对星穹铁道角色无效。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.considerSwirls" xml:space="preserve">
@@ -357,7 +357,7 @@
     <body>
       <trans-unit id="gachaKit.EntryException.timeRawValueNotParsable" xml:space="preserve">
         <source>Time RawValue not parsable.</source>
-        <target state="translated">無法正常解讀原始時間戳資料值。</target>
+        <target state="translated">无法正常解读原始时间戳资料值。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.accessFailureComDlg32" xml:space="preserve">
@@ -557,12 +557,12 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.srgfv1" xml:space="preserve">
         <source>SRGF v1.0, established by the UIGF committee, is an exchangeable format for gacha records of Star Rail, a game produced by Cognosphere and MiHoYo. Although this format is marked as a vintage format and is replaced by UIGF v4.0, there are some excellent apps on Windows which only conforms to SRGF v1.0, hence the option here for compatibility purposes.</source>
-        <target state="translated">SRGF v1.0 是由 UIGF 委员会制定的资讯交换格式，用于 Cognosphere 和米哈遊制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由 UIGF v4.0 取代，但两者之间可以进行无损的双向转换。此外，Windows 平台上有一些只支持 SRGF v1.0 的优秀应用，因此这里提供了兼容性选项。</target>
+        <target state="translated">SRGF v1.0 是由 UIGF 委员会制定的资讯交换格式，用于 Cognosphere 和米哈游制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由 UIGF v4.0 取代，但两者之间可以进行无损的双向转换。此外，Windows 平台上有一些只支持 SRGF v1.0 的优秀应用，因此这里提供了兼容性选项。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4" xml:space="preserve">
         <source>UIGF v4.0, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo.</source>
-        <target state="translated">UIGF v4.0 是由 UIGF 委员会制定的聚合型资讯交换格式，用于多款由 Cognosphere 和米哈遊制作发行的的电玩们的抽卡记录的交换。</target>
+        <target state="translated">UIGF v4.0 是由 UIGF 委员会制定的聚合型资讯交换格式，用于多款由 Cognosphere 和米哈游制作发行的的电玩们的抽卡记录的交换。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.info.time" xml:space="preserve">
@@ -2417,7 +2417,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.expedition.footer" xml:space="preserve">
         <source>* Genshin Impact and Star Rail only.</source>
-        <target state="translated">※ 星穹铁道與原神限定。</target>
+        <target state="translated">※ 星穹铁道与原神限定。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.header" xml:space="preserve">
@@ -2684,7 +2684,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="settings.resinTimer.explanation" xml:space="preserve">
         <source>Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it.</source>
-        <target state="translated">玩家体力计时器依赖iOS的实时活动功能來运作。您可以点击今日页签下的任一本地账号的实时便笺旁边的三个点圆圈来启动它。</target>
+        <target state="translated">玩家体力计时器依赖iOS的实时活动功能来运作。您可以点击今日页签下的任一本地账号的实时便笺旁边的三个点圆圈来启动它。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.resinTimer.gotoSystemSettings" xml:space="preserve">
@@ -3986,7 +3986,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <source/>
         <note>以下Key开头均包含一个零宽字符</note>
       </trans-unit>
-      <trans-unit id="​简体中文, 日本語, English, 繁體中文, 繁體中文（香港）, Français, Русский, Tiếng Việt" xml:space="preserve">
+      <trans-unit id="​简体中文, 日本语, English, 繁体中文, 繁体中文（香港）, Français, Русский, Tiếng Việt" xml:space="preserve">
         <source/>
         <note/>
       </trans-unit>
@@ -4150,7 +4150,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="app.background.blue" xml:space="preserve">
         <source>Blue</source>
-        <target state="translated">藍色</target>
+        <target state="translated">蓝色</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.background.gold" xml:space="preserve">
@@ -4165,7 +4165,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="app.background.green" xml:space="preserve">
         <source>Green</source>
-        <target state="translated">綠色</target>
+        <target state="translated">绿色</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.background.intertwinedFate" xml:space="preserve">
@@ -4180,7 +4180,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="app.background.red" xml:space="preserve">
         <source>Red</source>
-        <target state="translated">紅色</target>
+        <target state="translated">红色</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEntity.localeProfile" xml:space="preserve">
@@ -4405,7 +4405,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.expedition" xml:space="preserve">
         <source>Status of Expeditions (GI) / Assignments (HSR)</source>
-        <target state="translated">派遣委託狀況</target>
+        <target state="translated">派遣委托状况</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.cfgName.generalInfo" xml:space="preserve">
@@ -4572,7 +4572,7 @@ Stamina is Full</source>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.status.title" xml:space="preserve">
         <source>Player Status</source>
-        <target state="translated">玩家狀況</target>
+        <target state="translated">玩家状况</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.unit.day:%lld|==|plural.other" xml:space="preserve">
