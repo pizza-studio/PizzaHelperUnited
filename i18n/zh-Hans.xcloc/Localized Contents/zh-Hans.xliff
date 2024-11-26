@@ -2307,7 +2307,7 @@ This app will quit after you confirm this message.</source>
         <source>
 The above link works on all devices. Users can also use HoYoLAB App (iPhone) to finish the account withdrawal (deletion).</source>
         <target state="translated">
-HoYoLAB 账号的注销可借由任何设备使用上述链接来完成，也可以使用 HoYoLAB 的 App 来完成。</target>
+HoYoLAB 账号的注销可通过任何设备使用上述链接来完成，也可以使用 HoYoLAB 的 App 来完成。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.readme.miyoushe.specialNotice" xml:space="preserve">
@@ -2357,7 +2357,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push.footer" xml:space="preserve">
         <source>This is useful when the synchronization-via-iCloud feature defects on your Apple Watch.</source>
-        <target state="translated">在您的Apple Watch上无法借由iCloud同步本地账号时，得使用该功能。</target>
+        <target state="translated">在您的Apple Watch上无法通过iCloud同步本地账号时，得使用该功能。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push.received" xml:space="preserve">
