@@ -37,22 +37,8 @@ struct LockScreenExpeditionWidget: Widget {
 @available(macOS, unavailable)
 struct LockScreenExpeditionWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
+
     let entry: LockScreenWidgetProvider.Entry
-    var body: some View {
-        Group {
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenExpeditionWidgetCorner(result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenExpeditionWidgetCircular(result: result)
-            default:
-                EmptyView()
-            }
-        }
-        .widgetURL(url)
-    }
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
@@ -77,5 +63,21 @@ struct LockScreenExpeditionWidgetView: View {
         case .failure:
             return errorURL
         }
+    }
+
+    var body: some View {
+        Group {
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenExpeditionWidgetCorner(result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenExpeditionWidgetCircular(result: result)
+            default:
+                EmptyView()
+            }
+        }
+        .widgetURL(url)
     }
 }

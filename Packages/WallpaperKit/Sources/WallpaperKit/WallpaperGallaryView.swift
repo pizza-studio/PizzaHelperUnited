@@ -51,6 +51,16 @@ public struct WallpaperGalleryViewContent: View {
         max(Int(floor($containerSize.wrappedValue.width / 240)), 1)
     }
 
+    var searchResults: [Wallpaper] {
+        if searchText.isEmpty {
+            Wallpaper.allCases(for: game)
+        } else {
+            Wallpaper.allCases(for: game).filter { wallpaper in
+                wallpaperName(for: wallpaper).lowercased().contains(searchText.lowercased())
+            }
+        }
+    }
+
     @ViewBuilder var coreBodyView: some View {
         StaggeredGrid(columns: columns, list: searchResults, content: { currentCard in
             draw(wallpaper: currentCard)
@@ -84,16 +94,6 @@ public struct WallpaperGalleryViewContent: View {
         .environment(orientation)
     }
 
-    var searchResults: [Wallpaper] {
-        if searchText.isEmpty {
-            Wallpaper.allCases(for: game)
-        } else {
-            Wallpaper.allCases(for: game).filter { wallpaper in
-                wallpaperName(for: wallpaper).lowercased().contains(searchText.lowercased())
-            }
-        }
-    }
-
     // MARK: Private
 
     @Namespace private var animation
@@ -101,6 +101,7 @@ public struct WallpaperGalleryViewContent: View {
     @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
     @State private var containerSize: CGSize = .zero
+
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
@@ -115,6 +116,21 @@ public struct WallpaperGalleryViewContent: View {
         #else
         return .automatic
         #endif
+    }
+
+    @ViewBuilder
+    private func draw(wallpaper: Wallpaper) -> some View {
+        wallpaper.image4LiveActivity
+            .resizable()
+            .scaleEffect(1.01) // HSR 的名片有光边。
+            .aspectRatio(contentMode: .fit)
+            .cornerRadius(10)
+            .corneredTag(
+                verbatim: wallpaperName(for: wallpaper),
+                alignment: .bottomLeading,
+                opacity: 0.9,
+                padding: 6
+            )
     }
 
     private func wallpaperName(for wallpaper: Wallpaper) -> String {
@@ -143,21 +159,6 @@ public struct WallpaperGalleryViewContent: View {
             }
         }
         return result
-    }
-
-    @ViewBuilder
-    private func draw(wallpaper: Wallpaper) -> some View {
-        wallpaper.image4LiveActivity
-            .resizable()
-            .scaleEffect(1.01) // HSR 的名片有光边。
-            .aspectRatio(contentMode: .fit)
-            .cornerRadius(10)
-            .corneredTag(
-                verbatim: wallpaperName(for: wallpaper),
-                alignment: .bottomLeading,
-                opacity: 0.9,
-                padding: 6
-            )
     }
 }
 

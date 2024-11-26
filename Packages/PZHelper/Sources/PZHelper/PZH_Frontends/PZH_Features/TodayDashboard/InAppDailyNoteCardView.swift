@@ -552,9 +552,10 @@ private struct DailyNoteCardView4HSR: View {
 
     // MARK: Private
 
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
+
     private let dailyNote: Note4HSR
     private let iconFrame: CGFloat = 40
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 }
 
 // MARK: - DailyNoteCardView4ZZZ

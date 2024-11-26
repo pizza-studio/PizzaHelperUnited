@@ -109,42 +109,6 @@ public struct GachaExportSections: View {
 
     // MARK: Internal
 
-    @ViewBuilder
-    func makeFormatPicker() -> some View {
-        let formatsToEnumerate: [GachaExchange.ExportableFormat] = switch packageMethod {
-        case let .singleOwner(gpid): packageMethod.supportedExportableFormats(by: gpid.game)
-        default:
-            if theVM.allGPIDs.wrappedValue.count == 1,
-               specifiedProfiles.randomElement()?.game == .starRail {
-                packageMethod.supportedExportableFormats(by: .starRail)
-            } else {
-                [.asUIGFv4]
-            }
-        }
-        LabeledContent {
-            Picker("gachaKit.exchange.fileFormat".i18nGachaKit, selection: $exportFormat) {
-                ForEach(formatsToEnumerate) { enumeratedFormat in
-                    Text(verbatim: enumeratedFormat.name).tag(enumeratedFormat)
-                }
-            }
-            .labelsHidden()
-            .pickerStyle(.segmented)
-            .fixedSize()
-            .disabled(formatsToEnumerate.count == 1)
-        } label: {
-            Text("gachaKit.exchange.fileFormat".i18nGachaKit)
-        }
-    }
-
-    // MARK: private
-
-    @Environment(GachaVM.self) private var theVM
-    @State private var packageMethod: GachaExchange.ExportPackageMethod = .allOwners
-    @State private var specifiedProfiles: Set<GachaProfileID> = []
-    @State private var exportFormat: GachaExchange.ExportableFormat = .asUIGFv4
-    @State private var documentLanguage: GachaLanguage = .current
-    @State private var fileSaveActionResult: Result<URL, any Error>?
-
     var isComDlg32Visible: Binding<Bool> {
         .init(get: {
             switch theVM.currentExportableDocument {
@@ -190,6 +154,33 @@ public struct GachaExportSections: View {
     }
 
     @ViewBuilder
+    func makeFormatPicker() -> some View {
+        let formatsToEnumerate: [GachaExchange.ExportableFormat] = switch packageMethod {
+        case let .singleOwner(gpid): packageMethod.supportedExportableFormats(by: gpid.game)
+        default:
+            if theVM.allGPIDs.wrappedValue.count == 1,
+               specifiedProfiles.randomElement()?.game == .starRail {
+                packageMethod.supportedExportableFormats(by: .starRail)
+            } else {
+                [.asUIGFv4]
+            }
+        }
+        LabeledContent {
+            Picker("gachaKit.exchange.fileFormat".i18nGachaKit, selection: $exportFormat) {
+                ForEach(formatsToEnumerate) { enumeratedFormat in
+                    Text(verbatim: enumeratedFormat.name).tag(enumeratedFormat)
+                }
+            }
+            .labelsHidden()
+            .pickerStyle(.segmented)
+            .fixedSize()
+            .disabled(formatsToEnumerate.count == 1)
+        } label: {
+            Text("gachaKit.exchange.fileFormat".i18nGachaKit)
+        }
+    }
+
+    @ViewBuilder
     func hookAlertAndComDlg32(target: some View) -> some View {
         let msgPack = fileSaveActionResultMessagePack
         target
@@ -219,4 +210,13 @@ public struct GachaExportSections: View {
                 theVM.forceStopTheTask()
             }
     }
+
+    // MARK: Private
+
+    @Environment(GachaVM.self) private var theVM
+    @State private var packageMethod: GachaExchange.ExportPackageMethod = .allOwners
+    @State private var specifiedProfiles: Set<GachaProfileID> = []
+    @State private var exportFormat: GachaExchange.ExportableFormat = .asUIGFv4
+    @State private var documentLanguage: GachaLanguage = .current
+    @State private var fileSaveActionResult: Result<URL, any Error>?
 }

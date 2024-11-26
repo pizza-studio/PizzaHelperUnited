@@ -41,24 +41,8 @@ struct LockScreenHomeCoinWidget: Widget {
 @available(macOS, unavailable)
 struct LockScreenHomeCoinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
+
     let entry: LockScreenWidgetProvider.Entry
-    var body: some View {
-        Group {
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenHomeCoinWidgetCorner(entry: entry, result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenHomeCoinWidgetCircular(entry: entry, result: result)
-            case .accessoryRectangular:
-                LockScreenHomeCoinWidgetRectangular(entry: entry, result: result)
-            default:
-                EmptyView()
-            }
-        }
-        .widgetURL(url)
-    }
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
@@ -83,5 +67,23 @@ struct LockScreenHomeCoinWidgetView: View {
         case .failure:
             return errorURL
         }
+    }
+
+    var body: some View {
+        Group {
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenHomeCoinWidgetCorner(entry: entry, result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenHomeCoinWidgetCircular(entry: entry, result: result)
+            case .accessoryRectangular:
+                LockScreenHomeCoinWidgetRectangular(entry: entry, result: result)
+            default:
+                EmptyView()
+            }
+        }
+        .widgetURL(url)
     }
 }

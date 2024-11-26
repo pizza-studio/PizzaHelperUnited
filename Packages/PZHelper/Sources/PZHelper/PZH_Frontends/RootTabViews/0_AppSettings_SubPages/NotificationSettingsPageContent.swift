@@ -242,6 +242,7 @@ private struct StaminaNotificationThresholdConfigView: View {
     @State private var isNumberExistAlertVisible: Bool = false
     @State private var newNumber: Double = 140.0
     @State private var game: Pizza.SupportedGame = .genshinImpact
+
     @Default(.notificationOptions) private var options: NotificationOptions
 
     private var isNewThresholdValid: Bool { !thresholdsForCurrentGame.contains(numberToSave) }

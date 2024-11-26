@@ -523,6 +523,14 @@ private struct WeaponPanelView: View {
 
     // MARK: Internal
 
+    var corneredTagText: String {
+        "Lv.\(weapon.trainedLevel) ★\(weapon.rarityStars) ❖\(weapon.refinement)"
+    }
+
+    var shouldShowPropertyTitle: Bool {
+        weapon.game == .genshinImpact
+    }
+
     @ViewBuilder var background: some View {
         switch weapon.game {
         case .starRail:
@@ -543,14 +551,6 @@ private struct WeaponPanelView: View {
             .clipShape(.circle)
         case .zenlessZone: EmptyView() // 临时设定。
         }
-    }
-
-    var corneredTagText: String {
-        "Lv.\(weapon.trainedLevel) ★\(weapon.rarityStars) ❖\(weapon.refinement)"
-    }
-
-    var shouldShowPropertyTitle: Bool {
-        weapon.game == .genshinImpact
     }
 
     // MARK: Private
@@ -602,16 +602,6 @@ private struct ArtifactView: View {
 
     @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
     @Default(.artifactRatingRules) private var artifactRatingRules: ArtifactRating.Rules
-
-    private func scoreText(lang: String) -> String {
-        guard artifactRatingRules.contains(.enabled) else { return "" }
-        let extraTerms = Enka.ExtraTerms(lang: lang, game: artifact.game)
-        let unit = extraTerms.artifactRatingUnit
-        if let score = artifact.ratedScore?.description {
-            return score + unit
-        }
-        return ""
-    }
 
     @ViewBuilder
     private func coreBody(fontSize: CGFloat, langTag: String) -> some View {
@@ -683,6 +673,16 @@ private struct ArtifactView: View {
                 .scaledToFit()
                 .frame(width: fontSize * 4, height: fontSize * 4)
         }
+    }
+
+    private func scoreText(lang: String) -> String {
+        guard artifactRatingRules.contains(.enabled) else { return "" }
+        let extraTerms = Enka.ExtraTerms(lang: lang, game: artifact.game)
+        let unit = extraTerms.artifactRatingUnit
+        if let score = artifact.ratedScore?.description {
+            return score + unit
+        }
+        return ""
     }
 
     @MainActor

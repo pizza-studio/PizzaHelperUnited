@@ -21,6 +21,7 @@ struct ShowTeamPercentageView: View {
 
     @Environment(\.colorScheme) var colorScheme
     @Environment(AbyssRankViewModel.self) var vmAbyssRank
+
     let sectionCornerSize = CGSize(width: Font.baseFontSizeSmall, height: Font.baseFontSizeSmall)
 
     var result: TeamUtilizationDataFetchModelResult? {
@@ -64,36 +65,6 @@ struct ShowTeamPercentageView: View {
             }
         }
         .background(Color(viewBackgroundColor))
-    }
-
-    static func getMatchedSFSymbol(raw: String) -> SFSymbol? {
-        let matchedSymbol = SFSymbol(rawValue: raw)
-        return SFSymbol.allSymbols.contains(matchedSymbol) ? matchedSymbol : nil
-    }
-
-    static func percentageViewAssets(value: Double, index: Int) -> (String, SFSymbol?)? {
-        guard let perc = percentageFormatter.string(from: value as NSNumber) else { return nil }
-        return (perc, Self.getMatchedSFSymbol(raw: "\(index + 1).circle"))
-    }
-
-    func extractDataPackage() -> TeamUtilizationData? {
-        guard case let .success(dataPkg) = result else { return nil }
-        return dataPkg.data
-    }
-
-    func dataExtractionErrorText() -> String? {
-        guard case let .failure(error) = result else { return nil }
-        return "\(error)"
-    }
-
-    func extractTeams(from data: TeamUtilizationData) -> [TeamUtilizationData.Team] {
-        let result: [TeamUtilizationData.Team]
-        switch vmAbyssRank.teamUtilizationParams.half {
-        case .all: result = data.teams
-        case .firstHalf: result = data.teamsFH
-        case .secondHalf: result = data.teamsSH
-        }
-        return result.sorted(by: { $0.percentage > $1.percentage })
     }
 
     @ViewBuilder
@@ -151,5 +122,35 @@ struct ShowTeamPercentageView: View {
                 in: RoundedRectangle(cornerSize: sectionCornerSize)
             )
         }
+    }
+
+    static func getMatchedSFSymbol(raw: String) -> SFSymbol? {
+        let matchedSymbol = SFSymbol(rawValue: raw)
+        return SFSymbol.allSymbols.contains(matchedSymbol) ? matchedSymbol : nil
+    }
+
+    static func percentageViewAssets(value: Double, index: Int) -> (String, SFSymbol?)? {
+        guard let perc = percentageFormatter.string(from: value as NSNumber) else { return nil }
+        return (perc, Self.getMatchedSFSymbol(raw: "\(index + 1).circle"))
+    }
+
+    func extractDataPackage() -> TeamUtilizationData? {
+        guard case let .success(dataPkg) = result else { return nil }
+        return dataPkg.data
+    }
+
+    func dataExtractionErrorText() -> String? {
+        guard case let .failure(error) = result else { return nil }
+        return "\(error)"
+    }
+
+    func extractTeams(from data: TeamUtilizationData) -> [TeamUtilizationData.Team] {
+        let result: [TeamUtilizationData.Team]
+        switch vmAbyssRank.teamUtilizationParams.half {
+        case .all: result = data.teams
+        case .firstHalf: result = data.teamsFH
+        case .secondHalf: result = data.teamsSH
+        }
+        return result.sorted(by: { $0.percentage > $1.percentage })
     }
 }

@@ -131,8 +131,9 @@ public struct GachaExportToolbarButton: View {
 
     // MARK: Private
 
-    private let specifiedProfile: GachaProfileID
-    private let packageMethod: GachaExchange.ExportPackageMethod
     @State private var fileSaveActionResult: Result<URL, any Error>?
     @Environment(GachaVM.self) private var theVM
+
+    private let specifiedProfile: GachaProfileID
+    private let packageMethod: GachaExchange.ExportPackageMethod
 }

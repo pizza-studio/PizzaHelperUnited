@@ -82,8 +82,9 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
         #endif
     }()
 
-    var focused: FocusState<Bool>.Binding?
     @FocusState var backupFocus: Bool
+
+    var focused: FocusState<Bool>.Binding?
 
     @ViewBuilder var textFieldView: some View {
         TextField("UID".description, text: $givenUID)
@@ -177,8 +178,9 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
-    private var theDB: QueryDB
     @StateObject private var delegate: CaseProfileVM<QueryDB> = .init()
+
+    private var theDB: QueryDB
 
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(givenUID) else { return false }

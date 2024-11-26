@@ -227,6 +227,7 @@ struct DetailPortalTabPage: View {
     @FocusState private var uidInputFieldFocus: Bool
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
+
     @Default(.queriedEnkaProfiles4GI) private var profiles4GI
     @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
     @Default(.askedIfAllowAbyssDataCollection) private var askedIfAllowAbyssDataCollection: Bool

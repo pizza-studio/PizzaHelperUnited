@@ -33,12 +33,8 @@ struct AlternativeLockScreenHomeCoinWidget: Widget {
 @available(macOS, unavailable)
 struct AlternativeLockScreenHomeCoinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let entry: LockScreenWidgetProvider.Entry
 
-    var body: some View {
-        AlternativeLockScreenHomeCoinWidgetCircular(entry: entry, result: result)
-            .widgetURL(url)
-    }
+    let entry: LockScreenWidgetProvider.Entry
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
@@ -63,5 +59,10 @@ struct AlternativeLockScreenHomeCoinWidgetView: View {
         case .failure:
             return errorURL
         }
+    }
+
+    var body: some View {
+        AlternativeLockScreenHomeCoinWidgetCircular(entry: entry, result: result)
+            .widgetURL(url)
     }
 }

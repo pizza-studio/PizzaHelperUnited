@@ -85,6 +85,7 @@ struct ProfileBackupRestoreMenu<T: View>: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
     @StateObject private var theVM = Coordinator()
+
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
     private let extraItem: (() -> T)?
 }

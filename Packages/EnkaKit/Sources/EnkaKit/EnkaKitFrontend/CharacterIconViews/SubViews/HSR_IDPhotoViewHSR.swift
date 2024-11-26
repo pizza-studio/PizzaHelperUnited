@@ -91,17 +91,39 @@ public struct IDPhotoView4HSR: View {
 
     @Environment(\.colorScheme) var colorScheme
 
-    @MainActor var coreBody: some View {
-        switch iconType {
-        case .asCard: AnyView(cardView)
-        default: AnyView(circleIconView)
-        }
-    }
-
     var proposedSize: CGSize {
         switch iconType {
         case .asCard: .init(width: size * 0.74, height: size)
         default: .init(width: size, height: size)
+        }
+    }
+
+    var elementColor: Color {
+        var opacity: Double = 1
+        switch lifePath {
+        case .abundance: opacity = 0.4
+        case .hunt: opacity = 0.35
+        default: break
+        }
+        guard let colorStr = Enka.Sputnik.shared.db4HSR.characters[pid]?.element else { return .clear }
+        return Enka.GameElement(rawValueGuarded: colorStr).themeColor.suiColor.opacity(opacity)
+    }
+
+    var baseWindowBGColor: Color {
+        switch colorScheme {
+        case .dark:
+            return .init(cgColor: .init(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00))
+        case .light:
+            return .init(cgColor: .init(red: 0.80, green: 0.80, blue: 0.80, alpha: 1.00))
+        @unknown default:
+            return .gray
+        }
+    }
+
+    @MainActor var coreBody: some View {
+        switch iconType {
+        case .asCard: AnyView(cardView)
+        default: AnyView(circleIconView)
         }
     }
 
@@ -169,29 +191,9 @@ public struct IDPhotoView4HSR: View {
         .background(baseWindowBGColor)
     }
 
-    var elementColor: Color {
-        var opacity: Double = 1
-        switch lifePath {
-        case .abundance: opacity = 0.4
-        case .hunt: opacity = 0.35
-        default: break
-        }
-        guard let colorStr = Enka.Sputnik.shared.db4HSR.characters[pid]?.element else { return .clear }
-        return Enka.GameElement(rawValueGuarded: colorStr).themeColor.suiColor.opacity(opacity)
-    }
-
-    var baseWindowBGColor: Color {
-        switch colorScheme {
-        case .dark:
-            return .init(cgColor: .init(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00))
-        case .light:
-            return .init(cgColor: .init(red: 0.80, green: 0.80, blue: 0.80, alpha: 1.00))
-        @unknown default:
-            return .gray
-        }
-    }
-
     // MARK: Private
+
+    @StateObject private var coordinator: Coordinator
 
     private let pid: String
     private let imageHandler: (Image) -> Image
@@ -199,5 +201,4 @@ public struct IDPhotoView4HSR: View {
     private let iconType: IconType
     private let pathTotemVisible: Bool
     private let lifePath: Enka.LifePath
-    @StateObject private var coordinator: Coordinator
 }

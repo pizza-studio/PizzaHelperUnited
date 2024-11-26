@@ -70,8 +70,9 @@ public struct PrivacyPolicyView: View {
         return fileURL?.absoluteString ?? url
     }()
 
-    private let isOOBE: Bool
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+
+    private let isOOBE: Bool
 }
 
 extension Defaults.Keys {

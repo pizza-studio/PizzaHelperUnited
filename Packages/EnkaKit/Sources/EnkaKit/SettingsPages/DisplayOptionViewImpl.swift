@@ -155,6 +155,8 @@ extension Enka {
 
         // MARK: Private
 
+        @State private var isCustomizedNameForWandererAlertVisible: Bool = false
+
         @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
         @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleCharacterPhotos: Bool
         @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
@@ -164,8 +166,6 @@ extension Enka {
         @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
         @Default(.lastEnkaDBDataCheckDate) private var lastEnkaDBDataCheckDate: Date
         @Default(.defaultDBQueryHost) private var defaultDBQueryHost: Enka.HostType
-
-        @State private var isCustomizedNameForWandererAlertVisible: Bool = false
 
         private var currentOfficialTranslationForWanderer: String {
             Enka.Sputnik.shared.db4GI.getTranslationFor(id: "10000075", realName: false)

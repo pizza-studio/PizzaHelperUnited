@@ -48,26 +48,8 @@ struct LockScreenResinWidget: Widget {
 @available(macOS, unavailable)
 struct LockScreenResinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
+
     let entry: LockScreenWidgetProvider.Entry
-    var body: some View {
-        Group {
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenResinWidgetCorner(entry: entry, result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenResinWidgetCircular(entry: entry, result: result)
-            case .accessoryRectangular:
-                LockScreenResinWidgetRectangular(entry: entry, result: result)
-            case .accessoryInline:
-                LockScreenResinWidgetInline(entry: entry, result: result)
-            default:
-                EmptyView()
-            }
-        }
-        .widgetURL(url)
-    }
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
@@ -92,5 +74,25 @@ struct LockScreenResinWidgetView: View {
         case .failure:
             return errorURL
         }
+    }
+
+    var body: some View {
+        Group {
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenResinWidgetCorner(entry: entry, result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenResinWidgetCircular(entry: entry, result: result)
+            case .accessoryRectangular:
+                LockScreenResinWidgetRectangular(entry: entry, result: result)
+            case .accessoryInline:
+                LockScreenResinWidgetInline(entry: entry, result: result)
+            default:
+                EmptyView()
+            }
+        }
+        .widgetURL(url)
     }
 }

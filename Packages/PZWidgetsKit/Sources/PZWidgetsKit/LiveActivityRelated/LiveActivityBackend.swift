@@ -51,11 +51,11 @@ public struct EnableLiveActivityButton: View {
 
     // MARK: Private
 
-    private let account: PZProfileSendable
-    private let dailyNote: any DailyNoteProtocol
-
     @State private var error: AnyLocalizedError?
     @State private var showErrorAlert: Bool = false
+
+    private let account: PZProfileSendable
+    private let dailyNote: any DailyNoteProtocol
 }
 
 #if canImport(ActivityKit)

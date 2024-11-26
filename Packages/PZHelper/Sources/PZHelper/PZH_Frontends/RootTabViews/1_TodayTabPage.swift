@@ -117,6 +117,12 @@ struct TodayTabPage: View {
         }
     }
 
+    private var games: [Pizza.SupportedGame] {
+        profiles.map(\.game).reduce(into: [Pizza.SupportedGame]()) {
+            if !$0.contains($1) { $0.append($1) }
+        }
+    }
+
     @ViewBuilder private var gamePicker: some View {
         Picker("".description, selection: $game.animation()) {
             Text(Pizza.SupportedGame?.none.localizedShortName)
@@ -125,12 +131,6 @@ struct TodayTabPage: View {
                 Text(game.localizedShortName)
                     .tag(game as Pizza.SupportedGame?)
             }
-        }
-    }
-
-    private var games: [Pizza.SupportedGame] {
-        profiles.map(\.game).reduce(into: [Pizza.SupportedGame]()) {
-            if !$0.contains($1) { $0.append($1) }
         }
     }
 
