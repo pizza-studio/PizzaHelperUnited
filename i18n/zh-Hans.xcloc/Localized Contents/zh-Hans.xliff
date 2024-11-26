@@ -511,7 +511,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.failedInSavingToFile" xml:space="preserve">
         <source>Failed from dumping the exchangeable gacha records file.</source>
-        <target state="translated">可交换型抽卡记录文件没能成功导出。</target>
+        <target state="translated">没能成功导出可交换型抽卡记录文件。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.fileSavedTo:" xml:space="preserve">
@@ -521,7 +521,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.export.succeededInSavingToFile" xml:space="preserve">
         <source>Successfully dumped the exchangeable gacha records file.</source>
-        <target state="translated">可交换型抽卡记录文件已成功导出。</target>
+        <target state="translated">已成功导出可交换型抽卡记录文件。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.exportedFromAppOrigin" xml:space="preserve">
