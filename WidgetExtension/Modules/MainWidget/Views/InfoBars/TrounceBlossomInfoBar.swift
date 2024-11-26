@@ -32,24 +32,11 @@ struct TrounceBlossomInfoBar: View {
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                if !weeklyBossesInfo.allDiscountsAreUsedUp {
-                    Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
-                        .lineLimit(1)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .font(.system(.caption, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                    Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
-                        .lineLimit(1)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .font(.system(.footnote, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                } else {
-                    Text(verbatim: weeklyBossesInfo.textDescription)
-                        .lineLimit(1)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .font(.system(.caption, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                }
+                Text(verbatim: weeklyBossesInfo.textDescription)
+                    .lineLimit(1)
+                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .font(.system(.caption, design: .rounded))
+                    .minimumScaleFactor(0.2)
             }
             .legibilityShadow(isText: false)
         }
