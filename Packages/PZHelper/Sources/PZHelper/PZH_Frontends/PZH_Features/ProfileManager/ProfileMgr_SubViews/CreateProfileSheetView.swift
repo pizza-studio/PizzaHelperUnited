@@ -289,10 +289,11 @@ extension ProfileManagerPageContent {
 
         private var game: Binding<Pizza.SupportedGame> {
             .init(
-                get: { profile.server.game },
+                get: { profile.game },
                 set: { newGame in
                     profile.server.changeGame(to: newGame)
                     region.changeGame(to: newGame)
+                    profile.game = newGame
                 }
             )
         }
