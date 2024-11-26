@@ -36,24 +36,11 @@ struct EchoOfWarInfoBar: View {
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                if !eowIntel.allRewardsClaimed {
-                    Text(verbatim: "\(eowIntel.weeklyEOWRewardsLeft)")
-                        .lineLimit(1)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .font(.system(.caption, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                    Text(verbatim: " / \(eowIntel.weeklyEOWMaxRewards)")
-                        .lineLimit(1)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .font(.system(.footnote, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                } else {
-                    Text(verbatim: eowIntel.textDescription)
-                        .lineLimit(1)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .font(.system(.caption, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                }
+                Text(verbatim: eowIntel.textDescription)
+                    .lineLimit(1)
+                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .font(.system(.caption, design: .rounded))
+                    .minimumScaleFactor(0.2)
             }
             .legibilityShadow(isText: false)
         }
