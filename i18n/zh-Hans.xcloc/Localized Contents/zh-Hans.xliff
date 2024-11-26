@@ -587,7 +587,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.loadFile.button.title" xml:space="preserve">
         <source>Click Here to Load File</source>
-        <target state="translated">点此选择要读入的文件</target>
+        <target state="translated">点此选择要读取的文件</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.navTitle.exportData" xml:space="preserve">
@@ -1855,7 +1855,7 @@ Retrieved</source>
       </trans-unit>
       <trans-unit id="app.dailynote.card.error.pleaseCheckAtProfileMgr" xml:space="preserve">
         <source>Please go to the Settings Page to check possible connectivity issues with this local profile.</source>
-        <target state="translated">请前往App设定页面检查该本地账号的网络连接故障。</target>
+        <target state="translated">请前往App设定页面检查该本地账号的网络连接异常。</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.dailynote.card.expedition.label" xml:space="preserve">
@@ -2642,12 +2642,12 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs" xml:space="preserve">
         <source>Import all UIDs of these games from this account</source>
-        <target state="translated">一次性读入该账号下的这几款游戏的所有区服的UID</target>
+        <target state="translated">一次性读取该账号下的这几款游戏的所有区服的UID</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs.explanation" xml:space="preserve">
         <source>This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies. If profile duplication happens during this process, then the existing profile will be updated instead with new cookie, the latest device fingerprint, and the latest device ID instead.</source>
-        <target state="translated">此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB账号。相同的米游社 / HoYoLAB账号下的每个游戏每个UID每个区服都登录一次的话，可能会让米游社 / HoYoLAB服务器误解此账号登录了多少设备，导致Cookie提前失效。在这个读入过程中，如果发现与既存的本地账号重复的情况的话，则不再新增重复的账号，而是将既有账号的Cookies、设备指纹、设备ID更新为最新的版本。</target>
+        <target state="translated">此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB账号。相同的米游社 / HoYoLAB账号下的每个游戏每个UID每个区服都登录一次的话，可能会让米游社 / HoYoLAB服务器误解此账号登录了多少设备，导致Cookie提前失效。在这个读取过程中，如果发现与既存的本地账号重复的情况的话，则不再新增重复的账号，而是将既有账号的Cookies、设备指纹、设备ID更新为最新的版本。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.pleaseSelectGame" xml:space="preserve">
