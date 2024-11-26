@@ -4,16 +4,18 @@
 
 import Foundation
 
-// MARK: - GeneralNote4HSR
+// MARK: - RealtimeNote4HSR
 
-/// A struct representing the result of note API
-public struct GeneralNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
+/// Daily note data from widget api.
+public struct RealtimeNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
         let decoder = try decoder.singleValueContainer()
         self.staminaInfo = try decoder.decode(StaminaInfo4HSR.self)
         self.assignmentInfo = try decoder.decode(AssignmentInfo4HSR.self)
+        self.simulatedUniverseInfo = try decoder.decode(SimuUnivInfo4HSR.self)
+        self.dailyTrainingInfo = try decoder.decode(DailyTrainingInfo4HSR.self)
     }
 
     // MARK: Public
@@ -24,12 +26,16 @@ public struct GeneralNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
     public var assignmentInfo: AssignmentInfo4HSR
     /// The time when this struct is generated
     public let fetchTime: Date = .init()
+    /// Simulated Universe score completion status (weekly)
+    public let simulatedUniverseInfo: SimuUnivInfo4HSR
+    /// Daily Training Info
+    public let dailyTrainingInfo: DailyTrainingInfo4HSR
 }
 
 // MARK: BenchmarkTimeEditable
 
-extension GeneralNote4HSR: BenchmarkTimeEditable {
-    public func replacingBenchmarkTime(_ newBenchmarkTime: Date) -> GeneralNote4HSR {
+extension RealtimeNote4HSR: BenchmarkTimeEditable {
+    public func replacingBenchmarkTime(_ newBenchmarkTime: Date) -> RealtimeNote4HSR {
         var newNote4HSR = self
         newNote4HSR.staminaInfo = staminaInfo.replacingBenchmarkTime(newBenchmarkTime)
         newNote4HSR.assignmentInfo = assignmentInfo.replacingBenchmarkTime(newBenchmarkTime)
@@ -39,13 +45,13 @@ extension GeneralNote4HSR: BenchmarkTimeEditable {
 
 // MARK: - Example
 
-extension GeneralNote4HSR {
+extension RealtimeNote4HSR {
     public static func example() -> Note4HSR {
-        let exampleURL = Bundle.module.url(forResource: "hsr_general_note_example", withExtension: "json")!
+        let exampleURL = Bundle.module.url(forResource: "hsr_realtime_note_example", withExtension: "json")!
         // swiftlint:disable force_try
         // swiftlint:disable force_unwrapping
         let exampleData = try! Data(contentsOf: exampleURL)
-        return try! GeneralNote4HSR.decodeFromMiHoYoAPIJSONResult(
+        return try! RealtimeNote4HSR.decodeFromMiHoYoAPIJSONResult(
             data: exampleData, debugTag: "GeneralNote4HSR.exampleData()"
         ) as Note4HSR
         // swiftlint:enable force_try

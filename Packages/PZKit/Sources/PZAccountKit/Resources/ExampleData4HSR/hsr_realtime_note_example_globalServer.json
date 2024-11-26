@@ -1,0 +1,71 @@
+{
+  "data": {
+    "current_stamina": 240,
+    "max_stamina": 240,
+    "stamina_recover_time": 0,
+    "stamina_full_ts": 1732615570,
+    "accepted_epedition_num": 4,
+    "total_expedition_num": 4,
+    "expeditions": [
+      {
+        "avatars": [
+          "https://act-webstatic.hoyoverse.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u764rc/a63714b86ea215a062b4487d85e70466.png",
+          "https://act-webstatic.hoyoverse.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u764rc/3bbe2a346a6981e6f1736558a96247f5.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "根除恶孽",
+        "item_url": "https://act-webstatic.hoyoverse.com/game_record/hkrpg/SpriteOutput/ItemIcon/113001.png",
+        "finish_ts": 0
+      },
+      {
+        "avatars": [
+          "https://act-webstatic.hoyoverse.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u764rc/d19ed191e37b42ce3695b062c43f1af2.png",
+          "https://act-webstatic.hoyoverse.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u764rc/2eaa56973e1d161d735c66d779982fd9.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "火帝动炉销剑戟",
+        "item_url": "https://act-webstatic.hoyoverse.com/game_record/hkrpg/SpriteOutput/ItemIcon/113011.png",
+        "finish_ts": 0
+      },
+      {
+        "avatars": [
+          "https://act-webstatic.hoyoverse.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u764rc/facb72b9ccfaf67629693e5a655bca83.png",
+          "https://act-webstatic.hoyoverse.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u764rc/7d185465034b41d5730268a0348db039.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "劫梦惊魂",
+        "item_url": "https://act-webstatic.hoyoverse.com/game_record/hkrpg/SpriteOutput/ItemIcon/114001.png",
+        "finish_ts": 0
+      },
+      {
+        "avatars": [
+          "https://act-webstatic.hoyoverse.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u764rc/6135676c37a5dc3553b49b4882a1da6a.png",
+          "https://act-webstatic.hoyoverse.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u764rc/f5a4f04edc3cd846c8aa108827742d11.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "离垢清净",
+        "item_url": "https://act-webstatic.hoyoverse.com/game_record/hkrpg/SpriteOutput/ItemIcon/114011.png",
+        "finish_ts": 0
+      }
+    ],
+    "current_train_score": 0,
+    "max_train_score": 500,
+    "current_rogue_score": 0,
+    "max_rogue_score": 14000,
+    "weekly_cocoon_cnt": 3,
+    "weekly_cocoon_limit": 3,
+    "current_reserve_stamina": 2400,
+    "is_reserve_stamina_full": true,
+    "rogue_tourn_weekly_unlocked": true,
+    "rogue_tourn_weekly_max": 1000,
+    "rogue_tourn_weekly_cur": 0,
+    "current_ts": 1732615570,
+    "rogue_tourn_exp_is_full": false
+  },
+  "message": "OK",
+  "retcode": 0
+}

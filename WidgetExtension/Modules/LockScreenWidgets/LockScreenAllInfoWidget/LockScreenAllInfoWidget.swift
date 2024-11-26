@@ -171,23 +171,19 @@ struct LockScreenAllInfoWidgetView: View {
                                 )
                             Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
                         case let data as Note4HSR:
-                            if let data = data as? WidgetNote4HSR {
-                                // Simulated Universe
-                                Text("\(Image("icon.simulatedUniverse", bundle: .main))")
-                                    .widgetAccentable(isFullColor)
-                                    .foregroundColor(
-                                        isFullColor ? Color(
-                                            "iconColor.homeCoin",
-                                            bundle: .main
-                                        ) : nil
-                                    )
-                                let currentScore = data.simulatedUniverseInfo.currentScore
-                                let maxScore = data.simulatedUniverseInfo.maxScore
-                                let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
-                                Text(verbatim: "\(ratio)%")
-                            } else {
-                                EmptyView()
-                            }
+                            // Simulated Universe
+                            Text("\(Image("icon.simulatedUniverse", bundle: .main))")
+                                .widgetAccentable(isFullColor)
+                                .foregroundColor(
+                                    isFullColor ? Color(
+                                        "iconColor.homeCoin",
+                                        bundle: .main
+                                    ) : nil
+                                )
+                            let currentScore = data.simulatedUniverseInfo.currentScore
+                            let maxScore = data.simulatedUniverseInfo.maxScore
+                            let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
+                            Text(verbatim: "\(ratio)%")
                         case _ as Note4ZZZ: EmptyView() // TODO: 可以额外扩充其他内容。
                         default: EmptyView()
                         }

@@ -1,0 +1,71 @@
+{
+  "data": {
+    "current_stamina": 240,
+    "max_stamina": 240,
+    "stamina_recover_time": 0,
+    "stamina_full_ts": 1732616804,
+    "accepted_epedition_num": 4,
+    "total_expedition_num": 4,
+    "expeditions": [
+      {
+        "avatars": [
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/5741243a5cd29a9c0b536e73a5921ada.png",
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/cc18d9712fd27f4148904bd024946314.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "根除恶孽",
+        "item_url": "https://act-webstatic.mihoyo.com/game_record/hkrpg/SpriteOutput/ItemIcon/113001.png",
+        "finish_ts": 0
+      },
+      {
+        "avatars": [
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/d5dd6fb642950b0fcb5c57ba743f3527.png",
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/a9af37a687b87f7444ba3f9c8dc39393.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "火帝动炉销剑戟",
+        "item_url": "https://act-webstatic.mihoyo.com/game_record/hkrpg/SpriteOutput/ItemIcon/113011.png",
+        "finish_ts": 0
+      },
+      {
+        "avatars": [
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/c36ed434d9b8e9d438cfa44c24d84fc3.png",
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/b22185a90fc04888c0bf89b20472ff98.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "劫梦惊魂",
+        "item_url": "https://act-webstatic.mihoyo.com/game_record/hkrpg/SpriteOutput/ItemIcon/114001.png",
+        "finish_ts": 0
+      },
+      {
+        "avatars": [
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/1799f59f8ce9dba590b4c5da5ca58ad0.png",
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/8528aa4c5e21454de643a8411a2267b8.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "离垢清净",
+        "item_url": "https://act-webstatic.mihoyo.com/game_record/hkrpg/SpriteOutput/ItemIcon/114011.png",
+        "finish_ts": 0
+      }
+    ],
+    "current_train_score": 0,
+    "max_train_score": 500,
+    "current_rogue_score": 0,
+    "max_rogue_score": 14000,
+    "weekly_cocoon_cnt": 3,
+    "weekly_cocoon_limit": 3,
+    "current_reserve_stamina": 213,
+    "is_reserve_stamina_full": false,
+    "rogue_tourn_weekly_unlocked": true,
+    "rogue_tourn_weekly_max": 1000,
+    "rogue_tourn_weekly_cur": 0,
+    "current_ts": 1732616804,
+    "rogue_tourn_exp_is_full": false
+  },
+  "message": "OK",
+  "retcode": 0
+}
