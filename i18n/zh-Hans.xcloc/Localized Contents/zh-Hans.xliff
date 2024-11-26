@@ -472,7 +472,7 @@
       </trans-unit>
       <trans-unit id="gachaKit.chart.noPentaStarsFound" xml:space="preserve">
         <source>No 5-star characters found.</source>
-        <target state="translated">尚未检索到五星角色。</target>
+        <target state="translated">尚未搜索到五星角色。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.chart.pullCount" xml:space="preserve">
@@ -1611,7 +1611,7 @@ We promise that your donation will only be used to cover the direct costs of the
       </trans-unit>
       <trans-unit id="tool.dictionary.detail.target.header" xml:space="preserve">
         <source>Hit words</source>
-        <target state="translated">命中词</target>
+        <target state="translated">命中词语</target>
         <note/>
       </trans-unit>
       <trans-unit id="tool.dictionary.detail.title" xml:space="preserve">
@@ -1626,7 +1626,7 @@ We promise that your donation will only be used to cover the direct costs of the
       </trans-unit>
       <trans-unit id="tool.dictionary.fetch_more" xml:space="preserve">
         <source>Click here to fetch more results.</source>
-        <target state="translated">点此请求更多检索结果</target>
+        <target state="translated">点此请求更多搜索结果</target>
         <note/>
       </trans-unit>
       <trans-unit id="tool.dictionary.language.english" xml:space="preserve">
@@ -1701,7 +1701,7 @@ We promise that your donation will only be used to cover the direct costs of the
       </trans-unit>
       <trans-unit id="tool.dictionary.prompt_for_keywords" xml:space="preserve">
         <source>Type some keywords to start a query.</source>
-        <target state="translated">请键入要检索的关键词。</target>
+        <target state="translated">请键入要搜索的关键词。</target>
         <note/>
       </trans-unit>
       <trans-unit id="tool.dictionary.title" xml:space="preserve">
