@@ -7,7 +7,7 @@
     <body>
       <trans-unit id="abyssRankKit.availableSince20230401" xml:space="preserve">
         <source>Available From 2023-04-01</source>
-        <target state="translated">数据自 2023-04-01 开始提供</target>
+        <target state="translated">自 2023-04-01 开始统计</target>
         <note/>
       </trans-unit>
       <trans-unit id="abyssRankKit.collection.1:%@%@%lld" xml:space="preserve">
@@ -260,17 +260,17 @@
       </trans-unit>
       <trans-unit id="settings.display.customizingNameForKunikuzushi" xml:space="preserve">
         <source>Customize the name for Wanderer</source>
-        <target state="translated">自订流浪者姓名</target>
+        <target state="translated">自定义流浪者姓名</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.customizingNameForKunikuzushi.currentValueLabel" xml:space="preserve">
         <source>Customized name for Wanderer</source>
-        <target state="translated">已自订的流浪者姓名</target>
+        <target state="translated">已自定义的流浪者姓名</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.customizingNameForKunikuzushi.prompt" xml:space="preserve">
         <source>Please enter your preferred name for Wanderer (Kunikuzushi)</source>
-        <target state="translated">请键入您希望给雷电国崩（流浪者）自订的姓名</target>
+        <target state="translated">请键入您希望给雷电国崩（流浪者）自定义的姓名</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.enkaStatus.defaultDBQueryHost" xml:space="preserve">
