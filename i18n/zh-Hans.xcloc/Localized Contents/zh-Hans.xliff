@@ -3482,7 +3482,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="notification.katheryneRewardsAvailable.body:%@" xml:space="preserve">
         <source>Daily task rewards for %@ are available to receive at Katheryne's counter.</source>
-        <target state="translated">请前往凯瑟琳柜枱领取「%@」的今日奖励。</target>
+        <target state="translated">请前往凯瑟琳柜台领取「%@」的今日奖励。</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.katheryneRewardsAvailable.title:%@" xml:space="preserve">
