@@ -3926,7 +3926,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="pzAccountKit.CreateLiveActivityError.unknown:%@" xml:space="preserve">
         <source>[Unknown Exception] %@</source>
-        <target state="translated">[未知异常] ￼%@</target>
+        <target state="translated">[未知异常] %@</target>
         <note/>
       </trans-unit>
     </body>
