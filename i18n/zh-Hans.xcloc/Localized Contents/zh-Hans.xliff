@@ -412,7 +412,7 @@
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navDescription" xml:space="preserve">
         <source>This app does not contain paid gacha. The Gacha Record Manager in this app only allows users to manage their personal gacha records for some of the games supported by this app. // Your gacha records in this app will only be stored in the private iCloud space of your current Apple ID, as well as on any Apple devices that are signed in with that Apple ID and have this app installed and in-use, hence no privacy concerns needed. // Zenless Zone Zero is currently not supported by this feature.</source>
-        <target state="translated">敝应用不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被敝应用所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的 Apple ID 的私有 iCloud 空间内、以及任何登录了该 Apple ID 且有安装使用敝应用的 Apple 装置，不会有隐私上的安全问题。敝应用的抽卡记录管理功能现阶段不提供对绝区零的支持。</target>
+        <target state="translated">本 App 不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被本 App 所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的 Apple ID 的私有 iCloud 空间内、以及任何登录了该 Apple ID 且有安装使用本 App 的 Apple 装置，不会有隐私上的安全问题。本 App 的抽卡记录管理功能现阶段不提供对绝区零的支持。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navTitle" xml:space="preserve">
@@ -1213,7 +1213,7 @@ Empty selection indicates selecting all profiles.</source>
     <body>
       <trans-unit id="aboutKit.3rdParty.headline" xml:space="preserve">
         <source>Our app uses the following open source components and third-party APIs, and we would like to thank their authors.</source>
-        <target state="translated">敝应用软件使用了以下开源组件和第三方API，在此向其作者表示感谢。</target>
+        <target state="translated">本 App 软件使用了以下开源组件和第三方API，在此向其作者表示感谢。</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.3rdParty.navTitle" xml:space="preserve">
@@ -1439,7 +1439,7 @@ App 图示绘师 (统一披萨小助手 v5)</target>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.category.i18n.current.description" xml:space="preserve">
         <source>The primary languages of this app are English, Traditional Chinese, Simplified Chinese, and Japanese. All other languages are secondary, as no one in the development team can fluently understand or use them. We rely on ChatGPT to create draft translations for these languages, and we warmly welcome volunteers who wish to help improve them. Having a Mac with Xcode 16 (or a later version) installed will make it much easier for contributors to participate.</source>
-        <target state="translated">敝应用的主要语言为英文、繁体中文、简体中文及日文。其他语言属次要语言，因为开发团队中无人能理解或使用这些语言。我们使用 ChatGPT 为这些语言准备了一份翻译草稿，并欢迎有志之士协助改善翻译。若参加者拥有安装了 Xcode 16（或更新版本）的 Mac 电脑，将会大幅简化翻译作业。</target>
+        <target state="translated">本 App 的主要语言为英文、繁体中文、简体中文及日文。其他语言属次要语言，因为开发团队中无人能理解或使用这些语言。我们使用 ChatGPT 为这些语言准备了一份翻译草稿，并欢迎有志之士协助改善翻译。若参加者拥有安装了 Xcode 16（或更新版本）的 Mac 电脑，将会大幅简化翻译作业。</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.category.i18n.previous" xml:space="preserve">
@@ -1521,7 +1521,7 @@ App 图示绘师 (统一披萨小助手 v5)</target>
         <source>This app does not have paywalls. However, we do accept donations. Please note that the following is all no-cost donations and we will not provide you with any additional services. 
 
 We promise that your donation will only be used to cover the direct costs of the App development process, including but not limited to the annual fee for Apple Developer Program, etc. Any amount donated beyond this cost will be re-donated in full. We appreciate your support.</source>
-        <target state="translated">敝应用无须付费即可全功能使用、不存在所谓的「付费墙」。然而，我们接受捐赠。请注意，以下捐赠均为免费捐赠，我们不会为您提供任何额外的服务。
+        <target state="translated">本 App 无须付费即可全功能使用、不存在所谓的「付费墙」。然而，我们接受捐赠。请注意，以下捐赠均为免费捐赠，我们不会为您提供任何额外的服务。
 
 我们承诺，您的捐款将仅用于支付应用开发过程中产生的直接费用，包括但不限于 Apple 开发者计划的年费等。超出成本的捐款将全额再次捐出。感谢您的支持。</target>
         <note/>
@@ -1562,7 +1562,7 @@ We promise that your donation will only be used to cover the direct costs of the
 - The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.
 - The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”.</source>
         <target state="translated">- 是「原神披萨小助手」与「星铁披萨小助手」的继任者，受次世代「统一披萨引擎」的加持。
-- 敝应用的程式部分以 AGPLv3 许可证释出原始程式码。
+- 本 App 的程式部分以 AGPLv3 许可证释出原始程式码。
 - 披萨小助手及其前身与米哈游股份有限公司（及其子公司）无牵涉。
 - 下述游戏的商标与内容材料均归米哈游股份有限公司所有：《原神》《崩坏：星穹铁道》《绝区零》。</target>
         <note/>
@@ -1794,7 +1794,7 @@ We promise that your donation will only be used to cover the direct costs of the
       </trans-unit>
       <trans-unit id="watch.sync.tips" xml:space="preserve">
         <source>Please wait for the data to sync from iCloud. If you are on TestFlight, you probably have to force-push the local profiles to this watch from the iOS version of this app.</source>
-        <target state="translated">请等待账号从iCloud同步。如果您使用的是 TestFlight 版本的话，您可能需要通过敝应用的 iOS 版强制向当前手表推送本地账号数据。</target>
+        <target state="translated">请等待账号从iCloud同步。如果您使用的是 TestFlight 版本的话，您可能需要通过本 App 的 iOS 版强制向当前手表推送本地账号数据。</target>
         <note/>
       </trans-unit>
       <trans-unit id="watch.widget.settings.sync.frequency.title" xml:space="preserve">
@@ -1954,7 +1954,7 @@ Retrieved</source>
 We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
 
 This app will quit after you confirm this message.</source>
-        <target state="translated">在 macOS/iOS 上更改应用程序的 UI 语言设定时，应用程序需要重新启动，以确保新的语言设定生效。即使用户通过系统设定手动更改语言设定，仍然会提示需要重新启动应用程序，且届时这个提示将由 macOS/iOS 系统来发出，而非敝应用程序。
+        <target state="translated">在 macOS/iOS 上更改应用程序的 UI 语言设定时，应用程序需要重新启动，以确保新的语言设定生效。即使用户通过系统设定手动更改语言设定，仍然会提示需要重新启动应用程序，且届时这个提示将由 macOS/iOS 系统来发出，而非本 App 程序。
 
 我们在这里设定了语言切换器，以帮助用户节省几秒钟的时间。这种设计对注意力缺陷涣散障碍（ADHD）患者非常友好，因为 ADHD 患者在翻阅 iOS/macOS 系统设定中的多层页面时，往往容易彻底忘记他们原本要做的事情。
 
@@ -2103,7 +2103,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.passwordInputSafetyExplanation" xml:space="preserve">
         <source>To ensure you feel safe with this, here’s how it works: Your password input is protected by macOS built-in SecureEventInputAPI (or its equivalent on iOS), and then it will be directly handled by HoYoLAB login webpage. This is the nature of how WKWebView gets designed by Apple. Nobody else can interfere / intercept this process, nor this app. You can see that you cannot switch to 3rd-party input methods while the password is receiving inputs from the user.</source>
-        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登录网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括敝应用。您会发现，在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。</target>
+        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登录网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括本 App 。您会发现，在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.specialWarning" xml:space="preserve">
@@ -2517,7 +2517,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.insufficientSystemPrivileges" xml:space="preserve">
         <source>This app is not yet authorized in system settings to push notifications.</source>
-        <target state="translated">敝应用尚需系统开放通知权限。</target>
+        <target state="translated">本 App 尚需系统开放通知权限。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.katheryneRewards.datePicker" xml:space="preserve">
@@ -3921,7 +3921,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="pzAccountKit.CreateLiveActivityError.systemSettings" xml:space="preserve">
         <source>The current system settings hinder this app from using Live Activity feature.</source>
-        <target state="translated">当前系统设定不允许敝应用使用实时活动 (Live Activity)。</target>
+        <target state="translated">当前系统设定不允许本 App 使用实时活动 (Live Activity)。</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzAccountKit.CreateLiveActivityError.unknown:%@" xml:space="preserve">
