@@ -64,7 +64,7 @@ struct WatchAccountDetailView: View {
                                 Divider()
                                 WatchAccountDetailItemView(
                                     title: "watch.dailyNote.card.weeklyBosses",
-                                    value: "\(data.weeklyBossesInfo.remainResinDiscount) / \(data.weeklyBossesInfo.totalResinDiscount)",
+                                    value: data.weeklyBossesInfo.textDescription,
                                     icon: AccountKit.imageAsset("gi_note_weeklyBosses")
                                 )
                             }
