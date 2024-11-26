@@ -2447,7 +2447,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.giRealmCurrency.header" xml:space="preserve">
         <source>Realm Currency Recharge Notice</source>
-        <target state="translated">洞天财瓮满载提醒</target>
+        <target state="translated">洞天财瓮回满提醒</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.giTransformer.allow" xml:space="preserve">
@@ -2577,7 +2577,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.stamina.footer" xml:space="preserve">
         <source>This includes Original Resin (Genshin Impact), Trailblaze Power (Star Rail), and Vitality (Zenless Zone Zero). Despite the threshold settings, You will also be notified if the player stamina is fully charged.</source>
-        <target state="translated">这包括了原神的原粹树脂、星穹铁道的开拓力、绝区零的绝区电量。除了基于阈值的通知以外，也还会有玩家体力的满载通知。</target>
+        <target state="translated">这包括了原神的原粹树脂、星穹铁道的开拓力、绝区零的绝区电量。除了基于阈值的通知以外，也还会有玩家体力的回满通知。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.stamina.header" xml:space="preserve">
@@ -2592,7 +2592,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.staminaThresholds.footer" xml:space="preserve">
         <source>You will also be notified if the player stamina is fully charged.</source>
-        <target state="translated">除此之外，也还会有玩家体力的满载通知。</target>
+        <target state="translated">除此之外，也还会有玩家体力的回满通知。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.staminaThresholds.header" xml:space="preserve">
@@ -3502,7 +3502,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="notification.realmCurrency.body:%@" xml:space="preserve">
         <source>%@'s realm currency is filled up.</source>
-        <target state="translated">「%@」的洞天财瓮已满载。</target>
+        <target state="translated">「%@」的洞天财瓮已回满。</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.realmCurrency.title:%@" xml:space="preserve">
