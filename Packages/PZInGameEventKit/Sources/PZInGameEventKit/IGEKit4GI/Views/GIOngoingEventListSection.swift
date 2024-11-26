@@ -66,6 +66,7 @@ extension GIOngoingEvents {
         @Environment(\.scenePhase) private var scenePhase
 
         @State private var eventContents: [EventModel] = []
+
         private let peripheralViews: () -> TT
     }
 }

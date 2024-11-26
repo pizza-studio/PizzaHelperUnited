@@ -256,9 +256,9 @@ private struct AvatarListItem4GI: View {
 
     // MARK: Private
 
-    private let avatar: HoYo.CharInventory4GI.HYAvatar4GI
-
     @State private var condensed: Bool
+
+    private let avatar: HoYo.CharInventory4GI.HYAvatar4GI
 
     @Default(.useRealCharacterNames) private var useRealName: Bool
 

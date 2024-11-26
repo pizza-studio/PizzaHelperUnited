@@ -372,10 +372,11 @@ private struct PopFileButton: View {
 
     // MARK: Private
 
+    @State private var isFileImporterShown: Bool = false
+
     private let title: String
     private let allowedContentTypes: [UTType]
     private let completion: (Result<URL, Error>) -> Void
-    @State private var isFileImporterShown: Bool = false
 }
 
 // MARK: - FallbackTimeZonePicker

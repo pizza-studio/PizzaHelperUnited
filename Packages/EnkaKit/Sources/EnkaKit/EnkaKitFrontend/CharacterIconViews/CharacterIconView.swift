@@ -265,19 +265,6 @@ public struct CharacterIconView: View {
             }
     }
 
-    private func guessGenshinCharacterElement(id: String) -> Enka.GameElement? {
-        let str: String?
-        switch id.count {
-        case 8...:
-            str = Enka.Sputnik.shared.db4GI.characters["\(id.prefix(12))"]?.element
-                ?? Enka.Sputnik.shared.db4GI.characters["\(id.prefix(8))"]?.element
-        default:
-            str = Enka.Sputnik.shared.db4HSR.characters[id]?.element
-        }
-        guard let str, let element = Enka.GameElement(rawValue: str) else { return nil }
-        return element
-    }
-
     @ViewBuilder
     private func turnImageAsBlurredBackground4GI(_ image: Image) -> some View {
         ZStack {
@@ -301,6 +288,19 @@ public struct CharacterIconView: View {
                 }
             }
         }
+    }
+
+    private func guessGenshinCharacterElement(id: String) -> Enka.GameElement? {
+        let str: String?
+        switch id.count {
+        case 8...:
+            str = Enka.Sputnik.shared.db4GI.characters["\(id.prefix(12))"]?.element
+                ?? Enka.Sputnik.shared.db4GI.characters["\(id.prefix(8))"]?.element
+        default:
+            str = Enka.Sputnik.shared.db4HSR.characters[id]?.element
+        }
+        guard let str, let element = Enka.GameElement(rawValue: str) else { return nil }
+        return element
     }
 }
 

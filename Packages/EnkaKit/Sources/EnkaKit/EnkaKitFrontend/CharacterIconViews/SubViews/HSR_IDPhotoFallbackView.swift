@@ -60,17 +60,28 @@ struct IDPhotoFallbackView4HSR: View {
 
     @Environment(\.colorScheme) var colorScheme
 
-    @MainActor var coreBody: some View {
-        switch iconType {
-        case .asCard: AnyView(cardView)
-        default: AnyView(circleIconView)
-        }
-    }
-
     var proposedSize: CGSize {
         switch iconType {
         case .asCard: .init(width: size * 0.74, height: size)
         default: .init(width: size, height: size)
+        }
+    }
+
+    var baseWindowBGColor: Color {
+        switch colorScheme {
+        case .dark:
+            return .init(cgColor: .init(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00))
+        case .light:
+            return .init(cgColor: .init(red: 0.80, green: 0.80, blue: 0.80, alpha: 1.00))
+        @unknown default:
+            return .gray
+        }
+    }
+
+    @MainActor var coreBody: some View {
+        switch iconType {
+        case .asCard: AnyView(cardView)
+        default: AnyView(circleIconView)
         }
     }
 
@@ -126,22 +137,12 @@ struct IDPhotoFallbackView4HSR: View {
         .background(baseWindowBGColor)
     }
 
-    var baseWindowBGColor: Color {
-        switch colorScheme {
-        case .dark:
-            return .init(cgColor: .init(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00))
-        case .light:
-            return .init(cgColor: .init(red: 0.80, green: 0.80, blue: 0.80, alpha: 1.00))
-        @unknown default:
-            return .gray
-        }
-    }
-
     // MARK: Private
+
+    @StateObject private var coordinator: Coordinator
 
     private let pid: String
     private let imageHandler: (Image) -> Image
     private let size: CGFloat
     private let iconType: IDPhotoView4HSR.IconType
-    @StateObject private var coordinator: Coordinator
 }

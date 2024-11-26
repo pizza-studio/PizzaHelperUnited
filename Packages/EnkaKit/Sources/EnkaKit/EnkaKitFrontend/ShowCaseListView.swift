@@ -179,6 +179,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
     @State private var dbSet = Enka.Sputnik.shared
     @State private var profile: DBType.SummarizedType
     @State private var extraTerms: Enka.ExtraTerms
+
     private let asCardIcons: Bool
 }
 

@@ -137,9 +137,9 @@ public struct ContentView: View {
         }
     }
 
-    @Default(.appTabIndex) var appIndex: Int
-
     @Query(sort: \PZProfileMO.priority) var accounts: [PZProfileMO]
+
+    @Default(.appTabIndex) var appIndex: Int
 
     // MARK: Private
 

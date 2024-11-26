@@ -34,6 +34,7 @@ struct LockScreenResinFullTimeWidget: Widget {
 @available(macOS, unavailable)
 struct LockScreenResinFullTimeWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
+
     let entry: LockScreenWidgetProvider.Entry
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }

@@ -37,22 +37,8 @@ struct LockScreenDailyTaskWidget: Widget {
 @available(macOS, unavailable)
 struct LockScreenDailyTaskWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
+
     let entry: LockScreenWidgetProvider.Entry
-    var body: some View {
-        Group {
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenDailyTaskWidgetCorner(result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenDailyTaskWidgetCircular(result: result)
-            default:
-                EmptyView()
-            }
-        }
-        .widgetURL(url)
-    }
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
@@ -77,5 +63,21 @@ struct LockScreenDailyTaskWidgetView: View {
         case .failure:
             return errorURL
         }
+    }
+
+    var body: some View {
+        Group {
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenDailyTaskWidgetCorner(result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenDailyTaskWidgetCircular(result: result)
+            default:
+                EmptyView()
+            }
+        }
+        .widgetURL(url)
     }
 }

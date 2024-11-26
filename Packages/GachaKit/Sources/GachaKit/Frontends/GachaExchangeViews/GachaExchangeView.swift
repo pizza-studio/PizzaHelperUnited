@@ -150,9 +150,10 @@ extension GachaExchangeView {
 
         // MARK: Private
 
+        @Binding private var specifiedProfiles: Set<GachaProfileID>
+
         private let sortedGPIDs: [GachaProfileID]
         private let nameIDMap: [String: String]
-        @Binding private var specifiedProfiles: Set<GachaProfileID>
 
         private func toggleBinding(for profile: GachaProfileID) -> Binding<Bool> {
             .init {
