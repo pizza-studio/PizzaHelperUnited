@@ -412,7 +412,7 @@
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navDescription" xml:space="preserve">
         <source>This app does not contain paid gacha. The Gacha Record Manager in this app only allows users to manage their personal gacha records for some of the games supported by this app. // Your gacha records in this app will only be stored in the private iCloud space of your current Apple ID, as well as on any Apple devices that are signed in with that Apple ID and have this app installed and in-use, hence no privacy concerns needed. // Zenless Zone Zero is currently not supported by this feature.</source>
-        <target state="translated">本App不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被本App所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的Apple ID的私有iCloud空间内、以及任何登录了该Apple ID且有安装使用本App的Apple装置，不会有隐私上的安全问题。本App的抽卡记录管理功能现阶段不提供对绝区零的支持。</target>
+        <target state="translated">本App不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被本App所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的Apple ID的私有iCloud空间内、以及任何登录了该Apple ID且有安装使用本App的Apple设备，不会有隐私上的安全问题。本App的抽卡记录管理功能现阶段不提供对绝区零的支持。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navTitle" xml:space="preserve">
@@ -4587,7 +4587,7 @@ Stamina is Full</source>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.widgetError.noProfileFound" xml:space="preserve">
         <source>Profile not found. Please add a local profile or try restarting the device.</source>
-        <target state="translated">尚未发现本地账号。请在App内添加、或者重新启动该装置。</target>
+        <target state="translated">尚未发现本地账号。请在App内添加、或者重新启动该设备。</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.widgetError.profileSelectionNeeded|==|device.mac" xml:space="preserve">
