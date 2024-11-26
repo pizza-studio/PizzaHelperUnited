@@ -1130,7 +1130,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请等待账号从iCloud同步。如果您使用的是 TestFlight 版本的话，您可能需要通过敝应用的 iOS 版强制向当前手表推送本地账号资料。"
+            "value" : "请等待账号从iCloud同步。若长时间无响应，您可以在 iPhone 端强制向当前本设备推送本地账号数据。"
           }
         },
         "zh-Hant" : {

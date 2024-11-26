@@ -452,7 +452,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请前往 App 设定页面检查该本地账号的网络连接故障。"
+            "value" : "请前往 App 设定页面检查该本地账号的网络连接错误。"
           }
         },
         "zh-Hant" : {
@@ -1378,7 +1378,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可以刮"
+            "value" : "可刮"
           }
         },
         "zh-Hant" : {
@@ -1532,7 +1532,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "正在打烊"
+            "value" : "已打烊"
           }
         },
         "zh-Hant" : {
@@ -1763,7 +1763,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尚未发现本地账号。请前往 App 设定页面新增一个本地账号。"
+            "value" : "未找到本地账号。请前往 App 设定页面新增一个本地账号。"
           }
         },
         "zh-Hant" : {
@@ -1840,7 +1840,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在 macOS/iOS 上更改应用程序的 UI 语言设定时，应用程序需要重新启动，以确保新的语言设定生效。即使用户通过系统设定手动更改语言设定，仍然会提示需要重新启动应用程序，且届时这个提示将由 macOS/iOS 系统来发出，而非敝应用程序。\n\n我们在这里设定了语言切换器，以帮助用户节省几秒钟的时间。这种设计对注意力缺陷涣散障碍（ADHD）患者非常友好，因为 ADHD 患者在翻阅 iOS/macOS 系统设定中的多层页面时，往往容易彻底忘记他们原本要做的事情。\n\n确认此消息后，应用程序将会退出。"
+            "value" : "在 macOS/iOS 上更改应用程序的 UI 语言设定时，应用程序需要重新启动，以使新的语言设定生效。\n\n确认此消息后，应用程序将会退出。"
           }
         },
         "zh-Hant" : {
@@ -1994,7 +1994,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "获取到的角色库存清单是空的。"
+            "value" : "获取到的角色库存清单为空。"
           }
         },
         "zh-Hant" : {
@@ -2685,7 +2685,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ 凡受米游社管理之绝区零 UID 者，得自备设备指纹。"
+            "value" : "⚠︎ 若您使用米游社管理绝区零 UID，需要提前准备您的设备指纹。"
           }
         },
         "zh-Hant" : {
@@ -2993,7 +2993,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "登入您的 HoYoLAB / 米游社账号"
+            "value" : "登陆您的 HoYoLAB / 米游社账号"
           }
         },
         "zh-Hant" : {
@@ -3070,7 +3070,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已扫描，请检查"
+            "value" : "已扫描，检查"
           }
         },
         "zh-Hant" : {
@@ -3224,7 +3224,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请使用米游社 App 扫描该二维码。您也可以将该二维码用屏幕截图的方式存下来扫描。"
+            "value" : "请使用米游社 App 扫描该二维码。您也可以将该二维码用屏幕截图的方式保存并扫描。"
           }
         },
         "zh-Hant" : {
@@ -3301,7 +3301,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "服务器回传讯息指出该二维码尚未被扫描。请重新尝试扫描、或者重新生成新的二维码再尝试。"
+            "value" : "服务器回传信息提示该二维码未被扫描。请重新尝试扫描、或者重新生成新的二维码后再尝试。"
           }
         },
         "zh-Hant" : {
@@ -3378,7 +3378,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点此跳转至米游社"
+            "value" : "跳转至米游社"
           }
         },
         "zh-Hant" : {
@@ -3455,7 +3455,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "从 App Store 获取米游社应用"
+            "value" : "从 App Store 获取米游社 App"
           }
         },
         "zh-Hant" : {
@@ -3763,7 +3763,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请留意"
+            "value" : "请注意"
           }
         },
         "zh-Hant" : {
@@ -3994,7 +3994,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "关于我们的工作原理"
+            "value" : "关于本 App 的工作原理"
           }
         },
         "zh-Hant" : {
@@ -4148,7 +4148,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请在打开的网页完成登入 HoYoLab 操作后点击「完成」。如果弹出人机验证的话，请完成之。"
+            "value" : "请在打开的网页完成登入 HoYoLab 操作后点击「完成」。若弹出人机验证，请完成。"
           }
         },
         "zh-Hant" : {
@@ -4225,7 +4225,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登入网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括敝应用。您会发现，在密码接收来自使用者的输入的过程中，您无法切换到第三方输入法。"
+            "value" : "为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登入网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或监听这个过程，包括本 App。因此，在输入密码时，您无法切换到第三方输入法。"
           }
         },
         "zh-Hant" : {
@@ -4302,7 +4302,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 通过 Google，Facebook，Twitter 或 Sign-in-with-Apple 等第三方服务登入 HoYoLAB 的方式不受敝 App 支持，请使用账号密码登入。"
+            "value" : "⚠️ 通过 Google，Facebook，Twitter 或 Sign-in-with-Apple 等第三方服务登入 HoYoLAB 的方式不受本 App 支持，请使用账号密码登入。"
           }
         },
         "zh-Hant" : {
@@ -4379,7 +4379,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "有几点需要您事先知悉的事项：\n\n→ 敝 App 无法用来完成米游社 / HoYoLAB 新账号的注册与删除。这类流程得通过米游社 / HoYoLAB App 等由 MiHoYo / Cognosphere 官方提供的相关服务来完成（可参见当前画面右上角的管理链接）。\n\n→ 任何用于敝 App 的米游社 / HoYoLAB 新账号均已经至少用来游玩过该游戏（您在上文亲自指定的游戏），否则在技术上无法用于敝 App。\n\n→ 任何用于敝 App 的米游社 / HoYoLAB 账号下的游戏账号，除非手动在游戏内启用展柜等相关内容的公开显示，否则敝 App 无权显示相关内容。"
+            "value" : "有几点需要您事先知悉的事项：\n\n→ 本 App 无法用来完成米游社 / HoYoLAB 新账号的注册与删除。请通过米游社 / HoYoLAB App 等由 MiHoYo / Cognosphere 官方提供的相关服务完成相关需求（可参见当前画面右上角的管理链接）。\n\n→ 任何用于本 App 的米游社 / HoYoLAB 新账号均已经游玩过您在上文指定的游戏，否则在技术上无法用于本 App。\n\n→ 任何用于本 App 的米游社 / HoYoLAB 账号下的游戏账号，除非手动在游戏内启用展柜等相关内容的公开显示，否则本 App 无法显示相关内容。"
           }
         },
         "zh-Hant" : {
@@ -4456,7 +4456,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请完成登入"
+            "value" : "请完成登陆"
           }
         },
         "zh-Hant" : {
@@ -4687,7 +4687,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请重新尝试登入。"
+            "value" : "请重新尝试登陆。"
           }
         },
         "zh-Hant" : {
@@ -4764,7 +4764,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "因下述资料尚未记入，本地账号资料保存失败："
+            "value" : "由于下述数据未记入，本地账号资料保存失败："
           }
         },
         "zh-Hant" : {
@@ -4918,7 +4918,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本地账号没能成功导出。"
+            "value" : "本地账号导出失败。"
           }
         },
         "zh-Hant" : {
@@ -4995,7 +4995,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "所有的本地账号已成功打包导出至:"
+            "value" : "所有本地账号已成功打包导出至:"
           }
         },
         "zh-Hant" : {
@@ -5762,7 +5762,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "抱歉，该服务器的登入功能暂时无法使用。我们正在努力寻求解决方案。目前您仍可以通过「自行填写有效米游社 / HoYoLAB Cookie」的方式来手动登入。"
+            "value" : "抱歉，该服务器的登陆功能暂时无法使用。我们正在努力寻求解决方案。目前您仍可以通过「自行填写有效米游社 / HoYoLAB Cookie」的方式来手动登入。"
           }
         },
         "zh-Hant" : {
@@ -5839,7 +5839,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在这个 HoYoLAB / 米游社账号内没有找到与该游戏对应的 UID。该账号必须至少用来游玩一次该游戏，否则便没有在敝 App 内「作为这个游戏的账号来使用」的意义。"
+            "value" : "在这个 HoYoLAB / 米游社账号内没有找到与该游戏对应的 UID。该账号必须至少用来游玩一次该游戏，否则无法在本 App 内使用。"
           }
         },
         "zh-Hant" : {
@@ -6763,7 +6763,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "了解如何对 米游社 / HoYoLAB 账号进行 管理 或 注销(删号)"
+            "value" : "了解如何管理或注销您的米游社 / HoYoLAB 账号"
           }
         },
         "zh-Hant" : {
@@ -6840,7 +6840,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "注销(删号)说明"
+            "value" : "注销账号说明"
           }
         },
         "zh-Hant" : {
@@ -6993,7 +6993,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "注销(删号) - HoYoLAB"
+            "value" : "注销账号 - HoYoLAB"
           }
         },
         "zh-Hant" : {
@@ -7070,7 +7070,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "注销(删号) - 米游社"
+            "value" : "注销账号 - 米游社"
           }
         },
         "zh-Hant" : {
@@ -7147,7 +7147,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\nHoYoLAB 账号的注销可借由任何设备使用上述链接来完成，也可以使用 HoYoLAB 的 App 来完成。"
+            "value" : "\nHoYoLAB 账号的注销可在任何设备上使用上述链接完成，您也可以使用 HoYoLAB App 来完成。"
           }
         },
         "zh-Hant" : {
@@ -7224,7 +7224,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n米游社期望用户使用手机或米游社App（iPhone）来完成账号注销（删除）。\n\n如果您使用的是 macOS，则可以将 Safari 浏览器的用户代理（UA, User-Agent）变更为 iPhone，以便看到账号删除专用链接入口。有关如何使用 macOS 上 Safari 中的开发者选单更改其用户代理的方法，请联系 Apple 支持。\n\n在敝 App 内直接点击上述链接的话，会在前往该页面时自动套用 iPhone 的用户代理（UA）。"
+            "value" : "\n米游社期望用户使用手机或米游社App 来完成账号注销。\n\n如果您使用的是 macOS，则可以将 Safari 浏览器的用户代理（User-Agent）变更为 iPhone，以便看到账号注销入口。有关使用 macOS 上 Safari 中的开发者菜单更改用户代理的方法，请联系 Apple 支持。\n\n在本 App 内直接点击上述链接会自动套用 iPhone 的用户代理。"
           }
         },
         "zh-Hant" : {
@@ -7301,7 +7301,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您认可并同意账号注销导致的后果：您将无法通过该账号登入（任何由米哈游 / Cognosphere 开发的）游戏相关服务，包括与该账号相关联的账号资讯、订阅和游戏的相关资讯，并永久丧失任何通过该账号访问其他服务的权利。"
+            "value" : "您认可并同意账号注销导致的后果：您将无法通过该账号登陆任何由米哈游 / Cognosphere 运营的游戏相关服务，包括与该账号相关联的账号资讯、订阅和游戏的相关资讯，并永久丧失任何通过该账号访问其他服务的权利。"
           }
         },
         "zh-Hant" : {
@@ -7378,7 +7378,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您可自行向米游社 / HoYoLAB 客户服务确认上述后果是否真实。"
+            "value" : "您可自行向米游社 / HoYoLAB 客户服务确认上述后果的真实性。"
           }
         },
         "zh-Hant" : {
@@ -7455,7 +7455,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该页面乃应 App Store 审委会之要求而实作。"
+            "value" : "本页面为满足 App Store 审核指南而制作。"
           }
         },
         "zh-Hant" : {
@@ -7532,7 +7532,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在 App 启动时，还原之前的页签"
+            "value" : "在 App 启动时，还原之前的页面"
           }
         },
         "zh-Hant" : {
@@ -7763,7 +7763,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在您的Apple Watch上无法借由iCloud同步本地账号时，得使用该功能。"
+            "value" : "在您的Apple Watch上无法借由iCloud同步本地账号时，请使用该功能。"
           }
         },
         "zh-Hant" : {
@@ -8071,7 +8071,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该时区设定仅用于正确显示至少下述通用原神资讯：深境螺旋排行榜、每日材料、官方游戏活动，等。"
+            "value" : "该时区设定仅用于正确显示下述原神通用资讯：深境螺旋排行榜、每日材料、官方游戏活动，等。"
           }
         },
         "zh-Hant" : {
@@ -8300,7 +8300,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这包括了原神的每日委托、星穹铁道的每日实训、绝区零的活跃度。受 HoYoLAB 管理的星穹铁道的 UID 的每日实训资讯无法由敝 App 获取。"
+            "value" : "这包括了原神的每日委托、星穹铁道的每日实训、绝区零的活跃度。受 HoYoLAB 管理的星穹铁道的 UID 的每日实训资讯无法由本 App 获取。"
           }
         },
         "zh-Hant" : {
@@ -8528,7 +8528,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst 应用中的 macOS 日期选择器不会显示输入面板。使用者只能手动选择所需的输入栏位，并直接在实体键盘上输入。"
+            "value" : "⚠️ macOS用户请手动选择所需的输入栏，并直接在键盘上输入内容。"
           }
         },
         "zh-Hant" : {
@@ -8680,7 +8680,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 星穹铁道與原神限定。"
+            "value" : "※ 星穹铁道与原神限定。"
           }
         },
         "zh-Hant" : {
@@ -8908,7 +8908,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "敝 App 或其随赠的小工具会尝试在针对某个本地账号获取实时便笺资讯时自动重新排定相关的通知。在每次排定时，都会尝试主动清除之前针对该本地账号所排定的任何不合理的尚未推送的通知。当且仅当系统设定允许敝 App 推送系统通知、且敝 App 有成功获取到实时便笺资讯时，才会在相关的偏好设定允许的情况下对相关的通知进行排定。"
+            "value" : "本 App 及 Widget 会尝试在针对某个本地账号获取实时便笺数据时自动重新排定相关的通知。在每次排定时，都会尝试主动清除之前针对该本地账号所排定的任何不合理的尚未推送的通知。当且仅当系统设定允许本 App 推送系统通知、且本 App 有成功获取到实时便笺数据时，才会在相关的偏好设定允许的情况下对相关的通知进行排定。"
           }
         },
         "zh-Hant" : {
@@ -9136,7 +9136,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "洞天财瓮满载提醒"
+            "value" : "洞天财瓮已满提醒"
           }
         },
         "zh-Hant" : {
@@ -10808,7 +10808,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本地账号管理器画面也可修改上述设定。"
+            "value" : "本地账号管理器页面也可修改上述设定。"
           }
         },
         "zh-Hant" : {
@@ -10884,7 +10884,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "对每个本地账号的通知开关"
+            "value" : "各本地账号通知开关"
           }
         },
         "zh-Hant" : {
@@ -11113,7 +11113,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这包括了原神的原粹树脂、星穹铁道的开拓力、绝区零的绝区电量。除了基于阈值的通知以外，也还会有玩家体力的满载通知。"
+            "value" : "这包括了原神的原粹树脂、星穹铁道的开拓力、绝区零的绝区电量。除了基于阈值的通知以外，也还会有玩家体力的回满通知。"
           }
         },
         "zh-Hant" : {
@@ -11341,7 +11341,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "除此之外，也还会有玩家体力的满载通知。"
+            "value" : "除此之外，也还会有玩家体力的回满通知。"
           }
         },
         "zh-Hant" : {
@@ -11723,7 +11723,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我们希望能将您已拥有的角色和在攻克深境螺旋时使用的角色资讯打包上传给 Snap.Hutao 深渊资料库（简称「HutaoDB」）以及披萨深渊资料库（PizzaAbyssDB）。您对此的准许将会使得 HutaoDB 和 PizzaAbyssDB 能提供更准确的深境螺旋角色使用率、队伍使用率等情况（均可以通过敝 App 查阅）。该上传资料也包含对应的原神 UID，但不会包括其他的原神账号资料。对 UID 的收集有助于 HutaoDB 永久拒绝来自作弊玩家的战报资料递交。"
+            "value" : "我们希望能将您已拥有的角色和在攻克深境螺旋时使用的角色资讯上传给 Snap.Hutao 深渊资料库（简称「HutaoDB」）以及披萨深渊资料库（PizzaAbyssDB）。您对此的准许将会使得 HutaoDB 和 PizzaAbyssDB 能提供更准确的深境螺旋角色使用率、队伍使用率等情况（均可以通过本 App 查阅）。该上传资料也包含对应的原神 UID，但不会包括其他的原神账号资料。对 UID 的收集有助于 HutaoDB 永久拒绝来自作弊玩家的数据上传。"
           }
         },
         "zh-Hant" : {
@@ -11800,7 +11800,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点此检阅与此有关的常见问题解答。"
+            "value" : "点此查看与此有关的常见问题解答。"
           }
         },
         "zh-Hant" : {
@@ -11954,7 +11954,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点此登入:"
+            "value" : "点此登录:"
           }
         },
         "zh-Hant" : {
@@ -12031,7 +12031,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点此重新登入:"
+            "value" : "点此重新登录:"
           }
         },
         "zh-Hant" : {
@@ -12108,7 +12108,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一次性读入该账号下的这几款游戏的所有区服的 UID"
+            "value" : "加载该账号下对应游戏的所有区服的 UID"
           }
         },
         "zh-Hant" : {
@@ -12185,7 +12185,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB 账号。相同的米游社 / HoYoLAB 账号下的每个游戏每个 UID 每个区服都登入一次的话，可能会让米游社 / HoYoLAB 服务器误解此账号登入了多少设备，导致 Cookie 提前失效。在这个读入过程中，如果发现与既存的本地账号重复的情况的话，则不再新增重复的账号，而是将既有账号的 Cookies、设备指纹、设备 ID 更新为最新的版本。"
+            "value" : "此选项有助于避免您的 Cookie 提前失效。"
           }
         },
         "zh-Hant" : {
@@ -12645,7 +12645,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您可以将动态岛从左边或右边滑动至中间以隐藏它。\n在锁定画面上向左滑动玩家体力计时器，即可关闭玩家体力计时器和动态岛。"
+            "value" : "您可以将灵动岛从左边或右边滑动至中间以隐藏它。\n在锁定画面上向左滑动玩家体力计时器，即可关闭玩家体力计时器和灵动岛。"
           }
         },
         "zh-Hant" : {
@@ -12721,7 +12721,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "玩家体力计时器依赖iOS的实时活动功能來运作。您可以点击今日标签下的任一本地账号的实时便笺旁边的三个点圆圈来启动它。"
+            "value" : "玩家体力计时器使用iOS的实时活动功能实现。您可以点击今日标签下的任一本地账号的实时便笺旁边的「更多」符号启动该功能。"
           }
         },
         "zh-Hant" : {
@@ -12798,7 +12798,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "前往系统设定以启用敝 App 的实时活动"
+            "value" : "前往系统设定以启用本 App 的实时活动"
           }
         },
         "zh-Hant" : {
@@ -12950,7 +12950,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "系统尚未准许本 App 的实时活动权限"
+            "value" : "未开启实时活动权限"
           }
         },
         "zh-Hant" : {

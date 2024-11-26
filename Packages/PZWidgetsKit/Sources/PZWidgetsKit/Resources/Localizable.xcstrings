@@ -66,7 +66,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "发起实时活动 (Live Activity)"
+            "value" : "启动实时活动"
           }
         },
         "zh-Hant" : {
@@ -142,7 +142,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "没能成功获取实时便笺。"
+            "value" : "未能获取实时便笺数据"
           }
         },
         "zh-Hant" : {
@@ -218,7 +218,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "当前系统设定不允许敝应用使用实时活动 (Live Activity)。"
+            "value" : "当前系统设定不允许本 App 使用实时活动 "
           }
         },
         "zh-Hant" : {

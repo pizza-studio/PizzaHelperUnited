@@ -298,7 +298,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] Cookie 尚未包含设备指纹资料、或相关资料失效。"
+            "value" : "[HoYoAPI错误] Cookie 尚未包含设备指纹数据、或相关数据失效。"
           }
         },
         "zh-Hant" : {
@@ -606,7 +606,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] Cookie 尚未包含 STokenV2 资料、或相关资料失效。"
+            "value" : "[HoYoAPI错误] Cookie 尚未包含 STokenV2 数据、或相关数据失效。"
           }
         },
         "zh-Hant" : {
@@ -2688,13 +2688,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "HK / Aomen / Taiwan"
+            "value" : "HK / Macao / Taiwan"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "HK / Aomen / Taiwán"
+            "value" : "HK / MO / Taiwán"
           }
         },
         "fil" : {
@@ -2736,7 +2736,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "HK / Aomen / Đài Loan"
+            "value" : "HK / MO / Đài Loan"
           }
         },
         "zh-Hans" : {

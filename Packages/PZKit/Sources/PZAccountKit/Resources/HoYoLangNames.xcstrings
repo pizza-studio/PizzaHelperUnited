@@ -167,7 +167,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deutsch (German)"
+            "value" : "German"
           }
         },
         "es" : {
@@ -221,7 +221,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "德文"
+            "value" : "德语"
           }
         },
         "zh-Hant" : {
@@ -375,7 +375,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "西班牙文"
+            "value" : "西班牙语"
           }
         },
         "zh-Hant" : {
@@ -452,7 +452,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "法文"
+            "value" : "法语"
           }
         },
         "zh-Hant" : {
@@ -529,7 +529,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "印尼文"
+            "value" : "印尼语"
           }
         },
         "zh-Hant" : {
@@ -606,7 +606,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "意大利文"
+            "value" : "意大利语"
           }
         },
         "zh-Hant" : {
@@ -683,7 +683,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "日文"
+            "value" : "日语"
           }
         },
         "zh-Hant" : {
@@ -760,7 +760,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "韩文/朝鲜文"
+            "value" : "韩语"
           }
         },
         "zh-Hant" : {
@@ -837,7 +837,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "葡萄牙文"
+            "value" : "葡萄牙语"
           }
         },
         "zh-Hant" : {
@@ -914,7 +914,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "俄文"
+            "value" : "俄语"
           }
         },
         "zh-Hant" : {
@@ -991,7 +991,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "泰文"
+            "value" : "泰语"
           }
         },
         "zh-Hant" : {
@@ -1068,7 +1068,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "土耳其文"
+            "value" : "土耳其语"
           }
         },
         "zh-Hant" : {
@@ -1145,7 +1145,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "越南文"
+            "value" : "越南语"
           }
         },
         "zh-Hant" : {
