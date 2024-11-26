@@ -452,7 +452,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "无法处理源数据时间戳"
+            "value" : "无法处理源数据时间戳。"
           }
         },
         "zh-Hant" : {
