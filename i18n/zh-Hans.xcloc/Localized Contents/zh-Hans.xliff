@@ -7,7 +7,7 @@
     <body>
       <trans-unit id="abyssRankKit.availableSince20230401" xml:space="preserve">
         <source>Available From 2023-04-01</source>
-        <target state="translated">自 2023-04-01 开始统计</target>
+        <target state="translated">自2023-04-01开始统计</target>
         <note/>
       </trans-unit>
       <trans-unit id="abyssRankKit.collection.1:%@%@%lld" xml:space="preserve">
@@ -166,7 +166,7 @@
     <body>
       <trans-unit id="enka.ASCV.summarzeToClipboard.asMD" xml:space="preserve">
         <source>Summarize to Clipboard as Markdown</source>
-        <target state="translated">以 Markdown 的形式写入剪贴板</target>
+        <target state="translated">以Markdown的形式写入剪贴板</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.ASCV.summarzeToClipboard.asText" xml:space="preserve">
@@ -204,18 +204,18 @@
       </trans-unit>
       <trans-unit id="enka.genshinStylePhotosForHSR.featureOption.disclaimer" xml:space="preserve">
         <source>This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875).</source>
-        <target state="translated">这套证件照可能在该 App 内的某些场合下无法起作用。另附免责声明：这套原神风格的角色证件照**并非出自内鬼泄漏的角色人设图稿**，而是利用[米哈游官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)渲染而成。
+        <target state="translated">这套证件照可能在该App内的某些场合下无法起作用。另附免责声明：这套原神风格的角色证件照**并非出自内鬼泄漏的角色人设图稿**，而是利用[米哈游官方放出的MMD模型](https://www.aplaybox.com/u/516827875)渲染而成。
 </target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.genshin" xml:space="preserve">
         <source>The background totem assets used for ID Photos of Genshin Impact characters in this app are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. These totems is visible only if “Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels” is disabled.</source>
-        <target state="translated">本 App 内显示的《原神》角色证件照的背景图腾乃是为了彰显该角色的元素能力属性而设定。该图腾素材取自《崩坏：星穹铁道》（水、岩、草这三个属性除外）。当「针对原神角色的证件照与面板启用名片背景」选项停用时，背景图腾才会显现。</target>
+        <target state="translated">本App内显示的《原神》角色证件照的背景图腾乃是为了彰显该角色的元素能力属性而设定。该图腾素材取自《崩坏：星穹铁道》（水、岩、草这三个属性除外）。当「针对原神角色的证件照与面板启用名片背景」选项停用时，背景图腾才会显现。</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.starRail" xml:space="preserve">
         <source>The background totem assets used for ID Photos of Star Rail in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem.</source>
-        <target state="translated">本 App 内显示的《崩坏：星穹铁道》角色证件照的背景图腾乃是为了同时彰显该角色的元素能力属性与命途而设定。元素能力属性体现在命途纹样的配色上。</target>
+        <target state="translated">本App内显示的《崩坏：星穹铁道》角色证件照的背景图腾乃是为了同时彰显该角色的元素能力属性与命途而设定。元素能力属性体现在命途纹样的配色上。</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.navTitle" xml:space="preserve">
@@ -225,7 +225,7 @@
       </trans-unit>
       <trans-unit id="enka.showCase.emptyShowCase.description" xml:space="preserve">
         <source>Either no detail-exposable characters in the showcase or (in case of Genshin Impact) the UID owner didn't enable "Show Character Details" in the game. If you are the UID owner, you may follow the following screenshot to config the showcase in the game.</source>
-        <target state="translated">展柜中没有可以显示详情的角色，或者（以《原神》为例）UID 所有者没有在游戏中启用「显示角色详情」。如果您是 UID 所有者，可以按照以下述戏画面撷图配置游戏中的展柜。</target>
+        <target state="translated">展柜中没有可以显示详情的角色，或者（以《原神》为例）UID所有者没有在游戏中启用「显示角色详情」。如果您是UID所有者，可以按照以下述戏画面撷图配置游戏中的展柜。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.considerHyperBloomElectroRoles" xml:space="preserve">
@@ -235,7 +235,7 @@
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.considerHyperBloomElectroRoles.explanation" xml:space="preserve">
         <source>Genshin Only. E.g.: Raiden Shogun with over-900 elemental master (and related 4-piece artifact sets) can team up with Baizhu, Furina, and Nahida to be the strongest full-auto guided remote hyperbloom team. This disobeys the initial character design of Raiden Shogun but is an acceptable and effective choice with significantly-reduced workload of building-up the entire team with significantly larger firing range than Shinobu-Yukuaki-based close-combat hyperbloom teams. Similar situations may apply to other electro characters in Genshin Impact.</source>
-        <target state="translated">举例：雷电将军在堆有至少 900 点元素精通（且使用有助于超绽放的圣遗物套装）的情况下可以与芙宁娜＆纳西妲＆白术组成最强的远程全自动脱手超绽放阵容。该阵容违背了雷电将军的数值模型，但培养角色所需的时间成本显著降低、且拥有比以久岐忍＆行秋为核心的近战超绽放阵容更远的射程范围。其余雷系角色可能会有类似的情况。该选项对星穹铁道角色无效。</target>
+        <target state="translated">举例：雷电将军在堆有至少900点元素精通（且使用有助于超绽放的圣遗物套装）的情况下可以与芙宁娜＆纳西妲＆白术组成最强的远程全自动脱手超绽放阵容。该阵容违背了雷电将军的数值模型，但培养角色所需的时间成本显著降低、且拥有比以久岐忍＆行秋为核心的近战超绽放阵容更远的射程范围。其余雷系角色可能会有类似的情况。该选项对星穹铁道角色无效。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.considerSwirls" xml:space="preserve">
@@ -275,7 +275,7 @@
       </trans-unit>
       <trans-unit id="settings.display.enkaStatus.defaultDBQueryHost" xml:space="preserve">
         <source>Current EnkaDB Query Host</source>
-        <target state="translated">目前的 EnkaDB 查询用服务器</target>
+        <target state="translated">目前的EnkaDB查询用服务器</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.enkaStatus.defaultDBQueryHost.GitHub" xml:space="preserve">
@@ -295,12 +295,12 @@
       </trans-unit>
       <trans-unit id="settings.display.enkaStatus.lastEnkaDBCheckDate" xml:space="preserve">
         <source>Database updates are previously checked at:</source>
-        <target state="translated">最近一次查询 Enka 数据更新的时间点</target>
+        <target state="translated">最近一次查询Enka数据更新的时间点</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.enkaStatus.sectionTitle" xml:space="preserve">
         <source>On-Device Enka Database Status</source>
-        <target state="translated">当前设备的本机 EnkaDB 数据库状况</target>
+        <target state="translated">当前设备的本机EnkaDB数据库状况</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.showCase.colorizeArtifactSubPropCounts" xml:space="preserve">
@@ -382,37 +382,37 @@
       </trans-unit>
       <trans-unit id="gachaKit.GMDB.clickHereToUpdateGMDB" xml:space="preserve">
         <source>Click Here to Update GachaMetaDB</source>
-        <target state="translated">点此更新 GachaMetaDB</target>
+        <target state="translated">点此更新GachaMetaDB</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GMDB.gmdbExpired.explanation" xml:space="preserve">
         <source>GachaMetaDB is out of date for handling certain gacha item entries in either the local app gacha entry database or from external sources. This DB contains crucial info for mapping ItemIDs and their translations, plus telling the rarity type of each gacha item.</source>
-        <target state="translated">这部设备上的 GachaMetaDB 已经过期、无法正常用来处理来自本 App 的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB 数据库包含了用以映射 ItemID 及其翻译的重要资讯，且记载了每个抽卡物品的稀有等级查询表。</target>
+        <target state="translated">这部设备上的GachaMetaDB已经过期、无法正常用来处理来自本App的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB数据库包含了用以映射ItemID及其翻译的重要资讯，且记载了每个抽卡物品的稀有等级查询表。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.DatabaseExpired" xml:space="preserve">
         <source>Local GachaMetaDB cache expired.</source>
-        <target state="translated">本机 GachaMetaDB 缓存已过期。</target>
+        <target state="translated">本机GachaMetaDB缓存已过期。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.EmptyFetchResult" xml:space="preserve">
         <source>Empty results retrieved while trying to online-update GachaMetaDB.</source>
-        <target state="translated">尝试更新 GachaMetaDB 缓存时，获取到的数据是空的。</target>
+        <target state="translated">尝试更新GachaMetaDB缓存时，获取到的数据是空的。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.ResultFetchFailed" xml:space="preserve">
         <source>Failed from attempting to to online-update GachaMetaDB.</source>
-        <target state="translated">尝试更新 GachaMetaDB 缓存时失败。</target>
+        <target state="translated">尝试更新GachaMetaDB缓存时失败。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.itemIDInvalid" xml:space="preserve">
         <source>ItemID Invalid.</source>
-        <target state="translated">ItemID 无效。</target>
+        <target state="translated">ItemID无效。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navDescription" xml:space="preserve">
         <source>This app does not contain paid gacha. The Gacha Record Manager in this app only allows users to manage their personal gacha records for some of the games supported by this app. // Your gacha records in this app will only be stored in the private iCloud space of your current Apple ID, as well as on any Apple devices that are signed in with that Apple ID and have this app installed and in-use, hence no privacy concerns needed. // Zenless Zone Zero is currently not supported by this feature.</source>
-        <target state="translated">本 App 不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被本 App 所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的 Apple ID 的私有 iCloud 空间内、以及任何登录了该 Apple ID 且有安装使用本 App 的 Apple 装置，不会有隐私上的安全问题。本 App 的抽卡记录管理功能现阶段不提供对绝区零的支持。</target>
+        <target state="translated">本App不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被本App所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的Apple ID的私有iCloud空间内、以及任何登录了该Apple ID且有安装使用本App的Apple装置，不会有隐私上的安全问题。本App的抽卡记录管理功能现阶段不提供对绝区零的支持。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navTitle" xml:space="preserve">
@@ -427,7 +427,7 @@
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.invalidURL" xml:space="preserve">
         <source>[ParseGachaURLError] URL invalid.</source>
-        <target state="translated">[ParseGachaURLError] URL 无效。</target>
+        <target state="translated">[ParseGachaURLError] URL无效。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noAuthenticationKey" xml:space="preserve">
@@ -447,12 +447,12 @@
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noSignType" xml:space="preserve">
         <source>[ParseGachaURLError] Sign type missing.</source>
-        <target state="translated">[ParseGachaURLError] Sign 类型资讯缺失。</target>
+        <target state="translated">[ParseGachaURLError] Sign类型资讯缺失。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.urlGenerationFailure" xml:space="preserve">
         <source>[ParseGachaURLError] Failed from generating gacha URL.</source>
-        <target state="translated">[ParseGachaURLError] 没能成功生成抽卡 URL。</target>
+        <target state="translated">[ParseGachaURLError] 没能成功生成抽卡URL。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.alertToast.succeeded" xml:space="preserve">
@@ -536,12 +536,12 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.gigf" xml:space="preserve">
         <source>GIGF (Genshin Impact Gacha-Exchangeable Format) indicates UIGF v3.0 and earlier. The feature of importing these obsolete formats is only considered for importing old backup files generated by this app.</source>
-        <target state="translated">GIGF（原神专用抽卡记录交换格式）是对 UIGF v3.0 及更早版本的 UIGF 的统称。这些版本的规格已经被全部淘汰。对已淘汰规格的导入支持仅为满足用户导入既有备份数据之目的。</target>
+        <target state="translated">GIGF（原神专用抽卡记录交换格式）是对UIGF v3.0及更早版本的UIGF的统称。这些版本的规格已经被全部淘汰。对已淘汰规格的导入支持仅为满足用户导入既有备份数据之目的。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.gigf.minimumSupportedVersion" xml:space="preserve">
         <source>This app does not support importing GIGF formats older than UIGF v2.0 due to the lack of too many crucial information fields.</source>
-        <target state="translated">本 App 无法支持对比 UIGF v2.0 更早的 GIGF 格式的导入，因为欠缺了太多的关键资讯。</target>
+        <target state="translated">本App无法支持对比UIGF v2.0更早的GIGF格式的导入，因为欠缺了太多的关键资讯。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.gigf.timeZone" xml:space="preserve">
@@ -549,20 +549,20 @@ Empty selection indicates selecting all profiles.</source>
  - For such files generated by Snap Hutao (v1.7.16_2023-11-10 and earlier) in these deprecated formats, please set the fallback time zone to UTC+0.
  - For such files generated by Xunkong (v1.4.4_2024-04-24) in these deprecated formats, please set the fallback time zone to the server time zone. Xunkong provided no UIGF v2.4 support and they introduced the gacha timezone support with UIGF v3.0 support starts from v1.5.0 update on 2024-09-21.
  - For such files generated by Teyvat Helper (YShelper), please set the fallback time to the device time where this file was generated and exported by Teyvat Helper.</source>
-        <target state="translated">⚠︎ UIGF v2.3 及之前的规格的 JSON 文件 / Excel 试算簿不包含有效的时区资讯，且每一款 App 在导出这些旧版规格的文件时对时区的处理规则各有差异。
- - 如果您尝试导入用「Snap.HuTao」旧版(v1.7.16_2023-11-10 为止的版本) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为 UTC+0。
- - 如果您尝试导入用「寻空」旧版 (v1.4.4_2024-04-24) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为服务器时区。「寻空」未曾提供过对 UIGF v2.4 的支持，且从 v1.5.0 版 (2024-09-21) 开始才同时提供了对抽卡时区与 UIGF v3.0 的支持。
+        <target state="translated">⚠︎ UIGF v2.3及之前的规格的JSON文件 / Excel试算簿不包含有效的时区资讯，且每一款App在导出这些旧版规格的文件时对时区的处理规则各有差异。
+ - 如果您尝试导入用「Snap.HuTao」旧版(v1.7.16_2023-11-10为止的版本) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为UTC+0。
+ - 如果您尝试导入用「寻空」旧版 (v1.4.4_2024-04-24) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为服务器时区。「寻空」未曾提供过对UIGF v2.4的支持，且从v1.5.0版 (2024-09-21) 开始才同时提供了对抽卡时区与UIGF v3.0的支持。
  - 如果您尝试导入由「提瓦特小助手 (YShelper)」导出的这些旧规格的抽卡记录的话，请将缺省值设定为当初用以导出该文件时的设备的系统时区。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.srgfv1" xml:space="preserve">
         <source>SRGF v1.0, established by the UIGF committee, is an exchangeable format for gacha records of Star Rail, a game produced by Cognosphere and MiHoYo. Although this format is marked as a vintage format and is replaced by UIGF v4.0, there are some excellent apps on Windows which only conforms to SRGF v1.0, hence the option here for compatibility purposes.</source>
-        <target state="translated">SRGF v1.0 是由 UIGF 委员会制定的资讯交换格式，用于 Cognosphere 和米哈游制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由 UIGF v4.0 取代，但两者之间可以进行无损的双向转换。此外，Windows 平台上有一些只支持 SRGF v1.0 的优秀 App，因此这里提供了兼容性选项。</target>
+        <target state="translated">SRGF v1.0是由UIGF委员会制定的资讯交换格式，用于Cognosphere和米哈游制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由UIGF v4.0取代，但两者之间可以进行无损的双向转换。此外，Windows平台上有一些只支持SRGF v1.0的优秀App，因此这里提供了兼容性选项。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4" xml:space="preserve">
         <source>UIGF v4.0, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo.</source>
-        <target state="translated">UIGF v4.0 是由 UIGF 委员会制定的聚合型资讯交换格式，用于多款由 Cognosphere 和米哈游制作发行的的电玩们的抽卡记录的交换。</target>
+        <target state="translated">UIGF v4.0是由UIGF委员会制定的聚合型资讯交换格式，用于多款由Cognosphere和米哈游制作发行的的电玩们的抽卡记录的交换。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.info.time" xml:space="preserve">
@@ -717,12 +717,12 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.quickFetch4GenshinMiyousheUIDs" xml:space="preserve">
         <source>or tap an account to fetch (Miyoushe Genshin UIDs only):</source>
-        <target state="translated">或点击下述米游社原神 UID 直接获取记录:</target>
+        <target state="translated">或点击下述米游社原神UID直接获取记录:</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.copyThisURL" xml:space="preserve">
         <source>Copy this URL to clipboard</source>
-        <target state="translated">将该 URL 复制到剪贴板</target>
+        <target state="translated">将该URL复制到剪贴板</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.forceOverride" xml:space="preserve">
@@ -787,7 +787,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.management.uidAndGameToPurge" xml:space="preserve">
         <source>Game &amp; UID to Delete</source>
-        <target state="translated">要删除的记录所属的游戏与 UID</target>
+        <target state="translated">要删除的记录所属的游戏与UID</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.exchangeGachaRecords" xml:space="preserve">
@@ -797,12 +797,12 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.menu.inheritCloudDataFromPreviousVersions" xml:space="preserve">
         <source>Inherit iCloud Gacha Records from old Pizza Apps</source>
-        <target state="translated">从旧版披萨 App 继承云端抽卡记录</target>
+        <target state="translated">从旧版披萨App继承云端抽卡记录</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.listCloudDataFromPreviousVersions" xml:space="preserve">
         <source>List iCloud Gacha Records from old Pizza Apps</source>
-        <target state="translated">查看旧版披萨 App 的云端抽卡记录</target>
+        <target state="translated">查看旧版披萨App的云端抽卡记录</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.rebuildGachaUIDList" xml:space="preserve">
@@ -972,7 +972,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.uigf.affLink.[UIGF](https://uigf.org/)" xml:space="preserve">
         <source>[About UIGF committee and their established gacha exchangeable formats, incl. UIGF, SRGF, etc.](https://uigf.org/)</source>
-        <target state="translated">[关于 UIGF 组织及其所规范的抽卡记录交换标准 (UIGF、SRGF 等)](https://uigf.org/)</target>
+        <target state="translated">[关于UIGF组织及其所规范的抽卡记录交换标准 (UIGF、SRGF等)](https://uigf.org/)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1213,7 +1213,7 @@ Empty selection indicates selecting all profiles.</source>
     <body>
       <trans-unit id="aboutKit.3rdParty.headline" xml:space="preserve">
         <source>Our app uses the following open source components and third-party APIs, and we would like to thank their authors.</source>
-        <target state="translated">本 App 软件使用了以下开源组件和第三方API，在此向其作者表示感谢。</target>
+        <target state="translated">本App软件使用了以下开源组件和第三方API，在此向其作者表示感谢。</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.3rdParty.navTitle" xml:space="preserve">
@@ -1243,7 +1243,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.aboutView.navTitle.app" xml:space="preserve">
         <source>About the App</source>
-        <target state="translated">关于本 App</target>
+        <target state="translated">关于本App</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.aboutView.navTitle.crew" xml:space="preserve">
@@ -1263,7 +1263,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.appStoreReview.navTitle" xml:space="preserve">
         <source>Review on App Store</source>
-        <target state="translated">在 App Store 评分</target>
+        <target state="translated">在App Store评分</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.chatrooms.header" xml:space="preserve">
@@ -1273,7 +1273,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.chatrooms.joinQQGroup" xml:space="preserve">
         <source>Join QQ Chat Group</source>
-        <target state="translated">加入 QQ 群</target>
+        <target state="translated">加入QQ群</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.chatrooms.joinTelegram" xml:space="preserve">
@@ -1338,7 +1338,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.contactMethod.qq.channel" xml:space="preserve">
         <source>QQ Channel</source>
-        <target state="translated">QQ 频道</target>
+        <target state="translated">QQ频道</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contactMethod.qq.group.initials" xml:space="preserve">
@@ -1373,12 +1373,12 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.koni" xml:space="preserve">
         <source>App Icon Illustrator, The Pizza Helper (v5 Engine Testflight)</source>
-        <target state="translated">App 图标画师 (统一披萨小助手 v5 引擎 TF 测试)</target>
+        <target state="translated">App图标画师 (统一披萨小助手v5引擎TF测试)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.lava" xml:space="preserve">
         <source>App Icon Illustrator, Pizza Helper for HSR</source>
-        <target state="translated">App 图标画师 (星铁披萨小助手)</target>
+        <target state="translated">App图标画师 (星铁披萨小助手)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.xinzoruo" xml:space="preserve">
@@ -1439,7 +1439,7 @@ App 图标画师 (统一披萨小助手 v5)</target>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.category.i18n.current.description" xml:space="preserve">
         <source>The primary languages of this app are English, Traditional Chinese, Simplified Chinese, and Japanese. All other languages are secondary, as no one in the development team can fluently understand or use them. We rely on ChatGPT to create draft translations for these languages, and we warmly welcome volunteers who wish to help improve them. Having a Mac with Xcode 16 (or a later version) installed will make it much easier for contributors to participate.</source>
-        <target state="translated">本 App 的主要语言为英文、繁体中文、简体中文及日文。其他语言属次要语言，因为开发团队中无人能理解或使用这些语言。我们使用 ChatGPT 为这些语言准备了一份翻译草稿，并欢迎有志之士协助改善翻译。若参加者拥有安装了 Xcode 16（或更新版本）的 Mac 电脑，将会大幅简化翻译作业。</target>
+        <target state="translated">本App的主要语言为英文、繁体中文、简体中文及日文。其他语言属次要语言，因为开发团队中无人能理解或使用这些语言。我们使用ChatGPT为这些语言准备了一份翻译草稿，并欢迎有志之士协助改善翻译。若参加者拥有安装了Xcode 16（或更新版本）的Mac电脑，将会大幅简化翻译作业。</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.category.i18n.previous" xml:space="preserve">
@@ -1521,9 +1521,9 @@ App 图标画师 (统一披萨小助手 v5)</target>
         <source>This app does not have paywalls. However, we do accept donations. Please note that the following is all no-cost donations and we will not provide you with any additional services. 
 
 We promise that your donation will only be used to cover the direct costs of the App development process, including but not limited to the annual fee for Apple Developer Program, etc. Any amount donated beyond this cost will be re-donated in full. We appreciate your support.</source>
-        <target state="translated">本 App 无须付费即可全功能使用、不存在所谓的「付费墙」。然而，我们接受捐赠。请注意，以下捐赠均为免费捐赠，我们不会为您提供任何额外的服务。
+        <target state="translated">本App无须付费即可全功能使用、不存在所谓的「付费墙」。然而，我们接受捐赠。请注意，以下捐赠均为免费捐赠，我们不会为您提供任何额外的服务。
 
-我们承诺，您的捐款将仅用于支付 App 开发过程中产生的直接费用，包括但不限于 Apple 开发者计划的年费等。超出成本的捐款将全额再次捐出。感谢您的支持。</target>
+我们承诺，您的捐款将仅用于支付App开发过程中产生的直接费用，包括但不限于Apple开发者计划的年费等。超出成本的捐款将全额再次捐出。感谢您的支持。</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.donation.navTitle" xml:space="preserve">
@@ -1562,7 +1562,7 @@ We promise that your donation will only be used to cover the direct costs of the
 - The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.
 - The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”.</source>
         <target state="translated">- 是「原神披萨小助手」与「星铁披萨小助手」的继任者，受次世代「统一披萨引擎」的加持。
-- 本 App 的程序部分以 AGPLv3 许可证释出源代码。
+- 本App的程序部分以AGPLv3许可证释出源代码。
 - 披萨小助手及其前身与米哈游股份有限公司（及其子公司）无牵涉。
 - 下述游戏的商标与内容材料均归米哈游股份有限公司所有：《原神》《崩坏：星穹铁道》《绝区零》。</target>
         <note/>
@@ -1794,7 +1794,7 @@ We promise that your donation will only be used to cover the direct costs of the
       </trans-unit>
       <trans-unit id="watch.sync.tips" xml:space="preserve">
         <source>Please wait for the data to sync from iCloud. If you are on TestFlight, you probably have to force-push the local profiles to this watch from the iOS version of this app.</source>
-        <target state="translated">请等待账号从iCloud同步。如果您使用的是 TestFlight 版本的话，您可能需要通过本 App 的 iOS 版强制向当前手表推送本地账号数据。</target>
+        <target state="translated">请等待账号从iCloud同步。如果您使用的是TestFlight版本的话，您可能需要通过本App的iOS版强制向当前手表推送本地账号数据。</target>
         <note/>
       </trans-unit>
       <trans-unit id="watch.widget.settings.sync.frequency.title" xml:space="preserve">
@@ -1855,7 +1855,7 @@ Retrieved</source>
       </trans-unit>
       <trans-unit id="app.dailynote.card.error.pleaseCheckAtProfileMgr" xml:space="preserve">
         <source>Please go to the Settings Page to check possible connectivity issues with this local profile.</source>
-        <target state="translated">请前往 App 设定页面检查该本地账号的网络连接故障。</target>
+        <target state="translated">请前往App设定页面检查该本地账号的网络连接故障。</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.dailynote.card.expedition.label" xml:space="preserve">
@@ -1945,7 +1945,7 @@ Retrieved</source>
       </trans-unit>
       <trans-unit id="app.dailynote.noCard.suggestion" xml:space="preserve">
         <source>No local profile found on this device. You may switch to the App Settings page and add one. :)</source>
-        <target state="translated">尚未发现本地账号。请前往 App 设定页面新增一个本地账号。</target>
+        <target state="translated">尚未发现本地账号。请前往App设定页面新增一个本地账号。</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.language.restartRequired.description" xml:space="preserve">
@@ -1954,11 +1954,11 @@ Retrieved</source>
 We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
 
 This app will quit after you confirm this message.</source>
-        <target state="translated">在 macOS/iOS 上更改 App 的 UI 语言设定时，App 需要重新启动，以确保新的语言设定生效。即使用户通过系统设定手动更改语言设定，仍然会提示需要重新启动 App，且届时这个提示将由 macOS/iOS 系统来发出，而非本 App。
+        <target state="translated">在macOS/iOS上更改App的UI语言设定时，App需要重新启动，以确保新的语言设定生效。即使用户通过系统设定手动更改语言设定，仍然会提示需要重新启动App，且届时这个提示将由macOS/iOS系统来发出，而非本App。
 
-我们在这里设定了语言切换器，以帮助用户节省几秒钟的时间。这种设计对注意力缺陷涣散障碍（ADHD）患者非常友好，因为 ADHD 患者在翻阅 iOS/macOS 系统设定中的多层页面时，往往容易彻底忘记他们原本要做的事情。
+我们在这里设定了语言切换器，以帮助用户节省几秒钟的时间。这种设计对注意力缺陷涣散障碍（ADHD）患者非常友好，因为ADHD患者在翻阅iOS/macOS系统设定中的多层页面时，往往容易彻底忘记他们原本要做的事情。
 
-确认此消息后，App 将会退出。</target>
+确认此消息后，App将会退出。</target>
         <note/>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">
@@ -1988,7 +1988,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profile.label.cookie" xml:space="preserve">
         <source>Personal Cookies</source>
-        <target state="translated">个人 Cookie</target>
+        <target state="translated">个人Cookie</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.editDetails" xml:space="preserve">
@@ -2003,7 +2003,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profile.label.fp.extraNotice.zzz" xml:space="preserve">
         <source>⚠︎ Zenless Zone Zero UIDs governed by Miyoushe require the user to manually fill in his / her device fingerprint by himself / herself.</source>
-        <target state="translated">⚠︎ 如果您的绝区零 UID 受米游社管辖的话，您需要自备设备指纹。</target>
+        <target state="translated">⚠︎ 如果您的绝区零UID受米游社管辖的话，您需要自备设备指纹。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.game" xml:space="preserve">
@@ -2023,7 +2023,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profile.login.sectionHeader" xml:space="preserve">
         <source>Login your HoYoLAB / Miyoushe Account</source>
-        <target state="translated">登录您的 HoYoLAB / 米游社账号</target>
+        <target state="translated">登录您的HoYoLAB / 米游社账号</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.account.qr_code_login.check_scanned" xml:space="preserve">
@@ -2038,7 +2038,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.account.qr_code_login.footer" xml:space="preserve">
         <source>Please use MiYouShe app to scan the QR code. You may also want to screenshot this QR code for the scanning.</source>
-        <target state="translated">请使用米游社 App 扫描该二维码。您也可以将该二维码用屏幕截图的方式存下来扫描。</target>
+        <target state="translated">请使用米游社App扫描该二维码。您也可以将该二维码用屏幕截图的方式存下来扫描。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.account.qr_code_login.not_scanned_alert" xml:space="preserve">
@@ -2053,7 +2053,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.account.qr_code_login.open_miyoushe_mas_page" xml:space="preserve">
         <source>Get Miyoushe from App Store</source>
-        <target state="translated">从 App Store 获取米游社 App</target>
+        <target state="translated">从App Store获取米游社App</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.account.qr_code_login.regenerate_qrcode" xml:space="preserve">
@@ -2078,7 +2078,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.1" xml:space="preserve">
         <source>To get resin and other data from HoYoLAB / Miyoushe, UID and login cookie of your account is needed. After logging into HoYoLAB / Miyoushe, we will store them locally as well as on your private iCloud. Then our app will use the stored UID and cookie to get the resin and other information in a way similar to HoYoLAB / Miyoushe app, then display them on your widget. Your private information will not be sent to other places other than HoYoLAB / Miyoushe and iCloud, including us, so your personal information will be very secure. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program.</source>
-        <target state="translated">为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据资讯。您的个人资讯不会发送给任何人，包括我们自己。您的个人资讯将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。</target>
+        <target state="translated">为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB的方式获取您的游戏内的数据资讯。您的个人资讯不会发送给任何人，包括我们自己。您的个人资讯将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.2" xml:space="preserve">
@@ -2088,7 +2088,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.title.1" xml:space="preserve">
         <source>How this App work?</source>
-        <target state="translated">关于本 App 的工作原理</target>
+        <target state="translated">关于本App的工作原理</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.title.2" xml:space="preserve">
@@ -2098,17 +2098,17 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction" xml:space="preserve">
         <source>Click the "Done" button at the top-trailing corner of the app screen after you finish login to HoYoLAB in the following webpage. If you are prompted for CAPTCHA, please finish it.</source>
-        <target state="translated">请在打开的网页完成登录 HoYoLab 操作后点击「完成」。如果弹出人机验证的话，请完成之。</target>
+        <target state="translated">请在打开的网页完成登录HoYoLab操作后点击「完成」。如果弹出人机验证的话，请完成之。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.passwordInputSafetyExplanation" xml:space="preserve">
         <source>To ensure you feel safe with this, here’s how it works: Your password input is protected by macOS built-in SecureEventInputAPI (or its equivalent on iOS), and then it will be directly handled by HoYoLAB login webpage. This is the nature of how WKWebView gets designed by Apple. Nobody else can interfere / intercept this process, nor this app. You can see that you cannot switch to 3rd-party input methods while the password is receiving inputs from the user.</source>
-        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登录网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括本 App。您会发现，在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。</target>
+        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到macOS内置的SecureEventInputAPI（或iOS上的等效功能）的保护，然后将直接由HoYoLAB登录网页处理。这是Apple对WKWebView的设计使然。其他人无法干扰或截听这个过程，包括本App。您会发现，在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.specialWarning" xml:space="preserve">
         <source>⚠️ 3rd-party sign-in services like Google, Facebook, Twitter, Sign-in-with-Apple, etc. ARE NOT TECHNICALLY SUPPORTABLE IN THIS APP, please sign in with your username &amp; password.</source>
-        <target state="translated">⚠️ 通过 Google，Facebook，Twitter 或 Sign-in-with-Apple 等第三方服务登录 HoYoLAB 的方式不受本 App 支持，请使用账号密码登录。</target>
+        <target state="translated">⚠️ 通过Google，Facebook，Twitter或Sign-in-with-Apple等第三方服务登录HoYoLAB的方式不受本App支持，请使用账号密码登录。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.notice.bewareof" xml:space="preserve">
@@ -2121,11 +2121,11 @@ This app will quit after you confirm this message.</source>
 → A related game account (under the managment of its related HoYoLAB / Miyoushe account) must enable the public visibility of the character showcase through in-game settings in order to let the related information displayable in this app.</source>
         <target state="translated">有几点需要您事先知悉的事项：
 
-→ 本 App 无法用来完成米游社 / HoYoLAB 新账号的注册与删除。这类流程得通过米游社 / HoYoLAB App 等由 MiHoYo / Cognosphere 官方提供的相关服务来完成（可参见当前画面右上角的管理链接）。
+→ 本App无法用来完成米游社 / HoYoLAB新账号的注册与删除。这类流程得通过米游社 / HoYoLAB App等由MiHoYo / Cognosphere官方提供的相关服务来完成（可参见当前画面右上角的管理链接）。
 
-→ 任何用于本 App 的米游社 / HoYoLAB 新账号均已经至少用来游玩过该游戏（您在上文亲自指定的游戏），否则在技术上无法用于敝 App。
+→ 任何用于本App的米游社 / HoYoLAB新账号均已经至少用来游玩过该游戏（您在上文亲自指定的游戏），否则在技术上无法用于敝App。
 
-→ 任何用于本 App 的米游社 / HoYoLAB 账号下的游戏账号，除非手动在游戏内启用展柜等相关内容的公开显示，否则本 App 无权显示相关内容。</target>
+→ 任何用于本App的米游社 / HoYoLAB账号下的游戏账号，除非手动在游戏内启用展柜等相关内容的公开显示，否则本App无权显示相关内容。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.pleaseFinish.title" xml:space="preserve">
@@ -2185,12 +2185,12 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.importLegacyProfiles.title" xml:space="preserve">
         <source>Inherit Previously-Used Local Accounts</source>
-        <target state="translated">导入旧版 App 的本地账号</target>
+        <target state="translated">导入旧版App的本地账号</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.label.select" xml:space="preserve">
         <source>Select Your Game UID</source>
-        <target state="translated">选择您的 UID</target>
+        <target state="translated">选择您的UID</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.lastTimeResetLocalProfileDB:%@" xml:space="preserve">
@@ -2200,7 +2200,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.login.error.no.profileMgr.found" xml:space="preserve">
         <source>This HoYoLAB / Miyoushe account is not bound to any game character.</source>
-        <target state="translated">该米游社 / HoYoLAB 账号未绑定游戏角色。</target>
+        <target state="translated">该米游社 / HoYoLAB账号未绑定游戏角色。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.login.manual.1" xml:space="preserve">
@@ -2220,7 +2220,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.loginError.noGameUIDFound" xml:space="preserve">
         <source>No UIDs found against the specified game. This HoYoLAB / Miyoushe account is required to play the game for at least once before being logged in via this app against this game.</source>
-        <target state="translated">在这个 HoYoLAB / 米游社账号内没有找到与该游戏对应的 UID。该账号必须至少用来游玩一次该游戏，否则便没有在本 App 内「作为这个游戏的账号来使用」的意义。</target>
+        <target state="translated">在这个HoYoLAB / 米游社账号内没有找到与该游戏对应的UID。该账号必须至少用来游玩一次该游戏，否则便没有在本App内「作为这个游戏的账号来使用」的意义。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.manage.title" xml:space="preserve">
@@ -2307,7 +2307,7 @@ This app will quit after you confirm this message.</source>
         <source>
 The above link works on all devices. Users can also use HoYoLAB App (iPhone) to finish the account withdrawal (deletion).</source>
         <target state="translated">
-HoYoLAB 账号的注销可通过任何设备使用上述链接来完成，也可以使用 HoYoLAB 的 App 来完成。</target>
+HoYoLAB账号的注销可通过任何设备使用上述链接来完成，也可以使用HoYoLAB的App来完成。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.readme.miyoushe.specialNotice" xml:space="preserve">
@@ -2320,29 +2320,29 @@ The above link, if directly clicked, will automatically apply the user-agent of 
         <target state="translated">
 米游社期望用户使用手机或米游社App（iPhone）来完成账号注销（删除）。
 
-如果您使用的是 macOS，则可以将 Safari 浏览器的用户代理（UA, User-Agent）变更为 iPhone，以便看到账号删除专用链接入口。有关如何使用 macOS 上 Safari 中的开发者选单更改其用户代理的方法，请联系 Apple 支持。
+如果您使用的是macOS，则可以将Safari浏览器的用户代理（UA, User-Agent）变更为iPhone，以便看到账号删除专用链接入口。有关如何使用macOS上Safari中的开发者选单更改其用户代理的方法，请联系Apple支持。
 
-在本 App 内直接点击上述链接的话，会在前往该页面时自动套用 iPhone 的用户代理（UA）。</target>
+在本App内直接点击上述链接的话，会在前往该页面时自动套用iPhone的用户代理（UA）。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.warning" xml:space="preserve">
         <source>You acknowledge and agree that as a result of deleting your Account, you will lose access to all services related to all games developed by MiHoYo / Cognosphere, including the account information, subscriptions and all game-related information linked to such Account and permanently lose the possibility to access other services through the Account.</source>
-        <target state="translated">您认可并同意账号注销导致的后果：您将无法通过该账号登录（任何由米哈游 / Cognosphere 开发的）游戏相关服务，包括与该账号相关联的账号资讯、订阅和游戏的相关资讯，并永久丧失任何通过该账号访问其他服务的权利。</target>
+        <target state="translated">您认可并同意账号注销导致的后果：您将无法通过该账号登录（任何由米哈游 / Cognosphere开发的）游戏相关服务，包括与该账号相关联的账号资讯、订阅和游戏的相关资讯，并永久丧失任何通过该账号访问其他服务的权利。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.warning.footer" xml:space="preserve">
         <source>You may confirm this consequence by consulting HoYoLAB / Miyoushe support.</source>
-        <target state="translated">您可自行向米游社 / HoYoLAB 客户服务确认上述后果是否真实。</target>
+        <target state="translated">您可自行向米游社 / HoYoLAB客户服务确认上述后果是否真实。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.whyAddedThisPage.description" xml:space="preserve">
         <source>This page is made in compliance with what requested by App Store Review Board.</source>
-        <target state="translated">该页面乃应 App Store 审委会之要求而实作。</target>
+        <target state="translated">该页面乃应App Store审委会之要求而实作。</target>
         <note/>
       </trans-unit>
       <trans-unit id="setting.display.restoreTabOnLaunching" xml:space="preserve">
         <source>Restore previous tab on launch</source>
-        <target state="translated">在 App 启动时，还原之前的页签</target>
+        <target state="translated">在App启动时，还原之前的页签</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.appLanguage.title" xml:space="preserve">
@@ -2352,7 +2352,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push" xml:space="preserve">
         <source>Force-push your local profiles to paired Apple Watch</source>
-        <target state="translated">将本地账号全部推送至已配对的 Apple Watch</target>
+        <target state="translated">将本地账号全部推送至已配对的Apple Watch</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push.footer" xml:space="preserve">
@@ -2362,12 +2362,12 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push.received" xml:space="preserve">
         <source>Successfully retrieved the following local profiles from iOS device:</source>
-        <target state="translated">成功从 iOS 设备接收到下述本地账号:</target>
+        <target state="translated">成功从iOS设备接收到下述本地账号:</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.disclaimer.requiringAppRebootToApplySettings" xml:space="preserve">
         <source>This requires restarting the app to take full effect.</source>
-        <target state="translated">该设定的变更需要重新启动 App 方可生效。</target>
+        <target state="translated">该设定的变更需要重新启动App方可生效。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.generalSettings.sectionHeader" xml:space="preserve">
@@ -2392,7 +2392,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.dailyTask.footer" xml:space="preserve">
         <source>This includes Daily Task (Genshin Impact), Daily Training (Star Rail), and Vitality (Zenless Zone Zero). Star Rail UIDs governed by HoYoLAB won’t have Daily Training notifications from this app.</source>
-        <target state="translated">这包括了原神的每日委托、星穹铁道的每日实训、绝区零的活跃度。受 HoYoLAB 管理的星穹铁道的 UID 的每日实训资讯无法由本 App 获取。</target>
+        <target state="translated">这包括了原神的每日委托、星穹铁道的每日实训、绝区零的活跃度。受HoYoLAB管理的星穹铁道的UID的每日实训资讯无法由本App获取。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.dailyTask.header" xml:space="preserve">
@@ -2407,7 +2407,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.dateTimePicker.macCatalystNotice" xml:space="preserve">
         <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
-        <target state="translated">⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst  App 中的 macOS 日期选择器不会显示输入面板。用户只能手动选择所需的输入栏位，并直接在实体键盘上输入。</target>
+        <target state="translated">⚠️ 由于UIKit到AppKit桥接框架的限制，macCatalyst  App中的macOS日期选择器不会显示输入面板。用户只能手动选择所需的输入栏位，并直接在实体键盘上输入。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.allow" xml:space="preserve">
@@ -2432,7 +2432,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.faq.howNotificationsGetScheduled" xml:space="preserve">
         <source>This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note data for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note data, in cases where the relevant preferences permit it.</source>
-        <target state="translated">本 App 或其随赠的小工具会尝试在针对某个本地账号获取实时便笺资讯时自动重新排定相关的通知。在每次排定时，都会尝试主动清除之前针对该本地账号所排定的任何无效的尚未推送的通知。当且仅当系统设定允许本 App 推送系统通知、且本 App 有成功获取到实时便笺资讯时，才会在相关的偏好设定允许的情况下对相关的通知进行排定。</target>
+        <target state="translated">本App或其随赠的小工具会尝试在针对某个本地账号获取实时便笺资讯时自动重新排定相关的通知。在每次排定时，都会尝试主动清除之前针对该本地账号所排定的任何无效的尚未推送的通知。当且仅当系统设定允许本App推送系统通知、且本App有成功获取到实时便笺资讯时，才会在相关的偏好设定允许的情况下对相关的通知进行排定。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.giRealmCurrency.allow" xml:space="preserve">
@@ -2517,7 +2517,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.insufficientSystemPrivileges" xml:space="preserve">
         <source>This app is not yet authorized in system settings to push notifications.</source>
-        <target state="translated">本 App 尚需系统开放通知权限。</target>
+        <target state="translated">本App尚需系统开放通知权限。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.katheryneRewards.datePicker" xml:space="preserve">
@@ -2617,7 +2617,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.privacy.abyssDataCollect.detail" xml:space="preserve">
         <source>We are looking forward to collect the Genshin characters you own and you used in the Spiral Abyss and send them to Snap.Hutao Database (i.e. HutaoDB) and Pizza DB. Allowing us to collect the data will help HutaoDB &amp; PizzaAbyssDB to supply more-accurate information of the real-time Spiral Abyss Chacacter Usage Rate, Team Usage Rate, etc. information available-to-watch in the App. The information also consists of the related in-game Genshin UID but no other of your game account information to help HutaoDB potentially refuse forged records from identified cheaters.</source>
-        <target state="translated">我们希望能将您已拥有的角色和在攻克深境螺旋时使用的角色资讯打包上传给 Snap.Hutao 深渊数据库（简称「HutaoDB」）以及披萨深渊数据库（PizzaAbyssDB）。您对此的准许将会使得 HutaoDB 和 PizzaAbyssDB 能提供更准确的深境螺旋角色使用率、队伍使用率等情况（均可以通过本 App 查阅）。该上传数据也包含对应的原神 UID，但不会包括其他的原神账号数据。对 UID 的收集有助于 HutaoDB 永久拒绝来自作弊玩家的战报数据递交。</target>
+        <target state="translated">我们希望能将您已拥有的角色和在攻克深境螺旋时使用的角色资讯打包上传给Snap.Hutao深渊数据库（简称「HutaoDB」）以及披萨深渊数据库（PizzaAbyssDB）。您对此的准许将会使得HutaoDB和PizzaAbyssDB能提供更准确的深境螺旋角色使用率、队伍使用率等情况（均可以通过本App查阅）。该上传数据也包含对应的原神UID，但不会包括其他的原神账号数据。对UID的收集有助于HutaoDB永久拒绝来自作弊玩家的战报数据递交。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.privacy.abyssDataCollect.faqLink" xml:space="preserve">
@@ -2642,12 +2642,12 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs" xml:space="preserve">
         <source>Import all UIDs of these games from this account</source>
-        <target state="translated">一次性读入该账号下的这几款游戏的所有区服的 UID</target>
+        <target state="translated">一次性读入该账号下的这几款游戏的所有区服的UID</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs.explanation" xml:space="preserve">
         <source>This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies. If profile duplication happens during this process, then the existing profile will be updated instead with new cookie, the latest device fingerprint, and the latest device ID instead.</source>
-        <target state="translated">此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB 账号。相同的米游社 / HoYoLAB 账号下的每个游戏每个 UID 每个区服都登录一次的话，可能会让米游社 / HoYoLAB 服务器误解此账号登录了多少设备，导致 Cookie 提前失效。在这个读入过程中，如果发现与既存的本地账号重复的情况的话，则不再新增重复的账号，而是将既有账号的 Cookies、设备指纹、设备 ID 更新为最新的版本。</target>
+        <target state="translated">此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB账号。相同的米游社 / HoYoLAB账号下的每个游戏每个UID每个区服都登录一次的话，可能会让米游社 / HoYoLAB服务器误解此账号登录了多少设备，导致Cookie提前失效。在这个读入过程中，如果发现与既存的本地账号重复的情况的话，则不再新增重复的账号，而是将既有账号的Cookies、设备指纹、设备ID更新为最新的版本。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.pleaseSelectGame" xml:space="preserve">
@@ -2662,7 +2662,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.requireLoginView.loginViaMiyousheOrHoyoLab.relogin" xml:space="preserve">
         <source>Relogin to HoYoLAB / Miyoushe</source>
-        <target state="translated">重新登录米游社 / HoYoLAB 通行证</target>
+        <target state="translated">重新登录米游社 / HoYoLAB通行证</target>
         <note>Account detail</note>
       </trans-unit>
       <trans-unit id="settings.resinTimer.autoInit.toggle.title" xml:space="preserve">
@@ -2689,7 +2689,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="settings.resinTimer.gotoSystemSettings" xml:space="preserve">
         <source>Go to System Settings to enable Live Activity for this app</source>
-        <target state="translated">前往系统设定以启用本 App 的实时活动</target>
+        <target state="translated">前往系统设定以启用本App的实时活动</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.resinTimer.randomBackground.title" xml:space="preserve">
@@ -2699,7 +2699,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="settings.resinTimer.realtimeActivity.notEnabled" xml:space="preserve">
         <source>Live Activity for this app is not permitted by the system</source>
-        <target state="translated">系统尚未准许本 App 的实时活动权限</target>
+        <target state="translated">系统尚未准许本App的实时活动权限</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.resinTimer.settings.navTitle" xml:space="preserve">
@@ -2719,7 +2719,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="settings.section.appStoreRelated.header" xml:space="preserve">
         <source>App Store and Donation</source>
-        <target state="translated">App Store 与赞助</target>
+        <target state="translated">App Store与赞助</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.section.otherSettings.header" xml:space="preserve">
@@ -2769,7 +2769,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="tab.settings.fullTitle" xml:space="preserve">
         <source>App Settings</source>
-        <target state="translated">App 设定</target>
+        <target state="translated">App设定</target>
         <note/>
       </trans-unit>
       <trans-unit id="tab.today" xml:space="preserve">
@@ -3402,17 +3402,17 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
     <body>
       <trans-unit id="MiHoYoAPIError.countryRegionRestriction" xml:space="preserve">
         <source>[HoYoAPIErr] The network environment in your current geo location is out of HoYoLAB service perimeter.</source>
-        <target state="translated">[HoYoAPI错误] 您当前的地理位置的网络环境处于 HoYoLAB 服务范围之外。</target>
+        <target state="translated">[HoYoAPI错误] 您当前的地理位置的网络环境处于HoYoLAB服务范围之外。</target>
         <note/>
       </trans-unit>
       <trans-unit id="MiHoYoAPIError.fingerPrintInvalidOrMissing" xml:space="preserve">
         <source>[HoYoAPIErr] Device fingerprint is either wrecked or missing from the stored cookie.</source>
-        <target state="translated">[HoYoAPI错误] Cookie 尚未包含设备指纹数据、或相关数据失效。</target>
+        <target state="translated">[HoYoAPI错误] Cookie尚未包含设备指纹数据、或相关数据失效。</target>
         <note/>
       </trans-unit>
       <trans-unit id="MiHoYoAPIError.insufficientDataVisibility" xml:space="preserve">
         <source>Insufficient data visibility in the Miyoushe / HoYoLAB account settings.</source>
-        <target state="translated">米游社 / HoYoLAB 账号设定内的数据公开权限不足。</target>
+        <target state="translated">米游社 / HoYoLAB账号设定内的数据公开权限不足。</target>
         <note/>
       </trans-unit>
       <trans-unit id="MiHoYoAPIError.reloginRequired" xml:space="preserve">
@@ -3422,12 +3422,12 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="MiHoYoAPIError.sTokenV2InvalidOrMissing" xml:space="preserve">
         <source>[HoYoAPIErr] STokenV2 is either wrecked or missing from the stored cookie.</source>
-        <target state="translated">[HoYoAPI错误] Cookie 尚未包含 STokenV2 数据、或相关数据失效。</target>
+        <target state="translated">[HoYoAPI错误] Cookie尚未包含STokenV2数据、或相关数据失效。</target>
         <note/>
       </trans-unit>
       <trans-unit id="MiHoYoAPIError.serverUnderMaintenanceUpgrade" xml:space="preserve">
         <source>Miyoushe / HoYoLAB server under maintenance.</source>
-        <target state="translated">米游社 / HoYoLAB 服务器正在进行维护处理。</target>
+        <target state="translated">米游社 / HoYoLAB服务器正在进行维护处理。</target>
         <note/>
       </trans-unit>
       <trans-unit id="MiHoYoAPIError.verificationNeeded" xml:space="preserve">
@@ -3921,7 +3921,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="pzAccountKit.CreateLiveActivityError.systemSettings" xml:space="preserve">
         <source>The current system settings hinder this app from using Live Activity feature.</source>
-        <target state="translated">当前系统设定不允许本 App 使用实时活动 (Live Activity)。</target>
+        <target state="translated">当前系统设定不允许本App使用实时活动 (Live Activity)。</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzAccountKit.CreateLiveActivityError.unknown:%@" xml:space="preserve">
@@ -3938,7 +3938,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
     <body>
       <trans-unit id="settings.display.appBackground" xml:space="preserve">
         <source>App Background</source>
-        <target state="translated">App 壁纸</target>
+        <target state="translated">App壁纸</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.resinTimer.background.navTitle" xml:space="preserve">
@@ -3953,7 +3953,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="wpKit.assign.background4App" xml:space="preserve">
         <source>Assign as App Background</source>
-        <target state="translated">设为 App 壁纸</target>
+        <target state="translated">设为App壁纸</target>
         <note/>
       </trans-unit>
       <trans-unit id="wpKit.assign.backgrounds4LiveActivity" xml:space="preserve">
@@ -4028,7 +4028,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片 App 内。</target>
+        <target state="translated">该准许令将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4066,7 +4066,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片 App 内。</target>
+        <target state="translated">该准许令将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4104,7 +4104,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片 App 内。</target>
+        <target state="translated">该准许令将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4486,7 +4486,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       <trans-unit id="pzWidgetsKit.infoBlock.staminaFullyFilledDescription" xml:space="preserve">
         <source>0 hr 0 min
 Stamina is Full</source>
-        <target state="translated">0 分 0 秒
+        <target state="translated">0分0秒
 玩家体力已满</target>
         <note/>
       </trans-unit>
@@ -4512,7 +4512,7 @@ Stamina is Full</source>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.next20Stamina:%lld" xml:space="preserve">
         <source>Until %lld Stamina:</source>
-        <target state="translated">距离 %lld 点体力:</target>
+        <target state="translated">距离 %lld点体力:</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.nextMaxStamina" xml:space="preserve">
@@ -4577,7 +4577,7 @@ Stamina is Full</source>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.unit.day:%lld|==|plural.other" xml:space="preserve">
         <source>%lld days</source>
-        <target state="translated">%lld 天</target>
+        <target state="translated">%lld天</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.unit.minute:%lld|==|plural.other" xml:space="preserve">
@@ -4587,7 +4587,7 @@ Stamina is Full</source>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.widgetError.noProfileFound" xml:space="preserve">
         <source>Profile not found. Please add a local profile or try restarting the device.</source>
-        <target state="translated">尚未发现本地账号。请在 App 内添加、或者重新启动该装置。</target>
+        <target state="translated">尚未发现本地账号。请在App内添加、或者重新启动该装置。</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.widgetError.profileSelectionNeeded|==|device.mac" xml:space="preserve">
