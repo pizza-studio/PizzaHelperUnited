@@ -31,9 +31,7 @@ struct LockScreenLoopWidgetWeeklyBossesCircular: View {
             case let .success(data):
                 switch data {
                 case let data as GeneralNote4GI:
-                    let numerator = data.weeklyBossesInfo.remainResinDiscount
-                    let denominator = data.weeklyBossesInfo.totalResinDiscount
-                    Text(verbatim: "\(numerator) / \(denominator)")
+                    Text(verbatim: data.weeklyBossesInfo.textDescription)
                         .font(.system(.body, design: .rounded).weight(.medium))
                 default:
                     Image(systemSymbol: .ellipsis)

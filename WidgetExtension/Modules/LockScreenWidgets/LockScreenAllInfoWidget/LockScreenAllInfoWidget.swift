@@ -229,9 +229,14 @@ struct LockScreenAllInfoWidgetView: View {
                                 alignment: .lastTextBaseline,
                                 spacing: 0
                             ) {
-                                Text(verbatim: "\(data.weeklyBossesInfo.remainResinDiscount)")
-                                Text(verbatim: " / \(data.weeklyBossesInfo.totalResinDiscount)")
-                                    .font(.caption)
+                                let trounceBlossomIntel = data.weeklyBossesInfo
+                                if trounceBlossomIntel.allDiscountsAreUsedUp {
+                                    Text("\(Image(systemSymbol: .checkmarkCircle))")
+                                } else {
+                                    Text(verbatim: "\(trounceBlossomIntel.remainResinDiscount)")
+                                    Text(verbatim: " / \(trounceBlossomIntel.totalResinDiscount)")
+                                        .font(.caption)
+                                }
                             }
                             Spacer()
                         }
