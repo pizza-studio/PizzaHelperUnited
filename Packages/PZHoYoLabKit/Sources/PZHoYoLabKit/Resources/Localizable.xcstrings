@@ -1611,7 +1611,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "第 %@ 间"
+            "value" : "第 %@ 間"
           }
         }
       }
@@ -2145,7 +2145,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "共拥有%lld名角色，其中五星角色%lld名，四星角色%lld名。"
+            "value" : "共拥有 %lld 名角色，其中五星角色 %lld 名，四星角色 %lld 名。"
           }
         },
         "zh-Hant" : {
@@ -2221,7 +2221,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "共获得%lld金，其中角色%lld金，武器%lld金。（未统计旅行者和无人装备的五星武器）"
+            "value" : "共获得 %lld 金，其中角色 %lld 金，武器 %lld 金。（未统计旅行者和无人装备的五星武器）"
           }
         },
         "zh-Hant" : {
@@ -5669,7 +5669,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "解鎖祕境"
+            "value" : "解鎖秘境"
           }
         }
       }
