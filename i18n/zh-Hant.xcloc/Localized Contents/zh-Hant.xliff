@@ -2002,7 +2002,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profile.label.fp.extraNotice.zzz" xml:space="preserve">
         <source>⚠︎ Zenless Zone Zero UIDs governed by Miyoushe require the user to manually fill in his / her device fingerprint by himself / herself.</source>
-        <target state="translated">⚠︎ 凡受米遊社管理之絕區零 UID 者，得自備設備指紋。</target>
+        <target state="translated">⚠︎ 如果您的絕區零 UID 受米游社管轄的話，您需要自備設備指紋。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.label.game" xml:space="preserve">
