@@ -437,17 +437,17 @@
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noAuthenticationKeyVersion" xml:space="preserve">
         <source>[ParseGachaURLError] The version info of `key` is missing in the authentication key.</source>
-        <target state="translated">[ParseGachaURLError] 认证用密钥版本资讯缺失。</target>
+        <target state="translated">[ParseGachaURLError] 认证用密钥版本参数值缺失。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noServer" xml:space="preserve">
         <source>[ParseGachaURLError] Server info is missing.</source>
-        <target state="translated">[ParseGachaURLError] 服务器资讯缺失。</target>
+        <target state="translated">[ParseGachaURLError] 服务器参数值缺失。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noSignType" xml:space="preserve">
         <source>[ParseGachaURLError] Sign type missing.</source>
-        <target state="translated">[ParseGachaURLError] Sign类型资讯缺失。</target>
+        <target state="translated">[ParseGachaURLError] Sign类型参数值缺失。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.urlGenerationFailure" xml:space="preserve">
