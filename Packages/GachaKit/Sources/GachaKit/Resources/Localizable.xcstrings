@@ -458,7 +458,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "无法正常解读原始时间戳资料值。"
+            "value" : "無法正常解讀原始時間戳資料值。"
           }
         }
       }
