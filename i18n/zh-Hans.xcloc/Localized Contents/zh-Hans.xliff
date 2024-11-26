@@ -2078,7 +2078,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.1" xml:space="preserve">
         <source>To get resin and other data from HoYoLAB / Miyoushe, UID and login cookie of your account is needed. After logging into HoYoLAB / Miyoushe, we will store them locally as well as on your private iCloud. Then our app will use the stored UID and cookie to get the resin and other information in a way similar to HoYoLAB / Miyoushe app, then display them on your widget. Your private information will not be sent to other places other than HoYoLAB / Miyoushe and iCloud, including us, so your personal information will be very secure. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program.</source>
-        <target state="translated">为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。</target>
+        <target state="translated">为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据资讯。您的个人资讯不会发送给任何人，包括我们自己。您的个人资讯将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.2" xml:space="preserve">
@@ -3278,7 +3278,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="igev.gi.gameEvents.noCurrentEventInfo" xml:space="preserve">
         <source>No Current Event Infos</source>
-        <target state="translated">暂无当前活动信息</target>
+        <target state="translated">暂无当前活动资讯</target>
         <note/>
       </trans-unit>
       <trans-unit id="igev.gi.gameEvents.pendingEvents.title" xml:space="preserve">
