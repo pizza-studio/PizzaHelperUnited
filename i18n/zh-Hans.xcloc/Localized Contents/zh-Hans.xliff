@@ -582,7 +582,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeededReport.sectionHeader" xml:space="preserve">
         <source>Statistics: New Entries Imported</source>
-        <target state="translated">导入的新数据的笔数统计</target>
+        <target state="translated">导入的新数据的条数统计</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.loadFile.button.title" xml:space="preserve">
