@@ -221,7 +221,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] 您当前的地理位置的网络环境处于 HoYoLAB 服务范围之外。"
+            "value" : "[HoYoAPI错误] 您当前的地理位置的网络环境处于HoYoLAB服务范围之外。"
           }
         },
         "zh-Hant" : {
@@ -298,7 +298,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] Cookie 尚未包含设备指纹资料、或相关资料失效。"
+            "value" : "[HoYoAPI错误] Cookie尚未包含设备指纹数据、或相关数据失效。"
           }
         },
         "zh-Hant" : {
@@ -375,7 +375,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "米游社 / HoYoLAB 账号设定内的资料公开权限不足。"
+            "value" : "米游社 / HoYoLAB账号设定内的数据公开权限不足。"
           }
         },
         "zh-Hant" : {
@@ -452,7 +452,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] 请重新登入。"
+            "value" : "[HoYoAPI错误] 请重新登录。"
           }
         },
         "zh-Hant" : {
@@ -529,7 +529,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "米游社 / HoYoLAB 服务器正在进行维护处理。"
+            "value" : "米游社 / HoYoLAB服务器正在进行维护处理。"
           }
         },
         "zh-Hant" : {
@@ -606,7 +606,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] Cookie 尚未包含 STokenV2 资料、或相关资料失效。"
+            "value" : "[HoYoAPI错误] Cookie尚未包含STokenV2数据、或相关数据失效。"
           }
         },
         "zh-Hant" : {
@@ -765,7 +765,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%1$@」的每日委托尚未完成，當前進度為%2$@/%3$@。"
+            "value" : "「%1$@」的每日委託尚未完成，當前進度為%2$@/%3$@。"
           }
         }
       }
@@ -1291,7 +1291,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请前往凯瑟琳柜枱领取「%@」的今日奖励。"
+            "value" : "请前往凯瑟琳柜台领取「%@」的今日奖励。"
           }
         },
         "zh-Hant" : {
@@ -1595,7 +1595,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%@」的洞天财瓮已满载。"
+            "value" : "「%@」的洞天财瓮已回满。"
           }
         },
         "zh-Hant" : {

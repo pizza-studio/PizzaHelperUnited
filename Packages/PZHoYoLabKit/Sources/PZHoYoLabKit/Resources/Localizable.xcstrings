@@ -1611,7 +1611,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "第 %@ 间"
+            "value" : "第 %@ 間"
           }
         }
       }
@@ -5669,7 +5669,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "解鎖祕境"
+            "value" : "解鎖秘境"
           }
         }
       }

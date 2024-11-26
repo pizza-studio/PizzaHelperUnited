@@ -298,7 +298,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尚未检索到五星角色。"
+            "value" : "尚未搜索到五星角色。"
           }
         },
         "zh-Hant" : {
@@ -452,13 +452,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "無法正常解讀原始時間戳資料值。"
+            "value" : "无法正常解读原始时间戳参数值。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "无法正常解读原始时间戳资料值。"
+            "value" : "無法正常解讀原始時間戳資料值。"
           }
         }
       }
@@ -529,7 +529,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "返回且选择其他的档案"
+            "value" : "返回且选择其他的文件"
           }
         },
         "zh-Hant" : {
@@ -606,7 +606,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请指定要导出的抽卡记录档案。\n若没有选中的持有者的话，则会被视为导出全部持有者的抽卡记录档案。"
+            "value" : "请指定要导出的抽卡记录文件。\n若没有选中的持有者的话，则会被视为导出全部持有者的抽卡记录文件。"
           }
         },
         "zh-Hant" : {
@@ -683,7 +683,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请指定要导入的抽卡记录档案。\n若没有选中的持有者的话，则会被视为导入全部持有者的抽卡记录档案。"
+            "value" : "请指定要导入的抽卡记录文件。\n若没有选中的持有者的话，则会被视为导入全部持有者的抽卡记录文件。"
           }
         },
         "zh-Hant" : {
@@ -914,7 +914,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可交换型抽卡记录档案没能成功导出。"
+            "value" : "没能成功导出可交换型抽卡记录文件。"
           }
         },
         "zh-Hant" : {
@@ -991,7 +991,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可交换型抽卡记录档案已成功导出至:"
+            "value" : "可交换型抽卡记录文件已成功导出至:"
           }
         },
         "zh-Hant" : {
@@ -1068,7 +1068,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可交换型抽卡记录档案已成功导出。"
+            "value" : "已成功导出可交换型抽卡记录文件。"
           }
         },
         "zh-Hant" : {
@@ -1145,7 +1145,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "档案生成来源"
+            "value" : "文件生成来源"
           }
         },
         "zh-Hant" : {
@@ -1222,7 +1222,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "档案格式"
+            "value" : "文件格式"
           }
         },
         "zh-Hant" : {
@@ -1299,7 +1299,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GIGF（原神专用抽卡记录交换格式）是对 UIGF v3.0 及更早版本的 UIGF 的统称。这些版本的规格已经被全部淘汰。对已淘汰规格的导入支持仅为满足用户导入既有备份资料之目的。"
+            "value" : "GIGF（原神专用抽卡记录交换格式）是对UIGF v3.0及更早版本的UIGF的统称。这些版本的规格已经被 UIGF 委员会全部废止。对已废止规格的导入支持仅为满足用户导入既有备份数据之目的。"
           }
         },
         "zh-Hant" : {
@@ -1376,7 +1376,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "敝 App 无法支持对比 UIGF v2.0 更早的 GIGF 格式的导入，因为欠缺了太多的关键资讯。"
+            "value" : "本App无法支持对比UIGF v2.0更早的GIGF格式的导入，因为欠缺了太多的关键信息。"
           }
         },
         "zh-Hant" : {
@@ -1453,7 +1453,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ UIGF v2.3 及之前的规格的 JSON 档案 / Excel 试算簿不包含有效的时区资讯，且每一款 App 在导出这些旧版规格的 时对时区的处理规则各有差异。\n - 如果您尝试导入用「Snap.HuTao」旧版(v1.7.16_2023-11-10 为止的版本) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为 UTC+0。\n - 如果您尝试导入用「寻空」旧版 (v1.4.4_2024-04-24) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为服务器时区。「寻空」未曾提供过对 UIGF v2.4 的支持，且从 v1.5.0 版 (2024-09-21) 开始才同时提供了对抽卡时区与 UIGF v3.0 的支持。\n - 如果您尝试导入由「提瓦特小助手 (YShelper)」导出的这些旧规格的抽卡记录的话，请将缺省值设定为当初用以导出该档案时的设备的系统时区。"
+            "value" : "⚠︎ UIGF v2.3及之前的规格的JSON文件 / Excel工作簿不包含有效的时区信息，且每一款App在导出这些旧版规格的文件时对时区的处理规则各有差异。\n - 如果您尝试导入用「Snap.HuTao」旧版(v1.7.16_2023-11-10为止的版本) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为UTC+0。\n - 如果您尝试导入用「寻空」旧版 (v1.4.4_2024-04-24) 导出的这些旧规格的抽卡记录的话，请将时区缺省值设定为服务器时区。「寻空」未曾提供过对UIGF v2.4的支持，且从v1.5.0版 (2024-09-21) 开始才同时提供了对抽卡时区与UIGF v3.0的支持。\n - 如果您尝试导入由「提瓦特小助手 (YShelper)」导出的这些旧规格的抽卡记录的话，请将缺省值设定为当初用以导出该文件时的设备的系统时区。"
           }
         },
         "zh-Hant" : {
@@ -1530,7 +1530,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SRGF v1.0 是由 UIGF 委员会制定的资讯交换格式，用于 Cognosphere 和米哈遊制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由 UIGF v4.0 取代，但两者之间可以进行无损的双向转换。此外，Windows 平台上有一些只支持 SRGF v1.0 的优秀应用，因此这里提供了兼容性选项。"
+            "value" : "SRGF v1.0是由UIGF委员会制定的信息交换格式，用于Cognosphere和米哈游制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由UIGF v4.0取代，但两者之间可以进行无损的双向转换。此外，Windows平台上有一些只支持SRGF v1.0的优秀App，因此这里提供了兼容性选项。"
           }
         },
         "zh-Hant" : {
@@ -1607,7 +1607,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UIGF v4.0 是由 UIGF 委员会制定的聚合型资讯交换格式，用于多款由 Cognosphere 和米哈遊制作发行的的电玩们的抽卡记录的交换。"
+            "value" : "UIGF v4.0是由UIGF委员会制定的聚合型信息交换格式，用于多款由Cognosphere和米哈游制作发行的的电玩们的抽卡记录的交换。"
           }
         },
         "zh-Hant" : {
@@ -1761,7 +1761,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "覆写既存的记录"
+            "value" : "覆盖既存的记录"
           }
         },
         "zh-Hant" : {
@@ -1838,7 +1838,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已成功从指定的档案导入了指定的抽卡所有者的全部的抽卡记录。"
+            "value" : "已成功从指定的文件导入了指定的抽卡所有者的全部的抽卡记录。"
           }
         },
         "zh-Hant" : {
@@ -1915,7 +1915,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "导入的新资料的笔数统计"
+            "value" : "导入的新数据的条数统计"
           }
         },
         "zh-Hant" : {
@@ -1992,7 +1992,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点此选择要读入的档案"
+            "value" : "点此选择要读取的文件"
           }
         },
         "zh-Hant" : {
@@ -2459,7 +2459,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 警告：请勿将您的抽卡记录分享给可能会公开其统计结果的公共抽卡记录收集者。"
+            "value" : "⚠️ 警告：請勿將您的抽卡記錄分享給可能會公開其統計結果的公共抽卡記錄收集者。"
           }
         }
       }
@@ -2761,7 +2761,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "对该档案的存取需要更多的权限。"
+            "value" : "对该文件的访问需要更多的权限。"
           }
         },
         "zh-Hant" : {
@@ -2838,7 +2838,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "指定的档案不存在或无法存取。"
+            "value" : "指定的文件不存在或无法访问。"
           }
         },
         "zh-Hant" : {
@@ -2915,7 +2915,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该档案无法以指定的格式解读。"
+            "value" : "该文件无法以指定的格式解读。"
           }
         },
         "zh-Hant" : {
@@ -2992,7 +2992,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "往资料库内写入正在导入的抽卡记录时出现错误。"
+            "value" : "往数据库内写入正在导入的抽卡记录时出现错误。"
           }
         },
         "zh-Hant" : {
@@ -3454,7 +3454,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本机 GachaMetaDB 缓存已过期。"
+            "value" : "本机GachaMetaDB缓存已过期。"
           }
         },
         "zh-Hant" : {
@@ -3531,7 +3531,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尝试更新 GachaMetaDB 缓存时，获取到的资料是空的。"
+            "value" : "尝试更新GachaMetaDB缓存时，获取到的数据是空的。"
           }
         },
         "zh-Hant" : {
@@ -3608,7 +3608,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ItemID 无效。"
+            "value" : "ItemID无效。"
           }
         },
         "zh-Hant" : {
@@ -3685,7 +3685,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尝试更新 GachaMetaDB 缓存时失败。"
+            "value" : "尝试更新GachaMetaDB缓存时失败。"
           }
         },
         "zh-Hant" : {
@@ -3839,7 +3839,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "敝应用不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被敝应用所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的 Apple ID 的私有 iCloud 空间内、以及任何登入了该 Apple ID 且有安装使用敝应用的 Apple 装置，不会有隐私上的安全问题。敝应用的抽卡记录管理功能现阶段不提供对绝区零的支持。"
+            "value" : "本App不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被本App所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的Apple ID的私有iCloud空间内、以及任何登录了该Apple ID且有安装使用本App的Apple设备，不会有隐私上的安全问题。本App的抽卡记录管理功能现阶段不提供对绝区零的支持。"
           }
         },
         "zh-Hant" : {
@@ -4763,7 +4763,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "或点击下述米游社原神 UID 直接获取记录:"
+            "value" : "或点击下述米游社原神UID直接获取记录:"
           }
         },
         "zh-Hant" : {
@@ -4840,7 +4840,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "将该 URL 复制到剪贴板"
+            "value" : "将该URL复制到剪贴板"
           }
         },
         "zh-Hant" : {
@@ -4917,7 +4917,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "覆写既存记录"
+            "value" : "覆盖既存记录"
           }
         },
         "zh-Hant" : {
@@ -5379,7 +5379,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点此更新 GachaMetaDB"
+            "value" : "点此更新GachaMetaDB"
           }
         },
         "zh-Hant" : {
@@ -5456,7 +5456,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这部设备上的 GachaMetaDB 已经过期、无法正常用来处理来自该应用的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB 资料库包含了用以映射 ItemID 及其翻译的重要资讯，且记载了每个抽卡物品的稀有等级查询表。"
+            "value" : "这部设备上的GachaMetaDB已经过期、无法正常用来处理来自本App的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB数据库包含了用以映射ItemID及其翻译的重要信息，且记载了每个抽卡物品的稀有等级查询表。"
           }
         },
         "zh-Hant" : {
@@ -5533,7 +5533,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "时区资料缺失时的缺省值"
+            "value" : "时区数据缺失时的缺省值"
           }
         },
         "zh-Hant" : {
@@ -5687,7 +5687,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点此清除该抽卡档案的全部抽卡记录"
+            "value" : "点此清除该抽卡文件的全部抽卡记录"
           }
         },
         "zh-Hant" : {
@@ -5764,7 +5764,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请再次确认是否真的要清除该抽卡档案的全部抽卡记录。"
+            "value" : "请再次确认是否真的要清除该抽卡文件的全部抽卡记录。"
           }
         },
         "zh-Hant" : {
@@ -5995,7 +5995,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "要删除的记录所属的游戏与 UID"
+            "value" : "要删除的记录所属的游戏与UID"
           }
         },
         "zh-Hant" : {
@@ -6149,7 +6149,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "从旧版披萨应用继承云端抽卡记录"
+            "value" : "从旧版披萨App继承云端抽卡记录"
           }
         },
         "zh-Hant" : {
@@ -6226,7 +6226,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "检视旧版披萨应用的云端抽卡记录"
+            "value" : "查看旧版披萨App的云端抽卡记录"
           }
         },
         "zh-Hant" : {
@@ -6380,7 +6380,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] 服务器资料值不合理。"
+            "value" : "[ParseGachaURLError] 服务器参数值无效。"
           }
         },
         "zh-Hant" : {
@@ -6457,7 +6457,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] URL 不合理。"
+            "value" : "[ParseGachaURLError] URL无效。"
           }
         },
         "zh-Hant" : {
@@ -6534,7 +6534,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] 认证用密钥缺失。"
+            "value" : "[ParseGachaURLError] 验证用密钥缺失。"
           }
         },
         "zh-Hant" : {
@@ -6611,7 +6611,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] 认证用密钥版本资讯缺失。"
+            "value" : "[ParseGachaURLError] 验证用密钥版本参数值缺失。"
           }
         },
         "zh-Hant" : {
@@ -6688,7 +6688,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] 服务器资讯缺失。"
+            "value" : "[ParseGachaURLError] 服务器参数值缺失。"
           }
         },
         "zh-Hant" : {
@@ -6765,7 +6765,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] Sign 类型资讯缺失。"
+            "value" : "[ParseGachaURLError] Sign类型参数值缺失。"
           }
         },
         "zh-Hant" : {
@@ -6842,7 +6842,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] 没能成功生成抽卡 URL。"
+            "value" : "[ParseGachaURLError] 没能成功生成抽卡URL。"
           }
         },
         "zh-Hant" : {
@@ -9382,7 +9382,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[关于 UIGF 组织及其所规范的抽卡记录交换标准 (UIGF、SRGF 等)](https://uigf.org/)"
+            "value" : "[关于UIGF组织及其所规范的抽卡记录交换标准 (UIGF、SRGF等)](https://uigf.org/)"
           }
         },
         "zh-Hant" : {
