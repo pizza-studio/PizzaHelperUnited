@@ -2622,7 +2622,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.privacy.abyssDataCollect.faqLink" xml:space="preserve">
         <source>Tap here to read the FAQs about it.</source>
-        <target state="translated">点此检阅与此有关的常见问题解答。</target>
+        <target state="translated">点此阅读与此有关的常见问题解答。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.privacy.title" xml:space="preserve">
