@@ -572,7 +572,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.overrideDuplicatedEntries" xml:space="preserve">
         <source>Override existing records</source>
-        <target state="translated">覆写既存的记录</target>
+        <target state="translated">覆盖既存的记录</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.import.succeeded" xml:space="preserve">
@@ -727,7 +727,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.forceOverride" xml:space="preserve">
         <source>Force-override existing entries</source>
-        <target state="translated">覆写既存记录</target>
+        <target state="translated">覆盖既存记录</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.getRecord.readyStart.reinit" xml:space="preserve">
