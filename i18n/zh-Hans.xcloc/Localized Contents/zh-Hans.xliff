@@ -3263,12 +3263,12 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
     <body>
       <trans-unit id="igev.gi.gameEvents.daysLeft:%lld" xml:space="preserve">
         <source>%lld days left</source>
-        <target state="translated">剩 %lld天</target>
+        <target state="translated">剩%lld天</target>
         <note/>
       </trans-unit>
       <trans-unit id="igev.gi.gameEvents.hoursLeft:%lld" xml:space="preserve">
         <source>%lld hours left</source>
-        <target state="translated">剩 %lld小时</target>
+        <target state="translated">剩%lld小时</target>
         <note/>
       </trans-unit>
       <trans-unit id="igev.gi.gameEvents.intelligenceProvider" xml:space="preserve">
@@ -3894,7 +3894,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="unit.HHMM:%lldHH%lldMM" xml:space="preserve">
         <source>%lldhrs %lldmin</source>
-        <target state="translated">%lld小时 %lld分</target>
+        <target state="translated">%lld小时%lld分</target>
         <note/>
       </trans-unit>
       <trans-unit id="unit.daysOf:%lld|==|plural.other" xml:space="preserve">
@@ -4512,7 +4512,7 @@ Stamina is Full</source>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.next20Stamina:%lld" xml:space="preserve">
         <source>Until %lld Stamina:</source>
-        <target state="translated">距离 %lld点体力:</target>
+        <target state="translated">距离%lld点体力:</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.nextMaxStamina" xml:space="preserve">
