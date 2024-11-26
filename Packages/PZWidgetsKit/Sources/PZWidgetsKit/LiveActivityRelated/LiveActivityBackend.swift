@@ -84,10 +84,9 @@ public struct ResinRecoveryAttributes: Sendable {
             background: ResinRecoveryActivityBackground
         ) {
             self.background = background
-            let staminaIntel = dailyNote.staminaIntel
-            self.maxResin = staminaIntel.all
-            self.resinCountWhenUpdated = staminaIntel.finished
-            self.resinRecoveryTime = dailyNote.staminaFullTimeOnFinish
+            self.primaryStaminaRecoverySpeed = dailyNote.eachStaminaRecoveryTime
+            self.staminaCompletionStatus = dailyNote.staminaIntel
+            self.primaryStaminaRecoveryTime = dailyNote.staminaFullTimeOnFinish
             self.game = dailyNote.game
             // Expeditions.
             self.showExpedition = !(dailyNote is Note4ZZZ) && showExpedition
@@ -102,12 +101,11 @@ public struct ResinRecoveryAttributes: Sendable {
         // MARK: Public
 
         public let game: Pizza.SupportedGame
-        public let resinCountWhenUpdated: Int
-        public let resinRecoveryTime: Date
+        public let staminaCompletionStatus: FieldCompletionIntel<Int>
+        public let primaryStaminaRecoverySpeed: TimeInterval
+        public let primaryStaminaRecoveryTime: Date
         public let expeditionAllCompleteTime: Date?
         public let showExpedition: Bool
-        public let maxResin: Int
-
         public let background: ResinRecoveryActivityBackground
     }
 
@@ -116,30 +114,37 @@ public struct ResinRecoveryAttributes: Sendable {
 }
 
 extension ResinRecoveryAttributes.ResinRecoveryState {
-    public var currentResin: Int {
-        let secondRemaining = resinRecoveryTime.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+    public var maxPrimaryStamina: Int { staminaCompletionStatus.all }
+
+    public var currentPrimaryStamina: Int {
+        let secondRemaining = primaryStaminaRecoveryTime.timeIntervalSinceReferenceDate - Date()
+            .timeIntervalSinceReferenceDate
         let minuteRemaining = Double(secondRemaining) / 60
         let currentResin: Int
         if minuteRemaining <= 0 {
-            currentResin = maxResin
+            currentResin = maxPrimaryStamina
         } else {
-            currentResin = maxResin - Int(ceil(minuteRemaining / 8))
+            currentResin = maxPrimaryStamina - Int(ceil(minuteRemaining / 8))
         }
         return currentResin
     }
 
     /// 下一20倍数树脂
-    public var next20ResinCount: Int {
-        Int(ceil((Double(currentResin) + 0.01) / 20.0)) * 20
+    public var next20PrimaryStamina: Int {
+        Int(ceil((Double(currentPrimaryStamina) + 0.01) / 20.0)) * 20
     }
 
-    public var showNext20Resin: Bool {
-        next20ResinCount != maxResin
+    public var showNext20PrimaryStamina: Bool {
+        staminaCompletionStatus.all - staminaCompletionStatus.finished >= 20
     }
 
     /// 下一20倍数树脂回复时间点
-    public var next20ResinRecoveryTime: Date {
-        Date(timeIntervalSinceNow: TimeInterval((next20ResinCount - currentResin) * 8 * 60))
+    public var next20PrimaryStaminaRecoveryTime: Date {
+        Date(
+            timeIntervalSinceNow: TimeInterval(
+                Double(next20PrimaryStamina - currentPrimaryStamina) * primaryStaminaRecoverySpeed
+            )
+        )
     }
 }
 
@@ -222,10 +227,10 @@ public final class ResinRecoveryActivityController: Sendable {
             background: getBackground(for: profile.game)
         )
 
-        print(status.currentResin)
-        print(status.next20ResinCount)
-        print(status.showNext20Resin)
-        print(status.next20ResinRecoveryTime)
+        print(status.currentPrimaryStamina)
+        print(status.next20PrimaryStamina)
+        print(status.showNext20PrimaryStamina)
+        print(status.next20PrimaryStaminaRecoveryTime)
 
         do {
             let deliveryActivity = try Activity.request(
