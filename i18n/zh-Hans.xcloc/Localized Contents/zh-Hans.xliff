@@ -362,12 +362,12 @@
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.accessFailureComDlg32" xml:space="preserve">
         <source>Insufficient privileges on accessing the given file.</source>
-        <target state="translated">对该文件的存取需要更多的权限。</target>
+        <target state="translated">对该文件的访问需要更多的权限。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.fileNotExist" xml:space="preserve">
         <source>Either the specified file does not exist or is inaccessible.</source>
-        <target state="translated">指定的文件不存在或无法存取。</target>
+        <target state="translated">指定的文件不存在或无法访问。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.fileParseFailure" xml:space="preserve">
