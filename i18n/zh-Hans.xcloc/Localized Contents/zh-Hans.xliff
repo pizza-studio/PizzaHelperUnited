@@ -2103,7 +2103,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.passwordInputSafetyExplanation" xml:space="preserve">
         <source>To ensure you feel safe with this, here’s how it works: Your password input is protected by macOS built-in SecureEventInputAPI (or its equivalent on iOS), and then it will be directly handled by HoYoLAB login webpage. This is the nature of how WKWebView gets designed by Apple. Nobody else can interfere / intercept this process, nor this app. You can see that you cannot switch to 3rd-party input methods while the password is receiving inputs from the user.</source>
-        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登入网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括敝应用。您会发现，在密码接收来自使用者的输入的过程中，您无法切换到第三方输入法。</target>
+        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登入网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括敝应用。您会发现，在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.specialWarning" xml:space="preserve">
@@ -2407,7 +2407,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.dateTimePicker.macCatalystNotice" xml:space="preserve">
         <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
-        <target state="translated">⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst 应用中的 macOS 日期选择器不会显示输入面板。使用者只能手动选择所需的输入栏位，并直接在实体键盘上输入。</target>
+        <target state="translated">⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst 应用中的 macOS 日期选择器不会显示输入面板。用户只能手动选择所需的输入栏位，并直接在实体键盘上输入。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.allow" xml:space="preserve">
@@ -4028,7 +4028,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该 App 在使用者要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片应用内。</target>
+        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片应用内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4066,7 +4066,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该 App 在使用者要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片应用内。</target>
+        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片应用内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4104,7 +4104,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该 App 在使用者要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片应用内。</target>
+        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片应用内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
