@@ -28,10 +28,15 @@ struct WatchAccountDetailView: View {
                             case .starRail: "watch.dailyNote.card.dailyTask.label"
                             case .zenlessZone: "watch.dailyNote.card.vitality.label"
                             }
+                            let dailyTaskIcon = switch data.game {
+                            case .genshinImpact: "gi_note_dailyTask"
+                            case .starRail: "hsr_note_dailyTask"
+                            case .zenlessZone: "zzz_note_vitality"
+                            }
                             WatchAccountDetailItemView(
                                 title: titleKey,
                                 value: "\(sitrep.finished) / \(sitrep.all)",
-                                icon: AccountKit.imageAsset("gi_note_dailyTask")
+                                icon: AccountKit.imageAsset(dailyTaskIcon)
                             )
                             Divider()
                         }
@@ -79,7 +84,7 @@ struct WatchAccountDetailView: View {
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.expedition.label",
                                 value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
-                                icon: AccountKit.imageAsset("gi_note_expedition")
+                                icon: AccountKit.imageAsset("hsr_note_expedition")
                             )
                         case _ as Note4ZZZ:
                             EmptyView()

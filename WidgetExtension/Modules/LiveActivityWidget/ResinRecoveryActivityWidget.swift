@@ -191,6 +191,14 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         }
     }
 
+    var expeditionAssetName: String {
+        switch context.state.game {
+        case .genshinImpact: "gi_note_expedition"
+        case .starRail: "hsr_note_expedition"
+        case .zenlessZone: "114514"
+        }
+    }
+
     var body: some View {
         let mainContent = contentView
         #if !os(watchOS)
@@ -277,7 +285,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                 }
                 if context.state.showExpedition, let time = context.state.expeditionAllCompleteTime, Date() < time {
                     GridRow {
-                        AccountKit.imageAsset("gi_note_expedition")
+                        AccountKit.imageAsset(expeditionAssetName)
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 29)

@@ -11,6 +11,14 @@ import SwiftUI
 struct ExpeditionInfoBar: View {
     let dailyNote: any DailyNoteProtocol
 
+    var assetName: String {
+        switch dailyNote.game {
+        case .genshinImpact: "gi_note_expedition"
+        case .starRail: "hsr_note_expedition"
+        case .zenlessZone: "114514"
+        }
+    }
+
     var completionIntel: FieldCompletionIntel<Int> {
         dailyNote.expeditionCompletionStatus
     }
@@ -29,7 +37,7 @@ struct ExpeditionInfoBar: View {
         case _ as Note4ZZZ: EmptyView() /// ZZZ has no expedition API results.
         default:
             HStack(alignment: .center, spacing: 8) {
-                AccountKit.imageAsset("gi_note_expedition")
+                AccountKit.imageAsset(assetName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 25)
