@@ -2447,7 +2447,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.giRealmCurrency.header" xml:space="preserve">
         <source>Realm Currency Recharge Notice</source>
-        <target state="translated">洞天财瓮回满提醒</target>
+        <target state="translated">洞天财瓮满载提醒</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.giTransformer.allow" xml:space="preserve">
@@ -3502,7 +3502,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="notification.realmCurrency.body:%@" xml:space="preserve">
         <source>%@'s realm currency is filled up.</source>
-        <target state="translated">「%@」的洞天财瓮已回满。</target>
+        <target state="translated">「%@」的洞天财瓮已满载。</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.realmCurrency.title:%@" xml:space="preserve">
