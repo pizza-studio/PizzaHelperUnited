@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import EnkaDBModels
+import PZBaseKit
 
 // MARK: - Enka.CharacterName
 
@@ -36,9 +37,9 @@ extension Enka {
     }
 }
 
-// MARK: - Enka.CharacterName + RawRepresentable, Hashable, Codable, Sendable
+// MARK: - Enka.CharacterName + RawRepresentable, AbleToCodeSendHash
 
-extension Enka.CharacterName: RawRepresentable, Hashable, Codable, Sendable {
+extension Enka.CharacterName: RawRepresentable, AbleToCodeSendHash {
     public init(pid: Int) {
         self = Enka.CharacterName(rawValue: pid.description)
     }

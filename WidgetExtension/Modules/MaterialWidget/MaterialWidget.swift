@@ -35,9 +35,6 @@ struct MaterialWidget: Widget {
 struct MaterialWidgetView: View {
     let entry: MaterialWidgetEntry
 
-    var weaponMaterials: [GITodayMaterial] { entry.weaponMaterials }
-    var talentMaterials: [GITodayMaterial] { entry.talentMateirals }
-
     var weekday: String {
         let formatter = DateFormatter.Gregorian()
         formatter.dateFormat = "EEE"
@@ -52,31 +49,30 @@ struct MaterialWidgetView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: 1) {
-                Text(weekday)
-                    .font(.caption)
-                    .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
-                    .bold()
-                    .shadow(radius: 2)
-                HStack(spacing: 6) {
+            HStack(alignment: .bottom) {
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(weekday)
+                        .font(.caption)
+                        .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
+                        .bold()
                     Text(dayOfMonth)
                         .font(.system(
                             size: 35,
                             weight: .regular,
                             design: .rounded
                         ))
-                        .shadow(radius: 5)
-                    Spacer()
+                }
+                .legibilityShadow()
+                Spacer()
+                ZStack(alignment: .trailing) {
                     if entry.materialWeekday != nil {
-                        MaterialRow(
-                            materials: weaponMaterials +
-                                talentMaterials
-                        )
+                        MaterialView(alternativeLayout: true)
                     } else {
                         Image(systemSymbol: .checkmarkCircleFill)
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
+                            .legibilityShadow(isText: false)
                     }
                 }
                 .frame(height: 35)
@@ -86,6 +82,7 @@ struct MaterialWidgetView: View {
             .padding(.bottom, 12)
             if let events = entry.events, !events.isEmpty {
                 EventView(events: events)
+                    .legibilityShadow()
             }
             Spacer()
         }
@@ -195,24 +192,6 @@ private struct EventView: View {
         default:
             return content.EN
         }
-    }
-}
-
-// MARK: - MaterialRow
-
-@available(watchOS, unavailable)
-private struct MaterialRow: View {
-    let materials: [GITodayMaterial]
-
-    var body: some View {
-        HStack(spacing: 0) {
-            ForEach(materials, id: \.nameTag) { material in
-                material.iconObj
-                    .resizable()
-                    .scaledToFit()
-            }
-        }
-        .shadow(radius: 1)
     }
 }
 

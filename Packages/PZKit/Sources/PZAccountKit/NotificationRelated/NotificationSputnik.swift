@@ -407,7 +407,7 @@ extension NotificationSputnik {
             return
         }
         guard let trounceBlossom = dailyNote.trounceBlossomIntel else { return }
-        guard trounceBlossom.remainResinDiscount > 0 else {
+        guard !trounceBlossom.allDiscountsAreUsedUp else {
             await deleteNotification(.giTrounceBlossomResinDiscounts)
             return
         }

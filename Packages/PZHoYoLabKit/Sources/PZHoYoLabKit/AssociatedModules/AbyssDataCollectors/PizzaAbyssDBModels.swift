@@ -5,6 +5,7 @@
 @preconcurrency import Defaults
 import Foundation
 import PZAccountKit
+import PZBaseKit
 
 // MARK: - PZAbyssDB
 
@@ -42,7 +43,7 @@ extension PZAbyssDB {
 extension PZAbyssDB {
     /// 用于向服务器发送的深境螺旋数据
     public struct AbyssDataPack: Codable, AbyssDataPackProtocol {
-        public struct SubmitDetailModel: Codable, Hashable, Sendable {
+        public struct SubmitDetailModel: AbleToCodeSendHash {
             /// 深境螺旋层数
             public let floor: Int
             /// 深境螺旋间数
@@ -54,7 +55,7 @@ extension PZAbyssDB {
             public let usedChars: [Int]
         }
 
-        public struct AbyssRankModel: Codable, Hashable, Sendable {
+        public struct AbyssRankModel: AbleToCodeSendHash {
             /// 造成的最高伤害
             public let topDamageValue: Int
 
@@ -103,6 +104,11 @@ extension PZAbyssDB {
             } else {
                 (abyssSeason / 10) * 10 + 1
             }
+        }
+
+        /// Just a reference for the Server side implementation.
+        public func hasSufficientBattles() -> Bool {
+            6 == submitDetails.filter { $0.floor == 12 }.count
         }
     }
 
@@ -175,7 +181,7 @@ extension PZAbyssDB.AbyssDataPack {
             abyssData = try await HoYo.abyssReportData4GI(for: profile)
         }
         guard let abyssData else { throw AbyssCollector.ACError.abyssDataNotSupplied }
-        guard abyssData.totalStar == 36 else { throw AbyssCollector.ACError.insufficientStars }
+        guard abyssData.hasSufficientStarsForUpload else { throw AbyssCollector.ACError.ungainedStarsDetected }
 
         let component = Calendar.current.dateComponents(
             [.year, .month, .day],
@@ -205,11 +211,6 @@ extension PZAbyssDB.AbyssDataPack {
         self.owningChars = travelStats.avatars.map { $0.id }
         self.abyssRank = .init(data: abyssData)
         self.submitDetails = .new(from: abyssData)
-        print(submitDetails.count)
-        guard submitDetails.count == 4 * 3 * 2 else {
-            print("[Failure] SubmitDetails only has \(submitDetails.count) stars.")
-            throw AbyssCollector.ACError.insufficientStars
-        }
         self.battleCount = abyssData.totalBattleTimes
         self.winCount = abyssData.totalWinTimes
     }

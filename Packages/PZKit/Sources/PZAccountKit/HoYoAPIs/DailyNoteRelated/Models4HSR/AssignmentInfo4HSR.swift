@@ -31,8 +31,12 @@ public struct AssignmentInfo4HSR: Sendable {
 
         /// The avatars' icons of the assignment
         public let avatarIconURLs: [URL]
-        /// The name of assignment
+
+        /// The name of assignment, localized by HoYoLAB or Miyoushe
         public let name: String
+
+        /// Assignment Item Icon URL (unavailable from Widget API)
+        public let itemIconURL: URL?
 
         /// Remaining time of assignment
         public var remainingTime: TimeInterval {
@@ -60,6 +64,11 @@ public struct AssignmentInfo4HSR: Sendable {
         /// Conforming to `Expedition` protocol.
         public var iconURL: URL { avatarIconURLs.first! }
 
+        /// Conforming to `Expedition` protocol.
+        public var iconURL4Copilot: URL? {
+            avatarIconURLs.count == 2 ? avatarIconURLs.last : nil
+        }
+
         // MARK: Private
 
         // MARK: CodingKeys
@@ -69,6 +78,8 @@ public struct AssignmentInfo4HSR: Sendable {
             case remainingTime = "remaining_time"
             case avatarIconURLs = "avatars"
             case name
+            case itemIconURL = "item_url"
+            case _accomplishedTimestamp = "finish_ts"
         }
 
         /// The time when this struct is generated
@@ -76,6 +87,9 @@ public struct AssignmentInfo4HSR: Sendable {
 
         /// Remaining time of assignment when fetch
         private let _remainingTime: TimeInterval
+
+        /// Assignment accomplished timestamp (unavailable from Widget API)
+        private let _accomplishedTimestamp: Int?
     }
 
     /// Details of all accepted assignments
@@ -104,7 +118,7 @@ public struct AssignmentInfo4HSR: Sendable {
         case assignments = "expeditions"
         case totalAssignmentNumber = "total_expedition_num"
         case acceptedAssignmentNumber = "accepted_epedition_num"
-        // Mihoyo's api has a spell error here. So there are 2 keys for this field.
+        // The non-Widget api has a typo here. So there are 2 keys for this field.
         case alterKeyForAcceptedAssignmentNumber = "accepted_expedition_num"
     }
 }
@@ -132,7 +146,9 @@ extension AssignmentInfo4HSR.Assignment: Decodable {
             .container(keyedBy: CodingKeys.self)
         self._remainingTime = try container.decode(TimeInterval.self, forKey: .remainingTime)
         self.avatarIconURLs = try container.decode([URL].self, forKey: .avatarIconURLs)
+        self.itemIconURL = try container.decode(URL.self, forKey: .itemIconURL)
         self.name = try container.decode(String.self, forKey: .name)
+        self._accomplishedTimestamp = try container.decode(Int.self, forKey: ._accomplishedTimestamp)
     }
 }
 

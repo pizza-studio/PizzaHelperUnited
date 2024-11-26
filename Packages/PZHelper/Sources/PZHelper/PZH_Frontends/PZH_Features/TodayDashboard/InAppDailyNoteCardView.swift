@@ -188,7 +188,7 @@ private struct DailyNoteCardView4GI: View {
                             .scaledToFit()
                             .frame(width: iconFrame - 6, height: iconFrame - 6)
                         let weeklyBossesInfo = dailyNote.weeklyBossesInfo
-                        if weeklyBossesInfo.remainResinDiscount == 0 {
+                        if weeklyBossesInfo.allDiscountsAreUsedUp {
                             Image(systemSymbol: .checkmarkCircle)
                                 .foregroundColor(.green)
                                 .frame(width: 20, height: 20)
@@ -208,7 +208,7 @@ private struct DailyNoteCardView4GI: View {
                     )
                 }
             }
-        }.help(Text("app.dailynote.card.resin.label".i18nPZHelper))
+        }.help("app.dailynote.card.resin.label".i18nPZHelper)
     }
 
     @ViewBuilder
@@ -290,7 +290,7 @@ private struct DailyNoteCardView4GI: View {
                     )
                 }
             }
-        }.help(Text("app.dailynote.card.dailyTask.label".i18nPZHelper))
+        }.help("app.dailynote.card.dailyTask.label".i18nPZHelper)
     }
 
     @ViewBuilder
@@ -322,7 +322,7 @@ private struct DailyNoteCardView4GI: View {
                     }
                 }
             }
-        }.help(Text("app.dailynote.card.homeCoin.label".i18nPZHelper))
+        }.help("app.dailynote.card.homeCoin.label".i18nPZHelper)
     }
 
     @ViewBuilder
@@ -383,7 +383,7 @@ private struct DailyNoteCardView4HSR: View {
 
     public var body: some View {
         drawTrailblazePower()
-        drawDailyTrainingAndSimulatedUniverse()
+        drawHSRMiscComponents()
         drawAssignments()
     }
 
@@ -392,9 +392,29 @@ private struct DailyNoteCardView4HSR: View {
     @ViewBuilder
     func drawTrailblazePower() -> some View {
         VStack {
+            let reservedStamina = dailyNote.staminaInfo.currentReserveStamina
+            let hasReservedStamina = reservedStamina > 0
+            let deltaExMax = hasReservedStamina ? dailyNote.staminaInfo.maxReserveStamina : 0
             HStack {
                 Text("app.dailynote.card.trailblazePower.label".i18nPZHelper).bold()
                 Spacer()
+                if hasReservedStamina {
+                    HStack {
+                        AccountKit.imageAsset("hsr_note_trailblazePowerReserved")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: iconFrame / 2)
+
+                        Text(verbatim: "\(reservedStamina)").fontWeight(.heavy)
+                            + Text(verbatim: " / \(deltaExMax)").fontWidth(.compressed)
+                    }
+                    .fixedSize(horizontal: true, vertical: false)
+                    .padding(.horizontal, 6)
+                    .background(
+                        .regularMaterial,
+                        in: RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    )
+                }
             }
             HStack(spacing: 10) {
                 let iconFrame: CGFloat = 40
@@ -423,21 +443,40 @@ private struct DailyNoteCardView4HSR: View {
     }
 
     @ViewBuilder
-    func drawDailyTrainingAndSimulatedUniverse() -> some View {
-        // Daily Training & Simulated Universe (WidgetNote4HSR only).
-        if let dailyNote = dailyNote as? WidgetNote4HSR {
+    func drawHSRMiscComponents() -> some View {
+        let iconFrame: CGFloat = 24
+        HStack {
+            AccountKit.imageAsset("hsr_note_dailyTask")
+                .resizable()
+                .scaledToFit()
+                .frame(height: iconFrame)
+            Text("app.dailynote.card.daily_training.label".i18nPZHelper)
+            Spacer()
+            let sitrep = dailyNote.dailyTaskCompletionStatus
+            Text(verbatim: "\(sitrep.finished)/\(sitrep.all)")
+        }
+        .help("app.dailynote.card.daily_training.label".i18nPZHelper)
+        HStack {
+            AccountKit.imageAsset("hsr_note_simulatedUniverse")
+                .resizable()
+                .scaledToFit()
+                .frame(height: iconFrame)
+            Text("app.dailynote.card.simulated_universe.label".i18nPZHelper)
+            Spacer()
+            let currentScore = dailyNote.simulatedUniverseInfo.currentScore
+            let maxScore = dailyNote.simulatedUniverseInfo.maxScore
+            Text(verbatim: "\(currentScore)/\(maxScore)")
+        }
+        .help("app.dailynote.card.simulated_universe.label".i18nPZHelper)
+        if let eowIntel = dailyNote.echoOfWarIntel {
             HStack {
-                Text("app.dailynote.card.daily_training.label".i18nPZHelper).bold()
+                AccountKit.imageAsset("hsr_note_weeklyBosses")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: iconFrame)
+                Text("app.dailynote.card.hsr_echo_of_war.label".i18nPZHelper)
                 Spacer()
-                let sitrep = dailyNote.dailyTaskCompletionStatus
-                Text(verbatim: "\(sitrep.finished)/\(sitrep.all)")
-            }
-            HStack {
-                Text("app.dailynote.card.simulated_universe.label".i18nPZHelper).bold()
-                Spacer()
-                let currentScore = dailyNote.simulatedUniverseInfo.currentScore
-                let maxScore = dailyNote.simulatedUniverseInfo.maxScore
-                Text(verbatim: "\(currentScore)/\(maxScore)")
+                Text(verbatim: eowIntel.textDescription)
             }
         }
     }
@@ -447,6 +486,11 @@ private struct DailyNoteCardView4HSR: View {
         // Dispatch
         VStack {
             HStack {
+                let iconFrame: CGFloat = 24
+                AccountKit.imageAsset("hsr_note_expedition")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: iconFrame)
                 Text("app.dailynote.card.dispatch.label".i18nPZHelper).bold()
                 Spacer()
                 let completionIntel = dailyNote.expeditionCompletionStatus

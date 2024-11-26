@@ -124,7 +124,7 @@ struct GetCookieWebView: View {
                 Color.black.opacity(0.5)
                     .blurMaterialBackground()
                 Color.clear
-                    .containerRelativeFrame(.horizontal) { length, _ in
+                    .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in
                         min(400, length * 0.8)
                     }
                     .overlay {

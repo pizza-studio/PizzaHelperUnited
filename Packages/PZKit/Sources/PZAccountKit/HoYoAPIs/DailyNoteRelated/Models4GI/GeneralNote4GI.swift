@@ -30,6 +30,7 @@ public struct GeneralNote4GI: Note4GI {
             public let iconURL: URL
 
             public var isFinished: Bool { finishTime <= Date() }
+            public var iconURL4Copilot: URL? { nil }
         }
 
         public let maxExpeditionsCount: Int
@@ -56,6 +57,13 @@ public struct GeneralNote4GI: Note4GI {
     public struct WeeklyBossesInfo4GI: Sendable {
         public let totalResinDiscount: Int
         public let remainResinDiscount: Int
+
+        public var allDiscountsAreUsedUp: Bool { remainResinDiscount == 0 }
+
+        public var textDescription: String {
+            guard !allDiscountsAreUsedUp else { return "✔︎" }
+            return "\(remainResinDiscount) / \(totalResinDiscount)"
+        }
     }
 
     public let dailyTaskInfo: DailyTaskInfo4GI

@@ -7,41 +7,29 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 struct MaterialView: View {
+    // MARK: Lifecycle
+
+    init(alternativeLayout: Bool = false, today: MaterialWeekday? = nil) {
+        self.alternativeLayout = alternativeLayout
+        self.today = today ?? .today()
+    }
+
+    // MARK: Internal
+
+    let alternativeLayout: Bool
     var today: MaterialWeekday? = .today()
 
-    var talentMaterialProvider: TalentMaterialProvider { .init(weekday: today) }
-    var weaponMaterialProvider: WeaponMaterialProvider { .init(weekday: today) }
-
     var body: some View {
-        if today != nil {
-            VStack {
-                HStack(spacing: -5) {
-                    ForEach(
-                        weaponMaterialProvider.todaysMaterials,
-                        id: \.nameTag
-                    ) { material in
-                        material.iconObj
-                            .resizable()
-                            .scaledToFit()
-                    }
-                }
-                HStack(spacing: -5) {
-                    ForEach(
-                        talentMaterialProvider.todaysMaterials,
-                        id: \.nameTag
-                    ) { material in
-                        material.iconObj
-                            .resizable()
-                            .scaledToFit()
-                    }
-                }
-            }
-        } else {
+        GITodayMaterialsView4Widgets(
+            alternativeLayout: alternativeLayout,
+            today: today
+        ) {
             Text("pzWidgetsKit.material.sunday", bundle: .main)
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .font(.caption)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
+                .legibilityShadow()
         }
     }
 }

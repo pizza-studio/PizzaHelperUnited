@@ -2,10 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 // MARK: - Enka.QueriedResultHSR
 
 extension Enka {
-    public struct QueriedResultHSR: Codable, Hashable, Sendable, EKQueryResultProtocol {
+    public struct QueriedResultHSR: AbleToCodeSendHash, EKQueryResultProtocol {
         public typealias QueriedProfileType = Enka.QueriedProfileHSR
         public typealias DBType = Enka.EnkaDB4HSR
 

@@ -18,7 +18,7 @@ struct LargeWidgetView: View {
     let accountName: String?
 
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             HStack {
                 Spacer()
                     .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 1 }
@@ -27,7 +27,7 @@ struct LargeWidgetView: View {
                     Spacer(minLength: 18)
                     DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
                 }
-                .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 4 }
+                .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in length / 10 * 4 }
                 VStack(alignment: .leading) {
                     ExpeditionsView(
                         expeditions: dailyNote.expeditionTasks
@@ -37,7 +37,7 @@ struct LargeWidgetView: View {
                         MaterialView()
                     }
                 }
-                .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 4 }
+                .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in length / 10 * 4 }
                 Spacer()
                     .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 1 }
             }
@@ -50,7 +50,6 @@ struct LargeWidgetView: View {
     @ViewBuilder
     func mainInfo() -> some View {
         VStack(alignment: .leading, spacing: 5) {
-//            Spacer()
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                     Image(systemSymbol: .personFill)
@@ -58,6 +57,7 @@ struct LargeWidgetView: View {
                 }
                 .font(.footnote)
                 .foregroundColor(Color("textColor3", bundle: .main))
+                .legibilityShadow()
             }
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 let staminaIconName = switch dailyNote.game {
@@ -65,54 +65,20 @@ struct LargeWidgetView: View {
                 case .starRail: "hsr_note_trailblazePower"
                 case .zenlessZone: "zzz_note_battery"
                 }
-                switch dailyNote {
-                case let dailyNote as any Note4GI:
-                    Text(verbatim: "\(dailyNote.resinInfo.currentResinDynamic)")
-                        .font(.system(size: 50, design: .rounded))
-                        .fontWeight(.medium)
-                        .minimumScaleFactor(0.1)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .shadow(radius: 1)
-                    AccountKit.imageAsset(staminaIconName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 30)
-                        .alignmentGuide(.firstTextBaseline) { context in
-                            context[.bottom] - 0.17 * context.height
-                        }
-                        .shadow(radius: 0.8)
-                case let dailyNote as Note4HSR:
-                    Text(verbatim: "\(dailyNote.staminaInfo.currentStamina)")
-                        .font(.system(size: 50, design: .rounded))
-                        .fontWeight(.medium)
-                        .minimumScaleFactor(0.1)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .shadow(radius: 1)
-                    AccountKit.imageAsset(staminaIconName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 30)
-                        .alignmentGuide(.firstTextBaseline) { context in
-                            context[.bottom] - 0.17 * context.height
-                        }
-                        .shadow(radius: 0.8)
-                case let dailyNote as Note4ZZZ:
-                    Text(verbatim: "\(dailyNote.energy.currentEnergyAmountDynamic)")
-                        .font(.system(size: 50, design: .rounded))
-                        .fontWeight(.medium)
-                        .minimumScaleFactor(0.1)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .shadow(radius: 1)
-                    AccountKit.imageAsset(staminaIconName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 30)
-                        .alignmentGuide(.firstTextBaseline) { context in
-                            context[.bottom] - 0.17 * context.height
-                        }
-                        .shadow(radius: 0.8)
-                default: EmptyView()
-                }
+                Text(verbatim: "\(dailyNote.staminaIntel.finished)")
+                    .font(.system(size: 50, design: .rounded))
+                    .fontWeight(.medium)
+                    .minimumScaleFactor(0.1)
+                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .legibilityShadow()
+                AccountKit.imageAsset(staminaIconName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 30)
+                    .alignmentGuide(.firstTextBaseline) { context in
+                        context[.bottom] - 0.17 * context.height
+                    }
+                    .legibilityShadow(isText: false)
             }
             HStack {
                 Button(intent: WidgetRefreshIntent()) {
@@ -120,6 +86,7 @@ struct LargeWidgetView: View {
                         .font(.title3)
                         .foregroundColor(Color("textColor3", bundle: .main))
                         .clipShape(.circle)
+                        .legibilityShadow()
                 }
                 .buttonStyle(.plain)
                 RecoveryTimeText(entry: entry, data: dailyNote)

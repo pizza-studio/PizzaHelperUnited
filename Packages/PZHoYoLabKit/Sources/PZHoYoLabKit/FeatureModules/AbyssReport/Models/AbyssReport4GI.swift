@@ -3,6 +3,9 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
+
+// MARK: - HoYo.AbyssReport4GI
 
 extension HoYo {
     public struct AbyssReport4GI: AbyssReport {
@@ -10,7 +13,7 @@ extension HoYo {
 
         public typealias ViewType = AbyssReportView4GI
 
-        public struct CharacterRankModel: Codable, Hashable, Sendable {
+        public struct CharacterRankModel: AbleToCodeSendHash {
             // MARK: Public
 
             /// 角色ID
@@ -32,14 +35,14 @@ extension HoYo {
             }
         }
 
-        public struct Floor: Codable, Hashable, Sendable {
+        public struct Floor: AbleToCodeSendHash {
             // MARK: Public
 
-            public struct Level: Codable, Hashable, Sendable {
+            public struct Level: AbleToCodeSendHash {
                 // MARK: Public
 
-                public struct Battle: Codable, Hashable, Sendable {
-                    public struct Avatar: Codable, Hashable, Sendable, Identifiable {
+                public struct Battle: AbleToCodeSendHash {
+                    public struct Avatar: AbleToCodeSendHash, Identifiable {
                         // MARK: Lifecycle
 
                         public init(id: Int, icon: String, level: Int, rarity: Int) {
@@ -179,5 +182,16 @@ extension HoYo {
             case revealRank = "reveal_rank"
             case totalStar = "total_star"
         }
+    }
+}
+
+extension HoYo.AbyssReport4GI {
+    public var hasSufficientStarsForUpload: Bool {
+        var finalFloorIndex = 0
+        for floor in floors where floor.index >= 9 {
+            guard floor.star == floor.maxStar else { return false }
+            finalFloorIndex = Swift.max(floor.index, finalFloorIndex)
+        }
+        return finalFloorIndex >= 12
     }
 }

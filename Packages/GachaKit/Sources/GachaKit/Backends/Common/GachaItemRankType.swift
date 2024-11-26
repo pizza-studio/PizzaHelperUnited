@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - GachaItemRankType
 
-public enum GachaItemRankType: Int, Identifiable, Sendable, Hashable, Codable, CaseIterable {
+public enum GachaItemRankType: Int, Identifiable, AbleToCodeSendHash, CaseIterable {
     case rank3 = 3
     case rank4 = 4
     case rank5 = 5

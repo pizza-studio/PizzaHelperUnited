@@ -617,6 +617,83 @@
         }
       }
     },
+    "app.dailynote.card.hsr_echo_of_war.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echo des Krieges"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echo of War"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ecos de la guerra"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alingawngaw ng Digmaan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Écho de la Guerre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eco di Guerra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "歴戦余韻"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전쟁의 여운"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эхо Войны"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dư Âm Chiến Đấu"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "历战余响"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "歷戰餘響"
+          }
+        }
+      }
+    },
     "app.dailynote.card.parametricTransformer.label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4201,7 +4278,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "安全に感じられるように、その仕組みをご紹介させていただきます：貴殿のパスワード入力は、macOS に組み込まれた SecureEventInput API（iOS にも似ている API もある）によって保護され、その後 HoYoLAB のログインウェブページで直接処理されます。これは、Apple の WKWebView のデザインのためです。他の誰もこのプロセスに干渉したり、傍受したりすることはできず、このアプリも同様です。パスワードがユーザーからの入力を受け取っている間、サードパーティの入力方式に切り替えることができないことがわかります。"
+            "value" : "安全性に対するご心配はあると思いますが、その仕組みをご紹介させていただきます：貴殿のパスワード入力は、macOS に組み込まれた SecureEventInput API（iOS にも似ている API もある）によって保護され、その後 HoYoLAB のログインウェブページで直接処理されます。これは、Apple の WKWebView のデザインのためです。他の誰もこのプロセスに干渉したり、傍受したりすることはできず、このアプリも同様です。パスワードがユーザーからの入力を受け取っている間、サードパーティの入力方式に切り替えることができないことは、まさに好例です。"
           }
         },
         "ko" : {
@@ -5379,13 +5456,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择你的 UID"
+            "value" : "选择您的 UID"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選擇你的 UID"
+            "value" : "選擇您的 UID"
           }
         }
       }
@@ -5621,6 +5698,7 @@
       }
     },
     "profileMgr.login.manual.2" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5685,13 +5763,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手动配置你的本地账号"
+            "value" : "手动配置您的本地账号"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手動設定你的本機帳號"
+            "value" : "手動設定您的本機帳號"
           }
         }
       }
@@ -6301,13 +6379,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手动将本地账户同步至小组件"
+            "value" : "手动将本地账号同步至小组件"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "手動將本機帳戶同步至小工具"
+            "value" : "手動將本機帳號同步至小工具"
           }
         }
       }
@@ -8017,7 +8095,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The TimeZone settings in this section is for displaying at least the following intelligence (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc."
+            "value" : "The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc."
           }
         },
         "es" : {
@@ -8094,7 +8172,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TimeZone for displaying GI universal intelligence"
+            "value" : "TimeZone for displaying GI universal information"
           }
         },
         "es" : {
@@ -8504,7 +8582,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ UIKit から AppKit へのブリッジフレームワークの制限により、macCatalyst アプリの macOS では DatePicker の入力パネルが表示されません。ユーザーは希望する入力フィールドを手動で選択し、物理キーボードで直接入力する必要がございますので、予めご了承くださいませ。"
+            "value" : "⚠️ UIKit から AppKit へのブリッジフレームワークの制限により、macCatalyst アプリの DatePicker の入力パネルが表示されません。ご希望の入力フィールドを手動で選択し、物理キーボードで直接入力する必要がございますので、予めご了承くださいませ。"
           }
         },
         "ko" : {
@@ -8854,7 +8932,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note intel for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note intel, in cases where the relevant preferences permit it."
+            "value" : "This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note data for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note data, in cases where the relevant preferences permit it."
           }
         },
         "es" : {

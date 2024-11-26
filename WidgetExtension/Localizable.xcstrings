@@ -3529,7 +3529,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Automatically display your most-wanted intels"
+            "value" : "Automatically display your most-wanted information"
           }
         },
         "es" : {
@@ -3837,7 +3837,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "General Intels"
+            "value" : "General Information"
           }
         },
         "es" : {
@@ -3914,7 +3914,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All intels, in one view, just one glance"
+            "value" : "All info, in one view, just one glance"
           }
         },
         "es" : {
@@ -4978,37 +4978,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 Std. 0 Min. Primäre Ausdauer ist voll"
+            "value" : "0 Std. 0 Min.\nAusdauer ist voll"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 hr 0 min\nPrimary Stamina is Full"
+            "value" : "0 hr 0 min\nStamina is Full"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 hr 0 min\nLa resistencia primaria está llena"
+            "value" : "0 hr 0 min\nLa resistencia está llena"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 oras 0 min\nPuno na ang Pangunahing Stamina"
+            "value" : "0 oras 0 min\nPuno na ang Stamina"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 h 0 min\nL'énergie principale est pleine"
+            "value" : "0 h 0 min\nL'énergie est pleine"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 ore 0 min\nStamina primaria è piena"
+            "value" : "0 ore 0 min\nStamina è piena"
           }
         },
         "ja" : {
@@ -5020,19 +5020,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0시간 0분\n기본 스태미너가 가득 찼습니다"
+            "value" : "0시간 0분\n스태미너가 가득 찼습니다"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 ч 0 мин\nОсновная выносливость полна"
+            "value" : "0 ч 0 мин\nВыносливость Полна"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 giờ 0 phút\nThể lực chính đã đầy"
+            "value" : "0 giờ 0 phút\nSức bền đã đầy"
           }
         },
         "zh-Hans" : {

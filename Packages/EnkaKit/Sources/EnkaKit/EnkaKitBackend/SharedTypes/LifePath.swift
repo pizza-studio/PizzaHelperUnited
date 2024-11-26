@@ -2,10 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 // MARK: - Enka.LifePath
 
 extension Enka {
-    public enum LifePath: String, Codable, Hashable, Sendable, CaseIterable {
+    public enum LifePath: String, AbleToCodeSendHash, CaseIterable {
         case none = "None"
         case destruction = "Warrior"
         case hunt = "Rogue"

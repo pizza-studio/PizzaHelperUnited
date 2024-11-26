@@ -35,11 +35,9 @@ struct DetailInfo: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: spacing) {
-            if dailyNote.hasDailyTaskIntel {
-                DailyTaskInfoBar(dailyNote: dailyNote)
-            }
             switch dailyNote {
             case let dailyNote as any Note4GI:
+                drawDailyTaskCompletionStatus()
                 if dailyNote.homeCoinInfo.maxHomeCoin != 0 {
                     HomeCoinInfoBar(entry: entry, homeCoinInfo: dailyNote.homeCoinInfo)
                 }
@@ -55,29 +53,40 @@ struct DetailInfo: View {
                     switch viewConfig.weeklyBossesShowingMethod {
                     case .neverShow:
                         EmptyView()
-                    case .disappearAfterCompleted:
-                        if dailyNote.weeklyBossesInfo.remainResinDiscount != 0 {
-                            WeeklyBossesInfoBar(
-                                weeklyBossesInfo: dailyNote.weeklyBossesInfo
-                            )
-                        }
+                    case .disappearAfterCompleted where !dailyNote.weeklyBossesInfo.allDiscountsAreUsedUp:
+                        TrounceBlossomInfoBar(
+                            weeklyBossesInfo: dailyNote.weeklyBossesInfo
+                        )
                     case .alwaysShow:
-                        WeeklyBossesInfoBar(weeklyBossesInfo: dailyNote.weeklyBossesInfo)
+                        TrounceBlossomInfoBar(weeklyBossesInfo: dailyNote.weeklyBossesInfo)
+                    default: EmptyView()
                     }
                 }
             case let dailyNote as Note4HSR:
+                ReservedTrailblazePowerInfoBar(tbPowerIntel: dailyNote.staminaInfo)
+                drawDailyTaskCompletionStatus()
                 if dailyNote.hasExpeditions {
                     ExpeditionInfoBar(dailyNote: dailyNote)
                 }
-                if let dailyNote = dailyNote as? WidgetNote4HSR {
-                    SimulUnivInfoBar(dailyNote: dailyNote)
+                SimulUnivInfoBar(dailyNote: dailyNote)
+                if let eowIntel = dailyNote.echoOfWarIntel {
+                    EchoOfWarInfoBar(eowIntel: eowIntel)
                 }
             case _ as Note4ZZZ:
-                EmptyView() // TODO: Needs further implementation.
+                drawDailyTaskCompletionStatus()
             default:
                 EmptyView()
             }
         }
         .padding(.trailing)
+    }
+
+    // MARK: Private
+
+    @ViewBuilder
+    private func drawDailyTaskCompletionStatus() -> some View {
+        if dailyNote.hasDailyTaskIntel {
+            DailyTaskInfoBar(dailyNote: dailyNote)
+        }
     }
 }

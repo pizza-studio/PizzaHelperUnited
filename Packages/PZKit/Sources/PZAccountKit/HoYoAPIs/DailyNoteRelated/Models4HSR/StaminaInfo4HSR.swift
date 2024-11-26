@@ -40,7 +40,10 @@ public struct StaminaInfo4HSR: Sendable {
 
     /// The time when stamina is full
     public var fullTime: Date {
-        Date(timeInterval: _staminaRecoverTime, since: fetchTime)
+        if let staminaFullTimestamp {
+            return .init(timeIntervalSince1970: staminaFullTimestamp)
+        }
+        return Date(timeInterval: _staminaRecoverTime, since: fetchTime)
     }
 
     /// The time when next stamina recover. If the stamina is full, return `nil`
@@ -55,10 +58,16 @@ public struct StaminaInfo4HSR: Sendable {
 
     public let isReserveStaminaFull: Bool
 
-    // MARK: Private
+    // Unix Timestamp.
+    public let staminaFullTimestamp: Double?
 
     /// Reserved Stamina when data is fetched.
-    private let _currentReserveStamina: Int
+    public let currentReserveStamina: Int
+
+    public var maxReserveStamina: Int { 2400 }
+
+    // MARK: Private
+
     /// Stamina when data is fetched.
     private let _currentStamina: Int
     /// Recovery time interval when data is fetched.
@@ -82,8 +91,9 @@ extension StaminaInfo4HSR: Decodable {
         self.maxStamina = try container.decode(Int.self, forKey: .maxStamina)
         self._currentStamina = try container.decode(Int.self, forKey: .currentStamina)
         self._staminaRecoverTime = try TimeInterval(container.decode(Int.self, forKey: .staminaRecoverTime))
-        self._currentReserveStamina = (try? container.decode(Int.self, forKey: .currentReserveStamina)) ?? 0
+        self.currentReserveStamina = try container.decode(Int.self, forKey: .currentReserveStamina)
         self.isReserveStaminaFull = (try? container.decode(Bool.self, forKey: .isReserveStaminaFull)) ?? false
+        self.staminaFullTimestamp = try container.decodeIfPresent(Double.self, forKey: .staminaFullTimestamp)
     }
 
     enum CodingKeys: String, CodingKey {
@@ -92,6 +102,7 @@ extension StaminaInfo4HSR: Decodable {
         case staminaRecoverTime = "stamina_recover_time"
         case isReserveStaminaFull = "is_reserve_stamina_full"
         case currentReserveStamina = "current_reserve_stamina"
+        case staminaFullTimestamp = "stamina_full_ts"
     }
 }
 

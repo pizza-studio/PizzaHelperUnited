@@ -11,6 +11,14 @@ import SwiftUI
 struct DailyTaskInfoBar: View {
     let dailyNote: any DailyNoteProtocol
 
+    var assetName: String {
+        switch dailyNote.game {
+        case .genshinImpact: "gi_note_dailyTask"
+        case .starRail: "hsr_note_dailyTask"
+        case .zenlessZone: "zzz_note_vitality"
+        }
+    }
+
     @ViewBuilder var isTaskRewardReceivedImage: some View {
         if dailyNote.hasDailyTaskIntel {
             let sitrep = dailyNote.dailyTaskCompletionStatus
@@ -35,14 +43,16 @@ struct DailyTaskInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset("gi_note_dailyTask")
+            AccountKit.imageAsset(assetName)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
+                .legibilityShadow(isText: false)
             isTaskRewardReceivedImage
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3", bundle: .main))
+                .legibilityShadow()
 
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Group {
@@ -60,6 +70,7 @@ struct DailyTaskInfoBar: View {
                 .font(.system(.caption, design: .rounded))
                 .minimumScaleFactor(0.2)
             }
+            .legibilityShadow()
         }
     }
 }

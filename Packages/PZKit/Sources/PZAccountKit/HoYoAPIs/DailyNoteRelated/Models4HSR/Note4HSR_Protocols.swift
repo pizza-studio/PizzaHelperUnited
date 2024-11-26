@@ -15,6 +15,14 @@ public protocol Note4HSR: BenchmarkTimeEditable, DailyNoteProtocol {
     var assignmentInfo: AssignmentInfo4HSR { get }
     /// The time when this struct is generated
     var fetchTime: Date { get }
+    /// Simulated Universe score completion status (weekly)
+    var simulatedUniverseInfo: SimuUnivInfo4HSR { get }
+    /// Daily Training Info
+    var dailyTrainingInfo: DailyTrainingInfo4HSR { get }
+    /// Echo of War (unable from Widget APIs)
+    var echoOfWarCostStatus: EchoOfWarInfo4HSR? { get }
+    /// Optional Metadata (unable from Widget APIs)
+    var optionalMetaData: NoteMetaData4HSR? { get }
 }
 
 extension Note4HSR {

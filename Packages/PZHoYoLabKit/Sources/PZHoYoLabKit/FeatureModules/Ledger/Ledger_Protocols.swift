@@ -3,11 +3,12 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 import SwiftUI
 
 // MARK: - Ledger
 
-public protocol Ledger: Codable, Hashable, Sendable, DecodableFromMiHoYoAPIJSONResult {
+public protocol Ledger: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
     associatedtype ViewType: LedgerView where Self == ViewType.LedgerData
 }
 

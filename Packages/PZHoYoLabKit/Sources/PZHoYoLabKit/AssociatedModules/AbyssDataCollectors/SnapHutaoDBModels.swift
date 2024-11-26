@@ -4,20 +4,21 @@
 
 import Foundation
 import PZAccountKit
+import PZBaseKit
 
 // MARK: - SnapHutao
 
 public enum SnapHutao {
     public struct AbyssDataPack: Codable, AbyssDataPackProtocol {
-        public struct SpiralAbyss: Codable, Hashable, Sendable {
-            public struct Damage: Codable, Hashable, Sendable {
+        public struct SpiralAbyss: AbleToCodeSendHash {
+            public struct Damage: AbleToCodeSendHash {
                 public var avatarId: Int
                 public var aalue: Int
             }
 
-            public struct Floor: Codable, Hashable, Sendable {
-                public struct Level: Codable, Hashable, Sendable {
-                    public struct Battle: Codable, Hashable, Sendable {
+            public struct Floor: AbleToCodeSendHash {
+                public struct Level: AbleToCodeSendHash {
+                    public struct Battle: AbleToCodeSendHash {
                         public var index: Int
                         public var avatars: [Int]
                     }
@@ -40,7 +41,7 @@ public enum SnapHutao {
             public var floors: [Floor]
         }
 
-        public struct Avatar: Codable, Hashable, Sendable {
+        public struct Avatar: AbleToCodeSendHash {
             public var avatarId: Int
             public var weaponId: Int
             public var reliquarySetIds: [Int]
@@ -84,7 +85,7 @@ extension SnapHutao.AbyssDataPack {
             abyssData = try await HoYo.abyssReportData4GI(for: profile)
         }
         guard let abyssData else { throw AbyssCollector.ACError.abyssDataNotSupplied }
-        guard abyssData.totalStar == 36 else { throw AbyssCollector.ACError.insufficientStars }
+        guard abyssData.hasSufficientStarsForUpload else { throw AbyssCollector.ACError.ungainedStarsDetected }
         var inventoryData = inventoryData
         if inventoryData == nil {
             inventoryData = try await HoYo.characterInventory4GI(for: profile)

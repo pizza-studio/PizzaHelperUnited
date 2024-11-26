@@ -23,7 +23,7 @@ extension Defaults.Keys {
 
 // MARK: - Wallpaper
 
-public struct Wallpaper: Identifiable, Codable, Hashable, Sendable {
+public struct Wallpaper: Identifiable, AbleToCodeSendHash {
     public let game: Pizza.SupportedGame?
     public let id: String
     public let bindedCharID: String? // 原神专用
@@ -113,10 +113,10 @@ extension Wallpaper {
 extension Wallpaper {
     public static func defaultValue(for game: Pizza.SupportedGame? = nil) -> Self {
         switch game ?? appGame {
-        case .genshinImpact: .init(game: .genshinImpact, id: "210042", bindedCharID: nil)
+        case .genshinImpact: .init(game: .genshinImpact, id: "210042", bindedCharID: "10000031_203101")
         case .starRail: .init(game: .genshinImpact, id: "221000", bindedCharID: nil)
         case .zenlessZone: .init(game: .genshinImpact, id: "990001", bindedCharID: nil)
-        case .none: .init(game: .genshinImpact, id: "210042", bindedCharID: nil)
+        case .none: .init(game: .genshinImpact, id: "210042", bindedCharID: "10000031_203101")
         }
     }
 

@@ -107,9 +107,8 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             do {
                 let data = try await config.getDailyNote()
                 let entries = (0 ... 40).map { index in
-                    let timeInterval = TimeInterval(index * 8 * 60)
-                    let entryDate =
-                        Date(timeIntervalSinceNow: timeInterval)
+                    let timeInterval = TimeInterval(Double(index) * data.eachStaminaRecoveryTime)
+                    let entryDate = Date(timeIntervalSinceNow: timeInterval)
                     return Entry(
                         date: entryDate,
                         result: .success(data),

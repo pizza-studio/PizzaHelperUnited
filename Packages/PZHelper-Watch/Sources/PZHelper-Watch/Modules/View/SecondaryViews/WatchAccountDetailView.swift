@@ -28,10 +28,15 @@ struct WatchAccountDetailView: View {
                             case .starRail: "watch.dailyNote.card.dailyTask.label"
                             case .zenlessZone: "watch.dailyNote.card.vitality.label"
                             }
+                            let dailyTaskIcon = switch data.game {
+                            case .genshinImpact: "gi_note_dailyTask"
+                            case .starRail: "hsr_note_dailyTask"
+                            case .zenlessZone: "zzz_note_vitality"
+                            }
                             WatchAccountDetailItemView(
                                 title: titleKey,
                                 value: "\(sitrep.finished) / \(sitrep.all)",
-                                icon: AccountKit.imageAsset("gi_note_dailyTask")
+                                icon: AccountKit.imageAsset(dailyTaskIcon)
                             )
                             Divider()
                         }
@@ -64,25 +69,31 @@ struct WatchAccountDetailView: View {
                                 Divider()
                                 WatchAccountDetailItemView(
                                     title: "watch.dailyNote.card.weeklyBosses",
-                                    value: "\(data.weeklyBossesInfo.remainResinDiscount) / \(data.weeklyBossesInfo.totalResinDiscount)",
+                                    value: data.weeklyBossesInfo.textDescription,
                                     icon: AccountKit.imageAsset("gi_note_weeklyBosses")
                                 )
                             }
                         case let data as Note4HSR:
-                            if let data = data as? WidgetNote4HSR {
-                                WatchAccountDetailItemView(
-                                    title: "watch.dailyNote.card.simulatedUniverse.label",
-                                    value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
-                                    icon: AccountKit.imageAsset("hsr_note_simulatedUniverse")
-                                )
-                                Divider()
-                            }
+                            WatchAccountDetailItemView(
+                                title: "watch.dailyNote.card.simulatedUniverse.label",
+                                value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
+                                icon: AccountKit.imageAsset("hsr_note_simulatedUniverse")
+                            )
+                            Divider()
                             let expeditionIntel = data.expeditionCompletionStatus
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.expedition.label",
                                 value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
-                                icon: AccountKit.imageAsset("gi_note_expedition")
+                                icon: AccountKit.imageAsset("hsr_note_expedition")
                             )
+                            if let eowIntel = data.echoOfWarIntel {
+                                Divider()
+                                WatchAccountDetailItemView(
+                                    title: "watch.dailyNote.card.hsrEchoOfWar.label",
+                                    value: eowIntel.textDescription,
+                                    icon: AccountKit.imageAsset("hsr_note_weeklyBosses")
+                                )
+                            }
                         case _ as Note4ZZZ:
                             EmptyView()
                         // TODO: 絕區零的其他內容擴充。

@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 
 // MARK: - HoYo.CharInventory4HSR
 
@@ -47,7 +48,7 @@ extension HoYo {
 
 // MARK: - HoyoArtifactProtocol4HSR
 
-public protocol HoyoArtifactProtocol4HSR: Codable, Hashable, Sendable, Identifiable {
+public protocol HoyoArtifactProtocol4HSR: AbleToCodeSendHash, Identifiable {
     var id: Int { get }
     var level: Int { get }
     var pos: Int { get }
@@ -58,7 +59,7 @@ public protocol HoyoArtifactProtocol4HSR: Codable, Hashable, Sendable, Identifia
 }
 
 extension HoYo.CharInventory4HSR.HYAvatar4HSR {
-    public struct HYEquip4HSR: Codable, Hashable, Sendable, Identifiable {
+    public struct HYEquip4HSR: AbleToCodeSendHash, Identifiable {
         public let id: Int
         public let level: Int
         public let rank: Int
@@ -88,7 +89,7 @@ extension HoYo.CharInventory4HSR.HYAvatar4HSR {
         public let rarity: Int
     }
 
-    public struct HYSkillRank4HSR: Codable, Hashable, Sendable, Identifiable {
+    public struct HYSkillRank4HSR: AbleToCodeSendHash, Identifiable {
         // MARK: Public
 
         public let id: Int

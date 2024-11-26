@@ -3,11 +3,12 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 import SwiftUI
 
 // MARK: - TravelStats
 
-public protocol TravelStats: Codable, Hashable, Sendable, DecodableFromMiHoYoAPIJSONResult {
+public protocol TravelStats: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
     associatedtype Stats: TravelStatsTable
     associatedtype ViewType: TravelStatsView where Self == ViewType.StatsData
     var stats: Stats { get }

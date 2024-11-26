@@ -30,17 +30,17 @@ struct EachExpeditionView: View {
 
     var body: some View {
         HStack {
-            webView(url: expedition.iconURL)
+            webView(url: expedition.iconURL, copilotURL: expedition.iconURL4Copilot)
             VStack(alignment: .leading) {
                 if !expedition.isFinished, let finishTime = expedition.timeOnFinish {
                     Text(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: finishTime))!)
                         .lineLimit(1)
                         .font(.footnote)
                         .minimumScaleFactor(0.4)
+                        .legibilityShadow()
                     let totalSecond = 20.0 * 60.0 * 60.0
                     let percentage = 1.0 - (TimeInterval.sinceNow(to: finishTime) / totalSecond)
                     percentageBar(percentage)
-                        .environment(\.colorScheme, .light)
                 } else {
                     Text(
                         expedition.isFinished
@@ -50,8 +50,8 @@ struct EachExpeditionView: View {
                     .lineLimit(1)
                     .font(.footnote)
                     .minimumScaleFactor(0.4)
+                    .legibilityShadow()
                     percentageBar(expedition.isFinished ? 1 : 0.5)
-                        .environment(\.colorScheme, .light)
                 }
             }
         }
@@ -59,7 +59,8 @@ struct EachExpeditionView: View {
     }
 
     @ViewBuilder
-    func webView(url: URL) -> some View {
+    func webView(url: URL, copilotURL: URL?) -> some View {
+        let outerSize: CGFloat = 50
         GeometryReader { g in
             switch expedition.game {
             case .genshinImpact:
@@ -68,12 +69,29 @@ struct EachExpeditionView: View {
                     .scaledToFit()
                     .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
             case .starRail:
-                NetworkImage(url: expedition.iconURL)
+                let leaderAvatar = NetworkImage(url: expedition.iconURL)
                     .scaledToFit()
+                    .background(.ultraThinMaterial, in: .circle)
+                if let copilotURL {
+                    ZStack {
+                        leaderAvatar
+                            .frame(maxWidth: outerSize * 0.7, maxHeight: outerSize * 0.7)
+                            .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .topLeading)
+                        NetworkImage(url: copilotURL)
+                            .scaledToFit()
+                            .background(.thinMaterial, in: .circle)
+                            .frame(maxWidth: outerSize / 2, maxHeight: outerSize / 2)
+                            .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .bottomTrailing)
+                    }
+                    .frame(maxWidth: outerSize, maxHeight: outerSize)
+                } else {
+                    leaderAvatar
+                }
             default: EmptyView()
             }
         }
-        .frame(maxWidth: 50, maxHeight: 50)
+        .frame(maxWidth: outerSize, maxHeight: outerSize)
+        .environment(\.colorScheme, .light)
     }
 
     @ViewBuilder
@@ -86,8 +104,11 @@ struct EachExpeditionView: View {
                     style: .continuous
                 )
                 .frame(width: g.size.width, height: g.size.height)
-                .foregroundStyle(.ultraThinMaterial)
+                .foregroundStyle(.regularMaterial)
+                .brightness(-0.3)
+                .environment(\.colorScheme, .light)
                 .opacity(0.6)
+                .environment(\.colorScheme, .light)
                 RoundedRectangle(
                     cornerRadius: cornerRadius,
                     style: .continuous
@@ -96,10 +117,10 @@ struct EachExpeditionView: View {
                     width: g.size.width * percentage,
                     height: g.size.height
                 )
-                .foregroundStyle(.thickMaterial)
+                .foregroundStyle(.white)
             }
             .aspectRatio(30 / 1, contentMode: .fit)
-//                .preferredColorScheme(.light)
+            .compositingGroup()
         }
         .frame(height: 7)
     }

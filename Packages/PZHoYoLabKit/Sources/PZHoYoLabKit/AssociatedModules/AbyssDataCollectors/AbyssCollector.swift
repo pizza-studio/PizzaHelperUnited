@@ -9,7 +9,7 @@ import PZBaseKit
 
 // MARK: - AbyssDataPackProtocol
 
-public protocol AbyssDataPackProtocol: Codable, Hashable, Sendable {}
+public protocol AbyssDataPackProtocol: AbleToCodeSendHash {}
 
 extension AbyssCollector {
     public static let shared = AbyssCollector()
@@ -23,10 +23,10 @@ extension AbyssCollector {
         public let message: String?
     }
 
-    public enum CommissionType: CaseIterable, Sendable {
+    public enum CommissionType: String, CaseIterable, Sendable {
+        case hutaoDB
         case pzAvatarHolding
         case pzAbyssDB
-        case hutaoDB
 
         // MARK: Internal
 
@@ -56,7 +56,7 @@ extension AbyssCollector {
         case getResponseError(String)
         case respDecodingError(String)
         case wrongGame
-        case insufficientStars
+        case ungainedStarsDetected
         case avatarMismatch
         case abyssDataNotSupplied
         case inventoryDataNotSupplied
@@ -222,7 +222,13 @@ extension AbyssCollector {
                 if ["uid existed", "Insert Failed"].contains(decoded.message) {
                     saveMD5()
                 }
-                throw ACError.getResponseError("Final Server Response is not 0. MSG: \(decoded.message ?? "")")
+                let errorMSG = """
+                [Upload Error || \(dataPackType)] Final Server Response is not 0. MSG: \(
+                    decoded.message ?? ""
+                ); UID: \(profile.uidWithGame);
+                """
+                NSLog(errorMSG)
+                throw ACError.getResponseError(errorMSG)
             }
         } catch {
             if error is DecodingError {

@@ -18,12 +18,14 @@ struct WidgetErrorView: View {
                     .font(.title3)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .clipShape(.circle)
+                    .legibilityShadow()
             }
             .buttonStyle(.plain)
             .padding()
             Text(error.localizedDescription)
                 .bold()
-                .foregroundColor(.gray)
+                .foregroundColor(Color("textColor3", bundle: .main))
+                .legibilityShadow()
         }
         .padding(20)
     }

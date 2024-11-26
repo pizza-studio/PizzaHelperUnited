@@ -8,11 +8,11 @@ import SFSafeSymbols
 import SwiftUI
 
 @available(watchOS, unavailable)
-struct WeeklyBossesInfoBar: View {
+struct TrounceBlossomInfoBar: View {
     let weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI
 
     var isWeeklyBossesFinishedImage: some View {
-        (weeklyBossesInfo.remainResinDiscount == 0)
+        (weeklyBossesInfo.allDiscountsAreUsedUp)
             ? Image(systemSymbol: .checkmark)
             .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
             : Image(systemSymbol: .questionmark)
@@ -26,21 +26,19 @@ struct WeeklyBossesInfoBar: View {
                 .scaledToFit()
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
+                .legibilityShadow(isText: false)
             isWeeklyBossesFinishedImage
                 .frame(width: 13, height: 13)
                 .foregroundColor(Color("textColor3", bundle: .main))
+                .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
+                Text(verbatim: weeklyBossesInfo.textDescription)
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
-                Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
-                    .lineLimit(1)
-                    .foregroundColor(Color("textColor3", bundle: .main))
-                    .font(.system(.footnote, design: .rounded))
-                    .minimumScaleFactor(0.2)
             }
+            .legibilityShadow(isText: false)
         }
     }
 }
