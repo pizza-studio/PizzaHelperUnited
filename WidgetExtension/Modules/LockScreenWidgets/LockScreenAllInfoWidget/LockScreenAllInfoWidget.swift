@@ -38,6 +38,7 @@ struct LockScreenAllInfoWidget: Widget {
 struct LockScreenAllInfoWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
+
     let entry: LockScreenWidgetProvider.Entry
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }

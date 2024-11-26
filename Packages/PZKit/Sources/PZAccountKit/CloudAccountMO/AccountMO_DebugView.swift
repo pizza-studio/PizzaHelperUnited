@@ -101,5 +101,6 @@ public struct AccountMODebugView: View {
     @MainActor private static let sputnik: AccountMOSputnik = .shared
 
     @State private var game: Pizza.SupportedGame = .genshinImpact
+
     private let casesOfGames: [Pizza.SupportedGame] = [.genshinImpact, .starRail]
 }

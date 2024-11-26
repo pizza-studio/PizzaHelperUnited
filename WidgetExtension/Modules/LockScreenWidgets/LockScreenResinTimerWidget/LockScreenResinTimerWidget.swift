@@ -37,25 +37,8 @@ struct LockScreenResinTimerWidget: Widget {
 @available(macOS, unavailable)
 struct LockScreenResinTimerWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
+
     let entry: LockScreenWidgetProvider.Entry
-    var body: some View {
-        switch family {
-        case .accessoryCircular:
-            Group {
-                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
-            }
-            .widgetURL(url)
-        #if os(watchOS)
-        case .accessoryCorner:
-            Group {
-                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
-            }
-            .widgetURL(url)
-        #endif
-        default:
-            EmptyView()
-        }
-    }
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
@@ -79,6 +62,25 @@ struct LockScreenResinTimerWidgetView: View {
             return nil
         case .failure:
             return errorURL
+        }
+    }
+
+    var body: some View {
+        switch family {
+        case .accessoryCircular:
+            Group {
+                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
+            }
+            .widgetURL(url)
+        #if os(watchOS)
+        case .accessoryCorner:
+            Group {
+                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
+            }
+            .widgetURL(url)
+        #endif
+        default:
+            EmptyView()
         }
     }
 }

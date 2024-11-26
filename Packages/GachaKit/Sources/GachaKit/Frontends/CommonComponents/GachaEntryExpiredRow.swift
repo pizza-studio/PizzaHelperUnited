@@ -44,9 +44,10 @@ public struct GachaEntryExpiredRow: View {
 
     // MARK: Private
 
+    @Environment(GachaVM.self) private var theVM
+
     private let alwaysVisible: Bool
     private let games: [Pizza.SupportedGame?]?
-    @Environment(GachaVM.self) private var theVM
 
     private var isVisible: Bool {
         if case .databaseExpired = theVM.currentError as? GachaMeta.GMDBError {

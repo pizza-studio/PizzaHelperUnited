@@ -151,11 +151,12 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
+    @StateObject private var delegate: CaseProfileVM<QueryDB>
+    @StateObject private var broadcaster = Broadcaster.shared
+
     private let appendedContent: () -> T
     private let onTapGestureAction: (() -> Void)?
     private var theDB: QueryDB
-    @StateObject private var delegate: CaseProfileVM<QueryDB>
-    @StateObject private var broadcaster = Broadcaster.shared
 
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(pzProfile.uid) else { return false }

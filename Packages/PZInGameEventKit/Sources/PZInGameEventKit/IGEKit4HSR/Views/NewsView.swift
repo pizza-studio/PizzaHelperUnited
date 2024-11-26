@@ -112,8 +112,9 @@ extension NewsKitHSR {
         // MARK: Private
 
         @ObservedObject private var coordinator: Coordinator = .init()
-        @Default(.defaultServer) private var defaultServer: String
         @State private var currentTab: NewsKitHSR.NewsType = .notices
+
+        @Default(.defaultServer) private var defaultServer: String
 
         private var currentPageTitle: String {
             switch currentTab {

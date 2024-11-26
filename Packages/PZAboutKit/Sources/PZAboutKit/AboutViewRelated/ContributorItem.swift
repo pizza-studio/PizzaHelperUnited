@@ -61,12 +61,13 @@ struct ContributorItem: View {
 
     // MARK: Private
 
+    @State private var isExpanded: Bool
+
     private let asMainMember: Bool
     private let iconName: String
     private let title: String
     private let subtitle: String
     private let extraLinks: [Link]
-    @State private var isExpanded: Bool
 
     @ViewBuilder
     private func drawAsMainMember() -> some View {

@@ -31,9 +31,10 @@ public struct GachaChartHorizontal: View {
 
     // MARK: Private
 
+    @Environment(GachaVM.self) private var theVM
+
     private let poolType: GachaPoolExpressible
     private let givenGPID: GachaProfileID
-    @Environment(GachaVM.self) private var theVM
 
     private var pentaStarEntries: [GachaEntryExpressible] {
         theVM.currentPentaStars

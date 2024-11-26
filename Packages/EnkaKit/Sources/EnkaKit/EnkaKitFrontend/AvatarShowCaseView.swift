@@ -158,13 +158,14 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
 
     // MARK: Private
 
-    private let onClose: (() -> Void)?
-    private let bottomSpacerHeight: CGFloat = 20
     @State private var showTabViewIndex = false
     @State private var showingCharacterIdentifier: String
     @State private var profile: Enka.ProfileSummarized<DBType>
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+
+    private let onClose: (() -> Void)?
+    private let bottomSpacerHeight: CGFloat = 20
     @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
 
     private var avatar: Enka.AvatarSummarized? {

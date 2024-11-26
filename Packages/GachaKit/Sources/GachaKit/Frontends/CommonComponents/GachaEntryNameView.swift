@@ -24,6 +24,7 @@ public struct GachaEntryNameView: View {
 
     @State var enkaDB = Enka.Sputnik.shared
     @State var metaDB = GachaMeta.sharedDB
+
     @Default(.useRealCharacterNames) var useRealCharacterNames: Bool
 
     func nameLocalized(for lang: GachaLanguage = .current) -> String {
