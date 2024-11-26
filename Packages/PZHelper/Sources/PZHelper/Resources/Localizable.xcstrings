@@ -2768,7 +2768,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ 凡受米遊社管理之絕區零 UID 者，得自備設備指紋。"
+            "value" : "⚠︎ 如果您的絕區零 UID 受米游社管轄的話，您需要自備設備指紋。"
           }
         }
       }
@@ -4077,7 +4077,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "關於我們的工作原理"
+            "value" : "關於敝應用的工作原理"
           }
         }
       }
@@ -4308,7 +4308,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "為了確保您對此感到安全，這里介紹一下運作方式：您的密碼輸入受到 macOS 內建的 SecureEventInputAPI（或 iOS 上的等效功能）的保護，然後將直接由 HoYoLAB 登入網頁處理。這是 Apple 對 WKWebView 的設計使然。其他人無法干擾或截聽這個過程，包括敝應用。您會發現，在密碼接收來自使用者的輸入的過程中，您無法切換到第三方輸入法。"
+            "value" : "為了確保您對此感到安全，這裡介紹一下運作方式：您的密碼輸入受到 macOS 內建的 SecureEventInputAPI（或 iOS 上的等效功能）的保護，然後將直接由 HoYoLAB 登入網頁處理。這是 Apple 對 WKWebView 的設計使然。其他人無法幹擾或截聽這個過程，包括敝應用。您會發現，在密碼接收來自使用者的輸入的過程中，您無法切換到第三方輸入法。"
           }
         }
       }
@@ -6847,7 +6847,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "了解如何對 米遊社 / HoYoLAB 帳號進行 管理 或 註銷(删号)"
+            "value" : "瞭解如何對 米遊社 / HoYoLAB 帳號進行 管理 或 註銷(刪號)"
           }
         }
       }
@@ -6924,7 +6924,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "註銷(删号)說明"
+            "value" : "註銷(刪號)說明"
           }
         }
       }
@@ -7077,7 +7077,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "註銷(删号) - HoYoLAB"
+            "value" : "註銷(刪號) - HoYoLAB"
           }
         }
       }
@@ -7154,7 +7154,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "註銷(删号) - 米遊社"
+            "value" : "註銷(刪號) - 米遊社"
           }
         }
       }
@@ -8612,7 +8612,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 由於 UIKit 到 AppKit 桥接框架的限制，macCatalyst 應用中的 macOS 日期選擇器不會顯示輸入面板。使用者只能手動選擇所需的輸入欄位，並直接在實體鍵盤上輸入。"
+            "value" : "⚠️ 由於 UIKit 到 AppKit 橋接框架的限制，macCatalyst 應用中的 macOS 日期選擇器不會顯示輸入面板。使用者只能手動選擇所需的輸入欄位，並直接在實體鍵盤上輸入。"
           }
         }
       }
@@ -8764,7 +8764,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "※ 星穹铁道与原神限定。"
+            "value" : "※ 星穹鐵道與原神限定。"
           }
         }
       }
@@ -9676,7 +9676,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "征討之花剩餘樹脂折扣次數提醒"
+            "value" : "徵討之花剩餘樹脂折扣次數提醒"
           }
         }
       }

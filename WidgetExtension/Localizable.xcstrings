@@ -76,7 +76,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "蓝色"
+            "value" : "藍色"
           }
         }
       }
@@ -307,7 +307,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "绿色"
+            "value" : "綠色"
           }
         }
       }
@@ -538,7 +538,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "红色"
+            "value" : "紅色"
           }
         }
       }
@@ -5426,7 +5426,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "距离 %lld 點體力:"
+            "value" : "距離 %lld 點體力:"
           }
         }
       }
