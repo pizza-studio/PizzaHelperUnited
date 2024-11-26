@@ -188,7 +188,7 @@ private struct DailyNoteCardView4GI: View {
                             .scaledToFit()
                             .frame(width: iconFrame - 6, height: iconFrame - 6)
                         let weeklyBossesInfo = dailyNote.weeklyBossesInfo
-                        if weeklyBossesInfo.remainResinDiscount == 0 {
+                        if weeklyBossesInfo.allDiscountsAreUsedUp {
                             Image(systemSymbol: .checkmarkCircle)
                                 .foregroundColor(.green)
                                 .frame(width: 20, height: 20)

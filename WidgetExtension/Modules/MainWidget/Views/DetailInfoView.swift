@@ -53,14 +53,13 @@ struct DetailInfo: View {
                     switch viewConfig.weeklyBossesShowingMethod {
                     case .neverShow:
                         EmptyView()
-                    case .disappearAfterCompleted:
-                        if dailyNote.weeklyBossesInfo.remainResinDiscount != 0 {
-                            WeeklyBossesInfoBar(
-                                weeklyBossesInfo: dailyNote.weeklyBossesInfo
-                            )
-                        }
+                    case .disappearAfterCompleted where !dailyNote.weeklyBossesInfo.allDiscountsAreUsedUp:
+                        WeeklyBossesInfoBar(
+                            weeklyBossesInfo: dailyNote.weeklyBossesInfo
+                        )
                     case .alwaysShow:
                         WeeklyBossesInfoBar(weeklyBossesInfo: dailyNote.weeklyBossesInfo)
+                    default: EmptyView()
                     }
                 }
             case let dailyNote as Note4HSR:

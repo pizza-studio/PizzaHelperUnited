@@ -12,7 +12,7 @@ struct WeeklyBossesInfoBar: View {
     let weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI
 
     var isWeeklyBossesFinishedImage: some View {
-        (weeklyBossesInfo.remainResinDiscount == 0)
+        (weeklyBossesInfo.allDiscountsAreUsedUp)
             ? Image(systemSymbol: .checkmark)
             .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
             : Image(systemSymbol: .questionmark)
@@ -32,16 +32,24 @@ struct WeeklyBossesInfoBar: View {
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
-                    .lineLimit(1)
-                    .foregroundColor(Color("textColor3", bundle: .main))
-                    .font(.system(.caption, design: .rounded))
-                    .minimumScaleFactor(0.2)
-                Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
-                    .lineLimit(1)
-                    .foregroundColor(Color("textColor3", bundle: .main))
-                    .font(.system(.footnote, design: .rounded))
-                    .minimumScaleFactor(0.2)
+                if !weeklyBossesInfo.allDiscountsAreUsedUp {
+                    Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
+                        .lineLimit(1)
+                        .foregroundColor(Color("textColor3", bundle: .main))
+                        .font(.system(.caption, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                    Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
+                        .lineLimit(1)
+                        .foregroundColor(Color("textColor3", bundle: .main))
+                        .font(.system(.footnote, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                } else {
+                    Text(verbatim: weeklyBossesInfo.textDescription)
+                        .lineLimit(1)
+                        .foregroundColor(Color("textColor3", bundle: .main))
+                        .font(.system(.caption, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                }
             }
             .legibilityShadow(isText: false)
         }
