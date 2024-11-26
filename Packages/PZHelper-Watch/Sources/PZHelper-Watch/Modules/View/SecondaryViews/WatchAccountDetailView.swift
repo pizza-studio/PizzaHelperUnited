@@ -86,6 +86,14 @@ struct WatchAccountDetailView: View {
                                 value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
                                 icon: AccountKit.imageAsset("hsr_note_expedition")
                             )
+                            if let eowIntel = data.echoOfWarIntel {
+                                Divider()
+                                WatchAccountDetailItemView(
+                                    title: "watch.dailyNote.card.hsrEchoOfWar.label",
+                                    value: eowIntel.textDescription,
+                                    icon: AccountKit.imageAsset("hsr_note_weeklyBosses")
+                                )
+                            }
                         case _ as Note4ZZZ:
                             EmptyView()
                         // TODO: 絕區零的其他內容擴充。
