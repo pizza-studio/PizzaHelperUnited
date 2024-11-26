@@ -444,21 +444,18 @@ private struct DailyNoteCardView4HSR: View {
 
     @ViewBuilder
     func drawDailyTrainingAndSimulatedUniverse() -> some View {
-        // Daily Training & Simulated Universe (WidgetNote4HSR only).
-        if let dailyNote = dailyNote as? WidgetNote4HSR {
-            HStack {
-                Text("app.dailynote.card.daily_training.label".i18nPZHelper).bold()
-                Spacer()
-                let sitrep = dailyNote.dailyTaskCompletionStatus
-                Text(verbatim: "\(sitrep.finished)/\(sitrep.all)")
-            }
-            HStack {
-                Text("app.dailynote.card.simulated_universe.label".i18nPZHelper).bold()
-                Spacer()
-                let currentScore = dailyNote.simulatedUniverseInfo.currentScore
-                let maxScore = dailyNote.simulatedUniverseInfo.maxScore
-                Text(verbatim: "\(currentScore)/\(maxScore)")
-            }
+        HStack {
+            Text("app.dailynote.card.daily_training.label".i18nPZHelper).bold()
+            Spacer()
+            let sitrep = dailyNote.dailyTaskCompletionStatus
+            Text(verbatim: "\(sitrep.finished)/\(sitrep.all)")
+        }
+        HStack {
+            Text("app.dailynote.card.simulated_universe.label".i18nPZHelper).bold()
+            Spacer()
+            let currentScore = dailyNote.simulatedUniverseInfo.currentScore
+            let maxScore = dailyNote.simulatedUniverseInfo.maxScore
+            Text(verbatim: "\(currentScore)/\(maxScore)")
         }
     }
 

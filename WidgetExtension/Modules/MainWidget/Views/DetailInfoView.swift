@@ -69,9 +69,7 @@ struct DetailInfo: View {
                 if dailyNote.hasExpeditions {
                     ExpeditionInfoBar(dailyNote: dailyNote)
                 }
-                if let dailyNote = dailyNote as? WidgetNote4HSR {
-                    SimulUnivInfoBar(dailyNote: dailyNote)
-                }
+                SimulUnivInfoBar(dailyNote: dailyNote)
             case _ as Note4ZZZ:
                 drawDailyTaskCompletionStatus()
             default:

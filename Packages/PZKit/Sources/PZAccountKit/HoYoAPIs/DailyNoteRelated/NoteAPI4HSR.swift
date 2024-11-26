@@ -35,6 +35,14 @@ extension HoYo {
         -> Note4HSR {
         switch server.region {
         case .miyoushe:
+            let firstAttempt = try? await fullNote4HSR(
+                server: server,
+                uid: uid,
+                cookie: cookie,
+                deviceFingerPrint: deviceFingerPrint,
+                deviceID: deviceID
+            )
+            if let firstAttempt { return firstAttempt }
             if cookie.contains("stoken=v2_") {
                 return try await widgetNote4HSR(
                     cookie: cookie,
@@ -45,7 +53,7 @@ extension HoYo {
                 throw MiHoYoAPIError.sTokenV2InvalidOrMissing
             }
         case .hoyoLab:
-            return try await generalNote4HSR(
+            return try await fullNote4HSR(
                 server: server,
                 uid: uid,
                 cookie: cookie,
@@ -62,16 +70,14 @@ extension HoYo {
     /// - Parameter cookie: The cookie of the user. This is used for authentication purposes.
     ///
     /// - Throws: An error of type `MiHoYoAPI.Error` if an error occurs while making the API request.
-    ///
-    /// - Returns: An instance of `GeneralNote4HSR` that represents the user's daily note.
-    static func generalNote4HSR(
+    static func fullNote4HSR(
         server: Server,
         uid: String,
         cookie: String,
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> GeneralNote4HSR {
+        -> RealtimeNote4HSR {
 //        #if DEBUG
 //        return .example()
 //        #else
@@ -98,8 +104,7 @@ extension HoYo {
         )
 
         let (data, _) = try await URLSession.shared.data(for: request)
-
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.generalNote4HSR()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.hoyoLabNote4HSR()")
 //        #endif
     }
 
@@ -112,7 +117,7 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> WidgetNote4HSR {
+        -> RealtimeNote4HSR {
         var additionalHeaders = [
             "User-Agent": "WidgetExtension/434 CFNetwork/1492.0.1 Darwin/23.3.0",
         ]
@@ -131,6 +136,6 @@ extension HoYo {
         )
 
         let (data, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.widgetNote4HSR()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.miyousheNote4HSR()")
     }
 }

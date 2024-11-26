@@ -69,14 +69,12 @@ struct WatchAccountDetailView: View {
                                 )
                             }
                         case let data as Note4HSR:
-                            if let data = data as? WidgetNote4HSR {
-                                WatchAccountDetailItemView(
-                                    title: "watch.dailyNote.card.simulatedUniverse.label",
-                                    value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
-                                    icon: AccountKit.imageAsset("hsr_note_simulatedUniverse")
-                                )
-                                Divider()
-                            }
+                            WatchAccountDetailItemView(
+                                title: "watch.dailyNote.card.simulatedUniverse.label",
+                                value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
+                                icon: AccountKit.imageAsset("hsr_note_simulatedUniverse")
+                            )
+                            Divider()
                             let expeditionIntel = data.expeditionCompletionStatus
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.expedition.label",

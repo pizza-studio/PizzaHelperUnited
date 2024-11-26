@@ -115,8 +115,7 @@ extension DailyNoteProtocol {
         switch self {
         case let dailyNote as GeneralNote4GI: dailyNote.expeditionInfo.expeditions
         case let dailyNote as WidgetNote4GI: dailyNote.expeditionInfo.expeditions
-        case let dailyNote as GeneralNote4HSR: dailyNote.assignmentInfo.assignments
-        case let dailyNote as WidgetNote4HSR: dailyNote.assignmentInfo.assignments
+        case let dailyNote as Note4HSR: dailyNote.assignmentInfo.assignments
         case _ as Note4ZZZ: []
         default: []
         }
@@ -161,8 +160,7 @@ extension DailyNoteProtocol {
     public var hasDailyTaskIntel: Bool {
         switch self {
         case _ as any Note4GI: true
-        case _ as GeneralNote4HSR: false
-        case _ as WidgetNote4HSR: true
+        case _ as Note4HSR: true
         case _ as Note4ZZZ: true
         default: false
         }
@@ -170,7 +168,6 @@ extension DailyNoteProtocol {
 
     /// DailyNoteProtocol: DailyTaskTrainingVitality
     public var allDailyTasksAccomplished: Bool? {
-        guard !(self is GeneralNote4HSR) else { return nil }
         let extraRewards = claimedRewardsFromKatheryne ?? true
         return dailyTaskCompletionStatus.isAccomplished && extraRewards
     }
@@ -185,9 +182,7 @@ extension DailyNoteProtocol {
                 finished: intel.finishedTaskCount,
                 all: intel.totalTaskCount
             )
-        case _ as GeneralNote4HSR:
-            return .init(pending: 0, finished: 0, all: 0)
-        case let dailyNote as WidgetNote4HSR:
+        case let dailyNote as Note4HSR:
             let intel = dailyNote.dailyTrainingInfo
             return .init(
                 pending: intel.maxScore - intel.currentScore,
@@ -221,7 +216,7 @@ extension DailyNoteProtocol {
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: SimulatedUniverse, Star Rail Only
     public var simulatedUniverseIntel: SimuUnivInfo4HSR? {
-        (self as? WidgetNote4HSR)?.simulatedUniverseInfo
+        (self as? RealtimeNote4HSR)?.simulatedUniverseInfo
     }
 }
 
