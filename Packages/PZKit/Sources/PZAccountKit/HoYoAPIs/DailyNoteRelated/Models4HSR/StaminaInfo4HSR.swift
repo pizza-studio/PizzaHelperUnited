@@ -40,7 +40,10 @@ public struct StaminaInfo4HSR: Sendable {
 
     /// The time when stamina is full
     public var fullTime: Date {
-        Date(timeInterval: _staminaRecoverTime, since: fetchTime)
+        if let staminaFullTimestamp {
+            return .init(timeIntervalSince1970: staminaFullTimestamp)
+        }
+        return Date(timeInterval: _staminaRecoverTime, since: fetchTime)
     }
 
     /// The time when next stamina recover. If the stamina is full, return `nil`
@@ -54,6 +57,9 @@ public struct StaminaInfo4HSR: Sendable {
     }
 
     public let isReserveStaminaFull: Bool
+
+    // Unix Timestamp.
+    public let staminaFullTimestamp: Double?
 
     /// Reserved Stamina when data is fetched.
     public let currentReserveStamina: Int
@@ -87,6 +93,7 @@ extension StaminaInfo4HSR: Decodable {
         self._staminaRecoverTime = try TimeInterval(container.decode(Int.self, forKey: .staminaRecoverTime))
         self.currentReserveStamina = try container.decode(Int.self, forKey: .currentReserveStamina)
         self.isReserveStaminaFull = (try? container.decode(Bool.self, forKey: .isReserveStaminaFull)) ?? false
+        self.staminaFullTimestamp = try container.decodeIfPresent(Double.self, forKey: .staminaFullTimestamp)
     }
 
     enum CodingKeys: String, CodingKey {
@@ -95,6 +102,7 @@ extension StaminaInfo4HSR: Decodable {
         case staminaRecoverTime = "stamina_recover_time"
         case isReserveStaminaFull = "is_reserve_stamina_full"
         case currentReserveStamina = "current_reserve_stamina"
+        case staminaFullTimestamp = "stamina_full_ts"
     }
 }
 

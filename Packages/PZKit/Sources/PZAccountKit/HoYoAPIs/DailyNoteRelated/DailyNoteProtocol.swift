@@ -237,3 +237,12 @@ extension DailyNoteProtocol {
         (self as? GeneralNote4GI)?.weeklyBossesInfo
     }
 }
+
+// MARK: - Per-game properties (HSR Echo-of-War Weekly Attempts)
+
+extension DailyNoteProtocol {
+    /// DailyNoteProtocol: HSR Echo-of-War Weekly Attempts, Star Rail Only
+    public var echoOfWarIntel: EchoOfWarInfo4HSR? {
+        (self as? RealtimeNote4HSR)?.echoOfWarCostStatus
+    }
+}
