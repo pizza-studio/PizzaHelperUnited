@@ -802,7 +802,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.menu.listCloudDataFromPreviousVersions" xml:space="preserve">
         <source>List iCloud Gacha Records from old Pizza Apps</source>
-        <target state="translated">检视旧版披萨 App 的云端抽卡记录</target>
+        <target state="translated">查看旧版披萨 App 的云端抽卡记录</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.rebuildGachaUIDList" xml:space="preserve">
@@ -3779,7 +3779,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="operation.scrolling.guide" xml:space="preserve">
         <source>Use (Shift+) Mouse Wheel to scroll contents.</source>
-        <target state="translated">请使用 (Shift+) 鼠标滚轮以控制内容卷动检视。</target>
+        <target state="translated">请使用 (Shift+) 鼠标滚轮以控制内容卷动查看。</target>
         <note/>
       </trans-unit>
       <trans-unit id="sys.add" xml:space="preserve">
