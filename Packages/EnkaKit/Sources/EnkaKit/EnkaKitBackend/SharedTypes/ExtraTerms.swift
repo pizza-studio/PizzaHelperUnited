@@ -2,10 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 // MARK: - Enka.ExtraTerms
 
 extension Enka {
-    public struct ExtraTerms: Codable, Hashable, Sendable {
+    public struct ExtraTerms: AbleToCodeSendHash {
         // MARK: Lifecycle
 
         public init(lang: String = Enka.currentLangTag, game: GameType) {

@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 
 // MARK: - HoYo.TravelStatsData4GI
 
@@ -76,10 +77,10 @@ extension HoYo {
             }
         }
 
-        public struct WorldExploration: Codable, Hashable, Sendable {
+        public struct WorldExploration: AbleToCodeSendHash {
             // MARK: Public
 
-            public struct Offering: Codable, Hashable, Sendable {
+            public struct Offering: AbleToCodeSendHash {
                 public var name: String
                 public var level: Int
                 public var icon: String

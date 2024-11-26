@@ -2,10 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 // MARK: - GIOngoingEvents
 
 public enum GIOngoingEvents {
-    public struct EventList: Codable, Hashable, Sendable, Equatable {
+    public struct EventList: AbleToCodeSendHash, Equatable {
         // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
@@ -47,8 +49,8 @@ public enum GIOngoingEvents {
 // MARK: - GIOngoingEvents.EventList.EventModel
 
 extension GIOngoingEvents.EventList {
-    public struct EventModel: Codable, Hashable, Sendable, Identifiable {
-        public struct MultiLanguageContents: Codable, Hashable, Sendable {
+    public struct EventModel: AbleToCodeSendHash, Identifiable {
+        public struct MultiLanguageContents: AbleToCodeSendHash {
             public var EN: String
             public var RU: String
             public var CHS: String

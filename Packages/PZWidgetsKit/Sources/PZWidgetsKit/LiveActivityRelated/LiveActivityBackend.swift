@@ -75,7 +75,7 @@ public enum ResinRecoveryActivityBackground: Codable, Equatable, Hashable, Senda
 public struct ResinRecoveryAttributes: Sendable {
     public typealias ResinRecoveryState = ContentState
 
-    public struct ContentState: Codable, Hashable, Sendable {
+    public struct ContentState: AbleToCodeSendHash {
         // MARK: Lifecycle
 
         public init(

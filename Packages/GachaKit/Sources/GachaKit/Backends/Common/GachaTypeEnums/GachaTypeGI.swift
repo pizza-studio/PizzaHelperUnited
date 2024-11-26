@@ -75,7 +75,7 @@ public enum GachaTypeGI: GachaTypeProtocol {
 
 extension GachaTypeGI {
     /// UIGF 卡池类型，用于区分卡池类型不同，但卡池保底计算相同的物品
-    public enum UIGFGachaType: RawRepresentable, Codable, Hashable, Sendable {
+    public enum UIGFGachaType: RawRepresentable, AbleToCodeSendHash {
         case beginnersWish
         case standardWish
         case characterEventWish

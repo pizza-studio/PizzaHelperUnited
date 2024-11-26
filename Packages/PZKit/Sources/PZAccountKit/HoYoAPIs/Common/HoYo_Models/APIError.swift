@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - MiHoYoAPIError
 
@@ -56,7 +57,7 @@ public enum MiHoYoAPIError: Error, LocalizedError {
 // MARK: MiHoYoAPIError.HoYoLABServerMsg
 
 extension MiHoYoAPIError {
-    struct HoYoLABServerMsg: Codable, Sendable, Hashable, CustomStringConvertible {
+    struct HoYoLABServerMsg: AbleToCodeSendHash, CustomStringConvertible {
         let error: Int
         let message: String
 

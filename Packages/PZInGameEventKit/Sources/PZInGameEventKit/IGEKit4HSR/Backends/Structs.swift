@@ -2,9 +2,11 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 // MARK: - NewsElement
 
-public protocol NewsElement: Codable, Sendable, Hashable, Identifiable {
+public protocol NewsElement: AbleToCodeSendHash, Identifiable {
     var id: String { get }
     var createdAt: Int { get }
     var description: String { get }
@@ -15,7 +17,7 @@ public protocol NewsElement: Codable, Sendable, Hashable, Identifiable {
 }
 
 extension NewsKitHSR {
-    public struct EventElement: Codable, Sendable, Hashable {
+    public struct EventElement: AbleToCodeSendHash {
         public static let urlStemForQuery = "https://api.ennead.cc/mihoyo/starrail/news/events?lang="
 
         public let id: String
@@ -25,7 +27,7 @@ extension NewsKitHSR {
         public let url: String
     }
 
-    public struct IntelElement: Codable, Sendable, Hashable {
+    public struct IntelElement: AbleToCodeSendHash {
         public static let urlStemForQuery = "https://api.ennead.cc/mihoyo/starrail/news/info?lang="
 
         public let id: String
@@ -35,7 +37,7 @@ extension NewsKitHSR {
         public let url: String
     }
 
-    public struct NoticeElement: Codable, Sendable, Hashable {
+    public struct NoticeElement: AbleToCodeSendHash {
         public static let urlStemForQuery = "https://api.ennead.cc/mihoyo/starrail/news/notices?lang="
 
         public let id: String

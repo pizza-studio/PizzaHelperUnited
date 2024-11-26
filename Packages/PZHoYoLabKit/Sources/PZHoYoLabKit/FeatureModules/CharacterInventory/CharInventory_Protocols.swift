@@ -3,11 +3,12 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 import SwiftUI
 
 // MARK: - CharacterInventory
 
-public protocol CharacterInventory: Codable, Hashable, Sendable, DecodableFromMiHoYoAPIJSONResult {
+public protocol CharacterInventory: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
     associatedtype AvatarType: HYAvatar
     associatedtype ViewType: CharacterInventoryView where Self == ViewType.InventoryData
     var avatars: [AvatarType] { get }

@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - GachaItemType
 
-public enum GachaItemType: String, Sendable, Hashable, Codable, Identifiable {
+public enum GachaItemType: String, AbleToCodeSendHash, Identifiable {
     case character
     case weapon
     case unknown

@@ -9,7 +9,7 @@ import PZBaseKit
 
 // MARK: - AbyssDataPackProtocol
 
-public protocol AbyssDataPackProtocol: Codable, Hashable, Sendable {}
+public protocol AbyssDataPackProtocol: AbleToCodeSendHash {}
 
 extension AbyssCollector {
     public static let shared = AbyssCollector()

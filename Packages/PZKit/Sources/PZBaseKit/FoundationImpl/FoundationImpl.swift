@@ -5,6 +5,9 @@
 import CryptoKit
 import Foundation
 
+/// This combination has been used too frequent
+public typealias AbleToCodeSendHash = Codable & Sendable & Hashable
+
 // MARK: - UserDefaults + Sendable
 
 extension UserDefaults: @unchecked @retroactive Sendable {}

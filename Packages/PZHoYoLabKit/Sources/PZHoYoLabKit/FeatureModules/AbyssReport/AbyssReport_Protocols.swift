@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - AbyssReportSet
 
-public protocol AbyssReportSet: Codable, Hashable, Sendable {
+public protocol AbyssReportSet: AbleToCodeSendHash {
     associatedtype Report: AbyssReport
     var current: Report { get }
     var previous: Report? { get set }
@@ -17,7 +17,7 @@ public protocol AbyssReportSet: Codable, Hashable, Sendable {
 
 // MARK: - AbyssReport
 
-public protocol AbyssReport: Codable, Hashable, Sendable, DecodableFromMiHoYoAPIJSONResult {
+public protocol AbyssReport: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
     associatedtype ViewType: AbyssReportView where Self == ViewType.AbyssReportData
 }
 

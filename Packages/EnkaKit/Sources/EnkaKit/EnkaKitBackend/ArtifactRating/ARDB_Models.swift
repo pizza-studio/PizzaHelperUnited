@@ -3,12 +3,13 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import ArtifactRatingDB
+import PZBaseKit
 
 // MARK: - ArtifactRating
 
 extension ArtifactRating {
     public typealias ModelDB = [String: RatingModel]
-    public struct RatingModel: Codable, Hashable, Sendable {
+    public struct RatingModel: AbleToCodeSendHash {
         public var main: [String: [Enka.PropertyType: Double]] = [:]
         public var weight: [Enka.PropertyType: Double] = [:]
         public var max: Double = 10

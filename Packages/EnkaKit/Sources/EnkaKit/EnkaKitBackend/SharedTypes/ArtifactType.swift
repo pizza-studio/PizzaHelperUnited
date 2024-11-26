@@ -3,9 +3,10 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import EnkaDBModels
+import PZBaseKit
 
 extension Enka {
-    public enum ArtifactType: String, Codable, Hashable, Sendable, CaseIterable, Identifiable {
+    public enum ArtifactType: String, AbleToCodeSendHash, CaseIterable, Identifiable {
         case hsrHead = "HEAD"
         case hsrHand = "HAND"
         case hsrBody = "BODY"

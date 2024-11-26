@@ -2,7 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-public struct FieldCompletionIntel<Unit: Codable & Sendable & AdditiveArithmetic>: Codable, Sendable, Equatable {
+import PZBaseKit
+
+public struct FieldCompletionIntel<Unit: AbleToCodeSendHash & AdditiveArithmetic>: AbleToCodeSendHash, Equatable {
     /// 还没完成的部分
     public let pending: Unit
     /// 完成的部分

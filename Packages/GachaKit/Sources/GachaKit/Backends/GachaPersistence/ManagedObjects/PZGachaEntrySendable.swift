@@ -9,7 +9,7 @@ import PZBaseKit
 
 /// 这个 Struct 就做一件事情：跨 Actor 传输资料。
 @frozen
-public struct PZGachaEntrySendable: PZGachaEntryProtocol, Codable, Hashable, Sendable, Identifiable {
+public struct PZGachaEntrySendable: PZGachaEntryProtocol, AbleToCodeSendHash, Identifiable {
     // MARK: Lifecycle
 
     public init(handler: ((inout PZGachaEntrySendable) -> Void)? = nil) {

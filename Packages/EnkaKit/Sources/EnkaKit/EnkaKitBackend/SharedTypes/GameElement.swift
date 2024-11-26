@@ -3,12 +3,13 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import CoreGraphics
+import PZBaseKit
 
 // MARK: - Enka.GameElement
 
 extension Enka {
     /// 元素（星穹铁道与原神共用）。
-    public enum GameElement: String, CaseIterable, Hashable, Codable, Sendable {
+    public enum GameElement: String, CaseIterable, AbleToCodeSendHash {
         case physico
         case anemo
         case geo

@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 // MARK: - ArtifactRating.RatingRequest
 
 extension ArtifactRating {
@@ -52,7 +54,7 @@ extension ArtifactRating.RatingRequest {
 // MARK: - ArtifactRating.RatingRequest.SubPropData
 
 extension ArtifactRating.RatingRequest {
-    public struct SubPropData: Hashable, Codable, Sendable {
+    public struct SubPropData: AbleToCodeSendHash {
         var hpDelta: Double = 0
         var attackDelta: Double = 0
         var defenceDelta: Double = 0
