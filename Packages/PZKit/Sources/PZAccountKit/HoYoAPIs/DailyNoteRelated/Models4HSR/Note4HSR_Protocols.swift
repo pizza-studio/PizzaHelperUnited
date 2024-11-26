@@ -19,6 +19,10 @@ public protocol Note4HSR: BenchmarkTimeEditable, DailyNoteProtocol {
     var simulatedUniverseInfo: SimuUnivInfo4HSR { get }
     /// Daily Training Info
     var dailyTrainingInfo: DailyTrainingInfo4HSR { get }
+    /// Echo of War (unable from Widget APIs)
+    var echoOfWarCostStatus: EchoOfWarInfo4HSR? { get }
+    /// Optional Metadata (unable from Widget APIs)
+    var optionalMetaData: NoteMetaData4HSR? { get }
 }
 
 extension Note4HSR {
