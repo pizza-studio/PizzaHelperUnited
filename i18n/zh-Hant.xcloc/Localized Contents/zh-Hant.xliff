@@ -356,7 +356,7 @@
     <body>
       <trans-unit id="gachaKit.EntryException.timeRawValueNotParsable" xml:space="preserve">
         <source>Time RawValue not parsable.</source>
-        <target state="translated">无法正常解读原始时间戳资料值。</target>
+        <target state="translated">無法正常解讀原始時間戳資料值。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.accessFailureComDlg32" xml:space="preserve">
@@ -616,7 +616,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.export.share.warnings.doNotShareToPublicCollectors" xml:space="preserve">
         <source>⚠️ WARNING: Do not share your gacha records to **public** gacha record collectors who may **publicize** their statistic results.</source>
-        <target state="translated">⚠️ 警告：请勿将您的抽卡记录分享给可能会公开其统计结果的公共抽卡记录收集者。</target>
+        <target state="translated">⚠️ 警告：請勿將您的抽卡記錄分享給可能會公開其統計結果的公共抽卡記錄收集者。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exportPackageMethod.allOwners" xml:space="preserve">
@@ -1372,7 +1372,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.koni" xml:space="preserve">
         <source>App Icon Illustrator, The Pizza Helper (v5 Engine Testflight)</source>
-        <target state="translated">App 圖示繪師 (統一披薩小助手 v5 引擎 TF 测试)</target>
+        <target state="translated">App 圖示繪師 (統一披薩小助手 v5 引擎 TF 測試)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.lava" xml:space="preserve">
@@ -2102,7 +2102,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.passwordInputSafetyExplanation" xml:space="preserve">
         <source>To ensure you feel safe with this, here’s how it works: Your password input is protected by macOS built-in SecureEventInputAPI (or its equivalent on iOS), and then it will be directly handled by HoYoLAB login webpage. This is the nature of how WKWebView gets designed by Apple. Nobody else can interfere / intercept this process, nor this app. You can see that you cannot switch to 3rd-party input methods while the password is receiving inputs from the user.</source>
-        <target state="translated">為了確保您對此感到安全，這里介紹一下運作方式：您的密碼輸入受到 macOS 內建的 SecureEventInputAPI（或 iOS 上的等效功能）的保護，然後將直接由 HoYoLAB 登入網頁處理。這是 Apple 對 WKWebView 的設計使然。其他人無法干擾或截聽這個過程，包括敝應用。您會發現，在密碼接收來自使用者的輸入的過程中，您無法切換到第三方輸入法。</target>
+        <target state="translated">為了確保您對此感到安全，這裡介紹一下運作方式：您的密碼輸入受到 macOS 內建的 SecureEventInputAPI（或 iOS 上的等效功能）的保護，然後將直接由 HoYoLAB 登入網頁處理。這是 Apple 對 WKWebView 的設計使然。其他人無法幹擾或截聽這個過程，包括敝應用。您會發現，在密碼接收來自使用者的輸入的過程中，您無法切換到第三方輸入法。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.specialWarning" xml:space="preserve">
@@ -2279,12 +2279,12 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.withdraw.entrylink.title" xml:space="preserve">
         <source>Regarding how to Manage or Delete your HoYoLAB / Miyoushe account</source>
-        <target state="translated">了解如何對 米遊社 / HoYoLAB 帳號進行 管理 或 註銷(删号)</target>
+        <target state="translated">瞭解如何對 米遊社 / HoYoLAB 帳號進行 管理 或 註銷(刪號)</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdraw.view.title" xml:space="preserve">
         <source>Regarding Account Deletion</source>
-        <target state="translated">註銷(删号)說明</target>
+        <target state="translated">註銷(刪號)說明</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.linkTo:%@" xml:space="preserve">
@@ -2294,12 +2294,12 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.navTitle.hoyolab" xml:space="preserve">
         <source>Account Deletion (HoYoLAB)</source>
-        <target state="translated">註銷(删号) - HoYoLAB</target>
+        <target state="translated">註銷(刪號) - HoYoLAB</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.navTitle.miyoushe" xml:space="preserve">
         <source>Account Deletion (Miyoushe)</source>
-        <target state="translated">註銷(删号) - 米遊社</target>
+        <target state="translated">註銷(刪號) - 米遊社</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.readme.hoyolab.specialNotice" xml:space="preserve">
@@ -2406,7 +2406,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.dateTimePicker.macCatalystNotice" xml:space="preserve">
         <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
-        <target state="translated">⚠️ 由於 UIKit 到 AppKit 桥接框架的限制，macCatalyst 應用中的 macOS 日期選擇器不會顯示輸入面板。使用者只能手動選擇所需的輸入欄位，並直接在實體鍵盤上輸入。</target>
+        <target state="translated">⚠️ 由於 UIKit 到 AppKit 橋接框架的限制，macCatalyst 應用中的 macOS 日期選擇器不會顯示輸入面板。使用者只能手動選擇所需的輸入欄位，並直接在實體鍵盤上輸入。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.allow" xml:space="preserve">
@@ -2416,7 +2416,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.expedition.footer" xml:space="preserve">
         <source>* Genshin Impact and Star Rail only.</source>
-        <target state="translated">※ 星穹铁道与原神限定。</target>
+        <target state="translated">※ 星穹鐵道與原神限定。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.header" xml:space="preserve">
@@ -2476,7 +2476,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.giTrounceBlossom.header" xml:space="preserve">
         <source>Remaining Trounce Blossom Resin Discounts</source>
-        <target state="translated">征討之花剩餘樹脂折扣次數提醒</target>
+        <target state="translated">徵討之花剩餘樹脂折扣次數提醒</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.giTrounceBlossom.toggle" xml:space="preserve">
@@ -2905,7 +2905,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="hylKit.abyssReport.room.title:%@" xml:space="preserve">
         <source>Room #%@</source>
-        <target state="translated">第 %@ 间</target>
+        <target state="translated">第 %@ 間</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.abyssReport.seasonPicker.current" xml:space="preserve">
@@ -3170,7 +3170,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="hylKit.travelStats4GI.domains" xml:space="preserve">
         <source>Domains Unlocked</source>
-        <target state="translated">解鎖祕境</target>
+        <target state="translated">解鎖秘境</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.travelStats4GI.eyeball.anemo" xml:space="preserve">
@@ -3446,7 +3446,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="notification.dailyTask.body:%@%@%@" xml:space="preserve">
         <source>The daily commission for %1$@ is not yet completed. The current progress is %2$@/%3$@.</source>
-        <target state="translated">「%1$@」的每日委托尚未完成，當前進度為%2$@/%3$@。</target>
+        <target state="translated">「%1$@」的每日委託尚未完成，當前進度為%2$@/%3$@。</target>
         <note/>
       </trans-unit>
       <trans-unit id="notification.dailyTask.title:%@" xml:space="preserve">
@@ -3985,7 +3985,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
         <source/>
         <note>以下Key开头均包含一个零宽字符</note>
       </trans-unit>
-      <trans-unit id="​简体中文, 日本語, English, 繁體中文, 繁體中文（香港）, Français, Русский, Tiếng Việt" xml:space="preserve">
+      <trans-unit id="​簡體中文, 日本語, English, 繁體中文, 繁體中文（香港）, Français, Русский, Tiếng Việt" xml:space="preserve">
         <source/>
         <note/>
       </trans-unit>
@@ -4149,7 +4149,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="app.background.blue" xml:space="preserve">
         <source>Blue</source>
-        <target state="translated">蓝色</target>
+        <target state="translated">藍色</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.background.gold" xml:space="preserve">
@@ -4164,7 +4164,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="app.background.green" xml:space="preserve">
         <source>Green</source>
-        <target state="translated">绿色</target>
+        <target state="translated">綠色</target>
         <note/>
       </trans-unit>
       <trans-unit id="app.background.intertwinedFate" xml:space="preserve">
@@ -4179,7 +4179,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="app.background.red" xml:space="preserve">
         <source>Red</source>
-        <target state="translated">红色</target>
+        <target state="translated">紅色</target>
         <note/>
       </trans-unit>
       <trans-unit id="appEntity.localeProfile" xml:space="preserve">
@@ -4511,7 +4511,7 @@ Stamina is Full</source>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.next20Stamina:%lld" xml:space="preserve">
         <source>Until %lld Stamina:</source>
-        <target state="translated">距离 %lld 點體力:</target>
+        <target state="translated">距離 %lld 點體力:</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.nextMaxStamina" xml:space="preserve">
