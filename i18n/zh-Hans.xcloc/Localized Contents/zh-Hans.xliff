@@ -432,12 +432,12 @@
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noAuthenticationKey" xml:space="preserve">
         <source>[ParseGachaURLError] Authentication key missing.</source>
-        <target state="translated">[ParseGachaURLError] 认证用密钥缺失。</target>
+        <target state="translated">[ParseGachaURLError] 验证用密钥缺失。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noAuthenticationKeyVersion" xml:space="preserve">
         <source>[ParseGachaURLError] The version info of `key` is missing in the authentication key.</source>
-        <target state="translated">[ParseGachaURLError] 认证用密钥版本参数值缺失。</target>
+        <target state="translated">[ParseGachaURLError] 验证用密钥版本参数值缺失。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noServer" xml:space="preserve">
