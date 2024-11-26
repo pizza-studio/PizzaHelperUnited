@@ -1524,7 +1524,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请输入您希望给流浪者自订的姓名"
+            "value" : "请输入您希望给流浪者自定义的姓名"
           }
         },
         "zh-Hant" : {
