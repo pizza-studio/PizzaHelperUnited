@@ -41,10 +41,13 @@ extension DailyNoteProtocol {
 // MARK: - Per-game properties (Stamina)
 
 extension DailyNoteProtocol {
-    /// DailyNoteProtocol: Stamina
+    /// DailyNoteProtocol: Stamina, counted as seconds.
     public var eachStaminaRecoveryTime: TimeInterval {
-        // 原神、星铁、绝区零的单点体力恢复耗时是雷同的。
-        60 * 6
+        switch game {
+        case .genshinImpact: 60 * 8
+        case .starRail: 60 * 6
+        case .zenlessZone: 60 * 6
+        }
     }
 
     /// DailyNoteProtocol: Stamina
