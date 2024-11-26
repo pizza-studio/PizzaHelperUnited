@@ -1399,9 +1399,9 @@ App 图标画师 (统一披萨小助手 v5)</target>
 - Dev, Pizza Helper for Blue Archive
 - Dev, The Pizza Helper (v5)
 - Public Relations (Overseas)</source>
-        <target state="translated">- 程式师（星铁披萨小助手）
-- 程式师（原神披萨小助手 v1-v4）
-- 程式师（蔚蓝档案披萨小助手）
+        <target state="translated">- 程序员（星铁披萨小助手）
+- 程序员（原神披萨小助手 v1-v4）
+- 程序员（蔚蓝档案披萨小助手）
 - 公关（海外）</target>
         <note/>
       </trans-unit>
@@ -1411,10 +1411,10 @@ App 图标画师 (统一披萨小助手 v5)</target>
 - Dev, Pizza Helper for HSR
 - Dev, Pizza Helper for Genshin (v1-v4)
 - Public Relations (Mainland China)</source>
-        <target state="translated">- 专案创始人＆专案总监
-- 程式师（统一披萨小助手 v5）
-- 程式师（原神披萨小助手 v1-v4）
-- 程式师（星铁披萨小助手）
+        <target state="translated">- 品牌创始人＆产品总监
+- 程序员（统一披萨小助手 v5）
+- 程序员（原神披萨小助手 v1-v4）
+- 程序员（星铁披萨小助手）
 - 公关（中国内陆）</target>
         <note/>
       </trans-unit>
@@ -1422,7 +1422,7 @@ App 图标画师 (统一披萨小助手 v5)</target>
         <source>- Engine Architect &amp; Dev, The Pizza Helper (v5)
 - Maintainer, Pizza Helper for HSR
 - Maintainer, Pizza Helper for Genshin (v3-v4)</source>
-        <target state="translated">- 引擎架构师＆程式师（统一披萨小助手 v5）
+        <target state="translated">- 引擎架构师＆程序员（统一披萨小助手 v5）
 - 参与维护（原神披萨小助手 v3-v4）
 - 参与维护（星铁披萨小助手）</target>
         <note/>
@@ -1562,7 +1562,7 @@ We promise that your donation will only be used to cover the direct costs of the
 - The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.
 - The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”.</source>
         <target state="translated">- 是「原神披萨小助手」与「星铁披萨小助手」的继任者，受次世代「统一披萨引擎」的加持。
-- 本 App 的程式部分以 AGPLv3 许可证释出原始程式码。
+- 本 App 的程序部分以 AGPLv3 许可证释出源代码。
 - 披萨小助手及其前身与米哈游股份有限公司（及其子公司）无牵涉。
 - 下述游戏的商标与内容材料均归米哈游股份有限公司所有：《原神》《崩坏：星穹铁道》《绝区零》。</target>
         <note/>
