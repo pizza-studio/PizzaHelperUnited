@@ -210,12 +210,12 @@
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.genshin" xml:space="preserve">
         <source>The background totem assets used for ID Photos of Genshin Impact characters in this app are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. These totems is visible only if “Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels” is disabled.</source>
-        <target state="translated">该应用内显示的《原神》角色证件照的背景图腾乃是为了彰显该角色的元素能力属性而设定。该图腾素材取自《崩坏：星穹铁道》（水、岩、草这三个属性除外）。当「针对原神角色的证件照与面板启用名片背景」选项停用时，背景图腾才会显现。</target>
+        <target state="translated">本 App 内显示的《原神》角色证件照的背景图腾乃是为了彰显该角色的元素能力属性而设定。该图腾素材取自《崩坏：星穹铁道》（水、岩、草这三个属性除外）。当「针对原神角色的证件照与面板启用名片背景」选项停用时，背景图腾才会显现。</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.credit.starRail" xml:space="preserve">
         <source>The background totem assets used for ID Photos of Star Rail in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem.</source>
-        <target state="translated">该应用内显示的《崩坏：星穹铁道》角色证件照的背景图腾乃是为了同时彰显该角色的元素能力属性与命途而设定。元素能力属性体现在命途纹样的配色上。</target>
+        <target state="translated">本 App 内显示的《崩坏：星穹铁道》角色证件照的背景图腾乃是为了同时彰显该角色的元素能力属性与命途而设定。元素能力属性体现在命途纹样的配色上。</target>
         <note/>
       </trans-unit>
       <trans-unit id="enka.photoSpecimen.navTitle" xml:space="preserve">
@@ -387,7 +387,7 @@
       </trans-unit>
       <trans-unit id="gachaKit.GMDB.gmdbExpired.explanation" xml:space="preserve">
         <source>GachaMetaDB is out of date for handling certain gacha item entries in either the local app gacha entry database or from external sources. This DB contains crucial info for mapping ItemIDs and their translations, plus telling the rarity type of each gacha item.</source>
-        <target state="translated">这部设备上的 GachaMetaDB 已经过期、无法正常用来处理来自该应用的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB 数据库包含了用以映射 ItemID 及其翻译的重要资讯，且记载了每个抽卡物品的稀有等级查询表。</target>
+        <target state="translated">这部设备上的 GachaMetaDB 已经过期、无法正常用来处理来自本 App 的本地数据库或外部来源的某些抽卡物品条目。GachaMetaDB 数据库包含了用以映射 ItemID 及其翻译的重要资讯，且记载了每个抽卡物品的稀有等级查询表。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaMetaDBError.DatabaseExpired" xml:space="preserve">
@@ -557,7 +557,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.srgfv1" xml:space="preserve">
         <source>SRGF v1.0, established by the UIGF committee, is an exchangeable format for gacha records of Star Rail, a game produced by Cognosphere and MiHoYo. Although this format is marked as a vintage format and is replaced by UIGF v4.0, there are some excellent apps on Windows which only conforms to SRGF v1.0, hence the option here for compatibility purposes.</source>
-        <target state="translated">SRGF v1.0 是由 UIGF 委员会制定的资讯交换格式，用于 Cognosphere 和米哈游制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由 UIGF v4.0 取代，但两者之间可以进行无损的双向转换。此外，Windows 平台上有一些只支持 SRGF v1.0 的优秀应用，因此这里提供了兼容性选项。</target>
+        <target state="translated">SRGF v1.0 是由 UIGF 委员会制定的资讯交换格式，用于 Cognosphere 和米哈游制作的《星穹铁道》游戏的抽卡记录。虽然该格式被标记为旧版本，并由 UIGF v4.0 取代，但两者之间可以进行无损的双向转换。此外，Windows 平台上有一些只支持 SRGF v1.0 的优秀 App，因此这里提供了兼容性选项。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.exchange.formatExplain.uigfv4" xml:space="preserve">
@@ -797,12 +797,12 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="gachaKit.menu.inheritCloudDataFromPreviousVersions" xml:space="preserve">
         <source>Inherit iCloud Gacha Records from old Pizza Apps</source>
-        <target state="translated">从旧版披萨应用继承云端抽卡记录</target>
+        <target state="translated">从旧版披萨 App 继承云端抽卡记录</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.listCloudDataFromPreviousVersions" xml:space="preserve">
         <source>List iCloud Gacha Records from old Pizza Apps</source>
-        <target state="translated">检视旧版披萨应用的云端抽卡记录</target>
+        <target state="translated">检视旧版披萨 App 的云端抽卡记录</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.menu.rebuildGachaUIDList" xml:space="preserve">
@@ -1243,7 +1243,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.aboutView.navTitle.app" xml:space="preserve">
         <source>About the App</source>
-        <target state="translated">关于该应用</target>
+        <target state="translated">关于本 App</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.aboutView.navTitle.crew" xml:space="preserve">
@@ -1523,7 +1523,7 @@ App 图示画师 (统一披萨小助手 v5)</target>
 We promise that your donation will only be used to cover the direct costs of the App development process, including but not limited to the annual fee for Apple Developer Program, etc. Any amount donated beyond this cost will be re-donated in full. We appreciate your support.</source>
         <target state="translated">本 App 无须付费即可全功能使用、不存在所谓的「付费墙」。然而，我们接受捐赠。请注意，以下捐赠均为免费捐赠，我们不会为您提供任何额外的服务。
 
-我们承诺，您的捐款将仅用于支付应用开发过程中产生的直接费用，包括但不限于 Apple 开发者计划的年费等。超出成本的捐款将全额再次捐出。感谢您的支持。</target>
+我们承诺，您的捐款将仅用于支付 App 开发过程中产生的直接费用，包括但不限于 Apple 开发者计划的年费等。超出成本的捐款将全额再次捐出。感谢您的支持。</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.donation.navTitle" xml:space="preserve">
@@ -1954,11 +1954,11 @@ Retrieved</source>
 We make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.
 
 This app will quit after you confirm this message.</source>
-        <target state="translated">在 macOS/iOS 上更改应用程序的 UI 语言设定时，应用程序需要重新启动，以确保新的语言设定生效。即使用户通过系统设定手动更改语言设定，仍然会提示需要重新启动应用程序，且届时这个提示将由 macOS/iOS 系统来发出，而非本 App 程序。
+        <target state="translated">在 macOS/iOS 上更改 App 的 UI 语言设定时，App 需要重新启动，以确保新的语言设定生效。即使用户通过系统设定手动更改语言设定，仍然会提示需要重新启动 App，且届时这个提示将由 macOS/iOS 系统来发出，而非本 App。
 
 我们在这里设定了语言切换器，以帮助用户节省几秒钟的时间。这种设计对注意力缺陷涣散障碍（ADHD）患者非常友好，因为 ADHD 患者在翻阅 iOS/macOS 系统设定中的多层页面时，往往容易彻底忘记他们原本要做的事情。
 
-确认此消息后，应用程序将会退出。</target>
+确认此消息后，App 将会退出。</target>
         <note/>
       </trans-unit>
       <trans-unit id="dpv.characterInventory.navTitle" xml:space="preserve">
@@ -2053,7 +2053,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.account.qr_code_login.open_miyoushe_mas_page" xml:space="preserve">
         <source>Get Miyoushe from App Store</source>
-        <target state="translated">从 App Store 获取米游社应用</target>
+        <target state="translated">从 App Store 获取米游社 App</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.account.qr_code_login.regenerate_qrcode" xml:space="preserve">
@@ -2103,7 +2103,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.passwordInputSafetyExplanation" xml:space="preserve">
         <source>To ensure you feel safe with this, here’s how it works: Your password input is protected by macOS built-in SecureEventInputAPI (or its equivalent on iOS), and then it will be directly handled by HoYoLAB login webpage. This is the nature of how WKWebView gets designed by Apple. Nobody else can interfere / intercept this process, nor this app. You can see that you cannot switch to 3rd-party input methods while the password is receiving inputs from the user.</source>
-        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登录网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括本 App 。您会发现，在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。</target>
+        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登录网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括本 App。您会发现，在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.specialWarning" xml:space="preserve">
@@ -2407,7 +2407,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.dateTimePicker.macCatalystNotice" xml:space="preserve">
         <source>⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard.</source>
-        <target state="translated">⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst 应用中的 macOS 日期选择器不会显示输入面板。用户只能手动选择所需的输入栏位，并直接在实体键盘上输入。</target>
+        <target state="translated">⚠️ 由于 UIKit 到 AppKit 桥接框架的限制，macCatalyst  App 中的 macOS 日期选择器不会显示输入面板。用户只能手动选择所需的输入栏位，并直接在实体键盘上输入。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.expedition.allow" xml:space="preserve">
@@ -4028,7 +4028,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片应用内。</target>
+        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片 App 内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4066,7 +4066,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片应用内。</target>
+        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片 App 内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4104,7 +4104,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.</source>
-        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片应用内。</target>
+        <target state="translated">该准许令将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片 App 内。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
     </body>
@@ -4587,7 +4587,7 @@ Stamina is Full</source>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.widgetError.noProfileFound" xml:space="preserve">
         <source>Profile not found. Please add a local profile or try restarting the device.</source>
-        <target state="translated">尚未发现本地账号。请在应用内添加、或者重新启动该装置。</target>
+        <target state="translated">尚未发现本地账号。请在 App 内添加、或者重新启动该装置。</target>
         <note/>
       </trans-unit>
       <trans-unit id="pzWidgetsKit.widgetError.profileSelectionNeeded|==|device.mac" xml:space="preserve">
