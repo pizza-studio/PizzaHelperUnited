@@ -357,7 +357,7 @@
     <body>
       <trans-unit id="gachaKit.EntryException.timeRawValueNotParsable" xml:space="preserve">
         <source>Time RawValue not parsable.</source>
-        <target state="translated">无法正常解读原始时间戳数据值。</target>
+        <target state="translated">无法正常解读原始时间戳参数值。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.FileExchangeException.accessFailureComDlg32" xml:space="preserve">
@@ -422,7 +422,7 @@
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.invalidServer" xml:space="preserve">
         <source>[ParseGachaURLError] Server invalid.</source>
-        <target state="translated">[ParseGachaURLError] 服务器数据值不合理。</target>
+        <target state="translated">[ParseGachaURLError] 服务器参数值不合理。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.invalidURL" xml:space="preserve">
