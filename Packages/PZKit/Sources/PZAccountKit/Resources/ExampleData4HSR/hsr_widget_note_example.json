@@ -1,0 +1,62 @@
+{
+  "data": {
+    "current_stamina": 240,
+    "max_stamina": 240,
+    "stamina_recover_time": 0,
+    "accepted_expedition_num": 4,
+    "total_expedition_num": 4,
+    "expeditions": [
+      {
+        "avatars": [
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/5741243a5cd29a9c0b536e73a5921ada.png",
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/cc18d9712fd27f4148904bd024946314.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "根除恶孽"
+      },
+      {
+        "avatars": [
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/d5dd6fb642950b0fcb5c57ba743f3527.png",
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/a9af37a687b87f7444ba3f9c8dc39393.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "火帝动炉销剑戟"
+      },
+      {
+        "avatars": [
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/c36ed434d9b8e9d438cfa44c24d84fc3.png",
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/b22185a90fc04888c0bf89b20472ff98.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "劫梦惊魂"
+      },
+      {
+        "avatars": [
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/1799f59f8ce9dba590b4c5da5ca58ad0.png",
+          "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_u2a3qc/8528aa4c5e21454de643a8411a2267b8.png"
+        ],
+        "status": "Finished",
+        "remaining_time": 0,
+        "name": "离垢清净"
+      }
+    ],
+    "current_train_score": 0,
+    "max_train_score": 500,
+    "current_rogue_score": 0,
+    "max_rogue_score": 14000,
+    "has_signed": false,
+    "sign_url": "https://act.mihoyo.com/bbs/event/signin/hkrpg/index.html?bbs_auth_required=true&act_id=e202304121516551&bbs_auth_required=true&bbs_presentation_style=fullscreen",
+    "current_reserve_stamina": 213,
+    "is_reserve_stamina_full": false,
+    "home_url": "https://webstatic.mihoyo.com/app/community-game-records/rpg/index.html?mhy_presentation_style=fullscreen&game_id=6",
+    "note_url": "https://webstatic.mihoyo.com/app/community-game-records/rpg/index.html?mhy_presentation_style=fullscreen&game_id=6",
+    "rogue_tourn_weekly_unlocked": true,
+    "rogue_tourn_weekly_max": 1000,
+    "rogue_tourn_weekly_cur": 0
+  },
+  "message": "OK",
+  "retcode": 0
+}
