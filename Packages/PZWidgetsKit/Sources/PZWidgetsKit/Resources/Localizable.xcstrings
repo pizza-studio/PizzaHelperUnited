@@ -218,7 +218,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "当前系统设定不允许敝应用使用实时活动 (Live Activity)。"
+            "value" : "当前系统设定不允许本App使用实时活动 (Live Activity)。"
           }
         },
         "zh-Hant" : {
@@ -294,7 +294,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[未知异常] ￼%@"
+            "value" : "[未知异常] %@"
           }
         },
         "zh-Hant" : {
