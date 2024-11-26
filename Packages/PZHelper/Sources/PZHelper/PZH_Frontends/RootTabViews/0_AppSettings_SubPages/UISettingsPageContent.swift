@@ -54,6 +54,7 @@ struct UISettingsPageContent: View {
     // MARK: Private
 
     @State private var sharedDB = Enka.Sputnik.shared
+
     @Default(.restoreTabOnLaunching) private var restoreTabOnLaunching: Bool
     @Default(.background4App) private var background4App: Wallpaper
     @Default(.defaultServer) private var defaultServer4GI: String

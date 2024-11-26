@@ -170,6 +170,7 @@ public struct AbyssRankView: View {
     }()
 
     @StateObject private var vmAbyssRank: AbyssRankViewModel = .init()
+
     @Default(.defaultServer) private var defaultServer4GI: String
 
     private func getRemainDays(_ endAt: String) -> Date.IntervalDate? {

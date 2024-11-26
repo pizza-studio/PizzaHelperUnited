@@ -12,6 +12,7 @@ struct ShowAvatarPercentageView: View {
     // MARK: Internal
 
     @Environment(AbyssRankViewModel.self) var vmAbyssRank
+
     let percentageFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent

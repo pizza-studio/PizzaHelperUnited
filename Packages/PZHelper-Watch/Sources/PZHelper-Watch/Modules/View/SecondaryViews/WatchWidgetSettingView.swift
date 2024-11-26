@@ -71,6 +71,7 @@ struct WatchWidgetSettingView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var accounts: [PZProfileMO]
+
     @Default(.allWidgetsSyncFrequencyByMinutes) private var allWidgetsSyncFrequencyByMinutes: Double
 }
 

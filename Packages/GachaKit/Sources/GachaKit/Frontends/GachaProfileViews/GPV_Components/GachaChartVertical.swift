@@ -44,9 +44,10 @@ public struct GachaChartVertical: View {
 
     // MARK: Private
 
+    @Environment(GachaVM.self) private var theVM
+
     private let poolType: GachaPoolExpressible
     private let givenGPID: GachaProfileID
-    @Environment(GachaVM.self) private var theVM
 
     private var shouldChunk: Bool {
         if #available(iOS 18, *) {

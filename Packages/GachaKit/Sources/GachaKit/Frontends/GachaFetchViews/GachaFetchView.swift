@@ -35,8 +35,9 @@ public struct GachaFetchView: View {
 
     // MARK: Private
 
-    private let game: Pizza.SupportedGame
     @Environment(GachaVM.self) private var gachaRootVM
+
+    private let game: Pizza.SupportedGame
 }
 
 // MARK: - GachaFetchView4Game
@@ -154,12 +155,13 @@ extension GachaFetchView4Game {
         @Observable
         private class URLAwaitVM: TaskManagedVM {}
 
-        private let completion: (String) throws -> Void
         @State private var pzProfiles: [PZProfileSendable] = []
         @State private var error: ParseGachaURLError?
         @State private var subError: Error?
         @State private var isErrorAlertVisible: Bool = false
         @StateObject private var urlAwaitVM = URLAwaitVM()
+
+        private let completion: (String) throws -> Void
 
         @ViewBuilder private var genshinPZProfileList: some View {
             if GachaType.game == .genshinImpact, !pzProfiles.isEmpty {
@@ -289,9 +291,10 @@ extension GachaFetchView4Game {
 
         // MARK: Private
 
+        @Environment(VMType.self) private var gachaFetchVM
+
         private let start: () -> Void
         private let reinit: () -> Void
-        @Environment(VMType.self) private var gachaFetchVM
     }
 }
 

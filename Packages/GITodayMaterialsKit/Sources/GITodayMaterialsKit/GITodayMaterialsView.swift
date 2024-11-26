@@ -119,6 +119,7 @@ public struct GITodayMaterialsView<T: View>: View {
     @State private var isWeapon: Bool = false
     @State private var weekday: Material.AvailableWeekDay?
     @State private var initialized: Bool = false
+
     private let data: [Material]
     private let querier: (Bool, String) -> T
 

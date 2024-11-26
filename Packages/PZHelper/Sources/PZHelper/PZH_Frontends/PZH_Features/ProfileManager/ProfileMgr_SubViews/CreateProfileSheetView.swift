@@ -82,6 +82,63 @@ extension ProfileManagerPageContent {
             }
         }
 
+        @ViewBuilder
+        func menuForManagingHoYoLabProfiles() -> some View {
+            Menu {
+                HoYoPassWithdrawView.linksForManagingHoYoLabAccounts
+            } label: {
+                Text("profileMgr.manageHoYoAccounts.shortened".i18nPZHelper)
+            }
+        }
+
+        @ViewBuilder
+        func pendingView() -> some View {
+            Group {
+                Section {
+                    RequireLoginView(
+                        unsavedCookie: $profile.cookie,
+                        unsavedFP: $profile.deviceFingerPrint,
+                        deviceID: $profile.deviceID,
+                        region: $region,
+                        game: game,
+                        importAllUIDs: $importAllUIDs
+                    )
+                } header: {
+                    Text("profile.login.sectionHeader".i18nPZHelper).textCase(.none)
+                } footer: {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("profileMgr.login.manual.1".i18nPZHelper)
+                            NavigationLink {
+                                ProfileConfigEditorView(unsavedProfile: profile)
+                            } label: {
+                                Text("profileMgr.login.manual.2".i18nPZHelper)
+                                    .font(.footnote)
+                            }
+                        }
+                        Divider().padding(.vertical)
+                        ExplanationView()
+                    }
+                }
+            }
+            .onChange(of: profile.cookie) { _, newValue in
+                if !newValue.isEmpty {
+                    status = .gotCookie
+                }
+            }
+            .interactiveDismissDisabled()
+        }
+
+        @ViewBuilder
+        func gotCookieView() -> some View {
+            ProgressView()
+        }
+
+        @ViewBuilder
+        func gotProfileView() -> some View {
+            ProfileConfigViewContents(profile: profile, fetchedAccounts: fetchedAccounts)
+        }
+
         func saveProfile() {
             guard profile.isValid else {
                 saveProfileError = .missingFieldError("UID / Name")
@@ -212,63 +269,6 @@ extension ProfileManagerPageContent {
                     }
                 }
             }
-        }
-
-        @ViewBuilder
-        func menuForManagingHoYoLabProfiles() -> some View {
-            Menu {
-                HoYoPassWithdrawView.linksForManagingHoYoLabAccounts
-            } label: {
-                Text("profileMgr.manageHoYoAccounts.shortened".i18nPZHelper)
-            }
-        }
-
-        @ViewBuilder
-        func pendingView() -> some View {
-            Group {
-                Section {
-                    RequireLoginView(
-                        unsavedCookie: $profile.cookie,
-                        unsavedFP: $profile.deviceFingerPrint,
-                        deviceID: $profile.deviceID,
-                        region: $region,
-                        game: game,
-                        importAllUIDs: $importAllUIDs
-                    )
-                } header: {
-                    Text("profile.login.sectionHeader".i18nPZHelper).textCase(.none)
-                } footer: {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("profileMgr.login.manual.1".i18nPZHelper)
-                            NavigationLink {
-                                ProfileConfigEditorView(unsavedProfile: profile)
-                            } label: {
-                                Text("profileMgr.login.manual.2".i18nPZHelper)
-                                    .font(.footnote)
-                            }
-                        }
-                        Divider().padding(.vertical)
-                        ExplanationView()
-                    }
-                }
-            }
-            .onChange(of: profile.cookie) { _, newValue in
-                if !newValue.isEmpty {
-                    status = .gotCookie
-                }
-            }
-            .interactiveDismissDisabled()
-        }
-
-        @ViewBuilder
-        func gotCookieView() -> some View {
-            ProgressView()
-        }
-
-        @ViewBuilder
-        func gotProfileView() -> some View {
-            ProfileConfigViewContents(profile: profile, fetchedAccounts: fetchedAccounts)
         }
 
         // MARK: Private

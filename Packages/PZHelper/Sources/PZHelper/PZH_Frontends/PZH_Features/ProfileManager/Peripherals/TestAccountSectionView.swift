@@ -45,6 +45,27 @@ struct TestAccountSectionView: View {
         }
     }
 
+    @ViewBuilder
+    func buttonIcon() -> some View {
+        Group {
+            switch status {
+            case .succeeded:
+                Image(systemSymbol: .checkmarkCircle)
+                    .foregroundColor(.green)
+            case .failure:
+                Image(systemSymbol: .xmarkCircle)
+                    .foregroundColor(.red)
+            case .testing:
+                ProgressView()
+            case .verificationNeeded:
+                Image(systemSymbol: .questionmarkCircle)
+                    .foregroundColor(.yellow)
+            default:
+                EmptyView()
+            }
+        }
+    }
+
     func doTest() {
         withAnimation {
             status = .testing
@@ -65,27 +86,6 @@ struct TestAccountSectionView: View {
                 withAnimation {
                     status = .failure(error)
                 }
-            }
-        }
-    }
-
-    @ViewBuilder
-    func buttonIcon() -> some View {
-        Group {
-            switch status {
-            case .succeeded:
-                Image(systemSymbol: .checkmarkCircle)
-                    .foregroundColor(.green)
-            case .failure:
-                Image(systemSymbol: .xmarkCircle)
-                    .foregroundColor(.red)
-            case .testing:
-                ProgressView()
-            case .verificationNeeded:
-                Image(systemSymbol: .questionmarkCircle)
-                    .foregroundColor(.yellow)
-            default:
-                EmptyView()
             }
         }
     }

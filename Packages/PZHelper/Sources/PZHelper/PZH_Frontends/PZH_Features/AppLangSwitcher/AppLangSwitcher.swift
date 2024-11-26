@@ -89,5 +89,6 @@ struct AppLanguageSwitcher: View {
 
     @State private var alertPresented: Bool = false
     @Binding private var appleLanguageTag: String
+
     @Default(.appLanguage) private var appLanguage: [String]?
 }

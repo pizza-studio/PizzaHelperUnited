@@ -243,9 +243,9 @@ private struct AvatarListItemHSR: View {
 
     // MARK: Private
 
-    private let avatar: HoYo.CharInventory4HSR.HYAvatar4HSR
-
     @State private var condensed: Bool
+
+    private let avatar: HoYo.CharInventory4HSR.HYAvatar4HSR
 
     @Default(.useRealCharacterNames) private var useRealName: Bool
 

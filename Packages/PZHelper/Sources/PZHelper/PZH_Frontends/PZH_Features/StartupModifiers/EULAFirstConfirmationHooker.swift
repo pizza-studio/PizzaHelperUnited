@@ -34,5 +34,6 @@ private struct EULAFirstConfirmationHooker: ViewModifier {
     // MARK: Private
 
     @State private var isSheetShown = true
+
     @Default(.isEULAConfirmed) private var isEULAConfirmed: Bool
 }

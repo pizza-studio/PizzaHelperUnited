@@ -91,6 +91,7 @@ public struct GITodayMaterialsView4Widgets<T: View>: View {
     // MARK: Private
 
     @State private var containerSize: CGSize = .init(width: 250, height: 40)
+
     private let alternativeLayout: Bool
     private let today: GITodayMaterial.AvailableWeekDay?
     private let promptOnSunday: () -> T

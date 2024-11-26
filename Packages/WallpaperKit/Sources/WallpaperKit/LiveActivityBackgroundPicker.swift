@@ -92,6 +92,7 @@ public struct LiveActivityBackgroundPicker: View {
     @StateObject private var orientation = DeviceOrientation()
     @State private var searchText = ""
     @State private var containerSize: CGSize = .zero
+
     @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool

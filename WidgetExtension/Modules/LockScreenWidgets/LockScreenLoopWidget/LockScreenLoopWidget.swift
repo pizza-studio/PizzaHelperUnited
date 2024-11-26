@@ -39,28 +39,8 @@ struct LockScreenLoopWidget: Widget {
 @available(macOS, unavailable)
 struct LockScreenLoopWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
+
     let entry: LockScreenLoopWidgetProvider.Entry
-    var body: some View {
-        Group {
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenLoopWidgetCorner(entry: entry, result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenLoopWidgetCircular(
-                    entry: entry,
-                    result: result,
-                    showWeeklyBosses: showWeeklyBosses,
-                    showTransformer: showTransformer,
-                    resinStyle: resinStyle
-                )
-            default:
-                EmptyView()
-            }
-        }
-        .widgetURL(url)
-    }
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
@@ -88,6 +68,28 @@ struct LockScreenLoopWidgetView: View {
         case .failure:
             return errorURL
         }
+    }
+
+    var body: some View {
+        Group {
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenLoopWidgetCorner(entry: entry, result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenLoopWidgetCircular(
+                    entry: entry,
+                    result: result,
+                    showWeeklyBosses: showWeeklyBosses,
+                    showTransformer: showTransformer,
+                    resinStyle: resinStyle
+                )
+            default:
+                EmptyView()
+            }
+        }
+        .widgetURL(url)
     }
 }
 

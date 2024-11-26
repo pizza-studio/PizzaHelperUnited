@@ -33,6 +33,7 @@ struct MainWidget: Widget {
 @available(watchOS, unavailable)
 struct WidgetViewEntryView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
+
     let entry: MainWidgetProvider.Entry
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }

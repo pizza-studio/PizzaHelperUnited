@@ -34,5 +34,6 @@ private struct PrivacyPolicyFirstConfirmationHooker: ViewModifier {
     // MARK: Private
 
     @State private var isSheetShown = true
+
     @Default(.isPrivacyPolicyConfirmed) private var isPrivacyPolicyConfirmed: Bool
 }

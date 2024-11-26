@@ -22,6 +22,7 @@ struct EventDetailWebView {
     // MARK: Internal
 
     @Environment(\.colorScheme) var colorScheme
+
     let webView = OPWebView()
     let banner: String
     let nameFull: String

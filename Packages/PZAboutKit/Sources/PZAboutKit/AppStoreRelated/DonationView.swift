@@ -78,6 +78,7 @@ public struct DonationView: View {
     // MARK: Internal
 
     @StateObject var iapManager: IAPManager
+
     let locale = Locale.current
 
     // MARK: Private

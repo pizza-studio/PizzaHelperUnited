@@ -67,15 +67,6 @@ public struct AppWallpaperView: View {
         }
     }
 
-    @ViewBuilder var overlayContent4Blur: some View {
-        switch guardedWallpaper.game {
-        case .genshinImpact: Color.colorSystemGray6.opacity(0.5)
-        case .starRail: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
-        case .zenlessZone: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
-        case .none: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
-        }
-    }
-
     var rawImage: Image {
         let guarded = guardedWallpaper
         return forLiveActivity ? guarded.image4LiveActivity : guarded.image4CellphoneWallpaper
@@ -85,9 +76,19 @@ public struct AppWallpaperView: View {
         wallpaperOverride ?? wallpaper
     }
 
+    @ViewBuilder var overlayContent4Blur: some View {
+        switch guardedWallpaper.game {
+        case .genshinImpact: Color.colorSystemGray6.opacity(0.5)
+        case .starRail: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
+        case .zenlessZone: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
+        case .none: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
+        }
+    }
+
     // MARK: Private
 
-    @Default(.background4App) private var wallpaper: Wallpaper
     @Environment(\.colorScheme) private var colorScheme
+
+    @Default(.background4App) private var wallpaper: Wallpaper
 }
 #endif
