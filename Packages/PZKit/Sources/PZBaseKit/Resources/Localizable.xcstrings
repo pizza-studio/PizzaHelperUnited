@@ -2684,7 +2684,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请使用 (Shift+) 鼠标滚轮以控制内容卷动检视。"
+            "value" : "请使用 (Shift+) 鼠标滚轮来滚动显示要查看的内容。"
           }
         },
         "zh-Hant" : {
@@ -4561,7 +4561,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld小时 %lld分"
+            "value" : "%lld小时%lld分"
           }
         },
         "zh-Hant" : {

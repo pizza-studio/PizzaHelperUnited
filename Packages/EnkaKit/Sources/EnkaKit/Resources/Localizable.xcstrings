@@ -66,7 +66,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以 Markdown 的形式写入剪贴板"
+            "value" : "以 Markdown 格式写入剪贴板"
           }
         },
         "zh-Hant" : {
@@ -142,7 +142,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以纯文本的形式写入剪贴板"
+            "value" : "以纯文本格式写入剪贴板"
           }
         },
         "zh-Hant" : {
@@ -218,7 +218,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "展柜查询结果由下述来源提供:\n* 天空岛＆世界树: MicroGG。\n* 其余区服: Enka Networks。"
+            "value" : "展柜查询数据来源:\n* 天空岛＆世界树: MicroGG。\n* 其余区服: Enka Networks。"
           }
         },
         "zh-Hant" : {
@@ -294,7 +294,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "展柜查询结果由下述来源提供:\n* 天空岛(星穹列车)＆世界树(无名客): MiHoMo Origin。\n* 其余区服: Enka Networks。"
+            "value" : "展柜查询数据来源:\n* 天空岛(星穹列车)＆世界树(无名客): MiHoMo Origin。\n* 其余区服: Enka Networks。"
           }
         },
         "zh-Hant" : {
@@ -523,7 +523,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这套证件照可能在该 App 内的某些场合下无法起作用。另附免责声明：这套原神风格的角色证件照**并非出自内鬼泄漏的角色人设图稿**，而是利用[米哈游官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)渲染而成。\n"
+            "value" : "这套证件照可能在该App内的某些场合下无法起作用。另附免责声明：这套原神风格的角色证件照**并非出自内鬼泄漏的角色人设图稿**，而是利用[米哈游官方放出的MMD模型](https://www.aplaybox.com/u/516827875)渲染而成。\n"
           }
         },
         "zh-Hant" : {
@@ -600,7 +600,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该应用内显示的《原神》角色证件照的背景图腾乃是为了彰显该角色的元素能力属性而设定。该图腾素材取自《崩坏：星穹铁道》（水、岩、草这三个属性除外）。当「针对原神角色的证件照与面板启用名片背景」选项停用时，背景图腾才会显现。"
+            "value" : "本 App 内显示的《原神》角色证件照的背景图腾乃是为了彰显该角色的元素能力属性而设定。该图腾素材取自《崩坏：星穹铁道》（水、岩、草这三个属性除外）。当「针对原神角色的证件照与面板启用名片背景」选项停用时，背景图腾才会显现。"
           }
         },
         "zh-Hant" : {
@@ -677,7 +677,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该应用内显示的《崩坏：星穹铁道》角色证件照的背景图腾乃是为了同时彰显该角色的元素能力属性与命途而设定。元素能力属性体现在命途纹样的配色上。"
+            "value" : "本 App 内显示的《崩坏：星穹铁道》角色证件照的背景图腾乃是为了同时彰显该角色的元素能力属性与命途而设定。元素能力属性体现在命途纹样的配色上。"
           }
         },
         "zh-Hant" : {
@@ -985,7 +985,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "举例：雷电将军在堆有至少 900 点元素精通（且使用有助于超绽放的圣遗物套装）的情况下可以与芙宁娜＆纳西妲＆白朮组成最强的远程全自动脱手超绽放阵容。该阵容违背了雷电将军的数值模型，但培养角色所需的时间成本显著降低、且拥有比以久岐忍＆行秋为核心的近战超绽放阵容更远的射程范围。其余雷系角色可能会有类似的情况。该选项对星穹铁道角色无效。"
+            "value" : "举例：雷电将军在堆有至少 900 点元素精通（且使用有助于超绽放的圣遗物套装）的情况下可以与芙宁娜＆纳西妲＆白术组成最强的远程全自动脱手超绽放阵容。该阵容违背了雷电将军的数值模型，但培养角色所需的时间成本显著降低、且拥有比以久岐忍＆行秋为核心的近战超绽放阵容更远的射程范围。其余雷系角色可能会有类似的情况。该选项对星穹铁道角色无效。"
           }
         },
         "zh-Hant" : {
@@ -1370,7 +1370,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "自订流浪者姓名"
+            "value" : "自定义流浪者姓名"
           }
         },
         "zh-Hant" : {
@@ -1447,7 +1447,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已自订的流浪者姓名"
+            "value" : "已自定义的流浪者姓名"
           }
         },
         "zh-Hant" : {
@@ -1524,7 +1524,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请键入您希望给雷电国崩（流浪者）自订的姓名"
+            "value" : "请键入您希望给雷电国崩（流浪者）自定义的姓名"
           }
         },
         "zh-Hant" : {
@@ -1601,7 +1601,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "目前的 EnkaDB 查询用服务器"
+            "value" : "目前的 EnkaDB 查询专用服务器"
           }
         },
         "zh-Hant" : {
@@ -1909,7 +1909,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "最近一次查询 Enka 资料更新的时间点"
+            "value" : "最近一次查询 Enka 数据更新的时间点"
           }
         },
         "zh-Hant" : {
@@ -1986,7 +1986,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "当前设备的本机 EnkaDB 资料库状况"
+            "value" : "当前设备的本机 EnkaDB 数据库状况"
           }
         },
         "zh-Hant" : {
@@ -2217,7 +2217,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "对特定语言下的部分角色/武器的名称进行用字订正"
+            "value" : "对特定语言下的部分角色 / 武器的名称进行用字订正"
           }
         },
         "zh-Hant" : {
