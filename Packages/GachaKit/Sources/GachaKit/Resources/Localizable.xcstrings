@@ -606,7 +606,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请选择要导出的抽卡记录档案。\n若不选择，默认导出所有账号的抽卡记录档案。"
+            "value" : "请选择要导出的抽卡记录文件。\n若不选择，默认导出所有账号的抽卡记录文件。"
           }
         },
         "zh-Hant" : {
@@ -683,7 +683,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请指定要导入的抽卡记录档案。\n若不选择，默认导入全部账号的抽卡记录档案。"
+            "value" : "请指定要导入的抽卡记录文件。\n若不选择，默认导入全部账号的抽卡记录文件。"
           }
         },
         "zh-Hant" : {
@@ -914,7 +914,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可交换型抽卡记录档案未能成功导出。"
+            "value" : "可交换型抽卡记录文件未能成功导出。"
           }
         },
         "zh-Hant" : {
@@ -991,7 +991,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可交换型抽卡记录档案已成功导出至:"
+            "value" : "可交换型抽卡记录文件已成功导出至:"
           }
         },
         "zh-Hant" : {
@@ -1068,7 +1068,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可交换型抽卡记录档案已成功导出。"
+            "value" : "可交换型抽卡记录文件已成功导出。"
           }
         },
         "zh-Hant" : {
@@ -1145,7 +1145,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "档案生成来源"
+            "value" : "文件生成来源"
           }
         },
         "zh-Hant" : {
@@ -1222,7 +1222,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "档案格式"
+            "value" : "文件格式"
           }
         },
         "zh-Hant" : {
@@ -1299,13 +1299,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GIGF（原神专用抽卡记录交换格式）是对 UIGF v3.0 及更早版本的 UIGF 的统称。本 App 对这些版本的支持已经基本停止，但我们保留了对导入这些版本的数据的支持以便用户从已有的旧备份资料恢复。"
+            "value" : "GIGF（原神专用抽卡记录交换格式）是对 UIGF v3.0 及更早版本的 UIGF 的统称。这些版本的规格已经被全部被 UIGF 废止，但我们保留了对导入这些版本的数据的支持、以便用户从已有的旧备份数据恢复。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GIGF（原神專用抽卡記錄交換格式）是對 UIGF v3.0 及更早版本的 UIGF 的統稱。這些版本的規格已經被全部淘汰。對已淘汰規格的匯入支援僅為滿足使用者匯入既有備份資料之目的。"
+            "value" : "GIGF（原神專用抽卡記錄交換格式）是對 UIGF v3.0 及更早版本的 UIGF 的統稱。這些版本的規格已經被全部被 UIGF 廢止。對已淘汰規格的匯入支援僅為滿足使用者匯入既有備份資料之目的。"
           }
         }
       }
@@ -1838,7 +1838,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "已成功从指定的档案导入了指定的抽卡所有账号的全部的抽卡记录。"
+            "value" : "已成功从指定的文件导入了指定的抽卡所有账号的全部的抽卡记录。"
           }
         },
         "zh-Hant" : {
@@ -3531,7 +3531,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尝试更新 GachaMetaDB 缓存时，获取到的资料为空。"
+            "value" : "尝试更新 GachaMetaDB 缓存时，获取到的数据是空的。"
           }
         },
         "zh-Hant" : {
@@ -5456,7 +5456,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本设备上的 GachaMetaDB 已经过期、无法处理来自该应用的本地数据库或外部来源的部分抽卡物品条目。GachaMetaDB 资料库包含了用以映射 ItemID 及其翻译的数据，且记录了每个抽卡物品的稀有等级查询表。"
+            "value" : "本设备上的 GachaMetaDB 已经过期、无法处理来自该应用的本地数据库或外部来源的部分抽卡物品条目。GachaMetaDB 数据库包含了用以映射 ItemID 及其翻译的数据，且记录了每个抽卡物品的稀有等级查询表。"
           }
         },
         "zh-Hant" : {
@@ -5533,7 +5533,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "时区资料缺失时的默认值"
+            "value" : "时区数据缺失时的默认值"
           }
         },
         "zh-Hant" : {
@@ -5687,7 +5687,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点此清除该抽卡档案的全部抽卡记录"
+            "value" : "点此清除该抽卡文件的全部抽卡记录"
           }
         },
         "zh-Hant" : {
@@ -5764,7 +5764,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请再次确认是否真的要清除该抽卡档案的全部抽卡记录。"
+            "value" : "请再次确认是否真的要清除该抽卡文件的全部抽卡记录。"
           }
         },
         "zh-Hant" : {
@@ -6380,7 +6380,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] 服务器资料值无效。"
+            "value" : "[ParseGachaURLError] 服务器参数值无效。"
           }
         },
         "zh-Hant" : {

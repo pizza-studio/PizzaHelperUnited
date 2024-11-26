@@ -4841,7 +4841,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "由于下述数据未记入，本地账号资料保存失败："
+            "value" : "由于下述数据未记入，本地账号数据保存失败："
           }
         },
         "zh-Hant" : {
@@ -4918,7 +4918,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本地账号资料保存失败，原因："
+            "value" : "本地账号数据保存失败，原因："
           }
         },
         "zh-Hant" : {
@@ -5532,7 +5532,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "近期资料库重建: %@"
+            "value" : "近期数据库重建: %@"
           }
         },
         "zh-Hant" : {
@@ -11724,7 +11724,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允许收集深境螺旋个人战报资料"
+            "value" : "允许收集深境螺旋个人战报数据"
           }
         },
         "zh-Hant" : {
@@ -11801,7 +11801,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我们希望能将您已拥有的角色和在攻克深境螺旋时使用的角色资讯上传给 Snap.Hutao 深渊资料库（简称「HutaoDB」）以及披萨深渊资料库（PizzaAbyssDB）。您对此的准许将会使得 HutaoDB 和 PizzaAbyssDB 能提供更准确的深境螺旋角色使用率、队伍使用率等情况（均可以通过本 App 查阅）。该上传资料也包含对应的原神 UID，但不会包括其他的原神账号资料。对 UID 的收集有助于 HutaoDB 永久拒绝来自作弊玩家的数据上传。"
+            "value" : "我们希望能将您已拥有的角色和在攻克深境螺旋时使用的角色资讯上传给 Snap.Hutao 深渊数据库（简称「HutaoDB」）以及披萨深渊数据库（PizzaAbyssDB）。您对此的准许将会使得 HutaoDB 和 PizzaAbyssDB 能提供更准确的深境螺旋角色使用率、队伍使用率等情况（均可以通过本 App 查阅）。该上传数据也包含对应的原神 UID，但不会包括其他的原神账号数据。对 UID 的收集有助于 HutaoDB 永久拒绝来自作弊玩家的数据上传。"
           }
         },
         "zh-Hant" : {
