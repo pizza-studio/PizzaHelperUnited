@@ -82,7 +82,7 @@ struct ResinRecoveryActivityWidget: Widget {
                 .contentMargins(.leading, 15)
                 DynamicIslandExpandedRegion(.bottom) {
                     HStack {
-                        if Date() < context.state.next20ResinRecoveryTime {
+                        if Date() < context.state.next20PrimaryStaminaRecoveryTime {
                             HStack {
                                 AccountKit.imageAsset(resinImageAssetName(context))
                                     .resizable()
@@ -90,13 +90,13 @@ struct ResinRecoveryActivityWidget: Widget {
                                     .frame(maxHeight: 40)
                                 VStack(alignment: .leading) {
                                     Text(
-                                        "pzWidgetsKit.next20Stamina:\(context.state.next20ResinCount)",
+                                        "pzWidgetsKit.next20Stamina:\(context.state.next20PrimaryStamina)",
                                         bundle: .main
                                     )
                                     .font(.caption2)
                                     Text(
                                         timerInterval: Date() ... context.state
-                                            .next20ResinRecoveryTime,
+                                            .next20PrimaryStaminaRecoveryTime,
                                         countsDown: true
                                     )
                                     .multilineTextAlignment(.leading)
@@ -110,7 +110,7 @@ struct ResinRecoveryActivityWidget: Widget {
                             }
                         }
                         Spacer()
-                        if Date() < context.state.resinRecoveryTime {
+                        if Date() < context.state.primaryStaminaRecoveryTime {
                             HStack {
                                 Color.clear.frame(width: 40, height: 40, alignment: .center)
                                     .overlay {
@@ -125,7 +125,7 @@ struct ResinRecoveryActivityWidget: Widget {
 
                                     Text(
                                         timerInterval: Date() ... context.state
-                                            .resinRecoveryTime,
+                                            .primaryStaminaRecoveryTime,
                                         countsDown: true
                                     )
                                     .multilineTextAlignment(.leading)
@@ -145,10 +145,10 @@ struct ResinRecoveryActivityWidget: Widget {
                 AccountKit.imageAsset(resinImageAssetName(context)).resizable().scaledToFit()
             } compactTrailing: {
                 if Date() < context.state
-                    .next20ResinRecoveryTime {
+                    .next20PrimaryStaminaRecoveryTime {
                     Text(
                         timerInterval: Date() ... context.state
-                            .next20ResinRecoveryTime,
+                            .next20PrimaryStaminaRecoveryTime,
                         countsDown: true,
                         showsHours: false
                     )
@@ -242,15 +242,15 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                         Text("pzWidgetsKit.currentStamina", bundle: .main)
                             .font(.caption2)
                         HStack(alignment: .lastTextBaseline, spacing: 0) {
-                            Text(verbatim: "\(context.state.currentResin)")
+                            Text(verbatim: "\(context.state.currentPrimaryStamina)")
                                 .font(.system(.title2, design: .rounded))
-                            Text(verbatim: " / \(context.state.maxResin)")
+                            Text(verbatim: " / \(context.state.maxPrimaryStamina)")
                                 .font(.caption)
                         }
                     }
                     .gridColumnAlignment(.leading)
                 }
-                if Date() < context.state.resinRecoveryTime {
+                if Date() < context.state.primaryStaminaRecoveryTime {
                     GridRow {
                         Color.clear.frame(width: 38, height: 38, alignment: .center)
                             .overlay {
@@ -265,7 +265,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                                 .font(.caption2)
                             Text(
                                 timerInterval: Date() ... context.state
-                                    .resinRecoveryTime,
+                                    .primaryStaminaRecoveryTime,
                                 countsDown: true
                             )
                             .multilineTextAlignment(.leading)
