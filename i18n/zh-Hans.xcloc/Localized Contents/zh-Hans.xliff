@@ -422,12 +422,12 @@
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.invalidServer" xml:space="preserve">
         <source>[ParseGachaURLError] Server invalid.</source>
-        <target state="translated">[ParseGachaURLError] 服务器参数值不合理。</target>
+        <target state="translated">[ParseGachaURLError] 服务器参数值无效。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.invalidURL" xml:space="preserve">
         <source>[ParseGachaURLError] URL invalid.</source>
-        <target state="translated">[ParseGachaURLError] URL 不合理。</target>
+        <target state="translated">[ParseGachaURLError] URL 无效。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.ParseGachaURLError.noAuthenticationKey" xml:space="preserve">
@@ -2432,7 +2432,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.notification.faq.howNotificationsGetScheduled" xml:space="preserve">
         <source>This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note data for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note data, in cases where the relevant preferences permit it.</source>
-        <target state="translated">敝 App 或其随赠的小工具会尝试在针对某个本地账号获取实时便笺资讯时自动重新排定相关的通知。在每次排定时，都会尝试主动清除之前针对该本地账号所排定的任何不合理的尚未推送的通知。当且仅当系统设定允许敝 App 推送系统通知、且敝 App 有成功获取到实时便笺资讯时，才会在相关的偏好设定允许的情况下对相关的通知进行排定。</target>
+        <target state="translated">敝 App 或其随赠的小工具会尝试在针对某个本地账号获取实时便笺资讯时自动重新排定相关的通知。在每次排定时，都会尝试主动清除之前针对该本地账号所排定的任何无效的尚未推送的通知。当且仅当系统设定允许敝 App 推送系统通知、且敝 App 有成功获取到实时便笺资讯时，才会在相关的偏好设定允许的情况下对相关的通知进行排定。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.giRealmCurrency.allow" xml:space="preserve">
