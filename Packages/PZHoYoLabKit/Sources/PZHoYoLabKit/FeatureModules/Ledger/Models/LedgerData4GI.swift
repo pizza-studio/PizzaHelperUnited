@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 
 // MARK: - HoYo.LedgerData4GI
 
@@ -12,10 +13,10 @@ extension HoYo {
 
         public typealias ViewType = LedgerView4GI
 
-        public struct MonthData: Codable, Hashable, Sendable {
+        public struct MonthData: AbleToCodeSendHash {
             // MARK: Public
 
-            public struct LedgerDataGroup: Codable, Hashable, Sendable {
+            public struct LedgerDataGroup: AbleToCodeSendHash {
                 // MARK: Public
 
                 public var percent: Int
@@ -61,7 +62,7 @@ extension HoYo {
             }
         }
 
-        public struct DayData: Codable, Hashable, Sendable {
+        public struct DayData: AbleToCodeSendHash {
             // MARK: Public
 
             public var currentMora: Int

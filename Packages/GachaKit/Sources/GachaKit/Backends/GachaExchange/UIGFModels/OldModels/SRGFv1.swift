@@ -3,12 +3,13 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - SRGFv1
 
 // Ref: https://uigf.org/zh/standards/srgf.html
 
-public struct SRGFv1: Codable, Hashable, Sendable {
+public struct SRGFv1: AbleToCodeSendHash {
     // MARK: Lifecycle
 
     public init(info: Info, list: [DataEntry]) {
@@ -35,7 +36,7 @@ extension SRGFv1 {
 extension SRGFv1 {
     // MARK: - Info
 
-    public struct Info: Codable, Hashable, Sendable {
+    public struct Info: AbleToCodeSendHash {
         // MARK: Lifecycle
 
         public init(
@@ -78,7 +79,7 @@ extension SRGFv1 {
 
     // MARK: - List
 
-    public struct DataEntry: Codable, Hashable, Sendable, Identifiable {
+    public struct DataEntry: AbleToCodeSendHash, Identifiable {
         // MARK: Lifecycle
 
         public init(

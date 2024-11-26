@@ -3,11 +3,12 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @preconcurrency import Defaults
+import PZBaseKit
 
 // MARK: - Enka.QueriedProfileHSR
 
 extension Enka {
-    public struct QueriedProfileHSR: Codable, Hashable, Sendable, EKQueriedProfileProtocol {
+    public struct QueriedProfileHSR: AbleToCodeSendHash, EKQueriedProfileProtocol {
         // MARK: Lifecycle
 
         public init(
@@ -94,7 +95,7 @@ extension Enka {
 extension Enka.QueriedProfileHSR {
     // MARK: - Avatar
 
-    public struct QueriedAvatar: Codable, Hashable, Sendable, EKQueriedRawAvatarProtocol {
+    public struct QueriedAvatar: AbleToCodeSendHash, EKQueriedRawAvatarProtocol {
         // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
@@ -133,7 +134,7 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - Equipment
 
-    public struct Equipment: Codable, Hashable, Sendable {
+    public struct Equipment: AbleToCodeSendHash {
         // MARK: Public
 
         public let rank, level, tid: Int
@@ -158,14 +159,14 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - EquipmentFlat
 
-    public struct EquipmentFlat: Codable, Hashable, Sendable {
+    public struct EquipmentFlat: AbleToCodeSendHash {
         public let props: [Prop]
         public let name: Int
     }
 
     // MARK: - Prop
 
-    public struct Prop: Codable, Hashable, Sendable {
+    public struct Prop: AbleToCodeSendHash {
         public let type: String
         public let value: Double
     }
@@ -173,7 +174,7 @@ extension Enka.QueriedProfileHSR {
     // MARK: - PropStepped
 
     // NON-ENKA
-    public struct PropStepped: Codable, Hashable, Sendable {
+    public struct PropStepped: AbleToCodeSendHash {
         public let type: String
         public let value: Double
         public let count: Int
@@ -182,19 +183,19 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - ArtifactItem
 
-    public struct ArtifactItem: Codable, Hashable, Sendable {
+    public struct ArtifactItem: AbleToCodeSendHash {
         // MARK: Public
 
         // MARK: - SubAffixList
 
-        public struct SubAffixItem: Codable, Hashable, Sendable {
+        public struct SubAffixItem: AbleToCodeSendHash {
             public let affixId, cnt: Int
             public let step: Int?
         }
 
         // MARK: - ArtifactItem.Flat
 
-        public struct Flat: Codable, Hashable, Sendable {
+        public struct Flat: AbleToCodeSendHash {
             public let props: [Prop]
             public let setName, setID: Int
         }
@@ -202,7 +203,7 @@ extension Enka.QueriedProfileHSR {
         // MARK: - ArtifactItem.SteppedFlat
 
         // NON-ENKA
-        public struct SteppedFlat: Codable, Hashable, Sendable {
+        public struct SteppedFlat: AbleToCodeSendHash {
             public let props: [PropStepped]
             public let setName, setID: Int
         }
@@ -229,13 +230,13 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - SkillTreeItem
 
-    public struct SkillTreeItem: Codable, Hashable, Sendable {
+    public struct SkillTreeItem: AbleToCodeSendHash {
         public let pointId, level: Int
     }
 
     // MARK: - RecordInfo
 
-    public struct RecordInfo: Codable, Hashable, Sendable {
+    public struct RecordInfo: AbleToCodeSendHash {
         public let maxRogueChallengeScore, achievementCount: Int?
         public let challengeInfo: ChallengeInfo?
         public let equipmentCount, avatarCount: Int?
@@ -243,7 +244,7 @@ extension Enka.QueriedProfileHSR {
 
     // MARK: - ChallengeInfo
 
-    public struct ChallengeInfo: Codable, Hashable, Sendable {
+    public struct ChallengeInfo: AbleToCodeSendHash {
         public let scheduleGroupId: Int?
     }
 

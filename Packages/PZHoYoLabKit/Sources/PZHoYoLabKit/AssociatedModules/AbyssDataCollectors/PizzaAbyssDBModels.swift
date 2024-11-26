@@ -5,6 +5,7 @@
 @preconcurrency import Defaults
 import Foundation
 import PZAccountKit
+import PZBaseKit
 
 // MARK: - PZAbyssDB
 
@@ -42,7 +43,7 @@ extension PZAbyssDB {
 extension PZAbyssDB {
     /// 用于向服务器发送的深境螺旋数据
     public struct AbyssDataPack: Codable, AbyssDataPackProtocol {
-        public struct SubmitDetailModel: Codable, Hashable, Sendable {
+        public struct SubmitDetailModel: AbleToCodeSendHash {
             /// 深境螺旋层数
             public let floor: Int
             /// 深境螺旋间数
@@ -54,7 +55,7 @@ extension PZAbyssDB {
             public let usedChars: [Int]
         }
 
-        public struct AbyssRankModel: Codable, Hashable, Sendable {
+        public struct AbyssRankModel: AbleToCodeSendHash {
             /// 造成的最高伤害
             public let topDamageValue: Int
 

@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZAccountKit
+import PZBaseKit
 
 // MARK: - HoYo.CharInventory4GI
 
@@ -14,7 +15,7 @@ extension HoYo {
         public struct HYAvatar4GI: HYAvatar {
             // MARK: Public
 
-            public struct Weapon4GI: Codable, Sendable, Hashable {
+            public struct Weapon4GI: AbleToCodeSendHash {
                 // MARK: Public
 
                 public var id: Int
@@ -89,26 +90,26 @@ extension HoYo {
 }
 
 extension HoYo.CharInventory4GI {
-    public struct AvatarDetailPackage4GI: Codable, Sendable, Hashable, DecodableFromMiHoYoAPIJSONResult {
+    public struct AvatarDetailPackage4GI: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         public var list: [AvatarDetail4GI]
     }
 
     /// 此处仅取用会用到的资讯。
-    public struct AvatarDetail4GI: Codable, Sendable, Hashable {
-        public struct Costume4GI: Codable, Sendable, Hashable {
+    public struct AvatarDetail4GI: AbleToCodeSendHash {
+        public struct Costume4GI: AbleToCodeSendHash {
             public var id: Int
             public var name: String
             public var icon: String
         }
 
-        public struct Relic4GI: Codable, Sendable, Hashable {
+        public struct Relic4GI: AbleToCodeSendHash {
             public var id: Int
             public var set: RelicSet4GI
             public var icon: String
         }
 
-        public struct RelicSet4GI: Codable, Sendable, Hashable {
-            public struct RelicSetAffix4GI: Codable, Sendable, Hashable {
+        public struct RelicSet4GI: AbleToCodeSendHash {
+            public struct RelicSetAffix4GI: AbleToCodeSendHash {
                 // MARK: Public
 
                 public let activationNumber: Int

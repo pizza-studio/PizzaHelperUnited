@@ -10,7 +10,7 @@ import PZBaseKit
 // 穹披助手对 UIGF 仅从 v4 开始支援，因为之前版本的 UIGF 仅支援原神。
 // Ref: https://uigf.org/zh/standards/uigf.html
 
-public struct UIGFv4: Codable, Hashable, Sendable {
+public struct UIGFv4: AbleToCodeSendHash {
     // MARK: Lifecycle
 
     public init(
@@ -75,7 +75,7 @@ extension UIGFv4 {
 // MARK: UIGFv4.Info
 
 extension UIGFv4 {
-    public struct Info: Codable, Hashable, Sendable {
+    public struct Info: AbleToCodeSendHash {
         // MARK: Lifecycle
 
         public init(

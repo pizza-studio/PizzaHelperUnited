@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @preconcurrency import Defaults
+import PZBaseKit
 
 // MARK: - ArtifactRating
 
@@ -15,7 +16,7 @@ public typealias ArtifactSubStatScore = ArtifactRating.SubStatScoreLevel
 // MARK: - ArtifactRating.SubStatScoreLevel
 
 extension ArtifactRating {
-    public enum SubStatScoreLevel: Double, Codable, Hashable, Sendable {
+    public enum SubStatScoreLevel: Double, AbleToCodeSendHash {
         case highest = 100
         case higherPlus = 90
         case higher = 80

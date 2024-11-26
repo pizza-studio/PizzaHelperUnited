@@ -4,6 +4,7 @@
 
 import Foundation
 import PZAccountKit
+import PZBaseKit
 
 // MARK: - HoYo.AbyssReport4HSR
 
@@ -52,7 +53,7 @@ extension HoYo {
 }
 
 extension HoYo.AbyssReport4HSR {
-    public struct FHAvatar: Codable, Hashable, Sendable, Identifiable {
+    public struct FHAvatar: AbleToCodeSendHash, Identifiable {
         // MARK: Public
 
         public let id: Int
@@ -70,7 +71,7 @@ extension HoYo.AbyssReport4HSR {
         }
     }
 
-    public struct FHFloorDetail: Codable, Hashable, Sendable {
+    public struct FHFloorDetail: AbleToCodeSendHash {
         // MARK: Public
 
         public let name: String
@@ -107,7 +108,7 @@ extension HoYo.AbyssReport4HSR {
         private let _isFast: Bool
     }
 
-    public struct FHMeta: Codable, Hashable, Sendable {
+    public struct FHMeta: AbleToCodeSendHash {
         // MARK: Public
 
         public let scheduleID: Int
@@ -127,7 +128,7 @@ extension HoYo.AbyssReport4HSR {
         }
     }
 
-    public struct FHNode: Codable, Hashable, Sendable {
+    public struct FHNode: AbleToCodeSendHash {
         // MARK: Public
 
         public let challengeTime: FHDateComponents
@@ -141,7 +142,7 @@ extension HoYo.AbyssReport4HSR {
         }
     }
 
-    public struct FHDateComponents: Codable, Hashable, Sendable, CustomStringConvertible {
+    public struct FHDateComponents: AbleToCodeSendHash, CustomStringConvertible {
         public let year: Int
         public let month: Int
         public let day: Int
