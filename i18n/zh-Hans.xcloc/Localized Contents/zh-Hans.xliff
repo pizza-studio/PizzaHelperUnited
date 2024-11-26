@@ -412,7 +412,7 @@
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navDescription" xml:space="preserve">
         <source>This app does not contain paid gacha. The Gacha Record Manager in this app only allows users to manage their personal gacha records for some of the games supported by this app. // Your gacha records in this app will only be stored in the private iCloud space of your current Apple ID, as well as on any Apple devices that are signed in with that Apple ID and have this app installed and in-use, hence no privacy concerns needed. // Zenless Zone Zero is currently not supported by this feature.</source>
-        <target state="translated">敝应用不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被敝应用所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的 Apple ID 的私有 iCloud 空间内、以及任何登入了该 Apple ID 且有安装使用敝应用的 Apple 装置，不会有隐私上的安全问题。敝应用的抽卡记录管理功能现阶段不提供对绝区零的支持。</target>
+        <target state="translated">敝应用不包含付费转蛋。该抽卡记录管理功能仅允许用户就「被敝应用所支援的部分游戏」管理自己的个人抽卡（转蛋）记录。您的抽卡记录仅会存储在您当前的 Apple ID 的私有 iCloud 空间内、以及任何登录了该 Apple ID 且有安装使用敝应用的 Apple 装置，不会有隐私上的安全问题。敝应用的抽卡记录管理功能现阶段不提供对绝区零的支持。</target>
         <note/>
       </trans-unit>
       <trans-unit id="gachaKit.GachaRootView.navTitle" xml:space="preserve">
@@ -2023,7 +2023,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profile.login.sectionHeader" xml:space="preserve">
         <source>Login your HoYoLAB / Miyoushe Account</source>
-        <target state="translated">登入您的 HoYoLAB / 米游社账号</target>
+        <target state="translated">登录您的 HoYoLAB / 米游社账号</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.account.qr_code_login.check_scanned" xml:space="preserve">
@@ -2068,7 +2068,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.account.qr_code_login.title" xml:space="preserve">
         <source>Login by scanning the QR code</source>
-        <target state="translated">通过扫描二维码登入</target>
+        <target state="translated">通过扫描二维码登录</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.attention.title" xml:space="preserve">
@@ -2078,7 +2078,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.1" xml:space="preserve">
         <source>To get resin and other data from HoYoLAB / Miyoushe, UID and login cookie of your account is needed. After logging into HoYoLAB / Miyoushe, we will store them locally as well as on your private iCloud. Then our app will use the stored UID and cookie to get the resin and other information in a way similar to HoYoLAB / Miyoushe app, then display them on your widget. Your private information will not be sent to other places other than HoYoLAB / Miyoushe and iCloud, including us, so your personal information will be very secure. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program.</source>
-        <target state="translated">为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登入后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。</target>
+        <target state="translated">为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社 / HoYoLAB 的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.2" xml:space="preserve">
@@ -2098,17 +2098,17 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction" xml:space="preserve">
         <source>Click the "Done" button at the top-trailing corner of the app screen after you finish login to HoYoLAB in the following webpage. If you are prompted for CAPTCHA, please finish it.</source>
-        <target state="translated">请在打开的网页完成登入 HoYoLab 操作后点击「完成」。如果弹出人机验证的话，请完成之。</target>
+        <target state="translated">请在打开的网页完成登录 HoYoLab 操作后点击「完成」。如果弹出人机验证的话，请完成之。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.passwordInputSafetyExplanation" xml:space="preserve">
         <source>To ensure you feel safe with this, here’s how it works: Your password input is protected by macOS built-in SecureEventInputAPI (or its equivalent on iOS), and then it will be directly handled by HoYoLAB login webpage. This is the nature of how WKWebView gets designed by Apple. Nobody else can interfere / intercept this process, nor this app. You can see that you cannot switch to 3rd-party input methods while the password is receiving inputs from the user.</source>
-        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登入网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括敝应用。您会发现，在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。</target>
+        <target state="translated">为了确保您对这一点感到安全，这里介绍一下运作方式：您的密码输入受到 macOS 内置的 SecureEventInputAPI（或 iOS 上的等效功能）的保护，然后将直接由 HoYoLAB 登录网页处理。这是 Apple 对 WKWebView 的设计使然。其他人无法干扰或截听这个过程，包括敝应用。您会发现，在密码接收来自用户的输入的过程中，您无法切换到第三方输入法。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.instruction.specialWarning" xml:space="preserve">
         <source>⚠️ 3rd-party sign-in services like Google, Facebook, Twitter, Sign-in-with-Apple, etc. ARE NOT TECHNICALLY SUPPORTABLE IN THIS APP, please sign in with your username &amp; password.</source>
-        <target state="translated">⚠️ 通过 Google，Facebook，Twitter 或 Sign-in-with-Apple 等第三方服务登入 HoYoLAB 的方式不受敝 App 支持，请使用账号密码登入。</target>
+        <target state="translated">⚠️ 通过 Google，Facebook，Twitter 或 Sign-in-with-Apple 等第三方服务登录 HoYoLAB 的方式不受敝 App 支持，请使用账号密码登录。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.notice.bewareof" xml:space="preserve">
@@ -2130,7 +2130,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.pleaseFinish.title" xml:space="preserve">
         <source>Please Finish Login</source>
-        <target state="translated">请完成登入</target>
+        <target state="translated">请完成登录</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.delete.title" xml:space="preserve">
@@ -2145,7 +2145,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.error.SaveProfileError.helpAnchor" xml:space="preserve">
         <source>Please try login again.</source>
-        <target state="translated">请重新尝试登入。</target>
+        <target state="translated">请重新尝试登录。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.error.SaveProfileError.missingFieldError:" xml:space="preserve">
@@ -2215,7 +2215,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.login.server.temporarilyDownNotice" xml:space="preserve">
         <source>Sorry, login feature for this server is temporarily down. We are working on this. You can now manually config your local profile with your own effective Miyoushe / HoYoLAB Cookie. </source>
-        <target state="translated">抱歉，该服务器的登入功能暂时无法使用。我们正在努力寻求解决方案。目前您仍可以通过「自行填写有效米游社 / HoYoLAB Cookie」的方式来手动登入。</target>
+        <target state="translated">抱歉，该服务器的登录功能暂时无法使用。我们正在努力寻求解决方案。目前您仍可以通过「自行填写有效米游社 / HoYoLAB Cookie」的方式来手动登录。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.loginError.noGameUIDFound" xml:space="preserve">
@@ -2327,7 +2327,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.warning" xml:space="preserve">
         <source>You acknowledge and agree that as a result of deleting your Account, you will lose access to all services related to all games developed by MiHoYo / Cognosphere, including the account information, subscriptions and all game-related information linked to such Account and permanently lose the possibility to access other services through the Account.</source>
-        <target state="translated">您认可并同意账号注销导致的后果：您将无法通过该账号登入（任何由米哈游 / Cognosphere 开发的）游戏相关服务，包括与该账号相关联的账号资讯、订阅和游戏的相关资讯，并永久丧失任何通过该账号访问其他服务的权利。</target>
+        <target state="translated">您认可并同意账号注销导致的后果：您将无法通过该账号登录（任何由米哈游 / Cognosphere 开发的）游戏相关服务，包括与该账号相关联的账号资讯、订阅和游戏的相关资讯，并永久丧失任何通过该账号访问其他服务的权利。</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.withdrawal.warning.footer" xml:space="preserve">
@@ -2632,12 +2632,12 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.profile.clickHereToLogin" xml:space="preserve">
         <source>Click here to login:</source>
-        <target state="translated">点此登入:</target>
+        <target state="translated">点此登录:</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.clickHereToLogin.reLogin" xml:space="preserve">
         <source>Click here to login again:</source>
-        <target state="translated">点此重新登入:</target>
+        <target state="translated">点此重新登录:</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs" xml:space="preserve">
@@ -2647,7 +2647,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs.explanation" xml:space="preserve">
         <source>This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies. If profile duplication happens during this process, then the existing profile will be updated instead with new cookie, the latest device fingerprint, and the latest device ID instead.</source>
-        <target state="translated">此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB 账号。相同的米游社 / HoYoLAB 账号下的每个游戏每个 UID 每个区服都登入一次的话，可能会让米游社 / HoYoLAB 服务器误解此账号登入了多少设备，导致 Cookie 提前失效。在这个读入过程中，如果发现与既存的本地账号重复的情况的话，则不再新增重复的账号，而是将既有账号的 Cookies、设备指纹、设备 ID 更新为最新的版本。</target>
+        <target state="translated">此选项非常有助于让服务器知道您确实是在自己的设备上使用您的米游社 / HoYoLAB 账号。相同的米游社 / HoYoLAB 账号下的每个游戏每个 UID 每个区服都登录一次的话，可能会让米游社 / HoYoLAB 服务器误解此账号登录了多少设备，导致 Cookie 提前失效。在这个读入过程中，如果发现与既存的本地账号重复的情况的话，则不再新增重复的账号，而是将既有账号的 Cookies、设备指纹、设备 ID 更新为最新的版本。</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.pleaseSelectGame" xml:space="preserve">
@@ -2662,7 +2662,7 @@ The above link, if directly clicked, will automatically apply the user-agent of 
       </trans-unit>
       <trans-unit id="settings.requireLoginView.loginViaMiyousheOrHoyoLab.relogin" xml:space="preserve">
         <source>Relogin to HoYoLAB / Miyoushe</source>
-        <target state="translated">重新登入米游社 / HoYoLAB 通行证</target>
+        <target state="translated">重新登录米游社 / HoYoLAB 通行证</target>
         <note>Account detail</note>
       </trans-unit>
       <trans-unit id="settings.resinTimer.autoInit.toggle.title" xml:space="preserve">
@@ -3417,7 +3417,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="MiHoYoAPIError.reloginRequired" xml:space="preserve">
         <source>[HoYoAPIErr] Please relogin.</source>
-        <target state="translated">[HoYoAPI错误] 请重新登入。</target>
+        <target state="translated">[HoYoAPI错误] 请重新登录。</target>
         <note/>
       </trans-unit>
       <trans-unit id="MiHoYoAPIError.sTokenV2InvalidOrMissing" xml:space="preserve">
