@@ -1373,19 +1373,19 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.koni" xml:space="preserve">
         <source>App Icon Illustrator, The Pizza Helper (v5 Engine Testflight)</source>
-        <target state="translated">App 图示绘师 (统一披萨小助手 v5 引擎 TF 测试)</target>
+        <target state="translated">App 图示画师 (统一披萨小助手 v5 引擎 TF 测试)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.lava" xml:space="preserve">
         <source>App Icon Illustrator, Pizza Helper for HSR</source>
-        <target state="translated">App 图示绘师 (星铁披萨小助手)</target>
+        <target state="translated">App 图示画师 (星铁披萨小助手)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.xinzoruo" xml:space="preserve">
         <source>App Icon Illustrator, Pizza Helper for Genshin (v4)
 App Icon Illustrator, The Pizza Helper (v5)</source>
-        <target state="translated">App 图示绘师 (原神披萨小助手 v4)
-App 图示绘师 (统一披萨小助手 v5)</target>
+        <target state="translated">App 图示画师 (原神披萨小助手 v4)
+App 图示画师 (统一披萨小助手 v5)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsAssetCrew.yulijushi" xml:space="preserve">
