@@ -2087,7 +2087,7 @@ This app will quit after you confirm this message.</source>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.title.1" xml:space="preserve">
         <source>How this App work?</source>
-        <target state="translated">關於我們的工作原理</target>
+        <target state="translated">關於敝應用的工作原理</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.accountLogin.explanation.title.2" xml:space="preserve">
