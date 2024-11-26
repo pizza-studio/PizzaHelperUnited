@@ -23,7 +23,7 @@ extension Defaults.Keys {
 
 // MARK: - Wallpaper
 
-public struct Wallpaper: Identifiable, Codable, Hashable, Sendable {
+public struct Wallpaper: Identifiable, AbleToCodeSendHash {
     public let game: Pizza.SupportedGame?
     public let id: String
     public let bindedCharID: String? // 原神专用

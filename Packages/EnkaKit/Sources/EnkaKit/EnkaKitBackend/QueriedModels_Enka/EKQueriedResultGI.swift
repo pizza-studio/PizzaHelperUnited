@@ -2,10 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
+
 // MARK: - Enka.QueriedResultGI
 
 extension Enka {
-    public struct QueriedResultGI: Codable, Hashable, Sendable, EKQueryResultProtocol {
+    public struct QueriedResultGI: AbleToCodeSendHash, EKQueryResultProtocol {
         // MARK: Lifecycle
 
         public init(from decoder: any Decoder) throws {

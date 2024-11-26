@@ -15,7 +15,7 @@ extension Defaults.Keys {
 
 // MARK: - NotificationOptions
 
-public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSerializable {
+public struct NotificationOptions: AbleToCodeSendHash, _DefaultsSerializable {
     // MARK: Lifecycle
 
     public init() {}
@@ -100,12 +100,12 @@ public struct NotificationOptions: Codable, Hashable, Sendable, _DefaultsSeriali
         }
     }
 
-    public enum ManualSetting: Codable, Sendable, Hashable {
+    public enum ManualSetting: AbleToCodeSendHash {
         case disallowed
         case notifyAt(weekday: Int = 0, hour: Int, minute: Int)
     }
 
-    public struct StaminaThreshold: Codable, Sendable, Hashable {
+    public struct StaminaThreshold: AbleToCodeSendHash {
         // MARK: Lifecycle
 
         public init(game: Pizza.SupportedGame, threshold: Int) {

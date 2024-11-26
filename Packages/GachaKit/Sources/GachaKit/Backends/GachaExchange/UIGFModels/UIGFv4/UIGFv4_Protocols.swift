@@ -18,7 +18,7 @@ extension Pizza.SupportedGame {
 
 // MARK: - GachaTypeProtocol
 
-public protocol GachaTypeProtocol: RawRepresentable, Codable, Hashable, Sendable,
+public protocol GachaTypeProtocol: RawRepresentable, AbleToCodeSendHash,
     Identifiable where RawValue == String {
     associatedtype ItemType: UIGFGachaItemProtocol where ItemType.PoolType == Self
     static var knownCases: [Self] { get }
@@ -54,7 +54,7 @@ extension GachaTypeProtocol {
 
 // MARK: - UIGFGachaItemProtocol
 
-public protocol UIGFGachaItemProtocol: Codable, Hashable, Sendable {
+public protocol UIGFGachaItemProtocol: AbleToCodeSendHash {
     associatedtype PoolType: GachaTypeProtocol where PoolType.ItemType == Self
     static var game: Pizza.SupportedGame { get }
 

@@ -11,7 +11,7 @@ extension UIGFv4 {
     public typealias ProfileGI = Profile<GachaItemGI>
     public typealias ProfileZZZ = Profile<GachaItemZZZ>
 
-    public struct Profile<ItemType: UIGFGachaItemProtocol>: Codable, Hashable, Sendable {
+    public struct Profile<ItemType: UIGFGachaItemProtocol>: AbleToCodeSendHash {
         // MARK: Lifecycle
 
         public init(lang: GachaLanguage, list: [ItemType], timezone: Int?, uid: String) {
