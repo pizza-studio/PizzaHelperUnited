@@ -3779,7 +3779,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="operation.scrolling.guide" xml:space="preserve">
         <source>Use (Shift+) Mouse Wheel to scroll contents.</source>
-        <target state="translated">请使用 (Shift+) 鼠标滚轮以控制内容卷动查看。</target>
+        <target state="translated">请使用 (Shift+) 鼠标滚轮来滚动显示要查看的内容。</target>
         <note/>
       </trans-unit>
       <trans-unit id="sys.add" xml:space="preserve">
