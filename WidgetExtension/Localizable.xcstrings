@@ -70,13 +70,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "藍色"
+            "value" : "蓝色"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "蓝色"
+            "value" : "藍色"
           }
         }
       }
@@ -301,13 +301,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "綠色"
+            "value" : "绿色"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "绿色"
+            "value" : "綠色"
           }
         }
       }
@@ -532,13 +532,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "紅色"
+            "value" : "红色"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "红色"
+            "value" : "紅色"
           }
         }
       }
@@ -3814,7 +3814,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "派遣委託狀況"
+            "value" : "派遣委托状况"
           }
         },
         "zh-Hant" : {
@@ -4810,7 +4810,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "完工时间:"
+            "value" : "完工时间: "
           }
         },
         "zh-Hant" : {
@@ -5038,7 +5038,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 分 0 秒\n玩家体力已满"
+            "value" : "0分0秒\n玩家体力已满"
           }
         },
         "zh-Hant" : {
@@ -5426,7 +5426,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "距离 %lld 點體力:"
+            "value" : "距離 %lld 點體力:"
           }
         }
       }
@@ -6414,7 +6414,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "玩家狀況"
+            "value" : "玩家状况"
           }
         },
         "zh-Hant" : {
@@ -6702,7 +6702,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尚未发现本地账号。请在应用内添加、或者重新启动该装置。"
+            "value" : "尚未发现本地账号。请在 App 内添加、或者重新启动该设备。"
           }
         },
         "zh-Hant" : {
