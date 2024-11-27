@@ -58,17 +58,12 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
     /// from being configured by the user. Hence the change from `background` to `chosenBackgrounds`.
     @Parameter(title: "intent.field.wallpaper") public var chosenBackgrounds: [WidgetBackgroundAppEntity]?
 
-    @Parameter(title: "intent.field.showTransformer", default: true) public var showTransformer: Bool?
-
-    @Parameter(
-        title: "intent.field.expeditionShowingMethod",
-        default: .byNum
-    ) public var expeditionShowingMethod: ExpeditionShowingMethodAppEnum?
+    @Parameter(title: "intent.field.followSystemDarkMode", default: true) public var isDarkModeOn: Bool?
 
     @Parameter(title: "intent.field.weeklyBossesShowingMethod", default: .alwaysShow)
     public var weeklyBossesShowingMethod: WeeklyBossesShowingMethodAppEnum?
 
-    @Parameter(title: "intent.field.followSystemDarkMode", default: true) public var isDarkModeOn: Bool?
+    @Parameter(title: "intent.field.showTransformer", default: true) public var showTransformer: Bool?
 
     @Parameter(
         title: "intent.field.showMaterialsInLargeSizeWidget",
