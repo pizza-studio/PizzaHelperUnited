@@ -39,14 +39,13 @@ struct NotificationSettingsPageContent: View {
                             Image(systemSymbol: .gear)
                         }
                         #if os(macOS) || targetEnvironment(macCatalyst)
-                        Link(destination: "x-apple.systempreferences:com.apple.preference.notifications".asURL) {
-                            osSettingsLinkLabel
-                        }
+                        let urlOSSettings = "x-apple.systempreferences:com.apple.preference.notifications".asURL
                         #else
-                        Link(destination: UIApplication.openSettingsURLString.asURL) {
+                        let urlOSSettings = UIApplication.openSettingsURLString.asURL
+                        #endif
+                        Link(destination: urlOSSettings) {
                             osSettingsLinkLabel
                         }
-                        #endif
                     }
                 }
                 NotificationSettingDetailContent()
@@ -338,10 +337,7 @@ private struct NotificationSettingDetailContent: View {
                 .textCase(.none)
                 .padding([.bottom])
         } footer: {
-            #if targetEnvironment(macCatalyst)
-            Text("settings.notification.dateTimePicker.macCatalystNotice", bundle: .module)
-                .foregroundStyle(.orange)
-            #endif
+            macCatalystNoticeView
         }
 
         // 玩家体力通知提醒阈值
@@ -493,6 +489,15 @@ private struct NotificationSettingDetailContent: View {
     @Default(.notificationOptions) var options: NotificationOptions
 
     // MARK: Private
+
+    @ViewBuilder private var macCatalystNoticeView: some View {
+        #if targetEnvironment(macCatalyst)
+        Text("settings.notification.dateTimePicker.macCatalystNotice", bundle: .module)
+            .foregroundStyle(.orange)
+        #else
+        EmptyView()
+        #endif
+    }
 
     @ViewBuilder
     private func handleBindingDateAndWeekdays<T: View>(
