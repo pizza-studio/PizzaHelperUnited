@@ -1,0 +1,21 @@
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "energy": {
+      "progress": { "max": 240, "current": 240 },
+      "restore": 0,
+      "day_type": 0,
+      "hour": 0,
+      "minute": 0
+    },
+    "vitality": { "max": 400, "current": 0 },
+    "vhs_sale": { "sale_state": "SaleStateNo" },
+    "card_sign": "CardSignNo",
+    "bounty_commission": null,
+    "survey_points": null,
+    "abyss_refresh": 0,
+    "coffee": null,
+    "weekly_task": null
+  }
+}

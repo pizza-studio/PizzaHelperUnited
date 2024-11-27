@@ -611,14 +611,30 @@ private struct DailyNoteCardView4ZZZ: View {
             Spacer()
             let stateOn = "app.dailynote.card.zzzVHSStoreInOperationState.on".i18nPZHelper
             let stateOff = "app.dailynote.card.zzzVHSStoreInOperationState.off".i18nPZHelper
-            Text(verbatim: dailyNote.vhsSale.isInOperation ? stateOn : stateOff)
+            Text(verbatim: dailyNote.vhsStoreState.isInOperation ? stateOn : stateOff)
         }
-        HStack {
-            Text("app.dailynote.card.zzzScratchableCard.label".i18nPZHelper).bold()
-            Spacer()
-            let stateDone = "app.dailynote.card.zzzScratchableCard.done".i18nPZHelper
-            let stateNyet = "app.dailynote.card.zzzScratchableCard.notYet".i18nPZHelper
-            Text(verbatim: dailyNote.cardScratched ? stateDone : stateNyet)
+        if let cardScratched = dailyNote.cardScratched {
+            HStack {
+                Text("app.dailynote.card.zzzScratchableCard.label".i18nPZHelper).bold()
+                Spacer()
+                let stateDone = "app.dailynote.card.zzzScratchableCard.done".i18nPZHelper
+                let stateNyet = "app.dailynote.card.zzzScratchableCard.notYet".i18nPZHelper
+                Text(verbatim: cardScratched ? stateDone : stateNyet)
+            }
+        }
+        if let bountyCommission = dailyNote.hollowZero.bountyCommission {
+            HStack {
+                Text("app.dailynote.card.zzzHollowZeroBountyCommission.label".i18nPZHelper).bold()
+                Spacer()
+                Text(verbatim: bountyCommission.textDescription)
+            }
+        }
+        if let investigationPoint = dailyNote.hollowZero.investigationPoint {
+            HStack {
+                Text("app.dailynote.card.zzzHollowZeroInvestigationPoint.label".i18nPZHelper).bold()
+                Spacer()
+                Text(verbatim: investigationPoint.textDescription)
+            }
         }
     }
 
