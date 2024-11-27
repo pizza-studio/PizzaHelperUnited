@@ -42,7 +42,6 @@ struct WidgetViewConfiguration {
     init(
         showAccountName: Bool,
         showTransformer: Bool,
-        noticeExpeditionWhenAllCompleted: Bool,
         showExpeditionCompleteTime: Bool,
         showWeeklyBosses: Bool,
         noticeMessage: String?
@@ -86,14 +85,6 @@ struct WidgetViewConfiguration {
     mutating func addMessage(_ msg: String) {
         noticeMessage = msg
     }
-}
-
-// MARK: - ExpeditionViewConfiguration
-
-@available(watchOS, unavailable)
-struct ExpeditionViewConfiguration {
-    let noticeExpeditionWhenAllCompleted: Bool
-    let expeditionShowingMethod: ExpeditionShowingMethodAppEnum
 }
 
 @available(watchOS, unavailable)
