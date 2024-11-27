@@ -8,31 +8,82 @@ import PZBaseKit
 // MARK: - Note4ZZZ
 
 public struct Note4ZZZ: Codable, Hashable, DecodableFromMiHoYoAPIJSONResult, DailyNoteProtocol {
+    // MARK: Lifecycle
+
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeysBackup.self)
+        self.energy = try container.decode(Energy.self, forKey: .energy)
+        self.vitality = try container.decode(Vitality.self, forKey: .vitality)
+        self.cardSign = try container.decodeIfPresent(String.self, forKey: .cardSign)
+        if let vhsStoreStateDecoded = try container.decodeIfPresent(VHSState.self, forKey: .vhsStoreState) {
+            self.vhsStoreState = vhsStoreStateDecoded
+        } else if let vhsStateDecoded = try container.decodeIfPresent(VHSSale.self, forKey: .vhsSale) {
+            self.vhsStoreState = vhsStateDecoded.saleState
+        } else {
+            self.vhsStoreState = .awaitingForOperation
+        }
+        if let hollowZeroDecoded = try container.decodeIfPresent(HollowZero.self, forKey: .hollowZero) {
+            self.hollowZero = hollowZeroDecoded
+        } else {
+            let subContainer = try decoder.container(keyedBy: HollowZero.CodingKeys.self)
+            self.hollowZero = .init(
+                bountyCommission: try subContainer.decodeIfPresent(
+                    HollowZero.BountyCommission.self,
+                    forKey: HollowZero.CodingKeys.bountyCommission
+                ),
+                investigationPoint: try subContainer.decodeIfPresent(
+                    HollowZero.SurveyPoints.self,
+                    forKey: HollowZero.CodingKeys.investigationPoint
+                )
+            )
+        }
+    }
+
     // MARK: Public
 
     public static let game: Pizza.SupportedGame = .zenlessZone
 
     /// 电池电量
-    public var energy: Energy
-    public var vitality: Vitality
-    public var vhsSale: VHSSale
-    public var cardSign: String?
+    public let energy: Energy
+    public let vitality: Vitality
+    public let vhsStoreState: VHSState
+    public let hollowZero: HollowZero
 
-    public var cardScratched: Bool {
-        cardSign?.contains("Done") ?? false
+    public var cardScratched: Bool? {
+        cardSign?.contains("Done")
     }
 
     // MARK: Internal
 
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeysBackup: String, CodingKey {
         case energy
         case vitality
-        case vhsSale = "vhs_sale"
         case cardSign = "card_sign"
+        case hollowZero = "hollow_zero"
+        case vhsStoreState = "video_store_state"
+        case vhsSale = "vhs_sale" // Only for decoding.
     }
+
+    // MARK: Private
+
+    private let cardSign: String?
 }
 
 extension Note4ZZZ {
+    public struct HollowZero: AbleToCodeSendHash {
+        // MARK: Public
+
+        public let bountyCommission: BountyCommission?
+        public let investigationPoint: SurveyPoints?
+
+        // MARK: Internal
+
+        enum CodingKeys: String, CodingKey {
+            case bountyCommission = "bounty_commission"
+            case investigationPoint = "survey_points"
+        }
+    }
+
     // MARK: - Vitality
 
     public struct Vitality: AbleToCodeSendHash {
@@ -45,12 +96,11 @@ extension Note4ZZZ {
 
         // MARK: Public
 
-        public var max: Int
-        public var current: Int
+        public let max: Int
+        public let current: Int
 
-        public var accomplished: Bool {
-            max == current
-        }
+        public var textDescription: String { "\(current) / \(max)" }
+        public var accomplished: Bool { max == current }
     }
 
     // MARK: - VHSSale
@@ -58,16 +108,28 @@ extension Note4ZZZ {
     public struct VHSSale: AbleToCodeSendHash {
         // MARK: Public
 
-        public var saleState: String
+        public let saleState: VHSState
 
         public var isInOperation: Bool {
-            saleState.contains("Doing")
+            saleState == .inOperation
         }
 
         // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
             case saleState = "sale_state"
+        }
+    }
+
+    public enum VHSState: String, AbleToCodeSendHash {
+        case revenueAvailable = "SaleStateDone"
+        case awaitingForOperation = "SaleStateNo"
+        case inOperation = "SaleStateDoing"
+
+        // MARK: Public
+
+        public var isInOperation: Bool {
+            self == .inOperation
         }
     }
 
@@ -91,16 +153,16 @@ extension Note4ZZZ {
         // MARK: Public
 
         public struct EnergyProgress: AbleToCodeSendHash {
-            public var max: Int
-            public var current: Int
+            public let max: Int
+            public let current: Int
 
             public var percent: Int {
                 Int(Double(current) / Double(max) * 100)
             }
         }
 
-        public var progress: EnergyProgress
-        public var restore: Int
+        public let progress: EnergyProgress
+        public let restore: Int
         public let fetchedTime: Date = .now // 从伺服器拿到这笔资料的那一刻的时间戳。
 
         public var fullyChargedDate: Date {
@@ -120,6 +182,37 @@ extension Note4ZZZ {
             case progress
             case restore
             case fetchedTime
+        }
+    }
+}
+
+extension Note4ZZZ.HollowZero {
+    // MARK: - BountyCommission
+
+    public struct BountyCommission: AbleToCodeSendHash {
+        public let num: Int
+        public let total: Int
+
+        public var textDescription: String { "\(num) / \(total)" }
+    }
+
+    // MARK: - SurveyPoints
+
+    public struct SurveyPoints: AbleToCodeSendHash {
+        // MARK: Public
+
+        public let num: Int
+        public let total: Int
+        public let isMaxLevel: Bool
+
+        public var textDescription: String { "\(num) / \(total)" }
+
+        // MARK: Internal
+
+        enum CodingKeys: String, CodingKey {
+            case num
+            case total
+            case isMaxLevel = "is_max_level"
         }
     }
 }
