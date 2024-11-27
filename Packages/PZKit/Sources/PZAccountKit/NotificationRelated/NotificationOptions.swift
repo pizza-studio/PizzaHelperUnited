@@ -71,6 +71,13 @@ public struct NotificationOptions: AbleToCodeSendHash, _DefaultsSerializable {
             ManualSetting.self,
             forKey: .giTrounceBlossomNotificationSetting
         )
+
+        // 这是 5.0.0 之后新增的选项，应该用 nullable decoder。不然会导致用户的通知设定全部被重置。
+        self.hsrEchoOfWarNotificationSetting = try container.decodeIfPresent(
+            ManualSetting.self,
+            forKey: .hsrEchoOfWarNotificationSetting
+        ) ?? hsrEchoOfWarNotificationSetting
+
         self.hsrSimulUnivNotificationSetting = try container.decode(
             ManualSetting.self,
             forKey: .hsrSimulUnivNotificationSetting
@@ -221,6 +228,15 @@ public struct NotificationOptions: AbleToCodeSendHash, _DefaultsSerializable {
         }
     }
 
+    /// Echo of War (Weekly Bosses) (HSR), Notification TimeStamp (Weekly)
+    public var hsrEchoOfWarNotificationSetting: ManualSetting = .notifyAt(weekday: 7, hour: 19, minute: 0) {
+        willSet {
+            Task {
+                try? await PZNotificationCenter.deleteDailyNoteNotification(of: .hsrEchoOfWarRewardsLeft)
+            }
+        }
+    }
+
     // MARK: Private
 
     private enum CodingKeys: CodingKey {
@@ -234,6 +250,7 @@ public struct NotificationOptions: AbleToCodeSendHash, _DefaultsSerializable {
         case allowGITransformerNotification
         case giTrounceBlossomNotificationSetting
         case hsrSimulUnivNotificationSetting
+        case hsrEchoOfWarNotificationSetting
     }
 }
 
@@ -466,6 +483,74 @@ extension NotificationOptions {
                 Self.shared.giTrounceBlossomNotificationSetting = .disallowed
             } else {
                 Self.shared.giTrounceBlossomNotificationSetting = Self().hsrSimulUnivNotificationSetting
+            }
+        }
+    }
+
+    public var hsrEchoOfWarNotificationTime: Binding<Date?> {
+        .init {
+            switch Self.shared.hsrEchoOfWarNotificationSetting {
+            case let .notifyAt(weekday: _, hour: hour, minute: minute):
+                return Calendar.current.nextDate(
+                    after: Date(),
+                    matching: DateComponents(hour: hour, minute: minute),
+                    matchingPolicy: .nextTime
+                )!
+            case .disallowed:
+                return nil
+            }
+        } set: { date in
+            guard let date else { return }
+            switch Self.shared.hsrEchoOfWarNotificationSetting {
+            case let .notifyAt(weekday: weekday, hour: _, minute: _):
+                let hours = Calendar.autoupdatingCurrent.component(.hour, from: date)
+                let mins = Calendar.autoupdatingCurrent.component(.minute, from: date)
+                Self.shared.hsrEchoOfWarNotificationSetting = .notifyAt(
+                    weekday: weekday,
+                    hour: hours,
+                    minute: mins
+                )
+            case .disallowed:
+                break
+            }
+        }
+    }
+
+    public var hsrEchoOfWarNotificationWeekday: Binding<Weekday?> {
+        .init {
+            switch Self.shared.hsrEchoOfWarNotificationSetting {
+            case let .notifyAt(weekday: weekday, hour: _, minute: _):
+                return Weekday(rawValue: weekday)
+            case .disallowed:
+                return nil
+            }
+        } set: { weekday in
+            guard let weekday else { return }
+            switch Self.shared.hsrEchoOfWarNotificationSetting {
+            case let .notifyAt(weekday: _, hour: hour, minute: minute):
+                Self.shared.hsrEchoOfWarNotificationSetting = .notifyAt(
+                    weekday: weekday.rawValue,
+                    hour: hour,
+                    minute: minute
+                )
+            case .disallowed:
+                break
+            }
+        }
+    }
+
+    public var allowHSREchoOfWarNotification: Binding<Bool> {
+        .init {
+            if case .disallowed = Self.shared.hsrEchoOfWarNotificationSetting {
+                return false
+            } else {
+                return true
+            }
+        } set: { newValue in
+            if !newValue {
+                Self.shared.hsrEchoOfWarNotificationSetting = .disallowed
+            } else {
+                Self.shared.hsrEchoOfWarNotificationSetting = Self().hsrSimulUnivNotificationSetting
             }
         }
     }

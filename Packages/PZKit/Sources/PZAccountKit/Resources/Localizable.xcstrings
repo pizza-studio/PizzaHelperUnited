@@ -846,6 +846,158 @@
         }
       }
     },
+    "notification.echoOfWar.body:%@%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ hat noch %2$@ Belohnung(en) für das Echo des Krieges übrig."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ has %2$@ rewards(s) left for Echo of War."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ tiene %2$@ recompensa(s) restantes para Ecos de la guerra."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "May %2$@ natitirang gantimpala para sa Echo of War si %1$@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ a encore %2$@ récompense(s) pour l'Écho de la guerre."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ha ancora %2$@ ricompensa(e) per l'Eco della Guerra."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%1$@」はスターレイルでの今週の歴戦余韻の奨励は %2$@ 回残っております。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@님은 전쟁의 여운 보상이 %2$@회 남았습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У %1$@ осталось %2$@ награды(д) за Эхо войны."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ còn %2$@ phần thưởng cho Dư Âm Chiến Đấu."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%1$@」本周还剩 %2$@ 次星穹铁道历战余响奖励领取次数。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%1$@」本週還剩 %2$@ 次星穹鐵道歷戰餘響獎勵領取次數。"
+          }
+        }
+      }
+    },
+    "notification.echoOfWar.title:%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerung: HSR Echo des Krieges Belohnungen für %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: HSR Echo of War Rewards Left for %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorio: Recompensas restantes de Ecos de la guerra para %@"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paalala: Echo of War na mga natitirang gantimpala para sa %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappel : Récompenses restantes pour l'Écho de la guerre pour %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Promemoria: Ricompense residue per l'Eco della Guerra per %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」のスターレイル歴戦余韻の残った奨励"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알림: %@님의 전쟁의 여운 남은 보상"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Напоминание: Остались награды за Эхо войны для %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhắc nhở: Phần thưởng Dư Âm Chiến Đấu còn lại cho %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」星穹铁道历战余响奖励剩余提醒"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」星穹鐵道歷戰餘響獎勵剩餘提醒"
+          }
+        }
+      }
+    },
     "notification.expedition.each.body:%@%@" : {
       "localizations" : {
         "de" : {
