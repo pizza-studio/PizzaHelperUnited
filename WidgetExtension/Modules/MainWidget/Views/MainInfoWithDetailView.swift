@@ -31,7 +31,8 @@ struct MainInfoWithDetail: View {
             DetailInfo(
                 entry: entry,
                 dailyNote: dailyNote,
-                viewConfig: viewConfig
+                viewConfig: viewConfig,
+                spacing: 10
             )
             .containerRelativeFrame(.horizontal, alignment: .center) { length, _ in length / 10 * 4 }
             Spacer()
