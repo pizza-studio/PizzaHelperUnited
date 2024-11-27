@@ -25,24 +25,6 @@ public enum AutoRotationUsingResinWidgetStyleAppEnum: String, AppEnum {
     ]
 }
 
-// MARK: - ExpeditionShowingMethodAppEnum
-
-public enum ExpeditionShowingMethodAppEnum: String, AppEnum {
-    case byTimePoint
-    case byTimeInterval
-    case byNum
-
-    // MARK: Public
-
-    public static let typeDisplayRepresentation =
-        TypeDisplayRepresentation(name: "appEnum.expeditionShowingMethod.title")
-    public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-        .byTimePoint: "appEnum.expeditionShowingMethod.byTimeStampWhenAccomplished",
-        .byTimeInterval: "appEnum.expeditionShowingMethod.byTimeRemained",
-        .byNum: "appEnum.expeditionShowingMethod.byAttendantsCount",
-    ]
-}
-
 // MARK: - WeeklyBossesShowingMethodAppEnum
 
 public enum WeeklyBossesShowingMethodAppEnum: String, AppEnum {
