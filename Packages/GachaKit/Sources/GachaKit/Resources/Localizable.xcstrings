@@ -997,7 +997,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可交換型抽卡記錄檔案已成功匯出至:"
+            "value" : "可交換型抽卡記錄檔案已成功匯出至: "
           }
         }
       }
@@ -3768,7 +3768,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選擇抽卡UID"
+            "value" : "選擇抽卡 UID"
           }
         }
       }
@@ -4384,7 +4384,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "新記錄數：%lld"
+            "value" : "新記錄數: %lld"
           }
         }
       }
@@ -4538,7 +4538,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "頁數：%lld"
+            "value" : "頁數: %lld"
           }
         }
       }
@@ -4769,7 +4769,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "或點擊下述米遊社原神 UID 直接獲取記錄:"
+            "value" : "或點擊下述米遊社原神 UID 直接獲取記錄: "
           }
         }
       }
@@ -6309,7 +6309,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重建抽卡記錄UID清單"
+            "value" : "重建抽卡記錄 UID 清單"
           }
         }
       }
@@ -8619,7 +8619,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請選擇一個抽卡UID。如果看不到相關選項的話，請先匯入抽卡記錄。"
+            "value" : "請選擇一個抽卡 UID。如果看不到相關選項的話，請先匯入抽卡記錄。"
           }
         }
       }
@@ -9075,7 +9075,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld 抽"
+            "value" : "%lld抽"
           }
         },
         "zh-Hant" : {

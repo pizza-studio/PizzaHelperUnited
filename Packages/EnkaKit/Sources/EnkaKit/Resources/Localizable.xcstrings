@@ -72,7 +72,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以 Markdown 的形式寫入剪貼簿"
+            "value" : "以 Markdown 格式寫入剪貼簿"
           }
         }
       }
@@ -148,7 +148,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "以純文字的形式寫入剪貼簿"
+            "value" : "以純文字格式寫入剪貼簿"
           }
         }
       }
