@@ -120,14 +120,14 @@ private struct ContainerBackgroundStandbyDetector: ViewModifier {
             content.containerBackground(for: .widget) {
                 WidgetBackgroundView(
                     background: viewConfig.background,
-                    darkModeOn: viewConfig.isDarkModeOn
+                    darkModeOn: viewConfig.isDarkModeRespected
                 )
             }
         } else {
             content.padding(-15).containerBackground(for: .widget) {
                 WidgetBackgroundView(
                     background: viewConfig.background,
-                    darkModeOn: viewConfig.isDarkModeOn
+                    darkModeOn: viewConfig.isDarkModeRespected
                 )
             }
         }
