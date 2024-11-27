@@ -53,7 +53,9 @@ extension RealtimeNote4HSR: BenchmarkTimeEditable {
 
 extension RealtimeNote4HSR {
     public static func example() -> Note4HSR {
-        let exampleURL = Bundle.module.url(forResource: "hsr_realtime_note_example", withExtension: "json")!
+        let exampleURL = Bundle.module.url(
+            forResource: "hsr_realtime_note_example_miyoushe", withExtension: "json"
+        )!
         // swiftlint:disable force_try
         // swiftlint:disable force_unwrapping
         let exampleData = try! Data(contentsOf: exampleURL)
