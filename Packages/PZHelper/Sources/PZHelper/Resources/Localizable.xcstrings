@@ -3923,7 +3923,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "為了請求您的遊戲內的資料，我們需要獲取您的UID和Cookie，這是獲取資料的必要參數。您在接下來的網頁登入後，我們會在您的本地和iCloud存儲您的個人資料。然後我們通過類似米遊社 / HoYoLAB 的方式獲取您的遊戲內的資料。您的個人資訊不會傳送給任何人，包括我們自己。您的個人資訊將會是非常安全的。敝軟體是開放原始碼軟體，每個人都可以檢查和監督敝軟體的全部底層行為。"
+            "value" : "為了請求您的遊戲內的資料，我們需要獲取您的 UID 和 Cookie，這是獲取資料的必要參數。您在接下來的網頁登入後，我們會在您的本地和 iCloud 存儲您的個人資料。然後我們通過類似米遊社 / HoYoLAB 的方式獲取您的遊戲內的資料。您的個人資訊不會傳送給任何人，包括我們自己。您的個人資訊將會是非常安全的。敝軟體是開放原始碼軟體，每個人都可以檢查和監督敝軟體的全部底層行為。"
           }
         }
       }
@@ -5078,7 +5078,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "所有的本機帳號已成功打包匯出至:"
+            "value" : "所有的本機帳號已成功打包匯出至: "
           }
         }
       }
@@ -7308,7 +7308,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n米遊社期望用戶使用手機或米遊社App（iPhone）來完成帳號註銷（刪除）。\n\n如果您使用的是 macOS，則可以將 Safari 瀏覽器的使用者代理（UA, User-Agent）變更為 iPhone，以便看到帳號刪除專用鏈接入口。有關如何使用 macOS 上 Safari 中的開發者選單更改其使用者代理的方法，請聯絡 Apple 支援。\n\n在敝 App 內直接點按上述鏈接的話，會在前往該頁面時自動套用 iPhone 的使用者代理（UA）。"
+            "value" : "\n米遊社期望使用者藉由手機或米遊社 App（iPhone）來完成帳號註銷（刪除）。\n\n如果您使用的是 macOS，則可以將 Safari 瀏覽器的使用者代理（UA, User-Agent）變更為 iPhone，以便看到帳號刪除專用鏈接入口。有關如何使用 macOS 上 Safari 中的開發者選單更改其使用者代理的方法，請聯絡 Apple 支援。\n\n在敝 App 內直接點按上述鏈接的話，會在前往該頁面時自動套用 iPhone 的使用者代理（UA）。"
           }
         }
       }
@@ -7847,7 +7847,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在您的Apple Watch上無法藉由iCloud同步本機帳號時，得使用該功能。"
+            "value" : "在您的 Apple Watch 上無法藉由 iCloud 同步本機帳號時，得使用該功能。"
           }
         }
       }
@@ -13950,7 +13950,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UI相關"
+            "value" : "UI 相關"
           }
         }
       }

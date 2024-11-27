@@ -72,7 +72,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "剩 %lld天"
+            "value" : "剩 %lld 天"
           }
         }
       }
@@ -148,7 +148,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "剩 %lld小時"
+            "value" : "剩 %lld 小時"
           }
         }
       }

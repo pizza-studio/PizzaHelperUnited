@@ -72,7 +72,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "敝應用軟體使用了以下開放原始碼組件和第三方API，在此向其作者表示感謝。"
+            "value" : "敝應用軟體使用了以下開放原始碼組件和第三方 API，在此向其作者表示感謝。"
           }
         }
       }
@@ -148,7 +148,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "開放原始碼組件與第三方API致謝"
+            "value" : "開放原始碼組件與第三方 API 致謝"
           }
         }
       }
