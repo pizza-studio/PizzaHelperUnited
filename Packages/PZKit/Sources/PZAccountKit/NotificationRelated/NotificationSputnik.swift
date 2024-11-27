@@ -324,7 +324,7 @@ extension NotificationSputnik {
         }
         guard dailyNote.hasDailyTaskIntel else { return }
         // 只有尚未领取时才提醒。
-        guard dailyNote.claimedRewardsFromKatheryne ?? false else {
+        guard !(dailyNote.claimedRewardsFromKatheryne ?? true) else {
             await deleteNotification(.giRewardsFromKatheryne)
             return
         }
