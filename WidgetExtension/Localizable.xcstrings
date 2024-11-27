@@ -4810,7 +4810,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "完工时间:"
+            "value" : "完工时间: "
           }
         },
         "zh-Hant" : {
@@ -5420,7 +5420,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "距离%lld点体力:"
+            "value" : "距离 %lld 点体力:"
           }
         },
         "zh-Hant" : {
@@ -6511,7 +6511,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld天"
+                  "value" : "%lld 天"
                 }
               }
             }
@@ -6702,7 +6702,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尚未发现本地账号。请在App内添加、或者重新启动该设备。"
+            "value" : "尚未发现本地账号。请在 App 内添加、或者重新启动该设备。"
           }
         },
         "zh-Hant" : {

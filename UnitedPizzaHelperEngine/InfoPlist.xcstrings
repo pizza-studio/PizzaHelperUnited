@@ -299,7 +299,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该许可将允许该App在用户要求的时候将生成的图片文件（比如QR Code二维码）写入到系统内建的照片App内。"
+            "value" : "该许可将允许该 App 在用户要求的时候将生成的图片文件（比如 QR Code 二维码）写入到系统内建的照片 App 内。"
           }
         },
         "zh-Hant" : {

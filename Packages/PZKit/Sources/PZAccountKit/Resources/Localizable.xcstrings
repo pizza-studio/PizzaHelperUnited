@@ -221,7 +221,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] 您当前的地理位置的网络环境处于HoYoLAB服务范围之外。"
+            "value" : "[HoYoAPI 错误] 您当前的地理位置的网络环境处于 HoYoLAB 服务范围之外。"
           }
         },
         "zh-Hant" : {
@@ -298,7 +298,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] Cookie尚未包含设备指纹数据、或相关数据失效。"
+            "value" : "[HoYoAPI 错误] Cookie尚未包含设备指纹数据、或相关数据失效。"
           }
         },
         "zh-Hant" : {
@@ -375,7 +375,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "米游社 / HoYoLAB账号设定内的数据公开权限不足。"
+            "value" : "米游社 / HoYoLAB 账号设定内的数据公开权限不足。"
           }
         },
         "zh-Hant" : {
@@ -452,7 +452,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] 请重新登录。"
+            "value" : "[HoYoAPI 错误] 请重新登录。"
           }
         },
         "zh-Hant" : {
@@ -529,7 +529,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "米游社 / HoYoLAB服务器正在进行维护处理。"
+            "value" : "米游社 / HoYoLAB 服务器正在进行维护处理。"
           }
         },
         "zh-Hant" : {
@@ -606,7 +606,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] Cookie尚未包含STokenV2数据、或相关数据失效。"
+            "value" : "[HoYoAPI 错误] Cookie 尚未包含 STokenV2 数据、或相关数据失效。"
           }
         },
         "zh-Hant" : {
@@ -683,7 +683,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI错误] 需要人机验证。"
+            "value" : "[HoYoAPI 错误] 需要人机验证。"
           }
         },
         "zh-Hant" : {
@@ -759,7 +759,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%1$@」的每日委托尚未完成，当前进度为%2$@/%3$@。"
+            "value" : "「%1$@」的每日委托尚未完成，当前进度为 %2$@/%3$@。"
           }
         },
         "zh-Hant" : {
@@ -1595,7 +1595,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%@」的洞天财瓮已回满。"
+            "value" : "「%@」的洞天财瓮已装满。"
           }
         },
         "zh-Hant" : {
@@ -1747,7 +1747,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%1$@」的模拟宇宙积分未满，当前进度为%1$@/%2$@。"
+            "value" : "「%1$@」的模拟宇宙积分未满，当前进度为 %1$@/%2$@。"
           }
         },
         "zh-Hant" : {
@@ -1899,7 +1899,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%1$@」现有%2$@点玩家体力，将在%3$@回满"
+            "value" : "「%1$@」现有 %2$@ 点玩家体力，将在 %3$@ 回满"
           }
         },
         "zh-Hant" : {
@@ -2127,7 +2127,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%1$@」本周还剩%2$@次原神征讨之花树脂折扣次数。这包括「值得铭记的强敌」与「奔狼的领主」。"
+            "value" : "「%1$@」本周还剩 %2$@ 次原神征讨之花树脂折扣次数。这包括「值得铭记的强敌」与「奔狼的领主」。"
           }
         },
         "zh-Hant" : {

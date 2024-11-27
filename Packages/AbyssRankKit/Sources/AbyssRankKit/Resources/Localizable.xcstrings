@@ -66,7 +66,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "自2023-04-01开始统计"
+            "value" : "自 2023-04-01 开始统计"
           }
         },
         "zh-Hant" : {
@@ -144,7 +144,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@·%@·%lld层"
+            "value" : "%@·%@·%lld 层"
           }
         },
         "zh-Hant" : {
@@ -222,7 +222,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@·%@·%lld层·%@"
+            "value" : "%@·%@·%lld 层·%@"
           }
         },
         "zh-Hant" : {
@@ -453,7 +453,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "深境螺旋统计榜单FAQ"
+            "value" : "深境螺旋统计榜单 FAQ"
           }
         },
         "zh-Hant" : {
@@ -529,7 +529,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld层"
+            "value" : "%lld 层"
           }
         },
         "zh-Hant" : {
@@ -760,7 +760,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "·仅包含满星玩家·计算方法：角色使用人数/角色拥有人数"
+            "value" : "·仅包含满星玩家·计算方法：角色使用人数 / 角色拥有人数"
           }
         },
         "zh-Hant" : {
@@ -914,7 +914,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "·仅自%@后提交的数据"
+            "value" : "·仅自 %@ 后提交的数据"
           }
         },
         "zh-Hant" : {
@@ -2298,7 +2298,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "共统计%lld用户%@"
+            "value" : "共统计 %lld 用户 %@"
           }
         },
         "zh-Hant" : {
