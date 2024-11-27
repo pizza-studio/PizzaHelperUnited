@@ -44,8 +44,6 @@ struct LockScreenLoopWidgetView: View {
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
-    var showWeeklyBosses: Bool { entry.showWeeklyBosses }
-    var showTransformer: Bool { entry.showTransformer }
     var resinStyle: AutoRotationUsingResinWidgetStyleAppEnum { entry.usingResinStyle }
 
     var url: URL? {
@@ -81,8 +79,6 @@ struct LockScreenLoopWidgetView: View {
                 LockScreenLoopWidgetCircular(
                     entry: entry,
                     result: result,
-                    showWeeklyBosses: showWeeklyBosses,
-                    showTransformer: showTransformer,
                     resinStyle: resinStyle
                 )
             default:

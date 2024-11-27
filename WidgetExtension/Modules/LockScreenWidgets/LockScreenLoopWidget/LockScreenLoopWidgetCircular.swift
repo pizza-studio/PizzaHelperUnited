@@ -15,9 +15,6 @@ struct LockScreenLoopWidgetCircular: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
     let result: Result<any DailyNoteProtocol, any Error>
 
-    let showWeeklyBosses: Bool
-    let showTransformer: Bool
-
     let resinStyle: AutoRotationUsingResinWidgetStyleAppEnum
 
     var body: some View {

@@ -16,25 +16,27 @@ struct WidgetViewConfiguration {
 
     init(_ intent: SelectAccountIntent, _ noticeMessage: String?) {
         self.showAccountName = true
-        self.showTransformer = intent.showTransformer ?? true
-        self.weeklyBossesShowingMethod = intent.weeklyBossesShowingMethod ?? .disappearAfterCompleted
-        self.randomBackground = intent.randomBackground ?? false
+        self.showTransformer = intent.showTransformer
+        self.trounceBlossomDisplayMethod = intent.trounceBlossomDisplayMethod
+        self.echoOfWarDisplayMethod = intent.echoOfWarDisplayMethod
+        self.randomBackground = intent.randomBackground
         if let backgrounds = intent.chosenBackgrounds {
             self.selectedBackgrounds = backgrounds.isEmpty ? [.defaultBackground] : backgrounds
         } else {
             self.selectedBackgrounds = [.defaultBackground]
         }
-        self.isDarkModeOn = intent.isDarkModeOn ?? true
-        self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget ?? true
+        self.isDarkModeRespected = intent.isDarkModeRespected
+        self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget
     }
 
     init(noticeMessage: String? = nil) {
         self.showAccountName = true
         self.showTransformer = true
-        self.weeklyBossesShowingMethod = .disappearAfterCompleted
+        self.trounceBlossomDisplayMethod = .disappearAfterCompleted
+        self.echoOfWarDisplayMethod = .disappearAfterCompleted
         self.selectedBackgrounds = [.defaultBackground]
         self.randomBackground = false
-        self.isDarkModeOn = true
+        self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
         self.noticeMessage = noticeMessage
     }
@@ -48,10 +50,11 @@ struct WidgetViewConfiguration {
     ) {
         self.showAccountName = showAccountName
         self.showTransformer = showTransformer
-        self.weeklyBossesShowingMethod = .disappearAfterCompleted
+        self.trounceBlossomDisplayMethod = .disappearAfterCompleted
+        self.echoOfWarDisplayMethod = .disappearAfterCompleted
         self.randomBackground = false
         self.selectedBackgrounds = [.defaultBackground]
-        self.isDarkModeOn = true
+        self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
     }
 
@@ -61,10 +64,11 @@ struct WidgetViewConfiguration {
 
     let showAccountName: Bool
     let showTransformer: Bool
-    let weeklyBossesShowingMethod: WeeklyBossesShowingMethodAppEnum
+    let trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum
+    let echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum
     var noticeMessage: String?
 
-    let isDarkModeOn: Bool
+    let isDarkModeRespected: Bool
 
     let showMaterialsInLargeSizeWidget: Bool
 
