@@ -4567,7 +4567,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld小時 %lld分"
+            "value" : "%lld小時%lld分"
           }
         }
       }

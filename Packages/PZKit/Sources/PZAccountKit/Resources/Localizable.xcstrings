@@ -227,7 +227,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI錯誤] 您當前的地理位置的網路環境處於 HoYoLAB 服務範圍之外。"
+            "value" : "[HoYoAPI 錯誤] 您當前的地理位置的網路環境處於 HoYoLAB 服務範圍之外。"
           }
         }
       }
@@ -304,7 +304,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI錯誤] Cookie 尚未包含設備指紋資料、或相關資料失效。"
+            "value" : "[HoYoAPI 錯誤] Cookie 尚未包含設備指紋資料、或相關資料失效。"
           }
         }
       }
@@ -458,7 +458,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI錯誤] 請重新登入。"
+            "value" : "[HoYoAPI 錯誤] 請重新登入。"
           }
         }
       }
@@ -612,7 +612,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI錯誤] Cookie 尚未包含 STokenV2 資料、或相關資料失效。"
+            "value" : "[HoYoAPI 錯誤] Cookie 尚未包含 STokenV2 資料、或相關資料失效。"
           }
         }
       }
@@ -689,7 +689,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[HoYoAPI錯誤] 需要人機驗證。"
+            "value" : "[HoYoAPI 錯誤] 需要人機驗證。"
           }
         }
       }
@@ -765,7 +765,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%1$@」的每日委託尚未完成，當前進度為%2$@/%3$@。"
+            "value" : "「%1$@」的每日委託尚未完成，當前進度為 %2$@/%3$@。"
           }
         }
       }
@@ -1905,7 +1905,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%1$@」的模擬宇宙積分未滿，當前進度為%1$@/%2$@。"
+            "value" : "「%1$@」的模擬宇宙積分未滿，當前進度為 %1$@/%2$@。"
           }
         }
       }
@@ -2285,7 +2285,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%1$@」本週還剩%2$@次原神征討之花樹脂折扣次數。這包括「值得銘記的強敵」與「奔狼的領主」。"
+            "value" : "「%1$@」本週還剩 %2$@ 次原神征討之花樹脂折扣次數。這包括「值得銘記的強敵」與「奔狼的領主」。"
           }
         }
       }

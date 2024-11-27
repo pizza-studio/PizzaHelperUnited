@@ -1365,7 +1365,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "每%@"
+            "value" : "每 %@"
           }
         }
       }
