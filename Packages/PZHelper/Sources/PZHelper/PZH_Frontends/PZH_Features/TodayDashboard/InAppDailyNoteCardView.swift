@@ -453,7 +453,7 @@ private struct DailyNoteCardView4HSR: View {
             Text("app.dailynote.card.daily_training.label".i18nPZHelper)
             Spacer()
             let sitrep = dailyNote.dailyTaskCompletionStatus
-            Text(verbatim: "\(sitrep.finished)/\(sitrep.all)")
+            Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
         }
         .help("app.dailynote.card.daily_training.label".i18nPZHelper)
         HStack {
@@ -465,7 +465,7 @@ private struct DailyNoteCardView4HSR: View {
             Spacer()
             let currentScore = dailyNote.simulatedUniverseInfo.currentScore
             let maxScore = dailyNote.simulatedUniverseInfo.maxScore
-            Text(verbatim: "\(currentScore)/\(maxScore)")
+            Text(verbatim: "\(currentScore) / \(maxScore)")
         }
         .help("app.dailynote.card.simulated_universe.label".i18nPZHelper)
         if let eowIntel = dailyNote.echoOfWarIntel {
@@ -494,7 +494,7 @@ private struct DailyNoteCardView4HSR: View {
                 Text("app.dailynote.card.dispatch.label".i18nPZHelper).bold()
                 Spacer()
                 let completionIntel = dailyNote.expeditionCompletionStatus
-                Text(verbatim: "\(completionIntel.finished)/\(completionIntel.all)")
+                Text(verbatim: "\(completionIntel.finished) / \(completionIntel.all)")
             }
             VStack(spacing: 15) {
                 StaggeredGrid(
@@ -604,7 +604,7 @@ private struct DailyNoteCardView4ZZZ: View {
             Text("app.dailynote.card.zzzVitality.label".i18nPZHelper).bold()
             Spacer()
             let sitrep = dailyNote.dailyTaskCompletionStatus
-            Text(verbatim: "\(sitrep.finished)/\(sitrep.all)")
+            Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
         }
         HStack {
             Text("app.dailynote.card.zzzVHSStoreInOperationState.label".i18nPZHelper).bold()
