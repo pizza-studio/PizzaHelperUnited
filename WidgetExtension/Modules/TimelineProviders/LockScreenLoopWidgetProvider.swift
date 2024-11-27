@@ -17,8 +17,9 @@ struct AccountAndShowWhichInfoIntentEntry: TimelineEntry {
     let result: Result<any DailyNoteProtocol, any Error>
     var accountName: String?
 
-    var showWeeklyBosses: Bool = false
-    var showTransformer: Bool = false
+    var showEchoOfWar: Bool = true
+    var showTrounceBlossom: Bool = true
+    var showTransformer: Bool = true
 
     let accountUUIDString: String?
 
@@ -117,7 +118,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
         }
 
         let configs = PZWidgets.getAllProfiles()
-        let style = configuration.usingResinStyle ?? .byDefault
+        let style = configuration.usingResinStyle
 
         func makeFallbackResult(error: WidgetError) -> Timeline<Entry> {
             let entry = Entry(
@@ -145,8 +146,9 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                         date: entryDate,
                         result: .success(data),
                         accountName: config.name,
-                        showWeeklyBosses: configuration.showWeeklyBosses ?? true,
-                        showTransformer: configuration.showTransformer ?? true,
+                        showEchoOfWar: configuration.showEchoOfWar,
+                        showTrounceBlossom: configuration.showTrounceBlossom,
+                        showTransformer: configuration.showTransformer,
                         accountUUIDString: config.uuid.uuidString,
                         usingResinStyle: style
                     )
@@ -156,8 +158,9 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                 let entry = Entry(
                     date: Date(),
                     result: .failure(error),
-                    showWeeklyBosses: configuration.showWeeklyBosses ?? true,
-                    showTransformer: configuration.showTransformer ?? true,
+                    showEchoOfWar: configuration.showEchoOfWar,
+                    showTrounceBlossom: configuration.showTrounceBlossom,
+                    showTransformer: configuration.showTransformer,
                     accountUUIDString: config.uuid.uuidString,
                     usingResinStyle: style
                 )

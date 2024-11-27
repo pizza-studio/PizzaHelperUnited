@@ -25,9 +25,9 @@ public enum AutoRotationUsingResinWidgetStyleAppEnum: String, AppEnum {
     ]
 }
 
-// MARK: - WeeklyBossesShowingMethodAppEnum
+// MARK: - WeeklyBossesDisplayMethodAppEnum
 
-public enum WeeklyBossesShowingMethodAppEnum: String, AppEnum {
+public enum WeeklyBossesDisplayMethodAppEnum: String, AppEnum {
     case disappearAfterCompleted
     case alwaysShow
     case neverShow
@@ -35,10 +35,10 @@ public enum WeeklyBossesShowingMethodAppEnum: String, AppEnum {
     // MARK: Public
 
     public static let typeDisplayRepresentation =
-        TypeDisplayRepresentation(name: "appEnum.WeeklyBossesShowingMethod.title")
+        TypeDisplayRepresentation(name: "appEnum.WeeklyBossesDisplayMethod.title")
     public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-        .disappearAfterCompleted: "appEnum.WeeklyBossesShowingMethod.hiddenIfAllCompleted",
-        .alwaysShow: "appEnum.WeeklyBossesShowingMethod.alwaysVisible",
-        .neverShow: "appEnum.WeeklyBossesShowingMethod.alwaysHidden",
+        .disappearAfterCompleted: "appEnum.WeeklyBossesDisplayMethod.hiddenIfAllCompleted",
+        .alwaysShow: "appEnum.WeeklyBossesDisplayMethod.alwaysVisible",
+        .neverShow: "appEnum.WeeklyBossesDisplayMethod.alwaysHidden",
     ]
 }

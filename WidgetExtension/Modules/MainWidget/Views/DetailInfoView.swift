@@ -50,7 +50,7 @@ struct DetailInfo: View {
                     if dailyNote.transformerInfo.obtained, viewConfig.showTransformer {
                         TransformerInfoBar(transformerInfo: dailyNote.transformerInfo)
                     }
-                    switch viewConfig.weeklyBossesShowingMethod {
+                    switch viewConfig.trounceBlossomDisplayMethod {
                     case .neverShow:
                         EmptyView()
                     case .disappearAfterCompleted where !dailyNote.weeklyBossesInfo.allDiscountsAreUsedUp:
@@ -70,7 +70,15 @@ struct DetailInfo: View {
                 }
                 SimulUnivInfoBar(dailyNote: dailyNote)
                 if let eowIntel = dailyNote.echoOfWarIntel {
-                    EchoOfWarInfoBar(eowIntel: eowIntel)
+                    switch viewConfig.echoOfWarDisplayMethod {
+                    case .neverShow:
+                        EmptyView()
+                    case .disappearAfterCompleted where !eowIntel.allRewardsClaimed:
+                        EchoOfWarInfoBar(eowIntel: eowIntel)
+                    case .alwaysShow:
+                        EchoOfWarInfoBar(eowIntel: eowIntel)
+                    default: EmptyView()
+                    }
                 }
             case _ as Note4ZZZ:
                 drawDailyTaskCompletionStatus()

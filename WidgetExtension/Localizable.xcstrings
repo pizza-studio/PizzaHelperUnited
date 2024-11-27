@@ -1075,7 +1075,7 @@
         }
       }
     },
-    "appEnum.WeeklyBossesShowingMethod.alwaysHidden" : {
+    "appEnum.WeeklyBossesDisplayMethod.alwaysHidden" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1151,7 +1151,7 @@
         }
       }
     },
-    "appEnum.WeeklyBossesShowingMethod.alwaysVisible" : {
+    "appEnum.WeeklyBossesDisplayMethod.alwaysVisible" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1227,7 +1227,7 @@
         }
       }
     },
-    "appEnum.WeeklyBossesShowingMethod.hiddenIfAllCompleted" : {
+    "appEnum.WeeklyBossesDisplayMethod.hiddenIfAllCompleted" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1303,78 +1303,78 @@
         }
       }
     },
-    "appEnum.WeeklyBossesShowingMethod.title" : {
+    "appEnum.WeeklyBossesDisplayMethod.title" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Blütenanzeige besiegen"
+            "value" : "Wöchentliche Boss-Info-Anzeigemethode"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trounce Blossom Display"
+            "value" : "Weekly Bosses Info Display Method"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pantalla de Flor de Abatimiento"
+            "value" : "Método de Pantalla de Información de Jefes Semanales"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pagpapakita ng Trounce Blossom"
+            "value" : "Paraan ng Pagpapakita ng Impormasyon ng Lingguhang Bosses"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Affichage de Fleur Éclatante"
+            "value" : "Méthode d'affichage des informations sur les Boss hebdomadaires"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Visualizzazione fioritura incontrastata"
+            "value" : "Metodo di Visualizzazione delle Informazioni sui Boss Settimanali"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "征討の花の樹脂値引き (原神)"
+            "value" : "週ボス情報の表示方法"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "트라우스 블로섬 디스플레이"
+            "value" : "주간 보스 정보 표시 방법"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дисплей цветения Траунса"
+            "value" : "Метод отображения информации о еженедельных боссах"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hiển Thị Hoa Thất Bại"
+            "value" : "Phương Pháp Hiển Thị Thông Tin Boss Hàng Tuần"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "征讨之花树脂折扣 (原神)"
+            "value" : "每周强敌征讨信息显示方法"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "征討之花樹脂折扣 (原神)"
+            "value" : "每週強敵征討資訊顯示方法"
           }
         }
       }
@@ -2225,6 +2225,82 @@
         }
       }
     },
+    "intent.field.echoOfWarDisplayMethod" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echo des Krieges Anzeige"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echo of War Display"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pantalla de Ecos de la guerra"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang Echo of War"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affichage Écho de la guerre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizzazione di Eco della Guerra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[星鉄] 歴戦余韻の残った回数を表示する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전쟁의 여운 표시"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отображение Эха войны"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiển thị Dư Âm Chiến Đấu"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[星铁] 显示历战余响剩余奖励次数"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[星鐵] 顯示歷戰餘響剩餘獎勵次數"
+          }
+        }
+      }
+    },
     "intent.field.followSystemDarkMode" : {
       "localizations" : {
         "de" : {
@@ -2529,82 +2605,6 @@
         }
       }
     },
-    "intent.field.showWeeklyBosses" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[GI] Zeige Ermäßigungen für Tributblütenharz"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[GI] Show trounce blossom resin discounts"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar descuentos en resina de flor de derrota"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ipakita ang mga diskwento sa trounce blossom resin"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[GI] Afficher les réductions de résine pour triompher de Trampleblossom"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostra sconti trounce blossom resin"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[原神] 征討の花の樹脂値引きを表示する"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[GI] 패배한 꽃 수지 할인 표시"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[GI] Показать скидки на смолу цветка поражения"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[GI] Hiển thị giảm giá nhựa hoa chiến thắng"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[原神] 显示征讨之花树脂折扣"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[原神] 顯示征討之花樹脂折扣"
-          }
-        }
-      }
-    },
     "intent.field.staminaDisplayStyle" : {
       "localizations" : {
         "de" : {
@@ -2677,6 +2677,82 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "體力顯示風格 (原粹樹脂 / 開拓力 / 絕區電量)"
+          }
+        }
+      }
+    },
+    "intent.field.trounceBlossomDisplayMethod" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blüte der Eroberung Anzeige"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trounce Blossom Display"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pantalla de Flor de cruzada"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang Trounce Blossom"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affichage Fleur de la conquête"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizzazione di Fiore della Conquista"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[原神] 征討の花の樹脂値引きを表示する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "토벌의 꽃 표시"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отображение Цветка наказания"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiển thị Hoa Chinh Phạt"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[原神] 显示征讨之花树脂折扣"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[原神] 顯示征討之花樹脂折扣"
           }
         }
       }
@@ -2829,82 +2905,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "壁紙"
-          }
-        }
-      }
-    },
-    "intent.field.weeklyBossesShowingMethod" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diese erbitterte Blütenanzeige"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trounce Blossom Display"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pantalla de Derrota de Flor"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ipakita ang Trounce Blossom"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Affichage Fleur de Triomphe"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schermo di Fiori Sconfitti"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[原神] 征討の花の樹脂値引きを表示する"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "시련 꽃 장식"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отображение бутонов цветения"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hiện Hoa Khắc Địch"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[原神] 显示征讨之花树脂折扣"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "[原神] 顯示征討之花樹脂折扣"
           }
         }
       }
