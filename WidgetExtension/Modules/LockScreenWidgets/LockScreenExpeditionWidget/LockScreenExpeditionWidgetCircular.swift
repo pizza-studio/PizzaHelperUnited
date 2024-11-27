@@ -17,7 +17,7 @@ struct LockScreenExpeditionWidgetCircular: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Image("icon.expedition", bundle: .main)
+            Image("icon.expedition.gi", bundle: .main)
                 .resizable()
                 .scaledToFit()
             switch result {

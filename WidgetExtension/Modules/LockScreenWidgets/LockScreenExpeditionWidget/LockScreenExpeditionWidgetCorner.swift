@@ -41,7 +41,7 @@ struct LockScreenExpeditionWidgetCorner: View {
     }
 
     var body: some View {
-        Image("icon.expedition", bundle: .main)
+        Image("icon.expedition.gi", bundle: .main)
             .resizable()
             .scaledToFit()
             .padding(3.5)

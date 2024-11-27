@@ -91,210 +91,222 @@ struct LockScreenAllInfoWidgetView: View {
                 ) {
                     // ROW 1
                     GridRow(alignment: .lastTextBaseline) {
-                        switch data {
-                        case let data as any Note4GI:
+                        HStack(spacing: 4) {
+                            let staminaIntel = data.staminaIntel
                             Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
                                 .widgetAccentable(isFullColor)
                                 .foregroundColor(isFullColor ? Color(
                                     "iconColor.resin",
                                     bundle: .main
                                 ) : nil)
-                            Text(verbatim: "\(data.resinInfo.currentResinDynamic)")
-                        case let data as Note4HSR:
-                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
-                                .widgetAccentable(isFullColor)
-                                .foregroundColor(isFullColor ? Color(
-                                    "iconColor.resin",
-                                    bundle: .main
-                                ) : nil)
-                            Text(verbatim: "\(data.staminaInfo.currentStamina)")
-                        case let data as Note4ZZZ:
-                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
-                                .widgetAccentable(isFullColor)
-                                .foregroundColor(isFullColor ? Color(
-                                    "iconColor.resin",
-                                    bundle: .main
-                                ) : nil)
-                            Text(verbatim: "\(data.energy.currentEnergyAmountDynamic)")
-                        default: EmptyView()
+                            Text(verbatim: "\(staminaIntel.finished)")
+                                .minimumScaleFactor(0.2)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                        Spacer()
-                        switch data {
-                        case _ as Note4ZZZ: EmptyView() // ZZZ has no expedition API results yet.
-                        default:
-                            Text("\(Image("icon.expedition", bundle: .main))")
-                                .widgetAccentable(isFullColor)
-                                .foregroundColor(
-                                    isFullColor ? Color("iconColor.expedition", bundle: .main) :
-                                        nil
-                                )
-                            HStack(
-                                alignment: .lastTextBaseline,
-                                spacing: 0
-                            ) {
-                                let progression = data.expeditionCompletionStatus
-                                Text(verbatim: "\(progression.finished)")
-                                Text(verbatim: " / \(progression.all)").font(.caption)
+                        HStack(spacing: 4) {
+                            switch data {
+                            case _ as Note4ZZZ: EmptyView() // ZZZ has no expedition API results yet.
+                            default:
+                                let icon = switch data.game {
+                                case .genshinImpact: "icon.expedition.gi"
+                                case .starRail: "icon.expedition.hsr"
+                                case .zenlessZone: "icon.114514"
+                                }
+                                Text("\(Image(icon, bundle: .main))")
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(
+                                        isFullColor ? Color("iconColor.expedition", bundle: .main) :
+                                            nil
+                                    )
+                                HStack(
+                                    alignment: .lastTextBaseline,
+                                    spacing: 0
+                                ) {
+                                    let progression = data.expeditionCompletionStatus
+                                    Text(verbatim: "\(progression.finished)")
+                                        .minimumScaleFactor(0.2)
+                                    Text(verbatim: " / \(progression.all)")
+                                        .font(.caption)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .minimumScaleFactor(0.2)
                             }
                         }
-                        Spacer()
                     }
                     // ROW 2
                     GridRow(alignment: .lastTextBaseline) {
-                        if data.hasDailyTaskIntel {
-                            let sitrep = data.dailyTaskCompletionStatus
-                            Text("\(Image("icon.dailyTask", bundle: .main))")
-                                .widgetAccentable(isFullColor)
-                                .foregroundColor(
-                                    isFullColor ? Color("iconColor.dailyTask", bundle: .main) :
-                                        nil
-                                )
-                            HStack(
-                                alignment: .lastTextBaseline,
-                                spacing: 0
-                            ) {
-                                Text(verbatim: "\(sitrep.finished)")
-                                Text(verbatim: " / \(sitrep.all)").font(.caption)
+                        HStack(spacing: 4) {
+                            if data.hasDailyTaskIntel {
+                                let sitrep = data.dailyTaskCompletionStatus
+                                let icon = switch data.game {
+                                case .genshinImpact: "icon.dailyTask.gi"
+                                case .starRail: "icon.dailyTask.hsr"
+                                case .zenlessZone: "icon.114514"
+                                }
+                                Text("\(Image(icon, bundle: .main))")
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(
+                                        isFullColor ? Color("iconColor.dailyTask", bundle: .main) :
+                                            nil
+                                    )
+                                HStack(
+                                    alignment: .lastTextBaseline,
+                                    spacing: 0
+                                ) {
+                                    Text(verbatim: "\(sitrep.finished)")
+                                        .minimumScaleFactor(0.2)
+                                    Text(verbatim: " / \(sitrep.all)")
+                                        .font(.caption)
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            } else {
+                                EmptyView()
                             }
-                        } else {
-                            EmptyView()
                         }
 
-                        Spacer()
-
-                        switch data {
-                        case let data as any Note4GI:
-                            Text("\(Image("icon.homeCoin", bundle: .main))")
-                                .widgetAccentable(isFullColor)
-                                .foregroundColor(
-                                    isFullColor ? Color("iconColor.homeCoin", bundle: .main) :
-                                        nil
-                                )
-                            Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
-                        case let data as Note4HSR:
-                            // Simulated Universe
-                            Text("\(Image("icon.simulatedUniverse", bundle: .main))")
-                                .widgetAccentable(isFullColor)
-                                .foregroundColor(
-                                    isFullColor ? Color(
-                                        "iconColor.homeCoin",
-                                        bundle: .main
-                                    ) : nil
-                                )
-                            let currentScore = data.simulatedUniverseInfo.currentScore
-                            let maxScore = data.simulatedUniverseInfo.maxScore
-                            let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
-                            Text(verbatim: "\(ratio)%")
-                        case _ as Note4ZZZ: EmptyView() // TODO: 可以额外扩充其他内容。
-                        default: EmptyView()
+                        HStack(spacing: 4) {
+                            switch data {
+                            case let data as any Note4GI:
+                                Text("\(Image("icon.homeCoin", bundle: .main))")
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(
+                                        isFullColor ? Color("iconColor.homeCoin", bundle: .main) :
+                                            nil
+                                    )
+                                Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
+                                    .minimumScaleFactor(0.2)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            case let data as Note4HSR:
+                                // Simulated Universe
+                                Text("\(Image("icon.simulatedUniverse", bundle: .main))")
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(
+                                        isFullColor ? Color(
+                                            "iconColor.homeCoin",
+                                            bundle: .main
+                                        ) : nil
+                                    )
+                                let currentScore = data.simulatedUniverseInfo.currentScore
+                                let maxScore = data.simulatedUniverseInfo.maxScore
+                                let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
+                                Text(verbatim: "\(ratio)%")
+                                    .minimumScaleFactor(0.2)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            case _ as Note4ZZZ: EmptyView() // TODO: 可以额外扩充其他内容。
+                            default: EmptyView()
+                            }
                         }
                     }
                     // ROW 3
-                    if let data = data as? GeneralNote4GI {
-                        GridRow(alignment: .lastTextBaseline) {
-                            Text("\(Image("icon.transformer", bundle: .main))")
-                                .widgetAccentable(isFullColor)
-                                .foregroundColor(
-                                    isFullColor ? Color(
-                                        "iconColor.transformer",
-                                        bundle: .main
-                                    ) :
-                                        nil
-                                )
-                            let day = Calendar.current.dateComponents(
-                                [.day],
-                                from: Date(),
-                                to: data.transformerInfo.recoveryTime
-                            ).day
-                            if let day {
-                                Text("pzWidgetsKit.unit.day:\(day)", bundle: .main)
-                            } else if let mins = Calendar.current.dateComponents(
-                                [.minute],
-                                from: Date(),
-                                to: data.transformerInfo.recoveryTime
-                            ).minute {
-                                Text("pzWidgetsKit.unit.minute:\(mins)", bundle: .main)
-                            } else {
-                                Text("\(Image(systemSymbol: .checkmarkCircle))")
-                            }
-                            Spacer()
-                            Text("\(Image("icon.weeklyBosses", bundle: .main))")
-                                .widgetAccentable(isFullColor)
-                                .foregroundColor(
-                                    isFullColor ? Color(
-                                        "iconColor.weeklyBosses",
-                                        bundle: .main
-                                    ) : nil
-                                )
-                            HStack(
-                                alignment: .lastTextBaseline,
-                                spacing: 0
-                            ) {
-                                let trounceBlossomIntel = data.weeklyBossesInfo
-                                if trounceBlossomIntel.allDiscountsAreUsedUp {
-                                    Text("\(Image(systemSymbol: .checkmarkCircle))")
-                                } else {
-                                    Text(verbatim: "\(trounceBlossomIntel.remainResinDiscount)")
-                                    Text(verbatim: " / \(trounceBlossomIntel.totalResinDiscount)")
-                                        .font(.caption)
+                    switch data {
+                    case let data as Note4HSR where data.echoOfWarIntel != nil:
+                        if let eowIntel = data.echoOfWarIntel {
+                            GridRow(alignment: .lastTextBaseline) {
+                                HStack(spacing: 4) {
+                                    Text("\(Image("icon.echoOfWar", bundle: .main))")
+                                        .widgetAccentable(isFullColor)
+                                        .foregroundColor(
+                                            isFullColor ? Color(
+                                                "iconColor.weeklyBosses",
+                                                bundle: .main
+                                            ) : nil
+                                        )
+                                    HStack(
+                                        alignment: .lastTextBaseline,
+                                        spacing: 0
+                                    ) {
+                                        if eowIntel.allRewardsClaimed {
+                                            Text("\(Image(systemSymbol: .checkmarkCircle))")
+                                                .minimumScaleFactor(0.2)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                        } else { Text(verbatim: "\(eowIntel.weeklyEOWRewardsLeft)")
+                                            Text(verbatim: " / \(eowIntel.weeklyEOWMaxRewards)")
+                                                .font(.caption)
+                                                .minimumScaleFactor(0.2)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                        }
+                                    }
+                                }
+                                HStack(spacing: 4) {
+                                    Spacer() // Icon Space
+                                    Spacer() // Text Space
+                                    Spacer()
                                 }
                             }
-                            Spacer()
                         }
+                    case let data as GeneralNote4GI:
+                        GridRow(alignment: .lastTextBaseline) {
+                            HStack(spacing: 4) {
+                                Text("\(Image("icon.transformer", bundle: .main))")
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(
+                                        isFullColor ? Color(
+                                            "iconColor.transformer",
+                                            bundle: .main
+                                        ) :
+                                            nil
+                                    )
+                                let day = Calendar.current.dateComponents(
+                                    [.day],
+                                    from: Date(),
+                                    to: data.transformerInfo.recoveryTime
+                                ).day
+                                if let day {
+                                    Text("pzWidgetsKit.unit.day:\(day)", bundle: .main)
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } else if let mins = Calendar.current.dateComponents(
+                                    [.minute],
+                                    from: Date(),
+                                    to: data.transformerInfo.recoveryTime
+                                ).minute {
+                                    Text("pzWidgetsKit.unit.minute:\(mins)", bundle: .main)
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } else {
+                                    Text("\(Image(systemSymbol: .checkmarkCircle))")
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
+                            HStack(spacing: 4) {
+                                Text("\(Image("icon.trounceBlossom", bundle: .main))")
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(
+                                        isFullColor ? Color(
+                                            "iconColor.weeklyBosses",
+                                            bundle: .main
+                                        ) : nil
+                                    )
+                                HStack(
+                                    alignment: .lastTextBaseline,
+                                    spacing: 0
+                                ) {
+                                    let trounceBlossomIntel = data.weeklyBossesInfo
+                                    if trounceBlossomIntel.allDiscountsAreUsedUp {
+                                        Text("\(Image(systemSymbol: .checkmarkCircle))")
+                                            .minimumScaleFactor(0.2)
+                                    } else {
+                                        Text(verbatim: "\(trounceBlossomIntel.remainResinDiscount)")
+                                            .minimumScaleFactor(0.2)
+                                        Text(verbatim: " / \(trounceBlossomIntel.totalResinDiscount)")
+                                            .font(.caption)
+                                            .minimumScaleFactor(0.2)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                }
+                                Spacer()
+                            }
+                        }
+                    default: EmptyView()
                     }
                 }
+                .frame(maxWidth: .infinity)
+                .fontWidth(.condensed)
             case .failure:
-                Grid(
-                    alignment: .leadingFirstTextBaseline,
-                    horizontalSpacing: 3,
-                    verticalSpacing: 2
-                ) {
-                    GridRow(alignment: .lastTextBaseline) {
-                        Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
-                            .widgetAccentable(isFullColor)
-                        Text(Image(systemSymbol: .ellipsis))
-                        Spacer()
-                        Text("\(Image("icon.expedition", bundle: .main))")
-                            .widgetAccentable(isFullColor)
-                        HStack(
-                            alignment: .lastTextBaseline,
-                            spacing: 0
-                        ) {
-                            Text(Image(systemSymbol: .ellipsis))
-                        }
-                        Spacer()
-                    }
-                    GridRow(alignment: .lastTextBaseline) {
-                        Text("\(Image("icon.homeCoin", bundle: .main))")
-                            .widgetAccentable(isFullColor)
-                        Text("\(Image(systemSymbol: .ellipsis))")
-                        Spacer()
-                        Text("\(Image("icon.dailyTask", bundle: .main))")
-                            .widgetAccentable(isFullColor)
-                        HStack(
-                            alignment: .lastTextBaseline,
-                            spacing: 0
-                        ) {
-                            Text(Image(systemSymbol: .ellipsis))
-                        }
-                    }
-                    GridRow(alignment: .lastTextBaseline) {
-                        Text("\(Image("icon.transformer", bundle: .main))")
-                            .widgetAccentable(isFullColor)
-                        Text(Image(systemSymbol: .ellipsis))
-                        Spacer()
-                        Text("\(Image("icon.weeklyBosses", bundle: .main))")
-                            .widgetAccentable(isFullColor)
-                        HStack(
-                            alignment: .lastTextBaseline,
-                            spacing: 0
-                        ) {
-                            Text(Image(systemSymbol: .ellipsis))
-                        }
-                        Spacer()
-                    }
-                }
-                .foregroundColor(.gray)
+                Image(systemSymbol: .ellipsis)
+                    .foregroundColor(.gray)
             }
         }
         .widgetURL(url)
