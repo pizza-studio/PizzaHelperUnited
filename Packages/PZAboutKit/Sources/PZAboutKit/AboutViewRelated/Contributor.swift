@@ -137,6 +137,8 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         // 回头把新的翻译者记录在此处即可。
         switch self {
         case .shikisuen: "zh-Hans, zh-Hant, en-US, ja-JP"
+        case .lava: "zh-Hans"
+        case .hakubill: "zh-Hans"
         case .pan93412: "[GPT] fil, fr, de, it, ko-KR, ru, es, vi"
         default: nil
         }
