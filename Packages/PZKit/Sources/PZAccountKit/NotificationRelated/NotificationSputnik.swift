@@ -73,6 +73,7 @@ public enum DailyNoteNotificationType: String {
     case giRealmCurrency
     case giParametricTransformer
     case giTrounceBlossomResinDiscounts
+    case hsrEchoOfWarRewardsLeft
     case hsrSimulatedUniverse
 }
 
@@ -154,6 +155,14 @@ extension NotificationSputnik {
                 // TROUNCE BLOSSOM RESIN DISCOUNTS (GI)
                 if case let .notifyAt(weekday, hour, minute) = options.giTrounceBlossomNotificationSetting {
                     try await scheduleGITrounceBlossomNotification(
+                        weekday: Swift.max(0, Swift.min(7, weekday)),
+                        hour: hour,
+                        minute: minute
+                    )
+                }
+                // ECHO OF WAR (HSR)
+                if case let .notifyAt(weekday, hour, minute) = options.hsrEchoOfWarNotificationSetting {
+                    try await scheduleHSREchoOfWarNotification(
                         weekday: Swift.max(0, Swift.min(7, weekday)),
                         hour: hour,
                         minute: minute
@@ -432,7 +441,40 @@ extension NotificationSputnik {
         try await center.add(request)
     }
 
-    /// 模拟宇宙。
+    /// 星穹铁道历战馀响奖励剩余次数，领光了的话不再提醒。
+    @MainActor
+    private func scheduleHSREchoOfWarNotification(weekday: Int, hour: Int, minute: Int) async throws {
+        guard profile.game == .genshinImpact else {
+            await deleteNotification(.hsrEchoOfWarRewardsLeft)
+            return
+        }
+        guard let eowIntel = dailyNote.echoOfWarIntel else { return }
+        guard !eowIntel.allRewardsClaimed else {
+            await deleteNotification(.hsrEchoOfWarRewardsLeft)
+            return
+        }
+        let content = UNMutableNotificationContent()
+        let gameTag = "[\(profile.game.localizedShortName)] "
+        content.title = gameTag + String(
+            format: String(localized: "notification.echoOfWar.title:%@", bundle: .module),
+            profile.name
+        )
+        content.body = String(
+            format: String(localized: "notification.echoOfWar.body:%@%@", bundle: .module),
+            "\(profile.name) (\(profile.uidWithGame))",
+            eowIntel.weeklyEOWRewardsLeft.description
+        )
+        content.badge = 1
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: DateComponents(hour: hour, minute: minute, weekday: weekday),
+            repeats: false
+        )
+        let id = getID(for: .hsrEchoOfWarRewardsLeft)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        try await center.add(request)
+    }
+
+    /// 星穹铁道模拟宇宙。
     @MainActor
     private func scheduleHSRSimulatedUniverseNotification(weekday: Int, hour: Int, minute: Int) async throws {
         guard profile.game == .starRail else {

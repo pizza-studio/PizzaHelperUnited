@@ -457,6 +457,32 @@ private struct NotificationSettingDetailContent: View {
             Text("settings.notification.giTrounceBlossom.footer", bundle: .module)
         }
 
+        // 历战馀响
+        Section {
+            Toggle(isOn: options.allowHSREchoOfWarNotification.animation()) {
+                Text("settings.notification.hsrEchoOfWar.toggle", bundle: .module)
+            }
+            handleBindingDateAndWeekdays(
+                options.hsrEchoOfWarNotificationTime,
+                options.hsrEchoOfWarNotificationWeekday
+            ) { bindingDate, bindingWeekday in
+                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
+                    Text("settings.notification.hsrEchoOfWar.datePicker", bundle: .module)
+                }
+                Picker(selection: bindingWeekday) {
+                    ForEach(Weekday.allCases, id: \.rawValue) { weekday in
+                        Text(weekday.description).tag(weekday)
+                    }
+                } label: {
+                    Text("settings.notification.hsrEchoOfWar.weekdayPicker", bundle: .module)
+                }
+            }
+        } header: {
+            Text("settings.notification.hsrEchoOfWar.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.hsrEchoOfWar.footer", bundle: .module)
+        }
+
         // 模拟宇宙
         Section {
             Toggle(isOn: options.allowHSRSimulUnivNotification.animation()) {
