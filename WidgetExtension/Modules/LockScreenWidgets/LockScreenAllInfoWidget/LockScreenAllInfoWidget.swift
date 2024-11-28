@@ -141,7 +141,7 @@ struct LockScreenAllInfoWidgetView: View {
                                 let icon = switch data.game {
                                 case .genshinImpact: "icon.dailyTask.gi"
                                 case .starRail: "icon.dailyTask.hsr"
-                                case .zenlessZone: "icon.114514"
+                                case .zenlessZone: "icon.dailyTask.zzz"
                                 }
                                 Text("\(Image(icon, bundle: .main))")
                                     .widgetAccentable(isFullColor)
