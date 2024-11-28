@@ -105,7 +105,22 @@ struct LockScreenAllInfoWidgetView: View {
                         }
                         HStack(spacing: 4) {
                             switch data {
-                            case _ as Note4ZZZ: EmptyView() // ZZZ has no expedition API results yet.
+                            case let data as Note4ZZZ:
+                                // ZZZ has no expedition API results yet, displaying 刮刮乐 instead.
+                                if let cardScratched = data.cardScratched {
+                                    Text("\(Image("icon.zzzScratch", bundle: .main))")
+                                        .widgetAccentable(isFullColor)
+                                        .foregroundColor(isFullColor ? Color(
+                                            "iconColor.expedition",
+                                            bundle: .main
+                                        ) : nil)
+                                    let stateName = cardScratched ? "icon.zzzScratch.done" : "icon.zzzScratch.available"
+                                    Text("\(Image(stateName, bundle: .main))")
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } else {
+                                    EmptyView()
+                                }
                             default:
                                 let icon = switch data.game {
                                 case .genshinImpact: "icon.expedition.gi"
@@ -193,7 +208,20 @@ struct LockScreenAllInfoWidgetView: View {
                                 Text(verbatim: "\(ratio)%")
                                     .minimumScaleFactor(0.2)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                            case _ as Note4ZZZ: EmptyView() // TODO: 可以额外扩充其他内容。
+                            case let data as Note4ZZZ:
+                                // VHS Store.
+                                let isVHSInOperation = data.vhsStoreState.isInOperation
+                                Text("\(Image("icon.zzzVHSStore", bundle: .main))")
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(isFullColor ? Color(
+                                        "iconColor.homeCoin",
+                                        bundle: .main
+                                    ) : nil)
+                                let stateName = isVHSInOperation ? "icon.zzzVHSStore.inOperation" :
+                                    "icon.zzzVHSStore.sleeping"
+                                Text("\(Image(stateName, bundle: .main))")
+                                    .minimumScaleFactor(0.2)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                             default: EmptyView()
                             }
                         }
@@ -231,7 +259,6 @@ struct LockScreenAllInfoWidgetView: View {
                                 HStack(spacing: 4) {
                                     Spacer() // Icon Space
                                     Spacer() // Text Space
-                                    Spacer()
                                 }
                             }
                         }
@@ -296,7 +323,49 @@ struct LockScreenAllInfoWidgetView: View {
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                     }
                                 }
-                                Spacer()
+                            }
+                        }
+                    case let data as Note4ZZZ:
+                        GridRow(alignment: .lastTextBaseline) {
+                            // 零号空洞每周悬赏委托
+                            HStack(spacing: 4) {
+                                Text("\(Image("icon.zzzBounty", bundle: .main))")
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(isFullColor ? Color(
+                                        "iconColor.transformer",
+                                        bundle: .main
+                                    ) : nil)
+                                if let bountyIntel = data.hollowZero.bountyCommission {
+                                    Text(verbatim: "\(bountyIntel.num)")
+                                        .minimumScaleFactor(0.2)
+                                    Text(verbatim: " / \(bountyIntel.total)")
+                                        .font(.caption)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } else {
+                                    Text("\(Image("icon.info.unavailable", bundle: .main))")
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
+                            // 调查点数
+                            HStack(spacing: 4) {
+                                Text("\(Image("icon.zzzInvestigation", bundle: .main))")
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(isFullColor ? Color(
+                                        "iconColor.weeklyBosses",
+                                        bundle: .main
+                                    ) : nil)
+                                if let bountyIntel = data.hollowZero.investigationPoint {
+                                    Text(verbatim: "\(bountyIntel.num)")
+                                        .minimumScaleFactor(0.2)
+                                    Text(verbatim: " / \(bountyIntel.total)")
+                                        .font(.caption)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } else {
+                                    Text("\(Image("icon.info.unavailable", bundle: .main))")
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
                             }
                         }
                     default: EmptyView()
