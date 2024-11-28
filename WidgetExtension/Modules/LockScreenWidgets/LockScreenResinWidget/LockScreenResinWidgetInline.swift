@@ -15,31 +15,25 @@ struct LockScreenResinWidgetInline: View {
     let entry: any TimelineEntry
     let result: Result<any DailyNoteProtocol, any Error>
 
-    var staminaMonochromeIconAssetName: String {
-        switch result {
-        case let .success(data):
-            return switch data.game {
-            case .genshinImpact: "icon.resin"
-            case .starRail: "icon.trailblazePower"
-            case .zenlessZone: "icon.zzzBattery"
-            }
-        case .failure: return "icon.resin"
-        }
-    }
-
     var body: some View {
         switch result {
         case let .success(data):
             let staminaStatus = data.staminaIntel
-            let gameTag = data.game.uidPrefix
-            if staminaStatus.isAccomplished {
-                Text(verbatim: "\(gameTag): \(staminaStatus.all) @ 100%")
-            } else {
-                let trailingText = PZWidgets.intervalFormatter.string(
-                    from: TimeInterval.sinceNow(to: data.staminaFullTimeOnFinish)
-                )!
-                Text(verbatim: "\(gameTag): \(staminaStatus.finished)  \(trailingText)")
+            // Only SF Symbols are allowed image objects in this widget.
+            let sfSymbol: SFSymbol = switch data.game {
+            case .genshinImpact: .moonFill
+            case .starRail: .line3CrossedSwirlCircleFill
+            case .zenlessZone: .minusPlusAndFluidBatteryblock
             }
+            let trailingTextStr = PZWidgets.intervalFormatter.string(
+                from: TimeInterval.sinceNow(to: data.staminaFullTimeOnFinish)
+            )!
+            let textDisplay = if staminaStatus.isAccomplished {
+                Text(verbatim: " \(staminaStatus.all) @ 100%")
+            } else {
+                Text(verbatim: " \(staminaStatus.finished)  \(trailingTextStr)")
+            }
+            Text("\(Image(systemSymbol: sfSymbol))") + textDisplay
         case .failure:
             Text(verbatim: "…")
         }
