@@ -217,7 +217,7 @@ struct LockScreenAllInfoWidgetView: View {
                                         spacing: 0
                                     ) {
                                         if eowIntel.allRewardsClaimed {
-                                            Text("\(Image(systemSymbol: .checkmarkCircle))")
+                                            Text(verbatim: "✔︎")
                                                 .minimumScaleFactor(0.2)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                         } else { Text(verbatim: "\(eowIntel.weeklyEOWRewardsLeft)")
@@ -265,7 +265,7 @@ struct LockScreenAllInfoWidgetView: View {
                                         .minimumScaleFactor(0.2)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 } else {
-                                    Text("\(Image(systemSymbol: .checkmarkCircle))")
+                                    Text(verbatim: "✔︎")
                                         .minimumScaleFactor(0.2)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
@@ -285,7 +285,7 @@ struct LockScreenAllInfoWidgetView: View {
                                 ) {
                                     let trounceBlossomIntel = data.weeklyBossesInfo
                                     if trounceBlossomIntel.allDiscountsAreUsedUp {
-                                        Text("\(Image(systemSymbol: .checkmarkCircle))")
+                                        Text(verbatim: "✔︎")
                                             .minimumScaleFactor(0.2)
                                     } else {
                                         Text(verbatim: "\(trounceBlossomIntel.remainResinDiscount)")
