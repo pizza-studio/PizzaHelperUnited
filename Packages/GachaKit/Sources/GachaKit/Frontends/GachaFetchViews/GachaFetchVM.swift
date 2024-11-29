@@ -89,96 +89,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
 
     public private(set) var client: GachaClient<GachaType>?
 
-    // MARK: Internal
-
-    func load(urlString: String) throws {
+    public func load(urlString: String) throws {
         client = try .init(gachaURLString: urlString)
         setPending()
-    }
-
-    func updateCachedItems(_ item: PZGachaEntrySendable) {
-        if cachedItems.count > 20 {
-            _ = cachedItems.removeFirst()
-        }
-        cachedItems.append(item)
-    }
-
-    func updateGachaDateCounts(_ item: PZGachaEntrySendable) {
-        let itemExpr = item.expressible
-        let dateAndPoolMatched = gachaTypeDateCounts.first {
-            ($0.date == itemExpr.time) && ($0.gachaType.rawValue == item.gachaType)
-        }
-        if dateAndPoolMatched == nil {
-            let count = GachaTypeDateCount(
-                date: itemExpr.time,
-                count: gachaTypeDateCounts.filter { data in
-                    (data.date < itemExpr.time) && (data.gachaType == .init(rawValue: item.gachaType))
-                }.map(\.count).reduce(.zero, +),
-                countAsMergedPool: gachaTypeDateCounts.filter { data in
-                    (data.date < itemExpr.time) && (data.poolType == itemExpr.pool)
-                }.map(\.count).reduce(.zero, +),
-                gachaType: .init(rawValue: item.gachaType),
-                id: itemExpr.id
-            )
-            withAnimation {
-                gachaTypeDateCounts.append(count)
-            }
-        }
-        func predicateElementByMergedPool(_ element: GachaTypeDateCount) -> Bool {
-            (element.date >= itemExpr.time) && (element.poolType == itemExpr.pool)
-        }
-        gachaTypeDateCounts.indicesMeeting(condition: predicateElementByMergedPool)?.forEach { index in
-            // 先处理将原神的两个限定卡池合并计算时的情形，回头绘制图表时会用到。
-            self.gachaTypeDateCounts[index].countAsMergedPool += 1
-            // 再分开处理原神的两个限定卡池各自的情形。
-            if self.gachaTypeDateCounts[index].gachaType.rawValue == item.gachaType {
-                self.gachaTypeDateCounts[index].count += 1
-            }
-        }
-    }
-
-    func checkIDAndUIDExists(uid: String, id: String) -> Bool {
-        let gameStr = GachaType.game.rawValue
-        var request = FetchDescriptor<PZGachaEntryMO>(
-            predicate: #Predicate {
-                $0.id == id && $0.uid == uid && $0.game == gameStr
-            }
-        )
-        request.propertiesToFetch = [\.id, \.uid, \.game]
-        do {
-            let gachaItemMOCount = try mainContext.fetchCount(request)
-            return gachaItemMOCount > 0
-        } catch {
-            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
-            return true
-        }
-    }
-
-    func removeEntry(uid: String, id: String) throws {
-        let gameStr = GachaType.game.rawValue
-        try mainContext.delete(
-            model: PZGachaEntryMO.self,
-            where: #Predicate {
-                $0.id == id && $0.uid == uid && $0.game == gameStr
-            },
-            includeSubclasses: false
-        )
-    }
-
-    func checkGPIDExists(uid: String) -> Bool {
-        let gameStr = GachaType.game.rawValue
-        let request = FetchDescriptor<PZGachaProfileMO>(
-            predicate: #Predicate {
-                $0.uid == uid && $0.gameRAW == gameStr
-            }
-        )
-        do {
-            let gpidMOCount = try mainContext.fetchCount(request)
-            return gpidMOCount > 0
-        } catch {
-            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
-            return true
-        }
     }
 
     // MARK: Private
@@ -187,6 +100,90 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
 
     private var mainContext: ModelContext {
         GachaActor.shared.modelContainer.mainContext
+    }
+
+    private func initialize() {
+        client = nil
+        setWaitingForURL()
+        savedTypeFetchedCount = Dictionary(
+            uniqueKeysWithValues: GachaType.knownCases
+                .map { gachaType in
+                    (gachaType, 0)
+                }
+        )
+        task?.cancel()
+        cachedItems = []
+        gachaTypeDateCounts = []
+    }
+
+    private func retry() {
+        setPending()
+        client?.reset()
+        savedTypeFetchedCount = Dictionary(
+            uniqueKeysWithValues: GachaType.knownCases
+                .map { gachaType in
+                    (gachaType, 0)
+                }
+        )
+        task?.cancel()
+        cachedItems = []
+        gachaTypeDateCounts = []
+    }
+
+    private func cancel() {
+        task?.cancel()
+    }
+
+    private func startFetching() {
+        guard let client else { return }
+        setInProgress()
+        task = Task { [weak self] in
+            guard let self else { return }
+            do {
+                var validTransactionIDMap: [String: [String]] = [:]
+                var uid: String? // 只可能有一个 UID。
+                for try await (gachaType, result) in client {
+                    setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
+                    for item in result.listConverted {
+                        uid = item.uid
+                        withAnimation {
+                            self.updateCachedItems(item)
+                            self.updateGachaDateCounts(item)
+                        }
+                        validTransactionIDMap[item.time, default: []].append(item.id)
+                        try await insert(item)
+                        try await Task.sleep(for: .seconds(0.5 / 20.0))
+                    }
+                    try mainContext.save()
+                }
+                // Bleach trash data: START
+                if let uid {
+                    for (timeTag, validTransactionIDs) in validTransactionIDMap {
+                        bleachTrashItems(uid: uid, timeTag: timeTag, validTransactionIDs: validTransactionIDs)
+                    }
+                    try mainContext.save()
+                }
+                // Bleach trash data: END
+                setFinished()
+            } catch {
+                if error is CancellationError {
+                    setFinished()
+                } else {
+                    switch error {
+                    case let error as GachaError:
+                        switch error {
+                        case let .fetchDataError(page, _, gachaType, error):
+                            setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
+                        }
+                    case let error as URLError where error.code == .cancelled:
+                        setFinished()
+                    default:
+                        break
+                        // since `next` is typed throwing it is unreachable here
+                    }
+                }
+            }
+        }
     }
 
     private func setFinished() {
@@ -259,75 +256,110 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         }
     }
 
-    private func startFetching() {
-        guard let client else { return }
-        setInProgress()
-        task = Task { [weak self] in
-            guard let self else { return }
-            do {
-                for try await (gachaType, result) in client {
-                    setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
-                    for item in result.listConverted {
-                        withAnimation {
-                            self.updateCachedItems(item)
-                            self.updateGachaDateCounts(item)
-                        }
-                        try? await insert(item)
-                        try? await Task.sleep(for: .seconds(0.5 / 20.0))
-                    }
-                    try? mainContext.save()
+    private func bleachTrashItems(uid: String, timeTag: String, validTransactionIDs: [String]) {
+        guard !validTransactionIDs.isEmpty else { return }
+        let gameStr = GachaType.game.rawValue
+        var request = FetchDescriptor<PZGachaEntryMO>(
+            predicate: #Predicate {
+                $0.time == timeTag && $0.uid == uid && $0.game == gameStr
+            }
+        )
+        request.propertiesToFetch = [\.id, \.uid, \.game, \.time]
+        do {
+            let matchedItems = try mainContext.fetch(request)
+            matchedItems.forEach { currentItem in
+                if !validTransactionIDs.contains(currentItem.id) {
+                    mainContext.delete(currentItem)
                 }
-                setFinished()
-            } catch {
-                if error is CancellationError {
-                    setFinished()
-                } else {
-                    switch error {
-                    case let error as GachaError:
-                        switch error {
-                        case let .fetchDataError(page, _, gachaType, error):
-                            setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
-                        }
-                    case let error as URLError where error.code == .cancelled:
-                        setFinished()
-                    default:
-                        break
-                        // since `next` is typed throwing it is unreachable here
-                    }
-                }
+            }
+            // 无须在此保存。之后会有统一的保存步骤。
+        } catch {
+            print("ERROR BLEACHING CONTENTS. \(error.localizedDescription)")
+        }
+    }
+
+    private func updateCachedItems(_ item: PZGachaEntrySendable) {
+        if cachedItems.count > 20 {
+            _ = cachedItems.removeFirst()
+        }
+        cachedItems.append(item)
+    }
+
+    private func updateGachaDateCounts(_ item: PZGachaEntrySendable) {
+        let itemExpr = item.expressible
+        let dateAndPoolMatched = gachaTypeDateCounts.first {
+            ($0.date == itemExpr.time) && ($0.gachaType.rawValue == item.gachaType)
+        }
+        if dateAndPoolMatched == nil {
+            let count = GachaTypeDateCount(
+                date: itemExpr.time,
+                count: gachaTypeDateCounts.filter { data in
+                    (data.date < itemExpr.time) && (data.gachaType == .init(rawValue: item.gachaType))
+                }.map(\.count).reduce(.zero, +),
+                countAsMergedPool: gachaTypeDateCounts.filter { data in
+                    (data.date < itemExpr.time) && (data.poolType == itemExpr.pool)
+                }.map(\.count).reduce(.zero, +),
+                gachaType: .init(rawValue: item.gachaType),
+                id: itemExpr.id
+            )
+            withAnimation {
+                gachaTypeDateCounts.append(count)
+            }
+        }
+        func predicateElementByMergedPool(_ element: GachaTypeDateCount) -> Bool {
+            (element.date >= itemExpr.time) && (element.poolType == itemExpr.pool)
+        }
+        gachaTypeDateCounts.indicesMeeting(condition: predicateElementByMergedPool)?.forEach { index in
+            // 先处理将原神的两个限定卡池合并计算时的情形，回头绘制图表时会用到。
+            self.gachaTypeDateCounts[index].countAsMergedPool += 1
+            // 再分开处理原神的两个限定卡池各自的情形。
+            if self.gachaTypeDateCounts[index].gachaType.rawValue == item.gachaType {
+                self.gachaTypeDateCounts[index].count += 1
             }
         }
     }
 
-    private func initialize() {
-        client = nil
-        setWaitingForURL()
-        savedTypeFetchedCount = Dictionary(
-            uniqueKeysWithValues: GachaType.knownCases
-                .map { gachaType in
-                    (gachaType, 0)
-                }
+    private func checkIDAndUIDExists(uid: String, id: String) -> Bool {
+        let gameStr = GachaType.game.rawValue
+        var request = FetchDescriptor<PZGachaEntryMO>(
+            predicate: #Predicate {
+                $0.id == id && $0.uid == uid && $0.game == gameStr
+            }
         )
-        task?.cancel()
-        cachedItems = []
-        gachaTypeDateCounts = []
+        request.propertiesToFetch = [\.id, \.uid, \.game]
+        do {
+            let gachaItemMOCount = try mainContext.fetchCount(request)
+            return gachaItemMOCount > 0
+        } catch {
+            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
+            return true
+        }
     }
 
-    private func retry() {
-        setPending()
-        client?.reset()
-        savedTypeFetchedCount = Dictionary(
-            uniqueKeysWithValues: GachaType.knownCases
-                .map { gachaType in
-                    (gachaType, 0)
-                }
+    private func removeEntry(uid: String, id: String) throws {
+        let gameStr = GachaType.game.rawValue
+        try mainContext.delete(
+            model: PZGachaEntryMO.self,
+            where: #Predicate {
+                $0.id == id && $0.uid == uid && $0.game == gameStr
+            },
+            includeSubclasses: false
         )
-        task?.cancel()
-        cachedItems = []
-        gachaTypeDateCounts = []
     }
 
-    private func cancel() {
-        task?.cancel()
+    private func checkGPIDExists(uid: String) -> Bool {
+        let gameStr = GachaType.game.rawValue
+        let request = FetchDescriptor<PZGachaProfileMO>(
+            predicate: #Predicate {
+                $0.uid == uid && $0.gameRAW == gameStr
+            }
+        )
+        do {
+            let gpidMOCount = try mainContext.fetchCount(request)
+            return gpidMOCount > 0
+        } catch {
+            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
+            return true
+        }
     }
 }
