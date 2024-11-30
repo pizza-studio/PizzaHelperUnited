@@ -59,7 +59,11 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         case inProgress(cancel: () -> Void)
         case got(page: Int, gachaType: GachaType, newItemCount: Int, cancel: () -> Void)
         case failFetching(page: Int, gachaType: GachaType, error: Error, retry: () -> Void)
-        case finished(typeFetchedCount: [GachaType: Int], initialize: () -> Void)
+        case finished(
+            typeFetchedCount: [GachaType: Int],
+            dataBleachedCount: Int,
+            initialize: () -> Void
+        )
 
         // MARK: Public
 
@@ -86,6 +90,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
     public var cachedItems: [PZGachaEntrySendable] = []
     public var gachaTypeDateCounts: [GachaTypeDateCount] = []
     public var isForceOverrideModeEnabled = true
+    public private(set) var bleachCounter = 0
 
     public private(set) var client: GachaClient<GachaType>?
 
@@ -114,6 +119,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         task?.cancel()
         cachedItems = []
         gachaTypeDateCounts = []
+        bleachCounter = 0
     }
 
     private func retry() {
@@ -159,7 +165,12 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
                 // Bleach trash data: START
                 if let uid {
                     for (timeTag, validTransactionIDs) in validTransactionIDMap {
-                        bleachTrashItems(uid: uid, timeTag: timeTag, validTransactionIDs: validTransactionIDs)
+                        bleachTrashItems(
+                            uid: uid,
+                            timeTag: timeTag,
+                            validTransactionIDs: validTransactionIDs,
+                            bleachCounter: &bleachCounter
+                        )
                     }
                     try mainContext.save()
                 }
@@ -188,7 +199,11 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
 
     private func setFinished() {
         withAnimation {
-            self.status = .finished(typeFetchedCount: self.savedTypeFetchedCount, initialize: { self.initialize() })
+            self.status = .finished(
+                typeFetchedCount: self.savedTypeFetchedCount,
+                dataBleachedCount: self.bleachCounter,
+                initialize: { self.initialize() }
+            )
         }
     }
 
@@ -263,7 +278,12 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
     ///   - uid: 给定的当前游戏的 UID。
     ///   - timeTag: 时间戳（原始字串）。
     ///   - validTransactionIDs: 该时间戳对应的所有合理的流水号（阵列）。
-    private func bleachTrashItems(uid: String, timeTag: String, validTransactionIDs: [String]) {
+    ///   - bleachCounter: 统计到底清理了多少笔垃圾资料。
+    private func bleachTrashItems(
+        uid: String,
+        timeTag: String, validTransactionIDs: [String],
+        bleachCounter: inout Int
+    ) {
         guard !validTransactionIDs.isEmpty else { return }
         let gameStr = GachaType.game.rawValue
         var request = FetchDescriptor<PZGachaEntryMO>(
