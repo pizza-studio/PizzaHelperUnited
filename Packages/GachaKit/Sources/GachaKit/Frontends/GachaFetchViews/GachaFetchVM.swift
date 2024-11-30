@@ -486,6 +486,7 @@ private class GachaBleachSputnik {
             matchedItems.forEach { currentItem in
                 if !validTransactionIDs.contains(currentItem.id) {
                     mainContext.delete(currentItem)
+                    bleachCounter += 1
                 }
             }
             // 无须在此保存。之后会有统一的保存步骤。
