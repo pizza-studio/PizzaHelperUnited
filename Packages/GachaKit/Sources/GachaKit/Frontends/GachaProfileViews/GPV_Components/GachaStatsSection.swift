@@ -24,7 +24,7 @@ extension GachaProfileView {
             Section {
                 HStack {
                     Label {
-                        Text("gachaKit.stats.sincePreviousPentaStar".i18nGachaKit)
+                        Text("gachaKit.stats.sincePreviousPentaStar", bundle: .module)
                             .fontWidth(.condensed)
                     } icon: {
                         Image(systemSymbol: .flagFill)
@@ -40,7 +40,7 @@ extension GachaProfileView {
                 }
                 HStack {
                     Label {
-                        Text("gachaKit.stats.totalPulls".i18nGachaKit)
+                        Text("gachaKit.stats.totalPulls", bundle: .module)
                             .fontWidth(.condensed)
                     } icon: {
                         Image(systemSymbol: .handTapFill)
@@ -51,7 +51,7 @@ extension GachaProfileView {
                 }
                 HStack {
                     Label {
-                        Text("gachaKit.stats.avaragePulls4PentaStars".i18nGachaKit)
+                        Text("gachaKit.stats.avaragePulls4PentaStars", bundle: .module)
                             .fontWidth(.condensed)
                     } icon: {
                         Image(systemSymbol: .star)
@@ -63,7 +63,7 @@ extension GachaProfileView {
                 if poolType.isSurinukable, theVM.taskState != .busy {
                     HStack {
                         Label {
-                            Text("gachaKit.stats.avaragePulls4LimitedPentaStars".i18nGachaKit)
+                            Text("gachaKit.stats.avaragePulls4LimitedPentaStars", bundle: .module)
                                 .fontWidth(.condensed)
                         } icon: {
                             Image(systemSymbol: .starFill)
@@ -74,7 +74,7 @@ extension GachaProfileView {
                     }
                     HStack {
                         Label {
-                            Text("gachaKit.stats.surinukeEvasionRate".i18nGachaKit)
+                            Text("gachaKit.stats.surinukeEvasionRate", bundle: .module)
                                 .fontWidth(.condensed)
                         } icon: {
                             Image(systemSymbol: .chartPieFill)

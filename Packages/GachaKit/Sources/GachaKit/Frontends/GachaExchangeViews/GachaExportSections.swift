@@ -23,7 +23,7 @@ public struct GachaExportSections: View {
                         Text(verbatim: enumeratedLang.localized).tag(enumeratedLang)
                     }
                 }.frame(maxWidth: .infinity)
-                Text("gachaKit.gachaLanguage.languageSupported.explanation".i18nGachaKit)
+                Text("gachaKit.gachaLanguage.languageSupported.explanation", bundle: .module)
                     .font(.footnote).foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -43,7 +43,7 @@ public struct GachaExportSections: View {
                             lang: documentLanguage
                         )
                     } label: {
-                        Text("gachaKit.exchange.export.clickHereToExport".i18nGachaKit)
+                        Text("gachaKit.exchange.export.clickHereToExport", bundle: .module)
                             .fontWeight(.bold)
                             .fontWidth(.condensed)
                             .multilineTextAlignment(.center)
@@ -59,7 +59,7 @@ public struct GachaExportSections: View {
             }
         } header: {
             HStack {
-                Text("gachaKit.exchange.export.currentExportOption".i18nGachaKit)
+                Text("gachaKit.exchange.export.currentExportOption", bundle: .module)
                 Spacer()
                 Text(packageMethod.localizedName)
             }
@@ -101,7 +101,7 @@ public struct GachaExportSections: View {
                 nameIDMap: theVM.nameIDMap
             )
         } header: {
-            Text("gachaKit.exchange.chooseProfiles.export.prompt".i18nGachaKit)
+            Text("gachaKit.exchange.chooseProfiles.export.prompt", bundle: .module)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }
@@ -176,7 +176,7 @@ public struct GachaExportSections: View {
             .fixedSize()
             .disabled(formatsToEnumerate.count == 1)
         } label: {
-            Text("gachaKit.exchange.fileFormat".i18nGachaKit)
+            Text("gachaKit.exchange.fileFormat", bundle: .module)
         }
     }
 
