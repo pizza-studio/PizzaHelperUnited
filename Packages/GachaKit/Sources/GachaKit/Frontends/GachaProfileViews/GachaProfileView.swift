@@ -71,7 +71,7 @@ public struct GachaProfileView: View {
                     }
                 }
             } header: {
-                Text("gachaKit.filter.options".i18nGachaKit).textCase(.none)
+                Text("gachaKit.filter.options", bundle: .module).textCase(.none)
             }
         }
     }

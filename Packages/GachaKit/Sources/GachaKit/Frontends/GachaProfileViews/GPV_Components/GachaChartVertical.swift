@@ -37,7 +37,7 @@ public struct GachaChartVertical: View {
                 }
             }
         } else {
-            Text("gachaKit.chart.noPentaStarsFound".i18nGachaKit)
+            Text("gachaKit.chart.noPentaStarsFound", bundle: .module)
                 .foregroundColor(.secondary)
         }
     }
