@@ -240,6 +240,8 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         }
     }
 
+    /// 将给定的抽卡物品记录插入至本地 SwiftData 抽卡资料库。
+    /// - Parameter gachaItem: 给定的抽卡物品记录（Sendable）。
     private func insert(_ gachaItem: PZGachaEntrySendable) async throws {
         if !isForceOverrideModeEnabled {
             guard !checkIDAndUIDExists(uid: gachaItem.uid, id: gachaItem.id) else { return }
@@ -256,6 +258,11 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         }
     }
 
+    /// 自本地 SwiftData 抽卡资料库移除由伺服器端此前错误生成的垃圾资料。
+    /// - Parameters:
+    ///   - uid: 给定的当前游戏的 UID。
+    ///   - timeTag: 时间戳（原始字串）。
+    ///   - validTransactionIDs: 该时间戳对应的所有合理的流水号（阵列）。
     private func bleachTrashItems(uid: String, timeTag: String, validTransactionIDs: [String]) {
         guard !validTransactionIDs.isEmpty else { return }
         let gameStr = GachaType.game.rawValue
@@ -278,6 +285,8 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         }
     }
 
+    /// 更新抽卡记录缓存。
+    /// - Parameter item: 给定的单笔抽卡记录（Sendable）。
     private func updateCachedItems(_ item: PZGachaEntrySendable) {
         if cachedItems.count > 20 {
             _ = cachedItems.removeFirst()
@@ -285,6 +294,8 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         cachedItems.append(item)
     }
 
+    /// 更新「抽卡卡池类型与抽卡数量」统计阵列。
+    /// - Parameter item: 给定的单笔抽卡记录（Sendable）。
     private func updateGachaDateCounts(_ item: PZGachaEntrySendable) {
         let itemExpr = item.expressible
         let dateAndPoolMatched = gachaTypeDateCounts.first {
@@ -319,6 +330,11 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         }
     }
 
+    /// 自本地 SwiftData 抽卡资料库检查给定的 UID 与流水号是否已经有对应的本地记录。
+    /// - Parameters:
+    ///   - uid: 给定的当前游戏的 UID。
+    ///   - id: 流水号。
+    /// - Returns: 检查结果。
     private func checkIDAndUIDExists(uid: String, id: String) -> Bool {
         let gameStr = GachaType.game.rawValue
         var request = FetchDescriptor<PZGachaEntryMO>(
@@ -336,6 +352,10 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         }
     }
 
+    /// 自本地 SwiftData 抽卡资料库移除指定 UID 与流水号的所有记录。
+    /// - Parameters:
+    ///   - uid: 给定的当前游戏的 UID。
+    ///   - id: 流水号。
     private func removeEntry(uid: String, id: String) throws {
         let gameStr = GachaType.game.rawValue
         try mainContext.delete(
@@ -347,6 +367,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         )
     }
 
+    /// 检查本地 SwiftData 抽卡资料库，确认是否有对应的 GPID（抽卡人）在库。
+    /// - Parameter uid: 给定的当前游戏的 UID。
+    /// - Returns: 检查结果。
     private func checkGPIDExists(uid: String) -> Bool {
         let gameStr = GachaType.game.rawValue
         let request = FetchDescriptor<PZGachaProfileMO>(
