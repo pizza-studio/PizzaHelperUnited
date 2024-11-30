@@ -71,11 +71,19 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                         .onAppear {
                             gachaRootVM.updateMappedEntriesByPools()
                         }
-                case let .finished(typeFetchedCount: typeFetchedCount, initialize: initialize):
-                    FinishedView(typeFetchedCount: typeFetchedCount, reinit: initialize)
-                        .onAppear {
-                            gachaRootVM.updateMappedEntriesByPools()
-                        }
+                case let .finished(
+                    typeFetchedCount: typeFetchedCount,
+                    dataBleachedCount: dataBleachedCount,
+                    initialize: initialize
+                ):
+                    FinishedView(
+                        typeFetchedCount: typeFetchedCount,
+                        dataBleachedCount: dataBleachedCount,
+                        reinit: initialize
+                    )
+                    .onAppear {
+                        gachaRootVM.updateMappedEntriesByPools()
+                    }
                 }
 
                 switch gachaVM4Fetch.status {
@@ -432,8 +440,13 @@ extension GachaFetchView4Game {
     private struct FinishedView: View {
         // MARK: Lifecycle
 
-        init(typeFetchedCount: [GachaType: Int], reinit: @escaping () -> Void) {
+        init(
+            typeFetchedCount: [GachaType: Int],
+            dataBleachedCount: Int,
+            reinit: @escaping () -> Void
+        ) {
             self.typeFetchedCount = typeFetchedCount
+            self.dataBleachedCount = dataBleachedCount
             self.reinit = reinit
         }
 
@@ -452,6 +465,8 @@ extension GachaFetchView4Game {
                 } label: {
                     Label("gachaKit.getRecord.finished.initialize".i18nGachaKit, systemSymbol: .arrowClockwiseCircle)
                 }
+            } footer: {
+                dataBleachedReportView
             }
 
             Section {
@@ -471,6 +486,7 @@ extension GachaFetchView4Game {
         // MARK: Private
 
         private let typeFetchedCount: [GachaType: Int]
+        private let dataBleachedCount: Int
         private let reinit: () -> Void
 
         private var newRecordCount: String {
@@ -478,6 +494,21 @@ extension GachaFetchView4Game {
             return sortedTypeFechedCount.map { gachaType, count in
                 "\(gachaType.description) - \(count); "
             }.reduce("", +)
+        }
+
+        @ViewBuilder private var dataBleachedReportView: some View {
+            if dataBleachedCount > 0 {
+                HStack {
+                    Text("gachaKit.getRecord.finished.footer.bleachedInvalidEntriesCount", bundle: .module)
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                    Text(verbatim: dataBleachedCount.description)
+                }
+            } else {
+                Text("gachaKit.getRecord.finished.footer.nothingToBleach", bundle: .module)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
     }
 }
