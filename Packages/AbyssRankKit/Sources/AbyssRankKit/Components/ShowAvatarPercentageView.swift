@@ -85,7 +85,13 @@ struct ShowAvatarPercentageView: View {
                     )
                 }
             } else {
-                Color.gray.clipShape(.circle).frame(width: 32, height: 32)
+                Label {
+                    Text(avatar.charId.description)
+                        .font(.headline)
+                        .fontWidth(.condensed)
+                } icon: {
+                    AnonymousIconView(32, cutType: .circleClipped)
+                }
             }
             Spacer()
             Text(percentageFormatter.string(from: (avatar.percentage ?? 0.0) as NSNumber)!)
