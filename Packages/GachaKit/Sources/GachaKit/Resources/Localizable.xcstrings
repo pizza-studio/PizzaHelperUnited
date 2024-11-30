@@ -5766,7 +5766,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "這部裝置上的 GachaMetaDB 已經過期、無法正常用來處理來自該應用的本地資料庫或外部來源的某些抽卡物品條目。GachaMetaDB 資料庫包含了用以映射 ItemID 及其翻譯的重要資訊，且記載了每個抽卡物品的稀有等級查詢表。"
+            "value" : "這部裝置上的 GachaMetaDB 已經過期、無法正常用來處理來自該應用的本機資料庫或外部來源的某些抽卡物品條目。GachaMetaDB 資料庫包含了用以映射 ItemID 及其翻譯的重要資訊，且記載了每個抽卡物品的稀有等級查詢表。"
           }
         }
       }
