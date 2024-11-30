@@ -287,6 +287,16 @@ extension GachaFetchView4Game {
                         Label("gachaKit.getRecord.readyStart.copyThisURL".i18nGachaKit, systemSymbol: .docOnClipboard)
                     }
                 }
+            } header: {
+                Text("gachaKit.getRecord.readyStart.sectionHeader.urgeUsersToBackupFirst", bundle: .module)
+                    .multilineTextAlignment(.leading)
+                    .textCase(.none)
+                    .foregroundStyle(.orange)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            } footer: {
+                Text("gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents", bundle: .module)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             Section {
                 Button {
