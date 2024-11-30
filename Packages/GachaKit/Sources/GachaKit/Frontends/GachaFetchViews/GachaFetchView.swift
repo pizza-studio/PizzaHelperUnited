@@ -280,6 +280,12 @@ extension GachaFetchView4Game {
                         systemSymbol: .arrowshapeBounceRight
                     )
                 }
+                Toggle(isOn: $gachaFetchVM.isBleachingModeEnabled) {
+                    Label(
+                        "gachaKit.getRecord.readyStart.enableBleachingMode".i18nGachaKit,
+                        systemSymbol: .paintbrush
+                    )
+                }
                 if let urlStr = gachaFetchVM.client?.urlString {
                     Button {
                         Clipboard.currentString = urlStr
