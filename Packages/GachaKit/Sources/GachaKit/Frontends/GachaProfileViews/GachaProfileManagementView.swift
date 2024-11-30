@@ -20,13 +20,13 @@ public struct GachaProfileManagementView: View {
                                 .fixedSize()
                                 .environment(theVM)
                         } label: {
-                            Text("gachaKit.management.uidAndGameToPurge".i18nGachaKit)
+                            Text("gachaKit.management.uidAndGameToPurge", bundle: .module)
                         }
                         if theVM.taskState != .busy {
                             Button {
                                 isRemovalConfirmationAlertShown = true
                             } label: {
-                                Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID".i18nGachaKit)
+                                Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID", bundle: .module)
                                     .fontWidth(.condensed)
                                     .fontWeight(.bold)
                                     .multilineTextAlignment(.center)
@@ -44,7 +44,7 @@ public struct GachaProfileManagementView: View {
                     } header: {
                         if let gpid = theVM.currentGPID {
                             HStack {
-                                Text("gachaKit.management.currentGame".i18nGachaKit)
+                                Text("gachaKit.management.currentGame", bundle: .module)
                                 Spacer()
                                 Text(verbatim: gpid.game.localizedDescription)
                             }
@@ -52,7 +52,7 @@ public struct GachaProfileManagementView: View {
                         }
                     }
                 } else {
-                    Text("gachaKit.prompt.noGachaProfileFound".i18nGachaKit)
+                    Text("gachaKit.prompt.noGachaProfileFound", bundle: .module)
                 }
             }
             .navigationTitle(Self.navTitle)

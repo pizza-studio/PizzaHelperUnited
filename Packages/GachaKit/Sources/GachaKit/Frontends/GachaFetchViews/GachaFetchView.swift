@@ -94,7 +94,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                                 .disabled(true)
                         }
                     } header: {
-                        Text("gachaKit.getRecord.running".i18nGachaKit)
+                        Text("gachaKit.getRecord.running", bundle: .module)
                     }
                 }
             }
@@ -201,7 +201,7 @@ extension GachaFetchView4Game {
                         }
                     }
                 } header: {
-                    Text("gachaKit.getRecord.quickFetch4GenshinMiyousheUIDs".i18nGachaKit)
+                    Text("gachaKit.getRecord.quickFetch4GenshinMiyousheUIDs", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .textCase(.none)
                 }
@@ -313,7 +313,7 @@ extension GachaFetchView4Game {
         var body: some View {
             Section {
                 Label {
-                    Text("gachaKit.getRecord.inProgress.obtaining".i18nGachaKit)
+                    Text("gachaKit.getRecord.inProgress.obtaining", bundle: .module)
                 } icon: {
                     ProgressView().id(UUID())
                 }
@@ -350,7 +350,7 @@ extension GachaFetchView4Game {
         var body: some View {
             Section {
                 Label {
-                    Text("gachaKit.getRecord.gotSome.obtaining".i18nGachaKit)
+                    Text("gachaKit.getRecord.gotSome.obtaining", bundle: .module)
                 } icon: {
                     ProgressView().id(UUID())
                 }
@@ -442,7 +442,7 @@ extension GachaFetchView4Game {
         var body: some View {
             Section {
                 Label {
-                    Text("gachaKit.getRecord.finished.succeeded".i18nGachaKit)
+                    Text("gachaKit.getRecord.finished.succeeded", bundle: .module)
                 } icon: {
                     Image(systemSymbol: .checkmarkCircle)
                         .foregroundColor(.green)

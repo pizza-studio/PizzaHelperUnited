@@ -35,18 +35,20 @@ public struct GachaImportSections: View {
             .labelsHidden()
             .fixedSize()
         } label: {
-            Text("gachaKit.exchange.fileFormat".i18nGachaKit)
+            Text("gachaKit.exchange.fileFormat", bundle: .module)
         }
     }
 
     @ViewBuilder
     func buttonToStepOne() -> some View {
         if theVM.taskState != .busy {
-            Button("gachaKit.exchange.backAndReselectFile.button".i18nGachaKit) {
+            Button {
                 withAnimation {
                     theVM.currentSceneStep4Import = .chooseFormat
                     chosenGPID.removeAll()
                 }
+            } label: {
+                Text("gachaKit.exchange.backAndReselectFile.button", bundle: .module)
             }
         }
     }
@@ -144,15 +146,15 @@ extension GachaImportSections {
             VStack(alignment: .leading, spacing: 11) {
                 switch format {
                 case .asUIGFv4:
-                    Text("gachaKit.exchange.formatExplain.uigfv4".i18nGachaKit)
+                    Text("gachaKit.exchange.formatExplain.uigfv4", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 case .asSRGFv1:
-                    Text("gachaKit.exchange.formatExplain.srgfv1".i18nGachaKit)
+                    Text("gachaKit.exchange.formatExplain.srgfv1", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 case .asGIGFExcel, .asGIGFJson:
                     Text(format.longName)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("gachaKit.exchange.formatExplain.gigf".i18nGachaKit)
+                    Text("gachaKit.exchange.formatExplain.gigf", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     let timeZoneExplain = "gachaKit.exchange.formatExplain.gigf.timeZone".i18nGachaKit
                     let lines = timeZoneExplain.components(separatedBy: .newlines)
@@ -160,7 +162,7 @@ extension GachaImportSections {
                         Text(verbatim: currentLine)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    Text("gachaKit.exchange.formatExplain.gigf.minimumSupportedVersion".i18nGachaKit)
+                    Text("gachaKit.exchange.formatExplain.gigf.minimumSupportedVersion", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 Text("gachaKit.uigf.affLink.[UIGF](https://uigf.org/)", bundle: .module)
@@ -181,12 +183,12 @@ extension GachaImportSections {
             LabeledContent {
                 Text(verbatim: source.info.previousFormat)
             } label: {
-                Text("gachaKit.exchange.fileFormat".i18nGachaKit)
+                Text("gachaKit.exchange.fileFormat", bundle: .module)
             }
             LabeledContent {
                 Text(verbatim: source.info.exportApp)
             } label: {
-                Text("gachaKit.exchange.exportedFromAppOrigin".i18nGachaKit)
+                Text("gachaKit.exchange.exportedFromAppOrigin", bundle: .module)
             }
             makeDateLabel(unixTimeStamp: source.info.exportTimestamp)
             Toggle(
@@ -206,7 +208,7 @@ extension GachaImportSections {
                             immediately: false
                         )
                     } label: {
-                        Text(verbatim: "gachaKit.exchange.startImportingData.button".i18nGachaKit)
+                        Text("gachaKit.exchange.startImportingData.button", bundle: .module)
                             .fontWeight(.bold)
                             .fontWidth(.condensed)
                             .multilineTextAlignment(.center)
@@ -230,7 +232,7 @@ extension GachaImportSections {
                 nameIDMap: theVM.nameIDMap
             )
         } header: {
-            Text("gachaKit.exchange.chooseProfiles.import.prompt".i18nGachaKit)
+            Text("gachaKit.exchange.chooseProfiles.import.prompt", bundle: .module)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }
@@ -252,13 +254,13 @@ extension GachaImportSections {
                     bigTime
                 }
             } label: {
-                Text("gachaKit.exchange.import.info.time".i18nGachaKit)
+                Text("gachaKit.exchange.import.info.time", bundle: .module)
             }
         } else {
             LabeledContent {
                 Text(verbatim: "N/A")
             } label: {
-                Text("gachaKit.exchange.import.info.time".i18nGachaKit)
+                Text("gachaKit.exchange.import.info.time", bundle: .module)
             }
         }
     }
@@ -287,7 +289,7 @@ extension GachaImportSections {
     func body4SceneStepImportResultPresentation(_ result: [GachaProfileID: Int]) -> some View {
         Section {
             Label {
-                Text("gachaKit.exchange.import.succeeded".i18nGachaKit)
+                Text("gachaKit.exchange.import.succeeded", bundle: .module)
             } icon: {
                 Image(systemSymbol: .externaldriveFillBadgeCheckmark)
             }
@@ -312,7 +314,7 @@ extension GachaImportSections {
                 }
             }
         } header: {
-            Text("gachaKit.exchange.import.succeededReport.sectionHeader".i18nGachaKit)
+            Text("gachaKit.exchange.import.succeededReport.sectionHeader", bundle: .module)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .textCase(.none)
         }

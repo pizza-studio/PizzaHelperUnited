@@ -148,9 +148,9 @@ extension GachaRootView {
             if theVM.currentGPID != nil {
                 GachaProfileView()
             } else if !theVM.hasGPID.wrappedValue {
-                Text("gachaKit.prompt.pleaseChooseGachaProfile".i18nGachaKit)
+                Text("gachaKit.prompt.pleaseChooseGachaProfile", bundle: .module)
             } else {
-                Text("gachaKit.prompt.noGachaProfileFound".i18nGachaKit)
+                Text("gachaKit.prompt.noGachaProfileFound", bundle: .module)
             }
             Section {
                 Text(GachaRootView.navDescription)
