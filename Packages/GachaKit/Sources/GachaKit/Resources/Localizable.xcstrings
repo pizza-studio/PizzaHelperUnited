@@ -5003,6 +5003,83 @@
         }
       }
     },
+    "gachaKit.getRecord.readyStart.enableBleachingMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungültige lokale Einträge bereinigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bleach Invalid Local Records"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpiar registros locales inválidos"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linisin ang Mga Di-wastong Lokal na Rekord"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettoyer les enregistrements locaux invalides"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulire i record locali non validi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "異常なる既存データを掃除する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잘못된 로컬 기록 제거"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить недействительные локальные записи"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xóa các bản ghi cục bộ không hợp lệ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清理既存的异常记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清理既存的異常記錄"
+          }
+        }
+      }
+    },
     "gachaKit.getRecord.readyStart.forceOverride" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5162,73 +5239,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aufgrund gelegentlicher Serverprobleme kann es vorkommen, dass der Spielserver doppelte Gacha-Einträge mit falschen Transaktions-IDs zurücksendet, die die lokale Datenbank verschmutzen. Diese App verwendet immer die neuesten Abrufergebnisse als vertrauenswürdige Quelle für korrekte Transaktions-IDs und entfernt die falschen Einträge lokal. Dies kann jedoch durch die verschmutzten Daten des Spielservers beeinträchtigt werden. Trotzdem werden alle Gacha-Daten nach Ablauf einer Spielversion statisch und vertrauenswürdig."
+            "value" : "Aufgrund gelegentlicher Serverprobleme kann es vorkommen, dass der Spielserver doppelte Gacha-Einträge mit falschen Transaktions-IDs zurücksendet, die die lokale Datenbank verschmutzen. Wenn der Bleichmodus aktiviert ist, verwendet diese App immer die neuesten Abrufergebnisse als vertrauenswürdige Quelle für korrekte Transaktions-IDs und entfernt die falschen Einträge lokal. Dies kann jedoch durch die verschmutzten Daten des Spielservers beeinträchtigt werden. Trotzdem werden alle Gacha-Daten nach Ablauf einer Spielversion statisch und vertrauenswürdig."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Due to occasional server-side accidents, the game server may return duplicated gacha entries with incorrect transaction IDs, polluting the local database. This app always use the latest fetch results as the trust source of correct transaction IDs and remove the incorrect entries on the local side, but this can be deceived by the polluted data from the game server. Nevertheless, as long as a game version deprecates, all gacha records during its operation period will become static and trustable."
+            "value" : "Due to occasional server-side accidents, the game server may return duplicated gacha entries with incorrect transaction IDs, polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trust source of correct transaction IDs and remove the incorrect entries on the local side, but this can be deceived by the polluted data from the game server. Nevertheless, as long as a game version deprecates, all gacha records during its operation period will become static and trustable."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Debido a accidentes ocasionales del servidor, el servidor del juego puede devolver entradas de gacha duplicadas con identificaciones de transacción incorrectas, contaminando la base de datos local. Esta aplicación siempre utiliza los resultados más recientes como fuente confiable de identificaciones correctas y elimina las entradas incorrectas localmente, pero puede ser engañada por los datos contaminados del servidor. Sin embargo, una vez que una versión del juego queda obsoleta, todos los registros de gacha de su período de operación serán estáticos y confiables."
+            "value" : "Debido a accidentes ocasionales del servidor, el servidor del juego puede devolver entradas de gacha duplicadas con identificaciones de transacción incorrectas, contaminando la base de datos local. Si el modo de blanqueo está activado, esta aplicación usará los resultados más recientes como fuente confiable de identificaciones correctas y eliminará las entradas incorrectas localmente, aunque podría ser engañada por los datos contaminados del servidor del juego. Sin embargo, una vez que una versión del juego quede obsoleta, todos los registros de gacha de su período de operación serán estáticos y confiables."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dahil sa mga hindi inaasahang insidente sa server, maaaring magbalik ang game server ng mga doble o maling gacha entry na may maling transaction ID, na nagdudulot ng polusyon sa lokal na database. Ang app na ito ay laging gumagamit ng pinakabagong resulta ng pagkuha bilang mapagkakatiwalaang pinagmulan ng tamang transaction ID at nag-aalis ng maling entry, ngunit maaaring maloko ng kontaminadong data mula sa game server. Gayunpaman, sa paglipas ng isang game version, lahat ng gacha record mula sa operasyon nito ay magiging static at mapagkakatiwalaan."
+            "value" : "Dahil sa mga hindi inaasahang insidente sa server, maaaring magbalik ang game server ng mga dobleng gacha entry na may maling transaction ID, na nagdudulot ng polusyon sa lokal na database. Kung naka-enable ang bleaching mode, gagamitin ng app na ito ang pinakabagong resulta ng pagkuha bilang mapagkakatiwalaang pinagmulan ng tamang transaction ID at aalisin ang maling entry, ngunit maaaring malinlang ng kontaminadong data mula sa game server. Gayunpaman, kapag ang isang game version ay nag-expire, lahat ng gacha record mula sa operasyon nito ay magiging static at mapagkakatiwalaan."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En raison d'accidents ponctuels côté serveur, le serveur de jeu peut renvoyer des entrées gacha dupliquées avec des identifiants de transaction incorrects, polluant la base de données locale. Cette application utilise toujours les derniers résultats d'extraction comme source fiable pour les identifiants de transaction corrects et supprime les entrées incorrectes localement, mais elle peut être trompée par les données polluées du serveur de jeu. Cependant, une fois qu'une version du jeu est obsolète, tous les enregistrements gacha de sa période d'exploitation deviennent statiques et fiables."
+            "value" : "En raison d'accidents ponctuels côté serveur, le serveur de jeu peut renvoyer des entrées gacha dupliquées avec des identifiants de transaction incorrects, polluant la base de données locale. Si le mode de blanchiment est activé, cette application utilisera toujours les derniers résultats d'extraction comme source fiable pour les identifiants de transaction corrects et supprimera les entrées incorrectes localement, bien qu'elle puisse être trompée par les données polluées du serveur de jeu. Cependant, une fois qu'une version du jeu est obsolète, tous les enregistrements gacha de sa période d'exploitation deviennent statiques et fiables."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A causa di incidenti occasionali lato server, il server di gioco può restituire voci gacha duplicate con ID di transazione errati, inquinando il database locale. Questa app utilizza sempre gli ultimi risultati come fonte attendibile per identificare correttamente gli ID di transazione e rimuovere le voci errate localmente, ma può essere ingannata dai dati inquinati provenienti dal server di gioco. Tuttavia, una volta che una versione del gioco è obsoleta, tutti i record gacha del suo periodo operativo diventeranno statici e affidabili."
+            "value" : "A causa di incidenti occasionali lato server, il server di gioco può restituire voci gacha duplicate con ID di transazione errati, inquinando il database locale. Se è abilitata la modalità di sbiancamento, questa app utilizzerà sempre gli ultimi risultati come fonte attendibile per identificare correttamente gli ID di transazione e rimuovere le voci errate localmente, ma potrebbe essere ingannata dai dati inquinati provenienti dal server di gioco. Tuttavia, una volta che una versione del gioco è obsoleta, tutti i record gacha del suo periodo operativo diventeranno statici e affidabili."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ゲームサーバー側の偶然の突発的な故障により、サーバーから送り返されるガチャ記録データが重複したり、取扱番号に誤りがあったりすることがあります。この結果、端末内のデータベースが汚染される可能性があります。このアプリは、常に最新のガチャ記録を準じて、端末内のデータベースの取扱番号が正しいかどうかを点検し、誤ったデータを排除しようとしています。しかし、この汚染現象によって、点検中の判断が誤ってしまう可能性があります。いずれにせよ、ゲームのサービスが終了する時点で、サービス期間中のすべてのガチャ記録はサーバー側で確定し、信頼できる結果となります。"
+            "value" : "ゲームサーバー側の偶然の突発的な故障により、サーバーから送り返されるガチャ記録データが重複したり、取扱番号に誤りがあったりすることがあります。この結果、端末内のデータベースが汚染される可能性があります。「異常なる既存データを掃除する」そのスィッチがONにした場合、このアプリは常に最新のガチャ記録を準じて、端末内のデータベースの取扱番号が正しいかどうかを点検し、誤ったデータを排除しようとしています。しかし、この汚染現象によって、点検中の判断が誤ってしまう可能性があります。いずれにせよ、ゲームのサービスが終了する時点で、サービス期間中のすべてのガチャ記録はサーバー側で確定し、信頼できる結果となります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "서버 측의 가끔 발생하는 사고로 인해, 게임 서버가 중복된 가챠 항목을 잘못된 트랜잭션 ID와 함께 반환하여 로컬 데이터베이스를 오염시킬 수 있습니다. 이 앱은 항상 최신 데이터를 신뢰 소스로 사용하고 로컬에서 잘못된 항목을 제거하려고 하지만, 게임 서버의 오염된 데이터로 인해 잘못된 판단이 있을 수 있습니다. 그러나 게임 버전이 종료되면 모든 가챠 기록은 고정되어 신뢰할 수 있게 됩니다."
+            "value" : "서버 측의 가끔 발생하는 사고로 인해, 게임 서버가 중복된 가챠 항목을 잘못된 트랜잭션 ID와 함께 반환하여 로컬 데이터베이스를 오염시킬 수 있습니다.漂白 모드가 활성화된 경우, 이 앱은 항상 최신 데이터를 신뢰 소스로 사용하고 로컬에서 잘못된 항목을 제거하려고 하지만, 게임 서버의 오염된 데이터로 인해 잘못된 판단이 있을 수 있습니다. 그러나 게임 버전이 종료되면 모든 가챠 기록은 고정되어 신뢰할 수 있게 됩니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Из-за случайных сбоев на сервере игра может возвращать дублированные записи гача с неправильными ID транзакций, что загрязняет локальную базу данных. Это приложение всегда использует последние результаты извлечения как надежный источник для проверки правильности ID транзакций и удаления неправильных записей локально, но может быть обмануто загрязненными данными с сервера. Тем не менее, как только версия игры устаревает, все записи гача за период ее работы становятся статичными и надежными."
+            "value" : "Из-за случайных сбоев на сервере игра может возвращать дублированные записи гача с неправильными ID транзакций, что загрязняет локальную базу данных. Если включён режим отбеливания, приложение будет использовать последние результаты извлечения как надёжный источник для проверки правильности ID транзакций и удаления неправильных записей локально, но может быть обмануто загрязнёнными данными с сервера. Тем не менее, как только версия игры устаревает, все записи гача за период её работы становятся статичными и надёжными."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Do sự cố hiếm gặp ở máy chủ, máy chủ trò chơi có thể trả về các mục gacha trùng lặp với ID giao dịch không chính xác, gây ô nhiễm cơ sở dữ liệu cục bộ. Ứng dụng này luôn sử dụng kết quả mới nhất làm nguồn tin cậy cho ID giao dịch chính xác và loại bỏ các mục sai cục bộ, nhưng có thể bị lừa bởi dữ liệu bị ô nhiễm từ máy chủ trò chơi. Tuy nhiên, khi phiên bản trò chơi không còn được hỗ trợ, tất cả các bản ghi gacha trong giai đoạn hoạt động của nó sẽ trở nên ổn định và đáng tin cậy."
+            "value" : "Do sự cố hiếm gặp ở máy chủ, máy chủ trò chơi có thể trả về các mục gacha trùng lặp với ID giao dịch không chính xác, gây ô nhiễm cơ sở dữ liệu cục bộ. Nếu chế độ tẩy trắng được bật, ứng dụng này sẽ sử dụng kết quả mới nhất làm nguồn tin cậy cho ID giao dịch chính xác và loại bỏ các mục sai cục bộ, nhưng có thể bị lừa bởi dữ liệu bị ô nhiễm từ máy chủ trò chơi. Tuy nhiên, khi phiên bản trò chơi không còn được hỗ trợ, tất cả các bản ghi gacha trong giai đoạn hoạt động của nó sẽ trở nên ổn định và đáng tin cậy."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "由于游戏服务器端偶发的故障，服务器回传的抽卡记录数据可能会重复、或带有错误的流水号，造成本地数据库被污染的情况。本 App 始终以最新获取的抽卡记录作为依据、来判断本地数据库的数据的流水号是否正确、据此筛除可能的错误数据。但这个过程可能会因为这个污染现象而被误导。无论如何，某个游戏版本在结束运营时，运营期间的所有抽卡记录都会在服务器端被固定下来、成为可信结果。"
+            "value" : "由于游戏服务器端偶发的故障，服务器回传的抽卡记录数据可能会重复、或带有错误的流水号，造成本地数据库被污染的情况。如果启用漂白模式，本 App 将始终以最新获取的抽卡记录作为依据、来判断本地数据库的数据的流水号是否正确、据此筛除可能的错误数据。但这个过程可能会因为这个污染现象而被误导。无论如何，某个游戏版本在结束运营时，运营期间的所有抽卡记录都会在服务器端被固定下来、成为可信结果。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "由於遊戲伺服器端偶發的故障，伺服器回傳的抽卡記錄資料可能會重複、或帶有錯誤的流水號，造成本機資料庫被污染的情況。敝應用始終以最新獲取的抽卡記錄作為依據、來判斷本機資料庫的資料的流水號是否正確、據此篩除可能的錯誤資料。但這個過程可能會因為這個污染現象而被誤導。無論如何，某個遊戲版本在結束運營時，運營期間的所有抽卡記錄都會在伺服器端被固定下來、成為可信結果。"
+            "value" : "由於遊戲伺服器端偶發的故障，伺服器回傳的抽卡記錄資料可能會重複、或帶有錯誤的流水號，造成本機資料庫被污染的情況。如果啟用漂白模式，敝應用將始終以最新獲取的抽卡記錄作為依據、來判斷本機資料庫的資料的流水號是否正確、據此篩除可能的錯誤資料。但這個過程可能會因為這個污染現象而被誤導。無論如何，某個遊戲版本在結束運營時，運營期間的所有抽卡記錄都會在伺服器端被固定下來、成為可信結果。"
           }
         }
       }

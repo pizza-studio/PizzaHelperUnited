@@ -92,6 +92,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
     public var cachedItems: [PZGachaEntrySendable] = []
     public var gachaTypeDateCounts: [GachaTypeDateCount] = []
     public var isForceOverrideModeEnabled = true
+    public var isBleachingModeEnabled = true
     public private(set) var bleachCounter = 0
 
     public private(set) var client: GachaClient<GachaType>?
@@ -152,7 +153,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
                 for try await (gachaType, result) in client {
                     setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
                     for item in result.listConverted {
-                        if bleacher == nil {
+                        if bleacher == nil, isBleachingModeEnabled {
                             bleacher = .init(uid: item.uid, game: GachaType.game)
                         }
                         withAnimation {
