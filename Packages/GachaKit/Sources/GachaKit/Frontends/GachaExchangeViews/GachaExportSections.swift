@@ -24,8 +24,7 @@ public struct GachaExportSections: View {
                     }
                 }.frame(maxWidth: .infinity)
                 Text("gachaKit.gachaLanguage.languageSupported.explanation", bundle: .module)
-                    .font(.footnote).foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .asInlineTextDescription()
             }
 
             if case let .databaseExpired(game) = theVM.currentError as? GachaMeta.GMDBError {

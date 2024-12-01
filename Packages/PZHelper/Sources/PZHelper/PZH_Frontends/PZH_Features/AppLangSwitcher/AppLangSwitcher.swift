@@ -63,8 +63,7 @@ struct AppLanguageSwitcher: View {
                     }.labelsHidden()
                 }
                 Text("settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper)
-                    .font(.footnote).foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .asInlineTextDescription()
             }
         } icon: {
             Image(systemSymbol: .globe)

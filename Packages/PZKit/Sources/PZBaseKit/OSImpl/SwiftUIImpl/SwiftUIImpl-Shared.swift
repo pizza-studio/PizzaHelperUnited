@@ -334,3 +334,14 @@ public enum NavBarTitleDisplayMode {
     case inline
     case large
 }
+
+// MARK: - InlineTextDescription
+
+extension View {
+    @ViewBuilder
+    public func asInlineTextDescription() -> some View {
+        font(.footnote).foregroundStyle(.secondary)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
