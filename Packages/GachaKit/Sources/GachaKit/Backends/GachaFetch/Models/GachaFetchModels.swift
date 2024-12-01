@@ -64,7 +64,7 @@ extension GachaFetchModels {
         public let region: String
         public let total: String? // Genshin only. Might be totally useless.
         public let timeZoneDelta: Int
-        public let list: [FetchedEntry]
+        public var list: [FetchedEntry]
         public var listConverted: [PZGachaEntrySendable] = []
 
         // MARK: Private

@@ -53,6 +53,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
 
     public var pagination: Pagination = .init()
     public var urlString: String
+    public var fetchRange: GachaFetchRange = .allAvailable
 
     public func makeAsyncIterator() -> Self { self }
 
@@ -73,14 +74,25 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
             var result = try GachaResult.decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "GachaClient().next()")
 
             result.listConverted = []
-            for entryRaw in result.list {
-                let translatedEntry = try await entryRaw.toGachaEntrySendable(
+            let isUnlimited = fetchRange.isUnlimited
+            var shouldJumpToNextGachaType = false
+            conversionProcess: for i in 0 ..< result.list.count {
+                let translatedEntry = try await result.list[i].toGachaEntrySendable(
                     game: GachaType.game, fixItemIDs: GachaType.game == .genshinImpact
                 )
+                let tzDelta = GachaKit.getServerTimeZoneDelta(uid: translatedEntry.uid, game: GachaType.game)
+                if !fetchRange.isUnlimited, let timeTag = TimeTag(translatedEntry.time, tzDelta: tzDelta) {
+                    guard !fetchRange.verifyWhetherOutOfRange(against: timeTag.time) else {
+                        shouldJumpToNextGachaType = true
+                        // 这里假设 List 最开始的是最新的。回头有意外的话再排查。
+                        result.list = Array(result.list[0..<i])
+                        break conversionProcess
+                    }
+                }
                 result.listConverted.append(translatedEntry)
             }
 
-            if let endResult = result.list.last {
+            if !shouldJumpToNextGachaType, let endResult = result.list.last {
                 pagination = .init(
                     page: pagination.page + 1,
                     size: pagination.size,
