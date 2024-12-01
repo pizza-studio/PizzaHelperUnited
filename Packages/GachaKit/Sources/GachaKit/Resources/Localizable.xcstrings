@@ -5766,6 +5766,82 @@
         }
       }
     },
+    "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokale Datenbank kann verschmutzt werden? Warum?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local database can get polluted? Why?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿La base de datos local puede contaminarse? ¿Por qué?"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang lokal na database ay maaaring marumihan? Bakit?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La base de données locale peut-elle être polluée ? Pourquoi ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il database locale può essere danneggiato? Perché?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "端末内のデータベースが汚染されてしまう恐れとは？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로컬 데이터베이스가 오염될 수 있나요? 왜죠?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Локальная база данных может быть загрязнена? Почему?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cơ sở dữ liệu cục bộ có thể bị ô nhiễm? Tại sao?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "为什么本地资料库会被污染？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "為什麼本機資料庫會被污染？"
+          }
+        }
+      }
+    },
     "gachaKit.getRecord.readyStart.sectionHeader.urgeUsersToBackupFirst" : {
       "localizations" : {
         "de" : {
