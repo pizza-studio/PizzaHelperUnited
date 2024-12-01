@@ -351,8 +351,7 @@ private struct RequireLoginView: View {
         VStack {
             Toggle("settings.profile.importAllUIDs".i18nPZHelper, isOn: $importAllUIDs)
             Text("settings.profile.importAllUIDs.explanation".i18nPZHelper)
-                .font(.footnote).foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .asInlineTextDescription()
         }
 
         NavigationLink {

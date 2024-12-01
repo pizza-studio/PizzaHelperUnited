@@ -52,16 +52,14 @@ extension Enka {
                             Text("settings.display.artifactRating.considerSwirls".i18nEnka)
                         }
                         Text("settings.display.artifactRating.considerSwirls.explanation".i18nEnka)
-                            .font(.footnote).foregroundStyle(.secondary)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .asInlineTextDescription()
                     }
                     VStack {
                         Toggle(isOn: $artifactRatingRules.bind(.considerHyperbloomElectroRoles)) {
                             Text("settings.display.artifactRating.considerHyperBloomElectroRoles".i18nEnka)
                         }
                         Text("settings.display.artifactRating.considerHyperBloomElectroRoles.explanation".i18nEnka)
-                            .font(.footnote).foregroundStyle(.secondary)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .asInlineTextDescription()
                     }
                 }
             } header: {
@@ -74,8 +72,7 @@ extension Enka {
                         Text("settings.display.showCase.colorizeArtifactSubPropCounts".i18nEnka)
                     }
                     Text("settings.display.showCase.colorizeArtifactSubPropCounts.explain".i18nEnka)
-                        .font(.footnote).foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .asInlineTextDescription()
                 }
                 Toggle(isOn: $useNameCardBGWithGICharacters) {
                     Text("settings.display.showCase.useNameCardBGWithGICharacters".i18nEnka)
@@ -88,8 +85,7 @@ extension Enka {
                         markdown: "enka.genshinStylePhotosForHSR.featureOption.disclaimer"
                             .i18nEnka
                     ))
-                    .font(.footnote).foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .asInlineTextDescription()
                 }
             } header: {
                 Text("settings.display.showCase.sectionTitle".i18nEnka)
@@ -110,8 +106,7 @@ extension Enka {
                         Text("settings.display.showCase.forceCharacterWeaponNameFixed".i18nEnka)
                     }
                     Text("settings.display.showCase.forceCharacterWeaponNameFixed.explain".i18nEnka)
-                        .font(.footnote).foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .asInlineTextDescription()
                 }
                 if !useRealCharacterNames {
                     HStack {
@@ -145,8 +140,7 @@ extension Enka {
                         Text("settings.display.enkaStatus.defaultDBQueryHost".i18nEnka)
                     }
                     Text("settings.display.enkaStatus.defaultDBQueryHost.explanation".i18nEnka)
-                        .font(.footnote).foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .asInlineTextDescription()
                 }
             } header: {
                 Text("settings.display.enkaStatus.sectionTitle".i18nEnka)

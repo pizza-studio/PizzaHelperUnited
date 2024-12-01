@@ -154,7 +154,7 @@ extension GachaRootView {
             }
             Section {
                 Text(GachaRootView.navDescription)
-                    .font(.footnote).foregroundStyle(.secondary)
+                    .asInlineTextDescription()
             }
         }
         .formStyle(.grouped)
