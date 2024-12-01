@@ -286,16 +286,16 @@ extension GachaFetchView4Game {
                 }
                 .disabled(gachaFetchVM.chosenPools.isEmpty)
                 @Bindable var gachaFetchVM = gachaFetchVM
-                Picker(selection: $gachaFetchVM.fetchRange) {
-                    ForEach(GachaFetchRange.allCases, id: \.self) { rangeCase in
-                        Text(rangeCase.localizedLabel).tag(rangeCase)
-                    }
-                } label: {
-                    Label {
+                Label {
+                    Picker(selection: $gachaFetchVM.fetchRange) {
+                        ForEach(GachaFetchRange.allCases, id: \.self) { rangeCase in
+                            Text(rangeCase.localizedLabel).tag(rangeCase)
+                        }
+                    } label: {
                         Text("gachaKit.getRecord.fetchRange.title", bundle: .module)
-                    } icon: {
-                        Image(systemSymbol: .chartBarXaxisAscendingBadgeClock)
                     }
+                } icon: {
+                    Image(systemSymbol: .chartBarXaxisAscendingBadgeClock)
                 }
                 Toggle(isOn: $gachaFetchVM.isForceOverrideModeEnabled) {
                     Label(
@@ -309,13 +309,6 @@ extension GachaFetchView4Game {
                         systemSymbol: .paintbrush
                     )
                 }
-                if let urlStr = gachaFetchVM.client?.urlString {
-                    Button {
-                        Clipboard.currentString = urlStr
-                    } label: {
-                        Label("gachaKit.getRecord.readyStart.copyThisURL".i18nGachaKit, systemSymbol: .docOnClipboard)
-                    }
-                }
             } header: {
                 Text("gachaKit.getRecord.readyStart.sectionHeader.urgeUsersToBackupFirst", bundle: .module)
                     .multilineTextAlignment(.leading)
@@ -323,11 +316,83 @@ extension GachaFetchView4Game {
                     .foregroundStyle(.orange)
                     .frame(maxWidth: .infinity, alignment: .leading)
             } footer: {
-                Text("gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents", bundle: .module)
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                drawAlertRegardingTrashDataIncidents()
             }
 
+            GachaPoolTypePickerSection()
+
+            Section {
+                if let urlStr = gachaFetchVM.client?.urlString {
+                    Button {
+                        Clipboard.currentString = urlStr
+                    } label: {
+                        Label("gachaKit.getRecord.readyStart.copyThisURL".i18nGachaKit, systemSymbol: .docOnClipboard)
+                    }
+                }
+                Button {
+                    reinit()
+                } label: {
+                    Label("gachaKit.getRecord.readyStart.reinit".i18nGachaKit, systemSymbol: .arrowClockwiseCircle)
+                }
+            }
+        }
+
+        @ViewBuilder
+        func drawAlertRegardingTrashDataIncidents() -> some View {
+            let explanationText = Text(
+                "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents",
+                bundle: .module
+            )
+            let shouldFoldDescription: Bool = switch OS.type {
+            case .macOS: false
+            case .iPhoneOS: true
+            case .iPadOS: ThisDevice.isSplitOrSlideOver
+            default: false
+            }
+            if !shouldFoldDescription {
+                explanationText
+            } else {
+                Button {
+                    withAnimation {
+                        isAlertShownRegardingTrashDataIncidents.toggle()
+                    }
+                } label: {
+                    Group {
+                        if !isAlertShownRegardingTrashDataIncidents {
+                            Text(verbatim: "⚠️ ") + Text(
+                                "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle",
+                                bundle: .module
+                            )
+                            .bold()
+                        } else {
+                            explanationText
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    .font(.footnote)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+        }
+
+        // MARK: Private
+
+        @Environment(VMType.self) private var gachaFetchVM
+        @State private var isAlertShownRegardingTrashDataIncidents: Bool = false
+
+        private let start: () -> Void
+        private let reinit: () -> Void
+    }
+}
+
+// MARK: GachaFetchView4Game.GachaPoolTypePickerSection
+
+extension GachaFetchView4Game {
+    private struct GachaPoolTypePickerSection: View {
+        // MARK: Public
+
+        public var body: some View {
             Section {
                 // 合并显示原神的两个限定活动卡池。
                 let pools = GachaType.knownCases.filter {
@@ -343,22 +408,11 @@ extension GachaFetchView4Game {
             } header: {
                 Text(verbatim: GachaPoolExpressible.getPoolFilterLabel(by: GachaType.game))
             }
-
-            Section {
-                Button {
-                    reinit()
-                } label: {
-                    Label("gachaKit.getRecord.readyStart.reinit".i18nGachaKit, systemSymbol: .arrowClockwiseCircle)
-                }
-            }
         }
 
         // MARK: Private
 
         @Environment(VMType.self) private var gachaFetchVM
-
-        private let start: () -> Void
-        private let reinit: () -> Void
 
         private func toggleBinding(for gachaType: GachaType) -> Binding<Bool> {
             .init {
