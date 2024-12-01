@@ -54,27 +54,32 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
     public var pagination: Pagination = .init()
     public var urlString: String
     public var fetchRange: GachaFetchRange = .allAvailable
+    public var chosenPools: Set<GachaType> = Set(GachaType.knownCases)
 
     public func makeAsyncIterator() -> Self { self }
 
     public mutating func next() async throws(GachaError) -> (gachaType: GachaType, result: GachaResult)? {
+        guard !chosenPools.isEmpty else { return nil }
+        while !chosenPools.contains(pagination.gachaType) {
+            if let nextGachaType = pagination.gachaType.next() {
+                pagination = .init(gachaType: nextGachaType)
+            } else {
+                return nil
+            }
+        }
+        let request = Self.generateGachaRequest(
+            basicParam: authentication,
+            page: pagination.page,
+            size: pagination.size,
+            gachaType: pagination.gachaType,
+            endID: pagination.endID
+        )
+        let sleepNS = Double.random(in: GachaClient.getGachaDelayRangeRandom)
         do {
-            let request = Self.generateGachaRequest(
-                basicParam: authentication,
-                page: pagination.page,
-                size: pagination.size,
-                gachaType: pagination.gachaType,
-                endID: pagination.endID
-            )
-
-            let sleepNS = Double.random(in: GachaClient.getGachaDelayRangeRandom)
             try? await Task.sleep(nanoseconds: UInt64(sleepNS * 1_000_000_000))
             let (data, _) = try await URLSession.shared.data(for: request)
-
             var result = try GachaResult.decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "GachaClient().next()")
-
             result.listConverted = []
-            let isUnlimited = fetchRange.isUnlimited
             var shouldJumpToNextGachaType = false
             conversionProcess: for i in 0 ..< result.list.count {
                 let translatedEntry = try await result.list[i].toGachaEntrySendable(
