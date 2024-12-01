@@ -90,6 +90,15 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                 case .failFetching, .finished, .got:
                     Section {
                         GetGachaChart(data: $gachaVM4Fetch.gachaTypeDateCounts)
+                    } header: {
+                        HStack {
+                            (Text("gachaKit.getRecord.fetchRange.title", bundle: .module) + Text(verbatim: ":"))
+                                .multilineTextAlignment(.leading)
+                            Spacer()
+                            Text(verbatim: gachaVM4Fetch.fetchRange.localizedLabel)
+                                .multilineTextAlignment(.leading)
+                        }
+                        .textCase(.none)
                     }
                 default:
                     EmptyView()
@@ -103,6 +112,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                         }
                     } header: {
                         Text("gachaKit.getRecord.running", bundle: .module)
+                            .textCase(.none)
                     }
                 }
             }
@@ -274,6 +284,17 @@ extension GachaFetchView4Game {
                     Label("gachaKit.getRecord.readyStart.start".i18nGachaKit, systemSymbol: .playCircle)
                 }
                 @Bindable var gachaFetchVM = gachaFetchVM
+                Picker(selection: $gachaFetchVM.fetchRange) {
+                    ForEach(GachaFetchRange.allCases, id: \.self) { rangeCase in
+                        Text(rangeCase.localizedLabel).tag(rangeCase)
+                    }
+                } label: {
+                    Label {
+                        Text("gachaKit.getRecord.fetchRange.title", bundle: .module)
+                    } icon: {
+                        Image(systemSymbol: .chartBarXaxisAscendingBadgeClock)
+                    }
+                }
                 Toggle(isOn: $gachaFetchVM.isForceOverrideModeEnabled) {
                     Label(
                         "gachaKit.getRecord.readyStart.forceOverride".i18nGachaKit,

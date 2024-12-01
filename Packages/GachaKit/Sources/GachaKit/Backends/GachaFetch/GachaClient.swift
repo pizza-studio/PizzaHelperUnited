@@ -85,7 +85,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
                     guard !fetchRange.verifyWhetherOutOfRange(against: timeTag.time) else {
                         shouldJumpToNextGachaType = true
                         // 这里假设 List 最开始的是最新的。回头有意外的话再排查。
-                        result.list = Array(result.list[0..<i])
+                        result.list = Array(result.list[0 ..< i])
                         break conversionProcess
                     }
                 }
