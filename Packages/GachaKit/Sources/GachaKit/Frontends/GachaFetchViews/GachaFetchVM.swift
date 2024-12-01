@@ -383,26 +383,6 @@ private class GachaBleachSputnik {
 
     // MARK: Public
 
-    public struct TimeTag: Hashable, Identifiable {
-        // MARK: Lifecycle
-
-        public init?(_ timeTagStr: String, tzDelta: Int) {
-            guard let time = Date(timeTagStr, tzDelta: tzDelta) else { return nil }
-            let components = Calendar.current.dateComponents([.day], from: time, to: Date.now)
-            self.timeTagStr = timeTagStr
-            self.time = time
-            self.dayFromNow = components.day ?? 0
-        }
-
-        // MARK: Public
-
-        public let timeTagStr: String
-        public let time: Date
-        public let dayFromNow: Int
-
-        public var id: TimeInterval { time.timeIntervalSince1970 }
-    }
-
     public var validTransactionIDMap: [String: [String]] = [:]
 
     public func startBleachTask(counter bleachCounter: inout Int) {
