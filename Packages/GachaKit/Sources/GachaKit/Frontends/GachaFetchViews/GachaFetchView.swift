@@ -79,6 +79,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                     FinishedView(
                         typeFetchedCount: typeFetchedCount,
                         dataBleachedCount: dataBleachedCount,
+                        chosenPools: gachaVM4Fetch.chosenPools,
                         reinit: initialize
                     )
                     .onAppear {
@@ -283,6 +284,7 @@ extension GachaFetchView4Game {
                 } label: {
                     Label("gachaKit.getRecord.readyStart.start".i18nGachaKit, systemSymbol: .playCircle)
                 }
+                .disabled(gachaFetchVM.chosenPools.isEmpty)
                 @Bindable var gachaFetchVM = gachaFetchVM
                 Picker(selection: $gachaFetchVM.fetchRange) {
                     ForEach(GachaFetchRange.allCases, id: \.self) { rangeCase in
@@ -325,6 +327,23 @@ extension GachaFetchView4Game {
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
+
+            Section {
+                // 合并显示原神的两个限定活动卡池。
+                let pools = GachaType.knownCases.filter {
+                    ($0 as? GachaTypeGI) != GachaTypeGI.characterEventWish2
+                }
+                ForEach(pools) { poolType in
+                    Toggle(
+                        isOn: toggleBinding(for: poolType).animation()
+                    ) {
+                        Text(verbatim: poolType.expressible.localizedTitle).tag(poolType)
+                    }
+                }
+            } header: {
+                Text(verbatim: GachaPoolExpressible.getPoolFilterLabel(by: GachaType.game))
+            }
+
             Section {
                 Button {
                     reinit()
@@ -340,6 +359,26 @@ extension GachaFetchView4Game {
 
         private let start: () -> Void
         private let reinit: () -> Void
+
+        private func toggleBinding(for gachaType: GachaType) -> Binding<Bool> {
+            .init {
+                !gachaFetchVM.chosenPools.isEmpty && gachaFetchVM.chosenPools.contains(gachaType)
+            } set: { newValue in
+                var gachaTypes = [gachaType]
+                switch gachaType {
+                case let gachaType as GachaTypeGI where gachaType.uigfGachaType == .characterEventWish:
+                    let eventWishes: [GachaTypeGI] = [.characterEventWish1, .characterEventWish2]
+                    gachaTypes = eventWishes.compactMap { $0 as? GachaType }
+                default: break
+                }
+                switch newValue {
+                case true:
+                    gachaTypes.forEach { gachaFetchVM.chosenPools.insert($0) }
+                case false:
+                    gachaTypes.forEach { gachaFetchVM.chosenPools.remove($0) }
+                }
+            }
+        }
     }
 }
 
@@ -480,10 +519,12 @@ extension GachaFetchView4Game {
         init(
             typeFetchedCount: [GachaType: Int],
             dataBleachedCount: Int,
+            chosenPools: Set<GachaType>,
             reinit: @escaping () -> Void
         ) {
             self.typeFetchedCount = typeFetchedCount
             self.dataBleachedCount = dataBleachedCount
+            self.chosenPools = chosenPools
             self.reinit = reinit
         }
 
@@ -511,10 +552,12 @@ extension GachaFetchView4Game {
                     $0.key.expressible.rawValue < $1.key.expressible.rawValue
                 }
                 ForEach(sortedTypeFechedCount, id: \.key) { currentPoolType, currentPoolCount in
-                    LabeledContent {
-                        Text(verbatim: currentPoolCount.description)
-                    } label: {
-                        Text(verbatim: currentPoolType.description)
+                    if !chosenPools.isEmpty, chosenPools.contains(currentPoolType) {
+                        LabeledContent {
+                            Text(verbatim: currentPoolCount.description).fontWidth(.condensed)
+                        } label: {
+                            Text(verbatim: currentPoolType.description).fontWidth(.condensed)
+                        }
                     }
                 }
             }
@@ -524,6 +567,7 @@ extension GachaFetchView4Game {
 
         private let typeFetchedCount: [GachaType: Int]
         private let dataBleachedCount: Int
+        private let chosenPools: Set<GachaType>
         private let reinit: () -> Void
 
         private var newRecordCount: String {
