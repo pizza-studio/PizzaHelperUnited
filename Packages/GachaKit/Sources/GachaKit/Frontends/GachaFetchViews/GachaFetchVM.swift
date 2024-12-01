@@ -92,6 +92,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
     public var cachedItems: [PZGachaEntrySendable] = []
     public var gachaTypeDateCounts: [GachaTypeDateCount] = []
     public var fetchRange: GachaFetchRange = .allAvailable
+    public var chosenPools: Set<GachaType> = Set(GachaType.knownCases)
     public var isForceOverrideModeEnabled = true
     public var isBleachingModeEnabled = true
     public private(set) var bleachCounter = 0
@@ -147,6 +148,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
     private func startFetching() {
         guard var client else { return }
         client.fetchRange = fetchRange
+        client.chosenPools = chosenPools
         setInProgress()
         task = Task { [weak self] in
             guard let self else { return }
