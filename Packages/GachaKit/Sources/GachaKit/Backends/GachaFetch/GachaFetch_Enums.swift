@@ -64,3 +64,40 @@ public enum GetGachaError: Error, Equatable {
 public enum GenGachaURLError: Error {
     case genURLError(message: String)
 }
+
+// MARK: - GachaFetchRange
+
+public enum GachaFetchRange: Int, CaseIterable {
+    case allAvailable = 0
+    case recent72Hours = 72
+    case recentWeek = 168
+    case recent30Days = 720
+    case recent60Days = 1440
+
+    // MARK: Public
+
+    public var actualTimeInterval: TimeInterval { Double(rawValue) * 3600 }
+    public var isUnlimited: Bool { self == .allAvailable }
+
+    public var localizedLabel: String {
+        let rawTag: String.LocalizationValue = switch self {
+        case .allAvailable:
+            "gachaKit.getRecord.fetchRange.allAvailable"
+        case .recent72Hours:
+            "gachaKit.getRecord.fetchRange.recent72Hours"
+        case .recentWeek:
+            "gachaKit.getRecord.fetchRange.recentWeek"
+        case .recent30Days:
+            "gachaKit.getRecord.fetchRange.recent30Days"
+        case .recent60Days:
+            "gachaKit.getRecord.fetchRange.recent60Days"
+        }
+        return String(localized: rawTag, bundle: .module)
+    }
+
+    public func verifyWhetherOutOfRange(against givenTarget: Date) -> Bool {
+        guard !isUnlimited else { return false }
+        let timeIntervalToVeryfy = abs(givenTarget.timeIntervalSinceNow)
+        return timeIntervalToVeryfy > actualTimeInterval
+    }
+}
