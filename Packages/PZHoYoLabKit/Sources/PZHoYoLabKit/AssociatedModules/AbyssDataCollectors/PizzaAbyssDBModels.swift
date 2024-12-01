@@ -229,8 +229,14 @@ extension PZAbyssDB.AbyssDataPack.AbyssRankModel {
         topDamage = data.damageRank.first?.avatarID ?? -1
         topDefeat = data.defeatRank.first?.avatarID ?? -1
         topTakeDamage = data.takeDamageRank.first?.avatarID ?? -1
-        topQUsed = data.energySkillRank.first?.avatarID ?? -1
-        topEUsed = data.normalSkillRank.first?.avatarID ?? -1
+        topQUsed = data.energySkillRank.first?.avatarID ?? 0
+        topEUsed = data.normalSkillRank.first?.avatarID ?? 0
+        guard [
+            topDamageValue,
+            topDamage,
+            topDefeat,
+            topTakeDamage,
+        ].allSatisfy({ $0 != -1 }) else { return nil }
     }
 }
 
