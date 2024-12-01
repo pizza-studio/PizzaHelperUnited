@@ -5,6 +5,7 @@
 @preconcurrency import Defaults
 import EnkaKit
 import PZAccountKit
+import PZBaseKit
 import SwiftUI
 import WallpaperKit
 
@@ -46,8 +47,7 @@ struct UISettingsPageContent: View {
                 Text("settings.display.timeZone4GI.title".i18nPZHelper)
             }
             Text("settings.display.timeZone4GI.description".i18nPZHelper)
-                .font(.footnote).foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .asInlineTextDescription()
         }
     }
 

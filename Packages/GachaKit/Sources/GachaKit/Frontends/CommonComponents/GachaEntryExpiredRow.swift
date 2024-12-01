@@ -36,8 +36,7 @@ public struct GachaEntryExpiredRow: View {
                         .foregroundStyle(.red)
                 }
                 Text("gachaKit.GMDB.gmdbExpired.explanation", bundle: .module)
-                    .font(.footnote).foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .asInlineTextDescription()
             }
         }
     }
