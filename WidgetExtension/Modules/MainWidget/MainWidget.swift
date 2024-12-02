@@ -62,7 +62,7 @@ struct WidgetViewEntryView: View {
         }
     }
 
-    @ViewBuilder var body: some View {
+    var body: some View {
         ZStack {
             switch result {
             case let .success(dailyNote):
