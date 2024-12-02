@@ -600,13 +600,22 @@ private struct DailyNoteCardView4ZZZ: View {
                 }
             }
         }
+        let iconFrame: CGFloat = 24
         HStack {
+            AccountKit.imageAsset("zzz_note_vitality")
+                .resizable()
+                .scaledToFit()
+                .frame(height: iconFrame)
             Text("app.dailynote.card.zzzVitality.label".i18nPZHelper).bold()
             Spacer()
             let sitrep = dailyNote.dailyTaskCompletionStatus
             Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
         }
         HStack {
+            AccountKit.imageAsset("zzz_note_vhsStore")
+                .resizable()
+                .scaledToFit()
+                .frame(height: iconFrame)
             Text("app.dailynote.card.zzzVHSStoreInOperationState.label".i18nPZHelper).bold()
             Spacer()
             let stateOn = "app.dailynote.card.zzzVHSStoreInOperationState.on".i18nPZHelper
@@ -615,6 +624,10 @@ private struct DailyNoteCardView4ZZZ: View {
         }
         if let cardScratched = dailyNote.cardScratched {
             HStack {
+                AccountKit.imageAsset("zzz_note_scratchCard")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: iconFrame)
                 Text("app.dailynote.card.zzzScratchableCard.label".i18nPZHelper).bold()
                 Spacer()
                 let stateDone = "app.dailynote.card.zzzScratchableCard.done".i18nPZHelper
@@ -624,6 +637,10 @@ private struct DailyNoteCardView4ZZZ: View {
         }
         if let bountyCommission = dailyNote.hollowZero.bountyCommission {
             HStack {
+                AccountKit.imageAsset("zzz_note_bounty")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: iconFrame)
                 Text("app.dailynote.card.zzzHollowZeroBountyCommission.label".i18nPZHelper).bold()
                 Spacer()
                 Text(verbatim: bountyCommission.textDescription)
@@ -631,6 +648,10 @@ private struct DailyNoteCardView4ZZZ: View {
         }
         if let investigationPoint = dailyNote.hollowZero.investigationPoint {
             HStack {
+                AccountKit.imageAsset("zzz_note_investigationPoints")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: iconFrame)
                 Text("app.dailynote.card.zzzHollowZeroInvestigationPoint.label".i18nPZHelper).bold()
                 Spacer()
                 Text(verbatim: investigationPoint.textDescription)
