@@ -32,7 +32,7 @@ public struct Note4ZZZ: Codable, Hashable, DecodableFromMiHoYoAPIJSONResult, Dai
                     forKey: HollowZero.CodingKeys.bountyCommission
                 ),
                 investigationPoint: try subContainer.decodeIfPresent(
-                    HollowZero.SurveyPoints.self,
+                    HollowZero.InvestigationPointIntel.self,
                     forKey: HollowZero.CodingKeys.investigationPoint
                 )
             )
@@ -74,7 +74,7 @@ extension Note4ZZZ {
         // MARK: Public
 
         public let bountyCommission: BountyCommission?
-        public let investigationPoint: SurveyPoints?
+        public let investigationPoint: InvestigationPointIntel?
 
         // MARK: Internal
 
@@ -105,7 +105,7 @@ extension Note4ZZZ {
 
     // MARK: - VHSSale
 
-    public struct VHSSale: AbleToCodeSendHash {
+    private struct VHSSale: AbleToCodeSendHash {
         // MARK: Public
 
         public let saleState: VHSState
@@ -198,7 +198,7 @@ extension Note4ZZZ.HollowZero {
 
     // MARK: - SurveyPoints
 
-    public struct SurveyPoints: AbleToCodeSendHash {
+    public struct InvestigationPointIntel: AbleToCodeSendHash {
         // MARK: Public
 
         public let num: Int
