@@ -57,6 +57,16 @@ extension EnkaDBProtocol {
 
     @MainActor
     @discardableResult
+    public func reinitOnlyIfBundledDBIsNewer() throws -> Self {
+        let bundledDB = try Self(locTag: Enka.currentLangTag)
+        guard bundledDB.locTable.count > locTable.count else { return self }
+        bundledDB.saveSelfToUserDefaults()
+        update(new: bundledDB)
+        return self
+    }
+
+    @MainActor
+    @discardableResult
     public func onlineUpdate() async throws -> Self {
         let newDB = try await Self(host: Defaults[.defaultDBQueryHost])
         newDB.saveSelfToUserDefaults()
