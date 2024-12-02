@@ -10,20 +10,13 @@ import WidgetKit
 
 @available(watchOS, unavailable)
 struct HSRReservedTBPowerInfoBar: View {
-    let tbPowerIntel: StaminaInfo4HSR
+    // MARK: Lifecycle
 
-    var isReservedTrailblazePowerFullImage: some View {
-        (tbPowerIntel.currentReserveStamina == tbPowerIntel.maxReserveStamina)
-            ? Image(systemSymbol: .exclamationmark)
-            .overlayImageWithRingProgressBar(
-                Double(tbPowerIntel.currentReserveStamina) / Double(tbPowerIntel.maxReserveStamina),
-                scaler: 0.78
-            )
-            : Image(systemSymbol: .leafFill)
-            .overlayImageWithRingProgressBar(
-                Double(tbPowerIntel.currentReserveStamina) / Double(tbPowerIntel.maxReserveStamina)
-            )
+    init(tbPowerIntel: StaminaInfo4HSR) {
+        self.tbPowerIntel = tbPowerIntel
     }
+
+    // MARK: Internal
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -46,5 +39,22 @@ struct HSRReservedTBPowerInfoBar: View {
                     .legibilityShadow()
             }
         }
+    }
+
+    // MARK: Private
+
+    private let tbPowerIntel: StaminaInfo4HSR
+
+    @ViewBuilder private var isReservedTrailblazePowerFullImage: some View {
+        (tbPowerIntel.currentReserveStamina == tbPowerIntel.maxReserveStamina)
+            ? Image(systemSymbol: .exclamationmark)
+            .overlayImageWithRingProgressBar(
+                Double(tbPowerIntel.currentReserveStamina) / Double(tbPowerIntel.maxReserveStamina),
+                scaler: 0.78
+            )
+            : Image(systemSymbol: .leafFill)
+            .overlayImageWithRingProgressBar(
+                Double(tbPowerIntel.currentReserveStamina) / Double(tbPowerIntel.maxReserveStamina)
+            )
     }
 }

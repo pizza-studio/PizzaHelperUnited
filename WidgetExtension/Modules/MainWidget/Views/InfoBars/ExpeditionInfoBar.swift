@@ -9,28 +9,13 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 struct ExpeditionInfoBar: View {
-    let dailyNote: any DailyNoteProtocol
+    // MARK: Lifecycle
 
-    var assetName: String {
-        switch dailyNote.game {
-        case .genshinImpact: "gi_note_expedition"
-        case .starRail: "hsr_note_expedition"
-        case .zenlessZone: "114514"
-        }
+    init(dailyNote: any DailyNoteProtocol) {
+        self.dailyNote = dailyNote
     }
 
-    var completionIntel: FieldCompletionIntel<Int> {
-        dailyNote.expeditionCompletionStatus
-    }
-
-    var isExpeditionAllCompleteImage: some View {
-        Image(systemSymbol: .figureWalk)
-            .overlayImageWithRingProgressBar(
-                1,
-                scaler: 1,
-                offset: (0.3, 0)
-            )
-    }
+    // MARK: Internal
 
     var body: some View {
         switch dailyNote {
@@ -56,5 +41,31 @@ struct ExpeditionInfoBar: View {
                     .legibilityShadow()
             }
         }
+    }
+
+    // MARK: Private
+
+    private let dailyNote: any DailyNoteProtocol
+
+    private var assetName: String {
+        switch dailyNote.game {
+        case .genshinImpact: "gi_note_expedition"
+        case .starRail: "hsr_note_expedition"
+        case .zenlessZone: "114514"
+        }
+    }
+
+    private var completionIntel: FieldCompletionIntel<Int> {
+        dailyNote.expeditionCompletionStatus
+    }
+
+    @ViewBuilder private var isExpeditionAllCompleteImage: some View {
+        let ratio = Double(completionIntel.finished) / Double(completionIntel.all)
+        Image(systemSymbol: .figureWalk)
+            .overlayImageWithRingProgressBar(
+                ratio,
+                scaler: 1,
+                offset: (0.3, 0)
+            )
     }
 }

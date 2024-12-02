@@ -10,22 +10,13 @@ import WidgetKit
 
 @available(watchOS, unavailable)
 struct GIHomeCoinInfoBar: View {
-    let entry: any TimelineEntry
-    let homeCoinInfo: PZAccountKit.HomeCoinInfo4GI
+    // MARK: Lifecycle
 
-    var isHomeCoinFullImage: some View {
-        (homeCoinInfo.currentHomeCoin == homeCoinInfo.maxHomeCoin)
-            ? Image(systemSymbol: .exclamationmark)
-            .overlayImageWithRingProgressBar(
-                Double(homeCoinInfo.currentHomeCoin) / Double(homeCoinInfo.maxHomeCoin),
-                scaler: 0.78
-            )
-            : Image(systemSymbol: .leafFill)
-            .overlayImageWithRingProgressBar(
-                Double(homeCoinInfo.currentHomeCoin) /
-                    Double(homeCoinInfo.maxHomeCoin)
-            )
+    init(homeCoinInfo: PZAccountKit.HomeCoinInfo4GI) {
+        self.homeCoinInfo = homeCoinInfo
     }
+
+    // MARK: Internal
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -48,5 +39,18 @@ struct GIHomeCoinInfoBar: View {
                     .legibilityShadow()
             }
         }
+    }
+
+    // MARK: Private
+
+    private let homeCoinInfo: PZAccountKit.HomeCoinInfo4GI
+
+    @ViewBuilder private var isHomeCoinFullImage: some View {
+        let ratio = Double(homeCoinInfo.currentHomeCoin) / Double(homeCoinInfo.maxHomeCoin)
+        (homeCoinInfo.currentHomeCoin == homeCoinInfo.maxHomeCoin)
+            ? Image(systemSymbol: .exclamationmark)
+            .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
+            : Image(systemSymbol: .leafFill)
+            .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
     }
 }

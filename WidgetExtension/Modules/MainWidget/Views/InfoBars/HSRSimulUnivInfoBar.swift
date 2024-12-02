@@ -11,9 +11,15 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 struct HSRSimulUnivInfoBar: View {
-    let dailyNote: Note4HSR
+    // MARK: Lifecycle
 
-    var body: some View {
+    init(dailyNote: Note4HSR) {
+        self.dailyNote = dailyNote
+    }
+
+    // MARK: Internal
+
+    @ViewBuilder var body: some View {
         let intel = dailyNote.simulatedUniverseInfo
         let currentScore = intel.currentScore
         let maxScore = intel.maxScore
@@ -25,12 +31,12 @@ struct HSRSimulUnivInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
                 .legibilityShadow(isText: false)
+            let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
             Image(systemSymbol: isFinished ? .checkmark : .ellipsis)
-                .overlayImageWithRingProgressBar(1, scaler: 1, offset: (0.3, 0))
+                .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .legibilityShadow()
-            let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
             Text(verbatim: "\(ratio)%")
                 .lineLimit(1)
                 .foregroundColor(Color("textColor3", bundle: .main))
@@ -39,4 +45,8 @@ struct HSRSimulUnivInfoBar: View {
                 .legibilityShadow()
         }
     }
+
+    // MARK: Private
+
+    private let dailyNote: Note4HSR
 }

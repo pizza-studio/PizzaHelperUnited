@@ -9,15 +9,13 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 struct GITrounceBlossomInfoBar: View {
-    let weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI
+    // MARK: Lifecycle
 
-    var isWeeklyBossesFinishedImage: some View {
-        (weeklyBossesInfo.allDiscountsAreUsedUp)
-            ? Image(systemSymbol: .checkmark)
-            .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
-            : Image(systemSymbol: .questionmark)
-            .overlayImageWithRingProgressBar(1.0)
+    init(weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI) {
+        self.weeklyBossesInfo = weeklyBossesInfo
     }
+
+    // MARK: Internal
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -40,5 +38,20 @@ struct GITrounceBlossomInfoBar: View {
             }
             .legibilityShadow(isText: false)
         }
+    }
+
+    // MARK: Private
+
+    private let weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI
+
+    @ViewBuilder private var isWeeklyBossesFinishedImage: some View {
+        let current = weeklyBossesInfo.totalResinDiscount - weeklyBossesInfo.remainResinDiscount
+        let max = weeklyBossesInfo.totalResinDiscount
+        let ratio = Double(current) / Double(max)
+        (weeklyBossesInfo.allDiscountsAreUsedUp)
+            ? Image(systemSymbol: .checkmark)
+            .overlayImageWithRingProgressBar(ratio, scaler: 0.70)
+            : Image(systemSymbol: .questionmark)
+            .overlayImageWithRingProgressBar(ratio)
     }
 }
