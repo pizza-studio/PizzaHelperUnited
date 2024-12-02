@@ -2,17 +2,21 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
 @available(watchOS, unavailable)
-struct TrounceBlossomInfoBar: View {
-    let weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI
+struct HSREchoOfWarInfoBar: View {
+    let eowIntel: EchoOfWarInfo4HSR
 
     var isWeeklyBossesFinishedImage: some View {
-        (weeklyBossesInfo.allDiscountsAreUsedUp)
+        (eowIntel.allRewardsClaimed)
             ? Image(systemSymbol: .checkmark)
             .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
             : Image(systemSymbol: .questionmark)
@@ -21,7 +25,7 @@ struct TrounceBlossomInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset("gi_note_weeklyBosses")
+            AccountKit.imageAsset("hsr_note_weeklyBosses")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
@@ -32,7 +36,7 @@ struct TrounceBlossomInfoBar: View {
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                Text(verbatim: weeklyBossesInfo.textDescription)
+                Text(verbatim: eowIntel.textDescription)
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .font(.system(.caption, design: .rounded))
