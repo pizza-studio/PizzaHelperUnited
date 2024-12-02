@@ -39,7 +39,7 @@ struct DetailInfo: View {
             case let dailyNote as any Note4GI:
                 drawDailyTaskCompletionStatus()
                 if dailyNote.homeCoinInfo.maxHomeCoin != 0 {
-                    GIHomeCoinInfoBar(entry: entry, homeCoinInfo: dailyNote.homeCoinInfo)
+                    GIHomeCoinInfoBar(homeCoinInfo: dailyNote.homeCoinInfo)
                 }
 
                 if dailyNote.hasExpeditions {
