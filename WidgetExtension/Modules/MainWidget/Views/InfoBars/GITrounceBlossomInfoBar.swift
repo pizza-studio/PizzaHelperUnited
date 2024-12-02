@@ -6,45 +6,39 @@ import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
-import WidgetKit
 
 @available(watchOS, unavailable)
-struct ReservedTrailblazePowerInfoBar: View {
-    let tbPowerIntel: StaminaInfo4HSR
+struct GITrounceBlossomInfoBar: View {
+    let weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI
 
-    var isReservedTrailblazePowerFullImage: some View {
-        (tbPowerIntel.currentReserveStamina == tbPowerIntel.maxReserveStamina)
-            ? Image(systemSymbol: .exclamationmark)
-            .overlayImageWithRingProgressBar(
-                Double(tbPowerIntel.currentReserveStamina) / Double(tbPowerIntel.maxReserveStamina),
-                scaler: 0.78
-            )
-            : Image(systemSymbol: .leafFill)
-            .overlayImageWithRingProgressBar(
-                Double(tbPowerIntel.currentReserveStamina) / Double(tbPowerIntel.maxReserveStamina)
-            )
+    var isWeeklyBossesFinishedImage: some View {
+        (weeklyBossesInfo.allDiscountsAreUsedUp)
+            ? Image(systemSymbol: .checkmark)
+            .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
+            : Image(systemSymbol: .questionmark)
+            .overlayImageWithRingProgressBar(1.0)
     }
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset("hsr_note_trailblazePowerReserved")
+            AccountKit.imageAsset("gi_note_weeklyBosses")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
                 .legibilityShadow(isText: false)
-            isReservedTrailblazePowerFullImage
-                .frame(maxWidth: 13, maxHeight: 13)
+            isWeeklyBossesFinishedImage
+                .frame(width: 13, height: 13)
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                Text(verbatim: "\(tbPowerIntel.currentReserveStamina)")
+                Text(verbatim: weeklyBossesInfo.textDescription)
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
-                    .legibilityShadow()
             }
+            .legibilityShadow(isText: false)
         }
     }
 }

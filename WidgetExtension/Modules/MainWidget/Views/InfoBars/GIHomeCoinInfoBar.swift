@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 @available(watchOS, unavailable)
-struct HomeCoinInfoBar: View {
+struct GIHomeCoinInfoBar: View {
     let entry: any TimelineEntry
     let homeCoinInfo: PZAccountKit.HomeCoinInfo4GI
 
