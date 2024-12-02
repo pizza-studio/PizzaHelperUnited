@@ -9,37 +9,13 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 struct DailyTaskInfoBar: View {
-    let dailyNote: any DailyNoteProtocol
+    // MARK: Lifecycle
 
-    var assetName: String {
-        switch dailyNote.game {
-        case .genshinImpact: "gi_note_dailyTask"
-        case .starRail: "hsr_note_dailyTask"
-        case .zenlessZone: "zzz_note_vitality"
-        }
+    init(dailyNote: any DailyNoteProtocol) {
+        self.dailyNote = dailyNote
     }
 
-    @ViewBuilder var isTaskRewardReceivedImage: some View {
-        if dailyNote.hasDailyTaskIntel {
-            let sitrep = dailyNote.dailyTaskCompletionStatus
-            Group {
-                if sitrep.isAccomplished {
-                    if let extraRewardClaimed = dailyNote.claimedRewardsFromKatheryne {
-                        Image(systemSymbol: extraRewardClaimed ? .checkmark : .exclamationmark)
-                            .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
-                    } else {
-                        Image(systemSymbol: .checkmark)
-                            .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
-                    }
-                } else {
-                    Image(systemSymbol: .ellipsis)
-                        .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
-                }
-            }
-        } else {
-            EmptyView()
-        }
-    }
+    // MARK: Internal
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -71,6 +47,41 @@ struct DailyTaskInfoBar: View {
                 .minimumScaleFactor(0.2)
             }
             .legibilityShadow()
+        }
+    }
+
+    // MARK: Private
+
+    private let dailyNote: any DailyNoteProtocol
+
+    private var assetName: String {
+        switch dailyNote.game {
+        case .genshinImpact: "gi_note_dailyTask"
+        case .starRail: "hsr_note_dailyTask"
+        case .zenlessZone: "zzz_note_vitality"
+        }
+    }
+
+    @ViewBuilder private var isTaskRewardReceivedImage: some View {
+        if dailyNote.hasDailyTaskIntel {
+            let sitrep = dailyNote.dailyTaskCompletionStatus
+            let ratio = Double(sitrep.finished) / Double(sitrep.all)
+            Group {
+                if sitrep.isAccomplished {
+                    if let extraRewardClaimed = dailyNote.claimedRewardsFromKatheryne {
+                        Image(systemSymbol: extraRewardClaimed ? .checkmark : .exclamationmark)
+                            .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
+                    } else {
+                        Image(systemSymbol: .checkmark)
+                            .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
+                    }
+                } else {
+                    Image(systemSymbol: .ellipsis)
+                        .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
+                }
+            }
+        } else {
+            EmptyView()
         }
     }
 }

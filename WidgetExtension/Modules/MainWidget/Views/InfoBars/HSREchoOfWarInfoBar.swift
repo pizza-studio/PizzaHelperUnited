@@ -13,15 +13,13 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 struct HSREchoOfWarInfoBar: View {
-    let eowIntel: EchoOfWarInfo4HSR
+    // MARK: Lifecycle
 
-    var isWeeklyBossesFinishedImage: some View {
-        (eowIntel.allRewardsClaimed)
-            ? Image(systemSymbol: .checkmark)
-            .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
-            : Image(systemSymbol: .questionmark)
-            .overlayImageWithRingProgressBar(1.0)
+    init(eowIntel: EchoOfWarInfo4HSR) {
+        self.eowIntel = eowIntel
     }
+
+    // MARK: Internal
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -44,5 +42,20 @@ struct HSREchoOfWarInfoBar: View {
             }
             .legibilityShadow(isText: false)
         }
+    }
+
+    // MARK: Private
+
+    private let eowIntel: EchoOfWarInfo4HSR
+
+    @ViewBuilder private var isWeeklyBossesFinishedImage: some View {
+        let current = eowIntel.weeklyEOWMaxRewards - eowIntel.weeklyEOWRewardsLeft
+        let max = eowIntel.weeklyEOWMaxRewards
+        let ratio = Double(current) / Double(max)
+        (eowIntel.allRewardsClaimed)
+            ? Image(systemSymbol: .checkmark)
+            .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
+            : Image(systemSymbol: .questionmark)
+            .overlayImageWithRingProgressBar(1.0)
     }
 }

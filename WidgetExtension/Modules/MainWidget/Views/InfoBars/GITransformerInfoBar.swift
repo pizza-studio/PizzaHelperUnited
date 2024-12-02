@@ -11,18 +11,13 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 struct GITransformerInfoBar: View {
-    let transformerInfo: GeneralNote4GI.TransformerInfo4GI
+    // MARK: Lifecycle
 
-    var isTransformerCompleteImage: some View {
-        (transformerInfo.isAvailable)
-            ? Image(systemSymbol: .checkmark)
-            .overlayImageWithRingProgressBar(
-                transformerInfo.percentage,
-                scaler: 0.78
-            )
-            : Image(systemSymbol: .hourglass)
-            .overlayImageWithRingProgressBar(1)
+    init(transformerInfo: GeneralNote4GI.TransformerInfo4GI) {
+        self.transformerInfo = transformerInfo
     }
+
+    // MARK: Internal
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -62,5 +57,17 @@ struct GITransformerInfoBar: View {
             }
             .legibilityShadow(isText: false)
         }
+    }
+
+    // MARK: Private
+
+    private let transformerInfo: GeneralNote4GI.TransformerInfo4GI
+
+    @ViewBuilder private var isTransformerCompleteImage: some View {
+        (transformerInfo.isAvailable)
+            ? Image(systemSymbol: .checkmark)
+            .overlayImageWithRingProgressBar(transformerInfo.percentage, scaler: 0.78)
+            : Image(systemSymbol: .hourglass)
+            .overlayImageWithRingProgressBar(1)
     }
 }
