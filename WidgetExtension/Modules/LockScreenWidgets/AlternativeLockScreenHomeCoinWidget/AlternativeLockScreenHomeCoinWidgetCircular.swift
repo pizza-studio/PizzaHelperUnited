@@ -120,40 +120,4 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
             }
         }
     }
-
-    var body2: some View {
-        VStack(spacing: 0) {
-            Image("icon.homeCoin", bundle: .main)
-                .resizable()
-                .scaledToFit()
-                .apply { imageView in
-                    if widgetRenderingMode == .fullColor {
-                        imageView
-                            .foregroundColor(Color("iconColor.homeCoin.lightBlue", bundle: .main))
-                    } else {
-                        imageView
-                    }
-                }
-            switch result {
-            case let .success(data):
-                switch data {
-                case let data as any Note4GI:
-                    Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                default:
-                    Text(verbatim: "WRONG GAME").fixedSize().fontWidth(.compressed)
-                        .minimumScaleFactor(0.2)
-                }
-            case .failure:
-                Image(systemSymbol: .ellipsis)
-            }
-        }
-        .widgetAccentable(widgetRenderingMode == .accented)
-        #if os(watchOS)
-            .padding(.vertical, 2)
-            .padding(.top, 1)
-        #else
-            .padding(.vertical, 2)
-        #endif
-    }
 }
