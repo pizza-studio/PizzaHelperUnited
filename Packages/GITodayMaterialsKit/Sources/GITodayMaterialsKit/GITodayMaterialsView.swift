@@ -80,7 +80,7 @@ public struct GITodayMaterialsView<T: View>: View {
 
     // MARK: Internal
 
-    @MainActor var content: some View {
+    var content: some View {
         ForEach(materialsFiltered.reversed()) { material in
             LabeledContent {
                 VStack(alignment: .leading, spacing: 4) {
