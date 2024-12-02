@@ -7,10 +7,10 @@ import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
-// MARK: - TransformerInfoBar
+// MARK: - GITransformerInfoBar
 
 @available(watchOS, unavailable)
-struct TransformerInfoBar: View {
+struct GITransformerInfoBar: View {
     let transformerInfo: GeneralNote4GI.TransformerInfo4GI
 
     var isTransformerCompleteImage: some View {

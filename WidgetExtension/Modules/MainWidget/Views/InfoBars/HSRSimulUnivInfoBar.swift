@@ -7,10 +7,10 @@ import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
-// MARK: - SimulUnivInfoBar
+// MARK: - HSRSimulUnivInfoBar
 
 @available(watchOS, unavailable)
-struct SimulUnivInfoBar: View {
+struct HSRSimulUnivInfoBar: View {
     let dailyNote: Note4HSR
 
     var body: some View {

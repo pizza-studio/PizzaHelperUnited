@@ -39,7 +39,7 @@ struct DetailInfo: View {
             case let dailyNote as any Note4GI:
                 drawDailyTaskCompletionStatus()
                 if dailyNote.homeCoinInfo.maxHomeCoin != 0 {
-                    HomeCoinInfoBar(entry: entry, homeCoinInfo: dailyNote.homeCoinInfo)
+                    GIHomeCoinInfoBar(entry: entry, homeCoinInfo: dailyNote.homeCoinInfo)
                 }
 
                 if dailyNote.hasExpeditions {
@@ -48,35 +48,35 @@ struct DetailInfo: View {
 
                 if let dailyNote = dailyNote as? GeneralNote4GI {
                     if dailyNote.transformerInfo.obtained, viewConfig.showTransformer {
-                        TransformerInfoBar(transformerInfo: dailyNote.transformerInfo)
+                        GITransformerInfoBar(transformerInfo: dailyNote.transformerInfo)
                     }
                     switch viewConfig.trounceBlossomDisplayMethod {
                     case .neverShow:
                         EmptyView()
                     case .disappearAfterCompleted where !dailyNote.weeklyBossesInfo.allDiscountsAreUsedUp:
-                        TrounceBlossomInfoBar(
+                        GITrounceBlossomInfoBar(
                             weeklyBossesInfo: dailyNote.weeklyBossesInfo
                         )
                     case .alwaysShow:
-                        TrounceBlossomInfoBar(weeklyBossesInfo: dailyNote.weeklyBossesInfo)
+                        GITrounceBlossomInfoBar(weeklyBossesInfo: dailyNote.weeklyBossesInfo)
                     default: EmptyView()
                     }
                 }
             case let dailyNote as Note4HSR:
-                ReservedTrailblazePowerInfoBar(tbPowerIntel: dailyNote.staminaInfo)
+                HSRReservedTBPowerInfoBar(tbPowerIntel: dailyNote.staminaInfo)
                 drawDailyTaskCompletionStatus()
                 if dailyNote.hasExpeditions {
                     ExpeditionInfoBar(dailyNote: dailyNote)
                 }
-                SimulUnivInfoBar(dailyNote: dailyNote)
+                HSRSimulUnivInfoBar(dailyNote: dailyNote)
                 if let eowIntel = dailyNote.echoOfWarIntel {
                     switch viewConfig.echoOfWarDisplayMethod {
                     case .neverShow:
                         EmptyView()
                     case .disappearAfterCompleted where !eowIntel.allRewardsClaimed:
-                        EchoOfWarInfoBar(eowIntel: eowIntel)
+                        HSREchoOfWarInfoBar(eowIntel: eowIntel)
                     case .alwaysShow:
-                        EchoOfWarInfoBar(eowIntel: eowIntel)
+                        HSREchoOfWarInfoBar(eowIntel: eowIntel)
                     default: EmptyView()
                     }
                 }
