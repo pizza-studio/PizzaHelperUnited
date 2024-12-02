@@ -80,8 +80,12 @@ struct DetailInfo: View {
                     default: EmptyView()
                     }
                 }
-            case _ as Note4ZZZ:
+            case let dailyNote as Note4ZZZ:
                 drawDailyTaskCompletionStatus()
+                ZZZScratchCardInfoBar(data: dailyNote)
+                ZZZVHSStoreInfoBar(data: dailyNote)
+                ZZZBountyInfoBar(data: dailyNote)
+                ZZZInvestigationPointInfoBar(data: dailyNote)
             default:
                 EmptyView()
             }
