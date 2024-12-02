@@ -120,7 +120,7 @@ public struct IDPhotoView4HSR: View {
         }
     }
 
-    @MainActor var coreBody: some View {
+    var coreBody: some View {
         switch iconType {
         case .asCard: AnyView(cardView)
         default: AnyView(circleIconView)
