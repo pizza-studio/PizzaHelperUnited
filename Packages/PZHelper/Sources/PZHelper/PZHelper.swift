@@ -57,6 +57,7 @@ private struct AppInitializer: ViewModifier {
             .checkAndReloadWidgetTimeline()
             .hookEULACheckerOnOOBE()
             .hookPrivacyPolicyCheckerOnOOBE()
+            .performEnkaDBSanityCheck()
     }
 }
 
