@@ -1,5 +1,7 @@
 # The Pizza Helper (powered by the United Pizza Engine)
 
+![](./PromotionMaterials/Images/ThePizzaHelper-ui-montage.png)
+
 This is the new repository for **The Pizza Helper** (starting from v5).
 
   - It is rebranded from the previous `Pizza Helper for Genshin (v1 ~ v4)`. 
