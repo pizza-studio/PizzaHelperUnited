@@ -331,6 +331,8 @@ for charID in allCharIDs {
         let matched = assetObjects.first { $0.id == nameCardID.description }
         matched?.bindedCharID = charID
     } catch {
+        // 這裡暫時假設 charID 不會高於 10000800。
+        guard let intCharID = Int(charID), intCharID < 10000800 else { continue }
         print("------------------------")
         print("FAILED FROM HANDLING SOURCE URL: \(url.absoluteString)")
         print("------------------------")
