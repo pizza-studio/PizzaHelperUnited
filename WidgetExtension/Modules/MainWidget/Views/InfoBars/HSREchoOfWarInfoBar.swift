@@ -54,8 +54,8 @@ struct HSREchoOfWarInfoBar: View {
         let ratio = Double(current) / Double(max)
         (eowIntel.allRewardsClaimed)
             ? Image(systemSymbol: .checkmark)
-            .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
+            .overlayImageWithRingProgressBar(ratio, scaler: 0.70)
             : Image(systemSymbol: .questionmark)
-            .overlayImageWithRingProgressBar(1.0)
+            .overlayImageWithRingProgressBar(ratio)
     }
 }
