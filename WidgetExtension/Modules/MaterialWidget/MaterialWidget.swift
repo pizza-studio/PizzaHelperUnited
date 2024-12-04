@@ -78,13 +78,11 @@ struct MaterialWidgetView: View {
                 .frame(height: 35)
             }
             .frame(height: 40)
-            .padding(.top)
             .padding(.bottom, 12)
             if let events = entry.events, !events.isEmpty {
                 EventView(events: events)
-                    .legibilityShadow()
+                    .legibilityShadow(isText: true)
             }
-            Spacer()
         }
         .foregroundColor(Color("textColor3", bundle: .main))
         .myWidgetContainerBackground(withPadding: 0) {
@@ -104,9 +102,6 @@ private struct EventView: View {
 
     var body: some View {
         HStack(spacing: 4) {
-            Rectangle()
-                .frame(width: 2, height: 77.5)
-                .offset(x: 1)
             if events.isEmpty {
                 Button(intent: WidgetRefreshIntent()) {
                     Image(systemSymbol: .arrowClockwiseCircle)
@@ -116,23 +111,40 @@ private struct EventView: View {
                 }
                 .buttonStyle(.plain)
             }
-            VStack(spacing: 7) {
-                ForEach(
-                    events
-                        .filter { getRemainTimeInterval($0.endAt) > 0 }
-                        .shuffled()
-                        .prefix(4)
-                        .sorted(by: {
-                            getRemainTimeInterval($0.endAt) <
-                                getRemainTimeInterval($1.endAt)
-                        }),
-                    id: \.id
-                ) { content in
-                    eventItem(event: content)
+            ViewThatFits(in: .vertical) {
+                VStack(spacing: 5) {
+                    ForEach(
+                        getEvents(4),
+                        id: \.id
+                    ) { content in
+                        eventItem(event: content)
+                    }
+                }
+                VStack(spacing: 7) {
+                    ForEach(
+                        getEvents(4),
+                        id: \.id
+                    ) { content in
+                        eventItem(event: content)
+                    }
+                }
+                VStack(spacing: 7) {
+                    ForEach(
+                        getEvents(3),
+                        id: \.id
+                    ) { content in
+                        eventItem(event: content)
+                    }
                 }
             }
+            .padding(.leading, 7)
+            .overlay(alignment: .leading) {
+                Rectangle()
+                    .frame(width: 2)
+                    .frame(maxHeight: .infinity)
+                    .offset(x: 1)
+            }
         }
-        .shadow(radius: 3)
     }
 
     @ViewBuilder
@@ -150,6 +162,17 @@ private struct EventView: View {
             .minimumScaleFactor(0.5)
         }
         .font(.caption)
+    }
+
+    func getEvents(_ prefix: Int) -> [EventModel] {
+        events
+            .filter { getRemainTimeInterval($0.endAt) > 0 }
+            .shuffled()
+            .prefix(prefix)
+            .sorted(by: {
+                getRemainTimeInterval($0.endAt) <
+                    getRemainTimeInterval($1.endAt)
+            })
     }
 
     func getRemainTimeInterval(_ endAt: String) -> TimeInterval {
