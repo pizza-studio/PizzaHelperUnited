@@ -18,33 +18,28 @@ struct LargeWidgetView: View {
     let accountName: String?
 
     var body: some View {
-        VStack(alignment: .center) {
-            HStack {
-                Spacer()
-                    .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 1 }
-                VStack(alignment: .leading) {
-                    mainInfo()
-                    Spacer(minLength: 18)
-                    DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
-                }
-                .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in length / 10 * 4 }
-                VStack(alignment: .leading) {
-                    ExpeditionsView(
-                        expeditions: dailyNote.expeditionTasks
-                    )
-                    Spacer(minLength: 15)
-                    if dailyNote.game == .genshinImpact, viewConfig.showMaterialsInLargeSizeWidget {
-                        MaterialView()
-                    }
-                }
-                .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in length / 10 * 4 }
-                Spacer()
-                    .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 1 }
+        HStack {
+            Spacer()
+            VStack(alignment: .leading) {
+                mainInfo()
+                Spacer(minLength: 18)
+                DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            Spacer()
+            VStack(alignment: .leading) {
+                ExpeditionsView(
+                    expeditions: dailyNote.expeditionTasks
+                )
+                Spacer(minLength: 15)
+                if dailyNote.game == .genshinImpact, viewConfig.showMaterialsInLargeSizeWidget {
+                    MaterialView()
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            Spacer()
         }
-        .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 8 }
         .padding()
-        .padding(.horizontal)
     }
 
     @ViewBuilder

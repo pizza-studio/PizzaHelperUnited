@@ -20,26 +20,22 @@ struct MainInfoWithDetail: View {
     var body: some View {
         HStack {
             Spacer()
-                .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 1 }
             MainInfo(
                 entry: entry,
                 dailyNote: dailyNote,
                 viewConfig: viewConfig,
                 accountName: accountName
             )
-            .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in length / 10 * 4 }
+            Spacer()
             DetailInfo(
                 entry: entry,
                 dailyNote: dailyNote,
                 viewConfig: viewConfig,
                 spacing: 10
             )
-            .containerRelativeFrame(.horizontal, alignment: .center) { length, _ in length / 10 * 4 }
+            .fixedSize(horizontal: true, vertical: false)
             Spacer()
-                .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 1 }
         }
-        .containerRelativeFrame(.horizontal) { length, _ in length / 10 * 8 }
         .padding()
-        .padding(.horizontal)
     }
 }

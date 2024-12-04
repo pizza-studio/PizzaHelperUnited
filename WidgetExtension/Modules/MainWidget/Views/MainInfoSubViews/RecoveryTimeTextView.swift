@@ -23,7 +23,7 @@ struct RecoveryTimeText: View {
             case false: textData.text.multilineTextAlignment(.leading)
             }
         }
-        .font(.caption)
+        .font(.caption2)
         .minimumScaleFactor(0.2)
         .foregroundColor(Color("textColor3", bundle: .main))
         .legibilityShadow()
