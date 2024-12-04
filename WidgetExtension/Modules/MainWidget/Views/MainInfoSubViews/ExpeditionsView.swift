@@ -35,7 +35,7 @@ struct EachExpeditionView: View {
                 if !expedition.isFinished, let finishTime = expedition.timeOnFinish {
                     Text(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: finishTime))!)
                         .lineLimit(1)
-                        .font(.footnote)
+                        .font(.caption2)
                         .minimumScaleFactor(0.4)
                         .legibilityShadow()
                     let totalSecond = 20.0 * 60.0 * 60.0
@@ -48,7 +48,7 @@ struct EachExpeditionView: View {
                             : "pzWidgetsKit.expedition.status.pending"
                     )
                     .lineLimit(1)
-                    .font(.footnote)
+                    .font(.caption2)
                     .minimumScaleFactor(0.4)
                     .legibilityShadow()
                     percentageBar(expedition.isFinished ? 1 : 0.5)
