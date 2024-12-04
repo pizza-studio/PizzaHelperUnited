@@ -44,6 +44,7 @@ extension PZHelper {
             await PZProfileActor.shared.syncAllDataToUserDefaults()
         }
         IAPManager.performStartupTasks()
+        PZHelper.setupSpotlightSearch()
     }
 }
 
