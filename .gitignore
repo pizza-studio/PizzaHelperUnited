@@ -102,4 +102,4 @@ Package.resolved
 */.index-build/*
 .index-build
 
-UnitedPizzaHelper.xcodeproj/xcshareddata/xcschemes/*.xcscheme
+*.xcodeproj/xcshareddata/xcschemes/*.xcscheme
