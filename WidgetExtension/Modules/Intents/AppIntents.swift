@@ -19,9 +19,8 @@ public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, Cus
     public static let title: LocalizedStringResource = "intent.name.selectLocalProfileOnly"
     public static let description = IntentDescription("intent.description.pickTheLocalProfileForThisWidget")
 
-    public static var parameterSummary: some ParameterSummary {
-        Summary()
-    }
+    public static var parameterSummary: some ParameterSummary { Summary() }
+    public static var isDiscoverable: Bool { false }
 
     @Parameter(title: "intent.field.localeProfile") public var account: AccountIntentAppEntity?
 
@@ -45,9 +44,8 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
     public static let title: LocalizedStringResource = "intent.name.selectLocalProfile"
     public static let description = IntentDescription("intent.description.pickTheLocalProfileForThisWidget")
 
-    public static var parameterSummary: some ParameterSummary {
-        Summary()
-    }
+    public static var parameterSummary: some ParameterSummary { Summary() }
+    public static var isDiscoverable: Bool { false }
 
     @Parameter(title: "intent.field.localeProfile") public var accountIntent: AccountIntentAppEntity?
 
@@ -93,9 +91,8 @@ public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfiguratio
     public static let title: LocalizedStringResource = "intent.name.selectLocalProfileWithExtraConfig"
     public static let description = IntentDescription("intent.description.pickTheLocalProfileForThisWidget")
 
-    public static var parameterSummary: some ParameterSummary {
-        Summary()
-    }
+    public static var parameterSummary: some ParameterSummary { Summary() }
+    public static var isDiscoverable: Bool { false }
 
     @Parameter(title: "intent.field.localeProfile") public var account: AccountIntentAppEntity?
 
@@ -125,6 +122,8 @@ public struct WidgetRefreshIntent: AppIntent {
     // MARK: Public
 
     public static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
+
+    public static var isDiscoverable: Bool { false }
 
     public func perform() async throws -> some IntentResult {
         .result()
