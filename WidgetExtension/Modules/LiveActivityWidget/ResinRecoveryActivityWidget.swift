@@ -16,6 +16,12 @@ import WallpaperKit
 import WidgetKit
 
 struct ResinTimerRefreshIntent: AppIntent {
+    // MARK: Public
+
+    public static var isDiscoverable: Bool { false }
+
+    // MARK: Internal
+
     static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
 
     func perform() async throws -> some IntentResult {
@@ -34,6 +40,12 @@ struct ResinTimerRefreshIntent: AppIntent {
 }
 
 struct ResinTimerRerenderIntent: AppIntent {
+    // MARK: Public
+
+    public static var isDiscoverable: Bool { false }
+
+    // MARK: Internal
+
     static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
 
     func perform() async throws -> some IntentResult {
