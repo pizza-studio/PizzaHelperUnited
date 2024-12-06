@@ -16,7 +16,7 @@ import WallpaperKit
 import WidgetKit
 
 struct ResinTimerRefreshIntent: AppIntent {
-    static let title: LocalizedStringResource = "pzWidgetsKit.Refresh"
+    static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
 
     func perform() async throws -> some IntentResult {
         let activities = ResinRecoveryActivityController.shared.currentActivities
@@ -34,7 +34,7 @@ struct ResinTimerRefreshIntent: AppIntent {
 }
 
 struct ResinTimerRerenderIntent: AppIntent {
-    static let title: LocalizedStringResource = "pzWidgetsKit.Refresh"
+    static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
 
     func perform() async throws -> some IntentResult {
         Task {
