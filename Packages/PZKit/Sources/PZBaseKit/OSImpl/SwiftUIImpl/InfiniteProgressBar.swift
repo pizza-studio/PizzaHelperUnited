@@ -5,6 +5,7 @@ import SwiftUI
 
 // MARK: - InfiniteProgressBar
 
+@MainActor
 public struct InfiniteProgressBar: View {
     // MARK: Lifecycle
 

@@ -6,6 +6,7 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 

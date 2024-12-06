@@ -14,6 +14,7 @@ import SwiftUI
 // MARK: - ZZZBountyInfoBar
 
 @available(watchOS, unavailable)
+@MainActor
 struct ZZZBountyInfoBar: View {
     // MARK: Lifecycle
 

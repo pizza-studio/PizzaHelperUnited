@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - TravelStatsNav
 
+@MainActor
 public struct TravelStatsNav: View {
     // MARK: Lifecycle
 

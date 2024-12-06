@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - CDGachaMODebugView
 
+@MainActor
 public struct CDGachaMODebugView: View {
     // MARK: Lifecycle
 

@@ -13,6 +13,7 @@ import WidgetKit
 // MARK: - MainInfo
 
 @available(watchOS, unavailable)
+@MainActor
 struct MainInfo: View {
     let entry: any TimelineEntry
     let dailyNote: any DailyNoteProtocol

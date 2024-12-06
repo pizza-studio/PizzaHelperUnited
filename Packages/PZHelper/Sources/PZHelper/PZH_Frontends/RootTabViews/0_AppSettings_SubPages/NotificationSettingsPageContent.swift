@@ -11,6 +11,7 @@ import UserNotifications
 
 // MARK: - NotificationSettingsPageContent
 
+@MainActor
 struct NotificationSettingsPageContent: View {
     // MARK: Public
 
@@ -83,6 +84,7 @@ struct NotificationSettingsPageContent: View {
 
 // MARK: - ProfilesNotificationPermissionView
 
+@MainActor
 private struct ProfilesNotificationPermissionView: View {
     // MARK: Public
 
@@ -160,6 +162,7 @@ private struct ProfilesNotificationPermissionView: View {
 
 // MARK: - StaminaNotificationThresholdConfigView
 
+@MainActor
 private struct StaminaNotificationThresholdConfigView: View {
     // MARK: Public
 
@@ -321,6 +324,7 @@ private struct StaminaNotificationThresholdConfigView: View {
 
 // MARK: - NotificationSettingDetailContent
 
+@MainActor
 private struct NotificationSettingDetailContent: View {
     // MARK: Public
 

@@ -10,6 +10,7 @@ import PZDictionaryKit
 import SwiftUI
 import WallpaperKit
 
+@MainActor
 struct UtilsTabPage: View {
     // MARK: Internal
 

@@ -10,7 +10,11 @@ public typealias AbleToCodeSendHash = Codable & Sendable & Hashable
 
 // MARK: - UserDefaults + Sendable
 
+#if hasFeature(RetroactiveAttribute)
 extension UserDefaults: @unchecked @retroactive Sendable {}
+#else
+extension UserDefaults: @unchecked Sendable {}
+#endif
 
 // MARK: - Debug Intel Dumper for URLRequest.
 

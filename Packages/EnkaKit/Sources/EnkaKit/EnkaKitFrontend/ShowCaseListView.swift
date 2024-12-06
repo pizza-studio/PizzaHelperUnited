@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - ShowCaseListView
 
+@MainActor
 public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.QueriedProfile.DBType == DBType {
     // MARK: Lifecycle
 

@@ -4,11 +4,13 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 
 // MARK: - ExpeditionsView
 
 @available(watchOS, unavailable)
+@MainActor
 struct ExpeditionsView: View {
     let expeditions: [any ExpeditionTask]
 
@@ -24,6 +26,7 @@ struct ExpeditionsView: View {
 // MARK: - EachExpeditionView
 
 @available(watchOS, unavailable)
+@MainActor
 struct EachExpeditionView: View {
     let expedition: any ExpeditionTask
     let viewConfig: WidgetViewConfiguration = .defaultConfig

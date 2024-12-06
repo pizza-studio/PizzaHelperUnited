@@ -4,12 +4,14 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
 // MARK: - LockScreenHomeCoinWidgetCorner
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenHomeCoinWidgetCorner: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

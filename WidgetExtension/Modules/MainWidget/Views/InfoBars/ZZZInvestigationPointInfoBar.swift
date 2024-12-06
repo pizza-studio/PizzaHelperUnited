@@ -10,6 +10,7 @@ import SwiftUI
 // MARK: - ZZZInvestigationPointInfoBar
 
 @available(watchOS, unavailable)
+@MainActor
 struct ZZZInvestigationPointInfoBar: View {
     // MARK: Lifecycle
 

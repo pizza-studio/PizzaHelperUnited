@@ -17,6 +17,7 @@ private let refreshSubject: PassthroughSubject<Void, Never> = .init()
 
 // MARK: - ContentView
 
+@MainActor
 public struct ContentView: View {
     // MARK: Lifecycle
 
@@ -96,6 +97,7 @@ public struct ContentView: View {
 
 // MARK: - DetailNavigator
 
+@MainActor
 private struct DetailNavigator: View {
     // MARK: Lifecycle
 

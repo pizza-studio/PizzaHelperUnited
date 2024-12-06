@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - GachaExchangeView
 
+@MainActor
 public struct GachaExchangeView: View {
     // MARK: Public
 

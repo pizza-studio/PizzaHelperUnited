@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - IDPhotoView
 
+@MainActor
 public struct IDPhotoView4HSR: View {
     // MARK: Lifecycle
 

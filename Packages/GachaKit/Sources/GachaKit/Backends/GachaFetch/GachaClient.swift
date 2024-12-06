@@ -7,15 +7,18 @@ import PZAccountKit
 
 // MARK: - GachaClient
 
+@MainActor
 public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIteratorProtocol {
     // MARK: Lifecycle
 
-    public init(gachaURLString: String) throws(ParseGachaURLError) {
+    public init(gachaURLString: String) throws {
         self.authentication = try Self.parseGachaURL(by: gachaURLString)
         self.urlString = gachaURLString
     }
 
     // MARK: Public
+
+    public typealias Element = (gachaType: GachaType, result: GachaResult)
 
     public typealias GachaResult = GachaFetchModels.PageFetched
 
@@ -56,9 +59,9 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
     public var fetchRange: GachaFetchRange = .allAvailable
     public var chosenPools: Set<GachaType> = Set(GachaType.knownCases)
 
-    public func makeAsyncIterator() -> Self { self }
+    nonisolated public func makeAsyncIterator() -> Self { self }
 
-    public mutating func next() async throws(GachaError) -> (gachaType: GachaType, result: GachaResult)? {
+    public mutating func next() async throws -> Element? {
         guard !chosenPools.isEmpty else { return nil }
         while !chosenPools.contains(pagination.gachaType) {
             if let nextGachaType = pagination.gachaType.next() {
@@ -131,7 +134,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
 
     static func parseGachaURL(
         by gachaURLString: String
-    ) throws(ParseGachaURLError)
+    ) throws
         -> GachaRequestAuthentication {
         guard let url = URL(string: gachaURLString), gachaURLString.contains("api/getGachaLog"),
               let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
@@ -144,7 +147,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         else { throw ParseGachaURLError.noAuthenticationKeyVersion }
         guard let serverRawValue = queryItems?.first(where: { $0.name == "region" })?.value
         else { throw ParseGachaURLError.noServer }
-        guard let server = HoYo.Server(rawValue: serverRawValue) else { throw .invalidServer }
+        guard let server = HoYo.Server(rawValue: serverRawValue) else { throw ParseGachaURLError.invalidServer }
         guard let signType = queryItems?.first(where: { $0.name == "sign_type" })?.value
         else { throw ParseGachaURLError.noSignType }
 

@@ -10,6 +10,7 @@ import SwiftUI
 // MARK: - ZZZScratchCardInfoBar
 
 @available(watchOS, unavailable)
+@MainActor
 struct ZZZScratchCardInfoBar: View {
     // MARK: Lifecycle
 

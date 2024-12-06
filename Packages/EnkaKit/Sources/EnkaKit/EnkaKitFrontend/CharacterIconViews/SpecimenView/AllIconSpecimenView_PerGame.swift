@@ -86,6 +86,7 @@ public struct CharSpecimen: Identifiable, Hashable {
 
 // MARK: - AllCharacterPhotoSpecimenViewPerGame
 
+@MainActor
 public struct AllCharacterPhotoSpecimenViewPerGame: View {
     // MARK: Lifecycle
 

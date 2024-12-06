@@ -66,12 +66,12 @@ open class TaskManagedVM: ObservableObject {
         task?.cancel()
     }
 
-    public func fireTask<each T: Sendable>(
+    public func fireTask<T: Sendable>(
         prerequisite: (condition: Bool, notMetHandler: (() -> Void)?)? = nil,
         animatedPreparationTask: (() -> Void)? = nil,
         cancelPreviousTask: Bool = true,
-        givenTask: @escaping () async throws -> (repeat each T)?,
-        completionHandler: (((repeat each T)?) -> Void)? = nil,
+        givenTask: @escaping () async throws -> T?,
+        completionHandler: ((T?) -> Void)? = nil,
         errorHandler: ((Error) -> Void)? = nil
     ) {
         if let prerequisite, !prerequisite.condition {

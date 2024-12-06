@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - ProfileConfigEditorView
 
+@MainActor
 struct ProfileConfigEditorView: View {
     // MARK: Internal
 
@@ -119,6 +120,7 @@ struct ProfileConfigEditorView: View {
 
 // MARK: - RegenerateDeviceFingerPrintButton
 
+@MainActor
 private struct RegenerateDeviceFingerPrintButton: View {
     // MARK: Lifecycle
 

@@ -13,6 +13,7 @@ import SwiftUI
 
 // MARK: - ContentView
 
+@MainActor
 public struct ContentView: View {
     // MARK: Lifecycle
 

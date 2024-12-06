@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - LedgerNav
 
+@MainActor
 public struct LedgerNav: View {
     // MARK: Lifecycle
 

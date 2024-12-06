@@ -10,6 +10,7 @@ import UniformTypeIdentifiers
 
 // MARK: - GachaImportSections
 
+@MainActor
 public struct GachaImportSections: View {
     // MARK: Public
 
@@ -335,6 +336,7 @@ extension GachaImportSections {
 
 // MARK: - PopFileButton
 
+@MainActor
 private struct PopFileButton: View {
     // MARK: Lifecycle
 
@@ -383,6 +385,7 @@ private struct PopFileButton: View {
 
 // MARK: - FallbackTimeZonePicker
 
+@MainActor
 private struct FallbackTimeZonePicker: View {
     // MARK: Public
 

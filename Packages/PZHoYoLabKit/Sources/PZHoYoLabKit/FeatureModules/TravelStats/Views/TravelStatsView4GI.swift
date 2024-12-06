@@ -128,6 +128,7 @@ public struct TravelStatsView4GI: TravelStatsView {
 
     // MARK: Private
 
+    @MainActor
     private struct WorldExplorationView: View {
         struct WorldDataLabel: View {
             @Environment(\.colorScheme) private var colorScheme

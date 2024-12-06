@@ -170,7 +170,11 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
 #if DEBUG
 
+#if hasFeature(RetroactiveAttribute)
 extension FakePZProfileMO: @unchecked @retroactive Sendable {}
+#else
+extension FakePZProfileMO: @unchecked Sendable {}
+#endif
 
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping

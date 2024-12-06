@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - UtilizationParasSettingBar
 
+@MainActor
 struct UtilizationParasSettingBar: View {
     var pvp: Bool = false
     @Binding var params: UtilizationAPIParameters

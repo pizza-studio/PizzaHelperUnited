@@ -10,6 +10,7 @@ import WidgetKit
 // MARK: - AlternativeLockScreenHomeCoinWidget
 
 @available(macOS, unavailable)
+@MainActor
 struct AlternativeLockScreenHomeCoinWidget: Widget {
     let kind: String = "AlternativeLockScreenHomeCoinWidget"
 
@@ -31,6 +32,7 @@ struct AlternativeLockScreenHomeCoinWidget: Widget {
 // MARK: - AlternativeLockScreenHomeCoinWidgetView
 
 @available(macOS, unavailable)
+@MainActor
 struct AlternativeLockScreenHomeCoinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
 

@@ -6,6 +6,7 @@ import SwiftUI
 
 // MARK: - NotificationView
 
+@MainActor
 struct NotificationView: View {
     var body: some View {
         EmptyView()

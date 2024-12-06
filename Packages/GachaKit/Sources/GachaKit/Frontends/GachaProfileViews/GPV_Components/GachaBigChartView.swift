@@ -6,6 +6,7 @@ import SwiftUI
 
 // MARK: - GachaBigChartView
 
+@MainActor
 public struct GachaBigChartView: View {
     // MARK: Lifecycle
 

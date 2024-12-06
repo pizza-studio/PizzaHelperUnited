@@ -10,6 +10,7 @@ import WidgetKit
 // MARK: - LockScreenHomeCoinWidgetRectangular
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenHomeCoinWidgetRectangular: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

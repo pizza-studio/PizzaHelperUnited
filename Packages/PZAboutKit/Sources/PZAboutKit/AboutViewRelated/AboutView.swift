@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - AboutView
 
+@MainActor
 public struct AboutView: View {
     // MARK: Lifecycle
 
@@ -68,6 +69,7 @@ public struct AboutView: View {
 
 // MARK: - AppAboutViewSections
 
+@MainActor
 struct AppAboutViewSections: View {
     // MARK: Internal
 
@@ -179,6 +181,7 @@ struct AppAboutViewSections: View {
 
 // MARK: - DevCrewViewSections
 
+@MainActor
 struct DevCrewViewSections: View {
     // MARK: Internal
 

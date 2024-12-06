@@ -9,6 +9,7 @@ import SwiftUI
 // MARK: - GachaProfileView.GachaStatsSection
 
 extension GachaProfileView {
+    @MainActor
     public struct GachaStatsSection: View {
         // MARK: Lifecycle
 

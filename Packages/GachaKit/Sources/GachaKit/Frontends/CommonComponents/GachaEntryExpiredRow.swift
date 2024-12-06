@@ -6,6 +6,7 @@ import GachaMetaDB
 import PZBaseKit
 import SwiftUI
 
+@MainActor
 public struct GachaEntryExpiredRow: View {
     // MARK: Lifecycle
 

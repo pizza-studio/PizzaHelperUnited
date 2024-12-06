@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -32,9 +32,6 @@ let package = Package(
         .package(
             url: "https://github.com/CoreOffice/CoreXLSX", .upToNextMajor(from: "0.14.2")
         ),
-        .package(
-            url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")
-        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -50,7 +47,6 @@ let package = Package(
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
                 .product(name: "CoreXLSX", package: "CoreXLSX"),
-                .product(name: "AlertToast", package: "AlertToast"),
             ],
             resources: [
                 .process("Resources/"),

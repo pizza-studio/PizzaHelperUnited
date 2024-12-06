@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - AppWallpaperSettingsPicker
 
+@MainActor
 public struct AppWallpaperSettingsPicker: View {
     // MARK: Lifecycle
 

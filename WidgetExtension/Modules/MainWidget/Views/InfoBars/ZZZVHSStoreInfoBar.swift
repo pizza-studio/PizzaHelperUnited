@@ -10,6 +10,7 @@ import SwiftUI
 // MARK: - ZZZVHSStoreInfoBar
 
 @available(watchOS, unavailable)
+@MainActor
 struct ZZZVHSStoreInfoBar: View {
     // MARK: Lifecycle
 

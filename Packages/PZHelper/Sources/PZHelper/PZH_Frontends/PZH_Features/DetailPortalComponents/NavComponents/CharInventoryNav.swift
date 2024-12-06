@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - CharInventoryNav
 
+@MainActor
 public struct CharInventoryNav: View {
     // MARK: Lifecycle
 

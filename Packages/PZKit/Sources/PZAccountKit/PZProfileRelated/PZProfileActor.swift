@@ -26,9 +26,10 @@ public actor PZProfileActor {
         modelExecutor = DefaultSerialModelExecutor(
             modelContext: .init(modelContainer)
         )
+        let isDataReset = isReset
         Task { @MainActor in
             // 处理资料库被重设的情形。
-            if isReset {
+            if isDataReset {
                 await failSafeRestoreAllDataFromUserDefaults()
             } else {
                 await syncAllDataToUserDefaults()

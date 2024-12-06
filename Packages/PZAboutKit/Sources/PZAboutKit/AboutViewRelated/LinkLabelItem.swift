@@ -5,6 +5,7 @@
 import PZBaseKit
 import SwiftUI
 
+@MainActor
 struct LinkLabelItem: View {
     // MARK: Lifecycle
 

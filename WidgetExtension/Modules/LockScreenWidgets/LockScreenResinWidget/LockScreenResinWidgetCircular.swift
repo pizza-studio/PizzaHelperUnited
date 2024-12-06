@@ -10,6 +10,7 @@ import SwiftUI
 import WidgetKit
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenResinWidgetCircular: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

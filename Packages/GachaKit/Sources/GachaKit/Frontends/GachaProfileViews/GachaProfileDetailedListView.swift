@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - GachaProfileView
 
+@MainActor
 public struct GachaProfileDetailedListView: View {
     // MARK: Lifecycle
 

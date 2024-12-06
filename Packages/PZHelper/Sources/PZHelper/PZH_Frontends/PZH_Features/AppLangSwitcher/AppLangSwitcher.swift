@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - AppLanguageSwitcher
 
+@MainActor
 struct AppLanguageSwitcher: View {
     // MARK: Lifecycle
 

@@ -14,6 +14,7 @@ import WidgetKit
 // MARK: - MaterialWidget
 
 @available(watchOS, unavailable)
+@MainActor
 struct MaterialWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(
@@ -32,6 +33,7 @@ struct MaterialWidget: Widget {
 // MARK: - MaterialWidgetView
 
 @available(watchOS, unavailable)
+@MainActor
 struct MaterialWidgetView: View {
     let entry: MaterialWidgetEntry
 
@@ -97,6 +99,7 @@ struct MaterialWidgetView: View {
 // MARK: - EventView
 
 @available(watchOS, unavailable)
+@MainActor
 private struct EventView: View {
     let events: [EventModel]
 

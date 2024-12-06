@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - TeamUtilizationParasSettingBar
 
+@MainActor
 struct TeamUtilizationParasSettingBar: View {
     @Binding var params: TeamUtilizationAPIParameters
 

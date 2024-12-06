@@ -20,6 +20,7 @@ private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
 
 // MARK: - GetCookieWebView
 
+@MainActor
 struct GetCookieWebView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 

@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-#if canImport(ActivityKit)
+#if canImport(ActivityKit) && os(iOS)
 import ActivityKit
 import AppIntents
 @preconcurrency import Defaults
@@ -59,7 +59,14 @@ struct ResinTimerRerenderIntent: AppIntent {
     }
 }
 
+@MainActor
 struct ResinRecoveryActivityWidget: Widget {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Internal
+
     var body: some WidgetConfiguration {
         ActivityConfiguration(
             for: ResinRecoveryAttributes
@@ -184,6 +191,7 @@ struct ResinRecoveryActivityWidget: Widget {
     }
 }
 
+@MainActor
 struct ResinRecoveryActivityWidgetLockScreenView: View {
     // MARK: Internal
 

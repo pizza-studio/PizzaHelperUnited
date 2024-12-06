@@ -13,6 +13,7 @@ import SwiftUI
 
 // MARK: - DetailPortalTabPage
 
+@MainActor
 struct DetailPortalTabPage: View {
     // MARK: Lifecycle
 

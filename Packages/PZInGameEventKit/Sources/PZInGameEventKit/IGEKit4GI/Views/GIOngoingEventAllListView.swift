@@ -11,6 +11,7 @@ import WallpaperKit
 
 // MARK: - GIOngoingEventAllListView
 
+@MainActor
 struct GIOngoingEventAllListView: View {
     // MARK: Lifecycle
 

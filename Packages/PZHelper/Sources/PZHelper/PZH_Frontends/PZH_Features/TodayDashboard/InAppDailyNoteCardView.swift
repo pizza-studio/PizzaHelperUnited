@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - InAppDailyNoteCardView
 
+@MainActor
 struct InAppDailyNoteCardView: View {
     // MARK: Lifecycle
 
@@ -94,6 +95,7 @@ struct InAppDailyNoteCardView: View {
 
 // MARK: - DailyNoteCardErrorView
 
+@MainActor
 private struct DailyNoteCardErrorView: View {
     public let profile: PZProfileMO
     public var error: Error
@@ -134,6 +136,7 @@ private let dateComponentsFormatter: DateComponentsFormatter = {
 
 // MARK: - DailyNoteCardView4GI
 
+@MainActor
 private struct DailyNoteCardView4GI: View {
     // MARK: Lifecycle
 
@@ -372,6 +375,7 @@ private struct DailyNoteCardView4GI: View {
 
 // MARK: - DailyNoteCardView4HSR
 
+@MainActor
 private struct DailyNoteCardView4HSR: View {
     // MARK: Lifecycle
 
@@ -560,6 +564,7 @@ private struct DailyNoteCardView4HSR: View {
 
 // MARK: - DailyNoteCardView4ZZZ
 
+@MainActor
 private struct DailyNoteCardView4ZZZ: View {
     // MARK: Lifecycle
 

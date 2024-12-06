@@ -14,6 +14,7 @@ import WallpaperKit
 
 // MARK: - EnableLiveActivityButton
 
+@MainActor
 public struct EnableLiveActivityButton: View {
     // MARK: Lifecycle
 

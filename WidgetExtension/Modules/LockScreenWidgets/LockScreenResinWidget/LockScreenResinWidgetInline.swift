@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -11,6 +12,7 @@ import WidgetKit
 // MARK: - LockScreenResinWidgetInline
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenResinWidgetInline: View {
     let entry: any TimelineEntry
     let result: Result<any DailyNoteProtocol, any Error>

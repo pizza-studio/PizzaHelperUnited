@@ -10,6 +10,7 @@ import WidgetKit
 // MARK: - MainWidget
 
 @available(watchOS, unavailable)
+@MainActor
 struct MainWidget: Widget {
     let kind: String = "WidgetView"
 
@@ -31,6 +32,7 @@ struct MainWidget: Widget {
 // MARK: - WidgetViewEntryView
 
 @available(watchOS, unavailable)
+@MainActor
 struct WidgetViewEntryView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
 

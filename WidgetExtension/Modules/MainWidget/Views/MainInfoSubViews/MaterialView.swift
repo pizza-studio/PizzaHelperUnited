@@ -6,6 +6,7 @@ import GITodayMaterialsKit
 import SwiftUI
 
 @available(watchOS, unavailable)
+@MainActor
 struct MaterialView: View {
     // MARK: Lifecycle
 

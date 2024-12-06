@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - FAQView
 
+@MainActor
 public struct FAQView: View {
     // MARK: Lifecycle
 

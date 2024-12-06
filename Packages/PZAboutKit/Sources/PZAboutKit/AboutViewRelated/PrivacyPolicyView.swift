@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - PrivacyPolicyView
 
+@MainActor
 public struct PrivacyPolicyView: View {
     // MARK: Lifecycle
 

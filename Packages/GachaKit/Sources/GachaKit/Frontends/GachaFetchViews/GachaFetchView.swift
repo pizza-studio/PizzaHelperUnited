@@ -11,6 +11,7 @@ import SwiftUI
 
 // MARK: - GachaFetchView
 
+@MainActor
 public struct GachaFetchView: View {
     // MARK: Lifecycle
 
@@ -133,6 +134,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
 // MARK: GachaFetchView4Game.WaitingForURLView
 
 extension GachaFetchView4Game {
+    @MainActor
     private struct WaitingForURLView: View {
         // MARK: Lifecycle
 
@@ -267,6 +269,7 @@ extension GachaFetchView4Game {
 // MARK: GachaFetchView4Game.ReadyToFireView
 
 extension GachaFetchView4Game {
+    @MainActor
     private struct ReadyToFireView: View {
         // MARK: Lifecycle
 
@@ -389,6 +392,7 @@ extension GachaFetchView4Game {
 // MARK: GachaFetchView4Game.GachaPoolTypePickerSection
 
 extension GachaFetchView4Game {
+    @MainActor
     private struct GachaPoolTypePickerSection: View {
         // MARK: Public
 
@@ -439,6 +443,7 @@ extension GachaFetchView4Game {
 // MARK: GachaFetchView4Game.InProgressView
 
 extension GachaFetchView4Game {
+    @MainActor
     private struct InProgressView: View {
         // MARK: Lifecycle
 
@@ -472,6 +477,7 @@ extension GachaFetchView4Game {
 // MARK: GachaFetchView4Game.GotSomeItemView
 
 extension GachaFetchView4Game {
+    @MainActor
     private struct GotSomeItemView: View {
         // MARK: Lifecycle
 
@@ -529,6 +535,7 @@ extension GachaFetchView4Game {
 // MARK: GachaFetchView4Game.FailFetchingView
 
 extension GachaFetchView4Game {
+    @MainActor
     private struct FailFetchingView: View {
         // MARK: Lifecycle
 
@@ -567,6 +574,7 @@ extension GachaFetchView4Game {
 // MARK: GachaFetchView4Game.FinishedView
 
 extension GachaFetchView4Game {
+    @MainActor
     private struct FinishedView: View {
         // MARK: Lifecycle
 
@@ -651,6 +659,7 @@ extension GachaFetchView4Game {
 // MARK: GachaFetchView4Game.GetGachaChart
 
 extension GachaFetchView4Game {
+    @MainActor
     private struct GetGachaChart: View {
         // MARK: Internal
 

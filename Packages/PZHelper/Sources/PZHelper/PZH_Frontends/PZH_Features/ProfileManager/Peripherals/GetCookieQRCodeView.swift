@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - GetCookieQRCodeView
 
+@MainActor
 struct GetCookieQRCodeView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State var viewModel = GetCookieQRCodeViewModel.shared

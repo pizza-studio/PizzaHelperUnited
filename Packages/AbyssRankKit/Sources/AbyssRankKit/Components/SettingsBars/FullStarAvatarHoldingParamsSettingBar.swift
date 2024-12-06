@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - FullStarAvatarHoldingParamsSettingBar
 
+@MainActor
 struct FullStarAvatarHoldingParamsSettingBar: View {
     @Binding var params: FullStarAPIParameters
 

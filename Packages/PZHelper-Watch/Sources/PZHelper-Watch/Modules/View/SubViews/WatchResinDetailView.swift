@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - WatchResinDetailView
 
+@MainActor
 struct WatchResinDetailView: View {
     let dailyNote: any DailyNoteProtocol
 

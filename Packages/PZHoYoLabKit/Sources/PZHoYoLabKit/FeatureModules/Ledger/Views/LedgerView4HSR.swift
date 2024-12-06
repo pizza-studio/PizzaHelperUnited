@@ -121,6 +121,7 @@ public struct LedgerView4HSR: LedgerView {
 
     // MARK: Private
 
+    @MainActor
     private struct LabelWithDescription: View {
         @Environment(\.colorScheme) var colorScheme
 

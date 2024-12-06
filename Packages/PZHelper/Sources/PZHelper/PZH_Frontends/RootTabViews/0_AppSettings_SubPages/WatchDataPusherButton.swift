@@ -8,6 +8,7 @@ import SFSafeSymbols
 import SwiftData
 import SwiftUI
 
+@MainActor
 struct WatchDataPusherButton: View {
     // MARK: Lifecycle
 

@@ -9,6 +9,7 @@ import SwiftUI
 // MARK: - ProfileConfigViewContents
 
 /// 就是原先的 EditAccountView。
+@MainActor
 struct ProfileConfigViewContents: View {
     // MARK: Lifecycle
 
@@ -92,6 +93,7 @@ struct ProfileConfigViewContents: View {
 // MARK: ProfileConfigViewContents.RequireLoginView
 
 extension ProfileConfigViewContents {
+    @MainActor
     private struct RequireLoginView: View {
         // MARK: Internal
 
@@ -140,6 +142,7 @@ extension ProfileConfigViewContents {
 
     // MARK: - SelectAccountView
 
+    @MainActor
     private struct SelectAccountView: View {
         // MARK: Lifecycle
 

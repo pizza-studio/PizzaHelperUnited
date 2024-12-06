@@ -7,6 +7,7 @@ import SFSafeSymbols
 import StoreKit
 import SwiftUI
 
+@MainActor
 public struct DonationView: View {
     // MARK: Public
 

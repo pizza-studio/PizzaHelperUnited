@@ -133,6 +133,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
 
 // MARK: - AvatarListItemHSR
 
+@MainActor
 private struct AvatarListItemHSR: View {
     // MARK: Lifecycle
 

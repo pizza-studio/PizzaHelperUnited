@@ -10,6 +10,7 @@ import SwiftUI
 // MARK: - WallpaperGalleryViewContent
 
 #if !os(watchOS)
+@MainActor
 public struct WallpaperGalleryViewContent: View {
     // MARK: Lifecycle
 

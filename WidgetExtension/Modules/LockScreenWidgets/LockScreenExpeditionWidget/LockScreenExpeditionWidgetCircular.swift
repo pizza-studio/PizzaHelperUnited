@@ -8,6 +8,7 @@ import SFSafeSymbols
 import SwiftUI
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenExpeditionWidgetCircular: View {
     // MARK: Internal
 

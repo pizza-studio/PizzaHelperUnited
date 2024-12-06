@@ -6,6 +6,7 @@ import Charts
 import PZBaseKit
 import SwiftUI
 
+@MainActor
 public struct GachaChartHorizontal: View {
     // MARK: Lifecycle
 

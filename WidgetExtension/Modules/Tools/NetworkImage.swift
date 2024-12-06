@@ -7,6 +7,7 @@ import SwiftUI
 // MARK: - NetworkImage
 
 /// 加载完图片后才会显示，专用于 Widgets。
+@MainActor
 struct NetworkImage: View {
     let url: URL?
 

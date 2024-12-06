@@ -7,6 +7,7 @@ import EnkaKit
 import GachaMetaDB
 import SwiftUI
 
+@MainActor
 public struct GachaEntryNameView: View {
     // MARK: Lifecycle
 

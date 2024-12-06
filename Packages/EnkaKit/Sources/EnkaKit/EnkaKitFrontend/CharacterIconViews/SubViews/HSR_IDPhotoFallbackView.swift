@@ -7,6 +7,7 @@ import SwiftUI
 // MARK: - IDPhotoFallbackView
 
 /// 仅用于 EnkaDB 还没更新的场合。
+@MainActor
 struct IDPhotoFallbackView4HSR: View {
     // MARK: Lifecycle
 

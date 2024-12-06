@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - AppSettingsTabPage
 
+@MainActor
 struct AppSettingsTabPage: View {
     // MARK: Lifecycle
 

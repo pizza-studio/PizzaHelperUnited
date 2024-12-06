@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - PZDictionaryView
 
+@MainActor
 public struct PZDictionaryView: View {
     // MARK: Lifecycle
 
@@ -100,6 +101,7 @@ public struct PZDictionaryView: View {
 // MARK: PZDictionaryView.DictionaryTranslationDetailView
 
 extension PZDictionaryView {
+    @MainActor
     private struct DictionaryTranslationDetailView: View {
         // MARK: Internal
 

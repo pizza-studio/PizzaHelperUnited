@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import AlertToast
+// import AlertToast
 @preconcurrency import Defaults
 import EnkaKit
 import Observation
@@ -14,6 +14,7 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent
 
+@MainActor
 struct ProfileManagerPageContent: View {
     // MARK: Public
 
@@ -109,14 +110,14 @@ struct ProfileManagerPageContent: View {
                         .disabled(isBusy || isEditing)
                     }
                 }
-                .toast(isPresenting: $alertToastEventStatus.isProfileTaskSucceeded) {
+                .toast(isPresenting: $alertToastEventStatus.isProfileTaskSucceeded) { @MainActor in
                     AlertToast(
                         displayMode: .alert,
                         type: .complete(.green),
                         title: "profileMgr.toast.taskSucceeded".i18nPZHelper
                     )
                 }
-                .toast(isPresenting: $alertToastEventStatus.isFailureSituationTriggered) {
+                .toast(isPresenting: $alertToastEventStatus.isFailureSituationTriggered) { @MainActor in
                     AlertToast(
                         displayMode: .alert,
                         type: .complete(.green),

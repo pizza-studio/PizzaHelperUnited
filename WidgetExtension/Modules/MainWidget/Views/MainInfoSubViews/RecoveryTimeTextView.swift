@@ -5,12 +5,14 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
 // MARK: - RecoveryTimeText
 
 @available(watchOS, unavailable)
+@MainActor
 struct RecoveryTimeText: View {
     let entry: any TimelineEntry
     let data: any DailyNoteProtocol

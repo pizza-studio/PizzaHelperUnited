@@ -11,6 +11,7 @@ import SwiftUI
 
 // MARK: - AbyssReportNav
 
+@MainActor
 public struct AbyssReportNav: View {
     // MARK: Lifecycle
 

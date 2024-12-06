@@ -11,6 +11,7 @@ import UniformTypeIdentifiers
 
 // MARK: - GachaExportSections
 
+@MainActor
 public struct GachaExportSections: View {
     // MARK: Public
 

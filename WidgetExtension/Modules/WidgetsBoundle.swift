@@ -3,20 +3,26 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
 extension PZWidgets {
     @WidgetBundleBuilder @MainActor @preconcurrency public static var widgets: some Widget {
-        #if canImport(ActivityKit)
-        if #available(iOS 16.1, *) {
-            ResinRecoveryActivityWidget()
-        }
+        #if canImport(ActivityKit) && os(iOS)
+        ResinRecoveryActivityWidget()
         #endif
         #if !os(watchOS)
         MainWidget()
         MaterialWidget()
         #endif
+        #if os(iOS) && !targetEnvironment(macCatalyst)
+        iOSWidgets()
+        #endif
+    }
+
+    @WidgetBundleBuilder @MainActor @preconcurrency
+    public static func iOSWidgets() -> some Widget {
         #if os(iOS) && !targetEnvironment(macCatalyst)
         LockScreenResinWidget()
         LockScreenLoopWidget()

@@ -12,6 +12,7 @@ import WallpaperKit
 
 // MARK: - LiveActivitySettingNavigator
 
+@MainActor
 struct LiveActivitySettingNavigator: View {
     // MARK: Lifecycle
 
@@ -43,6 +44,7 @@ struct LiveActivitySettingNavigator: View {
 
 // MARK: - LiveActivitySettingsPageContent
 
+@MainActor
 struct LiveActivitySettingsPageContent: View {
     // MARK: Internal
 

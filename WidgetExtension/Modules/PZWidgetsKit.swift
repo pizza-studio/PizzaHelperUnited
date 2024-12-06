@@ -5,13 +5,14 @@
 @preconcurrency import Defaults
 import Foundation
 import PZAccountKit
+import PZWidgetsKit
 
 // MARK: - PZWidgets
 
 public enum PZWidgets {}
 
 extension PZWidgets {
-    static let dateFormatter: DateFormatter = {
+    public static let dateFormatter: DateFormatter = {
         let fmt = DateFormatter()
         fmt.doesRelativeDateFormatting = true
         fmt.dateStyle = .short
@@ -19,18 +20,13 @@ extension PZWidgets {
         return fmt
     }()
 
-    static let intervalFormatter: DateComponentsFormatter = {
+    public static let intervalFormatter: DateComponentsFormatter = {
         let dateComponentFormatter = DateComponentsFormatter()
         dateComponentFormatter.allowedUnits = [.hour, .minute]
         dateComponentFormatter.maximumUnitCount = 2
         dateComponentFormatter.unitsStyle = .brief
         return dateComponentFormatter
     }()
-
-    @MainActor
-    public static func attemptToAutoInheritOldAccountsIntoProfiles() {
-        PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
-    }
 
     public static func getAllProfiles() -> [PZProfileSendable] {
         Defaults[.pzProfiles].values.sorted {

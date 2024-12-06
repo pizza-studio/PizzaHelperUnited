@@ -9,6 +9,7 @@ import SwiftUI
 import WidgetKit
 
 @available(watchOS, unavailable)
+@MainActor
 struct GIHomeCoinInfoBar: View {
     // MARK: Lifecycle
 

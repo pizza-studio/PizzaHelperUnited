@@ -5,6 +5,7 @@
 @preconcurrency import Defaults
 import SwiftUI
 
+@MainActor
 public struct GachaEntryBar: View {
     // MARK: Lifecycle
 

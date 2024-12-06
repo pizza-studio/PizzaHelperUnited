@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@MainActor
 public struct ShowCaseEmptyInfoView: View {
     public let game: Enka.GameType
 

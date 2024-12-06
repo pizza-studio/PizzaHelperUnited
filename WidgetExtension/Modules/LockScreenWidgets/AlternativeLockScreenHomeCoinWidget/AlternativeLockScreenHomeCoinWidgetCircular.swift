@@ -9,6 +9,7 @@ import SwiftUI
 import WidgetKit
 
 @available(macOS, unavailable)
+@MainActor
 struct AlternativeLockScreenHomeCoinWidgetCircular: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

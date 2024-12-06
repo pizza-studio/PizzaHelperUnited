@@ -4,12 +4,14 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
 // MARK: - GITransformerInfoBar
 
 @available(watchOS, unavailable)
+@MainActor
 struct GITransformerInfoBar: View {
     // MARK: Lifecycle
 

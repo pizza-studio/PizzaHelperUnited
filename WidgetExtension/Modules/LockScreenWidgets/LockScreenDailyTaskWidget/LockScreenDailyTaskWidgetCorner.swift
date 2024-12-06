@@ -7,6 +7,7 @@ import PZBaseKit
 import SwiftUI
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenDailyTaskWidgetCorner: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
 

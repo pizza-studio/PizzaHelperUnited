@@ -12,6 +12,7 @@ import SFSafeSymbols
 import SwiftUI
 
 @available(watchOS, unavailable)
+@MainActor
 struct HSREchoOfWarInfoBar: View {
     // MARK: Lifecycle
 

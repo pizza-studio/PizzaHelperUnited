@@ -9,6 +9,7 @@ import SwiftUI
     ListOf3rdPartyComponentsView()
 }
 
+@MainActor
 struct ListOf3rdPartyComponentsView: View {
     static let navTitle: String = {
         let key: String.LocalizationValue = "aboutKit.3rdParty.navTitle"

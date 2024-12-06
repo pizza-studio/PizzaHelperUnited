@@ -14,6 +14,7 @@ extension Image {
 
 // MARK: - HelpTextForScrollingOnDesktopComputer
 
+@MainActor
 public struct HelpTextForScrollingOnDesktopComputer: View {
     // MARK: Lifecycle
 
@@ -307,7 +308,12 @@ extension Binding where Value: OptionSet, Value == Value.Element {
 // MARK: - Optional Modifier Wrappers
 
 extension View {
-    public func apply<V: View>(@ViewBuilder _ block: (Self) -> V) -> V { block(self) }
+    @MainActor
+    public func apply<V: View>(@ViewBuilder _ block: (Self) -> V) -> V {
+        MainActor.assumeIsolated {
+            block(self)
+        }
+    }
 }
 
 // MARK: - NavBarTitleDisplayMode.

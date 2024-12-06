@@ -133,6 +133,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
 
 // MARK: - AvatarListItem4GI
 
+@MainActor
 private struct AvatarListItem4GI: View {
     // MARK: Lifecycle
 

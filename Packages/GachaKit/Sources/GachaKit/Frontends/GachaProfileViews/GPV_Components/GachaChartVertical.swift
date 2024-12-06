@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - GachaChartVertical
 
+@MainActor
 public struct GachaChartVertical: View {
     // MARK: Lifecycle
 

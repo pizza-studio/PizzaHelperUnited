@@ -8,6 +8,7 @@ import WallpaperKit
 // MARK: - GITodayMaterialsView
 
 @available(watchOS, unavailable)
+@MainActor
 public struct GITodayMaterialsView<T: View>: View {
     // MARK: Lifecycle
 
@@ -80,7 +81,7 @@ public struct GITodayMaterialsView<T: View>: View {
 
     // MARK: Internal
 
-    var content: some View {
+    @ViewBuilder var content: some View {
         ForEach(materialsFiltered.reversed()) { material in
             LabeledContent {
                 VStack(alignment: .leading, spacing: 4) {

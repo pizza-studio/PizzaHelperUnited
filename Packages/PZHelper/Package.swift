@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -35,7 +35,6 @@ let package = Package(
         .package(path: "../PZAboutKit"),
         .package(path: "../PZHoYoLabKit"),
         .package(path: "../PZInGameEventKit"),
-        .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
         .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "8.2.0")),
     ],
@@ -43,7 +42,6 @@ let package = Package(
         .target(
             name: "PZHelper",
             dependencies: [
-                .product(name: "AlertToast", package: "AlertToast"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "PZAboutKit", package: "PZAboutKit"),
                 .product(name: "PZAccountKit", package: "PZKit"),

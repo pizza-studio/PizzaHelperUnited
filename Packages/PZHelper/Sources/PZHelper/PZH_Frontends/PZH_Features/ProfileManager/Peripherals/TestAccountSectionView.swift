@@ -6,6 +6,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
+@MainActor
 struct TestAccountSectionView: View {
     // MARK: Internal
 
@@ -116,6 +117,7 @@ struct TestAccountSectionView: View {
         }
     }
 
+    @MainActor
     private struct FailureView: View {
         let error: Error
 
@@ -135,6 +137,7 @@ struct TestAccountSectionView: View {
         }
     }
 
+    @MainActor
     private struct VerificationNeededView: View {
         // MARK: Internal
 

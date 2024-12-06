@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - OtherSettingsPageContent
 
+@MainActor
 struct OtherSettingsPageContent: View {
     // MARK: Internal
 

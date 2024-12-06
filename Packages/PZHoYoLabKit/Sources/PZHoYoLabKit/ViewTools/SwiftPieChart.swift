@@ -12,6 +12,7 @@ import SwiftUI
 
 // MARK: - PieChartView
 
+@MainActor
 public struct PieChartView: View {
     // MARK: Lifecycle
 
@@ -194,6 +195,7 @@ public struct PieChartView: View {
 
 // MARK: - PieChartRows
 
+@MainActor
 struct PieChartRows: View {
     // MARK: Lifecycle
 
@@ -274,6 +276,7 @@ struct PieChartView_Previews: PreviewProvider {
 
 // MARK: - PieSlice
 
+@MainActor
 struct PieSlice: View {
     var pieSliceData: PieSliceData
 

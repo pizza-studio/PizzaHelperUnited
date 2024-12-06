@@ -9,6 +9,7 @@ import SwiftUI
 // MARK: - LiveActivityBackgroundPicker
 
 #if !os(watchOS)
+@MainActor
 public struct LiveActivityBackgroundPicker: View {
     // MARK: Lifecycle
 

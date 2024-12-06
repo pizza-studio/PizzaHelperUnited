@@ -10,6 +10,7 @@ import WidgetKit
 // MARK: - AlternativeWatchCornerResinWidget
 
 @available(macOS, unavailable)
+@MainActor
 struct AlternativeWatchCornerResinWidget: Widget {
     let kind: String = "AlternativeWatchCornerResinWidget"
 
@@ -32,6 +33,7 @@ struct AlternativeWatchCornerResinWidget: Widget {
 // MARK: - AlternativeWatchCornerResinWidgetView
 
 @available(macOS, unavailable)
+@MainActor
 struct AlternativeWatchCornerResinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
 

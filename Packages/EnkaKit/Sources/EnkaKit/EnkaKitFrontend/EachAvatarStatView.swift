@@ -9,6 +9,7 @@ import WallpaperKit
 
 // MARK: - EachAvatarStatView
 
+@MainActor
 public struct EachAvatarStatView: View {
     // MARK: Lifecycle
 
@@ -465,6 +466,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
 
 // MARK: - WeaponPanelView
 
+@MainActor
 private struct WeaponPanelView: View {
     // MARK: Lifecycle
 
@@ -569,6 +571,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
 
 // MARK: - ArtifactView
 
+@MainActor
 private struct ArtifactView: View {
     // MARK: Lifecycle
 
@@ -709,6 +712,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
 
 // MARK: - AttributeTagPair
 
+@MainActor
 public struct AttributeTagPair: View {
     // MARK: Lifecycle
 

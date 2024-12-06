@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - OtherSettingsPageContent
 
+@MainActor
 struct CloudAccountSettingsPageContent: View {
     // MARK: Internal
 

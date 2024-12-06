@@ -10,6 +10,7 @@ import WidgetKit
 // MARK: - LockScreenResinTimerWidget
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenResinTimerWidget: Widget {
     let kind: String = "LockScreenResinTimerWidget"
 
@@ -35,6 +36,7 @@ struct LockScreenResinTimerWidget: Widget {
 // MARK: - LockScreenResinTimerWidgetView
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenResinTimerWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
 

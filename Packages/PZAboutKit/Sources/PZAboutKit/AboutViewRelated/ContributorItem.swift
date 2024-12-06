@@ -6,6 +6,7 @@ import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
+@MainActor
 struct ContributorItem: View {
     // MARK: Lifecycle
 

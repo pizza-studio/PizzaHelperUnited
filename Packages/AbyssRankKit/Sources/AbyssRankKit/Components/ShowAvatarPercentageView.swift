@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - ShowAvatarPercentageView
 
+@MainActor
 struct ShowAvatarPercentageView: View {
     // MARK: Internal
 

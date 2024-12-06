@@ -10,6 +10,7 @@ import SwiftUI
 // MARK: - HSRSimulUnivInfoBar
 
 @available(watchOS, unavailable)
+@MainActor
 struct HSRSimulUnivInfoBar: View {
     // MARK: Lifecycle
 

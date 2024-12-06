@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - AbyssReportSetView
 
+@MainActor
 public struct AbyssReportSetView<Report: AbyssReport>: View {
     // MARK: Lifecycle
 

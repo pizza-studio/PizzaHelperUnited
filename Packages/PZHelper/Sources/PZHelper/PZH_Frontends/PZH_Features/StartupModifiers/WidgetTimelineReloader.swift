@@ -2,13 +2,13 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import Defaults
 import Foundation
 import PZBaseKit
 import SwiftUI
 import WidgetKit
 
 extension View {
+    @MainActor
     func checkAndReloadWidgetTimeline() -> some View {
         modifier(WidgetTimelineReloader())
     }
@@ -16,6 +16,7 @@ extension View {
 
 // MARK: - WidgetTimelineReloader
 
+@MainActor
 private struct WidgetTimelineReloader: ViewModifier {
     func body(content: Content) -> some View {
         content

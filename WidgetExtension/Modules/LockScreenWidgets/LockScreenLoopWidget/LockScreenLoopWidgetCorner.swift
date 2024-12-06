@@ -8,6 +8,7 @@ import SwiftUI
 import WidgetKit
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenLoopWidgetCorner: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

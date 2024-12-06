@@ -6,6 +6,7 @@ import AppIntents
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 
 // MARK: - AccountIntentAppEntity
 

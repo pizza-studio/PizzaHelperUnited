@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@MainActor
 struct PhotoSpecimenView: View {
     // MARK: Public
 

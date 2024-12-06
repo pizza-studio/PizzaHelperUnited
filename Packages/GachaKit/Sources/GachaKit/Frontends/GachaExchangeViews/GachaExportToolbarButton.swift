@@ -5,6 +5,7 @@
 import SFSafeSymbols
 import SwiftUI
 
+@MainActor
 public struct GachaExportToolbarButton: View {
     // MARK: Lifecycle
 

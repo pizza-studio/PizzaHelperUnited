@@ -6,6 +6,7 @@ import SwiftUI
 
 // MARK: - AnonymousIconView
 
+@MainActor
 public struct AnonymousIconView: View {
     // MARK: Lifecycle
 

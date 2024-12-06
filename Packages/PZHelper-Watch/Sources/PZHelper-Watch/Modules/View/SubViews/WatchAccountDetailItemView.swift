@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@MainActor
 struct WatchAccountDetailItemView: View {
     var title: LocalizedStringKey
     var value: String

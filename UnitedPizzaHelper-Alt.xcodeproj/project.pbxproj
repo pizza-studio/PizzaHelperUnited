@@ -1,0 +1,2093 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B0A42BF2CCE4F96004463D5 /* PZHelper-Watch in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0A42BE2CCE4F96004463D5 /* PZHelper-Watch */; };
+		5B10D8152CC6667600245B77 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5B10D8142CC6667600245B77 /* PZHelper */; };
+		5B10D8252CC6698300245B77 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B10D8242CC6698300245B77 /* StoreKit.framework */; };
+		5B1F2B792D035E1C00C215DA /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1772D035843009B0A1F /* MaterialView.swift */; };
+		5B1F2B7A2D035E1D00C215DA /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1772D035843009B0A1F /* MaterialView.swift */; };
+		5B1F2B7B2D035E2000C215DA /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1782D035843009B0A1F /* RecoveryTimeTextView.swift */; };
+		5B1F2B7C2D035E2100C215DA /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1782D035843009B0A1F /* RecoveryTimeTextView.swift */; };
+		5B1F2B7D2D035E2400C215DA /* ExpeditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1762D035843009B0A1F /* ExpeditionsView.swift */; };
+		5B1F2B7E2D035E2400C215DA /* ExpeditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1762D035843009B0A1F /* ExpeditionsView.swift */; };
+		5B1F2B7F2D035E3900C215DA /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1692D035843009B0A1F /* DailyTaskInfoBar.swift */; };
+		5B1F2B802D035E3900C215DA /* GITrounceBlossomInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16D2D035843009B0A1F /* GITrounceBlossomInfoBar.swift */; };
+		5B1F2B812D035E3900C215DA /* ZZZInvestigationPointInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1722D035843009B0A1F /* ZZZInvestigationPointInfoBar.swift */; };
+		5B1F2B822D035E3900C215DA /* ZZZVHSStoreInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1742D035843009B0A1F /* ZZZVHSStoreInfoBar.swift */; };
+		5B1F2B832D035E3900C215DA /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16A2D035843009B0A1F /* ExpeditionInfoBar.swift */; };
+		5B1F2B842D035E3900C215DA /* GITransformerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16C2D035843009B0A1F /* GITransformerInfoBar.swift */; };
+		5B1F2B852D035E3900C215DA /* HSRReservedTBPowerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16F2D035843009B0A1F /* HSRReservedTBPowerInfoBar.swift */; };
+		5B1F2B862D035E3900C215DA /* ZZZBountyInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1712D035843009B0A1F /* ZZZBountyInfoBar.swift */; };
+		5B1F2B872D035E3900C215DA /* HSREchoOfWarInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16E2D035843009B0A1F /* HSREchoOfWarInfoBar.swift */; };
+		5B1F2B882D035E3900C215DA /* HSRSimulUnivInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1702D035843009B0A1F /* HSRSimulUnivInfoBar.swift */; };
+		5B1F2B892D035E3900C215DA /* ZZZScratchCardInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1732D035843009B0A1F /* ZZZScratchCardInfoBar.swift */; };
+		5B1F2B8A2D035E3900C215DA /* GIHomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16B2D035843009B0A1F /* GIHomeCoinInfoBar.swift */; };
+		5B1F2B8B2D035E3900C215DA /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1692D035843009B0A1F /* DailyTaskInfoBar.swift */; };
+		5B1F2B8C2D035E3900C215DA /* GITrounceBlossomInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16D2D035843009B0A1F /* GITrounceBlossomInfoBar.swift */; };
+		5B1F2B8D2D035E3900C215DA /* ZZZInvestigationPointInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1722D035843009B0A1F /* ZZZInvestigationPointInfoBar.swift */; };
+		5B1F2B8E2D035E3900C215DA /* ZZZVHSStoreInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1742D035843009B0A1F /* ZZZVHSStoreInfoBar.swift */; };
+		5B1F2B8F2D035E3900C215DA /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16A2D035843009B0A1F /* ExpeditionInfoBar.swift */; };
+		5B1F2B902D035E3900C215DA /* GITransformerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16C2D035843009B0A1F /* GITransformerInfoBar.swift */; };
+		5B1F2B912D035E3900C215DA /* HSRReservedTBPowerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16F2D035843009B0A1F /* HSRReservedTBPowerInfoBar.swift */; };
+		5B1F2B922D035E3900C215DA /* ZZZBountyInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1712D035843009B0A1F /* ZZZBountyInfoBar.swift */; };
+		5B1F2B932D035E3900C215DA /* HSREchoOfWarInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16E2D035843009B0A1F /* HSREchoOfWarInfoBar.swift */; };
+		5B1F2B942D035E3900C215DA /* HSRSimulUnivInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1702D035843009B0A1F /* HSRSimulUnivInfoBar.swift */; };
+		5B1F2B952D035E3900C215DA /* ZZZScratchCardInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1732D035843009B0A1F /* ZZZScratchCardInfoBar.swift */; };
+		5B1F2B962D035E3900C215DA /* GIHomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B16B2D035843009B0A1F /* GIHomeCoinInfoBar.swift */; };
+		5B1F2B972D035E3E00C215DA /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17F2D035843009B0A1F /* WidgetErrorView.swift */; };
+		5B1F2B982D035E3E00C215DA /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17A2D035843009B0A1F /* DetailInfoView.swift */; };
+		5B1F2B992D035E3E00C215DA /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17B2D035843009B0A1F /* LargeWidgetView.swift */; };
+		5B1F2B9A2D035E3E00C215DA /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17E2D035843009B0A1F /* WidgetBackgroundView.swift */; };
+		5B1F2B9B2D035E3E00C215DA /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17C2D035843009B0A1F /* MainInfoView.swift */; };
+		5B1F2B9C2D035E3E00C215DA /* MainInfoWithDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17D2D035843009B0A1F /* MainInfoWithDetailView.swift */; };
+		5B1F2B9D2D035E3E00C215DA /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1802D035843009B0A1F /* WidgetMainView.swift */; };
+		5B1F2B9E2D035E3F00C215DA /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17F2D035843009B0A1F /* WidgetErrorView.swift */; };
+		5B1F2B9F2D035E3F00C215DA /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17A2D035843009B0A1F /* DetailInfoView.swift */; };
+		5B1F2BA02D035E3F00C215DA /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17B2D035843009B0A1F /* LargeWidgetView.swift */; };
+		5B1F2BA12D035E3F00C215DA /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17E2D035843009B0A1F /* WidgetBackgroundView.swift */; };
+		5B1F2BA22D035E3F00C215DA /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17C2D035843009B0A1F /* MainInfoView.swift */; };
+		5B1F2BA32D035E3F00C215DA /* MainInfoWithDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B17D2D035843009B0A1F /* MainInfoWithDetailView.swift */; };
+		5B1F2BA42D035E3F00C215DA /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1802D035843009B0A1F /* WidgetMainView.swift */; };
+		5B258C822CCE890300131992 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD744292CC6B262007DE385 /* WidgetKit.framework */; };
+		5B258C832CCE890300131992 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7442B2CC6B262007DE385 /* SwiftUI.framework */; };
+		5B258C8C2CCE890500131992 /* PizzaWatchAppExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5B258C812CCE890300131992 /* PizzaWatchAppExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B258E232CCE8A0500131992 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B258E222CCE8A0500131992 /* Defaults */; };
+		5B258E252CCE8A0900131992 /* GITodayMaterialsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B258E242CCE8A0900131992 /* GITodayMaterialsKit */; };
+		5B258E272CCE8A0E00131992 /* PZAccountKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B258E262CCE8A0E00131992 /* PZAccountKit */; };
+		5B258E292CCE8A1300131992 /* PZBaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B258E282CCE8A1300131992 /* PZBaseKit */; };
+		5B258E2B2CCE8A1700131992 /* PZInGameEventKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B258E2A2CCE8A1700131992 /* PZInGameEventKit */; };
+		5B258E2D2CCE8A1900131992 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B258E2C2CCE8A1900131992 /* SFSafeSymbols */; };
+		5B258E2F2CCE8A1D00131992 /* WallpaperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B258E2E2CCE8A1D00131992 /* WallpaperKit */; };
+		5B2DC8292CC2A78A00958F85 /* PZInGameEventKit in Resources */ = {isa = PBXBuildFile; fileRef = 5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */; };
+		5B560A0F2C6BB5BB00175FB1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */; };
+		5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A172C6BBB8300175FB1 /* Settings.bundle */; };
+		5B6F380C2CCE4EDE0081A23D /* PizzaWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B83B19C2D03586D009B0A1F /* ThePizzaHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B12B2D035843009B0A1F /* ThePizzaHelperApp.swift */; };
+		5B83B19D2D03587B009B0A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1262D035843009B0A1F /* Assets.xcassets */; };
+		5B83B19E2D03587B009B0A1F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1292D035843009B0A1F /* Localizable.xcstrings */; };
+		5B83B1A02D03587B009B0A1F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1282D035843009B0A1F /* InfoPlist.xcstrings */; };
+		5B83B1A12D03589C009B0A1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1242D035843009B0A1F /* Preview Assets.xcassets */; };
+		5B83B1A22D0358D7009B0A1F /* LockScreenResinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1622D035843009B0A1F /* LockScreenResinWidgetCorner.swift */; };
+		5B83B1A32D0358D7009B0A1F /* LockScreenResinTimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B15C2D035843009B0A1F /* LockScreenResinTimerWidget.swift */; };
+		5B83B1A42D0358D7009B0A1F /* LockScreenResinWidgetInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1632D035843009B0A1F /* LockScreenResinWidgetInline.swift */; };
+		5B83B1A52D0358D7009B0A1F /* AlternativeLockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1412D035843009B0A1F /* AlternativeLockScreenHomeCoinWidgetCircular.swift */; };
+		5B83B1A62D0358D7009B0A1F /* LockScreenLoopWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1552D035843009B0A1F /* LockScreenLoopWidget.swift */; };
+		5B83B1A72D0358D7009B0A1F /* ProgressGaugeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1662D035843009B0A1F /* ProgressGaugeStyle.swift */; };
+		5B83B1A82D0358D7009B0A1F /* LockScreenLoopWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1872D035843009B0A1F /* LockScreenLoopWidgetProvider.swift */; };
+		5B83B1A92D0358D7009B0A1F /* MaterialWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B18A2D035843009B0A1F /* MaterialWidgetProvider.swift */; };
+		5B83B1AA2D0358D7009B0A1F /* AlternativeWatchCornerResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B15F2D035843009B0A1F /* AlternativeWatchCornerResinWidget.swift */; };
+		5B83B1AB2D0358D7009B0A1F /* LockScreenDailyTaskWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1492D035843009B0A1F /* LockScreenDailyTaskWidgetCircular.swift */; };
+		5B83B1AC2D0358D7009B0A1F /* AlternativeLockScreenResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1432D035843009B0A1F /* AlternativeLockScreenResinWidget.swift */; };
+		5B83B1AD2D0358D7009B0A1F /* LockScreenHomeCoinWidgetRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1532D035843009B0A1F /* LockScreenHomeCoinWidgetRectangular.swift */; };
+		5B83B1AE2D0358D7009B0A1F /* LockScreenDailyTaskWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B14A2D035843009B0A1F /* LockScreenDailyTaskWidgetCorner.swift */; };
+		5B83B1AF2D0358D7009B0A1F /* LockScreenResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1602D035843009B0A1F /* LockScreenResinWidget.swift */; };
+		5B83B1B02D0358D7009B0A1F /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B13E2D035843009B0A1F /* ResinRecoveryActivityWidget.swift */; };
+		5B83B1B12D0358D7009B0A1F /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1512D035843009B0A1F /* LockScreenHomeCoinWidgetCircular.swift */; };
+		5B83B1B22D0358D7009B0A1F /* AlternativeLockScreenResinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1442D035843009B0A1F /* AlternativeLockScreenResinWidgetCircular.swift */; };
+		5B83B1B32D0358D7009B0A1F /* LockScreenResinFullTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1592D035843009B0A1F /* LockScreenResinFullTimeWidget.swift */; };
+		5B83B1B42D0358D7009B0A1F /* LockScreenResinTimerWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B15D2D035843009B0A1F /* LockScreenResinTimerWidgetCircular.swift */; };
+		5B83B1B52D0358D7009B0A1F /* MainWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1892D035843009B0A1F /* MainWidgetProvider.swift */; };
+		5B83B1B62D0358D7009B0A1F /* WidgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1912D035843009B0A1F /* WidgetError.swift */; };
+		5B83B1B72D0358D7009B0A1F /* LockScreenExpeditionWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B14C2D035843009B0A1F /* LockScreenExpeditionWidget.swift */; };
+		5B83B1B82D0358D7009B0A1F /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B13B2D035843009B0A1F /* AppEnums.swift */; };
+		5B83B1B92D0358D7009B0A1F /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B18C2D035843009B0A1F /* NetworkImage.swift */; };
+		5B83B1BA2D0358D7009B0A1F /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B13C2D035843009B0A1F /* AppIntents.swift */; };
+		5B83B1BB2D0358D7009B0A1F /* AlternativeLockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1402D035843009B0A1F /* AlternativeLockScreenHomeCoinWidget.swift */; };
+		5B83B1BC2D0358D7009B0A1F /* LockScreenResinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1612D035843009B0A1F /* LockScreenResinWidgetCircular.swift */; };
+		5B83B1BD2D0358D7009B0A1F /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1522D035843009B0A1F /* LockScreenHomeCoinWidgetCorner.swift */; };
+		5B83B1BE2D0358D7009B0A1F /* OSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B18F2D035843009B0A1F /* OSImpl.swift */; };
+		5B83B1BF2D0358D7009B0A1F /* WidgetRefreshTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1922D035843009B0A1F /* WidgetRefreshTime.swift */; };
+		5B83B1C02D0358D7009B0A1F /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1502D035843009B0A1F /* LockScreenHomeCoinWidget.swift */; };
+		5B83B1C12D0358D7009B0A1F /* WidgetsBoundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1932D035843009B0A1F /* WidgetsBoundle.swift */; };
+		5B83B1C22D0358D7009B0A1F /* LockScreenAllInfoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1462D035843009B0A1F /* LockScreenAllInfoWidget.swift */; };
+		5B83B1C32D0358D7009B0A1F /* LockScreenWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1882D035843009B0A1F /* LockScreenWidgetProvider.swift */; };
+		5B83B1C42D0358D7009B0A1F /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1832D035843009B0A1F /* WidgetViewConfiguration.swift */; };
+		5B83B1C52D0358D7009B0A1F /* LockScreenLoopWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1562D035843009B0A1F /* LockScreenLoopWidgetCircular.swift */; };
+		5B83B1C62D0358D7009B0A1F /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B18E2D035843009B0A1F /* BackgroundOptions.swift */; };
+		5B83B1C72D0358D7009B0A1F /* LockScreenLoopWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1572D035843009B0A1F /* LockScreenLoopWidgetCorner.swift */; };
+		5B83B1C82D0358D7009B0A1F /* MaterialWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1852D035843009B0A1F /* MaterialWidget.swift */; };
+		5B83B1C92D0358D7009B0A1F /* LockScreenExpeditionWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B14D2D035843009B0A1F /* LockScreenExpeditionWidgetCircular.swift */; };
+		5B83B1CA2D0358D7009B0A1F /* LockScreenResinWidgetRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1642D035843009B0A1F /* LockScreenResinWidgetRectangular.swift */; };
+		5B83B1CB2D0358D7009B0A1F /* LockScreenDailyTaskWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1482D035843009B0A1F /* LockScreenDailyTaskWidget.swift */; };
+		5B83B1CC2D0358D7009B0A1F /* MainWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1822D035843009B0A1F /* MainWidget.swift */; };
+		5B83B1CD2D0358D7009B0A1F /* PZWidgetsKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1902D035843009B0A1F /* PZWidgetsKit.swift */; };
+		5B83B1CE2D0358D7009B0A1F /* LockScreenExpeditionWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B14E2D035843009B0A1F /* LockScreenExpeditionWidgetCorner.swift */; };
+		5B83B1CF2D0358D7009B0A1F /* AppEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B13A2D035843009B0A1F /* AppEntities.swift */; };
+		5B83B1D02D0358D7009B0A1F /* LockScreenResinFullTimeWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B15A2D035843009B0A1F /* LockScreenResinFullTimeWidgetCircular.swift */; };
+		5B83B1D12D0358D7009B0A1F /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B18C2D035843009B0A1F /* NetworkImage.swift */; };
+		5B83B1D22D0358D7009B0A1F /* AlternativeWatchCornerResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B15F2D035843009B0A1F /* AlternativeWatchCornerResinWidget.swift */; };
+		5B83B1D32D0358D7009B0A1F /* LockScreenResinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1612D035843009B0A1F /* LockScreenResinWidgetCircular.swift */; };
+		5B83B1D42D0358D7009B0A1F /* LockScreenAllInfoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1462D035843009B0A1F /* LockScreenAllInfoWidget.swift */; };
+		5B83B1D52D0358D7009B0A1F /* LockScreenDailyTaskWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B14A2D035843009B0A1F /* LockScreenDailyTaskWidgetCorner.swift */; };
+		5B83B1D62D0358D7009B0A1F /* AppEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B13A2D035843009B0A1F /* AppEntities.swift */; };
+		5B83B1D72D0358D7009B0A1F /* MainWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1822D035843009B0A1F /* MainWidget.swift */; };
+		5B83B1D82D0358D7009B0A1F /* PZWidgetsKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1902D035843009B0A1F /* PZWidgetsKit.swift */; };
+		5B83B1D92D0358D7009B0A1F /* LockScreenLoopWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1872D035843009B0A1F /* LockScreenLoopWidgetProvider.swift */; };
+		5B83B1DA2D0358D7009B0A1F /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1832D035843009B0A1F /* WidgetViewConfiguration.swift */; };
+		5B83B1DB2D0358D7009B0A1F /* LockScreenWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1882D035843009B0A1F /* LockScreenWidgetProvider.swift */; };
+		5B83B1DC2D0358D7009B0A1F /* MaterialWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B18A2D035843009B0A1F /* MaterialWidgetProvider.swift */; };
+		5B83B1DD2D0358D7009B0A1F /* LockScreenDailyTaskWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1492D035843009B0A1F /* LockScreenDailyTaskWidgetCircular.swift */; };
+		5B83B1DE2D0358D7009B0A1F /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1502D035843009B0A1F /* LockScreenHomeCoinWidget.swift */; };
+		5B83B1DF2D0358D7009B0A1F /* AlternativeLockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1412D035843009B0A1F /* AlternativeLockScreenHomeCoinWidgetCircular.swift */; };
+		5B83B1E02D0358D7009B0A1F /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B13E2D035843009B0A1F /* ResinRecoveryActivityWidget.swift */; };
+		5B83B1E12D0358D7009B0A1F /* OSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B18F2D035843009B0A1F /* OSImpl.swift */; };
+		5B83B1E22D0358D7009B0A1F /* AlternativeLockScreenResinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1442D035843009B0A1F /* AlternativeLockScreenResinWidgetCircular.swift */; };
+		5B83B1E32D0358D7009B0A1F /* MainWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1892D035843009B0A1F /* MainWidgetProvider.swift */; };
+		5B83B1E42D0358D7009B0A1F /* MaterialWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1852D035843009B0A1F /* MaterialWidget.swift */; };
+		5B83B1E52D0358D7009B0A1F /* LockScreenDailyTaskWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1482D035843009B0A1F /* LockScreenDailyTaskWidget.swift */; };
+		5B83B1E62D0358D7009B0A1F /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1522D035843009B0A1F /* LockScreenHomeCoinWidgetCorner.swift */; };
+		5B83B1E72D0358D7009B0A1F /* LockScreenLoopWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1562D035843009B0A1F /* LockScreenLoopWidgetCircular.swift */; };
+		5B83B1E82D0358D7009B0A1F /* LockScreenResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1602D035843009B0A1F /* LockScreenResinWidget.swift */; };
+		5B83B1E92D0358D7009B0A1F /* AlternativeLockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1402D035843009B0A1F /* AlternativeLockScreenHomeCoinWidget.swift */; };
+		5B83B1EA2D0358D7009B0A1F /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B13C2D035843009B0A1F /* AppIntents.swift */; };
+		5B83B1EB2D0358D7009B0A1F /* WidgetRefreshTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1922D035843009B0A1F /* WidgetRefreshTime.swift */; };
+		5B83B1EC2D0358D7009B0A1F /* LockScreenLoopWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1572D035843009B0A1F /* LockScreenLoopWidgetCorner.swift */; };
+		5B83B1ED2D0358D7009B0A1F /* LockScreenResinTimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B15C2D035843009B0A1F /* LockScreenResinTimerWidget.swift */; };
+		5B83B1EE2D0358D7009B0A1F /* LockScreenResinWidgetRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1642D035843009B0A1F /* LockScreenResinWidgetRectangular.swift */; };
+		5B83B1EF2D0358D7009B0A1F /* LockScreenExpeditionWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B14D2D035843009B0A1F /* LockScreenExpeditionWidgetCircular.swift */; };
+		5B83B1F02D0358D7009B0A1F /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B18E2D035843009B0A1F /* BackgroundOptions.swift */; };
+		5B83B1F12D0358D7009B0A1F /* LockScreenResinFullTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1592D035843009B0A1F /* LockScreenResinFullTimeWidget.swift */; };
+		5B83B1F22D0358D7009B0A1F /* LockScreenResinTimerWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B15D2D035843009B0A1F /* LockScreenResinTimerWidgetCircular.swift */; };
+		5B83B1F32D0358D7009B0A1F /* LockScreenResinFullTimeWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B15A2D035843009B0A1F /* LockScreenResinFullTimeWidgetCircular.swift */; };
+		5B83B1F42D0358D7009B0A1F /* LockScreenLoopWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1552D035843009B0A1F /* LockScreenLoopWidget.swift */; };
+		5B83B1F52D0358D7009B0A1F /* LockScreenResinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1622D035843009B0A1F /* LockScreenResinWidgetCorner.swift */; };
+		5B83B1F62D0358D7009B0A1F /* WidgetsBoundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1932D035843009B0A1F /* WidgetsBoundle.swift */; };
+		5B83B1F72D0358D7009B0A1F /* ProgressGaugeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1662D035843009B0A1F /* ProgressGaugeStyle.swift */; };
+		5B83B1F82D0358D7009B0A1F /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B13B2D035843009B0A1F /* AppEnums.swift */; };
+		5B83B1F92D0358D7009B0A1F /* LockScreenExpeditionWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B14E2D035843009B0A1F /* LockScreenExpeditionWidgetCorner.swift */; };
+		5B83B1FA2D0358D7009B0A1F /* LockScreenHomeCoinWidgetRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1532D035843009B0A1F /* LockScreenHomeCoinWidgetRectangular.swift */; };
+		5B83B1FB2D0358D7009B0A1F /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1512D035843009B0A1F /* LockScreenHomeCoinWidgetCircular.swift */; };
+		5B83B1FC2D0358D7009B0A1F /* WidgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1912D035843009B0A1F /* WidgetError.swift */; };
+		5B83B1FD2D0358D7009B0A1F /* LockScreenResinWidgetInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1632D035843009B0A1F /* LockScreenResinWidgetInline.swift */; };
+		5B83B1FE2D0358D7009B0A1F /* LockScreenExpeditionWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B14C2D035843009B0A1F /* LockScreenExpeditionWidget.swift */; };
+		5B83B1FF2D0358D7009B0A1F /* AlternativeLockScreenResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1432D035843009B0A1F /* AlternativeLockScreenResinWidget.swift */; };
+		5B83B2002D0358E2009B0A1F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1982D035843009B0A1F /* Localizable.xcstrings */; };
+		5B83B2012D0358E2009B0A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1952D035843009B0A1F /* Assets.xcassets */; };
+		5B83B2022D0358E2009B0A1F /* WidgetExtensionBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B19A2D035843009B0A1F /* WidgetExtensionBundle.swift */; };
+		5B83B2032D0358E2009B0A1F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1982D035843009B0A1F /* Localizable.xcstrings */; };
+		5B83B2042D0358E2009B0A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1952D035843009B0A1F /* Assets.xcassets */; };
+		5B83B2052D0358E2009B0A1F /* WidgetExtensionBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B19A2D035843009B0A1F /* WidgetExtensionBundle.swift */; };
+		5B83B2062D0358FB009B0A1F /* WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83B1352D035843009B0A1F /* WatchApp.swift */; };
+		5B83B2072D0358FB009B0A1F /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1342D035843009B0A1F /* PushNotificationPayload.apns */; };
+		5B83B2082D0358FB009B0A1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B12D2D035843009B0A1F /* Preview Assets.xcassets */; };
+		5B83B2092D0358FB009B0A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B12F2D035843009B0A1F /* Assets.xcassets */; };
+		5B83B20A2D0358FB009B0A1F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1302D035843009B0A1F /* InfoPlist.xcstrings */; };
+		5B83B20B2D0358FB009B0A1F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B83B1312D035843009B0A1F /* Localizable.xcstrings */; };
+		5BD0D0F52C6A653500DA8099 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD0D0F42C6A653500DA8099 /* PZHelper */; };
+		5BD7442A2CC6B262007DE385 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD744292CC6B262007DE385 /* WidgetKit.framework */; };
+		5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7442B2CC6B262007DE385 /* SwiftUI.framework */; };
+		5BD7443D2CC6B264007DE385 /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5BD744282CC6B262007DE385 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */; };
+		5BDB94A42CDB57E100488574 /* PZWidgetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDB94A32CDB57E100488574 /* PZWidgetsKit */; };
+		5BDB94A62CDB57E600488574 /* PZWidgetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDB94A52CDB57E600488574 /* PZWidgetsKit */; };
+		5BF82DFC2D037FEC004C6D5D /* SwiftData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF82DFB2D037FEC004C6D5D /* SwiftData.framework */; };
+		5BF82DFE2D037FF0004C6D5D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF82DFD2D037FF0004C6D5D /* SwiftUI.framework */; };
+		5BFB9D2A2C6BBCE700DC648F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */; };
+		5BFCA0542CCDFFE300F182C7 /* PZBaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0532CCDFFE300F182C7 /* PZBaseKit */; };
+		5BFCA0562CCDFFEA00F182C7 /* PZAccountKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0552CCDFFEA00F182C7 /* PZAccountKit */; };
+		5BFCA0582CCDFFEE00F182C7 /* WallpaperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0572CCDFFEE00F182C7 /* WallpaperKit */; };
+		5BFCA05A2CCDFFFC00F182C7 /* PZInGameEventKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0592CCDFFFC00F182C7 /* PZInGameEventKit */; };
+		5BFCA05D2CCE002700F182C7 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA05C2CCE002700F182C7 /* SFSafeSymbols */; };
+		5BFCA0602CCE003A00F182C7 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA05F2CCE003A00F182C7 /* Defaults */; };
+		5BFCA19B2CCE022200F182C7 /* GITodayMaterialsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA19A2CCE022200F182C7 /* GITodayMaterialsKit */; };
+		5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */; };
+		5BFD6B962C628CDA000A63E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B952C628CDA000A63E9 /* Assets.xcassets */; };
+		5BFD6B992C628CDA000A63E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */; };
+		5BFD6BAF2C628EE5000A63E9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5BFD6BAB2C628EDA000A63E9 /* LICENSE */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5B258C8A2CCE890500131992 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BFD6B842C628CD8000A63E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B258C802CCE890300131992;
+			remoteInfo = WatchExtensionExtension;
+		};
+		5B6F380A2CCE4EDE0081A23D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BFD6B842C628CD8000A63E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B6F37FE2CCE4EDC0081A23D;
+			remoteInfo = WatchApp;
+		};
+		5BD7443B2CC6B264007DE385 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BFD6B842C628CD8000A63E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BD744272CC6B262007DE385;
+			remoteInfo = WidgetExtensionExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5B0A42BD2CCE4F7D004463D5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5B258C8C2CCE890500131992 /* PizzaWatchAppExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B6F380D2CCE4EDE0081A23D /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				5B6F380C2CCE4EDE0081A23D /* PizzaWatchApp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BD7443F2CC6B265007DE385 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5BD7443D2CC6B264007DE385 /* WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5B10D7F12CC6636C00245B77 /* Pizza Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pizza Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B10D8242CC6698300245B77 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5B10D8C82CC67CE800245B77 /* PZAboutKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZAboutKit; sourceTree = "<group>"; };
+		5B1641342C8320D600C4698C /* PZDictionaryKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZDictionaryKit; sourceTree = "<group>"; };
+		5B258C812CCE890300131992 /* PizzaWatchAppExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PizzaWatchAppExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZInGameEventKit; sourceTree = "<group>"; };
+		5B4CDE852C8482D700298C69 /* PZHoYoLabKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHoYoLabKit; sourceTree = "<group>"; };
+		5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		5B560A162C6BB64300175FB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B560A172C6BBB8300175FB1 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B83B1242D035843009B0A1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5B83B1262D035843009B0A1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B83B1272D035843009B0A1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B83B1282D035843009B0A1F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		5B83B1292D035843009B0A1F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5B83B12A2D035843009B0A1F /* ThePizzaHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThePizzaHelper.entitlements; sourceTree = "<group>"; };
+		5B83B12B2D035843009B0A1F /* ThePizzaHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThePizzaHelperApp.swift; sourceTree = "<group>"; };
+		5B83B12D2D035843009B0A1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5B83B12F2D035843009B0A1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B83B1302D035843009B0A1F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		5B83B1312D035843009B0A1F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5B83B1322D035843009B0A1F /* PizzaWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PizzaWatchApp.entitlements; sourceTree = "<group>"; };
+		5B83B1332D035843009B0A1F /* PizzaWatchApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PizzaWatchApp-Info.plist"; sourceTree = "<group>"; };
+		5B83B1342D035843009B0A1F /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		5B83B1352D035843009B0A1F /* WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchApp.swift; sourceTree = "<group>"; };
+		5B83B1372D035843009B0A1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B83B1382D035843009B0A1F /* PizzaWatchAppExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PizzaWatchAppExtension.entitlements; sourceTree = "<group>"; };
+		5B83B13A2D035843009B0A1F /* AppEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntities.swift; sourceTree = "<group>"; };
+		5B83B13B2D035843009B0A1F /* AppEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
+		5B83B13C2D035843009B0A1F /* AppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntents.swift; sourceTree = "<group>"; };
+		5B83B13E2D035843009B0A1F /* ResinRecoveryActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityWidget.swift; sourceTree = "<group>"; };
+		5B83B1402D035843009B0A1F /* AlternativeLockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
+		5B83B1412D035843009B0A1F /* AlternativeLockScreenHomeCoinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenHomeCoinWidgetCircular.swift; sourceTree = "<group>"; };
+		5B83B1432D035843009B0A1F /* AlternativeLockScreenResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenResinWidget.swift; sourceTree = "<group>"; };
+		5B83B1442D035843009B0A1F /* AlternativeLockScreenResinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenResinWidgetCircular.swift; sourceTree = "<group>"; };
+		5B83B1462D035843009B0A1F /* LockScreenAllInfoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenAllInfoWidget.swift; sourceTree = "<group>"; };
+		5B83B1482D035843009B0A1F /* LockScreenDailyTaskWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenDailyTaskWidget.swift; sourceTree = "<group>"; };
+		5B83B1492D035843009B0A1F /* LockScreenDailyTaskWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenDailyTaskWidgetCircular.swift; sourceTree = "<group>"; };
+		5B83B14A2D035843009B0A1F /* LockScreenDailyTaskWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenDailyTaskWidgetCorner.swift; sourceTree = "<group>"; };
+		5B83B14C2D035843009B0A1F /* LockScreenExpeditionWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenExpeditionWidget.swift; sourceTree = "<group>"; };
+		5B83B14D2D035843009B0A1F /* LockScreenExpeditionWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenExpeditionWidgetCircular.swift; sourceTree = "<group>"; };
+		5B83B14E2D035843009B0A1F /* LockScreenExpeditionWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenExpeditionWidgetCorner.swift; sourceTree = "<group>"; };
+		5B83B1502D035843009B0A1F /* LockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
+		5B83B1512D035843009B0A1F /* LockScreenHomeCoinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCircular.swift; sourceTree = "<group>"; };
+		5B83B1522D035843009B0A1F /* LockScreenHomeCoinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCorner.swift; sourceTree = "<group>"; };
+		5B83B1532D035843009B0A1F /* LockScreenHomeCoinWidgetRectangular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetRectangular.swift; sourceTree = "<group>"; };
+		5B83B1552D035843009B0A1F /* LockScreenLoopWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidget.swift; sourceTree = "<group>"; };
+		5B83B1562D035843009B0A1F /* LockScreenLoopWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetCircular.swift; sourceTree = "<group>"; };
+		5B83B1572D035843009B0A1F /* LockScreenLoopWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetCorner.swift; sourceTree = "<group>"; };
+		5B83B1592D035843009B0A1F /* LockScreenResinFullTimeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinFullTimeWidget.swift; sourceTree = "<group>"; };
+		5B83B15A2D035843009B0A1F /* LockScreenResinFullTimeWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinFullTimeWidgetCircular.swift; sourceTree = "<group>"; };
+		5B83B15C2D035843009B0A1F /* LockScreenResinTimerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinTimerWidget.swift; sourceTree = "<group>"; };
+		5B83B15D2D035843009B0A1F /* LockScreenResinTimerWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinTimerWidgetCircular.swift; sourceTree = "<group>"; };
+		5B83B15F2D035843009B0A1F /* AlternativeWatchCornerResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeWatchCornerResinWidget.swift; sourceTree = "<group>"; };
+		5B83B1602D035843009B0A1F /* LockScreenResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidget.swift; sourceTree = "<group>"; };
+		5B83B1612D035843009B0A1F /* LockScreenResinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCircular.swift; sourceTree = "<group>"; };
+		5B83B1622D035843009B0A1F /* LockScreenResinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCorner.swift; sourceTree = "<group>"; };
+		5B83B1632D035843009B0A1F /* LockScreenResinWidgetInline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetInline.swift; sourceTree = "<group>"; };
+		5B83B1642D035843009B0A1F /* LockScreenResinWidgetRectangular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetRectangular.swift; sourceTree = "<group>"; };
+		5B83B1662D035843009B0A1F /* ProgressGaugeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGaugeStyle.swift; sourceTree = "<group>"; };
+		5B83B1692D035843009B0A1F /* DailyTaskInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskInfoBar.swift; sourceTree = "<group>"; };
+		5B83B16A2D035843009B0A1F /* ExpeditionInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpeditionInfoBar.swift; sourceTree = "<group>"; };
+		5B83B16B2D035843009B0A1F /* GIHomeCoinInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIHomeCoinInfoBar.swift; sourceTree = "<group>"; };
+		5B83B16C2D035843009B0A1F /* GITransformerInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GITransformerInfoBar.swift; sourceTree = "<group>"; };
+		5B83B16D2D035843009B0A1F /* GITrounceBlossomInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GITrounceBlossomInfoBar.swift; sourceTree = "<group>"; };
+		5B83B16E2D035843009B0A1F /* HSREchoOfWarInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSREchoOfWarInfoBar.swift; sourceTree = "<group>"; };
+		5B83B16F2D035843009B0A1F /* HSRReservedTBPowerInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRReservedTBPowerInfoBar.swift; sourceTree = "<group>"; };
+		5B83B1702D035843009B0A1F /* HSRSimulUnivInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSRSimulUnivInfoBar.swift; sourceTree = "<group>"; };
+		5B83B1712D035843009B0A1F /* ZZZBountyInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZZBountyInfoBar.swift; sourceTree = "<group>"; };
+		5B83B1722D035843009B0A1F /* ZZZInvestigationPointInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZZInvestigationPointInfoBar.swift; sourceTree = "<group>"; };
+		5B83B1732D035843009B0A1F /* ZZZScratchCardInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZZScratchCardInfoBar.swift; sourceTree = "<group>"; };
+		5B83B1742D035843009B0A1F /* ZZZVHSStoreInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZZVHSStoreInfoBar.swift; sourceTree = "<group>"; };
+		5B83B1762D035843009B0A1F /* ExpeditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpeditionsView.swift; sourceTree = "<group>"; };
+		5B83B1772D035843009B0A1F /* MaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		5B83B1782D035843009B0A1F /* RecoveryTimeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryTimeTextView.swift; sourceTree = "<group>"; };
+		5B83B17A2D035843009B0A1F /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
+		5B83B17B2D035843009B0A1F /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
+		5B83B17C2D035843009B0A1F /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
+		5B83B17D2D035843009B0A1F /* MainInfoWithDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoWithDetailView.swift; sourceTree = "<group>"; };
+		5B83B17E2D035843009B0A1F /* WidgetBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBackgroundView.swift; sourceTree = "<group>"; };
+		5B83B17F2D035843009B0A1F /* WidgetErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetErrorView.swift; sourceTree = "<group>"; };
+		5B83B1802D035843009B0A1F /* WidgetMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMainView.swift; sourceTree = "<group>"; };
+		5B83B1822D035843009B0A1F /* MainWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidget.swift; sourceTree = "<group>"; };
+		5B83B1832D035843009B0A1F /* WidgetViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewConfiguration.swift; sourceTree = "<group>"; };
+		5B83B1852D035843009B0A1F /* MaterialWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialWidget.swift; sourceTree = "<group>"; };
+		5B83B1872D035843009B0A1F /* LockScreenLoopWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetProvider.swift; sourceTree = "<group>"; };
+		5B83B1882D035843009B0A1F /* LockScreenWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidgetProvider.swift; sourceTree = "<group>"; };
+		5B83B1892D035843009B0A1F /* MainWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetProvider.swift; sourceTree = "<group>"; };
+		5B83B18A2D035843009B0A1F /* MaterialWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialWidgetProvider.swift; sourceTree = "<group>"; };
+		5B83B18C2D035843009B0A1F /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
+		5B83B18E2D035843009B0A1F /* BackgroundOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOptions.swift; sourceTree = "<group>"; };
+		5B83B18F2D035843009B0A1F /* OSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSImpl.swift; sourceTree = "<group>"; };
+		5B83B1902D035843009B0A1F /* PZWidgetsKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PZWidgetsKit.swift; sourceTree = "<group>"; };
+		5B83B1912D035843009B0A1F /* WidgetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetError.swift; sourceTree = "<group>"; };
+		5B83B1922D035843009B0A1F /* WidgetRefreshTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRefreshTime.swift; sourceTree = "<group>"; };
+		5B83B1932D035843009B0A1F /* WidgetsBoundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsBoundle.swift; sourceTree = "<group>"; };
+		5B83B1952D035843009B0A1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B83B1962D035843009B0A1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B83B1972D035843009B0A1F /* Info-Watch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Watch.plist"; sourceTree = "<group>"; };
+		5B83B1982D035843009B0A1F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5B83B1992D035843009B0A1F /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
+		5B83B19A2D035843009B0A1F /* WidgetExtensionBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExtensionBundle.swift; sourceTree = "<group>"; };
+		5B978A8F2C8D8DF60000EB61 /* GITodayMaterialsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GITodayMaterialsKit; sourceTree = "<group>"; };
+		5BCAFCE12C8C5B2600347A09 /* AbyssRankKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AbyssRankKit; sourceTree = "<group>"; };
+		5BD0D0F22C6A633700DA8099 /* PZHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHelper; sourceTree = "<group>"; };
+		5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "PZHelper-Watch"; sourceTree = "<group>"; };
+		5BD744282CC6B262007DE385 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BD744292CC6B262007DE385 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5BD7442B2CC6B262007DE385 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5BDB94A22CDB578300488574 /* PZWidgetsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZWidgetsKit; sourceTree = "<group>"; };
+		5BDDF26A2C75FEB8006D4BFE /* heic_sips.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = heic_sips.sh; sourceTree = "<group>"; };
+		5BDDF26C2C75FEB8006D4BFE /* _assetUpdate4GI.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _assetUpdate4GI.sh; sourceTree = "<group>"; };
+		5BDDF26D2C75FEB8006D4BFE /* _assetUpdate4HSR.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = _assetUpdate4HSR.sh; sourceTree = "<group>"; };
+		5BDDF26E2C75FEB8006D4BFE /* convertAssetsToHEIC.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = convertAssetsToHEIC.sh; sourceTree = "<group>"; };
+		5BDDF26F2C75FEB8006D4BFE /* GI_ImageAssetRegenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GI_ImageAssetRegenerator.swift; sourceTree = "<group>"; };
+		5BDDF2702C75FEB8006D4BFE /* GI_RawAssetsPuller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GI_RawAssetsPuller.swift; sourceTree = "<group>"; };
+		5BDDF2712C75FEB8006D4BFE /* HSR_ImageAssetRegenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSR_ImageAssetRegenerator.swift; sourceTree = "<group>"; };
+		5BDDF2722C75FEB8006D4BFE /* HSR_RawAssetsPuller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSR_RawAssetsPuller.swift; sourceTree = "<group>"; };
+		5BDDF2732C75FEB8006D4BFE /* WallpaperAssetCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAssetCollector.swift; sourceTree = "<group>"; };
+		5BDDF2752C7601AA006D4BFE /* EnkaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = EnkaKit; sourceTree = "<group>"; };
+		5BDDF2762C7601AA006D4BFE /* GachaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GachaKit; sourceTree = "<group>"; };
+		5BDDF2772C760281006D4BFE /* WallpaperKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WallpaperKit; sourceTree = "<group>"; };
+		5BF32D8C2C62A2E4008C9949 /* PZKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZKit; sourceTree = "<group>"; };
+		5BF82DFB2D037FEC004C6D5D /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS10.5.sdk/System/Library/Frameworks/SwiftData.framework; sourceTree = DEVELOPER_DIR; };
+		5BF82DFD2D037FF0004C6D5D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS10.5.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
+		5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		5BFD6B8C2C628CD8000A63E9 /* United Pizza Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "United Pizza Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedPizzaHelperApp.swift; sourceTree = "<group>"; };
+		5BFD6B952C628CDA000A63E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5BFD6B9A2C628CDA000A63E9 /* UnitedPizzaHelperEngine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UnitedPizzaHelperEngine.entitlements; sourceTree = "<group>"; };
+		5BFD6BA92C628EDA000A63E9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5BFD6BAA2C628EDA000A63E9 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		5BFD6BAB2C628EDA000A63E9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5B10D7EE2CC6636C00245B77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B10D8152CC6667600245B77 /* PZHelper in Frameworks */,
+				5B10D8252CC6698300245B77 /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B258C7E2CCE890300131992 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B258E292CCE8A1300131992 /* PZBaseKit in Frameworks */,
+				5B258E2F2CCE8A1D00131992 /* WallpaperKit in Frameworks */,
+				5B258E232CCE8A0500131992 /* Defaults in Frameworks */,
+				5BDB94A62CDB57E600488574 /* PZWidgetsKit in Frameworks */,
+				5B258E2B2CCE8A1700131992 /* PZInGameEventKit in Frameworks */,
+				5B258C832CCE890300131992 /* SwiftUI.framework in Frameworks */,
+				5B258E252CCE8A0900131992 /* GITodayMaterialsKit in Frameworks */,
+				5B258E272CCE8A0E00131992 /* PZAccountKit in Frameworks */,
+				5B258E2D2CCE8A1900131992 /* SFSafeSymbols in Frameworks */,
+				5B258C822CCE890300131992 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B6F37FC2CCE4EDC0081A23D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BF82DFC2D037FEC004C6D5D /* SwiftData.framework in Frameworks */,
+				5BF82DFE2D037FF0004C6D5D /* SwiftUI.framework in Frameworks */,
+				5B0A42BF2CCE4F96004463D5 /* PZHelper-Watch in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BD744252CC6B262007DE385 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */,
+				5BFCA05A2CCDFFFC00F182C7 /* PZInGameEventKit in Frameworks */,
+				5BFCA0602CCE003A00F182C7 /* Defaults in Frameworks */,
+				5BDB94A42CDB57E100488574 /* PZWidgetsKit in Frameworks */,
+				5BFCA0542CCDFFE300F182C7 /* PZBaseKit in Frameworks */,
+				5BFCA0562CCDFFEA00F182C7 /* PZAccountKit in Frameworks */,
+				5BFCA0582CCDFFEE00F182C7 /* WallpaperKit in Frameworks */,
+				5BFCA05D2CCE002700F182C7 /* SFSafeSymbols in Frameworks */,
+				5BD7442A2CC6B262007DE385 /* WidgetKit.framework in Frameworks */,
+				5BFCA19B2CCE022200F182C7 /* GITodayMaterialsKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFD6B892C628CD8000A63E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BD0D0F52C6A653500DA8099 /* PZHelper in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5B2A65F92C69204600BAEE7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BF82DFD2D037FF0004C6D5D /* SwiftUI.framework */,
+				5BF82DFB2D037FEC004C6D5D /* SwiftData.framework */,
+				5B10D8242CC6698300245B77 /* StoreKit.framework */,
+				5BD744292CC6B262007DE385 /* WidgetKit.framework */,
+				5BD7442B2CC6B262007DE385 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B560A182C6BBB8300175FB1 /* SharedBundles */ = {
+			isa = PBXGroup;
+			children = (
+				5B560A172C6BBB8300175FB1 /* Settings.bundle */,
+				5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */,
+			);
+			path = SharedBundles;
+			sourceTree = "<group>";
+		};
+		5B83B1252D035843009B0A1F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1242D035843009B0A1F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5B83B12C2D035843009B0A1F /* ThePizzaHelper */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1252D035843009B0A1F /* Preview Content */,
+				5B83B1262D035843009B0A1F /* Assets.xcassets */,
+				5B83B1272D035843009B0A1F /* Info.plist */,
+				5B83B1282D035843009B0A1F /* InfoPlist.xcstrings */,
+				5B83B1292D035843009B0A1F /* Localizable.xcstrings */,
+				5B83B12A2D035843009B0A1F /* ThePizzaHelper.entitlements */,
+				5B83B12B2D035843009B0A1F /* ThePizzaHelperApp.swift */,
+			);
+			path = ThePizzaHelper;
+			sourceTree = "<group>";
+		};
+		5B83B12E2D035843009B0A1F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B12D2D035843009B0A1F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5B83B1362D035843009B0A1F /* WatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B12E2D035843009B0A1F /* Preview Content */,
+				5B83B12F2D035843009B0A1F /* Assets.xcassets */,
+				5B83B1302D035843009B0A1F /* InfoPlist.xcstrings */,
+				5B83B1312D035843009B0A1F /* Localizable.xcstrings */,
+				5B83B1322D035843009B0A1F /* PizzaWatchApp.entitlements */,
+				5B83B1332D035843009B0A1F /* PizzaWatchApp-Info.plist */,
+				5B83B1342D035843009B0A1F /* PushNotificationPayload.apns */,
+				5B83B1352D035843009B0A1F /* WatchApp.swift */,
+			);
+			path = WatchApp;
+			sourceTree = "<group>";
+		};
+		5B83B1392D035843009B0A1F /* WatchExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1372D035843009B0A1F /* Info.plist */,
+				5B83B1382D035843009B0A1F /* PizzaWatchAppExtension.entitlements */,
+			);
+			path = WatchExtension;
+			sourceTree = "<group>";
+		};
+		5B83B13D2D035843009B0A1F /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B13A2D035843009B0A1F /* AppEntities.swift */,
+				5B83B13B2D035843009B0A1F /* AppEnums.swift */,
+				5B83B13C2D035843009B0A1F /* AppIntents.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		5B83B13F2D035843009B0A1F /* LiveActivityWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B13E2D035843009B0A1F /* ResinRecoveryActivityWidget.swift */,
+			);
+			path = LiveActivityWidget;
+			sourceTree = "<group>";
+		};
+		5B83B1422D035843009B0A1F /* AlternativeLockScreenHomeCoinWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1402D035843009B0A1F /* AlternativeLockScreenHomeCoinWidget.swift */,
+				5B83B1412D035843009B0A1F /* AlternativeLockScreenHomeCoinWidgetCircular.swift */,
+			);
+			path = AlternativeLockScreenHomeCoinWidget;
+			sourceTree = "<group>";
+		};
+		5B83B1452D035843009B0A1F /* AlternativeLockScreenResinWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1432D035843009B0A1F /* AlternativeLockScreenResinWidget.swift */,
+				5B83B1442D035843009B0A1F /* AlternativeLockScreenResinWidgetCircular.swift */,
+			);
+			path = AlternativeLockScreenResinWidget;
+			sourceTree = "<group>";
+		};
+		5B83B1472D035843009B0A1F /* LockScreenAllInfoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1462D035843009B0A1F /* LockScreenAllInfoWidget.swift */,
+			);
+			path = LockScreenAllInfoWidget;
+			sourceTree = "<group>";
+		};
+		5B83B14B2D035843009B0A1F /* LockScreenDailyTaskWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1482D035843009B0A1F /* LockScreenDailyTaskWidget.swift */,
+				5B83B1492D035843009B0A1F /* LockScreenDailyTaskWidgetCircular.swift */,
+				5B83B14A2D035843009B0A1F /* LockScreenDailyTaskWidgetCorner.swift */,
+			);
+			path = LockScreenDailyTaskWidget;
+			sourceTree = "<group>";
+		};
+		5B83B14F2D035843009B0A1F /* LockScreenExpeditionWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B14C2D035843009B0A1F /* LockScreenExpeditionWidget.swift */,
+				5B83B14D2D035843009B0A1F /* LockScreenExpeditionWidgetCircular.swift */,
+				5B83B14E2D035843009B0A1F /* LockScreenExpeditionWidgetCorner.swift */,
+			);
+			path = LockScreenExpeditionWidget;
+			sourceTree = "<group>";
+		};
+		5B83B1542D035843009B0A1F /* LockScreenHomeCoinWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1502D035843009B0A1F /* LockScreenHomeCoinWidget.swift */,
+				5B83B1512D035843009B0A1F /* LockScreenHomeCoinWidgetCircular.swift */,
+				5B83B1522D035843009B0A1F /* LockScreenHomeCoinWidgetCorner.swift */,
+				5B83B1532D035843009B0A1F /* LockScreenHomeCoinWidgetRectangular.swift */,
+			);
+			path = LockScreenHomeCoinWidget;
+			sourceTree = "<group>";
+		};
+		5B83B1582D035843009B0A1F /* LockScreenLoopWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1552D035843009B0A1F /* LockScreenLoopWidget.swift */,
+				5B83B1562D035843009B0A1F /* LockScreenLoopWidgetCircular.swift */,
+				5B83B1572D035843009B0A1F /* LockScreenLoopWidgetCorner.swift */,
+			);
+			path = LockScreenLoopWidget;
+			sourceTree = "<group>";
+		};
+		5B83B15B2D035843009B0A1F /* LockScreenResinFullTimeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1592D035843009B0A1F /* LockScreenResinFullTimeWidget.swift */,
+				5B83B15A2D035843009B0A1F /* LockScreenResinFullTimeWidgetCircular.swift */,
+			);
+			path = LockScreenResinFullTimeWidget;
+			sourceTree = "<group>";
+		};
+		5B83B15E2D035843009B0A1F /* LockScreenResinTimerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B15C2D035843009B0A1F /* LockScreenResinTimerWidget.swift */,
+				5B83B15D2D035843009B0A1F /* LockScreenResinTimerWidgetCircular.swift */,
+			);
+			path = LockScreenResinTimerWidget;
+			sourceTree = "<group>";
+		};
+		5B83B1652D035843009B0A1F /* LockScreenResinWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B15F2D035843009B0A1F /* AlternativeWatchCornerResinWidget.swift */,
+				5B83B1602D035843009B0A1F /* LockScreenResinWidget.swift */,
+				5B83B1612D035843009B0A1F /* LockScreenResinWidgetCircular.swift */,
+				5B83B1622D035843009B0A1F /* LockScreenResinWidgetCorner.swift */,
+				5B83B1632D035843009B0A1F /* LockScreenResinWidgetInline.swift */,
+				5B83B1642D035843009B0A1F /* LockScreenResinWidgetRectangular.swift */,
+			);
+			path = LockScreenResinWidget;
+			sourceTree = "<group>";
+		};
+		5B83B1672D035843009B0A1F /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1662D035843009B0A1F /* ProgressGaugeStyle.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		5B83B1682D035843009B0A1F /* LockScreenWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1422D035843009B0A1F /* AlternativeLockScreenHomeCoinWidget */,
+				5B83B1452D035843009B0A1F /* AlternativeLockScreenResinWidget */,
+				5B83B1472D035843009B0A1F /* LockScreenAllInfoWidget */,
+				5B83B14B2D035843009B0A1F /* LockScreenDailyTaskWidget */,
+				5B83B14F2D035843009B0A1F /* LockScreenExpeditionWidget */,
+				5B83B1542D035843009B0A1F /* LockScreenHomeCoinWidget */,
+				5B83B1582D035843009B0A1F /* LockScreenLoopWidget */,
+				5B83B15B2D035843009B0A1F /* LockScreenResinFullTimeWidget */,
+				5B83B15E2D035843009B0A1F /* LockScreenResinTimerWidget */,
+				5B83B1652D035843009B0A1F /* LockScreenResinWidget */,
+				5B83B1672D035843009B0A1F /* SubView */,
+			);
+			path = LockScreenWidgets;
+			sourceTree = "<group>";
+		};
+		5B83B1752D035843009B0A1F /* InfoBars */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1692D035843009B0A1F /* DailyTaskInfoBar.swift */,
+				5B83B16A2D035843009B0A1F /* ExpeditionInfoBar.swift */,
+				5B83B16B2D035843009B0A1F /* GIHomeCoinInfoBar.swift */,
+				5B83B16C2D035843009B0A1F /* GITransformerInfoBar.swift */,
+				5B83B16D2D035843009B0A1F /* GITrounceBlossomInfoBar.swift */,
+				5B83B16E2D035843009B0A1F /* HSREchoOfWarInfoBar.swift */,
+				5B83B16F2D035843009B0A1F /* HSRReservedTBPowerInfoBar.swift */,
+				5B83B1702D035843009B0A1F /* HSRSimulUnivInfoBar.swift */,
+				5B83B1712D035843009B0A1F /* ZZZBountyInfoBar.swift */,
+				5B83B1722D035843009B0A1F /* ZZZInvestigationPointInfoBar.swift */,
+				5B83B1732D035843009B0A1F /* ZZZScratchCardInfoBar.swift */,
+				5B83B1742D035843009B0A1F /* ZZZVHSStoreInfoBar.swift */,
+			);
+			path = InfoBars;
+			sourceTree = "<group>";
+		};
+		5B83B1792D035843009B0A1F /* MainInfoSubViews */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1762D035843009B0A1F /* ExpeditionsView.swift */,
+				5B83B1772D035843009B0A1F /* MaterialView.swift */,
+				5B83B1782D035843009B0A1F /* RecoveryTimeTextView.swift */,
+			);
+			path = MainInfoSubViews;
+			sourceTree = "<group>";
+		};
+		5B83B1812D035843009B0A1F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1752D035843009B0A1F /* InfoBars */,
+				5B83B1792D035843009B0A1F /* MainInfoSubViews */,
+				5B83B17A2D035843009B0A1F /* DetailInfoView.swift */,
+				5B83B17B2D035843009B0A1F /* LargeWidgetView.swift */,
+				5B83B17C2D035843009B0A1F /* MainInfoView.swift */,
+				5B83B17D2D035843009B0A1F /* MainInfoWithDetailView.swift */,
+				5B83B17E2D035843009B0A1F /* WidgetBackgroundView.swift */,
+				5B83B17F2D035843009B0A1F /* WidgetErrorView.swift */,
+				5B83B1802D035843009B0A1F /* WidgetMainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5B83B1842D035843009B0A1F /* MainWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1812D035843009B0A1F /* Views */,
+				5B83B1822D035843009B0A1F /* MainWidget.swift */,
+				5B83B1832D035843009B0A1F /* WidgetViewConfiguration.swift */,
+			);
+			path = MainWidget;
+			sourceTree = "<group>";
+		};
+		5B83B1862D035843009B0A1F /* MaterialWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1852D035843009B0A1F /* MaterialWidget.swift */,
+			);
+			path = MaterialWidget;
+			sourceTree = "<group>";
+		};
+		5B83B18B2D035843009B0A1F /* TimelineProviders */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1872D035843009B0A1F /* LockScreenLoopWidgetProvider.swift */,
+				5B83B1882D035843009B0A1F /* LockScreenWidgetProvider.swift */,
+				5B83B1892D035843009B0A1F /* MainWidgetProvider.swift */,
+				5B83B18A2D035843009B0A1F /* MaterialWidgetProvider.swift */,
+			);
+			path = TimelineProviders;
+			sourceTree = "<group>";
+		};
+		5B83B18D2D035843009B0A1F /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B18C2D035843009B0A1F /* NetworkImage.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		5B83B1942D035843009B0A1F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B13D2D035843009B0A1F /* Intents */,
+				5B83B13F2D035843009B0A1F /* LiveActivityWidget */,
+				5B83B1682D035843009B0A1F /* LockScreenWidgets */,
+				5B83B1842D035843009B0A1F /* MainWidget */,
+				5B83B1862D035843009B0A1F /* MaterialWidget */,
+				5B83B18B2D035843009B0A1F /* TimelineProviders */,
+				5B83B18D2D035843009B0A1F /* Tools */,
+				5B83B18E2D035843009B0A1F /* BackgroundOptions.swift */,
+				5B83B18F2D035843009B0A1F /* OSImpl.swift */,
+				5B83B1902D035843009B0A1F /* PZWidgetsKit.swift */,
+				5B83B1912D035843009B0A1F /* WidgetError.swift */,
+				5B83B1922D035843009B0A1F /* WidgetRefreshTime.swift */,
+				5B83B1932D035843009B0A1F /* WidgetsBoundle.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5B83B19B2D035843009B0A1F /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5B83B1942D035843009B0A1F /* Modules */,
+				5B83B1952D035843009B0A1F /* Assets.xcassets */,
+				5B83B1962D035843009B0A1F /* Info.plist */,
+				5B83B1972D035843009B0A1F /* Info-Watch.plist */,
+				5B83B1982D035843009B0A1F /* Localizable.xcstrings */,
+				5B83B1992D035843009B0A1F /* WidgetExtension.entitlements */,
+				5B83B19A2D035843009B0A1F /* WidgetExtensionBundle.swift */,
+			);
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
+		5BDDF26B2C75FEB8006D4BFE /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				5BDDF26A2C75FEB8006D4BFE /* heic_sips.sh */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		5BDDF2742C75FEB8006D4BFE /* Script */ = {
+			isa = PBXGroup;
+			children = (
+				5BDDF26B2C75FEB8006D4BFE /* utils */,
+				5BDDF26C2C75FEB8006D4BFE /* _assetUpdate4GI.sh */,
+				5BDDF26D2C75FEB8006D4BFE /* _assetUpdate4HSR.sh */,
+				5BDDF26E2C75FEB8006D4BFE /* convertAssetsToHEIC.sh */,
+				5BDDF26F2C75FEB8006D4BFE /* GI_ImageAssetRegenerator.swift */,
+				5BDDF2702C75FEB8006D4BFE /* GI_RawAssetsPuller.swift */,
+				5BDDF2712C75FEB8006D4BFE /* HSR_ImageAssetRegenerator.swift */,
+				5BDDF2722C75FEB8006D4BFE /* HSR_RawAssetsPuller.swift */,
+				5BDDF2732C75FEB8006D4BFE /* WallpaperAssetCollector.swift */,
+			);
+			path = Script;
+			sourceTree = "<group>";
+		};
+		5BF32D8D2C62A2E4008C9949 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				5BCAFCE12C8C5B2600347A09 /* AbyssRankKit */,
+				5BDDF2752C7601AA006D4BFE /* EnkaKit */,
+				5BDDF2762C7601AA006D4BFE /* GachaKit */,
+				5B978A8F2C8D8DF60000EB61 /* GITodayMaterialsKit */,
+				5B10D8C82CC67CE800245B77 /* PZAboutKit */,
+				5B1641342C8320D600C4698C /* PZDictionaryKit */,
+				5BD0D0F22C6A633700DA8099 /* PZHelper */,
+				5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */,
+				5B4CDE852C8482D700298C69 /* PZHoYoLabKit */,
+				5B2DC8282CC2A78A00958F85 /* PZInGameEventKit */,
+				5BF32D8C2C62A2E4008C9949 /* PZKit */,
+				5BDB94A22CDB578300488574 /* PZWidgetsKit */,
+				5BDDF2772C760281006D4BFE /* WallpaperKit */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		5BFD6B832C628CD8000A63E9 = {
+			isa = PBXGroup;
+			children = (
+				5BFD6BA82C628ECD000A63E9 /* RepoRoot */,
+				5BF32D8D2C62A2E4008C9949 /* Packages */,
+				5BFD6B8D2C628CD8000A63E9 /* Products */,
+				5B2A65F92C69204600BAEE7E /* Frameworks */,
+				5B560A182C6BBB8300175FB1 /* SharedBundles */,
+				5B83B1362D035843009B0A1F /* WatchApp */,
+				5B83B1392D035843009B0A1F /* WatchExtension */,
+				5B83B19B2D035843009B0A1F /* WidgetExtension */,
+				5B83B12C2D035843009B0A1F /* ThePizzaHelper */,
+				5BFD6B8E2C628CD8000A63E9 /* UnitedPizzaHelperEngine */,
+			);
+			sourceTree = "<group>";
+		};
+		5BFD6B8D2C628CD8000A63E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5BFD6B8C2C628CD8000A63E9 /* United Pizza Engine.app */,
+				5B10D7F12CC6636C00245B77 /* Pizza Helper.app */,
+				5BD744282CC6B262007DE385 /* WidgetExtension.appex */,
+				5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */,
+				5B258C812CCE890300131992 /* PizzaWatchAppExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5BFD6B8E2C628CD8000A63E9 /* UnitedPizzaHelperEngine */ = {
+			isa = PBXGroup;
+			children = (
+				5BFD6B952C628CDA000A63E9 /* Assets.xcassets */,
+				5B560A162C6BB64300175FB1 /* Info.plist */,
+				5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */,
+				5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */,
+				5BFD6B972C628CDA000A63E9 /* Preview Content */,
+				5BFD6B8F2C628CD8000A63E9 /* UnitedPizzaHelperApp.swift */,
+				5BFD6B9A2C628CDA000A63E9 /* UnitedPizzaHelperEngine.entitlements */,
+			);
+			path = UnitedPizzaHelperEngine;
+			sourceTree = "<group>";
+		};
+		5BFD6B972C628CDA000A63E9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5BFD6B982C628CDA000A63E9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5BFD6BA82C628ECD000A63E9 /* RepoRoot */ = {
+			isa = PBXGroup;
+			children = (
+				5BFD6BAB2C628EDA000A63E9 /* LICENSE */,
+				5BFD6BAA2C628EDA000A63E9 /* Makefile */,
+				5BFD6BA92C628EDA000A63E9 /* README.md */,
+				5BDDF2742C75FEB8006D4BFE /* Script */,
+			);
+			name = RepoRoot;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5B10D7F02CC6636C00245B77 /* ThePizzaHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B10D7FF2CC6636E00245B77 /* Build configuration list for PBXNativeTarget "ThePizzaHelper" */;
+			buildPhases = (
+				5B10D8262CC66A7600245B77 /* ShellScript */,
+				5B10D7ED2CC6636C00245B77 /* Sources */,
+				5B10D7EE2CC6636C00245B77 /* Frameworks */,
+				5B10D7EF2CC6636C00245B77 /* Resources */,
+				5BD7443F2CC6B265007DE385 /* Embed Foundation Extensions */,
+				5B6F380D2CCE4EDE0081A23D /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5BD7443C2CC6B264007DE385 /* PBXTargetDependency */,
+				5B6F380B2CCE4EDE0081A23D /* PBXTargetDependency */,
+			);
+			name = ThePizzaHelper;
+			packageProductDependencies = (
+				5B10D8142CC6667600245B77 /* PZHelper */,
+			);
+			productName = ThePizzaHelper;
+			productReference = 5B10D7F12CC6636C00245B77 /* Pizza Helper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B258C802CCE890300131992 /* PizzaWatchAppExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B258C8F2CCE890500131992 /* Build configuration list for PBXNativeTarget "PizzaWatchAppExtension" */;
+			buildPhases = (
+				5B258C7D2CCE890300131992 /* Sources */,
+				5B258C7E2CCE890300131992 /* Frameworks */,
+				5B258C7F2CCE890300131992 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PizzaWatchAppExtension;
+			packageProductDependencies = (
+				5B258E222CCE8A0500131992 /* Defaults */,
+				5B258E242CCE8A0900131992 /* GITodayMaterialsKit */,
+				5B258E262CCE8A0E00131992 /* PZAccountKit */,
+				5B258E282CCE8A1300131992 /* PZBaseKit */,
+				5B258E2A2CCE8A1700131992 /* PZInGameEventKit */,
+				5B258E2C2CCE8A1900131992 /* SFSafeSymbols */,
+				5B258E2E2CCE8A1D00131992 /* WallpaperKit */,
+				5BDB94A52CDB57E600488574 /* PZWidgetsKit */,
+			);
+			productName = WatchExtensionExtension;
+			productReference = 5B258C812CCE890300131992 /* PizzaWatchAppExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		5B6F37FE2CCE4EDC0081A23D /* PizzaWatchApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B6F38102CCE4EDE0081A23D /* Build configuration list for PBXNativeTarget "PizzaWatchApp" */;
+			buildPhases = (
+				5B6F37FB2CCE4EDC0081A23D /* Sources */,
+				5B6F37FC2CCE4EDC0081A23D /* Frameworks */,
+				5B6F37FD2CCE4EDC0081A23D /* Resources */,
+				5B0A42BD2CCE4F7D004463D5 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B258C8B2CCE890500131992 /* PBXTargetDependency */,
+			);
+			name = PizzaWatchApp;
+			packageProductDependencies = (
+				5B0A42BE2CCE4F96004463D5 /* PZHelper-Watch */,
+			);
+			productName = WatchApp;
+			productReference = 5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5BD744272CC6B262007DE385 /* WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BD744422CC6B265007DE385 /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
+			buildPhases = (
+				5BD744242CC6B262007DE385 /* Sources */,
+				5BD744252CC6B262007DE385 /* Frameworks */,
+				5BD744262CC6B262007DE385 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetExtension;
+			packageProductDependencies = (
+				5BFCA0532CCDFFE300F182C7 /* PZBaseKit */,
+				5BFCA0552CCDFFEA00F182C7 /* PZAccountKit */,
+				5BFCA0572CCDFFEE00F182C7 /* WallpaperKit */,
+				5BFCA0592CCDFFFC00F182C7 /* PZInGameEventKit */,
+				5BFCA05C2CCE002700F182C7 /* SFSafeSymbols */,
+				5BFCA05F2CCE003A00F182C7 /* Defaults */,
+				5BFCA19A2CCE022200F182C7 /* GITodayMaterialsKit */,
+				5BDB94A32CDB57E100488574 /* PZWidgetsKit */,
+			);
+			productName = WidgetExtensionExtension;
+			productReference = 5BD744282CC6B262007DE385 /* WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		5BFD6B8B2C628CD8000A63E9 /* UnitedPizzaHelperEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BFD6B9D2C628CDA000A63E9 /* Build configuration list for PBXNativeTarget "UnitedPizzaHelperEngine" */;
+			buildPhases = (
+				5BB3A4E72C69232400653C89 /* SwiftFormat */,
+				5BFD6B882C628CD8000A63E9 /* Sources */,
+				5BFD6B892C628CD8000A63E9 /* Frameworks */,
+				5BFD6B8A2C628CD8000A63E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitedPizzaHelperEngine;
+			packageProductDependencies = (
+				5BD0D0F42C6A653500DA8099 /* PZHelper */,
+			);
+			productName = UnitedPizzaHelperEngine;
+			productReference = 5BFD6B8C2C628CD8000A63E9 /* United Pizza Engine.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5BFD6B842C628CD8000A63E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					5B10D7F02CC6636C00245B77 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					5B258C802CCE890300131992 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					5B6F37FE2CCE4EDC0081A23D = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					5BD744272CC6B262007DE385 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					5BFD6B8B2C628CD8000A63E9 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 5BFD6B872C628CD8000A63E9 /* Build configuration list for PBXProject "UnitedPizzaHelper-Alt" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hans",
+				"zh-Hant",
+				ja,
+				Base,
+				de,
+				es,
+				fr,
+				it,
+				ko,
+				fil,
+				ru,
+				vi,
+			);
+			mainGroup = 5BFD6B832C628CD8000A63E9;
+			packageReferences = (
+				5BFCA05B2CCE002700F182C7 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				5BFCA05E2CCE003A00F182C7 /* XCRemoteSwiftPackageReference "Defaults" */,
+			);
+			productRefGroup = 5BFD6B8D2C628CD8000A63E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5B10D7F02CC6636C00245B77 /* ThePizzaHelper */,
+				5BD744272CC6B262007DE385 /* WidgetExtension */,
+				5BFD6B8B2C628CD8000A63E9 /* UnitedPizzaHelperEngine */,
+				5B6F37FE2CCE4EDC0081A23D /* PizzaWatchApp */,
+				5B258C802CCE890300131992 /* PizzaWatchAppExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B10D7EF2CC6636C00245B77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B83B1A12D03589C009B0A1F /* Preview Assets.xcassets in Resources */,
+				5B83B19D2D03587B009B0A1F /* Assets.xcassets in Resources */,
+				5B83B19E2D03587B009B0A1F /* Localizable.xcstrings in Resources */,
+				5B83B1A02D03587B009B0A1F /* InfoPlist.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B258C7F2CCE890300131992 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B83B2032D0358E2009B0A1F /* Localizable.xcstrings in Resources */,
+				5B83B2042D0358E2009B0A1F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B6F37FD2CCE4EDC0081A23D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B83B2072D0358FB009B0A1F /* PushNotificationPayload.apns in Resources */,
+				5B83B2082D0358FB009B0A1F /* Preview Assets.xcassets in Resources */,
+				5B83B2092D0358FB009B0A1F /* Assets.xcassets in Resources */,
+				5B83B20A2D0358FB009B0A1F /* InfoPlist.xcstrings in Resources */,
+				5B83B20B2D0358FB009B0A1F /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BD744262CC6B262007DE385 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B83B2002D0358E2009B0A1F /* Localizable.xcstrings in Resources */,
+				5B83B2012D0358E2009B0A1F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFD6B8A2C628CD8000A63E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B560A0F2C6BB5BB00175FB1 /* InfoPlist.xcstrings in Resources */,
+				5BFB9D2A2C6BBCE700DC648F /* PrivacyInfo.xcprivacy in Resources */,
+				5BFD6BAF2C628EE5000A63E9 /* LICENSE in Resources */,
+				5BFD6B992C628CDA000A63E9 /* Preview Assets.xcassets in Resources */,
+				5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */,
+				5B2DC8292CC2A78A00958F85 /* PZInGameEventKit in Resources */,
+				5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */,
+				5BFD6B962C628CDA000A63E9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B10D8262CC66A7600245B77 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+		5BB3A4E72C69232400653C89 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B10D7ED2CC6636C00245B77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B83B19C2D03586D009B0A1F /* ThePizzaHelperApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B258C7D2CCE890300131992 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B83B1D12D0358D7009B0A1F /* NetworkImage.swift in Sources */,
+				5B83B1D22D0358D7009B0A1F /* AlternativeWatchCornerResinWidget.swift in Sources */,
+				5B83B1D32D0358D7009B0A1F /* LockScreenResinWidgetCircular.swift in Sources */,
+				5B83B1D42D0358D7009B0A1F /* LockScreenAllInfoWidget.swift in Sources */,
+				5B83B1D52D0358D7009B0A1F /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
+				5B83B1D62D0358D7009B0A1F /* AppEntities.swift in Sources */,
+				5B83B1D72D0358D7009B0A1F /* MainWidget.swift in Sources */,
+				5B1F2B7C2D035E2100C215DA /* RecoveryTimeTextView.swift in Sources */,
+				5B83B1D82D0358D7009B0A1F /* PZWidgetsKit.swift in Sources */,
+				5B83B1D92D0358D7009B0A1F /* LockScreenLoopWidgetProvider.swift in Sources */,
+				5B83B1DA2D0358D7009B0A1F /* WidgetViewConfiguration.swift in Sources */,
+				5B83B1DB2D0358D7009B0A1F /* LockScreenWidgetProvider.swift in Sources */,
+				5B83B1DC2D0358D7009B0A1F /* MaterialWidgetProvider.swift in Sources */,
+				5B1F2B7F2D035E3900C215DA /* DailyTaskInfoBar.swift in Sources */,
+				5B1F2B802D035E3900C215DA /* GITrounceBlossomInfoBar.swift in Sources */,
+				5B1F2B812D035E3900C215DA /* ZZZInvestigationPointInfoBar.swift in Sources */,
+				5B1F2B822D035E3900C215DA /* ZZZVHSStoreInfoBar.swift in Sources */,
+				5B1F2B832D035E3900C215DA /* ExpeditionInfoBar.swift in Sources */,
+				5B1F2B842D035E3900C215DA /* GITransformerInfoBar.swift in Sources */,
+				5B1F2B852D035E3900C215DA /* HSRReservedTBPowerInfoBar.swift in Sources */,
+				5B1F2B862D035E3900C215DA /* ZZZBountyInfoBar.swift in Sources */,
+				5B1F2B872D035E3900C215DA /* HSREchoOfWarInfoBar.swift in Sources */,
+				5B1F2B882D035E3900C215DA /* HSRSimulUnivInfoBar.swift in Sources */,
+				5B1F2B892D035E3900C215DA /* ZZZScratchCardInfoBar.swift in Sources */,
+				5B1F2B8A2D035E3900C215DA /* GIHomeCoinInfoBar.swift in Sources */,
+				5B83B1DD2D0358D7009B0A1F /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
+				5B83B1DE2D0358D7009B0A1F /* LockScreenHomeCoinWidget.swift in Sources */,
+				5B83B1DF2D0358D7009B0A1F /* AlternativeLockScreenHomeCoinWidgetCircular.swift in Sources */,
+				5B83B1E02D0358D7009B0A1F /* ResinRecoveryActivityWidget.swift in Sources */,
+				5B83B1E12D0358D7009B0A1F /* OSImpl.swift in Sources */,
+				5B83B2052D0358E2009B0A1F /* WidgetExtensionBundle.swift in Sources */,
+				5B83B1E22D0358D7009B0A1F /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
+				5B1F2B7A2D035E1D00C215DA /* MaterialView.swift in Sources */,
+				5B83B1E32D0358D7009B0A1F /* MainWidgetProvider.swift in Sources */,
+				5B83B1E42D0358D7009B0A1F /* MaterialWidget.swift in Sources */,
+				5B83B1E52D0358D7009B0A1F /* LockScreenDailyTaskWidget.swift in Sources */,
+				5B83B1E62D0358D7009B0A1F /* LockScreenHomeCoinWidgetCorner.swift in Sources */,
+				5B83B1E72D0358D7009B0A1F /* LockScreenLoopWidgetCircular.swift in Sources */,
+				5B83B1E82D0358D7009B0A1F /* LockScreenResinWidget.swift in Sources */,
+				5B83B1E92D0358D7009B0A1F /* AlternativeLockScreenHomeCoinWidget.swift in Sources */,
+				5B1F2B7E2D035E2400C215DA /* ExpeditionsView.swift in Sources */,
+				5B83B1EA2D0358D7009B0A1F /* AppIntents.swift in Sources */,
+				5B83B1EB2D0358D7009B0A1F /* WidgetRefreshTime.swift in Sources */,
+				5B83B1EC2D0358D7009B0A1F /* LockScreenLoopWidgetCorner.swift in Sources */,
+				5B83B1ED2D0358D7009B0A1F /* LockScreenResinTimerWidget.swift in Sources */,
+				5B83B1EE2D0358D7009B0A1F /* LockScreenResinWidgetRectangular.swift in Sources */,
+				5B1F2B972D035E3E00C215DA /* WidgetErrorView.swift in Sources */,
+				5B1F2B982D035E3E00C215DA /* DetailInfoView.swift in Sources */,
+				5B1F2B992D035E3E00C215DA /* LargeWidgetView.swift in Sources */,
+				5B1F2B9A2D035E3E00C215DA /* WidgetBackgroundView.swift in Sources */,
+				5B1F2B9B2D035E3E00C215DA /* MainInfoView.swift in Sources */,
+				5B1F2B9C2D035E3E00C215DA /* MainInfoWithDetailView.swift in Sources */,
+				5B1F2B9D2D035E3E00C215DA /* WidgetMainView.swift in Sources */,
+				5B83B1EF2D0358D7009B0A1F /* LockScreenExpeditionWidgetCircular.swift in Sources */,
+				5B83B1F02D0358D7009B0A1F /* BackgroundOptions.swift in Sources */,
+				5B83B1F12D0358D7009B0A1F /* LockScreenResinFullTimeWidget.swift in Sources */,
+				5B83B1F22D0358D7009B0A1F /* LockScreenResinTimerWidgetCircular.swift in Sources */,
+				5B83B1F32D0358D7009B0A1F /* LockScreenResinFullTimeWidgetCircular.swift in Sources */,
+				5B83B1F42D0358D7009B0A1F /* LockScreenLoopWidget.swift in Sources */,
+				5B83B1F52D0358D7009B0A1F /* LockScreenResinWidgetCorner.swift in Sources */,
+				5B83B1F62D0358D7009B0A1F /* WidgetsBoundle.swift in Sources */,
+				5B83B1F72D0358D7009B0A1F /* ProgressGaugeStyle.swift in Sources */,
+				5B83B1F82D0358D7009B0A1F /* AppEnums.swift in Sources */,
+				5B83B1F92D0358D7009B0A1F /* LockScreenExpeditionWidgetCorner.swift in Sources */,
+				5B83B1FA2D0358D7009B0A1F /* LockScreenHomeCoinWidgetRectangular.swift in Sources */,
+				5B83B1FB2D0358D7009B0A1F /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
+				5B83B1FC2D0358D7009B0A1F /* WidgetError.swift in Sources */,
+				5B83B1FD2D0358D7009B0A1F /* LockScreenResinWidgetInline.swift in Sources */,
+				5B83B1FE2D0358D7009B0A1F /* LockScreenExpeditionWidget.swift in Sources */,
+				5B83B1FF2D0358D7009B0A1F /* AlternativeLockScreenResinWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B6F37FB2CCE4EDC0081A23D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B83B2062D0358FB009B0A1F /* WatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BD744242CC6B262007DE385 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B83B1A22D0358D7009B0A1F /* LockScreenResinWidgetCorner.swift in Sources */,
+				5B83B1A32D0358D7009B0A1F /* LockScreenResinTimerWidget.swift in Sources */,
+				5B83B1A42D0358D7009B0A1F /* LockScreenResinWidgetInline.swift in Sources */,
+				5B83B1A52D0358D7009B0A1F /* AlternativeLockScreenHomeCoinWidgetCircular.swift in Sources */,
+				5B83B1A62D0358D7009B0A1F /* LockScreenLoopWidget.swift in Sources */,
+				5B83B1A72D0358D7009B0A1F /* ProgressGaugeStyle.swift in Sources */,
+				5B83B1A82D0358D7009B0A1F /* LockScreenLoopWidgetProvider.swift in Sources */,
+				5B1F2B7B2D035E2000C215DA /* RecoveryTimeTextView.swift in Sources */,
+				5B83B1A92D0358D7009B0A1F /* MaterialWidgetProvider.swift in Sources */,
+				5B83B1AA2D0358D7009B0A1F /* AlternativeWatchCornerResinWidget.swift in Sources */,
+				5B83B1AB2D0358D7009B0A1F /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
+				5B83B1AC2D0358D7009B0A1F /* AlternativeLockScreenResinWidget.swift in Sources */,
+				5B83B1AD2D0358D7009B0A1F /* LockScreenHomeCoinWidgetRectangular.swift in Sources */,
+				5B1F2B8B2D035E3900C215DA /* DailyTaskInfoBar.swift in Sources */,
+				5B1F2B8C2D035E3900C215DA /* GITrounceBlossomInfoBar.swift in Sources */,
+				5B1F2B8D2D035E3900C215DA /* ZZZInvestigationPointInfoBar.swift in Sources */,
+				5B1F2B8E2D035E3900C215DA /* ZZZVHSStoreInfoBar.swift in Sources */,
+				5B1F2B8F2D035E3900C215DA /* ExpeditionInfoBar.swift in Sources */,
+				5B1F2B902D035E3900C215DA /* GITransformerInfoBar.swift in Sources */,
+				5B1F2B912D035E3900C215DA /* HSRReservedTBPowerInfoBar.swift in Sources */,
+				5B1F2B922D035E3900C215DA /* ZZZBountyInfoBar.swift in Sources */,
+				5B1F2B932D035E3900C215DA /* HSREchoOfWarInfoBar.swift in Sources */,
+				5B1F2B942D035E3900C215DA /* HSRSimulUnivInfoBar.swift in Sources */,
+				5B1F2B952D035E3900C215DA /* ZZZScratchCardInfoBar.swift in Sources */,
+				5B1F2B962D035E3900C215DA /* GIHomeCoinInfoBar.swift in Sources */,
+				5B83B1AE2D0358D7009B0A1F /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
+				5B83B1AF2D0358D7009B0A1F /* LockScreenResinWidget.swift in Sources */,
+				5B83B1B02D0358D7009B0A1F /* ResinRecoveryActivityWidget.swift in Sources */,
+				5B83B1B12D0358D7009B0A1F /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
+				5B83B1B22D0358D7009B0A1F /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
+				5B83B2022D0358E2009B0A1F /* WidgetExtensionBundle.swift in Sources */,
+				5B83B1B32D0358D7009B0A1F /* LockScreenResinFullTimeWidget.swift in Sources */,
+				5B1F2B792D035E1C00C215DA /* MaterialView.swift in Sources */,
+				5B83B1B42D0358D7009B0A1F /* LockScreenResinTimerWidgetCircular.swift in Sources */,
+				5B83B1B52D0358D7009B0A1F /* MainWidgetProvider.swift in Sources */,
+				5B83B1B62D0358D7009B0A1F /* WidgetError.swift in Sources */,
+				5B83B1B72D0358D7009B0A1F /* LockScreenExpeditionWidget.swift in Sources */,
+				5B83B1B82D0358D7009B0A1F /* AppEnums.swift in Sources */,
+				5B83B1B92D0358D7009B0A1F /* NetworkImage.swift in Sources */,
+				5B83B1BA2D0358D7009B0A1F /* AppIntents.swift in Sources */,
+				5B1F2B7D2D035E2400C215DA /* ExpeditionsView.swift in Sources */,
+				5B83B1BB2D0358D7009B0A1F /* AlternativeLockScreenHomeCoinWidget.swift in Sources */,
+				5B83B1BC2D0358D7009B0A1F /* LockScreenResinWidgetCircular.swift in Sources */,
+				5B83B1BD2D0358D7009B0A1F /* LockScreenHomeCoinWidgetCorner.swift in Sources */,
+				5B83B1BE2D0358D7009B0A1F /* OSImpl.swift in Sources */,
+				5B83B1BF2D0358D7009B0A1F /* WidgetRefreshTime.swift in Sources */,
+				5B1F2B9E2D035E3F00C215DA /* WidgetErrorView.swift in Sources */,
+				5B1F2B9F2D035E3F00C215DA /* DetailInfoView.swift in Sources */,
+				5B1F2BA02D035E3F00C215DA /* LargeWidgetView.swift in Sources */,
+				5B1F2BA12D035E3F00C215DA /* WidgetBackgroundView.swift in Sources */,
+				5B1F2BA22D035E3F00C215DA /* MainInfoView.swift in Sources */,
+				5B1F2BA32D035E3F00C215DA /* MainInfoWithDetailView.swift in Sources */,
+				5B1F2BA42D035E3F00C215DA /* WidgetMainView.swift in Sources */,
+				5B83B1C02D0358D7009B0A1F /* LockScreenHomeCoinWidget.swift in Sources */,
+				5B83B1C12D0358D7009B0A1F /* WidgetsBoundle.swift in Sources */,
+				5B83B1C22D0358D7009B0A1F /* LockScreenAllInfoWidget.swift in Sources */,
+				5B83B1C32D0358D7009B0A1F /* LockScreenWidgetProvider.swift in Sources */,
+				5B83B1C42D0358D7009B0A1F /* WidgetViewConfiguration.swift in Sources */,
+				5B83B1C52D0358D7009B0A1F /* LockScreenLoopWidgetCircular.swift in Sources */,
+				5B83B1C62D0358D7009B0A1F /* BackgroundOptions.swift in Sources */,
+				5B83B1C72D0358D7009B0A1F /* LockScreenLoopWidgetCorner.swift in Sources */,
+				5B83B1C82D0358D7009B0A1F /* MaterialWidget.swift in Sources */,
+				5B83B1C92D0358D7009B0A1F /* LockScreenExpeditionWidgetCircular.swift in Sources */,
+				5B83B1CA2D0358D7009B0A1F /* LockScreenResinWidgetRectangular.swift in Sources */,
+				5B83B1CB2D0358D7009B0A1F /* LockScreenDailyTaskWidget.swift in Sources */,
+				5B83B1CC2D0358D7009B0A1F /* MainWidget.swift in Sources */,
+				5B83B1CD2D0358D7009B0A1F /* PZWidgetsKit.swift in Sources */,
+				5B83B1CE2D0358D7009B0A1F /* LockScreenExpeditionWidgetCorner.swift in Sources */,
+				5B83B1CF2D0358D7009B0A1F /* AppEntities.swift in Sources */,
+				5B83B1D02D0358D7009B0A1F /* LockScreenResinFullTimeWidgetCircular.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFD6B882C628CD8000A63E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BFD6B902C628CD8000A63E9 /* UnitedPizzaHelperApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5B258C8B2CCE890500131992 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B258C802CCE890300131992 /* PizzaWatchAppExtension */;
+			targetProxy = 5B258C8A2CCE890500131992 /* PBXContainerItemProxy */;
+		};
+		5B6F380B2CCE4EDE0081A23D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 5B6F37FE2CCE4EDC0081A23D /* PizzaWatchApp */;
+			targetProxy = 5B6F380A2CCE4EDE0081A23D /* PBXContainerItemProxy */;
+		};
+		5BD7443C2CC6B264007DE385 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BD744272CC6B262007DE385 /* WidgetExtension */;
+			targetProxy = 5BD7443B2CC6B264007DE385 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5B10D7FD2CC6636E00245B77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ThePizzaHelper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
+				PRODUCT_NAME = "Pizza Helper";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		5B10D7FE2CC6636E00245B77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ThePizzaHelper/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
+				PRODUCT_NAME = "Pizza Helper";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		5B258C8D2CCE890500131992 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WatchExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		5B258C8E2CCE890500131992 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WatchExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Release;
+		};
+		5B6F380E2CCE4EDE0081A23D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEVELOPMENT_ASSET_PATHS = "WatchApp/Preview\\ Content";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchApp/PizzaWatchApp-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper Watch App";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		5B6F380F2CCE4EDE0081A23D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEVELOPMENT_ASSET_PATHS = "WatchApp/Preview\\ Content";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchApp/PizzaWatchApp-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper Watch App";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Release;
+		};
+		5BD744402CC6B265007DE385 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WATCHOS_DEPLOYMENT_TARGET = 10.6;
+			};
+			name = Debug;
+		};
+		5BD744412CC6B265007DE385 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.6;
+			};
+			name = Release;
+		};
+		5BFD6B9B2C628CDA000A63E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5BFD6B9C2C628CDA000A63E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5BFD6B9E2C628CDA000A63E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UnitedPizzaHelperEngine/UnitedPizzaHelperEngine.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UnitedPizzaHelperEngine/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "United Pizza Engine";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
+				PRODUCT_NAME = "United Pizza Engine";
+				REGISTER_APP_GROUPS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5BFD6B9F2C628CDA000A63E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UnitedPizzaHelperEngine/UnitedPizzaHelperEngine.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 4375;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UnitedPizzaHelperEngine/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "United Pizza Engine";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 17.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 5.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
+				PRODUCT_NAME = "United Pizza Engine";
+				REGISTER_APP_GROUPS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B10D7FF2CC6636E00245B77 /* Build configuration list for PBXNativeTarget "ThePizzaHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B10D7FD2CC6636E00245B77 /* Debug */,
+				5B10D7FE2CC6636E00245B77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B258C8F2CCE890500131992 /* Build configuration list for PBXNativeTarget "PizzaWatchAppExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B258C8D2CCE890500131992 /* Debug */,
+				5B258C8E2CCE890500131992 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B6F38102CCE4EDE0081A23D /* Build configuration list for PBXNativeTarget "PizzaWatchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B6F380E2CCE4EDE0081A23D /* Debug */,
+				5B6F380F2CCE4EDE0081A23D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BD744422CC6B265007DE385 /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BD744402CC6B265007DE385 /* Debug */,
+				5BD744412CC6B265007DE385 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BFD6B872C628CD8000A63E9 /* Build configuration list for PBXProject "UnitedPizzaHelper-Alt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BFD6B9B2C628CDA000A63E9 /* Debug */,
+				5BFD6B9C2C628CDA000A63E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BFD6B9D2C628CDA000A63E9 /* Build configuration list for PBXNativeTarget "UnitedPizzaHelperEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BFD6B9E2C628CDA000A63E9 /* Debug */,
+				5BFD6B9F2C628CDA000A63E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5BFCA05B2CCE002700F182C7 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
+		5BFCA05E2CCE003A00F182C7 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5B0A42BE2CCE4F96004463D5 /* PZHelper-Watch */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "PZHelper-Watch";
+		};
+		5B10D8142CC6667600245B77 /* PZHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZHelper;
+		};
+		5B258E222CCE8A0500131992 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BFCA05E2CCE003A00F182C7 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		5B258E242CCE8A0900131992 /* GITodayMaterialsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GITodayMaterialsKit;
+		};
+		5B258E262CCE8A0E00131992 /* PZAccountKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZAccountKit;
+		};
+		5B258E282CCE8A1300131992 /* PZBaseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZBaseKit;
+		};
+		5B258E2A2CCE8A1700131992 /* PZInGameEventKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZInGameEventKit;
+		};
+		5B258E2C2CCE8A1900131992 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BFCA05B2CCE002700F182C7 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		5B258E2E2CCE8A1D00131992 /* WallpaperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WallpaperKit;
+		};
+		5BD0D0F42C6A653500DA8099 /* PZHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZHelper;
+		};
+		5BDB94A32CDB57E100488574 /* PZWidgetsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZWidgetsKit;
+		};
+		5BDB94A52CDB57E600488574 /* PZWidgetsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZWidgetsKit;
+		};
+		5BFCA0532CCDFFE300F182C7 /* PZBaseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZBaseKit;
+		};
+		5BFCA0552CCDFFEA00F182C7 /* PZAccountKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZAccountKit;
+		};
+		5BFCA0572CCDFFEE00F182C7 /* WallpaperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WallpaperKit;
+		};
+		5BFCA0592CCDFFFC00F182C7 /* PZInGameEventKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZInGameEventKit;
+		};
+		5BFCA05C2CCE002700F182C7 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BFCA05B2CCE002700F182C7 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		5BFCA05F2CCE003A00F182C7 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BFCA05E2CCE003A00F182C7 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		5BFCA19A2CCE022200F182C7 /* GITodayMaterialsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GITodayMaterialsKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5BFD6B842C628CD8000A63E9 /* Project object */;
+}

@@ -13,6 +13,7 @@ import SwiftUI
 
 // MARK: - TodayTabPage
 
+@MainActor
 struct TodayTabPage: View {
     // MARK: Internal
 

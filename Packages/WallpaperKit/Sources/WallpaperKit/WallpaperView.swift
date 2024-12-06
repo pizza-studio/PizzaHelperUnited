@@ -19,6 +19,7 @@ extension Wallpaper {
 // MARK: - AppWallpaperView
 
 #if !os(watchOS)
+@MainActor
 public struct AppWallpaperView: View {
     // MARK: Lifecycle
 

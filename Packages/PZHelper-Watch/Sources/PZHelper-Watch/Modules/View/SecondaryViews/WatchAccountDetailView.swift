@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - WatchAccountDetailView
 
+@MainActor
 struct WatchAccountDetailView: View {
     var data: any DailyNoteProtocol
     let accountName: String?
@@ -130,6 +131,7 @@ struct WatchAccountDetailView: View {
 
 // MARK: - WatchEachExpeditionView
 
+@MainActor
 private struct WatchEachExpeditionView: View {
     let expedition: any ExpeditionTask
     var useAsyncImage: Bool = false

@@ -70,6 +70,7 @@ extension EventDetailWebView: NSViewRepresentable {
 
         var parent: EventDetailWebView
 
+        @MainActor
         func userContentController(
             _ userContentController: WKUserContentController,
             didReceive message: WKScriptMessage
@@ -141,6 +142,7 @@ extension EventDetailWebView: UIViewRepresentable {
 
         var parent: EventDetailWebView
 
+        @MainActor
         func userContentController(
             _ userContentController: WKUserContentController,
             didReceive message: WKScriptMessage

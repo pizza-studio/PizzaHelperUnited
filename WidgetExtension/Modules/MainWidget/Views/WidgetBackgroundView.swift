@@ -7,6 +7,7 @@ import WallpaperKit
 import WidgetKit
 
 @available(watchOS, unavailable)
+@MainActor
 struct WidgetBackgroundView: View {
     // MARK: Internal
 

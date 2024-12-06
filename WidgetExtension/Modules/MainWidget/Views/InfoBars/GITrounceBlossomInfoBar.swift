@@ -8,6 +8,7 @@ import SFSafeSymbols
 import SwiftUI
 
 @available(watchOS, unavailable)
+@MainActor
 struct GITrounceBlossomInfoBar: View {
     // MARK: Lifecycle
 

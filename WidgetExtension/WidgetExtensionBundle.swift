@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZWidgetsKit
 // @_exported import PZWidgetsKit
 import SwiftUI
 import WidgetKit
@@ -11,7 +12,9 @@ struct WidgetExtensionBundle: WidgetBundle {
     // MARK: Lifecycle
 
     init() {
-        PZWidgets.attemptToAutoInheritOldAccountsIntoProfiles()
+        MainActor.assumeIsolated {
+            PZWidgetsSPM.attemptToAutoInheritOldAccountsIntoProfiles()
+        }
     }
 
     // MARK: Internal

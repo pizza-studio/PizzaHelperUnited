@@ -12,6 +12,7 @@ import WidgetKit
 
 // MARK: - WatchWidgetSettingView
 
+@MainActor
 struct WatchWidgetSettingView: View {
     // MARK: Internal
 
@@ -77,6 +78,7 @@ struct WatchWidgetSettingView: View {
 
 // MARK: - QueryFrequencySettingView
 
+@MainActor
 private struct QueryFrequencySettingView: View {
     // MARK: Internal
 

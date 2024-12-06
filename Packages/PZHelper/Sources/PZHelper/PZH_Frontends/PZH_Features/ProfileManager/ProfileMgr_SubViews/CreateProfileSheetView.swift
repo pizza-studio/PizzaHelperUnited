@@ -11,6 +11,7 @@ import SwiftUI
 // MARK: - ProfileManagerPageContent.CreateProfileSheetView
 
 extension ProfileManagerPageContent {
+    @MainActor
     struct CreateProfileSheetView: View {
         // MARK: Lifecycle
 
@@ -302,6 +303,7 @@ extension ProfileManagerPageContent {
 
 // MARK: - RequireLoginView
 
+@MainActor
 private struct RequireLoginView: View {
     // MARK: Lifecycle
 
@@ -418,6 +420,7 @@ private enum AddProfileStatus {
 
 // MARK: - ExplanationView
 
+@MainActor
 private struct ExplanationView: View {
     // MARK: Internal
 

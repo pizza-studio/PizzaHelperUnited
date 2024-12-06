@@ -5,6 +5,7 @@
 import PZBaseKit
 import SwiftUI
 
+@MainActor
 public struct GachaProfileManagementView: View {
     // MARK: Public
 

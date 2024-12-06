@@ -9,6 +9,7 @@ import SwiftUI
 import WidgetKit
 
 @available(watchOS, unavailable)
+@MainActor
 struct HSRReservedTBPowerInfoBar: View {
     // MARK: Lifecycle
 

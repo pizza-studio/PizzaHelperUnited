@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - ShowTeamPercentageView
 
+@MainActor
 struct ShowTeamPercentageView: View {
     static let percentageFormatter: NumberFormatter = {
         let formatter = NumberFormatter()

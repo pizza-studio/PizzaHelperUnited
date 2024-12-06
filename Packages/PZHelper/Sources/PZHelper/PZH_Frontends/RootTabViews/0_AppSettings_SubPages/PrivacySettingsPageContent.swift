@@ -7,6 +7,7 @@ import PZBaseKit
 import PZHoYoLabKit
 import SwiftUI
 
+@MainActor
 struct PrivacySettingsPageContent: View {
     // MARK: Internal
 

@@ -4,12 +4,14 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
 // MARK: - LockScreenResinWidgetCorner
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenResinWidgetCorner: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

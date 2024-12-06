@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import AlertToast
+// import AlertToast
 import EnkaKit
 import PZAccountKit
 import PZBaseKit
@@ -12,6 +12,7 @@ import SwiftUI
 
 // MARK: - GachaRootView
 
+@MainActor
 public struct GachaRootView: View {
     // MARK: Lifecycle
 
@@ -24,7 +25,8 @@ public struct GachaRootView: View {
 
     public static var navIcon: Image { Image("GachaRecordMgr_NavIcon", bundle: .module) }
 
-    public var body: some View {
+    @MainActor public var body: some View {
+        @Bindable var theVM = theVM
         coreBody
             .navigationTitle(theVM.currentGPIDTitle ?? Self.navTitle)
             .navBarTitleDisplayMode(.large)
@@ -122,16 +124,12 @@ public struct GachaRootView: View {
                 }
             }
             .environment(theVM)
-            .apply { mainContent in
-                @Bindable var theVM = theVM
-                mainContent
-                    .toast(isPresenting: $theVM.showSucceededAlertToast) {
-                        AlertToast(
-                            displayMode: .alert,
-                            type: .complete(.green),
-                            title: "gachaKit.alertToast.succeeded".i18nGachaKit
-                        )
-                    }
+            .toast(isPresenting: $theVM.showSucceededAlertToast) { @MainActor in
+                AlertToast(
+                    displayMode: .alert,
+                    type: .complete(.green),
+                    title: "gachaKit.alertToast.succeeded".i18nGachaKit
+                )
             }
     }
 

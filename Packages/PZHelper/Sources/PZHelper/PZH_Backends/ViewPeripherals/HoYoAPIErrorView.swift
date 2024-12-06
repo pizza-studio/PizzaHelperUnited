@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - HoYoAPIErrorView
 
+@MainActor
 struct HoYoAPIErrorView: View {
     let profile: PZProfileMO
     let apiPath: String

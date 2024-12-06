@@ -11,6 +11,7 @@ import WidgetKit
 // MARK: - LargeWidgetView
 
 @available(watchOS, unavailable)
+@MainActor
 struct LargeWidgetView: View {
     let entry: any TimelineEntry
     var dailyNote: any DailyNoteProtocol

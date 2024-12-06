@@ -8,6 +8,7 @@ import WallpaperKit
 
 // MARK: - CharacterIconView
 
+@MainActor
 public struct CharacterIconView: View {
     // MARK: Lifecycle
 

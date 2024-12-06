@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -11,6 +12,7 @@ import WidgetKit
 // MARK: - LockScreenResinWidgetRectangular
 
 @available(macOS, unavailable)
+@MainActor
 struct LockScreenResinWidgetRectangular: View {
     let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode) var widgetRenderingMode

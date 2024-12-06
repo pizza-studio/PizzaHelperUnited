@@ -12,6 +12,7 @@ import WebKit
 
 // MARK: - HoYoMapView
 
+@MainActor
 struct HoYoMapView: View {
     // MARK: Public
 

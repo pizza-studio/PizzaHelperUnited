@@ -37,6 +37,7 @@ public protocol TravelStatsView: View {
 
 // MARK: - TravelStatLabel
 
+@MainActor
 struct TravelStatLabel: View {
     // MARK: Lifecycle
 

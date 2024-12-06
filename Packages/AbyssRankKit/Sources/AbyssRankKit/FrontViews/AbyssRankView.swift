@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - AbyssRankView
 
+@MainActor
 public struct AbyssRankView: View {
     // MARK: Lifecycle
 

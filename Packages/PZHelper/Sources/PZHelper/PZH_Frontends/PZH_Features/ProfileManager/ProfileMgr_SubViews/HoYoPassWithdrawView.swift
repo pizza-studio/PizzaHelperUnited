@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - AccountWithdrawalView
 
+@MainActor
 struct HoYoPassWithdrawView: View {
     // MARK: Public
 

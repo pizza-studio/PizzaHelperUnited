@@ -11,6 +11,7 @@ import WallpaperKit
 
 // MARK: - UISettingsPageContent
 
+@MainActor
 struct UISettingsPageContent: View {
     // MARK: Internal
 

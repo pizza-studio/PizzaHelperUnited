@@ -8,6 +8,7 @@ import SFSafeSymbols
 import SwiftData
 import SwiftUI
 
+@MainActor
 public struct GachaProfileSwitcherView: View {
     // MARK: Lifecycle
 

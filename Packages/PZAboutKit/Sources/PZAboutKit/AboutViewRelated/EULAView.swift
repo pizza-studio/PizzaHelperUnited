@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - EULAView
 
+@MainActor
 public struct EULAView: View {
     // MARK: Lifecycle
 

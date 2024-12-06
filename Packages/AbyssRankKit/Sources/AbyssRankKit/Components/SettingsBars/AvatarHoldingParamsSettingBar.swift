@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - AvatarHoldingParamsSettingBar
 
+@MainActor
 struct AvatarHoldingParamsSettingBar: View {
     @Binding var params: AvatarHoldingAPIParameters
 
