@@ -50,6 +50,7 @@ func gitCommitCount(branch: String = "main") throws -> Int {
 
 func process(_ dirXcodeProjectFile: String) {
     var verBuild: String
+    var verMarket: String?
     do {
         var intVerBuild = try gitCommitCount()
         intVerBuild += 3001
@@ -62,7 +63,6 @@ func process(_ dirXcodeProjectFile: String) {
     if CommandLine.arguments.count == 2 {
         verMarket = CommandLine.arguments[1]
     }
-    var verMarket: String?
     var strXcodeProjContent = ""
 
     // Xcode project file version update.
