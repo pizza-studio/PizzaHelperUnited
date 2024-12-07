@@ -28,7 +28,17 @@ struct WatchWidgetSettingView: View {
         List {
             Section {
                 ForEach(accounts) { account in
-                    Text(account.name)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(account.name).bold()
+                            Text(account.uidWithGame).font(.footnote)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        Image(systemSymbol: .chevronLeft)
+                            .foregroundStyle(.secondary)
+                            .frame(width: 12, height: 12)
+                    }
+                    .frame(maxWidth: .infinity)
                 }
                 .onDelete(perform: { indexSet in
                     for offset in indexSet {
@@ -49,21 +59,21 @@ struct WatchWidgetSettingView: View {
                 Text("watch.profile.manage.title", bundle: .module)
                     .textCase(.none)
             }
-            Section {
-                NavigationLink {
-                    QueryFrequencySettingView()
-                } label: {
-                    HStack {
-                        Text("watch.widget.settings.sync.frequency.title", bundle: .module)
-                        Spacer()
-                        Text(
-                            "watch.widget.settings.sync.speed:\(lockscreenWidgetRefreshFrequencyFormated)",
-                            bundle: .module
-                        )
-                        .foregroundColor(.accentColor)
-                    }
-                }
-            }
+            // Section {
+            //     NavigationLink {
+            //         QueryFrequencySettingView()
+            //     } label: {
+            //         HStack {
+            //             Text("watch.widget.settings.sync.frequency.title", bundle: .module)
+            //             Spacer()
+            //             Text(
+            //                 "watch.widget.settings.sync.speed:\(lockscreenWidgetRefreshFrequencyFormated)",
+            //                 bundle: .module
+            //             )
+            //             .foregroundColor(.accentColor)
+            //         }
+            //     }
+            // }
         }
     }
 

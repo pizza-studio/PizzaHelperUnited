@@ -114,23 +114,29 @@ private struct DetailNavigator: View {
             switch dailyNoteViewModel.dailyNoteStatus {
             case let .succeed(dailyNote, _):
                 NavigationLink {
-                    WatchAccountDetailView(data: dailyNote, accountName: account.name, uid: account.uid)
+                    WatchAccountDetailView(data: dailyNote, profile: account.asSendable)
                 } label: {
-                    HStack {
-                        VStack {
+                    VStack(alignment: .leading) {
+                        HStack {
                             Text(account.name).font(.headline)
-                            HStack {
-                                dailyNoteViewModel.profile.game.primaryStaminaAssetIcon
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 25, height: 25)
-                                Text(verbatim: "\(dailyNote.staminaIntel.finished)")
-                            }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Image(systemSymbol: .chevronRight)
+                                .foregroundStyle(.secondary)
+                                .frame(width: 12, height: 12)
                         }
-                        Spacer()
-                        Image(systemSymbol: .chevronRight)
-                            .foregroundStyle(.secondary)
+                        HStack(spacing: 2) {
+                            dailyNoteViewModel.profile.game.primaryStaminaAssetIcon
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 25, height: 25)
+                            Text(verbatim: "\(dailyNote.staminaIntel.finished)").bold()
+                            Spacer()
+                            Text(account.uidWithGame).font(.footnote)
+                                .minimumScaleFactor(0.5)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
             case let .failure(error):
                 Button {
