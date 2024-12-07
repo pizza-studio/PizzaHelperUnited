@@ -16,14 +16,14 @@ extension PZWidgets {
         MainWidget()
         MaterialWidget()
         #endif
-        #if os(iOS) && !targetEnvironment(macCatalyst)
-        iOSWidgets()
+        #if (os(iOS) || os(watchOS)) && !targetEnvironment(macCatalyst)
+        mobileWidgets()
         #endif
     }
 
     @WidgetBundleBuilder @MainActor @preconcurrency
-    public static func iOSWidgets() -> some Widget {
-        #if os(iOS) && !targetEnvironment(macCatalyst)
+    public static func mobileWidgets() -> some Widget {
+        #if (os(iOS) || os(watchOS)) && !targetEnvironment(macCatalyst)
         LockScreenResinWidget()
         LockScreenLoopWidget()
         LockScreenAllInfoWidget()
