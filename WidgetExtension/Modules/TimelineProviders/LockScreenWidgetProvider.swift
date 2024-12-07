@@ -59,7 +59,9 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
             )
             return .init(
                 intent: intent,
-                description: config.name + String(localized: recommendationsTag)
+                description: config.name + "\n\(config.uidWithGame)\n" + String(
+                    localized: recommendationsTag
+                )
             )
         } ?? []
         #else
@@ -81,9 +83,10 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Entry {
-        Entry(
+        let data = Pizza.SupportedGame(intentConfig: configuration)?.exampleDailyNoteData
+        return Entry(
             date: Date(),
-            result: .success(GeneralNote4GI.exampleData()),
+            result: .success(data ?? GeneralNote4GI.exampleData()),
             accountName: "荧",
             accountUUIDString: nil
         )
