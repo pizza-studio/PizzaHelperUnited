@@ -55,11 +55,6 @@ struct LargeWidgetView: View {
                 .legibilityShadow()
             }
             HStack(alignment: .firstTextBaseline, spacing: 2) {
-                let staminaIconName = switch dailyNote.game {
-                case .genshinImpact: "gi_note_resin"
-                case .starRail: "hsr_note_trailblazePower"
-                case .zenlessZone: "zzz_note_battery"
-                }
                 Text(verbatim: "\(dailyNote.staminaIntel.finished)")
                     .font(.system(size: 50, design: .rounded))
                     .fontWeight(.medium)

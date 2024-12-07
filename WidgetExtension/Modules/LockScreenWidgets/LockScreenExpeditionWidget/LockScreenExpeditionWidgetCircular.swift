@@ -17,11 +17,11 @@ struct LockScreenExpeditionWidgetCircular: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Image("icon.expedition.gi", bundle: .main)
-                .resizable()
-                .scaledToFit()
             switch result {
             case let .success(data):
+                Pizza.SupportedGame(dailyNoteResult: result).expeditionAssetSVG
+                    .resizable()
+                    .scaledToFit()
                 drawExpeditionCompletionStatus(for: data)?
                     .font(.system(.body, design: .rounded).weight(.medium))
             case .failure:

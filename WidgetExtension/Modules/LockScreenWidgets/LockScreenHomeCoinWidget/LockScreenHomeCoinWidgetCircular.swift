@@ -17,7 +17,7 @@ struct LockScreenHomeCoinWidgetCircular: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Image("icon.homeCoin", bundle: .main)
+            Pizza.SupportedGame.genshinImpact.giRealmCurrencyAssetSVG
                 .resizable()
                 .scaledToFit()
                 .apply { imageView in

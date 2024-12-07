@@ -16,18 +16,6 @@ struct LockScreenResinWidgetCorner: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
-    var staminaMonochromeIconAssetName: String {
-        switch result {
-        case let .success(data):
-            return switch data.game {
-            case .genshinImpact: "icon.resin"
-            case .starRail: "icon.trailblazePower"
-            case .zenlessZone: "icon.zzzBattery"
-            }
-        case .failure: return "icon.resin"
-        }
-    }
-
     var text: String {
         switch result {
         case let .success(data):
@@ -44,7 +32,7 @@ struct LockScreenResinWidgetCorner: View {
     }
 
     var body: some View {
-        Image(staminaMonochromeIconAssetName, bundle: .main)
+        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
             .resizable()
             .scaledToFit()
             .padding(4)

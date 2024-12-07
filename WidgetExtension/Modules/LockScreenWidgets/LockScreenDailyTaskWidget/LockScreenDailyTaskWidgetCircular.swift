@@ -15,7 +15,7 @@ struct LockScreenDailyTaskWidgetCircular: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Image("icon.dailyTask.gi", bundle: .main)
+            Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
                 .resizable()
                 .scaledToFit()
                 .apply { imageView in

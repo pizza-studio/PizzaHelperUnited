@@ -66,18 +66,6 @@ struct LockScreenAllInfoWidgetView: View {
         }
     }
 
-    var staminaMonochromeIconAssetName: String {
-        switch result {
-        case let .success(data):
-            return switch data.game {
-            case .genshinImpact: "icon.resin"
-            case .starRail: "icon.trailblazePower"
-            case .zenlessZone: "icon.zzzBattery"
-            }
-        case .failure: return "icon.resin"
-        }
-    }
-
     var isFullColor: Bool { widgetRenderingMode == .fullColor }
 
     var body: some View {
@@ -93,7 +81,7 @@ struct LockScreenAllInfoWidgetView: View {
                     GridRow(alignment: .lastTextBaseline) {
                         HStack(spacing: 4) {
                             let staminaIntel = data.staminaIntel
-                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(data.game.primaryStaminaAssetSVG)")
                                 .widgetAccentable(isFullColor)
                                 .foregroundColor(isFullColor ? Color(
                                     "iconColor.resin",
@@ -108,7 +96,7 @@ struct LockScreenAllInfoWidgetView: View {
                             case let data as Note4ZZZ:
                                 // ZZZ has no expedition API results yet, displaying 刮刮乐 instead.
                                 if let cardScratched = data.cardScratched {
-                                    Text("\(Image("icon.zzzScratch", bundle: .main))")
+                                    Text("\(data.game.zzzScratchCardAssetSVG)")
                                         .widgetAccentable(isFullColor)
                                         .foregroundColor(isFullColor ? Color(
                                             "iconColor.expedition",
@@ -122,12 +110,7 @@ struct LockScreenAllInfoWidgetView: View {
                                     EmptyView()
                                 }
                             default:
-                                let icon = switch data.game {
-                                case .genshinImpact: "icon.expedition.gi"
-                                case .starRail: "icon.expedition.hsr"
-                                case .zenlessZone: "icon.114514"
-                                }
-                                Text("\(Image(icon, bundle: .main))")
+                                Text("\(data.game.expeditionAssetSVG)")
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(
                                         isFullColor ? Color("iconColor.expedition", bundle: .main) :
@@ -153,12 +136,7 @@ struct LockScreenAllInfoWidgetView: View {
                         HStack(spacing: 4) {
                             if data.hasDailyTaskIntel {
                                 let sitrep = data.dailyTaskCompletionStatus
-                                let icon = switch data.game {
-                                case .genshinImpact: "icon.dailyTask.gi"
-                                case .starRail: "icon.dailyTask.hsr"
-                                case .zenlessZone: "icon.dailyTask.zzz"
-                                }
-                                Text("\(Image(icon, bundle: .main))")
+                                Text("\(data.game.dailyTaskAssetSVG)")
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(
                                         isFullColor ? Color("iconColor.dailyTask", bundle: .main) :
@@ -183,7 +161,7 @@ struct LockScreenAllInfoWidgetView: View {
                         HStack(spacing: 4) {
                             switch data {
                             case let data as any Note4GI:
-                                Text("\(Image("icon.homeCoin", bundle: .main))")
+                                Text("\(data.game.giRealmCurrencyAssetSVG)")
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(
                                         isFullColor ? Color("iconColor.homeCoin", bundle: .main) :
@@ -194,7 +172,7 @@ struct LockScreenAllInfoWidgetView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             case let data as Note4HSR:
                                 // Simulated Universe
-                                Text("\(Image("icon.simulatedUniverse", bundle: .main))")
+                                Text("\(data.game.hsrSimulatedUniverseAssetSVG)")
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(
                                         isFullColor ? Color(
@@ -211,7 +189,7 @@ struct LockScreenAllInfoWidgetView: View {
                             case let data as Note4ZZZ:
                                 // VHS Store.
                                 let isVHSInOperation = data.vhsStoreState.isInOperation
-                                Text("\(Image("icon.zzzVHSStore", bundle: .main))")
+                                Text("\(data.game.zzzVHSStoreAssetSVG)")
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(isFullColor ? Color(
                                         "iconColor.homeCoin",
@@ -232,7 +210,7 @@ struct LockScreenAllInfoWidgetView: View {
                         if let eowIntel = data.echoOfWarIntel {
                             GridRow(alignment: .lastTextBaseline) {
                                 HStack(spacing: 4) {
-                                    Text("\(Image("icon.echoOfWar", bundle: .main))")
+                                    Text("\(data.game.hsrEchoOfWarAssetSVG)")
                                         .widgetAccentable(isFullColor)
                                         .foregroundColor(
                                             isFullColor ? Color(
@@ -265,7 +243,7 @@ struct LockScreenAllInfoWidgetView: View {
                     case let data as GeneralNote4GI:
                         GridRow(alignment: .lastTextBaseline) {
                             HStack(spacing: 4) {
-                                Text("\(Image("icon.transformer", bundle: .main))")
+                                Text("\(data.game.giTransformerAssetSVG)")
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(
                                         isFullColor ? Color(
@@ -298,7 +276,7 @@ struct LockScreenAllInfoWidgetView: View {
                                 }
                             }
                             HStack(spacing: 4) {
-                                Text("\(Image("icon.trounceBlossom", bundle: .main))")
+                                Text("\(data.game.giTrounceBlossomAssetSVG)")
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(
                                         isFullColor ? Color(
@@ -329,7 +307,7 @@ struct LockScreenAllInfoWidgetView: View {
                         GridRow(alignment: .lastTextBaseline) {
                             // 零号空洞每周悬赏委托
                             HStack(spacing: 4) {
-                                Text("\(Image("icon.zzzBounty", bundle: .main))")
+                                Text("\(data.game.zzzBountyAssetSVG)")
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(isFullColor ? Color(
                                         "iconColor.transformer",
@@ -342,14 +320,14 @@ struct LockScreenAllInfoWidgetView: View {
                                         .font(.caption)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 } else {
-                                    Text("\(Image("icon.info.unavailable", bundle: .main))")
+                                    Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
                                         .minimumScaleFactor(0.2)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                             }
                             // 调查点数
                             HStack(spacing: 4) {
-                                Text("\(Image("icon.zzzInvestigation", bundle: .main))")
+                                Text("\(data.game.zzzInvestigationPointsAssetSVG)")
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(isFullColor ? Color(
                                         "iconColor.weeklyBosses",
@@ -362,7 +340,7 @@ struct LockScreenAllInfoWidgetView: View {
                                         .font(.caption)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 } else {
-                                    Text("\(Image("icon.info.unavailable", bundle: .main))")
+                                    Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
                                         .minimumScaleFactor(0.2)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
