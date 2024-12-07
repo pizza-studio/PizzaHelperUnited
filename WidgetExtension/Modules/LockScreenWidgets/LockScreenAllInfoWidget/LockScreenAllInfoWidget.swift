@@ -350,7 +350,6 @@ struct LockScreenAllInfoWidgetView: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .fontWidth(.condensed)
             case .failure:
                 Image(systemSymbol: .ellipsis)
                     .foregroundColor(.gray)
