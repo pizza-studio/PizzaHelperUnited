@@ -9,15 +9,13 @@ import WidgetKit
 extension PZWidgets {
     @WidgetBundleBuilder @MainActor @preconcurrency public static var widgets: some Widget {
         #if canImport(ActivityKit)
-        if #available(iOS 16.1, *) {
-            ResinRecoveryActivityWidget()
-        }
+        ResinRecoveryActivityWidget()
         #endif
         #if !os(watchOS)
         MainWidget()
         MaterialWidget()
         #endif
-        #if os(iOS) && !targetEnvironment(macCatalyst)
+        #if (os(iOS) && !targetEnvironment(macCatalyst)) || os(watchOS)
         LockScreenResinWidget()
         LockScreenLoopWidget()
         LockScreenAllInfoWidget()
