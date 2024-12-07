@@ -28,10 +28,29 @@ extension PZProfileMO {
     }
 }
 
+extension Pizza.SupportedGame {
+    public var maxPrimaryStamina: Int {
+        switch self {
+        case .genshinImpact: 200
+        case .starRail: 240
+        case .zenlessZone: 240
+        }
+    }
+
+    public var exampleDailyNoteData: DailyNoteProtocol {
+        switch self {
+        case .genshinImpact: GeneralNote4GI.exampleData()
+        case .starRail: RealtimeNote4HSR.exampleData()
+        case .zenlessZone: Note4ZZZ.exampleData()
+        }
+    }
+}
+
 // MARK: - DailyNoteProtocol
 
 public protocol DailyNoteProtocol: Sendable {
     static var game: Pizza.SupportedGame { get }
+    static func exampleData() -> Self
 }
 
 extension DailyNoteProtocol {
@@ -91,16 +110,6 @@ extension DailyNoteProtocol {
     /// DailyNoteProtocol: Stamina
     public static var maxPrimaryStamina: Int {
         game.maxPrimaryStamina
-    }
-}
-
-extension Pizza.SupportedGame {
-    public var maxPrimaryStamina: Int {
-        switch self {
-        case .genshinImpact: 200
-        case .starRail: 240
-        case .zenlessZone: 240
-        }
     }
 }
 

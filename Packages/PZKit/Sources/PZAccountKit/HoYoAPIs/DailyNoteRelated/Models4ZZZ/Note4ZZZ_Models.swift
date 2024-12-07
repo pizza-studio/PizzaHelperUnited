@@ -239,3 +239,21 @@ extension Note4ZZZ.Energy {
         return Date.now.addingTimeInterval(timeIntervalDelta)
     }
 }
+
+// MARK: - Example
+
+extension Note4ZZZ {
+    public static func exampleData() -> Note4ZZZ {
+        let exampleURL = Bundle.module.url(
+            forResource: "zzz_note_example_miyoushe", withExtension: "json"
+        )!
+        // swiftlint:disable force_try
+        // swiftlint:disable force_unwrapping
+        let exampleData = try! Data(contentsOf: exampleURL)
+        return try! Note4ZZZ.decodeFromMiHoYoAPIJSONResult(
+            data: exampleData, debugTag: "Note4ZZZ.exampleData()"
+        )
+        // swiftlint:enable force_try
+        // swiftlint:enable force_unwrapping
+    }
+}
