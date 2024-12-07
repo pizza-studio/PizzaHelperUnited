@@ -66,7 +66,7 @@ struct LargeWidgetView: View {
                     .minimumScaleFactor(0.1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .legibilityShadow()
-                AccountKit.imageAsset(staminaIconName)
+                dailyNote.game.primaryStaminaAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 30)

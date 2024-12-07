@@ -44,12 +44,7 @@ struct MainInfo: View {
                     .minimumScaleFactor(0.1)
                     .foregroundColor(Color("textColor3", bundle: .main))
                     .legibilityShadow()
-                let staminaIconName = switch dailyNote.game {
-                case .genshinImpact: "gi_note_resin"
-                case .starRail: "hsr_note_trailblazePower"
-                case .zenlessZone: "zzz_note_battery"
-                }
-                AccountKit.imageAsset(staminaIconName)
+                dailyNote.game.primaryStaminaAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 30)

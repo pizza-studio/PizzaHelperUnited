@@ -26,7 +26,7 @@ struct ZZZBountyInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset(assetName)
+            Pizza.SupportedGame.zenlessZone.zzzBountyAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
@@ -52,7 +52,6 @@ struct ZZZBountyInfoBar: View {
     // MARK: Private
 
     private let data: Note4ZZZ.HollowZero.BountyCommission
-    private let assetName = "zzz_note_bounty"
 
     @ViewBuilder private var ringImage: some View {
         Image(systemSymbol: .dotScope)
