@@ -16,6 +16,12 @@ extension PZWidgets {
         MaterialWidget()
         #endif
         #if (os(iOS) && !targetEnvironment(macCatalyst)) || os(watchOS)
+        widgets4MobilePlatforms
+        #endif
+    }
+
+    #if (os(iOS) && !targetEnvironment(macCatalyst)) || os(watchOS)
+    @WidgetBundleBuilder @MainActor @preconcurrency public static var widgets4MobilePlatforms: some Widget {
         LockScreenResinWidget()
         LockScreenLoopWidget()
         LockScreenAllInfoWidget()
@@ -26,6 +32,23 @@ extension PZWidgets {
         LockScreenDailyTaskWidget()
         LockScreenExpeditionWidget()
         AlternativeLockScreenResinWidget()
-        #endif
+    }
+    #endif
+}
+
+// MARK: - WidgetExtensionBundle
+
+@main
+struct WidgetExtensionBundle: WidgetBundle {
+    // MARK: Lifecycle
+
+    init() {
+        PZWidgets.attemptToAutoInheritOldAccountsIntoProfiles()
+    }
+
+    // MARK: Internal
+
+    var body: some Widget {
+        PZWidgets.widgets
     }
 }
