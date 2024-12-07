@@ -16,18 +16,6 @@ struct LockScreenResinWidgetCircular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
-    var staminaMonochromeIconAssetName: String {
-        switch result {
-        case let .success(data):
-            return switch data.game {
-            case .genshinImpact: "icon.resin"
-            case .starRail: "icon.trailblazePower"
-            case .zenlessZone: "icon.zzzBattery"
-            }
-        case .failure: return "icon.resin"
-        }
-    }
-
     var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
@@ -45,7 +33,7 @@ struct LockScreenResinWidgetCircular: View {
                         endPoint: .bottom
                     )
                     .mask(
-                        Image(staminaMonochromeIconAssetName, bundle: .main)
+                        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                             .resizable()
                             .scaledToFit()
                     )
@@ -73,7 +61,7 @@ struct LockScreenResinWidgetCircular: View {
                         endPoint: .bottom
                     )
                     .mask(
-                        Image(staminaMonochromeIconAssetName, bundle: .main)
+                        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                             .resizable()
                             .scaledToFit()
                     )
@@ -91,7 +79,7 @@ struct LockScreenResinWidgetCircular: View {
             case let .success(data):
                 let staminaIntel = data.staminaIntel
                 Gauge(value: Double(staminaIntel.finished) / Double(staminaIntel.all)) {
-                    Image(staminaMonochromeIconAssetName, bundle: .main)
+                    Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                         .resizable()
                         .scaledToFit()
                 } currentValueLabel: {
@@ -104,7 +92,7 @@ struct LockScreenResinWidgetCircular: View {
                 .gaugeStyle(ProgressGaugeStyle())
             case .failure:
                 Gauge(value: Double(213), in: 0.0 ... Double(213)) {
-                    Image(staminaMonochromeIconAssetName, bundle: .main)
+                    Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                         .resizable()
                         .scaledToFit()
                 } currentValueLabel: {

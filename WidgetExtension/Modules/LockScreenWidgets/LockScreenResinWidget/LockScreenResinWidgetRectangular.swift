@@ -17,18 +17,6 @@ struct LockScreenResinWidgetRectangular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
-    var staminaMonochromeIconAssetName: String {
-        switch result {
-        case let .success(data):
-            return switch data.game {
-            case .genshinImpact: "icon.resin"
-            case .starRail: "icon.trailblazePower"
-            case .zenlessZone: "icon.zzzBattery"
-            }
-        case .failure: return "icon.resin"
-        }
-    }
-
     var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
@@ -42,7 +30,7 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(verbatim: "\(staminaIntel.finished)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
@@ -73,13 +61,13 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(Image(systemSymbol: .ellipsis))
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
                         .foregroundColor(.cyan)
-                        Text(Image(staminaMonochromeIconAssetName, bundle: .main))
+                        Text(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)
                             .font(.footnote)
                             .fixedSize(horizontal: false, vertical: true)
                     }
@@ -97,7 +85,7 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(verbatim: "\(staminaIntel.finished)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
@@ -129,12 +117,12 @@ struct LockScreenResinWidgetRectangular: View {
                             Text(Image(systemSymbol: .ellipsis))
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
-                            Text("\(Image(staminaMonochromeIconAssetName, bundle: .main))")
+                            Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
                                 .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
-                        Text(Image(staminaMonochromeIconAssetName, bundle: .main))
+                        Text(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)
                             .font(.footnote)
                             .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(.gray)
