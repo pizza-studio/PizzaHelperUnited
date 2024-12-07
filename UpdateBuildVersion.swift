@@ -55,3 +55,4 @@ func process(_ dirXcodeProjectFile: String) {
 }
 
 process("./UnitedPizzaHelper.xcodeproj/project.pbxproj")
+process("./UnitedPizzaHelper-Alt.xcodeproj/project.pbxproj")
