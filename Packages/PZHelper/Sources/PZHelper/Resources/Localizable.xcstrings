@@ -8470,73 +8470,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dies umfasst tägliche Aufgaben (Genshin Impact), tägliches Training (Star Rail) und Vitalität (Zenless Zone Zero). Star Rail-UIDs, die von HoYoLAB verwaltet werden, erhalten von dieser App keine tägliche Training-Benachrichtigungen."
+            "value" : "Dies umfasst tägliche Aufgaben (Genshin Impact), tägliches Training (Star Rail) und Vitalität (Zenless Zone Zero)."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This includes Daily Task (Genshin Impact), Daily Training (Star Rail), and Vitality (Zenless Zone Zero). Star Rail UIDs governed by HoYoLAB won’t have Daily Training notifications from this app."
+            "value" : "This includes Daily Task (Genshin Impact), Daily Training (Star Rail), and Vitality (Zenless Zone Zero)."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esto incluye Tarea Diaria (Genshin Impact), Entrenamiento Diario (Star Rail) y Vitalidad (Zenless Zone Zero). Los UIDs de Star Rail gestionados por HoYoLAB no recibirán notificaciones de Entrenamiento Diario desde esta aplicación."
+            "value" : "Esto incluye Tarea Diaria (Genshin Impact), Entrenamiento Diario (Star Rail) y Vitalidad (Zenless Zone Zero)."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kabilang dito ang Daily Task (Genshin Impact), Daily Training (Star Rail), at Vitality (Zenless Zone Zero). Ang mga Star Rail UID na pinangangasiwaan ng HoYoLAB ay hindi makakatanggap ng mga notification sa Daily Training mula sa app na ito."
+            "value" : "Kabilang dito ang Daily Task (Genshin Impact), Daily Training (Star Rail), at Vitality (Zenless Zone Zero)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cela inclut la tâche quotidienne (Genshin Impact), l'entraînement quotidien (Star Rail) et la vitalité (Zenless Zone Zero) Les UIDs de Star Rail gérés par HoYoLAB n'auront pas de notifications d'entraînement quotidien de cette application"
+            "value" : "Cela inclut la tâche quotidienne (Genshin Impact), l'entraînement quotidien (Star Rail) et la vitalité (Zenless Zone Zero)."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Questo include Compiti Giornalieri (Genshin Impact), Allenamento Giornaliero (Star Rail) e Vitalità (Zenless Zone Zero). Gli UIDs di Star Rail gestiti da HoYoLAB non riceveranno notifiche di Allenamento Giornaliero da questa app."
+            "value" : "Questo include Compiti Giornalieri (Genshin Impact), Allenamento Giornaliero (Star Rail) e Vitalità (Zenless Zone Zero)."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "原神のデイリー依頼、スターレイルのデイリー訓練、ゼンレスゾンゼロの活躍度を全部含む通知です。（米遊社でなく）HoYoLABの元に管理されているスターレイルのUIDはデイリー訓練の進捗情報は、弊アプリが受け取れませんので、予めご了承下さいませ。"
+            "value" : "原神のデイリー依頼、スターレイルのデイリー訓練、ゼンレスゾンゼロの活躍度を全部含む通知です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이에는 일일 임무(Genshin Impact), 일일 훈련(Star Rail), 활력(Zenless Zone Zero)이 포함됩니다. HoYoLAB에서 관리하는 Star Rail UID는 이 앱에서 일일 훈련 알림을 받지 않습니다."
+            "value" : "이에는 일일 임무(Genshin Impact), 일일 훈련(Star Rail), 활력(Zenless Zone Zero)이 포함됩니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Это включает Ежедневные Задачи (Genshin Impact), Ежедневные Тренировки (Star Rail), и Жизнестойкость (Zenless Zone Zero). UIDs Star Rail, управляемые HoYoLAB, не будут получать уведомления о Ежедневных Тренировках из этого приложения."
+            "value" : "Это включает Ежедневные Задачи (Genshin Impact), Ежедневные Тренировки (Star Rail), и Жизнестойкость (Zenless Zone Zero)."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Điều này bao gồm Nhiệm Vụ Hàng Ngày (Genshin Impact), Đào Tạo Hàng Ngày (Star Rail) và Sinh Khí (Zenless Zone Zero). Các UID Star Rail được quản lý bởi HoYoLAB sẽ không nhận được thông báo Đào Tạo Hàng Ngày từ ứng dụng này."
+            "value" : "Điều này bao gồm Nhiệm Vụ Hàng Ngày (Genshin Impact), Đào Tạo Hàng Ngày (Star Rail) và Sinh Khí (Zenless Zone Zero)."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这包括了原神的每日委托、星穹铁道的每日实训、绝区零的活跃度。受 HoYoLAB 管理的星穹铁道的 UID 的每日实训进度无法由本 App 获取。"
+            "value" : "这包括了原神的每日委托、星穹铁道的每日实训、绝区零的活跃度。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "這包括了原神的每日委託、星穹鐵道的每日實訓、絕區零的活躍度。受 HoYoLAB 管理的星穹鐵道的 UID 的每日實訓資訊無法由敝 App 獲取。"
+            "value" : "這包括了原神的每日委託、星穹鐵道的每日實訓、絕區零的活躍度。"
           }
         }
       }
