@@ -60,9 +60,10 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Entry {
-        Entry(
+        let data = Pizza.SupportedGame(intentConfig: configuration)?.exampleDailyNoteData
+        return Entry(
             date: Date(),
-            result: .success(GeneralNote4GI.exampleData()),
+            result: .success(data ?? GeneralNote4GI.exampleData()),
             viewConfig: .defaultConfig,
             accountName: "荧",
             accountUUIDString: ""
