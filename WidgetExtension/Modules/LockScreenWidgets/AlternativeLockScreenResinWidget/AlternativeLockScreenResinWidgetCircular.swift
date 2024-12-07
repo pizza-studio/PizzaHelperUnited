@@ -15,21 +15,10 @@ struct AlternativeLockScreenResinWidgetCircular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
-    var staminaMonochromeIconAssetName: String {
-        switch result {
-        case let .success(data):
-            return switch data.game {
-            case .genshinImpact: "icon.resin"
-            case .starRail: "icon.trailblazePower"
-            case .zenlessZone: "icon.zzzBattery"
-            }
-        case .failure: return "icon.resin"
-        }
-    }
-
     var body: some View {
         VStack(spacing: 0) {
-            let img = Image(staminaMonochromeIconAssetName, bundle: .main)
+            let game = (Pizza.SupportedGame(dailyNoteResult: result) ?? .genshinImpact)
+            let img = game.primaryStaminaAssetSVG
                 .resizable()
                 .scaledToFit()
             switch widgetRenderingMode {

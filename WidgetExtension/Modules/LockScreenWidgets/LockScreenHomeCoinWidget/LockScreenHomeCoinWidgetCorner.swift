@@ -33,7 +33,7 @@ struct LockScreenHomeCoinWidgetCorner: View {
     }
 
     var body: some View {
-        Image("icon.homeCoin", bundle: .main)
+        Pizza.SupportedGame.genshinImpact.giRealmCurrencyAssetSVG
             .resizable()
             .scaledToFit()
             .padding(3)

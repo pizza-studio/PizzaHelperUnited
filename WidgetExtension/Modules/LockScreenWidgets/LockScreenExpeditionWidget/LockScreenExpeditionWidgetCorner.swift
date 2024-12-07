@@ -41,7 +41,7 @@ struct LockScreenExpeditionWidgetCorner: View {
     }
 
     var body: some View {
-        Image("icon.expedition.gi", bundle: .main)
+        Pizza.SupportedGame(dailyNoteResult: result).expeditionAssetSVG
             .resizable()
             .scaledToFit()
             .padding(3.5)

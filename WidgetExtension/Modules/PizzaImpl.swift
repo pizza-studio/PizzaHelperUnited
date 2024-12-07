@@ -6,6 +6,7 @@ import AppIntents
 @preconcurrency import Defaults
 import PZAccountKit
 import PZBaseKit
+import SwiftUI
 
 extension Pizza.SupportedGame {
     public init?(intentConfig: some WidgetConfigurationIntent) {
@@ -22,5 +23,99 @@ extension Pizza.SupportedGame {
         }
         guard let uuid, let profile = Defaults[.pzProfiles][uuid] else { return nil }
         self = profile.game
+    }
+
+    public init?(dailyNoteResult: Result<any DailyNoteProtocol, any Error>) {
+        switch dailyNoteResult {
+        case let .success(data): self = data.game
+        case .failure: return nil
+        }
+    }
+}
+
+// MARK: - Asset Icons (SVG)
+
+extension Pizza.SupportedGame? {
+    public var unavailableAssetSVG: Image {
+        Image("icon.info.unavailable", bundle: .main)
+    }
+
+    public var primaryStaminaAssetSVG: Image {
+        self?.primaryStaminaAssetSVG ?? unavailableAssetSVG
+    }
+
+    public var dailyTaskAssetSVG: Image {
+        self?.dailyTaskAssetSVG ?? unavailableAssetSVG
+    }
+
+    public var expeditionAssetSVG: Image {
+        guard let this = self, this != .zenlessZone else { return unavailableAssetSVG }
+        return this.expeditionAssetSVG
+    }
+}
+
+extension Pizza.SupportedGame {
+    /// 主要玩家体力。
+    public var primaryStaminaAssetSVG: Image {
+        let assetName = switch self {
+        case .genshinImpact: "icon.resin"
+        case .starRail: "icon.trailblazePower"
+        case .zenlessZone: "icon.zzzBattery"
+        }
+        return Image(assetName)
+    }
+
+    public var dailyTaskAssetSVG: Image {
+        let assetName = switch self {
+        case .genshinImpact: "icon.dailyTask.gi"
+        case .starRail: "icon.dailyTask.hsr"
+        case .zenlessZone: "icon.dailyTask.zzz"
+        }
+        return Image(assetName)
+    }
+
+    public var expeditionAssetSVG: Image {
+        let assetName = switch self {
+        case .genshinImpact: "icon.expedition.gi"
+        case .starRail: "icon.expedition.hsr"
+        case .zenlessZone: "icon.expedition.gi"
+        }
+        return Image(assetName)
+    }
+
+    public var giTransformerAssetSVG: Image {
+        Image("icon.transformer", bundle: .main)
+    }
+
+    public var giRealmCurrencyAssetSVG: Image {
+        Image("icon.homeCoin", bundle: .main)
+    }
+
+    public var giTrounceBlossomAssetSVG: Image {
+        Image("icon.trounceBlossom", bundle: .main)
+    }
+
+    public var hsrEchoOfWarAssetSVG: Image {
+        Image("icon.echoOfWar", bundle: .main)
+    }
+
+    public var hsrSimulatedUniverseAssetSVG: Image {
+        Image("icon.simulatedUniverse", bundle: .main)
+    }
+
+    public var zzzVHSStoreAssetSVG: Image {
+        Image("icon.zzzVHSStore", bundle: .main)
+    }
+
+    public var zzzScratchCardAssetSVG: Image {
+        Image("icon.zzzScratch", bundle: .main)
+    }
+
+    public var zzzBountyAssetSVG: Image {
+        Image("icon.zzzBounty", bundle: .main)
+    }
+
+    public var zzzInvestigationPointsAssetSVG: Image {
+        Image("icon.zzzInvestigation", bundle: .main)
     }
 }

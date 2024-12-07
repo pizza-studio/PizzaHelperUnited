@@ -40,18 +40,6 @@ struct AlternativeWatchCornerResinWidgetView: View {
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.accountName }
 
-    var staminaMonochromeIconAssetName: String {
-        switch result {
-        case let .success(data):
-            return switch data.game {
-            case .genshinImpact: "icon.resin"
-            case .starRail: "icon.trailblazePower"
-            case .zenlessZone: "icon.zzzBattery"
-            }
-        case .failure: return "icon.resin"
-        }
-    }
-
     var body: some View {
         switch result {
         case let .success(data):
@@ -65,7 +53,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
     func resinView(data: any DailyNoteProtocol) -> some View {
         switch data {
         case let data as any Note4GI:
-            Image(staminaMonochromeIconAssetName, bundle: .main)
+            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                 .resizable()
                 .scaledToFit()
                 .padding(4)
@@ -86,7 +74,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
                 }
         case let data as Note4HSR:
             let staminaInfo = data.staminaInfo
-            Image(staminaMonochromeIconAssetName, bundle: .main)
+            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                 .resizable()
                 .scaledToFit()
                 .padding(4)
@@ -106,7 +94,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
                 }
         case let data as Note4ZZZ:
             let energyInfo = data.energy
-            Image(staminaMonochromeIconAssetName, bundle: .main)
+            Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                 .resizable()
                 .scaledToFit()
                 .padding(4)
@@ -130,7 +118,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
 
     @ViewBuilder
     func failureView() -> some View {
-        Image(staminaMonochromeIconAssetName, bundle: .main)
+        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
             .resizable()
             .scaledToFit()
             .padding(6)

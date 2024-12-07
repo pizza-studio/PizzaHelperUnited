@@ -15,7 +15,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
     var body: some View {
         switch result {
         case let .success(data):
-            Image("icon.dailyTask.gi", bundle: .main)
+            Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
                 .resizable()
                 .scaledToFit()
                 .padding(3.5)
@@ -38,7 +38,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
                     }
                 }
         case .failure:
-            Image("icon.dailyTask.gi", bundle: .main)
+            Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
                 .resizable()
                 .scaledToFit()
                 .padding(4.5)

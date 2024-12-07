@@ -16,18 +16,6 @@ struct LockScreenResinTimerWidgetCircular: View {
 
     let result: Result<any DailyNoteProtocol, any Error>
 
-    var staminaMonochromeIconAssetName: String {
-        switch result {
-        case let .success(data):
-            return switch data.game {
-            case .genshinImpact: "icon.resin"
-            case .starRail: "icon.trailblazePower"
-            case .zenlessZone: "icon.zzzBattery"
-            }
-        case .failure: return "icon.resin"
-        }
-    }
-
     var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
@@ -44,7 +32,7 @@ struct LockScreenResinTimerWidgetCircular: View {
                         endPoint: .bottom
                     )
                     .mask(
-                        Image(staminaMonochromeIconAssetName, bundle: .main)
+                        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                             .resizable()
                             .scaledToFit()
                     )
@@ -101,7 +89,7 @@ struct LockScreenResinTimerWidgetCircular: View {
             ZStack {
                 AccessoryWidgetBackground()
                 VStack(spacing: 3) {
-                    Image(staminaMonochromeIconAssetName, bundle: .main)
+                    Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                         .resizable()
                         .scaledToFit()
                         .frame(height: 10)
