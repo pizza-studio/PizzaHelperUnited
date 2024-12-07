@@ -21,7 +21,7 @@ struct GITransformerInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset("gi_note_transformer")
+            Pizza.SupportedGame.genshinImpact.giTransformerAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)

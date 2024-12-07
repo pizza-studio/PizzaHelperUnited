@@ -23,7 +23,7 @@ struct HSREchoOfWarInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset("hsr_note_weeklyBosses")
+            Pizza.SupportedGame.starRail.hsrEchoOfWarAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)

@@ -21,7 +21,7 @@ struct ZZZVHSStoreInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset(assetName)
+            Pizza.SupportedGame.zenlessZone.zzzVHSStoreAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
@@ -47,7 +47,6 @@ struct ZZZVHSStoreInfoBar: View {
     // MARK: Private
 
     private let state: Note4ZZZ.VHSState
-    private let assetName = "zzz_note_vhsStore"
 
     private var statusText: String {
         let key: String.LocalizationValue = switch state.isInOperation {

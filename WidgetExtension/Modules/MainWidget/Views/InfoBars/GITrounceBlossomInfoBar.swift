@@ -19,7 +19,7 @@ struct GITrounceBlossomInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset("gi_note_weeklyBosses")
+            Pizza.SupportedGame.genshinImpact.giTrounceBlossomAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)

@@ -22,7 +22,7 @@ struct ExpeditionInfoBar: View {
         case _ as Note4ZZZ: EmptyView() /// ZZZ has no expedition API results.
         default:
             HStack(alignment: .center, spacing: 8) {
-                AccountKit.imageAsset(assetName)
+                dailyNote.game.expeditionAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(width: 25)
@@ -46,14 +46,6 @@ struct ExpeditionInfoBar: View {
     // MARK: Private
 
     private let dailyNote: any DailyNoteProtocol
-
-    private var assetName: String {
-        switch dailyNote.game {
-        case .genshinImpact: "gi_note_expedition"
-        case .starRail: "hsr_note_expedition"
-        case .zenlessZone: "114514"
-        }
-    }
 
     private var completionIntel: FieldCompletionIntel<Int> {
         dailyNote.expeditionCompletionStatus

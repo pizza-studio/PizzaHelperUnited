@@ -11,18 +11,10 @@ import SwiftUI
 struct WatchResinDetailView: View {
     let dailyNote: any DailyNoteProtocol
 
-    var resinImageAssetName: String {
-        switch dailyNote.game {
-        case .genshinImpact: "gi_note_resin"
-        case .starRail: "hsr_note_trailblazePower"
-        case .zenlessZone: "zzz_note_battery"
-        }
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                AccountKit.imageAsset(resinImageAssetName)
+                dailyNote.game.primaryStaminaAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: 25)

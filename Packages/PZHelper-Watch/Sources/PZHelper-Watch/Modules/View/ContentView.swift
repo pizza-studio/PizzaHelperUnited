@@ -109,14 +109,6 @@ private struct DetailNavigator: View {
 
     var account: PZProfileMO { dailyNoteViewModel.profile }
 
-    var resinImageAssetName: String {
-        switch dailyNoteViewModel.profile.game {
-        case .genshinImpact: "gi_note_resin"
-        case .starRail: "hsr_note_trailblazePower"
-        case .zenlessZone: "zzz_note_battery"
-        }
-    }
-
     var body: some View {
         Group {
             switch dailyNoteViewModel.dailyNoteStatus {
@@ -128,7 +120,7 @@ private struct DetailNavigator: View {
                         VStack {
                             Text(account.name).font(.headline)
                             HStack {
-                                AccountKit.imageAsset(resinImageAssetName)
+                                dailyNoteViewModel.profile.game.primaryStaminaAssetIcon
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 25, height: 25)

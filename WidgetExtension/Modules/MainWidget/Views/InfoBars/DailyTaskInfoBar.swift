@@ -19,7 +19,7 @@ struct DailyTaskInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset(assetName)
+            dailyNote.game.dailyTaskAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
@@ -53,14 +53,6 @@ struct DailyTaskInfoBar: View {
     // MARK: Private
 
     private let dailyNote: any DailyNoteProtocol
-
-    private var assetName: String {
-        switch dailyNote.game {
-        case .genshinImpact: "gi_note_dailyTask"
-        case .starRail: "hsr_note_dailyTask"
-        case .zenlessZone: "zzz_note_vitality"
-        }
-    }
 
     @ViewBuilder private var isTaskRewardReceivedImage: some View {
         if dailyNote.hasDailyTaskIntel {
