@@ -48,46 +48,46 @@ func gitCommitCount(branch: String = "main") throws -> Int {
     return count
 }
 
-var verBuild: String
+func process(_ dirXcodeProjectFile: String) {
+    var verBuild: String
+    do {
+        var intVerBuild = try gitCommitCount()
+        intVerBuild += 3001
+        verBuild = intVerBuild.description
+    } catch {
+        print("Failed to get Git Revision Number.")
+        exit(1)
+    }
 
-do {
-    var intVerBuild = try gitCommitCount()
-    intVerBuild += 3001
-    verBuild = intVerBuild.description
-} catch {
-    print("Failed to get Git Revision Number.")
-    exit(1)
-}
+    if CommandLine.arguments.count == 2 {
+        verMarket = CommandLine.arguments[1]
+    }
+    var verMarket: String?
+    var strXcodeProjContent = ""
 
-var verMarket: String?
-var strXcodeProjContent: String = ""
-var dirXcodeProjectFile = "./UnitedPizzaHelper.xcodeproj/project.pbxproj"
-var theDictionary: NSDictionary?
+    // Xcode project file version update.
+    do {
+        strXcodeProjContent += try String(contentsOfFile: dirXcodeProjectFile, encoding: .utf8)
+    } catch {
+        NSLog(" - Exception happened when reading raw phrases data.")
+    }
 
-if CommandLine.arguments.count == 2 {
-    verMarket = CommandLine.arguments[1]
-}
-
-// Xcode project file version update.
-do {
-    strXcodeProjContent += try String(contentsOfFile: dirXcodeProjectFile, encoding: .utf8)
-} catch {
-    NSLog(" - Exception happened when reading raw phrases data.")
-}
-
-strXcodeProjContent.regReplace(
-    pattern: #"CURRENT_PROJECT_VERSION = .*$"#, replaceWith: "CURRENT_PROJECT_VERSION = " + verBuild + ";"
-)
-if let verMarket {
     strXcodeProjContent.regReplace(
-        pattern: #"MARKETING_VERSION = .*$"#, replaceWith: "MARKETING_VERSION = " + verMarket + ";"
+        pattern: #"CURRENT_PROJECT_VERSION = .*$"#, replaceWith: "CURRENT_PROJECT_VERSION = " + verBuild + ";"
     )
+    if let verMarket {
+        strXcodeProjContent.regReplace(
+            pattern: #"MARKETING_VERSION = .*$"#, replaceWith: "MARKETING_VERSION = " + verMarket + ";"
+        )
+    }
+
+    do {
+        try strXcodeProjContent.write(to: URL(fileURLWithPath: dirXcodeProjectFile), atomically: false, encoding: .utf8)
+    } catch {
+        NSLog(" -: Error on writing strings to file: \(error)")
+    }
+
+    NSLog(" - Xcode 專案版本資訊更新完成：\(verBuild)。")
 }
 
-do {
-    try strXcodeProjContent.write(to: URL(fileURLWithPath: dirXcodeProjectFile), atomically: false, encoding: .utf8)
-} catch {
-    NSLog(" -: Error on writing strings to file: \(error)")
-}
-
-NSLog(" - Xcode 專案版本資訊更新完成：\(verBuild)。")
+process("./UnitedPizzaHelper.xcodeproj/project.pbxproj")
