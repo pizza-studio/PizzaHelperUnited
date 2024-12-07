@@ -9,6 +9,8 @@ import SwiftUI
 // MARK: - WatchAccountDetailView
 
 struct WatchAccountDetailView: View {
+    // MARK: Internal
+
     var data: any DailyNoteProtocol
     let accountName: String?
     var uid: String?
@@ -16,84 +18,30 @@ struct WatchAccountDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Group {
-                    Divider()
-                    WatchResinDetailView(dailyNote: data)
-                    Divider()
-                    VStack(alignment: .leading, spacing: 5) {
-                        if data.hasDailyTaskIntel {
-                            let sitrep = data.dailyTaskCompletionStatus
-                            let titleKey: LocalizedStringKey = switch data.game {
-                            case .genshinImpact: "watch.dailyNote.card.dailyTask.label"
-                            case .starRail: "watch.dailyNote.card.dailyTask.label"
-                            case .zenlessZone: "watch.dailyNote.card.vitality.label"
-                            }
-                            WatchAccountDetailItemView(
-                                title: titleKey,
-                                value: "\(sitrep.finished) / \(sitrep.all)",
-                                icon: data.game.dailyTaskAssetIcon
-                            )
-                            Divider()
+                Divider()
+                WatchResinDetailView(dailyNote: data)
+                Divider()
+                VStack(alignment: .leading, spacing: 5) {
+                    if data.hasDailyTaskIntel {
+                        let sitrep = data.dailyTaskCompletionStatus
+                        let titleKey: LocalizedStringKey = switch data.game {
+                        case .genshinImpact: "watch.dailyNote.card.dailyTask.label"
+                        case .starRail: "watch.dailyNote.card.dailyTask.label"
+                        case .zenlessZone: "watch.dailyNote.card.zzzVitality.label"
                         }
+                        WatchAccountDetailItemView(
+                            title: titleKey,
+                            value: "\(sitrep.finished) / \(sitrep.all)",
+                            icon: data.game.dailyTaskAssetIcon
+                        )
+                        Divider()
+                    }
 
-                        switch data {
-                        case let data as any Note4GI:
-                            WatchAccountDetailItemView(
-                                title: "watch.dailyNote.card.homeCoin.label",
-                                value: "\(data.homeCoinInfo.currentHomeCoin)",
-                                icon: data.game.giRealmCurrencyAssetIcon
-                            )
-                            Divider()
-                            let expeditionIntel = data.expeditionCompletionStatus
-                            WatchAccountDetailItemView(
-                                title: "watch.dailyNote.card.expedition.label",
-                                value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
-                                icon: data.game.expeditionAssetIcon
-                            )
-                            if let data = data as? GeneralNote4GI {
-                                Divider()
-                                WatchAccountDetailItemView(
-                                    title: "watch.dailyNote.card.transformer",
-                                    value: intervalFormatter
-                                        .string(
-                                            from: TimeInterval
-                                                .sinceNow(to: data.transformerInfo.recoveryTime)
-                                        )!,
-                                    icon: data.game.giTransformerAssetIcon
-                                )
-                                Divider()
-                                WatchAccountDetailItemView(
-                                    title: "watch.dailyNote.card.weeklyBosses",
-                                    value: data.weeklyBossesInfo.textDescription,
-                                    icon: data.game.giTrounceBlossomAssetIcon
-                                )
-                            }
-                        case let data as Note4HSR:
-                            WatchAccountDetailItemView(
-                                title: "watch.dailyNote.card.simulatedUniverse.label",
-                                value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
-                                icon: data.game.hsrSimulatedUniverseAssetIcon
-                            )
-                            Divider()
-                            let expeditionIntel = data.expeditionCompletionStatus
-                            WatchAccountDetailItemView(
-                                title: "watch.dailyNote.card.expedition.label",
-                                value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
-                                icon: data.game.expeditionAssetIcon
-                            )
-                            if let eowIntel = data.echoOfWarIntel {
-                                Divider()
-                                WatchAccountDetailItemView(
-                                    title: "watch.dailyNote.card.hsrEchoOfWar.label",
-                                    value: eowIntel.textDescription,
-                                    icon: data.game.hsrEchoOfWarAssetIcon
-                                )
-                            }
-                        case _ as Note4ZZZ:
-                            EmptyView()
-                        // TODO: 絕區零的其他內容擴充。
-                        default: EmptyView()
-                        }
+                    switch data {
+                    case let data as any Note4GI: drawNote4GI(data)
+                    case let data as Note4HSR: drawNote4HSR(data)
+                    case let data as Note4ZZZ: drawNote4ZZZ(data)
+                    default: EmptyView()
                     }
                 }
             }
@@ -101,7 +49,9 @@ struct WatchAccountDetailView: View {
         .navigationTitle(accountName ?? "")
     }
 
-    @ViewBuilder var expeditionsList: some View {
+    // MARK: Private
+
+    @ViewBuilder private var expeditionsList: some View {
         switch data {
         case _ as Note4ZZZ:
             EmptyView()
@@ -119,6 +69,106 @@ struct WatchAccountDetailView: View {
                     .frame(maxHeight: 40)
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    private func drawNote4GI(_ data: any Note4GI) -> some View {
+        WatchAccountDetailItemView(
+            title: "watch.dailyNote.card.homeCoin.label",
+            value: "\(data.homeCoinInfo.currentHomeCoin)",
+            icon: data.game.giRealmCurrencyAssetIcon
+        )
+        Divider()
+        let expeditionIntel = data.expeditionCompletionStatus
+        WatchAccountDetailItemView(
+            title: "watch.dailyNote.card.expedition.label",
+            value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
+            icon: data.game.expeditionAssetIcon
+        )
+        Divider()
+        if let data = data as? GeneralNote4GI {
+            WatchAccountDetailItemView(
+                title: "watch.dailyNote.card.transformer",
+                value: intervalFormatter
+                    .string(
+                        from: TimeInterval
+                            .sinceNow(to: data.transformerInfo.recoveryTime)
+                    )!,
+                icon: data.game.giTransformerAssetIcon
+            )
+            Divider()
+            WatchAccountDetailItemView(
+                title: "watch.dailyNote.card.giTrounceBlossom",
+                value: data.weeklyBossesInfo.textDescription,
+                icon: data.game.giTrounceBlossomAssetIcon
+            )
+            Divider()
+        }
+    }
+
+    @ViewBuilder
+    private func drawNote4HSR(_ data: Note4HSR) -> some View {
+        WatchAccountDetailItemView(
+            title: "watch.dailyNote.card.simulatedUniverse.label",
+            value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
+            icon: data.game.hsrSimulatedUniverseAssetIcon
+        )
+        Divider()
+        let expeditionIntel = data.expeditionCompletionStatus
+        WatchAccountDetailItemView(
+            title: "watch.dailyNote.card.expedition.label",
+            value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
+            icon: data.game.expeditionAssetIcon
+        )
+        Divider()
+        if let eowIntel = data.echoOfWarIntel {
+            WatchAccountDetailItemView(
+                title: "watch.dailyNote.card.hsrEchoOfWar.label",
+                value: eowIntel.textDescription,
+                icon: data.game.hsrEchoOfWarAssetIcon
+            )
+            Divider()
+        }
+    }
+
+    @ViewBuilder
+    private func drawNote4ZZZ(_ data: Note4ZZZ) -> some View {
+        Group {
+            let stateOn: String.LocalizationValue = "watch.dailyNote.card.zzzVHSStoreInOperationState.on"
+            let stateOff: String.LocalizationValue = "watch.dailyNote.card.zzzVHSStoreInOperationState.off"
+            WatchAccountDetailItemView(
+                title: "watch.dailyNote.card.zzzVHSStoreInOperationState.label",
+                value: String(localized: data.vhsStoreState.isInOperation ? stateOn : stateOff, bundle: .module),
+                icon: data.game.zzzVHSStoreAssetIcon
+            )
+            Divider()
+        }
+        if let cardScratched = data.cardScratched {
+            let stateDone: String.LocalizationValue = "watch.dailyNote.card.zzzScratchableCard.done"
+            let stateNyet: String.LocalizationValue = "watch.dailyNote.card.zzzScratchableCard.notYet"
+            WatchAccountDetailItemView(
+                title: "watch.dailyNote.card.zzzScratchableCard.label",
+                value: String(localized: cardScratched ? stateDone : stateNyet, bundle: .module),
+                icon: data.game.zzzScratchCardAssetIcon
+            )
+            Divider()
+        }
+        if let bountyCommission = data.hollowZero.bountyCommission {
+            WatchAccountDetailItemView(
+                title: "watch.dailyNote.card.zzzHollowZeroBountyCommission.label",
+                value: bountyCommission.textDescription,
+                icon: data.game.zzzBountyAssetIcon
+            )
+            Divider()
+        }
+        if let investigationPoint = data.hollowZero.investigationPoint {
+            WatchAccountDetailItemView(
+                title: "watch.dailyNote.card.zzzHollowZeroInvestigationPoint.label",
+                value: investigationPoint.textDescription,
+                icon: data.game.zzzInvestigationPointsAssetIcon
+            )
+            Divider()
         }
     }
 }
