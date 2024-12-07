@@ -28,15 +28,10 @@ struct WatchAccountDetailView: View {
                             case .starRail: "watch.dailyNote.card.dailyTask.label"
                             case .zenlessZone: "watch.dailyNote.card.vitality.label"
                             }
-                            let dailyTaskIcon = switch data.game {
-                            case .genshinImpact: "gi_note_dailyTask"
-                            case .starRail: "hsr_note_dailyTask"
-                            case .zenlessZone: "zzz_note_vitality"
-                            }
                             WatchAccountDetailItemView(
                                 title: titleKey,
                                 value: "\(sitrep.finished) / \(sitrep.all)",
-                                icon: AccountKit.imageAsset(dailyTaskIcon)
+                                icon: data.game.dailyTaskAssetIcon
                             )
                             Divider()
                         }
@@ -46,14 +41,14 @@ struct WatchAccountDetailView: View {
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.homeCoin.label",
                                 value: "\(data.homeCoinInfo.currentHomeCoin)",
-                                icon: AccountKit.imageAsset("gi_note_teapot_coin")
+                                icon: data.game.giRealmCurrencyAssetIcon
                             )
                             Divider()
                             let expeditionIntel = data.expeditionCompletionStatus
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.expedition.label",
                                 value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
-                                icon: AccountKit.imageAsset("gi_note_expedition")
+                                icon: data.game.expeditionAssetIcon
                             )
                             if let data = data as? GeneralNote4GI {
                                 Divider()
@@ -64,34 +59,34 @@ struct WatchAccountDetailView: View {
                                             from: TimeInterval
                                                 .sinceNow(to: data.transformerInfo.recoveryTime)
                                         )!,
-                                    icon: AccountKit.imageAsset("gi_note_transformer")
+                                    icon: data.game.giTransformerAssetIcon
                                 )
                                 Divider()
                                 WatchAccountDetailItemView(
                                     title: "watch.dailyNote.card.weeklyBosses",
                                     value: data.weeklyBossesInfo.textDescription,
-                                    icon: AccountKit.imageAsset("gi_note_weeklyBosses")
+                                    icon: data.game.giTrounceBlossomAssetIcon
                                 )
                             }
                         case let data as Note4HSR:
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.simulatedUniverse.label",
                                 value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
-                                icon: AccountKit.imageAsset("hsr_note_simulatedUniverse")
+                                icon: data.game.hsrSimulatedUniverseAssetIcon
                             )
                             Divider()
                             let expeditionIntel = data.expeditionCompletionStatus
                             WatchAccountDetailItemView(
                                 title: "watch.dailyNote.card.expedition.label",
                                 value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
-                                icon: AccountKit.imageAsset("hsr_note_expedition")
+                                icon: data.game.expeditionAssetIcon
                             )
                             if let eowIntel = data.echoOfWarIntel {
                                 Divider()
                                 WatchAccountDetailItemView(
                                     title: "watch.dailyNote.card.hsrEchoOfWar.label",
                                     value: eowIntel.textDescription,
-                                    icon: AccountKit.imageAsset("hsr_note_weeklyBosses")
+                                    icon: data.game.hsrEchoOfWarAssetIcon
                                 )
                             }
                         case _ as Note4ZZZ:

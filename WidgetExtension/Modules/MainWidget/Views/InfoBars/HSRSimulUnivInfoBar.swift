@@ -25,7 +25,7 @@ struct HSRSimulUnivInfoBar: View {
         let maxScore = intel.maxScore
         let isFinished = currentScore == maxScore
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset("hsr_note_simulatedUniverse")
+            dailyNote.game.hsrSimulatedUniverseAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)

@@ -157,7 +157,7 @@ private struct DailyNoteCardView4GI: View {
         VStack(alignment: .leading) {
             let resinIntel = dailyNote.resinInfo
             HStack(spacing: 10) {
-                AccountKit.imageAsset("gi_note_resin")
+                dailyNote.game.primaryStaminaAssetIcon
                     .resizable()
                     .scaledToFit()
                     .scaleEffect(1.1)
@@ -183,7 +183,7 @@ private struct DailyNoteCardView4GI: View {
                 // Trounce Blossom (Weekly Bosses)
                 if let dailyNote = dailyNote as? GeneralNote4GI {
                     HStack(spacing: 4) {
-                        AccountKit.imageAsset("gi_note_weeklyBosses")
+                        dailyNote.game.giTrounceBlossomAssetIcon
                             .resizable()
                             .scaledToFit()
                             .frame(width: iconFrame - 6, height: iconFrame - 6)
@@ -216,7 +216,7 @@ private struct DailyNoteCardView4GI: View {
         VStack(alignment: .leading) {
             let sitrep = dailyNote.dailyTaskCompletionStatus
             HStack(spacing: 10) {
-                AccountKit.imageAsset("gi_note_dailyTask")
+                dailyNote.game.dailyTaskAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(width: iconFrame, height: iconFrame)
@@ -245,7 +245,7 @@ private struct DailyNoteCardView4GI: View {
                     let paraTransIntel = dailyNote.transformerInfo
                     VStack(alignment: .leading) {
                         HStack(spacing: 4) {
-                            AccountKit.imageAsset("gi_note_transformer")
+                            dailyNote.game.giTransformerAssetIcon
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: iconFrame - 6, height: iconFrame - 6)
@@ -298,7 +298,7 @@ private struct DailyNoteCardView4GI: View {
         VStack(alignment: .leading) {
             let homeCoin = dailyNote.homeCoinInfo
             HStack(spacing: 10) {
-                AccountKit.imageAsset("gi_note_teapot_coin")
+                dailyNote.game.giRealmCurrencyAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
@@ -330,7 +330,7 @@ private struct DailyNoteCardView4GI: View {
         VStack(alignment: .leading) {
             let expeditionIntel = dailyNote.expeditionCompletionStatus
             HStack(spacing: 10) {
-                AccountKit.imageAsset("gi_note_expedition")
+                dailyNote.game.expeditionAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
@@ -400,7 +400,7 @@ private struct DailyNoteCardView4HSR: View {
                 Spacer()
                 if hasReservedStamina {
                     HStack {
-                        AccountKit.imageAsset("hsr_note_trailblazePowerReserved")
+                        dailyNote.game.secondaryStaminaAssetIcon
                             .resizable()
                             .scaledToFit()
                             .frame(height: iconFrame / 2)
@@ -418,7 +418,7 @@ private struct DailyNoteCardView4HSR: View {
             }
             HStack(spacing: 10) {
                 let iconFrame: CGFloat = 40
-                AccountKit.imageAsset("hsr_note_trailblazePower")
+                dailyNote.game.primaryStaminaAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
@@ -446,7 +446,7 @@ private struct DailyNoteCardView4HSR: View {
     func drawHSRMiscComponents() -> some View {
         let iconFrame: CGFloat = 24
         HStack {
-            AccountKit.imageAsset("hsr_note_dailyTask")
+            dailyNote.game.dailyTaskAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(height: iconFrame)
@@ -457,7 +457,7 @@ private struct DailyNoteCardView4HSR: View {
         }
         .help("app.dailynote.card.daily_training.label".i18nPZHelper)
         HStack {
-            AccountKit.imageAsset("hsr_note_simulatedUniverse")
+            dailyNote.game.hsrSimulatedUniverseAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(height: iconFrame)
@@ -470,7 +470,7 @@ private struct DailyNoteCardView4HSR: View {
         .help("app.dailynote.card.simulated_universe.label".i18nPZHelper)
         if let eowIntel = dailyNote.echoOfWarIntel {
             HStack {
-                AccountKit.imageAsset("hsr_note_weeklyBosses")
+                dailyNote.game.hsrEchoOfWarAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
@@ -487,7 +487,7 @@ private struct DailyNoteCardView4HSR: View {
         VStack {
             HStack {
                 let iconFrame: CGFloat = 24
-                AccountKit.imageAsset("hsr_note_expedition")
+                dailyNote.game.expeditionAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
@@ -578,7 +578,7 @@ private struct DailyNoteCardView4ZZZ: View {
             }
             HStack(spacing: 10) {
                 let iconFrame: CGFloat = 40
-                AccountKit.imageAsset("zzz_note_battery")
+                dailyNote.game.primaryStaminaAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
@@ -602,7 +602,7 @@ private struct DailyNoteCardView4ZZZ: View {
         }
         let iconFrame: CGFloat = 24
         HStack {
-            AccountKit.imageAsset("zzz_note_vitality")
+            dailyNote.game.dailyTaskAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(height: iconFrame)
@@ -612,7 +612,7 @@ private struct DailyNoteCardView4ZZZ: View {
             Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
         }
         HStack {
-            AccountKit.imageAsset("zzz_note_vhsStore")
+            dailyNote.game.zzzVHSStoreAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(height: iconFrame)
@@ -624,7 +624,7 @@ private struct DailyNoteCardView4ZZZ: View {
         }
         if let cardScratched = dailyNote.cardScratched {
             HStack {
-                AccountKit.imageAsset("zzz_note_scratchCard")
+                dailyNote.game.zzzScratchCardAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
@@ -637,7 +637,7 @@ private struct DailyNoteCardView4ZZZ: View {
         }
         if let bountyCommission = dailyNote.hollowZero.bountyCommission {
             HStack {
-                AccountKit.imageAsset("zzz_note_bounty")
+                dailyNote.game.zzzBountyAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)
@@ -648,7 +648,7 @@ private struct DailyNoteCardView4ZZZ: View {
         }
         if let investigationPoint = dailyNote.hollowZero.investigationPoint {
             HStack {
-                AccountKit.imageAsset("zzz_note_investigationPoints")
+                dailyNote.game.zzzInvestigationPointsAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(height: iconFrame)

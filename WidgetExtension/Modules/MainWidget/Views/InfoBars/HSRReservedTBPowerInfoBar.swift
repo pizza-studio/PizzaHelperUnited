@@ -20,7 +20,7 @@ struct HSRReservedTBPowerInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset("hsr_note_trailblazePowerReserved")
+            Pizza.SupportedGame.starRail.secondaryStaminaAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)

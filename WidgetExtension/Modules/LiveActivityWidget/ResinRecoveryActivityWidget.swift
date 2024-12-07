@@ -96,7 +96,7 @@ struct ResinRecoveryActivityWidget: Widget {
                     HStack {
                         if Date() < context.state.next20PrimaryStaminaRecoveryTime {
                             HStack {
-                                AccountKit.imageAsset(resinImageAssetName(context))
+                                context.state.game.primaryStaminaAssetIcon
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxHeight: 40)
@@ -154,7 +154,7 @@ struct ResinRecoveryActivityWidget: Widget {
                     .foregroundColor(Color("textColor3", bundle: .main))
                 }
             } compactLeading: {
-                AccountKit.imageAsset(resinImageAssetName(context)).resizable().scaledToFit()
+                context.state.game.primaryStaminaAssetIcon.resizable().scaledToFit()
             } compactTrailing: {
                 if Date() < context.state
                     .next20PrimaryStaminaRecoveryTime {
@@ -170,16 +170,8 @@ struct ResinRecoveryActivityWidget: Widget {
                     .foregroundColor(Color("textColor2", bundle: .main))
                 }
             } minimal: {
-                AccountKit.imageAsset(resinImageAssetName(context)).resizable().scaledToFit()
+                context.state.game.primaryStaminaAssetIcon.resizable().scaledToFit()
             }
-        }
-    }
-
-    func resinImageAssetName(_ context: ActivityViewContext<ResinRecoveryAttributes>) -> String {
-        switch context.state.game {
-        case .genshinImpact: "gi_note_resin"
-        case .starRail: "hsr_note_trailblazePower"
-        case .zenlessZone: "zzz_note_battery"
         }
     }
 }
@@ -194,22 +186,6 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
     }
 
     var useNoBackground: Bool { context.state.background == .noBackground }
-
-    var resinImageAssetName: String {
-        switch context.state.game {
-        case .genshinImpact: "gi_note_resin"
-        case .starRail: "hsr_note_trailblazePower"
-        case .zenlessZone: "zzz_note_battery"
-        }
-    }
-
-    var expeditionAssetName: String {
-        switch context.state.game {
-        case .genshinImpact: "gi_note_expedition"
-        case .starRail: "hsr_note_expedition"
-        case .zenlessZone: "114514"
-        }
-    }
 
     var body: some View {
         let mainContent = contentView
@@ -254,7 +230,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         HStack {
             Grid(verticalSpacing: 7) {
                 GridRow {
-                    AccountKit.imageAsset(resinImageAssetName)
+                    context.state.game.primaryStaminaAssetIcon
                         .resizable()
                         .scaledToFit()
                         .frame(maxHeight: 38)
@@ -297,7 +273,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                 }
                 if context.state.showExpedition, let time = context.state.expeditionAllCompleteTime, Date() < time {
                     GridRow {
-                        AccountKit.imageAsset(expeditionAssetName)
+                        context.state.game.expeditionAssetIcon
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 29)

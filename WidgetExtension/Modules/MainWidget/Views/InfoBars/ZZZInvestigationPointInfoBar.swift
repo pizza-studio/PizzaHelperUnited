@@ -22,7 +22,7 @@ struct ZZZInvestigationPointInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset(assetName)
+            Pizza.SupportedGame.zenlessZone.zzzInvestigationPointsAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
@@ -48,7 +48,6 @@ struct ZZZInvestigationPointInfoBar: View {
     // MARK: Private
 
     private let data: Note4ZZZ.HollowZero.InvestigationPointIntel
-    private let assetName = "zzz_note_investigationPoints"
 
     @ViewBuilder private var ringImage: some View {
         Image(systemSymbol: .textMagnifyingglass)

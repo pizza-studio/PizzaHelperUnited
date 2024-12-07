@@ -22,7 +22,7 @@ struct ZZZScratchCardInfoBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            AccountKit.imageAsset(assetName)
+            Pizza.SupportedGame.zenlessZone.zzzScratchCardAssetIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
@@ -48,7 +48,6 @@ struct ZZZScratchCardInfoBar: View {
     // MARK: Private
 
     private let scratchable: Bool
-    private let assetName = "zzz_note_scratchCard"
 
     private var statusText: String {
         let key: String.LocalizationValue = switch scratchable {

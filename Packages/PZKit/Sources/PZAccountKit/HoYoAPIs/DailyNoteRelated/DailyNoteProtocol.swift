@@ -4,6 +4,7 @@
 
 import Foundation
 import PZBaseKit
+import SwiftUI
 
 extension PZProfileSendable {
     public func getDailyNote() async throws -> DailyNoteProtocol {
@@ -253,5 +254,82 @@ extension DailyNoteProtocol {
     /// DailyNoteProtocol: HSR Echo-of-War Weekly Attempts, Star Rail Only
     public var echoOfWarIntel: EchoOfWarInfo4HSR? {
         (self as? RealtimeNote4HSR)?.echoOfWarCostStatus
+    }
+}
+
+// MARK: - Asset Icons (non-SVG)
+
+extension Pizza.SupportedGame {
+    /// 主要玩家体力。
+    public var primaryStaminaAssetIcon: Image {
+        let assetName = switch self {
+        case .genshinImpact: "gi_note_resin"
+        case .starRail: "hsr_note_trailblazePower"
+        case .zenlessZone: "zzz_note_battery"
+        }
+        return AccountKit.imageAsset(assetName)
+    }
+
+    /// 后备体力。
+    public var secondaryStaminaAssetIcon: Image {
+        switch self {
+        case .starRail: AccountKit.imageAsset("hsr_note_trailblazePowerReserved")
+        case .zenlessZone: AccountKit.imageAsset("zzz_note_battery_backup")
+        default: AccountKit.imageAsset("gi_note_resin_condensed")
+        }
+    }
+
+    public var dailyTaskAssetIcon: Image {
+        let assetName = switch self {
+        case .genshinImpact: "gi_note_dailyTask"
+        case .starRail: "hsr_note_dailyTask"
+        case .zenlessZone: "zzz_note_vitality"
+        }
+        return AccountKit.imageAsset(assetName)
+    }
+
+    public var expeditionAssetIcon: Image {
+        let assetName = switch self {
+        case .genshinImpact: "gi_note_expedition"
+        case .starRail: "hsr_note_expedition"
+        case .zenlessZone: "gi_note_expedition"
+        }
+        return AccountKit.imageAsset(assetName)
+    }
+
+    public var giTrounceBlossomAssetIcon: Image {
+        AccountKit.imageAsset("gi_note_weeklyBosses")
+    }
+
+    public var giTransformerAssetIcon: Image {
+        AccountKit.imageAsset("gi_note_transformer")
+    }
+
+    public var giRealmCurrencyAssetIcon: Image {
+        AccountKit.imageAsset("gi_note_transformer")
+    }
+
+    public var hsrEchoOfWarAssetIcon: Image {
+        AccountKit.imageAsset("hsr_note_weeklyBosses")
+    }
+
+    public var hsrSimulatedUniverseAssetIcon: Image {
+        AccountKit.imageAsset("hsr_note_simulatedUniverse")
+    }
+
+    public var zzzVHSStoreAssetIcon: Image {
+        AccountKit.imageAsset("zzz_note_vhsStore")
+    }
+
+    public var zzzScratchCardAssetIcon: Image {
+        AccountKit.imageAsset("zzz_note_scratchCard")
+    }
+
+    public var zzzBountyAssetIcon: Image {
+        AccountKit.imageAsset("zzz_note_bounty")
+    }
+
+    public var zzzInvestigationPointsAssetIcon: Image {
+        AccountKit.imageAsset("zzz_note_investigationPoints")
     }
 }
