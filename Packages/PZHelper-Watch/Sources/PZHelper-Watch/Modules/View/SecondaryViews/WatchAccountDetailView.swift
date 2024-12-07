@@ -9,17 +9,27 @@ import SwiftUI
 // MARK: - WatchAccountDetailView
 
 struct WatchAccountDetailView: View {
-    // MARK: Internal
+    // MARK: Lifecycle
 
-    var data: any DailyNoteProtocol
-    let accountName: String?
-    var uid: String?
+    init(data: any DailyNoteProtocol, profile: PZProfileSendable) {
+        self.data = data
+        self.profile = profile
+    }
+
+    // MARK: Internal
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 Divider()
                 WatchResinDetailView(dailyNote: data)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .overlay(alignment: .trailing) {
+                        Text("\n\n" + profile.uidWithGame)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .padding(.horizontal)
+                    }
                 Divider()
                 VStack(alignment: .leading, spacing: 5) {
                     if data.hasDailyTaskIntel {
@@ -46,10 +56,13 @@ struct WatchAccountDetailView: View {
                 }
             }
         }
-        .navigationTitle(accountName ?? "")
+        .navigationTitle(profile.name)
     }
 
     // MARK: Private
+
+    private var data: any DailyNoteProtocol
+    private var profile: PZProfileSendable
 
     @ViewBuilder private var expeditionsList: some View {
         switch data {
