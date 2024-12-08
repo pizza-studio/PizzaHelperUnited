@@ -16,6 +16,7 @@ extension Enka {
         case nihility = "Warlock"
         case preservation = "Knight"
         case abundance = "Priest"
+        case remembrance = "Memory"
     }
 }
 
