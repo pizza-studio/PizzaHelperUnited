@@ -306,7 +306,7 @@ extension Pizza.SupportedGame {
     }
 
     public var giRealmCurrencyAssetIcon: Image {
-        AccountKit.imageAsset("gi_note_transformer")
+        AccountKit.imageAsset("gi_note_teapot_coin")
     }
 
     public var hsrEchoOfWarAssetIcon: Image {
