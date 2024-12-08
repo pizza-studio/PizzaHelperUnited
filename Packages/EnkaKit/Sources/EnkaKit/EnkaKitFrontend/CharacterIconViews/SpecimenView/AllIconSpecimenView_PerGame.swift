@@ -21,8 +21,14 @@ public struct CharSpecimen: Identifiable, Hashable {
             } else {
                 IDPhotoFallbackView4HSR(pid: id, size, cutType)
             }
-        } else {
-            CharacterIconView(charID: id, size: size)
+        } else { // 暂时不处理 >= 10000900 的角色 ID。
+            if let intID = Int(id) {
+                if intID < 10000900 {
+                    CharacterIconView(charID: id, size: size)
+                }
+            } else {
+                CharacterIconView(charID: id, size: size)
+            }
         }
     }
 
