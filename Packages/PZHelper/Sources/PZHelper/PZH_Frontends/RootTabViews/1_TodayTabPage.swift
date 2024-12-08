@@ -94,7 +94,9 @@ struct TodayTabPage: View {
                         .resizable().aspectRatio(contentMode: .fit)
                         .frame(height: 64)
                 } else {
-                    CharacterIconView(charID: itemID, cardSize: 64)
+                    if Enka.Sputnik.shared.db4GI.characters.keys.contains(itemID) {
+                        CharacterIconView(charID: itemID, cardSize: 64)
+                    }
                 }
             }
         } label: {
