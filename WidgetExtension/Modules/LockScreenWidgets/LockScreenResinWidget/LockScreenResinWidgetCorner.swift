@@ -24,7 +24,7 @@ struct LockScreenResinWidgetCorner: View {
             if staminaIntel.isAccomplished {
                 return "\(data.maxPrimaryStamina), " + "已回满".i18nWidgets
             } else {
-                return "\(staminaIntel.finished), \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: timeOnFinish))!), \(PZWidgets.dateFormatter.string(from: timeOnFinish))"
+                return "\(staminaIntel.finished), \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: timeOnFinish))!)"
             }
         case .failure:
             return "pzWidgetsKit.stamina.label".i18nWidgets
