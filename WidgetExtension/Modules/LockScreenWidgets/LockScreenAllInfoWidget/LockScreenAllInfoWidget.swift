@@ -87,7 +87,8 @@ struct LockScreenAllInfoWidgetView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             } icon: {
                                 Text("\(data.game.primaryStaminaAssetSVG)")
-
+                                    .minimumScaleFactor(0.2)
+                                    .frame(maxWidth: 18, maxHeight: 18)
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(isFullColor ? Color(
                                         "iconColor.resin",
@@ -108,7 +109,8 @@ struct LockScreenAllInfoWidgetView: View {
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                     } icon: {
                                         Text("\(data.game.zzzScratchCardAssetSVG)")
-
+                                            .minimumScaleFactor(0.2)
+                                            .frame(maxWidth: 18, maxHeight: 18)
                                             .widgetAccentable(isFullColor)
                                             .foregroundColor(isFullColor ? Color(
                                                 "iconColor.expedition",
@@ -134,7 +136,8 @@ struct LockScreenAllInfoWidgetView: View {
                                     .minimumScaleFactor(0.2)
                                 } icon: {
                                     Text("\(data.game.expeditionAssetSVG)")
-
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: 18, maxHeight: 18)
                                         .widgetAccentable(isFullColor)
                                         .foregroundColor(
                                             isFullColor ? Color("iconColor.expedition", bundle: .main) :
@@ -163,7 +166,8 @@ struct LockScreenAllInfoWidgetView: View {
                                     }
                                 } icon: {
                                     Text("\(data.game.dailyTaskAssetSVG)")
-
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: 18, maxHeight: 18)
                                         .widgetAccentable(isFullColor)
                                         .foregroundColor(
                                             isFullColor ? Color("iconColor.dailyTask", bundle: .main) :
@@ -184,7 +188,8 @@ struct LockScreenAllInfoWidgetView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 } icon: {
                                     Text("\(data.game.giRealmCurrencyAssetSVG)")
-
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: 18, maxHeight: 18)
                                         .widgetAccentable(isFullColor)
                                         .foregroundColor(
                                             isFullColor ? Color("iconColor.homeCoin", bundle: .main) :
@@ -202,7 +207,8 @@ struct LockScreenAllInfoWidgetView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 } icon: {
                                     Text("\(data.game.hsrSimulatedUniverseAssetSVG)")
-
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: 18, maxHeight: 18)
                                         .widgetAccentable(isFullColor)
                                         .foregroundColor(
                                             isFullColor ? Color(
@@ -222,8 +228,8 @@ struct LockScreenAllInfoWidgetView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 } icon: {
                                     Text("\(data.game.zzzVHSStoreAssetSVG)")
-
-                                        .widgetAccentable(isFullColor)
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: 18, maxHeight: 18)
                                         .foregroundColor(isFullColor ? Color(
                                             "iconColor.homeCoin",
                                             bundle: .main
@@ -256,7 +262,8 @@ struct LockScreenAllInfoWidgetView: View {
                                     }
                                 } icon: {
                                     Text("\(data.game.hsrEchoOfWarAssetSVG)")
-
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: 18, maxHeight: 18)
                                         .widgetAccentable(isFullColor)
                                         .foregroundColor(
                                             isFullColor ? Color(
@@ -299,7 +306,8 @@ struct LockScreenAllInfoWidgetView: View {
                                 }
                             } icon: {
                                 Text("\(data.game.giTransformerAssetSVG)")
-
+                                    .minimumScaleFactor(0.2)
+                                    .frame(maxWidth: 18, maxHeight: 18)
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(
                                         isFullColor ? Color(
@@ -329,7 +337,8 @@ struct LockScreenAllInfoWidgetView: View {
                                 }
                             } icon: {
                                 Text("\(data.game.giTrounceBlossomAssetSVG)")
-
+                                    .minimumScaleFactor(0.2)
+                                    .frame(maxWidth: 18, maxHeight: 18)
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(
                                         isFullColor ? Color(
@@ -351,14 +360,13 @@ struct LockScreenAllInfoWidgetView: View {
                                             .font(.caption)
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                     } else {
-                                        Pizza.SupportedGame(dailyNoteResult: result).unavailableAssetSVG
-                                            .minimumScaleFactor(0.2)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                        Image(systemSymbol: .slashCircle)
                                     }
                                 }
                             } icon: {
                                 Text("\(data.game.zzzBountyAssetSVG)")
-
+                                    .minimumScaleFactor(0.2)
+                                    .frame(maxWidth: 18, maxHeight: 18)
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(isFullColor ? Color(
                                         "iconColor.transformer",
@@ -375,14 +383,13 @@ struct LockScreenAllInfoWidgetView: View {
                                             .font(.caption)
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                     } else {
-                                        Pizza.SupportedGame(dailyNoteResult: result).unavailableAssetSVG
-                                            .minimumScaleFactor(0.2)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                        Image(systemSymbol: .slashCircle)
                                     }
                                 }
                             } icon: {
                                 Text("\(data.game.zzzInvestigationPointsAssetSVG)")
-
+                                    .minimumScaleFactor(0.2)
+                                    .frame(maxWidth: 18, maxHeight: 18)
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(isFullColor ? Color(
                                         "iconColor.weeklyBosses",

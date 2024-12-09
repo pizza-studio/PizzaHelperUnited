@@ -41,7 +41,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
             Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
                 .resizable()
                 .scaledToFit()
-                .padding(4.5)
+                .padding(4)
                 .widgetLabel("pzWidgetsKit.dailyTask".i18nWidgets)
         }
     }

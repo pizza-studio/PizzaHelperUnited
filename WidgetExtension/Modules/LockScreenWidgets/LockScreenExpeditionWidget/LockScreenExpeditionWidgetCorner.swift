@@ -44,7 +44,7 @@ struct LockScreenExpeditionWidgetCorner: View {
         Pizza.SupportedGame(dailyNoteResult: result).expeditionAssetSVG
             .resizable()
             .scaledToFit()
-            .padding(3.5)
+            .padding(4.5)
             .widgetLabel(text)
     }
 }
