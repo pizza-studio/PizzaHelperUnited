@@ -79,127 +79,156 @@ struct LockScreenAllInfoWidgetView: View {
                 ) {
                     // ROW 1
                     GridRow(alignment: .lastTextBaseline) {
-                        HStack(spacing: 4) {
+                        Group {
                             let staminaIntel = data.staminaIntel
-                            Text("\(data.game.primaryStaminaAssetSVG)")
-                                .widgetAccentable(isFullColor)
-                                .foregroundColor(isFullColor ? Color(
-                                    "iconColor.resin",
-                                    bundle: .main
-                                ) : nil)
-                            Text(verbatim: "\(staminaIntel.finished)")
-                                .minimumScaleFactor(0.2)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Label {
+                                Text(verbatim: "\(staminaIntel.finished)")
+                                    .minimumScaleFactor(0.2)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            } icon: {
+                                Text("\(data.game.primaryStaminaAssetSVG)")
+
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(isFullColor ? Color(
+                                        "iconColor.resin",
+                                        bundle: .main
+                                    ) : nil)
+                            }
                         }
-                        HStack(spacing: 4) {
+                        Group {
                             switch data {
                             case let data as Note4ZZZ:
                                 // ZZZ has no expedition API results yet, displaying 刮刮乐 instead.
                                 if let cardScratched = data.cardScratched {
-                                    Text("\(data.game.zzzScratchCardAssetSVG)")
-                                        .widgetAccentable(isFullColor)
-                                        .foregroundColor(isFullColor ? Color(
-                                            "iconColor.expedition",
-                                            bundle: .main
-                                        ) : nil)
-                                    let stateName = cardScratched ? "icon.zzzScratch.done" : "icon.zzzScratch.available"
-                                    Text("\(Image(stateName, bundle: .main))")
-                                        .minimumScaleFactor(0.2)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    Label {
+                                        let stateName = cardScratched ? "icon.zzzScratch.done" :
+                                            "icon.zzzScratch.available"
+                                        Text("\(Image(stateName, bundle: .main))")
+                                            .minimumScaleFactor(0.2)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    } icon: {
+                                        Text("\(data.game.zzzScratchCardAssetSVG)")
+
+                                            .widgetAccentable(isFullColor)
+                                            .foregroundColor(isFullColor ? Color(
+                                                "iconColor.expedition",
+                                                bundle: .main
+                                            ) : nil)
+                                    }
                                 } else {
                                     EmptyView()
                                 }
                             default:
-                                Text("\(data.game.expeditionAssetSVG)")
-                                    .widgetAccentable(isFullColor)
-                                    .foregroundColor(
-                                        isFullColor ? Color("iconColor.expedition", bundle: .main) :
-                                            nil
-                                    )
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    let progression = data.expeditionCompletionStatus
-                                    Text(verbatim: "\(progression.finished)")
-                                        .minimumScaleFactor(0.2)
-                                    Text(verbatim: " / \(progression.all)")
-                                        .font(.caption)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                Label {
+                                    HStack(
+                                        alignment: .lastTextBaseline,
+                                        spacing: 0
+                                    ) {
+                                        let progression = data.expeditionCompletionStatus
+                                        Text(verbatim: "\(progression.finished)")
+                                            .minimumScaleFactor(0.2)
+                                        Text(verbatim: " / \(progression.all)")
+                                            .font(.caption)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                    .minimumScaleFactor(0.2)
+                                } icon: {
+                                    Text("\(data.game.expeditionAssetSVG)")
+
+                                        .widgetAccentable(isFullColor)
+                                        .foregroundColor(
+                                            isFullColor ? Color("iconColor.expedition", bundle: .main) :
+                                                nil
+                                        )
                                 }
-                                .minimumScaleFactor(0.2)
                             }
                         }
                     }
                     // ROW 2
                     GridRow(alignment: .lastTextBaseline) {
-                        HStack(spacing: 4) {
+                        Group {
                             if data.hasDailyTaskIntel {
-                                let sitrep = data.dailyTaskCompletionStatus
-                                Text("\(data.game.dailyTaskAssetSVG)")
-                                    .widgetAccentable(isFullColor)
-                                    .foregroundColor(
-                                        isFullColor ? Color("iconColor.dailyTask", bundle: .main) :
-                                            nil
-                                    )
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(verbatim: "\(sitrep.finished)")
-                                        .minimumScaleFactor(0.2)
-                                    Text(verbatim: " / \(sitrep.all)")
-                                        .font(.caption)
-                                        .minimumScaleFactor(0.2)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                Label {
+                                    let sitrep = data.dailyTaskCompletionStatus
+                                    HStack(
+                                        alignment: .lastTextBaseline,
+                                        spacing: 0
+                                    ) {
+                                        Text(verbatim: "\(sitrep.finished)")
+                                            .minimumScaleFactor(0.2)
+                                        Text(verbatim: " / \(sitrep.all)")
+                                            .font(.caption)
+                                            .minimumScaleFactor(0.2)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                } icon: {
+                                    Text("\(data.game.dailyTaskAssetSVG)")
+
+                                        .widgetAccentable(isFullColor)
+                                        .foregroundColor(
+                                            isFullColor ? Color("iconColor.dailyTask", bundle: .main) :
+                                                nil
+                                        )
                                 }
                             } else {
                                 EmptyView()
                             }
                         }
 
-                        HStack(spacing: 4) {
+                        Group {
                             switch data {
                             case let data as any Note4GI:
-                                Text("\(data.game.giRealmCurrencyAssetSVG)")
-                                    .widgetAccentable(isFullColor)
-                                    .foregroundColor(
-                                        isFullColor ? Color("iconColor.homeCoin", bundle: .main) :
-                                            nil
-                                    )
-                                Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
-                                    .minimumScaleFactor(0.2)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Label {
+                                    Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } icon: {
+                                    Text("\(data.game.giRealmCurrencyAssetSVG)")
+
+                                        .widgetAccentable(isFullColor)
+                                        .foregroundColor(
+                                            isFullColor ? Color("iconColor.homeCoin", bundle: .main) :
+                                                nil
+                                        )
+                                }
                             case let data as Note4HSR:
                                 // Simulated Universe
-                                Text("\(data.game.hsrSimulatedUniverseAssetSVG)")
-                                    .widgetAccentable(isFullColor)
-                                    .foregroundColor(
-                                        isFullColor ? Color(
-                                            "iconColor.homeCoin",
-                                            bundle: .main
-                                        ) : nil
-                                    )
-                                let currentScore = data.simulatedUniverseInfo.currentScore
-                                let maxScore = data.simulatedUniverseInfo.maxScore
-                                let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
-                                Text(verbatim: "\(ratio)%")
-                                    .minimumScaleFactor(0.2)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Label {
+                                    let currentScore = data.simulatedUniverseInfo.currentScore
+                                    let maxScore = data.simulatedUniverseInfo.maxScore
+                                    let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
+                                    Text(verbatim: "\(ratio)%")
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } icon: {
+                                    Text("\(data.game.hsrSimulatedUniverseAssetSVG)")
+
+                                        .widgetAccentable(isFullColor)
+                                        .foregroundColor(
+                                            isFullColor ? Color(
+                                                "iconColor.homeCoin",
+                                                bundle: .main
+                                            ) : nil
+                                        )
+                                }
                             case let data as Note4ZZZ:
                                 // VHS Store.
-                                let isVHSInOperation = data.vhsStoreState.isInOperation
-                                Text("\(data.game.zzzVHSStoreAssetSVG)")
-                                    .widgetAccentable(isFullColor)
-                                    .foregroundColor(isFullColor ? Color(
-                                        "iconColor.homeCoin",
-                                        bundle: .main
-                                    ) : nil)
-                                let stateName = isVHSInOperation ? "icon.zzzVHSStore.inOperation" :
-                                    "icon.zzzVHSStore.sleeping"
-                                Text("\(Image(stateName, bundle: .main))")
-                                    .minimumScaleFactor(0.2)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Label {
+                                    let isVHSInOperation = data.vhsStoreState.isInOperation
+                                    let stateName = isVHSInOperation ? "icon.zzzVHSStore.inOperation" :
+                                        "icon.zzzVHSStore.sleeping"
+                                    Text("\(Image(stateName, bundle: .main))")
+                                        .minimumScaleFactor(0.2)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                } icon: {
+                                    Text("\(data.game.zzzVHSStoreAssetSVG)")
+
+                                        .widgetAccentable(isFullColor)
+                                        .foregroundColor(isFullColor ? Color(
+                                            "iconColor.homeCoin",
+                                            bundle: .main
+                                        ) : nil)
+                                }
                             default: EmptyView()
                             }
                         }
@@ -209,15 +238,7 @@ struct LockScreenAllInfoWidgetView: View {
                     case let data as Note4HSR where data.echoOfWarIntel != nil:
                         if let eowIntel = data.echoOfWarIntel {
                             GridRow(alignment: .lastTextBaseline) {
-                                HStack(spacing: 4) {
-                                    Text("\(data.game.hsrEchoOfWarAssetSVG)")
-                                        .widgetAccentable(isFullColor)
-                                        .foregroundColor(
-                                            isFullColor ? Color(
-                                                "iconColor.weeklyBosses",
-                                                bundle: .main
-                                            ) : nil
-                                        )
+                                Label {
                                     HStack(
                                         alignment: .lastTextBaseline,
                                         spacing: 0
@@ -233,25 +254,27 @@ struct LockScreenAllInfoWidgetView: View {
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                         }
                                     }
+                                } icon: {
+                                    Text("\(data.game.hsrEchoOfWarAssetSVG)")
+
+                                        .widgetAccentable(isFullColor)
+                                        .foregroundColor(
+                                            isFullColor ? Color(
+                                                "iconColor.weeklyBosses",
+                                                bundle: .main
+                                            ) : nil
+                                        )
                                 }
-                                HStack(spacing: 4) {
+                                Label {
+                                    Spacer()
+                                } icon: {
                                     Spacer() // Icon Space
-                                    Spacer() // Text Space
                                 }
                             }
                         }
                     case let data as GeneralNote4GI:
                         GridRow(alignment: .lastTextBaseline) {
-                            HStack(spacing: 4) {
-                                Text("\(data.game.giTransformerAssetSVG)")
-                                    .widgetAccentable(isFullColor)
-                                    .foregroundColor(
-                                        isFullColor ? Color(
-                                            "iconColor.transformer",
-                                            bundle: .main
-                                        ) :
-                                            nil
-                                    )
+                            Label {
                                 let day = Calendar.current.dateComponents(
                                     [.day],
                                     from: Date(),
@@ -274,16 +297,19 @@ struct LockScreenAllInfoWidgetView: View {
                                         .minimumScaleFactor(0.2)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
-                            }
-                            HStack(spacing: 4) {
-                                Text("\(data.game.giTrounceBlossomAssetSVG)")
+                            } icon: {
+                                Text("\(data.game.giTransformerAssetSVG)")
+
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(
                                         isFullColor ? Color(
-                                            "iconColor.weeklyBosses",
+                                            "iconColor.transformer",
                                             bundle: .main
-                                        ) : nil
+                                        ) :
+                                            nil
                                     )
+                            }
+                            Label {
                                 HStack(
                                     alignment: .lastTextBaseline,
                                     spacing: 0
@@ -301,49 +327,67 @@ struct LockScreenAllInfoWidgetView: View {
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                     }
                                 }
+                            } icon: {
+                                Text("\(data.game.giTrounceBlossomAssetSVG)")
+
+                                    .widgetAccentable(isFullColor)
+                                    .foregroundColor(
+                                        isFullColor ? Color(
+                                            "iconColor.weeklyBosses",
+                                            bundle: .main
+                                        ) : nil
+                                    )
                             }
                         }
                     case let data as Note4ZZZ:
                         GridRow(alignment: .lastTextBaseline) {
                             // 零号空洞每周悬赏委托
-                            HStack(spacing: 4) {
+                            Label {
+                                HStack {
+                                    if let bountyIntel = data.hollowZero.bountyCommission {
+                                        Text(verbatim: "\(bountyIntel.num)")
+                                            .minimumScaleFactor(0.2)
+                                        Text(verbatim: " / \(bountyIntel.total)")
+                                            .font(.caption)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    } else {
+                                        Pizza.SupportedGame(dailyNoteResult: result).unavailableAssetSVG
+                                            .minimumScaleFactor(0.2)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                }
+                            } icon: {
                                 Text("\(data.game.zzzBountyAssetSVG)")
+
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(isFullColor ? Color(
                                         "iconColor.transformer",
                                         bundle: .main
                                     ) : nil)
-                                if let bountyIntel = data.hollowZero.bountyCommission {
-                                    Text(verbatim: "\(bountyIntel.num)")
-                                        .minimumScaleFactor(0.2)
-                                    Text(verbatim: " / \(bountyIntel.total)")
-                                        .font(.caption)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                } else {
-                                    Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
-                                        .minimumScaleFactor(0.2)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
                             }
                             // 调查点数
-                            HStack(spacing: 4) {
+                            Label {
+                                HStack {
+                                    if let bountyIntel = data.hollowZero.investigationPoint {
+                                        Text(verbatim: "\(bountyIntel.num)")
+                                            .minimumScaleFactor(0.2)
+                                        Text(verbatim: " / \(bountyIntel.total)")
+                                            .font(.caption)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    } else {
+                                        Pizza.SupportedGame(dailyNoteResult: result).unavailableAssetSVG
+                                            .minimumScaleFactor(0.2)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                }
+                            } icon: {
                                 Text("\(data.game.zzzInvestigationPointsAssetSVG)")
+
                                     .widgetAccentable(isFullColor)
                                     .foregroundColor(isFullColor ? Color(
                                         "iconColor.weeklyBosses",
                                         bundle: .main
                                     ) : nil)
-                                if let bountyIntel = data.hollowZero.investigationPoint {
-                                    Text(verbatim: "\(bountyIntel.num)")
-                                        .minimumScaleFactor(0.2)
-                                    Text(verbatim: " / \(bountyIntel.total)")
-                                        .font(.caption)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                } else {
-                                    Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
-                                        .minimumScaleFactor(0.2)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
                             }
                         }
                     default: EmptyView()
