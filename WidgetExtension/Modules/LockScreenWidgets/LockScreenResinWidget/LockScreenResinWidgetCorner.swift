@@ -35,7 +35,7 @@ struct LockScreenResinWidgetCorner: View {
         Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
             .resizable()
             .scaledToFit()
-            .padding(4)
+            .padding(3)
             .widgetLabel(text)
     }
 }

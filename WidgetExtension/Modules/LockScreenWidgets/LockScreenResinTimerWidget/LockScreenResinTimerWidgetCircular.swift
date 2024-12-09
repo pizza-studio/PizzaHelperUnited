@@ -21,7 +21,7 @@ struct LockScreenResinTimerWidgetCircular: View {
         case .fullColor:
             ZStack {
                 AccessoryWidgetBackground()
-                VStack(spacing: 3) {
+                VStack(spacing: -0.5) {
                     LinearGradient(
                         colors: [
                             .init("iconColor.resin.dark"),
@@ -36,13 +36,13 @@ struct LockScreenResinTimerWidgetCircular: View {
                             .resizable()
                             .scaledToFit()
                     )
-                    .frame(height: 10)
+                    .frame(height: 9)
                     switch result {
                     case let .success(data):
                         let staminaIntel = data.staminaIntel
                         let timeOnFinish = data.staminaFullTimeOnFinish
-                        VStack(spacing: 1) {
-                            if staminaIntel.finished != staminaIntel.all {
+                        if staminaIntel.finished != staminaIntel.all {
+                            VStack(spacing: -2) {
                                 Text(
                                     Date(
                                         timeIntervalSinceNow: TimeInterval
@@ -54,7 +54,13 @@ struct LockScreenResinTimerWidgetCircular: View {
                                 .font(.system(.body, design: .monospaced))
                                 .minimumScaleFactor(0.1)
                                 .widgetAccentable()
-                                .frame(width: 50)
+                                .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in
+                                    #if os(watchOS)
+                                    length * 0.8
+                                    #else
+                                    length * 0.6
+                                    #endif
+                                }
                                 Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         .body,
@@ -64,17 +70,18 @@ struct LockScreenResinTimerWidgetCircular: View {
                                     .foregroundColor(
                                         Color("textColor.originResin", bundle: .main)
                                     )
-                            } else {
-                                Text(verbatim: "\(staminaIntel.finished)")
-                                    .font(.system(
-                                        size: 20,
-                                        weight: .medium,
-                                        design: .rounded
-                                    ))
-                                    .foregroundColor(
-                                        Color("textColor.originResin", bundle: .main)
-                                    )
+                                    .minimumScaleFactor(0.1)
                             }
+                        } else {
+                            Text(verbatim: "\(staminaIntel.finished)")
+                                .font(.system(
+                                    size: 20,
+                                    weight: .medium,
+                                    design: .rounded
+                                ))
+                                .foregroundColor(
+                                    Color("textColor.originResin", bundle: .main)
+                                )
                         }
                     case .failure:
                         Image(systemSymbol: .ellipsis)
@@ -88,17 +95,17 @@ struct LockScreenResinTimerWidgetCircular: View {
         default:
             ZStack {
                 AccessoryWidgetBackground()
-                VStack(spacing: 3) {
+                VStack(spacing: -0.5) {
                     Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 10)
+                        .frame(height: 9)
                     switch result {
                     case let .success(data):
                         let staminaIntel = data.staminaIntel
                         let timeOnFinish = data.staminaFullTimeOnFinish
-                        VStack(spacing: 1) {
-                            if staminaIntel.finished != staminaIntel.all {
+                        if staminaIntel.finished != staminaIntel.all {
+                            VStack(spacing: -2) {
                                 Text(
                                     Date(
                                         timeIntervalSinceNow: TimeInterval
@@ -110,21 +117,28 @@ struct LockScreenResinTimerWidgetCircular: View {
                                 .font(.system(.body, design: .monospaced))
                                 .minimumScaleFactor(0.1)
                                 .widgetAccentable()
-                                .frame(width: 50)
+                                .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in
+                                    #if os(watchOS)
+                                    length * 0.8
+                                    #else
+                                    length * 0.6
+                                    #endif
+                                }
                                 Text(verbatim: "\(staminaIntel.finished)")
                                     .font(.system(
                                         .body,
                                         design: .rounded,
                                         weight: .medium
                                     ))
-                            } else {
-                                Text(verbatim: "\(staminaIntel.finished)")
-                                    .font(.system(
-                                        size: 20,
-                                        weight: .medium,
-                                        design: .rounded
-                                    ))
+                                    .minimumScaleFactor(0.1)
                             }
+                        } else {
+                            Text(verbatim: "\(staminaIntel.finished)")
+                                .font(.system(
+                                    size: 20,
+                                    weight: .medium,
+                                    design: .rounded
+                                ))
                         }
                     case .failure:
                         Image(systemSymbol: .ellipsis)

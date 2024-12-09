@@ -44,7 +44,9 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
                         let value = "\(coinIntel.currentHomeCoin)"
                         Text(verbatim: value)
                             .font(.title3)
+                        #if !os(watchOS)
                             .fontWidth(value.count > 3 ? .condensed : .standard)
+                        #endif
                             .minimumScaleFactor(0.1)
                     }
                     .gaugeStyle(
@@ -55,6 +57,7 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
                 default:
                     Text(verbatim: "WRONG\nGAME")
                         .fontWidth(.compressed)
+                        .multilineTextAlignment(.center)
                         .fixedSize()
                         .minimumScaleFactor(0.2)
                 }
@@ -105,6 +108,7 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
                 default:
                     Text(verbatim: "WRONG\nGAME")
                         .fontWidth(.compressed)
+                        .multilineTextAlignment(.center)
                         .fixedSize()
                         .minimumScaleFactor(0.2)
                 }
