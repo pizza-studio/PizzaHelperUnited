@@ -50,6 +50,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                         weight: .medium,
                                         design: .rounded
                                     ))
+                                    .minimumScaleFactor(0.1)
                                     .widgetAccentable()
                                 let dateString: String = {
                                     let formatter = DateFormatter()
@@ -112,6 +113,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                         weight: .medium,
                                         design: .rounded
                                     ))
+                                    .minimumScaleFactor(0.1)
                                     .widgetAccentable()
                                 let dateString: String = {
                                     let formatter = DateFormatter()

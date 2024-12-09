@@ -33,7 +33,9 @@ struct LockScreenDailyTaskWidgetCircular: View {
                     Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 } else {
-                    Text(verbatim: "WRONG GAME").fixedSize().fontWidth(.compressed)
+                    Text(verbatim: "WRONG\nGAME")
+                        .fontWidth(.compressed)
+                        .multilineTextAlignment(.center)
                         .minimumScaleFactor(0.2)
                 }
             case .failure:

@@ -35,7 +35,9 @@ struct LockScreenHomeCoinWidgetCircular: View {
                     Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 default:
-                    Text(verbatim: "WRONG GAME").fixedSize().fontWidth(.compressed)
+                    Text(verbatim: "WRONG\nGAME")
+                        .fontWidth(.compressed)
+                        .multilineTextAlignment(.center)
                         .minimumScaleFactor(0.2)
                 }
             case .failure:

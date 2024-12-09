@@ -28,7 +28,10 @@ extension PZWidgets {
         LockScreenResinTimerWidget()
         LockScreenResinFullTimeWidget()
         LockScreenHomeCoinWidget()
+        #if !os(watchOS)
+        // 洞天宝钱的环形进度条。这厮在 watchOS 系统下有莫名其妙的排版八哥，暂时排除。
         AlternativeLockScreenHomeCoinWidget()
+        #endif
         LockScreenDailyTaskWidget()
         LockScreenExpeditionWidget()
         AlternativeLockScreenResinWidget()
