@@ -2,7 +2,11 @@
 
 This document only addresses questions not covered by *The Pizza Helper Privacy Policy* and *The Pizza Helper End-User License Agreement and Disclaimer*.
 
-## // Security Concerns
+## // Security Concerns and Usability of App Features
+
+#### Q: How to use widgets? Are widgets available for watchOS?
+
+The Pizza Helper introduced watchOS widgets since v5.0.3. For information on how to use widgets on Apple devices, please consult Apple Support. Please note that widget functionalities may vary across different operating systems and their annual updates.
 
 #### Q: Is there an Android version of The Pizza Helper?
 
@@ -25,6 +29,17 @@ As mentioned in *The Pizza Helper Privacy Policy*, players' gacha records are st
 - Any other digital devices logged into that Apple ID with iCloud Drive enabled and The Pizza Helper installed.
 
 Although The Pizza Helper allows users to import and export gacha records, the development team does not recommend sharing these records to any third-party websites that may disclose statistical results without permission.
+
+#### Q: Which online services of The Pizza Helper might be affected by external factors beyond our control?
+
+At least the following types of services could be affected:
+
+1. **HoYoLAB or miHoYo Community:** Real-time notes, personal battle reports, ledgers, game statistics, gacha record retrieval, character inventory lists.
+2. **Enka Networks:** Character showcases.
+3. **Yatta.moe:** Genshin Impact daily materials.
+4. **Ennead.cc:** Star Rail daily HoYoLAB news (plain-text only).
+
+Each supported game, during its major version updates, often comes with temporary unavailability of the aforementioned services. Especially Enka Networks, each version maintenance typically takes one to two days.
 
 ## // App and Development Team
 
