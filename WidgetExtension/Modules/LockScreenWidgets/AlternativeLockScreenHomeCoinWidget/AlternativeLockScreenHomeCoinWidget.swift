@@ -17,7 +17,10 @@ struct AlternativeLockScreenHomeCoinWidget: Widget {
         AppIntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.RealmCurrency")
+            provider: LockScreenWidgetProvider(
+                games: [.genshinImpact],
+                recommendationsTag: "watch.info.RealmCurrency"
+            )
         ) { entry in
             AlternativeLockScreenHomeCoinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
