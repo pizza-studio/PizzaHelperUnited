@@ -19,12 +19,6 @@ struct LockScreenResinWidgetInline: View {
         switch result {
         case let .success(data):
             let staminaStatus = data.staminaIntel
-            // Only SF Symbols are allowed image objects in this widget.
-            let sfSymbol: SFSymbol = switch data.game {
-            case .genshinImpact: .moonFill
-            case .starRail: .line3CrossedSwirlCircleFill
-            case .zenlessZone: .minusPlusAndFluidBatteryblock
-            }
             let trailingTextStr = PZWidgets.intervalFormatter.string(
                 from: TimeInterval.sinceNow(to: data.staminaFullTimeOnFinish)
             )!
@@ -33,7 +27,18 @@ struct LockScreenResinWidgetInline: View {
             } else {
                 Text(verbatim: " \(staminaStatus.finished)  \(trailingTextStr)")
             }
+            // In case of iOS, only SF Symbols are allowed image objects.
+            // In case of watchOS, only texts are allowed as the representation of this widget.
+            #if os(watchOS)
+            Text(verbatim: data.game.localizedShortName) + textDisplay
+            #else
+            let sfSymbol: SFSymbol = switch data.game {
+            case .genshinImpact: .moonFill
+            case .starRail: .line3CrossedSwirlCircleFill
+            case .zenlessZone: .minusPlusAndFluidBatteryblock
+            }
             Text("\(Image(systemSymbol: sfSymbol))") + textDisplay
+            #endif
         case .failure:
             Text(verbatim: "…")
         }
