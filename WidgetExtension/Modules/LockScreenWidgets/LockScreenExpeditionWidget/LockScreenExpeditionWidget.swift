@@ -17,7 +17,10 @@ struct LockScreenExpeditionWidget: Widget {
         AppIntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.expedition")
+            provider: LockScreenWidgetProvider(
+                games: [.genshinImpact, .starRail],
+                recommendationsTag: "watch.info.expedition"
+            )
         ) { entry in
             LockScreenExpeditionWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }

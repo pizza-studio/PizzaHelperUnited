@@ -46,9 +46,26 @@ struct AccountAndShowWhichInfoIntentEntry: TimelineEntry {
 /// This struct actually "inherits" from LockScreenWidgetProvider with extra options.
 @available(macOS, unavailable)
 struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
+    // MARK: Lifecycle
+
+    public init(
+        games: Set<Pizza.SupportedGame>? = nil,
+        recommendationsTag: LocalizedStringResource
+    ) {
+        var games = games
+        if let givenGames = games, givenGames.isEmpty {
+            games = nil
+        }
+        self.games = games ?? .init(Pizza.SupportedGame.allCases)
+        self.recommendationsTag = recommendationsTag
+    }
+
+    // MARK: Internal
+
     typealias Entry = AccountAndShowWhichInfoIntentEntry
     typealias Intent = SelectAccountAndShowWhichInfoIntent
 
+    let games: Set<Pizza.SupportedGame>
     // 填入在手表上显示的Widget配置内容，例如："的原粹树脂"
     let recommendationsTag: LocalizedStringResource
 
@@ -58,20 +75,21 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
 
     func recommendations() -> [AppIntentRecommendation<Intent>] {
         #if os(watchOS)
-        let configs = (try? modelContext.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable))
-        return configs?.map { config in
+        let configs = (try? modelContext.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
+        return configs.compactMap { config in
             let intent = Intent()
             intent.account = .init(
                 id: config.uuid.uuidString,
                 displayString: config.name + "\n(\(config.uidWithGame))"
             )
+            if !games.contains(config.game) { return nil }
             return .init(
                 intent: intent,
                 description: config.name + "\n\(config.uidWithGame)\n" + String(
                     localized: recommendationsTag
                 )
             )
-        } ?? []
+        }
         #else
         return []
         #endif
