@@ -7,6 +7,7 @@ import Foundation
 
 // MARK: - SelectOnlyAccountIntent
 
+// Only for watchOS and iOS_Lock_Screen.
 public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent {
     // MARK: Lifecycle
 
@@ -19,8 +20,9 @@ public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, Cus
     public static let title: LocalizedStringResource = "intent.name.selectLocalProfileOnly"
     public static let description = IntentDescription("intent.description.pickTheLocalProfileForThisWidget")
 
-    public static var parameterSummary: some ParameterSummary { Summary() }
     public static var isDiscoverable: Bool { false }
+
+    public static var parameterSummary: some ParameterSummary { Summary() }
 
     @Parameter(title: "intent.field.localeProfile") public var account: AccountIntentAppEntity?
 
@@ -32,6 +34,7 @@ public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, Cus
 
 // MARK: - SelectAccountIntent
 
+// Only for iOS Springboard Widgets and macOS Desktop Widgets.
 public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent {
     // MARK: Lifecycle
 
@@ -44,8 +47,24 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
     public static let title: LocalizedStringResource = "intent.name.selectLocalProfile"
     public static let description = IntentDescription("intent.description.pickTheLocalProfileForThisWidget")
 
-    public static var parameterSummary: some ParameterSummary { Summary() }
     public static var isDiscoverable: Bool { false }
+
+    public static var parameterSummary: some ParameterSummary {
+        When(\.$randomBackground, .equalTo, true) {
+            // Omitting `chosenBackgrounds`.
+            Summary {
+                \.$accountIntent
+                \.$randomBackground
+                \.$isDarkModeRespected
+                \.$echoOfWarDisplayMethod
+                \.$trounceBlossomDisplayMethod
+                \.$showTransformer
+                \.$showMaterialsInLargeSizeWidget
+            }
+        } otherwise: {
+            Summary()
+        }
+    }
 
     @Parameter(title: "intent.field.localeProfile") public var accountIntent: AccountIntentAppEntity?
 
@@ -79,6 +98,7 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
 
 // MARK: - SelectAccountAndShowWhichInfoIntent
 
+// Only for watchOS and iOS_Lock_Screen.
 public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent {
     // MARK: Lifecycle
 
@@ -91,8 +111,9 @@ public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfiguratio
     public static let title: LocalizedStringResource = "intent.name.selectLocalProfileWithExtraConfig"
     public static let description = IntentDescription("intent.description.pickTheLocalProfileForThisWidget")
 
-    public static var parameterSummary: some ParameterSummary { Summary() }
     public static var isDiscoverable: Bool { false }
+
+    public static var parameterSummary: some ParameterSummary { Summary() }
 
     @Parameter(title: "intent.field.localeProfile") public var account: AccountIntentAppEntity?
 
