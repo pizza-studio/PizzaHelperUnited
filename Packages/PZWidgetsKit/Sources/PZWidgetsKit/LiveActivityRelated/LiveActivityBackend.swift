@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-#if canImport(ActivityKit)
+#if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
 import ActivityKit
 #endif
 @preconcurrency import Defaults
@@ -18,7 +18,7 @@ public struct EnableLiveActivityButton: View {
     // MARK: Lifecycle
 
     public init?(for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol) {
-        #if canImport(ActivityKit)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
         self.account = profile
         self.dailyNote = dailyNote
         #else
@@ -58,7 +58,7 @@ public struct EnableLiveActivityButton: View {
     private let dailyNote: any DailyNoteProtocol
 }
 
-#if canImport(ActivityKit)
+#if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
 extension ResinRecoveryAttributes: ActivityAttributes {}
 #endif
 
@@ -159,14 +159,14 @@ public final class ResinRecoveryActivityController: Sendable {
 
     public static let shared: ResinRecoveryActivityController = .init()
 
-    #if canImport(ActivityKit)
+    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
     public var currentActivities: [Activity<ResinRecoveryAttributes>] {
         Activity<ResinRecoveryAttributes>.activities
     }
     #endif
 
     public var allowLiveActivity: Bool {
-        #if canImport(ActivityKit)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
         return ActivityAuthorizationInfo().areActivitiesEnabled
         #else
         return false
@@ -205,7 +205,7 @@ public final class ResinRecoveryActivityController: Sendable {
     }
 
     public func createResinRecoveryTimerActivity(for profile: PZProfileSendable, data: some DailyNoteProtocol) throws {
-        #if canImport(ActivityKit)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
         guard allowLiveActivity else {
             throw CreateLiveActivityError.notAllowed
         }
@@ -254,7 +254,7 @@ public final class ResinRecoveryActivityController: Sendable {
     }
 
     public func updateResinRecoveryTimerActivity(for profile: PZProfileSendable, data: some DailyNoteProtocol) {
-        #if canImport(ActivityKit)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
         Task {
             let filtered = currentActivities.filter { activity in
                 activity.attributes.accountUUID == profile.uuid
@@ -282,7 +282,7 @@ public final class ResinRecoveryActivityController: Sendable {
     }
 
     public func endActivity(for account: PZProfileSendable) {
-        #if canImport(ActivityKit)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
         Task {
             let filtered = currentActivities.filter { activity in
                 activity.attributes.accountUUID == account.uuid
@@ -295,7 +295,7 @@ public final class ResinRecoveryActivityController: Sendable {
     }
 
     public func endAllActivity() {
-        #if canImport(ActivityKit)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
         Task {
             for activity in currentActivities {
                 await activity.end(nil, dismissalPolicy: .default)
