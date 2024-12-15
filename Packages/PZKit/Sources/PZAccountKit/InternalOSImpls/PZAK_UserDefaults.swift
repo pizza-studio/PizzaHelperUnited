@@ -26,6 +26,11 @@ extension Defaults.Keys {
         default: [:],
         suite: .profileSuite // !! IMPORTANT !!
     )
+    public static let cachedDailyNotes = Key<[String: CachedJSON]>(
+        "cachedDailyNotes",
+        default: [:],
+        suite: .profileSuite // !! IMPORTANT !!
+    )
 }
 
 // MARK: - PZProfileSendable + _DefaultsSerializable

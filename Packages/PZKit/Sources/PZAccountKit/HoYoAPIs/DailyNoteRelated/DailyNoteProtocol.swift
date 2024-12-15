@@ -7,7 +7,21 @@ import PZBaseKit
 import SwiftUI
 
 extension PZProfileSendable {
-    public func getDailyNote() async throws -> DailyNoteProtocol {
+    public func getDailyNote(cached returnCachedResult: Bool = false) async throws -> DailyNoteProtocol {
+        handleCachedResults: if returnCachedResult {
+            let possibleResult: DailyNoteProtocol? = switch game {
+            case .genshinImpact:
+                DailyNoteCacheSputnik<GeneralNote4GI>.getCache(
+                    uidWithGame: uidWithGame
+                ) ?? DailyNoteCacheSputnik<WidgetNote4GI>.getCache(
+                    uidWithGame: uidWithGame
+                )
+            case .starRail: DailyNoteCacheSputnik<RealtimeNote4HSR>.getCache(uidWithGame: uidWithGame)
+            case .zenlessZone: DailyNoteCacheSputnik<Note4ZZZ>.getCache(uidWithGame: uidWithGame)
+            }
+            guard let possibleResult else { break handleCachedResults }
+            return possibleResult
+        }
         await HoYo.waitFor300ms()
         do {
             let result = switch game {
@@ -58,7 +72,7 @@ extension Pizza.SupportedGame {
 
 // MARK: - DailyNoteProtocol
 
-public protocol DailyNoteProtocol: Sendable {
+public protocol DailyNoteProtocol: Sendable, DecodableFromMiHoYoAPIJSONResult {
     static var game: Pizza.SupportedGame { get }
     static func exampleData() -> Self
 }
