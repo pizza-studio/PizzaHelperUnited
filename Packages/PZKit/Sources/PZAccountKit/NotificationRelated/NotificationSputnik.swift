@@ -7,8 +7,6 @@ import Foundation
 import PZBaseKit
 @preconcurrency import UserNotifications
 
-@MainActor private var center: UNUserNotificationCenter { PZNotificationCenter.center }
-
 extension PZNotificationCenter {
     public static func refreshScheduledNotifications(
         for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol
@@ -106,78 +104,90 @@ extension NotificationSputnik {
     // MARK: Internal
 
     func refreshPendingNotifications() {
-        Task { @MainActor in
-            do {
-                // 如果没有权限的话，会先试图触发请求权限。
-                let notificationAllowedByOS = (try? await PZNotificationCenter.requestAuthorization()) ?? false
-                // 先清空既有的通知，包括可能已经过期的排定通知。
-                PZNotificationCenter.deleteDailyNoteNotification(for: profile)
-                // 然后检查此账号是否启用了通知，否则直接中断。
-                guard notificationAllowedByOS, profile.allowNotification else { return }
-                // STAMINA
-                if options.allowStaminaNotification {
-                    try await scheduleStaminaFullNotification()
-                    if case let .notifyAt(_, hour, minute) = options.giKatheryneNotificationSetting {
-                        try await scheduleGIKatheryneRewardsNotification(hour: hour, minute: minute)
+        Task(priority: .background) {
+            var requestsBuffer = [UNNotificationRequest?]()
+            // 如果没有权限的话，会先试图触发请求权限。
+            let notificationAllowedByOS = (try? await PZNotificationCenter.requestAuthorization()) ?? false
+            // 先清空既有的通知，包括可能已经过期的排定通知。
+            PZNotificationCenter.deleteDailyNoteNotification(for: profile)
+            // 然后检查此账号是否启用了通知，否则直接中断。
+            guard notificationAllowedByOS, profile.allowNotification else { return }
+            // STAMINA
+            if options.allowStaminaNotification {
+                await requestsBuffer += scheduleStaminaFullNotification
+                if case let .notifyAt(_, hour, minute) = options.giKatheryneNotificationSetting {
+                    await requestsBuffer += scheduleGIKatheryneRewardsNotification(hour: hour, minute: minute)
+                }
+                // 去除可能重复的通知阈值。
+                var thresholds = options.staminaAdditionalNotificationThresholds
+                    .byGame(profile.game).map(\.threshold)
+                thresholds = Array(Set(thresholds)) // Already sorted while being filtered by game.
+                for number in thresholds {
+                    await requestsBuffer += scheduleStaminaNotification(to: number)
+                }
+            }
+            // EXPEDITION
+            if options.allowExpeditionNotification, dailyNote.hasExpeditions {
+                switch options.expeditionNotificationSetting {
+                case .onlySummary:
+                    await requestsBuffer += scheduleExpeditionSummaryNotification()
+                case .forEachExpedition:
+                    for (index, expedition) in dailyNote.expeditionTasks.enumerated() {
+                        // Swift 的 .enumerated() 以 0 作为第一个值，所以在这里需要 +1。
+                        await requestsBuffer += scheduleEachExpeditionNotification(
+                            expedition: expedition,
+                            index: index + 1
+                        )
                     }
-                    // 去除可能重复的通知阈值。
-                    var thresholds = options.staminaAdditionalNotificationThresholds
-                        .byGame(profile.game).map(\.threshold)
-                    thresholds = Array(Set(thresholds)) // Already sorted while being filtered by game.
-                    for number in thresholds {
-                        try await scheduleStaminaNotification(to: number)
-                    }
                 }
-                // EXPEDITION
-                if options.allowExpeditionNotification, dailyNote.hasExpeditions {
-                    switch options.expeditionNotificationSetting {
-                    case .onlySummary:
-                        try await scheduleExpeditionSummaryNotification()
-                    case .forEachExpedition:
-                        for (index, expedition) in dailyNote.expeditionTasks.enumerated() {
-                            // Swift 的 .enumerated() 以 0 作为第一个值，所以在这里需要 +1。
-                            try await scheduleEachExpeditionNotification(expedition: expedition, index: index + 1)
-                        }
-                    }
+            }
+            // DAILY TASK
+            if case let .notifyAt(_, hour, minute) = options.dailyTaskNotificationSetting {
+                await requestsBuffer += scheduleDailyTaskNotification(hour: hour, minute: minute)
+            }
+            // REALM CURRENCY (GI)
+            if options.allowGIRealmCurrencyNotification {
+                await requestsBuffer += scheduleGIRealmCurrencyNotification()
+            }
+            // PARAMETRIC TRANSFORMER (GI)
+            if options.allowGITransformerNotification {
+                await requestsBuffer += scheduleGITransformerNotification()
+            }
+            // TROUNCE BLOSSOM RESIN DISCOUNTS (GI)
+            if case let .notifyAt(weekday, hour, minute) = options.giTrounceBlossomNotificationSetting {
+                await requestsBuffer += scheduleGITrounceBlossomNotification(
+                    weekday: Swift.max(0, Swift.min(7, weekday)),
+                    hour: hour,
+                    minute: minute
+                )
+            }
+            // ECHO OF WAR (HSR)
+            if case let .notifyAt(weekday, hour, minute) = options.hsrEchoOfWarNotificationSetting {
+                await requestsBuffer += scheduleHSREchoOfWarNotification(
+                    weekday: Swift.max(0, Swift.min(7, weekday)),
+                    hour: hour,
+                    minute: minute
+                )
+            }
+            // SIMULATED UNIVERSE (HSR)
+            if case let .notifyAt(weekday, hour, minute) = options.hsrSimulUnivNotificationSetting {
+                await requestsBuffer += scheduleHSRSimulatedUniverseNotification(
+                    weekday: Swift.max(0, Swift.min(7, weekday)),
+                    hour: hour,
+                    minute: minute
+                )
+            }
+            // Inserting Notifications. This must be done on the MainActor
+            let insertionTask = await Task { @MainActor in
+                for x in requestsBuffer {
+                    guard let x else { continue }
+                    try await PZNotificationCenter.center.add(x)
                 }
-                // DAILY TASK
-                if case let .notifyAt(_, hour, minute) = options.dailyTaskNotificationSetting {
-                    try await scheduleDailyTaskNotification(hour: hour, minute: minute)
-                }
-                // REALM CURRENCY (GI)
-                if options.allowGIRealmCurrencyNotification {
-                    try await scheduleGIRealmCurrencyNotification()
-                }
-                // PARAMETRIC TRANSFORMER (GI)
-                if options.allowGITransformerNotification {
-                    try await scheduleGITransformerNotification()
-                }
-                // TROUNCE BLOSSOM RESIN DISCOUNTS (GI)
-                if case let .notifyAt(weekday, hour, minute) = options.giTrounceBlossomNotificationSetting {
-                    try await scheduleGITrounceBlossomNotification(
-                        weekday: Swift.max(0, Swift.min(7, weekday)),
-                        hour: hour,
-                        minute: minute
-                    )
-                }
-                // ECHO OF WAR (HSR)
-                if case let .notifyAt(weekday, hour, minute) = options.hsrEchoOfWarNotificationSetting {
-                    try await scheduleHSREchoOfWarNotification(
-                        weekday: Swift.max(0, Swift.min(7, weekday)),
-                        hour: hour,
-                        minute: minute
-                    )
-                }
-                // SIMULATED UNIVERSE (HSR)
-                if case let .notifyAt(weekday, hour, minute) = options.hsrSimulUnivNotificationSetting {
-                    try await scheduleHSRSimulatedUniverseNotification(
-                        weekday: Swift.max(0, Swift.min(7, weekday)),
-                        hour: hour,
-                        minute: minute
-                    )
-                }
-            } catch {
-                print("[PZHelper.NotificationException] \(error)")
+            }.result
+            switch insertionTask {
+            case .success: return
+            case let .failure(theError):
+                print("[PZHelper.NotificationException] \(theError)")
             }
         }
     }
@@ -191,12 +201,11 @@ extension NotificationSputnik {
     }
 
     /// 玩家体力，只要不满载就不提醒。
-    @MainActor
-    private func scheduleStaminaFullNotification() async throws {
+    private func scheduleStaminaFullNotification() async -> UNNotificationRequest? {
         let timeOnFinish = dailyNote.staminaFullTimeOnFinish
         guard timeOnFinish > .now else {
             await deleteNotification(.staminaFull)
-            return
+            return nil
         }
         let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date.now.timeIntervalSince1970
         let content = UNMutableNotificationContent()
@@ -213,14 +222,13 @@ extension NotificationSputnik {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: remainingSecs, repeats: false)
         let id = getID(for: .staminaFull)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 玩家体力，按阈值提醒。
-    @MainActor
-    private func scheduleStaminaNotification(to threshold: Int) async throws {
+    private func scheduleStaminaNotification(to threshold: Int) async -> UNNotificationRequest? {
         let information = dailyNote.staminaIntel
-        guard threshold <= information.all else { return } // 阈值不得高于满载值。
+        guard threshold <= information.all else { return nil } // 阈值不得高于满载值。
         let timeOnFinish = dailyNote.staminaFullTimeOnFinish
         let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date.now.timeIntervalSince1970
         let content = UNMutableNotificationContent()
@@ -239,21 +247,20 @@ extension NotificationSputnik {
         let timeInterval = remainingSecs - Double(information.all - threshold) * dailyNote.eachStaminaRecoveryTime
         guard timeInterval > 0 else {
             await deleteNotification(.staminaPerThreshold)
-            return
+            return nil
         }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         let id = getID(for: .staminaPerThreshold, extraID: threshold.description)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 星穹铁道的话，恐仅对米游社账号有效，因为国际服的星穹铁道的探索派遣没有预计完成时间。
-    @MainActor
-    private func scheduleExpeditionSummaryNotification() async throws {
-        guard dailyNote.hasExpeditions else { return }
+    private func scheduleExpeditionSummaryNotification() async -> UNNotificationRequest? {
+        guard dailyNote.hasExpeditions else { return nil }
         guard let eta = dailyNote.expeditionTotalETA, eta.timeIntervalSinceNow > 0 else {
             await deleteNotification(.expeditionSummary)
-            return
+            return nil
         }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
@@ -269,14 +276,17 @@ extension NotificationSputnik {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: eta.timeIntervalSinceNow, repeats: false)
         let id = getID(for: .expeditionSummary)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 原神没有探索派遣任务名称，而星穹铁道的探索派遣任务名称无法本地化，所以用队伍编号代替。
-    @MainActor
-    private func scheduleEachExpeditionNotification(expedition: ExpeditionTask, index: Int) async throws {
-        guard dailyNote.hasExpeditions else { return }
-        guard let eta = expedition.timeOnFinish, eta.timeIntervalSinceNow > 0 else { return }
+    private func scheduleEachExpeditionNotification(
+        expedition: any ExpeditionTask,
+        index: Int
+    ) async
+        -> UNNotificationRequest? {
+        guard dailyNote.hasExpeditions else { return nil }
+        guard let eta = expedition.timeOnFinish, eta.timeIntervalSinceNow > 0 else { return nil }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
@@ -292,17 +302,16 @@ extension NotificationSputnik {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: eta.timeIntervalSinceNow, repeats: false)
         let id = getID(for: .expeditionEach)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 每日任务。
-    @MainActor
-    private func scheduleDailyTaskNotification(hour: Int, minute: Int) async throws {
-        guard dailyNote.hasDailyTaskIntel else { return }
+    private func scheduleDailyTaskNotification(hour: Int, minute: Int) async -> UNNotificationRequest? {
+        guard dailyNote.hasDailyTaskIntel else { return nil }
         let sitrep = dailyNote.dailyTaskCompletionStatus
         guard !sitrep.isAccomplished else {
             await deleteNotification(.dailyTask)
-            return
+            return nil
         }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
@@ -321,21 +330,20 @@ extension NotificationSputnik {
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let id = getID(for: .dailyTask)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 凯瑟琳每日奖励。
-    @MainActor
-    private func scheduleGIKatheryneRewardsNotification(hour: Int, minute: Int) async throws {
+    private func scheduleGIKatheryneRewardsNotification(hour: Int, minute: Int) async -> UNNotificationRequest? {
         guard profile.game == .genshinImpact else {
             await deleteNotification(.giRewardsFromKatheryne)
-            return
+            return nil
         }
-        guard dailyNote.hasDailyTaskIntel else { return }
+        guard dailyNote.hasDailyTaskIntel else { return nil }
         // 只有尚未领取时才提醒。
         guard !(dailyNote.claimedRewardsFromKatheryne ?? true) else {
             await deleteNotification(.giRewardsFromKatheryne)
-            return
+            return nil
         }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
@@ -352,17 +360,16 @@ extension NotificationSputnik {
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let id = getID(for: .giRewardsFromKatheryne)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 洞天宝钱。
-    @MainActor
-    private func scheduleGIRealmCurrencyNotification() async throws {
+    private func scheduleGIRealmCurrencyNotification() async -> UNNotificationRequest? {
         guard profile.game == .genshinImpact else {
             await deleteNotification(.giRealmCurrency)
-            return
+            return nil
         }
-        guard let eta = dailyNote.realmCurrencyIntel?.fullTime, eta.timeIntervalSinceNow > 0 else { return }
+        guard let eta = dailyNote.realmCurrencyIntel?.fullTime, eta.timeIntervalSinceNow > 0 else { return nil }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
@@ -377,20 +384,19 @@ extension NotificationSputnik {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: eta.timeIntervalSinceNow, repeats: false)
         let id = getID(for: .giRealmCurrency)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 参量质变仪。
-    @MainActor
-    private func scheduleGITransformerNotification() async throws {
+    private func scheduleGITransformerNotification() async -> UNNotificationRequest? {
         guard profile.game == .genshinImpact else {
             await deleteNotification(.giParametricTransformer)
-            return
+            return nil
         }
-        guard let intel = dailyNote.parametricTransformerIntel else { return }
-        guard intel.obtained else { return }
+        guard let intel = dailyNote.parametricTransformerIntel else { return nil }
+        guard intel.obtained else { return nil }
         let eta = intel.recoveryTime
-        guard eta.timeIntervalSinceNow > 0 else { return }
+        guard eta.timeIntervalSinceNow > 0 else { return nil }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
@@ -405,20 +411,24 @@ extension NotificationSputnik {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: eta.timeIntervalSinceNow, repeats: false)
         let id = getID(for: .giParametricTransformer)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 原神征讨之花树脂折扣，用光了的话不再提醒。
-    @MainActor
-    private func scheduleGITrounceBlossomNotification(weekday: Int, hour: Int, minute: Int) async throws {
+    private func scheduleGITrounceBlossomNotification(
+        weekday: Int,
+        hour: Int,
+        minute: Int
+    ) async
+        -> UNNotificationRequest? {
         guard profile.game == .genshinImpact else {
             await deleteNotification(.giTrounceBlossomResinDiscounts)
-            return
+            return nil
         }
-        guard let trounceBlossom = dailyNote.trounceBlossomIntel else { return }
+        guard let trounceBlossom = dailyNote.trounceBlossomIntel else { return nil }
         guard !trounceBlossom.allDiscountsAreUsedUp else {
             await deleteNotification(.giTrounceBlossomResinDiscounts)
-            return
+            return nil
         }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
@@ -438,20 +448,24 @@ extension NotificationSputnik {
         )
         let id = getID(for: .giTrounceBlossomResinDiscounts)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 星穹铁道历战馀响奖励剩余次数，领光了的话不再提醒。
-    @MainActor
-    private func scheduleHSREchoOfWarNotification(weekday: Int, hour: Int, minute: Int) async throws {
+    private func scheduleHSREchoOfWarNotification(
+        weekday: Int,
+        hour: Int,
+        minute: Int
+    ) async
+        -> UNNotificationRequest? {
         guard profile.game == .genshinImpact else {
             await deleteNotification(.hsrEchoOfWarRewardsLeft)
-            return
+            return nil
         }
-        guard let eowIntel = dailyNote.echoOfWarIntel else { return }
+        guard let eowIntel = dailyNote.echoOfWarIntel else { return nil }
         guard !eowIntel.allRewardsClaimed else {
             await deleteNotification(.hsrEchoOfWarRewardsLeft)
-            return
+            return nil
         }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
@@ -471,20 +485,24 @@ extension NotificationSputnik {
         )
         let id = getID(for: .hsrEchoOfWarRewardsLeft)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 
     /// 星穹铁道模拟宇宙。
-    @MainActor
-    private func scheduleHSRSimulatedUniverseNotification(weekday: Int, hour: Int, minute: Int) async throws {
+    private func scheduleHSRSimulatedUniverseNotification(
+        weekday: Int,
+        hour: Int,
+        minute: Int
+    ) async
+        -> UNNotificationRequest? {
         guard profile.game == .starRail else {
             await deleteNotification(.hsrSimulatedUniverse)
-            return
+            return nil
         }
-        guard let simulatedUniverse = dailyNote.simulatedUniverseIntel else { return }
+        guard let simulatedUniverse = dailyNote.simulatedUniverseIntel else { return nil }
         guard simulatedUniverse.currentScore < simulatedUniverse.maxScore else {
             await deleteNotification(.hsrSimulatedUniverse)
-            return
+            return nil
         }
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
@@ -505,6 +523,6 @@ extension NotificationSputnik {
         )
         let id = getID(for: .hsrSimulatedUniverse)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        try await center.add(request)
+        return request
     }
 }
