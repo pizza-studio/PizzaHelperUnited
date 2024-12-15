@@ -121,7 +121,7 @@ extension DailyNoteProtocol {
     public var hasExpeditions: Bool { !expeditionTasks.isEmpty }
 
     /// DailyNoteProtocol: Expedition
-    public var expeditionTasks: [ExpeditionTask] {
+    public var expeditionTasks: [any ExpeditionTask] {
         switch self {
         case let dailyNote as GeneralNote4GI: dailyNote.expeditionInfo.expeditions
         case let dailyNote as WidgetNote4GI: dailyNote.expeditionInfo.expeditions
