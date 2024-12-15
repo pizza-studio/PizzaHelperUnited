@@ -8,6 +8,7 @@ import PZBaseKit
 extension HoYo {
     public static func note4GI(profile: PZProfileSendable) async throws -> any Note4GI {
         try await note4GI(
+            uidWithGame: profile.uidWithGame,
             server: profile.server,
             uid: profile.uid,
             cookie: profile.cookie,
@@ -17,6 +18,7 @@ extension HoYo {
     }
 
     static func note4GI(
+        uidWithGame: String,
         server: Server,
         uid: String,
         cookie: String,
@@ -28,6 +30,7 @@ extension HoYo {
         case .miyoushe:
             if cookie.contains("stoken=v2_") {
                 let firstResult = try? await generalNote4GI(
+                    uidWithGame: uidWithGame,
                     server: server,
                     uid: uid,
                     cookie: cookie,
@@ -36,6 +39,7 @@ extension HoYo {
                 )
                 if let firstResult { return firstResult }
                 return try await widgetNote4GI(
+                    uidWithGame: uidWithGame,
                     cookie: cookie,
                     deviceFingerPrint: deviceFingerPrint,
                     deviceID: deviceID
@@ -45,6 +49,7 @@ extension HoYo {
             }
         case .hoyoLab:
             return try await generalNote4GI(
+                uidWithGame: uidWithGame,
                 server: server,
                 uid: uid,
                 cookie: cookie,
@@ -55,6 +60,7 @@ extension HoYo {
     }
 
     static func generalNote4GI(
+        uidWithGame: String,
         server: Server,
         uid: String,
         cookie: String,
@@ -88,10 +94,13 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.generalNote4GI()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.generalNote4GI()") {
+            GeneralNote4GI.CacheSputnik.cache(data, uidWithGame: uidWithGame)
+        }
     }
 
     static func widgetNote4GI(
+        uidWithGame: String,
         cookie: String,
         deviceFingerPrint: String?,
         deviceID: String?
@@ -117,6 +126,8 @@ extension HoYo {
         )
 
         let (data, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.widgetNote4GI()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.widgetNote4GI()") {
+            WidgetNote4GI.CacheSputnik.cache(data, uidWithGame: uidWithGame)
+        }
     }
 }

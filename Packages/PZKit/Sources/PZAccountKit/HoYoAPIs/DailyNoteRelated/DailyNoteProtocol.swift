@@ -7,7 +7,21 @@ import PZBaseKit
 import SwiftUI
 
 extension PZProfileSendable {
-    public func getDailyNote() async throws -> DailyNoteProtocol {
+    public func getDailyNote(cached returnCachedResult: Bool = false) async throws -> DailyNoteProtocol {
+        handleCachedResults: if returnCachedResult {
+            let possibleResult: DailyNoteProtocol? = switch game {
+            case .genshinImpact:
+                DailyNoteCacheSputnik<GeneralNote4GI>.getCache(
+                    uidWithGame: uidWithGame
+                ) ?? DailyNoteCacheSputnik<WidgetNote4GI>.getCache(
+                    uidWithGame: uidWithGame
+                )
+            case .starRail: DailyNoteCacheSputnik<RealtimeNote4HSR>.getCache(uidWithGame: uidWithGame)
+            case .zenlessZone: DailyNoteCacheSputnik<Note4ZZZ>.getCache(uidWithGame: uidWithGame)
+            }
+            guard let possibleResult else { break handleCachedResults }
+            return possibleResult
+        }
         await HoYo.waitFor450ms()
         do {
             let result = switch game {
@@ -38,6 +52,14 @@ extension Pizza.SupportedGame {
         }
     }
 
+    public var eachStaminaRecoveryTime: TimeInterval {
+        switch self {
+        case .genshinImpact: 60 * 8
+        case .starRail: 60 * 6
+        case .zenlessZone: 60 * 6
+        }
+    }
+
     public var exampleDailyNoteData: DailyNoteProtocol {
         switch self {
         case .genshinImpact: GeneralNote4GI.exampleData()
@@ -49,7 +71,7 @@ extension Pizza.SupportedGame {
 
 // MARK: - DailyNoteProtocol
 
-public protocol DailyNoteProtocol: Sendable {
+public protocol DailyNoteProtocol: Sendable, DecodableFromMiHoYoAPIJSONResult {
     static var game: Pizza.SupportedGame { get }
     static func exampleData() -> Self
 }
@@ -63,11 +85,7 @@ extension DailyNoteProtocol {
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: Stamina, counted as seconds.
     public var eachStaminaRecoveryTime: TimeInterval {
-        switch game {
-        case .genshinImpact: 60 * 8
-        case .starRail: 60 * 6
-        case .zenlessZone: 60 * 6
-        }
+        game.eachStaminaRecoveryTime
     }
 
     /// DailyNoteProtocol: Stamina

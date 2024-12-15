@@ -44,7 +44,7 @@ public struct Note4ZZZ: Codable, Hashable, DecodableFromMiHoYoAPIJSONResult, Dai
     public static let game: Pizza.SupportedGame = .zenlessZone
 
     /// 电池电量
-    public let energy: Energy
+    public var energy: Energy
     public let vitality: Vitality
     public let vhsStoreState: VHSState
     public let hollowZero: HollowZero
@@ -163,7 +163,7 @@ extension Note4ZZZ {
 
         public let progress: EnergyProgress
         public let restore: Int
-        public let fetchedTime: Date = .now // 从伺服器拿到这笔资料的那一刻的时间戳。
+        public var fetchedTime: Date = .now // 从伺服器拿到这笔资料的那一刻的时间戳。
 
         public var fullyChargedDate: Date {
             .init(timeInterval: Double(restore), since: fetchedTime)
@@ -237,6 +237,16 @@ extension Note4ZZZ.Energy {
         let restEnergyToCharge = progress.max - currentEnergyAmountDynamic
         let timeIntervalDelta = Self.eachStaminaRecoveryTime * Double(restEnergyToCharge)
         return Date.now.addingTimeInterval(timeIntervalDelta)
+    }
+}
+
+// MARK: - Note4ZZZ + BenchmarkTimeEditable
+
+extension Note4ZZZ: BenchmarkTimeEditable {
+    public func replacingBenchmarkTime(_ newBenchmarkTime: Date) -> Note4ZZZ {
+        var newResult = self
+        newResult.energy.fetchedTime = newBenchmarkTime
+        return newResult
     }
 }
 
