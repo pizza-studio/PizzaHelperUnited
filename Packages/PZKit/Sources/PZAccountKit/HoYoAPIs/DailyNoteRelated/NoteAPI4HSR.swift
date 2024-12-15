@@ -8,6 +8,7 @@ import PZBaseKit
 extension HoYo {
     public static func note4HSR(profile: PZProfileSendable) async throws -> Note4HSR {
         try await note4HSR(
+            uidWithGame: profile.uidWithGame,
             server: profile.server,
             uid: profile.uid,
             cookie: profile.cookie,
@@ -26,6 +27,7 @@ extension HoYo {
     ///
     /// - Returns: An instance of `Note4HSR` that represents the user's daily note.
     static func note4HSR(
+        uidWithGame: String,
         server: Server,
         uid: String,
         cookie: String,
@@ -36,6 +38,7 @@ extension HoYo {
         switch server.region {
         case .miyoushe:
             let firstAttempt = try? await fullNote4HSR(
+                uidWithGame: uidWithGame,
                 server: server,
                 uid: uid,
                 cookie: cookie,
@@ -45,6 +48,7 @@ extension HoYo {
             if let firstAttempt { return firstAttempt }
             if cookie.contains("stoken=v2_") {
                 return try await widgetNote4HSR(
+                    uidWithGame: uidWithGame,
                     cookie: cookie,
                     deviceFingerPrint: deviceFingerPrint,
                     deviceID: deviceID
@@ -54,6 +58,7 @@ extension HoYo {
             }
         case .hoyoLab:
             return try await fullNote4HSR(
+                uidWithGame: uidWithGame,
                 server: server,
                 uid: uid,
                 cookie: cookie,
@@ -71,6 +76,7 @@ extension HoYo {
     ///
     /// - Throws: An error of type `MiHoYoAPI.Error` if an error occurs while making the API request.
     static func fullNote4HSR(
+        uidWithGame: String,
         server: Server,
         uid: String,
         cookie: String,
@@ -104,7 +110,9 @@ extension HoYo {
         )
 
         let (data, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.hoyoLabNote4HSR()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.hoyoLabNote4HSR()") {
+            RealtimeNote4HSR.CacheSputnik.cache(data, uidWithGame: uidWithGame)
+        }
 //        #endif
     }
 
@@ -113,6 +121,7 @@ extension HoYo {
     ///   - cookie: The cookie of the user.
     ///   - deviceFingerPrint: The device finger print of the user.
     static func widgetNote4HSR(
+        uidWithGame: String,
         cookie: String,
         deviceFingerPrint: String?,
         deviceID: String?
@@ -136,6 +145,8 @@ extension HoYo {
         )
 
         let (data, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.miyousheNote4HSR()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.miyousheNote4HSR()") {
+            RealtimeNote4HSR.CacheSputnik.cache(data, uidWithGame: uidWithGame)
+        }
     }
 }

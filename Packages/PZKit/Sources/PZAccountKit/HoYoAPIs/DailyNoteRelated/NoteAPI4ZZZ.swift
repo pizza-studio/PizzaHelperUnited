@@ -8,6 +8,7 @@ import PZBaseKit
 extension HoYo {
     public static func note4ZZZ(profile: PZProfileSendable) async throws -> Note4ZZZ {
         try await getNote4ZZZ(
+            uidWithGame: profile.uidWithGame,
             server: profile.server,
             uid: profile.uid,
             cookie: profile.cookie,
@@ -17,6 +18,7 @@ extension HoYo {
     }
 
     static func getNote4ZZZ(
+        uidWithGame: String,
         server: Server,
         uid: String,
         cookie: String,
@@ -53,6 +55,8 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.getNote4ZZZ")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.getNote4ZZZ") {
+            Note4ZZZ.CacheSputnik.cache(data, uidWithGame: uidWithGame)
+        }
     }
 }
