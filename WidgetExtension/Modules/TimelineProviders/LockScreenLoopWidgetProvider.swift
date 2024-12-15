@@ -159,7 +159,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
         ) async
             -> Timeline<Entry> {
             do {
-                let data = try await config.getDailyNote()
+                let data = try await config.getDailyNote(cached: true)
                 let entries = (0 ... 40).map { index in
                     let timeInterval = TimeInterval(Double(index) * data.eachStaminaRecoveryTime)
                     let entryDate = Date(timeIntervalSinceNow: timeInterval)

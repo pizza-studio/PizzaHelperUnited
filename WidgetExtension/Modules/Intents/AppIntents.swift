@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@preconcurrency import Defaults
 import AppIntents
 import Foundation
 
@@ -147,6 +148,6 @@ public struct WidgetRefreshIntent: AppIntent {
     public static var isDiscoverable: Bool { false }
 
     public func perform() async throws -> some IntentResult {
-        .result()
+        return .result()
     }
 }

@@ -32,7 +32,7 @@ struct ResinTimerRefreshIntent: AppIntent {
                 account.uuid == activity.attributes.accountUUID
             })
             guard let account else { continue }
-            let result = try await account.getDailyNote()
+            let result = try await account.getDailyNote(cached: true)
             ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: account, data: result)
         }
         return .result()
