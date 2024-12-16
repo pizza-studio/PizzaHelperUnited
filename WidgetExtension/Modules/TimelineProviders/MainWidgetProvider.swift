@@ -75,16 +75,10 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Timeline<Entry> {
-        let syncFrequencyInMinute = widgetRefreshByMinute
+        var refreshTimeInterval = 60 * 15
         let currentDate = Date()
-        let refreshDate = Calendar.current.date(
-            byAdding: .minute,
-            value: syncFrequencyInMinute,
-            to: currentDate
-        )!
-
+        var refreshDate: Date { currentDate.addingTimeInterval(TimeInterval(refreshTimeInterval)) }
         let configs = PZWidgets.getAllProfiles()
-
         var viewConfig: WidgetViewConfiguration = .defaultConfig
 
         func makeFallbackResult(error: WidgetError) -> Timeline<Entry> {
@@ -105,6 +99,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             viewConfig: WidgetViewConfiguration
         ) async
             -> Timeline<Entry> {
+            refreshTimeInterval = PZWidgets.getWidgetsSyncFrequency(game: config.game)
             do {
                 let data = try await config.getDailyNote()
                 let entries = (0 ... 40).map { index in

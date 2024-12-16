@@ -4,7 +4,12 @@
 
 @preconcurrency import Defaults
 import Foundation
+import PZAccountKit
+import PZBaseKit
 
-public var widgetRefreshByMinute: Int {
-    Int(Defaults[.allWidgetsSyncFrequencyByMinutes].rounded(.down))
+extension PZWidgets {
+    public static func getWidgetsSyncFrequency(game: Pizza.SupportedGame) -> Int {
+        let staminaPoints = Swift.max(Swift.abs(Defaults[.allWidgetsSyncFrequencyByStaminaPoints]), 1)
+        return staminaPoints * Int(game.eachStaminaRecoveryTime)
+    }
 }
