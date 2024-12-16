@@ -16,7 +16,7 @@ struct InAppDailyNoteCardView: View {
     init(profile: PZProfileMO) {
         self._theVM = .init(
             wrappedValue: DailyNoteViewModel(profile: profile) { dailyNote in
-                #if canImport(ActivityKit)
+                #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
                 if Defaults[.autoDeliveryResinTimerLiveActivity] {
                     Task {
                         // let accounts = AccountModel.shared.fetchAccountConfigs()
@@ -55,7 +55,7 @@ struct InAppDailyNoteCardView: View {
                 Text(theVM.profile.uidWithGame)
                 switch theVM.dailyNoteStatus {
                 case let .succeed(dailyNote, _):
-                    #if canImport(ActivityKit)
+                    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
                     Menu {
                         EnableLiveActivityButton(
                             for: theVM.profile.asSendable,

@@ -69,7 +69,7 @@ public struct WallpaperGalleryViewContent: View {
                     Button("wpKit.assign.background4App".i18nWPKit) {
                         background4App = currentCard
                     }
-                    #if canImport(ActivityKit)
+                    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
                     let alreadyChosenAsLABG = backgrounds4LiveActivity.contains(currentCard)
                     Button {
                         if alreadyChosenAsLABG {
