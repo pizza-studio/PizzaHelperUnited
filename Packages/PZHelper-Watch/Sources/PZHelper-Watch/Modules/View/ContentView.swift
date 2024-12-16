@@ -159,6 +159,9 @@ private struct DetailNavigator: View {
         .onAppear {
             dailyNoteViewModel.getDailyNote()
         }
+        .onAppBecomeActive {
+            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+        }
     }
 
     // MARK: Private
