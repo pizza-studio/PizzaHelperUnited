@@ -95,7 +95,7 @@ public struct GachaProfileDetailedListView: View {
                     ForEach(GachaItemRankType.allCases.reversed()) { rankValue in
                         let labelText = switch rankValue {
                         case .rank5: "★★★★★"
-                        case .rank4: "★3 ★4"
+                        case .rank4: "★4 ★5"
                         case .rank3: "★3 ★4 ★5"
                         }
                         Text(labelText).tag(rankValue)
