@@ -45,6 +45,15 @@ extension Pizza.SupportedGame {
         case .zenlessZone: Note4ZZZ.exampleData()
         }
     }
+
+    /// DailyNoteProtocol: Stamina, counted as seconds.
+    public var eachStaminaRecoveryTime: TimeInterval {
+        switch self {
+        case .genshinImpact: 60 * 8
+        case .starRail: 60 * 6
+        case .zenlessZone: 60 * 6
+        }
+    }
 }
 
 // MARK: - DailyNoteProtocol
@@ -63,11 +72,7 @@ extension DailyNoteProtocol {
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: Stamina, counted as seconds.
     public var eachStaminaRecoveryTime: TimeInterval {
-        switch game {
-        case .genshinImpact: 60 * 8
-        case .starRail: 60 * 6
-        case .zenlessZone: 60 * 6
-        }
+        game.eachStaminaRecoveryTime
     }
 
     /// DailyNoteProtocol: Stamina
