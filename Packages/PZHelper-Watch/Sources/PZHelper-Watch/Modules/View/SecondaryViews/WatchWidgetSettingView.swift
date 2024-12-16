@@ -15,15 +15,6 @@ import WidgetKit
 struct WatchWidgetSettingView: View {
     // MARK: Internal
 
-    var lockscreenWidgetRefreshFrequencyFormated: String {
-        let formatter = DateComponentsFormatter()
-        formatter.maximumUnitCount = 2
-        formatter.unitsStyle = .short
-        formatter.zeroFormattingBehavior = .dropAll
-        return formatter
-            .string(from: allWidgetsSyncFrequencyByMinutes * 60.0)!
-    }
-
     var body: some View {
         List {
             Section {
@@ -59,21 +50,6 @@ struct WatchWidgetSettingView: View {
                 Text("watch.profile.manage.title", bundle: .module)
                     .textCase(.none)
             }
-            // Section {
-            //     NavigationLink {
-            //         QueryFrequencySettingView()
-            //     } label: {
-            //         HStack {
-            //             Text("watch.widget.settings.sync.frequency.title", bundle: .module)
-            //             Spacer()
-            //             Text(
-            //                 "watch.widget.settings.sync.speed:\(lockscreenWidgetRefreshFrequencyFormated)",
-            //                 bundle: .module
-            //             )
-            //             .foregroundColor(.accentColor)
-            //         }
-            //     }
-            // }
         }
     }
 
@@ -81,44 +57,4 @@ struct WatchWidgetSettingView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \PZProfileMO.priority) private var accounts: [PZProfileMO]
-
-    @Default(.allWidgetsSyncFrequencyByMinutes) private var allWidgetsSyncFrequencyByMinutes: Double
-}
-
-// MARK: - QueryFrequencySettingView
-
-private struct QueryFrequencySettingView: View {
-    // MARK: Internal
-
-    var lockscreenWidgetRefreshFrequencyFormated: String {
-        let formatter = DateComponentsFormatter()
-        formatter.maximumUnitCount = 2
-        formatter.unitsStyle = .short
-        formatter.zeroFormattingBehavior = .dropAll
-        return formatter
-            .string(from: allWidgetsSyncFrequencyByMinutes * 60.0)!
-    }
-
-    var body: some View {
-        VStack {
-            Text("watch.widget.settings.sync.frequency.title", bundle: .module).foregroundColor(.accentColor)
-            Text(
-                "watch.widget.settings.sync.speed:\(lockscreenWidgetRefreshFrequencyFormated)",
-                bundle: .module
-            )
-            .font(.title3)
-            Slider(
-                value: $allWidgetsSyncFrequencyByMinutes,
-                in: 30 ... 300,
-                step: 10,
-                label: {
-                    Text(verbatim: "\(allWidgetsSyncFrequencyByMinutes)")
-                }
-            )
-        }
-    }
-
-    // MARK: Private
-
-    @Default(.allWidgetsSyncFrequencyByMinutes) private var allWidgetsSyncFrequencyByMinutes: Double
 }
