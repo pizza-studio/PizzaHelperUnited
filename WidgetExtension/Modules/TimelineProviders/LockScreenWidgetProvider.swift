@@ -117,8 +117,17 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
         -> Timeline<Entry> {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        var refreshTimeInterval = 60 * 15
-        var refreshDate: Date { currentDate.addingTimeInterval(TimeInterval(refreshTimeInterval)) }
+
+        let refreshMinute = widgetRefreshByMinute
+
+        var refreshDate: Date {
+            Calendar.current.date(
+                byAdding: .minute,
+                value: refreshMinute,
+                to: currentDate
+            )!
+        }
+
         let configs = PZWidgets.getAllProfiles()
 
         func makeFallbackResult(error: WidgetError) -> Timeline<Entry> {
@@ -137,7 +146,6 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
             config: PZProfileSendable
         ) async
             -> Timeline<Entry> {
-            refreshTimeInterval = PZWidgets.getWidgetsSyncFrequency(game: config.game)
             do {
                 let data = try await config.getDailyNote()
                 let entries = (0 ... 40).map { index in
