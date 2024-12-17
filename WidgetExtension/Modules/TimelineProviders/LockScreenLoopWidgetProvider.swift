@@ -15,15 +15,8 @@ struct AccountAndShowWhichInfoIntentEntry: TimelineEntry {
     let date: Date
     let timestampOnCreation: Date = .now
     let result: Result<any DailyNoteProtocol, any Error>
-    var accountName: String?
-
-    var showEchoOfWar: Bool = true
-    var showTrounceBlossom: Bool = true
-    var showTransformer: Bool = true
-
-    let accountUUIDString: String?
-
-    var usingResinStyle: AutoRotationUsingResinWidgetStyleAppEnum
+    let viewConfig: SelectAccountAndShowWhichInfoIntent
+    let profile: PZProfileSendable?
 
     var relevance: TimelineEntryRelevance? {
         switch result {
@@ -99,9 +92,8 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
         Entry(
             date: Date(),
             result: .success(GeneralNote4GI.exampleData()),
-            accountName: "荧",
-            accountUUIDString: nil,
-            usingResinStyle: .byDefault
+            viewConfig: .init(),
+            profile: .getDummyInstance(for: .genshinImpact)
         )
     }
 
@@ -113,10 +105,9 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
         let data = Pizza.SupportedGame(intentConfig: configuration)?.exampleDailyNoteData
         return Entry(
             date: Date(),
-            result: .success(data ?? GeneralNote4GI.exampleData()),
-            accountName: "荧",
-            accountUUIDString: nil,
-            usingResinStyle: .byDefault
+            result: .success(GeneralNote4GI.exampleData()),
+            viewConfig: .init(),
+            profile: .getDummyInstance(for: .genshinImpact)
         )
     }
 
@@ -155,12 +146,8 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                         Entry(
                             date: tlEntryDate,
                             result: dailyNoteResult,
-                            accountName: profile.name,
-                            showEchoOfWar: configuration.showEchoOfWar,
-                            showTrounceBlossom: configuration.showTrounceBlossom,
-                            showTransformer: configuration.showTransformer,
-                            accountUUIDString: profile.uuid.uuidString,
-                            usingResinStyle: configuration.usingResinStyle
+                            viewConfig: configuration,
+                            profile: profile
                         )
                     )
                     boostDate()
@@ -172,12 +159,8 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                     Entry(
                         date: Date(),
                         result: .failure(error),
-                        accountName: profile.name,
-                        showEchoOfWar: configuration.showEchoOfWar,
-                        showTrounceBlossom: configuration.showTrounceBlossom,
-                        showTransformer: configuration.showTransformer,
-                        accountUUIDString: profile.uuid.uuidString,
-                        usingResinStyle: configuration.usingResinStyle
+                        viewConfig: configuration,
+                        profile: profile
                     ),
                 ]
             }
@@ -186,12 +169,8 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                 Entry(
                     date: Date(),
                     result: .failure(exception),
-                    accountName: nil,
-                    showEchoOfWar: configuration.showEchoOfWar,
-                    showTrounceBlossom: configuration.showTrounceBlossom,
-                    showTransformer: configuration.showTransformer,
-                    accountUUIDString: nil,
-                    usingResinStyle: configuration.usingResinStyle
+                    viewConfig: configuration,
+                    profile: nil
                 ),
             ]
         }

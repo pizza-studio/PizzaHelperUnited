@@ -38,7 +38,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
     let entry: LockScreenWidgetProvider.Entry
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.accountName }
+    var accountName: String? { entry.profile?.name }
 
     var body: some View {
         switch result {
