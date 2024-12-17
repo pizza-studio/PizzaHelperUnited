@@ -65,3 +65,55 @@ extension PZProfileSendable {
         "\(game.uidPrefix)-\(uid)"
     }
 }
+
+extension PZProfileSendable {
+    public static func getDummyInstance(for game: Pizza.SupportedGame) -> Self {
+        switch game {
+        case .genshinImpact:
+            .init(
+                game: .genshinImpact,
+                server: .celestia(.genshinImpact),
+                uid: "100000000",
+                uuid: .init(),
+                allowNotification: false,
+                cookie: "",
+                deviceFingerPrint: "",
+                name: "Hotaru",
+                priority: 0,
+                serverRawValue: "cn_gf01",
+                sTokenV2: nil,
+                deviceID: ""
+            )
+        case .starRail:
+            .init(
+                game: .starRail,
+                server: .celestia(.starRail),
+                uid: "10000000",
+                uuid: .init(),
+                allowNotification: false,
+                cookie: "",
+                deviceFingerPrint: "",
+                name: "Stelle",
+                priority: 0,
+                serverRawValue: "prod_gf_cn",
+                sTokenV2: nil,
+                deviceID: ""
+            )
+        case .zenlessZone:
+            .init(
+                game: .zenlessZone,
+                server: .celestia(.zenlessZone),
+                uid: "10000000",
+                uuid: .init(),
+                allowNotification: false,
+                cookie: "",
+                deviceFingerPrint: "",
+                name: "Belle",
+                priority: 0,
+                serverRawValue: "prod_gf_cn",
+                sTokenV2: nil,
+                deviceID: ""
+            )
+        }
+    }
+}
