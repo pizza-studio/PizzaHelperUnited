@@ -125,32 +125,21 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Timeline<Entry> {
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-
-        let refreshMinute = widgetRefreshByMinute
-
-        var refreshDate: Date {
-            Calendar.current.date(
-                byAdding: .minute,
-                value: refreshMinute,
-                to: currentDate
-            )!
-        }
-
         let configs = PZWidgets.getAllProfiles()
         let style = configuration.usingResinStyle
 
         func makeFallbackResult(error: WidgetError) -> Timeline<Entry> {
             let entry = Entry(
-                date: currentDate,
+                date: PZWidgets.getRefreshDate(),
                 result: .failure(error),
                 accountUUIDString: nil,
                 usingResinStyle: style
             )
             return Timeline<Entry>(
                 entries: [entry],
-                policy: .after(refreshDate)
+                policy: .after(
+                    PZWidgets.getRefreshDate(isError: true)
+                )
             )
         }
 
@@ -174,7 +163,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                         usingResinStyle: style
                     )
                 }
-                return .init(entries: entries, policy: .after(refreshDate))
+                return .init(entries: entries, policy: .after(PZWidgets.getRefreshDate()))
             } catch {
                 let entry = Entry(
                     date: Date(),
@@ -185,7 +174,11 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                     accountUUIDString: config.uuid.uuidString,
                     usingResinStyle: style
                 )
-                return .init(entries: [entry], policy: .after(refreshDate))
+                return .init(
+                    entries: [entry], policy: .after(
+                        PZWidgets.getRefreshDate(isError: true)
+                    )
+                )
             }
         }
 

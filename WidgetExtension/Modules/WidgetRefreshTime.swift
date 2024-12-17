@@ -8,3 +8,15 @@ import Foundation
 public var widgetRefreshByMinute: Int {
     Int(Defaults[.allWidgetsSyncFrequencyByMinutes].rounded(.down))
 }
+
+extension PZWidgets {
+    private static let refreshWhenSucceedAfterHour: Double = 2.0
+    private static let refreshWhenErrorMinute: Double = 15
+
+    private static var refreshWhenSucceedAfterSecond: Double { refreshWhenSucceedAfterHour * 60 * 60 }
+    private static var refreshWhenErrorAfterSecond: Double { refreshWhenErrorMinute * 60 }
+
+    public static func getRefreshDate(isError: Bool = false) -> Date {
+        Date(timeIntervalSinceNow: isError ? PZWidgets.refreshWhenErrorAfterSecond : refreshWhenSucceedAfterSecond)
+    }
+}
