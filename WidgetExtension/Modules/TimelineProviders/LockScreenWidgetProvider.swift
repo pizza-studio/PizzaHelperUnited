@@ -15,8 +15,7 @@ struct AccountOnlyEntry: TimelineEntry {
     let date: Date
     let timestampOnCreation: Date = .now
     let result: Result<any DailyNoteProtocol, any Error>
-    var accountName: String?
-    let accountUUIDString: String?
+    let profile: PZProfileSendable?
 
     var relevance: TimelineEntryRelevance? {
         switch result {
@@ -91,8 +90,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
         Entry(
             date: Date(),
             result: .success(GeneralNote4GI.exampleData()),
-            accountName: "荧",
-            accountUUIDString: nil
+            profile: .getDummyInstance(for: .genshinImpact)
         )
     }
 
@@ -105,8 +103,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
         return Entry(
             date: Date(),
             result: .success(data ?? GeneralNote4GI.exampleData()),
-            accountName: "荧",
-            accountUUIDString: nil
+            profile: .getDummyInstance(for: .genshinImpact)
         )
     }
 
@@ -145,8 +142,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
                         Entry(
                             date: tlEntryDate,
                             result: dailyNoteResult,
-                            accountName: profile.name,
-                            accountUUIDString: profile.uuid.uuidString
+                            profile: profile
                         )
                     )
                     boostDate()
@@ -158,8 +154,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
                     Entry(
                         date: Date(),
                         result: .failure(error),
-                        accountName: profile.name,
-                        accountUUIDString: profile.uuid.uuidString
+                        profile: profile
                     ),
                 ]
             }
@@ -168,8 +163,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
                 Entry(
                     date: Date(),
                     result: .failure(exception),
-                    accountName: nil,
-                    accountUUIDString: nil
+                    profile: nil
                 ),
             ]
         }

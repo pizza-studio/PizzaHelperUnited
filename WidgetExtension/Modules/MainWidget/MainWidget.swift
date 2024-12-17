@@ -38,7 +38,7 @@ struct WidgetViewEntryView: View {
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var viewConfig: WidgetViewConfiguration { entry.viewConfig }
-    var accountName: String? { entry.accountName }
+    var accountName: String? { entry.profile?.name }
 
     var url: URL? {
         let errorURL: URL = {
@@ -48,7 +48,7 @@ struct WidgetViewEntryView: View {
             components.queryItems = [
                 .init(
                     name: "accountUUIDString",
-                    value: entry.accountUUIDString
+                    value: entry.profile?.uuid.uuidString
                 ),
             ]
             return components.url!

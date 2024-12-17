@@ -37,7 +37,7 @@ struct AlternativeLockScreenResinWidgetView: View {
     let entry: LockScreenWidgetProvider.Entry
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.accountName }
+    var accountName: String? { entry.profile?.name }
 
     var url: URL? {
         let errorURL: URL = {
@@ -47,7 +47,7 @@ struct AlternativeLockScreenResinWidgetView: View {
             components.queryItems = [
                 .init(
                     name: "accountUUIDString",
-                    value: entry.accountUUIDString
+                    value: entry.profile?.uuid.uuidString
                 ),
             ]
             return components.url!

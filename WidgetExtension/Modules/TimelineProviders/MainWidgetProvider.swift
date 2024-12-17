@@ -17,8 +17,7 @@ struct ResinEntry: TimelineEntry {
     let timestampOnCreation: Date = .now
     let result: Result<any DailyNoteProtocol, any Error>
     let viewConfig: WidgetViewConfiguration
-    var accountName: String?
-    let accountUUIDString: String?
+    let profile: PZProfileSendable?
 
     var relevance: TimelineEntryRelevance? {
         switch result {
@@ -52,8 +51,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             date: Date(),
             result: .success(GeneralNote4GI.exampleData()),
             viewConfig: .defaultConfig,
-            accountName: "荧",
-            accountUUIDString: ""
+            profile: .getDummyInstance(for: .genshinImpact)
         )
     }
 
@@ -67,8 +65,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             date: Date(),
             result: .success(data ?? GeneralNote4GI.exampleData()),
             viewConfig: .defaultConfig,
-            accountName: "荧",
-            accountUUIDString: ""
+            profile: .getDummyInstance(for: .genshinImpact)
         )
     }
 
@@ -108,8 +105,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                             date: tlEntryDate,
                             result: dailyNoteResult,
                             viewConfig: .init(configuration, nil),
-                            accountName: profile.name,
-                            accountUUIDString: profile.uuid.uuidString
+                            profile: profile
                         )
                     )
                     boostDate()
@@ -122,8 +118,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                         date: Date(),
                         result: .failure(error),
                         viewConfig: .init(configuration, nil),
-                        accountName: profile.name,
-                        accountUUIDString: profile.uuid.uuidString
+                        profile: profile
                     ),
                 ]
             }
@@ -133,7 +128,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                     date: Date(),
                     result: .failure(exception),
                     viewConfig: .init(configuration, nil),
-                    accountUUIDString: nil
+                    profile: nil
                 ),
             ]
         }

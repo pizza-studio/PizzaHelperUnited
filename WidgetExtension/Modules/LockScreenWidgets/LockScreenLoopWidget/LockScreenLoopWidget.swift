@@ -43,8 +43,8 @@ struct LockScreenLoopWidgetView: View {
     let entry: LockScreenLoopWidgetProvider.Entry
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.accountName }
-    var resinStyle: AutoRotationUsingResinWidgetStyleAppEnum { entry.usingResinStyle }
+    var accountName: String? { entry.profile?.name }
+    var resinStyle: AutoRotationUsingResinWidgetStyleAppEnum { entry.viewConfig.usingResinStyle }
 
     var url: URL? {
         let errorURL: URL = {
@@ -54,7 +54,7 @@ struct LockScreenLoopWidgetView: View {
             components.queryItems = [
                 .init(
                     name: "accountUUIDString",
-                    value: entry.accountUUIDString
+                    value: entry.profile?.uuid.uuidString
                 ),
             ]
             return components.url!
