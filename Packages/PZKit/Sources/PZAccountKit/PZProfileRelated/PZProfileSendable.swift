@@ -88,7 +88,7 @@ extension PZProfileSendable {
             .init(
                 game: .starRail,
                 server: .celestia(.starRail),
-                uid: "10000000",
+                uid: "100000000",
                 uuid: .init(),
                 allowNotification: false,
                 cookie: "",
