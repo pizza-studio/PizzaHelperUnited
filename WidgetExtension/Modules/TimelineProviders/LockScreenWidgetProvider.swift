@@ -89,7 +89,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> Entry {
         Entry(
             date: Date(),
-            result: .success(GeneralNote4GI.exampleData()),
+            result: .success(Pizza.SupportedGame.genshinImpact.exampleDailyNoteData),
             profile: .getDummyInstance(for: .genshinImpact)
         )
     }
@@ -99,10 +99,11 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Entry {
-        let data = Pizza.SupportedGame(intentConfig: configuration)?.exampleDailyNoteData
-        return Entry(
+        Entry(
             date: Date(),
-            result: .success(data ?? GeneralNote4GI.exampleData()),
+            result: .success(
+                (Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact).exampleDailyNoteData
+            ),
             profile: .getDummyInstance(for: .genshinImpact)
         )
     }
