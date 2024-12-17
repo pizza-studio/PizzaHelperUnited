@@ -75,28 +75,22 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Timeline<Entry> {
-        let syncFrequencyInMinute = widgetRefreshByMinute
-        let currentDate = Date()
-        let refreshDate = Calendar.current.date(
-            byAdding: .minute,
-            value: syncFrequencyInMinute,
-            to: currentDate
-        )!
-
         let configs = PZWidgets.getAllProfiles()
 
         var viewConfig: WidgetViewConfiguration = .defaultConfig
 
         func makeFallbackResult(error: WidgetError) -> Timeline<Entry> {
             let entry = Entry(
-                date: currentDate,
+                date: PZWidgets.getRefreshDate(),
                 result: .failure(error),
                 viewConfig: WidgetViewConfiguration(noticeMessage: error.description),
                 accountUUIDString: nil
             )
             return Timeline<Entry>(
                 entries: [entry],
-                policy: .after(refreshDate)
+                policy: .after(
+                    PZWidgets.getRefreshDate(isError: true)
+                )
             )
         }
 
@@ -118,7 +112,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                         accountUUIDString: config.uuid.uuidString
                     )
                 }
-                return .init(entries: entries, policy: .after(refreshDate))
+                return .init(entries: entries, policy: .after(PZWidgets.getRefreshDate()))
             } catch {
                 let entry = Entry(
                     date: Date(),
@@ -126,7 +120,11 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                     viewConfig: viewConfig,
                     accountUUIDString: config.uuid.uuidString
                 )
-                return .init(entries: [entry], policy: .after(refreshDate))
+                return .init(
+                    entries: [entry], policy: .after(
+                        PZWidgets.getRefreshDate(isError: true)
+                    )
+                )
             }
         }
 
