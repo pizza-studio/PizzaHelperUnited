@@ -185,7 +185,7 @@ extension AbyssReportView4GI {
                 let decoratedIconSize = decoratedIconSize
                 let isNullAvatar: Bool = avatar.id == -114_514
                 Group {
-                    if ThisDevice.isSmallestHDScreenPhone {
+                    if ThisDevice.isHDPhoneOrPodTouch {
                         if isNullAvatar {
                             AnonymousIconView(decoratedIconSize, cutType: .roundRectangle)
                         } else {
@@ -215,7 +215,7 @@ extension AbyssReportView4GI {
                     }
                 }.frame(
                     width: decoratedIconSize,
-                    height: ThisDevice.isSmallestHDScreenPhone ? decoratedIconSize : (decoratedIconSize / 0.74)
+                    height: ThisDevice.isHDPhoneOrPodTouch ? decoratedIconSize : (decoratedIconSize / 0.74)
                 )
                 if spacers { Spacer() }
             }
