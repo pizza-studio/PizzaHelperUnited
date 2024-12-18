@@ -23,8 +23,6 @@ public struct AbyssReportView4HSR: AbyssReportView {
     public static let navTitle = "hylKit.abyssReportView4HSR.navTitle".i18nHYLKit
     public static let navTitleTiny = "hylKit.abyssReportView4HSR.navTitle.tiny".i18nHYLKit
 
-    public static var abyssIcon: Image { Image("hsr_abyss", bundle: .module) }
-
     public var data: AbyssReportData
 
     public var body: some View {
@@ -106,7 +104,11 @@ public struct AbyssReportView4HSR: AbyssReportView {
                     )
                     Spacer()
                     Text(verbatim: floorData.node1.challengeTime.description)
-                    Text(verbatim: String(repeating: " ⭐️", count: floorData.starNum))
+                    HStack(spacing: 0) {
+                        ForEach(Array(repeating: 0, count: floorData.starNum), id: \.self) { _ in
+                            Self.drawAbyssStarIcon()
+                        }
+                    }
                 }
             }
             .listRowMaterialBackground()
@@ -209,6 +211,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
         AbyssReportView4HSR(data: try! AbyssReportTestAssets.hsrCurr.getReport4HSR())
             .formStyle(.grouped)
     }
+    .environment(\.colorScheme, .dark)
 }
 
 #endif

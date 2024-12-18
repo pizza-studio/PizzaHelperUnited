@@ -60,8 +60,7 @@ public struct AbyssReportNav: View {
                                     Text(verbatim: "\(data.current.maxFloor)")
                                         .font(.title)
                                     HStack(alignment: .center, spacing: 2) {
-                                        Text(verbatim: "⭐️")
-                                            .frame(width: 20, height: 20)
+                                        AbyssReportView4GI.drawAbyssStarIcon()
                                         Text(verbatim: " \(data.current.totalStar)")
                                             .font(.title3)
                                     }
@@ -89,8 +88,7 @@ public struct AbyssReportNav: View {
                                     Text(verbatim: "\(data.current.maxFloorNumStr)")
                                         .font(.title)
                                     HStack(alignment: .center, spacing: 2) {
-                                        Text(verbatim: "⭐️")
-                                            .frame(width: 20, height: 20)
+                                        AbyssReportView4GI.drawAbyssStarIcon()
                                         Text(verbatim: " \(data.current.starNum)")
                                             .font(.title3)
                                     }

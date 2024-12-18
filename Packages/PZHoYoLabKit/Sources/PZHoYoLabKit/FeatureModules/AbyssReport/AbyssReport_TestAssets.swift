@@ -22,16 +22,17 @@ enum AbyssReportTestAssets: String {
         return packageRootPath + "/Tests/PZHoYoLabKitTests/TestAssets/"
     }()
 
+    var rawData: Data {
+        let exampleURL = Bundle.module.url(forResource: rawValue, withExtension: "json")!
+        return try! Data(contentsOf: exampleURL)
+    }
+
     func getReport4GI(isPrev: Bool = false) throws -> HoYo.AbyssReport4GI {
-        let filePath = Self.testAssetFolderPath + "\(rawValue).json"
-        let dataURL = URL(fileURLWithPath: filePath)
-        return try Data(contentsOf: dataURL).parseAs(HoYo.AbyssReport4GI.self)
+        try rawData.parseAs(HoYo.AbyssReport4GI.self)
     }
 
     func getReport4HSR(isPrev: Bool = false) throws -> HoYo.AbyssReport4HSR {
-        let filePath = Self.testAssetFolderPath + "\(rawValue).json"
-        let dataURL = URL(fileURLWithPath: filePath)
-        return try Data(contentsOf: dataURL).parseAs(HoYo.AbyssReport4HSR.self)
+        try rawData.parseAs(HoYo.AbyssReport4HSR.self)
     }
 }
 

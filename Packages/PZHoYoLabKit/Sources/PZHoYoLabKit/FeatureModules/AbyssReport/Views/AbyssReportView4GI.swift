@@ -23,8 +23,6 @@ public struct AbyssReportView4GI: AbyssReportView {
     public static let navTitle = "hylKit.abyssReportView4GI.navTitle".i18nHYLKit
     public static let navTitleTiny = "hylKit.abyssReportView4GI.navTitle.tiny".i18nHYLKit
 
-    public static var abyssIcon: Image { Image("gi_abyss", bundle: .module) }
-
     public var data: AbyssReportData
 
     public var body: some View {
@@ -98,7 +96,8 @@ extension AbyssReportView4GI {
                         bundle: .module
                     )
                     Spacer()
-                    Text(verbatim: "\(floorData.star) / \(floorData.maxStar) ⭐️")
+                    Text(verbatim: "\(floorData.star) / \(floorData.maxStar)")
+                    Self.drawAbyssStarIcon(size: 16)
                 }
             }
             .listRowSeparator(.hidden)
@@ -113,7 +112,11 @@ extension AbyssReportView4GI {
                 Text("hylKit.abyssReport.room.title:\(levelData.index.description)", bundle: .module)
                     .fontWeight(.black)
                 Spacer()
-                Text(verbatim: String(repeating: " ⭐️", count: levelData.star))
+                HStack(spacing: 0) {
+                    ForEach(Array(repeating: 0, count: levelData.star), id: \.self) { _ in
+                        Self.drawAbyssStarIcon()
+                    }
+                }
             }
             ViewThatFits(in: .horizontal) {
                 drawLevelInnerContents(levelData, vertical: false, hasLabel: true, hasSpacers: true)
@@ -255,6 +258,7 @@ extension AbyssReportView4GI {
         AbyssReportView4GI(data: try! AbyssReportTestAssets.giCurr.getReport4GI())
             .formStyle(.grouped)
     }
+    .environment(\.colorScheme, .dark)
 }
 
 #endif
