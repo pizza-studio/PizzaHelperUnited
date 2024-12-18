@@ -165,7 +165,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                 let decoratedIconSize = decoratedIconSize
                 let isNullAvatar: Bool = avatar.id == -114_514
                 Group {
-                    if ThisDevice.isSmallestHDScreenPhone {
+                    if ThisDevice.isHDPhoneOrPodTouch {
                         if isNullAvatar {
                             AnonymousIconView(decoratedIconSize, cutType: .roundRectangle)
                         } else {
@@ -195,7 +195,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                     }
                 }.frame(
                     width: decoratedIconSize,
-                    height: ThisDevice.isSmallestHDScreenPhone ? decoratedIconSize : (decoratedIconSize / 0.74)
+                    height: ThisDevice.isHDPhoneOrPodTouch ? decoratedIconSize : (decoratedIconSize / 0.74)
                 )
                 if spacers { Spacer() }
             }
