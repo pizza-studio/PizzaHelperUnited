@@ -39,6 +39,23 @@ public protocol AbyssReportView: View {
     @ViewBuilder var body: Self.Body { get }
 }
 
+extension AbyssReportView {
+    public static var abyssIcon: Image { Image("gi_abyss", bundle: .module) }
+    public static var abyssStarIcon: Image { Image("abyssStar", bundle: .module) }
+
+    @ViewBuilder
+    public static func drawAbyssStarIcon(size: CGFloat = 20) -> some View {
+        Image("abyssStar", bundle: .module)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: size, height: size)
+            .foregroundStyle(
+                Color(cgColor: .init(red: 0.99, green: 0.92, blue: 0.65, alpha: 1.00))
+            )
+            .shadow(color: .black, radius: 1)
+    }
+}
+
 // MARK: - Debug
 
 extension AbyssReportView {
