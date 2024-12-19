@@ -38,6 +38,15 @@ samp {
 		monospace;
 	font-size: 1em;
 }
+.news-detail__content {
+  font-size: unset;
+}
+t.t_lc {
+    all: unset; /* Resets all styles, including user-agent styles */
+    display: inline; /* Ensures inline behavior like a span */
+    color: inherit; /* Inherits text color from parent */
+    font: inherit; /* Inherits font styles */
+}
 small {
 	font-size: 80%;
 }
