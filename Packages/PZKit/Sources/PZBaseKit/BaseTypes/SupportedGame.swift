@@ -30,6 +30,15 @@ extension Pizza {
             }
         }
 
+        // Needed when interating with MiHoYo API.
+        public var hoyoBizID: String {
+            switch self {
+            case .genshinImpact: "hk4e"
+            case .starRail: "hkrpg"
+            case .zenlessZone: "nap"
+            }
+        }
+
         public var uidPrefix: String {
             switch self {
             case .genshinImpact: "GI"
