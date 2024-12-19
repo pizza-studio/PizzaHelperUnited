@@ -6,6 +6,7 @@
 import enum EnkaDBModels.EnkaDBModelsGI
 import Foundation
 import Observation
+import PZBaseKit
 
 // MARK: - Enka.EnkaDB4GI
 

@@ -6,6 +6,7 @@
 import enum EnkaDBModels.EnkaDBModelsHSR
 import Foundation
 import Observation
+import PZBaseKit
 
 // MARK: - Enka.EnkaDB4HSR
 
