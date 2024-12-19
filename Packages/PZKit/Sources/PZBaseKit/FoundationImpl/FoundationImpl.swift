@@ -401,7 +401,7 @@ extension Date {
         return dateFormatter.string(from: date)
     }
 
-    public struct IntervalDate {
+    public struct IntervalDate: AbleToCodeSendHash {
         public let month: Int?
         public let day: Int?
         public let hour: Int?
