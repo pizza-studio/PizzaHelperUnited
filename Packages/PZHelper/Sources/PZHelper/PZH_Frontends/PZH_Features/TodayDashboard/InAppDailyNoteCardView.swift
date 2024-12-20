@@ -618,9 +618,7 @@ private struct DailyNoteCardView4ZZZ: View {
                 .frame(height: iconFrame)
             Text("app.dailynote.card.zzzVHSStoreInOperationState.label".i18nPZHelper).bold()
             Spacer()
-            let stateOn = "app.dailynote.card.zzzVHSStoreInOperationState.on".i18nPZHelper
-            let stateOff = "app.dailynote.card.zzzVHSStoreInOperationState.off".i18nPZHelper
-            Text(verbatim: dailyNote.vhsStoreState.isInOperation ? stateOn : stateOff)
+            Text(verbatim: dailyNote.vhsStoreState.localizedDescription)
         }
         if let cardScratched = dailyNote.cardScratched {
             HStack {

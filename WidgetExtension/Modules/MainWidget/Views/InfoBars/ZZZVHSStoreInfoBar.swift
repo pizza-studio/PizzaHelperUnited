@@ -33,11 +33,12 @@ struct ZZZVHSStoreInfoBar: View {
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Group {
-                    Text(statusText)
+                    Text(state.localizedDescription)
                 }
                 .foregroundColor(Color("textColor3", bundle: .main))
                 .lineLimit(1)
-                .font(.system(.caption, design: .rounded))
+                .font(.system(.caption))
+                .fontWidth(.compressed)
                 .minimumScaleFactor(0.2)
             }
             .legibilityShadow(isText: false)
@@ -47,14 +48,6 @@ struct ZZZVHSStoreInfoBar: View {
     // MARK: Private
 
     private let state: Note4ZZZ.VHSState
-
-    private var statusText: String {
-        let key: String.LocalizationValue = switch state.isInOperation {
-        case true: "pzWidgetsKit.infoBlock.zzzVHSStoreInOperationState.on"
-        case false: "pzWidgetsKit.infoBlock.zzzVHSStoreInOperationState.off"
-        }
-        return String(localized: key, bundle: .main)
-    }
 
     @ViewBuilder private var ringImage: some View {
         Image(systemSymbol: .recordingtape)
