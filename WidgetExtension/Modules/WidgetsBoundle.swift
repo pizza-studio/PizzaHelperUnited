@@ -14,6 +14,7 @@ extension PZWidgets {
         #if !os(watchOS)
         MainWidget()
         MaterialWidget()
+        OfficialFeedWidget()
         #endif
         #if (os(iOS) && !targetEnvironment(macCatalyst)) || os(watchOS)
         widgets4MobilePlatforms
