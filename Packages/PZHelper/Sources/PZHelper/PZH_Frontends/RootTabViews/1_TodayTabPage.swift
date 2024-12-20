@@ -19,28 +19,8 @@ struct TodayTabPage: View {
     var body: some View {
         NavigationStack {
             Form {
-                Group {
-                    switch game {
-                    case .genshinImpact where !profiles.isEmpty:
-                        GIOngoingEvents.EventListSection {
-                            todayMaterialNav
-                        }
-                    case .starRail where !profiles.isEmpty:
-                        NavigationLink(NewsKitHSR.NewsView.navEntryName) {
-                            NewsKitHSR.NewsView()
-                        }
-                    case .zenlessZone where !profiles.isEmpty:
-                        EmptyView()
-                    default:
-                        GIOngoingEvents.EventListSection {
-                            Group {
-                                NavigationLink(NewsKitHSR.NewsView.navEntryName) {
-                                    NewsKitHSR.NewsView()
-                                }
-                                todayMaterialNav
-                            }
-                        }
-                    }
+                OfficialFeed.OfficialFeedSection(game: $game.animation()) {
+                    todayMaterialNav
                 }
                 .listRowMaterialBackground()
                 if profiles.isEmpty {
@@ -85,24 +65,26 @@ struct TodayTabPage: View {
     }
 
     @ViewBuilder var todayMaterialNav: some View {
-        let navName =
-            "\(GITodayMaterialsView<EmptyView>.navTitle) (\(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed))"
-        NavigationLink {
-            GITodayMaterialsView { isWeapon, itemID in
-                if isWeapon {
-                    Enka.queryImageAssetSUI(for: "gi_weapon_\(itemID)")?
-                        .resizable().aspectRatio(contentMode: .fit)
-                        .frame(height: 64)
-                } else {
-                    if Enka.Sputnik.shared.db4GI.characters.keys.contains(itemID) {
-                        CharacterIconView(charID: itemID, cardSize: 64)
+        if shouldShowGenshinTodayMaterial {
+            let navName =
+                "\(GITodayMaterialsView<EmptyView>.navTitle) (\(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed))"
+            NavigationLink {
+                GITodayMaterialsView { isWeapon, itemID in
+                    if isWeapon {
+                        Enka.queryImageAssetSUI(for: "gi_weapon_\(itemID)")?
+                            .resizable().aspectRatio(contentMode: .fit)
+                            .frame(height: 64)
+                    } else {
+                        if Enka.Sputnik.shared.db4GI.characters.keys.contains(itemID) {
+                            CharacterIconView(charID: itemID, cardSize: 64)
+                        }
                     }
                 }
+            } label: {
+                Text(navName)
             }
-        } label: {
-            Text(navName)
+            .listRowMaterialBackground()
         }
-        .listRowMaterialBackground()
     }
 
     // MARK: Private
@@ -122,6 +104,15 @@ struct TodayTabPage: View {
     private var games: [Pizza.SupportedGame] {
         profiles.map(\.game).reduce(into: [Pizza.SupportedGame]()) {
             if !$0.contains($1) { $0.append($1) }
+        }
+    }
+
+    private var shouldShowGenshinTodayMaterial: Bool {
+        switch game {
+        case .genshinImpact where !profiles.isEmpty: true
+        case .starRail where !profiles.isEmpty: false
+        case .zenlessZone where !profiles.isEmpty: false
+        default: true
         }
     }
 
