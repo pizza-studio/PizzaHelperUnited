@@ -11,8 +11,10 @@ import PZInGameEventKit
 import SwiftUI
 import WidgetKit
 
-typealias EventModel = GIOngoingEvents.EventList.EventModel
+@available(watchOS, unavailable)
 typealias MaterialWeekday = GITodayMaterial.AvailableWeekDay
+@available(watchOS, unavailable)
+typealias EventModel = OfficialFeed.FeedEvent
 
 // MARK: - MaterialWidgetEntry
 
@@ -53,11 +55,13 @@ struct MaterialWidgetProvider: TimelineProvider {
         completion: @escaping @Sendable (MaterialWidgetEntry) -> Void
     ) {
         Task {
-            switch await GIOngoingEvents.fetch() {
-            case let .success(data):
-                completion(.init(events: .init(data.event.values)))
-            case .failure:
+            let results = await OfficialFeed.getAllFeedEventsOnline().filter {
+                $0.game == .genshinImpact
+            }
+            if results.isEmpty {
                 completion(.init(events: nil))
+            } else {
+                completion(.init(events: results))
             }
         }
     }
@@ -67,16 +71,10 @@ struct MaterialWidgetProvider: TimelineProvider {
         completion: @escaping @Sendable (Timeline<MaterialWidgetEntry>) -> Void
     ) {
         Task {
-            switch await GIOngoingEvents.fetch() {
-            case let .success(data):
-                completion(.init(
-                    entries: [.init(events: .init(data.event.values))],
-                    policy: .after(
-                        Calendar.current
-                            .date(byAdding: .hour, value: 4, to: Date())!
-                    )
-                ))
-            case .failure:
+            let results = await OfficialFeed.getAllFeedEventsOnline().filter {
+                $0.game == .genshinImpact
+            }
+            if results.isEmpty {
                 completion(
                     .init(
                         entries: [.init(events: nil)],
@@ -86,6 +84,14 @@ struct MaterialWidgetProvider: TimelineProvider {
                         )
                     )
                 )
+            } else {
+                completion(.init(
+                    entries: [.init(events: .init(results))],
+                    policy: .after(
+                        Calendar.current
+                            .date(byAdding: .hour, value: 4, to: Date())!
+                    )
+                ))
             }
         }
     }

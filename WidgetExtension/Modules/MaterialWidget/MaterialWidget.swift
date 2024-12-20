@@ -49,7 +49,7 @@ struct MaterialWidgetView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack(alignment: .bottom) {
+            HStack(alignment: .center) {
                 VStack(alignment: .leading, spacing: 1) {
                     Text(weekday)
                         .font(.caption)
@@ -149,72 +149,24 @@ private struct EventView: View {
 
     @ViewBuilder
     func eventItem(event: EventModel) -> some View {
+        let line = event.textListItemRaw()
         HStack {
-            Text(verbatim: " \(getLocalizedContent(event.name))")
+            Text(verbatim: " \(line.title)")
                 .lineLimit(1)
             Spacer()
-            Text(timeIntervalFormattedString(getRemainTimeInterval(
-                event
-                    .endAt
-            )))
-            .allowsTightening(true)
-            .lineLimit(1)
-            .minimumScaleFactor(0.5)
+            Text(line.remainingDays)
+                .allowsTightening(true)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
         }
         .font(.caption)
     }
 
     func getEvents(_ prefix: Int) -> [EventModel] {
-        events
-            .filter { getRemainTimeInterval($0.endAt) > 0 }
-            .shuffled()
+        let filtered = events
+            .filter { $0.endAtDate.timeIntervalSince1970 >= Date.now.timeIntervalSince1970 }
             .prefix(prefix)
-            .sorted(by: {
-                getRemainTimeInterval($0.endAt) <
-                    getRemainTimeInterval($1.endAt)
-            })
-    }
-
-    func getRemainTimeInterval(_ endAt: String) -> TimeInterval {
-        let dateFormatter = DateFormatter.Gregorian()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = (HoYo.Server(rawValue: Defaults[.defaultServer]) ?? .asia(.genshinImpact)).timeZone
-        let endDate = dateFormatter.date(from: endAt)!
-        return endDate.timeIntervalSinceReferenceDate - Date()
-            .timeIntervalSinceReferenceDate
-    }
-
-    func timeIntervalFormattedString(_ timeInterval: TimeInterval) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .short
-        formatter.maximumUnitCount = 1
-        return formatter.string(
-            from: Date(),
-            to: Date(timeIntervalSinceNow: timeInterval)
-        )!
-    }
-
-    func getLocalizedContent(
-        _ content: EventModel
-            .MultiLanguageContents
-    )
-        -> String {
-        let locale = Bundle.main.preferredLocalizations.first
-        switch locale {
-        case "zh-Hans":
-            return content.CHS
-        case "zh-Hant", "zh-HK":
-            return content.CHT
-        case "en":
-            return content.EN
-        case "ja":
-            return content.JP
-        case "ru":
-            return content.RU
-        default:
-            return content.EN
-        }
+        return .init(filtered)
     }
 }
 
