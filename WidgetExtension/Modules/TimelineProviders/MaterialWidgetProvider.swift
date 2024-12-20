@@ -13,8 +13,6 @@ import WidgetKit
 
 @available(watchOS, unavailable)
 typealias MaterialWeekday = GITodayMaterial.AvailableWeekDay
-@available(watchOS, unavailable)
-typealias EventModel = OfficialFeed.FeedEvent
 
 // MARK: - MaterialWidgetEntry
 

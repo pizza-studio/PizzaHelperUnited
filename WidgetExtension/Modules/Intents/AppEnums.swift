@@ -4,6 +4,7 @@
 
 import AppIntents
 import Foundation
+import PZBaseKit
 
 // MARK: - AutoRotationUsingResinWidgetStyleAppEnum
 
@@ -41,4 +42,33 @@ public enum WeeklyBossesDisplayMethodAppEnum: String, AppEnum {
         .alwaysShow: "appEnum.WeeklyBossesDisplayMethod.alwaysVisible",
         .neverShow: "appEnum.WeeklyBossesDisplayMethod.alwaysHidden",
     ]
+}
+
+// MARK: - WidgetSupportedGame
+
+public enum WidgetSupportedGame: String, AppEnum {
+    case allGames = "ALL"
+    case genshinImpact = "GI"
+    case starRail = "HSR"
+    case zenlessZone = "ZZZ"
+
+    // MARK: Public
+
+    public static let typeDisplayRepresentation =
+        TypeDisplayRepresentation(name: "appEnum.WidgetSupportedGame.title")
+    public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+        .allGames: "appEnum.WidgetSupportedGame.allGames",
+        .genshinImpact: "appEnum.WidgetSupportedGame.GI",
+        .starRail: "appEnum.WidgetSupportedGame.HSR",
+        .zenlessZone: "appEnum.WidgetSupportedGame.ZZZ",
+    ]
+
+    public var realValue: Pizza.SupportedGame? {
+        switch self {
+        case .genshinImpact: .genshinImpact
+        case .starRail: .starRail
+        case .zenlessZone: .zenlessZone
+        case .allGames: .none
+        }
+    }
 }
