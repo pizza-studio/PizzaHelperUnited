@@ -128,6 +128,17 @@ extension Note4ZZZ {
 
         // MARK: Public
 
+        public var localizedDescription: String {
+            switch self {
+            case .revenueAvailable:
+                String(localized: "dailyNote.zzz.vhsState.revenueAvailable", bundle: .module)
+            case .awaitingForOperation:
+                String(localized: "dailyNote.zzz.vhsState.awaitingForOperation", bundle: .module)
+            case .inOperation:
+                String(localized: "dailyNote.zzz.vhsState.inOperation", bundle: .module)
+            }
+        }
+
         public var isInOperation: Bool {
             self == .inOperation
         }

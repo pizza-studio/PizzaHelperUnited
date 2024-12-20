@@ -148,11 +148,9 @@ struct WatchAccountDetailView: View {
     @ViewBuilder
     private func drawNote4ZZZ(_ data: Note4ZZZ) -> some View {
         Group {
-            let stateOn: String.LocalizationValue = "watch.dailyNote.card.zzzVHSStoreInOperationState.on"
-            let stateOff: String.LocalizationValue = "watch.dailyNote.card.zzzVHSStoreInOperationState.off"
             WatchAccountDetailItemView(
                 title: "watch.dailyNote.card.zzzVHSStoreInOperationState.label",
-                value: String(localized: data.vhsStoreState.isInOperation ? stateOn : stateOff, bundle: .module),
+                value: String(data.vhsStoreState.localizedDescription),
                 icon: data.game.zzzVHSStoreAssetIcon
             )
             Divider()
