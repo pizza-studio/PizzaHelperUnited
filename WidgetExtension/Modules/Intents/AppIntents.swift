@@ -4,6 +4,7 @@
 
 import AppIntents
 import Foundation
+import PZBaseKit
 
 // MARK: - SelectOnlyAccountIntent
 
@@ -147,6 +148,30 @@ public struct WidgetRefreshIntent: AppIntent {
     public static var isDiscoverable: Bool { false }
 
     public func perform() async throws -> some IntentResult {
+        .result()
+    }
+}
+
+// MARK: - SelectOnlyGameIntent
+
+public struct SelectOnlyGameIntent: AppIntent, WidgetConfigurationIntent {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
+    public static let title: LocalizedStringResource = "intent.name.selectGameOnly"
+    public static let description = IntentDescription("intent.description.chooseTheGame")
+
+    public static var isDiscoverable: Bool { false }
+
+    public static var parameterSummary: some ParameterSummary { Summary() }
+
+    @Parameter(title: "intent.field.game") public var game: WidgetSupportedGame?
+
+    public func perform() async throws -> some IntentResult {
+        // TODO: Place your refactored intent handler code here.
         .result()
     }
 }

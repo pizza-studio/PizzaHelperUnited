@@ -44,7 +44,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
     typealias Entry = ResinEntry
     typealias Intent = SelectAccountIntent
 
-    func recommendations() -> [AppIntentRecommendation<SelectAccountIntent>] { [] }
+    func recommendations() -> [AppIntentRecommendation<Intent>] { [] }
 
     func placeholder(in context: Context) -> Entry {
         Entry(
