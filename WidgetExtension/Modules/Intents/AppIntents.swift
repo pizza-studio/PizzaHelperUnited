@@ -74,7 +74,7 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
     /// This property, as an array with typed contents, is not inheritable from SiriKit Intents.
     /// If not changing the field name to a new one, the previous data will hinder this property
     /// from being configured by the user. Hence the change from `background` to `chosenBackgrounds`.
-    @Parameter(title: "intent.field.wallpaper") public var chosenBackgrounds: [WidgetBackgroundAppEntity]?
+    @Parameter(title: "intent.field.wallpaper", default: []) public var chosenBackgrounds: [WidgetBackgroundAppEntity]
 
     @Parameter(title: "intent.field.followSystemDarkMode", default: true) public var isDarkModeRespected: Bool
 
@@ -133,25 +133,6 @@ public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfiguratio
     }
 }
 
-// MARK: - WidgetRefreshIntent
-
-@available(watchOS, unavailable)
-public struct WidgetRefreshIntent: AppIntent {
-    // MARK: Lifecycle
-
-    public init() {}
-
-    // MARK: Public
-
-    public static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
-
-    public static var isDiscoverable: Bool { false }
-
-    public func perform() async throws -> some IntentResult {
-        .result()
-    }
-}
-
 // MARK: - SelectOnlyGameIntent
 
 public struct SelectOnlyGameIntent: AppIntent, WidgetConfigurationIntent {
@@ -168,10 +149,29 @@ public struct SelectOnlyGameIntent: AppIntent, WidgetConfigurationIntent {
 
     public static var parameterSummary: some ParameterSummary { Summary() }
 
-    @Parameter(title: "intent.field.game") public var game: WidgetSupportedGame?
+    @Parameter(title: "intent.field.game", default: WidgetSupportedGame.allGames) public var game: WidgetSupportedGame
 
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
+        .result()
+    }
+}
+
+// MARK: - WidgetRefreshIntent
+
+@available(watchOS, unavailable)
+public struct WidgetRefreshIntent: AppIntent {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
+    public static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
+
+    public static var isDiscoverable: Bool { false }
+
+    public func perform() async throws -> some IntentResult {
         .result()
     }
 }

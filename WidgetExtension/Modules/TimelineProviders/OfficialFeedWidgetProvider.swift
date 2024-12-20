@@ -43,11 +43,11 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
     func recommendations() -> [AppIntentRecommendation<Intent>] { [] }
 
     func snapshot(for configuration: Intent, in context: Context) async -> Entry {
-        let game = configuration.game?.realValue
+        let game = configuration.game.realValue
         let results = await OfficialFeed.getAllFeedEventsOnline().filter {
             switch game {
             case .none: true
-            default: $0.game == configuration.game?.realValue
+            default: $0.game == configuration.game.realValue
             }
         }
         if results.isEmpty {
@@ -58,11 +58,11 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
     }
 
     func timeline(for configuration: Intent, in context: Context) async -> Timeline<Entry> {
-        let game = configuration.game?.realValue
+        let game = configuration.game.realValue
         let results = await OfficialFeed.getAllFeedEventsOnline().filter {
             switch game {
             case .none: true
-            default: $0.game == configuration.game?.realValue
+            default: $0.game == configuration.game.realValue
             }
         }
         if results.isEmpty {
