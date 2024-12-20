@@ -72,9 +72,12 @@ struct ListOf3rdPartyComponentsView: View {
                     }
                     .font(.caption)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(verbatim: "Game Account Data API - 米游社 (CN) / HoYoLAB (OS)")
-                        .font(.caption)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text(verbatim: "Game Account Data API - 米游社 (CN) / HoYoLAB (OS)").textSelection(.enabled)
+                        Text(verbatim: "Official Feeds API - 米游社 (CN) / HoYoLAB (OS)").textSelection(.enabled)
+                    }
+                    .font(.caption)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 } header: {
                     Text("aboutKit.3rdParty.headline", bundle: .module)
                         .textCase(.none)
