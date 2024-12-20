@@ -96,28 +96,3 @@ struct MaterialWidgetProvider: TimelineProvider {
         }
     }
 }
-
-@available(watchOS, unavailable)
-extension View {
-    private func myWidgetContainerBackground<V: View>(
-        withPadding padding: CGFloat,
-        @ViewBuilder _ content: @escaping () -> V
-    )
-        -> some View {
-        modifier(ContainerBackgroundModifier(padding: padding, background: content))
-    }
-}
-
-// MARK: - ContainerBackgroundModifier
-
-@available(watchOS, unavailable)
-private struct ContainerBackgroundModifier<V: View>: ViewModifier {
-    let padding: CGFloat
-    let background: () -> V
-
-    func body(content: Content) -> some View {
-        content.containerBackground(for: .widget) {
-            background()
-        }
-    }
-}
