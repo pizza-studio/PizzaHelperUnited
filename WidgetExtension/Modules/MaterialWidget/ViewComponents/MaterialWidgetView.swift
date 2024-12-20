@@ -140,6 +140,7 @@ extension MaterialWidgetView {
                     .minimumScaleFactor(0.5)
             }
             .font(.caption)
+            .fontWidth(.condensed)
         }
 
         func getEvents(_ prefix: Int) -> [EventModel] {
