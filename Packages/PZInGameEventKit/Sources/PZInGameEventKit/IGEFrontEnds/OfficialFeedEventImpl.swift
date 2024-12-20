@@ -15,12 +15,12 @@ extension OfficialFeed.FeedEvent {
             let endAtIntel = endAtTime
             if let dayLeft = endAtIntel.day, dayLeft > 0 {
                 Text(
-                    "igev.gi.gameEvents.daysLeft:\(dayLeft)",
+                    "igev.gameEvents.daysLeft:\(dayLeft)",
                     bundle: .module
                 )
             } else if let hoursLeft = endAtIntel.hour, hoursLeft > 0 {
                 Text(
-                    "igev.gi.gameEvents.hoursLeft:\(hoursLeft)",
+                    "igev.gameEvents.hoursLeft:\(hoursLeft)",
                     bundle: .module
                 )
             }
@@ -35,13 +35,13 @@ extension OfficialFeed.FeedEvent {
             if let dayLeft = endAtIntel.day, dayLeft > 0 {
                 return String(
                     localized:
-                    "igev.gi.gameEvents.daysLeft:\(dayLeft)",
+                    "igev.gameEvents.daysLeft:\(dayLeft)",
                     bundle: .module
                 )
             } else if let hoursLeft = endAtIntel.hour, hoursLeft > 0 {
                 return String(
                     localized:
-                    "igev.gi.gameEvents.hoursLeft:\(hoursLeft)",
+                    "igev.gameEvents.hoursLeft:\(hoursLeft)",
                     bundle: .module
                 )
             } else {

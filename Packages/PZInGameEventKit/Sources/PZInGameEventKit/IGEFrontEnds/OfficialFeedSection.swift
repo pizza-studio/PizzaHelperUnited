@@ -107,14 +107,14 @@ extension OfficialFeed.OfficialFeedSection {
                         NavigationLink {
                             OfficialFeed.OfficialFeedAllListView(eventContents: eventContents)
                         } label: {
-                            Text("igev.gi.gameEvents.pendingEvents.title", bundle: .module)
+                            Text("igev.gameEvents.pendingEvents.title", bundle: .module)
                         }
                         VStack(spacing: 7) {
                             let eventContentsValid = validEventContents.prefix(3)
                             if eventContentsValid.isEmpty {
                                 HStack {
                                     Spacer()
-                                    Text("igev.gi.gameEvents.noCurrentEventInfo", bundle: .module)
+                                    Text("igev.gameEvents.noCurrentEventInfo", bundle: .module)
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                     Spacer()

@@ -24,7 +24,7 @@ extension OfficialFeed {
         typealias EventModel = OfficialFeed.FeedEvent
 
         static var navTitle: String {
-            "igev.gi.gameEvents.pendingEvents.title".i18nIGEV
+            "igev.gameEvents.pendingEvents.title".i18nIGEV
         }
 
         @Environment(\.colorScheme) var colorScheme
@@ -49,10 +49,8 @@ extension OfficialFeed {
                         $0.endAtTime.second ?? 0 >= 0
                     }).count <= 0 {
                         Spacer(minLength: 50)
-                        Text("igev.gi.gameEvents.noCurrentEventInfo", bundle: .module)
+                        Text("igev.gameEvents.noCurrentEventInfo", bundle: .module)
                             .padding()
-                        Text("igev.gi.gameEvents.intelligenceProvider", bundle: .module)
-                            .font(.caption)
                     }
                     ForEach(eventContents, id: \.id) { content in
                         if content.endAtTime.second ?? 0 >= 0 {
@@ -117,12 +115,12 @@ extension OfficialFeed {
                                     let endAtIntel = content.endAtTime
                                     if let dayLeft = endAtIntel.day, dayLeft > 0 {
                                         Text(
-                                            "igev.gi.gameEvents.daysLeft:\(dayLeft)",
+                                            "igev.gameEvents.daysLeft:\(dayLeft)",
                                             bundle: .module
                                         )
                                     } else if let hoursLeft = endAtIntel.hour, hoursLeft > 0 {
                                         Text(
-                                            "igev.gi.gameEvents.hoursLeft:\(hoursLeft)",
+                                            "igev.gameEvents.hoursLeft:\(hoursLeft)",
                                             bundle: .module
                                         )
                                     }
