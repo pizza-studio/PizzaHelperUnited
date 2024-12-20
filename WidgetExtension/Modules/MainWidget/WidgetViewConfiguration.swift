@@ -20,11 +20,8 @@ struct WidgetViewConfiguration {
         self.trounceBlossomDisplayMethod = intent.trounceBlossomDisplayMethod
         self.echoOfWarDisplayMethod = intent.echoOfWarDisplayMethod
         self.randomBackground = intent.randomBackground
-        if let backgrounds = intent.chosenBackgrounds {
-            self.selectedBackgrounds = backgrounds.isEmpty ? [.defaultBackground] : backgrounds
-        } else {
-            self.selectedBackgrounds = [.defaultBackground]
-        }
+        let backgrounds = intent.chosenBackgrounds
+        self.selectedBackgrounds = backgrounds.isEmpty ? [.defaultBackground] : backgrounds
         self.isDarkModeRespected = intent.isDarkModeRespected
         self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget
     }
