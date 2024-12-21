@@ -113,17 +113,20 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Timeline<Entry> {
-        var refreshTime = PZWidgets.getRefreshDate()
-        let entries: [Entry] = await getEntries(configuration: configuration, refreshTime: &refreshTime)
+        let result: (entries: [Entry], refreshTime: Date) = await Task(priority: .background) {
+            var refreshTime = PZWidgets.getRefreshDate()
+            let entries = await Self.getEntries(configuration: configuration, refreshTime: &refreshTime)
+            return (entries, refreshTime)
+        }.value
         return Timeline(
-            entries: entries,
-            policy: .after(refreshTime)
+            entries: result.entries,
+            policy: .after(result.refreshTime)
         )
     }
 
     // MARK: Private
 
-    private func getEntries(configuration: Intent, refreshTime: inout Date) async -> [Entry] {
+    private static func getEntries(configuration: Intent, refreshTime: inout Date) async -> [Entry] {
         let findProfileResult = findProfile(for: configuration)
         switch findProfileResult {
         case let .success(profile):
@@ -170,13 +173,13 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
         }
     }
 
-    private func fetchDailyNote(for profile: PZProfileSendable) async -> Result<DailyNoteProtocol, Error> {
+    private static func fetchDailyNote(for profile: PZProfileSendable) async -> Result<DailyNoteProtocol, Error> {
         await Task(priority: .background) {
             try await profile.getDailyNote()
         }.result
     }
 
-    private func findProfile(for configuration: Intent) -> Result<PZProfileSendable, WidgetError> {
+    private static func findProfile(for configuration: Intent) -> Result<PZProfileSendable, WidgetError> {
         let allProfiles = PZWidgets.getAllProfiles()
         guard let firstProfile = allProfiles.first else {
             print("Config is empty")

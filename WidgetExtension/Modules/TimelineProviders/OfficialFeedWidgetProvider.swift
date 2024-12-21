@@ -59,12 +59,14 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
 
     func timeline(for configuration: Intent, in context: Context) async -> Timeline<Entry> {
         let game = configuration.game.realValue
-        let results = await OfficialFeed.getAllFeedEventsOnline().filter {
-            switch game {
-            case .none: true
-            default: $0.game == configuration.game.realValue
+        let results = await Task(priority: .background) {
+            await OfficialFeed.getAllFeedEventsOnline().filter {
+                switch game {
+                case .none: true
+                default: $0.game == configuration.game.realValue
+                }
             }
-        }
+        }.value
         if results.isEmpty {
             return .init(
                 entries: [.init(game: game, events: nil)],
