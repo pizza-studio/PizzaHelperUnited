@@ -23,8 +23,10 @@ private struct ContainerBackgroundModifier<V: View>: ViewModifier {
     let background: () -> V
 
     func body(content: Content) -> some View {
-        content.containerBackground(for: .widget) {
-            background()
-        }
+        content
+            .padding(padding)
+            .containerBackground(for: .widget) {
+                background()
+            }
     }
 }
