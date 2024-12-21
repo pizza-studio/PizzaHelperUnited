@@ -74,20 +74,8 @@ struct LargeWidgetView: View {
             OfficialFeedWidgetView(entry: entry.officialFeedEntry, isEmbedded: true)
                 .padding(.leading, 20)
             Spacer()
-            HStack(alignment: .firstTextBaseline, spacing: 1) {
-                Text(dayOfMonth)
-                    .font(.system(
-                        size: 35,
-                        weight: .regular,
-                        design: .rounded
-                    ))
-                Text(weekday)
-                    .font(.caption)
-                    .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
-                    .bold()
-            }
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            .legibilityShadow()
+            WeekdayDisplayView()
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .frame(maxWidth: .infinity)
     }
