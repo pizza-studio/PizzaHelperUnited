@@ -87,9 +87,6 @@ extension OfficialFeed {
         metaStack.append(contentsOf: package.meta.list.flatMap(\.list))
         metaStack.append(contentsOf: package.meta.picList.flatMap(\.typeList).flatMap(\.list))
         metaStack.forEach { rawMeta in
-            if game == .starRail {
-                print(game.description)
-            }
             guard rawMeta.type == validEventTypeID else { return }
             guard let contentObj = contentMap[rawMeta.annID] else { return }
             guard var contentDescription = contentObj.content, !contentDescription.isEmpty else { return }
