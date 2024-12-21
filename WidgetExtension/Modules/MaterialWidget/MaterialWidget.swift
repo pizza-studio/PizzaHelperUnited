@@ -3,6 +3,9 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZAccountKit
+import PZBaseKit
+import PZInGameEventKit
 import SwiftUI
 import WidgetKit
 
@@ -21,5 +24,46 @@ struct MaterialWidget: Widget {
         .description("pzWidgetsKit.material.description".i18nWidgets)
         .supportedFamilies([.systemMedium])
         .containerBackgroundRemovable(false)
+    }
+}
+
+// MARK: - MaterialWidgetView
+
+@available(watchOS, unavailable)
+struct MaterialWidgetView: View {
+    let entry: MaterialWidgetEntry
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .center) {
+                WeekdayDisplayView()
+                Spacer()
+                ZStack(alignment: .trailing) {
+                    if entry.materialWeekday != nil {
+                        MaterialView(alternativeLayout: true)
+                    } else {
+                        Image(systemSymbol: .checkmarkCircleFill)
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(Circle())
+                            .legibilityShadow(isText: false)
+                    }
+                }
+                .frame(height: 35)
+            }
+            .frame(height: 40)
+            .padding(.bottom, 12)
+            OfficialFeedList4WidgetsView(
+                events: entry.events,
+                showLeadingBorder: true
+            )
+        }
+        .foregroundColor(Color("textColor3", bundle: .main))
+        .myWidgetContainerBackground(withPadding: 0) {
+            WidgetBackgroundView(
+                background: .randomNamecardBackground4Game(.genshinImpact),
+                darkModeOn: true
+            )
+        }
     }
 }
