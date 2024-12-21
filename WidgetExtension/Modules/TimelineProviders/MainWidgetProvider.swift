@@ -6,18 +6,25 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZInGameEventKit
 import SwiftUI
 import WidgetKit
 
-// MARK: - ResinEntry
+// MARK: - MainWidgetEntry
 
 @available(watchOS, unavailable)
-struct ResinEntry: TimelineEntry {
+struct MainWidgetEntry: TimelineEntry {
     let date: Date
     let timestampOnCreation: Date = .now
     let result: Result<any DailyNoteProtocol, any Error>
     let viewConfig: WidgetViewConfiguration
     let profile: PZProfileSendable?
+    let events: [EventModel]
+
+    var officialFeedEntry: OfficialFeedWidgetEntry? {
+        guard let game = profile?.game else { return nil }
+        return OfficialFeedWidgetEntry(game: game, events: events)
+    }
 
     var relevance: TimelineEntryRelevance? {
         switch result {
@@ -41,7 +48,7 @@ struct ResinEntry: TimelineEntry {
 struct MainWidgetProvider: AppIntentTimelineProvider {
     // MARK: Internal
 
-    typealias Entry = ResinEntry
+    typealias Entry = MainWidgetEntry
     typealias Intent = SelectAccountIntent
 
     func recommendations() -> [AppIntentRecommendation<Intent>] { [] }
@@ -51,7 +58,8 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             date: Date(),
             result: .success(Pizza.SupportedGame.genshinImpact.exampleDailyNoteData),
             viewConfig: .defaultConfig,
-            profile: .getDummyInstance(for: .genshinImpact)
+            profile: .getDummyInstance(for: .genshinImpact),
+            events: []
         )
     }
 
@@ -60,13 +68,17 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Entry {
-        Entry(
+        let eventResults = await OfficialFeed.getAllFeedEventsOnline().filter {
+            $0.game == .genshinImpact
+        }
+        return Entry(
             date: Date(),
             result: .success(
                 (Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact).exampleDailyNoteData
             ),
             viewConfig: .defaultConfig,
-            profile: .getDummyInstance(for: .genshinImpact)
+            profile: .getDummyInstance(for: .genshinImpact),
+            events: eventResults
         )
     }
 
@@ -90,6 +102,9 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         switch findProfileResult {
         case let .success(profile):
             let dailyNoteResult = await fetchDailyNote(for: profile)
+            let eventResults = await OfficialFeed.getAllFeedEventsOnline().filter {
+                $0.game == profile.game
+            }
             switch dailyNoteResult {
             case .success:
                 refreshTime = PZWidgets.getRefreshDate() // fetchDailyNote 的过程本身就会消耗时间，需要统计。
@@ -106,7 +121,8 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                             date: tlEntryDate,
                             result: dailyNoteResult,
                             viewConfig: .init(configuration, nil),
-                            profile: profile
+                            profile: profile,
+                            events: eventResults
                         )
                     )
                     boostDate()
@@ -119,7 +135,8 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                         date: Date(),
                         result: .failure(error),
                         viewConfig: .init(configuration, nil),
-                        profile: profile
+                        profile: profile,
+                        events: eventResults
                     ),
                 ]
             }
@@ -129,7 +146,8 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                     date: Date(),
                     result: .failure(exception),
                     viewConfig: .init(configuration, nil),
-                    profile: nil
+                    profile: nil,
+                    events: []
                 ),
             ]
         }

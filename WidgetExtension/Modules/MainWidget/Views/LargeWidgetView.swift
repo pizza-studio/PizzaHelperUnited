@@ -12,10 +12,12 @@ import WidgetKit
 
 @available(watchOS, unavailable)
 struct LargeWidgetView: View {
-    let entry: any TimelineEntry
+    let entry: MainWidgetProvider.Entry
+    @Environment(\.widgetFamily) var family: WidgetFamily
     var dailyNote: any DailyNoteProtocol
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
+    let events: [EventModel]
 
     var body: some View {
         HStack {
@@ -26,24 +28,71 @@ struct LargeWidgetView: View {
                 DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            Spacer()
-            VStack(alignment: .leading) {
-                ExpeditionsView(
-                    expeditions: dailyNote.expeditionTasks
-                )
-                Spacer(minLength: 15)
-                if dailyNote.game == .genshinImpact, viewConfig.showMaterialsInLargeSizeWidget {
-                    MaterialView()
+            /// 绝区零没有探索派遣。
+            if dailyNote.game != .zenlessZone {
+                Spacer()
+                VStack(alignment: .leading) {
+                    ExpeditionsView(
+                        expeditions: dailyNote.expeditionTasks
+                    )
+                    Spacer(minLength: 15)
+                    if dailyNote.game == .genshinImpact, viewConfig.showMaterialsInLargeSizeWidget {
+                        MaterialView()
+                    }
                 }
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
+            if family == .systemExtraLarge {
+                officialFeedBlock()
+                    .containerRelativeFrame(.horizontal) { length, _ in
+                        length * 0.5
+                    }
+            }
             Spacer()
         }
         .padding()
     }
 
+    // MARK: Private
+
+    private var weekday: String {
+        let formatter = DateFormatter.Gregorian()
+        formatter.dateFormat = "EEE"
+        return formatter.string(from: Date())
+    }
+
+    private var dayOfMonth: String {
+        let formatter = DateFormatter.Gregorian()
+        formatter.dateFormat = "d"
+        return formatter.string(from: Date())
+    }
+
     @ViewBuilder
-    func mainInfo() -> some View {
+    private func officialFeedBlock() -> some View {
+        VStack(alignment: .trailing) {
+            OfficialFeedWidgetView(entry: entry.officialFeedEntry, isEmbedded: true)
+                .padding(.leading, 20)
+            Spacer()
+            HStack(alignment: .firstTextBaseline, spacing: 1) {
+                Text(dayOfMonth)
+                    .font(.system(
+                        size: 35,
+                        weight: .regular,
+                        design: .rounded
+                    ))
+                Text(weekday)
+                    .font(.caption)
+                    .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
+                    .bold()
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .legibilityShadow()
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    @ViewBuilder
+    private func mainInfo() -> some View {
         VStack(alignment: .leading, spacing: 5) {
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {

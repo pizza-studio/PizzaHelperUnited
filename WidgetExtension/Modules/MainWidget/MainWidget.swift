@@ -23,7 +23,7 @@ struct MainWidget: Widget {
         }
         .configurationDisplayName("pzWidgetsKit.status.title".i18nWidgets)
         .description("pzWidgetsKit.status.enquiry.title".i18nWidgets)
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
         .containerBackgroundRemovable(false)
     }
 }
