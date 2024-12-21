@@ -20,17 +20,17 @@ typealias EventModel = OfficialFeed.FeedEvent
 struct OfficialFeedWidgetEntry: TimelineEntry {
     // MARK: Lifecycle
 
-    init(game: Pizza.SupportedGame?, events: [EventModel]?) {
+    init(games: Set<Pizza.SupportedGame>, events: [EventModel]?) {
         self.date = Date()
         self.events = events
-        self.game = game
+        self.games = games
     }
 
     // MARK: Internal
 
     let date: Date
     let events: [EventModel]?
-    let game: Pizza.SupportedGame?
+    let games: Set<Pizza.SupportedGame>
 }
 
 // MARK: - OfficialFeedWidgetProvider
@@ -44,32 +44,38 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
 
     func snapshot(for configuration: Intent, in context: Context) async -> Entry {
         let game = configuration.game.realValue
+        let games = configuration.inverseSelectMode
+            ? configuration.game.inverseSelectedValues
+            : [game].compactMap { $0 }
         let results = await OfficialFeed.getAllFeedEventsOnline().filter {
             switch game {
             case .none: true
-            default: $0.game == configuration.game.realValue
+            default: games.contains($0.game)
             }
         }
         if results.isEmpty {
-            return .init(game: game, events: nil)
+            return .init(games: .init(games), events: nil)
         } else {
-            return .init(game: game, events: results)
+            return .init(games: .init(games), events: results)
         }
     }
 
     func timeline(for configuration: Intent, in context: Context) async -> Timeline<Entry> {
         let game = configuration.game.realValue
+        let games = configuration.inverseSelectMode
+            ? configuration.game.inverseSelectedValues
+            : [game].compactMap { $0 }
         let results = await Task(priority: .background) {
             await OfficialFeed.getAllFeedEventsOnline().filter {
                 switch game {
                 case .none: true
-                default: $0.game == configuration.game.realValue
+                default: games.contains($0.game)
                 }
             }
         }.value
         if results.isEmpty {
             return .init(
-                entries: [.init(game: game, events: nil)],
+                entries: [.init(games: .init(games), events: nil)],
                 policy: .after(
                     Calendar.current
                         .date(byAdding: .hour, value: 1, to: Date())!
@@ -77,7 +83,7 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
             )
         } else {
             return .init(
-                entries: [.init(game: game, events: .init(results))],
+                entries: [.init(games: .init(games), events: .init(results))],
                 policy: .after(
                     Calendar.current
                         .date(byAdding: .hour, value: 4, to: Date())!
@@ -87,6 +93,6 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
     }
 
     func placeholder(in context: Context) -> Entry {
-        Entry(game: nil, events: nil)
+        Entry(games: .init(Pizza.SupportedGame.allCases), events: nil)
     }
 }
