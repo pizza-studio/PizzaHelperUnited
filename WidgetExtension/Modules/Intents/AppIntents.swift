@@ -151,6 +151,8 @@ public struct SelectOnlyGameIntent: AppIntent, WidgetConfigurationIntent {
 
     @Parameter(title: "intent.field.game", default: WidgetSupportedGame.allGames) public var game: WidgetSupportedGame
 
+    @Parameter(title: "intent.field.inverseSelectMode", default: false) public var inverseSelectMode: Bool
+
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
         .result()
