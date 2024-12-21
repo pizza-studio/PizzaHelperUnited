@@ -332,7 +332,7 @@ private func format(_ date: Date) -> String {
         datePrefix = "date.relative.tomorrow".i18nBaseKit
     case .other:
         datePrefix = ""
-        formatter.dateFormat = "EEE H:mm"
+        formatter.dateFormat = "E H:mm"
     }
     return datePrefix + formatter.string(from: date)
 }

@@ -57,7 +57,8 @@ struct LargeWidgetView: View {
 
     private var weekday: String {
         let formatter = DateFormatter.Gregorian()
-        formatter.dateFormat = "EEE"
+        formatter.dateFormat = "E" // Shortened weekday format
+        formatter.locale = Locale.current // Use the system's current locale
         return formatter.string(from: Date())
     }
 
