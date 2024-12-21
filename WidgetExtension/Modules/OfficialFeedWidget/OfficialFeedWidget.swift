@@ -32,9 +32,10 @@ struct OfficialFeedWidget: Widget {
 struct OfficialFeedWidgetView: View {
     // MARK: Lifecycle
 
-    init(entry: OfficialFeedWidgetProvider.Entry) {
+    init(entry: OfficialFeedWidgetProvider.Entry?, isEmbedded: Bool = false) {
         self.entry = entry
-        self.game = entry.game
+        self.game = entry?.game
+        self.isEmbedded = isEmbedded
     }
 
     // MARK: Internal
@@ -42,68 +43,17 @@ struct OfficialFeedWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
 
     var body: some View {
-        Group {
-            if events.isEmpty {
-                Button(intent: WidgetRefreshIntent()) {
-                    Image(systemSymbol: .arrowClockwiseCircle)
-                        .font(.title3)
-                        .foregroundColor(Color("textColor3", bundle: .main))
-                        .clipShape(.circle)
+        if isEmbedded {
+            coreComponentEmbeddable()
+        } else {
+            coreComponentEmbeddable()
+                .myWidgetContainerBackground(withPadding: 0) {
+                    WidgetBackgroundView(
+                        background: .randomNamecardBackground4Game(game),
+                        darkModeOn: true
+                    )
                 }
-                .buttonStyle(.plain)
-            }
-            ViewThatFits(in: .vertical) {
-                ForEach(entriesCountAppliable, id: \.self) { entriesCount in
-                    VStack(spacing: 7) {
-                        ForEach(
-                            getEvents(entriesCount),
-                            id: \.id
-                        ) { content in
-                            eventItem(event: content)
-                        }
-                    }
-                    VStack(spacing: 5) {
-                        ForEach(
-                            getEvents(entriesCount),
-                            id: \.id
-                        ) { content in
-                            eventItem(event: content)
-                        }
-                    }
-                }
-            }
-            .padding(.leading, 7)
-            .overlay(alignment: .leading) {
-                Rectangle()
-                    .frame(width: 2)
-                    .frame(maxHeight: .infinity)
-                    .offset(x: 1)
-            }
-            .legibilityShadow(isText: true)
         }
-        .foregroundColor(Color("textColor3", bundle: .main))
-        .myWidgetContainerBackground(withPadding: 0) {
-            WidgetBackgroundView(
-                background: .randomNamecardBackground4Game(game),
-                darkModeOn: true
-            )
-        }
-    }
-
-    @ViewBuilder
-    func eventItem(event: EventModel) -> some View {
-        let line = event.textListItemRaw()
-        HStack {
-            Text(verbatim: " \(line.title)")
-                .lineLimit(1)
-            Spacer()
-            Text(line.remainingDays)
-                .allowsTightening(true)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-        }
-        .font(.caption)
-        .fontWidth(.condensed)
     }
 
     func getEvents(_ prefix: Int) -> [EventModel] {
@@ -116,8 +66,9 @@ struct OfficialFeedWidgetView: View {
 
     // MARK: Private
 
-    private let entry: OfficialFeedWidgetProvider.Entry
+    private let entry: OfficialFeedWidgetProvider.Entry?
     private let game: Pizza.SupportedGame?
+    private let isEmbedded: Bool
 
     private var entriesCountAppliable: [Int] {
         switch family {
@@ -130,6 +81,68 @@ struct OfficialFeedWidgetView: View {
     }
 
     private var events: [EventModel] {
-        entry.events ?? []
+        entry?.events ?? []
+    }
+
+    @ViewBuilder
+    private func coreComponentEmbeddable() -> some View {
+        if events.isEmpty {
+            Button(intent: WidgetRefreshIntent()) {
+                Image(systemSymbol: .arrowClockwiseCircle)
+                    .font(.title3)
+                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .clipShape(.circle)
+            }
+            .buttonStyle(.plain)
+            .foregroundColor(Color("textColor3", bundle: .main))
+        }
+        let leadingPadding: CGFloat? = isEmbedded ? nil : 7
+        ViewThatFits(in: .vertical) {
+            ForEach(entriesCountAppliable, id: \.self) { entriesCount in
+                VStack(spacing: 7) {
+                    ForEach(
+                        getEvents(entriesCount),
+                        id: \.id
+                    ) { content in
+                        eventItem(event: content)
+                    }
+                }
+                VStack(spacing: 5) {
+                    ForEach(
+                        getEvents(entriesCount),
+                        id: \.id
+                    ) { content in
+                        eventItem(event: content)
+                    }
+                }
+            }
+        }
+        .padding(.leading, leadingPadding)
+        .overlay(alignment: .leading) {
+            if !isEmbedded {
+                Rectangle()
+                    .frame(width: 2)
+                    .frame(maxHeight: .infinity)
+                    .offset(x: 1)
+            }
+        }
+        .legibilityShadow(isText: true)
+        .foregroundColor(Color("textColor3", bundle: .main))
+    }
+
+    @ViewBuilder
+    private func eventItem(event: EventModel) -> some View {
+        let line = event.textListItemRaw()
+        HStack {
+            Text(verbatim: " \(line.title)")
+                .lineLimit(1)
+            Spacer()
+            Text(line.remainingDays)
+                .allowsTightening(true)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+        }
+        .font(.caption)
+        .fontWidth(.condensed)
     }
 }
