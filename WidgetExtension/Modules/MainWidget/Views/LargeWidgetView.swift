@@ -71,8 +71,11 @@ struct LargeWidgetView: View {
     @ViewBuilder
     private func officialFeedBlock() -> some View {
         VStack(alignment: .trailing) {
-            OfficialFeedWidgetView(entry: entry.officialFeedEntry, isEmbedded: true)
-                .padding(.leading, 20)
+            OfficialFeedList4WidgetsView(
+                events: entry.events,
+                showLeadingBorder: false
+            )
+            .padding(.leading, 20)
             Spacer()
             WeekdayDisplayView()
                 .frame(maxWidth: .infinity, alignment: .trailing)

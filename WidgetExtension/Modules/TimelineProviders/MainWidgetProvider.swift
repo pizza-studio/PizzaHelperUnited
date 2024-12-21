@@ -21,11 +21,6 @@ struct MainWidgetEntry: TimelineEntry {
     let profile: PZProfileSendable?
     let events: [EventModel]
 
-    var officialFeedEntry: OfficialFeedWidgetEntry? {
-        guard let game = profile?.game else { return nil }
-        return OfficialFeedWidgetEntry(game: game, events: events)
-    }
-
     var relevance: TimelineEntryRelevance? {
         switch result {
         case let .success(data):
