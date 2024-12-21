@@ -36,11 +36,11 @@ struct OfficialFeedWidgetView: View {
     // MARK: Lifecycle
 
     init(
-        entry: OfficialFeedWidgetProvider.Entry?,
+        entry: OfficialFeedWidgetProvider.Entry,
         showLeadingBorder: Bool = true
     ) {
         self.entry = entry
-        self.game = entry?.game
+        self.games = entry.games
         self.showLeadingBorder = showLeadingBorder
     }
 
@@ -55,7 +55,7 @@ struct OfficialFeedWidgetView: View {
         )
         .myWidgetContainerBackground(withPadding: 0) {
             WidgetBackgroundView(
-                background: .randomNamecardBackground4Game(game),
+                background: .randomNamecardBackground4Games(games),
                 darkModeOn: true
             )
         }
@@ -64,6 +64,6 @@ struct OfficialFeedWidgetView: View {
     // MARK: Private
 
     private let entry: OfficialFeedWidgetProvider.Entry?
-    private let game: Pizza.SupportedGame?
+    private let games: Set<Pizza.SupportedGame>
     private let showLeadingBorder: Bool
 }

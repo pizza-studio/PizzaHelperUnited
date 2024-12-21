@@ -71,4 +71,11 @@ public enum WidgetSupportedGame: String, AppEnum {
         case .allGames: .none
         }
     }
+
+    public var inverseSelectedValues: [Pizza.SupportedGame] {
+        switch self {
+        case .allGames: Pizza.SupportedGame.allCases
+        default: Pizza.SupportedGame.allCases.filter { $0 != realValue }
+        }
+    }
 }

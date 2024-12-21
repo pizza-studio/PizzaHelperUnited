@@ -85,6 +85,13 @@ extension WidgetBackgroundAppEntity {
         return pickedBackgroundId.asWidgetBackgroundAppEntity
     }
 
+    static func randomNamecardBackground4Games(_ games: Set<Pizza.SupportedGame> = []) -> Self {
+        guard !games.isEmpty else { return randomNamecardBackground }
+        guard let game = games.randomElement() else { return randomNamecardBackground }
+        let pickedBackgroundId = Wallpaper.allCases(for: game).randomElement() ?? .defaultValue(for: game)
+        return pickedBackgroundId.asWidgetBackgroundAppEntity
+    }
+
     static var randomElementBackground: Self {
         let pickedBackgroundId = BackgroundOptions.elements.randomElement()!
         return WidgetBackgroundAppEntity(
