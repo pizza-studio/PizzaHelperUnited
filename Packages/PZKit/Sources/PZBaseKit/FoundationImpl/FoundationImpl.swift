@@ -330,7 +330,7 @@ extension Date {
             datePrefix = "date.relative.tomorrow"
             return datePrefix.i18nBaseKit + formatter.string(from: self)
         case .other:
-            formatter.dateFormat = "EEE H:mm"
+            formatter.dateFormat = "E H:mm"
             return formatter.string(from: self)
         }
     }
