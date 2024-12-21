@@ -9,7 +9,7 @@ import WidgetKit
 
 @available(watchOS, unavailable)
 struct WidgetMainView: View {
-    let entry: any TimelineEntry
+    let entry: MainWidgetProvider.Entry
     @Environment(\.widgetFamily) var family: WidgetFamily
     var dailyNote: any DailyNoteProtocol
     let viewConfig: WidgetViewConfiguration
@@ -34,12 +34,13 @@ struct WidgetMainView: View {
             .padding()
         case .systemMedium:
             defaultValue
-        case .systemLarge:
+        case .systemExtraLarge, .systemLarge:
             LargeWidgetView(
                 entry: entry,
                 dailyNote: dailyNote,
                 viewConfig: viewConfig,
-                accountName: profileName
+                accountName: profileName,
+                events: entry.events
             )
         default:
             defaultValue
