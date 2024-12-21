@@ -14,35 +14,10 @@ import SwiftUI
 struct MaterialWidgetView: View {
     let entry: MaterialWidgetEntry
 
-    var weekday: String {
-        let formatter = DateFormatter.Gregorian()
-        formatter.dateFormat = "E" // Shortened weekday format
-        formatter.locale = Locale.current // Use the system's current locale
-        return formatter.string(from: Date())
-    }
-
-    var dayOfMonth: String {
-        let formatter = DateFormatter.Gregorian()
-        formatter.dateFormat = "d"
-        return formatter.string(from: Date())
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .center) {
-                VStack(alignment: .leading, spacing: 1) {
-                    Text(weekday)
-                        .font(.caption)
-                        .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
-                        .bold()
-                    Text(dayOfMonth)
-                        .font(.system(
-                            size: 35,
-                            weight: .regular,
-                            design: .rounded
-                        ))
-                }
-                .legibilityShadow()
+                WeekdayDisplayView()
                 Spacer()
                 ZStack(alignment: .trailing) {
                     if entry.materialWeekday != nil {
