@@ -14,12 +14,27 @@ import WidgetKit
 
 @available(watchOS, unavailable)
 struct MainWidgetEntry: TimelineEntry {
+    // MARK: Lifecycle
+
+    init(
+        date: Date,
+        result: Result<any DailyNoteProtocol, any Error>,
+        viewConfig: WidgetViewConfiguration,
+        profile: PZProfileSendable?,
+        pilotAssetMap: [URL: CGImage]? = nil,
+        events: [EventModel]
+    ) {
+        self.date = date
+        self.result = result
+        self.viewConfig = viewConfig
+        self.profile = profile
+        self.events = events
+        self.pilotAssetMap = pilotAssetMap ?? [:]
+    }
+
+    // MARK: Internal
+
     let date: Date
-    let timestampOnCreation: Date = .now
-    let result: Result<any DailyNoteProtocol, any Error>
-    let viewConfig: WidgetViewConfiguration
-    let profile: PZProfileSendable?
-    let events: [EventModel]
 
     var relevance: TimelineEntryRelevance? {
         switch result {
@@ -35,6 +50,15 @@ struct MainWidgetEntry: TimelineEntry {
             return .init(score: 0)
         }
     }
+
+    // MARK: Private
+
+    private let timestampOnCreation: Date = .now
+    private let result: Result<any DailyNoteProtocol, any Error>
+    private let viewConfig: WidgetViewConfiguration
+    private let profile: PZProfileSendable?
+    private let events: [EventModel]
+    private let pilotAssetMap: [URL: CGImage]
 }
 
 // MARK: - MainWidgetProvider
@@ -49,11 +73,14 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
     func recommendations() -> [AppIntentRecommendation<Intent>] { [] }
 
     func placeholder(in context: Context) -> Entry {
-        Entry(
+        let sampleData = Pizza.SupportedGame.genshinImpact.exampleDailyNoteData
+        let assetMap = Self.getExpeditionAssetMap(from: sampleData)
+        return Entry(
             date: Date(),
             result: .success(Pizza.SupportedGame.genshinImpact.exampleDailyNoteData),
             viewConfig: .defaultConfig,
             profile: .getDummyInstance(for: .genshinImpact),
+            pilotAssetMap: assetMap,
             events: []
         )
     }
@@ -66,6 +93,11 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         let eventResults = await OfficialFeed.getAllFeedEventsOnline().filter {
             $0.game == .genshinImpact
         }
+        let game = Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact
+        let sampleData = game.exampleDailyNoteData
+        let assetMap = await Task(priority: .background) {
+            Self.getExpeditionAssetMap(from: sampleData)
+        }.value
         return Entry(
             date: Date(),
             result: .success(
@@ -73,6 +105,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             ),
             viewConfig: .defaultConfig,
             profile: .getDummyInstance(for: .genshinImpact),
+            pilotAssetMap: assetMap,
             events: eventResults
         )
     }
@@ -104,7 +137,10 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                 $0.game == profile.game
             }
             switch dailyNoteResult {
-            case .success:
+            case let .success(dailyNoteData):
+                let assetMap = await Task(priority: .background) {
+                    Self.getExpeditionAssetMap(from: dailyNoteData)
+                }.value
                 refreshTime = PZWidgets.getRefreshDate() // fetchDailyNote 的过程本身就会消耗时间，需要统计。
                 var tlEntryDate = Date.now
 
@@ -120,6 +156,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                             result: dailyNoteResult,
                             viewConfig: .init(configuration, nil),
                             profile: profile,
+                            pilotAssetMap: assetMap,
                             events: eventResults
                         )
                     )
@@ -183,5 +220,23 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             return .failure(.profileSelectionNeeded)
         }
         return .success(firstMatchedProfile)
+    }
+
+    private static func getExpeditionAssetMap(from dailyNote: any DailyNoteProtocol) -> [URL: CGImage]? {
+        guard dailyNote.hasExpeditions else { return nil }
+        let expeditions = dailyNote.expeditionTasks
+        guard !expeditions.isEmpty else { return nil }
+        var assetMap = [URL: CGImage]()
+        if dailyNote.hasExpeditions {
+            dailyNote.expeditionTasks.forEach {
+                let urls = [$0.iconURL, $0.iconURL4Copilot].compactMap { $0 }
+                urls.forEach { url in
+                    if let cgImage = CGImage.instantiate(url: url) {
+                        assetMap[url] = cgImage
+                    }
+                }
+            }
+        }
+        return assetMap
     }
 }
