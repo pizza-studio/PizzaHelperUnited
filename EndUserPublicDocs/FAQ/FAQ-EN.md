@@ -61,7 +61,9 @@ The Pizza Helper does accept voluntary donations from users, and the development
 
 #### Q: How do widgets automatically update a player's account status for Original Resin / Trailblaze Power / ZZZ Energy?
 
-These are collectively referred to as "player stamina" in The Pizza Helper. Widgets reload every certain minutes necessary for the recovery of a stamina point (which differs among supported game titles). Since version 5.0.4, The Pizza Helper's widgets will attempt to request real-time data from the Miyoushe / HoYoLAB servers every 2 hours (including the corresponding UID's Original Resin / Trailblaze Power / ZZZ Energy status). Desktop widgets also include a refresh button for reloading content. When you open The Pizza Helper app, all widgets will automatically request real-time data again. If you haven’t consumed stamina in-game, the stamina discrepancy shown in the widgets should not exceed 1.
+These are collectively referred to as "player stamina" in The Pizza Helper. Since version 5.0.4, The Pizza Helper's widgets will attempt to request real-time note data from the Miyoushe / HoYoLAB servers every certain minutes necessary for the recovery of a stamina point (which differs among supported game titles). The real-time note data includes the corresponding UID's Original Resin / Trailblaze Power / ZZZ Energy status. Desktop widgets also include a refresh button for reloading content. When you open The Pizza Helper app, all widgets will automatically request real-time data again. If you haven’t consumed stamina in-game, the stamina discrepancy shown in the widgets should not exceed 1.
+
+However, for iPhone models that are more than 3 years old, even if the battery has been replaced with a new one, the above widget operating mode will put a strain on battery life, so please try to minimize the number of widgets you use on such models.
 
 #### Q: How can I learn more about the development team or discuss other topics?
 

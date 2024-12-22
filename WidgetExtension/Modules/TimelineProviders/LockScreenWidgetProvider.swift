@@ -114,7 +114,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
     ) async
         -> Timeline<Entry> {
         let result: (entries: [Entry], refreshTime: Date) = await Task(priority: .background) {
-            var refreshTime = PZWidgets.getRefreshDate()
+            var refreshTime = PZWidgets.getRefreshDateByGameStamina(game: nil)
             let entries = await Self.getEntries(configuration: configuration, refreshTime: &refreshTime)
             return (entries, refreshTime)
         }.value
@@ -133,27 +133,17 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
             let dailyNoteResult = await fetchDailyNote(for: profile)
             switch dailyNoteResult {
             case .success:
-                refreshTime = PZWidgets.getRefreshDate() // fetchDailyNote 的过程本身就会消耗时间，需要统计。
-                var tlEntryDate = Date.now
-
-                func boostDate() {
-                    tlEntryDate = tlEntryDate.addingTimeInterval(profile.game.eachStaminaRecoveryTime)
-                }
-
-                var entries: [Entry] = []
-                while refreshTime > tlEntryDate {
-                    entries.append(
-                        Entry(
-                            date: tlEntryDate,
-                            result: dailyNoteResult,
-                            profile: profile
-                        )
-                    )
-                    boostDate()
-                }
+                refreshTime = PZWidgets.getRefreshDateByGameStamina(game: profile.game)
+                let entries: [Entry] = [
+                    Entry(
+                        date: refreshTime,
+                        result: dailyNoteResult,
+                        profile: profile
+                    ),
+                ]
                 return entries
             case let .failure(error):
-                refreshTime = PZWidgets.getRefreshDate(isError: true) // fetchDailyNote 的过程本身就会消耗时间，需要统计。
+                refreshTime = PZWidgets.getRefreshDateByGameStamina(game: nil)
                 return [
                     Entry(
                         date: Date(),
