@@ -14,12 +14,7 @@ public struct GITodayMaterialsView<T: View>: View {
     public init(@ViewBuilder querier: @escaping (Bool, String) -> T) {
         self.data = Material.bundledData
         self.querier = querier
-        switch Calendar.current.component(.weekday, from: Date.now) {
-        case 2, 5: self.weekday = .MonThu
-        case 3, 6: self.weekday = .TueFri
-        case 4, 7: self.weekday = .WedSat
-        default: self.weekday = nil
-        }
+        self.weekday = GITodayMaterial.AvailableWeekDay.today()
     }
 
     // MARK: Public
@@ -67,12 +62,7 @@ public struct GITodayMaterialsView<T: View>: View {
         }
         .onAppear {
             if !initialized {
-                switch Calendar.current.component(.weekday, from: Date.now) {
-                case 2, 5: weekday = .MonThu
-                case 3, 6: weekday = .TueFri
-                case 4, 7: weekday = .WedSat
-                default: weekday = nil
-                }
+                weekday = GITodayMaterial.AvailableWeekDay.today()
                 initialized.toggle()
             }
         }
