@@ -131,6 +131,9 @@ extension PZProfileActor {
             Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
         }
         try context.save()
+        Task {
+            await Self.shared.syncAllDataToUserDefaults()
+        }
     }
 
     /// An OOBE task attempts inheriting old AccountMOs from the previous Pizza Apps using obsolete engines.
