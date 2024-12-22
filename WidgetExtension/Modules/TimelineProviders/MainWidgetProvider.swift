@@ -92,7 +92,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         }
         let game = Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact
         let sampleData = game.exampleDailyNoteData
-        let assetMap = await Task(priority: .background) {
+        let assetMap = await Task(priority: .userInitiated) {
             Self.getExpeditionAssetMap(from: sampleData)
         }.value
         return Entry(
@@ -112,7 +112,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Timeline<Entry> {
-        let result: (entries: [Entry], refreshTime: Date) = await Task(priority: .background) {
+        let result: (entries: [Entry], refreshTime: Date) = await Task(priority: .userInitiated) {
             var refreshTime = PZWidgets.getRefreshDate()
             let entries = await Self.getEntries(configuration: configuration, refreshTime: &refreshTime)
             return (entries, refreshTime)
@@ -135,7 +135,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             }
             switch dailyNoteResult {
             case let .success(dailyNoteData):
-                let assetMap = await Task(priority: .background) {
+                let assetMap = await Task(priority: .userInitiated) {
                     Self.getExpeditionAssetMap(from: dailyNoteData)
                 }.value
                 refreshTime = PZWidgets.getRefreshDate() // fetchDailyNote 的过程本身就会消耗时间，需要统计。
@@ -186,7 +186,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
     }
 
     private static func fetchDailyNote(for profile: PZProfileSendable) async -> Result<DailyNoteProtocol, Error> {
-        await Task(priority: .background) {
+        await Task(priority: .userInitiated) {
             try await profile.getDailyNote()
         }.result
     }
