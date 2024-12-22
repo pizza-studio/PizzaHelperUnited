@@ -21,7 +21,7 @@ struct MainWidgetEntry: TimelineEntry {
         result: Result<any DailyNoteProtocol, any Error>,
         viewConfig: WidgetViewConfiguration,
         profile: PZProfileSendable?,
-        pilotAssetMap: [URL: CGImage]? = nil,
+        pilotAssetMap: [URL: Image]? = nil,
         events: [EventModel]
     ) {
         self.date = date
@@ -40,7 +40,7 @@ struct MainWidgetEntry: TimelineEntry {
     let viewConfig: WidgetViewConfiguration
     let profile: PZProfileSendable?
     let events: [EventModel]
-    let pilotAssetMap: [URL: CGImage]
+    let pilotAssetMap: [URL: Image]
 
     var relevance: TimelineEntryRelevance? {
         switch result {
@@ -219,17 +219,17 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         return .success(firstMatchedProfile)
     }
 
-    private static func getExpeditionAssetMap(from dailyNote: any DailyNoteProtocol) -> [URL: CGImage]? {
+    private static func getExpeditionAssetMap(from dailyNote: any DailyNoteProtocol) -> [URL: Image]? {
         guard dailyNote.hasExpeditions else { return nil }
         let expeditions = dailyNote.expeditionTasks
         guard !expeditions.isEmpty else { return nil }
-        var assetMap = [URL: CGImage]()
+        var assetMap = [URL: Image]()
         if dailyNote.hasExpeditions {
             dailyNote.expeditionTasks.forEach {
                 let urls = [$0.iconURL, $0.iconURL4Copilot].compactMap { $0 }
                 urls.forEach { url in
                     if let cgImage = CGImage.instantiate(url: url) {
-                        assetMap[url] = cgImage
+                        assetMap[url] = Image(decorative: cgImage, scale: 1.0)
                     }
                 }
             }
