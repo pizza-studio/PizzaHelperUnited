@@ -33,7 +33,8 @@ struct LargeWidgetView: View {
                 Spacer()
                 VStack(alignment: .leading) {
                     ExpeditionsView(
-                        expeditions: dailyNote.expeditionTasks
+                        expeditions: dailyNote.expeditionTasks,
+                        pilotAssetMap: entry.pilotAssetMap
                     )
                     Spacer(minLength: 15)
                     if dailyNote.game == .genshinImpact, viewConfig.showMaterialsInLargeSizeWidget {

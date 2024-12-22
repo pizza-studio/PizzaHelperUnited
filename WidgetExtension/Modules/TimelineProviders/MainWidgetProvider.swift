@@ -35,6 +35,12 @@ struct MainWidgetEntry: TimelineEntry {
     // MARK: Internal
 
     let date: Date
+    let timestampOnCreation: Date = .now
+    let result: Result<any DailyNoteProtocol, any Error>
+    let viewConfig: WidgetViewConfiguration
+    let profile: PZProfileSendable?
+    let events: [EventModel]
+    let pilotAssetMap: [URL: CGImage]
 
     var relevance: TimelineEntryRelevance? {
         switch result {
@@ -50,15 +56,6 @@ struct MainWidgetEntry: TimelineEntry {
             return .init(score: 0)
         }
     }
-
-    // MARK: Private
-
-    private let timestampOnCreation: Date = .now
-    private let result: Result<any DailyNoteProtocol, any Error>
-    private let viewConfig: WidgetViewConfiguration
-    private let profile: PZProfileSendable?
-    private let events: [EventModel]
-    private let pilotAssetMap: [URL: CGImage]
 }
 
 // MARK: - MainWidgetProvider
