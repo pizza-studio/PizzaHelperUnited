@@ -16,6 +16,11 @@ extension CGImage {
         return CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
     }
 
+    public static func instantiate(url: URL) -> CGImage? {
+        guard let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil) else { return nil }
+        return CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
+    }
+
     public func zoomed(_ factor: CGFloat, quality: CGInterpolationQuality = .high) -> CGImage? {
         guard factor > 0 else { return nil }
         let size: CGSize = .init(width: CGFloat(width) * factor, height: CGFloat(height) * factor)
