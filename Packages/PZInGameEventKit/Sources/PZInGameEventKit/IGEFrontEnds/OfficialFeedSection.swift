@@ -41,6 +41,9 @@ extension OfficialFeed {
                     break
                 }
             }
+            .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
+                getCurrentEvent()
+            }
             .onAppear {
                 if eventContents.isEmpty {
                     getCurrentEvent()
@@ -72,6 +75,7 @@ extension OfficialFeed {
         @Environment(\.scenePhase) private var scenePhase
         @State private var eventContents: [EventModel] = []
         @Binding private var game: Pizza.SupportedGame?
+        @StateObject private var broadcaster = Broadcaster.shared
 
         private let peripheralViews: () -> TT
 
