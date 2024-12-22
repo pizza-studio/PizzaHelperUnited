@@ -13,7 +13,7 @@ struct ExpeditionsView: View {
     // MARK: Internal
 
     let expeditions: [any ExpeditionTask]
-    let pilotAssetMap: [URL: CGImage]?
+    let pilotAssetMap: [URL: Image]?
 
     var body: some View {
         VStack {
@@ -29,7 +29,7 @@ struct ExpeditionsView: View {
 
     // MARK: Private
 
-    private func getPilotImage(_ url: URL?) -> CGImage? {
+    private func getPilotImage(_ url: URL?) -> Image? {
         guard let url else { return nil }
         return pilotAssetMap?[url]
     }
@@ -41,8 +41,8 @@ struct ExpeditionsView: View {
 struct EachExpeditionView: View {
     let expedition: any ExpeditionTask
     let viewConfig: WidgetViewConfiguration = .defaultConfig
-    let pilotImage: CGImage?
-    let copilotImage: CGImage?
+    let pilotImage: Image?
+    let copilotImage: Image?
 
     var body: some View {
         HStack {
@@ -82,7 +82,7 @@ struct EachExpeditionView: View {
             case .genshinImpact:
                 Group {
                     if let pilotImage {
-                        Image(decorative: pilotImage, scale: 1)
+                        pilotImage
                             .resizable()
                     } else {
                         Image("NetworkImagePlaceholder", bundle: .main)
@@ -93,9 +93,9 @@ struct EachExpeditionView: View {
                 .scaledToFit()
                 .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
             case .starRail:
-                let leaderAvatarAsset = Group {
+                let leaderAvatarAsset: some View = Group {
                     if let pilotImage {
-                        Image(decorative: pilotImage, scale: 1)
+                        pilotImage
                             .resizable()
                     } else {
                         Image("NetworkImagePlaceholder", bundle: .main)
@@ -110,7 +110,7 @@ struct EachExpeditionView: View {
                         leaderAvatar
                             .frame(maxWidth: outerSize * 0.7, maxHeight: outerSize * 0.7)
                             .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .topLeading)
-                        Image(decorative: copilotImage, scale: 1)
+                        copilotImage
                             .resizable()
                             .scaledToFit()
                             .background(.thinMaterial, in: .circle)
