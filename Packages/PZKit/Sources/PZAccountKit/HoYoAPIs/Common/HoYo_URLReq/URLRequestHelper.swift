@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - URLRequestHelper
 
@@ -37,6 +38,7 @@ extension HoYo {
     private static let taskBuffer: URLAsyncTaskStack = .init()
 
     public static func waitFor300ms() async {
+        guard !Pizza.isWidgetExtension else { return }
         await Self.taskBuffer.addTask {
             try await Task.sleep(nanoseconds: 300_000_000) // 300ms sleep
         }
