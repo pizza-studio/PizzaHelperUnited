@@ -68,6 +68,6 @@ struct GITransformerInfoBar: View {
             ? Image(systemSymbol: .checkmark)
             .overlayImageWithRingProgressBar(transformerInfo.percentage, scaler: 0.78)
             : Image(systemSymbol: .hourglass)
-            .overlayImageWithRingProgressBar(1)
+            .overlayImageWithRingProgressBar(0.78)
     }
 }

@@ -59,6 +59,8 @@ struct ZZZScratchCardInfoBar: View {
 
     @ViewBuilder private var ringImage: some View {
         Image(systemSymbol: .giftcardFill)
-            .overlayImageWithRingProgressBar(1.0)
+            .overlayImageWithRingProgressBar(
+                scratchable ? 0.0 : 1.0, scaler: 0.78
+            )
     }
 }
