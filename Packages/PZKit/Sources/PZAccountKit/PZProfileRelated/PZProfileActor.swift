@@ -27,6 +27,8 @@ public actor PZProfileActor {
             modelContext: .init(modelContainer)
         )
         Task { @MainActor in
+            let stillNeedsReset = await detectWhetherIsReset()
+            isReset = isReset || stillNeedsReset
             // 处理资料库被重设的情形。
             if isReset {
                 await failSafeRestoreAllDataFromUserDefaults()
@@ -185,6 +187,12 @@ extension PZProfileActor {
         }
         existingKeys.forEach { Defaults[.pzProfiles].removeValue(forKey: $0) }
         UserDefaults.profileSuite.synchronize()
+    }
+
+    private func detectWhetherIsReset() -> Bool {
+        let existingSQLCount = (try? modelContext.fetchCount(FetchDescriptor<PZProfileMO>())) ?? -1
+        let isSQLEmpty = (existingSQLCount == 0)
+        return isSQLEmpty && !Defaults[.pzProfiles].isEmpty
     }
 
     private func failSafeRestoreAllDataFromUserDefaults() {
