@@ -54,10 +54,6 @@ struct ExpeditionInfoBar: View {
     @ViewBuilder private var isExpeditionAllCompleteImage: some View {
         let ratio = Double(completionIntel.finished) / Double(completionIntel.all)
         Image(systemSymbol: .figureWalk)
-            .overlayImageWithRingProgressBar(
-                ratio,
-                scaler: 1,
-                offset: (0.3, 0)
-            )
+            .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
     }
 }

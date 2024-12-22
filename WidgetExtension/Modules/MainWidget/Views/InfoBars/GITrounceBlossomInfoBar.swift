@@ -50,8 +50,8 @@ struct GITrounceBlossomInfoBar: View {
         let ratio = Double(current) / Double(max)
         (weeklyBossesInfo.allDiscountsAreUsedUp)
             ? Image(systemSymbol: .checkmark)
-            .overlayImageWithRingProgressBar(ratio, scaler: 0.70)
+            .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
             : Image(systemSymbol: .questionmark)
-            .overlayImageWithRingProgressBar(ratio)
+            .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
     }
 }

@@ -51,6 +51,6 @@ struct ZZZVHSStoreInfoBar: View {
 
     @ViewBuilder private var ringImage: some View {
         Image(systemSymbol: .recordingtape)
-            .overlayImageWithRingProgressBar(1.0)
+            .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
     }
 }

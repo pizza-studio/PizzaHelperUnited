@@ -55,6 +55,9 @@ struct ZZZBountyInfoBar: View {
 
     @ViewBuilder private var ringImage: some View {
         Image(systemSymbol: .dotScope)
-            .overlayImageWithRingProgressBar(Double(data.num) / Double(data.total))
+            .overlayImageWithRingProgressBar(
+                Double(data.num) / Double(data.total),
+                scaler: 0.78
+            )
     }
 }
