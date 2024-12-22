@@ -54,7 +54,8 @@ struct HSRReservedTBPowerInfoBar: View {
             )
             : Image(systemSymbol: .leafFill)
             .overlayImageWithRingProgressBar(
-                Double(tbPowerIntel.currentReserveStamina) / Double(tbPowerIntel.maxReserveStamina)
+                Double(tbPowerIntel.currentReserveStamina) / Double(tbPowerIntel.maxReserveStamina),
+                scaler: 0.78
             )
     }
 }
