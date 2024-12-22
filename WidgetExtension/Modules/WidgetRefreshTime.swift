@@ -4,6 +4,7 @@
 
 @preconcurrency import Defaults
 import Foundation
+import PZBaseKit
 
 public var widgetRefreshByMinute: Int {
     Int(Defaults[.allWidgetsSyncFrequencyByMinutes].rounded(.down))
@@ -18,5 +19,9 @@ extension PZWidgets {
 
     public static func getRefreshDate(isError: Bool = false) -> Date {
         Date(timeIntervalSinceNow: isError ? PZWidgets.refreshWhenErrorAfterSecond : refreshWhenSucceedAfterSecond)
+    }
+
+    public static func getRefreshDateByGameStamina(game: Pizza.SupportedGame? = nil) -> Date {
+        Date(timeIntervalSinceNow: game?.eachStaminaRecoveryTime ?? 60 * 7)
     }
 }
