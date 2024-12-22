@@ -21,7 +21,7 @@ struct MainWidgetEntry: TimelineEntry {
         result: Result<any DailyNoteProtocol, any Error>,
         viewConfig: WidgetViewConfiguration,
         profile: PZProfileSendable?,
-        pilotAssetMap: [URL: Image]? = nil,
+        pilotAssetMap: ImageMap? = nil,
         events: [EventModel]
     ) {
         self.date = date
@@ -29,7 +29,7 @@ struct MainWidgetEntry: TimelineEntry {
         self.viewConfig = viewConfig
         self.profile = profile
         self.events = events
-        self.pilotAssetMap = pilotAssetMap ?? [:]
+        self.pilotAssetMap = pilotAssetMap ?? .init(map: [:])
     }
 
     // MARK: Internal
@@ -40,7 +40,7 @@ struct MainWidgetEntry: TimelineEntry {
     let viewConfig: WidgetViewConfiguration
     let profile: PZProfileSendable?
     let events: [EventModel]
-    let pilotAssetMap: [URL: Image]
+    let pilotAssetMap: ImageMap
 
     var relevance: TimelineEntryRelevance? {
         switch result {
@@ -219,7 +219,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         return .success(firstMatchedProfile)
     }
 
-    private static func getExpeditionAssetMap(from dailyNote: any DailyNoteProtocol) -> [URL: Image]? {
+    private static func getExpeditionAssetMap(from dailyNote: any DailyNoteProtocol) -> ImageMap? {
         guard dailyNote.hasExpeditions else { return nil }
         let expeditions = dailyNote.expeditionTasks
         guard !expeditions.isEmpty else { return nil }
@@ -234,6 +234,18 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                 }
             }
         }
-        return assetMap
+        return ImageMap(map: assetMap)
     }
+}
+
+// MARK: - ImageMap
+
+final class ImageMap: Sendable {
+    // MARK: Lifecycle
+
+    public init(map: [URL: Image]) { self.assetMap = map }
+
+    // MARK: Public
+
+    public let assetMap: [URL: Image]
 }

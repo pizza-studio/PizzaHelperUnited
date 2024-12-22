@@ -13,7 +13,7 @@ struct ExpeditionsView: View {
     // MARK: Internal
 
     let expeditions: [any ExpeditionTask]
-    let pilotAssetMap: [URL: Image]?
+    let pilotAssetMap: ImageMap?
 
     var body: some View {
         VStack {
@@ -31,7 +31,7 @@ struct ExpeditionsView: View {
 
     private func getPilotImage(_ url: URL?) -> Image? {
         guard let url else { return nil }
-        return pilotAssetMap?[url]
+        return pilotAssetMap?.assetMap[url]
     }
 }
 
