@@ -149,6 +149,9 @@ extension OfficialFeed {
         // Bleach styles
         target.replace(try! Regex("font-size:.*?rem"), with: "font-size:unset")
         target.replace(try! Regex("color:rgba(.*?)"), with: "color:unset")
+        target.replace(try! Regex("color:rgb(.*?)"), with: "color:unset")
+        target.replace(try! Regex("color: rgba(.*?)"), with: "color:unset")
+        target.replace(try! Regex("color: rgb(.*?)"), with: "color:unset")
 
         // Remove `contenteditable="false"`
         target.replace(try! Regex(#"\s*contenteditable="false""#), with: "")
