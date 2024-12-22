@@ -17,7 +17,7 @@ extension Pizza.SupportedGame {
         server.changeGame(to: self)
         do {
             // EventContent
-            await HoYo.waitFor450ms()
+            await HoYo.waitFor300ms()
             let urlDataC = getOfficialEventFeedURL(server, lang: lang, isContent: true)
             let dataC = try await URLSession.shared.data(from: urlDataC)
             let objContent = try HoYoEventPack.HoYoEventContent.decodeFromMiHoYoAPIJSONResult(
@@ -25,7 +25,7 @@ extension Pizza.SupportedGame {
                 debugTag: ""
             )
             // EventMeta
-            await HoYo.waitFor450ms()
+            await HoYo.waitFor300ms()
             let urlDataM = getOfficialEventFeedURL(server, lang: lang, isContent: false)
             let dataM = try await URLSession.shared.data(from: urlDataM)
             let objMeta = try HoYoEventPack.HoYoEventMeta.decodeFromMiHoYoAPIJSONResult(data: dataM.0, debugTag: "")

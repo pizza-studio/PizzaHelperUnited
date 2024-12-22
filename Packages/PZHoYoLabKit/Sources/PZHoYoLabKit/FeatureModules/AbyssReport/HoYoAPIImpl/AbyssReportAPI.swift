@@ -62,7 +62,7 @@ extension HoYo {
         deviceID: String?
     ) async throws
         -> AbyssReport4GI {
-        await HoYo.waitFor450ms()
+        await HoYo.waitFor300ms()
         #if DEBUG
         print("||| START REQUESTING SPIRAL ABYSS DATA (GI) |||")
         #endif
@@ -106,7 +106,7 @@ extension HoYo {
         deviceID: String?
     ) async throws
         -> AbyssReport4HSR {
-        await HoYo.waitFor450ms()
+        await HoYo.waitFor300ms()
         #if DEBUG
         print("||| START REQUESTING SPIRAL ABYSS DATA (HSR) |||")
         #endif

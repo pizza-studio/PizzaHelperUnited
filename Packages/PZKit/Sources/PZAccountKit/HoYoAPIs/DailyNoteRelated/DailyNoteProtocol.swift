@@ -8,7 +8,7 @@ import SwiftUI
 
 extension PZProfileSendable {
     public func getDailyNote() async throws -> DailyNoteProtocol {
-        await HoYo.waitFor450ms()
+        await HoYo.waitFor300ms()
         do {
             let result = switch game {
             case .genshinImpact: try await HoYo.note4GI(profile: self)

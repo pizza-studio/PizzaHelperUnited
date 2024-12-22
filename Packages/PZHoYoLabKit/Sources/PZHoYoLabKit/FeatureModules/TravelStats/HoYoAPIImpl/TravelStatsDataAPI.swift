@@ -46,7 +46,7 @@ extension HoYo {
         deviceID: String?
     ) async throws
         -> TravelStatsData4GI {
-        await HoYo.waitFor450ms()
+        await HoYo.waitFor300ms()
         #if DEBUG
         print("||| START REQUESTING LEDGER DATA (GI) |||")
         #endif
@@ -89,7 +89,7 @@ extension HoYo {
         deviceID: String?
     ) async throws
         -> TravelStatsData4HSR {
-        await HoYo.waitFor450ms()
+        await HoYo.waitFor300ms()
         #if DEBUG
         print("||| START REQUESTING LEDGER DATA (HSR) |||")
         #endif
