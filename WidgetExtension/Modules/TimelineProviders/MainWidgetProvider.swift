@@ -21,7 +21,7 @@ struct MainWidgetEntry: TimelineEntry {
         result: Result<any DailyNoteProtocol, any Error>,
         viewConfig: WidgetViewConfiguration,
         profile: PZProfileSendable?,
-        pilotAssetMap: ImageMap? = nil,
+        pilotAssetMap: [URL: SendableImagePtr]? = nil,
         events: [EventModel]
     ) {
         self.date = date
@@ -29,7 +29,7 @@ struct MainWidgetEntry: TimelineEntry {
         self.viewConfig = viewConfig
         self.profile = profile
         self.events = events
-        self.pilotAssetMap = pilotAssetMap ?? .init(map: [:])
+        self.pilotAssetMap = pilotAssetMap ?? [:]
     }
 
     // MARK: Internal
@@ -40,7 +40,7 @@ struct MainWidgetEntry: TimelineEntry {
     let viewConfig: WidgetViewConfiguration
     let profile: PZProfileSendable?
     let events: [EventModel]
-    let pilotAssetMap: ImageMap
+    let pilotAssetMap: [URL: SendableImagePtr]
 
     var relevance: TimelineEntryRelevance? {
         switch result {
@@ -71,7 +71,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
 
     func placeholder(in context: Context) -> Entry {
         let sampleData = Pizza.SupportedGame.genshinImpact.exampleDailyNoteData
-        let assetMap = Self.getExpeditionAssetMap(from: sampleData)
+        let assetMap = Self.getExpeditionAssetMapImmediately(from: sampleData)
         return Entry(
             date: Date(),
             result: .success(Pizza.SupportedGame.genshinImpact.exampleDailyNoteData),
@@ -93,7 +93,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         let game = Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact
         let sampleData = game.exampleDailyNoteData
         let assetMap = await Task(priority: .userInitiated) {
-            Self.getExpeditionAssetMap(from: sampleData)
+            await Self.getExpeditionAssetMap(from: sampleData)
         }.value
         return Entry(
             date: Date(),
@@ -136,7 +136,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             switch dailyNoteResult {
             case let .success(dailyNoteData):
                 let assetMap = await Task(priority: .userInitiated) {
-                    Self.getExpeditionAssetMap(from: dailyNoteData)
+                    await Self.getExpeditionAssetMap(from: dailyNoteData)
                 }.value
                 refreshTime = PZWidgets.getRefreshDate() // fetchDailyNote 的过程本身就会消耗时间，需要统计。
                 var tlEntryDate = Date.now
@@ -219,33 +219,77 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         return .success(firstMatchedProfile)
     }
 
-    private static func getExpeditionAssetMap(from dailyNote: any DailyNoteProtocol) -> ImageMap? {
+    private static func getExpeditionAssetMap(from dailyNote: any DailyNoteProtocol) async -> [URL: SendableImagePtr]? {
         guard dailyNote.hasExpeditions else { return nil }
         let expeditions = dailyNote.expeditionTasks
         guard !expeditions.isEmpty else { return nil }
-        var assetMap = [URL: Image]()
+        var assetMap = [URL: SendableImagePtr]()
         if dailyNote.hasExpeditions {
-            dailyNote.expeditionTasks.forEach {
-                let urls = [$0.iconURL, $0.iconURL4Copilot].compactMap { $0 }
-                urls.forEach { url in
-                    if let cgImage = CGImage.instantiate(url: url) {
-                        assetMap[url] = Image(decorative: cgImage, scale: 1.0)
+            for task in dailyNote.expeditionTasks {
+                let urls = [task.iconURL, task.iconURL4Copilot].compactMap { $0 }
+                for url in urls {
+                    if let image = await ImageMap.shared.assetMap[url] {
+                        assetMap[url] = image
+                    } else if let cgImage = CGImage.instantiate(url: url) {
+                        let image = SendableImagePtr(img: Image(decorative: cgImage, scale: 1.0))
+                        await ImageMap.shared.insertValue(url: url, image: image)
+                        assetMap[url] = image
                     }
                 }
             }
         }
-        return ImageMap(map: assetMap)
+        return assetMap
+    }
+
+    /// 这是给 .placeholder() 专用的函式，不会调用 ImageMap 的缓存。
+    private static func getExpeditionAssetMapImmediately(from dailyNote: any DailyNoteProtocol)
+        -> [URL: SendableImagePtr]? {
+        guard dailyNote.hasExpeditions else { return nil }
+        let expeditions = dailyNote.expeditionTasks
+        guard !expeditions.isEmpty else { return nil }
+        var assetMap = [URL: SendableImagePtr]()
+        if dailyNote.hasExpeditions {
+            for task in dailyNote.expeditionTasks {
+                let urls = [task.iconURL, task.iconURL4Copilot].compactMap { $0 }
+                for url in urls {
+                    if let cgImage = CGImage.instantiate(url: url) {
+                        let image = SendableImagePtr(img: Image(decorative: cgImage, scale: 1.0))
+                        assetMap[url] = image
+                    }
+                }
+            }
+        }
+        return assetMap
     }
 }
 
 // MARK: - ImageMap
 
-final class ImageMap: Sendable {
+@MainActor
+final class ImageMap {
     // MARK: Lifecycle
 
-    public init(map: [URL: Image]) { self.assetMap = map }
+    public init() {}
 
     // MARK: Public
 
-    public let assetMap: [URL: Image]
+    public static let shared = ImageMap()
+
+    public var assetMap: [URL: SendableImagePtr] = [:]
+
+    public func insertValue(url: URL, image: SendableImagePtr) {
+        assetMap[url] = image
+    }
+}
+
+// MARK: - SendableImagePtr
+
+final class SendableImagePtr: Sendable {
+    // MARK: Lifecycle
+
+    public init(img: Image) { self.img = img }
+
+    // MARK: Public
+
+    public let img: Image
 }
