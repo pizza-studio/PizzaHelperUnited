@@ -97,9 +97,6 @@ extension OfficialFeed {
                                 .scaleEffect(content.game == .starRail ? 1.07 : 1)
                         default:
                             ProgressView()
-                                .onAppear {
-                                    print("imageData is nil")
-                                }
                         }
                     }
                     .scaledToFill()
