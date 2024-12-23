@@ -176,7 +176,7 @@ extension HoYoEventPack {
         public let tagLabel: String
         public let tagIcon: String
         public let loginAlert: Int
-        public let lang: String
+        public let lang: HoYo.APILang
         public let startTime: String
         public let endTime: String
         public let type: Int

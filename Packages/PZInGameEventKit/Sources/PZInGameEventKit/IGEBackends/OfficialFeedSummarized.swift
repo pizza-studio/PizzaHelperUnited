@@ -7,16 +7,11 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 
-// MARK: - OfficialFeed
-
-@available(watchOS, unavailable)
-public enum OfficialFeed {}
-
 // MARK: OfficialFeed.FeedEvent
 
 @available(watchOS, unavailable)
 extension OfficialFeed {
-    public struct FeedEvent: AbleToCodeSendHash, Identifiable {
+    public struct FeedEvent: AbleToCodeSendHash, Identifiable, _DefaultsSerializable {
         public let game: Pizza.SupportedGame
         public let id: Int
         public let title: String
@@ -25,22 +20,56 @@ extension OfficialFeed {
         public let endAt: String
         public let endAtTime: Date.IntervalDate
         public let endAtDate: Date
+        public let lang: HoYo.APILang
+    }
+
+    /// This returns true even if no local cache entry is available.
+    public static func getCachedEventsIfValid(for game: Pizza.SupportedGame) -> [FeedEvent]? {
+        let lastFetchDate = Defaults[.officialFeedMostRecentFetchDate][game.rawValue]
+        guard let lastFetchDate else { return nil }
+        // dateDelta 必然大于 0。
+        let dateDelta = [Date.now, lastFetchDate].map(\.timeIntervalSinceNow).reduce(0, -)
+        guard dateDelta < (60 * 60 * 1) else { return nil }
+        let cachedEvent = Defaults[.officialFeedCache].filter { $0.game == game }
+        guard cachedEvent.first?.lang == .current else { return nil }
+        return cachedEvent
     }
 }
 
 @available(watchOS, unavailable)
 extension OfficialFeed {
-    public static func getAllFeedEventsOnline() async -> [FeedEvent] {
+    public static func getAllFeedEventsOnline(
+        game givenGame: Pizza.SupportedGame? = nil,
+        bypassCache: Bool = false
+    ) async
+        -> [FeedEvent] {
         var resultStack = [FeedEvent]()
-        for game in Pizza.SupportedGame.allCases {
+        let games: [Pizza.SupportedGame]
+        if let givenGame {
+            games = [givenGame]
+        } else {
+            games = Pizza.SupportedGame.allCases
+        }
+        for game in games {
+            if !bypassCache, let cachedEvent = getCachedEventsIfValid(for: game) {
+                resultStack.append(contentsOf: cachedEvent)
+                continue
+            }
             var server = HoYo.Server(rawValue: Defaults[.defaultServer]) ?? .asia(.genshinImpact)
-            server.changeGame(to: game)
+            forceUsingHoYoLAB: switch server {
+            case .celestia, .irminsul: server = .asia(game)
+            default: server.changeGame(to: game)
+            }
             let rawPackageResult = await game.getOfficialFeedPackageOnline(server)
             switch rawPackageResult {
             case let .success(rawPackage):
-                resultStack.append(
-                    contentsOf: OfficialFeed.summarize(rawPackage, for: game, server: server)
-                )
+                let summarized = OfficialFeed.summarize(rawPackage, for: game, server: server)
+                if !bypassCache {
+                    Defaults[.officialFeedCache].removeAll { $0.game == game }
+                    Defaults[.officialFeedCache].append(contentsOf: summarized)
+                    Defaults[.officialFeedMostRecentFetchDate][game.rawValue] = .now
+                }
+                resultStack.append(contentsOf: summarized)
             case .failure: continue
             }
         }
@@ -105,7 +134,8 @@ extension OfficialFeed {
                 banner: bannerImageLink,
                 endAt: rawMeta.endTime,
                 endAtTime: endAtTime.intervalDate,
-                endAtDate: endAtTime.date
+                endAtDate: endAtTime.date,
+                lang: contentObj.lang
             )
             events.append(newModel)
         }
