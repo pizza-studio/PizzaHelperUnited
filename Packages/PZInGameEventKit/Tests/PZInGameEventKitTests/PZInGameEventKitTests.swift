@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@preconcurrency import Defaults
 import Foundation
 import PZAccountKit
 import PZBaseKit
@@ -40,7 +41,7 @@ func testDecodingBundledOfficialFeeds() async throws {
 
 @Test
 func testGetAllOfficialFeedEventsOnline() async throws {
-    let allData = await OfficialFeed.getAllFeedEventsOnline()
+    let allData = await OfficialFeed.getAllFeedEventsOnline(bypassCache: true)
     print(allData.filter { $0.game == .zenlessZone }.count)
 }
 
@@ -48,4 +49,13 @@ func testGetAllOfficialFeedEventsOnline() async throws {
 func testGetAllOfficialFeedEventsOffline() async throws {
     let allData = OfficialFeed.getAllBundledFeedEvents()
     print(allData.filter { $0.game == .zenlessZone }.count)
+}
+
+@Test
+func testGetAllOfficialFeedEventsCache() async throws {
+    let allData = await OfficialFeed.getAllFeedEventsOnline(bypassCache: false)
+    let cachedGIEvents = OfficialFeed.getCachedEventsIfValid(for: .genshinImpact) ?? []
+    #expect(!cachedGIEvents.isEmpty)
+    Defaults[.officialFeedCache].removeAll()
+    Defaults[.officialFeedMostRecentFetchDate].removeAll()
 }
