@@ -113,7 +113,7 @@ struct LargeWidgetView: View {
                     .legibilityShadow(isText: false)
             }
             HStack {
-                Button(intent: WidgetRefreshIntent()) {
+                Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: entry.profile?.uidWithGame)) {
                     Image(systemSymbol: .arrowClockwiseCircle)
                         .font(.title3)
                         .foregroundColor(Color("textColor3", bundle: .main))
