@@ -38,17 +38,6 @@ public struct RealtimeNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
     public let optionalMetaData: NoteMetaData4HSR?
 }
 
-// MARK: BenchmarkTimeEditable
-
-extension RealtimeNote4HSR: BenchmarkTimeEditable {
-    public func replacingBenchmarkTime(_ newBenchmarkTime: Date) -> RealtimeNote4HSR {
-        var newNote4HSR = self
-        newNote4HSR.staminaInfo = staminaInfo.replacingBenchmarkTime(newBenchmarkTime)
-        newNote4HSR.assignmentInfo = assignmentInfo.replacingBenchmarkTime(newBenchmarkTime)
-        return newNote4HSR
-    }
-}
-
 // MARK: - Example
 
 extension RealtimeNote4HSR {

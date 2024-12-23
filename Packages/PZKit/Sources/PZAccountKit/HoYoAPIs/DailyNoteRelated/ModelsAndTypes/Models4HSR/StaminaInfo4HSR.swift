@@ -18,6 +18,14 @@ public struct StaminaInfo4HSR: Sendable {
     /// Max stamina (Primary).
     public let maxStamina: Int
 
+    public let isReserveStaminaFull: Bool
+
+    // Unix Timestamp.
+    public let staminaFullTimestamp: Double?
+
+    /// Reserved Stamina when data is fetched.
+    public let currentReserveStamina: Int
+
     /// Current stamina (Primary)
     public var currentStamina: Int {
         maxStamina - restOfStamina
@@ -30,7 +38,7 @@ public struct StaminaInfo4HSR: Sendable {
 
     /// Rest of recovery time
     public var remainingTime: TimeInterval {
-        let restOfTime = _staminaRecoverTime - benchmarkTime.timeIntervalSince(fetchTime)
+        let restOfTime = _staminaRecoverTime - Date.now.timeIntervalSince(fetchTime)
         if restOfTime > 0 {
             return restOfTime
         } else {
@@ -50,19 +58,11 @@ public struct StaminaInfo4HSR: Sendable {
     public var nextStaminaTime: Date? {
         let nextRecoverTimeInterval = remainingTime.truncatingRemainder(dividingBy: Self.eachStaminaRecoveryTime)
         if nextRecoverTimeInterval != 0 {
-            return Date(timeInterval: nextRecoverTimeInterval + 1, since: benchmarkTime)
+            return Date(timeInterval: nextRecoverTimeInterval + 1, since: Date.now)
         } else {
             return nil
         }
     }
-
-    public let isReserveStaminaFull: Bool
-
-    // Unix Timestamp.
-    public let staminaFullTimestamp: Double?
-
-    /// Reserved Stamina when data is fetched.
-    public let currentReserveStamina: Int
 
     public var maxReserveStamina: Int { 2400 }
 
@@ -79,8 +79,6 @@ public struct StaminaInfo4HSR: Sendable {
     private var restOfStamina: Int {
         Int(ceil(remainingTime / Self.eachStaminaRecoveryTime))
     }
-
-    @BenchmarkTime public var benchmarkTime: Date
 }
 
 // MARK: Decodable
@@ -105,7 +103,3 @@ extension StaminaInfo4HSR: Decodable {
         case staminaFullTimestamp = "stamina_full_ts"
     }
 }
-
-// MARK: ReferencingBenchmarkTime
-
-extension StaminaInfo4HSR: ReferencingBenchmarkTime {}
