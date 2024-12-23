@@ -69,7 +69,7 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
         let games = configuration.inverseSelectMode
             ? configuration.game.inverseSelectedValues
             : [game].compactMap { $0 }
-        let results = await Task(priority: .background) {
+        let results = await Task(priority: .userInitiated) {
             await OfficialFeed.getAllFeedEventsOnline().filter {
                 switch game {
                 case .none: true
