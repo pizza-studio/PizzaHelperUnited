@@ -14,7 +14,7 @@ import WidgetKit
 
 @available(watchOS, unavailable)
 struct MainInfo: View {
-    let entry: any TimelineEntry
+    let entry: MainWidgetProvider.Entry
     let dailyNote: any DailyNoteProtocol
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
@@ -55,7 +55,7 @@ struct MainInfo: View {
             }
             Spacer()
             HStack {
-                Button(intent: WidgetRefreshIntent()) {
+                Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: entry.profile?.uidWithGame)) {
                     Image(systemSymbol: .arrowClockwiseCircle)
                         .font(.title3)
                         .foregroundColor(Color("textColor3", bundle: .main))

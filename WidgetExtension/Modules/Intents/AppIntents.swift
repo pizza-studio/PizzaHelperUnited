@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import AppIntents
+@preconcurrency import Defaults
 import Foundation
 import PZBaseKit
 
@@ -167,13 +168,22 @@ public struct WidgetRefreshIntent: AppIntent {
 
     public init() {}
 
+    public init(dailyNoteUIDWithGame: String?) {
+        self.dailyNoteUIDWithGame = dailyNoteUIDWithGame
+    }
+
     // MARK: Public
 
     public static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
 
     public static var isDiscoverable: Bool { false }
 
+    public var dailyNoteUIDWithGame: String?
+
     public func perform() async throws -> some IntentResult {
-        .result()
+        if let dailyNoteUIDWithGame {
+            Defaults[.cachedDailyNotes].removeValue(forKey: dailyNoteUIDWithGame)
+        }
+        return .result()
     }
 }
