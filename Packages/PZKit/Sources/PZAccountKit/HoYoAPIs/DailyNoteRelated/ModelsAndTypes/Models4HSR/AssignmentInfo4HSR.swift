@@ -27,8 +27,6 @@ public struct AssignmentInfo4HSR: Sendable {
 
         public static let game: Pizza.SupportedGame = .starRail
 
-        @BenchmarkTime public var benchmarkTime: Date
-
         /// The avatars' icons of the assignment
         public let avatarIconURLs: [URL]
 
@@ -40,7 +38,7 @@ public struct AssignmentInfo4HSR: Sendable {
 
         /// Remaining time of assignment
         public var remainingTime: TimeInterval {
-            max(_remainingTime - benchmarkTime.timeIntervalSince(fetchTime), 0)
+            max(_remainingTime - Date.now.timeIntervalSince(fetchTime), 0)
         }
 
         /// The status of the assignment
@@ -156,20 +154,4 @@ extension AssignmentInfo4HSR.Assignment: Decodable {
 
 extension AssignmentInfo4HSR.Assignment: Identifiable {
     public var id: String { name }
-}
-
-// MARK: - AssignmentInfo4HSR.Assignment + ReferencingBenchmarkTime
-
-extension AssignmentInfo4HSR.Assignment: ReferencingBenchmarkTime {}
-
-// MARK: - AssignmentInfo4HSR + BenchmarkTimeEditable
-
-extension AssignmentInfo4HSR: BenchmarkTimeEditable {
-    public func replacingBenchmarkTime(_ newBenchmarkTime: Date) -> AssignmentInfo4HSR {
-        var info = self
-        info.assignments = assignments.map { assignment in
-            assignment.replacingBenchmarkTime(newBenchmarkTime)
-        }
-        return info
-    }
 }
