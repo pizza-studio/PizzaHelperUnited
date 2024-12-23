@@ -44,8 +44,12 @@ struct MaterialWidgetEntry: TimelineEntry {
 struct MaterialWidgetProvider: TimelineProvider {
     typealias Entry = MaterialWidgetEntry
 
-    func placeholder(in context: Context) -> MaterialWidgetEntry {
-        .init(events: nil)
+    func placeholder(in context: Context) -> Entry {
+        .init(
+            events: Defaults[.officialFeedCache].filter {
+                $0.game == .genshinImpact
+            }
+        )
     }
 
     func getSnapshot(
@@ -53,7 +57,7 @@ struct MaterialWidgetProvider: TimelineProvider {
         completion: @escaping @Sendable (MaterialWidgetEntry) -> Void
     ) {
         Task {
-            let results = await OfficialFeed.getAllFeedEventsOnline().filter {
+            let results = Defaults[.officialFeedCache].filter {
                 $0.game == .genshinImpact
             }
             if results.isEmpty {
@@ -69,9 +73,7 @@ struct MaterialWidgetProvider: TimelineProvider {
         completion: @escaping @Sendable (Timeline<MaterialWidgetEntry>) -> Void
     ) {
         Task {
-            let results = await OfficialFeed.getAllFeedEventsOnline().filter {
-                $0.game == .genshinImpact
-            }
+            let results = await OfficialFeed.getAllFeedEventsOnline(game: .genshinImpact)
             if results.isEmpty {
                 completion(
                     .init(
