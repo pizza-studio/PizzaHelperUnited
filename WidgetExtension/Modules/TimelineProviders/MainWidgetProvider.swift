@@ -173,7 +173,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
 
     private static func fetchDailyNote(for profile: PZProfileSendable) async -> Result<DailyNoteProtocol, Error> {
         await Task(priority: .userInitiated) {
-            try await profile.getDailyNote()
+            try await profile.getDailyNote(cached: true)
         }.result
     }
 
