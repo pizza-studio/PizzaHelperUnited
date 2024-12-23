@@ -164,8 +164,8 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
     }
 
     private static func fetchDailyNote(for profile: PZProfileSendable) async -> Result<DailyNoteProtocol, Error> {
-            try await profile.getDailyNote()
         await Task(priority: .userInitiated) {
+            try await profile.getDailyNote(cached: true)
         }.result
     }
 
