@@ -78,7 +78,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             viewConfig: .defaultConfig,
             profile: .getDummyInstance(for: .genshinImpact),
             pilotAssetMap: assetMap,
-            events: []
+            events: Defaults[.officialFeedCache].filter { $0.game == .genshinImpact }
         )
     }
 
@@ -87,9 +87,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Entry {
-        let eventResults = await OfficialFeed.getAllFeedEventsOnline().filter {
-            $0.game == .genshinImpact
-        }
+        let eventResults = Defaults[.officialFeedCache].filter { $0.game == .genshinImpact }
         let game = Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact
         let sampleData = game.exampleDailyNoteData
         let assetMap = await Task(priority: .userInitiated) {
@@ -130,9 +128,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         switch findProfileResult {
         case let .success(profile):
             let dailyNoteResult = await fetchDailyNote(for: profile)
-            let eventResults = await OfficialFeed.getAllFeedEventsOnline().filter {
-                $0.game == profile.game
-            }
+            let eventResults = await OfficialFeed.getAllFeedEventsOnline(game: profile.game)
             switch dailyNoteResult {
             case let .success(dailyNoteData):
                 let assetMap = await Task(priority: .userInitiated) {

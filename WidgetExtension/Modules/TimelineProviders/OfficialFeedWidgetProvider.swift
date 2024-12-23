@@ -42,12 +42,16 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
 
     func recommendations() -> [AppIntentRecommendation<Intent>] { [] }
 
+    func placeholder(in context: Context) -> Entry {
+        Entry(games: .init(Pizza.SupportedGame.allCases), events: Defaults[.officialFeedCache])
+    }
+
     func snapshot(for configuration: Intent, in context: Context) async -> Entry {
         let game = configuration.game.realValue
         let games = configuration.inverseSelectMode
             ? configuration.game.inverseSelectedValues
             : [game].compactMap { $0 }
-        let results = await OfficialFeed.getAllFeedEventsOnline().filter {
+        let results = Defaults[.officialFeedCache].filter {
             switch game {
             case .none: true
             default: games.contains($0.game)
@@ -90,9 +94,5 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
                 )
             )
         }
-    }
-
-    func placeholder(in context: Context) -> Entry {
-        Entry(games: .init(Pizza.SupportedGame.allCases), events: nil)
     }
 }
