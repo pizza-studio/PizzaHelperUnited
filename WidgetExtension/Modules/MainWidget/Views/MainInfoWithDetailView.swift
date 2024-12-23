@@ -12,7 +12,7 @@ import WidgetKit
 
 @available(watchOS, unavailable)
 struct MainInfoWithDetail: View {
-    let entry: any TimelineEntry
+    let entry: MainWidgetProvider.Entry
     var dailyNote: any DailyNoteProtocol
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
