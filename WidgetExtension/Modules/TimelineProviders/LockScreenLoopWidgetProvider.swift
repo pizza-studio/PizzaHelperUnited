@@ -117,7 +117,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
         in context: Context
     ) async
         -> Timeline<Entry> {
-        let result: (entries: [Entry], refreshTime: Date) = await Task(priority: .background) {
+        let result: (entries: [Entry], refreshTime: Date) = await Task(priority: .userInitiated) {
             var refreshTime = PZWidgets.getRefreshDateByGameStamina(game: nil)
             let entries = await Self.getEntries(configuration: configuration, refreshTime: &refreshTime)
             return (entries, refreshTime)
@@ -171,8 +171,8 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
     }
 
     private static func fetchDailyNote(for profile: PZProfileSendable) async -> Result<DailyNoteProtocol, Error> {
-        await Task(priority: .background) {
             try await profile.getDailyNote()
+        await Task(priority: .userInitiated) {
         }.result
     }
 
