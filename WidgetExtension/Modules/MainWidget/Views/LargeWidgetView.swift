@@ -20,38 +20,41 @@ struct LargeWidgetView: View {
     let events: [EventModel]
 
     var body: some View {
-        HStack {
-            Spacer()
-            VStack(alignment: .leading) {
-                mainInfo()
-                Spacer(minLength: 18)
-                DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            /// 绝区零没有探索派遣。
-            if dailyNote.game != .zenlessZone {
+        /// 疑似發生故障的 .containerRelativeFrame 並未出現在 SwiftUI for WidgetKit 的支援清單內。
+        /// 但是 GeometryReader 卻被列入了這個清單，所以改用 GeometryReader。
+        GeometryReader { geometry in
+            HStack {
                 Spacer()
                 VStack(alignment: .leading) {
-                    ExpeditionsView(
-                        expeditions: dailyNote.expeditionTasks,
-                        pilotAssetMap: entry.pilotAssetMap
-                    )
-                    Spacer(minLength: 15)
-                    if dailyNote.game == .genshinImpact, viewConfig.showMaterialsInLargeSizeWidget {
-                        MaterialView()
-                    }
+                    mainInfo()
+                    Spacer(minLength: 18)
+                    DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
                 }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-            }
-            if family == .systemExtraLarge {
-                officialFeedBlock()
-                    .containerRelativeFrame(.horizontal) { length, _ in
-                        length * 0.5
+                .frame(maxWidth: .infinity, alignment: .leading)
+                /// 绝区零没有探索派遣。
+                if dailyNote.game != .zenlessZone {
+                    Spacer()
+                    VStack(alignment: .leading) {
+                        ExpeditionsView(
+                            expeditions: dailyNote.expeditionTasks,
+                            pilotAssetMap: entry.pilotAssetMap
+                        )
+                        Spacer(minLength: 15)
+                        if dailyNote.game == .genshinImpact, viewConfig.showMaterialsInLargeSizeWidget {
+                            MaterialView()
+                        }
                     }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                if family == .systemExtraLarge {
+                    officialFeedBlock()
+                        .frame(width: geometry.size.width * 0.475)
+                }
+                Spacer()
             }
-            Spacer()
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding()
     }
 
     // MARK: Private
