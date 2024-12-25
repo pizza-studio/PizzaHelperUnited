@@ -3,10 +3,14 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @testable import PZAccountKit
-import XCTest
+import Testing
 
-final class PZAccountKitTests: XCTestCase {
-    func testX() throws {
-        print("X")
-    }
+@Test
+func testDeviceFPGenerationOnline() async throws {
+    print(
+        try await HoYo.getDeviceFingerPrint(
+            region: .miyoushe(.genshinImpact),
+            forceClean: true
+        )
+    )
 }
