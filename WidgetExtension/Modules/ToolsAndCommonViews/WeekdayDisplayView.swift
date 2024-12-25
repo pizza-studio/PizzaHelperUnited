@@ -16,6 +16,7 @@ struct WeekdayDisplayView: View {
                     weight: .regular,
                     design: .rounded
                 ))
+                .foregroundColor(Color("textColor3", bundle: .main))
             Text(weekday)
                 .font(.caption)
                 .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
