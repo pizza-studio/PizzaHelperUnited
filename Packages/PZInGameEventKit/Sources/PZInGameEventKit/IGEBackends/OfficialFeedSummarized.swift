@@ -56,7 +56,7 @@ extension OfficialFeed {
                 continue
             }
             var server = HoYo.Server(rawValue: Defaults[.defaultServer]) ?? .asia(.genshinImpact)
-            forceUsingHoYoLAB: switch server {
+            switch server {
             case .celestia, .irminsul: server = .asia(game)
             default: server.changeGame(to: game)
             }
