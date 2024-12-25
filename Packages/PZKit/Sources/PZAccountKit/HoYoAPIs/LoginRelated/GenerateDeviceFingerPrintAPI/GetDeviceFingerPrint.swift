@@ -2,18 +2,27 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@preconcurrency import Defaults
 import Foundation
 import PZBaseKit
+
+extension Defaults.Keys {
+    public static let lastDefaultFingerprintRefreshDate = Key<Date>(
+        "lastDefaultFingerprintRefreshDate",
+        default: .init(timeIntervalSince1970: 0),
+        suite: .baseSuite
+    )
+}
 
 extension HoYo {
     public struct FingerPrintDataSet: Sendable {
         public let deviceFP: String
         public let seedID: String
-        public let seedTime: Int
+        public let seedTime: String
     }
 
     public static func getDeviceFingerPrint(
-        region: HoYo.AccountRegion, deviceID: String? = nil
+        region: HoYo.AccountRegion, deviceID: String? = nil, forceClean: Bool = false
     ) async throws
         -> FingerPrintDataSet {
         struct DeviceFingerPrintResult: DecodableFromMiHoYoAPIJSONResult {
@@ -22,12 +31,16 @@ extension HoYo {
             let device_fp: String
             let code: Int
         }
-
+        if Defaults[.lastDefaultFingerprintRefreshDate] == .init(timeIntervalSince1970: 0) || forceClean {
+            Defaults[.lastDefaultFingerprintRefreshDate] = .now // 确保 UserDefaults 有写入的值、而不是每次读取时都给默认值。
+        }
+        let refreshDate = Defaults[.lastDefaultFingerprintRefreshDate]
         let url = URL(string: "\(region.publicDataHostURLHeader)/device-fp/api/getFp")!
-        let deviceId = await ThisDevice.getDeviceID4Vendor(deviceID)
+        let initialDeviceID = await ThisDevice.getDeviceID4Vendor(deviceID)
+        let deviceId = (initialDeviceID + refreshDate.timeIntervalSince1970.description).md5
         let seedID = generateSeed()
-        let seedTime = Int(Date().timeIntervalSince1970) * 1000
-        let initialRandomFp = deviceId.md5.prefix(13).description // 根据 deviceId 生成初始指纹。
+        let seedTime = "\(String(Int(Date().timeIntervalSince1970)))000"
+        let initialRandomFp = String(deviceId.md5.shuffled().prefix(13)) // 根据 deviceId 生成初始指纹。
         let body: [String: String] = [
             "seed_id": seedID,
             "device_id": deviceId,
@@ -41,6 +54,9 @@ extension HoYo {
         request.httpBody = try JSONEncoder().encode(body)
         request.httpMethod = "POST"
         let (data, _) = try await URLSession.shared.data(for: request)
+        #if DEBUG
+        print(String(data: data, encoding: .utf8) ?? "")
+        #endif
         let fingerPrint = try DeviceFingerPrintResult
             .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.getDeviceFingerPrint()")
             .device_fp

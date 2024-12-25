@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@preconcurrency import Defaults
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
@@ -149,6 +150,7 @@ private struct RegenerateDeviceFingerPrintButton: View {
             }
             let task = Task {
                 do {
+                    Defaults[.lastDefaultFingerprintRefreshDate] = .now
                     profile.deviceFingerPrint = try await HoYo.getDeviceFingerPrint(
                         region: profile.server.region,
                         deviceID: profile.deviceID
