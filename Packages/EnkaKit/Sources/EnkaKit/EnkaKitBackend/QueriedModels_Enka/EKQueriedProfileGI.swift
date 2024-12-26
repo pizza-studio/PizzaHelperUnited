@@ -15,9 +15,9 @@ extension Enka {
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.nickname = try container.decode(String.self, forKey: .nickname)
-            self.level = try container.decode(Int.self, forKey: .level)
+            self.level = try container.decodeIfPresent(Int.self, forKey: .level) ?? 0
             self.signature = try container.decodeIfPresent(String.self, forKey: .signature) ?? ""
-            self.worldLevel = try container.decode(Int.self, forKey: .worldLevel)
+            self.worldLevel = try container.decodeIfPresent(Int.self, forKey: .worldLevel) ?? 0
             self.nameCardId = try container.decode(Int.self, forKey: .nameCardId)
             self.finishAchievementNum = try container.decode(Int.self, forKey: .finishAchievementNum)
             self.towerFloorIndex = try container.decodeIfPresent(Int.self, forKey: .towerFloorIndex)
