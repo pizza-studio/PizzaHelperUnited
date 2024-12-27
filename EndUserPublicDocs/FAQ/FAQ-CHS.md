@@ -120,7 +120,7 @@
 - 如果您用的是 iOS 的话，这里推荐 Stream Lab Inc. 开发的「Stream」这款专门用来抓包的 iOS 应用。
 - Windows 平台与 macOS 平台的抓包工具太多，不作赘述。
 
-抓包规则就是筛检所有包含「`/api/getGachaLog`」路径内容的 URL。不同游戏的不同区服的抽卡网址的域名均以「`public-operation`」开头：
+抓包规则就是筛选所有包含「`/api/getGachaLog`」路径内容的 URL。不同游戏的不同区服的抽卡网址的域名均以「`public-operation`」开头：
 
 - 受米游社管辖的 UID 的抽卡网址的域名均以 `mihoyo.com` 结尾。
 - 受 HoYoLAB 管辖的 UID 的抽卡网址的域名均以 `hoyoverse.com` 结尾。
