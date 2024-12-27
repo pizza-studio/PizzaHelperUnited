@@ -27,7 +27,7 @@ let package = Package(
             url: "https://github.com/pizza-studio/EnkaDBGenerator", .upToNextMajor(from: "1.5.1")
         ),
         .package(
-            url: "https://github.com/pizza-studio/ArtifactRatingDB.git", .upToNextMajor(from: "1.0.6")
+            url: "https://github.com/pizza-studio/ArtifactRatingDB.git", .upToNextMajor(from: "1.0.7")
         ),
     ],
     targets: [
