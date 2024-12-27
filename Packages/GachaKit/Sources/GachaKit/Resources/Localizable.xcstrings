@@ -238,73 +238,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keine 5-Sterne-Charaktere gefunden"
+            "value" : "Keine 5-Sterne-Charaktere / Waffen gefunden"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No 5-star characters found."
+            "value" : "No 5-star characters / weapons found."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No se encontraron personajes de 5 estrellas."
+            "value" : "No se encontraron personajes / armas de 5 estrellas."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Walang nahanap na 5-star na karakter."
+            "value" : "Walang nahanap na 5-star na karakter / armas."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aucun personnage 5 étoiles trouvé"
+            "value" : "Aucun personnage / arme 5 étoiles trouvé"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nessun personaggio 5 stelle trovato"
+            "value" : "Nessun personaggio / arma 5 stelle trovato"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "星５のキャラは見つかりませんでした。"
+            "value" : "星５のキャラ・武器は見つかりませんでした。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "5성 캐릭터를 찾을 수 없습니다."
+            "value" : "5성 캐릭터 / 무기를 찾을 수 없습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не найдено 5-звездочных персонажей"
+            "value" : "Не найдено 5-звездочных персонажей / оружия"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Không tìm thấy nhân vật 5 sao nào."
+            "value" : "Không tìm thấy nhân vật / vũ khí 5 sao nào."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尚未搜索到五星角色。"
+            "value" : "尚未搜索到五星角色或武器。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尚未檢索到五星角色。"
+            "value" : "尚未檢索到五星角色或武器。"
           }
         }
       }
