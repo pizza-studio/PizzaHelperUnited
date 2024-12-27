@@ -99,6 +99,40 @@ It is recommended to log in again with the corresponding local profile. This pro
 
 #### Q: Error code 1008 (UID error)
 
-Check if the UID corresponds to the server you selected (note: this refers to the Genshin Impact / Star Rail / Honkai: Star Rail UID, not the Miyoushe Passport ID Number). If you can't resolve the issue, please report it to us. Since version 5.0, The Pizza Helper will automatically attempt to determine the server when entering the UID in the local profile management screen.
+Check if the UID corresponds to the server you selected (note: this refers to the Genshin Impact / Star Rail / Zenless Zone Zero UID, not the miHoYo / HoYoVerse Passport ID Number of your Miyoushe / HoYoLAB account). If you can't resolve the issue, please report it to us. Since version 5.0, The Pizza Helper will automatically attempt to determine the server when entering the UID in the local profile management screen.
+
+#### Q: How to prepare device fingerprints for a Zenless Zone Zero UID governed by Miyoushe?
+
+(This question is irrelevant to those UIDs governed by HoYoLAB.)
+
+This function requires traffic monitoring between the iOS version of the Miyoushe App and miHoYo server, specifically to obtain the `x-rpc-device_fp` field. Such tools will create a local virtual private network for the system to enable traffic monitoring.
+
+The only current solution is for the user to use specialized traffic monitoring tools to perform packet capturing. We recommend "Stream" by Stream Lab Inc., an iOS app specifically designed for packet capture.
+
+The captured contents are personal information. We suggest that the user captures & users his / her own data by himself / herself.
+
+#### Q: How to handle the Paimon.moe gacha record format?
+
+Due to the lack of critical information fields in the Excel gacha record format provided by the website (which are all specified by UIGFv4), we have already completely abandoned support for the proprietary Excel format of Paimon.moe when implementing UIGFv4 support in (the previously) Genshin Pizza Helper. This feature is indeed not implemented in (currently) The Pizza Helper. If you need to import the data into applications that support the UIGFv4 standard, please send a feature request to Paimon.moe.
+
+#### Q: How to obtain gacha records for "Star Rail UID" and "Genshin UID hosted by HoYoLAB"?
+
+This function requires traffic monitoring between these game clients (including miHoYo's cloud games) and the miHoYo server, specifically to filter any URLs containing specific fields and domains. This tool will create a local virtual private network to enable traffic monitoring.
+
+The only current solution is for the user to personally use specialized traffic monitoring tools to perform packet capturing.
+
+- If you're using iOS, we recommend "Stream" by Stream Lab Inc., an iOS app specifically designed for packet capture.
+- There are too many packet capture tools for Windows and macOS systems to list here.
+
+The packet capturing rule is to filter all URLs containing the path "`/api/getGachaLog`". The domains of gacha URLs for different game regions will all start with "`public-operation`":
+
+- Gacha URLs for UIDs governed by Miyoushe will have domains ending with `mihoyo.com`.
+- Gacha URLs for UIDs governed by HoYoLAB will have domains ending with `hoyoverse.com`.
+
+While capturing packets, the user needs to open the gacha record page (Wish / Warp history) in the game while traffic monitoring is active.
+
+The validity period of the URL you capture may only be one or two hours, so please use it as soon as possible.
+
+The URL & data you capture is of your personal privacy; please carefully consider whether to share it with others.
 
 $ EOF.
