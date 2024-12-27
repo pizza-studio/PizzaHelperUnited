@@ -53,26 +53,6 @@ struct UtilsTabPage: View {
                     NavigationLink(value: Nav.hoyoMap) {
                         Text(verbatim: HoYoMapView.navTitle)
                     }
-                    Menu {
-                        #if os(macOS) || targetEnvironment(macCatalyst)
-                        Link(destination: "https://genshin.yunlu18.net".asURL) {
-                            Text(verbatim: "Alice Workshop (\(Pizza.SupportedGame.genshinImpact.localizedShortName))")
-                        }
-                        Link(destination: "https://starrail.yunlu18.net/".asURL) {
-                            Text(verbatim: "Alice Workshop (\(Pizza.SupportedGame.starRail.localizedShortName))")
-                        }
-                        #else
-                        Link(destination: "https://apps.apple.com/app/id1620751192".asURL) {
-                            Text(verbatim: "Alice Workshop (\(Pizza.SupportedGame.genshinImpact.localizedShortName))")
-                        }
-                        Link(destination: "https://apps.apple.com/app/id6450605570".asURL) {
-                            Text(verbatim: "Alice Workshop (\(Pizza.SupportedGame.starRail.localizedShortName))")
-                        }
-                        #endif
-                    } label: {
-                        Text(verbatim: "Alice Workshop (App Store)")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
                 }
             }
             #if os(iOS) || targetEnvironment(macCatalyst)
