@@ -57,7 +57,7 @@ The miHoYo / HoYoLAB client app requests game-related information from the miHoY
 
 miHoYo does not allow charging or embedding ads, so all features of The Pizza Helper are freely available. 
 
-The Pizza Helper does accept voluntary donations from users, and the development team does not have any obligations to the donors. These donations will be used for app development and maintenance of associated network infrastructure. Of course, the annual fee for the Apple Developer Program membership required to distribute software via the Apple App Store will be reimbursed from this donation fund. If large donations are received, the team may publicly acknowledge the contributors. The team may also consider donating any unused funds to charitable causes at an appropriate time.
+The Pizza Helper did accept voluntary donations from users, and the development team does not have any obligations to the donors. These donations will be used for app development and maintenance of associated network infrastructure. Of course, the annual fee for the Apple Developer Program membership required to distribute software via the Apple App Store will be reimbursed from this donation fund. If large donations are received, the team may publicly acknowledge the contributors. The team may also consider donating any unused funds to charitable causes at an appropriate time.
 
 #### Q: How do widgets automatically update a player's account status for Original Resin / Trailblaze Power / ZZZ Energy?
 
