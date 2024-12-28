@@ -13651,73 +13651,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store und Spende"
+            "value" : "App Store"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store and Donation"
+            "value" : "App Store"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tienda de aplicaciones y donación"
+            "value" : "App Store"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tindahan ng App at Donasyon"
+            "value" : "App Store"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Boutique d'applications et dons"
+            "value" : "App Store"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store e Donazioni"
+            "value" : "App Store"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store とお寄付"
+            "value" : "App Store"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 스토어 및 기부"
+            "value" : "App Store"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Магазин приложений и пожертвования"
+            "value" : "App Store"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cửa hàng ứng dụng và Quyên góp"
+            "value" : "App Store"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store 与赞助"
+            "value" : "App Store"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store 與贊助"
+            "value" : "App Store"
           }
         }
       }

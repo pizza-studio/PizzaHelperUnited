@@ -74,7 +74,6 @@ struct AppSettingsTabPage: View {
                 if Pizza.isAppStoreRelease {
                     Section {
                         ASReviewHandler.makeRatingButton()
-                        DonationView.makeNav()
                     } header: {
                         Text("settings.section.appStoreRelated.header".i18nPZHelper)
                             .textCase(.none)
