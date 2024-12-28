@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B0A42BF2CCE4F96004463D5 /* PZHelper-Watch in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0A42BE2CCE4F96004463D5 /* PZHelper-Watch */; };
 		5B10D8152CC6667600245B77 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5B10D8142CC6667600245B77 /* PZHelper */; };
-		5B10D8252CC6698300245B77 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B10D8242CC6698300245B77 /* StoreKit.framework */; };
 		5B258C822CCE890300131992 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD744292CC6B262007DE385 /* WidgetKit.framework */; };
 		5B258C832CCE890300131992 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7442B2CC6B262007DE385 /* SwiftUI.framework */; };
 		5B258C8C2CCE890500131992 /* PizzaWatchAppExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5B258C812CCE890300131992 /* PizzaWatchAppExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -107,7 +106,6 @@
 
 /* Begin PBXFileReference section */
 		5B10D7F12CC6636C00245B77 /* Pizza Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pizza Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B10D8242CC6698300245B77 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5B10D8C82CC67CE800245B77 /* PZAboutKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZAboutKit; sourceTree = "<group>"; };
 		5B1641342C8320D600C4698C /* PZDictionaryKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZDictionaryKit; sourceTree = "<group>"; };
 		5B258C812CCE890300131992 /* PizzaWatchAppExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PizzaWatchAppExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,7 +201,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B10D8152CC6667600245B77 /* PZHelper in Frameworks */,
-				5B10D8252CC6698300245B77 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +260,6 @@
 		5B2A65F92C69204600BAEE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5B10D8242CC6698300245B77 /* StoreKit.framework */,
 				5BD744292CC6B262007DE385 /* WidgetKit.framework */,
 				5BD7442B2CC6B262007DE385 /* SwiftUI.framework */,
 			);
