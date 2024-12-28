@@ -34,10 +34,8 @@ Although The Pizza Helper allows users to import and export gacha records, the d
 
 At least the following types of services could be affected:
 
-1. **HoYoLAB or miHoYo Community:** Real-time notes, personal battle reports, ledgers, game statistics, gacha record retrieval, character inventory lists.
+1. **HoYoLAB or miHoYo Community:** Real-time notes, personal battle reports, ledgers, game statistics, gacha record retrieval, character inventory lists, in-game events.
 2. **Enka Networks:** Character showcases.
-3. **Yatta.moe:** Genshin Impact daily materials.
-4. **Ennead.cc:** Star Rail daily HoYoLAB news (plain-text only).
 
 Each supported game, during its major version updates, often comes with temporary unavailability of the aforementioned services. Especially Enka Networks, each version maintenance typically takes one to two days.
 
