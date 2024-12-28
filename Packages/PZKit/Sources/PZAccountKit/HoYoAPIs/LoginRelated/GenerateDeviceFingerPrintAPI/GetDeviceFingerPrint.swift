@@ -31,7 +31,7 @@ extension HoYo {
             let device_fp: String
             let code: Int
         }
-        if Defaults[.lastDefaultFingerprintRefreshDate] == .init(timeIntervalSince1970: 0) || forceClean {
+        if Date(timeIntervalSince1970: 0) == Defaults[.lastDefaultFingerprintRefreshDate] || forceClean {
             Defaults[.lastDefaultFingerprintRefreshDate] = .now // 确保 UserDefaults 有写入的值、而不是每次读取时都给默认值。
         }
         let refreshDate = Defaults[.lastDefaultFingerprintRefreshDate]
