@@ -779,15 +779,8 @@ public struct AttributeTagPair: View {
 @MainActor private let summariesHSR: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
-    // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
     let enkaDatabase = try! Enka.EnkaDB4HSR(locTag: "zh-tw")
-    let packageRootPath = URL(fileURLWithPath: #file).pathComponents.prefix(while: { $0 != "Sources" }).joined(
-        separator: "/"
-    ).dropFirst()
-    let testDataPath: String = packageRootPath + "/Tests/EnkaKitTests/TestAssets/"
-    let filePath = testDataPath + "testProfileHSR.json"
-    let dataURL = URL(fileURLWithPath: filePath)
-    let profile = try! Data(contentsOf: dataURL).parseAs(Enka.QueriedResultHSR.self)
+    let profile = try! Enka.QueriedResultHSR.exampleData()
     let summaries = profile.detailInfo!.avatarDetailList.map { $0.summarize(theDB: enkaDatabase)! }
     return summaries
     // swiftlint:enable force_try
@@ -797,15 +790,8 @@ public struct AttributeTagPair: View {
 @MainActor private let summariesGI: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
-    // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
     let enkaDatabase = try! Enka.EnkaDB4GI(locTag: "zh-tw")
-    let packageRootPath = URL(fileURLWithPath: #file).pathComponents.prefix(while: { $0 != "Sources" }).joined(
-        separator: "/"
-    ).dropFirst()
-    let testDataPath: String = packageRootPath + "/Tests/EnkaKitTests/TestAssets/"
-    let filePath = testDataPath + "testProfileGI.json"
-    let dataURL = URL(fileURLWithPath: filePath)
-    let profile = try! Data(contentsOf: dataURL).parseAs(Enka.QueriedResultGI.self)
+    let profile = try! Enka.QueriedResultGI.exampleData()
     let summaries = profile.detailInfo!.avatarDetailList.map { $0.summarize(theDB: enkaDatabase)! }
     return summaries
     // swiftlint:enable force_try
