@@ -161,6 +161,19 @@ extension String {
     }
 }
 
+extension String {
+    public func convertPercentedSelfToDouble() -> Double? {
+        var allChars = map { $0 }
+        var shouldDivideBy100 = false
+        if allChars.last == "%" {
+            allChars = allChars.dropLast()
+            shouldDivideBy100 = true
+        }
+        guard let numberResult = Double(String(allChars)) else { return nil }
+        return shouldDivideBy100 ? (numberResult / 100) : numberResult
+    }
+}
+
 // MARK: - Locale Implementations.
 
 extension Locale {
