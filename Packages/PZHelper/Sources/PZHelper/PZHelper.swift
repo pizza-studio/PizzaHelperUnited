@@ -33,22 +33,6 @@ extension PZHelper {
         .modelContainer(PZProfileActor.shared.modelContainer)
     }
 
-    @MainActor
-    public static func preInitializeTheSharedProfileActor() {
-        // 这个步骤只有一个目的：让 PZProfileActor.shared 立即初期化。
-        // 原因：Swift 的所有 static property 全都是 lazy-load。
-        let context = PZProfileActor.shared.modelExecutor.modelContext
-        _ = try? context.fetchCount(
-            FetchDescriptor<PZProfileMO>()
-        )
-        // 下述步骤理论上会立刻触发 iCloud 同步。
-        let fakeProfileMO = PZProfileMO()
-        context.insert(fakeProfileMO)
-        try? context.save()
-        context.delete(fakeProfileMO)
-        try? context.save()
-    }
-
     @MainActor public private(set) static var isApplicationBooted = false
 }
 
