@@ -5,6 +5,8 @@
 @preconcurrency import Defaults
 import EnkaDBModels
 
+// MARK: - Constructors for summarizing Enka query results.
+
 extension Enka.AvatarSummarized.AvatarMainInfo {
     // MARK: Lifecycle
 
@@ -45,7 +47,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
 }
 
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
-    private struct GenshinSkillRawDataPair {
+    fileprivate struct GenshinSkillRawDataPair {
         // MARK: Internal
 
         let charID: String
@@ -222,5 +224,167 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         }
         self.setNameLocalized = setName
         self.game = .genshinImpact
+    }
+}
+
+// MARK: - Constructors for summarizing HoYoLAB query results.
+
+extension Enka.AvatarSummarized.AvatarMainInfo {
+    public init?(
+        giDB: Enka.EnkaDB4GI,
+        hylRAW: HYQueriedModels.HYLAvatarDetail4GI
+    ) {
+        let charID = hylRAW.avatarIdStr
+        let costumeID = hylRAW.costumes.first?.id.description
+        guard let theCommonInfo = giDB.characters[charID] else {
+            print("theCommonInfo nulled")
+            return nil
+        }
+        guard let idExpressible = Enka.AvatarSummarized.CharacterID(id: charID, costumeID: costumeID) else {
+            print("idExpressible nulled")
+            return nil
+        }
+        guard let theElement = Enka.GameElement(rawValue: theCommonInfo.element) else {
+            print("theElement nulled")
+            return nil
+        }
+        guard let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
+            giDB: giDB,
+            hylRAW: hylRAW
+        ) else {
+            print("baseSkillSet nulled")
+            return nil
+        }
+        self.avatarLevel = hylRAW.base.level
+        self.constellation = hylRAW.constellations.map(\.isActived).reduce(0) { $1 ? $0 + 1 : 0 }
+        self.baseSkills = baseSkillSet
+        self.uniqueCharId = charID
+        self.element = theElement
+        self.lifePath = .none // 原神角色没有命途的概念。
+        let nameTyped = Enka.CharacterName(pidStr: charID)
+        self.localizedName = nameTyped.i18n(theDB: giDB, officialNameOnly: true)
+        self.localizedRealName = nameTyped.i18n(theDB: giDB, officialNameOnly: false)
+        self.terms = .init(lang: giDB.locTag, game: .genshinImpact)
+        self.idExpressable = idExpressible
+        guard game == .genshinImpact else { return nil }
+    }
+}
+
+extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
+    fileprivate init?(
+        giDB: Enka.EnkaDB4GI,
+        hylRAW: HYQueriedModels.HYLAvatarDetail4GI
+    ) {
+        let charID = hylRAW.avatarIdStr
+        guard let character = giDB.characters[charID] else { return nil }
+        guard character.skillOrder.count == 3 else { return nil } // 原神的角色只有三个可以升级的技能。
+        var skillLevelMap = [String: Int]()
+        hylRAW.skills.forEach { skillUnit in
+            skillLevelMap[skillUnit.skillID.description] = skillUnit.level
+        }
+        let concatenated: [GenshinSkillRawDataPair] = character.skillOrder.map { skillID in
+            let rawLevel = skillLevelMap[skillID.description] ?? 0 // 已计入命之座天赋等级加成。
+            let icon = character.skills[skillID.description] ?? "UI_Talent_Combine_Skill_ExtraItem"
+            return GenshinSkillRawDataPair(
+                charID: charID,
+                baseLevel: rawLevel,
+                additionalLevel: nil, // HoYoLAB 的查询结果无法将角色技能基础等级与命座天赋等级加成分割开。
+                icon: icon
+            )
+        }
+        self.basicAttack = concatenated[0].toBaseSkill(type: .basicAttack)
+        self.elementalSkill = concatenated[1].toBaseSkill(type: .elementalSkill)
+        self.elementalBurst = concatenated[2].toBaseSkill(type: .elementalBurst)
+        /// 原神不需要处理星穹铁道的天赋。这里伪造一个，回头让前端根据游戏类型判断是否显示天赋。
+        self.talent = .init(
+            charIDStr: charID, baseLevel: 114,
+            levelAddition: 514,
+            type: .talent,
+            game: .genshinImpact,
+            iconAssetName: "YJSNPI",
+            iconOnlineFileNameStem: "YJSNPI"
+        )
+        self.game = .genshinImpact
+    }
+}
+
+extension Enka.AvatarSummarized.WeaponPanel {
+    public init?(
+        giDB: Enka.EnkaDB4GI,
+        hylRAW: HYQueriedModels.HYLAvatarDetail4GI
+    ) {
+        let weaponRaw = hylRAW.weapon
+        self.weaponID = weaponRaw.id
+        self.rarityStars = weaponRaw.rarity
+        self.localizedName = giDB.getFailableTranslationFor(
+            id: weaponRaw.id.description
+        ) ?? weaponRaw.name
+        self.trainedLevel = weaponRaw.level
+        self.refinement = weaponRaw.affixLevel
+        self.iconOnlineFileNameStem = weaponRaw.icon // 假数值，基本上用不到
+        self.iconAssetName = "gi_weapon_\(weaponID)"
+        self.basicProps = [
+            Enka.PVPair(
+                theDB: giDB,
+                type: .init(hoyoPropID4GI: weaponRaw.mainProperty.propertyType),
+                valueStr: weaponRaw.mainProperty.propertyFinal
+            ),
+        ].compactMap { $0 }
+        self.specialProps = [
+            Enka.PVPair(
+                theDB: giDB,
+                type: .init(hoyoPropID4GI: weaponRaw.subProperty?.propertyType ?? -114514),
+                valueStr: weaponRaw.subProperty?.propertyFinal ?? "-114514"
+            ),
+        ].compactMap { $0 }
+        guard !basicProps.isEmpty else { return nil } // 原神武器必须有主词条。
+        self.game = .genshinImpact
+    }
+}
+
+extension Enka.AvatarSummarized.ArtifactInfo {
+    public init?(
+        giDB: Enka.EnkaDB4GI,
+        hylArtifactRAW: HYQueriedModels.HYLAvatarDetail4GI.Relic
+    ) {
+        let setID = Self.dropHighestAndLowestDigits(from: hylArtifactRAW.relicSet.id)
+        guard let setID else { return nil }
+        let posType = Enka.ArtifactType(typeID: hylArtifactRAW.pos, game: .genshinImpact)
+        guard let posType else { return nil }
+        self.itemID = hylArtifactRAW.id
+        self.rarityStars = hylArtifactRAW.rarity
+        self.trainedLevel = hylArtifactRAW.level
+        self.type = posType
+        self.setID = setID
+        self.iconOnlineFileNameStem = hylArtifactRAW.icon
+        self.iconAssetName = "gi_relic_\(setID)"
+        self.setNameLocalized = hylArtifactRAW.relicSet.name
+        let mainProp = Enka.PVPair(
+            theDB: giDB,
+            type: .init(hoyoPropID4GI: hylArtifactRAW.mainProperty.propertyType),
+            valueStr: hylArtifactRAW.mainProperty.value,
+            count: -114_514 // Main Prop has no counts.
+        )
+        guard let mainProp else { return nil }
+        self.mainProp = mainProp
+        self.subProps = hylArtifactRAW.subPropertyList.compactMap { subPropRAW in
+            Enka.PVPair(
+                theDB: giDB,
+                type: .init(hoyoPropID4GI: subPropRAW.propertyType),
+                valueStr: subPropRAW.value,
+                count: subPropRAW.times
+            )
+        }
+        self.game = .genshinImpact
+    }
+
+    private static func dropHighestAndLowestDigits(from number: Int) -> Int? {
+        let digits = String(abs(number)).compactMap { $0.wholeNumberValue }
+        guard digits.count > 2 else { return nil }
+        let sortedDigits = digits.sorted()
+        let filteredDigits = digits.filter { $0 != sortedDigits.first && $0 != sortedDigits.last }
+        guard !filteredDigits.isEmpty else { return nil }
+        let result = filteredDigits.map { String($0) }.joined()
+        return Int(result)
     }
 }

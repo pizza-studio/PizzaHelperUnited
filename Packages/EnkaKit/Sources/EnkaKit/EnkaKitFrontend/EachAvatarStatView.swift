@@ -781,7 +781,7 @@ public struct AttributeTagPair: View {
     // swiftlint:disable force_unwrapping
     let enkaDatabase = try! Enka.EnkaDB4HSR(locTag: "zh-tw")
     let profile = try! Enka.QueriedResultHSR.exampleData()
-    let summaries = profile.detailInfo!.avatarDetailList.map { $0.summarize(theDB: enkaDatabase)! }
+    let summaries = profile.detailInfo!.avatarDetailList.compactMap { $0.summarize(theDB: enkaDatabase) }
     return summaries
     // swiftlint:enable force_try
     // swiftlint:enable force_unwrapping
@@ -792,7 +792,29 @@ public struct AttributeTagPair: View {
     // swiftlint:disable force_unwrapping
     let enkaDatabase = try! Enka.EnkaDB4GI(locTag: "zh-tw")
     let profile = try! Enka.QueriedResultGI.exampleData()
-    let summaries = profile.detailInfo!.avatarDetailList.map { $0.summarize(theDB: enkaDatabase)! }
+    let summaries = profile.detailInfo!.avatarDetailList.compactMap { $0.summarize(theDB: enkaDatabase) }
+    return summaries
+    // swiftlint:enable force_try
+    // swiftlint:enable force_unwrapping
+}()
+
+@MainActor private let summariesHSRofHoYoLAB: [Enka.AvatarSummarized] = {
+    // swiftlint:disable force_try
+    // swiftlint:disable force_unwrapping
+    let enkaDatabase = try! Enka.EnkaDB4HSR(locTag: "zh-tw")
+    let profile = try! HYQueriedModels.HYLAvatarDetail4HSR.exampleData()
+    let summaries = profile.avatarList.compactMap { $0.summarize(theDB: enkaDatabase) }
+    return summaries
+    // swiftlint:enable force_try
+    // swiftlint:enable force_unwrapping
+}()
+
+@MainActor private let summariesGIofHoYoLAB: [Enka.AvatarSummarized] = {
+    // swiftlint:disable force_try
+    // swiftlint:disable force_unwrapping
+    let enkaDatabase = try! Enka.EnkaDB4GI(locTag: "zh-tw")
+    let profile = try! HYQueriedModels.HYLAvatarDetail4GI.exampleData()
+    let summaries = profile.avatarList.compactMap { $0.summarize(theDB: enkaDatabase) }
     return summaries
     // swiftlint:enable force_try
     // swiftlint:enable force_unwrapping
@@ -801,13 +823,29 @@ public struct AttributeTagPair: View {
 #Preview {
     TabView {
         TabView {
+            ForEach(summariesGIofHoYoLAB) { summary in
+                summary.asView(background: true)
+                    .tabItem {
+                        Text(summary.mainInfo.name)
+                    }
+            }
+        }.tabItem { Text(verbatim: "GI_HoYoLAB") }
+        TabView {
+            ForEach(summariesHSRofHoYoLAB) { summary in
+                summary.asView(background: true)
+                    .tabItem {
+                        Text(summary.mainInfo.name)
+                    }
+            }
+        }.tabItem { Text(verbatim: "HSR_HoYoLAB") }
+        TabView {
             ForEach(summariesGI) { summary in
                 summary.asView(background: true)
                     .tabItem {
                         Text(summary.mainInfo.name)
                     }
             }
-        }.tabItem { Text(verbatim: "GI") }
+        }.tabItem { Text(verbatim: "GI_Enka") }
         TabView {
             ForEach(summariesHSR) { summary in
                 summary.asView(background: true)
@@ -815,7 +853,7 @@ public struct AttributeTagPair: View {
                         Text(summary.mainInfo.name)
                     }
             }
-        }.tabItem { Text(verbatim: "HSR") }
+        }.tabItem { Text(verbatim: "HSR_Enka") }
     }.fixedSize().clipped()
 }
 
