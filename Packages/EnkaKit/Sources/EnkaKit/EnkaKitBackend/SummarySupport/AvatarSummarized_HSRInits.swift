@@ -5,6 +5,8 @@
 @preconcurrency import Defaults
 import EnkaDBModels
 
+// MARK: - Constructors for summarizing Enka query results.
+
 extension Enka.AvatarSummarized.AvatarMainInfo {
     // MARK: Lifecycle
 
@@ -50,8 +52,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
         if constellation > 1 {
             for i in 1 ... constellation {
                 let keyword = "\(charIDStr)0\(i)"
-                hsrDB.skillRanks[keyword]?.skillAddLevelList.forEach { thisPointId, levelDelta in
-                    var writeKeyArr = thisPointId.map(\.description)
+                hsrDB.skillRanks[keyword]?.skillAddLevelList.forEach { thisPointID, levelDelta in
+                    var writeKeyArr = thisPointID.map(\.description)
                     writeKeyArr.insert("0", at: 4)
                     levelAdditionList[writeKeyArr.joined(), default: 0] += levelDelta
                 }
@@ -171,5 +173,167 @@ extension Enka.AvatarSummarized.ArtifactInfo {
             .icon.split(separator: "/").suffix(1).joined().dropLast(4).description
         self.iconAssetName = "hsr_relic_\(setID)_\(type.assetSuffix)"
         self.game = .starRail
+    }
+}
+
+// MARK: - Constructors for summarizing HoYoLAB query results.
+
+extension Enka.AvatarSummarized.AvatarMainInfo {
+    public init?(hsrDB: Enka.EnkaDB4HSR, hylRAW: HYQueriedModels.HYLAvatarDetail4HSR) {
+        let charIDStr = hylRAW.avatarIdStr
+        guard let theCommonInfo = hsrDB.characters[charIDStr] else { return nil }
+        guard let idExpressible = Enka.AvatarSummarized.CharacterID(id: charIDStr) else { return nil }
+        guard let lifePath = Enka.LifePath(rawValue: theCommonInfo.avatarBaseType) else { return nil }
+        guard let theElement = Enka.GameElement(rawValue: theCommonInfo.element) else { return nil }
+        guard let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
+            hsrDB: hsrDB,
+            hylRAW: hylRAW
+        ) else {
+            print("baseSkillSet nulled")
+            return nil
+        }
+        self.avatarLevel = hylRAW.level
+        self.constellation = hylRAW.eidolonResonanceList.map(\.isUnlocked).reduce(0) { $1 ? $0 + 1 : 0 }
+        self.baseSkills = baseSkillSet
+        self.uniqueCharId = charIDStr
+        self.element = theElement
+        self.lifePath = lifePath
+        let nameTyped = Enka.CharacterName(pid: hylRAW.id)
+        self.localizedName = nameTyped.i18n(theDB: hsrDB, officialNameOnly: true)
+        self.localizedRealName = nameTyped.i18n(theDB: hsrDB, officialNameOnly: false)
+        self.terms = .init(lang: hsrDB.locTag, game: .starRail)
+        self.idExpressable = idExpressible
+        guard game == .starRail else { return nil }
+    }
+}
+
+extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
+    public init?(hsrDB: Enka.EnkaDB4HSR, hylRAW: HYQueriedModels.HYLAvatarDetail4HSR) {
+        let charIDStr = hylRAW.avatarIdStr
+        let skillsRAW = hylRAW.skills.prefix(4)
+        guard skillsRAW.count == 4 else { return nil }
+        let eidolonResonance: Int = hylRAW.eidolonResonanceList.map(\.isUnlocked).reduce(0) {
+            $1 ? $0 + 1 : 0
+        }
+
+        var levelAdditionList = [String: Int]()
+        if eidolonResonance > 1 {
+            for i in 1 ... eidolonResonance {
+                let keyword = "\(charIDStr)0\(i)"
+                hsrDB.skillRanks[keyword]?.skillAddLevelList.forEach { thisPointID, levelDelta in
+                    var writeKeyArr = thisPointID.map(\.description)
+                    writeKeyArr.insert("0", at: 4)
+                    levelAdditionList[writeKeyArr.joined(), default: 0] += levelDelta
+                }
+            }
+        }
+
+        let offlineAssetPrefix = "hsr_skill_\(charIDStr)"
+
+        func getTypeRaw(_ type: Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill.SkillType) -> String {
+            type.rawValue
+        }
+
+        self.basicAttack = .init(
+            charIDStr: charIDStr, baseLevel: skillsRAW[0].level,
+            levelAddition: levelAdditionList[skillsRAW[0].pointID],
+            type: .basicAttack,
+            game: .starRail,
+            iconAssetName: "\(offlineAssetPrefix)_\(getTypeRaw(.basicAttack))",
+            iconOnlineFileNameStem: skillsRAW[0].itemURL
+        )
+        self.elementalSkill = .init(
+            charIDStr: charIDStr, baseLevel: skillsRAW[1].level,
+            levelAddition: levelAdditionList[skillsRAW[1].pointID],
+            type: .elementalSkill,
+            game: .starRail,
+            iconAssetName: "\(offlineAssetPrefix)_\(getTypeRaw(.elementalSkill))",
+            iconOnlineFileNameStem: skillsRAW[1].itemURL
+        )
+        self.elementalBurst = .init(
+            charIDStr: charIDStr, baseLevel: skillsRAW[2].level,
+            levelAddition: levelAdditionList[skillsRAW[2].pointID],
+            type: .elementalBurst,
+            game: .starRail,
+            iconAssetName: "\(offlineAssetPrefix)_\(getTypeRaw(.elementalBurst))",
+            iconOnlineFileNameStem: skillsRAW[2].itemURL
+        )
+        self.talent = .init(
+            charIDStr: charIDStr, baseLevel: skillsRAW[3].level,
+            levelAddition: levelAdditionList[skillsRAW[3].pointID],
+            type: .talent,
+            game: .starRail,
+            iconAssetName: "\(offlineAssetPrefix)_\(getTypeRaw(.talent))",
+            iconOnlineFileNameStem: skillsRAW[3].itemURL
+        )
+        self.game = .starRail
+    }
+}
+
+extension Enka.AvatarSummarized.WeaponPanel {
+    public init?(hsrDB: Enka.EnkaDB4HSR, hylRAW: HYQueriedModels.HYLAvatarDetail4HSR) {
+        guard let weaponRAW = hylRAW.equip else { return nil }
+        guard let theCommonInfo = hsrDB.weapons[weaponRAW.id.description] else { return nil }
+        self.weaponID = weaponRAW.id
+        let nameHash = theCommonInfo.equipmentName.hash.description
+        self.localizedName = hsrDB.locTable[nameHash] ?? "EnkaId: \(weaponID)"
+        self.trainedLevel = weaponRAW.level
+        self.refinement = weaponRAW.rank
+        /// 米游社面板的武器不包含主副词条资讯。
+        self.basicProps = []
+        self.specialProps = []
+        self.iconOnlineFileNameStem = weaponRAW.icon
+        self.iconAssetName = "hsr_light_cone_\(weaponID)"
+        self.rarityStars = theCommonInfo.rarity
+        self.game = .starRail
+    }
+}
+
+extension Enka.AvatarSummarized.ArtifactInfo {
+    public init?(
+        hsrDB: Enka.EnkaDB4HSR,
+        hylArtifactRAW: HYQueriedModels.HYLAvatarDetail4HSR.Relic
+    ) {
+        guard let theCommonInfo = hsrDB.artifacts[hylArtifactRAW.id.description] else { return nil }
+        let relicType = Enka.ArtifactType(typeID: hylArtifactRAW.pos, game: .starRail) ?? Enka
+            .ArtifactType(rawValue: theCommonInfo.type)
+        guard let relicType else { return nil }
+        let mainProp = Enka.PVPair(
+            theDB: hsrDB,
+            type: .init(hoyoPropID4HSR: hylArtifactRAW.mainProperty.propertyType),
+            valueStr: hylArtifactRAW.mainProperty.value,
+            count: hylArtifactRAW.mainProperty.times
+        )
+        guard let mainProp else { return nil }
+        let setID = Self.dropHighestAndLowestDigits(from: hylArtifactRAW.id)
+        guard let setID else { return nil }
+        self.setID = setID
+        self.setNameLocalized = "Set.\(setID)"
+        self.itemID = hylArtifactRAW.id
+        self.rarityStars = theCommonInfo.rarity
+        self.trainedLevel = hylArtifactRAW.level
+        self.type = relicType
+        self.iconOnlineFileNameStem = hylArtifactRAW.icon
+        self.iconAssetName = "hsr_relic_\(setID)_\(type.assetSuffix)"
+        self.game = .starRail
+        self.mainProp = mainProp
+        self.subProps = hylArtifactRAW.properties.compactMap { rawProp in
+            Enka.PVPair(
+                theDB: hsrDB,
+                type: .init(hoyoPropID4HSR: rawProp.propertyType),
+                valueStr: rawProp.value,
+                count: rawProp.times
+            )
+        }
+    }
+
+    private static func dropHighestAndLowestDigits(from number: Int) -> Int? {
+        let digits = String(abs(number)).compactMap { $0.wholeNumberValue }
+        guard digits.count > 2 else { return nil }
+        let sortedDigits = digits.sorted()
+        let filteredDigits = digits.filter { $0 != sortedDigits.first && $0 != sortedDigits.last }
+        guard !filteredDigits.isEmpty else { return nil }
+        let result = filteredDigits.map { String($0) }.joined()
+        return Int(result)
     }
 }

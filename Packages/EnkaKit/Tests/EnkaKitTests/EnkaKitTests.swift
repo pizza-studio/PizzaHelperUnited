@@ -167,6 +167,72 @@ struct EnkaKitTests {
     }
 }
 
+// MARK: - EnkaKitWithHoYoQueryResultTests
+
+struct EnkaKitWithHoYoQueryResultTests {
+    @Test
+    func testBatchSummary4GI() async throws {
+        let chtDB = try Enka.EnkaDB4GI(locTag: "zh-Hant")
+        let giDecoded = try HYQueriedModels.HYLAvatarDetail4GI.exampleData()
+        let summarized = await Task { @MainActor in
+            giDecoded.avatarList.compactMap { $0.summarize(theDB: chtDB) }
+        }.value
+        #expect(giDecoded.avatarList.count == summarized.count)
+    }
+
+    @Test
+    func testBatchSummary4HSR() async throws {
+        let chtDB = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
+        let hsrDecoded = try HYQueriedModels.HYLAvatarDetail4HSR.exampleData()
+        let summarized = await Task { @MainActor in
+            hsrDecoded.avatarList.compactMap { $0.summarize(theDB: chtDB) }
+        }.value
+        #expect(hsrDecoded.avatarList.count == summarized.count)
+    }
+
+    @Test
+    func testHoYoGIProfileSummaryAsText() async throws {
+        let giDecoded = try HYQueriedModels.HYLAvatarDetail4GI.exampleData()
+        guard let firstAvatar = giDecoded.avatarList.first else {
+            throw TestError.error(msg: "First avatar (Raiden Ei) missing.")
+        }
+        let chtDB = try Enka.EnkaDB4GI(locTag: "zh-Hant")
+        guard let summarized = await firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
+            throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
+        }
+        print(summarized.asText)
+        print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
+        summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
+        let x = summarized.artifactRatingResult
+        print(x ?? "Result Rating Failed.")
+    }
+
+    @Test
+    func testHoYoHSRProfileSummaryAsText() async throws {
+        let hsrDecoded = try HYQueriedModels.HYLAvatarDetail4HSR.exampleData()
+        guard let firstAvatar = hsrDecoded.avatarList.first else {
+            throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
+        }
+        let chtDB = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
+        guard let summarized = await firstAvatar.summarize(theDB: chtDB)?.artifactsRated() else {
+            throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
+        }
+        print(summarized.asText)
+        print(summarized.mainInfo.idExpressable.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.basicAttack.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.elementalSkill.onlineAssetURLStr)
+        print(summarized.mainInfo.baseSkills.elementalBurst.onlineAssetURLStr)
+        if let weapon = summarized.equippedWeapon { print(weapon.onlineAssetURLStr) }
+        summarized.artifacts.forEach { print($0.onlineAssetURLStr) }
+        let x = summarized.artifactRatingResult
+        print(x ?? "Result Rating Failed.")
+    }
+}
+
 // MARK: - TestError
 
 enum TestError: Error {
