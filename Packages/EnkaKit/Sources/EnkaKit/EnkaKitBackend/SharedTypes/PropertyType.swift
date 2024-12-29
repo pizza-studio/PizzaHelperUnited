@@ -130,7 +130,7 @@ extension Enka.PropertyType {
         self = matched
     }
 
-    private init?(enkaPropID4GI propID: Int) {
+    public init?(enkaPropID4GI propID: Int) {
         switch propID {
         case 1: self = .baseHP
         case 4: self = .baseAttack
@@ -161,6 +161,70 @@ extension Enka.PropertyType {
         case 2000: self = .maxHP
         case 2001: self = .attack
         case 2002: self = .defence
+        default: return nil
+        }
+    }
+
+    public init?(hoyoPropID4GI propID: Int) {
+        let this = Self(enkaPropID4GI: propID)
+        guard let this else { return nil }
+        self = this
+    }
+
+    public init?(hoyoPropID4HSR propID: Int) {
+        switch propID {
+        case 1: self = .baseHP
+        case 2: self = .baseAttack
+        case 3: self = .baseDefence
+        case 4: self = .baseSpeed
+        case 5: self = .criticalChanceBase
+        case 6: self = .criticalDamageBase
+        case 7: self = .healRatioBase
+        case 9: self = .energyRecoveryBase
+        case 10: self = .statusProbabilityBase
+        case 11: self = .statusResistanceBase
+        case 12: self = .physicoAddedRatio
+        case 13: self = .physicoResistance
+        case 14: self = .pyroAddedRatio
+        case 15: self = .pyroResistance
+        case 16: self = .cryoAddedRatio
+        case 17: self = .cryoResistance
+        case 18: self = .electroAddedRatio
+        case 19: self = .electroResistance
+        case 20: self = .anemoAddedRatio
+        case 21: self = .anemoResistance
+        case 22: self = .posestoAddedRatio
+        case 23: self = .posestoResistance
+        case 24: self = .fantasticoAddedRatio
+        case 25: self = .fantasticoResistance
+        case 26: self = .hpDelta
+        case 27: self = .maxHP
+        case 28: self = .attackDelta
+        case 29: self = .attack
+        case 30: self = .defenceDelta
+        case 31: self = .defence
+        case 32: self = .hpAddedRatio
+        case 33: self = .attackAddedRatio
+        case 34: self = .defenceAddedRatio
+        case 35: self = .speedAddedRatio
+        case 36: self = .healTakenRatio
+        case 37: self = .physicoResistanceDelta
+        case 38: self = .pyroResistanceDelta
+        case 39: self = .cryoResistanceDelta
+        case 40: self = .electroResistanceDelta
+        case 41: self = .anemoResistanceDelta
+        case 42: self = .posestoResistanceDelta
+        case 43: self = .fantasticoResistanceDelta
+        case 51: self = .speedAddedRatio
+        case 52: self = .criticalChance
+        case 53: self = .criticalDamage
+        case 54: self = .energyRecovery
+        case 55: self = .healRatio
+        case 56: self = .statusProbability
+        case 57: self = .statusResistance
+        case 58: self = .breakUp
+        case 59: self = .breakUp
+        case 60: self = .energyLimit
         default: return nil
         }
     }
