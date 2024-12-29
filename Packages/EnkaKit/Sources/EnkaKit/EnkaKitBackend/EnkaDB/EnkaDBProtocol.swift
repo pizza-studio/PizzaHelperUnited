@@ -11,6 +11,7 @@ import PZBaseKit
 public protocol EnkaDBProtocol: AnyObject, Sendable {
     associatedtype QueriedResult: EKQueryResultProtocol where QueriedResult.DBType == Self
     associatedtype QueriedProfile: EKQueriedProfileProtocol where QueriedProfile.DBType == Self
+    associatedtype HYLAvatarDetailType: HYQueriedAvatarProtocol where HYLAvatarDetailType.DBType == Self
     static var game: Enka.GameType { get }
     var locTable: Enka.LocTable { get set }
     var locTag: String { get }
