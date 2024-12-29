@@ -203,13 +203,7 @@ extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
     let enkaDatabase = try! Enka.EnkaDB4HSR(locTag: "zh-tw")
-    let packageRootPath = URL(fileURLWithPath: #file).pathComponents.prefix(while: { $0 != "Sources" }).joined(
-        separator: "/"
-    ).dropFirst()
-    let testDataPath: String = packageRootPath + "/Tests/EnkaKitTests/TestAssets/"
-    let filePath = testDataPath + "testProfileHSR.json"
-    let dataURL = URL(fileURLWithPath: filePath)
-    let profile = try! Data(contentsOf: dataURL).parseAs(Enka.QueriedResultHSR.self)
+    let profile = try! Enka.QueriedResultHSR.exampleData()
     return profile.detailInfo!.summarize(theDB: enkaDatabase)
     // swiftlint:enable force_try
     // swiftlint:enable force_unwrapping
@@ -220,13 +214,7 @@ extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
     let enkaDatabase = try! Enka.EnkaDB4GI(locTag: "zh-tw")
-    let packageRootPath = URL(fileURLWithPath: #file).pathComponents.prefix(while: { $0 != "Sources" }).joined(
-        separator: "/"
-    ).dropFirst()
-    let testDataPath: String = packageRootPath + "/Tests/EnkaKitTests/TestAssets/"
-    let filePath = testDataPath + "testProfileGI.json"
-    let dataURL = URL(fileURLWithPath: filePath)
-    let profile = try! Data(contentsOf: dataURL).parseAs(Enka.QueriedResultGI.self)
+    let profile = try! Enka.QueriedResultGI.exampleData()
     return profile.detailInfo!.summarize(theDB: enkaDatabase)
     // swiftlint:enable force_try
     // swiftlint:enable force_unwrapping
