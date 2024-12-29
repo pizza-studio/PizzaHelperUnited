@@ -76,12 +76,14 @@ struct MutableAvatarPropertyPanel {
     public mutating func triageAndHandle(
         theDB: some EnkaDBProtocol,
         _ newProps: [Enka.PVPair],
-        element: Enka.GameElement
+        element: Enka.GameElement,
+        isHoYoLAB: Bool = false
     ) {
         switch theDB.game {
         case .zenlessZone: return // 临时设定。
         case .genshinImpact: return // 原神直接使用 Enka 预先计算的面板结果。
         case .starRail:
+            guard !isHoYoLAB else { return } // HoYoLAB 的面板是提前计算好了的。
             var propAmplifiers = [Enka.PVPair]()
             var propAdditions = [Enka.PVPair]()
             newProps.forEach { $0.triage(amp: &propAmplifiers, add: &propAdditions, element: element) }
