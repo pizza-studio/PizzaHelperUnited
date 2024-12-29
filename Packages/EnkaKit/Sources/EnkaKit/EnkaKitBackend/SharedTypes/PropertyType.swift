@@ -325,7 +325,7 @@ extension Enka {
         public let value: Double
         public let localizedTitle: String
         public let isArtifact: Bool
-        public let count: Int
+        public let count: Int // 词条进阶次数。
         public let step: Int?
 
         public var id: Enka.PropertyType { type }
