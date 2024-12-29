@@ -325,189 +325,16 @@ private struct NotificationSettingDetailContent: View {
     // MARK: Public
 
     public var body: some View {
-        // 分账号设定
-        Section {
-            NavigationLink(
-                destination: ProfilesNotificationPermissionView()
-            ) {
-                Text(verbatim: ProfilesNotificationPermissionView.navTitle)
-            }
-        } header: {
-            Text("settings.notification.faq.howNotificationsGetScheduled", bundle: .module)
-                .textCase(.none)
-                .padding([.bottom])
-        } footer: {
-            macCatalystNoticeView
-        }
-
-        // 玩家体力通知提醒阈值
-        Section {
-            Toggle(isOn: $options.allowStaminaNotification.animation()) {
-                Text("settings.notification.stamina.allow", bundle: .module)
-            }
-            NavigationLink {
-                StaminaNotificationThresholdConfigView()
-            } label: {
-                Text(StaminaNotificationThresholdConfigView.navTitle)
-            }
-            .disabled(!options.allowStaminaNotification)
-        } header: {
-            Text("settings.notification.stamina.header", bundle: .module).textCase(.none)
-        } footer: {
-            Text("settings.notification.stamina.footer", bundle: .module)
-        }
-
-        // 派遣委托
-        Section {
-            Toggle(isOn: $options.allowExpeditionNotification.animation()) {
-                Text("settings.notification.expedition.allow", bundle: .module)
-            }
-            Picker(selection: $options.expeditionNotificationSetting) {
-                let cases = NotificationOptions.ExpeditionNotificationSetting.allCases
-                ForEach(cases, id: \.self) { setting in
-                    Text(setting.description.i18nAK).tag(setting)
-                }
-            } label: {
-                Text("settings.notification.expedition.method", bundle: .module)
-            }
-            .disabled(!options.allowExpeditionNotification)
-        } header: {
-            Text("settings.notification.expedition.header", bundle: .module).textCase(.none)
-        } footer: {
-            Text("settings.notification.expedition.footer", bundle: .module)
-        }
-
-        // 每日任务
-        Section {
-            Toggle(isOn: options.allowDailyTaskNotification.animation()) {
-                Text("settings.notification.dailyTask.toggle", bundle: .module)
-            }
-            handleBindingDate(options.dailyTaskNotificationTime) { bindingDate in
-                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.dailyTask.datePicker", bundle: .module)
-                }
-            }
-        } header: {
-            Text("settings.notification.dailyTask.header", bundle: .module).textCase(.none)
-        } footer: {
-            Text("settings.notification.dailyTask.footer", bundle: .module)
-        }
-
-        // 凯瑟琳领奖
-        Section {
-            Toggle(isOn: options.allowGIKatheryneNotification.animation()) {
-                Text("settings.notification.katheryneRewards.toggle", bundle: .module)
-            }
-            handleBindingDate(options.giKatheryneNotificationTime) { bindingDate in
-                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.katheryneRewards.datePicker", bundle: .module)
-                }
-            }
-        } header: {
-            Text("settings.notification.katheryneRewards.header", bundle: .module).textCase(.none)
-        } footer: {
-            Text("settings.notification.katheryneRewards.footer", bundle: .module)
-        }
-
-        // 洞天财甕
-        Section {
-            Toggle(isOn: $options.allowGIRealmCurrencyNotification.animation()) {
-                Text("settings.notification.giRealmCurrency.allow", bundle: .module)
-            }
-        } header: {
-            Text("settings.notification.giRealmCurrency.header", bundle: .module).textCase(.none)
-        } footer: {
-            Text("settings.notification.giRealmCurrency.footer", bundle: .module)
-        }
-
-        // 参量质变仪
-        Section {
-            Toggle(isOn: $options.allowGITransformerNotification.animation()) {
-                Text("settings.notification.giTransformer.allow", bundle: .module)
-            }
-        } header: {
-            Text("settings.notification.giTransformer.header", bundle: .module).textCase(.none)
-        } footer: {
-            Text("settings.notification.giTransformer.footer", bundle: .module)
-        }
-
-        // 征讨之花
-        Section {
-            Toggle(isOn: options.allowGITrounceBlossomNotification.animation()) {
-                Text("settings.notification.giTrounceBlossom.toggle", bundle: .module)
-            }
-            handleBindingDateAndWeekdays(
-                options.giTrounceBlossomNotificationTime,
-                options.giTrounceBlossomNotificationWeekday
-            ) { bindingDate, bindingWeekday in
-                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.giTrounceBlossom.datePicker", bundle: .module)
-                }
-                Picker(selection: bindingWeekday) {
-                    ForEach(Weekday.allCases, id: \.rawValue) { weekday in
-                        Text(weekday.description).tag(weekday)
-                    }
-                } label: {
-                    Text("settings.notification.giTrounceBlossom.weekdayPicker", bundle: .module)
-                }
-            }
-        } header: {
-            Text("settings.notification.giTrounceBlossom.header", bundle: .module).textCase(.none)
-        } footer: {
-            Text("settings.notification.giTrounceBlossom.footer", bundle: .module)
-        }
-
-        // 历战馀响
-        Section {
-            Toggle(isOn: options.allowHSREchoOfWarNotification.animation()) {
-                Text("settings.notification.hsrEchoOfWar.toggle", bundle: .module)
-            }
-            handleBindingDateAndWeekdays(
-                options.hsrEchoOfWarNotificationTime,
-                options.hsrEchoOfWarNotificationWeekday
-            ) { bindingDate, bindingWeekday in
-                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.hsrEchoOfWar.datePicker", bundle: .module)
-                }
-                Picker(selection: bindingWeekday) {
-                    ForEach(Weekday.allCases, id: \.rawValue) { weekday in
-                        Text(weekday.description).tag(weekday)
-                    }
-                } label: {
-                    Text("settings.notification.hsrEchoOfWar.weekdayPicker", bundle: .module)
-                }
-            }
-        } header: {
-            Text("settings.notification.hsrEchoOfWar.header", bundle: .module).textCase(.none)
-        } footer: {
-            Text("settings.notification.hsrEchoOfWar.footer", bundle: .module)
-        }
-
-        // 模拟宇宙
-        Section {
-            Toggle(isOn: options.allowHSRSimulUnivNotification.animation()) {
-                Text("settings.notification.hsrSimulatedUniverse.toggle", bundle: .module)
-            }
-            handleBindingDateAndWeekdays(
-                options.hsrSimulUnivNotificationTime,
-                options.hsrSimulUnivNotificationWeekday
-            ) { bindingDate, bindingWeekday in
-                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
-                    Text("settings.notification.hsrSimulatedUniverse.datePicker", bundle: .module)
-                }
-                Picker(selection: bindingWeekday) {
-                    ForEach(Weekday.allCases, id: \.rawValue) { weekday in
-                        Text(weekday.description).tag(weekday)
-                    }
-                } label: {
-                    Text("settings.notification.hsrSimulatedUniverse.weekdayPicker", bundle: .module)
-                }
-            }
-        } header: {
-            Text("settings.notification.hsrSimulatedUniverse.header", bundle: .module).textCase(.none)
-        } footer: {
-            Text("settings.notification.hsrSimulatedUniverse.footer", bundle: .module)
-        }
+        perProfileSettingsSection()
+        playerStaminaNotificationSection()
+        expeditionNotificationSection()
+        dailyTaskNotificationSection()
+        giKatheryneRewardsNotificationSection()
+        giRealmCurrencyNotificationSection()
+        giParametricTransformerNotificationSection()
+        giTrounceBlossomNotificationSection()
+        hsrEchoOfWarNotificationSection()
+        hsrSimulatedUniverseNotificationSection()
     }
 
     // MARK: Internal
@@ -544,6 +371,220 @@ private struct NotificationSettingDetailContent: View {
         -> some View {
         if let bindingDate = Binding(date) {
             viewRenderer(bindingDate)
+        }
+    }
+
+    @ViewBuilder
+    private func perProfileSettingsSection() -> some View {
+        // 分账号设定
+        Section {
+            NavigationLink(
+                destination: ProfilesNotificationPermissionView()
+            ) {
+                Text(verbatim: ProfilesNotificationPermissionView.navTitle)
+            }
+        } header: {
+            Text("settings.notification.faq.howNotificationsGetScheduled", bundle: .module)
+                .textCase(.none)
+                .padding([.bottom])
+        } footer: {
+            macCatalystNoticeView
+        }
+    }
+
+    @ViewBuilder
+    private func playerStaminaNotificationSection() -> some View {
+        // 玩家体力通知提醒阈值
+        Section {
+            Toggle(isOn: $options.allowStaminaNotification.animation()) {
+                Text("settings.notification.stamina.allow", bundle: .module)
+            }
+            NavigationLink {
+                StaminaNotificationThresholdConfigView()
+            } label: {
+                Text(StaminaNotificationThresholdConfigView.navTitle)
+            }
+            .disabled(!options.allowStaminaNotification)
+        } header: {
+            Text("settings.notification.stamina.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.stamina.footer", bundle: .module)
+        }
+    }
+
+    @ViewBuilder
+    private func expeditionNotificationSection() -> some View {
+        // 派遣委托
+        Section {
+            Toggle(isOn: $options.allowExpeditionNotification.animation()) {
+                Text("settings.notification.expedition.allow", bundle: .module)
+            }
+            Picker(selection: $options.expeditionNotificationSetting) {
+                let cases = NotificationOptions.ExpeditionNotificationSetting.allCases
+                ForEach(cases, id: \.self) { setting in
+                    Text(setting.description.i18nAK).tag(setting)
+                }
+            } label: {
+                Text("settings.notification.expedition.method", bundle: .module)
+            }
+            .disabled(!options.allowExpeditionNotification)
+        } header: {
+            Text("settings.notification.expedition.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.expedition.footer", bundle: .module)
+        }
+    }
+
+    @ViewBuilder
+    private func dailyTaskNotificationSection() -> some View {
+        // 每日任务
+        Section {
+            Toggle(isOn: options.allowDailyTaskNotification.animation()) {
+                Text("settings.notification.dailyTask.toggle", bundle: .module)
+            }
+            handleBindingDate(options.dailyTaskNotificationTime) { bindingDate in
+                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
+                    Text("settings.notification.dailyTask.datePicker", bundle: .module)
+                }
+            }
+        } header: {
+            Text("settings.notification.dailyTask.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.dailyTask.footer", bundle: .module)
+        }
+    }
+
+    @ViewBuilder
+    private func giKatheryneRewardsNotificationSection() -> some View {
+        // 凯瑟琳领奖
+        Section {
+            Toggle(isOn: options.allowGIKatheryneNotification.animation()) {
+                Text("settings.notification.katheryneRewards.toggle", bundle: .module)
+            }
+            handleBindingDate(options.giKatheryneNotificationTime) { bindingDate in
+                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
+                    Text("settings.notification.katheryneRewards.datePicker", bundle: .module)
+                }
+            }
+        } header: {
+            Text("settings.notification.katheryneRewards.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.katheryneRewards.footer", bundle: .module)
+        }
+    }
+
+    @ViewBuilder
+    private func giRealmCurrencyNotificationSection() -> some View {
+        // 洞天财甕
+        Section {
+            Toggle(isOn: $options.allowGIRealmCurrencyNotification.animation()) {
+                Text("settings.notification.giRealmCurrency.allow", bundle: .module)
+            }
+        } header: {
+            Text("settings.notification.giRealmCurrency.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.giRealmCurrency.footer", bundle: .module)
+        }
+    }
+
+    @ViewBuilder
+    private func giParametricTransformerNotificationSection() -> some View {
+        // 参量质变仪
+        Section {
+            Toggle(isOn: $options.allowGITransformerNotification.animation()) {
+                Text("settings.notification.giTransformer.allow", bundle: .module)
+            }
+        } header: {
+            Text("settings.notification.giTransformer.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.giTransformer.footer", bundle: .module)
+        }
+    }
+
+    @ViewBuilder
+    private func giTrounceBlossomNotificationSection() -> some View {
+        // 征讨之花
+        Section {
+            Toggle(isOn: options.allowGITrounceBlossomNotification.animation()) {
+                Text("settings.notification.giTrounceBlossom.toggle", bundle: .module)
+            }
+            handleBindingDateAndWeekdays(
+                options.giTrounceBlossomNotificationTime,
+                options.giTrounceBlossomNotificationWeekday
+            ) { bindingDate, bindingWeekday in
+                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
+                    Text("settings.notification.giTrounceBlossom.datePicker", bundle: .module)
+                }
+                Picker(selection: bindingWeekday) {
+                    ForEach(Weekday.allCases, id: \.rawValue) { weekday in
+                        Text(weekday.description).tag(weekday)
+                    }
+                } label: {
+                    Text("settings.notification.giTrounceBlossom.weekdayPicker", bundle: .module)
+                }
+            }
+        } header: {
+            Text("settings.notification.giTrounceBlossom.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.giTrounceBlossom.footer", bundle: .module)
+        }
+    }
+
+    @ViewBuilder
+    private func hsrEchoOfWarNotificationSection() -> some View {
+        // 历战馀响
+        Section {
+            Toggle(isOn: options.allowHSREchoOfWarNotification.animation()) {
+                Text("settings.notification.hsrEchoOfWar.toggle", bundle: .module)
+            }
+            handleBindingDateAndWeekdays(
+                options.hsrEchoOfWarNotificationTime,
+                options.hsrEchoOfWarNotificationWeekday
+            ) { bindingDate, bindingWeekday in
+                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
+                    Text("settings.notification.hsrEchoOfWar.datePicker", bundle: .module)
+                }
+                Picker(selection: bindingWeekday) {
+                    ForEach(Weekday.allCases, id: \.rawValue) { weekday in
+                        Text(weekday.description).tag(weekday)
+                    }
+                } label: {
+                    Text("settings.notification.hsrEchoOfWar.weekdayPicker", bundle: .module)
+                }
+            }
+        } header: {
+            Text("settings.notification.hsrEchoOfWar.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.hsrEchoOfWar.footer", bundle: .module)
+        }
+    }
+
+    @ViewBuilder
+    private func hsrSimulatedUniverseNotificationSection() -> some View {
+        // 模拟宇宙
+        Section {
+            Toggle(isOn: options.allowHSRSimulUnivNotification.animation()) {
+                Text("settings.notification.hsrSimulatedUniverse.toggle", bundle: .module)
+            }
+            handleBindingDateAndWeekdays(
+                options.hsrSimulUnivNotificationTime,
+                options.hsrSimulUnivNotificationWeekday
+            ) { bindingDate, bindingWeekday in
+                DatePicker(selection: bindingDate, displayedComponents: .hourAndMinute) {
+                    Text("settings.notification.hsrSimulatedUniverse.datePicker", bundle: .module)
+                }
+                Picker(selection: bindingWeekday) {
+                    ForEach(Weekday.allCases, id: \.rawValue) { weekday in
+                        Text(weekday.description).tag(weekday)
+                    }
+                } label: {
+                    Text("settings.notification.hsrSimulatedUniverse.weekdayPicker", bundle: .module)
+                }
+            }
+        } header: {
+            Text("settings.notification.hsrSimulatedUniverse.header", bundle: .module).textCase(.none)
+        } footer: {
+            Text("settings.notification.hsrSimulatedUniverse.footer", bundle: .module)
         }
     }
 }
