@@ -40,6 +40,8 @@ extension HYQueriedModels {
 
         // MARK: Public
 
+        public typealias DBType = Enka.EnkaDB4GI
+
         public typealias List = [HYLAvatarDetail4GI]
 
         public struct DecodableList: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
@@ -76,6 +78,14 @@ extension HYQueriedModels {
         public var selectedProperties, baseProperties, extraProperties, elementProperties: [PanelProperty]
         public var skills: [Skill]
         public var recommendRelicProperty: RecommendRelicProperty?
+
+        public var avatarIdStr: String {
+            id.description
+        }
+
+        public var id: Int {
+            base.id
+        }
     }
 }
 
