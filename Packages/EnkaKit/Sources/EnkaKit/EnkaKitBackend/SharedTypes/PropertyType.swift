@@ -277,7 +277,7 @@ extension Enka {
     public struct PVPair: AbleToCodeSendHash, Identifiable {
         // MARK: Lifecycle
 
-        /// 该建构子不得用于圣遗物的词条构筑。
+        /// 该建构子仅用于 Enka 的结果，不得用于圣遗物的词条构筑。
         public init(
             theDB: some EnkaDBProtocol,
             type: Enka.PropertyType,
@@ -294,9 +294,10 @@ extension Enka {
             self.count = 0
             self.step = nil
             self.game = theDB.game
+            self.predefinedValueString = nil
         }
 
-        /// 该建构子只得用于圣遗物的词条构筑。
+        /// 该建构子仅用于 Enka 的结果，只得用于圣遗物的词条构筑。
         public init(
             theDB: some EnkaDBProtocol,
             type: Enka.PropertyType,
@@ -315,6 +316,50 @@ extension Enka {
             self.count = count
             self.step = step
             self.game = theDB.game
+            self.predefinedValueString = nil
+        }
+
+        /// 该建构子仅用于 HoYoLAB 的结果，不得用于圣遗物的词条构筑。
+        public init?(
+            theDB: some EnkaDBProtocol,
+            type: Enka.PropertyType?,
+            valueStr: String
+        ) {
+            guard let type else { return nil }
+            self.type = type
+            self.value = valueStr.convertPercentedSelfToDouble() ?? -114.514
+            self.predefinedValueString = valueStr
+            var title = (
+                theDB.additionalLocTable[type.rawValue] ?? theDB.locTable[type.rawValue] ?? type.rawValue
+            )
+            Self.sanitizeTitle(&title)
+            self.localizedTitle = title
+            self.isArtifact = false
+            self.count = 0
+            self.step = nil
+            self.game = theDB.game
+        }
+
+        /// 该建构子仅用于 HoYoLAB 的结果，只得用于圣遗物的词条构筑。
+        public init?(
+            theDB: some EnkaDBProtocol,
+            type: Enka.PropertyType?,
+            valueStr: String,
+            count: Int
+        ) {
+            guard let type else { return nil }
+            self.type = type
+            self.value = valueStr.convertPercentedSelfToDouble() ?? -114.514
+            self.predefinedValueString = valueStr
+            var title = (
+                theDB.additionalLocTable[type.rawValue] ?? theDB.locTable[type.rawValue] ?? type.rawValue
+            )
+            Self.sanitizeTitle(&title)
+            self.localizedTitle = title
+            self.isArtifact = true
+            self.count = count
+            self.step = 0
+            self.game = theDB.game
         }
 
         // MARK: Public
@@ -331,6 +376,7 @@ extension Enka {
         public var id: Enka.PropertyType { type }
 
         public var valueString: String {
+            if let predefinedValueString { return predefinedValueString }
             var copiedValue = value
             let prefix = isArtifact ? "+" : ""
             if type.isPercentage {
@@ -373,6 +419,8 @@ extension Enka {
         }
 
         // MARK: Private
+
+        private let predefinedValueString: String?
 
         private static func sanitizeTitle(_ title: inout String) {
             title = title.replacingOccurrences(of: "Regeneration", with: "Recharge")
