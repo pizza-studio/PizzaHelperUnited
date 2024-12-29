@@ -3,22 +3,24 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @testable import EnkaKit
-import XCTest
+import Foundation
+import Testing
 
 // MARK: - ArtifactRatingTests
 
-@MainActor
-final class ArtifactRatingTests: XCTestCase {
+struct ArtifactRatingTests {
+    @Test
     func testInitializingBundledArtifactRatingDB() async throws {
         let dictA = ArtifactRating.ModelDB(game: .starRail)
         let dictB = ArtifactRating.ModelDB(game: .genshinImpact)
-        XCTAssertFalse(dictA.isEmpty)
-        XCTAssertFalse(dictB.isEmpty)
+        #expect(!dictA.isEmpty)
+        #expect(!dictB.isEmpty)
         try await ArtifactRating.ARSputnik.shared.onlineUpdate()
-        let c = ArtifactRating.ARSputnik.shared.countDB4GI
+        let c = await ArtifactRating.ARSputnik.shared.countDB4GI
         print(c)
     }
 
+    @Test
     func testFetchingRemoteData() async throws {
         _ = try await ArtifactRating.ARSputnik.fetchARDBData(
             from: .mainlandChina,
@@ -35,8 +37,8 @@ final class ArtifactRatingTests: XCTestCase {
 
 // MARK: - EnkaKitTests
 
-@MainActor
-final class EnkaKitTests: XCTestCase {
+struct EnkaKitTests {
+    @Test
     func testDecodingPropertyAndElement() throws {
         let jsonStr1 = #"{"PropType": "GrassAddedRatio"}"#
         let jsonStr2 = #"{"Element": "Grass"}"#
@@ -73,49 +75,54 @@ final class EnkaKitTests: XCTestCase {
         let decoded3 = try JSONDecoder().decode([String: Enka.PropertyType].self, from: data3)
         let decoded4 = try JSONDecoder().decode([Enka.PropertyType: Double].self, from: data4)
         let decoded5 = try JSONDecoder().decode([Enka.PropertyType: Double].self, from: data5)
-        XCTAssertEqual(decoded1.values.first, .dendroAddedRatio)
-        XCTAssertEqual(decoded2.values.first, .dendro)
-        XCTAssertEqual(decoded3.values.first, .criticalChance)
-        XCTAssertEqual(decoded4[.criticalChance], 0.533699989318848)
-        XCTAssertEqual(decoded5[.criticalChance], 0.533699989318848)
+        #expect(decoded1.values.first == .dendroAddedRatio)
+        #expect(decoded2.values.first == .dendro)
+        #expect(decoded3.values.first == .criticalChance)
+        #expect(decoded4[.criticalChance] == 0.533699989318848)
+        #expect(decoded5[.criticalChance] == 0.533699989318848)
     }
 
+    @Test
     func testEnkaDBInitUsingBundledData() throws {
         let dbGI = try Enka.EnkaDB4GI(locTag: "zh-Hant")
         let dbHSR = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
-        XCTAssertEqual(dbGI.locTag, "zh-tw")
-        XCTAssertEqual(dbHSR.locTag, "zh-tw")
+        #expect(dbGI.locTag == "zh-tw")
+        #expect(dbHSR.locTag == "zh-tw")
     }
 
+    @Test
     func testEnkaDBOnlineConstruction() async throws {
         let dbGI = try await Enka.EnkaDB4GI(host: .mainlandChina)
         let dbHSR = try await Enka.EnkaDB4HSR(host: .mainlandChina)
-        XCTAssertEqual(dbGI.game, .genshinImpact)
-        XCTAssertEqual(dbHSR.game, .starRail)
+        #expect(dbGI.game == .genshinImpact)
+        #expect(dbHSR.game == .starRail)
     }
 
+    @Test
     func testEnkaQueryFileDecoding() throws {
-        let hsrDecoded = try getUnitTestJSONObject("testProfileHSR", as: Enka.QueriedResultHSR.self)
-        let giDecoded = try getUnitTestJSONObject("testProfileGI", as: Enka.QueriedResultGI.self)
+        let hsrDecoded = try Enka.QueriedResultHSR.exampleData()
+        let giDecoded = try Enka.QueriedResultGI.exampleData()
         guard let hsrProfile = hsrDecoded.detailInfo, let giProfile = giDecoded.detailInfo else {
             throw TestError.error(msg: "No Profile found in the decoded results.")
         }
-        XCTAssertEqual(hsrProfile.uid, giProfile.uid)
+        #expect(hsrProfile.uid == giProfile.uid)
     }
 
+    @Test
     func testEnkaOnlineProfileQueryRAW() async throws {
         let hsrQueried = try await Enka.QueriedResultHSR.queryRAW(uid: "114514810")
         let giQueried = try await Enka.QueriedResultHSR.queryRAW(uid: "114514810")
-        XCTAssertEqual(hsrQueried.uid, giQueried.uid)
+        #expect(hsrQueried.uid == giQueried.uid)
     }
 
-    func testEnkaHSRProfileSummaryAsText() throws {
-        let hsrDecoded = try getUnitTestJSONObject("testProfileHSR", as: Enka.QueriedResultHSR.self)
+    @Test
+    func testEnkaHSRProfileSummaryAsText() async throws {
+        let hsrDecoded = try Enka.QueriedResultHSR.exampleData()
         guard let profile = hsrDecoded.detailInfo, let firstAvatar = profile.avatarDetailList.first else {
             throw TestError.error(msg: "First avatar (Raiden Mei) missing.")
         }
         let englishDB = try Enka.EnkaDB4HSR(locTag: "en")
-        guard let summarized = firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
+        guard let summarized = await firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Raiden Mei's character build.")
         }
         print(summarized.asText)
@@ -132,13 +139,14 @@ final class EnkaKitTests: XCTestCase {
         print(x ?? "Result Rating Failed.")
     }
 
-    func testEnkaGIProfileSummaryAsText() throws {
-        let giDecoded = try getUnitTestJSONObject("testProfileGI", as: Enka.QueriedResultGI.self)
+    @Test
+    func testEnkaGIProfileSummaryAsText() async throws {
+        let giDecoded = try Enka.QueriedResultGI.exampleData()
         guard let profile = giDecoded.detailInfo, let firstAvatar = profile.avatarDetailList.first else {
             throw TestError.error(msg: "First avatar (Keqing, with costume) missing.")
         }
         let englishDB = try Enka.EnkaDB4GI(locTag: "en")
-        guard let summarized = firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
+        guard let summarized = await firstAvatar.summarize(theDB: englishDB)?.artifactsRated() else {
             throw TestError.error(msg: "Failed in summarizing Keqing's character build.")
         }
         print(summarized.asText)
@@ -157,26 +165,6 @@ final class EnkaKitTests: XCTestCase {
 
 // MARK: - TestError
 
-let packageRootPath = URL(fileURLWithPath: #file).pathComponents.prefix(while: { $0 != "Tests" }).joined(
-    separator: "/"
-).dropFirst()
-
-let testDataPath: String = packageRootPath + "/Tests/EnkaKitTests/TestAssets/"
-
-// MARK: - TestError
-
 enum TestError: Error {
     case error(msg: String)
-}
-
-func getUnitTestJSONObject<T: Decodable>(
-    _ fileNameStem: String,
-    as: T.Type,
-    decoderConfigurator: ((JSONDecoder) -> Void)? = nil
-) throws
-    -> T {
-    let urlStr = "\(testDataPath)\(fileNameStem).json"
-    let url = URL(filePath: urlStr, directoryHint: .notDirectory)
-    let data = try Data(contentsOf: url)
-    return try JSONDecoder().decode(T.self, from: data)
 }

@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
 import PZBaseKit
 
 // MARK: - Enka.QueriedResultGI
@@ -73,5 +74,16 @@ extension Enka {
 
         /// 正在展示的角色的详细资讯
         private var avatarInfoList: [QueriedProfileGI.QueriedAvatar]?
+    }
+}
+
+extension Enka.QueriedResultGI {
+    public static func exampleData() throws -> Self {
+        let exampleURL = Bundle.module.url(
+            forResource: "testEnkaProfileGI",
+            withExtension: "json"
+        )!
+        let exampleData = try Data(contentsOf: exampleURL)
+        return try JSONDecoder().decode(Self.self, from: exampleData)
     }
 }
