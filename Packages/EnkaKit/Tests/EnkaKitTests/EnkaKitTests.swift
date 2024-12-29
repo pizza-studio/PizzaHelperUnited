@@ -106,6 +106,10 @@ struct EnkaKitTests {
             throw TestError.error(msg: "No Profile found in the decoded results.")
         }
         #expect(hsrProfile.uid == giProfile.uid)
+        let giDecodedHYL = try HYQueriedModels.HYLAvatarDetail4GI.exampleData()
+        let hsrDecodedHYL = try HYQueriedModels.HYLAvatarDetail4HSR.exampleData()
+        #expect(!giDecodedHYL.avatarList.isEmpty)
+        #expect(!hsrDecodedHYL.avatarList.isEmpty)
     }
 
     @Test
