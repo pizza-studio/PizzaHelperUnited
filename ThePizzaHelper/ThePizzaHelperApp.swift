@@ -9,14 +9,6 @@ import SwiftUI
 @main
 @MainActor
 struct ThePizzaHelperApp: App {
-    // MARK: Lifecycle
-
-    init() {
-        PZHelper.preInitializeTheSharedProfileActor()
-    }
-
-    // MARK: Internal
-
     var body: some Scene {
         PZHelper.makeMainScene()
     }
