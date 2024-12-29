@@ -47,6 +47,7 @@ let package = Package(
             ],
             resources: [
                 .process("Assets/"),
+                .process("Resources/"),
             ],
             swiftSettings: sharedSwiftSettings
         ),
@@ -54,9 +55,6 @@ let package = Package(
             name: "EnkaKitTests",
             dependencies: [
                 "EnkaKit",
-            ],
-            resources: [
-                .process("TestAssets/"),
             ]
         ),
     ]
