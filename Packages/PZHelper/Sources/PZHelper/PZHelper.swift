@@ -13,7 +13,7 @@ public enum PZHelper {}
 
 extension PZHelper {
     @MainActor @SceneBuilder
-    public static func makeMainScene() -> some Scene {
+    public static func makeMainScene(modelContainer: ModelContainer) -> some Scene {
         WindowGroup {
             ContentView()
                 .initializeApp()
@@ -30,7 +30,11 @@ extension PZHelper {
                 }
         }
         .windowResizability(.contentMinSize)
-        .modelContainer(PZProfileActor.shared.modelContainer)
+        .modelContainer(modelContainer)
+    }
+
+    public static func getSharedModelContainer() -> ModelContainer {
+        PZProfileActor.shared.modelContainer
     }
 
     @MainActor public private(set) static var isApplicationBooted = false
