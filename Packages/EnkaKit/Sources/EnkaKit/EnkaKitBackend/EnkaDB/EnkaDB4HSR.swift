@@ -113,6 +113,7 @@ extension Enka {
 
         public typealias QueriedResult = Enka.QueriedResultHSR
         public typealias QueriedProfile = Enka.QueriedProfileHSR
+        public typealias HYLAvatarDetailType = HYQueriedModels.HYLAvatarDetail4HSR
 
         @MainActor public static var shared: Enka.EnkaDB4HSR { Enka.Sputnik.shared.db4HSR }
 

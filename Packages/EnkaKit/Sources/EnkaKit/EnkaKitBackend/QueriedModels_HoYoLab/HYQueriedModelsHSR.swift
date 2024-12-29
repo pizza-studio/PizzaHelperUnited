@@ -52,6 +52,7 @@ extension HYQueriedModels {
 
         // MARK: Public
 
+        public typealias DBType = Enka.EnkaDB4HSR
         public typealias List = [HYLAvatarDetail4HSR]
 
         public struct DecodableList: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
@@ -93,6 +94,10 @@ extension HYQueriedModels {
         public var baseType: Int
         public var figurePath: String
         public var elementID: Int
+
+        public var avatarIdStr: String {
+            id.description
+        }
     }
 }
 
