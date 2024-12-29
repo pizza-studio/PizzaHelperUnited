@@ -111,7 +111,7 @@ extension Enka.PropertyType: Codable, CodingKeyRepresentable {
         )
 
         if let rawInt = try? container.decode(Int.self),
-           let matched = Self(enkaPropID4GI: rawInt) {
+           let matched = Self(hoyoPropID4GI: rawInt) {
             self = matched
             return
         }
@@ -161,6 +161,111 @@ extension Enka.PropertyType {
         case 2000: self = .maxHP
         case 2001: self = .attack
         case 2002: self = .defence
+        default: return nil
+        }
+    }
+
+    public init?(hoyoPropID4GI propID: Int) {
+        if let matched = Self(enkaPropID4GI: propID) {
+            self = matched
+            return
+        }
+        let rawStringValue: String? = switch propID {
+        case 1: "FIGHT_PROP_BASE_HP"
+        case 2: "FIGHT_PROP_HP"
+        case 3: "FIGHT_PROP_HP_PERCENT"
+        case 4: "FIGHT_PROP_BASE_ATTACK"
+        case 5: "FIGHT_PROP_ATTACK"
+        case 6: "FIGHT_PROP_ATTACK_PERCENT"
+        case 7: "FIGHT_PROP_BASE_DEFENSE"
+        case 8: "FIGHT_PROP_DEFENSE"
+        case 9: "FIGHT_PROP_DEFENSE_PERCENT"
+        case 20: "FIGHT_PROP_CRITICAL"
+        case 22: "FIGHT_PROP_CRITICAL_HURT"
+        case 23: "FIGHT_PROP_CHARGE_EFFICIENCY"
+        case 26: "FIGHT_PROP_HEAL_ADD"
+        case 28: "FIGHT_PROP_ELEMENT_MASTERY"
+        case 30: "FIGHT_PROP_PHYSICAL_ADD_HURT"
+        case 40: "FIGHT_PROP_FIRE_ADD_HURT"
+        case 41: "FIGHT_PROP_ELEC_ADD_HURT"
+        case 42: "FIGHT_PROP_WATER_ADD_HURT"
+        case 43: "FIGHT_PROP_GRASS_ADD_HURT"
+        case 44: "FIGHT_PROP_WIND_ADD_HURT"
+        case 45: "FIGHT_PROP_ROCK_ADD_HURT"
+        case 46: "FIGHT_PROP_ICE_ADD_HURT"
+        case 50: "FIGHT_PROP_FIRE_SUB_HURT"
+        case 51: "FIGHT_PROP_ELEC_SUB_HURT"
+        case 52: "FIGHT_PROP_WATER_SUB_HURT"
+        case 53: "FIGHT_PROP_GRASS_SUB_HURT"
+        case 54: "FIGHT_PROP_WIND_SUB_HURT"
+        case 55: "FIGHT_PROP_ROCK_SUB_HURT"
+        case 56: "FIGHT_PROP_ICE_SUB_HURT"
+        case 2000: "FIGHT_PROP_HP"
+        case 2001: "FIGHT_PROP_ATTACK"
+        case 2002: "FIGHT_PROP_DEFENSE"
+        default: nil
+        }
+        guard let rawStringValue else { return nil }
+        let giPropType = GIAvatarAttribute(rawValue: rawStringValue)
+        let this = giPropType?.asPropertyType
+        guard let this else { return nil }
+        self = this
+    }
+
+    public init?(hoyoPropID4HSR propID: Int) {
+        switch propID {
+        case 1: self = .baseHP
+        case 2: self = .baseAttack
+        case 3: self = .baseDefence
+        case 4: self = .baseSpeed
+        case 5: self = .criticalChanceBase
+        case 6: self = .criticalDamageBase
+        case 7: self = .healRatioBase
+        case 9: self = .energyRecoveryBase
+        case 10: self = .statusProbabilityBase
+        case 11: self = .statusResistanceBase
+        case 12: self = .physicoAddedRatio
+        case 13: self = .physicoResistance
+        case 14: self = .pyroAddedRatio
+        case 15: self = .pyroResistance
+        case 16: self = .cryoAddedRatio
+        case 17: self = .cryoResistance
+        case 18: self = .electroAddedRatio
+        case 19: self = .electroResistance
+        case 20: self = .anemoAddedRatio
+        case 21: self = .anemoResistance
+        case 22: self = .posestoAddedRatio
+        case 23: self = .posestoResistance
+        case 24: self = .fantasticoAddedRatio
+        case 25: self = .fantasticoResistance
+        case 26: self = .hpDelta
+        case 27: self = .maxHP
+        case 28: self = .attackDelta
+        case 29: self = .attack
+        case 30: self = .defenceDelta
+        case 31: self = .defence
+        case 32: self = .hpAddedRatio
+        case 33: self = .attackAddedRatio
+        case 34: self = .defenceAddedRatio
+        case 35: self = .speedAddedRatio
+        case 36: self = .healTakenRatio
+        case 37: self = .physicoResistanceDelta
+        case 38: self = .pyroResistanceDelta
+        case 39: self = .cryoResistanceDelta
+        case 40: self = .electroResistanceDelta
+        case 41: self = .anemoResistanceDelta
+        case 42: self = .posestoResistanceDelta
+        case 43: self = .fantasticoResistanceDelta
+        case 51: self = .speedAddedRatio
+        case 52: self = .criticalChance
+        case 53: self = .criticalDamage
+        case 54: self = .energyRecovery
+        case 55: self = .healRatio
+        case 56: self = .statusProbability
+        case 57: self = .statusResistance
+        case 58: self = .breakUp
+        case 59: self = .breakUp
+        case 60: self = .energyLimit
         default: return nil
         }
     }
