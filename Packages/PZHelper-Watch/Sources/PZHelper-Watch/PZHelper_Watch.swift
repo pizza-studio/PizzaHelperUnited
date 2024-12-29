@@ -13,7 +13,7 @@ public enum PZHelperWatch {}
 
 extension PZHelperWatch {
     @MainActor @SceneBuilder
-    public static func makeMainScene() -> some Scene {
+    public static func makeMainScene(modelContainer: ModelContainer) -> some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.horizontalSizeClass, .compact)
@@ -30,7 +30,11 @@ extension PZHelperWatch {
                     }
                 }
         }
-        .modelContainer(PZProfileActor.shared.modelContainer)
+        .modelContainer(modelContainer)
+    }
+
+    public static func getSharedModelContainer() -> ModelContainer {
+        PZProfileActor.shared.modelContainer
     }
 
     @MainActor public private(set) static var isApplicationBooted = false
