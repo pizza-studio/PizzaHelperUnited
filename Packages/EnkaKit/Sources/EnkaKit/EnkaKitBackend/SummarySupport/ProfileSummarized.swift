@@ -46,7 +46,9 @@ extension Enka.ProfileSummarized {
         newRawInfo: DBType.QueriedProfile,
         dropExistingData: Bool = false
     ) {
-        rawInfo = dropExistingData ? newRawInfo : newRawInfo.inheritAvatars(from: rawInfo)
+        rawInfo = (dropExistingData || appendHoYoLABResults)
+            ? newRawInfo
+            : newRawInfo.inheritAvatars(from: rawInfo)
         summarizedAvatars = rawInfo.summarizeAllAvatars(
             theDB: theDB,
             appendHoYoLABResults: appendHoYoLABResults
