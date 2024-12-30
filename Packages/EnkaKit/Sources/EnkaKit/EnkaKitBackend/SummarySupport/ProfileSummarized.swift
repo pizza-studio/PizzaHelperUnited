@@ -86,7 +86,7 @@ extension Enka.ProfileSummarized: Equatable {
     }
 }
 
-// MARK: - Summerizer APIs for Star Rail.
+// MARK: - Summerizer APIs.
 
 extension EKQueriedProfileProtocol {
     @MainActor
