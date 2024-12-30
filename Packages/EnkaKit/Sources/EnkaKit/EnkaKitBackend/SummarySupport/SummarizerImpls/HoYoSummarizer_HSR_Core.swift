@@ -78,7 +78,8 @@ extension HYQueriedModels.HYLAvatarDetail4HSR: HYQueriedAvatarProtocol {
             equippedWeapon: equipInfo,
             avatarPropertiesA: propPair.0,
             avatarPropertiesB: propPair.1,
-            artifacts: artifactsInfo
+            artifacts: artifactsInfo,
+            isEnka: false
         ).artifactsRated()
     }
 }

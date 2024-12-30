@@ -105,6 +105,13 @@ public struct EachAvatarStatView: View {
                     )
                 )
             )
+            .overlay {
+                Image(data.isEnka ? "EnkanomiyaAsBG" : "HoYoLABIconAsBG", bundle: .module)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .opacity(0.05)
+                    .padding()
+            }
     }
 
     @ViewBuilder
