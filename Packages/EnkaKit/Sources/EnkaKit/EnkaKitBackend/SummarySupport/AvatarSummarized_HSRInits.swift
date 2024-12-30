@@ -302,7 +302,8 @@ extension Enka.AvatarSummarized.ArtifactInfo {
             theDB: hsrDB,
             type: .init(hoyoPropID4HSR: hylArtifactRAW.mainProperty.propertyType),
             valueStr: hylArtifactRAW.mainProperty.value,
-            count: hylArtifactRAW.mainProperty.times
+            count: hylArtifactRAW.mainProperty.times,
+            step: nil
         )
         guard let mainProp else { return nil }
         let setID = Self.dropDigits4HSR(from: hylArtifactRAW.id)
@@ -322,7 +323,8 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                 theDB: hsrDB,
                 type: .init(hoyoPropID4HSR: rawProp.propertyType),
                 valueStr: rawProp.value,
-                count: rawProp.times
+                count: rawProp.times,
+                step: nil
             )
         }
     }
