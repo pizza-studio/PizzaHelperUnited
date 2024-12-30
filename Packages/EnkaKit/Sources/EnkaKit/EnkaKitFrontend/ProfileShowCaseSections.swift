@@ -41,15 +41,25 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
                 switch delegate.taskState {
                 case .standBy:
                     if let result = guardedEnkaProfile {
-                        ShowCaseListView(profile: result, enkaDB: theDB, asCardIcons: true)
-                            .id(result.hashValue)
+                        ShowCaseListView(
+                            profile: result,
+                            enkaDB: theDB,
+                            asCardIcons: true,
+                            appendHoYoLABResults: true
+                        )
+                        .id(result.hashValue)
                     }
                 case .busy:
                     if let result = guardedEnkaProfile {
-                        ShowCaseListView(profile: result, enkaDB: theDB, asCardIcons: true)
-                            .id(result.hashValue)
-                            .disabled(delegate.taskState == .busy)
-                            .saturation(delegate.taskState == .busy ? 0 : 1)
+                        ShowCaseListView(
+                            profile: result,
+                            enkaDB: theDB,
+                            asCardIcons: true,
+                            appendHoYoLABResults: true
+                        )
+                        .id(result.hashValue)
+                        .disabled(delegate.taskState == .busy)
+                        .saturation(delegate.taskState == .busy ? 0 : 1)
                     }
                     InfiniteProgressBar().id(UUID())
                 }
