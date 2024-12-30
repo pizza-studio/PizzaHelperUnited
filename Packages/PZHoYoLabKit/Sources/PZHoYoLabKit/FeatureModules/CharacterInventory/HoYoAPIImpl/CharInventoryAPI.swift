@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@preconcurrency import Defaults
 import Foundation
 import PZAccountKit
 
@@ -117,7 +118,9 @@ extension HoYo {
         // print("-----------------------------------")
         // #endif
         let decodedDetails = try CharInventory4GI.AvatarDetailPackage4GI
-            .decodeFromMiHoYoAPIJSONResult(data: data2, debugTag: "HoYo.characterInventory4GI().2")
+            .decodeFromMiHoYoAPIJSONResult(data: data2, debugTag: "HoYo.characterInventory4GI().2") {
+                Defaults[.queriedHoYoProfiles4GI]["GI-\(uid)"] = data2
+            }
 
         // Insert new data.
 
@@ -173,7 +176,9 @@ extension HoYo {
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.characterInventory4HSR()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.characterInventory4HSR()") {
+            Defaults[.queriedHoYoProfiles4HSR]["SR-\(uid)"] = data
+        }
     }
 }
 
