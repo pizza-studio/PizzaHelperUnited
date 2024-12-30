@@ -220,7 +220,14 @@
     "210222" : "Ororon – Nachtschatten",
     "210223" : "Natlan – Leere Träume",
     "210224" : "Errungenschaft – Kampfeswille",
-    "210225" : "Erlebnispass – Geisterweber"
+    "210225" : "Erlebnispass – Geisterweber",
+    "210226" : "Mavuika – Sonnengekrönt",
+    "210227" : "Citlali – Opalstern",
+    "210228" : "Lan Yan – Silberschwalbe",
+    "210229" : "Errungenschaft – Allsehend",
+    "210230" : "Errungenschaft – Feuersbrunst",
+    "210231" : "Errungenschaft – Repertoire",
+    "210232" : "Erlebnispass – Feuerentfachung"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -443,7 +450,14 @@
     "210222" : "Ororon: Nightshade",
     "210223" : "Natlan: Fleeting Dreams",
     "210224" : "Achievement: Fighting Spirit",
-    "210225" : "Travel Notes: Spiritweaver"
+    "210225" : "Travel Notes: Spiritweaver",
+    "210226" : "Mavuika: Sun-Crowned",
+    "210227" : "Citlali: Opalstar",
+    "210228" : "Lan Yan: Silver Swallow",
+    "210229" : "Achievement: All-Seeing",
+    "210230" : "Achievement: Blaze",
+    "210231" : "Achievement: Repertoire",
+    "210232" : "Travel Notes: The Flame Renewed"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -666,7 +680,14 @@
     "210222" : "Ororon - Noctívago",
     "210223" : "Natlan - Sueños efímeros",
     "210224" : "Logro - Espíritu combativo",
-    "210225" : "PB - Tejespíritus"
+    "210225" : "PB - Tejespíritus",
+    "210226" : "Mavuika - Corona solar",
+    "210227" : "Citlalí - Estrella blanca",
+    "210228" : "Lan Yan - Golondrina plateada",
+    "210229" : "Logro - Vista panorámica",
+    "210230" : "Logro - Incineración",
+    "210231" : "Logro - Repertorio",
+    "210232" : "PB - Fuego renovado"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -889,7 +910,14 @@
     "210222" : "Ororon - Nocturnal",
     "210223" : "Natlan - Rêves éphémères",
     "210224" : "Succès - Esprit combatif",
-    "210225" : "PB - Spiritissage"
+    "210225" : "PB - Spiritissage",
+    "210226" : "Mavuika - Couronne solaire",
+    "210227" : "Citlali - Étoile opaline",
+    "210228" : "Lan Yan - Hirondelle argentée",
+    "210229" : "Succès - Omnivision",
+    "210230" : "Succès - Embrasement",
+    "210231" : "Succès - Répertoire",
+    "210232" : "PB - Feu nouveau"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1112,7 +1140,14 @@
     "210222" : "Ororon: Nightshade",
     "210223" : "Natlan: Fleeting Dreams",
     "210224" : "Achievement: Tekad Bertarung",
-    "210225" : "Catatan Perjalanan: Penenun Roh"
+    "210225" : "Catatan Perjalanan: Penenun Roh",
+    "210226" : "Mavuika: Sun-Crowned",
+    "210227" : "Citlali: Opalstar",
+    "210228" : "Lan Yan: Silver Swallow",
+    "210229" : "Achievement: Melihat Segalanya",
+    "210230" : "Achievement: Nyala Api",
+    "210231" : "Achievement: Repertoire",
+    "210232" : "Catatan Perjalanan: Api yang Baru"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1335,7 +1370,14 @@
     "210222" : "Ororon: Ombra notturna",
     "210223" : "Natlan: Sogni fugaci",
     "210224" : "Obiettivo: Spirito combattivo",
-    "210225" : "Appunti di viaggio: Tessispiriti"
+    "210225" : "Appunti di viaggio: Tessispiriti",
+    "210226" : "Mavuika: Incoronata dal sole",
+    "210227" : "Citlali: Fulgistella",
+    "210228" : "Lan Yan: Rondine d'argento",
+    "210229" : "Obiettivo: Vista completa",
+    "210230" : "Obiettivo: Vampata",
+    "210231" : "Obiettivo: Repertorio",
+    "210232" : "Appunti di viaggio: La Fiamma rinnovata"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1558,7 +1600,14 @@
     "210222" : "オロルン・夜陰",
     "210223" : "ナタ・空夢",
     "210224" : "アチーブメント・戦意",
-    "210225" : "紀行・霊織"
+    "210225" : "紀行・霊織",
+    "210226" : "マーヴィカ・光冠",
+    "210227" : "シトラリ・白星",
+    "210228" : "藍硯・銀燕",
+    "210229" : "アチーブメント・一望",
+    "210230" : "アチーブメント・灼熱",
+    "210231" : "アチーブメント・楽集",
+    "210232" : "紀行・新火"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -1781,7 +1830,14 @@
     "210222" : "올로룬·밤그늘",
     "210223" : "나타·헛된 꿈",
     "210224" : "업적·투지",
-    "210225" : "기행·영혼의 두루마리"
+    "210225" : "기행·영혼의 두루마리",
+    "210226" : "마비카·태양 고리",
+    "210227" : "시틀라리·흰별",
+    "210228" : "남연·은빛 제비",
+    "210229" : "업적·일람",
+    "210230" : "업적·작열",
+    "210231" : "업적·모음곡",
+    "210232" : "기행·새 불씨"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2004,7 +2060,14 @@
     "210222" : "Ororon: Beladona",
     "210223" : "Natlan: Sonhos Passageiros",
     "210224" : "Conquista: Espírito de Luta",
-    "210225" : "Passe de Batalha: Tear Espiritual"
+    "210225" : "Passe de Batalha: Tear Espiritual",
+    "210226" : "Mavuika: Coroada Pelo Sol",
+    "210227" : "Citlali: Estrela Opala",
+    "210228" : "Lan Yan: Andorinha Prateada",
+    "210229" : "Conquista: Visão Completa",
+    "210230" : "Conquista: Labareda",
+    "210231" : "Conquista: Repertório",
+    "210232" : "Passe de Batalha: Chama Renovada"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2227,7 +2290,14 @@
     "210222" : "Ночное укрытие",
     "210223" : "Мимолётные грёзы",
     "210224" : "Боевой дух",
-    "210225" : "Плетение душ"
+    "210225" : "Плетение душ",
+    "210226" : "Коронованная солнцем",
+    "210227" : "Отблеск белой звезды",
+    "210228" : "Серебряная ласточка",
+    "210229" : "Всевидящий",
+    "210230" : "Пламя",
+    "210231" : "Репертуар",
+    "210232" : "Возрождённое пламя"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2450,7 +2520,14 @@
     "210222" : "Ororon - ราตรีที่มืดมิด",
     "210223" : "Natlan - ความฝันที่ว่างเปล่า",
     "210224" : "ความสำเร็จ - จิตวิญญาณแห่งการต่อสู้",
-    "210225" : "บันทึก - ทอจิตวิญญาณ"
+    "210225" : "บันทึก - ทอจิตวิญญาณ",
+    "210226" : "Mavuika - มงกุฎสุริยัน",
+    "210227" : "Citlali - ดาราผ่อง",
+    "210228" : "Lan Yan - นกนางแอ่นสีเงิน",
+    "210229" : "ความสำเร็จ - เห็นทุกสิ่ง",
+    "210230" : "ความสำเร็จ - เผาไหม้",
+    "210231" : "ความสำเร็จ - ชุดบทเพลง",
+    "210232" : "บันทึก - เปลวไฟดวงใหม่"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -2673,7 +2750,14 @@
     "210222" : "Ororon: Gece Gölgesi",
     "210223" : "Natlan: Uçup Giden Rüyalar",
     "210224" : "Başarım: Savaşçı Ruhu",
-    "210225" : "Gezi Notları: Ruh Dokuyan"
+    "210225" : "Gezi Notları: Ruh Dokuyan",
+    "210226" : "Mavuika: Güneş Taçlı",
+    "210227" : "Citlali: Opal Yıldızı",
+    "210228" : "Lan Yan: Gümüş Kırlangıç",
+    "210229" : "Başarım: Her Şeyi Gören",
+    "210230" : "Başarım: Alev",
+    "210231" : "Başarım: Repertuvar",
+    "210232" : "Gezi Notları: Yenilenen Alev"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -2896,7 +2980,14 @@
     "210222" : "Ororon - Cảnh Đêm",
     "210223" : "Natlan - Giấc Mộng Trống Rỗng",
     "210224" : "Thành Tựu - Chiến Ý",
-    "210225" : "Nhật Ký Hành Trình - Dệt Linh"
+    "210225" : "Nhật Ký Hành Trình - Dệt Linh",
+    "210226" : "Mavuika - Vầng Thái Dương",
+    "210227" : "Citlali- Ngôi Sao Trắng",
+    "210228" : "Lan Yan - Én Bạc",
+    "210229" : "Thành Tựu - Nhìn Rõ Tất Cả",
+    "210230" : "Thành Tựu - Rực Cháy",
+    "210231" : "Thành Tựu - Tuyển Tập Nhạc",
+    "210232" : "Nhật Ký Hành Trình - Lửa Mới"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3119,7 +3210,14 @@
     "210222" : "欧洛伦·夜翳",
     "210223" : "纳塔·空梦",
     "210224" : "成就·战意",
-    "210225" : "纪行·灵织"
+    "210225" : "纪行·灵织",
+    "210226" : "玛薇卡·日冕",
+    "210227" : "茜特菈莉·白星",
+    "210228" : "蓝砚·银燕",
+    "210229" : "成就·览尽",
+    "210230" : "成就·灼燃",
+    "210231" : "成就·乐集",
+    "210232" : "纪行·新火"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3342,6 +3440,13 @@
     "210222" : "歐洛倫·夜翳",
     "210223" : "納塔·空夢",
     "210224" : "成就·戰意",
-    "210225" : "紀行·靈織"
+    "210225" : "紀行·靈織",
+    "210226" : "瑪薇卡·日冕",
+    "210227" : "茜特菈莉·白星",
+    "210228" : "藍硯·銀燕",
+    "210229" : "成就·覽盡",
+    "210230" : "成就·灼燃",
+    "210231" : "成就·樂集",
+    "210232" : "紀行·新火"
   }
 }
