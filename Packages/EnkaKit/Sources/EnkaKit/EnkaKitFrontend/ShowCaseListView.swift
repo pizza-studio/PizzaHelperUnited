@@ -16,9 +16,13 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
     public init(
         profile givenProfile: DBType.QueriedProfile,
         enkaDB: DBType,
-        asCardIcons: Bool = false
+        asCardIcons: Bool = false,
+        appendHoYoLABResults: Bool = false
     ) {
-        self.profile = givenProfile.summarize(theDB: enkaDB)
+        self.profile = givenProfile.summarize(
+            theDB: enkaDB,
+            appendHoYoLABResults: appendHoYoLABResults
+        )
         self.extraTerms = .init(lang: enkaDB.locTag, game: DBType.game)
         self.asCardIcons = asCardIcons
     }

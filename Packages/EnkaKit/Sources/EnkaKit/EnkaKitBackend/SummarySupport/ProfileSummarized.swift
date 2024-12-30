@@ -12,16 +12,22 @@ extension Enka {
         // MARK: Lifecycle
 
         @MainActor
-        public init(db theDB: DBType.QueriedProfile.DBType, rawInfo: DBType.QueriedProfile) {
+        public init(
+            db theDB: DBType.QueriedProfile.DBType,
+            rawInfo: DBType.QueriedProfile,
+            appendHoYoLABResults: Bool = false
+        ) {
             self.game = theDB.game
             self.theDB = theDB
             self.rawInfo = rawInfo
             self.summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB) // 肯定是一致的，不用怀疑了。
+            self.appendHoYoLABResults = appendHoYoLABResults
         }
 
         // MARK: Public
 
         public let game: Enka.GameType
+        public let appendHoYoLABResults: Bool
         public private(set) var theDB: DBType.QueriedProfile.DBType
         public private(set) var rawInfo: DBType.QueriedProfile
         public private(set) var summarizedAvatars: [Enka.AvatarSummarized]
@@ -33,9 +39,15 @@ extension Enka {
 
 extension Enka.ProfileSummarized {
     @MainActor
-    public mutating func update(newRawInfo: DBType.QueriedProfile, dropExistingData: Bool = false) {
+    public mutating func update(
+        newRawInfo: DBType.QueriedProfile,
+        dropExistingData: Bool = false
+    ) {
         rawInfo = dropExistingData ? newRawInfo : newRawInfo.inheritAvatars(from: rawInfo)
-        summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB)
+        summarizedAvatars = rawInfo.summarizeAllAvatars(
+            theDB: theDB,
+            appendHoYoLABResults: appendHoYoLABResults
+        )
     }
 
     @MainActor
@@ -73,14 +85,30 @@ extension Enka.ProfileSummarized: Equatable {
 
 extension EKQueriedProfileProtocol {
     @MainActor
-    public func summarizeAllAvatars(theDB: DBType.QueriedProfile.DBType) -> [Enka.AvatarSummarized] {
-        avatarDetailList.compactMap {
+    public func summarizeAllAvatars(
+        theDB: DBType.QueriedProfile.DBType,
+        appendHoYoLABResults: Bool = false
+    )
+        -> [Enka.AvatarSummarized] {
+        var finalResult = avatarDetailList.compactMap {
             $0.summarize(theDB: theDB)
         }
+        guard appendHoYoLABResults else { return finalResult }
+        let existingCharIDs = avatarDetailList.map(\.avatarId.description)
+        let restAvatars = Self.DBType.HYLAvatarDetailType.getLocalHoYoAvatars(theDB: theDB, uid: uid)
+        restAvatars.forEach { currentAvatar in
+            guard !existingCharIDs.contains(currentAvatar.id) else { return }
+            finalResult.append(currentAvatar)
+        }
+        return finalResult
     }
 
     @MainActor
-    public func summarize(theDB: DBType) -> Enka.ProfileSummarized<Self.DBType> {
-        .init(db: theDB, rawInfo: self)
+    public func summarize(
+        theDB: DBType,
+        appendHoYoLABResults: Bool = false
+    )
+        -> Enka.ProfileSummarized<Self.DBType> {
+        .init(db: theDB, rawInfo: self, appendHoYoLABResults: appendHoYoLABResults)
     }
 }
