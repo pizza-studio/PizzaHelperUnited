@@ -36,10 +36,6 @@ extension HYQueriedModels.HYLAvatarDetail4HSR: HYQueriedAvatarProtocol {
             )
         }
 
-        // 从角色面板当中找出最强的元素伤害增幅词条。
-        // 由于角色在不带杯子的情况下可能会有自身的元素伤害加成，所以需要分开处理。
-        // 比如说你要让胡桃在坎蒂丝开大之后打水伤输出的话（乐子玩法）就可能会需要优先显示水伤加成。
-        // 又比如说优菈、辛焱、雷泽等物理大剑，明明各自有各自的提瓦特元素属性，但往往都只会堆物理伤害加成。
         var elementalPropMap: [Enka.GameElement: Enka.PVPair] = [:]
         rawProps.forEach {
             guard let element = $0.type.element, $0.type.rawValue.contains("AddedRatio") else { return }
