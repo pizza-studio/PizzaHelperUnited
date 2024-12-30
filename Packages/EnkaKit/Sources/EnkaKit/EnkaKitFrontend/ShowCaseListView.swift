@@ -44,7 +44,10 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
             }
         }
         .onChange(of: dbSet.eventForResummarizingEnkaProfiles) { _, _ in
-            profile.update(newRawInfo: profile.rawInfo)
+            triggerCaseContentUpdate()
+        }
+        .onChange(of: dbSet.eventForResummarizingHoYoLABProfiles) { _, _ in
+            triggerCaseContentUpdate()
         }
     }
 
@@ -185,6 +188,16 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
     @State private var extraTerms: Enka.ExtraTerms
 
     private let asCardIcons: Bool
+
+    private func triggerCaseContentUpdate() {
+        Task { @MainActor in
+            withAnimation {
+                profile.update(
+                    newRawInfo: profile.rawInfo
+                )
+            }
+        }
+    }
 }
 
 extension EKQueriedProfileProtocol {
