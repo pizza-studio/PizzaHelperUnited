@@ -305,7 +305,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
             count: hylArtifactRAW.mainProperty.times
         )
         guard let mainProp else { return nil }
-        let setID = Self.dropHighestAndLowestDigits(from: hylArtifactRAW.id)
+        let setID = Self.dropDigits4HSR(from: hylArtifactRAW.id)
         guard let setID else { return nil }
         self.setID = setID
         self.setNameLocalized = "Set.\(setID)"
@@ -327,13 +327,11 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         }
     }
 
-    private static func dropHighestAndLowestDigits(from number: Int) -> Int? {
-        let digits = String(abs(number)).compactMap { $0.wholeNumberValue }
-        guard digits.count > 2 else { return nil }
-        let sortedDigits = digits.sorted()
-        let filteredDigits = digits.filter { $0 != sortedDigits.first && $0 != sortedDigits.last }
-        guard !filteredDigits.isEmpty else { return nil }
-        let result = filteredDigits.map { String($0) }.joined()
-        return Int(result)
+    private static func dropDigits4HSR(from number: Int) -> Int? {
+        let digits = String(number).compactMap(\.description)
+        guard digits.count > 4 else { return nil }
+        let filteredDigits = [digits[1], digits[2], digits[3]].reduce([], +)
+        let resultString = String(filteredDigits)
+        return Int(resultString)
     }
 }
