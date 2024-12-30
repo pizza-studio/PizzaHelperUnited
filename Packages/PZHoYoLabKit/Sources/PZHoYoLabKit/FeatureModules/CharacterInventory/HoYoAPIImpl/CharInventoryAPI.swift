@@ -120,7 +120,7 @@ extension HoYo {
         // #endif
         let decodedDetails = try CharInventory4GI.AvatarDetailPackage4GI
             .decodeFromMiHoYoAPIJSONResult(data: data2, debugTag: "HoYo.characterInventory4GI().2") {
-                Defaults[.queriedHoYoProfiles4GI]["GI-\(uid)"] = data2
+                HYQueriedModels.HYLAvatarDetail4GI.cacheLocalHoYoAvatars(uid: uid, data: data2)
                 Enka.Sputnik.shared.tellViewsToResummarizeHoYoLABProfiles()
             }
 
@@ -179,7 +179,7 @@ extension HoYo {
         let (data, _) = try await URLSession.shared.data(for: request)
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.characterInventory4HSR()") {
-            Defaults[.queriedHoYoProfiles4HSR]["SR-\(uid)"] = data
+            HYQueriedModels.HYLAvatarDetail4HSR.cacheLocalHoYoAvatars(uid: uid, data: data)
             Enka.Sputnik.shared.tellViewsToResummarizeHoYoLABProfiles()
         }
     }
