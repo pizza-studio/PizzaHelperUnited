@@ -345,7 +345,8 @@ extension Enka {
             theDB: some EnkaDBProtocol,
             type: Enka.PropertyType?,
             valueStr: String,
-            count: Int
+            count: Int,
+            step: Int?
         ) {
             guard let type else { return nil }
             self.type = type
@@ -358,7 +359,7 @@ extension Enka {
             self.localizedTitle = title
             self.isArtifact = true
             self.count = count
-            self.step = 0
+            self.step = step
             self.game = theDB.game
         }
 

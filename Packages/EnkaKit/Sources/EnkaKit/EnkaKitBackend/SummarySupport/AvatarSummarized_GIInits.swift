@@ -363,7 +363,8 @@ extension Enka.AvatarSummarized.ArtifactInfo {
             theDB: giDB,
             type: .init(hoyoPropID4GI: hylArtifactRAW.mainProperty.propertyType),
             valueStr: hylArtifactRAW.mainProperty.value,
-            count: -114_514 // Main Prop has no counts.
+            count: -114_514, // Main Prop has no counts.
+            step: nil // Not necessary for Main Prop. Use artifact promote level instead.
         )
         guard let mainProp else { return nil }
         self.mainProp = mainProp
@@ -372,7 +373,8 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                 theDB: giDB,
                 type: .init(hoyoPropID4GI: subPropRAW.propertyType),
                 valueStr: subPropRAW.value,
-                count: subPropRAW.times + 1
+                count: subPropRAW.times + 1,
+                step: Int((Double(hylArtifactRAW.level) / 4).rounded(.down))
             )
         }
         self.game = .genshinImpact
