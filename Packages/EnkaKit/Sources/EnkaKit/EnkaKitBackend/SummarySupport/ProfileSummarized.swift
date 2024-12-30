@@ -20,7 +20,10 @@ extension Enka {
             self.game = theDB.game
             self.theDB = theDB
             self.rawInfo = rawInfo
-            self.summarizedAvatars = rawInfo.summarizeAllAvatars(theDB: theDB) // 肯定是一致的，不用怀疑了。
+            self.summarizedAvatars = rawInfo.summarizeAllAvatars(
+                theDB: theDB,
+                appendHoYoLABResults: appendHoYoLABResults
+            ) // 肯定是一致的，不用怀疑了。
             self.appendHoYoLABResults = appendHoYoLABResults
         }
 

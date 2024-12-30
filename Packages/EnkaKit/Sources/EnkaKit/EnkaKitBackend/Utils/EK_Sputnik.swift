@@ -61,9 +61,18 @@ extension Enka {
         public private(set) var db4GI: Enka.EnkaDB4GI = Defaults[.enkaDBData4GI]
         public private(set) var db4HSR: Enka.EnkaDB4HSR = Defaults[.enkaDBData4HSR]
         public private(set) var eventForResummarizingEnkaProfiles: UUID = .init()
+        public private(set) var eventForResummarizingHoYoLABProfiles: UUID = .init()
 
         public func tellViewsToResummarizeEnkaProfiles() {
-            eventForResummarizingEnkaProfiles = .init()
+            Task { @MainActor in
+                eventForResummarizingEnkaProfiles = .init()
+            }
+        }
+
+        public func tellViewsToResummarizeHoYoLABProfiles() {
+            Task { @MainActor in
+                eventForResummarizingHoYoLABProfiles = .init()
+            }
         }
 
         // MARK: Private

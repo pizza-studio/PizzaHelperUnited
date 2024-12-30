@@ -44,7 +44,18 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
             }
         }
         .onChange(of: dbSet.eventForResummarizingEnkaProfiles) { _, _ in
-            profile.update(newRawInfo: profile.rawInfo)
+            Task { @MainActor in
+                withAnimation {
+                    profile.update(newRawInfo: profile.rawInfo)
+                }
+            }
+        }
+        .onChange(of: dbSet.eventForResummarizingHoYoLABProfiles) { _, _ in
+            Task { @MainActor in
+                withAnimation {
+                    profile.update(newRawInfo: profile.rawInfo)
+                }
+            }
         }
     }
 
