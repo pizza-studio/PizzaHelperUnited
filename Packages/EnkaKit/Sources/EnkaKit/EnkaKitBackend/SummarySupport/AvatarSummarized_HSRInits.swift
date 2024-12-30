@@ -158,7 +158,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                     type: theType,
                     value: currentRecord.value,
                     count: currentRecord.count,
-                    step: currentRecord.step
+                    step: Int((Double(fetched.level ?? 0) / 3).rounded(.down)) // currentRecord.step
                 )
             }
             return nil
@@ -324,7 +324,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                 type: .init(hoyoPropID4HSR: rawProp.propertyType),
                 valueStr: rawProp.value,
                 count: rawProp.times,
-                step: nil
+                step: Int((Double(hylArtifactRAW.level) / 3).rounded(.down))
             )
         }
     }
