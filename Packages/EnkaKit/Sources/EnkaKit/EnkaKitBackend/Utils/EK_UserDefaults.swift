@@ -54,6 +54,16 @@ extension Defaults.Keys {
         default: [:],
         suite: .enkaSuite
     )
+    public static let queriedHoYoProfiles4GI = Key<[String: Data]>(
+        "queriedHoYoProfiles4GI",
+        default: [:],
+        suite: .enkaSuite
+    )
+    public static let queriedHoYoProfiles4HSR = Key<[String: Data]>(
+        "queriedHoYoProfiles4HSR",
+        default: [:],
+        suite: .enkaSuite
+    )
 
     // MARK: - HSR Suite
 
