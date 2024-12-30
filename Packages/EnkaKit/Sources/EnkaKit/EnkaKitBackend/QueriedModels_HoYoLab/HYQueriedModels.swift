@@ -12,8 +12,11 @@ public enum HYQueriedModels {}
 
 public protocol HYQueriedAvatarProtocol: Identifiable, Equatable, AbleToCodeSendHash {
     associatedtype DBType: EnkaDBProtocol where DBType.HYLAvatarDetailType == Self
+    typealias List = [Self]
     var avatarIdStr: String { get }
     var id: Int { get }
     @MainActor
     func summarize(theDB: DBType) -> Enka.AvatarSummarized?
+    @MainActor
+    static func getLocalHoYoAvatars(theDB: DBType, uid: String) -> [Enka.AvatarSummarized]
 }

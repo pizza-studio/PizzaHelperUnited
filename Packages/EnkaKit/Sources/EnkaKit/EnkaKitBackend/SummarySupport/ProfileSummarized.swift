@@ -51,6 +51,10 @@ extension Enka.ProfileSummarized: Hashable, Identifiable {
         hashValue // 这里不能直接用 UID 了，因为需要处理单个 profile 被更新的情况。
     }
 
+    public var uidWithGame: String {
+        "\(game.uidPrefix)-\(uid)"
+    }
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(rawInfo)
         hasher.combine(summarizedAvatars)
