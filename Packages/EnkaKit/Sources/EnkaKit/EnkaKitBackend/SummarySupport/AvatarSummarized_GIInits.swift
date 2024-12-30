@@ -347,7 +347,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         giDB: Enka.EnkaDB4GI,
         hylArtifactRAW: HYQueriedModels.HYLAvatarDetail4GI.Relic
     ) {
-        let setID = Self.dropHighestAndLowestDigits(from: hylArtifactRAW.relicSet.id)
+        let setID = Self.dropDigits4GI(from: hylArtifactRAW.relicSet.id)
         guard let setID else { return nil }
         let posType = Enka.ArtifactType(typeID: hylArtifactRAW.pos, game: .genshinImpact)
         guard let posType else { return nil }
@@ -357,7 +357,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         self.type = posType
         self.setID = setID
         self.iconOnlineFileNameStem = hylArtifactRAW.icon
-        self.iconAssetName = "gi_relic_\(setID)"
+        self.iconAssetName = "gi_relic_\(setID)_\(posType.assetSuffix)"
         self.setNameLocalized = hylArtifactRAW.relicSet.name
         let mainProp = Enka.PVPair(
             theDB: giDB,
@@ -372,19 +372,17 @@ extension Enka.AvatarSummarized.ArtifactInfo {
                 theDB: giDB,
                 type: .init(hoyoPropID4GI: subPropRAW.propertyType),
                 valueStr: subPropRAW.value,
-                count: subPropRAW.times
+                count: subPropRAW.times + 1
             )
         }
         self.game = .genshinImpact
     }
 
-    private static func dropHighestAndLowestDigits(from number: Int) -> Int? {
-        let digits = String(abs(number)).compactMap { $0.wholeNumberValue }
-        guard digits.count > 2 else { return nil }
-        let sortedDigits = digits.sorted()
-        let filteredDigits = digits.filter { $0 != sortedDigits.first && $0 != sortedDigits.last }
-        guard !filteredDigits.isEmpty else { return nil }
-        let result = filteredDigits.map { String($0) }.joined()
-        return Int(result)
+    private static func dropDigits4GI(from number: Int) -> Int? {
+        let digits = String(number).compactMap(\.description)
+        guard digits.count > 6 else { return nil }
+        let filteredDigits = [digits[1], digits[2], digits[3], digits[4], digits[5]].reduce([], +)
+        let resultString = String(filteredDigits)
+        return Int(resultString)
     }
 }
