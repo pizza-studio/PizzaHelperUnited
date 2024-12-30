@@ -5,12 +5,14 @@ name: Update WallpaperKit Assets
     - cron: 0 12 * * *
 jobs:
   update:
-    runs-on: macOS-latest
+    runs-on: macOS-15
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set up Swift
-        uses: swift-actions/setup-swift@v2
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
       - name: Update WallpaperKit Assets
         id: compare_shas
         run: |
