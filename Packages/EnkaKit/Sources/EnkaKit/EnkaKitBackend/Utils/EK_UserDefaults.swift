@@ -54,12 +54,12 @@ extension Defaults.Keys {
         default: [:],
         suite: .enkaSuite
     )
-    public static let queriedHoYoProfiles4GI = Key<[String: Data]>(
+    public static let queriedHoYoProfiles4GI = Key<[String: [HYQueriedModels.HYLAvatarDetail4GI]]>(
         "queriedHoYoProfiles4GI",
         default: [:],
         suite: .enkaSuite
     )
-    public static let queriedHoYoProfiles4HSR = Key<[String: Data]>(
+    public static let queriedHoYoProfiles4HSR = Key<[String: [HYQueriedModels.HYLAvatarDetail4HSR]]>(
         "queriedHoYoProfiles4HSR",
         default: [:],
         suite: .enkaSuite
@@ -134,3 +134,11 @@ extension Enka.HostType: _DefaultsSerializable {
         }
     }
 }
+
+// MARK: - HYQueriedModels.HYLAvatarDetail4GI + _DefaultsSerializable
+
+extension HYQueriedModels.HYLAvatarDetail4GI: _DefaultsSerializable {}
+
+// MARK: - HYQueriedModels.HYLAvatarDetail4HSR + _DefaultsSerializable
+
+extension HYQueriedModels.HYLAvatarDetail4HSR: _DefaultsSerializable {}

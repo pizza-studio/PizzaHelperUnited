@@ -3,17 +3,21 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @preconcurrency import Defaults
+import Foundation
 
 extension HYQueriedModels.HYLAvatarDetail4GI: HYQueriedAvatarProtocol {
-    public static func getLocalHoYoAvatars(theDB: DBType, uid: String) -> [Enka.AvatarSummarized] {
-        let rawDataMatched = Defaults[.queriedHoYoProfiles4GI]["GI-\(uid)"]
-        guard let rawDataMatched else { return [] }
+    public static func cacheLocalHoYoAvatars(uid: String, data: Data) {
         let decoded = try? Self.DecodableList.decodeFromMiHoYoAPIJSONResult(
-            data: rawDataMatched,
+            data: data,
             debugTag: "HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoProfiles()"
         )
-        guard let decoded else { return [] }
-        return decoded.avatarList.compactMap { $0.summarize(theDB: theDB) }
+        guard let decoded else { return }
+        Defaults[.queriedHoYoProfiles4GI]["GI-\(uid)"] = decoded.avatarList
+    }
+
+    public static func getLocalHoYoAvatars(theDB: DBType, uid: String) -> [Enka.AvatarSummarized] {
+        let cachedData = Defaults[.queriedHoYoProfiles4GI]["GI-\(uid)"] ?? []
+        return cachedData.compactMap { $0.summarize(theDB: theDB) }
     }
 
     public func summarize(theDB: Enka.EnkaDB4GI) -> Enka.AvatarSummarized? {
