@@ -19,6 +19,7 @@ extension Enka {
         public let avatarPropertiesA: [Enka.PVPair]
         public let avatarPropertiesB: [Enka.PVPair]
         public private(set) var artifacts: [ArtifactInfo]
+        public let isEnka: Bool
 
         public var artifactRatingResult: ArtifactRating.ScoreResult?
 
