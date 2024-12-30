@@ -69,7 +69,7 @@ extension HYQueriedModels.HYLAvatarDetail4HSR: HYQueriedAvatarProtocol {
         let propPair = panel.converted(theDB: theDB, element: prioritizedElement)
 
         return .init(
-            game: .genshinImpact,
+            game: .starRail,
             mainInfo: mainInfo,
             equippedWeapon: equipInfo,
             avatarPropertiesA: propPair.0,
