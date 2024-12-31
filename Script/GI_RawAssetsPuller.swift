@@ -411,6 +411,7 @@ public enum DataType: String, CaseIterable {
     static let agdBasePath = "https://gitlab.com/Dimbreath/AnimeGameData/-/raw/master/ExcelBinOutput/"
     static let hksResHeader = "https://api.hakush.in/gi/UI/"
     static let enkaResHeader = "https://enka.network/ui/"
+    static let yattaResHeader = "https://gi.yatta.moe/assets/UI/"
 
     // MARK: Private
 
@@ -433,15 +434,15 @@ public enum DataType: String, CaseIterable {
         let fileName = sourceFileName ?? "\(id)"
         switch self {
         case .profilePicture:
-            dict["gi_avatar_\(id).png"] = Self.enkaResHeader + "\(fileName).png"
+            dict["gi_avatar_\(id).png"] = Self.yattaResHeader + "\(fileName).png"
         case .skill:
-            dict["gi_skill_\(id).webp"] = Self.hksResHeader + "\(fileName).webp"
+            dict["gi_skill_\(id).webp"] = Self.yattaResHeader + "\(fileName).png"
         case .character, .characterCostumed:
-            dict["gi_character_\(id).webp"] = Self.hksResHeader + "\(fileName).webp"
+            dict["gi_character_\(id).webp"] = Self.yattaResHeader + "\(fileName).png"
         case .weapon:
-            dict["gi_weapon_\(id).webp"] = Self.hksResHeader + "\(fileName).webp"
+            dict["gi_weapon_\(id).webp"] = Self.yattaResHeader + "\(fileName).png"
         case .artifact:
-            dict["gi_relic_\(id).webp"] = Self.hksResHeader + "\(fileName).webp"
+            dict["gi_relic_\(id).webp"] = Self.yattaResHeader + "\(fileName).png"
         }
     }
 }
