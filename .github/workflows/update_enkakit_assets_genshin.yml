@@ -1,0 +1,34 @@
+name: Update EnkaKit Assets (Genshin)
+'on':
+  workflow_dispatch: {}
+  schedule:
+    - cron: 0 12 * * *
+jobs:
+  update:
+    runs-on: macOS-15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - name: Update EnkaKit Assets
+        id: compare_shas
+        run: |
+          zsh ./Script/_assetUpdate4GI.sh
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          branch: 'update-enkakit-assets-gi-${{ github.run_number }}'
+          base: main
+          title: Update EnkaKit Assets (Genshin)
+          body: |
+            This PR updates the generated EnkaKit Assets (Genshin).
+          delete-branch: true
+          assignees: ShikiSuen
+          reviewers: ShikiSuen
+          team-reviewers: |
+            owners
+            maintainers
