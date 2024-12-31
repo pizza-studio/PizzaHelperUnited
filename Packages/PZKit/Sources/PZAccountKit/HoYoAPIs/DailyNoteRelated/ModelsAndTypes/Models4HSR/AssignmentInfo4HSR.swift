@@ -146,7 +146,7 @@ extension AssignmentInfo4HSR.Assignment: Decodable {
         self.avatarIconURLs = try container.decode([URL].self, forKey: .avatarIconURLs)
         self.itemIconURL = try container.decodeIfPresent(URL.self, forKey: .itemIconURL)
         self.name = try container.decode(String.self, forKey: .name)
-        self._accomplishedTimestamp = try container.decode(Int.self, forKey: ._accomplishedTimestamp)
+        self._accomplishedTimestamp = try container.decodeIfPresent(Int.self, forKey: ._accomplishedTimestamp)
     }
 }
 
