@@ -1,4 +1,4 @@
-name: Update EnkaKit Assets
+name: Update EnkaKit Assets (Genshin)
 'on':
   workflow_dispatch: {}
   schedule:
@@ -17,16 +17,15 @@ jobs:
         id: compare_shas
         run: |
           zsh ./Script/_assetUpdate4GI.sh
-          zsh ./Script/_assetUpdate4HSR.sh
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
-          branch: 'update-enkakit-assets-${{ github.run_number }}'
+          branch: 'update-enkakit-assets-hsr-${{ github.run_number }}'
           base: main
-          title: Update EnkaKit Asset
+          title: Update EnkaKit Assets (Genshin)
           body: |
-            This PR updates the generated EnkaKit Assets.
+            This PR updates the generated EnkaKit Assets (Genshin).
           delete-branch: true
           assignees: ShikiSuen
           reviewers: ShikiSuen
