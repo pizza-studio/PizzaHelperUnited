@@ -15,6 +15,7 @@ public final class PZGachaProfileMO: GachaProfileIDProtocol {
 
     public init(uid: String, game: Pizza.SupportedGame, profileName: String? = nil) {
         self.uid = uid
+        self.game = game
         self.gameRAW = game.rawValue
         self.profileName = profileName
     }
@@ -26,6 +27,7 @@ public final class PZGachaProfileMO: GachaProfileIDProtocol {
         guard let matchedGame = Pizza.SupportedGame(uidPrefix: cells[0].description) else { return nil }
         guard Int(uidStr) != nil else { return nil }
         self.uid = uidStr
+        self.game = matchedGame
         self.gameRAW = matchedGame.rawValue
         self.profileName = profileName
     }
@@ -33,16 +35,9 @@ public final class PZGachaProfileMO: GachaProfileIDProtocol {
     // MARK: Public
 
     public var uid: String = "000000000"
+    public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact
     public var gameRAW: String = Pizza.SupportedGame.genshinImpact.rawValue
     public var profileName: String?
-
-    public var game: Pizza.SupportedGame {
-        get {
-            .init(rawValue: gameRAW) ?? .genshinImpact
-        } set {
-            self.gameRAW = newValue.rawValue
-        }
-    }
 
     public var asSendable: GachaProfileID {
         GachaProfileID(uid: uid, game: game, profileName: profileName)
