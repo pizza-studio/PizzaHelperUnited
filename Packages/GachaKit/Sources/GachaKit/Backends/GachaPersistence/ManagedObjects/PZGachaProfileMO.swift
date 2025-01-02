@@ -40,7 +40,7 @@ public final class PZGachaProfileMO: GachaProfileIDProtocol {
         get {
             .init(rawValue: gameRAW) ?? .genshinImpact
         } set {
-            self.gameRAW = newValue.rawValue
+            gameRAW = newValue.rawValue
         }
     }
 

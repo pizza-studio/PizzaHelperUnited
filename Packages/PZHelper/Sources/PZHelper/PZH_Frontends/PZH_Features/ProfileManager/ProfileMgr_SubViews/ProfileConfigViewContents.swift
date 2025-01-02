@@ -43,8 +43,8 @@ struct ProfileConfigViewContents: View {
             HStack {
                 Text("UID: " + profile.uidWithGame)
                 Spacer()
-                Text(profile.game.localizedDescription)
-                Text(profile.server.withGame(profile.game).localizedDescriptionByGame)
+                Text(profile.gameTitle.localizedDescription)
+                Text(profile.server.withGame(profile.gameTitle).localizedDescriptionByGame)
             }
         }
 
@@ -82,7 +82,7 @@ struct ProfileConfigViewContents: View {
     }
 
     @ViewBuilder private var warningAboutDeviceFP: some View {
-        if profile.game == .zenlessZone, case .miyoushe = profile.server.region {
+        if profile.gameTitle == .zenlessZone, case .miyoushe = profile.server.region {
             Text("profile.label.fp.extraNotice.zzz".i18nPZHelper)
                 .foregroundStyle(.orange)
         }
@@ -182,7 +182,8 @@ extension ProfileConfigViewContents {
                 if let account = account, let region = HoYo.AccountRegion(rawValue: account.gameBiz) {
                     profile.name = account.nickname
                     profile.uid = account.gameUid
-                    profile.server = HoYo.Server(uid: account.gameUid, game: region.game) ?? .celestia(profile.game)
+                    profile.server = HoYo
+                        .Server(uid: account.gameUid, game: region.game) ?? .celestia(profile.gameTitle)
                 }
             }
         }

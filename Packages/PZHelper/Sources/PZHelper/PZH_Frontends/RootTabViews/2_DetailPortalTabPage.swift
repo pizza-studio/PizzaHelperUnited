@@ -49,7 +49,7 @@ struct DetailPortalTabPage: View {
         let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)
             .listRowMaterialBackground()
         if let profile = delegate.currentProfile {
-            switch profile.game {
+            switch profile.gameTitle {
             case .genshinImpact:
                 ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile) {
                     CharInventoryNav(theVM: delegate)
@@ -89,7 +89,7 @@ struct DetailPortalTabPage: View {
             let dimension: CGFloat = 30
             Group {
                 if let profile: PZProfileMO = delegate.currentProfile {
-                    Enka.ProfileIconView(uid: profile.uid, game: profile.game)
+                    Enka.ProfileIconView(uid: profile.uid, game: profile.gameTitle)
                         .frame(width: dimension)
                 } else {
                     Image(systemSymbol: .personCircleFill)
@@ -197,7 +197,7 @@ struct DetailPortalTabPage: View {
 
     @ViewBuilder
     func hookAlert4AbyssCollectionUserConscent(_ content: some View) -> some View {
-        if delegate.currentProfile?.game == .genshinImpact {
+        if delegate.currentProfile?.gameTitle == .genshinImpact {
             content
                 .alert(
                     "settings.privacy.abyssDataCollect".i18nPZHelper,
@@ -241,7 +241,7 @@ struct DetailPortalTabPage: View {
 
     private var sortedProfiles: [PZProfileMO] {
         profiles.sorted { $0.priority < $1.priority }
-            .filter { $0.game != .zenlessZone } // 临时设定。
+            .filter { $0.gameTitle != .zenlessZone } // 临时设定。
     }
 
     private func refreshAction() {

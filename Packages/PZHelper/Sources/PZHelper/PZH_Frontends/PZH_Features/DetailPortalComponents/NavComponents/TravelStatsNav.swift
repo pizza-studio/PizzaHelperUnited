@@ -37,7 +37,7 @@ public struct TravelStatsNav: View {
             }
         case let .fail(error):
             InformationRowView(navTitle) {
-                let region = profile.server.region.withGame(profile.game)
+                let region = profile.server.region.withGame(profile.gameTitle)
                 let suffix = region.genshinTravelStatsDataRetrievalPath
                 let apiPath = URLRequestConfig.recordURLAPIHost(region: region) + suffix
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
@@ -82,7 +82,7 @@ public struct TravelStatsNav: View {
     // MARK: Internal
 
     @MainActor var navTitle: String {
-        switch theVM.currentProfile?.game {
+        switch theVM.currentProfile?.gameTitle {
         case .genshinImpact: TravelStatsView4GI.navTitle
         case .starRail: TravelStatsView4HSR.navTitle
         default: "N/A"

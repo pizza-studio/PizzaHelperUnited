@@ -37,7 +37,7 @@ public struct LedgerNav: View {
             }
         case let .fail(error):
             InformationRowView(navTitle) {
-                let region = profile.server.region.withGame(profile.game)
+                let region = profile.server.region.withGame(profile.gameTitle)
                 let suffix = region.ledgerDataRetrievalPath
                 let apiPath = URLRequestConfig.ledgerAPIURLHost(region: region) + suffix
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
@@ -82,7 +82,7 @@ public struct LedgerNav: View {
     // MARK: Internal
 
     @MainActor var navTitle: String {
-        switch theVM.currentProfile?.game {
+        switch theVM.currentProfile?.gameTitle {
         case .genshinImpact: LedgerView4GI.navTitle
         case .starRail: LedgerView4HSR.navTitle
         default: "N/A"

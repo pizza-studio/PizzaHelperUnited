@@ -166,7 +166,7 @@ extension ProfileManagerPageContent {
         func handleSingleFetchedUnit(_ account: FetchedAccount, game: Pizza.SupportedGame) async throws {
             guard let server = HoYo.Server(uid: account.gameUid, game: game) else { return }
             let newProfile = PZProfileMO(server: server, uid: account.gameUid)
-            newProfile.game = game
+            newProfile.gameTitle = game
             newProfile.server = server
             newProfile.name = account.nickname
             newProfile.cookie = profile.cookie // 很重要
@@ -183,7 +183,7 @@ extension ProfileManagerPageContent {
 
             // Check duplications
             let firstDuplicate = profiles.first {
-                $0.uid == newProfile.uid && $0.game == newProfile.game
+                $0.uid == newProfile.uid && $0.gameTitle == newProfile.gameTitle
             }
             if let firstDuplicate {
                 firstDuplicate.cookie = profile.cookie // 很重要
@@ -254,7 +254,7 @@ extension ProfileManagerPageContent {
                            let server = HoYo.Server(uid: account.gameUid, game: region.game) {
                             profile.name = account.nickname
                             profile.uid = account.gameUid
-                            profile.game = server.game
+                            profile.gameTitle = server.game
                             profile.server = server
                         } else {
                             getAccountError = .customize("profileMgr.loginError.noGameUIDFound".i18nPZHelper)
@@ -289,11 +289,11 @@ extension ProfileManagerPageContent {
 
         private var game: Binding<Pizza.SupportedGame> {
             .init(
-                get: { profile.game },
+                get: { profile.gameTitle },
                 set: { newGame in
                     profile.server.changeGame(to: newGame)
                     region.changeGame(to: newGame)
-                    profile.game = newGame
+                    profile.gameTitle = newGame
                 }
             )
         }
