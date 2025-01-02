@@ -214,9 +214,9 @@ struct ProfileManagerPageContent: View {
                 HStack {
                     Text(profile.uidWithGame).fontDesign(.monospaced)
                     if horizontalSizeClass != .compact {
-                        Text(profile.gameTitle.localizedDescription)
+                        Text(profile.game.localizedDescription)
                     }
-                    Text(profile.server.withGame(profile.gameTitle).localizedDescriptionByGame)
+                    Text(profile.server.withGame(profile.game).localizedDescriptionByGame)
                 }
                 .font(.footnote)
                 .foregroundColor(.secondary)
@@ -298,7 +298,7 @@ struct ProfileManagerPageContent: View {
             var uuidsToDrop: [UUID] = []
             offsets.map {
                 let returned = profiles[$0]
-                idsToDrop.append((returned.uid, returned.gameTitle))
+                idsToDrop.append((returned.uid, returned.game))
                 uuidsToDrop.append(returned.uuid)
                 return returned
             }.forEach(modelContext.delete)

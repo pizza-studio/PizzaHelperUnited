@@ -20,7 +20,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     @MainActor
     public init?(game: Pizza.SupportedGame, uid: String, configuration: AccountMOProtocol? = nil) {
         guard let server = HoYo.Server(uid: uid, game: game) else { return nil }
-        self.gameTitle = game
+        self.game = game
         self.uid = uid
         self.serverRawValue = server.rawValue
         self.server = server.withGame(game)
@@ -39,7 +39,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
 
     @MainActor
     public init(server: HoYo.Server, uid: String) {
-        self.gameTitle = server.game
+        self.game = server.game
         self.uid = uid
         self.serverRawValue = server.rawValue
         self.server = server
@@ -66,7 +66,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         sTokenV2: String?,
         deviceID: String
     ) {
-        self.gameTitle = game
+        self.game = game
         self.server = server
         self.uid = uid
         self.uuid = uuid
@@ -87,8 +87,8 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.deviceFingerPrint = try container.decode(String.self, forKey: .deviceFingerPrint)
         self.name = try container.decode(String.self, forKey: .name)
         self.priority = try container.decode(Int.self, forKey: .priority)
-        self.game = try container.decode(Data.self, forKey: .game)
-        self.server = try container.decode(HoYo.Server.self, forKey: .server).withGame(gameTitle)
+        self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
+        self.server = try container.decode(HoYo.Server.self, forKey: .server).withGame(game)
         self.serverRawValue = try container.decode(String.self, forKey: .serverRawValue)
         self.sTokenV2 = try container.decodeIfPresent(String.self, forKey: .sTokenV2) ?? ""
         self.uid = try container.decode(String.self, forKey: .uid)
@@ -115,13 +115,9 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         }
     }
 
-    public var gameTitle: Pizza.SupportedGame {
-        get {
-            Pizza.SupportedGame.allCases.first { $0.asData == game } ?? .genshinImpact
-        }
-        set {
-            game = newValue.asData
-            server.changeGame(to: newValue)
+    public var game: Pizza.SupportedGame = Pizza.SupportedGame.genshinImpact {
+        didSet {
+            server.changeGame(to: game)
             serverRawValue = server.rawValue
         }
     }
@@ -154,7 +150,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         serverRawValue = target.serverRawValue
         sTokenV2 = target.sTokenV2
         deviceID = target.deviceID
-        gameTitle = target.gameTitle
+        game = target.game
         server = target.server
     }
 
@@ -174,8 +170,6 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         case uuid
         case deviceID
     }
-
-    private var game: Data = Pizza.SupportedGame.genshinImpact.asData
 }
 
 // MARK: - FakePZProfileMO
@@ -186,14 +180,14 @@ public struct FakePZProfileMO: ProfileMOProtocol {
     // MARK: Lifecycle
 
     public init(game: PZBaseKit.Pizza.SupportedGame, uid: String) {
-        self.gameTitle = game
+        self.game = game
         self.uid = uid
         self.server = .asia(game)
     }
 
     // MARK: Public
 
-    public var gameTitle: PZBaseKit.Pizza.SupportedGame
+    public var game: PZBaseKit.Pizza.SupportedGame
     public var uid: String
     public var allowNotification: Bool = true
     public var cookie: String = ""

@@ -37,7 +37,7 @@ public struct CharInventoryNav: View {
             }
         case let .fail(error):
             InformationRowView(Self.navTitle) {
-                let region = profile.server.region.withGame(profile.gameTitle)
+                let region = profile.server.region.withGame(profile.game)
                 let suffix = region.characterInventoryRetrievalPath
                 let apiPath = URLRequestConfig.recordURLAPIHost(region: region) + suffix
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
