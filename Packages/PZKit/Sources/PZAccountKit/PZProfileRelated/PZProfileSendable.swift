@@ -24,10 +24,10 @@ public struct PZProfileSendable: Sendable, Codable {
     public let deviceID: String
 }
 
-extension ProfileMOProtocol {
+extension PZProfileMO {
     public var asSendable: PZProfileSendable {
         .init(
-            game: gameTitle,
+            game: game,
             server: server,
             uid: uid,
             uuid: uuid,

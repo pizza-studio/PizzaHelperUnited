@@ -38,7 +38,7 @@ public struct AbyssReportNav: View {
             }
         case let .fail(error):
             InformationRowView(navTitle) {
-                let region = profile.server.region.withGame(profile.gameTitle)
+                let region = profile.server.region.withGame(profile.game)
                 let suffix = region.abyssReportRetrievalPath
                 let apiPath = URLRequestConfig.recordURLAPIHost(region: region) + suffix
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
@@ -111,7 +111,7 @@ public struct AbyssReportNav: View {
     // MARK: Internal
 
     @MainActor var navTitle: String {
-        switch theVM.currentProfile?.gameTitle {
+        switch theVM.currentProfile?.game {
         case .genshinImpact: AbyssReportView4GI.navTitle
         case .starRail: AbyssReportView4HSR.navTitle
         default: "N/A"
@@ -119,7 +119,7 @@ public struct AbyssReportNav: View {
     }
 
     @MainActor var navTitleTiny: String {
-        switch theVM.currentProfile?.gameTitle {
+        switch theVM.currentProfile?.game {
         case .genshinImpact: AbyssReportView4GI.navTitleTiny
         case .starRail: AbyssReportView4HSR.navTitleTiny
         default: "N/A"
