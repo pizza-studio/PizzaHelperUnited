@@ -99,7 +99,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
                 } else {
                     ""
                 }
-                Enka.ProfileIconView(uid: pzProfile.uid, game: pzProfile.game)
+                Enka.ProfileIconView(uid: pzProfile.uid, game: pzProfile.gameTitle)
                     .frame(width: 74, height: 60, alignment: .leading)
                     .corneredTag(
                         verbatim: levelTag,

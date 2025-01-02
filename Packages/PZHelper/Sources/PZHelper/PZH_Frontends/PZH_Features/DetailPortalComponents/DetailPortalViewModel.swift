@@ -24,7 +24,7 @@ public final class DetailPortalViewModel: ObservableObject {
         let context = actor.modelContainer.mainContext
         let pzProfiles = try? context.fetch(FetchDescriptor<PZProfileMO>())
             .sorted { $0.priority < $1.priority }
-            .filter { $0.game != .zenlessZone } // 临时设定。
+            .filter { $0.gameTitle != .zenlessZone } // 临时设定。
         self.currentProfile = pzProfiles?.first
         refresh()
     }

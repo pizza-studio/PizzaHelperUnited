@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
+
 // MARK: - Pizza.SupportedGame
 
 extension Pizza {
@@ -21,6 +23,11 @@ extension Pizza {
         // MARK: Public
 
         public var id: String { rawValue }
+
+        public var asData: Data {
+            // This null fallback value shouldn't be triggered.
+            rawValue.data(using: .utf8) ?? .init([])
+        }
 
         public var localizedShortName: String {
             switch self {

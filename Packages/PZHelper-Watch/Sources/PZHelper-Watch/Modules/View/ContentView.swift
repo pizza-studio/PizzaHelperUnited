@@ -107,31 +107,31 @@ private struct DetailNavigator: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    var account: PZProfileMO { dailyNoteViewModel.profile }
+    var profile: PZProfileMO { dailyNoteViewModel.profile }
 
     var body: some View {
         Group {
             switch dailyNoteViewModel.dailyNoteStatus {
             case let .succeed(dailyNote, _):
                 NavigationLink {
-                    WatchAccountDetailView(data: dailyNote, profile: account.asSendable)
+                    WatchAccountDetailView(data: dailyNote, profile: profile.asSendable)
                 } label: {
                     VStack(alignment: .leading) {
                         HStack {
-                            Text(account.name).font(.headline)
+                            Text(profile.name).font(.headline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Image(systemSymbol: .chevronRight)
                                 .foregroundStyle(.secondary)
                                 .frame(width: 12, height: 12)
                         }
                         HStack(spacing: 2) {
-                            dailyNoteViewModel.profile.game.primaryStaminaAssetIcon
+                            profile.gameTitle.primaryStaminaAssetIcon
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 25, height: 25)
                             Text(verbatim: "\(dailyNote.staminaIntel.finished)").bold()
                             Spacer()
-                            Text(account.uidWithGame).font(.footnote)
+                            Text(profile.uidWithGame).font(.footnote)
                                 .minimumScaleFactor(0.5)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
