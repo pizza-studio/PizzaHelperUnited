@@ -27,7 +27,6 @@ public actor PZProfileActor {
             modelContext: .init(modelContainer)
         )
         Task { @MainActor in
-            await sanityCheckGameTitles()
             let stillNeedsReset = await detectWhetherIsReset()
             isReset = isReset || stillNeedsReset
             // 处理资料库被重设的情形。
@@ -202,28 +201,6 @@ extension PZProfileActor {
             let backupProfiles = Defaults[.pzProfiles].values.sorted { $0.priority < $1.priority }
             guard existingCount == 0, !backupProfiles.isEmpty else { return }
             backupProfiles.map(\.asMO).forEach(modelContext.insert)
-            try modelContext.save()
-        } catch {
-            print(error)
-        }
-    }
-
-    private func sanityCheckGameTitles() {
-        do {
-            var gameMap = [UUID: Pizza.SupportedGame]()
-            var gameMapUsingUID = [String: Pizza.SupportedGame]()
-            Defaults[.pzProfiles].forEach {
-                gameMap[$0.value.uuid] = $0.value.game
-                if !$0.value.uid.isEmpty {
-                    gameMapUsingUID[$0.value.uid] = $0.value.game
-                }
-            }
-            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { profileMO in
-                if let matched = gameMap[profileMO.uuid] ?? gameMapUsingUID[profileMO.uid],
-                   matched != profileMO.gameTitle {
-                    profileMO.gameTitle = matched
-                }
-            }
             try modelContext.save()
         } catch {
             print(error)
