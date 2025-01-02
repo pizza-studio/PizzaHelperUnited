@@ -26,7 +26,7 @@ struct ProfileConfigEditorView: View {
                     .multilineTextAlignment(.trailing)
                 } label: { Text("profile.label.nickname".i18nPZHelper) }
                 LabeledContent("profile.label.game".i18nPZHelper) {
-                    Picker("".description, selection: $unsavedProfile.game) {
+                    Picker("".description, selection: $unsavedProfile.gameTitle) {
                         ForEach(Pizza.SupportedGame.allCases) { currentGame in
                             Text(currentGame.localizedDescriptionTrimmed)
                                 .tag(currentGame)
@@ -35,7 +35,7 @@ struct ProfileConfigEditorView: View {
                     .pickerStyle(.segmented)
                     .fontWidth(.condensed)
                     .fixedSize()
-                }.onChange(of: unsavedProfile.game, initial: true) { _, newValue in
+                }.onChange(of: unsavedProfile.gameTitle, initial: true) { _, newValue in
                     unsavedProfile.server.changeGame(to: newValue)
                     unsavedProfile.serverRawValue = unsavedProfile.server.rawValue
                 }
@@ -47,12 +47,12 @@ struct ProfileConfigEditorView: View {
                         .multilineTextAlignment(.trailing)
                 } label: { Text(verbatim: "UID") }
                     .onChange(of: unsavedProfile.uid, initial: true) { _, _ in
-                        let server = HoYo.Server(uid: unsavedProfile.uid, game: unsavedProfile.game)
+                        let server = HoYo.Server(uid: unsavedProfile.uid, game: unsavedProfile.gameTitle)
                         guard let server else { return }
                         unsavedProfile.server = server
                     }
                 Picker("profile.label.server".i18nPZHelper, selection: $unsavedProfile.server) {
-                    switch unsavedProfile.game {
+                    switch unsavedProfile.gameTitle {
                     case .genshinImpact:
                         ForEach(HoYo.Server.allCases4GI) { server in
                             Text(server.localizedDescriptionByGameAndRegion).tag(server)
@@ -103,7 +103,7 @@ struct ProfileConfigEditorView: View {
     }
 
     @ViewBuilder private var warningAboutDeviceFP: some View {
-        if unsavedProfile.game == .zenlessZone, case .miyoushe = unsavedProfile.server.region {
+        if unsavedProfile.gameTitle == .zenlessZone, case .miyoushe = unsavedProfile.server.region {
             Text("profile.label.fp.extraNotice.zzz".i18nPZHelper)
                 .foregroundStyle(.orange)
         }

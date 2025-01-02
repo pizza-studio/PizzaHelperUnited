@@ -438,7 +438,7 @@ extension GachaVM {
             return
         }
         let firstExistingProfile = sortedGPIDs.first {
-            $0.uid == matched.uid && $0.game == matched.game
+            $0.uid == matched.uid && $0.game == matched.gameTitle
         }
         guard let firstExistingProfile else {
             currentGPID = sortedGPIDs.first

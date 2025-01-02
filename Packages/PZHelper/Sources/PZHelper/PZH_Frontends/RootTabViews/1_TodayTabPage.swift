@@ -97,12 +97,12 @@ struct TodayTabPage: View {
     private var filteredProfiles: [PZProfileMO] {
         profiles.filter {
             guard let currentGame = game else { return true }
-            return $0.game == currentGame
+            return $0.gameTitle == currentGame
         }
     }
 
     private var games: [Pizza.SupportedGame] {
-        profiles.map(\.game).reduce(into: [Pizza.SupportedGame]()) {
+        profiles.map(\.gameTitle).reduce(into: [Pizza.SupportedGame]()) {
             if !$0.contains($1) { $0.append($1) }
         }
     }
