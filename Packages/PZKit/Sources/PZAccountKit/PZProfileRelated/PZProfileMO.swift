@@ -88,6 +88,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.name = try container.decode(String.self, forKey: .name)
         self.priority = try container.decode(Int.self, forKey: .priority)
         self.game = try container.decode(Data.self, forKey: .game)
+        self.server = try container.decode(HoYo.Server.self, forKey: .server).withGame(gameTitle)
         self.serverRawValue = try container.decode(String.self, forKey: .serverRawValue)
         self.sTokenV2 = try container.decodeIfPresent(String.self, forKey: .sTokenV2) ?? ""
         self.uid = try container.decode(String.self, forKey: .uid)
@@ -108,12 +109,9 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     public var sTokenV2: String? = ""
     public var deviceID: String = UUID().uuidString // For cross-device purposes.
 
-    public var server: HoYo.Server {
-        get {
-            (HoYo.Server(rawValue: serverRawValue) ?? .celestia(.genshinImpact)).withGame(gameTitle)
-        }
-        set {
-            serverRawValue = newValue.rawValue
+    public var server: HoYo.Server = HoYo.Server.celestia(.genshinImpact) {
+        didSet {
+            serverRawValue = server.rawValue
         }
     }
 
@@ -136,6 +134,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         try container.encode(name, forKey: .name)
         try container.encode(game, forKey: .game)
         try container.encode(priority, forKey: .priority)
+        try container.encode(server, forKey: .server)
         try container.encode(serverRawValue, forKey: .serverRawValue)
         try container.encodeIfPresent(sTokenV2, forKey: .sTokenV2)
         try container.encode(uid, forKey: .uid)
@@ -169,6 +168,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         case game
         case priority
         case serverRawValue
+        case server
         case sTokenV2
         case uid
         case uuid
