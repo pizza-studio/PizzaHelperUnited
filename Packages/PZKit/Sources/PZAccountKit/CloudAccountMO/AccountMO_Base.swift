@@ -53,14 +53,14 @@ extension ProfileMOBasicProtocol {
 // MARK: - ProfileMOProtocol
 
 public protocol ProfileMOProtocol: ProfileMOBasicProtocol, Identifiable {
-    var gameTitle: Pizza.SupportedGame { get set }
+    var game: Pizza.SupportedGame { get set }
     var deviceID: String { get set }
     var server: HoYo.Server { get set }
 }
 
 extension ProfileMOProtocol {
     public var uidWithGame: String {
-        "\(gameTitle.uidPrefix)-\(uid)"
+        "\(game.uidPrefix)-\(uid)"
     }
 
     public mutating func inherit(from target: some ProfileMOProtocol) {
@@ -74,7 +74,7 @@ extension ProfileMOProtocol {
         serverRawValue = target.serverRawValue
         sTokenV2 = target.sTokenV2
         deviceID = target.deviceID
-        gameTitle = target.gameTitle
+        game = target.game
         server = target.server
     }
 }

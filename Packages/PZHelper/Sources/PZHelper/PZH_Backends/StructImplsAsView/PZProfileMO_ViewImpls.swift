@@ -10,7 +10,7 @@ import SwiftUI
 extension PZProfileMO {
     @MainActor @ViewBuilder
     func asIcon4SUI() -> some View {
-        Enka.ProfileIconView(uid: uid, game: gameTitle)
+        Enka.ProfileIconView(uid: uid, game: game)
     }
 
     @MainActor @ViewBuilder
