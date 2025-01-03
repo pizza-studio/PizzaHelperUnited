@@ -45,7 +45,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
                             profile: result,
                             enkaDB: theDB,
                             asCardIcons: true,
-                            appendHoYoLABResults: true
+                            appendHoYoLABResults: false
                         )
                         .id(result.hashValue)
                     }
@@ -55,7 +55,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
                             profile: result,
                             enkaDB: theDB,
                             asCardIcons: true,
-                            appendHoYoLABResults: true
+                            appendHoYoLABResults: false
                         )
                         .id(result.hashValue)
                         .disabled(delegate.taskState == .busy)
