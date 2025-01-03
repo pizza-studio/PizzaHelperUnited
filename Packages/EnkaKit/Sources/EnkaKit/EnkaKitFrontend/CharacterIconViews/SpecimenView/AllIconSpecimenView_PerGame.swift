@@ -15,21 +15,17 @@ public struct CharSpecimen: Identifiable, Hashable {
 
     @MainActor @ViewBuilder
     public func render(size: Double, cutType: IDPhotoView4HSR.IconType = .cutShoulder) -> some View {
-        if id.count == 4 {
-            if let first = IDPhotoView4HSR(pid: id, size, cutType, forceRender: true) {
-                first
-            } else {
-                IDPhotoFallbackView4HSR(pid: id, size, cutType)
-            }
-        } else { // 暂时不处理 >= 10000900 的角色 ID。
-            if let intID = Int(id) {
-                if intID < 10000900 {
-                    CharacterIconView(charID: id, size: size)
+        Group {
+            if id.count == 4 {
+                if let first = IDPhotoView4HSR(pid: id, size, cutType, forceRender: true) {
+                    first
+                } else {
+                    IDPhotoFallbackView4HSR(pid: id, size, cutType)
                 }
             } else {
                 CharacterIconView(charID: id, size: size)
             }
-        }
+        }.frame(width: size, height: size)
     }
 
     @MainActor @ViewBuilder
@@ -108,31 +104,29 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
     // MARK: Public
 
     public var body: some View {
-        coreBodyView.overlay {
-            GeometryReader { geometry in
-                Color.clear.onAppear {
-                    containerSize = geometry.size
-                }.onChange(of: geometry.size, initial: true) { _, newSize in
-                    containerSize = newSize
+        coreBodyView
+            .containerRelativeFrame(.horizontal) { length, _ in
+                Task { @MainActor in
+                    withAnimation { containerWidth = length - 48 }
                 }
+                return length
             }
-        }
     }
 
     // MARK: Internal
 
     @Namespace var animation: Namespace.ID
 
-    @State var containerSize: CGSize = .init(width: 320, height: 320)
+    @State var containerWidth: CGFloat = 320
 
     @State var scroll: Bool
 
     var columns: Int {
-        max(Int(($containerSize.wrappedValue.width / 120).rounded(.down)), 1)
+        max(Int((containerWidth / 120).rounded(.down)), 1)
     }
 
     var singleSize: Double {
-        (($containerSize.wrappedValue.width / Double(columns)) - 8.0).rounded(.down)
+        ((containerWidth / Double(columns)) - 8.0).rounded(.down)
     }
 
     @ViewBuilder var coreBodyView: some View {
