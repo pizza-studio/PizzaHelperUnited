@@ -13,6 +13,35 @@ extension Enka {
     public struct AvatarSummarized: AbleToCodeSendHash, Identifiable {
         // MARK: Public
 
+        public final class SharedPointer: Sendable, Hashable, Equatable, Identifiable {
+            // MARK: Lifecycle
+
+            public init?(summary: AvatarSummarized?) {
+                guard let summary else { return nil }
+                self.wrappedValue = summary
+            }
+
+            // MARK: Public
+
+            public let wrappedValue: AvatarSummarized
+
+            public var id: String {
+                wrappedValue.id
+            }
+
+            public static func == (
+                lhs: Enka.AvatarSummarized.SharedPointer,
+                rhs: Enka.AvatarSummarized.SharedPointer
+            )
+                -> Bool {
+                lhs.wrappedValue == rhs.wrappedValue
+            }
+
+            public func hash(into hasher: inout Hasher) {
+                hasher.combine(wrappedValue)
+            }
+        }
+
         public let game: Enka.GameType
         public let mainInfo: AvatarMainInfo
         public let equippedWeapon: WeaponPanel?
