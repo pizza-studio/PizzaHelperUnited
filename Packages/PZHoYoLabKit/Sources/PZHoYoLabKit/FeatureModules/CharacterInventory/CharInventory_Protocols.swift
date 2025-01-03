@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import EnkaKit
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
@@ -43,8 +44,10 @@ extension HYAvatar {
 @MainActor
 public protocol CharacterInventoryView: View {
     associatedtype InventoryData: CharacterInventory where Self == InventoryData.ViewType
+    typealias Summary = Enka.AvatarSummarized
     init(data: InventoryData, uidWithGame: String)
     var data: InventoryData { get }
+    var summaries: [Summary] { get }
     @MainActor @ViewBuilder var body: Self.Body { get }
 }
 
@@ -68,6 +71,14 @@ extension CharacterInventoryView {
         case .all: data.avatars
         case .star4: data.avatars.filter { $0.rarity == 4 }
         case .star5: data.avatars.filter { $0.rarity == 5 }
+        }
+    }
+
+    func filterAvatarSummaries(type: InventoryViewFilterType) -> [Summary] {
+        switch type {
+        case .all: summaries
+        case .star4: summaries.filter { $0.mainInfo.rarityStars == 4 }
+        case .star5: summaries.filter { $0.mainInfo.rarityStars == 5 }
         }
     }
 
