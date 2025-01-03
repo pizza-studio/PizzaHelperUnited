@@ -1173,7 +1173,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4568;
+				CURRENT_PROJECT_VERSION = 4586;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
@@ -1195,7 +1195,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.1;
-				MARKETING_VERSION = 5.0.4;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "United Pizza Engine";
 				REGISTER_APP_GROUPS = NO;
@@ -1216,7 +1216,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4568;
+				CURRENT_PROJECT_VERSION = 4586;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
@@ -1238,7 +1238,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.1;
-				MARKETING_VERSION = 5.0.4;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "United Pizza Engine";
 				REGISTER_APP_GROUPS = NO;
