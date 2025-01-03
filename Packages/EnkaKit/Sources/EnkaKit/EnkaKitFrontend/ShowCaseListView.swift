@@ -60,7 +60,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                     HStack {
                         ForEach(profile.summarizedAvatars) { avatar in
                             NavigationLink {
-                                AvatarShowCaseView<DBType>(
+                                EnkaShowCaseView<DBType>(
                                     selectedAvatarID: avatar.id,
                                     profile: profile
                                 )
@@ -93,7 +93,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 Section {
                     ForEach(profile.summarizedAvatars) { avatar in
                         NavigationLink {
-                            AvatarShowCaseView<DBType>(
+                            EnkaShowCaseView<DBType>(
                                 selectedAvatarID: avatar.id,
                                 profile: profile
                             )
