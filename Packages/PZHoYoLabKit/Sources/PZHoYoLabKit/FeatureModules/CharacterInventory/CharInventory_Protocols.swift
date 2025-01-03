@@ -16,8 +16,10 @@ public protocol CharacterInventory: AbleToCodeSendHash, DecodableFromMiHoYoAPIJS
 
 extension CharacterInventory {
     @MainActor @ViewBuilder
-    public func asView() -> some View {
-        ViewType(data: self)
+    public func asView(uidWithGame: String) -> some View {
+        NavigationStack {
+            ViewType(data: self, uidWithGame: uidWithGame)
+        }
     }
 }
 
@@ -41,7 +43,7 @@ extension HYAvatar {
 @MainActor
 public protocol CharacterInventoryView: View {
     associatedtype InventoryData: CharacterInventory where Self == InventoryData.ViewType
-    init(data: InventoryData)
+    init(data: InventoryData, uidWithGame: String)
     var data: InventoryData { get }
     @MainActor @ViewBuilder var body: Self.Body { get }
 }
