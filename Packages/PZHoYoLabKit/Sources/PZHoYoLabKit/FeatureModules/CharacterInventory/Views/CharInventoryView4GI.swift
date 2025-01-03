@@ -28,6 +28,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
     public typealias InventoryData = HoYo.CharInventory4GI
 
     public let data: InventoryData
+    public let summaries: [Enka.AvatarSummarized]
 
     @ViewBuilder public var body: some View {
         basicBody
@@ -148,8 +149,6 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
     @Namespace private var animation: Namespace.ID
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.dismiss) private var dismiss
-
-    private let summaries: [Enka.AvatarSummarized]
 
     private var showingAvatars: [HoYo.CharInventory4GI.HYAvatar4GI] {
         filterAvatars(type: allAvatarListDisplayType)
