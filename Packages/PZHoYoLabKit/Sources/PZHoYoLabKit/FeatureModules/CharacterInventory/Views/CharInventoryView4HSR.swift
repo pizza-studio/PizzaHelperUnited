@@ -14,8 +14,12 @@ import SwiftUI
 public struct CharacterInventoryView4HSR: CharacterInventoryView {
     // MARK: Lifecycle
 
-    public init(data: InventoryData) {
+    public init(data: InventoryData, uidWithGame: String) {
         self.data = data
+        let theDB = Enka.Sputnik.shared.db4HSR
+        self.summaries = (Defaults[.queriedHoYoProfiles4HSR][uidWithGame] ?? []).compactMap {
+            $0.summarize(theDB: theDB)
+        }
     }
 
     // MARK: Public
@@ -24,7 +28,27 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
 
     public let data: InventoryData
 
-    public var body: some View {
+    @ViewBuilder public var body: some View {
+        basicBody
+            .overlay {
+                if let currentAvatarSummaryIDGuarded = currentAvatarSummaryID {
+                    AvatarStatCollectionTabView(
+                        selectedAvatarID: currentAvatarSummaryIDGuarded,
+                        summarizedAvatars: summaries
+                    ) {
+                        currentAvatarSummaryID = nil
+                    }
+                    .tag(currentAvatarSummaryIDGuarded)
+                    .task {
+                        simpleTaptic(type: .medium)
+                    }
+                }
+            }
+    }
+
+    // MARK: Internal
+
+    @ViewBuilder var basicBody: some View {
         List {
             Section {
                 VStack(alignment: .leading, spacing: 3) {
@@ -76,8 +100,6 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
         }
     }
 
-    // MARK: Internal
-
     @ViewBuilder
     func renderAllAvatarListFull() -> some View {
         Section {
@@ -91,6 +113,9 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
                         }
                     }
                     .compositingGroup()
+                    .onTapGesture {
+                        currentAvatarSummaryID = avatar.id.description
+                    }
             }
         }
         .textCase(.none)
@@ -108,6 +133,9 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
                 .padding(.vertical, 4)
                 .compositingGroup()
                 .matchedGeometryEffect(id: avatar.id, in: animation)
+                .onTapGesture {
+                    currentAvatarSummaryID = avatar.id.description
+                }
         }
         .environment(orientation)
     }
@@ -117,9 +145,12 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
     @State private var allAvatarListDisplayType: InventoryViewFilterType = .all
     @State private var containerWidth: CGFloat = 320
     @State private var expanded: Bool = false
+    @State private var currentAvatarSummaryID: String?
     @Namespace private var animation: Namespace.ID
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.dismiss) private var dismiss
+
+    private let summaries: [Enka.AvatarSummarized]
 
     private var showingAvatars: [HoYo.CharInventory4HSR.HYAvatar4HSR] {
         filterAvatars(type: allAvatarListDisplayType)
