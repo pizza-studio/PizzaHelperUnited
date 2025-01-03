@@ -8,9 +8,9 @@ import PZBaseKit
 import SwiftUI
 import WallpaperKit
 
-// MARK: - AvatarShowCaseView
+// MARK: - EnkaShowCaseView
 
-public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.QueriedProfile.DBType == DBType {
+public struct EnkaShowCaseView<DBType: EnkaDBProtocol>: View where DBType.QueriedProfile.DBType == DBType {
     // MARK: Lifecycle
 
     public init?(
@@ -189,7 +189,7 @@ public struct AvatarShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Quer
 
 extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
     @MainActor
-    public func asView() -> AvatarShowCaseView<DBType>? {
+    public func asView() -> EnkaShowCaseView<DBType>? {
         .init(profile: self)
     }
 }
