@@ -497,15 +497,21 @@ private struct DailyNoteCardView4HSR: View {
                 Text(verbatim: "\(completionIntel.finished) / \(completionIntel.all)")
             }
             VStack(spacing: 15) {
-                StaggeredGrid(
-                    columns: horizontalSizeClass == .compact ? 2 : 4,
-                    outerPadding: false,
-                    scroll: false,
-                    list: dailyNote.assignmentInfo.assignments
-                ) { currentAssignment in
-                    drawSingleAssignment(currentAssignment)
+                ViewThatFits(in: .horizontal) {
+                    ForEach([4, 2], id: \.self) { columnsCompatible in
+                        StaggeredGrid(
+                            columns: columnsCompatible,
+                            outerPadding: false,
+                            scroll: false,
+                            list: dailyNote.assignmentInfo.assignments
+                        ) { currentAssignment in
+                            drawSingleAssignment(currentAssignment)
+                                .fixedSize()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
-                .fixedSize(horizontal: false, vertical: true)
             }
         }
     }
