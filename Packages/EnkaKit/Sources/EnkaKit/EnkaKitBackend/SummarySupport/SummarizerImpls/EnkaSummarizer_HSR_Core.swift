@@ -183,3 +183,28 @@ extension Enka.QueriedProfileHSR.Equipment {
         return .init(props: result, name: hsrDB.weapons[tid.description]?.equipmentName.hash ?? 0)
     }
 }
+
+extension HYQueriedModels.HYLAvatarDetail4HSR.Equip {
+    public func getFlat(hsrDB: Enka.EnkaDB4HSR) -> Enka.QueriedProfileHSR.EquipmentFlat {
+        var result = [Enka.QueriedProfileHSR.Prop]()
+        // 米游社面板原始返回结果并没有 Promotion 资讯，只能用等级来推算。推算结果可能会有一些误差。
+        let promotion = switch level {
+        case 71...: 6
+        case 61 ... 70: 5
+        case 51 ... 60: 4
+        case 41 ... 50: 3
+        case 31 ... 40: 2
+        case 21 ... 30: 1
+        default: 0
+        }
+        if let table = hsrDB.meta.equipment[id.description]?[promotion.description] {
+            let summedHP = table.baseHP + table.hpAdd * (Double(level) - 1)
+            let summedATK = table.baseAttack + table.attackAdd * (Double(level) - 1)
+            let summedDEF = table.baseDefence + table.defenceAdd * (Double(level) - 1)
+            result.append(.init(type: Enka.PropertyType.baseHP.rawValue, value: summedHP))
+            result.append(.init(type: Enka.PropertyType.baseAttack.rawValue, value: summedATK))
+            result.append(.init(type: Enka.PropertyType.baseDefence.rawValue, value: summedDEF))
+        }
+        return .init(props: result, name: hsrDB.weapons[id.description]?.equipmentName.hash ?? 0)
+    }
+}
