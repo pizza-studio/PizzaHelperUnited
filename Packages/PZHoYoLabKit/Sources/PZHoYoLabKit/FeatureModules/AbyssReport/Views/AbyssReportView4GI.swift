@@ -26,15 +26,13 @@ public struct AbyssReportView4GI: AbyssReportView {
     public var data: AbyssReportData
 
     public var body: some View {
-        contents.overlay {
-            GeometryReader { geometry in
-                Color.clear.onAppear {
-                    containerWidth = geometry.size.width
-                }.onChange(of: geometry.size.width, initial: true) { _, newSize in
-                    containerWidth = newSize
+        contents
+            .containerRelativeFrame(.horizontal) { length, _ in
+                Task { @MainActor in
+                    withAnimation { containerWidth = length - 48 }
                 }
+                return length
             }
-        }
     }
 
     // MARK: Internal
@@ -72,7 +70,7 @@ public struct AbyssReportView4GI: AbyssReportView {
 
     // MARK: Private
 
-    @State private var containerWidth: CGFloat = ThisDevice.basicWindowSize.width
+    @State private var containerWidth: CGFloat = 320
     @StateObject private var orientation = DeviceOrientation()
     @Namespace private var animation
 
