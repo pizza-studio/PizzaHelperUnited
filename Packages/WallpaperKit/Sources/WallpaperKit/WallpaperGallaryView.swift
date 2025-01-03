@@ -20,35 +20,35 @@ public struct WallpaperGalleryViewContent: View {
     public static let navTitle: String = "wallpaperGallery.navTitle".i18nWPKit
 
     public var body: some View {
-        GeometryReader { geometry in
-            coreBodyView.onAppear {
-                containerSize = geometry.size
-            }.onChange(of: geometry.size, initial: true) { _, newSize in
-                containerSize = newSize
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Picker("".description, selection: $game.animation()) {
-                    Text("game.genshin.shortNameEX".i18nBaseKit)
-                        .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)
-                    Text("game.starRail.shortNameEX".i18nBaseKit)
-                        .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
-                    Text("game.zenlessZone.shortNameEX".i18nBaseKit)
-                        .tag(Pizza.SupportedGame.zenlessZone as Pizza.SupportedGame?)
-                    Text("wpKit.gamePicker.Pizza.shortName".i18nWPKit)
-                        .tag(Pizza.SupportedGame?.none)
+        coreBodyView
+            .containerRelativeFrame(.horizontal) { length, _ in
+                Task { @MainActor in
+                    withAnimation { containerWidth = length - 48 }
                 }
-                .pickerStyle(.segmented)
+                return length
             }
-        }
-        .navigationTitle(Self.navTitle)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Picker("".description, selection: $game.animation()) {
+                        Text("game.genshin.shortNameEX".i18nBaseKit)
+                            .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)
+                        Text("game.starRail.shortNameEX".i18nBaseKit)
+                            .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
+                        Text("game.zenlessZone.shortNameEX".i18nBaseKit)
+                            .tag(Pizza.SupportedGame.zenlessZone as Pizza.SupportedGame?)
+                        Text("wpKit.gamePicker.Pizza.shortName".i18nWPKit)
+                            .tag(Pizza.SupportedGame?.none)
+                    }
+                    .pickerStyle(.segmented)
+                }
+            }
+            .navigationTitle(Self.navTitle)
     }
 
     // MARK: Internal
 
     var columns: Int {
-        max(Int(floor($containerSize.wrappedValue.width / 240)), 1)
+        max(Int(floor(containerWidth / 240)), 1)
     }
 
     var searchResults: [Wallpaper] {
@@ -100,7 +100,7 @@ public struct WallpaperGalleryViewContent: View {
     @StateObject private var orientation = DeviceOrientation()
     @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
-    @State private var containerSize: CGSize = .zero
+    @State private var containerWidth: CGFloat = 320
 
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
