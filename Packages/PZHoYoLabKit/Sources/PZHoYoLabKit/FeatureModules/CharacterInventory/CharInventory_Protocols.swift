@@ -44,10 +44,10 @@ extension HYAvatar {
 @MainActor
 public protocol CharacterInventoryView: View {
     associatedtype InventoryData: CharacterInventory where Self == InventoryData.ViewType
-    typealias Summary = Enka.AvatarSummarized
+    typealias SummaryPtr = Enka.AvatarSummarized.SharedPointer
     init(data: InventoryData, uidWithGame: String)
     var data: InventoryData { get }
-    var summaries: [Summary] { get }
+    var summaries: [SummaryPtr] { get }
     @MainActor @ViewBuilder var body: Self.Body { get }
 }
 
@@ -74,11 +74,11 @@ extension CharacterInventoryView {
         }
     }
 
-    func filterAvatarSummaries(type: InventoryViewFilterType) -> [Summary] {
+    func filterAvatarSummaries(type: InventoryViewFilterType) -> [SummaryPtr] {
         switch type {
         case .all: summaries
-        case .star4: summaries.filter { $0.mainInfo.rarityStars == 4 }
-        case .star5: summaries.filter { $0.mainInfo.rarityStars == 5 }
+        case .star4: summaries.filter { $0.wrappedValue.mainInfo.rarityStars == 4 }
+        case .star5: summaries.filter { $0.wrappedValue.mainInfo.rarityStars == 5 }
         }
     }
 
