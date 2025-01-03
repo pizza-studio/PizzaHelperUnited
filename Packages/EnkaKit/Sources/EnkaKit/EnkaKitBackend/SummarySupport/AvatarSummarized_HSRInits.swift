@@ -33,6 +33,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         self.localizedRealName = nameTyped.i18n(theDB: hsrDB, officialNameOnly: false)
         self.terms = .init(lang: hsrDB.locTag, game: .starRail)
         self.idExpressable = idExpressible
+        self.rarityStars = theCommonInfo.rarity
+        self.fetter = nil
         guard game == .starRail else { return nil }
     }
 }
@@ -203,6 +205,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         self.localizedRealName = nameTyped.i18n(theDB: hsrDB, officialNameOnly: false)
         self.terms = .init(lang: hsrDB.locTag, game: .starRail)
         self.idExpressable = idExpressible
+        self.rarityStars = theCommonInfo.rarity
+        self.fetter = nil
         guard game == .starRail else { return nil }
     }
 }
