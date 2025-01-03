@@ -30,11 +30,22 @@ public struct EnkaShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Querie
     // MARK: Public
 
     public var body: some View {
-        AvatarStatCollectionTabView(
-            selectedAvatarID: showingCharacterIdentifier,
-            summarizedAvatars: profile.summarizedAvatars,
-            onClose: onClose
-        )
+        if profile.summarizedAvatars.isEmpty {
+            blankView()
+        } else {
+            AvatarStatCollectionTabView(
+                selectedAvatarID: $showingCharacterIdentifier,
+                summarizedAvatars: profile.summarizedAvatars,
+                onClose: onClose
+            )
+        }
+    }
+
+    // MARK: Internal
+
+    @ViewBuilder
+    func blankView() -> some View {
+        Text(verbatim: "🗑️")
     }
 
     // MARK: Private
