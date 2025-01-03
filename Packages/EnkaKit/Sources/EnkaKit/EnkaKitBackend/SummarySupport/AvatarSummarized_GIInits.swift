@@ -234,23 +234,33 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         giDB: Enka.EnkaDB4GI,
         hylRAW: HYQueriedModels.HYLAvatarDetail4GI
     ) {
-        let charID = hylRAW.avatarIdStr
         let costumeID = hylRAW.costumes.first?.id.description
-        guard let theCommonInfo = giDB.characters[charID] else {
-            print("theCommonInfo nulled")
-            return nil
-        }
-        guard let idExpressible = Enka.AvatarSummarized.CharacterID(id: charID, costumeID: costumeID) else {
-            print("idExpressible nulled")
-            return nil
-        }
-        guard let theElement = Enka.GameElement(rawValue: theCommonInfo.element) else {
+        guard let theElement = Enka.GameElement(rawValue: hylRAW.base.element) else {
             print("theElement nulled")
             return nil
         }
+        guard var idExpressible = Enka.AvatarSummarized.CharacterID(id: hylRAW.avatarIdStr, costumeID: costumeID) else {
+            print("idExpressible nulled")
+            return nil
+        }
+        let skillDepotIDSuffix: String = {
+            let depotID = idExpressible.nameObj.getGenshinProtagonistSkillDepotID(element: theElement)
+            guard let depotID else { return "" }
+            return "-\(depotID)"
+        }()
+        let charID = hylRAW.avatarIdStr + skillDepotIDSuffix
+        if !skillDepotIDSuffix.isEmpty {
+            // Update the idExpressible for Protagonist.
+            guard let idExpressibleNEO = Enka.AvatarSummarized.CharacterID(id: charID, costumeID: costumeID) else {
+                print("idExpressible nulled")
+                return nil
+            }
+            idExpressible = idExpressibleNEO
+        }
         guard let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
             giDB: giDB,
-            hylRAW: hylRAW
+            hylRAW: hylRAW,
+            charID: charID
         ) else {
             print("baseSkillSet nulled")
             return nil
@@ -273,10 +283,13 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     fileprivate init?(
         giDB: Enka.EnkaDB4GI,
-        hylRAW: HYQueriedModels.HYLAvatarDetail4GI
+        hylRAW: HYQueriedModels.HYLAvatarDetail4GI,
+        charID: String
     ) {
-        let charID = hylRAW.avatarIdStr
-        guard let character = giDB.characters[charID] else { return nil }
+        guard let character = giDB.characters[charID] else {
+            print("theCommonInfo nulled")
+            return nil
+        }
         guard character.skillOrder.count == 3 else { return nil } // 原神的角色只有三个可以升级的技能。
         var skillLevelMap = [String: Int]()
         hylRAW.skills.forEach { skillUnit in

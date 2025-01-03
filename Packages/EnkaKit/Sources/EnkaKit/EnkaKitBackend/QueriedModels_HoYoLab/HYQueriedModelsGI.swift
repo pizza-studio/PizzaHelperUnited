@@ -99,7 +99,7 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
             id: Int,
             icon: String,
             name: String,
-            element: Element,
+            element: String,
             fetter: Int,
             level: Int,
             rarity: Int,
@@ -140,23 +140,13 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
         public var id: Int
         public var icon: String
         public var name: String
-        public var element: Element
+        public var element: String
         public var fetter, level, rarity, activedConstellationNum: Int
         public var image: String
         public var isChosen: Bool
         public var sideIcon: String
         public var weaponType: Int
         public var weapon: BaseWeapon
-    }
-
-    public enum Element: String, AbleToCodeSendHash {
-        case anemo = "Anemo"
-        case cryo = "Cryo"
-        case dendro = "Dendro"
-        case electro = "Electro"
-        case geo = "Geo"
-        case hydro = "Hydro"
-        case pyro = "Pyro"
     }
 
     // MARK: - BaseWeapon
