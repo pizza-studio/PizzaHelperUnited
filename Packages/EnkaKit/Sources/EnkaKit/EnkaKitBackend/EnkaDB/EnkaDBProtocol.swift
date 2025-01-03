@@ -122,6 +122,10 @@ extension EnkaDBProtocol {
     }
 
     public func getFailableTranslationFor(id: String, realName: Bool = true) -> String? {
+        var id = id
+        if game == .genshinImpact {
+            id = id.split(separator: "_").first?.description ?? id
+        }
         // 处理雷电国崩的自订姓名。
         if realName, let matchedRealName = Enka.JSONType.bundledRealNameTable[locTag]?[id] {
             return matchedRealName
