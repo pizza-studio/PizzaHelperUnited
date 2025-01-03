@@ -18,7 +18,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
         self.data = data
         let theDB = Enka.Sputnik.shared.db4HSR
         self.summaries = (Defaults[.queriedHoYoProfiles4HSR][uidWithGame] ?? []).compactMap {
-            $0.summarize(theDB: theDB)
+            .init(summary: $0.summarize(theDB: theDB))
         }
         self.currentAvatarSummaryID = ""
     }
@@ -28,14 +28,14 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
     public typealias InventoryData = HoYo.CharInventory4HSR
 
     public let data: InventoryData
-    public let summaries: [Enka.AvatarSummarized]
+    public let summaries: [SummaryPtr]
 
     @ViewBuilder public var body: some View {
         basicBody
             .overlay {
                 AvatarStatCollectionTabView(
                     selectedAvatarID: $currentAvatarSummaryID,
-                    summarizedAvatars: summaries
+                    summarizedAvatars: summaries.map(\.wrappedValue)
                 ) {
                     currentAvatarSummaryID = ""
                 }
@@ -108,9 +108,8 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
                     .padding(.horizontal)
                     .padding(.vertical, 4)
                     .background {
-                        if let idObj = Enka.AvatarSummarized.CharacterID(id: avatar.id.description) {
-                            idObj.asRowBG() // 星穹铁道不需要 element: .init(rawValue: avatar.element)
-                        }
+                        let idObj = avatar.wrappedValue.mainInfo.idExpressable
+                        idObj.asRowBG()
                     }
                     .compositingGroup()
                     .onTapGesture {
@@ -132,9 +131,9 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
             AvatarListItemHSR(avatar: avatar, condensed: true)
                 .padding(.vertical, 4)
                 .compositingGroup()
-                .matchedGeometryEffect(id: avatar.id, in: animation)
+                .matchedGeometryEffect(id: avatar.wrappedValue.id, in: animation)
                 .onTapGesture {
-                    currentAvatarSummaryID = avatar.id.description
+                    currentAvatarSummaryID = avatar.wrappedValue.id
                 }
         }
         .environment(orientation)
@@ -150,8 +149,8 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.dismiss) private var dismiss
 
-    private var showingAvatars: [HoYo.CharInventory4HSR.HYAvatar4HSR] {
-        filterAvatars(type: allAvatarListDisplayType)
+    private var showingAvatars: [SummaryPtr] {
+        filterAvatarSummaries(type: allAvatarListDisplayType)
     }
 
     private var lineCapacity: Int {
@@ -164,43 +163,33 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
 private struct AvatarListItemHSR: View {
     // MARK: Lifecycle
 
-    public init(avatar: HoYo.CharInventory4HSR.HYAvatar4HSR, condensed: Bool) {
-        self.avatar = avatar
+    public init(
+        avatar: CharacterInventoryView.SummaryPtr,
+        condensed: Bool
+    ) {
         self.condensed = condensed
+        self.summary = avatar
     }
 
     // MARK: Public
 
     public var body: some View {
+        let avatar = summary.wrappedValue
         HStack(spacing: condensed ? 0 : 3) {
             ZStack(alignment: .bottomLeading) {
                 Group {
-                    if let charIdExp = Enka.AvatarSummarized.CharacterID(id: avatar.id.description) {
-                        charIdExp.avatarPhoto(size: 55, circleClipped: true, clipToHead: true)
-                    } else {
-                        Color.gray.frame(width: 55, height: 55, alignment: .top).clipShape(Circle())
-                            .overlay(alignment: .top) {
-                                AsyncImage(url: avatar.icon.asURL) { image in
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                } placeholder: {
-                                    ProgressView()
-                                }
-                                .clipShape(Circle())
-                            }
-                    }
+                    avatar.mainInfo.idExpressable.avatarPhoto(size: 55, circleClipped: true, clipToHead: true)
                 }
                 .frame(width: 55, height: 55)
                 .clipShape(Circle())
             }
             .frame(width: condensed ? 70 : 75, alignment: .leading)
             .corneredTag(
-                verbatim: "Lv.\(avatar.level)",
+                verbatim: "Lv.\(avatar.mainInfo.avatarLevel)",
                 alignment: .topTrailing
             )
             .corneredTag(
-                verbatim: "❖\(avatar.rank)",
+                verbatim: "❖\(avatar.mainInfo.constellation)",
                 alignment: .trailing
             )
             if !condensed {
@@ -213,58 +202,30 @@ private struct AvatarListItemHSR: View {
                             .lineLimit(1)
                         Spacer()
                     }
-
                     HStack(spacing: 0) {
-                        ForEach(avatar.allArtifacts, id: \.id) { artifact in
-                            Group {
-                                if let img = queryArtifactImg(for: artifact) {
-                                    img.resizable()
-                                } else {
-                                    AsyncImage(url: artifact.icon.asURL) { image in
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
-                                    .clipShape(Circle())
-                                }
-                            }
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
+                        ForEach(avatar.artifacts, id: \.id) { artifact in
+                            artifact.localFittingIcon4SUI
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
                         }
                         Spacer().frame(height: 20)
                     }
                 }
-                if let equip = avatar.equip {
-                    ZStack(alignment: .bottomLeading) {
-                        Group {
-                            if let img = Enka.queryImageAssetSUI(for: "hsr_light_cone_\(equip.id)") {
-                                img.resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            } else {
-                                AsyncImage(url: equip.icon.asURL) { image in
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                } placeholder: {
-                                    ProgressView()
-                                }
-                                .clipShape(Circle())
-                            }
-                        }
+            }
+            if !condensed, let weapon = avatar.equippedWeapon {
+                ZStack(alignment: .bottomLeading) {
+                    weapon.localFittingIcon4SUI
                         .scaledToFit()
                         .frame(width: 50, height: 50)
-                    }
-                    .corneredTag(
-                        verbatim: "❖\(equip.rank)",
-                        alignment: .topLeading
-                    )
-                    .corneredTag(
-                        verbatim: "Lv.\(equip.level)",
-                        alignment: .bottomTrailing
-                    )
                 }
+                .corneredTag(
+                    verbatim: "❖\(weapon.refinement)",
+                    alignment: .topLeading
+                )
+                .corneredTag(
+                    verbatim: "Lv.\(weapon.trainedLevel)",
+                    alignment: .bottomTrailing
+                )
             }
         }
     }
@@ -273,24 +234,15 @@ private struct AvatarListItemHSR: View {
 
     @State private var condensed: Bool
 
-    private let avatar: HoYo.CharInventory4HSR.HYAvatar4HSR
+    private let summary: CharacterInventoryView.SummaryPtr
 
     @Default(.useRealCharacterNames) private var useRealName: Bool
 
     @ViewBuilder private var charName: some View {
-        let charStr: String = if let charIdExp = Enka.AvatarSummarized.CharacterID(id: avatar.id.description) {
-            charIdExp.nameObj.i18n(theDB: Enka.Sputnik.shared.db4HSR, officialNameOnly: !useRealName)
-        } else {
-            avatar.name
-        }
+        let charStr: String = summary.wrappedValue.mainInfo.idExpressable.nameObj.i18n(
+            theDB: Enka.Sputnik.shared.db4HSR,
+            officialNameOnly: !useRealName
+        )
         Text(charStr)
-    }
-
-    @MainActor
-    private func queryArtifactImg(for target: any HoyoArtifactProtocol4HSR) -> Image? {
-        guard let neutralData = Enka.Sputnik.shared.db4HSR.artifacts[target.id.description] else { return nil }
-        guard let type = Enka.ArtifactType(typeID: target.pos, game: .starRail) else { return nil } // Might need fix.
-        let assetName = "hsr_relic_\(neutralData.setID)_\(type.assetSuffix)"
-        return Enka.queryImageAssetSUI(for: assetName)
     }
 }
