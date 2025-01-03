@@ -128,6 +128,10 @@ extension Enka.AvatarSummarized {
         public let constellation: Int
         /// Base Skills.
         public let baseSkills: BaseSkillSet
+        /// Rarity Stars
+        public let rarityStars: Int
+        /// Fetter
+        public let fetter: Int?
 
         public var game: Enka.GameType {
             idExpressable.game
