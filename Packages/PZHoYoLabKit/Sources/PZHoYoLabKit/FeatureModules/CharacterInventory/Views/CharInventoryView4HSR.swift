@@ -44,6 +44,12 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
         }
         .scrollContentBackground(.hidden)
         .listContainerBackground()
+        .containerRelativeFrame(.horizontal) { length, _ in
+            Task { @MainActor in
+                withAnimation { containerWidth = length - 48 }
+            }
+            return length
+        }
         .navigationTitle("hylKit.inventoryView.characters.title".i18nHYLKit)
         .toolbar {
             ToolbarItemGroup(placement: .confirmationAction) {
@@ -101,24 +107,17 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
             AvatarListItemHSR(avatar: avatar, condensed: true)
                 .padding(.vertical, 4)
                 .compositingGroup()
+                .matchedGeometryEffect(id: avatar.id, in: animation)
         }
         .environment(orientation)
-        .overlay {
-            GeometryReader { geometry in
-                Color.clear.onAppear {
-                    containerSize = geometry.size
-                }.onChange(of: geometry.size, initial: true) { _, newSize in
-                    containerSize = newSize
-                }
-            }
-        }
     }
 
     // MARK: Private
 
     @State private var allAvatarListDisplayType: InventoryViewFilterType = .all
-    @State private var expanded: Bool = true
-    @State private var containerSize: CGSize = .init(width: 320, height: 320)
+    @State private var containerWidth: CGFloat = 320
+    @State private var expanded: Bool = false
+    @Namespace private var animation: Namespace.ID
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.dismiss) private var dismiss
 
@@ -127,7 +126,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
     }
 
     private var lineCapacity: Int {
-        Int(floor((containerSize.width - 20) / 70))
+        Int(floor((containerWidth - 20) / 70))
     }
 }
 
