@@ -17,6 +17,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         avatarLevel avatarLv: Int,
         constellation constellationLevel: Int,
         baseSkills baseSkillSet: BaseSkillSet,
+        fetter: Int?,
         costumeID: String? = nil
     ) {
         guard let theCommonInfo = giDB.characters[charID] else {
@@ -42,6 +43,12 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         self.localizedRealName = nameTyped.i18n(theDB: giDB, officialNameOnly: false)
         self.terms = .init(lang: giDB.locTag, game: .genshinImpact)
         self.idExpressable = idExpressible
+        self.fetter = fetter
+        if theCommonInfo.qualityType == "QUALITY_PURPLE" {
+            self.rarityStars = 4
+        } else {
+            self.rarityStars = 5 // Both 5 stars and Aloy.
+        }
         guard game == .genshinImpact else { return nil }
     }
 }
@@ -276,6 +283,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         self.localizedRealName = nameTyped.i18n(theDB: giDB, officialNameOnly: false)
         self.terms = .init(lang: giDB.locTag, game: .genshinImpact)
         self.idExpressable = idExpressible
+        self.rarityStars = hylRAW.base.rarity
+        self.fetter = hylRAW.base.fetter
         guard game == .genshinImpact else { return nil }
     }
 }

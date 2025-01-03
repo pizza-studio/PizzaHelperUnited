@@ -20,6 +20,7 @@ extension Enka.QueriedProfileGI.QueriedAvatar {
             avatarLevel: Int(propMap.level.val) ?? 0,
             constellation: talentIdList?.count ?? 0,
             baseSkills: baseSkillSet,
+            fetter: fetterInfo.expLevel,
             costumeID: costumeId?.description ?? nil
         )
         guard let mainInfo = mainInfo else {
