@@ -280,8 +280,17 @@ extension Enka.AvatarSummarized.WeaponPanel {
         self.trainedLevel = weaponRAW.level
         self.refinement = weaponRAW.rank
         /// 米游社面板的武器不包含主副词条资讯。
-        self.basicProps = []
-        self.specialProps = []
+        self.basicProps = weaponRAW.getFlat(hsrDB: hsrDB).props.compactMap { currentRecord in
+            let theType = Enka.PropertyType(rawValue: currentRecord.type)
+            guard theType != .unknownType else { return nil }
+            let newValue = currentRecord.value
+            return Enka.PVPair(theDB: hsrDB, type: theType, value: newValue)
+        }
+        self.specialProps = hsrDB.meta.equipmentSkill.query(
+            id: weaponID, stage: weaponRAW.rank
+        ).map { key, value in
+            Enka.PVPair(theDB: hsrDB, type: key, value: value)
+        }
         self.iconOnlineFileNameStem = weaponRAW.icon
         self.iconAssetName = "hsr_light_cone_\(weaponID)"
         self.rarityStars = theCommonInfo.rarity
