@@ -13,27 +13,22 @@ import WallpaperKit
 public struct AvatarStatCollectionTabView: View {
     // MARK: Lifecycle
 
-    public init?(
-        selectedAvatarID: String? = nil,
+    public init(
+        selectedAvatarID: Binding<String>,
         summarizedAvatars: [Enka.AvatarSummarized],
         onClose: (() -> Void)? = nil
     ) {
-        guard !summarizedAvatars.isEmpty else { return nil }
-        let safeSelection: String = summarizedAvatars.first {
-            $0.mainInfo.uniqueCharId == selectedAvatarID
-        }?.id ?? summarizedAvatars[0].id
-        self.showingCharacterIdentifier = safeSelection
+        self._showingCharacterIdentifier = selectedAvatarID
         self.onClose = onClose
         self.summarizedAvatars = summarizedAvatars
+        self.allIDs = summarizedAvatars.map(\.id)
     }
 
     // MARK: Public
 
     public var body: some View {
         Group {
-            if hasNoAvatars {
-                blankView()
-            } else {
+            if isMainBodyVisible {
                 GeometryReader { geometry in
                     coreBody()
                         .environment(orientation)
@@ -48,10 +43,10 @@ public struct AvatarStatCollectionTabView: View {
         .environment(\.colorScheme, .dark)
         .navBarTitleDisplayMode(.inline)
         #if os(iOS) || targetEnvironment(macCatalyst)
-            .toolbar(.hidden, for: .navigationBar)
-            .toolbar(.hidden, for: .tabBar)
+            .toolbar(isMainBodyVisible ? .hidden : .automatic, for: .navigationBar)
+            .toolbar(isMainBodyVisible ? .hidden : .automatic, for: .tabBar)
         #endif
-            .toolbar(.hidden)
+            .toolbar(isMainBodyVisible ? .hidden : .automatic)
     }
 
     @ViewBuilder
@@ -151,19 +146,15 @@ public struct AvatarStatCollectionTabView: View {
         }
     }
 
-    @ViewBuilder
-    func blankView() -> some View {
-        Text(verbatim: "🗑️")
-    }
-
     // MARK: Private
 
     @State private var showTabViewIndex = false
-    @State private var showingCharacterIdentifier: String
+    @Binding private var showingCharacterIdentifier: String
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     private let summarizedAvatars: [Enka.AvatarSummarized]
+    private let allIDs: [String]
     private let onClose: (() -> Void)?
     private let bottomSpacerHeight: CGFloat = 20
     @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
@@ -189,5 +180,9 @@ public struct AvatarStatCollectionTabView: View {
         case .zenlessZone: false // 临时设定。
         case .none: false
         }
+    }
+
+    private var isMainBodyVisible: Bool {
+        !hasNoAvatars && allIDs.contains(showingCharacterIdentifier)
     }
 }

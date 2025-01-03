@@ -20,6 +20,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
         self.summaries = (Defaults[.queriedHoYoProfiles4HSR][uidWithGame] ?? []).compactMap {
             $0.summarize(theDB: theDB)
         }
+        self.currentAvatarSummaryID = ""
     }
 
     // MARK: Public
@@ -31,17 +32,15 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
     @ViewBuilder public var body: some View {
         basicBody
             .overlay {
-                if let currentAvatarSummaryIDGuarded = currentAvatarSummaryID {
-                    AvatarStatCollectionTabView(
-                        selectedAvatarID: currentAvatarSummaryIDGuarded,
-                        summarizedAvatars: summaries
-                    ) {
-                        currentAvatarSummaryID = nil
-                    }
-                    .tag(currentAvatarSummaryIDGuarded)
-                    .task {
-                        simpleTaptic(type: .medium)
-                    }
+                AvatarStatCollectionTabView(
+                    selectedAvatarID: $currentAvatarSummaryID,
+                    summarizedAvatars: summaries
+                ) {
+                    currentAvatarSummaryID = ""
+                }
+                .tag(currentAvatarSummaryID)
+                .task {
+                    simpleTaptic(type: .medium)
                 }
             }
     }
@@ -145,7 +144,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
     @State private var allAvatarListDisplayType: InventoryViewFilterType = .all
     @State private var containerWidth: CGFloat = 320
     @State private var expanded: Bool = false
-    @State private var currentAvatarSummaryID: String?
+    @State private var currentAvatarSummaryID: String
     @Namespace private var animation: Namespace.ID
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.dismiss) private var dismiss
