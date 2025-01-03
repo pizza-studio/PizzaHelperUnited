@@ -18,7 +18,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
         self.data = data
         let theDB = Enka.Sputnik.shared.db4GI
         self.summaries = (Defaults[.queriedHoYoProfiles4GI][uidWithGame] ?? []).compactMap {
-            $0.summarize(theDB: theDB)
+            .init(summary: $0.summarize(theDB: theDB))
         }
         self.currentAvatarSummaryID = ""
     }
@@ -28,14 +28,14 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
     public typealias InventoryData = HoYo.CharInventory4GI
 
     public let data: InventoryData
-    public let summaries: [Enka.AvatarSummarized]
+    public let summaries: [SummaryPtr]
 
     @ViewBuilder public var body: some View {
         basicBody
             .overlay {
                 AvatarStatCollectionTabView(
                     selectedAvatarID: $currentAvatarSummaryID,
-                    summarizedAvatars: summaries
+                    summarizedAvatars: summaries.map(\.wrappedValue)
                 ) {
                     currentAvatarSummaryID = ""
                 }
@@ -108,9 +108,8 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
                     .padding(.horizontal)
                     .padding(.vertical, 4)
                     .background {
-                        if let idObj = Enka.AvatarSummarized.CharacterID(id: avatar.id.description) {
-                            idObj.asRowBG(element: .init(rawValue: avatar.element))
-                        }
+                        let idObj = avatar.wrappedValue.mainInfo.idExpressable
+                        idObj.asRowBG(element: avatar.wrappedValue.mainInfo.element)
                     }
                     .compositingGroup()
                     .onTapGesture {
@@ -132,9 +131,9 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
             AvatarListItem4GI(avatar: avatar, condensed: true)
                 .padding(.vertical, 4)
                 .compositingGroup()
-                .matchedGeometryEffect(id: avatar.id, in: animation)
+                .matchedGeometryEffect(id: avatar.wrappedValue.id, in: animation)
                 .onTapGesture {
-                    currentAvatarSummaryID = avatar.id.description
+                    currentAvatarSummaryID = avatar.wrappedValue.id
                 }
         }
         .environment(orientation)
@@ -150,8 +149,8 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.dismiss) private var dismiss
 
-    private var showingAvatars: [HoYo.CharInventory4GI.HYAvatar4GI] {
-        filterAvatars(type: allAvatarListDisplayType)
+    private var showingAvatars: [SummaryPtr] {
+        filterAvatarSummaries(type: allAvatarListDisplayType)
     }
 
     private var lineCapacity: Int {
@@ -164,46 +163,38 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
 private struct AvatarListItem4GI: View {
     // MARK: Lifecycle
 
-    public init(avatar: HoYo.CharInventory4GI.HYAvatar4GI, condensed: Bool) {
-        self.avatar = avatar
+    public init(
+        avatar: CharacterInventoryView.SummaryPtr,
+        condensed: Bool
+    ) {
         self.condensed = condensed
+        self.summary = avatar
     }
 
     // MARK: Public
 
     public var body: some View {
+        let avatar = summary.wrappedValue
         HStack(spacing: condensed ? 0 : 3) {
             ZStack(alignment: .bottomLeading) {
                 Group {
-                    if let charIdExp = Enka.AvatarSummarized.CharacterID(
-                        id: avatar.id.description, costumeID: avatar.firstCostumeID?.description
-                    ) {
-                        charIdExp.avatarPhoto(size: 55, circleClipped: true, clipToHead: true)
-                    } else {
-                        Color.gray.frame(width: 55, height: 55, alignment: .top).clipShape(Circle())
-                            .overlay(alignment: .top) {
-                                AsyncImage(url: avatar.icon.asURL) { image in
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                } placeholder: {
-                                    ProgressView()
-                                }
-                                .clipShape(Circle())
-                            }
-                    }
+                    avatar.mainInfo.idExpressable.avatarPhoto(size: 55, circleClipped: true, clipToHead: true)
                 }
                 .frame(width: 55, height: 55)
                 .clipShape(Circle())
             }
             .frame(width: condensed ? 70 : 75, alignment: .leading)
             .corneredTag(
-                verbatim: "Lv.\(avatar.level)",
+                verbatim: "Lv.\(avatar.mainInfo.avatarLevel)",
                 alignment: .topTrailing
             )
             .corneredTag(
-                verbatim: "❖\(avatar.activedConstellationNum)",
+                verbatim: "❖\(avatar.mainInfo.constellation)",
                 alignment: .trailing
+            )
+            .corneredTag(
+                verbatim: fetterTag,
+                alignment: .bottomTrailing
             )
             if !condensed {
                 VStack(alignment: .leading, spacing: 3) {
@@ -216,66 +207,29 @@ private struct AvatarListItem4GI: View {
                         Spacer()
                     }
                     HStack(spacing: 0) {
-                        // 此处的 relicSetIDs 与 relicIconURLs 的容量必定相等，无须额外的 sanity check。
-                        if let relicSetIDs = avatar.relicSetIDs, let relicIconURLs = avatar.relicIconURLs {
-                            ForEach(Array(relicSetIDs.enumerated()), id: \.offset) { offset, relicSetID in
-                                let relicSetIDStr = relicSetID.description.dropFirst().dropLast().description
-                                if let artifactType = Enka.ArtifactType(typeID: offset + 1, game: .genshinImpact) {
-                                    Group {
-                                        let assetName = "gi_relic_\(relicSetIDStr)_\(artifactType.assetSuffix)"
-                                        if let img = Enka.queryImageAssetSUI(for: assetName) {
-                                            img.resizable()
-                                                .frame(width: 22.5, height: 22.5)
-                                                .clipped()
-                                                .scaledToFit()
-                                                .frame(width: 20, height: 20)
-                                        } else {
-                                            AsyncImage(url: relicIconURLs[offset].asURL) { image in
-                                                image.resizable()
-                                                    .frame(width: 22.5, height: 22.5)
-                                                    .clipped()
-                                                    .scaledToFit()
-                                                    .frame(width: 20, height: 20)
-                                            } placeholder: {
-                                                ProgressView()
-                                            }
-                                            .clipShape(Circle())
-                                        }
-                                    }
-                                    .scaledToFit()
-                                    .frame(width: 20, height: 20)
-                                }
-                            }
+                        ForEach(avatar.artifacts, id: \.id) { artifact in
+                            artifact.localFittingIcon4SUI
+                                .frame(width: 22.5, height: 22.5)
+                                .clipped()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
                         }
-                    }.frame(height: 20)
+                        Spacer().frame(height: 20)
+                    }
                 }
             }
-            if !condensed {
+            if !condensed, let weapon = avatar.equippedWeapon {
                 ZStack(alignment: .bottomLeading) {
-                    Group {
-                        if let img = Enka.queryImageAssetSUI(for: "gi_weapon_\(avatar.weapon.id)") {
-                            img.resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } else {
-                            AsyncImage(url: avatar.weapon.icon.asURL) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .clipShape(Circle())
-                        }
-                    }
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
+                    weapon.localFittingIcon4SUI
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
                 }
                 .corneredTag(
-                    verbatim: "❖\(avatar.weapon.affixLevel)",
+                    verbatim: "❖\(weapon.refinement)",
                     alignment: .topLeading
                 )
                 .corneredTag(
-                    verbatim: "Lv.\(avatar.weapon.level)",
+                    verbatim: "Lv.\(weapon.trainedLevel)",
                     alignment: .bottomTrailing
                 )
             }
@@ -286,20 +240,20 @@ private struct AvatarListItem4GI: View {
 
     @State private var condensed: Bool
 
-    private let avatar: HoYo.CharInventory4GI.HYAvatar4GI
+    private let summary: CharacterInventoryView.SummaryPtr
 
     @Default(.useRealCharacterNames) private var useRealName: Bool
 
     private var fetterTag: String {
-        condensed ? "" : "♡\(avatar.fetter)"
+        guard let fetter = summary.wrappedValue.mainInfo.fetter else { return "" }
+        return condensed ? "" : "♡\(fetter)"
     }
 
     @ViewBuilder private var charName: some View {
-        let charStr: String = if let charIdExp = Enka.AvatarSummarized.CharacterID(id: avatar.id.description) {
-            charIdExp.nameObj.i18n(theDB: Enka.Sputnik.shared.db4GI, officialNameOnly: !useRealName)
-        } else {
-            avatar.name
-        }
+        let charStr: String = summary.wrappedValue.mainInfo.idExpressable.nameObj.i18n(
+            theDB: Enka.Sputnik.shared.db4GI,
+            officialNameOnly: !useRealName
+        )
         Text(charStr)
     }
 }
