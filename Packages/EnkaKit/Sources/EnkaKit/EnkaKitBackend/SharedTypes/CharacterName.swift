@@ -34,6 +34,26 @@ extension Enka {
             if lastDigi == 0 { lastDigi += 2 }
             return String(pid.dropLast()) + lastDigi.description
         }
+
+        public func getGenshinProtagonistSkillDepotID(element: Enka.GameElement) -> Int? {
+            switch (element, self) {
+            case (.anemo, .protagonist(.ofLumine)): 704
+            case (.geo, .protagonist(.ofLumine)): 706
+            case (.electro, .protagonist(.ofLumine)): 707
+            case (.dendro, .protagonist(.ofLumine)): 708
+            case (.hydro, .protagonist(.ofLumine)): 703
+            case (.pyro, .protagonist(.ofLumine)): 702
+            case (.cryo, .protagonist(.ofLumine)): 705 // Deducted, might need fix in the future.
+            case (.anemo, .protagonist(.ofAether)): 504
+            case (.geo, .protagonist(.ofAether)): 506
+            case (.electro, .protagonist(.ofAether)): 505
+            case (.dendro, .protagonist(.ofAether)): 508
+            case (.hydro, .protagonist(.ofAether)): 503
+            case (.pyro, .protagonist(.ofAether)): 502
+            case (.cryo, .protagonist(.ofAether)): 505 // Deducted, might need fix in the future.
+            default: nil
+            }
+        }
     }
 }
 
