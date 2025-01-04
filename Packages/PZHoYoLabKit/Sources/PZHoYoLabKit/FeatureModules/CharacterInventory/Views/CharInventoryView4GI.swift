@@ -159,7 +159,7 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
 
 // MARK: - AvatarListItem4GI
 
-private struct AvatarListItem4GI: View {
+private struct AvatarListItem4GI: View, Identifiable {
     // MARK: Lifecycle
 
     public init(
@@ -171,6 +171,8 @@ private struct AvatarListItem4GI: View {
     }
 
     // MARK: Public
+
+    nonisolated public var id: String { summary.id }
 
     public var body: some View {
         let avatar = summary.wrappedValue
@@ -198,7 +200,7 @@ private struct AvatarListItem4GI: View {
             if !condensed {
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(alignment: .lastTextBaseline, spacing: 5) {
-                        charName
+                        Text(charNameStr)
                             .font(.system(size: 20)).bold().fontWidth(.compressed)
                             .fixedSize(horizontal: true, vertical: false)
                             .minimumScaleFactor(0.5)
@@ -248,11 +250,10 @@ private struct AvatarListItem4GI: View {
         return condensed ? "" : "♡\(fetter)"
     }
 
-    @ViewBuilder private var charName: some View {
-        let charStr: String = summary.wrappedValue.mainInfo.idExpressable.nameObj.i18n(
+    private var charNameStr: String {
+        summary.wrappedValue.mainInfo.idExpressable.nameObj.i18n(
             theDB: Enka.Sputnik.shared.db4GI,
             officialNameOnly: !useRealName
         )
-        Text(charStr)
     }
 }
