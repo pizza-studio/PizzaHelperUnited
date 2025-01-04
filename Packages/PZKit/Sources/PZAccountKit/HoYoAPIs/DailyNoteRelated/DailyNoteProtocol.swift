@@ -46,9 +46,12 @@ extension PZProfileMO {
 extension Pizza.SupportedGame {
     public var maxPrimaryStamina: Int {
         switch self {
-        case .genshinImpact: 200
-        case .starRail: 240
-        case .zenlessZone: 240
+        case .genshinImpact: return 200
+        case .zenlessZone: return 240
+        case .starRail:
+            let starRail30ReleaseDate = Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 15))
+            guard let starRail30ReleaseDate else { return 300 }
+            return Date.now < starRail30ReleaseDate ? 240 : 300
         }
     }
 
