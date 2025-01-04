@@ -101,7 +101,7 @@ private struct ProfilesNotificationPermissionView: View {
             Section {
                 ForEach(pzProfiles) { profile in
                     Toggle(
-                        isOn: allowNotificationBinding(for: profile).animation()
+                        isOn: getBinding4AllowingNotification(for: profile).animation()
                     ) {
                         Self.drawLocalProfile(profile, isChosen: profile.allowNotification)
                     }
@@ -145,7 +145,7 @@ private struct ProfilesNotificationPermissionView: View {
         }.padding(.vertical, 4)
     }
 
-    private func allowNotificationBinding(for profile: PZProfileMO) -> Binding<Bool> {
+    private func getBinding4AllowingNotification(for profile: PZProfileMO) -> Binding<Bool> {
         .init {
             profile.allowNotification
         } set: { newValue in
