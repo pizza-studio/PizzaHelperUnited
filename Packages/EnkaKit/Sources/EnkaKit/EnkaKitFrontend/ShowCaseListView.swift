@@ -64,7 +64,6 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                                     selectedAvatarID: avatar.id,
                                     profile: profile
                                 )
-                                .tag(avatar)
                                 .task {
                                     simpleTaptic(type: .medium)
                                 }
@@ -97,7 +96,6 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                                 selectedAvatarID: avatar.id,
                                 profile: profile
                             )
-                            .tag(avatar)
                             .task {
                                 simpleTaptic(type: .medium)
                             }
