@@ -1,7 +1,7 @@
 {
   "data": {
-    "current_stamina": 240,
-    "max_stamina": 240,
+    "current_stamina": 300,
+    "max_stamina": 300,
     "stamina_recover_time": 0,
     "stamina_full_ts": 1732615570,
     "accepted_epedition_num": 4,

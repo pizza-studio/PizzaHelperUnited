@@ -13,6 +13,16 @@ extension Defaults.Keys {
     )
 }
 
+extension Pizza.SupportedGame {
+    fileprivate var notificationThreshold: NotificationOptions.StaminaThreshold {
+        .init(game: self, threshold: maxPrimaryStamina - 10)
+    }
+
+    fileprivate static var allNotificationThresholds: [NotificationOptions.StaminaThreshold] {
+        allCases.map(\.notificationThreshold)
+    }
+}
+
 // MARK: - NotificationOptions
 
 public struct NotificationOptions: AbleToCodeSendHash, _DefaultsSerializable {
@@ -138,11 +148,8 @@ public struct NotificationOptions: AbleToCodeSendHash, _DefaultsSerializable {
     }
 
     /// Stamina, Additional Threshold (by Game)
-    public var staminaAdditionalNotificationThresholds: [StaminaThreshold] = [
-        StaminaThreshold(game: .genshinImpact, threshold: 190),
-        StaminaThreshold(game: .starRail, threshold: 230),
-        StaminaThreshold(game: .zenlessZone, threshold: 230),
-    ] {
+    public var staminaAdditionalNotificationThresholds: [StaminaThreshold] = Pizza.SupportedGame
+        .allNotificationThresholds {
         willSet {
             Task {
                 try? await PZNotificationCenter.deleteDailyNoteNotification(of: .staminaPerThreshold)
