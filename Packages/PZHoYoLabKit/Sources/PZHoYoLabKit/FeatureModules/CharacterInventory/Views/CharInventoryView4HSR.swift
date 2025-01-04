@@ -159,7 +159,7 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
 
 // MARK: - AvatarListItemHSR
 
-private struct AvatarListItemHSR: View {
+private struct AvatarListItemHSR: View, Identifiable {
     // MARK: Lifecycle
 
     public init(
@@ -171,6 +171,8 @@ private struct AvatarListItemHSR: View {
     }
 
     // MARK: Public
+
+    nonisolated public var id: String { summary.id }
 
     public var body: some View {
         let avatar = summary.wrappedValue
@@ -192,9 +194,9 @@ private struct AvatarListItemHSR: View {
                 alignment: .trailing
             )
             if !condensed {
-                VStack(spacing: 3) {
+                VStack(alignment: .leading, spacing: 3) {
                     HStack(alignment: .lastTextBaseline, spacing: 5) {
-                        charName
+                        Text(charNameStr)
                             .font(.system(size: 20)).bold().fontWidth(.compressed)
                             .fixedSize(horizontal: true, vertical: false)
                             .minimumScaleFactor(0.5)
@@ -237,11 +239,10 @@ private struct AvatarListItemHSR: View {
 
     @Default(.useRealCharacterNames) private var useRealName: Bool
 
-    @ViewBuilder private var charName: some View {
-        let charStr: String = summary.wrappedValue.mainInfo.idExpressable.nameObj.i18n(
+    private var charNameStr: String {
+        summary.wrappedValue.mainInfo.idExpressable.nameObj.i18n(
             theDB: Enka.Sputnik.shared.db4HSR,
             officialNameOnly: !useRealName
         )
-        Text(charStr)
     }
 }
