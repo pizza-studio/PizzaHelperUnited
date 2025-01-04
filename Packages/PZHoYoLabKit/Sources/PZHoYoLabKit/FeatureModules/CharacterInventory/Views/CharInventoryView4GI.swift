@@ -40,7 +40,6 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
                     currentAvatarSummaryID = ""
                     simpleTaptic(type: .medium)
                 }
-                .tag(currentAvatarSummaryID)
             }
     }
 
