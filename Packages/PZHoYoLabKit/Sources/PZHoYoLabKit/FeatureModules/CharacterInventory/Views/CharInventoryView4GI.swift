@@ -38,11 +38,9 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
                     summarizedAvatars: summaries.map(\.wrappedValue)
                 ) {
                     currentAvatarSummaryID = ""
-                }
-                .tag(currentAvatarSummaryID)
-                .task {
                     simpleTaptic(type: .medium)
                 }
+                .tag(currentAvatarSummaryID)
             }
     }
 
@@ -113,7 +111,8 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
                     }
                     .compositingGroup()
                     .onTapGesture {
-                        currentAvatarSummaryID = avatar.id.description
+                        currentAvatarSummaryID = avatar.id
+                        simpleTaptic(type: .medium)
                     }
             }
         }
@@ -133,7 +132,8 @@ public struct CharacterInventoryView4GI: CharacterInventoryView {
                 .compositingGroup()
                 .matchedGeometryEffect(id: avatar.wrappedValue.id, in: animation)
                 .onTapGesture {
-                    currentAvatarSummaryID = avatar.wrappedValue.id
+                    currentAvatarSummaryID = avatar.id
+                    simpleTaptic(type: .medium)
                 }
         }
         .environment(orientation)
