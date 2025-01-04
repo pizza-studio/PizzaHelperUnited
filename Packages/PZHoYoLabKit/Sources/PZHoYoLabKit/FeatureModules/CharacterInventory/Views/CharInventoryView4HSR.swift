@@ -40,7 +40,6 @@ public struct CharacterInventoryView4HSR: CharacterInventoryView {
                     currentAvatarSummaryID = ""
                     simpleTaptic(type: .medium)
                 }
-                .tag(currentAvatarSummaryID)
             }
     }
 
