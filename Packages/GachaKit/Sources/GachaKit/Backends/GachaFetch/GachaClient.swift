@@ -175,8 +175,6 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         default: GachaLanguage.current.rawValue
         }
 
-        let gachaID = URLRequestConfig.gachaGameTypeAuthID(game: gachaType.game)
-
         var components = URLComponents()
         components.scheme = "https"
         components.host = URLRequestConfig.domain4PublicOps(region: basicParam.server.region)
@@ -186,7 +184,6 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
             .init(name: "sign_type", value: basicParam.signType),
             .init(name: "auth_appid", value: "webview_gacha"),
             .init(name: "win_mode", value: "fullscreen"),
-            .init(name: "gacha_id", value: gachaID),
             .init(name: "timestamp", value: "\(Int(Date().timeIntervalSince1970))"),
             .init(name: "region", value: basicParam.server.rawValue),
             .init(name: "default_gacha_type", value: GachaType.knownCases[0].rawValue),
