@@ -36,14 +36,6 @@ extension URLRequestConfig {
         }
     }
 
-    static func gachaGameTypeAuthID(game: Pizza.SupportedGame) -> String {
-        switch game {
-        case .genshinImpact: "9e72b521e716d347e3027a4f71efc08f1455d4b2"
-        case .starRail: "7b10dc217d6ec7180100430f35556f050b8d5145"
-        case .zenlessZone: "2c1f5692fdfbb733a08733f9eb69d32aed1d37"
-        }
-    }
-
     static func gachaRecordAPIPath(game: Pizza.SupportedGame) -> String {
         switch game {
         case .starRail: "/common/gacha_record/api/getGachaLog"

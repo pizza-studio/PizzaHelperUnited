@@ -133,8 +133,6 @@ extension HoYo {
         case .starRail: GachaTypeHSR.knownCases[0].rawValue
         }
 
-        let gachaID = URLRequestConfig.gachaGameTypeAuthID(game: server.game)
-
         var components = URLComponents()
         components.scheme = "https"
         components.host = URLRequestConfig.domain4PublicOps(region: server.region)
@@ -144,7 +142,6 @@ extension HoYo {
             .init(name: "sign_type", value: authkey.signType.description),
             .init(name: "auth_appid", value: "webview_gacha"),
             .init(name: "win_mode", value: "fullscreen"),
-            .init(name: "gacha_id", value: gachaID),
             .init(name: "timestamp", value: "\(Int(Date().timeIntervalSince1970))"),
             .init(name: "region", value: server.rawValue),
             .init(name: "default_gacha_type", value: gachaTypeStr),
