@@ -49,8 +49,8 @@ public enum URLRequestConfig {
 
     public static func salt(region: HoYo.AccountRegion) -> String {
         switch region {
-        case .miyoushe: "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
-        case .hoyoLab: "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
+        case .miyoushe: "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs" // X4
+        case .hoyoLab: "okr4obncj8bw5a65hbnn5oo6ixjc3l9w" // OSX6
         }
     }
 
