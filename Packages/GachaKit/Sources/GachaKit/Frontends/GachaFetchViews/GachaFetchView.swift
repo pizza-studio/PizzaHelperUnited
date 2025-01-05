@@ -162,7 +162,7 @@ extension GachaFetchView4Game {
                 } header: {
                     Text(GachaType.game.titleMarkedName).textCase(.none)
                 }
-                genshinPZProfileList
+                gachaURLDeductableProfilesListView()
             }
             .onAppear {
                 refreshPZProfilesInThisView()
@@ -182,14 +182,15 @@ extension GachaFetchView4Game {
 
         private let completion: (String) throws -> Void
 
-        @ViewBuilder private var genshinPZProfileList: some View {
-            if GachaType.game == .genshinImpact, !pzProfiles.isEmpty {
+        @ViewBuilder
+        private func gachaURLDeductableProfilesListView() -> some View {
+            if !pzProfiles.isEmpty {
                 Section {
                     ForEach(pzProfiles, id: \.uid) { pzProfile in
                         Button {
                             urlAwaitVM.fireTask(
                                 givenTask: {
-                                    try await HoYo.generateGIGachaURLByMiyousheAPI(pzProfile)
+                                    try await HoYo.generateGachaURL(pzProfile)
                                 },
                                 completionHandler: { urlStr in
                                     if let urlStr {
@@ -220,7 +221,7 @@ extension GachaFetchView4Game {
                         }
                     }
                 } header: {
-                    Text("gachaKit.getRecord.quickFetch4GenshinMiyousheUIDs", bundle: .module)
+                    Text("gachaKit.getRecord.quickFetch", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .textCase(.none)
                 }
@@ -228,10 +229,17 @@ extension GachaFetchView4Game {
         }
 
         private func refreshPZProfilesInThisView() {
+            #if !DEBUG
+            // 星穹鐵道的 GachaURL 生成機制仍舊有 AuthKey 的問題需要解決，暫時在正式版與 TF 版內停用。
+            guard GachaType.game != .starRail else {
+                pzProfiles = []
+                return
+            }
+            #endif
             let context = PZProfileActor.shared.modelContainer.mainContext
             let fetched = try? context.fetch(FetchDescriptor<PZProfileMO>())
             pzProfiles = (fetched ?? []).map(\.asSendable).filter { pzProfile in
-                guard pzProfile.game == .genshinImpact else { return false }
+                guard pzProfile.game == GachaType.game else { return false }
                 switch pzProfile.server.region {
                 case .miyoushe: return true
                 default: return false
