@@ -1,0 +1,54 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+import Foundation
+import PZAccountKit
+import PZBaseKit
+
+// MARK: - Gacha DS Generator.
+
+extension HoYo {
+    static func getDSTokenForGachaRecords(region: HoYo.AccountRegion) -> String {
+        /// The following salts are LK2. Intelligence provided by Snap.Hutao.
+        /// LK2 is at least dedicated for tasks related to gacha records.
+        let s = switch region {
+        case .miyoushe: "sd1e1gQJuvqBfZxas1oeAACXzbim5cge"
+        case .hoyoLab: "rk4xg2hakoi26nljpr099fv9fck1ah10"
+        }
+        let t = String(Int(Date().timeIntervalSince1970))
+        let lettersAndNumbers = "abcdefghijklmnopqrstuvwxyz1234567890"
+        let r = String((0 ..< 6).map { _ in
+            lettersAndNumbers.randomElement()!
+        })
+        let c = "salt=\(s)&t=\(t)&r=\(r)".md5
+        print(t + "," + r + "," + c)
+        print("salt=\(s)&t=\(t)&r=\(r)")
+        return t + "," + r + "," + c
+    }
+}
+
+extension URLRequestConfig {
+    static func xRPCAppVersion4Gacha(region: HoYo.AccountRegion) -> String {
+        switch region {
+        case .miyoushe: "2.80.1" // 跟 SnapGenshin Internal 一致。
+        case .hoyoLab: "2.54.0" // 跟 SnapGenshin Internal 一致。
+        }
+    }
+
+    static func gachaGameTypeAuthID(game: Pizza.SupportedGame) -> String {
+        switch game {
+        case .genshinImpact: "9e72b521e716d347e3027a4f71efc08f1455d4b2"
+        case .starRail: "7b10dc217d6ec7180100430f35556f050b8d5145"
+        case .zenlessZone: "2c1f5692fdfbb733a08733f9eb69d32aed1d37"
+        }
+    }
+
+    static func gachaRecordAPIPath(game: Pizza.SupportedGame) -> String {
+        switch game {
+        case .starRail: "/common/gacha_record/api/getGachaLog"
+        case .genshinImpact: "/gacha_info/api/getGachaLog"
+        case .zenlessZone: "/gacha_info/api/getGachaLog"
+        }
+    }
+}

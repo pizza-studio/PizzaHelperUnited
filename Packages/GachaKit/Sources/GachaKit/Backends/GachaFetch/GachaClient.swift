@@ -170,28 +170,17 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         endID: String
     )
         -> URLRequest {
-        var components = URLComponents()
-
-        components.scheme = "https"
-        components.host = URLRequestConfig.domain4PublicOps(region: basicParam.server.region)
-
-        components.path = switch GachaType.game {
-        case .starRail: "/common/gacha_record/api/getGachaLog"
-        case .genshinImpact: "/gacha_info/api/getGachaLog"
-        case .zenlessZone: "/gacha_info/api/getGachaLog"
-        }
-
         let langRawValue: String = switch gachaType.game {
         case .genshinImpact: GachaLanguage.langCHS.rawValue
         default: GachaLanguage.current.rawValue
         }
 
-        let gachaID = switch gachaType.game {
-        case .genshinImpact: "9e72b521e716d347e3027a4f71efc08f1455d4b2"
-        case .starRail: "7b10dc217d6ec7180100430f35556f050b8d5145"
-        case .zenlessZone: "2c1f5692fdfbb733a08733f9eb69d32aed1d37"
-        }
+        let gachaID = URLRequestConfig.gachaGameTypeAuthID(game: gachaType.game)
 
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = URLRequestConfig.domain4PublicOps(region: basicParam.server.region)
+        components.path = URLRequestConfig.gachaRecordAPIPath(game: gachaType.game)
         components.queryItems = [
             .init(name: "authkey_ver", value: basicParam.authenticationKeyVersion),
             .init(name: "sign_type", value: basicParam.signType),
@@ -216,6 +205,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         let authKeyPercEncoded = authKeyRaw.addingPercentEncoding(
             withAllowedCharacters: .alphanumerics
         )!
+        // 注意：不能直接将 AuthKey 塞入 URLQueryItem，否则会破坏 AuthKey。这里得用手动编码。
         let urlString = components.url!.absoluteString + "&authkey=\(authKeyPercEncoded)"
         return URLRequest(url: URL(string: urlString)!)
     }
