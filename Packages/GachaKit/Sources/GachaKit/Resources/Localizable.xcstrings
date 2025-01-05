@@ -5305,79 +5305,79 @@
         }
       }
     },
-    "gachaKit.getRecord.quickFetch4GenshinMiyousheUIDs" : {
+    "gachaKit.getRecord.quickFetch" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "oder tippe auf ein Konto, um zu laden (nur Miyoushe Genshin-UIDs):"
+            "value" : "oder tippe auf ein Konto, um zu laden (nur Miyoushe UIDs):"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "or tap an account to fetch (Miyoushe Genshin UIDs only):"
+            "value" : "or tap an account to fetch (Miyoushe-governed UIDs only):"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "o toca una cuenta para obtener (solo UIDs de Miyoushe Genshin):"
+            "value" : "o toca una cuenta para obtener (solo UIDs de Miyoushe):"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "o i-tap ang account upang makuha (Miyoushe Genshin UID lang):"
+            "value" : "o i-tap ang account upang makuha (Miyoushe UID lang):"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ou appuyez sur un compte pour récupérer (Miyoushe Genshin UIDs uniquement):"
+            "value" : "ou appuyez sur un compte pour récupérer (Miyoushe UIDs uniquement):"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "o tocca un account per recuperare (solo ID di Miyoushe Genshin):"
+            "value" : "o tocca un account per recuperare (solo ID di Miyoushe):"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あるいは下記のいずれの（米遊社の原神UIDのみ）アカウントをタップして直接取得："
+            "value" : "あるいは下記のいずれの（米遊社在籍のUIDのみ）アカウントをタップして直接取得："
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "또는 계정을 눌러 가져오기(미유셰 원신 UID만 해당):"
+            "value" : "또는 계정을 눌러 가져오기(미유셰 UID만 해당):"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "или нажмите на аккаунт, чтобы получить (только Miyoushe Genshin UID):"
+            "value" : "или нажмите на аккаунт, чтобы получить (только Miyoushe UID):"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "hoặc chạm vào một tài khoản để lấy (chỉ áp dụng cho UID Miyoushe Genshin):"
+            "value" : "hoặc chạm vào một tài khoản để lấy (chỉ áp dụng cho UID Miyoushe):"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "或点击下述米游社原神 UID 直接获取记录: "
+            "value" : "或点击下述受米游社管辖的 UID 直接获取记录: "
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "或點擊下述米遊社原神 UID 直接獲取記錄: "
+            "value" : "或點擊下述受米遊社管轄的 UID 直接獲取記錄: "
           }
         }
       }
