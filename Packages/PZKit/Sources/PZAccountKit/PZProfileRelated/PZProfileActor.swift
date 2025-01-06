@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Combine
 @preconcurrency import CoreData
 @preconcurrency import Defaults
 import Foundation
@@ -35,6 +36,20 @@ public actor PZProfileActor {
             } else {
                 await syncAllDataToUserDefaults()
             }
+            NotificationCenter.default.publisher(for: ModelContext.didSave)
+                .sink(receiveValue: { notification in
+                    if let userInfo = notification.userInfo {
+                        let inserted = (userInfo["inserted"] as? [PersistentIdentifier]) ?? []
+                        let deleted = (userInfo["deleted"] as? [PersistentIdentifier]) ?? []
+                        let updated = (userInfo["updated"] as? [PersistentIdentifier]) ?? []
+                        print(userInfo)
+                        guard !(inserted + deleted + updated).isEmpty else { return }
+                        Task { @MainActor in
+                            await self.syncAllDataToUserDefaults()
+                        }
+                    }
+                })
+                .store(in: &Self.cancellables)
         }
     }
 
@@ -101,6 +116,10 @@ public actor PZProfileActor {
             fatalError("Could not create in-memory ModelContainer: \(error)")
         }
     }
+
+    // MARK: Private
+
+    private static var cancellables: [AnyCancellable] = []
 }
 
 // MARK: - AccountMO Related.
