@@ -36,11 +36,11 @@ public protocol AbyssReportView: View {
     init(data: AbyssReportData)
     var data: AbyssReportData { get }
     static var navTitle: String { get }
+    static var abyssIcon: Image { get }
     @ViewBuilder var body: Self.Body { get }
 }
 
 extension AbyssReportView {
-    public static var abyssIcon: Image { Image("gi_abyss", bundle: .module) }
     public static var abyssStarIcon: Image { Image("abyssStar", bundle: .module) }
 
     @ViewBuilder
