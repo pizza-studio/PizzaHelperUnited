@@ -23,6 +23,8 @@ public struct AbyssReportView4GI: AbyssReportView {
     public static let navTitle = "hylKit.abyssReportView4GI.navTitle".i18nHYLKit
     public static let navTitleTiny = "hylKit.abyssReportView4GI.navTitle.tiny".i18nHYLKit
 
+    public static var abyssIcon: Image { Image("gi_abyss", bundle: .module) }
+
     public var data: AbyssReportData
 
     public var body: some View {
