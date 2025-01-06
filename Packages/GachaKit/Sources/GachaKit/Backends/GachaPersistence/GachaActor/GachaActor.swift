@@ -180,22 +180,42 @@ extension GachaActor {
 
     @discardableResult
     public func refreshAllProfiles() throws -> [GachaProfileID] {
-        var profiles = Set<GachaProfileID>()
+        var newProfiles = Set<GachaProfileID>()
         try modelContext.transaction {
             let oldProfileMOs = try modelContext.fetch(FetchDescriptor<PZGachaProfileMO>())
-            profiles = Set(oldProfileMOs.map(\.asSendable))
+            newProfiles = Set(oldProfileMOs.map(\.asSendable))
+            var oldProfileMap: [String: GachaProfileID] = [:]
+            newProfiles.forEach {
+                oldProfileMap[$0.uidWithGame] = $0
+            }
             var entryFetchDescriptor = FetchDescriptor<PZGachaEntryMO>()
             entryFetchDescriptor.propertiesToFetch = [\.uid, \.game]
             let filteredEntries = try modelContext.fetch(entryFetchDescriptor)
             filteredEntries.forEach { currentGachaEntry in
-                let alreadyExisted = profiles.first { $0.uidWithGame == currentGachaEntry.uidWithGame }
+                let alreadyExisted = newProfiles.first { $0.uidWithGame == currentGachaEntry.uidWithGame }
                 guard alreadyExisted == nil else { return }
                 let newProfile = GachaProfileID(uid: currentGachaEntry.uid, game: currentGachaEntry.gameTyped)
-                profiles.insert(newProfile)
+                newProfiles.insert(newProfile)
             }
-            oldProfileMOs.forEach { modelContext.delete($0) }
-            profiles.forEach { modelContext.insert($0.asMO) }
+            var newProfileMap: [String: GachaProfileID] = [:]
+            newProfiles.forEach {
+                newProfileMap[$0.uidWithGame] = $0
+            }
+            guard oldProfileMap != newProfileMap else { return } // 必须有差异了才执行修改操作。
+            oldProfileMOs.forEach { idMO in
+                defer { newProfileMap.removeValue(forKey: idMO.uidWithGame) }
+                guard let newData = newProfileMap[idMO.uidWithGame] else {
+                    modelContext.delete(idMO)
+                    return
+                }
+                guard idMO.asSendable != newData else { return }
+                idMO.profileName = newData.profileName
+            }
+            newProfiles.forEach { modelContext.insert($0.asMO) }
+            if modelContext.hasChanges {
+                try modelContext.save()
+            }
         }
-        return profiles.sorted { $0.uidWithGame < $1.uidWithGame }
+        return newProfiles.sorted { $0.uidWithGame < $1.uidWithGame }
     }
 }
