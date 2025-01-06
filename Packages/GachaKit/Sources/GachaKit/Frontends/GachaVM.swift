@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Combine
 import CoreXLSX
 @preconcurrency import Defaults
 import EnkaKit
@@ -32,6 +33,22 @@ public final class GachaVM: TaskManagedVM {
                 try? await Enka.Sputnik.shared.db4GI.reinitIfLocMismatches()
             }
         )
+        NotificationCenter.default.publisher(for: ModelContext.didSave)
+            .sink(receiveValue: { notification in
+                if let userInfo = notification.userInfo {
+                    let inserted = (userInfo["inserted"] as? [PersistentIdentifier]) ?? []
+                    let deleted = (userInfo["deleted"] as? [PersistentIdentifier]) ?? []
+                    let updated = (userInfo["updated"] as? [PersistentIdentifier]) ?? []
+                    print(userInfo)
+                    guard !(inserted + deleted + updated).isEmpty else { return }
+                    Task { @MainActor in
+                        if !self.remoteChangesAvailable {
+                            self.remoteChangesAvailable = true
+                        }
+                    }
+                }
+            })
+            .store(in: &cancellables)
     }
 
     // MARK: Public
@@ -43,6 +60,7 @@ public final class GachaVM: TaskManagedVM {
     public var hasInheritableGachaEntries: Bool = false
     public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     public private(set) var currentPentaStars: [GachaEntryExpressible] = []
+    public private(set) var remoteChangesAvailable: Bool = false
     public var currentExportableDocument: Result<GachaDocument, Error>?
     public var currentSceneStep4Import: GachaImportSections.SceneStep = .chooseFormat
     public var showSucceededAlertToast = false
@@ -61,6 +79,8 @@ public final class GachaVM: TaskManagedVM {
     }
 
     // MARK: Private
+
+    private var cancellables: [AnyCancellable] = []
 
     private static func defaultPoolType(for game: Pizza.SupportedGame?) -> GachaPoolExpressible? {
         switch game {
@@ -112,6 +132,7 @@ extension GachaVM {
                 if self.currentGPID == nil {
                     self.resetDefaultProfile()
                 }
+                self.remoteChangesAvailable = false
                 self.showSucceededAlertToast = true
             }
         )
