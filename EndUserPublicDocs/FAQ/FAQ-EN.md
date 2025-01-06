@@ -73,7 +73,17 @@ These features won't be considered to implment in at least a year. There were to
 
 ## // Technical Issues
 
-> This section discusses issues starting from The Pizza Helper version 5.0.
+> This section discusses issues starting from The Pizza Helper version 5.0.5.
+
+#### Q: What's the differences among the character build information (CBI) provided by Enka and HoYoLAB / Miyoushe?
+
+Thereotically, Enka Network supplies the most-accurate CBI but limited to those characters disclosed in the showcase of an UID. Meanwhile, HoYoLAB / Miyoushe supplies the CBI of all characters owned by a UID.
+
+CBI supplied by HoYoLAB / Miyoushe has the following limitations due to the nature of their provided backend data:
+
+- Star Rail: When a weapon (light cone) has its level at 20 & 30 & 40 & 50 & 60 & 70, it is impossible to identify whether its ascension is finished. The Pizza Helper assume that all weapons at these levels are not ascended. This affect its deducted weapon build information.
+- Genshin Impact: The elemental damage boost (EDB) information  of certain characters are not calculated correctly on the HoYoLAB / Miyoushe server side, omitting the EDB gained from the character's own level ascension. In such case, please refer to his / her in-game character build information when he / she is not in the team. Characters in a team may affect each other's build information data due to members' skills and their combinations.
+- Genshin Impact: All skill levels are calculated as final results, hence inability of identifying which skill has its level boosted by the character's constellations.
 
 #### Q: The iOS lock screen widgets are not loading content. How can I fix this?
 
