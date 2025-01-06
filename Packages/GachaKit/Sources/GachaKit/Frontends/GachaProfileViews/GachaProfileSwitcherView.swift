@@ -70,29 +70,36 @@ public struct GachaProfileSwitcherView: View {
 
     @ViewBuilder
     func profileSwitcherMenu() -> some View {
-        let nameIDMap = theVM.nameIDMap
-        if !sortedGPIDs.isEmpty {
+        let allGPIDsNested = sortedGPIDsNested
+        if !allGPIDsNested.isEmpty {
+            let nameIDMap = theVM.nameIDMap
             Menu {
-                ForEach(sortedGPIDs) { profileIDObj in
-                    Button {
-                        withAnimation {
-                            theVM.currentGPID = profileIDObj
-                        }
-                    } label: {
-                        Label {
-                            if let name = nameIDMap[profileIDObj.uidWithGame] {
-                                #if targetEnvironment(macCatalyst)
-                                Text(name + " // \(profileIDObj.uidWithGame)")
-                                #else
-                                Text(name + "\n\(profileIDObj.uidWithGame)")
-                                #endif
-                            } else {
-                                Text(profileIDObj.uidWithGame)
+                ForEach(allGPIDsNested, id: \.self) { sortedSubGPIDs in
+                    if let sortedSubGPIDs {
+                        ForEach(sortedSubGPIDs) { profileIDObj in
+                            Button {
+                                withAnimation {
+                                    theVM.currentGPID = profileIDObj
+                                }
+                            } label: {
+                                Label {
+                                    if let name = nameIDMap[profileIDObj.uidWithGame] {
+                                        #if targetEnvironment(macCatalyst)
+                                        Text(name + " // \(profileIDObj.uidWithGame)")
+                                        #else
+                                        Text(name + "\n\(profileIDObj.uidWithGame)")
+                                        #endif
+                                    } else {
+                                        Text(profileIDObj.uidWithGame)
+                                    }
+                                } icon: {
+                                    profileIDObj.photoView
+                                }
+                                .id(profileIDObj.uidWithGame)
                             }
-                        } icon: {
-                            profileIDObj.photoView
                         }
-                        .id(profileIDObj.uidWithGame)
+                    } else {
+                        Divider()
                     }
                 }
             } label: {
@@ -106,6 +113,23 @@ public struct GachaProfileSwitcherView: View {
     @Query(sort: \PZProfileMO.priority) private var pzProfiles: [PZProfileMO]
     @Environment(\.modelContext) private var modelContext
     @Environment(GachaVM.self) private var theVM
+
+    private var sortedGPIDsNested: [[GachaProfileID]?] {
+        let allGPIDs = sortedGPIDs
+        guard !allGPIDs.isEmpty else { return [] }
+        let giGPIDs = allGPIDs.filter { $0.game == .genshinImpact }
+        let hsrGPIDs = allGPIDs.filter { $0.game == .starRail }
+        let zzzGPIDs = allGPIDs.filter { $0.game == .zenlessZone }
+        var allGPIDsNested: [[GachaProfileID]?] = [giGPIDs, nil, hsrGPIDs, nil, zzzGPIDs].filter {
+            if let core = $0 {
+                return !core.isEmpty
+            }
+            return true
+        }
+        if !allGPIDsNested.isEmpty, allGPIDsNested.first == nil { allGPIDsNested.removeFirst() }
+        if !allGPIDsNested.isEmpty, allGPIDsNested.last == nil { allGPIDsNested.removeLast() }
+        return allGPIDsNested
+    }
 
     private var sortedGPIDs: [GachaProfileID] {
         theVM.allGPIDs.wrappedValue
