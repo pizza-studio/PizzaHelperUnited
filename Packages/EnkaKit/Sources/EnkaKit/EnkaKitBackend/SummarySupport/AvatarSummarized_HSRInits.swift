@@ -213,7 +213,9 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
 
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     public init?(hsrDB: Enka.EnkaDB4HSR, hylRAW: HYQueriedModels.HYLAvatarDetail4HSR) {
-        let charIDStr = hylRAW.avatarIdStr
+        var charID = hylRAW.id
+        if case .ofStelle = Protagonist(rawValue: charID) { charID -= 1 }
+        let charIDStr = charID.description
         let skillsRAW = hylRAW.skills.prefix(4)
         guard skillsRAW.count == 4 else { return nil }
         let eidolonResonance: Int = hylRAW.eidolonResonanceList.map(\.isUnlocked).reduce(0) {
