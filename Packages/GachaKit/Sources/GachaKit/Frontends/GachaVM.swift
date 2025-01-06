@@ -32,6 +32,15 @@ public final class GachaVM: TaskManagedVM {
                 try? await Enka.Sputnik.shared.db4GI.reinitIfLocMismatches()
             }
         )
+        NotificationCenter.default.addObserver(
+            forName: NSPersistentCloudKitContainer.eventChangedNotification,
+            object: nil,
+            queue: OperationQueue.main
+        ) { _ in
+            Task { @MainActor in
+                self.rebuildGachaUIDList(immediately: false)
+            }
+        }
     }
 
     // MARK: Public
