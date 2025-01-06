@@ -35,6 +35,15 @@ public actor PZProfileActor {
             } else {
                 await syncAllDataToUserDefaults()
             }
+            NotificationCenter.default.addObserver(
+                forName: NSPersistentCloudKitContainer.eventChangedNotification,
+                object: nil,
+                queue: OperationQueue.main
+            ) { _ in
+                Task { @MainActor in
+                    await self.syncAllDataToUserDefaults()
+                }
+            }
         }
     }
 
