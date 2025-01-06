@@ -111,6 +111,11 @@ public struct GachaRootView: View {
                         }
                     } label: {
                         Image(systemSymbol: .filemenuAndSelection)
+                            .overlay(alignment: .topLeading) {
+                                if theVM.remoteChangesAvailable {
+                                    Circle().fill(.red).frame(width: 4, height: 4)
+                                }
+                            }
                     }
                     .disabled(theVM.taskState == .busy)
                 }
