@@ -21,6 +21,11 @@ extension Defaults.Keys {
         default: nil,
         suite: .baseSuite
     )
+    public static let situatePZProfileDBIntoGroupContainer = Key<Bool>(
+        "situatePZProfileDBIntoGroupContainer",
+        default: true,
+        suite: .standard
+    )
     public static let pzProfiles = Key<[String: PZProfileSendable]>(
         "pzProfiles",
         default: [:],
