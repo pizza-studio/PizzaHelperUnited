@@ -2080,6 +2080,83 @@
         }
       }
     },
+    "dpv.characterInventory.tapHereToSeePreviouslyCachedResults" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen Sie hier, um zuvor zwischengespeicherte Ergebnisse anzuzeigen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here to see previously cached results."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca aquí para ver los resultados previamente almacenados en caché."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-tap dito upang makita ang mga dating naka-cache na resulta."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuyez ici pour voir les résultats mis en cache précédemment."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tocca qui per vedere i risultati memorizzati nella cache in precedenza."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前回のキャッシュ済みのデータを見るには、ここをタップしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이전에 캐시된 결과를 보려면 여기를 탭하세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите здесь, чтобы посмотреть ранее кэшированные результаты."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhấn vào đây để xem các kết quả được lưu trong bộ nhớ đệm trước đó."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点击这里查看最近一次缓存的资料。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點擊這裡查看最近的暫存結果。"
+          }
+        }
+      }
+    },
     "dpv.query.menuCommandTitle" : {
       "extractionState" : "manual",
       "localizations" : {
