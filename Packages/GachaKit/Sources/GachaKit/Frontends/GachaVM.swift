@@ -42,8 +42,8 @@ public final class GachaVM: TaskManagedVM {
                     print(userInfo)
                     guard !(inserted + deleted + updated).isEmpty else { return }
                     Task { @MainActor in
-                        if !self.remoteChangesAvailable {
-                            self.remoteChangesAvailable = true
+                        if !GachaActor.remoteChangesAvailable {
+                            GachaActor.remoteChangesAvailable = true
                         }
                     }
                 }
@@ -60,7 +60,6 @@ public final class GachaVM: TaskManagedVM {
     public var hasInheritableGachaEntries: Bool = false
     public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     public private(set) var currentPentaStars: [GachaEntryExpressible] = []
-    public private(set) var remoteChangesAvailable: Bool = false
     public var currentExportableDocument: Result<GachaDocument, Error>?
     public var currentSceneStep4Import: GachaImportSections.SceneStep = .chooseFormat
     public var showSucceededAlertToast = false
@@ -132,7 +131,7 @@ extension GachaVM {
                 if self.currentGPID == nil {
                     self.resetDefaultProfile()
                 }
-                self.remoteChangesAvailable = false
+                GachaActor.remoteChangesAvailable = false
                 self.showSucceededAlertToast = true
             }
         )
@@ -213,6 +212,7 @@ extension GachaVM {
                         }
                         if context.hasChanges {
                             try context.save()
+                            GachaActor.remoteChangesAvailable = false
                         }
                     }
                     let mappedEntries = fetchedEntries.mappedByPools
