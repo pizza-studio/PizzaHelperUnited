@@ -198,11 +198,11 @@ struct PieChartRows: View {
     // MARK: Lifecycle
 
     init?(colors: [Color], names: [String], values: [String], percents: [String]) {
-        self.colors = colors
         self.names = names
-        guard names.count == colors.count else { return nil }
         self.values = values
         guard names.count == values.count else { return nil }
+        guard names.count <= colors.count else { return nil }
+        self.colors = Array(colors[0 ..< names.count])
         self.percents = percents
         guard percents.count == values.count else { return nil }
     }
