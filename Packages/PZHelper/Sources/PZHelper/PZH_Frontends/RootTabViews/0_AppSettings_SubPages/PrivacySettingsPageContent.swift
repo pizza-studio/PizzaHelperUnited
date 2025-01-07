@@ -37,6 +37,7 @@ struct PrivacySettingsPageContent: View {
             }
         }
         .navigationTitle("settings.privacy.title".i18nPZHelper)
+        .navBarTitleDisplayMode(.large)
     }
 
     // MARK: Private
