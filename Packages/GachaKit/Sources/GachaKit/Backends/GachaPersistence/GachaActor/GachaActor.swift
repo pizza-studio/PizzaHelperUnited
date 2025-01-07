@@ -23,6 +23,8 @@ public actor GachaActor {
 
     // MARK: Public
 
+    public static var remoteChangesAvailable = false
+
     public let cdGachaMOSputnik = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: true)
 }
 
@@ -116,6 +118,7 @@ extension GachaActor {
                 }
             )
         }
+        GachaActor.remoteChangesAvailable = false
     }
 
     @discardableResult
@@ -158,6 +161,7 @@ extension GachaActor {
                 }
             }
         }
+        GachaActor.remoteChangesAvailable = false
         // try lazyRefreshProfiles(newProfiles: profiles)
         if refreshGachaProfiles {
             try refreshAllProfiles()
@@ -176,6 +180,7 @@ extension GachaActor {
             let arrProfiles = profiles.sorted { $0.uidWithGame < $1.uidWithGame }
             arrProfiles.forEach { modelContext.insert($0.asMO) }
         }
+        GachaActor.remoteChangesAvailable = false
     }
 
     @discardableResult
@@ -212,10 +217,8 @@ extension GachaActor {
                 idMO.profileName = newData.profileName
             }
             newProfiles.forEach { modelContext.insert($0.asMO) }
-            if modelContext.hasChanges {
-                try modelContext.save()
-            }
         }
+        GachaActor.remoteChangesAvailable = false
         return newProfiles.sorted { $0.uidWithGame < $1.uidWithGame }
     }
 }

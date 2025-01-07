@@ -169,6 +169,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
                         try await Task.sleep(for: .seconds(0.5 / 20.0))
                     }
                     try mainContext.save()
+                    GachaActor.remoteChangesAvailable = false
                 }
                 bleacher?.startBleachTask(counter: &bleachCounter)
                 setFinished()
@@ -413,6 +414,7 @@ private class GachaBleachSputnik {
             )
         }
         try? mainContext.save()
+        GachaActor.remoteChangesAvailable = false
     }
 
     // MARK: Private
