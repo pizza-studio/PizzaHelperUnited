@@ -1,41 +1,54 @@
 {
   "de": {
-    "110000": "Pizza: Paimon nimmt Pizza"
+    "110000": "Pizza: Paimon nimmt Pizza",
+    "110001": "Pizza: Reines Schwarz"
   },
   "en": {
-    "110000": "Pizza: Paimon takes Pizza"
+    "110000": "Pizza: Paimon takes Pizza",
+    "110001": "Pizza: Pure Black"
   },
   "es": {
-    "110000": "Pizza: Paimon toma Pizza"
+    "110000": "Pizza: Paimon toma Pizza",
+    "110001": "Pizza: Negro Puro"
   },
   "fr": {
-    "110000": "Pizza : Paimon prend la Pizza"
+    "110000": "Pizza : Paimon prend la Pizza",
+    "110001": "Pizza : Noir Pur"
   },
   "id": {
-    "110000": "Pizza: Paimon mengambil Pizza"
+    "110000": "Pizza: Paimon mengambil Pizza",
+    "110001": "Pizza: Hitam Murni"
   },
   "ja": {
-    "110000": "ピザ・パイモンが喰うピザ"
+    "110000": "ピザ・パイモンが喰うピザ",
+    "110001": "ピザ・純粋なる真っ黒"
   },
   "ko": {
-    "110000": "피자: 파이몬이 피자를 먹는다"
+    "110000": "피자: 파이몬이 피자를 먹는다",
+    "110001": "피자: 순수한 검정"
   },
   "pt": {
-    "110000": "Pizza: Paimon pega a Pizza"
+    "110000": "Pizza: Paimon pega a Pizza",
+    "110001": "Pizza: Preto Puro"
   },
   "ru": {
-    "110000": "Пицца: Паймон берет Пиццу"
+    "110000": "Пицца: Паймон берет Пиццу",
+    "110001": "Пицца: Чистый Черный"
   },
   "th": {
-    "110000": "พิซซ่า: ไพม่อนกินพิซซ่า"
+    "110000": "พิซซ่า: ไพม่อนกินพิซซ่า",
+    "110001": "พิซซ่า: ดำบริสุทธิ์"
   },
   "vi": {
-    "110000": "Pizza: Paimon lấy Pizza"
+    "110000": "Pizza: Paimon lấy Pizza",
+    "110001": "Pizza: Đen Tuyệt Đối"
   },
   "zh-cn": {
-    "110000": "披萨・派蒙吃披萨"
+    "110000": "披萨・派蒙吃披萨",
+    "110001": "披萨・黑得纯粹"
   },
   "zh-tw": {
-    "110000": "披薩・派蒙吃披薩"
+    "110000": "披薩・派蒙吃披薩",
+    "110001": "披萨・黑得純粹"
   }
 }
