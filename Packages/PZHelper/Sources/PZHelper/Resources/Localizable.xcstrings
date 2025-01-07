@@ -12421,6 +12421,487 @@
         }
       }
     },
+    "settings.profile.advanced.dbSaveLocation.footer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Bitte berühren Sie diesen Schalter nur, wenn Sie von den Entwicklern dazu aufgefordert werden, während Sie technische Hilfe suchen.\n\n⚠️ Bitte EXPORTIEREN Sie Ihre lokalen Profile, BEVOR Sie diesen Schalter berühren."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Please do not touch this toggle unless being told by the developers to do that while seeking for technical help.\n\n⚠️ Please EXPORT your local profiles PRIOR TO touching this toggle."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ No toque esta palanca a menos que los desarrolladores le indiquen que lo haga mientras busca ayuda técnica.\n\n⚠️ Exporte sus perfiles locales ANTES de tocar esta palanca."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Älä koske tähän kytkimeen, ellei kehittäjät kehota sinua tekemään niin teknisen tuen pyytämisen yhteydessä.\n\n⚠️ Viehän paikalliset profiilit VIENTIIN ENNEN kuin kosketat tätä kytkintä."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ N'activez pas ce bouton à bascule sauf si les développeurs vous y invitent lors d'une demande d'assistance technique.\n\n⚠️ Veuillez EXPORTER vos profils locaux AVANT d'activer ce bouton à bascule."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Non toccare questo interruttore se non viene richiesto di farlo dagli sviluppatori durante la ricerca di assistenza tecnica.\n\n⚠️ Esportare i profili locali PRIMA di toccare questo interruttore."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 開発者から技術的なサポートを求めている間に行うように指示されない限り、この切り替えボタンを触らないでください。\n\n⚠️ この切り替えボタンを触る前に、ローカルのプロファイルをエクスポートしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 개발자가 기술 지원을 요청하는 동안 그렇게 하도록 지시하지 않는 한 이 토글을 건드리지 마십시오.\n\n⚠️ 이 토글을 건드리기 전에 로컬 프로필을 내보내십시오."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Не трогайте этот переключатель, если разработчики не попросят вас об этом во время обращения за технической помощью.\n\n⚠️ Экспортируйте свои локальные профили ДО того, как трогать этот переключатель."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Vui lòng KHÔNG chạm vào công tắc này trừ khi được các nhà phát triển yêu cầu làm như vậy trong khi tìm kiếm sự trợ giúp kỹ thuật.\n\n⚠️ Vui lòng XUẤT các hồ sơ địa phương của bạn TRƯỚC KHI chạm vào công tắc này."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 除非开发人员在您寻求技术帮助时指示您这样做，否则请勿触摸此开关。\n\n⚠️ 请在触摸此开关之前导出您的本地账号。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 除非開發人員在您尋求技術協助時指示您這樣做，否則請勿觸摸此開關。\n\n⚠️ 請在觸摸此開關之前匯出您的本機帳號。"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.dbSaveLocation.restartRequired.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData unterstützt nicht das Ändern des Speicherorts eines Datenbankcontainers während dessen Verwendung, daher ist ein Neustart der App erforderlich.\n\nDie App wird nach der Bestätigung dieser Nachricht neu gestartet."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData does not support changing the location of a database container while it is being used, hence the necessity of restarting the app.\n\nThe app will restart after you confirm this message."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData no admite cambiar la ubicación de un contenedor de base de datos mientras se está utilizando, de ahí la necesidad de reiniciar la aplicación.\n\nLa aplicación se reiniciará después de confirmar este mensaje."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData ei tue tietokantaresurssien sijainnin muuttamista niiden käytön aikana, joten sovellus on käynnistettävä uudelleen.\n\nSovellus käynnistetään uudelleen, kun vahvistat tämän viestin."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindi sinusuportahan ng SwiftData ang pagbabago ng lokasyon ng isang database container habang ginagamit ito, kaya kinakailangan na i-restart ang app.\n\nI-re-restart ang app pagkatapos mong kumpirmahin ang mensaheng ito."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData ne prend pas en charge la modification de l'emplacement d'un conteneur de base de données lorsqu'il est utilisé, d'où la nécessité de redémarrer l'application.\n\nL'application redémarrera après que vous aurez confirmé ce message."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData non supporta la modifica della posizione di un contenitore di database durante il suo utilizzo, da qui la necessità di riavviare l'app.\n\nL'app verrà riavviata dopo aver confermato questo messaggio."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData は、データベースコンテナの使用中にその場所を変更することをサポートしていないため、アプリを再起動する必要があります。\n\nこのメッセージを確認すると、アプリが再起動します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData는 사용 중인 데이터베이스 컨테이너의 위치를 변경하는 것을 지원하지 않으므로 앱을 다시 시작해야 합니다.\n\n이 메시지를 확인하면 앱이 다시 시작됩니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData не поддерживает изменение расположения контейнера базы данных во время его использования, поэтому необходимо перезапустить приложение.\n\nПосле подтверждения этого сообщения приложение будет перезапущено."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData không hỗ trợ thay đổi vị trí của một vùng chứa cơ sở dữ liệu trong khi nó đang được sử dụng, do đó cần phải khởi động lại ứng dụng.\n\nỨng dụng sẽ khởi động lại sau khi bạn xác nhận tin nhắn này."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData 不支持在使用数据库容器时更改其位置，因此需要重新启动应用程序。\n\n确认此消息后，应用程序将重新启动。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData 不支援在使用資料庫容器時更改其位置，因此需要重新啟動應用程式。\n\n確認此訊息後，應用程式將重新啟動。"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.dbSaveLocation.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speicherort des lokalen Profils"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local Profile Storage Location"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubicación de almacenamiento de perfil local"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paikallisen profiilin tallennuspaikka"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasyon ng Imbakan ng Lokal na Profile"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emplacement de stockage du profil local"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posizione di archiviazione del profilo locale"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローカルプロファイルのストレージ場所"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로컬 프로필 저장 위치"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Место хранения локального профиля"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vị trí lưu trữ hồ sơ địa phương"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地账号存储位置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本機帳號儲存位置"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.dbSaveLocation.toAppContainer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Container"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Container"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contenedor de la aplicación"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sovelluskontti"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Container"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conteneur d'application"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contenitore dell'app"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリコンテナ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 컨테이너"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Контейнер приложения"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bộ chứa ứng dụng"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用程序容器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "應用程式容器"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.dbSaveLocation.toGroupContainer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gruppencontainer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group Container"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contenedor de grupo"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ryhmäkontti"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group Container"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conteneur de groupe"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contenitore di gruppo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "グループコンテナ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그룹 컨테이너"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Групповой контейнер"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bộ chứa nhóm"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "群组容器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "群組容器"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erweiterte Optionen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Options"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opciones Avanzadas"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Advanced na Opsyon"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options Avancées"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opzioni Avanzate"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上級設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고급 옵션"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дополнительные параметры"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tùy Chọn Nâng Cao"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "进阶选项"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "進階選項"
+          }
+        }
+      }
+    },
     "settings.profile.clickHereToLogin" : {
       "extractionState" : "manual",
       "localizations" : {

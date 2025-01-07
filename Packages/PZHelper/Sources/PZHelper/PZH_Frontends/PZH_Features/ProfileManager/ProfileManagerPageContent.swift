@@ -201,6 +201,16 @@ struct ProfileManagerPageContent: View {
                 systemSymbol: .clockArrow2Circlepath
             )
         }
+        Divider()
+        NavigationLink {
+            PFMgrAdvancedOptionsView()
+        } label: {
+            Label {
+                Text(verbatim: PFMgrAdvancedOptionsView.navTitle)
+            } icon: {
+                Image(systemSymbol: .pc)
+            }
+        }
     }
 
     @ViewBuilder
