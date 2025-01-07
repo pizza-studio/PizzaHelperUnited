@@ -1,0 +1,81 @@
+{
+	"optional_month": [
+		11,
+		12,
+		1
+	],
+	"day_data": {
+		"last_mora": 81475,
+		"last_primogems": 140,
+		"current_mora": 0,
+		"current_primogems": 0
+	},
+	"month": 1,
+	"nickname": "野兽先辈",
+	"account_id": 114514810,
+	"month_data": {
+		"current_primogems_level": 1,
+		"current_primogems": 2105,
+		"current_mora": 1045061,
+		"last_mora": 13608562,
+		"last_primogems": 11147,
+		"mora_rate": -92,
+		"group_by": [
+			{
+				"action_id": 7,
+				"action": "幻想剧诗",
+				"num": 800,
+				"percent": 39
+			},
+			{
+				"num": 630,
+				"action_id": 5,
+				"percent": 30,
+				"action": "邮件奖励"
+			},
+			{
+				"action_id": 6,
+				"percent": 14,
+				"num": 300,
+				"action": "活动奖励"
+			},
+			{
+				"action": "每日活跃",
+				"num": 300,
+				"action_id": 3,
+				"percent": 14
+			},
+			{
+				"num": 45,
+				"action_id": 1,
+				"percent": 2,
+				"action": "冒险奖励"
+			},
+			{
+				"action_id": 2,
+				"num": 30,
+				"action": "任务奖励",
+				"percent": 1
+			},
+			{
+				"action": "深境螺旋",
+				"percent": 0,
+				"num": 0,
+				"action_id": 4
+			},
+			{
+				"action_id": 0,
+				"num": 0,
+				"percent": 0,
+				"action": "其他"
+			}
+		],
+		"primogems_rate": -81
+	},
+	"date": "2025-01-07",
+	"region": "cn_gf01",
+	"lantern": false,
+	"data_last_month": 12,
+	"uid": 114514810,
+	"data_month": 1
+}
