@@ -12,7 +12,6 @@ extension HoYo {
         // MARK: Public
 
         public typealias AvatarType = HYAvatar4HSR
-        public typealias ViewType = CharacterInventoryView4HSR
 
         public struct HYAvatar4HSR: HYAvatar {
             public let id: Int // 七大基础参数之一
