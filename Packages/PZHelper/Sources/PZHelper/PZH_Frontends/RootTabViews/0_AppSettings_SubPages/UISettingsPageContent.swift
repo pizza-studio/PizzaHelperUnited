@@ -33,6 +33,7 @@ struct UISettingsPageContent: View {
         }
         .formStyle(.grouped)
         .navigationTitle("settings.uiSettings.title".i18nPZHelper)
+        .navBarTitleDisplayMode(.large)
     }
 
     @ViewBuilder var defaultServerSelector4GI: some View {
