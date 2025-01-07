@@ -4,15 +4,23 @@
 
 import PZAccountKit
 import PZBaseKit
+import SFSafeSymbols
 import SwiftUI
 
-// MARK: - LedgerView
+// MARK: - LedgerView4HSR
 
 public struct LedgerView4HSR: LedgerView {
     // MARK: Lifecycle
 
     public init(data: LedgerData) {
         self.data = data
+        do {
+            let encoded = try JSONEncoder().encode(data)
+            let string = String(data: encoded, encoding: .utf8) ?? ""
+            self.dataText = string
+        } catch {
+            self.dataText = ""
+        }
     }
 
     // MARK: Public
@@ -24,6 +32,8 @@ public struct LedgerView4HSR: LedgerView {
     public static var stellarJadeImage: Image { Image("hsr_misc_stellarJade", bundle: .module) }
 
     public let data: LedgerData
+
+    public let dataText: String
 
     public var body: some View {
         List {
@@ -87,6 +97,17 @@ public struct LedgerView4HSR: LedgerView {
         .scrollContentBackground(.hidden)
         .listContainerBackground()
         .navigationTitle(Self.navTitle)
+        .toolbar {
+            #if DEBUG
+            ToolbarItem(placement: .confirmationAction) {
+                Button {
+                    Clipboard.currentString = dataText
+                } label: {
+                    Image(systemSymbol: .clipboardFill)
+                }
+            }
+            #endif
+        }
     }
 
     // MARK: Internal
@@ -112,7 +133,7 @@ public struct LedgerView4HSR: LedgerView {
                 widthFraction: 1,
                 innerRadiusFraction: 0.6
             )
-            .frame(minWidth: 280, maxWidth: 280, minHeight: 600, maxHeight: 600)
+            .frame(width: 280, height: 600)
             .padding(.vertical)
             .padding(.top)
             Spacer()
@@ -165,3 +186,16 @@ public struct LedgerView4HSR: LedgerView {
         }
     }
 }
+
+#if DEBUG
+private let demoData: HoYo.LedgerData4HSR = {
+    let sampleDataURL = Bundle.module.url(forResource: "ledger_sample_hsr", withExtension: "json")!
+    let data = try! Data(contentsOf: sampleDataURL)
+    let decoded = try! JSONDecoder().decode(HoYo.LedgerData4HSR.self, from: data)
+    return decoded
+}()
+
+#Preview {
+    LedgerView4HSR(data: demoData)
+}
+#endif
