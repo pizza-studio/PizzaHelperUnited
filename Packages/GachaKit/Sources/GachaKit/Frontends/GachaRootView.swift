@@ -112,7 +112,7 @@ public struct GachaRootView: View {
                     } label: {
                         Image(systemSymbol: .filemenuAndSelection)
                             .overlay(alignment: .topLeading) {
-                                if theVM.remoteChangesAvailable {
+                                if GachaActor.remoteChangesAvailable {
                                     Circle().fill(.red).frame(width: 4, height: 4)
                                 }
                             }
