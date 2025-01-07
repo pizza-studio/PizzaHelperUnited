@@ -10,7 +10,6 @@ import PZBaseKit
 extension HoYo {
     public struct CharInventory4GI: CharacterInventory {
         public typealias AvatarType = HYAvatar4GI
-        public typealias ViewType = CharacterInventoryView4GI
 
         public struct HYAvatar4GI: HYAvatar {
             // MARK: Public

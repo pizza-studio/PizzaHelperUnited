@@ -71,14 +71,8 @@ public struct CharInventoryNav: View {
                 if data.avatars.isEmpty {
                     Text("dpv.characterInventory.notice.EmptyInventoryResult".i18nPZHelper).font(.caption)
                 } else {
-                    if let data = data as? HoYo.CharInventory4GI {
-                        NavigationLink(destination: data.asView(uidWithGame: profile.uidWithGame)) {
-                            thisLabel
-                        }
-                    } else if let data = data as? HoYo.CharInventory4HSR {
-                        NavigationLink(destination: data.asView(uidWithGame: profile.uidWithGame)) {
-                            thisLabel
-                        }
+                    NavigationLink(destination: CharacterInventoryView(profile: profile.asSendable)) {
+                        thisLabel
                     }
                 }
             }
