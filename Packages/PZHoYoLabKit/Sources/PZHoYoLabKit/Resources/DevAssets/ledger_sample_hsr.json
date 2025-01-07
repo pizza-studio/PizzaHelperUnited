@@ -1,0 +1,60 @@
+{
+	"uid": "114514810",
+	"day_data": {
+		"last_rails_pass": 0,
+		"current_hcoin": 0,
+		"last_hcoin": 780,
+		"current_rails_pass": 0
+	},
+	"month": "202501",
+	"optional_month": ["202501", "202412", "202411"],
+	"region": "prod_gf_cn",
+	"data_month": "202501",
+	"month_data": {
+		"group_by": [
+			{
+				"action": "abyss_reward",
+				"num": 720,
+				"percent": 40,
+				"action_name": "忘却之庭奖励"
+			},
+			{
+				"num": 690,
+				"action": "daily_reward",
+				"action_name": "每日活跃",
+				"percent": 38
+			},
+			{
+				"action_name": "邮件奖励",
+				"action": "mail_reward",
+				"percent": 17,
+				"num": 320
+			},
+			{
+				"action": "event_reward",
+				"action_name": "活动奖励",
+				"num": 60,
+				"percent": 3
+			},
+			{ "action_name": "其他", "percent": 2, "num": 0, "action": "other" },
+			{
+				"num": 0,
+				"percent": 0,
+				"action_name": "冒险奖励",
+				"action": "adventure_reward"
+			},
+			{
+				"action": "space_reward",
+				"action_name": "模拟宇宙奖励",
+				"num": 0,
+				"percent": 0
+			}
+		],
+		"last_rails_pass": 39,
+		"current_hcoin": 1790,
+		"last_hcoin": 12308,
+		"rails_rate": -69,
+		"current_rails_pass": 12,
+		"hcoin_rate": -85
+	}
+}
