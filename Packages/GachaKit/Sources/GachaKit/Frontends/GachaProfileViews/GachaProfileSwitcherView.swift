@@ -74,8 +74,8 @@ public struct GachaProfileSwitcherView: View {
         if !allGPIDsNested.isEmpty {
             let nameIDMap = theVM.nameIDMap
             Menu {
-                ForEach(allGPIDsNested, id: \.self) { sortedSubGPIDs in
-                    if let sortedSubGPIDs {
+                ForEach(allGPIDsNested, id: \.offset) { sortedSubGPIDPair in
+                    if let sortedSubGPIDs = sortedSubGPIDPair.element {
                         ForEach(sortedSubGPIDs) { profileIDObj in
                             Button {
                                 withAnimation {
@@ -114,7 +114,7 @@ public struct GachaProfileSwitcherView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(GachaVM.self) private var theVM
 
-    private var sortedGPIDsNested: [[GachaProfileID]?] {
+    private var sortedGPIDsNested: [EnumeratedSequence<[[GachaProfileID]?]>.Element] {
         let allGPIDs = sortedGPIDs
         guard !allGPIDs.isEmpty else { return [] }
         let giGPIDs = allGPIDs.filter { $0.game == .genshinImpact }
@@ -128,7 +128,7 @@ public struct GachaProfileSwitcherView: View {
         }
         if !allGPIDsNested.isEmpty, allGPIDsNested.first == nil { allGPIDsNested.removeFirst() }
         if !allGPIDsNested.isEmpty, allGPIDsNested.last == nil { allGPIDsNested.removeLast() }
-        return allGPIDsNested
+        return Array(allGPIDsNested.enumerated())
     }
 
     private var sortedGPIDs: [GachaProfileID] {
