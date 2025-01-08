@@ -178,6 +178,46 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     /// Base Skill Set of a Character, excluding Technique since it doesn't have a level.
     public struct BaseSkillSet: AbleToCodeSendHash {
         public struct BaseSkill: AbleToCodeSendHash {
+            // MARK: Lifecycle
+
+            public init(
+                charIDStr: String,
+                baseLevel: Int,
+                levelAddition: Int?,
+                type: SkillType,
+                game: Enka.GameType,
+                iconAssetName: String,
+                iconOnlineFileNameStem: String
+            ) {
+                self.charIDStr = charIDStr
+                self.baseLevel = baseLevel
+                self.levelAddition = levelAddition
+                self.type = type
+                self.game = game
+                self.iconAssetName = iconAssetName
+                self.iconOnlineFileNameStem = iconOnlineFileNameStem
+            }
+
+            public init(
+                charIDStr: String,
+                summedLevel: Int,
+                levelAddition: Int?,
+                type: SkillType,
+                game: Enka.GameType,
+                iconAssetName: String,
+                iconOnlineFileNameStem: String
+            ) {
+                self.charIDStr = charIDStr
+                self.baseLevel = summedLevel - (levelAddition ?? 0)
+                self.levelAddition = levelAddition
+                self.type = type
+                self.game = game
+                self.iconAssetName = iconAssetName
+                self.iconOnlineFileNameStem = iconOnlineFileNameStem
+            }
+
+            // MARK: Public
+
             public enum SkillType: String, AbleToCodeSendHash {
                 case basicAttack = "Normal"
                 case elementalSkill = "BP"
