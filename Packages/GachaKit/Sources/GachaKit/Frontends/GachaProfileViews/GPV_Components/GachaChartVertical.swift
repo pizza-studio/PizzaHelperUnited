@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Charts
 import PZBaseKit
 import SwiftUI
 
@@ -24,17 +23,12 @@ public struct GachaChartVertical: View {
         let avrgCount: Int = pentaStars.map(\.drawCount).reduce(0, +) / max(pentaStars.count, 1)
         if !pentaStars.isEmpty {
             // 这里必须用 LazyVStack，否则真的要卡到死。
-            LazyVStack(spacing: -12) {
-                ForEach(shouldChunk ? pentaStars.chunked(into: 5) : [pentaStars], id: \.first!.id) { chunk in
-                    let isFirst = Bool(equalCheck: pentaStars.first?.id, against: chunk.first?.id)
-                    let isLast = Bool(equalCheck: pentaStars.last?.id, against: chunk.last?.id)
-                    subChart(
-                        givenEntries: chunk,
-                        averagePullsCount: avrgCount,
-                        isFirst: isFirst,
-                        isLast: isLast
-                    ).padding(isFirst ? .top : [])
+            LazyVStack(spacing: 0) {
+                drawEntry(nil, avrgCount: avrgCount).id(-114514)
+                ForEach(pentaStars) { thisEntry in
+                    drawEntry(thisEntry, avrgCount: avrgCount)
                 }
+                drawEntry(nil, avrgCount: avrgCount, showRulerValues: true).id(-889464)
             }
         } else {
             Text("gachaKit.chart.noPentaStarsFound", bundle: .module)
@@ -49,19 +43,6 @@ public struct GachaChartVertical: View {
     private let poolType: GachaPoolExpressible
     private let givenGPID: GachaProfileID
 
-    private var shouldChunk: Bool {
-        if #available(iOS 18, *) {
-            return false
-        }
-        if #available(macOS 15, *) {
-            return false
-        }
-        if #available(macCatalyst 18, *) {
-            return false
-        }
-        return true
-    }
-
     private var pentaStarEntries: [GachaEntryExpressible] {
         theVM.currentPentaStars
     }
@@ -70,124 +51,177 @@ public struct GachaChartVertical: View {
         GachaProfileView.GachaStatsSection.ApprisedLevel.one.appraiserIcon(game: givenGPID.game)
     }
 
+    private var chartFont: Font {
+        .system(size: 12).monospacedDigit()
+    }
+
+    private func getColor(for drawCount: Int) -> Color {
+        switch drawCount {
+        case ..<0: .gray
+        case 0 ..< 50: .cyan
+        case 50 ..< 62: .green
+        case 62 ..< 70: .yellow
+        case 70 ..< 80: .orange
+        default: .red
+        }
+    }
+}
+
+extension GachaChartVertical {
     @ViewBuilder
-    private func subChart(
-        givenEntries: [GachaEntryExpressible],
-        averagePullsCount: Int,
-        isFirst: Bool,
-        isLast: Bool
+    private func drawEntry(
+        _ entry: GachaEntryExpressible?,
+        avrgCount: Int,
+        showRulerValues: Bool = false
     )
         -> some View {
-        Chart {
-            ForEach(givenEntries) { entry in
-                drawChartContent(for: entry)
-            }
-            if !givenEntries.isEmpty {
-                RuleMark(x: .value("gachaKit.chart.average".i18nGachaKit, averagePullsCount))
-                    .foregroundStyle(.gray)
-                    .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
-                    .annotation(alignment: .topLeading) {
-                        if isFirst {
-                            Text("gachaKit.chart.average".i18nGachaKit + averagePullsCount.description)
-                                .font(.caption).foregroundColor(.gray)
+        let avrgCountLabelText = Text(
+            verbatim: "gachaKit.chart.average".i18nGachaKit + ": \(avrgCount.description)"
+        )
+        HStack {
+            // 肖像。
+            Rectangle().fill(.clear).frame(width: 48, height: entry == nil ? 18 : 60)
+                .overlay(alignment: .leading) {
+                    if let entry {
+                        entry.icon(48)
+                    }
+                }
+            // 进度条部分
+            GeometryReader { proxy in
+                let containerWidth = proxy.size.width
+                let containerHeight = proxy.size.height
+                drawPercentageBackground(showRulerValues: showRulerValues)
+                    .frame(maxHeight: .infinity)
+                    .opacity(entry == nil && !showRulerValues ? 0 : 1)
+                    // 平均线
+                    .overlay(alignment: .trailing) {
+                        let widthRatio = (100.0 - Double(avrgCount)) / 100
+                        Rectangle().fill(.clear)
+                            .frame(width: containerWidth * widthRatio, height: containerHeight)
+                            .overlay(alignment: .leading) {
+                                HStack {
+                                    Rectangle()
+                                        .fill(Color.secondary.opacity(0.5))
+                                        .frame(width: 1)
+                                    if entry == nil, !showRulerValues {
+                                        avrgCountLabelText
+                                            .font(chartFont)
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                            }
+                    }
+                    // 资料条
+                    .overlay(alignment: .leading) {
+                        if let entry {
+                            let widthRatio = min(1, Double(entry.drawCount) / 100)
+                            HStack(spacing: 4) {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    entry.nameView
+                                        .fixedSize()
+                                        .font(chartFont)
+                                        .foregroundColor(.gray)
+                                    HStack {
+                                        Rectangle().fill(getColor(for: entry.drawCount))
+                                            .frame(width: containerWidth * widthRatio, height: 20)
+                                        Text(entry.drawCount.description)
+                                            .font(chartFont)
+                                            .foregroundColor(.gray)
+                                        Rectangle().fill(.clear)
+                                            .frame(width: 35, height: 20)
+                                    }
+                                    .background(alignment: .trailing) {
+                                        if entry.isSurinuked {
+                                            surinukedIcon
+                                                .resizable().scaledToFit()
+                                                .frame(width: 35, height: 35)
+                                        }
+                                    }
+                                }
+                                .fixedSize(horizontal: false, vertical: true)
+                            }
                         }
                     }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            // 尾端留白，留着画「歪」。
+            Color.clear.frame(width: 20)
         }
-        .chartYAxis {
-            axisContentY(entries: givenEntries)
-        }
-        .chartXAxis {
-            axisContentX(isLast: isLast)
-        }
-        .chartXScale(domain: 0 ... 110)
-        .frame(height: CGFloat(givenEntries.count * 65))
-        .chartForegroundStyleScale(range: colors(entries: givenEntries))
-        .chartLegend(.hidden)
+        .fixedSize(horizontal: false, vertical: true)
     }
 
-    private func matchedEntries(
-        among source: [GachaEntryExpressible],
-        with value: String
-    )
-        -> [GachaEntryExpressible] {
-        source.filter { $0.id == value }
-    }
-
-    private func colors(entries: [GachaEntryExpressible]) -> [Color] {
-        entries.map { neta in
-            switch neta.drawCount {
-            case ..<0: .gray
-            case 0 ..< 50: .cyan
-            case 50 ..< 62: .green
-            case 62 ..< 70: .yellow
-            case 70 ..< 80: .orange
-            default: .red
-            }
-        }
-    }
-
-    @ChartContentBuilder
-    private func drawChartContent(for entry: GachaEntryExpressible) -> some ChartContent {
-        BarMark(
-            x: .value("gachaKit.chart.pullCount".i18nGachaKit, entry.drawCount),
-            y: .value("gachaKit.chart.character".i18nGachaKit, entry.id),
-            height: .fixed(20)
-        )
-        .annotation(position: .trailing) {
-            HStack(spacing: 3) {
-                let frame: CGFloat = 35
-                Text(entry.drawCount.description).foregroundColor(.gray).font(.caption)
-                if poolType.isSurinukable, entry.isSurinuked {
-                    surinukedIcon.resizable().scaledToFit()
-                        .frame(width: frame, height: frame)
-                        .offset(y: -5)
-                } else {
-                    EmptyView()
+    @ViewBuilder
+    private func drawPercentageBackground(showRulerValues: Bool = false) -> some View {
+        HStack(spacing: 0) {
+            Rectangle().fill(.clear)
+                .overlay(alignment: .leading) {
+                    Rectangle().fill(.clear).frame(width: 30)
+                        .overlay(alignment: .leading) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(width: 1)
+                        }
+                        .background(alignment: .leading) {
+                            if showRulerValues {
+                                Text(verbatim: "0").font(chartFont).foregroundColor(.gray)
+                            }
+                        }
                 }
-            }
-        }
-        .foregroundStyle(by: .value("gachaKit.chart.pullCount".i18nGachaKit, entry.id))
-    }
-
-    @AxisContentBuilder
-    private func axisContentY(entries givenEntries: [GachaEntryExpressible]) -> some AxisContent {
-        AxisMarks(preset: .aligned, position: .leading) { value in
-            AxisValueLabel(content: {
-                if let id = value.as(String.self),
-                   let entry = matchedEntries(among: givenEntries, with: id).first {
-                    entry.icon(45)
-                } else {
-                    EmptyView()
+                .overlay(alignment: .trailing) {
+                    Rectangle().fill(.clear).frame(width: 30)
+                        .overlay(alignment: .trailing) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(width: 1)
+                        }
+                        .background(alignment: .trailing) {
+                            if showRulerValues {
+                                Text(verbatim: "25").font(chartFont).foregroundColor(.gray)
+                            }
+                        }
                 }
-            })
-        }
-        AxisMarks { value in
-            AxisValueLabel(content: {
-                if let theValue = value.as(String.self),
-                   let entry = matchedEntries(among: givenEntries, with: theValue).first {
-                    entry.nameView
-                        .environment(theVM)
-                        .padding(.bottom, 4)
-                        .offset(y: givenEntries.count == 1 ? 0 : 8)
-                } else {
-                    EmptyView()
+            Rectangle().fill(.clear)
+                .overlay(alignment: .trailing) {
+                    Rectangle().fill(.clear).frame(width: 30)
+                        .overlay(alignment: .trailing) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(width: 1)
+                        }
+                        .background(alignment: .trailing) {
+                            if showRulerValues {
+                                Text(verbatim: "50").font(chartFont).foregroundColor(.gray)
+                            }
+                        }
                 }
-            })
-        }
-    }
-
-    @AxisContentBuilder
-    private func axisContentX(isLast: Bool) -> some AxisContent {
-        AxisMarks(values: [0, 25, 50, 75, 100]) { _ in
-            AxisGridLine()
-            if isLast {
-                AxisValueLabel()
-            } else {
-                AxisValueLabel {
-                    EmptyView()
+            Rectangle().fill(.clear)
+                .overlay(alignment: .trailing) {
+                    Rectangle().fill(.clear).frame(width: 30)
+                        .overlay(alignment: .trailing) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(width: 1)
+                        }
+                        .background(alignment: .trailing) {
+                            if showRulerValues {
+                                Text(verbatim: "75").font(chartFont).foregroundColor(.gray)
+                            }
+                        }
                 }
-            }
+            Rectangle().fill(.clear)
+                .overlay(alignment: .trailing) {
+                    Rectangle().fill(.clear).frame(width: 30)
+                        .overlay(alignment: .trailing) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(width: 1)
+                        }
+                        .background(alignment: .trailing) {
+                            if showRulerValues {
+                                Text(verbatim: "100").font(chartFont).foregroundColor(.gray)
+                            }
+                        }
+                }
         }
     }
 }
