@@ -241,7 +241,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
         }
 
         self.basicAttack = .init(
-            charIDStr: charIDStr, baseLevel: skillsRAW[0].level,
+            charIDStr: charIDStr, summedLevel: skillsRAW[0].level,
             levelAddition: levelAdditionList[skillsRAW[0].pointID],
             type: .basicAttack,
             game: .starRail,
@@ -249,7 +249,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
             iconOnlineFileNameStem: skillsRAW[0].itemURL
         )
         self.elementalSkill = .init(
-            charIDStr: charIDStr, baseLevel: skillsRAW[1].level,
+            charIDStr: charIDStr, summedLevel: skillsRAW[1].level,
             levelAddition: levelAdditionList[skillsRAW[1].pointID],
             type: .elementalSkill,
             game: .starRail,
@@ -257,7 +257,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
             iconOnlineFileNameStem: skillsRAW[1].itemURL
         )
         self.elementalBurst = .init(
-            charIDStr: charIDStr, baseLevel: skillsRAW[2].level,
+            charIDStr: charIDStr, summedLevel: skillsRAW[2].level,
             levelAddition: levelAdditionList[skillsRAW[2].pointID],
             type: .elementalBurst,
             game: .starRail,
@@ -265,7 +265,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
             iconOnlineFileNameStem: skillsRAW[2].itemURL
         )
         self.talent = .init(
-            charIDStr: charIDStr, baseLevel: skillsRAW[3].level,
+            charIDStr: charIDStr, summedLevel: skillsRAW[3].level,
             levelAddition: levelAdditionList[skillsRAW[3].pointID],
             type: .talent,
             game: .starRail,
