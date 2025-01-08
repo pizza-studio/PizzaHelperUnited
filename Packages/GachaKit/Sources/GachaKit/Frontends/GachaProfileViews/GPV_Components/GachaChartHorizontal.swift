@@ -34,7 +34,7 @@ public struct GachaChartHorizontal: View {
                     }
                     .frame(maxHeight: .infinity)
                 }
-                .frame(height: 140)
+                .frame(height: 120)
                 HelpTextForScrollingOnDesktopComputer(.horizontal)
             }
         } else {
@@ -126,7 +126,7 @@ extension GachaChartHorizontal {
                         Text(verbatim: "0")
                             .font(chartFont)
                             .foregroundColor(.gray)
-                            .offset(y: -6)
+                            .offset(x: -2, y: -6)
                     }
                 }
         }
