@@ -88,11 +88,16 @@ struct LargeWidgetView: View {
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                     Image(systemSymbol: .personFill)
+                        .legibilityShadow(isText: false)
                     Text(accountName)
+                        .allowsTightening(true)
+                        .lineLimit(1)
+                        .fixedSize()
+                        .minimumScaleFactor(0.5)
+                        .legibilityShadow()
                 }
                 .font(.footnote)
                 .foregroundColor(Color("textColor3", bundle: .main))
-                .legibilityShadow()
             }
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text(verbatim: "\(dailyNote.staminaIntel.finished)")

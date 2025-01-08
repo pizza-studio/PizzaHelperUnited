@@ -25,9 +25,11 @@ struct MainInfo: View {
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                     Image(systemSymbol: .personFill)
+                        .legibilityShadow(isText: false)
                     Text(accountName)
                         .allowsTightening(true)
                         .lineLimit(1)
+                        .fixedSize()
                         .minimumScaleFactor(0.5)
                         .legibilityShadow()
                 }
