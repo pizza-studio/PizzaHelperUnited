@@ -61,11 +61,12 @@ public actor PZProfileActor {
 
     public static var modelConfig: ModelConfiguration {
         if Pizza.isAppStoreRelease {
+            let useGroupContainer = Defaults[.situatePZProfileDBIntoGroupContainer]
             return ModelConfiguration(
                 "PZProfileMODB",
                 schema: Self.schema,
                 isStoredInMemoryOnly: false,
-                groupContainer: .identifier(appGroupID),
+                groupContainer: useGroupContainer ? .identifier(appGroupID) : .none,
                 cloudKitDatabase: .private(iCloudContainerName)
             )
         } else {
