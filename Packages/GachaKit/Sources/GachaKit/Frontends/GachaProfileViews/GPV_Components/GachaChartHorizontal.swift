@@ -2,9 +2,10 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Charts
 import PZBaseKit
 import SwiftUI
+
+// MARK: - GachaChartHorizontal
 
 public struct GachaChartHorizontal: View {
     // MARK: Lifecycle
@@ -18,14 +19,28 @@ public struct GachaChartHorizontal: View {
     // MARK: Public
 
     public var body: some View {
-        if pentaStarEntries.isEmpty {
-            Text("gachaKit.chart.noPentaStarsFound", bundle: .module)
-                .font(.caption)
-        } else {
+        let pentaStars = pentaStarEntries
+        let avrgCount: Int = pentaStars.map(\.drawCount).reduce(0, +) / max(pentaStars.count, 1)
+        if !pentaStars.isEmpty {
             VStack(alignment: .leading) {
-                chart()
+                ScrollView(.horizontal) {
+                    // 这里必须用 LazyVStack，否则真的要卡到死。
+                    LazyHStack(spacing: 0) {
+                        drawEntry(nil, avrgCount: avrgCount).id(-114514)
+                            .offset(y: -6)
+                        ForEach(pentaStars) { thisEntry in
+                            drawEntry(thisEntry, avrgCount: avrgCount)
+                        }
+                    }
+                    .frame(maxHeight: .infinity)
+                }
+                .frame(height: 140)
                 HelpTextForScrollingOnDesktopComputer(.horizontal)
             }
+        } else {
+            Text("gachaKit.chart.noPentaStarsFound", bundle: .module)
+                .foregroundColor(.secondary)
+                .font(.caption)
         }
     }
 
@@ -40,87 +55,152 @@ public struct GachaChartHorizontal: View {
         theVM.currentPentaStars
     }
 
-    private var colors: [Color] {
-        pentaStarEntries.map { neta in
-            switch neta.drawCount {
-            case ..<0: .gray
-            case 0 ..< 50: .cyan
-            case 50 ..< 62: .green
-            case 62 ..< 70: .yellow
-            case 70 ..< 80: .orange
-            default: .red
-            }
+    private var chartFont: Font {
+        .system(size: 11).monospacedDigit()
+    }
+
+    private func getColor(for drawCount: Int) -> Color {
+        switch drawCount {
+        case ..<0: .gray
+        case 0 ..< 50: .cyan
+        case 50 ..< 62: .green
+        case 62 ..< 70: .yellow
+        case 70 ..< 80: .orange
+        default: .red
         }
+    }
+}
+
+extension GachaChartHorizontal {
+    @ViewBuilder
+    private func drawEntry(
+        _ entry: GachaEntryExpressible?,
+        avrgCount: Int
+    )
+        -> some View {
+        VStack(spacing: 3) {
+            Color.clear.frame(height: 10)
+            // 进度条部分
+            GeometryReader { proxy in
+                let containerWidth = proxy.size.width
+                let containerHeight = proxy.size.height
+                drawPercentageBackground(showRulerValues: entry == nil)
+                    .frame(maxWidth: .infinity)
+                    // 平均线
+                    .overlay(alignment: .top) {
+                        if entry != nil {
+                            let heightRatio = (100.0 - Double(avrgCount)) / 100
+                            Rectangle().fill(.clear)
+                                .frame(width: containerWidth, height: containerHeight * heightRatio)
+                                .overlay(alignment: .bottom) {
+                                    Rectangle()
+                                        .fill(Color.secondary.opacity(0.5))
+                                        .frame(height: 1)
+                                }
+                        }
+                    }
+                    // 资料条
+                    .overlay(alignment: .bottom) {
+                        if let entry {
+                            let heightRatio = min(1, Double(entry.drawCount) / 100)
+                            VStack(spacing: 2) {
+                                Text(entry.drawCount.description)
+                                    .font(chartFont)
+                                    .foregroundColor(.gray)
+                                Rectangle().fill(getColor(for: entry.drawCount))
+                                    .frame(width: 25, height: containerHeight * heightRatio)
+                            }
+                        }
+                    }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            // 肖像。
+            Rectangle().fill(.clear).frame(width: entry == nil ? 30 : 49, height: 30)
+                .overlay(alignment: .bottom) {
+                    if let entry {
+                        entry.icon(30)
+                    }
+                }
+                .background(alignment: .topTrailing) {
+                    if entry == nil {
+                        Text(verbatim: "0")
+                            .font(chartFont)
+                            .foregroundColor(.gray)
+                            .offset(y: -6)
+                    }
+                }
+        }
+        .fixedSize(horizontal: true, vertical: false)
     }
 
     @ViewBuilder
-    private func chart() -> some View {
-        ScrollView(.horizontal) {
-            Chart {
-                ForEach(pentaStarEntries) { entry in
-                    drawChartContent(for: entry)
-                }
-                if !pentaStarEntries.isEmpty {
-                    drawChartContentRuleMarks()
-                }
-            }
-            .chartXAxis(content: {
-                AxisMarks { value in
-                    AxisValueLabel(content: {
-                        Group {
-                            if let id = value.as(String.self),
-                               let entry = matchedEntry(from: pentaStarEntries, with: id) {
-                                entry.icon(30)
-                            } else {
-                                EmptyView()
+    private func drawPercentageBackground(showRulerValues: Bool = false) -> some View {
+        VStack(spacing: 0) {
+            Rectangle().fill(.clear)
+                .overlay(alignment: .top) {
+                    Rectangle().fill(.clear).frame(height: 15)
+                        .overlay(alignment: .top) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(height: 1)
+                        }
+                        .background(alignment: .topTrailing) {
+                            if showRulerValues {
+                                Text(verbatim: "100").font(chartFont).foregroundColor(.gray)
                             }
                         }
-                        .fixedSize()
-                    })
                 }
-            })
-            .chartLegend(position: .top)
-            .chartYAxis { AxisMarks(position: .leading) }
-            .chartYScale(domain: [0, 100])
-            .chartForegroundStyleScale(range: colors)
-            .chartLegend(.hidden)
-            .frame(width: CGFloat(pentaStarEntries.count * 50))
-            .padding(.top)
-            .padding(.bottom, 5)
-            .padding(.leading, 1)
+            Rectangle().fill(.clear)
+                .overlay(alignment: .top) {
+                    Rectangle().fill(.clear).frame(height: 15)
+                        .overlay(alignment: .top) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(height: 1)
+                        }
+                        .background(alignment: .topTrailing) {
+                            if showRulerValues {
+                                Text(verbatim: "75").font(chartFont).foregroundColor(.gray)
+                            }
+                        }
+                }
+            Rectangle().fill(.clear)
+                .overlay(alignment: .top) {
+                    Rectangle().fill(.clear).frame(height: 15)
+                        .overlay(alignment: .top) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(height: 1)
+                        }
+                        .background(alignment: .topTrailing) {
+                            if showRulerValues {
+                                Text(verbatim: "50").font(chartFont).foregroundColor(.gray)
+                            }
+                        }
+                }
+            Rectangle().fill(.clear)
+                .overlay(alignment: .bottom) {
+                    Rectangle().fill(.clear).frame(height: 15)
+                        .overlay(alignment: .bottom) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(height: 1)
+                        }
+                }
+                .overlay(alignment: .top) {
+                    Rectangle().fill(.clear).frame(height: 15)
+                        .overlay(alignment: .top) {
+                            Rectangle()
+                                .fill(Color.secondary.opacity(showRulerValues ? 0 : 0.1))
+                                .frame(height: 1)
+                        }
+                        .background(alignment: .topTrailing) {
+                            if showRulerValues {
+                                Text(verbatim: "25").font(chartFont).foregroundColor(.gray)
+                            }
+                        }
+                }
         }
-    }
-
-    private func matchedEntry(
-        from source: [GachaEntryExpressible],
-        with value: String
-    )
-        -> GachaEntryExpressible? {
-        source.first(where: { $0.id == value })
-    }
-
-    @ChartContentBuilder
-    private func drawChartContent(for entry: GachaEntryExpressible) -> some ChartContent {
-        BarMark(
-            x: .value("gachaKit.chart.character".i18nGachaKit, entry.id),
-            y: .value("gachaKit.chart.pullCount".i18nGachaKit, entry.drawCount),
-            width: .fixed(25)
-        )
-        .annotation(position: .top) {
-            Text(entry.drawCount.description).foregroundColor(.gray)
-                .font(.caption)
-        }
-        .foregroundStyle(by: .value("gachaKit.chart.pullCount".i18nGachaKit, entry.id))
-    }
-
-    @ChartContentBuilder
-    private func drawChartContentRuleMarks() -> some ChartContent {
-        RuleMark(y: .value(
-            "gachaKit.chart.average".i18nGachaKit,
-            pentaStarEntries.map { $0.drawCount }
-                .reduce(0) { $0 + $1 } / max(pentaStarEntries.count, 1)
-        ))
-        .foregroundStyle(.gray)
-        .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
+        .padding(.trailing, showRulerValues ? 2 : 0)
     }
 }
