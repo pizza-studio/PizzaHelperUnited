@@ -94,20 +94,21 @@ extension GachaChartVertical {
                     .frame(maxHeight: .infinity)
                     .opacity(entry == nil && !showRulerValues ? 0 : 1)
                     // 平均线
-                    .overlay(alignment: .trailing) {
-                        let widthRatio = (100.0 - Double(avrgCount)) / 100
+                    .background(alignment: .leading) {
+                        let widthRatio = Double(avrgCount) / 100
                         Rectangle().fill(.clear)
                             .frame(width: containerWidth * widthRatio, height: containerHeight)
-                            .overlay(alignment: .leading) {
-                                HStack {
+                            .overlay(alignment: .trailing) {
+                                if entry == nil, !showRulerValues {
+                                    avrgCountLabelText
+                                        .font(chartFont)
+                                        .fixedSize()
+                                        .foregroundColor(.gray)
+                                        .offset(x: 20)
+                                } else {
                                     Rectangle()
-                                        .fill(Color.secondary.opacity(0.5))
+                                        .fill(Color.secondary.opacity(entry == nil ? 0 : 0.5))
                                         .frame(width: 1)
-                                    if entry == nil, !showRulerValues {
-                                        avrgCountLabelText
-                                            .font(chartFont)
-                                            .foregroundColor(.gray)
-                                    }
                                 }
                             }
                     }
@@ -127,6 +128,7 @@ extension GachaChartVertical {
                                         Text(entry.drawCount.description)
                                             .font(chartFont)
                                             .foregroundColor(.gray)
+                                            .fixedSize()
                                         Rectangle().fill(.clear)
                                             .frame(width: 35, height: 20)
                                     }
@@ -145,7 +147,7 @@ extension GachaChartVertical {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             // 尾端留白，留着画「歪」。
-            Color.clear.frame(width: 20)
+            Color.clear.frame(width: 30)
         }
         .fixedSize(horizontal: false, vertical: true)
     }
