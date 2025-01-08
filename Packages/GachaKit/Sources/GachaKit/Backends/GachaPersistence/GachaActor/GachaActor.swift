@@ -189,10 +189,6 @@ extension GachaActor {
         try modelContext.transaction {
             let oldProfileMOs = try modelContext.fetch(FetchDescriptor<PZGachaProfileMO>())
             newProfiles = Set(oldProfileMOs.map(\.asSendable))
-            var oldProfileMap: [String: GachaProfileID] = [:]
-            newProfiles.forEach {
-                oldProfileMap[$0.uidWithGame] = $0
-            }
             var entryFetchDescriptor = FetchDescriptor<PZGachaEntryMO>()
             entryFetchDescriptor.propertiesToFetch = [\.uid, \.game]
             let filteredEntries = try modelContext.fetch(entryFetchDescriptor)
@@ -202,23 +198,13 @@ extension GachaActor {
                 let newProfile = GachaProfileID(uid: currentGachaEntry.uid, game: currentGachaEntry.gameTyped)
                 newProfiles.insert(newProfile)
             }
-            var newProfileMap: [String: GachaProfileID] = [:]
+            oldProfileMOs.forEach {
+                modelContext.delete($0)
+            }
             newProfiles.forEach {
-                newProfileMap[$0.uidWithGame] = $0
+                modelContext.insert($0.asMO)
             }
-            guard oldProfileMap != newProfileMap else { return } // 必须有差异了才执行修改操作。
-            oldProfileMOs.forEach { idMO in
-                defer { newProfileMap.removeValue(forKey: idMO.uidWithGame) }
-                guard let newData = newProfileMap[idMO.uidWithGame] else {
-                    modelContext.delete(idMO)
-                    return
-                }
-                guard idMO.asSendable != newData else { return }
-                idMO.profileName = newData.profileName
-            }
-            newProfiles.forEach { modelContext.insert($0.asMO) }
         }
-        GachaActor.remoteChangesAvailable = false
         return newProfiles.sorted { $0.uidWithGame < $1.uidWithGame }
     }
 }
