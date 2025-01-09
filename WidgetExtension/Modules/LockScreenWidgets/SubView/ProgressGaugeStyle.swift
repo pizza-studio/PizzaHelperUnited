@@ -28,16 +28,18 @@ struct ProgressGaugeStyle: GaugeStyle {
                 )
                 .widgetAccentable()
                 .opacity(0.5)
-            Arc(percentage: configuration.value)
-                .stroke(
-                    circleColor,
-                    style: StrokeStyle(
-                        lineWidth: strokeLineWidth,
-                        lineCap: .round
+            if configuration.value > 0 {
+                Arc(percentage: configuration.value)
+                    .stroke(
+                        circleColor,
+                        style: StrokeStyle(
+                            lineWidth: strokeLineWidth,
+                            lineCap: .round
+                        )
                     )
-                )
-                .widgetAccentable()
-                .shadow(radius: 1)
+                    .widgetAccentable()
+                    .shadow(radius: 1)
+            }
             configuration.currentValueLabel
                 .padding(strokeLineWidth * 1.4)
             VStack {
