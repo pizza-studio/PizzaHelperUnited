@@ -110,7 +110,6 @@ public struct GachaProfileSwitcherView: View {
 
     // MARK: Private
 
-    @Query(sort: \PZProfileMO.priority) private var pzProfiles: [PZProfileMO]
     @Environment(\.modelContext) private var modelContext
     @Environment(GachaVM.self) private var theVM
 
