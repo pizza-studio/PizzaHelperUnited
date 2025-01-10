@@ -12441,10 +12441,10 @@
             "value" : "⚠️ No toque esta palanca a menos que los desarrolladores le indiquen que lo haga mientras busca ayuda técnica.\n\n⚠️ Exporte sus perfiles locales ANTES de tocar esta palanca."
           }
         },
-        "fi" : {
+        "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Älä koske tähän kytkimeen, ellei kehittäjät kehota sinua tekemään niin teknisen tuen pyytämisen yhteydessä.\n\n⚠️ Viehän paikalliset profiilit VIENTIIN ENNEN kuin kosketat tätä kytkintä."
+            "value" : "⚠️ Mangyaring huwag hawakan ang toggle na ito maliban kung sasabihin ng mga developer na gawin iyon habang naghahanap ng teknikal na tulong.\n\n⚠️ Mangyaring I-EXPORT ang iyong mga lokal na profile BAGO hawakan ang toggle na ito."
           }
         },
         "fr" : {
@@ -12515,12 +12515,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "SwiftData no admite cambiar la ubicación de un contenedor de base de datos mientras se está utilizando, de ahí la necesidad de reiniciar la aplicación.\n\nLa aplicación se reiniciará después de confirmar este mensaje."
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SwiftData ei tue tietokantaresurssien sijainnin muuttamista niiden käytön aikana, joten sovellus on käynnistettävä uudelleen.\n\nSovellus käynnistetään uudelleen, kun vahvistat tämän viestin."
           }
         },
         "fil" : {
@@ -12599,12 +12593,6 @@
             "value" : "Ubicación de almacenamiento de perfil local"
           }
         },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paikallisen profiilin tallennuspaikka"
-          }
-        },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12681,12 +12669,6 @@
             "value" : "Contenedor de la aplicación"
           }
         },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sovelluskontti"
-          }
-        },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12761,12 +12743,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contenedor de grupo"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ryhmäkontti"
           }
         },
         "fil" : {
