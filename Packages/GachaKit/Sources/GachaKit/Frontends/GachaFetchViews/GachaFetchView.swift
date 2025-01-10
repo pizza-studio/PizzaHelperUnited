@@ -161,6 +161,16 @@ extension GachaFetchView4Game {
                     }
                 } header: {
                     Text(GachaType.game.titleMarkedName).textCase(.none)
+                } footer: {
+                    let textView = Text("gachaKit.getRecord.waitingURL.footer".i18nGachaKit)
+                        .font(.footnote)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if let destinationView = GachaRootView.getFAQView?() {
+                        NavigationLink(destination: destinationView) { textView }
+                    } else {
+                        textView
+                    }
                 }
                 gachaURLDeductableProfilesListView()
             }
