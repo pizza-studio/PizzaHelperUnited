@@ -410,9 +410,12 @@ extension GachaVM {
         return nameMap
     }
 
-    public var allPZProfiles: [PZProfileMO] {
-        let result = try? pzProfileMOContext.fetch(FetchDescriptor<PZProfileMO>())
-        return result?.sorted { $0.priority < $1.priority } ?? []
+    public var allPZProfiles: [PZProfileSendable] {
+        let existingMOs = try? pzProfileMOContext.fetch(FetchDescriptor<PZProfileMO>())
+        guard let existingMOs else { return [] }
+        let existingProfiles = existingMOs.map(\.asSendable)
+        let profileSets = Set<PZProfileSendable>(existingProfiles)
+        return profileSets.sorted { $0.priority < $1.priority }
     }
 
     public var allGPIDs: Binding<[GachaProfileID]> {
