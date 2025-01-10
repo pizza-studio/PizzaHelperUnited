@@ -26,6 +26,11 @@ extension Defaults.Keys {
         default: true,
         suite: .standard
     )
+    public static let automaticallyDeduplicatePZProfiles = Key<Bool>(
+        "automaticallyDeduplicatePZProfiles",
+        default: true,
+        suite: .standard
+    )
     public static let pzProfiles = Key<[String: PZProfileSendable]>(
         "pzProfiles",
         default: [:],
