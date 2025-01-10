@@ -6149,6 +6149,83 @@
         }
       }
     },
+    "gachaKit.getRecord.waitingURL.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte sehen Sie unter \"App-Einstellungen -> FAQ\" nach, wie Sie Gacha-URLs erhalten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please refer to \"App Settings -> FAQ\" for information regarding how to get gacha URLs."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulte \"Configuración de la aplicación -> FAQ\" para obtener información sobre cómo obtener las URL de gacha."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mangyaring sumangguni sa \"Mga Setting ng App -> FAQ\" para sa impormasyon kung paano makuha ang mga gacha URL."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez consulter \"Paramètres de l'application -> FAQ\" pour savoir comment obtenir les URL de gacha."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai riferimento a \"Impostazioni App -> FAQ\" per informazioni su come ottenere gli URL di gacha."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「アプリ設定 -> FAQ」を参照して、ガチャ URL の取得方法を確認してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"앱 설정 -> FAQ\"를 참고하여 가챠 URL을 얻는 방법에 대해 알아보세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, ознакомьтесь с разделом \"Настройки приложения -> FAQ\" для получения информации о том, как получить URL гача."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng tham khảo \"Cài đặt ứng dụng -> FAQ\" để biết cách lấy các URL gacha."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请参考“App 设定 -> FAQ”，了解如何获取抽卡记录 URL。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請參考「App 設定 -> FAQ」，了解如何獲取抽卡記錄 URL。"
+          }
+        }
+      }
+    },
     "gachaKit.getRecord.waitingURL.readClipboard" : {
       "extractionState" : "manual",
       "localizations" : {
