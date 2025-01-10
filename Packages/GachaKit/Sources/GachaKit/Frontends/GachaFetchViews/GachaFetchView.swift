@@ -246,9 +246,8 @@ extension GachaFetchView4Game {
                 return
             }
             #endif
-            let context = PZProfileActor.shared.modelContainer.mainContext
-            let fetched = try? context.fetch(FetchDescriptor<PZProfileMO>())
-            pzProfiles = (fetched ?? []).map(\.asSendable).filter { pzProfile in
+            let fetchedItems = GachaVM.shared.allPZProfiles
+            pzProfiles = fetchedItems.filter { pzProfile in
                 guard pzProfile.game == GachaType.game else { return false }
                 switch pzProfile.server.region {
                 case .miyoushe: return true
