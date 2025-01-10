@@ -22,6 +22,8 @@ public struct GachaRootView: View {
     public static let navTitle: String = "gachaKit.GachaRootView.navTitle".i18nGachaKit
     public static let navDescription: String = "gachaKit.GachaRootView.navDescription".i18nGachaKit
 
+    @MainActor public static var getFAQView: (() -> AnyView)?
+
     public static var navIcon: Image { Image("GachaRecordMgr_NavIcon", bundle: .module) }
 
     public var body: some View {

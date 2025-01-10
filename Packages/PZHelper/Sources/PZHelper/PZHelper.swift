@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import GachaKit
 import PZAboutKit
 import PZAccountKit
 import SwiftData
@@ -48,6 +49,7 @@ extension PZHelper {
             await PZProfileActor.shared.syncAllDataToUserDefaults()
         }
         PZHelper.setupSpotlightSearch()
+        GachaRootView.getFAQView = { AnyView(FAQView()) }
     }
 }
 
