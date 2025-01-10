@@ -45,6 +45,9 @@ public actor PZProfileActor {
                         print(userInfo)
                         guard !(inserted + deleted + updated).isEmpty else { return }
                         Task { @MainActor in
+                            if Defaults[.automaticallyDeduplicatePZProfiles] {
+                                _ = try await self.deduplicate()
+                            }
                             await self.syncAllDataToUserDefaults()
                         }
                     }
@@ -225,5 +228,33 @@ extension PZProfileActor {
         } catch {
             print(error)
         }
+    }
+}
+
+// MARK: - Deduplication.
+
+extension PZProfileActor {
+    /// Warning: 该方法仅对 SwiftData 资料库有操作，不影响 UserDefaults。
+    /// - Returns: 是否确实做了去除重复内容的操作。
+    @discardableResult
+    public func deduplicate() throws -> Bool {
+        let existingMOs = (try modelContext.fetch(FetchDescriptor<PZProfileMO>()))
+        let existingProfiles = existingMOs.map(\.asSendable).sorted { $0.uuid < $1.uuid }
+        var profileSets = Set<PZProfileSendable>(existingProfiles)
+        let uniqueProfiles = profileSets.sorted { $0.uuid < $1.uuid }
+        /// 用这一行来判断是否有重复内容。没有的话就直接放弃处理。
+        guard existingProfiles != uniqueProfiles else { return false }
+        profileSets.removeAll()
+        try modelContext.transaction {
+            existingMOs.forEach { currentMO in
+                let sendableProfile = currentMO.asSendable
+                if !profileSets.contains(sendableProfile) {
+                    profileSets.insert(sendableProfile)
+                } else {
+                    modelContext.delete(currentMO)
+                }
+            }
+        }
+        return true
     }
 }
