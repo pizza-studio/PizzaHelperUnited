@@ -41,6 +41,15 @@ struct PFMgrAdvancedOptionsView: View {
                     bundle: .module
                 )
             }
+
+            Section {
+                Toggle(isOn: $automaticallyDeduplicatePZProfiles) {
+                    Text(
+                        "settings.profile.advanced.autoDeduplication.title",
+                        bundle: .module
+                    )
+                }
+            }
         }
         .formStyle(.grouped)
         .navigationTitle(Self.navTitle)
@@ -59,6 +68,7 @@ struct PFMgrAdvancedOptionsView: View {
 
     // MARK: Private
 
+    @Default(.automaticallyDeduplicatePZProfiles) private var automaticallyDeduplicatePZProfiles: Bool
     @Default(.situatePZProfileDBIntoGroupContainer) private var situatePZProfileDBIntoGroupContainer: Bool
     @State private var alertPresented: Bool = false
 }
