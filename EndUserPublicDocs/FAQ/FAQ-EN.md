@@ -123,9 +123,9 @@ The captured contents are personal information. We suggest that the user capture
 
 Due to the lack of critical information fields in the Excel gacha record format provided by the website (which are all specified by UIGFv4), we have already completely abandoned support for the proprietary Excel format of Paimon.moe when implementing UIGFv4 support in (the previously) Genshin Pizza Helper. This feature is indeed not implemented in (currently) The Pizza Helper. If you need to import the data into applications that support the UIGFv4 standard, please send a feature request to Paimon.moe.
 
-#### Q: How to obtain gacha records for "Star Rail UID" and "Genshin UID hosted by HoYoLAB"?
+#### Q: How to obtain gacha records URL for "Star Rail UID" and "Genshin UID hosted by HoYoLAB"?
 
-This function requires traffic monitoring between these game clients (including miHoYo's cloud games) and the miHoYo server, specifically to filter any URLs containing specific fields and domains. This tool will create a local virtual private network to enable traffic monitoring.
+This function requires traffic monitoring between these game clients (including miHoYo's cloud games) and the miHoYo server, specifically to filter any URLs containing specific fields and domains. Such tool will create a local virtual private network to enable traffic monitoring.
 
 The only current solution is for the user to personally use specialized traffic monitoring tools to perform packet capturing.
 
