@@ -71,7 +71,7 @@ You can find the development team's QQ channel and Discord channel in the "About
 
 These features won't be considered to implment in at least a year. There were too many reasons and concerns behind this decision, but one of them is that we are almost running out of our available time on this project.
 
-## // Technical Issues
+## // Technical Issues and Know-How
 
 > This section discusses issues starting from The Pizza Helper version 5.0.5.
 
@@ -142,5 +142,15 @@ While capturing packets, the user needs to open the gacha record page (Wish / Wa
 The validity period of the URL you capture may only be one or two hours, so please use it as soon as possible.
 
 The URL & data you capture is of your personal privacy; please carefully consider whether to share it with others.
+
+#### Q: Why all of my local profiles are gone everytime I reboot my iOS device? They may come back after approximately 30 seconds, but it's still annoying.
+
+The Pizza Helper uses Group Containers to storage local profiles by default (with a mirrored copy saved in UserDefaults for Widgets). If you have encountered this issue, you can do the following steps:
+
+1. Go to "Local Profile Manager -> Menu (at the top-trailing of the UI)" to use the related menu option to export all of your local profiles as a backup file. After you finishes the Step 2, you will need to import your local profiles back using this backup file.
+2. In the same menu, you go to "Advanced Options" and switch the "Local Profile Storage Location" to "App Container" instead. The app will automatically quits after you toggling this option.
+3. Import the local profiles back to the app. The option is situated in the same menu mentioned in Step 1.
+
+This is a proven workaround for this issue.
 
 $ EOF.
