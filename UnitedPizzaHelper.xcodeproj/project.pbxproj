@@ -115,6 +115,7 @@
 		5B560A162C6BB64300175FB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B560A172C6BBB8300175FB1 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B7619052D3293DC0076AA08 /* GI_MaterialDBGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GI_MaterialDBGenerator.swift; sourceTree = "<group>"; };
 		5B978A8F2C8D8DF60000EB61 /* GITodayMaterialsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GITodayMaterialsKit; sourceTree = "<group>"; };
 		5BCAFCE12C8C5B2600347A09 /* AbyssRankKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AbyssRankKit; sourceTree = "<group>"; };
 		5BD0D0F22C6A633700DA8099 /* PZHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHelper; sourceTree = "<group>"; };
@@ -291,6 +292,7 @@
 				5BDDF26D2C75FEB8006D4BFE /* _assetUpdate4HSR.sh */,
 				5BDDF26E2C75FEB8006D4BFE /* convertAssetsToHEIC.sh */,
 				5BDDF26F2C75FEB8006D4BFE /* GI_ImageAssetRegenerator.swift */,
+				5B7619052D3293DC0076AA08 /* GI_MaterialDBGenerator.swift */,
 				5BDDF2702C75FEB8006D4BFE /* GI_RawAssetsPuller.swift */,
 				5BDDF2712C75FEB8006D4BFE /* HSR_ImageAssetRegenerator.swift */,
 				5BDDF2722C75FEB8006D4BFE /* HSR_RawAssetsPuller.swift */,

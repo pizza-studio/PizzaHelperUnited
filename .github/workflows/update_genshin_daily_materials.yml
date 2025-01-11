@@ -1,0 +1,34 @@
+name: Update Genshin Daily Material DB
+'on':
+  workflow_dispatch: {}
+  schedule:
+    - cron: 0 12 * * *
+jobs:
+  update:
+    runs-on: macOS-15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - name: Update Genshin Daily Material DB
+        id: compare_shas
+        run: |
+          swift ./Script/GI_MaterialDBGenerator.swift
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          branch: 'update-GIDailyMaterialDB-assets-${{ github.run_number }}'
+          base: main
+          title: Update Genshin Daily Material DB Asset
+          body: |
+            This PR updates the generated Genshin Daily Material DB.
+          delete-branch: true
+          assignees: ShikiSuen
+          reviewers: ShikiSuen
+          team-reviewers: |
+            owners
+            maintainers
