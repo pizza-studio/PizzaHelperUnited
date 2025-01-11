@@ -1,64 +1,68 @@
 [
   {
     "costedBy" : [
-      "10000043",
-      "10000029",
-      "10000021",
       "10000014",
-      "10000039",
+      "10000021",
+      "10000029",
       "10000033",
+      "10000039",
+      "10000043",
       "10000062"
     ],
     "id" : 0,
     "isWeapon" : false,
+    "itemID" : 104303,
     "nameTag" : "talentFreedom"
   },
   {
     "costedBy" : [
-      "10000041",
-      "10000034",
-      "10000032",
-      "10000020",
-      "10000016",
       "10000003",
+      "10000016",
+      "10000020",
+      "10000032",
+      "10000034",
+      "10000041",
       "10000051"
     ],
     "id" : 1,
     "isWeapon" : false,
+    "itemID" : 104306,
     "nameTag" : "talentResistance"
   },
   {
     "costedBy" : [
-      "10000031",
-      "10000022",
-      "10000015",
       "10000006",
+      "10000015",
+      "10000022",
+      "10000031",
       "10000038",
       "10000045",
       "10000080"
     ],
     "id" : 2,
     "isWeapon" : false,
+    "itemID" : 104309,
     "nameTag" : "talentBallad"
   },
   {
     "costedBy" : [
-      "10000042",
-      "10000035",
-      "10000027",
       "10000026",
-      "10000063",
+      "10000027",
+      "10000035",
+      "10000042",
       "10000060",
+      "10000063",
       "10000092"
     ],
     "id" : 3,
     "isWeapon" : false,
+    "itemID" : 104312,
     "nameTag" : "talentProsperity"
   },
   {
     "costedBy" : [
-      "10000036",
       "10000023",
+      "10000036",
       "10000037",
       "10000046",
       "10000047",
@@ -68,32 +72,36 @@
     ],
     "id" : 4,
     "isWeapon" : false,
+    "itemID" : 104315,
     "nameTag" : "talentDiligence"
   },
   {
     "costedBy" : [
-      "10000025",
       "10000024",
-      "10000044",
+      "10000025",
       "10000030",
+      "10000044",
       "10000048",
       "10000082",
       "10000093"
     ],
     "id" : 5,
     "isWeapon" : false,
+    "itemID" : 104318,
     "nameTag" : "talentGold"
   },
   {
     "costedBy" : [
       "10000049",
-      "10000054",
       "10000050",
+      "10000054",
       "10000059",
-      "10000061"
+      "10000061",
+      "10000109"
     ],
     "id" : 6,
     "isWeapon" : false,
+    "itemID" : 104322,
     "nameTag" : "talentTransience"
   },
   {
@@ -101,34 +109,37 @@
       "10000002",
       "10000056",
       "10000057",
-      "10000066",
-      "10000065"
+      "10000065",
+      "10000066"
     ],
     "id" : 7,
     "isWeapon" : false,
+    "itemID" : 104325,
     "nameTag" : "talentElegance"
   },
   {
     "costedBy" : [
-      "10000053",
       "10000052",
+      "10000053",
       "10000055",
       "10000058",
       "10000094"
     ],
     "id" : 8,
     "isWeapon" : false,
+    "itemID" : 104328,
     "nameTag" : "talentLight"
   },
   {
     "costedBy" : [
       "10000069",
-      "10000072",
       "10000071",
+      "10000072",
       "10000076"
     ],
     "id" : 9,
     "isWeapon" : false,
+    "itemID" : 104331,
     "nameTag" : "talentAdmonition"
   },
   {
@@ -141,6 +152,7 @@
     ],
     "id" : 10,
     "isWeapon" : false,
+    "itemID" : 104334,
     "nameTag" : "talentIngenuity"
   },
   {
@@ -153,6 +165,7 @@
     ],
     "id" : 11,
     "isWeapon" : false,
+    "itemID" : 104337,
     "nameTag" : "talentPraxis"
   },
   {
@@ -164,6 +177,7 @@
     ],
     "id" : 12,
     "isWeapon" : false,
+    "itemID" : 104340,
     "nameTag" : "talentEquity"
   },
   {
@@ -175,6 +189,7 @@
     ],
     "id" : 13,
     "isWeapon" : false,
+    "itemID" : 104343,
     "nameTag" : "talentJustice"
   },
   {
@@ -187,6 +202,7 @@
     ],
     "id" : 14,
     "isWeapon" : false,
+    "itemID" : 104346,
     "nameTag" : "talentOrder"
   },
   {
@@ -196,26 +212,29 @@
     ],
     "id" : 15,
     "isWeapon" : false,
+    "itemID" : 104349,
     "nameTag" : "talentContention"
   },
   {
     "costedBy" : [
       "10000101",
       "10000103",
+      "10000105",
       "10000107"
     ],
     "id" : 16,
     "isWeapon" : false,
+    "itemID" : 104352,
     "nameTag" : "talentKindling"
   },
   {
     "costedBy" : [
       "10000100",
-      "10000104",
-      "10000105"
+      "10000104"
     ],
     "id" : 17,
     "isWeapon" : false,
+    "itemID" : 104355,
     "nameTag" : "talentConflict"
   },
   {
@@ -245,6 +264,7 @@
     ],
     "id" : 18,
     "isWeapon" : true,
+    "itemID" : 114004,
     "nameTag" : "weaponDecarabian"
   },
   {
@@ -277,6 +297,7 @@
     ],
     "id" : 19,
     "isWeapon" : true,
+    "itemID" : 114008,
     "nameTag" : "weaponBorealWolf"
   },
   {
@@ -307,6 +328,7 @@
     ],
     "id" : 20,
     "isWeapon" : true,
+    "itemID" : 114012,
     "nameTag" : "weaponGladiator"
   },
   {
@@ -332,6 +354,7 @@
     ],
     "id" : 21,
     "isWeapon" : true,
+    "itemID" : 114016,
     "nameTag" : "weaponGuyun"
   },
   {
@@ -357,6 +380,7 @@
     ],
     "id" : 22,
     "isWeapon" : true,
+    "itemID" : 114020,
     "nameTag" : "weaponElixir"
   },
   {
@@ -380,6 +404,7 @@
     ],
     "id" : 23,
     "isWeapon" : true,
+    "itemID" : 114024,
     "nameTag" : "weaponAerosiderite"
   },
   {
@@ -394,6 +419,7 @@
     ],
     "id" : 24,
     "isWeapon" : true,
+    "itemID" : 114028,
     "nameTag" : "weaponDistantSea"
   },
   {
@@ -402,6 +428,7 @@
       "11510",
       "12414",
       "12510",
+      "14518",
       "15414",
       "15415",
       "15416",
@@ -409,6 +436,7 @@
     ],
     "id" : 25,
     "isWeapon" : true,
+    "itemID" : 114032,
     "nameTag" : "weaponNarukami"
   },
   {
@@ -417,12 +445,14 @@
       "13414",
       "13415",
       "13416",
+      "13432",
       "13509",
       "14509",
       "15507"
     ],
     "id" : 26,
     "isWeapon" : true,
+    "itemID" : 114036,
     "nameTag" : "weaponKijinMask"
   },
   {
@@ -437,6 +467,7 @@
     ],
     "id" : 27,
     "isWeapon" : true,
+    "itemID" : 114040,
     "nameTag" : "weaponTalisman"
   },
   {
@@ -450,6 +481,7 @@
     ],
     "id" : 28,
     "isWeapon" : true,
+    "itemID" : 114044,
     "nameTag" : "weaponOasisGarden"
   },
   {
@@ -464,6 +496,7 @@
     ],
     "id" : 29,
     "isWeapon" : true,
+    "itemID" : 114048,
     "nameTag" : "weaponScorchingMight"
   },
   {
@@ -479,6 +512,7 @@
     ],
     "id" : 30,
     "isWeapon" : true,
+    "itemID" : 114052,
     "nameTag" : "weaponAncientChord"
   },
   {
@@ -492,6 +526,7 @@
     ],
     "id" : 31,
     "isWeapon" : true,
+    "itemID" : 114056,
     "nameTag" : "weaponDewdrop"
   },
   {
@@ -507,6 +542,7 @@
     ],
     "id" : 32,
     "isWeapon" : true,
+    "itemID" : 114060,
     "nameTag" : "weaponPristineSea"
   },
   {
@@ -514,12 +550,13 @@
       "11430",
       "11431",
       "12431",
+      "12514",
       "14430",
-      "14516",
-      "12514"
+      "14516"
     ],
     "id" : 33,
     "isWeapon" : true,
+    "itemID" : 114064,
     "nameTag" : "weaponSacrificialHeart"
   },
   {
@@ -533,6 +570,7 @@
     ],
     "id" : 34,
     "isWeapon" : true,
+    "itemID" : 114068,
     "nameTag" : "weaponSacredLord"
   },
   {
@@ -541,11 +579,12 @@
       "12430",
       "14427",
       "15430",
-      "15514",
-      "15431"
+      "15431",
+      "15514"
     ],
     "id" : 35,
     "isWeapon" : true,
+    "itemID" : 114072,
     "nameTag" : "weaponNightWind"
   }
 ]
