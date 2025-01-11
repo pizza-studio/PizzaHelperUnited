@@ -35,22 +35,30 @@ extension Enka {
             return String(pid.dropLast()) + lastDigi.description
         }
 
+        /// Used for EnkaDB.
         public func getGenshinProtagonistSkillDepotID(element: Enka.GameElement) -> Int? {
-            switch (element, self) {
-            case (.anemo, .protagonist(.ofLumine)): 704
-            case (.geo, .protagonist(.ofLumine)): 706
-            case (.electro, .protagonist(.ofLumine)): 707
-            case (.dendro, .protagonist(.ofLumine)): 708
-            case (.hydro, .protagonist(.ofLumine)): 703
-            case (.pyro, .protagonist(.ofLumine)): 702
-            case (.cryo, .protagonist(.ofLumine)): 705 // Deducted, might need fix in the future.
-            case (.anemo, .protagonist(.ofAether)): 504
-            case (.geo, .protagonist(.ofAether)): 506
-            case (.electro, .protagonist(.ofAether)): 505
-            case (.dendro, .protagonist(.ofAether)): 508
-            case (.hydro, .protagonist(.ofAether)): 503
-            case (.pyro, .protagonist(.ofAether)): 502
-            case (.cryo, .protagonist(.ofAether)): 505 // Deducted, might need fix in the future.
+            let trailingNumber = getGenshinProtagonistSharedSkillDepotID(element: element)
+            guard let trailingNumber else { return nil }
+            return switch self {
+            case .protagonist(.ofLumine): trailingNumber + 700
+            case .protagonist(.ofAether): trailingNumber + 500
+            default: nil
+            }
+        }
+
+        /// Used for Hakush.in APIs.
+        public func getGenshinProtagonistSharedSkillDepotID(element: Enka.GameElement) -> Int? {
+            if case let .protagonist(name) = self {
+                guard [.ofLumine, .ofAether].contains(name) else { return nil }
+            }
+            return switch (element, self) {
+            case (.anemo, .protagonist): 4
+            case (.geo, .protagonist): 6
+            case (.electro, .protagonist): 7
+            case (.dendro, .protagonist): 8
+            case (.hydro, .protagonist): 3
+            case (.pyro, .protagonist): 2
+            case (.cryo, .protagonist): 5 // Deducted, might need fix in the future.
             default: nil
             }
         }
