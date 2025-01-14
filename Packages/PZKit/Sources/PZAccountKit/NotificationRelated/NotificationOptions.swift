@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import Defaults
+import Defaults
 import Foundation
 import PZBaseKit
 import SwiftUI
@@ -25,7 +25,7 @@ extension Pizza.SupportedGame {
 
 // MARK: - NotificationOptions
 
-public struct NotificationOptions: AbleToCodeSendHash, _DefaultsSerializable {
+public struct NotificationOptions: AbleToCodeSendHash, Defaults.Serializable {
     // MARK: Lifecycle
 
     public init() {}

@@ -3,7 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import AlertToast
-@preconcurrency import Defaults
+import Defaults
 import EnkaKit
 import Observation
 import PZAccountKit

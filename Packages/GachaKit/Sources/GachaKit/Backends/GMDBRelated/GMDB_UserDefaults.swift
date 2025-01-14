@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import Defaults
+import Defaults
 import Foundation
 import GachaMetaDB
 import PZBaseKit
@@ -48,9 +48,9 @@ extension Defaults.Keys {
 }
 
 #if hasFeature(RetroactiveAttribute)
-extension GachaItemMetadata: @retroactive _DefaultsSerializable {}
-extension TimeZone: @retroactive _DefaultsSerializable {}
+extension GachaItemMetadata: @retroactive Defaults.Serializable {}
+extension TimeZone: @retroactive Defaults.Serializable {}
 #else
-extension GachaItemMetadata: _DefaultsSerializable {}
-extension TimeZone: _DefaultsSerializable {}
+extension GachaItemMetadata: Defaults.Serializable {}
+extension TimeZone: Defaults.Serializable {}
 #endif

@@ -4,7 +4,7 @@
 
 #if !os(watchOS)
 
-@preconcurrency import Defaults
+import Defaults
 import PZBaseKit
 import SwiftUI
 import WallpaperKit

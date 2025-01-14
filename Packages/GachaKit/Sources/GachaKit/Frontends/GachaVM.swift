@@ -4,7 +4,7 @@
 
 import Combine
 import CoreXLSX
-@preconcurrency import Defaults
+import Defaults
 import EnkaKit
 import GachaMetaDB
 import Observation

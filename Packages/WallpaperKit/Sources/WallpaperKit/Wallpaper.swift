@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import Defaults
+import Defaults
 import Foundation
 import PZBaseKit
 
@@ -65,9 +65,9 @@ public struct Wallpaper: Identifiable, AbleToCodeSendHash {
     }
 }
 
-// MARK: _DefaultsSerializable
+// MARK: Defaults.Serializable
 
-extension Wallpaper: _DefaultsSerializable {}
+extension Wallpaper: Defaults.Serializable {}
 
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
