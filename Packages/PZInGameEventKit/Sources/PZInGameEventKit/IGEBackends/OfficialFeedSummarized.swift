@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import Defaults
+import Defaults
 import Foundation
 import PZAccountKit
 import PZBaseKit
@@ -11,7 +11,7 @@ import PZBaseKit
 
 @available(watchOS, unavailable)
 extension OfficialFeed {
-    public struct FeedEvent: AbleToCodeSendHash, Identifiable, _DefaultsSerializable {
+    public struct FeedEvent: AbleToCodeSendHash, Identifiable, Defaults.Serializable {
         public let game: Pizza.SupportedGame
         public let id: Int
         public let title: String

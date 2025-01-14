@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import Defaults
+import Defaults
 @preconcurrency import Foundation
 import PZBaseKit
 
@@ -43,6 +43,6 @@ extension Defaults.Keys {
     )
 }
 
-// MARK: - PZProfileSendable + _DefaultsSerializable
+// MARK: - PZProfileSendable + Defaults.Serializable
 
-extension PZProfileSendable: _DefaultsSerializable {}
+extension PZProfileSendable: Defaults.Serializable {}

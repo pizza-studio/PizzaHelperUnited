@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import Defaults
+import Defaults
 import Foundation
 import PZBaseKit
 
@@ -96,37 +96,37 @@ extension Defaults.Keys {
     )
 }
 
-// MARK: - ArtifactRating.Rules + _DefaultsSerializable
+// MARK: - ArtifactRating.Rules + Defaults.Serializable
 
-extension ArtifactRating.Rules: _DefaultsSerializable {}
+extension ArtifactRating.Rules: Defaults.Serializable {}
 
-// MARK: - ArtifactRating.RatingModel + _DefaultsSerializable
+// MARK: - ArtifactRating.RatingModel + Defaults.Serializable
 
-extension ArtifactRating.RatingModel: _DefaultsSerializable {}
+extension ArtifactRating.RatingModel: Defaults.Serializable {}
 
-// MARK: - Enka.EnkaDB4GI + _DefaultsSerializable
+// MARK: - Enka.EnkaDB4GI + Defaults.Serializable
 
-extension Enka.EnkaDB4GI: _DefaultsSerializable {}
+extension Enka.EnkaDB4GI: Defaults.Serializable {}
 
-// MARK: - Enka.EnkaDB4HSR + _DefaultsSerializable
+// MARK: - Enka.EnkaDB4HSR + Defaults.Serializable
 
-extension Enka.EnkaDB4HSR: _DefaultsSerializable {}
+extension Enka.EnkaDB4HSR: Defaults.Serializable {}
 
-// MARK: - Enka.QueriedProfileGI + _DefaultsSerializable
+// MARK: - Enka.QueriedProfileGI + Defaults.Serializable
 
-extension Enka.QueriedProfileGI: _DefaultsSerializable {}
+extension Enka.QueriedProfileGI: Defaults.Serializable {}
 
-// MARK: - Enka.QueriedProfileHSR + _DefaultsSerializable
+// MARK: - Enka.QueriedProfileHSR + Defaults.Serializable
 
-extension Enka.QueriedProfileHSR: _DefaultsSerializable {}
+extension Enka.QueriedProfileHSR: Defaults.Serializable {}
 
-// MARK: - Enka.PropertyType + _DefaultsSerializable
+// MARK: - Enka.PropertyType + Defaults.Serializable
 
-extension Enka.PropertyType: _DefaultsSerializable {}
+extension Enka.PropertyType: Defaults.Serializable {}
 
-// MARK: - Enka.HostType + _DefaultsSerializable
+// MARK: - Enka.HostType + Defaults.Serializable
 
-extension Enka.HostType: _DefaultsSerializable {
+extension Enka.HostType: Defaults.Serializable {
     public static func toggleEnkaDBQueryHost() {
         switch Defaults[.defaultDBQueryHost] {
         case .enkaGlobal: Defaults[.defaultDBQueryHost] = .mainlandChina
@@ -135,10 +135,10 @@ extension Enka.HostType: _DefaultsSerializable {
     }
 }
 
-// MARK: - HYQueriedModels.HYLAvatarDetail4GI + _DefaultsSerializable
+// MARK: - HYQueriedModels.HYLAvatarDetail4GI + Defaults.Serializable
 
-extension HYQueriedModels.HYLAvatarDetail4GI: _DefaultsSerializable {}
+extension HYQueriedModels.HYLAvatarDetail4GI: Defaults.Serializable {}
 
-// MARK: - HYQueriedModels.HYLAvatarDetail4HSR + _DefaultsSerializable
+// MARK: - HYQueriedModels.HYLAvatarDetail4HSR + Defaults.Serializable
 
-extension HYQueriedModels.HYLAvatarDetail4HSR: _DefaultsSerializable {}
+extension HYQueriedModels.HYLAvatarDetail4HSR: Defaults.Serializable {}

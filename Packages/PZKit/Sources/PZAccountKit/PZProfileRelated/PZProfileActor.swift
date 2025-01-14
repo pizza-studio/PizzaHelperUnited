@@ -4,7 +4,7 @@
 
 import Combine
 @preconcurrency import CoreData
-@preconcurrency import Defaults
+import Defaults
 import Foundation
 import PZBaseKit
 import SwiftData
