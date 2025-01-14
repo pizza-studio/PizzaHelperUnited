@@ -27,7 +27,7 @@ let package = Package(
             url: "https://github.com/prisma-ai/Sworm.git", .upToNextMajor(from: "1.1.0")
         ),
         .package(
-            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "8.2.0")
+            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.1")
         ),
         .package(
             url: "https://github.com/CoreOffice/CoreXLSX", .upToNextMajor(from: "0.14.2")
