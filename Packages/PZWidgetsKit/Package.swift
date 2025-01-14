@@ -18,7 +18,7 @@ let package = Package(
         .package(path: "../PZKit"),
         .package(path: "../WallpaperKit"),
         .package(
-            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "8.2.0")
+            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.1")
         ),
         .package(
             url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")
