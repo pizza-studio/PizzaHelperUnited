@@ -70,7 +70,7 @@ extension ArtifactRating {
         )!
     }
 
-    public static func calculateSteps(
+    public static func calculateCounts(
         against appendPropIdList: [Int],
         using db: [String: Enka.PropertyType],
         dbExpiryHandler: (() -> Void)? = nil

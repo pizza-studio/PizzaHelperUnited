@@ -58,11 +58,11 @@ extension ArtifactRating.ARSputnik {
         countDB4GI = try await Self.fetchARDBData(type: .countDB4GI, decodingTo: [String: Enka.PropertyType].self)
     }
 
-    func calculateSteps4GI(
+    func calculateCounts4GI(
         against appendPropIdList: [Int]
     )
         -> [Enka.PropertyType: Int] {
-        ArtifactRating.calculateSteps(against: appendPropIdList, using: countDB4GI) {
+        ArtifactRating.calculateCounts(against: appendPropIdList, using: countDB4GI) {
             Task { @MainActor in
                 try? await self.onlineUpdate()
             }
