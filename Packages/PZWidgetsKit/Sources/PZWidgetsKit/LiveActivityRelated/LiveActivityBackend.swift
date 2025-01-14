@@ -5,7 +5,7 @@
 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
 import ActivityKit
 #endif
-@preconcurrency import Defaults
+import Defaults
 import Foundation
 import PZAccountKit
 import PZBaseKit

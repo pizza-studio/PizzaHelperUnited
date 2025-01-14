@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import Defaults
+import Defaults
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols

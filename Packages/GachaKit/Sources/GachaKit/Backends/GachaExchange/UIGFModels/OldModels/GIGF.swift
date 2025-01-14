@@ -4,7 +4,7 @@
 
 import CoreData
 import CoreXLSX
-@preconcurrency import Defaults
+import Defaults
 import Foundation
 import GachaMetaDB
 @preconcurrency import NaturalLanguage
