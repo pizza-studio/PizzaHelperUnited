@@ -62,7 +62,11 @@ public struct WallpaperGalleryViewContent: View {
     }
 
     @ViewBuilder var coreBodyView: some View {
-        StaggeredGrid(columns: columns, list: searchResults, content: { currentCard in
+        StaggeredGrid(
+            columns: columns,
+            showsIndicators: true,
+            list: searchResults
+        ) { currentCard in
             draw(wallpaper: currentCard)
                 .matchedGeometryEffect(id: currentCard.id, in: animation)
                 .contextMenu {
@@ -87,7 +91,7 @@ public struct WallpaperGalleryViewContent: View {
                     }
                     #endif
                 }
-        })
+        }
         .searchable(text: $searchText, placement: searchFieldPlacement)
         .padding(.horizontal)
         .animation(.easeInOut, value: columns)

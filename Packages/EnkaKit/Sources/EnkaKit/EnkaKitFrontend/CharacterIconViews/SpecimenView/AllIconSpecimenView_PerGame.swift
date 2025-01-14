@@ -41,7 +41,11 @@ public struct CharSpecimen: Identifiable, Hashable {
         -> some View {
         let specimens = Self.allSpecimens(for: game, supplementalIDs: supplementalIDs?())
         let inner = StaggeredGrid(
-            columns: columns, outerPadding: false, scroll: scroll, list: specimens
+            columns: columns,
+            showsIndicators: !scroll,
+            outerPadding: false,
+            scroll: scroll,
+            list: specimens
         ) { specimen in
             specimen.render(size: size, cutType: cutType)
                 .matchedGeometryEffect(id: specimen.id, in: animation)
