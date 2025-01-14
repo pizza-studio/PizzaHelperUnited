@@ -201,7 +201,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
 
         var countMap: [Enka.PropertyType: Int] = [:]
         if let appendPropIDs = artifactDataObj.appendPropIdList {
-            countMap = ArtifactRating.ARSputnik.shared.calculateSteps4GI(against: appendPropIDs)
+            countMap = ArtifactRating.ARSputnik.shared.calculateCounts4GI(against: appendPropIDs)
         }
 
         equipItem.flat.reliquarySubstats?.forEach { currentRecord in
