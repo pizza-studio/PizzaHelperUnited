@@ -3,7 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Defaults
-@preconcurrency import Foundation
+import Foundation
 import PZBaseKit
 
 extension UserDefaults {
