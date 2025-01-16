@@ -23,6 +23,7 @@ extension Defaults.Keys {
 
 public enum ASReviewHandler {
     public static let navTitle = "aboutKit.appStoreReview.navTitle".i18nAboutKit
+    public static let asURLString = "https://apps.apple.com/app/id1635319193"
 
     public static func requestReview() {
         guard Pizza.isAppStoreRelease else { return }
@@ -68,9 +69,9 @@ public enum ASReviewHandler {
         if currentVersion != lastVersionPromptedForReview {
             ASReviewHandler.requestReview()
         } else {
-            guard let writeReviewURL =
-                URL(string: "https://apps.apple.com/app/id1635319193?action=write-review")
-            else { fatalError("Expected a valid URL") }
+            guard let writeReviewURL = URL(string: "\(asURLString)?action=write-review") else {
+                fatalError("Expected a valid URL")
+            }
             Task { @MainActor in
                 #if os(iOS) || targetEnvironment(macCatalyst)
                 UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
