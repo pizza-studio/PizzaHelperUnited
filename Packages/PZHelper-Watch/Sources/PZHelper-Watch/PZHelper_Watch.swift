@@ -28,6 +28,9 @@ extension PZHelperWatch {
                     Task { @MainActor in
                         await PZProfileActor.shared.syncAllDataToUserDefaults()
                     }
+                    Task {
+                        await ASMetaSputnik.shared.updateMeta()
+                    }
                 }
         }
         .modelContainer(modelContainer)
