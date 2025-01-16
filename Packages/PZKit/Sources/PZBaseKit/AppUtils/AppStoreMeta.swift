@@ -5,6 +5,41 @@
 import Defaults
 import Foundation
 import Observation
+import SwiftUI
+
+// MARK: - ASUpdateNoticeView
+
+public struct ASUpdateNoticeView: View {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
+    public var body: some View {
+        Group {
+            let url = URL(string: "https://apps.apple.com/app/id1635319193")
+            if let meta = cachedAppStoreMeta, meta.isNewerThanCurrentVersion, let url {
+                #if !os(watchOS)
+                Link(destination: url) {
+                    Text("app.version.updatesAvailableAtAppStore:\(meta.version)", bundle: .module)
+                }
+                #else
+                Text("app.version.updatesAvailableAtAppStore:\(meta.version)", bundle: .module)
+                #endif
+            } else {
+                EmptyView()
+            }
+        }
+        .task {
+            await ASMetaSputnik.shared.updateMeta()
+        }
+    }
+
+    // MARK: Private
+
+    @Default(.cachedAppStoreMeta) private var cachedAppStoreMeta: ASMeta?
+}
 
 // MARK: - ASMetaSputnik
 
