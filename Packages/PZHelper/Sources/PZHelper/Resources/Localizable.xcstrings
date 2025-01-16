@@ -12344,6 +12344,234 @@
         }
       }
     },
+    "settings.privacy.SnapHutao.email.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao ID-E-Mail"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao ID Email"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correo electrónico del ID de Snap Hutao"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao ID Email"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail d'identifiant Snap Hutao"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail ID di Snap Hutao"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao ID メール"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao ID 이메일"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Электронная почта Snap Hutao ID"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email ID Snap Hutao"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao 账号电邮"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao 帳號電郵"
+          }
+        }
+      }
+    },
+    "settings.privacy.SnapHutao.enforceEmail.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einreichung an HutaoDB anhalten, bis die E-Mail hier ausgefüllt ist"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halt submission to HutaoDB until email is filled here"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detener el envío a HutaoDB hasta que el correo electrónico esté completado aquí"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Itigil ang pagsusumite sa HutaoDB hangga't hindi napupunan ang email dito"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrêter la soumission à HutaoDB jusqu'à ce que l'e-mail soit renseigné ici"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interrompi l'invio a HutaoDB finché l'e-mail non viene compilata qui"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールがここで記入されるまで、HutaoDBへの提出を控える"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HutaoDB 로 제출하기 전에 이메일을 여기에 입력하세요"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Остановить отправку в HutaoDB, пока здесь не будет заполнен адрес электронной почты"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dừng gửi đến HutaoDB cho đến khi email được điền vào đây"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在此处填写电子邮件前，停止提交至 HutaoDB"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在此處填寫電子郵件前，停止提交至 HutaoDB"
+          }
+        }
+      }
+    },
+    "settings.privacy.SnapHutao.footer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao kann einem Benutzer einige Vorteile gewähren, wenn das reservierte Benutzername-Feld (E-Mail-Adresse) im hochgeladenen Kampfreport korrekt ausgefüllt ist. Snap Hutao behält sich das Recht vor, weitere Details zu erläutern. Wenn der Erzwinger-Schalter aktiviert ist, werden Ihre Kampfreports **nur dann** an HutaoDB hochgeladen, wenn das reservierte Benutzername-Feld **nicht** leer ist."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao may release some benefits to a user if the reserved username (email address) field is correctly supplied in the uploaded battle report. Snap Hutao reserves the rights to explain the further details. If the enforcer toggle is ON, your battle reports will be uploaded to HutaoDB **only if** the reserved username field is **not** blank."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao puede ofrecer algunos beneficios a un usuario si el campo de nombre de usuario reservado (dirección de correo electrónico) se completa correctamente en el informe de batalla subido. Snap Hutao se reserva el derecho de explicar los detalles adicionales. Si el interruptor de refuerzo está activado, tus informes de batalla se subirán a HutaoDB **solo si** el campo de nombre de usuario reservado **no** está vacío."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maaaring magbigay ang Snap Hutao ng ilang benepisyo sa gumagamit kung ang nakalaan na field ng username (email address) ay tama ang pagkakagamit sa ini-upload na ulat ng labanan. Inilalaan ng Snap Hutao ang karapatang ipaliwanag ang mga karagdagang detalye. Kung naka-ON ang enforcer toggle, ang iyong mga ulat ng labanan ay ia-upload sa HutaoDB **kung at lamang kung** ang nakalaan na field ng username ay **hindi** blangko."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao peut offrir certains avantages à un utilisateur si le champ de nom d'utilisateur réservé (adresse e-mail) est correctement renseigné dans le rapport de combat téléchargé. Snap Hutao se réserve le droit d'expliquer les détails supplémentaires. Si l'option de force est activée, vos rapports de combat seront téléchargés sur HutaoDB **uniquement si** le champ de nom d'utilisateur réservé n'est **pas** vide."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao potrebbe offrire alcuni vantaggi a un utente se il campo del nome utente riservato (indirizzo email) è compilato correttamente nel rapporto di battaglia caricato. Snap Hutao si riserva il diritto di spiegare ulteriori dettagli. Se l'interruttore di enforcement è ATTIVO, i tuoi rapporti di battaglia saranno caricati su HutaoDB **solo se** il campo del nome utente riservato **non** è vuoto."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutaoは、アップロードされた作戦報告に「予約済みのユーザー名（メールアドレス）」フィールドが正しく入力されている場合、ユーザーにいくつかの特典を提供する場合があります。詳細の説明権はSnap Hutaoが留保します。強要スイッチがONの場合、「予約済みのユーザー名」フィールドが**空ではない**場合に限り、作戦報告がHutaoDBにアップロードされます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao는 업로드된 전투 보고서에 예약된 사용자 이름(이메일 주소) 필드가 올바르게 제공된 경우 사용자에게 일부 혜택을 제공할 수 있습니다. Snap Hutao는 추가 세부 정보를 설명할 권리를 보유합니다. 시행 토글이 켜져 있는 경우 예약된 사용자 이름 필드가 **비어 있지 않을 때만** 전투 보고서가HutaoDB에 업로드됩니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao может предоставить пользователю определенные преимущества, если поле зарезервированного имени пользователя (адрес электронной почты) будет правильно заполнено в загруженном боевом отчете. Snap Hutao оставляет за собой право объяснить дополнительные детали. Если переключатель принудительного режима включен, ваши боевые отчеты будут загружаться в HutaoDB **только если** поле зарезервированного имени пользователя **не** пустое."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao có thể cung cấp một số lợi ích cho người dùng nếu trường tên người dùng được đặt trước (địa chỉ email) được điền đúng trong báo cáo chiến đấu đã tải lên. Snap Hutao bảo lưu quyền giải thích chi tiết thêm. Nếu công tắc thực thi được BẬT, báo cáo chiến đấu của bạn sẽ được tải lên HutaoDB **chỉ khi** trường tên người dùng được đặt trước **không** trống."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您在上传个人战报时填写了此处的「用户预留名称（电子邮件地址）」字段，Snap Hutao 可能会为您提供专属福利。Snap Hutao 对此福利的具体内容及解释权保留最终解释权。请注意，开启了此处的强制开关之后，只有在您填写了「用户预留名称」的情况下，您的个人战报才可能会上传到 HutaoDB。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "若您在上傳個人戰報時已填寫此處的「使用者預留名稱（電子郵件地址）」欄位，Snap Hutao 可能會為您提供專屬福利。Snap Hutao 對此福利的具體內容及解釋權保留最終解釋權。請注意，開啟了此處的強制開關之後，只有在您填寫了「使用者預留名稱」的情況下，您的個人戰報才可能會上傳到 HutaoDB。"
+          }
+        }
+      }
+    },
     "settings.privacy.title" : {
       "extractionState" : "manual",
       "localizations" : {
