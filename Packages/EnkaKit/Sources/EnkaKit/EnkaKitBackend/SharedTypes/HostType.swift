@@ -30,6 +30,13 @@ extension Enka {
 
         // MARK: Public
 
+        public var textTag: String {
+            switch self {
+            case .mainlandChina: "China"
+            case .enkaGlobal: "Global"
+            }
+        }
+
         public var viceVersa: Self {
             switch self {
             case .enkaGlobal: .mainlandChina

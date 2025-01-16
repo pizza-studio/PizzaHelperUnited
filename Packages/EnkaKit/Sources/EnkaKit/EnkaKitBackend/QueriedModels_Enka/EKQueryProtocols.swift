@@ -3,11 +3,13 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Defaults
+import Foundation
 
 // MARK: - EKQueryResultProtocol
 
 public protocol EKQueryResultProtocol: Decodable, Hashable, Sendable, Equatable, Sendable {
     associatedtype DBType: EnkaDBProtocol where DBType.QueriedResult == Self
+    typealias QueriedProfileType = DBType.QueriedProfile
     var detailInfo: DBType.QueriedProfile? { get set }
     var uid: String? { get set }
     var message: String? { get }
@@ -15,8 +17,28 @@ public protocol EKQueryResultProtocol: Decodable, Hashable, Sendable, Equatable,
 }
 
 extension EKQueryResultProtocol {
-    public static func queryRAW(uid: String) async throws -> Self {
-        try await Enka.Sputnik.fetchEnkaQueryResultRAW(uid, type: Self.self)
+    public static func queryRAW(
+        uid: String,
+        dateWhenNextRefreshable nextAvailableDate: Date? = nil
+    ) async throws
+        -> Self {
+        try await Enka.Sputnik.fetchEnkaQueryResultRAW(
+            uid,
+            type: Self.self,
+            dateWhenNextRefreshable: nextAvailableDate
+        ).result
+    }
+
+    public static func queryProfile(
+        uid: String,
+        dateWhenNextRefreshable nextAvailableDate: Date? = nil
+    ) async throws
+        -> Self.QueriedProfileType {
+        try await Enka.Sputnik.fetchEnkaQueryResultRAW(
+            uid,
+            type: Self.self,
+            dateWhenNextRefreshable: nextAvailableDate
+        ).profile
     }
 }
 
