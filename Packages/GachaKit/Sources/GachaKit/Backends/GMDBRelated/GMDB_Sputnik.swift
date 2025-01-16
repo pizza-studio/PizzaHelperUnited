@@ -34,21 +34,23 @@ extension GachaMeta {
         // MARK: Lifecycle
 
         public init() {
-            Defaults.publisher(.localGachaMetaDBReversed4GI).sink { _ in
-                Task.detached { @MainActor in
-                    self.reversedDB4GI = Defaults[.localGachaMetaDBReversed4GI]
+            /// These domestic properties are `@ObservationTracked` by the `@Observable` macro
+            /// applied to this class, hence no worries.
+            Task {
+                for await newDB in Defaults.updates(.localGachaMetaDBReversed4GI) {
+                    self.reversedDB4GI = newDB
                 }
-            }.store(in: &cancellables)
-            Defaults.publisher(.localGachaMetaDB4GI).sink { _ in
-                Task.detached { @MainActor in
-                    self.mainDB4GI = Defaults[.localGachaMetaDB4GI]
+            }
+            Task {
+                for await newDB in Defaults.updates(.localGachaMetaDB4GI) {
+                    self.mainDB4GI = newDB
                 }
-            }.store(in: &cancellables)
-            Defaults.publisher(.localGachaMetaDB4HSR).sink { _ in
-                Task.detached { @MainActor in
-                    self.mainDB4HSR = Defaults[.localGachaMetaDB4HSR]
+            }
+            Task {
+                for await newDB in Defaults.updates(.localGachaMetaDB4HSR) {
+                    self.mainDB4HSR = newDB
                 }
-            }.store(in: &cancellables)
+            }
         }
 
         // MARK: Public
@@ -60,10 +62,6 @@ extension GachaMeta {
         public func reverseQuery4GI(for name: String) -> Int? {
             reversedDB4GI[name]
         }
-
-        // MARK: Private
-
-        @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
     }
 }
 

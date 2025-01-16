@@ -19,13 +19,16 @@ extension ArtifactRating {
         private init() {
             /// Both db4GI and db4HSR are `@ObservationTracked` by the `@Observable` macro
             /// applied to this class, hence no worries.
-            Defaults.publisher(.artifactRatingDB)
-                .sink { newDB in
-                    self.arDB = newDB.newValue
-                }.store(in: &cancellables)
-            Defaults.publisher(.artifactCountDB4GI).sink { newDB in
-                self.countDB4GI = newDB.newValue
-            }.store(in: &cancellables)
+            Task {
+                for await newDB in Defaults.updates(.artifactRatingDB) {
+                    self.arDB = newDB
+                }
+            }
+            Task {
+                for await newDB in Defaults.updates(.artifactCountDB4GI) {
+                    self.countDB4GI = newDB
+                }
+            }
         }
 
         // MARK: Public
@@ -34,10 +37,6 @@ extension ArtifactRating {
 
         public var arDB: ArtifactRating.ModelDB = Defaults[.artifactRatingDB]
         public var countDB4GI: [String: Enka.PropertyType] = Defaults[.artifactCountDB4GI]
-
-        // MARK: Private
-
-        @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
     }
 }
 
