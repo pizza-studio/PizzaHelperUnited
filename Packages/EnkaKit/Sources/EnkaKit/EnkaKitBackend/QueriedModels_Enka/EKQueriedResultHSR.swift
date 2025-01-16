@@ -9,6 +9,23 @@ import PZBaseKit
 
 extension Enka {
     public struct QueriedResultHSR: AbleToCodeSendHash, EKQueryResultProtocol {
+        // MARK: Lifecycle
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.detailInfo = try container.decodeIfPresent(QueriedProfileHSR.self, forKey: .detailInfo)
+            self.uid = try container.decodeIfPresent(String.self, forKey: .uid)
+            self.detail = try container.decodeIfPresent(String.self, forKey: .detail)
+            let primaryMessage = try container.decodeIfPresent(String.self, forKey: .message)
+            var secondaryMessage = try container.decodeIfPresent(String.self, forKey: .detail)
+            if let message2nd = secondaryMessage {
+                secondaryMessage? = "[MicroGG] \(message2nd)"
+            }
+            self.message = primaryMessage ?? secondaryMessage
+        }
+
+        // MARK: Public
+
         public typealias QueriedProfileType = Enka.QueriedProfileHSR
         public typealias DBType = Enka.EnkaDB4HSR
 
@@ -16,7 +33,19 @@ extension Enka {
 
         public var detailInfo: QueriedProfileHSR?
         public var uid: String?
-        public let message: String?
+        /// Enka 偶尔会返回错误讯息。
+        public var message: String?
+        // MicroGG 错误讯息。
+        public var detail: String?
+
+        // MARK: Private
+
+        private enum CodingKeys: CodingKey {
+            case detailInfo
+            case uid
+            case message
+            case detail
+        }
     }
 }
 
