@@ -34,6 +34,8 @@ struct AppSettingsTabPage: View {
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
+                ASUpdateNoticeView()
+                    .font(.footnote)
                 Section {
                     NavigationLink(value: Nav.profileManager) {
                         Label("profileMgr.manage.title".i18nPZHelper, systemSymbol: .personTextRectangleFill)

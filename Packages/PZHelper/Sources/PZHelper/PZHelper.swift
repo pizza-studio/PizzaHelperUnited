@@ -5,6 +5,7 @@
 import GachaKit
 import PZAboutKit
 import PZAccountKit
+import PZBaseKit
 import SwiftData
 import SwiftUI
 
@@ -28,6 +29,11 @@ extension PZHelper {
                         startupTasks()
                     }
                     isApplicationBooted = true
+                }
+                .onAppBecomeActive {
+                    Task {
+                        await ASMetaSputnik.shared.updateMeta()
+                    }
                 }
         }
         .windowResizability(.contentMinSize)
