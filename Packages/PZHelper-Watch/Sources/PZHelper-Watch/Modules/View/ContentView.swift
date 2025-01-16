@@ -42,6 +42,8 @@ public struct ContentView: View {
                 }
             } else {
                 List {
+                    ASUpdateNoticeView()
+                        .font(.footnote)
                     ForEach(accounts, id: \.uuid) { account in
                         DetailNavigator(account: account)
                     }
