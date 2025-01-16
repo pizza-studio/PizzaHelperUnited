@@ -19,6 +19,9 @@ struct TodayTabPage: View {
     var body: some View {
         NavigationStack {
             Form {
+                ASUpdateNoticeView()
+                    .font(.footnote)
+                    .listRowMaterialBackground()
                 OfficialFeed.OfficialFeedSection(game: $game.animation()) {
                     todayMaterialNav
                 }

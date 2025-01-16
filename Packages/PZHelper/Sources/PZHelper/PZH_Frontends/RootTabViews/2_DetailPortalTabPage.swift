@@ -44,6 +44,9 @@ struct DetailPortalTabPage: View {
     }
 
     @ViewBuilder var formContent: some View {
+        ASUpdateNoticeView()
+            .font(.footnote)
+            .listRowMaterialBackground()
         let query4GI = CaseQuerySection(theDB: sharedDB.db4GI, focus: $uidInputFieldFocus)
             .listRowMaterialBackground()
         let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)

@@ -24,6 +24,8 @@ struct UtilsTabPage: View {
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
             List(selection: $nav) {
+                ASUpdateNoticeView()
+                    .font(.footnote)
                 Section {
                     NavigationLink(value: Nav.gachaManager) {
                         Label {
