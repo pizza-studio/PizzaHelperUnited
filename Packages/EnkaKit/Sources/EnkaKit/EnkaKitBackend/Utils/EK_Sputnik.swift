@@ -20,37 +20,36 @@ extension Enka {
         private init() {
             /// Both db4GI and db4HSR are `@ObservationTracked` by the `@Observable` macro
             /// applied to this class, hence no worries.
-            Defaults.publisher(.enkaDBData4GI).sink { newDB in
-                Task.detached { @MainActor in
-                    self.db4GI.update(new: newDB.newValue)
+            Task {
+                for await newDB in Defaults.updates(.enkaDBData4GI) {
+                    await self.db4GI.update(new: newDB)
                 }
-            }.store(in: &cancellables)
-            Defaults.publisher(.enkaDBData4HSR).sink { newDB in
-                Task.detached { @MainActor in
-                    self.db4HSR.update(new: newDB.newValue)
+            }
+            Task {
+                for await newDB in Defaults.updates(.enkaDBData4HSR) {
+                    await self.db4HSR.update(new: newDB)
                 }
-            }.store(in: &cancellables)
-
-            Defaults.publisher(.artifactRatingRules).sink { _ in
-                Task.detached { @MainActor in
+            }
+            Task {
+                for await _ in Defaults.updates(.artifactRatingRules) {
                     self.tellViewsToResummarizeEnkaProfiles() // 选项有变更时，给圣遗物重新评分。
                 }
-            }.store(in: &cancellables)
-            Defaults.publisher(.useRealCharacterNames).sink { _ in
-                Task.detached { @MainActor in
+            }
+            Task {
+                for await _ in Defaults.updates(.useRealCharacterNames) {
                     self.tellViewsToResummarizeEnkaProfiles()
                 }
-            }.store(in: &cancellables)
-            Defaults.publisher(.forceCharacterWeaponNameFixed).sink { _ in
-                Task.detached { @MainActor in
+            }
+            Task {
+                for await _ in Defaults.updates(.forceCharacterWeaponNameFixed) {
                     self.tellViewsToResummarizeEnkaProfiles()
                 }
-            }.store(in: &cancellables)
-            Defaults.publisher(.customizedNameForWanderer).sink { _ in
-                Task.detached { @MainActor in
+            }
+            Task {
+                for await _ in Defaults.updates(.customizedNameForWanderer) {
                     self.tellViewsToResummarizeEnkaProfiles()
                 }
-            }.store(in: &cancellables)
+            }
         }
 
         // MARK: Public
@@ -74,10 +73,6 @@ extension Enka {
                 eventForResummarizingHoYoLABProfiles = .init()
             }
         }
-
-        // MARK: Private
-
-        @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
     }
 }
 
