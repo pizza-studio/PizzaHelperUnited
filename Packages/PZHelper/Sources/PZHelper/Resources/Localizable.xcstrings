@@ -12421,82 +12421,82 @@
         }
       }
     },
-    "settings.profile.advanced.autoDeduplication.title": {
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Automatically deduplicate local profiles"
-        }
-      },
-      "zh-Hans": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "自动去除重复的本地账号"
-        }
-      },
-      "zh-Hant": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "自動去除重複的本機帳號"
-        }
-      },
-      "fil": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Awtomatikong alisin ang mga duplicate na lokal na profile"
-        }
-      },
-      "fr": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Dédupliquer automatiquement les profils locaux"
-        }
-      },
-      "de": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Lokale Profile automatisch deduplizieren"
-        }
-      },
-      "it": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Deduplicare automaticamente i profili locali"
-        }
-      },
-      "ja": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "重複のローカルプロファイルを自動的に排除"
-        }
-      },
-      "ko": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "로컬 프로필 자동 중복 제거"
-        }
-      },
-      "ru": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Автоматически удалять дубликаты локальных профилей"
-        }
-      },
-      "es": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Deduplicar automáticamente los perfiles locales"
-        }
-      },
-      "vi": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Tự động loại bỏ trùng lặp trong hồ sơ cục bộ"
+    "settings.profile.advanced.autoDeduplication.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokale Profile automatisch deduplizieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically deduplicate local profiles"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deduplicar automáticamente los perfiles locales"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awtomatikong alisin ang mga duplicate na lokal na profile"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dédupliquer automatiquement les profils locaux"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deduplicare automaticamente i profili locali"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重複のローカルプロファイルを自動的に排除"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로컬 프로필 자동 중복 제거"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Автоматически удалять дубликаты локальных профилей"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tự động loại bỏ trùng lặp trong hồ sơ cục bộ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自动去除重复的本地账号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動去除重複的本機帳號"
+          }
         }
       }
-    }
-  },
+    },
     "settings.profile.advanced.dbSaveLocation.footer" : {
       "localizations" : {
         "de" : {
