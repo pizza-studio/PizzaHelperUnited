@@ -35,6 +35,25 @@ struct PrivacySettingsPageContent: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
+
+            Section {
+                Toggle(isOn: $enforceReservedUserName.animation()) {
+                    Text("settings.privacy.SnapHutao.enforceEmail.title", bundle: .module)
+                }
+                if $enforceReservedUserName.animation().wrappedValue {
+                    let theLabel = Text("settings.privacy.SnapHutao.email.title", bundle: .module)
+                    TextField(
+                        "settings.privacy.SnapHutao.email.title".i18nPZHelper,
+                        text: $reservedUserNameForSnapHutao,
+                        prompt: theLabel
+                    )
+                    .fontDesign(.monospaced)
+                }
+            } header: {
+                Text(verbatim: "Snap Hutao").textCase(.none)
+            } footer: {
+                Text("settings.privacy.SnapHutao.footer", bundle: .module)
+            }
         }
         .navigationTitle("settings.privacy.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
@@ -52,4 +71,6 @@ struct PrivacySettingsPageContent: View {
     }()
 
     @Default(.allowAbyssDataCollection) private var allowAbyssDataCollection: Bool
+    @Default(.reservedUserNameForSnapHutao) private var reservedUserNameForSnapHutao: String
+    @Default(.enforceReservedUserNameForSnapHutaoSubmission) private var enforceReservedUserName: Bool
 }
