@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import Foundation
 import PZAccountKit
 import PZBaseKit
@@ -79,7 +80,10 @@ extension SnapHutao.AbyssDataPack {
         }
         self.uid = profile.uid
         self.identity = "GenshinPizzaHelper"
-        self.reservedUserName = ""
+        self.reservedUserName = Defaults[.reservedUserNameForSnapHutao]
+        if Defaults[.enforceReservedUserNameForSnapHutaoSubmission], reservedUserName.isEmpty {
+            throw AbyssCollector.ACError.otherError("Snap Hutao reserved username is empty, abort uploading.")
+        }
         var abyssData = abyssData
         if abyssData == nil {
             abyssData = try await HoYo.abyssReportData4GI(for: profile)
