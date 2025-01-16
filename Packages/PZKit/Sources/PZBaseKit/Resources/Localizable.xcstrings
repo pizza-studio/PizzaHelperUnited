@@ -1464,6 +1464,82 @@
         }
       }
     },
+    "app.version.updatesAvailableAtAppStore:%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine neuere Version (%@) dieser App ist im App Store verfügbar."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A newer version (%@) of this app is available at App Store."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una nueva versión (%@) de esta aplicación está disponible en App Store."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang mas bagong bersyon (%@) ng app na ito ay magagamit na sa App Store."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une nouvelle version (%@) de cette application est disponible sur l'App Store."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una nuova versione (%@) di questa app è disponibile su App Store."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリの新しいバージョン（%@）が App Store で利用可能です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 앱의 새 버전 (%@)이 App Store에서 이용 가능합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая версия (%@) этого приложения доступна в App Store."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phiên bản mới hơn (%@) của ứng dụng này có sẵn trên App Store."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此应用程序的更新版本（%@）已在 App Store 商店提供。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此應用程式的更新版本（%@）已在 App Store 商店提供。"
+          }
+        }
+      }
+    },
     "date.relative.today" : {
       "extractionState" : "manual",
       "localizations" : {
