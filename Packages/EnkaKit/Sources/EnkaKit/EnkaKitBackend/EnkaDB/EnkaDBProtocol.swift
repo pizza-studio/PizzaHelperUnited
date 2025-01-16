@@ -88,13 +88,7 @@ extension EnkaDBProtocol {
         -> Self.QueriedProfile {
         let existingData = QueriedProfile.locallyCachedData[uid]
         do {
-            let newData = try await Enka.Sputnik.fetchEnkaQueryResultRAW(
-                uid, type: QueriedResult.self, dateWhenNextRefreshable: nextAvailableDate
-            )
-            guard let detailInfo = newData.detailInfo else {
-                let errMsgCore = newData.message ?? "No Error Message is Given."
-                throw Enka.EKError.queryFailure(uid: uid, game: QueriedResult.game, message: errMsgCore)
-            }
+            let detailInfo = try await QueriedResult.queryProfile(uid: uid, dateWhenNextRefreshable: nextAvailableDate)
             let newMerged = detailInfo.inheritAvatars(from: existingData)
             QueriedProfile.locallyCachedData[uid] = newMerged
             return newMerged
