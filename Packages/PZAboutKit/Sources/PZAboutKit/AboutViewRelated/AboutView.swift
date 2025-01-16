@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
@@ -31,7 +32,9 @@ public struct AboutView: View {
         NavigationStack {
             Form {
                 switch isShowingCrew {
-                case false: AppAboutViewSections()
+                case false: AppAboutViewSections().task {
+                        await ASMetaSputnik.shared.updateMeta()
+                    }
                 case true: DevCrewViewSections()
                 }
             }
@@ -71,7 +74,7 @@ public struct AboutView: View {
 struct AppAboutViewSections: View {
     // MARK: Internal
 
-    typealias Link = LinkLabelItem.ItemType
+    typealias LinkType = LinkLabelItem.ItemType
 
     var body: some View {
         Section {
@@ -82,13 +85,27 @@ struct AppAboutViewSections: View {
                 titleKey: "aboutKit.ourApps.pzHelper",
                 subtitleKey: "aboutKit.ourApps.pzHelper.description"
             ) {
-                Link.github(userID: "pizza-studio/PizzaHelperUnited")
+                LinkType.github(userID: "pizza-studio/PizzaHelperUnited")
             }
         } header: {
-            if let versionIntel = try? Bundle.getAppVersionAndBuild() {
-                let versionStr = "\(versionIntel.version) Build \(versionIntel.build)"
-                Text(verbatim: versionStr)
-                    .textCase(.none)
+            HStack {
+                if let versionIntel = try? Bundle.getAppVersionAndBuild() {
+                    let versionStr = "\(versionIntel.version) Build \(versionIntel.build)"
+                    Text(verbatim: versionStr)
+                        .textCase(.none)
+                        .lineLimit(1)
+                        .fixedSize()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                let hasNewVersion = cachedAppStoreMeta?.isNewerThanCurrentVersion ?? false
+                if hasNewVersion, let url = URL(string: "https://apps.apple.com/app/id1635319193") {
+                    Link(destination: url) {
+                        Text("aboutKit.ourApps.clickHereToUpdate", bundle: .module)
+                            .textCase(.none)
+                            .lineLimit(1)
+                            .fixedSize()
+                    }
+                }
             }
         } footer: {
             Text(verbatim: "桂ICP备2023009538号-2A")
@@ -101,7 +118,7 @@ struct AppAboutViewSections: View {
                 titleKey: "aboutKit.ourApps.pzHelper4GI",
                 subtitleKey: "aboutKit.ourApps.pzHelper4GI.description"
             ) {
-                Link.github(userID: "pizza-studio/GenshinPizzaHelper")
+                LinkType.github(userID: "pizza-studio/GenshinPizzaHelper")
             }
             ContributorItem(
                 main: false,
@@ -109,7 +126,7 @@ struct AppAboutViewSections: View {
                 titleKey: "aboutKit.ourApps.pzHelper4HSR",
                 subtitleKey: "aboutKit.ourApps.pzHelper4HSR.description"
             ) {
-                Link.github(userID: "pizza-studio/HSRPizzaHelper")
+                LinkType.github(userID: "pizza-studio/HSRPizzaHelper")
             }
             ContributorItem(
                 main: false,
@@ -117,8 +134,8 @@ struct AppAboutViewSections: View {
                 titleKey: "aboutKit.ourApps.pzHelper4BA",
                 subtitleKey: "aboutKit.ourApps.pzHelper4BA.description"
             ) {
-                Link.github(userID: "pizza-studio/BAPizzaHelper")
-                Link.appStore(url: "https://apps.apple.com/app/id6455496812")
+                LinkType.github(userID: "pizza-studio/BAPizzaHelper")
+                LinkType.appStore(url: "https://apps.apple.com/app/id6455496812")
             }
         }
 
@@ -128,25 +145,25 @@ struct AppAboutViewSections: View {
             footer: Text(groupFooterText).textCase(.none)
         ) {
             ContributorItem(main: false, icon: "icon.qq", titleKey: "aboutKit.chatrooms.joinQQGroup") {
-                Link.qqChannel(id: "9z504ipbc")
-                Link.qqGroup(id: "813912474")
-                Link.qqGroup(id: "829996515")
-                Link.qqGroup(id: "736320270")
+                LinkType.qqChannel(id: "9z504ipbc")
+                LinkType.qqGroup(id: "813912474")
+                LinkType.qqGroup(id: "829996515")
+                LinkType.qqGroup(id: "736320270")
             }
             .alignmentGuide(.listRowSeparatorLeading) { d in
                 d[.leading] + 40
             }
 
             ContributorItem(main: false, icon: "icon.telegram", titleKey: "aboutKit.chatrooms.joinTelegram") {
-                Link.telegram(id: "ophelper_zh", titleOverride: "Telegram 中文频道", verbatim: true)
-                Link.telegram(id: "ophelper_en", titleOverride: "Telegram English Channel", verbatim: true)
-                Link.telegram(id: "ophelper_ru", titleOverride: "Telegram Русскоязычный Канал", verbatim: true)
+                LinkType.telegram(id: "ophelper_zh", titleOverride: "Telegram 中文频道", verbatim: true)
+                LinkType.telegram(id: "ophelper_en", titleOverride: "Telegram English Channel", verbatim: true)
+                LinkType.telegram(id: "ophelper_ru", titleOverride: "Telegram Русскоязычный Канал", verbatim: true)
             }
             .alignmentGuide(.listRowSeparatorLeading) { d in
                 d[.leading] + 40
             }
 
-            Link.discord(url: "https://discord.gg/g8nCgKsaMe").asView
+            LinkType.discord(url: "https://discord.gg/g8nCgKsaMe").asView
                 .fontWidth(.condensed).fontWeight(.bold)
         }
 
@@ -165,6 +182,8 @@ struct AppAboutViewSections: View {
     }
 
     // MARK: Private
+
+    @Default(.cachedAppStoreMeta) private var cachedAppStoreMeta: ASMeta?
 
     private var groupFooterText: String {
         var text = ""
