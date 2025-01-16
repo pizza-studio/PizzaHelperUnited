@@ -121,9 +121,7 @@ extension Enka.Sputnik {
         do {
             let url = serverType.enkaDBSourceURL(type: dataType)
             urlFinal4Debug = url
-            let (data, _) = try await URLSession.shared.data(
-                for: URLRequest(url: url)
-            )
+            let (data, _) = try await URLSession.shared.data(from: url)
             dataToParse = data
         } catch {
             print(error.localizedDescription)
@@ -131,9 +129,7 @@ extension Enka.Sputnik {
             do {
                 let url2 = serverType.viceVersa.enkaDBSourceURL(type: dataType)
                 urlFinal4Debug = url2
-                let (data, _) = try await URLSession.shared.data(
-                    for: URLRequest(url: url2)
-                )
+                let (data, _) = try await URLSession.shared.data(from: url2)
                 dataToParse = data
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
                 var successMsg = "// [Enka.Sputnik.fetchEnkaDBData] 2nd attempt succeeded."
@@ -169,12 +165,8 @@ extension Enka.Sputnik {
 extension Enka.Sputnik {
     public func queryAndSave(uid: String, game: Enka.GameType) async throws {
         switch game {
-        case .genshinImpact:
-            let fetched = try await Enka.Sputnik.fetchEnkaQueryResultRAW(uid, type: Enka.QueriedResultGI.self)
-            fetched.detailInfo?.saveToCache()
-        case .starRail:
-            let fetched = try await Enka.Sputnik.fetchEnkaQueryResultRAW(uid, type: Enka.QueriedResultHSR.self)
-            fetched.detailInfo?.saveToCache()
+        case .genshinImpact: try await Enka.QueriedResultGI.queryProfile(uid: uid).saveToCache()
+        case .starRail: try await Enka.QueriedResultHSR.queryProfile(uid: uid).saveToCache()
         case .zenlessZone: break // 临时设定。
         }
     }
@@ -188,57 +180,68 @@ extension Enka.Sputnik {
         type: T.Type,
         dateWhenNextRefreshable: Date? = nil
     ) async throws
-        -> T {
+        -> (result: T, profile: T.QueriedProfileType) {
         if let date = dateWhenNextRefreshable, date > Date() {
             print("PLAYER DETAIL FETCH 刷新太快了，请在\(date.coolingDownTimeRemaining)秒后刷新")
             throw Enka.EKError.queryTooFrequent(dateWhenRefreshable: date)
-        } else {
-            var server = Enka.HostType(uid: uid)
-            var dataToParse = Data([])
+        }
+        var server: Enka.HostType = Defaults[.defaultDBQueryHost]
+        do {
+            return try await Self.fetchEnkaQueryResultRAWPerServer(uid, type: type, server: server)
+        } catch {
+            print(error.localizedDescription)
+            print(
+                "// [Enka.Sputnik.fetchEnkaQueryResultRAW] Attempt using alternative profile query server source."
+            )
+            server = server.viceVersa
             do {
-                let (data, _) = try await URLSession.shared.data(
-                    for: URLRequest(url: server.enkaProfileQueryURL(uid: uid, game: T.game))
-                )
-                dataToParse = data
+                let result = try await Self.fetchEnkaQueryResultRAWPerServer(uid, type: type, server: server)
+                // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
+                Defaults[.defaultDBQueryHost] = server
+                return result
             } catch {
-                print(error.localizedDescription)
-                print(
-                    "// [Enka.Sputnik.fetchEnkaQueryResultRAW] Attempt using alternative profile query server source."
-                )
-                do {
-                    server = server.viceVersa
-                    let (data, _) = try await URLSession.shared.data(
-                        for: URLRequest(url: server.enkaProfileQueryURL(uid: uid, game: T.game))
-                    )
-                    dataToParse = data
-                    // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
-                    let successMsg = "// [Enka.Sputnik.fetchEnkaQueryResultRAW] 2nd attempt succeeded."
-                    print(successMsg)
-                } catch {
-                    print("// [Enka.Sputnik.fetchEnkaQueryResultRAW] Final attempt failed:")
-                    print(error.localizedDescription)
-                    throw error
-                }
-            }
-            do {
-                var requestResult = try JSONDecoder()
-                    .decode(T.self, from: dataToParse)
-                // MicroGG Genshin Results might have lack of the UID.
-                if T.game == .genshinImpact, requestResult.uid == nil {
-                    requestResult.uid = uid
-                }
-                return requestResult
-            } catch {
-                if dataToParse.isEmpty {
-                    print("// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query Failed. UID: \(uid) .")
-                } else {
-                    print(
-                        "// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query Data Parse Failed. UID: \(uid) ."
-                    )
-                }
+                print("// [Enka.Sputnik.fetchEnkaQueryResultRAW] Final attempt failed:")
                 print(error.localizedDescription)
                 throw error
             }
+        }
+    }
+
+    private static func fetchEnkaQueryResultRAWPerServer<T: EKQueryResultProtocol>(
+        _ uid: String,
+        type: T.Type,
+        server: Enka.HostType
+    ) async throws
+        -> (result: T, profile: T.QueriedProfileType) {
+        var dataToParse = Data([])
+        do {
+            let (data, _) = try await URLSession.shared.data(
+                for: URLRequest(url: server.enkaProfileQueryURL(uid: uid, game: T.game))
+            )
+            dataToParse = data
+            var requestResult = try JSONDecoder()
+                .decode(T.self, from: dataToParse)
+            // MicroGG Genshin Results might have lack of the UID.
+            if T.game == .genshinImpact, requestResult.uid == nil {
+                requestResult.uid = uid
+            }
+            guard let detailInfo = requestResult.detailInfo else {
+                let errMsgCore = requestResult.message ?? "No Error Message is Given."
+                throw Enka.EKError.queryFailure(uid: uid, game: T.game, message: errMsgCore)
+            }
+            return (requestResult, detailInfo)
+        } catch {
+            if dataToParse.isEmpty {
+                print(
+                    "// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query Failed from \(server.textTag). UID: \(uid) ."
+                )
+            } else {
+                print(
+                    "// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query Data Parse Failed from \(server.textTag). UID: \(uid) ."
+                )
+            }
+            print(error.localizedDescription)
+            throw error
         }
     }
 }
