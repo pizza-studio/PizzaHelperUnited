@@ -11,6 +11,12 @@ extension UserDefaults {
 }
 
 extension Defaults.Keys {
+    public static let cachedAppStoreMeta = Key<ASMeta?>(
+        "cachedAppStoreMeta",
+        default: nil,
+        suite: .standard
+    )
+
     /// App UI language. At least, this works with macOS. This must use the standard container.
     public static let appLanguage = Key<[String]?>(
         AppLanguage.defaultsKeyName,
