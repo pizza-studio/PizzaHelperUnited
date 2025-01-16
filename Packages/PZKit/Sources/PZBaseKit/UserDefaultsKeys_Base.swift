@@ -54,6 +54,7 @@ extension Defaults.Keys {
         suite: .baseSuite
     )
 
+    /// Default server for Genshin Daily Materials.
     public static let defaultServer = Key<String>(
         "defaultServer",
         default: "os_asia",
