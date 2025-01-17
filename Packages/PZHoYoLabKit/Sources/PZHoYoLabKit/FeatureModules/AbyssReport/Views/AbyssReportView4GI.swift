@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import EnkaKit
 import PZAccountKit
 import PZBaseKit
@@ -41,6 +42,11 @@ public struct AbyssReportView4GI: AbyssReportView {
 
     @ViewBuilder var contents: some View {
         Form {
+            if enforceReservedUserName4SH, reservedUserName4SH.isEmpty {
+                Text("hylKit.abyssReport.gi.SnapHutaoEmailEmptyNotice", bundle: .module)
+                    .font(.footnote)
+                    .foregroundStyle(.orange)
+            }
             stats
             floorList
         }
@@ -75,6 +81,9 @@ public struct AbyssReportView4GI: AbyssReportView {
     @State private var containerWidth: CGFloat = 320
     @StateObject private var orientation = DeviceOrientation()
     @Namespace private var animation
+
+    @Default(.reservedUserNameForSnapHutao) private var reservedUserName4SH: String
+    @Default(.enforceReservedUserNameForSnapHutaoSubmission) private var enforceReservedUserName4SH: Bool
 
     private var columns: Int { min(max(Int(floor($containerWidth.wrappedValue / 200)), 2), 4) }
 }
