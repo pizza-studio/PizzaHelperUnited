@@ -38,12 +38,12 @@ struct PrivacySettingsPageContent: View {
 
             Section {
                 Toggle(isOn: $enforceReservedUserName.animation()) {
-                    Text("settings.privacy.SnapHutao.enforceEmail.title", bundle: .module)
+                    Text("settings.privacy.SnapHutao.enforceUsername.title", bundle: .module)
                 }
                 if $enforceReservedUserName.animation().wrappedValue {
-                    let theLabel = Text("settings.privacy.SnapHutao.email.title", bundle: .module)
+                    let theLabel = Text("settings.privacy.SnapHutao.username.title", bundle: .module)
                     TextField(
-                        "settings.privacy.SnapHutao.email.title".i18nPZHelper,
+                        "settings.privacy.SnapHutao.username.title".i18nPZHelper,
                         text: $reservedUserNameForSnapHutao,
                         prompt: theLabel
                     )
