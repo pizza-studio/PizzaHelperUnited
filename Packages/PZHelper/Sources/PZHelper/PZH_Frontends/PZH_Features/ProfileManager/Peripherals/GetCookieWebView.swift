@@ -12,7 +12,7 @@ private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
     /// 国际服尽量避免使用 HoYoLab 论坛社区的页面，免得 Apple 审核员工瞎基蔔乱点之后找事。
     switch (region, region.game) {
     case (.miyoushe, _): "https://user.mihoyo.com/#/login/captcha"
-    case (.hoyoLab, .genshinImpact): "https://act.hoyolab.com/ys/event/calculator-sea/"
+    case (.hoyoLab, .genshinImpact): "https://act.hoyolab.com/app/community-game-records-sea/m.html#/ys"
     case (.hoyoLab, .starRail): "https://act.hoyolab.com/app/community-game-records-sea/rpg/m.html#/hsr"
     case (.hoyoLab, .zenlessZone): "https://act.hoyolab.com/app/zzz-game-record/index.html#/zzz"
     }
