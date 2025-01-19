@@ -104,7 +104,11 @@ public struct GachaRootView: View {
                         }
                         Divider()
                         Button {
+                            let remoteChangesAvailable = GachaActor.remoteChangesAvailable
                             theVM.rebuildGachaUIDList()
+                            if remoteChangesAvailable {
+                                theVM.updateMappedEntriesByPools(immediately: false)
+                            }
                         } label: {
                             Label(
                                 "gachaKit.menu.rebuildGachaUIDList".i18nGachaKit,
