@@ -20,8 +20,22 @@ public struct AvatarStatCollectionTabView: View {
     ) {
         self._showingCharacterIdentifier = selectedAvatarID
         self.onClose = onClose
-        self.summarizedAvatars = summarizedAvatars
+        self.isEnka = summarizedAvatars.first?.isEnka ?? true
+        if isEnka {
+            self.summarizedAvatars = summarizedAvatars
+        } else {
+            self.summarizedAvatars = summarizedAvatars.stableSorted {
+                $0.mainInfo.element.tourID < $1.mainInfo.element.tourID
+            }
+        }
         self.allIDs = summarizedAvatars.map(\.id)
+        var sortedCharIDMapNew = [Enka.GameElement: [CharNameID]]()
+        self.summarizedAvatars.forEach {
+            sortedCharIDMapNew[$0.mainInfo.element, default: []].append(
+                .init(id: $0.mainInfo.uniqueCharId, name: $0.mainInfo.name)
+            )
+        }
+        self.sortedCharIDMap = sortedCharIDMapNew
     }
 
     // MARK: Public
@@ -123,10 +137,29 @@ public struct AvatarStatCollectionTabView: View {
                     Text("enka.ASCV.summarzeToClipboard.asMD", bundle: .module)
                 }
                 Divider()
-                ForEach(summarizedAvatars) { theAvatar in
-                    Button(theAvatar.mainInfo.name) {
-                        withAnimation {
-                            showingCharacterIdentifier = theAvatar.mainInfo.uniqueCharId
+                if isEnka {
+                    ForEach(summarizedAvatars) { theAvatar in
+                        Button(theAvatar.mainInfo.name) {
+                            withAnimation {
+                                showingCharacterIdentifier = theAvatar.mainInfo.uniqueCharId
+                            }
+                        }
+                    }
+                } else {
+                    let allElements = Enka.GameElement.allCases.sorted { $0.tourID < $1.tourID }
+                    ForEach(allElements, id: \.tourID) { currentElement in
+                        if let avatarsOfThisElement = sortedCharIDMap[currentElement] {
+                            Menu {
+                                ForEach(avatarsOfThisElement) { charNameID in
+                                    Button(charNameID.name) {
+                                        withAnimation {
+                                            showingCharacterIdentifier = charNameID.id
+                                        }
+                                    }
+                                }
+                            } label: {
+                                Text(verbatim: currentElement.localizedName)
+                            }
                         }
                     }
                 }
@@ -148,15 +181,22 @@ public struct AvatarStatCollectionTabView: View {
 
     // MARK: Private
 
+    private struct CharNameID: Identifiable, Sendable {
+        let id: String
+        let name: String
+    }
+
     @State private var showTabViewIndex = false
     @Binding private var showingCharacterIdentifier: String
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
+    private let isEnka: Bool
     private let summarizedAvatars: [Enka.AvatarSummarized]
     private let allIDs: [String]
     private let onClose: (() -> Void)?
     private let bottomSpacerHeight: CGFloat = 20
+    private let sortedCharIDMap: [Enka.GameElement: [CharNameID]]
     @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
 
     private var avatar: Enka.AvatarSummarized? {
