@@ -273,7 +273,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
             return nil
         }
         self.avatarLevel = hylRAW.base.level
-        self.constellation = hylRAW.constellations.map(\.isActived).reduce(0) { $1 ? $0 + 1 : 0 }
+        self.constellation = hylRAW.constellations.map(\.isActived).reduce(0) { $1 ? $0 + 1 : $0 }
         self.baseSkills = baseSkillSet
         self.uniqueCharId = charID
         self.element = theElement

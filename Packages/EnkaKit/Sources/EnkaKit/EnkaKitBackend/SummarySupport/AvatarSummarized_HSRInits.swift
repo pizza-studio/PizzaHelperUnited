@@ -195,7 +195,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
             return nil
         }
         self.avatarLevel = hylRAW.level
-        self.constellation = hylRAW.eidolonResonanceList.map(\.isUnlocked).reduce(0) { $1 ? $0 + 1 : 0 }
+        self.constellation = hylRAW.eidolonResonanceList.map(\.isUnlocked).reduce(0) { $1 ? $0 + 1 : $0 }
         self.baseSkills = baseSkillSet
         self.uniqueCharId = charIDStr
         self.element = theElement
