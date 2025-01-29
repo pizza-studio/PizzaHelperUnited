@@ -133,7 +133,10 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         by gachaURLString: String
     ) throws(ParseGachaURLError)
         -> GachaRequestAuthentication {
-        guard let url = URL(string: gachaURLString), gachaURLString.contains("api/getGachaLog"),
+        var validDomain = false
+        validDomain = validDomain || gachaURLString.contains("api/getGachaLog")
+        validDomain = validDomain || gachaURLString.contains(try! Regex(#"/event/e.*?gacha-v.*?/index.html"#))
+        guard validDomain, let url = URL(string: gachaURLString),
               let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else { throw ParseGachaURLError.invalidURL }
 
