@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import CoreGraphics
+import Foundation
 import PZBaseKit
 
 // MARK: - Enka.GameElement
@@ -18,8 +19,8 @@ extension Enka {
         case hydro
         case pyro
         case cryo
-        case posesto // Quantum，量子
-        case fantastico // Imaginary，虚数
+        case quanto // Quantum，量子
+        case imago // Imaginary，虚数
     }
 }
 
@@ -34,8 +35,8 @@ extension Enka.GameElement {
         case "Water": self = .hydro
         case "Fire": self = .pyro
         case "Ice": self = .cryo
-        case "Imaginary": self = .fantastico
-        case "Quantum": self = .posesto
+        case "Imaginary": self = .imago
+        case "Quantum": self = .quanto
         case "Anemo": self = .anemo
         case "Cryo": self = .cryo
         case "Dendro": self = .dendro
@@ -76,8 +77,8 @@ extension Enka.GameElement {
         case .physico: "Physical"
         case .anemo: "Wind"
         case .electro: "Thunder"
-        case .fantastico: "Imaginary"
-        case .posesto: "Quantum"
+        case .imago: "Imaginary"
+        case .quanto: "Quantum"
         case .pyro: "Fire"
         case .cryo: "Ice"
         case .geo: "Rock" // GI
@@ -91,14 +92,30 @@ extension Enka.GameElement {
         case .physico: "Unknown"
         case .anemo: "Wind"
         case .electro: "Electric"
-        case .fantastico: "Imaginary"
-        case .posesto: "Quantum"
+        case .imago: "Imaginary"
+        case .quanto: "Quantum"
         case .pyro: "Fire"
         case .cryo: "Ice"
         case .geo: "Rock"
         case .dendro: "Grass"
         case .hydro: "Water"
         }
+    }
+
+    public var localizedName: String {
+        let rawKey: String.LocalizationValue = switch self {
+        case .physico: "game.elements.physico"
+        case .anemo: "game.elements.anemo"
+        case .geo: "game.elements.geo"
+        case .electro: "game.elements.electro"
+        case .dendro: "game.elements.dendro"
+        case .hydro: "game.elements.hydro"
+        case .pyro: "game.elements.pyro"
+        case .cryo: "game.elements.cryo"
+        case .quanto: "game.elements.quanto"
+        case .imago: "game.elements.imago"
+        }
+        return String(localized: rawKey, bundle: .module)
     }
 
     public var tourID: Int {
@@ -111,8 +128,8 @@ extension Enka.GameElement {
         case .hydro: 5
         case .pyro: 6
         case .cryo: 7
-        case .posesto: 8
-        case .fantastico: 9
+        case .quanto: 8
+        case .imago: 9
         }
     }
 }
@@ -127,8 +144,8 @@ extension Enka.GameElement {
         case .physico: "Physico"
         case .anemo: "Anemo"
         case .electro: "Electro"
-        case .fantastico: "Fantastico"
-        case .posesto: "Posesto"
+        case .imago: "Imago"
+        case .quanto: "Quanto"
         case .pyro: "Pyro"
         case .cryo: "Cryo"
         case .geo: "Geo"
@@ -143,8 +160,8 @@ extension Enka.GameElement {
         case .physico: .physicoAddedRatio
         case .anemo: .anemoAddedRatio
         case .electro: .electroAddedRatio
-        case .fantastico: .fantasticoAddedRatio
-        case .posesto: .posestoAddedRatio
+        case .imago: .imagoAddedRatio
+        case .quanto: .quantoAddedRatio
         case .pyro: .pyroAddedRatio
         case .cryo: .cryoAddedRatio
         case .geo: .geoAddedRatio
@@ -157,8 +174,8 @@ extension Enka.GameElement {
         "Physical": "Physico",
         "Wind": "Anemo",
         "Lightning": "Electro",
-        "Imaginary": "Fantastico",
-        "Quantum": "Posesto",
+        "Imaginary": "Imago",
+        "Quantum": "Quanto",
         "Fire": "Pyro",
         "Ice": "Cryo",
         "Rock": "Geo",
@@ -173,8 +190,8 @@ extension Enka.GameElement {
         case .physico: .init(red: 0.40, green: 0.40, blue: 0.40, alpha: 1.00)
         case .anemo: .init(red: 0.00, green: 0.52, blue: 0.56, alpha: 1.00)
         case .electro: .init(red: 0.54, green: 0.14, blue: 0.79, alpha: 1.00)
-        case .fantastico: .init(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.00)
-        case .posesto: .init(red: 0.00, green: 0.13, blue: 1.00, alpha: 1.00)
+        case .imago: .init(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.00)
+        case .quanto: .init(red: 0.00, green: 0.13, blue: 1.00, alpha: 1.00)
         case .pyro: .init(red: 0.83, green: 0.00, blue: 0.00, alpha: 1.00)
         case .cryo: .init(red: 0.00, green: 0.38, blue: 0.63, alpha: 1.00)
         case .geo: .init(red: 1.00, green: 0.7, blue: 0.00, alpha: 1.00)
