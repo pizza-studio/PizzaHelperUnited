@@ -16,22 +16,27 @@ public struct CharacterInventoryView: View {
 
     public init(profile: PZProfileSendable) {
         let uidWithGame = profile.uidWithGame
+        let rawSummaries: [SummaryPtr]
         switch profile.game {
         case .genshinImpact:
             let theDB = Enka.Sputnik.shared.db4GI
-            self.summaries = (Defaults[.queriedHoYoProfiles4GI][uidWithGame] ?? []).compactMap {
+            rawSummaries = (Defaults[.queriedHoYoProfiles4GI][uidWithGame] ?? []).compactMap {
                 .init(summary: $0.summarize(theDB: theDB))
             }
         case .starRail:
             let theDB = Enka.Sputnik.shared.db4HSR
-            self.summaries = (Defaults[.queriedHoYoProfiles4HSR][uidWithGame] ?? []).compactMap {
+            rawSummaries = (Defaults[.queriedHoYoProfiles4HSR][uidWithGame] ?? []).compactMap {
                 .init(summary: $0.summarize(theDB: theDB))
             }
         case .zenlessZone:
-            self.summaries = []
+            rawSummaries = []
         }
         self.currentAvatarSummaryID = ""
         self.game = profile.game
+        self.sortedSummariesMap = Dictionary(grouping: rawSummaries, by: \.wrappedValue.mainInfo.element)
+        self.summaries = rawSummaries.stableSorted {
+            $0.wrappedValue.mainInfo.element.tourID < $1.wrappedValue.mainInfo.element.tourID
+        }
     }
 
     // MARK: Public
@@ -39,6 +44,7 @@ public struct CharacterInventoryView: View {
     public typealias SummaryPtr = Enka.AvatarSummarized.SharedPointer
 
     public let summaries: [SummaryPtr]
+    public let sortedSummariesMap: [Enka.GameElement: [SummaryPtr]]
 
     @ViewBuilder public var body: some View {
         basicBody
@@ -56,7 +62,7 @@ public struct CharacterInventoryView: View {
     // MARK: Internal
 
     @ViewBuilder var basicBody: some View {
-        List {
+        Form {
             Section {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(characterStats, bundle: .module) + Text(verbatim: " // ") + Text(goldStats, bundle: .module)
@@ -106,43 +112,58 @@ public struct CharacterInventoryView: View {
 
     @ViewBuilder
     func renderAllAvatarListFull() -> some View {
-        Section {
-            ForEach(showingAvatars, id: \.id) { avatar in
-                AvatarListItem(game: game, avatar: avatar, condensed: false)
-                    .padding(.horizontal)
-                    .padding(.vertical, 4)
-                    .background {
-                        let idObj = avatar.wrappedValue.mainInfo.idExpressable
-                        idObj.asRowBG(element: avatar.wrappedValue.mainInfo.element)
+        let allElements = Enka.GameElement.allCases.sorted { $0.tourID < $1.tourID }
+        ForEach(allElements, id: \.tourID) { currentElement in
+            if let avatarsOfThisElement = sortedSummariesMap[currentElement] {
+                Section {
+                    ForEach(avatarsOfThisElement, id: \.id) { avatar in
+                        AvatarListItem(game: game, avatar: avatar, condensed: false)
+                            .padding(.horizontal)
+                            .padding(.vertical, 4)
+                            .background {
+                                let idObj = avatar.wrappedValue.mainInfo.idExpressable
+                                idObj.asRowBG(element: avatar.wrappedValue.mainInfo.element)
+                            }
+                            .compositingGroup()
+                            .onTapGesture {
+                                currentAvatarSummaryID = avatar.id
+                                simpleTaptic(type: .medium)
+                            }
                     }
-                    .compositingGroup()
-                    .onTapGesture {
-                        currentAvatarSummaryID = avatar.id
-                        simpleTaptic(type: .medium)
-                    }
+                }
+                .textCase(.none)
+                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
         }
-        .textCase(.none)
-        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 
     @ViewBuilder
     func renderAllAvatarListCondensed() -> some View {
-        StaggeredGrid(
-            columns: lineCapacity, outerPadding: false,
-            scroll: false, spacing: 2, list: showingAvatars
-        ) { avatar in
-            // WIDTH: 70, HEIGHT: 63
-            AvatarListItem(game: game, avatar: avatar, condensed: true)
-                .padding(.vertical, 4)
-                .compositingGroup()
-                .matchedGeometryEffect(id: avatar.wrappedValue.id, in: animation)
-                .onTapGesture {
-                    currentAvatarSummaryID = avatar.id
-                    simpleTaptic(type: .medium)
+        let allElements = Enka.GameElement.allCases.sorted { $0.tourID < $1.tourID }
+        ForEach(allElements, id: \.tourID) { currentElement in
+            if let avatarsOfThisElement = sortedSummariesMap[currentElement] {
+                StaggeredGrid(
+                    columns: lineCapacity, outerPadding: false,
+                    scroll: false, spacing: 2, list: avatarsOfThisElement
+                ) { avatar in
+                    // WIDTH: 70, HEIGHT: 63
+                    AvatarListItem(game: game, avatar: avatar, condensed: true)
+                        .padding(.vertical, 4)
+                        .compositingGroup()
+                        .matchedGeometryEffect(id: avatar.wrappedValue.id, in: animation)
+                        .onTapGesture {
+                            currentAvatarSummaryID = avatar.id
+                            simpleTaptic(type: .medium)
+                        }
                 }
+                .environment(orientation)
+                .overlay(alignment: .topLeading) {
+                    Color(cgColor: currentElement.themeColor)
+                        .frame(width: 8, height: 8)
+                        .clipShape(.circle)
+                }
+            }
         }
-        .environment(orientation)
     }
 
     // MARK: Private
@@ -197,6 +218,13 @@ extension CharacterInventoryView {
                     }
                     .frame(width: 55, height: 55)
                     .clipShape(Circle())
+                    .overlay(alignment: .bottomLeading) {
+                        if !condensed {
+                            Color(cgColor: avatar.mainInfo.element.themeColor)
+                                .frame(width: 8, height: 8)
+                                .clipShape(.circle)
+                        }
+                    }
                 }
                 .frame(width: condensed ? 70 : 75, alignment: .leading)
                 .corneredTag(
