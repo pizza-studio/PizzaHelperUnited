@@ -19,12 +19,12 @@ extension Enka {
         case electroAddedRatio = "ThunderAddedRatio"
         case electroResistance = "ThunderResistance"
         case electroResistanceDelta = "ThunderResistanceDelta"
-        case fantasticoAddedRatio = "ImaginaryAddedRatio"
-        case fantasticoResistance = "ImaginaryResistance"
-        case fantasticoResistanceDelta = "ImaginaryResistanceDelta"
-        case posestoAddedRatio = "QuantumAddedRatio"
-        case posestoResistance = "QuantumResistance"
-        case posestoResistanceDelta = "QuantumResistanceDelta"
+        case imagoAddedRatio = "ImaginaryAddedRatio"
+        case imagoResistance = "ImaginaryResistance"
+        case imagoResistanceDelta = "ImaginaryResistanceDelta"
+        case quantoAddedRatio = "QuantumAddedRatio"
+        case quantoResistance = "QuantumResistance"
+        case quantoResistanceDelta = "QuantumResistanceDelta"
         case pyroAddedRatio = "FireAddedRatio"
         case pyroResistance = "FireResistance"
         case pyroResistanceDelta = "FireResistanceDelta"
@@ -234,10 +234,10 @@ extension Enka.PropertyType {
         case 19: self = .electroResistance
         case 20: self = .anemoAddedRatio
         case 21: self = .anemoResistance
-        case 22: self = .posestoAddedRatio
-        case 23: self = .posestoResistance
-        case 24: self = .fantasticoAddedRatio
-        case 25: self = .fantasticoResistance
+        case 22: self = .quantoAddedRatio
+        case 23: self = .quantoResistance
+        case 24: self = .imagoAddedRatio
+        case 25: self = .imagoResistance
         case 26: self = .hpDelta
         case 27: self = .maxHP
         case 28: self = .attackDelta
@@ -254,8 +254,8 @@ extension Enka.PropertyType {
         case 39: self = .cryoResistanceDelta
         case 40: self = .electroResistanceDelta
         case 41: self = .anemoResistanceDelta
-        case 42: self = .posestoResistanceDelta
-        case 43: self = .fantasticoResistanceDelta
+        case 42: self = .quantoResistanceDelta
+        case 43: self = .imagoResistanceDelta
         case 51: self = .speedAddedRatio
         case 52: self = .criticalChance
         case 53: self = .criticalDamage
@@ -603,12 +603,12 @@ extension Enka.PropertyType {
         case .pyroResistanceDelta: return true
         case .cryoAddedRatio: return true
         case .cryoResistanceDelta: return true
-        case .fantasticoAddedRatio: return true
-        case .fantasticoResistanceDelta: return true
+        case .imagoAddedRatio: return true
+        case .imagoResistanceDelta: return true
         case .physicoAddedRatio: return true
         case .physicoResistanceDelta: return true
-        case .posestoAddedRatio: return true
-        case .posestoResistanceDelta: return true
+        case .quantoAddedRatio: return true
+        case .quantoResistanceDelta: return true
         case .electroAddedRatio: return true
         case .electroResistanceDelta: return true
         case .anemoAddedRatio: return true
@@ -655,10 +655,10 @@ extension Enka.PropertyType {
             .physico
         case .electroAddedRatio, .electroResistance, .electroResistanceDelta:
             .electro
-        case .fantasticoAddedRatio, .fantasticoResistance, .fantasticoResistanceDelta:
-            .fantastico
-        case .posestoAddedRatio, .posestoResistance, .posestoResistanceDelta:
-            .posesto
+        case .imagoAddedRatio, .imagoResistance, .imagoResistanceDelta:
+            .imago
+        case .quantoAddedRatio, .quantoResistance, .quantoResistanceDelta:
+            .quanto
         case .pyroAddedRatio, .pyroResistance, .pyroResistanceDelta:
             .pyro
         case .cryoAddedRatio, .cryoResistance, .cryoResistanceDelta:
@@ -678,8 +678,8 @@ extension Enka.PropertyType {
             .physicoAddedRatio,
             .anemoAddedRatio,
             .electroAddedRatio,
-            .fantasticoAddedRatio,
-            .posestoAddedRatio,
+            .imagoAddedRatio,
+            .quantoAddedRatio,
             .pyroAddedRatio,
             .cryoAddedRatio,
             .geoAddedRatio,
@@ -709,8 +709,8 @@ extension Enka.PropertyType {
         case .physico: results.append(.physicoAddedRatio)
         case .anemo: results.append(.anemoAddedRatio)
         case .electro: results.append(.electroAddedRatio)
-        case .fantastico: results.append(.fantasticoAddedRatio)
-        case .posesto: results.append(.posestoAddedRatio)
+        case .imago: results.append(.imagoAddedRatio)
+        case .quanto: results.append(.quantoAddedRatio)
         case .pyro: results.append(.pyroAddedRatio)
         case .cryo: results.append(.cryoAddedRatio)
         case .geo: results.append(.geoAddedRatio)

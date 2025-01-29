@@ -25,8 +25,8 @@ enum BackgroundOptions {
         "game.elements.geo",
         "game.elements.electro",
         "game.elements.dendro",
-        "game.elements.fantastico",
-        "game.elements.posesto",
+        "game.elements.imago",
+        "game.elements.quanto",
         "game.elements.physico",
         "app.background.intertwinedFate",
     ]
@@ -38,8 +38,8 @@ enum BackgroundOptions {
         "game.elements.geo",
         "game.elements.electro",
         "game.elements.dendro",
-        "game.elements.fantastico",
-        "game.elements.posesto",
+        "game.elements.imago",
+        "game.elements.quanto",
         "game.elements.physico",
     ]
     static let namecards: [String] = Wallpaper.allCases.map(\.assetName4LiveActivity)
