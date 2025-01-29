@@ -95,6 +95,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
     public var chosenPools: Set<GachaType> = Set(GachaType.knownCases)
     public var isForceOverrideModeEnabled = true
     public var isBleachingModeEnabled = true
+    public var showSucceededAlertToast: Bool = false
     public private(set) var bleachCounter = 0
 
     public private(set) var client: GachaClient<GachaType>?
