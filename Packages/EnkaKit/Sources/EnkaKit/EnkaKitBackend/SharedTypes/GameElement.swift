@@ -100,6 +100,21 @@ extension Enka.GameElement {
         case .hydro: "Water"
         }
     }
+
+    public var tourID: Int {
+        switch self {
+        case .physico: 0
+        case .anemo: 1
+        case .geo: 2
+        case .electro: 3
+        case .dendro: 4
+        case .hydro: 5
+        case .pyro: 6
+        case .cryo: 7
+        case .posesto: 8
+        case .fantastico: 9
+        }
+    }
 }
 
 extension Enka.GameElement {
