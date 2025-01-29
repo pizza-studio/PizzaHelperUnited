@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import AlertToast
 import Charts
 import PZAccountKit
 import PZBaseKit
@@ -121,6 +122,17 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
             .navigationTitle(GachaFetchView.navTitle)
             .navBarTitleDisplayMode(.large)
             .navigationBarBackButtonHidden(gachaVM4Fetch.status.isBusy)
+        }
+        .apply { mainContent in
+            @Bindable var theVM = gachaVM4Fetch
+            mainContent
+                .toast(isPresenting: $theVM.showSucceededAlertToast) {
+                    AlertToast(
+                        displayMode: .alert,
+                        type: .complete(.green),
+                        title: "gachaKit.alertToast.succeeded".i18nGachaKit
+                    )
+                }
         }
     }
 
@@ -342,6 +354,7 @@ extension GachaFetchView4Game {
                 if let urlStr = gachaFetchVM.client?.urlString {
                     Button {
                         Clipboard.currentString = urlStr
+                        gachaFetchVM.showSucceededAlertToast = true
                     } label: {
                         Label("gachaKit.getRecord.readyStart.copyThisURL".i18nGachaKit, systemSymbol: .docOnClipboard)
                     }
