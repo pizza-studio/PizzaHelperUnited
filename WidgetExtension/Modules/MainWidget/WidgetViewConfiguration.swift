@@ -112,10 +112,10 @@ extension WidgetBackgroundAppEntity {
             return "element_Electro"
         case "game.elements.dendro":
             return "element_Dendro"
-        case "game.elements.fantastico":
-            return "element_Fantastico"
-        case "game.elements.posesto":
-            return "element_Posesto"
+        case "game.elements.imago":
+            return "element_Imago"
+        case "game.elements.quanto":
+            return "element_Quanto"
         case "game.elements.physico":
             return "element_Physico"
         default:
@@ -203,13 +203,13 @@ extension WidgetBackgroundAppEntity {
                 Color.green.addBrightness(-0.15),
                 Color.green.addBrightness(-0.3),
             ]
-        case "game.elements.posesto":
+        case "game.elements.quanto":
             return [
                 Color.indigo,
                 Color.indigo.addBrightness(-0.15),
                 Color.indigo.addBrightness(-0.3),
             ]
-        case "game.elements.fantastico":
+        case "game.elements.imago":
             return [
                 Color.yellow,
                 Color.yellow.addBrightness(-0.15),
