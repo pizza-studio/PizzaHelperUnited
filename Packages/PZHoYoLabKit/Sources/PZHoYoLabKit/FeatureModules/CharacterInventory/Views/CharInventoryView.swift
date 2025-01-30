@@ -156,12 +156,13 @@ public struct CharacterInventoryView: View {
                             simpleTaptic(type: .medium)
                         }
                 }
-                .environment(orientation)
                 .overlay(alignment: .topLeading) {
                     Color(cgColor: currentElement.themeColor)
                         .frame(width: 8, height: 8)
                         .clipShape(.circle)
                 }
+                .listRowSeparatorTint(.secondary.opacity(0.7))
+                .environment(orientation)
             }
         }
     }
