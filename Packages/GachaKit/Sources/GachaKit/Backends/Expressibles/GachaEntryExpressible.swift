@@ -76,6 +76,7 @@ extension GachaEntryExpressible {
             default: false
             }
         case .genshinImpact:
+            // 注意：从刻晴开始，活动池之后得等接下来的版本才可以从常驻池抽到新出的常驻角色。
             return switch itemID {
             case "15502": true // 阿莫斯之弓
             case "15501": true // 天空之翼
@@ -87,24 +88,29 @@ extension GachaEntryExpressible {
             case "12501": true // 天空之傲
             case "11501": true // 风鹰剑
             case "11502": true // 天空之刃
-            case "10000016": true // Diluc
-            case "10000003": true // Jean
-            case "10000035": true // Qiqi
-            case "10000041": true // Mona
-            case "10000042": // Keqing
+            case "10000016": true // Diluc 迪卢克
+            case "10000003": true // Jean 晋
+            case "10000035": true // Qiqi 七七
+            case "10000041": true // Mona 莫娜
+            case "10000042": // Keqing 刻晴，v1.4 进常驻。
                 checkSurinukeByTime(
                     from: .init(year: 2021, month: 2, day: 17),
-                    to: .init(year: 2021, month: 3, day: 2)
+                    to: .init(year: 2021, month: 3, day: 16) // The end of v1.3.
                 )
-            case "10000069": // Tighnari
+            case "10000069": // Tighnari 提纳里，v3.1 进常驻。
                 checkSurinukeByTime(
                     from: .init(year: 2022, month: 8, day: 24),
-                    to: .init(year: 2022, month: 9, day: 9)
+                    to: .init(year: 2022, month: 9, day: 27) // The end of v3.0.
                 )
-            case "10000079": // Dehya
+            case "10000079": // Dehya 迪希雅，v3.6 进常驻。
                 checkSurinukeByTime(
                     from: .init(year: 2023, month: 3, day: 1),
-                    to: .init(year: 2023, month: 3, day: 21)
+                    to: .init(year: 2023, month: 3, day: 21) // The end of v3.5.
+                )
+            case "10000109": // Mizuki 瑞希，v5.5 进常驻。
+                checkSurinukeByTime(
+                    from: .init(year: 2025, month: 2, day: 12),
+                    to: .init(year: 2025, month: 3, day: 25) // The end of v5.4.
                 )
             default: false
             }
