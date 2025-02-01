@@ -133,7 +133,7 @@ extension GachaChartVertical {
                                             .frame(width: 35, height: 20)
                                     }
                                     .background(alignment: .trailing) {
-                                        if entry.isSurinuked {
+                                        if poolType.isSurinukable, entry.isSurinuked {
                                             surinukedIcon
                                                 .resizable().scaledToFit()
                                                 .frame(width: 35, height: 35)
