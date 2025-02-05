@@ -115,24 +115,27 @@ public struct CharacterInventoryView: View {
         let allElements = Enka.GameElement.allCases.sorted { $0.tourID < $1.tourID }
         ForEach(allElements, id: \.tourID) { currentElement in
             if let avatarsOfThisElement = sortedSummariesMap[currentElement] {
-                Section {
-                    ForEach(avatarsOfThisElement, id: \.id) { avatar in
-                        AvatarListItem(game: game, avatar: avatar, condensed: false)
-                            .padding(.horizontal)
-                            .padding(.vertical, 4)
-                            .background {
-                                let idObj = avatar.wrappedValue.mainInfo.idExpressable
-                                idObj.asRowBG(element: avatar.wrappedValue.mainInfo.element)
-                            }
-                            .compositingGroup()
-                            .onTapGesture {
-                                currentAvatarSummaryID = avatar.id
-                                simpleTaptic(type: .medium)
-                            }
+                let theListFiltered = filterSummaries(type: allAvatarListDisplayType, from: avatarsOfThisElement)
+                if !theListFiltered.isEmpty {
+                    Section {
+                        ForEach(theListFiltered, id: \.id) { avatar in
+                            AvatarListItem(game: game, avatar: avatar, condensed: false)
+                                .padding(.horizontal)
+                                .padding(.vertical, 4)
+                                .background {
+                                    let idObj = avatar.wrappedValue.mainInfo.idExpressable
+                                    idObj.asRowBG(element: avatar.wrappedValue.mainInfo.element)
+                                }
+                                .compositingGroup()
+                                .onTapGesture {
+                                    currentAvatarSummaryID = avatar.id
+                                    simpleTaptic(type: .medium)
+                                }
+                        }
                     }
+                    .textCase(.none)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
-                .textCase(.none)
-                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
         }
     }
@@ -142,27 +145,30 @@ public struct CharacterInventoryView: View {
         let allElements = Enka.GameElement.allCases.sorted { $0.tourID < $1.tourID }
         ForEach(allElements, id: \.tourID) { currentElement in
             if let avatarsOfThisElement = sortedSummariesMap[currentElement] {
-                StaggeredGrid(
-                    columns: lineCapacity, outerPadding: false,
-                    scroll: false, spacing: 2, list: avatarsOfThisElement
-                ) { avatar in
-                    // WIDTH: 70, HEIGHT: 63
-                    AvatarListItem(game: game, avatar: avatar, condensed: true)
-                        .padding(.vertical, 4)
-                        .compositingGroup()
-                        .matchedGeometryEffect(id: avatar.wrappedValue.id, in: animation)
-                        .onTapGesture {
-                            currentAvatarSummaryID = avatar.id
-                            simpleTaptic(type: .medium)
-                        }
+                let theListFiltered = filterSummaries(type: allAvatarListDisplayType, from: avatarsOfThisElement)
+                if !theListFiltered.isEmpty {
+                    StaggeredGrid(
+                        columns: lineCapacity, outerPadding: false,
+                        scroll: false, spacing: 2, list: theListFiltered
+                    ) { avatar in
+                        // WIDTH: 70, HEIGHT: 63
+                        AvatarListItem(game: game, avatar: avatar, condensed: true)
+                            .padding(.vertical, 4)
+                            .compositingGroup()
+                            .matchedGeometryEffect(id: avatar.wrappedValue.id, in: animation)
+                            .onTapGesture {
+                                currentAvatarSummaryID = avatar.id
+                                simpleTaptic(type: .medium)
+                            }
+                    }
+                    .overlay(alignment: .topLeading) {
+                        Color(cgColor: currentElement.themeColor)
+                            .frame(width: 8, height: 8)
+                            .clipShape(.circle)
+                    }
+                    .listRowSeparatorTint(.secondary.opacity(0.7))
+                    .environment(orientation)
                 }
-                .overlay(alignment: .topLeading) {
-                    Color(cgColor: currentElement.themeColor)
-                        .frame(width: 8, height: 8)
-                        .clipShape(.circle)
-                }
-                .listRowSeparatorTint(.secondary.opacity(0.7))
-                .environment(orientation)
             }
         }
     }
@@ -178,10 +184,6 @@ public struct CharacterInventoryView: View {
     @Environment(\.dismiss) private var dismiss
 
     private let game: Pizza.SupportedGame
-
-    private var showingAvatars: [SummaryPtr] {
-        filterAvatarSummaries(type: allAvatarListDisplayType)
-    }
 
     private var lineCapacity: Int {
         Int(floor((containerWidth - 20) / 70))
@@ -353,11 +355,15 @@ extension CharacterInventoryView {
         return "hylKit.inventoryView.characters.count.golds:\(d, specifier: "%lld")\(e, specifier: "%lld")\(f, specifier: "%lld")"
     }
 
-    private func filterAvatarSummaries(type: InventoryViewFilterType) -> [SummaryPtr] {
+    private func filterSummaries(
+        type: InventoryViewFilterType,
+        from sourceSummaries: [SummaryPtr]
+    )
+        -> [SummaryPtr] {
         switch type {
-        case .all: summaries
-        case .star4: summaries.filter { $0.wrappedValue.mainInfo.rarityStars == 4 }
-        case .star5: summaries.filter { $0.wrappedValue.mainInfo.rarityStars == 5 }
+        case .all: sourceSummaries
+        case .star4: sourceSummaries.filter { $0.wrappedValue.mainInfo.rarityStars == 4 }
+        case .star5: sourceSummaries.filter { $0.wrappedValue.mainInfo.rarityStars == 5 }
         }
     }
 
