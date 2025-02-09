@@ -123,27 +123,6 @@ private struct PascalCaseKey: CodingKey {
     let intValue: Int?
 }
 
-// MARK: - Stable Sort Extension
-
-extension Sequence {
-    /// Return a stable-sorted collection.
-    ///
-    /// Reference: https://stackoverflow.com/a/50545761/4162914
-    /// - Parameter areInIncreasingOrder: Return nil when two element are equal.
-    /// - Returns: The sorted collection.
-    public func stableSorted(
-        by areInIncreasingOrder: (Element, Element) throws -> Bool
-    )
-        rethrows -> [Element] {
-        try enumerated()
-            .sorted { a, b -> Bool in
-                try areInIncreasingOrder(a.element, b.element)
-                    || (a.offset < b.offset && !areInIncreasingOrder(b.element, a.element))
-            }
-            .map(\.element)
-    }
-}
-
 // MARK: - String Implementations.
 
 extension String {
