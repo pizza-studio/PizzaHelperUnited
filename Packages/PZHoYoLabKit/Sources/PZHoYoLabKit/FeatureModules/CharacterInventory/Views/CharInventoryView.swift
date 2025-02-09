@@ -34,7 +34,7 @@ public struct CharacterInventoryView: View {
         self.currentAvatarSummaryID = ""
         self.game = profile.game
         self.sortedSummariesMap = Dictionary(grouping: rawSummaries, by: \.wrappedValue.mainInfo.element)
-        self.summaries = rawSummaries.stableSorted {
+        self.summaries = rawSummaries.sorted {
             $0.wrappedValue.mainInfo.element.tourID < $1.wrappedValue.mainInfo.element.tourID
         }
     }

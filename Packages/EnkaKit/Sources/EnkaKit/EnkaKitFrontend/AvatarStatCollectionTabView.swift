@@ -24,7 +24,7 @@ public struct AvatarStatCollectionTabView: View {
         if isEnka {
             self.summarizedAvatars = summarizedAvatars
         } else {
-            self.summarizedAvatars = summarizedAvatars.stableSorted {
+            self.summarizedAvatars = summarizedAvatars.sorted {
                 $0.mainInfo.element.tourID < $1.mainInfo.element.tourID
             }
         }
