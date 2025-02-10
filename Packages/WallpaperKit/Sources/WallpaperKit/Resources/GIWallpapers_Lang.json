@@ -227,7 +227,10 @@
     "210229" : "Errungenschaft – Allsehend",
     "210230" : "Errungenschaft – Feuersbrunst",
     "210231" : "Errungenschaft – Repertoire",
-    "210232" : "Erlebnispass – Feuerentfachung"
+    "210232" : "Erlebnispass – Feuerentfachung",
+    "210233" : "Yumemizuki Mizuki – Verschlinger der Albträume",
+    "210234" : "Feierlichkeit – Glühende Hitze",
+    "210235" : "Erlebnispass – Träumerei"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -457,7 +460,10 @@
     "210229" : "Achievement: All-Seeing",
     "210230" : "Achievement: Blaze",
     "210231" : "Achievement: Repertoire",
-    "210232" : "Travel Notes: The Flame Renewed"
+    "210232" : "Travel Notes: The Flame Renewed",
+    "210233" : "Yumemizuki Mizuki: Nightmare Devourer",
+    "210234" : "Celebration: Scorch",
+    "210235" : "Travel Notes: Wondrous Reverie"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -687,7 +693,10 @@
     "210229" : "Logro - Vista panorámica",
     "210230" : "Logro - Incineración",
     "210231" : "Logro - Repertorio",
-    "210232" : "PB - Fuego renovado"
+    "210232" : "PB - Fuego renovado",
+    "210233" : "Yumemizuki Mizuki - Devoradora de pesadillas",
+    "210234" : "Celebración - Ardor",
+    "210235" : "PB - Ensueño"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -917,7 +926,10 @@
     "210229" : "Succès - Omnivision",
     "210230" : "Succès - Embrasement",
     "210231" : "Succès - Répertoire",
-    "210232" : "PB - Feu nouveau"
+    "210232" : "PB - Feu nouveau",
+    "210233" : "Yumemizuki Mizuki - Mange-cauchemars",
+    "210234" : "Célébration - Embrasement",
+    "210235" : "PB - Rêverie"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1147,7 +1159,10 @@
     "210229" : "Achievement: Melihat Segalanya",
     "210230" : "Achievement: Nyala Api",
     "210231" : "Achievement: Repertoire",
-    "210232" : "Catatan Perjalanan: Api yang Baru"
+    "210232" : "Catatan Perjalanan: Api yang Baru",
+    "210233" : "Yumemizuki Mizuki: Nightmare Devourer",
+    "210234" : "Perayaan: Panas Membara",
+    "210235" : "Catatan Perjalanan: Mimpi Ajaib"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1377,7 +1392,10 @@
     "210229" : "Obiettivo: Vista completa",
     "210230" : "Obiettivo: Vampata",
     "210231" : "Obiettivo: Repertorio",
-    "210232" : "Appunti di viaggio: La Fiamma rinnovata"
+    "210232" : "Appunti di viaggio: La Fiamma rinnovata",
+    "210233" : "Yumemizuki Mizuki: Divoraincubi",
+    "210234" : "Celebrazione: Bruciatura",
+    "210235" : "Appunti di viaggio: Sogno meraviglioso"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1607,7 +1625,10 @@
     "210229" : "アチーブメント・一望",
     "210230" : "アチーブメント・灼熱",
     "210231" : "アチーブメント・楽集",
-    "210232" : "紀行・新火"
+    "210232" : "紀行・新火",
+    "210233" : "夢見月瑞希・悪夢喰",
+    "210234" : "祭典・灼熱",
+    "210235" : "紀行・瑞夢"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -1837,7 +1858,10 @@
     "210229" : "업적·일람",
     "210230" : "업적·작열",
     "210231" : "업적·모음곡",
-    "210232" : "기행·새 불씨"
+    "210232" : "기행·새 불씨",
+    "210233" : "유메미즈키 미즈키·바쿠",
+    "210234" : "축제·열정",
+    "210235" : "기행·좋은 꿈"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2067,7 +2091,10 @@
     "210229" : "Conquista: Visão Completa",
     "210230" : "Conquista: Labareda",
     "210231" : "Conquista: Repertório",
-    "210232" : "Passe de Batalha: Chama Renovada"
+    "210232" : "Passe de Batalha: Chama Renovada",
+    "210233" : "Yumemizuki Mizuki: Devoradora de Pesadelos",
+    "210234" : "Celebração - Fervor",
+    "210235" : "Passe de Batalha: Sonhos Coloridos"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2297,7 +2324,10 @@
     "210229" : "Всевидящий",
     "210230" : "Пламя",
     "210231" : "Репертуар",
-    "210232" : "Возрождённое пламя"
+    "210232" : "Возрождённое пламя",
+    "210233" : "Пожирательница кошмаров",
+    "210234" : "Сожжение",
+    "210235" : "Волшебные сны"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2527,7 +2557,10 @@
     "210229" : "ความสำเร็จ - เห็นทุกสิ่ง",
     "210230" : "ความสำเร็จ - เผาไหม้",
     "210231" : "ความสำเร็จ - ชุดบทเพลง",
-    "210232" : "บันทึก - เปลวไฟดวงใหม่"
+    "210232" : "บันทึก - เปลวไฟดวงใหม่",
+    "210233" : "Yumemizuki Mizuki - เขมือบฝันร้าย",
+    "210234" : "งานฉลอง - แผดเผา",
+    "210235" : "บันทึก - ห้วงนิทรา"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -2757,7 +2790,10 @@
     "210229" : "Başarım: Her Şeyi Gören",
     "210230" : "Başarım: Alev",
     "210231" : "Başarım: Repertuvar",
-    "210232" : "Gezi Notları: Yenilenen Alev"
+    "210232" : "Gezi Notları: Yenilenen Alev",
+    "210233" : "Yumemizuki Mizuki: Kabus Yutan",
+    "210234" : "Kutlama: Yangın",
+    "210235" : "Gezi Notları: Muhteşem Rüya"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -2987,7 +3023,10 @@
     "210229" : "Thành Tựu - Nhìn Rõ Tất Cả",
     "210230" : "Thành Tựu - Rực Cháy",
     "210231" : "Thành Tựu - Tuyển Tập Nhạc",
-    "210232" : "Nhật Ký Hành Trình - Lửa Mới"
+    "210232" : "Nhật Ký Hành Trình - Lửa Mới",
+    "210233" : "Yumemizuki Mizuki - Ăn Giấc Mơ",
+    "210234" : "Lễ Hội - Nóng Bỏng",
+    "210235" : "Nhật Ký Hành Trình - Kỳ Mộng"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3217,7 +3256,10 @@
     "210229" : "成就·览尽",
     "210230" : "成就·灼燃",
     "210231" : "成就·乐集",
-    "210232" : "纪行·新火"
+    "210232" : "纪行·新火",
+    "210233" : "梦见月瑞希·噩喰",
+    "210234" : "庆典·炙热",
+    "210235" : "纪行·绮梦"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3447,6 +3489,9 @@
     "210229" : "成就·覽盡",
     "210230" : "成就·灼燃",
     "210231" : "成就·樂集",
-    "210232" : "紀行·新火"
+    "210232" : "紀行·新火",
+    "210233" : "夢見月瑞希·噩喰",
+    "210234" : "慶典·炙熱",
+    "210235" : "紀行·綺夢"
   }
 }
