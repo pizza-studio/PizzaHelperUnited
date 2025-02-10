@@ -143,8 +143,8 @@ public enum GenshinLang: String, CaseIterable, Sendable, Identifiable {
     var filenamesForChunks: [String] {
         switch self {
         case .langTH: [
+                rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending("_0.json"),
                 rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending("_1.json"),
-                rawValue.replacingOccurrences(of: "lang", with: "TextMap").appending("_2.json"),
             ]
         default: [filename]
         }
@@ -442,6 +442,7 @@ func makeLanguageMeta() async throws {
             taskGroup.addTask {
                 var finalDict = [String: String]()
                 for url in locale.urls {
+                    print("// Fetching: \(url.absoluteString)")
                     let (data, _) = try await URLSession.shared.data(from: url)
                     let dict = try JSONDecoder().decode([String: String].self, from: data)
                     dict.forEach { key, value in
