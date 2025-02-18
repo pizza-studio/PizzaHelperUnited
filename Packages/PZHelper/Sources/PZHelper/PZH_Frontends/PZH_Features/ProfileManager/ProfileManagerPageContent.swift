@@ -304,26 +304,26 @@ struct ProfileManagerPageContent: View {
 
     private func deleteItems(offsets: IndexSet, clearEnkaCache: Bool) {
         withAnimation {
-            var idsToDrop: [(String, Pizza.SupportedGame)] = []
             var uuidsToDrop: [UUID] = []
+            var profilesDropped: [PZProfileSendable] = []
             offsets.map {
                 let returned = profiles[$0]
-                idsToDrop.append((returned.uid, returned.game))
+                profilesDropped.append(returned.asSendable)
                 uuidsToDrop.append(returned.uuid)
                 return returned
             }.forEach(modelContext.delete)
 
             defer {
-                if clearEnkaCache {
-                    // 特殊处理：当且仅当当前删掉的账号不是重复的本地账号的时候，才清空展柜缓存。
-                    let remainingUIDs = profiles.map(\.uid)
-                    idsToDrop.forEach { currentUID, currentGame in
-                        if !remainingUIDs.contains(currentUID) {
-                            switch currentGame {
-                            case .genshinImpact: Defaults[.queriedEnkaProfiles4GI].removeValue(forKey: currentUID)
-                            case .starRail: Defaults[.queriedEnkaProfiles4HSR].removeValue(forKey: currentUID)
-                            case .zenlessZone: break // 临时设定。
-                            }
+                let remainingUIDs = Set(profiles.map(\.uidWithGame))
+                profilesDropped.forEach { currentProfile in
+                    // 特殊处理：当且仅当当前删掉的账号不是重复的本地账号的时候，才清空展柜缓存與通知。
+                    guard !remainingUIDs.contains(currentProfile.uidWithGame) else { return }
+                    PZNotificationCenter.deleteDailyNoteNotification(for: currentProfile)
+                    if clearEnkaCache {
+                        switch currentProfile.game {
+                        case .genshinImpact: Defaults[.queriedEnkaProfiles4GI].removeValue(forKey: currentProfile.uid)
+                        case .starRail: Defaults[.queriedEnkaProfiles4HSR].removeValue(forKey: currentProfile.uid)
+                        case .zenlessZone: break // 临时设定。
                         }
                     }
                 }
