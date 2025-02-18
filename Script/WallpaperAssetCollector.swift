@@ -133,7 +133,7 @@ public enum GenshinLang: String, CaseIterable, Sendable, Identifiable {
     public var urls: [URL] {
         filenamesForChunks.compactMap { currentFileName in
             URL(string: """
-            https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/master/TextMap/\(currentFileName)
+            https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/refs/heads/master/TextMap/\(currentFileName)
             """)
         }
     }
