@@ -23,8 +23,8 @@ public protocol AbyssReport: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResul
 
 extension AbyssReport {
     @MainActor @ViewBuilder
-    public func asView() -> some View {
-        ViewType(data: self)
+    public func asView(profile: PZProfileSendable?) -> some View {
+        ViewType(data: self, profile: profile)
     }
 }
 
@@ -33,7 +33,7 @@ extension AbyssReport {
 @MainActor
 public protocol AbyssReportView: View {
     associatedtype AbyssReportData: AbyssReport where Self == AbyssReportData.ViewType
-    init(data: AbyssReportData)
+    init(data: AbyssReportData, profile: PZProfileSendable?)
     var data: AbyssReportData { get }
     static var navTitle: String { get }
     static var abyssIcon: Image { get }

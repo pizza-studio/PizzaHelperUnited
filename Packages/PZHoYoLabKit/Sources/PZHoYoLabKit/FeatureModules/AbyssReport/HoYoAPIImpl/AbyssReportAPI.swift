@@ -12,11 +12,11 @@ extension HoYo {
         case .genshinImpact:
             let current = try await abyssReportData4GI(for: profile, isPreviousRound: false)
             let previous = try await abyssReportData4GI(for: profile, isPreviousRound: true)
-            return AbyssReportSet4GI(current: current, previous: previous)
+            return AbyssReportSet4GI(current: current, previous: previous, profile: profile)
         case .starRail:
             let current = try await abyssReportData4HSR(for: profile, isPreviousRound: false)
             let previous = try await abyssReportData4HSR(for: profile, isPreviousRound: true)
-            return AbyssReportSet4HSR(current: current, previous: previous)
+            return AbyssReportSet4HSR(current: current, previous: previous, profile: profile)
         default: return nil
         }
     }

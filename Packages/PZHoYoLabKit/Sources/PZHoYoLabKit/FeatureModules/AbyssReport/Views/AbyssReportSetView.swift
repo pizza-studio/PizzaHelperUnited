@@ -11,8 +11,9 @@ import SwiftUI
 public struct AbyssReportSetView<Report: AbyssReport>: View {
     // MARK: Lifecycle
 
-    public init(data: SetData) {
+    public init(data: SetData, profile: PZProfileSendable?) {
         self.data = data
+        self.profile = profile
     }
 
     // MARK: Public
@@ -20,6 +21,8 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
     public typealias SetData = AbyssReportSetTyped<Report>
 
     public let data: SetData
+
+    public let profile: PZProfileSendable?
 
     public var body: some View {
         container
@@ -61,11 +64,11 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
     // MARK: Internal
 
     @ViewBuilder var currentSeasonContent: some View {
-        data.current.asView()
+        data.current.asView(profile: profile)
     }
 
     @ViewBuilder var previousSeasonContent: some View {
-        data.previous?.asView()
+        data.previous?.asView(profile: profile)
     }
 
     // MARK: Private
