@@ -12,8 +12,9 @@ import SwiftUI
 public struct AbyssReportView4HSR: AbyssReportView {
     // MARK: Lifecycle
 
-    public init(data: AbyssReportData) {
+    public init(data: AbyssReportData, profile: PZProfileSendable?) {
         self.data = data
+        _ = profile // 目前暫無需求。
     }
 
     // MARK: Public
@@ -210,8 +211,10 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
 #Preview {
     NavigationStack {
-        AbyssReportView4HSR(data: try! AbyssReportTestAssets.hsrCurr.getReport4HSR())
-            .formStyle(.grouped)
+        AbyssReportView4HSR(
+            data: try! AbyssReportTestAssets.hsrCurr.getReport4HSR(),
+            profile: nil
+        ).formStyle(.grouped)
     }
     .environment(\.colorScheme, .dark)
 }
