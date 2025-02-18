@@ -11,11 +11,17 @@ import PZBaseKit
 public struct AbyssReportSetTyped<Report: AbyssReport>: AbyssReportSet {
     // MARK: Lifecycle
 
-    public init?(current: Report?, previous: Report? = nil, costumeMap: [String: String]? = nil) {
+    public init?(
+        current: Report?,
+        previous: Report? = nil,
+        costumeMap: [String: String]? = nil,
+        profile: PZProfileSendable?
+    ) {
         guard let current else { return nil }
         self.current = current
         self.previous = previous
         self.costumeMap = costumeMap ?? [:]
+        self.profile = profile
     }
 
     // MARK: Public
@@ -23,9 +29,10 @@ public struct AbyssReportSetTyped<Report: AbyssReport>: AbyssReportSet {
     public let current: Report
     public var previous: Report?
     public var costumeMap: [String: String]
+    public let profile: PZProfileSendable?
 
     @MainActor public var asView: AbyssReportSetView<Report> {
-        AbyssReportSetView(data: self)
+        AbyssReportSetView(data: self, profile: profile)
     }
 }
 

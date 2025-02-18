@@ -13,12 +13,35 @@ import SwiftUI
 public struct AbyssReportView4GI: AbyssReportView {
     // MARK: Lifecycle
 
-    public init(data: AbyssReportData) {
+    public init(data: AbyssReportData, profile: PZProfileSendable?) {
         self.data = data
+        guard let profile else {
+            self.summaryMap = [:]
+            return
+        }
+        let allCharIDsEnumerated: [Int] = data.floors.compactMap { floor in
+            floor.levels.compactMap { level in
+                level.battles.compactMap { battle in
+                    battle.avatars.map(\.id)
+                }.flatMap(\.self)
+            }.flatMap(\.self)
+        }.flatMap(\.self)
+        let allCharIDStrings = Set(allCharIDsEnumerated.map(\.description))
+        let uidWithGame = profile.uidWithGame
+        let theDB = Enka.Sputnik.shared.db4GI
+        var summaries: [String: SummaryPtr] = [:]
+        (Defaults[.queriedHoYoProfiles4GI][uidWithGame] ?? []).forEach { maybeRaw in
+            guard allCharIDStrings.contains(maybeRaw.avatarIdStr) else { return }
+            let ptr = SummaryPtr(summary: maybeRaw.summarize(theDB: theDB))
+            guard let ptr else { return }
+            summaries[maybeRaw.avatarIdStr] = ptr
+        }
+        self.summaryMap = summaries
     }
 
     // MARK: Public
 
+    public typealias SummaryPtr = Enka.AvatarSummarized.SharedPointer
     public typealias AbyssReportData = HoYo.AbyssReport4GI
 
     public static let navTitle = "hylKit.abyssReportView4GI.navTitle".i18nHYLKit
@@ -81,6 +104,8 @@ public struct AbyssReportView4GI: AbyssReportView {
     @State private var containerWidth: CGFloat = 320
     @StateObject private var orientation = DeviceOrientation()
     @Namespace private var animation
+
+    private let summaryMap: [String: SummaryPtr]
 
     @Default(.reservedUserNameForSnapHutao) private var reservedUserName4SH: String
     @Default(.enforceReservedUserNameForSnapHutaoSubmission) private var enforceReservedUserName4SH: Bool
@@ -193,17 +218,29 @@ extension AbyssReportView4GI {
             ForEach(guardedAvatars) { avatar in
                 let decoratedIconSize = decoratedIconSize
                 let isNullAvatar: Bool = avatar.id == -114_514
+                let maybeSummary = summaryMap[avatar.id.description]
+                let maybeID = maybeSummary?.wrappedValue.mainInfo.idExpressable
                 Group {
                     if ThisDevice.isHDPhoneOrPodTouch {
                         if isNullAvatar {
                             AnonymousIconView(decoratedIconSize, cutType: .roundRectangle)
                         } else {
-                            CharacterIconView(
-                                charID: avatar.id.description,
-                                size: decoratedIconSize,
-                                circleClipped: false,
-                                clipToHead: true
-                            )
+                            ZStack {
+                                if let maybeID {
+                                    maybeID.avatarPhoto(
+                                        size: decoratedIconSize,
+                                        circleClipped: false,
+                                        clipToHead: true
+                                    )
+                                } else {
+                                    CharacterIconView(
+                                        charID: avatar.id.description,
+                                        size: decoratedIconSize,
+                                        circleClipped: false,
+                                        clipToHead: true
+                                    )
+                                }
+                            }
                             .corneredTag(
                                 verbatim: avatar.level.description,
                                 alignment: .bottomTrailing,
@@ -214,12 +251,23 @@ extension AbyssReportView4GI {
                         if isNullAvatar {
                             AnonymousIconView(decoratedIconSize / 0.74, cutType: .card)
                         } else {
-                            CharacterIconView(charID: avatar.id.description, cardSize: decoratedIconSize / 0.74)
-                                .corneredTag(
-                                    verbatim: "Lv.\(avatar.level.description)",
-                                    alignment: .bottom,
-                                    textSize: 11
-                                )
+                            ZStack {
+                                if let maybeID {
+                                    maybeID.cardIcon(
+                                        size: decoratedIconSize / 0.74
+                                    )
+                                } else {
+                                    CharacterIconView(
+                                        charID: avatar.id.description,
+                                        cardSize: decoratedIconSize / 0.74
+                                    )
+                                }
+                            }
+                            .corneredTag(
+                                verbatim: "Lv.\(avatar.level.description)",
+                                alignment: .bottom,
+                                textSize: 11
+                            )
                         }
                     }
                 }.frame(
@@ -264,8 +312,10 @@ extension AbyssReportView4GI {
 
 #Preview {
     NavigationStack {
-        AbyssReportView4GI(data: try! AbyssReportTestAssets.giCurr.getReport4GI())
-            .formStyle(.grouped)
+        AbyssReportView4GI(
+            data: try! AbyssReportTestAssets.giCurr.getReport4GI(),
+            profile: nil
+        ).formStyle(.grouped)
     }
     .environment(\.colorScheme, .dark)
 }
