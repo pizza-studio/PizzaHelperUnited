@@ -202,6 +202,8 @@ extension GachaVM {
                     let count = try context.fetchCount(descriptor)
                     if count > 0 {
                         try context.enumerate(descriptor) { rawEntry in
+                            /// 补遗：检查日期时间格式错误者，发现了就纠正。
+                            try rawEntry.fixTimeFieldIfNecessary(context: context)
                             let expressible = rawEntry.expressible
                             if existedIDs.contains(expressible.id) {
                                 context.delete(rawEntry)

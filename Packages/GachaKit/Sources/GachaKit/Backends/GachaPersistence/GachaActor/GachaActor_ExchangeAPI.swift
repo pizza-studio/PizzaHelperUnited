@@ -26,6 +26,7 @@ extension GachaActor {
                     currentEntry.game == theGame && currentEntry.uid == theUID
                 }
                 try modelContext.enumerate(descriptor) { entry in
+                    try entry.fixTimeFieldIfNecessary(context: modelContext)
                     entries.append(entry.asSendable)
                 }
             }
@@ -42,7 +43,7 @@ extension GachaActor {
         lang: GachaLanguage = Locale.gachaLangauge
     ) throws
         -> SRGFv1 {
-        var entries = [any PZGachaEntryProtocol]()
+        var entries = [PZGachaEntrySendable]()
         var descriptor = FetchDescriptor<PZGachaEntryMO>()
         let theUID = owner.uid
         let theGame = owner.game.rawValue
@@ -50,9 +51,12 @@ extension GachaActor {
             currentEntry.game == theGame && currentEntry.uid == theUID
         }
         try modelContext.enumerate(descriptor) { entry in
+            try entry.fixTimeFieldIfNecessary(context: modelContext)
             entries.append(entry.asSendable)
         }
-        let uigfProfiles = try entries.extractProfiles(UIGFv4.GachaItemHSR.self, lang: lang) ?? []
+        let uigfProfiles = try (
+            entries as [any PZGachaEntryProtocol]
+        ).extractProfiles(UIGFv4.GachaItemHSR.self, lang: lang) ?? []
         let srgfEntries = uigfProfiles.map(\.list).reduce([], +).map(\.asSRGFv1Item)
         return .init(info: .init(uid: owner.uid, lang: lang), list: srgfEntries)
     }
