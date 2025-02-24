@@ -154,3 +154,17 @@ extension PZGachaEntryMO {
         gachaID = target.gachaID
     }
 }
+
+// MARK: - Date Time Sanity Check.
+
+extension PZGachaEntryMO {
+    public func fixTimeFieldIfNecessary(context: ModelContext) throws {
+        guard !time.isUIGFDateTimeFormat else { return }
+        let correctedTime = time.correctedUIGFDateFormat()
+        guard time != correctedTime else { return }
+        guard correctedTime.isUIGFDateTimeFormat else { return }
+        try context.transaction {
+            self.time = correctedTime
+        }
+    }
+}
