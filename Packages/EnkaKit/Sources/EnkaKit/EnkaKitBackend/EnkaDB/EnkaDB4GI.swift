@@ -109,7 +109,7 @@ extension Enka.EnkaDB4GI {
 
     /// Only available for characters.
     public func getNameTextMapHash(id: String) -> String? {
-        let matchedInts: [Int] = characters.compactMap {
+        let matchedInts: [UInt] = characters.compactMap {
             guard $0.key.hasPrefix(id) else { return nil }
             return $0.value.nameTextMapHash
         }
