@@ -69,9 +69,8 @@ public struct GIGF: Decodable {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.uid = try container.decode(String.self, forKey: .uid)
 
-            let dateFormatter = DateFormatter.Gregorian()
+            let dateFormatter = DateFormatter.GregorianPOSIX()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             if let dateString = try container.decodeIfPresent(
                 String.self,
                 forKey: .exportTime
@@ -185,7 +184,7 @@ public struct GIGFGachaItem: Decodable {
         self.count = try container
             .decodeIfPresent(String.self, forKey: .count) ?? "1"
 
-        let dateFormatter = DateFormatter.Gregorian()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         if let timeStr = try? container.decode(String.self, forKey: .time),
            dateFormatter.date(from: try container.decode(String.self, forKey: .time)) != nil {
@@ -524,7 +523,7 @@ extension XLSXFile {
 
     private func parseRawItems() throws -> [ParsedRow] {
         let file = self
-        let dateFormatter = DateFormatter.Gregorian()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
         let errRDM = GIGFExcelError.rawDataMissing

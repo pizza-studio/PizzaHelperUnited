@@ -71,7 +71,7 @@ extension AbyssCollector {
         )
         let abyssDataDate =
             Date(timeIntervalSince1970: startTime)
-        let dateFormatter = DateFormatter.Gregorian()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyyMM"
         let abyssSeasonStr = dateFormatter.string(from: abyssDataDate)
         guard let abyssSeasonInt = Int(abyssSeasonStr) else { throw ACError.dateEncodingFailure }

@@ -21,16 +21,15 @@ extension DateFormatter {
         timeZoneDelta: Int
     )
         -> DateFormatter {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = .init(secondsFromGMT: timeZoneDelta * 3600)
         return dateFormatter
     }
 
     public static var forUIGFFileName: DateFormatter {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyyMMddHHmm"
-        dateFormatter.locale = .init(identifier: "en_US_POSIX")
         return dateFormatter
     }
 
@@ -38,7 +37,7 @@ extension DateFormatter {
         timeZoneDeltaAsSeconds: Int
     )
         -> DateFormatter {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = .init(secondsFromGMT: timeZoneDeltaAsSeconds)
         return dateFormatter
@@ -64,9 +63,8 @@ extension Date {
     }
 
     public init?(_ hoyoExpression: String, tzDelta: Int) {
-        let dateFormatter = DateFormatter.Gregorian()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = .init(secondsFromGMT: tzDelta * 3600)
         guard let date = dateFormatter.date(from: hoyoExpression) else { return nil }
         self = date

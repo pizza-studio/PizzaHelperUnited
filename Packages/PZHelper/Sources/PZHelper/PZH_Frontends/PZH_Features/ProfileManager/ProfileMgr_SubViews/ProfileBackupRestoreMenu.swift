@@ -185,9 +185,8 @@ private struct PZProfilesDocument: FileDocument {
     // MARK: Private
 
     private static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyyMMddHHmm"
-        dateFormatter.locale = .init(identifier: "en_US_POSIX")
         return dateFormatter
     }()
 }
