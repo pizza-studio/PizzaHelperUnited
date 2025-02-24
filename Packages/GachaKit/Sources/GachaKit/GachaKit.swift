@@ -150,3 +150,116 @@ extension GachaKit {
         }
     }
 }
+
+// MARK: - UIGF Gacha Entry Date String Format Fixer APIs.
+
+extension String {
+    /// Corrects malformed date strings to "yyyy-MM-dd HH:mm:ss" format
+    /// Handles cases where DateFormatter produces incorrect formats like:
+    /// - "2020-04-04 3:03:03 PM"
+    /// - "2020-04-04 下午3:03:03"
+    public func correctedUIGFDateFormat() -> String {
+        // First check if string already matches desired format
+        let pattern = #"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$"#
+        if range(of: pattern, options: .regularExpression) != nil {
+            return self
+        }
+        // Set up formatter for output
+        let outputFormatter = DateFormatter()
+        outputFormatter.locale = Locale(identifier: "en_US_POSIX")
+        outputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        // Setup input formatters
+        let inputFormatters: [(DateFormatter, String)] = [
+            // For "3:03:03 PM" style
+            {
+                let fmt = DateFormatter()
+                fmt.locale = Locale(identifier: "en_US")
+                fmt.dateFormat = "yyyy-MM-dd h:mm:ss a"
+                return (fmt, "English 12-hour")
+            }(),
+            // For Chinese locale style
+            {
+                let fmt = DateFormatter()
+                fmt.locale = Locale(identifier: "zh_CN")
+                fmt.dateFormat = "yyyy-MM-dd ah:mm:ss"
+                return (fmt, "Chinese 12-hour")
+            }(),
+        ]
+        // Try each formatter
+        for (formatter, _) in inputFormatters {
+            if let date = formatter.date(from: self) {
+                return outputFormatter.string(from: date)
+            }
+        }
+        return self
+    }
+
+    /// A Boolean value indicating whether the string matches the "yyyy-MM-dd HH:mm:ss" format.
+    public var isUIGFDateTimeFormat: Bool {
+        // Check basic length
+        guard count == 19 else { return false }
+
+        // Check delimiters positions
+        guard self[4] == "-",
+              self[7] == "-",
+              self[10] == " ",
+              self[13] == ":",
+              self[16] == ":" else {
+            return false
+        }
+
+        // Extract components
+        let year = Int(self[0 ... 3])
+        let month = Int(self[5 ... 6])
+        let day = Int(self[8 ... 9])
+        let hour = Int(self[11 ... 12])
+        let minute = Int(self[14 ... 15])
+        let second = Int(self[17 ... 18])
+
+        // Validate all components exist
+        guard let year = year,
+              let month = month,
+              let day = day,
+              let hour = hour,
+              let minute = minute,
+              let second = second else {
+            return false
+        }
+
+        // Validate ranges
+        guard (1 ... 12).contains(month),
+              (1 ... 31).contains(day),
+              (0 ... 23).contains(hour),
+              (0 ... 59).contains(minute),
+              (0 ... 59).contains(second) else {
+            return false
+        }
+
+        // Validate days in month
+        let daysInMonth = switch month {
+        case 4, 6, 9, 11: 30
+        case 2:
+            isLeapYear(year) ? 29 : 28
+        default: 31
+        }
+
+        return day <= daysInMonth
+    }
+
+    /// String subscript for getting character at index
+    private subscript(i: Int) -> Character {
+        self[index(startIndex, offsetBy: i)]
+    }
+
+    /// String subscript for getting substring in range
+    private subscript(r: ClosedRange<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: r.lowerBound)
+        let end = index(startIndex, offsetBy: r.upperBound)
+        return self[start ... end]
+    }
+
+    /// Check if a year is leap year
+    private func isLeapYear(_ year: Int) -> Bool {
+        year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
+    }
+}
