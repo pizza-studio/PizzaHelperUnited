@@ -161,7 +161,7 @@ extension Enka.QueriedProfileHSR {
 
     public struct EquipmentFlat: AbleToCodeSendHash {
         public let props: [Prop]
-        public let name: Int
+        public let name: UInt
     }
 
     // MARK: - Prop
