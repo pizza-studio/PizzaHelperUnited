@@ -22,7 +22,6 @@ extension DateFormatter {
     )
         -> DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMddHHmm"
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = .init(secondsFromGMT: timeZoneDelta * 3600)
         return dateFormatter
@@ -40,7 +39,6 @@ extension DateFormatter {
     )
         -> DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMddHHmm"
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = .init(secondsFromGMT: timeZoneDeltaAsSeconds)
         return dateFormatter
