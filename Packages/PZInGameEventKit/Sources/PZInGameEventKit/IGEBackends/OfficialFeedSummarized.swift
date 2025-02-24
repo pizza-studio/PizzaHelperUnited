@@ -156,9 +156,8 @@ extension OfficialFeed {
         _ endAt: String, server: HoYo.Server
     )
         -> (intervalDate: Date.IntervalDate, date: Date)? {
-        let dateFormatter = DateFormatter.Gregorian()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = server.timeZone
         let endDate = dateFormatter.date(from: endAt)
         guard let endDate else { return nil }

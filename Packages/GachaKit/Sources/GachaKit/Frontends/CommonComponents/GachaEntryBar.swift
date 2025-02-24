@@ -103,7 +103,7 @@ public struct GachaEntryBar: View {
     // MARK: Private
 
     private static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         return dateFormatter

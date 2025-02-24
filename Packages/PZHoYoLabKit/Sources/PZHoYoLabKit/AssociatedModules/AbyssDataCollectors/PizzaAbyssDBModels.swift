@@ -147,7 +147,7 @@ extension PZAbyssDB.AvatarHoldingDataPack {
         let obfuscatedUid = "\(profile.uid)\(profile.uid.md5)\(PZAbyssDB.uidSalt)"
         self.uid = String(obfuscatedUid.md5)
 
-        let formatter = DateFormatter.Gregorian()
+        let formatter = DateFormatter.GregorianPOSIX()
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.calendar = Calendar(identifier: .gregorian)
         self.updateDate = formatter.string(from: Date())
@@ -189,7 +189,7 @@ extension PZAbyssDB.AbyssDataPack {
         )
         let abyssDataDate =
             Date(timeIntervalSince1970: Double(abyssData.startTime)!)
-        let dateFormatter = DateFormatter.Gregorian()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyyMM"
         let abyssSeasonStr = dateFormatter.string(from: abyssDataDate)
         guard let abyssSeasonInt = Int(abyssSeasonStr) else {

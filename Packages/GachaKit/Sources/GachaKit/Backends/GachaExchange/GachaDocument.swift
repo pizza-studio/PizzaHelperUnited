@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -49,8 +50,7 @@ public struct GachaDocument: FileDocument {
     public func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = .init(identifier: "en_US_POSIX")
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         encoder.dateEncodingStrategy = .formatted(dateFormatter)
         encoder.keyEncodingStrategy = .convertToSnakeCase

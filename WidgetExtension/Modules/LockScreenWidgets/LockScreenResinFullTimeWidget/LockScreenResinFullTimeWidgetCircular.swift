@@ -53,11 +53,8 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
                                 let dateString: String = {
-                                    let formatter = DateFormatter()
+                                    let formatter = DateFormatter.GregorianPOSIX()
                                     formatter.dateFormat = "HH:mm"
-                                    formatter
-                                        .locale =
-                                        Locale(identifier: "en_US_POSIX")
                                     return formatter
                                         .string(
                                             from: Date(
@@ -116,7 +113,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
                                 let dateString: String = {
-                                    let formatter = DateFormatter()
+                                    let formatter = DateFormatter.GregorianPOSIX()
                                     formatter.dateFormat = "HH:mm"
                                     return formatter
                                         .string(

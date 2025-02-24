@@ -12,7 +12,7 @@ public enum PZWidgets {}
 
 extension PZWidgets {
     static let dateFormatter: DateFormatter = {
-        let fmt = DateFormatter()
+        let fmt = DateFormatter.GregorianPOSIX()
         fmt.doesRelativeDateFormatting = true
         fmt.dateStyle = .short
         fmt.timeStyle = .short

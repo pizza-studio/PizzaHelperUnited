@@ -132,9 +132,8 @@ struct ProfileManagerPageContent: View {
     // MARK: Private
 
     private static let dateTimeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
+        let formatter = DateFormatter.GregorianPOSIX()
         formatter.timeZone = .autoupdatingCurrent
-        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter
     }()
