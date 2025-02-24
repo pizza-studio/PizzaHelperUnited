@@ -174,9 +174,8 @@ public struct AbyssRankView: View {
     @Default(.defaultServer) private var defaultServer4GI: String
 
     private func getRemainDays(_ endAt: String) -> Date.IntervalDate? {
-        let dateFormatter = DateFormatter.Gregorian()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let cachedServerTyped = HoYo.Server(rawValue: defaultServer4GI) ?? .asia(.genshinImpact)
         dateFormatter.timeZone = cachedServerTyped.timeZone
         let endDate = dateFormatter.date(from: endAt)

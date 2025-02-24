@@ -87,7 +87,7 @@ enum PSAServer {
 
         var paramDict = [String: String]()
         if let queryStartDate = queryStartDate {
-            let dateFormatter = DateFormatter.Gregorian()
+            let dateFormatter = DateFormatter.GregorianPOSIX()
             dateFormatter.dateFormat = "yyyy-MM-dd"
             paramDict.updateValue(
                 String(

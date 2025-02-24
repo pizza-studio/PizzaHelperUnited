@@ -47,7 +47,7 @@ struct WatchResinDetailView: View {
 }
 
 private let dateFormatter: DateFormatter = {
-    let fmt = DateFormatter()
+    let fmt = DateFormatter.GregorianPOSIX()
     fmt.doesRelativeDateFormatting = true
     fmt.dateStyle = .short
     fmt.timeStyle = .short

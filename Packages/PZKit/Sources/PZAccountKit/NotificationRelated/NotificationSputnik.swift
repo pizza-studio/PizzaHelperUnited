@@ -92,7 +92,7 @@ private struct NotificationSputnik {
     fileprivate let options: NotificationOptions = Defaults[.notificationOptions]
 
     fileprivate let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
+        let formatter = DateFormatter.GregorianPOSIX()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         formatter.doesRelativeDateFormatting = true

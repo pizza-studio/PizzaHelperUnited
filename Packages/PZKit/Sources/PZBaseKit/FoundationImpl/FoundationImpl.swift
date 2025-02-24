@@ -329,7 +329,7 @@ extension Date {
 
     public func getRelativeDateString(benchmarkDate: Date = Date()) -> String {
         let relationIdentifier: RelationIdentifier = .getRelationIdentifier(of: self)
-        let formatter = DateFormatter.Gregorian()
+        let formatter = DateFormatter.GregorianPOSIX()
         var component = Locale.Components(locale: Locale.current)
         component.hourCycle = .zeroToTwentyThree
         formatter.locale = Locale(components: component)
@@ -399,7 +399,7 @@ extension Date {
     }
 
     public static func relativeTimePointFromNow(second: Int) -> String {
-        let dateFormatter = DateFormatter.Gregorian()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         dateFormatter.doesRelativeDateFormatting = true
@@ -465,7 +465,7 @@ extension Date {
 }
 
 extension DateFormatter {
-    public static func Gregorian() -> DateFormatter {
+    public static func GregorianPOSIX() -> DateFormatter {
         let result = DateFormatter()
         result.locale = .init(identifier: "en_US_POSIX")
         return result

@@ -319,7 +319,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
 private func format(_ date: Date) -> String {
     let relationIdentifier: Date.RelationIdentifier =
         .getRelationIdentifier(of: date)
-    let formatter = DateFormatter.Gregorian()
+    let formatter = DateFormatter.GregorianPOSIX()
     var component = Locale.Components(locale: Locale.current)
     component.hourCycle = .zeroToTwentyThree
     formatter.locale = Locale(components: component)

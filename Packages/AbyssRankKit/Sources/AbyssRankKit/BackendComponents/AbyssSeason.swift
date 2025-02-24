@@ -8,7 +8,7 @@ typealias AbyssSeason = Int
 
 extension AbyssSeason {
     static func from(_ date: Date) -> Self {
-        let dateFormatter = DateFormatter.Gregorian()
+        let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyyMM"
         let yearMonth = Int(dateFormatter.string(from: date))! * 10
         if Calendar.current.component(.day, from: date) > 15 {
@@ -24,7 +24,7 @@ extension AbyssSeason {
 
     var startDateOfSeason: Date {
         let seasonString = String(self)
-        let formatter = DateFormatter.Gregorian()
+        let formatter = DateFormatter.GregorianPOSIX()
         formatter.dateFormat = "yyyyMM"
         let yearMonth = formatter.date(from: String(seasonString.prefix(6)))!
         let year = Calendar.current.component(.year, from: yearMonth)
@@ -36,7 +36,7 @@ extension AbyssSeason {
 
     func describe() -> String {
         let seasonString = String(self)
-//        let formatter = DateFormatter.Gregorian()
+//        let formatter = DateFormatter.GregorianPOSIX()
 //        formatter.dateFormat = "yyyyMM"
 //        let yearMonth = formatter.date(from: String(seasonString.prefix(6)))!
 //        let year = Calendar.current.component(.year, from: yearMonth)

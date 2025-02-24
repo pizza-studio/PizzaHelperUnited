@@ -18,7 +18,7 @@ extension String.LocalizationValue {
 
 extension Date {
     func yyyyMM() -> Int {
-        let formatter = DateFormatter.Gregorian()
+        let formatter = DateFormatter.GregorianPOSIX()
         formatter.dateFormat = "yyyyMM"
         return Int(formatter.string(from: self))!
     }
