@@ -53,6 +53,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
                                 let dateString: String = {
+                                    // 此处强制使用 POSIX 区域。
                                     let formatter = DateFormatter.GregorianPOSIX()
                                     formatter.dateFormat = "HH:mm"
                                     return formatter
@@ -113,6 +114,7 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
                                 let dateString: String = {
+                                    // 此处强制使用 POSIX 区域。
                                     let formatter = DateFormatter.GregorianPOSIX()
                                     formatter.dateFormat = "HH:mm"
                                     return formatter

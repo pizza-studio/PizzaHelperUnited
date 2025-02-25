@@ -117,7 +117,7 @@ private struct DailyNoteCardErrorView: View {
 }
 
 private let dateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter.GregorianPOSIX()
+    let dateFormatter = DateFormatter.CurrentLocale()
     dateFormatter.dateStyle = .short
     dateFormatter.timeStyle = .short
     dateFormatter.doesRelativeDateFormatting = true

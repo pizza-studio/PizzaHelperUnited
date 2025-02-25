@@ -50,7 +50,7 @@ struct LockScreenExpeditionWidgetCorner: View {
 }
 
 private let formatter: DateFormatter = {
-    let fmt = DateFormatter.GregorianPOSIX()
+    let fmt = DateFormatter.CurrentLocale()
     fmt.doesRelativeDateFormatting = true
     fmt.dateStyle = .short
     fmt.timeStyle = .short
