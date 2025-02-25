@@ -55,14 +55,14 @@ struct LargeWidgetView: View {
     // MARK: Private
 
     private var weekday: String {
-        let formatter = DateFormatter.GregorianPOSIX()
+        let formatter = DateFormatter.CurrentLocale()
         formatter.dateFormat = "E" // Shortened weekday format
         formatter.locale = Locale.current // Use the system's current locale
         return formatter.string(from: Date())
     }
 
     private var dayOfMonth: String {
-        let formatter = DateFormatter.GregorianPOSIX()
+        let formatter = DateFormatter.CurrentLocale()
         formatter.dateFormat = "d"
         return formatter.string(from: Date())
     }
