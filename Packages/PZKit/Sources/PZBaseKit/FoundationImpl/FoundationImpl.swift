@@ -470,6 +470,12 @@ extension DateFormatter {
         result.locale = .init(identifier: "en_US_POSIX")
         return result
     }
+
+    public static func CurrentLocale() -> DateFormatter {
+        let result = DateFormatter()
+        result.locale = .init(identifier: Locale.current.identifier)
+        return result
+    }
 }
 
 extension TimeInterval {
