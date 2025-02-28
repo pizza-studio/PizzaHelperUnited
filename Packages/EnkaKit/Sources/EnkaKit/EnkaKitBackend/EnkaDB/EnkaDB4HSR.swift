@@ -159,7 +159,7 @@ extension Enka.EnkaDB4HSR {
 
     /// Only available for characters and Weapons.
     public func getNameTextMapHash(id: String) -> String? {
-        var matchedInts: [UInt] = characters.compactMap {
+        var matchedInts: [String] = characters.compactMap {
             guard $0.key.hasPrefix(id) else { return nil }
             return $0.value.avatarName.hash
         }
@@ -167,7 +167,7 @@ extension Enka.EnkaDB4HSR {
             guard $0.key.hasPrefix(id) else { return nil }
             return $0.value.equipmentName.hash
         }
-        return matchedInts.first?.description
+        return matchedInts.first
     }
 
     @MainActor
