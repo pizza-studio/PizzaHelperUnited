@@ -180,7 +180,10 @@ extension Enka.QueriedProfileHSR.Equipment {
             result.append(.init(type: Enka.PropertyType.baseAttack.rawValue, value: summedATK))
             result.append(.init(type: Enka.PropertyType.baseDefence.rawValue, value: summedDEF))
         }
-        return .init(props: result, name: hsrDB.weapons[tid.description]?.equipmentName.hash ?? 0)
+        return .init(
+            props: result,
+            name: hsrDB.weapons[tid.description]?.equipmentName.hash ?? "-114514"
+        )
     }
 }
 
@@ -205,6 +208,9 @@ extension HYQueriedModels.HYLAvatarDetail4HSR.Equip {
             result.append(.init(type: Enka.PropertyType.baseAttack.rawValue, value: summedATK))
             result.append(.init(type: Enka.PropertyType.baseDefence.rawValue, value: summedDEF))
         }
-        return .init(props: result, name: hsrDB.weapons[id.description]?.equipmentName.hash ?? 0)
+        return .init(
+            props: result,
+            name: hsrDB.weapons[id.description]?.equipmentName.hash ?? "-114514"
+        )
     }
 }
