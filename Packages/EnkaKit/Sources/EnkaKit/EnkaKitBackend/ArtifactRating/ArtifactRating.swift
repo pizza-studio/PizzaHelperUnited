@@ -201,7 +201,7 @@ extension ArtifactRating.RatingRequest.Artifact {
         var ratingModel = ArtifactRating.CharacterStatScoreModel.getScoreModel(charID: request.charID)
         let hyperBloomDealt = mutatingModelForSpecialRules(&ratingModel, for: request, rules: rules)
         let charMax = ArtifactRating.CharacterStatScoreModel.getMax(charID: request.charID)
-        // 星穹铁道的圣遗物评分是按照每个词条获得增幅的次数来计算的，
+        // 此处的圣遗物评分是按照每个词条获得增幅的次数来计算的，
         // 所以不需要针对不同的词条制定不同的 default roll。
         func getPt(_ base: Double, _ param: ArtifactRating.Appraiser.Param) -> Double {
             // Default Roll 是 1。为了与 SRS 算法一致，这里不再按照圣遗物星级对低星圣遗物做额外加偿处理。
@@ -215,7 +215,7 @@ extension ArtifactRating.RatingRequest.Artifact {
             return (base / defaultRoll) * (ratingModel[param] ?? .none).rawValue
         }
 
-        // 副詞條處理。
+        // 副词条处理。
         var stackedScore: [Double] = [
             getPt(subPanel.hpDelta, .hpDelta),
             getPt(subPanel.attackDelta, .atkDelta),
@@ -231,7 +231,7 @@ extension ArtifactRating.RatingRequest.Artifact {
             getPt(subPanel.elementalMastery, .elementalMastery),
         ]
 
-        // 主詞條處理。
+        // 主词条处理。
         checkMainProps: do {
             guard let mainPropParam = mainProp else { break checkMainProps }
             ratingModel = ArtifactRating.CharacterStatScoreModel.getScoreModel(
@@ -246,13 +246,13 @@ extension ArtifactRating.RatingRequest.Artifact {
             }
             let mainPropWeightBase = Double(level + 1) / 16
 
-            // 元素伤害加成需要额外处理。
-            // 预设情况下会尊重与角色属性对应的元素伤害加成。
-            // 但是优菈、雷泽、辛焱等物理角色被专门指定优先尊重物理伤害加成。
-            // 然后再检查杯子的伤害加成元素种类是否与被尊重的伤害加成元素一致。
-            // 【注意】不一致的话，则这个杯子的主词条将不再参与计分。
             switch (request.game, mainPropParam) {
             case let (.genshinImpact, .dmgAmp(gobletAmpedElement)):
+                // 元素伤害加成需要额外处理。
+                // 预设情况下会尊重与角色属性对应的元素伤害加成。
+                // 但是优菈、雷泽、辛焱等物理角色被专门指定优先尊重物理伤害加成。
+                // 然后再检查杯子的伤害加成元素种类是否与被尊重的伤害加成元素一致。
+                // 【注意】不一致的话，则这个杯子的主词条将不再参与计分。
                 var predefinedElement: Enka.GameElement?
                 ratingModel.keys.forEach { currentParam in
                     switch currentParam {
@@ -275,12 +275,15 @@ extension ArtifactRating.RatingRequest.Artifact {
                 if gobletAmpedElement == predefinedElement || handleSwirl {
                     stackedScore.append(getPt(mainPropWeightBase, mainPropParam))
                 }
+            case (.starRail, .spdDelta) where setID == 124:
+                // 星穹铁道：哀歌覆国的诗人如果出现速度主词条的话，记 0 分。
+                return 0
             default:
                 stackedScore.append(getPt(mainPropWeightBase, mainPropParam))
             }
         }
 
-        return (stackedScore.reduce(0, +) / charMax) * 3
+        return (stackedScore.reduce(0, +) / charMax) * 3 * effectiveRatio
     }
 }
 
