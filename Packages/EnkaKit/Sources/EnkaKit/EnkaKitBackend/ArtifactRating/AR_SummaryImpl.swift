@@ -93,7 +93,19 @@ extension Enka.AvatarSummarized {
                 case .hpAmp: result.subPanel.hpAddedRatio = valueForRating
                 case .atkAmp: result.subPanel.attackAddedRatio = valueForRating
                 case .defAmp: result.subPanel.defenceAddedRatio = valueForRating
-                case .spdDelta: result.subPanel.speedDelta = valueForRating
+                case .spdDelta:
+                    result.subPanel.speedDelta = valueForRating
+                    // 星穹铁道：哀歌覆国的诗人如果出现速度词条且计数超过 1 的话，按照计数扣分。
+                    gameCheck: switch thisSummarizedArtifact.game {
+                    case .genshinImpact: break gameCheck
+                    case .starRail where thisSummarizedArtifact.setID == 124:
+                        switch typeAppraisable {
+                        case .spdDelta where thisPropPair.count > 2:
+                            result.effectiveRatio = 1.0 / Double(thisPropPair.count)
+                        default: break gameCheck
+                        }
+                    default: break gameCheck
+                    }
                 case .critChance: result.subPanel.criticalChanceBase = valueForRating
                 case .critDamage: result.subPanel.criticalDamageBase = valueForRating
                 case .statProb: result.subPanel.statusProbabilityBase = valueForRating

@@ -40,6 +40,7 @@ extension ArtifactRating.RatingRequest {
         public var level: Int = 20
         public var setID: Int = -114_514
         public var subPanel: SubPropData = .init()
+        public var effectiveRatio: Double = 1
 
         public var isNull: Bool {
             setID == -114_514
