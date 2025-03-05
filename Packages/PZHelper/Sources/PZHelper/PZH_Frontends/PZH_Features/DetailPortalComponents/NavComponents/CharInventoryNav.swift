@@ -43,11 +43,11 @@ public struct CharInventoryNav: View {
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
                     theVM.refresh()
                 }
-                NavigationLink(destination: CharacterInventoryView(profile: profile.asSendable)) {
-                    Text("dpv.characterInventory.tapHereToSeePreviouslyCachedResults".i18nPZHelper)
-                        .font(.caption2)
-                        .bold()
-                }
+            }
+            NavigationLink(destination: CharacterInventoryView(profile: profile.asSendable)) {
+                Text("dpv.characterInventory.tapHereToSeePreviouslyCachedResults".i18nPZHelper)
+                    .font(.caption2)
+                    .bold()
             }
         case let .succeed(data):
             InformationRowView(Self.navTitle) {
