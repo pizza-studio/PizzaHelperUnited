@@ -38,18 +38,8 @@ struct AppLanguageSwitcher: View {
     // MARK: Public
 
     public var body: some View {
-        #if os(iOS) && !targetEnvironment(macCatalyst)
-        Button {
-            UIApplication.shared.open(UIApplication.openSettingsURLString.asURL)
-        } label: {
-            Label {
-                Text("settings.appLanguage.title".i18nPZHelper)
-                    .foregroundColor(.primary)
-            } icon: {
-                Image(systemSymbol: .globe)
-            }
-        }
-        #else
+        // 暫時禁用 iOSSystemAppSettingsPageLink()，因為該功能至少在 Simulator 下無法正常使用。
+        // Simulator 可能會找不到披薩小助手。
         Label {
             VStack {
                 HStack {
@@ -79,7 +69,6 @@ struct AppLanguageSwitcher: View {
         } message: {
             Text("app.language.restartRequired.description".i18nPZHelper)
         }
-        #endif
     }
 
     // MARK: Private
@@ -90,4 +79,18 @@ struct AppLanguageSwitcher: View {
     @Binding private var appleLanguageTag: String
 
     @Default(.appLanguage) private var appLanguage: [String]?
+
+    @ViewBuilder
+    private func iOSSystemAppSettingsPageLink() -> some View {
+        Button {
+            UIApplication.shared.open(UIApplication.openSettingsURLString.asURL)
+        } label: {
+            Label {
+                Text("settings.appLanguage.title".i18nPZHelper)
+                    .foregroundColor(.primary)
+            } icon: {
+                Image(systemSymbol: .globe)
+            }
+        }
+    }
 }
