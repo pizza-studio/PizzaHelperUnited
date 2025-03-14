@@ -11,7 +11,7 @@ extension AbyssSeason {
         let dateFormatter = DateFormatter.GregorianPOSIX()
         dateFormatter.dateFormat = "yyyyMM"
         let yearMonth = Int(dateFormatter.string(from: date))! * 10
-        if Calendar.current.component(.day, from: date) > 15 {
+        if Calendar.gregorian.component(.day, from: date) > 15 {
             return yearMonth + 1
         } else {
             return yearMonth
@@ -27,11 +27,11 @@ extension AbyssSeason {
         let formatter = DateFormatter.GregorianPOSIX()
         formatter.dateFormat = "yyyyMM"
         let yearMonth = formatter.date(from: String(seasonString.prefix(6)))!
-        let year = Calendar.current.component(.year, from: yearMonth)
-        let month = Calendar.current.component(.month, from: yearMonth)
+        let year = Calendar.gregorian.component(.year, from: yearMonth)
+        let month = Calendar.gregorian.component(.month, from: yearMonth)
         let day: Int = seasonString.suffix(1) == "0" ? 1 : 16
         let dateComponents = DateComponents(year: year, month: month, day: day)
-        return Calendar.current.date(from: dateComponents)!
+        return Calendar.gregorian.date(from: dateComponents)!
     }
 
     func describe() -> String {
@@ -39,8 +39,8 @@ extension AbyssSeason {
 //        let formatter = DateFormatter.GregorianPOSIX()
 //        formatter.dateFormat = "yyyyMM"
 //        let yearMonth = formatter.date(from: String(seasonString.prefix(6)))!
-//        let year = Calendar.current.component(.year, from: yearMonth)
-//        let month = Calendar.current.component(.month, from: yearMonth)
+//        let year = Calendar.gregorian.component(.year, from: yearMonth)
+//        let month = Calendar.gregorian.component(.month, from: yearMonth)
         let half = {
             if String(seasonString.suffix(1)) == "0" {
                 "abyssRankKit.rank.season.1".i18nAbyssRank
@@ -63,22 +63,22 @@ extension AbyssSeason {
         -> [AbyssSeason] {
         var choices = [Self]()
         var date = date
-        var startDate = Calendar.current
+        var startDate = Calendar.gregorian
             .date(from: DateComponents(year: 2022, month: 11, day: 1))!
         if pvp {
-            startDate = Calendar.current
+            startDate = Calendar.gregorian
                 .date(from: DateComponents(year: 2023, month: 4, day: 1))!
         }
         // 以下仅判断本月
-        if Calendar.current.dateComponents([.day], from: date).day! >= 16 {
+        if Calendar.gregorian.dateComponents([.day], from: date).day! >= 16 {
             choices.append(date.yyyyMM() * 10 + 1)
         }
         choices.append(date.yyyyMM() * 10)
-        date = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+        date = Calendar.gregorian.date(byAdding: .month, value: -1, to: date)!
         while date >= startDate {
             choices.append(date.yyyyMM() * 10 + 1)
             choices.append(date.yyyyMM() * 10)
-            date = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+            date = Calendar.gregorian.date(byAdding: .month, value: -1, to: date)!
         }
         return choices
     }

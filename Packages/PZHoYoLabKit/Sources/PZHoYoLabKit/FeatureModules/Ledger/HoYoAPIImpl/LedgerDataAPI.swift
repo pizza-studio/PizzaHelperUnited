@@ -17,7 +17,7 @@ extension HoYo {
 
 extension HoYo {
     static func ledgerData4GI(for profile: PZProfileSendable) async throws -> LedgerData4GI? {
-        guard let month = Calendar.current.dateComponents([.month], from: Date()).month else { return nil }
+        guard let month = Calendar.gregorian.dateComponents([.month], from: Date()).month else { return nil }
         return try await ledgerData4GI(
             month: month,
             uid: profile.uid,
@@ -27,7 +27,7 @@ extension HoYo {
     }
 
     static func ledgerData4HSR(for profile: PZProfileSendable) async throws -> LedgerData4HSR? {
-        let components = Calendar.current.dateComponents([.year, .month], from: Date.now)
+        let components = Calendar.gregorian.dateComponents([.year, .month], from: Date.now)
         guard let year = components.year?.description else { return nil }
         guard var month = components.month?.description else { return nil }
         if month.count == 1 {

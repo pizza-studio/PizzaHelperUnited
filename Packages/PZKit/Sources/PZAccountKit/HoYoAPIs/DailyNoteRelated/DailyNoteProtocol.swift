@@ -49,7 +49,7 @@ extension Pizza.SupportedGame {
         case .genshinImpact: return 200
         case .zenlessZone: return 240
         case .starRail:
-            let starRail30ReleaseDate = Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 15))
+            let starRail30ReleaseDate = Calendar.gregorian.date(from: DateComponents(year: 2025, month: 1, day: 15))
             guard let starRail30ReleaseDate else { return 300 }
             return Date.now < starRail30ReleaseDate ? 240 : 300
         }

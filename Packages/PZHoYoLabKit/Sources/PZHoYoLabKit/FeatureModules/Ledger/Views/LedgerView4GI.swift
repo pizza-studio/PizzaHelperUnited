@@ -68,7 +68,7 @@ public struct LedgerView4GI: LedgerView {
             .listRowMaterialBackground()
 
             Section {
-                let dayCountThisMonth = Calendar.current.dateComponents(
+                let dayCountThisMonth = Calendar.gregorian.dateComponents(
                     [.day],
                     from: Date()
                 ).day

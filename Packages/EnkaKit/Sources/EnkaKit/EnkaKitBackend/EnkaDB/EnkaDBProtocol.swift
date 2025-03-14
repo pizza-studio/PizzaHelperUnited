@@ -43,7 +43,7 @@ extension EnkaDBProtocol {
     /// 这个 Symbol 目前还没派上用场，回头得另议与此有关的处置方案。
     public var needsUpdate: Bool {
         let previousDate = Defaults[.lastEnkaDBDataCheckDate]
-        let expired = Calendar.current.date(byAdding: .hour, value: 2, to: previousDate)! < Date()
+        let expired = Calendar.gregorian.date(byAdding: .hour, value: 2, to: previousDate)! < Date()
         return expired || Enka.currentLangTag != locTag
     }
 
