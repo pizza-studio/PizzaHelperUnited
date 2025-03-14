@@ -37,7 +37,7 @@ extension GITodayMaterial {
         public var id: Int { rawValue }
 
         public static func today() -> Self? {
-            var calendar = Calendar.current
+            var calendar = Calendar.gregorian
             let maybeServer = HoYo.Server(rawValue: Defaults[.defaultServer])
             calendar.timeZone = (maybeServer ?? .asia(.genshinImpact)).timeZone
             let isTimePast4am: Bool = Date() > calendar

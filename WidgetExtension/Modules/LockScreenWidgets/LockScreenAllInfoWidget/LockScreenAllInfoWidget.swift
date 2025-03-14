@@ -282,7 +282,7 @@ struct LockScreenAllInfoWidgetView: View {
                     case let data as GeneralNote4GI:
                         GridRow(alignment: .lastTextBaseline) {
                             Label {
-                                let day = Calendar.current.dateComponents(
+                                let day = Calendar.gregorian.dateComponents(
                                     [.day],
                                     from: Date(),
                                     to: data.transformerInfo.recoveryTime
@@ -291,7 +291,7 @@ struct LockScreenAllInfoWidgetView: View {
                                     Text("pzWidgetsKit.unit.day:\(day)", bundle: .main)
                                         .minimumScaleFactor(0.2)
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                } else if let mins = Calendar.current.dateComponents(
+                                } else if let mins = Calendar.gregorian.dateComponents(
                                     [.minute],
                                     from: Date(),
                                     to: data.transformerInfo.recoveryTime

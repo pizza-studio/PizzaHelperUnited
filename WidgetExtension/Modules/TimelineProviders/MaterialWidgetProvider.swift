@@ -79,7 +79,7 @@ struct MaterialWidgetProvider: TimelineProvider {
                     .init(
                         entries: [.init(events: nil)],
                         policy: .after(
-                            Calendar.current
+                            Calendar.gregorian
                                 .date(byAdding: .hour, value: 1, to: Date())!
                         )
                     )
@@ -88,7 +88,7 @@ struct MaterialWidgetProvider: TimelineProvider {
                 completion(.init(
                     entries: [.init(events: .init(results))],
                     policy: .after(
-                        Calendar.current
+                        Calendar.gregorian
                             .date(byAdding: .hour, value: 4, to: Date())!
                     )
                 ))

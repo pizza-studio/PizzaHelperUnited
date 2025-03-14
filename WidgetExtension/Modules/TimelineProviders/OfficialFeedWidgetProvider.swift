@@ -81,7 +81,7 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
             return .init(
                 entries: [.init(games: .init(games), events: nil)],
                 policy: .after(
-                    Calendar.current
+                    Calendar.gregorian
                         .date(byAdding: .hour, value: 1, to: Date())!
                 )
             )
@@ -89,7 +89,7 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
             return .init(
                 entries: [.init(games: .init(games), events: .init(results))],
                 policy: .after(
-                    Calendar.current
+                    Calendar.gregorian
                         .date(byAdding: .hour, value: 4, to: Date())!
                 )
             )

@@ -65,7 +65,7 @@ extension AbyssCollector {
 
     public static func createAbyssSeasonStr(startTime startTimeStr: String) throws -> Int {
         guard let startTime = Double(startTimeStr) else { throw ACError.dateEncodingFailure }
-        let component = Calendar.current.dateComponents(
+        let component = Calendar.gregorian.dateComponents(
             [.year, .month, .day],
             from: Date(timeIntervalSince1970: startTime)
         )
@@ -114,7 +114,7 @@ public actor AbyssCollector {
     public private(set) var cooldownTime: Date = .now
 
     public func updateCDTime() {
-        if let newCDDate = Calendar.current.date(byAdding: .minute, value: 1, to: cooldownTime) {
+        if let newCDDate = Calendar.gregorian.date(byAdding: .minute, value: 1, to: cooldownTime) {
             cooldownTime = newCDDate
         }
     }

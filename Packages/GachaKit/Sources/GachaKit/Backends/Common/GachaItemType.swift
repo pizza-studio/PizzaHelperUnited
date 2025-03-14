@@ -139,7 +139,7 @@ public struct TimeTag: Hashable, Identifiable {
 
     public init?(_ timeTagStr: String, tzDelta: Int) {
         guard let time = Date(timeTagStr, tzDelta: tzDelta) else { return nil }
-        let components = Calendar.current.dateComponents([.day], from: time, to: Date.now)
+        let components = Calendar.gregorian.dateComponents([.day], from: time, to: Date.now)
         self.timeTagStr = timeTagStr
         self.time = time
         self.dayFromNow = components.day ?? 0

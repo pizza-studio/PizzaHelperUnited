@@ -287,7 +287,7 @@ extension Date {
         }
 
         // Create a calendar with the specified time zone
-        var calendar = Calendar.current
+        var calendar = Calendar.gregorian
         calendar.timeZone = timeZone
 
         // Get today's date in the specified time zone
