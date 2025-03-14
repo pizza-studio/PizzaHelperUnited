@@ -284,7 +284,7 @@ extension NotificationOptions {
             get: {
                 switch Self.shared.dailyTaskNotificationSetting {
                 case let .notifyAt(_, hour, minute):
-                    return Calendar.current.nextDate(
+                    return Calendar.gregorian.nextDate(
                         after: Date.now,
                         matching: DateComponents(hour: hour, minute: minute),
                         matchingPolicy: .nextTime
@@ -323,7 +323,7 @@ extension NotificationOptions {
             get: {
                 switch Self.shared.giKatheryneNotificationSetting {
                 case let .notifyAt(_, hour, minute):
-                    return Calendar.current.nextDate(
+                    return Calendar.gregorian.nextDate(
                         after: Date.now,
                         matching: DateComponents(hour: hour, minute: minute),
                         matchingPolicy: .nextTime
@@ -362,7 +362,7 @@ extension NotificationOptions {
         .init {
             switch Self.shared.hsrSimulUnivNotificationSetting {
             case let .notifyAt(weekday: _, hour: hour, minute: minute):
-                return Calendar.current.nextDate(
+                return Calendar.gregorian.nextDate(
                     after: Date(),
                     matching: DateComponents(hour: hour, minute: minute),
                     matchingPolicy: .nextTime
@@ -430,7 +430,7 @@ extension NotificationOptions {
         .init {
             switch Self.shared.giTrounceBlossomNotificationSetting {
             case let .notifyAt(weekday: _, hour: hour, minute: minute):
-                return Calendar.current.nextDate(
+                return Calendar.gregorian.nextDate(
                     after: Date(),
                     matching: DateComponents(hour: hour, minute: minute),
                     matchingPolicy: .nextTime
@@ -498,7 +498,7 @@ extension NotificationOptions {
         .init {
             switch Self.shared.hsrEchoOfWarNotificationSetting {
             case let .notifyAt(weekday: _, hour: hour, minute: minute):
-                return Calendar.current.nextDate(
+                return Calendar.gregorian.nextDate(
                     after: Date(),
                     matching: DateComponents(hour: hour, minute: minute),
                     matchingPolicy: .nextTime

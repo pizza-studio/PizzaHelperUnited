@@ -103,7 +103,7 @@ enum LockScreenLoopWidgetType: CaseIterable {
     static func autoChoose(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>)
         -> Self {
         // TODO: 此处恐需在本地 API 优化之后针对绝区零全部重新调整。
-        let today8pmPassed: Bool = Date() > Calendar.current.date(
+        let today8pmPassed: Bool = Date() > Calendar.gregorian.date(
             bySettingHour: 20,
             minute: 0,
             second: 0,

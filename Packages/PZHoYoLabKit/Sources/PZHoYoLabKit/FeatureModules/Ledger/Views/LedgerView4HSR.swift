@@ -68,7 +68,7 @@ public struct LedgerView4HSR: LedgerView {
             .listRowMaterialBackground()
 
             Section {
-                let dayCountThisMonth = Calendar.current.dateComponents(
+                let dayCountThisMonth = Calendar.gregorian.dateComponents(
                     [.day],
                     from: Date()
                 ).day

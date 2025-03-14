@@ -183,7 +183,7 @@ extension PZAbyssDB.AbyssDataPack {
         guard let abyssData else { throw AbyssCollector.ACError.abyssDataNotSupplied }
         guard abyssData.hasSufficientStarsForUpload else { throw AbyssCollector.ACError.ungainedStarsDetected }
 
-        let component = Calendar.current.dateComponents(
+        let component = Calendar.gregorian.dateComponents(
             [.year, .month, .day],
             from: Date(timeIntervalSince1970: Double(abyssData.startTime)!)
         )

@@ -302,6 +302,10 @@ extension Bool {
     }
 }
 
+extension Calendar {
+    public static let gregorian = Calendar(identifier: .gregorian)
+}
+
 // MARK: - Date Implementations
 
 extension Date {
@@ -317,7 +321,7 @@ extension Date {
             from benchmarkDate: Date = Date()
         )
             -> Self {
-            let dayDiffer = Calendar.current.component(.day, from: date) - Calendar
+            let dayDiffer = Calendar.gregorian.component(.day, from: date) - Calendar
                 .current.component(.day, from: benchmarkDate)
             switch dayDiffer {
             case 0: return .today
@@ -371,7 +375,7 @@ extension Date {
     }
 
     public func adding(seconds: Int) -> Date {
-        Calendar.current.date(byAdding: .second, value: seconds, to: self)!
+        Calendar.gregorian.date(byAdding: .second, value: seconds, to: self)!
     }
 
     public static func secondsToHoursMinutes(_ seconds: Int) -> String {
@@ -405,7 +409,7 @@ extension Date {
         dateFormatter.doesRelativeDateFormatting = true
         dateFormatter.locale = Locale(identifier: Locale.current.identifier)
 
-        let date = Calendar.current.date(
+        let date = Calendar.gregorian.date(
             byAdding: .second,
             value: second,
             to: Date()
@@ -428,27 +432,27 @@ extension Date {
         previous: Date
     )
         -> IntervalDate {
-        let day = Calendar.current.dateComponents(
+        let day = Calendar.gregorian.dateComponents(
             [.day],
             from: previous,
             to: recent
         ).day
-        let month = Calendar.current.dateComponents(
+        let month = Calendar.gregorian.dateComponents(
             [.month],
             from: previous,
             to: recent
         ).month
-        let hour = Calendar.current.dateComponents(
+        let hour = Calendar.gregorian.dateComponents(
             [.hour],
             from: previous,
             to: recent
         ).hour
-        let minute = Calendar.current.dateComponents(
+        let minute = Calendar.gregorian.dateComponents(
             [.minute],
             from: previous,
             to: recent
         ).minute
-        let second = Calendar.current.dateComponents(
+        let second = Calendar.gregorian.dateComponents(
             [.second],
             from: previous,
             to: recent
