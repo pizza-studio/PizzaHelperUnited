@@ -31,6 +31,26 @@ private struct OnAppBecomeActiveModifier: ViewModifier {
     }
 }
 
+// MARK: - OnAppBecomeActiveModifierMac
+
+@available(macCatalyst 18.0, *)
+private struct OnAppBecomeActiveModifierMac: ViewModifier {
+    @Environment(\.appearsActive) var appearsActive
+
+    /// A closure that holds the action to be performed on becoming active.
+    let action: () -> Void
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        content
+            .onChange(of: appearsActive) { oldValue, newValue in
+                if newValue, oldValue != newValue {
+                    action()
+                }
+            }
+    }
+}
+
 // MARK: - OnAppEnterBackgroundModifier
 
 /// A ViewModifier that adds an action to be performed whenever an app enters background state.
@@ -84,7 +104,11 @@ extension View {
     /// - Returns: A View with the added action.
     @ViewBuilder
     public func onAppBecomeActive(perform action: @escaping () -> Void) -> some View {
-        modifier(OnAppBecomeActiveModifier(action: action))
+        if #available(macCatalyst 18.0, *) {
+            modifier(OnAppBecomeActiveModifierMac(action: action))
+        } else {
+            modifier(OnAppBecomeActiveModifier(action: action))
+        }
     }
 
     /// Add an action to be performed whenever an app enters background state.
