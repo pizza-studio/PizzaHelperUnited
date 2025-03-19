@@ -1,0 +1,46 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "app.dailynote.initiateLiveActivity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Initiate Live Activity"
+          }
+        }
+      }
+    },
+    "pzAccountKit.CreateLiveActivityError.noInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from fetching Real-Time Notes."
+          }
+        }
+      }
+    },
+    "pzAccountKit.CreateLiveActivityError.systemSettings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The current system settings hinder this app from using Live Activity feature."
+          }
+        }
+      }
+    },
+    "pzAccountKit.CreateLiveActivityError.unknown:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[Unknown Exception] %@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -1,0 +1,402 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "asset.dailyMaterial:talentAdmonition" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Admonition"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentBallad" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ballad"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentConflict" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conflict"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentContention" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contention"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentDiligence" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diligence"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentElegance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegance"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentEquity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equity"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentFreedom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Freedom"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentGold" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gold"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentIngenuity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingenuity"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentJustice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Justice"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentKindling" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kindling"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentLight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentOrder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Order"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentPraxis" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Praxis"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentProsperity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prosperity"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentResistance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resistance"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:talentTransience" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transience"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponAerosiderite" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aerosiderite"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponAncientChord" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ancient Chord"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponBorealWolf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boreal Wolf"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponDecarabian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decarabian"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponDewdrop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dewdrop"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponDistantSea" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distant Sea"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponElixir" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mist Veiled"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponGladiator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gladiator"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponGuyun" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guyun"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponKijinMask" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mask"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponNarukami" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narukami"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponNightWind" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Night-Wind"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponOasisGarden" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oasis Garden"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponPristineSea" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pristine Sea"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponSacredLord" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sacred Lord"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponSacrificialHeart" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sacrificial Heart"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponScorchingMight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scorching Might"
+          }
+        }
+      }
+    },
+    "asset.dailyMaterial:weaponTalisman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forest Dew"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

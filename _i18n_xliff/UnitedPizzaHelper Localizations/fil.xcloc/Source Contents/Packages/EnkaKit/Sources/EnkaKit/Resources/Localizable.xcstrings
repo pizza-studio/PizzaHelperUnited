@@ -1,0 +1,495 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "enka.ASCV.summarzeToClipboard.asMD" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize to Clipboard as Markdown"
+          }
+        }
+      }
+    },
+    "enka.ASCV.summarzeToClipboard.asText" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize to Clipboard as Plain Text"
+          }
+        }
+      }
+    },
+    "enka.CaseQuery.showCaseAPIServiceProviders.explain.GI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ShowCase Query Result Provider depends on which server the UID belongs to:\n* MicroGG (Celestia and Irminsul server).\n* Enka Networks (All other servers)."
+          }
+        }
+      }
+    },
+    "enka.CaseQuery.showCaseAPIServiceProviders.explain.HSR" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ShowCase Query Result Provider depends on which server the UID belongs to:\n* MiHoMo Origin (Celestia-AstralExpress and Irminsul-Nameless server).\n* Enka Networks (All other servers)."
+          }
+        }
+      }
+    },
+    "enka.CaseQuery.title.GI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Query ShowCase (Genshin Impact)"
+          }
+        }
+      }
+    },
+    "enka.CaseQuery.title.HSR" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Query ShowCase (Star Rail)"
+          }
+        }
+      }
+    },
+    "enka.genshinStylePhotosForHSR.featureOption.disclaimer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875)."
+          }
+        }
+      }
+    },
+    "enka.photoSpecimen.credit.genshin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The background totem assets used for ID Photos of Genshin Impact characters in this app are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. These totems is visible only if “Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels” is disabled."
+          }
+        }
+      }
+    },
+    "enka.photoSpecimen.credit.starRail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The background totem assets used for ID Photos of Star Rail in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem."
+          }
+        }
+      }
+    },
+    "enka.photoSpecimen.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID Photo Specimen for all characters"
+          }
+        }
+      }
+    },
+    "enka.showCase.emptyShowCase.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Either no detail-exposable characters in the showcase or (in case of Genshin Impact) the UID owner didn't enable \"Show Character Details\" in the game. If you are the UID owner, you may follow the following screenshot to config the showcase in the game."
+          }
+        }
+      }
+    },
+    "game.elements.anemo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anemo"
+          }
+        }
+      }
+    },
+    "game.elements.cryo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cryo"
+          }
+        }
+      }
+    },
+    "game.elements.dendro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dendro"
+          }
+        }
+      }
+    },
+    "game.elements.electro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Electro"
+          }
+        }
+      }
+    },
+    "game.elements.geo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geo"
+          }
+        }
+      }
+    },
+    "game.elements.hydro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydro"
+          }
+        }
+      }
+    },
+    "game.elements.imago" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imago"
+          }
+        }
+      }
+    },
+    "game.elements.physico" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Physico"
+          }
+        }
+      }
+    },
+    "game.elements.pyro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyro"
+          }
+        }
+      }
+    },
+    "game.elements.quanto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quanto"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.considerHyperBloomElectroRoles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accommodating electro hyperbloom builds"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.considerHyperBloomElectroRoles.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genshin Only. E.g.: Raiden Shogun with over-900 elemental master (and related 4-piece artifact sets) can team up with Baizhu, Furina, and Nahida to be the strongest full-auto guided remote hyperbloom team. This disobeys the initial character design of Raiden Shogun but is an acceptable and effective choice with significantly-reduced workload of building-up the entire team with significantly larger firing range than Shinobu-Yukuaki-based close-combat hyperbloom teams. Similar situations may apply to other electro characters in Genshin Impact."
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.considerSwirls" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consider catalysis reactions triggered with anemo characters"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.considerSwirls.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genshin Only. E.g.: Kaedehara Kazuha with 4-piece Thundering Fury artifact suite is now considered as an acceptable choice to trigger dendro catalysis. Similar situations may apply to other anemo characters in Genshin Impact."
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.enabled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show artifact compatibility ratings in showcase"
+          }
+        }
+      }
+    },
+    "settings.display.artifactRating.sectionTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artifact Rating Preferences"
+          }
+        }
+      }
+    },
+    "settings.display.customizingNameForKunikuzushi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customize the name for Wanderer"
+          }
+        }
+      }
+    },
+    "settings.display.customizingNameForKunikuzushi.currentValueLabel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customized name for Wanderer"
+          }
+        }
+      }
+    },
+    "settings.display.customizingNameForKunikuzushi.prompt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter your preferred name for Wanderer (Kunikuzushi)"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.defaultDBQueryHost" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current EnkaDB Query Host"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.defaultDBQueryHost.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This settings automatically changes when the current setting fails on access."
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.defaultDBQueryHost.GitHub" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overseas"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.defaultDBQueryHost.GitLink" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mainland China"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.lastEnkaDBCheckDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Database updates are previously checked at:"
+          }
+        }
+      }
+    },
+    "settings.display.enkaStatus.sectionTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On-Device Enka Database Status"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.colorizeArtifactSubPropCounts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colorize the sub-properties of artifacts to differentiate their counts"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.colorizeArtifactSubPropCounts.explain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the lowest to highest: Gray, DemiWhite, White, Orange, Yellow, Red."
+          }
+        }
+      }
+    },
+    "settings.display.showCase.forceCharacterWeaponNameFixed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force-fixing the name of certain characters / weapons written in certain languages"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.forceCharacterWeaponNameFixed.explain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting is only for Simplified & Traditional Chinese UI."
+          }
+        }
+      }
+    },
+    "settings.display.showCase.namingPrefs.sectionTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naming Preferences"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.sectionTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Character Build Page & ShowCase"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.useGenshinStyleCharacterPhotos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Genshin-style character photos for Star Rail characters"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.useNameCardBGWithGICharacters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.useRealCharacterNames" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show characters’ real names instead"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -1,0 +1,251 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "watch.dailyNote.card.dailyTask.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Commission"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.expedition.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expedition"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.giTrounceBlossom" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trounce Blossom"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.homeCoin.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Realm Currency"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.hsrEchoOfWar.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echo of War"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.simulatedUniverse.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulated Universe"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.transformer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parametric Transformer"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.zzzHollowZeroBountyCommission.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bounty Commission"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.zzzHollowZeroInvestigationPoint.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Investigation Point"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.zzzScratchableCard.done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scratched"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.zzzScratchableCard.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scratch Cards"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.zzzScratchableCard.notYet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.zzzVHSStoreInOperationState.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VHS Store"
+          }
+        }
+      }
+    },
+    "watch.dailyNote.card.zzzVitality.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitality"
+          }
+        }
+      }
+    },
+    "watch.finished" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finished"
+          }
+        }
+      }
+    },
+    "watch.infoBlock.refilledAt:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refilled at \n%@"
+          }
+        }
+      }
+    },
+    "watch.pending" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending"
+          }
+        }
+      }
+    },
+    "watch.profile.manage.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Profiles"
+          }
+        }
+      }
+    },
+    "watch.settings.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget Settings"
+          }
+        }
+      }
+    },
+    "watch.stamina" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player Stamina"
+          }
+        }
+      }
+    },
+    "watch.stamina.fullyCharged" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fully Charged"
+          }
+        }
+      }
+    },
+    "watch.sync.tips" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please wait for the data to sync from iCloud. If you are on TestFlight, you probably have to force-push the local profiles to this watch from the iOS version of this app."
+          }
+        }
+      }
+    },
+    "watch.widget.settings.sync.frequency.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget Sync Frequency"
+          }
+        }
+      }
+    },
+    "watch.widget.settings.sync.speed:%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per %@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

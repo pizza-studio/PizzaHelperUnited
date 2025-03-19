@@ -1,0 +1,17 @@
+{
+  "images" : [
+    {
+      "locale" : "vi",
+      "idiom" : "universal",
+      "filename" : "showCaseToggle-GI-en_vi.heic",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

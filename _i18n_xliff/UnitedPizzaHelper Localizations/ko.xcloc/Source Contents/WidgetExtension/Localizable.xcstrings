@@ -1,0 +1,1096 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+      "shouldTranslate" : false
+    },
+    "app.background.blue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blue"
+          }
+        }
+      }
+    },
+    "app.background.gold" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gold"
+          }
+        }
+      }
+    },
+    "app.background.gray" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gray"
+          }
+        }
+      }
+    },
+    "app.background.green" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Green"
+          }
+        }
+      }
+    },
+    "app.background.intertwinedFate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "March 7th & Intertwined Fate"
+          }
+        }
+      }
+    },
+    "app.background.purple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purple"
+          }
+        }
+      }
+    },
+    "app.background.red" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red"
+          }
+        }
+      }
+    },
+    "appEntity.localeProfile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        }
+      }
+    },
+    "appEntity.widgetBackground" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget Background"
+          }
+        }
+      }
+    },
+    "appEnum.AutoRotationUsingResinWidgetStyle.asRoundMeter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round Meter"
+          }
+        }
+      }
+    },
+    "appEnum.AutoRotationUsingResinWidgetStyle.asTimerCountDown" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Countdown Timer"
+          }
+        }
+      }
+    },
+    "appEnum.AutoRotationUsingResinWidgetStyle.asTimeStampWhenWillAccomplish" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timestamp (when finished)"
+          }
+        }
+      }
+    },
+    "appEnum.AutoRotationUsingResinWidgetStyle.byDefault" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default"
+          }
+        }
+      }
+    },
+    "appEnum.AutoRotationUsingResinWidgetStyle.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto Rotation of Stamina Widget Styles"
+          }
+        }
+      }
+    },
+    "appEnum.WeeklyBossesDisplayMethod.alwaysHidden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "always hidden"
+          }
+        }
+      }
+    },
+    "appEnum.WeeklyBossesDisplayMethod.alwaysVisible" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "always visible"
+          }
+        }
+      }
+    },
+    "appEnum.WeeklyBossesDisplayMethod.hiddenIfAllCompleted" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hidden if all completed"
+          }
+        }
+      }
+    },
+    "appEnum.WeeklyBossesDisplayMethod.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly Bosses Info Display Method"
+          }
+        }
+      }
+    },
+    "appEnum.WidgetSupportedGame.allGames" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Games"
+          }
+        }
+      }
+    },
+    "appEnum.WidgetSupportedGame.GI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genshin Impact"
+          }
+        }
+      }
+    },
+    "appEnum.WidgetSupportedGame.HSR" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Star Rail"
+          }
+        }
+      }
+    },
+    "appEnum.WidgetSupportedGame.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supported Game"
+          }
+        }
+      }
+    },
+    "appEnum.WidgetSupportedGame.ZZZ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zenless Zone Zero"
+          }
+        }
+      }
+    },
+    "game.elements.anemo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anemo"
+          }
+        }
+      }
+    },
+    "game.elements.cryo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cryo"
+          }
+        }
+      }
+    },
+    "game.elements.dendro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dendro"
+          }
+        }
+      }
+    },
+    "game.elements.electro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Electro"
+          }
+        }
+      }
+    },
+    "game.elements.geo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geo"
+          }
+        }
+      }
+    },
+    "game.elements.hydro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydro"
+          }
+        }
+      }
+    },
+    "game.elements.imago" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imago"
+          }
+        }
+      }
+    },
+    "game.elements.physico" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Physico"
+          }
+        }
+      }
+    },
+    "game.elements.pyro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyro"
+          }
+        }
+      }
+    },
+    "game.elements.quanto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quanto"
+          }
+        }
+      }
+    },
+    "intent.description.chooseTheGame" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the game"
+          }
+        }
+      }
+    },
+    "intent.description.pickTheLocalProfileForThisWidget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a local profile for this widget"
+          }
+        }
+      }
+    },
+    "intent.field.echoOfWarDisplayMethod" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echo of War Display"
+          }
+        }
+      }
+    },
+    "intent.field.followSystemDarkMode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Follow system color scheme"
+          }
+        }
+      }
+    },
+    "intent.field.game" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game"
+          }
+        }
+      }
+    },
+    "intent.field.inverseSelectMode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inverse the Selection"
+          }
+        }
+      }
+    },
+    "intent.field.localeProfile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local profile"
+          }
+        }
+      }
+    },
+    "intent.field.showMaterialsInLargeSizeWidget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[GI] Show daily materials (large-sized widgets only)"
+          }
+        }
+      }
+    },
+    "intent.field.showTransformer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[GI] Show transformer status"
+          }
+        }
+      }
+    },
+    "intent.field.staminaDisplayStyle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina display style (Resin / Trailblazing Power / Zenless Energy)"
+          }
+        }
+      }
+    },
+    "intent.field.trounceBlossomDisplayMethod" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trounce Blossom Display"
+          }
+        }
+      }
+    },
+    "intent.field.useRandomWallpaper" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use random wallpaper"
+          }
+        }
+      }
+    },
+    "intent.field.wallpaper" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallpaper"
+          }
+        }
+      }
+    },
+    "intent.name.selectGameOnly" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only choose the game"
+          }
+        }
+      }
+    },
+    "intent.name.selectLocalProfile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Local Profile"
+          }
+        }
+      }
+    },
+    "intent.name.selectLocalProfileOnly" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Local Profile (only)"
+          }
+        }
+      }
+    },
+    "intent.name.selectLocalProfileWithExtraConfig" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Local Profile with Extra Configuration"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.autoDisplay" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically display your most-wanted information"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.autoRotation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto-Rotation"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.dailyCommission" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Commission Status"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.expedition" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status of Expeditions (GI) / Assignments (HSR)"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.generalInfo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General Information"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.generalInfo.detail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All info, in one view, just one glance"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.homeCoin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Realm Currency (GI)"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.homeCoin.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternative Realm Currency (GI)"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.stamina" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player Stamina"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.stamina.detail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player Stamina Status (incl. Original Resin, Trailblaze Power, and ZZZ Battery Energy; not to be confused with the in-game stamina of Genshin Impact)"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.cfgName.stamina.detail.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternate Player Stamina Status (incl. Original Resin, Trailblaze Power, and ZZZ Battery Energy; not to be confused with the in-game stamina of Genshin Impact)"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.currentStamina" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Stamina"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.dailyTask" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Commission"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.expedition" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expedition & Assignments"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.expedition.status.finished" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finished"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.expedition.status.pending" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.expedition.timeToAllCompletion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Will Finish At:"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.homeCoin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Realm Currency"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.refilledAt:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Till %@"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.staminaFullyFilledDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0 hr 0 min\nStamina is Full"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.transformerAvailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.zzzScratchableCard.done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scratched"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.infoBlock.zzzScratchableCard.notYet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.material.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the recent events and the weapons' or talents' materials that can be obtained today in Genshin Impact."
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.material.sunday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All materials are available in Sunday"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.material.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[GI] Today’s Materials & Official Events"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.next20Stamina:%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Until %lld Stamina:"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.nextMaxStamina" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Until Max Stamina:"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.officialFeed.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presenting soon-to-end in-game events of all games or the specified game."
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.officialFeed.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Feeds"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player Stamina"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina.full" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina.refillTime.countdown.ofSb" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'s countdown to max stamina"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina.refillTime.countdown.show.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Showing the player stamina and the countdown to max stamina."
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina.refillTime.countdown.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer of the Player Stamina"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina.refillTime.ofSb" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'s estimated time of full-stamina"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina.refillTime.show.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the player stamina and the time when it gets fully charged."
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.stamina.refillTime.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated Time of Full-Stamina"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.status.enquiry.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check your stamina recovery status"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.status.not_received" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(unreceived)"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.status.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player Status"
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.unit.day:%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.unit.minute:%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld min"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld mins"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetError.noProfileFound" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile not found. Please add a local profile or try restarting the device."
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.widgetError.profileSelectionNeeded" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Please right-click and edit the widget to config your local profile"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Please long press the widget to config your local profile"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pzWidgetsKit.WidgetRefreshIntent.Refresh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh the Widget"
+          }
+        }
+      }
+    },
+    "watch.info.autoRotation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "’s Auto-Rotation"
+          }
+        }
+      }
+    },
+    "watch.info.dailyCommission" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Commission"
+          }
+        }
+      }
+    },
+    "watch.info.expedition" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expedition"
+          }
+        }
+      }
+    },
+    "watch.info.RealmCurrency" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Realm Currency"
+          }
+        }
+      }
+    },
+    "watch.info.resin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player Stamina"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
