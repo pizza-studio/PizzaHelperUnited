@@ -344,7 +344,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                         .font(.system(size: fontSize * 1.6))
                         .fontWeight(.heavy)
                         .fontWidth(.compressed)
-                        .lineLimit(1).fixedSize()
+                        .lineLimit(1)
                         .minimumScaleFactor(0.5)
                     Spacer()
                     switch game {
