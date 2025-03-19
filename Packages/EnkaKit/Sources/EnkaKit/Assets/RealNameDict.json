@@ -10,7 +10,8 @@
     "1210": "Guinevere",
     "1304": "Kakavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "id": {
     "10000049": "Naganohara Yoimiya",
@@ -23,7 +24,8 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Kakavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "tr": {
     "10000049": "Naganohara Yoimiya",
@@ -36,7 +38,8 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Kakavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "it": {
     "10000049": "Naganohara Yoimiya",
@@ -49,7 +52,8 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Kakavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "ko": {
     "10000049": "나가노하라 요이미야",
@@ -62,7 +66,8 @@
     "1224": "미츠키 나노카",
     "1304": "카카바샤",
     "1308": "라이덴 메이",
-    "1312": "할아버지"
+    "1312": "할아버지",
+    "1317": "란하"
   },
   "ja": {
     "10000049": "長野原宵宮",
@@ -109,7 +114,8 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Kakavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "fr": {
     "10000049": "Naganohara Yoimiya",
@@ -122,7 +128,8 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Akavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "th": {
     "10000049": "Naganohara Yoimiya",
@@ -135,7 +142,8 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Kakavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "ru": {
     "10000049": "Наганохара Ёимия",
@@ -148,7 +156,8 @@
     "1224": "Мицуки Нанока",
     "1304": "Какавача",
     "1308": "Райдэн Мэй",
-    "1312": "Дедушка"
+    "1312": "Дедушка",
+    "1317": "Ranha"
   },
   "pt": {
     "10000049": "Naganohara Yoimiya",
@@ -161,7 +170,8 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Akavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "en": {
     "10000049": "Naganohara Yoimiya",
@@ -174,7 +184,8 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Kakavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "es": {
     "10000049": "Naganohara Yoimiya",
@@ -187,7 +198,8 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Kakavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   },
   "de": {
     "10000049": "Naganohara Yoimiya",
@@ -200,6 +212,7 @@
     "1224": "Mitsuki Nanoka",
     "1304": "Kakavasha",
     "1308": "Raiden Mei",
-    "1312": "Mikhail"
+    "1312": "Mikhail",
+    "1317": "Ranha"
   }
 }
