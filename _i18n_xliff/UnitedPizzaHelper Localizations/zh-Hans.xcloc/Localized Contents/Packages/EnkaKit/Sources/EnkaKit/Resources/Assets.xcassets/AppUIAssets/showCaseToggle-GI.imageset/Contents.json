@@ -1,0 +1,17 @@
+{
+  "images" : [
+    {
+      "locale" : "zh-Hans",
+      "idiom" : "universal",
+      "filename" : "showCaseToggle-GI-chs.heic",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

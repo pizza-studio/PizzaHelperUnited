@@ -1,0 +1,1478 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "gachaKit.alertToast.succeeded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Succeeded"
+          }
+        }
+      }
+    },
+    "gachaKit.chart.average" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average Pulls"
+          }
+        }
+      }
+    },
+    "gachaKit.chart.character" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Character"
+          }
+        }
+      }
+    },
+    "gachaKit.chart.noPentaStarsFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No 5-star characters / weapons found."
+          }
+        }
+      }
+    },
+    "gachaKit.chart.pullCount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pull Count"
+          }
+        }
+      }
+    },
+    "gachaKit.EntryException.timeRawValueNotParsable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time RawValue not parsable."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.backAndReselectFile.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go back and select another file"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.chooseProfiles.export.prompt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the gacha profiles to export.\nEmpty selection indicates selecting all profiles."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.chooseProfiles.import.prompt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the gacha profiles to import.\nEmpty selection indicates selecting all profiles."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.clickHereToExport" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Export"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.currentExportOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Option"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.failedInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from dumping the exchangeable gacha records file."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.fileSavedTo:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped the exchangeable gacha records file to:"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.export.succeededInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped the exchangeable gacha records file."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.exportedFromAppOrigin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exported by"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.fileFormat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File Format"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.gigf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GIGF (Genshin Impact Gacha-Exchangeable Format) indicates UIGF v3.0 and earlier. The feature of importing these obsolete formats is only considered for importing old backup files generated by this app."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.gigf.minimumSupportedVersion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app does not support importing GIGF formats older than UIGF v2.0 due to the lack of too many crucial information fields."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.gigf.timeZone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ UIGF v2.3 (and earlier) JSON files & UIGF v2.2 Excel Spreadsheets are exported without timezone information, and the apps used for generating these files may have individual behaviors in handling timezone information.\n - For such files generated by Snap Hutao (v1.7.16_2023-11-10 and earlier) in these deprecated formats, please set the fallback time zone to UTC+0.\n - For such files generated by Xunkong (v1.4.4_2024-04-24) in these deprecated formats, please set the fallback time zone to the server time zone. Xunkong provided no UIGF v2.4 support and they introduced the gacha timezone support with UIGF v3.0 support starts from v1.5.0 update on 2024-09-21.\n - For such files generated by Teyvat Helper (YShelper), please set the fallback time to the device time where this file was generated and exported by Teyvat Helper."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.srgfv1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SRGF v1.0, established by the UIGF committee, is an exchangeable format for gacha records of Star Rail, a game produced by Cognosphere and MiHoYo. Although this format is marked as a vintage format and is replaced by UIGF v4.0, there are some excellent apps on Windows which only conforms to SRGF v1.0, hence the option here for compatibility purposes."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.formatExplain.uigfv4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UIGF v4.0, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.import.info.time" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exported at"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.import.overrideDuplicatedEntries" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Override existing records"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.import.succeeded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully imported all entries from the specified profile(s) of the given file."
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.import.succeededReport.sectionHeader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics: New Entries Imported"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.loadFile.button.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Load File"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.navTitle.exportData" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Gacha Records"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.navTitle.importData" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import Gacha Records"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.startImportingData.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Start Import"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.tabTitle.exportData" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EXPORT"
+          }
+        }
+      }
+    },
+    "gachaKit.exchange.tabTitle.importData" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IMPORT"
+          }
+        }
+      }
+    },
+    "gachaKit.export.share.warnings.doNotShareToPublicCollectors" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ WARNING: Do not share your gacha records to **public** gacha record collectors who may **publicize** their statistic results."
+          }
+        }
+      }
+    },
+    "gachaKit.exportPackageMethod.allOwners" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Owners"
+          }
+        }
+      }
+    },
+    "gachaKit.exportPackageMethod.singleOwner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specified Owner"
+          }
+        }
+      }
+    },
+    "gachaKit.exportPackageMethod.specifiedOwners" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specified Owners"
+          }
+        }
+      }
+    },
+    "gachaKit.FileExchangeException.accessFailureComDlg32" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insufficient privileges on accessing the given file."
+          }
+        }
+      }
+    },
+    "gachaKit.FileExchangeException.fileNotExist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Either the specified file does not exist or is inaccessible."
+          }
+        }
+      }
+    },
+    "gachaKit.FileExchangeException.fileParseFailure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The given file does not match the chosen file format."
+          }
+        }
+      }
+    },
+    "gachaKit.FileExchangeException.uigfEntryInsertionError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error happened on inserting the imported gacha entries into the database."
+          }
+        }
+      }
+    },
+    "gachaKit.filter.options" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter Options"
+          }
+        }
+      }
+    },
+    "gachaKit.filter.rarity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rarity Rank"
+          }
+        }
+      }
+    },
+    "gachaKit.filter.showDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Timestamp"
+          }
+        }
+      }
+    },
+    "gachaKit.gachaLanguage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gacha Language"
+          }
+        }
+      }
+    },
+    "gachaKit.gachaLanguage.languageSupported.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Italian and Turkish languages are only supported by Genshin Impact."
+          }
+        }
+      }
+    },
+    "gachaKit.GachaMetaDBError.DatabaseExpired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local GachaMetaDB cache expired."
+          }
+        }
+      }
+    },
+    "gachaKit.GachaMetaDBError.EmptyFetchResult" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty results retrieved while trying to online-update GachaMetaDB."
+          }
+        }
+      }
+    },
+    "gachaKit.GachaMetaDBError.itemIDInvalid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ItemID Invalid."
+          }
+        }
+      }
+    },
+    "gachaKit.GachaMetaDBError.ResultFetchFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from attempting to to online-update GachaMetaDB."
+          }
+        }
+      }
+    },
+    "gachaKit.gachaProfileMenu.chooseProfile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Profile"
+          }
+        }
+      }
+    },
+    "gachaKit.GachaRootView.navDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app does not contain paid gacha. The Gacha Record Manager in this app only allows users to manage their personal gacha records for some of the games supported by this app. // Your gacha records in this app will only be stored in the private iCloud space of your current Apple ID, as well as on any Apple devices that are signed in with that Apple ID and have this app installed and in-use, hence no privacy concerns needed. // Zenless Zone Zero is currently not supported by this feature."
+          }
+        }
+      }
+    },
+    "gachaKit.GachaRootView.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gacha Record Manager"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.chart.count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Count"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.chart.date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.failFetch.retry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.fetchRange.allAvailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Fetchable Range"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.fetchRange.recent30Days" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent 30 Days"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.fetchRange.recent60Days" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent 60 Days"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.fetchRange.recent72Hours" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent 72 Hours"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.fetchRange.recentWeek" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Week"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.fetchRange.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time Range"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.finished.footer.bleachedInvalidEntriesCount" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid entries bleached: "
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.finished.footer.nothingToBleach" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No invalid local entries found."
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.finished.initialize" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Initialize"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.finished.succeeded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Succeeded in fetching gacha records"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.gotSome.gotNewRecords" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New: %lld"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.gotSome.obtaining" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtaining gacha records..."
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.gotSome.page" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page: %lld"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.inProgress.cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.inProgress.obtaining" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtaining gacha records..."
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.quickFetch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "or tap an account to fetch (Miyoushe-governed UIDs only):"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.readyStart.copyThisURL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy this URL to clipboard"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.readyStart.enableBleachingMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bleach Invalid Local Records"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.readyStart.forceOverride" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force-override existing entries"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.readyStart.reinit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste another gacha history URL"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due to occasional server-side accidents, the game server may return duplicated gacha entries with incorrect transaction IDs, polluting the local database. If the bleaching mode is enabled, this app will use the latest fetch results as the trust source of correct transaction IDs and remove the incorrect entries on the local side, but this can be deceived by the polluted data from the game server. Nevertheless, as long as a game version deprecates, all gacha records during its operation period will become static and trustable."
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local database can get polluted? Why?"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.readyStart.sectionHeader.urgeUsersToBackupFirst" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ You are responsible for the backup of existing data records before proceeding the fetch."
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.readyStart.start" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.running" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully obtained…"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Records"
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.waitingURL.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please refer to \"App Settings -> FAQ\" for information regarding how to get gacha URLs."
+          }
+        }
+      }
+    },
+    "gachaKit.getRecord.waitingURL.readClipboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read gacha history URL from clipboard"
+          }
+        }
+      }
+    },
+    "gachaKit.GMDB.clickHereToUpdateGMDB" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Update GachaMetaDB"
+          }
+        }
+      }
+    },
+    "gachaKit.GMDB.gmdbExpired.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GachaMetaDB is out of date for handling certain gacha item entries in either the local app gacha entry database or from external sources. This DB contains crucial info for mapping ItemIDs and their translations, plus telling the rarity type of each gacha item."
+          }
+        }
+      }
+    },
+    "gachaKit.import.gigf.fallbackTimeZone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default time zone if field is missing"
+          }
+        }
+      }
+    },
+    "gachaKit.import.gigf.fallbackTimeZone.autoDeduct" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server Time Zone"
+          }
+        }
+      }
+    },
+    "gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click Here to Remove All Records Under This Gacha Profile"
+          }
+        }
+      }
+    },
+    "gachaKit.management.confirmingDeletingAllRecordsOfThisGPID" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirming removal of all records under this gacha profile. Proceed?"
+          }
+        }
+      }
+    },
+    "gachaKit.management.currentGame" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Game"
+          }
+        }
+      }
+    },
+    "gachaKit.management.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Managing Gacha Records"
+          }
+        }
+      }
+    },
+    "gachaKit.management.uidAndGameToPurge" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game & UID to Delete"
+          }
+        }
+      }
+    },
+    "gachaKit.menu.exchangeGachaRecords" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import / Export Gacha Records"
+          }
+        }
+      }
+    },
+    "gachaKit.menu.inheritCloudDataFromPreviousVersions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inherit iCloud Gacha Records from old Pizza Apps"
+          }
+        }
+      }
+    },
+    "gachaKit.menu.listCloudDataFromPreviousVersions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "List iCloud Gacha Records from old Pizza Apps"
+          }
+        }
+      }
+    },
+    "gachaKit.menu.rebuildGachaUIDList" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rebuild Gacha UID List"
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.invalidServer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Server invalid."
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.invalidURL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] URL invalid."
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.noAuthenticationKey" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Authentication key missing."
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.noAuthenticationKeyVersion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] The version info of `key` is missing in the authentication key."
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.noServer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Server info is missing."
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.noSignType" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Sign type missing."
+          }
+        }
+      }
+    },
+    "gachaKit.ParseGachaURLError.urlGenerationFailure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[ParseGachaURLError] Failed from generating gacha URL."
+          }
+        }
+      }
+    },
+    "gachaKit.poolFilterLabel.byGame.GI" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wish Type"
+          }
+        }
+      }
+    },
+    "gachaKit.poolFilterLabel.byGame.HSR" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warp Type"
+          }
+        }
+      }
+    },
+    "gachaKit.poolFilterLabel.byGame.ZZZ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Channel Type"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.giBeginnersWish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginners’ Wish"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.giCharacterEventWish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Character Event Wish"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.giChronicledWish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chronicled Wish"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.giStandardWish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard Wish"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.giUnknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown Wish"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.giWeaponEventWish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weapon Event Wish"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.srCharacterEventWarp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Character Event Warp"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.srDepartureWarp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Departure Warp"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.srLightConeEventWarp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light Cone Event Warp"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.srStellarWarp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stellar Warp"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.srUnknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown Warp"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.zzBangbooChannel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bangboo Channel"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.zzExclusiveChannel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exclusive Channel"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.zzStableChannel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stable Channel"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.zzUnknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown Channel"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.zzWEngineChannel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W-Engine Channel"
+          }
+        }
+      }
+    },
+    "gachaKit.profile.bigChart" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detailed Chart"
+          }
+        }
+      }
+    },
+    "gachaKit.profile.detailedList" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detailed Records"
+          }
+        }
+      }
+    },
+    "gachaKit.prompt.noGachaProfileFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No gacha records found."
+          }
+        }
+      }
+    },
+    "gachaKit.prompt.pleaseChooseGachaProfile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please choose a gacha profile. If you can’t see one, then please import some gacha records first."
+          }
+        }
+      }
+    },
+    "gachaKit.reviewFromAppraiser.gi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paimon’s Appraisement"
+          }
+        }
+      }
+    },
+    "gachaKit.reviewFromAppraiser.hsr" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mitsuki Nanoka’s Appraisement"
+          }
+        }
+      }
+    },
+    "gachaKit.reviewFromAppraiser.zzz" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interknot Appraisement"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.avaragePulls4LimitedPentaStars" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avrg. Pulls (limited ★5)"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.avaragePulls4PentaStars" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avrg. Pulls (all-type ★5)"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.pull:%lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.sincePreviousPentaStar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulls Stacked (since the prev. ★5)"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.surinukeEvasionRate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surinuke Evasion Rate"
+          }
+        }
+      }
+    },
+    "gachaKit.stats.totalPulls" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Pulls"
+          }
+        }
+      }
+    },
+    "gachaKit.uigf.affLink.[UIGF](https://uigf.org/)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[About UIGF committee and their established gacha exchangeable formats, incl. UIGF, SRGF, etc.](https://uigf.org/)"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

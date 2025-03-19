@@ -1,0 +1,2192 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "app.dailynote.card.daily_training.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Training"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.dailyTask.extraReward.notReceived" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extra Reward\nAvailable"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.dailyTask.extraReward.received" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extra Reward\nRetrieved"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.dailyTask.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Commission"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.dispatch.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assignments"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.error.pleaseCheckAtProfileMgr" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please go to the Settings Page to check possible connectivity issues with this local profile."
+          }
+        }
+      }
+    },
+    "app.dailynote.card.expedition.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expedition"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.homeCoin.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Realm Currency"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.hsr_echo_of_war.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Echo of War"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.parametricTransformer.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parametric Transformer"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.resin.label" : {
+      "comment" : "Watch App",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original Resin"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.simulated_universe.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulated Universe"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.trailblazePower.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trailblaze Power"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.unit.days" : {
+      "comment" : "Only one or two characters are allowed.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.weeklyBoss" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trounce Blossom"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.zzzBatteryEnergy.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZZZ Energy"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.zzzHollowZeroBountyCommission.label" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bounty Commission"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.zzzHollowZeroInvestigationPoint.label" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Investigation Point"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.zzzScratchableCard.done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scratched"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.zzzScratchableCard.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scratch Cards"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.zzzScratchableCard.notYet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.zzzVHSStoreInOperationState.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VHS Store"
+          }
+        }
+      }
+    },
+    "app.dailynote.card.zzzVitality.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today’s Vitality"
+          }
+        }
+      }
+    },
+    "app.dailynote.noCard.suggestion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No local profile found on this device. You may switch to the App Settings page and add one. :)"
+          }
+        }
+      }
+    },
+    "app.language.restartRequired.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New UI language settings of an app on macOS / iOS always require the app to restart to make sure the new language setting becomes effective to it. Even if the user manually change this through System Settings, user will still be prompted the necessity of restarting the app, and it will be not this app but the macOS / iOS who prompts it.\n\nWe make this language switcher here to save users some seconds. This design is extremely ADHD-friendly since ADHD patients are likely to forgot what they are about to do while flipping among nested pages in iOS / macOS System Settings.\n\nThis app will quit after you confirm this message."
+          }
+        }
+      }
+    },
+    "dpv.characterInventory.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Character Inventory List"
+          }
+        }
+      }
+    },
+    "dpv.characterInventory.notice.EmptyInventoryResult" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The fetched inventory result is empty."
+          }
+        }
+      }
+    },
+    "dpv.characterInventory.tapHereToSeePreviouslyCachedResults" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here to see previously cached results."
+          }
+        }
+      }
+    },
+    "dpv.query.menuCommandTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Showcase Query"
+          }
+        }
+      }
+    },
+    "Error: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error: %@"
+          }
+        }
+      }
+    },
+    "FAQ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        }
+      }
+    },
+    "profile.accountConnectivity.buttonTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test connection"
+          }
+        }
+      }
+    },
+    "profile.label.allowNotification" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow Notifications"
+          }
+        }
+      }
+    },
+    "profile.label.cookie" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal Cookies"
+          }
+        }
+      }
+    },
+    "profile.label.editDetails" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Profile Details"
+          }
+        }
+      }
+    },
+    "profile.label.fp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device Fingerprint"
+          }
+        }
+      }
+    },
+    "profile.label.fp.extraNotice.zzz" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Zenless Zone Zero UIDs governed by Miyoushe require the user to manually fill in his / her device fingerprint by himself / herself."
+          }
+        }
+      }
+    },
+    "profile.label.game" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game"
+          }
+        }
+      }
+    },
+    "profile.label.nickname" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nickname"
+          }
+        }
+      }
+    },
+    "profile.label.server" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game Server"
+          }
+        }
+      }
+    },
+    "profile.login.sectionHeader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login your HoYoLAB / Miyoushe Account"
+          }
+        }
+      }
+    },
+    "profileMgr.account.qr_code_login.check_scanned" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I have scanned. Please check. "
+          }
+        }
+      }
+    },
+    "profileMgr.account.qr_code_login.click_qr_to_save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the QR code above to save it"
+          }
+        }
+      }
+    },
+    "profileMgr.account.qr_code_login.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please use MiYouShe app to scan the QR code. You may also want to screenshot this QR code for the scanning."
+          }
+        }
+      }
+    },
+    "profileMgr.account.qr_code_login.not_scanned_alert" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server response indicates that the QR code has not been scanned. Please try scanning it again or regenerate a new QR code for scanning."
+          }
+        }
+      }
+    },
+    "profileMgr.account.qr_code_login.open_miyoushe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click here to jump to Miyoushe"
+          }
+        }
+      }
+    },
+    "profileMgr.account.qr_code_login.open_miyoushe_mas_page" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Miyoushe from App Store"
+          }
+        }
+      }
+    },
+    "profileMgr.account.qr_code_login.regenerate_qrcode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regenerate the QR code"
+          }
+        }
+      }
+    },
+    "profileMgr.account.qr_code_login.shared_qr_code_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR Code for Miyoushe"
+          }
+        }
+      }
+    },
+    "profileMgr.account.qr_code_login.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login by scanning the QR code"
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.attention.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attention"
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.explanation.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To get resin and other data from HoYoLAB / Miyoushe, UID and login cookie of your account is needed. After logging into HoYoLAB / Miyoushe, we will store them locally as well as on your private iCloud. Then our app will use the stored UID and cookie to get the resin and other information in a way similar to HoYoLAB / Miyoushe app, then display them on your widget. Your private information will not be sent to other places other than HoYoLAB / Miyoushe and iCloud, including us, so your personal information will be very secure. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program."
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.explanation.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This procedure is not an illegal procedure such as plug-ins. This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ."
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.explanation.title.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How this App work?"
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.explanation.title.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About your account security"
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.instruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click the \"Done\" button at the top-trailing corner of the app screen after you finish login to HoYoLAB in the following webpage. If you are prompted for CAPTCHA, please finish it."
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.instruction.passwordInputSafetyExplanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To ensure you feel safe with this, here’s how it works: Your password input is protected by macOS built-in SecureEventInputAPI (or its equivalent on iOS), and then it will be directly handled by HoYoLAB login webpage. This is the nature of how WKWebView gets designed by Apple. Nobody else can interfere / intercept this process, nor this app. You can see that you cannot switch to 3rd-party input methods while the password is receiving inputs from the user."
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.instruction.specialWarning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 3rd-party sign-in services like Google, Facebook, Twitter, Sign-in-with-Apple, etc. ARE NOT TECHNICALLY SUPPORTABLE IN THIS APP, please sign in with your username & password."
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.notice.bewareof" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beware of these things before you proceed:\n\n→ This app is NOT made for the creation nor deletion of HoYoLAB / Miyoushe account. Such actions are supposed to be done through HoYoLAB / Miyoushe app or official website services provided by MiHoYo / Cognosphere. You may tap the management link (see the top-trailing corner of this window) to proceed to that website service page.\n\n→ A HoYoLAB / Miyoushe account must have been used to play the game (you specified above) AT LEAST ONCE in order to be usable in this app.\n\n→ A related game account (under the managment of its related HoYoLAB / Miyoushe account) must enable the public visibility of the character showcase through in-game settings in order to let the related information displayable in this app."
+          }
+        }
+      }
+    },
+    "profileMgr.accountLogin.pleaseFinish.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please Finish Login"
+          }
+        }
+      }
+    },
+    "profileMgr.delete.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Profile"
+          }
+        }
+      }
+    },
+    "profileMgr.edit.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Profile Config"
+          }
+        }
+      }
+    },
+    "profileMgr.error.SaveProfileError.helpAnchor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please try login again."
+          }
+        }
+      }
+    },
+    "profileMgr.error.SaveProfileError.missingFieldError:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from saving profile due to missing field: "
+          }
+        }
+      }
+    },
+    "profileMgr.error.SaveProfileError.saveDataError:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from saving profile due to error: "
+          }
+        }
+      }
+    },
+    "profileMgr.exchange.export.failedInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from dumping all local profiles."
+          }
+        }
+      }
+    },
+    "profileMgr.exchange.export.fileSavedTo:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped all local profiles into file:"
+          }
+        }
+      }
+    },
+    "profileMgr.exchange.export.menuTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Package & Export All Local Profiles"
+          }
+        }
+      }
+    },
+    "profileMgr.exchange.export.succeededInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped all local profiles."
+          }
+        }
+      }
+    },
+    "profileMgr.exchange.import.menuTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import a Pack of Local Profiles"
+          }
+        }
+      }
+    },
+    "profileMgr.importLegacyProfiles.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inherit Previously-Used Local Accounts"
+          }
+        }
+      }
+    },
+    "profileMgr.label.select" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Your Game UID"
+          }
+        }
+      }
+    },
+    "profileMgr.lastTimeResetLocalProfileDB:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous DB Reset: %@"
+          }
+        }
+      }
+    },
+    "profileMgr.login.error.no.profileMgr.found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This HoYoLAB / Miyoushe account is not bound to any game character."
+          }
+        }
+      }
+    },
+    "profileMgr.login.manual.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Or:"
+          }
+        }
+      }
+    },
+    "profileMgr.login.manual.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "manually configure your local profile"
+          }
+        }
+      }
+    },
+    "profileMgr.login.server.temporarilyDownNotice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorry, login feature for this server is temporarily down. We are working on this. You can now manually config your local profile with your own effective Miyoushe / HoYoLAB Cookie. "
+          }
+        }
+      }
+    },
+    "profileMgr.loginError.noGameUIDFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No UIDs found against the specified game. This HoYoLAB / Miyoushe account is required to play the game for at least once before being logged in via this app against this game."
+          }
+        }
+      }
+    },
+    "profileMgr.manage.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local Profile"
+          }
+        }
+      }
+    },
+    "profileMgr.manageHoYoAccounts.shortened" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Account"
+          }
+        }
+      }
+    },
+    "profileMgr.new" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Profile"
+          }
+        }
+      }
+    },
+    "profileMgr.noLocalProfileFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No local profile found."
+          }
+        }
+      }
+    },
+    "profileMgr.regenerateDeviceFingerPrint.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regenerate Device Fingerprint"
+          }
+        }
+      }
+    },
+    "profileMgr.syncAllProfilesToUserDefaults.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manually Sync Profiles To Widgets"
+          }
+        }
+      }
+    },
+    "profileMgr.test.footer.recommend_device_fp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To avoid consistently being requested for verification, please set up device finger print according to [this tutorial](https://hsr.pizzastudio.org/static/fp_tutorial)."
+          }
+        }
+      }
+    },
+    "profileMgr.test.verify.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please tap here to finish the captcha verification. "
+          }
+        }
+      }
+    },
+    "profileMgr.test.verify.web_sheet.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verification"
+          }
+        }
+      }
+    },
+    "profileMgr.toast.taskFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed"
+          }
+        }
+      }
+    },
+    "profileMgr.toast.taskSucceeded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "profileMgr.withdraw.entrylink.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regarding how to Manage or Delete your HoYoLAB / Miyoushe account"
+          }
+        }
+      }
+    },
+    "profileMgr.withdraw.view.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regarding Account Deletion"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.linkTo:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The above link guides you to: %@"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.navTitle.hoyolab" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Deletion (HoYoLAB)"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.navTitle.miyoushe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Deletion (Miyoushe)"
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.readme.hoyolab.specialNotice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\nThe above link works on all devices. Users can also use HoYoLAB App (iPhone) to finish the account withdrawal (deletion)."
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.readme.miyoushe.specialNotice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\nMiyoushe expects that users need to use either cellphone or Miyoushe App (iPhone) to finish the account withdrawal (deletion). \n\nIf you are on macOS, you can change the user-agent of your Safari browser to iPhone in order to see the account deletion link. For more information regarding how to use the developer menu in Safari on macOS to change its user-agent, please contact Apple Support. \n\nThe above link, if directly clicked, will automatically apply the user-agent of iPhone."
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.warning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You acknowledge and agree that as a result of deleting your Account, you will lose access to all services related to all games developed by MiHoYo / Cognosphere, including the account information, subscriptions and all game-related information linked to such Account and permanently lose the possibility to access other services through the Account."
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.warning.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may confirm this consequence by consulting HoYoLAB / Miyoushe support."
+          }
+        }
+      }
+    },
+    "profileMgr.withdrawal.whyAddedThisPage.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This page is made in compliance with what requested by App Store Review Board."
+          }
+        }
+      }
+    },
+    "setting.display.restoreTabOnLaunching" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore previous tab on launch"
+          }
+        }
+      }
+    },
+    "settings.appLanguage.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App UI Language"
+          }
+        }
+      }
+    },
+    "settings.appleWatchPusher.force_push" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force-push your local profiles to paired Apple Watch"
+          }
+        }
+      }
+    },
+    "settings.appleWatchPusher.force_push.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is useful when the synchronization-via-iCloud feature defects on your Apple Watch."
+          }
+        }
+      }
+    },
+    "settings.appleWatchPusher.force_push.received" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully retrieved the following local profiles from iOS device:"
+          }
+        }
+      }
+    },
+    "settings.disclaimer.requiringAppRebootToApplySettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This requires restarting the app to take full effect."
+          }
+        }
+      }
+    },
+    "settings.display.generalSettings.sectionHeader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General Settings"
+          }
+        }
+      }
+    },
+    "settings.display.timeZone4GI.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc."
+          }
+        }
+      }
+    },
+    "settings.display.timeZone4GI.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TimeZone for displaying GI universal information"
+          }
+        }
+      }
+    },
+    "settings.notification.dailyTask.datePicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify when"
+          }
+        }
+      }
+    },
+    "settings.notification.dailyTask.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This includes Daily Task (Genshin Impact), Daily Training (Star Rail), and Vitality (Zenless Zone Zero)."
+          }
+        }
+      }
+    },
+    "settings.notification.dailyTask.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Task Completion Report"
+          }
+        }
+      }
+    },
+    "settings.notification.dailyTask.toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.dateTimePicker.macCatalystNotice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Due to a limitation in the UIKit-to-AppKit bridge framework, the DatePicker on macOS doesn’t show the input panel in macCatalyst apps. Users can only select the desired input field and type it directly on physical keyboard."
+          }
+        }
+      }
+    },
+    "settings.notification.expedition.allow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.expedition.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* Genshin Impact and Star Rail only."
+          }
+        }
+      }
+    },
+    "settings.notification.expedition.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expedition Accomplishment Notice"
+          }
+        }
+      }
+    },
+    "settings.notification.expedition.method" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify when"
+          }
+        }
+      }
+    },
+    "settings.notification.faq.howNotificationsGetScheduled" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app or its widgets will attempt to automatically reschedule relevant notifications when retrieving Real-Time Note data for a specific local profile. During each scheduling, it will proactively try to clear any previously scheduled, unreasonable, and unsent notifications made for this local profile. Notifications will only be scheduled if the system settings allow the app to send system notifications, and if the app has successfully retrieved real-time note data, in cases where the relevant preferences permit it."
+          }
+        }
+      }
+    },
+    "settings.notification.giRealmCurrency.allow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.giRealmCurrency.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* Genshin Impact only."
+          }
+        }
+      }
+    },
+    "settings.notification.giRealmCurrency.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Realm Currency Recharge Notice"
+          }
+        }
+      }
+    },
+    "settings.notification.giTransformer.allow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.giTransformer.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* Genshin Impact only."
+          }
+        }
+      }
+    },
+    "settings.notification.giTransformer.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parametric Transformer Availability Notice"
+          }
+        }
+      }
+    },
+    "settings.notification.giTrounceBlossom.datePicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify when"
+          }
+        }
+      }
+    },
+    "settings.notification.giTrounceBlossom.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* Genshin Impact only."
+          }
+        }
+      }
+    },
+    "settings.notification.giTrounceBlossom.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remaining Trounce Blossom Resin Discounts"
+          }
+        }
+      }
+    },
+    "settings.notification.giTrounceBlossom.toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.giTrounceBlossom.weekdayPicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify on"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrEchoOfWar.datePicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify when"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrEchoOfWar.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* Star Rail only."
+          }
+        }
+      }
+    },
+    "settings.notification.hsrEchoOfWar.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remaining Echo of War Rewards Left"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrEchoOfWar.toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrEchoOfWar.weekdayPicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify on"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrSimulatedUniverse.datePicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify when"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrSimulatedUniverse.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* Star Rail only."
+          }
+        }
+      }
+    },
+    "settings.notification.hsrSimulatedUniverse.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulated Universe Completion Progress"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrSimulatedUniverse.toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.hsrSimulatedUniverse.weekdayPicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify on"
+          }
+        }
+      }
+    },
+    "settings.notification.insufficientSystemPrivileges" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app is not yet authorized in system settings to push notifications."
+          }
+        }
+      }
+    },
+    "settings.notification.katheryneRewards.datePicker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify when"
+          }
+        }
+      }
+    },
+    "settings.notification.katheryneRewards.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "* Genshin Impact only."
+          }
+        }
+      }
+    },
+    "settings.notification.katheryneRewards.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katheryne Rewards Availability Notice"
+          }
+        }
+      }
+    },
+    "settings.notification.katheryneRewards.toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.navigateToOSSettings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to System Settings"
+          }
+        }
+      }
+    },
+    "settings.notification.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification Preferences"
+          }
+        }
+      }
+    },
+    "settings.notification.navTitle.shortened" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
+    },
+    "settings.notification.profilesReceivingNotifications.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may also toggle it in the local profile manager."
+          }
+        }
+      }
+    },
+    "settings.notification.profilesReceivingNotifications.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per-Profile Notification Toggles"
+          }
+        }
+      }
+    },
+    "settings.notification.profilesReceivingNotifications.navTitle.shortened" : {
+      "comment" : "This is the short form of `settings.notification.profilesReceivingNotifications.navTitle`. Please do consider its length since iPhone screen width is pretty narrow.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per-Profile Toggles"
+          }
+        }
+      }
+    },
+    "settings.notification.stamina.allow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify me"
+          }
+        }
+      }
+    },
+    "settings.notification.stamina.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This includes Original Resin (Genshin Impact), Trailblaze Power (Star Rail), and Vitality (Zenless Zone Zero). Despite the threshold settings, You will also be notified if the player stamina is fully charged."
+          }
+        }
+      }
+    },
+    "settings.notification.stamina.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player Stamina Recharge Progress"
+          }
+        }
+      }
+    },
+    "settings.notification.staminaThresholds.add.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a New Threshold Value"
+          }
+        }
+      }
+    },
+    "settings.notification.staminaThresholds.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You will also be notified if the player stamina is fully charged."
+          }
+        }
+      }
+    },
+    "settings.notification.staminaThresholds.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Thresholds"
+          }
+        }
+      }
+    },
+    "settings.notification.staminaThresholds.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Notification Threshold"
+          }
+        }
+      }
+    },
+    "settings.notification.staminaThresholds.valueAlreadyExist" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You cannot add duplicated values."
+          }
+        }
+      }
+    },
+    "settings.privacy.abyssDataCollect" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow to Collect Spiral Abyss Battle Reports Data"
+          }
+        }
+      }
+    },
+    "settings.privacy.abyssDataCollect.detail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We are looking forward to collect the Genshin characters you own and you used in the Spiral Abyss and send them to Snap.Hutao Database (i.e. HutaoDB) and Pizza DB. Allowing us to collect the data will help HutaoDB & PizzaAbyssDB to supply more-accurate information of the real-time Spiral Abyss Chacacter Usage Rate, Team Usage Rate, etc. information available-to-watch in the App. The information also consists of the related in-game Genshin UID but no other of your game account information to help HutaoDB potentially refuse forged records from identified cheaters."
+          }
+        }
+      }
+    },
+    "settings.privacy.abyssDataCollect.faqLink" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here to read the FAQs about it."
+          }
+        }
+      }
+    },
+    "settings.privacy.SnapHutao.enforceUsername.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halt submission to HutaoDB until username is filled here"
+          }
+        }
+      }
+    },
+    "settings.privacy.SnapHutao.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao may release some benefits to a user if the username field here is correctly supplied in the uploaded battle report. Snap Hutao reserves the rights to explain the further details. If the enforcer toggle is ON, your battle reports will be uploaded to HutaoDB **only if** the username field is **not** blank."
+          }
+        }
+      }
+    },
+    "settings.privacy.SnapHutao.username.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snap Hutao Username"
+          }
+        }
+      }
+    },
+    "settings.privacy.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.autoDeduplication.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically deduplicate local profiles"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.dbSaveLocation.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Please do not touch this toggle unless being told by the developers to do that while seeking for technical help.\n\n⚠️ Please EXPORT your local profiles PRIOR TO touching this toggle."
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.dbSaveLocation.restartRequired.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftData does not support changing the location of a database container while it is being used, hence the necessity of restarting the app.\n\nThe app will restart after you confirm this message."
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.dbSaveLocation.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local Profile Storage Location"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.dbSaveLocation.toAppContainer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Container"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.dbSaveLocation.toGroupContainer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group Container"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Options"
+          }
+        }
+      }
+    },
+    "settings.profile.clickHereToLogin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click here to login:"
+          }
+        }
+      }
+    },
+    "settings.profile.clickHereToLogin.reLogin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click here to login again:"
+          }
+        }
+      }
+    },
+    "settings.profile.importAllUIDs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import all UIDs of these games from this account"
+          }
+        }
+      }
+    },
+    "settings.profile.importAllUIDs.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This option is extremely helpful to let the server know that you are really using your HoYoLAB / Miyoushe account on your own devices. Individual logins per UID for each game and each game-server may let the HoYoLAB / Miyoushe account server misunderstood how many device this HoYoLAB / Miyoushe account gets logged into, leading to earlier expiration of your cookies. If profile duplication happens during this process, then the existing profile will be updated instead with new cookie, the latest device fingerprint, and the latest device ID instead."
+          }
+        }
+      }
+    },
+    "settings.profile.pleaseSelectGame" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select game:"
+          }
+        }
+      }
+    },
+    "settings.profile.pleaseSelectRegion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account type:"
+          }
+        }
+      }
+    },
+    "settings.requireLoginView.loginViaMiyousheOrHoyoLab.relogin" : {
+      "comment" : "Account detail",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relogin to HoYoLAB / Miyoushe"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.autoInit.toggle.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically initiate Stamina Timer Live Activity"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.background.choose" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Background"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.dynamicIsland.howToHide.answer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can slide the Dynamic Island from left / right to the middle to hide it. \nSwipe left on the Stamina Timer on the lock screen to turn off the resin timer and the Dynamic Island."
+          }
+        }
+      }
+    },
+    "settings.resinTimer.explanation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer is how this app utilizes the Live Activity feature of the iOS. You can click the ellipsis circle to the right of the Real-Time Note of a local profile in the Today tab to initiate it."
+          }
+        }
+      }
+    },
+    "settings.resinTimer.gotoSystemSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to System Settings to enable Live Activity for this app"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.randomBackground.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Random Background"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.realtimeActivity.notEnabled" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Activity for this app is not permitted by the system"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.settings.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer Settings"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.showExpedition.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Expedition"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.useTransparentBackground.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Glass Material Background"
+          }
+        }
+      }
+    },
+    "settings.section.appStoreRelated.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        }
+      }
+    },
+    "settings.section.otherSettings.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other Settings"
+          }
+        }
+      }
+    },
+    "settings.section.profileManagement.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Local Profiles"
+          }
+        }
+      }
+    },
+    "settings.section.visualSettings.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UI-Related Settings"
+          }
+        }
+      }
+    },
+    "settings.uiSettings.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UI Settings"
+          }
+        }
+      }
+    },
+    "sys.server.cn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "China Mainland Servers"
+          }
+        }
+      }
+    },
+    "sys.server.os" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global Servers"
+          }
+        }
+      }
+    },
+    "tab.details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details"
+          }
+        }
+      }
+    },
+    "tab.details.fullTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ShowCase Details"
+          }
+        }
+      }
+    },
+    "tab.settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "tab.settings.fullTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Settings"
+          }
+        }
+      }
+    },
+    "tab.today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
+          }
+        }
+      }
+    },
+    "tab.today.fullTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today’s Remains"
+          }
+        }
+      }
+    },
+    "tab.utils" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utils"
+          }
+        }
+      }
+    },
+    "tab.utils.fullTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilities"
+          }
+        }
+      }
+    },
+    "tools.hoyoMap.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "miHoYo Interactive Map"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
