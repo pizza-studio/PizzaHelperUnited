@@ -33,6 +33,8 @@ private struct OnAppBecomeActiveModifier: ViewModifier {
 
 // MARK: - OnAppBecomeActiveModifierMac
 
+@available(watchOS 11.0, *)
+@available(iOS 18.0, *)
 @available(macCatalyst 18.0, *)
 private struct OnAppBecomeActiveModifierMac: ViewModifier {
     @Environment(\.appearsActive) var appearsActive
@@ -104,8 +106,12 @@ extension View {
     /// - Returns: A View with the added action.
     @ViewBuilder
     public func onAppBecomeActive(perform action: @escaping () -> Void) -> some View {
-        if #available(macCatalyst 18.0, *) {
+        if #available(iOS 18.0, *) {
+            #if targetEnvironment(macCatalyst)
             modifier(OnAppBecomeActiveModifierMac(action: action))
+            #else
+            modifier(OnAppBecomeActiveModifier(action: action))
+            #endif
         } else {
             modifier(OnAppBecomeActiveModifier(action: action))
         }
