@@ -1,0 +1,17 @@
+{
+  "images" : [
+    {
+      "locale" : "ru",
+      "idiom" : "universal",
+      "filename" : "showCaseToggle-HSR-en_ru.heic",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

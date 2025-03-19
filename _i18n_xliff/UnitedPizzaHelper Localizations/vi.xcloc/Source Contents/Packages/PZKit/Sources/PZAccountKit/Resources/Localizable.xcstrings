@@ -1,0 +1,476 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "accountRegion.name.hoyoLab" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HoYoLAB"
+          }
+        }
+      }
+    },
+    "accountRegion.name.miyoushe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miyoushe"
+          }
+        }
+      }
+    },
+    "dailyNote.zzz.vhsState.awaitingForOperation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Off Duty"
+          }
+        }
+      }
+    },
+    "dailyNote.zzz.vhsState.inOperation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Operation"
+          }
+        }
+      }
+    },
+    "dailyNote.zzz.vhsState.revenueAvailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending Settlement"
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.countryRegionRestriction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] The network environment in your current geo location is out of HoYoLAB service perimeter."
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.fingerPrintInvalidOrMissing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] Device fingerprint is either wrecked or missing from the stored cookie."
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.insufficientDataVisibility" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insufficient data visibility in the Miyoushe / HoYoLAB account settings."
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.reloginRequired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] Please relogin."
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.serverUnderMaintenanceUpgrade" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miyoushe / HoYoLAB server under maintenance."
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.sTokenV2InvalidOrMissing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] STokenV2 is either wrecked or missing from the stored cookie."
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.verificationNeeded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[HoYoAPIErr] Human verification needed."
+          }
+        }
+      }
+    },
+    "notification.dailyTask.body:%@%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The daily commission for %1$@ is not yet completed. The current progress is %2$@/%3$@."
+          }
+        }
+      }
+    },
+    "notification.dailyTask.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Daily Commission for %@"
+          }
+        }
+      }
+    },
+    "notification.echoOfWar.body:%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ has %2$@ rewards(s) left for Echo of War."
+          }
+        }
+      }
+    },
+    "notification.echoOfWar.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: HSR Echo of War Rewards Left for %@"
+          }
+        }
+      }
+    },
+    "notification.expedition.each.body:%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expedition #’%2$@’ for %1$@ has been completed."
+          }
+        }
+      }
+    },
+    "notification.expedition.method.each" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each Task Finished"
+          }
+        }
+      }
+    },
+    "notification.expedition.method.summary" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Task Finished"
+          }
+        }
+      }
+    },
+    "notification.expedition.summary.body:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All expeditions for %@ have been completed."
+          }
+        }
+      }
+    },
+    "notification.expedition.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Expeditions for %@"
+          }
+        }
+      }
+    },
+    "notification.katheryneRewardsAvailable.body:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily task rewards for %@ are available to receive at Katheryne's counter."
+          }
+        }
+      }
+    },
+    "notification.katheryneRewardsAvailable.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Katheryne Rewards for %@"
+          }
+        }
+      }
+    },
+    "notification.parametricTransformer.body:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@'s parametric transformer is available."
+          }
+        }
+      }
+    },
+    "notification.parametricTransformer.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Parametric Transformer for %@"
+          }
+        }
+      }
+    },
+    "notification.realmCurrency.body:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@'s realm currency is filled up."
+          }
+        }
+      }
+    },
+    "notification.realmCurrency.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Realm Currency for %@"
+          }
+        }
+      }
+    },
+    "notification.simulatedUniverse.body:%@%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The simulated universe score for %1$@ is not yet full. The current progress is %2$@/%3$@."
+          }
+        }
+      }
+    },
+    "notification.simulatedUniverse.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Simulated Universe for %@"
+          }
+        }
+      }
+    },
+    "notification.stamina.customize.body:%@%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ currently has %2$@ stamina and will be fully restored on %3$@."
+          }
+        }
+      }
+    },
+    "notification.stamina.full.body:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The player stamina for %@ has been fully restored."
+          }
+        }
+      }
+    },
+    "notification.stamina.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Player Stamina for %@"
+          }
+        }
+      }
+    },
+    "notification.trounceBlossom.body:%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ has %2$@ chance(s) left for Trounce Blossom resin consumption discount."
+          }
+        }
+      }
+    },
+    "notification.trounceBlossom.title:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder: Genshin Trounce Blossom for %@"
+          }
+        }
+      }
+    },
+    "server.location.asia" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asia"
+          }
+        }
+      }
+    },
+    "server.location.celestia" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celestia (Astral Expr.)"
+          }
+        }
+      }
+    },
+    "server.location.celestia.GI" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celestia"
+          }
+        }
+      }
+    },
+    "server.location.celestia.HSR" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Astral Express"
+          }
+        }
+      }
+    },
+    "server.location.celestia.ZZZ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Eridu"
+          }
+        }
+      }
+    },
+    "server.location.europe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Europe"
+          }
+        }
+      }
+    },
+    "server.location.hkMacauTaiwan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HK / Aomen / Taiwan"
+          }
+        }
+      }
+    },
+    "server.location.irminsul" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Irminsul / The Nameless"
+          }
+        }
+      }
+    },
+    "server.location.irminsul.GI" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Irminsul"
+          }
+        }
+      }
+    },
+    "server.location.irminsul.HSR" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Nameless"
+          }
+        }
+      }
+    },
+    "server.location.unitedStates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "America"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

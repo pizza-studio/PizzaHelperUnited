@@ -1236,6 +1236,7 @@
       }
     },
     "app.dailynote.card.zzzHollowZeroBountyCommission.label" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1312,6 +1313,7 @@
       }
     },
     "app.dailynote.card.zzzHollowZeroInvestigationPoint.label" : {
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {

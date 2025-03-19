@@ -1,0 +1,72 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "settings.display.appBackground" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Background"
+          }
+        }
+      }
+    },
+    "settings.resinTimer.background.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stamina Timer Background"
+          }
+        }
+      }
+    },
+    "wallpaperGallery.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallpaper Gallery"
+          }
+        }
+      }
+    },
+    "wpKit.assign.background4App" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assign as App Background"
+          }
+        }
+      }
+    },
+    "wpKit.assign.backgrounds4LiveActivity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assign as Live Activity Background"
+          }
+        }
+      }
+    },
+    "wpKit.gamePicker.Pizza.shortName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PZ"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

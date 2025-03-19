@@ -1,0 +1,57 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "igev.gameEvents.daysLeft:%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld days left"
+          }
+        }
+      }
+    },
+    "igev.gameEvents.hoursLeft:%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld hours left"
+          }
+        }
+      }
+    },
+    "igev.gameEvents.noCurrentEventInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Current Event Infos"
+          }
+        }
+      }
+    },
+    "igev.gameEvents.pendingEvents.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ongoing Events"
+          }
+        }
+      }
+    },
+    "igev.gameEvents.viewAll.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

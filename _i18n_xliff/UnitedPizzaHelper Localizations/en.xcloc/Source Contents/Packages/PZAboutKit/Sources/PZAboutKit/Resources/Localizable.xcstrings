@@ -1,0 +1,713 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "aboutKit.3rdParty.headline" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Our app uses the following open source components and third-party APIs, and we would like to thank their authors."
+          }
+        }
+      }
+    },
+    "aboutKit.3rdParty.navTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acknowledgement for open source components and third-party APIs"
+          }
+        }
+      }
+    },
+    "aboutKit.3rdParty.navTitle.shortened" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3rd-Party Components"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About The Pizza Helper"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle.app" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About the App"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.navTitle.crew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About the Crew"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.tab.app" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        }
+      }
+    },
+    "aboutKit.aboutView.tab.crew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crew"
+          }
+        }
+      }
+    },
+    "aboutKit.appStoreReview.navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review on App Store"
+          }
+        }
+      }
+    },
+    "aboutKit.chatrooms.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chatrooms"
+          }
+        }
+      }
+    },
+    "aboutKit.chatrooms.joinQQGroup" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Join QQ Chat Group"
+          }
+        }
+      }
+    },
+    "aboutKit.chatrooms.joinTelegram" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Join Telegram Channel"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.163MusicArtistHP" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NetEase Music Artist Page"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.appStore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mac App Store"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "App Store"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.bilibili" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilibili"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.blueSky" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlueSky"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.discord" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discord"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.douyin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Douyin (TikTok CN)"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.facebook" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.github" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.homepage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home Page"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.officialWebsite" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Home Page"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.qq.channel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ Channel"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.qq.group.initials" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group: "
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.qq.personal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QQ"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.telegram" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.tiktok" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok Global"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.twitter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X (Twitter)"
+          }
+        }
+      }
+    },
+    "aboutKit.contactMethod.youtube" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsAssetCrew.koni" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon Illustrator, The Pizza Helper (v5 Engine Testflight)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsAssetCrew.lava" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon Illustrator, Pizza Helper for HSR"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsAssetCrew.xinzoruo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon Illustrator, Pizza Helper for Genshin (v4)\nApp Icon Illustrator, The Pizza Helper (v5)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsAssetCrew.yulijushi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miscellaneous Asset Contributor"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsMainCrew.hakubill" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Dev, Pizza Helper for HSR\n- Dev, Pizza Helper for Genshin (v1-v4)\n- Dev, Pizza Helper for Blue Archive\n- Dev, The Pizza Helper (v5)\n- Public Relations (Overseas)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsMainCrew.lava" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Team Leader & Founder\n- Dev, The Pizza Helper (v5)\n- Dev, Pizza Helper for HSR\n- Dev, Pizza Helper for Genshin (v1-v4)\n- Public Relations (Mainland China)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributor.subtitleAsMainCrew.shikisuen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Engine Architect & Dev, The Pizza Helper (v5)\n- Maintainer, Pizza Helper for HSR\n- Maintainer, Pizza Helper for Genshin (v3-v4)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.category.assets" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some Asset Contributors"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.category.i18n.current" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some Localization Contributors"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.category.i18n.current.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The primary languages of this app are English, Traditional Chinese, Simplified Chinese, and Japanese. All other languages are secondary, as no one in the development team can fluently understand or use them. We rely on ChatGPT to create draft translations for these languages, and we warmly welcome volunteers who wish to help improve them. Having a Mac with Xcode 16 (or a later version) installed will make it much easier for contributors to participate."
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.category.i18n.previous" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some Previous Localization Contributors"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.category.mainCrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Main Developer Team"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.art34222" : {
+      "comment" : "Localization Contributor (RU)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art34222"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.hakubill" : {
+      "comment" : "Crew Member",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haku Bill (水里的碳酸钙)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.koni" : {
+      "comment" : "App Icon Illustrator (v5)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koni"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.lava" : {
+      "comment" : "Crew Member",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava (CanglongCL)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.ngo" : {
+      "comment" : "Localization Contributor (VI)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngô Phi Phương"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.pan93412" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pan93412"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.qi" : {
+      "comment" : "Localization Contributor (FR)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qi"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.shikisuen" : {
+      "comment" : "Crew Member",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiki Suen (孙志贵)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.tao" : {
+      "comment" : "Localization Contributor (JA)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "たお👻🍑"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.xinzoruo" : {
+      "comment" : "App Icon Illustrator (v4)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xinzoruo (心臓弱眞君)"
+          }
+        }
+      }
+    },
+    "aboutKit.contributors.name.yulijushi" : {
+      "comment" : "Image Asset Contributor (v4)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuli Jushi (郁离居士)"
+          }
+        }
+      }
+    },
+    "aboutKit.eula.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EULA & User Policy"
+          }
+        }
+      }
+    },
+    "aboutKit.FAQ.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.clickHereToUpdate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pizzaStudio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Studio"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pizzaStudio.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A FOSS developer team."
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- The successor of both PizzaHelper4Genshin and PizzaHelper4HSR. Powered by the next-generation United Pizza Engine.\n- The program part of this software is open-sourced under AGPLv3 License.\n- The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.\n- The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”."
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4BA" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Helper for Blue Archive"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4BA.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A good utility for every Sensei."
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4GI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Helper for Genshin"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4GI.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deprecated and integrated into The Pizza Helper."
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4HSR" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Helper for HSR"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pzHelper4HSR.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deprecated and integrated into The Pizza Helper."
+          }
+        }
+      }
+    },
+    "aboutKit.PrivacyPolicy.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
