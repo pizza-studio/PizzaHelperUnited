@@ -220,16 +220,22 @@ struct ProfileManagerPageContent: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(profile.name)
                     .foregroundColor(.primary)
-                HStack {
-                    Text(profile.uidWithGame).fontDesign(.monospaced)
-                    if horizontalSizeClass != .compact {
-                        Text(profile.game.localizedDescription)
-                    }
-                    Text(profile.server.withGame(profile.game).localizedDescriptionByGame)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                let uidView = Text(profile.uidWithGame).fontDesign(.monospaced)
+                VStack(alignment: .leading) {
+                    uidView
+                    let gameTitleAndServer = """
+                    \(profile.game.localizedDescription) \
+                    (\(profile.server.withGame(profile.game).localizedDescriptionByGame))
+                    """
+                    Text(gameTitleAndServer)
                 }
-                .font(.footnote)
+                .font(.caption2)
+                .fontWidth(.condensed)
                 .foregroundColor(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
             #if os(iOS) || targetEnvironment(macCatalyst)
             if isEditMode != .active {
