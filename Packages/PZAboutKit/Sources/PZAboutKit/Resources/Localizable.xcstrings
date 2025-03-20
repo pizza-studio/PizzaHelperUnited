@@ -2584,7 +2584,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Entwickler, Pizza Helfer für HSR - Entwickler, Pizza Helfer für Genshin (v1-v4) - Entwickler, Pizza Helfer für Blue Archive - Entwickler, Der Pizza Helfer (v5) - Öffentlichkeitsarbeit (Ausland)"
+            "value" : "- Entwickler, Pizza Helfer für HSR\n- Entwickler, Pizza Helfer für Genshin (v1-v4)\n- Entwickler, Pizza Helfer für Blue Archive - Entwickler, Der Pizza Helfer (v5)\n- Öffentlichkeitsarbeit (Ausland)"
           }
         },
         "en" : {
@@ -2596,7 +2596,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Desarrollador, Asistente de Pizza para HSR - Desarrollador, Asistente de Pizza para Genshin (v1-v4) - Desarrollador, Asistente de Pizza para Blue Archive - Desarrollador, El Asistente de Pizza (v5) - Relaciones Públicas (Internacional)"
+            "value" : "- Desarrollador, Asistente de Pizza para HSR\n- Desarrollador, Asistente de Pizza para Genshin (v1-v4)\n- Desarrollador, Asistente de Pizza para Blue Archive\n- Desarrollador, El Asistente de Pizza (v5)\n- Relaciones Públicas (Internacional)"
           }
         },
         "fil" : {
@@ -2614,7 +2614,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Dev, Helper Pizza per HSR - Dev, Helper Pizza per Genshin (v1-v4) - Dev, Helper Pizza per Blue Archive - Dev, Il Helper Pizza (v5) - Relazioni Pubbliche (Estero)"
+            "value" : "- Dev, Helper Pizza per HSR\n- Dev, Helper Pizza per Genshin (v1-v4)\n- Dev, Helper Pizza per Blue Archive\n- Dev, Il Helper Pizza (v5) - Relazioni Pubbliche (Estero)"
           }
         },
         "ja" : {
@@ -2626,7 +2626,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- 개발자, HSR 피자 도우미 - 개발자, 원신 피자 도우미 (v1-v4) - 개발자, 블루 아카이브 피자 도우미 - 개발자, 피자 도우미 (v5) - 해외 홍보 담당"
+            "value" : "- 개발자, HSR 피자 도우미\n- 개발자, 원신 피자 도우미 (v1-v4)\n- 개발자, 블루 아카이브 피자 도우미\n- 개발자, 피자 도우미 (v5)\n- 해외 홍보 담당"
           }
         },
         "ru" : {
@@ -2638,7 +2638,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Phát triển, Pizza Helper cho HSR - Phát triển, Pizza Helper cho Genshin (v1-v4) - Phát triển, Pizza Helper cho Blue Archive - Phát triển, The Pizza Helper (v5) - Quan hệ công chúng (Quốc tế)"
+            "value" : "- Phát triển, Pizza Helper cho HSR\n- Phát triển, Pizza Helper cho Genshin (v1-v4)\n- Phát triển, Pizza Helper cho Blue Archive\n- Phát triển, The Pizza Helper (v5)\n- Quan hệ công chúng (Quốc tế)"
           }
         },
         "zh-Hans" : {
@@ -2702,19 +2702,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- 팀 리더 및 창립자 - 개발자, 피자 도우미(v5) - 개발자, HSR 피자 도우미 - 개발자, Genshin 피자 도우미(v1-v4) - 대외홍보(중국 본토)"
+            "value" : "- 팀 리더 및 창립자 - 개발자, 피자 도우미(v5)\n- 개발자, HSR 피자 도우미\n- 개발자, Genshin 피자 도우미(v1-v4)\n- 대외홍보(중국 본토)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Лидер команды и основатель - Разработчик, The Pizza Helper (v5) - Разработчик, Pizza Helper для HSR - Разработчик, Pizza Helper для Genshin (v1-v4) - Связи с общественностью (Китай)"
+            "value" : "- Лидер команды и основатель\n- Разработчик, The Pizza Helper (v5)\n- Разработчик, Pizza Helper для HSR\n- Разработчик, Pizza Helper для Genshin (v1-v4)\n- Связи с общественностью (Китай)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Trưởng nhóm & Người sáng lập - Phát triển, The Pizza Helper (v5) - Phát triển, Pizza Helper cho HSR - Phát triển, Pizza Helper cho Genshin (v1-v4) - Quan hệ công chúng (Trung Quốc đại lục)"
+            "value" : "- Trưởng nhóm & Người sáng lập\n- Phát triển, The Pizza Helper (v5)\n- Phát triển, Pizza Helper cho HSR\n- Phát triển, Pizza Helper cho Genshin (v1-v4)\n- Quan hệ công chúng (Trung Quốc đại lục)"
           }
         },
         "zh-Hans" : {
@@ -2737,7 +2737,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Engine Architect & Entwickler, Der Pizza-Helfer (v5) - Betreuer, Pizza-Helfer für HSR - Betreuer, Pizza-Helfer für Genshin (v3-v4)"
+            "value" : "- Engine Architect & Entwickler, Der Pizza-Helfer (v5)\n- Betreuer, Pizza-Helfer für HSR\n- Betreuer, Pizza-Helfer für Genshin (v3-v4)"
           }
         },
         "en" : {
@@ -2761,13 +2761,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Conception et développement du moteur, The Pizza Helper (v5) \n        - Responsable, Pizza Helper pour HSR \n        - Responsable, Pizza Helper pour Genshin (v3-v4)"
+            "value" : "- Conception et développement du moteur, The Pizza Helper (v5) \n- Responsable, Pizza Helper pour HSR \n- Responsable, Pizza Helper pour Genshin (v3-v4)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Architetto e sviluppatore del motore, The Pizza Helper (v5) - Manutentore, Pizza Helper per HSR - Manutentore, Pizza Helper per Genshin (v3-v4)"
+            "value" : "- Architetto e sviluppatore del motore, The Pizza Helper (v5)\n- Manutentore, Pizza Helper per HSR\n- Manutentore, Pizza Helper per Genshin (v3-v4)"
           }
         },
         "ja" : {
@@ -2785,13 +2785,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Инженер-разработчик, Помощник пиццайоло (v5) - Ответственный за сопровождение, Помощник пиццайоло для HSR - Ответственный за сопровождение, Помощник пиццайоло для Genshin (v3-v4)"
+            "value" : "- Инженер-разработчик, Помощник пиццайоло (v5)\n- Ответственный за сопровождение, Помощник пиццайоло для HSR\n- Ответственный за сопровождение, Помощник пиццайоло для Genshin (v3-v4)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Kiến trúc sư & Nhà phát triển Công cụ, The Pizza Helper (v5) - Người duy trì, Pizza Helper for HSR - Người duy trì, Pizza Helper for Genshin (v3-v4)"
+            "value" : "- Kiến trúc sư & Nhà phát triển Công cụ, The Pizza Helper (v5)\n- Người duy trì, Pizza Helper for HSR\n- Người duy trì, Pizza Helper for Genshin (v3-v4)"
           }
         },
         "zh-Hans" : {
@@ -4575,7 +4575,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Der Nachfolger von PizzaHelper4Genshin und PizzaHelper4HSR. Angetrieben von der nächsten Generation der United Pizza Engine. - Der Programmbestandteil dieser Software ist unter der AGPLv3-Lizenz quelloffen. - Der Pizza Helper und seine Vorgänger stehen in keiner Verbindung zu miHoYo Co., Ltd. noch deren Tochtergesellschaften. - Die Spielinhalte und Materialien der folgenden Titel sind Marken und urheberrechtlich geschützt durch miHoYo Co., Ltd.: „Star Rail (HSR)“, „Genshin Impact“, „Zenless Zone Zero“."
+            "value" : "- Der Nachfolger von PizzaHelper4Genshin und PizzaHelper4HSR. Angetrieben von der nächsten Generation der United Pizza Engine.\n- Der Programmbestandteil dieser Software ist unter der AGPLv3-Lizenz quelloffen.\n- Der Pizza Helper und seine Vorgänger stehen in keiner Verbindung zu miHoYo Co., Ltd. noch deren Tochtergesellschaften.\n- Die Spielinhalte und Materialien der folgenden Titel sind Marken und urheberrechtlich geschützt durch miHoYo Co., Ltd.: „Star Rail (HSR)“, „Genshin Impact“, „Zenless Zone Zero“."
           }
         },
         "en" : {
@@ -4593,19 +4593,19 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Ang kahalili ng parehong PizzaHelper4Genshin at PizzaHelper4HSR. Pinapagana ng next-generation na United Pizza Engine. - Ang bahagi ng programa ng software na ito ay open-sourced sa ilalim ng AGPLv3 License. - Ang Pizza Helper at ang mga nauna nitong bersyon ay hindi kaanib sa miHoYo Co., Ltd. ni sa mga subsidiaries nito. - Ang mga nilalaman ng laro at mga materyales ng mga sumusunod na pamagat ay trademarks at copyrights ng miHoYo Co., Ltd.: \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
+            "value" : "- Ang kahalili ng parehong PizzaHelper4Genshin at PizzaHelper4HSR. Pinapagana ng next-generation na United Pizza Engine.\n- Ang bahagi ng programa ng software na ito ay open-sourced sa ilalim ng AGPLv3 License.\n- Ang Pizza Helper at ang mga nauna nitong bersyon ay hindi kaanib sa miHoYo Co., Ltd. ni sa mga subsidiaries nito.\n- Ang mga nilalaman ng laro at mga materyales ng mga sumusunod na pamagat ay trademarks at copyrights ng miHoYo Co., Ltd.: \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Le successeur de PizzaHelper4Genshin et de PizzaHelper4HSR. Fonctionnant via notre nouveau moteur Pizza Engine. - La partie logicielle de ce programme est en open source sous la licence AGPLv3. - The Pizza Helper et ses prédécesseurs ne sont pas affiliés à miHoYo Co., Ltd. ni à ses filiales. - Les contenus et matériaux des jeux suivants sont des marques déposées et des droits d'auteur de miHoYo Co., Ltd. : \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
+            "value" : "- Le successeur de PizzaHelper4Genshin et de PizzaHelper4HSR. Fonctionnant via notre nouveau moteur Pizza Engine.\n- La partie logicielle de ce programme est en open source sous la licence AGPLv3.\n- The Pizza Helper et ses prédécesseurs ne sont pas affiliés à miHoYo Co., Ltd. ni à ses filiales.\n- Les contenus et matériaux des jeux suivants sont des marques déposées et des droits d'auteur de miHoYo Co., Ltd. : \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Il successore di entrambi PizzaHelper4Genshin e PizzaHelper4HSR. Alimentato dal motore unificato di nuova generazione United Pizza Engine. - La parte del programma di questo software è open-source sotto licenza AGPLv3. - Pizza Helper e i suoi predecessori non sono affiliati con miHoYo Co., Ltd. né con le sue sussidiarie. - I contenuti e i materiali di gioco dei seguenti titoli sono marchi e diritti d'autore di miHoYo Co., Ltd.: \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
+            "value" : "- Il successore di entrambi PizzaHelper4Genshin e PizzaHelper4HSR. Alimentato dal motore unificato di nuova generazione United Pizza Engine.\n- La parte del programma di questo software è open-source sotto licenza AGPLv3.\n- Pizza Helper e i suoi predecessori non sono affiliati con miHoYo Co., Ltd. né con le sue sussidiarie.\n- I contenuti e i materiali di gioco dei seguenti titoli sono marchi e diritti d'autore di miHoYo Co., Ltd.: \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
           }
         },
         "ja" : {
@@ -4629,7 +4629,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Người kế nhiệm của cả PizzaHelper4Genshin và PizzaHelper4HSR. Được hỗ trợ bởi động cơ Pizza Thống Nhất thế hệ tiếp theo. - Phần chương trình của phần mềm này được mã nguồn mở theo Giấy phép AGPLv3. - Pizza Helper và những người tiền nhiệm của nó không liên quan tới công ty miHoYo Co., Ltd. cũng như các công ty con của nó. - Nội dung và tài liệu trò chơi của các tựa đề sau đây là nhãn hiệu và bản quyền của miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”."
+            "value" : "- Người kế nhiệm của cả PizzaHelper4Genshin và PizzaHelper4HSR. Được hỗ trợ bởi động cơ Pizza Thống Nhất thế hệ tiếp theo.\n- Phần chương trình của phần mềm này được mã nguồn mở theo Giấy phép AGPLv3.\n- Pizza Helper và những người tiền nhiệm của nó không liên quan tới công ty miHoYo Co., Ltd. cũng như các công ty con của nó.\n- Nội dung và tài liệu trò chơi của các tựa đề sau đây là nhãn hiệu và bản quyền của miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”."
           }
         },
         "zh-Hans" : {
