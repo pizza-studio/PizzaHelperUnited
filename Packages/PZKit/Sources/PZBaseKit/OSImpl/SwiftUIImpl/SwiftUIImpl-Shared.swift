@@ -31,7 +31,9 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
         if OS.type == .macOS {
             let mark: String = (direction == .horizontal) ? "⇆ " : "⇅ "
             (Text(verbatim: mark) + Text("operation.scrolling.guide", bundle: Bundle.module))
-                .font(.footnote).opacity(0.7)
+                .font(.caption2)
+                .fontWidth(.condensed)
+                .opacity(0.7)
         } else {
             EmptyView()
         }
