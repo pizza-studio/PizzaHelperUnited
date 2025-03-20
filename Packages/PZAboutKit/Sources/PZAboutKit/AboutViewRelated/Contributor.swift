@@ -19,6 +19,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
     case art34222
     case ngo
     case qiFrench
+    case escartem
 
     // MARK: Public
 
@@ -46,6 +47,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .koni: "avatar.koni"
         case .ngo: "avatar.ngo"
         case .qiFrench: "avatar.qi"
+        case .escartem: "avatar.escartem"
         case .taotao: "avatar.tao"
         case .xinzoruo: "avatar.xinzoruo"
         }
@@ -62,6 +64,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .koni: "aboutKit.contributors.name.koni"
         case .ngo: "aboutKit.contributors.name.ngo"
         case .qiFrench: "aboutKit.contributors.name.qi"
+        case .escartem: "aboutKit.contributors.name.escartem"
         case .taotao: "aboutKit.contributors.name.tao"
         case .xinzoruo: "aboutKit.contributors.name.xinzoruo"
         }
@@ -101,6 +104,8 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .ngo:
             LinkType.facebook(url: "https://www.facebook.com/ngo.phi.phuongg")
         case .qiFrench: nil
+        case .escartem:
+            LinkType.github(userID: "Escartem")
         case .taotao:
             LinkType.twitter(id: "taotao_hoyo")
             LinkType.youtube(urlStr: "https://youtube.com/c/hutao_taotao")
@@ -137,8 +142,9 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         // 回头把新的翻译者记录在此处即可。
         switch self {
         case .shikisuen: "zh-Hans, zh-Hant, en-US, ja-JP"
-        case .lava: "zh-Hans"
-        case .hakubill: "zh-Hans"
+        case .lava: "zh-Hans (amendments)"
+        case .hakubill: "zh-Hans (amendments)"
+        case .escartem: "fr (amendments)"
         case .pan93412: "[GPT] fil, fr, de, it, ko-KR, ru, es, vi"
         default: nil
         }
