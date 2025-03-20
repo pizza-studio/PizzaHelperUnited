@@ -1356,7 +1356,7 @@ Empty selection indicates selecting all profiles.</source>
       </trans-unit>
       <trans-unit id="aboutKit.aboutView.navTitle.app" xml:space="preserve">
         <source>About the App</source>
-        <target state="translated">À propos de l'application</target>
+        <target state="translated">À propos</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.aboutView.navTitle.crew" xml:space="preserve">
@@ -1674,7 +1674,7 @@ Illustrateur d'icônes de l'application, The Pizza Helper (v5)</target>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper4GI.description" xml:space="preserve">
         <source>Deprecated and integrated into The Pizza Helper.</source>
-        <target state="translated">Obsolète et intégré dans The Pizza Helper.</target>
+        <target state="translated">Obsolète, maintenant intégré dans cette application.</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper4HSR" xml:space="preserve">
@@ -1684,7 +1684,7 @@ Illustrateur d'icônes de l'application, The Pizza Helper (v5)</target>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper4HSR.description" xml:space="preserve">
         <source>Deprecated and integrated into The Pizza Helper.</source>
-        <target state="translated">Obsolète et intégré dans The Pizza Helper</target>
+        <target state="translated">Obsolète, maintenant intégré dans cette application.</target>
         <note/>
       </trans-unit>
     </body>
@@ -2097,7 +2097,7 @@ Cette application se fermera après confirmation de ce message.</target>
       </trans-unit>
       <trans-unit id="dpv.query.menuCommandTitle" xml:space="preserve">
         <source>Showcase Query</source>
-        <target state="translated">Exemple de requête</target>
+        <target state="translated">Recherche par UID</target>
         <note/>
       </trans-unit>
       <trans-unit id="profile.accountConnectivity.buttonTitle" xml:space="preserve">
@@ -2349,7 +2349,7 @@ Cette application se fermera après confirmation de ce message.</target>
       </trans-unit>
       <trans-unit id="profileMgr.manage.title" xml:space="preserve">
         <source>Local Profile</source>
-        <target state="translated">Profil local</target>
+        <target state="translated">Profil locaux</target>
         <note/>
       </trans-unit>
       <trans-unit id="profileMgr.manageHoYoAccounts.shortened" xml:space="preserve">
@@ -2479,7 +2479,7 @@ Le lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'ag
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push.footer" xml:space="preserve">
         <source>This is useful when the synchronization-via-iCloud feature defects on your Apple Watch.</source>
-        <target state="translated">Ceci est utile lorsque la fonction de synchronisation via iCloud présente des défauts.</target>
+        <target state="translated">Ceci est utile lorsque la fonction de synchronisation via iCloud ne fonctionne pas.</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.appleWatchPusher.force_push.received" xml:space="preserve">
@@ -2489,7 +2489,7 @@ Le lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'ag
       </trans-unit>
       <trans-unit id="settings.disclaimer.requiringAppRebootToApplySettings" xml:space="preserve">
         <source>This requires restarting the app to take full effect.</source>
-        <target state="translated">Cela nécessite de redémarrer l'application pour prendre pleinement effet.</target>
+        <target state="translated">Redémarrage de l'application requis.</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.generalSettings.sectionHeader" xml:space="preserve">
@@ -2509,7 +2509,7 @@ Le lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'ag
       </trans-unit>
       <trans-unit id="settings.notification.dailyTask.datePicker" xml:space="preserve">
         <source>Notify when</source>
-        <target state="translated">Me prévenir lorsque</target>
+        <target state="translated">Me prévenir à</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.dailyTask.footer" xml:space="preserve">
@@ -2589,7 +2589,7 @@ Le lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'ag
       </trans-unit>
       <trans-unit id="settings.notification.giTrounceBlossom.datePicker" xml:space="preserve">
         <source>Notify when</source>
-        <target state="translated">Me prévénir quand</target>
+        <target state="translated">Me prévenir à</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.giTrounceBlossom.footer" xml:space="preserve">
@@ -2634,12 +2634,12 @@ Le lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'ag
       </trans-unit>
       <trans-unit id="settings.notification.hsrEchoOfWar.weekdayPicker" xml:space="preserve">
         <source>Notify on</source>
-        <target state="translated">Me prévenir à</target>
+        <target state="translated">Me prévenir le</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.hsrSimulatedUniverse.datePicker" xml:space="preserve">
         <source>Notify when</source>
-        <target state="translated">Me prévenir le</target>
+        <target state="translated">Me prévenir à</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.hsrSimulatedUniverse.footer" xml:space="preserve">
@@ -2689,7 +2689,7 @@ Le lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'ag
       </trans-unit>
       <trans-unit id="settings.notification.navTitle" xml:space="preserve">
         <source>Notification Preferences</source>
-        <target state="translated">Préférences de notification</target>
+        <target state="translated">Préférences de notifications</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.notification.navTitle.shortened" xml:space="preserve">
@@ -2759,7 +2759,7 @@ Le lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'ag
       </trans-unit>
       <trans-unit id="settings.privacy.SnapHutao.enforceUsername.title" xml:space="preserve">
         <source>Halt submission to HutaoDB until username is filled here</source>
-        <target state="translated">Arrêter la soumission à HutaoDB jusqu'à ce que le nom d'utilisateur soit renseigné ici</target>
+        <target state="translated">Ne rien envoyer à HutaoDB si l'identifiant associé n'est pas défini</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.privacy.SnapHutao.footer" xml:space="preserve">
@@ -2847,7 +2847,7 @@ L'application redémarrera après que vous aurez confirmé ce message.</target>
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs" xml:space="preserve">
         <source>Import all UIDs of these games from this account</source>
-        <target state="translated">Importer tous les UIDs de ces jeux depuis ce compte</target>
+        <target state="translated">Importer tous les UIDs trouvés</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.profile.importAllUIDs.explanation" xml:space="preserve">
@@ -2908,7 +2908,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="settings.resinTimer.settings.navTitle" xml:space="preserve">
         <source>Stamina Timer Settings</source>
-        <target state="translated">Paramètres de la minuterie de résine</target>
+        <target state="translated">Paramètres minuterie</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.resinTimer.showExpedition.title" xml:space="preserve">
@@ -2963,7 +2963,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="tab.details.fullTitle" xml:space="preserve">
         <source>ShowCase Details</source>
-        <target state="translated">Afficher les détails</target>
+        <target state="translated">Détails</target>
         <note/>
       </trans-unit>
       <trans-unit id="tab.settings" xml:space="preserve">
@@ -2973,7 +2973,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="tab.settings.fullTitle" xml:space="preserve">
         <source>App Settings</source>
-        <target state="translated">Paramètres de l'application</target>
+        <target state="translated">Paramètres</target>
         <note/>
       </trans-unit>
       <trans-unit id="tab.today" xml:space="preserve">
@@ -3020,7 +3020,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="hylKit.abyssReport.floor.thisFloorIsSkipped" xml:space="preserve">
         <source>This floor is intentionally skipped.</source>
-        <target state="translated">Cet étage est intentionnellement sauté.</target>
+        <target state="translated">Étage sauté.</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.abyssReport.floor.title:%@" xml:space="preserve">
@@ -3260,7 +3260,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="hylKit.ledger4GI.view.navTitle" xml:space="preserve">
         <source>Ledger for Primogems &amp; Moras</source>
-        <target state="translated">Résumé des Primo-gemmes et Moras</target>
+        <target state="translated">Résumé des ressources</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.ledger4HSR.action.name.byAbyss" xml:space="preserve">
@@ -3355,7 +3355,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="hylKit.travelStats4GI.chest.1" xml:space="preserve">
         <source>Common Chests Opened</source>
-        <target state="translated">Coffres communs Ouverts</target>
+        <target state="translated">Coffres communs ouverts</target>
         <note/>
       </trans-unit>
       <trans-unit id="hylKit.travelStats4GI.chest.2" xml:space="preserve">
