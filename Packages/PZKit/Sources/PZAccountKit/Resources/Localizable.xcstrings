@@ -1331,7 +1331,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chaque tâche terminée"
+            "value" : "Chaque tâche a été terminée"
           }
         },
         "it" : {
@@ -1407,7 +1407,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toutes les tâches terminées"
+            "value" : "Toutes les tâches sont terminées"
           }
         },
         "it" : {
@@ -1635,7 +1635,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les récompenses quotidiennes de tâche pour %@ sont disponibles à la réception de Katheryne."
+            "value" : "Les récompenses quotidiennes de tâche pour %@ sont disponibles à la réception de Catherine."
           }
         },
         "it" : {
@@ -1711,7 +1711,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rappel : Récompenses Katheryne pour %@"
+            "value" : "Rappel : Récompenses Catherine pour %@"
           }
         },
         "it" : {
@@ -2243,7 +2243,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ a actuellement %2$@ d'endurance et sera complètement restauré le %3$@"
+            "value" : "%1$@ a actuellement %2$@ de résine et sera complètement restauré le %3$@"
           }
         },
         "it" : {
@@ -2319,7 +2319,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'endurance du joueur pour %@ a été complètement restaurée"
+            "value" : "La résine du joueur pour %@ a été complètement restaurée"
           }
         },
         "it" : {
@@ -2395,7 +2395,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rappel : Endurance du joueur pour %@"
+            "value" : "Rappel : Résine du joueur pour %@"
           }
         },
         "it" : {
@@ -2471,7 +2471,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il reste %2$@ chance(s) à %1$@ pour profiter de la réduction sur la consommation de résine de Trounce Blossom"
+            "value" : "Il reste %2$@ tentatives(s) à %1$@ pour les fleurs des lignes énergétiques"
           }
         },
         "it" : {
@@ -2547,7 +2547,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rappel : Fleur de l'épreuve Genshin pour %@"
+            "value" : "Rappel : Fleurs des lignes énergétiques pour %@"
           }
         },
         "it" : {
@@ -2701,7 +2701,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Celestia (Expr. Astral)"
+            "value" : "Celestia (Astral Epress)"
           }
         },
         "it" : {
@@ -2932,7 +2932,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nouvel Eridu"
+            "value" : "Nouvelle Eridu"
           }
         },
         "it" : {
@@ -3163,7 +3163,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Irminsul / Le Sans-nom"
+            "value" : "Irminsul / Les Sans-nom"
           }
         },
         "it" : {

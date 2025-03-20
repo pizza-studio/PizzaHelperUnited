@@ -106,7 +106,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Résumé vers le presse-papiers en tant que texte brut"
+            "value" : "Résumer dans le Presse-papiers en texte"
           }
         },
         "it" : {
@@ -182,7 +182,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le fournisseur de résultats de requête ShowCase dépend du serveur auquel l'UID appartient : * MicroGG (serveur Celestia et Irminsul) * Enka Networks (tous les autres serveurs)."
+            "value" : "Le fournisseur des résultats de la vitrine dépend du serveur auquel l'UID appartient :\n        * MicroGG (serveur Celestia et Irminsul)\n        * Enka Networks (tous les autres serveurs)."
           }
         },
         "it" : {
@@ -258,7 +258,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le fournisseur de résultats de requête ShowCase dépend du serveur auquel l'UID appartient :\n* MiHoMo Origin (serveurs Celestia-AstralExpress et Irminsul-Nameless).\n* Enka Networks (tous les autres serveurs)."
+            "value" : "Le fournisseur des résultats de la vitrine dépend du serveur auquel l'UID appartient :\n* MiHoMo Origin (serveurs Celestia-AstralExpress et Irminsul-Nameless).\n* Enka Networks (tous les autres serveurs)."
           }
         },
         "it" : {
@@ -334,7 +334,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Requête ShowCase (Genshin Impact)"
+            "value" : "Afficher la vitrine (Genshin Impact)"
           }
         },
         "it" : {
@@ -487,7 +487,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cet ensemble de photos d'identité pourrait ne pas être applicable dans certaines circonstances de cette application. De plus, un avertissement : Les photos d'identité de personnages de style Genshin **NE PROVIENNENT PAS des assets de conception de personnages divulgués par Hoyoverse / Cognosphere / MiHoYo**. Au contraire, ces assets sont rendus à l'aide [des modèles MikuMikuDance publiés par MiHoYo dans le public](https://www.aplaybox.com/u/516827875)."
+            "value" : "Cet ensemble de photos pourrait ne pas être valide dans certaines circonstances. De plus, un avertissement : Les photos des personnages Genshin **NE PROVIENNENT PAS des fichiers provenant de versions de tests par Hoyoverse / Cognosphere / MiHoYo**. Ces derniers sont crées à l'aide [des modèles MikuMikuDance publiés par MiHoYo publiquement](https://www.aplaybox.com/u/516827875)."
           }
         },
         "it" : {
@@ -564,7 +564,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les ressources totémiques de fond utilisées pour les photos d'identité des personnages de Genshin Impact dans cette application proviennent de Star Rail (à l'exception de Geo, Dendro et Hydro), représentant l'élément Teyvat de chaque personnage. Ces totems ne sont visibles que si \"Utiliser les arrière-plans des cartes de nom pour les photos d'identité des personnages de Genshin et les panneaux de construction ShowCase\" est désactivé."
+            "value" : "Les images de fond utilisées pour les photos des personnages de Genshin dans cette application proviennent de Star Rail (à l'exception de Geo, Dendro et Hydro), représentant l'élément de Teyvat de chaque personnage. Ceux-ci ne sont visibles que si \"Utiliser les arrière-plans signatures pour les photos des personnages de Genshin et les vitrines de builds.\" est désactivé."
           }
         },
         "it" : {
@@ -641,7 +641,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les totems de fond utilisés pour les photos d'identité de Star Rail dans cette application représentent à la fois leur chemin de vie et leurs pouvoirs élémentaires. L'élément est représenté par la couleur utilisée pour rendre le totem."
+            "value" : "Les images de fond utilisés pour les photos de Star Rail dans cette application représentent à la fois leur voie et leurs élément. Celui-ci est représenté par la couleur utilisée dans l'image."
           }
         },
         "it" : {
@@ -718,7 +718,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Photo d'identité spécimen pour tous les caractères"
+            "value" : "Photo d'identité exemple pour chaque personnage"
           }
         },
         "it" : {
@@ -795,7 +795,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Soit aucun personnage dont les détails peuvent être exposés dans la vitrine ou (dans le cas de Genshin Impact) le propriétaire du UID n'a pas activé \"Afficher les détails des personnages\" dans le jeu. Si vous êtes le propriétaire du UID, vous pouvez suivre la capture d'écran suivante pour configurer la vitrine dans le jeu."
+            "value" : "Soit aucun personnage ne se trouve dans la vitrine soit (dans le cas de Genshin) le propriétaire du compte n'a pas activé \"Afficher les détails des personnages\" dans le jeu. Si vous êtes le propriétaire du compte, vous pouvez suivre la capture d'écran suivante pour configurer la vitrine dans le jeu."
           }
         },
         "it" : {
@@ -1334,7 +1334,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Imago"
+            "value" : "Imaginaire"
           }
         },
         "it" : {
@@ -1411,7 +1411,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Physico"
+            "value" : "Physique"
           }
         },
         "it" : {
@@ -1565,7 +1565,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quanto"
+            "value" : "Quantique"
           }
         },
         "it" : {
@@ -1642,7 +1642,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Adaptation aux constructions éclosion hyper électro"
+            "value" : "Adaptation aux builds éxubérance"
           }
         },
         "it" : {
@@ -1719,7 +1719,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uniquement Genshin. Par exemple : La Shogun Raiden avec plus de 900 de maîtrise élémentaire (et les sets d'artefacts 4 pièces associés) peut faire équipe avec Baizhu, Furina et Nahida pour être la plus forte équipe hyperbloom télécommandée full-auto. Cela désobéit à la conception initiale du personnage de la Shogun Raiden mais est un choix acceptable et efficace avec une charge de travail considérablement réduite pour la mise en place de toute l'équipe avec une portée de tir nettement plus grande que les équipes hyperbloom de combat rapproché basées sur Shinobu-Yukuaki. Des situations similaires peuvent s'appliquer à d'autres personnages électro de Genshin Impact."
+            "value" : "Uniquement Genshin. Par exemple : La Shogun Raiden avec plus de 900 de maîtrise élémentaire (et les sets d'artefacts complets 4 pièces associés) peut faire équipe avec Baizhu, Furina et Nahida pour être la plus forte équipe éxubérance full-auto. Cela va à l'encontre de la conception initiale du personnage de Raiden mais est un choix acceptable et efficace avec une quantité de travail considérablement réduite pour la mise en place de toute l'équipe avec une portée de tir nettement plus grande que les équipes éxubérance de combat rapproché basées sur Shinobu-Yukuaki. Des situations similaires peuvent s'appliquer à d'autres personnages électro de Genshin."
           }
         },
         "it" : {
@@ -1796,7 +1796,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Envisager les réactions de catalyse déclenchées avec des personnages Anémo"
+            "value" : "Envisager les réactions des catalystes déclenchées avec des personnages Anémo"
           }
         },
         "it" : {
@@ -1873,7 +1873,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genshin uniquement. Par exemple : Kaedehara Kazuha avec un ensemble d'artefacts de 4 pièces Fureur tonitruante est désormais considéré comme un choix acceptable pour déclencher la catalyse dendro. Des situations similaires peuvent s'appliquer à d'autres personnages anémo dans Genshin Impact."
+            "value" : "Genshin uniquement. Par exemple : Kaedehara Kazuha avec un ensemble d'artefacts de 4 pièces Colère de tonnerre est désormais considéré comme un choix acceptable pour déclencher la réaction dendro. Des situations similaires peuvent s'appliquer à d'autres personnages anémo dans Genshin Impact."
           }
         },
         "it" : {
@@ -1950,7 +1950,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afficher les évaluations de compatibilité des artefacts dans la vitrine"
+            "value" : "Afficher les évaluations de compatibilité des artéfacts dans la vitrine"
           }
         },
         "it" : {
@@ -2027,7 +2027,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Préférences d'évaluation des artefacts"
+            "value" : "Préférences d'évaluation des artéfacts"
           }
         },
         "it" : {
@@ -2104,7 +2104,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Personnaliser le nom pour Wanderer"
+            "value" : "Personnaliser le nom pour Nomade"
           }
         },
         "it" : {
@@ -2181,7 +2181,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nom personnalisé pour le Vagabond"
+            "value" : "Nom personnalisé pour Nomade"
           }
         },
         "it" : {
@@ -2258,7 +2258,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Veuillez entrer votre nom préféré pour Wanderer (Kunikuzushi)"
+            "value" : "Veuillez entrer votre nom préféré pour Nomade (Scaramouche)"
           }
         },
         "it" : {
@@ -2335,7 +2335,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hôte de requête EnkaDB actuel"
+            "value" : "Hébergeur actuel EnkaDB"
           }
         },
         "it" : {
@@ -2412,7 +2412,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ce paramètre change automatiquement lorsque le paramètre actuel échoue lors de l'accès."
+            "value" : "Ce paramètre change automatiquement lorsque le paramètre actuel échoue lors de sa lecture."
           }
         },
         "it" : {
@@ -2797,7 +2797,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Colorer les sous-propriétés des artefacts pour différencier leurs comptes"
+            "value" : "Mettre en couleur les sub-stats des artéfacts pour différencier leurs quantité."
           }
         },
         "it" : {
@@ -2874,7 +2874,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Du plus bas au plus élevé : Gris, DemiBlanc, Blanc, Orange, Jaune, Rouge."
+            "value" : "Du plus bas au plus élevé : Gris, Demi-Blanc, Blanc, Orange, Jaune, Rouge."
           }
         },
         "it" : {
@@ -3182,7 +3182,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Page de construction de personnage & Vitrine"
+            "value" : "Page de build de personnage & Vitrine"
           }
         },
         "it" : {
@@ -3336,7 +3336,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Utilisez des arrière-plans de cartes de visite pour les photos d'identité des personnages de Genshin et les panneaux ShowCase Build"
+            "value" : "Utilisez des arrière-plans signature pour les photos des personnages de Genshin et les vitrines de build"
           }
         },
         "it" : {

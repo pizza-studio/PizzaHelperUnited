@@ -339,7 +339,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Devoirs"
+            "value" : "Expéditions"
           }
         },
         "it" : {
@@ -802,7 +802,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Résine originale"
+            "value" : "Résine originelle"
           }
         },
         "it" : {
@@ -956,7 +956,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Puissance Trailblaze"
+            "value" : "Puissance du pionnier"
           }
         },
         "it" : {
@@ -1111,7 +1111,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fleur épanouie"
+            "value" : "Fleur des lignes énergétiques"
           }
         },
         "it" : {
@@ -1188,7 +1188,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZZZ Énergie"
+            "value" : "Énergie ZZZ"
           }
         },
         "it" : {
@@ -1727,7 +1727,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vitalité d'aujourd'hui"
+            "value" : "Vitalité du jour"
           }
         },
         "it" : {
@@ -1881,7 +1881,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les nouveaux paramètres de langue de l'interface utilisateur d'une application sur macOS / iOS nécessitent toujours le redémarrage de l'application pour garantir que le nouveau paramètre de langue soit pris en compte. Même si l'utilisateur modifie manuellement ceci via les Réglages Système, il sera toujours invité à redémarrer l'application, et ce sera macOS / iOS qui le lui demandera, et non cette application.\n\nNous créons ce changeur de langue ici pour faire gagner quelques secondes aux utilisateurs. Ce design est extrêmement adapté aux personnes souffrant de TDAH car elles sont susceptibles d'oublier ce qu'elles étaient sur le point de faire en naviguant entre les pages imbriquées des Réglages Système iOS / macOS.\n\nCette application se fermera après que vous confirmiez ce message."
+            "value" : "Le changement de la langue d'une application sur macOS / iOS nécessite toujours le redémarrage de cette dernière pour garantir que le changement soit pris en compte. Même si l'utilisateur fait manuellement la modification via les Réglages Système, il sera toujours invité à redémarrer l'application, et ce sera macOS / iOS qui le lui demandera, et non cette application.\n\nNous créons cette fonction de changement de langue ici pour faire gagner quelques secondes aux utilisateurs. Ce design est extrêmement adapté aux personnes souffrant de TDAH car elles sont susceptibles d'oublier ce qu'elles étaient sur le point de faire en naviguant entre les pages des Réglages Système iOS / macOS.\n\nCette application se fermera après confirmation de ce message."
           }
         },
         "it" : {
@@ -1958,7 +1958,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liste d'inventaire des personnages"
+            "value" : "Liste des personnages possédés"
           }
         },
         "it" : {
@@ -2035,7 +2035,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le résultat de l'inventaire récupéré est vide."
+            "value" : "L'inventaire est vide."
           }
         },
         "it" : {
@@ -2803,7 +2803,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Les UIDs de Zenless Zone Zero gérés par Miyoushe nécessitent que l'utilisateur remplisse manuellement l'empreinte de son appareil lui-même."
+            "value" : "⚠︎ Les UIDs de Zenless Zone Zero gérés par Miyoushe nécessitent que l'utilisateur remplisse manuellement les informations de son appareil lui-même."
           }
         },
         "it" : {
@@ -2957,7 +2957,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Surnom"
+            "value" : "Pseudo"
           }
         },
         "it" : {
@@ -3034,7 +3034,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Serveur de jeu"
+            "value" : "Serveur"
           }
         },
         "it" : {
@@ -3188,7 +3188,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "J'ai scanné. Veuillez vérifier. "
+            "value" : "Scan effectué. Veuillez vérifier les informations. "
           }
         },
         "it" : {
@@ -3958,7 +3958,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pour obtenir de la résine et d'autres données de HoYoLAB / Miyoushe, l'UID et le cookie de connexion de votre compte sont nécessaires. Après vous être connecté à HoYoLAB / Miyoushe, nous les stockerons localement ainsi que sur votre iCloud privé. Ensuite, notre application utilisera l'UID et le cookie stockés pour obtenir la résine et d'autres informations d'une manière similaire à l'application HoYoLAB / Miyoushe, puis les affichera sur votre widget. Vos informations privées ne seront envoyées nulle part ailleurs qu'à HoYoLAB / Miyoushe et iCloud, y compris nous, donc vos informations personnelles seront très sécurisées. Cette application est un projet open source. Tout le monde peut vérifier et superviser tous les comportements sous-jacents de ce programme."
+            "value" : "Pour obtenir de la résine et d'autres données de HoYoLAB / Miyoushe, l'UID et le cookie de connexion de votre compte sont nécessaires. Après vous être connecté à HoYoLAB / Miyoushe, nous les stockerons localement ainsi que sur votre iCloud privé. Ensuite, notre application utilisera l'UID et le cookie stockés pour obtenir votre résine et d'autres informations d'une manière similaire à l'application HoYoLAB / Miyoushe, puis les affichera sur votre widget. Vos informations privées ne seront envoyées nulle part ailleurs qu'à HoYoLAB / Miyoushe et iCloud, même pas nous, vos informations personnelles sont donc en sécurité. Cette application est un projet open source. Le code source est donc accessible publiquement afin de vérifier le comportement de ce programme."
           }
         },
         "it" : {
@@ -4035,7 +4035,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cette procédure n'est pas une procédure illégale comme les plug-ins. Ce programme respecte le contenu pertinent des règles de création secondaire de miHoYo. Cette appli est un projet open source. Tout le monde peut vérifier et superviser tous les comportements sous-jacents de ce programme. Pour plus de détails, voir Paramètres - FAQ."
+            "value" : "Cette procédure n'est pas une procédure illégale comme les plug-ins. Ce programme respecte les règles sur la création de comptes secondaire par miHoYo. Cette application est un projet open source. Le code source est donc accessible publiquement afin de vérifier le comportement de ce programme. Pour plus de détails, référez vous à Paramètres - FAQ."
           }
         },
         "it" : {
@@ -4266,7 +4266,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cliquez sur le bouton \"Terminé\" dans le coin supérieur droit de l'écran de l'application après avoir terminé la connexion à HoYoLAB dans la page Web suivante. Si un CAPTCHA vous est demandé, veuillez le terminer."
+            "value" : "Cliquez sur le bouton \"Terminé\" dans le coin supérieur droit de l'écran de l'application après avoir terminé la connexion à HoYoLAB dans la page Web suivante. Si un CAPTCHA vous est demandé, veuillez le faire."
           }
         },
         "it" : {
@@ -4343,7 +4343,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pour vous assurer que vous vous sentiez en sécurité avec cela, voici comment cela fonctionne : votre saisie de mot de passe est protégée par l'API SecureEventInput intégrée de macOS (ou son équivalent sur iOS), puis elle sera directement gérée par la page de connexion HoYoLAB. Tel est la nature de la conception de WKWebView par Apple. Personne d'autre ne peut interférer ou intercepter ce processus, ni cette application. Vous pouvez remarquer que vous ne pouvez pas passer à des méthodes de saisie tierces pendant que le mot de passe est en cours de saisie par l'utilisateur."
+            "value" : "Pour vous assurer que vous vous sentiez en sécurité, voici comment cela fonctionne : votre saisie de mot de passe est protégée par l'API SecureEventInput intégrée de macOS (ou son équivalent sur iOS), puis elle sera directement gérée par la page de connexion HoYoLAB. Tel est la manière donc à été conçu WKWebView par Apple. Personne d'autre ne peut interférer ou intercepter ce processus, même cette application. Vous pouvez remarquer que vous ne pouvez pas passer à des méthodes de saisie tierces pendant que le mot de passe est en cours de saisie par l'utilisateur."
           }
         },
         "it" : {
@@ -4420,7 +4420,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ Les services de connexion de tiers comme Google, Facebook, Twitter, Sign-in-with-Apple, etc. NE SONT PAS TECHNIQUEMENT PRIS EN CHARGE DANS CETTE APPLICATION, veuillez vous connecter avec votre nom d'utilisateur et votre mot de passe."
+            "value" : "⚠️ Les services de connexion de tiers comme Google, Facebook, Twitter, Sign-in-with-Apple, etc. NE SONT PAS PRIS EN CHARGE DANS CETTE APPLICATION, veuillez vous connecter avec votre nom d'utilisateur et votre mot de passe."
           }
         },
         "it" : {
@@ -4497,7 +4497,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prenez garde à ces choses avant de poursuivre :\n\n→ Cette application n'est PAS conçue pour la création ni la suppression de comptes HoYoLAB / Miyoushe. Ces actions doivent être effectuées via l'application HoYoLAB / Miyoushe ou les services officiels fournis par MiHoYo / Cognosphere. Vous pouvez appuyer sur le lien de gestion (voir le coin supérieur de cette fenêtre) pour accéder à la page de service du site.\n\n→ Un compte HoYoLAB / Miyoushe doit avoir été utilisé pour jouer au jeu (que vous avez spécifié ci-dessus) AU MOINS UNE FOIS pour être utilisable dans cette application.\n\n→ Un compte de jeu lié (sous la gestion de son compte HoYoLAB / Miyoushe lié) doit activer la visibilité publique de la vitrine de personnages via les paramètres du jeu afin de permettre l'affichage des informations liées dans cette application."
+            "value" : "Prenez garde aux éléments suivants avant de poursuivre :\n\n→ Cette application n'est PAS conçue pour la création ni la suppression de comptes HoYoLAB / Miyoushe. Ces actions doivent être effectuées via l'application HoYoLAB / Miyoushe ou les services officiels fournis par MiHoYo / Cognosphere. Vous pouvez appuyer sur le lien de gestion (voir le coin supérieur de cette fenêtre) pour accéder à la page de service du site.\n\n→ Un compte HoYoLAB / Miyoushe doit avoir été utilisé pour jouer au jeu (que vous avez spécifié ci-dessus) AU MOINS UNE FOIS pour être utilisable dans cette application.\n\n→ Un compte de jeu lié (sous la gestion de son compte HoYoLAB / Miyoushe lié) doit activer la visibilité publique de la vitrine de personnages via les paramètres du jeu afin de permettre l'affichage des informations liées dans cette application."
           }
         },
         "it" : {
@@ -4728,7 +4728,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Modifier la configuration du profil"
+            "value" : "Modifier le profil"
           }
         },
         "it" : {
@@ -4805,7 +4805,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Veuillez essayer de vous connecter à nouveau."
+            "value" : "Veuillez vous connecter à nouveau."
           }
         },
         "it" : {
@@ -5190,7 +5190,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Emballer et exporter tous les profils locaux"
+            "value" : "Compresser et exporter tous les profils locaux"
           }
         },
         "it" : {
@@ -5344,7 +5344,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importer un paquet de profils locaux"
+            "value" : "Importer un fichier de profils locaux"
           }
         },
         "it" : {
@@ -5881,7 +5881,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Désolé, la fonction de connexion pour ce serveur est temporairement indisponible. Nous travaillons sur ce problème. Vous pouvez maintenant configurer manuellement votre profil local avec votre propre cookie Miyoushe / HoYoLAB. "
+            "value" : "Désolé, la fonction de connexion pour ce serveur est temporairement indisponible. Nous travaillons sur ce problème. Vous pouvez configurer manuellement votre profil local avec votre propre cookie Miyoushe / HoYoLAB. "
           }
         },
         "it" : {
@@ -6728,7 +6728,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Échoué"
+            "value" : "Echec"
           }
         },
         "it" : {
@@ -7266,7 +7266,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le lien ci-dessus fonctionne sur tous les appareils Utilisateurs peuvent également utiliser l'application HoYoLAB (iPhone) pour terminer le retrait du compte (suppression)"
+            "value" : "Le lien ci-dessus fonctionne sur tous les appareils. Les utilisateurs peuvent également utiliser l'application HoYoLAB (iPhone) pour terminer la suppression du compte."
           }
         },
         "it" : {
@@ -7343,7 +7343,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Miyoushe s'attend à ce que les utilisateurs aient besoin d'utiliser soit un téléphone portable, soit l'application Miyoushe (iPhone) pour terminer le retrait (suppression) du compte\n\nSi vous êtes sur macOS, vous pouvez changer l'agent utilisateur de votre navigateur Safari en iPhone afin de voir le lien de suppression de compte. Pour plus d'informations sur l'utilisation du menu développeur dans Safari sous macOS pour changer son agent utilisateur, veuillez contacter le support Apple\n\nLe lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'agent utilisateur de l'iPhone"
+            "value" : "Miyoushe s'attend à ce que les utilisateurs aient besoin d'utiliser soit un téléphone portable, soit l'application Miyoushe (iPhone) pour terminer la suppression du compte\n\nSi vous êtes sur macOS, vous pouvez changer l'agent utilisateur de votre navigateur Safari en iPhone afin de voir le lien de suppression de compte. Pour plus d'informations sur l'utilisation du menu développeur dans Safari sous macOS pour changer son agent utilisateur, veuillez contacter le support Apple\n\nLe lien ci-dessus, s'il est cliqué directement, appliquera automatiquement l'agent utilisateur de l'iPhone"
           }
         },
         "it" : {
@@ -7497,7 +7497,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous pouvez confirmer cette conséquence en consultant le support HoYoLAB / Miyoushe"
+            "value" : "Vous pouvez vérifier les implications en consultant le support HoYoLAB / Miyoushe"
           }
         },
         "it" : {
@@ -7574,7 +7574,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cette page est conçue en conformité avec la demande du comité de révision de l'App Store."
+            "value" : "Cette page est conçue en conformité avec la demande du comité de l'App Store."
           }
         },
         "it" : {
@@ -7728,7 +7728,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Langue de l'interface utilisateur de l'application"
+            "value" : "Langue d'affichage"
           }
         },
         "it" : {
@@ -7805,7 +7805,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Push-forcez vos profils locaux vers l'Apple Watch appairée"
+            "value" : "Envoyer de force vos profils locaux vers votre Apple Watch"
           }
         },
         "it" : {
@@ -7882,7 +7882,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ceci est utile lorsque la fonction de synchronisation via iCloud présente des défauts sur votre Apple Watch."
+            "value" : "Ceci est utile lorsque la fonction de synchronisation via iCloud présente des défauts."
           }
         },
         "it" : {
@@ -8113,7 +8113,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paramètres généraux"
+            "value" : "Paramètres"
           }
         },
         "it" : {
@@ -8190,7 +8190,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les paramètres de fuseau horaire dans cette section servent à afficher au moins les informations suivantes (de Genshin Impact) : statistiques de rangs de l'abîme, matériel quotidien, événements officiels en jeu, etc."
+            "value" : "Les paramètres de fuseau horaire dans cette section servent à afficher au moins les informations suivantes (de Genshin Impact) : statistiques de rangs des profondeurs spiralées, matériaux quotidiens, événements officiels en jeu, etc."
           }
         },
         "it" : {
@@ -8267,7 +8267,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fuseau horaire pour afficher l'intelligence universelle GI"
+            "value" : "Fuseau horaire pour afficher les informations GI universelles"
           }
         },
         "it" : {
@@ -8343,7 +8343,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifier lorsque"
+            "value" : "Me prévenir lorsque"
           }
         },
         "it" : {
@@ -8419,7 +8419,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cela inclut la tâche quotidienne (Genshin Impact), l'entraînement quotidien (Star Rail) et la vitalité (Zenless Zone Zero)."
+            "value" : "Cela inclut les missions quotidiennes (Genshin Impact), l'entraînement quotidien (Star Rail) et la vitalité (Zenless Zone Zero)."
           }
         },
         "it" : {
@@ -8495,7 +8495,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rapport de réalisation des tâches quotidiennes"
+            "value" : "Rapport de progression des missions quotidiennes"
           }
         },
         "it" : {
@@ -8571,7 +8571,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me notifier"
+            "value" : "Activer"
           }
         },
         "it" : {
@@ -8647,7 +8647,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ En raison d'une limitation du cadre de la passerelle UIKit-vers-AppKit, le DatePicker sur macOS n'affiche pas le panneau de saisie dans les applications macCatalyst. Les utilisateurs ne peuvent sélectionner que le champ de saisie souhaité et le taper directement sur le clavier physique."
+            "value" : "⚠️ En raison d'une limitation de UIKit-to-AppKit, la séléction de date sur macOS n'affiche pas le panneau de saisie dans les applications macCatalyst. Les utilisateurs ne peuvent sélectionner que le champ de saisie souhaité et le taper directement sur le clavier physique."
           }
         },
         "it" : {
@@ -8723,7 +8723,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifier moi"
+            "value" : "Activer"
           }
         },
         "it" : {
@@ -8875,7 +8875,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avis d'accomplissement d'expédition"
+            "value" : "Expéditions terminées"
           }
         },
         "it" : {
@@ -8951,7 +8951,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifier lorsque"
+            "value" : "Me prévenir lorsque"
           }
         },
         "it" : {
@@ -9103,7 +9103,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me prévenir"
+            "value" : "Activer"
           }
         },
         "it" : {
@@ -9255,7 +9255,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avis de Recharge de Monnaie de Royaume"
+            "value" : "Monnaie du Royaume pleine"
           }
         },
         "it" : {
@@ -9331,7 +9331,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me notifier"
+            "value" : "Activer"
           }
         },
         "it" : {
@@ -9483,7 +9483,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avis de disponibilité du transformateur paramétrique"
+            "value" : "Transformateur paramétrique prêt"
           }
         },
         "it" : {
@@ -9559,7 +9559,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avertir quand"
+            "value" : "Me prévénir quand"
           }
         },
         "it" : {
@@ -9711,7 +9711,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Réductions restantes sur la Résine de Fleurs de Défi"
+            "value" : "Fleur des lignes énergétiques restantes"
           }
         },
         "it" : {
@@ -9787,7 +9787,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me prévenir"
+            "value" : "Activer"
           }
         },
         "it" : {
@@ -9863,7 +9863,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifier activé"
+            "value" : "Me prévenir le"
           }
         },
         "it" : {
@@ -9939,7 +9939,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avertir quand"
+            "value" : "Me prévenir à"
           }
         },
         "it" : {
@@ -10015,7 +10015,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Rail Star uniquement."
+            "value" : "* Star Rail uniquement."
           }
         },
         "it" : {
@@ -10091,7 +10091,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Récompenses restantes de l'Écho de la guerre"
+            "value" : "Tentatives restantes des Échos de la guerre"
           }
         },
         "it" : {
@@ -10167,7 +10167,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me prévenir"
+            "value" : "Activer"
           }
         },
         "it" : {
@@ -10243,7 +10243,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifier activé"
+            "value" : "Me prévenir à"
           }
         },
         "it" : {
@@ -10319,7 +10319,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifier quand"
+            "value" : "Me prévenir le"
           }
         },
         "it" : {
@@ -10395,7 +10395,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "* Rail Star uniquement."
+            "value" : "* Star Rail uniquement."
           }
         },
         "it" : {
@@ -10471,7 +10471,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Progression de l'achèvement de l'Univers simulé"
+            "value" : "Univers simulé hebdomadaire"
           }
         },
         "it" : {
@@ -10547,7 +10547,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me notifier"
+            "value" : "Activer"
           }
         },
         "it" : {
@@ -10623,7 +10623,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifier activé"
+            "value" : "Me prévenir le"
           }
         },
         "it" : {
@@ -10775,7 +10775,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifier quand"
+            "value" : "Me prévenir à"
           }
         },
         "it" : {
@@ -10927,7 +10927,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avis de disponibilité des récompenses Katheryne"
+            "value" : "Récompenses quotidiennes disponibles"
           }
         },
         "it" : {
@@ -11003,7 +11003,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me notifier"
+            "value" : "Activer"
           }
         },
         "it" : {
@@ -11383,7 +11383,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bascules de notification par profil"
+            "value" : "Séléction par profil"
           }
         },
         "it" : {
@@ -11460,7 +11460,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bascules par profil"
+            "value" : "Séléction par profil"
           }
         },
         "it" : {
@@ -11536,7 +11536,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me prévenir"
+            "value" : "Activer"
           }
         },
         "it" : {
@@ -11612,7 +11612,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cela inclut la Résine Originelle (Genshin Impact), la Puissance de Piste (Star Rail) et la Vitalité (Zenless Zone Zero). Malgré les paramètres de seuil, vous serez également averti si l'endurance du joueur est complètement rechargée."
+            "value" : "Cela inclut la Résine Originelle (Genshin Impact), la Puissance du Pionnier (Star Rail) et la Vitalité (Zenless Zone Zero). Peu importe le paramètre du seuil, vous serez quand même averti quand la résine est complètement rechargée."
           }
         },
         "it" : {
@@ -11688,7 +11688,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Progression de la Recharge de l'Endurance du Joueur"
+            "value" : "Progression de la recharge de la résine"
           }
         },
         "it" : {
@@ -11764,7 +11764,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajouter une nouvelle valeur seuil"
+            "value" : "Ajouter un nouveau seuil"
           }
         },
         "it" : {
@@ -11840,7 +11840,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous serez également averti si l'endurance du joueur est entièrement rechargée."
+            "value" : "Vous serez quand même averti quand la résine est entièrement rechargée."
           }
         },
         "it" : {
@@ -11992,7 +11992,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seuil de Notification d'Endurance"
+            "value" : "Seuil de Notification de recharge"
           }
         },
         "it" : {
@@ -12145,7 +12145,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autoriser la collecte des données des rapports de combat de Spiral Abyss"
+            "value" : "Autoriser la collecte des données des rapports de combat des Profondeurs Spiralées"
           }
         },
         "it" : {
@@ -12222,7 +12222,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nous avons hâte de collecter les personnages de Genshin que vous possédez et que vous avez utilisés dans l'Abîme en spirale et de les envoyer à Snap.Hutao Database (c'est-à-dire HutaoDB) et Pizza DB. En nous permettant de collecter ces données, vous aiderez HutaoDB et PizzaAbyssDB à fournir des informations plus précises sur le taux d'utilisation des personnages de l'Abîme en spirale en temps réel, le taux d'utilisation des équipes, etc., disponibles à consulter dans l'application. Les informations comprennent également l'UID de jeu de Genshin associé mais aucune autre information de votre compte de jeu pour aider HutaoDB à refuser potentiellement les enregistrements falsifiés des tricheurs identifiés."
+            "value" : "Nous aimerions collecter les personnages Genshin que vous possédez et que vous avez utilisés dans les Profondeurs Spiralées et de les envoyer à Snap.Hutao Database (c'est-à-dire HutaoDB) et Pizza DB. En nous permettant de collecter ces données, vous aiderez HutaoDB et PizzaAbyssDB à fournir des informations plus précises sur le taux d'utilisation des personnages de les Profondeurs Spiralées en temps réel, le taux d'utilisation des équipes, etc., disponibles à consulter dans l'application. Les informations comprennent également l'UID de jeu de Genshin associé mais aucune autre information de votre compte de jeu pour aider HutaoDB à différencier les scores falsifiés des tricheurs connus."
           }
         },
         "it" : {
@@ -12756,7 +12756,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ N'activez pas ce bouton à bascule sauf si les développeurs vous y invitent lors d'une demande d'assistance technique.\n\n⚠️ Veuillez EXPORTER vos profils locaux AVANT d'activer ce bouton à bascule."
+            "value" : "⚠️ N'activez pas cette option sauf si les développeurs vous y invitent lors d'une demande d'assistance technique.\n\n⚠️ Veuillez EXPORTER vos profils locaux AVANT d'activer cette option."
           }
         },
         "it" : {
@@ -13753,7 +13753,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Démarrer automatiquement l'activité en direct du minuteur d'endurance"
+            "value" : "Démarrer automatiquement l'activité en direct"
           }
         },
         "it" : {
@@ -13905,7 +13905,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous pouvez glisser l'île dynamique de gauche/droite vers le milieu pour la cacher. Balayez vers la gauche sur le minuteur de endurance sur l'écran verrouillé pour éteindre le minuteur de résine et l'île dynamique."
+            "value" : "Balayez vers la gauche sur l'écran verrouillé ou l'île dynamique pour éteindre le minuteur sur ces derniers."
           }
         },
         "it" : {
@@ -13981,7 +13981,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le minuteur d'endurance est la façon dont cette application utilise la fonctionnalité Activité en direct d'iOS. Vous pouvez cliquer sur le cercle avec ellipsis à droite de la note en temps réel d'un profil local dans l'onglet Aujourd'hui pour l'initier."
+            "value" : "Le minuteur de recharge de résine utilise la fonctionnalité Activité en direct d'iOS. Vous pouvez cliquer sur l'icône de rafraîchissement dans l'onglet Aujourd'hui pour le lancer."
           }
         },
         "it" : {
@@ -14286,7 +14286,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paramètres de minuterie d'endurance"
+            "value" : "Paramètres de la minuterie de résine"
           }
         },
         "it" : {
@@ -14362,7 +14362,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afficher l'expédition"
+            "value" : "Afficher les expéditions"
           }
         },
         "it" : {
@@ -14438,7 +14438,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Utiliser l'arrière-plan en matériau de verre"
+            "value" : "Utiliser un fond flou"
           }
         },
         "it" : {
@@ -14746,7 +14746,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paramètres liés à l'interface utilisateur"
+            "value" : "Paramètres de l'interface"
           }
         },
         "it" : {
@@ -14823,7 +14823,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paramètres de l'interface utilisateur"
+            "value" : "Paramètres de l'interface"
           }
         },
         "it" : {
@@ -15439,7 +15439,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Restes d'aujourd'hui"
+            "value" : "Infos du jour"
           }
         },
         "it" : {

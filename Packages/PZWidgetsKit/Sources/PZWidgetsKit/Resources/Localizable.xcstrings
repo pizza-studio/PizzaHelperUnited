@@ -30,7 +30,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Initier une activité en direct"
+            "value" : "Lancer l'activité en direct"
           }
         },
         "it" : {
@@ -106,7 +106,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Échec de la récupération des notes en temps réel."
+            "value" : "Échec de la récupération des informations en temps réel."
           }
         },
         "it" : {
@@ -258,7 +258,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[Exception Inconnue] %@"
+            "value" : "[Erreur Inconnue] %@"
           }
         },
         "it" : {

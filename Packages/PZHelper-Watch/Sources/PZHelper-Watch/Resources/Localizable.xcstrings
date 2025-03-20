@@ -182,7 +182,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fleur de Défi"
+            "value" : "Fleur des lignes énergétiques"
           }
         },
         "it" : {
@@ -1174,7 +1174,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rechargeé à \n%@"
+            "value" : "Rechargé à \n%@"
           }
         },
         "it" : {
