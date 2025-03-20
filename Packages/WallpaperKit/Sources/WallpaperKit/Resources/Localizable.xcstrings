@@ -31,7 +31,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fond de l'application"
+            "value" : "Arrière plan"
           }
         },
         "it" : {
@@ -108,7 +108,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fond du minuteur d'endurance"
+            "value" : "Arrière plan du minuteur"
           }
         },
         "it" : {
@@ -185,7 +185,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Galerie de Fonds d'écran"
+            "value" : "Galerie des arrières plans"
           }
         },
         "it" : {
@@ -339,7 +339,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Attribuer comme arrière-plan de l'activité en direct"
+            "value" : "Définir comme arrière-plan de l'activité en direct"
           }
         },
         "it" : {

@@ -31,7 +31,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caractère"
+            "value" : "Personnage"
           }
         },
         "it" : {
@@ -108,7 +108,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matériaux d'aujourd'hui"
+            "value" : "Matériaux du jour"
           }
         },
         "it" : {

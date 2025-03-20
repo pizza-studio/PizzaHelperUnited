@@ -339,7 +339,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Par défaut du système d'exploitation"
+            "value" : "Système"
           }
         },
         "it" : {
@@ -1955,7 +1955,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "IG"
+            "value" : "GI"
           }
         },
         "it" : {
@@ -2109,7 +2109,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Route des étoiles"
+            "value" : "Star Rail"
           }
         },
         "it" : {
@@ -2879,7 +2879,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Affirmatif"
+            "value" : "Confirmer"
           }
         },
         "it" : {
@@ -2957,7 +2957,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "J'accepte"
+            "value" : "Accepter"
           }
         },
         "it" : {
