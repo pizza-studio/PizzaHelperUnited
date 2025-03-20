@@ -108,7 +108,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moteur de Pizza Unifié"
+            "value" : "United Pizza Engine"
           }
         },
         "it" : {
@@ -186,7 +186,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "(c) 2024 et suivants Pizza Studio (Licence AGPL v3.0 ou ultérieure)"
+            "value" : "(c) 2024 et au-delà, Pizza Studio (Licence AGPL v3.0 et ultérieur)"
           }
         },
         "it" : {
@@ -263,7 +263,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cette autorisation permet à cette application d'écrire des images générées dans la bibliothèque de photos lorsque l'utilisateur le demande, y compris les codes QR, etc."
+            "value" : "Cette autorisation permet à cette application d'ajouter des images dans les photos lorsque l'utilisateur le demande, y compris les codes QR, etc."
           }
         },
         "it" : {

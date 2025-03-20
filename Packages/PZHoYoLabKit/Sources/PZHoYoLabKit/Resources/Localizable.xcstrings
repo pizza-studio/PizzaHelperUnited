@@ -645,7 +645,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La plupart des défaites"
+            "value" : "Maximum de défaites"
           }
         },
         "it" : {
@@ -799,7 +799,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Explosions élémentaires"
+            "value" : "Ultimes déclenchés"
           }
         },
         "it" : {
@@ -876,7 +876,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Étoile d'Abyss obtenue"
+            "value" : "Étoiles obtenues"
           }
         },
         "it" : {
@@ -953,7 +953,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meilleur coup unique"
+            "value" : "Meilleur coup"
           }
         },
         "it" : {
@@ -1261,7 +1261,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Batailles combattues"
+            "value" : "Batailles effectuées"
           }
         },
         "it" : {
@@ -1338,7 +1338,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ID de saison"
+            "value" : "ID de la saison"
           }
         },
         "it" : {
@@ -1645,7 +1645,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chambre n°%@"
+            "value" : "Salle n°%@"
           }
         },
         "it" : {
@@ -1723,7 +1723,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MON"
+            "value" : "ACT"
           }
         },
         "it" : {
@@ -1878,7 +1878,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rapport de bataille : Abysses en Spirale"
+            "value" : "Rapport de bataille : Profondeurs Spiralées"
           }
         },
         "it" : {
@@ -1955,7 +1955,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abysses Spirale"
+            "value" : "Profondeurs Spiralées"
           }
         },
         "it" : {
@@ -2032,7 +2032,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rapport de bataille : Hall oublié"
+            "value" : "Rapport de bataille : Salle oubliée"
           }
         },
         "it" : {
@@ -2109,7 +2109,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hall oublié"
+            "value" : "Salle oubliée"
           }
         },
         "it" : {
@@ -2261,7 +2261,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Articles 5 étoiles obtenus %lld fois via gacha, y compris %lld fois des personnages 5 étoiles et %lld fois des armes 5 étoiles (les armes étoiles 5 non équipées et le Voyageur / Trailblazer ne sont pas comptés)"
+            "value" : "Objets 5 étoiles obtenus %lld fois via le gacha, y compris %lld fois des personnages 5 étoiles et %lld fois des armes 5 étoiles (les armes étoiles 5 non équipées et le Voyageur / Pionnier ne sont pas comptés)"
           }
         },
         "it" : {
@@ -2415,7 +2415,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "personnages 5 étoiles"
+            "value" : "Personnages 5 étoiles"
           }
         },
         "it" : {
@@ -2723,7 +2723,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Développer"
+            "value" : "Agrandir"
           }
         },
         "it" : {
@@ -3262,7 +3262,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tâche"
+            "value" : "Tâches"
           }
         },
         "it" : {
@@ -3338,7 +3338,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grand livre pour ce mois %@"
+            "value" : "Résumé pour ce mois %@"
           }
         },
         "it" : {
@@ -3642,7 +3642,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Primogemmes"
+            "value" : "Primo-gemmes"
           }
         },
         "it" : {
@@ -3718,7 +3718,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inclut uniquement les ressources obtenues en dehors des recharges. Il y a des problèmes de retard de données."
+            "value" : "Inclut uniquement les ressources obtenues en dehors des recharges. Il y a des retards dans les données."
           }
         },
         "it" : {
@@ -3871,7 +3871,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grand livre pour Primogems et Moras"
+            "value" : "Résumé des Primo-gemmes et Moras"
           }
         },
         "it" : {
@@ -4486,7 +4486,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grand livre de ce mois (%@)"
+            "value" : "Résumé de ce mois (%@)"
           }
         },
         "it" : {
@@ -4714,7 +4714,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Revenus des SR Passes"
+            "value" : "Voeux acquis"
           }
         },
         "it" : {
@@ -4790,7 +4790,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Revenus d'Étoiles de Jade"
+            "value" : "Jades Stellaires acquises"
           }
         },
         "it" : {
@@ -4866,7 +4866,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inclut uniquement les ressources obtenues en dehors des recharges. Il y a des problèmes de retard des données."
+            "value" : "Inclut uniquement les ressources obtenues en dehors des recharges. Il y a des retards sur les données."
           }
         },
         "it" : {
@@ -5019,7 +5019,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grand livre pour les laissez-passer SR et Stella Jades"
+            "value" : "Résumé des voeux et Jades Stellaires"
           }
         },
         "it" : {
@@ -5095,7 +5095,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abysses en spirale"
+            "value" : "Profondeurs Spiralées"
           }
         },
         "it" : {
@@ -5171,7 +5171,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Réalisations"
+            "value" : "Succès"
           }
         },
         "it" : {
@@ -5247,7 +5247,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caractères"
+            "value" : "Personnages"
           }
         },
         "it" : {
@@ -5323,7 +5323,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Coffres Communs Ouverts"
+            "value" : "Coffres communs Ouverts"
           }
         },
         "it" : {
@@ -5627,7 +5627,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jours actifs"
+            "value" : "Jours de connexion"
           }
         },
         "it" : {
@@ -6388,7 +6388,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Points de passage déverrouillés"
+            "value" : "Téléporteurs débloqués"
           }
         },
         "it" : {
@@ -6540,7 +6540,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caractères"
+            "value" : "Personnages"
           }
         },
         "it" : {
@@ -6692,7 +6692,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jours d'activité"
+            "value" : "Jours de connexion"
           }
         },
         "it" : {
@@ -6845,7 +6845,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Statistiques innovantes"
+            "value" : "Statistiques"
           }
         },
         "it" : {

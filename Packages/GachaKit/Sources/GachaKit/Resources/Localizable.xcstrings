@@ -31,7 +31,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Réussi"
+            "value" : "Succès"
           }
         },
         "it" : {
@@ -108,7 +108,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moyenne de tirages"
+            "value" : "Voeux moyens"
           }
         },
         "it" : {
@@ -185,7 +185,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caractère"
+            "value" : "Personnage"
           }
         },
         "it" : {
@@ -339,7 +339,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nombre de tirages"
+            "value" : "Nombre de voeux"
           }
         },
         "it" : {
@@ -416,7 +416,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La valeur brute de l'heure ne peut pas être analysée."
+            "value" : "La valeur de l'heure ne peut pas lue."
           }
         },
         "it" : {
@@ -493,7 +493,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Retournez et sélectionnez un autre fichier"
+            "value" : "Revenez en arrière et sélectionnez un autre fichier"
           }
         },
         "it" : {
@@ -570,7 +570,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisissez les profils gacha à exporter \nUne sélection vide indique que tous les profils sont sélectionnés"
+            "value" : "Choisissez les profils gacha à exporter \nUne sélection vide indique que tous les profils seront sélectionnés"
           }
         },
         "it" : {
@@ -647,7 +647,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisissez les profils gacha à importer. Une sélection vide indique que tous les profils sont sélectionnés."
+            "value" : "Choisissez les profils gacha à importer. Une sélection vide indique que tous les profils seront sélectionnés."
           }
         },
         "it" : {
@@ -878,7 +878,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Échec de l'exportation du fichier d'historique du gacha échangeable"
+            "value" : "Échec de l'exportation du fichier d'historique du gacha"
           }
         },
         "it" : {
@@ -955,7 +955,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fichier de records gacha échangeables exporté avec succès vers :"
+            "value" : "Fichier de records gacha exporté avec succès vers :"
           }
         },
         "it" : {
@@ -1032,7 +1032,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le fichier d'historique gacha échangeable a été exporté avec succès."
+            "value" : "Le fichier d'historique gacha a été exporté avec succès."
           }
         },
         "it" : {
@@ -1340,7 +1340,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cette application ne prend pas en charge l'importation de formats GIGF antérieurs à UIGF v2.0 en raison de l'absence de trop nombreux champs d'informations cruciaux"
+            "value" : "Cette application ne prend pas en charge l'importation de formats GIGF antérieurs à UIGF v2.0 en raison de l'absence de trop d'informations importantes."
           }
         },
         "it" : {
@@ -1494,7 +1494,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SRGF v1.0, établi par le comité UIGF, est un format échangeable pour les enregistrements gacha de Star Rail, un jeu produit par Cognosphere et MiHoYo. Bien que ce format soit marqué comme un format vintage et remplacé par UIGF v4.0, il existe d'excellentes applications sur Windows qui ne se conforment qu'à SRGF v1.0, d'où l'option ici pour des raisons de compatibilité."
+            "value" : "SRGF v1.0, établi par le comité UIGF, est un format échangeable pour les enregistrements gacha de Star Rail, un jeu produit par Cognosphere et MiHoYo. Bien que ce format soit marqué comme un format dépassé et remplacé par UIGF v4.0, il existe d'excellentes applications sur Windows qui ne se conforment qu'à SRGF v1.0, d'où l'option ici pour des raisons de compatibilité."
           }
         },
         "it" : {
@@ -1725,7 +1725,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Remplacer les enregistrements existants"
+            "value" : "Remplacer l'historique existant"
           }
         },
         "it" : {
@@ -2033,7 +2033,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exporter des enregistrements Gacha"
+            "value" : "Exporter l'historique Gacha"
           }
         },
         "it" : {
@@ -2110,7 +2110,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importer les enregistrements Gacha"
+            "value" : "Importer l'historique Gacha"
           }
         },
         "it" : {
@@ -2417,7 +2417,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ AVERTISSEMENT : Ne partagez pas vos enregistrements de gacha avec des collecteurs **publics** de records de gacha qui pourraient **divulguer** leurs résultats statistiques."
+            "value" : "⚠️ AVERTISSEMENT : Ne partagez pas votre historique gacha avec des sites de collecte **publiques** qui pourraient **divulguer** vos résultats à des fins de statistiques."
           }
         },
         "it" : {
@@ -2725,7 +2725,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Privilèges insuffisants pour accéder au fichier donné."
+            "value" : "Privilèges insuffisants pour accéder au fichier demandé."
           }
         },
         "it" : {
@@ -2879,7 +2879,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le fichier donné ne correspond pas au format de fichier choisi."
+            "value" : "Le fichier fourni ne correspond pas au format de fichier choisi."
           }
         },
         "it" : {
@@ -3033,7 +3033,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Options de filtrage"
+            "value" : "Filtres"
           }
         },
         "it" : {
@@ -3110,7 +3110,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rang de rareté"
+            "value" : "Rareté"
           }
         },
         "it" : {
@@ -3187,7 +3187,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afficher l'horodatage"
+            "value" : "Afficher la date"
           }
         },
         "it" : {
@@ -3264,7 +3264,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Langue Gacha"
+            "value" : "Langue du gacha"
           }
         },
         "it" : {
@@ -3495,7 +3495,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Résultats vides obtenus lors de la tentative de mise à jour en ligne de GachaMetaDB."
+            "value" : "Aucun résultat lors de la tentative de mise à jour en ligne de GachaMetaDB."
           }
         },
         "it" : {
@@ -3572,7 +3572,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ID de l'article invalide."
+            "value" : "ID de l'objet invalide."
           }
         },
         "it" : {
@@ -3803,7 +3803,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cette application ne contient pas de gacha payant. Le gestionnaire d'enregistrements de gacha dans cette application permet uniquement aux utilisateurs de gérer leurs enregistrements de gacha personnels pour certains jeux pris en charge par cette application. Vos enregistrements de gacha dans cette application seront uniquement stockés dans l'espace iCloud privé de votre identifiant Apple actuel, ainsi que sur tous les appareils Apple qui sont connectés avec cet identifiant Apple et ont cette application installée et utilisée, donc aucune préoccupation de confidentialité n'est nécessaire. Zenless Zone Zero n'est actuellement pas pris en charge par cette fonctionnalité."
+            "value" : "Cette application ne contient pas de paiements intégrés. L'enregistrements de vos données de gacha dans cette application permet uniquement de gérer pouvoir les voir et les gérer. Seulement certains sont jeux pris en charge par cette application. Vos données dans cette application seront uniquement stockés dans l'espace iCloud privé de votre identifiant Apple actuel, ainsi que sur tous les appareils Apple qui sont connectés avec cet identifiant Apple et avec cette application installée et utilisée, donc aucune mesure de confidentialité n'est nécessaire. Zenless Zone Zero n'est actuellement pas pris en charge par cette fonctionnalité."
           }
         },
         "it" : {
@@ -3880,7 +3880,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gestionnaire d'enregistrements Gacha"
+            "value" : "Historique Gacha"
           }
         },
         "it" : {
@@ -3957,7 +3957,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compter"
+            "value" : "Quantité"
           }
         },
         "it" : {
@@ -4567,7 +4567,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Plage temporelle"
+            "value" : "Plage horaire"
           }
         },
         "it" : {
@@ -4873,7 +4873,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enregistrement de gacha réussi"
+            "value" : "Récupération de l'historique gacha réussi"
           }
         },
         "it" : {
@@ -5027,7 +5027,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obtention des enregistrements de gacha..."
+            "value" : "Récupération de l'historique gacha..."
           }
         },
         "it" : {
@@ -5258,7 +5258,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obtention des enregistrements de gacha..."
+            "value" : "Récupération de l'historique gacha..."
           }
         },
         "it" : {
@@ -5335,7 +5335,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ou appuyez sur un compte pour récupérer (Miyoushe UIDs uniquement):"
+            "value" : "ou appuyez sur un compte pour récupérer (UIDs Miyoushe uniquement):"
           }
         },
         "it" : {
@@ -5412,7 +5412,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copiez cette URL dans le presse-papiers"
+            "value" : "Copier l'URL"
           }
         },
         "it" : {
@@ -5643,7 +5643,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Coller une autre URL d'historique de gacha"
+            "value" : "Coller une autre URL d'historique gacha"
           }
         },
         "it" : {
@@ -5719,7 +5719,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En raison d'accidents ponctuels côté serveur, le serveur de jeu peut renvoyer des entrées gacha dupliquées avec des identifiants de transaction incorrects, polluant la base de données locale. Si le mode de blanchiment est activé, cette application utilisera toujours les derniers résultats d'extraction comme source fiable pour les identifiants de transaction corrects et supprimera les entrées incorrectes localement, bien qu'elle puisse être trompée par les données polluées du serveur de jeu. Cependant, une fois qu'une version du jeu est obsolète, tous les enregistrements gacha de sa période d'exploitation deviennent statiques et fiables."
+            "value" : "En raison d'accidents ponctuels côté serveur, le serveur de jeu peut renvoyer des entrées gacha dupliquées avec des identifiants incorrects, polluant la base de données locale. Si le mode de nettoyage est activé, cette application utilisera toujours les derniers résultats d'extraction comme source fiable pour les identifiants corrects et supprimera les entrées incorrectes localement, bien qu'elle puisse être trompée par les données polluées du serveur de jeu. Cependant, une fois qu'une version du jeu est obsolète, tous les enregistrements gacha de sa période d'exploitation deviennent statiques et fiables."
           }
         },
         "it" : {
@@ -6410,7 +6410,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GachaMetaDB est obsolète pour gérer certaines entrées d'articles gacha soit dans la base de données locale d'entrées gacha de l'application, soit à partir de sources externes Cette base de données contient des informations cruciales pour identifier les ItemIDs et leurs traductions, en plus d'indiquer le type de rareté de chaque article gacha"
+            "value" : "GachaMetaDB est obsolète pour gérer certaines entrées gacha soit dans la base de données locale de l'application, soit à partir de sources externes. Cette base de données contient des informations cruciales pour identifier les identifiant des objets et leurs traductions, en plus d'indiquer le type de rareté de chaque élément."
           }
         },
         "it" : {
@@ -6641,7 +6641,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cliquez ici pour supprimer tous les enregistrements sous ce profil Gacha"
+            "value" : "Cliquez ici pour supprimer tous les enregistrements sous ce profil"
           }
         },
         "it" : {
@@ -6718,7 +6718,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Confirmer la suppression de tous les enregistrements sous ce profil gacha. Continuer ?"
+            "value" : "Confirmer la suppression de tous les enregistrements sous ce profil ?"
           }
         },
         "it" : {
@@ -6795,7 +6795,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jeu en cours"
+            "value" : "Jeu actuel"
           }
         },
         "it" : {
@@ -6872,7 +6872,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gestion des enregistrements Gacha"
+            "value" : "Gestion de l'historique Gacha"
           }
         },
         "it" : {
@@ -7026,7 +7026,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importer / Exporter les enregistrements Gacha"
+            "value" : "Importer / Exporter l'historique Gacha"
           }
         },
         "it" : {
@@ -7103,7 +7103,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hériter des enregistrements Gacha iCloud des anciennes applications Pizza"
+            "value" : "Hériter de l'historique Gacha depuis iCloud des anciennes applications Pizza"
           }
         },
         "it" : {
@@ -7180,7 +7180,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lister les enregistrements iCloud Gacha des anciennes applications Pizza"
+            "value" : "Lister l'historique Gacha depuis iCloud des anciennes applications Pizza"
           }
         },
         "it" : {
@@ -7565,7 +7565,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[ParseGachaURLError] La version intel de `key` est absente dans la clé d'authentification."
+            "value" : "[ParseGachaURLError] La version de `key` est absente dans la clé d'authentification."
           }
         },
         "it" : {
@@ -7873,7 +7873,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Type de souhait"
+            "value" : "Type de bannière"
           }
         },
         "it" : {
@@ -7950,7 +7950,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Type de déformation"
+            "value" : "Type de voeux"
           }
         },
         "it" : {
@@ -8104,7 +8104,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Souhait des débutants"
+            "value" : "Bannière des débutants"
           }
         },
         "it" : {
@@ -8181,7 +8181,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Souhait d'événement de personnage"
+            "value" : "Bannière de personnage"
           }
         },
         "it" : {
@@ -8258,7 +8258,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Souhait Chroniqué"
+            "value" : "Bannière nostalgie"
           }
         },
         "it" : {
@@ -8335,7 +8335,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Souhait Standard"
+            "value" : "Bannière standard"
           }
         },
         "it" : {
@@ -8412,7 +8412,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Souhait Inconnu"
+            "value" : "Bannière inconnue"
           }
         },
         "it" : {
@@ -8489,7 +8489,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Souhait d'événement d'arme"
+            "value" : "Bannière d'arme"
           }
         },
         "it" : {
@@ -8566,7 +8566,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Distorsion d'événement de personnage"
+            "value" : "Bannière de personnage"
           }
         },
         "it" : {
@@ -8643,7 +8643,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saut de départ"
+            "value" : "Bannière de départ"
           }
         },
         "it" : {
@@ -8720,7 +8720,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Événement de distorsion du cône de lumière"
+            "value" : "Bannière de cône de lumière"
           }
         },
         "it" : {
@@ -8797,7 +8797,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Distorsion Stellaire"
+            "value" : "Bannière standard"
           }
         },
         "it" : {
@@ -8874,7 +8874,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp inconnu"
+            "value" : "Bannière inconnue"
           }
         },
         "it" : {
@@ -9182,7 +9182,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Canal inconnu"
+            "value" : "Bannière inconnue"
           }
         },
         "it" : {
@@ -9413,7 +9413,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dossiers détaillés"
+            "value" : "Historique détaillés"
           }
         },
         "it" : {
@@ -9490,7 +9490,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aucun enregistrement de gacha trouvé."
+            "value" : "Aucun historique gacha trouvé."
           }
         },
         "it" : {
@@ -9567,7 +9567,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Veuillez choisir un profil gacha. Si vous ne pouvez pas en voir, importez d'abord des enregistrements gacha."
+            "value" : "Veuillez choisir un profil gacha. Si vous ne pouvez pas en voir, importez d'abord un historique gacha."
           }
         },
         "it" : {
@@ -9875,7 +9875,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moy. Tirages (limité ★5)"
+            "value" : "Moyenne des voeux (★5 limités)"
           }
         },
         "it" : {
@@ -9952,7 +9952,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moyenne. Tirages (tous types ★5)"
+            "value" : "Moyenne des voeux (tous les ★5)"
           }
         },
         "it" : {
@@ -10106,7 +10106,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tirages empilés (depuis le dernier ★5)"
+            "value" : "Pity (voeux depuis le dernier ★5)"
           }
         },
         "it" : {
@@ -10260,7 +10260,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Total des tirages"
+            "value" : "Total de voeux"
           }
         },
         "it" : {

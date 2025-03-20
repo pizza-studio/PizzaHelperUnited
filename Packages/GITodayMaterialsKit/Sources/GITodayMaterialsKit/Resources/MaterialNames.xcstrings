@@ -31,7 +31,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Admonaistration"
+            "value" : "Admonestation"
           }
         },
         "it" : {
@@ -262,7 +262,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La Compétition"
+            "value" : "Compétition"
           }
         },
         "it" : {
@@ -801,7 +801,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La Justice"
+            "value" : "Justice"
           }
         },
         "it" : {
@@ -2341,7 +2341,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jardin D'oasis"
+            "value" : "Jardin d'Oasis"
           }
         },
         "it" : {

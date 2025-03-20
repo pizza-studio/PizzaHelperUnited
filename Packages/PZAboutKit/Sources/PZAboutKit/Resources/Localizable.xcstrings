@@ -411,7 +411,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "À propos de l'équipage"
+            "value" : "À propos de l'équipe"
           }
         },
         "it" : {
@@ -716,7 +716,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salles de chat"
+            "value" : "Salles de conversation"
           }
         },
         "it" : {
@@ -945,7 +945,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Page de l'artiste NetEase Music"
+            "value" : "Page de l'artiste sur NetEase Music"
           }
         },
         "it" : {
@@ -1034,7 +1034,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Méthode de contact App Store"
+            "value" : "App Store"
           }
         },
         "it" : {
@@ -2301,7 +2301,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrateur d'icônes d'application, The Pizza Helper (v5 Engine Testflight)"
+            "value" : "Illustrateur d'icônes de l'application, The Pizza Helper (v5 Engine Testflight)"
           }
         },
         "it" : {
@@ -2377,7 +2377,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrateur d'icônes d'application, Pizza Helper for HSR"
+            "value" : "Illustrateur d'icônes de l'application, Pizza Helper pour HSR"
           }
         },
         "it" : {
@@ -2454,7 +2454,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrateur d'icônes d'application, Pizza Helper for Genshin (v4)\nIllustrateur d'icônes d'application, The Pizza Helper (v5)"
+            "value" : "Illustrateur d'icônes de l'application, Pizza Helper pour Genshin (v4)\nIllustrateur d'icônes de l'application, The Pizza Helper (v5)"
           }
         },
         "it" : {
@@ -2531,7 +2531,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Contributeur d'Actifs Divers"
+            "value" : "Contributeur de fichiers divers"
           }
         },
         "it" : {
@@ -2684,7 +2684,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Chef d'équipe et fondateur\n- Développeur, L'Aide Pizza (v5)\n- Développeur, L'Aide Pizza pour HSR\n- Développeur, L'Aide Pizza pour Genshin (v1-v4)\n- Relations publiques (Chine continentale)"
+            "value" : "- Chef d'équipe et fondateur\n- Développeur, Pizza Helper (v5)\n- Développeur, Pizza Helper pour HSR\n- Développeur, Pizza Helper pour Genshin (v1-v4)\n- Relations publiques (Chine continentale)"
           }
         },
         "it" : {
@@ -2761,7 +2761,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Architecte et développeur du moteur, The Pizza Helper (v5) - Responsable, Pizza Helper pour HSR - Responsable, Pizza Helper pour Genshin (v3-v4)"
+            "value" : "- Conception et développement du moteur, The Pizza Helper (v5) \n        - Responsable, Pizza Helper pour HSR \n        - Responsable, Pizza Helper pour Genshin (v3-v4)"
           }
         },
         "it" : {
@@ -2837,7 +2837,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Certains Contributeurs de Ressources"
+            "value" : "Contributeurs de Ressources"
           }
         },
         "it" : {
@@ -2913,7 +2913,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Certains contributeurs à la localisation"
+            "value" : "Traducteurs"
           }
         },
         "it" : {
@@ -2990,7 +2990,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les langues principales de cette application sont l'anglais, le chinois traditionnel, le chinois simplifié et le japonais. Toutes les autres langues sont secondaires, car aucun membre de l'équipe de développement ne peut les comprendre ou les utiliser. Nous utilisons ChatGPT pour préparer une traduction préliminaire pour ces langues, et nous accueillons les volontaires qui souhaitent améliorer la traduction. Les choses seront beaucoup plus faciles si les participants disposent d'un Mac avec Xcode 16 (ou une version plus récente) installé."
+            "value" : "Les langues principales de cette application sont l'anglais, le chinois traditionnel, le chinois simplifié et le japonais. Toutes les autres langues sont secondaires, car aucun membre de l'équipe de développement ne peut les comprendre ou les utiliser. Nous utilisons ChatGPT pour faire une traduction préliminaire pour ces langues, et nous accueillons les volontaires qui souhaitent améliorer la traduction. Les choses seront beaucoup plus faciles si les participants disposent d'un Mac avec Xcode 16 (ou une version plus récente) installée."
           }
         },
         "it" : {
@@ -3066,7 +3066,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Certains contributeurs précédents à la localisation"
+            "value" : "Anciens traducteurs"
           }
         },
         "it" : {
@@ -3142,7 +3142,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Équipe principale de développeurs"
+            "value" : "Équipe principale"
           }
         },
         "it" : {
@@ -4064,7 +4064,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CLUF et Politique d'utilisateur"
+            "value" : "CLUF et Politique d'utilisation"
           }
         },
         "it" : {
@@ -4293,7 +4293,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Studio Pizza"
+            "value" : "Pizza Studio"
           }
         },
         "it" : {
@@ -4369,7 +4369,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Une équipe de développeurs FOSS"
+            "value" : "Une équipe FOSS"
           }
         },
         "it" : {
@@ -4521,7 +4521,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Le successeur de PizzaHelper4Genshin et de PizzaHelper4HSR. Alimenté par le moteur Pizza Engine de nouvelle génération. - La partie logicielle de ce programme est en open source sous la licence AGPLv3. - Le Pizza Helper et ses prédécesseurs ne sont pas affiliés à miHoYo Co., Ltd. ni à ses filiales. - Les contenus et matériaux des jeux suivants sont des marques déposées et des droits d'auteur de miHoYo Co., Ltd. : \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
+            "value" : "- Le successeur de PizzaHelper4Genshin et de PizzaHelper4HSR. Fonctionnant via notre nouveau moteur Pizza Engine. - La partie logicielle de ce programme est en open source sous la licence AGPLv3. - The Pizza Helper et ses prédécesseurs ne sont pas affiliés à miHoYo Co., Ltd. ni à ses filiales. - Les contenus et matériaux des jeux suivants sont des marques déposées et des droits d'auteur de miHoYo Co., Ltd. : \"Star Rail (HSR)\", \"Genshin Impact\", \"Zenless Zone Zero\"."
           }
         },
         "it" : {
@@ -4597,7 +4597,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Assistant Pizza pour Blue Archive"
+            "value" : "Pizza Pizza pour Blue Archive"
           }
         },
         "it" : {
@@ -4673,7 +4673,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un bon utilitaire pour chaque Sensei"
+            "value" : "Un utilitaire pour chaque Sensei"
           }
         },
         "it" : {
@@ -4749,7 +4749,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Assistant Pizza pour Genshin"
+            "value" : "Pizza Helper pour Genshin"
           }
         },
         "it" : {
@@ -4901,7 +4901,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Assistant Pizza pour HSR"
+            "value" : "Pizza Helper pour HSR"
           }
         },
         "it" : {
