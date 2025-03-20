@@ -1562,6 +1562,11 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
         <target state="translated">Art34222</target>
         <note>Localization Contributor (RU)</note>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.name.escartem" xml:space="preserve">
+        <source>Escartem</source>
+        <target state="translated">Escartem</target>
+        <note>Localization Contributor (FR)</note>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.name.hakubill" xml:space="preserve">
         <source>Haku Bill (水里的碳酸钙)</source>
         <target state="translated">Haku Bill (水里的碳酸钙)</target>
@@ -1642,7 +1647,10 @@ Illustrator ng App Icon, The Pizza Helper (v5)</target>
 - The program part of this software is open-sourced under AGPLv3 License.
 - The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.
 - The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”.</source>
-        <target state="translated">- Ang kahalili ng parehong PizzaHelper4Genshin at PizzaHelper4HSR. Pinapagana ng next-generation na United Pizza Engine. - Ang bahagi ng programa ng software na ito ay open-sourced sa ilalim ng AGPLv3 License. - Ang Pizza Helper at ang mga nauna nitong bersyon ay hindi kaanib sa miHoYo Co., Ltd. ni sa mga subsidiaries nito. - Ang mga nilalaman ng laro at mga materyales ng mga sumusunod na pamagat ay trademarks at copyrights ng miHoYo Co., Ltd.: "Star Rail (HSR)", "Genshin Impact", "Zenless Zone Zero".</target>
+        <target state="translated">- Ang kahalili ng parehong PizzaHelper4Genshin at PizzaHelper4HSR. Pinapagana ng next-generation na United Pizza Engine.
+- Ang bahagi ng programa ng software na ito ay open-sourced sa ilalim ng AGPLv3 License.
+- Ang Pizza Helper at ang mga nauna nitong bersyon ay hindi kaanib sa miHoYo Co., Ltd. ni sa mga subsidiaries nito.
+- Ang mga nilalaman ng laro at mga materyales ng mga sumusunod na pamagat ay trademarks at copyrights ng miHoYo Co., Ltd.: "Star Rail (HSR)", "Genshin Impact", "Zenless Zone Zero".</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper4BA" xml:space="preserve">

@@ -1500,7 +1500,11 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
 - Dev, Pizza Helper for Blue Archive
 - Dev, The Pizza Helper (v5)
 - Public Relations (Overseas)</source>
-        <target state="translated">- Desarrollador, Asistente de Pizza para HSR - Desarrollador, Asistente de Pizza para Genshin (v1-v4) - Desarrollador, Asistente de Pizza para Blue Archive - Desarrollador, El Asistente de Pizza (v5) - Relaciones Públicas (Internacional)</target>
+        <target state="translated">- Desarrollador, Asistente de Pizza para HSR
+- Desarrollador, Asistente de Pizza para Genshin (v1-v4)
+- Desarrollador, Asistente de Pizza para Blue Archive
+- Desarrollador, El Asistente de Pizza (v5)
+- Relaciones Públicas (Internacional)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsMainCrew.lava" xml:space="preserve">
@@ -1554,6 +1558,11 @@ Ilustrador de iconos de aplicaciones, The Pizza Helper (v5)</target>
         <source>Art34222</source>
         <target state="translated">Art34222</target>
         <note>Localization Contributor (RU)</note>
+      </trans-unit>
+      <trans-unit id="aboutKit.contributors.name.escartem" xml:space="preserve">
+        <source>Escartem</source>
+        <target state="translated">Escartem</target>
+        <note>Localization Contributor (FR)</note>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.name.hakubill" xml:space="preserve">
         <source>Haku Bill (水里的碳酸钙)</source>

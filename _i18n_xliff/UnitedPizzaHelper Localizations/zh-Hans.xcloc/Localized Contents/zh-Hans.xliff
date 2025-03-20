@@ -1572,6 +1572,11 @@ App 图标画师 (统一披萨小助手 v5)</target>
         <target state="translated">Art34222</target>
         <note>Localization Contributor (RU)</note>
       </trans-unit>
+      <trans-unit id="aboutKit.contributors.name.escartem" xml:space="preserve">
+        <source>Escartem</source>
+        <target state="translated">Escartem</target>
+        <note>Localization Contributor (FR)</note>
+      </trans-unit>
       <trans-unit id="aboutKit.contributors.name.hakubill" xml:space="preserve">
         <source>Haku Bill (水里的碳酸钙)</source>
         <target state="translated">水里的碳酸钙 (Haku Bill)</target>
