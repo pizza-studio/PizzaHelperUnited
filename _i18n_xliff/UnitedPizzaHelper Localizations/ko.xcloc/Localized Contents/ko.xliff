@@ -1501,7 +1501,11 @@ App Icon Illustrator, The Pizza Helper (v5)</source>
 - Dev, Pizza Helper for Blue Archive
 - Dev, The Pizza Helper (v5)
 - Public Relations (Overseas)</source>
-        <target state="translated">- 개발자, HSR 피자 도우미 - 개발자, 원신 피자 도우미 (v1-v4) - 개발자, 블루 아카이브 피자 도우미 - 개발자, 피자 도우미 (v5) - 해외 홍보 담당</target>
+        <target state="translated">- 개발자, HSR 피자 도우미
+- 개발자, 원신 피자 도우미 (v1-v4)
+- 개발자, 블루 아카이브 피자 도우미
+- 개발자, 피자 도우미 (v5)
+- 해외 홍보 담당</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsMainCrew.lava" xml:space="preserve">
@@ -1510,7 +1514,10 @@ App Icon Illustrator, The Pizza Helper (v5)</source>
 - Dev, Pizza Helper for HSR
 - Dev, Pizza Helper for Genshin (v1-v4)
 - Public Relations (Mainland China)</source>
-        <target state="translated">- 팀 리더 및 창립자 - 개발자, 피자 도우미(v5) - 개발자, HSR 피자 도우미 - 개발자, Genshin 피자 도우미(v1-v4) - 대외홍보(중국 본토)</target>
+        <target state="translated">- 팀 리더 및 창립자 - 개발자, 피자 도우미(v5)
+- 개발자, HSR 피자 도우미
+- 개발자, Genshin 피자 도우미(v1-v4)
+- 대외홍보(중국 본토)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsMainCrew.shikisuen" xml:space="preserve">
@@ -1551,6 +1558,11 @@ App Icon Illustrator, The Pizza Helper (v5)</source>
         <source>Art34222</source>
         <target state="translated">Art34222</target>
         <note>Localization Contributor (RU)</note>
+      </trans-unit>
+      <trans-unit id="aboutKit.contributors.name.escartem" xml:space="preserve">
+        <source>Escartem</source>
+        <target state="translated">Escartem</target>
+        <note>Localization Contributor (FR)</note>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.name.hakubill" xml:space="preserve">
         <source>Haku Bill (水里的碳酸钙)</source>

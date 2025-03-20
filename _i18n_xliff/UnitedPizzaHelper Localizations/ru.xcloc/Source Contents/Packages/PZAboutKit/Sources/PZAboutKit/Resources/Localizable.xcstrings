@@ -458,6 +458,18 @@
         }
       }
     },
+    "aboutKit.contributors.name.escartem" : {
+      "comment" : "Localization Contributor (FR)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escartem"
+          }
+        }
+      }
+    },
     "aboutKit.contributors.name.hakubill" : {
       "comment" : "Crew Member",
       "localizations" : {
