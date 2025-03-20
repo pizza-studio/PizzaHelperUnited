@@ -342,7 +342,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "7 mars & Destin Croisé"
+            "value" : "March 7th & Pierre de la fatalité"
           }
         },
         "it" : {
@@ -1028,7 +1028,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rotation automatique des styles de widget d'endurance"
+            "value" : "Rotation automatique des styles du widget"
           }
         },
         "it" : {
@@ -1256,7 +1256,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "masqué si tout est terminé"
+            "value" : "masquer si tout est terminé"
           }
         },
         "it" : {
@@ -2251,7 +2251,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Imago"
+            "value" : "Imaginaire"
           }
         },
         "it" : {
@@ -2328,7 +2328,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Physico"
+            "value" : "Physique"
           }
         },
         "it" : {
@@ -2482,7 +2482,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quanto"
+            "value" : "Quantique"
           }
         },
         "it" : {
@@ -2710,7 +2710,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Affichage Écho de la guerre"
+            "value" : "Affichage des Échos de la guerre"
           }
         },
         "it" : {
@@ -2786,7 +2786,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suivre le schéma de couleurs du système"
+            "value" : "Thème du système"
           }
         },
         "it" : {
@@ -3242,7 +3242,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Style d'affichage de l'endurance (Résine / Puissance Trailblazing / Énergie Zenless)"
+            "value" : "Style d'affichage de l'endurance (Résine / Puissance du Pionnier / Énergie Zenless)"
           }
         },
         "it" : {
@@ -3318,7 +3318,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Affichage Fleur de la conquête"
+            "value" : "Affichage des fleurs des lignes énergétiques"
           }
         },
         "it" : {
@@ -3698,7 +3698,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisir le profil local (seulement)"
+            "value" : "Choisir le profil local (uniquement)"
           }
         },
         "it" : {
@@ -4467,7 +4467,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Endurance du joueur"
+            "value" : "Résine du joueur"
           }
         },
         "it" : {
@@ -4544,7 +4544,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Statut d'endurance du joueur (y compris la Résine originale, la Puissance Trailblaze et l'énergie de la Batterie ZZZ; à ne pas confondre avec l'endurance dans le jeu Genshin Impact)"
+            "value" : "Statut de la résine du joueur (incluant la Résine originale, la Puissance du Pionnier et l'énergie de la Batterie ZZZ; à ne pas confondre avec l'endurance de Genshin)"
           }
         },
         "it" : {
@@ -4621,7 +4621,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Statut d'endurance alternatif du joueur (y compris la Résine originale, l'Énergie de Trailblaze et la Batterie ZZZ; à ne pas confondre avec l'endurance en jeu de Genshin Impact)"
+            "value" : "Statut de la résine alternative du joueur (incluant la Résine originale, la Puissance du Pionnier et l'énergie de la Batterie ZZZ; à ne pas confondre avec l'endurance de Genshin))"
           }
         },
         "it" : {
@@ -4697,7 +4697,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Endurance actuelle"
+            "value" : "Résine actuelle"
           }
         },
         "it" : {
@@ -4850,7 +4850,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Expédition et missions"
+            "value" : "Expédition et Affectations"
           }
         },
         "it" : {
@@ -5154,7 +5154,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Devise de royaume"
+            "value" : "Monnaie du royaume"
           }
         },
         "it" : {
@@ -5306,7 +5306,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "0 h 0 min\nL'énergie est pleine"
+            "value" : "0 h 0 min\nLa résine est pleine"
           }
         },
         "it" : {
@@ -5613,7 +5613,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afficher les événements récents ainsi que les matériaux d'armes ou de talents pouvant être obtenus aujourd'hui dans Genshin Impact."
+            "value" : "Afficher les événements récents ainsi que les matériaux d'armes ou de talents pouvant être obtenus aujourd'hui dans Genshin."
           }
         },
         "it" : {
@@ -5766,7 +5766,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "[GI] Matériaux & Événements Officiels d'Aujourd'hui"
+            "value" : "[GI] Matériaux & Événements Officiels du jour"
           }
         },
         "it" : {
@@ -5842,7 +5842,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jusqu'à %lld Endurance:"
+            "value" : "Jusqu'à %lld de résine:"
           }
         },
         "it" : {
@@ -5918,7 +5918,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jusqu'à endurance maximale :"
+            "value" : "Jusqu'à la résine maximale :"
           }
         },
         "it" : {
@@ -5995,7 +5995,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Présentant les événements en jeu bientôt terminés de tous les jeux ou du jeu spécifié."
+            "value" : "Présente tous les événements en jeu bientôt terminés de tous les jeux ou d'un jeu spécifié."
           }
         },
         "it" : {
@@ -6148,7 +6148,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Endurance du joueur"
+            "value" : "Résine du joueur"
           }
         },
         "it" : {
@@ -6224,7 +6224,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Complet"
+            "value" : "Plein"
           }
         },
         "it" : {
@@ -6300,7 +6300,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "compte à rebours jusqu'à l'endurance maximale"
+            "value" : "temps restant jusqu'à la recharge complète"
           }
         },
         "it" : {
@@ -6377,7 +6377,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Affiche l'endurance du joueur et le compte à rebours jusqu'à l'endurance maximale."
+            "value" : "Affiche la résine du joueur et le compte à rebours jusqu'à la recharge complète."
           }
         },
         "it" : {
@@ -6454,7 +6454,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Minuteur de l'Endurance du Joueur"
+            "value" : "Minuteur de la résine"
           }
         },
         "it" : {
@@ -6530,7 +6530,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "estimation du temps pour récupérer la pleine endurance"
+            "value" : "estimation du temps avant recharge complète"
           }
         },
         "it" : {
@@ -6607,7 +6607,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afficher l'endurance du joueur et le moment où elle est complètement rechargée"
+            "value" : "Afficher la résine du joueur et quand elle sera pleine"
           }
         },
         "it" : {
@@ -6684,7 +6684,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Temps Estimé pour Récupérer Toute l'Énergie"
+            "value" : "Temps Estimé avant recharge complète"
           }
         },
         "it" : {
@@ -6761,7 +6761,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vérifiez votre état de récupération d'endurance"
+            "value" : "Vérifier l'état de la récupération de la résine"
           }
         },
         "it" : {
@@ -7202,7 +7202,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Profil introuvable Veuillez ajouter un profil local ou essayer de redémarrer l'appareil"
+            "value" : "Profil introuvable, veuillez ajouter un profil local ou essayer de redémarrer l'appareil"
           }
         },
         "it" : {
@@ -7630,7 +7630,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Expédition"
+            "value" : "Expéditions"
           }
         },
         "it" : {
@@ -7782,7 +7782,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Endurance du joueur"
+            "value" : "Résine"
           }
         },
         "it" : {

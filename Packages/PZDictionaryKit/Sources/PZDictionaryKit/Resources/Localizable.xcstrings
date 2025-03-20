@@ -108,7 +108,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mots frappants"
+            "value" : "Mots clés"
           }
         },
         "it" : {
@@ -1417,7 +1417,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aucun résultat. Essayez-en un autre."
+            "value" : "Aucun résultat. Essayez autre chose."
           }
         },
         "it" : {
@@ -1494,7 +1494,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tapez quelques mots-clés pour commencer une requête"
+            "value" : "Commencez à taper des mots-clés pour commencer une recherche"
           }
         },
         "it" : {
@@ -1571,7 +1571,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dictionnaire de Pizza"
+            "value" : "Dictionnaire Pizza"
           }
         },
         "it" : {

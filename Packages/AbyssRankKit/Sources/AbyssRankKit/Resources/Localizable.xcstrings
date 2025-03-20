@@ -417,7 +417,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "FAQ des meilleurs classements de l'Abysse Spirale"
+            "value" : "FAQ des meilleurs classements des Profondeurs Spiralées"
           }
         },
         "it" : {
@@ -570,7 +570,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Taux de Possession de Joueurs 36 Étoiles"
+            "value" : "Pourcentage par personnage pour 36 étoiles"
           }
         },
         "it" : {
@@ -647,7 +647,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Taux de possession de tous les joueurs"
+            "value" : "Pourcentage par personnage"
           }
         },
         "it" : {
@@ -724,7 +724,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "· Joueurs à 36 étoiles uniquement · Pourcentage = Joueurs Utilisés / Joueurs Possédants"
+            "value" : "· Joueurs à 36 étoiles uniquement · Pourcentage = Joueurs totaux / Joueurs à 36 étoiles"
           }
         },
         "it" : {
@@ -801,7 +801,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "·Joueurs 36 étoiles uniquement·Les équipes avec des Voyageurs sont fusionnées"
+            "value" : "·Joueurs 36 étoiles uniquement · Les équipes avec le Voyageur sont groupées"
           }
         },
         "it" : {
@@ -1339,7 +1339,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Classements du Spiral Abyss"
+            "value" : "Classements des Profondeurs Spiralées"
           }
         },
         "it" : {
@@ -1416,7 +1416,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Taux d'utilisation des caractères"
+            "value" : "Taux d'utilisation des personnages"
           }
         },
         "it" : {
@@ -1493,7 +1493,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Taux d'utilisation des joueurs non relancés"
+            "value" : "Taux d'utilisation des joueurs n'ayant pas recommencé"
           }
         },
         "it" : {
@@ -1569,7 +1569,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les évaluations d'utilisation sont uniquement à titre de référence pour la formation de l'équipe Abyss et ne représentent aucune évaluation des personnages."
+            "value" : "Les taux d'utilisation sont uniquement à titre de indicatif pour la formation d'équipe et ne représentent pas la force des personnages."
           }
         },
         "it" : {
@@ -1646,7 +1646,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caractères fortement recommandés"
+            "value" : "Personnages fortement recommandés"
           }
         },
         "it" : {
@@ -1800,7 +1800,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caractères préférés"
+            "value" : "Personnages préférés"
           }
         },
         "it" : {
@@ -1877,7 +1877,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caractères facultatifs"
+            "value" : "Personnages facultatifs"
           }
         },
         "it" : {
@@ -1954,7 +1954,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caractères discrétionnaires"
+            "value" : "Personnages peu utilisés"
           }
         },
         "it" : {
@@ -2031,7 +2031,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caractères universellement disponibles"
+            "value" : "Personnages universellement utilisés"
           }
         },
         "it" : {
@@ -2186,7 +2186,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld données comptées %@\n%@ · Généré à %@"
+            "value" : "%lld données utilisées %@\n%@ · Généré à %@"
           }
         },
         "it" : {
