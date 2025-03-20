@@ -1502,7 +1502,10 @@ Illustrazione Icona App, The Pizza Helper (v5)</target>
 - Dev, Pizza Helper for Blue Archive
 - Dev, The Pizza Helper (v5)
 - Public Relations (Overseas)</source>
-        <target state="translated">- Dev, Helper Pizza per HSR - Dev, Helper Pizza per Genshin (v1-v4) - Dev, Helper Pizza per Blue Archive - Dev, Il Helper Pizza (v5) - Relazioni Pubbliche (Estero)</target>
+        <target state="translated">- Dev, Helper Pizza per HSR
+- Dev, Helper Pizza per Genshin (v1-v4)
+- Dev, Helper Pizza per Blue Archive
+- Dev, Il Helper Pizza (v5) - Relazioni Pubbliche (Estero)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributor.subtitleAsMainCrew.lava" xml:space="preserve">
@@ -1522,7 +1525,9 @@ Illustrazione Icona App, The Pizza Helper (v5)</target>
         <source>- Engine Architect &amp; Dev, The Pizza Helper (v5)
 - Maintainer, Pizza Helper for HSR
 - Maintainer, Pizza Helper for Genshin (v3-v4)</source>
-        <target state="translated">- Architetto e sviluppatore del motore, The Pizza Helper (v5) - Manutentore, Pizza Helper per HSR - Manutentore, Pizza Helper per Genshin (v3-v4)</target>
+        <target state="translated">- Architetto e sviluppatore del motore, The Pizza Helper (v5)
+- Manutentore, Pizza Helper per HSR
+- Manutentore, Pizza Helper per Genshin (v3-v4)</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.category.assets" xml:space="preserve">
@@ -1554,6 +1559,11 @@ Illustrazione Icona App, The Pizza Helper (v5)</target>
         <source>Art34222</source>
         <target state="translated">Art34222</target>
         <note>Localization Contributor (RU)</note>
+      </trans-unit>
+      <trans-unit id="aboutKit.contributors.name.escartem" xml:space="preserve">
+        <source>Escartem</source>
+        <target state="translated">Escartem</target>
+        <note>Localization Contributor (FR)</note>
       </trans-unit>
       <trans-unit id="aboutKit.contributors.name.hakubill" xml:space="preserve">
         <source>Haku Bill (水里的碳酸钙)</source>
@@ -1635,7 +1645,10 @@ Illustrazione Icona App, The Pizza Helper (v5)</target>
 - The program part of this software is open-sourced under AGPLv3 License.
 - The Pizza Helper and its predecessors are not affiliated with miHoYo Co., Ltd. nor its subsidiaries.
 - The game contents and materials of the following titles are trademarks and copyrights of miHoYo Co., Ltd.: “Star Rail (HSR)”, “Genshin Impact”, “Zenless Zone Zero”.</source>
-        <target state="translated">- Il successore di entrambi PizzaHelper4Genshin e PizzaHelper4HSR. Alimentato dal motore unificato di nuova generazione United Pizza Engine. - La parte del programma di questo software è open-source sotto licenza AGPLv3. - Pizza Helper e i suoi predecessori non sono affiliati con miHoYo Co., Ltd. né con le sue sussidiarie. - I contenuti e i materiali di gioco dei seguenti titoli sono marchi e diritti d'autore di miHoYo Co., Ltd.: "Star Rail (HSR)", "Genshin Impact", "Zenless Zone Zero".</target>
+        <target state="translated">- Il successore di entrambi PizzaHelper4Genshin e PizzaHelper4HSR. Alimentato dal motore unificato di nuova generazione United Pizza Engine.
+- La parte del programma di questo software è open-source sotto licenza AGPLv3.
+- Pizza Helper e i suoi predecessori non sono affiliati con miHoYo Co., Ltd. né con le sue sussidiarie.
+- I contenuti e i materiali di gioco dei seguenti titoli sono marchi e diritti d'autore di miHoYo Co., Ltd.: "Star Rail (HSR)", "Genshin Impact", "Zenless Zone Zero".</target>
         <note/>
       </trans-unit>
       <trans-unit id="aboutKit.ourApps.pzHelper4BA" xml:space="preserve">
