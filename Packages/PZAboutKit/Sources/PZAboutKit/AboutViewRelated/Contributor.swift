@@ -105,6 +105,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
             LinkType.facebook(url: "https://www.facebook.com/ngo.phi.phuongg")
         case .qiFrench: nil
         case .escartem:
+            LinkType.homePagePersonal(urlStr: "https://escartem.moe")
             LinkType.github(userID: "Escartem")
         case .taotao:
             LinkType.twitter(id: "taotao_hoyo")
