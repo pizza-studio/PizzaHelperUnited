@@ -185,7 +185,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cet étage est intentionnellement sauté."
+            "value" : "Étage sauté."
           }
         },
         "it" : {
@@ -3871,7 +3871,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Résumé des Primo-gemmes et Moras"
+            "value" : "Résumé des ressources"
           }
         },
         "it" : {
@@ -5323,7 +5323,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Coffres communs Ouverts"
+            "value" : "Coffres communs ouverts"
           }
         },
         "it" : {
