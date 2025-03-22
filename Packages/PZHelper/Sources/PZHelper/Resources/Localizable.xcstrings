@@ -2189,7 +2189,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exemple de requête"
+            "value" : "Recherche par UID"
           }
         },
         "it" : {
@@ -6035,7 +6035,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Profil local"
+            "value" : "Profil locaux"
           }
         },
         "it" : {
@@ -7882,7 +7882,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ceci est utile lorsque la fonction de synchronisation via iCloud présente des défauts."
+            "value" : "Ceci est utile lorsque la fonction de synchronisation via iCloud ne fonctionne pas."
           }
         },
         "it" : {
@@ -8036,7 +8036,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cela nécessite de redémarrer l'application pour prendre pleinement effet."
+            "value" : "Redémarrage de l'application requis."
           }
         },
         "it" : {
@@ -8343,7 +8343,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me prévenir lorsque"
+            "value" : "Me prévenir à"
           }
         },
         "it" : {
@@ -9559,7 +9559,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me prévénir quand"
+            "value" : "Me prévenir à"
           }
         },
         "it" : {
@@ -10243,7 +10243,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me prévenir à"
+            "value" : "Me prévenir le"
           }
         },
         "it" : {
@@ -10319,7 +10319,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me prévenir le"
+            "value" : "Me prévenir à"
           }
         },
         "it" : {
@@ -11155,7 +11155,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Préférences de notification"
+            "value" : "Préférences de notifications"
           }
         },
         "it" : {
@@ -12375,7 +12375,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Arrêter la soumission à HutaoDB jusqu'à ce que le nom d'utilisateur soit renseigné ici"
+            "value" : "Ne rien envoyer à HutaoDB si l'identifiant associé n'est pas défini"
           }
         },
         "it" : {
@@ -13368,7 +13368,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importer tous les UIDs de ces jeux depuis ce compte"
+            "value" : "Importer tous les UIDs trouvés"
           }
         },
         "it" : {
@@ -14286,7 +14286,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paramètres de la minuterie de résine"
+            "value" : "Paramètres minuterie"
           }
         },
         "it" : {
@@ -15131,7 +15131,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afficher les détails"
+            "value" : "Détails"
           }
         },
         "it" : {
@@ -15285,7 +15285,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paramètres de l'application"
+            "value" : "Paramètres"
           }
         },
         "it" : {
