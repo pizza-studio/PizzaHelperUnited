@@ -335,7 +335,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "À propos de l'application"
+            "value" : "À propos"
           }
         },
         "it" : {
@@ -4903,7 +4903,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obsolète et intégré dans The Pizza Helper."
+            "value" : "Obsolète, maintenant intégré dans cette application."
           }
         },
         "it" : {
@@ -5055,7 +5055,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obsolète et intégré dans The Pizza Helper"
+            "value" : "Obsolète, maintenant intégré dans cette application."
           }
         },
         "it" : {
