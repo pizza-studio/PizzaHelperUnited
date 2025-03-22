@@ -1334,7 +1334,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Imaginaire"
+            "value" : "Imago"
           }
         },
         "it" : {
@@ -1411,7 +1411,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Physique"
+            "value" : "Physico"
           }
         },
         "it" : {
@@ -1565,7 +1565,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quantique"
+            "value" : "Quanto"
           }
         },
         "it" : {

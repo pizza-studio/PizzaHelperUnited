@@ -259,12 +259,12 @@
       </trans-unit>
       <trans-unit id="game.elements.imago" xml:space="preserve">
         <source>Imago</source>
-        <target state="translated">Imaginaire</target>
+        <target state="translated">Imago</target>
         <note/>
       </trans-unit>
       <trans-unit id="game.elements.physico" xml:space="preserve">
         <source>Physico</source>
-        <target state="translated">Physique</target>
+        <target state="translated">Physico</target>
         <note/>
       </trans-unit>
       <trans-unit id="game.elements.pyro" xml:space="preserve">
@@ -274,7 +274,7 @@
       </trans-unit>
       <trans-unit id="game.elements.quanto" xml:space="preserve">
         <source>Quanto</source>
-        <target state="translated">Quantique</target>
+        <target state="translated">Quanto</target>
         <note/>
       </trans-unit>
       <trans-unit id="settings.display.artifactRating.considerHyperBloomElectroRoles" xml:space="preserve">
@@ -4512,12 +4512,12 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="game.elements.imago" xml:space="preserve">
         <source>Imago</source>
-        <target state="translated">Imaginaire</target>
+        <target state="translated">Imago</target>
         <note/>
       </trans-unit>
       <trans-unit id="game.elements.physico" xml:space="preserve">
         <source>Physico</source>
-        <target state="translated">Physique</target>
+        <target state="translated">Physico</target>
         <note/>
       </trans-unit>
       <trans-unit id="game.elements.pyro" xml:space="preserve">
@@ -4527,7 +4527,7 @@ Swipe left on the Stamina Timer on the lock screen to turn off the resin timer a
       </trans-unit>
       <trans-unit id="game.elements.quanto" xml:space="preserve">
         <source>Quanto</source>
-        <target state="translated">Quantique</target>
+        <target state="translated">Quanto</target>
         <note/>
       </trans-unit>
       <trans-unit id="intent.description.chooseTheGame" xml:space="preserve">
