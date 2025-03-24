@@ -162,6 +162,17 @@ public enum GIMaterialMetaQueried {
 
 public enum DimbreathMaterialRAW {
     public struct MaterialSourceDataExcelConfigDatum: Codable, Hashable, Sendable {
+        // MARK: Lifecycle
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.id = try container.decode(Int.self, forKey: .id)
+            self.dungeonGroup = (try container.decodeIfPresent([Int].self, forKey: .dungeonGroup)) ?? []
+            self.dungeonList = (try container.decodeIfPresent([Int].self, forKey: .dungeonList)) ?? []
+        }
+
+        // MARK: Public
+
         public var id: Int
         public var dungeonGroup: [Int]
         public var dungeonList: [Int]
@@ -169,18 +180,28 @@ public enum DimbreathMaterialRAW {
         public var isValid: Bool { !dungeonGroup.isEmpty && dungeonGroup.first == dungeonList.first }
 
         public var validSelf: Self? { isValid ? self : nil }
+
+        // MARK: Private
+
+        private enum CodingKeys: String, CodingKey {
+            case id = "ELKKIAIGOBK"
+            case dungeonGroup = "MBCPCJLIMJL"
+            case dungeonList = "AGBPJAOBDFM"
+        }
     }
 
     public typealias MaterialSourceDataExcelConfigData = [MaterialSourceDataExcelConfigDatum]
 
     public struct DailyDungeonConfigDatum: Codable, Hashable, Sendable {
         public enum CodingKeys: String, CodingKey {
-            case id, monday, tuesday, wednesday, thursday, friday, saturday, sunday
+            case id = "ELKKIAIGOBK"
+            case monday = "HHGKOBHFMOE"
+            case tuesday = "ICIDNKANAHP"
+            case wednesday = "JNLOPLAHKCL"
         }
 
         public var id: Int
-        public var monday, tuesday, wednesday, thursday: [Int]
-        public var friday, saturday, sunday: [Int]
+        public var monday, tuesday, wednesday: [Int]
     }
 
     public typealias DailyDungeonConfigData = [DailyDungeonConfigDatum]
