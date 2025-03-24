@@ -230,7 +230,12 @@
     "210232" : "Erlebnispass – Feuerentfachung",
     "210233" : "Yumemizuki Mizuki – Verschlinger der Albträume",
     "210234" : "Feierlichkeit – Glühende Hitze",
-    "210235" : "Erlebnispass – Träumerei"
+    "210235" : "Erlebnispass – Träumerei",
+    "210236" : "Varesa – Energiequelle",
+    "210237" : "Iansan – Unermüdlich",
+    "210238" : "Natlan – Drakonischer Blick",
+    "210239" : "Errungenschaft – Beschaulicher Frieden",
+    "210240" : "Erlebnispass – Blumenkampf"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -463,7 +468,12 @@
     "210232" : "Travel Notes: The Flame Renewed",
     "210233" : "Yumemizuki Mizuki: Nightmare Devourer",
     "210234" : "Celebration: Scorch",
-    "210235" : "Travel Notes: Wondrous Reverie"
+    "210235" : "Travel Notes: Wondrous Reverie",
+    "210236" : "Varesa: Powerhouse",
+    "210237" : "Iansan: Unyielding",
+    "210238" : "Natlan: Draconic Gaze",
+    "210239" : "Achievement: Tranquil Peace",
+    "210240" : "Travel Notes: Blooming Glory"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -696,7 +706,12 @@
     "210232" : "PB - Fuego renovado",
     "210233" : "Yumemizuki Mizuki - Devoradora de pesadillas",
     "210234" : "Celebración - Ardor",
-    "210235" : "PB - Ensueño"
+    "210235" : "PB - Ensueño",
+    "210236" : "Varesa - Fuente de fuerza",
+    "210237" : "Iansán - Persistencia",
+    "210238" : "Natlan - Pupilas de dragón",
+    "210239" : "Logro - Quietud",
+    "210240" : "PB - Gloria floral"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -929,7 +944,12 @@
     "210232" : "PB - Feu nouveau",
     "210233" : "Yumemizuki Mizuki - Mange-cauchemars",
     "210234" : "Célébration - Embrasement",
-    "210235" : "PB - Rêverie"
+    "210235" : "PB - Rêverie",
+    "210236" : "Varesa - Puissance",
+    "210237" : "Iansan - Motivation",
+    "210238" : "Natlan - Pupille saurienne",
+    "210239" : "Succès - Sérénité",
+    "210240" : "PB - Gloire florale"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1162,7 +1182,12 @@
     "210232" : "Catatan Perjalanan: Api yang Baru",
     "210233" : "Yumemizuki Mizuki: Nightmare Devourer",
     "210234" : "Perayaan: Panas Membara",
-    "210235" : "Catatan Perjalanan: Mimpi Ajaib"
+    "210235" : "Catatan Perjalanan: Mimpi Ajaib",
+    "210236" : "Varesa: Powerhouse",
+    "210237" : "Iansan: Unyielding",
+    "210238" : "Natlan: Tatapan Naga",
+    "210239" : "Achievement: Kedamaian yang Tenang",
+    "210240" : "Catatan Perjalanan: Kemuliaan Merekah"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1395,7 +1420,12 @@
     "210232" : "Appunti di viaggio: La Fiamma rinnovata",
     "210233" : "Yumemizuki Mizuki: Divoraincubi",
     "210234" : "Celebrazione: Bruciatura",
-    "210235" : "Appunti di viaggio: Sogno meraviglioso"
+    "210235" : "Appunti di viaggio: Sogno meraviglioso",
+    "210236" : "Varesa: Concentrato di forza",
+    "210237" : "Iansan: Incrollabile",
+    "210238" : "Natlan: Sguardo draconico",
+    "210239" : "Obiettivo: Pace tranquilla",
+    "210240" : "Appunti di viaggio: Fioritura gloriosa"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1628,7 +1658,12 @@
     "210232" : "紀行・新火",
     "210233" : "夢見月瑞希・悪夢喰",
     "210234" : "祭典・灼熱",
-    "210235" : "紀行・瑞夢"
+    "210235" : "紀行・瑞夢",
+    "210236" : "ヴァレサ・力の源",
+    "210237" : "イアンサ・根気",
+    "210238" : "ナタ・龍の瞳",
+    "210239" : "アチーブメント・静穏",
+    "210240" : "紀行・栄華"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -1861,7 +1896,12 @@
     "210232" : "기행·새 불씨",
     "210233" : "유메미즈키 미즈키·바쿠",
     "210234" : "축제·열정",
-    "210235" : "기행·좋은 꿈"
+    "210235" : "기행·좋은 꿈",
+    "210236" : "바레사·힘의 근원",
+    "210237" : "얀사·노력",
+    "210238" : "나타·용의 눈동자",
+    "210239" : "업적·평온",
+    "210240" : "기행·영광의 꽃"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2094,7 +2134,12 @@
     "210232" : "Passe de Batalha: Chama Renovada",
     "210233" : "Yumemizuki Mizuki: Devoradora de Pesadelos",
     "210234" : "Celebração - Fervor",
-    "210235" : "Passe de Batalha: Sonhos Coloridos"
+    "210235" : "Passe de Batalha: Sonhos Coloridos",
+    "210236" : "Varesa - Fonte de Energia",
+    "210237" : "Iansan - Incansavelmente",
+    "210238" : "Natlan - Olho do Dragão",
+    "210239" : "Conquista - Serenidade",
+    "210240" : "Passe de Batalha: Flor Gloriosa"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2327,7 +2372,12 @@
     "210232" : "Возрождённое пламя",
     "210233" : "Пожирательница кошмаров",
     "210234" : "Сожжение",
-    "210235" : "Волшебные сны"
+    "210235" : "Волшебные сны",
+    "210236" : "Источник силы",
+    "210237" : "Непреклонная",
+    "210238" : "Драконий взор",
+    "210239" : "Безмятежный покой",
+    "210240" : "Цветущая слава"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2560,7 +2610,12 @@
     "210232" : "บันทึก - เปลวไฟดวงใหม่",
     "210233" : "Yumemizuki Mizuki - เขมือบฝันร้าย",
     "210234" : "งานฉลอง - แผดเผา",
-    "210235" : "บันทึก - ห้วงนิทรา"
+    "210235" : "บันทึก - ห้วงนิทรา",
+    "210236" : "Varesa - แหล่งพลัง",
+    "210237" : "Iansan - ไม่ย่อท้อ",
+    "210238" : "Natlan - เนตรมังกร",
+    "210239" : "ความสำเร็จ - ความสงบ",
+    "210240" : "บันทึก - บุปผาเกียรติยศ"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -2793,7 +2848,12 @@
     "210232" : "Gezi Notları: Yenilenen Alev",
     "210233" : "Yumemizuki Mizuki: Kabus Yutan",
     "210234" : "Kutlama: Yangın",
-    "210235" : "Gezi Notları: Muhteşem Rüya"
+    "210235" : "Gezi Notları: Muhteşem Rüya",
+    "210236" : "Varesa: Gücün Vücut Bulmuş Hali",
+    "210237" : "Iansan: Sarsılmaz",
+    "210238" : "Natlan: Ejderha Bakışı",
+    "210239" : "Başarım: Sükunet Anı",
+    "210240" : "Gezi Notları: İhtişamın Doğuşu"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3026,7 +3086,12 @@
     "210232" : "Nhật Ký Hành Trình - Lửa Mới",
     "210233" : "Yumemizuki Mizuki - Ăn Giấc Mơ",
     "210234" : "Lễ Hội - Nóng Bỏng",
-    "210235" : "Nhật Ký Hành Trình - Kỳ Mộng"
+    "210235" : "Nhật Ký Hành Trình - Kỳ Mộng",
+    "210236" : "Varesa - Nguồn Gốc Sức Mạnh",
+    "210237" : "Iansan - Không Ngừng Nghỉ",
+    "210238" : "Natlan - Ánh Nhìn Của Rồng",
+    "210239" : "Thành Tựu - Bình Yên",
+    "210240" : "Nhật Ký Hành Trình - Vinh Hoa"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3259,7 +3324,12 @@
     "210232" : "纪行·新火",
     "210233" : "梦见月瑞希·噩喰",
     "210234" : "庆典·炙热",
-    "210235" : "纪行·绮梦"
+    "210235" : "纪行·绮梦",
+    "210236" : "瓦雷莎·力源",
+    "210237" : "伊安珊·不懈",
+    "210238" : "纳塔·眬瞳",
+    "210239" : "成就·寂宁",
+    "210240" : "纪行·荣花"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3492,6 +3562,11 @@
     "210232" : "紀行·新火",
     "210233" : "夢見月瑞希·噩喰",
     "210234" : "慶典·炙熱",
-    "210235" : "紀行·綺夢"
+    "210235" : "紀行·綺夢",
+    "210236" : "瓦雷莎·力源",
+    "210237" : "伊安珊·不懈",
+    "210238" : "納塔·矓瞳",
+    "210239" : "成就·寂寧",
+    "210240" : "紀行·榮花"
   }
 }
