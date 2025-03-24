@@ -307,6 +307,15 @@ struct AvatarCostumeExcelConfigData: Hashable, Codable, Identifiable {
 // MARK: - AvatarSkillExcelConfigData
 
 struct AvatarSkillExcelConfigData: Hashable, Codable, Identifiable {
+    // MARK: Lifecycle
+
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.nameTextMapHash = try container.decode(Int.self, forKey: .nameTextMapHash)
+        self.skillIcon = (try container.decodeIfPresent(String.self, forKey: .skillIcon)) ?? ""
+    }
+
     // MARK: Internal
 
     let id: Int
@@ -425,7 +434,6 @@ public enum DataType: String, CaseIterable, Sendable {
         guard let sourceURL = sourceURL else { return [:] }
         let (data, _) = try await URLSession.shared.data(from: sourceURL)
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromPascalCase
 
         do {
             switch self {
@@ -463,8 +471,10 @@ public enum DataType: String, CaseIterable, Sendable {
                 }
             }
         } catch {
-            print(String(data: data, encoding: .utf8)!)
+            print("-----------------------")
             print(sourceURL.absoluteString)
+            print(error)
+            print("-----------------------")
             throw error
         }
 
@@ -498,6 +508,8 @@ public enum DataType: String, CaseIterable, Sendable {
     }
 
     private func writeKeyValuePair(id: String, dict: inout [String: String], sourceFileName: String? = nil) {
+        var sourceFileName = sourceFileName
+        if sourceFileName?.isEmpty ?? true { sourceFileName = nil }
         let fileName = sourceFileName ?? "\(id)"
         switch self {
         case .profilePicture:
