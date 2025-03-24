@@ -238,6 +238,8 @@ extension String {
 // MARK: - AvatarExcelConfigData
 
 struct AvatarExcelConfigData: Hashable, Codable, Identifiable {
+    // MARK: Internal
+
     let id: Int
     let nameTextMapHash: Int
     let iconName: String
@@ -256,14 +258,25 @@ struct AvatarExcelConfigData: Hashable, Codable, Identifiable {
         guard !id.description.hasPrefix("100009") else { return false }
         return true
     }
+
+    // MARK: Private
+
+    private enum CodingKeys: String, CodingKey {
+        case id = "ELKKIAIGOBK"
+        case nameTextMapHash = "DNINKKHEILA"
+        case iconName = "OCNPJGGMLLO"
+        case skillDepotId = "HCBILEOPKHD"
+    }
 }
 
 // MARK: - AvatarCostumeExcelConfigData
 
 struct AvatarCostumeExcelConfigData: Hashable, Codable, Identifiable {
+    // MARK: Internal
+
     let skinId: Int
     let characterId: Int
-    let frontIconName: String
+    let frontIconName: String?
     let nameTextMapHash: Int
 
     var id: Int { skinId }
@@ -274,13 +287,28 @@ struct AvatarCostumeExcelConfigData: Hashable, Codable, Identifiable {
 
     var isValid: Bool {
         guard !forbiddenNameTextMapHashes.contains(nameTextMapHash) else { return false }
-        return !frontIconName.isEmpty
+        return frontIconName != nil
+    }
+
+    var frontIconNameGuarded: String {
+        frontIconName ?? ""
+    }
+
+    // MARK: Private
+
+    private enum CodingKeys: String, CodingKey {
+        case skinId = "MJGLEHPFADA"
+        case characterId = "FLPKGEALBBD"
+        case frontIconName = "KBOAHCIJBGA"
+        case nameTextMapHash = "DNINKKHEILA"
     }
 }
 
 // MARK: - AvatarSkillExcelConfigData
 
 struct AvatarSkillExcelConfigData: Hashable, Codable, Identifiable {
+    // MARK: Internal
+
     let id: Int
     let nameTextMapHash: Int
     let skillIcon: String
@@ -298,11 +326,21 @@ struct AvatarSkillExcelConfigData: Hashable, Codable, Identifiable {
         guard skillIcon.hasPrefix("Skill_S_") else { return false }
         return skillIcon.hasSuffix("_02") && id != 10033 // Jean is a special case.
     }
+
+    // MARK: Private
+
+    private enum CodingKeys: String, CodingKey {
+        case id = "ELKKIAIGOBK"
+        case nameTextMapHash = "DNINKKHEILA"
+        case skillIcon = "BGIHPNEDFOL"
+    }
 }
 
 // MARK: - ReliquaryExcelConfigData
 
 struct ReliquaryExcelConfigData: Hashable, Codable, Identifiable {
+    // MARK: Internal
+
     let id: Int
     let icon: String
     let nameTextMapHash: Int
@@ -314,11 +352,21 @@ struct ReliquaryExcelConfigData: Hashable, Codable, Identifiable {
     var isValid: Bool {
         !forbiddenNameTextMapHashes.contains(nameTextMapHash)
     }
+
+    // MARK: Private
+
+    private enum CodingKeys: String, CodingKey {
+        case id = "ELKKIAIGOBK"
+        case icon = "CNPCNIGHGJJ"
+        case nameTextMapHash = "DNINKKHEILA"
+    }
 }
 
 // MARK: - WeaponExcelConfigData
 
 struct WeaponExcelConfigData: Hashable, Codable, Identifiable {
+    // MARK: Internal
+
     let id: Int
     let awakenIcon: String
     let nameTextMapHash: Int
@@ -330,22 +378,39 @@ struct WeaponExcelConfigData: Hashable, Codable, Identifiable {
     var isValid: Bool {
         !forbiddenNameTextMapHashes.contains(nameTextMapHash)
     }
+
+    // MARK: Private
+
+    private enum CodingKeys: String, CodingKey {
+        case id = "DGMGGMHAGOA"
+        case awakenIcon = "KMOCENBGOEM"
+        case nameTextMapHash = "DNINKKHEILA"
+    }
 }
 
 // MARK: - ProfilePictureExcelConfigData
 
 struct ProfilePictureExcelConfigData: Hashable, Codable, Identifiable {
+    // MARK: Internal
+
     let id: Int
     let iconPath: String
 
     var newFileNameStem: String {
         id.description
     }
+
+    // MARK: Private
+
+    private enum CodingKeys: String, CodingKey {
+        case id = "ELKKIAIGOBK"
+        case iconPath = "FPPENJGNALC"
+    }
 }
 
 // MARK: - DataType
 
-public enum DataType: String, CaseIterable {
+public enum DataType: String, CaseIterable, Sendable {
     case profilePicture
     case character
     case characterCostumed
@@ -382,7 +447,9 @@ public enum DataType: String, CaseIterable {
             case .characterCostumed:
                 let buffer = try decoder.decode([AvatarCostumeExcelConfigData].self, from: data)
                 buffer.filter(\.isValid).forEach { obj in
-                    writeKeyValuePair(id: obj.newFileNameStem, dict: &dict, sourceFileName: obj.frontIconName)
+                    writeKeyValuePair(
+                        id: obj.newFileNameStem, dict: &dict, sourceFileName: obj.frontIconNameGuarded
+                    )
                 }
             case .weapon:
                 let buffer = try decoder.decode([WeaponExcelConfigData].self, from: data)
@@ -397,6 +464,7 @@ public enum DataType: String, CaseIterable {
             }
         } catch {
             print(String(data: data, encoding: .utf8)!)
+            print(sourceURL.absoluteString)
             throw error
         }
 
