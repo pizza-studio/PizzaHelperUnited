@@ -57,4 +57,6 @@ All Swift program files (excluding data structures used for decoding & encoding 
 This repository does not include the development history of its predecessors (i.e., PizzaHelper4Genshin v1~v4 & PizzaHelper4HSR). Here are the links for reference:
 
 * https://github.com/pizza-studio/GenshinPizzaHelper
-* https://github.com/pizza-studio/HSRPizzaHelpe
+* https://github.com/pizza-studio/HSRPizzaHelper
+
+$ EOF
