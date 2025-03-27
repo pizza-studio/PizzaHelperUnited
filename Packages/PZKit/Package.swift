@@ -128,10 +128,10 @@ func buildTargetDependencies(
 }
 
 func buildResources(
-    @ArrayBuilder<Resource?> dependencies: () -> [Resource?]
+    @ArrayBuilder<Resource?> resources: () -> [Resource?]
 )
     -> [Resource] {
-    dependencies().compactMap { $0 }
+    resources().compactMap { $0 }
 }
 
 func buildPackageDependencies(
