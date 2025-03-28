@@ -238,8 +238,6 @@ extension String {
 // MARK: - AvatarExcelConfigData
 
 struct AvatarExcelConfigData: Hashable, Codable, Identifiable {
-    // MARK: Internal
-
     let id: Int
     let nameTextMapHash: Int
     let iconName: String
@@ -258,25 +256,14 @@ struct AvatarExcelConfigData: Hashable, Codable, Identifiable {
         guard !id.description.hasPrefix("100009") else { return false }
         return true
     }
-
-    // MARK: Private
-
-    private enum CodingKeys: String, CodingKey {
-        case id = "ELKKIAIGOBK"
-        case nameTextMapHash = "DNINKKHEILA"
-        case iconName = "OCNPJGGMLLO"
-        case skillDepotId = "HCBILEOPKHD"
-    }
 }
 
 // MARK: - AvatarCostumeExcelConfigData
 
 struct AvatarCostumeExcelConfigData: Hashable, Codable, Identifiable {
-    // MARK: Internal
-
     let skinId: Int
     let characterId: Int
-    let frontIconName: String?
+    let frontIconName: String
     let nameTextMapHash: Int
 
     var id: Int { skinId }
@@ -287,37 +274,13 @@ struct AvatarCostumeExcelConfigData: Hashable, Codable, Identifiable {
 
     var isValid: Bool {
         guard !forbiddenNameTextMapHashes.contains(nameTextMapHash) else { return false }
-        return frontIconName != nil
-    }
-
-    var frontIconNameGuarded: String {
-        frontIconName ?? ""
-    }
-
-    // MARK: Private
-
-    private enum CodingKeys: String, CodingKey {
-        case skinId = "MJGLEHPFADA"
-        case characterId = "FLPKGEALBBD"
-        case frontIconName = "KBOAHCIJBGA"
-        case nameTextMapHash = "DNINKKHEILA"
+        return !frontIconName.isEmpty
     }
 }
 
 // MARK: - AvatarSkillExcelConfigData
 
 struct AvatarSkillExcelConfigData: Hashable, Codable, Identifiable {
-    // MARK: Lifecycle
-
-    init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.nameTextMapHash = try container.decode(Int.self, forKey: .nameTextMapHash)
-        self.skillIcon = (try container.decodeIfPresent(String.self, forKey: .skillIcon)) ?? ""
-    }
-
-    // MARK: Internal
-
     let id: Int
     let nameTextMapHash: Int
     let skillIcon: String
@@ -335,21 +298,11 @@ struct AvatarSkillExcelConfigData: Hashable, Codable, Identifiable {
         guard skillIcon.hasPrefix("Skill_S_") else { return false }
         return skillIcon.hasSuffix("_02") && id != 10033 // Jean is a special case.
     }
-
-    // MARK: Private
-
-    private enum CodingKeys: String, CodingKey {
-        case id = "ELKKIAIGOBK"
-        case nameTextMapHash = "DNINKKHEILA"
-        case skillIcon = "BGIHPNEDFOL"
-    }
 }
 
 // MARK: - ReliquaryExcelConfigData
 
 struct ReliquaryExcelConfigData: Hashable, Codable, Identifiable {
-    // MARK: Internal
-
     let id: Int
     let icon: String
     let nameTextMapHash: Int
@@ -361,21 +314,11 @@ struct ReliquaryExcelConfigData: Hashable, Codable, Identifiable {
     var isValid: Bool {
         !forbiddenNameTextMapHashes.contains(nameTextMapHash)
     }
-
-    // MARK: Private
-
-    private enum CodingKeys: String, CodingKey {
-        case id = "ELKKIAIGOBK"
-        case icon = "CNPCNIGHGJJ"
-        case nameTextMapHash = "DNINKKHEILA"
-    }
 }
 
 // MARK: - WeaponExcelConfigData
 
 struct WeaponExcelConfigData: Hashable, Codable, Identifiable {
-    // MARK: Internal
-
     let id: Int
     let awakenIcon: String
     let nameTextMapHash: Int
@@ -387,39 +330,22 @@ struct WeaponExcelConfigData: Hashable, Codable, Identifiable {
     var isValid: Bool {
         !forbiddenNameTextMapHashes.contains(nameTextMapHash)
     }
-
-    // MARK: Private
-
-    private enum CodingKeys: String, CodingKey {
-        case id = "DGMGGMHAGOA"
-        case awakenIcon = "KMOCENBGOEM"
-        case nameTextMapHash = "DNINKKHEILA"
-    }
 }
 
 // MARK: - ProfilePictureExcelConfigData
 
 struct ProfilePictureExcelConfigData: Hashable, Codable, Identifiable {
-    // MARK: Internal
-
     let id: Int
     let iconPath: String
 
     var newFileNameStem: String {
         id.description
     }
-
-    // MARK: Private
-
-    private enum CodingKeys: String, CodingKey {
-        case id = "ELKKIAIGOBK"
-        case iconPath = "FPPENJGNALC"
-    }
 }
 
 // MARK: - DataType
 
-public enum DataType: String, CaseIterable, Sendable {
+public enum DataType: String, CaseIterable {
     case profilePicture
     case character
     case characterCostumed
@@ -434,6 +360,7 @@ public enum DataType: String, CaseIterable, Sendable {
         guard let sourceURL = sourceURL else { return [:] }
         let (data, _) = try await URLSession.shared.data(from: sourceURL)
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromPascalCase
 
         do {
             switch self {
@@ -455,9 +382,7 @@ public enum DataType: String, CaseIterable, Sendable {
             case .characterCostumed:
                 let buffer = try decoder.decode([AvatarCostumeExcelConfigData].self, from: data)
                 buffer.filter(\.isValid).forEach { obj in
-                    writeKeyValuePair(
-                        id: obj.newFileNameStem, dict: &dict, sourceFileName: obj.frontIconNameGuarded
-                    )
+                    writeKeyValuePair(id: obj.newFileNameStem, dict: &dict, sourceFileName: obj.frontIconName)
                 }
             case .weapon:
                 let buffer = try decoder.decode([WeaponExcelConfigData].self, from: data)
@@ -471,10 +396,7 @@ public enum DataType: String, CaseIterable, Sendable {
                 }
             }
         } catch {
-            print("-----------------------")
-            print(sourceURL.absoluteString)
-            print(error)
-            print("-----------------------")
+            print(String(data: data, encoding: .utf8)!)
             throw error
         }
 
@@ -508,8 +430,6 @@ public enum DataType: String, CaseIterable, Sendable {
     }
 
     private func writeKeyValuePair(id: String, dict: inout [String: String], sourceFileName: String? = nil) {
-        var sourceFileName = sourceFileName
-        if sourceFileName?.isEmpty ?? true { sourceFileName = nil }
         let fileName = sourceFileName ?? "\(id)"
         switch self {
         case .profilePicture:

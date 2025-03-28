@@ -240,10 +240,10 @@ struct MaterialExcelConfigData: Decodable {
     init(from decoder: any Decoder) throws {
         let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
-        self.icon = try container.decodeIfPresent(String.self, forKey: .icon)
-        self.picPath = try container.decodeIfPresent([String].self, forKey: .picPath)
+        self.icon = try container.decode(String.self, forKey: .icon)
+        self.picPath = try container.decode([String].self, forKey: .picPath)
         self.materialType = try container.decodeIfPresent(String.self, forKey: .materialType)
-        self.nameTextMapHash = try container.decode(UInt.self, forKey: .nameTextMapHash)
+        self.nameTextMapHash = try container.decode(Int.self, forKey: .nameTextMapHash)
         self.rankLevel = (try container.decodeIfPresent(Int.self, forKey: .rankLevel)) ?? 4
     }
 
@@ -254,25 +254,18 @@ struct MaterialExcelConfigData: Decodable {
     """
 
     let id: Int
-    let icon: String?
-    let picPath: [String]?
+    let icon: String
+    let picPath: [String]
     let materialType: String?
-    let nameTextMapHash: UInt
+    let nameTextMapHash: Int
     let rankLevel: Int // All NameCards are ranked at level 4.
 
     var isValid: Bool {
         materialType == "MATERIAL_NAMECARD"
     }
 
-    var guardedIconName: String? {
-        let picPathFirst = picPath?.first { $0.hasSuffix("_P") }
-        if let picPathFirst {
-            return picPathFirst
-        }
-        if let icon {
-            return "\(icon)_P"
-        }
-        return nil
+    var guardedIconName: String {
+        picPath.first { $0.hasSuffix("_P") } ?? "\(icon)_P"
     }
 
     static func getRemoteMap() async throws -> [MaterialExcelConfigData] {
@@ -287,33 +280,30 @@ struct MaterialExcelConfigData: Decodable {
 
     // MARK: Private
 
-    private enum CodingKeys: String, CodingKey {
-        case id = "ELKKIAIGOBK"
-        case icon = "CNPCNIGHGJJ"
-        case picPath = "PPCKMKGIIMP"
-        case materialType = "HBBILKOGMIP"
-        case nameTextMapHash = "DNINKKHEILA"
-        case rankLevel = "IMNCLIODOBL"
+    private enum CodingKeys: CodingKey {
+        case id
+        case icon
+        case picPath
+        case materialType
+        case nameTextMapHash
+        case rankLevel
     }
 }
 
 var allNameTextMapHashesNeeded = Set<String>()
 var mapHashToID = [String: String]()
 
-let assetObjects: [WallpaperAsset] = try await MaterialExcelConfigData.getRemoteMap().compactMap { rawValue in
+let assetObjects: [WallpaperAsset] = try await MaterialExcelConfigData.getRemoteMap().map { rawValue in
     let nameHash = rawValue.nameTextMapHash.description
     let id = rawValue.id.description
     mapHashToID[nameHash] = id
     allNameTextMapHashesNeeded.insert(nameHash)
-    if let guardedIconName = rawValue.guardedIconName {
-        return WallpaperAsset(
-            id: id,
-            nameTextMapHash: nameHash,
-            assetName: guardedIconName,
-            assetName4LiveActivity: guardedIconName
-        )
-    }
-    return nil
+    return WallpaperAsset(
+        id: id,
+        nameTextMapHash: nameHash,
+        assetName: rawValue.guardedIconName,
+        assetName4LiveActivity: rawValue.guardedIconName
+    )
 }
 
 // MARK: - HakushinChar
