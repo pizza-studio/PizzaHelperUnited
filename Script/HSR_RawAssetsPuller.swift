@@ -215,7 +215,7 @@ public enum DataType: String, CaseIterable {
                     guard obj.id.count >= 4, obj.id != "8000" else { return }
                     guard !obj.icon.isEmpty else { return }
                     let sourceFileName = obj.icon.extractFileNameStem()
-                    writeKeyValuePair(id: sourceFileName, dict: &dict, sourceFileName: sourceFileName)
+                    writeKeyValuePair(id: "\(obj.id)", dict: &dict, sourceFileName: sourceFileName)
                 }
             case .skillTree:
                 let buffer = try JSONDecoder().decode([SRDSkillTree].self, from: data)
