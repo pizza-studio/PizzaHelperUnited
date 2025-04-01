@@ -162,6 +162,17 @@ public enum GIMaterialMetaQueried {
 
 public enum DimbreathMaterialRAW {
     public struct MaterialSourceDataExcelConfigDatum: Codable, Hashable, Sendable {
+        // MARK: Lifecycle
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.id = try container.decode(Int.self, forKey: .id)
+            self.dungeonGroup = (try container.decodeIfPresent([Int].self, forKey: .dungeonGroup)) ?? []
+            self.dungeonList = (try container.decodeIfPresent([Int].self, forKey: .dungeonList)) ?? []
+        }
+
+        // MARK: Public
+
         public var id: Int
         public var dungeonGroup: [Int]
         public var dungeonList: [Int]
@@ -169,18 +180,62 @@ public enum DimbreathMaterialRAW {
         public var isValid: Bool { !dungeonGroup.isEmpty && dungeonGroup.first == dungeonList.first }
 
         public var validSelf: Self? { isValid ? self : nil }
+
+        // MARK: Private
+
+        private enum CodingKeys: String, CodingKey {
+            case id
+            case dungeonGroup
+            case dungeonList
+        }
     }
 
     public typealias MaterialSourceDataExcelConfigData = [MaterialSourceDataExcelConfigDatum]
 
     public struct DailyDungeonConfigDatum: Codable, Hashable, Sendable {
+        // MARK: Lifecycle
+
+        public init(from decoder: any Decoder) throws {
+            do {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.id = try container.decode(Int.self, forKey: .id)
+                self.monday = try container.decode([Int].self, forKey: .monday)
+                self.tuesday = try container.decode([Int].self, forKey: .tuesday)
+                self.wednesday = try container.decode([Int].self, forKey: .wednesday)
+                self.thursday = monday
+                self.friday = tuesday
+                self.saturday = wednesday
+            } catch {
+                let container = try decoder.container(keyedBy: CodingKeysAlt.self)
+                self.id = try container.decode(Int.self, forKey: .id)
+                self.monday = try container.decode([Int].self, forKey: .monday)
+                self.tuesday = try container.decode([Int].self, forKey: .tuesday)
+                self.wednesday = try container.decode([Int].self, forKey: .wednesday)
+                self.thursday = monday
+                self.friday = tuesday
+                self.saturday = wednesday
+            }
+        }
+
+        // MARK: Public
+
         public enum CodingKeys: String, CodingKey {
-            case id, monday, tuesday, wednesday, thursday, friday, saturday, sunday
+            case id
+            case monday
+            case tuesday
+            case wednesday
+        }
+
+        public enum CodingKeysAlt: String, CodingKey {
+            case id
+            case monday = "HHGKOBHFMOE"
+            case tuesday = "ICIDNKANAHP"
+            case wednesday = "JNLOPLAHKCL"
         }
 
         public var id: Int
-        public var monday, tuesday, wednesday, thursday: [Int]
-        public var friday, saturday, sunday: [Int]
+        public var monday, tuesday, wednesday: [Int]
+        public var thursday, friday, saturday: [Int]
     }
 
     public typealias DailyDungeonConfigData = [DailyDungeonConfigDatum]
@@ -205,33 +260,48 @@ extension DimbreathMaterialRAW {
         let obj4Materials = try JSONDecoder().decode(MaterialSourceDataExcelConfigData.self, from: data4Materials)
             .compactMap(\.validSelf)
         let obj4Dungeons = try JSONDecoder().decode(DailyDungeonConfigData.self, from: data4Dungeons)
+        assert(!obj4Dungeons.isEmpty)
         // ---------------------
         var itemIDtoDungeonID = [Int: Int]()
         obj4Materials.forEach { material in
             guard let dungeonGroupID = material.dungeonGroup.last else { return }
             itemIDtoDungeonID[material.id] = dungeonGroupID
         }
+        assert(!itemIDtoDungeonID.isEmpty)
         // ---------------------
         var dungeonWeekdayMap = [Int: Int]() // 0 = MR, 1 = TF, 2 = WS.
         let allValidDungeons = itemIDtoDungeonID.values
+        assert(!allValidDungeons.isEmpty)
+        print("AllValidDungeons: \(allValidDungeons)")
+        print("Obj4Dungeons: \(obj4Dungeons)")
         obj4Dungeons.forEach { dungeon in
             dungeon.monday.forEach {
+                print("Cheking \($0)...")
                 guard allValidDungeons.contains($0) else { return }
                 dungeonWeekdayMap[$0] = 0
+                print("\($0) is set on MR")
             }
             dungeon.tuesday.forEach {
+                print("Cheking \($0)...")
                 guard allValidDungeons.contains($0) else { return }
                 dungeonWeekdayMap[$0] = 1
+                print("\($0) is set on TF")
             }
             dungeon.wednesday.forEach {
+                print("Cheking \($0)...")
                 guard allValidDungeons.contains($0) else { return }
                 dungeonWeekdayMap[$0] = 2
+                print("\($0) is set on WS")
             }
         }
+        assert(!dungeonWeekdayMap.isEmpty)
         // ---------------------
         var itemWeekdayMap = [Int: Int]()
         itemIDtoDungeonID.forEach { itemID, dungeonID in
-            guard let weekday = dungeonWeekdayMap[dungeonID] else { return }
+            guard let weekday = dungeonWeekdayMap[dungeonID] else {
+                print("dungeonID \(dungeonID) has no data in dungeonWeekdayMap.")
+                return
+            }
             itemWeekdayMap[itemID] = weekday
         }
         return itemWeekdayMap
@@ -296,7 +366,11 @@ extension GIMaterialDBGenerator {
         }
 
         let materialWeekdayDB = try await DimbreathMaterialRAW.assembleMaterialWeekdayDB()
-        assert(materialNameTags.count == materialWeekdayDB.count, "!!! ERROR: materialNameTags needs update!!!!")
+        guard materialNameTags.count == materialWeekdayDB.count else {
+            print(materialWeekdayDB)
+            print("!!! ERROR: materialNameTags needs update!!!!")
+            exit(1)
+        }
 
         var allObjs = [GITodayMaterialEncoded]()
         var enumID = 0
