@@ -2430,73 +2430,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App-Symbol-Illustrator, Pizza Helper for Genshin (v4)\nApp-Symbol Illustrator, The Pizza Helper (v5)"
+            "value" : "App-Symbol-Illustrator, Pizza Helper for Genshin (v4)\nApp-Symbol Illustrator, The Pizza Helper (v5.0)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Icon Illustrator, Pizza Helper for Genshin (v4)\nApp Icon Illustrator, The Pizza Helper (v5)"
+            "value" : "App Icon Illustrator, Pizza Helper for Genshin (v4)\nApp Icon Illustrator, The Pizza Helper (v5.0)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ilustrador de Iconos de Aplicación, Pizza Helper for Genshin (v4)\nIlustrador de iconos de aplicaciones, The Pizza Helper (v5)"
+            "value" : "Ilustrador de Iconos de Aplicación, Pizza Helper for Genshin (v4)\nIlustrador de iconos de aplicaciones, The Pizza Helper (v5.0)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrador ng Icon ng App, Pizza Helper for Genshin (v4)\nIllustrator ng App Icon, The Pizza Helper (v5)"
+            "value" : "Illustrador ng Icon ng App, Pizza Helper for Genshin (v4)\nIllustrator ng App Icon, The Pizza Helper (v5.0)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrateur d'icônes de l'application, Pizza Helper pour Genshin (v4)\nIllustrateur d'icônes de l'application, The Pizza Helper (v5)"
+            "value" : "Illustrateur d'icônes de l'application, Pizza Helper pour Genshin (v4)\nIllustrateur d'icônes de l'application, The Pizza Helper (v5.0)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustratore di icone per app, Pizza Helper for Genshin (v4)\nIllustrazione Icona App, The Pizza Helper (v5)"
+            "value" : "Illustratore di icone per app, Pizza Helper for Genshin (v4)\nIllustrazione Icona App, The Pizza Helper (v5.0)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アプリアイコン絵師（原神ピザ助手 v4）\nアプリアイコン絵師（ピザ助手 (無印) v5）"
+            "value" : "アプリアイコン絵師（原神ピザ助手 v4）\nアプリアイコン絵師（ピザ助手 (無印) v5.0）"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 아이콘 일러스트레이터, 원신의 피자 도우미 (v4)\n앱 아이콘 일러스트레이터, 피자 도우미 (v5)"
+            "value" : "앱 아이콘 일러스트레이터, 원신의 피자 도우미 (v4)\n앱 아이콘 일러스트레이터, 피자 도우미 (v5.0)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Иллюстратор иконок приложения, Pizza Helper for Genshin (v4)\nИллюстратор значков приложения, The Pizza Helper (v5)"
+            "value" : "Иллюстратор иконок приложения, Pizza Helper for Genshin (v4)\nИллюстратор значков приложения, The Pizza Helper (v5.0)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Người thiết kế biểu tượng ứng dụng, Pizza Helper for Genshin (v4)\nTrình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5)"
+            "value" : "Người thiết kế biểu tượng ứng dụng, Pizza Helper for Genshin (v4)\nTrình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5.0)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 图标画师 (原神披萨小助手 v4)\nApp 图标画师 (统一披萨小助手 v5)"
+            "value" : "App 图标画师 (原神披萨小助手 v4)\nApp 图标画师 (统一披萨小助手 v5.0)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 圖示繪師 (原神披薩小助手 v4)\nApp 圖示繪師 (統一披薩小助手 v5)"
+            "value" : "App 圖示繪師 (原神披薩小助手 v4)\nApp 圖示繪師 (統一披薩小助手 v5.0)"
           }
         }
       }
