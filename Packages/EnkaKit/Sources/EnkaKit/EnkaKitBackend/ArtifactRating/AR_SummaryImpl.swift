@@ -85,7 +85,7 @@ extension Enka.AvatarSummarized {
             // 副词条
             thisSummarizedArtifact.subProps.forEach { thisPropPair in
                 guard let typeAppraisable = thisPropPair.type.appraisableArtifactParam else { return }
-                let valueForRating = Double(thisPropPair.count) + (Double(thisPropPair.step ?? 0) * 0.1)
+                let valueForRating = Double(thisPropPair.count) // + (Double(thisPropPair.step ?? 0) * 0.1)
                 switch typeAppraisable {
                 case .hpDelta: result.subPanel.hpDelta = valueForRating
                 case .atkDelta: result.subPanel.attackDelta = valueForRating
