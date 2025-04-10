@@ -152,22 +152,28 @@ extension Enka.AvatarSummarized.ArtifactInfo {
             ?? Enka.ArtifactType(rawValue: theCommonInfo.type) else { return nil }
         self.type = matchedType
 
-        let props: [Enka.PVPair] = flat.props.compactMap { currentRecord in
-            let theType = Enka.PropertyType(rawValue: currentRecord.type)
-            if theType != .unknownType {
-                return Enka.PVPair(
-                    theDB: hsrDB,
-                    type: theType,
-                    value: currentRecord.value,
-                    count: currentRecord.count,
-                    step: Int((Double(fetched.level ?? 0) / 3).rounded(.down)) // currentRecord.step
-                )
-            }
-            return nil
+        guard let firstRawProp = flat.props.first else { return nil }
+
+        let theMainProp = Enka.PVPair(
+            theDB: hsrDB,
+            type: Enka.PropertyType(rawValue: firstRawProp.type),
+            value: firstRawProp.value,
+            count: firstRawProp.count,
+            step: nil // Not necessary for Main Prop. Use artifact promote level instead.
+        )
+
+        let theSubProps: [Enka.PVPair] = flat.props.dropFirst().compactMap { currentRecord in
+            let result = Enka.PVPair(
+                theDB: hsrDB,
+                type: Enka.PropertyType(rawValue: currentRecord.type),
+                value: currentRecord.value,
+                count: currentRecord.count,
+                step: Int((Double(fetched.level ?? 0) / 3).rounded(.down))
+            )
+            return result
         }
-        guard let theMainProp = props.first else { return nil }
         self.mainProp = theMainProp
-        self.subProps = Array(props.dropFirst())
+        self.subProps = theSubProps
         self.setID = flat.setID
         // 回頭恐需要單獨給聖遺物套裝名稱設定 Datamine。
         self.setNameLocalized = "Set.\(setID)"
@@ -318,7 +324,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
             type: .init(hoyoPropID4HSR: hylArtifactRAW.mainProperty.propertyType),
             valueStr: hylArtifactRAW.mainProperty.value,
             count: hylArtifactRAW.mainProperty.times,
-            step: nil
+            step: nil // Not necessary for Main Prop. Use artifact promote level instead.
         )
         guard let mainProp else { return nil }
         let setID = Self.dropDigits4HSR(from: hylArtifactRAW.id)
@@ -334,13 +340,14 @@ extension Enka.AvatarSummarized.ArtifactInfo {
         self.game = .starRail
         self.mainProp = mainProp
         self.subProps = hylArtifactRAW.properties.compactMap { rawProp in
-            Enka.PVPair(
+            let result = Enka.PVPair(
                 theDB: hsrDB,
                 type: .init(hoyoPropID4HSR: rawProp.propertyType),
                 valueStr: rawProp.value,
                 count: rawProp.times,
                 step: Int((Double(hylArtifactRAW.level) / 3).rounded(.down))
             )
+            return result
         }
     }
 
