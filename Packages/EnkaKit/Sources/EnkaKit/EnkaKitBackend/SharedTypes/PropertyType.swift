@@ -383,10 +383,10 @@ extension Enka {
             if type.isPercentage {
                 copiedValue *= 100
                 return prefix + copiedValue.roundToPlaces(
-                    places: 1, round: .up
+                    places: 1, round: .down
                 ).description + "%"
             }
-            return prefix + Int(copiedValue.rounded(.up)).description
+            return prefix + Int(copiedValue.rounded(.down)).description
         }
 
         public var iconAssetName: String {
