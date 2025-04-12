@@ -165,7 +165,8 @@ extension ArtifactRating.RatingRequest.Artifact {
         for request: ArtifactRating.RatingRequest,
         rules: ArtifactRating.Rules
     )
-        -> Bool {
+        -> ArtifactRating.Rules {
+        var returnedValue = ArtifactRating.Rules()
         checkHyperBloomElectro: if rules.contains(.considerHyperbloomElectroRoles) {
             let hyperbloomSets4: Set<Int> = [15028, 15026, 15025, 10007]
             var sumDict: [Int: Int] = [:]
@@ -187,9 +188,9 @@ extension ArtifactRating.RatingRequest.Artifact {
                 default: break // ratingModel[key]?.beStepsLower(1)
                 }
             }
-            return true
+            returnedValue.insert(.considerHyperbloomElectroRoles)
         }
-        return false
+        return returnedValue
     }
 
     @MainActor
@@ -198,8 +199,12 @@ extension ArtifactRating.RatingRequest.Artifact {
         rules: ArtifactRating.Rules
     )
         -> Double {
-        var ratingModel = ArtifactRating.CharacterStatScoreModel.getScoreModel(charID: request.charID)
-        let hyperBloomDealt = mutatingModelForSpecialRules(&ratingModel, for: request, rules: rules)
+        var rulesAppliedToModel: ArtifactRating.Rules = []
+        var ratingModel = ArtifactRating.CharacterStatScoreModel.getScoreModel(
+            charID: request.charID
+        ) { theModel in
+            rulesAppliedToModel = mutatingModelForSpecialRules(&theModel, for: request, rules: rules)
+        }
         let charMax = ArtifactRating.CharacterStatScoreModel.getMax(charID: request.charID)
         // 此处的圣遗物评分是按照每个词条获得增幅的次数来计算的，
         // 所以不需要针对不同的词条制定不同的 default roll。
@@ -208,9 +213,12 @@ extension ArtifactRating.RatingRequest.Artifact {
             // 但唯一例外是元素精通。
             var defaultRoll = 1.0
             // 针对雷系超绽放圣遗物套装持有者，对元素精通启用特殊的 defaultRoll。
-            if rules.contains(.considerHyperbloomElectroRoles), hyperBloomDealt,
-               param == .elementalMastery, request.characterElement == .electro {
-                defaultRoll = 0.7
+            gameCheck: switch request.game {
+            case .genshinImpact where rulesAppliedToModel.contains(.considerHyperbloomElectroRoles):
+                if param == .elementalMastery, request.characterElement == .electro {
+                    defaultRoll = 0.7
+                }
+            default: break gameCheck
             }
             return (base / defaultRoll) * (ratingModel[param] ?? .none).rawValue
         }
@@ -234,11 +242,13 @@ extension ArtifactRating.RatingRequest.Artifact {
         // 主词条处理。
         checkMainProps: do {
             guard let mainPropParam = mainProp else { break checkMainProps }
+            // 按部位更新评分模型。
             ratingModel = ArtifactRating.CharacterStatScoreModel.getScoreModel(
                 charID: request.charID,
                 artifactType: type
-            )
-            mutatingModelForSpecialRules(&ratingModel, for: request, rules: rules)
+            ) { theModel in
+                mutatingModelForSpecialRules(&theModel, for: request, rules: rules)
+            }
             typeAdd: switch type {
             case .giFlower, .hsrHead: ratingModel[.hpDelta] = .highest
             case .giPlume, .hsrHand: ratingModel[.atkDelta] = .highest
