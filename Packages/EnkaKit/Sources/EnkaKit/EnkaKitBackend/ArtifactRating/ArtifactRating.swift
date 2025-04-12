@@ -293,7 +293,15 @@ extension ArtifactRating.RatingRequest.Artifact {
             }
         }
 
-        return (stackedScore.reduce(0, +) / charMax) * 3 * effectiveRatio
+        var finalResult = (stackedScore.reduce(0, +) / charMax) * 3 * effectiveRatio
+
+        /// 星穹铁道的分数畸高，得乘以 0.4。
+        switch request.game {
+        case .starRail: finalResult *= 0.4
+        default: break
+        }
+
+        return finalResult
     }
 }
 
