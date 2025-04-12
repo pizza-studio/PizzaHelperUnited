@@ -14,12 +14,12 @@ extension Defaults.Keys {
     public static let oldAccountMOAlreadyAutoInherited = Key<Bool>(
         "oldAccountMOAlreadyAutoInherited",
         default: !Pizza.isAppStoreRelease,
-        suite: .baseSuite
+        suite: Defaults[.situatePZProfileDBIntoGroupContainer] ? .standard : .baseSuite
     )
     public static let lastTimeResetLocalProfileDB = Key<Date?>(
         "lastTimeResetLocalProfileDB",
         default: nil,
-        suite: .baseSuite
+        suite: Defaults[.situatePZProfileDBIntoGroupContainer] ? .standard : .baseSuite
     )
     public static let situatePZProfileDBIntoGroupContainer = Key<Bool>(
         "situatePZProfileDBIntoGroupContainer",
@@ -34,12 +34,12 @@ extension Defaults.Keys {
     public static let pzProfiles = Key<[String: PZProfileSendable]>(
         "pzProfiles",
         default: [:],
-        suite: .profileSuite // !! IMPORTANT !!
+        suite: Defaults[.situatePZProfileDBIntoGroupContainer] ? .standard : .profileSuite
     )
     public static let cachedDailyNotes = Key<[String: CachedJSON]>(
         "cachedDailyNotes",
         default: [:],
-        suite: .profileSuite // !! IMPORTANT !!
+        suite: Defaults[.situatePZProfileDBIntoGroupContainer] ? .standard : .profileSuite
     )
 }
 
