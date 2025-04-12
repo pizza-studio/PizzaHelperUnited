@@ -104,7 +104,8 @@ extension ArtifactRating.CharacterStatScoreModel {
     @MainActor
     static func getScoreModel(
         charID: String,
-        artifactType: Enka.ArtifactType? = nil
+        artifactType: Enka.ArtifactType? = nil,
+        mutationHandler: ((inout Self) -> Void)? = nil
     )
         -> Self {
         var result = Self()
@@ -121,6 +122,7 @@ extension ArtifactRating.CharacterStatScoreModel {
                 result[paramType] = .init(march7thWeight: value)
             }
         }
+        mutationHandler?(&result)
         return result
     }
 
