@@ -136,22 +136,25 @@ extension PZProfileActor {
     }
 
     @MainActor
-    public static func migrateOldAccountsIntoProfiles(resetNotifications: Bool = true) throws {
+    public static func migrateOldAccountsIntoProfiles(
+        resetNotifications: Bool = true, isUnattended: Bool = false
+    ) throws {
         let context = Self.shared.modelContainer.mainContext
         let allExistingUUIDs: [String] = try context.fetch(FetchDescriptor<PZProfileMO>())
             .map(\.uuid.uuidString)
         let oldData = try AccountMOSputnik.shared.allAccountDataAsPZProfileMO()
-        var count = 0
+        var profilesMigratedCount = 0
         oldData.forEach { theEntry in
             if allExistingUUIDs.contains(theEntry.uuid.uuidString) {
+                guard !isUnattended else { return }
                 theEntry.uuid = .init()
                 theEntry.name += " (Imported)"
             }
             context.insert(theEntry)
             PZNotificationCenter.bleachNotificationsIfDisabled(for: theEntry.asSendable)
-            count += 1
+            profilesMigratedCount += 1
         }
-        if resetNotifications, count > 0 {
+        if resetNotifications, profilesMigratedCount > 0 {
             Broadcaster.shared.requireOSNotificationCenterAuthorization()
             Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
         }
@@ -167,7 +170,10 @@ extension PZProfileActor {
     public static func attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: Bool = true) {
         guard Pizza.isAppStoreRelease, !Defaults[.oldAccountMOAlreadyAutoInherited] else { return }
         do {
-            try migrateOldAccountsIntoProfiles(resetNotifications: resetNotifications)
+            try migrateOldAccountsIntoProfiles(
+                resetNotifications: resetNotifications,
+                isUnattended: true
+            )
         } catch {
             return
         }
