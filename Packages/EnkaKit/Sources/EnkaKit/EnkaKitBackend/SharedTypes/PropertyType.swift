@@ -256,7 +256,7 @@ extension Enka.PropertyType {
         case 41: self = .anemoResistanceDelta
         case 42: self = .quantoResistanceDelta
         case 43: self = .imagoResistanceDelta
-        case 51: self = .speedAddedRatio
+        case 51: self = .speedDelta
         case 52: self = .criticalChance
         case 53: self = .criticalDamage
         case 54: self = .energyRecovery
