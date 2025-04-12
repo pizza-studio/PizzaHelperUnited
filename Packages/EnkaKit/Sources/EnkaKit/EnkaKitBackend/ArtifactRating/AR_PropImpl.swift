@@ -6,18 +6,18 @@
 extension Enka.PropertyType {
     public var appraisableArtifactParam: ArtifactRating.Appraiser.Param? {
         switch self {
-        case .hpDelta: .hpDelta
+        case .hpDelta, .maxHP: .hpDelta
         case .attack, .attackDelta: .atkDelta
         case .defence, .defenceDelta: .defDelta
-        case .hpAddedRatio, .maxHP: .hpAmp
+        case .hpAddedRatio: .hpAmp
         case .attackAddedRatio: .atkAmp
         case .defenceAddedRatio, .shieldCostMinusRatio: .defAmp
-        case .speedDelta: .spdDelta
+        case .speedAddedRatio, .speedDelta: .spdDelta
         case .criticalChance, .criticalChanceBase: .critChance
         case .criticalDamage, .criticalDamageBase: .critDamage
-        case .statusProbabilityBase: .statProb
-        case .statusResistanceBase: .statResis
-        case .breakDamageAddedRatioBase: .breakDmg
+        case .statusProbability, .statusProbabilityBase: .statProb
+        case .statusResistance, .statusResistanceBase: .statResis
+        case .breakDamageAddedRatioBase, .breakUp: .breakDmg
         case .healRatio, .healRatioBase: .healAmp
         case .energyRecoveryBase: .energyRecovery
         case .physicoAddedRatio: .dmgAmp(.physico)
