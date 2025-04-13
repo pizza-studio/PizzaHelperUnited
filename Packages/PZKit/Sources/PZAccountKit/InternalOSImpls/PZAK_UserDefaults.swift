@@ -34,12 +34,12 @@ extension Defaults.Keys {
     public static let pzProfiles = Key<[String: PZProfileSendable]>(
         "pzProfiles",
         default: [:],
-        suite: Defaults[.situatePZProfileDBIntoGroupContainer] ? .standard : .profileSuite
+        suite: .profileSuite // !! IMPORTANT !!
     )
     public static let cachedDailyNotes = Key<[String: CachedJSON]>(
         "cachedDailyNotes",
         default: [:],
-        suite: Defaults[.situatePZProfileDBIntoGroupContainer] ? .standard : .profileSuite
+        suite: .profileSuite // !! IMPORTANT !!
     )
 }
 
