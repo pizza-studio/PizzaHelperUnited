@@ -25,6 +25,9 @@ struct TestAccountSectionView: View {
             .disabled(status == .testing)
             if case let .failure(error) = status {
                 FailureView(error: error)
+                if case .insufficientDataVisibility = error as? MiHoYoAPIError {
+                    DataVisibilityGuideView(region: profile.server.region)
+                }
             } else if status == .verificationNeeded {
                 VerificationNeededView(profile: profile) {
                     doTest()
