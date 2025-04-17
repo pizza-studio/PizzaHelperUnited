@@ -2465,6 +2465,83 @@
         }
       }
     },
+    "profile.accountConnectivity.insufficientDataVisibility" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte legen Sie die Datensichtbarkeit dieser UID über die HoYoLAB / Miyoushe App offen. Wenn Sie der Eigentümer dieser UID sind, können Sie der folgenden Bildschirmaufnahme folgen, um die Datensichtbarkeit zu konfigurieren."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please expose the data visibility of this UID through HoYoLAB / Miyoushe app. If you are the UID owner, you may follow the following screenshot to config the data visibility."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, exponga la visibilidad de los datos de este UID a través de la aplicación HoYoLAB / Miyoushe. Si usted es el propietario de este UID, puede seguir la siguiente captura de pantalla para configurar la visibilidad de los datos."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paki-hayag ang visibility ng datos ng UID na ito sa pamamagitan ng HoYoLAB / Miyoushe app. Kung ikaw ang may-ari ng UID na ito, maaari mong sundan ang sumusunod na screenshot upang i-config ang visibility ng datos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez rendre visible les données de cet UID via l'application HoYoLAB / Miyoushe. Si vous êtes le propriétaire de cet UID, vous pouvez suivre la capture d'écran suivante pour configurer la visibilité des données."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si prega di rendere pubblica la visibilità dei dati di questo UID tramite l'app HoYoLAB / Miyoushe. Se sei il proprietario di questo UID, puoi seguire la seguente schermata per configurare la visibilità dei dati."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該当UIDのデータ公開設定を『HoYoLAB』 或いは 『米遊社』アプリを通じて行ってください。該当UIDの所有者である場合は、以下のスクリーンショットを参考にデータ公開設定を行ってください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HoYoLAB / 미요시 앱을 통해 이 UID의 데이터 공개 여부를 설정해 주십시오. 해당 UID 소유자이신 경우, 다음 스크린샷을 참고하여 데이터 공개 설정을 하실 수 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, откройте видимость данных этого UID через приложение HoYoLAB / Miyoushe. Если вы являетесь владельцем этого UID, вы можете следовать следующему скриншоту, чтобы настроить видимость данных."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng hiển thị khả năng hiển thị dữ liệu của UID này thông qua ứng dụng HoYoLAB / Miyoushe. Nếu bạn là chủ sở hữu của UID này, bạn có thể làm theo ảnh chụp màn hình sau để định cấu hình khả năng hiển thị dữ liệu."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请通过 HoYoLAB / 米游社 App 公开此 UID 的数据可见性。如果您是该 UID 的所有者，您可以参考以下荧幕撷图配置数据可见性。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請藉由 HoYoLAB / 米遊社 App 公開此 UID 的資料可見性。如果您是該 UID 的擁有者，您可以參考以下螢幕擷圖設定資料可見性。"
+          }
+        }
+      }
+    },
     "profile.label.allowNotification" : {
       "extractionState" : "manual",
       "localizations" : {

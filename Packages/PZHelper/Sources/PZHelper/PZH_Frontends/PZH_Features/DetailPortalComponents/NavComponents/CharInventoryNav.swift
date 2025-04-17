@@ -43,6 +43,9 @@ public struct CharInventoryNav: View {
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
                     theVM.refresh()
                 }
+                if case .insufficientDataVisibility = error as? MiHoYoAPIError {
+                    DataVisibilityGuideView(region: profile.server.region)
+                }
             }
             NavigationLink(destination: CharacterInventoryView(profile: profile.asSendable)) {
                 Text("dpv.characterInventory.tapHereToSeePreviouslyCachedResults".i18nPZHelper)
