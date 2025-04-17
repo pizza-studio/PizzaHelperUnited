@@ -15,10 +15,10 @@ struct AppLanguageSwitcher: View {
         _appleLanguageTag = .init(
             get: {
                 let loadedValue = (
-                    UserDefaults.standard.array(forKey: Self.appleLanguagesKey) as? [String] ?? ["auto"]
+                    UserDefaults.standard.array(forKey: AppLanguage.defaultsKeyName) as? [String] ?? ["auto"]
                 ).joined()
                 let plistValueNotExist = (
-                    UserDefaults.standard.object(forKey: Self.appleLanguagesKey) == nil
+                    UserDefaults.standard.object(forKey: AppLanguage.defaultsKeyName) == nil
                 )
                 let targetToCheck = (plistValueNotExist || loadedValue.isEmpty) ? "auto" : loadedValue
                 let targetContained = AppLanguage.allCases.map(\.rawValue).contains(targetToCheck)
@@ -26,7 +26,7 @@ struct AppLanguageSwitcher: View {
             }, set: { newValue in
                 var newValue = newValue
                 if newValue.isEmpty || newValue == "auto" {
-                    UserDefaults.standard.removeObject(forKey: Self.appleLanguagesKey)
+                    UserDefaults.standard.removeObject(forKey: AppLanguage.defaultsKeyName)
                 }
                 if newValue == "auto" { newValue = "" }
                 guard Defaults[.appLanguage]?.joined() != newValue else { return }
@@ -72,8 +72,6 @@ struct AppLanguageSwitcher: View {
     }
 
     // MARK: Private
-
-    private static let appleLanguagesKey = "AppleLanguages"
 
     @State private var alertPresented: Bool = false
     @Binding private var appleLanguageTag: String
