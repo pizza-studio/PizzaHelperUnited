@@ -2,6 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
+import Foundation
+
 public enum AppLanguage: String, CaseIterable, Identifiable {
     case en
     case zhHans = "zh-Hans"
@@ -19,6 +22,12 @@ public enum AppLanguage: String, CaseIterable, Identifiable {
     // MARK: Public
 
     public static let defaultsKeyName = "AppleLanguages"
+
+    public static var current: Locale {
+        let loaded = UserDefaults.standard.array(forKey: defaultsKeyName) as? [String]
+        guard let firstValidValueRaw = loaded?.first else { return .autoupdatingCurrent }
+        return .init(identifier: firstValidValueRaw)
+    }
 
     public var id: String { rawValue }
 
