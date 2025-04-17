@@ -68,6 +68,8 @@ struct AppLanguageSwitcher: View {
             Button("sys.ok".i18nBaseKit) { exit(0) }
         } message: {
             Text("app.language.restartRequired.description".i18nPZHelper)
+                + Text(verbatim: "\n\n⚠️ ")
+                + Text("app.language.restartRequired.widgets.description".i18nPZHelper)
         }
     }
 
