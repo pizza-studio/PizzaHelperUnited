@@ -86,8 +86,8 @@ extension EKQueriedProfileProtocol {
             return "https://enka.network/ui/\(matched ?? "YJSNPI").png"
         case .starRail:
             let str = Enka.Sputnik.shared.db4HSR.profileAvatars[headIcon.description]?
-                .icon.split(separator: "/").last?.description ?? "Anonymous.png"
-            return "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/\(str)"
+                .icon.split(separator: "/").suffix(2).joined(separator: "/").description ?? "Anonymous.png"
+            return "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/\(str)"
         case .zenlessZone: return "114514" // 临时设定。
         }
     }
