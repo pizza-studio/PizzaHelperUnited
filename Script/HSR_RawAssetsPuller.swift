@@ -288,8 +288,11 @@ public enum DataType: String, CaseIterable {
     private func writeKeyValuePair(id: String, dict: inout [String: String], sourceFileName: String? = nil) {
         switch self {
         case .profileAvatar:
-            let fileName = sourceFileName ?? "\(id)"
-            dict["hsr_avatar_\(id).png"] = Self.mar7ResHeader + "icon/avatar/\(fileName).png"
+            var fileName = sourceFileName ?? "\(id)"
+            let remoteResourceFileName = fileName
+            fileName = fileName.replacingOccurrences(of: "IconHeadS1_100", with: "IconHead_20010")
+            fileName = fileName.replacingOccurrences(of: "_IconHead_", with: "_")
+            dict["hsr_avatar_\(id).png"] = Self.mar7ResHeader + "icon/avatar/\(remoteResourceFileName).png"
         case .skillTree:
             let fileName = sourceFileName ?? "\(id)"
             dict["hsr_skill_\(id).png"] = Self.yattaResHeader + "UI/skill/\(fileName).png"
