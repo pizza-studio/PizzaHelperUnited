@@ -289,7 +289,10 @@ public enum DataType: String, CaseIterable {
         switch self {
         case .profileAvatar:
             let fileName = sourceFileName ?? "\(id)"
-            dict["hsr_avatar_\(id).png"] = Self.mar7ResHeader + "icon/avatar/\(fileName).png"
+            let newID = id.replacingOccurrences(
+                of: "IconHeadS1_100", with: "IconHead_20010"
+            ).replacingOccurrences(of: "_IconHead_", with: "_")
+            dict["hsr_avatar_\(newID).png"] = Self.mar7ResHeader + "icon/avatar/\(fileName).png"
         case .skillTree:
             let fileName = sourceFileName ?? "\(id)"
             dict["hsr_skill_\(id).png"] = Self.yattaResHeader + "UI/skill/\(fileName).png"
