@@ -1928,6 +1928,83 @@
         }
       }
     },
+    "app.language.restartRequired.widgets.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einige Funktionen, wie Systembenachrichtigungen, Widgets usw., erfordern einen Neustart von Springboard (auf iOS) oder ein Ab- und Wiederanmelden (auf macOS), um Änderungen an dieser Einstellung anzuwenden. Wenn dies kompliziert erscheint, können Sie stattdessen Ihr Gerät einfach neu starten. Beachten Sie, dass bereits geplante Systembenachrichtigungen die neueste Änderung der App-Sprache möglicherweise nicht widerspiegeln."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some features, such as System Notifications, Widgets, etc., require restarting Springboard (on iOS) or logging out and back in (on macOS) to apply changes to this setting. If this feels complex, you may simply reboot your device instead. Note that already-scheduled system notifications may not reflect the latest app language change."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algunas funciones, como las notificaciones del sistema, los widgets, etc., requieren reiniciar Springboard (en iOS) o cerrar sesión y volver a iniciarla (en macOS) para aplicar los cambios de esta configuración. Si esto parece complicado, puedes en su lugar simplemente reiniciar tu dispositivo. Ten en cuenta que las notificaciones del sistema ya programadas podrían no reflejar el último cambio de idioma de la aplicación."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang ilang feature, tulad ng System Notifications, Widgets, atbp., ay nangangailangan ng pag-restart ng Springboard (sa iOS) o pag-log out at muling pag-login (sa macOS) upang maipatupad ang mga pagbabago sa setting na ito. Kung pakiramdam mo ay kumplikado ito, maaari kang mag-reboot na lang ng iyong device. Tandaan na ang mga naka-iskedyul nang system notification ay maaaring hindi sumasalamin sa pinakabagong pagbabago sa wika ng app."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certaines fonctionnalités, telles que les notifications système, les widgets, etc., nécessitent un redémarrage de Springboard (sur iOS) ou une déconnexion puis reconnexion (sur macOS) pour appliquer les modifications de ce paramètre. Si cela semble compliqué, vous pouvez simplement redémarrer votre appareil à la place. Notez que les notifications système déjà programmées peuvent ne pas refléter le dernier changement de langue de l'application."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alcune funzionalità, come le notifiche di sistema, i widget, ecc., richiedono il riavvio di Springboard (su iOS) o il logout e il successivo login (su macOS) per applicare le modifiche a questa impostazione. Se questo sembra complicato, puoi invece semplicemente riavviare il dispositivo. Nota che le notifiche di sistema già programmate potrebbero non riflettere l'ultima modifica della lingua dell'app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム通知、ウィジェットなど一部の機能では、この設定の変更を適用するために、Springboardの再起動（iOSの場合）またはログアウトして再度ログイン（macOSの場合）が必要です。これが複雑に感じる場合は、代わりにデバイスを簡単に再起動することもできます。なお、すでにスケジュールされているシステム通知は、アプリの言語の最新の変更を反映しない場合があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시스템 알림, 위젯 등과 같은 일부 기능은 이 설정 변경을 적용하기 위해 Springboard를 재시작해야 하거나(iOS의 경우), 로그아웃 후 다시 로그인해야 합니다(macOS의 경우). 이 과정이 복잡하게 느껴진다면, 대신 기기를 간단히 재부팅할 수도 있습니다. 단, 이미 예약된 시스템 알림은 앱 언어의 최신 변경 사항을 반영하지 않을 수 있습니다。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Некоторые функции, такие как системные уведомления, виджеты и т. д., требуют перезапуска Springboard (на iOS) или выхода и повторного входа в систему (на macOS) для применения изменений этого параметра. Если это кажется сложным, вы можете вместо этого просто перезагрузить устройство. Обратите внимание, что уже запланированные системные уведомления могут не отражать последние изменения языка приложения."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một số tính năng, chẳng hạn như Thông báo Hệ thống, Widget, v.v., yêu cầu khởi động lại Springboard (trên iOS) hoặc đăng xuất và đăng nhập lại (trên macOS) để áp dụng các thay đổi cho cài đặt này. Nếu cảm thấy phức tạp, bạn có thể thay vì thế chỉ cần khởi động lại thiết bị. Lưu ý rằng các thông báo hệ thống đã được lên lịch có thể không phản ánh thay đổi ngôn ngữ mới nhất của ứng dụng。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "某些功能（如系统通知、小组件等）需要重启 Springboard（在 iOS 上）或退出登录后重新登录（在 macOS 上）以应用此设定的变更。如果您觉得麻烦的话，您也可以直接重启设备。请注意，已排定的系统通知可能无法反映最新的 App 语言设定。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "某些功能（如系統通知、小工具等）需要重新啟動 Springboard（在 iOS 上）或登出後重新登入（在 macOS 上）以套用此設定的變更。如果您覺得麻煩的話，您也可以選擇直接重新啟動系統。請注意，已排定的系統通知可能無法反映最新的 App 介面語言設定。"
+          }
+        }
+      }
+    },
     "dpv.characterInventory.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
