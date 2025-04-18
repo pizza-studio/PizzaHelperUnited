@@ -135,18 +135,9 @@ extension EnkaDBProtocol {
         guard Defaults[.forceCharacterWeaponNameFixed] else { return result }
         guard let result else { return nil }
         if Locale.isUILanguageSimplifiedChinese {
-            if result == "钟离" {
-                return "锺离"
-            } else if result.contains("钟离") {
-                return result.replacingOccurrences(of: "钟离", with: "锺离")
-            }
+            return Enka.kanjiFixTableCHS[result] ?? result
         } else if Locale.isUILanguageTraditionalChinese {
-            if result == "霧切之回光" {
-                return "霧切之迴光"
-            }
-            if result.contains("堇") {
-                return result.replacingOccurrences(of: "堇", with: "菫")
-            }
+            return Enka.kanjiFixTableCHT[result] ?? result
         }
         return result
     }
@@ -167,4 +158,21 @@ extension EnkaDBProtocol {
     var additionalLocTable: [String: String] {
         Enka.JSONType.bundledExtraLangTable[locTag] ?? [:]
     }
+}
+
+extension Enka {
+    fileprivate static let kanjiFixTableCHS: [String: String] = [
+        "钟离": "锺离",
+        "芙宁娜": "芙黎娜", // 得分清ㄋㄌ。
+        "希诺宁": "希洛宁", // 得分清ㄋㄌ。
+    ]
+
+    fileprivate static let kanjiFixTableCHT: [String: String] = [
+        "雲堇": "雲菫",
+        "風堇": "風菫",
+        "霧切之回光": "霧切之迴光",
+        "芙寧娜": "芙黎娜", // 得分清ㄋㄌ。
+        "希諾寧": "希洛寧", // 得分清ㄋㄌ。
+        "茜特菈莉": "菥特菈莉", // 「茜」在港澳台不是多音字，没有「西」音。
+    ]
 }
