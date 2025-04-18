@@ -139,13 +139,22 @@ extension EnkaDBProtocol {
                 return "锺离"
             } else if result.contains("钟离") {
                 return result.replacingOccurrences(of: "钟离", with: "锺离")
+            } else if result == "芙宁娜" {
+                return "芙黎娜" // 专治策划ㄋㄌ不分。
+            } else if result == "希诺宁" {
+                return "希洛宁" // 专治策划ㄋㄌ不分。
             }
         } else if Locale.isUILanguageTraditionalChinese {
             if result == "霧切之回光" {
                 return "霧切之迴光"
-            }
-            if result.contains("堇") {
+            } else if result.contains("堇") {
                 return result.replacingOccurrences(of: "堇", with: "菫")
+            } else if result == "芙寧娜" {
+                return "芙黎娜" // 专治策划ㄋㄌ不分。
+            } else if result == "希諾寧" {
+                return "希洛寧" // 专治策划ㄋㄌ不分。
+            } else if result == "茜特菈莉" {
+                return "菥特菈莉" // 「茜」在港澳台不是多音字，没有「西」音。
             }
         }
         return result
