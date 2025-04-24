@@ -37,8 +37,7 @@ struct OfficialFeedList4WidgetsView: View {
         switch family {
         case .systemSmall: Array(4 ... 5).reversed()
         case .systemMedium: Array(4 ... 12).reversed()
-        case .systemLarge: Array(4 ... 15).reversed()
-        case .systemExtraLarge: Array(4 ... 25).reversed()
+        case .systemExtraLarge, .systemLarge: Array(4 ... 15).reversed()
         default: Array(4 ... 5).reversed()
         }
     }
