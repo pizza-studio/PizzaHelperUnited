@@ -4,71 +4,45 @@
 
 import Foundation
 import PZAccountKit
-import PZBaseKit
-import SFSafeSymbols
-import SwiftData
 import SwiftUI
-import WebKit
 
-// MARK: - HoYoMapView
+// MARK: - HoYoMapMenuLinkSection
 
-struct HoYoMapView: View {
+struct HoYoMapMenuLinkSection: View {
     // MARK: Public
 
     public static let navTitle = "tools.hoyoMap.navTitle".i18nPZHelper
 
-    public var body: some View {
-        let region = currentRegion
-        Group {
-            switch (region, region.game) {
-            case (.hoyoLab, .genshinImpact):
-                HoYoMapWebView(region: region).tag(region)
-            case (.miyoushe, .genshinImpact):
-                HoYoMapWebView(region: region).tag(region)
-            case (.hoyoLab, .starRail):
-                HoYoMapWebView(region: region).tag(region)
-            case (.miyoushe, .starRail):
-                HoYoMapWebView(region: region).tag(region)
-            case (.hoyoLab, .zenlessZone): EmptyView()
-            case (.miyoushe, .zenlessZone): EmptyView()
+    // MARK: Internal
+
+    var body: some View {
+        Section {
+            Menu {
+                drawRegionLine(.miyoushe(.genshinImpact))
+                drawRegionLine(.miyoushe(.starRail))
+                Divider()
+                drawRegionLine(.hoyoLab(.genshinImpact))
+                drawRegionLine(.hoyoLab(.starRail))
+            } label: {
+                Text(verbatim: Self.navTitle)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
+        } footer: {
+            Text("tools.hoyoMap.sectionDescription", bundle: .module)
         }
-        .navigationTitle(Self.navTitle)
-        .navBarTitleDisplayMode(.inline)
-        #if os(iOS) || targetEnvironment(macCatalyst)
-            .toolbar(.hidden, for: .tabBar)
-        #endif
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Image(systemSymbol: .map)
-                        Picker("".description, selection: $isMiyoushe.animation()) {
-                            Text(HoYo.AccountRegion.miyoushe(game).localizedDescription)
-                                .tag(true)
-                            Text(HoYo.AccountRegion.hoyoLab(game).localizedDescription)
-                                .tag(false)
-                        }
-                        .pickerStyle(.segmented)
-                        Picker("".description, selection: $game.animation()) {
-                            Text(Pizza.SupportedGame.genshinImpact.localizedShortName)
-                                .tag(Pizza.SupportedGame.genshinImpact)
-                            Text(Pizza.SupportedGame.starRail.localizedShortName)
-                                .tag(Pizza.SupportedGame.starRail)
-                        }
-                        .pickerStyle(.segmented)
-                    }
-                    .fixedSize()
-                }
-            }
+    }
+
+    @ViewBuilder
+    func drawRegionLine(_ region: HoYo.AccountRegion) -> some View {
+        if let described = describeRegion(region), let url = region.hoyoMapURL {
+            Link(described, destination: url)
+        }
     }
 
     // MARK: Private
 
-    @State private var game: Pizza.SupportedGame = appGame ?? .genshinImpact
-    @State private var isMiyoushe: Bool = Locale.isUILanguageSimplifiedChinese
-
-    private var currentRegion: HoYo.AccountRegion {
-        isMiyoushe ? .miyoushe(game) : .hoyoLab(game)
+    private func describeRegion(_ region: HoYo.AccountRegion) -> String? {
+        "\(region.localizedDescription) - \(region.game.localizedDescription)"
     }
 }
 
@@ -88,102 +62,5 @@ extension HoYo.AccountRegion {
         case (.miyoushe, .zenlessZone):
             "https://webstatic.mihoyo.com/zzz/app/interactive-map/index.html".asURL // 乱填的。
         }
-    }
-}
-
-#if !canImport(UIKit) && canImport(AppKit)
-typealias UIView = NSView
-typealias UIViewRepresentable = NSViewRepresentable
-#endif
-
-// MARK: - HoYoMapWebView
-
-private struct HoYoMapWebView: UIViewRepresentable {
-    final class Coordinator: NSObject, WKNavigationDelegate {
-        // MARK: Lifecycle
-
-        init(_ parent: HoYoMapWebView) {
-            self.parent = parent
-        }
-
-        // MARK: Internal
-
-        var parent: HoYoMapWebView
-
-        func webView(
-            _ webView: WKWebView,
-            didFinish navigation: WKNavigation!
-        ) {
-            var jsStr = ""
-            jsStr.append("let timer = setInterval(() => {")
-            jsStr
-                .append(
-                    "const bar = document.getElementsByClassName('mhy-bbs-app-header')[0];"
-                )
-            jsStr
-                .append(
-                    "const hoyolabBar = document.getElementsByClassName('mhy-hoyolab-app-header')[0];"
-                )
-            jsStr.append("bar?.parentNode.removeChild(bar);")
-            jsStr.append("hoyolabBar?.parentNode.removeChild(hoyolabBar);")
-            jsStr.append("}, 300);")
-            jsStr
-                .append(
-                    "setTimeout(() => {clearInterval(timer);timer = null}, 10000);"
-                )
-            webView.evaluateJavaScript(jsStr)
-        }
-    }
-
-    @State var region: HoYo.AccountRegion
-
-    @MainActor
-    func makeUIView(context: Context) -> OPWebView {
-        guard let url = region.hoyoMapURL
-        else {
-            return OPWebView()
-        }
-        let request = URLRequest(url: url)
-
-        let webview = OPWebView()
-        webview.configuration.userContentController.removeAllUserScripts() // 对提瓦特地图禁用自动 dark mode 支持。
-        webview.navigationDelegate = context.coordinator
-        Task { webview.load(request) }
-        return webview
-    }
-
-    @MainActor
-    func updateUIView(_ uiView: OPWebView, context: Context) {
-        if let url = region.hoyoMapURL {
-            let request = URLRequest(url: url)
-            Task { uiView.load(request) }
-        }
-    }
-
-    @MainActor
-    func makeNSView(context: Context) -> OPWebView {
-        guard let url = region.hoyoMapURL
-        else {
-            return OPWebView()
-        }
-        let request = URLRequest(url: url)
-
-        let webview = OPWebView()
-        webview.configuration.userContentController.removeAllUserScripts() // 对提瓦特地图禁用自动 dark mode 支持。
-        webview.navigationDelegate = context.coordinator
-        Task { webview.load(request) }
-        return webview
-    }
-
-    @MainActor
-    func updateNSView(_ nsView: OPWebView, context: Context) {
-        if let url = region.hoyoMapURL {
-            let request = URLRequest(url: url)
-            Task { nsView.load(request) }
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
     }
 }
