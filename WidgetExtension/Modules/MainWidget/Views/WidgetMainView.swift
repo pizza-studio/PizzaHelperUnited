@@ -23,6 +23,7 @@ struct WidgetMainView: View {
             viewConfig: viewConfig,
             accountName: profileName
         )
+        .padding()
         switch family {
         case .systemSmall:
             MainInfo(
@@ -42,6 +43,7 @@ struct WidgetMainView: View {
                 accountName: profileName,
                 events: entry.events
             )
+            .padding()
         default:
             defaultValue
         }

@@ -36,6 +36,5 @@ struct MainInfoWithDetail: View {
             .fixedSize(horizontal: true, vertical: false)
             Spacer()
         }
-        .padding()
     }
 }

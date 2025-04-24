@@ -49,7 +49,6 @@ struct LargeWidgetView: View {
             }
             Spacer()
         }
-        .padding()
     }
 
     // MARK: Private
