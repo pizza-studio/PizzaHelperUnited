@@ -13,6 +13,7 @@ extension PZWidgets {
         #endif
         #if !os(watchOS)
         MainWidget()
+        DualProfileWidget()
         MaterialWidget()
         OfficialFeedWidget()
         #endif
