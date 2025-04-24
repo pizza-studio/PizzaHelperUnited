@@ -18,57 +18,63 @@ lint:
 	swiftlint --fix --autocorrect --config .swiftlint.yml
 
 # Archive (App Store version)
-
 archive: archive-iOS archive-macOS
 
 archive-iOS:
-	@echo "Creating directory: $(ARCHIVE_DIR)"
-	@mkdir -p "$(ARCHIVE_DIR)"
-	@echo "Archiving to: $(ARCHIVE_PATH)"
+	@ARCHIVE_NAME=ThePizzaHelper-iOS-$(DATE_FILE)-$(TIME_FILE).xcarchive; \
+	ARCHIVE_PATH=$(ARCHIVE_DIR)/$$ARCHIVE_NAME; \
+	echo "Creating directory: $(ARCHIVE_DIR)"; \
+	mkdir -p "$(ARCHIVE_DIR)"; \
+	echo "Archiving to: $$ARCHIVE_PATH"; \
 	xcodebuild archive \
-	-project UnitedPizzaHelper.xcodeproj \
-	-scheme ThePizzaHelper \
-	-configuration Release \
-	-destination "generic/platform=iOS" \
-	-archivePath "$(ARCHIVE_PATH)" \
-	-allowProvisioningUpdates
+		-project UnitedPizzaHelper.xcodeproj \
+		-scheme ThePizzaHelper \
+		-configuration Release \
+		-destination "generic/platform=iOS" \
+		-archivePath "$$ARCHIVE_PATH" \
+		-allowProvisioningUpdates
 
 archive-macOS:
-	@echo "Creating directory: $(ARCHIVE_DIR)"
-	@mkdir -p "$(ARCHIVE_DIR)"
-	@echo "Archiving to: $(ARCHIVE_PATH)"
+	@ARCHIVE_NAME=ThePizzaHelper-macOS-$(DATE_FILE)-$(TIME_FILE).xcarchive; \
+	ARCHIVE_PATH=$(ARCHIVE_DIR)/$$ARCHIVE_NAME; \
+	echo "Creating directory: $(ARCHIVE_DIR)"; \
+	mkdir -p "$(ARCHIVE_DIR)"; \
+	echo "Archiving to: $$ARCHIVE_PATH"; \
 	xcodebuild archive \
-	-project UnitedPizzaHelper.xcodeproj \
-	-scheme ThePizzaHelper \
-	-configuration Release \
-	-destination "generic/platform=macOS,variant=Mac Catalyst" \
-	-archivePath "$(ARCHIVE_PATH)" \
-	-allowProvisioningUpdates
+		-project UnitedPizzaHelper.xcodeproj \
+		-scheme ThePizzaHelper \
+		-configuration Release \
+		-destination "generic/platform=macOS,variant=Mac Catalyst" \
+		-archivePath "$$ARCHIVE_PATH" \
+		-allowProvisioningUpdates
 
 # Archive (United Pizza Engine)
-
 archiveEngine: archiveEngine-iOS archiveEngine-macOS
 
 archiveEngine-iOS:
-	@echo "Creating directory: $(ARCHIVE_DIR)"
-	@mkdir -p "$(ARCHIVE_DIR)"
-	@echo "Archiving to: $(ARCHIVE_PATH)"
+	@ARCHIVE_NAME=UnitedPizzaEngine-iOS-$(DATE_FILE)-$(TIME_FILE).xcarchive; \
+	ARCHIVE_PATH=$(ARCHIVE_DIR)/$$ARCHIVE_NAME; \
+	echo "Creating directory: $(ARCHIVE_DIR)"; \
+	mkdir -p "$(ARCHIVE_DIR)"; \
+	echo "Archiving to: $$ARCHIVE_PATH"; \
 	xcodebuild archive \
-	-project UnitedPizzaHelper.xcodeproj \
-	-scheme UnitedPizzaHelperEngine \
-	-configuration Release \
-	-destination "generic/platform=iOS" \
-	-archivePath "$(ARCHIVE_PATH)" \
-	-allowProvisioningUpdates
+		-project UnitedPizzaHelper.xcodeproj \
+		-scheme UnitedPizzaHelperEngine \
+		-configuration Release \
+		-destination "generic/platform=iOS" \
+		-archivePath "$$ARCHIVE_PATH" \
+		-allowProvisioningUpdates
 
 archiveEngine-macOS:
-	@echo "Creating directory: $(ARCHIVE_DIR)"
-	@mkdir -p "$(ARCHIVE_DIR)"
-	@echo "Archiving to: $(ARCHIVE_PATH)"
+	@ARCHIVE_NAME=UnitedPizzaEngine-macOS-$(DATE_FILE)-$(TIME_FILE).xcarchive; \
+	ARCHIVE_PATH=$(ARCHIVE_DIR)/$$ARCHIVE_NAME; \
+	echo "Creating directory: $(ARCHIVE_DIR)"; \
+	mkdir -p "$(ARCHIVE_DIR)"; \
+	echo "Archiving to: $$ARCHIVE_PATH"; \
 	xcodebuild archive \
-	-project UnitedPizzaHelper.xcodeproj \
-	-scheme UnitedPizzaHelperEngine \
-	-configuration Release \
-	-destination "generic/platform=macOS,variant=Mac Catalyst" \
-	-archivePath "$(ARCHIVE_PATH)" \
-	-allowProvisioningUpdates
+		-project UnitedPizzaHelper.xcodeproj \
+		-scheme UnitedPizzaHelperEngine \
+		-configuration Release \
+		-destination "generic/platform=macOS,variant=Mac Catalyst" \
+		-archivePath "$$ARCHIVE_PATH" \
+		-allowProvisioningUpdates
