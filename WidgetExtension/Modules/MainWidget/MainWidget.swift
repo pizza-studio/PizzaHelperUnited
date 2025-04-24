@@ -19,7 +19,7 @@ struct MainWidget: Widget {
             intent: SelectAccountIntent.self,
             provider: MainWidgetProvider()
         ) { entry in
-            WidgetViewEntryView(entry: entry)
+            WidgetViewEntryView(entry: entry, noBackground: false)
         }
         .configurationDisplayName("pzWidgetsKit.status.title".i18nWidgets)
         .description("pzWidgetsKit.status.enquiry.title".i18nWidgets)
@@ -35,32 +35,11 @@ struct WidgetViewEntryView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
 
     let entry: MainWidgetProvider.Entry
+    let noBackground: Bool
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var viewConfig: WidgetViewConfiguration { entry.viewConfig }
     var accountName: String? { entry.profile?.name }
-
-    var url: URL? {
-        let errorURL: URL = {
-            var components = URLComponents()
-            components.scheme = "ophelperwidget"
-            components.host = "accountSetting"
-            components.queryItems = [
-                .init(
-                    name: "accountUUIDString",
-                    value: entry.profile?.uuid.uuidString
-                ),
-            ]
-            return components.url!
-        }()
-
-        switch result {
-        case .success:
-            return nil
-        case .failure:
-            return errorURL
-        }
-    }
 
     var body: some View {
         ZStack {
@@ -79,18 +58,29 @@ struct WidgetViewEntryView: View {
                 )
             }
         }
-        .widgetURL(url)
-        .myContainerBackground(viewConfig: viewConfig)
+        .myContainerBackground(viewConfig: noBackground ? nil : viewConfig)
     }
 }
 
 @available(watchOS, unavailable)
 extension View {
-    fileprivate func myContainerBackground(viewConfig: WidgetViewConfiguration) -> some View {
-        modifier(ContainerBackgroundModifier(viewConfig: viewConfig))
+    @ViewBuilder
+    fileprivate func myContainerBackground(
+        viewConfig: WidgetViewConfiguration?
+    )
+        -> some View {
+        if let viewConfig {
+            modifier(ContainerBackgroundModifier(viewConfig: viewConfig))
+        } else {
+            self
+        }
     }
 
-    fileprivate func containerBackgroundStandbyDetector(viewConfig: WidgetViewConfiguration) -> some View {
+    @ViewBuilder
+    fileprivate func containerBackgroundStandbyDetector(
+        viewConfig: WidgetViewConfiguration
+    )
+        -> some View {
         modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
     }
 }
