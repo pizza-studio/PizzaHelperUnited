@@ -22,6 +22,6 @@ extension PZWidgets {
     }
 
     public static func getRefreshDateByGameStamina(game: Pizza.SupportedGame? = nil) -> Date {
-        Date(timeIntervalSinceNow: game?.eachStaminaRecoveryTime ?? 60 * 7)
+        Date(timeIntervalSinceNow: game?.eachStaminaRecoveryTime ?? 60)
     }
 }
