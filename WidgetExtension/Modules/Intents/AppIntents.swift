@@ -34,10 +34,23 @@ public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, Cus
     }
 }
 
+// MARK: - SelectProfileIntentProtocol
+
+public protocol SelectProfileIntentProtocol {
+    var showTransformer: Bool { get set }
+    var trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum { get set }
+    var echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum { get set }
+    var randomBackground: Bool { get set }
+    var chosenBackgrounds: [WidgetBackgroundAppEntity] { get set }
+    var isDarkModeRespected: Bool { get set }
+    var showMaterialsInLargeSizeWidget: Bool { get set }
+}
+
 // MARK: - SelectAccountIntent
 
 // Only for iOS Springboard Widgets and macOS Desktop Widgets.
-public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent {
+public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
+    SelectProfileIntentProtocol {
     // MARK: Lifecycle
 
     public init() {}
@@ -102,7 +115,7 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
 
 // Only for iOS Springboard Widgets and macOS Desktop Widgets.
 // 该 Intent 允许指定两个本地帐号。
-public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent {
+public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, SelectProfileIntentProtocol {
     // MARK: Lifecycle
 
     public init() {}

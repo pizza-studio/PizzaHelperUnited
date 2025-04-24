@@ -24,4 +24,20 @@ extension PZWidgets {
     public static func getRefreshDateByGameStamina(game: Pizza.SupportedGame? = nil) -> Date {
         Date(timeIntervalSinceNow: game?.eachStaminaRecoveryTime ?? 60)
     }
+
+    public static func getSharedRefreshDateFor(game1: Pizza.SupportedGame, game2: Pizza.SupportedGame) -> Date {
+        let a = Int(game1.eachStaminaRecoveryTime)
+        let b = Int(game2.eachStaminaRecoveryTime)
+        let gcd = greatestCommonDivisor(a, b)
+        return Date(timeIntervalSinceNow: Double(gcd))
+    }
+}
+
+private func greatestCommonDivisor(_ a: Int, _ b: Int) -> Int {
+    let r = a % b
+    if r != 0 {
+        return greatestCommonDivisor(b, r)
+    } else {
+        return b
+    }
 }
