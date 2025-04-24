@@ -48,6 +48,7 @@ For cases other than the above exception: Should the User agree, the Developer s
     - The User's Spiral Abyss combat leaderboard.
     - All of the User's owned characters and their character build details.
     - The User's game UID number. **Note**: This number is used to ensure the User's data is not resubmitted and to permanently filter out any data from potential cheaters.
+    - The reserved username of the user's Snap Hutao account.
 
 The collected information does not include any personally identifiable information, device details, or account information, thereby ensuring the protection of the User's privacy.
 
