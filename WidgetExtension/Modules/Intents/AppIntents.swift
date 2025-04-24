@@ -115,15 +115,18 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
 
 // Only for iOS Springboard Widgets and macOS Desktop Widgets.
 // 该 Intent 允许指定两个本地帐号。
-public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, SelectProfileIntentProtocol {
+public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
+    SelectProfileIntentProtocol {
     // MARK: Lifecycle
 
     public init() {}
 
     // MARK: Public
 
-    public static let title: LocalizedStringResource = "intent.name.selectLocalProfile"
-    public static let description = IntentDescription("intent.description.pickTheLocalProfileForThisWidget")
+    public static let intentClassName = "SelectDualProfileIntent"
+
+    public static let title: LocalizedStringResource = "intent.name.selectLocalProfileDuo"
+    public static let description = IntentDescription("intent.description.pickTheLocalProfileDuoForThisWidget")
 
     public static var isDiscoverable: Bool { false }
 
