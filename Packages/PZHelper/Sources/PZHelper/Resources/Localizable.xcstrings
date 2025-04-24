@@ -15870,6 +15870,82 @@
           }
         }
       }
+    },
+    "tools.hoyoMap.sectionDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Menü zeigt die entsprechende Karten-Webseite direkt über den Standardbrowser des Systems an."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This menu will directly display the corresponding map webpage using the system's default browser."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este menú mostrará directamente la página web del mapa correspondiente utilizando el navegador predeterminado del sistema."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang menu na ito ay direktang magpapakita ng katumbas na webpage ng mapa gamit ang default na browser ng system."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce menu affichera directement la page web de la carte correspondante en utilisant le navigateur par défaut du système."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo menu visualizzerà direttamente la pagina web della mappa corrispondente utilizzando il browser predefinito del sistema."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このメニューは、システムの既定のブラウザを使用して、対応する地図ウェブページを直接表示します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 메뉴는 시스템의 기본 브라우저를 사용하여 해당 지도 웹페이지를 직접 표시합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это меню будет напрямую отображать соответствующую веб-страницу карты, используя браузер, установленный в системе по умолчанию."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu này sẽ hiển thị trực tiếp trang web bản đồ tương ứng bằng trình duyệt mặc định của hệ thống."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此选单将直接通过系统默认浏览器显示相应的地图网页。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該選單會直接藉由系統預設的瀏覽器來顯示對應的地圖網頁。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

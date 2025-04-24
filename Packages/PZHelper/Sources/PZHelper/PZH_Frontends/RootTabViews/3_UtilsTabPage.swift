@@ -18,7 +18,6 @@ struct UtilsTabPage: View {
         case gachaManager
         case wallpaperGallery
         case pizzaDictionary
-        case hoyoMap
     }
 
     var body: some View {
@@ -51,11 +50,7 @@ struct UtilsTabPage: View {
                         Label(PZDictionaryView.navTitle, systemSymbol: .characterBookClosedFill)
                     }
                 }
-                Section {
-                    NavigationLink(value: Nav.hoyoMap) {
-                        Text(verbatim: HoYoMapView.navTitle)
-                    }
-                }
+                HoYoMapMenuLinkSection()
             }
             #if os(iOS) || targetEnvironment(macCatalyst)
             .listStyle(.insetGrouped)
@@ -80,7 +75,6 @@ struct UtilsTabPage: View {
             case .gachaManager: GachaRootView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .pizzaDictionary: PZDictionaryView()
-            case .hoyoMap: HoYoMapView()
             case .none: EmptyView() // Temporary for now.
             }
         }
