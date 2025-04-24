@@ -2,12 +2,11 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import CoreGraphics
 import Defaults
-import Foundation
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
-import SwiftUI
 import WidgetKit
 
 // MARK: - MainWidgetEntry
@@ -217,7 +216,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                     if let image = await ImageMap.shared.assetMap[url] {
                         assetMap[url] = image
                     } else if let cgImage = CGImage.instantiate(url: url) {
-                        let image = SendableImagePtr(img: Image(decorative: cgImage, scale: 1.0))
+                        let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
                         await ImageMap.shared.insertValue(url: url, image: image)
                         assetMap[url] = image
                     }
@@ -239,7 +238,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
                 let urls = [task.iconURL, task.iconURL4Copilot].compactMap { $0 }
                 for url in urls {
                     if let cgImage = CGImage.instantiate(url: url) {
-                        let image = SendableImagePtr(img: Image(decorative: cgImage, scale: 1.0))
+                        let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
                         assetMap[url] = image
                     }
                 }
@@ -247,35 +246,4 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         }
         return assetMap
     }
-}
-
-// MARK: - ImageMap
-
-@MainActor
-final class ImageMap {
-    // MARK: Lifecycle
-
-    public init() {}
-
-    // MARK: Public
-
-    public static let shared = ImageMap()
-
-    public var assetMap: [URL: SendableImagePtr] = [:]
-
-    public func insertValue(url: URL, image: SendableImagePtr) {
-        assetMap[url] = image
-    }
-}
-
-// MARK: - SendableImagePtr
-
-final class SendableImagePtr: Sendable {
-    // MARK: Lifecycle
-
-    public init(img: Image) { self.img = img }
-
-    // MARK: Public
-
-    public let img: Image
 }
