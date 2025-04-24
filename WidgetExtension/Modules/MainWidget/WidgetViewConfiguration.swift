@@ -14,7 +14,7 @@ import WallpaperKit
 struct WidgetViewConfiguration {
     // MARK: Lifecycle
 
-    init(_ intent: SelectAccountIntent, _ noticeMessage: String?) {
+    init(_ intent: some SelectProfileIntentProtocol, _ noticeMessage: String?) {
         self.showAccountName = true
         self.showTransformer = intent.showTransformer
         self.trounceBlossomDisplayMethod = intent.trounceBlossomDisplayMethod
