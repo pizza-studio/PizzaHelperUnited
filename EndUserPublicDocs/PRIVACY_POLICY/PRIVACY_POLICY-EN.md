@@ -16,13 +16,13 @@ This application requires submitting the UID number to query the in-game charact
 
 For cases other than the above exception: Should the User agree, the Developer shall collect information related to the Spiral Abyss. This includes the following:
 
-- If the User has achieved full stars in the current season of the Spiral Abyss:
+If the User has achieved full stars in the current season of the Spiral Abyss:
 
-    - Characters used in the User's Spiral Abyss challenges from floors 9 to 12.
-    - The User's Spiral Abyss combat leaderboard.
-    - All of the User's owned characters and their character build details.
-    - The User's game UID number. **Note**: This number is used to ensure the User's data is not resubmitted and to permanently filter out any data from potential cheaters.
-    - The reserved username of the user's Snap Hutao account.
+- Characters used in the User's Spiral Abyss challenges from floors 9 to 12.
+- The User's Spiral Abyss combat leaderboard.
+- All of the User's owned characters and their character build details.
+- The User's game UID number. **Note**: This number is used to ensure the User's data is not resubmitted and to permanently filter out any data from potential cheaters.
+- The reserved username of the user's Snap Hutao account.
 
 The collected information does not include any personally identifiable information, device details, or account information, thereby ensuring the protection of the User's privacy.
 
