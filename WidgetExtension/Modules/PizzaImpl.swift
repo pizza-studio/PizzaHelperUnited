@@ -31,6 +31,21 @@ extension Pizza.SupportedGame {
         case .failure: return nil
         }
     }
+
+    public static func initFromDualProfileConfig(
+        intent: SelectDualProfileIntent
+    )
+        -> (slot1: Self?, slot2: Self?) {
+        var game1: Self?
+        var game2: Self?
+        if let uuid1 = intent.profileSlot1?.id {
+            game1 = Defaults[.pzProfiles][uuid1]?.game
+        }
+        if let uuid2 = intent.profileSlot2?.id {
+            game2 = Defaults[.pzProfiles][uuid2]?.game
+        }
+        return (game1, game2)
+    }
 }
 
 // MARK: - Asset Icons (SVG)
