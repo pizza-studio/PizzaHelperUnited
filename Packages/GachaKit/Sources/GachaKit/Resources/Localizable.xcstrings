@@ -10153,79 +10153,79 @@
         }
       }
     },
-    "gachaKit.stats.surinukeEvasionRate" : {
+    "gachaKit.stats.standardItemHitRate" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Surinuke Ausweichrate"
+            "value" : "Standardtrefferquote"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Surinuke Evasion Rate"
+            "value" : "Standard Hit Rate"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tasa de Evasión de Surinuke"
+            "value" : "Tasa de Acierto Estándar"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rate ng Surinuke Evasion"
+            "value" : "Standard Hit Rate"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Taux d'évasion Surinuke"
+            "value" : "Taux de Réussite Standard"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tasso di evasione Surinuke"
+            "value" : "Tasso di Successo Standard"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "すり抜け回避率"
+            "value" : "通常命中率"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "스리누케 회피율"
+            "value" : "표준 적중률"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Рейтинг уклонения Surinuke"
+            "value" : "Стандартный рейтинг попадания"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tỷ lệ Né Tránh Surinuke"
+            "value" : "Tỷ lệ Trúng Chuẩn"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "不歪率"
+            "value" : "常驻命中率"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "不歪率"
+            "value" : "常駐命中率"
           }
         }
       }

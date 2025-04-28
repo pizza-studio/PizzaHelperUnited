@@ -27,7 +27,7 @@ extension GachaProfileView {
                         Text("gachaKit.stats.sincePreviousPentaStar", bundle: .module)
                             .fontWidth(.condensed)
                     } icon: {
-                        Image(systemSymbol: .flagFill)
+                        Image(systemSymbol: .flagFill).foregroundStyle(.orange)
                     }
                     Spacer()
                     Text(
@@ -43,7 +43,7 @@ extension GachaProfileView {
                         Text("gachaKit.stats.totalPulls", bundle: .module)
                             .fontWidth(.condensed)
                     } icon: {
-                        Image(systemSymbol: .handTapFill)
+                        Image(systemSymbol: .handTapFill).foregroundStyle(.brown)
                     }
                     Spacer()
                     Text(entries.count.description)
@@ -54,7 +54,7 @@ extension GachaProfileView {
                         Text("gachaKit.stats.avaragePulls4PentaStars", bundle: .module)
                             .fontWidth(.condensed)
                     } icon: {
-                        Image(systemSymbol: .star)
+                        Image(systemSymbol: .star).foregroundStyle(.green)
                     }
                     Spacer()
                     Text(average5StarDraw.description)
@@ -66,7 +66,7 @@ extension GachaProfileView {
                             Text("gachaKit.stats.avaragePulls4LimitedPentaStars", bundle: .module)
                                 .fontWidth(.condensed)
                         } icon: {
-                            Image(systemSymbol: .starFill)
+                            Image(systemSymbol: .starFill).foregroundStyle(.indigo)
                         }
                         Spacer()
                         Text(limitedDrawCount.description)
@@ -74,13 +74,13 @@ extension GachaProfileView {
                     }
                     HStack {
                         Label {
-                            Text("gachaKit.stats.surinukeEvasionRate", bundle: .module)
+                            Text("gachaKit.stats.standardItemHitRate", bundle: .module)
                                 .fontWidth(.condensed)
                         } icon: {
-                            Image(systemSymbol: .chartPieFill)
+                            Image(systemSymbol: .trashCircleFill).foregroundStyle(.red)
                         }
                         Spacer()
-                        Text(Self.fmtPerc.string(from: surinukeEvasionRate as NSNumber) ?? "N/A")
+                        Text(Self.fmtPerc.string(from: standardItemHitRate as NSNumber) ?? "N/A")
                             .fontWidth(.condensed)
                     }
                     guestEvaluatorView()
@@ -131,6 +131,10 @@ extension GachaProfileView {
                 countEnsured += 1
             }
             return 1.0 - countSurinuked / countEnsured
+        }
+
+        private var standardItemHitRate: Double {
+            1.0 - surinukeEvasionRate
         }
 
         private var average5StarDraw: Int { pentaStarEntries.map { $0.drawCount }
