@@ -69,7 +69,7 @@ extension GachaProfileView {
                             Image(systemSymbol: .starFill).foregroundStyle(.indigo)
                         }
                         Spacer()
-                        Text(limitedDrawCount.description)
+                        Text(average5StarDrawLimited.description)
                             .fontWidth(.condensed)
                     }
                     HStack {
@@ -116,25 +116,33 @@ extension GachaProfileView {
             }
         }
 
-        private var limitedDrawCount: Int {
+        private var average5StarDrawLimited: Int {
             pentaStarEntries.map(\.drawCount).reduce(0, +) / max(pentaStarsNotSurinuked.count, 1)
         }
 
-        // 如果获得的第一个五星是限定，默认其不歪
-        private var surinukeEvasionRate: Double {
-            // 歪次数 = 非限定五星数量
-            let countSurinuked = Double(pentaStarEntries.count - pentaStarsNotSurinuked.count)
-            // 小保底次数 = 限定五星数量
-            var countEnsured = Double(pentaStarsNotSurinuked.count)
-            // 如果抽的第一个是非限定，则多一次小保底
-            if pentaStarEntries.last?.isSurinuked ?? false {
-                countEnsured += 1
-            }
-            return 1.0 - countSurinuked / countEnsured
-        }
-
         private var standardItemHitRate: Double {
-            1.0 - surinukeEvasionRate
+            let pentaStarEntries = pentaStarEntries
+            guard !pentaStarEntries.isEmpty else { return 0.0 }
+            var surinukedCases = [Bool]()
+            var previousPentaStarIsSurinuked = false
+            for theEntry in pentaStarEntries.reversed() {
+                let isCurrentItemSurinuked = theEntry.isSurinuked
+                defer {
+                    previousPentaStarIsSurinuked = isCurrentItemSurinuked
+                }
+                switch theEntry.isSurinuked {
+                case true:
+                    surinukedCases.append(true)
+                case false:
+                    guard !previousPentaStarIsSurinuked else { continue }
+                    surinukedCases.append(false)
+                }
+            }
+            let countOfAllCases = surinukedCases.count
+            guard countOfAllCases > 0 else { return 0.0 }
+            let countSurinuked = Double(surinukedCases.count { $0 })
+            // 小保底次数 = 限定五星数量
+            return countSurinuked / Double(surinukedCases.count)
         }
 
         private var average5StarDraw: Int { pentaStarEntries.map { $0.drawCount }
@@ -157,7 +165,7 @@ extension GachaProfileView {
                 }
                 HStack {
                     Spacer()
-                    let judgedRank = ApprisedLevel.judge(limitedDrawNumber: limitedDrawCount, poolType: poolType)
+                    let judgedRank = ApprisedLevel.judge(limitedDrawNumber: average5StarDrawLimited, poolType: poolType)
                     ForEach(ApprisedLevel.allCases, id: \.rawValue) { rankLevel in
                         Group {
                             rankLevel.appraiserIcon(game: givenGPID.game)
