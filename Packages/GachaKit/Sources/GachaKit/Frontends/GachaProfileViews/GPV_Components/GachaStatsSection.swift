@@ -123,7 +123,7 @@ extension GachaProfileView {
         private var standardItemHitRate: Double {
             let pentaStarEntries = pentaStarEntries
             guard !pentaStarEntries.isEmpty else { return 0.0 }
-            var surinukedCases = [Bool]()
+            var surinukableCases = [Bool]()
             var previousPentaStarIsSurinuked = false
             for theEntry in pentaStarEntries.reversed() {
                 let isCurrentItemSurinuked = theEntry.isSurinuked
@@ -132,17 +132,17 @@ extension GachaProfileView {
                 }
                 switch theEntry.isSurinuked {
                 case true:
-                    surinukedCases.append(true)
+                    surinukableCases.append(true)
                 case false:
                     guard !previousPentaStarIsSurinuked else { continue }
-                    surinukedCases.append(false)
+                    surinukableCases.append(false)
                 }
             }
-            let countOfAllCases = surinukedCases.count
+            let countOfAllCases = surinukableCases.count
             guard countOfAllCases > 0 else { return 0.0 }
-            let countSurinuked = Double(surinukedCases.count { $0 })
+            let countSurinuked = Double(surinukableCases.count(where: \.self))
             // 小保底次数 = 限定五星数量
-            return countSurinuked / Double(surinukedCases.count)
+            return countSurinuked / Double(surinukableCases.count)
         }
 
         private var average5StarDraw: Int { pentaStarEntries.map { $0.drawCount }
