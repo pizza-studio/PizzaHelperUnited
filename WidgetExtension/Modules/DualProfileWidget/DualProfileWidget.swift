@@ -106,7 +106,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
     @ViewBuilder var contents: some View {
         drawSingleEntry(subEntry1)
         Divider().overlay {
-            Color.primary.opacity(0.4)
+            Color.white.opacity(0.4)
         }
         .frame(maxHeight: 4)
         .padding()
