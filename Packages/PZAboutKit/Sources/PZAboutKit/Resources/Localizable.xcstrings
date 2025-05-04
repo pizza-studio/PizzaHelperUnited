@@ -2277,73 +2277,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App-Symbol Illustrator, The Pizza Helper (v5 Engine Testflight)"
+            "value" : "App-Symbol Illustrator, The Pizza Helper (v5 Engine Testflight)\nApp-Symbol Illustrator, The Pizza Helper (v5.1+)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Icon Illustrator, The Pizza Helper (v5 Engine Testflight)"
+            "value" : "App Icon Illustrator, The Pizza Helper (v5 Engine Testflight)\nApp Icon Illustrator, The Pizza Helper (v5.1+)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ilustrador de iconos de aplicaciones, The Pizza Helper (v5 Engine Testflight)"
+            "value" : "Ilustrador de iconos de aplicaciones, The Pizza Helper (v5 Engine Testflight)\nIlustrador de iconos de aplicaciones, The Pizza Helper (v5.1+)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrator ng App Icon, The Pizza Helper (v5 Engine Testflight)"
+            "value" : "Illustrator ng App Icon, The Pizza Helper (v5 Engine Testflight)\nIllustrator ng App Icon, The Pizza Helper (v5.1+)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrateur d'icônes de l'application, The Pizza Helper (v5 Engine Testflight)"
+            "value" : "Illustrateur d'icônes de l'application, The Pizza Helper (v5 Engine Testflight)\nIllustrateur d'icônes de l'application, The Pizza Helper (v5.1+)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Illustrazione Icona App, The Pizza Helper (v5 Engine Testflight)"
+            "value" : "Illustrazione Icona App, The Pizza Helper (v5 Engine Testflight)\nIllustrazione Icona App, The Pizza Helper (v5.1+)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アプリアイコン絵師（ピザ助手 (無印) v5 エンジンTestflight）"
+            "value" : "アプリアイコン絵師（ピザ助手 (無印) v5 エンジンTestflight）\nアプリアイコン絵師（ピザ助手 (無印) v5.1+）"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 아이콘 일러스트레이터, 피자 도우미 (v5 Engine Testflight)"
+            "value" : "앱 아이콘 일러스트레이터, 피자 도우미 (v5 Engine Testflight)\n앱 아이콘 일러스트레이터, 피자 도우미 (v5.1+)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Иллюстратор значков приложения, The Pizza Helper (v5 Engine Testflight)"
+            "value" : "Иллюстратор значков приложения, The Pizza Helper (v5 Engine Testflight)\nИллюстратор значков приложения, The Pizza Helper (v5.1+)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5 Engine Testflight)"
+            "value" : "Trình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5 Engine Testflight)\nTrình minh họa Biểu tượng Ứng dụng, The Pizza Helper (v5.1+)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 图标画师 (统一披萨小助手 v5 引擎 TF 测试)"
+            "value" : "App 图标画师 (统一披萨小助手 v5 引擎 TF 测试)\nApp 图标画师 (统一披萨小助手 v5.1+)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 圖示繪師 (統一披薩小助手 v5 引擎 TF 測試)"
+            "value" : "App 圖示繪師 (統一披薩小助手 v5 引擎 TF 測試)\nApp 圖示繪師 (統一披薩小助手 v5.1+)"
           }
         }
       }
