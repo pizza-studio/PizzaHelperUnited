@@ -72,7 +72,9 @@ struct ContributorItem: View {
     @ViewBuilder
     private func drawAsMainMember() -> some View {
         HStack {
-            Image(iconName, bundle: .module).resizable().clipShape(Circle())
+            Image(iconName, bundle: .module)
+                .resizable()
+                .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(width: 50, height: 50)
             VStack(alignment: .leading) {
                 Group {
@@ -128,7 +130,7 @@ struct ContributorItem: View {
                 Image(iconName, bundle: .module)
                     .resizable()
                     .scaledToFit()
-                    .clipShape(Circle())
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
             }
         }
         if !extraLinks.isEmpty {
