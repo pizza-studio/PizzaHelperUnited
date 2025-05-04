@@ -43,7 +43,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .shikisuen: "avatar.shikisuen"
         case .art34222: "avatar.art34222"
         case .yulijushi: "avatar.jushi"
-        case .pan93412: "avatar.Pan93412"
+        case .pan93412: "avatar.pan93412"
         case .koni: "avatar.koni"
         case .ngo: "avatar.ngo"
         case .qiFrench: "avatar.qi"

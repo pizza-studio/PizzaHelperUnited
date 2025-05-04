@@ -25,7 +25,7 @@ public struct AboutView: View {
         Image("icon.product.pzHelper", bundle: .module)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .clipShape(.circle)
+            .clipShape(RoundedRectangle(cornerRadius: 6))
     }
 
     public var body: some View {
