@@ -15,115 +15,115 @@ let forbiddenNameTextMapHashes: [Int] = [
 // 下述档案名称对应的全都是无效档案，应全部排除在最终抓取的内容范围之外。
 
 let bannedFinalFileNames: [String] = [
-    "gi_weapon_15306.webp",
-    "gi_relic_10000_2.webp",
-    "gi_relic_10000_4.webp",
-    "gi_relic_15000_1.webp",
-    "gi_relic_15000_2.webp",
-    "gi_relic_15000_3.webp",
-    "gi_relic_15000_4.webp",
-    "gi_relic_15000_5.webp",
-    "gi_relic_15004_1.webp",
-    "gi_relic_15004_2.webp",
-    "gi_relic_15004_3.webp",
-    "gi_relic_15004_4.webp",
-    "gi_relic_15004_5.webp",
-    "gi_relic_15012_3.webp",
-    "gi_skill_A_Dvalin_AirGun.webp",
-    "gi_skill_Btn_Arana_Exchange.webp",
-    "gi_skill_Btn_Arana_Shoot.webp",
-    "gi_skill_Btn_Blocking_Burst01.webp",
-    "gi_skill_Btn_Blocking_Burst02.webp",
-    "gi_skill_Btn_Blocking_Burst03.webp",
-    "gi_skill_Btn_Blocking.webp",
-    "gi_skill_Btn_BounceConjuring_Bomb_S_01.webp",
-    "gi_skill_Btn_BounceConjuring_Bomb_S_02.webp",
-    "gi_skill_Btn_BounceConjuring_Bomb_S_03.webp",
-    "gi_skill_Btn_BounceConjuring_Hit_A_01.webp",
-    "gi_skill_Btn_BounceConjuring_Serve_S_01.webp",
-    "gi_skill_Btn_BrickBreaker_Launch.webp",
-    "gi_skill_Btn_CatchAnimal_Shoot.webp",
-    "gi_skill_Btn_FairyBook_OrigamFrog.webp",
-    "gi_skill_Btn_FairyBook_OrigamiAlpaca.webp",
-    "gi_skill_Btn_FairyBook_OrigamiSquirrel_01.webp",
-    "gi_skill_Btn_FairyBook_OrigamiSquirrel_02.webp",
-    "gi_skill_Btn_FairyBook_ToyBrick.webp",
-    "gi_skill_Btn_Fishing_Bait.webp",
-    "gi_skill_Btn_Fishing_Battle.webp",
-    "gi_skill_Btn_Fishing_Cast.webp",
-    "gi_skill_Btn_Fishing_Exit.webp",
-    "gi_skill_Btn_Fishing_Pull.webp",
-    "gi_skill_Btn_FlightSprint.webp",
-    "gi_skill_Btn_FungusFighter_Aim.webp",
-    "gi_skill_Btn_HideAndSeek_Hider_A_01.webp",
-    "gi_skill_Btn_HideAndSeek_Hider_A_03.webp",
-    "gi_skill_Btn_HideAndSeek_Hider_E_01.webp",
-    "gi_skill_Btn_HideAndSeek_Hider_S_01_Borbid.webp",
-    "gi_skill_Btn_HideAndSeek_Hider_S_01.webp",
-    "gi_skill_Btn_HideAndSeek_Hider_S_02_Borbid.webp",
-    "gi_skill_Btn_HideAndSeek_Hider_S_02.webp",
-    "gi_skill_Btn_HideAndSeek_Seeker_A_01.webp",
-    "gi_skill_Btn_HideAndSeek_Seeker_E_01.webp",
-    "gi_skill_Btn_HideAndSeek_Seeker_E_02.webp",
-    "gi_skill_Btn_HideAndSeek_Seeker_E_03.webp",
-    "gi_skill_Btn_HideAndSeek_Seeker_S_01.webp",
-    "gi_skill_Btn_HideAndSeek_Seeker_S_02.webp",
-    "gi_skill_Btn_HideAndSeekV4_Hider_A_01.webp",
-    "gi_skill_Btn_HideAndSeekV4_Hider_A_02.webp",
-    "gi_skill_Btn_HideAndSeekV4_Hider_E.webp",
-    "gi_skill_Btn_HideAndSeekV4_Hider_S.webp",
-    "gi_skill_Btn_HideAndSeekV4_Seeker_A_01.webp",
-    "gi_skill_Btn_HideAndSeekV4_Seeker_A_02.webp",
-    "gi_skill_Btn_HideAndSeekV4_Seeker_A_03.webp",
-    "gi_skill_Btn_HideAndSeekV4_Seeker_E_01.webp",
-    "gi_skill_Btn_HideAndSeekV4_Seeker_E_02.webp",
-    "gi_skill_Btn_HideAndSeekV4_Seeker_E_03.webp",
-    "gi_skill_Btn_HideAndSeekV4_Seeker_S.webp",
-    "gi_skill_Btn_PacMan.webp",
-    "gi_skill_Btn_Recon_Bait_Beans.webp",
-    "gi_skill_Btn_Recon_Bait.webp",
-    "gi_skill_Btn_Rises.webp",
-    "gi_skill_Btn_SlimeCannon_Fire_01.webp",
-    "gi_skill_Btn_SlimeCannon_Fire_04.webp",
-    "gi_skill_Btn_Temari_S_01.webp",
-    "gi_skill_Btn_Turn.webp",
-    "gi_skill_Btn_WaterSpirit_Skill.webp",
-    "gi_skill_Btn_Whale_Interrupt.webp",
-    "gi_skill_C_FairyGadgetSet.webp",
-    "gi_skill_CarpJump_01.webp",
-    "gi_skill_CarpJump_02.webp",
-    "gi_skill_Diving_Absorb.webp",
-    "gi_skill_Diving_Echo.webp",
-    "gi_skill_Diving_Jellyfish_Trigger.webp",
-    "gi_skill_Diving_Jellyfish.webp",
-    "gi_skill_Diving_Octopus.webp",
-    "gi_skill_Diving_Shield.webp",
-    "gi_skill_Diving_Slash.webp",
-    "gi_skill_E_Kate.webp",
-    "gi_skill_E_Qin.webp",
-    "gi_skill_Main_AimActive.webp",
-    "gi_skill_QuesteventSkillIcon_01.webp",
-    "gi_skill_S_Kate_01.webp",
-    "gi_skill_UI_Icon_Hunter_Net.webp",
-    "gi_skill_UI_Img_MVM_01.webp",
-    "gi_skill_UI_Img_MVM_02.webp",
-    "gi_skill_UI_Img_MVM_03.webp",
-    "gi_skill_UI_Img_MVM_Summon.webp",
-    "gi_skill_FairyTalesCurrent_Charge.webp",
-    "gi_skill_FairyTalesCurrent_Normal.webp",
-    "gi_skill_LanV3_Icon05.webp",
-    "gi_skill_LanV4PartyLion_01.webp",
-    "gi_skill_Music.webp",
-    "gi_skill_PoetryFestival_PitchPot_Icon01.webp",
-    "gi_skill_E_Monster_Shougun_EyeStrip.webp",
-    "gi_skill_E_SummerTimeV2Quest_BanSkill.webp",
-    "gi_skill_E_Gagana_AimShoot.webp",
-    "gi_skill_S_Monster_Shougun_EyeStrip.webp",
-    "gi_skill_S_LunaRiteQuest_BanSkill.webp",
-    "gi_skill_S_SummerTimeV2Quest_BanSkill.webp",
-    "gi_weapon_12304.webp",
-    "gi_weapon_13304.webp",
-    "gi_weapon_14306.webp",
+    "gi_weapon_15306.png",
+    "gi_relic_10000_2.png",
+    "gi_relic_10000_4.png",
+    "gi_relic_15000_1.png",
+    "gi_relic_15000_2.png",
+    "gi_relic_15000_3.png",
+    "gi_relic_15000_4.png",
+    "gi_relic_15000_5.png",
+    "gi_relic_15004_1.png",
+    "gi_relic_15004_2.png",
+    "gi_relic_15004_3.png",
+    "gi_relic_15004_4.png",
+    "gi_relic_15004_5.png",
+    "gi_relic_15012_3.png",
+    "gi_skill_A_Dvalin_AirGun.png",
+    "gi_skill_Btn_Arana_Exchange.png",
+    "gi_skill_Btn_Arana_Shoot.png",
+    "gi_skill_Btn_Blocking_Burst01.png",
+    "gi_skill_Btn_Blocking_Burst02.png",
+    "gi_skill_Btn_Blocking_Burst03.png",
+    "gi_skill_Btn_Blocking.png",
+    "gi_skill_Btn_BounceConjuring_Bomb_S_01.png",
+    "gi_skill_Btn_BounceConjuring_Bomb_S_02.png",
+    "gi_skill_Btn_BounceConjuring_Bomb_S_03.png",
+    "gi_skill_Btn_BounceConjuring_Hit_A_01.png",
+    "gi_skill_Btn_BounceConjuring_Serve_S_01.png",
+    "gi_skill_Btn_BrickBreaker_Launch.png",
+    "gi_skill_Btn_CatchAnimal_Shoot.png",
+    "gi_skill_Btn_FairyBook_OrigamFrog.png",
+    "gi_skill_Btn_FairyBook_OrigamiAlpaca.png",
+    "gi_skill_Btn_FairyBook_OrigamiSquirrel_01.png",
+    "gi_skill_Btn_FairyBook_OrigamiSquirrel_02.png",
+    "gi_skill_Btn_FairyBook_ToyBrick.png",
+    "gi_skill_Btn_Fishing_Bait.png",
+    "gi_skill_Btn_Fishing_Battle.png",
+    "gi_skill_Btn_Fishing_Cast.png",
+    "gi_skill_Btn_Fishing_Exit.png",
+    "gi_skill_Btn_Fishing_Pull.png",
+    "gi_skill_Btn_FlightSprint.png",
+    "gi_skill_Btn_FungusFighter_Aim.png",
+    "gi_skill_Btn_HideAndSeek_Hider_A_01.png",
+    "gi_skill_Btn_HideAndSeek_Hider_A_03.png",
+    "gi_skill_Btn_HideAndSeek_Hider_E_01.png",
+    "gi_skill_Btn_HideAndSeek_Hider_S_01_Borbid.png",
+    "gi_skill_Btn_HideAndSeek_Hider_S_01.png",
+    "gi_skill_Btn_HideAndSeek_Hider_S_02_Borbid.png",
+    "gi_skill_Btn_HideAndSeek_Hider_S_02.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_A_01.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_E_01.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_E_02.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_E_03.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_S_01.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_S_02.png",
+    "gi_skill_Btn_HideAndSeekV4_Hider_A_01.png",
+    "gi_skill_Btn_HideAndSeekV4_Hider_A_02.png",
+    "gi_skill_Btn_HideAndSeekV4_Hider_E.png",
+    "gi_skill_Btn_HideAndSeekV4_Hider_S.png",
+    "gi_skill_Btn_HideAndSeekV4_Seeker_A_01.png",
+    "gi_skill_Btn_HideAndSeekV4_Seeker_A_02.png",
+    "gi_skill_Btn_HideAndSeekV4_Seeker_A_03.png",
+    "gi_skill_Btn_HideAndSeekV4_Seeker_E_01.png",
+    "gi_skill_Btn_HideAndSeekV4_Seeker_E_02.png",
+    "gi_skill_Btn_HideAndSeekV4_Seeker_E_03.png",
+    "gi_skill_Btn_HideAndSeekV4_Seeker_S.png",
+    "gi_skill_Btn_PacMan.png",
+    "gi_skill_Btn_Recon_Bait_Beans.png",
+    "gi_skill_Btn_Recon_Bait.png",
+    "gi_skill_Btn_Rises.png",
+    "gi_skill_Btn_SlimeCannon_Fire_01.png",
+    "gi_skill_Btn_SlimeCannon_Fire_04.png",
+    "gi_skill_Btn_Temari_S_01.png",
+    "gi_skill_Btn_Turn.png",
+    "gi_skill_Btn_WaterSpirit_Skill.png",
+    "gi_skill_Btn_Whale_Interrupt.png",
+    "gi_skill_C_FairyGadgetSet.png",
+    "gi_skill_CarpJump_01.png",
+    "gi_skill_CarpJump_02.png",
+    "gi_skill_Diving_Absorb.png",
+    "gi_skill_Diving_Echo.png",
+    "gi_skill_Diving_Jellyfish_Trigger.png",
+    "gi_skill_Diving_Jellyfish.png",
+    "gi_skill_Diving_Octopus.png",
+    "gi_skill_Diving_Shield.png",
+    "gi_skill_Diving_Slash.png",
+    "gi_skill_E_Kate.png",
+    "gi_skill_E_Qin.png",
+    "gi_skill_Main_AimActive.png",
+    "gi_skill_QuesteventSkillIcon_01.png",
+    "gi_skill_S_Kate_01.png",
+    "gi_skill_UI_Icon_Hunter_Net.png",
+    "gi_skill_UI_Img_MVM_01.png",
+    "gi_skill_UI_Img_MVM_02.png",
+    "gi_skill_UI_Img_MVM_03.png",
+    "gi_skill_UI_Img_MVM_Summon.png",
+    "gi_skill_FairyTalesCurrent_Charge.png",
+    "gi_skill_FairyTalesCurrent_Normal.png",
+    "gi_skill_LanV3_Icon05.png",
+    "gi_skill_LanV4PartyLion_01.png",
+    "gi_skill_Music.png",
+    "gi_skill_PoetryFestival_PitchPot_Icon01.png",
+    "gi_skill_E_Monster_Shougun_EyeStrip.png",
+    "gi_skill_E_SummerTimeV2Quest_BanSkill.png",
+    "gi_skill_E_Gagana_AimShoot.png",
+    "gi_skill_S_Monster_Shougun_EyeStrip.png",
+    "gi_skill_S_LunaRiteQuest_BanSkill.png",
+    "gi_skill_S_SummerTimeV2Quest_BanSkill.png",
+    "gi_weapon_12304.png",
+    "gi_weapon_13304.png",
+    "gi_weapon_14306.png",
 ]
 
 // MARK: - ImageProcessingError
@@ -387,7 +387,8 @@ public enum DataType: String, CaseIterable {
             case .weapon:
                 let buffer = try decoder.decode([WeaponExcelConfigData].self, from: data)
                 buffer.filter(\.isValid).forEach { obj in
-                    writeKeyValuePair(id: obj.newFileNameStem, dict: &dict, sourceFileName: obj.awakenIcon)
+                    let compatibleSourceFileName = obj.awakenIcon.replacingOccurrences(of: "_Awaken", with: "")
+                    writeKeyValuePair(id: obj.newFileNameStem, dict: &dict, sourceFileName: compatibleSourceFileName)
                 }
             case .artifact:
                 let buffer = try decoder.decode([ReliquaryExcelConfigData].self, from: data)
@@ -409,8 +410,8 @@ public enum DataType: String, CaseIterable {
     // MARK: Internal
 
     static let agdBasePath = "https://gitlab.com/Dimbreath/AnimeGameData/-/raw/master/ExcelBinOutput/"
-    static let hksResHeader = "https://api.hakush.in/gi/UI/"
     static let enkaResHeader = "https://enka.network/ui/"
+    static let yattaMoeHeader = "https://gi.yatta.moe/assets/UI/"
 
     // MARK: Private
 
@@ -435,13 +436,13 @@ public enum DataType: String, CaseIterable {
         case .profilePicture:
             dict["gi_avatar_\(id).png"] = Self.enkaResHeader + "\(fileName).png"
         case .skill:
-            dict["gi_skill_\(id).webp"] = Self.hksResHeader + "\(fileName).webp"
+            dict["gi_skill_\(id).png"] = Self.yattaMoeHeader + "\(fileName).png"
         case .character, .characterCostumed:
-            dict["gi_character_\(id).webp"] = Self.hksResHeader + "\(fileName).webp"
+            dict["gi_character_\(id).png"] = Self.yattaMoeHeader + "\(fileName).png"
         case .weapon:
-            dict["gi_weapon_\(id).webp"] = Self.hksResHeader + "\(fileName).webp"
+            dict["gi_weapon_\(id).png"] = Self.yattaMoeHeader + "\(fileName).png"
         case .artifact:
-            dict["gi_relic_\(id).webp"] = Self.hksResHeader + "\(fileName).webp"
+            dict["gi_relic_\(id).png"] = Self.yattaMoeHeader + "reliquary/\(fileName).png"
         }
     }
 }
@@ -504,11 +505,12 @@ do {
     for (fileNameStem, data) in dataDict {
         let newURL = URL(fileURLWithPath: workSpaceDirPath + "/\(fileNameStem)")
         do {
-            if fileNameStem.hasSuffix("png") {
-                try reencodePNG(from: data).write(to: newURL, options: .atomic)
-            } else {
-                try data.write(to: newURL, options: .atomic)
-            }
+            // if fileNameStem.hasSuffix("png") {
+            //     try reencodePNG(from: data).write(to: newURL, options: .atomic)
+            // } else {
+            //     try data.write(to: newURL, options: .atomic)
+            // }
+            try data.write(to: newURL, options: .atomic)
         } catch {
             if !fileNameStem.contains("_avatar_") {
                 throw error
