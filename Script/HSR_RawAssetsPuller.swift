@@ -261,7 +261,6 @@ public enum DataType: String, CaseIterable {
 
     static let srdBasePath = "https://gitlab.com/Dimbreath/TurnBasedGameData/-/raw/main/ExcelOutput/"
     static let mar7BasePath = "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/index_new/en/"
-    static let hksResHeader = "https://api.hakush.in/hsr/UI/"
     static let mar7ResHeader = "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/"
     static let yattaResHeader = "https://sr.yatta.moe/hsr/assets/"
 
@@ -299,12 +298,12 @@ public enum DataType: String, CaseIterable {
             let fileName = sourceFileName ?? "\(id)"
             dict["hsr_skill_\(id).png"] = Self.yattaResHeader + "UI/skill/\(fileName).png"
         case .character:
-            dict["hsr_character_\(id).webp"] = Self.hksResHeader + "avatarshopicon/\(id).webp"
+            dict["hsr_character_\(id).png"] = Self.yattaResHeader + "UI/avatar/medium/\(id).png"
         case .lightCone:
-            dict["hsr_light_cone_\(id).webp"] = Self.hksResHeader + "lightconemediumicon/\(id).webp"
+            dict["hsr_light_cone_\(id).png"] = Self.yattaResHeader + "UI/equipment/\(id).png"
         case .artifact:
             let fileName = sourceFileName ?? "\(id)"
-            dict["hsr_relic_\(id).webp"] = Self.hksResHeader + "relicfigures/\(fileName).webp"
+            dict["hsr_relic_\(id).png"] = Self.yattaResHeader + "UI/relic/\(fileName).png"
         }
     }
 }
