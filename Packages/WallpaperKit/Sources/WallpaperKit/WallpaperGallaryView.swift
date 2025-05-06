@@ -74,10 +74,16 @@ public struct WallpaperGalleryViewContent: View {
                         background4App = currentCard
                     }
                     #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
-                    let alreadyChosenAsLABG = backgrounds4LiveActivity.contains(currentCard)
+                    let alreadyChosenAsLABG: Bool = liveActivityUseCustomizeBackground
+                        && !liveActivityUseEmptyBackground
+                        && backgrounds4LiveActivity.contains(currentCard)
                     Button {
                         if alreadyChosenAsLABG {
                             backgrounds4LiveActivity.remove(currentCard)
+                            if backgrounds4LiveActivity.isEmpty {
+                                liveActivityUseEmptyBackground = true
+                                liveActivityUseCustomizeBackground = false
+                            }
                         } else {
                             liveActivityUseEmptyBackground = false
                             liveActivityUseCustomizeBackground = true
