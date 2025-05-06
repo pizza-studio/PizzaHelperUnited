@@ -2,7 +2,7 @@ name: Update WallpaperKit Assets
 'on':
   workflow_dispatch: {}
   schedule:
-    - cron: 0 12 * * *
+    - cron: '0 18 * * 0,1,2,3'
 jobs:
   update:
     runs-on: macOS-15
