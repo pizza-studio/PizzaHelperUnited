@@ -48,6 +48,7 @@ public struct CharacterInventoryView: View {
 
     @ViewBuilder public var body: some View {
         basicBody
+            .toolbar(.hidden, for: .tabBar)
             .overlay {
                 AvatarStatCollectionTabView(
                     selectedAvatarID: $currentAvatarSummaryID,
