@@ -143,8 +143,8 @@ struct LiveActivitySettingsPageContent: View {
                     .allowLiveActivity
             }
         }
-        .onChange(of: scenePhase) { _, newValue in
-            if newValue == .active {
+        .onChange(of: scenePhase) { oldValue, newValue in
+            if newValue != oldValue {
                 syncLiveActivityToggleSettings()
             }
         }
