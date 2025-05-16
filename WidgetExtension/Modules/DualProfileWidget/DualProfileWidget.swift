@@ -105,11 +105,19 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
 
     @ViewBuilder var contents: some View {
         drawSingleEntry(subEntry1)
-        Divider().overlay {
+        let divider = Divider().overlay {
             Color.white.opacity(0.4)
         }
-        .frame(maxHeight: 4)
-        .padding()
+        switch family {
+        case .systemMedium:
+            divider
+                .frame(maxWidth: 4)
+                .padding()
+        default:
+            divider
+                .frame(maxHeight: 4)
+                .padding()
+        }
         drawSingleEntry(subEntry2)
     }
 
