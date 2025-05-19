@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 import PZBaseKit
 
@@ -31,9 +32,12 @@ extension Pizza.SupportedGame {
         components.host = dictionaryServerHost
         components.path = "/v1/translations/\(query)"
         components.queryItems = [.init(name: "page", value: "\(page)"), .init(name: "page_size", value: "\(pageSize)")]
-        let url = components.url!
-        let request = URLRequest(url: url)
-        let (data, _) = try await URLSession.shared.data(for: request)
-        return try JSONDecoder().decode(TranslationResult.self, from: data)
+        guard let url = components.url else {
+            throw AFError.invalidURL(url: components)
+        }
+
+        return try await AF.request(url)
+            .serializingDecodable(TranslationResult.self)
+            .value
     }
 }
