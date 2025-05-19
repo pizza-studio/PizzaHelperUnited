@@ -2,11 +2,13 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Combine
 import Defaults
 import EnkaDBModels
 import Foundation
 import Observation
+import PZBaseKit
 
 // MARK: - Enka.Sputnik
 
@@ -110,52 +112,42 @@ extension Enka.Sputnik {
     /// 从 EnkaNetwork 获取具体单笔 EnkaDB 子类型资料
     /// - Parameters:
     ///     - completion: 资料
-    static func fetchEnkaDBData<T: Codable>(
+    static func fetchEnkaDBData<T: AbleToCodeSendHash>(
         from serverType: Enka.HostType = .enkaGlobal,
         type dataType: Enka.JSONType,
         decodingTo: T.Type
     ) async throws
         -> T {
-        var dataToParse = Data([])
         var urlFinal4Debug: URL?
+        var urlFinalDebugStrLine: String {
+            "SOURCE URL: \(urlFinal4Debug?.absoluteString ?? "------")"
+        }
         do {
             let url = serverType.enkaDBSourceURL(type: dataType)
             urlFinal4Debug = url
-            let (data, _) = try await URLSession.shared.data(from: url)
-            dataToParse = data
+            return try await AF.request(url, method: .get).serializingDecodable(T.self).value
         } catch {
+            print(error)
             print(error.localizedDescription)
+            print(urlFinalDebugStrLine)
             print("// [Enka.Sputnik.fetchEnkaDBData] Attempting to use alternative JSON server source.")
             do {
                 let url2 = serverType.viceVersa.enkaDBSourceURL(type: dataType)
                 urlFinal4Debug = url2
-                let (data, _) = try await URLSession.shared.data(from: url2)
-                dataToParse = data
+                let objParsed = try await AF.request(url2, method: .get).serializingDecodable(T.self).value
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
                 var successMsg = "// [Enka.Sputnik.fetchEnkaDBData] 2nd attempt succeeded."
                 successMsg += " Will use this JSON server source from now on."
                 print(successMsg)
                 Enka.HostType.toggleEnkaDBQueryHost()
+                return objParsed
             } catch {
                 print("// [Enka.Sputnik.fetchEnkaDBData] Final attempt failed:")
                 print(error)
                 print(error.localizedDescription)
+                print(urlFinalDebugStrLine)
                 throw error
             }
-        }
-        do {
-            let requestResult = try JSONDecoder().decode(T.self, from: dataToParse)
-            return requestResult
-        } catch {
-            if dataToParse.isEmpty {
-                print("// DEBUG: [Enka.Sputnik.fetchEnkaDBData] Data Fetch Failed: \(dataType.rawValue).json")
-            } else {
-                print("// DEBUG: [Enka.Sputnik.fetchEnkaDBData] Data Parse Failed: \(dataType.rawValue).json")
-            }
-            print(error)
-            print(error.localizedDescription)
-            print("SOURCE URL: \(urlFinal4Debug?.absoluteString ?? "------")")
-            throw error
         }
     }
 }
@@ -213,33 +205,24 @@ extension Enka.Sputnik {
         server: Enka.HostType
     ) async throws
         -> (result: T, profile: T.QueriedProfileType) {
-        var dataToParse = Data([])
         do {
-            let (data, _) = try await URLSession.shared.data(
-                for: URLRequest(url: server.enkaProfileQueryURL(uid: uid, game: T.game))
-            )
-            dataToParse = data
-            var requestResult = try JSONDecoder()
-                .decode(T.self, from: dataToParse)
+            let requestURL = server.enkaProfileQueryURL(uid: uid, game: T.game)
+            var resultObj = try await AF.request(
+                requestURL, method: .get
+            ).serializingDecodable(T.self).value
             // MicroGG Genshin Results might have lack of the UID.
-            if T.game == .genshinImpact, requestResult.uid == nil {
-                requestResult.uid = uid
+            if T.game == .genshinImpact, resultObj.uid == nil {
+                resultObj.uid = uid
             }
-            guard let detailInfo = requestResult.detailInfo else {
-                let errMsgCore = requestResult.message ?? "No Error Message is Given."
+            guard let detailInfo = resultObj.detailInfo else {
+                let errMsgCore = resultObj.message ?? "No Error Message is Given."
                 throw Enka.EKError.queryFailure(uid: uid, game: T.game, message: errMsgCore)
             }
-            return (requestResult, detailInfo)
+            return (resultObj, detailInfo)
         } catch {
-            if dataToParse.isEmpty {
-                print(
-                    "// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query Failed from \(server.textTag). UID: \(uid) ."
-                )
-            } else {
-                print(
-                    "// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query Data Parse Failed from \(server.textTag). UID: \(uid) ."
-                )
-            }
+            print(
+                "// DEBUG: [Enka.Sputnik.fetchEnkaQueryResultRAW] Profile Query / Parse Failed from \(server.textTag). UID: \(uid) ."
+            )
             print(error.localizedDescription)
             throw error
         }

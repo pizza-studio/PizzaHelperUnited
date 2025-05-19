@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import ArtifactRatingDB
 import Combine
 import Defaults
@@ -74,51 +75,38 @@ extension ArtifactRating.ARSputnik {
         case countDB4GI = "CountDB4GI.json"
     }
 
-    static func fetchARDBData<T: Codable>(
+    static func fetchARDBData<T: AbleToCodeSendHash>(
         from serverType: Enka.HostType? = nil,
         type dataType: RemoteSourceFile,
         decodingTo: T.Type
     ) async throws
         -> T {
         let serverType = serverType ?? Defaults[.defaultDBQueryHost]
-        var dataToParse = Data([])
+        let debugMsg = "// DEBUG: [ARDBSputnik.fetchARDBData] Data Fetch / Parse Failed: \(dataType.rawValue).json"
         do {
-            let (data, _) = try await URLSession.shared.data(
-                for: URLRequest(url: serverType.getRemoteARDBFileURL(type: dataType))
-            )
-            dataToParse = data
+            let requestURL = serverType.getRemoteARDBFileURL(type: dataType)
+            return try await AF.request(requestURL).serializingDecodable(T.self).value
         } catch {
+            print(debugMsg)
+            print(error)
             print(error.localizedDescription)
             print("// [ARDBSputnik.fetchARDBData] Attempting to use alternative JSON server source.")
             do {
-                let (data, _) = try await URLSession.shared.data(
-                    for: URLRequest(url: serverType.viceVersa.getRemoteARDBFileURL(type: dataType))
-                )
-                dataToParse = data
+                let requestURL = serverType.viceVersa.getRemoteARDBFileURL(type: dataType)
+                let resultObj = try await AF.request(requestURL).serializingDecodable(T.self).value
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
                 var successMsg = "// [ARDBSputnik.fetchARDBData] 2nd attempt succeeded."
                 successMsg += " Will use this JSON server source from now on."
                 print(successMsg)
                 Enka.HostType.toggleEnkaDBQueryHost()
+                return resultObj
             } catch {
                 print("// [ARDBSputnik.fetchARDBData] Final attempt failed:")
+                print(debugMsg)
                 print(error)
                 print(error.localizedDescription)
                 throw error
             }
-        }
-        do {
-            let requestResult = try JSONDecoder().decode(T.self, from: dataToParse)
-            return requestResult
-        } catch {
-            if dataToParse.isEmpty {
-                print("// DEBUG: [ARDBSputnik.fetchARDBData] Data Fetch Failed: \(dataType.rawValue).json")
-            } else {
-                print("// DEBUG: [ARDBSputnik.fetchARDBData] Data Parse Failed: \(dataType.rawValue).json")
-            }
-            print(error)
-            print(error.localizedDescription)
-            throw error
         }
     }
 }
