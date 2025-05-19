@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 import PZAccountKit
 
@@ -88,7 +89,7 @@ extension HoYo {
         )
         request.printDebugIntelIfDebugMode()
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let data = try await request.serializingData().value
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.ledgerData4GI()")
     }
@@ -134,7 +135,7 @@ extension HoYo {
         )
         request.printDebugIntelIfDebugMode()
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let data = try await request.serializingData().value
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.ledgerData4HSR()")
     }

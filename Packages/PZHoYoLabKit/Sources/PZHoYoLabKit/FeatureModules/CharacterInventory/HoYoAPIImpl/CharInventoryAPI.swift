@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Defaults
 import EnkaKit
 import Foundation
@@ -80,7 +81,7 @@ extension HoYo {
         )
         request1.printDebugIntelIfDebugMode()
 
-        let (data1, _) = try await URLSession.shared.data(for: request1)
+        let data1 = try await request1.serializingData().value
 
         // #if DEBUG
         // print("-----------------------------------")
@@ -111,7 +112,7 @@ extension HoYo {
         )
         request2.printDebugIntelIfDebugMode()
 
-        let (data2, _) = try await URLSession.shared.data(for: request2)
+        let data2 = try await request2.serializingData().value
 
         // #if DEBUG
         // print("-----------------------------------")
@@ -176,7 +177,7 @@ extension HoYo {
         )
         request.printDebugIntelIfDebugMode()
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let data = try await request.serializingData().value
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.characterInventory4HSR()") {
             HYQueriedModels.HYLAvatarDetail4HSR.cacheLocalHoYoAvatars(uid: uid, data: data)

@@ -92,7 +92,7 @@ extension HoYo {
         )
         request.printDebugIntelIfDebugMode()
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let data = try await request.serializingData().value
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.AbyssReportData4GI()")
     }
@@ -148,7 +148,7 @@ extension HoYo {
         )
         request.printDebugIntelIfDebugMode()
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let data = try await request.serializingData().value
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.abyssReportData4HSR()")
     }
