@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Defaults
 import Foundation
 import PZAccountKit
@@ -185,35 +186,43 @@ extension AbyssCollector {
             throw ACError.uploadError("Remote URL Construction Failed.")
         }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = HoYo.HTTPMethod.post.rawValue
-        request.allHTTPHeaderFields = [
+        let appNameUASuffix: String = Pizza.isAppStoreRelease
+            ? "Pizza-Helper"
+            : "Pizza-Helper-Engine-Test"
+
+        // 準備請求標頭和鹽值處理
+        var headers: HTTPHeaders = [
             "Accept-Encoding": "gzip, deflate, br",
             "Accept-Language": "zh-CN,zh-Hans;q=0.9",
             "Accept": "*/*",
             "Connection": "keep-alive",
             "Content-Type": "application/json",
+            "User-Agent": "\(appNameUASuffix)/5.0",
+            "Content-Length": "\(dataToSend.count)",
         ]
-        request.setValue("Pizza-Helper/5.0", forHTTPHeaderField: "User-Agent")
-        request.httpBody = dataToSend
-        request.setValue("\(dataToSend.count)", forHTTPHeaderField: "Content-Length")
 
+        // 處理鹽值標頭
         if [.pzAvatarHolding, .pzAbyssDB].contains(dataPackType) {
-            PZAbyssDB.writeSaltedHeaders(using: dataToSend, to: &request)
+            var tempRequest = URLRequest(url: url)
+            PZAbyssDB.writeSaltedHeaders(using: dataToSend, to: &tempRequest)
+            if let additionalHeaders = tempRequest.allHTTPHeaderFields {
+                for (key, value) in additionalHeaders {
+                    headers[key] = value
+                }
+            }
         }
 
         do {
-            let (data, responseRAW) = try await URLSession.shared.data(for: request)
-            guard let response = responseRAW as? HTTPURLResponse else {
-                throw ACError.getResponseError("Not a valid HTTPURLResponse.")
-            }
+            // 使用 Alamofire 發送請求
+            let decoded = try await AF.upload(
+                dataToSend,
+                to: url,
+                method: .post,
+                headers: headers
+            )
+            .validate(statusCode: 200 ... 200)
+            .serializingDecodable(ResponseModel.self).value
 
-            guard response.statusCode == 200 else {
-                throw ACError.getResponseError("Initial HTTP Response is not 200.")
-            }
-
-            let decoded = try JSONDecoder().decode(ResponseModel.self, from: data)
-            print(decoded)
             switch decoded.retCode {
             case 0:
                 saveMD5()
