@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 import PZAccountKit
 import PZBaseKit
@@ -55,27 +56,13 @@ extension HoYo {
             gameBiz: gameBiz
         )
 
-        let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        let requestBody = try! encoder.encode(genAuthKeyParam)
-
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
         // NOTE: hostDomain is not the one for public operations.
         let hostDomain = switch profile.server.region {
         case .hoyoLab: "api-global-takumi.mihoyo.com"
         case .miyoushe: "api-takumi.mihoyo.com"
         }
-        urlComponents.host = hostDomain
-        urlComponents.path = "/binding/api/genAuthKey"
 
-        let url = urlComponents.url!
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = requestBody
-
-        print(request)
+        let baseURL = "https://\(hostDomain)/binding/api/genAuthKey"
 
         var deviceID = profile.deviceID
         if deviceID.isEmpty {
@@ -83,7 +70,7 @@ extension HoYo {
             deviceID = newDeviceID
         }
 
-        request.allHTTPHeaderFields = [
+        let headers: HTTPHeaders = [
             "Content-Type": "application/json; charset=utf-8",
             "Host": hostDomain,
             "Accept": "application/json, text/plain, */*",
@@ -96,11 +83,20 @@ extension HoYo {
             "DS": getDSTokenForGachaRecords(region: profile.server.region),
         ]
 
-        print(request.allHTTPHeaderFields!)
-        print(String(data: requestBody, encoding: .utf8)!)
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+
         var theDataStr = ""
         do {
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let data = try await AF.request(
+                baseURL,
+                method: .post,
+                parameters: genAuthKeyParam,
+                encoder: JSONParameterEncoder(encoder: encoder),
+                headers: headers
+            )
+            .serializingData().value
+            // 注：此处没有用 AF 的 API 来解码，是为了在错误讯息里面印出伺服器传回的原文。
             theDataStr = String(data: data, encoding: .utf8) ?? ""
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -133,35 +129,38 @@ extension HoYo {
         case .starRail: GachaTypeHSR.knownCases[0].rawValue
         }
 
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = URLRequestConfig.domain4PublicOps(region: server.region)
-        components.path = URLRequestConfig.gachaRecordAPIPath(game: server.game)
-        components.queryItems = [
-            .init(name: "authkey_ver", value: authkey.authkeyVer.description),
-            .init(name: "sign_type", value: authkey.signType.description),
-            .init(name: "auth_appid", value: "webview_gacha"),
-            .init(name: "win_mode", value: "fullscreen"),
-            .init(name: "timestamp", value: "\(Int(Date().timeIntervalSince1970))"),
-            .init(name: "region", value: server.rawValue),
-            .init(name: "default_gacha_type", value: gachaTypeStr),
-            .init(name: "lang", value: LANG),
-            .init(name: "game_biz", value: gameBiz),
-            .init(name: "os_system", value: "iOS 16.6"),
-            .init(name: "device_model", value: "iPhone15.2"),
-            .init(name: "plat_type", value: "ios"),
-            .init(name: "page", value: String(page)),
-            .init(name: "size", value: "20"),
-            .init(name: "gacha_type", value: gachaTypeStr),
-            .init(name: "real_gacha_type", value: gachaTypeStr),
-            .init(name: "end_id", value: endId),
-        ]
+        let host = URLRequestConfig.domain4PublicOps(region: server.region)
+        let path = URLRequestConfig.gachaRecordAPIPath(game: server.game)
+        let baseURL = "https://\(host)\(path)"
 
-        let authKeyPercEncoded = authkey.authkey.addingPercentEncoding(
-            withAllowedCharacters: .alphanumerics
-        )!
-        // 注意：不能直接将 AuthKey 塞入 URLQueryItem，否则会破坏 AuthKey。这里得用手动编码。
-        let urlString = components.url!.absoluteString + "&authkey=\(authKeyPercEncoded)"
-        return urlString
+        // 使用參數字典而非URLComponents
+        var parameters = [String: String]()
+        parameters["authkey_ver"] = authkey.authkeyVer.description
+        parameters["sign_type"] = authkey.signType.description
+        parameters["auth_appid"] = "webview_gacha"
+        parameters["win_mode"] = "fullscreen"
+        parameters["timestamp"] = "\(Int(Date().timeIntervalSince1970))"
+        parameters["region"] = server.rawValue
+        parameters["default_gacha_type"] = gachaTypeStr
+        parameters["lang"] = LANG
+        parameters["game_biz"] = gameBiz
+        parameters["os_system"] = "iOS 16.6"
+        parameters["device_model"] = "iPhone15.2"
+        parameters["plat_type"] = "ios"
+        parameters["page"] = String(page)
+        parameters["size"] = "20"
+        parameters["gacha_type"] = gachaTypeStr
+        parameters["real_gacha_type"] = gachaTypeStr
+        parameters["end_id"] = endId
+        parameters["authkey"] = authkey.authkey
+
+        // 組裝完整URL字串
+        let urlRequest = try URLRequest(url: baseURL, method: .get)
+        let encodedURLRequest = try URLEncoding.queryString.encode(urlRequest, with: parameters)
+        guard let url = encodedURLRequest.url else {
+            throw GenGachaURLError.genURLError(message: "Failed to generate URL with parameters")
+        }
+
+        return url.absoluteString
     }
 }
