@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 import PZBaseKit
 
@@ -33,24 +34,23 @@ extension HoYo {
         urlComponents.queryItems = queryItems
         let url = urlComponents.url!
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = try await URLRequestConfig.defaultHeaders(
+        var defaultHeaders = try await URLRequestConfig.defaultHeaders(
             region: region,
             deviceID: deviceID,
             additionalHeaders: additionalHeaders
         )
-        request.setValue(cookie, forHTTPHeaderField: "Cookie")
-        request.setValue(
-            URLRequestHelper.getDS(
-                region: region,
-                query: url.query ?? "",
-                body: nil
-            ),
-            forHTTPHeaderField: "DS"
+        defaultHeaders["Cookie"] = cookie
+        defaultHeaders["DS"] = URLRequestHelper.getDS(
+            region: region,
+            query: url.query ?? "",
+            body: nil
         )
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let data = try await AF.request(
+            url,
+            method: .get,
+            headers: HTTPHeaders(defaultHeaders)
+        ).serializingData().value
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.createVerification()")
     }
@@ -86,34 +86,35 @@ extension HoYo {
                 self.geetestSeccode = "\(validate)|jordan"
             }
         }
+
         let body = VerifyVerificationBody(challenge: challenge, validate: validate)
+        let url =
+            URLComponents(string: "https://api-takumi-record.mihoyo.com/game_record/app/card/wapi/verifyVerification")!
+                .url!
+
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         let bodyData = try encoder.encode(body)
 
-        let urlComponents =
-            URLComponents(string: "https://api-takumi-record.mihoyo.com/game_record/app/card/wapi/verifyVerification")!
-        let url = urlComponents.url!
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.allHTTPHeaderFields = try await URLRequestConfig.defaultHeaders(
+        var defaultHeaders = try await URLRequestConfig.defaultHeaders(
             region: region,
             deviceID: deviceID,
             additionalHeaders: additionalHeaders
         )
-        request.setValue(cookie, forHTTPHeaderField: "Cookie")
-        request.setValue(
-            URLRequestHelper.getDS(
-                region: region,
-                query: url.query ?? "",
-                body: bodyData
-            ),
-            forHTTPHeaderField: "DS"
+        defaultHeaders["Cookie"] = cookie
+        defaultHeaders["DS"] = URLRequestHelper.getDS(
+            region: region,
+            query: url.query ?? "",
+            body: bodyData
         )
-        request.httpBody = bodyData
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let data = try await AF.request(
+            url,
+            method: .post,
+            parameters: body,
+            encoder: JSONParameterEncoder(encoder: encoder),
+            headers: HTTPHeaders(defaultHeaders)
+        ).serializingData().value
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.verifyVerification()")
     }

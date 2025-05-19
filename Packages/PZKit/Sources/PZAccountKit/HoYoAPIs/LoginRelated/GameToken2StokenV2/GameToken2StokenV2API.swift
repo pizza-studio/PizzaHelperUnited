@@ -2,14 +2,11 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 
 extension HoYo {
     public static func gameToken2StokenV2(accountId: String, gameToken: String) async throws -> GameToken2StokenV2Data {
-        var request =
-            URLRequest(url: URL(string: "https://api-takumi.mihoyo.com/account/ma-cn-session/app/getTokenByGameToken")!)
-        request.httpMethod = "POST"
-
         struct Body: Encodable {
             let accountId: Int
             let gameToken: String
@@ -20,21 +17,34 @@ extension HoYo {
             }
         }
 
-        request.httpBody = try JSONEncoder().encode(Body(accountId: Int(accountId)!, gameToken: gameToken))
-        request.setValue("bll8iq97cem8", forHTTPHeaderField: "x-rpc-app_id")
+        let headers: HTTPHeaders = [
+            "x-rpc-app_id": "bll8iq97cem8",
+        ]
 
-        let (result, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: result, debugTag: "HoYo.gameToken2StokenV2()")
+        let body = Body(accountId: Int(accountId)!, gameToken: gameToken)
+
+        let data = try await AF.request(
+            "https://api-takumi.mihoyo.com/account/ma-cn-session/app/getTokenByGameToken",
+            method: .post,
+            parameters: body,
+            encoder: JSONParameterEncoder.default,
+            headers: headers
+        ).serializingData().value
+
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.gameToken2StokenV2()")
     }
 
     public static func stoken2LTokenV1(mid: String, stoken: String) async throws -> Stoken2LTokenV1Data {
-        var request =
-            URLRequest(url: URL(string: "https://passport-api.mihoyo.com/account/auth/api/getLTokenBySToken")!)
-        request.httpMethod = "GET"
+        let headers: HTTPHeaders = [
+            "cookie": "mid=\(mid); stoken=\(stoken); ",
+        ]
 
-        request.setValue("mid=\(mid); stoken=\(stoken); ", forHTTPHeaderField: "cookie")
+        let data = try await AF.request(
+            "https://passport-api.mihoyo.com/account/auth/api/getLTokenBySToken",
+            method: .get,
+            headers: headers
+        ).serializingData().value
 
-        let (result, _) = try await URLSession.shared.data(for: request)
-        return try .decodeFromMiHoYoAPIJSONResult(data: result, debugTag: "HoYo.stoken2LTokenV1()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.stoken2LTokenV1()")
     }
 }

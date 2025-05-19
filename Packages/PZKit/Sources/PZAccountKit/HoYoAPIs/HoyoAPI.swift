@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 
 // MARK: - HoYo
@@ -19,7 +20,7 @@ extension HoYo {
     ///   - cookie: cookie of request.
     /// - Returns: `URLRequest`
     public static func generateRecordAPIRequest(
-        httpMethod: HTTPMethod = .get,
+        httpMethod: Alamofire.HTTPMethod = .get,
         region: HoYo.AccountRegion,
         path: String,
         queryItems: [URLQueryItem],
@@ -28,7 +29,7 @@ extension HoYo {
         deviceID: String? = nil,
         additionalHeaders: [String: String]? = nil
     ) async throws
-        -> URLRequest {
+        -> DataRequest {
         try await generateRequest(
             httpMethod: httpMethod,
             region: region,
@@ -52,7 +53,7 @@ extension HoYo {
     ///   - cookie: cookie of request.
     /// - Returns: `URLRequest`
     public static func generateAccountAPIRequest(
-        httpMethod: HTTPMethod = .get,
+        httpMethod: Alamofire.HTTPMethod = .get,
         region: HoYo.AccountRegion,
         path: String,
         queryItems: [URLQueryItem],
@@ -61,7 +62,7 @@ extension HoYo {
         deviceID: String? = nil,
         additionalHeaders: [String: String]? = nil
     ) async throws
-        -> URLRequest {
+        -> DataRequest {
         try await generateRequest(
             httpMethod: httpMethod,
             region: region,
@@ -86,31 +87,30 @@ extension HoYo {
     ///   - cookie: cookie of request.
     /// - Returns: `URLRequest`
     public static func generateRequest(
-        httpMethod: HTTPMethod = .get,
+        httpMethod: Alamofire.HTTPMethod = .get,
         region: HoYo.AccountRegion,
         host: String,
         path: String,
-        queryItems: [URLQueryItem],
+        queryItems queryItemsGiven: [URLQueryItem],
         body: Data? = nil,
         cookie: String? = nil,
         deviceID: String? = nil,
         additionalHeaders: [String: String]?
     ) async throws
-        -> URLRequest {
+        -> DataRequest {
+        // Copilot (Claude) 不建议将 request 的构筑过程用 AFNetworking 重写，因为徒增失误之风险且没有正面收益。
         var components = URLComponents()
-
         components.scheme = "https"
-
         components.host = host
-
         components.path = path
-
-        components.queryItems = queryItems
+        components.queryItems = queryItemsGiven
 
         guard let url = components.url else {
             let unknownErrorRetcode = -9999
             throw MiHoYoAPIError(retcode: unknownErrorRetcode, message: "Unknown error. Please contact developer. ")
         }
+        let queryStr = url.query ?? ""
+        let dsValue = URLRequestHelper.getDS(region: region, query: queryStr, body: body)
 
         var request = URLRequest(url: url)
 
@@ -128,10 +128,7 @@ extension HoYo {
             request.setValue(cookie, forHTTPHeaderField: "Cookie")
         }
 
-        request.setValue(
-            URLRequestHelper.getDS(region: region, query: url.query ?? "", body: body),
-            forHTTPHeaderField: "DS"
-        )
+        request.setValue(dsValue, forHTTPHeaderField: "DS")
         if let body = body {
             request.httpBody = body
             request.setValue(
@@ -140,12 +137,16 @@ extension HoYo {
             )
         }
 
-        return request
+        return AF.request(request)
     }
+}
 
-    public enum HTTPMethod: String {
-        case post = "POST"
-        case get = "GET"
-        case put = "PUT"
+extension [URLQueryItem] {
+    public var asAFParameter: Alamofire.Parameters {
+        var result = Alamofire.Parameters()
+        self.forEach { queryItem in
+            result[queryItem.name] = queryItem.value
+        }
+        return result
     }
 }

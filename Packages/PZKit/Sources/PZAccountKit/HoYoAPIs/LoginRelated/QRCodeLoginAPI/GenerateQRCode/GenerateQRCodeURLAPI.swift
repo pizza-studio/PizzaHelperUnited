@@ -3,25 +3,29 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 #if !os(watchOS)
+import Alamofire
 import CoreImage
 import Foundation
 
 extension HoYo {
     public static func generateQRCodeURL(deviceId: UUID) async throws -> (url: URL, ticket: String) {
-        var request = URLRequest(url: QRCodeShared.url4Fetch)
-        request.httpMethod = "POST"
-
         struct Body: Encodable {
             let appId: String
             let device: String
         }
 
-        let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
+        let parameters = Body(appId: QRCodeShared.appID, device: deviceId.uuidString)
 
-        request.httpBody = try encoder.encode(Body(appId: QRCodeShared.appID, device: deviceId.uuidString))
-
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let data = try await AF.request(
+            QRCodeShared.url4Fetch,
+            method: .post,
+            parameters: parameters,
+            encoder: JSONParameterEncoder(encoder: {
+                let encoder = JSONEncoder()
+                encoder.keyEncodingStrategy = .convertToSnakeCase
+                return encoder
+            }())
+        ).serializingData().value
 
         let resultData = try GenerateQRCodeURLData.decodeFromMiHoYoAPIJSONResult(
             data: data,
