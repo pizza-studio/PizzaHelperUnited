@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 import PZBaseKit
 
@@ -53,8 +54,7 @@ extension HoYo {
             additionalHeaders: additionalHeaders
         )
 
-        let (data, _) = try await URLSession.shared.data(for: request)
-
+        let data = try await request.serializingData().value
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.getNote4ZZZ") {
             Note4ZZZ.CacheSputnik.cache(data, uidWithGame: uidWithGame)
         }

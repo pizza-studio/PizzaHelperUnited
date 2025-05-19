@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Defaults
 import Foundation
 import PZBaseKit
@@ -35,7 +36,7 @@ extension HoYo {
             Defaults[.lastDefaultFingerprintRefreshDate] = .now // 确保 UserDefaults 有写入的值、而不是每次读取时都给默认值。
         }
         let refreshDate = Defaults[.lastDefaultFingerprintRefreshDate]
-        let url = URL(string: "\(region.publicDataHostURLHeader)/device-fp/api/getFp")!
+        let url = "\(region.publicDataHostURLHeader)/device-fp/api/getFp"
         let initialDeviceID = await ThisDevice.getDeviceID4Vendor(deviceID)
         let deviceId = (initialDeviceID + refreshDate.timeIntervalSince1970.description).md5
         let seedID = generateSeed()
@@ -50,13 +51,18 @@ extension HoYo {
             "app_name": region.rawValue,
             "device_fp": initialRandomFp,
         ]
-        var request = URLRequest(url: url)
-        request.httpBody = try JSONEncoder().encode(body)
-        request.httpMethod = "POST"
-        let (data, _) = try await URLSession.shared.data(for: request)
+
+        let data = try await AF.request(
+            url,
+            method: .post,
+            parameters: body,
+            encoder: JSONParameterEncoder.default
+        ).serializingData().value
+
         #if DEBUG
         print(String(data: data, encoding: .utf8) ?? "")
         #endif
+
         let fingerPrint = try DeviceFingerPrintResult
             .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.getDeviceFingerPrint()")
             .device_fp

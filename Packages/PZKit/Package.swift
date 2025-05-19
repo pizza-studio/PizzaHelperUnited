@@ -66,6 +66,10 @@ let package = Package(
                     name: "Sworm",
                     package: "Sworm"
                 )
+                Target.Dependency.product(
+                    name: "Alamofire",
+                    package: "Alamofire"
+                )
             },
             resources: buildResources {
                 Resource.process("Resources/")
