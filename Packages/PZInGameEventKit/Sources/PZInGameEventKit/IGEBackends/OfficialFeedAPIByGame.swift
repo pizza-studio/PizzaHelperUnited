@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 import PZAccountKit
 import PZBaseKit
@@ -19,16 +20,21 @@ extension Pizza.SupportedGame {
             // EventContent
             await HoYo.waitFor300ms()
             let urlDataC = getOfficialEventFeedURL(server, lang: lang, isContent: true)
-            let dataC = try await URLSession.shared.data(from: urlDataC)
+            let dataC = try await AF.request(urlDataC)
+                .validate(statusCode: 200 ... 200).serializingData().value
             let objContent = try HoYoEventPack.HoYoEventContent.decodeFromMiHoYoAPIJSONResult(
-                data: dataC.0,
-                debugTag: ""
+                data: dataC,
+                debugTag: "getOfficialFeedPackageOnline.dataC"
             )
             // EventMeta
             await HoYo.waitFor300ms()
             let urlDataM = getOfficialEventFeedURL(server, lang: lang, isContent: false)
-            let dataM = try await URLSession.shared.data(from: urlDataM)
-            let objMeta = try HoYoEventPack.HoYoEventMeta.decodeFromMiHoYoAPIJSONResult(data: dataM.0, debugTag: "")
+            let dataM = try await AF.request(urlDataM)
+                .validate(statusCode: 200 ... 200).serializingData().value
+            let objMeta = try HoYoEventPack.HoYoEventMeta.decodeFromMiHoYoAPIJSONResult(
+                data: dataM,
+                debugTag: "getOfficialFeedPackageOnline.dataM"
+            )
             // Assemble
             return .success(.init(content: objContent, meta: objMeta))
         } catch {
