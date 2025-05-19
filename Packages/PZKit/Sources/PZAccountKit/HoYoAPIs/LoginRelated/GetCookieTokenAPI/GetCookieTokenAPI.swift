@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 import PZBaseKit
 
@@ -21,8 +22,7 @@ extension HoYo {
             cookie: cookie,
             additionalHeaders: nil
         )
-        let (data, _) = try await URLSession.shared.data(for: request)
-
+        let data = try await request.serializingData().value
         let result = try GetCookieTokenResult.decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.cookieToken()")
 
         return result
