@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Defaults
 import Foundation
 import PZAccountKit
@@ -14,13 +15,13 @@ func testDecodingOnlineFetchedOfficialFeeds() async throws {
     for game in Pizza.SupportedGame.allCases {
         // Test EventContent
         let urlDataC = game.getOfficialEventFeedURL(.asia(game), lang: .langJP, isContent: true)
-        let dataC = try await URLSession.shared.data(from: urlDataC)
-        let objContent = try HoYoEventPack.HoYoEventContent.decodeFromMiHoYoAPIJSONResult(data: dataC.0, debugTag: "")
+        let resultC = try await AF.request(urlDataC).serializingData().value
+        let objContent = try HoYoEventPack.HoYoEventContent.decodeFromMiHoYoAPIJSONResult(data: resultC, debugTag: "")
         print(objContent.total)
         // Test EventMeta
         let urlDataM = game.getOfficialEventFeedURL(.asia(game), lang: .langJP, isContent: false)
-        let dataM = try await URLSession.shared.data(from: urlDataM)
-        let objMeta = try HoYoEventPack.HoYoEventMeta.decodeFromMiHoYoAPIJSONResult(data: dataM.0, debugTag: "")
+        let resultM = try await AF.request(urlDataM).serializingData().value
+        let objMeta = try HoYoEventPack.HoYoEventMeta.decodeFromMiHoYoAPIJSONResult(data: resultM, debugTag: "")
         print(objMeta.list.count)
     }
 }
