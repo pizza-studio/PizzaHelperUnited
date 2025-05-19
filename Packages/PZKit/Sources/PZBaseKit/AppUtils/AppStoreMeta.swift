@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Defaults
 import Foundation
 import Observation
@@ -55,10 +56,8 @@ public actor ASMetaSputnik: Sendable {
     @discardableResult
     public func updateMeta() async -> Bool {
         guard Date.now.timeIntervalSince1970 - lastTimeCheckingUpdates.timeIntervalSince1970 > 60 else { return false }
-        guard let url = URL(string: Self.apiURLStr) else { return false }
-        guard let (data, _) = try? await URLSession.shared.data(from: url) else { return false }
-        guard let decoded = try? JSONDecoder().decode(ASMetaResult.self, from: data) else { return false }
-        guard let meta = decoded.results.first else { return false }
+        let afReqParsed = AF.request(Self.apiURLStr).serializingDecodable(ASMetaResult.self)
+        guard let meta = try? await afReqParsed.value.results.first else { return false }
         Defaults[.cachedAppStoreMeta] = meta
         return true
     }

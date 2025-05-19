@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import CryptoKit
 import Foundation
 
@@ -26,6 +27,12 @@ extension URLRequest {
         }
         print("---------------------------------------------")
         #endif
+    }
+}
+
+extension Alamofire.DataRequest {
+    public func printDebugIntelIfDebugMode() {
+        convertible.urlRequest?.printDebugIntelIfDebugMode()
     }
 }
 
