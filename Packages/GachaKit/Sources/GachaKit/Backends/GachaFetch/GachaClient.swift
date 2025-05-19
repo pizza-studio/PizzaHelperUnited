@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 import PZAccountKit
 
@@ -77,7 +78,7 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         let sleepNS = Double.random(in: GachaClient.getGachaDelayRangeRandom)
         do {
             try? await Task.sleep(nanoseconds: UInt64(sleepNS * 1_000_000_000))
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let data = try await request.serializingData().value
             var result = try GachaResult.decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "GachaClient().next()")
             result.listConverted = []
             var shouldJumpToNextGachaType = false
@@ -172,41 +173,52 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         gachaType: GachaType,
         endID: String
     )
-        -> URLRequest {
+        -> DataRequest {
         let langRawValue: String = switch gachaType.game {
         case .genshinImpact: GachaLanguage.langCHS.rawValue
         default: GachaLanguage.current.rawValue
         }
 
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = URLRequestConfig.domain4PublicOps(region: basicParam.server.region)
-        components.path = URLRequestConfig.gachaRecordAPIPath(game: gachaType.game)
-        components.queryItems = [
-            .init(name: "authkey_ver", value: basicParam.authenticationKeyVersion),
-            .init(name: "sign_type", value: basicParam.signType),
-            .init(name: "auth_appid", value: "webview_gacha"),
-            .init(name: "win_mode", value: "fullscreen"),
-            .init(name: "timestamp", value: "\(Int(Date().timeIntervalSince1970))"),
-            .init(name: "region", value: basicParam.server.rawValue),
-            .init(name: "default_gacha_type", value: GachaType.knownCases[0].rawValue),
-            .init(name: "lang", value: langRawValue),
-            .init(name: "game_biz", value: basicParam.server.region.rawValue),
-            .init(name: "os_system", value: "iOS 16.6"),
-            .init(name: "device_model", value: "iPhone15.2"),
-            .init(name: "plat_type", value: "ios"),
-            .init(name: "page", value: "\(page)"),
-            .init(name: "size", value: "\(size)"),
-            .init(name: "gacha_type", value: gachaType.rawValue),
-            .init(name: "real_gacha_type", value: gachaType.rawValue),
-            .init(name: "end_id", value: endID),
-        ]
-        let authKeyRaw = basicParam.authenticationKey
-        let authKeyPercEncoded = authKeyRaw.addingPercentEncoding(
-            withAllowedCharacters: .alphanumerics
-        )!
-        // 注意：不能直接将 AuthKey 塞入 URLQueryItem，否则会破坏 AuthKey。这里得用手动编码。
-        let urlString = components.url!.absoluteString + "&authkey=\(authKeyPercEncoded)"
-        return URLRequest(url: URL(string: urlString)!)
+        let host = URLRequestConfig.domain4PublicOps(region: basicParam.server.region)
+        let path = URLRequestConfig.gachaRecordAPIPath(game: gachaType.game)
+        let baseURL = "https://\(host)\(path)"
+
+        // 改用明确的字典型别，避免 Any 型别问题
+        var parameters = [String: String]()
+        parameters["authkey_ver"] = basicParam.authenticationKeyVersion
+        parameters["sign_type"] = basicParam.signType
+        parameters["auth_appid"] = "webview_gacha"
+        parameters["win_mode"] = "fullscreen"
+        parameters["timestamp"] = "\(Int(Date().timeIntervalSince1970))"
+        parameters["region"] = basicParam.server.rawValue
+        parameters["default_gacha_type"] = GachaType.knownCases[0].rawValue
+        parameters["lang"] = langRawValue
+        parameters["game_biz"] = basicParam.server.region.rawValue
+        parameters["os_system"] = "iOS 16.6"
+        parameters["device_model"] = "iPhone15.2"
+        parameters["plat_type"] = "ios"
+        parameters["page"] = "\(page)"
+        parameters["size"] = "\(size)"
+        parameters["gacha_type"] = gachaType.rawValue
+        parameters["real_gacha_type"] = gachaType.rawValue
+        parameters["end_id"] = endID
+        parameters["authkey"] = basicParam.authenticationKey // Alamofire 似乎不会损毁这个参数值。
+
+        // 使用 interceptor 确保请求可靠性
+        let interceptor = RetryPolicy()
+
+        return AF.request(
+            baseURL,
+            method: .get,
+            parameters: parameters,
+            headers: nil,
+            interceptor: interceptor
+        )
+        .cURLDescription { description in
+            // 仅在侦错时输出，避免敏感信息泄漏
+            #if DEBUG
+            print(description)
+            #endif
+        }
     }
 }

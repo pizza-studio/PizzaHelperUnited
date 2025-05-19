@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Combine
 import Defaults
 import EnkaKit
@@ -88,31 +89,27 @@ extension GachaMeta.Sputnik {
         from serverType: HoYo.AccountRegion
     ) async throws
         -> GachaMeta.MetaDB {
-        var dataToParse = Data([])
         do {
-            let (data, _) = try await URLSession.shared.data(
-                for: URLRequest(url: serverType.gachaMetaDBRemoteURL)
-            )
-            dataToParse = data
+            return try await AF.request(serverType.gachaMetaDBRemoteURL)
+                .serializingDecodable(GachaMeta.MetaDB.self)
+                .value
         } catch {
             print(error.localizedDescription)
             print("// [GachaMeta.MetaDB.fetchPreCompiledData] Attempt using alternative JSON server source.")
             do {
-                let (data, _) = try await URLSession.shared.data(
-                    for: URLRequest(url: serverType.gmdbServerViceVersa.gachaMetaDBRemoteURL)
-                )
-                dataToParse = data
+                let resultObj = try await AF.request(serverType.gmdbServerViceVersa.gachaMetaDBRemoteURL)
+                    .serializingDecodable(GachaMeta.MetaDB.self)
+                    .value
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
                 let successMsg = "// [GachaMeta.MetaDB.fetchPreCompiledData] 2nd attempt succeeded."
                 print(successMsg)
+                return resultObj
             } catch {
                 print("// [GachaMeta.MetaDB.fetchPreCompiledData] Final attempt failed:")
                 print(error.localizedDescription)
                 throw error
             }
         }
-        let requestResult = try JSONDecoder().decode(GachaMeta.MetaDB.self, from: dataToParse)
-        return requestResult
     }
 }
 
