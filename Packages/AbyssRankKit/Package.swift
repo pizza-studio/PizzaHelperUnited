@@ -19,6 +19,7 @@ let package = Package(
         .package(path: "../EnkaKit"),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")),
         .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")),
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -31,6 +32,7 @@ let package = Package(
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
+                .product(name: "Alamofire", package: "Alamofire"),
             ]
         ),
         .testTarget(
