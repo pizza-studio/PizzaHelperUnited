@@ -17,6 +17,7 @@ let package = Package(
     dependencies: [
         .package(path: "../PZKit"),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")),
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -26,6 +27,7 @@ let package = Package(
             dependencies: [
                 .product(name: "PZBaseKit", package: "PZKit"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+                .product(name: "Alamofire", package: "Alamofire"),
             ]
         ),
         .testTarget(
