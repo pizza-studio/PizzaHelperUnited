@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import Foundation
 import PZBaseKit
 
@@ -33,71 +34,74 @@ struct HttpMethod<T: Decodable & Sendable>: Sendable {
         paramDict: [String: String] = [:]
     ) async throws
         -> T {
-        // 请求url前缀，后跟request的类型
-        let baseStr: String = baseHost
-        // 由前缀和后缀共同组成的url
-        var url = URLComponents(string: baseStr + urlStr)!
-        url.queryItems = url.queryItems ?? []
-        url.queryItems?.append(
-            contentsOf: paramDict.map { URLQueryItem(name: $0.key, value: $0.value) }
-        )
+        // 完整 URL 字串
+        let fullURLString = baseHost + urlStr
 
-        // 初始化请求
-        var request = URLRequest(url: url.url!)
-        // 设置请求头
-        request.allHTTPHeaderFields = [
+        // 准备请求头
+        var headers: HTTPHeaders = [
             "Accept-Encoding": "gzip, deflate, br",
             "Accept-Language": "zh-CN,zh-Hans;q=0.9",
             "Accept": "*/*",
             "Connection": "keep-alive",
             "Content-Type": "application/json",
+            "User-Agent": "Genshin-Pizza-Helper/3.0",
         ]
 
-        request.setValue("Genshin-Pizza-Helper/3.0", forHTTPHeaderField: "User-Agent")
-        for header in headersDict {
-            request.setValue(header.value, forHTTPHeaderField: header.key)
+        // 添加自订请求头
+        for (key, value) in headersDict {
+            headers[key] = value
         }
-        // http方法
-        request.httpMethod = method.rawValue
-        // request body
-        if let body = body {
-            request.httpBody = body
-            request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
-        }
-        // print(request)
-        // print(request.allHTTPHeaderFields!)
-        // print(String(data: request.httpBody!, encoding: .utf8)!)
-        // 开始请求
 
+        // 开始 Alamofire 请求
         do {
-            var (data, response) = try await URLSession.shared.data(for: request)
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print("response error")
-                throw RequestError.responseError
+            // 使用 AF.request 并转换为 async/await
+            let afRequest = AF.request(
+                fullURLString,
+                method: HTTPMethod(rawValue: method.rawValue),
+                parameters: paramDict.isEmpty ? nil : paramDict,
+                encoding: paramDict.isEmpty ? JSONEncoding.default : URLEncoding.queryString,
+                headers: headers,
+                requestModifier: { request in
+                    if let body = body {
+                        request.httpBody = body
+                    }
+                }
+            )
+
+            // 使用 Alamofire 的 serializingDecodable 直接解码到目标类型
+            let response = afRequest
+                .validate(statusCode: 200 ... 200) // 仅接受 200 状态码
+                .serializingString() // 先获取字串以便处理 NaN
+
+            // 处理 NaN 问题
+            let cleanedString = try await response.value.replacingOccurrences(of: "\"NaN\"", with: "0")
+            guard let cleanedData = cleanedString.data(using: .utf8) else {
+                throw RequestError.decodeError("无法将处理后的字串转换回 Data")
             }
-            let statusCode = response.statusCode.description
-            guard let stringData = String(
-                data: data,
-                encoding: .utf8
-            ) else {
-                throw RequestError.decodeError("fail convert data to .utf8 string")
-            }
-            print(stringData)
-            data = stringData.replacingOccurrences(of: "\"NaN\"", with: "0").data(using: .utf8)!
-            let decoder = JSONDecoder()
-            print(statusCode)
-            print(stringData)
+            let resp = await response.response
+            print("状态码: \(resp.response?.statusCode ?? 0)")
+            print("响应内容: \(cleanedString)")
+
+            // 手动解码处理过的数据
             do {
-                return try decoder.decode(T.self, from: data)
+                let decoder = JSONDecoder()
+                return try decoder.decode(T.self, from: cleanedData)
             } catch {
                 print(error)
                 throw RequestError.decodeError("\(error)")
             }
         } catch {
-            print(error)
-            print(
-                "DataTask error in General HttpMethod: \(error)\n"
-            )
+            print("Alamofire 请求错误: \(error)")
+
+            // 将 Alamofire 错误转换为自定义错误
+            if let afError = error as? AFError {
+                if afError.isResponseValidationError {
+                    throw RequestError.responseError
+                } else if afError.isResponseSerializationError {
+                    throw RequestError.decodeError("\(afError)")
+                }
+            }
+
             throw RequestError.dataTaskError("\(error)")
         }
     }
