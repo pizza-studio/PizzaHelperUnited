@@ -37,6 +37,9 @@ let package = Package(
         Package.Dependency.package(
             url: "https://github.com/prisma-ai/Sworm.git", .upToNextMajor(from: "1.1.0")
         )
+        Package.Dependency.package(
+            url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
+        )
     },
     targets: buildTargets {
         // MARK: - Common Targets
@@ -47,6 +50,10 @@ let package = Package(
                 Target.Dependency.product(
                     name: "Defaults",
                     package: "Defaults"
+                )
+                Target.Dependency.product(
+                    name: "Alamofire",
+                    package: "Alamofire"
                 )
             },
             swiftSettings: sharedSwiftSettings
