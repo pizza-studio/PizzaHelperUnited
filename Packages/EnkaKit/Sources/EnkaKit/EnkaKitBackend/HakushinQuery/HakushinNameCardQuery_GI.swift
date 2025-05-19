@@ -6,6 +6,7 @@
 // 由于用来查询的论据（角色 ID、道具 ID、服装 ID 等）并不出自内鬼泄漏的内容，
 // 所以 App 据此在 Hakushin 只能拿到公开正式版游戏的结果。
 
+import Alamofire
 import Foundation
 import PZBaseKit
 
@@ -42,10 +43,14 @@ extension HakushinCharacter4GI {
             initID += "-\(charIDStr.suffix(1))"
         }
         let urlStr = "https://api.hakush.in/gi/data/en/character/\(initID).json"
-        let (data, _) = try await URLSession.shared.data(from: urlStr.asURL)
+
+        // 同时使用 Alamofire 的 responseDecodable 直接解析 JSON
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromPascalCase
-        return try decoder.decode(Self.self, from: data)
+
+        return try await AF.request(urlStr)
+            .serializingDecodable(Self.self, decoder: decoder)
+            .value
     }
 
     private func namecardURLStr() -> String {

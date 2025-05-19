@@ -29,6 +29,9 @@ let package = Package(
         .package(
             url: "https://github.com/pizza-studio/ArtifactRatingDB.git", .upToNextMajor(from: "1.1.3")
         ),
+        .package(
+            url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
+        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -44,6 +47,7 @@ let package = Package(
                 .product(name: "ArtifactRatingDB", package: "ArtifactRatingDB"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
+                .product(name: "Alamofire", package: "Alamofire"),
             ],
             resources: [
                 .process("Assets/"),
