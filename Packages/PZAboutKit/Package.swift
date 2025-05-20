@@ -17,7 +17,7 @@ let package = Package(
     dependencies: [
         .package(path: "../PZKit"),
         .package(
-            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.1")
+            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
         ),
         .package(
             url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")

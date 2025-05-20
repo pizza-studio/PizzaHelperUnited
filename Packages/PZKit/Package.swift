@@ -32,7 +32,7 @@ let package = Package(
     dependencies: buildPackageDependencies {
         // 将参数都弄成单行，方便用脚本来更新这些内容的版本号。
         Package.Dependency.package(
-            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.1")
+            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
         )
         Package.Dependency.package(
             url: "https://github.com/prisma-ai/Sworm.git", .upToNextMajor(from: "1.1.0")
