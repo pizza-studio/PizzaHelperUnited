@@ -242,66 +242,8 @@ extension DetailPortalViewModel {
                     print(error)
                     continue
                 }
-
-                // 临时措施。过了 2024-12-15 之后可以删掉这一段。胡桃深渊排行榜不允许补交往期记录，故忽略之。
-                prevUpload: if [.pzAbyssDB].contains(commissionType) {
-                    guard Date.now.isTodayNotLaterThan2024Dec16(in: profile.server.timeZoneDelta)
-                    else { break prevUpload }
-                    guard let previousAbyssData = (abyssDataSet as? AbyssReportSet4GI)?.previous
-                    else { break prevUpload }
-                    do {
-                        let holdingResult = try await abyssCollector.commitAbyssRecord(
-                            profile: profile,
-                            abyssData: previousAbyssData,
-                            inventoryData: inventoryData as? HoYo.CharInventory4GI,
-                            travelStats: travelStats as? HoYo.TravelStatsData4GI,
-                            commissionType: commissionType
-                        )
-                        guard holdingResult.hasNoCriticalError else {
-                            switch holdingResult {
-                            case .success: return
-                            case let .failure(theError): throw theError
-                            }
-                        }
-                    } catch {
-                        print(error)
-                        continue
-                    }
-                }
             }
             await abyssCollector.updateCDTime()
-        }
-    }
-}
-
-// MARK: - 临时措施。过了 2024-12-15 之后可以删掉这一段。
-
-extension Date {
-    /// Checks if today's date in a specified time zone offset is not later than December 15, 2024.
-    /// - Parameter timeZoneDelta: The time zone offset in hours (e.g., +5 for UTC+5, -8 for UTC-8).
-    /// - Returns: `true` if today's date in the specified time zone is not later than December 15, 2024; otherwise, `false`.
-    fileprivate func isTodayNotLaterThan2024Dec16(in timeZoneDelta: Int) -> Bool {
-        // Create the time zone with the specified offset
-        guard let timeZone = TimeZone(secondsFromGMT: timeZoneDelta * 3600) else {
-            fatalError("Invalid time zone offset.")
-        }
-
-        // Create a calendar with the specified time zone
-        var calendar = Calendar.gregorian
-        calendar.timeZone = timeZone
-
-        // Get today's date in the specified time zone
-        let todayComponents = calendar.dateComponents([.year, .month, .day], from: self)
-
-        // Create the target date (December 15, 2024)
-        let targetDateComponents = DateComponents(year: 2024, month: 12, day: 16)
-
-        // Compare dates
-        if let today = calendar.date(from: todayComponents),
-           let targetDate = calendar.date(from: targetDateComponents) {
-            return today <= targetDate
-        } else {
-            fatalError("Failed to construct dates for comparison.")
         }
     }
 }
