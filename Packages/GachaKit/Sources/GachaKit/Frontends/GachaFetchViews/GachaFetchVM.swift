@@ -430,9 +430,10 @@ private class GachaBleachSputnik {
 
     private var allExistingTimeTagsInDB: [TimeTag] {
         let gameStr = game.rawValue
+        let thisUID = uid
         var request = FetchDescriptor<PZGachaEntryMO>(
             predicate: #Predicate {
-                $0.uid == uid && $0.game == gameStr
+                $0.uid == thisUID && $0.game == gameStr
             }
         )
         request.propertiesToFetch = [\.time, \.uid, \.game]
@@ -462,9 +463,10 @@ private class GachaBleachSputnik {
         guard !validTransactionIDs.isEmpty else { return }
         let gameStr = game.rawValue
         let timeTagStr = timeTag.timeTagStr
+        let thisUID = uid
         var request = FetchDescriptor<PZGachaEntryMO>(
             predicate: #Predicate {
-                $0.time == timeTagStr && $0.uid == uid && $0.game == gameStr
+                $0.time == timeTagStr && $0.uid == thisUID && $0.game == gameStr
             }
         )
         request.propertiesToFetch = [\.id, \.uid, \.game, \.time]
