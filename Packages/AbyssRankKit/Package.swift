@@ -17,7 +17,7 @@ let package = Package(
     dependencies: [
         .package(path: "../PZKit"),
         .package(path: "../EnkaKit"),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")),
         .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")),
     ],
     targets: [
