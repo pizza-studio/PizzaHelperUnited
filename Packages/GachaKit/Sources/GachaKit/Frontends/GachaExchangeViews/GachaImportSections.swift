@@ -267,16 +267,14 @@ extension GachaImportSections {
 
     private var dateFormatterGMT: DateFormatter {
         let fmt = DateFormatter.GregorianPOSIX()
-        fmt.dateStyle = .medium
-        fmt.timeStyle = .medium
+        fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
         fmt.timeZone = .gmt
         return fmt
     }
 
     private var dateFormatterCurrent: DateFormatter {
         let fmt = DateFormatter.GregorianPOSIX()
-        fmt.dateStyle = .medium
-        fmt.timeStyle = .medium
+        fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
         fmt.timeZone = .autoupdatingCurrent
         return fmt
     }
