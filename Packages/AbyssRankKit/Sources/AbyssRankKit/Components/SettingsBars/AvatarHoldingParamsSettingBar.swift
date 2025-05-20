@@ -41,8 +41,7 @@ struct AvatarHoldingAPIParameters: Sendable, Equatable {
     func describe() -> String {
         let dateString: String = {
             let formatter = DateFormatter.GregorianPOSIX()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .none
+            formatter.dateFormat = "yyyy-MM-dd"
             return formatter.string(from: date)
         }()
         return String(
