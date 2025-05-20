@@ -19,7 +19,7 @@ let package = Package(
         .package(
             url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
         ),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
