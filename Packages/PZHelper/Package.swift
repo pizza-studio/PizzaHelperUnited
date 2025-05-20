@@ -37,7 +37,7 @@ let package = Package(
         .package(path: "../PZInGameEventKit"),
         .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
-        .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.1")),
+        .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")),
     ],
     targets: [
         .target(

@@ -19,7 +19,7 @@ let package = Package(
         .package(path: "../EnkaKit"),
         .package(path: "../WallpaperKit"),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
-        .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.1")),
+        .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
