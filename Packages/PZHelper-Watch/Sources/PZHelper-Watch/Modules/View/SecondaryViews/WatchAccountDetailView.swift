@@ -240,14 +240,6 @@ private struct WatchEachExpeditionView: View {
     }
 }
 
-private let dateFormatter: DateFormatter = {
-    let fmt = DateFormatter.GregorianPOSIX()
-    fmt.doesRelativeDateFormatting = true
-    fmt.dateStyle = .short
-    fmt.timeStyle = .short
-    return fmt
-}()
-
 private let intervalFormatter: DateComponentsFormatter = {
     let dateComponentFormatter = DateComponentsFormatter()
     dateComponentFormatter.allowedUnits = [.hour, .minute]
