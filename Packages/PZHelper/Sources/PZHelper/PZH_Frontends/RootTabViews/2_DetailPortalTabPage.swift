@@ -139,7 +139,10 @@ struct DetailPortalTabPage: View {
                         .fontWidth(.condensed)
                         .frame(maxWidth: .infinity)
                 } label: {
-                    Image(systemSymbol: .magnifyingglassCircleFill).frame(width: 48).padding(.trailing, 4)
+                    Image(systemSymbol: .magnifyingglassCircleFill)
+                        .frame(width: 48)
+                        .clipShape(.circle)
+                        .padding(.trailing, 4)
                 }
             }
             Divider()
