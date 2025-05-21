@@ -19,7 +19,7 @@ extension Enka {
             let primaryMessage = try container.decodeIfPresent(String.self, forKey: .message)
             var secondaryMessage = try container.decodeIfPresent(String.self, forKey: .detail)
             if let message2nd = secondaryMessage {
-                secondaryMessage? = "[MicroGG] \(message2nd)"
+                secondaryMessage? = "[miHoMo] \(message2nd)"
             }
             self.message = primaryMessage ?? secondaryMessage
         }
