@@ -4,13 +4,18 @@
 
 import Alamofire
 import Foundation
+import PZBaseKit
 
 extension HoYo {
     private static let sharedURLSession4QRCodeStatus: Session = {
-        let configuration = URLSessionConfiguration.default
+        let configuration = URLSessionConfiguration.background(
+            withIdentifier: sharedBundleIDHeader + ".qrCodeSession"
+        )
         configuration.timeoutIntervalForRequest = 120 // 设置请求超时
         configuration.timeoutIntervalForResource = 240 // 设置资源超时
         configuration.allowsCellularAccess = true // 允许蜂窝网络访问
+        configuration.isDiscretionary = true
+        configuration.sessionSendsLaunchEvents = true
 
         // 创建 Alamofire 的 Session
         let session = Alamofire.Session(configuration: configuration)
