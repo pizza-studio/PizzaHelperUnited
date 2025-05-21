@@ -59,7 +59,7 @@ struct GetCookieQRCodeView: View {
             loopTask: while case let .automatically(task) = viewModel?.scanningConfirmationStatus, !task.isCancelled {
                 guard let viewModel = viewModel else { break loopTask }
                 do {
-                    let status = try await HoYo.queryQRCodeStatus(
+                    let status = try await HoYo.queryQRCodeStatusForeground(
                         deviceId: viewModel.taskId,
                         ticket: ticket
                     )
@@ -87,7 +87,7 @@ struct GetCookieQRCodeView: View {
         viewModel.cancelAllConfirmationTasks(resetState: false)
         let task = Task { @MainActor in
             do {
-                let status = try await HoYo.queryQRCodeStatus(
+                let status = try await HoYo.queryQRCodeStatusForeground(
                     deviceId: viewModel.taskId,
                     ticket: ticket
                 )
@@ -300,3 +300,112 @@ final class GetCookieQRCodeViewModel: ObservableObject, @unchecked Sendable {
         }
     }
 }
+
+// MARK: - 与后台 URLSession Delegate 有关的 SwiftUI 挂接处理。
+
+#if canImport(UIKit) && canImport(SwiftUI)
+import SwiftUI
+
+extension HoYo {
+    /// 用于在 SwiftUI App 生命周期中处理背景 URL Session 事件的修饰器
+    public struct HandleBackgroundSessionsModifier: ViewModifier {
+        // MARK: Lifecycle
+
+        public init() {}
+
+        // MARK: Public
+
+        public func body(content: Content) -> some View {
+            content
+                .onBackgroundURLSessionEvents { identifier, completionHandler in
+                    HoYo.handleBackgroundSessionEvents(identifier: identifier, completionHandler: completionHandler)
+                }
+        }
+    }
+}
+
+extension View {
+    /// 添加处理 HoYo 背景 URL Session 事件的能力
+    public func handleHoYoBackgroundSessions() -> some View {
+        modifier(HoYo.HandleBackgroundSessionsModifier())
+    }
+}
+
+extension View {
+    fileprivate func onBackgroundURLSessionEvents(
+        perform action: @Sendable @escaping (String, @escaping () -> Void) -> Void
+    )
+        -> some View {
+        background(BackgroundURLSessionHandler(handler: action))
+    }
+}
+
+private struct BackgroundURLSessionHandler: UIViewRepresentable {
+    final class Coordinator: NSObject, URLSessionDelegate {
+        // MARK: Lifecycle
+
+        init(handler: @Sendable @escaping (String, @escaping () -> Void) -> Void) {
+            self.handler = handler
+            super.init()
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(handleBackgroundSessionEvent(_:)),
+                name: Notification.Name("BackgroundURLSessionEvent"),
+                object: nil
+            )
+        }
+
+        deinit {
+            NotificationCenter.default.removeObserver(self)
+        }
+
+        // MARK: Internal
+
+        let handler: @Sendable (String, @Sendable @escaping () -> Void) -> Void
+
+        @objc
+        func handleBackgroundSessionEvent(_ notification: Notification) {
+            guard let userInfo = notification.userInfo,
+                  let identifier = userInfo["identifier"] as? String,
+                  let completionHandler = userInfo["completionHandler"] as? @Sendable () -> Void else {
+                return
+            }
+            handler(identifier, completionHandler)
+        }
+    }
+
+    let handler: @Sendable (String, @escaping () -> Void) -> Void
+
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        view.isHidden = true
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {
+        // 更新不需要做任何事
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(handler: handler)
+    }
+}
+
+// 为了支持在 SwiftUI 中捕获背景 session 事件
+extension HoYo {
+    /// 在 SceneDelegate 或其他地方接收到背景 URL Session 事件时调用此方法
+    public static func postBackgroundSessionEventNotification(
+        identifier: String,
+        completionHandler: @escaping () -> Void
+    ) {
+        NotificationCenter.default.post(
+            name: Notification.Name("BackgroundURLSessionEvent"),
+            object: nil,
+            userInfo: [
+                "identifier": identifier,
+                "completionHandler": completionHandler,
+            ]
+        )
+    }
+}
+#endif
