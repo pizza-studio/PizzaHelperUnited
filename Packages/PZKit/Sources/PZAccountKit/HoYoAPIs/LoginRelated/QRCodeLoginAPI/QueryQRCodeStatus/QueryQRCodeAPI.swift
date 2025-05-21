@@ -6,6 +6,17 @@ import Alamofire
 import Foundation
 
 extension HoYo {
+    private static let sharedURLSession4QRCodeStatus: Session = {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 120 // 设置请求超时
+        configuration.timeoutIntervalForResource = 240 // 设置资源超时
+        configuration.allowsCellularAccess = true // 允许蜂窝网络访问
+
+        // 创建 Alamofire 的 Session
+        let session = Alamofire.Session(configuration: configuration)
+        return session
+    }()
+
     static public func queryQRCodeStatus(deviceId: UUID, ticket: String) async throws -> QueryQRCodeStatus {
         struct Body: Encodable {
             let appId: String
@@ -17,7 +28,7 @@ extension HoYo {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
 
-        let data = try await AF.request(
+        let data = try await Self.sharedURLSession4QRCodeStatus.request(
             QRCodeShared.url4Query,
             method: .post,
             parameters: parameters,
