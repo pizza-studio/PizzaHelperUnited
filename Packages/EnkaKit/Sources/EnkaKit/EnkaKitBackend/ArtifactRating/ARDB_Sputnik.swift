@@ -4,7 +4,6 @@
 
 import Alamofire
 import ArtifactRatingDB
-import Combine
 import Defaults
 import Foundation
 import Observation
