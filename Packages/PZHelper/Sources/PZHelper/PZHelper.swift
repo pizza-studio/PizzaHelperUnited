@@ -70,6 +70,7 @@ private struct AppInitializer: ViewModifier {
             .hookEULACheckerOnOOBE()
             .hookPrivacyPolicyCheckerOnOOBE()
             .performEnkaDBSanityCheck()
+            .handleHoYoBackgroundSessions()
     }
 }
 
