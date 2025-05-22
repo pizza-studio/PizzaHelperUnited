@@ -1,0 +1,117 @@
+digraph PizzaHelperDependencies {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue];
+    
+    // App Modules
+    PZHelper [fillcolor=lightgreen];
+    "PZHelper-Watch" [fillcolor=lightgreen];
+    
+    // Base Modules
+    PZKit [fillcolor=lightyellow];
+    WallpaperKit [fillcolor=lightyellow];
+    EnkaKit [fillcolor=lightyellow];
+    
+    // Feature Modules
+    GachaKit;
+    AbyssRankKit;
+    GITodayMaterialsKit;
+    PZDictionaryKit;
+    PZHoYoLabKit;
+    PZInGameEventKit;
+    PZWidgetsKit;
+    PZAboutKit;
+    
+    // External Dependencies
+    Alamofire [fillcolor=lightpink];
+    Defaults [fillcolor=lightpink];
+    SFSafeSymbols [fillcolor=lightpink];
+    Sworm [fillcolor=lightpink];
+    CoreXLSX [fillcolor=lightpink];
+    AlertToast [fillcolor=lightpink];
+    GachaMetaGenerator [fillcolor=lightpink];
+    EnkaDBGenerator [fillcolor=lightpink];
+    ArtifactRatingDB [fillcolor=lightpink];
+    
+    // Dependencies
+    
+    // App dependencies
+    PZHelper -> PZKit;
+    PZHelper -> EnkaKit;
+    PZHelper -> GachaKit;
+    PZHelper -> AbyssRankKit;
+    PZHelper -> GITodayMaterialsKit;
+    PZHelper -> PZDictionaryKit;
+    PZHelper -> PZHoYoLabKit;
+    PZHelper -> PZInGameEventKit;
+    PZHelper -> PZWidgetsKit;
+    PZHelper -> PZAboutKit;
+    PZHelper -> AlertToast;
+    
+    "PZHelper-Watch" -> PZKit;
+    "PZHelper-Watch" -> SFSafeSymbols;
+    "PZHelper-Watch" -> Defaults;
+    
+    // Base module dependencies
+    WallpaperKit -> PZKit;
+    WallpaperKit -> Defaults;
+    WallpaperKit -> SFSafeSymbols;
+    
+    EnkaKit -> PZKit;
+    EnkaKit -> WallpaperKit;
+    EnkaKit -> EnkaDBGenerator;
+    EnkaKit -> ArtifactRatingDB;
+    EnkaKit -> Defaults;
+    EnkaKit -> SFSafeSymbols;
+    EnkaKit -> Alamofire;
+    
+    PZKit -> Defaults;
+    PZKit -> Sworm;
+    PZKit -> Alamofire;
+    
+    // Feature module dependencies
+    GachaKit -> PZKit;
+    GachaKit -> EnkaKit;
+    GachaKit -> GachaMetaGenerator;
+    GachaKit -> Sworm;
+    GachaKit -> Defaults;
+    GachaKit -> CoreXLSX;
+    GachaKit -> AlertToast;
+    GachaKit -> Alamofire;
+    
+    AbyssRankKit -> PZKit;
+    AbyssRankKit -> EnkaKit;
+    AbyssRankKit -> SFSafeSymbols;
+    AbyssRankKit -> Defaults;
+    AbyssRankKit -> Alamofire;
+    
+    GITodayMaterialsKit -> PZKit;
+    GITodayMaterialsKit -> WallpaperKit;
+    GITodayMaterialsKit -> SFSafeSymbols;
+    GITodayMaterialsKit -> Defaults;
+    
+    PZDictionaryKit -> PZKit;
+    PZDictionaryKit -> SFSafeSymbols;
+    PZDictionaryKit -> Alamofire;
+    
+    PZHoYoLabKit -> PZKit;
+    PZHoYoLabKit -> EnkaKit;
+    PZHoYoLabKit -> WallpaperKit;
+    PZHoYoLabKit -> SFSafeSymbols;
+    PZHoYoLabKit -> Defaults;
+    PZHoYoLabKit -> Alamofire;
+    
+    PZInGameEventKit -> PZKit;
+    PZInGameEventKit -> WallpaperKit;
+    PZInGameEventKit -> SFSafeSymbols;
+    PZInGameEventKit -> Defaults;
+    PZInGameEventKit -> Alamofire;
+    
+    PZWidgetsKit -> PZKit;
+    PZWidgetsKit -> WallpaperKit;
+    PZWidgetsKit -> SFSafeSymbols;
+    PZWidgetsKit -> Defaults;
+    
+    PZAboutKit -> PZKit;
+    PZAboutKit -> SFSafeSymbols;
+    PZAboutKit -> Defaults;
+}

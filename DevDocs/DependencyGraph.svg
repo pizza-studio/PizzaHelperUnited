@@ -1,0 +1,294 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="952pt" height="332pt" viewBox="0.00 0.00 952.28 332.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+<title>PizzaHelperDependencies</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-328 948.28,-328 948.28,4 -4,4"/>
+<!-- PZHelper -->
+<g id="node1" class="node">
+<title>PZHelper</title>
+<polygon fill="lightgreen" stroke="black" points="517.88,-324 447.46,-324 447.46,-288 517.88,-288 517.88,-324"/>
+<text text-anchor="middle" x="482.67" y="-301.8" font-family="Times,serif" font-size="14.00">PZHelper</text>
+</g>
+<!-- PZKit -->
+<g id="node3" class="node">
+<title>PZKit</title>
+<polygon fill="lightyellow" stroke="black" points="414.67,-36 360.67,-36 360.67,0 414.67,0 414.67,-36"/>
+<text text-anchor="middle" x="387.67" y="-13.8" font-family="Times,serif" font-size="14.00">PZKit</text>
+</g>
+<!-- PZHelper&#45;&gt;PZKit -->
+<g id="edge1" class="edge">
+<title>PZHelper-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M447.02,-301.45C345.29,-290.5 57.53,-253.42 5.67,-180 -15.42,-150.14 31.54,-73.7 33.67,-72 81.74,-33.58 267.3,-22.89 348.85,-20.01"/>
+<polygon fill="black" stroke="black" points="348.93,-23.51 358.81,-19.69 348.7,-16.52 348.93,-23.51"/>
+</g>
+<!-- EnkaKit -->
+<g id="node5" class="node">
+<title>EnkaKit</title>
+<polygon fill="lightyellow" stroke="black" points="572,-180 509.34,-180 509.34,-144 572,-144 572,-180"/>
+<text text-anchor="middle" x="540.67" y="-157.8" font-family="Times,serif" font-size="14.00">EnkaKit</text>
+</g>
+<!-- PZHelper&#45;&gt;EnkaKit -->
+<g id="edge2" class="edge">
+<title>PZHelper-&gt;EnkaKit</title>
+<path fill="none" stroke="black" d="M489.84,-287.83C494.16,-277.46 499.76,-263.98 504.67,-252 513.02,-231.63 522.33,-208.59 529.4,-191.06"/>
+<polygon fill="black" stroke="black" points="532.63,-192.4 533.11,-181.82 526.13,-189.79 532.63,-192.4"/>
+</g>
+<!-- GachaKit -->
+<g id="node6" class="node">
+<title>GachaKit</title>
+<polygon fill="lightblue" stroke="black" points="737.49,-252 667.85,-252 667.85,-216 737.49,-216 737.49,-252"/>
+<text text-anchor="middle" x="702.67" y="-229.8" font-family="Times,serif" font-size="14.00">GachaKit</text>
+</g>
+<!-- PZHelper&#45;&gt;GachaKit -->
+<g id="edge3" class="edge">
+<title>PZHelper-&gt;GachaKit</title>
+<path fill="none" stroke="black" d="M518.32,-295.13C551.82,-285.66 603.55,-270.56 656.99,-252.45"/>
+<polygon fill="black" stroke="black" points="657.93,-255.83 666.26,-249.28 655.67,-249.2 657.93,-255.83"/>
+</g>
+<!-- AbyssRankKit -->
+<g id="node7" class="node">
+<title>AbyssRankKit</title>
+<polygon fill="lightblue" stroke="black" points="649.89,-252 551.45,-252 551.45,-216 649.89,-216 649.89,-252"/>
+<text text-anchor="middle" x="600.67" y="-229.8" font-family="Times,serif" font-size="14.00">AbyssRankKit</text>
+</g>
+<!-- PZHelper&#45;&gt;AbyssRankKit -->
+<g id="edge4" class="edge">
+<title>PZHelper-&gt;AbyssRankKit</title>
+<path fill="none" stroke="black" d="M512.14,-287.52C527.18,-278.6 545.66,-267.63 561.85,-258.03"/>
+<polygon fill="black" stroke="black" points="563.46,-261.15 570.27,-253.03 559.88,-255.12 563.46,-261.15"/>
+</g>
+<!-- GITodayMaterialsKit -->
+<g id="node8" class="node">
+<title>GITodayMaterialsKit</title>
+<polygon fill="lightblue" stroke="black" points="152.32,-180 15.02,-180 15.02,-144 152.32,-144 152.32,-180"/>
+<text text-anchor="middle" x="83.67" y="-157.8" font-family="Times,serif" font-size="14.00">GITodayMaterialsKit</text>
+</g>
+<!-- PZHelper&#45;&gt;GITodayMaterialsKit -->
+<g id="edge5" class="edge">
+<title>PZHelper-&gt;GITodayMaterialsKit</title>
+<path fill="none" stroke="black" d="M447.23,-295.5C411.09,-285.57 353.52,-269.07 304.67,-252 245.33,-231.27 178.56,-203.79 134.1,-184.88"/>
+<polygon fill="black" stroke="black" points="135.53,-181.68 124.96,-180.98 132.78,-188.12 135.53,-181.68"/>
+</g>
+<!-- PZDictionaryKit -->
+<g id="node9" class="node">
+<title>PZDictionaryKit</title>
+<polygon fill="lightblue" stroke="black" points="869.72,-252 759.62,-252 759.62,-216 869.72,-216 869.72,-252"/>
+<text text-anchor="middle" x="814.67" y="-229.8" font-family="Times,serif" font-size="14.00">PZDictionaryKit</text>
+</g>
+<!-- PZHelper&#45;&gt;PZDictionaryKit -->
+<g id="edge6" class="edge">
+<title>PZHelper-&gt;PZDictionaryKit</title>
+<path fill="none" stroke="black" d="M518.22,-298.41C569.03,-288.87 665.26,-270.34 746.67,-252 747.19,-251.88 747.71,-251.77 748.23,-251.65"/>
+<polygon fill="black" stroke="black" points="749,-255.06 757.95,-249.38 747.42,-248.24 749,-255.06"/>
+</g>
+<!-- PZHoYoLabKit -->
+<g id="node10" class="node">
+<title>PZHoYoLabKit</title>
+<polygon fill="lightblue" stroke="black" points="495.78,-252 389.56,-252 389.56,-216 495.78,-216 495.78,-252"/>
+<text text-anchor="middle" x="442.67" y="-229.8" font-family="Times,serif" font-size="14.00">PZHoYoLabKit</text>
+</g>
+<!-- PZHelper&#45;&gt;PZHoYoLabKit -->
+<g id="edge7" class="edge">
+<title>PZHelper-&gt;PZHoYoLabKit</title>
+<path fill="none" stroke="black" d="M472.78,-287.7C468.33,-279.9 462.96,-270.51 458,-261.83"/>
+<polygon fill="black" stroke="black" points="461.19,-260.36 453.19,-253.42 455.12,-263.84 461.19,-260.36"/>
+</g>
+<!-- PZInGameEventKit -->
+<g id="node11" class="node">
+<title>PZInGameEventKit</title>
+<polygon fill="lightblue" stroke="black" points="298.66,-180 170.68,-180 170.68,-144 298.66,-144 298.66,-180"/>
+<text text-anchor="middle" x="234.67" y="-157.8" font-family="Times,serif" font-size="14.00">PZInGameEventKit</text>
+</g>
+<!-- PZHelper&#45;&gt;PZInGameEventKit -->
+<g id="edge8" class="edge">
+<title>PZHelper-&gt;PZInGameEventKit</title>
+<path fill="none" stroke="black" d="M447.15,-291.41C422.8,-281.59 390.07,-267.39 362.67,-252 328.14,-232.61 291.27,-206.31 266.01,-187.34"/>
+<polygon fill="black" stroke="black" points="268.22,-184.62 258.14,-181.37 263.99,-190.2 268.22,-184.62"/>
+</g>
+<!-- PZWidgetsKit -->
+<g id="node12" class="node">
+<title>PZWidgetsKit</title>
+<polygon fill="lightblue" stroke="black" points="413.11,-180 316.23,-180 316.23,-144 413.11,-144 413.11,-180"/>
+<text text-anchor="middle" x="364.67" y="-157.8" font-family="Times,serif" font-size="14.00">PZWidgetsKit</text>
+</g>
+<!-- PZHelper&#45;&gt;PZWidgetsKit -->
+<g id="edge9" class="edge">
+<title>PZHelper-&gt;PZWidgetsKit</title>
+<path fill="none" stroke="black" d="M447.05,-295.39C424.54,-287.45 396.76,-273.85 380.67,-252 367.99,-234.79 364.28,-210.7 363.57,-191.93"/>
+<polygon fill="black" stroke="black" points="367.07,-191.97 363.49,-182 360.07,-192.03 367.07,-191.97"/>
+</g>
+<!-- PZAboutKit -->
+<g id="node13" class="node">
+<title>PZAboutKit</title>
+<polygon fill="lightblue" stroke="black" points="944.28,-108 859.06,-108 859.06,-72 944.28,-72 944.28,-108"/>
+<text text-anchor="middle" x="901.67" y="-85.8" font-family="Times,serif" font-size="14.00">PZAboutKit</text>
+</g>
+<!-- PZHelper&#45;&gt;PZAboutKit -->
+<g id="edge10" class="edge">
+<title>PZHelper-&gt;PZAboutKit</title>
+<path fill="none" stroke="black" d="M518.18,-305.49C605.7,-305.91 828.3,-301.93 878.67,-252 913.44,-217.53 911.66,-155.89 906.89,-119.7"/>
+<polygon fill="black" stroke="black" points="910.38,-119.35 905.43,-109.98 903.45,-120.39 910.38,-119.35"/>
+</g>
+<!-- PZHelper&#45;Watch -->
+<g id="node2" class="node">
+<title>PZHelper-Watch</title>
+<polygon fill="lightgreen" stroke="black" points="154.48,-108 42.86,-108 42.86,-72 154.48,-72 154.48,-108"/>
+<text text-anchor="middle" x="98.67" y="-85.8" font-family="Times,serif" font-size="14.00">PZHelper-Watch</text>
+</g>
+<!-- PZHelper&#45;Watch&#45;&gt;PZKit -->
+<g id="edge11" class="edge">
+<title>PZHelper-Watch-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M154.83,-75.36C159.51,-74.22 164.17,-73.09 168.67,-72 232.01,-56.64 305.67,-38.83 349.38,-28.26"/>
+<polygon fill="black" stroke="black" points="349.99,-31.71 358.88,-25.96 348.34,-24.91 349.99,-31.71"/>
+</g>
+<!-- WallpaperKit -->
+<g id="node4" class="node">
+<title>WallpaperKit</title>
+<polygon fill="lightyellow" stroke="black" points="340.76,-108 248.58,-108 248.58,-72 340.76,-72 340.76,-108"/>
+<text text-anchor="middle" x="294.67" y="-85.8" font-family="Times,serif" font-size="14.00">WallpaperKit</text>
+</g>
+<!-- WallpaperKit&#45;&gt;PZKit -->
+<g id="edge12" class="edge">
+<title>WallpaperKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M317.66,-71.7C329.06,-63.11 343.02,-52.61 355.47,-43.24"/>
+<polygon fill="black" stroke="black" points="357.53,-46.07 363.41,-37.26 353.32,-40.47 357.53,-46.07"/>
+</g>
+<!-- EnkaKit&#45;&gt;PZKit -->
+<g id="edge13" class="edge">
+<title>EnkaKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M572.28,-149.13C577.09,-147.38 582,-145.62 586.67,-144 635.67,-127.01 667.17,-149.95 697.67,-108 707.08,-95.06 707.99,-84.23 697.67,-72 663.37,-31.34 501.73,-21.87 426.44,-19.67"/>
+<polygon fill="black" stroke="black" points="426.73,-16.17 416.64,-19.41 426.55,-23.17 426.73,-16.17"/>
+</g>
+<!-- EnkaKit&#45;&gt;WallpaperKit -->
+<g id="edge14" class="edge">
+<title>EnkaKit-&gt;WallpaperKit</title>
+<path fill="none" stroke="black" d="M509.01,-151.99C469.4,-140.72 400.85,-121.21 351.93,-107.29"/>
+<polygon fill="black" stroke="black" points="352.91,-103.93 342.34,-104.56 351,-110.67 352.91,-103.93"/>
+</g>
+<!-- EnkaDBGenerator -->
+<g id="node15" class="node">
+<title>EnkaDBGenerator</title>
+<polygon fill="lightpink" stroke="black" points="554.76,-108 434.58,-108 434.58,-72 554.76,-72 554.76,-108"/>
+<text text-anchor="middle" x="494.67" y="-85.8" font-family="Times,serif" font-size="14.00">EnkaDBGenerator</text>
+</g>
+<!-- EnkaKit&#45;&gt;EnkaDBGenerator -->
+<g id="edge15" class="edge">
+<title>EnkaKit-&gt;EnkaDBGenerator</title>
+<path fill="none" stroke="black" d="M529.3,-143.7C524.12,-135.81 517.87,-126.3 512.11,-117.55"/>
+<polygon fill="black" stroke="black" points="515.16,-115.8 506.74,-109.37 509.31,-119.65 515.16,-115.8"/>
+</g>
+<!-- ArtifactRatingDB -->
+<g id="node16" class="node">
+<title>ArtifactRatingDB</title>
+<polygon fill="lightpink" stroke="black" points="688.82,-108 572.51,-108 572.51,-72 688.82,-72 688.82,-108"/>
+<text text-anchor="middle" x="630.67" y="-85.8" font-family="Times,serif" font-size="14.00">ArtifactRatingDB</text>
+</g>
+<!-- EnkaKit&#45;&gt;ArtifactRatingDB -->
+<g id="edge16" class="edge">
+<title>EnkaKit-&gt;ArtifactRatingDB</title>
+<path fill="none" stroke="black" d="M562.92,-143.7C573.95,-135.11 587.46,-124.61 599.51,-115.24"/>
+<polygon fill="black" stroke="black" points="601.43,-118.18 607.17,-109.28 597.13,-112.65 601.43,-118.18"/>
+</g>
+<!-- GachaKit&#45;&gt;PZKit -->
+<g id="edge17" class="edge">
+<title>GachaKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M737.83,-215.94C751.65,-207.25 766.02,-195.26 773.67,-180 796.61,-134.24 775.69,-101.23 733.67,-72 684.5,-37.79 505.89,-24.84 426.34,-20.69"/>
+<polygon fill="black" stroke="black" points="426.58,-17.2 416.42,-20.2 426.23,-24.19 426.58,-17.2"/>
+</g>
+<!-- GachaKit&#45;&gt;EnkaKit -->
+<g id="edge18" class="edge">
+<title>GachaKit-&gt;EnkaKit</title>
+<path fill="none" stroke="black" d="M667.52,-217.81C642.65,-207.07 609.2,-192.61 582.88,-181.24"/>
+<polygon fill="black" stroke="black" points="584.42,-178.09 573.85,-177.34 581.64,-184.52 584.42,-178.09"/>
+</g>
+<!-- GachaMetaGenerator -->
+<g id="node14" class="node">
+<title>GachaMetaGenerator</title>
+<polygon fill="lightpink" stroke="black" points="764.91,-180 628.43,-180 628.43,-144 764.91,-144 764.91,-180"/>
+<text text-anchor="middle" x="696.67" y="-157.8" font-family="Times,serif" font-size="14.00">GachaMetaGenerator</text>
+</g>
+<!-- GachaKit&#45;&gt;GachaMetaGenerator -->
+<g id="edge19" class="edge">
+<title>GachaKit-&gt;GachaMetaGenerator</title>
+<path fill="none" stroke="black" d="M701.19,-215.7C700.56,-208.41 699.82,-199.73 699.12,-191.54"/>
+<polygon fill="black" stroke="black" points="702.61,-191.28 698.26,-181.61 695.63,-191.87 702.61,-191.28"/>
+</g>
+<!-- AbyssRankKit&#45;&gt;PZKit -->
+<g id="edge20" class="edge">
+<title>AbyssRankKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M599.72,-215.81C599.58,-196.15 602.34,-164.11 619.67,-144 649.41,-109.48 689.71,-145.45 715.67,-108 724.78,-94.85 726.04,-84.18 715.67,-72 678.9,-28.81 505.07,-20.7 426.45,-19.26"/>
+<polygon fill="black" stroke="black" points="426.69,-15.77 416.64,-19.11 426.58,-22.76 426.69,-15.77"/>
+</g>
+<!-- AbyssRankKit&#45;&gt;EnkaKit -->
+<g id="edge21" class="edge">
+<title>AbyssRankKit-&gt;EnkaKit</title>
+<path fill="none" stroke="black" d="M585.84,-215.7C578.86,-207.56 570.4,-197.69 562.7,-188.7"/>
+<polygon fill="black" stroke="black" points="565.48,-186.57 556.32,-181.25 560.17,-191.12 565.48,-186.57"/>
+</g>
+<!-- GITodayMaterialsKit&#45;&gt;PZKit -->
+<g id="edge22" class="edge">
+<title>GITodayMaterialsKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M110.26,-143.58C147.49,-119.27 211.94,-77.51 223.67,-72 265.15,-52.5 315.71,-37.36 349.63,-28.34"/>
+<polygon fill="black" stroke="black" points="350.2,-31.81 358.99,-25.91 348.43,-25.04 350.2,-31.81"/>
+</g>
+<!-- GITodayMaterialsKit&#45;&gt;WallpaperKit -->
+<g id="edge23" class="edge">
+<title>GITodayMaterialsKit-&gt;WallpaperKit</title>
+<path fill="none" stroke="black" d="M136.37,-143.52C167.16,-133.3 206.04,-120.4 237.56,-109.95"/>
+<polygon fill="black" stroke="black" points="238.55,-113.31 246.94,-106.84 236.34,-106.66 238.55,-113.31"/>
+</g>
+<!-- PZDictionaryKit&#45;&gt;PZKit -->
+<g id="edge24" class="edge">
+<title>PZDictionaryKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M815.22,-215.74C815.26,-182.01 810.01,-107.54 765.67,-72 713.88,-30.49 511.67,-21.49 426.18,-19.54"/>
+<polygon fill="black" stroke="black" points="426.5,-16.05 416.43,-19.34 426.35,-23.04 426.5,-16.05"/>
+</g>
+<!-- PZHoYoLabKit&#45;&gt;PZKit -->
+<g id="edge25" class="edge">
+<title>PZHoYoLabKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M445.3,-215.67C447.49,-197.53 449.42,-168.36 443.67,-144 439.56,-126.59 433.18,-124.23 425.67,-108 416.24,-87.64 406.31,-64.31 398.97,-46.64"/>
+<polygon fill="black" stroke="black" points="402.28,-45.5 395.23,-37.6 395.81,-48.17 402.28,-45.5"/>
+</g>
+<!-- PZHoYoLabKit&#45;&gt;WallpaperKit -->
+<g id="edge27" class="edge">
+<title>PZHoYoLabKit-&gt;WallpaperKit</title>
+<path fill="none" stroke="black" d="M443.04,-215.54C442.53,-195.93 438.82,-164.22 421.67,-144 403.96,-123.13 376.68,-110.33 351.93,-102.55"/>
+<polygon fill="black" stroke="black" points="353.18,-99.27 342.6,-99.84 351.22,-105.99 353.18,-99.27"/>
+</g>
+<!-- PZHoYoLabKit&#45;&gt;EnkaKit -->
+<g id="edge26" class="edge">
+<title>PZHoYoLabKit-&gt;EnkaKit</title>
+<path fill="none" stroke="black" d="M467.15,-215.52C479.28,-206.85 494.12,-196.25 507.28,-186.85"/>
+<polygon fill="black" stroke="black" points="509.17,-189.8 515.27,-181.14 505.1,-184.1 509.17,-189.8"/>
+</g>
+<!-- PZInGameEventKit&#45;&gt;PZKit -->
+<g id="edge28" class="edge">
+<title>PZInGameEventKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M230.45,-143.72C226.79,-124.27 224.2,-92.71 239.67,-72 265.13,-37.92 314.46,-25.69 349.15,-21.34"/>
+<polygon fill="black" stroke="black" points="349.22,-24.85 358.79,-20.31 348.47,-17.89 349.22,-24.85"/>
+</g>
+<!-- PZInGameEventKit&#45;&gt;WallpaperKit -->
+<g id="edge29" class="edge">
+<title>PZInGameEventKit-&gt;WallpaperKit</title>
+<path fill="none" stroke="black" d="M249.5,-143.7C256.48,-135.56 264.94,-125.69 272.64,-116.7"/>
+<polygon fill="black" stroke="black" points="275.17,-119.12 279.02,-109.25 269.86,-114.57 275.17,-119.12"/>
+</g>
+<!-- PZWidgetsKit&#45;&gt;PZKit -->
+<g id="edge30" class="edge">
+<title>PZWidgetsKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M367.49,-143.59C371.37,-119.61 378.41,-76.14 383.07,-47.42"/>
+<polygon fill="black" stroke="black" points="386.51,-48.04 384.66,-37.6 379.6,-46.92 386.51,-48.04"/>
+</g>
+<!-- PZWidgetsKit&#45;&gt;WallpaperKit -->
+<g id="edge31" class="edge">
+<title>PZWidgetsKit-&gt;WallpaperKit</title>
+<path fill="none" stroke="black" d="M347.37,-143.7C339.06,-135.39 328.95,-125.28 319.81,-116.14"/>
+<polygon fill="black" stroke="black" points="322.39,-113.77 312.84,-109.17 317.44,-118.72 322.39,-113.77"/>
+</g>
+<!-- PZAboutKit&#45;&gt;PZKit -->
+<g id="edge32" class="edge">
+<title>PZAboutKit-&gt;PZKit</title>
+<path fill="none" stroke="black" d="M858.61,-75.3C853.93,-74.07 849.22,-72.94 844.67,-72 691.56,-40.54 505.47,-26.21 426.3,-21.2"/>
+<polygon fill="black" stroke="black" points="426.68,-17.72 416.48,-20.59 426.25,-24.7 426.68,-17.72"/>
+</g>
+</g>
+</svg>
