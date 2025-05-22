@@ -80,6 +80,8 @@ struct GetCookieQRCodeView: View {
             }
             viewModel?.scanningConfirmationStatus = .idle
         }
+        // 注册任务并保存ID
+        viewModel.pollingTaskId = HoYo.registerQRCodePollingTask(task)
         viewModel.scanningConfirmationStatus = .automatically(task)
     }
 
@@ -101,6 +103,8 @@ struct GetCookieQRCodeView: View {
             }
             viewModel.scanningConfirmationStatus = .idle
         }
+        // 注册任务并保存ID
+        viewModel.pollingTaskId = HoYo.registerQRCodePollingTask(task)
         viewModel.scanningConfirmationStatus = .manually(task)
     }
 
@@ -223,6 +227,10 @@ struct GetCookieQRCodeView: View {
                     }
                 }
             }
+            .onDisappear {
+                // 确保在视图消失时取消所有任务
+                viewModel.cancelAllConfirmationTasks(resetState: true)
+            }
         }
     }
 }
@@ -241,6 +249,9 @@ final class GetCookieQRCodeViewModel: ObservableObject, @unchecked Sendable {
 
     deinit {
         scanningConfirmationStatus = .idle
+        if let pollingTaskId = pollingTaskId {
+            HoYo.cancelQRCodePollingTask(taskId: pollingTaskId)
+        }
     }
 
     // MARK: Public
@@ -280,6 +291,7 @@ final class GetCookieQRCodeViewModel: ObservableObject, @unchecked Sendable {
     var taskId: UUID
     var scanningConfirmationStatus: ScanningConfirmationStatus = .idle
     var isNotScannedAlertShown: Bool = false
+    var pollingTaskId: UUID? // 新增：跟踪注册的轮询任务ID
 
     var error: Error? {
         didSet {
@@ -293,6 +305,11 @@ final class GetCookieQRCodeViewModel: ObservableObject, @unchecked Sendable {
         switch scanningConfirmationStatus {
         case let .automatically(task), let .manually(task):
             task.cancel()
+            // 确保取消在HoYo中注册的任务
+            if let pollingTaskId = pollingTaskId {
+                HoYo.cancelQRCodePollingTask(taskId: pollingTaskId)
+                self.pollingTaskId = nil
+            }
             if resetState {
                 scanningConfirmationStatus = .idle
             }
