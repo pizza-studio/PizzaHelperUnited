@@ -108,7 +108,17 @@ struct AppAboutViewSections: View {
                 }
             }
         } footer: {
-            Text(verbatim: "桂ICP备2023009538号-2A")
+            VStack(alignment: .leading, spacing: 10) {
+                Text(verbatim: "桂ICP备2023009538号-2A")
+                    .textCase(.none)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("aboutKit.ourApps.miHoYoCopyrightNotice", bundle: .module)
+                    .textCase(.none)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("aboutKit.ourApps.pizzaStudioCopyrightNotice", bundle: .module)
+                    .textCase(.none)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }.frame(maxWidth: .infinity)
         }
 
         Section {
