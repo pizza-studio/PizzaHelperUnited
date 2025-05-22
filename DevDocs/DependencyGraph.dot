@@ -1,0 +1,78 @@
+digraph PizzaHelperDependencies {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue];
+    
+    // App Modules
+    PZHelper [fillcolor=lightgreen];
+    "PZHelper-Watch" [fillcolor=lightgreen];
+    
+    // Base Modules
+    PZKit [fillcolor=lightyellow];
+    WallpaperKit [fillcolor=lightyellow];
+    EnkaKit [fillcolor=lightyellow];
+    
+    // Feature Modules
+    GachaKit;
+    AbyssRankKit;
+    GITodayMaterialsKit;
+    PZDictionaryKit;
+    PZHoYoLabKit;
+    PZInGameEventKit;
+    PZWidgetsKit;
+    PZAboutKit;
+    
+    // External Dependencies
+    GachaMetaGenerator [fillcolor=lightpink];
+    EnkaDBGenerator [fillcolor=lightpink];
+    ArtifactRatingDB [fillcolor=lightpink];
+    
+    // Dependencies
+    
+    // App dependencies
+    PZHelper -> PZKit;
+    PZHelper -> EnkaKit;
+    PZHelper -> GachaKit;
+    PZHelper -> AbyssRankKit;
+    PZHelper -> GITodayMaterialsKit;
+    PZHelper -> PZDictionaryKit;
+    PZHelper -> PZHoYoLabKit;
+    PZHelper -> PZInGameEventKit;
+    PZHelper -> PZWidgetsKit;
+    PZHelper -> PZAboutKit;
+    
+    "PZHelper-Watch" -> PZKit;
+    
+    // Base module dependencies
+    WallpaperKit -> PZKit;
+    
+    EnkaKit -> PZKit;
+    EnkaKit -> WallpaperKit;
+    EnkaKit -> EnkaDBGenerator;
+    EnkaKit -> ArtifactRatingDB;
+    
+    
+    // Feature module dependencies
+    GachaKit -> PZKit;
+    GachaKit -> EnkaKit;
+    GachaKit -> GachaMetaGenerator;
+    
+    AbyssRankKit -> PZKit;
+    AbyssRankKit -> EnkaKit;
+    
+    GITodayMaterialsKit -> PZKit;
+    GITodayMaterialsKit -> WallpaperKit;
+    
+    PZDictionaryKit -> PZKit;
+    
+    PZHoYoLabKit -> PZKit;
+    PZHoYoLabKit -> EnkaKit;
+    PZHoYoLabKit -> WallpaperKit;
+    
+    PZInGameEventKit -> PZKit;
+    PZInGameEventKit -> WallpaperKit;
+    
+    PZWidgetsKit -> PZKit;
+    PZWidgetsKit -> WallpaperKit;
+    
+    PZAboutKit -> PZKit;
+}
