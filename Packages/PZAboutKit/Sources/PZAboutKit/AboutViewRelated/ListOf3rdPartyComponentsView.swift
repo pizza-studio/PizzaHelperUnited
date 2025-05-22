@@ -26,6 +26,10 @@ struct ListOf3rdPartyComponentsView: View {
                 Section {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(verbatim: """
+                        Alamofire - Alamofire Software Foundation
+                        https://github.com/Alamofire/Alamofire
+                        """).textSelection(.enabled)
+                        Text(verbatim: """
                         SWORM - Prisma AI
                         https://github.com/prisma-ai/Sworm
                         """).textSelection(.enabled)
