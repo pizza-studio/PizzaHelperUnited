@@ -66,7 +66,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本 App 软件使用了以下开源组件和第三方 API，在此向其作者表示感谢。"
+            "value" : "本软件使用了以下开源组件和第三方 API，在此向其作者表示感谢。"
           }
         },
         "zh-Hant" : {
@@ -4342,6 +4342,82 @@
         }
       }
     },
+    "aboutKit.ourApps.miHoYoCopyrightNotice" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Urheberrecht (mit Ausnahme des Swift-Programmteils dieser App): (c) Alle Rechte vorbehalten von miHoYo und seinen Tochtergesellschaften. Andere Eigenschaften sowie alle Rechte, Titel und Interessen daran (einschließlich geistiger Eigentumsrechte), die nicht von den Spieletiteln von miHoYo (\"Star Rail\", \"Genshin Impact\", \"Zenless Zone Zero\" usw.) stammen, gehören ihren jeweiligen Eigentümern.\r\n\r\n"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (excl. the Swift program part of this app): (c) All rights reserved by miHoYo and its subsidiaries. Other properties and any right, title, and interest thereof and therein (intellectual property rights included) not derived from miHoYo's game titles (\"Star Rail\", \"Genshin Impact\", \"Zenless Zone Zero\", etc.) belong to their respective owners."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derechos de autor (excluyendo la parte del programa Swift de esta aplicación): (c) Todos los derechos reservados por miHoYo y sus filiales. Otras propiedades y cualquier derecho, título e interés relacionados con las mismas (incluidos los derechos de propiedad intelectual) que no deriven de los títulos de juegos de miHoYo (\"Star Rail\", \"Genshin Impact\", \"Zenless Zone Zero\", etc.) pertenecen a sus respectivos propietarios.\r\n\r\n"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (hindi kasama ang bahagi ng programa ng Swift ng app na ito): (c) Lahat ng karapatan ay nakalaan kay miHoYo at sa mga subsidiary nito. Ang iba pang mga ari-arian at anumang karapatan, titulo, at interes nito at doon (kabilang ang mga karapatan sa intelektwal na ari-arian) na hindi nagmula sa mga pamagat ng laro ng miHoYo (\"Star Rail\", \"Genshin Impact\", \"Zenless Zone Zero\", atbp.) ay pag-aari ng kani-kanilang may-ari.\r\n"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Droit d'auteur (à l'exclusion de la partie du programme Swift de cette application) : (c) Tous droits réservés par miHoYo et ses filiales. Les autres propriétés et tout droit, titre et intérêt y afférents (y compris les droits de propriété intellectuelle) qui ne dérivent pas des titres de jeux de miHoYo (\"Star Rail\", \"Genshin Impact\", \"Zenless Zone Zero\", etc.) appartiennent à leurs propriétaires respectifs.\r\n\r\n"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (esclusa la parte del programma Swift di questa app): (c) Tutti i diritti riservati da miHoYo e dalle sue filiali. Altre proprietà e qualsiasi diritto, titolo e interesse relativi e inerenti (inclusi i diritti di proprietà intellettuale) che non derivano dai titoli di gioco di miHoYo (\"Star Rail\", \"Genshin Impact\", \"Zenless Zone Zero\", ecc.) appartengono ai rispettivi proprietari.\r\n\r\n"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "著作権（このアプリの Swift プログラム部分を除く）：(c) 株式会社米哈遊（上海本社）およびその子会社がすべての権利を保有します。米哈遊社のゲームタイトル（「星穹鉄道（スターレイル）」、「原神」、「絶区零（ゼンレスゾーンゼロ）」など）に由来しないその他の財産およびそれに関連するすべての権利、所有権、利益（知的財産権を含む）は、それぞれの所有者に帰属します。\n"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저작권 (이 앱의 Swift 프로그램 부분 제외): (c) miHoYo 및 그 자회사들이 모든 권리를 보유합니다. miHoYo의 게임 타이틀(\"Star Rail\", \"Genshin Impact\", \"Zenless Zone Zero\" 등)에서 파생되지 않은 기타 자산 및 이에 관련된 모든 권리, 소유권, 이익(지적 재산권 포함)은 각 소유자에게 귀속됩니다.\r\n\r\n"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Авторские права (за исключением части программы на Swift в этом приложении): (c) Все права защищены miHoYo и её дочерними компаниями. Другие активы, а также любые права, титулы и интересы, связанные с ними (включая права интеллектуальной собственности), не происходящие из игровых продуктов miHoYo («Звёздный путь», «Геншин Импакт», «Зенлесс Зона Зеро» и т.д.), принадлежат их соответствующим владельцам.\n"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bản quyền (ngoại trừ phần chương trình Swift của ứng dụng này): (c) Tất cả quyền được bảo lưu bởi miHoYo và các công ty con của nó. Các tài sản khác và bất kỳ quyền, danh hiệu và lợi ích liên quan đến chúng (bao gồm cả quyền sở hữu trí tuệ) không bắt nguồn từ các tựa game của miHoYo (\"Star Rail\", \"Genshin Impact\", \"Zenless Zone Zero\", v.v.) thuộc về các chủ sở hữu tương ứng của chúng.\r\n\r\n"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版权（不包括本应用程序的 Swift 程序部分）：(c) 由上海米哈游网络科技股份有限公司及其子公司保留所有权利。其他财产以及任何权利、所有权和利益（包括知识产权）若非源自米哈游自有之游戏品牌（《星穹铁道》、《原神》、《绝区零》等），则属于其各自的所有者。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版權（不包括本應用程式的 Swift 程式部分）：(c) 由上海米哈遊網絡科技股份有限公司及其子公司保留所有權利。其他財產以及任何權利、所有權和利益（包括智財權）若非源自米哈遊自有之遊戲品牌（《星穹鐵道》、《原神》、《絕區零》等），則屬於其各自的所有者。"
+          }
+        }
+      }
+    },
     "aboutKit.ourApps.pizzaStudio" : {
       "localizations" : {
         "de" : {
@@ -4490,6 +4566,82 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "某個免費自由軟體開發團體。"
+          }
+        }
+      }
+    },
+    "aboutKit.ourApps.pizzaStudioCopyrightNotice" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Urheberrecht (der Swift-Programmteil dieser App, ausgenommen die Datenmodelle, die zum Dekodieren externer JSON-Dateien verwendet werden): (c) 2024 und darüber hinaus Pizza Studio (AGPL v3.0 Lizenz oder später)."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (the Swift program part of this app, excluding the data models used for decoding external JSON files): (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derechos de autor (la parte del programa Swift de esta aplicación, excluyendo los modelos de datos utilizados para decodificar archivos JSON externos): (c) 2024 en adelante Pizza Studio (Licencia AGPL v3.0 o posterior)."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (ang bahagi ng programa ng Swift ng app na ito, hindi kasama ang mga modelo ng data na ginamit para sa pag-decode ng mga panlabas na JSON file): (c) 2024 at pasulong Pizza Studio (AGPL v3.0 License o mas bago)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Droit d'auteur (la partie du programme Swift de cette application, à l'exclusion des modèles de données utilisés pour décoder les fichiers JSON externes) : (c) 2024 et au-delà Pizza Studio (Licence AGPL v3.0 ou ultérieure)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (la parte del programma Swift di questa app, esclusi i modelli di dati utilizzati per decodificare file JSON esterni): (c) 2024 e oltre Pizza Studio (Licenza AGPL v3.0 o successiva)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "著作権（このアプリのSwiftプログラム部分のみ；外部JSONファイルのデコードに使用されるデータモデルを除く）：(c) 2024年以降 Pizza Studio（AGPL v3.0ライセンスまたはそれ以降）。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저작권 (이 앱의 Swift 프로그램 부분, 외부 JSON 파일 디코딩에 사용된 데이터 모델 제외): (c) 2024년 이후 Pizza Studio (AGPL v3.0 라이선스 또는 그 이후 버전)."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Авторское право (часть программы на Swift этого приложения, за исключением моделей данных, используемых для декодирования внешних JSON-файлов): (c) 2024 и далее Pizza Studio (Лицензия AGPL v3.0 или более поздняя)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bản quyền (phần chương trình Swift của ứng dụng này, không bao gồm các mô hình dữ liệu được sử dụng để giải mã các tệp JSON bên ngoài): (c) 2024 trở đi Pizza Studio (Giấy phép AGPL v3.0 hoặc mới hơn)."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版权（此应用程序的 Swift 程序部分，不包括用于解码外部 JSON 文件的数据模型）：(c) 2024 年及以后 Pizza Studio（AGPL v3.0 许可证或更高版本）。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版權（此應用程式的 Swift 程式部分，不包括用於解碼外部 JSON 檔案的資料模型）：(c) 2024 年及以後 Pizza Studio（AGPL v3.0 許可證或更高版本）。"
           }
         }
       }
