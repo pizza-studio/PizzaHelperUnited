@@ -737,7 +737,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -784,7 +784,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -831,7 +831,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchExtension/Info.plist;
@@ -863,7 +863,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchExtension/Info.plist;
@@ -896,7 +896,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				DEVELOPMENT_ASSET_PATHS = "WatchApp/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -929,7 +929,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				DEVELOPMENT_ASSET_PATHS = "WatchApp/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -963,7 +963,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
@@ -1000,7 +1000,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
@@ -1169,7 +1169,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1211,7 +1211,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4881;
+				CURRENT_PROJECT_VERSION = 4890;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				ENABLE_HARDENED_RUNTIME = YES;
