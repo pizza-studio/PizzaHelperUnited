@@ -121,6 +121,39 @@ extension HoYo {
             }
         }
     }
+
+    // 添加一个任务管理系统，以便能够在需要时取消任务
+    nonisolated(unsafe) private static var activeForegroundTasks: [UUID: Task<Void, Never>] = [:]
+    private static let taskLock = NSLock()
+
+    // 注册前台轮询任务，返回一个标识符，用于后续取消任务
+    static public func registerQRCodePollingTask(_ task: Task<Void, Never>) -> UUID {
+        let taskId = UUID()
+        taskLock.lock()
+        activeForegroundTasks[taskId] = task
+        taskLock.unlock()
+        return taskId
+    }
+
+    // 取消特定的轮询任务
+    static public func cancelQRCodePollingTask(taskId: UUID) {
+        taskLock.lock()
+        if let task = activeForegroundTasks[taskId] {
+            task.cancel()
+            activeForegroundTasks.removeValue(forKey: taskId)
+        }
+        taskLock.unlock()
+    }
+
+    // 取消所有轮询任务
+    static public func cancelAllQRCodePollingTasks() {
+        taskLock.lock()
+        for (_, task) in activeForegroundTasks {
+            task.cancel()
+        }
+        activeForegroundTasks.removeAll()
+        taskLock.unlock()
+    }
 }
 
 // 添加自动重试策略
