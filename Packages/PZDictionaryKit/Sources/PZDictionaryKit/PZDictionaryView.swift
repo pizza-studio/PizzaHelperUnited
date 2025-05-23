@@ -17,6 +17,7 @@ public struct PZDictionaryView: View {
     // MARK: Public
 
     public static let navTitle = "tool.dictionary.title".i18nDictKit
+    public static let navDescription = "tool.dictionary.navDescription".i18nDictKit
 
     public var body: some View {
         List {

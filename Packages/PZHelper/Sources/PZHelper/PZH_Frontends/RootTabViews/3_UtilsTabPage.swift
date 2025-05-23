@@ -50,11 +50,16 @@ struct UtilsTabPage: View {
                 }
 
                 Section {
-                    NavigationLink(value: Nav.wallpaperGallery) {
-                        Label(WallpaperGalleryViewContent.navTitle, systemSymbol: .photoOnRectangleAngled)
-                    }
                     NavigationLink(value: Nav.pizzaDictionary) {
                         Label(PZDictionaryView.navTitle, systemSymbol: .characterBookClosedFill)
+                    }
+                } footer: {
+                    Text(PZDictionaryView.navDescription)
+                }
+
+                Section {
+                    NavigationLink(value: Nav.wallpaperGallery) {
+                        Label(WallpaperGalleryViewContent.navTitle, systemSymbol: .photoOnRectangleAngled)
                     }
                 }
                 HoYoMapMenuLinkSection()

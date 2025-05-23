@@ -1387,6 +1387,83 @@
         }
       }
     },
+    "tool.dictionary.navDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Funktion wird derzeit intern überprüft, um zu entscheiden, ob sie aufgrund fehlender Zeit für ihre Wartung aus der App entfernt werden soll."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This feature is currently under internal review to determine whether it should be removed from the app due to our lack of time available for maintaining it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta función está actualmente bajo revisión interna para determinar si debe eliminarse de la aplicación debido a la falta de tiempo disponible para su mantenimiento."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang tampok na ito ay kasalukuyang nasa ilalim ng panloob na pagsusuri upang matukoy kung dapat itong alisin sa app dahil sa kakulangan ng oras para sa pagpapanatili nito."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette fonctionnalité fait actuellement l’objet d’un examen interne pour déterminer si elle doit être supprimée de l’application en raison du manque de temps disponible pour son entretien."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa funzionalità è attualmente in fase di revisione interna per decidere se rimuoverla dall’app a causa della mancanza di tempo disponibile per la sua manutenzione."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この機能は、メンテナンスに充てる時間の不足により、アプリから削除するかどうかを決定するため、現在チーム内で検討されております。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 기능은 유지 관리에 사용할 수 있는 시간 부족으로 인해 앱에서 제거할지 여부를 결정하기 위해 현재 내부 검토 중입니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эта функция находится на стадии внутреннего обсуждения, чтобы определить, следует ли её удалить из приложения из-за нехватки времени на её обслуживание."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tính năng này hiện đang được xem xét nội bộ để quyết định xem có nên xóa khỏi ứng dụng do thiếu thời gian để duy trì nó."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此功能目前正接受内部检讨，以决定是否因为「再也没有时间维护了」而从本应用软件移除。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此功能目前正接受內部檢討，以決定是否因為「再也沒有時間維護了」而從敝應用軟體移除。"
+          }
+        }
+      }
+    },
     "tool.dictionary.not_found" : {
       "extractionState" : "manual",
       "localizations" : {
