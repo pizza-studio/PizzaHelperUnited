@@ -76,7 +76,8 @@ struct DetailPortalTabPage: View {
             Section {
                 AbyssReportNav(theVM: delegate)
                 LedgerNav(theVM: delegate)
-                TravelStatsNav(theVM: delegate)
+            } footer: {
+                Text("dpv.peripherals.footer.whySomeContentsAreRemoved".i18nPZHelper)
             }
             .listRowMaterialBackground()
             // .onTapGesture { uidInputFieldFocus = false } // 备忘：不要启用这一行，否则这些导航会失效。

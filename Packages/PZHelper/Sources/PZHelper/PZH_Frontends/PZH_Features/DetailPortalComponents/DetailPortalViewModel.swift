@@ -49,7 +49,6 @@ public final class DetailPortalViewModel: ObservableObject {
 
     @MainActor public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
     @MainActor public var taskStatus4Ledger: Status<any Ledger> = .standby
-    @MainActor public var taskStatus4TravelStats: Status<any TravelStats> = .standby
     @MainActor public var taskStatus4AbyssReport: Status<any AbyssReportSet> = .standby
 
     @ObservationIgnored public var refreshingStatus: Status<Void> = .standby
@@ -67,7 +66,6 @@ public final class DetailPortalViewModel: ObservableObject {
         guard case .standby = refreshingStatus else { return }
         let task = Task {
             await self.fetchCharacterInventoryList()
-            await self.fetchTravelStatsData()
             await self.fetchLedgerData()
             await self.fetchAbyssReportSet()
             refreshingStatus = .standby
@@ -129,34 +127,6 @@ extension DetailPortalViewModel {
         Task.detached { @MainActor in
             withAnimation {
                 self.taskStatus4Ledger = .progress(task)
-            }
-        }
-    }
-
-    @MainActor
-    func fetchTravelStatsData() async {
-        if case let .progress(task) = taskStatus4TravelStats { task.cancel() }
-        let task = Task {
-            do {
-                guard let profile = self.currentProfile?.asSendable,
-                      let queryResult = try await HoYo.getTravelStatsData(for: profile)
-                else { return }
-                Task.detached { @MainActor in
-                    withAnimation {
-                        self.taskStatus4TravelStats = .succeed(queryResult)
-                    }
-                }
-            } catch {
-                Task.detached { @MainActor in
-                    withAnimation {
-                        self.taskStatus4TravelStats = .fail(error)
-                    }
-                }
-            }
-        }
-        Task.detached { @MainActor in
-            withAnimation {
-                self.taskStatus4TravelStats = .progress(task)
             }
         }
     }
