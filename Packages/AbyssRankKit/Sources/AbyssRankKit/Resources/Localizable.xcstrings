@@ -694,6 +694,83 @@
         }
       }
     },
+    "abyssRankKit.rank.navDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Funktion wird derzeit intern überprüft, um zu entscheiden, ob sie aufgrund mehrerer Bedenken aus der App entfernt werden soll. Ein zentrales Problem ist, dass die statistischen Ergebnisse dieser Funktion weniger genau sind als die von miHoYo offiziell berechneten. Zudem kann eine solche Ranglistenfunktion, wenn sie nicht sorgfältig gestaltet ist (wie das ähnliche In-Game-Feature in Star Rail als ideales Beispiel), bei manchen Spielern, die diesen Statistiken übermäßige Bedeutung beimessen, Stress verursachen und möglicherweise das Gleichgewicht zwischen ihrem Spiel- und Alltagsleben stören. Darüber hinaus fehlen unserem Entwicklungsteam derzeit die zeitlichen Ressourcen, um den veralteten Java-basierten Servercode zu überarbeiten, um die Benutzbarkeit dieses Dienstes zu verbessern."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This feature is currently under internal review to determine whether it should be removed from the app due to several concerns. One key issue is that the statistical results from this feature are less accurate than those officially calculated by miHoYo. Additionally, if not carefully designed (like the similar in-game feature in Star Rail as an ideal example), such a ranking feature may cause stress for some players who place excessive importance on these statistics, potentially disrupting the balance between their gaming and daily lives. Furthermore, our development team currently lacks the resources to refactor the legacy Java-based server-side code to improve the usability of this service."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta función está actualmente bajo revisión interna para determinar si debe eliminarse de la aplicación debido a varias preocupaciones. Un problema clave es que los resultados estadísticos de esta función son menos precisos que los calculados oficialmente por miHoYo. Además, si no está cuidadosamente diseñada (como la función similar en el juego de Star Rail como ejemplo ideal), una función de clasificación como esta puede causar estrés a algunos jugadores que otorgan excesiva importancia a estas estadísticas, lo que podría perturbar el equilibrio entre su vida de juego y su vida diaria. Además, nuestro equipo de desarrollo actualmente carece de los recursos para refactorizar el código heredado basado en Java del lado del servidor para mejorar la usabilidad de este servicio."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang tampok na ito ay kasalukuyang nasa ilalim ng panloob na pagsusuri upang matukoy kung dapat itong alisin sa app dahil sa ilang mga alalahanin. Isang pangunahing isyu ay ang mga resulta ng estadistika mula sa tampok na ito ay hindi kasing-tumpak ng mga opisyal na kinakalkula ng miHoYo. Bukod dito, kung hindi maingat na idinisenyo (tulad ng katulad na in-game na tampok sa Star Rail bilang isang ideal na halimbawa), ang ganitong tampok ng pagraranggo ay maaaring magdulot ng stress sa ilang manlalaro na labis na nagbibigay-halaga sa mga estadistikang ito, na posibleng makagambala sa balanse ng kanilang buhay sa paglalaro at pang-araw-araw na buhay. Higit pa rito, ang aming koponan ng pag-unlad ay kasalukuyang kulang sa mga mapagkukunan upang i-refactor ang legacy na Java-based server-side code upang mapabuti ang usability ng serbisyong ito."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette fonctionnalité fait actuellement l’objet d’un examen interne pour déterminer si elle doit être supprimée de l’application en raison de plusieurs préoccupations. Un problème clé est que les résultats statistiques de cette fonctionnalité sont moins précis que ceux calculés officiellement par miHoYo. De plus, si elle n’est pas soigneusement conçue (comme la fonctionnalité similaire dans le jeu Star Rail, qui sert d’exemple idéal), une telle fonction de classement peut causer du stress à certains joueurs qui accordent une importance excessive à ces statistiques, ce qui pourrait perturber l’équilibre entre leur vie de jeu et leur vie quotidienne. En outre, notre équipe de développement manque actuellement de ressources pour remanier le code legacy basé sur Java côté serveur afin d’améliorer l’ergonomie de ce service."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa funzionalità è attualmente in fase di revisione interna per decidere se rimuoverla dall’app a causa di diverse preoccupazioni. Un problema chiave è che i risultati statistici di questa funzionalità sono meno accurati rispetto a quelli calcolati ufficialmente da miHoYo. Inoltre, se non progettata con cura (come la funzione simile nel gioco Star Rail, che rappresenta un esempio ideale), una tale funzione di classifica potrebbe causare stress ad alcuni giocatori che attribuiscono un’eccessiva importanza a queste statistiche, potenzialmente compromettendo l’equilibrio tra la loro vita di gioco e la vita quotidiana. Inoltre, il nostro team di sviluppo attualmente non dispone delle risorse per rifattorizzare il codice legacy basato su Java lato server per migliorare l’usabilità di questo servizio."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この機能は、いくつかの懸念によりアプリから削除するかどうかを決定するため、現在開発チーム内で検討されております。主な問題の一つは、この機能の統計結果がmiHoYoによって公式に計算されたものよりも正確性が低いことです。さらに、慎重に設計されていない場合（スターレイルの類似のインゲーム機能が理想的な例として）、このようなランキング機能は、これらの統計に過度な重要性を置く一部のプレイヤーにストレスを与え、ゲーム生活と日常生活のバランスを崩す可能性があります。さらに、開発チームは現在、レガシーなJavaベースのサーバーサイドコードをリファクタリングしてこのサービスの使いやすさを改善するための時間的リソースが不足しております。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 기능은 여러 우려로 인해 앱에서 제거할지 여부를 결정하기 위해 현재 내부 검토 중입니다. 주요 문제 중 하나는 이 기능의 통계 결과가 miHoYo에서 공식적으로 계산한 것보다 정확도가 낮다는 점입니다. 또한, 신중하게 설계되지 않은 경우(스타 레일의 유사한 인게임 기능이 이상적인 예로), 이러한 랭킹 기능은 통계에 지나치게 중요성을 두는 일부 플레이어에게 스트레스를 유발하여 게임 생활과 일상생활 간의 균형을 방해할 수 있습니다. 게다가 현재 개발 팀은 레거시 Java 기반 서버 측 코드를 리팩토링하여 이 서비스의 사용성을 개선할 시간적 자원이 부족합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эта функция находится на стадии внутреннего обсуждения, чтобы определить, следует ли её удалить из приложения из-за ряда проблем. Одна из ключевых проблем заключается в том, что статистические результаты этой функции менее точны, чем те, что официально рассчитаны miHoYo. Кроме того, если такая функция ранжирования не продумана должным образом (как, например, аналогичная игровая функция в Star Rail в качестве идеального примера), она может вызвать стресс у некоторых игроков, которые придают чрезмерное значение этим статистическим данным, что потенциально нарушает баланс между их игровой и повседневной жизнью. Более того, нашей команде разработчиков в настоящее время не хватает ресурсов для рефакторинга устаревшего серверного кода на Java для улучшения удобства использования этого сервиса."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tính năng này hiện đang được xem xét nội bộ để quyết định xem có nên xóa khỏi ứng dụng do một số mối quan ngại. Một vấn đề chính là kết quả thống kê từ tính năng này kém chính xác hơn so với những gì được miHoYo tính toán chính thức. Ngoài ra, nếu không được thiết kế cẩn thận (như tính năng tương tự trong trò chơi Star Rail làm ví dụ lý tưởng), tính năng xếp hạng như vậy có thể gây căng thẳng cho một số người chơi quá chú trọng đến các số liệu thống kê này, có khả năng làm xáo trộn sự cân bằng giữa cuộc sống chơi game và cuộc sống hàng ngày của họ. Hơn nữa, đội ngũ phát triển của chúng tôi hiện thiếu nguồn lực thời gian để tái cấu trúc mã nguồn phía máy chủ dựa trên Java kế thừa nhằm cải thiện khả năng sử dụng của dịch vụ này."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此功能目前因多项疑虑而正接受开发团队的内部检讨，以决定是否从本应用程序中移除。一个关键问题是，该功能的统计结果不如米哈游官方计算的准确。此外，若未精心设计（以《星穹铁道》中类似的游戏内功能为理想示例），此类排名功能可能对过于重视这些统计数据的部分玩家造成压力、扰乱他们的游戏生活与日常生活之间的平衡。此外，开发团队目前缺乏时间资源来重构基于Java的服务器端陈旧代码库（以提升此服务的可用性）。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此功能目前因多項疑慮而正接受開發團隊的內部檢討，以決定是否從敝應用程式中移除。一個關鍵問題是，該功能的統計結果不如米哈遊官方計算的準確。此外，若未精心設計（以《星穹鐵道》中類似的遊戲內功能為理想示例），此類排名功能可能對過於重視這些統計數據的部分玩家造成壓力、扰亂他們的遊戲生活與日常生活之間的平衡。此外，開發團隊目前缺乏時間資源來重構基於Java的伺服器端陳舊程式碼庫（以提升此服務的可用性）。"
+          }
+        }
+      }
+    },
     "abyssRankKit.rank.note.1" : {
       "extractionState" : "manual",
       "localizations" : {

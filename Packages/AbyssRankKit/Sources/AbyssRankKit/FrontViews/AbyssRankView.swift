@@ -18,6 +18,7 @@ public struct AbyssRankView: View {
     // MARK: Public
 
     public static let navTitle = "abyssRankKit.rank.title".i18nAbyssRank
+    public static let navDescription = "abyssRankKit.rank.navDescription".i18nAbyssRank
 
     @MainActor public static var navIcon: Image {
         Image("gi_tools_abyssRank", bundle: .module)
