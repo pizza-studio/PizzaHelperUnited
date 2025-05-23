@@ -33,6 +33,9 @@ struct UtilsTabPage: View {
                             GachaRootView.navIcon.resizable().aspectRatio(contentMode: .fit)
                         }
                     }
+                }
+
+                Section {
                     NavigationLink(value: Nav.giAbyssRank) {
                         Label {
                             Text(AbyssRankView.navTitle)
@@ -40,6 +43,8 @@ struct UtilsTabPage: View {
                             AbyssRankView.navIcon.resizable().aspectRatio(contentMode: .fit)
                         }
                     }
+                } footer: {
+                    Text(AbyssRankView.navDescription)
                 }
 
                 Section {
