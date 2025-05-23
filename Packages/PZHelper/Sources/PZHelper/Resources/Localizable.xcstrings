@@ -2236,6 +2236,83 @@
         }
       }
     },
+    "dpv.peripherals.footer.whySomeContentsAreRemoved" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Funktionen „Reisestatistiken“ und „Pionier-Statistiken“ wurden absichtlich entfernt, da sie keine bessere Benutzererfahrung als die von HoYoLAB und Miyoushe bieten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The \"Travel Stats\" and \"Trailblazing Stats\" features have been intentionally removed, as they did not provide a better user experience compared to those offered by HoYoLAB and Miyoushe."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las funciones de „Estadísticas de Viaje“ y „Estadísticas Pioneras“ han sido eliminadas intencionadamente, ya que no ofrecían una mejor experiencia de usuario en comparación con las de HoYoLAB y Miyoushe."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang mga tampok na „Mga Estadistika ng Paglalakbay“ at „Stats ng Pagtahak“ ay sadyang inalis dahil hindi nila naibigay ang mas magandang karanasan ng gumagamit kumpara sa mga inaalok ng HoYoLAB at Miyoushe."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les fonctionnalités „Statistiques de voyage“ et „Statistiques“ ont été intentionnellement supprimées, car elles n’offraient pas une meilleure expérience utilisateur que celles proposées par HoYoLAB et Miyoushe."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le funzionalità „Statistiche di viaggio“ e „Statistiche Innovative“ sono state intenzionalmente rimosse, poiché non offrivano un’esperienza utente migliore rispetto a quelle di HoYoLAB e Miyoushe."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「旅の統計簿」および「開拓の統計」機能は、HoYoLABおよび米遊社が提供するものよりも優れたユーザー体験を提供できなかったため、削除されました。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„여행 통계“와 „선구자 통계“ 기능은 HoYoLAB 및 Miyoushe가 제공하는 것보다 더 나은 사용자 경험을 제공하지 못해 의도적으로 제거되었습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Функции „Статистика путешествий“ и „Прокладывающая статистика“ были намеренно удалены, поскольку они не обеспечивали лучшего пользовательского опыта по сравнению с HoYoLAB и Miyoushe."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Các tính năng „Thống kê du lịch“ và „Thống kê tiên phong“ đã bị xóa bỏ có chủ ý, vì chúng không mang lại trải nghiệm người dùng tốt hơn so với những gì HoYoLAB và Miyoushe cung cấp."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「旅行统计」与「开拓统计」功能已被移除，因其无法提供比 HoYoLAB / 米游社更佳的使用体验。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「旅行統計」與「開拓統計」功能已被移除，因其無法提供比 HoYoLAB / 米遊社更佳的使用體驗。"
+          }
+        }
+      }
+    },
     "dpv.query.menuCommandTitle" : {
       "extractionState" : "manual",
       "localizations" : {
