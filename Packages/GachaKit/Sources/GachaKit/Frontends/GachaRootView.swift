@@ -162,10 +162,6 @@ extension GachaRootView {
             } else {
                 Text("gachaKit.prompt.noGachaProfileFound", bundle: .module)
             }
-            Section {
-                Text(GachaRootView.navDescription)
-                    .asInlineTextDescription()
-            }
         }
         .formStyle(.grouped)
     }
