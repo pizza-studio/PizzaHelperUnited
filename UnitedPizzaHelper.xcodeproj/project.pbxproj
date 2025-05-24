@@ -117,7 +117,6 @@
 		5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7619052D3293DC0076AA08 /* GI_MaterialDBGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GI_MaterialDBGenerator.swift; sourceTree = "<group>"; };
 		5B978A8F2C8D8DF60000EB61 /* GITodayMaterialsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GITodayMaterialsKit; sourceTree = "<group>"; };
-		5BCAFCE12C8C5B2600347A09 /* AbyssRankKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AbyssRankKit; sourceTree = "<group>"; };
 		5BD0D0F22C6A633700DA8099 /* PZHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHelper; sourceTree = "<group>"; };
 		5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "PZHelper-Watch"; sourceTree = "<group>"; };
 		5BD744282CC6B262007DE385 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,7 +303,6 @@
 		5BF32D8D2C62A2E4008C9949 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				5BCAFCE12C8C5B2600347A09 /* AbyssRankKit */,
 				5BDDF2752C7601AA006D4BFE /* EnkaKit */,
 				5BDDF2762C7601AA006D4BFE /* GachaKit */,
 				5B978A8F2C8D8DF60000EB61 /* GITodayMaterialsKit */,

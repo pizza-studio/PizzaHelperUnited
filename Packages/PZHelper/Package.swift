@@ -24,7 +24,6 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../AbyssRankKit"),
         .package(path: "../PZDictionaryKit"),
         .package(path: "../GITodayMaterialsKit"),
         .package(path: "../WallpaperKit"),
@@ -50,7 +49,6 @@ let package = Package(
                 .product(name: "PZBaseKit", package: "PZKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "GachaKit", package: "GachaKit"),
-                .product(name: "AbyssRankKit", package: "AbyssRankKit"),
                 .product(name: "Defaults", package: "Defaults"),
                 .product(name: "GITodayMaterialsKit", package: "GITodayMaterialsKit"),
                 .product(name: "PZDictionaryKit", package: "PZDictionaryKit"),
