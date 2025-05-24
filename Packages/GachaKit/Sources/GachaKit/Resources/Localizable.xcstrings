@@ -7002,73 +7002,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import / Export Gacha-Daten"
+            "value" : "Gacha-Daten aus Datei importieren / exportieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import / Export Gacha Records"
+            "value" : "Import / Export Gacha Records from File"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importar / Exportar Registros de Gacha"
+            "value" : "Importar / Exportar Registros de Gacha desde Archivo"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-import / I-export ang mga Rekord ng Gacha"
+            "value" : "I-import / I-export ang mga Rekord ng Gacha mula sa File"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importer / Exporter l'historique Gacha"
+            "value" : "Importer / Exporter l'historique Gacha depuis un fichier"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importa / Esporta Registri Gacha"
+            "value" : "Importa / Esporta Registri Gacha da File"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ガチャ記録を書出す・読込む"
+            "value" : "ガチャ記録をファイルから書出す・読込む"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "가챠 기록 가져오기 / 내보내기"
+            "value" : "가챠 기록을 파일에서 가져오기 / 내보내기"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Импорт / Экспорт записей Гача"
+            "value" : "Импорт / Экспорт записей Гача из файла"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhập / Xuất Hồ Sơ Gacha"
+            "value" : "Nhập / Xuất Hồ Sơ Gacha từ Tệp"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "导入或导出抽卡记录"
+            "value" : "从文件导入或导出抽卡记录"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "匯入或匯出抽卡記錄"
+            "value" : "從檔案匯入或匯出抽卡記錄"
           }
         }
       }
