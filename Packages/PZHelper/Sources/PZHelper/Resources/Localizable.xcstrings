@@ -15335,6 +15335,83 @@
         }
       }
     },
+    "tab.utils.featureRemovalNotice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einige Funktionen wurden aufgrund mangelnder Wartung und Benutzbarkeit absichtlich entfernt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some features are intentionally removed due to lack of maintenance and usability."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algunas funciones han sido eliminadas intencionadamente debido a la falta de mantenimiento y usabilidad."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang ilang mga feature ay sadyang inalis dahil sa kakulangan ng maintenance at usability."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certaines fonctionnalités ont été intentionnellement supprimées en raison d'un manque d'entretien et d'utilisabilité."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alcune funzionalità sono state intenzionalmente rimosse a causa della mancanza di manutenzione e usabilità."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メンテナンス不足と使い勝手の悪さにより、一部の機能は意図的に削除されました。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유지보수 부족과 사용성 문제로 인해 일부 기능이 의도적으로 제거되었습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Некоторые функции были намеренно удалены из-за недостаточного обслуживания и удобства использования."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một số tính năng đã bị xóa có chủ ý do thiếu bảo trì và tính khả dụng."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "某些功能由于缺乏维护、用户体验不良等原因而被移除。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "某些功能由於缺乏維護、使用者體驗不良等原因而被移除。"
+          }
+        }
+      }
+    },
     "tab.utils.fullTitle" : {
       "extractionState" : "manual",
       "localizations" : {
