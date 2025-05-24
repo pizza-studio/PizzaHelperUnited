@@ -174,3 +174,13 @@ extension HoYo.AbyssReport4HSR {
         }
     }
 }
+
+extension [HoYo.AbyssReport4HSR.FHFloorDetail] {
+    var trimmed: Self {
+        var copied = self
+        while copied.last?.isSkipped ?? false {
+            copied.removeLast()
+        }
+        return copied
+    }
+}
