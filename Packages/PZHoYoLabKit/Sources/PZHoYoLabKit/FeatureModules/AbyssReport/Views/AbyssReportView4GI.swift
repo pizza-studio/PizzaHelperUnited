@@ -65,11 +65,6 @@ public struct AbyssReportView4GI: AbyssReportView {
 
     @ViewBuilder var contents: some View {
         Form {
-            if enforceReservedUserName4SH, reservedUserName4SH.isEmpty {
-                Text("hylKit.abyssReport.gi.SnapHutaoEmailEmptyNotice", bundle: .module)
-                    .font(.footnote)
-                    .foregroundStyle(.orange)
-            }
             stats
             floorList
         }
@@ -106,9 +101,6 @@ public struct AbyssReportView4GI: AbyssReportView {
     @Namespace private var animation
 
     private let summaryMap: [String: SummaryPtr]
-
-    @Default(.reservedUserNameForSnapHutao) private var reservedUserName4SH: String
-    @Default(.enforceReservedUserNameForSnapHutaoSubmission) private var enforceReservedUserName4SH: Bool
 
     private var columns: Int { min(max(Int(floor($containerWidth.wrappedValue / 200)), 2), 4) }
 }
