@@ -34,10 +34,18 @@ Although The Pizza Helper allows users to import and export gacha records, the d
 
 At least the following types of services could be affected:
 
-1. **HoYoLAB or miHoYo Community:** Real-time notes, personal battle reports, ledgers, game statistics, gacha record retrieval, character inventory lists, in-game events.
+1. **HoYoLAB or miHoYo Community:** Real-time notes, personal battle reports, ledgers, gacha record retrieval, character inventory lists, in-game events.
 2. **Enka Networks:** Character showcases.
 
 Each supported game, during its major version updates, often comes with temporary unavailability of the aforementioned services. Especially Enka Networks, each version maintenance typically takes one to two days.
+
+#### Q: Why some features are removed?
+
+Features have been removed for the following reasons:
+
+- Features where user experience cannot compete with Miyoushe / HoYoLAB app implementations, such as game statistics.
+- Features that can no longer be maintained due to developer time constraints, such as the Pizza Dictionary.
+- Features with unresolvable user experience issues, such as the Spiral Abyss Top Lists.
 
 ## // App and Development Team
 
