@@ -82,7 +82,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
     }
 
     @ViewBuilder var floorList: some View {
-        ForEach(data.allFloorDetail, id: \.mazeID) { floorData in
+        ForEach(data.allFloorDetail.trimmed, id: \.mazeID) { floorData in
             Section {
                 if floorData.isSkipped {
                     Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
