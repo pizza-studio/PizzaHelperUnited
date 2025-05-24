@@ -1,932 +1,947 @@
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EULA</title>
-  <style>
-    /* General reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-      background-color: #ffffff;
-      color: #24292e;
-      line-height: 1.5;
-      padding: 2rem;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    /* Dark mode */
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #0d1117;
-        color: #c9d1d9;
-      }
-
-      header {
-        border-bottom: none;
-      }
-
-      .language-selector {
-        background-color: #161b22;
-        color: #c9d1d9;
-        border: 1px solid #30363d;
-      }
-
-      code,
-      pre {
-        background-color: #161b22;
-        border: 1px solid #30363d;
-      }
-    }
-
-    header {
-      align-items: leading;
-    }
-
-    .language-selector {
-      font-size: 1rem;
-      padding: 0.5rem;
-      border: 1px solid #d0d7de;
-      border-radius: 6px;
-      background-color: #f6f8fa;
-      color: #24292e;
-    }
-
-    hr {
-      opacity: 0.1;
-    }
-
-    main {
-      padding: 0;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
-      }
-    }
-
-    /* GitHub Markdown CSS */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      margin-top: 1em;
-      margin-bottom: 0.5em;
-      font-weight: 600;
-      line-height: 1.25;
-    }
-
-    h1 {
-      text-align: center;
-      margin-top: 1em;
-      margin-bottom: 1em;
-    }
-
-    h2 {
-      border-bottom: 0.1em solid;
-      border-right: 1em solid;
-      padding-right: 0.5em;
-    }
-
-    h3 {
-      background-color: #114514;
-      color: white;
-      padding: 5px;
-    }
-
-    h4 {
-      border-left: 0.5em solid;
-      border-bottom: 0.05em solid;
-      padding: 0.25em 0.5em;
-    }
-
-    p {
-      margin-bottom: 1em;
-    }
-
-    a {
-      color: #0366d6;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    ul,
-    ol {
-      padding-left: 2em;
-      margin-bottom: 1em;
-    }
-
-    blockquote {
-      padding: 0.5em 1em;
-      border-left: 0.25em solid #d0d7de;
-      margin-bottom: 0.5em;
-      opacity: 0.7;
-      /* Reduced space at the bottom */
-    }
-
-    code {
-      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
-        Courier, monospace;
-      font-size: 85%;
-      padding: 0.2em 0.4em;
-      border-radius: 6px;
-    }
-
-    pre {
-      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
-        Courier, monospace;
-      font-size: 85%;
-      line-height: 1.45;
-      background-color: #f6f8fa;
-      padding: 1em;
-      border-radius: 6px;
-      overflow: auto;
-      border: none;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1em;
-    }
-
-    th,
-    td {
-      border: 1px solid #d0d7de;
-      padding: 0.6em;
-    }
-
-    th {
-      background-color: #f6f8fa;
-      font-weight: 600;
-    }
-
-    /* Hide all content divs by default */
-    .content {
-      display: none;
-    }
-
-    /* Show content div when it is active */
-    .content.active {
-      display: block;
-    }
-  </style>
-  <script>
-    function changeLanguage() {
-      const language = document.getElementById("language-selector").value;
-      const contentDivs = document.querySelectorAll(".content");
-      contentDivs.forEach((div) => div.classList.remove("active"));
-      const selectedContent = document.getElementById(`content-${language}`);
-      if (selectedContent) {
-        selectedContent.classList.add("active");
-      }
-    }
-
-    function detectLanguage() {
-      const browserLang = navigator.language || navigator.userLanguage;
-      const supportedLanguages = ["en-US", "zh-Hant", "zh-Hans", "ja-JP"];
-      // Default to "zh-Hans" if the browser's language is not supported
-      let language = supportedLanguages.includes(browserLang)
-        ? browserLang
-        : "zh-Hans";
-      document.getElementById("language-selector").value = language;
-      changeLanguage(); // Call changeLanguage to set the correct content visibility
-    }
-
-    window.onload = detectLanguage; // Initialize on page load
-  </script>
-</head>
-
-<body>
-  <header>
-    <select id="language-selector" class="language-selector" onchange="changeLanguage()">
-      <option value="en-US">English</option>
-      <option value="zh-Hant">繁體中文 (Traditional Chinese)</option>
-      <option value="zh-Hans">简体中文 (Simplified Chinese)</option>
-      <option value="ja-JP">日本語 (Japanese)</option>
-    </select>
-    <span> ← 🌐</span>
-  </header>
-  <main>
-    <div id="content-en-US" class="content" lang="en">
-      <h1 id="toc_0"><strong>Privacy Policy</strong></h1>
-
-      <blockquote>
-        All translations of this document are for reference purposes only. The
-        original Simplified Chinese version of this document is the only
-        legally binding version.
-      </blockquote>
-
-      <p>
-        Pizza Studio has released the &quot;The Pizza Helper&quot; application
-        (2022 version, 2024 re-release) as an open-source app. This service is
-        provided by Pizza Studio (hereinafter referred to as &quot;the
-        Developer&quot;) for free via the Mac App Store and iOS App Store.
-      </p>
-
-      <p>
-        If someone decides to use the &quot;The Pizza Helper&quot;
-        (hereinafter referred to as &quot;this application&quot;), this page
-        is used to inform visitors about the collection, use, and disclosure
-        of data by the application.
-      </p>
-
-      <p>
-        If you choose to use the Developer&#39;s services, you can decide
-        whether this application collects and uses information related to this
-        privacy policy. The information collected by the Developer is used to
-        provide and improve the service. Except as described in this privacy
-        policy, the Developer will not use or share your information with
-        anyone.
-      </p>
-
-      <p>
-        The terms used in this privacy policy have the same meaning as those
-        in the Developer&#39;s Terms and Conditions, which can be obtained
-        from within this application unless otherwise defined in this privacy
-        policy.
-      </p>
-
-      <h3 id="toc_1"><strong>Collection and Use of Information</strong></h3>
-
-      <p>
-        This application requires submitting the UID number to query the
-        in-game character showcase information through Enka Networks&#39;
-        public query service. The UID number itself can only be used to locate
-        the corresponding player within the Mihoyo game and cannot be used by
-        anyone outside of Mihoyo, Inc. to reverse-engineer the player&#39;s
-        true identity. However, the UID may reveal the country or region of
-        the game server the player is located on. It is important to note
-        that, as Enka Networks is a public query service, the character
-        nickname and signature obtained through the given UID might expose the
-        player&#39;s personal privacy, depending on the information they have
-        included in their nickname and signature. Since this information is
-        voluntarily made public by the player in the game, the Developer of
-        this application do not bear any responsibility in this regard.
-      </p>
-
-      <p>
-        For cases other than the above exception: Should the User agree, the
-        Developer shall collect information related to the Spiral Abyss. This
-        includes the following:
-      </p>
-
-      <p>
-        If the User has achieved full stars in the current season of the
-        Spiral Abyss:
-      </p>
-
-      <ul>
-        <li>
-          Characters used in the User&#39;s Spiral Abyss challenges from
-          floors 9 to 12.
-        </li>
-        <li>The User&#39;s Spiral Abyss combat leaderboard.</li>
-        <li>
-          All of the User&#39;s owned characters and their character build
-          details.
-        </li>
-        <li>
-          The User&#39;s game UID number. <strong>Note</strong>: This number
-          is used to ensure the User&#39;s data is not resubmitted and to
-          permanently filter out any data from potential cheaters.
-        </li>
-        <li>The reserved username of the user&#39;s Snap Hutao account.</li>
-      </ul>
-
-      <p>
-        The collected information does not include any personally identifiable
-        information, device details, or account information, thereby ensuring
-        the protection of the User&#39;s privacy.
-      </p>
-
-      <p>All other information is stored in the following three locations:</p>
-
-      <ul>
-        <li>The Apple digital device you use with this application.</li>
-        <li>
-          The iCloud private space associated with the Apple ID that is logged
-          into iCloud Drive on that digital device.
-        </li>
-        <li>
-          Any digital device logged into the same Apple ID using iCloud Drive
-          and has the application installed.
-        </li>
-      </ul>
-
-      <p>
-        This application does not transmit User data to the Developer&#39;s
-        servers, except for the cases listed above. The collected information
-        is used solely for service interaction and personalization. The
-        Developer does not collect any other types of User information.
-      </p>
-
-      <h3 id="toc_2"><strong>Log Data</strong></h3>
-
-      <p>
-        This application does not collect user crash log data; it is instead
-        collected by Apple with the user&#39;s permission. The crash log data
-        collected by Apple is filtered by Apple to remove any content that
-        could be used to identify the user personally, and is presented to the
-        Developer through Apple Store Connect. The Developer can read the
-        crash reports collected by Apple via Xcode&#39;s Organizer. Users can
-        also provide crash reports through macOS&#39;s built-in Feedback
-        Assistant application, and this process also submits the error report
-        to the Developer via Apple Store Connect.
-      </p>
-
-      <h3 id="toc_3"><strong>Cookies</strong></h3>
-
-      <p>
-        Although certain features of this application rely on cookies, these
-        cookies are only likely to appear in the following three locations:
-      </p>
-
-      <ul>
-        <li>The Apple digital device you use with this application.</li>
-        <li>
-          The iCloud private cloud space associated with the Apple ID that is
-          logged into iCloud Drive on that digital device.
-        </li>
-        <li>
-          Any digital device logged into the same Apple ID using iCloud Drive
-          and has the application installed.
-        </li>
-      </ul>
-
-      <p>The Developer does not collect any cookies data from users.</p>
-
-      <h3 id="toc_4"><strong>Service Providers</strong></h3>
-
-      <p>
-        For the following reasons, the Developer may collaborate with
-        third-party companies (Apple Inc.):
-      </p>
-
-      <ul>
-        <li>
-          To provide the application on the Mac App Store and iOS App Store.
-        </li>
-        <li>
-          To collect crash reports uploaded by users through Apple Feedback
-          Assistant.
-        </li>
-        <li>Other matters required by Apple Inc.</li>
-      </ul>
-
-      <p>
-        At a minimum, the Developer can declare that the Developer does not
-        have access to collect user information.
-      </p>
-
-      <h3 id="toc_5"><strong>Links to Other Sites</strong></h3>
-
-      <p>
-        This application does not contain links to other websites, except for
-        the following exceptions:
-      </p>
-
-      <ul>
-        <li>
-          Official website link of this application and GitHub repository
-          link.
-        </li>
-        <li>
-          Links to the GitHub repositories of third-party modules used in this
-          application.
-        </li>
-        <li>
-          Contact information of contributors to this application (which may
-          be provided in the form of links).
-        </li>
-        <li>
-          URLs related to Mihoyo Co., Ltd. (Shanghai) and its overseas
-          branches.
-        </li>
-        <li>
-          URLs related to Enka Networks&#39; game character showcase query
-          service.
-        </li>
-      </ul>
-
-      <h3 id="toc_6"><strong>Children&#39;s Privacy</strong></h3>
-
-      <p>
-        The Developer do not knowingly collect personally identifiable
-        intelligence from children. The Developer encourage all children to
-        never submit any personally identifiable intelligence through the
-        Application and/or Services. The Developer encourage parents and legal
-        guardians to monitor their children&#39;s Internet usage and to help
-        enforce this Policy by instructing their children never to provide
-        personally identifiable intelligence through the Application and/or
-        Services without their permission. If the User have reason to believe
-        that a child has provided personally identifiable intelligence to us
-        through the Application and/or Services, please contact us. The User
-        must also be at least 16 years of age to consent to the processing of
-        the User&#39;s personally identifiable intelligence in the User&#39;s
-        country (in some countries we may allow the User&#39;s parent or
-        guardian to do so on the User&#39;s behalf).
-      </p>
-
-      <h3 id="toc_7"><strong>Changes to This Privacy Policy</strong></h3>
-
-      <p>
-        The Developer may update the privacy policy from time to time.
-        Therefore, it is recommended that you review this page regularly for
-        any changes. The Developer will notify you of any changes by posting
-        the new privacy policy on this page.
-      </p>
-
-      <p>This policy is effective as of November 20, 2024.</p>
-
-      <h3 id="toc_8"><strong>Contacting the Developer</strong></h3>
-
-      <p>
-        If you have any questions or suggestions regarding the Developer&#39;s
-        privacy policy, please contact <code>contact@pizzastudio.org</code>.
-      </p>
-
-      <p>
-        This privacy policy page was created at
-        <a href="https://privacypolicytemplate.net">privacypolicytemplate.net</a>
-        and modified/generated by
-        <a href="https://app-privacy-policy-generator.nisrulz.com/">App Privacy Policy Generator</a>.
-      </p>
-    </div>
-    <div id="content-zh-Hant" class="content active" lang="zh-Hant">
-      <h1 id="toc_0"><strong>隱私政策</strong></h1>
-
-      <blockquote>
-        本文件的所有翻譯版本僅供參考，唯有簡體中文原版具法律效力。
-      </blockquote>
-
-      <p>
-        披薩工作室將「披薩小助手」應用（2022 年製，2024
-        年重製）作為一個開源應用釋出。本服務由披薩工作室（下稱「開發者」）藉由
-        Mac App Store 與 iOS App Store 以免費的形式原樣提供。
-      </p>
-
-      <p>
-        如果有人決定使用「披薩小助手」（下稱「敝應用」）的服務，本頁面用於通知訪問者關於該應用對資料的收集、使用和披露政策。
-      </p>
-
-      <p>
-        如果閣下選擇使用開發者的服務，那麼閣下可以決定敝應用是否收集和使用與此隱私政策有關的情資。開發者所收集的情資用於提供和改進服務。除本隱私政策所述情況外，開發者不會與任何人使用或分享閣下的情資。
-      </p>
-
-      <p>
-        本隱私政策中使用的術語與開發者的條款和條件中的含義相同，這些條款和條件可在敝應用中獲得、除非本隱私政策中另有定義。
-      </p>
-
-      <h3 id="toc_1"><strong>情資的收集和使用</strong></h3>
-
-      <p>
-        敝應用在藉由 Enka Networks 的公開查詢服務查詢指定 UID
-        的遊戲內角色展櫃資訊時，會需要送出 UID 數字來作為查詢依據。UID
-        數字本身只可能被用來在對應的米哈遊遊戲內部定位到具體的玩家，卻無法用來被米哈遊股份有限公司以外的人士用任何手段逆向推定出玩家的真實身分。但
-        UID
-        可能會洩露該玩家所處的遊戲伺服器的所在國家或地區。需要注意的是，因為
-        Enka Networks 是公共查詢服務，所以 Enka Networks 藉由給定的 UID
-        查詢到的結果當中的角色暱稱與簽名可能會洩露該玩家的個人隱私，且這個情況取決於該玩家在暱稱與個人簽名裡面記入了什麼內容。由於這些本來就屬於玩家在遊戲內主動公開的資訊，所以敝應用的開發者不承擔與此有關的責任。
-      </p>
-
-      <p>
-        除上述事項以外，倘若使用者允諾，開發者將蒐集與深境螺旋個人戰報有關之資訊，內容如下：
-      </p>
-
-      <p>若當季深境螺旋達滿星之成績：</p>
-
-      <ul>
-        <li>於深境螺旋第9至12層之挑戰所使用之角色；</li>
-        <li>深境螺旋之戰鬥榜單；</li>
-        <li>所擁角色及其培養情況；</li>
-        <li>
-          遊戲UID數字。此數字用以防止資料重複提交，亦可永續過濾可能舞弊者之資料。
-        </li>
-        <li>使用者所指定的 Snap Hutao 使用者預留名稱。</li>
-      </ul>
-
-      <p>
-        所上傳之資訊不涉任何與使用者之設備或帳號直接相關者，隱私可獲保障。
-      </p>
-
-      <p>其他資訊皆存於下述三類之位置：</p>
-
-      <ul>
-        <li>閣下使用敝應用時之 Apple 數位裝置。</li>
-        <li>
-          以及該數位裝置當時所已經登入使用 iCloud Drive 的 Apple ID 之自身的
-          iCloud 私有雲空間。
-        </li>
-        <li>
-          以及任何被登入該 Apple ID 使用 iCloud Drive
-          且有安裝敝應用之數位裝置。
-        </li>
-      </ul>
-
-      <p>
-        除上述情形外，敝應用程式不會傳送其他類型之使用者資料至開發者伺服器。使用者所有個人資料僅用於與相關服務的互動及個人化功能，開發者不蒐集除上述所陳項目以外之使用者資訊。
-      </p>
-
-      <h3 id="toc_2"><strong>日誌資料</strong></h3>
-
-      <p>
-        敝應用程式本身不收集使用者的崩潰日誌資料，而是由 Apple
-        在使用者允許的情況下代為收取。Apple 收取到的崩潰日誌資料已經被 Apple
-        濾除任何可能用以辨識使用者個人身分的內容、且會藉由 Apple Store Connect
-        渠道呈現給開發者。開發者可藉由 Xcode 的 Organizer 讀取被 Apple
-        收集上來的崩潰報告。個人使用者也還可以通過 macOS
-        的內置反饋助手應用程式提供應用程式的崩潰報告，且該步驟亦是將錯誤報告藉由
-        Apple Store Connect 呈現給開發者。
-      </p>
-
-      <h3 id="toc_3"><strong>Cookies</strong></h3>
-
-      <p>
-        敝應用程式的相關功能雖依賴 Cookies 運作，但這一類 Cookies
-        只可能因此出現在下述三類位置：
-      </p>
-
-      <ul>
-        <li>閣下使用敝應用時的 Apple 數位裝置。</li>
-        <li>
-          以及該數位裝置當時所已經登入使用 iCloud Drive 的 Apple ID 的自身的
-          iCloud 私有雲空間。
-        </li>
-        <li>
-          以及任何被登入該 Apple ID 使用 iCloud Drive
-          且有安裝敝應用的數位裝置。
-        </li>
-      </ul>
-
-      <p>開發者不蒐集使用者的任何 Cookies 資料。</p>
-
-      <h3 id="toc_4"><strong>服務提供者</strong></h3>
-
-      <p>由於以下原因，開發者可能與第三方公司（蘋果公司）合作。</p>
-
-      <ul>
-        <li>為了在 Mac App Store 與 iOS App Store 上提供該應用程式</li>
-        <li>
-          收集使用者通過 Apple Feedback Assistant 上傳的應用程式崩潰報告。
-        </li>
-        <li>如果可能的話，美商蘋果公司要求的其他事項。</li>
-      </ul>
-
-      <p>至少開發者可以聲明：開發者無權蒐獲使用者之情資。</p>
-
-      <h3 id="toc_5"><strong>與其他網站的鏈接</strong></h3>
-
-      <p>敝應用不包含其他網站的鏈接，除了下述例外：</p>
-
-      <ul>
-        <li>敝應用的官方網站鏈接與 GitHub 倉庫的鏈接。</li>
-        <li>被敝應用所使用的第三方程式模組所在的 GitHub 倉庫鏈接。</li>
-        <li>
-          參與敝應用的貢獻的人員的各自的聯絡方式（可能會以鏈接的形式提供）。
-        </li>
-        <li>與米哈遊股份有限公司（上海）及其海外分社有關的網址。</li>
-        <li>與 Enka Networks 有關的遊戲角色展櫃資訊查詢網址。</li>
-        <li>UIGF 委員會的官方網址。</li>
-      </ul>
-
-      <h3 id="toc_6"><strong>兒童的隱私</strong></h3>
-
-      <p>
-        開發者不會有意收集兒童的個人身份情資。開發者鼓勵所有兒童永遠不要通過應用程式和/或服務提交任何個人可識別的情資。開發者鼓勵父母和法定監護人監督其子女的互聯網使用情況，並幫助執行本政策，指示其子女在未經其許可的情況下絕不通過應用程式和/或服務提供可識別個人的情資。如果閣下有理由相信一個孩子通過應用程式和/或服務向開發者提供了個人可識別的情資，請聯絡開發者。閣下還必須至少年滿16歲方可同意在閣下的國家或地區處理閣下的個人可識別情資（在某些國家或地區，開發者可能允許閣下的父母或監護人代表閣下這樣做）。
-      </p>
-
-      <h3 id="toc_7"><strong>本隱私政策的</strong>變化</h3>
-
-      <p>
-        開發者可能會不時地更新開發者的隱私政策。因此，建議閣下定期查看本頁面的任何變化。開發者將通過在本頁面上發佈新的隱私政策來通知閣下任何變化。
-      </p>
-
-      <p>本政策自 2024-11-20 起生效。</p>
-
-      <h3 id="toc_8"><strong>聯絡開發者</strong></h3>
-
-      <p>
-        如果閣下對開發者的隱私政策有任何疑問或建議，請聯絡
-        <code>contact@pizzastudio.org</code>。
-      </p>
-
-      <p>
-        本隱私政策頁面在<a href="https://privacypolicytemplate.net">privacypolicytemplate.net</a>創建，並由<a
-          href="https://app-privacy-policy-generator.nisrulz.com/">App Privacy Policy Generator</a>修改/生成。
-      </p>
-    </div>
-    <div id="content-zh-Hans" class="content" lang="zh-Hans">
-      <h1 id="toc_0"><strong>隐私政策</strong></h1>
-
-      <blockquote>
-        本文件的所有翻译版本仅供参考，唯有简体中文原版具法律效力。
-      </blockquote>
-
-      <p>
-        披萨工作室将「披萨小助手」应用（2022 年制，2024
-        年重制）作为一个开源应用释出。本服务由披萨工作室（下称「开发者」）借由
-        Mac App Store 与 iOS App Store 以免费的形式原样提供。
-      </p>
-
-      <p>
-        如果有人决定使用「披萨小助手」（下称「敝应用」）的服务，本页面用于通知访问者关于该应用对资料的收集、使用和披露政策。
-      </p>
-
-      <p>
-        如果阁下选择使用开发者的服务，那么阁下可以决定敝应用是否收集和使用与此隐私政策有关的情资。开发者所收集的情资用于提供和改进服务。除本隐私政策所述情况外，开发者不会与任何人使用或分享阁下的情资。
-      </p>
-
-      <p>
-        本隐私政策中使用的术语与开发者的条款和条件中的含义相同，这些条款和条件可在敝应用中获得、除非本隐私政策中另有定义。
-      </p>
-
-      <h3 id="toc_1"><strong>情资的收集和使用</strong></h3>
-
-      <p>
-        敝应用在借由 Enka Networks 的公开查询服务查询指定 UID
-        的游戏内角色展柜资讯时，会需要送出 UID 数字来作为查询依据。UID
-        数字本身只可能被用来在对应的米哈游游戏内部定位到具体的玩家，却无法用来被米哈游股份有限公司以外的人士用任何手段逆向推定出玩家的真实身分。但
-        UID
-        可能会泄露该玩家所处的游戏服务器的所在国家或地区。需要注意的是，因为
-        Enka Networks 是公共查询服务，所以 Enka Networks 借由给定的 UID
-        查询到的结果当中的角色昵称与签名可能会泄露该玩家的个人隐私，且这个情况取决于该玩家在昵称与个人签名里面记入了什么内容。由于这些本来就属于玩家在游戏内主动公开的资讯，所以敝应用的开发者不承担与此有关的责任。
-      </p>
-
-      <p>
-        除上述事项以外，倘若用户允诺，开发者将搜集与深境螺旋个人战报有关之资讯，内容如下：
-      </p>
-
-      <p>若当季深境螺旋达满星之成绩：</p>
-
-      <ul>
-        <li>于深境螺旋第9至12层之挑战所使用之角色；</li>
-        <li>深境螺旋之战斗榜单；</li>
-        <li>所拥角色及其培养情况；</li>
-        <li>
-          游戏UID数字。此数字用以防止资料重复提交，亦可永续过滤可能舞弊者之资料。
-        </li>
-        <li>用户所指定的 Snap Hutao 用户预留名称。</li>
-      </ul>
-
-      <p>所上传之资讯不涉任何与用户之设备或账号直接相关者，隐私可获保障。</p>
-
-      <p>其他资讯皆存于下述三类之位置：</p>
-
-      <ul>
-        <li>阁下使用敝应用时之 Apple 数字设备。</li>
-        <li>
-          以及该数字设备当时所已经登入使用 iCloud Drive 的 Apple ID 之自身的
-          iCloud 私有云空间。
-        </li>
-        <li>
-          以及任何被登入该 Apple ID 使用 iCloud Drive
-          且有安装敝应用之数字设备。
-        </li>
-      </ul>
-
-      <p>
-        除上述情形外，敝应用程序不会传送其他类型之用户资料至开发者服务器。用户所有个人资料仅用于与相关服务的互动及个人化功能，开发者不搜集除上述所陈项目以外之用户资讯。
-      </p>
-
-      <h3 id="toc_2"><strong>日志资料</strong></h3>
-
-      <p>
-        敝应用程序本身不收集用户的崩溃日志资料，而是由 Apple
-        在用户允许的情况下代为收取。Apple 收取到的崩溃日志资料已经被 Apple
-        滤除任何可能用以辨识用户个人身分的内容、且会借由 Apple Store Connect
-        渠道呈现给开发者。开发者可借由 Xcode 的 Organizer 读取被 Apple
-        收集上来的崩溃报告。个人用户也还可以通过 macOS
-        的内置反馈助手应用程序提供应用程序的崩溃报告，且该步骤亦是将错误报告借由
-        Apple Store Connect 呈现给开发者。
-      </p>
-
-      <h3 id="toc_3"><strong>Cookies</strong></h3>
-
-      <p>
-        敝应用程序的相关功能虽依赖 Cookies 运作，但这一类 Cookies
-        只可能因此出现在下述三类位置：
-      </p>
-
-      <ul>
-        <li>阁下使用敝应用时的 Apple 数字设备。</li>
-        <li>
-          以及该数字设备当时所已经登入使用 iCloud Drive 的 Apple ID 的自身的
-          iCloud 私有云空间。
-        </li>
-        <li>
-          以及任何被登入该 Apple ID 使用 iCloud Drive
-          且有安装敝应用的数字设备。
-        </li>
-      </ul>
-
-      <p>开发者不搜集用户的任何 Cookies 资料。</p>
-
-      <h3 id="toc_4"><strong>服务提供者</strong></h3>
-
-      <p>由于以下原因，开发者可能与第三方公司（苹果公司）合作。</p>
-
-      <ul>
-        <li>为了在 Mac App Store 与 iOS App Store 上提供该应用程序</li>
-        <li>
-          收集用户通过 Apple Feedback Assistant 上传的应用程序崩溃报告。
-        </li>
-        <li>如果可能的话，美商苹果公司要求的其他事项。</li>
-      </ul>
-
-      <p>至少开发者可以声明：开发者无权搜获用户之情资。</p>
-
-      <h3 id="toc_5"><strong>与其他网站的链接</strong></h3>
-
-      <p>敝应用不包含其他网站的链接，除了下述例外：</p>
-
-      <ul>
-        <li>敝应用的官方网站链接与 GitHub 仓库的链接。</li>
-        <li>被敝应用所使用的第三方程序模组所在的 GitHub 仓库链接。</li>
-        <li>
-          参与敝应用的贡献的人员的各自的联络方式（可能会以链接的形式提供）。
-        </li>
-        <li>与米哈游股份有限公司（上海）及其海外分社有关的网址。</li>
-        <li>与 Enka Networks 有关的游戏角色展柜资讯查询网址。</li>
-        <li>UIGF 委员会的官方网址。</li>
-      </ul>
-
-      <h3 id="toc_6"><strong>儿童的隐私</strong></h3>
-
-      <p>
-        开发者不会有意收集儿童的个人身份情资。开发者鼓励所有儿童永远不要通过应用程序和/或服务提交任何个人可识别的情资。开发者鼓励父母和法定监护人监督其子女的互联网使用情况，并帮助执行本政策，指示其子女在未经其许可的情况下绝不通过应用程序和/或服务提供可识别个人的情资。如果阁下有理由相信一个孩子通过应用程序和/或服务向开发者提供了个人可识别的情资，请联络开发者。阁下还必须至少年满16岁方可同意在阁下的国家或地区处理阁下的个人可识别情资（在某些国家或地区，开发者可能允许阁下的父母或监护人代表阁下这样做）。
-      </p>
-
-      <h3 id="toc_7"><strong>本隐私政策的</strong>变化</h3>
-
-      <p>
-        开发者可能会不时地更新开发者的隐私政策。因此，建议阁下定期查看本页面的任何变化。开发者将通过在本页面上发布新的隐私政策来通知阁下任何变化。
-      </p>
-
-      <p>本政策自 2024-11-20 起生效。</p>
-
-      <h3 id="toc_8"><strong>联络开发者</strong></h3>
-
-      <p>
-        如果阁下对开发者的隐私政策有任何疑问或建议，请联络
-        <code>contact@pizzastudio.org</code>。
-      </p>
-
-      <p>
-        本隐私政策页面在<a href="https://privacypolicytemplate.net">privacypolicytemplate.net</a>创建，并由<a
-          href="https://app-privacy-policy-generator.nisrulz.com/">App Privacy Policy Generator</a>修改/生成。
-      </p>
-    </div>
-    <div id="content-ja-JP" class="content" lang="ja">
-      <h1 id="toc_0"><strong>プライバシーポリシー</strong></h1>
-
-      <blockquote>
-        本書の全ての翻訳は参考のためのみ提供され、簡体字中国語の原本のみが法的効力を有す。
-      </blockquote>
-
-      <p>
-        使用者各位、本プライバシーポリシー（以下「本ポリシー」といふ）は、「ピザ助手」アプリ（以下「当アプリ」といふ）に関し、開発者（以下「当方」といふ）が収集し、使用し、または開示せし情報の取扱いに関する規定を定めたものである。
-      </p>
-
-      <p>
-        当方は当アプリを無償にて提供せしにあたり、使用者が当アプリを利用する際に、収集せし情報について十分にご理解いただくことを要請する。以下の記載に示す内容に従い、当方は当アプリを通じて収集せし情報を適切に取り扱うことを約束せしものである。
-      </p>
-
-      <h3 id="toc_1"><strong>第1条 情報の収集及び使用</strong></h3>
-
-      <p>
-        当アプリでは、Enka
-        Networksの公開検索サービスを通じて、指定せしUIDのゲーム内キャラクター情報を照会せしため、ユーザーよりUID番号を送信せし必要がある。なお、このUID番号は、特定のプレイヤーを米哈遊（miHoYo）ゲーム内にて識別せしためのみに使用され、これにより他者がそのプレイヤーの身元を逆に特定せしことは不可能に有す。しかしながら、UID番号がそのプレイヤーの所属せしゲームサーバーの国または地域を示唆せし可能性があることを、使用者は予め理解しなければならぬ。Enka
-        Networksは公共の検索サービスにて、UIDに基づき取得せしキャラクターのニックネームやサイン等の情報が、プレイヤーの個人情報を漏洩せし恐れがあることに留意せよ。これらの情報はすべて、プレイヤーがゲーム内にて積極的に公開せしものであり、当方はその内容に対し一切の責任を負わぬ。
-      </p>
-
-      <p>
-        上記の例の他、使用者が同意せし上で、当アプリは以下に示す情報を収集せし場合があることを申し添え申す。
-      </p>
-
-      <p>深境螺旋において満星を達成せし場合のデータ：</p>
-
-      <ul>
-        <li>9層から12層において使用せしキャラクター。</li>
-        <li>深境螺旋の戦闘ランキング。</li>
-        <li>所有せしキャラクターおよびその育成状況。</li>
-        <li>
-          ゲームUID番号（重複データの提出防止および不正行為者の永続的排除を目的とす）。
-        </li>
-        <li>Snap Hutao アカウント名前。</li>
-      </ul>
-
-      <p>
-        当アプリにて収集せし情報は、使用者のデバイス及びアカウントに関連せぬ形で保存され、使用者のプライバシーは確保せられることとす。
-      </p>
-
-      <p>
-        アプリが収集せし情報は、次の三つの場所にのみ保存せし可能性がある：
-      </p>
-
-      <ul>
-        <li>使用者が当アプリを使用せしApple製のデジタルデバイス。</li>
-        <li>使用者のApple IDに紐づけられしiCloud個人クラウド空間。</li>
-        <li>
-          同じApple IDにてiCloud
-          Driveにログインし、当アプリがインストールされし他のデジタルデバイス。
-        </li>
-      </ul>
-
-      <p>
-        当アプリは、上記の状況以外の使用者のデータを開発者のサーバーに送信せず。使用者情報は、サービスの操作及び個人化のためにのみ使用される。開発者は上記の種類以外の使用者情報を収集せず。
-      </p>
-
-      <h3 id="toc_2"><strong>第2条 ログデータ</strong></h3>
-
-      <p>
-        当アプリは使用者のクラッシュログデータを収集せしことはないが、Appleがその代わりに、使用者の許可を得て収集せしことがある。Appleが収集せしログデータは、個人を識別し得ぬように加工され、Apple
-        Store
-        Connectを通じて当方に提供される。開発者は、Appleが収集せしクラッシュレポートをXcode
-        Organizerを通じて確認せしことができる。
-      </p>
-
-      <h3 id="toc_3"><strong>第3条 クッキーの使用</strong></h3>
-
-      <p>
-        当アプリの一部の機能は、クッキーを使用せし場合があるが、これらのクッキーは以下の三つの場所にのみ保存せし可能性がある：
-      </p>
-
-      <ul>
-        <li>使用者が当アプリを使用せしApple製のデジタルデバイス。</li>
-        <li>使用者のApple IDに紐づけられしiCloud個人クラウド空間。</li>
-        <li>
-          同じApple IDにてiCloud
-          Driveにログインし、当アプリがインストールされし他のデジタルデバイス。
-        </li>
-      </ul>
-
-      <p>当方は、使用者のクッキー情報を収集せしことはない。</p>
-
-      <h3 id="toc_4"><strong>第4条 サービスプロバイダー</strong></h3>
-
-      <p>
-        当アプリの提供に関して、当方は第三者（Apple）と提携せし場合がある。これには、Mac
-        App StoreおよびiOS App Storeでのアプリ提供、またはApple Feedback
-        Assistantを通じて使用者が送信せしクラッシュレポートの収集が含まれる。なお、当方は、Appleが収集せし情報に関して使用者の個人情報の収集権限を有せぬ。
-      </p>
-
-      <h3 id="toc_5"><strong>第5条 他のウェブサイトへのリンク</strong></h3>
-
-      <p>
-        当アプリには他のウェブサイトへのリンクは一切含まれていないが、以下に示すものを除き、其の限りではない：
-      </p>
-
-      <ul>
-        <li>当アプリの公式ウェブサイトおよびGitHubリポジトリへのリンク。</li>
-        <li>
-          使用されし第三者プログラムモジュールのGitHubリポジトリのリンク。
-        </li>
-        <li>
-          当アプリの開発・翻訳に貢献をした一部の人員の連絡先（リンクなどの形式で）。
-        </li>
-        <li>株式会社米哈遊（上海）及びその海外支社に関連せしリンク。</li>
-        <li>
-          公開済みのキャラ育成状況を調べるための Enka Networks のリンク。
-        </li>
-        <li>UIGF 委員會の公式HPのリンク。</li>
-      </ul>
-
-      <h3 id="toc_6"><strong>第6条 子供のプライバシー</strong></h3>
-
-      <p>
-        当方は、故意に子供の個人情報を収集せしことはない。また、子供が当アプリやサービスを通じて個人を識別し得る情報を提供せしことなきよう、親または法定後見人の監視を推奨せし、子供に対しては、親の許可無く個人を識別し得る情報を提供せしことなきよう指示すべきである。16歳未満の者は、同意無くして本サービスを利用し得ず、親または後見人が代わりに同意せしことが求められる。
-      </p>
-
-      <h3 id="toc_7"><strong>第7条 プライバシーポリシーの変更</strong></h3>
-
-      <p>
-        当方は、本ポリシーを随時変更することができる。このため、使用者は定期的に本ページを確認し、最新の変更点を把握することを強く推奨すべきである。新たに改訂せしポリシーは、本ページに公開せし時点で効力を有す。
-      </p>
-
-      <p>本ポリシーは2024年11月20日より効力を有す。</p>
-
-      <h3 id="toc_8"><strong>第8条 お問い合わせ</strong></h3>
-
-      <p>
-        本ポリシーに関してご質問やご意見がある場合は、<code>contact@pizzastudio.org</code>
-        までご連絡賜りたく存じます。
-      </p>
-    </div>
-  </main>
-</body>
-
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>EULA</title>
+		<style>
+			/* General reset */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+					Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+				background-color: #ffffff;
+				color: #24292e;
+				line-height: 1.5;
+				padding: 2rem;
+				transition: background-color 0.3s, color 0.3s;
+			}
+
+			/* Dark mode */
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: #0d1117;
+					color: #c9d1d9;
+				}
+
+				header {
+					border-bottom: none;
+				}
+
+				.language-selector {
+					background-color: #161b22;
+					color: #c9d1d9;
+					border: 1px solid #30363d;
+				}
+
+				code,
+				pre {
+					background-color: #161b22;
+					border: 1px solid #30363d;
+				}
+			}
+
+			header {
+				align-items: leading;
+			}
+
+			.language-selector {
+				font-size: 1rem;
+				padding: 0.5rem;
+				border: 1px solid #d0d7de;
+				border-radius: 6px;
+				background-color: #f6f8fa;
+				color: #24292e;
+			}
+
+			hr {
+				opacity: 0.1;
+			}
+
+			main {
+				padding: 0;
+			}
+
+			@media (max-width: 600px) {
+				body {
+					padding: 1rem;
+				}
+			}
+
+			/* GitHub Markdown CSS */
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin-top: 1em;
+				margin-bottom: 0.5em;
+				font-weight: 600;
+				line-height: 1.25;
+			}
+
+			h2 {
+				border-bottom: 0.1em solid;
+				border-right: 1em solid;
+				padding-right: 0.5em;
+			}
+
+			h3 {
+				background-color: #114514;
+				color: white;
+				padding: 5px;
+			}
+
+			h4 {
+				border-left: 0.5em solid;
+				border-bottom: 0.05em solid;
+				padding: 0.25em 0.5em;
+			}
+
+			h1 {
+				text-align: center;
+				margin-top: 1em;
+				margin-bottom: 1em;
+			}
+
+			p {
+				margin-bottom: 1em;
+			}
+
+			a {
+				color: #0366d6;
+				text-decoration: none;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+
+			ul,
+			ol {
+				padding-left: 2em;
+				margin-bottom: 1em;
+			}
+
+			blockquote {
+				padding: 0.5em 1em;
+				border-left: 0.25em solid #d0d7de;
+				margin-bottom: 0.5em;
+				opacity: 0.7;
+				/* Reduced space at the bottom */
+			}
+
+			code {
+				font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+					Courier, monospace;
+				font-size: 85%;
+				padding: 0.2em 0.4em;
+				border-radius: 6px;
+			}
+
+			pre {
+				font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+					Courier, monospace;
+				font-size: 85%;
+				line-height: 1.45;
+				background-color: #f6f8fa;
+				padding: 1em;
+				border-radius: 6px;
+				overflow: auto;
+				border: none;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 1em;
+			}
+
+			th,
+			td {
+				border: 1px solid #d0d7de;
+				padding: 0.6em;
+			}
+
+			th {
+				background-color: #f6f8fa;
+				font-weight: 600;
+			}
+
+			/* Hide all content divs by default */
+			.content {
+				display: none;
+			}
+
+			/* Show content div when it is active */
+			.content.active {
+				display: block;
+			}
+		</style>
+		<script>
+			function changeLanguage() {
+				const language = document.getElementById("language-selector").value;
+				const contentDivs = document.querySelectorAll(".content");
+				contentDivs.forEach((div) => div.classList.remove("active"));
+				const selectedContent = document.getElementById(`content-${language}`);
+				if (selectedContent) {
+					selectedContent.classList.add("active");
+				}
+			}
+
+			function detectLanguage() {
+				const browserLang = navigator.language || navigator.userLanguage;
+				const supportedLanguages = ["en-US", "zh-Hant", "zh-Hans", "ja-JP"];
+				// Default to "zh-Hans" if the browser's language is not supported
+				let language = supportedLanguages.includes(browserLang)
+					? browserLang
+					: "zh-Hans";
+				document.getElementById("language-selector").value = language;
+				changeLanguage(); // Call changeLanguage to set the correct content visibility
+			}
+
+			window.onload = detectLanguage; // Initialize on page load
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<select
+				id="language-selector"
+				class="language-selector"
+				onchange="changeLanguage()"
+			>
+				<option value="en-US">English</option>
+				<option value="zh-Hant">繁體中文 (Traditional Chinese)</option>
+				<option value="zh-Hans">简体中文 (Simplified Chinese)</option>
+				<option value="ja-JP">日本語 (Japanese)</option>
+			</select>
+			<span> ← 🌐</span>
+		</header>
+		<main>
+			<div id="content-en-US" class="content" lang="en">
+				<h1 id="toc_0"><strong>Privacy Policy</strong></h1>
+
+				<blockquote>
+					All translations of this document are for reference purposes only. The
+					original Simplified Chinese version of this document is the only
+					legally binding version.
+				</blockquote>
+
+				<p>
+					Pizza Studio has released the &quot;The Pizza Helper&quot; application
+					(2022 version, 2024 re-release) as an open-source app. This service is
+					provided by Pizza Studio (hereinafter referred to as &quot;the
+					Developer&quot;) for free via the Mac App Store and iOS App Store.
+				</p>
+
+				<p>
+					If someone decides to use the &quot;The Pizza Helper&quot;
+					(hereinafter referred to as &quot;this application&quot;), this page
+					is used to inform visitors about the collection, use, and disclosure
+					of data by the application.
+				</p>
+
+				<p>
+					If you choose to use the Developer&#39;s services, you can decide
+					whether this application collects and uses information related to this
+					privacy policy. The information collected by the Developer is used to
+					provide and improve the service. Except as described in this privacy
+					policy, the Developer will not use or share your information with
+					anyone.
+				</p>
+
+				<p>
+					The terms used in this privacy policy have the same meaning as those
+					in the Developer&#39;s Terms and Conditions, which can be obtained
+					from within this application unless otherwise defined in this privacy
+					policy.
+				</p>
+
+				<h3 id="toc_1"><strong>Collection and Use of Information</strong></h3>
+
+				<p>
+					This application requires submitting the UID number to query the
+					in-game character showcase information through Enka Networks&#39;
+					public query service. The UID number itself can only be used to locate
+					the corresponding player within the Mihoyo game and cannot be used by
+					anyone outside of Mihoyo, Inc. to reverse-engineer the player&#39;s
+					true identity. However, the UID may reveal the country or region of
+					the game server the player is located on. It is important to note
+					that, as Enka Networks is a public query service, the character
+					nickname and signature obtained through the given UID might expose the
+					player&#39;s personal privacy, depending on the information they have
+					included in their nickname and signature. Since this information is
+					voluntarily made public by the player in the game, the Developer of
+					this application do not bear any responsibility in this regard.
+				</p>
+
+				<p>
+					For cases other than the above exception: Should the User agree, the
+					Developer (through this app v5.1.5 or earlier) shall collect
+					information related to the Spiral Abyss. This includes the following:
+				</p>
+
+				<p>
+					If the User has achieved full stars in the current season of the
+					Spiral Abyss:
+				</p>
+
+				<ul>
+					<li>
+						Characters used in the User&#39;s Spiral Abyss challenges from
+						floors 9 to 12.
+					</li>
+					<li>The User&#39;s Spiral Abyss combat leaderboard.</li>
+					<li>
+						All of the User&#39;s owned characters and their character build
+						details.
+					</li>
+					<li>
+						The User&#39;s game UID number. <strong>Note</strong>: This number
+						is used to ensure the User&#39;s data is not resubmitted and to
+						permanently filter out any data from potential cheaters.
+					</li>
+					<li>The reserved username of the user&#39;s Snap Hutao account.</li>
+				</ul>
+
+				<p>
+					The collected information does not include any personally identifiable
+					information, device details, or account information, thereby ensuring
+					the protection of the User&#39;s privacy.
+				</p>
+
+				<p>All other information is stored in the following three locations:</p>
+
+				<ul>
+					<li>The Apple digital device you use with this application.</li>
+					<li>
+						The iCloud private space associated with the Apple ID that is logged
+						into iCloud Drive on that digital device.
+					</li>
+					<li>
+						Any digital device logged into the same Apple ID using iCloud Drive
+						and has the application installed.
+					</li>
+				</ul>
+
+				<p>
+					This application does not transmit User data to the Developer&#39;s
+					servers, except for the cases listed above. The collected information
+					is used solely for service interaction and personalization. The
+					Developer does not collect any other types of User information.
+				</p>
+
+				<h3 id="toc_2"><strong>Log Data</strong></h3>
+
+				<p>
+					This application does not collect user crash log data; it is instead
+					collected by Apple with the user&#39;s permission. The crash log data
+					collected by Apple is filtered by Apple to remove any content that
+					could be used to identify the user personally, and is presented to the
+					Developer through Apple Store Connect. The Developer can read the
+					crash reports collected by Apple via Xcode&#39;s Organizer. Users can
+					also provide crash reports through macOS&#39;s built-in Feedback
+					Assistant application, and this process also submits the error report
+					to the Developer via Apple Store Connect.
+				</p>
+
+				<h3 id="toc_3"><strong>Cookies</strong></h3>
+
+				<p>
+					Although certain features of this application rely on cookies, these
+					cookies are only likely to appear in the following three locations:
+				</p>
+
+				<ul>
+					<li>The Apple digital device you use with this application.</li>
+					<li>
+						The iCloud private cloud space associated with the Apple ID that is
+						logged into iCloud Drive on that digital device.
+					</li>
+					<li>
+						Any digital device logged into the same Apple ID using iCloud Drive
+						and has the application installed.
+					</li>
+				</ul>
+
+				<p>The Developer does not collect any cookies data from users.</p>
+
+				<h3 id="toc_4"><strong>Service Providers</strong></h3>
+
+				<p>
+					For the following reasons, the Developer may collaborate with
+					third-party companies (Apple Inc.):
+				</p>
+
+				<ul>
+					<li>
+						To provide the application on the Mac App Store and iOS App Store.
+					</li>
+					<li>
+						To collect crash reports uploaded by users through Apple Feedback
+						Assistant.
+					</li>
+					<li>Other matters required by Apple Inc.</li>
+				</ul>
+
+				<p>
+					At a minimum, the Developer can declare that the Developer does not
+					have access to collect user information.
+				</p>
+
+				<h3 id="toc_5"><strong>Links to Other Sites</strong></h3>
+
+				<p>
+					This application does not contain links to other websites, except for
+					the following exceptions:
+				</p>
+
+				<ul>
+					<li>
+						Official website link of this application and GitHub repository
+						link.
+					</li>
+					<li>
+						Links to the GitHub repositories of third-party modules used in this
+						application.
+					</li>
+					<li>
+						Contact information of contributors to this application (which may
+						be provided in the form of links).
+					</li>
+					<li>
+						URLs related to Mihoyo Co., Ltd. (Shanghai) and its overseas
+						branches.
+					</li>
+					<li>
+						URLs related to Enka Networks&#39; game character showcase query
+						service.
+					</li>
+				</ul>
+
+				<h3 id="toc_6"><strong>Children&#39;s Privacy</strong></h3>
+
+				<p>
+					The Developer do not knowingly collect personally identifiable
+					intelligence from children. The Developer encourage all children to
+					never submit any personally identifiable intelligence through the
+					Application and/or Services. The Developer encourage parents and legal
+					guardians to monitor their children&#39;s Internet usage and to help
+					enforce this Policy by instructing their children never to provide
+					personally identifiable intelligence through the Application and/or
+					Services without their permission. If the User have reason to believe
+					that a child has provided personally identifiable intelligence to us
+					through the Application and/or Services, please contact us. The User
+					must also be at least 16 years of age to consent to the processing of
+					the User&#39;s personally identifiable intelligence in the User&#39;s
+					country (in some countries we may allow the User&#39;s parent or
+					guardian to do so on the User&#39;s behalf).
+				</p>
+
+				<h3 id="toc_7"><strong>Changes to This Privacy Policy</strong></h3>
+
+				<p>
+					The Developer may update the privacy policy from time to time.
+					Therefore, it is recommended that you review this page regularly for
+					any changes. The Developer will notify you of any changes by posting
+					the new privacy policy on this page.
+				</p>
+
+				<p>This policy is effective as of November 20, 2024.</p>
+
+				<h3 id="toc_8"><strong>Contacting the Developer</strong></h3>
+
+				<p>
+					If you have any questions or suggestions regarding the Developer&#39;s
+					privacy policy, please contact <code>contact@pizzastudio.org</code>.
+				</p>
+
+				<p>
+					This privacy policy page was created at
+					<a href="https://privacypolicytemplate.net"
+						>privacypolicytemplate.net</a
+					>
+					and modified/generated by
+					<a href="https://app-privacy-policy-generator.nisrulz.com/"
+						>App Privacy Policy Generator</a
+					>.
+				</p>
+			</div>
+			<div id="content-zh-Hant" class="content active" lang="zh-Hant">
+				<h1 id="toc_0"><strong>隱私政策</strong></h1>
+
+				<blockquote>
+					本文件的所有翻譯版本僅供參考，唯有簡體中文原版具法律效力。
+				</blockquote>
+
+				<p>
+					披薩工作室將「披薩小助手」應用（2022 年製，2024
+					年重製）作為一個開源應用釋出。本服務由披薩工作室（下稱「開發者」）藉由
+					Mac App Store 與 iOS App Store 以免費的形式原樣提供。
+				</p>
+
+				<p>
+					如果有人決定使用「披薩小助手」（下稱「敝應用」）的服務，本頁面用於通知訪問者關於該應用對資料的收集、使用和披露政策。
+				</p>
+
+				<p>
+					如果閣下選擇使用開發者的服務，那麼閣下可以決定敝應用是否收集和使用與此隱私政策有關的情資。開發者所收集的情資用於提供和改進服務。除本隱私政策所述情況外，開發者不會與任何人使用或分享閣下的情資。
+				</p>
+
+				<p>
+					本隱私政策中使用的術語與開發者的條款和條件中的含義相同，這些條款和條件可在敝應用中獲得、除非本隱私政策中另有定義。
+				</p>
+
+				<h3 id="toc_1"><strong>情資的收集和使用</strong></h3>
+
+				<p>
+					敝應用在藉由 Enka Networks 的公開查詢服務查詢指定 UID
+					的遊戲內角色展櫃資訊時，會需要送出 UID 數字來作為查詢依據。UID
+					數字本身只可能被用來在對應的米哈遊遊戲內部定位到具體的玩家，卻無法用來被米哈遊股份有限公司以外的人士用任何手段逆向推定出玩家的真實身分。但
+					UID
+					可能會洩露該玩家所處的遊戲伺服器的所在國家或地區。需要注意的是，因為
+					Enka Networks 是公共查詢服務，所以 Enka Networks 藉由給定的 UID
+					查詢到的結果當中的角色暱稱與簽名可能會洩露該玩家的個人隱私，且這個情況取決於該玩家在暱稱與個人簽名裡面記入了什麼內容。由於這些本來就屬於玩家在遊戲內主動公開的資訊，所以敝應用的開發者不承擔與此有關的責任。
+				</p>
+
+				<p>
+					除上述事項以外，倘若使用者允諾，開發者將蒐集與深境螺旋個人戰報有關之資訊（截至敝應用
+					v5.1.5 版为止），內容如下：
+				</p>
+
+				<p>若當季深境螺旋達滿星之成績：</p>
+
+				<ul>
+					<li>於深境螺旋第9至12層之挑戰所使用之角色；</li>
+					<li>深境螺旋之戰鬥榜單；</li>
+					<li>所擁角色及其培養情況；</li>
+					<li>
+						遊戲UID數字。此數字用以防止資料重複提交，亦可永續過濾可能舞弊者之資料。
+					</li>
+					<li>使用者所指定的 Snap Hutao 使用者預留名稱。</li>
+				</ul>
+
+				<p>
+					所上傳之資訊不涉任何與使用者之設備或帳號直接相關者，隱私可獲保障。
+				</p>
+
+				<p>其他資訊皆存於下述三類之位置：</p>
+
+				<ul>
+					<li>閣下使用敝應用時之 Apple 數位裝置。</li>
+					<li>
+						以及該數位裝置當時所已經登入使用 iCloud Drive 的 Apple ID 之自身的
+						iCloud 私有雲空間。
+					</li>
+					<li>
+						以及任何被登入該 Apple ID 使用 iCloud Drive
+						且有安裝敝應用之數位裝置。
+					</li>
+				</ul>
+
+				<p>
+					除上述情形外，敝應用程式不會傳送其他類型之使用者資料至開發者伺服器。使用者所有個人資料僅用於與相關服務的互動及個人化功能，開發者不蒐集除上述所陳項目以外之使用者資訊。
+				</p>
+
+				<h3 id="toc_2"><strong>日誌資料</strong></h3>
+
+				<p>
+					敝應用程式本身不收集使用者的崩潰日誌資料，而是由 Apple
+					在使用者允許的情況下代為收取。Apple 收取到的崩潰日誌資料已經被 Apple
+					濾除任何可能用以辨識使用者個人身分的內容、且會藉由 Apple Store Connect
+					渠道呈現給開發者。開發者可藉由 Xcode 的 Organizer 讀取被 Apple
+					收集上來的崩潰報告。個人使用者也還可以通過 macOS
+					的內置反饋助手應用程式提供應用程式的崩潰報告，且該步驟亦是將錯誤報告藉由
+					Apple Store Connect 呈現給開發者。
+				</p>
+
+				<h3 id="toc_3"><strong>Cookies</strong></h3>
+
+				<p>
+					敝應用程式的相關功能雖依賴 Cookies 運作，但這一類 Cookies
+					只可能因此出現在下述三類位置：
+				</p>
+
+				<ul>
+					<li>閣下使用敝應用時的 Apple 數位裝置。</li>
+					<li>
+						以及該數位裝置當時所已經登入使用 iCloud Drive 的 Apple ID 的自身的
+						iCloud 私有雲空間。
+					</li>
+					<li>
+						以及任何被登入該 Apple ID 使用 iCloud Drive
+						且有安裝敝應用的數位裝置。
+					</li>
+				</ul>
+
+				<p>開發者不蒐集使用者的任何 Cookies 資料。</p>
+
+				<h3 id="toc_4"><strong>服務提供者</strong></h3>
+
+				<p>由於以下原因，開發者可能與第三方公司（蘋果公司）合作。</p>
+
+				<ul>
+					<li>為了在 Mac App Store 與 iOS App Store 上提供該應用程式</li>
+					<li>
+						收集使用者通過 Apple Feedback Assistant 上傳的應用程式崩潰報告。
+					</li>
+					<li>如果可能的話，美商蘋果公司要求的其他事項。</li>
+				</ul>
+
+				<p>至少開發者可以聲明：開發者無權蒐獲使用者之情資。</p>
+
+				<h3 id="toc_5"><strong>與其他網站的鏈接</strong></h3>
+
+				<p>敝應用不包含其他網站的鏈接，除了下述例外：</p>
+
+				<ul>
+					<li>敝應用的官方網站鏈接與 GitHub 倉庫的鏈接。</li>
+					<li>被敝應用所使用的第三方程式模組所在的 GitHub 倉庫鏈接。</li>
+					<li>
+						參與敝應用的貢獻的人員的各自的聯絡方式（可能會以鏈接的形式提供）。
+					</li>
+					<li>與米哈遊股份有限公司（上海）及其海外分社有關的網址。</li>
+					<li>與 Enka Networks 有關的遊戲角色展櫃資訊查詢網址。</li>
+					<li>UIGF 委員會的官方網址。</li>
+				</ul>
+
+				<h3 id="toc_6"><strong>兒童的隱私</strong></h3>
+
+				<p>
+					開發者不會有意收集兒童的個人身份情資。開發者鼓勵所有兒童永遠不要通過應用程式和/或服務提交任何個人可識別的情資。開發者鼓勵父母和法定監護人監督其子女的互聯網使用情況，並幫助執行本政策，指示其子女在未經其許可的情況下絕不通過應用程式和/或服務提供可識別個人的情資。如果閣下有理由相信一個孩子通過應用程式和/或服務向開發者提供了個人可識別的情資，請聯絡開發者。閣下還必須至少年滿16歲方可同意在閣下的國家或地區處理閣下的個人可識別情資（在某些國家或地區，開發者可能允許閣下的父母或監護人代表閣下這樣做）。
+				</p>
+
+				<h3 id="toc_7"><strong>本隱私政策的</strong>變化</h3>
+
+				<p>
+					開發者可能會不時地更新開發者的隱私政策。因此，建議閣下定期查看本頁面的任何變化。開發者將通過在本頁面上發佈新的隱私政策來通知閣下任何變化。
+				</p>
+
+				<p>本政策自 2024-11-20 起生效。</p>
+
+				<h3 id="toc_8"><strong>聯絡開發者</strong></h3>
+
+				<p>
+					如果閣下對開發者的隱私政策有任何疑問或建議，請聯絡
+					<code>contact@pizzastudio.org</code>。
+				</p>
+
+				<p>
+					本隱私政策頁面在<a href="https://privacypolicytemplate.net"
+						>privacypolicytemplate.net</a
+					>創建，並由<a href="https://app-privacy-policy-generator.nisrulz.com/"
+						>App Privacy Policy Generator</a
+					>修改/生成。
+				</p>
+			</div>
+			<div id="content-zh-Hans" class="content" lang="zh-Hans">
+				<h1 id="toc_0"><strong>隐私政策</strong></h1>
+
+				<blockquote>
+					本文件的所有翻译版本仅供参考，唯有简体中文原版具法律效力。
+				</blockquote>
+
+				<p>
+					披萨工作室将「披萨小助手」应用（2022 年制，2024
+					年重制）作为一个开源应用释出。本服务由披萨工作室（下称「开发者」）借由
+					Mac App Store 与 iOS App Store 以免费的形式原样提供。
+				</p>
+
+				<p>
+					如果有人决定使用「披萨小助手」（下称「敝应用」）的服务，本页面用于通知访问者关于该应用对资料的收集、使用和披露政策。
+				</p>
+
+				<p>
+					如果阁下选择使用开发者的服务，那么阁下可以决定敝应用是否收集和使用与此隐私政策有关的情资。开发者所收集的情资用于提供和改进服务。除本隐私政策所述情况外，开发者不会与任何人使用或分享阁下的情资。
+				</p>
+
+				<p>
+					本隐私政策中使用的术语与开发者的条款和条件中的含义相同，这些条款和条件可在敝应用中获得、除非本隐私政策中另有定义。
+				</p>
+
+				<h3 id="toc_1"><strong>情资的收集和使用</strong></h3>
+
+				<p>
+					敝应用在借由 Enka Networks 的公开查询服务查询指定 UID
+					的游戏内角色展柜资讯时，会需要送出 UID 数字来作为查询依据。UID
+					数字本身只可能被用来在对应的米哈游游戏内部定位到具体的玩家，却无法用来被米哈游股份有限公司以外的人士用任何手段逆向推定出玩家的真实身分。但
+					UID
+					可能会泄露该玩家所处的游戏服务器的所在国家或地区。需要注意的是，因为
+					Enka Networks 是公共查询服务，所以 Enka Networks 借由给定的 UID
+					查询到的结果当中的角色昵称与签名可能会泄露该玩家的个人隐私，且这个情况取决于该玩家在昵称与个人签名里面记入了什么内容。由于这些本来就属于玩家在游戏内主动公开的资讯，所以敝应用的开发者不承担与此有关的责任。
+				</p>
+
+				<p>
+					除上述事项以外，倘若用户允诺，开发者将搜集与深境螺旋个人战报有关之资讯（截至敝应用
+					v5.1.5 版为止），内容如下：
+				</p>
+
+				<p>若当季深境螺旋达满星之成绩：</p>
+
+				<ul>
+					<li>于深境螺旋第9至12层之挑战所使用之角色；</li>
+					<li>深境螺旋之战斗榜单；</li>
+					<li>所拥角色及其培养情况；</li>
+					<li>
+						游戏UID数字。此数字用以防止资料重复提交，亦可永续过滤可能舞弊者之资料。
+					</li>
+					<li>用户所指定的 Snap Hutao 用户预留名称。</li>
+				</ul>
+
+				<p>所上传之资讯不涉任何与用户之设备或账号直接相关者，隐私可获保障。</p>
+
+				<p>其他资讯皆存于下述三类之位置：</p>
+
+				<ul>
+					<li>阁下使用敝应用时之 Apple 数字设备。</li>
+					<li>
+						以及该数字设备当时所已经登入使用 iCloud Drive 的 Apple ID 之自身的
+						iCloud 私有云空间。
+					</li>
+					<li>
+						以及任何被登入该 Apple ID 使用 iCloud Drive
+						且有安装敝应用之数字设备。
+					</li>
+				</ul>
+
+				<p>
+					除上述情形外，敝应用程序不会传送其他类型之用户资料至开发者服务器。用户所有个人资料仅用于与相关服务的互动及个人化功能，开发者不搜集除上述所陈项目以外之用户资讯。
+				</p>
+
+				<h3 id="toc_2"><strong>日志资料</strong></h3>
+
+				<p>
+					敝应用程序本身不收集用户的崩溃日志资料，而是由 Apple
+					在用户允许的情况下代为收取。Apple 收取到的崩溃日志资料已经被 Apple
+					滤除任何可能用以辨识用户个人身分的内容、且会借由 Apple Store Connect
+					渠道呈现给开发者。开发者可借由 Xcode 的 Organizer 读取被 Apple
+					收集上来的崩溃报告。个人用户也还可以通过 macOS
+					的内置反馈助手应用程序提供应用程序的崩溃报告，且该步骤亦是将错误报告借由
+					Apple Store Connect 呈现给开发者。
+				</p>
+
+				<h3 id="toc_3"><strong>Cookies</strong></h3>
+
+				<p>
+					敝应用程序的相关功能虽依赖 Cookies 运作，但这一类 Cookies
+					只可能因此出现在下述三类位置：
+				</p>
+
+				<ul>
+					<li>阁下使用敝应用时的 Apple 数字设备。</li>
+					<li>
+						以及该数字设备当时所已经登入使用 iCloud Drive 的 Apple ID 的自身的
+						iCloud 私有云空间。
+					</li>
+					<li>
+						以及任何被登入该 Apple ID 使用 iCloud Drive
+						且有安装敝应用的数字设备。
+					</li>
+				</ul>
+
+				<p>开发者不搜集用户的任何 Cookies 资料。</p>
+
+				<h3 id="toc_4"><strong>服务提供者</strong></h3>
+
+				<p>由于以下原因，开发者可能与第三方公司（苹果公司）合作。</p>
+
+				<ul>
+					<li>为了在 Mac App Store 与 iOS App Store 上提供该应用程序</li>
+					<li>
+						收集用户通过 Apple Feedback Assistant 上传的应用程序崩溃报告。
+					</li>
+					<li>如果可能的话，美商苹果公司要求的其他事项。</li>
+				</ul>
+
+				<p>至少开发者可以声明：开发者无权搜获用户之情资。</p>
+
+				<h3 id="toc_5"><strong>与其他网站的链接</strong></h3>
+
+				<p>敝应用不包含其他网站的链接，除了下述例外：</p>
+
+				<ul>
+					<li>敝应用的官方网站链接与 GitHub 仓库的链接。</li>
+					<li>被敝应用所使用的第三方程序模组所在的 GitHub 仓库链接。</li>
+					<li>
+						参与敝应用的贡献的人员的各自的联络方式（可能会以链接的形式提供）。
+					</li>
+					<li>与米哈游股份有限公司（上海）及其海外分社有关的网址。</li>
+					<li>与 Enka Networks 有关的游戏角色展柜资讯查询网址。</li>
+					<li>UIGF 委员会的官方网址。</li>
+				</ul>
+
+				<h3 id="toc_6"><strong>儿童的隐私</strong></h3>
+
+				<p>
+					开发者不会有意收集儿童的个人身份情资。开发者鼓励所有儿童永远不要通过应用程序和/或服务提交任何个人可识别的情资。开发者鼓励父母和法定监护人监督其子女的互联网使用情况，并帮助执行本政策，指示其子女在未经其许可的情况下绝不通过应用程序和/或服务提供可识别个人的情资。如果阁下有理由相信一个孩子通过应用程序和/或服务向开发者提供了个人可识别的情资，请联络开发者。阁下还必须至少年满16岁方可同意在阁下的国家或地区处理阁下的个人可识别情资（在某些国家或地区，开发者可能允许阁下的父母或监护人代表阁下这样做）。
+				</p>
+
+				<h3 id="toc_7"><strong>本隐私政策的</strong>变化</h3>
+
+				<p>
+					开发者可能会不时地更新开发者的隐私政策。因此，建议阁下定期查看本页面的任何变化。开发者将通过在本页面上发布新的隐私政策来通知阁下任何变化。
+				</p>
+
+				<p>本政策自 2024-11-20 起生效。</p>
+
+				<h3 id="toc_8"><strong>联络开发者</strong></h3>
+
+				<p>
+					如果阁下对开发者的隐私政策有任何疑问或建议，请联络
+					<code>contact@pizzastudio.org</code>。
+				</p>
+
+				<p>
+					本隐私政策页面在<a href="https://privacypolicytemplate.net"
+						>privacypolicytemplate.net</a
+					>创建，并由<a href="https://app-privacy-policy-generator.nisrulz.com/"
+						>App Privacy Policy Generator</a
+					>修改/生成。
+				</p>
+			</div>
+			<div id="content-ja-JP" class="content" lang="ja">
+				<h1 id="toc_0"><strong>プライバシーポリシー</strong></h1>
+
+				<blockquote>
+					本書の全ての翻訳は参考のためのみ提供され、簡体字中国語の原本のみが法的効力を有す。
+				</blockquote>
+
+				<p>
+					使用者各位、本プライバシーポリシー（以下「本ポリシー」といふ）は、「ピザ助手」アプリ（以下「当アプリ」といふ）に関し、開発者（以下「当方」といふ）が収集し、使用し、または開示せし情報の取扱いに関する規定を定めたものである。
+				</p>
+
+				<p>
+					当方は当アプリを無償にて提供せしにあたり、使用者が当アプリを利用する際に、収集せし情報について十分にご理解いただくことを要請する。以下の記載に示す内容に従い、当方は当アプリを通じて収集せし情報を適切に取り扱うことを約束せしものである。
+				</p>
+
+				<h3 id="toc_1"><strong>第1条 情報の収集及び使用</strong></h3>
+
+				<p>
+					当アプリでは、Enka
+					Networksの公開検索サービスを通じて、指定せしUIDのゲーム内キャラクター情報を照会せしため、ユーザーよりUID番号を送信せし必要がある。なお、このUID番号は、特定のプレイヤーを米哈遊（miHoYo）ゲーム内にて識別せしためのみに使用され、これにより他者がそのプレイヤーの身元を逆に特定せしことは不可能に有す。しかしながら、UID番号がそのプレイヤーの所属せしゲームサーバーの国または地域を示唆せし可能性があることを、使用者は予め理解しなければならぬ。Enka
+					Networksは公共の検索サービスにて、UIDに基づき取得せしキャラクターのニックネームやサイン等の情報が、プレイヤーの個人情報を漏洩せし恐れがあることに留意せよ。これらの情報はすべて、プレイヤーがゲーム内にて積極的に公開せしものであり、当方はその内容に対し一切の責任を負わぬ。
+				</p>
+
+				<p>
+					上記の例の他、使用者が同意せし上で、開発者は当アプリ（v5.1.5
+					まで）を経由して、以下に示す情報を収集せし場合があることを申し添え申す。
+				</p>
+
+				<p>深境螺旋において満星を達成せし場合のデータ：</p>
+
+				<ul>
+					<li>9層から12層において使用せしキャラクター。</li>
+					<li>深境螺旋の戦闘ランキング。</li>
+					<li>所有せしキャラクターおよびその育成状況。</li>
+					<li>
+						ゲームUID番号（重複データの提出防止および不正行為者の永続的排除を目的とす）。
+					</li>
+					<li>Snap Hutao アカウント名前。</li>
+				</ul>
+
+				<p>
+					当アプリにて収集せし情報は、使用者のデバイス及びアカウントに関連せぬ形で保存され、使用者のプライバシーは確保せられることとす。
+				</p>
+
+				<p>他の情報は、次の三つの場所にのみ保存せし可能性がある：</p>
+
+				<ul>
+					<li>使用者が当アプリを使用せしApple製のデジタルデバイス。</li>
+					<li>使用者のApple IDに紐づけられしiCloud個人クラウド空間。</li>
+					<li>
+						同じApple IDにてiCloud
+						Driveにログインし、当アプリがインストールされし他のデジタルデバイス。
+					</li>
+				</ul>
+
+				<p>
+					当アプリは、上記の状況以外の使用者のデータを開発者のサーバーに送信せず。使用者情報は、サービスの操作及び個人化のためにのみ使用される。開発者は上記の種類以外の使用者情報を収集せず。
+				</p>
+
+				<h3 id="toc_2"><strong>第2条 ログデータ</strong></h3>
+
+				<p>
+					当アプリは使用者のクラッシュログデータを収集せしことはないが、Appleがその代わりに、使用者の許可を得て収集せしことがある。Appleが収集せしログデータは、個人を識別し得ぬように加工され、Apple
+					Store
+					Connectを通じて当方に提供される。開発者は、Appleが収集せしクラッシュレポートをXcode
+					Organizerを通じて確認せしことができる。
+				</p>
+
+				<h3 id="toc_3"><strong>第3条 クッキーの使用</strong></h3>
+
+				<p>
+					当アプリの一部の機能は、クッキーを使用せし場合があるが、これらのクッキーは以下の三つの場所にのみ保存せし可能性がある：
+				</p>
+
+				<ul>
+					<li>使用者が当アプリを使用せしApple製のデジタルデバイス。</li>
+					<li>使用者のApple IDに紐づけられしiCloud個人クラウド空間。</li>
+					<li>
+						同じApple IDにてiCloud
+						Driveにログインし、当アプリがインストールされし他のデジタルデバイス。
+					</li>
+				</ul>
+
+				<p>当方は、使用者のクッキー情報を収集せしことはない。</p>
+
+				<h3 id="toc_4"><strong>第4条 サービスプロバイダー</strong></h3>
+
+				<p>
+					当アプリの提供に関して、当方は第三者（Apple）と提携せし場合がある。これには、Mac
+					App StoreおよびiOS App Storeでのアプリ提供、またはApple Feedback
+					Assistantを通じて使用者が送信せしクラッシュレポートの収集が含まれる。なお、当方は、Appleが収集せし情報に関して使用者の個人情報の収集権限を有せぬ。
+				</p>
+
+				<h3 id="toc_5"><strong>第5条 他のウェブサイトへのリンク</strong></h3>
+
+				<p>
+					当アプリには他のウェブサイトへのリンクは一切含まれていないが、以下に示すものを除き、其の限りではない：
+				</p>
+
+				<ul>
+					<li>当アプリの公式ウェブサイトおよびGitHubリポジトリへのリンク。</li>
+					<li>
+						使用されし第三者プログラムモジュールのGitHubリポジトリのリンク。
+					</li>
+					<li>
+						当アプリの開発・翻訳に貢献をした一部の人員の連絡先（リンクなどの形式で）。
+					</li>
+					<li>株式会社米哈遊（上海）及びその海外支社に関連せしリンク。</li>
+					<li>
+						公開済みのキャラ育成状況を調べるための Enka Networks のリンク。
+					</li>
+					<li>UIGF 委員會の公式HPのリンク。</li>
+				</ul>
+
+				<h3 id="toc_6"><strong>第6条 子供のプライバシー</strong></h3>
+
+				<p>
+					当方は、故意に子供の個人情報を収集せしことはない。また、子供が当アプリやサービスを通じて個人を識別し得る情報を提供せしことなきよう、親または法定後見人の監視を推奨せし、子供に対しては、親の許可無く個人を識別し得る情報を提供せしことなきよう指示すべきである。16歳未満の者は、同意無くして本サービスを利用し得ず、親または後見人が代わりに同意せしことが求められる。
+				</p>
+
+				<h3 id="toc_7"><strong>第7条 プライバシーポリシーの変更</strong></h3>
+
+				<p>
+					当方は、本ポリシーを随時変更することができる。このため、使用者は定期的に本ページを確認し、最新の変更点を把握することを強く推奨すべきである。新たに改訂せしポリシーは、本ページに公開せし時点で効力を有す。
+				</p>
+
+				<p>本ポリシーは2024年11月20日より効力を有す。</p>
+
+				<h3 id="toc_8"><strong>第8条 お問い合わせ</strong></h3>
+
+				<p>
+					本ポリシーに関してご質問やご意見がある場合は、<code
+						>contact@pizzastudio.org</code
+					>
+					までご連絡賜りたく存じます。
+				</p>
+			</div>
+		</main>
+	</body>
 </html>

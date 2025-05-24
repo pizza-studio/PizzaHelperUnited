@@ -14,7 +14,7 @@ The terms used in this privacy policy have the same meaning as those in the Deve
 
 This application requires submitting the UID number to query the in-game character showcase information through Enka Networks' public query service. The UID number itself can only be used to locate the corresponding player within the Mihoyo game and cannot be used by anyone outside of Mihoyo, Inc. to reverse-engineer the player's true identity. However, the UID may reveal the country or region of the game server the player is located on. It is important to note that, as Enka Networks is a public query service, the character nickname and signature obtained through the given UID might expose the player's personal privacy, depending on the information they have included in their nickname and signature. Since this information is voluntarily made public by the player in the game, the Developer of this application do not bear any responsibility in this regard.
 
-For cases other than the above exception: Should the User agree, the Developer shall collect information related to the Spiral Abyss. This includes the following:
+For cases other than the above exception: Should the User agree, the Developer (through this app v5.1.5 or earlier) shall collect information related to the Spiral Abyss. This includes the following:
 
 If the User has achieved full stars in the current season of the Spiral Abyss:
 
