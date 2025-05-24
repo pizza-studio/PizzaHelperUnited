@@ -39,6 +39,8 @@ struct UtilsTabPage: View {
                     }
                 }
                 HoYoMapMenuLinkSection()
+                Text("tab.utils.featureRemovalNotice", bundle: .module)
+                    .asInlineTextDescription()
             }
             #if os(iOS) || targetEnvironment(macCatalyst)
             .listStyle(.insetGrouped)
