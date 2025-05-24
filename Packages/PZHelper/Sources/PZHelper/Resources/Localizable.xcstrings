@@ -2389,82 +2389,6 @@
         }
       }
     },
-    "FAQ" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Häufig gestellte Fragen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "FAQ"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preguntas frecuentes"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mga Madalas Itanong"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "FAQ"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Domande frequenti"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "よくある質問"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "자주 묻는 질문"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Часто задаваемые вопросы"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Câu hỏi thường gặp"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "常见问题解答"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "常見問題解答"
-          }
-        }
-      }
-    },
     "profile.accountConnectivity.buttonTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -12269,461 +12193,78 @@
         }
       }
     },
-    "settings.privacy.abyssDataCollect" : {
-      "extractionState" : "manual",
+    "settings.privacy.noOptionsAvailable" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erlauben, Kampfdaten des Spiralabgrunds zu sammeln"
+            "value" : "Aufgrund der Entfernung bestimmter Funktionen sind keine Datenschutzoptionen verfügbar. Diese App sammelt jetzt nichts."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Allow to Collect Spiral Abyss Battle Reports Data"
+            "value" : "There’s no privacy options available since the removal of certain features. This app now collects nothing."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permitir la recopilación de datos de informes de batalla del Abismo Espiral"
+            "value" : "Debido a la eliminación de ciertas funciones, no hay opciones de privacidad disponibles. Esta aplicación ahora no recoge nada."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Payagan ang Pagkolekta ng Spiral Abyss Battle Reports Data"
+            "value" : "Dahil sa pag-alis ng ilang mga feature, walang available na mga opsyon sa privacy. Ang app na ito ngayon ay walang kinokolekta."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autoriser la collecte des données des rapports de combat des Profondeurs Spiralées"
+            "value" : "En raison de la suppression de certaines fonctionnalités, aucune option de confidentialité n'est disponible. Cette application ne collecte rien désormais."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Consenti la raccolta dei dati dei rapporti di battaglia dell'Abisso Spiral"
+            "value" : "A causa della rimozione di alcune funzionalità, non ci sono opzioni di privacy disponibili. Questa app ora non raccoglie nulla."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "深境螺旋の作戦報告データの収集を許可"
+            "value" : "特定の機能が削除されたため、プライバシーオプションは利用できません。このアプリは今、何も収集しません。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "나선 비경 전투 보고서 데이터 수집 허용"
+            "value" : "특정 기능이 제거되었기 때문에 개인정보 보호 옵션이 없습니다. 이 앱은 이제 아무것도 수집하지 않습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Разрешить сбор данных отчетов о боях в Бездна Спиралей"
+            "value" : "Из-за удаления некоторых функций нет доступных опций конфиденциальности. Это приложение теперь ничего не собирает."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cho phép thu thập dữ liệu Báo cáo Chiến đấu La Bàn Xoắn Ốc"
+            "value" : "Do một số tính năng bị xóa, không có tùy chọn quyền riêng tư nào. Ứng dụng này giờ không thu thập bất cứ thứ gì."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允许收集深境螺旋个人战报数据"
+            "value" : "某些功能被移除了，所以目前没有可用的隐私选项。此应用程序现在不收集任何内容。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允許收集深境螺旋個人戰報資料"
-          }
-        }
-      }
-    },
-    "settings.privacy.abyssDataCollect.detail" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wir freuen uns darauf, die Genshin-Charaktere, die du besitzt und im Spiral Abyss eingesetzt hast, zu sammeln und sie an die Snap.Hutao-Datenbank (d. h. HutaoDB) und die Pizza-Datenbank zu senden. Wenn du uns gestattest, die Daten zu sammeln, wird dies HutaoDB und PizzaAbyssDB dabei helfen, genauere Informationen zur Nutzung der Spiral Abyss Charaktere in Echtzeit, zur Teamnutzungsrate usw. bereitzustellen, die in der App verfügbar sind. Die Informationen umfassen auch die zugehörige Genshin-UID im Spiel, jedoch keine weiteren Informationen deines Spielkontos, um HutaoDB dabei zu helfen, gefälschte Aufzeichnungen von identifizierten Betrügern potenziell abzulehnen."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We are looking forward to collect the Genshin characters you own and you used in the Spiral Abyss and send them to Snap.Hutao Database (i.e. HutaoDB) and Pizza DB. Allowing us to collect the data will help HutaoDB & PizzaAbyssDB to supply more-accurate information of the real-time Spiral Abyss Chacacter Usage Rate, Team Usage Rate, etc. information available-to-watch in the App. The information also consists of the related in-game Genshin UID but no other of your game account information to help HutaoDB potentially refuse forged records from identified cheaters."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estamos ansiosos por recopilar los personajes de Genshin que posees y que usaste en el Abismo Espiral y enviarlos a la base de datos Snap.Hutao (es decir, HutaoDB) y Pizza DB. Permitirnos recopilar los datos ayudará a HutaoDB y PizzaAbyssDB a proporcionar información más precisa sobre la tasa de uso de personajes del Abismo Espiral en tiempo real, la tasa de uso de equipos, etc., disponible para consultar en la aplicación. La información también incluye el UID de Genshin en el juego relacionado, pero no otra información de tu cuenta de juego, para ayudar a HutaoDB a rechazar potencialmente registros falsificados de tramposos identificados."
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inaasahan namin na makolekta ang mga Genshin character na pagmamay-ari mo at ginamit mo sa Spiral Abyss at ipadala ang mga ito sa Snap.Hutao Database (i.e. HutaoDB) at Pizza DB. Ang pagbibigay-daan sa amin na makolekta ang data ay makakatulong sa HutaoDB at PizzaAbyssDB na magbigay ng mas-tumpak na impormasyon tungkol sa real-time na Spiral Abyss Character Usage Rate, Team Usage Rate, atbp. na impormasyon na maaaring mapanood sa App. Ang impormasyon ay binubuo rin ng kaugnay na in-game Genshin UID ngunit wala ng iba pang impormasyon ng iyong game account upang makatulong sa HutaoDB na potensyal na tanggihan ang pekeng talaan mula sa mga nakilalang manloloko."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nous aimerions collecter les personnages Genshin que vous possédez et que vous avez utilisés dans les Profondeurs Spiralées et de les envoyer à Snap.Hutao Database (c'est-à-dire HutaoDB) et Pizza DB. En nous permettant de collecter ces données, vous aiderez HutaoDB et PizzaAbyssDB à fournir des informations plus précises sur le taux d'utilisation des personnages de les Profondeurs Spiralées en temps réel, le taux d'utilisation des équipes, etc., disponibles à consulter dans l'application. Les informations comprennent également l'UID de jeu de Genshin associé mais aucune autre information de votre compte de jeu pour aider HutaoDB à différencier les scores falsifiés des tricheurs connus."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Non vediamo l'ora di raccogliere i personaggi di Genshin che possiedi e che hai utilizzato nello Spiral Abyss e inviarli al database Snap.Hutao (HutaoDB) e Pizza DB. Consentirci di raccogliere i dati aiuterà HutaoDB e PizzaAbyssDB a fornire informazioni più accurate sul tasso di utilizzo dei personaggi dello Spiral Abyss in tempo reale, tasso di utilizzo delle squadre, ecc., informazioni disponibili da visualizzare nell'app. Le informazioni consistono anche nel relativo UID di gioco di Genshin ma nessun altro dei tuoi dati dell'account di gioco per aiutare HutaoDB a rifiutare potenzialmente i record falsi da parte dei giocatori identificati come imbroglioni."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "こちらは貴殿の「ご所有の原神キャラ資料」と「深境螺旋でご使用していた原神キャラ資料」を集めて、「Snap.Hutao 深境螺旋データベース（略称『HutaoDB』）」と「ピザ深境螺旋データベース(PizzaAbyssDB)」へ送ろうとしていますが、貴殿のご許可が必要です。ご許可があれば、HutaoDB と PizzaAbyssDB の「全サーバーの深境螺旋全キャラ使用率」「サーバーの深境螺旋全チーム使用率」その情報の正確性をもっと向上することはできます。原神のUIDもそれに含まれておりますが、これ以上他の種類のアカウント情報は送り出しません。UIDの収集は HutaoDB が「チーティングなどの不正利用で偽の作戦報告を出した UID からの作戦報告を永遠的に拒む」ためです。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "저희는 스파이럴 어비스에서 사용한 소유한 원신 캐릭터를 수집하여 Snap.Hutao 데이터베이스(HutaoDB)와 Pizza DB에 전송할 예정입니다. 데이터 수집을 허용하면 HutaoDB 및 PizzaAbyssDB는 앱에서 실시간 스파이럴 어비스 캐릭터 사용률, 팀 사용률 등 보다 정확한 정보를 제공할 수 있게 됩니다. 이 정보에는 관련된 인게임 원신 UID도 포함되지만, 사기꾼으로 식별된 사용자의 허위 기록을 거부할 수 있도록 HutaoDB를 지원하기 위해 다른 게임 계정 정보는 포함되지 않습니다."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мы надеемся собрать персонажей Genshin, которыми вы владеете и которых использовали в Спиральной Бездне, и отправить их в базу данных Snap.Hutao (например, HutaoDB) и Pizza DB. Разрешив нам собирать данные, вы поможете HutaoDB и PizzaAbyssDB предоставлять более точную информацию о реальном использовании персонажей в Спиральной Бездне, использовании команд и т. д., доступную для просмотра в приложении. Информация также включает связанный UID Genshin, но не содержит других данных вашего игрового аккаунта, чтобы помочь HutaoDB потенциально отказать в поддельных записях, обнаруженных мошенниками."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chúng tôi mong muốn thu thập các nhân vật Genshin mà bạn sở hữu và đã sử dụng trong Spiral Abyss và gửi chúng đến Cơ sở Dữ liệu Snap.Hutao (tức HutaoDB) và Pizza DB. Việc cho phép chúng tôi thu thập dữ liệu sẽ giúp HutaoDB & PizzaAbyssDB cung cấp thông tin chính xác hơn về Tỷ lệ Sử dụng Nhân vật Spiral Abyss, Tỷ lệ Sử dụng Đội, v.v., có thể xem trực tiếp trong Ứng dụng. Thông tin cũng bao gồm UID Genshin trong trò chơi có liên quan nhưng không có thông tin tài khoản trò chơi khác của bạn để giúp HutaoDB có thể từ chối các bản ghi giả mạo từ những người gian lận đã bị nhận diện."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我们希望能将您已拥有的角色和在攻克深境螺旋时使用的角色信息打包上传给 Snap.Hutao 深渊数据库（简称「HutaoDB」）以及披萨深渊数据库（PizzaAbyssDB）。您对此的准许将会使得 HutaoDB 和 PizzaAbyssDB 能提供更准确的深境螺旋角色使用率、队伍使用率等情况（均可以通过本 App 查阅）。该上传数据也包含对应的原神 UID，但不会包括其他的原神账号数据。对 UID 的收集有助于 HutaoDB 永久拒绝来自作弊玩家的战报数据递交。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我們希望能將您已擁有的角色和在攻克深境螺旋時使用的角色資訊打包上傳給 Snap.Hutao 深淵資料庫（簡稱「HutaoDB」）以及披薩深淵資料庫（PizzaAbyssDB）。您對此的准許將會使得 HutaoDB 和 PizzaAbyssDB 能提供更準確的深境螺旋角色使用率、隊伍使用率等情況（均可以藉由敝 App 檢閱）。該上傳資料也包含對應的原神 UID，但不會包括其他的原神帳號資料。對 UID 的收集有助於 HutaoDB 永久拒絕來自作弊玩家的戰報資料遞交。"
-          }
-        }
-      }
-    },
-    "settings.privacy.abyssDataCollect.faqLink" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tippe hier, um die FAQs dazu zu lesen."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap here to read the FAQs about it."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca aquí para leer las preguntas frecuentes sobre esto."
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pindutin dito para basahin ang FAQs tungkol dito."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Appuyez ici pour lire la FAQ à ce sujet."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tocca qui per leggere le FAQ a riguardo."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "それについてのよくある質問は、ここをタップしてから読めます。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "여기를 눌러 FAQ를 읽어보세요."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нажмите здесь, чтобы прочитать часто задаваемые вопросы об этом"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nhấn vào đây để đọc Câu hỏi thường gặp về vấn đề này."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "点此阅读与此有关的常见问题解答。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "點此檢閱與此有關的常見問題解答。"
-          }
-        }
-      }
-    },
-    "settings.privacy.SnapHutao.enforceUsername.title" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Einreichung an HutaoDB anhalten, bis der Benutzername hier ausgefüllt ist"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Halt submission to HutaoDB until username is filled here"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detener el envío a HutaoDB hasta que el nombre de usuario esté completado aquí"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Itigil ang pagsusumite sa HutaoDB hangga't hindi napupunan ang username dito"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ne rien envoyer à HutaoDB si l'identifiant associé n'est pas défini"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Interrompi l'invio a HutaoDB finché il nome utente non viene compilato qui"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ユーザー名がここで記入されるまで、HutaoDBへの提出を控える"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HutaoDB로 제출하기 전에 사용자 이름을 여기에 입력하세요"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Остановить отправку в HutaoDB, пока здесь не будет заполнено имя пользователя"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dừng gửi đến HutaoDB cho đến khi tên người dùng được điền vào đây"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在此处填写用户名之前，停止提交至 HutaoDB"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在此處填寫使用者名稱之前，停止提交至 HutaoDB"
-          }
-        }
-      }
-    },
-    "settings.privacy.SnapHutao.footer" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao kann einem Benutzer einige Vorteile gewähren, wenn das Benutzername-Feld im hochgeladenen Kampfreport korrekt ausgefüllt ist. Snap Hutao behält sich das Recht vor, weitere Details zu erläutern. Wenn der Erzwinger-Schalter aktiviert ist, werden Ihre Kampfreports **nur dann** an HutaoDB hochgeladen, wenn das Benutzername-Feld **nicht** leer ist."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao may release some benefits to a user if the username field here is correctly supplied in the uploaded battle report. Snap Hutao reserves the rights to explain the further details. If the enforcer toggle is ON, your battle reports will be uploaded to HutaoDB **only if** the username field is **not** blank."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao puede ofrecer algunos beneficios a un usuario si el campo de nombre de usuario se completa correctamente en el informe de batalla subido. Snap Hutao se reserva el derecho de explicar los detalles adicionales. Si el interruptor de refuerzo está activado, tus informes de batalla se subirán a HutaoDB **solo si** el campo de nombre de usuario **no** está vacío."
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Maaaring magbigay ang Snap Hutao ng ilang benepisyo sa gumagamit kung ang nakalaan na field ng username ay tama ang pagkakagamit sa ini-upload na ulat ng labanan. Inilalaan ng Snap Hutao ang karapatang ipaliwanag ang mga karagdagang detalye. Kung naka-ON ang enforcer toggle, ang iyong mga ulat ng labanan ay ia-upload sa HutaoDB **kung at lamang kung** ang nakalaan na field ng username ay **hindi** blangko."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao peut offrir certains avantages à un utilisateur si le champ de nom d'utilisateur est correctement renseigné dans le rapport de combat téléchargé. Snap Hutao se réserve le droit d'expliquer les détails supplémentaires. Si l'option de force est activée, vos rapports de combat seront téléchargés sur HutaoDB **uniquement si** le champ de nom d'utilisateur n'est **pas** vide."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao potrebbe offrire alcuni vantaggi a un utente se il campo del nome utente è compilato correttamente nel rapporto di battaglia caricato. Snap Hutao si riserva il diritto di spiegare ulteriori dettagli. Se l'interruttore di enforcement è ATTIVO, i tuoi rapporti di battaglia saranno caricati su HutaoDB **solo se** il campo del nome utente **non** è vuoto."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutaoは、アップロードされた作戦報告に「ユーザー名」記入欄が正しく入力されている場合、ユーザーにいくつかの特典を提供する場合があります。詳細の説明権はSnap Hutaoが留保します。強要スイッチがONの場合、「ユーザー名」記入欄が**空ではない**場合に限り、作戦報告がHutaoDBにアップロードされます。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao는 업로드된 전투 보고서에 사용자 이름 필드가 올바르게 제공된 경우 사용자에게 일부 혜택을 제공할 수 있습니다. Snap Hutao는 추가 세부 정보를 설명할 권리를 보유합니다. 시행 토글이 켜져 있는 경우 사용자 이름 필드가 **비어 있지 않을 때만** 전투 보고서가HutaoDB에 업로드됩니다."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao может предоставить пользователю определенные преимущества, если поле имени пользователя будет правильно заполнено в загруженном боевом отчете. Snap Hutao оставляет за собой право объяснить дополнительные детали. Если переключатель принудительного режима включен, ваши боевые отчеты будут загружаться в HutaoDB **только если** поле имени пользователя **не** пустое."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao có thể cung cấp một số lợi ích cho người dùng nếu trường tên người dùng được điền đúng trong báo cáo chiến đấu đã tải lên. Snap Hutao bảo lưu quyền giải thích chi tiết thêm. Nếu công tắc thực thi được BẬT, báo cáo chiến đấu của bạn sẽ được tải lên HutaoDB **chỉ khi** trường tên người dùng **không** trống."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "如果您在上传个人战报时填写了此处的「用户名」字段，Snap Hutao 可能会为您提供专属福利。Snap Hutao 对此保留最终解释权。请注意，开启了此处的强制开关之后，只有在您填写了「用户名」的情况下，您的个人战报才可能会上传到 HutaoDB。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "若您在上傳個人戰報時已填寫此處的「使用者名稱」欄位，Snap Hutao 可能會為您提供專屬福利。Snap Hutao 對此保留最終解釋權。請注意，開啟了此處的強制開關之後，只有在您填寫了「使用者名稱」的情況下，您的個人戰報才可能會上傳到 HutaoDB。"
-          }
-        }
-      }
-    },
-    "settings.privacy.SnapHutao.username.title" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao ID-E-Mail"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao Username"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Correo electrónico del ID de Snap Hutao"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao ID Email"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "E-mail d'identifiant Snap Hutao"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "E-mail ID di Snap Hutao"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao ユーザー名"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao ID 이메일"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Электронная почта Snap Hutao ID"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Email ID Snap Hutao"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao 用户名"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Snap Hutao 使用者名稱"
+            "value" : "某些功能被移除了，所以目前沒有可用的隱私權選項。此應用程式現在不收集任何內容。"
           }
         }
       }
