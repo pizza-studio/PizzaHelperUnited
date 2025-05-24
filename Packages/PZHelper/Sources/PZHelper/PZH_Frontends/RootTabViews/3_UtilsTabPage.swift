@@ -5,7 +5,6 @@
 import GachaKit
 import PZAccountKit
 import PZBaseKit
-import PZDictionaryKit
 import SwiftUI
 import WallpaperKit
 
@@ -15,7 +14,6 @@ struct UtilsTabPage: View {
     enum Nav {
         case gachaManager
         case wallpaperGallery
-        case pizzaDictionary
     }
 
     var body: some View {
@@ -33,14 +31,6 @@ struct UtilsTabPage: View {
                     }
                 } footer: {
                     Text(GachaRootView.navDescription)
-                }
-
-                Section {
-                    NavigationLink(value: Nav.pizzaDictionary) {
-                        Label(PZDictionaryView.navTitle, systemSymbol: .characterBookClosedFill)
-                    }
-                } footer: {
-                    Text(PZDictionaryView.navDescription)
                 }
 
                 Section {
@@ -71,7 +61,6 @@ struct UtilsTabPage: View {
             switch selection.wrappedValue {
             case .gachaManager: GachaRootView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
-            case .pizzaDictionary: PZDictionaryView()
             case .none: EmptyView() // Temporary for now.
             }
         }
