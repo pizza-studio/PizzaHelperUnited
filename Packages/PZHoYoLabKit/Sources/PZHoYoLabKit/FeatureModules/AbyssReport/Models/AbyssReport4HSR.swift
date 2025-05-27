@@ -31,3 +31,42 @@ extension HoYo {
         public let apocalypticShadow: ApocalypticShadowData
     }
 }
+
+// MARK: - HoYo.AbyssReport4HSR.TreasuresLightwardType
+
+extension HoYo.AbyssReport4HSR {
+    public enum TreasuresLightwardType: String, Identifiable, CaseIterable {
+        case forgottenHall
+        case pureFiction
+        case apocalypticShadow
+
+        // MARK: Public
+
+        public var id: String { rawValue }
+
+        public var localizedTitle: String {
+            .init(localized: localizedStringKey, bundle: .module)
+        }
+
+        // MARK: Internal
+
+        var localizedStringKey: String.LocalizationValue {
+            switch self {
+            case .forgottenHall:
+                .init("hylKit.abyssReportView4HSR.navTitle.forgottenHall")
+            case .pureFiction:
+                .init("hylKit.abyssReportView4HSR.navTitle.pureFiction")
+            case .apocalypticShadow:
+                .init("hylKit.abyssReportView4HSR.navTitle.apocalypticShadow")
+            }
+        }
+
+        var iconFileNameStem: String {
+            switch self {
+            case .forgottenHall: "hsr_abyss_ForgottenHall"
+            case .pureFiction: "hsr_abyss_PureFiction"
+            case .apocalypticShadow: "hsr_abyss_ApocalypticShadow"
+            }
+        }
+    }
+}
