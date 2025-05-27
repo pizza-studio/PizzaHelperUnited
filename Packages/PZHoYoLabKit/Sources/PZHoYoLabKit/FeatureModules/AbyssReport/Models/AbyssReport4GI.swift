@@ -8,7 +8,7 @@ import PZBaseKit
 // MARK: - HoYo.AbyssReport4GI
 
 extension HoYo {
-    public struct AbyssReport4GI: AbyssReport {
+    public struct AbyssReport4GI: AbyssReport, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
 
         public typealias ViewType = AbyssReportView4GI

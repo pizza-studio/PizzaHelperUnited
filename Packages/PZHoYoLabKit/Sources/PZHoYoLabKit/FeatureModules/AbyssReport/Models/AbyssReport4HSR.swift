@@ -10,9 +10,25 @@ import PZBaseKit
 
 extension HoYo {
     public struct AbyssReport4HSR: AbyssReport {
+        // MARK: Lifecycle
+
+        public init(forgottenHall: ForgottenHallData) {
+            self.forgottenHall = forgottenHall
+        }
+
         // MARK: Public
 
         public typealias ViewType = AbyssReportView4HSR
+
+        public var forgottenHall: ForgottenHallData
+    }
+}
+
+// MARK: - Forgotten Hall.
+
+extension HoYo.AbyssReport4HSR {
+    public struct ForgottenHallData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
+        // MARK: Public
 
         public let scheduleID: Int
         public let beginTime: FHDateComponents?
@@ -50,9 +66,7 @@ extension HoYo {
             case groups
         }
     }
-}
 
-extension HoYo.AbyssReport4HSR {
     public struct FHAvatar: AbleToCodeSendHash, Identifiable {
         // MARK: Public
 
