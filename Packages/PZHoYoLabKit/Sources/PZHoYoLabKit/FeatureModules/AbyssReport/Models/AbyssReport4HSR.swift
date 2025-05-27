@@ -35,7 +35,7 @@ extension HoYo {
 // MARK: - HoYo.AbyssReport4HSR.TreasuresLightwardType
 
 extension HoYo.AbyssReport4HSR {
-    public enum TreasuresLightwardType: String, Identifiable, CaseIterable {
+    public enum TreasuresLightwardType: String, Identifiable, CaseIterable, AbleToCodeSendHash {
         case forgottenHall
         case pureFiction
         case apocalypticShadow
@@ -67,6 +67,65 @@ extension HoYo.AbyssReport4HSR {
             case .pureFiction: "hsr_abyss_PureFiction"
             case .apocalypticShadow: "hsr_abyss_ApocalypticShadow"
             }
+        }
+    }
+}
+
+extension HoYo.AbyssReport4HSR {
+    public struct LatestChallengeIntel: AbleToCodeSendHash {
+        public let type: TreasuresLightwardType
+        public let deepestLevel: String
+        public let totalStarsGained: Int
+    }
+
+    public var latestChallengeType: TreasuresLightwardType? {
+        var mapTimeAndType: [TreasuresLightwardType: Date] = [:]
+        // 此处的时区是随便取的，只要三个时区都雷同就行。
+        mapTimeAndType[.forgottenHall] = forgottenHall.allNodes.compactMap {
+            $0.challengeTime?.asDate(timeZoneDelta: 8)
+        }.max()
+        mapTimeAndType[.pureFiction] = pureFiction.allNodes.compactMap {
+            $0.challengeTime?.asDate(timeZoneDelta: 8)
+        }.max()
+        mapTimeAndType[.apocalypticShadow] = apocalypticShadow.allNodes.compactMap {
+            $0.challengeTime?.asDate(timeZoneDelta: 8)
+        }.max()
+        let possible = mapTimeAndType.max {
+            $0.value.timeIntervalSince1970 < $1.value.timeIntervalSince1970
+        }
+        return possible?.key
+    }
+
+    public var latestChallengeIntel: LatestChallengeIntel? {
+        guard let latestChallengeType else { return nil }
+        switch latestChallengeType {
+        case .forgottenHall:
+            guard forgottenHall.hasData else { return nil }
+            let deepestLevel = forgottenHall.maxFloorNumStr
+            let starNum = forgottenHall.starNum
+            return .init(
+                type: latestChallengeType,
+                deepestLevel: deepestLevel,
+                totalStarsGained: starNum
+            )
+        case .pureFiction:
+            guard pureFiction.hasData else { return nil }
+            let deepestLevel = pureFiction.maxFloorNumStr
+            let starNum = pureFiction.starNum
+            return .init(
+                type: latestChallengeType,
+                deepestLevel: deepestLevel,
+                totalStarsGained: starNum
+            )
+        case .apocalypticShadow:
+            guard apocalypticShadow.hasData else { return nil }
+            let deepestLevel = apocalypticShadow.maxFloorNumStr
+            let starNum = apocalypticShadow.starNum
+            return .init(
+                type: latestChallengeType,
+                deepestLevel: deepestLevel,
+                totalStarsGained: starNum
+            )
         }
     }
 }

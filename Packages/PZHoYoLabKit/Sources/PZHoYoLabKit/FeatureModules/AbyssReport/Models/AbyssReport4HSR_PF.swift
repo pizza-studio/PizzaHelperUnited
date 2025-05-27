@@ -26,6 +26,12 @@ extension HoYo.AbyssReport4HSR {
             }?.floorNumStr ?? "0"
         }
 
+        public var allNodes: [FHNode] {
+            allFloorDetail.compactMap {
+                [$0.node1, $0.node2]
+            }.reduce([], +)
+        }
+
         // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
