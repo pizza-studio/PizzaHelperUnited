@@ -68,3 +68,13 @@ extension HoYo.AbyssReport4HSR {
         private let _isFast: Bool
     }
 }
+
+extension [HoYo.AbyssReport4HSR.ASFloorDetail] {
+    var trimmed: Self {
+        var copied = self
+        while copied.last?.isSkipped ?? false {
+            copied.removeLast()
+        }
+        return copied
+    }
+}
