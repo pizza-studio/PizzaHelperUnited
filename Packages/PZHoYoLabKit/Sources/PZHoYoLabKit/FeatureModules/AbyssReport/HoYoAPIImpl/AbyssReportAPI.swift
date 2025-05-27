@@ -41,7 +41,23 @@ extension HoYo {
         for profile: PZProfileSendable, isPreviousRound: Bool = false
     ) async throws
         -> AbyssReport4HSR {
-        let fhData = try await abyssReportData4HSRForgottenHall(
+        let dataForgottenHall = try await abyssReportData4HSRForgottenHall(
+            isPreviousRound: isPreviousRound,
+            server: profile.server,
+            uid: profile.uid,
+            cookie: profile.cookie,
+            deviceFingerPrint: profile.deviceFingerPrint,
+            deviceID: profile.deviceID
+        )
+        let dataApocalypticShadow = try await abyssReportData4HSRApoShadow(
+            isPreviousRound: isPreviousRound,
+            server: profile.server,
+            uid: profile.uid,
+            cookie: profile.cookie,
+            deviceFingerPrint: profile.deviceFingerPrint,
+            deviceID: profile.deviceID
+        )
+        let dataPureFiction = try await abyssReportData4HSRPureFiction(
             isPreviousRound: isPreviousRound,
             server: profile.server,
             uid: profile.uid,
@@ -50,11 +66,15 @@ extension HoYo {
             deviceID: profile.deviceID
         )
         let result = HoYo.AbyssReport4HSR(
-            forgottenHall: fhData
+            forgottenHall: dataForgottenHall,
+            pureFiction: dataPureFiction,
+            apocalypticShadow: dataApocalypticShadow
         )
         return result
     }
 }
+
+// MARK: - Private Methods (Genshin Impact).
 
 extension HoYo {
     private static func abyssReportData4GI(
@@ -100,7 +120,11 @@ extension HoYo {
 
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.AbyssReportData4GI()")
     }
+}
 
+// MARK: - Private Methods (Star Rail).
+
+extension HoYo {
     private static func abyssReportData4HSRForgottenHall(
         isPreviousRound: Bool = false,
         server: Server,
@@ -112,7 +136,7 @@ extension HoYo {
         -> AbyssReport4HSR.ForgottenHallData {
         await HoYo.waitFor300ms()
         #if DEBUG
-        print("||| START REQUESTING SPIRAL ABYSS DATA (HSR) |||")
+        print("||| START REQUESTING SPIRAL ABYSS DATA (HSR - ForgottenHall) |||")
         #endif
 
         let queryItems: [URLQueryItem] = [
@@ -154,7 +178,119 @@ extension HoYo {
 
         let data = try await request.serializingData().value
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.abyssReportData4HSR()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.abyssReportData4HSRForgottenHall()")
+    }
+
+    private static func abyssReportData4HSRPureFiction(
+        isPreviousRound: Bool = false,
+        server: Server,
+        uid: String,
+        cookie: String,
+        deviceFingerPrint: String?,
+        deviceID: String?
+    ) async throws
+        -> AbyssReport4HSR.PureFictionData {
+        await HoYo.waitFor300ms()
+        #if DEBUG
+        print("||| START REQUESTING SPIRAL ABYSS DATA (HSR - Pure Fiction) |||")
+        #endif
+
+        let queryItems: [URLQueryItem] = [
+            .init(name: "isPrev", value: isPreviousRound ? "true" : "false"),
+            .init(name: "need_all", value: "true"),
+            .init(name: "role_id", value: uid),
+            .init(name: "schedule_type", value: isPreviousRound ? "2" : "1"),
+            .init(name: "server", value: server.rawValue),
+        ]
+
+        var additionalHeaders: [String: String]? = {
+            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceID {
+                [
+                    "x-rpc-device_fp": deviceFingerPrint,
+                    "x-rpc-device_id": deviceID,
+                ]
+            } else {
+                [:]
+            }
+        }()
+
+        checkMiyoushe: switch server.region {
+        case .miyoushe: additionalHeaders?["x-rpc-language"] = HoYo.APILang.langCHS.rawValue
+        default: break checkMiyoushe
+        }
+
+        if additionalHeaders?.isEmpty ?? false {
+            additionalHeaders = nil
+        }
+
+        let request = try await Self.generateRecordAPIRequest(
+            region: server.region,
+            path: server.region.abyssReportRetrievalPath + "_story",
+            queryItems: queryItems,
+            cookie: cookie,
+            additionalHeaders: additionalHeaders
+        )
+        request.printDebugIntelIfDebugMode()
+
+        let data = try await request.serializingData().value
+
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.abyssReportData4HSRPureFiction()")
+    }
+
+    private static func abyssReportData4HSRApoShadow(
+        isPreviousRound: Bool = false,
+        server: Server,
+        uid: String,
+        cookie: String,
+        deviceFingerPrint: String?,
+        deviceID: String?
+    ) async throws
+        -> AbyssReport4HSR.ApocalypticShadowData {
+        await HoYo.waitFor300ms()
+        #if DEBUG
+        print("||| START REQUESTING SPIRAL ABYSS DATA (HSR - Pure Fiction) |||")
+        #endif
+
+        let queryItems: [URLQueryItem] = [
+            .init(name: "isPrev", value: isPreviousRound ? "true" : "false"),
+            .init(name: "need_all", value: "true"),
+            .init(name: "role_id", value: uid),
+            .init(name: "schedule_type", value: isPreviousRound ? "2" : "1"),
+            .init(name: "server", value: server.rawValue),
+        ]
+
+        var additionalHeaders: [String: String]? = {
+            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceID {
+                [
+                    "x-rpc-device_fp": deviceFingerPrint,
+                    "x-rpc-device_id": deviceID,
+                ]
+            } else {
+                [:]
+            }
+        }()
+
+        checkMiyoushe: switch server.region {
+        case .miyoushe: additionalHeaders?["x-rpc-language"] = HoYo.APILang.langCHS.rawValue
+        default: break checkMiyoushe
+        }
+
+        if additionalHeaders?.isEmpty ?? false {
+            additionalHeaders = nil
+        }
+
+        let request = try await Self.generateRecordAPIRequest(
+            region: server.region,
+            path: server.region.abyssReportRetrievalPath + "_boss",
+            queryItems: queryItems,
+            cookie: cookie,
+            additionalHeaders: additionalHeaders
+        )
+        request.printDebugIntelIfDebugMode()
+
+        let data = try await request.serializingData().value
+
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.abyssReportData4HSRApoShadow()")
     }
 }
 

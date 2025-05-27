@@ -1,0 +1,333 @@
+{
+	"groups": [
+		{
+			"schedule_id": 2014,
+			"begin_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 28,
+				"hour": 4,
+				"minute": 0
+			},
+			"end_time": {
+				"year": 2025,
+				"month": 6,
+				"day": 9,
+				"hour": 4,
+				"minute": 0
+			},
+			"status": "Running",
+			"name_mi18n": "结构规律",
+			"upper_boss": null,
+			"lower_boss": null
+		},
+		{
+			"schedule_id": 2013,
+			"begin_time": {
+				"year": 2025,
+				"month": 3,
+				"day": 17,
+				"hour": 4,
+				"minute": 0
+			},
+			"end_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 28,
+				"hour": 4,
+				"minute": 0
+			},
+			"status": "End",
+			"name_mi18n": "自证预言",
+			"upper_boss": null,
+			"lower_boss": null
+		}
+	],
+	"star_num": 12,
+	"max_floor": "结构规律其四",
+	"battle_num": 4,
+	"has_data": true,
+	"all_floor_detail": [
+		{
+			"name": "结构规律其四",
+			"round_num": 6,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 29,
+					"hour": 1,
+					"minute": 25
+				},
+				"avatars": [
+					{
+						"id": 1225,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/86bb244d0449fa3b9f88f9921d21a067.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 1
+					},
+					{
+						"id": 1317,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/cb016d7431ef1bcce33f92484b031b39.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0
+					},
+					{
+						"id": 1303,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1217,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/2ff5fae59cafeeee8be7aea4c9f23730.png",
+						"rarity": 5,
+						"element": "wind",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3031329,
+					"name_mi18n": "空头",
+					"desc_mi18n": "「战意汹涌」期间，敌方目标受到的击破伤害提高30%，我方角色击破敌方目标弱点时，自身行动提前12%。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/62c6e660f66eebdf567406b14d5060df.png",
+					"simple_desc_mi18m": "我方攻击敌方目标后，每击破1个敌方目标，使我方额外积累3点「战意值」。"
+				},
+				"score": "23200"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 29,
+					"hour": 1,
+					"minute": 25
+				},
+				"avatars": [
+					{
+						"id": 1401,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1013,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
+						"rarity": 4,
+						"element": "ice",
+						"rank": 6
+					},
+					{
+						"id": 1222,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3031327,
+					"name_mi18n": "肤廓",
+					"desc_mi18n": "「战意汹涌」期间，我方全体战技不消耗战技点。角色施放战技或终结技后，每击中1个敌方目标获得1层【热潮】，每层使该角色造成的战技和终结技伤害提高4%，速度提高4%，最多叠加10层。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/061d7f6092284f2869d3c9e2bd1ca526.png",
+					"simple_desc_mi18m": "我方施放终结技攻击敌方目标后，每击中1个敌方目标，使我方额外积累3点「战意值」。"
+				},
+				"score": "40000"
+			},
+			"maze_id": 20144,
+			"is_fast": false
+		},
+		{
+			"name": "结构规律其三",
+			"round_num": 2,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 28,
+					"hour": 14,
+					"minute": 19
+				},
+				"avatars": [
+					{
+						"id": 1308,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/4de5041f65cfea8f871e1b5c106bce7e.png",
+						"rarity": 5,
+						"element": "lightning",
+						"rank": 2
+					},
+					{
+						"id": 1218,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7def381794e9c84cf84b975fbe8b68d2.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					},
+					{
+						"id": 1313,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/2f0937fd121b3b91dc6f3d343337c7ea.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0
+					},
+					{
+						"id": 1222,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3031327,
+					"name_mi18n": "肤廓",
+					"desc_mi18n": "「战意汹涌」期间，我方全体战技不消耗战技点。角色施放战技或终结技后，每击中1个敌方目标获得1层【热潮】，每层使该角色造成的战技和终结技伤害提高4%，速度提高4%，最多叠加10层。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/061d7f6092284f2869d3c9e2bd1ca526.png",
+					"simple_desc_mi18m": "我方施放终结技攻击敌方目标后，每击中1个敌方目标，使我方额外积累3点「战意值」。"
+				},
+				"score": "40000"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 28,
+					"hour": 14,
+					"minute": 19
+				},
+				"avatars": [
+					{
+						"id": 1407,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fd8c0196c17d455650b854dcf7175baa.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 2
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 8008,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe9974b41b2458729559d3bcfc6e8ed2.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 6
+					},
+					{
+						"id": 1301,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/d680c706090155fd6fdf3ef693495c09.png",
+						"rarity": 4,
+						"element": "fire",
+						"rank": 6
+					}
+				],
+				"buff": {
+					"id": 3031338,
+					"name_mi18n": "圣显",
+					"desc_mi18n": "「战意汹涌」期间我方全体施放战技时消耗等同于自身20%生命上限的生命值，并在施放战技后回复自身20%生命上限的生命值。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/ed2f52d5c7b92bb354fd393009c81157.png",
+					"simple_desc_mi18m": "我方全体角色每次受到攻击或损失生命值时，使我方额外积累3点「战意值」。"
+				},
+				"score": "40000"
+			},
+			"maze_id": 20143,
+			"is_fast": false
+		},
+		{
+			"name": "结构规律其二",
+			"round_num": 0,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 28,
+					"hour": 14,
+					"minute": 19
+				},
+				"avatars": [],
+				"buff": null,
+				"score": "0"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 28,
+					"hour": 14,
+					"minute": 19
+				},
+				"avatars": [],
+				"buff": null,
+				"score": "0"
+			},
+			"maze_id": 20142,
+			"is_fast": true
+		},
+		{
+			"name": "结构规律其一",
+			"round_num": 0,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 28,
+					"hour": 14,
+					"minute": 19
+				},
+				"avatars": [],
+				"buff": null,
+				"score": "0"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 28,
+					"hour": 14,
+					"minute": 19
+				},
+				"avatars": [],
+				"buff": null,
+				"score": "0"
+			},
+			"maze_id": 20141,
+			"is_fast": true
+		}
+	],
+	"max_floor_id": 20144
+}

@@ -1,0 +1,353 @@
+{
+	"groups": [
+		{
+			"schedule_id": 3009,
+			"begin_time": {
+				"year": 2025,
+				"month": 5,
+				"day": 26,
+				"hour": 4,
+				"minute": 0
+			},
+			"end_time": {
+				"year": 2025,
+				"month": 7,
+				"day": 7,
+				"hour": 4,
+				"minute": 0
+			},
+			"status": "New",
+			"name_mi18n": "冽风支配",
+			"upper_boss": {
+				"id": 100401401,
+				"name_mi18n": "无望冽风的幻灭者",
+				"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/3c28789ce4e81edf484e55002c2f4778.png"
+			},
+			"lower_boss": {
+				"id": 200401401,
+				"name_mi18n": "勾魂摄魄的支配者",
+				"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c2e6b95f422c5a62babbd2e00bb08a2.png"
+			}
+		},
+		{
+			"schedule_id": 3008,
+			"begin_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 14,
+				"hour": 4,
+				"minute": 0
+			},
+			"end_time": {
+				"year": 2025,
+				"month": 5,
+				"day": 26,
+				"hour": 4,
+				"minute": 0
+			},
+			"status": "End",
+			"name_mi18n": "螟蝗战首",
+			"upper_boss": {
+				"id": 802501101,
+				"name_mi18n": "遮天蔽日的噬星蠹",
+				"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/a0a946f54a4db3d4fc03fe03d4b1a579.png"
+			},
+			"lower_boss": {
+				"id": 203401401,
+				"name_mi18n": "雷奔云谲的恶狼主",
+				"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/21865da151e17554db53a872a033d854.png"
+			}
+		}
+	],
+	"star_num": 12,
+	"max_floor": "螟蝗战首·难度04",
+	"battle_num": 2,
+	"has_data": true,
+	"all_floor_detail": [
+		{
+			"name": "螟蝗战首·难度04",
+			"star_num": "3",
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 14,
+					"hour": 14,
+					"minute": 30
+				},
+				"avatars": [
+					{
+						"id": 1401,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1013,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
+						"rarity": 4,
+						"element": "ice",
+						"rank": 6
+					},
+					{
+						"id": 1303,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1304,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/f1686b37cab2dc9feb750ecffcefc975.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3111047,
+					"name_mi18n": "智圆行方",
+					"desc_mi18n": "我方队伍中存在智识命途的角色时，我方全体全属性抗性穿透提高15%。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/caf499e4320e348b7c923473be0e9dd4.png"
+				},
+				"score": "3267",
+				"boss_defeated": true
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 14,
+					"hour": 14,
+					"minute": 35
+				},
+				"avatars": [
+					{
+						"id": 1407,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fd8c0196c17d455650b854dcf7175baa.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1006,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/89a549568b2b468cd1c44583e78994bb.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1301,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/d680c706090155fd6fdf3ef693495c09.png",
+						"rarity": 4,
+						"element": "fire",
+						"rank": 6
+					}
+				],
+				"buff": {
+					"id": 3111051,
+					"name_mi18n": "枯木逢春",
+					"desc_mi18n": "任意我方目标被消耗生命值后，回复60%的消耗生命值，每回合最多通过该方式回复50%生命值。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/26c2b7f7a97f197eb0fea701a01378c6.png"
+				},
+				"score": "3388",
+				"boss_defeated": true
+			},
+			"maze_id": 30084,
+			"is_fast": false,
+			"last_update_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 14,
+				"hour": 14,
+				"minute": 35
+			}
+		},
+		{
+			"name": "螟蝗战首·难度03",
+			"star_num": "3",
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 14,
+					"hour": 14,
+					"minute": 17
+				},
+				"avatars": [
+					{
+						"id": 1401,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1013,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
+						"rarity": 4,
+						"element": "ice",
+						"rank": 6
+					},
+					{
+						"id": 1303,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1304,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/f1686b37cab2dc9feb750ecffcefc975.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3111047,
+					"name_mi18n": "智圆行方",
+					"desc_mi18n": "我方队伍中存在智识命途的角色时，我方全体全属性抗性穿透提高15%。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/caf499e4320e348b7c923473be0e9dd4.png"
+				},
+				"score": "3576",
+				"boss_defeated": true
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 14,
+					"hour": 14,
+					"minute": 22
+				},
+				"avatars": [
+					{
+						"id": 1407,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fd8c0196c17d455650b854dcf7175baa.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1006,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/89a549568b2b468cd1c44583e78994bb.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1301,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/d680c706090155fd6fdf3ef693495c09.png",
+						"rarity": 4,
+						"element": "fire",
+						"rank": 6
+					}
+				],
+				"buff": {
+					"id": 3111051,
+					"name_mi18n": "枯木逢春",
+					"desc_mi18n": "任意我方目标被消耗生命值后，回复60%的消耗生命值，每回合最多通过该方式回复50%生命值。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/26c2b7f7a97f197eb0fea701a01378c6.png"
+				},
+				"score": "3548",
+				"boss_defeated": true
+			},
+			"maze_id": 30083,
+			"is_fast": false,
+			"last_update_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 14,
+				"hour": 14,
+				"minute": 22
+			}
+		},
+		{
+			"name": "螟蝗战首·难度02",
+			"star_num": "3",
+			"node_1": {
+				"challenge_time": null,
+				"avatars": [],
+				"buff": null,
+				"score": "0",
+				"boss_defeated": false
+			},
+			"node_2": {
+				"challenge_time": null,
+				"avatars": [],
+				"buff": null,
+				"score": "0",
+				"boss_defeated": false
+			},
+			"maze_id": 30082,
+			"is_fast": true,
+			"last_update_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 14,
+				"hour": 14,
+				"minute": 22
+			}
+		},
+		{
+			"name": "螟蝗战首·难度01",
+			"star_num": "3",
+			"node_1": {
+				"challenge_time": null,
+				"avatars": [],
+				"buff": null,
+				"score": "0",
+				"boss_defeated": false
+			},
+			"node_2": {
+				"challenge_time": null,
+				"avatars": [],
+				"buff": null,
+				"score": "0",
+				"boss_defeated": false
+			},
+			"maze_id": 30081,
+			"is_fast": true,
+			"last_update_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 14,
+				"hour": 14,
+				"minute": 22
+			}
+		}
+	],
+	"max_floor_id": 30084
+}

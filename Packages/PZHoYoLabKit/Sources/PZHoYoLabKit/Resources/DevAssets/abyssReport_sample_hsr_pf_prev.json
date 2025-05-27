@@ -1,0 +1,489 @@
+{
+	"groups": [
+		{
+			"schedule_id": 2014,
+			"begin_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 28,
+				"hour": 4,
+				"minute": 0
+			},
+			"end_time": {
+				"year": 2025,
+				"month": 6,
+				"day": 9,
+				"hour": 4,
+				"minute": 0
+			},
+			"status": "Running",
+			"name_mi18n": "结构规律",
+			"upper_boss": null,
+			"lower_boss": null
+		},
+		{
+			"schedule_id": 2013,
+			"begin_time": {
+				"year": 2025,
+				"month": 3,
+				"day": 17,
+				"hour": 4,
+				"minute": 0
+			},
+			"end_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 28,
+				"hour": 4,
+				"minute": 0
+			},
+			"status": "End",
+			"name_mi18n": "自证预言",
+			"upper_boss": null,
+			"lower_boss": null
+		}
+	],
+	"star_num": 12,
+	"max_floor": "自证预言其四",
+	"battle_num": 10,
+	"has_data": true,
+	"all_floor_detail": [
+		{
+			"name": "自证预言其四",
+			"round_num": 8,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 3,
+					"day": 19,
+					"hour": 2,
+					"minute": 7
+				},
+				"avatars": [
+					{
+						"id": 1401,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1208,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/79677f33ec50321a5d00dfc7d82e188c.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1013,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
+						"rarity": 4,
+						"element": "ice",
+						"rank": 6
+					}
+				],
+				"buff": {
+					"id": 3031335,
+					"name_mi18n": "显化",
+					"desc_mi18n": "「战意汹涌」期间，我方对处于【爆裂】的敌方目标施放战技或发动追加攻击后可以直接触发【爆裂】。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/763b9e6d598e1a9d555def3e711967b7.png",
+					"simple_desc_mi18m": "我方施放战技或发动追加攻击后，每击中1个敌方目标，使我方额外积累2点「战意值」。"
+				},
+				"score": "38440"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 3,
+					"day": 19,
+					"hour": 2,
+					"minute": 7
+				},
+				"avatars": [
+					{
+						"id": 1308,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/4de5041f65cfea8f871e1b5c106bce7e.png",
+						"rarity": 5,
+						"element": "lightning",
+						"rank": 2
+					},
+					{
+						"id": 1218,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7def381794e9c84cf84b975fbe8b68d2.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					},
+					{
+						"id": 1313,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/2f0937fd121b3b91dc6f3d343337c7ea.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0
+					},
+					{
+						"id": 1222,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3031335,
+					"name_mi18n": "显化",
+					"desc_mi18n": "「战意汹涌」期间，我方对处于【爆裂】的敌方目标施放战技或发动追加攻击后可以直接触发【爆裂】。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/763b9e6d598e1a9d555def3e711967b7.png",
+					"simple_desc_mi18m": "我方施放战技或发动追加攻击后，每击中1个敌方目标，使我方额外积累2点「战意值」。"
+				},
+				"score": "24680"
+			},
+			"maze_id": 20134,
+			"is_fast": false
+		},
+		{
+			"name": "自证预言其三",
+			"round_num": 4,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 3,
+					"day": 19,
+					"hour": 1,
+					"minute": 44
+				},
+				"avatars": [
+					{
+						"id": 1003,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/56d9fc280f42f3ad409cde986e20dbb4.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 1
+					},
+					{
+						"id": 1013,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
+						"rarity": 4,
+						"element": "ice",
+						"rank": 6
+					},
+					{
+						"id": 1222,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					},
+					{
+						"id": 1303,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3031335,
+					"name_mi18n": "显化",
+					"desc_mi18n": "「战意汹涌」期间，我方对处于【爆裂】的敌方目标施放战技或发动追加攻击后可以直接触发【爆裂】。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/763b9e6d598e1a9d555def3e711967b7.png",
+					"simple_desc_mi18m": "我方施放战技或发动追加攻击后，每击中1个敌方目标，使我方额外积累2点「战意值」。"
+				},
+				"score": "40000"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 3,
+					"day": 19,
+					"hour": 1,
+					"minute": 44
+				},
+				"avatars": [
+					{
+						"id": 1302,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/79d66fadcb054bb78711094c3f182012.png",
+						"rarity": 5,
+						"element": "physical",
+						"rank": 0
+					},
+					{
+						"id": 1309,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/28be9883a58efd0f69a48cfcc86b6652.png",
+						"rarity": 5,
+						"element": "physical",
+						"rank": 0
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1401,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3031335,
+					"name_mi18n": "显化",
+					"desc_mi18n": "「战意汹涌」期间，我方对处于【爆裂】的敌方目标施放战技或发动追加攻击后可以直接触发【爆裂】。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/763b9e6d598e1a9d555def3e711967b7.png",
+					"simple_desc_mi18m": "我方施放战技或发动追加攻击后，每击中1个敌方目标，使我方额外积累2点「战意值」。"
+				},
+				"score": "40000"
+			},
+			"maze_id": 20133,
+			"is_fast": false
+		},
+		{
+			"name": "自证预言其二",
+			"round_num": 2,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 23,
+					"hour": 15,
+					"minute": 20
+				},
+				"avatars": [
+					{
+						"id": 1401,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1013,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
+						"rarity": 4,
+						"element": "ice",
+						"rank": 6
+					},
+					{
+						"id": 1303,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1222,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3031336,
+					"name_mi18n": "灵知",
+					"desc_mi18n": "「战意汹涌」期间，敌方目标受到的击破伤害提高30%，且处于【爆裂】状态的目标被任意单位消灭时会对相邻敌方目标造成10点无视弱点属性的削韧。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7eefa45bf6e4b03122057fdacceeae98.png",
+					"simple_desc_mi18m": "敌方目标的弱点被击破时，使我方额外积累3点「战意值」。"
+				},
+				"score": "40000"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 23,
+					"hour": 15,
+					"minute": 20
+				},
+				"avatars": [
+					{
+						"id": 1407,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fd8c0196c17d455650b854dcf7175baa.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 2
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1214,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/f109207212da667e40a4480baebd871b.png",
+						"rarity": 4,
+						"element": "quantum",
+						"rank": 6
+					},
+					{
+						"id": 1301,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/d680c706090155fd6fdf3ef693495c09.png",
+						"rarity": 4,
+						"element": "fire",
+						"rank": 6
+					}
+				],
+				"buff": {
+					"id": 3031337,
+					"name_mi18n": "神智",
+					"desc_mi18n": "「战意汹涌」期间，我方全体施放战技时消耗等同于自身当前生命值20%的生命值，并在施放战技后回复等同于自身生命上限20%的生命值。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/4244f368816859077607ad5d445e85e2.png",
+					"simple_desc_mi18m": "我方全体角色每次受到攻击或损失生命值时，使我方额外积累2点「战意值」。"
+				},
+				"score": "40000"
+			},
+			"maze_id": 20132,
+			"is_fast": false
+		},
+		{
+			"name": "自证预言其一",
+			"round_num": 2,
+			"star_num": 3,
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 23,
+					"hour": 15,
+					"minute": 14
+				},
+				"avatars": [
+					{
+						"id": 1401,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/88f25ad4d023e7ff26402647db1ecdf8.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1013,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/e31ca957f05def9960b0ef82aed816f0.png",
+						"rarity": 4,
+						"element": "ice",
+						"rank": 6
+					},
+					{
+						"id": 1303,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1222,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3031336,
+					"name_mi18n": "灵知",
+					"desc_mi18n": "「战意汹涌」期间，敌方目标受到的击破伤害提高30%，且处于【爆裂】状态的目标被任意单位消灭时会对相邻敌方目标造成10点无视弱点属性的削韧。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7eefa45bf6e4b03122057fdacceeae98.png",
+					"simple_desc_mi18m": "敌方目标的弱点被击破时，使我方额外积累3点「战意值」。"
+				},
+				"score": "40000"
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 4,
+					"day": 23,
+					"hour": 15,
+					"minute": 14
+				},
+				"avatars": [
+					{
+						"id": 1407,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fd8c0196c17d455650b854dcf7175baa.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 2
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1214,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/f109207212da667e40a4480baebd871b.png",
+						"rarity": 4,
+						"element": "quantum",
+						"rank": 6
+					},
+					{
+						"id": 1301,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/d680c706090155fd6fdf3ef693495c09.png",
+						"rarity": 4,
+						"element": "fire",
+						"rank": 6
+					}
+				],
+				"buff": {
+					"id": 3031337,
+					"name_mi18n": "神智",
+					"desc_mi18n": "「战意汹涌」期间，我方全体施放战技时消耗等同于自身当前生命值20%的生命值，并在施放战技后回复等同于自身生命上限20%的生命值。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/4244f368816859077607ad5d445e85e2.png",
+					"simple_desc_mi18m": "我方全体角色每次受到攻击或损失生命值时，使我方额外积累2点「战意值」。"
+				},
+				"score": "40000"
+			},
+			"maze_id": 20131,
+			"is_fast": false
+		}
+	],
+	"max_floor_id": 20134
+}
