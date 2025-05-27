@@ -7,6 +7,18 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
+// MARK: - AbyssReportView4HSR.TreasuresLightwardType
+
+extension AbyssReportView4HSR {
+    typealias TreasuresLightwardType = HoYo.AbyssReport4HSR.TreasuresLightwardType
+}
+
+extension AbyssReportView4HSR.TreasuresLightwardType {
+    public var asIcon: Image {
+        Image(iconFileNameStem, bundle: .module)
+    }
+}
+
 // MARK: - AbyssReportView4HSR
 
 public struct AbyssReportView4HSR: AbyssReportView {
@@ -21,8 +33,8 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     public typealias AbyssReportData = HoYo.AbyssReport4HSR
 
-    public static let navTitle = "hylKit.abyssReportView4HSR.navTitle.forgottenHall.long".i18nHYLKit
-    public static let navTitleTiny = "hylKit.abyssReportView4HSR.navTitle.forgottenHall".i18nHYLKit
+    public static let navTitle = "hylKit.abyssReportView4HSR.navTitle.treasuresLightward".i18nHYLKit
+    public static let navTitleTiny = "hylKit.abyssReportView4HSR.navTitle.treasuresLightward.tiny".i18nHYLKit
 
     public static var abyssIcon: Image { Image("hsr_abyss_ForgottenHall", bundle: .module) }
 
@@ -30,7 +42,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     public var body: some View {
         Form {
-            if fhData.hasData {
+            if data4FH.hasData {
                 contents
             } else {
                 blankView
@@ -38,6 +50,27 @@ public struct AbyssReportView4HSR: AbyssReportView {
         }
         .formStyle(.grouped)
         .scrollContentBackground(.hidden)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                let picker = Picker("".description, selection: $contentType.animation()) {
+                    ForEach(TreasuresLightwardType.allCases) { contentTypeCase in
+                        Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
+                    }
+                }
+                .labelsHidden()
+                ViewThatFits(in: .horizontal) {
+                    picker
+                        .pickerStyle(.segmented)
+                        .fixedSize()
+                    picker
+                        .pickerStyle(.menu)
+                        .fixedSize()
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
+                )
+            }
+        }
     }
 
     // MARK: Internal
@@ -56,71 +89,249 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     @ViewBuilder var stats: some View {
         Section {
-            LabeledContent {
-                Text(verbatim: fhData.maxFloorNumStr)
-            } label: {
-                Text("hylKit.abyssReport.hsr.stat.maxFloorConquered".i18nHYLKit)
-            }
-            LabeledContent {
-                Text(verbatim: fhData.starNum.description)
-            } label: {
-                Text("hylKit.abyssReport.hsr.stat.starsGained".i18nHYLKit)
-            }
-            LabeledContent {
-                Text(verbatim: fhData.battleNum.description)
-            } label: {
-                Text("hylKit.abyssReport.hsr.stat.numOfBattles".i18nHYLKit)
+            switch contentType {
+            case .forgottenHall:
+                LabeledContent {
+                    Text(verbatim: data4FH.maxFloorNumStr)
+                } label: {
+                    Text("hylKit.abyssReport.hsr.stat.maxFloorConquered".i18nHYLKit)
+                }
+                LabeledContent {
+                    Text(verbatim: data4FH.starNum.description)
+                } label: {
+                    Text("hylKit.abyssReport.hsr.stat.starsGained".i18nHYLKit)
+                }
+                LabeledContent {
+                    Text(verbatim: data4FH.battleNum.description)
+                } label: {
+                    Text("hylKit.abyssReport.hsr.stat.numOfBattles".i18nHYLKit)
+                }
+            case .pureFiction:
+                LabeledContent {
+                    Text(verbatim: data4PF.maxFloorNumStr)
+                } label: {
+                    Text("hylKit.abyssReport.hsr.stat.maxFloorConquered".i18nHYLKit)
+                }
+                LabeledContent {
+                    Text(verbatim: data4PF.starNum.description)
+                } label: {
+                    Text("hylKit.abyssReport.hsr.stat.starsGained".i18nHYLKit)
+                }
+                LabeledContent {
+                    Text(verbatim: data4PF.battleNum.description)
+                } label: {
+                    Text("hylKit.abyssReport.hsr.stat.numOfBattles".i18nHYLKit)
+                }
+            case .apocalypticShadow:
+                LabeledContent {
+                    Text(verbatim: data4AS.maxFloorNumStr)
+                } label: {
+                    Text("hylKit.abyssReport.hsr.stat.maxFloorConquered".i18nHYLKit)
+                }
+                LabeledContent {
+                    Text(verbatim: data4AS.starNum.description)
+                } label: {
+                    Text("hylKit.abyssReport.hsr.stat.starsGained".i18nHYLKit)
+                }
+                LabeledContent {
+                    Text(verbatim: data4AS.battleNum.description)
+                } label: {
+                    Text("hylKit.abyssReport.hsr.stat.numOfBattles".i18nHYLKit)
+                }
             }
         } header: {
             HStack {
                 Text("hylKit.abyssReport.hsr.stats.header".i18nHYLKit)
                 Spacer()
-                Text("hylKit.abyssReport.hsr.stat.seasonID".i18nHYLKit + " \(fhData.scheduleID)")
+                if contentType == .forgottenHall {
+                    Text("hylKit.abyssReport.hsr.stat.seasonID".i18nHYLKit + " \(data4FH.scheduleID)")
+                }
             }
         }
         .listRowMaterialBackground()
     }
 
     @ViewBuilder var floorList: some View {
-        ForEach(fhData.allFloorDetail.trimmed, id: \.mazeID) { floorData in
-            Section {
-                if floorData.isSkipped {
-                    Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
-                } else {
-                    ViewThatFits(in: .horizontal) {
-                        drawFloorInnerContents(floorData, vertical: false, hasLabel: true, hasSpacers: true)
-                        drawFloorInnerContents(floorData, vertical: false, hasLabel: true, hasSpacers: false)
-                        drawFloorInnerContents(floorData, vertical: false, hasLabel: false, hasSpacers: true)
-                        drawFloorInnerContents(floorData, vertical: false, hasLabel: false, hasSpacers: false)
-                        drawFloorInnerContents(floorData, vertical: true, hasLabel: true, hasSpacers: true)
-                        drawFloorInnerContents(floorData, vertical: true, hasLabel: true, hasSpacers: false)
-                        drawFloorInnerContents(floorData, vertical: true, hasLabel: false, hasSpacers: true)
-                        drawFloorInnerContents(floorData, vertical: true, hasLabel: false, hasSpacers: false)
+        switch contentType {
+        case .forgottenHall:
+            ForEach(data4FH.allFloorDetail.trimmed, id: \.mazeID) { floorData in
+                Section {
+                    if floorData.isSkipped {
+                        Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+                    } else {
+                        ViewThatFits(in: .horizontal) {
+                            drawFloorInnerContents4FH(floorData, vertical: false, hasLabel: true, hasSpacers: true)
+                            drawFloorInnerContents4FH(floorData, vertical: false, hasLabel: true, hasSpacers: false)
+                            drawFloorInnerContents4FH(floorData, vertical: false, hasLabel: false, hasSpacers: true)
+                            drawFloorInnerContents4FH(floorData, vertical: false, hasLabel: false, hasSpacers: false)
+                            drawFloorInnerContents4FH(floorData, vertical: true, hasLabel: true, hasSpacers: true)
+                            drawFloorInnerContents4FH(floorData, vertical: true, hasLabel: true, hasSpacers: false)
+                            drawFloorInnerContents4FH(floorData, vertical: true, hasLabel: false, hasSpacers: true)
+                            drawFloorInnerContents4FH(floorData, vertical: true, hasLabel: false, hasSpacers: false)
+                        }
+                        .padding(.vertical, 8)
                     }
-                    .padding(.vertical, 8)
-                }
-            } header: {
-                HStack {
-                    Text(
-                        "hylKit.abyssReport.floor.title:\(floorData.floorNumStr)",
-                        bundle: .module
-                    )
-                    Spacer()
-                    Text(verbatim: floorData.node1.challengeTime.description)
-                    HStack(spacing: 0) {
-                        ForEach(Array(repeating: 0, count: floorData.starNum), id: \.self) { _ in
-                            Self.drawAbyssStarIcon()
+                } header: {
+                    HStack {
+                        Text(
+                            "hylKit.abyssReport.floor.title:\(floorData.floorNumStr)",
+                            bundle: .module
+                        )
+                        Spacer()
+                        if let challengeTime = floorData.node1.challengeTime {
+                            Text(verbatim: challengeTime.description)
+                        }
+                        HStack(spacing: 0) {
+                            ForEach(Array(repeating: 0, count: floorData.starNum), id: \.self) { _ in
+                                Self.drawAbyssStarIcon()
+                            }
                         }
                     }
                 }
+                .listRowMaterialBackground()
             }
-            .listRowMaterialBackground()
+        case .pureFiction:
+            ForEach(data4PF.allFloorDetail.trimmed, id: \.mazeID) { floorData in
+                Section {
+                    if floorData.isSkipped {
+                        Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+                    } else {
+                        ViewThatFits(in: .horizontal) {
+                            drawFloorInnerContents4PF(floorData, vertical: false, hasLabel: true, hasSpacers: true)
+                            drawFloorInnerContents4PF(floorData, vertical: false, hasLabel: true, hasSpacers: false)
+                            drawFloorInnerContents4PF(floorData, vertical: false, hasLabel: false, hasSpacers: true)
+                            drawFloorInnerContents4PF(floorData, vertical: false, hasLabel: false, hasSpacers: false)
+                            drawFloorInnerContents4PF(floorData, vertical: true, hasLabel: true, hasSpacers: true)
+                            drawFloorInnerContents4PF(floorData, vertical: true, hasLabel: true, hasSpacers: false)
+                            drawFloorInnerContents4PF(floorData, vertical: true, hasLabel: false, hasSpacers: true)
+                            drawFloorInnerContents4PF(floorData, vertical: true, hasLabel: false, hasSpacers: false)
+                        }
+                        .padding(.vertical, 8)
+                    }
+                } header: {
+                    HStack {
+                        Text(
+                            "hylKit.abyssReport.floor.title:\(floorData.floorNumStr)",
+                            bundle: .module
+                        )
+                        Spacer()
+                        if let challengeTime = floorData.node1.challengeTime {
+                            Text(verbatim: challengeTime.description)
+                        }
+                        HStack(spacing: 0) {
+                            let starNumInt = floorData.starNum
+                            ForEach(Array(repeating: 0, count: starNumInt), id: \.self) { _ in
+                                Self.drawAbyssStarIcon()
+                            }
+                        }
+                    }
+                }
+                .listRowMaterialBackground()
+            }
+        case .apocalypticShadow:
+            ForEach(data4AS.allFloorDetail.trimmed, id: \.mazeID) { floorData in
+                Section {
+                    if floorData.isSkipped {
+                        Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+                    } else {
+                        ViewThatFits(in: .horizontal) {
+                            drawFloorInnerContents4AS(floorData, vertical: false, hasLabel: true, hasSpacers: true)
+                            drawFloorInnerContents4AS(floorData, vertical: false, hasLabel: true, hasSpacers: false)
+                            drawFloorInnerContents4AS(floorData, vertical: false, hasLabel: false, hasSpacers: true)
+                            drawFloorInnerContents4AS(floorData, vertical: false, hasLabel: false, hasSpacers: false)
+                            drawFloorInnerContents4AS(floorData, vertical: true, hasLabel: true, hasSpacers: true)
+                            drawFloorInnerContents4AS(floorData, vertical: true, hasLabel: true, hasSpacers: false)
+                            drawFloorInnerContents4AS(floorData, vertical: true, hasLabel: false, hasSpacers: true)
+                            drawFloorInnerContents4AS(floorData, vertical: true, hasLabel: false, hasSpacers: false)
+                        }
+                        .padding(.vertical, 8)
+                    }
+                } header: {
+                    HStack {
+                        Text(
+                            "hylKit.abyssReport.floor.title:\(floorData.floorNumStr)",
+                            bundle: .module
+                        )
+                        Spacer()
+                        if let challengeTime = floorData.node1.challengeTime {
+                            Text(verbatim: challengeTime.description)
+                        }
+                        HStack(spacing: 0) {
+                            let starNumInt = Int(floorData.starNum) ?? 0
+                            ForEach(Array(repeating: 0, count: starNumInt), id: \.self) { _ in
+                                Self.drawAbyssStarIcon()
+                            }
+                        }
+                    }
+                }
+                .listRowMaterialBackground()
+            }
         }
     }
 
     @ViewBuilder
-    func drawFloorInnerContents(
+    func drawFloorInnerContents4FH(
         _ floorData: HoYo.AbyssReport4HSR.FHFloorDetail,
+        vertical: Bool,
+        hasLabel: Bool,
+        hasSpacers: Bool
+    )
+        -> some View {
+        if floorData.isSkipped {
+            Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+        } else {
+            let theContent = Group {
+                drawBattleNode(
+                    floorData.node1,
+                    label: hasLabel ? "hylKit.abyssReport.floor.1stHalf".i18nHYLKit : ""
+                )
+                if hasSpacers, !vertical { Spacer() }
+                drawBattleNode(
+                    floorData.node2,
+                    label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
+                )
+            }
+            if vertical {
+                LazyVStack { theContent }
+            } else {
+                HStack { theContent }
+            }
+        }
+    }
+
+    @ViewBuilder
+    func drawFloorInnerContents4PF(
+        _ floorData: HoYo.AbyssReport4HSR.PFFloorDetail,
+        vertical: Bool,
+        hasLabel: Bool,
+        hasSpacers: Bool
+    )
+        -> some View {
+        if floorData.isSkipped {
+            Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+        } else {
+            let theContent = Group {
+                drawBattleNode(
+                    floorData.node1,
+                    label: hasLabel ? "hylKit.abyssReport.floor.1stHalf".i18nHYLKit : ""
+                )
+                if hasSpacers, !vertical { Spacer() }
+                drawBattleNode(
+                    floorData.node2,
+                    label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
+                )
+            }
+            if vertical {
+                LazyVStack { theContent }
+            } else {
+                HStack { theContent }
+            }
+        }
+    }
+
+    @ViewBuilder
+    func drawFloorInnerContents4AS(
+        _ floorData: HoYo.AbyssReport4HSR.ASFloorDetail,
         vertical: Bool,
         hasLabel: Bool,
         hasSpacers: Bool
@@ -208,9 +419,13 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     // MARK: Private
 
-    private var fhData: AbyssReportData.ForgottenHallData {
-        data.forgottenHall
-    }
+    @State private var contentType: TreasuresLightwardType = .forgottenHall
+
+    private var data4FH: AbyssReportData.ForgottenHallData { data.forgottenHall }
+
+    private var data4AS: AbyssReportData.ApocalypticShadowData { data.apocalypticShadow }
+
+    private var data4PF: AbyssReportData.PureFictionData { data.pureFiction }
 }
 
 #if DEBUG
