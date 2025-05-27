@@ -79,18 +79,18 @@ public struct AbyssReportNav: View {
                     NavigationLink(destination: data.asView.navigationTitle(navTitleTiny)) {
                         HStack(spacing: 10) {
                             let iconFrame: CGFloat = 40
-                            AbyssReportView4HSR.abyssIcon
+                            data.current.latestChallengeType?.asIcon
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: iconFrame, height: iconFrame)
-                            let fhData = data.current.forgottenHall
-                            if fhData.hasData {
+                            let latestChallenge = data.current.latestChallengeIntel
+                            if let latestChallenge {
                                 HStack(alignment: .lastTextBaseline) {
-                                    Text(verbatim: "\(fhData.maxFloorNumStr)")
+                                    Text(verbatim: "\(latestChallenge.deepestLevel)")
                                         .font(.title)
                                     HStack(alignment: .center, spacing: 2) {
                                         AbyssReportView4GI.drawAbyssStarIcon()
-                                        Text(verbatim: " \(fhData.starNum)")
+                                        Text(verbatim: " \(latestChallenge.totalStarsGained)")
                                             .font(.title3)
                                     }
                                 }
