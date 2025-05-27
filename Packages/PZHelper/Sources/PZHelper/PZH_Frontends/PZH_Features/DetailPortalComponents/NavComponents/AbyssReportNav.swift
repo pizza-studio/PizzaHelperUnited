@@ -83,13 +83,14 @@ public struct AbyssReportNav: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: iconFrame, height: iconFrame)
-                            if data.current.hasData {
+                            let fhData = data.current.forgottenHall
+                            if fhData.hasData {
                                 HStack(alignment: .lastTextBaseline) {
-                                    Text(verbatim: "\(data.current.maxFloorNumStr)")
+                                    Text(verbatim: "\(fhData.maxFloorNumStr)")
                                         .font(.title)
                                     HStack(alignment: .center, spacing: 2) {
                                         AbyssReportView4GI.drawAbyssStarIcon()
-                                        Text(verbatim: " \(data.current.starNum)")
+                                        Text(verbatim: " \(fhData.starNum)")
                                             .font(.title3)
                                     }
                                 }

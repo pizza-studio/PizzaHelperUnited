@@ -10,8 +10,8 @@ import PZBaseKit
 enum AbyssReportTestAssets: String {
     case giCurr = "abyssReport_sample_gi_curr"
     case giPrev = "abyssReport_sample_gi_prev"
-    case hsrCurr = "abyssReport_sample_hsr_curr"
-    case hsrPrev = "abyssReport_sample_hsr_prev"
+    case hsrCurr = "abyssReport_sample_hsr_fh_curr"
+    case hsrPrev = "abyssReport_sample_hsr_fh_prev"
 
     // MARK: Internal
 
@@ -32,7 +32,11 @@ enum AbyssReportTestAssets: String {
     }
 
     func getReport4HSR(isPrev: Bool = false) throws -> HoYo.AbyssReport4HSR {
-        try rawData.parseAs(HoYo.AbyssReport4HSR.self)
+        let fhData = try rawData.parseAs(HoYo.AbyssReport4HSR.ForgottenHallData.self)
+        let result = HoYo.AbyssReport4HSR(
+            forgottenHall: fhData
+        )
+        return result
     }
 }
 

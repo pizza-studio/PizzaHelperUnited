@@ -1926,7 +1926,7 @@
         }
       }
     },
-    "hylKit.abyssReportView4HSR.navTitle" : {
+    "hylKit.abyssReportView4HSR.navTitle.forgottenHall.long" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -2003,7 +2003,7 @@
         }
       }
     },
-    "hylKit.abyssReportView4HSR.navTitle.tiny" : {
+    "hylKit.abyssReportView4HSR.navTitle.forgottenHall" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {

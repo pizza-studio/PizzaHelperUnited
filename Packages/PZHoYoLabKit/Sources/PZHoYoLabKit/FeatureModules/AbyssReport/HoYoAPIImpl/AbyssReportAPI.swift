@@ -41,7 +41,7 @@ extension HoYo {
         for profile: PZProfileSendable, isPreviousRound: Bool = false
     ) async throws
         -> AbyssReport4HSR {
-        try await abyssReportData4HSR(
+        let fhData = try await abyssReportData4HSRForgottenHall(
             isPreviousRound: isPreviousRound,
             server: profile.server,
             uid: profile.uid,
@@ -49,6 +49,10 @@ extension HoYo {
             deviceFingerPrint: profile.deviceFingerPrint,
             deviceID: profile.deviceID
         )
+        let result = HoYo.AbyssReport4HSR(
+            forgottenHall: fhData
+        )
+        return result
     }
 }
 
@@ -97,7 +101,7 @@ extension HoYo {
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.AbyssReportData4GI()")
     }
 
-    private static func abyssReportData4HSR(
+    private static func abyssReportData4HSRForgottenHall(
         isPreviousRound: Bool = false,
         server: Server,
         uid: String,
@@ -105,7 +109,7 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> AbyssReport4HSR {
+        -> AbyssReport4HSR.ForgottenHallData {
         await HoYo.waitFor300ms()
         #if DEBUG
         print("||| START REQUESTING SPIRAL ABYSS DATA (HSR) |||")
