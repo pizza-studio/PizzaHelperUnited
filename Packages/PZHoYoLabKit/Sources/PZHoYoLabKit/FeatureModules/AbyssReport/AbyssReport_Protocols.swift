@@ -17,7 +17,7 @@ public protocol AbyssReportSet: AbleToCodeSendHash {
 
 // MARK: - AbyssReport
 
-public protocol AbyssReport: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
+public protocol AbyssReport: AbleToCodeSendHash {
     associatedtype ViewType: AbyssReportView where Self == ViewType.AbyssReportData
 }
 
