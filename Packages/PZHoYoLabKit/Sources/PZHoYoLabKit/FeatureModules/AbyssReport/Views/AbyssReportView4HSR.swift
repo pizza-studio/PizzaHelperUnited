@@ -218,7 +218,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
 #Preview {
     NavigationStack {
         AbyssReportView4HSR(
-            data: try! AbyssReportTestAssets.hsrCurr.getReport4HSR(),
+            data: try! AbyssReportTestAssets.getReport4HSR(),
             profile: nil
         ).formStyle(.grouped)
     }

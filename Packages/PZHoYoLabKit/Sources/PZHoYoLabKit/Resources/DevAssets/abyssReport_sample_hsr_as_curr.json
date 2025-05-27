@@ -1,0 +1,353 @@
+{
+	"groups": [
+		{
+			"schedule_id": 3009,
+			"begin_time": {
+				"year": 2025,
+				"month": 5,
+				"day": 26,
+				"hour": 4,
+				"minute": 0
+			},
+			"end_time": {
+				"year": 2025,
+				"month": 7,
+				"day": 7,
+				"hour": 4,
+				"minute": 0
+			},
+			"status": "New",
+			"name_mi18n": "冽风支配",
+			"upper_boss": {
+				"id": 100401401,
+				"name_mi18n": "无望冽风的幻灭者",
+				"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/3c28789ce4e81edf484e55002c2f4778.png"
+			},
+			"lower_boss": {
+				"id": 200401401,
+				"name_mi18n": "勾魂摄魄的支配者",
+				"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c2e6b95f422c5a62babbd2e00bb08a2.png"
+			}
+		},
+		{
+			"schedule_id": 3008,
+			"begin_time": {
+				"year": 2025,
+				"month": 4,
+				"day": 14,
+				"hour": 4,
+				"minute": 0
+			},
+			"end_time": {
+				"year": 2025,
+				"month": 5,
+				"day": 26,
+				"hour": 4,
+				"minute": 0
+			},
+			"status": "End",
+			"name_mi18n": "螟蝗战首",
+			"upper_boss": {
+				"id": 802501101,
+				"name_mi18n": "遮天蔽日的噬星蠹",
+				"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/a0a946f54a4db3d4fc03fe03d4b1a579.png"
+			},
+			"lower_boss": {
+				"id": 203401401,
+				"name_mi18n": "雷奔云谲的恶狼主",
+				"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/21865da151e17554db53a872a033d854.png"
+			}
+		}
+	],
+	"star_num": 12,
+	"max_floor": "冽风支配·难度04",
+	"battle_num": 11,
+	"has_data": true,
+	"all_floor_detail": [
+		{
+			"name": "冽风支配·难度04",
+			"star_num": "3",
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 5,
+					"day": 26,
+					"hour": 22,
+					"minute": 51
+				},
+				"avatars": [
+					{
+						"id": 1407,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fd8c0196c17d455650b854dcf7175baa.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 2
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1313,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/2f0937fd121b3b91dc6f3d343337c7ea.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0
+					},
+					{
+						"id": 1409,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/ee1588b1f4b69b6cf17d6c795a8d05f2.png",
+						"rarity": 5,
+						"element": "wind",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3111053,
+					"name_mi18n": "破晓之召",
+					"desc_mi18n": "忆灵的弱点击破效率提高50%，忆灵造成伤害时无视目标20%的防御力。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/109fe0c49ee3f394771133db21357cc7.png"
+				},
+				"score": "3740",
+				"boss_defeated": true
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 5,
+					"day": 26,
+					"hour": 22,
+					"minute": 56
+				},
+				"avatars": [
+					{
+						"id": 1317,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/cb016d7431ef1bcce33f92484b031b39.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0
+					},
+					{
+						"id": 1225,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/86bb244d0449fa3b9f88f9921d21a067.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 1
+					},
+					{
+						"id": 1303,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/fe294567c21ff52a23a200923a17ec11.png",
+						"rarity": 5,
+						"element": "ice",
+						"rank": 0
+					},
+					{
+						"id": 1222,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3111030,
+					"name_mi18n": "臻冰彻骨",
+					"desc_mi18n": "敌方全体受到的击破伤害提高10%。击破敌方弱点后，我方全体速度提高20%，持续2回合。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/109fe0c49ee3f394771133db21357cc7.png"
+				},
+				"score": "3403",
+				"boss_defeated": true
+			},
+			"maze_id": 30094,
+			"is_fast": false,
+			"last_update_time": {
+				"year": 2025,
+				"month": 5,
+				"day": 26,
+				"hour": 22,
+				"minute": 56
+			}
+		},
+		{
+			"name": "冽风支配·难度03",
+			"star_num": "3",
+			"node_1": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 5,
+					"day": 26,
+					"hour": 21,
+					"minute": 41
+				},
+				"avatars": [
+					{
+						"id": 1308,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/4de5041f65cfea8f871e1b5c106bce7e.png",
+						"rarity": 5,
+						"element": "lightning",
+						"rank": 2
+					},
+					{
+						"id": 1218,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7def381794e9c84cf84b975fbe8b68d2.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					},
+					{
+						"id": 1403,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/7c3ad3b03eacec105a15ea128266331e.png",
+						"rarity": 5,
+						"element": "quantum",
+						"rank": 0
+					},
+					{
+						"id": 1409,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/ee1588b1f4b69b6cf17d6c795a8d05f2.png",
+						"rarity": 5,
+						"element": "wind",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3111020,
+					"name_mi18n": "势如破竹",
+					"desc_mi18n": "造成的终结技伤害的暴击伤害提高30%，对处于弱点击破状态下的敌方目标额外提高30%。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/c14040df79267424b480a550dfdc533d.png"
+				},
+				"score": "3683",
+				"boss_defeated": true
+			},
+			"node_2": {
+				"challenge_time": {
+					"year": 2025,
+					"month": 5,
+					"day": 26,
+					"hour": 21,
+					"minute": 44
+				},
+				"avatars": [
+					{
+						"id": 1405,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/d18080b659103eabfeadd729b70af409.png",
+						"rarity": 5,
+						"element": "wind",
+						"rank": 0
+					},
+					{
+						"id": 1317,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/cb016d7431ef1bcce33f92484b031b39.png",
+						"rarity": 5,
+						"element": "imaginary",
+						"rank": 0
+					},
+					{
+						"id": 1309,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/28be9883a58efd0f69a48cfcc86b6652.png",
+						"rarity": 5,
+						"element": "physical",
+						"rank": 0
+					},
+					{
+						"id": 1222,
+						"level": 80,
+						"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/59cffd3385546f1a93ebf2268418de1f.png",
+						"rarity": 5,
+						"element": "fire",
+						"rank": 0
+					}
+				],
+				"buff": {
+					"id": 3111030,
+					"name_mi18n": "臻冰彻骨",
+					"desc_mi18n": "敌方全体受到的击破伤害提高10%。击破敌方弱点后，我方全体速度提高20%，持续2回合。",
+					"icon": "https://act-webstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_uf098c/109fe0c49ee3f394771133db21357cc7.png"
+				},
+				"score": "3676",
+				"boss_defeated": true
+			},
+			"maze_id": 30093,
+			"is_fast": false,
+			"last_update_time": {
+				"year": 2025,
+				"month": 5,
+				"day": 26,
+				"hour": 21,
+				"minute": 44
+			}
+		},
+		{
+			"name": "冽风支配·难度02",
+			"star_num": "3",
+			"node_1": {
+				"challenge_time": null,
+				"avatars": [],
+				"buff": null,
+				"score": "0",
+				"boss_defeated": false
+			},
+			"node_2": {
+				"challenge_time": null,
+				"avatars": [],
+				"buff": null,
+				"score": "0",
+				"boss_defeated": false
+			},
+			"maze_id": 30092,
+			"is_fast": true,
+			"last_update_time": {
+				"year": 2025,
+				"month": 5,
+				"day": 26,
+				"hour": 21,
+				"minute": 44
+			}
+		},
+		{
+			"name": "冽风支配·难度01",
+			"star_num": "3",
+			"node_1": {
+				"challenge_time": null,
+				"avatars": [],
+				"buff": null,
+				"score": "0",
+				"boss_defeated": false
+			},
+			"node_2": {
+				"challenge_time": null,
+				"avatars": [],
+				"buff": null,
+				"score": "0",
+				"boss_defeated": false
+			},
+			"maze_id": 30091,
+			"is_fast": true,
+			"last_update_time": {
+				"year": 2025,
+				"month": 5,
+				"day": 26,
+				"hour": 21,
+				"minute": 44
+			}
+		}
+	],
+	"max_floor_id": 30094
+}
