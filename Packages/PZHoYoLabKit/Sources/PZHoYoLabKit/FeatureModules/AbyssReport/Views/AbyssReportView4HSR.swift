@@ -24,7 +24,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
     public static let navTitle = "hylKit.abyssReportView4HSR.navTitle".i18nHYLKit
     public static let navTitleTiny = "hylKit.abyssReportView4HSR.navTitle.tiny".i18nHYLKit
 
-    public static var abyssIcon: Image { Image("hsr_abyss", bundle: .module) }
+    public static var abyssIcon: Image { Image("hsr_abyss_ForgottenHall", bundle: .module) }
 
     public var data: AbyssReportData
 
