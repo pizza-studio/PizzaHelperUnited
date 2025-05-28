@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
 import Defaults
 import Foundation
 import PZBaseKit
@@ -89,7 +88,10 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     @ViewBuilder var textFieldView: some View {
         TextField("UID".description, text: $givenUID)
             .focused(focused ?? $backupFocus)
-            .onReceive(Just(givenUID)) { _ in formatText() }
+            .onChange(of: givenUID) { oldValue, newValue in
+                guard oldValue != newValue else { return }
+                formatText()
+            }
         #if !os(macOS) && !targetEnvironment(macCatalyst)
             .keyboardType(.numberPad)
         #endif
