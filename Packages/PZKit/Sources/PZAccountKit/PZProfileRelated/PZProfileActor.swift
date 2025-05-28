@@ -264,3 +264,22 @@ extension PZProfileActor {
         return true
     }
 }
+
+// MARK: - DeviceFP Propagation.
+
+extension PZProfileActor {
+    /// This only works with Miyoushe UIDs.
+    public func propagateDeviceFingerprint(_ fingerprint: String) throws {
+        guard !fingerprint.isEmpty else { return }
+        let existingMOs = (try modelContext.fetch(FetchDescriptor<PZProfileMO>()))
+        try modelContext.transaction {
+            existingMOs.forEach { currentMO in
+                switch currentMO.server.region {
+                case .hoyoLab: return
+                case .miyoushe:
+                    currentMO.deviceFingerPrint = fingerprint
+                }
+            }
+        }
+    }
+}
