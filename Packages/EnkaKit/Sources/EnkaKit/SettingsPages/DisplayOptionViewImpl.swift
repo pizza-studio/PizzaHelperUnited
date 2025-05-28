@@ -4,7 +4,6 @@
 
 /// 这里只给选项，所以只给出 Sections 就可以了。用的时候塞到 Form 里面即可。
 
-import Combine
 import Defaults
 import PZBaseKit
 import SwiftUI
@@ -26,7 +25,8 @@ extension Enka {
                         TextField(
                             "settings.display.customizingNameForKunikuzushi.currentValueLabel".i18nEnka,
                             text: $customizedNameForWanderer
-                        ).onReceive(Just(customizedNameForWanderer)) { _ in
+                        ).onChange(of: customizedNameForWanderer) { oldValue, newValue in
+                            guard oldValue != newValue else { return }
                             limitText(20)
                         }
                         Button {
