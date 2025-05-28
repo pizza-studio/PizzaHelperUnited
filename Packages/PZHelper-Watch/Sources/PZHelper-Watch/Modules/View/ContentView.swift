@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import Combine
 import Defaults
 import PZAccountKit
 import PZBaseKit
@@ -10,10 +9,6 @@ import SFSafeSymbols
 import SwiftData
 import SwiftUI
 import WidgetKit
-
-// MARK: - ContentView
-
-private let refreshSubject: PassthroughSubject<Void, Never> = .init()
 
 // MARK: - ContentView
 
@@ -55,7 +50,7 @@ public struct ContentView: View {
                 }
                 .listStyle(.carousel)
                 .refreshable {
-                    refreshSubject.send(())
+                    broadcaster.refreshPage()
                 }
             }
         }
@@ -94,6 +89,7 @@ public struct ContentView: View {
     // MARK: Private
 
     @StateObject private var connectivityManager = AppleWatchSputnik.shared
+    @StateObject private var broadcaster = Broadcaster.shared
 }
 
 // MARK: - DetailNavigator
@@ -155,7 +151,7 @@ private struct DetailNavigator: View {
                 ProgressView()
             }
         }
-        .onReceive(refreshSubject) { _ in
+        .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
             dailyNoteViewModel.getDailyNoteUncheck()
         }
         .onAppear {
@@ -169,4 +165,5 @@ private struct DetailNavigator: View {
     // MARK: Private
 
     @StateObject private var dailyNoteViewModel: DailyNoteViewModel
+    @StateObject private var broadcaster = Broadcaster.shared
 }
