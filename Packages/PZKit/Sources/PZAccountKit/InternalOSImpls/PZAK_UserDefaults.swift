@@ -31,6 +31,11 @@ extension Defaults.Keys {
         default: true,
         suite: .standard
     )
+    public static let recentlyPropagatedDeviceFingerprint = Key<String>(
+        "recentlyPropagatedDeviceFingerprint",
+        default: "",
+        suite: .standard
+    )
     public static let pzProfiles = Key<[String: PZProfileSendable]>(
         "pzProfiles",
         default: [:],
