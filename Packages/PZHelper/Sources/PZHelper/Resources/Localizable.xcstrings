@@ -12879,6 +12879,158 @@
         }
       }
     },
+    "settings.profile.advanced.fingerprintPropagation.buttonTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propagieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propagate"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propagar"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propagate"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propager"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propaga"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "端末指紋を一括適用する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전파"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Распространить"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lan Truyền"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "统配指纹"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "統配指紋"
+          }
+        }
+      }
+    },
+    "settings.profile.advanced.fingerprintPropagation.footer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokale Profile, die für von Miyoushe verwaltete UIDs konfiguriert sind, sollten denselben Gerätefingerabdruck (x-rpc-device_fp) verwenden, um eine konsistente Identifizierung zu gewährleisten. Klicken Sie auf die Schaltfläche „Propagieren“, um denselben Gerätefingerabdruck auf alle derartigen lokalen Profile anzuwenden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local profiles configured for Miyoushe-managed UIDs are recommended to use the same device fingerprint (x-rpc-device_fp) to ensure consistent identification. Click “Propagate” button to apply the same device fingerprint to all such local profiles."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los perfiles locales configurados para los UID gestionados por Miyoushe deben usar la misma huella de dispositivo (x-rpc-device_fp) para garantizar una identificación coherente. Haz clic en el botón “Propagar” para aplicar la misma huella de dispositivo a todos los perfiles locales de este tipo."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang mga lokal na profile na na-configure para sa mga UID na pinamamahalaan ng Miyoushe ay inirerekomenda na gumamit ng parehong device fingerprint (x-rpc-device_fp) upang matiyak ang pare-parehong pagkakakilanlan. I-click ang pindutang “Propagate” upang ilapat ang parehong device fingerprint sa lahat ng naturang lokal na profile."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les profils locaux configurés pour les UID gérés par Miyoushe doivent utiliser le même empreinte de dispositif (x-rpc-device_fp) pour garantir une identification cohérente. Cliquez sur le bouton « Propager » pour appliquer la même empreinte de dispositif à tous ces profils locaux."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I profili locali configurati per gli UID gestiti da Miyoushe devono utilizzare lo stesso identificativo di dispositivo (x-rpc-device_fp) per garantire un’identificazione coerente. Fai clic sul pulsante “Propaga” per applicare lo stesso identificativo di dispositivo a tutti i profili locali di questo tipo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社が管理するUID用に設定されたローカルプロファイルは、一貫した識別を確保するために同じ端末指紋（x-rpc-device_fp）を使用することが推奨されます。「端末指紋を一括適用する」ボタンをクリックして、すべてのそのようなローカルプロファイルに同じ端末指紋を適用します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miyoushe가 관리하는 UID로 구성된 로컬 프로필은 일관된 식별을 보장하기 위해 동일한 디바이스 지문(x-rpc-device_fp)을 사용하는 것이 좋습니다. “전파” 버튼을 클릭하여 모든 해당 로컬 프로필에 동일한 디바이스 지문을 적용하세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Локальные профили, настроенные для UID, управляемых Miyoushe, рекомендуется использовать с одинаковым отпечатком устройства (x-rpc-device_fp) для обеспечения согласованной идентификации. Нажмите кнопку «Распространить», чтобы применить одинаковый отпечаток устройства ко всем таким локальным профилям."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Các hồ sơ cục bộ được cấu hình cho các UID do Miyoushe quản lý nên sử dụng cùng một dấu vân tay thiết bị (x-rpc-device_fp) để đảm bảo nhận dạng nhất quán. Nhấp vào nút “Lan truyền” để áp dụng cùng một dấu vân tay thiết bị cho tất cả các hồ sơ cục bộ như vậy."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "为米游社管理的UID设定的本地账号建议使用相同的设备指纹（x-rpc-device_fp）以确保认证一致。点击「统配指纹」按钮将相同的设备指纹应用于所有此类本地账号。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "為米遊社管理的UID設定的本機帳號建議使用相同的設備指紋（x-rpc-device_fp）以確保認證一致。點擊「統配指紋」按鈕將相同的設備指紋應用於所有此類本機帳號。"
+          }
+        }
+      }
+    },
     "settings.profile.advanced.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -9,4 +9,5 @@ import Observation
 final class AlertToastEventStatus: ObservableObject {
     public var isProfileTaskSucceeded = false
     public var isFailureSituationTriggered = false
+    public var isDeviceFPPropagationSucceeded = false
 }
