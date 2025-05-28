@@ -41,6 +41,16 @@ struct PFMgrAdvancedOptionsView: View {
                     bundle: .module
                 )
             }
+            .alert(
+                "settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper,
+                isPresented: $alertPresented
+            ) {
+                Button("sys.ok".i18nBaseKit) {
+                    exit(0)
+                }
+            } message: {
+                Text("settings.profile.advanced.dbSaveLocation.restartRequired.description", bundle: .module)
+            }
 
             Section {
                 Toggle(isOn: $automaticallyDeduplicatePZProfiles) {
@@ -54,16 +64,6 @@ struct PFMgrAdvancedOptionsView: View {
         .formStyle(.grouped)
         .navigationTitle(Self.navTitle)
         .navBarTitleDisplayMode(.large)
-        .alert(
-            "settings.disclaimer.requiringAppRebootToApplySettings".i18nPZHelper,
-            isPresented: $alertPresented
-        ) {
-            Button("sys.ok".i18nBaseKit) {
-                exit(0)
-            }
-        } message: {
-            Text("settings.profile.advanced.dbSaveLocation.restartRequired.description", bundle: .module)
-        }
     }
 
     // MARK: Private
