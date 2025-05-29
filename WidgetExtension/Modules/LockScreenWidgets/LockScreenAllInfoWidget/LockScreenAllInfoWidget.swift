@@ -279,7 +279,7 @@ struct LockScreenAllInfoWidgetView: View {
                                 }
                             }
                         }
-                    case let data as GeneralNote4GI:
+                    case let data as FullNote4GI:
                         GridRow(alignment: .lastTextBaseline) {
                             Label {
                                 let day = Calendar.gregorian.dateComponents(

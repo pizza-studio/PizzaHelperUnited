@@ -46,7 +46,7 @@ struct DetailInfo: View {
                     ExpeditionInfoBar(dailyNote: dailyNote)
                 }
 
-                if let dailyNote = dailyNote as? GeneralNote4GI {
+                if let dailyNote = dailyNote as? FullNote4GI {
                     if dailyNote.transformerInfo.obtained, viewConfig.showTransformer {
                         GITransformerInfoBar(transformerInfo: dailyNote.transformerInfo)
                     }

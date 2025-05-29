@@ -4,10 +4,10 @@
 
 import Foundation
 
-// MARK: - RealtimeNote4HSR
+// MARK: - FullNote4HSR
 
 /// Daily note data from widget api.
-public struct RealtimeNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
+public struct FullNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
@@ -40,15 +40,15 @@ public struct RealtimeNote4HSR: DecodableFromMiHoYoAPIJSONResult, Note4HSR {
 
 // MARK: - Example
 
-extension RealtimeNote4HSR {
-    public static func exampleData() -> RealtimeNote4HSR {
+extension FullNote4HSR {
+    public static func exampleData() -> FullNote4HSR {
         let exampleURL = Bundle.module.url(
             forResource: "hsr_realtime_note_example_miyoushe", withExtension: "json"
         )!
         // swiftlint:disable force_try
         // swiftlint:disable force_unwrapping
         let exampleData = try! Data(contentsOf: exampleURL)
-        return try! RealtimeNote4HSR.decodeFromMiHoYoAPIJSONResult(
+        return try! FullNote4HSR.decodeFromMiHoYoAPIJSONResult(
             data: exampleData, debugTag: "GeneralNote4HSR.exampleData()"
         )
         // swiftlint:enable force_try

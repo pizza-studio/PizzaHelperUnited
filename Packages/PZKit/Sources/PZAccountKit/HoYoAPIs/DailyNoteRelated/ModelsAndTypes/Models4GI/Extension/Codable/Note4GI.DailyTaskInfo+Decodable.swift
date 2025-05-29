@@ -6,7 +6,7 @@
 
 // MARK: Decodable
 
-extension GeneralNote4GI.DailyTaskInfo4GI: Decodable {
+extension FullNote4GI.DailyTaskInfo4GI: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 

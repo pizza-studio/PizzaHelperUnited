@@ -8,7 +8,7 @@ import Foundation
 
 // MARK: Decodable
 
-extension GeneralNote4GI.TransformerInfo4GI: Decodable {
+extension FullNote4GI.TransformerInfo4GI: Decodable {
     public init(from decoder: Decoder) throws {
         let basicContainer = try decoder.container(keyedBy: BasicCodingKeys.self)
         let container = try basicContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .transformer)
