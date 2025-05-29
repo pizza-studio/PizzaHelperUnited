@@ -11,7 +11,7 @@ import SwiftUI
 struct GITrounceBlossomInfoBar: View {
     // MARK: Lifecycle
 
-    init(weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI) {
+    init(weeklyBossesInfo: FullNote4GI.WeeklyBossesInfo4GI) {
         self.weeklyBossesInfo = weeklyBossesInfo
     }
 
@@ -42,7 +42,7 @@ struct GITrounceBlossomInfoBar: View {
 
     // MARK: Private
 
-    private let weeklyBossesInfo: GeneralNote4GI.WeeklyBossesInfo4GI
+    private let weeklyBossesInfo: FullNote4GI.WeeklyBossesInfo4GI
 
     @ViewBuilder private var isWeeklyBossesFinishedImage: some View {
         let current = weeklyBossesInfo.totalResinDiscount - weeklyBossesInfo.remainResinDiscount

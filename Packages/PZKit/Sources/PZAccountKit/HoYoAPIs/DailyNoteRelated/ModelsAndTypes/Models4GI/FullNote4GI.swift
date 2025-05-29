@@ -5,9 +5,9 @@
 import Foundation
 import PZBaseKit
 
-// MARK: - GeneralNote4GI
+// MARK: - FullNote4GI
 
-public struct GeneralNote4GI: Note4GI {
+public struct FullNote4GI: Note4GI {
     public struct DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI, Sendable {
         public let totalTaskCount: Int
         public let finishedTaskCount: Int
@@ -74,18 +74,18 @@ public struct GeneralNote4GI: Note4GI {
     public let homeCoinInfo: HomeCoinInfo4GI
 }
 
-extension GeneralNote4GI {
-    public static func exampleData() -> GeneralNote4GI {
+extension FullNote4GI {
+    public static func exampleData() -> FullNote4GI {
         let exampleURL = Bundle.module.url(forResource: "gi_general_note_example", withExtension: "json")!
         let exampleData = try! Data(contentsOf: exampleURL)
-        return try! GeneralNote4GI.decodeFromMiHoYoAPIJSONResult(
+        return try! FullNote4GI.decodeFromMiHoYoAPIJSONResult(
             data: exampleData,
-            debugTag: "GeneralNote4GI.exampleData()"
+            debugTag: "FullNote4GI.exampleData()"
         )
     }
 }
 
-extension GeneralNote4GI.TransformerInfo4GI {
+extension FullNote4GI.TransformerInfo4GI {
     public var percentage: Double {
         let seconds = recoveryTime.timeIntervalSince1970 - Date.now.timeIntervalSince1970
         // 冷却时间是六天 22 小时。Ref: https://genshin-impact.fandom.com/wiki/Parametric_Transformer

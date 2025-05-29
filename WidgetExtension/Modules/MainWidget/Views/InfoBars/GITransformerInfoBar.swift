@@ -13,7 +13,7 @@ import SwiftUI
 struct GITransformerInfoBar: View {
     // MARK: Lifecycle
 
-    init(transformerInfo: GeneralNote4GI.TransformerInfo4GI) {
+    init(transformerInfo: FullNote4GI.TransformerInfo4GI) {
         self.transformerInfo = transformerInfo
     }
 
@@ -61,7 +61,7 @@ struct GITransformerInfoBar: View {
 
     // MARK: Private
 
-    private let transformerInfo: GeneralNote4GI.TransformerInfo4GI
+    private let transformerInfo: FullNote4GI.TransformerInfo4GI
 
     @ViewBuilder private var isTransformerCompleteImage: some View {
         (transformerInfo.isAvailable)

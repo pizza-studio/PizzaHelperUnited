@@ -8,7 +8,7 @@ import Foundation
 
 // MARK: Decodable
 
-extension GeneralNote4GI.HomeCoinInfo4GI: Decodable {
+extension FullNote4GI.HomeCoinInfo4GI: Decodable {
     private enum CodingKeys: String, CodingKey {
         case maxHomeCoin = "max_home_coin"
         case currentHomeCoin = "current_home_coin"

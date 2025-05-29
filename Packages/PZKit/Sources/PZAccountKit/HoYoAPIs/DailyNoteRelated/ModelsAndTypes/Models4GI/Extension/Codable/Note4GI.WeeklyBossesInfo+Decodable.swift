@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-extension GeneralNote4GI.WeeklyBossesInfo4GI: Decodable {
+extension FullNote4GI.WeeklyBossesInfo4GI: Decodable {
     private enum CodingKeys: String, CodingKey {
         case totalResinDiscount = "resin_discount_num_limit"
         case remainResinDiscount = "remain_resin_discount_num"
