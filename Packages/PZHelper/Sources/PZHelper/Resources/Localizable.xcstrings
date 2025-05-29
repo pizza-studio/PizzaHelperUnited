@@ -2928,79 +2928,79 @@
         }
       }
     },
-    "profile.label.fp.extraNotice.zzz" : {
+    "profile.label.fp.extraNotice.deviceFP" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Zenless Zone Zero UIDs, die von Miyoushe verwaltet werden, erfordern, dass der Benutzer seinen Gerätefingerabdruck manuell ausfüllt."
+            "value" : "⚠︎ UIDs, die von Miyoushe verwaltet werden, erfordern möglicherweise, dass der Benutzer seinen Gerätefingerabdruck manuell ausfüllt, um zusätzliche Informationen anzuzeigen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Zenless Zone Zero UIDs governed by Miyoushe require the user to manually fill in his / her device fingerprint by himself / herself."
+            "value" : "⚠︎ UIDs governed by Miyoushe might need the user to manually fill in his / her device fingerprint by himself / herself in order to show some extra information."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Los UIDs de Zenless Zone Zero gestionados por Miyoushe requieren que el usuario complete manualmente la huella digital de su dispositivo por sí mismo."
+            "value" : "⚠︎ Los UIDs gestionados por Miyoushe podrían requerir que el usuario complete manualmente la huella digital de su dispositivo por sí mismo para mostrar información adicional."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Ang mga Zenless Zone Zero UID na pinamamahalaan ng Miyoushe ay nangangailangan na manu-manong punan ng user ang fingerprint ng kanyang device."
+            "value" : "⚠︎ Ang mga UID na pinamamahalaan ng Miyoushe ay maaaring mangailangan na manu-manong punan ng user ang fingerprint ng kanyang device upang magpakita ng karagdagang impormasyon."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Les UIDs de Zenless Zone Zero gérés par Miyoushe nécessitent que l'utilisateur remplisse manuellement les informations de son appareil lui-même."
+            "value" : "⚠︎ Les UIDs gérés par Miyoushe peuvent nécessiter que l'utilisateur remplisse manuellement les informations de son appareil lui-même afin d'afficher des informations supplémentaires."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Gli UIDs di Zenless Zone Zero gestiti da Miyoushe richiedono che l'utente inserisca manualmente l'impronta digitale del suo dispositivo."
+            "value" : "⚠︎ Gli UIDs gestiti da Miyoushe potrebbero richiedere che l'utente inserisca manualmente l'impronta digitale del suo dispositivo per mostrare informazioni aggiuntive."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ 米遊社の下に管理されていたゼンレスゾンゼロのUIDをご使用の場合、ご自分でデバイス指紋をご記入くださいませ。"
+            "value" : "⚠︎ 該当プロファイルのUIDは米遊社在籍の場合、追加情報を表示するために、ご自分で備えたデバイス指紋のご記入が要する場合はございます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Miyoushe에서 관리하는 Zenless Zone Zero UID는 사용자가 자신의 장치 지문을 수동으로 입력해야 합니다."
+            "value" : "⚠︎ Miyoushe에서 관리하는 UID는 추가 정보를 표시하기 위해 사용자가 자신의 장치 지문을 수동으로 입력해야 할 수도 있습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Идентификаторы Zenless Zone Zero, управляемые Miyoushe, требуют от пользователя самостоятельно указывать отпечаток устройства."
+            "value" : "⚠︎ Идентификаторы, управляемые Miyoushe, могут потребовать от пользователя самостоятельно указать отпечаток устройства, чтобы отобразить дополнительную информацию."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Các UID Zenless Zone Zero do Miyoushe quản lý yêu cầu người dùng tự điền dấu vân tay thiết bị của mình."
+            "value" : "⚠︎ Các UID do Miyoushe quản lý có thể yêu cầu người dùng tự điền dấu vân tay thiết bị của mình để hiển thị thêm thông tin."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ 受米游社管辖的绝区零 UID 需要用户自备设备指纹。"
+            "value" : "⚠︎ 受米游社管辖的 UID 可能需要用户手动填写自备的设备指纹以显示额外信息。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ 如果您的絕區零 UID 受米游社管轄的話，您需要自備設備指紋。"
+            "value" : "⚠︎ 受米游社管轄的 UID 可能需要使用者手動填寫自備的設備指紋以顯示額外資訊。"
           }
         }
       }

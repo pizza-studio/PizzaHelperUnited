@@ -82,9 +82,8 @@ struct ProfileConfigViewContents: View {
     }
 
     @ViewBuilder private var warningAboutDeviceFP: some View {
-        if profile.game == .zenlessZone, case .miyoushe = profile.server.region {
-            Text("profile.label.fp.extraNotice.zzz".i18nPZHelper)
-                .foregroundStyle(.orange)
+        if case .miyoushe = profile.server.region {
+            Text("profile.label.fp.extraNotice.deviceFP".i18nPZHelper)
         }
     }
 }
