@@ -117,7 +117,7 @@ It is recommended to log in again with the corresponding local profile. This pro
 
 Check if the UID corresponds to the server you selected (note: this refers to the Genshin Impact / Star Rail / Zenless Zone Zero UID, not the miHoYo / HoYoVerse Passport ID Number of your Miyoushe / HoYoLAB account). If you can't resolve the issue, please report it to us. Since version 5.0, The Pizza Helper will automatically attempt to determine the server when entering the UID in the local profile management screen.
 
-#### Q: How to prepare device fingerprints for a Zenless Zone Zero UID governed by Miyoushe?
+#### Q: How to prepare device fingerprints for UIDs governed by Miyoushe?
 
 (This question is irrelevant to those UIDs governed by HoYoLAB.)
 
