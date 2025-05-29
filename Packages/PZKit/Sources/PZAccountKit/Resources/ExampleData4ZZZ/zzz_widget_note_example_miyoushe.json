@@ -1,0 +1,57 @@
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "energy": {
+      "progress": { "max": 240, "current": 240 },
+      "restore": 0,
+      "day_type": 0,
+      "hour": 0,
+      "minute": 0
+    },
+    "vitality": { "max": 400, "current": 0 },
+    "vhs_sale": { "sale_state": "SaleStateDone" },
+    "card_sign": "CardSignNo",
+    "bounty_commission": null,
+    "survey_points": null,
+    "vitality_refresh": 23272,
+    "abyss_refresh": 0,
+    "s2_bounty_commission": null,
+    "has_signed": false,
+    "sign_url": "https://act.mihoyo.com/bbs/event/signin/zzz/e202406242138391.html?act_id=e202406242138391\u0026mhy_auth_required=true\u0026mhy_presentation_style=fullscreen\u0026utm_source=h5\u0026utm_medium=zzz\u0026utm_campaign=zj",
+    "weekly_task": null,
+    "is_switch_new": true,
+    "note_list": [
+      {
+        "name": "刮刮卡",
+        "name_color": "CBCBCB",
+        "value": "未完成",
+        "value_color": "FFEA00",
+        "value_highlight": true
+      },
+      {
+        "name": "录像店经营",
+        "name_color": "CBCBCB",
+        "value": "待结算",
+        "value_color": "FFEA00",
+        "value_highlight": true
+      },
+      {
+        "name": "悬赏委托",
+        "name_color": "CBCBCB",
+        "value": "未解锁",
+        "value_color": "FFFFFF",
+        "value_highlight": false
+      },
+      {
+        "name": "丽都周纪积分",
+        "name_color": "CBCBCB",
+        "value": "未解锁",
+        "value_color": "FFFFFF",
+        "value_highlight": false
+      }
+    ],
+    "home_url": "https://act.mihoyo.com/app/mihoyo-zzz-game-record/m.html?mhy_presentation_style=fullscreen",
+    "note_url": "https://act.mihoyo.com/app/mihoyo-zzz-game-record/m.html?mhy_presentation_style=fullscreen"
+  }
+}
