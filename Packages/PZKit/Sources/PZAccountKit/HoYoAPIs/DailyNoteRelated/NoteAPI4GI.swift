@@ -29,16 +29,16 @@ extension HoYo {
         -> any Note4GI {
         switch server.region {
         case .miyoushe:
+            let firstResult = try? await fullNote4GI(
+                uidWithGame: uidWithGame,
+                server: server,
+                uid: uid,
+                cookie: cookie,
+                deviceFingerPrint: deviceFingerPrint,
+                deviceID: deviceID
+            )
+            if let firstResult { return firstResult }
             if cookie.contains("stoken=v2_") {
-                let firstResult = try? await generalNote4GI(
-                    uidWithGame: uidWithGame,
-                    server: server,
-                    uid: uid,
-                    cookie: cookie,
-                    deviceFingerPrint: deviceFingerPrint,
-                    deviceID: deviceID
-                )
-                if let firstResult { return firstResult }
                 return try await widgetNote4GI(
                     uidWithGame: uidWithGame,
                     cookie: cookie,
@@ -49,7 +49,7 @@ extension HoYo {
                 throw MiHoYoAPIError.sTokenV2InvalidOrMissing
             }
         case .hoyoLab:
-            return try await generalNote4GI(
+            return try await fullNote4GI(
                 uidWithGame: uidWithGame,
                 server: server,
                 uid: uid,
@@ -60,7 +60,7 @@ extension HoYo {
         }
     }
 
-    static func generalNote4GI(
+    static func fullNote4GI(
         uidWithGame: String,
         server: Server,
         uid: String,
@@ -68,7 +68,7 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> GeneralNote4GI {
+        -> FullNote4GI {
         let queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
             .init(name: "server", value: server.rawValue),
@@ -94,8 +94,8 @@ extension HoYo {
         )
 
         let data = try await request.serializingData().value
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.generalNote4GI()") {
-            GeneralNote4GI.CacheSputnik.cache(data, uidWithGame: uidWithGame)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.fullNote4GI()") {
+            FullNote4GI.CacheSputnik.cache(data, uidWithGame: uidWithGame)
         }
     }
 

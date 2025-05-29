@@ -11,12 +11,12 @@ extension PZProfileSendable {
         handleCachedResults: if returnCachedResult {
             let possibleResult: DailyNoteProtocol? = switch game {
             case .genshinImpact:
-                DailyNoteCacheSputnik<GeneralNote4GI>.getCache(
+                DailyNoteCacheSputnik<FullNote4GI>.getCache(
                     uidWithGame: uidWithGame
                 ) ?? DailyNoteCacheSputnik<WidgetNote4GI>.getCache(
                     uidWithGame: uidWithGame
                 )
-            case .starRail: DailyNoteCacheSputnik<RealtimeNote4HSR>.getCache(uidWithGame: uidWithGame)
+            case .starRail: DailyNoteCacheSputnik<FullNote4HSR>.getCache(uidWithGame: uidWithGame)
             case .zenlessZone: DailyNoteCacheSputnik<Note4ZZZ>.getCache(uidWithGame: uidWithGame)
             }
             guard let possibleResult else { break handleCachedResults }
@@ -54,8 +54,8 @@ extension Pizza.SupportedGame {
 
     public var exampleDailyNoteData: DailyNoteProtocol {
         switch self {
-        case .genshinImpact: GeneralNote4GI.exampleData()
-        case .starRail: RealtimeNote4HSR.exampleData()
+        case .genshinImpact: FullNote4GI.exampleData()
+        case .starRail: FullNote4HSR.exampleData()
         case .zenlessZone: Note4ZZZ.exampleData()
         }
     }
@@ -142,7 +142,7 @@ extension DailyNoteProtocol {
     /// DailyNoteProtocol: Expedition
     public var expeditionTasks: [any ExpeditionTask] {
         switch self {
-        case let dailyNote as GeneralNote4GI: dailyNote.expeditionInfo.expeditions
+        case let dailyNote as FullNote4GI: dailyNote.expeditionInfo.expeditions
         case let dailyNote as WidgetNote4GI: dailyNote.expeditionInfo.expeditions
         case let dailyNote as Note4HSR: dailyNote.assignmentInfo.assignments
         case _ as Note4ZZZ: []
@@ -245,7 +245,7 @@ extension DailyNoteProtocol {
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: SimulatedUniverse, Star Rail Only
     public var simulatedUniverseIntel: SimuUnivInfo4HSR? {
-        (self as? RealtimeNote4HSR)?.simulatedUniverseInfo
+        (self as? FullNote4HSR)?.simulatedUniverseInfo
     }
 }
 
@@ -253,8 +253,8 @@ extension DailyNoteProtocol {
 
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: ParametricTransformer, Genshin Impact Only
-    public var parametricTransformerIntel: GeneralNote4GI.TransformerInfo4GI? {
-        (self as? GeneralNote4GI)?.transformerInfo
+    public var parametricTransformerIntel: FullNote4GI.TransformerInfo4GI? {
+        (self as? FullNote4GI)?.transformerInfo
     }
 }
 
@@ -262,8 +262,8 @@ extension DailyNoteProtocol {
 
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: WeeklyBossesResinDiscounts, Genshin Impact Only
-    public var trounceBlossomIntel: GeneralNote4GI.WeeklyBossesInfo4GI? {
-        (self as? GeneralNote4GI)?.weeklyBossesInfo
+    public var trounceBlossomIntel: FullNote4GI.WeeklyBossesInfo4GI? {
+        (self as? FullNote4GI)?.weeklyBossesInfo
     }
 }
 
@@ -272,7 +272,7 @@ extension DailyNoteProtocol {
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: HSR Echo-of-War Weekly Attempts, Star Rail Only
     public var echoOfWarIntel: EchoOfWarInfo4HSR? {
-        (self as? RealtimeNote4HSR)?.echoOfWarCostStatus
+        (self as? FullNote4HSR)?.echoOfWarCostStatus
     }
 }
 

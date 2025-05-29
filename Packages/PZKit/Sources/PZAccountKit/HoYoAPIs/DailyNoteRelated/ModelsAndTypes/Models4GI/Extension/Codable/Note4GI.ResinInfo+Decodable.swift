@@ -8,7 +8,7 @@ import Foundation
 
 // MARK: Decodable
 
-extension GeneralNote4GI.ResinInfo4GI: Decodable {
+extension FullNote4GI.ResinInfo4GI: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.maxResin = try container.decode(Int.self, forKey: .maxResin)

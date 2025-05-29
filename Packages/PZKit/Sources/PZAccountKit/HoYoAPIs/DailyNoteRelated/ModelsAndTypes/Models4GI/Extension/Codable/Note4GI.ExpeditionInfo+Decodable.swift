@@ -4,9 +4,9 @@
 
 import Foundation
 
-// MARK: - GeneralNote4GI.ExpeditionInfo4GI + Decodable
+// MARK: - FullNote4GI.ExpeditionInfo4GI + Decodable
 
-extension GeneralNote4GI.ExpeditionInfo4GI: Decodable {
+extension FullNote4GI.ExpeditionInfo4GI: Decodable {
     // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
@@ -18,22 +18,22 @@ extension GeneralNote4GI.ExpeditionInfo4GI: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.maxExpeditionsCount = try container.decode(Int.self, forKey: .maxExpeditionsCount)
         self.expeditions = try container.decode(
-            [GeneralNote4GI.ExpeditionInfo4GI.Expedition].self,
+            [FullNote4GI.ExpeditionInfo4GI.Expedition].self,
             forKey: .expeditions
         )
     }
 }
 
-// MARK: - GeneralNote4GI.ExpeditionInfo4GI.Expedition + Decodable
+// MARK: - FullNote4GI.ExpeditionInfo4GI.Expedition + Decodable
 
-extension GeneralNote4GI.ExpeditionInfo4GI.Expedition: Decodable {
+extension FullNote4GI.ExpeditionInfo4GI.Expedition: Decodable {
     public init(from decoder: Decoder) throws {
-        let container: KeyedDecodingContainer<GeneralNote4GI.ExpeditionInfo4GI.Expedition.CodingKeys> =
+        let container: KeyedDecodingContainer<FullNote4GI.ExpeditionInfo4GI.Expedition.CodingKeys> =
             try decoder
-                .container(keyedBy: GeneralNote4GI.ExpeditionInfo4GI.Expedition.CodingKeys.self)
+                .container(keyedBy: FullNote4GI.ExpeditionInfo4GI.Expedition.CodingKeys.self)
         if let timeIntervalUntilFinish = TimeInterval(try container.decode(
             String.self,
-            forKey: GeneralNote4GI.ExpeditionInfo4GI.Expedition.CodingKeys.finishTime
+            forKey: FullNote4GI.ExpeditionInfo4GI.Expedition.CodingKeys.finishTime
         )) {
             self.finishTime = Date(timeIntervalSinceNow: timeIntervalUntilFinish)
         } else {
@@ -47,7 +47,7 @@ extension GeneralNote4GI.ExpeditionInfo4GI.Expedition: Decodable {
         }
         self.iconURL = try container.decode(
             URL.self,
-            forKey: GeneralNote4GI.ExpeditionInfo4GI.Expedition.CodingKeys.iconURL
+            forKey: FullNote4GI.ExpeditionInfo4GI.Expedition.CodingKeys.iconURL
         )
     }
 

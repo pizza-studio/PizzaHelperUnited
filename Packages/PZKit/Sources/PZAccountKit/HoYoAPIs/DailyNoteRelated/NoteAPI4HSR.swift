@@ -84,7 +84,7 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> RealtimeNote4HSR {
+        -> FullNote4HSR {
 //        #if DEBUG
 //        return .example()
 //        #else
@@ -111,8 +111,8 @@ extension HoYo {
         )
 
         let data = try await request.serializingData().value
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.hoyoLabNote4HSR()") {
-            RealtimeNote4HSR.CacheSputnik.cache(data, uidWithGame: uidWithGame)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.fullNote4HSR()") {
+            FullNote4HSR.CacheSputnik.cache(data, uidWithGame: uidWithGame)
         }
 //        #endif
     }
@@ -127,7 +127,7 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> RealtimeNote4HSR {
+        -> FullNote4HSR {
         var additionalHeaders = [
             "User-Agent": "WidgetExtension/434 CFNetwork/1492.0.1 Darwin/23.3.0",
         ]
@@ -146,8 +146,8 @@ extension HoYo {
         )
 
         let data = try await request.serializingData().value
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.miyousheNote4HSR()") {
-            RealtimeNote4HSR.CacheSputnik.cache(data, uidWithGame: uidWithGame)
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.widgetNote4HSR()") {
+            FullNote4HSR.CacheSputnik.cache(data, uidWithGame: uidWithGame)
         }
     }
 }

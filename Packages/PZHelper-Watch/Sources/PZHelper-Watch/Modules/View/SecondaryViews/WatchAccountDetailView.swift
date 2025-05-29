@@ -100,7 +100,7 @@ struct WatchAccountDetailView: View {
             icon: data.game.expeditionAssetIcon
         )
         Divider()
-        if let data = data as? GeneralNote4GI {
+        if let data = data as? FullNote4GI {
             WatchAccountDetailItemView(
                 title: "watch.dailyNote.card.transformer",
                 value: intervalFormatter

@@ -22,7 +22,7 @@ extension ExpeditionTask {
     public var timeOnFinish: Date? {
         switch self {
         case let data as AssignmentInfo4HSR.Assignment: return data.finishedTime
-        case let data as GeneralNote4GI.ExpeditionInfo4GI.Expedition: return data.finishTime
+        case let data as FullNote4GI.ExpeditionInfo4GI.Expedition: return data.finishTime
         case _ as WidgetNote4GI.ExpeditionInfo4GI.Expedition: return nil
         default: return nil
         }

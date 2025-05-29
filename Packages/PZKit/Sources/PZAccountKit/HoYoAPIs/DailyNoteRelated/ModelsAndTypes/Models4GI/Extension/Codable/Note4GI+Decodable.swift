@@ -2,9 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-// MARK: - GeneralNote4GI + Decodable
+// MARK: - FullNote4GI + Decodable
 
-extension GeneralNote4GI: Decodable {
+extension FullNote4GI: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         self.dailyTaskInfo = try container.decode(DailyTaskInfo4GI.self)
@@ -16,6 +16,6 @@ extension GeneralNote4GI: Decodable {
     }
 }
 
-// MARK: - GeneralNote4GI + DecodableFromMiHoYoAPIJSONResult
+// MARK: - FullNote4GI + DecodableFromMiHoYoAPIJSONResult
 
-extension GeneralNote4GI: DecodableFromMiHoYoAPIJSONResult {}
+extension FullNote4GI: DecodableFromMiHoYoAPIJSONResult {}
