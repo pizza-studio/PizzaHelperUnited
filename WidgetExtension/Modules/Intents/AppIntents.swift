@@ -136,6 +136,7 @@ public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, Cus
             Summary {
                 \.$profileSlot1
                 \.$profileSlot2
+                \.$randomBackground
                 \.$isDarkModeRespected
                 \.$echoOfWarDisplayMethod
                 \.$trounceBlossomDisplayMethod
