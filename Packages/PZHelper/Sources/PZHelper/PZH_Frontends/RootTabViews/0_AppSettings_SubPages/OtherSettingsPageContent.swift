@@ -7,6 +7,7 @@ import EnkaKit
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
+import WallpaperKit
 
 // MARK: - OtherSettingsPageContent
 
@@ -17,16 +18,6 @@ struct OtherSettingsPageContent: View {
         NavigationStack {
             Form {
                 Section {
-                    Button {
-                        let profiles = Defaults[.pzProfiles]
-                        Defaults.removeAll()
-                        Defaults[.pzProfiles] = profiles
-                        UserDefaults.baseSuite.synchronize()
-                    } label: {
-                        Text(verbatim: "Clean All User Defaults Key")
-                    }
-                }
-                Section {
                     NavigationLink {
                         arrangedNotificationsView
                     } label: {
@@ -35,10 +26,29 @@ struct OtherSettingsPageContent: View {
                 } footer: {
                     Text(verbatim: "The Pizza Helper v\(appVersion) (\(buildVersion))")
                 }
+                #if DEBUG
+                CGImageCropperView.makeTestView()
+                #endif
             }
             .formStyle(.grouped)
-            .navigationTitle("Develop Settings".description)
+            .navigationTitle("Developer Settings".description)
             .navBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Menu {
+                        Button {
+                            let profiles = Defaults[.pzProfiles]
+                            Defaults.removeAll()
+                            Defaults[.pzProfiles] = profiles
+                            UserDefaults.baseSuite.synchronize()
+                        } label: {
+                            Text(verbatim: "Clean All User Defaults Key")
+                        }
+                    } label: {
+                        Text(verbatim: "Adv.")
+                    }
+                }
+            }
         }
     }
 
