@@ -5,9 +5,11 @@
 import Defaults
 import PZBaseKit
 import SwiftUI
+import WallpaperKit
 
 // MARK: - AppWallpaperSettingsPicker
 
+#if !os(watchOS)
 public struct AppWallpaperSettingsPicker: View {
     // MARK: Lifecycle
 
@@ -16,7 +18,7 @@ public struct AppWallpaperSettingsPicker: View {
     // MARK: Public
 
     public var body: some View {
-        Picker("settings.display.appBackground".i18nWPKit, selection: $background4App) {
+        Picker("settings.display.appBackground".i18nWPConfKit, selection: $background4App) {
             ForEach(Wallpaper.allCases) { wallpaper in
                 Label {
                     Text(wallpaperName(for: wallpaper))
@@ -75,3 +77,4 @@ public struct AppWallpaperSettingsPicker: View {
         return result
     }
 }
+#endif
