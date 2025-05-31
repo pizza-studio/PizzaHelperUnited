@@ -367,10 +367,12 @@ extension CGImageCropperView {
 
 #if DEBUG
 
+import WallpaperKit
+
 extension CGImageCropperView {
     @ViewBuilder
     public static func makeTestView() -> some View {
-        let cgImage = queryImageAsset(for: "PZWP110000")!
+        let cgImage = Wallpaper.queryImageAsset(for: "PZWP110000")!
         CGImageCropperView(
             .init(width: 420, height: 200),
             sourceImage: cgImage
@@ -383,19 +385,6 @@ extension CGImageCropperView {
         CGImageCropperView.makeTestView()
     }
     .formStyle(.grouped)
-}
-
-private func queryImageAsset(for assetName: String) -> CGImage? {
-    #if os(macOS)
-    guard let image = Bundle.module.image(forResource: assetName) else { return nil }
-    var imageRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
-    let imageRef = image.cgImage(forProposedRect: &imageRect, context: nil, hints: nil)
-    return imageRef
-    #elseif os(iOS)
-    return UIImage(named: assetName, in: Bundle.module, compatibleWith: nil)?.cgImage
-    #else
-    return nil
-    #endif
 }
 #endif
 

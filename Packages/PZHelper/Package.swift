@@ -53,6 +53,7 @@ let package = Package(
                 .product(name: "PZHoYoLabKit", package: "PZHoYoLabKit"),
                 .product(name: "PZInGameEventKit", package: "PZInGameEventKit"),
                 .product(name: "WallpaperKit", package: "WallpaperKit"),
+                .product(name: "WallpaperConfigKit", package: "WallpaperKit"),
                 .product(name: "PZWidgetsKit", package: "PZWidgetsKit"),
             ],
             swiftSettings: sharedSwiftSettings

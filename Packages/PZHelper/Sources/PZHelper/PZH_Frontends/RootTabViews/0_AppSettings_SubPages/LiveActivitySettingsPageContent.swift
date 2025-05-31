@@ -8,6 +8,7 @@ import PZBaseKit
 import PZWidgetsKit
 import SwiftUI
 @preconcurrency import UserNotifications
+import WallpaperConfigKit
 import WallpaperKit
 
 // MARK: - LiveActivitySettingNavigator
@@ -122,7 +123,7 @@ struct LiveActivitySettingsPageContent: View {
                     }
                 }
             } header: {
-                Text("settings.resinTimer.background.navTitle".i18nWPKit)
+                Text("settings.resinTimer.background.navTitle".i18nWPConfKit)
             }
         }
         .formStyle(.grouped)

@@ -13,6 +13,10 @@ let package = Package(
             name: "WallpaperKit",
             targets: ["WallpaperKit"]
         ),
+        .library(
+            name: "WallpaperConfigKit",
+            targets: ["WallpaperConfigKit"]
+        ),
     ],
     dependencies: [
         .package(path: "../PZKit"),
@@ -27,6 +31,18 @@ let package = Package(
         .target(
             name: "WallpaperKit",
             dependencies: [
+                .product(name: "Defaults", package: "Defaults"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+                .product(name: "PZBaseKit", package: "PZKit"),
+            ],
+            resources: [
+                .process("Resources/"),
+            ]
+        ),
+        .target(
+            name: "WallpaperConfigKit",
+            dependencies: [
+                "WallpaperKit",
                 .product(name: "Defaults", package: "Defaults"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "PZBaseKit", package: "PZKit"),
