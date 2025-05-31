@@ -6,6 +6,7 @@ import Defaults
 import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
+import WallpaperKit
 
 // MARK: - WallpaperGalleryViewContent
 
@@ -17,7 +18,7 @@ public struct WallpaperGalleryViewContent: View {
 
     // MARK: Public
 
-    public static let navTitle: String = "wallpaperGallery.navTitle".i18nWPKit
+    public static let navTitle: String = "wallpaperGallery.navTitle".i18nWPConfKit
 
     public var body: some View {
         coreBodyView
@@ -36,7 +37,7 @@ public struct WallpaperGalleryViewContent: View {
                             .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
                         Text("game.zenlessZone.shortNameEX".i18nBaseKit)
                             .tag(Pizza.SupportedGame.zenlessZone as Pizza.SupportedGame?)
-                        Text("wpKit.gamePicker.Pizza.shortName".i18nWPKit)
+                        Text("wpKit.gamePicker.Pizza.shortName".i18nWPConfKit)
                             .tag(Pizza.SupportedGame?.none)
                     }
                     .pickerStyle(.segmented)
@@ -70,7 +71,7 @@ public struct WallpaperGalleryViewContent: View {
             draw(wallpaper: currentCard)
                 .matchedGeometryEffect(id: currentCard.id, in: animation)
                 .contextMenu {
-                    Button("wpKit.assign.background4App".i18nWPKit) {
+                    Button("wpKit.assign.background4App".i18nWPConfKit) {
                         background4App = currentCard
                     }
                     #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
@@ -91,7 +92,7 @@ public struct WallpaperGalleryViewContent: View {
                         }
                     } label: {
                         Label(
-                            "wpKit.assign.backgrounds4LiveActivity".i18nWPKit,
+                            "wpKit.assign.backgrounds4LiveActivity".i18nWPConfKit,
                             systemSymbol: alreadyChosenAsLABG ? nil : .checkmark
                         )
                     }
