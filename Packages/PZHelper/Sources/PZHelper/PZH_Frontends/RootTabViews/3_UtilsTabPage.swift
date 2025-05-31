@@ -14,6 +14,7 @@ struct UtilsTabPage: View {
     enum Nav {
         case gachaManager
         case wallpaperGallery
+        case userWallpaperManager
     }
 
     var body: some View {
@@ -37,6 +38,11 @@ struct UtilsTabPage: View {
                     NavigationLink(value: Nav.wallpaperGallery) {
                         Label(WallpaperGalleryViewContent.navTitle, systemSymbol: .photoOnRectangleAngled)
                     }
+                    NavigationLink(value: Nav.userWallpaperManager) {
+                        Label(UserWallpaperMgrViewContent.navTitle, systemSymbol: .photoFillOnRectangleFill)
+                    }
+                } footer: {
+                    Text(UserWallpaperMgrViewContent.navDescription)
                 }
                 HoYoMapMenuLinkSection()
                 Text("tab.utils.featureRemovalNotice", bundle: .module)
@@ -63,6 +69,7 @@ struct UtilsTabPage: View {
             switch selection.wrappedValue {
             case .gachaManager: GachaRootView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
+            case .userWallpaperManager: UserWallpaperMgrViewContent()
             case .none: EmptyView() // Temporary for now.
             }
         }

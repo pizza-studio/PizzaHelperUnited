@@ -20,10 +20,9 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../PZKit"),
-        .package(
-            url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
-        ),
+        .package(url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")),
         .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")),
+        .package(url: "https://github.com/elai950/AlertToast", .upToNextMajor(from: "1.3.9")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -43,6 +42,7 @@ let package = Package(
             name: "WallpaperConfigKit",
             dependencies: [
                 "WallpaperKit",
+                .product(name: "AlertToast", package: "AlertToast"),
                 .product(name: "Defaults", package: "Defaults"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "PZBaseKit", package: "PZKit"),
