@@ -614,6 +614,18 @@
         }
       }
     },
+    "userWPCropper.navTitle.step1.chooseImage" : {
+
+    },
+    "userWPCropper.navTitle.step2.cropHorizontal" : {
+
+    },
+    "userWPCropper.navTitle.step3.cropSquared" : {
+
+    },
+    "userWPCropper.step1.footerDescription" : {
+
+    },
     "wallpaperGallery.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {

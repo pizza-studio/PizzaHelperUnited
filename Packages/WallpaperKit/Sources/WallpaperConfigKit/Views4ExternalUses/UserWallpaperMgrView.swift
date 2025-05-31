@@ -30,6 +30,8 @@ public struct UserWallpaperMgrViewContent: View {
     @State private var isEditMode: EditMode = .inactive
     #endif
 
+    @State private var isCropperSheetPresented: Bool = false
+
     @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
 
     private var userWallpaperSorted: [UserWallpaper] {
@@ -88,9 +90,11 @@ extension UserWallpaperMgrViewContent {
                         }
                     }
                     ToolbarItem(placement: .confirmationAction) {
-                        Button {
-                            withAnimation {
-                                // Add contents
+                        NavigationLink {
+                            UserWallpaperCropper { finishedWallpaper in
+                                // Here to save the finished wallpaper and call the succeeded toast.
+                            } failureHandler: {
+                                // Here to call failure toast.
                             }
                         } label: {
                             Image(systemSymbol: .plusCircle)

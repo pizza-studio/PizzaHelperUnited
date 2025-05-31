@@ -177,12 +177,25 @@ extension CGImageCropperView {
         case .awaitingForFileDesignation:
             Text(verbatim: "please assign image")
         case let .awaitingForCropConfiguration(thisCGImage):
-            croppedImagePreview
-                .onAppear {
-                    updateScaleFactors(for: thisCGImage)
+            Group {
+                croppedImagePreview
+                    .onAppear {
+                        updateScaleFactors(for: thisCGImage)
+                    }
+                sliders4Origin
+                slider4ScaleFactor
+            }
+            .toolbar {
+                if let cropCompletionHandler, let sourceCGImageZoomedAndCroppedCache {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button {
+                            cropCompletionHandler(sourceCGImageZoomedAndCroppedCache)
+                        } label: {
+                            Image(systemSymbol: .checkmarkCircle)
+                        }
+                    }
                 }
-            sliders4Origin
-            slider4ScaleFactor
+            }
         case .cropCompleted:
             Text(verbatim: "crop completed")
         case let .exception(theError):
