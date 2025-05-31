@@ -22,27 +22,30 @@ public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
     // MARK: Lifecycle
 
     public init?(
-        name: String,
+        name givenName: String? = nil,
         imageHorizontal: CGImage,
         imageSquared: CGImage
     ) {
         let data4Horizontal = imageHorizontal.encodeToFileData(as: .jpeg(quality: 0.9))
         let data4Squared = imageSquared.encodeToFileData(as: .jpeg(quality: 0.9))
         guard let data4Squared, let data4Horizontal else { return nil }
-        self.name = name
+        self.id = .init()
         self.timestamp = Date().timeIntervalSince1970
+        self.name = givenName ?? ""
         self.b64Data4Horizontal = data4Horizontal.base64EncodedString()
         self.b64Data4Squared = data4Squared.base64EncodedString()
+        if givenName == nil {
+            self.name = dateString
+        }
     }
 
     // MARK: Public
 
-    public let name: String
+    public let id: UUID
+    public var name: String
     public let timestamp: Double
     public let b64Data4Horizontal: String
     public let b64Data4Squared: String
-
-    public var id: Int { hashValue }
 }
 
 extension UserWallpaper {
