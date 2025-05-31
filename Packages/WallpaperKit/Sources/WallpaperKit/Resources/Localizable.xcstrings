@@ -1,6 +1,158 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "imageCropper.hint.fingerGestures" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie können auch Fingergesten auf das Vorschaubild anwenden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may also use finger gestures on the preview image."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También puede aplicar gestos con los dedos en la imagen de vista previa."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maaari ka ring gumamit ng mga finger gesture sa preview image."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez également utiliser des gestes tactiles sur l'aperçu de l'image."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi anche applicare gesti delle dita sull'immagine di anteprima."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレビュー画像上で指のジェスチャーを使用することもできます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "미리보기 이미지에 손가락 제스처를 적용할 수도 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы также можете использовать жесты пальцев на предварительном просмотре изображения."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn cũng có thể áp dụng cử chỉ ngón tay lên hình ảnh xem trước."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您也可以对预览图使用手势操作。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您也可以對預覽圖使用手勢操作。"
+          }
+        }
+      }
+    },
+    "imageCropper.hint.mouseGesture" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie können auch Mausgesten auf das Vorschaubild anwenden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may also use mouse gestures on the preview image."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También puede aplicar gestos con el ratón en la imagen de vista previa."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maaari ka ring gumamit ng mga mouse gesture sa preview image."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez également utiliser des gestes de la souris sur l'aperçu de l'image."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi anche applicare gesti del mouse sull'immagine di anteprima."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プレビュー画像上でマウスのジェスチャーを使用することもできます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "미리보기 이미지에 마우스 제스처를 적용할 수도 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы также можете использовать жесты мыши на предварительном просмотре изображения."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn cũng có thể áp dụng cử chỉ chuột lên hình ảnh xem trước."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您也可以对预览图使用鼠标手势操作。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您也可以對預覽圖使用滑鼠手勢操作。"
+          }
+        }
+      }
+    },
     "settings.display.appBackground" : {
       "extractionState" : "manual",
       "localizations" : {
