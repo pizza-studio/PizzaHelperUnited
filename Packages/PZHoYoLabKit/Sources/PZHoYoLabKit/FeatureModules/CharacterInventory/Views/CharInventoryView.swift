@@ -48,16 +48,18 @@ public struct CharacterInventoryView: View {
 
     @ViewBuilder public var body: some View {
         basicBody
-            .toolbar(.hidden, for: .tabBar)
-            .overlay {
-                AvatarStatCollectionTabView(
-                    selectedAvatarID: $currentAvatarSummaryID,
-                    summarizedAvatars: summaries.map(\.wrappedValue)
-                ) {
-                    currentAvatarSummaryID = ""
-                    simpleTaptic(type: .medium)
-                }
+        #if !os(macOS)
+        .toolbar(.hidden, for: .tabBar)
+        #endif
+        .overlay {
+            AvatarStatCollectionTabView(
+                selectedAvatarID: $currentAvatarSummaryID,
+                summarizedAvatars: summaries.map(\.wrappedValue)
+            ) {
+                currentAvatarSummaryID = ""
+                simpleTaptic(type: .medium)
             }
+        }
     }
 
     // MARK: Internal

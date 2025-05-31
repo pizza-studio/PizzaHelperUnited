@@ -318,10 +318,7 @@ final class GetCookieQRCodeViewModel: ObservableObject, @unchecked Sendable {
     }
 }
 
-// MARK: - 与后台 URLSession Delegate 有关的 SwiftUI 挂接处理。
-
-#if canImport(UIKit) && canImport(SwiftUI)
-import SwiftUI
+// MARK: - HoYo.HandleBackgroundSessionsModifier
 
 extension HoYo {
     /// 用于在 SwiftUI App 生命周期中处理背景 URL Session 事件的修饰器
@@ -356,6 +353,20 @@ extension View {
         background(BackgroundURLSessionHandler(handler: action))
     }
 }
+
+#if os(macOS) && !targetEnvironment(macCatalyst)
+private typealias UIViewRepresentable = NSViewRepresentable
+private typealias UIView = NSView
+extension BackgroundURLSessionHandler {
+    func makeNSView(context: Context) -> NSView {
+        makeUIView(context: context)
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
+}
+#endif
+
+// MARK: - BackgroundURLSessionHandler
 
 private struct BackgroundURLSessionHandler: UIViewRepresentable {
     final class Coordinator: NSObject, URLSessionDelegate {
@@ -425,4 +436,3 @@ extension HoYo {
         )
     }
 }
-#endif

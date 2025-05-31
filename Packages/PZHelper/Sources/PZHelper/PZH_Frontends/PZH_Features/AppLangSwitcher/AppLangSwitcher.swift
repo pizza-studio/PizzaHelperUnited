@@ -38,7 +38,7 @@ struct AppLanguageSwitcher: View {
     // MARK: Public
 
     public var body: some View {
-        // 暫時禁用 iOSSystemAppSettingsPageLink()，因為該功能至少在 Simulator 下無法正常使用。
+        // 禁用 iOSSystemAppSettingsPageLink()，因為該功能至少在 Simulator 下無法正常使用。
         // Simulator 可能會找不到披薩小助手。
         Label {
             VStack {
@@ -79,18 +79,4 @@ struct AppLanguageSwitcher: View {
     @Binding private var appleLanguageTag: String
 
     @Default(.appLanguage) private var appLanguage: [String]?
-
-    @ViewBuilder
-    private func iOSSystemAppSettingsPageLink() -> some View {
-        Button {
-            UIApplication.shared.open(UIApplication.openSettingsURLString.asURL)
-        } label: {
-            Label {
-                Text("settings.appLanguage.title".i18nPZHelper)
-                    .foregroundColor(.primary)
-            } icon: {
-                Image(systemSymbol: .globe)
-            }
-        }
-    }
 }
