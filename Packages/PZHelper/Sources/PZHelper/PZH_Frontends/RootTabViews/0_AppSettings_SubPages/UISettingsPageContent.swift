@@ -7,6 +7,7 @@ import EnkaKit
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
+import WallpaperConfigKit
 import WallpaperKit
 
 // MARK: - UISettingsPageContent

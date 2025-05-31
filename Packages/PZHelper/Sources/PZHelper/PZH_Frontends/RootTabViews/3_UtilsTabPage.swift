@@ -6,7 +6,7 @@ import GachaKit
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
-import WallpaperKit
+import WallpaperConfigKit
 
 struct UtilsTabPage: View {
     // MARK: Internal
