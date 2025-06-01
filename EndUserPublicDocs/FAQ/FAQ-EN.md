@@ -53,7 +53,7 @@ Features have been removed for the following reasons:
 
 1. **Data Sync**: Although the new unified Pizza Helper engine can read cloud data from Pizza Helper for HSR on the same Apple ID via iCloud, the data synchronization may take time and can be affected by factors like connection status. For a more reliable migration, you can export your local accounts from Pizza Helper for HSR as a JSON file (profile package) and import it into the new version of The Pizza Helper. Gacha records can also be migrated using a similar method (via file exchange conforming to UIGF v4 format).
 
-2. **Widgets**: All widgets in the new The Pizza Helper that seem to be designed for Genshin Impact can now also display Star Rail content (excluding Genshin-specific widgets like the Realm Currency). Simply select the local profile dedicated to Star Rail in the widget settings. The Stamina Timer, implemented using iOS's built-in Live Activity feature, can also be used to show the Trailblaze Power refill status in Star Rail. Custom background support for widgets will be delayed for some time and may be implemented later, depending on conditions.
+2. **Widgets**: All widgets in the new The Pizza Helper that seem to be designed for Genshin Impact can now also display Star Rail content (excluding Genshin-specific widgets like the Realm Currency). Simply select the local profile dedicated to Star Rail in the widget settings. The Stamina Timer, implemented using iOS's built-in Live Activity feature, can also be used to show the Trailblaze Power refill status in Star Rail. User-customizable wallpaper support for widgets has been reintroduced since 5.2.1 update but cannot inherit its previous settings data. Please refer to the related UI text instructions regarding its usage.
 
 #### Q: How does The Pizza Helper work?
 
@@ -81,7 +81,7 @@ These features won't be considered to implment in at least a year. There were to
 
 ## // Technical Issues and Know-How
 
-> This section discusses issues starting from The Pizza Helper version 5.0.5.
+> This section discusses issues starting from The Pizza Helper version 5.2.1.
 
 #### Q: What's the differences among the character build information (CBI) provided by Enka and HoYoLAB / Miyoushe?
 
