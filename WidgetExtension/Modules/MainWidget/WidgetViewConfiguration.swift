@@ -22,6 +22,7 @@ struct WidgetViewConfiguration {
         self.randomBackground = intent.randomBackground
         let backgrounds = intent.chosenBackgrounds
         self.selectedBackgrounds = backgrounds.isEmpty ? [.defaultBackground] : backgrounds
+        self.selectedUserWallpapers = intent.chosenUserWallpapers
         self.isDarkModeRespected = intent.isDarkModeRespected
         self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget
     }
@@ -36,6 +37,7 @@ struct WidgetViewConfiguration {
         self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
         self.noticeMessage = noticeMessage
+        self.selectedUserWallpapers = []
     }
 
     init(
@@ -53,6 +55,7 @@ struct WidgetViewConfiguration {
         self.selectedBackgrounds = [.defaultBackground]
         self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
+        self.selectedUserWallpapers = []
     }
 
     // MARK: Internal
@@ -71,6 +74,7 @@ struct WidgetViewConfiguration {
 
     var randomBackground: Bool
     var selectedBackgrounds: [WidgetBackgroundAppEntity]
+    var selectedUserWallpapers: [WidgetUserWallpaperAppEntity]
 
     var background: WidgetBackgroundAppEntity {
         guard !randomBackground else {
@@ -79,7 +83,7 @@ struct WidgetViewConfiguration {
         if selectedBackgrounds.isEmpty {
             return .defaultBackground
         } else {
-            return selectedBackgrounds.randomElement()!
+            return selectedBackgrounds.randomElement() ?? .defaultBackground
         }
     }
 
