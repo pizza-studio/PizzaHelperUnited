@@ -111,7 +111,12 @@ struct UserWallpaperMakerView: View {
                 ) { result in
                     switch result {
                     case let .success(fetchedURLs):
-                        if let url = fetchedURLs.first, let cgImg = CGImage.instantiate(url: url) {
+                        defer {
+                            fetchedURLs.first?.stopAccessingSecurityScopedResource()
+                        }
+                        if let url = fetchedURLs.first,
+                           url.startAccessingSecurityScopedResource(),
+                           let cgImg = CGImage.instantiate(url: url) {
                             currentStep = .crop4Horizontal(raw: cgImg)
                         } else {
                             fallthrough
