@@ -69,7 +69,8 @@ extension CGImage {
     /// 有些表情包的图片是用 URGB 色彩空间编码的，必须手动解码，否则只能解出一张白色噪点图。
     private static func decodeImageManually(_ sourceImage: CGImage, width: Int, height: Int) -> CGImage? {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipLast.rawValue)
+        // 修正 bitmapInfo，保留 alpha channel
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
         guard let context = CGContext(
             data: nil,
             width: width,
