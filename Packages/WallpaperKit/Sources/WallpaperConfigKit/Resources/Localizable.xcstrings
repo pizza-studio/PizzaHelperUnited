@@ -845,73 +845,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Benutzerdefinierte Hintergründe sind nur für Desktop-Widgets für iOS und macOS verfügbar."
+            "value" : "Benutzerdefinierte Hintergründe sind nur für Desktop-Widgets für iOS und macOS verfügbar und werden nicht in der Tapetengalerie aufgeführt. Sobald ein Desktop-Widget mit seinem benutzerdefinierten Hintergrund korrekt konfiguriert ist, überschreibt der benutzerdefinierte Hintergrund automatisch die Widget-Hintergrundanzeige-Einstellung."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User-supplied wallpapers are only for desktop widgets for iOS and macOS."
+            "value" : "User-supplied wallpapers are only for desktop widgets for iOS and macOS and are not listed in the Wallpaper Gallery. Once a desktop widget has its user-supplied wallpaper configured correctly, the user-supplied wallpaper will automatically override its widget background display setting."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los fondos de pantalla proporcionados por el usuario son solo para widgets de escritorio para iOS y macOS."
+            "value" : "Los fondos de pantalla proporcionados por el usuario son solo para widgets de escritorio para iOS y macOS y no aparecen en la Galería de Fondos de Pantalla. Una vez que un widget de escritorio tiene su fondo de pantalla proporcionado por el usuario configurado correctamente, este anulará automáticamente la configuración de visualización del fondo del widget."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang mga wallpaper na ibinigay ng user ay para lamang sa mga desktop widget para sa iOS at macOS."
+            "value" : "Ang mga wallpaper na ibinigay ng user ay para lamang sa mga desktop widget para sa iOS at macOS at hindi nakalista sa Gallery ng mga Wallpaper. Kapag ang desktop widget ay maayos na na-configure ang wallpaper na ibinigay ng user, awtomatikong ma-o-override ng wallpaper na ibinigay ng user ang setting ng display ng background ng widget."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les fonds d'écran fournis par l'utilisateur ne sont que pour les widgets de bureau pour iOS et macOS."
+            "value" : "Les fonds d'écran fournis par l'utilisateur ne sont que pour les widgets de bureau pour iOS et macOS et ne sont pas répertoriés dans la galerie des arrière-plans. Une fois qu'un widget de bureau a son fond d'écran fourni par l'utilisateur correctement configuré, celui-ci remplacera automatiquement le paramètre d'affichage de l'arrière-plan du widget."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gli sfondi forniti dall'utente sono solo per i widget desktop per iOS e macOS."
+            "value" : "Gli sfondi forniti dall'utente sono solo per i widget desktop per iOS e macOS e non sono elencati nella Galleria di Sfondi. Una volta che un widget desktop ha il suo sfondo fornito dall'utente configurato correttamente, questo sostituirà automaticamente l'impostazione di visualizzazione dello sfondo del widget."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ユーザー提供の壁紙は iOS と macOS のデスクトップウィジェット専用です。"
+            "value" : "ユーザー提供の壁紙は iOS と macOS のデスクトップウィジェット専用で、壁紙の画廊には表示されません。デスクトップウィジェットのユーザー提供の壁紙が正しく構成されると、ウィジェットの背景表示設定は自動的に上書きされます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "사용자가 제공한 배경화면은 iOS 및 macOS용 데스크톱 위젯에만 사용됩니다."
+            "value" : "사용자가 제공한 배경화면은 iOS 및 macOS용 데스크톱 위젯에만 사용되며 배경 갤러리에 표시되지 않습니다. 데스크톱 위젯의 사용자 제공 배경화면이 올바르게 구성되면, 위젯의 배경화면 표시 설정을 자동으로 재정의합니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пользовательские обои предназначены только для виджетов рабочего стола iOS и macOS."
+            "value" : "Пользовательские обои предназначены только для виджетов рабочего стола iOS и macOS и не отображаются в Галерее обоев. Как только виджет рабочего стола правильно настроен с пользовательскими обоями, они автоматически переопределят настройки отображения фона виджета."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hình nền do người dùng cung cấp chỉ dành cho các widget màn hình cho iOS và macOS."
+            "value" : "Hình nền do người dùng cung cấp chỉ dành cho các widget màn hình cho iOS và macOS và không được liệt kê trong Thư viện Hình nền. Khi một widget màn hình đã được cấu hình đúng với hình nền do người dùng cung cấp, hình nền này sẽ tự động ghi đè cài đặt hiển thị nền của widget."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "用户壁纸仅适用于 iOS 和 macOS 的桌面小工具 (小组件)。"
+            "value" : "用户壁纸仅适用于 iOS 和 macOS 的桌面小工具 (小组件)，且不会在壁纸画廊中列出。正确配置用户壁纸后，该壁纸会自动覆盖其自身的背景图设定。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用者壁紙僅適用於 iOS 和 macOS 的桌面小工具。"
+            "value" : "使用者壁紙僅適用於 iOS 和 macOS 的桌面小工具，且不會在壁紙畫廊中列出。當桌面小工具正確配置使用者壁紙後，該壁紙會自動覆蓋其自身的背景圖設定。"
           }
         }
       }
