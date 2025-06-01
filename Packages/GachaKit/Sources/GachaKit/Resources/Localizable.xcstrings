@@ -766,7 +766,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "點擊此處匯出"
+            "value" : "點按此處匯出"
           }
         }
       }
@@ -5377,7 +5377,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "或點擊下述受米遊社管轄的 UID 直接獲取記錄: "
+            "value" : "或點按下述受米遊社管轄的 UID 直接獲取記錄: "
           }
         }
       }
