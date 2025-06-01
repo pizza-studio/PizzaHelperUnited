@@ -195,6 +195,11 @@ private struct StaminaNotificationThresholdConfigView: View {
                                     $0.game == game && $0.threshold == number
                                 }
                                 UserDefaults.baseSuite.synchronize()
+                                #if os(iOS) || targetEnvironment(macCatalyst)
+                                if thresholdsForCurrentGame.isEmpty {
+                                    isEditMode = .inactive
+                                }
+                                #endif
                             } label: {
                                 Text("sys.delete".i18nBaseKit)
                             }
@@ -315,6 +320,11 @@ private struct StaminaNotificationThresholdConfigView: View {
                 currentValues.map { NotificationOptions.StaminaThreshold(game: game, threshold: $0) }
             }())
             UserDefaults.baseSuite.synchronize()
+            #if os(iOS) || targetEnvironment(macCatalyst)
+            if thresholdsForCurrentGame.isEmpty {
+                isEditMode = .inactive
+            }
+            #endif
         }
     }
 }
