@@ -171,7 +171,7 @@ private struct PZProfilesDocument: FileDocument {
 
     public static let readableContentTypes: [UTType] = [.json]
 
-    public let model: Codable & Sendable
+    public let model: [PZProfileSendable]
 
     public let fileNameStem: String = "PZProfiles_\(dateFormatter.string(from: Date()))"
 
