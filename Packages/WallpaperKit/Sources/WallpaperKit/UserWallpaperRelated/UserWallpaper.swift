@@ -41,7 +41,7 @@ public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
 
     // MARK: Public
 
-    public let id: UUID
+    public var id: UUID
     public var name: String
     public let timestamp: Double
     public let b64Data4Horizontal: String
@@ -59,9 +59,15 @@ extension UserWallpaper {
         return CGImage.instantiate(data: data)
     }
 
-    public var dateString: String {
+    public var dateString: String { Self.makeDateString(timestamp: timestamp) }
+
+    public static func makeDateString(
+        timestamp: TimeInterval = Date().timeIntervalSince1970,
+        forFileName: Bool = false
+    )
+        -> String {
         let dateFormatter = DateFormatter.GregorianPOSIX()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = forFileName ? "yyyyMMddHHmmss" : "yyyy-MM-dd HH:mm:ss"
         let date = Date(timeIntervalSince1970: timestamp)
         return dateFormatter.string(from: date)
     }
