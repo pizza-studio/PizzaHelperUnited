@@ -185,33 +185,35 @@ private struct StaminaNotificationThresholdConfigView: View {
                     isNumberExistAlertVisible.toggle()
                 }
             }
-            Section {
-                ForEach(thresholdsForCurrentGame, id: \.self) { number in
-                    Text(verbatim: "\(number)")
-                        .id(number)
-                        .contextMenu {
-                            Button(role: .destructive) {
-                                options.staminaAdditionalNotificationThresholds.removeAll {
-                                    $0.game == game && $0.threshold == number
+            if !thresholdsForCurrentGame.isEmpty {
+                Section {
+                    ForEach(thresholdsForCurrentGame, id: \.self) { number in
+                        Text(verbatim: "\(number)")
+                            .id(number)
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    options.staminaAdditionalNotificationThresholds.removeAll {
+                                        $0.game == game && $0.threshold == number
+                                    }
+                                    UserDefaults.baseSuite.synchronize()
+                                    #if os(iOS) || targetEnvironment(macCatalyst)
+                                    if thresholdsForCurrentGame.isEmpty {
+                                        isEditMode = .inactive
+                                    }
+                                    #endif
+                                } label: {
+                                    Text("sys.delete".i18nBaseKit)
                                 }
-                                UserDefaults.baseSuite.synchronize()
-                                #if os(iOS) || targetEnvironment(macCatalyst)
-                                if thresholdsForCurrentGame.isEmpty {
-                                    isEditMode = .inactive
-                                }
-                                #endif
-                            } label: {
-                                Text("sys.delete".i18nBaseKit)
                             }
-                        }
+                    }
+                    .onDelete(perform: deleteItems)
+                } header: {
+                    Text("settings.notification.staminaThresholds.header", bundle: .module)
+                        .textCase(.none)
+                } footer: {
+                    Text("settings.notification.staminaThresholds.footer", bundle: .module)
+                        .textCase(.none)
                 }
-                .onDelete(perform: deleteItems)
-            } header: {
-                Text("settings.notification.staminaThresholds.header", bundle: .module)
-                    .textCase(.none)
-            } footer: {
-                Text("settings.notification.staminaThresholds.footer", bundle: .module)
-                    .textCase(.none)
             }
         }
         .toolbar {
