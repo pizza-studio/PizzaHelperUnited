@@ -61,7 +61,7 @@ public struct UserWallpaperMgrViewContent: View {
                 .toast(isPresenting: $alertToastEventStatus.isWallpaperCreationFailed) {
                     AlertToast(
                         displayMode: .alert,
-                        type: .complete(.green),
+                        type: .error(.red),
                         title: "userWallpaperMgr.toast.taskFailed".i18nWPConfKit
                     )
                 }
@@ -132,15 +132,18 @@ extension UserWallpaperMgrViewContent {
             Section {
                 ForEach(userWallpapersSorted, content: drawRow)
                     .onDelete(perform: deleteItems)
-            } footer: {
+            } header: {
                 if userWallpapers.count >= Self.maxEntriesAmount {
                     Text("userWallpaperMgr.footerNotice.maximumEntryAmountReached", bundle: .module)
+                        .textCase(.none)
                         .foregroundStyle(
                             userWallpapers.count < Self.maxEntriesAmount
                                 ? Color.secondary
                                 : .orange
                         )
                 }
+            } footer: {
+                Text("userWallpaperMgr.navDescription", bundle: .module)
             }
             if userWallpapers.isEmpty {
                 Section {
@@ -243,6 +246,7 @@ extension UserWallpaperMgrViewContent {
                         newWallpapers.insert(currentEditingWallpaper)
                         withAnimation {
                             userWallpapers = newWallpapers
+                            alertToastEventStatus.isWallpaperCreationSucceeded.toggle()
                         }
                     }
                     isNameEditorVisible = false
@@ -250,6 +254,12 @@ extension UserWallpaperMgrViewContent {
                     Text("sys.done".i18nBaseKit)
                 }
                 .buttonStyle(.borderedProminent)
+                Button {
+                    currentEditingWallpaper = nil
+                    isNameEditorVisible = false
+                } label: {
+                    Text("sys.cancel".i18nBaseKit)
+                }
             }
         )
     }
@@ -259,10 +269,14 @@ extension UserWallpaperMgrViewContent {
         switch sheetType {
         case .isAddingWallpaper:
             UserWallpaperMakerView { finishedWallpaper in
-                var allUserWallpapers = userWallpapersSorted.prefix(Self.maxEntriesAmount)
-                allUserWallpapers.insert(finishedWallpaper, at: 0)
-                userWallpapers = .init(allUserWallpapers)
-                alertToastEventStatus.isWallpaperCreationSucceeded.toggle()
+                withAnimation {
+                    alertToastEventStatus.isWallpaperCreationSucceeded.toggle()
+                    currentEditingWallpaper = finishedWallpaper
+                    var allUserWallpapers = userWallpapersSorted
+                    allUserWallpapers.insert(finishedWallpaper, at: 0)
+                    userWallpapers = .init(allUserWallpapers)
+                    isNameEditorVisible = true
+                }
             } failureHandler: {
                 alertToastEventStatus.isWallpaperCreationFailed.toggle()
             }
