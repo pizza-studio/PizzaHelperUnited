@@ -256,6 +256,11 @@ struct ProfileManagerPageContent: View {
                 try? modelContext.save()
                 Defaults[.pzProfiles].removeValue(forKey: uuidToDelete.uuidString)
                 UserDefaults.profileSuite.synchronize()
+                #if os(iOS) || targetEnvironment(macCatalyst)
+                if profiles.isEmpty {
+                    isEditMode = .inactive
+                }
+                #endif
             } label: {
                 Text("profileMgr.delete.title".i18nPZHelper)
             }
@@ -339,6 +344,11 @@ struct ProfileManagerPageContent: View {
                 Defaults[.pzProfiles].removeValue(forKey: $0.uuidString)
             }
         }
+        #if os(iOS) || targetEnvironment(macCatalyst)
+        if profiles.isEmpty {
+            isEditMode = .inactive
+        }
+        #endif
     }
 
     private func moveItems(from source: IndexSet, to destination: Int) {
