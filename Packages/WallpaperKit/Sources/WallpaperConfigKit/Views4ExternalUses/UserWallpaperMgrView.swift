@@ -40,25 +40,51 @@ public struct UserWallpaperMgrViewContent: View {
                         }
                     }
                     #endif
-                    if !userWallpapers.isEmpty {
-                        ToolbarItem(placement: .confirmationAction) {
+
+                    ToolbarItem(placement: .confirmationAction) {
+                        UserWallpaperExchangeMenu { importFileResult in
+                            switch importFileResult {
+                            case .failure:
+                                alertToastEventStatus.isWallpaperTaskFailed.toggle()
+                            case let .success(url):
+                                defer {
+                                    url.stopAccessingSecurityScopedResource()
+                                }
+                                guard url.startAccessingSecurityScopedResource() else {
+                                    alertToastEventStatus.isWallpaperTaskFailed.toggle()
+                                    return
+                                }
+                                do {
+                                    try UserWallpaperPack.loadAndParse(url)
+                                } catch {
+                                    alertToastEventStatus.isWallpaperTaskFailed.toggle()
+                                    return
+                                }
+                                alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
+                            }
+                        } extraItem: {
                             Button {
                                 currentSheet = .isAddingWallpaper
                             } label: {
-                                Image(systemSymbol: .plusCircle)
+                                Label {
+                                    Text("userWallpaperMgr.menu.addNewWallpaper", bundle: .module)
+                                } icon: {
+                                    Image(systemSymbol: .photoBadgePlus)
+                                }
                             }
                             .disabled(userWallpapers.count >= Self.maxEntriesAmount)
                         }
+                        .disabled(isEditing)
                     }
                 }
-                .toast(isPresenting: $alertToastEventStatus.isWallpaperCreationSucceeded) {
+                .toast(isPresenting: $alertToastEventStatus.isWallpaperTaskSucceeded) {
                     AlertToast(
                         displayMode: .alert,
                         type: .complete(.green),
                         title: "userWallpaperMgr.toast.taskSucceeded".i18nWPConfKit
                     )
                 }
-                .toast(isPresenting: $alertToastEventStatus.isWallpaperCreationFailed) {
+                .toast(isPresenting: $alertToastEventStatus.isWallpaperTaskFailed) {
                     AlertToast(
                         displayMode: .alert,
                         type: .error(.red),
@@ -75,8 +101,8 @@ public struct UserWallpaperMgrViewContent: View {
 
     @Observable
     final class AlertToastEventStatus: ObservableObject {
-        public var isWallpaperCreationSucceeded = false
-        public var isWallpaperCreationFailed = false
+        public var isWallpaperTaskSucceeded = false
+        public var isWallpaperTaskFailed = false
     }
 
     enum SheetType: String, Identifiable, Hashable {
@@ -221,6 +247,9 @@ extension UserWallpaperMgrViewContent {
                         isEditMode = .inactive
                     }
                     #endif
+                    Task { @MainActor in
+                        Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                    }
                 }
             } label: {
                 Text("userWallpaperMgr.contextMenu.removeWallpaperEntry", bundle: .module)
@@ -246,7 +275,10 @@ extension UserWallpaperMgrViewContent {
                         newWallpapers.insert(currentEditingWallpaper)
                         withAnimation {
                             userWallpapers = newWallpapers
-                            alertToastEventStatus.isWallpaperCreationSucceeded.toggle()
+                            alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
+                            Task { @MainActor in
+                                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                            }
                         }
                     }
                     isNameEditorVisible = false
@@ -270,15 +302,18 @@ extension UserWallpaperMgrViewContent {
         case .isAddingWallpaper:
             UserWallpaperMakerView { finishedWallpaper in
                 withAnimation {
-                    alertToastEventStatus.isWallpaperCreationSucceeded.toggle()
+                    alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
                     currentEditingWallpaper = finishedWallpaper
                     var allUserWallpapers = userWallpapersSorted
                     allUserWallpapers.insert(finishedWallpaper, at: 0)
                     userWallpapers = .init(allUserWallpapers)
                     isNameEditorVisible = true
+                    Task { @MainActor in
+                        Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                    }
                 }
             } failureHandler: {
-                alertToastEventStatus.isWallpaperCreationFailed.toggle()
+                alertToastEventStatus.isWallpaperTaskFailed.toggle()
             }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -304,6 +339,9 @@ extension UserWallpaperMgrViewContent {
                 isEditMode = .inactive
             }
             #endif
+            Task { @MainActor in
+                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+            }
         }
     }
 
