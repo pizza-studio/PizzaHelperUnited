@@ -768,73 +768,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maximal 10 Benutzertapeten erlaubt."
+            "value" : "Maximal 10 Benutzertapeten möglich. Während diese Einschränkung durch den Import eines Pakets von Benutzertapeten möglicherweise umgangen werden kann, beachten Sie bitte, dass dies zu Leistungsproblemen führen kann, da alle Einträge in UserDefaults gespeichert werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maximum 10 user wallpapers allowed."
+            "value" : "Maximum 10 user wallpapers allowed. While this restriction can possibly be breached by importing a pack of user wallpapers, please beware that this breach may cause performance issues since all entries are having their data stored in UserDefaults."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Se permiten máximo 10 fondos de pantalla de usuario."
+            "value" : "Máximo 10 fondos de pantalla permitidos. Si bien esta restricción puede ser evadida importando un paquete de fondos de pantalla de usuario, tenga en cuenta que esto puede causar problemas de rendimiento ya que todos los datos se almacenan en UserDefaults."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maximum na 10 wallpaper ng user ang pinapayagan."
+            "value" : "Maximum 10 wallpaper ang pinapayagan. Bagaman ang paghihigpit na ito ay maaaring malabag sa pamamagitan ng pag-import ng isang pack ng mga wallpaper ng user, mangyaring mag-ingat na ang paglabag na ito ay maaaring magdulot ng mga isyu sa pagganap dahil ang lahat ng entry ay naka-store ang kanilang data sa UserDefaults."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maximum 10 fonds d'écran utilisateur autorisés."
+            "value" : "Maximum 10 fonds d'écran autorisés. Bien que cette restriction puisse être contournée en important un pack de fonds d'écran utilisateur, veuillez noter que cela peut causer des problèmes de performance car toutes les entrées sont stockées dans UserDefaults."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Massimo 10 sfondi utente consentiti."
+            "value" : "Massimo 10 sfondi consentiti. Sebbene questa restrizione possa essere aggirata importando un pacchetto di sfondi utente, si prega di notare che questo potrebbe causare problemi di prestazioni poiché tutti i dati sono memorizzati in UserDefaults."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ユーザー壁紙は最大10点まで登録できます。"
+            "value" : "壁紙は最大10点まで。この制限はユーザー壁紙のパックをインポートすることで回避できる可能性がありますが、全てのデータは UserDefaults に保存されているため、パフォーマンスに影響を与える可能性があることにご注意ください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "최대 10개의 사용자 배경화면이 허용됩니다."
+            "value" : "최대 10개의 배경화면 허용. 사용자 배경화면 팩을 가져오기하여 이 제한을 우회할 수 있지만, 모든 항목이 UserDefaults에 저장되므로 성능 문제가 발생할 수 있습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Разрешено максимум 10 пользовательских обоев."
+            "value" : "Максимум 10 обоев разрешено. Хотя это ограничение может быть обойдено путем импорта пакета пользовательских обоев, имейте в виду, что это может вызвать проблемы с производительностью, так как все данные хранятся в UserDefaults."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tối đa 10 hình nền người dùng được phép."
+            "value" : "Tối đa 10 hình nền được phép. Mặc dù có thể vượt qua giới hạn này bằng cách nhập một gói hình nền người dùng, xin lưu ý rằng điều này có thể gây ra các vấn đề về hiệu suất vì tất cả dữ liệu được lưu trữ trong UserDefaults."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "最多允许登记10张用户壁纸。"
+            "value" : "最多可添加 10 张壁纸。虽然通过导入壁纸包的方式或许可以强行突破这个限制，但请注意这可能会导致效能问题，因为所有条目都存储在 UserDefaults 中。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "最多允許登記10張使用者壁紙。"
+            "value" : "最多可新增 10 張壁紙。雖然藉由匯入壁紙包的方式或許可以強行突破這個限制，但請注意這可能會導致效能問題，因為所有條目都儲存在 UserDefaults 中。"
           }
         }
       }
