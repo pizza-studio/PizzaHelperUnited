@@ -32,6 +32,7 @@ struct ProfileBackupRestoreMenu<T: View>: View {
             } label: {
                 Label("profileMgr.exchange.export.menuTitle".i18nPZHelper, systemSymbol: .squareAndArrowUpOnSquare)
             }
+            .disabled(profiles.isEmpty)
             Divider()
             Button {
                 theVM.isImporterVisible = true
