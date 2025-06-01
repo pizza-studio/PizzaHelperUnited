@@ -9,29 +9,187 @@ import CoreImage
 #endif
 import UniformTypeIdentifiers
 
-// MARK: - Image Constructor from path.
+// MARK: - Constructors
 
 extension CGImage {
-    public static func instantiate(data: Data) -> CGImage? {
+    /// 从Data建立副本
+    public static func instantiate(data: Data, forceJPEG: Bool = false) -> CGImage? {
         guard let dataProvider = CGDataProvider(data: data as CFData) else { return nil }
-        let imageSource = CGImageSourceCreateWithDataProvider(dataProvider, nil)
-        guard let imageSource else { return nil }
-        return CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
+        guard let imageSource = CGImageSourceCreateWithDataProvider(dataProvider, nil) else { return nil }
+        return loadImage(from: imageSource, forceJPEG: forceJPEG)
     }
 
-    public static func instantiate(filePath path: String) -> CGImage? {
+    /// 从路径建立副本
+    public static func instantiate(filePath path: String, forceJPEG: Bool = false) -> CGImage? {
         guard let imageSource = CGImageSourceCreateWithURL(
             URL(fileURLWithPath: path) as CFURL,
             nil
         ) else { return nil }
-        return CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
+        return loadImage(from: imageSource, forceJPEG: forceJPEG)
     }
 
-    public static func instantiate(url: URL) -> CGImage? {
+    /// 从URL建立副本
+    public static func instantiate(url: URL, forceJPEG: Bool = false) -> CGImage? {
         guard let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil) else { return nil }
-        return CGImageSourceCreateImageAtIndex(imageSource, 0, nil)
+        return loadImage(from: imageSource, forceJPEG: forceJPEG)
     }
 
+    /// 不带JPEG类型提示的共享选项
+    private static var sharedCGImageOptions: CFDictionary {
+        [
+            kCGImageSourceShouldCache: true,
+            kCGImageSourceShouldAllowFloat: true,
+            kCGImageSourceCreateThumbnailWithTransform: true,
+            kCGImageSourceCreateThumbnailFromImageIfAbsent: true,
+        ] as CFDictionary
+    }
+
+    /// 带JPEG类型提示的共享选项
+    private static var sharedCGImageOptionsJPEG: CFDictionary {
+        [
+            kCGImageSourceShouldCache: true,
+            kCGImageSourceShouldAllowFloat: true,
+            kCGImageSourceCreateThumbnailWithTransform: true,
+            kCGImageSourceCreateThumbnailFromImageIfAbsent: true,
+            kCGImageSourceTypeIdentifierHint: UTType.jpeg.identifier as CFString,
+        ] as CFDictionary
+    }
+
+    /// 共享的重新编码选项
+    private static var sharedCGImageDestinationOptions: CFDictionary {
+        [
+            kCGImageDestinationLossyCompressionQuality: 1.0,
+            kCGImageDestinationEmbedThumbnail: false,
+            kCGImagePropertyColorModel: kCGImagePropertyColorModelRGB,
+            kCGImageDestinationMetadata: [] as CFArray, // Strip all metadata, including color profile
+        ] as CFDictionary
+    }
+
+    /// 通过CGContext进行替代解码。
+    /// 有些表情包的图片是用 URGB 色彩空间编码的，必须手动解码，否则只能解出一张白色噪点图。
+    private static func decodeImageManually(_ sourceImage: CGImage, width: Int, height: Int) -> CGImage? {
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipLast.rawValue)
+        guard let context = CGContext(
+            data: nil,
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bytesPerRow: 0,
+            space: colorSpace,
+            bitmapInfo: bitmapInfo.rawValue
+        ) else {
+            print("Failed to create CGContext for manual decoding")
+            return nil
+        }
+
+        context.draw(sourceImage, in: CGRect(x: 0, y: 0, width: width, height: height))
+        return context.makeImage()
+    }
+
+    /// 处理通用图像加载和重新编码逻辑的私有方法
+    private static func loadImage(from source: CGImageSource, forceJPEG: Bool) -> CGImage? {
+        // Debug: 诊断 Image 中继资料
+        var width = 0
+        var height = 0
+        if let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [String: Any] {
+            print("Image Properties: \(properties)")
+            if let jfif = properties[kCGImagePropertyJFIFDictionary as String] as? [String: Any],
+               let isProgressive = jfif[kCGImagePropertyJFIFIsProgressive as String] as? Bool {
+                print("Progressive JPEG: \(isProgressive)")
+            }
+            if let profile = properties[kCGImagePropertyProfileName as String] {
+                print("Color Profile: \(profile)")
+            }
+            if let exif = properties[kCGImagePropertyExifDictionary as String] as? [String: Any] {
+                print("EXIF Data: \(exif)")
+            }
+            if let pixelWidth = properties[kCGImagePropertyPixelWidth as String] as? Int,
+               let pixelHeight = properties[kCGImagePropertyPixelHeight as String] as? Int {
+                width = pixelWidth
+                height = pixelHeight
+                print("Dimensions: \(width)x\(height)")
+            }
+        }
+
+        // 针对是否启用 forceJPEG 的情况启用不同的 options
+        let options = forceJPEG ? sharedCGImageOptionsJPEG : sharedCGImageOptions
+
+        // 尝试直接读取
+        if let cgImage = CGImageSourceCreateImageAtIndex(source, 0, options) {
+            print("Direct loading successful")
+            // 尝试手动解码，以求绕过有故障的色彩空间配置
+            if width > 0, height > 0, let decodedImage = decodeImageManually(cgImage, width: width, height: height) {
+                print("Manual decoding successful")
+                return decodedImage
+            }
+            print("Manual decoding skipped or failed, returning direct-loaded image")
+            return cgImage
+        }
+
+        print("Direct loading failed, attempting re-encoding...")
+
+        // 回退：重新编码，将色彩空间标准化
+        guard let destinationData = CFDataCreateMutable(nil, 0) else {
+            print("Failed to create mutable data for re-encoding")
+            return nil
+        }
+        guard let destination = CGImageDestinationCreateWithData(
+            destinationData,
+            UTType.jpeg.identifier as CFString,
+            1,
+            nil
+        ) else {
+            print("Failed to create image destination")
+            return nil
+        }
+
+        CGImageDestinationAddImageFromSource(destination, source, 0, sharedCGImageDestinationOptions)
+        guard CGImageDestinationFinalize(destination) else {
+            print("Failed to finalize re-encoding")
+            return nil
+        }
+
+        guard let newDataProvider = CGDataProvider(data: destinationData) else {
+            print("Failed to create data provider for re-encoded image")
+            return nil
+        }
+        guard let newImageSource = CGImageSourceCreateWithDataProvider(newDataProvider, nil) else {
+            print("Failed to create image source for re-encoded image")
+            return nil
+        }
+
+        // 检查重新编码的 Image 的属性是否合理
+        if let reencodedProperties = CGImageSourceCopyPropertiesAtIndex(newImageSource, 0, nil) as? [String: Any] {
+            print("Re-encoded Image Properties: \(reencodedProperties)")
+            if let profile = reencodedProperties[kCGImagePropertyProfileName as String] {
+                print("Re-encoded Color Profile: \(profile)")
+            } else {
+                print("Re-encoded image has no color profile")
+            }
+        }
+
+        if let reencodedImage = CGImageSourceCreateImageAtIndex(newImageSource, 0, options) {
+            print("Re-encoding successful")
+            // 尝试将重新编码过的 Image 手动解码
+            if width > 0, height > 0, let decodedImage = decodeImageManually(
+                reencodedImage,
+                width: width,
+                height: height
+            ) {
+                print("Manual decoding of re-encoded image successful")
+                return decodedImage
+            }
+            print("Manual decoding of re-encoded image skipped or failed, returning re-encoded image")
+            return reencodedImage
+        } else {
+            print("Re-encoding failed to produce a valid image")
+            return nil
+        }
+    }
+}
+
+extension CGImage {
     public func zoomed(_ factor: CGFloat, quality: CGInterpolationQuality = .high) -> CGImage? {
         guard factor > 0 else { return nil }
         let size: CGSize = .init(width: CGFloat(width) * factor, height: CGFloat(height) * factor)
