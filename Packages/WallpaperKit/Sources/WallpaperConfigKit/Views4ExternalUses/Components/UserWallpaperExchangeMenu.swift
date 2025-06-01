@@ -40,6 +40,7 @@ struct UserWallpaperExchangeMenu<T: View>: View {
                     Image(systemSymbol: .squareAndArrowUpOnSquare)
                 }
             }
+            .disabled(userWallpapers.isEmpty)
             Divider()
             Button {
                 theVM.isImporterVisible = true
