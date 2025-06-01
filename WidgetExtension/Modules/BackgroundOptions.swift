@@ -124,3 +124,27 @@ extension Wallpaper {
             : localizedName
     }
 }
+
+// MARK: - User Wallpaper Implementations.
+
+extension WidgetUserWallpaperAppEntity {
+    static var defaultWallpaper: Self? {
+        allOptions.first
+    }
+
+    static var allOptions: [Self] {
+        Defaults[.userWallpapers].sorted {
+            $0.timestamp < $1.timestamp
+        }.map { .init(
+            id: $0.id.uuidString,
+            displayString: "\($0.name) (\($0.dateString))"
+        )
+        }
+    }
+
+    var unwrapped: UserWallpaper? {
+        Defaults[.userWallpapers].first {
+            $0.id.uuidString == self.id
+        }
+    }
+}
