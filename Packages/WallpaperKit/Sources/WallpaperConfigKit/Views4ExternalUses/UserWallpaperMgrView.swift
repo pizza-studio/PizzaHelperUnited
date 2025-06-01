@@ -286,12 +286,14 @@ extension UserWallpaperMgrViewContent {
                     Text("sys.done".i18nBaseKit)
                 }
                 .buttonStyle(.borderedProminent)
+                .keyboardShortcut(.return)
                 Button {
                     currentEditingWallpaper = nil
                     isNameEditorVisible = false
                 } label: {
                     Text("sys.cancel".i18nBaseKit)
                 }
+                .keyboardShortcut(.escape)
             }
         )
     }
