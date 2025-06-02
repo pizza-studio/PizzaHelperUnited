@@ -191,30 +191,42 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         let mainContent = contentView
         #if !os(watchOS)
             .background {
-                Group {
-                    let randomCardBg: Image = (Wallpaper.allCases.randomElement() ?? .defaultValue())
+                if let userWallpaperOverride, context.state.background != .noBackground {
+                    userWallpaperOverride
+                        .resizable()
+                        .scaledToFill()
+                    Color.black
+                        .opacity(0.3)
+                } else {
+                    Group {
+                        let randomCardBg: Image = (
+                            Wallpaper.allCases(
+                                for: context.state.game
+                            ).randomElement() ?? .defaultValue()
+                        )
                         .image4LiveActivity
-                    switch context.state.background {
-                    case .random:
-                        randomCardBg
-                            .resizable()
-                            .scaledToFill()
-                        Color.black
-                            .opacity(0.3)
-                    case .customize:
-                        let chosenCardBackgrounds = Wallpaper.allCases.filter { wallpaper in
-                            backgroundIDs.contains(wallpaper.assetName4LiveActivity)
+                        switch context.state.background {
+                        case .random:
+                            randomCardBg
+                                .resizable()
+                                .scaledToFill()
+                            Color.black
+                                .opacity(0.3)
+                        case .customize:
+                            let chosenCardBackgrounds = Wallpaper.allCases.filter { wallpaper in
+                                backgroundIDs.contains(wallpaper.assetName4LiveActivity)
+                            }
+                            (chosenCardBackgrounds.randomElement()?.image4LiveActivity ?? randomCardBg)
+                                .resizable()
+                                .scaledToFill()
+                            Color.black
+                                .opacity(0.3)
+                        case .noBackground:
+                            EmptyView()
                         }
-                        (chosenCardBackgrounds.randomElement()?.image4LiveActivity ?? randomCardBg)
-                            .resizable()
-                            .scaledToFill()
-                        Color.black
-                            .opacity(0.3)
-                    case .noBackground:
-                        EmptyView()
                     }
+                    .scaleEffect(1.01) // HSR 的名片有光边。
                 }
-                .scaleEffect(1.01) // HSR 的名片有光边。
             }
         #endif
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -313,6 +325,17 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
     // MARK: Private
 
     @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
+    @Default(.userWallpapers4LiveActivity) private var userWallpaperIDs4LiveActivity: Set<String>
+
+    private var userWallpapers4LiveActivity: Set<UserWallpaper> {
+        .init(defaultsValueIDs: userWallpaperIDs4LiveActivity)
+    }
+
+    private var userWallpaperOverride: Image? {
+        let cgImage = userWallpapers4LiveActivity.randomElement()?.imageHorizontal
+        guard let cgImage else { return nil }
+        return Image(decorative: cgImage, scale: 1, orientation: .up)
+    }
 }
 
 #endif
