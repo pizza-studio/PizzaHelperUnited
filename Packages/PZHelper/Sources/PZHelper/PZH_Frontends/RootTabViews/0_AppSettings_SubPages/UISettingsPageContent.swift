@@ -22,6 +22,14 @@ struct UISettingsPageContent: View {
                     .alignmentGuide(.listRowSeparatorLeading) { d in
                         d[.leading]
                     }
+            } header: {
+                Text(AppWallpaperSettingsPicker.navSectionHeader)
+                    .textCase(.none)
+            } footer: {
+                Text(AppWallpaperSettingsPicker.navDescription)
+            }
+
+            Section {
                 Toggle(isOn: $restoreTabOnLaunching) {
                     Text("setting.display.restoreTabOnLaunching".i18nPZHelper)
                 }
