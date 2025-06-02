@@ -17,21 +17,35 @@ public struct AppWallpaperSettingsPicker: View {
 
     // MARK: Public
 
+    public static let navSectionHeader: String = {
+        let key: String.LocalizationValue = "settings.display.appWallpaper.navSectionHeader"
+        return .init(localized: key, bundle: .module)
+    }()
+
+    public static let navDescription: String = {
+        let key: String.LocalizationValue = "settings.display.appWallpaper.navDescription"
+        return .init(localized: key, bundle: .module)
+    }()
+
     public var body: some View {
+        Picker(
+            "settings.display.appUserWallpaper".i18nWPConfKit,
+            selection: $userWallpaperID4App
+        ) {
+            ForEach(userWallpapersSorted) { userWallpaper in
+                let isChosen = userWallpaperID4App == userWallpaper.id.uuidString
+                drawUserWallpaperLabel(userWallpaper, isChosen: isChosen)
+                    .tag(userWallpaper.id.uuidString)
+            }
+        }
+        #if os(iOS) || targetEnvironment(macCatalyst)
+        .pickerStyle(.navigationLink)
+        #endif
         Picker("settings.display.appBackground".i18nWPConfKit, selection: $background4App) {
             ForEach(Wallpaper.allCases) { wallpaper in
-                Label {
-                    Text(wallpaperName(for: wallpaper))
-                } icon: {
-                    GeometryReader { g in
-                        wallpaper.image4LiveActivity
-                            .resizable()
-                            .scaledToFill()
-                            .offset(x: -g.size.width)
-                    }
-                    .clipShape(Circle())
-                    .frame(width: 30, height: 30)
-                }.tag(wallpaper)
+                let isChosen = wallpaper.id == background4App.id
+                drawBundledWallpaperLabel(wallpaper, isChosen: isChosen)
+                    .tag(wallpaper)
             }
         }
         #if os(iOS) || targetEnvironment(macCatalyst)
@@ -41,13 +55,58 @@ public struct AppWallpaperSettingsPicker: View {
 
     // MARK: Internal
 
-    @Default(.useRealCharacterNames) var useRealCharacterNames: Bool
-    @Default(.forceCharacterWeaponNameFixed) var forceCharacterWeaponNameFixed: Bool
-    @Default(.customizedNameForWanderer) var customizedNameForWanderer: String
+    @ViewBuilder
+    func drawUserWallpaperLabel(_ wallpaper: UserWallpaper, isChosen: Bool) -> some View {
+        let cgImage = wallpaper.imageSquared
+        let iconImage: Image = {
+            if let cgImage { return Image(decorative: cgImage, scale: 1, orientation: .up) }
+            return Image(systemSymbol: .trashSlashFill)
+        }()
+        /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
+        HStack {
+            iconImage
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+                .frame(width: 32, height: 32).padding(.trailing, 4)
+            Text(wallpaper.name)
+                .multilineTextAlignment(.leading)
+                .foregroundColor(isChosen ? .accentColor : .primary)
+        }
+    }
+
+    @ViewBuilder
+    func drawBundledWallpaperLabel(_ wallpaper: Wallpaper, isChosen: Bool) -> some View {
+        /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
+        HStack {
+            GeometryReader { g in
+                wallpaper.image4LiveActivity
+                    .resizable()
+                    .scaledToFill()
+                    .offset(x: -g.size.width)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 4))
+            .frame(width: 32, height: 32).padding(.trailing, 4)
+            Text(wallpaperName(for: wallpaper))
+                .multilineTextAlignment(.leading)
+                .foregroundColor(isChosen ? .accentColor : .primary)
+        }
+    }
 
     // MARK: Private
 
+    @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
+    @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
+    @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
+    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
     @Default(.background4App) private var background4App: Wallpaper
+    @Default(.userWallpaper4App) private var userWallpaperID4App: String?
+
+    private var userWallpapersSorted: [UserWallpaper] {
+        userWallpapers.sorted {
+            $0.timestamp > $1.timestamp
+        }
+    }
 
     private func wallpaperName(for wallpaper: Wallpaper) -> String {
         var result = useRealCharacterNames ? wallpaper.localizedRealName : wallpaper.localizedName
