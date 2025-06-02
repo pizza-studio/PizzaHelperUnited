@@ -32,6 +32,8 @@ public struct AppWallpaperSettingsPicker: View {
             "settings.display.appUserWallpaper".i18nWPConfKit,
             selection: $userWallpaperID4App
         ) {
+            drawUserWallpaperLabel(nil, isChosen: userWallpaperID4App == nil)
+                .tag(String?.none)
             ForEach(userWallpapersSorted) { userWallpaper in
                 let isChosen = userWallpaperID4App == userWallpaper.id.uuidString
                 drawUserWallpaperLabel(userWallpaper, isChosen: isChosen)
@@ -56,8 +58,8 @@ public struct AppWallpaperSettingsPicker: View {
     // MARK: Internal
 
     @ViewBuilder
-    func drawUserWallpaperLabel(_ wallpaper: UserWallpaper, isChosen: Bool) -> some View {
-        let cgImage = wallpaper.imageSquared
+    func drawUserWallpaperLabel(_ wallpaper: UserWallpaper?, isChosen: Bool) -> some View {
+        let cgImage = wallpaper?.imageSquared
         let iconImage: Image = {
             if let cgImage { return Image(decorative: cgImage, scale: 1, orientation: .up) }
             return Image(systemSymbol: .trashSlashFill)
@@ -69,9 +71,18 @@ public struct AppWallpaperSettingsPicker: View {
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
                 .frame(width: 32, height: 32).padding(.trailing, 4)
-            Text(wallpaper.name)
+            if let wallpaperName = wallpaper?.name {
+                Text(wallpaperName)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(isChosen ? .accentColor : .primary)
+            } else {
+                Text(
+                    "settings.display.appWallpaper.userWallPaper.notSpecified",
+                    bundle: .module
+                )
                 .multilineTextAlignment(.leading)
                 .foregroundColor(isChosen ? .accentColor : .primary)
+            }
         }
     }
 
