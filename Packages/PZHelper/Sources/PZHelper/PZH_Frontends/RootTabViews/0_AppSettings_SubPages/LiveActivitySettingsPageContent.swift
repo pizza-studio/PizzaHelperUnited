@@ -121,9 +121,16 @@ struct LiveActivitySettingsPageContent: View {
                             Text("settings.resinTimer.background.choose", bundle: .module)
                         }
                     }
+                    NavigationLink {
+                        LiveActivityUserWallpaperPicker()
+                    } label: {
+                        Text(LiveActivityUserWallpaperPicker.navTitleForChoose)
+                    }
                 }
             } header: {
                 Text("settings.resinTimer.background.navTitle".i18nWPConfKit)
+            } footer: {
+                Text(LiveActivityUserWallpaperPicker.navDescription)
             }
         }
         .formStyle(.grouped)
@@ -153,8 +160,9 @@ struct LiveActivitySettingsPageContent: View {
 
     // MARK: Private
 
+    @Default(.userWallpapers4LiveActivity) private var userWallpaperIDs4LiveActivity: Set<String>
+    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
     @State private var isHowToCloseDynamicIslandAlertShow: Bool = false
-
     @State private var allowLiveActivity: Bool = ResinRecoveryActivityController.shared.allowLiveActivity
 
     @ViewBuilder private var osSettingsLink: some View {
