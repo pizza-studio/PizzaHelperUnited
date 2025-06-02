@@ -1763,73 +1763,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Benutzerdefinierte Hintergründe sind nur für Desktop-Widgets für iOS und macOS verfügbar und werden nicht in der Tapetengalerie aufgeführt. Sobald ein Desktop-Widget mit seinem benutzerdefinierten Hintergrund korrekt konfiguriert ist, überschreibt der benutzerdefinierte Hintergrund automatisch die Widget-Hintergrundanzeige-Einstellung."
+            "value" : "Benutzerdefinierte Hintergründe werden nicht in der Tapetengalerie aufgeführt und sind unabhängig von den mitgelieferten Hintergründen der App. Sobald ein benutzerdefinierter Hintergrund korrekt konfiguriert ist (z.B. Live-Aktivität, Desktop-Widget usw.), ersetzt dieser automatisch die Anzeige des Hintergrundbildes (das mitgelieferte Hintergründe verwendet)."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User-supplied wallpapers are only for desktop widgets for iOS and macOS and are not listed in the Wallpaper Gallery. Once a desktop widget has its user-supplied wallpaper configured correctly, the user-supplied wallpaper will automatically override its widget background display setting."
+            "value" : "User-supplied wallpapers are not listed in the Wallpaper Gallery and are independent of the app's bundled wallpapers. Once it gets correctly configured with a user-supplied wallpaper in some place (i.e. live activity, a desktop widget, etc.), it will automatically replace the display of the background image (which uses bundled wallpapers)."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los fondos de pantalla proporcionados por el usuario son solo para widgets de escritorio para iOS y macOS y no aparecen en la Galería de Fondos de Pantalla. Una vez que un widget de escritorio tiene su fondo de pantalla proporcionado por el usuario configurado correctamente, este anulará automáticamente la configuración de visualización del fondo del widget."
+            "value" : "Los fondos de pantalla proporcionados por el usuario no se muestran en la Galería de Fondos de Pantalla y son independientes de los fondos incluidos en la aplicación. Una vez que está correctamente configurado con un fondo de pantalla proporcionado por el usuario en algún lugar (es decir, actividad en vivo, widget de escritorio, etc.), reemplazará automáticamente la visualización de la imagen de fondo (que utiliza fondos incluidos)."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang mga wallpaper na ibinigay ng user ay para lamang sa mga desktop widget para sa iOS at macOS at hindi nakalista sa Gallery ng mga Wallpaper. Kapag ang desktop widget ay maayos na na-configure ang wallpaper na ibinigay ng user, awtomatikong ma-o-override ng wallpaper na ibinigay ng user ang setting ng display ng background ng widget."
+            "value" : "Ang mga wallpaper na ibinigay ng user ay hindi nakalista sa Gallery ng mga Wallpaper at hindi nakadepende sa mga nakabalot na wallpaper ng app. Kapag ito ay maayos na na-configure gamit ang wallpaper na ibinigay ng user sa ilang lugar (hal. live activity, desktop widget, atbp.), awtomatiko nitong papalitan ang display ng background image (na gumagamit ng mga nakabalot na wallpaper)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les fonds d'écran fournis par l'utilisateur ne sont que pour les widgets de bureau pour iOS et macOS et ne sont pas répertoriés dans la galerie des arrière-plans. Une fois qu'un widget de bureau a son fond d'écran fourni par l'utilisateur correctement configuré, celui-ci remplacera automatiquement le paramètre d'affichage de l'arrière-plan du widget."
+            "value" : "Les fonds d'écran fournis par l'utilisateur ne sont pas répertoriés dans la galerie des arrière-plans et sont indépendants des fonds d'écran intégrés à l'application. Une fois correctement configuré avec un fond d'écran fourni par l'utilisateur à certains endroits (c'est-à-dire activité en direct, widget de bureau, etc.), il remplacera automatiquement l'affichage de l'image de fond (qui utilise les fonds d'écran intégrés)."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gli sfondi forniti dall'utente sono solo per i widget desktop per iOS e macOS e non sono elencati nella Galleria di Sfondi. Una volta che un widget desktop ha il suo sfondo fornito dall'utente configurato correttamente, questo sostituirà automaticamente l'impostazione di visualizzazione dello sfondo del widget."
+            "value" : "Gli sfondi forniti dall'utente non sono elencati nella Galleria di Sfondi e sono indipendenti dagli sfondi integrati nell'app. Una volta configurato correttamente con uno sfondo fornito dall'utente in alcuni punti (ad esempio attività in tempo reale, widget desktop, ecc.), sostituirà automaticamente la visualizzazione dell'immagine di sfondo (che utilizza gli sfondi integrati)."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ユーザー提供の壁紙は iOS と macOS のデスクトップウィジェット専用で、壁紙の画廊には表示されません。デスクトップウィジェットのユーザー提供の壁紙が正しく構成されると、ウィジェットの背景表示設定は自動的に上書きされます。"
+            "value" : "ユーザー提供の壁紙は壁紙の画廊には列記されておらず、アプリにバンドルされた壁紙とは独立しています。特定の場所（ライブアクティビティやデスクトップウィジェットなど）でユーザー提供の壁紙が正しく構成されると、背景画像（バンドルされた壁紙を使用）の表示を自動的に置き換えます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "사용자가 제공한 배경화면은 iOS 및 macOS용 데스크톱 위젯에만 사용되며 배경 갤러리에 표시되지 않습니다. 데스크톱 위젯의 사용자 제공 배경화면이 올바르게 구성되면, 위젯의 배경화면 표시 설정을 자동으로 재정의합니다."
+            "value" : "사용자가 제공한 배경화면은 배경 갤러리에 나열되지 않으며 앱의 번들 배경화면과 독립적입니다. 특정 위치(예: 라이브 활동, 데스크톱 위젯 등)에서 사용자가 제공한 배경화면으로 올바르게 구성되면, 배경 이미지(번들 배경화면 사용)의 표시를 자동으로 대체합니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пользовательские обои предназначены только для виджетов рабочего стола iOS и macOS и не отображаются в Галерее обоев. Как только виджет рабочего стола правильно настроен с пользовательскими обоями, они автоматически переопределят настройки отображения фона виджета."
+            "value" : "Пользовательские обои не отображаются в Галерее обоев и независимы от встроенных обоев приложения. Когда они правильно настроены с пользовательскими обоями в определённом месте (т.е. живая активность, виджет рабочего стола и т.д.), они автоматически заменят отображение фонового изображения (использующего встроенные обои)."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hình nền do người dùng cung cấp chỉ dành cho các widget màn hình cho iOS và macOS và không được liệt kê trong Thư viện Hình nền. Khi một widget màn hình đã được cấu hình đúng với hình nền do người dùng cung cấp, hình nền này sẽ tự động ghi đè cài đặt hiển thị nền của widget."
+            "value" : "Hình nền do người dùng cung cấp không được liệt kê trong Thư viện Hình nền và độc lập với hình nền tích hợp của ứng dụng. Khi được cấu hình đúng với hình nền do người dùng cung cấp ở một số nơi (ví dụ: hoạt động trực tiếp, widget màn hình, v.v.), nó sẽ tự động thay thế hiển thị hình nền (sử dụng hình nền tích hợp)."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "用户壁纸仅适用于 iOS 和 macOS 的桌面小工具 (小组件)，且不会在壁纸画廊中列出。正确配置用户壁纸后，该壁纸会自动覆盖其自身的背景图设定。"
+            "value" : "用户壁纸不会在壁纸画廊中列出，且独立于 App 内建壁纸之外。当在某些位置（如实时活动、桌面小工具等）正确配置了用户壁纸后，它将自动替换背景图像（使用内建壁纸）的显示。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用者壁紙僅適用於 iOS 和 macOS 的桌面小工具，且不會在壁紙畫廊中列出。當桌面小工具正確配置使用者壁紙後，該壁紙會自動覆蓋其自身的背景圖設定。"
+            "value" : "使用者壁紙不會在壁紙畫廊中列出，且獨立於應用程式內建壁紙之外。當在某些位置（如即時動態、桌面小工具等）正確配置了使用者壁紙後，它將自動替換背景圖像（使用內建壁紙）的顯示。"
           }
         }
       }
