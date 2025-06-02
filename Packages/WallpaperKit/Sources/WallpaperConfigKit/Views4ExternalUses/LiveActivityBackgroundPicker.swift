@@ -73,10 +73,6 @@ public struct LiveActivityBackgroundPicker: View {
 
     // MARK: Internal
 
-    var columns: Int {
-        max(Int(floor($containerSize.wrappedValue.width / 240)), 1)
-    }
-
     var searchResults: [Wallpaper] {
         if searchText.isEmpty {
             Wallpaper.allCases
