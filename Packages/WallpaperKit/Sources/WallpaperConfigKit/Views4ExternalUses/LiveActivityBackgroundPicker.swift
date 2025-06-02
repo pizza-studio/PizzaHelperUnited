@@ -39,6 +39,7 @@ public struct LiveActivityBackgroundPicker: View {
                                 Text(wallpaperName(for: wallpaper))
                                     .foregroundColor(isThisOneChosen ? .accentColor : .primary)
                                     .fontWidth(.condensed)
+                                    .multilineTextAlignment(.leading)
                                 Spacer()
                                 if isThisOneChosen {
                                     Text(verbatim: "✔︎")
