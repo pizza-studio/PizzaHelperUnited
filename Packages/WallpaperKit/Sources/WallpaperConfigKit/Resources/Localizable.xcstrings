@@ -195,7 +195,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アプリの壁紙"
+            "value" : "アプリの背景画像"
           }
         },
         "ko" : {
@@ -219,13 +219,242 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 壁纸"
+            "value" : "App 背景图像"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 壁紙"
+            "value" : "App 背景圖像"
+          }
+        }
+      }
+    },
+    "settings.display.appUserWallpaper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzertapete der App"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App User Wallpaper"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondo de pantalla del usuario de la aplicación"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallpaper ng User ng App"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fond d'écran utilisateur de l'application"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfondo utente dell'app"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリのユーザー壁紙"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 사용자 배경화면"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пользовательские обои приложения"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hình nền người dùng ứng dụng"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 用户壁纸"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 使用者壁紙"
+          }
+        }
+      }
+    },
+    "settings.display.appWallpaper.navDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Ihre benutzerdefinierten Hintergründe überschreiben immer die Anzeige der gewählten Hintergrundbilder."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Your specified user wallpapers always override the display of chosen background images."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Sus fondos de pantalla de usuario especificados siempre anulan la visualización de las imágenes de fondo elegidas."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Ang iyong mga tinukoy na wallpaper ng user ay palaging nag-o-override sa display ng mga napiling background image."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Vos fonds d'écran utilisateur spécifiés remplacent toujours l'affichage des images de fond choisies."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ I tuoi sfondi utente specificati sovrascrivono sempre la visualizzazione delle immagini di sfondo selezionate."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ ご指定済みのユーザー壁紙は、選択された背景画像の表示を常に上書きします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ 지정한 사용자 배경화면은 항상 선택된 배경 이미지의 표시를 재정의합니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Указанные вами пользовательские обои всегда переопределяют отображение выбранных фоновых изображений."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ Hình nền người dùng được chỉ định của bạn luôn ghi đè lên hiển thị của hình ảnh nền đã chọn."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ 您所指定的用户壁纸会始终覆盖所选背景图像的显示。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ 您所指定的使用者壁紙會始終覆蓋所選背景圖像的顯示。"
+          }
+        }
+      }
+    },
+    "settings.display.appWallpaper.navSectionHeader" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Hintergrund und App-Benutzertapete"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Background and App User Wallpaper"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondo de la aplicación y fondo de pantalla del usuario"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Background ng App at Wallpaper ng User ng App"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrière-plan et fond d'écran utilisateur de l'application"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfondo dell'app e sfondo utente dell'app"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリの背景画像とユーザー壁紙"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 배경 및 앱 사용자 배경화면"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фон приложения и пользовательские обои"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nền ứng dụng và hình nền người dùng ứng dụng"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 背景图像和用户壁纸"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 背景圖像和使用者壁紙"
           }
         }
       }
@@ -2488,7 +2717,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アプリの壁紙とす"
+            "value" : "アプリの背景画像とす"
           }
         },
         "ko" : {
@@ -2512,13 +2741,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "设为 App 壁纸"
+            "value" : "设为 App 背景图像"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "設為 App 壁紙"
+            "value" : "設為 App 背景圖像"
           }
         }
       }
@@ -2565,7 +2794,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ライブアクティビティの壁紙とす"
+            "value" : "ライブアクティビティの背景画像とす"
           }
         },
         "ko" : {
