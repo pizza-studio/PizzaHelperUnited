@@ -22,15 +22,7 @@ extension Wallpaper {
 public struct AppWallpaperView: View {
     // MARK: Lifecycle
 
-    public init(wallpaperOverride: Wallpaper? = nil, forLiveActivity: Bool = false, blur: Bool = false) {
-        self.wallpaperOverride = wallpaperOverride
-        self.forLiveActivity = forLiveActivity
-        self.blur = blur
-    }
-
-    public init(charID4Genshin: String, blur: Bool = false) {
-        self.wallpaperOverride = .findNameCardForGenshinCharacter(charID: charID4Genshin)
-        self.forLiveActivity = false
+    public init(blur: Bool = true) {
         self.blur = blur
     }
 
@@ -54,12 +46,10 @@ public struct AppWallpaperView: View {
 
     // MARK: Internal
 
-    @State var wallpaperOverride: Wallpaper?
-    @State var forLiveActivity: Bool
     @State var blur: Bool
 
     var blurAmount: CGFloat {
-        switch guardedWallpaper.game {
+        switch wallpaper.game {
         case .genshinImpact: 30
         case .starRail: 50
         case .zenlessZone: 50
@@ -68,20 +58,25 @@ public struct AppWallpaperView: View {
     }
 
     var rawImage: Image {
-        let guarded = guardedWallpaper
-        return forLiveActivity ? guarded.image4LiveActivity : guarded.image4CellphoneWallpaper
+        userWallpaperOverride ?? wallpaper.image4CellphoneWallpaper
     }
 
-    var guardedWallpaper: Wallpaper {
-        wallpaperOverride ?? wallpaper
+    var userWallpaperOverride: Image? {
+        let cgImage = UserWallpaper(defaultsValueID: userWallpaperID)?.imageSquared
+        guard let cgImage else { return nil }
+        return Image(decorative: cgImage, scale: 1, orientation: .up)
     }
 
     @ViewBuilder var overlayContent4Blur: some View {
-        switch guardedWallpaper.game {
-        case .genshinImpact: Color.colorSystemGray6.opacity(0.5)
-        case .starRail: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
-        case .zenlessZone: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
-        case .none: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
+        if userWallpaperOverride != nil {
+            Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
+        } else {
+            switch wallpaper.game {
+            case .genshinImpact: Color.colorSystemGray6.opacity(0.5)
+            case .starRail: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
+            case .zenlessZone: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
+            case .none: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
+            }
         }
     }
 
@@ -90,5 +85,6 @@ public struct AppWallpaperView: View {
     @Environment(\.colorScheme) private var colorScheme
 
     @Default(.background4App) private var wallpaper: Wallpaper
+    @Default(.userWallpaper4App) private var userWallpaperID: String?
 }
 #endif

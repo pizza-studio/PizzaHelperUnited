@@ -12,7 +12,7 @@ extension View {
     public func listContainerBackground(wallpaperOverride: Wallpaper? = nil) -> some View {
         background(alignment: .topTrailing) {
             #if !os(watchOS)
-            AppWallpaperView(forLiveActivity: false, blur: true)
+            AppWallpaperView()
             #endif
         }
     }
