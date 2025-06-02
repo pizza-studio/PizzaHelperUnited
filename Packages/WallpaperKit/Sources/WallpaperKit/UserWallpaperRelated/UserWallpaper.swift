@@ -14,12 +14,32 @@ extension Defaults.Keys {
         default: [],
         suite: .baseSuite
     )
+    // User wallpapers for live activity view.
+    public static let userWallpapers4LiveActivity = Key<Set<String>>(
+        "userWallpapers4LiveActivity",
+        default: [],
+        suite: .baseSuite
+    )
+    // User wallpaper for app view.
+    public static let userWallpaper4App = Key<String?>(
+        "userWallpaper4App",
+        default: nil,
+        suite: .baseSuite
+    )
 }
 
 // MARK: - UserWallpaper
 
 public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
     // MARK: Lifecycle
+
+    public init?(defaultsValueID: String?) {
+        guard let defaultsValueID else { return nil }
+        guard let uuid = UUID(uuidString: defaultsValueID) else { return nil }
+        let matched = Defaults[.userWallpapers].first { $0.id == uuid }
+        guard let matched else { return nil }
+        self = matched
+    }
 
     public init?(
         name givenName: String? = nil,
@@ -82,5 +102,13 @@ extension UserWallpaper {
         Defaults[.userWallpapers].sorted {
             $0.timestamp > $1.timestamp
         }
+    }
+}
+
+extension Set where Element == UserWallpaper {
+    public init(defaultsValueIDs: Set<String>) {
+        let uuids = defaultsValueIDs.compactMap { UUID(uuidString: $0) }
+        let validResults = Defaults[.userWallpapers].filter { uuids.contains($0.id) }
+        self = .init(validResults)
     }
 }
