@@ -8321,73 +8321,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Zeitzoneneinstellungen in diesem Abschnitt dienen zur Anzeige mindestens der folgenden Informationen (von Genshin Impact): Abyss-Rang-Statistiken, tägliche Materialien, offizielle In-Game-Events usw."
+            "value" : "Die Zeitzoneneinstellungen in diesem Abschnitt dienen zur Anzeige mindestens der folgenden Informationen (von Genshin Impact): tägliche Materialien, offizielle In-Game-Events usw."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Abyss Rank Statistics, Daily Material, Official In-Game Events, etc."
+            "value" : "The TimeZone settings in this section is for displaying at least the following information (of Genshin Impact): Daily Material, Official In-Game Events, etc."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La configuración de zona horaria en esta sección es para mostrar al menos la siguiente información de inteligencia (de Genshin Impact): estadísticas de rango del abismo, material diario, eventos oficiales en el juego, etc."
+            "value" : "La configuración de zona horaria en esta sección es para mostrar al menos la siguiente información de inteligencia (de Genshin Impact): material diario, eventos oficiales en el juego, etc."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang mga settings ng TimeZone sa bahaging ito ay para sa pagpapakita ng kahit man lang ang sumusunod na impormasyon (ng Genshin Impact): Mga Istatisika ng Ranggo ng Abyss, Pang-araw-araw na Materyal, Opisyal na In-Game na Kaganapan, atbp."
+            "value" : "Ang mga settings ng TimeZone sa bahaging ito ay para sa pagpapakita ng kahit man lang ang sumusunod na impormasyon (ng Genshin Impact): Pang-araw-araw na Materyal, Opisyal na In-Game na Kaganapan, atbp."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les paramètres de fuseau horaire dans cette section servent à afficher au moins les informations suivantes (de Genshin Impact) : statistiques de rangs des profondeurs spiralées, matériaux quotidiens, événements officiels en jeu, etc."
+            "value" : "Les paramètres de fuseau horaire dans cette section servent à afficher au moins les informations suivantes (de Genshin Impact) : matériaux quotidiens, événements officiels en jeu, etc."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le impostazioni del fuso orario in questa sezione servono a visualizzare almeno le seguenti informazioni (di Genshin Impact): statistiche della classifica Abisso, materiali giornalieri, eventi ufficiali nel gioco, ecc."
+            "value" : "Le impostazioni del fuso orario in questa sezione servono a visualizzare almeno le seguenti informazioni (di Genshin Impact): materiali giornalieri, eventi ufficiali nel gioco, ecc."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "この時間帯設定は下記の（原神についての）情報を正しく表示するためである：深境螺旋の統計、毎日の材料、公式のゲームイベント情報など。"
+            "value" : "この時間帯設定は下記の（原神についての）情報を正しく表示するためである：毎日の材料、公式のゲームイベント情報など。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 섹션의 시간대 설정은 다음의 최소한의 정보를 표시하기 위한 것입니다 (원신): 나선 비경 순위 통계, 일일 재료, 공식 인게임 이벤트 등"
+            "value" : "이 섹션의 시간대 설정은 다음의 최소한의 정보를 표시하기 위한 것입니다 (원신): 일일 재료, 공식 인게임 이벤트 등"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Настройки часового пояса в этом разделе предназначены для отображения как минимум следующей информации (о Genshin Impact): статистика рангов бездны, ежедневные материалы, официальные внутриигровые события и т. д."
+            "value" : "Настройки часового пояса в этом разделе предназначены для отображения как минимум следующей информации (о Genshin Impact): ежедневные материалы, официальные внутриигровые события и т. д."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Các cài đặt Múi giờ trong phần này là để hiển thị ít nhất các thông tin sau đây (của Genshin Impact): Thống kê Xếp hạng Abyss, Vật liệu Hàng ngày, Sự kiện Chính thức Trong Trò Chơi, v.v."
+            "value" : "Các cài đặt Múi giờ trong phần này là để hiển thị ít nhất các thông tin sau đây (của Genshin Impact): Vật liệu Hàng ngày, Sự kiện Chính thức Trong Trò Chơi, v.v."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "该时区设定仅用于正确显示至少下述通用原神资讯：深境螺旋排行榜、每日材料、官方游戏活动，等。"
+            "value" : "该时区设定仅用于正确显示至少下述通用原神资讯：每日材料、官方游戏活动，等。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "該時區設定僅用於正確顯示至少下述通用原神資訊：深境螺旋排行榜、每日材料、官方遊戲活動，等。"
+            "value" : "該時區設定僅用於正確顯示至少下述通用原神資訊：每日材料、官方遊戲活動，等。"
           }
         }
       }
