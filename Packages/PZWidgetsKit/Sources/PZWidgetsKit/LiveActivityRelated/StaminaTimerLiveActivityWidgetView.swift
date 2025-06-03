@@ -25,7 +25,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
         #if !os(watchOS)
             .background {
                 LiveActivityWallpaperView(game: context.state.game)
-                    .scaleEffect(context.state.game == .starRail ? 1.01 : 1) // HSR 的名片有光边。
+                    .scaleEffect(context.state.game == .starRail ? 1.05 : 1) // HSR 的名片有光边。
             }
         #endif
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -39,7 +39,9 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
 
     // MARK: Internal
 
-    var useNoBackground: Bool { liveActivityWallpaperIDs == nil }
+    var useNoBackground: Bool {
+        liveActivityWallpaperIDs.contains(Wallpaper.nullLiveActivityWallpaperIdentifier)
+    }
 
     @ViewBuilder var contentView: some View {
         HStack {
@@ -129,7 +131,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
 
     @State private var context: ActivityViewContext<LiveActivityAttributes>
 
-    @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>?
+    @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
 }
 
 #endif

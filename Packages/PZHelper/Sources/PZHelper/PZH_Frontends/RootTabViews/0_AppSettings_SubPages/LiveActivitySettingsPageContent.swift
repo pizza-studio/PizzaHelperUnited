@@ -49,18 +49,11 @@ struct LiveActivitySettingsPageContent: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    @Default(.staminaTimerLiveActivityUseEmptyBackground) var staminaTimerLiveActivityUseEmptyBackground: Bool
-    @Default(.staminaTimerLiveActivityUseCustomizeBackground) var staminaTimerLiveActivityUseCustomizeBackground: Bool
+    @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
     @Default(.autoDeliveryStaminaTimerLiveActivity) var autoDeliveryStaminaTimerLiveActivity: Bool
     @Default(.showExpeditionInLiveActivity) var showExpeditionInLiveActivity: Bool
 
-    var useRandomBackground: Binding<Bool> {
-        .init {
-            !staminaTimerLiveActivityUseCustomizeBackground
-        } set: { newValue in
-            staminaTimerLiveActivityUseCustomizeBackground = !newValue
-        }
-    }
+    var labvParser: LiveActivityBackgroundValueParser { .init($liveActivityWallpaperIDs) }
 
     var body: some View {
         Form {
@@ -103,33 +96,26 @@ struct LiveActivitySettingsPageContent: View {
             }
             Section {
                 Toggle(
-                    isOn: $staminaTimerLiveActivityUseEmptyBackground.animation()
+                    isOn: labvParser.useEmptyBackground.animation()
                 ) {
                     Text("settings.staminaTimer.useTransparentBackground.title", bundle: .module)
                 }
-                if !staminaTimerLiveActivityUseEmptyBackground {
+                if !labvParser.useEmptyBackground.wrappedValue {
                     Toggle(
-                        isOn: useRandomBackground.animation()
+                        isOn: labvParser.useRandomBackground.animation()
                     ) {
                         Text("settings.staminaTimer.randomBackground.title", bundle: .module)
                     }
-                    if staminaTimerLiveActivityUseCustomizeBackground {
+                    if !labvParser.useRandomBackground.wrappedValue {
                         NavigationLink {
                             LiveActivityBackgroundPicker()
                         } label: {
                             Text("settings.staminaTimer.background.choose", bundle: .module)
                         }
                     }
-                    NavigationLink {
-                        LiveActivityUserWallpaperPicker()
-                    } label: {
-                        Text(LiveActivityUserWallpaperPicker.navTitleForChoose)
-                    }
                 }
             } header: {
                 Text("settings.staminaTimer.background.navTitle".i18nWPConfKit)
-            } footer: {
-                Text(LiveActivityUserWallpaperPicker.navDescription)
             }
         }
         .formStyle(.grouped)

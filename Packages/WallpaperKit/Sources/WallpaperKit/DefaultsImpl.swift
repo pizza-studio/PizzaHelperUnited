@@ -11,7 +11,7 @@ extension Defaults.Keys {
     /// 如果阵列内有 null identifier 的话，则会触发透明玻璃显示效果（此时不显示背景图）。
     public static let liveActivityWallpaperIDs = Key<Set<String>>(
         "liveActivityWallpaperIDs",
-        default: nil,
+        default: [],
         suite: .baseSuite
     )
     /// Background wallpaper identifiers for live activity view (Backup).

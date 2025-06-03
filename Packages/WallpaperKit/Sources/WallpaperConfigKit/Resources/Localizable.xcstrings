@@ -312,73 +312,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Ihre benutzerdefinierten Hintergründe überschreiben immer die Anzeige der gewählten Hintergrundbilder."
+            "value" : "⚠︎ Diese Option wird auf die Werkseinstellung zurückgesetzt, wenn der angegebene Wert auf eine ungültige Benutzertapete hinweist."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Your specified user wallpapers always override the display of chosen background images."
+            "value" : "⚠︎ This option will be automatically reset to factory default if the specified value points to an invalid user wallpaper."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Sus fondos de pantalla de usuario especificados siempre anulan la visualización de las imágenes de fondo elegidas."
+            "value" : "⚠︎ Esta opción se restablecerá automáticamente a los valores predeterminados de fábrica si el valor especificado indica un fondo de pantalla de usuario no válido."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Ang iyong mga tinukoy na wallpaper ng user ay palaging nag-o-override sa display ng mga napiling background image."
+            "value" : "⚠︎ Ang opsyong ito ay awtomatikong mare-reset sa default ng pabrika kung ang tinukoy na value ay nagpapahiwatig ng hindi wastong wallpaper ng user."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Vos fonds d'écran utilisateur spécifiés remplacent toujours l'affichage des images de fond choisies."
+            "value" : "⚠︎ Cette option sera automatiquement réinitialisée aux paramètres d'usine si la valeur spécifiée indique un fond d'écran utilisateur invalide."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ I tuoi sfondi utente specificati sovrascrivono sempre la visualizzazione delle immagini di sfondo selezionate."
+            "value" : "⚠︎ Questa opzione verrà automaticamente ripristinata alle impostazioni di fabbrica se il valore specificato indica uno sfondo utente non valido."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ ご指定済みのユーザー壁紙は、選択された背景画像の表示を常に上書きします。"
+            "value" : "⚠︎ 指定された値が無効なユーザー壁紙を示している場合、このオプションは自動的にリセットされます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ 지정한 사용자 배경화면은 항상 선택된 배경 이미지의 표시를 재정의합니다."
+            "value" : "⚠︎ 지정된 값이 유효하지 않은 사용자 배경화면을 나타내는 경우 이 옵션은 자동으로 공장 기본값으로 재설정됩니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Указанные вами пользовательские обои всегда переопределяют отображение выбранных фоновых изображений."
+            "value" : "⚠︎ Этот параметр будет автоматически сброшен до заводских настроек, если указанное значение указывает на недействительные пользовательские обои."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ Hình nền người dùng được chỉ định của bạn luôn ghi đè lên hiển thị của hình ảnh nền đã chọn."
+            "value" : "⚠︎ Tùy chọn này sẽ tự động được đặt lại về mặc định gốc nếu giá trị được chỉ định cho thấy hình nền người dùng không hợp lệ."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ 您所指定的用户壁纸会始终覆盖所选背景图像的显示。"
+            "value" : "⚠︎ 指定的用户壁纸无效时，该选项将自动重设为出厂默认值。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠︎ 您所指定的使用者壁紙會始終覆蓋所選背景圖像的顯示。"
+            "value" : "⚠︎ 指定的使用者壁紙無效時，該選項將自動重設為出廠預設值。"
           }
         }
       }
@@ -388,73 +388,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App-Hintergrund und App-Benutzertapete"
+            "value" : "App-Hintergrund"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Background and App User Wallpaper"
+            "value" : "App Background"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fondo de la aplicación y fondo de pantalla del usuario"
+            "value" : "Fondo de la aplicación"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Background ng App at Wallpaper ng User ng App"
+            "value" : "Background ng App"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Arrière-plan et fond d'écran utilisateur de l'application"
+            "value" : "Arrière-plan de l'application"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sfondo dell'app e sfondo utente dell'app"
+            "value" : "Sfondo dell'app"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アプリの背景画像とユーザー壁紙"
+            "value" : "アプリの背景画像"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 배경 및 앱 사용자 배경화면"
+            "value" : "앱 배경"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Фон приложения и пользовательские обои"
+            "value" : "Фон приложения"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nền ứng dụng và hình nền người dùng ứng dụng"
+            "value" : "Nền ứng dụng"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 背景图像和用户壁纸"
+            "value" : "App 背景图像"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App 背景圖像和使用者壁紙"
+            "value" : "App 背景圖像"
           }
         }
       }
@@ -608,234 +608,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "玩家體力計時器背景圖像"
-          }
-        }
-      }
-    },
-    "settings.staminaTimer.userWallpaper.navDescription" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ Ihre benutzerdefinierten Hintergründe überschreiben immer die Anzeige der gewählten Hintergrundbilder."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ Your specified user wallpapers always override the display of chosen background images."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ Sus fondos de pantalla de usuario especificados siempre anulan la visualización de las imágenes de fondo elegidas."
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ Ang iyong mga tinukoy na wallpaper ng user ay palaging nag-o-override sa display ng mga napiling background image."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ Vos fonds d'écran utilisateur spécifiés remplacent toujours l'affichage des images de fond choisies."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ I tuoi sfondi utente specificati sovrascrivono sempre la visualizzazione delle immagini di sfondo selezionate."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ ご指定済みのユーザー壁紙は、選択された背景画像の表示を常に上書きします。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ 지정한 사용자 배경화면은 항상 선택된 배경 이미지의 표시를 재정의합니다."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ Указанные вами пользовательские обои всегда переопределяют отображение выбранных фоновых изображений."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ Hình nền người dùng được chỉ định của bạn luôn ghi đè lên hiển thị của hình ảnh nền đã chọn."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ 您所指定的用户壁纸会始终覆盖所选背景图像的显示。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠︎ 您所指定的使用者壁紙會始終覆蓋所選背景圖像的顯示。"
-          }
-        }
-      }
-    },
-    "settings.staminaTimer.userWallpaper.navTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ausdauer-Timer-Benutzertapete"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stamina Timer User Wallpaper"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fondo del temporizador de resistencia del usuario"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wallpaper ng User para sa Timer ng Stamina"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fond d'écran utilisateur du minuteur"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sfondo utente timer stamina"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "スタミナタイマーのユーザー壁紙"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "스태미나 타이머 사용자 배경화면"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пользовательские обои таймера выносливости"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hình nền người dùng cho thời gian sức bền"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "玩家体力计时器的用户壁纸"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "玩家體力計時器的使用者壁紙"
-          }
-        }
-      }
-    },
-    "settings.staminaTimer.userWallpaper.navTitle.choose" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Benutzertapete auswählen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose User Wallpaper"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elegir fondo de pantalla del usuario"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pumili ng Wallpaper ng User"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choisir le fond d'écran utilisateur"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scegli sfondo utente"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ユーザー壁紙を選択"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "사용자 배경화면 선택"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выбрать пользовательские обои"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chọn hình nền người dùng"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "指定用户壁纸"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "指定使用者壁紙"
           }
         }
       }
@@ -1839,73 +1611,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Benutzerdefinierte Hintergründe werden nicht in der Tapetengalerie aufgeführt und sind unabhängig von den mitgelieferten Hintergründen der App. Sobald ein benutzerdefinierter Hintergrund korrekt konfiguriert ist (z.B. Live-Aktivität, Desktop-Widget usw.), ersetzt dieser automatisch die Anzeige des Hintergrundbildes (das mitgelieferte Hintergründe verwendet)."
+            "value" : "Benutzerdefinierte Hintergründe werden nicht in der Tapetengalerie aufgeführt und sind unabhängig von den mitgelieferten Hintergründen der App."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User-supplied wallpapers are not listed in the Wallpaper Gallery and are independent of the app's bundled wallpapers. Once it gets correctly configured with a user-supplied wallpaper in some place (i.e. live activity, a desktop widget, etc.), it will automatically replace the display of the background image (which uses bundled wallpapers)."
+            "value" : "User-supplied wallpapers are not listed in the Wallpaper Gallery and are independent of the app's bundled wallpapers."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los fondos de pantalla proporcionados por el usuario no se muestran en la Galería de Fondos de Pantalla y son independientes de los fondos incluidos en la aplicación. Una vez que está correctamente configurado con un fondo de pantalla proporcionado por el usuario en algún lugar (es decir, actividad en vivo, widget de escritorio, etc.), reemplazará automáticamente la visualización de la imagen de fondo (que utiliza fondos incluidos)."
+            "value" : "Los fondos de pantalla proporcionados por el usuario no se muestran en la Galería de Fondos de Pantalla y son independientes de los fondos incluidos en la aplicación."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang mga wallpaper na ibinigay ng user ay hindi nakalista sa Gallery ng mga Wallpaper at hindi nakadepende sa mga nakabalot na wallpaper ng app. Kapag ito ay maayos na na-configure gamit ang wallpaper na ibinigay ng user sa ilang lugar (hal. live activity, desktop widget, atbp.), awtomatiko nitong papalitan ang display ng background image (na gumagamit ng mga nakabalot na wallpaper)."
+            "value" : "Ang mga wallpaper na ibinigay ng user ay hindi nakalista sa Gallery ng mga Wallpaper at hindi nakadepende sa mga nakabalot na wallpaper ng app."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les fonds d'écran fournis par l'utilisateur ne sont pas répertoriés dans la galerie des arrière-plans et sont indépendants des fonds d'écran intégrés à l'application. Une fois correctement configuré avec un fond d'écran fourni par l'utilisateur à certains endroits (c'est-à-dire activité en direct, widget de bureau, etc.), il remplacera automatiquement l'affichage de l'image de fond (qui utilise les fonds d'écran intégrés)."
+            "value" : "Les fonds d'écran fournis par l'utilisateur ne sont pas répertoriés dans la galerie des arrière-plans et sont indépendants des fonds d'écran intégrés à l'application."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gli sfondi forniti dall'utente non sono elencati nella Galleria di Sfondi e sono indipendenti dagli sfondi integrati nell'app. Una volta configurato correttamente con uno sfondo fornito dall'utente in alcuni punti (ad esempio attività in tempo reale, widget desktop, ecc.), sostituirà automaticamente la visualizzazione dell'immagine di sfondo (che utilizza gli sfondi integrati)."
+            "value" : "Gli sfondi forniti dall'utente non sono elencati nella Galleria di Sfondi e sono indipendenti dagli sfondi integrati nell'app."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ユーザー提供の壁紙は壁紙の画廊には列記されておらず、アプリにバンドルされた壁紙とは独立しています。特定の場所（ライブアクティビティやデスクトップウィジェットなど）でユーザー提供の壁紙が正しく構成されると、背景画像（バンドルされた壁紙を使用）の表示を自動的に置き換えます。"
+            "value" : "ユーザー提供の壁紙は壁紙の画廊には列記されておらず、アプリにバンドルされた壁紙とは独立しています。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "사용자가 제공한 배경화면은 배경 갤러리에 나열되지 않으며 앱의 번들 배경화면과 독립적입니다. 특정 위치(예: 라이브 활동, 데스크톱 위젯 등)에서 사용자가 제공한 배경화면으로 올바르게 구성되면, 배경 이미지(번들 배경화면 사용)의 표시를 자동으로 대체합니다."
+            "value" : "사용자가 제공한 배경화면은 배경 갤러리에 나열되지 않으며 앱의 번들 배경화면과 독립적입니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пользовательские обои не отображаются в Галерее обоев и независимы от встроенных обоев приложения. Когда они правильно настроены с пользовательскими обоями в определённом месте (т.е. живая активность, виджет рабочего стола и т.д.), они автоматически заменят отображение фонового изображения (использующего встроенные обои)."
+            "value" : "Пользовательские обои не отображаются в Галерее обоев и независимы от встроенных обоев приложения."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hình nền do người dùng cung cấp không được liệt kê trong Thư viện Hình nền và độc lập với hình nền tích hợp của ứng dụng. Khi được cấu hình đúng với hình nền do người dùng cung cấp ở một số nơi (ví dụ: hoạt động trực tiếp, widget màn hình, v.v.), nó sẽ tự động thay thế hiển thị hình nền (sử dụng hình nền tích hợp)."
+            "value" : "Hình nền do người dùng cung cấp không được liệt kê trong Thư viện Hình nền và độc lập với hình nền tích hợp của ứng dụng."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "用户壁纸不会在壁纸画廊中列出，且独立于 App 内建壁纸之外。当在某些位置（如实时活动、桌面小工具等）正确配置了用户壁纸后，它将自动替换背景图像（使用内建壁纸）的显示。"
+            "value" : "用户壁纸不会在壁纸画廊中列出，且独立于 App 内建壁纸之外。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用者壁紙不會在壁紙畫廊中列出，且獨立於應用程式內建壁紙之外。當在某些位置（如即時動態、桌面小工具等）正確配置了使用者壁紙後，它將自動替換背景圖像（使用內建壁紙）的顯示。"
+            "value" : "使用者壁紙不會在壁紙畫廊中列出，且獨立於應用程式內建壁紙之外。"
           }
         }
       }
