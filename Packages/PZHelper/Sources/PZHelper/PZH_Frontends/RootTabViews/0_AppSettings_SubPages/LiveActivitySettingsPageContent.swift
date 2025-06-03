@@ -28,7 +28,7 @@ struct LiveActivitySettingNavigator: View {
     var body: some View {
         NavigationLink(value: AppSettingsTabPage.Nav.liveActivitySettings) {
             Label {
-                Text("settings.resinTimer.settings.navTitle", bundle: .module)
+                Text("settings.staminaTimer.settings.navTitle", bundle: .module)
             } icon: {
                 Image(systemSymbol: .timer)
             }
@@ -49,16 +49,16 @@ struct LiveActivitySettingsPageContent: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    @Default(.resinRecoveryLiveActivityUseEmptyBackground) var resinRecoveryLiveActivityUseEmptyBackground: Bool
-    @Default(.resinRecoveryLiveActivityUseCustomizeBackground) var resinRecoveryLiveActivityUseCustomizeBackground: Bool
-    @Default(.autoDeliveryResinTimerLiveActivity) var autoDeliveryResinTimerLiveActivity: Bool
-    @Default(.resinRecoveryLiveActivityShowExpedition) var resinRecoveryLiveActivityShowExpedition: Bool
+    @Default(.staminaTimerLiveActivityUseEmptyBackground) var staminaTimerLiveActivityUseEmptyBackground: Bool
+    @Default(.staminaTimerLiveActivityUseCustomizeBackground) var staminaTimerLiveActivityUseCustomizeBackground: Bool
+    @Default(.autoDeliveryStaminaTimerLiveActivity) var autoDeliveryStaminaTimerLiveActivity: Bool
+    @Default(.showExpeditionInLiveActivity) var showExpeditionInLiveActivity: Bool
 
     var useRandomBackground: Binding<Bool> {
         .init {
-            !resinRecoveryLiveActivityUseCustomizeBackground
+            !staminaTimerLiveActivityUseCustomizeBackground
         } set: { newValue in
-            resinRecoveryLiveActivityUseCustomizeBackground = !newValue
+            staminaTimerLiveActivityUseCustomizeBackground = !newValue
         }
     }
 
@@ -71,7 +71,7 @@ struct LiveActivitySettingsPageContent: View {
                         .foregroundStyle(Color.accentColor)
                         .frame(width: 64, height: 64)
                         .padding(8)
-                    Text("settings.resinTimer.explanation", bundle: .module)
+                    Text("settings.staminaTimer.explanation", bundle: .module)
                         .font(.caption)
                 }
                 .frame(maxWidth: .infinity)
@@ -80,7 +80,7 @@ struct LiveActivitySettingsPageContent: View {
                 }
                 if !allowLiveActivity {
                     Label {
-                        Text("settings.resinTimer.realtimeActivity.notEnabled", bundle: .module)
+                        Text("settings.staminaTimer.realtimeActivity.notEnabled", bundle: .module)
                     } icon: {
                         Image(systemSymbol: .exclamationmarkCircle)
                             .foregroundColor(.red)
@@ -88,36 +88,36 @@ struct LiveActivitySettingsPageContent: View {
                     osSettingsLink
                 } else {
                     Toggle(
-                        isOn: $autoDeliveryResinTimerLiveActivity.animation()
+                        isOn: $autoDeliveryStaminaTimerLiveActivity.animation()
                     ) {
-                        Text("settings.resinTimer.autoInit.toggle.title", bundle: .module)
+                        Text("settings.staminaTimer.autoInit.toggle.title", bundle: .module)
                     }
                     Toggle(
-                        isOn: $resinRecoveryLiveActivityShowExpedition.animation()
+                        isOn: $showExpeditionInLiveActivity.animation()
                     ) {
-                        Text("settings.resinTimer.showExpedition.title", bundle: .module)
+                        Text("settings.staminaTimer.showExpedition.title", bundle: .module)
                     }
                 }
             } footer: {
-                Text("settings.resinTimer.dynamicIsland.howToHide.answer", bundle: .module)
+                Text("settings.staminaTimer.dynamicIsland.howToHide.answer", bundle: .module)
             }
             Section {
                 Toggle(
-                    isOn: $resinRecoveryLiveActivityUseEmptyBackground.animation()
+                    isOn: $staminaTimerLiveActivityUseEmptyBackground.animation()
                 ) {
-                    Text("settings.resinTimer.useTransparentBackground.title", bundle: .module)
+                    Text("settings.staminaTimer.useTransparentBackground.title", bundle: .module)
                 }
-                if !resinRecoveryLiveActivityUseEmptyBackground {
+                if !staminaTimerLiveActivityUseEmptyBackground {
                     Toggle(
                         isOn: useRandomBackground.animation()
                     ) {
-                        Text("settings.resinTimer.randomBackground.title", bundle: .module)
+                        Text("settings.staminaTimer.randomBackground.title", bundle: .module)
                     }
-                    if resinRecoveryLiveActivityUseCustomizeBackground {
+                    if staminaTimerLiveActivityUseCustomizeBackground {
                         NavigationLink {
                             LiveActivityBackgroundPicker()
                         } label: {
-                            Text("settings.resinTimer.background.choose", bundle: .module)
+                            Text("settings.staminaTimer.background.choose", bundle: .module)
                         }
                     }
                     NavigationLink {
@@ -127,7 +127,7 @@ struct LiveActivitySettingsPageContent: View {
                     }
                 }
             } header: {
-                Text("settings.resinTimer.background.navTitle".i18nWPConfKit)
+                Text("settings.staminaTimer.background.navTitle".i18nWPConfKit)
             } footer: {
                 Text(LiveActivityUserWallpaperPicker.navDescription)
             }
@@ -142,7 +142,7 @@ struct LiveActivitySettingsPageContent: View {
                 }
             }
         }
-        .navigationTitle("settings.resinTimer.settings.navTitle".i18nPZHelper)
+        .navigationTitle("settings.staminaTimer.settings.navTitle".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
         .onAppear {
             withAnimation {
@@ -172,7 +172,7 @@ struct LiveActivitySettingsPageContent: View {
             string: UIApplication
                 .openSettingsURLString
         )!) {
-            Text("settings.resinTimer.gotoSystemSettings", bundle: .module)
+            Text("settings.staminaTimer.gotoSystemSettings", bundle: .module)
         }
         #endif
     }

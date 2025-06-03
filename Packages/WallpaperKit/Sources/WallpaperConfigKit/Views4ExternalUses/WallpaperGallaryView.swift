@@ -118,8 +118,8 @@ public struct WallpaperGalleryViewContent: View {
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
     @Default(.background4App) private var background4App: Wallpaper
     @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
-    @Default(.resinRecoveryLiveActivityUseEmptyBackground) private var liveActivityUseEmptyBackground: Bool
-    @Default(.resinRecoveryLiveActivityUseCustomizeBackground) private var liveActivityUseCustomizeBackground: Bool
+    @Default(.staminaTimerLiveActivityUseEmptyBackground) private var liveActivityUseEmptyBackground: Bool
+    @Default(.staminaTimerLiveActivityUseCustomizeBackground) private var liveActivityUseCustomizeBackground: Bool
 
     private var searchFieldPlacement: SearchFieldPlacement {
         #if os(iOS) || targetEnvironment(macCatalyst)

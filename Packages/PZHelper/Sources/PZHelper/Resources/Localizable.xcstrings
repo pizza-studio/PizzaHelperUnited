@@ -13648,7 +13648,7 @@
         }
       }
     },
-    "settings.resinTimer.autoInit.toggle.title" : {
+    "settings.staminaTimer.autoInit.toggle.title" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13724,7 +13724,7 @@
         }
       }
     },
-    "settings.resinTimer.background.choose" : {
+    "settings.staminaTimer.background.choose" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13800,7 +13800,7 @@
         }
       }
     },
-    "settings.resinTimer.dynamicIsland.howToHide.answer" : {
+    "settings.staminaTimer.dynamicIsland.howToHide.answer" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13876,7 +13876,7 @@
         }
       }
     },
-    "settings.resinTimer.explanation" : {
+    "settings.staminaTimer.explanation" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13952,7 +13952,7 @@
         }
       }
     },
-    "settings.resinTimer.gotoSystemSettings" : {
+    "settings.staminaTimer.gotoSystemSettings" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -14029,7 +14029,7 @@
         }
       }
     },
-    "settings.resinTimer.randomBackground.title" : {
+    "settings.staminaTimer.randomBackground.title" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -14105,7 +14105,7 @@
         }
       }
     },
-    "settings.resinTimer.realtimeActivity.notEnabled" : {
+    "settings.staminaTimer.realtimeActivity.notEnabled" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -14181,7 +14181,7 @@
         }
       }
     },
-    "settings.resinTimer.settings.navTitle" : {
+    "settings.staminaTimer.settings.navTitle" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -14257,7 +14257,7 @@
         }
       }
     },
-    "settings.resinTimer.showExpedition.title" : {
+    "settings.staminaTimer.showExpedition.title" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -14333,7 +14333,7 @@
         }
       }
     },
-    "settings.resinTimer.useTransparentBackground.title" : {
+    "settings.staminaTimer.useTransparentBackground.title" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
