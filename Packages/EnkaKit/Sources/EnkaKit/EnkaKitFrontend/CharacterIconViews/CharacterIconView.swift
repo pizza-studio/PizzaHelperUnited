@@ -249,7 +249,7 @@ public struct CharacterIconView: View {
     }
 
     @ViewBuilder private var namecardBg4GI: some View {
-        let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: charID)
+        let wallPaper = BundledWallpaper.findNameCardForGenshinCharacter(charID: charID)
         wallPaper.image4CellphoneWallpaper
             .resizable()
             .aspectRatio(contentMode: .fill)

@@ -222,7 +222,7 @@ extension Enka.AvatarSummarized.CharacterID {
                     .compositingGroup()
             }
         case .genshinImpact:
-            let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: id)
+            let wallPaper = BundledWallpaper.findNameCardForGenshinCharacter(charID: id)
             wallPaper.image4CellphoneWallpaper
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -251,7 +251,7 @@ extension Enka.AvatarSummarized.CharacterID {
     @MainActor @ViewBuilder
     public func asBackground(useNameCardBG: Bool = false, element: Enka.GameElement? = nil) -> some View {
         if useNameCardBG, game == .genshinImpact {
-            let wallPaper = Wallpaper.findNameCardForGenshinCharacter(charID: id)
+            let wallPaper = BundledWallpaper.findNameCardForGenshinCharacter(charID: id)
             wallPaper.image4CellphoneWallpaper
                 .resizable()
                 .aspectRatio(contentMode: .fill)
