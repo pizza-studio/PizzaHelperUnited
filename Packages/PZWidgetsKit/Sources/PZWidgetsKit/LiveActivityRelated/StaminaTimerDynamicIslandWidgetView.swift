@@ -5,24 +5,21 @@
 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
 import Defaults
 import Foundation
-import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WallpaperKit
 import WidgetKit
 
-struct StaminaTimerDynamicIslandWidgetView: View {
+public struct StaminaTimerDynamicIslandWidgetView: View {
     // MARK: Lifecycle
 
-    init(context: ActivityViewContext<LiveActivityAttributes>) {
+    public init(context: ActivityViewContext<LiveActivityAttributes>) {
         self.context = context
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    @State var context: ActivityViewContext<LiveActivityAttributes>
-
-    var dynamicIsland: DynamicIsland {
+    public var dynamicIsland: DynamicIsland {
         DynamicIsland {
             expandedContent
         } compactLeading: {
@@ -34,7 +31,7 @@ struct StaminaTimerDynamicIslandWidgetView: View {
         }
     }
 
-    var body: some View {
+    public var body: some View {
         Text(
             verbatim: "Use `StaminaTimerDynamicIslandWidgetView().dynamicIsland` instead."
         )
@@ -42,13 +39,15 @@ struct StaminaTimerDynamicIslandWidgetView: View {
 
     // MARK: Private
 
+    @State private var context: ActivityViewContext<LiveActivityAttributes>
+
     @DynamicIslandExpandedContentBuilder private var expandedContent: DynamicIslandExpandedContent<some View> {
         DynamicIslandExpandedRegion(.leading) {
             HStack(alignment: .lastTextBaseline, spacing: 2) {
                 Image(systemSymbol: .personFill)
                 Text(context.attributes.profileName)
             }
-            .foregroundColor(Color("textColor.appIconLike", bundle: .main))
+            .foregroundColor(PZWidgetsSPM.Colors.TextColor.appIconLike.suiColor)
             .font(.caption2)
             .padding(.leading)
         }
@@ -61,7 +60,7 @@ struct StaminaTimerDynamicIslandWidgetView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                     .frame(width: 15)
                 Text("app.title.short".i18nBaseKit)
-                    .foregroundColor(Color("textColor.appIconLike", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.appIconLike.suiColor)
                     .font(.caption2)
             }
             .padding(.trailing)
@@ -78,7 +77,7 @@ struct StaminaTimerDynamicIslandWidgetView: View {
                         VStack(alignment: .leading) {
                             Text(
                                 "pzWidgetsKit.next20Stamina:\(context.state.next20PrimaryStamina)",
-                                bundle: .main
+                                bundle: .module
                             )
                             .font(.caption2)
                             Text(
@@ -89,7 +88,7 @@ struct StaminaTimerDynamicIslandWidgetView: View {
                             .multilineTextAlignment(.leading)
                             .font(.system(.title2, design: .rounded))
                             .foregroundColor(
-                                Color("textColor.originResin", bundle: .main)
+                                PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                             )
                         }
                         .gridColumnAlignment(.leading)
@@ -107,7 +106,7 @@ struct StaminaTimerDynamicIslandWidgetView: View {
                                     .frame(maxHeight: 24)
                             }
                         VStack(alignment: .leading) {
-                            Text("pzWidgetsKit.nextMaxStamina", bundle: .main)
+                            Text("pzWidgetsKit.nextMaxStamina", bundle: .module)
                                 .font(.caption2)
 
                             Text(
@@ -118,7 +117,7 @@ struct StaminaTimerDynamicIslandWidgetView: View {
                             .multilineTextAlignment(.leading)
                             .font(.system(.title2, design: .rounded))
                             .foregroundColor(
-                                Color("textColor.originResin", bundle: .main)
+                                PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                             )
                         }
                         .gridColumnAlignment(.leading)
@@ -126,7 +125,7 @@ struct StaminaTimerDynamicIslandWidgetView: View {
                     }
                 }
             }
-            .foregroundColor(Color("textColor3", bundle: .main))
+            .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
         }
     }
 
@@ -146,7 +145,7 @@ struct StaminaTimerDynamicIslandWidgetView: View {
             .monospacedDigit()
             .multilineTextAlignment(.center)
             .frame(width: 60)
-            .foregroundColor(Color("textColor2", bundle: .main))
+            .foregroundColor(PZWidgetsSPM.Colors.TextColor.activityBlueText.suiColor)
         }
     }
 
