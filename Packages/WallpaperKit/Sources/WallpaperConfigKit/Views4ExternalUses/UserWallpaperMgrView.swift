@@ -128,6 +128,8 @@ public struct UserWallpaperMgrViewContent: View {
     @State private var currentEditingWallpaper: UserWallpaper?
 
     @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
+    @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
+    @Default(.appWallpaperID) private var appWallpaperID: String
 
     private var nameEditingBuffer: Binding<String> {
         .init {
@@ -150,6 +152,8 @@ public struct UserWallpaperMgrViewContent: View {
         return false
         #endif
     }
+
+    private var labvParser: LiveActivityBackgroundValueParser { .init($liveActivityWallpaperIDs) }
 }
 
 extension UserWallpaperMgrViewContent {
@@ -236,6 +240,28 @@ extension UserWallpaperMgrViewContent {
             } label: {
                 Text("userWallpaperMgr.contextMenu.renameWallpaperEntry", bundle: .module)
             }
+            Divider()
+            Button("wpKit.assign.background4App".i18nWPConfKit) {
+                appWallpaperID = userWallpaper.id.uuidString
+            }
+            #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+            let alreadyChosenAsLABG: Bool = !labvParser.useRandomBackground.wrappedValue
+                && !labvParser.useEmptyBackground.wrappedValue
+                && liveActivityWallpaperIDs.contains(userWallpaper.id.uuidString)
+            Button {
+                if alreadyChosenAsLABG {
+                    liveActivityWallpaperIDs.remove(userWallpaper.id.uuidString)
+                } else {
+                    labvParser.useEmptyBackground.wrappedValue = false
+                    liveActivityWallpaperIDs.insert(userWallpaper.id.uuidString)
+                }
+            } label: {
+                Label(
+                    "wpKit.assign.backgrounds4LiveActivity".i18nWPConfKit,
+                    systemSymbol: alreadyChosenAsLABG ? .checkmark : nil
+                )
+            }
+            #endif
             Divider()
             Button(role: .destructive) {
                 withAnimation {
