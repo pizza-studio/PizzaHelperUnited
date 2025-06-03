@@ -165,9 +165,9 @@ public enum LiveActivityStaticAPIs {
     }
 
     public static func getBackground(for game: Pizza.SupportedGame? = nil) -> LiveActivityBackground {
-        if Defaults[.resinRecoveryLiveActivityUseEmptyBackground] {
+        if Defaults[.staminaTimerLiveActivityUseEmptyBackground] {
             return .noBackground
-        } else if !Defaults[.resinRecoveryLiveActivityUseCustomizeBackground] {
+        } else if !Defaults[.staminaTimerLiveActivityUseCustomizeBackground] {
             return .random
         } else {
             Self.backgroundSettingsSanityCheck()
@@ -227,7 +227,7 @@ public final class StaminaLiveActivityController: Sendable {
         )
         let status: LiveActivityAttributes.LiveActivityState = .init(
             dailyNote: data,
-            showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
+            showExpedition: Defaults[.showExpeditionInLiveActivity],
             background: LiveActivityStaticAPIs.getBackground(for: profile.game)
         )
 
@@ -271,7 +271,7 @@ public final class StaminaLiveActivityController: Sendable {
                 }
                 let status: LiveActivityAttributes.LiveActivityState = .init(
                     dailyNote: data,
-                    showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
+                    showExpedition: Defaults[.showExpeditionInLiveActivity],
                     background: LiveActivityStaticAPIs.getBackground(for: profile.game)
                 )
 
