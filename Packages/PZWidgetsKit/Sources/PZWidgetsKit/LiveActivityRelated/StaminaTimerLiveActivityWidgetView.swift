@@ -39,7 +39,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
 
     // MARK: Internal
 
-    var useNoBackground: Bool { context.state.background == .noBackground }
+    var useNoBackground: Bool { liveActivityWallpaperIDs == nil }
 
     @ViewBuilder var contentView: some View {
         HStack {
@@ -128,6 +128,8 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
     // MARK: Private
 
     @State private var context: ActivityViewContext<LiveActivityAttributes>
+
+    @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>?
 }
 
 #endif
