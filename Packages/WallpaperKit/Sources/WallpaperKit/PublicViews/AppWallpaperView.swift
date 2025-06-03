@@ -4,13 +4,10 @@
 
 import Defaults
 import PZBaseKit
+import SFSafeSymbols
 import SwiftUI
 
 extension BundledWallpaper {
-    public var image4LiveActivity: Image {
-        Image(assetName4LiveActivity, bundle: .module)
-    }
-
     public var image4CellphoneWallpaper: Image {
         Image(assetName, bundle: .module)
     }
@@ -44,12 +41,30 @@ public struct AppWallpaperView: View {
             .compositingGroup()
     }
 
-    // MARK: Internal
+    // MARK: Private
 
-    @State var blur: Bool
+    @Environment(\.colorScheme) private var colorScheme
 
-    var blurAmount: CGFloat {
-        switch bundledWallpaper.game {
+    @Default(.appWallpaperID) private var appWallpaperID: String
+
+    private let blur: Bool
+
+    private var isUserWallpaperEnabled: Bool {
+        userWallpaperUUID != nil
+    }
+
+    private var userWallpaperUUID: UUID? {
+        UUID(uuidString: appWallpaperID)
+    }
+
+    private var currentWallpaper: Wallpaper {
+        .init(id: appWallpaperID) {
+            Defaults.reset(.appWallpaperID)
+        } ?? .finalFallbackValue
+    }
+
+    private var blurAmount: CGFloat {
+        switch currentWallpaper.game {
         case .genshinImpact: 30
         case .starRail: 50
         case .zenlessZone: 50
@@ -57,34 +72,32 @@ public struct AppWallpaperView: View {
         }
     }
 
-    var rawImage: Image {
-        userWallpaperOverride ?? bundledWallpaper.image4CellphoneWallpaper
+    private var rawImage: Image {
+        switch currentWallpaper {
+        case let .bundled(bundledWallpaper):
+            bundledWallpaper.image4CellphoneWallpaper
+        case let .user(userWallpaper):
+            if let cgImage = userWallpaper.imageSquared {
+                Image(decorative: cgImage, scale: 1, orientation: .up)
+            } else {
+                Image(systemSymbol: .trashSlashSquare)
+            }
+        }
     }
 
-    var userWallpaperOverride: Image? {
-        let cgImage = UserWallpaper(defaultsValueID: userWallpaperID)?.imageSquared
-        guard let cgImage else { return nil }
-        return Image(decorative: cgImage, scale: 1, orientation: .up)
-    }
-
-    @ViewBuilder var overlayContent4Blur: some View {
-        if userWallpaperOverride != nil {
-            Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
-        } else {
+    @ViewBuilder private var overlayContent4Blur: some View {
+        switch currentWallpaper {
+        case let .bundled(bundledWallpaper):
             switch bundledWallpaper.game {
             case .genshinImpact: Color.colorSystemGray6.opacity(0.5)
             case .starRail: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
             case .zenlessZone: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
             case .none: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
             }
+        case .user:
+            Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
         }
     }
-
-    // MARK: Private
-
-    @Environment(\.colorScheme) private var colorScheme
-
-    @Default(.background4App) private var bundledWallpaper: BundledWallpaper
-    @Default(.userWallpaper4App) private var userWallpaperID: String?
 }
+
 #endif
