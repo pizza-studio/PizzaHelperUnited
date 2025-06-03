@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 
 // MARK: - ExpeditionsView
@@ -71,7 +72,7 @@ struct EachExpeditionView: View {
                 }
             }
         }
-        .foregroundColor(Color("textColor3", bundle: .main))
+        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
     }
 
     @ViewBuilder

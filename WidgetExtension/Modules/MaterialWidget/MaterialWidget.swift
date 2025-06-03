@@ -6,6 +6,7 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -58,7 +59,7 @@ struct MaterialWidgetView: View {
                 showLeadingBorder: true
             )
         }
-        .foregroundColor(Color("textColor3", bundle: .main))
+        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
         .myWidgetContainerBackground(withPadding: 0) {
             WidgetBackgroundView(
                 background: .randomNamecardBackground4Game(.genshinImpact),

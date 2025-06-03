@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -28,9 +29,9 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
                     Gauge(value: Double(coinIntel.currentHomeCoin) / Double(coinIntel.maxHomeCoin)) {
                         LinearGradient(
                             colors: [
-                                .init("iconColor.homeCoin.darkBlue"),
-                                .init("iconColor.homeCoin.middle"),
-                                .init("iconColor.homeCoin.lightBlue"),
+                                PZWidgetsSPM.Colors.IconColor.HomeCoin.darkBlue.suiColor,
+                                PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor,
+                                PZWidgetsSPM.Colors.IconColor.HomeCoin.lightBlue.suiColor,
                             ],
                             startPoint: .top,
                             endPoint: .bottom
@@ -51,7 +52,7 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
                     }
                     .gaugeStyle(
                         ProgressGaugeStyle(
-                            circleColor: Color("iconColor.homeCoin.middle", bundle: .main)
+                            circleColor: PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor
                         )
                     )
                 default:
@@ -66,9 +67,9 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
                 Gauge(value: Double(213), in: 0.0 ... Double(213)) {
                     LinearGradient(
                         colors: [
-                            .init("iconColor.homeCoin.darkBlue"),
-                            .init("iconColor.homeCoin.middle"),
-                            .init("iconColor.homeCoin.lightBlue"),
+                            PZWidgetsSPM.Colors.IconColor.HomeCoin.darkBlue.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.HomeCoin.lightBlue.suiColor,
                         ],
                         startPoint: .top,
                         endPoint: .bottom
@@ -83,7 +84,7 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
                 }
                 .gaugeStyle(
                     ProgressGaugeStyle(
-                        circleColor: Color("iconColor.homeCoin.middle", bundle: .main)
+                        circleColor: PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor
                     )
                 )
             }

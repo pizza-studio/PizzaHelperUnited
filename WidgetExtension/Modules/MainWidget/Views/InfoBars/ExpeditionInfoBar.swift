@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -30,12 +31,12 @@ struct ExpeditionInfoBar: View {
                     .legibilityShadow(isText: false)
                 isExpeditionAllCompleteImage
                     .frame(maxWidth: 13, maxHeight: 13)
-                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .legibilityShadow()
                 let completionIntel = completionIntel
                 Text(verbatim: "\(completionIntel.finished) / \(completionIntel.all)")
                     .lineLimit(1)
-                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
                     .legibilityShadow()

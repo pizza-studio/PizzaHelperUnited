@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import GITodayMaterialsKit
+import PZWidgetsKit
 import SwiftUI
 
 @available(watchOS, unavailable)
@@ -25,7 +26,7 @@ struct MaterialView: View {
             today: today
         ) {
             Text("pzWidgetsKit.material.sunday", bundle: .main)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .font(.caption)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)

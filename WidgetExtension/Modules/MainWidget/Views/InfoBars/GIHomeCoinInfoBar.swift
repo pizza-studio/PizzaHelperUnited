@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -28,12 +29,12 @@ struct GIHomeCoinInfoBar: View {
                 .legibilityShadow(isText: false)
             isHomeCoinFullImage
                 .frame(maxWidth: 13, maxHeight: 13)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Text(verbatim: "\(homeCoinInfo.currentHomeCoin)")
                     .lineLimit(1)
-                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
                     .legibilityShadow()

@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -21,7 +22,7 @@ struct LockScreenDailyTaskWidgetCircular: View {
                 .apply { imageView in
                     if widgetRenderingMode == .fullColor {
                         imageView
-                            .foregroundColor(Color("iconColor.dailyTask", bundle: .main))
+                            .foregroundColor(PZWidgetsSPM.Colors.IconColor.dailyTask.suiColor)
                     } else {
                         imageView
                     }

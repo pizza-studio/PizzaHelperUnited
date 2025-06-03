@@ -216,7 +216,7 @@ private struct WatchEachExpeditionView: View {
                 }
             }
         }
-        .foregroundColor(Color("textColor3"))
+        .foregroundColor(Color.white.opacity(0.95))
         .padding(.trailing)
     }
 

@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -25,9 +26,9 @@ struct LockScreenResinFullTimeWidgetCircular: View {
                 VStack(spacing: -0.5) {
                     LinearGradient(
                         colors: [
-                            .init("iconColor.resin.dark"),
-                            .init("iconColor.resin.middle"),
-                            .init("iconColor.resin.light"),
+                            PZWidgetsSPM.Colors.IconColor.Resin.dark.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.Resin.light.suiColor,
                         ],
                         startPoint: .top,
                         endPoint: .bottom

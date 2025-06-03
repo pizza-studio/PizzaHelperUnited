@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -35,7 +36,7 @@ struct LockScreenResinWidgetRectangular: View {
                                 .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
-                        .foregroundColor(Color("iconColor.resin.middle", bundle: .main))
+                        .foregroundColor(PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor)
                         if staminaIntel.isAccomplished {
                             Text("pzWidgetsKit.stamina.full", bundle: .main)
                                 .font(.footnote)
