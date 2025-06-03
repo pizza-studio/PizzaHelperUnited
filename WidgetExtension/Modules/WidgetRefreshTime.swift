@@ -6,10 +6,6 @@ import Defaults
 import Foundation
 import PZBaseKit
 
-public var widgetRefreshByMinute: Int {
-    Int(Defaults[.allWidgetsSyncFrequencyByMinutes].rounded(.down))
-}
-
 extension PZWidgets {
     private static let refreshWhenSucceedAfterHour: Double = 2.0
     private static let refreshWhenErrorMinute: Double = 15

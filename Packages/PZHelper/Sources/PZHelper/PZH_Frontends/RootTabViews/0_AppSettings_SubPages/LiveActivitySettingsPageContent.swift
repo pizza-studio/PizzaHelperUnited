@@ -53,7 +53,6 @@ struct LiveActivitySettingsPageContent: View {
     @Default(.resinRecoveryLiveActivityUseCustomizeBackground) var resinRecoveryLiveActivityUseCustomizeBackground: Bool
     @Default(.autoDeliveryResinTimerLiveActivity) var autoDeliveryResinTimerLiveActivity: Bool
     @Default(.resinRecoveryLiveActivityShowExpedition) var resinRecoveryLiveActivityShowExpedition: Bool
-    @Default(.autoUpdateResinRecoveryTimerUsingReFetchData) var autoUpdateResinRecoveryTimerUsingReFetchData: Bool
 
     var useRandomBackground: Binding<Bool> {
         .init {

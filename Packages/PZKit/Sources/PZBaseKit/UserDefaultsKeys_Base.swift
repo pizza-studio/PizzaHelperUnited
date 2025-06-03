@@ -68,22 +68,6 @@ extension Defaults.Keys {
     )
 }
 
-// MARK: - MainWidgetProvider
-
-extension Defaults.Keys {
-    public static let allWidgetsSyncFrequencyByMinutes = Key<Double>(
-        "allWidgetsSyncFrequencyByMinutes",
-        default: 6,
-        suite: .baseSuite
-    )
-
-    public static let contentLegibilityShadowOpacity = Key<Double>(
-        "contentLegibilityShadowOpacity",
-        default: 0.7,
-        suite: .baseSuite
-    )
-}
-
 // MARK: - ResinRecoveryActivityController
 
 extension Defaults.Keys {
@@ -97,8 +81,6 @@ extension Defaults.Keys {
         default: true,
         suite: .baseSuite
     )
-    public static let autoUpdateResinRecoveryTimerUsingReFetchData =
-        Key<Bool>("autoUpdateResinRecoveryTimerUsingReFetchData", default: true, suite: .baseSuite)
     public static let resinRecoveryLiveActivityUseEmptyBackground =
         Key<Bool>("resinRecoveryLiveActivityUseEmptyBackground", default: false, suite: .baseSuite)
     public static let resinRecoveryLiveActivityUseCustomizeBackground =
