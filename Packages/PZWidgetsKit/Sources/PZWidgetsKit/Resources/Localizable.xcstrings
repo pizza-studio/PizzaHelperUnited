@@ -77,7 +77,7 @@
         }
       }
     },
-    "pzAccountKit.CreateLiveActivityError.noInfo" : {
+    "pzWidgetsKit.CreateLiveActivityError.noInfo" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -153,7 +153,7 @@
         }
       }
     },
-    "pzAccountKit.CreateLiveActivityError.systemSettings" : {
+    "pzWidgetsKit.CreateLiveActivityError.systemSettings" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -229,7 +229,7 @@
         }
       }
     },
-    "pzAccountKit.CreateLiveActivityError.unknown:%@" : {
+    "pzWidgetsKit.CreateLiveActivityError.unknown:%@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
