@@ -44,13 +44,15 @@ enum BackgroundOptions {
     ]
     static let namecards: [String] = BundledWallpaper.allCases.map(\.assetName4LiveActivity)
 
-    static let allOptions: [(String, String)] = (Self.colors + Self.elements).map {
-        ($0, $0.i18nWidgets)
-    } + BundledWallpaper.allCases.map(\.asBackgroundOption)
+    static let allOptions: [(String, String)] = UserWallpaper.allCases.map(\.asBackgroundOption)
+        + (Self.colors + Self.elements).map {
+            ($0, $0.i18nWidgets)
+        } + BundledWallpaper.allCases.map(\.asBackgroundOption)
 
-    static let elementsAndNamecard: [(String, String)] = Self.elements.map {
-        ($0, $0.i18nWidgets)
-    } + BundledWallpaper.allCases.map(\.asBackgroundOption)
+    static let allOptionsSansPureColors: [(String, String)] = UserWallpaper.allCases.map(\.asBackgroundOption)
+        + Self.elements.map {
+            ($0, $0.i18nWidgets)
+        } + Wallpaper.allCases.map(\.asBackgroundOption)
 }
 
 extension WidgetBackgroundAppEntity {
@@ -75,7 +77,7 @@ extension WidgetBackgroundAppEntity {
     }
 
     static var randomNamecardBackground: Self {
-        let pickedBackgroundId = BundledWallpaper.allCases.randomElement() ?? .defaultValue(for: appGame)
+        let pickedBackgroundId = Wallpaper.allCases.randomElement() ?? .finalFallbackValue
         return pickedBackgroundId.asWidgetBackgroundAppEntity
     }
 
@@ -101,7 +103,7 @@ extension WidgetBackgroundAppEntity {
     }
 
     static var randomElementOrNamecardBackground: Self {
-        let pickedBackgroundId = BackgroundOptions.elementsAndNamecard.randomElement()!
+        let pickedBackgroundId = BackgroundOptions.allOptionsSansPureColors.randomElement()!
         return WidgetBackgroundAppEntity(
             id: pickedBackgroundId.0,
             displayString: pickedBackgroundId.1
@@ -127,24 +129,28 @@ extension BundledWallpaper {
 
 // MARK: - User Wallpaper Implementations.
 
-extension WidgetUserWallpaperAppEntity {
-    static var defaultWallpaper: Self? {
-        allOptions.first
+extension UserWallpaper {
+    fileprivate var asWidgetBackgroundAppEntity: WidgetBackgroundAppEntity {
+        .init(id: id.uuidString, displayString: "\(name) (\(dateString))")
     }
 
-    static var allOptions: [Self] {
-        Defaults[.userWallpapers].sorted {
-            $0.timestamp < $1.timestamp
-        }.map { .init(
-            id: $0.id.uuidString,
-            displayString: "\($0.name) (\($0.dateString))"
-        )
+    fileprivate var asBackgroundOption: (String, String) {
+        (id.uuidString, name)
+    }
+}
+
+extension Wallpaper {
+    fileprivate var asWidgetBackgroundAppEntity: WidgetBackgroundAppEntity {
+        switch self {
+        case let .bundled(bundledWallpaper): bundledWallpaper.asWidgetBackgroundAppEntity
+        case let .user(userWallpaper): userWallpaper.asWidgetBackgroundAppEntity
         }
     }
 
-    var unwrapped: UserWallpaper? {
-        Defaults[.userWallpapers].first {
-            $0.id.uuidString == self.id
+    fileprivate var asBackgroundOption: (String, String) {
+        switch self {
+        case let .bundled(bundledWallpaper): bundledWallpaper.asBackgroundOption
+        case let .user(userWallpaper): userWallpaper.asBackgroundOption
         }
     }
 }

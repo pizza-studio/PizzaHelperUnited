@@ -21,9 +21,10 @@ struct WidgetViewConfiguration {
         self.trounceBlossomDisplayMethod = intent.trounceBlossomDisplayMethod
         self.echoOfWarDisplayMethod = intent.echoOfWarDisplayMethod
         self.randomBackground = intent.randomBackground
-        let backgrounds = intent.chosenBackgrounds
+        let backgrounds = intent.chosenBackgrounds.filter {
+            Set(BackgroundOptions.allOptions.map(\.0)).contains($0.id)
+        }
         self.selectedBackgrounds = backgrounds.isEmpty ? [.defaultBackground] : backgrounds
-        self.selectedUserWallpapers = intent.chosenUserWallpapers
         self.isDarkModeRespected = intent.isDarkModeRespected
         self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget
     }
@@ -38,7 +39,6 @@ struct WidgetViewConfiguration {
         self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
         self.noticeMessage = noticeMessage
-        self.selectedUserWallpapers = []
     }
 
     init(
@@ -56,7 +56,6 @@ struct WidgetViewConfiguration {
         self.selectedBackgrounds = [.defaultBackground]
         self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
-        self.selectedUserWallpapers = []
     }
 
     // MARK: Internal
@@ -75,7 +74,6 @@ struct WidgetViewConfiguration {
 
     var randomBackground: Bool
     var selectedBackgrounds: [WidgetBackgroundAppEntity]
-    var selectedUserWallpapers: [WidgetUserWallpaperAppEntity]
 
     var background: WidgetBackgroundAppEntity {
         guard !randomBackground else {
@@ -95,6 +93,12 @@ struct WidgetViewConfiguration {
 
 @available(watchOS, unavailable)
 extension WidgetBackgroundAppEntity {
+    var userSuppliedWallpaper: UserWallpaper? {
+        let uuid = UUID(uuidString: id)
+        guard uuid != nil else { return nil }
+        return .init(defaultsValueID: id)
+    }
+
     var imageName: String? {
         if BackgroundOptions.namecards.contains(id) {
             return id
