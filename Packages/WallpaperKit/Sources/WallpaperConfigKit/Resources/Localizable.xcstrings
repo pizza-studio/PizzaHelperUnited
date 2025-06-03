@@ -535,7 +535,7 @@
         }
       }
     },
-    "settings.resinTimer.background.navTitle" : {
+    "settings.staminaTimer.background.navTitle" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -612,7 +612,7 @@
         }
       }
     },
-    "settings.resinTimer.userWallpaper.navDescription" : {
+    "settings.staminaTimer.userWallpaper.navDescription" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -688,7 +688,7 @@
         }
       }
     },
-    "settings.resinTimer.userWallpaper.navTitle" : {
+    "settings.staminaTimer.userWallpaper.navTitle" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -764,7 +764,7 @@
         }
       }
     },
-    "settings.resinTimer.userWallpaper.navTitle.choose" : {
+    "settings.staminaTimer.userWallpaper.navTitle.choose" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {

@@ -71,18 +71,24 @@ extension Defaults.Keys {
 // MARK: - ResinRecoveryActivityController
 
 extension Defaults.Keys {
-    public static let autoDeliveryResinTimerLiveActivity = Key<Bool>(
-        "autoDeliveryResinTimerLiveActivity",
+    public static let autoDeliveryStaminaTimerLiveActivity = Key<Bool>(
+        "autoDeliveryStaminaTimerLiveActivity",
         default: false,
         suite: .baseSuite
     )
-    public static let resinRecoveryLiveActivityShowExpedition = Key<Bool>(
-        "resinRecoveryLiveActivityShowExpedition",
+    public static let showExpeditionInLiveActivity = Key<Bool>(
+        "showExpeditionInLiveActivity",
         default: true,
         suite: .baseSuite
     )
-    public static let resinRecoveryLiveActivityUseEmptyBackground =
-        Key<Bool>("resinRecoveryLiveActivityUseEmptyBackground", default: false, suite: .baseSuite)
-    public static let resinRecoveryLiveActivityUseCustomizeBackground =
-        Key<Bool>("resinRecoveryLiveActivityUseCustomizeBackground", default: false, suite: .baseSuite)
+    public static let staminaTimerLiveActivityUseEmptyBackground = Key<Bool>(
+        "resinRecoveryLiveActivityUseEmptyBackground",
+        default: false,
+        suite: .baseSuite
+    )
+    public static let staminaTimerLiveActivityUseCustomizeBackground = Key<Bool>(
+        "resinRecoveryLiveActivityUseCustomizeBackground",
+        default: false,
+        suite: .baseSuite
+    )
 }
