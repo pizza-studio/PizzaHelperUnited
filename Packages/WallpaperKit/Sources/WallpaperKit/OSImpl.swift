@@ -9,7 +9,7 @@ import SwiftUI
 
 extension View {
     @ViewBuilder
-    public func listContainerBackground(wallpaperOverride: Wallpaper? = nil) -> some View {
+    public func listContainerBackground(wallpaperOverride: BundledWallpaper? = nil) -> some View {
         background(alignment: .topTrailing) {
             #if !os(watchOS)
             AppWallpaperView()

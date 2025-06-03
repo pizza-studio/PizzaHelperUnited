@@ -42,20 +42,20 @@ enum BackgroundOptions {
         "game.elements.quanto",
         "game.elements.physico",
     ]
-    static let namecards: [String] = Wallpaper.allCases.map(\.assetName4LiveActivity)
+    static let namecards: [String] = BundledWallpaper.allCases.map(\.assetName4LiveActivity)
 
     static let allOptions: [(String, String)] = (Self.colors + Self.elements).map {
         ($0, $0.i18nWidgets)
-    } + Wallpaper.allCases.map(\.asBackgroundOption)
+    } + BundledWallpaper.allCases.map(\.asBackgroundOption)
 
     static let elementsAndNamecard: [(String, String)] = Self.elements.map {
         ($0, $0.i18nWidgets)
-    } + Wallpaper.allCases.map(\.asBackgroundOption)
+    } + BundledWallpaper.allCases.map(\.asBackgroundOption)
 }
 
 extension WidgetBackgroundAppEntity {
     static let defaultBackground: Self = {
-        Wallpaper.defaultValue(for: appGame).asWidgetBackgroundAppEntity
+        BundledWallpaper.defaultValue(for: appGame).asWidgetBackgroundAppEntity
     }()
 
     static var randomBackground: Self {
@@ -75,20 +75,20 @@ extension WidgetBackgroundAppEntity {
     }
 
     static var randomNamecardBackground: Self {
-        let pickedBackgroundId = Wallpaper.allCases.randomElement() ?? .defaultValue(for: appGame)
+        let pickedBackgroundId = BundledWallpaper.allCases.randomElement() ?? .defaultValue(for: appGame)
         return pickedBackgroundId.asWidgetBackgroundAppEntity
     }
 
     static func randomNamecardBackground4Game(_ game: Pizza.SupportedGame? = nil) -> Self {
         guard let game else { return randomNamecardBackground }
-        let pickedBackgroundId = Wallpaper.allCases(for: game).randomElement() ?? .defaultValue(for: game)
+        let pickedBackgroundId = BundledWallpaper.allCases(for: game).randomElement() ?? .defaultValue(for: game)
         return pickedBackgroundId.asWidgetBackgroundAppEntity
     }
 
     static func randomNamecardBackground4Games(_ games: Set<Pizza.SupportedGame> = []) -> Self {
         guard !games.isEmpty else { return randomNamecardBackground }
         guard let game = games.randomElement() else { return randomNamecardBackground }
-        let pickedBackgroundId = Wallpaper.allCases(for: game).randomElement() ?? .defaultValue(for: game)
+        let pickedBackgroundId = BundledWallpaper.allCases(for: game).randomElement() ?? .defaultValue(for: game)
         return pickedBackgroundId.asWidgetBackgroundAppEntity
     }
 
@@ -109,7 +109,7 @@ extension WidgetBackgroundAppEntity {
     }
 }
 
-extension Wallpaper {
+extension BundledWallpaper {
     fileprivate var asWidgetBackgroundAppEntity: WidgetBackgroundAppEntity {
         .init(id: assetName4LiveActivity, displayString: localizedNameForWidgets)
     }

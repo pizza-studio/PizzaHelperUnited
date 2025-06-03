@@ -6,7 +6,7 @@ import Defaults
 import PZBaseKit
 import SwiftUI
 
-extension Wallpaper {
+extension BundledWallpaper {
     public var image4LiveActivity: Image {
         Image(assetName4LiveActivity, bundle: .module)
     }
@@ -49,7 +49,7 @@ public struct AppWallpaperView: View {
     @State var blur: Bool
 
     var blurAmount: CGFloat {
-        switch wallpaper.game {
+        switch bundledWallpaper.game {
         case .genshinImpact: 30
         case .starRail: 50
         case .zenlessZone: 50
@@ -58,7 +58,7 @@ public struct AppWallpaperView: View {
     }
 
     var rawImage: Image {
-        userWallpaperOverride ?? wallpaper.image4CellphoneWallpaper
+        userWallpaperOverride ?? bundledWallpaper.image4CellphoneWallpaper
     }
 
     var userWallpaperOverride: Image? {
@@ -71,7 +71,7 @@ public struct AppWallpaperView: View {
         if userWallpaperOverride != nil {
             Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
         } else {
-            switch wallpaper.game {
+            switch bundledWallpaper.game {
             case .genshinImpact: Color.colorSystemGray6.opacity(0.5)
             case .starRail: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
             case .zenlessZone: Color.colorSysBackground.opacity(0.3).blendMode(.hardLight)
@@ -84,7 +84,7 @@ public struct AppWallpaperView: View {
 
     @Environment(\.colorScheme) private var colorScheme
 
-    @Default(.background4App) private var wallpaper: Wallpaper
+    @Default(.background4App) private var bundledWallpaper: BundledWallpaper
     @Default(.userWallpaper4App) private var userWallpaperID: String?
 }
 #endif

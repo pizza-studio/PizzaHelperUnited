@@ -96,7 +96,7 @@ struct WidgetBackgroundView: View {
         }
 
         if let backgroundImageName = background.imageName {
-            let wpMaybe = Wallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
+            let wpMaybe = BundledWallpaper.allCases.first { $0.assetName4LiveActivity == backgroundImageName }
             let wallpaper = (wpMaybe ?? .defaultValue())
             let backgroundImage = wallpaper.image4LiveActivity
             let isGenshinImpact = wallpaper.game == .genshinImpact

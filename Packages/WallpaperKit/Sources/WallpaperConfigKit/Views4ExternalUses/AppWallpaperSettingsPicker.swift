@@ -44,7 +44,7 @@ public struct AppWallpaperSettingsPicker: View {
         .pickerStyle(.navigationLink)
         #endif
         Picker("settings.display.appBackground".i18nWPConfKit, selection: $background4App) {
-            ForEach(Wallpaper.allCases) { wallpaper in
+            ForEach(BundledWallpaper.allCases) { wallpaper in
                 let isChosen = wallpaper.id == background4App.id
                 drawBundledWallpaperLabel(wallpaper, isChosen: isChosen)
                     .tag(wallpaper)
@@ -87,7 +87,7 @@ public struct AppWallpaperSettingsPicker: View {
     }
 
     @ViewBuilder
-    func drawBundledWallpaperLabel(_ wallpaper: Wallpaper, isChosen: Bool) -> some View {
+    func drawBundledWallpaperLabel(_ wallpaper: BundledWallpaper, isChosen: Bool) -> some View {
         /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
         HStack {
             GeometryReader { g in
@@ -110,7 +110,7 @@ public struct AppWallpaperSettingsPicker: View {
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
     @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
-    @Default(.background4App) private var background4App: Wallpaper
+    @Default(.background4App) private var background4App: BundledWallpaper
     @Default(.userWallpaper4App) private var userWallpaperID4App: String?
 
     private var userWallpapersSorted: [UserWallpaper] {
@@ -119,7 +119,7 @@ public struct AppWallpaperSettingsPicker: View {
         }
     }
 
-    private func wallpaperName(for wallpaper: Wallpaper) -> String {
+    private func wallpaperName(for wallpaper: BundledWallpaper) -> String {
         var result = useRealCharacterNames ? wallpaper.localizedRealName : wallpaper.localizedName
         checkKunikuzushi: if wallpaper.id == "210143" {
             guard !customizedNameForWanderer.isEmpty, !useRealCharacterNames else {
