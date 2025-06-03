@@ -52,11 +52,11 @@ public struct WallpaperGalleryViewContent: View {
         max(Int(floor(containerWidth / 240)), 1)
     }
 
-    var searchResults: [Wallpaper] {
+    var searchResults: [BundledWallpaper] {
         if searchText.isEmpty {
-            Wallpaper.allCases(for: game)
+            BundledWallpaper.allCases(for: game)
         } else {
-            Wallpaper.allCases(for: game).filter { wallpaper in
+            BundledWallpaper.allCases(for: game).filter { wallpaper in
                 wallpaperName(for: wallpaper).lowercased().contains(searchText.lowercased())
             }
         }
@@ -116,8 +116,8 @@ public struct WallpaperGalleryViewContent: View {
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
-    @Default(.background4App) private var background4App: Wallpaper
-    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
+    @Default(.background4App) private var background4App: BundledWallpaper
+    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<BundledWallpaper>
     @Default(.staminaTimerLiveActivityUseEmptyBackground) private var liveActivityUseEmptyBackground: Bool
     @Default(.staminaTimerLiveActivityUseCustomizeBackground) private var liveActivityUseCustomizeBackground: Bool
 
@@ -130,7 +130,7 @@ public struct WallpaperGalleryViewContent: View {
     }
 
     @ViewBuilder
-    private func draw(wallpaper: Wallpaper) -> some View {
+    private func draw(wallpaper: BundledWallpaper) -> some View {
         wallpaper.image4LiveActivity
             .resizable()
             .scaleEffect(1.01) // HSR 的名片有光边。
@@ -144,7 +144,7 @@ public struct WallpaperGalleryViewContent: View {
             )
     }
 
-    private func wallpaperName(for wallpaper: Wallpaper) -> String {
+    private func wallpaperName(for wallpaper: BundledWallpaper) -> String {
         var result = useRealCharacterNames ? wallpaper.localizedRealName : wallpaper.localizedName
         checkKunikuzushi: if wallpaper.id == "210143" {
             guard !customizedNameForWanderer.isEmpty, !useRealCharacterNames else {

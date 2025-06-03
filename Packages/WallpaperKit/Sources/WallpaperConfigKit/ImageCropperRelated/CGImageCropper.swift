@@ -372,7 +372,7 @@ import WallpaperKit
 extension CGImageCropperView {
     @ViewBuilder
     public static func makeTestView() -> some View {
-        let cgImage = Wallpaper.queryImageAsset(for: "PZWP110000")!
+        let cgImage = BundledWallpaper.queryImageAsset(for: "PZWP110000")!
         CGImageCropperView(
             .init(width: 420, height: 200),
             sourceImage: cgImage

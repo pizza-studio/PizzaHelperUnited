@@ -74,11 +74,11 @@ public struct LiveActivityBackgroundPicker: View {
 
     // MARK: Internal
 
-    var searchResults: [Wallpaper] {
+    var searchResults: [BundledWallpaper] {
         if searchText.isEmpty {
-            Wallpaper.allCases
+            BundledWallpaper.allCases
         } else {
-            Wallpaper.allCases.filter { wallpaper in
+            BundledWallpaper.allCases.filter { wallpaper in
                 wallpaperName(for: wallpaper).lowercased().contains(searchText.lowercased())
             }
         }
@@ -91,7 +91,7 @@ public struct LiveActivityBackgroundPicker: View {
     @State private var searchText = ""
     @State private var containerSize: CGSize = .zero
 
-    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
+    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<BundledWallpaper>
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
@@ -104,7 +104,7 @@ public struct LiveActivityBackgroundPicker: View {
         #endif
     }
 
-    private func wallpaperName(for wallpaper: Wallpaper) -> String {
+    private func wallpaperName(for wallpaper: BundledWallpaper) -> String {
         var result = useRealCharacterNames ? wallpaper.localizedRealName : wallpaper.localizedName
         checkKunikuzushi: if wallpaper.id == "210143" {
             guard !customizedNameForWanderer.isEmpty, !useRealCharacterNames else {

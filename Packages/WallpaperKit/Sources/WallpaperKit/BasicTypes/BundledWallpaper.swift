@@ -8,22 +8,22 @@ import PZBaseKit
 
 extension Defaults.Keys {
     // Background wallpapers for live activity view.
-    public static let backgrounds4LiveActivity = Key<Set<Wallpaper>>(
+    public static let backgrounds4LiveActivity = Key<Set<BundledWallpaper>>(
         "backgrounds4LiveActivity",
-        default: [Wallpaper.defaultValue(for: appGame)],
+        default: [BundledWallpaper.defaultValue(for: appGame)],
         suite: .baseSuite
     )
     // Background wallpaper for app view.
-    public static let background4App = Key<Wallpaper>(
+    public static let background4App = Key<BundledWallpaper>(
         "background4App",
-        default: Wallpaper.defaultValue(for: appGame),
+        default: BundledWallpaper.defaultValue(for: appGame),
         suite: .baseSuite
     )
 }
 
-// MARK: - Wallpaper
+// MARK: - BundledWallpaper
 
-public struct Wallpaper: Identifiable, AbleToCodeSendHash {
+public struct BundledWallpaper: Identifiable, AbleToCodeSendHash {
     public let game: Pizza.SupportedGame?
     public let id: String
     public let bindedCharID: String? // 原神专用
@@ -67,11 +67,11 @@ public struct Wallpaper: Identifiable, AbleToCodeSendHash {
 
 // MARK: Defaults.Serializable
 
-extension Wallpaper: Defaults.Serializable {}
+extension BundledWallpaper: Defaults.Serializable {}
 
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
-extension Wallpaper {
+extension BundledWallpaper {
     private static let bundledLangDB4PZ: [String: String] = {
         let url = Bundle.module.url(forResource: "PizzaWallpapers", withExtension: "json")!
         let data = try! Data(contentsOf: url)
@@ -110,7 +110,7 @@ extension Wallpaper {
     }()
 }
 
-extension Wallpaper {
+extension BundledWallpaper {
     public static func defaultValue(for game: Pizza.SupportedGame? = nil) -> Self {
         switch game ?? appGame {
         case .genshinImpact: .init(game: .genshinImpact, id: "210042", bindedCharID: "10000031_203101")
@@ -137,7 +137,7 @@ extension Wallpaper {
     public static func findNameCardForGenshinCharacter(charID: String) -> Self {
         assetCharMap4GI[charID]
             ?? assetCharMap4GI[charID.prefix(8).description]
-            ?? Wallpaper.defaultValue(for: .genshinImpact)
+            ?? BundledWallpaper.defaultValue(for: .genshinImpact)
     }
 
     public static var allCases: [Self] {
