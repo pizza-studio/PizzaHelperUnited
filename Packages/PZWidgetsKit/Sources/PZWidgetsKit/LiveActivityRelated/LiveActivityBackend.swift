@@ -19,7 +19,7 @@ public struct EnableLiveActivityButton: View {
 
     public init?(for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol) {
         #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
-        self.account = profile
+        self.profile = profile
         self.dailyNote = dailyNote
         #else
         return nil
@@ -31,8 +31,8 @@ public struct EnableLiveActivityButton: View {
     public var body: some View {
         Button {
             do {
-                try ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(
-                    for: account,
+                try StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
+                    for: profile,
                     data: dailyNote
                 )
             } catch {
@@ -54,26 +54,18 @@ public struct EnableLiveActivityButton: View {
     @State private var error: AnyLocalizedError?
     @State private var showErrorAlert: Bool = false
 
-    private let account: PZProfileSendable
+    private let profile: PZProfileSendable
     private let dailyNote: any DailyNoteProtocol
 }
 
 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
-extension ResinRecoveryAttributes: ActivityAttributes {}
+extension LiveActivityAttributes: ActivityAttributes {}
 #endif
 
-// MARK: - ResinRecoveryActivityBackground
+// MARK: - LiveActivityAttributes
 
-public enum ResinRecoveryActivityBackground: Codable, Equatable, Hashable, Sendable {
-    case random
-    case customize([String])
-    case noBackground
-}
-
-// MARK: - ResinRecoveryAttributes
-
-public struct ResinRecoveryAttributes: Sendable {
-    public typealias ResinRecoveryState = ContentState
+public struct LiveActivityAttributes: Sendable {
+    public typealias LiveActivityState = ContentState
 
     public struct ContentState: AbleToCodeSendHash {
         // MARK: Lifecycle
@@ -81,7 +73,7 @@ public struct ResinRecoveryAttributes: Sendable {
         public init(
             dailyNote: any DailyNoteProtocol,
             showExpedition: Bool,
-            background: ResinRecoveryActivityBackground
+            background: LiveActivityBackground
         ) {
             self.background = background
             self.primaryStaminaRecoverySpeed = dailyNote.eachStaminaRecoveryTime
@@ -106,14 +98,14 @@ public struct ResinRecoveryAttributes: Sendable {
         public let primaryStaminaRecoveryTime: Date
         public let expeditionAllCompleteTime: Date?
         public let showExpedition: Bool
-        public let background: ResinRecoveryActivityBackground
+        public let background: LiveActivityBackground
     }
 
-    public let accountName: String
-    public let accountUUID: UUID
+    public let profileName: String
+    public let profileUUID: UUID
 }
 
-extension ResinRecoveryAttributes.ResinRecoveryState {
+extension LiveActivityAttributes.LiveActivityState {
     public var maxPrimaryStamina: Int { staminaCompletionStatus.all }
 
     public var currentPrimaryStamina: Int {
@@ -148,31 +140,17 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
     }
 }
 
-// MARK: - ResinRecoveryActivityController
+// MARK: - LiveActivityBackground
 
-public final class ResinRecoveryActivityController: Sendable {
-    // MARK: Lifecycle
+public enum LiveActivityBackground: Codable, Equatable, Hashable, Sendable {
+    case random
+    case customize([String])
+    case noBackground
+}
 
-    private init() {}
+// MARK: - LiveActivityStaticAPIs
 
-    // MARK: Public
-
-    public static let shared: ResinRecoveryActivityController = .init()
-
-    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
-    public var currentActivities: [Activity<ResinRecoveryAttributes>] {
-        Activity<ResinRecoveryAttributes>.activities
-    }
-    #endif
-
-    public var allowLiveActivity: Bool {
-        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
-        return ActivityAuthorizationInfo().areActivitiesEnabled
-        #else
-        return false
-        #endif
-    }
-
+public enum LiveActivityStaticAPIs {
     public static func backgroundSettingsSanityCheck() {
         let backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
         guard !backgrounds.isEmpty else { return }
@@ -186,7 +164,7 @@ public final class ResinRecoveryActivityController: Sendable {
         }
     }
 
-    public func getBackground(for game: Pizza.SupportedGame? = nil) -> ResinRecoveryActivityBackground {
+    public static func getBackground(for game: Pizza.SupportedGame? = nil) -> LiveActivityBackground {
         if Defaults[.resinRecoveryLiveActivityUseEmptyBackground] {
             return .noBackground
         } else if !Defaults[.resinRecoveryLiveActivityUseCustomizeBackground] {
@@ -203,28 +181,54 @@ public final class ResinRecoveryActivityController: Sendable {
             return .customize(backgrounds)
         }
     }
+}
+
+// MARK: - StaminaLiveActivityController
+
+public final class StaminaLiveActivityController: Sendable {
+    // MARK: Lifecycle
+
+    private init() {}
+
+    // MARK: Public
+
+    public static let shared: StaminaLiveActivityController = .init()
+
+    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+    public var currentActivities: [Activity<LiveActivityAttributes>] {
+        Activity<LiveActivityAttributes>.activities
+    }
+    #endif
+
+    public var allowLiveActivity: Bool {
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+        return ActivityAuthorizationInfo().areActivitiesEnabled
+        #else
+        return false
+        #endif
+    }
 
     public func createResinRecoveryTimerActivity(for profile: PZProfileSendable, data: some DailyNoteProtocol) throws {
         #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
         guard allowLiveActivity else {
             throw CreateLiveActivityError.notAllowed
         }
-        let accountName = profile.name
-        let accountUUID: UUID = profile.uuid
+        let profileName = profile.name
+        let profileUUID: UUID = profile.uuid
 
-        guard !currentActivities.map({ $0.attributes.accountUUID })
-            .contains(accountUUID) else {
+        guard !currentActivities.map({ $0.attributes.profileUUID })
+            .contains(profileUUID) else {
             updateResinRecoveryTimerActivity(for: profile, data: data)
             return
         }
-        let attributes: ResinRecoveryAttributes = .init(
-            accountName: accountName,
-            accountUUID: accountUUID
+        let attributes: LiveActivityAttributes = .init(
+            profileName: profileName,
+            profileUUID: profileUUID
         )
-        let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
+        let status: LiveActivityAttributes.LiveActivityState = .init(
             dailyNote: data,
             showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
-            background: getBackground(for: profile.game)
+            background: LiveActivityStaticAPIs.getBackground(for: profile.game)
         )
 
         print(status.currentPrimaryStamina)
@@ -257,7 +261,7 @@ public final class ResinRecoveryActivityController: Sendable {
         #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
         Task {
             let filtered = currentActivities.filter { activity in
-                activity.attributes.accountUUID == profile.uuid
+                activity.attributes.profileUUID == profile.uuid
             }
 
             for activity in filtered {
@@ -265,14 +269,14 @@ public final class ResinRecoveryActivityController: Sendable {
                     endActivity(for: profile)
                     continue
                 }
-                let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
+                let status: LiveActivityAttributes.LiveActivityState = .init(
                     dailyNote: data,
                     showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
-                    background: getBackground(for: profile.game)
+                    background: LiveActivityStaticAPIs.getBackground(for: profile.game)
                 )
 
                 await activity.update(
-                    ActivityContent<Activity<ResinRecoveryAttributes>.ContentState>(
+                    ActivityContent<Activity<LiveActivityAttributes>.ContentState>(
                         state: status, staleDate: Date.now.adding(seconds: 360)
                     )
                 )
@@ -281,11 +285,11 @@ public final class ResinRecoveryActivityController: Sendable {
         #endif
     }
 
-    public func endActivity(for account: PZProfileSendable) {
+    public func endActivity(for profile: PZProfileSendable) {
         #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
         Task {
             let filtered = currentActivities.filter { activity in
-                activity.attributes.accountUUID == account.uuid
+                activity.attributes.profileUUID == profile.uuid
             }
             for activity in filtered {
                 await activity.end(nil, dismissalPolicy: .default)
