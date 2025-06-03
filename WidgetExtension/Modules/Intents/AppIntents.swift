@@ -42,7 +42,6 @@ public protocol SelectProfileIntentProtocol {
     var echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum { get set }
     var randomBackground: Bool { get set }
     var chosenBackgrounds: [WidgetBackgroundAppEntity] { get set }
-    var chosenUserWallpapers: [WidgetUserWallpaperAppEntity] { get set }
     var isDarkModeRespected: Bool { get set }
     var showMaterialsInLargeSizeWidget: Bool { get set }
 }
@@ -90,14 +89,6 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
     /// If not changing the field name to a new one, the previous data will hinder this property
     /// from being configured by the user. Hence the change from `background` to `chosenBackgrounds`.
     @Parameter(title: "intent.field.wallpaper", default: []) public var chosenBackgrounds: [WidgetBackgroundAppEntity]
-
-    /// This is the field which serves the customized widget
-    /// wallpaper feature offered in the previous `PizzaHelper4HSR`.
-    /// Once it gets set, it has higher priority than the `chosenBackgrounds`.
-    @Parameter(
-        title: "intent.field.userWallpaper",
-        default: []
-    ) public var chosenUserWallpapers: [WidgetUserWallpaperAppEntity]
 
     @Parameter(title: "intent.field.followSystemDarkMode", default: true) public var isDarkModeRespected: Bool
 
@@ -166,14 +157,6 @@ public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, Cus
     /// If not changing the field name to a new one, the previous data will hinder this property
     /// from being configured by the user. Hence the change from `background` to `chosenBackgrounds`.
     @Parameter(title: "intent.field.wallpaper", default: []) public var chosenBackgrounds: [WidgetBackgroundAppEntity]
-
-    /// This is the field which serves the customized widget
-    /// wallpaper feature offered in the previous `PizzaHelper4HSR`.
-    /// Once it gets set, it has higher priority than the `chosenBackgrounds`.
-    @Parameter(
-        title: "intent.field.userWallpaper",
-        default: []
-    ) public var chosenUserWallpapers: [WidgetUserWallpaperAppEntity]
 
     @Parameter(title: "intent.field.followSystemDarkMode", default: true) public var isDarkModeRespected: Bool
 
