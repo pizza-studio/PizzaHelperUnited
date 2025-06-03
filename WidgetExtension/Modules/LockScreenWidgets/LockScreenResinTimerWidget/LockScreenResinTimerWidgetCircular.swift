@@ -5,6 +5,7 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -24,9 +25,9 @@ struct LockScreenResinTimerWidgetCircular: View {
                 VStack(spacing: -0.5) {
                     LinearGradient(
                         colors: [
-                            .init("iconColor.resin.dark"),
-                            .init("iconColor.resin.middle"),
-                            .init("iconColor.resin.light"),
+                            PZWidgetsSPM.Colors.IconColor.Resin.dark.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.Resin.light.suiColor,
                         ],
                         startPoint: .top,
                         endPoint: .bottom
@@ -68,7 +69,7 @@ struct LockScreenResinTimerWidgetCircular: View {
                                         weight: .medium
                                     ))
                                     .foregroundColor(
-                                        Color("textColor.originResin", bundle: .main)
+                                        PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                                     )
                                     .minimumScaleFactor(0.1)
                             }
@@ -80,7 +81,7 @@ struct LockScreenResinTimerWidgetCircular: View {
                                     design: .rounded
                                 ))
                                 .foregroundColor(
-                                    Color("textColor.originResin", bundle: .main)
+                                    PZWidgetsSPM.Colors.TextColor.originResin.suiColor
                                 )
                         }
                     case .failure:

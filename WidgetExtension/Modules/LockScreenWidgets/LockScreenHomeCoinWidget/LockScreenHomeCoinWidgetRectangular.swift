@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -38,7 +39,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                                         design: .rounded
                                     ))
                             }
-                            .foregroundColor(Color("iconColor.resin", bundle: .main))
+                            .foregroundColor(PZWidgetsSPM.Colors.IconColor.Resin.accented.suiColor)
                             Spacer()
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
                                 let iconSize: CGFloat = size * 8 / 9
@@ -51,7 +52,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                                         design: .rounded
                                     ))
                             }
-                            .foregroundColor(Color("iconColor.homeCoin", bundle: .main))
+                            .foregroundColor(PZWidgetsSPM.Colors.IconColor.HomeCoin.accented.suiColor)
                             Spacer()
                         }
                         GridRow(alignment: .lastTextBaseline) {

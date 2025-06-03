@@ -5,6 +5,7 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -25,9 +26,9 @@ struct LockScreenResinWidgetCircular: View {
                 Gauge(value: Double(staminaIntel.finished) / Double(staminaIntel.all)) {
                     LinearGradient(
                         colors: [
-                            .init("iconColor.resin.dark"),
-                            .init("iconColor.resin.middle"),
-                            .init("iconColor.resin.light"),
+                            PZWidgetsSPM.Colors.IconColor.Resin.dark.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.Resin.light.suiColor,
                         ],
                         startPoint: .top,
                         endPoint: .bottom
@@ -46,16 +47,16 @@ struct LockScreenResinWidgetCircular: View {
                 }
                 .gaugeStyle(
                     ProgressGaugeStyle(
-                        circleColor: Color("iconColor.resin.middle", bundle: .main)
+                        circleColor: PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor
                     )
                 )
             case .failure:
                 Gauge(value: Double(213), in: 0.0 ... Double(213)) {
                     LinearGradient(
                         colors: [
-                            .init("iconColor.resin.dark"),
-                            .init("iconColor.resin.middle"),
-                            .init("iconColor.resin.light"),
+                            PZWidgetsSPM.Colors.IconColor.Resin.dark.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor,
+                            PZWidgetsSPM.Colors.IconColor.Resin.light.suiColor,
                         ],
                         startPoint: .top,
                         endPoint: .bottom
@@ -70,7 +71,7 @@ struct LockScreenResinWidgetCircular: View {
                 }
                 .gaugeStyle(
                     ProgressGaugeStyle(
-                        circleColor: Color("iconColor.resin.middle", bundle: .main)
+                        circleColor: PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor
                     )
                 )
             }

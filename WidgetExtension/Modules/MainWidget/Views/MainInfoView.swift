@@ -6,6 +6,7 @@ import AppIntents
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -34,7 +35,7 @@ struct MainInfo: View {
                         .legibilityShadow()
                 }
                 .font(.footnote)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 Spacer()
             }
 
@@ -44,7 +45,7 @@ struct MainInfo: View {
                     .font(.system(size: 50, design: .rounded))
                     .fontWeight(.medium)
                     .minimumScaleFactor(0.1)
-                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .legibilityShadow()
                 dailyNote.game.primaryStaminaAssetIcon
                     .resizable()
@@ -60,7 +61,7 @@ struct MainInfo: View {
                 Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: entry.profile?.uidWithGame)) {
                     Image(systemSymbol: .arrowClockwiseCircle)
                         .font(.title3)
-                        .foregroundColor(Color("textColor3", bundle: .main))
+                        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                         .clipShape(.circle)
                 }
                 .buttonStyle(.plain)

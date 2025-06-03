@@ -5,6 +5,7 @@
 import Defaults
 import Foundation
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WallpaperKit
 
@@ -227,9 +228,9 @@ extension WidgetBackgroundAppEntity {
             ]
         case "app.background.intertwinedFate":
             return [
-                Color("bgColor.intertwinedFate.1", bundle: .main),
-                Color("bgColor.intertwinedFate.2", bundle: .main),
-                Color("bgColor.intertwinedFate.3", bundle: .main),
+                PZWidgetsSPM.Colors.Background.IntertwinedFate.color1.suiColor,
+                PZWidgetsSPM.Colors.Background.IntertwinedFate.color2.suiColor,
+                PZWidgetsSPM.Colors.Background.IntertwinedFate.color3.suiColor,
             ]
         default:
             return []

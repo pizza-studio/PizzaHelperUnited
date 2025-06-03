@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZWidgetsKit
 import SwiftUI
 
 @available(watchOS, unavailable)
@@ -16,10 +17,10 @@ struct WeekdayDisplayView: View {
                     weight: .regular,
                     design: .rounded
                 ))
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
             Text(weekday)
                 .font(.caption)
-                .foregroundColor(Color("textColor.calendarWeekday", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.calendarWeekday.suiColor)
                 .bold()
         }
         .legibilityShadow()

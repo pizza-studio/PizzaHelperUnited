@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -48,11 +49,11 @@ struct OfficialFeedList4WidgetsView: View {
             Button(intent: WidgetRefreshIntent()) {
                 Image(systemSymbol: .arrowClockwiseCircle)
                     .font(.title3)
-                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .clipShape(.circle)
             }
             .buttonStyle(.plain)
-            .foregroundColor(Color("textColor3", bundle: .main))
+            .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
         }
         let leadingPadding: CGFloat? = !showLeadingBorder ? nil : 7
         ViewThatFits(in: .vertical) {
@@ -85,7 +86,7 @@ struct OfficialFeedList4WidgetsView: View {
             }
         }
         .legibilityShadow(isText: true)
-        .foregroundColor(Color("textColor3", bundle: .main))
+        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
     }
 
     @ViewBuilder
