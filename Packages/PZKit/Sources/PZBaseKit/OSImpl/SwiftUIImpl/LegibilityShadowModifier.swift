@@ -8,11 +8,12 @@ import SwiftUI
 // MARK: - LegibilityShadowModifier
 
 private struct LegibilityShadowModifier: ViewModifier {
+    // MARK: Internal
+
     let isText: Bool
-    @Default(.contentLegibilityShadowOpacity) var contentLegibilityShadowOpacity: Double
 
     var opacity: CGFloat {
-        contentLegibilityShadowOpacity * (isText ? 1 : 0.7)
+        Self.contentLegibilityShadowOpacity * (isText ? 1 : 0.7)
     }
 
     func body(content: Content) -> some View {
@@ -24,6 +25,10 @@ private struct LegibilityShadowModifier: ViewModifier {
                 y: 0
             )
     }
+
+    // MARK: Private
+
+    private static let contentLegibilityShadowOpacity = 0.7
 }
 
 extension View {
