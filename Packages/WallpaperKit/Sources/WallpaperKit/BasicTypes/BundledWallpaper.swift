@@ -6,21 +6,6 @@ import Defaults
 import Foundation
 import PZBaseKit
 
-extension Defaults.Keys {
-    // Background wallpapers for live activity view.
-    public static let backgrounds4LiveActivity = Key<Set<BundledWallpaper>>(
-        "backgrounds4LiveActivity",
-        default: [BundledWallpaper.defaultValue(for: appGame)],
-        suite: .baseSuite
-    )
-    // Background wallpaper for app view.
-    public static let background4App = Key<BundledWallpaper>(
-        "background4App",
-        default: BundledWallpaper.defaultValue(for: appGame),
-        suite: .baseSuite
-    )
-}
-
 // MARK: - BundledWallpaper
 
 public struct BundledWallpaper: Identifiable, AbleToCodeSendHash {
