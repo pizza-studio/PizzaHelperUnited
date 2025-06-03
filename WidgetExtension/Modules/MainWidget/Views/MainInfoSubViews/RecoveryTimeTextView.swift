@@ -5,6 +5,7 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -25,7 +26,7 @@ struct RecoveryTimeText: View {
         }
         .font(.caption2)
         .minimumScaleFactor(0.2)
-        .foregroundColor(Color("textColor3", bundle: .main))
+        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
         .legibilityShadow()
     }
 

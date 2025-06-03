@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -35,11 +36,11 @@ struct HSRSimulUnivInfoBar: View {
             Image(systemSymbol: isFinished ? .checkmark : .ellipsis)
                 .overlayImageWithRingProgressBar(ratio, scaler: 0.78)
                 .frame(maxWidth: 13, maxHeight: 13)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .legibilityShadow()
             Text(verbatim: "\(ratio)%")
                 .lineLimit(1)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .font(.system(.caption, design: .rounded))
                 .minimumScaleFactor(0.2)
                 .legibilityShadow()

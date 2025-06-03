@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -27,12 +28,12 @@ struct GITrounceBlossomInfoBar: View {
                 .legibilityShadow(isText: false)
             isWeeklyBossesFinishedImage
                 .frame(width: 13, height: 13)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Text(verbatim: weeklyBossesInfo.textDescription)
                     .lineLimit(1)
-                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
             }

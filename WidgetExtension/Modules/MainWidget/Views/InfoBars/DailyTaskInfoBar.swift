@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -27,7 +28,7 @@ struct DailyTaskInfoBar: View {
                 .legibilityShadow(isText: false)
             isTaskRewardReceivedImage
                 .frame(maxWidth: 13, maxHeight: 13)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .legibilityShadow()
 
             HStack(alignment: .lastTextBaseline, spacing: 1) {
@@ -42,7 +43,7 @@ struct DailyTaskInfoBar: View {
                     }
                 }
                 .lineLimit(1)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .font(.system(.caption, design: .rounded))
                 .minimumScaleFactor(0.2)
             }

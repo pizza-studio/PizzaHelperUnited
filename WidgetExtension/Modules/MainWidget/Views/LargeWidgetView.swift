@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -96,14 +97,14 @@ struct LargeWidgetView: View {
                         .legibilityShadow()
                 }
                 .font(.footnote)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
             }
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text(verbatim: "\(dailyNote.staminaIntel.finished)")
                     .font(.system(size: 50, design: .rounded))
                     .fontWeight(.medium)
                     .minimumScaleFactor(0.1)
-                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .legibilityShadow()
                 dailyNote.game.primaryStaminaAssetIcon
                     .resizable()
@@ -118,7 +119,7 @@ struct LargeWidgetView: View {
                 Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: entry.profile?.uidWithGame)) {
                     Image(systemSymbol: .arrowClockwiseCircle)
                         .font(.title3)
-                        .foregroundColor(Color("textColor3", bundle: .main))
+                        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                         .clipShape(.circle)
                         .legibilityShadow()
                 }

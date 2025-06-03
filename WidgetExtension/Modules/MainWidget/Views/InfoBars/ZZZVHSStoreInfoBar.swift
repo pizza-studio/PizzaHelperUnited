@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -29,13 +30,13 @@ struct ZZZVHSStoreInfoBar: View {
                 .legibilityShadow(isText: false)
             ringImage
                 .frame(maxWidth: 13, maxHeight: 13)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Group {
                     Text(state.localizedDescription)
                 }
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .lineLimit(1)
                 .font(.system(.caption))
                 .fontWidth(.compressed)

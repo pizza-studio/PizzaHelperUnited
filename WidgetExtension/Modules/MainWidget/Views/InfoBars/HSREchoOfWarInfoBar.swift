@@ -2,12 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
-// ====================
-// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
-
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -31,12 +28,12 @@ struct HSREchoOfWarInfoBar: View {
                 .legibilityShadow(isText: false)
             isWeeklyBossesFinishedImage
                 .frame(width: 13, height: 13)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Text(verbatim: eowIntel.textDescription)
                     .lineLimit(1)
-                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
             }

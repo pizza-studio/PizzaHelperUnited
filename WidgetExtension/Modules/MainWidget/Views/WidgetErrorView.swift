@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 
 @available(watchOS, unavailable)
@@ -16,7 +17,7 @@ struct WidgetErrorView: View {
             Button(intent: WidgetRefreshIntent()) {
                 Image(systemSymbol: .arrowClockwiseCircle)
                     .font(.title3)
-                    .foregroundColor(Color("textColor3", bundle: .main))
+                    .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                     .clipShape(.circle)
                     .legibilityShadow()
             }
@@ -24,7 +25,7 @@ struct WidgetErrorView: View {
             .padding()
             Text(error.localizedDescription)
                 .bold()
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .legibilityShadow()
         }
         .padding(20)

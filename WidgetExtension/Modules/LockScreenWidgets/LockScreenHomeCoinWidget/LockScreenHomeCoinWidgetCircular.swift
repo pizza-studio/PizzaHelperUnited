@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -23,7 +24,7 @@ struct LockScreenHomeCoinWidgetCircular: View {
                 .apply { imageView in
                     if widgetRenderingMode == .fullColor {
                         imageView
-                            .foregroundColor(Color("iconColor.homeCoin.lightBlue", bundle: .main))
+                            .foregroundColor(PZWidgetsSPM.Colors.IconColor.HomeCoin.lightBlue.suiColor)
                     } else {
                         imageView
                     }

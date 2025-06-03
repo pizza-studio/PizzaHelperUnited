@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -30,13 +31,13 @@ struct ZZZInvestigationPointInfoBar: View {
                 .legibilityShadow(isText: false)
             ringImage
                 .frame(maxWidth: 13, maxHeight: 13)
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .legibilityShadow()
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Group {
                     Text(verbatim: "\(data.num) / \(data.total)")
                 }
-                .foregroundColor(Color("textColor3", bundle: .main))
+                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
                 .lineLimit(1)
                 .font(.system(.caption, design: .rounded))
                 .minimumScaleFactor(0.2)
