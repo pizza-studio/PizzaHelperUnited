@@ -28,26 +28,17 @@ public struct AppWallpaperSettingsPicker: View {
     }()
 
     public var body: some View {
-        Picker(
-            "settings.display.appUserWallpaper".i18nWPConfKit,
-            selection: $userWallpaperID4App
-        ) {
-            drawUserWallpaperLabel(nil, isChosen: userWallpaperID4App == nil)
-                .tag(String?.none)
-            ForEach(userWallpapersSorted) { userWallpaper in
-                let isChosen = userWallpaperID4App == userWallpaper.id.uuidString
-                drawUserWallpaperLabel(userWallpaper, isChosen: isChosen)
-                    .tag(userWallpaper.id.uuidString)
-            }
-        }
-        #if os(iOS) || targetEnvironment(macCatalyst)
-        .pickerStyle(.navigationLink)
-        #endif
-        Picker("settings.display.appBackground".i18nWPConfKit, selection: $background4App) {
-            ForEach(BundledWallpaper.allCases) { wallpaper in
-                let isChosen = wallpaper.id == background4App.id
-                drawBundledWallpaperLabel(wallpaper, isChosen: isChosen)
-                    .tag(wallpaper)
+        Picker("settings.display.appBackground".i18nWPConfKit, selection: $appWallpaperID) {
+            ForEach(Wallpaper.allCases) { currentWallpaper in
+                let isChosen = currentWallpaper.id == appWallpaperID
+                switch currentWallpaper {
+                case let .bundled(wallpaper):
+                    drawBundledWallpaperLabel(wallpaper, isChosen: isChosen)
+                        .tag(currentWallpaper.id)
+                case let .user(userWallpaper):
+                    drawUserWallpaperLabel(userWallpaper, isChosen: isChosen)
+                        .tag(currentWallpaper.id)
+                }
             }
         }
         #if os(iOS) || targetEnvironment(macCatalyst)
@@ -109,15 +100,7 @@ public struct AppWallpaperSettingsPicker: View {
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
-    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
-    @Default(.background4App) private var background4App: BundledWallpaper
-    @Default(.userWallpaper4App) private var userWallpaperID4App: String?
-
-    private var userWallpapersSorted: [UserWallpaper] {
-        userWallpapers.sorted {
-            $0.timestamp > $1.timestamp
-        }
-    }
+    @Default(.appWallpaperID) private var appWallpaperID: String
 
     private func wallpaperName(for wallpaper: BundledWallpaper) -> String {
         var result = useRealCharacterNames ? wallpaper.localizedRealName : wallpaper.localizedName

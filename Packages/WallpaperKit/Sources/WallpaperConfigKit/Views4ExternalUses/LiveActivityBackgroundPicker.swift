@@ -25,44 +25,26 @@ public struct LiveActivityBackgroundPicker: View {
     public var body: some View {
         NavigationStack {
             Form {
-                ForEach(searchResults) { wallpaper in
-                    let isThisOneChosen = backgrounds4LiveActivity.contains(wallpaper)
+                ForEach(searchResults) { currentWallpaper in
+                    let isChosen = liveActivityWallpaperIDs.contains(currentWallpaper.id)
                     Button {
-                        if isThisOneChosen {
-                            backgrounds4LiveActivity.remove(wallpaper)
+                        if isChosen {
+                            liveActivityWallpaperIDs.remove(currentWallpaper.id)
                         } else {
-                            backgrounds4LiveActivity.insert(wallpaper)
+                            liveActivityWallpaperIDs.insert(currentWallpaper.id)
                         }
                     } label: {
-                        Label {
-                            HStack {
-                                Text(wallpaperName(for: wallpaper))
-                                    .foregroundColor(isThisOneChosen ? .accentColor : .primary)
-                                    .fontWidth(.condensed)
-                                    .multilineTextAlignment(.leading)
-                                Spacer()
-                                if isThisOneChosen {
-                                    Text(verbatim: "✔︎")
-                                        .foregroundColor(.accentColor)
-                                        .padding(.horizontal)
-                                }
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .clipShape(.rect)
-                        } icon: {
-                            GeometryReader { g in
-                                wallpaper.image4LiveActivity
-                                    .resizable()
-                                    .scaledToFill()
-                                    .offset(x: -g.size.width)
-                            }
-                            .clipShape(Circle())
-                            .frame(width: 30, height: 30)
-                        }.tag(wallpaper)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .clipShape(.rect)
+                        switch currentWallpaper {
+                        case let .bundled(wallpaper):
+                            drawBundledWallpaperLabel(wallpaper, isChosen: isChosen)
+                        case let .user(userWallpaper):
+                            drawUserWallpaperLabel(userWallpaper, isChosen: isChosen)
+                        }
                     }
                     .buttonStyle(.borderless)
+                    .tag(currentWallpaper.id)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .clipShape(.rect)
                 }
             }
             .searchable(text: $searchText, placement: searchFieldPlacement)
@@ -74,12 +56,67 @@ public struct LiveActivityBackgroundPicker: View {
 
     // MARK: Internal
 
-    var searchResults: [BundledWallpaper] {
+    var searchResults: [Wallpaper] {
         if searchText.isEmpty {
-            BundledWallpaper.allCases
+            Wallpaper.allCases
         } else {
-            BundledWallpaper.allCases.filter { wallpaper in
-                wallpaperName(for: wallpaper).lowercased().contains(searchText.lowercased())
+            Wallpaper.allCases.filter { currentWallpaper in
+                switch currentWallpaper {
+                case let .user(userWallpaper):
+                    userWallpaper.name.lowercased().contains(searchText.lowercased())
+                case let .bundled(bundledWallpaper):
+                    wallpaperName(for: bundledWallpaper).lowercased().contains(searchText.lowercased())
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    func drawUserWallpaperLabel(_ wallpaper: UserWallpaper, isChosen: Bool) -> some View {
+        let cgImage = wallpaper.imageSquared
+        let iconImage: Image = {
+            if let cgImage { return Image(decorative: cgImage, scale: 1, orientation: .up) }
+            return Image(systemSymbol: .trashSlashFill)
+        }()
+        /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
+        HStack {
+            iconImage
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+                .frame(width: 32, height: 32).padding(.trailing, 4)
+            Text(wallpaper.name)
+                .multilineTextAlignment(.leading)
+                .foregroundColor(isChosen ? .accentColor : .primary)
+            Spacer()
+            if isChosen {
+                Text(verbatim: "✔︎")
+                    .foregroundColor(.accentColor)
+                    .padding(.horizontal)
+            }
+        }
+    }
+
+    @ViewBuilder
+    func drawBundledWallpaperLabel(_ wallpaper: BundledWallpaper, isChosen: Bool) -> some View {
+        /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
+        HStack {
+            GeometryReader { g in
+                wallpaper.image4LiveActivity
+                    .resizable()
+                    .scaledToFill()
+                    .offset(x: -g.size.width)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 4))
+            .frame(width: 32, height: 32).padding(.trailing, 4)
+            Text(wallpaperName(for: wallpaper))
+                .multilineTextAlignment(.leading)
+                .foregroundColor(isChosen ? .accentColor : .primary)
+            Spacer()
+            if isChosen {
+                Text(verbatim: "✔︎")
+                    .foregroundColor(.accentColor)
+                    .padding(.horizontal)
             }
         }
     }
@@ -91,10 +128,10 @@ public struct LiveActivityBackgroundPicker: View {
     @State private var searchText = ""
     @State private var containerSize: CGSize = .zero
 
-    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<BundledWallpaper>
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
+    @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
 
     private var searchFieldPlacement: SearchFieldPlacement {
         #if os(iOS) || targetEnvironment(macCatalyst)
