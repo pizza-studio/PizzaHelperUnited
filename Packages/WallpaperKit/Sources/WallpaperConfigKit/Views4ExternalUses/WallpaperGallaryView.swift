@@ -62,6 +62,8 @@ public struct WallpaperGalleryViewContent: View {
         }
     }
 
+    var labvParser: LiveActivityBackgroundValueParser { .init($liveActivityWallpaperIDs) }
+
     @ViewBuilder var coreBodyView: some View {
         StaggeredGrid(
             columns: columns,
@@ -72,28 +74,23 @@ public struct WallpaperGalleryViewContent: View {
                 .matchedGeometryEffect(id: currentCard.id, in: animation)
                 .contextMenu {
                     Button("wpKit.assign.background4App".i18nWPConfKit) {
-                        background4App = currentCard
+                        appWallpaperID = currentCard.id
                     }
                     #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
-                    let alreadyChosenAsLABG: Bool = liveActivityUseCustomizeBackground
-                        && !liveActivityUseEmptyBackground
-                        && backgrounds4LiveActivity.contains(currentCard)
+                    let alreadyChosenAsLABG: Bool = !labvParser.useRandomBackground.wrappedValue
+                        && !labvParser.useEmptyBackground.wrappedValue
+                        && liveActivityWallpaperIDs.contains(currentCard.id)
                     Button {
                         if alreadyChosenAsLABG {
-                            backgrounds4LiveActivity.remove(currentCard)
-                            if backgrounds4LiveActivity.isEmpty {
-                                liveActivityUseEmptyBackground = true
-                                liveActivityUseCustomizeBackground = false
-                            }
+                            liveActivityWallpaperIDs.remove(currentCard.id)
                         } else {
-                            liveActivityUseEmptyBackground = false
-                            liveActivityUseCustomizeBackground = true
-                            backgrounds4LiveActivity.insert(currentCard)
+                            labvParser.useEmptyBackground.wrappedValue = false
+                            liveActivityWallpaperIDs.insert(currentCard.id)
                         }
                     } label: {
                         Label(
                             "wpKit.assign.backgrounds4LiveActivity".i18nWPConfKit,
-                            systemSymbol: alreadyChosenAsLABG ? nil : .checkmark
+                            systemSymbol: alreadyChosenAsLABG ? .checkmark : nil
                         )
                     }
                     #endif
@@ -116,10 +113,8 @@ public struct WallpaperGalleryViewContent: View {
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
-    @Default(.background4App) private var background4App: BundledWallpaper
-    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<BundledWallpaper>
-    @Default(.staminaTimerLiveActivityUseEmptyBackground) private var liveActivityUseEmptyBackground: Bool
-    @Default(.staminaTimerLiveActivityUseCustomizeBackground) private var liveActivityUseCustomizeBackground: Bool
+    @Default(.appWallpaperID) private var appWallpaperID: String
+    @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
 
     private var searchFieldPlacement: SearchFieldPlacement {
         #if os(iOS) || targetEnvironment(macCatalyst)
