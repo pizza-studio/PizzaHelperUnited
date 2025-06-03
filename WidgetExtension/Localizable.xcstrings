@@ -1064,7 +1064,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "预设值"
+            "value" : "默认值"
           }
         },
         "zh-Hant" : {
