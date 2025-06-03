@@ -286,11 +286,11 @@ extension CreateLiveActivityError: LocalizedError {
     private var errorDescriptionKeys: String.LocalizationValue {
         switch self {
         case .notAllowed:
-            return "pzAccountKit.CreateLiveActivityError.systemSettings"
+            return "pzWidgetsKit.CreateLiveActivityError.systemSettings"
         case .noInfo:
-            return "pzAccountKit.CreateLiveActivityError.noInfo"
+            return "pzWidgetsKit.CreateLiveActivityError.noInfo"
         case .otherError:
-            return "pzAccountKit.CreateLiveActivityError.unknown:%@"
+            return "pzWidgetsKit.CreateLiveActivityError.unknown:%@"
         }
     }
 }
