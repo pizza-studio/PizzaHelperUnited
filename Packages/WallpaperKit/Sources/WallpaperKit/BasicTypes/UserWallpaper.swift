@@ -33,11 +33,14 @@ extension Defaults.Keys {
 public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
     // MARK: Lifecycle
 
-    public init?(defaultsValueID: String?) {
+    public init?(defaultsValueID: String?, validateImageData: Bool = false) {
         guard let defaultsValueID else { return nil }
         guard let uuid = UUID(uuidString: defaultsValueID) else { return nil }
         let matched = Defaults[.userWallpapers].first { $0.id == uuid }
         guard let matched else { return nil }
+        if validateImageData {
+            guard matched.isImageDataValid else { return nil }
+        }
         self = matched
     }
 
@@ -80,6 +83,10 @@ extension UserWallpaper {
     }
 
     public var dateString: String { Self.makeDateString(timestamp: timestamp) }
+
+    public var isImageDataValid: Bool {
+        imageSquared != nil && imageHorizontal != nil
+    }
 
     public static func makeDateString(
         timestamp: TimeInterval = Date().timeIntervalSince1970,
