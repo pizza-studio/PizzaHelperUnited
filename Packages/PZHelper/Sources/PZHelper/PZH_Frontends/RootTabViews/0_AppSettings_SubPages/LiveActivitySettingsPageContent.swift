@@ -147,7 +147,7 @@ struct LiveActivitySettingsPageContent: View {
         .navBarTitleDisplayMode(.large)
         .onAppear {
             withAnimation {
-                allowLiveActivity = ResinRecoveryActivityController.shared
+                allowLiveActivity = StaminaLiveActivityController.shared
                     .allowLiveActivity
             }
         }
@@ -163,7 +163,7 @@ struct LiveActivitySettingsPageContent: View {
     @Default(.userWallpapers4LiveActivity) private var userWallpaperIDs4LiveActivity: Set<String>
     @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
     @State private var isHowToCloseDynamicIslandAlertShow: Bool = false
-    @State private var allowLiveActivity: Bool = ResinRecoveryActivityController.shared.allowLiveActivity
+    @State private var allowLiveActivity: Bool = StaminaLiveActivityController.shared.allowLiveActivity
 
     @ViewBuilder private var osSettingsLink: some View {
         #if os(macOS) || targetEnvironment(macCatalyst)
@@ -183,7 +183,7 @@ struct LiveActivitySettingsPageContent: View {
             await UNUserNotificationCenter.current().notificationSettings()
             withAnimation {
                 allowLiveActivity =
-                    ResinRecoveryActivityController
+                    StaminaLiveActivityController
                         .shared.allowLiveActivity
             }
         }
