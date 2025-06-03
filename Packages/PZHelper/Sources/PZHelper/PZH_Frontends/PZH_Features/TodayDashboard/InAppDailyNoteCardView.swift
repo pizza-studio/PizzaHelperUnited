@@ -20,7 +20,7 @@ struct InAppDailyNoteCardView: View {
                 if Defaults[.autoDeliveryResinTimerLiveActivity] {
                     Task {
                         // let accounts = AccountModel.shared.fetchAccountConfigs()
-                        try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(
+                        try? StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
                             for: profile.asSendable,
                             data: dailyNote
                         )

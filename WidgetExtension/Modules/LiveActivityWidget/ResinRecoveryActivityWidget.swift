@@ -25,15 +25,15 @@ struct ResinTimerRefreshIntent: AppIntent {
     static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
 
     func perform() async throws -> some IntentResult {
-        let activities = ResinRecoveryActivityController.shared.currentActivities
+        let activities = StaminaLiveActivityController.shared.currentActivities
         let accounts = PZWidgets.getAllProfiles()
         for activity in activities {
             let account = accounts.first(where: { account in
-                account.uuid == activity.attributes.accountUUID
+                account.uuid == activity.attributes.profileUUID
             })
             guard let account else { continue }
             let result = try await account.getDailyNote()
-            ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: account, data: result)
+            StaminaLiveActivityController.shared.updateResinRecoveryTimerActivity(for: account, data: result)
         }
         return .result()
     }
@@ -50,7 +50,7 @@ struct ResinTimerRerenderIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         Task {
-            let activities = ResinRecoveryActivityController.shared.currentActivities
+            let activities = StaminaLiveActivityController.shared.currentActivities
             for activity in activities {
                 await activity.update(activity.content)
             }
@@ -62,7 +62,7 @@ struct ResinTimerRerenderIntent: AppIntent {
 struct ResinRecoveryActivityWidget: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(
-            for: ResinRecoveryAttributes
+            for: LiveActivityAttributes
                 .self
         ) { context in
             ResinRecoveryActivityWidgetLockScreenView(context: context)
@@ -71,7 +71,7 @@ struct ResinRecoveryActivityWidget: Widget {
                 DynamicIslandExpandedRegion(.leading) {
                     HStack(alignment: .lastTextBaseline, spacing: 2) {
                         Image(systemSymbol: .personFill)
-                        Text(context.attributes.accountName)
+                        Text(context.attributes.profileName)
                     }
                     .foregroundColor(Color("textColor.appIconLike", bundle: .main))
                     .font(.caption2)
@@ -179,7 +179,7 @@ struct ResinRecoveryActivityWidget: Widget {
 struct ResinRecoveryActivityWidgetLockScreenView: View {
     // MARK: Internal
 
-    @State var context: ActivityViewContext<ResinRecoveryAttributes>
+    @State var context: ActivityViewContext<LiveActivityAttributes>
 
     var backgroundIDs: [String] {
         backgrounds4LiveActivity.map(\.assetName4LiveActivity)
@@ -309,7 +309,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                 Spacer()
                 Button(intent: ResinTimerRefreshIntent()) {
                     HStack(alignment: .lastTextBaseline, spacing: 2) {
-                        Text(context.attributes.accountName)
+                        Text(context.attributes.profileName)
                         Image(systemSymbol: .arrowTriangle2CirclepathCircle)
                     }
                 }
