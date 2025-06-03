@@ -9,7 +9,7 @@ import WidgetKit
 extension PZWidgets {
     @WidgetBundleBuilder @MainActor @preconcurrency public static var widgets: some Widget {
         #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
-        ResinRecoveryActivityWidget()
+        StaminaTimerSharedActivityWidget()
         #endif
         #if !os(watchOS)
         MainWidget()
