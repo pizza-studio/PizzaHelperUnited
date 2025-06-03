@@ -18,17 +18,17 @@ public struct LiveActivityUserWallpaperPicker: View {
     // MARK: Public
 
     public static let navTitle: String = {
-        let key: String.LocalizationValue = "settings.resinTimer.userWallpaper.navTitle"
+        let key: String.LocalizationValue = "settings.staminaTimer.userWallpaper.navTitle"
         return .init(localized: key, bundle: .module)
     }()
 
     public static let navTitleForChoose: String = {
-        let key: String.LocalizationValue = "settings.resinTimer.userWallpaper.navTitle.choose"
+        let key: String.LocalizationValue = "settings.staminaTimer.userWallpaper.navTitle.choose"
         return .init(localized: key, bundle: .module)
     }()
 
     public static let navDescription: String = {
-        let key: String.LocalizationValue = "settings.resinTimer.userWallpaper.navDescription"
+        let key: String.LocalizationValue = "settings.staminaTimer.userWallpaper.navDescription"
         return .init(localized: key, bundle: .module)
     }()
 

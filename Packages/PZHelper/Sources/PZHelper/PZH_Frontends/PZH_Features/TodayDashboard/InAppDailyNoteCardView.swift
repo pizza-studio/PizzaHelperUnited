@@ -17,7 +17,7 @@ struct InAppDailyNoteCardView: View {
         self._theVM = .init(
             wrappedValue: DailyNoteViewModel(profile: profile) { dailyNote in
                 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
-                if Defaults[.autoDeliveryResinTimerLiveActivity] {
+                if Defaults[.autoDeliveryStaminaTimerLiveActivity] {
                     Task {
                         // let accounts = AccountModel.shared.fetchAccountConfigs()
                         try? StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
