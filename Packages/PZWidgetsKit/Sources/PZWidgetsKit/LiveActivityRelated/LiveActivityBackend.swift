@@ -154,7 +154,7 @@ public enum LiveActivityStaticAPIs {
     public static func backgroundSettingsSanityCheck() {
         let backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
         guard !backgrounds.isEmpty else { return }
-        let allValidValues = Wallpaper.allCases.map(\.assetName4LiveActivity)
+        let allValidValues = BundledWallpaper.allCases.map(\.assetName4LiveActivity)
         for entry in backgrounds {
             guard !allValidValues.contains(entry) else { continue }
             // 之前的剔除方法无效，现在改了判定规则：
@@ -173,10 +173,10 @@ public enum LiveActivityStaticAPIs {
             Self.backgroundSettingsSanityCheck()
             var backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
             if backgrounds.isEmpty {
-                backgrounds = [Wallpaper.defaultValue(for: game).assetName4LiveActivity]
+                backgrounds = [BundledWallpaper.defaultValue(for: game).assetName4LiveActivity]
             }
             if backgrounds.isEmpty {
-                backgrounds = [Wallpaper.defaultValue(for: nil).assetName4LiveActivity]
+                backgrounds = [BundledWallpaper.defaultValue(for: nil).assetName4LiveActivity]
             }
             return .customize(backgrounds)
         }

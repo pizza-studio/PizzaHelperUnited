@@ -33,7 +33,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                 } else {
                     Group {
                         let randomCardBg: Image = (
-                            Wallpaper.allCases(
+                            BundledWallpaper.allCases(
                                 for: context.state.game
                             ).randomElement() ?? .defaultValue()
                         )
@@ -46,7 +46,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                             Color.black
                                 .opacity(0.3)
                         case .customize:
-                            let chosenCardBackgrounds = Wallpaper.allCases.filter { wallpaper in
+                            let chosenCardBackgrounds = BundledWallpaper.allCases.filter { wallpaper in
                                 backgroundIDs.contains(wallpaper.assetName4LiveActivity)
                             }
                             (chosenCardBackgrounds.randomElement()?.image4LiveActivity ?? randomCardBg)
@@ -167,7 +167,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
 
     @State private var context: ActivityViewContext<LiveActivityAttributes>
 
-    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
+    @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<BundledWallpaper>
     @Default(.userWallpapers4LiveActivity) private var userWallpaperIDs4LiveActivity: Set<String>
 
     private var userWallpapers4LiveActivity: Set<UserWallpaper> {

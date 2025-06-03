@@ -10,7 +10,7 @@ import CoreImage
 import Foundation
 import SwiftUI
 
-extension Wallpaper {
+extension BundledWallpaper {
     public static func queryImageAsset(for assetName: String) -> CGImage? {
         #if os(macOS)
         guard let image = Bundle.module.image(forResource: assetName) else { return nil }
