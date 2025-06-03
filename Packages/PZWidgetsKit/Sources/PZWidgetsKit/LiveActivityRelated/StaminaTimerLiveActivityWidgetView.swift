@@ -3,26 +3,24 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+import AppIntents
 import Defaults
 import Foundation
-import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WallpaperKit
 import WidgetKit
 
-struct StaminaTimerLiveActivityWidgetView: View {
-    // MARK: Internal
+public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, RefreshIntent: AppIntent>: View {
+    // MARK: Lifecycle
 
-    @State var context: ActivityViewContext<LiveActivityAttributes>
-
-    var backgroundIDs: [String] {
-        backgrounds4LiveActivity.map(\.assetName4LiveActivity)
+    public init(context: ActivityViewContext<LiveActivityAttributes>) {
+        self.context = context
     }
 
-    var useNoBackground: Bool { context.state.background == .noBackground }
+    // MARK: Public
 
-    var body: some View {
+    public var body: some View {
         let mainContent = contentView
         #if !os(watchOS)
             .background {
@@ -66,12 +64,20 @@ struct StaminaTimerLiveActivityWidgetView: View {
         #endif
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .activityBackgroundTint(.clear)
-        Button(intent: StaminaTimerRerenderIntent()) {
+        Button(intent: RendererIntent()) {
             mainContent
         }
         .buttonStyle(.plain)
         .ignoresSafeArea()
     }
+
+    // MARK: Internal
+
+    var backgroundIDs: [String] {
+        backgrounds4LiveActivity.map(\.assetName4LiveActivity)
+    }
+
+    var useNoBackground: Bool { context.state.background == .noBackground }
 
     @ViewBuilder var contentView: some View {
         HStack {
@@ -82,7 +88,7 @@ struct StaminaTimerLiveActivityWidgetView: View {
                         .scaledToFit()
                         .frame(maxHeight: 38)
                     VStack(alignment: .leading) {
-                        Text("pzWidgetsKit.currentStamina", bundle: .main)
+                        Text("pzWidgetsKit.currentStamina", bundle: .module)
                             .font(.caption2)
                         HStack(alignment: .lastTextBaseline, spacing: 0) {
                             Text(verbatim: "\(context.state.currentPrimaryStamina)")
@@ -104,7 +110,7 @@ struct StaminaTimerLiveActivityWidgetView: View {
                                     .padding(.leading, 6)
                             }
                         VStack(alignment: .leading) {
-                            Text("pzWidgetsKit.nextMaxStamina", bundle: .main)
+                            Text("pzWidgetsKit.nextMaxStamina", bundle: .module)
                                 .font(.caption2)
                             Text(
                                 timerInterval: Date() ... context.state
@@ -125,7 +131,7 @@ struct StaminaTimerLiveActivityWidgetView: View {
                             .scaledToFit()
                             .frame(maxHeight: 29)
                         VStack(alignment: .leading) {
-                            Text("pzWidgetsKit.expedition.timeToAllCompletion", bundle: .main)
+                            Text("pzWidgetsKit.expedition.timeToAllCompletion", bundle: .module)
                                 .font(.caption2)
                             Text(
                                 timerInterval: Date() ... time,
@@ -142,7 +148,7 @@ struct StaminaTimerLiveActivityWidgetView: View {
             Spacer()
             VStack {
                 Spacer()
-                Button(intent: StaminaTimerRefreshIntent()) {
+                Button(intent: RefreshIntent()) {
                     HStack(alignment: .lastTextBaseline, spacing: 2) {
                         Text(context.attributes.profileName)
                         Image(systemSymbol: .arrowTriangle2CirclepathCircle)
@@ -153,11 +159,13 @@ struct StaminaTimerLiveActivityWidgetView: View {
             }
         }
         .shadow(radius: useNoBackground ? 0 : 0.8)
-        .foregroundColor(useNoBackground ? .primary : Color("textColor3", bundle: .main))
+        .foregroundColor(useNoBackground ? .primary : PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
         .padding()
     }
 
     // MARK: Private
+
+    @State private var context: ActivityViewContext<LiveActivityAttributes>
 
     @Default(.backgrounds4LiveActivity) private var backgrounds4LiveActivity: Set<Wallpaper>
     @Default(.userWallpapers4LiveActivity) private var userWallpaperIDs4LiveActivity: Set<String>

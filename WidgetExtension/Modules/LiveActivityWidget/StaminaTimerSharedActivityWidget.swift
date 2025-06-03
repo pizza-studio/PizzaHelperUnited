@@ -62,7 +62,9 @@ struct StaminaTimerSharedActivityWidget: Widget {
         ActivityConfiguration(
             for: LiveActivityAttributes.self
         ) { context in
-            StaminaTimerLiveActivityWidgetView(context: context)
+            StaminaTimerLiveActivityWidgetView<StaminaTimerRerenderIntent, StaminaTimerRefreshIntent>(
+                context: context
+            )
         } dynamicIsland: { context in
             StaminaTimerDynamicIslandWidgetView(context: context).dynamicIsland
         }
