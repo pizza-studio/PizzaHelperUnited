@@ -72,10 +72,8 @@ public struct LiveActivityAttributes: Sendable {
 
         public init(
             dailyNote: any DailyNoteProtocol,
-            showExpedition: Bool,
-            background: LiveActivityBackground
+            showExpedition: Bool
         ) {
-            self.background = background
             self.primaryStaminaRecoverySpeed = dailyNote.eachStaminaRecoveryTime
             self.staminaCompletionStatus = dailyNote.staminaIntel
             self.primaryStaminaRecoveryTime = dailyNote.staminaFullTimeOnFinish
@@ -98,7 +96,6 @@ public struct LiveActivityAttributes: Sendable {
         public let primaryStaminaRecoveryTime: Date
         public let expeditionAllCompleteTime: Date?
         public let showExpedition: Bool
-        public let background: LiveActivityBackground
     }
 
     public let profileName: String
@@ -137,49 +134,6 @@ extension LiveActivityAttributes.LiveActivityState {
                 Double(next20PrimaryStamina - currentPrimaryStamina) * primaryStaminaRecoverySpeed
             )
         )
-    }
-}
-
-// MARK: - LiveActivityBackground
-
-public enum LiveActivityBackground: Codable, Equatable, Hashable, Sendable {
-    case random
-    case customize([String])
-    case noBackground
-}
-
-// MARK: - LiveActivityStaticAPIs
-
-public enum LiveActivityStaticAPIs {
-    public static func backgroundSettingsSanityCheck() {
-        let backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
-        guard !backgrounds.isEmpty else { return }
-        let allValidValues = BundledWallpaper.allCases.map(\.assetName4LiveActivity)
-        for entry in backgrounds {
-            guard !allValidValues.contains(entry) else { continue }
-            // 之前的剔除方法无效，现在改了判定规则：
-            // 只要发现不合规的 UserDefault 资料，那就全部清空。
-            Defaults[.backgrounds4LiveActivity].removeAll()
-            return
-        }
-    }
-
-    public static func getBackground(for game: Pizza.SupportedGame? = nil) -> LiveActivityBackground {
-        if Defaults[.staminaTimerLiveActivityUseEmptyBackground] {
-            return .noBackground
-        } else if !Defaults[.staminaTimerLiveActivityUseCustomizeBackground] {
-            return .random
-        } else {
-            Self.backgroundSettingsSanityCheck()
-            var backgrounds = Defaults[.backgrounds4LiveActivity].map(\.assetName4LiveActivity)
-            if backgrounds.isEmpty {
-                backgrounds = [BundledWallpaper.defaultValue(for: game).assetName4LiveActivity]
-            }
-            if backgrounds.isEmpty {
-                backgrounds = [BundledWallpaper.defaultValue(for: nil).assetName4LiveActivity]
-            }
-            return .customize(backgrounds)
-        }
     }
 }
 
@@ -227,8 +181,7 @@ public final class StaminaLiveActivityController: Sendable {
         )
         let status: LiveActivityAttributes.LiveActivityState = .init(
             dailyNote: data,
-            showExpedition: Defaults[.showExpeditionInLiveActivity],
-            background: LiveActivityStaticAPIs.getBackground(for: profile.game)
+            showExpedition: Defaults[.showExpeditionInLiveActivity]
         )
 
         print(status.currentPrimaryStamina)
@@ -271,8 +224,7 @@ public final class StaminaLiveActivityController: Sendable {
                 }
                 let status: LiveActivityAttributes.LiveActivityState = .init(
                     dailyNote: data,
-                    showExpedition: Defaults[.showExpeditionInLiveActivity],
-                    background: LiveActivityStaticAPIs.getBackground(for: profile.game)
+                    showExpedition: Defaults[.showExpeditionInLiveActivity]
                 )
 
                 await activity.update(
