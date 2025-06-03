@@ -81,14 +81,4 @@ extension Defaults.Keys {
         default: true,
         suite: .baseSuite
     )
-    public static let staminaTimerLiveActivityUseEmptyBackground = Key<Bool>(
-        "resinRecoveryLiveActivityUseEmptyBackground",
-        default: false,
-        suite: .baseSuite
-    )
-    public static let staminaTimerLiveActivityUseCustomizeBackground = Key<Bool>(
-        "resinRecoveryLiveActivityUseCustomizeBackground",
-        default: false,
-        suite: .baseSuite
-    )
 }
