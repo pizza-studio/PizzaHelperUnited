@@ -110,7 +110,6 @@ private struct ContainerBackgroundStandbyDetector: ViewModifier {
             content.containerBackground(for: .widget) {
                 WidgetBackgroundView(
                     background: viewConfig.background,
-                    userWallpaper: viewConfig.selectedUserWallpapers.randomElement(),
                     darkModeOn: viewConfig.isDarkModeRespected
                 )
             }
@@ -118,7 +117,6 @@ private struct ContainerBackgroundStandbyDetector: ViewModifier {
             content.padding(-15).containerBackground(for: .widget) {
                 WidgetBackgroundView(
                     background: viewConfig.background,
-                    userWallpaper: viewConfig.selectedUserWallpapers.randomElement(),
                     darkModeOn: viewConfig.isDarkModeRespected
                 )
             }

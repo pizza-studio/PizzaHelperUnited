@@ -12,18 +12,10 @@ struct WidgetBackgroundView: View {
 
     init(
         background: WidgetBackgroundAppEntity,
-        userWallpaper: WidgetUserWallpaperAppEntity? = nil,
         darkModeOn: Bool
     ) {
         self.background = background
         self.darkModeOn = darkModeOn
-        if let userWallpaperObj = userWallpaper?.unwrapped,
-           userWallpaperObj.imageSquared != nil,
-           userWallpaperObj.imageHorizontal != nil {
-            self.userWallpaper = userWallpaper
-        } else {
-            self.userWallpaper = nil
-        }
     }
 
     // MARK: Internal
@@ -32,7 +24,6 @@ struct WidgetBackgroundView: View {
     @Environment(\.widgetFamily) var widgetFamily: WidgetFamily
 
     let background: WidgetBackgroundAppEntity
-    let userWallpaper: WidgetUserWallpaperAppEntity?
     let darkModeOn: Bool
 
     var body: some View {
@@ -54,19 +45,15 @@ struct WidgetBackgroundView: View {
 
     private var shouldEnforceDark: Bool { colorScheme == .dark && darkModeOn }
 
-    private var isUserSuppliedWallpaperEffective: Bool {
-        userWallpaper?.unwrapped != nil
-    }
-
     private var userSuppliedWallpaperLayer: Image? {
-        guard let unwrapped = userWallpaper?.unwrapped else { return nil }
+        guard let userWP = background.userSuppliedWallpaper else { return nil }
         switchFamily: switch widgetFamily {
         case .systemLarge, .systemSmall:
-            if let cgImage = unwrapped.imageSquared {
+            if let cgImage = userWP.imageSquared {
                 return Image(decorative: cgImage, scale: 1, orientation: .up)
             }
         case .systemExtraLarge, .systemMedium:
-            if let cgImage = unwrapped.imageHorizontal {
+            if let cgImage = userWP.imageHorizontal {
                 return Image(decorative: cgImage, scale: 1, orientation: .up)
             }
         default: break switchFamily
