@@ -307,9 +307,9 @@ extension Enka.AvatarSummarized.CharacterID {
 }
 
 extension Enka.AvatarSummarized {
-    @MainActor
-    public func asView(background: Bool = false) -> EachAvatarStatView {
-        .init(data: self, background: background)
+    @MainActor @ViewBuilder
+    public func asView(background: Bool = false) -> some View {
+        EachAvatarStatView(data: self, background: background)
     }
 
     @MainActor @ViewBuilder
@@ -326,7 +326,7 @@ extension Enka.AvatarSummarized {
     }
 
     /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
-    @MainActor
+    @MainActor @ViewBuilder
     public func asCardIcon(_ size: CGFloat)
         -> some View {
         mainInfo.idExpressable.cardIcon(size: size)

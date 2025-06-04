@@ -9,6 +9,7 @@ import PZBaseKit
 import SwiftUI
 
 extension View {
+    @ViewBuilder
     func hookEULACheckerOnOOBE() -> some View {
         modifier(EULAFirstConfirmationHooker())
     }

@@ -75,6 +75,7 @@ private struct AppInitializer: ViewModifier {
 }
 
 extension View {
+    @ViewBuilder
     func initializeApp() -> some View {
         modifier(AppInitializer())
     }

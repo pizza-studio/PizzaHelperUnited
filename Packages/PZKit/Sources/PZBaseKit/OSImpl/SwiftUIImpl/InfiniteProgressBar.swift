@@ -34,10 +34,10 @@ public struct InfiniteProgressBar: View {
 
     @State private var offset = Self.minOffset
 
-    @MainActor
+    @MainActor @ViewBuilder
     private func overlayRect(in rect: CGRect) -> some View {
         let width = rect.width * Self.coverPercentage
-        return Rectangle()
+        Rectangle()
             .foregroundColor(.blue)
             .frame(width: width)
             .offset(x: width * offset)

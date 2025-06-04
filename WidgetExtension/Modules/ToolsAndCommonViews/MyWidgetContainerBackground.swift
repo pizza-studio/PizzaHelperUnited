@@ -6,6 +6,7 @@ import SwiftUI
 
 @available(watchOS, unavailable)
 extension View {
+    @ViewBuilder
     func myWidgetContainerBackground<V: View>(
         withPadding padding: CGFloat,
         @ViewBuilder _ content: @escaping () -> V
