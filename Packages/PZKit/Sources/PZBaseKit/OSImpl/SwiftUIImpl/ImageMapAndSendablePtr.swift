@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - ImageMap
 
 @MainActor
-final class ImageMap {
+public final class ImageMap {
     // MARK: Lifecycle
 
     public init() {}
@@ -26,7 +26,7 @@ final class ImageMap {
 
 // MARK: - SendableImagePtr
 
-final class SendableImagePtr: Sendable {
+public final class SendableImagePtr: Sendable {
     // MARK: Lifecycle
 
     public init(img: Image) { self.img = img }
