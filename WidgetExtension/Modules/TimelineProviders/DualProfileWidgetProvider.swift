@@ -79,7 +79,7 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> Entry {
         let sampleData1 = Pizza.SupportedGame.genshinImpact.exampleDailyNoteData
         let sampleData2 = Pizza.SupportedGame.starRail.exampleDailyNoteData
-        let assetMap = Self.prepareAssetMapImmediately([sampleData1, sampleData2])
+        let assetMap = [sampleData1, sampleData2].prepareAssetMapImmediately()
         return Entry(
             date: Date(),
             resultSlot1: .success(sampleData1),
@@ -107,7 +107,7 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
         }
         let sampleData1 = game1.exampleDailyNoteData
         let sampleData2 = game2.exampleDailyNoteData
-        let assetMap = await Self.prepareAssetMap([sampleData1, sampleData2])
+        let assetMap = await [sampleData1, sampleData2].prepareAssetMap()
         return Entry(
             date: Date(),
             resultSlot1: .success(sampleData1),
@@ -174,7 +174,7 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
             if dailyNotes.count == 2 {
                 refreshTime = PZWidgets.getSharedRefreshDateFor(game1: profile1.game, game2: profile2.game)
             }
-            pilotAssetMap = await Self.prepareAssetMap(dailyNotes)
+            pilotAssetMap = await dailyNotes.prepareAssetMap()
             return [
                 Entry(
                     date: Date(),
@@ -194,7 +194,7 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
             let dailyNoteResult1 = await fetchDailyNote(for: profile1)
             if case let .success(dailyNote1) = dailyNoteResult1 {
                 refreshTime = PZWidgets.getRefreshDateByGameStamina(game: profile1.game)
-                pilotAssetMap = await Self.prepareAssetMap([dailyNote1])
+                pilotAssetMap = await [dailyNote1].prepareAssetMap()
             }
             return [
                 Entry(
@@ -216,7 +216,7 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
             let dailyNoteResult2 = await fetchDailyNote(for: profile2)
             if case let .success(dailyNote2) = dailyNoteResult2 {
                 refreshTime = PZWidgets.getRefreshDateByGameStamina(game: profile2.game)
-                pilotAssetMap = await Self.prepareAssetMap([dailyNote2])
+                pilotAssetMap = await [dailyNote2].prepareAssetMap()
             }
             return [
                 Entry(
@@ -278,93 +278,5 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
             return .failure(.profileSelectionNeeded)
         }
         return .success(firstMatchedProfile)
-    }
-
-    private static func getExpeditionAssetMap(from dailyNote: any DailyNoteProtocol) async -> [URL: SendableImagePtr]? {
-        guard dailyNote.hasExpeditions else { return nil }
-        let expeditions = dailyNote.expeditionTasks
-        guard !expeditions.isEmpty else { return nil }
-        var assetMap = [URL: SendableImagePtr]()
-        if dailyNote.hasExpeditions {
-            for task in dailyNote.expeditionTasks {
-                let urls = [task.iconURL, task.iconURL4Copilot].compactMap { $0 }
-                for url in urls {
-                    if let image = await ImageMap.shared.assetMap[url] {
-                        assetMap[url] = image
-                    } else if var cgImage = CGImage.instantiate(url: url) {
-                        genshinSpecificHandling: if dailyNote.game == .genshinImpact {
-                            let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
-                            guard let croppedCGImage else {
-                                continue
-                            }
-                            cgImage = croppedCGImage
-                        }
-                        let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
-                        await ImageMap.shared.insertValue(url: url, image: image)
-                        assetMap[url] = image
-                    }
-                }
-            }
-        }
-        return assetMap
-    }
-
-    /// 这是给 .placeholder() 专用的函式，不会调用 ImageMap 的缓存。
-    private static func getExpeditionAssetMapImmediately(from dailyNote: any DailyNoteProtocol)
-        -> [URL: SendableImagePtr]? {
-        guard dailyNote.hasExpeditions else { return nil }
-        let expeditions = dailyNote.expeditionTasks
-        guard !expeditions.isEmpty else { return nil }
-        var assetMap = [URL: SendableImagePtr]()
-        if dailyNote.hasExpeditions {
-            for task in dailyNote.expeditionTasks {
-                let urls = [task.iconURL, task.iconURL4Copilot].compactMap { $0 }
-                for url in urls {
-                    if var cgImage = CGImage.instantiate(url: url) {
-                        genshinSpecificHandling: if dailyNote.game == .genshinImpact {
-                            let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
-                            guard let croppedCGImage else {
-                                continue
-                            }
-                            cgImage = croppedCGImage
-                        }
-                        let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
-                        assetMap[url] = image
-                    }
-                }
-            }
-        }
-        return assetMap
-    }
-
-    private static func prepareAssetMap(_ data: [any DailyNoteProtocol]) async -> [URL: SendableImagePtr]? {
-        var assetMap: [URL: SendableImagePtr]? = [:]
-        for currentDailyNote in data {
-            let fetchedMap = await Task(priority: .userInitiated) {
-                await Self.getExpeditionAssetMap(from: currentDailyNote)
-            }.value
-            fetchedMap?.forEach { theKey, theValue in
-                assetMap?[theKey] = theValue
-            }
-        }
-        if assetMap?.isEmpty ?? false {
-            assetMap = nil
-        }
-        return assetMap
-    }
-
-    /// 这是给 .placeholder() 专用的函式，不会调用 ImageMap 的缓存。
-    private static func prepareAssetMapImmediately(_ data: [any DailyNoteProtocol]) -> [URL: SendableImagePtr]? {
-        var assetMap: [URL: SendableImagePtr]? = [:]
-        for currentDailyNote in data {
-            let fetchedMap = Self.getExpeditionAssetMapImmediately(from: currentDailyNote)
-            fetchedMap?.forEach { theKey, theValue in
-                assetMap?[theKey] = theValue
-            }
-        }
-        if assetMap?.isEmpty ?? false {
-            assetMap = nil
-        }
-        return assetMap
     }
 }
