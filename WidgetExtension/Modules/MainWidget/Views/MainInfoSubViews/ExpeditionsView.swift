@@ -79,50 +79,35 @@ struct EachExpeditionView: View {
     func pilotsView() -> some View {
         let outerSize: CGFloat = 50
         GeometryReader { g in
-            switch expedition.game {
-            case .genshinImpact:
-                Group {
-                    if let pilotImage {
-                        pilotImage
-                            .resizable()
-                    } else {
-                        Image("NetworkImagePlaceholder", bundle: .main)
-                            .resizable()
-                    }
-                }
-                .scaleEffect(1.5)
-                .scaledToFit()
-                .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
-            case .starRail:
-                let leaderAvatarAsset: some View = Group {
-                    if let pilotImage {
-                        pilotImage
-                            .resizable()
-                    } else {
-                        Image("NetworkImagePlaceholder", bundle: .main)
-                            .resizable()
-                    }
-                }
-                let leaderAvatar = leaderAvatarAsset
-                    .scaledToFit()
-                    .background(.ultraThinMaterial, in: .circle)
-                if let copilotImage {
-                    ZStack {
-                        leaderAvatar
-                            .frame(maxWidth: outerSize * 0.7, maxHeight: outerSize * 0.7)
-                            .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .topLeading)
-                        copilotImage
-                            .resizable()
-                            .scaledToFit()
-                            .background(.thinMaterial, in: .circle)
-                            .frame(maxWidth: outerSize / 2, maxHeight: outerSize / 2)
-                            .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .bottomTrailing)
-                    }
-                    .frame(maxWidth: outerSize, maxHeight: outerSize)
+            let leaderAvatarAsset: some View = Group {
+                if let pilotImage {
+                    pilotImage
+                        .resizable()
                 } else {
-                    leaderAvatar
+                    Image("NetworkImagePlaceholder", bundle: .main)
+                        .resizable()
                 }
-            default: EmptyView()
+            }
+            let leaderAvatar = leaderAvatarAsset
+                .scaledToFit()
+                .background(.ultraThinMaterial, in: .circle)
+            if let copilotImage {
+                ZStack {
+                    leaderAvatar
+                        .clipShape(.circle)
+                        .frame(maxWidth: outerSize * 0.7, maxHeight: outerSize * 0.7)
+                        .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .topLeading)
+                    copilotImage
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(.circle)
+                        .background(.thinMaterial, in: .circle)
+                        .frame(maxWidth: outerSize / 2, maxHeight: outerSize / 2)
+                        .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .bottomTrailing)
+                }
+                .frame(maxWidth: outerSize, maxHeight: outerSize)
+            } else {
+                leaderAvatar
             }
         }
         .frame(maxWidth: outerSize, maxHeight: outerSize)
