@@ -139,6 +139,7 @@ private struct DailyNoteCardView4GI: View {
 
     public init(note dailyNote: any Note4GI) {
         self.dailyNote = dailyNote
+        self.pilotAssetMap = dailyNote.getExpeditionAssetMapFromMainActor()
     }
 
     // MARK: Public
@@ -329,7 +330,7 @@ private struct DailyNoteCardView4GI: View {
     func drawExpeditions() -> some View {
         VStack(alignment: .leading) {
             let expeditionIntel = dailyNote.expeditionCompletionStatus
-            HStack(spacing: 10) {
+            HStack(alignment: .center, spacing: 10) {
                 dailyNote.game.expeditionAssetIcon
                     .resizable()
                     .scaledToFit()
@@ -340,24 +341,22 @@ private struct DailyNoteCardView4GI: View {
                         .font(.title)
                     Text(verbatim: " / \(expeditionIntel.all)")
                         .font(.caption)
-                    Spacer()
-                    HStack(spacing: 0) {
-                        ForEach(dailyNote.expeditionTasks, id: \.iconURL) { expedition in
-                            AsyncImage(url: expedition.iconURL) { image in
-                                GeometryReader { g in
-                                    image.resizable().scaleEffect(1.4)
-                                        .scaledToFit()
-                                        .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
+                }
+                Spacer()
+                HStack(alignment: .bottom, spacing: 0) {
+                    ForEach(dailyNote.expeditionTasks, id: \.iconURL) { expedition in
+                        let image = getPilotImage(expedition.iconURL) ?? Image(systemSymbol: .person)
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .background {
+                                if expedition.isFinished {
+                                    Color.green.opacity(0.75).clipShape(Circle())
+                                } else {
+                                    Color.gray.opacity(0.5).clipShape(Circle())
                                 }
-                            } placeholder: {
-                                ProgressView().id(UUID())
                             }
-                            .overlay(
-                                Circle()
-                                    .stroke(expedition.isFinished ? .green : .secondary, lineWidth: 3)
-                            )
                             .frame(width: 30, height: 30)
-                        }
                     }
                 }
             }
@@ -368,6 +367,12 @@ private struct DailyNoteCardView4GI: View {
 
     private let dailyNote: any Note4GI
     private let iconFrame: CGFloat = 40
+    private let pilotAssetMap: [URL: SendableImagePtr]?
+
+    private func getPilotImage(_ url: URL?) -> Image? {
+        guard let url else { return nil }
+        return pilotAssetMap?[url]?.img
+    }
 }
 
 // MARK: - DailyNoteCardView4HSR
@@ -377,6 +382,7 @@ private struct DailyNoteCardView4HSR: View {
 
     public init(note dailyNote: Note4HSR) {
         self.dailyNote = dailyNote
+        self.pilotAssetMap = dailyNote.getExpeditionAssetMapFromMainActor()
     }
 
     // MARK: Public
@@ -524,17 +530,14 @@ private struct DailyNoteCardView4HSR: View {
                 HStack(alignment: .top, spacing: 2) {
                     let imageFrame: CGFloat = 32
                     ForEach(assignment.avatarIconURLs, id: \.self) { url in
-                        AsyncImage(url: url) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(height: imageFrame)
-                        .background {
-                            Color.gray.opacity(0.5).clipShape(Circle())
-                        }
+                        let image = getPilotImage(url) ?? Image(systemSymbol: .person)
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: imageFrame)
+                            .background {
+                                Color.gray.opacity(0.5).clipShape(Circle())
+                            }
                     }
                 }.fixedSize()
             }
@@ -562,6 +565,12 @@ private struct DailyNoteCardView4HSR: View {
 
     private let dailyNote: Note4HSR
     private let iconFrame: CGFloat = 40
+    private let pilotAssetMap: [URL: SendableImagePtr]?
+
+    private func getPilotImage(_ url: URL?) -> Image? {
+        guard let url else { return nil }
+        return pilotAssetMap?[url]?.img
+    }
 }
 
 // MARK: - DailyNoteCardView4ZZZ
