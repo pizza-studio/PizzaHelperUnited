@@ -89,7 +89,7 @@ public struct ContentView: View {
             }
         }
 
-        @MainActor @ViewBuilder public var body: some View {
+        @ViewBuilder public var body: some View {
             switch self {
             case .today:
                 TodayTabPage()
