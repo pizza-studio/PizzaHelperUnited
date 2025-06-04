@@ -82,7 +82,7 @@ public enum ASReviewHandler {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public static func makeRatingButton() -> some View {
         Button {
             ASReviewHandler.requestReviewIfNotRequestedElseNavigateToAppStore()

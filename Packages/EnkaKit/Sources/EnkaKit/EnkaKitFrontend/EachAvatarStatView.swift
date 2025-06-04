@@ -284,7 +284,7 @@ extension Enka.AvatarSummarized.CharacterID {
         }
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func asPortrait() -> some View {
         localIcon4SUI
             .resizable()
@@ -320,7 +320,7 @@ extension Enka.AvatarSummarized {
         )
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     public func asPortrait() -> some View {
         mainInfo.idExpressable.asPortrait()
     }
@@ -430,7 +430,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
 }
 
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
-    @MainActor @ViewBuilder
+    @ViewBuilder
     func levelDisplay(size: CGFloat) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
             Text(verbatim: "\(baseLevel)").font(.system(size: size * 0.8, weight: .heavy))
