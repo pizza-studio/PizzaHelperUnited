@@ -32,7 +32,8 @@ private struct LegibilityShadowModifier: ViewModifier {
 }
 
 extension View {
-    @ViewBuilder public func legibilityShadow(isText: Bool = true, enabled: Bool = true) -> some View {
+    @ViewBuilder
+    public func legibilityShadow(isText: Bool = true, enabled: Bool = true) -> some View {
         switch enabled {
         case true: modifier(LegibilityShadowModifier(isText: isText))
         case false: self
