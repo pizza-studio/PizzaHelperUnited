@@ -26,6 +26,7 @@ private struct EnkaDBSanityChecker: ViewModifier {
 }
 
 extension View {
+    @ViewBuilder
     func performEnkaDBSanityCheck() -> some View {
         modifier(EnkaDBSanityChecker())
     }

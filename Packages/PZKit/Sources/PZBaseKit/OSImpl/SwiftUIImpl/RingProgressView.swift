@@ -42,7 +42,6 @@ public struct OverlayRingProgressBar: ViewModifier {
     public let scaler: Double
     public let offset: (x: Double, y: Double)
 
-    @MainActor
     public func body(content: Content) -> some View {
         GeometryReader { g in
 
@@ -72,7 +71,7 @@ public struct OverlayRingProgressBar: ViewModifier {
 }
 
 extension View {
-    @MainActor
+    @ViewBuilder
     public func overlayRingProgressBar(
         _ progress: Double,
         thickness: CGFloat = 1.0,
@@ -96,7 +95,7 @@ extension View {
 }
 
 extension Image {
-    @MainActor
+    @MainActor @ViewBuilder
     public func overlayImageWithRingProgressBar(
         _ progress: Double,
         thickness: CGFloat = 1.0,

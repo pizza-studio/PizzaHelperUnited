@@ -78,7 +78,7 @@ struct IDPhotoFallbackView4HSR: View {
         }
     }
 
-    var coreBody: some View {
+    @ViewBuilder var coreBody: some View {
         switch iconType {
         case .asCard: AnyView(cardView)
         default: AnyView(circleIconView)
@@ -119,7 +119,7 @@ struct IDPhotoFallbackView4HSR: View {
             .contentShape(RoundedRectangle(cornerRadius: roundRect ? cornerRadius : roundCornerRadius))
     }
 
-    var imageObj: some View {
+    @ViewBuilder var imageObj: some View {
         imageHandler(coordinator.charAvatarImage)
             .resizable()
             .aspectRatio(contentMode: .fit)

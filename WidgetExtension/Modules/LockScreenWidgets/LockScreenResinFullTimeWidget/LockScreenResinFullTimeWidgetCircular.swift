@@ -169,6 +169,7 @@ private struct MyContainerBackground<B: View>: ViewModifier {
 }
 
 extension View {
+    @ViewBuilder
     func lockscreenContainerBackground(@ViewBuilder _ background: @escaping () -> some View) -> some View {
         modifier(MyContainerBackground(background: background))
     }
