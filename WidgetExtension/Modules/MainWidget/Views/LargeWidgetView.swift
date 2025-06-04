@@ -26,11 +26,24 @@ struct LargeWidgetView: View {
             VStack(alignment: .leading) {
                 mainInfo()
                 Spacer(minLength: 18)
-                DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
+                switch viewConfig.prioritizeExpeditionDisplay {
+                case false:
+                    DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
+                case true:
+                    ExpeditionsView(
+                        layout: .tinyWithShrinkedIconSpaces,
+                        max4AllowedToDisplay: false,
+                        expeditions: dailyNote.expeditionTasks,
+                        pilotAssetMap: entry.pilotAssetMap
+                    )
+                    .frame(width: 160)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .offset(x: dailyNote.game == .starRail ? -4 : -5)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             /// 绝区零没有探索派遣。
-            if dailyNote.game != .zenlessZone {
+            if dailyNote.game != .zenlessZone, !viewConfig.prioritizeExpeditionDisplay {
                 Spacer()
                 VStack(alignment: .leading) {
                     ExpeditionsView(
