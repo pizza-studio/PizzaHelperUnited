@@ -17,13 +17,6 @@ struct WidgetMainView: View {
 
     var body: some View {
         let profileName = viewConfig.showAccountName ? accountName : nil
-        let defaultValue = MainInfoWithDetail(
-            entry: entry,
-            dailyNote: dailyNote,
-            viewConfig: viewConfig,
-            accountName: profileName
-        )
-        .padding()
         switch family {
         case .systemSmall:
             MainInfo(
@@ -34,7 +27,23 @@ struct WidgetMainView: View {
             )
             .padding()
         case .systemMedium:
-            defaultValue
+            if viewConfig.prioritizeExpeditionDisplay, !dailyNote.expeditionTasks.isEmpty {
+                MainInfoWithExpedition(
+                    entry: entry,
+                    dailyNote: dailyNote,
+                    viewConfig: viewConfig,
+                    accountName: profileName
+                )
+                .padding()
+            } else {
+                MainInfoWithDetail(
+                    entry: entry,
+                    dailyNote: dailyNote,
+                    viewConfig: viewConfig,
+                    accountName: profileName
+                )
+                .padding()
+            }
         case .systemExtraLarge, .systemLarge:
             LargeWidgetView(
                 entry: entry,
@@ -45,7 +54,7 @@ struct WidgetMainView: View {
             )
             .padding()
         default:
-            defaultValue
+            Text(verbatim: "Layout not supported yet.")
         }
     }
 }
