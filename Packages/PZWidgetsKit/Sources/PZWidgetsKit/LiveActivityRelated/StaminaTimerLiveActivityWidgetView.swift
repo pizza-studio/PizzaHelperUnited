@@ -44,6 +44,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
     }
 
     @ViewBuilder var contentView: some View {
+        let disableTextShadow = useNoBackground
         HStack {
             Grid(verticalSpacing: 7) {
                 GridRow {
@@ -51,6 +52,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                         .resizable()
                         .scaledToFit()
                         .frame(maxHeight: 38)
+                        .legibilityShadow(isText: false, enabled: !disableTextShadow)
                     VStack(alignment: .leading) {
                         Text("pzWidgetsKit.currentStamina", bundle: .module)
                             .font(.caption2)
@@ -62,6 +64,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                         }
                     }
                     .gridColumnAlignment(.leading)
+                    .legibilityShadow(isText: true, enabled: !disableTextShadow)
                 }
                 if Date() < context.state.primaryStaminaRecoveryTime {
                     GridRow {
@@ -72,6 +75,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                                     .scaledToFit()
                                     .frame(maxHeight: 22)
                                     .padding(.leading, 6)
+                                    .legibilityShadow(isText: false, enabled: !disableTextShadow)
                             }
                         VStack(alignment: .leading) {
                             Text("pzWidgetsKit.nextMaxStamina", bundle: .module)
@@ -85,7 +89,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                             .font(.system(.title2, design: .rounded))
                         }
                         .gridColumnAlignment(.leading)
-                        //                    .frame(width: 140)
+                        .legibilityShadow(isText: true, enabled: !disableTextShadow)
                     }
                 }
                 if context.state.showExpedition, let time = context.state.expeditionAllCompleteTime, Date() < time {
@@ -94,6 +98,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 29)
+                            .legibilityShadow(isText: false, enabled: !disableTextShadow)
                         VStack(alignment: .leading) {
                             Text("pzWidgetsKit.expedition.timeToAllCompletion", bundle: .module)
                                 .font(.caption2)
@@ -105,7 +110,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                             .font(.system(.title2, design: .rounded))
                         }
                         .gridColumnAlignment(.leading)
-//                        .frame(width: 140)
+                        .legibilityShadow(isText: true, enabled: !disableTextShadow)
                     }
                 }
             }
@@ -117,13 +122,13 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                         Text(context.attributes.profileName)
                         Image(systemSymbol: .arrowTriangle2CirclepathCircle)
                     }
+                    .legibilityShadow(isText: true, enabled: !disableTextShadow)
                 }
                 .buttonStyle(.plain)
                 .font(.footnote)
             }
         }
-        .shadow(radius: useNoBackground ? 0 : 0.8)
-        .foregroundColor(useNoBackground ? .primary : PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+        .foregroundColor(useNoBackground ? .primary : .white)
         .padding()
     }
 
