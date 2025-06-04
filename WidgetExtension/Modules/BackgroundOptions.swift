@@ -42,17 +42,23 @@ enum BackgroundOptions {
         "game.elements.quanto",
         "game.elements.physico",
     ]
-    static let namecards: [String] = BundledWallpaper.allCases.map(\.assetName4LiveActivity)
 
-    static let allOptions: [(String, String)] = UserWallpaper.allCases.map(\.asBackgroundOption)
-        + (Self.colors + Self.elements).map {
-            ($0, $0.i18nWidgets)
-        } + BundledWallpaper.allCases.map(\.asBackgroundOption)
+    static let allStaticGalleryWallpaperOptions: [(String, String)] = BundledWallpaper.allCases
+        .map(\.asBackgroundOption)
 
-    static let allOptionsSansPureColors: [(String, String)] = UserWallpaper.allCases.map(\.asBackgroundOption)
-        + Self.elements.map {
-            ($0, $0.i18nWidgets)
-        } + Wallpaper.allCases.map(\.asBackgroundOption)
+    static var allOptions: [(String, String)] {
+        UserWallpaper.allCases.map(\.asBackgroundOption)
+            + (Self.colors + Self.elements).map {
+                ($0, $0.i18nWidgets)
+            } + allStaticGalleryWallpaperOptions
+    }
+
+    static var allOptionsSansPureColors: [(String, String)] {
+        UserWallpaper.allCases.map(\.asBackgroundOption)
+            + Self.elements.map {
+                ($0, $0.i18nWidgets)
+            } + allStaticGalleryWallpaperOptions
+    }
 }
 
 extension WidgetBackgroundAppEntity {

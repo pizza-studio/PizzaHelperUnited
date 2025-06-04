@@ -100,7 +100,7 @@ extension WidgetBackgroundAppEntity {
     }
 
     var imageName: String? {
-        if BackgroundOptions.namecards.contains(id) {
+        if BackgroundOptions.allStaticGalleryWallpaperOptions.map(\.0).contains(id) {
             return id
         } else { return nil }
     }
