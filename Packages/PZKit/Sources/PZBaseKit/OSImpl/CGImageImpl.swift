@@ -9,7 +9,7 @@ import CoreImage
 #endif
 import UniformTypeIdentifiers
 
-// MARK: - Constructors
+// MARK: - Constructors.
 
 extension CGImage {
     /// 从Data建立副本
@@ -190,6 +190,8 @@ extension CGImage {
     }
 }
 
+// MARK: - Common Manipulators.
+
 extension CGImage {
     public func zoomed(_ factor: CGFloat, quality: CGInterpolationQuality = .high) -> CGImage? {
         guard factor > 0 else { return nil }
@@ -283,6 +285,94 @@ extension CGImage {
     }
 }
 
+// MARK: - Genshin-Specific Manipulators
+
+extension CGImage {
+    /// 将矩形图像裁剪为圆形，圆形直径为 min(width, height) 的 70%，底边对齐图像底边中心
+    /// - Returns: 裁剪后的圆形 CGImage，失败时返回 nil
+    @preconcurrency
+    public func croppedPilotPhoto4Genshin(debugMsgHandler: ((String) -> Void)? = nil) -> CGImage? {
+        let width = CGFloat(width)
+        let height = CGFloat(height)
+
+        // 诊断：检查图像尺寸
+        guard width > 0, height > 0 else {
+            debugMsgHandler?("Invalid image dimensions: width = \(width), height = \(height)")
+            return nil
+        }
+
+        // 计算最大可能圆形的直径（取宽度和高度中的较小值）
+        let maxDiameter = min(width, height)
+        // 圆形直径为最大直径的 70%
+        let circleDiameter = maxDiameter * 0.7
+
+        // 诊断：检查圆形直径
+        guard circleDiameter > 0 else {
+            debugMsgHandler?("Invalid circle diameter: \(circleDiameter)")
+            return nil
+        }
+
+        // 计算圆心位置
+        // x: 图像宽度中心（底边正中心）
+        let centerX = width / 2
+        // y: 使圆形底边贴紧图像底边（圆形最低点 y = height）
+        let centerY = height - circleDiameter + 7 // 这里 +7 是手动篇移数值。
+
+        // 创建圆形裁剪区域
+        let circleRect = CGRect(
+            x: centerX - circleDiameter / 2,
+            y: centerY - circleDiameter / 2,
+            width: circleDiameter,
+            height: circleDiameter
+        )
+
+        // 诊断：检查裁剪区域
+        debugMsgHandler?(
+            "circleRect: \(circleRect), minX: \(circleRect.minX), maxX: \(circleRect.maxX), minY: \(circleRect.minY)"
+        )
+
+        // 验证裁剪区域是否在图像范围内（仅检查左右边界）
+        guard circleRect.minX >= 0, circleRect.maxX <= width else {
+            debugMsgHandler?(
+                "Boundary check failed: minX = \(circleRect.minX), maxX = \(circleRect.maxX), width = \(width)"
+            )
+            return nil
+        }
+
+        // 创建新的图像上下文
+        guard let context = CGContext(
+            data: nil,
+            width: Int(circleDiameter),
+            height: Int(circleDiameter),
+            bitsPerComponent: bitsPerComponent,
+            bytesPerRow: 0,
+            space: colorSpace ?? CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: bitmapInfo.rawValue
+        ) else {
+            debugMsgHandler?(
+                "Failed to create CGContext. Color space: \(String(describing: colorSpace)), bitsPerComponent: \(bitsPerComponent), bitmapInfo: \(bitmapInfo.rawValue)"
+            )
+            return nil
+        }
+
+        // 设置裁剪路径为圆形
+        context.addEllipse(in: CGRect(x: 0, y: 0, width: circleDiameter, height: circleDiameter))
+        context.clip()
+
+        // 绘制原始图像，调整位置使底边对齐
+        let drawRect = CGRect(
+            x: -circleRect.origin.x,
+            y: -circleRect.origin.y,
+            width: width,
+            height: height
+        )
+        context.draw(self, in: drawRect)
+
+        // 获取裁剪后的图像
+        return context.makeImage()
+    }
+}
+
 // MARK: - CGImage.CGImageExportFormat
 
 extension CGImage {
@@ -328,3 +418,42 @@ extension CGImage {
         return data as Data
     }
 }
+
+// #if DEBUG
+//
+// import SwiftUI
+//
+// @MainActor var debugMsg = ""
+//
+// #Preview() {
+//    let url =
+//        URL(
+//            string: "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u96d7e/8c08c93d61e4f4da591d56dd8dab8287.png"
+//        )!
+//    let cgImage = CGImage.instantiate(url: url)
+//    let processed = cgImage?.croppedPilotPhoto4Genshin { msg in
+//        debugMsg.append("\(msg)\n")
+//    }
+//    if let processed {
+//        Text(verbatim: "Succeeded.")
+//        Image(decorative: processed, scale: 1, orientation: .up)
+//            .resizable()
+//            .scaledToFit()
+//            .frame(width: 90, height: 90)
+//            .background(.red, in: .circle)
+//            .fixedSize()
+//    } else if let cgImage {
+//        Text(verbatim: "Image is there.")
+//        Text(verbatim: debugMsg)
+//        Image(decorative: cgImage, scale: 1, orientation: .up)
+//            .resizable()
+//            .scaledToFit()
+//            .frame(width: 90)
+//            .background(.red, in: .circle)
+//            .fixedSize()
+//    } else {
+//        Text(verbatim: "Phuqued up.")
+//    }
+// }
+//
+// #endif
