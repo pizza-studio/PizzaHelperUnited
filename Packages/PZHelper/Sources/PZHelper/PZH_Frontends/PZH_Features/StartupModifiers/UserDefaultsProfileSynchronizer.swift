@@ -22,6 +22,7 @@ private struct UserDefaultsProfileSynchronizer: ViewModifier {
 }
 
 extension View {
+    @ViewBuilder
     func syncProfilesToUserDefaults() -> some View {
         modifier(UserDefaultsProfileSynchronizer())
     }

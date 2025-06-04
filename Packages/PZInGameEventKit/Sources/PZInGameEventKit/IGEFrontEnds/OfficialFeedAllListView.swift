@@ -164,6 +164,7 @@ extension OfficialFeed {
 }
 
 extension View {
+    @ViewBuilder
     fileprivate func opacityMaterial() -> some View {
         background(.thinMaterial, in: Capsule())
     }

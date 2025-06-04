@@ -47,7 +47,7 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
 // MARK: - Trailing Text Label
 
 extension View {
-    @MainActor
+    @ViewBuilder
     public func corneredTag(
         verbatim stringVerbatim: String,
         alignment: Alignment,
@@ -57,8 +57,9 @@ extension View {
         padding: CGFloat = 0
     )
         -> some View {
-        guard stringVerbatim != "", enabled else { return AnyView(self) }
-        return AnyView(
+        switch enabled && stringVerbatim != "" {
+        case false: self
+        case true:
             ZStack(alignment: alignment) {
                 self
                 Text(stringVerbatim)
@@ -73,7 +74,7 @@ extension View {
                     .foregroundStyle(.white)
                     .environment(\.colorScheme, .dark)
             }
-        )
+        }
     }
 }
 

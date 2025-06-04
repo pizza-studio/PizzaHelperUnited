@@ -9,6 +9,7 @@ import SwiftUI
 import WidgetKit
 
 extension View {
+    @ViewBuilder
     func checkAndReloadWidgetTimeline() -> some View {
         modifier(WidgetTimelineReloader())
     }

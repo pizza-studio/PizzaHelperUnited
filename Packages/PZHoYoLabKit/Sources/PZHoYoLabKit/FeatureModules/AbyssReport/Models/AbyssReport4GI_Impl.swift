@@ -31,16 +31,18 @@ struct AbyssValueCell: Identifiable, Hashable {
     var value: String
     var description: String
 
-    @MainActor
+    @MainActor @ViewBuilder
     func makeAvatar() -> some View {
-        guard let avatarID = avatarID else { return AnyView(EmptyView()) }
-        let result = CharacterIconView(
-            charID: avatarID.description,
-            size: 48,
-            circleClipped: true,
-            clipToHead: true
-        ).frame(width: 52, alignment: .center)
-        return AnyView(result)
+        switch avatarID {
+        case .none: EmptyView()
+        case let .some(avatarID):
+            CharacterIconView(
+                charID: avatarID.description,
+                size: 48,
+                circleClipped: true,
+                clipToHead: true
+            ).frame(width: 52, alignment: .center)
+        }
     }
 }
 

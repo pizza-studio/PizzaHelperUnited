@@ -16,7 +16,7 @@ extension LocalAssetSuppliable {
         Image(iconAssetName, bundle: Bundle.module).resizable()
     }
 
-    @MainActor public var localFittingIcon4SUI: some View {
+    @ViewBuilder public var localFittingIcon4SUI: some View {
         localIcon4SUI.aspectRatio(contentMode: .fit)
     }
 }

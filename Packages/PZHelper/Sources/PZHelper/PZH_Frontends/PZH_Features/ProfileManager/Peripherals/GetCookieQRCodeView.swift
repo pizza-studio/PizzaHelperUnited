@@ -340,12 +340,14 @@ extension HoYo {
 
 extension View {
     /// 添加处理 HoYo 背景 URL Session 事件的能力
+    @ViewBuilder
     public func handleHoYoBackgroundSessions() -> some View {
         modifier(HoYo.HandleBackgroundSessionsModifier())
     }
 }
 
 extension View {
+    @ViewBuilder
     fileprivate func onBackgroundURLSessionEvents(
         perform action: @Sendable @escaping (String, @escaping () -> Void) -> Void
     )

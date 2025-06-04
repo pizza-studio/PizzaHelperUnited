@@ -160,6 +160,7 @@ struct FitSystemFont: ViewModifier {
 }
 
 extension View {
+    @ViewBuilder
     func fitSystemFont(
         lineLimit: Int = 1,
         minimumScaleFactor: CGFloat = 0.01,

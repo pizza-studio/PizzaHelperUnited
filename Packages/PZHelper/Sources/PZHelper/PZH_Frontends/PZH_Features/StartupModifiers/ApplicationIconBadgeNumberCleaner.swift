@@ -21,6 +21,7 @@ private struct ApplicationIconBadgeNumberCleaner: ViewModifier {
 }
 
 extension View {
+    @ViewBuilder
     func cleanApplicationIconBadgeNumber() -> some View {
         modifier(ApplicationIconBadgeNumberCleaner())
     }

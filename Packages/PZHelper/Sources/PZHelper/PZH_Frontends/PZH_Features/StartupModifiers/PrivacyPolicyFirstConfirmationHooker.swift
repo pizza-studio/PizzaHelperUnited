@@ -9,6 +9,7 @@ import PZBaseKit
 import SwiftUI
 
 extension View {
+    @ViewBuilder
     func hookPrivacyPolicyCheckerOnOOBE() -> some View {
         modifier(PrivacyPolicyFirstConfirmationHooker())
     }
