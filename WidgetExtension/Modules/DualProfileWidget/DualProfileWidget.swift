@@ -48,6 +48,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
             result: entry.resultSlot1,
             viewConfig: entry.viewConfig,
             profile: entry.profileSlot1,
+            pilotAssetMap: entry.pilotAssetMap,
             events: entry.events.filter { $0.game == entry.profileSlot1?.game }
         )
     }
@@ -58,6 +59,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
             result: entry.resultSlot2,
             viewConfig: entry.viewConfig,
             profile: entry.profileSlot2,
+            pilotAssetMap: entry.pilotAssetMap,
             events: entry.events.filter { $0.game == entry.profileSlot2?.game }
         )
     }
@@ -143,12 +145,6 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
         switch givenEntry.result {
         case let .success(dailyNote):
             let profileName = viewConfig.showAccountName ? givenEntry.profile?.name : nil
-            let defaultValue = MainInfoWithDetail(
-                entry: givenEntry,
-                dailyNote: dailyNote,
-                viewConfig: viewConfig,
-                accountName: profileName
-            )
             switch family {
             case .systemMedium, .systemSmall:
                 MainInfo(
@@ -157,10 +153,23 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                     viewConfig: viewConfig,
                     accountName: profileName
                 )
-            case .systemExtraLarge, .systemLarge:
-                defaultValue
+            // case .systemExtraLarge, .systemLarge:
             default:
-                defaultValue
+                if viewConfig.prioritizeExpeditionDisplay, !dailyNote.expeditionTasks.isEmpty {
+                    MainInfoWithExpedition(
+                        entry: givenEntry,
+                        dailyNote: dailyNote,
+                        viewConfig: viewConfig,
+                        accountName: profileName
+                    )
+                } else {
+                    MainInfoWithDetail(
+                        entry: givenEntry,
+                        dailyNote: dailyNote,
+                        viewConfig: viewConfig,
+                        accountName: profileName
+                    )
+                }
             }
         case let .failure(error):
             WidgetErrorView(
