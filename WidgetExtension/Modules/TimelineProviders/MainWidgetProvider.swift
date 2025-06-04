@@ -70,7 +70,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
 
     func placeholder(in context: Context) -> Entry {
         let sampleData = Pizza.SupportedGame.genshinImpact.exampleDailyNoteData
-        let assetMap = Self.getExpeditionAssetMapImmediately(from: sampleData)
+        let assetMap = sampleData.getExpeditionAssetMapImmediately()
         return Entry(
             date: Date(),
             result: .success(Pizza.SupportedGame.genshinImpact.exampleDailyNoteData),
@@ -90,7 +90,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
         let game = Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact
         let sampleData = game.exampleDailyNoteData
         let assetMap = await Task(priority: .userInitiated) {
-            await Self.getExpeditionAssetMap(from: sampleData)
+            await sampleData.getExpeditionAssetMap()
         }.value
         return Entry(
             date: Date(),
@@ -131,7 +131,7 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             switch dailyNoteResult {
             case let .success(dailyNoteData):
                 let assetMap = await Task(priority: .userInitiated) {
-                    await Self.getExpeditionAssetMap(from: dailyNoteData)
+                    await dailyNoteData.getExpeditionAssetMap()
                 }.value
                 refreshTime = PZWidgets.getRefreshDateByGameStamina(game: profile.game)
                 let entries: [Entry] = [
@@ -202,62 +202,5 @@ struct MainWidgetProvider: AppIntentTimelineProvider {
             return .failure(.profileSelectionNeeded)
         }
         return .success(firstMatchedProfile)
-    }
-
-    private static func getExpeditionAssetMap(from dailyNote: any DailyNoteProtocol) async -> [URL: SendableImagePtr]? {
-        guard dailyNote.hasExpeditions else { return nil }
-        let expeditions = dailyNote.expeditionTasks
-        guard !expeditions.isEmpty else { return nil }
-        var assetMap = [URL: SendableImagePtr]()
-        if dailyNote.hasExpeditions {
-            for task in dailyNote.expeditionTasks {
-                let urls = [task.iconURL, task.iconURL4Copilot].compactMap { $0 }
-                for url in urls {
-                    if let image = await ImageMap.shared.assetMap[url] {
-                        assetMap[url] = image
-                    } else if var cgImage = CGImage.instantiate(url: url) {
-                        genshinSpecificHandling: if dailyNote.game == .genshinImpact {
-                            let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
-                            guard let croppedCGImage else {
-                                continue
-                            }
-                            cgImage = croppedCGImage
-                        }
-                        let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
-                        await ImageMap.shared.insertValue(url: url, image: image)
-                        assetMap[url] = image
-                    }
-                }
-            }
-        }
-        return assetMap
-    }
-
-    /// 这是给 .placeholder() 专用的函式，不会调用 ImageMap 的缓存。
-    private static func getExpeditionAssetMapImmediately(from dailyNote: any DailyNoteProtocol)
-        -> [URL: SendableImagePtr]? {
-        guard dailyNote.hasExpeditions else { return nil }
-        let expeditions = dailyNote.expeditionTasks
-        guard !expeditions.isEmpty else { return nil }
-        var assetMap = [URL: SendableImagePtr]()
-        if dailyNote.hasExpeditions {
-            for task in dailyNote.expeditionTasks {
-                let urls = [task.iconURL, task.iconURL4Copilot].compactMap { $0 }
-                for url in urls {
-                    if var cgImage = CGImage.instantiate(url: url) {
-                        genshinSpecificHandling: if dailyNote.game == .genshinImpact {
-                            let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
-                            guard let croppedCGImage else {
-                                continue
-                            }
-                            cgImage = croppedCGImage
-                        }
-                        let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
-                        assetMap[url] = image
-                    }
-                }
-            }
-        }
-        return assetMap
     }
 }
