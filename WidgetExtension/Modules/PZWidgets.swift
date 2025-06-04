@@ -5,27 +5,20 @@
 import Defaults
 import Foundation
 import PZAccountKit
+import PZWidgetsKit
 
 // MARK: - PZWidgets
 
 public enum PZWidgets {}
 
 extension PZWidgets {
-    static let dateFormatter: DateFormatter = {
-        let fmt = DateFormatter.CurrentLocale()
-        fmt.doesRelativeDateFormatting = true
-        fmt.dateStyle = .short
-        fmt.timeStyle = .short
-        return fmt
-    }()
+    static var dateFormatter: DateFormatter {
+        PZWidgetsSPM.dateFormatter
+    }
 
-    static let intervalFormatter: DateComponentsFormatter = {
-        let dateComponentFormatter = DateComponentsFormatter()
-        dateComponentFormatter.allowedUnits = [.hour, .minute]
-        dateComponentFormatter.maximumUnitCount = 2
-        dateComponentFormatter.unitsStyle = .brief
-        return dateComponentFormatter
-    }()
+    static var intervalFormatter: DateComponentsFormatter {
+        PZWidgetsSPM.intervalFormatter
+    }
 
     @MainActor
     public static func attemptToAutoInheritOldAccountsIntoProfiles() {

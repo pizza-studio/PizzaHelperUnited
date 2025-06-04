@@ -4,19 +4,22 @@
 
 import PZAccountKit
 import PZBaseKit
-import PZWidgetsKit
 import SwiftUI
 
 // MARK: - ExpeditionsView
 
 @available(watchOS, unavailable)
-struct ExpeditionsView: View {
-    // MARK: Internal
+public struct ExpeditionsView: View {
+    // MARK: Lifecycle
 
-    let expeditions: [any ExpeditionTask]
-    let pilotAssetMap: [URL: SendableImagePtr]?
+    public init(expeditions: [any ExpeditionTask], pilotAssetMap: [URL: SendableImagePtr]?) {
+        self.expeditions = expeditions
+        self.pilotAssetMap = pilotAssetMap
+    }
 
-    var body: some View {
+    // MARK: Public
+
+    public var body: some View {
         VStack {
             ForEach(expeditions, id: \.iconURL) { expedition in
                 EachExpeditionView(
@@ -30,6 +33,9 @@ struct ExpeditionsView: View {
 
     // MARK: Private
 
+    private let expeditions: [any ExpeditionTask]
+    private let pilotAssetMap: [URL: SendableImagePtr]?
+
     private func getPilotImage(_ url: URL?) -> Image? {
         guard let url else { return nil }
         return pilotAssetMap?[url]?.img
@@ -39,18 +45,23 @@ struct ExpeditionsView: View {
 // MARK: - EachExpeditionView
 
 @available(watchOS, unavailable)
-struct EachExpeditionView: View {
-    let expedition: any ExpeditionTask
-    let viewConfig: WidgetViewConfiguration = .defaultConfig
-    let pilotImage: Image?
-    let copilotImage: Image?
+private struct EachExpeditionView: View {
+    // MARK: Lifecycle
 
-    var body: some View {
+    public init(expedition: any ExpeditionTask, pilotImage: Image?, copilotImage: Image?) {
+        self.expedition = expedition
+        self.pilotImage = pilotImage
+        self.copilotImage = copilotImage
+    }
+
+    // MARK: Public
+
+    public var body: some View {
         HStack {
             pilotsView()
             VStack(alignment: .leading) {
                 if !expedition.isFinished, let finishTime = expedition.timeOnFinish {
-                    Text(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: finishTime))!)
+                    Text(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: finishTime))!)
                         .lineLimit(1)
                         .font(.caption2)
                         .minimumScaleFactor(0.4)
@@ -62,7 +73,8 @@ struct EachExpeditionView: View {
                     Text(
                         expedition.isFinished
                             ? "pzWidgetsKit.expedition.status.finished"
-                            : "pzWidgetsKit.expedition.status.pending"
+                            : "pzWidgetsKit.expedition.status.pending",
+                        bundle: .module
                     )
                     .lineLimit(1)
                     .font(.caption2)
@@ -72,11 +84,17 @@ struct EachExpeditionView: View {
                 }
             }
         }
-        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+        .environment(\.colorScheme, .dark)
     }
 
+    // MARK: Private
+
+    private let expedition: any ExpeditionTask
+    private let pilotImage: Image?
+    private let copilotImage: Image?
+
     @ViewBuilder
-    func pilotsView() -> some View {
+    private func pilotsView() -> some View {
         let outerSize: CGFloat = 50
         GeometryReader { g in
             let leaderAvatarAsset: some View = Group {
@@ -115,7 +133,7 @@ struct EachExpeditionView: View {
     }
 
     @ViewBuilder
-    func percentageBar(_ percentage: Double) -> some View {
+    private func percentageBar(_ percentage: Double) -> some View {
         let cornerRadius: CGFloat = 3
         GeometryReader { g in
             ZStack(alignment: .leading) {
