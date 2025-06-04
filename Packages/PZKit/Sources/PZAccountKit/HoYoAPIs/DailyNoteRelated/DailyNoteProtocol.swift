@@ -9,7 +9,7 @@ import SwiftUI
 extension PZProfileSendable {
     public func getDailyNote(cached returnCachedResult: Bool = false) async throws -> DailyNoteProtocol {
         handleCachedResults: if returnCachedResult {
-            let possibleResult: DailyNoteProtocol? = switch game {
+            let maybeResult: DailyNoteProtocol? = switch game {
             case .genshinImpact:
                 DailyNoteCacheSputnik<FullNote4GI>.getCache(
                     uidWithGame: uidWithGame
@@ -19,8 +19,11 @@ extension PZProfileSendable {
             case .starRail: DailyNoteCacheSputnik<FullNote4HSR>.getCache(uidWithGame: uidWithGame)
             case .zenlessZone: DailyNoteCacheSputnik<Note4ZZZ>.getCache(uidWithGame: uidWithGame)
             }
-            guard let possibleResult else { break handleCachedResults }
-            return possibleResult
+            guard let maybeResult else { break handleCachedResults }
+            // 探索派遣肖像处理：更新 ImageMap 缓存。
+            _ = await maybeResult.getExpeditionAssetMap()
+            PZNotificationCenter.refreshScheduledNotifications(for: self, dailyNote: maybeResult)
+            return maybeResult
         }
         await HoYo.waitFor300ms()
         do {
@@ -29,6 +32,7 @@ extension PZProfileSendable {
             case .starRail: try await HoYo.note4HSR(profile: self)
             case .zenlessZone: try await HoYo.note4ZZZ(profile: self)
             }
+            _ = await result.getExpeditionAssetMap() // 探索派遣肖像处理：更新 ImageMap 缓存。
             PZNotificationCenter.refreshScheduledNotifications(for: self, dailyNote: result)
             return result
         } catch {
