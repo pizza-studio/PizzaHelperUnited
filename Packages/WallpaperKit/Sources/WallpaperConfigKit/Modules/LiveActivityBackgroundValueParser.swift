@@ -20,7 +20,7 @@ public struct LiveActivityBackgroundValueParser: Sendable {
 
     public var liveActivityWallpaperIDsReal: Binding<Set<String>> {
         .init {
-            ids.wrappedValue.filter { $0 != Wallpaper.nullLiveActivityWallpaperIdentifier }
+            ids.wrappedValue.subtracting([nullFlag])
         } set: { newValue in
             if ids.wrappedValue.contains(nullFlag) {
                 ids.wrappedValue = newValue.union([nullFlag])
@@ -36,10 +36,8 @@ public struct LiveActivityBackgroundValueParser: Sendable {
         } set: { newValue in
             switch newValue {
             case true:
-                if liveActivityWallpaperIDsReal.wrappedValue.count >= 0 {
-                    Defaults[.liveActivityWallpaperIDsBackup] = liveActivityWallpaperIDsReal.wrappedValue
-                    liveActivityWallpaperIDsReal.wrappedValue.removeAll()
-                }
+                Defaults[.liveActivityWallpaperIDsBackup] = liveActivityWallpaperIDsReal.wrappedValue
+                liveActivityWallpaperIDsReal.wrappedValue.removeAll()
             case false:
                 var fetchedBackup = Defaults[.liveActivityWallpaperIDsBackup]
                 if fetchedBackup.isEmpty {
