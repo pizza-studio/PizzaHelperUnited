@@ -294,7 +294,14 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
                 for url in urls {
                     if let image = await ImageMap.shared.assetMap[url] {
                         assetMap[url] = image
-                    } else if let cgImage = CGImage.instantiate(url: url) {
+                    } else if var cgImage = CGImage.instantiate(url: url) {
+                        genshinSpecificHandling: if dailyNote.game == .genshinImpact {
+                            let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
+                            guard let croppedCGImage else {
+                                continue
+                            }
+                            cgImage = croppedCGImage
+                        }
                         let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
                         await ImageMap.shared.insertValue(url: url, image: image)
                         assetMap[url] = image
@@ -316,7 +323,14 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
             for task in dailyNote.expeditionTasks {
                 let urls = [task.iconURL, task.iconURL4Copilot].compactMap { $0 }
                 for url in urls {
-                    if let cgImage = CGImage.instantiate(url: url) {
+                    if var cgImage = CGImage.instantiate(url: url) {
+                        genshinSpecificHandling: if dailyNote.game == .genshinImpact {
+                            let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
+                            guard let croppedCGImage else {
+                                continue
+                            }
+                            cgImage = croppedCGImage
+                        }
                         let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
                         assetMap[url] = image
                     }
