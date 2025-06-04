@@ -18,7 +18,7 @@ extension Defaults.Keys {
     /// 这里用来备份 `liveActivityWallpaperIDs` 的资料值。
     /// 该参数是设计给 `LiveActivityBackgroundValueParser` 使用的。
     public static let liveActivityWallpaperIDsBackup = Key<Set<String>>(
-        "liveActivityWallpaperIDs",
+        "liveActivityWallpaperIDsBackup",
         default: [],
         suite: .baseSuite
     )
