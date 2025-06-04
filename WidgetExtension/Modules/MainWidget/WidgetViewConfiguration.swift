@@ -27,6 +27,9 @@ struct WidgetViewConfiguration {
         self.selectedBackgrounds = backgrounds.isEmpty ? [.defaultBackground] : backgrounds
         self.isDarkModeRespected = intent.isDarkModeRespected
         self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget
+        self.prioritizeExpeditionDisplay = intent.prioritizeExpeditionDisplay
+        self.showStaminaOnly = intent.showStaminaOnly
+        self.useTinyGlassDisplayStyle = intent.useTinyGlassDisplayStyle
     }
 
     init(noticeMessage: String? = nil) {
@@ -39,6 +42,9 @@ struct WidgetViewConfiguration {
         self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
         self.noticeMessage = noticeMessage
+        self.prioritizeExpeditionDisplay = false
+        self.showStaminaOnly = false
+        self.useTinyGlassDisplayStyle = false
     }
 
     init(
@@ -56,22 +62,25 @@ struct WidgetViewConfiguration {
         self.selectedBackgrounds = [.defaultBackground]
         self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
+        self.prioritizeExpeditionDisplay = false
+        self.showStaminaOnly = false
+        self.useTinyGlassDisplayStyle = false
     }
 
     // MARK: Internal
 
     static let defaultConfig = Self()
 
-    let showAccountName: Bool
-    let showTransformer: Bool
-    let trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum
-    let echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum
+    var showAccountName: Bool
+    var showTransformer: Bool
+    var trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum
+    var echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum
     var noticeMessage: String?
-
-    let isDarkModeRespected: Bool
-
-    let showMaterialsInLargeSizeWidget: Bool
-
+    var isDarkModeRespected: Bool
+    var showStaminaOnly: Bool
+    var useTinyGlassDisplayStyle: Bool
+    var showMaterialsInLargeSizeWidget: Bool
+    var prioritizeExpeditionDisplay: Bool
     var randomBackground: Bool
     var selectedBackgrounds: [WidgetBackgroundAppEntity]
 
