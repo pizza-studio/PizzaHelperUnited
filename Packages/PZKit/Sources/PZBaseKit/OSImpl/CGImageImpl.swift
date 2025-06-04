@@ -241,7 +241,7 @@ extension CGImage {
         let height = Int(floor(CGFloat(height) * factor))
         guard width > 0, height > 0 else { return nil }
 
-        let ciImage = CIImage(cgImage: self)
+        let ciImage: CIImage = .init(cgImage: self)
         let scaleX = Double(width) / Double(self.width)
         let scaleY = Double(height) / Double(self.height)
         let scaled: CIImage = ciImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
