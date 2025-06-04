@@ -177,7 +177,7 @@ struct ProfileManagerPageContent: View {
         .navigationBarBackButtonHidden(true)
     }
 
-    @MainActor @ViewBuilder
+    @ViewBuilder
     private func extraMenuItems() -> (some View)? {
         if PZProfileActor.hasOldAccountDataDetected() {
             Button {
