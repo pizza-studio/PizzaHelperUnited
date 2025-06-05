@@ -25,7 +25,7 @@ public struct GITodayMaterialsView4Widgets<T: View>: View {
         if today == nil {
             promptOnSunday()
         } else if !alternativeLayout {
-            VStack {
+            VStack(spacing: 0) {
                 HStack(spacing: -5) {
                     ForEach(
                         supplier.weaponMaterials,
