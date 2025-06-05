@@ -20,36 +20,38 @@ struct MainInfoWithDetail: View {
     var body: some View {
         let tinyGlass = viewConfig.useTinyGlassDisplayStyle
         HStack {
-            if !tinyGlass { Spacer() }
             MainInfo(
                 entry: entry,
                 dailyNote: dailyNote,
                 viewConfig: viewConfig,
                 accountName: accountName
             )
-            Spacer()
-            switch tinyGlass {
-            case false:
-                DetailInfo(
-                    entry: entry,
-                    dailyNote: dailyNote,
-                    viewConfig: viewConfig,
-                    spacing: 10
-                )
-                .fixedSize(horizontal: true, vertical: false)
-            case true:
-                DetailInfo(
-                    entry: entry,
-                    dailyNote: dailyNote,
-                    viewConfig: viewConfig,
-                    spacing: 10
-                )
-                .fixedSize(horizontal: true, vertical: false)
-                .padding(.vertical, 8)
-                .padding(.leading, 8)
-                .widgetAccessibilityBackground(enabled: true)
+            .frame(maxWidth: .infinity, alignment: .center)
+            Group {
+                switch tinyGlass {
+                case false:
+                    DetailInfo(
+                        entry: entry,
+                        dailyNote: dailyNote,
+                        viewConfig: viewConfig,
+                        spacing: 10
+                    )
+                    .fixedSize(horizontal: true, vertical: false)
+                case true:
+                    DetailInfo(
+                        entry: entry,
+                        dailyNote: dailyNote,
+                        viewConfig: viewConfig,
+                        spacing: 10
+                    )
+                    .fixedSize(horizontal: true, vertical: false)
+                    .padding(.vertical, 8)
+                    .padding(.leading, 8)
+                    .widgetAccessibilityBackground(enabled: true)
+                }
             }
-            if !tinyGlass { Spacer() }
+            .frame(maxWidth: .infinity, alignment: .center)
         }
+        .frame(maxWidth: 300)
     }
 }
