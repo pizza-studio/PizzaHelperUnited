@@ -137,7 +137,7 @@ struct LargeWidgetView: View {
                         .legibilityShadow()
                 }
                 .buttonStyle(.plain)
-                RecoveryTimeText(entry: entry, data: dailyNote)
+                StaminaRecoveryTimeText(data: dailyNote)
             }
         }
     }
