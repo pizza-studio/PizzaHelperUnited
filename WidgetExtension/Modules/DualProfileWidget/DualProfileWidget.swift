@@ -119,6 +119,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
             divider
                 .frame(maxHeight: 4)
                 .padding()
+                .frame(maxHeight: 9)
         }
         drawSingleEntry(subEntry2)
     }
@@ -169,6 +170,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                         viewConfig: viewConfig,
                         accountName: profileName
                     )
+                    .padding()
                 }
             }
         case let .failure(error):
