@@ -26,7 +26,6 @@ struct ZZZInvestigationPointInfoBar: View {
             Pizza.SupportedGame.zenlessZone.zzzInvestigationPointsAssetIcon
                 .resizable()
                 .scaledToFit()
-                .frame(width: 25)
                 .shadow(color: .white, radius: 1)
                 .legibilityShadow(isText: false)
             ringImage

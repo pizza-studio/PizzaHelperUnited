@@ -29,7 +29,6 @@ struct HSRSimulUnivInfoBar: View {
             dailyNote.game.hsrSimulatedUniverseAssetIcon
                 .resizable()
                 .scaledToFit()
-                .frame(width: 25)
                 .shadow(color: .white, radius: 1)
                 .legibilityShadow(isText: false)
             let ratio = (Double(currentScore) / Double(maxScore) * 100).rounded(.down)
