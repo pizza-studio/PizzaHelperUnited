@@ -17,44 +17,77 @@ struct WidgetMainView: View {
 
     var body: some View {
         let profileName = viewConfig.showAccountName ? accountName : nil
-        switch family {
-        case .systemSmall:
-            MainInfo(
-                entry: entry,
-                dailyNote: dailyNote,
-                viewConfig: viewConfig,
-                accountName: profileName
-            )
-            .padding()
-        case .systemMedium:
-            if viewConfig.prioritizeExpeditionDisplay, !dailyNote.expeditionTasks.isEmpty {
-                MainInfoWithExpedition(
+        Group {
+            switch family {
+            case .systemSmall:
+                MainInfo(
                     entry: entry,
                     dailyNote: dailyNote,
                     viewConfig: viewConfig,
                     accountName: profileName
                 )
-                .padding()
-            } else {
-                MainInfoWithDetail(
-                    entry: entry,
-                    dailyNote: dailyNote,
-                    viewConfig: viewConfig,
-                    accountName: profileName
-                )
-                .padding()
+            case .systemMedium:
+                switch viewConfig.showStaminaOnly {
+                case true:
+                    MainInfo(
+                        entry: entry,
+                        dailyNote: dailyNote,
+                        viewConfig: viewConfig,
+                        accountName: profileName
+                    )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                case false:
+                    if viewConfig.prioritizeExpeditionDisplay, !dailyNote.expeditionTasks.isEmpty {
+                        MainInfoWithExpedition(
+                            entry: entry,
+                            dailyNote: dailyNote,
+                            viewConfig: viewConfig,
+                            accountName: profileName
+                        )
+                    } else {
+                        MainInfoWithDetail(
+                            entry: entry,
+                            dailyNote: dailyNote,
+                            viewConfig: viewConfig,
+                            accountName: profileName
+                        )
+                    }
+                }
+            case .systemExtraLarge, .systemLarge:
+                switch viewConfig.showStaminaOnly {
+                case true:
+                    switch viewConfig.useTinyGlassDisplayStyle {
+                    case false:
+                        MainInfo(
+                            entry: entry,
+                            dailyNote: dailyNote,
+                            viewConfig: viewConfig,
+                            accountName: profileName
+                        )
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    case true:
+                        MainInfo(
+                            entry: entry,
+                            dailyNote: dailyNote,
+                            viewConfig: viewConfig,
+                            accountName: profileName
+                        )
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    }
+                case false:
+                    LargeWidgetView(
+                        entry: entry,
+                        dailyNote: dailyNote,
+                        viewConfig: viewConfig,
+                        accountName: profileName,
+                        events: entry.events
+                    )
+                }
+            default:
+                Text(verbatim: "Layout not supported yet.")
             }
-        case .systemExtraLarge, .systemLarge:
-            LargeWidgetView(
-                entry: entry,
-                dailyNote: dailyNote,
-                viewConfig: viewConfig,
-                accountName: profileName,
-                events: entry.events
-            )
-            .padding()
-        default:
-            Text(verbatim: "Layout not supported yet.")
         }
+        .padding()
     }
 }
