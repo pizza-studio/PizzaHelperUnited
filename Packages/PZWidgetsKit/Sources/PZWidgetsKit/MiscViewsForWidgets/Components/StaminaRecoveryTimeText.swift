@@ -5,18 +5,22 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
-import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
 // MARK: - RecoveryTimeText
 
 @available(watchOS, unavailable)
-struct RecoveryTimeText: View {
-    let entry: any TimelineEntry
-    let data: any DailyNoteProtocol
+public struct StaminaRecoveryTimeText: View {
+    // MARK: Lifecycle
 
-    var body: some View {
+    public init(data: any DailyNoteProtocol) {
+        self.data = data
+    }
+
+    // MARK: Public
+
+    public var body: some View {
         Group {
             let textData = makeContentText()
             switch textData.isFull {
@@ -25,21 +29,26 @@ struct RecoveryTimeText: View {
             }
         }
         .font(.caption2)
+        .allowsTightening(true)
         .minimumScaleFactor(0.2)
         .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
         .legibilityShadow()
     }
 
+    // MARK: Internal
+
+    let data: any DailyNoteProtocol
+
     @MainActor
     func makeContentText() -> (text: Text, isFull: Bool) {
-        let textFull = Text("pzWidgetsKit.infoBlock.staminaFullyFilledDescription", bundle: .main)
+        let textFull = Text("pzWidgetsKit.infoBlock.staminaFullyFilledDescription", bundle: .module)
         switch data {
         case let data as any Note4GI:
             let resinInfo = data.resinInfo
             if resinInfo.currentResinDynamic < resinInfo.maxResin {
                 let compoundedText = """
-                \(PZWidgets.dateFormatter.string(from: resinInfo.resinRecoveryTime))
-                \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: resinInfo.resinRecoveryTime))!)
+                \(PZWidgetsSPM.dateFormatter.string(from: resinInfo.resinRecoveryTime))
+                \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: resinInfo.resinRecoveryTime))!)
                 """
                 return (Text(compoundedText), false)
             } else {
@@ -49,8 +58,8 @@ struct RecoveryTimeText: View {
             let staminaInfo = data.staminaInfo
             if staminaInfo.currentStamina < staminaInfo.maxStamina {
                 let compoundedText = """
-                \(PZWidgets.dateFormatter.string(from: staminaInfo.fullTime))
-                \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: staminaInfo.fullTime))!)
+                \(PZWidgetsSPM.dateFormatter.string(from: staminaInfo.fullTime))
+                \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: staminaInfo.fullTime))!)
                 """
                 return (Text(compoundedText), false)
             } else {
@@ -60,8 +69,8 @@ struct RecoveryTimeText: View {
             let energyInfo = data.energy
             if energyInfo.currentEnergyAmountDynamic < energyInfo.progress.max {
                 let compoundedText = """
-                \(PZWidgets.dateFormatter.string(from: energyInfo.timeOnFinish))
-                \(PZWidgets.intervalFormatter.string(from: TimeInterval.sinceNow(to: energyInfo.timeOnFinish))!)
+                \(PZWidgetsSPM.dateFormatter.string(from: energyInfo.timeOnFinish))
+                \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: energyInfo.timeOnFinish))!)
                 """
                 return (Text(compoundedText), false)
             } else {
