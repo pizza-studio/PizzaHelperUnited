@@ -90,7 +90,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                     }
                     if family == .systemExtraLarge {
                         officialFeedBlock()
-                            .frame(width: 300)
+                            .frame(maxWidth: 300)
                     }
                 }
             case .accessoryCorner: EmptyView()
@@ -162,7 +162,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                     showLeadingBorder: false
                 )
                 .padding(.horizontal, 10)
-                .padding(.vertical, 5)
+                .padding(.vertical, 10)
                 .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
                 Spacer()
                 WeekdayDisplayView()
@@ -187,7 +187,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                     viewConfig: viewConfig,
                     accountName: profileName
                 )
-            // case .systemExtraLarge, .systemLarge:
+            // case .systemLarge, .systemExtraLarge:
             default:
                 if viewConfig.prioritizeExpeditionDisplay, !dailyNote.expeditionTasks.isEmpty {
                     MainInfoWithExpedition(
@@ -196,7 +196,6 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                         viewConfig: viewConfig,
                         accountName: profileName
                     )
-                    .padding(.horizontal, viewConfig.useTinyGlassDisplayStyle ? 0 : nil)
                 } else {
                     MainInfoWithDetail(
                         entry: givenEntry,
@@ -204,7 +203,6 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                         viewConfig: viewConfig,
                         accountName: profileName
                     )
-                    .padding(.horizontal, viewConfig.useTinyGlassDisplayStyle ? 0 : nil)
                 }
             }
         case let .failure(error):

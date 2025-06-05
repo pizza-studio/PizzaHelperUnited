@@ -202,7 +202,7 @@ extension LargeWidgetView {
                         showLeadingBorder: false
                     )
                     .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
+                    .padding(.vertical, 10)
                     .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
                     .frame(maxHeight: .infinity, alignment: .top)
                     .gridCellAnchor(.topTrailing)
