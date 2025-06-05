@@ -23,7 +23,6 @@ struct GITrounceBlossomInfoBar: View {
             Pizza.SupportedGame.genshinImpact.giTrounceBlossomAssetIcon
                 .resizable()
                 .scaledToFit()
-                .frame(width: 25)
                 .shadow(color: .white, radius: 1)
                 .legibilityShadow(isText: false)
             isWeeklyBossesFinishedImage
