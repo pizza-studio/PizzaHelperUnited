@@ -25,7 +25,6 @@ struct ZZZVHSStoreInfoBar: View {
             Pizza.SupportedGame.zenlessZone.zzzVHSStoreAssetIcon
                 .resizable()
                 .scaledToFit()
-                .frame(width: 25)
                 .shadow(color: .white, radius: 1)
                 .legibilityShadow(isText: false)
             ringImage

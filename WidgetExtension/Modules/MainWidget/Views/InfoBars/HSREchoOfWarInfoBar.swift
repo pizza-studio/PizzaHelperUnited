@@ -23,7 +23,6 @@ struct HSREchoOfWarInfoBar: View {
             Pizza.SupportedGame.starRail.hsrEchoOfWarAssetIcon
                 .resizable()
                 .scaledToFit()
-                .frame(width: 25)
                 .shadow(color: .white, radius: 1)
                 .legibilityShadow(isText: false)
             isWeeklyBossesFinishedImage

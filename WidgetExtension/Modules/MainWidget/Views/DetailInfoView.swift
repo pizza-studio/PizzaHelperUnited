@@ -33,22 +33,30 @@ struct DetailInfo: View {
     let viewConfig: WidgetViewConfiguration
     let spacing: CGFloat
 
+    var lineHeightMax: CGFloat { 17 }
+
     var body: some View {
         VStack(alignment: .leading, spacing: spacing) {
+            if dailyNote.hasDailyTaskIntel {
+                DailyTaskInfoBar(dailyNote: dailyNote)
+                    .frame(maxHeight: lineHeightMax)
+            }
             switch dailyNote {
             case let dailyNote as any Note4GI:
-                drawDailyTaskCompletionStatus()
                 if dailyNote.homeCoinInfo.maxHomeCoin != 0 {
                     GIHomeCoinInfoBar(homeCoinInfo: dailyNote.homeCoinInfo)
+                        .frame(maxHeight: lineHeightMax)
                 }
 
                 if dailyNote.hasExpeditions {
                     ExpeditionInfoBar(dailyNote: dailyNote)
+                        .frame(maxHeight: lineHeightMax)
                 }
 
                 if let dailyNote = dailyNote as? FullNote4GI {
                     if dailyNote.transformerInfo.obtained, viewConfig.showTransformer {
                         GITransformerInfoBar(transformerInfo: dailyNote.transformerInfo)
+                            .frame(maxHeight: lineHeightMax)
                     }
                     switch viewConfig.trounceBlossomDisplayMethod {
                     case .neverShow:
@@ -57,48 +65,48 @@ struct DetailInfo: View {
                         GITrounceBlossomInfoBar(
                             weeklyBossesInfo: dailyNote.weeklyBossesInfo
                         )
+                        .frame(maxHeight: lineHeightMax)
                     case .alwaysShow:
                         GITrounceBlossomInfoBar(weeklyBossesInfo: dailyNote.weeklyBossesInfo)
+                            .frame(maxHeight: lineHeightMax)
                     default: EmptyView()
                     }
                 }
             case let dailyNote as Note4HSR:
                 HSRReservedTBPowerInfoBar(tbPowerIntel: dailyNote.staminaInfo)
-                drawDailyTaskCompletionStatus()
+                    .frame(maxHeight: lineHeightMax)
                 if dailyNote.hasExpeditions {
                     ExpeditionInfoBar(dailyNote: dailyNote)
+                        .frame(maxHeight: lineHeightMax)
                 }
                 HSRSimulUnivInfoBar(dailyNote: dailyNote)
+                    .frame(maxHeight: lineHeightMax)
                 if let eowIntel = dailyNote.echoOfWarIntel {
                     switch viewConfig.echoOfWarDisplayMethod {
                     case .neverShow:
                         EmptyView()
                     case .disappearAfterCompleted where !eowIntel.allRewardsClaimed:
                         HSREchoOfWarInfoBar(eowIntel: eowIntel)
+                            .frame(maxHeight: lineHeightMax)
                     case .alwaysShow:
                         HSREchoOfWarInfoBar(eowIntel: eowIntel)
+                            .frame(maxHeight: lineHeightMax)
                     default: EmptyView()
                     }
                 }
             case let dailyNote as Note4ZZZ:
-                drawDailyTaskCompletionStatus()
                 ZZZScratchCardInfoBar(data: dailyNote)
+                    .frame(maxHeight: lineHeightMax)
                 ZZZVHSStoreInfoBar(data: dailyNote)
+                    .frame(maxHeight: lineHeightMax)
                 ZZZBountyInfoBar(data: dailyNote)
+                    .frame(maxHeight: lineHeightMax)
                 ZZZInvestigationPointInfoBar(data: dailyNote)
+                    .frame(maxHeight: lineHeightMax)
             default:
                 EmptyView()
             }
         }
         .padding(.trailing)
-    }
-
-    // MARK: Private
-
-    @ViewBuilder
-    private func drawDailyTaskCompletionStatus() -> some View {
-        if dailyNote.hasDailyTaskIntel {
-            DailyTaskInfoBar(dailyNote: dailyNote)
-        }
     }
 }

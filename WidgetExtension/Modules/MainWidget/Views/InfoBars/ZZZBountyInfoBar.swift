@@ -26,7 +26,6 @@ struct ZZZBountyInfoBar: View {
             Pizza.SupportedGame.zenlessZone.zzzBountyAssetIcon
                 .resizable()
                 .scaledToFit()
-                .frame(width: 25)
                 .shadow(color: .white, radius: 1)
                 .legibilityShadow(isText: false)
             ringImage
