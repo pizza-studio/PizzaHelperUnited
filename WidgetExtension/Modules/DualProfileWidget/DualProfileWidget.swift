@@ -121,6 +121,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
             default:
                 divider
                     .frame(maxHeight: 5)
+                    .padding(.horizontal)
             }
         } else {
             switch family {
@@ -195,24 +196,15 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                         viewConfig: viewConfig,
                         accountName: profileName
                     )
+                    .padding(.horizontal, viewConfig.useTinyGlassDisplayStyle ? 0 : nil)
                 } else {
-                    switch viewConfig.useTinyGlassDisplayStyle {
-                    case true:
-                        MainInfoWithDetail(
-                            entry: givenEntry,
-                            dailyNote: dailyNote,
-                            viewConfig: viewConfig,
-                            accountName: profileName
-                        )
-                    case false:
-                        MainInfoWithDetail(
-                            entry: givenEntry,
-                            dailyNote: dailyNote,
-                            viewConfig: viewConfig,
-                            accountName: profileName
-                        )
-                        .padding()
-                    }
+                    MainInfoWithDetail(
+                        entry: givenEntry,
+                        dailyNote: dailyNote,
+                        viewConfig: viewConfig,
+                        accountName: profileName
+                    )
+                    .padding(.horizontal, viewConfig.useTinyGlassDisplayStyle ? 0 : nil)
                 }
             }
         case let .failure(error):
