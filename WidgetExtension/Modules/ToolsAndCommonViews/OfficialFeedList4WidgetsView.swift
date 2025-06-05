@@ -55,7 +55,7 @@ struct OfficialFeedList4WidgetsView: View {
             .buttonStyle(.plain)
             .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
         }
-        let leadingPadding: CGFloat? = !showLeadingBorder ? nil : 7
+        let leadingPadding: CGFloat? = !showLeadingBorder ? 0 : 7
         ViewThatFits(in: .vertical) {
             ForEach(entriesCountAppliable, id: \.self) { entriesCount in
                 VStack(spacing: 7) {
