@@ -101,7 +101,6 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
             }
         }
         .padding()
-        .padding()
         .environment(\.colorScheme, .dark)
         .myContainerBackground(viewConfig: viewConfig)
     }
@@ -111,16 +110,30 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
         let divider = Divider().overlay {
             Color.white.opacity(0.4)
         }
-        switch family {
-        case .systemMedium:
-            divider
-                .frame(maxWidth: 4)
-                .padding()
-        default:
-            divider
-                .frame(maxHeight: 4)
-                .padding()
-                .frame(maxHeight: 9)
+        if !viewConfig.useTinyGlassDisplayStyle {
+            switch family {
+            case .systemSmall: EmptyView() // Small size not supported.
+            case .systemMedium:
+                divider
+                    .frame(maxWidth: 4)
+                    .padding()
+                    .frame(maxWidth: 9)
+            default:
+                divider
+                    .frame(maxHeight: 5)
+            }
+        } else {
+            switch family {
+            case .systemSmall: EmptyView() // Small size not supported.
+            case .systemMedium:
+                EmptyView()
+                    .frame(maxWidth: 1)
+                    .padding()
+                    .frame(maxWidth: 9)
+            default:
+                EmptyView()
+                    .frame(maxHeight: 3)
+            }
         }
         drawSingleEntry(subEntry2)
     }
@@ -130,14 +143,32 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
     @ViewBuilder
     private func officialFeedBlock() -> some View {
         VStack(alignment: .trailing) {
-            OfficialFeedList4WidgetsView(
+            let officialFeedList = OfficialFeedList4WidgetsView(
                 events: entry.events,
                 showLeadingBorder: false
             )
-            .padding(.leading, 20)
-            Spacer()
-            WeekdayDisplayView()
-                .frame(maxWidth: .infinity, alignment: .trailing)
+            .contentShape(.rect)
+            switch viewConfig.useTinyGlassDisplayStyle {
+            case false:
+                officialFeedList
+                    .padding(.leading, 14)
+                Spacer()
+                WeekdayDisplayView()
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            case true:
+                OfficialFeedList4WidgetsView(
+                    events: entry.events,
+                    showLeadingBorder: false
+                )
+                .padding(.horizontal, 10)
+                .padding(.vertical, 5)
+                .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
+                Spacer()
+                WeekdayDisplayView()
+                    .padding(.horizontal, 10)
+                    .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
         }
         .frame(maxWidth: .infinity)
     }
@@ -165,13 +196,23 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                         accountName: profileName
                     )
                 } else {
-                    MainInfoWithDetail(
-                        entry: givenEntry,
-                        dailyNote: dailyNote,
-                        viewConfig: viewConfig,
-                        accountName: profileName
-                    )
-                    .padding()
+                    switch viewConfig.useTinyGlassDisplayStyle {
+                    case true:
+                        MainInfoWithDetail(
+                            entry: givenEntry,
+                            dailyNote: dailyNote,
+                            viewConfig: viewConfig,
+                            accountName: profileName
+                        )
+                    case false:
+                        MainInfoWithDetail(
+                            entry: givenEntry,
+                            dailyNote: dailyNote,
+                            viewConfig: viewConfig,
+                            accountName: profileName
+                        )
+                        .padding()
+                    }
                 }
             }
         case let .failure(error):
