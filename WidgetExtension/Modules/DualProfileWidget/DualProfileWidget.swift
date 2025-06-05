@@ -102,6 +102,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
         }
         .padding()
         .padding()
+        .environment(\.colorScheme, .dark)
         .myContainerBackground(viewConfig: viewConfig)
     }
 

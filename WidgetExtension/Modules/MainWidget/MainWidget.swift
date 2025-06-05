@@ -58,6 +58,7 @@ struct WidgetViewEntryView: View {
                 )
             }
         }
+        .environment(\.colorScheme, .dark)
         .myContainerBackground(viewConfig: noBackground ? nil : viewConfig)
     }
 }

@@ -53,6 +53,7 @@ struct OfficialFeedWidgetView: View {
             events: entry?.events,
             showLeadingBorder: showLeadingBorder
         )
+        .environment(\.colorScheme, .dark)
         .myWidgetContainerBackground(withPadding: 0) {
             WidgetBackgroundView(
                 background: .randomNamecardBackground4Games(games),
