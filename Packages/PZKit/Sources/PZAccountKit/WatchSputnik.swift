@@ -103,55 +103,17 @@ extension AppleWatchSputnik: WCSessionDelegate {
         #if os(watchOS)
         do {
             let data = try JSONSerialization.data(withJSONObject: message as NSDictionary)
-            var accountMapReceived = try JSONDecoder().decode([String: PZProfileSendable].self, from: data)
+            let receivedProfileMap = try JSONDecoder().decode([String: PZProfileSendable].self, from: data)
             // sharedAccounts.append(accountReceived)
             if let notificationText = message[kMessageKey] as? String {
                 notificationMessage = NotificationMessage(text: notificationText)
             }
             print("Received profiles")
 
-            let context = ModelContext(PZProfileActor.shared.modelContainer)
-            // 開始處理資料插入。
-            let descriptor = FetchDescriptor<PZProfileMO>()
-            let fetched = (try? context.fetch(descriptor)) ?? []
-            // 如果有既有重複記錄的話，先刪得只剩一個，然後覆蓋其所有資料欄目值。
-            if !fetched.isEmpty {
-                var uidHandled = Set<String>()
-                fetched.forEach { oldProfile in
-                    let matched = accountMapReceived[oldProfile.uidWithGame]
-                    guard let matched else {
-                        // 删除已经不存在的 Profile。
-                        PZNotificationCenter.deleteDailyNoteNotification(for: oldProfile.asSendable)
-                        context.delete(oldProfile)
-                        return
-                    }
-                    if !uidHandled.contains(oldProfile.uidWithGame) {
-                        let uuidBackup = oldProfile.uuid
-                        oldProfile.inherit(from: matched.asMO)
-                        oldProfile.uuid = uuidBackup
-                        PZNotificationCenter.bleachNotificationsIfDisabled(for: oldProfile.asSendable)
-                        uidHandled.insert(oldProfile.uidWithGame)
-                    } else {
-                        // 删除已经处理过的重复的 Profile。
-                        PZNotificationCenter.deleteDailyNoteNotification(for: oldProfile.asSendable)
-                        context.delete(oldProfile)
-                        return
-                    }
-                }
-                // 筛选掉已经处理过的传入的 profile，然后就只剩下需要全新插入的 profile。
-                uidHandled.forEach { accountMapReceived.removeValue(forKey: $0) }
+            Task { @MainActor in
+                // `@MainActor` is still necessary here to halt SwiftUI from writing into SwiftData via MainActor.
+                await PZProfileActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
             }
-            accountMapReceived.values.forEach {
-                context.insert($0.asMO)
-                PZNotificationCenter.bleachNotificationsIfDisabled(for: $0)
-            }
-            // 處理結束。
-            try context.save()
-            Defaults[.pzProfiles].removeAll()
-            accountMapReceived.values.forEach {
-                Defaults[.pzProfiles][$0.uuid.uuidString] = $0
-            }
-            UserDefaults.profileSuite.synchronize()
         } catch {
             print("save profile failed: \(error)")
         }
@@ -170,5 +132,60 @@ extension AppleWatchSputnik: WCSessionDelegate {
         session.activate()
     }
     #endif
+}
+#endif
+
+#if os(watchOS)
+extension PZProfileActor {
+    public func watchSessionHandleIncomingPushedProfiles(_ receivedProfileMap: [String: PZProfileSendable]) {
+        #if os(watchOS)
+        do {
+            var receivedProfileMap = receivedProfileMap
+            try modelContext.transaction {
+                // 開始處理資料插入。
+                let descriptor = FetchDescriptor<PZProfileMO>()
+                let fetched = (try? modelContext.fetch(descriptor)) ?? []
+                // 如果有既有重複記錄的話，先刪得只剩一個，然後覆蓋其所有資料欄目值。
+                if !fetched.isEmpty {
+                    var uidHandled = Set<String>()
+                    fetched.forEach { oldProfile in
+                        let matched = receivedProfileMap[oldProfile.uidWithGame]
+                        guard let matched else {
+                            // 删除已经不存在的 Profile。
+                            PZNotificationCenter.deleteDailyNoteNotification(for: oldProfile.asSendable)
+                            modelContext.delete(oldProfile)
+                            return
+                        }
+                        if !uidHandled.contains(oldProfile.uidWithGame) {
+                            let uuidBackup = oldProfile.uuid
+                            oldProfile.inherit(from: matched.asMO)
+                            oldProfile.uuid = uuidBackup
+                            PZNotificationCenter.bleachNotificationsIfDisabled(for: oldProfile.asSendable)
+                            uidHandled.insert(oldProfile.uidWithGame)
+                        } else {
+                            // 删除已经处理过的重复的 Profile。
+                            PZNotificationCenter.deleteDailyNoteNotification(for: oldProfile.asSendable)
+                            modelContext.delete(oldProfile)
+                            return
+                        }
+                    }
+                    // 筛选掉已经处理过的传入的 profile，然后就只剩下需要全新插入的 profile。
+                    uidHandled.forEach { receivedProfileMap.removeValue(forKey: $0) }
+                }
+                receivedProfileMap.values.forEach {
+                    modelContext.insert($0.asMO)
+                    PZNotificationCenter.bleachNotificationsIfDisabled(for: $0)
+                }
+            }
+            Defaults[.pzProfiles].removeAll()
+            receivedProfileMap.values.forEach {
+                Defaults[.pzProfiles][$0.uuid.uuidString] = $0
+            }
+            UserDefaults.profileSuite.synchronize()
+        } catch {
+            print("save profile failed: \(error)")
+        }
+        #endif
+    }
 }
 #endif
