@@ -19,6 +19,7 @@ struct MainInfoWithExpedition: View {
     let accountName: String?
 
     var body: some View {
+        let tinyGlass = viewConfig.useTinyGlassDisplayStyle
         HStack {
             MainInfo(
                 entry: entry,
@@ -27,12 +28,16 @@ struct MainInfoWithExpedition: View {
                 accountName: accountName
             )
             ExpeditionsView(
-                layout: .tiny,
+                layout: tinyGlass ? .tinyWithShrinkedIconSpaces : .tiny,
                 max4AllowedToDisplay: true,
                 expeditions: dailyNote.expeditionTasks,
                 pilotAssetMap: entry.pilotAssetMap
             )
-            .frame(width: 160)
+            .padding(.vertical, tinyGlass ? 8 : 0)
+            .padding(.leading, tinyGlass ? 4 : 0)
+            .padding(.trailing, tinyGlass ? 12 : 0)
+            .frame(width: tinyGlass ? 150 : 160)
+            .widgetAccessibilityBackground(enabled: tinyGlass)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
