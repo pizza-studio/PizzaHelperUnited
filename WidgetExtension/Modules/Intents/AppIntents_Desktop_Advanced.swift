@@ -62,47 +62,22 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
                 }
             }
         } otherwise: {
-            When(\.$prioritizeExpeditionDisplay, .equalTo, true) {
-                When(\.$randomBackground, .equalTo, true) {
-                    // Omitting `chosenBackgrounds`.
-                    Summary {
-                        \.$accountIntent
-                        \.$randomBackground
-                        \.$isDarkModeRespected
-                        \.$showStaminaOnly
-                        \.$useTinyGlassDisplayStyle
-                        \.$prioritizeExpeditionDisplay
-                    }
-                } otherwise: {
-                    // Omitting `chosenBackgrounds`.
-                    Summary {
-                        \.$accountIntent
-                        \.$randomBackground
-                        \.$chosenBackgrounds
-                        \.$isDarkModeRespected
-                        \.$showStaminaOnly
-                        \.$useTinyGlassDisplayStyle
-                        \.$prioritizeExpeditionDisplay
-                    }
+            When(\.$randomBackground, .equalTo, true) {
+                // Omitting `chosenBackgrounds`.
+                Summary {
+                    \.$accountIntent
+                    \.$randomBackground
+                    \.$isDarkModeRespected
+                    \.$showStaminaOnly
+                    \.$useTinyGlassDisplayStyle
+                    \.$prioritizeExpeditionDisplay
+                    \.$echoOfWarDisplayMethod
+                    \.$trounceBlossomDisplayMethod
+                    \.$showTransformer
+                    \.$showMaterialsInLargeSizeWidget
                 }
             } otherwise: {
-                When(\.$randomBackground, .equalTo, true) {
-                    // Omitting `chosenBackgrounds`.
-                    Summary {
-                        \.$accountIntent
-                        \.$randomBackground
-                        \.$isDarkModeRespected
-                        \.$showStaminaOnly
-                        \.$useTinyGlassDisplayStyle
-                        \.$prioritizeExpeditionDisplay
-                        \.$echoOfWarDisplayMethod
-                        \.$trounceBlossomDisplayMethod
-                        \.$showTransformer
-                        \.$showMaterialsInLargeSizeWidget
-                    }
-                } otherwise: {
-                    Summary()
-                }
+                Summary()
             }
         }
     }
@@ -162,46 +137,21 @@ public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, Cus
     public static var isDiscoverable: Bool { false }
 
     public static var parameterSummary: some ParameterSummary {
-        When(\.$prioritizeExpeditionDisplay, .equalTo, true) {
-            When(\.$randomBackground, .equalTo, true) {
-                // Omitting `chosenBackgrounds`.
-                Summary {
-                    \.$profileSlot1
-                    \.$profileSlot2
-                    \.$randomBackground
-                    \.$isDarkModeRespected
-                    \.$useTinyGlassDisplayStyle
-                    \.$prioritizeExpeditionDisplay
-                }
-            } otherwise: {
-                // Omitting `chosenBackgrounds`.
-                Summary {
-                    \.$profileSlot1
-                    \.$profileSlot2
-                    \.$randomBackground
-                    \.$chosenBackgrounds
-                    \.$isDarkModeRespected
-                    \.$useTinyGlassDisplayStyle
-                    \.$prioritizeExpeditionDisplay
-                }
+        When(\.$randomBackground, .equalTo, true) {
+            // Omitting `chosenBackgrounds`.
+            Summary {
+                \.$profileSlot1
+                \.$profileSlot2
+                \.$randomBackground
+                \.$isDarkModeRespected
+                \.$useTinyGlassDisplayStyle
+                \.$prioritizeExpeditionDisplay
+                \.$echoOfWarDisplayMethod
+                \.$trounceBlossomDisplayMethod
+                \.$showTransformer
             }
         } otherwise: {
-            When(\.$randomBackground, .equalTo, true) {
-                // Omitting `chosenBackgrounds`.
-                Summary {
-                    \.$profileSlot1
-                    \.$profileSlot2
-                    \.$randomBackground
-                    \.$isDarkModeRespected
-                    \.$useTinyGlassDisplayStyle
-                    \.$prioritizeExpeditionDisplay
-                    \.$echoOfWarDisplayMethod
-                    \.$trounceBlossomDisplayMethod
-                    \.$showTransformer
-                }
-            } otherwise: {
-                Summary()
-            }
+            Summary()
         }
     }
 
