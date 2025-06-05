@@ -119,7 +119,7 @@ struct ProfileManagerPageContent: View {
                 .toast(isPresenting: $alertToastEventStatus.isFailureSituationTriggered) {
                     AlertToast(
                         displayMode: .alert,
-                        type: .complete(.green),
+                        type: .error(.red),
                         title: "profileMgr.toast.taskFailed".i18nPZHelper
                     )
                 }
