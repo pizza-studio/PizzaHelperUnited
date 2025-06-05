@@ -88,6 +88,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                     VStack {
                         contents
                     }
+                    .frame(maxWidth: .infinity)
                     if family == .systemExtraLarge {
                         officialFeedBlock()
                             .frame(maxWidth: 300)

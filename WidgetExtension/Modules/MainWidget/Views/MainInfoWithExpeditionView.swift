@@ -27,7 +27,7 @@ struct MainInfoWithExpedition: View {
                 viewConfig: viewConfig,
                 accountName: accountName
             )
-            .frame(maxWidth: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity, alignment: tinyGlass ? .leading : .center)
             ExpeditionsView(
                 layout: tinyGlass ? .tinyWithShrinkedIconSpaces : .tiny,
                 max4AllowedToDisplay: true,
@@ -39,8 +39,8 @@ struct MainInfoWithExpedition: View {
             .padding(.trailing, tinyGlass ? 12 : 0)
             .frame(width: tinyGlass ? 140 : 150)
             .widgetAccessibilityBackground(enabled: tinyGlass)
-            .frame(maxWidth: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity, alignment: tinyGlass ? .trailing : .center)
         }
-        .frame(maxWidth: 300)
+        .frame(maxWidth: tinyGlass ? nil : 300)
     }
 }
