@@ -59,7 +59,7 @@ struct MaterialWidgetView: View {
                 showLeadingBorder: true
             )
         }
-        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+        .environment(\.colorScheme, .dark)
         .myWidgetContainerBackground(withPadding: 0) {
             WidgetBackgroundView(
                 background: .randomNamecardBackground4Game(.genshinImpact),
