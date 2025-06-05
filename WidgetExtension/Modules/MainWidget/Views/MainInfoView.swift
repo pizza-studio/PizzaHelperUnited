@@ -24,6 +24,7 @@ struct MainInfo: View {
         ProfileAndMainStaminaView(
             profile: entry.profile,
             dailyNote: dailyNote,
+            tinyGlassDisplayStyle: viewConfig.useTinyGlassDisplayStyle,
             refreshIntent: WidgetRefreshIntent(dailyNoteUIDWithGame: entry.profile?.uidWithGame)
         )
     }
