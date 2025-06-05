@@ -18,8 +18,9 @@ struct MainInfoWithDetail: View {
     let accountName: String?
 
     var body: some View {
+        let tinyGlass = viewConfig.useTinyGlassDisplayStyle
         HStack {
-            Spacer()
+            if !tinyGlass { Spacer() }
             MainInfo(
                 entry: entry,
                 dailyNote: dailyNote,
@@ -27,14 +28,28 @@ struct MainInfoWithDetail: View {
                 accountName: accountName
             )
             Spacer()
-            DetailInfo(
-                entry: entry,
-                dailyNote: dailyNote,
-                viewConfig: viewConfig,
-                spacing: 10
-            )
-            .fixedSize(horizontal: true, vertical: false)
-            Spacer()
+            switch tinyGlass {
+            case false:
+                DetailInfo(
+                    entry: entry,
+                    dailyNote: dailyNote,
+                    viewConfig: viewConfig,
+                    spacing: 10
+                )
+                .fixedSize(horizontal: true, vertical: false)
+            case true:
+                DetailInfo(
+                    entry: entry,
+                    dailyNote: dailyNote,
+                    viewConfig: viewConfig,
+                    spacing: 10
+                )
+                .fixedSize(horizontal: true, vertical: false)
+                .padding(.vertical, 8)
+                .padding(.leading, 8)
+                .widgetAccessibilityBackground(enabled: true)
+            }
+            if !tinyGlass { Spacer() }
         }
     }
 }
