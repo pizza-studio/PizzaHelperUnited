@@ -26,7 +26,7 @@ struct MainInfoWithDetail: View {
                 viewConfig: viewConfig,
                 accountName: accountName
             )
-            .frame(maxWidth: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity, alignment: tinyGlass ? .leading : .center)
             Group {
                 switch tinyGlass {
                 case false:
@@ -50,8 +50,8 @@ struct MainInfoWithDetail: View {
                     .widgetAccessibilityBackground(enabled: true)
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity, alignment: tinyGlass ? .trailing : .center)
         }
-        .frame(maxWidth: 300)
+        .frame(maxWidth: tinyGlass ? nil : 300)
     }
 }
