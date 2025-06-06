@@ -27,9 +27,9 @@ struct WidgetViewConfiguration {
         self.selectedBackgrounds = backgrounds.isEmpty ? [.defaultBackground] : backgrounds
         self.isDarkModeRespected = intent.isDarkModeRespected
         self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget
-        self.prioritizeExpeditionDisplay = intent.prioritizeExpeditionDisplay
         self.showStaminaOnly = intent.showStaminaOnly
         self.useTinyGlassDisplayStyle = intent.useTinyGlassDisplayStyle
+        self.expeditionDisplayPolicy = intent.expeditionDisplayPolicy
     }
 
     init(noticeMessage: String? = nil) {
@@ -42,9 +42,9 @@ struct WidgetViewConfiguration {
         self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
         self.noticeMessage = noticeMessage
-        self.prioritizeExpeditionDisplay = false
         self.showStaminaOnly = false
         self.useTinyGlassDisplayStyle = false
+        self.expeditionDisplayPolicy = .displayWhenAvailable
     }
 
     init(
@@ -62,9 +62,9 @@ struct WidgetViewConfiguration {
         self.selectedBackgrounds = [.defaultBackground]
         self.isDarkModeRespected = true
         self.showMaterialsInLargeSizeWidget = true
-        self.prioritizeExpeditionDisplay = false
         self.showStaminaOnly = false
         self.useTinyGlassDisplayStyle = false
+        self.expeditionDisplayPolicy = .displayWhenAvailable
     }
 
     // MARK: Internal
@@ -80,9 +80,13 @@ struct WidgetViewConfiguration {
     var showStaminaOnly: Bool
     var useTinyGlassDisplayStyle: Bool
     var showMaterialsInLargeSizeWidget: Bool
-    var prioritizeExpeditionDisplay: Bool
     var randomBackground: Bool
+    var expeditionDisplayPolicy: ExpeditionDisplayPolicyAppEnum
     var selectedBackgrounds: [WidgetBackgroundAppEntity]
+
+    var prioritizeExpeditionDisplay: Bool { expeditionDisplayPolicy == .displayExclusively }
+
+    var neverDisplayExpeditionList: Bool { expeditionDisplayPolicy == .neverDisplay }
 
     var background: WidgetBackgroundAppEntity {
         guard !randomBackground else {

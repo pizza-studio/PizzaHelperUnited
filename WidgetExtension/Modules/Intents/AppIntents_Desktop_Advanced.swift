@@ -15,7 +15,7 @@ public protocol SelectProfileIntentProtocol {
     var showTransformer: Bool { get }
     var trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum { get }
     var echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum { get }
-    var prioritizeExpeditionDisplay: Bool { get }
+    var expeditionDisplayPolicy: ExpeditionDisplayPolicyAppEnum { get }
     var randomBackground: Bool { get set }
     var chosenBackgrounds: [WidgetBackgroundAppEntity] { get }
     var isDarkModeRespected: Bool { get }
@@ -50,6 +50,7 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
                     \.$isDarkModeRespected
                     \.$showStaminaOnly
                     \.$useTinyGlassDisplayStyle
+                    \.$expeditionDisplayPolicy
                 }
             } otherwise: {
                 Summary {
@@ -59,52 +60,26 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
                     \.$isDarkModeRespected
                     \.$showStaminaOnly
                     \.$useTinyGlassDisplayStyle
+                    \.$expeditionDisplayPolicy
                 }
             }
         } otherwise: {
-            When(\.$prioritizeExpeditionDisplay, .equalTo, true) {
-                When(\.$randomBackground, .equalTo, true) {
-                    // Omitting `chosenBackgrounds`.
-                    Summary {
-                        \.$accountIntent
-                        \.$randomBackground
-                        \.$isDarkModeRespected
-                        \.$showStaminaOnly
-                        \.$useTinyGlassDisplayStyle
-                        \.$prioritizeExpeditionDisplay
-                        \.$showMaterialsInLargeSizeWidget
-                    }
-                } otherwise: {
-                    // Omitting `chosenBackgrounds`.
-                    Summary {
-                        \.$accountIntent
-                        \.$randomBackground
-                        \.$chosenBackgrounds
-                        \.$isDarkModeRespected
-                        \.$showStaminaOnly
-                        \.$useTinyGlassDisplayStyle
-                        \.$prioritizeExpeditionDisplay
-                        \.$showMaterialsInLargeSizeWidget
-                    }
+            When(\.$randomBackground, .equalTo, true) {
+                // Omitting `chosenBackgrounds`.
+                Summary {
+                    \.$accountIntent
+                    \.$randomBackground
+                    \.$isDarkModeRespected
+                    \.$showStaminaOnly
+                    \.$useTinyGlassDisplayStyle
+                    \.$expeditionDisplayPolicy
+                    \.$showMaterialsInLargeSizeWidget
+                    \.$echoOfWarDisplayMethod
+                    \.$trounceBlossomDisplayMethod
+                    \.$showTransformer
                 }
             } otherwise: {
-                When(\.$randomBackground, .equalTo, true) {
-                    // Omitting `chosenBackgrounds`.
-                    Summary {
-                        \.$accountIntent
-                        \.$randomBackground
-                        \.$isDarkModeRespected
-                        \.$showStaminaOnly
-                        \.$useTinyGlassDisplayStyle
-                        \.$prioritizeExpeditionDisplay
-                        \.$showMaterialsInLargeSizeWidget
-                        \.$echoOfWarDisplayMethod
-                        \.$trounceBlossomDisplayMethod
-                        \.$showTransformer
-                    }
-                } otherwise: {
-                    Summary()
-                }
+                Summary()
             }
         }
     }
@@ -120,12 +95,12 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
 
     @Parameter(title: "intent.field.followSystemDarkMode", default: true) public var isDarkModeRespected: Bool
 
-    @Parameter(title: "intent.field.showStaminaOnly", default: false) public var showStaminaOnly: Bool
-
     @Parameter(title: "intent.field.useTinyGlassDisplayStyle", default: false) public var useTinyGlassDisplayStyle: Bool
 
-    @Parameter(title: "intent.field.prioritizeExpeditionDisplay", default: false)
-    public var prioritizeExpeditionDisplay: Bool
+    @Parameter(title: "intent.field.showStaminaOnly", default: false) public var showStaminaOnly: Bool
+
+    @Parameter(title: "intent.field.expeditionDisplayPolicy", default: .displayWhenAvailable)
+    public var expeditionDisplayPolicy: ExpeditionDisplayPolicyAppEnum
 
     @Parameter(title: "intent.field.showMaterialsInLargeSizeWidget", default: true)
     public var showMaterialsInLargeSizeWidget: Bool
@@ -137,6 +112,10 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
     public var trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum
 
     @Parameter(title: "intent.field.showTransformer", default: true) public var showTransformer: Bool
+
+    public var prioritizeExpeditionDisplay: Bool {
+        expeditionDisplayPolicy == .displayExclusively
+    }
 
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
@@ -172,7 +151,7 @@ public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, Cus
                 \.$randomBackground
                 \.$isDarkModeRespected
                 \.$useTinyGlassDisplayStyle
-                \.$prioritizeExpeditionDisplay
+                \.$expeditionDisplayPolicy
                 \.$echoOfWarDisplayMethod
                 \.$trounceBlossomDisplayMethod
                 \.$showTransformer
@@ -197,8 +176,8 @@ public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, Cus
 
     @Parameter(title: "intent.field.useTinyGlassDisplayStyle", default: false) public var useTinyGlassDisplayStyle: Bool
 
-    @Parameter(title: "intent.field.prioritizeExpeditionDisplay", default: false)
-    public var prioritizeExpeditionDisplay: Bool
+    @Parameter(title: "intent.field.expeditionDisplayPolicy", default: .displayWhenAvailable)
+    public var expeditionDisplayPolicy: ExpeditionDisplayPolicyAppEnum
 
     @Parameter(title: "intent.field.echoOfWarDisplayMethod", default: .alwaysShow)
     public var echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum
@@ -211,6 +190,10 @@ public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, Cus
     public var showMaterialsInLargeSizeWidget: Bool { false }
 
     public var showStaminaOnly: Bool { false }
+
+    public var prioritizeExpeditionDisplay: Bool {
+        expeditionDisplayPolicy == .displayExclusively
+    }
 
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
