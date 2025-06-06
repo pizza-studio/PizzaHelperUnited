@@ -44,9 +44,9 @@ public enum WeeklyBossesDisplayMethodAppEnum: String, AppEnum {
     ]
 }
 
-// MARK: - WidgetSupportedGame
+// MARK: - WidgetSupportedGameAppEnum
 
-public enum WidgetSupportedGame: String, AppEnum {
+public enum WidgetSupportedGameAppEnum: String, AppEnum {
     case allGames = "ALL"
     case genshinImpact = "GI"
     case starRail = "HSR"
@@ -78,4 +78,23 @@ public enum WidgetSupportedGame: String, AppEnum {
         default: Pizza.SupportedGame.allCases.filter { $0 != realValue }
         }
     }
+}
+
+// MARK: - ExpeditionDisplayPolicyAppEnum
+
+public enum ExpeditionDisplayPolicyAppEnum: String, AppEnum {
+    case neverDisplay
+    case displayWhenAvailable
+    case displayExclusively
+
+    // MARK: Public
+
+    public static let typeDisplayRepresentation =
+        TypeDisplayRepresentation(name: "appEnum.ExpeditionDisplayPolicy.title")
+
+    public static let caseDisplayRepresentations: [ExpeditionDisplayPolicyAppEnum: DisplayRepresentation] = [
+        .neverDisplay: "appEnum.ExpeditionDisplayPolicy.neverDisplay",
+        .displayWhenAvailable: "appEnum.ExpeditionDisplayPolicy.displayWhenAvailable",
+        .displayExclusively: "appEnum.ExpeditionDisplayPolicy.displayExclusively",
+    ]
 }
