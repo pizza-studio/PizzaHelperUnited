@@ -43,18 +43,22 @@ func testDecodingBundledOfficialFeeds() async throws {
 @Test
 func testGetAllOfficialFeedEventsOnline() async throws {
     let allData = await OfficialFeed.getAllFeedEventsOnline(bypassCache: true)
-    print(allData.filter { $0.game == .zenlessZone }.count)
+    let allZZZResults = allData.filter { $0.game == .zenlessZone }
+    #expect(!allZZZResults.isEmpty)
+    print(allZZZResults.count)
 }
 
 @Test
 func testGetAllOfficialFeedEventsOffline() async throws {
     let allData = OfficialFeed.getAllBundledFeedEvents()
-    print(allData.filter { $0.game == .zenlessZone }.count)
+    let allZZZResults = allData.filter { $0.game == .zenlessZone }
+    #expect(!allZZZResults.isEmpty)
+    print(allZZZResults.count)
 }
 
 @Test
 func testGetAllOfficialFeedEventsCache() async throws {
-    let allData = await OfficialFeed.getAllFeedEventsOnline(bypassCache: false)
+    _ = await OfficialFeed.getAllFeedEventsOnline(bypassCache: false)
     let cachedGIEvents = OfficialFeed.getCachedEventsIfValid(for: .genshinImpact) ?? []
     #expect(!cachedGIEvents.isEmpty)
     Defaults[.officialFeedCache].removeAll()
