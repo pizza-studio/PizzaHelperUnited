@@ -139,7 +139,6 @@ private struct DailyNoteCardView4GI: View {
 
     public init(note dailyNote: any Note4GI) {
         self.dailyNote = dailyNote
-        self.pilotAssetMap = dailyNote.getExpeditionAssetMapFromMainActor()
     }
 
     // MARK: Public
@@ -149,6 +148,9 @@ private struct DailyNoteCardView4GI: View {
         drawDailyTaskAndParametricTransformer()
         drawRealmCurrencyStatus()
         drawExpeditions()
+            .task {
+                pilotAssetMap = await dailyNote.getExpeditionAssetMap()
+            }
     }
 
     // MARK: Internal
@@ -365,9 +367,10 @@ private struct DailyNoteCardView4GI: View {
 
     // MARK: Private
 
+    @State private var pilotAssetMap: [URL: SendableImagePtr]?
+
     private let dailyNote: any Note4GI
     private let iconFrame: CGFloat = 40
-    private let pilotAssetMap: [URL: SendableImagePtr]?
 
     private func getPilotImage(_ url: URL?) -> Image? {
         guard let url else { return nil }
@@ -382,7 +385,6 @@ private struct DailyNoteCardView4HSR: View {
 
     public init(note dailyNote: Note4HSR) {
         self.dailyNote = dailyNote
-        self.pilotAssetMap = dailyNote.getExpeditionAssetMapFromMainActor()
     }
 
     // MARK: Public
@@ -391,6 +393,9 @@ private struct DailyNoteCardView4HSR: View {
         drawTrailblazePower()
         drawHSRMiscComponents()
         drawAssignments()
+            .task {
+                pilotAssetMap = await dailyNote.getExpeditionAssetMap()
+            }
     }
 
     // MARK: Internal
@@ -563,9 +568,10 @@ private struct DailyNoteCardView4HSR: View {
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
+    @State private var pilotAssetMap: [URL: SendableImagePtr]?
+
     private let dailyNote: Note4HSR
     private let iconFrame: CGFloat = 40
-    private let pilotAssetMap: [URL: SendableImagePtr]?
 
     private func getPilotImage(_ url: URL?) -> Image? {
         guard let url else { return nil }
