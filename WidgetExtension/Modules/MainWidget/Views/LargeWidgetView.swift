@@ -84,13 +84,18 @@ extension LargeWidgetView {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            if hasExpeditionInfoForDisplay {
+            Group {
                 Spacer()
                 VStack(alignment: .leading) {
-                    ExpeditionsView(
-                        expeditions: dailyNote.expeditionTasks,
-                        pilotAssetMap: entry.pilotAssetMap
-                    )
+                    if viewConfig.prioritizeExpeditionDisplay {
+                        // DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
+                        EmptyView()
+                    } else if hasExpeditionInfoForDisplay {
+                        ExpeditionsView(
+                            expeditions: dailyNote.expeditionTasks,
+                            pilotAssetMap: entry.pilotAssetMap
+                        )
+                    }
                     Spacer(minLength: 15)
                     if hasGIMaterialForDisplay {
                         MaterialView()
@@ -176,20 +181,33 @@ extension LargeWidgetView {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     VStack(alignment: .trailing) {
-                        if hasExpeditionInfoForDisplay {
-                            ExpeditionsView(
-                                layout: .tinyWithShrinkedIconSpaces,
-                                max4AllowedToDisplay: false,
-                                expeditions: dailyNote.expeditionTasks,
-                                pilotAssetMap: entry.pilotAssetMap
-                            )
-                            .padding(.vertical, 8)
-                            .padding(.leading, 4)
-                            .padding(.trailing, 12)
-                            .frame(width: dailyNote.game == .starRail ? 155 : 145)
-                            .widgetAccessibilityBackground(enabled: true)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                        Group {
+                            if viewConfig.prioritizeExpeditionDisplay {
+                                // DetailInfo(
+                                //    entry: entry,
+                                //    dailyNote: dailyNote,
+                                //    viewConfig: viewConfig,
+                                //    spacing: 6
+                                // )
+                                // .fixedSize(horizontal: true, vertical: false)
+                                // .padding(.vertical, 8)
+                                // .padding(.leading, 8)
+                                EmptyView()
+                            } else if hasExpeditionInfoForDisplay {
+                                ExpeditionsView(
+                                    layout: .tinyWithShrinkedIconSpaces,
+                                    max4AllowedToDisplay: false,
+                                    expeditions: dailyNote.expeditionTasks,
+                                    pilotAssetMap: entry.pilotAssetMap
+                                )
+                                .padding(.vertical, 8)
+                                .padding(.leading, 4)
+                                .padding(.trailing, 12)
+                                .frame(width: dailyNote.game == .starRail ? 155 : 145)
+                            }
                         }
+                        .widgetAccessibilityBackground(enabled: true)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
                 }
@@ -249,7 +267,7 @@ extension LargeWidgetView {
 
     private var hasExpeditionInfoForDisplay: Bool {
         /// 绝区零没有探索派遣。
-        dailyNote.game != .zenlessZone && !viewConfig.prioritizeExpeditionDisplay
+        dailyNote.game != .zenlessZone && !dailyNote.expeditionTasks.isEmpty
     }
 
     private var hasGIMaterialForDisplay: Bool {
