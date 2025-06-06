@@ -52,7 +52,10 @@ public struct SelectOnlyGameIntent: AppIntent, WidgetConfigurationIntent {
 
     public static var parameterSummary: some ParameterSummary { Summary() }
 
-    @Parameter(title: "intent.field.game", default: WidgetSupportedGame.allGames) public var game: WidgetSupportedGame
+    @Parameter(
+        title: "intent.field.game",
+        default: WidgetSupportedGameAppEnum.allGames
+    ) public var game: WidgetSupportedGameAppEnum
 
     @Parameter(title: "intent.field.inverseSelectMode", default: false) public var inverseSelectMode: Bool
 
