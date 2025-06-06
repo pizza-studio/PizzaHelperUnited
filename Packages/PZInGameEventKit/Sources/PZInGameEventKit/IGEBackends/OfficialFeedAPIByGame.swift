@@ -50,10 +50,12 @@ extension Pizza.SupportedGame {
         -> URL {
         var regionRawValue = server.region.rawValue
         var serverRawValue = server.rawValue
+        var hoyoBizID = hoyoBizID
         // 临时措施：绝区零目前只有国服有有效新闻源。
         if server.region == .hoyoLab(.zenlessZone) {
             regionRawValue = HoYo.AccountRegion.miyoushe(.zenlessZone).rawValue
             serverRawValue = HoYo.Server.celestia(.zenlessZone).rawValue
+            hoyoBizID = "zzz_cn" // 確保 game 參數為國服
         }
         var components = URLComponents()
         components.scheme = "https"
@@ -76,6 +78,9 @@ extension Pizza.SupportedGame {
             .init(name: "region", value: serverRawValue),
             .init(name: "uid", value: "114514"),
         ]
+        #if DEBUG
+        print("[DEBUG] OfficialFeedAPI URL: \(components.url?.absoluteString ?? "nil")")
+        #endif
         return components.url!
     }
 }
