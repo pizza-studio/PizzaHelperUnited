@@ -62,22 +62,49 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
                 }
             }
         } otherwise: {
-            When(\.$randomBackground, .equalTo, true) {
-                // Omitting `chosenBackgrounds`.
-                Summary {
-                    \.$accountIntent
-                    \.$randomBackground
-                    \.$isDarkModeRespected
-                    \.$showStaminaOnly
-                    \.$useTinyGlassDisplayStyle
-                    \.$prioritizeExpeditionDisplay
-                    \.$echoOfWarDisplayMethod
-                    \.$trounceBlossomDisplayMethod
-                    \.$showTransformer
-                    \.$showMaterialsInLargeSizeWidget
+            When(\.$prioritizeExpeditionDisplay, .equalTo, true) {
+                When(\.$randomBackground, .equalTo, true) {
+                    // Omitting `chosenBackgrounds`.
+                    Summary {
+                        \.$accountIntent
+                        \.$randomBackground
+                        \.$isDarkModeRespected
+                        \.$showStaminaOnly
+                        \.$useTinyGlassDisplayStyle
+                        \.$prioritizeExpeditionDisplay
+                        \.$showMaterialsInLargeSizeWidget
+                    }
+                } otherwise: {
+                    // Omitting `chosenBackgrounds`.
+                    Summary {
+                        \.$accountIntent
+                        \.$randomBackground
+                        \.$chosenBackgrounds
+                        \.$isDarkModeRespected
+                        \.$showStaminaOnly
+                        \.$useTinyGlassDisplayStyle
+                        \.$prioritizeExpeditionDisplay
+                        \.$showMaterialsInLargeSizeWidget
+                    }
                 }
             } otherwise: {
-                Summary()
+                When(\.$randomBackground, .equalTo, true) {
+                    // Omitting `chosenBackgrounds`.
+                    Summary {
+                        \.$accountIntent
+                        \.$randomBackground
+                        \.$isDarkModeRespected
+                        \.$showStaminaOnly
+                        \.$useTinyGlassDisplayStyle
+                        \.$prioritizeExpeditionDisplay
+                        \.$showMaterialsInLargeSizeWidget
+                        \.$echoOfWarDisplayMethod
+                        \.$trounceBlossomDisplayMethod
+                        \.$showTransformer
+                    }
+                } otherwise: {
+                    Summary()
+                }
             }
         }
     }
@@ -100,6 +127,9 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
     @Parameter(title: "intent.field.prioritizeExpeditionDisplay", default: false)
     public var prioritizeExpeditionDisplay: Bool
 
+    @Parameter(title: "intent.field.showMaterialsInLargeSizeWidget", default: true)
+    public var showMaterialsInLargeSizeWidget: Bool
+
     @Parameter(title: "intent.field.echoOfWarDisplayMethod", default: .alwaysShow)
     public var echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum
 
@@ -107,9 +137,6 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
     public var trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum
 
     @Parameter(title: "intent.field.showTransformer", default: true) public var showTransformer: Bool
-
-    @Parameter(title: "intent.field.showMaterialsInLargeSizeWidget", default: true)
-    public var showMaterialsInLargeSizeWidget: Bool
 
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
