@@ -77,18 +77,32 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
     var body: some View {
         Group {
             switch family {
-            case .systemSmall:
-                VStack { contents }
+            case .systemSmall: EmptyView() // Not supported.
             case .systemMedium:
-                HStack { contents }
+                HStack {
+                    contents
+                }
+                .frame(maxWidth: .infinity)
+                .overlay {
+                    overlayDivider(isVertical: false)
+                }
             case .systemLarge:
-                VStack { contents }
+                VStack {
+                    contents
+                }
+                .frame(maxWidth: .infinity)
+                .overlay {
+                    overlayDivider(isVertical: true)
+                }
             case .systemExtraLarge:
                 HStack {
                     VStack {
                         contents
                     }
                     .frame(maxWidth: .infinity)
+                    .overlay {
+                        overlayDivider(isVertical: true)
+                    }
                     if family == .systemExtraLarge {
                         officialFeedBlock()
                             .frame(maxWidth: 300)
@@ -107,37 +121,11 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
     }
 
     @ViewBuilder var contents: some View {
+        if !viewConfig.useTinyGlassDisplayStyle { Spacer(minLength: 0) }
         drawSingleEntry(subEntry1)
-        let divider = Divider().overlay {
-            Color.white.opacity(0.4)
-        }
-        if !viewConfig.useTinyGlassDisplayStyle {
-            switch family {
-            case .systemSmall: EmptyView() // Small size not supported.
-            case .systemMedium:
-                divider
-                    .frame(maxWidth: 4)
-                    .padding()
-                    .frame(maxWidth: 9)
-            default:
-                divider
-                    .frame(maxHeight: 5)
-                    .padding(.horizontal)
-            }
-        } else {
-            switch family {
-            case .systemSmall: EmptyView() // Small size not supported.
-            case .systemMedium:
-                EmptyView()
-                    .frame(maxWidth: 1)
-                    .padding()
-                    .frame(maxWidth: 9)
-            default:
-                EmptyView()
-                    .frame(maxHeight: 3)
-            }
-        }
+        Spacer(minLength: 15)
         drawSingleEntry(subEntry2)
+        if !viewConfig.useTinyGlassDisplayStyle { Spacer(minLength: 0) }
     }
 
     // MARK: Private
@@ -177,40 +165,59 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
 
     @ViewBuilder
     private func drawSingleEntry(_ givenEntry: MainWidgetProvider.Entry) -> some View {
-        switch givenEntry.result {
-        case let .success(dailyNote):
-            let profileName = viewConfig.showAccountName ? givenEntry.profile?.name : nil
-            switch family {
-            case .systemMedium, .systemSmall:
-                MainInfo(
-                    entry: givenEntry,
-                    dailyNote: dailyNote,
-                    viewConfig: viewConfig,
-                    accountName: profileName
-                )
-            // case .systemLarge, .systemExtraLarge:
-            default:
-                if viewConfig.prioritizeExpeditionDisplay, !dailyNote.expeditionTasks.isEmpty {
-                    MainInfoWithExpedition(
+        Group {
+            switch givenEntry.result {
+            case let .success(dailyNote):
+                let profileName = viewConfig.showAccountName ? givenEntry.profile?.name : nil
+                switch family {
+                case .systemMedium, .systemSmall:
+                    MainInfo(
                         entry: givenEntry,
                         dailyNote: dailyNote,
                         viewConfig: viewConfig,
                         accountName: profileName
                     )
-                } else {
-                    MainInfoWithDetail(
-                        entry: givenEntry,
-                        dailyNote: dailyNote,
-                        viewConfig: viewConfig,
-                        accountName: profileName
-                    )
+                // case .systemLarge, .systemExtraLarge:
+                default:
+                    if viewConfig.prioritizeExpeditionDisplay, !dailyNote.expeditionTasks.isEmpty {
+                        MainInfoWithExpedition(
+                            entry: givenEntry,
+                            dailyNote: dailyNote,
+                            viewConfig: viewConfig,
+                            accountName: profileName
+                        )
+                    } else {
+                        MainInfoWithDetail(
+                            entry: givenEntry,
+                            dailyNote: dailyNote,
+                            viewConfig: viewConfig,
+                            accountName: profileName
+                        )
+                    }
                 }
+            case let .failure(error):
+                WidgetErrorView(
+                    error: error,
+                    message: viewConfig.noticeMessage ?? ""
+                )
             }
-        case let .failure(error):
-            WidgetErrorView(
-                error: error,
-                message: viewConfig.noticeMessage ?? ""
-            )
+        }
+    }
+
+    @ViewBuilder
+    private func overlayDivider(isVertical: Bool) -> some View {
+        let dividerViewRAW = Group {
+            Color.clear
+            Divider().overlay {
+                Color.black
+            }
+            .blendMode(.colorDodge)
+            .padding()
+            Color.clear
+        }
+        switch isVertical {
+        case true: VStack { dividerViewRAW }
+        case false: HStack { dividerViewRAW }
         }
     }
 }
