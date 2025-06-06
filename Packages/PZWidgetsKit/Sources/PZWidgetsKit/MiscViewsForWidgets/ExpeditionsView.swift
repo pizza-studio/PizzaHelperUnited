@@ -33,17 +33,34 @@ public struct ExpeditionsView: View {
     }
 
     public var body: some View {
-        VStack {
-            ForEach(filteredExpeditions, id: \.iconURL) { expedition in
-                EachExpeditionView(
-                    layout: layout,
-                    expedition: expedition,
-                    pilotImage: getPilotImage(expedition.iconURL),
-                    copilotImage: getPilotImage(expedition.iconURL4Copilot)
-                )
+        ViewThatFits {
+            VStack {
+                Group {
+                    ForEach(expeditions, id: \.iconURL) { expedition in
+                        EachExpeditionView(
+                            layout: layout,
+                            expedition: expedition,
+                            pilotImage: getPilotImage(expedition.iconURL),
+                            copilotImage: getPilotImage(expedition.iconURL4Copilot)
+                        )
+                    }
+                }
             }
+            .fixedSize(horizontal: false, vertical: layout != .normal)
+            VStack {
+                Group {
+                    ForEach(filteredExpeditions, id: \.iconURL) { expedition in
+                        EachExpeditionView(
+                            layout: layout,
+                            expedition: expedition,
+                            pilotImage: getPilotImage(expedition.iconURL),
+                            copilotImage: getPilotImage(expedition.iconURL4Copilot)
+                        )
+                    }
+                }
+            }
+            .fixedSize(horizontal: false, vertical: layout != .normal)
         }
-        .fixedSize(horizontal: false, vertical: layout != .normal)
     }
 
     // MARK: Private
@@ -119,6 +136,7 @@ extension ExpeditionsView {
                         .legibilityShadow()
                     }
                 }
+                .fontWidth(.condensed)
             }
             .environment(\.colorScheme, .dark)
         }
@@ -215,28 +233,17 @@ extension ExpeditionsView {
             let cornerRadius: CGFloat = 3
             GeometryReader { g in
                 ZStack(alignment: .leading) {
-                    RoundedRectangle(
-                        cornerRadius: cornerRadius,
-                        style: .continuous
-                    )
-                    .frame(width: g.size.width, height: g.size.height)
-                    .foregroundStyle(.regularMaterial)
-                    .brightness(-0.3)
-                    .environment(\.colorScheme, .light)
-                    .opacity(0.6)
-                    .environment(\.colorScheme, .light)
-                    RoundedRectangle(
-                        cornerRadius: cornerRadius,
-                        style: .continuous
-                    )
-                    .frame(
-                        width: g.size.width * percentage,
-                        height: g.size.height
-                    )
-                    .foregroundStyle(.white.opacity(0.625))
+                    Color.secondary.opacity(0.8)
+                        .frame(width: g.size.width, height: g.size.height)
+                        .brightness(-0.3)
+                    Color.primary.opacity(0.625)
+                        .frame(width: g.size.width * percentage, height: g.size.height)
+                        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .circular))
                 }
                 .aspectRatio(30 / 1, contentMode: .fit)
                 .compositingGroup()
+                .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .circular))
+                .environment(\.colorScheme, .dark)
             }
             .frame(height: 7)
         }
