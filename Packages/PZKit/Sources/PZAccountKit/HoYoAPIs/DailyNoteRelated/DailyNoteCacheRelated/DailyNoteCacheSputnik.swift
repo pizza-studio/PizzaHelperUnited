@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Alamofire
 import CoreGraphics
 import Defaults
 import Foundation
@@ -51,17 +52,20 @@ extension DailyNoteProtocol {
                 for url in urls {
                     if let image = await ImageMap.shared.assetMap[url] {
                         assetMap[url] = image
-                    } else if var cgImage = CGImage.instantiate(url: url) {
-                        genshinSpecificHandling: if dailyNote.game == .genshinImpact {
-                            let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
-                            guard let croppedCGImage else {
-                                continue
+                    } else {
+                        let data: Data = (try? await AF.request(url).serializingData().value) ?? .init([])
+                        if var cgImage = CGImage.instantiate(data: data) {
+                            genshinSpecificHandling: if dailyNote.game == .genshinImpact {
+                                let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
+                                guard let croppedCGImage else {
+                                    continue
+                                }
+                                cgImage = croppedCGImage
                             }
-                            cgImage = croppedCGImage
+                            let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
+                            await ImageMap.shared.insertValue(url: url, image: image)
+                            assetMap[url] = image
                         }
-                        let image = SendableImagePtr(img: .init(decorative: cgImage, scale: 1.0))
-                        await ImageMap.shared.insertValue(url: url, image: image)
-                        assetMap[url] = image
                     }
                 }
             }
@@ -69,6 +73,7 @@ extension DailyNoteProtocol {
         return assetMap
     }
 
+    /// [WARNING] This has purple warnings and is only used in Xcode SwiftUI preview tests.
     @MainActor
     public func getExpeditionAssetMapFromMainActor() -> [URL: SendableImagePtr]? {
         let dailyNote = self
