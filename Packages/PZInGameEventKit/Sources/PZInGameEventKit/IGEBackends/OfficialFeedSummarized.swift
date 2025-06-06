@@ -70,7 +70,9 @@ extension OfficialFeed {
                     Defaults[.officialFeedMostRecentFetchDate][game.rawValue] = .now
                 }
                 resultStack.append(contentsOf: summarized)
-            case .failure: continue
+            case let .failure(error):
+                print("[getAllFeedEventsOnline][\(game)] \(error)")
+                continue
             }
         }
         return resultStack
@@ -116,7 +118,7 @@ extension OfficialFeed {
         metaStack.append(contentsOf: package.meta.list.flatMap(\.list))
         metaStack.append(contentsOf: package.meta.picList.flatMap(\.typeList).flatMap(\.list))
         metaStack.forEach { rawMeta in
-            guard rawMeta.type == validEventTypeID else { return }
+            guard !validEventTypeID.intersection([rawMeta.type]).isEmpty else { return }
             guard let contentObj = contentMap[rawMeta.annID] else { return }
             guard var contentDescription = contentObj.content, !contentDescription.isEmpty else { return }
             Self.bleachNewsDescription(&contentDescription)
@@ -144,11 +146,11 @@ extension OfficialFeed {
         }
     }
 
-    private static func validEventType(for game: Pizza.SupportedGame) -> Int {
+    private static func validEventType(for game: Pizza.SupportedGame) -> Set<Int> {
         switch game {
-        case .genshinImpact: 1
-        case .starRail: 3
-        case .zenlessZone: 4
+        case .genshinImpact: [1]
+        case .starRail: [3]
+        case .zenlessZone: [1, 3]
         }
     }
 

@@ -55,7 +55,7 @@ extension Pizza.SupportedGame {
         if server.region == .hoyoLab(.zenlessZone) {
             regionRawValue = HoYo.AccountRegion.miyoushe(.zenlessZone).rawValue
             serverRawValue = HoYo.Server.celestia(.zenlessZone).rawValue
-            hoyoBizID = "zzz_cn" // 確保 game 參數為國服
+            hoyoBizID = "nap" // 確保 game 參數為國服
         }
         var components = URLComponents()
         components.scheme = "https"
