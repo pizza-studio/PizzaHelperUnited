@@ -9,12 +9,16 @@ import SFSafeSymbols
 import SwiftUI
 
 @available(macOS, unavailable)
-struct LockScreenDailyTaskWidgetCircular: View {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct LockScreenDailyTaskWidgetCircular: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(result: Result<any DailyNoteProtocol, any Error>) {
+        self.result = result
+    }
 
-    var body: some View {
+    // MARK: Public
+
+    public var body: some View {
         VStack(spacing: 0) {
             Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
                 .resizable()
@@ -51,4 +55,10 @@ struct LockScreenDailyTaskWidgetCircular: View {
             .padding(.vertical, 2)
         #endif
     }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let result: Result<any DailyNoteProtocol, any Error>
 }

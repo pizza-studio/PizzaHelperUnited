@@ -38,19 +38,49 @@ struct LockScreenLoopWidget: Widget {
 // MARK: - LockScreenLoopWidgetView
 
 @available(macOS, unavailable)
-struct LockScreenLoopWidgetView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
+public struct LockScreenLoopWidgetView: View {
+    // MARK: Lifecycle
 
-    let entry: LockScreenLoopWidgetProvider.Entry
+    public init(entry: ProfileWidgetEntry) {
+        self.entry = entry
+    }
 
-    var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.profile?.name }
+    // MARK: Public
 
-    var resinStyle: PZWidgetsSPM.StaminaContentRevolverStyle {
+    public let entry: ProfileWidgetEntry
+
+    public var body: some View {
+        Group {
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenLoopWidgetCorner(entry: entry, result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenLoopWidgetCircular(
+                    entry: entry,
+                    result: result,
+                    resinStyle: resinStyle
+                )
+            default:
+                EmptyView()
+            }
+        }
+        .widgetURL(url)
+    }
+
+    // MARK: Private
+
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+
+    private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
+    private var accountName: String? { entry.profile?.name }
+
+    private var resinStyle: PZWidgetsSPM.StaminaContentRevolverStyle {
         entry.viewConfig.staminaContentRevolverStyle
     }
 
-    var url: URL? {
+    private var url: URL? {
         let errorURL: URL = {
             var components = URLComponents()
             components.scheme = "ophelperwidget"
@@ -70,26 +100,6 @@ struct LockScreenLoopWidgetView: View {
         case .failure:
             return errorURL
         }
-    }
-
-    var body: some View {
-        Group {
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenLoopWidgetCorner(entry: entry, result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenLoopWidgetCircular(
-                    entry: entry,
-                    result: result,
-                    resinStyle: resinStyle
-                )
-            default:
-                EmptyView()
-            }
-        }
-        .widgetURL(url)
     }
 }
 

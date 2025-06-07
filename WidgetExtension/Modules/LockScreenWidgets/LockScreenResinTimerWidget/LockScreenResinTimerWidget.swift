@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -35,15 +36,44 @@ struct LockScreenResinTimerWidget: Widget {
 // MARK: - LockScreenResinTimerWidgetView
 
 @available(macOS, unavailable)
-struct LockScreenResinTimerWidgetView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
+public struct LockScreenResinTimerWidgetView: View {
+    // MARK: Lifecycle
 
-    let entry: LockScreenWidgetProvider.Entry
+    public init(entry: ProfileWidgetEntry) {
+        self.entry = entry
+    }
 
-    var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.profile?.name }
+    // MARK: Public
 
-    var url: URL? {
+    public let entry: ProfileWidgetEntry
+
+    public var body: some View {
+        switch family {
+        case .accessoryCircular:
+            Group {
+                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
+            }
+            .widgetURL(url)
+        #if os(watchOS)
+        case .accessoryCorner:
+            Group {
+                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
+            }
+            .widgetURL(url)
+        #endif
+        default:
+            EmptyView()
+        }
+    }
+
+    // MARK: Private
+
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+
+    private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
+    private var accountName: String? { entry.profile?.name }
+
+    private var url: URL? {
         let errorURL: URL = {
             var components = URLComponents()
             components.scheme = "ophelperwidget"
@@ -62,25 +92,6 @@ struct LockScreenResinTimerWidgetView: View {
             return nil
         case .failure:
             return errorURL
-        }
-    }
-
-    var body: some View {
-        switch family {
-        case .accessoryCircular:
-            Group {
-                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
-            }
-            .widgetURL(url)
-        #if os(watchOS)
-        case .accessoryCorner:
-            Group {
-                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
-            }
-            .widgetURL(url)
-        #endif
-        default:
-            EmptyView()
         }
     }
 }

@@ -10,13 +10,32 @@ import WidgetKit
 // MARK: - LockScreenResinWidgetCorner
 
 @available(macOS, unavailable)
-struct LockScreenResinWidgetCorner: View {
-    let entry: any TimelineEntry
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct LockScreenResinWidgetCorner: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+        self.entry = entry
+        self.result = result
+    }
 
-    var text: String {
+    // MARK: Public
+
+    public var body: some View {
+        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
+            .resizable()
+            .scaledToFit()
+            .padding(3)
+            .widgetLabel(text)
+    }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let entry: any TimelineEntry
+    private let result: Result<any DailyNoteProtocol, any Error>
+
+    private var text: String {
         switch result {
         case let .success(data):
             let staminaIntel = data.staminaIntel
@@ -29,13 +48,5 @@ struct LockScreenResinWidgetCorner: View {
         case .failure:
             return "pzWidgetsKit.stamina.label".i18nWidgets
         }
-    }
-
-    var body: some View {
-        Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
-            .resizable()
-            .scaledToFit()
-            .padding(3)
-            .widgetLabel(text)
     }
 }
