@@ -5,6 +5,7 @@
 import Defaults
 import Foundation
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WallpaperKit
 
@@ -58,6 +59,157 @@ enum BackgroundOptions {
             + Self.elements.map {
                 ($0, $0.i18nWidgets)
             } + allStaticGalleryWallpaperOptions
+    }
+}
+
+@available(watchOS, unavailable)
+extension WidgetBackgroundAppEntity {
+    var userSuppliedWallpaper: UserWallpaper? {
+        let uuid = UUID(uuidString: id)
+        guard uuid != nil else { return nil }
+        return .init(defaultsValueID: id)
+    }
+
+    var imageName: String? {
+        if BackgroundOptions.allStaticGalleryWallpaperOptions.map(\.0).contains(id) {
+            return id
+        } else { return nil }
+    }
+
+    var iconName: String? {
+        switch id {
+        case "game.elements.anemo":
+            return "element_Anemo"
+        case "game.elements.hydro":
+            return "element_Hydro"
+        case "game.elements.cryo":
+            return "element_Cryo"
+        case "game.elements.pyro":
+            return "element_Pyro"
+        case "game.elements.geo":
+            return "element_Geo"
+        case "game.elements.electro":
+            return "element_Electro"
+        case "game.elements.dendro":
+            return "element_Dendro"
+        case "game.elements.imago":
+            return "element_Imago"
+        case "game.elements.quanto":
+            return "element_Quanto"
+        case "game.elements.physico":
+            return "element_Physico"
+        default:
+            return nil
+        }
+    }
+
+    var colors: [Color] {
+        switch id {
+        case "app.background.purple":
+            return [
+                Color.purple,
+                Color.purple.addBrightness(-0.15),
+                Color.purple.addBrightness(-0.3),
+            ]
+        case "app.background.gold":
+            return [
+                Color.yellow,
+                Color.yellow.addBrightness(-0.15),
+                Color.yellow.addBrightness(-0.3),
+            ]
+        case "app.background.gray":
+            return [
+                Color.gray,
+                Color.gray.addBrightness(-0.15),
+                Color.gray.addBrightness(-0.3),
+            ]
+        case "app.background.green":
+            return [
+                Color.green,
+                Color.green.addBrightness(-0.15),
+                Color.green.addBrightness(-0.3),
+            ]
+        case "app.background.blue":
+            return [
+                Color.blue,
+                Color.blue.addBrightness(-0.15),
+                Color.blue.addBrightness(-0.3),
+            ]
+        case "app.background.red":
+            return [
+                Color.red,
+                Color.red.addBrightness(-0.15),
+                Color.red.addBrightness(-0.3),
+            ]
+        case "game.elements.anemo":
+            return [
+                Color.mint,
+                Color.mint.addBrightness(-0.15),
+                Color.mint.addBrightness(-0.3),
+            ]
+        case "game.elements.hydro":
+            return [
+                Color.blue,
+                Color.blue.addBrightness(-0.15),
+                Color.blue.addBrightness(-0.3),
+            ]
+        case "game.elements.cryo":
+            return [
+                Color.cyan,
+                Color.cyan.addBrightness(-0.15),
+                Color.cyan.addBrightness(-0.3),
+            ]
+        case "game.elements.pyro":
+            return [
+                Color.red,
+                Color.red.addBrightness(-0.15),
+                Color.red.addBrightness(-0.3),
+            ]
+        case "game.elements.geo":
+            return [
+                Color.orange,
+                Color.orange.addBrightness(-0.15),
+                Color.orange.addBrightness(-0.3),
+            ]
+        case "game.elements.electro":
+            return [
+                Color.purple,
+                Color.purple.addBrightness(-0.15),
+                Color.purple.addBrightness(-0.3),
+            ]
+        case "game.elements.dendro":
+            return [
+                Color.green,
+                Color.green.addBrightness(-0.15),
+                Color.green.addBrightness(-0.3),
+            ]
+        case "game.elements.quanto":
+            return [
+                Color.indigo,
+                Color.indigo.addBrightness(-0.15),
+                Color.indigo.addBrightness(-0.3),
+            ]
+        case "game.elements.imago":
+            return [
+                Color.yellow,
+                Color.yellow.addBrightness(-0.15),
+                Color.yellow.addBrightness(-0.3),
+            ]
+        case "game.elements.physico":
+            return [
+                Color.gray,
+                Color.gray.addBrightness(-0.15),
+                Color.gray.addBrightness(-0.3),
+            ]
+        case "app.background.intertwinedFate":
+            return [
+                PZWidgetsSPM.Colors.Background.IntertwinedFate.color1.suiColor,
+                PZWidgetsSPM.Colors.Background.IntertwinedFate.color2.suiColor,
+                PZWidgetsSPM.Colors.Background.IntertwinedFate.color3.suiColor,
+            ]
+        default:
+            return []
+        }
     }
 }
 
