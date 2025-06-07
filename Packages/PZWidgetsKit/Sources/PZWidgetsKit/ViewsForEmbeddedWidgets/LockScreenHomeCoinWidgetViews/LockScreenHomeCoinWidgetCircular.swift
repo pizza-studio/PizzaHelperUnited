@@ -41,7 +41,7 @@ extension EmbeddedWidgets {
                         Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
                             .font(.system(.body, design: .rounded).weight(.medium))
                     default:
-                        Text(verbatim: "WRONG\nGAME")
+                        Text(verbatim: "GENSHIN\nONLY")
                             .fontWidth(.compressed)
                             .multilineTextAlignment(.center)
                             .minimumScaleFactor(0.2)

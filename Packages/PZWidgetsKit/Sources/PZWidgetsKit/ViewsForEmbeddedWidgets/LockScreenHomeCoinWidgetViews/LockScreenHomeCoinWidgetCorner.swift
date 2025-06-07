@@ -46,7 +46,7 @@ extension EmbeddedWidgets {
                     let fullTime = TimeInterval.sinceNow(to: data.homeCoinInfo.fullTime)
                     return "\(currentAmount), \(PZWidgetsSPM.intervalFormatter.string(from: fullTime)!)"
                 default:
-                    return "WRONG_GAME"
+                    return "GENSHIN\nONLY"
                 }
             case .failure:
                 return String(

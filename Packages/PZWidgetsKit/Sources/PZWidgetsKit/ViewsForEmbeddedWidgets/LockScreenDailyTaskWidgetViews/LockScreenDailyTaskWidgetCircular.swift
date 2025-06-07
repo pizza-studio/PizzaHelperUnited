@@ -39,7 +39,7 @@ extension EmbeddedWidgets {
                         Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
                             .font(.system(.body, design: .rounded).weight(.medium))
                     } else {
-                        Text(verbatim: "WRONG\nGAME")
+                        Text(verbatim: "NOT 4\nZZZ")
                             .fontWidth(.compressed)
                             .multilineTextAlignment(.center)
                             .minimumScaleFactor(0.2)

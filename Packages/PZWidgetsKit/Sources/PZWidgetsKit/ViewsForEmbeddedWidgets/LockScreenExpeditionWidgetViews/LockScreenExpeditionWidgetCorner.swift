@@ -47,7 +47,7 @@ extension EmbeddedWidgets {
             case let .success(data):
                 /// ZZZ Has no expedition intels available through API yet.
                 switch data {
-                case _ as Note4ZZZ: return "WRONG_GAME"
+                case _ as Note4ZZZ: return "NOT 4\nZZZ"
                 default:
                     let timeDescription: String = {
                         if data.allExpeditionsAccomplished {
