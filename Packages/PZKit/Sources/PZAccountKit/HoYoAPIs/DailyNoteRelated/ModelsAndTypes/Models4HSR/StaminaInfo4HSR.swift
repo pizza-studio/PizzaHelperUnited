@@ -3,10 +3,23 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZBaseKit
 
 // MARK: - StaminaInfo4HSR
 
-public struct StaminaInfo4HSR: Sendable {
+public struct StaminaInfo4HSR: AbleToCodeSendHash {
+    // MARK: Lifecycle
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.maxStamina = try container.decode(Int.self, forKey: .maxStamina)
+        self._currentStamina = try container.decode(Int.self, forKey: .currentStamina)
+        self._staminaRecoverTime = try TimeInterval(container.decode(Int.self, forKey: .staminaRecoverTime))
+        self.currentReserveStamina = try container.decode(Int.self, forKey: .currentReserveStamina)
+        self.isReserveStaminaFull = (try? container.decode(Bool.self, forKey: .isReserveStaminaFull)) ?? false
+        self.staminaFullTimestamp = try container.decodeIfPresent(Double.self, forKey: .staminaFullTimestamp)
+    }
+
     // MARK: Public
 
     /// Each primary stamina needs 6 minutes to recover
@@ -66,6 +79,27 @@ public struct StaminaInfo4HSR: Sendable {
 
     public var maxReserveStamina: Int { 2400 }
 
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(maxStamina, forKey: .maxStamina)
+        try container.encode(_currentStamina, forKey: .currentStamina)
+        try container.encode(Int(_staminaRecoverTime), forKey: .staminaRecoverTime)
+        try container.encode(currentReserveStamina, forKey: .currentReserveStamina)
+        try container.encode(isReserveStaminaFull, forKey: .isReserveStaminaFull)
+        try container.encodeIfPresent(staminaFullTimestamp, forKey: .staminaFullTimestamp)
+    }
+
+    // MARK: Internal
+
+    enum CodingKeys: String, CodingKey {
+        case maxStamina = "max_stamina"
+        case currentStamina = "current_stamina"
+        case staminaRecoverTime = "stamina_recover_time"
+        case isReserveStaminaFull = "is_reserve_stamina_full"
+        case currentReserveStamina = "current_reserve_stamina"
+        case staminaFullTimestamp = "stamina_full_ts"
+    }
+
     // MARK: Private
 
     /// Stamina when data is fetched.
@@ -78,28 +112,5 @@ public struct StaminaInfo4HSR: Sendable {
 
     private var restOfStamina: Int {
         Int(ceil(remainingTime / Self.eachStaminaRecoveryTime))
-    }
-}
-
-// MARK: Decodable
-
-extension StaminaInfo4HSR: Decodable {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.maxStamina = try container.decode(Int.self, forKey: .maxStamina)
-        self._currentStamina = try container.decode(Int.self, forKey: .currentStamina)
-        self._staminaRecoverTime = try TimeInterval(container.decode(Int.self, forKey: .staminaRecoverTime))
-        self.currentReserveStamina = try container.decode(Int.self, forKey: .currentReserveStamina)
-        self.isReserveStaminaFull = (try? container.decode(Bool.self, forKey: .isReserveStaminaFull)) ?? false
-        self.staminaFullTimestamp = try container.decodeIfPresent(Double.self, forKey: .staminaFullTimestamp)
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case maxStamina = "max_stamina"
-        case currentStamina = "current_stamina"
-        case staminaRecoverTime = "stamina_recover_time"
-        case isReserveStaminaFull = "is_reserve_stamina_full"
-        case currentReserveStamina = "current_reserve_stamina"
-        case staminaFullTimestamp = "stamina_full_ts"
     }
 }

@@ -73,7 +73,7 @@ struct DetailInfo: View {
                     default: EmptyView()
                     }
                 }
-            case let dailyNote as Note4HSR:
+            case let dailyNote as any Note4HSR:
                 HSRReservedTBPowerInfoBar(tbPowerIntel: dailyNote.staminaInfo)
                     .frame(maxHeight: lineHeightMax)
                 if dailyNote.hasExpeditions {

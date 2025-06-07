@@ -8,7 +8,7 @@ import PZBaseKit
 // MARK: - Note4HSR
 
 /// Daily note protocol. The result from 2 kind of note api use this protocol.
-public protocol Note4HSR: DailyNoteProtocol {
+public protocol Note4HSR: DailyNoteProtocol, AbleToCodeSendHash {
     /// Stamina info
     var staminaInfo: StaminaInfo4HSR { get }
     /// Assignment info

@@ -49,7 +49,7 @@ struct WatchAccountDetailView: View {
 
                     switch data {
                     case let data as any Note4GI: drawNote4GI(data)
-                    case let data as Note4HSR: drawNote4HSR(data)
+                    case let data as any Note4HSR: drawNote4HSR(data)
                     case let data as Note4ZZZ: drawNote4ZZZ(data)
                     default: EmptyView()
                     }
@@ -121,7 +121,7 @@ struct WatchAccountDetailView: View {
     }
 
     @ViewBuilder
-    private func drawNote4HSR(_ data: Note4HSR) -> some View {
+    private func drawNote4HSR(_ data: any Note4HSR) -> some View {
         WatchAccountDetailItemView(
             title: "watch.dailyNote.card.simulatedUniverse.label",
             value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",

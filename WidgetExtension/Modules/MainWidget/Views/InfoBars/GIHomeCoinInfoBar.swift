@@ -13,7 +13,7 @@ import WidgetKit
 struct GIHomeCoinInfoBar: View {
     // MARK: Lifecycle
 
-    init(homeCoinInfo: PZAccountKit.HomeCoinInfo4GI) {
+    init(homeCoinInfo: any PZAccountKit.HomeCoinInfo4GI) {
         self.homeCoinInfo = homeCoinInfo
     }
 
@@ -43,7 +43,7 @@ struct GIHomeCoinInfoBar: View {
 
     // MARK: Private
 
-    private let homeCoinInfo: PZAccountKit.HomeCoinInfo4GI
+    private let homeCoinInfo: any PZAccountKit.HomeCoinInfo4GI
 
     @ViewBuilder private var isHomeCoinFullImage: some View {
         let ratio = Double(homeCoinInfo.currentHomeCoin) / Double(homeCoinInfo.maxHomeCoin)

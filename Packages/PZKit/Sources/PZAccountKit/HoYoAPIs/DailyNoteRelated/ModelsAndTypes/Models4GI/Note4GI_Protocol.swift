@@ -7,7 +7,7 @@ import PZBaseKit
 
 // MARK: - Note4GI
 
-public protocol Note4GI: DailyNoteProtocol {
+public protocol Note4GI: DailyNoteProtocol, AbleToCodeSendHash {
     associatedtype DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI
     var dailyTaskInfo: DailyTaskInfo4GI { get }
     associatedtype ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI
@@ -24,7 +24,7 @@ extension Note4GI {
 
 // MARK: - DailyTaskInfo4GI
 
-public protocol DailyTaskInfo4GI {
+public protocol DailyTaskInfo4GI: AbleToCodeSendHash {
     var totalTaskCount: Int { get }
     var finishedTaskCount: Int { get }
     var isExtraRewardReceived: Bool { get }
@@ -32,7 +32,7 @@ public protocol DailyTaskInfo4GI {
 
 // MARK: - ExpeditionInfo4GI
 
-public protocol ExpeditionInfo4GI {
+public protocol ExpeditionInfo4GI: AbleToCodeSendHash {
     var maxExpeditionsCount: Int { get }
     associatedtype Expedition: ExpeditionTask
     var expeditions: [Expedition] { get }
@@ -40,7 +40,7 @@ public protocol ExpeditionInfo4GI {
 
 // MARK: - HomeCoinInfo4GI
 
-public protocol HomeCoinInfo4GI {
+public protocol HomeCoinInfo4GI: AbleToCodeSendHash {
     var maxHomeCoin: Int { get }
     var currentHomeCoin: Int { get }
     var fullTime: Date { get }
@@ -48,7 +48,7 @@ public protocol HomeCoinInfo4GI {
 
 // MARK: - ResinInfo4GI
 
-public protocol ResinInfo4GI {
+public protocol ResinInfo4GI: AbleToCodeSendHash {
     var maxResin: Int { get }
     var currentResin: Int { get }
     var resinRecoveryTime: Date { get }

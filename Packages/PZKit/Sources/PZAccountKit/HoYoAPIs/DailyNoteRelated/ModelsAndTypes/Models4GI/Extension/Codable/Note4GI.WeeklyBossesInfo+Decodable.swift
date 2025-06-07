@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-extension FullNote4GI.WeeklyBossesInfo4GI: Decodable {
+extension FullNote4GI.WeeklyBossesInfo4GI {
     private enum CodingKeys: String, CodingKey {
         case totalResinDiscount = "resin_discount_num_limit"
         case remainResinDiscount = "remain_resin_discount_num"
@@ -12,5 +12,13 @@ extension FullNote4GI.WeeklyBossesInfo4GI: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.totalResinDiscount = try container.decode(Int.self, forKey: .totalResinDiscount)
         self.remainResinDiscount = try container.decode(Int.self, forKey: .remainResinDiscount)
+    }
+}
+
+extension FullNote4GI.WeeklyBossesInfo4GI {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(totalResinDiscount, forKey: .totalResinDiscount)
+        try container.encode(remainResinDiscount, forKey: .remainResinDiscount)
     }
 }
