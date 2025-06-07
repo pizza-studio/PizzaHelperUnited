@@ -23,7 +23,7 @@ struct AlternativeLockScreenHomeCoinWidget: Widget {
             )
         ) { entry in
             AlternativeLockScreenHomeCoinWidgetView(entry: entry)
-                .lockscreenContainerBackground { EmptyView() }
+                .smartStackWidgetContainerBackground { EmptyView() }
         }
         .configurationDisplayName("pzWidgetsKit.homeCoin".i18nWidgets)
         .description("pzWidgetsKit.cfgName.homeCoin.2".i18nWidgets)

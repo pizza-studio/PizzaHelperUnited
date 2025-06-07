@@ -51,17 +51,22 @@ public struct MaterialWidgetView<RefreshIntent: AppIntent>: View {
             )
         }
         .environment(\.colorScheme, .dark)
-        .myWidgetContainerBackground(withPadding: 0) {
-            WidgetBackgroundView(
-                background: WidgetBackground.randomNamecardBackground4Game(.genshinImpact),
-                darkModeOn: true
-            )
-        }
+        .pzWidgetContainerBackground(viewConfig: viewConfig)
     }
 
     // MARK: Private
 
     private let refreshIntent: RefreshIntent?
+
+    private let viewConfig: WidgetViewConfig = {
+        var result = WidgetViewConfig()
+        result.randomBackground = false
+        result.selectedBackgrounds = [
+            WidgetBackground.randomNamecardBackground4Game(.genshinImpact),
+        ]
+        result.isDarkModeRespected = true
+        return result
+    }()
 }
 
 // MARK: - MaterialView

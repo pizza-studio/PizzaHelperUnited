@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import SwiftUI
+import WidgetKit
 
 // MARK: - WidgetAccessibilityBackground
 
@@ -30,32 +31,82 @@ extension View {
 
 // MARK: - ContainerBackgroundModifier
 
-@available(watchOS, unavailable)
-private struct ContainerBackgroundModifier<V: View>: ViewModifier {
-    // MARK: Public
-
-    public func body(content: Content) -> some View {
-        content
-            .padding(padding)
-            .containerBackground(for: .widget) {
-                background()
-            }
-    }
-
-    // MARK: Internal
-
-    let padding: CGFloat
-    let background: () -> V
-}
-
-@available(watchOS, unavailable)
 extension View {
+    @available(watchOS, unavailable)
     @ViewBuilder
-    public func myWidgetContainerBackground<V: View>(
-        withPadding padding: CGFloat,
-        @ViewBuilder _ content: @escaping () -> V
+    public func pzWidgetContainerBackground(
+        viewConfig: WidgetViewConfig?
     )
         -> some View {
-        modifier(ContainerBackgroundModifier(padding: padding, background: content))
+        if let viewConfig {
+            modifier(ContainerBackgroundModifier(viewConfig: viewConfig))
+        } else {
+            self
+        }
+    }
+
+    @available(watchOS, unavailable)
+    @ViewBuilder
+    public func containerBackgroundStandbyDetector(
+        viewConfig: WidgetViewConfig
+    )
+        -> some View {
+        modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
+    }
+
+    @ViewBuilder
+    public func smartStackWidgetContainerBackground(@ViewBuilder _ background: @escaping () -> some View) -> some View {
+        modifier(SmartStackWidgetContainerBackground(background: background))
+    }
+}
+
+// MARK: - SmartStackWidgetContainerBackground
+
+private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
+    let background: () -> B
+
+    func body(content: Content) -> some View {
+        content.containerBackground(for: .widget) {
+            background()
+        }
+    }
+}
+
+// MARK: - ContainerBackgroundModifier
+
+@available(watchOS, unavailable)
+private struct ContainerBackgroundModifier: ViewModifier {
+    var viewConfig: WidgetViewConfig
+
+    func body(content: Content) -> some View {
+        content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
+    }
+}
+
+// MARK: - ContainerBackgroundStandbyDetector
+
+@available(watchOS, unavailable)
+private struct ContainerBackgroundStandbyDetector: ViewModifier {
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode
+    @Environment(\.widgetContentMargins) var widgetContentMargins: EdgeInsets
+
+    var viewConfig: WidgetViewConfig
+
+    func body(content: Content) -> some View {
+        if widgetContentMargins.top < 5 {
+            content.containerBackground(for: .widget) {
+                WidgetBackgroundView(
+                    background: viewConfig.background,
+                    darkModeOn: viewConfig.isDarkModeRespected
+                )
+            }
+        } else {
+            content.padding(-15).containerBackground(for: .widget) {
+                WidgetBackgroundView(
+                    background: viewConfig.background,
+                    darkModeOn: viewConfig.isDarkModeRespected
+                )
+            }
+        }
     }
 }
