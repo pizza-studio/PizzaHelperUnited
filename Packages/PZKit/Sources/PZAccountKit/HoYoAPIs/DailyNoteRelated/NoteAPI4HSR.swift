@@ -7,7 +7,7 @@ import Foundation
 import PZBaseKit
 
 extension HoYo {
-    public static func note4HSR(profile: PZProfileSendable) async throws -> Note4HSR {
+    public static func note4HSR(profile: PZProfileSendable) async throws -> any Note4HSR {
         try await note4HSR(
             uidWithGame: profile.uidWithGame,
             server: profile.server,
@@ -35,7 +35,7 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> Note4HSR {
+        -> any Note4HSR {
         switch server.region {
         case .miyoushe:
             let firstAttempt = try? await fullNote4HSR(

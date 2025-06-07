@@ -54,7 +54,7 @@ public struct StaminaRecoveryTimeText: View {
             } else {
                 return (textFull, true)
             }
-        case let data as Note4HSR:
+        case let data as any Note4HSR:
             let staminaInfo = data.staminaInfo
             if staminaInfo.currentStamina < staminaInfo.maxStamina {
                 let compoundedText = """

@@ -8,7 +8,7 @@ import Foundation
 
 // MARK: Decodable
 
-extension FullNote4GI.ResinInfo4GI: Decodable {
+extension FullNote4GI.ResinInfo4GI {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.maxResin = try container.decode(Int.self, forKey: .maxResin)
@@ -30,5 +30,17 @@ extension FullNote4GI.ResinInfo4GI: Decodable {
         case maxResin = "max_resin"
         case currentResin = "current_resin"
         case resinRecoveryTime = "resin_recovery_time"
+    }
+}
+
+// MARK: Encodable
+
+extension FullNote4GI.ResinInfo4GI {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(maxResin, forKey: .maxResin)
+        try container.encode(currentResin, forKey: .currentResin)
+        let interval = resinRecoveryTime.timeIntervalSinceNow
+        try container.encode(String(Int(interval)), forKey: .resinRecoveryTime)
     }
 }
