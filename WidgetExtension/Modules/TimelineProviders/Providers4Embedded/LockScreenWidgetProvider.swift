@@ -45,8 +45,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
 
     func recommendations() -> [AppIntentRecommendation<Intent>] {
         #if os(watchOS)
-        let configs = (try? modelContext.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
-        return configs.compactMap { config in
+        return PZWidgets.getAllProfiles().compactMap { config in
             let intent = Intent()
             intent.account = .init(
                 id: config.uuid.uuidString,
