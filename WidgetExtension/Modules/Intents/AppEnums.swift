@@ -7,11 +7,11 @@ import Foundation
 import PZBaseKit
 import PZWidgetsKit
 
-// MARK: - AutoRotationUsingResinWidgetStyleAppEnum
+// MARK: - StaminaContentRevolverStyleAppEnum
 
 /// 注意：Xcode 不支持将 AppEnum 塞到 Swift Package 内的做法，也不支持与此有关的拆分扩展定义。
 
-public enum AutoRotationUsingResinWidgetStyleAppEnum: String, AppEnum {
+public enum StaminaContentRevolverStyleAppEnum: String, AppEnum {
     case byDefault = "default"
     case timer
     case time
@@ -20,13 +20,23 @@ public enum AutoRotationUsingResinWidgetStyleAppEnum: String, AppEnum {
     // MARK: Public
 
     public static let typeDisplayRepresentation =
-        TypeDisplayRepresentation(name: "appEnum.AutoRotationUsingResinWidgetStyle.title")
+        TypeDisplayRepresentation(name: "appEnum.StaminaContentRevolverStyle.title")
+
     public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-        .byDefault: "appEnum.AutoRotationUsingResinWidgetStyle.byDefault",
-        .timer: "appEnum.AutoRotationUsingResinWidgetStyle.asTimerCountDown",
-        .time: "appEnum.AutoRotationUsingResinWidgetStyle.asTimeStampWhenWillAccomplish",
-        .roundMeter: "appEnum.AutoRotationUsingResinWidgetStyle.asRoundMeter",
+        .byDefault: "appEnum.StaminaContentRevolverStyle.byDefault",
+        .timer: "appEnum.StaminaContentRevolverStyle.asTimerCountDown",
+        .time: "appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish",
+        .roundMeter: "appEnum.StaminaContentRevolverStyle.asRoundMeter",
     ]
+
+    public var realValue: PZWidgetsSPM.StaminaContentRevolverStyle {
+        switch self {
+        case .byDefault: .byDefault
+        case .timer: .timer
+        case .time: .time
+        case .roundMeter: .roundMeter
+        }
+    }
 }
 
 // MARK: - WeeklyBossesDisplayMethodAppEnum
@@ -40,6 +50,7 @@ public enum WeeklyBossesDisplayMethodAppEnum: String, AppEnum {
 
     public static let typeDisplayRepresentation =
         TypeDisplayRepresentation(name: "appEnum.WeeklyBossesDisplayMethod.title")
+
     public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .disappearAfterCompleted: "appEnum.WeeklyBossesDisplayMethod.hiddenIfAllCompleted",
         .alwaysShow: "appEnum.WeeklyBossesDisplayMethod.alwaysVisible",
@@ -67,6 +78,7 @@ public enum WidgetSupportedGameAppEnum: String, AppEnum {
 
     public static let typeDisplayRepresentation =
         TypeDisplayRepresentation(name: "appEnum.WidgetSupportedGame.title")
+
     public static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .allGames: "appEnum.WidgetSupportedGame.allGames",
         .genshinImpact: "appEnum.WidgetSupportedGame.GI",
