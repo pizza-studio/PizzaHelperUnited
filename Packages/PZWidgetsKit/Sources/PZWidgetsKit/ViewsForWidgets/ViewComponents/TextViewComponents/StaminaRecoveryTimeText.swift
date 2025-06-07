@@ -14,8 +14,9 @@ import WidgetKit
 public struct StaminaRecoveryTimeText: View {
     // MARK: Lifecycle
 
-    public init(data: any DailyNoteProtocol) {
+    public init(data: any DailyNoteProtocol, tiny: Bool = false) {
         self.data = data
+        self.tiny = tiny
     }
 
     // MARK: Public
@@ -35,48 +36,26 @@ public struct StaminaRecoveryTimeText: View {
         .legibilityShadow()
     }
 
-    // MARK: Internal
+    // MARK: Private
 
-    let data: any DailyNoteProtocol
+    private let data: any DailyNoteProtocol
+    private let tiny: Bool
 
-    @MainActor
-    func makeContentText() -> (text: Text, isFull: Bool) {
-        let textFull = Text("pzWidgetsKit.infoBlock.staminaFullyFilledDescription", bundle: .module)
-        switch data {
-        case let data as any Note4GI:
-            let resinInfo = data.resinInfo
-            if resinInfo.currentResinDynamic < resinInfo.maxResin {
-                let compoundedText = """
-                \(PZWidgetsSPM.dateFormatter.string(from: resinInfo.resinRecoveryTime))
-                \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: resinInfo.resinRecoveryTime))!)
-                """
-                return (Text(compoundedText), false)
-            } else {
-                return (textFull, true)
-            }
-        case let data as any Note4HSR:
-            let staminaInfo = data.staminaInfo
-            if staminaInfo.currentStamina < staminaInfo.maxStamina {
-                let compoundedText = """
-                \(PZWidgetsSPM.dateFormatter.string(from: staminaInfo.fullTime))
-                \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: staminaInfo.fullTime))!)
-                """
-                return (Text(compoundedText), false)
-            } else {
-                return (textFull, true)
-            }
-        case let data as Note4ZZZ:
-            let energyInfo = data.energy
-            if energyInfo.currentEnergyAmountDynamic < energyInfo.progress.max {
-                let compoundedText = """
-                \(PZWidgetsSPM.dateFormatter.string(from: energyInfo.timeOnFinish))
-                \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: energyInfo.timeOnFinish))!)
-                """
-                return (Text(compoundedText), false)
-            } else {
-                return (textFull, true)
-            }
-        default: return (Text(verbatim: ""), false)
+    private func makeContentText() -> (text: Text, isFull: Bool) {
+        let key: String
+            .LocalizationValue = tiny ? "pzWidgetsKit.infoBlock.staminaFullyFilledDescription.tiny" :
+            "pzWidgetsKit.infoBlock.staminaFullyFilledDescription"
+        let textFull = Text(.init(localized: key, bundle: .module))
+        let staminaIntel = data.staminaIntel
+        let fullTimeOnFinish = data.staminaFullTimeOnFinish
+        if staminaIntel.finished < staminaIntel.all {
+            let compoundedText = """
+            \(PZWidgetsSPM.dateFormatter.string(from: fullTimeOnFinish))
+            \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: fullTimeOnFinish))!)
+            """
+            return (Text(compoundedText), false)
+        } else {
+            return (textFull, true)
         }
     }
 }
