@@ -31,7 +31,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
 
     // MARK: Internal
 
-    typealias Entry = SingleProfileWidgetEntry
+    typealias Entry = ProfileWidgetEntry
     typealias Intent = SelectAccountAndShowWhichInfoIntent
 
     let games: Set<Pizza.SupportedGame>
