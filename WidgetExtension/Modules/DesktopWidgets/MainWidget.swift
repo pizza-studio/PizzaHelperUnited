@@ -63,68 +63,6 @@ struct WidgetViewEntryView: View {
             }
         }
         .environment(\.colorScheme, .dark)
-        .myContainerBackground(viewConfig: noBackground ? nil : viewConfig)
-    }
-}
-
-@available(watchOS, unavailable)
-extension View {
-    @ViewBuilder
-    fileprivate func myContainerBackground(
-        viewConfig: WidgetViewConfig?
-    )
-        -> some View {
-        if let viewConfig {
-            modifier(ContainerBackgroundModifier(viewConfig: viewConfig))
-        } else {
-            self
-        }
-    }
-
-    @ViewBuilder
-    fileprivate func containerBackgroundStandbyDetector(
-        viewConfig: WidgetViewConfig
-    )
-        -> some View {
-        modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
-    }
-}
-
-// MARK: - ContainerBackgroundModifier
-
-@available(watchOS, unavailable)
-private struct ContainerBackgroundModifier: ViewModifier {
-    var viewConfig: WidgetViewConfig
-
-    func body(content: Content) -> some View {
-        content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
-    }
-}
-
-// MARK: - ContainerBackgroundStandbyDetector
-
-@available(watchOS, unavailable)
-private struct ContainerBackgroundStandbyDetector: ViewModifier {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode
-    @Environment(\.widgetContentMargins) var widgetContentMargins: EdgeInsets
-
-    var viewConfig: WidgetViewConfig
-
-    func body(content: Content) -> some View {
-        if widgetContentMargins.top < 5 {
-            content.containerBackground(for: .widget) {
-                WidgetBackgroundView(
-                    background: viewConfig.background,
-                    darkModeOn: viewConfig.isDarkModeRespected
-                )
-            }
-        } else {
-            content.padding(-15).containerBackground(for: .widget) {
-                WidgetBackgroundView(
-                    background: viewConfig.background,
-                    darkModeOn: viewConfig.isDarkModeRespected
-                )
-            }
-        }
+        .pzWidgetContainerBackground(viewConfig: noBackground ? nil : viewConfig)
     }
 }

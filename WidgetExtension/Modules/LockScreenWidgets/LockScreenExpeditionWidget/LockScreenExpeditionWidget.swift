@@ -23,7 +23,7 @@ struct LockScreenExpeditionWidget: Widget {
             )
         ) { entry in
             LockScreenExpeditionWidgetView(entry: entry)
-                .lockscreenContainerBackground { EmptyView() }
+                .smartStackWidgetContainerBackground { EmptyView() }
         }
         .configurationDisplayName("pzWidgetsKit.expedition".i18nWidgets)
         .description("pzWidgetsKit.cfgName.expedition".i18nWidgets)
