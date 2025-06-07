@@ -6,11 +6,13 @@ import AppIntents
 import Defaults
 import Foundation
 import PZBaseKit
+import PZWidgetsKit
 
 // MARK: - SelectOnlyAccountIntent
 
 // Only for watchOS and iOS_Lock_Screen.
-public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent {
+public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
+    ProfileWidgetIntentProtocol {
     // MARK: Lifecycle
 
     public init() {}
@@ -28,6 +30,26 @@ public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, Cus
 
     @Parameter(title: "intent.field.localProfile") public var account: AccountIntentAppEntity?
 
+    public var showStaminaOnly: Bool { false }
+
+    public var useTinyGlassDisplayStyle: Bool { false }
+
+    public var showTransformer: Bool { false }
+
+    public var trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum { .neverShow }
+
+    public var echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum { .neverShow }
+
+    public var expeditionDisplayPolicy: ExpeditionDisplayPolicyAppEnum { .neverDisplay }
+
+    public var randomBackground: Bool { false }
+
+    public var chosenBackgrounds: [WidgetBackgroundAppEntity] { [] }
+
+    public var isDarkModeRespected: Bool { true }
+
+    public var showMaterialsInLargeSizeWidget: Bool { false }
+
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
         .result()
@@ -37,7 +59,8 @@ public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, Cus
 // MARK: - SelectAccountAndShowWhichInfoIntent
 
 // Only for watchOS and iOS_Lock_Screen.
-public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent {
+public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
+    ProfileWidgetIntentProtocol {
     // MARK: Lifecycle
 
     public init() {}
@@ -63,6 +86,26 @@ public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfiguratio
 
     @Parameter(title: "intent.field.staminaDisplayStyle", default: .byDefault)
     public var usingResinStyle: StaminaContentRevolverStyleAppEnum
+
+    public var showStaminaOnly: Bool { false }
+
+    public var useTinyGlassDisplayStyle: Bool { false }
+
+    public var trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum {
+        showTrounceBlossom ? .alwaysShow : .neverShow
+    }
+
+    public var echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum { showEchoOfWar ? .alwaysShow : .neverShow }
+
+    public var expeditionDisplayPolicy: ExpeditionDisplayPolicyAppEnum { .displayWhenAvailable }
+
+    public var randomBackground: Bool { false }
+
+    public var chosenBackgrounds: [WidgetBackgroundAppEntity] { [] }
+
+    public var isDarkModeRespected: Bool { true }
+
+    public var showMaterialsInLargeSizeWidget: Bool { false }
 
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
