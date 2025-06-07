@@ -131,7 +131,7 @@ extension DesktopWidgets {
                                 }
                             }
                             .widgetAccessibilityBackground(enabled: true)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
                     }
