@@ -29,15 +29,4 @@ extension WidgetViewConfig {
         self.useTinyGlassDisplayStyle = intent.useTinyGlassDisplayStyle
         self.expeditionDisplayPolicy = intent.expeditionDisplayPolicy.realValue
     }
-
-    public var background: WidgetBackground {
-        guard !randomBackground else {
-            return .randomElementOrNamecardBackground
-        }
-        if selectedBackgrounds.isEmpty {
-            return .defaultBackground
-        } else {
-            return selectedBackgrounds.randomElement() ?? .defaultBackground
-        }
-    }
 }

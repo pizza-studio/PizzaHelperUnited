@@ -23,7 +23,7 @@ struct LockScreenLoopWidget: Widget {
             )
         ) { entry in
             LockScreenLoopWidgetView(entry: entry)
-                .lockscreenContainerBackground { EmptyView() }
+                .smartStackWidgetContainerBackground { EmptyView() }
         }
         .configurationDisplayName("pzWidgetsKit.cfgName.autoRotation".i18nWidgets)
         .description("pzWidgetsKit.cfgName.autoDisplay".i18nWidgets)

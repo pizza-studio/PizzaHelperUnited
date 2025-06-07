@@ -35,9 +35,18 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
 
     public var neverDisplayExpeditionList: Bool { expeditionDisplayPolicy == .neverDisplay }
 
-    // MARK: Internal
+    public var background: WidgetBackground {
+        guard !randomBackground else {
+            return .randomElementOrNamecardBackground
+        }
+        if selectedBackgrounds.isEmpty {
+            return .defaultBackground
+        } else {
+            return selectedBackgrounds.randomElement() ?? .defaultBackground
+        }
+    }
 
-    mutating func addMessage(_ msg: String) {
+    public mutating func addMessage(_ msg: String) {
         noticeMessage = msg
     }
 }

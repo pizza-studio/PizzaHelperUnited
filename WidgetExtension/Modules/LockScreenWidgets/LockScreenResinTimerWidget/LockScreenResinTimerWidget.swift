@@ -20,7 +20,7 @@ struct LockScreenResinTimerWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "pzWidgetsKit.stamina.refillTime.countdown.ofSb")
         ) { entry in
             LockScreenResinTimerWidgetView(entry: entry)
-                .lockscreenContainerBackground { EmptyView() }
+                .smartStackWidgetContainerBackground { EmptyView() }
         }
         .configurationDisplayName("pzWidgetsKit.stamina.refillTime.countdown.title".i18nWidgets)
         .description("pzWidgetsKit.stamina.refillTime.countdown.show.title".i18nWidgets)

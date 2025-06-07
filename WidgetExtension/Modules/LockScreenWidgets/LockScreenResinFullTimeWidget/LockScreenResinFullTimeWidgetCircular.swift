@@ -155,22 +155,3 @@ struct LockScreenResinFullTimeWidgetCircular: View {
         }
     }
 }
-
-// MARK: - MyContainerBackground
-
-private struct MyContainerBackground<B: View>: ViewModifier {
-    let background: () -> B
-
-    func body(content: Content) -> some View {
-        content.containerBackground(for: .widget) {
-            background()
-        }
-    }
-}
-
-extension View {
-    @ViewBuilder
-    func lockscreenContainerBackground(@ViewBuilder _ background: @escaping () -> some View) -> some View {
-        modifier(MyContainerBackground(background: background))
-    }
-}
