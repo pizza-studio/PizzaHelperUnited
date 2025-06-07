@@ -10,7 +10,6 @@ import WidgetKit
 
 // MARK: - DualProfileWidgetEntry
 
-@available(watchOS, unavailable)
 public struct DualProfileWidgetEntry: TimelineEntry, Sendable {
     // MARK: Lifecycle
 
@@ -66,7 +65,6 @@ public struct DualProfileWidgetEntry: TimelineEntry, Sendable {
 
 // MARK: - SingleProfileWidgetEntry
 
-@available(watchOS, unavailable)
 public struct SingleProfileWidgetEntry: TimelineEntry, Sendable {
     // MARK: Lifecycle
 
@@ -76,7 +74,7 @@ public struct SingleProfileWidgetEntry: TimelineEntry, Sendable {
         viewConfig: WidgetViewConfig,
         profile: PZProfileSendable?,
         pilotAssetMap: [URL: SendableImagePtr]? = nil,
-        events: [OfficialFeed.FeedEvent]
+        events: [OfficialFeed.FeedEvent] = []
     ) {
         self.date = date
         self.result = result
