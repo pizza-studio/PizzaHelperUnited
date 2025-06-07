@@ -73,7 +73,8 @@ extension FullNote4GI.ExpeditionInfo4GI.Expedition {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         let remainedTime = finishTime.timeIntervalSinceNow
-        try container.encode(String(Int(remainedTime)), forKey: .finishTime)
+        let adjustedRemainedTime = remainedTime < 0 ? 0 : remainedTime
+        try container.encode(String(Int(adjustedRemainedTime)), forKey: .finishTime)
         try container.encode(iconURL, forKey: .iconURL)
     }
 }
