@@ -20,7 +20,8 @@ struct MainWidget: Widget {
             intent: SelectAccountIntent.self,
             provider: MainWidgetProvider()
         ) { entry in
-            SingleProfileWidgetView<WidgetRefreshIntent>(entry: entry, noBackground: false)
+            DesktopWidgets<WidgetRefreshIntent>
+                .SingleProfileWidgetView(entry: entry, noBackground: false)
         }
         .configurationDisplayName("pzWidgetsKit.status.title".i18nWidgets)
         .description("pzWidgetsKit.status.enquiry.title".i18nWidgets)

@@ -18,7 +18,7 @@ struct OfficialFeedWidget: Widget {
             intent: SelectOnlyGameIntent.self,
             provider: OfficialFeedWidgetProvider()
         ) { entry in
-            OfficialFeedWidgetView(
+            DesktopWidgets.OfficialFeedWidgetView(
                 entry: entry,
                 showLeadingBorder: true,
                 refreshIntent: WidgetRefreshIntent()
