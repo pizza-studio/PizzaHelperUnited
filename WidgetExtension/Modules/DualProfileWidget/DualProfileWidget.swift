@@ -136,7 +136,8 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
         VStack(alignment: .trailing) {
             let officialFeedList = OfficialFeedList4WidgetsView(
                 events: entry.events,
-                showLeadingBorder: false
+                showLeadingBorder: false,
+                refreshIntent: WidgetRefreshIntent()
             )
             .contentShape(.rect)
             switch viewConfig.useTinyGlassDisplayStyle {
@@ -149,7 +150,8 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
             case true:
                 OfficialFeedList4WidgetsView(
                     events: entry.events,
-                    showLeadingBorder: false
+                    showLeadingBorder: false,
+                    refreshIntent: WidgetRefreshIntent()
                 )
                 .padding(.horizontal, 10)
                 .padding(.vertical, 10)

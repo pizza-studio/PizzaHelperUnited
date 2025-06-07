@@ -5,13 +5,13 @@
 import Foundation
 
 extension String {
-    public var i18nWidgets: String {
+    public var i18nPZWidgetsKit: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
     }
 }
 
 extension String.LocalizationValue {
-    public var i18nWidgets: String {
+    public var i18nPZWidgetsKit: String {
         String(localized: self, bundle: .module)
     }
 }

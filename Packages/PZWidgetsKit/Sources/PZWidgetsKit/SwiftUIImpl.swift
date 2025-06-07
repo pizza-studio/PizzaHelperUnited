@@ -27,3 +27,35 @@ extension View {
         modifier(WidgetAccessibilityBackground(enabled: enabled))
     }
 }
+
+// MARK: - ContainerBackgroundModifier
+
+@available(watchOS, unavailable)
+private struct ContainerBackgroundModifier<V: View>: ViewModifier {
+    // MARK: Public
+
+    public func body(content: Content) -> some View {
+        content
+            .padding(padding)
+            .containerBackground(for: .widget) {
+                background()
+            }
+    }
+
+    // MARK: Internal
+
+    let padding: CGFloat
+    let background: () -> V
+}
+
+@available(watchOS, unavailable)
+extension View {
+    @ViewBuilder
+    public func myWidgetContainerBackground<V: View>(
+        withPadding padding: CGFloat,
+        @ViewBuilder _ content: @escaping () -> V
+    )
+        -> some View {
+        modifier(ContainerBackgroundModifier(padding: padding, background: content))
+    }
+}

@@ -6,6 +6,7 @@ import AppIntents
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 
 // MARK: - AccountIntentAppEntity
 
@@ -89,20 +90,20 @@ public struct WidgetBackgroundAppEntity: AppEntity {
         public typealias Entity = WidgetBackgroundAppEntity
 
         public func entities(for identifiers: [Self.Entity.ID]) async throws -> [Self.Entity] {
-            let matched = BackgroundOptions.allOptions.filter { identifiers.contains($0.0) }
+            let matched = WidgetBackground.allOptions.filter { identifiers.contains($0.id) }
             return matched.map {
-                .init(id: $0.0, displayString: $0.1)
+                .init(id: $0.id, displayString: $0.displayString)
             }
         }
 
         public func suggestedEntities() async throws -> Self.Result {
-            BackgroundOptions.allOptions.map {
-                .init(id: $0.0, displayString: $0.1)
+            WidgetBackground.allOptions.map {
+                .init(id: $0.id, displayString: $0.displayString)
             }
         }
 
         public func defaultResult() async -> Self.Entity? {
-            Entity.defaultBackground
+            WidgetBackground.defaultBackground.asAppEntity
         }
     }
 
@@ -115,5 +116,23 @@ public struct WidgetBackgroundAppEntity: AppEntity {
 
     public var displayRepresentation: DisplayRepresentation {
         DisplayRepresentation(title: "\(displayString)")
+    }
+}
+
+extension WidgetBackground {
+    public var asAppEntity: WidgetBackgroundAppEntity {
+        .init(id: id, displayString: displayString)
+    }
+}
+
+extension WidgetBackgroundAppEntity {
+    public var asRawEntity: WidgetBackground {
+        .init(id: id, displayString: displayString)
+    }
+}
+
+extension Array where Element == WidgetBackgroundAppEntity {
+    public var asRawEntitySet: Set<WidgetBackground> {
+        Set(map(\.asRawEntity))
     }
 }

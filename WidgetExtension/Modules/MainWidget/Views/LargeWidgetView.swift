@@ -120,7 +120,8 @@ extension LargeWidgetView {
         VStack(alignment: .trailing) {
             OfficialFeedList4WidgetsView(
                 events: entry.events,
-                showLeadingBorder: false
+                showLeadingBorder: false,
+                refreshIntent: WidgetRefreshIntent()
             )
             .padding(.leading, 20)
             .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
@@ -212,7 +213,8 @@ extension LargeWidgetView {
                 if family == .systemExtraLarge {
                     OfficialFeedList4WidgetsView(
                         events: entry.events,
-                        showLeadingBorder: false
+                        showLeadingBorder: false,
+                        refreshIntent: WidgetRefreshIntent()
                     )
                     .padding(.horizontal, 10)
                     .padding(.vertical, 10)

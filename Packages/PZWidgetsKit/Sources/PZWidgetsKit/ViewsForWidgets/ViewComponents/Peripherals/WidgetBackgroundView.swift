@@ -7,26 +7,20 @@ import WallpaperKit
 import WidgetKit
 
 @available(watchOS, unavailable)
-struct WidgetBackgroundView: View {
+public struct WidgetBackgroundView: View {
     // MARK: Lifecycle
 
-    init(
-        background: WidgetBackgroundAppEntity,
+    public init(
+        background: WidgetBackground,
         darkModeOn: Bool
     ) {
         self.background = background
         self.darkModeOn = darkModeOn
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @Environment(\.widgetFamily) var widgetFamily: WidgetFamily
-
-    let background: WidgetBackgroundAppEntity
-    let darkModeOn: Bool
-
-    var body: some View {
+    public var body: some View {
         ZStack {
             if let userSuppliedWallpaperLayer {
                 userSuppliedWallpaperLayer
@@ -42,6 +36,12 @@ struct WidgetBackgroundView: View {
     }
 
     // MARK: Private
+
+    @Environment(\.colorScheme) private var colorScheme: ColorScheme
+    @Environment(\.widgetFamily) private var widgetFamily: WidgetFamily
+
+    private let background: WidgetBackground
+    private let darkModeOn: Bool
 
     private var shouldEnforceDark: Bool { colorScheme == .dark && darkModeOn }
 
@@ -72,7 +72,7 @@ struct WidgetBackgroundView: View {
 
         if let backgroundIconName = background.iconName {
             GeometryReader { g in
-                Image(backgroundIconName, bundle: .main)
+                Image(backgroundIconName, bundle: .module)
                     .resizable()
                     .scaledToFill()
                     .brightness(0.2)
