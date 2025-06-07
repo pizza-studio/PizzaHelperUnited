@@ -16,12 +16,10 @@ extension DesktopWidgets {
 
         public init(
             events: [OfficialFeed.FeedEvent]?,
-            showLeadingBorder: Bool,
-            refreshIntent: RefreshIntent?
+            showLeadingBorder: Bool
         ) {
             self.events = events ?? []
             self.showLeadingBorder = showLeadingBorder
-            self.refreshIntent = refreshIntent
         }
 
         // MARK: Public
@@ -38,7 +36,6 @@ extension DesktopWidgets {
 
         private let events: [OfficialFeed.FeedEvent]
         private let showLeadingBorder: Bool
-        private let refreshIntent: RefreshIntent?
 
         private var entriesCountAppliable: [Int] {
             switch family {
@@ -51,8 +48,8 @@ extension DesktopWidgets {
 
         @ViewBuilder
         private func coreComponentEmbeddable() -> some View {
-            if events.isEmpty, let refreshIntent {
-                Button(intent: refreshIntent) {
+            if events.isEmpty {
+                Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: nil)) {
                     Image(systemSymbol: .arrowClockwiseCircle)
                         .font(.title3)
                         .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)

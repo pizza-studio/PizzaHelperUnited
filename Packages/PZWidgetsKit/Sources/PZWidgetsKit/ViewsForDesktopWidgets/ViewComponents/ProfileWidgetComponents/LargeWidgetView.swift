@@ -141,8 +141,7 @@ extension DesktopWidgets {
                     if family == .systemExtraLarge {
                         OfficialFeedList4WidgetsView(
                             events: entry.events,
-                            showLeadingBorder: false,
-                            refreshIntent: RefreshIntent(dailyNoteUIDWithGame: nil)
+                            showLeadingBorder: false
                         )
                         .padding(.horizontal, 10)
                         .padding(.vertical, 10)
@@ -235,8 +234,7 @@ extension DesktopWidgets {
             VStack(alignment: .trailing) {
                 OfficialFeedList4WidgetsView(
                     events: entry.events,
-                    showLeadingBorder: false,
-                    refreshIntent: RefreshIntent(dailyNoteUIDWithGame: nil)
+                    showLeadingBorder: false
                 )
                 .padding(.leading, 20)
                 .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)

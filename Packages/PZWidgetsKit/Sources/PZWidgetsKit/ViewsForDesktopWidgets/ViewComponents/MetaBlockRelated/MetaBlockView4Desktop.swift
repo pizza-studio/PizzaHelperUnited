@@ -7,61 +7,66 @@ import PZBaseKit
 import SwiftUI
 import WidgetKit
 
-// MARK: - MetaBlockView4Desktop
+// MARK: - DesktopWidgets.MetaBlockView4Desktop
 
-public struct MetaBlockView4Desktop: View {
-    // MARK: Lifecycle
+@available(watchOS, unavailable)
+extension DesktopWidgets {
+    // MARK: - MetaBlockView4Desktop
 
-    public init(
-        dailyNote: any DailyNoteProtocol,
-        viewConfig: WidgetViewConfig,
-        spacing: CGFloat = 13
-    ) {
-        self.dailyNote = dailyNote
-        self.viewConfig = viewConfig
-        self.spacing = spacing
-    }
+    public struct MetaBlockView4Desktop: View {
+        // MARK: Lifecycle
 
-    // MARK: Public
+        public init(
+            dailyNote: any DailyNoteProtocol,
+            viewConfig: WidgetViewConfig,
+            spacing: CGFloat = 13
+        ) {
+            self.dailyNote = dailyNote
+            self.viewConfig = viewConfig
+            self.spacing = spacing
+        }
 
-    public var lineHeightMax: CGFloat { 17 }
+        // MARK: Public
 
-    public var body: some View {
-        VStack(alignment: .leading, spacing: spacing) {
-            ForEach(Array(allMetaBars.enumerated()), id: \.offset) { offset, currentMetaBar in
-                AnyView(currentMetaBar.body).tag(offset)
+        public var lineHeightMax: CGFloat { 17 }
+
+        public var body: some View {
+            VStack(alignment: .leading, spacing: spacing) {
+                ForEach(Array(allMetaBars.enumerated()), id: \.offset) { offset, currentMetaBar in
+                    AnyView(currentMetaBar.body).tag(offset)
+                }
             }
         }
-    }
 
-    // MARK: Private
+        // MARK: Private
 
-    private let dailyNote: any DailyNoteProtocol
-    private let viewConfig: WidgetViewConfig
-    private let spacing: CGFloat
+        private let dailyNote: any DailyNoteProtocol
+        private let viewConfig: WidgetViewConfig
+        private let spacing: CGFloat
 
-    private var allMetaBars: [any MetaBar] {
-        dailyNote.getMetaBlockContents(config: viewConfig)
+        private var allMetaBars: [any MetaBar] {
+            dailyNote.getMetaBlockContents(config: viewConfig)
+        }
     }
 }
 
-#if DEBUG
+#if DEBUG && !os(watchOS)
 
 #Preview {
     let viewConfig = WidgetViewConfig()
     NavigationStack {
         Form {
-            MetaBlockView4Desktop(
+            DesktopWidgets.MetaBlockView4Desktop(
                 dailyNote: Pizza.SupportedGame.genshinImpact.exampleDailyNoteData,
                 viewConfig: viewConfig,
                 spacing: 0
             )
-            MetaBlockView4Desktop(
+            DesktopWidgets.MetaBlockView4Desktop(
                 dailyNote: Pizza.SupportedGame.starRail.exampleDailyNoteData,
                 viewConfig: viewConfig,
                 spacing: 0
             )
-            MetaBlockView4Desktop(
+            DesktopWidgets.MetaBlockView4Desktop(
                 dailyNote: Pizza.SupportedGame.zenlessZone.exampleDailyNoteData,
                 viewConfig: viewConfig,
                 spacing: 0

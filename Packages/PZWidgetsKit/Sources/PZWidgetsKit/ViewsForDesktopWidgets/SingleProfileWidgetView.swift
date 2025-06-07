@@ -33,7 +33,7 @@ extension DesktopWidgets {
                     WidgetErrorView(
                         error: error,
                         message: viewConfig.noticeMessage ?? "",
-                        refreshIntent: RefreshIntent(
+                        refreshIntent: WidgetRefreshIntent(
                             dailyNoteUIDWithGame: entry.profile?.uidWithGame
                         )
                     )

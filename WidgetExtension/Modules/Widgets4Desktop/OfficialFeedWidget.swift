@@ -20,8 +20,7 @@ struct OfficialFeedWidget: Widget {
         ) { entry in
             DesktopWidgets.OfficialFeedWidgetView(
                 entry: entry,
-                showLeadingBorder: true,
-                refreshIntent: WidgetRefreshIntent()
+                showLeadingBorder: true
             )
         }
         .configurationDisplayName("pzWidgetsKit.officialFeed.title".i18nWidgets)

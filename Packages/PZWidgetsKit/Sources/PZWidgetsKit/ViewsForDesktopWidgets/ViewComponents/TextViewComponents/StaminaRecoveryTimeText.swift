@@ -8,54 +8,54 @@ import PZBaseKit
 import SwiftUI
 import WidgetKit
 
-// MARK: - RecoveryTimeText
-
 @available(watchOS, unavailable)
-public struct StaminaRecoveryTimeText: View {
-    // MARK: Lifecycle
+extension DesktopWidgets {
+    public struct StaminaRecoveryTimeText: View {
+        // MARK: Lifecycle
 
-    public init(data: any DailyNoteProtocol, tiny: Bool = false) {
-        self.data = data
-        self.tiny = tiny
-    }
-
-    // MARK: Public
-
-    public var body: some View {
-        Group {
-            let textData = makeContentText()
-            switch textData.isFull {
-            case true: textData.text.lineLimit(2).lineSpacing(1)
-            case false: textData.text.multilineTextAlignment(.leading)
-            }
+        public init(data: any DailyNoteProtocol, tiny: Bool = false) {
+            self.data = data
+            self.tiny = tiny
         }
-        .font(.caption2)
-        .allowsTightening(true)
-        .minimumScaleFactor(0.2)
-        .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
-        .legibilityShadow()
-    }
 
-    // MARK: Private
+        // MARK: Public
 
-    private let data: any DailyNoteProtocol
-    private let tiny: Bool
+        public var body: some View {
+            Group {
+                let textData = makeContentText()
+                switch textData.isFull {
+                case true: textData.text.lineLimit(2).lineSpacing(1)
+                case false: textData.text.multilineTextAlignment(.leading)
+                }
+            }
+            .font(.caption2)
+            .allowsTightening(true)
+            .minimumScaleFactor(0.2)
+            .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+            .legibilityShadow()
+        }
 
-    private func makeContentText() -> (text: Text, isFull: Bool) {
-        let key: String
-            .LocalizationValue = tiny ? "pzWidgetsKit.infoBlock.staminaFullyFilledDescription.tiny" :
-            "pzWidgetsKit.infoBlock.staminaFullyFilledDescription"
-        let textFull = Text(.init(localized: key, bundle: .module))
-        let staminaIntel = data.staminaIntel
-        let fullTimeOnFinish = data.staminaFullTimeOnFinish
-        if staminaIntel.finished < staminaIntel.all {
-            let compoundedText = """
-            \(PZWidgetsSPM.dateFormatter.string(from: fullTimeOnFinish))
-            \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: fullTimeOnFinish))!)
-            """
-            return (Text(compoundedText), false)
-        } else {
-            return (textFull, true)
+        // MARK: Private
+
+        private let data: any DailyNoteProtocol
+        private let tiny: Bool
+
+        private func makeContentText() -> (text: Text, isFull: Bool) {
+            let key: String
+                .LocalizationValue = tiny ? "pzWidgetsKit.infoBlock.staminaFullyFilledDescription.tiny" :
+                "pzWidgetsKit.infoBlock.staminaFullyFilledDescription"
+            let textFull = Text(.init(localized: key, bundle: .module))
+            let staminaIntel = data.staminaIntel
+            let fullTimeOnFinish = data.staminaFullTimeOnFinish
+            if staminaIntel.finished < staminaIntel.all {
+                let compoundedText = """
+                \(PZWidgetsSPM.dateFormatter.string(from: fullTimeOnFinish))
+                \(PZWidgetsSPM.intervalFormatter.string(from: TimeInterval.sinceNow(to: fullTimeOnFinish))!)
+                """
+                return (Text(compoundedText), false)
+            } else {
+                return (textFull, true)
+            }
         }
     }
 }
