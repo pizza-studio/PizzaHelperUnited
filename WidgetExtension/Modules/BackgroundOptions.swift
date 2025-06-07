@@ -63,6 +63,27 @@ enum BackgroundOptions {
 }
 
 @available(watchOS, unavailable)
+extension WidgetBackgroundEntityRAW {
+    public var asAppEntity: WidgetBackgroundAppEntity {
+        .init(id: id, displayString: displayString)
+    }
+}
+
+@available(watchOS, unavailable)
+extension WidgetBackgroundAppEntity {
+    public var asRawEntity: WidgetBackgroundEntityRAW {
+        .init(id: id, displayString: displayString)
+    }
+}
+
+@available(watchOS, unavailable)
+extension Array where Element == WidgetBackgroundAppEntity {
+    public var asRawEntitySet: Set<WidgetBackgroundEntityRAW> {
+        Set(map(\.asRawEntity))
+    }
+}
+
+@available(watchOS, unavailable)
 extension WidgetBackgroundAppEntity {
     var userSuppliedWallpaper: UserWallpaper? {
         let uuid = UUID(uuidString: id)
