@@ -103,3 +103,34 @@ public struct ProfileWidgetEntry: TimelineEntry, Sendable {
         )
     }
 }
+
+// MARK: Hashable, Identifiable
+
+extension ProfileWidgetEntry: Hashable, Identifiable {
+    public static func == (lhs: ProfileWidgetEntry, rhs: ProfileWidgetEntry) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+
+    public var id: Int { hashValue }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(date)
+        hasher.combine(timestampOnCreation)
+        hasher.combine(viewConfig)
+        hasher.combine(profileSlot1)
+        hasher.combine(profileSlot2)
+        hasher.combine(events)
+        switch resultSlot1 {
+        case let .success(note):
+            hasher.combine(note)
+        case let .failure(error):
+            hasher.combine("\(error)")
+        }
+        switch resultSlot2 {
+        case let .success(note):
+            hasher.combine(note)
+        case let .failure(error):
+            hasher.combine("\(error)")
+        }
+    }
+}
