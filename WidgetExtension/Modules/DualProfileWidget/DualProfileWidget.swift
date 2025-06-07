@@ -41,7 +41,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
 
     var resultSlot1: Result<any DailyNoteProtocol, any Error> { entry.resultSlot1 }
     var resultSlot2: Result<any DailyNoteProtocol, any Error> { entry.resultSlot2 }
-    var viewConfig: Config4DesktopProfileWidgets { entry.viewConfig }
+    var viewConfig: WidgetViewConfig { entry.viewConfig }
 
     var subEntry1: MainWidgetProvider.Entry {
         .init(
@@ -230,7 +230,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
 extension View {
     @ViewBuilder
     fileprivate func myContainerBackground(
-        viewConfig: Config4DesktopProfileWidgets?
+        viewConfig: WidgetViewConfig?
     )
         -> some View {
         if let viewConfig {
@@ -242,7 +242,7 @@ extension View {
 
     @ViewBuilder
     fileprivate func containerBackgroundStandbyDetector(
-        viewConfig: Config4DesktopProfileWidgets
+        viewConfig: WidgetViewConfig
     )
         -> some View {
         modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
@@ -253,7 +253,7 @@ extension View {
 
 @available(watchOS, unavailable)
 private struct ContainerBackgroundModifier: ViewModifier {
-    var viewConfig: Config4DesktopProfileWidgets
+    var viewConfig: WidgetViewConfig
 
     func body(content: Content) -> some View {
         content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
@@ -267,7 +267,7 @@ private struct ContainerBackgroundStandbyDetector: ViewModifier {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode
     @Environment(\.widgetContentMargins) var widgetContentMargins: EdgeInsets
 
-    var viewConfig: Config4DesktopProfileWidgets
+    var viewConfig: WidgetViewConfig
 
     func body(content: Content) -> some View {
         if widgetContentMargins.top < 5 {

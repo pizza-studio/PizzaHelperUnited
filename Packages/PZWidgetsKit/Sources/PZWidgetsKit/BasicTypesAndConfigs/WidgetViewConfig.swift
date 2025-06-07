@@ -7,10 +7,10 @@ import Foundation
 import PZBaseKit
 import WallpaperKit
 
-// MARK: - Config4DesktopProfileWidgets
+// MARK: - WidgetViewConfig
 
 @available(watchOS, unavailable)
-public struct Config4DesktopProfileWidgets: AbleToCodeSendHash {
+public struct WidgetViewConfig: AbleToCodeSendHash {
     // MARK: Lifecycle
 
     public init(noticeMessage: String? = nil) {

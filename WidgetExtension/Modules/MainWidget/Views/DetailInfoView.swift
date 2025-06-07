@@ -18,7 +18,7 @@ struct DetailInfo: View {
     init(
         entry: any TimelineEntry,
         dailyNote: any DailyNoteProtocol,
-        viewConfig: Config4DesktopProfileWidgets,
+        viewConfig: WidgetViewConfig,
         spacing: CGFloat = 13
     ) {
         self.entry = entry
@@ -31,7 +31,7 @@ struct DetailInfo: View {
 
     let entry: any TimelineEntry
     let dailyNote: any DailyNoteProtocol
-    let viewConfig: Config4DesktopProfileWidgets
+    let viewConfig: WidgetViewConfig
     let spacing: CGFloat
 
     var lineHeightMax: CGFloat { 17 }

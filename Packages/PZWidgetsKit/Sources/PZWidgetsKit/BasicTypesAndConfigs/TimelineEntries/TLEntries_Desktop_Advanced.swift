@@ -18,7 +18,7 @@ public struct DualProfileWidgetEntry: TimelineEntry, Sendable {
         date: Date,
         resultSlot1: Result<any DailyNoteProtocol, any Error>,
         resultSlot2: Result<any DailyNoteProtocol, any Error>,
-        viewConfig: Config4DesktopProfileWidgets,
+        viewConfig: WidgetViewConfig,
         profileSlot1: PZProfileSendable?,
         profileSlot2: PZProfileSendable?,
         pilotAssetMap: [URL: SendableImagePtr]? = nil,
@@ -40,7 +40,7 @@ public struct DualProfileWidgetEntry: TimelineEntry, Sendable {
     public let timestampOnCreation: Date = .now
     public let resultSlot1: Result<any DailyNoteProtocol, any Error>
     public let resultSlot2: Result<any DailyNoteProtocol, any Error>
-    public let viewConfig: Config4DesktopProfileWidgets
+    public let viewConfig: WidgetViewConfig
     public let profileSlot1: PZProfileSendable?
     public let profileSlot2: PZProfileSendable?
     public let events: [OfficialFeed.FeedEvent]
@@ -73,7 +73,7 @@ public struct SingleProfileWidgetEntry: TimelineEntry, Sendable {
     public init(
         date: Date,
         result: Result<any DailyNoteProtocol, any Error>,
-        viewConfig: Config4DesktopProfileWidgets,
+        viewConfig: WidgetViewConfig,
         profile: PZProfileSendable?,
         pilotAssetMap: [URL: SendableImagePtr]? = nil,
         events: [OfficialFeed.FeedEvent]
@@ -91,7 +91,7 @@ public struct SingleProfileWidgetEntry: TimelineEntry, Sendable {
     public let date: Date
     public let timestampOnCreation: Date = .now
     public let result: Result<any DailyNoteProtocol, any Error>
-    public let viewConfig: Config4DesktopProfileWidgets
+    public let viewConfig: WidgetViewConfig
     public let profile: PZProfileSendable?
     public let events: [OfficialFeed.FeedEvent]
     public let pilotAssetMap: [URL: SendableImagePtr]
