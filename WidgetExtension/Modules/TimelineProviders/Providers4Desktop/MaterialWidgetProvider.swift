@@ -12,33 +12,6 @@ import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
-@available(watchOS, unavailable)
-typealias MaterialWeekday = GITodayMaterial.AvailableWeekDay
-
-// MARK: - MaterialWidgetEntry
-
-@available(watchOS, unavailable)
-struct MaterialWidgetEntry: TimelineEntry {
-    // MARK: Lifecycle
-
-    init(events: [OfficialFeed.FeedEvent]?) {
-        self.date = Date()
-        self.materialWeekday = .today()
-        let supplier = GITodayMaterial.Supplier(weekday: materialWeekday)
-        self.talentMaterials = supplier.talentMaterials
-        self.weaponMaterials = supplier.weaponMaterials
-        self.events = events
-    }
-
-    // MARK: Internal
-
-    let date: Date
-    let materialWeekday: MaterialWeekday?
-    let talentMaterials: [GITodayMaterial]
-    let weaponMaterials: [GITodayMaterial]
-    let events: [OfficialFeed.FeedEvent]?
-}
-
 // MARK: - MaterialWidgetProvider
 
 @available(watchOS, unavailable)
