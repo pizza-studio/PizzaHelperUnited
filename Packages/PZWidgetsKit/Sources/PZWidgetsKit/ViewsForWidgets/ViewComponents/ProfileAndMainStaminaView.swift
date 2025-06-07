@@ -126,7 +126,7 @@ public struct ProfileAndMainStaminaView<RefreshIntent: AppIntent>: View {
                 StaminaRecoveryTimeText(data: dailyNote)
                     .lineLimit(2).lineSpacing(1)
                     .minimumScaleFactor(0.5)
-                    .font(.caption2)
+                    .fontWidth(.condensed)
             }
         }
         .padding(.leading, 5)
