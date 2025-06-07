@@ -17,7 +17,7 @@ struct WidgetMainView: View {
     let accountName: String?
 
     var body: some View {
-        let profileName = viewConfig.showAccountName ? accountName : nil
+        let profileName = accountName
         Group {
             switch family {
             case .systemSmall:
