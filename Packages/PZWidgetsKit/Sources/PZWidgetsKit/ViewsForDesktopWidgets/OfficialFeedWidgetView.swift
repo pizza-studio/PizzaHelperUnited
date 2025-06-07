@@ -28,6 +28,7 @@ extension DesktopWidgets {
                 events: entry.events,
                 showLeadingBorder: showLeadingBorder
             )
+            .padding()
             .environment(\.colorScheme, .dark)
             .pzWidgetContainerBackground(viewConfig: viewConfig)
         }
