@@ -158,7 +158,7 @@ extension ExpeditionsView {
                         pilotImage
                             .resizable()
                     } else {
-                        Image("NetworkImagePlaceholder", bundle: .main)
+                        Image("NetworkImagePlaceholder", bundle: .module)
                             .resizable()
                     }
                 }
