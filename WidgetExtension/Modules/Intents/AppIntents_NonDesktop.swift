@@ -26,7 +26,7 @@ public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, Cus
 
     public static var parameterSummary: some ParameterSummary { Summary() }
 
-    @Parameter(title: "intent.field.localeProfile") public var account: AccountIntentAppEntity?
+    @Parameter(title: "intent.field.localProfile") public var account: AccountIntentAppEntity?
 
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
@@ -53,7 +53,7 @@ public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfiguratio
 
     public static var parameterSummary: some ParameterSummary { Summary() }
 
-    @Parameter(title: "intent.field.localeProfile") public var account: AccountIntentAppEntity?
+    @Parameter(title: "intent.field.localProfile") public var account: AccountIntentAppEntity?
 
     @Parameter(title: "intent.field.echoOfWarDisplayMethod", default: true) public var showEchoOfWar: Bool
 

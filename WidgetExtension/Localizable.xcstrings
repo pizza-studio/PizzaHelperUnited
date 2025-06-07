@@ -543,7 +543,7 @@
         }
       }
     },
-    "appEntity.localeProfile" : {
+    "appEntity.localProfile" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3441,7 +3441,7 @@
         }
       }
     },
-    "intent.field.localeProfile" : {
+    "intent.field.localProfile" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3517,7 +3517,7 @@
         }
       }
     },
-    "intent.field.localeProfile.slot1" : {
+    "intent.field.localProfile.slot1" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3593,7 +3593,7 @@
         }
       }
     },
-    "intent.field.localeProfile.slot2" : {
+    "intent.field.localProfile.slot2" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {

@@ -8,6 +8,7 @@ import GITodayMaterialsKit
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -20,7 +21,7 @@ typealias MaterialWeekday = GITodayMaterial.AvailableWeekDay
 struct MaterialWidgetEntry: TimelineEntry {
     // MARK: Lifecycle
 
-    init(events: [EventModel]?) {
+    init(events: [OfficialFeed.FeedEvent]?) {
         self.date = Date()
         self.materialWeekday = .today()
         let supplier = GITodayMaterial.Supplier(weekday: materialWeekday)
@@ -35,7 +36,7 @@ struct MaterialWidgetEntry: TimelineEntry {
     let materialWeekday: MaterialWeekday?
     let talentMaterials: [GITodayMaterial]
     let weaponMaterials: [GITodayMaterial]
-    let events: [EventModel]?
+    let events: [OfficialFeed.FeedEvent]?
 }
 
 // MARK: - MaterialWidgetProvider
