@@ -12,22 +12,17 @@ import PZWidgetsKit
 public enum PZWidgets {}
 
 extension PZWidgets {
-    static var dateFormatter: DateFormatter {
-        PZWidgetsSPM.dateFormatter
-    }
-
-    static var intervalFormatter: DateComponentsFormatter {
-        PZWidgetsSPM.intervalFormatter
-    }
-
     @MainActor
     public static func attemptToAutoInheritOldAccountsIntoProfiles() {
         PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
     }
 
-    public static func getAllProfiles() -> [PZProfileSendable] {
+    public static func getAllProfiles(sortByGame: Bool = false) -> [PZProfileSendable] {
         Defaults[.pzProfiles].values.sorted {
-            $0.priority < $1.priority
+            if sortByGame {
+                return $0.game.caseIndex < $1.game.caseIndex && $0.priority < $1.priority
+            }
+            return $0.priority < $1.priority
         }
     }
 }
