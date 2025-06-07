@@ -10,15 +10,17 @@ import SwiftUI
 import WidgetKit
 
 @available(macOS, unavailable)
-struct AlternativeLockScreenHomeCoinWidgetCircular: View {
-    let entry: any TimelineEntry
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct AlternativeLockScreenHomeCoinWidgetCircular: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+        self.entry = entry
+        self.result = result
+    }
 
-    var homeCoinMonochromeIconAssetName: String { "icon.homeCoin" }
+    // MARK: Public
 
-    var body: some View {
+    public var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
             switch result {
@@ -125,4 +127,13 @@ struct AlternativeLockScreenHomeCoinWidgetCircular: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let entry: any TimelineEntry
+    private let result: Result<any DailyNoteProtocol, any Error>
+
+    private var homeCoinMonochromeIconAssetName: String { "icon.homeCoin" }
 }

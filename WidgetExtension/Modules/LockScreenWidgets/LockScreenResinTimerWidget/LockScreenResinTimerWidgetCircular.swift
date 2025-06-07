@@ -11,13 +11,19 @@ import SwiftUI
 import WidgetKit
 
 @available(macOS, unavailable)
-struct LockScreenResinTimerWidgetCircular: View {
-    let entry: any TimelineEntry
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct LockScreenResinTimerWidgetCircular: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+        self.entry = entry
+        self.result = result
+    }
 
-    var body: some View {
+    // MARK: Public
+
+    public let entry: any TimelineEntry
+
+    public var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
             ZStack {
@@ -152,4 +158,10 @@ struct LockScreenResinTimerWidgetCircular: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let result: Result<any DailyNoteProtocol, any Error>
 }

@@ -8,14 +8,16 @@ import SFSafeSymbols
 import SwiftUI
 
 @available(macOS, unavailable)
-struct LockScreenExpeditionWidgetCircular: View {
-    // MARK: Internal
+public struct LockScreenExpeditionWidgetCircular: View {
+    // MARK: Lifecycle
 
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    public init(result: Result<any DailyNoteProtocol, any Error>) {
+        self.result = result
+    }
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    // MARK: Public
 
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 0) {
             switch result {
             case let .success(data):
@@ -38,6 +40,10 @@ struct LockScreenExpeditionWidgetCircular: View {
     }
 
     // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let result: Result<any DailyNoteProtocol, any Error>
 
     @MainActor
     private func drawExpeditionCompletionStatus(for data: any DailyNoteProtocol) -> Text? {

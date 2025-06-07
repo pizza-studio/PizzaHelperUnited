@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -32,15 +33,18 @@ struct AlternativeWatchCornerResinWidget: Widget {
 // MARK: - AlternativeWatchCornerResinWidgetView
 
 @available(macOS, unavailable)
-struct AlternativeWatchCornerResinWidgetView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
+public struct AlternativeWatchCornerResinWidgetView: View {
+    // MARK: Lifecycle
 
-    let entry: LockScreenWidgetProvider.Entry
+    public init(entry: ProfileWidgetEntry) {
+        self.entry = entry
+    }
 
-    var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.profile?.name }
+    // MARK: Public
 
-    var body: some View {
+    public let entry: ProfileWidgetEntry
+
+    public var body: some View {
         switch result {
         case let .success(data):
             resinView(data: data)
@@ -49,8 +53,15 @@ struct AlternativeWatchCornerResinWidgetView: View {
         }
     }
 
+    // MARK: Private
+
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+
+    private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
+    private var accountName: String? { entry.profile?.name }
+
     @ViewBuilder
-    func resinView(data: any DailyNoteProtocol) -> some View {
+    private func resinView(data: any DailyNoteProtocol) -> some View {
         switch data {
         case let data as any Note4GI:
             Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
@@ -117,7 +128,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
     }
 
     @ViewBuilder
-    func failureView() -> some View {
+    private func failureView() -> some View {
         Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
             .resizable()
             .scaledToFit()

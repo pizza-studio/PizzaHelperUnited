@@ -7,12 +7,16 @@ import PZBaseKit
 import SwiftUI
 
 @available(macOS, unavailable)
-struct LockScreenDailyTaskWidgetCorner: View {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct LockScreenDailyTaskWidgetCorner: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(result: Result<any DailyNoteProtocol, any Error>) {
+        self.result = result
+    }
 
-    var body: some View {
+    // MARK: Public
+
+    public var body: some View {
         switch result {
         case let .success(data):
             Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
@@ -45,4 +49,10 @@ struct LockScreenDailyTaskWidgetCorner: View {
                 .widgetLabel("pzWidgetsKit.dailyTask".i18nWidgets)
         }
     }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let result: Result<any DailyNoteProtocol, any Error>
 }

@@ -36,40 +36,18 @@ struct LockScreenAllInfoWidget: Widget {
 // MARK: - LockScreenAllInfoWidgetView
 
 @available(macOS, unavailable)
-struct LockScreenAllInfoWidgetView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct LockScreenAllInfoWidgetView: View {
+    // MARK: Lifecycle
 
-    let entry: LockScreenWidgetProvider.Entry
-
-    var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.profile?.name }
-
-    var url: URL? {
-        let errorURL: URL = {
-            var components = URLComponents()
-            components.scheme = "ophelperwidget"
-            components.host = "accountSetting"
-            components.queryItems = [
-                .init(
-                    name: "accountUUIDString",
-                    value: entry.profile?.uuid.uuidString
-                ),
-            ]
-            return components.url!
-        }()
-
-        switch result {
-        case .success:
-            return nil
-        case .failure:
-            return errorURL
-        }
+    public init(entry: ProfileWidgetEntry) {
+        self.entry = entry
     }
 
-    var isFullColor: Bool { widgetRenderingMode == .fullColor }
+    // MARK: Public
 
-    var body: some View {
+    public let entry: ProfileWidgetEntry
+
+    public var body: some View {
         Group {
             switch result {
             case let .success(data):
@@ -99,6 +77,38 @@ struct LockScreenAllInfoWidgetView: View {
         }
         .widgetURL(url)
     }
+
+    // MARK: Private
+
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
+    private var accountName: String? { entry.profile?.name }
+
+    private var url: URL? {
+        let errorURL: URL = {
+            var components = URLComponents()
+            components.scheme = "ophelperwidget"
+            components.host = "accountSetting"
+            components.queryItems = [
+                .init(
+                    name: "accountUUIDString",
+                    value: entry.profile?.uuid.uuidString
+                ),
+            ]
+            return components.url!
+        }()
+
+        switch result {
+        case .success:
+            return nil
+        case .failure:
+            return errorURL
+        }
+    }
+
+    private var isFullColor: Bool { widgetRenderingMode == .fullColor }
 }
 
 extension LockScreenAllInfoWidgetView {

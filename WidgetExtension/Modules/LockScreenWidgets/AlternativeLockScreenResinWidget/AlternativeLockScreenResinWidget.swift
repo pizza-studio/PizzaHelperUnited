@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -31,15 +32,30 @@ struct AlternativeLockScreenResinWidget: Widget {
 // MARK: - AlternativeLockScreenResinWidgetView
 
 @available(macOS, unavailable)
-struct AlternativeLockScreenResinWidgetView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
+public struct AlternativeLockScreenResinWidgetView: View {
+    // MARK: Lifecycle
 
-    let entry: LockScreenWidgetProvider.Entry
+    public init(entry: ProfileWidgetEntry) {
+        self.entry = entry
+    }
 
-    var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.profile?.name }
+    // MARK: Public
 
-    var url: URL? {
+    public let entry: ProfileWidgetEntry
+
+    public var body: some View {
+        AlternativeLockScreenResinWidgetCircular(entry: entry, result: result)
+            .widgetURL(url)
+    }
+
+    // MARK: Private
+
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+
+    private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
+    private var accountName: String? { entry.profile?.name }
+
+    private var url: URL? {
         let errorURL: URL = {
             var components = URLComponents()
             components.scheme = "ophelperwidget"
@@ -59,10 +75,5 @@ struct AlternativeLockScreenResinWidgetView: View {
         case .failure:
             return errorURL
         }
-    }
-
-    var body: some View {
-        AlternativeLockScreenResinWidgetCircular(entry: entry, result: result)
-            .widgetURL(url)
     }
 }

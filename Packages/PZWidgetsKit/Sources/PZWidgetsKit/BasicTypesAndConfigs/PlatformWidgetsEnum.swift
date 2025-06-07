@@ -6,3 +6,8 @@
 
 @available(watchOS, unavailable)
 public enum DesktopWidgets {}
+
+// MARK: - EmbeddedWidgets
+
+@available(macOS, unavailable)
+public enum EmbeddedWidgets {}

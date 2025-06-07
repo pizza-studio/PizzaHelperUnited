@@ -10,13 +10,17 @@ import SwiftUI
 import WidgetKit
 
 @available(macOS, unavailable)
-struct AlternativeLockScreenResinWidgetCircular: View {
-    let entry: any TimelineEntry
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct AlternativeLockScreenResinWidgetCircular: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+        self.entry = entry
+        self.result = result
+    }
 
-    var body: some View {
+    // MARK: Public
+
+    public var body: some View {
         VStack(spacing: 0) {
             let game = (Pizza.SupportedGame(dailyNoteResult: result) ?? .genshinImpact)
             let img = game.primaryStaminaAssetSVG
@@ -55,4 +59,11 @@ struct AlternativeLockScreenResinWidgetCircular: View {
             .padding(.vertical, 2)
         #endif
     }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let entry: any TimelineEntry
+    private let result: Result<any DailyNoteProtocol, any Error>
 }

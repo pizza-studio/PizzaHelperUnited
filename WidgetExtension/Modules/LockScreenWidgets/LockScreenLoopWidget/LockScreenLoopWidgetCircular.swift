@@ -11,14 +11,24 @@ import WidgetKit
 // MARK: - LockScreenLoopWidgetCircular
 
 @available(macOS, unavailable)
-struct LockScreenLoopWidgetCircular: View {
-    let entry: any TimelineEntry
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
-    let result: Result<any DailyNoteProtocol, any Error>
+public struct LockScreenLoopWidgetCircular: View {
+    // MARK: Lifecycle
 
-    let resinStyle: PZWidgetsSPM.StaminaContentRevolverStyle
+    public init(
+        entry: any TimelineEntry,
+        result: Result<any DailyNoteProtocol, any Error>,
+        resinStyle: PZWidgetsSPM.StaminaContentRevolverStyle
+    ) {
+        self.entry = entry
+        self.result = result
+        self.resinStyle = resinStyle
+    }
 
-    var body: some View {
+    // MARK: Public
+
+    public let entry: any TimelineEntry
+
+    public var body: some View {
         switch LockScreenLoopWidgetType.autoChoose(entry: entry, result: result) {
         case .resin:
             switch resinStyle {
@@ -39,4 +49,11 @@ struct LockScreenLoopWidgetCircular: View {
             LockScreenHomeCoinWidgetCircular(entry: entry, result: result)
         }
     }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let result: Result<any DailyNoteProtocol, any Error>
+    private let resinStyle: PZWidgetsSPM.StaminaContentRevolverStyle
 }

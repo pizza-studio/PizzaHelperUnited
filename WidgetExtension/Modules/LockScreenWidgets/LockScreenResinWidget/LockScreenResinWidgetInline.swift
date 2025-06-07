@@ -11,11 +11,17 @@ import WidgetKit
 // MARK: - LockScreenResinWidgetInline
 
 @available(macOS, unavailable)
-struct LockScreenResinWidgetInline: View {
-    let entry: any TimelineEntry
-    let result: Result<any DailyNoteProtocol, any Error>
+public struct LockScreenResinWidgetInline: View {
+    // MARK: Lifecycle
 
-    var body: some View {
+    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+        self.entry = entry
+        self.result = result
+    }
+
+    // MARK: Public
+
+    public var body: some View {
         switch result {
         case let .success(data):
             let staminaStatus = data.staminaIntel
@@ -43,4 +49,9 @@ struct LockScreenResinWidgetInline: View {
             Text(verbatim: "…")
         }
     }
+
+    // MARK: Private
+
+    private let entry: any TimelineEntry
+    private let result: Result<any DailyNoteProtocol, any Error>
 }

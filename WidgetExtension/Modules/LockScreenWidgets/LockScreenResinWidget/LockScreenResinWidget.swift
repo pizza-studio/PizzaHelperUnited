@@ -6,6 +6,7 @@ import Foundation
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -46,15 +47,45 @@ struct LockScreenResinWidget: Widget {
 // MARK: - LockScreenResinWidgetView
 
 @available(macOS, unavailable)
-struct LockScreenResinWidgetView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
+public struct LockScreenResinWidgetView: View {
+    // MARK: Lifecycle
 
-    let entry: LockScreenWidgetProvider.Entry
+    public init(entry: ProfileWidgetEntry) {
+        self.entry = entry
+    }
 
-    var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.profile?.name }
+    // MARK: Public
 
-    var url: URL? {
+    public let entry: ProfileWidgetEntry
+
+    public var body: some View {
+        Group {
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenResinWidgetCorner(entry: entry, result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenResinWidgetCircular(entry: entry, result: result)
+            case .accessoryRectangular:
+                LockScreenResinWidgetRectangular(entry: entry, result: result)
+            case .accessoryInline:
+                LockScreenResinWidgetInline(entry: entry, result: result)
+            default:
+                EmptyView()
+            }
+        }
+        .widgetURL(url)
+    }
+
+    // MARK: Private
+
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+
+    private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
+    private var accountName: String? { entry.profile?.name }
+
+    private var url: URL? {
         let errorURL: URL = {
             var components = URLComponents()
             components.scheme = "ophelperwidget"
@@ -74,25 +105,5 @@ struct LockScreenResinWidgetView: View {
         case .failure:
             return errorURL
         }
-    }
-
-    var body: some View {
-        Group {
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenResinWidgetCorner(entry: entry, result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenResinWidgetCircular(entry: entry, result: result)
-            case .accessoryRectangular:
-                LockScreenResinWidgetRectangular(entry: entry, result: result)
-            case .accessoryInline:
-                LockScreenResinWidgetInline(entry: entry, result: result)
-            default:
-                EmptyView()
-            }
-        }
-        .widgetURL(url)
     }
 }
