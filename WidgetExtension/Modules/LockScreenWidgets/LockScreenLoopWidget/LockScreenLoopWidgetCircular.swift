@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -15,7 +16,7 @@ struct LockScreenLoopWidgetCircular: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
     let result: Result<any DailyNoteProtocol, any Error>
 
-    let resinStyle: StaminaContentRevolverStyleAppEnum
+    let resinStyle: PZWidgetsSPM.StaminaContentRevolverStyle
 
     var body: some View {
         switch LockScreenLoopWidgetType.autoChoose(entry: entry, result: result) {
