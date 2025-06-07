@@ -14,13 +14,11 @@ extension DesktopWidgets {
 
         public init(
             entry: OfficialFeedWidgetEntry,
-            showLeadingBorder: Bool = true,
-            refreshIntent: RefreshIntent?
+            showLeadingBorder: Bool = true
         ) {
             self.entry = entry
             self.games = entry.games
             self.showLeadingBorder = showLeadingBorder
-            self.refreshIntent = refreshIntent
         }
 
         // MARK: Public
@@ -28,8 +26,7 @@ extension DesktopWidgets {
         public var body: some View {
             OfficialFeedList4WidgetsView(
                 events: entry.events,
-                showLeadingBorder: showLeadingBorder,
-                refreshIntent: refreshIntent
+                showLeadingBorder: showLeadingBorder
             )
             .environment(\.colorScheme, .dark)
             .pzWidgetContainerBackground(viewConfig: viewConfig)
@@ -40,7 +37,6 @@ extension DesktopWidgets {
         private let entry: OfficialFeedWidgetEntry
         private let games: Set<Pizza.SupportedGame>
         private let showLeadingBorder: Bool
-        private let refreshIntent: RefreshIntent?
 
         private var viewConfig: WidgetViewConfig {
             var result = WidgetViewConfig()

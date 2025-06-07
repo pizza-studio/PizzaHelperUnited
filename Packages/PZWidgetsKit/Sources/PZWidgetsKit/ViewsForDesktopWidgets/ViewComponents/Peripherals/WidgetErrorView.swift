@@ -12,7 +12,7 @@ extension DesktopWidgets {
     public struct WidgetErrorView: View {
         // MARK: Lifecycle
 
-        public init(error: any Error, message: String, refreshIntent: RefreshIntent? = nil) {
+        public init(error: any Error, message: String, refreshIntent: WidgetRefreshIntent? = nil) {
             self.error = error
             self.message = message
             self.refreshIntent = refreshIntent
@@ -50,6 +50,6 @@ extension DesktopWidgets {
 
         private let error: any Error
         private let message: String
-        private let refreshIntent: RefreshIntent?
+        private let refreshIntent: WidgetRefreshIntent?
     }
 }

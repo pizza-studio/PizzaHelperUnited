@@ -20,8 +20,7 @@ struct MaterialWidget: Widget {
             provider: MaterialWidgetProvider()
         ) { entry in
             DesktopWidgets.MaterialWidgetView(
-                entry: entry,
-                refreshIntent: WidgetRefreshIntent()
+                entry: entry
             )
         }
         .configurationDisplayName("pzWidgetsKit.material.title".i18nWidgets)

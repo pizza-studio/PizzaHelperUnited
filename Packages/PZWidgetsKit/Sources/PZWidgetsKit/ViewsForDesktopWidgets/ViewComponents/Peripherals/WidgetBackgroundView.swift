@@ -7,7 +7,14 @@ import WallpaperKit
 import WidgetKit
 
 @available(watchOS, unavailable)
-public struct WidgetBackgroundView: View {
+extension DesktopWidgets {
+    public typealias WidgetBackgroundView = WidgetBackgroundView4DesktopWidgets
+}
+
+// MARK: - WidgetBackgroundView4DesktopWidgets
+
+@available(watchOS, unavailable)
+public struct WidgetBackgroundView4DesktopWidgets: View {
     // MARK: Lifecycle
 
     public init(
@@ -111,6 +118,88 @@ public struct WidgetBackgroundView: View {
                             "[PZHelper] Successfully initialized UIImage: " + backgroundImageName
                         )
                     }
+            }
+        }
+    }
+}
+
+// MARK: - ContainerBackgroundModifier
+
+extension View {
+    @available(watchOS, unavailable)
+    @ViewBuilder
+    public func pzWidgetContainerBackground(
+        viewConfig: WidgetViewConfig?
+    )
+        -> some View {
+        if let viewConfig {
+            modifier(ContainerBackgroundModifier(viewConfig: viewConfig))
+        } else {
+            self
+        }
+    }
+
+    @available(watchOS, unavailable)
+    @ViewBuilder
+    public func containerBackgroundStandbyDetector(
+        viewConfig: WidgetViewConfig
+    )
+        -> some View {
+        modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
+    }
+
+    @ViewBuilder
+    public func smartStackWidgetContainerBackground(@ViewBuilder _ background: @escaping () -> some View) -> some View {
+        modifier(SmartStackWidgetContainerBackground(background: background))
+    }
+}
+
+// MARK: - SmartStackWidgetContainerBackground
+
+private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
+    let background: () -> B
+
+    func body(content: Content) -> some View {
+        content.containerBackground(for: .widget) {
+            background()
+        }
+    }
+}
+
+// MARK: - ContainerBackgroundModifier
+
+@available(watchOS, unavailable)
+private struct ContainerBackgroundModifier: ViewModifier {
+    var viewConfig: WidgetViewConfig
+
+    func body(content: Content) -> some View {
+        content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
+    }
+}
+
+// MARK: - ContainerBackgroundStandbyDetector
+
+@available(watchOS, unavailable)
+private struct ContainerBackgroundStandbyDetector: ViewModifier {
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode
+    @Environment(\.widgetContentMargins) var widgetContentMargins: EdgeInsets
+
+    var viewConfig: WidgetViewConfig
+
+    func body(content: Content) -> some View {
+        if widgetContentMargins.top < 5 {
+            content.containerBackground(for: .widget) {
+                WidgetBackgroundView4DesktopWidgets(
+                    background: viewConfig.background,
+                    darkModeOn: viewConfig.isDarkModeRespected
+                )
+            }
+        } else {
+            content.padding(-15).containerBackground(for: .widget) {
+                WidgetBackgroundView4DesktopWidgets(
+                    background: viewConfig.background,
+                    darkModeOn: viewConfig.isDarkModeRespected
+                )
             }
         }
     }

@@ -20,7 +20,7 @@ struct DualProfileWidget: Widget {
             intent: SelectDualProfileIntent.self,
             provider: DualProfileWidgetProvider()
         ) { entry in
-            DesktopWidgets<WidgetRefreshIntent>
+            DesktopWidgets
                 .DualProfileWidgetView(entry: entry)
         }
         .configurationDisplayName("pzWidgetsKit.statusDualProfile.title".i18nWidgets)

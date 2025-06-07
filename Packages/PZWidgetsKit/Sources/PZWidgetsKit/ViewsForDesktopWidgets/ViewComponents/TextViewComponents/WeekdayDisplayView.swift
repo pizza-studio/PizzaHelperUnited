@@ -5,42 +5,44 @@
 import SwiftUI
 
 @available(watchOS, unavailable)
-public struct WeekdayDisplayView: View {
-    // MARK: Lifecycle
+extension DesktopWidgets {
+    public struct WeekdayDisplayView: View {
+        // MARK: Lifecycle
 
-    public init() {}
+        public init() {}
 
-    // MARK: Public
+        // MARK: Public
 
-    public var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 1) {
-            Text(dayOfMonth)
-                .font(.system(
-                    size: 35,
-                    weight: .regular,
-                    design: .rounded
-                ))
-                .foregroundColor(.primary)
-            Text(weekday)
-                .font(.caption)
-                .foregroundColor(.red)
-                .bold()
+        public var body: some View {
+            HStack(alignment: .firstTextBaseline, spacing: 1) {
+                Text(dayOfMonth)
+                    .font(.system(
+                        size: 35,
+                        weight: .regular,
+                        design: .rounded
+                    ))
+                    .foregroundColor(.primary)
+                Text(weekday)
+                    .font(.caption)
+                    .foregroundColor(.red)
+                    .bold()
+            }
+            .legibilityShadow()
         }
-        .legibilityShadow()
-    }
 
-    // MARK: Private
+        // MARK: Private
 
-    private var weekday: String {
-        let formatter = DateFormatter.CurrentLocale()
-        formatter.dateFormat = "E" // Shortened weekday format
-        formatter.locale = Locale.current // Use the system's current locale
-        return formatter.string(from: Date())
-    }
+        private var weekday: String {
+            let formatter = DateFormatter.CurrentLocale()
+            formatter.dateFormat = "E" // Shortened weekday format
+            formatter.locale = Locale.current // Use the system's current locale
+            return formatter.string(from: Date())
+        }
 
-    private var dayOfMonth: String {
-        let formatter = DateFormatter.CurrentLocale()
-        formatter.dateFormat = "d"
-        return formatter.string(from: Date())
+        private var dayOfMonth: String {
+            let formatter = DateFormatter.CurrentLocale()
+            formatter.dateFormat = "d"
+            return formatter.string(from: Date())
+        }
     }
 }

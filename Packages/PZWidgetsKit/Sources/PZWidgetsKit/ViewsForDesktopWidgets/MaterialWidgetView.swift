@@ -12,11 +12,9 @@ extension DesktopWidgets {
         // MARK: Lifecycle
 
         public init(
-            entry: MaterialWidgetEntry,
-            refreshIntent: RefreshIntent?
+            entry: MaterialWidgetEntry
         ) {
             self.entry = entry
-            self.refreshIntent = refreshIntent
         }
 
         // MARK: Public
@@ -45,8 +43,7 @@ extension DesktopWidgets {
                 .padding(.bottom, 12)
                 OfficialFeedList4WidgetsView(
                     events: entry.events,
-                    showLeadingBorder: true,
-                    refreshIntent: refreshIntent
+                    showLeadingBorder: true
                 )
             }
             .environment(\.colorScheme, .dark)
@@ -54,8 +51,6 @@ extension DesktopWidgets {
         }
 
         // MARK: Private
-
-        private let refreshIntent: RefreshIntent?
 
         private let viewConfig: WidgetViewConfig = {
             var result = WidgetViewConfig()
