@@ -46,6 +46,7 @@ extension DesktopWidgets {
                     showLeadingBorder: true
                 )
             }
+            .padding()
             .environment(\.colorScheme, .dark)
             .pzWidgetContainerBackground(viewConfig: viewConfig)
         }
