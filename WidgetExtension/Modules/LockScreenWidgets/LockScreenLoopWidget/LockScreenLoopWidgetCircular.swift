@@ -15,7 +15,7 @@ struct LockScreenLoopWidgetCircular: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
     let result: Result<any DailyNoteProtocol, any Error>
 
-    let resinStyle: AutoRotationUsingResinWidgetStyleAppEnum
+    let resinStyle: StaminaContentRevolverStyleAppEnum
 
     var body: some View {
         switch LockScreenLoopWidgetType.autoChoose(entry: entry, result: result) {

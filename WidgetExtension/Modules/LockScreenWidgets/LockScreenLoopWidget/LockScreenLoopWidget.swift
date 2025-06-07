@@ -44,7 +44,7 @@ struct LockScreenLoopWidgetView: View {
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.profile?.name }
-    var resinStyle: AutoRotationUsingResinWidgetStyleAppEnum { entry.viewConfig.usingResinStyle }
+    var resinStyle: StaminaContentRevolverStyleAppEnum { entry.viewConfig.usingResinStyle }
 
     var url: URL? {
         let errorURL: URL = {

@@ -62,7 +62,7 @@ public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfiguratio
     @Parameter(title: "intent.field.showTransformer", default: true) public var showTransformer: Bool
 
     @Parameter(title: "intent.field.staminaDisplayStyle", default: .byDefault)
-    public var usingResinStyle: AutoRotationUsingResinWidgetStyleAppEnum
+    public var usingResinStyle: StaminaContentRevolverStyleAppEnum
 
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
