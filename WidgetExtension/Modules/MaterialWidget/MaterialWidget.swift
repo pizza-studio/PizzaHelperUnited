@@ -19,52 +19,14 @@ struct MaterialWidget: Widget {
             kind: "MaterialWidget",
             provider: MaterialWidgetProvider()
         ) { entry in
-            MaterialWidgetView(entry: entry)
+            MaterialWidgetView(
+                entry: entry,
+                refreshIntent: WidgetRefreshIntent()
+            )
         }
         .configurationDisplayName("pzWidgetsKit.material.title".i18nWidgets)
         .description("pzWidgetsKit.material.description".i18nWidgets)
         .supportedFamilies([.systemMedium])
         .containerBackgroundRemovable(false)
-    }
-}
-
-// MARK: - MaterialWidgetView
-
-@available(watchOS, unavailable)
-struct MaterialWidgetView: View {
-    let entry: MaterialWidgetEntry
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack(alignment: .center) {
-                WeekdayDisplayView()
-                Spacer()
-                ZStack(alignment: .trailing) {
-                    if entry.materialWeekday != nil {
-                        MaterialView(alternativeLayout: true)
-                    } else {
-                        Image(systemSymbol: .checkmarkCircleFill)
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .legibilityShadow(isText: false)
-                    }
-                }
-                .frame(height: 35)
-            }
-            .frame(height: 40)
-            .padding(.bottom, 12)
-            OfficialFeedList4WidgetsView(
-                events: entry.events,
-                showLeadingBorder: true
-            )
-        }
-        .environment(\.colorScheme, .dark)
-        .myWidgetContainerBackground(withPadding: 0) {
-            WidgetBackgroundView(
-                background: .randomNamecardBackground4Game(.genshinImpact),
-                darkModeOn: true
-            )
-        }
     }
 }

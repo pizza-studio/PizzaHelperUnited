@@ -4,6 +4,7 @@
 
 import Foundation
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -19,7 +20,8 @@ struct OfficialFeedWidget: Widget {
         ) { entry in
             OfficialFeedWidgetView(
                 entry: entry,
-                showLeadingBorder: true
+                showLeadingBorder: true,
+                refreshIntent: WidgetRefreshIntent()
             )
         }
         .configurationDisplayName("pzWidgetsKit.officialFeed.title".i18nWidgets)
@@ -27,44 +29,4 @@ struct OfficialFeedWidget: Widget {
         .supportedFamilies([.systemMedium, .systemLarge, .systemExtraLarge])
         .containerBackgroundRemovable(false)
     }
-}
-
-// MARK: - OfficialFeedWidgetView
-
-@available(watchOS, unavailable)
-struct OfficialFeedWidgetView: View {
-    // MARK: Lifecycle
-
-    init(
-        entry: OfficialFeedWidgetProvider.Entry,
-        showLeadingBorder: Bool = true
-    ) {
-        self.entry = entry
-        self.games = entry.games
-        self.showLeadingBorder = showLeadingBorder
-    }
-
-    // MARK: Internal
-
-    @Environment(\.widgetFamily) var family: WidgetFamily
-
-    var body: some View {
-        OfficialFeedList4WidgetsView(
-            events: entry?.events,
-            showLeadingBorder: showLeadingBorder
-        )
-        .environment(\.colorScheme, .dark)
-        .myWidgetContainerBackground(withPadding: 0) {
-            WidgetBackgroundView(
-                background: .randomNamecardBackground4Games(games),
-                darkModeOn: true
-            )
-        }
-    }
-
-    // MARK: Private
-
-    private let entry: OfficialFeedWidgetProvider.Entry?
-    private let games: Set<Pizza.SupportedGame>
-    private let showLeadingBorder: Bool
 }

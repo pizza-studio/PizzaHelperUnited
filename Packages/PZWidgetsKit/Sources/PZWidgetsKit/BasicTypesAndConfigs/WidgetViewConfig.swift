@@ -30,7 +30,7 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
     public var showMaterialsInLargeSizeWidget: Bool = true
     public var randomBackground: Bool = false
     public var expeditionDisplayPolicy: PZWidgetsSPM.ExpeditionDisplayPolicy = .displayWhenAvailable
-    public var selectedBackgrounds: Set<WidgetBackgroundEntityRAW> = [.defaultBackground]
+    public var selectedBackgrounds: Set<WidgetBackground> = [.defaultBackground]
     public var staminaContentRevolverStyle: PZWidgetsSPM.StaminaContentRevolverStyle = .byDefault
 
     public var neverDisplayExpeditionList: Bool { expeditionDisplayPolicy == .neverDisplay }
@@ -39,37 +39,5 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
 
     mutating func addMessage(_ msg: String) {
         noticeMessage = msg
-    }
-}
-
-// MARK: - WidgetBackgroundEntityRAW
-
-public struct WidgetBackgroundEntityRAW: AbleToCodeSendHash {
-    // MARK: Lifecycle
-
-    public init(id: String, displayString: String) {
-        self.id = id
-        self.displayString = displayString
-    }
-
-    // MARK: Public
-
-    public static let defaultBackground: Self = {
-        BundledWallpaper.defaultValue(for: appGame).asWidgetBackgroundEntity
-    }()
-
-    public var id: String
-    public var displayString: String
-}
-
-extension BundledWallpaper {
-    fileprivate var asWidgetBackgroundEntity: WidgetBackgroundEntityRAW {
-        .init(id: assetName4LiveActivity, displayString: localizedNameForWidgets)
-    }
-
-    private var localizedNameForWidgets: String {
-        Defaults[.useRealCharacterNames]
-            ? localizedRealName
-            : localizedName
     }
 }
