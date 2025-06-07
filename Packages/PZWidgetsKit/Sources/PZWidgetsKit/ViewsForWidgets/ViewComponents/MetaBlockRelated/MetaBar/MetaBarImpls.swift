@@ -101,9 +101,16 @@ public struct MetaBar4Expedition: View, MetaBar {
 public struct MetaBar4WeeklyBosses: View, MetaBar {
     // MARK: Lifecycle
 
-    public init?(note: any DailyNoteProtocol) {
+    public init?(note: any PZAccountKit.DailyNoteProtocol) {
+        self.init(note: note, disappearIfAllCompleted: false)
+    }
+
+    nonisolated public init?(note: any DailyNoteProtocol, disappearIfAllCompleted: Bool) {
         self.note = note
         guard isInfoAvailable else { return nil }
+        if disappearIfAllCompleted {
+            guard !allCompleted else { return nil }
+        }
     }
 
     // MARK: Public
@@ -161,6 +168,12 @@ public struct MetaBar4WeeklyBosses: View, MetaBar {
         case .zenlessZone: false
         }
     }
+
+    nonisolated private var allCompleted: Bool {
+        let giStatus = note.trounceBlossomIntel?.allDiscountsAreUsedUp ?? false
+        let hsrStatus = note.echoOfWarIntel?.allRewardsClaimed ?? false
+        return giStatus || hsrStatus
+    }
 }
 
 // MARK: - MetaBar4GIRealmCurrency
@@ -213,6 +226,7 @@ public struct MetaBar4GITransformer: View, MetaBar {
 
     public init?(note: any DailyNoteProtocol) {
         guard let info = (note as? FullNote4GI)?.transformerInfo else { return nil }
+        guard info.obtained else { return nil }
         self.info = info
         self.note = note
     }
