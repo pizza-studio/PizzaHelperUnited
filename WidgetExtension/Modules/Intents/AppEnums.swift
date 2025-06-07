@@ -5,8 +5,11 @@
 import AppIntents
 import Foundation
 import PZBaseKit
+import PZWidgetsKit
 
 // MARK: - AutoRotationUsingResinWidgetStyleAppEnum
+
+/// 注意：Xcode 不支持将 AppEnum 塞到 Swift Package 内的做法，也不支持与此有关的拆分扩展定义。
 
 public enum AutoRotationUsingResinWidgetStyleAppEnum: String, AppEnum {
     case byDefault = "default"
@@ -42,6 +45,14 @@ public enum WeeklyBossesDisplayMethodAppEnum: String, AppEnum {
         .alwaysShow: "appEnum.WeeklyBossesDisplayMethod.alwaysVisible",
         .neverShow: "appEnum.WeeklyBossesDisplayMethod.alwaysHidden",
     ]
+
+    public var realValue: PZWidgetsSPM.WeeklyBossesDisplayMethod {
+        switch self {
+        case .disappearAfterCompleted: .disappearAfterCompleted
+        case .alwaysShow: .alwaysShow
+        case .neverShow: .neverShow
+        }
+    }
 }
 
 // MARK: - WidgetSupportedGameAppEnum
@@ -97,4 +108,12 @@ public enum ExpeditionDisplayPolicyAppEnum: String, AppEnum {
         .displayWhenAvailable: "appEnum.ExpeditionDisplayPolicy.displayWhenAvailable",
         .displayExclusively: "appEnum.ExpeditionDisplayPolicy.displayExclusively",
     ]
+
+    public var realValue: PZWidgetsSPM.ExpeditionDisplayPolicy {
+        switch self {
+        case .neverDisplay: .neverDisplay
+        case .displayWhenAvailable: .displayWhenAvailable
+        case .displayExclusively: .displayExclusively
+        }
+    }
 }
