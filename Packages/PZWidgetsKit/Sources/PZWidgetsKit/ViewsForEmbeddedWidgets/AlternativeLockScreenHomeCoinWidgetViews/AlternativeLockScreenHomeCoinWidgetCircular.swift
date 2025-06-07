@@ -58,7 +58,7 @@ extension EmbeddedWidgets {
                             )
                         )
                     default:
-                        Text(verbatim: "WRONG\nGAME")
+                        Text(verbatim: "GENSHIN\nONLY")
                             .fontWidth(.compressed)
                             .multilineTextAlignment(.center)
                             .fixedSize()
@@ -109,7 +109,7 @@ extension EmbeddedWidgets {
                         }
                         .gaugeStyle(ProgressGaugeStyle())
                     default:
-                        Text(verbatim: "WRONG\nGAME")
+                        Text(verbatim: "GENSHIN\nONLY")
                             .fontWidth(.compressed)
                             .multilineTextAlignment(.center)
                             .fixedSize()
