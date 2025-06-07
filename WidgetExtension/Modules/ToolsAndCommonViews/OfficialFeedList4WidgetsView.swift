@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import PZInGameEventKit
 import PZWidgetsKit
 import SwiftUI
 import WidgetKit
@@ -14,7 +15,7 @@ struct OfficialFeedList4WidgetsView: View {
     // MARK: Lifecycle
 
     init(
-        events: [EventModel]?,
+        events: [OfficialFeed.FeedEvent]?,
         showLeadingBorder: Bool
     ) {
         self.events = events ?? []
@@ -31,7 +32,7 @@ struct OfficialFeedList4WidgetsView: View {
 
     // MARK: Private
 
-    private let events: [EventModel]
+    private let events: [OfficialFeed.FeedEvent]
     private let showLeadingBorder: Bool
 
     private var entriesCountAppliable: [Int] {
@@ -90,7 +91,7 @@ struct OfficialFeedList4WidgetsView: View {
     }
 
     @ViewBuilder
-    private func eventItem(event: EventModel) -> some View {
+    private func eventItem(event: OfficialFeed.FeedEvent) -> some View {
         let line = event.textListItemRaw()
         HStack {
             Text(verbatim: " \(line.title)")
@@ -105,7 +106,7 @@ struct OfficialFeedList4WidgetsView: View {
         .fontWidth(.condensed)
     }
 
-    private func getEvents(_ prefix: Int) -> [EventModel] {
+    private func getEvents(_ prefix: Int) -> [OfficialFeed.FeedEvent] {
         let filtered = events
             .filter { $0.endAtDate.timeIntervalSince1970 >= Date.now.timeIntervalSince1970 }
             .sorted { $0.endAtDate.timeIntervalSince1970 < $1.endAtDate.timeIntervalSince1970 }

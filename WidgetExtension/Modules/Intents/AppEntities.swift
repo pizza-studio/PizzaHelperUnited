@@ -55,7 +55,7 @@ public struct AccountIntentAppEntity: AppEntity {
         }
     }
 
-    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEntity.localeProfile")
+    public static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "appEntity.localProfile")
 
     public static let defaultQuery = AccountIntentAppEntityQuerier()
 
