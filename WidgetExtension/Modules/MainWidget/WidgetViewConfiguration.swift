@@ -84,8 +84,6 @@ struct WidgetViewConfiguration {
     var expeditionDisplayPolicy: ExpeditionDisplayPolicyAppEnum
     var selectedBackgrounds: [WidgetBackgroundAppEntity]
 
-    var prioritizeExpeditionDisplay: Bool { expeditionDisplayPolicy == .displayExclusively }
-
     var neverDisplayExpeditionList: Bool { expeditionDisplayPolicy == .neverDisplay }
 
     var background: WidgetBackgroundAppEntity {

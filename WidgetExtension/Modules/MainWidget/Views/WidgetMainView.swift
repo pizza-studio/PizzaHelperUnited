@@ -37,14 +37,15 @@ struct WidgetMainView: View {
                     )
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 case false:
-                    if viewConfig.prioritizeExpeditionDisplay, !dailyNote.expeditionTasks.isEmpty {
+                    switch viewConfig.expeditionDisplayPolicy {
+                    case .displayExclusively where hasExpeditionInfoForDisplay:
                         MainInfoWithExpedition(
                             entry: entry,
                             dailyNote: dailyNote,
                             viewConfig: viewConfig,
                             accountName: profileName
                         )
-                    } else {
+                    default:
                         MainInfoWithDetail(
                             entry: entry,
                             dailyNote: dailyNote,
@@ -89,5 +90,10 @@ struct WidgetMainView: View {
             }
         }
         .padding()
+    }
+
+    private var hasExpeditionInfoForDisplay: Bool {
+        /// 绝区零没有探索派遣。
+        dailyNote.game != .zenlessZone && !dailyNote.expeditionTasks.isEmpty
     }
 }
