@@ -55,7 +55,10 @@ struct WidgetViewEntryView: View {
             case let .failure(error):
                 WidgetErrorView(
                     error: error,
-                    message: viewConfig.noticeMessage ?? ""
+                    message: viewConfig.noticeMessage ?? "",
+                    refreshIntent: WidgetRefreshIntent(
+                        dailyNoteUIDWithGame: entry.profile?.uidWithGame
+                    )
                 )
             }
         }
