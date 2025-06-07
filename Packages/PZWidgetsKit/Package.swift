@@ -15,8 +15,10 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(path: "../GITodayMaterialsKit"),
         .package(path: "../PZKit"),
         .package(path: "../WallpaperKit"),
+        .package(path: "../PZInGameEventKit"),
         .package(
             url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
         ),
@@ -32,6 +34,8 @@ let package = Package(
             dependencies: [
                 .product(name: "PZAccountKit", package: "PZKit"),
                 .product(name: "PZBaseKit", package: "PZKit"),
+                .product(name: "PZInGameEventKit", package: "PZInGameEventKit"),
+                .product(name: "GITodayMaterialsKit", package: "GITodayMaterialsKit"),
                 .product(name: "WallpaperKit", package: "WallpaperKit"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
