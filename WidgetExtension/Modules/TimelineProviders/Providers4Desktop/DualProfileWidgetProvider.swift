@@ -84,7 +84,7 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
     // MARK: Private
 
     private static func getEntries(configuration: Intent, refreshTime: inout Date) async -> [Entry] {
-        let viewConfig = Config4DesktopProfileWidgets(configuration, nil)
+        let viewConfig = WidgetViewConfig(configuration, nil)
         let intentEntity1 = configuration.profileSlot1
         let intentEntity2 = configuration.profileSlot2
 

@@ -10,7 +10,7 @@ import SwiftUI
 import WallpaperKit
 
 @available(watchOS, unavailable)
-extension Config4DesktopProfileWidgets {
+extension WidgetViewConfig {
     public init(_ intent: some SelectProfileIntentProtocol, _ noticeMessage: String?) {
         self = .defaultConfig // 作为拓展 constructor 使用时，此行必需。
         self.showAccountName = true
