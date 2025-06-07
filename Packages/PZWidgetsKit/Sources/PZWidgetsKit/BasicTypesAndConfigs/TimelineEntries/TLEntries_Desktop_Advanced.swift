@@ -8,15 +8,34 @@ import PZBaseKit
 import PZInGameEventKit
 import WidgetKit
 
-// MARK: - DualProfileWidgetEntry
+// MARK: - ProfileWidgetEntry
 
-public struct DualProfileWidgetEntry: TimelineEntry, Sendable {
+/// 这是（无论系统平台的）任何需要配置本地帐号的小工具所共用的 TimelineEntry 类型。
+public struct ProfileWidgetEntry: TimelineEntry, Sendable {
     // MARK: Lifecycle
 
     public init(
         date: Date,
+        result: Result<any DailyNoteProtocol, any Error>,
+        viewConfig: WidgetViewConfig,
+        profile: PZProfileSendable?,
+        pilotAssetMap: [URL: SendableImagePtr]? = nil,
+        events: [OfficialFeed.FeedEvent] = []
+    ) {
+        self.date = date
+        self.resultSlot1 = result
+        self.resultSlot2 = .failure(Self.secondarySlotIntentionallyBlankException)
+        self.viewConfig = viewConfig
+        self.profileSlot1 = profile
+        self.profileSlot2 = nil
+        self.events = events
+        self.pilotAssetMap = pilotAssetMap ?? [:]
+    }
+
+    public init(
+        date: Date,
         resultSlot1: Result<any DailyNoteProtocol, any Error>,
-        resultSlot2: Result<any DailyNoteProtocol, any Error>,
+        resultSlot2: Result<any DailyNoteProtocol, any Error>?,
         viewConfig: WidgetViewConfig,
         profileSlot1: PZProfileSendable?,
         profileSlot2: PZProfileSendable?,
@@ -25,7 +44,7 @@ public struct DualProfileWidgetEntry: TimelineEntry, Sendable {
     ) {
         self.date = date
         self.resultSlot1 = resultSlot1
-        self.resultSlot2 = resultSlot2
+        self.resultSlot2 = resultSlot2 ?? .failure(Self.secondarySlotIntentionallyBlankException)
         self.viewConfig = viewConfig
         self.profileSlot1 = profileSlot1
         self.profileSlot2 = profileSlot2
@@ -49,6 +68,16 @@ public struct DualProfileWidgetEntry: TimelineEntry, Sendable {
         .init(score: Swift.max(countRelevance(resultSlot1), countRelevance(resultSlot2)))
     }
 
+    /// An API for compatibility purposes. This only returns the slot 1.
+    public var result: Result<any DailyNoteProtocol, any Error> {
+        resultSlot1
+    }
+
+    /// An API for compatibility purposes. This only returns the slot 1.
+    public var profile: PZProfileSendable? {
+        profileSlot1
+    }
+
     public func countRelevance(_ result: Result<any DailyNoteProtocol, any Error>) -> Float {
         switch result {
         case let .success(data):
@@ -61,51 +90,16 @@ public struct DualProfileWidgetEntry: TimelineEntry, Sendable {
             return 0
         }
     }
-}
 
-// MARK: - SingleProfileWidgetEntry
+    // MARK: Private
 
-public struct SingleProfileWidgetEntry: TimelineEntry, Sendable {
-    // MARK: Lifecycle
-
-    public init(
-        date: Date,
-        result: Result<any DailyNoteProtocol, any Error>,
-        viewConfig: WidgetViewConfig,
-        profile: PZProfileSendable?,
-        pilotAssetMap: [URL: SendableImagePtr]? = nil,
-        events: [OfficialFeed.FeedEvent] = []
-    ) {
-        self.date = date
-        self.result = result
-        self.viewConfig = viewConfig
-        self.profile = profile
-        self.events = events
-        self.pilotAssetMap = pilotAssetMap ?? [:]
-    }
-
-    // MARK: Public
-
-    public let date: Date
-    public let timestampOnCreation: Date = .now
-    public let result: Result<any DailyNoteProtocol, any Error>
-    public let viewConfig: WidgetViewConfig
-    public let profile: PZProfileSendable?
-    public let events: [OfficialFeed.FeedEvent]
-    public let pilotAssetMap: [URL: SendableImagePtr]
-
-    public var relevance: TimelineEntryRelevance? {
-        switch result {
-        case let .success(data):
-            if data.staminaFullTimeOnFinish >= .now {
-                return .init(score: 10)
-            }
-            let stamina = data.staminaIntel
-            return .init(
-                score: 10 * Float(stamina.finished) / Float(stamina.all)
-            )
-        case .failure:
-            return .init(score: 0)
-        }
+    private static var secondarySlotIntentionallyBlankException: Error {
+        NSError(
+            domain: "ProfileWidgetEntry",
+            code: 1,
+            userInfo: [
+                NSLocalizedDescriptionKey: "The 2nd profile result slot is intentionally left nil.",
+            ]
+        )
     }
 }

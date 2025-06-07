@@ -30,7 +30,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
 
     // MARK: Internal
 
-    typealias Entry = SingleProfileWidgetEntry
+    typealias Entry = ProfileWidgetEntry
     typealias Intent = SelectOnlyAccountIntent
 
     static var viewConfig: WidgetViewConfig { .init(noticeMessage: nil) }
