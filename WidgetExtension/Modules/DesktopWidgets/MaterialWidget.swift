@@ -19,7 +19,7 @@ struct MaterialWidget: Widget {
             kind: "MaterialWidget",
             provider: MaterialWidgetProvider()
         ) { entry in
-            MaterialWidgetView(
+            DesktopWidgets.MaterialWidgetView(
                 entry: entry,
                 refreshIntent: WidgetRefreshIntent()
             )
