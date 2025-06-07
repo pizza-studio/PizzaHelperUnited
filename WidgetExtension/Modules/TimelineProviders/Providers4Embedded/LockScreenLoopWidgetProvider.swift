@@ -10,31 +10,6 @@ import PZWidgetsKit
 import SwiftData
 import WidgetKit
 
-// MARK: - AccountAndShowWhichInfoIntentEntry
-
-struct AccountAndShowWhichInfoIntentEntry: TimelineEntry {
-    let date: Date
-    let timestampOnCreation: Date = .now
-    let result: Result<any DailyNoteProtocol, any Error>
-    let viewConfig: SelectAccountAndShowWhichInfoIntent
-    let profile: PZProfileSendable?
-
-    var relevance: TimelineEntryRelevance? {
-        switch result {
-        case let .success(data):
-            if data.staminaFullTimeOnFinish >= .now {
-                return .init(score: 10)
-            }
-            let stamina = data.staminaIntel
-            return .init(
-                score: 10 * Float(stamina.finished) / Float(stamina.all)
-            )
-        case .failure:
-            return .init(score: 0)
-        }
-    }
-}
-
 // MARK: - LockScreenLoopWidgetProvider
 
 /// This struct actually "inherits" from LockScreenWidgetProvider with extra options.
@@ -56,7 +31,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
 
     // MARK: Internal
 
-    typealias Entry = AccountAndShowWhichInfoIntentEntry
+    typealias Entry = SingleProfileWidgetEntry
     typealias Intent = SelectAccountAndShowWhichInfoIntent
 
     let games: Set<Pizza.SupportedGame>
@@ -132,6 +107,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
     // MARK: Private
 
     private static func getEntries(configuration: Intent, refreshTime: inout Date) async -> [Entry] {
+        let newConfiguration = WidgetViewConfig(configuration, nil)
         let findProfileResult = findProfile(for: configuration)
         switch findProfileResult {
         case let .success(profile):
@@ -143,7 +119,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                     Entry(
                         date: refreshTime,
                         result: dailyNoteResult,
-                        viewConfig: configuration,
+                        viewConfig: newConfiguration,
                         profile: profile
                     ),
                 ]
@@ -154,7 +130,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                     Entry(
                         date: Date(),
                         result: .failure(error),
-                        viewConfig: configuration,
+                        viewConfig: newConfiguration,
                         profile: profile
                     ),
                 ]
@@ -164,7 +140,7 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
                 Entry(
                     date: Date(),
                     result: .failure(exception),
-                    viewConfig: configuration,
+                    viewConfig: newConfiguration,
                     profile: nil
                 ),
             ]

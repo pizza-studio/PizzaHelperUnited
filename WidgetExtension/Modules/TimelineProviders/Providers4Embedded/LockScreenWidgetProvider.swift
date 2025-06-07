@@ -10,30 +10,6 @@ import PZWidgetsKit
 import SwiftData
 import WidgetKit
 
-// MARK: - AccountOnlyEntry
-
-struct AccountOnlyEntry: TimelineEntry {
-    let date: Date
-    let timestampOnCreation: Date = .now
-    let result: Result<any DailyNoteProtocol, any Error>
-    let profile: PZProfileSendable?
-
-    var relevance: TimelineEntryRelevance? {
-        switch result {
-        case let .success(data):
-            if data.staminaFullTimeOnFinish >= .now {
-                return .init(score: 10)
-            }
-            let stamina = data.staminaIntel
-            return .init(
-                score: 10 * Float(stamina.finished) / Float(stamina.all)
-            )
-        case .failure:
-            return .init(score: 0)
-        }
-    }
-}
-
 // MARK: - LockScreenWidgetProvider
 
 @available(macOS, unavailable)
@@ -54,11 +30,13 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
 
     // MARK: Internal
 
-    typealias Entry = AccountOnlyEntry
+    typealias Entry = SingleProfileWidgetEntry
     typealias Intent = SelectOnlyAccountIntent
 
+    static var viewConfig: WidgetViewConfig { .init(noticeMessage: nil) }
+
     let games: Set<Pizza.SupportedGame>
-    // 填入在手表上显示的Widget配置内容，例如："的原粹树脂"
+    // 填入在手表上显示的Widget配置内容，例如："的玩家体力"
     let recommendationsTag: LocalizedStringResource
 
     #if os(watchOS)
@@ -91,6 +69,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
         Entry(
             date: Date(),
             result: .success(Pizza.SupportedGame.genshinImpact.exampleDailyNoteData),
+            viewConfig: Self.viewConfig,
             profile: .getDummyInstance(for: .genshinImpact)
         )
     }
@@ -105,6 +84,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
             result: .success(
                 (Pizza.SupportedGame(intentConfig: configuration) ?? .genshinImpact).exampleDailyNoteData
             ),
+            viewConfig: Self.viewConfig,
             profile: .getDummyInstance(for: .genshinImpact)
         )
     }
@@ -139,6 +119,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
                     Entry(
                         date: refreshTime,
                         result: dailyNoteResult,
+                        viewConfig: viewConfig,
                         profile: profile
                     ),
                 ]
@@ -149,6 +130,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
                     Entry(
                         date: Date(),
                         result: .failure(error),
+                        viewConfig: viewConfig,
                         profile: profile
                     ),
                 ]
@@ -158,6 +140,7 @@ struct LockScreenWidgetProvider: AppIntentTimelineProvider {
                 Entry(
                     date: Date(),
                     result: .failure(exception),
+                    viewConfig: viewConfig,
                     profile: nil
                 ),
             ]

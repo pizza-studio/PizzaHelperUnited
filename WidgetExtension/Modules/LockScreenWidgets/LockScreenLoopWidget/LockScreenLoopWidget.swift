@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -44,7 +45,10 @@ struct LockScreenLoopWidgetView: View {
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
     var accountName: String? { entry.profile?.name }
-    var resinStyle: StaminaContentRevolverStyleAppEnum { entry.viewConfig.usingResinStyle }
+
+    var resinStyle: PZWidgetsSPM.StaminaContentRevolverStyle {
+        entry.viewConfig.staminaContentRevolverStyle
+    }
 
     var url: URL? {
         let errorURL: URL = {
