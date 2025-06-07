@@ -8,72 +8,54 @@ import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
-// MARK: - AlternativeLockScreenResinWidget
-
-@available(macOS, unavailable)
-struct AlternativeLockScreenResinWidget: Widget {
-    let kind: String = "AlternativeLockScreenResinWidget"
-
-    var body: some WidgetConfiguration {
-        AppIntentConfiguration(
-            kind: kind,
-            intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
-        ) { entry in
-            AlternativeLockScreenResinWidgetView(entry: entry)
-                .smartStackWidgetContainerBackground { EmptyView() }
-        }
-        .configurationDisplayName("pzWidgetsKit.cfgName.stamina".i18nWidgets)
-        .description("pzWidgetsKit.cfgName.stamina.detail.2".i18nWidgets)
-        .supportedFamilies([.accessoryCircular])
-    }
-}
-
 // MARK: - AlternativeLockScreenResinWidgetView
 
 @available(macOS, unavailable)
-public struct AlternativeLockScreenResinWidgetView: View {
-    // MARK: Lifecycle
+extension EmbeddedWidgets {
+    @available(macOS, unavailable)
+    public struct AlternativeLockScreenResinWidgetView: View {
+        // MARK: Lifecycle
 
-    public init(entry: ProfileWidgetEntry) {
-        self.entry = entry
-    }
+        public init(entry: ProfileWidgetEntry) {
+            self.entry = entry
+        }
 
-    // MARK: Public
+        // MARK: Public
 
-    public let entry: ProfileWidgetEntry
+        public let entry: ProfileWidgetEntry
 
-    public var body: some View {
-        AlternativeLockScreenResinWidgetCircular(entry: entry, result: result)
-            .widgetURL(url)
-    }
+        public var body: some View {
+            AlternativeLockScreenResinWidgetCircular(entry: entry, result: result)
+                .widgetURL(url)
+        }
 
-    // MARK: Private
+        // MARK: Private
 
-    @Environment(\.widgetFamily) private var family: WidgetFamily
+        @Environment(\.widgetFamily) private var family: WidgetFamily
 
-    private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    private var accountName: String? { entry.profile?.name }
+        private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
+        private var accountName: String? { entry.profile?.name }
 
-    private var url: URL? {
-        let errorURL: URL = {
-            var components = URLComponents()
-            components.scheme = "ophelperwidget"
-            components.host = "accountSetting"
-            components.queryItems = [
-                .init(
-                    name: "accountUUIDString",
-                    value: entry.profile?.uuid.uuidString
-                ),
-            ]
-            return components.url!
-        }()
+        private var url: URL? {
+            let errorURL: URL = {
+                var components = URLComponents()
+                components.scheme = "ophelperwidget"
+                components.host = "accountSetting"
+                components.queryItems = [
+                    .init(
+                        name: "accountUUIDString",
+                        value: entry.profile?.uuid.uuidString
+                    ),
+                ]
+                return components.url!
+            }()
 
-        switch result {
-        case .success:
-            return nil
-        case .failure:
-            return errorURL
+            switch result {
+            case .success:
+                return nil
+            case .failure:
+                return errorURL
+            }
         }
     }
 }
