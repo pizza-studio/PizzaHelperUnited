@@ -51,7 +51,6 @@ extension MetaBar {
             .legibilityShadow(isText: true)
             .font(.system(.caption))
             .minimumScaleFactor(0.2)
-            .legibilityShadow(isText: true)
         }
         .foregroundStyle(.primary)
         .environment(\.colorScheme, .dark)
