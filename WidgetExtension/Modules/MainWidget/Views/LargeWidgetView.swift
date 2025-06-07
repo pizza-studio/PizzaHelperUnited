@@ -81,7 +81,11 @@ extension LargeWidgetView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .offset(x: dailyNote.game == .starRail ? -4 : -5)
                 default:
-                    DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
+                    MetaBlockView4Desktop(
+                        dailyNote: dailyNote,
+                        viewConfig: viewConfig,
+                        spacing: 17
+                    )
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -165,8 +169,7 @@ extension LargeWidgetView {
                                 .padding(.trailing, 12)
                                 .frame(width: dailyNote.game == .starRail ? 155 : 145)
                             default:
-                                DetailInfo(
-                                    entry: entry,
+                                MetaBlockView4Desktop(
                                     dailyNote: dailyNote,
                                     viewConfig: viewConfig,
                                     spacing: 6
@@ -174,6 +177,7 @@ extension LargeWidgetView {
                                 .fixedSize(horizontal: true, vertical: false)
                                 .padding(.vertical, 8)
                                 .padding(.leading, 8)
+                                .padding(.trailing)
                             }
                         }
                         .widgetAccessibilityBackground(enabled: true)
