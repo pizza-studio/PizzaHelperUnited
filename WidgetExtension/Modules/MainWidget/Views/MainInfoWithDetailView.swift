@@ -31,16 +31,14 @@ struct MainInfoWithDetail: View {
             Group {
                 switch tinyGlass {
                 case false:
-                    DetailInfo(
-                        entry: entry,
+                    MetaBlockView4Desktop(
                         dailyNote: dailyNote,
                         viewConfig: viewConfig,
                         spacing: 10
                     )
                     .fixedSize(horizontal: true, vertical: false)
                 case true:
-                    DetailInfo(
-                        entry: entry,
+                    MetaBlockView4Desktop(
                         dailyNote: dailyNote,
                         viewConfig: viewConfig,
                         spacing: 10
@@ -48,6 +46,7 @@ struct MainInfoWithDetail: View {
                     .fixedSize(horizontal: true, vertical: false)
                     .padding(.vertical, 8)
                     .padding(.leading, 8)
+                    .padding(.trailing)
                     .widgetAccessibilityBackground(enabled: true)
                 }
             }
