@@ -14,7 +14,6 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
     // MARK: Lifecycle
 
     public init(noticeMessage: String? = nil) {
-        self.showAccountName = true
         self.showTransformer = true
         self.trounceBlossomDisplayMethod = .disappearAfterCompleted
         self.echoOfWarDisplayMethod = .disappearAfterCompleted
@@ -29,13 +28,11 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
     }
 
     public init(
-        showAccountName: Bool,
         showTransformer: Bool,
         showExpeditionCompleteTime: Bool,
         showWeeklyBosses: Bool,
         noticeMessage: String?
     ) {
-        self.showAccountName = showAccountName
         self.showTransformer = showTransformer
         self.trounceBlossomDisplayMethod = .disappearAfterCompleted
         self.echoOfWarDisplayMethod = .disappearAfterCompleted
@@ -52,7 +49,6 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
 
     public static var defaultConfig: Self { .init() }
 
-    public var showAccountName: Bool
     public var showTransformer: Bool
     public var trounceBlossomDisplayMethod: PZWidgetsSPM.WeeklyBossesDisplayMethod
     public var echoOfWarDisplayMethod: PZWidgetsSPM.WeeklyBossesDisplayMethod

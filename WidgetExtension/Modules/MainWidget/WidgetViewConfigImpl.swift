@@ -13,7 +13,6 @@ import WallpaperKit
 extension WidgetViewConfig {
     public init(_ intent: some SelectProfileIntentProtocol, _ noticeMessage: String?) {
         self = .defaultConfig // 作为拓展 constructor 使用时，此行必需。
-        self.showAccountName = true
         self.showTransformer = intent.showTransformer
         self.trounceBlossomDisplayMethod = intent.trounceBlossomDisplayMethod.realValue
         self.echoOfWarDisplayMethod = intent.echoOfWarDisplayMethod.realValue

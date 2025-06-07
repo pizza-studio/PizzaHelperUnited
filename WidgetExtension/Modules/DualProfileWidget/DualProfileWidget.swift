@@ -169,7 +169,7 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
         Group {
             switch givenEntry.result {
             case let .success(dailyNote):
-                let profileName = viewConfig.showAccountName ? givenEntry.profile?.name : nil
+                let profileName = givenEntry.profile?.name
                 switch family {
                 case .systemMedium, .systemSmall:
                     MainInfo(
