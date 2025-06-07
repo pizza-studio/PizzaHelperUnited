@@ -695,7 +695,7 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.asRoundMeter" : {
+    "appEnum.StaminaContentRevolverStyle.asRoundMeter" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -771,7 +771,7 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.asTimerCountDown" : {
+    "appEnum.StaminaContentRevolverStyle.asTimerCountDown" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -847,7 +847,7 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.asTimeStampWhenWillAccomplish" : {
+    "appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -923,7 +923,7 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.byDefault" : {
+    "appEnum.StaminaContentRevolverStyle.byDefault" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -999,7 +999,7 @@
         }
       }
     },
-    "appEnum.AutoRotationUsingResinWidgetStyle.title" : {
+    "appEnum.StaminaContentRevolverStyle.title" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {

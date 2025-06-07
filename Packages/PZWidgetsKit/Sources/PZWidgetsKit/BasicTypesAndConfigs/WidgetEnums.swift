@@ -20,4 +20,13 @@ extension PZWidgetsSPM {
         case displayWhenAvailable
         case displayExclusively
     }
+
+    // MARK: - StaminaContentRevolverStyle
+
+    public enum StaminaContentRevolverStyle: String, AbleToCodeSendHash {
+        case byDefault
+        case timer
+        case time
+        case roundMeter
+    }
 }
