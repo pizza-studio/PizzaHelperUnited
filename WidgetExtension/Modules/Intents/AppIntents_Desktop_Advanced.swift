@@ -7,16 +7,16 @@ import Defaults
 import Foundation
 import PZBaseKit
 
-// MARK: - SelectProfileIntentProtocol
+// MARK: - ProfileWidgetIntentProtocol
 
-public protocol SelectProfileIntentProtocol {
+public protocol ProfileWidgetIntentProtocol {
     var showStaminaOnly: Bool { get }
     var useTinyGlassDisplayStyle: Bool { get }
     var showTransformer: Bool { get }
     var trounceBlossomDisplayMethod: WeeklyBossesDisplayMethodAppEnum { get }
     var echoOfWarDisplayMethod: WeeklyBossesDisplayMethodAppEnum { get }
     var expeditionDisplayPolicy: ExpeditionDisplayPolicyAppEnum { get }
-    var randomBackground: Bool { get set }
+    var randomBackground: Bool { get }
     var chosenBackgrounds: [WidgetBackgroundAppEntity] { get }
     var isDarkModeRespected: Bool { get }
     var showMaterialsInLargeSizeWidget: Bool { get }
@@ -26,7 +26,7 @@ public protocol SelectProfileIntentProtocol {
 
 // Only for iOS Springboard Widgets and macOS Desktop Widgets.
 public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
-    SelectProfileIntentProtocol {
+    ProfileWidgetIntentProtocol {
     // MARK: Lifecycle
 
     public init() {}
@@ -124,7 +124,7 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
 // Only for iOS Springboard Widgets and macOS Desktop Widgets.
 // 该 Intent 允许指定两个本地帐号。
 public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
-    SelectProfileIntentProtocol {
+    ProfileWidgetIntentProtocol {
     // MARK: Lifecycle
 
     public init() {}
