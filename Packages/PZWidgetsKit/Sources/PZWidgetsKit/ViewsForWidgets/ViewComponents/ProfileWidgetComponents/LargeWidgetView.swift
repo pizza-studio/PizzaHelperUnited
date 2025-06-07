@@ -5,55 +5,56 @@
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
-import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
-// MARK: - LargeWidgetView
+// MARK: - SingleProfileWidgetViewCore.LargeWidgetView
 
 @available(watchOS, unavailable)
-struct LargeWidgetView: View {
-    // MARK: Lifecycle
+extension SingleProfileWidgetViewCore {
+    // MARK: - LargeWidgetView
 
-    public init(
-        entry: MainWidgetProvider.Entry,
-        dailyNote: any DailyNoteProtocol,
-        viewConfig: WidgetViewConfig,
-        accountName: String?,
-        events: [OfficialFeed.FeedEvent]
-    ) {
-        self.entry = entry
-        self.dailyNote = dailyNote
-        self.viewConfig = viewConfig
-        self.accountName = accountName
-        self.events = events
-    }
+    @available(watchOS, unavailable)
+    struct LargeWidgetView: View {
+        // MARK: Lifecycle
 
-    // MARK: Public
-
-    public var body: some View {
-        switch viewConfig.useTinyGlassDisplayStyle {
-        case false: viewWhenTinyGlassModeIsOff
-        case true: viewWhenTinyGlassModeIsON
+        public init(
+            entry: ProfileWidgetEntry,
+            dailyNote: any DailyNoteProtocol,
+            viewConfig: WidgetViewConfig,
+            events: [OfficialFeed.FeedEvent]
+        ) {
+            self.entry = entry
+            self.dailyNote = dailyNote
+            self.viewConfig = viewConfig
+            self.events = events
         }
+
+        // MARK: Public
+
+        public var body: some View {
+            switch viewConfig.useTinyGlassDisplayStyle {
+            case false: viewWhenTinyGlassModeIsOff
+            case true: viewWhenTinyGlassModeIsON
+            }
+        }
+
+        // MARK: Private
+
+        @Environment(\.widgetFamily) private var family: WidgetFamily
+
+        private let entry: ProfileWidgetEntry
+        private let dailyNote: any DailyNoteProtocol
+        private let viewConfig: WidgetViewConfig
+        private let events: [OfficialFeed.FeedEvent]
     }
-
-    // MARK: Private
-
-    @Environment(\.widgetFamily) private var family: WidgetFamily
-
-    private let entry: MainWidgetProvider.Entry
-    private let dailyNote: any DailyNoteProtocol
-    private let viewConfig: WidgetViewConfig
-    private let accountName: String?
-    private let events: [OfficialFeed.FeedEvent]
 }
 
 // MARK: - View used when Tiny Glass Display Style is OFF.
 
 @available(watchOS, unavailable)
-extension LargeWidgetView {
+extension SingleProfileWidgetViewCore.LargeWidgetView {
     @ViewBuilder private var viewWhenTinyGlassModeIsOff: some View {
         HStack {
             Spacer()
@@ -64,7 +65,7 @@ extension LargeWidgetView {
                     tinyGlassDisplayStyle: viewConfig.useTinyGlassDisplayStyle,
                     verticalSpacing4NonTinyGlassMode: 5,
                     useSpacer: false,
-                    refreshIntent: WidgetRefreshIntent(
+                    refreshIntent: RefreshIntent(
                         dailyNoteUIDWithGame: entry.profile?.uidWithGame
                     )
                 )
@@ -121,7 +122,7 @@ extension LargeWidgetView {
             OfficialFeedList4WidgetsView(
                 events: entry.events,
                 showLeadingBorder: false,
-                refreshIntent: WidgetRefreshIntent()
+                refreshIntent: RefreshIntent(dailyNoteUIDWithGame: nil)
             )
             .padding(.leading, 20)
             .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
@@ -136,7 +137,7 @@ extension LargeWidgetView {
 // MARK: - View used when Tiny Glass Display Style is ON.
 
 @available(watchOS, unavailable)
-extension LargeWidgetView {
+extension SingleProfileWidgetViewCore.LargeWidgetView {
     @ViewBuilder private var viewWhenTinyGlassModeIsON: some View {
         let mainInfoView = ProfileAndMainStaminaView(
             profile: entry.profile,
@@ -144,7 +145,7 @@ extension LargeWidgetView {
             tinyGlassDisplayStyle: viewConfig.useTinyGlassDisplayStyle,
             verticalSpacing4NonTinyGlassMode: 5,
             useSpacer: false,
-            refreshIntent: WidgetRefreshIntent(
+            refreshIntent: RefreshIntent(
                 dailyNoteUIDWithGame: entry.profile?.uidWithGame
             )
         )
@@ -214,7 +215,7 @@ extension LargeWidgetView {
                     OfficialFeedList4WidgetsView(
                         events: entry.events,
                         showLeadingBorder: false,
-                        refreshIntent: WidgetRefreshIntent()
+                        refreshIntent: RefreshIntent(dailyNoteUIDWithGame: nil)
                     )
                     .padding(.horizontal, 10)
                     .padding(.vertical, 10)
@@ -248,7 +249,7 @@ extension LargeWidgetView {
 // MARK: - Peripherals.
 
 @available(watchOS, unavailable)
-extension LargeWidgetView {
+extension SingleProfileWidgetViewCore.LargeWidgetView {
     private var weekday: String {
         let formatter = DateFormatter.CurrentLocale()
         formatter.dateFormat = "E" // Shortened weekday format

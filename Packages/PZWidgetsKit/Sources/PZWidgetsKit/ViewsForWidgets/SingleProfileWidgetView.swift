@@ -4,54 +4,99 @@
 
 import PZAccountKit
 import PZBaseKit
-import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
+// MARK: - SingleProfileWidgetView
+
 @available(watchOS, unavailable)
-struct WidgetMainView: View {
-    let entry: MainWidgetProvider.Entry
+public struct SingleProfileWidgetView<RefreshIntent: WidgetRefreshIntentProtocol>: View {
+    // MARK: Lifecycle
+
+    public init(entry: ProfileWidgetEntry, noBackground: Bool) {
+        self.entry = entry
+        self.noBackground = noBackground
+    }
+
+    // MARK: Public
+
+    public var body: some View {
+        ZStack {
+            switch result {
+            case let .success(dailyNote):
+                SingleProfileWidgetViewCore<RefreshIntent>(
+                    entry: entry,
+                    dailyNote: dailyNote,
+                    viewConfig: viewConfig,
+                    accountName: accountName
+                )
+            case let .failure(error):
+                WidgetErrorView(
+                    error: error,
+                    message: viewConfig.noticeMessage ?? "",
+                    refreshIntent: RefreshIntent(
+                        dailyNoteUIDWithGame: entry.profile?.uidWithGame
+                    )
+                )
+            }
+        }
+        .environment(\.colorScheme, .dark)
+        .pzWidgetContainerBackground(viewConfig: noBackground ? nil : viewConfig)
+    }
+
+    // MARK: Private
+
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+
+    private let entry: ProfileWidgetEntry
+    private let noBackground: Bool
+
+    private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
+    private var viewConfig: WidgetViewConfig { entry.viewConfig }
+    private var accountName: String? { entry.profile?.name }
+}
+
+// MARK: - SingleProfileWidgetViewCore
+
+@available(watchOS, unavailable)
+struct SingleProfileWidgetViewCore<RefreshIntent: WidgetRefreshIntentProtocol>: View {
+    let entry: ProfileWidgetEntry
     @Environment(\.widgetFamily) var family: WidgetFamily
     var dailyNote: any DailyNoteProtocol
     let viewConfig: WidgetViewConfig
     let accountName: String?
 
     var body: some View {
-        let profileName = accountName
         Group {
             switch family {
             case .systemSmall:
-                MainInfo(
+                MainInfo<RefreshIntent>(
                     entry: entry,
                     dailyNote: dailyNote,
-                    viewConfig: viewConfig,
-                    accountName: profileName
+                    viewConfig: viewConfig
                 )
             case .systemMedium:
                 switch viewConfig.showStaminaOnly {
                 case true:
-                    MainInfo(
+                    MainInfo<RefreshIntent>(
                         entry: entry,
                         dailyNote: dailyNote,
-                        viewConfig: viewConfig,
-                        accountName: profileName
+                        viewConfig: viewConfig
                     )
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 case false:
                     switch viewConfig.expeditionDisplayPolicy {
                     case .displayExclusively where hasExpeditionInfoForDisplay:
-                        MainInfoWithExpedition(
+                        MainInfoWithExpedition<RefreshIntent>(
                             entry: entry,
                             dailyNote: dailyNote,
-                            viewConfig: viewConfig,
-                            accountName: profileName
+                            viewConfig: viewConfig
                         )
                     default:
-                        MainInfoWithDetail(
+                        MainInfoWithDetail<RefreshIntent>(
                             entry: entry,
                             dailyNote: dailyNote,
-                            viewConfig: viewConfig,
-                            accountName: profileName
+                            viewConfig: viewConfig
                         )
                     }
                 }
@@ -60,20 +105,18 @@ struct WidgetMainView: View {
                 case true:
                     switch viewConfig.useTinyGlassDisplayStyle {
                     case false:
-                        MainInfo(
+                        MainInfo<RefreshIntent>(
                             entry: entry,
                             dailyNote: dailyNote,
-                            viewConfig: viewConfig,
-                            accountName: profileName
+                            viewConfig: viewConfig
                         )
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                     case true:
-                        MainInfo(
+                        MainInfo<RefreshIntent>(
                             entry: entry,
                             dailyNote: dailyNote,
-                            viewConfig: viewConfig,
-                            accountName: profileName
+                            viewConfig: viewConfig
                         )
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     }
@@ -82,7 +125,6 @@ struct WidgetMainView: View {
                         entry: entry,
                         dailyNote: dailyNote,
                         viewConfig: viewConfig,
-                        accountName: profileName,
                         events: entry.events
                     )
                 }

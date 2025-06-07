@@ -5,27 +5,24 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
-import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
 // MARK: - MainInfoWithDetail
 
 @available(watchOS, unavailable)
-struct MainInfoWithExpedition: View {
-    let entry: MainWidgetProvider.Entry
+struct MainInfoWithExpedition<RefreshIntent: WidgetRefreshIntentProtocol>: View {
+    let entry: ProfileWidgetEntry
     var dailyNote: any DailyNoteProtocol
     let viewConfig: WidgetViewConfig
-    let accountName: String?
 
     var body: some View {
         let tinyGlass = viewConfig.useTinyGlassDisplayStyle
         HStack {
-            MainInfo(
+            MainInfo<RefreshIntent>(
                 entry: entry,
                 dailyNote: dailyNote,
-                viewConfig: viewConfig,
-                accountName: accountName
+                viewConfig: viewConfig
             )
             .frame(maxWidth: .infinity, alignment: tinyGlass ? .leading : .center)
             ExpeditionsView(
