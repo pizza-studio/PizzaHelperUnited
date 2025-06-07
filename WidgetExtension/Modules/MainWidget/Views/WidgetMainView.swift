@@ -13,7 +13,7 @@ struct WidgetMainView: View {
     let entry: MainWidgetProvider.Entry
     @Environment(\.widgetFamily) var family: WidgetFamily
     var dailyNote: any DailyNoteProtocol
-    let viewConfig: Config4DesktopProfileWidgets
+    let viewConfig: WidgetViewConfig
     let accountName: String?
 
     var body: some View {
