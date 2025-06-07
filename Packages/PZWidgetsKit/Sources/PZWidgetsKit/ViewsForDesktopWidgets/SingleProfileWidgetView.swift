@@ -26,8 +26,7 @@ extension DesktopWidgets {
                     SingleProfileWidgetViewCore(
                         entry: entry,
                         dailyNote: dailyNote,
-                        viewConfig: viewConfig,
-                        accountName: accountName
+                        viewConfig: viewConfig
                     )
                 case let .failure(error):
                     WidgetErrorView(
@@ -52,7 +51,6 @@ extension DesktopWidgets {
 
         private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
         private var viewConfig: WidgetViewConfig { entry.viewConfig }
-        private var accountName: String? { entry.profile?.name }
     }
 
     // MARK: - SingleProfileWidgetViewCore
@@ -63,7 +61,6 @@ extension DesktopWidgets {
         @Environment(\.widgetFamily) var family: WidgetFamily
         var dailyNote: any DailyNoteProtocol
         let viewConfig: WidgetViewConfig
-        let accountName: String?
 
         var body: some View {
             Group {

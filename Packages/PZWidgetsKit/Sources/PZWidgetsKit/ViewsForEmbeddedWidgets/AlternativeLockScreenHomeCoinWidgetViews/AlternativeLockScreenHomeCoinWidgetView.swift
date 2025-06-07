@@ -33,7 +33,6 @@ extension EmbeddedWidgets {
         @Environment(\.widgetFamily) private var family: WidgetFamily
 
         private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-        private var accountName: String? { entry.profile?.name }
 
         private var url: URL? {
             let errorURL: URL = {
