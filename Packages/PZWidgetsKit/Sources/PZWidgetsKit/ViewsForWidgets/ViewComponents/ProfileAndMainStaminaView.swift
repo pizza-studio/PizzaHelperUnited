@@ -123,7 +123,7 @@ public struct ProfileAndMainStaminaView<RefreshIntent: AppIntent>: View {
                     .font(staminaFont4TinyGlassMode)
                     .legibilityShadow(isText: false)
                     .lineLimit(1)
-                StaminaRecoveryTimeText(data: dailyNote)
+                StaminaRecoveryTimeText(data: dailyNote, tiny: true)
                     .lineLimit(2).lineSpacing(1)
                     .minimumScaleFactor(0.5)
                     .fontWidth(.condensed)
