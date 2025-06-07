@@ -32,6 +32,7 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
     public var randomBackground: Bool = false
     public var expeditionDisplayPolicy: PZWidgetsSPM.ExpeditionDisplayPolicy = .displayWhenAvailable
     public var selectedBackgrounds: Set<WidgetBackgroundEntityRAW> = [.defaultBackground]
+    public var staminaContentRevolverStyle: PZWidgetsSPM.StaminaContentRevolverStyle = .byDefault
 
     public var neverDisplayExpeditionList: Bool { expeditionDisplayPolicy == .neverDisplay }
 
