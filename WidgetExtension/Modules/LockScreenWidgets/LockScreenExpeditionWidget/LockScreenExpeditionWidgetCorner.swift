@@ -4,65 +4,69 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 
-// MARK: - LockScreenExpeditionWidgetCorner
-
 @available(macOS, unavailable)
-public struct LockScreenExpeditionWidgetCorner: View {
-    // MARK: Lifecycle
+extension EmbeddedWidgets {
+    // MARK: - LockScreenExpeditionWidgetCorner
 
-    public init(result: Result<any DailyNoteProtocol, any Error>) {
-        self.result = result
-    }
+    @available(macOS, unavailable)
+    public struct LockScreenExpeditionWidgetCorner: View {
+        // MARK: Lifecycle
 
-    // MARK: Public
+        public init(result: Result<any DailyNoteProtocol, any Error>) {
+            self.result = result
+        }
 
-    public var body: some View {
-        Pizza.SupportedGame(dailyNoteResult: result).expeditionAssetSVG
-            .resizable()
-            .scaledToFit()
-            .padding(4.5)
-            .widgetLabel(text)
-    }
+        // MARK: Public
 
-    // MARK: Private
+        public var body: some View {
+            Pizza.SupportedGame(dailyNoteResult: result).expeditionAssetSVG
+                .resizable()
+                .scaledToFit()
+                .padding(4.5)
+                .widgetLabel(text)
+        }
 
-    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+        // MARK: Private
 
-    private let result: Result<any DailyNoteProtocol, any Error>
+        @Environment(\.widgetRenderingMode) private var widgetRenderingMode
 
-    private var text: String {
-        switch result {
-        case let .success(data):
-            /// ZZZ Has no expedition intels available through API yet.
-            switch data {
-            case _ as Note4ZZZ: return "WRONG_GAME"
-            default:
-                let timeDescription: String = {
-                    if data.allExpeditionsAccomplished {
-                        return "pzWidgetsKit.status.done".i18nWidgets
-                    } else if let maxFinishTime = data.expeditionTotalETA {
-                        return formatter.string(from: maxFinishTime)
-                    } else {
-                        return ""
-                    }
-                }()
+        private let result: Result<any DailyNoteProtocol, any Error>
 
-                let numerator = data.expeditionCompletionStatus.finished
-                let denominator = data.expeditionCompletionStatus.all
-                return "\(numerator) / \(denominator) \(timeDescription)"
+        private let formatter: DateFormatter = {
+            let fmt = DateFormatter.CurrentLocale()
+            fmt.doesRelativeDateFormatting = true
+            fmt.dateStyle = .short
+            fmt.timeStyle = .short
+            return fmt
+        }()
+
+        private var text: String {
+            switch result {
+            case let .success(data):
+                /// ZZZ Has no expedition intels available through API yet.
+                switch data {
+                case _ as Note4ZZZ: return "WRONG_GAME"
+                default:
+                    let timeDescription: String = {
+                        if data.allExpeditionsAccomplished {
+                            return "pzWidgetsKit.status.done".i18nWidgets
+                        } else if let maxFinishTime = data.expeditionTotalETA {
+                            return formatter.string(from: maxFinishTime)
+                        } else {
+                            return ""
+                        }
+                    }()
+
+                    let numerator = data.expeditionCompletionStatus.finished
+                    let denominator = data.expeditionCompletionStatus.all
+                    return "\(numerator) / \(denominator) \(timeDescription)"
+                }
+            case .failure:
+                return "pzWidgetsKit.expedition".i18nWidgets
             }
-        case .failure:
-            return "pzWidgetsKit.expedition".i18nWidgets
         }
     }
 }
-
-private let formatter: DateFormatter = {
-    let fmt = DateFormatter.CurrentLocale()
-    fmt.doesRelativeDateFormatting = true
-    fmt.dateStyle = .short
-    fmt.timeStyle = .short
-    return fmt
-}()

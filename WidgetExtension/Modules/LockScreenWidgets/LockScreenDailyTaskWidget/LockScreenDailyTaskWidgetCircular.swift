@@ -9,56 +9,59 @@ import SFSafeSymbols
 import SwiftUI
 
 @available(macOS, unavailable)
-public struct LockScreenDailyTaskWidgetCircular: View {
-    // MARK: Lifecycle
+extension EmbeddedWidgets {
+    @available(macOS, unavailable)
+    public struct LockScreenDailyTaskWidgetCircular: View {
+        // MARK: Lifecycle
 
-    public init(result: Result<any DailyNoteProtocol, any Error>) {
-        self.result = result
-    }
-
-    // MARK: Public
-
-    public var body: some View {
-        VStack(spacing: 0) {
-            Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
-                .resizable()
-                .scaledToFit()
-                .apply { imageView in
-                    if widgetRenderingMode == .fullColor {
-                        imageView
-                            .foregroundColor(PZWidgetsSPM.Colors.IconColor.dailyTask.suiColor)
-                    } else {
-                        imageView
-                    }
-                }
-            switch result {
-            case let .success(data):
-                if data.hasDailyTaskIntel {
-                    let sitrep = data.dailyTaskCompletionStatus
-                    Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                } else {
-                    Text(verbatim: "WRONG\nGAME")
-                        .fontWidth(.compressed)
-                        .multilineTextAlignment(.center)
-                        .minimumScaleFactor(0.2)
-                }
-            case .failure:
-                Image(systemSymbol: .ellipsis)
-            }
+        public init(result: Result<any DailyNoteProtocol, any Error>) {
+            self.result = result
         }
-        .widgetAccentable(widgetRenderingMode == .accented)
-        #if os(watchOS)
-            .padding(.vertical, 2)
-            .padding(.top, 1)
-        #else
-            .padding(.vertical, 2)
-        #endif
+
+        // MARK: Public
+
+        public var body: some View {
+            VStack(spacing: 0) {
+                Pizza.SupportedGame(dailyNoteResult: result).dailyTaskAssetSVG
+                    .resizable()
+                    .scaledToFit()
+                    .apply { imageView in
+                        if widgetRenderingMode == .fullColor {
+                            imageView
+                                .foregroundColor(PZWidgetsSPM.Colors.IconColor.dailyTask.suiColor)
+                        } else {
+                            imageView
+                        }
+                    }
+                switch result {
+                case let .success(data):
+                    if data.hasDailyTaskIntel {
+                        let sitrep = data.dailyTaskCompletionStatus
+                        Text(verbatim: "\(sitrep.finished) / \(sitrep.all)")
+                            .font(.system(.body, design: .rounded).weight(.medium))
+                    } else {
+                        Text(verbatim: "WRONG\nGAME")
+                            .fontWidth(.compressed)
+                            .multilineTextAlignment(.center)
+                            .minimumScaleFactor(0.2)
+                    }
+                case .failure:
+                    Image(systemSymbol: .ellipsis)
+                }
+            }
+            .widgetAccentable(widgetRenderingMode == .accented)
+            #if os(watchOS)
+                .padding(.vertical, 2)
+                .padding(.top, 1)
+            #else
+                .padding(.vertical, 2)
+            #endif
+        }
+
+        // MARK: Private
+
+        @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+        private let result: Result<any DailyNoteProtocol, any Error>
     }
-
-    // MARK: Private
-
-    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
-
-    private let result: Result<any DailyNoteProtocol, any Error>
 }

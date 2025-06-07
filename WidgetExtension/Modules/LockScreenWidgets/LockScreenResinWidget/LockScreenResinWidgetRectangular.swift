@@ -9,147 +9,152 @@ import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
-// MARK: - LockScreenResinWidgetRectangular
+// MARK: - EmbeddedWidgets.LockScreenResinWidgetRectangular
 
 @available(macOS, unavailable)
-public struct LockScreenResinWidgetRectangular: View {
-    // MARK: Lifecycle
+extension EmbeddedWidgets {
+    // MARK: - LockScreenResinWidgetRectangular
 
-    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
-        self.entry = entry
-        self.result = result
-    }
+    @available(macOS, unavailable)
+    public struct LockScreenResinWidgetRectangular: View {
+        // MARK: Lifecycle
 
-    // MARK: Public
+        public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+            self.entry = entry
+            self.result = result
+        }
 
-    public var body: some View {
-        switch widgetRenderingMode {
-        case .fullColor:
-            switch result {
-            case let .success(data):
-                let staminaIntel = data.staminaIntel
-                HStack {
-                    VStack(alignment: .leading) {
-                        HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            let size: CGFloat = 40
-                            Text(verbatim: "\(staminaIntel.finished)")
-                                .font(.system(size: size, design: .rounded))
-                                .minimumScaleFactor(0.5)
-                            Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
-                                .font(.system(size: size * 1 / 2))
-                                .minimumScaleFactor(0.5)
-                        }
-                        .widgetAccentable()
-                        .foregroundColor(PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor)
-                        if staminaIntel.isAccomplished {
-                            Text("pzWidgetsKit.stamina.full", bundle: .main)
-                                .font(.footnote)
-                                .fixedSize(horizontal: false, vertical: true)
-                        } else {
-                            Text(
-                                "pzWidgetsKit.infoBlock.refilledAt:\(PZWidgets.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
-                                bundle: .main
-                            )
-                            .lineLimit(2)
-                            .font(.footnote)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .foregroundColor(.gray)
-                        }
-                    }
-                    Spacer()
-                }
-            case .failure:
-                HStack {
-                    VStack(alignment: .leading) {
-                        HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            let size: CGFloat = 40
-                            Text(Image(systemSymbol: .ellipsis))
-                                .font(.system(size: size, design: .rounded))
-                                .minimumScaleFactor(0.5)
-                            Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
-                                .font(.system(size: size * 1 / 2))
-                                .minimumScaleFactor(0.5)
-                        }
-                        .widgetAccentable()
-                        .foregroundColor(.cyan)
-                        Text(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)
-                            .font(.footnote)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    Spacer()
-                }
-            }
-        default:
-            switch result {
-            case let .success(data):
-                let staminaIntel = data.staminaIntel
-                HStack {
-                    VStack(alignment: .leading) {
-                        HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            let size: CGFloat = 40
-                            Text(verbatim: "\(staminaIntel.finished)")
-                                .font(.system(size: size, design: .rounded))
-                                .minimumScaleFactor(0.5)
-                            Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
-                                .font(.system(size: size * 1 / 2))
-                                .minimumScaleFactor(0.5)
-                        }
-                        .foregroundColor(.primary)
-                        .widgetAccentable()
-                        if staminaIntel.isAccomplished {
-                            Text("pzWidgetsKit.stamina.full", bundle: .main)
+        // MARK: Public
+
+        public var body: some View {
+            switch widgetRenderingMode {
+            case .fullColor:
+                switch result {
+                case let .success(data):
+                    let staminaIntel = data.staminaIntel
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                                let size: CGFloat = 40
+                                Text(verbatim: "\(staminaIntel.finished)")
+                                    .font(.system(size: size, design: .rounded))
+                                    .minimumScaleFactor(0.5)
+                                Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
+                                    .font(.system(size: size * 1 / 2))
+                                    .minimumScaleFactor(0.5)
+                            }
+                            .widgetAccentable()
+                            .foregroundColor(PZWidgetsSPM.Colors.IconColor.Resin.middle.suiColor)
+                            if staminaIntel.isAccomplished {
+                                Text("pzWidgetsKit.stamina.full", bundle: .main)
+                                    .font(.footnote)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            } else {
+                                Text(
+                                    "pzWidgetsKit.infoBlock.refilledAt:\(PZWidgets.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
+                                    bundle: .main
+                                )
+                                .lineLimit(2)
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .foregroundColor(.gray)
-                        } else {
-                            Text(
-                                "pzWidgetsKit.infoBlock.refilledAt:\(PZWidgets.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
-                                bundle: .main
-                            )
-                            .lineLimit(2)
-                            .font(.footnote)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .foregroundColor(.gray)
+                            }
                         }
+                        Spacer()
                     }
-                    Spacer()
+                case .failure:
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                                let size: CGFloat = 40
+                                Text(Image(systemSymbol: .ellipsis))
+                                    .font(.system(size: size, design: .rounded))
+                                    .minimumScaleFactor(0.5)
+                                Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
+                                    .font(.system(size: size * 1 / 2))
+                                    .minimumScaleFactor(0.5)
+                            }
+                            .widgetAccentable()
+                            .foregroundColor(.cyan)
+                            Text(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)
+                                .font(.footnote)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        Spacer()
+                    }
                 }
-            case .failure:
-                HStack {
-                    VStack(alignment: .leading) {
-                        HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            let size: CGFloat = 40
-                            Text(Image(systemSymbol: .ellipsis))
-                                .font(.system(size: size, design: .rounded))
-                                .minimumScaleFactor(0.5)
-                            Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
-                                .font(.system(size: size * 1 / 2))
-                                .minimumScaleFactor(0.5)
+            default:
+                switch result {
+                case let .success(data):
+                    let staminaIntel = data.staminaIntel
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                                let size: CGFloat = 40
+                                Text(verbatim: "\(staminaIntel.finished)")
+                                    .font(.system(size: size, design: .rounded))
+                                    .minimumScaleFactor(0.5)
+                                Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
+                                    .font(.system(size: size * 1 / 2))
+                                    .minimumScaleFactor(0.5)
+                            }
+                            .foregroundColor(.primary)
+                            .widgetAccentable()
+                            if staminaIntel.isAccomplished {
+                                Text("pzWidgetsKit.stamina.full", bundle: .main)
+                                    .font(.footnote)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .foregroundColor(.gray)
+                            } else {
+                                Text(
+                                    "pzWidgetsKit.infoBlock.refilledAt:\(PZWidgets.dateFormatter.string(from: data.staminaFullTimeOnFinish))",
+                                    bundle: .main
+                                )
+                                .lineLimit(2)
+                                .font(.footnote)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .foregroundColor(.gray)
+                            }
                         }
-                        .widgetAccentable()
-                        Text(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)
-                            .font(.footnote)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .foregroundColor(.gray)
+                        Spacer()
                     }
-                    Spacer()
+                case .failure:
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                                let size: CGFloat = 40
+                                Text(Image(systemSymbol: .ellipsis))
+                                    .font(.system(size: size, design: .rounded))
+                                    .minimumScaleFactor(0.5)
+                                Text("\(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)")
+                                    .font(.system(size: size * 1 / 2))
+                                    .minimumScaleFactor(0.5)
+                            }
+                            .widgetAccentable()
+                            Text(Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG)
+                                .font(.footnote)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .foregroundColor(.gray)
+                        }
+                        Spacer()
+                    }
                 }
             }
         }
+
+        // MARK: Private
+
+        @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+        private let entry: any TimelineEntry
+
+        private let result: Result<any DailyNoteProtocol, any Error>
     }
-
-    // MARK: Private
-
-    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
-
-    private let entry: any TimelineEntry
-
-    private let result: Result<any DailyNoteProtocol, any Error>
 }
 
 // MARK: - FitSystemFont
 
-struct FitSystemFont: ViewModifier {
+private struct FitSystemFont: ViewModifier {
     var lineLimit: Int
     var minimumScaleFactor: CGFloat
     var percentage: CGFloat
@@ -173,7 +178,7 @@ struct FitSystemFont: ViewModifier {
 
 extension View {
     @ViewBuilder
-    func fitSystemFont(
+    private func fitSystemFont(
         lineLimit: Int = 1,
         minimumScaleFactor: CGFloat = 0.01,
         percentage: CGFloat = 1

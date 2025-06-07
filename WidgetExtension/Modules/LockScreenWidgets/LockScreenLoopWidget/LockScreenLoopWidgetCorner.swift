@@ -4,38 +4,42 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
 @available(macOS, unavailable)
-public struct LockScreenLoopWidgetCorner: View {
-    // MARK: Lifecycle
+extension EmbeddedWidgets {
+    @available(macOS, unavailable)
+    public struct LockScreenLoopWidgetCorner: View {
+        // MARK: Lifecycle
 
-    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
-        self.entry = entry
-        self.result = result
-    }
-
-    // MARK: Public
-
-    public let entry: any TimelineEntry
-
-    public var body: some View {
-        switch LockScreenLoopWidgetType.autoChoose(entry: entry, result: result) {
-        case .resin:
-            LockScreenResinWidgetCorner(entry: entry, result: result)
-        case .dailyTask:
-            LockScreenDailyTaskWidgetCorner(result: result)
-        case .expedition:
-            LockScreenExpeditionWidgetCorner(result: result)
-        case .homeCoin:
-            LockScreenHomeCoinWidgetCorner(entry: entry, result: result)
+        public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+            self.entry = entry
+            self.result = result
         }
+
+        // MARK: Public
+
+        public let entry: any TimelineEntry
+
+        public var body: some View {
+            switch LockScreenLoopWidgetType.autoChoose(entry: entry, result: result) {
+            case .resin:
+                LockScreenResinWidgetCorner(entry: entry, result: result)
+            case .dailyTask:
+                LockScreenDailyTaskWidgetCorner(result: result)
+            case .expedition:
+                LockScreenExpeditionWidgetCorner(result: result)
+            case .homeCoin:
+                LockScreenHomeCoinWidgetCorner(entry: entry, result: result)
+            }
+        }
+
+        // MARK: Private
+
+        @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+        private let result: Result<any DailyNoteProtocol, any Error>
     }
-
-    // MARK: Private
-
-    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
-
-    private let result: Result<any DailyNoteProtocol, any Error>
 }
