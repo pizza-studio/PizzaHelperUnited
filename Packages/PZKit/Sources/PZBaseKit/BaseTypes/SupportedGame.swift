@@ -101,3 +101,15 @@ extension Pizza.SupportedGame? {
         self?.localizedShortName ?? "game.all.shortNameEX".i18nBaseKit
     }
 }
+
+// MARK: - Pizza.SupportedGame + Comparable
+
+extension Pizza.SupportedGame: Comparable {
+    public static func < (lhs: Pizza.SupportedGame, rhs: Pizza.SupportedGame) -> Bool {
+        lhs.caseIndex < rhs.caseIndex
+    }
+
+    public var caseIndex: Int {
+        Self.allCases.enumerated().first(where: { $0.element == self })?.offset ?? 0
+    }
+}
