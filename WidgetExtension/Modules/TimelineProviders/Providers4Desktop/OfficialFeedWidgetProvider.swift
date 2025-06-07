@@ -12,25 +12,6 @@ import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
-// MARK: - OfficialFeedWidgetEntry
-
-@available(watchOS, unavailable)
-public struct OfficialFeedWidgetEntry: TimelineEntry, Codable {
-    // MARK: Lifecycle
-
-    public init(games: Set<Pizza.SupportedGame>, events: [OfficialFeed.FeedEvent]?) {
-        self.date = Date()
-        self.events = events
-        self.games = games
-    }
-
-    // MARK: Public
-
-    public let date: Date
-    public let events: [OfficialFeed.FeedEvent]?
-    public let games: Set<Pizza.SupportedGame>
-}
-
 // MARK: - OfficialFeedWidgetProvider
 
 @available(watchOS, unavailable)

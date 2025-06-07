@@ -10,61 +10,13 @@ import PZInGameEventKit
 import PZWidgetsKit
 import WidgetKit
 
-// MARK: - MainWidgetEntry
-
-@available(watchOS, unavailable)
-public struct MainWidgetEntry: TimelineEntry, Sendable {
-    // MARK: Lifecycle
-
-    public init(
-        date: Date,
-        result: Result<any DailyNoteProtocol, any Error>,
-        viewConfig: Config4DesktopProfileWidgets,
-        profile: PZProfileSendable?,
-        pilotAssetMap: [URL: SendableImagePtr]? = nil,
-        events: [OfficialFeed.FeedEvent]
-    ) {
-        self.date = date
-        self.result = result
-        self.viewConfig = viewConfig
-        self.profile = profile
-        self.events = events
-        self.pilotAssetMap = pilotAssetMap ?? [:]
-    }
-
-    // MARK: Public
-
-    public let date: Date
-    public let timestampOnCreation: Date = .now
-    public let result: Result<any DailyNoteProtocol, any Error>
-    public let viewConfig: Config4DesktopProfileWidgets
-    public let profile: PZProfileSendable?
-    public let events: [OfficialFeed.FeedEvent]
-    public let pilotAssetMap: [URL: SendableImagePtr]
-
-    public var relevance: TimelineEntryRelevance? {
-        switch result {
-        case let .success(data):
-            if data.staminaFullTimeOnFinish >= .now {
-                return .init(score: 10)
-            }
-            let stamina = data.staminaIntel
-            return .init(
-                score: 10 * Float(stamina.finished) / Float(stamina.all)
-            )
-        case .failure:
-            return .init(score: 0)
-        }
-    }
-}
-
 // MARK: - MainWidgetProvider
 
 @available(watchOS, unavailable)
 struct MainWidgetProvider: AppIntentTimelineProvider {
     // MARK: Internal
 
-    typealias Entry = MainWidgetEntry
+    typealias Entry = SingleProfileWidgetEntry
     typealias Intent = SelectAccountIntent
 
     func recommendations() -> [AppIntentRecommendation<Intent>] { [] }
