@@ -13,16 +13,16 @@ import WidgetKit
 // MARK: - MainWidgetEntry
 
 @available(watchOS, unavailable)
-struct MainWidgetEntry: TimelineEntry {
+public struct MainWidgetEntry: TimelineEntry, Sendable {
     // MARK: Lifecycle
 
-    init(
+    public init(
         date: Date,
         result: Result<any DailyNoteProtocol, any Error>,
         viewConfig: Config4DesktopProfileWidgets,
         profile: PZProfileSendable?,
         pilotAssetMap: [URL: SendableImagePtr]? = nil,
-        events: [EventModel]
+        events: [OfficialFeed.FeedEvent]
     ) {
         self.date = date
         self.result = result
@@ -32,17 +32,17 @@ struct MainWidgetEntry: TimelineEntry {
         self.pilotAssetMap = pilotAssetMap ?? [:]
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let date: Date
-    let timestampOnCreation: Date = .now
-    let result: Result<any DailyNoteProtocol, any Error>
-    let viewConfig: Config4DesktopProfileWidgets
-    let profile: PZProfileSendable?
-    let events: [EventModel]
-    let pilotAssetMap: [URL: SendableImagePtr]
+    public let date: Date
+    public let timestampOnCreation: Date = .now
+    public let result: Result<any DailyNoteProtocol, any Error>
+    public let viewConfig: Config4DesktopProfileWidgets
+    public let profile: PZProfileSendable?
+    public let events: [OfficialFeed.FeedEvent]
+    public let pilotAssetMap: [URL: SendableImagePtr]
 
-    var relevance: TimelineEntryRelevance? {
+    public var relevance: TimelineEntryRelevance? {
         switch result {
         case let .success(data):
             if data.staminaFullTimeOnFinish >= .now {

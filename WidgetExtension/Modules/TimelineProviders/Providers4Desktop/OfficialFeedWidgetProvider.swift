@@ -8,29 +8,27 @@ import GITodayMaterialsKit
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
-
-@available(watchOS, unavailable)
-typealias EventModel = OfficialFeed.FeedEvent
 
 // MARK: - OfficialFeedWidgetEntry
 
 @available(watchOS, unavailable)
-struct OfficialFeedWidgetEntry: TimelineEntry {
+public struct OfficialFeedWidgetEntry: TimelineEntry, Codable {
     // MARK: Lifecycle
 
-    init(games: Set<Pizza.SupportedGame>, events: [EventModel]?) {
+    public init(games: Set<Pizza.SupportedGame>, events: [OfficialFeed.FeedEvent]?) {
         self.date = Date()
         self.events = events
         self.games = games
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let date: Date
-    let events: [EventModel]?
-    let games: Set<Pizza.SupportedGame>
+    public let date: Date
+    public let events: [OfficialFeed.FeedEvent]?
+    public let games: Set<Pizza.SupportedGame>
 }
 
 // MARK: - OfficialFeedWidgetProvider

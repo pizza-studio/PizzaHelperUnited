@@ -13,10 +13,10 @@ import WidgetKit
 // MARK: - DualProfileWidgetEntry
 
 @available(watchOS, unavailable)
-struct DualProfileWidgetEntry: TimelineEntry {
+public struct DualProfileWidgetEntry: TimelineEntry, Sendable {
     // MARK: Lifecycle
 
-    init(
+    public init(
         date: Date,
         resultSlot1: Result<any DailyNoteProtocol, any Error>,
         resultSlot2: Result<any DailyNoteProtocol, any Error>,
@@ -24,7 +24,7 @@ struct DualProfileWidgetEntry: TimelineEntry {
         profileSlot1: PZProfileSendable?,
         profileSlot2: PZProfileSendable?,
         pilotAssetMap: [URL: SendableImagePtr]? = nil,
-        events: [EventModel]
+        events: [OfficialFeed.FeedEvent]
     ) {
         self.date = date
         self.resultSlot1 = resultSlot1
@@ -36,23 +36,23 @@ struct DualProfileWidgetEntry: TimelineEntry {
         self.pilotAssetMap = pilotAssetMap ?? [:]
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let date: Date
-    let timestampOnCreation: Date = .now
-    let resultSlot1: Result<any DailyNoteProtocol, any Error>
-    let resultSlot2: Result<any DailyNoteProtocol, any Error>
-    let viewConfig: Config4DesktopProfileWidgets
-    let profileSlot1: PZProfileSendable?
-    let profileSlot2: PZProfileSendable?
-    let events: [EventModel]
-    let pilotAssetMap: [URL: SendableImagePtr]
+    public let date: Date
+    public let timestampOnCreation: Date = .now
+    public let resultSlot1: Result<any DailyNoteProtocol, any Error>
+    public let resultSlot2: Result<any DailyNoteProtocol, any Error>
+    public let viewConfig: Config4DesktopProfileWidgets
+    public let profileSlot1: PZProfileSendable?
+    public let profileSlot2: PZProfileSendable?
+    public let events: [OfficialFeed.FeedEvent]
+    public let pilotAssetMap: [URL: SendableImagePtr]
 
-    var relevance: TimelineEntryRelevance? {
+    public var relevance: TimelineEntryRelevance? {
         .init(score: Swift.max(countRelevance(resultSlot1), countRelevance(resultSlot2)))
     }
 
-    func countRelevance(_ result: Result<any DailyNoteProtocol, any Error>) -> Float {
+    public func countRelevance(_ result: Result<any DailyNoteProtocol, any Error>) -> Float {
         switch result {
         case let .success(data):
             if data.staminaFullTimeOnFinish >= .now {
