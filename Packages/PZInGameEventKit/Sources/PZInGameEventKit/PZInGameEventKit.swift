@@ -4,5 +4,4 @@
 
 // MARK: - OfficialFeed
 
-@available(watchOS, unavailable)
 public enum OfficialFeed {}
