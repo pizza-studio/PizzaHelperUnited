@@ -5,11 +5,12 @@
 import Defaults
 import Foundation
 import PZAccountKit
+import PZBaseKit
 import SwiftUI
 
 // MARK: - GITodayMaterial
 
-public struct GITodayMaterial: Codable, Identifiable, Equatable, Hashable, Sendable {
+public struct GITodayMaterial: AbleToCodeSendHash, Identifiable, Equatable {
     public let id: Int
     public let isWeapon: Bool
     public let nameTag: String
@@ -27,7 +28,7 @@ extension GITodayMaterial {
         .init(rawValue: id % 3) ?? nil
     }
 
-    public enum AvailableWeekDay: Int, CaseIterable, Identifiable, Hashable, Equatable {
+    public enum AvailableWeekDay: Int, CaseIterable, Identifiable, AbleToCodeSendHash {
         case MonThu = 0
         case TueFri = 1
         case WedSat = 2
