@@ -16,7 +16,7 @@ import WidgetKit
 struct DualProfileWidgetProvider: AppIntentTimelineProvider {
     // MARK: Internal
 
-    typealias Entry = DualProfileWidgetEntry
+    typealias Entry = ProfileWidgetEntry
     typealias Intent = SelectDualProfileIntent
 
     func recommendations() -> [AppIntentRecommendation<Intent>] { [] }
