@@ -13,6 +13,7 @@ import SwiftUI
 // MARK: - OfficialFeed.OfficialFeedSection
 
 extension OfficialFeed {
+    @available(watchOS, unavailable)
     public struct OfficialFeedSection<TT: View>: View {
         // MARK: Lifecycle
 
@@ -99,6 +100,7 @@ extension OfficialFeed {
 
 // MARK: - OfficialFeed.OfficialFeedSection.MainComponent
 
+@available(watchOS, unavailable)
 extension OfficialFeed.OfficialFeedSection {
     private struct MainComponent<T: View>: View {
         // MARK: Public

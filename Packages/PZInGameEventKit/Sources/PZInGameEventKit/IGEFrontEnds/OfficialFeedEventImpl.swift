@@ -4,8 +4,8 @@
 
 import SwiftUI
 
-@available(watchOS, unavailable)
 extension OfficialFeed.FeedEvent {
+    @available(watchOS, unavailable)
     @MainActor @ViewBuilder
     public func textListItemRenderable() -> some View {
         HStack {
