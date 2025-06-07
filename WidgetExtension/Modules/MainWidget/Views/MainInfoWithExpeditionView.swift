@@ -15,7 +15,7 @@ import WidgetKit
 struct MainInfoWithExpedition: View {
     let entry: MainWidgetProvider.Entry
     var dailyNote: any DailyNoteProtocol
-    let viewConfig: WidgetViewConfiguration
+    let viewConfig: Config4DesktopProfileWidgets
     let accountName: String?
 
     var body: some View {

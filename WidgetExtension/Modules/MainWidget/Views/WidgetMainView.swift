@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -12,7 +13,7 @@ struct WidgetMainView: View {
     let entry: MainWidgetProvider.Entry
     @Environment(\.widgetFamily) var family: WidgetFamily
     var dailyNote: any DailyNoteProtocol
-    let viewConfig: WidgetViewConfiguration
+    let viewConfig: Config4DesktopProfileWidgets
     let accountName: String?
 
     var body: some View {

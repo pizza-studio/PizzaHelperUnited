@@ -5,6 +5,7 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -17,7 +18,7 @@ struct DetailInfo: View {
     init(
         entry: any TimelineEntry,
         dailyNote: any DailyNoteProtocol,
-        viewConfig: WidgetViewConfiguration,
+        viewConfig: Config4DesktopProfileWidgets,
         spacing: CGFloat = 13
     ) {
         self.entry = entry
@@ -30,7 +31,7 @@ struct DetailInfo: View {
 
     let entry: any TimelineEntry
     let dailyNote: any DailyNoteProtocol
-    let viewConfig: WidgetViewConfiguration
+    let viewConfig: Config4DesktopProfileWidgets
     let spacing: CGFloat
 
     var lineHeightMax: CGFloat { 17 }

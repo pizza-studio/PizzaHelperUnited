@@ -7,6 +7,7 @@ import Defaults
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
+import PZWidgetsKit
 import WidgetKit
 
 // MARK: - MainWidgetEntry
@@ -18,7 +19,7 @@ struct MainWidgetEntry: TimelineEntry {
     init(
         date: Date,
         result: Result<any DailyNoteProtocol, any Error>,
-        viewConfig: WidgetViewConfiguration,
+        viewConfig: Config4DesktopProfileWidgets,
         profile: PZProfileSendable?,
         pilotAssetMap: [URL: SendableImagePtr]? = nil,
         events: [EventModel]
@@ -36,7 +37,7 @@ struct MainWidgetEntry: TimelineEntry {
     let date: Date
     let timestampOnCreation: Date = .now
     let result: Result<any DailyNoteProtocol, any Error>
-    let viewConfig: WidgetViewConfiguration
+    let viewConfig: Config4DesktopProfileWidgets
     let profile: PZProfileSendable?
     let events: [EventModel]
     let pilotAssetMap: [URL: SendableImagePtr]
