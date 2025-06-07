@@ -10,58 +10,61 @@ import SwiftUI
 import WidgetKit
 
 @available(macOS, unavailable)
-public struct LockScreenHomeCoinWidgetCircular: View {
-    // MARK: Lifecycle
+extension EmbeddedWidgets {
+    @available(macOS, unavailable)
+    public struct LockScreenHomeCoinWidgetCircular: View {
+        // MARK: Lifecycle
 
-    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
-        self.entry = entry
-        self.result = result
-    }
-
-    // MARK: Public
-
-    public var body: some View {
-        VStack(spacing: 0) {
-            Pizza.SupportedGame.genshinImpact.giRealmCurrencyAssetSVG
-                .resizable()
-                .scaledToFit()
-                .apply { imageView in
-                    if widgetRenderingMode == .fullColor {
-                        imageView
-                            .foregroundColor(PZWidgetsSPM.Colors.IconColor.HomeCoin.lightBlue.suiColor)
-                    } else {
-                        imageView
-                    }
-                }
-            switch result {
-            case let .success(data):
-                switch data {
-                case let data as any Note4GI:
-                    Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                default:
-                    Text(verbatim: "WRONG\nGAME")
-                        .fontWidth(.compressed)
-                        .multilineTextAlignment(.center)
-                        .minimumScaleFactor(0.2)
-                }
-            case .failure:
-                Image(systemSymbol: .ellipsis)
-            }
+        public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+            self.entry = entry
+            self.result = result
         }
-        .widgetAccentable(widgetRenderingMode == .accented)
-        #if os(watchOS)
-            .padding(.vertical, 2)
-            .padding(.top, 1)
-        #else
-            .padding(.vertical, 2)
-        #endif
+
+        // MARK: Public
+
+        public var body: some View {
+            VStack(spacing: 0) {
+                Pizza.SupportedGame.genshinImpact.giRealmCurrencyAssetSVG
+                    .resizable()
+                    .scaledToFit()
+                    .apply { imageView in
+                        if widgetRenderingMode == .fullColor {
+                            imageView
+                                .foregroundColor(PZWidgetsSPM.Colors.IconColor.HomeCoin.lightBlue.suiColor)
+                        } else {
+                            imageView
+                        }
+                    }
+                switch result {
+                case let .success(data):
+                    switch data {
+                    case let data as any Note4GI:
+                        Text(verbatim: "\(data.homeCoinInfo.currentHomeCoin)")
+                            .font(.system(.body, design: .rounded).weight(.medium))
+                    default:
+                        Text(verbatim: "WRONG\nGAME")
+                            .fontWidth(.compressed)
+                            .multilineTextAlignment(.center)
+                            .minimumScaleFactor(0.2)
+                    }
+                case .failure:
+                    Image(systemSymbol: .ellipsis)
+                }
+            }
+            .widgetAccentable(widgetRenderingMode == .accented)
+            #if os(watchOS)
+                .padding(.vertical, 2)
+                .padding(.top, 1)
+            #else
+                .padding(.vertical, 2)
+            #endif
+        }
+
+        // MARK: Private
+
+        @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+        private let entry: any TimelineEntry
+        private let result: Result<any DailyNoteProtocol, any Error>
     }
-
-    // MARK: Private
-
-    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
-
-    private let entry: any TimelineEntry
-    private let result: Result<any DailyNoteProtocol, any Error>
 }

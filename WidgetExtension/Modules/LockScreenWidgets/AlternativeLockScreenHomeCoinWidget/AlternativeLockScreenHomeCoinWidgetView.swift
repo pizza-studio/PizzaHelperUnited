@@ -8,12 +8,12 @@ import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
-// MARK: - LockScreenDailyTaskWidgetView
+// MARK: - AlternativeLockScreenHomeCoinWidgetView
 
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
     @available(macOS, unavailable)
-    public struct LockScreenDailyTaskWidgetView: View {
+    public struct AlternativeLockScreenHomeCoinWidgetView: View {
         // MARK: Lifecycle
 
         public init(entry: ProfileWidgetEntry) {
@@ -25,19 +25,8 @@ extension EmbeddedWidgets {
         public let entry: ProfileWidgetEntry
 
         public var body: some View {
-            Group {
-                switch family {
-                #if os(watchOS)
-                case .accessoryCorner:
-                    LockScreenDailyTaskWidgetCorner(result: result)
-                #endif
-                case .accessoryCircular:
-                    LockScreenDailyTaskWidgetCircular(result: result)
-                default:
-                    EmptyView()
-                }
-            }
-            .widgetURL(url)
+            AlternativeLockScreenHomeCoinWidgetCircular(entry: entry, result: result)
+                .widgetURL(url)
         }
 
         // MARK: Private
