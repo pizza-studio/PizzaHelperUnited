@@ -11,13 +11,17 @@ import SwiftUI
 import WidgetKit
 
 @available(macOS, unavailable)
-struct LockScreenResinWidgetCircular: View {
-    let entry: any TimelineEntry
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct LockScreenResinWidgetCircular: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+        self.entry = entry
+        self.result = result
+    }
 
-    var body: some View {
+    // MARK: Public
+
+    public var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
             switch result {
@@ -103,4 +107,11 @@ struct LockScreenResinWidgetCircular: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let entry: any TimelineEntry
+    private let result: Result<any DailyNoteProtocol, any Error>
 }

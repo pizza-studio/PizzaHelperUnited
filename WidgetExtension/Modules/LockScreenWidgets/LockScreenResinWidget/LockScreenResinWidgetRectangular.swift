@@ -12,13 +12,17 @@ import WidgetKit
 // MARK: - LockScreenResinWidgetRectangular
 
 @available(macOS, unavailable)
-struct LockScreenResinWidgetRectangular: View {
-    let entry: any TimelineEntry
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct LockScreenResinWidgetRectangular: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+        self.entry = entry
+        self.result = result
+    }
 
-    var body: some View {
+    // MARK: Public
+
+    public var body: some View {
         switch widgetRenderingMode {
         case .fullColor:
             switch result {
@@ -133,6 +137,14 @@ struct LockScreenResinWidgetRectangular: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let entry: any TimelineEntry
+
+    private let result: Result<any DailyNoteProtocol, any Error>
 }
 
 // MARK: - FitSystemFont

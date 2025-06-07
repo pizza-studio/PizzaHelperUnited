@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -38,15 +39,41 @@ struct LockScreenExpeditionWidget: Widget {
 // MARK: - LockScreenExpeditionWidgetView
 
 @available(macOS, unavailable)
-struct LockScreenExpeditionWidgetView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
+public struct LockScreenExpeditionWidgetView: View {
+    // MARK: Lifecycle
 
-    let entry: LockScreenWidgetProvider.Entry
+    public init(entry: ProfileWidgetEntry) {
+        self.entry = entry
+    }
 
-    var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var accountName: String? { entry.profile?.name }
+    // MARK: Public
 
-    var url: URL? {
+    public let entry: ProfileWidgetEntry
+
+    public var body: some View {
+        Group {
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenExpeditionWidgetCorner(result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenExpeditionWidgetCircular(result: result)
+            default:
+                EmptyView()
+            }
+        }
+        .widgetURL(url)
+    }
+
+    // MARK: Private
+
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+
+    private var result: Result<any DailyNoteProtocol, any Error> { entry.result }
+    private var accountName: String? { entry.profile?.name }
+
+    private var url: URL? {
         let errorURL: URL = {
             var components = URLComponents()
             components.scheme = "ophelperwidget"
@@ -66,21 +93,5 @@ struct LockScreenExpeditionWidgetView: View {
         case .failure:
             return errorURL
         }
-    }
-
-    var body: some View {
-        Group {
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenExpeditionWidgetCorner(result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenExpeditionWidgetCircular(result: result)
-            default:
-                EmptyView()
-            }
-        }
-        .widgetURL(url)
     }
 }

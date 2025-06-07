@@ -9,12 +9,30 @@ import SwiftUI
 // MARK: - LockScreenExpeditionWidgetCorner
 
 @available(macOS, unavailable)
-struct LockScreenExpeditionWidgetCorner: View {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct LockScreenExpeditionWidgetCorner: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(result: Result<any DailyNoteProtocol, any Error>) {
+        self.result = result
+    }
 
-    var text: String {
+    // MARK: Public
+
+    public var body: some View {
+        Pizza.SupportedGame(dailyNoteResult: result).expeditionAssetSVG
+            .resizable()
+            .scaledToFit()
+            .padding(4.5)
+            .widgetLabel(text)
+    }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let result: Result<any DailyNoteProtocol, any Error>
+
+    private var text: String {
         switch result {
         case let .success(data):
             /// ZZZ Has no expedition intels available through API yet.
@@ -38,14 +56,6 @@ struct LockScreenExpeditionWidgetCorner: View {
         case .failure:
             return "pzWidgetsKit.expedition".i18nWidgets
         }
-    }
-
-    var body: some View {
-        Pizza.SupportedGame(dailyNoteResult: result).expeditionAssetSVG
-            .resizable()
-            .scaledToFit()
-            .padding(4.5)
-            .widgetLabel(text)
     }
 }
 

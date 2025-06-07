@@ -10,13 +10,32 @@ import WidgetKit
 // MARK: - LockScreenHomeCoinWidgetCorner
 
 @available(macOS, unavailable)
-struct LockScreenHomeCoinWidgetCorner: View {
-    let entry: any TimelineEntry
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+public struct LockScreenHomeCoinWidgetCorner: View {
+    // MARK: Lifecycle
 
-    let result: Result<any DailyNoteProtocol, any Error>
+    public init(entry: any TimelineEntry, result: Result<any DailyNoteProtocol, any Error>) {
+        self.entry = entry
+        self.result = result
+    }
 
-    var text: String {
+    // MARK: Public
+
+    public var body: some View {
+        Pizza.SupportedGame.genshinImpact.giRealmCurrencyAssetSVG
+            .resizable()
+            .scaledToFit()
+            .padding(3)
+            .widgetLabel(text)
+    }
+
+    // MARK: Private
+
+    @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+    private let entry: any TimelineEntry
+    private let result: Result<any DailyNoteProtocol, any Error>
+
+    private var text: String {
         switch result {
         case let .success(data):
             switch data {
@@ -30,13 +49,5 @@ struct LockScreenHomeCoinWidgetCorner: View {
         case .failure:
             return "pzWidgetsKit.homeCoin".i18nWidgets
         }
-    }
-
-    var body: some View {
-        Pizza.SupportedGame.genshinImpact.giRealmCurrencyAssetSVG
-            .resizable()
-            .scaledToFit()
-            .padding(3)
-            .widgetLabel(text)
     }
 }
