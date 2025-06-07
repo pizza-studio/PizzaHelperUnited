@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
@@ -38,7 +39,7 @@ struct WidgetViewEntryView: View {
     let noBackground: Bool
 
     var result: Result<any DailyNoteProtocol, any Error> { entry.result }
-    var viewConfig: WidgetViewConfiguration { entry.viewConfig }
+    var viewConfig: Config4DesktopProfileWidgets { entry.viewConfig }
     var accountName: String? { entry.profile?.name }
 
     var body: some View {
@@ -67,7 +68,7 @@ struct WidgetViewEntryView: View {
 extension View {
     @ViewBuilder
     fileprivate func myContainerBackground(
-        viewConfig: WidgetViewConfiguration?
+        viewConfig: Config4DesktopProfileWidgets?
     )
         -> some View {
         if let viewConfig {
@@ -79,7 +80,7 @@ extension View {
 
     @ViewBuilder
     fileprivate func containerBackgroundStandbyDetector(
-        viewConfig: WidgetViewConfiguration
+        viewConfig: Config4DesktopProfileWidgets
     )
         -> some View {
         modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
@@ -90,7 +91,7 @@ extension View {
 
 @available(watchOS, unavailable)
 private struct ContainerBackgroundModifier: ViewModifier {
-    var viewConfig: WidgetViewConfiguration
+    var viewConfig: Config4DesktopProfileWidgets
 
     func body(content: Content) -> some View {
         content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
@@ -104,7 +105,7 @@ private struct ContainerBackgroundStandbyDetector: ViewModifier {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode
     @Environment(\.widgetContentMargins) var widgetContentMargins: EdgeInsets
 
-    var viewConfig: WidgetViewConfiguration
+    var viewConfig: Config4DesktopProfileWidgets
 
     func body(content: Content) -> some View {
         if widgetContentMargins.top < 5 {
