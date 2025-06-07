@@ -11,6 +11,7 @@ import WallpaperKit
 
 // MARK: - GIOngoingEventAllListView
 
+@available(watchOS, unavailable)
 extension OfficialFeed {
     struct OfficialFeedAllListView: View {
         // MARK: Lifecycle

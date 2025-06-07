@@ -9,7 +9,6 @@ import PZBaseKit
 
 // MARK: OfficialFeed.FeedEvent
 
-@available(watchOS, unavailable)
 extension OfficialFeed {
     public struct FeedEvent: AbleToCodeSendHash, Identifiable, Defaults.Serializable {
         public let game: Pizza.SupportedGame
@@ -24,6 +23,7 @@ extension OfficialFeed {
     }
 
     /// This returns true even if no local cache entry is available.
+    @available(watchOS, unavailable)
     public static func getCachedEventsIfValid(for game: Pizza.SupportedGame) -> [FeedEvent]? {
         let lastFetchDate = Defaults[.officialFeedMostRecentFetchDate][game.rawValue]
         guard let lastFetchDate else { return nil }
