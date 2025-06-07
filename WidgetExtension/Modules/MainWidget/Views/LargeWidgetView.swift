@@ -18,7 +18,7 @@ struct LargeWidgetView: View {
     public init(
         entry: MainWidgetProvider.Entry,
         dailyNote: any DailyNoteProtocol,
-        viewConfig: WidgetViewConfiguration,
+        viewConfig: Config4DesktopProfileWidgets,
         accountName: String?,
         events: [EventModel]
     ) {
@@ -44,7 +44,7 @@ struct LargeWidgetView: View {
 
     private let entry: MainWidgetProvider.Entry
     private let dailyNote: any DailyNoteProtocol
-    private let viewConfig: WidgetViewConfiguration
+    private let viewConfig: Config4DesktopProfileWidgets
     private let accountName: String?
     private let events: [EventModel]
 }

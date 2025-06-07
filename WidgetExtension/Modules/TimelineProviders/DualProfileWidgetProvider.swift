@@ -7,6 +7,7 @@ import Defaults
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
+import PZWidgetsKit
 import WidgetKit
 
 // MARK: - DualProfileWidgetEntry
@@ -19,7 +20,7 @@ struct DualProfileWidgetEntry: TimelineEntry {
         date: Date,
         resultSlot1: Result<any DailyNoteProtocol, any Error>,
         resultSlot2: Result<any DailyNoteProtocol, any Error>,
-        viewConfig: WidgetViewConfiguration,
+        viewConfig: Config4DesktopProfileWidgets,
         profileSlot1: PZProfileSendable?,
         profileSlot2: PZProfileSendable?,
         pilotAssetMap: [URL: SendableImagePtr]? = nil,
@@ -41,7 +42,7 @@ struct DualProfileWidgetEntry: TimelineEntry {
     let timestampOnCreation: Date = .now
     let resultSlot1: Result<any DailyNoteProtocol, any Error>
     let resultSlot2: Result<any DailyNoteProtocol, any Error>
-    let viewConfig: WidgetViewConfiguration
+    let viewConfig: Config4DesktopProfileWidgets
     let profileSlot1: PZProfileSendable?
     let profileSlot2: PZProfileSendable?
     let events: [EventModel]
@@ -139,7 +140,7 @@ struct DualProfileWidgetProvider: AppIntentTimelineProvider {
     // MARK: Private
 
     private static func getEntries(configuration: Intent, refreshTime: inout Date) async -> [Entry] {
-        let viewConfig = WidgetViewConfiguration(configuration, nil)
+        let viewConfig = Config4DesktopProfileWidgets(configuration, nil)
         let intentEntity1 = configuration.profileSlot1
         let intentEntity2 = configuration.profileSlot2
 
