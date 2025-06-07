@@ -9,7 +9,6 @@ import PZWidgetsKit
 import SwiftUI
 import WallpaperKit
 
-@available(watchOS, unavailable)
 extension WidgetViewConfig {
     public init(_ intent: some ProfileWidgetIntentProtocol, _ noticeMessage: String?) {
         self = .defaultConfig // 作为拓展 constructor 使用时，此行必需。
