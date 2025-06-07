@@ -20,7 +20,7 @@ struct AlternativeLockScreenResinWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
         ) { entry in
             AlternativeLockScreenResinWidgetView(entry: entry)
-                .lockscreenContainerBackground { EmptyView() }
+                .smartStackWidgetContainerBackground { EmptyView() }
         }
         .configurationDisplayName("pzWidgetsKit.cfgName.stamina".i18nWidgets)
         .description("pzWidgetsKit.cfgName.stamina.detail.2".i18nWidgets)

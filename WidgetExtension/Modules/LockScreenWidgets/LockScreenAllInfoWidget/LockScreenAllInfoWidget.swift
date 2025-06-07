@@ -25,7 +25,7 @@ struct LockScreenAllInfoWidget: Widget {
             )
         ) { entry in
             LockScreenAllInfoWidgetView(entry: entry)
-                .lockscreenContainerBackground { EmptyView() }
+                .smartStackWidgetContainerBackground { EmptyView() }
         }
         .configurationDisplayName("pzWidgetsKit.cfgName.generalInfo".i18nWidgets)
         .description("pzWidgetsKit.cfgName.generalInfo.detail".i18nWidgets)

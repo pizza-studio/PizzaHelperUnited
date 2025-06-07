@@ -20,7 +20,7 @@ struct LockScreenDailyTaskWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.dailyCommission")
         ) { entry in
             LockScreenDailyTaskWidgetView(entry: entry)
-                .lockscreenContainerBackground { EmptyView() }
+                .smartStackWidgetContainerBackground { EmptyView() }
         }
         .configurationDisplayName("pzWidgetsKit.dailyTask".i18nWidgets)
         .description("pzWidgetsKit.cfgName.dailyCommission".i18nWidgets)

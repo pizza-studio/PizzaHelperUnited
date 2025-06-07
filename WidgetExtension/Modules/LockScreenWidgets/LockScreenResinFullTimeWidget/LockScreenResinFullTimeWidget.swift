@@ -20,7 +20,7 @@ struct LockScreenResinFullTimeWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "pzWidgetsKit.stamina.refillTime.ofSb")
         ) { entry in
             LockScreenResinFullTimeWidgetView(entry: entry)
-                .lockscreenContainerBackground { EmptyView() }
+                .smartStackWidgetContainerBackground { EmptyView() }
         }
         .configurationDisplayName("pzWidgetsKit.stamina.refillTime.title".i18nWidgets)
         .description("pzWidgetsKit.stamina.refillTime.show.title".i18nWidgets)

@@ -35,12 +35,7 @@ public struct OfficialFeedWidgetView<RefreshIntent: AppIntent>: View {
             refreshIntent: refreshIntent
         )
         .environment(\.colorScheme, .dark)
-        .myWidgetContainerBackground(withPadding: 0) {
-            WidgetBackgroundView(
-                background: WidgetBackground.randomNamecardBackground4Games(entry.games),
-                darkModeOn: true
-            )
-        }
+        .pzWidgetContainerBackground(viewConfig: viewConfig)
     }
 
     // MARK: Internal
@@ -53,6 +48,16 @@ public struct OfficialFeedWidgetView<RefreshIntent: AppIntent>: View {
     private let games: Set<Pizza.SupportedGame>
     private let showLeadingBorder: Bool
     private let refreshIntent: RefreshIntent?
+
+    private var viewConfig: WidgetViewConfig {
+        var result = WidgetViewConfig()
+        result.randomBackground = false
+        result.selectedBackgrounds = [
+            WidgetBackground.randomNamecardBackground4Games(entry.games),
+        ]
+        result.isDarkModeRespected = true
+        return result
+    }
 }
 
 // MARK: - OfficialFeedList4WidgetsView
