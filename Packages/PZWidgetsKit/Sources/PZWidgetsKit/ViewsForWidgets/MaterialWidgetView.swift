@@ -68,36 +68,3 @@ public struct MaterialWidgetView<RefreshIntent: AppIntent>: View {
         return result
     }()
 }
-
-// MARK: - MaterialView
-
-@available(watchOS, unavailable)
-public struct MaterialView: View {
-    // MARK: Lifecycle
-
-    public init(alternativeLayout: Bool = false, today: GITodayMaterial.AvailableWeekDay? = nil) {
-        self.alternativeLayout = alternativeLayout
-        self.today = today ?? .today()
-    }
-
-    // MARK: Public
-
-    public var body: some View {
-        GITodayMaterialsView4Widgets(
-            alternativeLayout: alternativeLayout,
-            today: today
-        ) {
-            Text("pzWidgetsKit.material.sunday", bundle: .module)
-                .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
-                .font(.caption)
-                .lineLimit(1)
-                .minimumScaleFactor(0.2)
-                .legibilityShadow()
-        }
-    }
-
-    // MARK: Private
-
-    private let alternativeLayout: Bool
-    private var today: GITodayMaterial.AvailableWeekDay? = .today()
-}
