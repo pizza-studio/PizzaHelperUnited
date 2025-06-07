@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+// MARK: - WidgetNote4GI.DailyTaskInfo4GI + Decodable
+
 extension WidgetNote4GI.DailyTaskInfo4GI: Decodable {
     enum CodingKeys: String, CodingKey {
         case totalTaskCount = "total_task_num"
@@ -24,5 +26,16 @@ extension WidgetNote4GI.DailyTaskInfo4GI: Decodable {
             Bool.self,
             forKey: WidgetNote4GI.DailyTaskInfo4GI.CodingKeys.isExtraRewardReceived
         )
+    }
+}
+
+// MARK: - WidgetNote4GI.DailyTaskInfo4GI + Encodable
+
+extension WidgetNote4GI.DailyTaskInfo4GI: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(totalTaskCount, forKey: .totalTaskCount)
+        try container.encode(finishedTaskCount, forKey: .finishedTaskCount)
+        try container.encode(isExtraRewardReceived, forKey: .isExtraRewardReceived)
     }
 }

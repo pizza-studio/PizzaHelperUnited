@@ -40,3 +40,23 @@ extension WidgetNote4GI.ExpeditionInfo4GI: Decodable {
         )
     }
 }
+
+// MARK: - WidgetNote4GI.ExpeditionInfo4GI.Expedition + Encodable
+
+extension WidgetNote4GI.ExpeditionInfo4GI.Expedition: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(isFinished ? "Finished" : "Ongoing", forKey: .status)
+        try container.encode(iconURL, forKey: .iconURL)
+    }
+}
+
+// MARK: - WidgetNote4GI.ExpeditionInfo4GI + Encodable
+
+extension WidgetNote4GI.ExpeditionInfo4GI: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(maxExpeditionsCount, forKey: .maxExpeditionsCount)
+        try container.encode(expeditions, forKey: .expeditions)
+    }
+}

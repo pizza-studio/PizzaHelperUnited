@@ -72,7 +72,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
                         Text(verbatim: "")
                     }
                 }
-        case let data as Note4HSR:
+        case let data as any Note4HSR:
             let staminaInfo = data.staminaInfo
             Pizza.SupportedGame(dailyNoteResult: result).primaryStaminaAssetSVG
                 .resizable()
