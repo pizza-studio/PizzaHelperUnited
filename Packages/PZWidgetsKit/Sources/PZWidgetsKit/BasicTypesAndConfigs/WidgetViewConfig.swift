@@ -14,52 +14,24 @@ public struct WidgetViewConfig: AbleToCodeSendHash {
     // MARK: Lifecycle
 
     public init(noticeMessage: String? = nil) {
-        self.showTransformer = true
-        self.trounceBlossomDisplayMethod = .disappearAfterCompleted
-        self.echoOfWarDisplayMethod = .disappearAfterCompleted
-        self.selectedBackgrounds = [.defaultBackground]
-        self.randomBackground = false
-        self.isDarkModeRespected = true
-        self.showMaterialsInLargeSizeWidget = true
         self.noticeMessage = noticeMessage
-        self.showStaminaOnly = false
-        self.useTinyGlassDisplayStyle = false
-        self.expeditionDisplayPolicy = .displayWhenAvailable
-    }
-
-    public init(
-        showTransformer: Bool,
-        showExpeditionCompleteTime: Bool,
-        showWeeklyBosses: Bool,
-        noticeMessage: String?
-    ) {
-        self.showTransformer = showTransformer
-        self.trounceBlossomDisplayMethod = .disappearAfterCompleted
-        self.echoOfWarDisplayMethod = .disappearAfterCompleted
-        self.randomBackground = false
-        self.selectedBackgrounds = [.defaultBackground]
-        self.isDarkModeRespected = true
-        self.showMaterialsInLargeSizeWidget = true
-        self.showStaminaOnly = false
-        self.useTinyGlassDisplayStyle = false
-        self.expeditionDisplayPolicy = .displayWhenAvailable
     }
 
     // MARK: Public
 
     public static var defaultConfig: Self { .init() }
 
-    public var showTransformer: Bool
-    public var trounceBlossomDisplayMethod: PZWidgetsSPM.WeeklyBossesDisplayMethod
-    public var echoOfWarDisplayMethod: PZWidgetsSPM.WeeklyBossesDisplayMethod
+    public var showTransformer: Bool = true
+    public var trounceBlossomDisplayMethod: PZWidgetsSPM.WeeklyBossesDisplayMethod = .disappearAfterCompleted
+    public var echoOfWarDisplayMethod: PZWidgetsSPM.WeeklyBossesDisplayMethod = .disappearAfterCompleted
     public var noticeMessage: String?
-    public var isDarkModeRespected: Bool
-    public var showStaminaOnly: Bool
-    public var useTinyGlassDisplayStyle: Bool
-    public var showMaterialsInLargeSizeWidget: Bool
-    public var randomBackground: Bool
-    public var expeditionDisplayPolicy: PZWidgetsSPM.ExpeditionDisplayPolicy
-    public var selectedBackgrounds: Set<WidgetBackgroundEntityRAW>
+    public var isDarkModeRespected: Bool = true
+    public var showStaminaOnly: Bool = false
+    public var useTinyGlassDisplayStyle: Bool = false
+    public var showMaterialsInLargeSizeWidget: Bool = true
+    public var randomBackground: Bool = false
+    public var expeditionDisplayPolicy: PZWidgetsSPM.ExpeditionDisplayPolicy = .displayWhenAvailable
+    public var selectedBackgrounds: Set<WidgetBackgroundEntityRAW> = [.defaultBackground]
 
     public var neverDisplayExpeditionList: Bool { expeditionDisplayPolicy == .neverDisplay }
 
