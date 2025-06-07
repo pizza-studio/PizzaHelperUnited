@@ -204,7 +204,10 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
             case let .failure(error):
                 WidgetErrorView(
                     error: error,
-                    message: viewConfig.noticeMessage ?? ""
+                    message: viewConfig.noticeMessage ?? "",
+                    refreshIntent: WidgetRefreshIntent(
+                        dailyNoteUIDWithGame: givenEntry.profile?.uidWithGame
+                    )
                 )
             }
         }
