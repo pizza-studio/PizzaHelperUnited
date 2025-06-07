@@ -179,15 +179,18 @@ private struct WidgetViewEntryView4DualProfileWidget: View {
                     )
                 // case .systemLarge, .systemExtraLarge:
                 default:
-                    if viewConfig.prioritizeExpeditionDisplay, !dailyNote.expeditionTasks.isEmpty {
-                        MainInfoWithExpedition(
+                    switch viewConfig.expeditionDisplayPolicy {
+                    case .neverDisplay:
+                        Color.clear
+                    case .displayWhenAvailable:
+                        MainInfoWithDetail(
                             entry: givenEntry,
                             dailyNote: dailyNote,
                             viewConfig: viewConfig,
                             accountName: profileName
                         )
-                    } else {
-                        MainInfoWithDetail(
+                    case .displayExclusively:
+                        MainInfoWithExpedition(
                             entry: givenEntry,
                             dailyNote: dailyNote,
                             viewConfig: viewConfig,

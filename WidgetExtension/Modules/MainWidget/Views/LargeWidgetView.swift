@@ -68,8 +68,8 @@ extension LargeWidgetView {
                     )
                 )
                 Spacer(minLength: 18)
-                switch viewConfig.prioritizeExpeditionDisplay {
-                case true where hasExpeditionInfoForDisplay:
+                switch viewConfig.expeditionDisplayPolicy {
+                case .displayExclusively where hasExpeditionInfoForDisplay:
                     ExpeditionsView(
                         layout: .tinyWithShrinkedIconSpaces,
                         max4AllowedToDisplay: false,
@@ -87,14 +87,13 @@ extension LargeWidgetView {
             Group {
                 Spacer()
                 VStack(alignment: .leading) {
-                    if viewConfig.prioritizeExpeditionDisplay {
-                        // DetailInfo(entry: entry, dailyNote: dailyNote, viewConfig: viewConfig, spacing: 17)
-                        EmptyView()
-                    } else if hasExpeditionInfoForDisplay {
+                    switch viewConfig.expeditionDisplayPolicy {
+                    case .displayWhenAvailable where hasExpeditionInfoForDisplay:
                         ExpeditionsView(
                             expeditions: dailyNote.expeditionTasks,
                             pilotAssetMap: entry.pilotAssetMap
                         )
+                    default: EmptyView()
                     }
                     Spacer(minLength: 15)
                     if hasGIMaterialForDisplay {
@@ -152,8 +151,8 @@ extension LargeWidgetView {
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                         Spacer()
                         Group {
-                            switch viewConfig.prioritizeExpeditionDisplay {
-                            case true where hasExpeditionInfoForDisplay:
+                            switch viewConfig.expeditionDisplayPolicy {
+                            case .displayExclusively where hasExpeditionInfoForDisplay:
                                 ExpeditionsView(
                                     layout: .tinyWithShrinkedIconSpaces,
                                     max4AllowedToDisplay: false,
@@ -182,18 +181,8 @@ extension LargeWidgetView {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     VStack(alignment: .trailing) {
                         Group {
-                            if viewConfig.prioritizeExpeditionDisplay {
-                                // DetailInfo(
-                                //    entry: entry,
-                                //    dailyNote: dailyNote,
-                                //    viewConfig: viewConfig,
-                                //    spacing: 6
-                                // )
-                                // .fixedSize(horizontal: true, vertical: false)
-                                // .padding(.vertical, 8)
-                                // .padding(.leading, 8)
-                                EmptyView()
-                            } else if hasExpeditionInfoForDisplay {
+                            switch viewConfig.expeditionDisplayPolicy {
+                            case .displayWhenAvailable where hasExpeditionInfoForDisplay:
                                 ExpeditionsView(
                                     layout: .tinyWithShrinkedIconSpaces,
                                     max4AllowedToDisplay: false,
@@ -204,6 +193,7 @@ extension LargeWidgetView {
                                 .padding(.leading, 4)
                                 .padding(.trailing, 12)
                                 .frame(width: dailyNote.game == .starRail ? 155 : 145)
+                            default: EmptyView()
                             }
                         }
                         .widgetAccessibilityBackground(enabled: true)
