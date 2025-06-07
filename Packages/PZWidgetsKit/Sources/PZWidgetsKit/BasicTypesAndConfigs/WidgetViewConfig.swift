@@ -9,7 +9,6 @@ import WallpaperKit
 
 // MARK: - WidgetViewConfig
 
-@available(watchOS, unavailable)
 public struct WidgetViewConfig: AbleToCodeSendHash {
     // MARK: Lifecycle
 
