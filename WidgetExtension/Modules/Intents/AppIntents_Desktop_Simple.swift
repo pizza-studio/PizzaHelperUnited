@@ -8,34 +8,6 @@ import Foundation
 import PZBaseKit
 import PZWidgetsKit
 
-// MARK: - WidgetRefreshIntent
-
-@available(watchOS, unavailable)
-public struct WidgetRefreshIntent: AppIntent, WidgetRefreshIntentProtocol {
-    // MARK: Lifecycle
-
-    public init() {}
-
-    public init(dailyNoteUIDWithGame: String?) {
-        self.dailyNoteUIDWithGame = dailyNoteUIDWithGame
-    }
-
-    // MARK: Public
-
-    public static let title: LocalizedStringResource = "pzWidgetsKit.WidgetRefreshIntent.Refresh"
-
-    public static var isDiscoverable: Bool { false }
-
-    public var dailyNoteUIDWithGame: String?
-
-    public func perform() async throws -> some IntentResult {
-        if let dailyNoteUIDWithGame {
-            Defaults[.cachedDailyNotes].removeValue(forKey: dailyNoteUIDWithGame)
-        }
-        return .result()
-    }
-}
-
 // MARK: - SelectOnlyGameIntent
 
 /// Used in those game-specifiable widgets irrelevant to a profile.
