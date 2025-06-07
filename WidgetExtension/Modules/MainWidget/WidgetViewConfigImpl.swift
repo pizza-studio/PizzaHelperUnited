@@ -17,12 +17,12 @@ extension WidgetViewConfig {
         self.echoOfWarDisplayMethod = intent.echoOfWarDisplayMethod.realValue
         self.randomBackground = intent.randomBackground
         var backgroundsGiven = intent.chosenBackgrounds.filter {
-            Set(BackgroundOptions.allOptions.map(\.0)).contains($0.id)
-        }
+            Set(WidgetBackground.allOptions.map(\.id)).contains($0.id)
+        }.map(\.asRawEntity)
         if backgroundsGiven.isEmpty {
-            backgroundsGiven = [.defaultBackground]
+            backgroundsGiven = [WidgetBackground.defaultBackground]
         }
-        self.selectedBackgrounds = backgroundsGiven.asRawEntitySet
+        self.selectedBackgrounds = Set(backgroundsGiven)
         self.isDarkModeRespected = intent.isDarkModeRespected
         self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget
         self.showStaminaOnly = intent.showStaminaOnly
@@ -30,14 +30,14 @@ extension WidgetViewConfig {
         self.expeditionDisplayPolicy = intent.expeditionDisplayPolicy.realValue
     }
 
-    public var background: WidgetBackgroundAppEntity {
+    public var background: WidgetBackground {
         guard !randomBackground else {
             return .randomElementOrNamecardBackground
         }
         if selectedBackgrounds.isEmpty {
             return .defaultBackground
         } else {
-            return selectedBackgrounds.randomElement()?.asAppEntity ?? .defaultBackground
+            return selectedBackgrounds.randomElement() ?? .defaultBackground
         }
     }
 }

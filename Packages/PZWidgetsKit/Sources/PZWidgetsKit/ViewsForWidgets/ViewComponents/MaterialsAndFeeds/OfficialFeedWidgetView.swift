@@ -2,38 +2,90 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import AppIntents
 import Foundation
+import PZBaseKit
 import PZInGameEventKit
-import PZWidgetsKit
 import SwiftUI
 import WidgetKit
 
-// MARK: - OfficialFeedList4WidgetsView
+// MARK: - OfficialFeedWidgetView
 
 @available(watchOS, unavailable)
-struct OfficialFeedList4WidgetsView: View {
+public struct OfficialFeedWidgetView<RefreshIntent: AppIntent>: View {
     // MARK: Lifecycle
 
-    init(
-        events: [OfficialFeed.FeedEvent]?,
-        showLeadingBorder: Bool
+    public init(
+        entry: OfficialFeedWidgetEntry,
+        showLeadingBorder: Bool = true,
+        refreshIntent: RefreshIntent?
     ) {
-        self.events = events ?? []
+        self.entry = entry
+        self.games = entry.games
         self.showLeadingBorder = showLeadingBorder
+        self.refreshIntent = refreshIntent
+    }
+
+    // MARK: Public
+
+    public var body: some View {
+        OfficialFeedList4WidgetsView(
+            events: entry.events,
+            showLeadingBorder: showLeadingBorder,
+            refreshIntent: refreshIntent
+        )
+        .environment(\.colorScheme, .dark)
+        .myWidgetContainerBackground(withPadding: 0) {
+            WidgetBackgroundView(
+                background: WidgetBackground.randomNamecardBackground4Games(entry.games),
+                darkModeOn: true
+            )
+        }
     }
 
     // MARK: Internal
 
     @Environment(\.widgetFamily) var family: WidgetFamily
 
-    var body: some View {
+    // MARK: Private
+
+    private let entry: OfficialFeedWidgetEntry
+    private let games: Set<Pizza.SupportedGame>
+    private let showLeadingBorder: Bool
+    private let refreshIntent: RefreshIntent?
+}
+
+// MARK: - OfficialFeedList4WidgetsView
+
+@available(watchOS, unavailable)
+public struct OfficialFeedList4WidgetsView<RefreshIntent: AppIntent>: View {
+    // MARK: Lifecycle
+
+    public init(
+        events: [OfficialFeed.FeedEvent]?,
+        showLeadingBorder: Bool,
+        refreshIntent: RefreshIntent?
+    ) {
+        self.events = events ?? []
+        self.showLeadingBorder = showLeadingBorder
+        self.refreshIntent = refreshIntent
+    }
+
+    // MARK: Public
+
+    public var body: some View {
         coreComponentEmbeddable()
     }
+
+    // MARK: Internal
+
+    @Environment(\.widgetFamily) var family: WidgetFamily
 
     // MARK: Private
 
     private let events: [OfficialFeed.FeedEvent]
     private let showLeadingBorder: Bool
+    private let refreshIntent: RefreshIntent?
 
     private var entriesCountAppliable: [Int] {
         switch family {
@@ -46,8 +98,8 @@ struct OfficialFeedList4WidgetsView: View {
 
     @ViewBuilder
     private func coreComponentEmbeddable() -> some View {
-        if events.isEmpty {
-            Button(intent: WidgetRefreshIntent()) {
+        if events.isEmpty, let refreshIntent {
+            Button(intent: refreshIntent) {
                 Image(systemSymbol: .arrowClockwiseCircle)
                     .font(.title3)
                     .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
