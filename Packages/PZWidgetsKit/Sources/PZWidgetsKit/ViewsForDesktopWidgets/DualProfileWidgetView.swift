@@ -160,19 +160,35 @@ extension DesktopWidgets {
                     default:
                         switch viewConfig.expeditionDisplayPolicy {
                         case .neverDisplay:
-                            Color.clear
-                        case .displayWhenAvailable:
                             MainInfoWithDetail(
                                 entry: givenEntry,
                                 dailyNote: dailyNote,
                                 viewConfig: viewConfig
                             )
-                        case .displayExclusively:
-                            MainInfoWithExpedition(
-                                entry: givenEntry,
-                                dailyNote: dailyNote,
-                                viewConfig: viewConfig
-                            )
+                        case .displayExclusively, .displayWhenAvailable:
+                            switch dailyNote.game {
+                            case .zenlessZone:
+                                MainInfoWithDetail(
+                                    entry: givenEntry,
+                                    dailyNote: dailyNote,
+                                    viewConfig: viewConfig
+                                )
+                            default:
+                                switch dailyNote.expeditionTasks.isEmpty {
+                                case true:
+                                    MainInfoWithDetail(
+                                        entry: givenEntry,
+                                        dailyNote: dailyNote,
+                                        viewConfig: viewConfig
+                                    )
+                                case false:
+                                    MainInfoWithExpedition(
+                                        entry: givenEntry,
+                                        dailyNote: dailyNote,
+                                        viewConfig: viewConfig
+                                    )
+                                }
+                            }
                         }
                     }
                 case let .failure(error):
