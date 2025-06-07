@@ -113,10 +113,6 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
 
     @Parameter(title: "intent.field.showTransformer", default: true) public var showTransformer: Bool
 
-    public var prioritizeExpeditionDisplay: Bool {
-        expeditionDisplayPolicy == .displayExclusively
-    }
-
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
         .result()
@@ -190,10 +186,6 @@ public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, Cus
     public var showMaterialsInLargeSizeWidget: Bool { false }
 
     public var showStaminaOnly: Bool { false }
-
-    public var prioritizeExpeditionDisplay: Bool {
-        expeditionDisplayPolicy == .displayExclusively
-    }
 
     public func perform() async throws -> some IntentResult {
         // TODO: Place your refactored intent handler code here.
