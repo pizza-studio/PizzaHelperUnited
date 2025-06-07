@@ -119,26 +119,21 @@ extension DesktopWidgets {
             VStack(alignment: .trailing) {
                 let officialFeedList = OfficialFeedList4WidgetsView(
                     events: entry.events,
-                    showLeadingBorder: false,
-                    refreshIntent: RefreshIntent(dailyNoteUIDWithGame: nil)
+                    showLeadingBorder: false
                 )
-                .contentShape(.rect)
                 switch viewConfig.useTinyGlassDisplayStyle {
                 case false:
                     officialFeedList
+                        .contentShape(.rect)
                         .padding(.leading, 14)
                     Spacer()
                     WeekdayDisplayView()
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 case true:
-                    OfficialFeedList4WidgetsView(
-                        events: entry.events,
-                        showLeadingBorder: false,
-                        refreshIntent: RefreshIntent(dailyNoteUIDWithGame: nil)
-                    )
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 10)
-                    .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
+                    officialFeedList
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
+                        .widgetAccessibilityBackground(enabled: viewConfig.useTinyGlassDisplayStyle)
                     Spacer()
                     WeekdayDisplayView()
                         .padding(.horizontal, 10)
@@ -184,7 +179,7 @@ extension DesktopWidgets {
                     WidgetErrorView(
                         error: error,
                         message: viewConfig.noticeMessage ?? "",
-                        refreshIntent: RefreshIntent(
+                        refreshIntent: WidgetRefreshIntent(
                             dailyNoteUIDWithGame: givenEntry.profile?.uidWithGame
                         )
                     )

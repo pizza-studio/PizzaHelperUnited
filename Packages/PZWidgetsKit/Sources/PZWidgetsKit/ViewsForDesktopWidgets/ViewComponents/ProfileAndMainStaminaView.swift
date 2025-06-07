@@ -63,7 +63,7 @@ extension DesktopWidgets {
                             .font(.title3)
                             .clipShape(.circle)
                             .legibilityShadow()
-                        Button(intent: RefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
+                        Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
                             labelImage
                         }
                         .buttonStyle(.plain)
@@ -128,7 +128,7 @@ extension DesktopWidgets {
             .padding(.trailing, 10)
             .padding(.vertical, 5)
             .widgetAccessibilityBackground(enabled: true)
-            Button(intent: RefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
+            Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
                 bigLabel
             }
             .buttonStyle(.plain)
