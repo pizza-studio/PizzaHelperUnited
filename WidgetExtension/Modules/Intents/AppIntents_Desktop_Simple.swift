@@ -6,11 +6,12 @@ import AppIntents
 import Defaults
 import Foundation
 import PZBaseKit
+import PZWidgetsKit
 
 // MARK: - WidgetRefreshIntent
 
 @available(watchOS, unavailable)
-public struct WidgetRefreshIntent: AppIntent {
+public struct WidgetRefreshIntent: AppIntent, WidgetRefreshIntentProtocol {
     // MARK: Lifecycle
 
     public init() {}
