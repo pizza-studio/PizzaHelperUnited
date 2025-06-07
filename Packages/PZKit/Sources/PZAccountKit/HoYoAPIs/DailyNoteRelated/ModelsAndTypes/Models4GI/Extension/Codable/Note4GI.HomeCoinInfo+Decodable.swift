@@ -8,7 +8,7 @@ import Foundation
 
 // MARK: Decodable
 
-extension FullNote4GI.HomeCoinInfo4GI: Decodable {
+extension FullNote4GI.HomeCoinInfo4GI {
     private enum CodingKeys: String, CodingKey {
         case maxHomeCoin = "max_home_coin"
         case currentHomeCoin = "current_home_coin"
@@ -30,5 +30,17 @@ extension FullNote4GI.HomeCoinInfo4GI: Decodable {
                 )
             )
         }
+    }
+}
+
+// MARK: Encodable
+
+extension FullNote4GI.HomeCoinInfo4GI {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(maxHomeCoin, forKey: .maxHomeCoin)
+        try container.encode(currentHomeCoin, forKey: .currentHomeCoin)
+        let interval = fullTime.timeIntervalSinceNow
+        try container.encode(String(Int(interval)), forKey: .homeCoinRecoveryTime)
     }
 }

@@ -7,8 +7,8 @@ import PZBaseKit
 
 // MARK: - FullNote4GI
 
-public struct FullNote4GI: Note4GI {
-    public struct DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI, Sendable {
+public struct FullNote4GI: Note4GI, AbleToCodeSendHash {
+    public struct DailyTaskInfo4GI: PZAccountKit.DailyTaskInfo4GI, AbleToCodeSendHash {
         public let totalTaskCount: Int
         public let finishedTaskCount: Int
         public let isExtraRewardReceived: Bool
@@ -22,7 +22,7 @@ public struct FullNote4GI: Note4GI {
         // MARK: Private
     }
 
-    public struct ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI, Sendable {
+    public struct ExpeditionInfo4GI: PZAccountKit.ExpeditionInfo4GI, AbleToCodeSendHash {
         public struct Expedition: PZAccountKit.ExpeditionTask, Sendable {
             public static let game: Pizza.SupportedGame = .genshinImpact
 
@@ -37,24 +37,24 @@ public struct FullNote4GI: Note4GI {
         public let expeditions: [Expedition]
     }
 
-    public struct HomeCoinInfo4GI: PZAccountKit.HomeCoinInfo4GI, Sendable {
+    public struct HomeCoinInfo4GI: PZAccountKit.HomeCoinInfo4GI, AbleToCodeSendHash {
         public let maxHomeCoin: Int
         public let currentHomeCoin: Int
         public let fullTime: Date
     }
 
-    public struct ResinInfo4GI: PZAccountKit.ResinInfo4GI, Sendable {
+    public struct ResinInfo4GI: PZAccountKit.ResinInfo4GI, AbleToCodeSendHash {
         public let maxResin: Int
         public let currentResin: Int
         public let resinRecoveryTime: Date
     }
 
-    public struct TransformerInfo4GI: Sendable {
+    public struct TransformerInfo4GI: AbleToCodeSendHash {
         public let obtained: Bool
         public let recoveryTime: Date
     }
 
-    public struct WeeklyBossesInfo4GI: Sendable {
+    public struct WeeklyBossesInfo4GI: AbleToCodeSendHash {
         public let totalResinDiscount: Int
         public let remainResinDiscount: Int
 

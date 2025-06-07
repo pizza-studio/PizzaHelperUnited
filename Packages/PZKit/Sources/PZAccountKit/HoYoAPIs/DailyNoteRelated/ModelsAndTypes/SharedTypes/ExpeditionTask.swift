@@ -7,7 +7,7 @@ import PZBaseKit
 
 // MARK: - ExpeditionTask
 
-public protocol ExpeditionTask: Sendable {
+public protocol ExpeditionTask: AbleToCodeSendHash {
     var isFinished: Bool { get }
     var iconURL: URL { get }
     var iconURL4Copilot: URL? { get } // 星穹铁道的探索派遣允许设定第二个角色，所以就有了这个栏位。

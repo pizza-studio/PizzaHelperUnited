@@ -7,9 +7,9 @@ import PZBaseKit
 import SwiftUI
 
 extension PZProfileSendable {
-    public func getDailyNote(cached returnCachedResult: Bool = false) async throws -> DailyNoteProtocol {
+    public func getDailyNote(cached returnCachedResult: Bool = false) async throws -> any DailyNoteProtocol {
         handleCachedResults: if returnCachedResult {
-            let maybeResult: DailyNoteProtocol? = switch game {
+            let maybeResult: (any DailyNoteProtocol)? = switch game {
             case .genshinImpact:
                 DailyNoteCacheSputnik<FullNote4GI>.getCache(
                     uidWithGame: uidWithGame
@@ -42,7 +42,7 @@ extension PZProfileSendable {
 }
 
 extension PZProfileMO {
-    public func getDailyNote() async throws -> DailyNoteProtocol {
+    public func getDailyNote() async throws -> any DailyNoteProtocol {
         try await asSendable.getDailyNote()
     }
 }
@@ -56,7 +56,7 @@ extension Pizza.SupportedGame {
         }
     }
 
-    public var exampleDailyNoteData: DailyNoteProtocol {
+    public var exampleDailyNoteData: any DailyNoteProtocol {
         switch self {
         case .genshinImpact: FullNote4GI.exampleData()
         case .starRail: FullNote4HSR.exampleData()
@@ -76,7 +76,7 @@ extension Pizza.SupportedGame {
 
 // MARK: - DailyNoteProtocol
 
-public protocol DailyNoteProtocol: Sendable, DecodableFromMiHoYoAPIJSONResult {
+public protocol DailyNoteProtocol: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
     static var game: Pizza.SupportedGame { get }
     static func exampleData() -> Self
 }
@@ -98,7 +98,7 @@ extension DailyNoteProtocol {
         switch self {
         case let dailyNote as any Note4GI:
             return dailyNote.resinInfo.resinRecoveryTime
-        case let dailyNote as Note4HSR:
+        case let dailyNote as any Note4HSR:
             return dailyNote.staminaInfo.fullTime
         case let dailyNote as Note4ZZZ:
             return dailyNote.energy.timeOnFinish
@@ -114,7 +114,7 @@ extension DailyNoteProtocol {
             let max = dailyNote.resinInfo.maxResin
             let restToFill = max - existing
             return .init(pending: restToFill, finished: existing, all: max)
-        case let dailyNote as Note4HSR:
+        case let dailyNote as any Note4HSR:
             let existing: Int = dailyNote.staminaInfo.currentStamina
             let max = dailyNote.staminaInfo.maxStamina
             let restToFill = max - existing
@@ -148,7 +148,7 @@ extension DailyNoteProtocol {
         switch self {
         case let dailyNote as FullNote4GI: dailyNote.expeditionInfo.expeditions
         case let dailyNote as WidgetNote4GI: dailyNote.expeditionInfo.expeditions
-        case let dailyNote as Note4HSR: dailyNote.assignmentInfo.assignments
+        case let dailyNote as any Note4HSR: dailyNote.assignmentInfo.assignments
         case _ as Note4ZZZ: []
         default: []
         }
@@ -183,7 +183,7 @@ extension DailyNoteProtocol {
     public var claimedRewardsFromKatheryne: Bool? {
         switch self {
         case let dailyNote as any Note4GI: dailyNote.dailyTaskInfo.isExtraRewardReceived
-        case _ as Note4HSR: nil
+        case _ as any Note4HSR: nil
         case _ as Note4ZZZ: nil
         default: nil
         }
@@ -193,7 +193,7 @@ extension DailyNoteProtocol {
     public var hasDailyTaskIntel: Bool {
         switch self {
         case _ as any Note4GI: true
-        case _ as Note4HSR: true
+        case _ as any Note4HSR: true
         case _ as Note4ZZZ: true
         default: false
         }
@@ -215,7 +215,7 @@ extension DailyNoteProtocol {
                 finished: intel.finishedTaskCount,
                 all: intel.totalTaskCount
             )
-        case let dailyNote as Note4HSR:
+        case let dailyNote as any Note4HSR:
             let intel = dailyNote.dailyTrainingInfo
             return .init(
                 pending: Int((Double(intel.maxScore - intel.currentScore) / 100).rounded(.down)),
@@ -239,7 +239,7 @@ extension DailyNoteProtocol {
 
 extension DailyNoteProtocol {
     /// DailyNoteProtocol: RealmCurrency, Genshin Impact Only
-    public var realmCurrencyIntel: HomeCoinInfo4GI? {
+    public var realmCurrencyIntel: (any HomeCoinInfo4GI)? {
         (self as? any Note4GI)?.homeCoinInfo
     }
 }

@@ -48,7 +48,7 @@ struct LockScreenExpeditionWidgetCircular: View {
             let denominator = data.expeditionCompletionStatus.all
             let result = "\(numerator) / \(denominator)"
             return Text(verbatim: result)
-        case let data as Note4HSR:
+        case let data as any Note4HSR:
             let numerator = data.expeditionCompletionStatus.finished
             let denominator = data.expeditionCompletionStatus.all
             let result = "\(numerator) / \(denominator)"

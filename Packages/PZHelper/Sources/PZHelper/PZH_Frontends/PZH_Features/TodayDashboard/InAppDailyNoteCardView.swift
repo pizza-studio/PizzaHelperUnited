@@ -39,7 +39,7 @@ struct InAppDailyNoteCardView: View {
             case let .succeed(dailyNote, _):
                 switch dailyNote {
                 case let note as any Note4GI: DailyNoteCardView4GI(note: note)
-                case let note as Note4HSR: DailyNoteCardView4HSR(note: note)
+                case let note as any Note4HSR: DailyNoteCardView4HSR(note: note)
                 case let note as Note4ZZZ: DailyNoteCardView4ZZZ(note: note)
                 default: EmptyView()
                 }
@@ -383,7 +383,7 @@ private struct DailyNoteCardView4GI: View {
 private struct DailyNoteCardView4HSR: View {
     // MARK: Lifecycle
 
-    public init(note dailyNote: Note4HSR) {
+    public init(note dailyNote: any Note4HSR) {
         self.dailyNote = dailyNote
     }
 
@@ -570,7 +570,7 @@ private struct DailyNoteCardView4HSR: View {
 
     @State private var pilotAssetMap: [URL: SendableImagePtr]?
 
-    private let dailyNote: Note4HSR
+    private let dailyNote: any Note4HSR
     private let iconFrame: CGFloat = 40
 
     private func getPilotImage(_ url: URL?) -> Image? {

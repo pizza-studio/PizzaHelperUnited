@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - FullNote4GI.ExpeditionInfo4GI + Decodable
 
-extension FullNote4GI.ExpeditionInfo4GI: Decodable {
+extension FullNote4GI.ExpeditionInfo4GI {
     // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
@@ -26,7 +26,7 @@ extension FullNote4GI.ExpeditionInfo4GI: Decodable {
 
 // MARK: - FullNote4GI.ExpeditionInfo4GI.Expedition + Decodable
 
-extension FullNote4GI.ExpeditionInfo4GI.Expedition: Decodable {
+extension FullNote4GI.ExpeditionInfo4GI.Expedition {
     public init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer<FullNote4GI.ExpeditionInfo4GI.Expedition.CodingKeys> =
             try decoder
@@ -54,5 +54,26 @@ extension FullNote4GI.ExpeditionInfo4GI.Expedition: Decodable {
     private enum CodingKeys: String, CodingKey {
         case finishTime = "remained_time"
         case iconURL = "avatar_side_icon"
+    }
+}
+
+// MARK: - FullNote4GI.ExpeditionInfo4GI + Encodable
+
+extension FullNote4GI.ExpeditionInfo4GI {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(maxExpeditionsCount, forKey: .maxExpeditionsCount)
+        try container.encode(expeditions, forKey: .expeditions)
+    }
+}
+
+// MARK: - FullNote4GI.ExpeditionInfo4GI.Expedition + Encodable
+
+extension FullNote4GI.ExpeditionInfo4GI.Expedition {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        let remainedTime = finishTime.timeIntervalSinceNow
+        try container.encode(String(Int(remainedTime)), forKey: .finishTime)
+        try container.encode(iconURL, forKey: .iconURL)
     }
 }

@@ -8,7 +8,7 @@ import Foundation
 
 // MARK: Decodable
 
-extension FullNote4GI.TransformerInfo4GI: Decodable {
+extension FullNote4GI.TransformerInfo4GI {
     public init(from decoder: Decoder) throws {
         let basicContainer = try decoder.container(keyedBy: BasicCodingKeys.self)
         let container = try basicContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .transformer)
@@ -47,5 +47,40 @@ extension FullNote4GI.TransformerInfo4GI: Decodable {
         case second = "Second"
         case hour = "Hour"
         case reached
+    }
+}
+
+// MARK: Encodable
+
+extension FullNote4GI.TransformerInfo4GI {
+    public func encode(to encoder: Encoder) throws {
+        var basicContainer = encoder.container(keyedBy: BasicCodingKeys.self)
+        var container = basicContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .transformer)
+        try container.encode(obtained, forKey: .obtained)
+
+        var recoveryTimeContainer = container.nestedContainer(
+            keyedBy: RecoveryTimeCodingKeys.self,
+            forKey: .recoveryTime
+        )
+        let now = Date()
+        let interval = recoveryTime.timeIntervalSince(now)
+        if interval <= 0 {
+            try recoveryTimeContainer.encode(true, forKey: .reached)
+            try recoveryTimeContainer.encode(0, forKey: .day)
+            try recoveryTimeContainer.encode(0, forKey: .hour)
+            try recoveryTimeContainer.encode(0, forKey: .minute)
+            try recoveryTimeContainer.encode(0, forKey: .second)
+        } else {
+            try recoveryTimeContainer.encode(false, forKey: .reached)
+            let totalSeconds = Int(interval)
+            let day = totalSeconds / (24 * 3600)
+            let hour = (totalSeconds % (24 * 3600)) / 3600
+            let minute = (totalSeconds % 3600) / 60
+            let second = totalSeconds % 60
+            try recoveryTimeContainer.encode(day, forKey: .day)
+            try recoveryTimeContainer.encode(hour, forKey: .hour)
+            try recoveryTimeContainer.encode(minute, forKey: .minute)
+            try recoveryTimeContainer.encode(second, forKey: .second)
+        }
     }
 }

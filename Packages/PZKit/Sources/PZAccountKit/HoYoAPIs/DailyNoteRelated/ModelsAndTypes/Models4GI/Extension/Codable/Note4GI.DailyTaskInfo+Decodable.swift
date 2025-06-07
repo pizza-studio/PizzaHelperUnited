@@ -6,7 +6,7 @@
 
 // MARK: Decodable
 
-extension FullNote4GI.DailyTaskInfo4GI: Decodable {
+extension FullNote4GI.DailyTaskInfo4GI {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -55,5 +55,34 @@ extension FullNote4GI.DailyTaskInfo4GI: Decodable {
 
     private enum TaskRewardCodingKeys: String, CodingKey {
         case status
+    }
+}
+
+// MARK: Encodable
+
+extension FullNote4GI.DailyTaskInfo4GI {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(totalTaskCount, forKey: .totalTaskCount)
+        var dailyTaskContainer = container.nestedContainer(keyedBy: DailyTaskCodingKeys.self, forKey: .dailyTask)
+        try dailyTaskContainer.encode(finishedTaskCount, forKey: .finishedNumber)
+        try dailyTaskContainer.encode(isExtraRewardReceived, forKey: .isExtraRewardReceived)
+
+        var taskRewardsContainer = dailyTaskContainer.nestedUnkeyedContainer(forKey: .taskRewards)
+        for reward in taskRewards {
+            var taskRewardContainer = taskRewardsContainer.nestedContainer(keyedBy: TaskRewardCodingKeys.self)
+            try taskRewardContainer.encode(
+                reward ? "TaskRewardStatusFinished" : "TaskRewardStatusUnfinished",
+                forKey: .status
+            )
+        }
+
+        var attendanceRewardsContainer = dailyTaskContainer.nestedUnkeyedContainer(forKey: .attendanceRewards)
+        for progress in attendanceRewards {
+            var attendanceRewardContainer = attendanceRewardsContainer
+                .nestedContainer(keyedBy: AttendanceRewardCodingKeys.self)
+            try attendanceRewardContainer.encode("SomeStatus", forKey: .status) // 若有 status 字段请替换
+            try attendanceRewardContainer.encode(Int(progress * 2000.0), forKey: .progress)
+        }
     }
 }

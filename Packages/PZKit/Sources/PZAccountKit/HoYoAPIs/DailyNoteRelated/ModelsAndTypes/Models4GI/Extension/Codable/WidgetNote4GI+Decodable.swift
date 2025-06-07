@@ -14,6 +14,18 @@ extension WidgetNote4GI: Decodable {
     }
 }
 
+// MARK: - WidgetNote4GI + Encodable
+
+extension WidgetNote4GI: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(dailyTaskInfo)
+        try container.encode(expeditionInfo)
+        try container.encode(homeCoinInfo)
+        try container.encode(resinInfo)
+    }
+}
+
 // MARK: - WidgetNote4GI + DecodableFromMiHoYoAPIJSONResult
 
 extension WidgetNote4GI: DecodableFromMiHoYoAPIJSONResult {}

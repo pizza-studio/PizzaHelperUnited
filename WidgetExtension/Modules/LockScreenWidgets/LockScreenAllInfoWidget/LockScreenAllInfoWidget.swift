@@ -223,7 +223,7 @@ extension LockScreenAllInfoWidgetView {
                                 nil
                         )
                 }
-            case let data as Note4HSR:
+            case let data as any Note4HSR:
                 // Simulated Universe
                 Label {
                     let currentScore = data.simulatedUniverseInfo.currentScore
@@ -268,7 +268,7 @@ extension LockScreenAllInfoWidgetView {
     @ViewBuilder
     private func row3(_ data: any DailyNoteProtocol) -> some View {
         switch data {
-        case let data as Note4HSR where data.echoOfWarIntel != nil:
+        case let data as any Note4HSR where data.echoOfWarIntel != nil:
             if let eowIntel = data.echoOfWarIntel {
                 GridRow(alignment: .lastTextBaseline) {
                     Label {

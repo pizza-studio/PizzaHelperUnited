@@ -14,7 +14,7 @@ import SwiftUI
 struct HSRSimulUnivInfoBar: View {
     // MARK: Lifecycle
 
-    init(dailyNote: Note4HSR) {
+    init(dailyNote: any Note4HSR) {
         self.dailyNote = dailyNote
     }
 
@@ -48,5 +48,5 @@ struct HSRSimulUnivInfoBar: View {
 
     // MARK: Private
 
-    private let dailyNote: Note4HSR
+    private let dailyNote: any Note4HSR
 }
