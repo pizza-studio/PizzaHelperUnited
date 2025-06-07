@@ -84,7 +84,7 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
         }
     }
 
-    @Parameter(title: "intent.field.localeProfile") public var accountIntent: AccountIntentAppEntity?
+    @Parameter(title: "intent.field.localProfile") public var accountIntent: AccountIntentAppEntity?
 
     @Parameter(title: "intent.field.useRandomWallpaper", default: false) public var randomBackground: Bool
 
@@ -157,9 +157,9 @@ public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, Cus
         }
     }
 
-    @Parameter(title: "intent.field.localeProfile.slot1") public var profileSlot1: AccountIntentAppEntity?
+    @Parameter(title: "intent.field.localProfile.slot1") public var profileSlot1: AccountIntentAppEntity?
 
-    @Parameter(title: "intent.field.localeProfile.slot2") public var profileSlot2: AccountIntentAppEntity?
+    @Parameter(title: "intent.field.localProfile.slot2") public var profileSlot2: AccountIntentAppEntity?
 
     @Parameter(title: "intent.field.useRandomWallpaper", default: false) public var randomBackground: Bool
 

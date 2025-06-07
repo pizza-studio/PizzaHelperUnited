@@ -4,6 +4,7 @@
 
 import PZAccountKit
 import PZBaseKit
+import PZInGameEventKit
 import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
@@ -20,7 +21,7 @@ struct LargeWidgetView: View {
         dailyNote: any DailyNoteProtocol,
         viewConfig: Config4DesktopProfileWidgets,
         accountName: String?,
-        events: [EventModel]
+        events: [OfficialFeed.FeedEvent]
     ) {
         self.entry = entry
         self.dailyNote = dailyNote
@@ -46,7 +47,7 @@ struct LargeWidgetView: View {
     private let dailyNote: any DailyNoteProtocol
     private let viewConfig: Config4DesktopProfileWidgets
     private let accountName: String?
-    private let events: [EventModel]
+    private let events: [OfficialFeed.FeedEvent]
 }
 
 // MARK: - View used when Tiny Glass Display Style is OFF.
