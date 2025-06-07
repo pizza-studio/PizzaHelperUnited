@@ -17,6 +17,8 @@ struct MaterialView: View {
 
     // MARK: Internal
 
+    typealias MaterialWeekday = GITodayMaterial.AvailableWeekDay
+
     let alternativeLayout: Bool
     var today: MaterialWeekday? = .today()
 
