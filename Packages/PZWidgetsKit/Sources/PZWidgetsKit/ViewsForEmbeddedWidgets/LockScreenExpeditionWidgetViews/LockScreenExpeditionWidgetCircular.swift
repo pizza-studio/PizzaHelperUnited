@@ -9,7 +9,6 @@ import SwiftUI
 
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
-    @available(macOS, unavailable)
     public struct LockScreenExpeditionWidgetCircular: View {
         // MARK: Lifecycle
 
