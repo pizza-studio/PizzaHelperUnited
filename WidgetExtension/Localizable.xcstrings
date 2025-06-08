@@ -3816,73 +3816,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reichswährung (GI)"
+            "value" : "Reichswährung (GI), nur wirksam wenn mit einem lokalen Profil konfiguriert, das mit einer Genshin Impact UID konfiguriert wurde."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Realm Currency (GI)"
+            "value" : "Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moneda del Reino (GI)"
+            "value" : "Moneda del Reino (GI), solo es efectivo si se configura con un perfil local configurado con un UID de Genshin Impact."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salaping Pantahanan (GI)"
+            "value" : "Salaping Pantahanan (GI), epektibo lamang kung ikinonpigura gamit ang lokal na profile na naka-configure gamit ang Genshin Impact UID."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Monnaie du Royaume (GI)"
+            "value" : "Monnaie du Royaume (GI), uniquement efficace si configuré avec un profil local configuré avec un UID Genshin Impact."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Valuta del Regno (GI)"
+            "value" : "Valuta del Regno (GI), efficace solo se configurato con un profilo locale configurato utilizzando un UID di Genshin Impact."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "洞天宝銭 (原神)"
+            "value" : "洞天宝銭 (原神)、原神のUIDで設定されたプロファイルでのみ有効です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "영역 화폐 (GI)"
+            "value" : "영역 화폐 (GI), 원신 UID로 구성된 로컬 프로필로 구성된 경우에만 유효합니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Валюты Королевства (GI)"
+            "value" : "Валюты Королевства (GI), действует только при настройке с локальным профилем, настроенным с использованием UID Genshin Impact."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tiền Tệ Vương Quốc (GI)"
+            "value" : "Tiền Tệ Vương Quốc (GI), chỉ có hiệu lực khi được cấu hình với hồ sơ cục bộ được cấu hình bằng UID Genshin Impact."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "洞天宝钱 (原神)"
+            "value" : "洞天宝钱 (原神)，仅在使用以原神 UID 配置的本地账号时有效。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "洞天寶錢 (原神)"
+            "value" : "洞天寶錢 (原神)，僅在使用以原神 UID 配置的本機帳號時有效。"
           }
         }
       }
@@ -3893,73 +3893,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alternative Realm Währung (GI)"
+            "value" : "Alternative Realm Währung (GI), nur wirksam wenn mit einem lokalen Profil konfiguriert, das mit einer Genshin Impact UID konfiguriert wurde."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alternative Realm Currency (GI)"
+            "value" : "Alternative Realm Currency (GI), only effective if being configured with a local profile configured using a Genshin Impact UID."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moneda de Reino Alternativo (GI)"
+            "value" : "Moneda de Reino Alternativo (GI), solo es efectivo si se configura con un perfil local configurado con un UID de Genshin Impact."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alternatibong Perang ng Mundo (GI)"
+            "value" : "Alternatibong Perang ng Mundo (GI), epektibo lamang kung ikinonpigura gamit ang lokal na profile na naka-configure gamit ang Genshin Impact UID."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Monnaie alternative du royaume (GI)"
+            "value" : "Monnaie alternative du royaume (GI), uniquement efficace si configuré avec un profil local configuré avec un UID Genshin Impact."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Valuta del Reame Alternativo (GI)"
+            "value" : "Valuta del Reame Alternativo (GI), efficace solo se configurato con un profilo locale configurato utilizzando un UID di Genshin Impact."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "洞天寶錢 (原神) (改二)"
+            "value" : "洞天寶錢 (原神) (改二)、原神のUIDで設定されたプロファイルでのみ有効です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "대체 영역 화폐 (GI)"
+            "value" : "대체 영역 화폐 (GI), 원신 UID로 구성된 로컬 프로필로 구성된 경우에만 유효합니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Валюта альтернативного царства (GI)"
+            "value" : "Валюта альтернативного царства (GI), действует только при настройке с локальным профилем, настроенным с использованием UID Genshin Impact."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tiền tệ Thế giới Khác (GI)"
+            "value" : "Tiền tệ Thế giới Khác (GI), chỉ có hiệu lực khi được cấu hình với hồ sơ cục bộ được cấu hình bằng UID Genshin Impact."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "洞天宝钱 (原神) (排版二)"
+            "value" : "洞天宝钱 (原神) (排版二)，仅在使用以原神 UID 配置的本地账号时有效。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "洞天寶錢 (原神) (排版二)"
+            "value" : "洞天寶錢 (原神) (排版二)，僅在使用以原神 UID 配置的本機帳號時有效。"
           }
         }
       }
