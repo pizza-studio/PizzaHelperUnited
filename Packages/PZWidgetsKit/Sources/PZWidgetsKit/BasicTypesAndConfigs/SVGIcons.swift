@@ -9,7 +9,7 @@ import SwiftUI
 
 extension Pizza.SupportedGame? {
     public var unavailableAssetSVG: Image {
-        Image("icon.info.unavailable", bundle: .main)
+        Image("icon.info.unavailable", bundle: .module)
     }
 
     public var primaryStaminaAssetSVG: Image {
@@ -34,7 +34,7 @@ extension Pizza.SupportedGame {
         case .starRail: "icon.trailblazePower"
         case .zenlessZone: "icon.zzzBattery"
         }
-        return Image(assetName)
+        return Image(assetName, bundle: .module)
     }
 
     public var dailyTaskAssetSVG: Image {
@@ -43,7 +43,7 @@ extension Pizza.SupportedGame {
         case .starRail: "icon.dailyTask.hsr"
         case .zenlessZone: "icon.dailyTask.zzz"
         }
-        return Image(assetName)
+        return Image(assetName, bundle: .module)
     }
 
     public var expeditionAssetSVG: Image {
@@ -52,42 +52,42 @@ extension Pizza.SupportedGame {
         case .starRail: "icon.expedition.hsr"
         case .zenlessZone: "icon.expedition.gi"
         }
-        return Image(assetName)
+        return Image(assetName, bundle: .module)
     }
 
     public var giTransformerAssetSVG: Image {
-        Image("icon.transformer", bundle: .main)
+        Image("icon.transformer", bundle: .module)
     }
 
     public var giRealmCurrencyAssetSVG: Image {
-        Image("icon.homeCoin", bundle: .main)
+        Image("icon.homeCoin", bundle: .module)
     }
 
     public var giTrounceBlossomAssetSVG: Image {
-        Image("icon.trounceBlossom", bundle: .main)
+        Image("icon.trounceBlossom", bundle: .module)
     }
 
     public var hsrEchoOfWarAssetSVG: Image {
-        Image("icon.echoOfWar", bundle: .main)
+        Image("icon.echoOfWar", bundle: .module)
     }
 
     public var hsrSimulatedUniverseAssetSVG: Image {
-        Image("icon.simulatedUniverse", bundle: .main)
+        Image("icon.simulatedUniverse", bundle: .module)
     }
 
     public var zzzVHSStoreAssetSVG: Image {
-        Image("icon.zzzVHSStore", bundle: .main)
+        Image("icon.zzzVHSStore", bundle: .module)
     }
 
     public var zzzScratchCardAssetSVG: Image {
-        Image("icon.zzzScratch", bundle: .main)
+        Image("icon.zzzScratch", bundle: .module)
     }
 
     public var zzzBountyAssetSVG: Image {
-        Image("icon.zzzBounty", bundle: .main)
+        Image("icon.zzzBounty", bundle: .module)
     }
 
     public var zzzInvestigationPointsAssetSVG: Image {
-        Image("icon.zzzInvestigation", bundle: .main)
+        Image("icon.zzzInvestigation", bundle: .module)
     }
 }
