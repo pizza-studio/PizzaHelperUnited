@@ -219,6 +219,7 @@ extension DesktopWidgets {
                     .compositingGroup()
                     .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .circular))
                     .environment(\.colorScheme, .dark)
+                    .legibilityShadow(isText: false)
                 }
                 .frame(height: 7)
             }
