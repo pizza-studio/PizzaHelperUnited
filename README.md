@@ -34,7 +34,7 @@ For information on installing The Pizza Helper, please refer to the [official iO
 
 **Note on Android Development:**
 
-We currently do **NOT** develop The Pizza Helper for Android. This decision is due to both technical challenges and the difficulty of managing potential counterfeit applications on the Android platform. Counterfeit apps can be malicious, so please exercise caution.
+We currently do **NOT** develop The Pizza Helper for Android. This decision is due to both technical challenges and the difficulty of cracking down potential counterfeit applications on the Android platform. Counterfeit apps can be malicious, so please exercise caution.
 
 ### License
 
