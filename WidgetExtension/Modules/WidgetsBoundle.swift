@@ -57,3 +57,36 @@ struct WidgetExtensionBundle: WidgetBundle {
         PZWidgets.widgets
     }
 }
+
+// import Defaults
+// import PZInGameEventKit
+// import PZWidgetsKit
+//
+// #if DEBUG && !os(watchOS)
+// #Preview(as: .systemLarge, widget: {
+//    MainWidget()
+// }, timeline: {
+//    let date = Date()
+//    let provider = MainWidgetProvider()
+//    let game = Pizza.SupportedGame.genshinImpact
+//  let config: WidgetViewConfig = {
+//    var result = WidgetViewConfig.defaultConfig
+//    result.useTinyGlassDisplayStyle = true
+//    result.expeditionDisplayPolicy = .neverDisplay
+//    return result
+//  }()
+//    let entry: ProfileWidgetEntry = {
+//        let sampleData = Pizza.SupportedGame.genshinImpact.exampleDailyNoteData
+//        let assetMap = sampleData.getExpeditionAssetMapImmediately()
+//        return ProfileWidgetEntry(
+//            date: Date(),
+//            result: .success(game.exampleDailyNoteData),
+//            viewConfig: config,
+//            profile: .getDummyInstance(for: game),
+//            pilotAssetMap: assetMap,
+//            events: Defaults[.officialFeedCache].filter { $0.game == .genshinImpact }
+//        )
+//    }()
+//    entry
+// })
+// #endif
