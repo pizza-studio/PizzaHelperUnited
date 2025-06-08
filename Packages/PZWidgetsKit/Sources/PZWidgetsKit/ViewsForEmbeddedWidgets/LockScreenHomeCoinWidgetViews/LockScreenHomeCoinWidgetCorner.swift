@@ -11,7 +11,6 @@ import WidgetKit
 
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
-    @available(macOS, unavailable)
     public struct LockScreenHomeCoinWidgetCorner: View {
         // MARK: Lifecycle
 

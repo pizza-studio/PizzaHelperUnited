@@ -9,7 +9,6 @@ import WidgetKit
 
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
-    @available(macOS, unavailable)
     public struct LockScreenLoopWidgetCorner: View {
         // MARK: Lifecycle
 

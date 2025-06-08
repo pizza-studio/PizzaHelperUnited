@@ -8,7 +8,6 @@ import SwiftUI
 
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
-    @available(macOS, unavailable)
     public struct LockScreenDailyTaskWidgetCorner: View {
         // MARK: Lifecycle
 
