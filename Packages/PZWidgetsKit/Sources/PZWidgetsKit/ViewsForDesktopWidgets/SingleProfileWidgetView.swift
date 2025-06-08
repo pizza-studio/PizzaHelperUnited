@@ -82,7 +82,8 @@ extension DesktopWidgets {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     case false:
                         switch viewConfig.expeditionDisplayPolicy {
-                        case .displayExclusively where hasExpeditionInfoForDisplay:
+                        case .displayExclusively where hasExpeditionInfoForDisplay,
+                             .displayWhenAvailable where hasExpeditionInfoForDisplay:
                             MainInfoWithExpedition(
                                 entry: entry,
                                 dailyNote: dailyNote,
