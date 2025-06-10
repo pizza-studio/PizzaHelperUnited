@@ -9,7 +9,7 @@ import PZBaseKit
 
 /// 这个结构仅用于任何需要跨任务传送 PZProfileMO 资料的场合。
 @frozen
-public struct PZProfileSendable: AbleToCodeSendHash, Equatable {
+public struct PZProfileSendable: AbleToCodeSendHash, Equatable, Identifiable, ProfileProtocol {
     public let game: Pizza.SupportedGame
     public let server: HoYo.Server
     public let uid: String
@@ -22,6 +22,8 @@ public struct PZProfileSendable: AbleToCodeSendHash, Equatable {
     public let serverRawValue: String
     public let sTokenV2: String?
     public let deviceID: String
+
+    public var id: UUID { uuid }
 }
 
 extension PZProfileMO {
