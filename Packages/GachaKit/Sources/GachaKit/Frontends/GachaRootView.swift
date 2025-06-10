@@ -148,7 +148,6 @@ public struct GachaRootView: View {
 
     // MARK: Private
 
-    @Environment(\.modelContext) private var modelContext
     @Environment(GachaVM.self) private var theVM
 }
 
