@@ -31,7 +31,7 @@ extension DailyNoteProtocol {
             if viewConfig.showTransformer {
                 MetaBar4GITransformer(note: self)
             }
-            switch viewConfig.echoOfWarDisplayMethod {
+            switch viewConfig.trounceBlossomDisplayMethod {
             case .disappearAfterCompleted:
                 MetaBar4WeeklyBosses(note: self, disappearIfAllCompleted: true)
             case .alwaysShow:
