@@ -30,23 +30,28 @@ public struct LiveActivityWallpaperView: View {
     }
 
     public var body: some View {
-        switch currentSettings {
-        case .noBackground: EmptyView()
-        case let .multiple(wallpapers):
-            let finalWallpaper = getRandomWallpaper(wallpapers)
-            let image = getRawImage(finalWallpaper)
-            image
-                .resizable()
-                .scaledToFill()
-            Color.black
-                .opacity(0.3)
+        ZStack {
+            switch currentSettings {
+            case .noBackground: EmptyView()
+            case let .multiple(wallpapers):
+                let finalWallpaper = getRandomWallpaper(wallpapers)
+                let image = getRawImage(finalWallpaper)
+                image
+                    .resizable()
+                    .scaledToFill()
+                Color.black
+                    .opacity(0.3)
+            }
         }
+        .compositingGroup()
+        .id(Set([userWallpapers.hashValue, liveActivityWallpaperIDs.hashValue]).hashValue)
     }
 
     // MARK: Private
 
     @Environment(\.colorScheme) private var colorScheme
 
+    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
 
     private let game: Pizza.SupportedGame?

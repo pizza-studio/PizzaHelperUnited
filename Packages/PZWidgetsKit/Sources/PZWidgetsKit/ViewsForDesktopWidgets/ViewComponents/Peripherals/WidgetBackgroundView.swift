@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import SwiftUI
 import WallpaperKit
 import WidgetKit
@@ -40,12 +41,15 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
                 .blendMode(.multiply) // 很重要。
         }
         .scaleEffect(1.01) // HSR 的名片有光边。
+        .id(userWallpapers.hashValue)
     }
 
     // MARK: Private
 
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     @Environment(\.widgetFamily) private var widgetFamily: WidgetFamily
+
+    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
 
     private let background: WidgetBackground
     private let darkModeOn: Bool

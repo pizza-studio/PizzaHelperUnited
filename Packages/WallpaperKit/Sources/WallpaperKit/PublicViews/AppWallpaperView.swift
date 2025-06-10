@@ -39,12 +39,14 @@ public struct AppWallpaperView: View {
             }
             .ignoresSafeArea(.all)
             .compositingGroup()
+            .id(Set([userWallpapers.hashValue, appWallpaperID.hashValue]).hashValue)
     }
 
     // MARK: Private
 
     @Environment(\.colorScheme) private var colorScheme
 
+    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
     @Default(.appWallpaperID) private var appWallpaperID: String
 
     private let blur: Bool
