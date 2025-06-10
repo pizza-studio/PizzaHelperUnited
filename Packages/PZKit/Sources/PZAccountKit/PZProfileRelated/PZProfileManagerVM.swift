@@ -1,0 +1,160 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+import Defaults
+import Foundation
+import PZBaseKit
+import SwiftData
+
+@Observable
+public final class ProfileManagerVM: TaskManagedVM {
+    // MARK: Lifecycle
+
+    public override init() {
+        let defaultsMap = Defaults[.pzProfiles]
+        var profiles = defaultsMap.values.sorted { $0.priority < $1.priority }
+        profiles.fixPrioritySettings()
+        self.profiles = profiles
+        var newMOMap = [String: PZProfileMO]()
+        profiles.forEach { profileSendable in
+            newMOMap[profileSendable.uuid.uuidString] = profileSendable.asMO
+        }
+        self.profileMOs = newMOMap
+        super.init()
+        Task {
+            for await newProfileMap in Defaults.updates(.pzProfiles) {
+                self.profiles = newProfileMap.values.sorted {
+                    $0.priority < $1.priority
+                }
+            }
+        }
+    }
+
+    // MARK: Public
+
+    public static let shared = ProfileManagerVM()
+
+    /// 此处沿用 PZProfileMO 作为指针格式，但不用于对 SwiftData 的写入。
+    public internal(set) var profileMOs: [String: PZProfileMO]
+
+    // 当前的所有 Profile 列表
+    public internal(set) var profiles: [PZProfileSendable] {
+        didSet {
+            discardUncommittedChanges()
+        }
+    }
+
+    public var hasUncommittedChanges: Bool {
+        Set(profileMOs.map(\.value.asSendable)).hashValue != Set(profiles).hashValue
+    }
+
+    public func discardUncommittedChanges() {
+        // 这里的实作可能有些机车，但这是为了确保所有被还原的对象的指针一致。
+        guard hasUncommittedChanges else { return }
+        var newResult = [String: PZProfileMO]()
+        Defaults[.pzProfiles].forEach { uuidStr, profileSendable in
+            newResult[uuidStr] = profileSendable.asMO
+        }
+        profileMOs = newResult
+    }
+
+    public func moveItems(
+        from source: IndexSet,
+        to destination: Int,
+        errorHandler: ((any Error) -> Void)? = nil
+    ) {
+        var newProfiles = profiles
+        newProfiles.move(fromOffsets: source, toOffset: destination)
+        newProfiles.fixPrioritySettings()
+        newProfiles.forEach {
+            let uuidStr = $0.uuid.uuidString
+            if let mo = profileMOs[uuidStr] {
+                mo.priority = $0.priority
+            }
+        }
+        fireTask(
+            animatedPreparationTask: {
+                self.profiles = newProfiles
+            },
+            cancelPreviousTask: false,
+            givenTask: {
+                try await PZProfileActor.shared.replaceAllProfiles(with: Set(newProfiles))
+            },
+            errorHandler: errorHandler
+        )
+    }
+
+    public func updateProfile(
+        _ profile: PZProfileSendable,
+        trailingTasks: (() -> Void)? = nil,
+        errorHandler: ((any Error) -> Void)? = nil
+    ) {
+        profileMOs.values.filter { $0.uuid == profile.uuid }.forEach {
+            $0.inherit(from: profile)
+        }
+        profiles.indices.forEach { index in
+            if profiles[index].uuid == profile.uuid {
+                profiles[index].inherit(from: profile)
+            }
+        }
+        fireTask(
+            cancelPreviousTask: false,
+            givenTask: {
+                try await PZProfileActor.shared.updateProfile(profile)
+            },
+            completionHandler: { fetched in
+                trailingTasks?()
+            },
+            errorHandler: errorHandler
+        )
+    }
+
+    public func deleteProfiles(
+        uuids uuidsToDrop: Set<UUID>,
+        completionHandler: ((Set<PZProfileSendable>?) -> Void)? = nil,
+        errorHandler: ((any Error) -> Void)? = nil
+    ) {
+        guard !profiles.isEmpty, !profileMOs.isEmpty else { return }
+        // 这里提前先修改 VM 内部的参数。
+        // 虽然最后会被自动再重复落实一次，但不事先落实 VM 的修改的话就会造成前台 SwiftUI 视觉效果割裂。
+        var profileMOsModified = profileMOs
+        let profilesModified = profiles.filter {
+            profileMOsModified.removeValue(forKey: $0.uuid.uuidString)
+            return !uuidsToDrop.contains($0.uuid)
+        }
+        fireTask(
+            animatedPreparationTask: {
+                self.profileMOs = profileMOsModified
+                self.profiles = profilesModified
+            },
+            cancelPreviousTask: false,
+            givenTask: {
+                try await PZProfileActor.shared.deleteProfiles(uuids: uuidsToDrop)
+            },
+            completionHandler: { fetched in
+                completionHandler?(fetched)
+            },
+            errorHandler: errorHandler
+        )
+    }
+
+    public func replaceAllProfiles(
+        with profileSendableSet: Set<PZProfileSendable>? = nil,
+        trailingTasks: (() -> Void)? = nil,
+        errorHandler: ((any Error) -> Void)? = nil
+    ) {
+        fireTask(
+            cancelPreviousTask: false,
+            givenTask: {
+                let profileSendableSet = profileSendableSet ?? Set(self.profiles)
+                try await PZProfileActor.shared.replaceAllProfiles(with: profileSendableSet)
+                return await PZProfileActor.shared.getSendableProfiles()
+            },
+            completionHandler: { fetched in
+                trailingTasks?()
+            },
+            errorHandler: errorHandler
+        )
+    }
+}
