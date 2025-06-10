@@ -38,10 +38,6 @@ struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
     // 填入在手表上显示的Widget配置内容，例如："的原粹树脂"
     let recommendationsTag: LocalizedStringResource
 
-    #if os(watchOS)
-    let modelContext = ModelContext(PZProfileActor.shared.modelContainer)
-    #endif
-
     func recommendations() -> [AppIntentRecommendation<Intent>] {
         #if os(watchOS)
         return PZWidgets.getAllProfiles().compactMap { config in
