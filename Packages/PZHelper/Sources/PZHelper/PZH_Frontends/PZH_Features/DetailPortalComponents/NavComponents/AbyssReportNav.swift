@@ -30,7 +30,7 @@ public struct AbyssReportNav: View {
     }
 
     @ViewBuilder
-    public func coreBody(profile: PZProfileMO) -> some View {
+    public func coreBody(profile: PZProfileSendable) -> some View {
         switch theVM.taskStatus4AbyssReport {
         case .progress:
             InformationRowView(navTitle) {
