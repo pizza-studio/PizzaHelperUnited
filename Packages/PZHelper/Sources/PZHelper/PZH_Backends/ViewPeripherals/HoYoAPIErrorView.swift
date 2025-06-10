@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - HoYoAPIErrorView
 
 struct HoYoAPIErrorView: View {
-    let profile: PZProfileMO
+    let profile: PZProfileSendable
     let apiPath: String
     let error: Error
     let completion: () -> Void
@@ -57,7 +57,7 @@ extension HoYoAPIErrorView {
     struct VerificationNeededView: View {
         // MARK: Internal
 
-        let profile: PZProfileMO
+        let profile: PZProfileSendable
         let challengePath: String
         let completion: () -> Void
 
