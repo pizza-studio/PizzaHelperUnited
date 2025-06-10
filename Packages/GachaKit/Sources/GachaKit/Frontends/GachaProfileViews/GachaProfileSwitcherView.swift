@@ -110,7 +110,6 @@ public struct GachaProfileSwitcherView: View {
 
     // MARK: Private
 
-    @Environment(\.modelContext) private var modelContext
     @Environment(GachaVM.self) private var theVM
 
     private var sortedGPIDsNested: [EnumeratedSequence<[[GachaProfileID]?]>.Element] {
