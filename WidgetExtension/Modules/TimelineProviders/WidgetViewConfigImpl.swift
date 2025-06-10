@@ -16,8 +16,9 @@ extension WidgetViewConfig {
         self.trounceBlossomDisplayMethod = intent.trounceBlossomDisplayMethod.realValue
         self.echoOfWarDisplayMethod = intent.echoOfWarDisplayMethod.realValue
         self.randomBackground = intent.randomBackground
+        let allBackgroundOptionIDs = Set(WidgetBackground.allOptions.map(\.id))
         var backgroundsGiven = intent.chosenBackgrounds.filter {
-            Set(WidgetBackground.allOptions.map(\.id)).contains($0.id)
+            allBackgroundOptionIDs.contains($0.id)
         }.map(\.asRawEntity)
         if backgroundsGiven.isEmpty {
             backgroundsGiven = [WidgetBackground.defaultBackground]
