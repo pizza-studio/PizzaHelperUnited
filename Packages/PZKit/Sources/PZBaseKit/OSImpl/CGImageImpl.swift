@@ -193,9 +193,9 @@ extension CGImage {
 // MARK: - Common Manipulators.
 
 extension CGImage {
-    public func zoomed(_ factor: CGFloat, quality: CGInterpolationQuality = .high) -> CGImage? {
+    public func zoomed(_ factor: Double, quality: CGInterpolationQuality = .high) -> CGImage? {
         guard factor > 0 else { return nil }
-        let size: CGSize = .init(width: CGFloat(width) * factor, height: CGFloat(height) * factor)
+        let size: CGSize = .init(width: Double(width) * factor, height: Double(height) * factor)
         return directResized(size: size, quality: quality)
     }
 
@@ -228,17 +228,15 @@ extension CGImage {
     }
 
     /// CoreImage 支援硬件加速。
+    #if !os(watchOS)
     @preconcurrency
     public func zoomedByCoreImage(
-        _ factor: CGFloat
+        _ factor: Double
     )
         -> CGImage? {
         guard factor > 0 else { return nil }
-        #if os(watchOS)
-        return zoomed(factor, quality: .high)
-        #else
-        let width = Int(floor(CGFloat(width) * factor))
-        let height = Int(floor(CGFloat(height) * factor))
+        let width = Int(floor(Double(width) * factor))
+        let height = Int(floor(Double(height) * factor))
         guard width > 0, height > 0 else { return nil }
 
         let ciImage: CIImage = .init(cgImage: self)
@@ -249,8 +247,16 @@ extension CGImage {
         // CIContext 默认就会用 Metal/GPU 或高效 CPU 路径
         let context = CIContext(options: [CIContextOption.highQualityDownsample: true])
         return context.createCGImage(scaled, from: CGRect(origin: .zero, size: CGSize(width: width, height: height)))
-        #endif
     }
+    #else
+    @preconcurrency
+    public func zoomedByCoreImage(
+        _ factor: Double
+    )
+        -> CGImage? {
+        zoomed(factor, quality: .high)
+    }
+    #endif
 }
 
 extension CGImage {
@@ -262,8 +268,8 @@ extension CGImage {
         else { return nil }
 
         // 与图片像素坐标系对齐（CoreGraphics 坐标，左上为 (0,0)）
-        let imgWidth = CGFloat(width)
-        let imgHeight = CGFloat(height)
+        let imgWidth = Double(width)
+        let imgHeight = Double(height)
         var cropRect = CGRect(
             x: rect.origin.x,
             y: imgHeight - rect.origin.y - rect.size.height,
@@ -292,8 +298,8 @@ extension CGImage {
     /// - Returns: 裁剪后的圆形 CGImage，失败时返回 nil
     @preconcurrency
     public func croppedPilotPhoto4Genshin(debugMsgHandler: ((String) -> Void)? = nil) -> CGImage? {
-        let width = CGFloat(width)
-        let height = CGFloat(height)
+        let width = Double(width)
+        let height = Double(height)
 
         // 诊断：检查图像尺寸
         guard width > 0, height > 0 else {
@@ -377,9 +383,9 @@ extension CGImage {
 
 extension CGImage {
     public enum CGImageExportFormat: Sendable, Hashable {
-        case jpeg(quality: CGFloat)
+        case jpeg(quality: Double)
         case png
-        case heic(quality: CGFloat)
+        case heic(quality: Double)
 
         // MARK: Fileprivate
 
