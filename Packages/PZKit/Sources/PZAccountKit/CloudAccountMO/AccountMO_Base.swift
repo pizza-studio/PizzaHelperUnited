@@ -7,14 +7,28 @@ import Foundation
 import PZBaseKit
 @preconcurrency import Sworm
 
-// MARK: - ProfileMOBasicProtocol
+// MARK: - ProfileBasicProtocol
 
 /// AccountMO 不是统一披萨助手引擎用来主要处理的格式，
 /// 而是专门为了从 CloudKit 读取既有资料而实作的资料交换格式。
 /// 这也是为了方便直接继承旧版原披助手与穹披助手的云端资料。
 /// AccountMO 不曝露给前端使用，不直接用于 SwiftUI。
 
-public protocol ProfileMOBasicProtocol: Codable {
+public protocol ProfileBasicProtocol: Codable {
+    var allowNotification: Bool { get }
+    var cookie: String { get }
+    var deviceFingerPrint: String { get }
+    var name: String { get }
+    var priority: Int { get }
+    var serverRawValue: String { get }
+    var sTokenV2: String? { get }
+    var uid: String { get }
+    var uuid: UUID { get }
+}
+
+// MARK: - ProfileMOBasicProtocol
+
+public protocol ProfileMOBasicProtocol: Codable, ProfileBasicProtocol {
     var allowNotification: Bool { get set }
     var cookie: String { get set }
     var deviceFingerPrint: String { get set }
@@ -26,7 +40,7 @@ public protocol ProfileMOBasicProtocol: Codable {
     var uuid: UUID { get set }
 }
 
-extension ProfileMOBasicProtocol {
+extension ProfileBasicProtocol {
     public var isValid: Bool {
         true
             && isUIDValid
@@ -52,17 +66,27 @@ extension ProfileMOBasicProtocol {
 
 // MARK: - ProfileMOProtocol
 
-public protocol ProfileMOProtocol: ProfileMOBasicProtocol, Identifiable {
+public protocol ProfileMOProtocol: ProfileProtocol, ProfileMOBasicProtocol {
     var game: Pizza.SupportedGame { get set }
     var deviceID: String { get set }
     var server: HoYo.Server { get set }
 }
 
-extension ProfileMOProtocol {
+// MARK: - ProfileProtocol
+
+public protocol ProfileProtocol: ProfileBasicProtocol, Identifiable {
+    var game: Pizza.SupportedGame { get }
+    var deviceID: String { get }
+    var server: HoYo.Server { get }
+}
+
+extension ProfileProtocol {
     public var uidWithGame: String {
         "\(game.uidPrefix)-\(uid)"
     }
+}
 
+extension ProfileMOProtocol {
     public mutating func inherit(from target: some ProfileMOProtocol) {
         uid = target.uid
         uuid = target.uuid
