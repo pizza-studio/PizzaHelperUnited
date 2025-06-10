@@ -35,7 +35,7 @@ struct DetailPortalTabPage: View {
             .apply(hookNavigationDestinations)
             .apply(hookToolbar)
             .onAppear {
-                if let profile = delegate.currentProfile, !profiles.contains(profile) {
+                if let profile = delegate.currentProfile, !sortedProfiles.contains(profile) {
                     delegate.currentProfile = nil
                 }
             }
@@ -91,7 +91,7 @@ struct DetailPortalTabPage: View {
         LabeledContent {
             let dimension: CGFloat = 30
             Group {
-                if let profile: PZProfileMO = delegate.currentProfile {
+                if let profile: PZProfileSendable = delegate.currentProfile {
                     Enka.ProfileIconView(uid: profile.uid, game: profile.game)
                         .frame(width: dimension)
                 } else {
@@ -114,7 +114,7 @@ struct DetailPortalTabPage: View {
             .clipShape(.circle)
             .compositingGroup()
         } label: {
-            if let profile: PZProfileMO = delegate.currentProfile {
+            if let profile: PZProfileSendable = delegate.currentProfile {
                 Text(profile.uidWithGame).fontWidth(.condensed)
             } else {
                 Text("dpv.query.menuCommandTitle".i18nPZHelper)
@@ -207,14 +207,14 @@ struct DetailPortalTabPage: View {
     @StateObject private var delegate: DetailPortalViewModel = .init()
     @StateObject private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
-    @Environment(\.modelContext) private var modelContext
-    @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
+
+    @Default(.pzProfiles) private var profiles: [String: PZProfileSendable]
 
     @Default(.queriedEnkaProfiles4GI) private var profiles4GI
     @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
 
-    private var sortedProfiles: [PZProfileMO] {
-        profiles.sorted { $0.priority < $1.priority }
+    private var sortedProfiles: [PZProfileSendable] {
+        profiles.map(\.value).sorted { $0.priority < $1.priority }
             .filter { $0.game != .zenlessZone } // 临时设定。
     }
 

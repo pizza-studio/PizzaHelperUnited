@@ -29,7 +29,7 @@ public struct CharInventoryNav: View {
     }
 
     @ViewBuilder
-    public func coreBody(profile: PZProfileMO) -> some View {
+    public func coreBody(profile: PZProfileSendable) -> some View {
         switch theVM.taskStatus4CharInventory {
         case .progress:
             InformationRowView(Self.navTitle) {
@@ -47,7 +47,7 @@ public struct CharInventoryNav: View {
                     DataVisibilityGuideView(region: profile.server.region)
                 }
             }
-            NavigationLink(destination: CharacterInventoryView(profile: profile.asSendable)) {
+            NavigationLink(destination: CharacterInventoryView(profile: profile)) {
                 Text("dpv.characterInventory.tapHereToSeePreviouslyCachedResults".i18nPZHelper)
                     .font(.caption2)
                     .bold()
@@ -79,7 +79,7 @@ public struct CharInventoryNav: View {
                 if data.avatars.isEmpty {
                     Text("dpv.characterInventory.notice.EmptyInventoryResult".i18nPZHelper).font(.caption)
                 } else {
-                    NavigationLink(destination: CharacterInventoryView(profile: profile.asSendable)) {
+                    NavigationLink(destination: CharacterInventoryView(profile: profile)) {
                         thisLabel
                     }
                 }
