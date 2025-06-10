@@ -19,7 +19,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     @MainActor
     public init(
         theDB: QueryDB,
-        pzProfile: any ProfileMOProtocol,
+        pzProfile: any ProfileProtocol,
         appendedContent: @escaping (() -> T) = { EmptyView() },
         onTapGestureAction: (() -> Void)? = nil
     ) {
@@ -87,7 +87,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     // MARK: Internal
 
-    @State var pzProfile: any ProfileMOProtocol
+    @State var pzProfile: any ProfileProtocol
 
     @ViewBuilder var listHeader: some View {
         let extraTerms = Enka.ExtraTerms(lang: theDB.locTag, game: theDB.game)
