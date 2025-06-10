@@ -23,13 +23,11 @@ public actor GachaActor {
 
     // MARK: Public
 
-    public static var remoteChangesAvailable = false
-
     public let cdGachaMOSputnik = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: true)
 }
 
 extension GachaActor {
-    public static var shared = GachaActor()
+    public static let shared = GachaActor()
 
     public static func makeContainer4UnitTests() -> ModelContainer {
         do {
@@ -40,7 +38,7 @@ extension GachaActor {
                 configurations:
                 ModelConfiguration(
                     "PZGachaKitDB",
-                    schema: Self.schema,
+                    schema: Self.makeSchema(),
                     isStoredInMemoryOnly: true,
                     groupContainer: .none,
                     cloudKitDatabase: .none
@@ -66,13 +64,15 @@ extension GachaActor {
 // MARK: - Schemes and Configs.
 
 extension GachaActor {
-    public static let schema = Schema([PZGachaEntryMO.self, PZGachaProfileMO.self])
+    public static func makeSchema() -> Schema {
+        Schema([PZGachaEntryMO.self, PZGachaProfileMO.self])
+    }
 
     public static var modelConfig: ModelConfiguration {
         if Pizza.isAppStoreRelease {
             return ModelConfiguration(
                 "PZGachaKitDB",
-                schema: Self.schema,
+                schema: Self.makeSchema(),
                 isStoredInMemoryOnly: false,
                 groupContainer: .identifier(appGroupID),
                 cloudKitDatabase: .private(iCloudContainerName)
@@ -80,7 +80,7 @@ extension GachaActor {
         } else {
             return ModelConfiguration(
                 "PZGachaKitDB",
-                schema: Self.schema,
+                schema: Self.makeSchema(),
                 isStoredInMemoryOnly: false,
                 groupContainer: .none,
                 cloudKitDatabase: .private(iCloudContainerName)
@@ -118,7 +118,9 @@ extension GachaActor {
                 }
             )
         }
-        GachaActor.remoteChangesAvailable = false
+        Task { @MainActor in
+            GachaVM.shared.remoteChangesAvailable = false
+        }
     }
 
     @discardableResult
@@ -161,7 +163,9 @@ extension GachaActor {
                 }
             }
         }
-        GachaActor.remoteChangesAvailable = false
+        Task { @MainActor in
+            GachaVM.shared.remoteChangesAvailable = false
+        }
         // try lazyRefreshProfiles(newProfiles: profiles)
         if refreshGachaProfiles {
             try refreshAllProfiles()
@@ -180,7 +184,9 @@ extension GachaActor {
             let arrProfiles = profiles.sorted { $0.uidWithGame < $1.uidWithGame }
             arrProfiles.forEach { modelContext.insert($0.asMO) }
         }
-        GachaActor.remoteChangesAvailable = false
+        Task { @MainActor in
+            GachaVM.shared.remoteChangesAvailable = false
+        }
     }
 
     @discardableResult

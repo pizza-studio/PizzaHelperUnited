@@ -36,23 +36,7 @@ public actor PZProfileActor {
             } else {
                 await syncAllDataToUserDefaults()
             }
-            NotificationCenter.default.publisher(for: ModelContext.didSave)
-                .sink(receiveValue: { notification in
-                    if let userInfo = notification.userInfo {
-                        let inserted = (userInfo["inserted"] as? [PersistentIdentifier]) ?? []
-                        let deleted = (userInfo["deleted"] as? [PersistentIdentifier]) ?? []
-                        let updated = (userInfo["updated"] as? [PersistentIdentifier]) ?? []
-                        print(userInfo)
-                        guard !(inserted + deleted + updated).isEmpty else { return }
-                        Task { @MainActor in
-                            if Defaults[.automaticallyDeduplicatePZProfiles] {
-                                _ = try await self.deduplicate()
-                            }
-                            await self.syncAllDataToUserDefaults()
-                        }
-                    }
-                })
-                .store(in: &Self.cancellables)
+            await configurePublisherObservations()
         }
     }
 
@@ -60,21 +44,19 @@ public actor PZProfileActor {
 
     public static let shared = PZProfileActor()
 
-    public static let schema = Schema([PZProfileMO.self])
-
     public static var modelConfig: ModelConfiguration {
         if Pizza.isAppStoreRelease {
             let useGroupContainer = Defaults[.situatePZProfileDBIntoGroupContainer]
             return ModelConfiguration(
                 "PZProfileMODB",
-                schema: Self.schema,
+                schema: Schema([PZProfileMO.self]),
                 isStoredInMemoryOnly: false,
                 groupContainer: useGroupContainer ? .identifier(appGroupID) : .none,
                 cloudKitDatabase: .private(iCloudContainerName)
             )
         } else {
             return ModelConfiguration(
-                schema: Self.schema,
+                schema: Schema([PZProfileMO.self]),
                 isStoredInMemoryOnly: false,
                 groupContainer: .none,
                 cloudKitDatabase: .private(iCloudContainerName)
@@ -85,13 +67,13 @@ public actor PZProfileActor {
     public static func makeContainer() -> (container: ModelContainer, isReset: Bool) {
         let config = Self.modelConfig
         do {
-            return (try ModelContainer(for: Self.schema, configurations: [config]), false)
+            return (try ModelContainer(for: Schema([PZProfileMO.self]), configurations: [config]), false)
         } catch {
             secondAttempt: do {
                 try FileManager.default.removeItem(at: config.url)
                 Defaults[.lastTimeResetLocalProfileDB] = .now
                 do {
-                    return (try ModelContainer(for: Self.schema, configurations: [config]), true)
+                    return (try ModelContainer(for: Schema([PZProfileMO.self]), configurations: [config]), true)
                 } catch {
                     break secondAttempt
                 }
@@ -110,7 +92,7 @@ public actor PZProfileActor {
                 for: PZProfileMO.self,
                 configurations: ModelConfiguration(
                     "PZProfileMO",
-                    schema: Self.schema,
+                    schema: Schema([PZProfileMO.self]),
                     isStoredInMemoryOnly: true,
                     groupContainer: .none,
                     cloudKitDatabase: .none
@@ -123,7 +105,27 @@ public actor PZProfileActor {
 
     // MARK: Private
 
-    private static var cancellables: [AnyCancellable] = []
+    private var cancellables: [AnyCancellable] = []
+
+    private func configurePublisherObservations() {
+        NotificationCenter.default.publisher(for: ModelContext.didSave)
+            .sink(receiveValue: { notification in
+                if let userInfo = notification.userInfo {
+                    let inserted = (userInfo["inserted"] as? [PersistentIdentifier]) ?? []
+                    let deleted = (userInfo["deleted"] as? [PersistentIdentifier]) ?? []
+                    let updated = (userInfo["updated"] as? [PersistentIdentifier]) ?? []
+                    print(userInfo)
+                    guard !(inserted + deleted + updated).isEmpty else { return }
+                    Task { @MainActor in
+                        if Defaults[.automaticallyDeduplicatePZProfiles] {
+                            _ = try await self.deduplicate()
+                        }
+                        await self.syncAllDataToUserDefaults()
+                    }
+                }
+            })
+            .store(in: &cancellables)
+    }
 }
 
 // MARK: - AccountMO Related.
