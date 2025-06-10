@@ -28,12 +28,16 @@ extension DesktopWidgets {
 
         // MARK: Public
 
-        public var lineHeightMax: CGFloat { 17 }
+        public var lineHeightMax: CGFloat {
+            viewConfig.useTinyGlassDisplayStyle ? 17 : 25
+        }
 
         public var body: some View {
             VStack(alignment: .leading, spacing: spacing) {
                 ForEach(Array(allMetaBars.enumerated()), id: \.offset) { offset, currentMetaBar in
-                    AnyView(currentMetaBar.body).tag(offset)
+                    AnyView(currentMetaBar.body)
+                        .frame(maxHeight: lineHeightMax)
+                        .tag(offset)
                 }
             }
         }
