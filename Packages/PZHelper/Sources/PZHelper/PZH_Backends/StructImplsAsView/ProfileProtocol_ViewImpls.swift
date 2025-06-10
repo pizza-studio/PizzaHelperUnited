@@ -7,7 +7,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-extension PZProfileMO {
+extension ProfileProtocol {
     @MainActor @ViewBuilder
     func asIcon4SUI() -> some View {
         Enka.ProfileIconView(uid: uid, game: game)

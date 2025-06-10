@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import Foundation
 import Observation
 import PZAccountKit
@@ -20,12 +21,10 @@ public final class DetailPortalViewModel: ObservableObject {
 
     @MainActor
     public init() {
-        let actor = PZProfileActor.shared
-        let context = actor.modelContainer.mainContext
-        let pzProfiles = try? context.fetch(FetchDescriptor<PZProfileMO>())
+        let pzProfiles: [PZProfileSendable] = Defaults[.pzProfiles].map(\.value)
             .sorted { $0.priority < $1.priority }
             .filter { $0.game != .zenlessZone } // 临时设定。
-        self.currentProfile = pzProfiles?.first
+        self.currentProfile = pzProfiles.first
         refresh()
     }
 
@@ -53,7 +52,7 @@ public final class DetailPortalViewModel: ObservableObject {
 
     @ObservationIgnored public var refreshingStatus: Status<Void> = .standby
 
-    @MainActor public var currentProfile: PZProfileMO? {
+    @MainActor public var currentProfile: PZProfileSendable? {
         didSet {
             if case let .progress(task) = refreshingStatus { task.cancel() }
             refreshingStatus = .standby
@@ -80,7 +79,7 @@ extension DetailPortalViewModel {
         if case let .progress(task) = taskStatus4CharInventory { task.cancel() }
         let task = Task {
             do {
-                guard let profile = self.currentProfile?.asSendable,
+                guard let profile = self.currentProfile,
                       let queryResult = try await HoYo.getCharacterInventory(for: profile)
                 else { return }
                 Task.detached { @MainActor in
@@ -108,7 +107,7 @@ extension DetailPortalViewModel {
         if case let .progress(task) = taskStatus4Ledger { task.cancel() }
         let task = Task {
             do {
-                guard let profile = self.currentProfile?.asSendable,
+                guard let profile = self.currentProfile,
                       let queryResult = try await HoYo.getLedgerData(for: profile)
                 else { return }
                 Task.detached { @MainActor in
@@ -136,7 +135,7 @@ extension DetailPortalViewModel {
         if case let .progress(task) = taskStatus4AbyssReport { task.cancel() }
         let task = Task {
             do {
-                guard let profile = self.currentProfile?.asSendable,
+                guard let profile = self.currentProfile,
                       let queryResult = try await HoYo.getAbyssReportSet(for: profile)
                 else { return }
                 Task.detached { @MainActor in
