@@ -23,30 +23,21 @@ extension DesktopWidgets {
                 switch family {
                 case .systemSmall: EmptyView() // Not supported.
                 case .systemMedium:
-                    HStack {
+                    HStack(spacing: 0) {
                         contents
                     }
                     .frame(maxWidth: .infinity)
-                    .overlay {
-                        overlayDivider(isVertical: false)
-                    }
                 case .systemLarge:
-                    VStack {
+                    VStack(spacing: 0) {
                         contents
                     }
                     .frame(maxWidth: .infinity)
-                    .overlay {
-                        overlayDivider(isVertical: true)
-                    }
                 case .systemExtraLarge:
                     HStack {
-                        VStack {
+                        VStack(spacing: 0) {
                             contents
                         }
                         .frame(maxWidth: .infinity)
-                        .overlay {
-                            overlayDivider(isVertical: true)
-                        }
                         if family == .systemExtraLarge {
                             officialFeedBlock()
                                 .frame(maxWidth: 300)
@@ -109,7 +100,7 @@ extension DesktopWidgets {
         @ViewBuilder private var contents: some View {
             if !viewConfig.useTinyGlassDisplayStyle { Spacer(minLength: 0) }
             drawSingleEntry(subEntry1)
-            Spacer(minLength: 15)
+            overlayDivider(isVertical: family != .systemMedium)
             drawSingleEntry(subEntry2)
             if !viewConfig.useTinyGlassDisplayStyle { Spacer(minLength: 0) }
         }
@@ -211,12 +202,18 @@ extension DesktopWidgets {
                     Color.black
                 }
                 .blendMode(.colorDodge)
-                .padding()
+                .padding(isVertical ? .horizontal : .vertical)
                 Color.clear
             }
             switch isVertical {
-            case true: VStack { dividerViewRAW }
-            case false: HStack { dividerViewRAW }
+            case true: VStack {
+                    dividerViewRAW
+                        .frame(height: 1)
+                }
+            case false: HStack {
+                    dividerViewRAW
+                        .frame(width: 1)
+                }
             }
         }
     }
