@@ -24,14 +24,18 @@ extension ProfileManagerPageContent {
         var body: some View {
             NavigationStack {
                 Form {
-                    switch status {
-                    case .pending:
-                        pendingView()
-                    case .gotCookie:
-                        gotCookieView()
-                    case .gotProfile:
-                        gotProfileView()
+                    Group {
+                        switch status {
+                        case .pending:
+                            pendingView()
+                        case .gotCookie:
+                            gotCookieView()
+                        case .gotProfile:
+                            gotProfileView()
+                        }
                     }
+                    .disabled(theVM.taskState == .busy)
+                    .saturation(theVM.taskState == .busy ? 0 : 1)
                 }
                 .formStyle(.grouped)
                 .navigationTitle("profileMgr.new".i18nPZHelper)
@@ -52,7 +56,7 @@ extension ProfileManagerPageContent {
                     }
                     ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {
-                            modelContext.rollback()
+                            theVM.discardUncommittedChanges()
                             sheetType = nil
                         }
                     }
@@ -145,27 +149,33 @@ extension ProfileManagerPageContent {
                 isSaveProfileFailAlertShown.toggle()
                 return
             }
-            do {
-                modelContext.insert(profile)
-                try modelContext.save()
-                PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-                Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
-                UserDefaults.profileSuite.synchronize()
-                sheetType = nil
-                Broadcaster.shared.requireOSNotificationCenterAuthorization()
-                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-            } catch {
-                saveProfileError = .saveDataError(error)
-                isSaveProfileFailAlertShown.toggle()
-            }
+            theVM.updateProfile(
+                profile.asSendable,
+                trailingTasks: {
+                    PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
+                    sheetType = nil
+                    Broadcaster.shared.requireOSNotificationCenterAuthorization()
+                    Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                    alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                },
+                errorHandler: { error in
+                    saveProfileError = .saveDataError(error)
+                    isSaveProfileFailAlertShown.toggle()
+                }
+            )
         }
 
         /// 仅用于对批次账号处理当中的单个账号的处理。
-        /// 所以，这个函式并未在最终执行 modelContext.save()。
+        /// 该函式不处理 notifications。
+        /// - Returns: 需要应用到资料库的 ProfileSendable，可能是要新增的、或者更新的。
         @MainActor
-        func handleSingleFetchedUnit(_ account: FetchedAccount, game: Pizza.SupportedGame) async throws {
-            guard let server = HoYo.Server(uid: account.gameUid, game: game) else { return }
-            let newProfile = PZProfileMO(server: server, uid: account.gameUid)
+        func handleSingleFetchedUnit(
+            _ account: FetchedAccount,
+            game: Pizza.SupportedGame
+        ) async throws
+            -> PZProfileSendable? {
+            guard let server = HoYo.Server(uid: account.gameUid, game: game) else { return nil }
+            var newProfile = PZProfileMO(server: server, uid: account.gameUid).asSendable
             newProfile.game = game
             newProfile.server = server
             newProfile.name = account.nickname
@@ -182,64 +192,71 @@ extension ProfileManagerPageContent {
             }
 
             // Check duplications
-            let firstDuplicate = profiles.first {
+            let firstDuplicate = theVM.profiles.first {
                 $0.uid == newProfile.uid && $0.game == newProfile.game
             }
-            if let firstDuplicate {
+            if var firstDuplicate {
                 firstDuplicate.cookie = profile.cookie // 很重要
                 firstDuplicate.deviceID = profile.deviceID
                 firstDuplicate.deviceFingerPrint = profile.deviceFingerPrint
+                return firstDuplicate
             } else {
-                modelContext.insert(newProfile)
-                PZNotificationCenter.bleachNotificationsIfDisabled(for: newProfile.asSendable)
+                newProfile.priority = theVM.profiles.count
+                return newProfile
             }
-            status = .gotProfile
         }
 
         /// Add all accounts at once.
         func getAllAccountsFetched() {
-            Task(priority: .userInitiated) { @MainActor in
-                if !profile.cookie.isEmpty {
-                    do {
-                        var map = [(Pizza.SupportedGame, FetchedAccount)]()
+            theVM.fireTask(
+                prerequisite: (!profile.cookie.isEmpty, {}),
+                cancelPreviousTask: false,
+                givenTask: {
+                    var map = [(Pizza.SupportedGame, FetchedAccount)]()
 
-                        try await HoYo.getUserGameRolesByCookie(
-                            region: region.withGame(.genshinImpact),
-                            cookie: profile.cookie
-                        ).forEach {
-                            map.append((.genshinImpact, $0))
-                        }
-
-                        try await HoYo.getUserGameRolesByCookie(
-                            region: region.withGame(.starRail),
-                            cookie: profile.cookie
-                        ).forEach {
-                            map.append((.starRail, $0))
-                        }
-
-                        try await HoYo.getUserGameRolesByCookie(
-                            region: region.withGame(.zenlessZone),
-                            cookie: profile.cookie
-                        ).forEach {
-                            map.append((.zenlessZone, $0))
-                        }
-
-                        for (game, fetchedAccount) in map {
-                            try await handleSingleFetchedUnit(fetchedAccount, game: game)
-                        }
-
-                        alertToastEventStatus.isProfileTaskSucceeded.toggle()
-                        try modelContext.save()
-                        PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-                        await PZProfileActor.shared.syncAllDataToUserDefaults()
-                        sheetType = nil
-                    } catch {
-                        getAccountError = .source(error)
-                        isGetAccountFailAlertShown.toggle()
-                        status = .pending
+                    try await HoYo.getUserGameRolesByCookie(
+                        region: region.withGame(.genshinImpact),
+                        cookie: profile.cookie
+                    ).forEach {
+                        map.append((.genshinImpact, $0))
                     }
+
+                    try await HoYo.getUserGameRolesByCookie(
+                        region: region.withGame(.starRail),
+                        cookie: profile.cookie
+                    ).forEach {
+                        map.append((.starRail, $0))
+                    }
+
+                    try await HoYo.getUserGameRolesByCookie(
+                        region: region.withGame(.zenlessZone),
+                        cookie: profile.cookie
+                    ).forEach {
+                        map.append((.zenlessZone, $0))
+                    }
+                    var existingProfilesCount = theVM.profiles.count
+                    var allProfilesFetched = Set<PZProfileSendable>()
+                    for (game, fetchedAccount) in map {
+                        let handled = try await handleSingleFetchedUnit(fetchedAccount, game: game)
+                        guard var handled else { continue }
+                        handled.priority = existingProfilesCount
+                        allProfilesFetched.insert(handled)
+                        existingProfilesCount += 1
+                    }
+                    try await PZProfileActor.shared.addProfiles(allProfilesFetched)
+                    PZNotificationCenter.batchDeleteDailyNoteNotification(
+                        profiles: allProfilesFetched,
+                        onlyDeleteIfDisabled: false
+                    )
+                    alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                    sheetType = nil
+                },
+                errorHandler: { error in
+                    getAccountError = .source(error)
+                    isGetAccountFailAlertShown.toggle()
+                    status = .pending
                 }
-            }
+            )
         }
 
         func getAccountForSelected() {
@@ -283,9 +300,8 @@ extension ProfileManagerPageContent {
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
         @Binding private var sheetType: SheetType?
-        @Environment(\.modelContext) private var modelContext
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
-        @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
+        @StateObject private var theVM: ProfileManagerVM = .shared
 
         private var game: Binding<Pizza.SupportedGame> {
             .init(

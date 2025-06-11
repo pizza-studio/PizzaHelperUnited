@@ -24,39 +24,27 @@ extension ProfileManagerPageContent {
             NavigationStack {
                 Form {
                     ProfileConfigViewContents(profile: profile)
-                }.formStyle(.grouped)
-                    .navigationTitle("profileMgr.edit.title".i18nPZHelper)
-                    .navBarTitleDisplayMode(.large)
-                    .toolbar {
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button("sys.done".i18nBaseKit) {
-                                if modelContext.hasChanges {
-                                    do {
-                                        try modelContext.save()
-                                        PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-                                        Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
-                                        UserDefaults.profileSuite.synchronize()
-                                        sheetType = nil
-                                        Broadcaster.shared.requireOSNotificationCenterAuthorization()
-                                        Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-                                        alertToastEventStatus.isProfileTaskSucceeded.toggle()
-                                    } catch {
-                                        saveProfileError = .saveDataError(error)
-                                        isSaveProfileFailAlertShown.toggle()
-                                    }
-                                } else {
-                                    sheetType = nil
-                                    alertToastEventStatus.isProfileTaskSucceeded.toggle()
-                                }
-                            }
+                }
+                .disabled(theVM.taskState == .busy)
+                .saturation(theVM.taskState == .busy ? 0 : 1)
+                .formStyle(.grouped)
+                .navigationTitle("profileMgr.edit.title".i18nPZHelper)
+                .navBarTitleDisplayMode(.large)
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("sys.done".i18nBaseKit) {
+                            saveButtonDidTap()
                         }
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button("sys.cancel".i18nBaseKit) {
-                                modelContext.rollback()
-                                sheetType = nil
-                            }
+                        .disabled(theVM.taskState == .busy)
+                        .saturation(theVM.taskState == .busy ? 0 : 1)
+                    }
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("sys.cancel".i18nBaseKit) {
+                            theVM.discardUncommittedChanges()
+                            sheetType = nil
                         }
                     }
+                }
             }
         }
 
@@ -66,7 +54,29 @@ extension ProfileManagerPageContent {
         @State private var profile: PZProfileMO
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
-        @Environment(\.modelContext) private var modelContext
+        @StateObject private var theVM: ProfileManagerVM = .shared
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
+
+        private func saveButtonDidTap() {
+            if theVM.hasUncommittedChanges {
+                theVM.updateProfile(
+                    profile.asSendable,
+                    trailingTasks: {
+                        PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
+                        sheetType = nil
+                        Broadcaster.shared.requireOSNotificationCenterAuthorization()
+                        Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                        alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                    },
+                    errorHandler: { error in
+                        saveProfileError = .saveDataError(error)
+                        isSaveProfileFailAlertShown.toggle()
+                    }
+                )
+            } else {
+                sheetType = nil
+                alertToastEventStatus.isProfileTaskSucceeded.toggle()
+            }
+        }
     }
 }
