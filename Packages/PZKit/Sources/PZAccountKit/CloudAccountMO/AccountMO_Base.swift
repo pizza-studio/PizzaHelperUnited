@@ -40,6 +40,21 @@ public protocol ProfileMOBasicProtocol: Codable, ProfileBasicProtocol {
     var uuid: UUID { get set }
 }
 
+extension Array where Element: ProfileMOBasicProtocol {
+    mutating public func fixPrioritySettings(respectExistingPriority: Bool = false) {
+        var newResult = self
+        if respectExistingPriority {
+            newResult.sort { $0.priority < $1.priority }
+        }
+        newResult.indices.forEach {
+            var newObj = newResult[$0]
+            newObj.priority = $0
+            newResult[$0] = newObj
+        }
+        self = newResult
+    }
+}
+
 extension ProfileBasicProtocol {
     public var isValid: Bool {
         true
