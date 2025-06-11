@@ -82,20 +82,32 @@ extension View {
 
 extension View {
     @ViewBuilder
-    public func blurMaterialBackground() -> some View {
-        modifier(BlurMaterialBackground())
+    public func blurMaterialBackground(enabled: Bool = true) -> some View {
+        if enabled {
+            modifier(BlurMaterialBackground())
+        } else {
+            self
+        }
     }
 
     @ViewBuilder
-    public func adjustedBlurMaterialBackground() -> some View {
-        modifier(AdjustedBlurMaterialBackground())
+    public func adjustedBlurMaterialBackground(enabled: Bool = true) -> some View {
+        if enabled {
+            modifier(AdjustedBlurMaterialBackground())
+        } else {
+            self
+        }
     }
 
     @ViewBuilder
-    public func listRowMaterialBackground() -> some View {
-        listRowBackground(
-            Color.clear.background(.thinMaterial, in: Rectangle())
-        )
+    public func listRowMaterialBackground(enabled: Bool = true) -> some View {
+        if enabled {
+            listRowBackground(
+                Color.clear.background(.thinMaterial, in: Rectangle())
+            )
+        } else {
+            self
+        }
     }
 }
 
