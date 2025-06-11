@@ -16,7 +16,7 @@ public enum Wallpaper: Identifiable, AbleToCodeSendHash {
         guard let givenID, givenID != Self.nullLiveActivityWallpaperIdentifier else { return nil }
         let maybeUUID = UUID(uuidString: givenID)
         var isMatchFailureHandled = false
-        userWPCheck: if maybeUUID != nil {
+        if maybeUUID != nil {
             let userWP = UserWallpaper(defaultsValueID: givenID)
             if let userWP {
                 self = .user(userWP)
