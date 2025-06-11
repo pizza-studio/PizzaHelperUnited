@@ -46,7 +46,7 @@ extension OfficialFeed {
                 getCurrentEvent()
             }
             .onAppear {
-                if eventContents.isEmpty {
+                if theVM.eventContents.isEmpty {
                     getCurrentEvent()
                 }
             }
@@ -60,23 +60,15 @@ extension OfficialFeed {
         typealias EventModel = OfficialFeed.FeedEvent
 
         func getCurrentEvent() {
-            Task {
-                let events = await OfficialFeed.getAllFeedEventsOnline()
-                withAnimation {
-                    eventContents = events.sorted {
-                        $0.endAtDate.timeIntervalSince1970 < $1.endAtDate.timeIntervalSince1970
-                            && $0.id < $1.id
-                    }
-                }
-            }
+            theVM.updateEvent()
         }
 
         // MARK: Private
 
         @Environment(\.scenePhase) private var scenePhase
-        @State private var eventContents: [EventModel] = []
         @Binding private var game: Pizza.SupportedGame?
         @StateObject private var broadcaster = Broadcaster.shared
+        @StateObject private var theVM: OfficialFeedVM = .init()
 
         private let peripheralViews: () -> TT
 
@@ -92,7 +84,7 @@ extension OfficialFeed {
 
         private var eventContentsFiltered: Binding<[EventModel]> {
             .init(get: {
-                eventContents.filter { supportedGames.wrappedValue.contains($0.game) }
+                theVM.eventContents.filter { supportedGames.wrappedValue.contains($0.game) }
             }, set: { _ in })
         }
     }
@@ -169,6 +161,27 @@ extension OfficialFeed.OfficialFeedSection {
         private var sectionBackgroundColor: UIColor {
             colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
         }
+    }
+}
+
+@Observable
+private final class OfficialFeedVM: TaskManagedVM {
+    public static let shared = OfficialFeedVM()
+
+    public var eventContents: [OfficialFeed.FeedEvent] = []
+
+    public func updateEvent() {
+        fireTask(
+            givenTask: {
+                await OfficialFeed.getAllFeedEventsOnline()
+            },
+            completionHandler: { eventCluster in
+                self.eventContents = (eventCluster ?? []).sorted {
+                    $0.endAtDate.timeIntervalSince1970 < $1.endAtDate.timeIntervalSince1970
+                        && $0.id < $1.id
+                }
+            }
+        )
     }
 }
 
