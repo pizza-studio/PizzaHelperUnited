@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
 import SwiftUI
 import WallpaperKit
 
@@ -41,9 +42,6 @@ public struct GITodayMaterialsView<T: View>: View {
                 }
                 .pickerStyle(.segmented)
                 .fixedSize()
-                .background(
-                    RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
-                )
             }
             ToolbarItem(placement: .principal) {
                 Picker("".description, selection: $weekday.animation()) {
@@ -55,9 +53,8 @@ public struct GITodayMaterialsView<T: View>: View {
                 }
                 .pickerStyle(.menu)
                 .fixedSize()
-                .background(
-                    RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
-                )
+                .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
+                .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
         .onAppear {

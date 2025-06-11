@@ -49,9 +49,7 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
                     }
                     .labelsHidden()
                     .pickerStyle(.segmented)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
-                    )
+                    .fixedSize()
                 }
             }
         }
