@@ -24,20 +24,28 @@ struct ProfileBackupRestoreMenu<T: View>: View {
     // MARK: Public
 
     @ViewBuilder public var body: some View {
-        @Bindable var theVM = theVM
-        let msgPack = theVM.fileSaveActionResultMessagePack
+        @Bindable var vm4ProfileExchange = vm4ProfileExchange
+        let msgPack = vm4ProfileExchange.fileSaveActionResultMessagePack
         Menu {
             Button {
-                theVM.currentExportableDocument = Result.success(.init(prepareAllExportableProfiles()))
+                vm4ProfileExchange.currentExportableDocument = Result.success(
+                    .init(vm4ProfileMgmt.profiles)
+                )
             } label: {
-                Label("profileMgr.exchange.export.menuTitle".i18nPZHelper, systemSymbol: .squareAndArrowUpOnSquare)
+                Label(
+                    "profileMgr.exchange.export.menuTitle".i18nPZHelper,
+                    systemSymbol: .squareAndArrowUpOnSquare
+                )
             }
-            .disabled(profiles.isEmpty)
+            .disabled(vm4ProfileMgmt.profiles.isEmpty)
             Divider()
             Button {
-                theVM.isImporterVisible = true
+                vm4ProfileExchange.isImporterVisible = true
             } label: {
-                Label("profileMgr.exchange.import.menuTitle".i18nPZHelper, systemSymbol: .squareAndArrowDownOnSquare)
+                Label(
+                    "profileMgr.exchange.import.menuTitle".i18nPZHelper,
+                    systemSymbol: .squareAndArrowDownOnSquare
+                )
             }
             if let extraItem {
                 Divider()
@@ -49,26 +57,26 @@ struct ProfileBackupRestoreMenu<T: View>: View {
         .apply { coreContent in
             coreContent
                 .fileImporter(
-                    isPresented: $theVM.isImporterVisible,
+                    isPresented: $vm4ProfileExchange.isImporterVisible,
                     allowedContentTypes: [.json]
                 ) { result in
                     importCompletionHandler(result)
                 }
                 .fileExporter(
-                    isPresented: theVM.isExporterVisible,
-                    document: theVM.getCurrentExportableDocument(),
+                    isPresented: vm4ProfileExchange.isExporterVisible,
+                    document: vm4ProfileExchange.getCurrentExportableDocument(),
                     contentType: .json,
-                    defaultFilename: theVM.defaultFileName
+                    defaultFilename: vm4ProfileExchange.defaultFileName
                 ) { result in
-                    theVM.fileSaveActionResult = result
-                    theVM.currentExportableDocument = nil
+                    vm4ProfileExchange.fileSaveActionResult = result
+                    vm4ProfileExchange.currentExportableDocument = nil
                 }
                 .alert(
                     msgPack.title,
-                    isPresented: theVM.isExportResultAvailable,
+                    isPresented: vm4ProfileExchange.isExportResultAvailable,
                     actions: {
                         Button("sys.ok".i18nBaseKit) {
-                            theVM.fileSaveActionResult = nil
+                            vm4ProfileExchange.fileSaveActionResult = nil
                         }
                     },
                     message: {
@@ -77,24 +85,17 @@ struct ProfileBackupRestoreMenu<T: View>: View {
                 )
         }
         .onDisappear {
-            theVM.currentExportableDocument = nil
+            vm4ProfileExchange.currentExportableDocument = nil
         }
     }
 
     // MARK: Private
 
-    @Environment(\.modelContext) private var modelContext
-    @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
-    @StateObject private var theVM = Coordinator()
+    @StateObject private var vm4ProfileExchange = Coordinator()
+    @StateObject private var vm4ProfileMgmt: ProfileManagerVM = .shared
 
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
     private let extraItem: (() -> T)?
-}
-
-extension ProfileBackupRestoreMenu {
-    private func prepareAllExportableProfiles() -> [PZProfileSendable] {
-        profiles.map(\.asSendable)
-    }
 }
 
 // MARK: ProfileBackupRestoreMenu.Coordinator
