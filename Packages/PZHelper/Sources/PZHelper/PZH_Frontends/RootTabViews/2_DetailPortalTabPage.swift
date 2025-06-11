@@ -121,7 +121,7 @@ struct DetailPortalTabPage: View {
             }
         }
         .padding(4).padding(.leading, 12)
-        .blurMaterialBackground()
+        .blurMaterialBackground(enabled: !OS.isLiquidGlassEraOS)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
@@ -158,6 +158,7 @@ struct DetailPortalTabPage: View {
         } label: {
             profileSwitcherMenuLabel
         }
+        .menuStyle(.button)
     }
 
     @ViewBuilder
