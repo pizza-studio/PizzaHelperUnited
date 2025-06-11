@@ -21,7 +21,7 @@ public struct ContentView: View {
 
     public var body: some View {
         NavigationStack {
-            if accounts.isEmpty {
+            if profiles.isEmpty {
                 List {
                     Section {
                         LabeledContent {
@@ -39,7 +39,7 @@ public struct ContentView: View {
                 List {
                     ASUpdateNoticeView()
                         .font(.footnote)
-                    ForEach(accounts, id: \.uuid) { account in
+                    ForEach(profiles, id: \.uuid) { account in
                         DetailNavigator(account: account)
                     }
                     NavigationLink {
@@ -71,7 +71,7 @@ public struct ContentView: View {
                 dismissButton: .default(Text(verbatim: "sys.done".i18nBaseKit))
             )
         }
-        .onChange(of: accounts) {
+        .onChange(of: profiles) {
             Task { @MainActor in
                 await PZProfileActor.shared.syncAllDataToUserDefaults()
             }
@@ -79,8 +79,6 @@ public struct ContentView: View {
     }
 
     // MARK: Internal
-
-    @Query(sort: \PZProfileMO.priority) var accounts: [PZProfileMO]
 
     @Environment(\.scenePhase) var scenePhase
 
@@ -90,6 +88,14 @@ public struct ContentView: View {
 
     @StateObject private var connectivityManager = AppleWatchSputnik.shared
     @StateObject private var broadcaster = Broadcaster.shared
+
+    @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
+
+    private var profiles: [PZProfileSendable] {
+        pzProfiles.values.sorted {
+            $0.priority < $1.priority
+        }
+    }
 }
 
 // MARK: - DetailNavigator
@@ -97,7 +103,7 @@ public struct ContentView: View {
 private struct DetailNavigator: View {
     // MARK: Lifecycle
 
-    init(account: PZProfileMO) {
+    init(account: PZProfileSendable) {
         self._dailyNoteViewModel = .init(wrappedValue: DailyNoteViewModel(profile: account))
     }
 
@@ -105,14 +111,14 @@ private struct DetailNavigator: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    var account: PZProfileMO { dailyNoteViewModel.profile }
+    var account: PZProfileSendable { dailyNoteViewModel.profile }
 
     var body: some View {
         Group {
             switch dailyNoteViewModel.dailyNoteStatus {
             case let .succeed(dailyNote, _):
                 NavigationLink {
-                    WatchAccountDetailView(data: dailyNote, profile: account.asSendable)
+                    WatchAccountDetailView(data: dailyNote, profile: account)
                 } label: {
                     VStack(alignment: .leading) {
                         HStack {

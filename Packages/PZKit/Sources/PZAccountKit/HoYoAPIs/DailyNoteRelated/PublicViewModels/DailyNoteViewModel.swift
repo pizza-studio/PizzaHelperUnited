@@ -18,7 +18,7 @@ public final class DailyNoteViewModel: ObservableObject, Sendable {
     /// Initializes a new instance of the view model.
     ///
     /// - Parameter account: The account for which the daily note will be fetched.
-    public init(profile: PZProfileMO, extraTaskAfterFetch: ((any DailyNoteProtocol) -> Void)? = nil) {
+    public init(profile: PZProfileSendable, extraTaskAfterFetch: ((any DailyNoteProtocol) -> Void)? = nil) {
         self.profile = profile
         self.extraTask = extraTaskAfterFetch
         getDailyNoteUncheck()
@@ -36,7 +36,7 @@ public final class DailyNoteViewModel: ObservableObject, Sendable {
     public private(set) var dailyNoteStatus: Status = .progress(nil)
 
     /// The account for which the daily note is being fetched.
-    public let profile: PZProfileMO
+    public let profile: PZProfileSendable
 
     /// Fetches the daily note and updates the published `dailyNote` property accordingly.
     @MainActor
@@ -62,10 +62,9 @@ public final class DailyNoteViewModel: ObservableObject, Sendable {
         if case let .progress(task) = dailyNoteStatus {
             task?.cancel()
         }
-        let profileSendable = profile.asSendable
         let task = Task { @MainActor in
             do {
-                let result = try await profileSendable.getDailyNote()
+                let result = try await profile.getDailyNote()
                 withAnimation {
                     dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
                 }
