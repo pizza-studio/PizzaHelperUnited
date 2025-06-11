@@ -14,12 +14,18 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent
 
+/// MEMO: 此处沿用 PZProfileMO 作为指针格式，但在增删改操作进行的时候一律走 VM。
+/// PZProfileActor 与 MainActor 只能有其中一个用来专门管理 SwiftData 的增删改，
+/// 所以只能放弃使用与后者有关的 Environment 层面的 SwiftData API。
+/// 不然的话，在 iOS 26 / macOS 26 系统下会崩溃。
+
 struct ProfileManagerPageContent: View {
     // MARK: Public
 
     public var body: some View {
         coreBody
             .disabled(isBusy)
+            .saturation(isBusy ? 0 : 1)
             .overlay {
                 if isBusy {
                     Color.clear
@@ -55,22 +61,27 @@ struct ProfileManagerPageContent: View {
                 }
             }
             Section {
-                ForEach(profiles) { profile in
-                    Button {
-                        #if os(iOS) || targetEnvironment(macCatalyst)
-                        if isEditMode != .active {
-                            sheetType = .editExistingProfile(profile)
+                ForEach(theVM.profiles) { profile in
+                    Group {
+                        if let profileMO = theVM.profileMOs[profile.uuid.uuidString] {
+                            Button {
+                                #if os(iOS) || targetEnvironment(macCatalyst)
+                                if isEditMode != .active {
+                                    sheetType = .editExistingProfile(profileMO)
+                                }
+                                #else
+                                sheetType = .editExistingProfile(profile)
+                                #endif
+                            } label: {
+                                drawRow(profile: profileMO)
+                            }
                         }
-                        #else
-                        sheetType = .editExistingProfile(profile)
-                        #endif
-                    } label: {
-                        drawRow(profile: profile)
                     }
+                    .id(profile)
                 }
                 .onDelete(perform: deleteItems)
                 .onMove(perform: moveItems)
-                if profiles.isEmpty {
+                if theVM.profiles.isEmpty {
                     if lastTimeResetLocalProfileDB != nil {
                         Text("profileMgr.noLocalProfileFound".i18nPZHelper)
                             .font(.footnote)
@@ -79,7 +90,7 @@ struct ProfileManagerPageContent: View {
             } header: {
                 drawDBResetDate()
             }
-            if profiles.isEmpty, PZProfileActor.hasOldAccountDataDetected() {
+            if theVM.profiles.isEmpty, PZProfileActor.hasOldAccountDataDetected() {
                 Button("profileMgr.importLegacyProfiles.title".i18nPZHelper) {
                     importLegacyData()
                 }
@@ -139,13 +150,11 @@ struct ProfileManagerPageContent: View {
     }()
 
     @State private var sheetType: SheetType?
+    @StateObject private var theVM: ProfileManagerVM = .shared
     @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
-    @State private var isBusy = false
     @State private var errorMessage: String?
     @Default(.lastTimeResetLocalProfileDB) private var lastTimeResetLocalProfileDB: Date?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
-    @Environment(\.modelContext) private var modelContext
-    @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
 
     private var isEditing: Bool {
         #if os(iOS) || targetEnvironment(macCatalyst)
@@ -153,6 +162,10 @@ struct ProfileManagerPageContent: View {
         #else
         return false
         #endif
+    }
+
+    private var isBusy: Bool {
+        theVM.taskState == .busy
     }
 
     @ViewBuilder
@@ -250,17 +263,7 @@ struct ProfileManagerPageContent: View {
                 sheetType = .editExistingProfile(profile)
             }
             Button(role: .destructive) {
-                let uuidToDelete = profile.uuid
-                PZNotificationCenter.deleteDailyNoteNotification(for: profile.asSendable)
-                modelContext.delete(profile)
-                try? modelContext.save()
-                Defaults[.pzProfiles].removeValue(forKey: uuidToDelete.uuidString)
-                UserDefaults.profileSuite.synchronize()
-                #if os(iOS) || targetEnvironment(macCatalyst)
-                if profiles.isEmpty {
-                    isEditMode = .inactive
-                }
-                #endif
+                deleteItems(uuids: [profile.uuid], clearEnkaCache: false)
             } label: {
                 Text("profileMgr.delete.title".i18nPZHelper)
             }
@@ -283,28 +286,22 @@ struct ProfileManagerPageContent: View {
     }
 
     private func addProfile(_ profile: PZProfileMO, inBatchQueue: Bool = true) {
-        withAnimation {
-            do {
-                let uuid = profile.uuid
+        theVM.fireTask(
+            cancelPreviousTask: false,
+            givenTask: {
                 PZNotificationCenter.deleteDailyNoteNotification(for: profile.asSendable)
-                try modelContext.delete(
-                    model: PZProfileMO.self,
-                    where: #Predicate { obj in
-                        obj.uuid == uuid
-                    },
-                    includeSubclasses: false
-                )
-                modelContext.insert(profile)
-                try modelContext.save()
-                PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-                Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
-                if !inBatchQueue {
-                    UserDefaults.profileSuite.synchronize()
-                }
-            } catch {
-                return
+                try await PZProfileActor.shared.addProfiles([profile.asSendable])
+                Broadcaster.shared.requireOSNotificationCenterAuthorization()
+                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                alertToastEventStatus.isProfileTaskSucceeded.toggle()
+            },
+            completionHandler: { _ in
+                autoQuitEditModeIfEmpty()
+            },
+            errorHandler: { error in
+                errorMessage = error.localizedDescription
             }
-        }
+        )
     }
 
     /// 该方法是 SwiftUI 内部 Protocol 规定的方法。
@@ -312,78 +309,94 @@ struct ProfileManagerPageContent: View {
         deleteItems(offsets: offsets, clearEnkaCache: false)
     }
 
-    private func deleteItems(offsets: IndexSet, clearEnkaCache: Bool) {
-        withAnimation {
-            var uuidsToDrop: [UUID] = []
-            var profilesDropped: [PZProfileSendable] = []
-            offsets.map {
-                let returned = profiles[$0]
-                profilesDropped.append(returned.asSendable)
-                uuidsToDrop.append(returned.uuid)
-                return returned
-            }.forEach(modelContext.delete)
-
-            defer {
-                let remainingUIDs = Set(profiles.map(\.uidWithGame))
-                profilesDropped.forEach { currentProfile in
-                    // 特殊处理：当且仅当当前删掉的账号不是重复的本地账号的时候，才清空展柜缓存與通知。
-                    guard !remainingUIDs.contains(currentProfile.uidWithGame) else { return }
-                    PZNotificationCenter.deleteDailyNoteNotification(for: currentProfile)
-                    if clearEnkaCache {
-                        switch currentProfile.game {
-                        case .genshinImpact: Defaults[.queriedEnkaProfiles4GI].removeValue(forKey: currentProfile.uid)
-                        case .starRail: Defaults[.queriedEnkaProfiles4HSR].removeValue(forKey: currentProfile.uid)
-                        case .zenlessZone: break // 临时设定。
-                        }
-                    }
-                }
-            }
-
-            try? modelContext.save()
-            uuidsToDrop.forEach {
-                Defaults[.pzProfiles].removeValue(forKey: $0.uuidString)
-            }
-        }
+    private func autoQuitEditModeIfEmpty() {
         #if os(iOS) || targetEnvironment(macCatalyst)
-        if profiles.isEmpty {
+        if theVM.profiles.isEmpty {
             isEditMode = .inactive
         }
         #endif
     }
 
-    private func moveItems(from source: IndexSet, to destination: Int) {
-        withAnimation {
-            var revisedProfiles: [PZProfileMO] = profiles.map { $0 }
-            revisedProfiles.move(fromOffsets: source, toOffset: destination)
+    private func deleteItems(offsets: IndexSet, clearEnkaCache: Bool) {
+        var uuidsToDrop: Set<UUID> = []
+        var profilesToDrop: Set<PZProfileSendable> = []
+        offsets.forEach {
+            let returned = theVM.profiles[$0]
+            profilesToDrop.insert(returned)
+            uuidsToDrop.insert(returned.uuid)
+        }
+        deleteItems(uuids: uuidsToDrop, clearEnkaCache: clearEnkaCache)
+    }
 
-            for (index, profile) in revisedProfiles.enumerated() {
-                profile.priority = index
+    private func deleteItems(uuids uuidsToDrop: Set<UUID>, clearEnkaCache: Bool) {
+        let profilesToDrop: Set<PZProfileSendable> = {
+            var profilesToDropResult: Set<PZProfileSendable> = []
+            theVM.profiles.forEach {
+                guard uuidsToDrop.contains($0.uuid) else { return }
+                profilesToDropResult.insert($0)
             }
+            return profilesToDropResult
+        }()
+        theVM.deleteProfiles(
+            uuids: uuidsToDrop,
+            completionHandler: { maybeRemained in
+                autoQuitEditModeIfEmpty()
+                guard let remainingProfiles = maybeRemained else { return }
+                let remainingUIDs = Set(remainingProfiles.map(\.uidWithGame))
+                profilesToDrop.forEach { currentProfile in
+                    // 特殊处理：当且仅当当前删掉的账号不是重复的本地账号的时候，才清空展柜缓存與通知。
+                    guard !remainingUIDs.contains(currentProfile.uidWithGame) else { return }
+                    PZNotificationCenter.deleteDailyNoteNotification(for: currentProfile)
+                    if clearEnkaCache {
+                        switch currentProfile.game {
+                        case .genshinImpact: Defaults[.queriedEnkaProfiles4GI]
+                            .removeValue(forKey: currentProfile.uid)
+                        case .starRail: Defaults[.queriedEnkaProfiles4HSR].removeValue(forKey: currentProfile.uid)
+                        case .zenlessZone: break // 临时设定。
+                        }
+                    }
+                }
+            },
+            errorHandler: { error in
+                errorMessage = error.localizedDescription
+            }
+        )
+    }
+
+    private func moveItems(from source: IndexSet, to destination: Int) {
+        theVM.moveItems(from: source, to: destination) { error in
+            errorMessage = error.localizedDescription
         }
     }
 
     @MainActor
     private func importLegacyData() {
-        withAnimation {
-            isBusy = true
-            do {
+        theVM.fireTask(
+            cancelPreviousTask: false,
+            givenTask: {
                 try PZProfileActor.migrateOldAccountsIntoProfiles()
-            } catch {
+            },
+            errorHandler: { error in
                 errorMessage = error.localizedDescription
             }
-            isBusy = false
-        }
+        )
     }
 
     private func bleachInvalidProfiles() {
-        profiles.filter(\.isInvalid).forEach { profile in
-            let uuidToRemove = profile.uuid
-            PZNotificationCenter.deleteDailyNoteNotification(for: profile.asSendable)
-            modelContext.delete(profile)
-            try? modelContext.save()
-            Defaults[.pzProfiles].removeValue(forKey: uuidToRemove.uuidString)
-            UserDefaults.profileSuite.synchronize()
-        }
+        theVM.fireTask(
+            cancelPreviousTask: false,
+            givenTask: {
+                let removedSet = try await PZProfileActor.shared.bleachInvalidProfiles()
+                // 注：PZProfileActor 会自动将 SwiftData 内容变更同步到 UserDefaults。
+                PZNotificationCenter.batchDeleteDailyNoteNotification(
+                    profiles: removedSet,
+                    onlyDeleteIfDisabled: false
+                )
+            },
+            errorHandler: { error in
+                errorMessage = error.localizedDescription
+            }
+        )
     }
 
     private func handleImportProfilePackResult(_ result: Result<URL, any Error>) {
@@ -391,27 +404,29 @@ struct ProfileManagerPageContent: View {
         case .failure:
             alertToastEventStatus.isFailureSituationTriggered.toggle()
         case let .success(url):
-            defer {
-                url.stopAccessingSecurityScopedResource()
-            }
-            guard url.startAccessingSecurityScopedResource() else {
-                alertToastEventStatus.isFailureSituationTriggered.toggle()
-                return
-            }
-            do {
-                let data: Data = try Data(contentsOf: url)
-                let decoded = try JSONDecoder().decode([PZProfileSendable].self, from: data)
-                decoded.forEach { profileSendable in
-                    addProfile(profileSendable.asMO)
+            theVM.fireTask(
+                cancelPreviousTask: false,
+                givenTask: {
+                    defer {
+                        url.stopAccessingSecurityScopedResource()
+                    }
+                    guard url.startAccessingSecurityScopedResource() else {
+                        alertToastEventStatus.isFailureSituationTriggered.toggle()
+                        return
+                    }
+                    let data: Data = try Data(contentsOf: url)
+                    let decoded = try JSONDecoder().decode([PZProfileSendable].self, from: data)
+                    let decodedProfileSet = Set(decoded)
+                    try await PZProfileActor.shared.addProfiles(decodedProfileSet)
+                    Broadcaster.shared.requireOSNotificationCenterAuthorization()
+                    Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                    alertToastEventStatus.isProfileTaskSucceeded.toggle()
+                },
+                errorHandler: { error in
+                    errorMessage = error.localizedDescription
+                    alertToastEventStatus.isFailureSituationTriggered.toggle()
                 }
-                UserDefaults.profileSuite.synchronize()
-                Broadcaster.shared.requireOSNotificationCenterAuthorization()
-                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-            } catch {
-                alertToastEventStatus.isFailureSituationTriggered.toggle()
-                return
-            }
-            alertToastEventStatus.isProfileTaskSucceeded.toggle()
+            )
         }
     }
 }
