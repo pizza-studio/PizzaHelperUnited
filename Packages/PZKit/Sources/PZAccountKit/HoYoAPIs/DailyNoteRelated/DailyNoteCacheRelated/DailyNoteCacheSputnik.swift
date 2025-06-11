@@ -55,7 +55,7 @@ extension DailyNoteProtocol {
                     } else {
                         let data: Data = (try? await AF.request(url).serializingData().value) ?? .init([])
                         if var cgImage = CGImage.instantiate(data: data) {
-                            genshinSpecificHandling: if dailyNote.game == .genshinImpact {
+                            if dailyNote.game == .genshinImpact {
                                 let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
                                 guard let croppedCGImage else {
                                     continue
@@ -88,7 +88,7 @@ extension DailyNoteProtocol {
                     if let image = ImageMap.shared.assetMap[url] {
                         assetMap[url] = image
                     } else if var cgImage = CGImage.instantiate(url: url) {
-                        genshinSpecificHandling: if dailyNote.game == .genshinImpact {
+                        if dailyNote.game == .genshinImpact {
                             let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
                             guard let croppedCGImage else {
                                 continue
@@ -118,7 +118,7 @@ extension DailyNoteProtocol {
                 let urls = [task.iconURL, task.iconURL4Copilot].compactMap { $0 }
                 for url in urls {
                     if var cgImage = CGImage.instantiate(url: url) {
-                        genshinSpecificHandling: if dailyNote.game == .genshinImpact {
+                        if dailyNote.game == .genshinImpact {
                             let croppedCGImage = cgImage.croppedPilotPhoto4Genshin()
                             guard let croppedCGImage else {
                                 continue
