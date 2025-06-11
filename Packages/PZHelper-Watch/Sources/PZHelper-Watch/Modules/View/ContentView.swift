@@ -82,8 +82,6 @@ public struct ContentView: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    @Environment(\.modelContext) var modelContext
-
     // MARK: Private
 
     @StateObject private var connectivityManager = AppleWatchSputnik.shared

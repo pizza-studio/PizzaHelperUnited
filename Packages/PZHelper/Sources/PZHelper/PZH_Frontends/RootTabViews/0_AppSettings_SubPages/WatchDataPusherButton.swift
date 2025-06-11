@@ -24,14 +24,14 @@ struct WatchDataPusherButton: View {
         if AppleWatchSputnik.isSupported {
             Section {
                 Button {
-                    var accountInfo = "settings.appleWatchPusher.force_push.received".i18nPZHelper
-                    accountInfo += "\n"
-                    for account in pzProfiles {
-                        accountInfo += "\(account.name) (\(account.uidWithGame))\n"
+                    var profileInfo = "settings.appleWatchPusher.force_push.received".i18nPZHelper
+                    profileInfo += "\n"
+                    for profile in theVM.profiles {
+                        profileInfo += "\(profile.name) (\(profile.uidWithGame))\n"
                     }
                     AppleWatchSputnik.shared.sendAccounts(
-                        pzProfiles.map(\.asSendable),
-                        accountInfo
+                        theVM.profiles,
+                        profileInfo
                     )
                 } label: {
                     Label(
@@ -53,5 +53,5 @@ struct WatchDataPusherButton: View {
 
     // MARK: Private
 
-    @Query(sort: \PZProfileMO.priority) private var pzProfiles: [PZProfileMO]
+    @StateObject private var theVM: ProfileManagerVM = .shared
 }
