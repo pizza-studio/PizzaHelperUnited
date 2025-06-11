@@ -35,6 +35,24 @@ extension PZNotificationCenter {
         }
     }
 
+    public static func batchDeleteDailyNoteNotification(profiles: Set<PZProfileSendable>, onlyDeleteIfDisabled: Bool) {
+        Task { @MainActor in
+            let requests = await center.pendingNotificationRequests()
+            profiles.forEach { profile in
+                if onlyDeleteIfDisabled {
+                    guard !profile.allowNotification else { return }
+                }
+                center.removePendingNotificationRequests(
+                    withIdentifiers: requests
+                        .map(\.identifier)
+                        .filter { id in
+                            id.contains(profile.uuid.uuidString) || id.contains(profile.uidWithGame)
+                        }
+                )
+            }
+        }
+    }
+
     public static func deleteDailyNoteNotification(of type: DailyNoteNotificationType) async throws {
         let requests = await center.pendingNotificationRequests()
         await center.removePendingNotificationRequests(
