@@ -13,7 +13,7 @@ import SwiftUI
 struct InAppDailyNoteCardView: View {
     // MARK: Lifecycle
 
-    init(profile: PZProfileMO) {
+    init(profile: PZProfileSendable) {
         self._theVM = .init(
             wrappedValue: DailyNoteViewModel(profile: profile) { dailyNote in
                 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
@@ -21,7 +21,7 @@ struct InAppDailyNoteCardView: View {
                     Task {
                         // let accounts = AccountModel.shared.fetchAccountConfigs()
                         try? StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
-                            for: profile.asSendable,
+                            for: profile,
                             data: dailyNote
                         )
                     }
@@ -58,7 +58,7 @@ struct InAppDailyNoteCardView: View {
                     #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
                     Menu {
                         EnableLiveActivityButton(
-                            for: theVM.profile.asSendable,
+                            for: theVM.profile,
                             dailyNote: dailyNote
                         )
                     } label: {
@@ -95,7 +95,7 @@ struct InAppDailyNoteCardView: View {
 // MARK: - DailyNoteCardErrorView
 
 private struct DailyNoteCardErrorView: View {
-    public let profile: PZProfileMO
+    public let profile: PZProfileSendable
     public var error: Error
 
     public var body: some View {

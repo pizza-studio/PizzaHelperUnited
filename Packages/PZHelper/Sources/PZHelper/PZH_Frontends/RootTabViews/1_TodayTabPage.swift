@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import EnkaKit
 import Foundation
 import GITodayMaterialsKit
@@ -26,7 +27,7 @@ struct TodayTabPage: View {
                     todayMaterialNav
                 }
                 .listRowMaterialBackground()
-                if profiles.isEmpty {
+                if pzProfiles.isEmpty {
                     Label {
                         Text("app.dailynote.noCard.suggestion".i18nPZHelper)
                     } icon: {
@@ -93,39 +94,45 @@ struct TodayTabPage: View {
     // MARK: Private
 
     @StateObject private var broadcaster = Broadcaster.shared
+    @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
     @State private var game: Pizza.SupportedGame? = .none
-    @Environment(\.modelContext) private var modelContext
-    @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
 
-    private var filteredProfiles: [PZProfileMO] {
-        profiles.filter {
+    private var filteredProfiles: [PZProfileSendable] {
+        pzProfiles.values.filter {
             guard let currentGame = game else { return true }
             return $0.game == currentGame
+        }.sorted {
+            $0.priority < $1.priority
         }
     }
 
     private var games: [Pizza.SupportedGame] {
-        profiles.map(\.game).reduce(into: [Pizza.SupportedGame]()) {
+        pzProfiles.map(\.value.game).reduce(into: [Pizza.SupportedGame]()) {
             if !$0.contains($1) { $0.append($1) }
+        }
+        .sorted {
+            $0.caseIndex < $1.caseIndex
         }
     }
 
     private var shouldShowGenshinTodayMaterial: Bool {
         switch game {
-        case .genshinImpact where !profiles.isEmpty: true
-        case .starRail where !profiles.isEmpty: false
-        case .zenlessZone where !profiles.isEmpty: false
+        case .genshinImpact where !pzProfiles.isEmpty: true
+        case .starRail where !pzProfiles.isEmpty: false
+        case .zenlessZone where !pzProfiles.isEmpty: false
         default: true
         }
     }
 
     @ViewBuilder private var gamePicker: some View {
-        Picker("".description, selection: $game.animation()) {
-            Text(Pizza.SupportedGame?.none.localizedShortName)
-                .tag(nil as Pizza.SupportedGame?)
-            ForEach(games) { game in
-                Text(game.localizedShortName)
-                    .tag(game as Pizza.SupportedGame?)
+        if !pzProfiles.isEmpty {
+            Picker("".description, selection: $game.animation()) {
+                Text(Pizza.SupportedGame?.none.localizedShortName)
+                    .tag(nil as Pizza.SupportedGame?)
+                ForEach(games) { game in
+                    Text(game.localizedShortName)
+                        .tag(game as Pizza.SupportedGame?)
+                }
             }
         }
     }
