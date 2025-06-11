@@ -151,9 +151,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
     func triggerUpdateTask() {
         if delegate.taskState == .standBy {
-            Task.detached { @MainActor in
-                delegate.update()
-            }
+            delegate.update()
         }
     }
 
