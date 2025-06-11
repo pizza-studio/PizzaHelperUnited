@@ -148,6 +148,24 @@ public enum OS: Int {
 
     // MARK: Public
 
+    public static let isLiquidGlassEraOS: Bool = {
+        #if os(macOS)
+        return if #unavailable(macOS 26) { false } else { true }
+        #elseif os(watchOS)
+        return if #unavailable(watchOS 26) { false } else { true }
+        #elseif os(tvOS)
+        return if #unavailable(tvOS 26) { false } else { true }
+        #elseif os(iOS)
+        #if targetEnvironment(simulator)
+        return if #unavailable(iOS 26) { false } else { true }
+        #elseif targetEnvironment(macCatalyst)
+        return if #unavailable(macCatalyst 26) { false } else { true }
+        #else
+        return if #unavailable(iOS 26) { false } else { true }
+        #endif
+        #endif
+    }()
+
     public static let type: OS = {
         guard !ProcessInfo.processInfo.isiOSAppOnMac else { return .macOS }
         #if os(macOS)
