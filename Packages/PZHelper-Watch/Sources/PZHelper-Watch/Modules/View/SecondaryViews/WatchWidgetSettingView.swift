@@ -18,11 +18,11 @@ struct WatchWidgetSettingView: View {
     var body: some View {
         List {
             Section {
-                ForEach(profiles) { account in
+                ForEach(theVM.profiles) { profile in
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(account.name).bold()
-                            Text(account.uidWithGame).font(.footnote)
+                            Text(profile.name).bold()
+                            Text(profile.uidWithGame).font(.footnote)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         Image(systemSymbol: .chevronLeft)
@@ -31,21 +31,7 @@ struct WatchWidgetSettingView: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .onDelete(perform: { indexSet in
-                    for offset in indexSet {
-                        let account = profiles[offset]
-                        let uuidToRemove = account.uuid
-                        PZNotificationCenter.deleteDailyNoteNotification(for: account.asSendable)
-                        modelContext.delete(account)
-                        do {
-                            try modelContext.save()
-                            Defaults[.pzProfiles].removeValue(forKey: uuidToRemove.uuidString)
-                            UserDefaults.profileSuite.synchronize()
-                        } catch {
-                            print(error)
-                        }
-                    }
-                })
+                .onDelete(perform: deleteItems)
             } header: {
                 Text("watch.profile.manage.title", bundle: .module)
                     .textCase(.none)
@@ -55,6 +41,27 @@ struct WatchWidgetSettingView: View {
 
     // MARK: Private
 
-    @Environment(\.modelContext) private var modelContext
-    @Query(sort: \PZProfileMO.priority) private var profiles: [PZProfileMO]
+    @StateObject private var theVM: ProfileManagerVM = .shared
+
+    @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
+
+    /// 该方法是 SwiftUI 内部 Protocol 规定的方法。
+    private func deleteItems(offsets: IndexSet) {
+        deleteItems(offsets: offsets, clearEnkaCache: false)
+    }
+
+    private func deleteItems(offsets: IndexSet, clearEnkaCache: Bool) {
+        var uuidsToDrop: Set<UUID> = []
+        var profilesToDrop: Set<PZProfileSendable> = []
+        offsets.forEach {
+            let returned = theVM.profiles[$0]
+            profilesToDrop.insert(returned)
+            uuidsToDrop.insert(returned.uuid)
+        }
+        deleteItems(uuids: uuidsToDrop, clearEnkaCache: clearEnkaCache)
+    }
+
+    private func deleteItems(uuids uuidsToDrop: Set<UUID>, clearEnkaCache: Bool) {
+        theVM.deleteProfiles(uuids: uuidsToDrop)
+    }
 }
