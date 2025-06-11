@@ -99,7 +99,7 @@ private struct ProfilesNotificationPermissionView: View {
     var body: some View {
         Form {
             Section {
-                ForEach(pzProfiles) { profile in
+                ForEach(profileManagerVM.profiles) { profile in
                     Toggle(
                         isOn: getBinding4AllowingNotification(for: profile).animation()
                     ) {
@@ -109,6 +109,8 @@ private struct ProfilesNotificationPermissionView: View {
             } footer: {
                 Text("settings.notification.profilesReceivingNotifications.description", bundle: .module)
             }
+            .disabled(profileManagerVM.taskState == .busy)
+            .saturation(profileManagerVM.taskState == .busy ? 0 : 1)
         }
         .formStyle(.grouped)
         .navBarTitleDisplayMode(.large)
@@ -117,12 +119,11 @@ private struct ProfilesNotificationPermissionView: View {
 
     // MARK: Private
 
-    @Query(sort: \PZProfileMO.priority) private var pzProfiles: [PZProfileMO]
-    @Environment(\.modelContext) private var modelContext
+    @StateObject private var profileManagerVM: ProfileManagerVM = .shared
 
     @ViewBuilder
     private static func drawLocalProfile(
-        _ profile: PZProfileMO,
+        _ profile: PZProfileSendable,
         isChosen: Bool = false
     )
         -> some View {
@@ -145,15 +146,18 @@ private struct ProfilesNotificationPermissionView: View {
         }.padding(.vertical, 4)
     }
 
-    private func getBinding4AllowingNotification(for profile: PZProfileMO) -> Binding<Bool> {
-        .init {
+    private func getBinding4AllowingNotification(for profile: PZProfileSendable) -> Binding<Bool> {
+        var profile = profile
+        return .init {
             profile.allowNotification
         } set: { newValue in
             profile.allowNotification = newValue
-            try? modelContext.save()
-            PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-            Defaults[.pzProfiles][profile.uuid.uuidString] = profile.asSendable
-            UserDefaults.profileSuite.synchronize()
+            profileManagerVM.updateProfile(
+                profile,
+                trailingTasks: {
+                    PZNotificationCenter.bleachNotificationsIfDisabled(for: profile)
+                }
+            )
         }
     }
 }
