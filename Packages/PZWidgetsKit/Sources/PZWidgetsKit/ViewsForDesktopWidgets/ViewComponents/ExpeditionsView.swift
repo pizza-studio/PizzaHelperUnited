@@ -127,7 +127,7 @@ extension DesktopWidgets {
                 let outerSize: CGFloat = 50
                 let shouldShrinkIconPaneWidth: Bool = layout == .tinyWithShrinkedIconSpaces && expedition
                     .game != .starRail
-                GeometryReader { g in
+                Group {
                     let leaderAvatarAsset: some View = Group {
                         if let pilotImage {
                             pilotImage
