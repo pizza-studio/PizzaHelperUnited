@@ -191,7 +191,7 @@ extension PZProfileActor {
         return result.sorted { $0.priority < $1.priority }
     }
 
-    public func addProfile(_ profileSendable: PZProfileSendable, commitAfterDone: Bool = true) throws {
+    private func addProfile(_ profileSendable: PZProfileSendable, commitAfterDone: Bool = true) throws {
         func subTask() throws {
             var isAdded = false
             try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
@@ -218,22 +218,26 @@ extension PZProfileActor {
     }
 
     public func addProfiles(
-        _ profileSendables: Set<PZProfileSendable>,
-        completionHandler: ((Set<PZProfileSendable>) -> Void)? = nil
+        _ profileSendables: Set<PZProfileSendable>
     ) throws {
         try modelContext.transaction {
             try profileSendables.forEach {
                 try addProfile($0, commitAfterDone: false)
             }
         }
-        completionHandler?(profileSendables)
     }
 
+    /// This will add the profile if it is not already added.
     public func updateProfile(_ profileSendable: PZProfileSendable) throws {
         try modelContext.transaction {
+            var processed = false
             try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
                 guard currentMO.uuid == profileSendable.uuid else { return }
                 currentMO.inherit(from: profileSendable)
+                processed = true
+            }
+            if !processed {
+                modelContext.insert(profileSendable.asMO)
             }
         }
     }
@@ -269,13 +273,20 @@ extension PZProfileActor {
         }
     }
 
-    public func deleteProfiles(uuids: Set<UUID>) throws {
+    /// - Returns: Remaining entries.
+    @discardableResult
+    public func deleteProfiles(uuids: Set<UUID>) throws -> Set<PZProfileSendable> {
+        var remainingProfiles = Set<PZProfileSendable>()
         try modelContext.transaction {
             try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
-                guard uuids.contains(currentMO.uuid) else { return }
+                guard uuids.contains(currentMO.uuid) else {
+                    remainingProfiles.insert(currentMO.asSendable)
+                    return
+                }
                 modelContext.delete(currentMO)
             }
         }
+        return remainingProfiles
     }
 
     public static func getSendableProfiles() -> [PZProfileSendable] {
@@ -284,9 +295,8 @@ extension PZProfileActor {
         return result.sorted { $0.priority < $1.priority }
     }
 
-    public func bleachInvalidProfiles(
-        postDeletionHandler: ((Set<PZProfileSendable>) -> Void)? = nil
-    ) throws {
+    @discardableResult
+    public func bleachInvalidProfiles() throws -> Set<PZProfileSendable> {
         var deletedProfiles = Set<PZProfileSendable>()
         try modelContext.transaction {
             try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
@@ -295,7 +305,7 @@ extension PZProfileActor {
                 deletedProfiles.insert(currentMO.asSendable)
             }
         }
-        postDeletionHandler?(deletedProfiles)
+        return deletedProfiles
     }
 
     public func migrateOldAccountMatchingUUID(_ uuid: String) async throws {
