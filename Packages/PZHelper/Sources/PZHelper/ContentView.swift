@@ -28,11 +28,6 @@ public struct ContentView: View {
                 }
             }
         }
-        .onChange(of: accounts) {
-            Task { @MainActor in
-                await PZProfileActor.shared.syncAllDataToUserDefaults()
-            }
-        }
         #if targetEnvironment(macCatalyst)
         .apply { theContent in
             #if compiler(>=6.0) && canImport(UIKit, _version: 18.0)
@@ -137,14 +132,11 @@ public struct ContentView: View {
         }
     }
 
-    @Query(sort: \PZProfileMO.priority) var accounts: [PZProfileMO]
-
     @Default(.appTabIndex) var appIndex: Int
 
     // MARK: Private
 
     @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.modelContext) private var modelContext
     @StateObject private var tabNavVM = GlobalNavVM.shared
 
     private var tintForCurrentTab: Color {
