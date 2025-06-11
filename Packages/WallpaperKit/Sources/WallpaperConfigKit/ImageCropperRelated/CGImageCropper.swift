@@ -47,7 +47,7 @@ public struct CGImageCropperView: View {
         .init {
             max(0.0, scaleFactor)
         } set: { newValue in
-            scaleFactor = max(0.0, scaleFactor)
+            scaleFactor = max(0.0, newValue)
         }
     }
 
