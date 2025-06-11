@@ -139,7 +139,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     }
 
     /// 此处得重复一遍该 Protocol 方法，不然就只能针对 var 变数使用该函式了。
-    public func inherit(from target: some ProfileMOProtocol) {
+    public func inherit(from target: some ProfileProtocol) {
         uid = target.uid
         uuid = target.uuid
         allowNotification = target.allowNotification
