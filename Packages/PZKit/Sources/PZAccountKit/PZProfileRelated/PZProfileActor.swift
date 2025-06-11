@@ -118,9 +118,12 @@ public actor PZProfileActor {
                     guard !(inserted + deleted + updated).isEmpty else { return }
                     Task { @MainActor in
                         if Defaults[.automaticallyDeduplicatePZProfiles] {
-                            _ = try await self.deduplicate()
+                            try await self.deduplicate()
                         }
                         await self.syncAllDataToUserDefaults()
+                        ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
+                            $0.priority < $1.priority
+                        }
                     }
                 }
             })
@@ -183,14 +186,116 @@ extension PZProfileActor {
     }
 
     public func getSendableProfiles() -> [PZProfileSendable] {
-        let result = (try? modelContext.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
+        var result = (try? modelContext.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
+        result.fixPrioritySettings(respectExistingPriority: true)
         return result.sorted { $0.priority < $1.priority }
+    }
+
+    public func addProfile(_ profileSendable: PZProfileSendable, commitAfterDone: Bool = true) throws {
+        func subTask() throws {
+            var isAdded = false
+            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
+                guard !isAdded else { return }
+                switch currentMO.uuid == profileSendable.uuid {
+                case true:
+                    currentMO.inherit(from: profileSendable)
+                    isAdded = true
+                case false:
+                    break
+                }
+            }
+            if !isAdded {
+                modelContext.insert(profileSendable.asMO)
+            }
+        }
+        if commitAfterDone {
+            try modelContext.transaction {
+                try subTask()
+            }
+        } else {
+            try subTask()
+        }
+    }
+
+    public func addProfiles(
+        _ profileSendables: Set<PZProfileSendable>,
+        completionHandler: ((Set<PZProfileSendable>) -> Void)? = nil
+    ) throws {
+        try modelContext.transaction {
+            try profileSendables.forEach {
+                try addProfile($0, commitAfterDone: false)
+            }
+        }
+        completionHandler?(profileSendables)
+    }
+
+    public func updateProfile(_ profileSendable: PZProfileSendable) throws {
+        try modelContext.transaction {
+            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
+                guard currentMO.uuid == profileSendable.uuid else { return }
+                currentMO.inherit(from: profileSendable)
+            }
+        }
+    }
+
+    public func replaceAllProfiles(with profileSendableSet: Set<PZProfileSendable>) throws {
+        var map: [UUID: PZProfileSendable] = [:]
+        var handledUUIDs = Set<UUID>()
+        profileSendableSet.forEach {
+            map[$0.uuid] = $0
+        }
+
+        try modelContext.transaction {
+            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
+                guard let matchedSendable = map[currentMO.uuid] else {
+                    modelContext.delete(currentMO)
+                    return
+                }
+                currentMO.inherit(from: matchedSendable)
+                handledUUIDs.insert(matchedSendable.uuid)
+            }
+            let restUUIDs = Set(profileSendableSet.map(\.uuid)).subtracting(handledUUIDs)
+            let restProfilesToAdd: [PZProfileMO] = restUUIDs.compactMap { map[$0]?.asMO }
+            restProfilesToAdd.forEach(modelContext.insert)
+        }
+    }
+
+    public func deleteProfile(uuid: UUID) throws {
+        try modelContext.transaction {
+            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
+                guard currentMO.uuid == uuid else { return }
+                modelContext.delete(currentMO)
+            }
+        }
+    }
+
+    public func deleteProfiles(uuids: Set<UUID>) throws {
+        try modelContext.transaction {
+            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
+                guard uuids.contains(currentMO.uuid) else { return }
+                modelContext.delete(currentMO)
+            }
+        }
     }
 
     public static func getSendableProfiles() -> [PZProfileSendable] {
         let context = ModelContext(shared.modelContainer)
         let result = (try? context.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
         return result.sorted { $0.priority < $1.priority }
+    }
+
+    public func bleachInvalidProfiles(
+        postDeletionHandler: ((Set<PZProfileSendable>) -> Void)? = nil
+    ) throws {
+        var deletedProfiles = Set<PZProfileSendable>()
+        try modelContext.transaction {
+            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
+                guard currentMO.isInvalid else { return }
+                modelContext.delete(currentMO)
+                deletedProfiles.insert(currentMO.asSendable)
+            }
+        }
+        postDeletionHandler?(deletedProfiles)
     }
 
     public func migrateOldAccountMatchingUUID(_ uuid: String) async throws {
@@ -209,7 +314,8 @@ extension PZProfileActor {
 // MARK: - Backup and Restore
 
 extension PZProfileActor {
-    public func syncAllDataToUserDefaults() {
+    @discardableResult
+    public func syncAllDataToUserDefaults() -> [PZProfileSendable] {
         var existingKeys = Set<String>(Defaults[.pzProfiles].keys)
         let profiles = getSendableProfiles()
         profiles.forEach {
@@ -218,6 +324,7 @@ extension PZProfileActor {
         }
         existingKeys.forEach { Defaults[.pzProfiles].removeValue(forKey: $0) }
         UserDefaults.profileSuite.synchronize()
+        return profiles
     }
 
     private func detectWhetherIsReset() -> Bool {
@@ -243,27 +350,31 @@ extension PZProfileActor {
 
 extension PZProfileActor {
     /// Warning: 该方法仅对 SwiftData 资料库有操作，不影响 UserDefaults。
-    /// - Returns: 是否确实做了去除重复内容的操作。
     @discardableResult
-    public func deduplicate() throws -> Bool {
+    public func deduplicate() throws
+        -> (removed: Set<PZProfileSendable>, left: Set<PZProfileSendable>) {
         let existingMOs = (try modelContext.fetch(FetchDescriptor<PZProfileMO>()))
         let existingProfiles = existingMOs.map(\.asSendable).sorted { $0.uuid < $1.uuid }
-        var profileSets = Set<PZProfileSendable>(existingProfiles)
-        let uniqueProfiles = profileSets.sorted { $0.uuid < $1.uuid }
+        var profileSet = Set<PZProfileSendable>(existingProfiles)
+        let uniqueProfiles = profileSet.sorted { $0.uuid < $1.uuid }
         /// 用这一行来判断是否有重复内容。没有的话就直接放弃处理。
-        guard existingProfiles != uniqueProfiles else { return false }
-        profileSets.removeAll()
+        guard existingProfiles != uniqueProfiles else {
+            return (removed: .init(), left: profileSet)
+        }
+        profileSet.removeAll()
+        var profilesRemoved: Set<PZProfileSendable> = .init()
         try modelContext.transaction {
             existingMOs.forEach { currentMO in
                 let sendableProfile = currentMO.asSendable
-                if !profileSets.contains(sendableProfile) {
-                    profileSets.insert(sendableProfile)
+                if !profileSet.contains(sendableProfile) {
+                    profileSet.insert(sendableProfile)
                 } else {
                     modelContext.delete(currentMO)
+                    profilesRemoved.insert(sendableProfile)
                 }
             }
         }
-        return true
+        return (profilesRemoved, profileSet)
     }
 }
 
