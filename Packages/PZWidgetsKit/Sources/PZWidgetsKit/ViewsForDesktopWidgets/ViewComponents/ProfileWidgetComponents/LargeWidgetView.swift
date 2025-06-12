@@ -89,7 +89,7 @@ extension DesktopWidgets {
                                 case .displayExclusively where hasExpeditionInfoForDisplay:
                                     ExpeditionsView(
                                         layout: .tinyWithShrinkedIconSpaces,
-                                        max4AllowedToDisplay: false,
+                                        limitPilotsIfNeeded: false,
                                         expeditions: dailyNote.expeditionTasks,
                                         pilotAssetMap: entry.pilotAssetMap
                                     )
@@ -119,7 +119,7 @@ extension DesktopWidgets {
                                 case .displayWhenAvailable where hasExpeditionInfoForDisplay:
                                     ExpeditionsView(
                                         layout: .tinyWithShrinkedIconSpaces,
-                                        max4AllowedToDisplay: false,
+                                        limitPilotsIfNeeded: false,
                                         expeditions: dailyNote.expeditionTasks,
                                         pilotAssetMap: entry.pilotAssetMap
                                     )
@@ -187,7 +187,7 @@ extension DesktopWidgets {
                     case .displayExclusively where hasExpeditionInfoForDisplay:
                         ExpeditionsView(
                             layout: .tinyWithShrinkedIconSpaces,
-                            max4AllowedToDisplay: false,
+                            limitPilotsIfNeeded: false,
                             expeditions: dailyNote.expeditionTasks,
                             pilotAssetMap: entry.pilotAssetMap
                         )
