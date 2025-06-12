@@ -295,6 +295,95 @@ extension GachaActor {
     }
 }
 
+// MARK: - CRUD APIs for GachaFetchVM.
+
+extension GachaActor {
+    /// 自本地 SwiftData 抽卡资料库移除指定 UID 与流水号的所有记录。
+    /// - Parameters:
+    ///   - game: 游戏。
+    ///   - uid: 给定的当前游戏的 UID。
+    ///   - id: 流水号。
+    private func removeEntry(game: Pizza.SupportedGame, uid: String, id: String) throws {
+        let gameStr = game.rawValue
+        try modelContext.delete(
+            model: PZGachaEntryMO.self,
+            where: #Predicate {
+                $0.id == id && $0.uid == uid && $0.game == gameStr
+            },
+            includeSubclasses: false
+        )
+    }
+
+    /// 将给定的抽卡物品记录插入至本地 SwiftData 抽卡资料库。
+    /// - Parameter gachaItem: 给定的抽卡物品记录（Sendable）。
+    public func insertRawEntrySansCommission(
+        _ gachaItem: PZGachaEntrySendable,
+        forceOverride isForceOverrideModeEnabled: Bool
+    ) throws {
+        let game = gachaItem.gameTyped
+        if !isForceOverrideModeEnabled {
+            guard !checkIDAndUIDExists(game: game, uid: gachaItem.uid, id: gachaItem.id)
+            else { return }
+        } else {
+            try removeEntry(game: game, uid: gachaItem.uid, id: gachaItem.id)
+        }
+        modelContext.insert(gachaItem.asMO)
+        if !checkGPIDExists(game: game, uid: gachaItem.uid) {
+            let gpid = GachaProfileID(uid: gachaItem.uid, game: game)
+            modelContext.insert(gpid.asMO)
+        }
+    }
+
+    /// 自本地 SwiftData 抽卡资料库检查给定的 UID 与流水号是否已经有对应的本地记录。
+    /// - Parameters:
+    ///   - game: 游戏。
+    ///   - uid: 给定的当前游戏的 UID。
+    ///   - id: 流水号。
+    /// - Returns: 检查结果。
+    private func checkIDAndUIDExists(
+        game: Pizza.SupportedGame,
+        uid: String,
+        id: String
+    )
+        -> Bool {
+        let gameStr = game.rawValue
+        var request = FetchDescriptor<PZGachaEntryMO>(
+            predicate: #Predicate {
+                $0.id == id && $0.uid == uid && $0.game == gameStr
+            }
+        )
+        request.propertiesToFetch = [\.id, \.uid, \.game]
+        do {
+            let gachaItemMOCount = try modelContext.fetchCount(request)
+            return gachaItemMOCount > 0
+        } catch {
+            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
+            return true
+        }
+    }
+
+    /// 检查本地 SwiftData 抽卡资料库，确认是否有对应的 GPID（抽卡人）在库。
+    /// - Parameters:
+    ///   - game: 游戏。
+    ///   - uid: 给定的当前游戏的 UID。
+    /// - Returns: 检查结果。
+    private func checkGPIDExists(game: Pizza.SupportedGame, uid: String) -> Bool {
+        let gameStr = game.rawValue
+        let request = FetchDescriptor<PZGachaProfileMO>(
+            predicate: #Predicate {
+                $0.uid == uid && $0.gameRAW == gameStr
+            }
+        )
+        do {
+            let gpidMOCount = try modelContext.fetchCount(request)
+            return gpidMOCount > 0
+        } catch {
+            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
+            return true
+        }
+    }
+}
+
 // MARK: - APIs for bleaching tasks.
 
 extension GachaActor {
