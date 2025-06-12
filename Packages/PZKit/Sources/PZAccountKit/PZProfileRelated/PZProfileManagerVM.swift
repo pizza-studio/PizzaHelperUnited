@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Combine
 import Defaults
 import Foundation
 import PZBaseKit
@@ -22,6 +23,7 @@ public final class ProfileManagerVM: TaskManagedVM {
         }
         self.profileMOs = newMOMap
         super.init()
+        configurePublisherObservations()
         Task { @MainActor in
             let count = try? AccountMOSputnik.shared.countAllAccountDataAsPZProfileMO()
             self.hasOldAccountDataDetected = (count ?? 0) > 0
@@ -162,5 +164,30 @@ public final class ProfileManagerVM: TaskManagedVM {
             },
             errorHandler: errorHandler
         )
+    }
+
+    // MARK: Private
+
+    @ObservationIgnored private var cancellables: [AnyCancellable] = []
+
+    private func configurePublisherObservations() {
+        NotificationCenter.default.publisher(for: ModelContext.didSave)
+            .sink(receiveValue: { notification in
+                let changedEntityNames = PersistentIdentifier.parseObjectNames(
+                    notificationResult: notification.userInfo
+                )
+                guard !changedEntityNames.isEmpty else { return }
+                guard changedEntityNames.contains("PZProfileMO") else { return }
+                Task { @MainActor in
+                    if Defaults[.automaticallyDeduplicatePZProfiles] {
+                        try await PZProfileActor.shared.deduplicate()
+                    }
+                    await PZProfileActor.shared.syncAllDataToUserDefaults()
+                    ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
+                        $0.priority < $1.priority
+                    }
+                }
+            })
+            .store(in: &cancellables)
     }
 }
