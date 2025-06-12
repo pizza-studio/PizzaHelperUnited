@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
 import SwiftData
 
 extension ModelActor {
@@ -24,16 +25,25 @@ extension ModelActor {
             modelContext.rollback()
         }
     }
+}
 
-    public func asyncTransaction(block: (ModelContext) throws -> Void) throws {
-        try modelContext.transaction {
-            try block(modelContext)
+extension PersistentIdentifier {
+    public static func parseObjectNames(notificationResult maybeUserInfo: [AnyHashable: Any]?) -> Set<String> {
+        guard let userInfo = maybeUserInfo else { return [] }
+        let entitiesNested: [[PersistentIdentifier]?] = [
+            (userInfo["inserted"] as? [PersistentIdentifier]),
+            userInfo["updated"] as? [PersistentIdentifier],
+            userInfo["deleted"] as? [PersistentIdentifier],
+        ]
+        let entitiyNames: Set<String> = entitiesNested.reduce(Set<String>()) { lhs, rhs in
+            guard let rhs else { return lhs }
+            return lhs.union(rhs.map(\.entityName))
         }
-    }
-
-    public func asyncTransaction(block: (ModelContext) -> Void) throws {
-        try modelContext.transaction {
-            block(modelContext)
+        #if DEBUG
+        if !entitiyNames.isEmpty {
+            print(userInfo)
         }
+        #endif
+        return entitiyNames
     }
 }
