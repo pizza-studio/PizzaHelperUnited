@@ -23,6 +23,8 @@ public actor GachaActor {
 
     // MARK: Public
 
+    @MainActor public static var remoteChangesAvailable = false
+
     public let cdGachaMOSputnik = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: true)
 }
 
@@ -119,7 +121,7 @@ extension GachaActor {
             )
         }
         Task { @MainActor in
-            GachaVM.shared.remoteChangesAvailable = false
+            GachaActor.remoteChangesAvailable = false
         }
     }
 
@@ -164,7 +166,7 @@ extension GachaActor {
             }
         }
         Task { @MainActor in
-            GachaVM.shared.remoteChangesAvailable = false
+            GachaActor.remoteChangesAvailable = false
         }
         // try lazyRefreshProfiles(newProfiles: profiles)
         if refreshGachaProfiles {
@@ -185,7 +187,7 @@ extension GachaActor {
             arrProfiles.forEach { modelContext.insert($0.asMO) }
         }
         Task { @MainActor in
-            GachaVM.shared.remoteChangesAvailable = false
+            GachaActor.remoteChangesAvailable = false
         }
     }
 
