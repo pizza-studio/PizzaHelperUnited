@@ -130,6 +130,6 @@ public struct GachaProfileSwitcherView: View {
     }
 
     private var sortedGPIDs: [GachaProfileID] {
-        theVM.allGPIDs.wrappedValue
+        theVM.allGPIDs
     }
 }
