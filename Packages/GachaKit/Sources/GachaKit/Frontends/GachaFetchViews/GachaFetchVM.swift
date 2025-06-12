@@ -109,10 +109,6 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
 
     private var task: Task<Void, Never>?
 
-    private var mainContext: ModelContext {
-        GachaActor.shared.modelContainer.mainContext
-    }
-
     private func initialize() {
         client = nil
         setWaitingForURL()
@@ -167,10 +163,15 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
                         if isBleachingModeEnabled {
                             validTransactionIDMap[item.time, default: []].append(item.id)
                         }
-                        try await insert(item)
+                        try await GachaActor.shared.insertRawEntrySansCommission(
+                            item, forceOverride: isForceOverrideModeEnabled
+                        )
+                        withAnimation {
+                            self.savedTypeFetchedCount[.init(rawValue: item.gachaType)]! += 1
+                        }
                         try await Task.sleep(for: .seconds(0.5 / 20.0))
                     }
-                    try mainContext.save()
+                    try await GachaActor.shared.asyncSave()
                     GachaActor.remoteChangesAvailable = false
                 }
                 if isBleachingModeEnabled {
@@ -264,24 +265,6 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         }
     }
 
-    /// 将给定的抽卡物品记录插入至本地 SwiftData 抽卡资料库。
-    /// - Parameter gachaItem: 给定的抽卡物品记录（Sendable）。
-    private func insert(_ gachaItem: PZGachaEntrySendable) async throws {
-        if !isForceOverrideModeEnabled {
-            guard !checkIDAndUIDExists(uid: gachaItem.uid, id: gachaItem.id) else { return }
-        } else {
-            try removeEntry(uid: gachaItem.uid, id: gachaItem.id)
-        }
-        mainContext.insert(gachaItem.asMO)
-        if !checkGPIDExists(uid: gachaItem.uid) {
-            let gpid = GachaProfileID(uid: gachaItem.uid, game: GachaType.game)
-            mainContext.insert(gpid.asMO)
-        }
-        withAnimation {
-            self.savedTypeFetchedCount[.init(rawValue: gachaItem.gachaType)]! += 1
-        }
-    }
-
     /// 更新抽卡记录缓存。
     /// - Parameter item: 给定的单笔抽卡记录（Sendable）。
     private func updateCachedItems(_ item: PZGachaEntrySendable) {
@@ -324,62 +307,6 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
             if self.gachaTypeDateCounts[index].gachaType.rawValue == item.gachaType {
                 self.gachaTypeDateCounts[index].count += 1
             }
-        }
-    }
-
-    /// 自本地 SwiftData 抽卡资料库检查给定的 UID 与流水号是否已经有对应的本地记录。
-    /// - Parameters:
-    ///   - uid: 给定的当前游戏的 UID。
-    ///   - id: 流水号。
-    /// - Returns: 检查结果。
-    private func checkIDAndUIDExists(uid: String, id: String) -> Bool {
-        let gameStr = GachaType.game.rawValue
-        var request = FetchDescriptor<PZGachaEntryMO>(
-            predicate: #Predicate {
-                $0.id == id && $0.uid == uid && $0.game == gameStr
-            }
-        )
-        request.propertiesToFetch = [\.id, \.uid, \.game]
-        do {
-            let gachaItemMOCount = try mainContext.fetchCount(request)
-            return gachaItemMOCount > 0
-        } catch {
-            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
-            return true
-        }
-    }
-
-    /// 自本地 SwiftData 抽卡资料库移除指定 UID 与流水号的所有记录。
-    /// - Parameters:
-    ///   - uid: 给定的当前游戏的 UID。
-    ///   - id: 流水号。
-    private func removeEntry(uid: String, id: String) throws {
-        let gameStr = GachaType.game.rawValue
-        try mainContext.delete(
-            model: PZGachaEntryMO.self,
-            where: #Predicate {
-                $0.id == id && $0.uid == uid && $0.game == gameStr
-            },
-            includeSubclasses: false
-        )
-    }
-
-    /// 检查本地 SwiftData 抽卡资料库，确认是否有对应的 GPID（抽卡人）在库。
-    /// - Parameter uid: 给定的当前游戏的 UID。
-    /// - Returns: 检查结果。
-    private func checkGPIDExists(uid: String) -> Bool {
-        let gameStr = GachaType.game.rawValue
-        let request = FetchDescriptor<PZGachaProfileMO>(
-            predicate: #Predicate {
-                $0.uid == uid && $0.gameRAW == gameStr
-            }
-        )
-        do {
-            let gpidMOCount = try mainContext.fetchCount(request)
-            return gpidMOCount > 0
-        } catch {
-            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
-            return true
         }
     }
 }
