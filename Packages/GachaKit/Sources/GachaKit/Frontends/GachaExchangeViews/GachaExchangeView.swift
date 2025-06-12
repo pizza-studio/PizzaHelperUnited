@@ -57,6 +57,7 @@ public struct GachaExchangeView: View {
                             }
                         }
                         .pickerStyle(.segmented)
+                        .fixedSize()
                         .disabled(theVM.taskState == .busy)
                         .saturation(theVM.taskState == .busy ? 0 : 1)
                     }
