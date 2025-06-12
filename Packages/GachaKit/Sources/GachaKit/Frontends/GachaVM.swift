@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
 import CoreXLSX
 import Defaults
 import EnkaKit
@@ -33,22 +32,6 @@ public final class GachaVM: TaskManagedVM {
                 try? await Enka.Sputnik.shared.db4GI.reinitIfLocMismatches()
             }
         )
-        NotificationCenter.default.publisher(for: ModelContext.didSave)
-            .sink(receiveValue: { notification in
-                if let userInfo = notification.userInfo {
-                    let inserted = (userInfo["inserted"] as? [PersistentIdentifier]) ?? []
-                    let deleted = (userInfo["deleted"] as? [PersistentIdentifier]) ?? []
-                    let updated = (userInfo["updated"] as? [PersistentIdentifier]) ?? []
-                    print(userInfo)
-                    guard !(inserted + deleted + updated).isEmpty else { return }
-                    Task { @MainActor in
-                        if !GachaActor.remoteChangesAvailable {
-                            GachaActor.remoteChangesAvailable = true
-                        }
-                    }
-                }
-            })
-            .store(in: &cancellables)
     }
 
     // MARK: Public
@@ -77,8 +60,6 @@ public final class GachaVM: TaskManagedVM {
     }
 
     // MARK: Private
-
-    private var cancellables: [AnyCancellable] = []
 
     private static func defaultPoolType(for game: Pizza.SupportedGame?) -> GachaPoolExpressible? {
         switch game {
