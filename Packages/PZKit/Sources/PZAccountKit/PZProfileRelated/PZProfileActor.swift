@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
 @preconcurrency import CoreData
 import Defaults
 import Foundation
@@ -36,7 +35,6 @@ public actor PZProfileActor {
             } else {
                 await syncAllDataToUserDefaults()
             }
-            await configurePublisherObservations()
         }
     }
 
@@ -104,29 +102,6 @@ public actor PZProfileActor {
     }
 
     // MARK: Private
-
-    private var cancellables: [AnyCancellable] = []
-
-    private func configurePublisherObservations() {
-        NotificationCenter.default.publisher(for: ModelContext.didSave)
-            .sink(receiveValue: { notification in
-                let changedEntityNames = PersistentIdentifier.parseObjectNames(
-                    notificationResult: notification.userInfo
-                )
-                guard !changedEntityNames.isEmpty else { return }
-                guard changedEntityNames.contains("PZProfileMO") else { return }
-                Task { @MainActor in
-                    if Defaults[.automaticallyDeduplicatePZProfiles] {
-                        try await self.deduplicate()
-                    }
-                    await self.syncAllDataToUserDefaults()
-                    ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
-                        $0.priority < $1.priority
-                    }
-                }
-            })
-            .store(in: &cancellables)
-    }
 }
 
 // MARK: - AccountMO Related.
