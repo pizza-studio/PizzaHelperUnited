@@ -33,6 +33,9 @@ public actor GachaActor {
                             GachaActor.remoteChangesAvailable = true
                         }
                     }
+                    Task {
+                        await GachaActor.shared.dumpAllGPIDsToVM()
+                    }
                 }
             })
             .store(in: &cancellables)
@@ -241,6 +244,25 @@ extension GachaActor {
 // MARK: - CRUD APIs
 
 extension GachaActor {
+    public func fetchAllGPIDs() -> [GachaProfileID] {
+        let resultRAW = try? modelContext.fetch(
+            FetchDescriptor<PZGachaProfileMO>()
+        ).map(\.asSendable)
+        let result = resultRAW?.sorted {
+            $0.uidWithGame < $1.uidWithGame
+        }
+        return (result ?? []).reduce(into: [GachaProfileID]()) {
+            if !$0.contains($1) { $0.append($1) }
+        }
+    }
+
+    public func dumpAllGPIDsToVM() {
+        let allGPIDs = fetchAllGPIDs()
+        Task { @MainActor in
+            GachaVM.shared.allGPIDs = allGPIDs
+        }
+    }
+
     public func fetchExpressibleEntries(
         _ descriptor: FetchDescriptor<PZGachaEntryMO>
     ) throws

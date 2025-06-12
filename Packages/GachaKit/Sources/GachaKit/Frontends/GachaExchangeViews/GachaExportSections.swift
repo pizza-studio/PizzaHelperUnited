@@ -93,7 +93,7 @@ public struct GachaExportSections: View {
         }
 
         Section {
-            let sortedGPIDs = theVM.allGPIDs.wrappedValue
+            let sortedGPIDs = theVM.allGPIDs
             GachaExchangeView.GachaProfileDoppelPicker(
                 among: sortedGPIDs,
                 chosenOnes: $specifiedProfiles,
@@ -157,7 +157,7 @@ public struct GachaExportSections: View {
         let formatsToEnumerate: [GachaExchange.ExportableFormat] = switch packageMethod {
         case let .singleOwner(gpid): packageMethod.supportedExportableFormats(by: gpid.game)
         default:
-            if theVM.allGPIDs.wrappedValue.count == 1,
+            if theVM.allGPIDs.count == 1,
                specifiedProfiles.randomElement()?.game == .starRail {
                 packageMethod.supportedExportableFormats(by: .starRail)
             } else {

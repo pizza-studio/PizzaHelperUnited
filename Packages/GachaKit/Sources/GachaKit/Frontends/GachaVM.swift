@@ -28,6 +28,7 @@ public final class GachaVM: TaskManagedVM {
         fireTask(
             cancelPreviousTask: false,
             givenTask: {
+                await GachaActor.shared.dumpAllGPIDsToVM()
                 try? await Enka.Sputnik.shared.db4HSR.reinitIfLocMismatches()
                 try? await Enka.Sputnik.shared.db4GI.reinitIfLocMismatches()
             }
@@ -45,6 +46,14 @@ public final class GachaVM: TaskManagedVM {
     public var currentExportableDocument: Result<GachaDocument, Error>?
     public var currentSceneStep4Import: GachaImportSections.SceneStep = .chooseFormat
     public var showSucceededAlertToast = false
+
+    public var allGPIDs: [GachaProfileID] = [] {
+        didSet {
+            if let currentGPIDNonNull = currentGPID, !allGPIDs.contains(currentGPIDNonNull) {
+                currentGPID = nil
+            }
+        }
+    }
 
     public var currentGPID: GachaProfileID? {
         didSet {
@@ -376,22 +385,9 @@ extension GachaVM {
         return profileSets.sorted { $0.priority < $1.priority }
     }
 
-    public var allGPIDs: Binding<[GachaProfileID]> {
-        .init(get: {
-            let context = GachaActor.shared.modelContainer.mainContext
-            let resultRAW = try? context.fetch(FetchDescriptor<PZGachaProfileMO>()).map(\.asSendable)
-            let result = resultRAW?.sorted { $0.uidWithGame < $1.uidWithGame } ?? []
-            return result.reduce(into: [GachaProfileID]()) { if !$0.contains($1) { $0.append($1) } }
-        }, set: { _ in
-
-        })
-    }
-
     public var hasGPID: Binding<Bool> {
         .init(get: {
-            let context = GachaActor.shared.modelContainer.mainContext
-            let result = try? context.fetchCount(FetchDescriptor<PZGachaProfileMO>())
-            return result ?? 0 > 0
+            !self.allGPIDs.isEmpty
         }, set: { _ in
 
         })
@@ -413,7 +409,7 @@ extension GachaVM {
     }
 
     public func resetDefaultProfile() {
-        let sortedGPIDs = allGPIDs.wrappedValue
+        let sortedGPIDs = allGPIDs
         guard !sortedGPIDs.isEmpty else { return }
         guard let matched = allPZProfiles.first else {
             currentGPID = sortedGPIDs.first
