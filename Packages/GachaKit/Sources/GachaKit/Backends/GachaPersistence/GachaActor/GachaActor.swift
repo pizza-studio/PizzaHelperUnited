@@ -237,3 +237,37 @@ extension GachaActor {
         return newProfiles.sorted { $0.uidWithGame < $1.uidWithGame }
     }
 }
+
+// MARK: - CRUD APIs
+
+extension GachaActor {
+    public func fetchExpressibleEntries(
+        _ descriptor: FetchDescriptor<PZGachaEntryMO>
+    ) throws
+        -> [GachaEntryExpressible] {
+        var existedIDs = Set<String>() // 用来去除重复内容。
+        var fetchedEntries = [GachaEntryExpressible]()
+        try modelContext.transaction {
+            let count = try modelContext.fetchCount(descriptor)
+            if count > 0 {
+                try modelContext.enumerate(descriptor) { rawEntry in
+                    /// 补遗：检查日期时间格式错误者，发现了就纠正。
+                    try rawEntry.fixTimeFieldIfNecessary(context: modelContext)
+                    let expressible = rawEntry.expressible
+                    if existedIDs.contains(expressible.id) {
+                        modelContext.delete(rawEntry)
+                    } else {
+                        existedIDs.insert(expressible.id)
+                        fetchedEntries.append(expressible)
+                    }
+                }
+                if modelContext.hasChanges {
+                    Task { @MainActor in
+                        GachaActor.remoteChangesAvailable = false
+                    }
+                }
+            }
+        }
+        return fetchedEntries
+    }
+}

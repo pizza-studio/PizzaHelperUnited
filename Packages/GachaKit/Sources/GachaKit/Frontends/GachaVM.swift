@@ -177,27 +177,7 @@ extension GachaVM {
                         ),
                         sortBy: [SortDescriptor(\PZGachaEntryMO.id, order: .reverse)]
                     )
-                    var existedIDs = Set<String>() // 用来去除重复内容。
-                    var fetchedEntries = [GachaEntryExpressible]()
-                    let context = GachaActor.shared.modelExecutor.modelContext
-                    let count = try context.fetchCount(descriptor)
-                    if count > 0 {
-                        try context.enumerate(descriptor) { rawEntry in
-                            /// 补遗：检查日期时间格式错误者，发现了就纠正。
-                            try rawEntry.fixTimeFieldIfNecessary(context: context)
-                            let expressible = rawEntry.expressible
-                            if existedIDs.contains(expressible.id) {
-                                context.delete(rawEntry)
-                            } else {
-                                existedIDs.insert(expressible.id)
-                                fetchedEntries.append(expressible)
-                            }
-                        }
-                        if context.hasChanges {
-                            try context.save()
-                            GachaActor.remoteChangesAvailable = false
-                        }
-                    }
+                    let fetchedEntries = try await GachaActor.shared.fetchExpressibleEntries(descriptor)
                     let mappedEntries = fetchedEntries.mappedByPools
                     let pentaStars = self.getCurrentPentaStars(from: mappedEntries)
                     return (mappedEntries, pentaStars)
