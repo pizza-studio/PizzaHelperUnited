@@ -109,7 +109,7 @@ public final class ProfileManagerVM: TaskManagedVM {
             givenTask: {
                 try await PZProfileActor.shared.updateProfile(profile)
             },
-            completionHandler: { fetched in
+            completionHandler: { _ in
                 trailingTasks?()
             },
             errorHandler: errorHandler
@@ -157,7 +157,7 @@ public final class ProfileManagerVM: TaskManagedVM {
                 try await PZProfileActor.shared.replaceAllProfiles(with: profileSendableSet)
                 return await PZProfileActor.shared.getSendableProfiles()
             },
-            completionHandler: { fetched in
+            completionHandler: { _ in
                 trailingTasks?()
             },
             errorHandler: errorHandler
