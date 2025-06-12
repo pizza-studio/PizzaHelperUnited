@@ -92,7 +92,7 @@ extension CDGachaMODebugView {
                 },
                 cancelPreviousTask: true, // 强制重新读入。
                 givenTask: {
-                    async let fetchedManagedObjs = try GachaActor.shared.cdGachaMOSputnik.allGachaDataMO(for: game)
+                    async let fetchedManagedObjs = try CDGachaMOSputnik.shared.allGachaDataMO(for: game)
                     let fetched: [any CDGachaMOProtocol] = try await fetchedManagedObjs
                     return fetched
                 },

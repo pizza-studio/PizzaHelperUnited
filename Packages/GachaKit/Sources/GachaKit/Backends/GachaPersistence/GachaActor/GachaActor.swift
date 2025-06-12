@@ -29,8 +29,6 @@ public actor GachaActor {
 
     @MainActor public static var remoteChangesAvailable = false
 
-    public let cdGachaMOSputnik = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: true)
-
     // MARK: Private
 
     private var cancellables: [AnyCancellable] = []
@@ -128,7 +126,7 @@ extension GachaActor {
 
 extension GachaActor {
     public func migrateOldGachasIntoProfiles() throws {
-        let oldData = try cdGachaMOSputnik.allCDGachaMOAsPZGachaEntryMO()
+        let oldData = try CDGachaMOSputnik.shared.allCDGachaMOAsPZGachaEntryMO()
         try batchInsert(
             oldData,
             overrideDuplicatedEntries: false,
