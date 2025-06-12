@@ -90,7 +90,7 @@ struct ProfileManagerPageContent: View {
             } header: {
                 drawDBResetDate()
             }
-            if theVM.profiles.isEmpty, PZProfileActor.hasOldAccountDataDetected() {
+            if theVM.profiles.isEmpty, theVM.hasOldAccountDataDetected {
                 Button("profileMgr.importLegacyProfiles.title".i18nPZHelper) {
                     importLegacyData()
                 }
@@ -192,7 +192,7 @@ struct ProfileManagerPageContent: View {
 
     @ViewBuilder
     private func extraMenuItems() -> (some View)? {
-        if PZProfileActor.hasOldAccountDataDetected() {
+        if theVM.hasOldAccountDataDetected {
             Button {
                 importLegacyData()
             } label: {
