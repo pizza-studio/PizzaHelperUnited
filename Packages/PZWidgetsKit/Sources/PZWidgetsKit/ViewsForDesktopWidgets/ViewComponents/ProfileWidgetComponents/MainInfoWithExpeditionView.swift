@@ -26,7 +26,7 @@ extension DesktopWidgets {
                 .frame(maxWidth: .infinity, alignment: tinyGlass ? .leading : .center)
                 ExpeditionsView(
                     layout: tinyGlass ? .tinyWithShrinkedIconSpaces : .tiny,
-                    max4AllowedToDisplay: true,
+                    limitPilotsIfNeeded: true,
                     expeditions: dailyNote.expeditionTasks,
                     pilotAssetMap: entry.pilotAssetMap
                 )

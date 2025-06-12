@@ -15,12 +15,12 @@ extension DesktopWidgets {
 
         public init(
             layout: Layout = .normal,
-            max4AllowedToDisplay: Bool = false,
+            limitPilotsIfNeeded: Bool = false,
             expeditions: [any ExpeditionTask],
             pilotAssetMap: [URL: SendableImagePtr]?
         ) {
             self.layout = layout
-            self.max4AllowedToDisplay = max4AllowedToDisplay
+            self.limitPilotsIfNeeded = limitPilotsIfNeeded
             self.expeditions = expeditions
             self.pilotAssetMap = pilotAssetMap
         }
@@ -35,32 +35,22 @@ extension DesktopWidgets {
 
         public var body: some View {
             ViewThatFits {
-                VStack {
-                    Group {
-                        ForEach(expeditions, id: \.iconURL) { expedition in
-                            EachExpeditionView(
-                                layout: layout,
-                                expedition: expedition,
-                                pilotImage: getPilotImage(expedition.iconURL),
-                                copilotImage: getPilotImage(expedition.iconURL4Copilot)
-                            )
+                ForEach(expeditions.indices.reversed(), id: \.self) { index in
+                    let limit = Swift.min(index + 1, expeditions.count)
+                    VStack {
+                        Group {
+                            ForEach(filterExpeditions(limit: limit), id: \.iconURL) { expedition in
+                                EachExpeditionView(
+                                    layout: layout,
+                                    expedition: expedition,
+                                    pilotImage: getPilotImage(expedition.iconURL),
+                                    copilotImage: getPilotImage(expedition.iconURL4Copilot)
+                                )
+                            }
                         }
                     }
+                    .fixedSize(horizontal: false, vertical: layout != .normal)
                 }
-                .fixedSize(horizontal: false, vertical: layout != .normal)
-                VStack {
-                    Group {
-                        ForEach(filteredExpeditions, id: \.iconURL) { expedition in
-                            EachExpeditionView(
-                                layout: layout,
-                                expedition: expedition,
-                                pilotImage: getPilotImage(expedition.iconURL),
-                                copilotImage: getPilotImage(expedition.iconURL4Copilot)
-                            )
-                        }
-                    }
-                }
-                .fixedSize(horizontal: false, vertical: layout != .normal)
             }
         }
 
@@ -125,6 +115,7 @@ extension DesktopWidgets {
             @ViewBuilder
             private func pilotsView() -> some View {
                 let outerSize: CGFloat = 50
+                let heightFactorMax: CGFloat = layout == .normal ? 0.7 : 0.5
                 let shouldShrinkIconPaneWidth: Bool = layout == .tinyWithShrinkedIconSpaces && expedition
                     .game != .starRail
                 Group {
@@ -146,7 +137,7 @@ extension DesktopWidgets {
                             ZStack {
                                 leaderAvatar
                                     .clipShape(.circle)
-                                    .frame(maxWidth: outerSize * 0.7, maxHeight: outerSize * 0.7)
+                                    .frame(maxWidth: outerSize * 0.7, maxHeight: outerSize * heightFactorMax)
                                     .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .topLeading)
                                 copilotImage
                                     .resizable()
@@ -161,7 +152,7 @@ extension DesktopWidgets {
                             ZStack {
                                 leaderAvatar
                                     .clipShape(.circle)
-                                    .frame(maxWidth: outerSize * 0.7, maxHeight: outerSize * 0.7)
+                                    .frame(maxWidth: outerSize * 0.7, maxHeight: outerSize * heightFactorMax)
                                     .frame(maxWidth: outerSize, maxHeight: outerSize, alignment: .topLeading)
                                 copilotImage
                                     .resizable()
@@ -197,7 +188,7 @@ extension DesktopWidgets {
                         }
                     }
                 }
-                .frame(maxWidth: outerSize, maxHeight: outerSize)
+                .frame(maxWidth: outerSize, maxHeight: outerSize * heightFactorMax)
                 .frame(width: shouldShrinkIconPaneWidth ? outerSize * 0.7 : outerSize)
                 .fixedSize(horizontal: layout == .tinyWithShrinkedIconSpaces, vertical: false)
                 .environment(\.colorScheme, .light)
@@ -226,17 +217,17 @@ extension DesktopWidgets {
         }
 
         private let layout: Layout
-        private let max4AllowedToDisplay: Bool
+        private let limitPilotsIfNeeded: Bool
         private let expeditions: [any ExpeditionTask]
         private let pilotAssetMap: [URL: SendableImagePtr]?
 
-        private var filteredExpeditions: [any ExpeditionTask] {
-            switch max4AllowedToDisplay {
-            case false: return expeditions
-            case true:
+        private func filterExpeditions(limit: Int) -> [any ExpeditionTask] {
+            switch limit {
+            case expeditions.count...: return expeditions
+            default:
                 let filtered = expeditions.sorted { lhs, rhs in
                     (lhs.timeOnFinish ?? Date()) > (rhs.timeOnFinish ?? Date())
-                }.prefix(4)
+                }.prefix(limit)
                 return Array(filtered)
             }
         }
@@ -254,14 +245,14 @@ extension DesktopWidgets {
 private func prepareExpeditionsView4Preview(
     _ game: Pizza.SupportedGame,
     layout: DesktopWidgets.ExpeditionsView.Layout = .normal,
-    max4AllowedToDisplay: Bool = false
+    limitPilotsIfNeeded: Bool = false
 )
     -> DesktopWidgets.ExpeditionsView {
     let dailyNote = game.exampleDailyNoteData
     let assetMap = dailyNote.getExpeditionAssetMapFromMainActor()
     return .init(
         layout: layout,
-        max4AllowedToDisplay: max4AllowedToDisplay,
+        limitPilotsIfNeeded: limitPilotsIfNeeded,
         expeditions: dailyNote.expeditionTasks,
         pilotAssetMap: assetMap
     )
@@ -272,12 +263,12 @@ private func prepareExpeditionsView4Preview(
         Section {
             prepareExpeditionsView4Preview(
                 .genshinImpact,
-                layout: .tinyWithShrinkedIconSpaces,
-                max4AllowedToDisplay: true
+                layout: .tiny,
+                limitPilotsIfNeeded: true
             )
         }
         Section {
-            prepareExpeditionsView4Preview(.starRail, layout: .tinyWithShrinkedIconSpaces)
+            prepareExpeditionsView4Preview(.starRail, layout: .tiny)
         }
     }
 }
