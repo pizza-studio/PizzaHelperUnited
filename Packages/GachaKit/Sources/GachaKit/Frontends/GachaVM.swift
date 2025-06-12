@@ -20,11 +20,11 @@ public final class GachaVM: TaskManagedVM {
     // MARK: Lifecycle
 
     override public init() {
-        self.pzGachaMOContext = GachaActor.shared.modelExecutor.modelContext
-        self.pzProfileMOContext = PZProfileActor.shared.modelExecutor.modelContext
         super.init()
         super.assignableErrorHandlingTask = { _ in
-            self.pzGachaMOContext.rollback()
+            Task {
+                await GachaActor.shared.asyncRollback()
+            }
         }
         fireTask(
             cancelPreviousTask: false,
@@ -54,8 +54,6 @@ public final class GachaVM: TaskManagedVM {
     public static var shared = GachaVM()
 
     public var remoteChangesAvailable = false
-    public var pzGachaMOContext: ModelContext
-    public var pzProfileMOContext: ModelContext
     public var hasInheritableGachaEntries: Bool = false
     public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
     public private(set) var currentPentaStars: [GachaEntryExpressible] = []
@@ -391,9 +389,7 @@ extension GachaVM {
 
     public var nameIDMap: [String: String] {
         var nameMap = [String: String]()
-        try? pzProfileMOContext.enumerate(
-            FetchDescriptor<PZProfileMO>(), batchSize: 1
-        ) { pzProfile in
+        Defaults[.pzProfiles].values.forEach { pzProfile in
             if nameMap[pzProfile.uidWithGame] == nil {
                 nameMap[pzProfile.uidWithGame] = pzProfile.name
             }
@@ -412,10 +408,7 @@ extension GachaVM {
     }
 
     public var allPZProfiles: [PZProfileSendable] {
-        let existingMOs = try? pzProfileMOContext.fetch(FetchDescriptor<PZProfileMO>())
-        guard let existingMOs else { return [] }
-        let existingProfiles = existingMOs.map(\.asSendable)
-        let profileSets = Set<PZProfileSendable>(existingProfiles)
+        let profileSets = Set<PZProfileSendable>(Defaults[.pzProfiles].values)
         return profileSets.sorted { $0.priority < $1.priority }
     }
 
