@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Combine
 import Foundation
 import GachaMetaDB
 import PZAccountKit
@@ -19,6 +20,22 @@ public actor GachaActor {
         modelExecutor = DefaultSerialModelExecutor(
             modelContext: .init(modelContainer)
         )
+        NotificationCenter.default.publisher(for: ModelContext.didSave)
+            .sink(receiveValue: { notification in
+                if let userInfo = notification.userInfo {
+                    let inserted = (userInfo["inserted"] as? [PersistentIdentifier]) ?? []
+                    let deleted = (userInfo["deleted"] as? [PersistentIdentifier]) ?? []
+                    let updated = (userInfo["updated"] as? [PersistentIdentifier]) ?? []
+                    print(userInfo)
+                    guard !(inserted + deleted + updated).isEmpty else { return }
+                    Task { @MainActor in
+                        if !GachaActor.remoteChangesAvailable {
+                            GachaActor.remoteChangesAvailable = true
+                        }
+                    }
+                }
+            })
+            .store(in: &cancellables)
     }
 
     // MARK: Public
@@ -26,6 +43,10 @@ public actor GachaActor {
     @MainActor public static var remoteChangesAvailable = false
 
     public let cdGachaMOSputnik = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: true)
+
+    // MARK: Private
+
+    private var cancellables: [AnyCancellable] = []
 }
 
 extension GachaActor {
