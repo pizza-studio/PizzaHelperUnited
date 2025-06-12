@@ -172,7 +172,7 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
                         try await Task.sleep(for: .seconds(0.5 / 20.0))
                     }
                     try await GachaActor.shared.asyncSave()
-                    GachaActor.remoteChangesAvailable = false
+                    GachaVM.shared.remoteChangesAvailable = false
                 }
                 if isBleachingModeEnabled {
                     bleachCounter += await GachaActor.shared.bleach(

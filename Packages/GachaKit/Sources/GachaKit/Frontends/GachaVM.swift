@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Combine
 import CoreXLSX
 import Defaults
 import EnkaKit
@@ -28,7 +29,8 @@ public final class GachaVM: TaskManagedVM {
         fireTask(
             cancelPreviousTask: false,
             givenTask: {
-                await GachaActor.shared.dumpAllGPIDsToVM()
+                await self.updateAllCachedGPIDs()
+                self.configurePublisherObservations()
                 try? await Enka.Sputnik.shared.db4HSR.reinitIfLocMismatches()
                 try? await Enka.Sputnik.shared.db4GI.reinitIfLocMismatches()
             }
@@ -70,6 +72,8 @@ public final class GachaVM: TaskManagedVM {
 
     // MARK: Private
 
+    @ObservationIgnored private var cancellables: [AnyCancellable] = []
+
     private static func defaultPoolType(for game: Pizza.SupportedGame?) -> GachaPoolExpressible? {
         switch game {
         case .genshinImpact: .giCharacterEventWish
@@ -77,6 +81,34 @@ public final class GachaVM: TaskManagedVM {
         case .zenlessZone: .zzExclusiveChannel
         case .none: nil
         }
+    }
+
+    private func configurePublisherObservations() {
+        NotificationCenter.default.publisher(for: ModelContext.didSave)
+            .sink(receiveValue: { notification in
+                let changedEntityNames = PersistentIdentifier.parseObjectNames(
+                    notificationResult: notification.userInfo
+                )
+                guard !changedEntityNames.isEmpty else { return }
+                let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
+                let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
+                guard changesInvolveGPID, changesInvolveGachaEntry else { return }
+                Task { @MainActor in
+                    if !self.remoteChangesAvailable {
+                        self.remoteChangesAvailable = true
+                    }
+                }
+                if changesInvolveGPID {
+                    Task {
+                        await self.updateAllCachedGPIDs()
+                    }
+                }
+            })
+            .store(in: &cancellables)
+    }
+
+    private func updateAllCachedGPIDs() async {
+        allGPIDs = await GachaActor.shared.fetchAllGPIDs()
     }
 }
 
@@ -121,7 +153,6 @@ extension GachaVM {
                     self.resetDefaultProfile()
                 }
                 self.remoteChangesAvailable = false
-                GachaActor.remoteChangesAvailable = false
                 self.showSucceededAlertToast = true
             }
         )

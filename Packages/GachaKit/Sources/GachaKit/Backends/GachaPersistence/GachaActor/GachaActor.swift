@@ -2,7 +2,6 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
 import Foundation
 import GachaMetaDB
 import PZAccountKit
@@ -13,49 +12,14 @@ import SwiftData
 
 @ModelActor
 public actor GachaActor {
-    // MARK: Lifecycle
-
     public init(unitTests: Bool = false) {
         modelContainer = unitTests ? Self.makeContainer4UnitTests() : Self.makeContainer()
         modelExecutor = DefaultSerialModelExecutor(
             modelContext: .init(modelContainer)
         )
-        Task { @MainActor in
-            await configurePublisherObservations()
-        }
     }
-
-    // MARK: Public
-
-    @MainActor public static var remoteChangesAvailable = false
 
     // MARK: Private
-
-    private var cancellables: [AnyCancellable] = []
-
-    private func configurePublisherObservations() {
-        NotificationCenter.default.publisher(for: ModelContext.didSave)
-            .sink(receiveValue: { notification in
-                let changedEntityNames = PersistentIdentifier.parseObjectNames(
-                    notificationResult: notification.userInfo
-                )
-                guard !changedEntityNames.isEmpty else { return }
-                let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
-                let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
-                guard changesInvolveGPID, changesInvolveGachaEntry else { return }
-                Task { @MainActor in
-                    if !GachaActor.remoteChangesAvailable {
-                        GachaActor.remoteChangesAvailable = true
-                    }
-                }
-                if changesInvolveGPID {
-                    Task {
-                        await GachaActor.shared.dumpAllGPIDsToVM()
-                    }
-                }
-            })
-            .store(in: &cancellables)
-    }
 }
 
 extension GachaActor {
@@ -152,7 +116,7 @@ extension GachaActor {
             )
         }
         Task { @MainActor in
-            GachaActor.remoteChangesAvailable = false
+            GachaVM.shared.remoteChangesAvailable = false
         }
     }
 
@@ -197,7 +161,7 @@ extension GachaActor {
             }
         }
         Task { @MainActor in
-            GachaActor.remoteChangesAvailable = false
+            GachaVM.shared.remoteChangesAvailable = false
         }
         // try lazyRefreshProfiles(newProfiles: profiles)
         if refreshGachaProfiles {
@@ -218,7 +182,7 @@ extension GachaActor {
             arrProfiles.forEach { modelContext.insert($0.asMO) }
         }
         Task { @MainActor in
-            GachaActor.remoteChangesAvailable = false
+            GachaVM.shared.remoteChangesAvailable = false
         }
     }
 
@@ -263,13 +227,6 @@ extension GachaActor {
         }
     }
 
-    public func dumpAllGPIDsToVM() {
-        let allGPIDs = fetchAllGPIDs()
-        Task { @MainActor in
-            GachaVM.shared.allGPIDs = allGPIDs
-        }
-    }
-
     public func fetchExpressibleEntries(
         _ descriptor: FetchDescriptor<PZGachaEntryMO>
     ) throws
@@ -292,7 +249,7 @@ extension GachaActor {
                 }
                 if modelContext.hasChanges {
                     Task { @MainActor in
-                        GachaActor.remoteChangesAvailable = false
+                        GachaVM.shared.remoteChangesAvailable = false
                     }
                 }
             }
@@ -434,7 +391,7 @@ extension GachaActor {
             print("ERROR BLEACHING CONTENTS. \(error.localizedDescription)")
         }
         Task { @MainActor in
-            GachaActor.remoteChangesAvailable = false
+            GachaVM.shared.remoteChangesAvailable = false
         }
         return bleachCounter
     }
