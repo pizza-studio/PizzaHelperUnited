@@ -134,38 +134,52 @@ public actor PZProfileActor {
 // MARK: - AccountMO Related.
 
 extension PZProfileActor {
-    @MainActor
-    public static func hasOldAccountDataDetected() -> Bool {
-        let count = try? AccountMOSputnik.shared.countAllAccountDataAsPZProfileMO()
-        return (count ?? 0) > 0
+    private func acceptMigratedOldAccountProfiles(
+        oldData: [PZProfileSendable],
+        resetNotifications: Bool = true,
+        isUnattended: Bool = false
+    ) async throws {
+        let allExistingMOs = try modelContext.fetch(FetchDescriptor<PZProfileMO>())
+        let allExistingUUIDs: [String] = allExistingMOs.map(\.uuid.uuidString)
+        var currentPriorityID = (allExistingMOs.map(\.priority).max() ?? 0) + 1
+        var profilesMigratedCount = 0
+        try modelContext.transaction {
+            oldData.forEach { theEntrySendable in
+                let theEntry = theEntrySendable.asMO
+                theEntry.priority = currentPriorityID
+                if allExistingUUIDs.contains(theEntry.uuid.uuidString) {
+                    guard !isUnattended else { return }
+                    theEntry.uuid = .init()
+                    theEntry.name += " (Imported)"
+                }
+                modelContext.insert(theEntry)
+                PZNotificationCenter.bleachNotificationsIfDisabled(for: theEntry.asSendable)
+                profilesMigratedCount += 1
+                currentPriorityID += 1
+            }
+        }
+        syncAllDataToUserDefaults()
+        if resetNotifications, profilesMigratedCount > 0 {
+            await Broadcaster.shared.requireOSNotificationCenterAuthorization()
+            await Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+        }
     }
 
     @MainActor
     public static func migrateOldAccountsIntoProfiles(
         resetNotifications: Bool = true, isUnattended: Bool = false
     ) throws {
-        let context = Self.shared.modelContainer.mainContext
-        let allExistingUUIDs: [String] = try context.fetch(FetchDescriptor<PZProfileMO>())
-            .map(\.uuid.uuidString)
-        let oldData = try AccountMOSputnik.shared.allAccountDataAsPZProfileMO()
-        var profilesMigratedCount = 0
-        oldData.forEach { theEntry in
-            if allExistingUUIDs.contains(theEntry.uuid.uuidString) {
-                guard !isUnattended else { return }
-                theEntry.uuid = .init()
-                theEntry.name += " (Imported)"
-            }
-            context.insert(theEntry)
-            PZNotificationCenter.bleachNotificationsIfDisabled(for: theEntry.asSendable)
-            profilesMigratedCount += 1
-        }
-        if resetNotifications, profilesMigratedCount > 0 {
-            Broadcaster.shared.requireOSNotificationCenterAuthorization()
-            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-        }
-        try context.save()
+        let oldData = try AccountMOSputnik.shared.allAccountDataAsPZProfileMO().map(\.asSendable)
         Task {
-            await Self.shared.syncAllDataToUserDefaults()
+            do {
+                try await PZProfileActor.shared.acceptMigratedOldAccountProfiles(
+                    oldData: oldData,
+                    resetNotifications: resetNotifications,
+                    isUnattended: isUnattended
+                )
+            } catch {
+                return
+            }
         }
     }
 
