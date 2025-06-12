@@ -22,6 +22,10 @@ public final class ProfileManagerVM: TaskManagedVM {
         }
         self.profileMOs = newMOMap
         super.init()
+        Task { @MainActor in
+            let count = try? AccountMOSputnik.shared.countAllAccountDataAsPZProfileMO()
+            self.hasOldAccountDataDetected = (count ?? 0) > 0
+        }
         Task {
             for await newProfileMap in Defaults.updates(.pzProfiles) {
                 self.profiles = newProfileMap.values.sorted {
@@ -34,6 +38,8 @@ public final class ProfileManagerVM: TaskManagedVM {
     // MARK: Public
 
     public static let shared = ProfileManagerVM()
+
+    public internal(set) var hasOldAccountDataDetected: Bool = false
 
     /// 此处沿用 PZProfileMO 作为指针格式，但不用于对 SwiftData 的写入。
     public internal(set) var profileMOs: [String: PZProfileMO]
