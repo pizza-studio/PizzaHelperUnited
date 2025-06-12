@@ -139,7 +139,9 @@ extension PZProfileActor {
         resetNotifications: Bool = true,
         isUnattended: Bool = false
     ) async throws {
-        let allExistingMOs = try modelContext.fetch(FetchDescriptor<PZProfileMO>())
+        let allExistingMOs = try modelContext.fetch(FetchDescriptor<PZProfileMO>()).sorted {
+            $0.priority < $1.priority
+        }
         let allExistingUUIDs: [String] = allExistingMOs.map(\.uuid.uuidString)
         var currentPriorityID = (allExistingMOs.map(\.priority).max() ?? 0) + 1
         var profilesMigratedCount = 0
