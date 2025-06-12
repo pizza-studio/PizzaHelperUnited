@@ -20,25 +20,9 @@ public actor GachaActor {
         modelExecutor = DefaultSerialModelExecutor(
             modelContext: .init(modelContainer)
         )
-        NotificationCenter.default.publisher(for: ModelContext.didSave)
-            .sink(receiveValue: { notification in
-                if let userInfo = notification.userInfo {
-                    let inserted = (userInfo["inserted"] as? [PersistentIdentifier]) ?? []
-                    let deleted = (userInfo["deleted"] as? [PersistentIdentifier]) ?? []
-                    let updated = (userInfo["updated"] as? [PersistentIdentifier]) ?? []
-                    print(userInfo)
-                    guard !(inserted + deleted + updated).isEmpty else { return }
-                    Task { @MainActor in
-                        if !GachaActor.remoteChangesAvailable {
-                            GachaActor.remoteChangesAvailable = true
-                        }
-                    }
-                    Task {
-                        await GachaActor.shared.dumpAllGPIDsToVM()
-                    }
-                }
-            })
-            .store(in: &cancellables)
+        Task { @MainActor in
+            await configurePublisherObservations()
+        }
     }
 
     // MARK: Public
@@ -50,6 +34,30 @@ public actor GachaActor {
     // MARK: Private
 
     private var cancellables: [AnyCancellable] = []
+
+    private func configurePublisherObservations() {
+        NotificationCenter.default.publisher(for: ModelContext.didSave)
+            .sink(receiveValue: { notification in
+                let changedEntityNames = PersistentIdentifier.parseObjectNames(
+                    notificationResult: notification.userInfo
+                )
+                guard !changedEntityNames.isEmpty else { return }
+                let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
+                let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
+                guard changesInvolveGPID, changesInvolveGachaEntry else { return }
+                Task { @MainActor in
+                    if !GachaActor.remoteChangesAvailable {
+                        GachaActor.remoteChangesAvailable = true
+                    }
+                }
+                if changesInvolveGPID {
+                    Task {
+                        await GachaActor.shared.dumpAllGPIDsToVM()
+                    }
+                }
+            })
+            .store(in: &cancellables)
+    }
 }
 
 extension GachaActor {
