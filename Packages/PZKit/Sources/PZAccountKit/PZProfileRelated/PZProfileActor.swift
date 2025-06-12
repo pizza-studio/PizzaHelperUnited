@@ -110,20 +110,18 @@ public actor PZProfileActor {
     private func configurePublisherObservations() {
         NotificationCenter.default.publisher(for: ModelContext.didSave)
             .sink(receiveValue: { notification in
-                if let userInfo = notification.userInfo {
-                    let inserted = (userInfo["inserted"] as? [PersistentIdentifier]) ?? []
-                    let deleted = (userInfo["deleted"] as? [PersistentIdentifier]) ?? []
-                    let updated = (userInfo["updated"] as? [PersistentIdentifier]) ?? []
-                    print(userInfo)
-                    guard !(inserted + deleted + updated).isEmpty else { return }
-                    Task { @MainActor in
-                        if Defaults[.automaticallyDeduplicatePZProfiles] {
-                            try await self.deduplicate()
-                        }
-                        await self.syncAllDataToUserDefaults()
-                        ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
-                            $0.priority < $1.priority
-                        }
+                let changedEntityNames = PersistentIdentifier.parseObjectNames(
+                    notificationResult: notification.userInfo
+                )
+                guard !changedEntityNames.isEmpty else { return }
+                guard changedEntityNames.contains("PZProfileMO") else { return }
+                Task { @MainActor in
+                    if Defaults[.automaticallyDeduplicatePZProfiles] {
+                        try await self.deduplicate()
+                    }
+                    await self.syncAllDataToUserDefaults()
+                    ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
+                        $0.priority < $1.priority
                     }
                 }
             })
