@@ -104,7 +104,7 @@ public struct GachaRootView: View {
                         }
                         Divider()
                         Button {
-                            let remoteChangesAvailable = theVM.remoteChangesAvailable
+                            let remoteChangesAvailable = GachaActor.remoteChangesAvailable
                             theVM.rebuildGachaUIDList()
                             if remoteChangesAvailable {
                                 theVM.updateMappedEntriesByPools(immediately: false)
@@ -118,7 +118,7 @@ public struct GachaRootView: View {
                     } label: {
                         Image(systemSymbol: .filemenuAndSelection)
                             .overlay(alignment: .topLeading) {
-                                if theVM.remoteChangesAvailable {
+                                if GachaActor.remoteChangesAvailable {
                                     Circle().fill(.red).frame(width: 4, height: 4)
                                 }
                             }

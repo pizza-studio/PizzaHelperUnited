@@ -41,8 +41,10 @@ public final class GachaVM: TaskManagedVM {
                     let updated = (userInfo["updated"] as? [PersistentIdentifier]) ?? []
                     print(userInfo)
                     guard !(inserted + deleted + updated).isEmpty else { return }
-                    if !self.remoteChangesAvailable {
-                        self.remoteChangesAvailable = true
+                    Task { @MainActor in
+                        if !GachaActor.remoteChangesAvailable {
+                            GachaActor.remoteChangesAvailable = true
+                        }
                     }
                 }
             })
@@ -129,6 +131,7 @@ extension GachaVM {
                     self.resetDefaultProfile()
                 }
                 self.remoteChangesAvailable = false
+                GachaActor.remoteChangesAvailable = false
                 self.showSucceededAlertToast = true
             }
         )
@@ -211,7 +214,7 @@ extension GachaVM {
                         }
                         if context.hasChanges {
                             try context.save()
-                            self.remoteChangesAvailable = false
+                            GachaActor.remoteChangesAvailable = false
                         }
                     }
                     let mappedEntries = fetchedEntries.mappedByPools
