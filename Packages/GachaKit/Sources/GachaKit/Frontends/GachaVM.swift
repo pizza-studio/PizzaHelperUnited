@@ -132,7 +132,7 @@ extension GachaVM {
         fireTask(
             cancelPreviousTask: immediately,
             givenTask: {
-                await GachaActor.shared.cdGachaMOSputnik.confirmWhetherHavingData()
+                await CDGachaMOSputnik.shared.confirmWhetherHavingData()
             },
             completionHandler: {
                 if let retrieved = $0 {

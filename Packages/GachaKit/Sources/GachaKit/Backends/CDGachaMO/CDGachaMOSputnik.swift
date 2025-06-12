@@ -29,6 +29,8 @@ public final class CDGachaMOSputnik: Sendable {
 
     // MARK: Public
 
+    public static let shared = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: true)
+
     public func confirmWhetherHavingData() async -> Bool {
         ((try? await countAllCDGachaMOAsPZGachaEntryMO()) ?? 0) > 0
     }
