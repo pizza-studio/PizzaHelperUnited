@@ -153,30 +153,37 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         setInProgress()
         task = Task { [weak self] in
             guard let self else { return }
-            var bleacher: GachaBleachSputnik?
+            var uid: String?
+            var validTransactionIDMap: [String: [String]] = [:]
             do {
                 for try await (gachaType, result) in client {
                     setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
                     for item in result.listConverted {
-                        if bleacher == nil, isBleachingModeEnabled {
-                            bleacher = .init(uid: item.uid, game: GachaType.game)
-                        }
+                        if uid == nil { uid = item.uid }
                         withAnimation {
                             self.updateCachedItems(item)
                             self.updateGachaDateCounts(item)
                         }
-                        bleacher?.validTransactionIDMap[item.time, default: []].append(item.id)
+                        if isBleachingModeEnabled {
+                            validTransactionIDMap[item.time, default: []].append(item.id)
+                        }
                         try await insert(item)
                         try await Task.sleep(for: .seconds(0.5 / 20.0))
                     }
                     try mainContext.save()
                     GachaActor.remoteChangesAvailable = false
                 }
-                bleacher?.startBleachTask(counter: &bleachCounter)
+                if isBleachingModeEnabled {
+                    bleachCounter += await GachaActor.shared.bleach(
+                        against: validTransactionIDMap, uid: uid, game: GachaType.game
+                    )
+                }
                 setFinished()
             } catch {
                 if error is CancellationError {
-                    bleacher?.startBleachTask(counter: &bleachCounter)
+                    bleachCounter += await GachaActor.shared.bleach(
+                        against: validTransactionIDMap, uid: uid, game: GachaType.game
+                    )
                     setFinished()
                 } else {
                     switch error {
@@ -186,7 +193,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
                             setFailFetching(page: page, gachaType: .init(rawValue: gachaType), error: error)
                         }
                     case let error as URLError where error.code == .cancelled:
-                        bleacher?.startBleachTask(counter: &bleachCounter)
+                        bleachCounter += await GachaActor.shared.bleach(
+                            against: validTransactionIDMap, uid: uid, game: GachaType.game
+                        )
                         setFinished()
                     default:
                         break
@@ -371,116 +380,6 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         } catch {
             print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
             return true
-        }
-    }
-}
-
-// MARK: - GachaBleachSputnik
-
-@MainActor
-private class GachaBleachSputnik {
-    // MARK: Lifecycle
-
-    public init(uid: String, game: Pizza.SupportedGame) {
-        self.uid = uid
-        self.game = game
-        self.tzDelta = GachaKit.getServerTimeZoneDelta(uid: uid, game: game)
-    }
-
-    // MARK: Public
-
-    public var validTransactionIDMap: [String: [String]] = [:]
-
-    public func startBleachTask(counter bleachCounter: inout Int) {
-        var allTimeTags: [TimeTag] = validTransactionIDMap.keys.compactMap {
-            TimeTag($0, tzDelta: tzDelta)
-        }.sorted { $0.time.timeIntervalSince1970 < $1.time.timeIntervalSince1970 }
-        /// 处理前先排查：
-        /// 如果 allTimeTags 最旧的日期记录已经在库的话，就不处理这个最旧的日期记录，免得误伤已经在资料库内的更旧的抽卡记录。
-        /// 这样处理的原因是：十连抽的时间戳都是雷同的。
-        /// 理论上这样的漏网之鱼应该极为罕见，因为每个版本结束运营之后的抽卡记录都会固定。
-        guard let oldestTimeTag = allTimeTags.first else { return }
-        let allExistingTimeTagsInDB = allExistingTimeTagsInDB
-        if allExistingTimeTagsInDB.map(\.time).contains(oldestTimeTag.time) {
-            allTimeTags.removeFirst()
-        }
-        guard !allTimeTags.isEmpty else { return }
-        // 开始处理。
-        for timeTag in allTimeTags {
-            guard let validTransactionIDs = validTransactionIDMap[timeTag.timeTagStr] else { continue }
-            bleachTrashItemsByTimeTag(
-                timeTag: timeTag,
-                validTransactionIDs: validTransactionIDs,
-                bleachCounter: &bleachCounter
-            )
-        }
-        try? mainContext.save()
-        GachaActor.remoteChangesAvailable = false
-    }
-
-    // MARK: Private
-
-    private let uid: String
-    private let game: Pizza.SupportedGame
-    private let tzDelta: Int
-
-    private var mainContext: ModelContext {
-        GachaActor.shared.modelContainer.mainContext
-    }
-
-    private var allExistingTimeTagsInDB: [TimeTag] {
-        let gameStr = game.rawValue
-        let thisUID = uid
-        var request = FetchDescriptor<PZGachaEntryMO>(
-            predicate: #Predicate {
-                $0.uid == thisUID && $0.game == gameStr
-            }
-        )
-        request.propertiesToFetch = [\.time, \.uid, \.game]
-        do {
-            let fetched = try mainContext.fetch(request)
-            var timeTags = fetched.compactMap {
-                TimeTag($0.time, tzDelta: tzDelta)
-            }
-            timeTags = Array(Set(timeTags)) // Deduplicate.
-            timeTags.sort { $0.time.timeIntervalSince1970 < $1.time.timeIntervalSince1970 }
-            return timeTags
-        } catch {
-            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
-            return []
-        }
-    }
-
-    /// 自本地 SwiftData 抽卡资料库移除由伺服器端此前错误生成的垃圾资料。
-    /// - Parameters:
-    ///   - timeTag: 时间戳。
-    ///   - validTransactionIDs: 该时间戳对应的所有合理的流水号（阵列）。
-    ///   - bleachCounter: 统计到底清理了多少笔垃圾资料。
-    private func bleachTrashItemsByTimeTag(
-        timeTag: TimeTag, validTransactionIDs: [String],
-        bleachCounter: inout Int
-    ) {
-        guard !validTransactionIDs.isEmpty else { return }
-        let gameStr = game.rawValue
-        let timeTagStr = timeTag.timeTagStr
-        let thisUID = uid
-        var request = FetchDescriptor<PZGachaEntryMO>(
-            predicate: #Predicate {
-                $0.time == timeTagStr && $0.uid == thisUID && $0.game == gameStr
-            }
-        )
-        request.propertiesToFetch = [\.id, \.uid, \.game, \.time]
-        do {
-            let matchedItems = try mainContext.fetch(request)
-            matchedItems.forEach { currentItem in
-                if !validTransactionIDs.contains(currentItem.id) {
-                    mainContext.delete(currentItem)
-                    bleachCounter += 1
-                }
-            }
-            // 无须在此保存。之后会有统一的保存步骤。
-        } catch {
-            print("ERROR BLEACHING CONTENTS. \(error.localizedDescription)")
         }
     }
 }

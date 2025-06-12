@@ -78,7 +78,8 @@ extension GachaActor {
     public static func makeContainer() -> ModelContainer {
         do {
             return try ModelContainer(
-                for: PZGachaEntryMO.self, PZGachaProfileMO.self,
+                for: PZGachaEntryMO.self,
+                PZGachaProfileMO.self,
                 configurations: Self.modelConfig
             )
         } catch {
@@ -241,7 +242,7 @@ extension GachaActor {
     }
 }
 
-// MARK: - CRUD APIs
+// MARK: - CRUD APIs for GachaVM.
 
 extension GachaActor {
     public func fetchAllGPIDs() -> [GachaProfileID] {
@@ -291,5 +292,113 @@ extension GachaActor {
             }
         }
         return fetchedEntries
+    }
+}
+
+// MARK: - APIs for bleaching tasks.
+
+extension GachaActor {
+    /// - Remark: UID must be non-null. Otherwise this API is no-op.
+    public func bleach(
+        against validTransactionIDMap: [String: [String]],
+        uid: String?,
+        game: Pizza.SupportedGame
+    ) async
+        -> Int {
+        var bleachCounter = 0
+        guard let uid else { return bleachCounter }
+        let tzDelta = GachaKit.getServerTimeZoneDelta(uid: uid, game: game)
+        var allTimeTags: [TimeTag] = validTransactionIDMap.keys.compactMap {
+            TimeTag($0, tzDelta: tzDelta)
+        }.sorted { $0.time.timeIntervalSince1970 < $1.time.timeIntervalSince1970 }
+        /// 处理前先排查：
+        /// 如果 allTimeTags 最旧的日期记录已经在库的话，就不处理这个最旧的日期记录，免得误伤已经在资料库内的更旧的抽卡记录。
+        /// 这样处理的原因是：十连抽的时间戳都是雷同的。
+        /// 理论上这样的漏网之鱼应该极为罕见，因为每个版本结束运营之后的抽卡记录都会固定。
+        guard let oldestTimeTag = allTimeTags.first else { return bleachCounter }
+        do {
+            let allExistingTimeTagsInDB = try getAllExistingTimeTagsInDB(game: game, uid: uid, tzDelta: tzDelta)
+            if allExistingTimeTagsInDB.map(\.time).contains(oldestTimeTag.time) {
+                allTimeTags.removeFirst()
+            }
+            guard !allTimeTags.isEmpty else { return bleachCounter }
+            // 开始处理。
+            try modelContext.transaction {
+                for timeTag in allTimeTags {
+                    guard let validTransactionIDs = validTransactionIDMap[timeTag.timeTagStr] else { continue }
+                    try bleachTrashItemsByTimeTagSansCommission(
+                        game: game,
+                        uid: uid,
+                        timeTag: timeTag,
+                        validTransactionIDs: validTransactionIDs,
+                        bleachCounter: &bleachCounter
+                    )
+                }
+            }
+        } catch {
+            print("ERROR BLEACHING CONTENTS. \(error.localizedDescription)")
+        }
+        Task { @MainActor in
+            GachaActor.remoteChangesAvailable = false
+        }
+        return bleachCounter
+    }
+
+    private func getAllExistingTimeTagsInDB(
+        game: Pizza.SupportedGame,
+        uid: String,
+        tzDelta: Int
+    ) throws
+        -> [TimeTag] {
+        let gameStr = game.rawValue
+        let thisUID = uid
+        var request = FetchDescriptor<PZGachaEntryMO>(
+            predicate: #Predicate {
+                $0.uid == thisUID && $0.game == gameStr
+            }
+        )
+        request.propertiesToFetch = [\.time, \.uid, \.game]
+        let fetched = try modelContext.fetch(request)
+        var timeTags = fetched.compactMap {
+            TimeTag($0.time, tzDelta: tzDelta)
+        }
+        timeTags = Array(Set(timeTags)) // Deduplicate.
+        timeTags.sort { $0.time.timeIntervalSince1970 < $1.time.timeIntervalSince1970 }
+        return timeTags
+    }
+
+    /// 自本地 SwiftData 抽卡资料库移除由伺服器端此前错误生成的垃圾资料。
+    /// - Warning: 该函式不对 SwiftData 做出任何 commit changes 的操作。
+    /// - Parameters:
+    ///   - game: 游戏。
+    ///   - uid: UID。
+    ///   - timeTag: 时间戳。
+    ///   - validTransactionIDs: 该时间戳对应的所有合理的流水号（阵列）。
+    ///   - bleachCounter: 统计到底清理了多少笔垃圾资料。
+    private func bleachTrashItemsByTimeTagSansCommission(
+        game: Pizza.SupportedGame,
+        uid: String,
+        timeTag: TimeTag,
+        validTransactionIDs: [String],
+        bleachCounter: inout Int
+    ) throws {
+        guard !validTransactionIDs.isEmpty else { return }
+        let gameStr = game.rawValue
+        let timeTagStr = timeTag.timeTagStr
+        let thisUID = uid
+        var request = FetchDescriptor<PZGachaEntryMO>(
+            predicate: #Predicate {
+                $0.time == timeTagStr && $0.uid == thisUID && $0.game == gameStr
+            }
+        )
+        request.propertiesToFetch = [\.id, \.uid, \.game, \.time]
+        let matchedItems = try modelContext.fetch(request)
+        matchedItems.forEach { currentItem in
+            if !validTransactionIDs.contains(currentItem.id) {
+                modelContext.delete(currentItem)
+                bleachCounter += 1
+            }
+        }
+        // 无须在此保存。之后会有统一的保存步骤。
     }
 }
