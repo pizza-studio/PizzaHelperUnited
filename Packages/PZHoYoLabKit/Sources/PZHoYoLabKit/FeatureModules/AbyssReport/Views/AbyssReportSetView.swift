@@ -54,9 +54,7 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
             }
         }
         // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
-        #if os(iOS) || targetEnvironment(macCatalyst)
-        .toolbar(.hidden, for: .tabBar)
-        #endif
+        .appTabBarVisibility(.hidden)
     }
 
     // MARK: Internal

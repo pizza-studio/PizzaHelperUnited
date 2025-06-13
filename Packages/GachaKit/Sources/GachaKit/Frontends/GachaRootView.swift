@@ -30,10 +30,8 @@ public struct GachaRootView: View {
         coreBody
             .navigationTitle(theVM.currentGPIDTitle ?? Self.navTitle)
             .navBarTitleDisplayMode(.large)
-        // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
-        #if os(iOS) || targetEnvironment(macCatalyst)
-            .toolbar(.hidden, for: .tabBar)
-        #endif
+            // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
+            .appTabBarVisibility(.hidden)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     GachaProfileSwitcherView()
