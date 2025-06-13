@@ -48,6 +48,7 @@ public struct ContentView: View {
             simpleTaptic(type: .selection)
         }
         .environment(GachaVM.shared)
+        .appTabBarVisibility(.visible)
     }
 
     // MARK: Internal
