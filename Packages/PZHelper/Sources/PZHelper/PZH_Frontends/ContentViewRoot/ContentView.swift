@@ -21,42 +21,43 @@ public struct ContentView: View {
     // MARK: Public
 
     public var body: some View {
-        TabView(selection: $tabNavVM.rootTabNav.animation()) {
-            ForEach(AppTabNav.allCases) { navCase in
-                if navCase.isExposed {
-                    navCase
-                    #if targetEnvironment(macCatalyst)
-                    .toolbar(.hidden, for: .tabBar)
-                    #endif
+        VStack(spacing: 0) {
+            TabView(selection: $tabNavVM.rootTabNav.animation()) {
+                ForEach(AppTabNav.allCases) { navCase in
+                    if navCase.isExposed {
+                        navCase
+                        #if targetEnvironment(macCatalyst)
+                        .toolbar(.hidden, for: .tabBar)
+                        #endif
+                    }
                 }
+            }
+            .appTabBarVisibility(.visible)
+            tabBarForMacCatalyst
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        #if targetEnvironment(macCatalyst)
+        .apply { theContent in
+            Group {
+                #if compiler(>=6.0) && canImport(UIKit, _version: 18.0)
+                if #unavailable(iOS 18.0), #unavailable(macCatalyst 18.0) {
+                    theContent
+                } else {
+                    theContent
+                        .tabViewStyle(.sidebarAdaptable)
+                        .tabViewCustomization(.none)
+                }
+                #else
+                theContent
+                #endif
             }
         }
-        .appTabBarVisibility(.visible)
-        #if targetEnvironment(macCatalyst)
-            .apply { theContent in
-                Group {
-                    #if compiler(>=6.0) && canImport(UIKit, _version: 18.0)
-                    if #unavailable(iOS 18.0), #unavailable(macCatalyst 18.0) {
-                        theContent
-                    } else {
-                        theContent
-                            .tabViewStyle(.sidebarAdaptable)
-                            .tabViewCustomization(.none)
-                    }
-                    #else
-                    theContent
-                    #endif
-                }
-                .overlay(alignment: .bottom) {
-                    tabBarForMacCatalyst
-                }
-            }
         #endif
-            .tint(tintForCurrentTab)
-            .onChange(of: tabNavVM.rootTabNav.rootID) {
-                simpleTaptic(type: .selection)
-            }
-            .environment(GachaVM.shared)
+        .tint(tintForCurrentTab)
+        .onChange(of: tabNavVM.rootTabNav.rootID) {
+            simpleTaptic(type: .selection)
+        }
+        .environment(GachaVM.shared)
     }
 
     // MARK: Internal
@@ -94,6 +95,7 @@ public struct ContentView: View {
                                 .fontWidth(.compressed)
                                 .fontWeight(isChosen ? .bold : .regular)
                                 .foregroundStyle(isChosen ? tintForCurrentTab : .secondary)
+                                .frame(maxWidth: .infinity)
                                 .padding()
                                 .contentShape(.rect)
                         }
@@ -102,11 +104,8 @@ public struct ContentView: View {
                     }
                 }
             }
-            .frame(height: 50)
             .blurMaterialBackground()
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .legibilityShadow(isText: true)
-            .padding()
+            .frame(height: 50)
         }
     }
 }
