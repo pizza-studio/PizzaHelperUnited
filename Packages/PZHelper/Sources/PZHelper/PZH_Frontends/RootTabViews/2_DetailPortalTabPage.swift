@@ -121,7 +121,7 @@ struct DetailPortalTabPage: View {
             }
         }
         .padding(4).padding(.leading, 12)
-        .blurMaterialBackground(enabled: !OS.isLiquidGlassEraOS)
+        .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
