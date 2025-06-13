@@ -148,7 +148,16 @@ public enum OS: Int {
 
     // MARK: Public
 
-    public static let isLiquidGlassEraOS: Bool = {
+    public static let liquidGlassThemeSuspected: Bool = {
+        checkInfoPlist: if let infoDict = Bundle.main.infoDictionary {
+            let verStr = (infoDict["DTPlatformVersion"] as? String)?.prefix(4) ?? "_"
+            if let verDouble = Double(verStr) {
+                if verDouble < 26 { return false }
+                if verDouble >= 26.1 { break checkInfoPlist }
+                let uiCompat = infoDict["UIDesignRequiresCompatibility"] as? Bool
+                if uiCompat == true { return false }
+            }
+        }
         #if os(macOS)
         return if #unavailable(macOS 26) { false } else { true }
         #elseif os(watchOS)
