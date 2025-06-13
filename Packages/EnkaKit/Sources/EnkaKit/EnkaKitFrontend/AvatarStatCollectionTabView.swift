@@ -58,7 +58,7 @@ public struct AvatarStatCollectionTabView: View {
         .navBarTitleDisplayMode(.inline)
         #if os(iOS) || targetEnvironment(macCatalyst)
             .toolbar(isMainBodyVisible ? .hidden : .automatic, for: .navigationBar)
-            .toolbar(isMainBodyVisible ? .hidden : .automatic, for: .tabBar)
+            .appTabBarVisibility(isMainBodyVisible ? .hidden : .automatic)
         #endif
             .toolbar(isMainBodyVisible ? .hidden : .automatic)
     }
