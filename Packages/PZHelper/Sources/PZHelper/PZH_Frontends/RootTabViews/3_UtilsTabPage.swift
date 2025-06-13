@@ -18,7 +18,7 @@ struct UtilsTabPage: View {
     }
 
     var body: some View {
-        NavigationSplitView(columnVisibility: .constant(.all)) {
+        NavigationStack {
             List(selection: $nav) {
                 ASUpdateNoticeView()
                     .font(.footnote)
@@ -54,8 +54,7 @@ struct UtilsTabPage: View {
             .listStyle(.bordered)
             #endif
             .navigationTitle("tab.utils.fullTitle".i18nPZHelper)
-        } detail: {
-            navigationDetail(selection: $nav)
+            .navigationDestination(item: $nav, destination: navigationDetail)
         }
     }
 
@@ -64,9 +63,9 @@ struct UtilsTabPage: View {
     @State private var nav: Nav?
 
     @ViewBuilder
-    private func navigationDetail(selection: Binding<Nav?>) -> some View {
+    private func navigationDetail(_ selection: Nav?) -> some View {
         NavigationStack {
-            switch selection.wrappedValue {
+            switch selection {
             case .gachaManager: GachaRootView()
             case .wallpaperGallery: WallpaperGalleryViewContent()
             case .userWallpaperManager: UserWallpaperMgrViewContent()
