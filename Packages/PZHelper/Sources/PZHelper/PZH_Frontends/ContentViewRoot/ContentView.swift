@@ -22,116 +22,44 @@ public struct ContentView: View {
 
     public var body: some View {
         TabView(selection: $tabNavVM.rootTabNav.animation()) {
-            ForEach(TabNav.allCases) { navCase in
+            ForEach(AppTabNav.allCases) { navCase in
                 if navCase.isExposed {
                     navCase
+                    #if targetEnvironment(macCatalyst)
+                    .toolbar(.hidden, for: .tabBar)
+                    #endif
                 }
             }
         }
-        #if targetEnvironment(macCatalyst)
-        .apply { theContent in
-            #if compiler(>=6.0) && canImport(UIKit, _version: 18.0)
-            if #unavailable(iOS 18.0), #unavailable(macCatalyst 18.0) {
-                theContent
-            } else {
-                theContent
-                    .tabViewStyle(.sidebarAdaptable)
-                    .tabViewCustomization(.none)
-            }
-            #else
-            theContent
-            #endif
-        }
-        #endif
-        .tint(tintForCurrentTab)
-        .onChange(of: tabNavVM.rootTabNav.rootID) {
-            simpleTaptic(type: .selection)
-        }
-        .environment(GachaVM.shared)
         .appTabBarVisibility(.visible)
+        #if targetEnvironment(macCatalyst)
+            .apply { theContent in
+                Group {
+                    #if compiler(>=6.0) && canImport(UIKit, _version: 18.0)
+                    if #unavailable(iOS 18.0), #unavailable(macCatalyst 18.0) {
+                        theContent
+                    } else {
+                        theContent
+                            .tabViewStyle(.sidebarAdaptable)
+                            .tabViewCustomization(.none)
+                    }
+                    #else
+                    theContent
+                    #endif
+                }
+                .overlay(alignment: .bottom) {
+                    tabBarForMacCatalyst
+                }
+            }
+        #endif
+            .tint(tintForCurrentTab)
+            .onChange(of: tabNavVM.rootTabNav.rootID) {
+                simpleTaptic(type: .selection)
+            }
+            .environment(GachaVM.shared)
     }
 
     // MARK: Internal
-
-    enum TabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
-        case today
-        case showcaseDetail
-        case utils
-        case appSettings(AppSettingsTabPage.Nav? = nil)
-
-        // MARK: Lifecycle
-
-        public init?(rootID: Int) {
-            let matched = Self.allCases.first { $0.rootID == rootID }
-            guard let matched else { return nil }
-            self = matched
-        }
-
-        // MARK: Public
-
-        nonisolated public var id: Int {
-            switch self {
-            case let .appSettings(subNav): rootID + (subNav?.rawValue ?? 0) * 100
-            default: rootID
-            }
-        }
-
-        nonisolated public var rootID: Int {
-            switch self {
-            case .today: 1
-            case .showcaseDetail: 2
-            case .utils: 3
-            case .appSettings: 0
-            }
-        }
-
-        @ViewBuilder public var body: some View {
-            switch self {
-            case .today:
-                TodayTabPage()
-                    .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                    .tabItem { label }
-            case .showcaseDetail:
-                DetailPortalTabPage()
-                    .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                    .tabItem { label }
-            case .utils:
-                UtilsTabPage()
-                    .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                    .tabItem { label }
-            case let .appSettings(subNav):
-                AppSettingsTabPage(nav: subNav)
-                    .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                    .tabItem { label }
-            }
-        }
-
-        public var label: some View {
-            switch self {
-            case .today: Label("tab.today".i18nPZHelper, systemSymbol: .windshieldFrontAndWiperAndDrop)
-            case .showcaseDetail: Label("tab.details".i18nPZHelper, systemSymbol: .personTextRectangleFill)
-            case .utils: Label("tab.utils".i18nPZHelper, systemSymbol: .shippingboxFill)
-            case .appSettings: Label("tab.settings".i18nPZHelper, systemSymbol: .wrenchAndScrewdriverFill)
-            }
-        }
-
-        // MARK: Internal
-
-        nonisolated static let allCases: [ContentView.TabNav] = [
-            .today,
-            .showcaseDetail,
-            .utils,
-            .appSettings(nil),
-        ]
-
-        static var exposedCaseTags: [Int] {
-            [1, 2, 3, 0]
-        }
-
-        var isExposed: Bool {
-            Self.exposedCaseTags.contains(rootID)
-        }
-    }
 
     @Default(.appTabIndex) var appIndex: Int
 
@@ -139,12 +67,46 @@ public struct ContentView: View {
 
     @Environment(\.colorScheme) private var colorScheme
     @StateObject private var tabNavVM = GlobalNavVM.shared
+    @StateObject private var appTabVM = AppTabBarVM.shared
 
     private var tintForCurrentTab: Color {
-        switch TabNav(rootID: tabNavVM.rootTabNav.rootID) {
+        switch AppTabNav(rootID: tabNavVM.rootTabNav.rootID) {
         case .today: Color.accessibilityAccent(colorScheme)
         case .showcaseDetail: Color.accessibilityAccent(colorScheme)
         default: .accentColor
+        }
+    }
+
+    @ViewBuilder private var tabBarForMacCatalyst: some View {
+        if appTabVM.latestVisibility != .hidden {
+            HStack {
+                ForEach(AppTabNav.allCases) { navCase in
+                    let isChosen: Bool = navCase == tabNavVM.rootTabNav
+                    if navCase.isExposed {
+                        Button {
+                            withAnimation {
+                                tabNavVM.rootTabNav = navCase
+                            }
+                        } label: {
+                            navCase.label
+                                .fixedSize()
+                                .labelStyle(.titleAndIcon)
+                                .fontWidth(.compressed)
+                                .fontWeight(isChosen ? .bold : .regular)
+                                .foregroundStyle(isChosen ? tintForCurrentTab : .secondary)
+                                .padding()
+                                .contentShape(.rect)
+                        }
+                        .buttonStyle(.plain)
+                        .id(navCase)
+                    }
+                }
+            }
+            .frame(height: 50)
+            .blurMaterialBackground()
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .legibilityShadow(isText: true)
+            .padding()
         }
     }
 }
