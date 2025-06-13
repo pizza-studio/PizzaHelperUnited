@@ -1,5 +1,5 @@
 SHELL := /bin/sh
-.PHONY: format lint
+.PHONY: clean format lint
 
 # 定义日期和时间变量
 DATE_DIR := $(shell date +%Y-%m-%d)
@@ -8,6 +8,13 @@ TIME_FILE := $(shell date +%H.%M)
 ARCHIVE_DIR := $(HOME)/Library/Developer/Xcode/Archives/$(DATE_DIR)
 ARCHIVE_NAME := ThePizzaHelper-$(DATE_FILE)-$(TIME_FILE).xcarchive
 ARCHIVE_PATH := $(ARCHIVE_DIR)/$(ARCHIVE_NAME)
+
+clean:
+	@echo "Cleaning build artifacts for ThePizzaHelper..."
+	@xcodebuild clean -project UnitedPizzaHelper.xcodeproj -scheme ThePizzaHelper -configuration Release
+	@echo "Cleaning build artifacts for UnitedPizzaHelperEngine..."
+	@xcodebuild clean -project UnitedPizzaHelper.xcodeproj -scheme UnitedPizzaHelperEngine -configuration Release
+	@echo "Clean completed."
 
 format:
 	@swiftformat --swiftversion 6.0 ./
