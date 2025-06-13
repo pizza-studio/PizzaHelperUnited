@@ -53,6 +53,7 @@ struct TodayTabPage: View {
                 ToolbarItem(placement: .confirmationAction) {
                     gamePicker
                         .pickerStyle(.segmented)
+                        .fixedSize()
                 }
             }
             .refreshable {
