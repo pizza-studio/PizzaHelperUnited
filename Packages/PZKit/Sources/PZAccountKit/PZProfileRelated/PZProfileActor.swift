@@ -207,10 +207,12 @@ extension PZProfileActor {
     }
 
     public func addProfiles(
-        _ profileSendables: Set<PZProfileSendable>
+        _ profileSendableSet: Set<PZProfileSendable>
     ) throws {
         try modelContext.transaction {
-            try profileSendables.forEach {
+            try profileSendableSet.sorted {
+                $0.priority < $1.priority
+            }.forEach {
                 try addProfile($0, commitAfterDone: false)
             }
         }
