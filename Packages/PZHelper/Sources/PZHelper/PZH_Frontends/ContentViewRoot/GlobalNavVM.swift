@@ -13,10 +13,10 @@ import SwiftUI
 final class GlobalNavVM: Sendable, ObservableObject {
     static let shared = GlobalNavVM()
 
-    var rootTabNav: ContentView.TabNav = {
+    var rootTabNav: AppTabNav = {
         let initSelection: Int = {
             guard Defaults[.restoreTabOnLaunching] else { return 1 }
-            let allBaseID = ContentView.TabNav.allCases.map(\.id)
+            let allBaseID = AppTabNav.allCases.map(\.id)
             guard allBaseID.contains(Defaults[.appTabIndex]) else { return 1 }
             return Defaults[.appTabIndex]
         }()
