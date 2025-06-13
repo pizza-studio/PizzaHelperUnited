@@ -15,14 +15,15 @@ extension ProfileProtocol {
 
     @MainActor @ViewBuilder
     func asMenuLabel4SUI() -> some View {
-        Label {
-            #if targetEnvironment(macCatalyst)
+        switch OS.type {
+        case .macOS:
             Text(name + " // \(uidWithGame)")
-            #else
-            Text(name + "\n\(uidWithGame)")
-            #endif
-        } icon: {
-            asIcon4SUI()
+        default:
+            Label {
+                Text(name + "\n\(uidWithGame)")
+            } icon: {
+                asIcon4SUI()
+            }
         }
     }
 }

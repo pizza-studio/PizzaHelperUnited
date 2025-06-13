@@ -133,16 +133,24 @@ struct DetailPortalTabPage: View {
                     delegate.currentProfile = nil
                 }
             } label: {
-                LabeledContent {
+                switch OS.type {
+                case .macOS:
                     Text("dpv.query.menuCommandTitle".i18nPZHelper)
                         .multilineTextAlignment(.leading)
                         .fontWidth(.condensed)
                         .frame(maxWidth: .infinity)
-                } label: {
-                    Image(systemSymbol: .magnifyingglassCircleFill)
-                        .frame(width: 48)
-                        .clipShape(.circle)
-                        .padding(.trailing, 4)
+                default:
+                    LabeledContent {
+                        Text("dpv.query.menuCommandTitle".i18nPZHelper)
+                            .multilineTextAlignment(.leading)
+                            .fontWidth(.condensed)
+                            .frame(maxWidth: .infinity)
+                    } label: {
+                        Image(systemSymbol: .magnifyingglassCircleFill)
+                            .frame(width: 48)
+                            .clipShape(.circle)
+                            .padding(.trailing, 4)
+                    }
                 }
             }
             Divider()
