@@ -82,21 +82,28 @@ public struct GachaProfileSwitcherView: View {
                                     theVM.currentGPID = profileIDObj
                                 }
                             } label: {
-                                Label {
-                                    if let name = nameIDMap[profileIDObj.uidWithGame] {
-                                        #if targetEnvironment(macCatalyst)
-                                        Text(name + " // \(profileIDObj.uidWithGame)")
-                                        #else
-                                        Text(name + "\n\(profileIDObj.uidWithGame)")
-                                        #endif
-                                    } else {
-                                        Text(profileIDObj.uidWithGame)
+                                switch OS.type {
+                                case .macOS:
+                                    Group {
+                                        if let name = nameIDMap[profileIDObj.uidWithGame] {
+                                            Text(name + " // \(profileIDObj.uidWithGame)")
+                                        } else {
+                                            Text(profileIDObj.uidWithGame)
+                                        }
                                     }
-                                } icon: {
-                                    profileIDObj.photoView
+                                default:
+                                    Label {
+                                        if let name = nameIDMap[profileIDObj.uidWithGame] {
+                                            Text(name + "\n\(profileIDObj.uidWithGame)")
+                                        } else {
+                                            Text(profileIDObj.uidWithGame)
+                                        }
+                                    } icon: {
+                                        profileIDObj.photoView
+                                    }
                                 }
-                                .id(profileIDObj.uidWithGame)
                             }
+                            .id(profileIDObj.uidWithGame)
                         }
                     } else {
                         Divider()
