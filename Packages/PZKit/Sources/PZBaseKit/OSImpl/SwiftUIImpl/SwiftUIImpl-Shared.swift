@@ -118,12 +118,9 @@ struct BlurMaterialBackground: ViewModifier {
     public func body(content: Content) -> some View {
         content.background(
             .regularMaterial,
-            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            in: .rect
         )
-        .contentShape(RoundedRectangle(
-            cornerRadius: 20,
-            style: .continuous
-        ))
+        .contentShape(.rect)
     }
 }
 
@@ -138,18 +135,15 @@ struct AdjustedBlurMaterialBackground: ViewModifier {
             if colorScheme == .dark {
                 content.background(
                     .thinMaterial,
-                    in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    in: .rect
                 )
             } else {
                 content.background(
                     .regularMaterial,
-                    in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    in: .rect
                 )
             }
-        }.contentShape(RoundedRectangle(
-            cornerRadius: 20,
-            style: .continuous
-        ))
+        }.contentShape(.rect)
     }
 
     // MARK: Internal
