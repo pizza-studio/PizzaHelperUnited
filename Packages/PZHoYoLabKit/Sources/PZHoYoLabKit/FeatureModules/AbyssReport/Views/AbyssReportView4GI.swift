@@ -55,7 +55,7 @@ public struct AbyssReportView4GI: AbyssReportView {
         contents
             .containerRelativeFrame(.horizontal) { length, _ in
                 Task { @MainActor in
-                    withAnimation { containerWidth = length - 48 }
+                    containerWidth = length - 48
                 }
                 return length
             }
