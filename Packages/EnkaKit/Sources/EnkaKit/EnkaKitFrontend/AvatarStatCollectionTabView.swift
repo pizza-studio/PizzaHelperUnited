@@ -80,6 +80,7 @@ public struct AvatarStatCollectionTabView: View {
             if let onClose {
                 onClose()
             } else {
+                simpleTaptic(type: .medium)
                 presentationMode.wrappedValue.dismiss()
             }
         }
