@@ -33,6 +33,7 @@ public struct ContentView: View {
                 }
             }
             .appTabBarVisibility(.visible)
+            .tint(tintForCurrentTab)
             if OS.type == .macOS {
                 tabBarForMacCatalyst
                     .fixedSize(horizontal: false, vertical: true)
@@ -55,7 +56,6 @@ public struct ContentView: View {
             }
         }
         #endif
-        .tint(tintForCurrentTab)
         .onChange(of: tabNavVM.rootTabNav.rootID) {
             simpleTaptic(type: .selection)
         }
@@ -96,7 +96,7 @@ public struct ContentView: View {
                                 .labelStyle(.titleAndIcon)
                                 .fontWidth(.compressed)
                                 .fontWeight(isChosen ? .bold : .regular)
-                                .foregroundStyle(isChosen ? tintForCurrentTab : .secondary)
+                                .foregroundStyle(isChosen ? Color.accentColor : .secondary)
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .contentShape(.rect)
