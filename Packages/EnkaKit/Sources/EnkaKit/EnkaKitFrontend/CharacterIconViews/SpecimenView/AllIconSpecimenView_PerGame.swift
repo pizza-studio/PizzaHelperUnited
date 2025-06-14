@@ -43,7 +43,7 @@ public struct CharSpecimen: Identifiable, Hashable {
         let inner = StaggeredGrid(
             columns: columns,
             showsIndicators: !scroll,
-            outerPadding: false,
+            outerPadding: true,
             scroll: scroll,
             list: specimens
         ) { specimen in
