@@ -81,7 +81,7 @@ public struct CharacterInventoryView: View {
         .listContainerBackground()
         .containerRelativeFrame(.horizontal) { length, _ in
             Task { @MainActor in
-                withAnimation { containerWidth = length - 48 }
+                containerWidth = length - 48
             }
             return length
         }
