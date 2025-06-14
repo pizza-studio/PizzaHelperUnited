@@ -22,7 +22,10 @@ extension PZHelper {
                 .environment(\.horizontalSizeClass, .compact)
                 .defaultAppStorage(.baseSuite)
             #if targetEnvironment(macCatalyst)
-                .frame(minWidth: 600, minHeight: 800)
+                .frame(
+                    minWidth: OS.liquidGlassThemeSuspected ? 640 : 600,
+                    minHeight: 800
+                )
             #endif
                 .onAppear {
                     if !isApplicationBooted {
