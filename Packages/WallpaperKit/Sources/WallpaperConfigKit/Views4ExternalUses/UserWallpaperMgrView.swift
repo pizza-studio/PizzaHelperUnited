@@ -27,7 +27,6 @@ public struct UserWallpaperMgrViewContent: View {
             coreBody
                 .navigationTitle(Self.navTitleTiny)
                 .navBarTitleDisplayMode(.large)
-                .navigationDestination(item: $currentSheet, destination: handleSheetNavigation)
                 .toolbar {
                     #if os(iOS) || targetEnvironment(macCatalyst)
                     if !userWallpapers.isEmpty {
@@ -63,9 +62,7 @@ public struct UserWallpaperMgrViewContent: View {
                                 alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
                             }
                         } extraItem: {
-                            Button {
-                                currentSheet = .isAddingWallpaper
-                            } label: {
+                            NavigationLink(destination: callUserWallpaperView) {
                                 Label {
                                     Text("userWallpaperMgr.menu.addNewWallpaper", bundle: .module)
                                 } icon: {
@@ -121,11 +118,12 @@ public struct UserWallpaperMgrViewContent: View {
     @State private var isEditMode: EditMode = .inactive
     #endif
 
-    @State private var currentSheet: SheetType?
     @State private var isCropperSheetPresented: Bool = false
     @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var isNameEditorVisible: Bool = false
     @State private var currentEditingWallpaper: UserWallpaper?
+
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
@@ -178,9 +176,7 @@ extension UserWallpaperMgrViewContent {
             if userWallpapers.isEmpty {
                 Section {
                     Text("userWallpaperMgr.emptyContentsNotice", bundle: .module)
-                    Button {
-                        currentSheet = .isAddingWallpaper
-                    } label: {
+                    NavigationLink(destination: callUserWallpaperView) {
                         Text("userWallpaperMgr.clickToAddYourFirstWallpaper", bundle: .module)
                             .fontWeight(.bold)
                             .fontWidth(.condensed)
@@ -325,35 +321,21 @@ extension UserWallpaperMgrViewContent {
     }
 
     @ViewBuilder
-    private func handleSheetNavigation(_ sheetType: SheetType) -> some View {
-        switch sheetType {
-        case .isAddingWallpaper:
-            UserWallpaperMakerView { finishedWallpaper in
-                withAnimation {
-                    alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
-                    currentEditingWallpaper = finishedWallpaper
-                    var allUserWallpapers = userWallpapersSorted
-                    allUserWallpapers.insert(finishedWallpaper, at: 0)
-                    userWallpapers = .init(allUserWallpapers)
-                    isNameEditorVisible = true
-                    Task { @MainActor in
-                        Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-                    }
-                }
-            } failureHandler: {
-                alertToastEventStatus.isWallpaperTaskFailed.toggle()
-            }
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("sys.cancel".i18nBaseKit) {
-                        currentSheet = nil
-                    }
+    func callUserWallpaperView() -> some View {
+        UserWallpaperMakerView { finishedWallpaper in
+            withAnimation {
+                alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
+                currentEditingWallpaper = finishedWallpaper
+                var allUserWallpapers = userWallpapersSorted
+                allUserWallpapers.insert(finishedWallpaper, at: 0)
+                userWallpapers = .init(allUserWallpapers)
+                isNameEditorVisible = true
+                Task { @MainActor in
+                    Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                 }
             }
-            // 逼着用户改用自订的后退按钮。
-            // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
-            // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
-            .navigationBarBackButtonHidden(true)
+        } failureHandler: {
+            alertToastEventStatus.isWallpaperTaskFailed.toggle()
         }
     }
 
