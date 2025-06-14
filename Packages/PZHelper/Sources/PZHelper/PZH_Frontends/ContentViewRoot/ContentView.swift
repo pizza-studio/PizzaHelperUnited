@@ -33,8 +33,10 @@ public struct ContentView: View {
                 }
             }
             .appTabBarVisibility(.visible)
-            tabBarForMacCatalyst
-                .fixedSize(horizontal: false, vertical: true)
+            if OS.type == .macOS {
+                tabBarForMacCatalyst
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
         #if targetEnvironment(macCatalyst)
         .apply { theContent in
