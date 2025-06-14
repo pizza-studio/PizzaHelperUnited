@@ -21,29 +21,36 @@ public struct WallpaperGalleryViewContent: View {
     public static let navTitle: String = "wallpaperGallery.navTitle".i18nWPConfKit
 
     public var body: some View {
-        coreBodyView
-            .containerRelativeFrame(.horizontal) { length, _ in
-                Task { @MainActor in
-                    withAnimation { containerWidth = length - 48 }
-                }
-                return length
-            }
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Picker("".description, selection: $game.animation()) {
-                        Text("game.genshin.shortNameEX".i18nBaseKit)
-                            .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)
-                        Text("game.starRail.shortNameEX".i18nBaseKit)
-                            .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
-                        Text("game.zenlessZone.shortNameEX".i18nBaseKit)
-                            .tag(Pizza.SupportedGame.zenlessZone as Pizza.SupportedGame?)
-                        Text("wpKit.gamePicker.Pizza.shortName".i18nWPConfKit)
-                            .tag(Pizza.SupportedGame?.none)
+        NavigationStack {
+            List {
+                coreBodyView
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Picker("".description, selection: $game.animation()) {
+                                Text("game.genshin.shortNameEX".i18nBaseKit)
+                                    .tag(Pizza.SupportedGame.genshinImpact as Pizza.SupportedGame?)
+                                Text("game.starRail.shortNameEX".i18nBaseKit)
+                                    .tag(Pizza.SupportedGame.starRail as Pizza.SupportedGame?)
+                                Text("game.zenlessZone.shortNameEX".i18nBaseKit)
+                                    .tag(Pizza.SupportedGame.zenlessZone as Pizza.SupportedGame?)
+                                Text("wpKit.gamePicker.Pizza.shortName".i18nWPConfKit)
+                                    .tag(Pizza.SupportedGame?.none)
+                            }
+                            .pickerStyle(.segmented)
+                        }
                     }
-                    .pickerStyle(.segmented)
-                }
+                    .navigationTitle(Self.navTitle)
+                    .listRowInsets(.init())
+                    .listRowBackground(Color.clear)
             }
-            .navigationTitle(Self.navTitle)
+            .listStyle(.plain)
+        }
+        .containerRelativeFrame(.horizontal) { length, _ in
+            Task { @MainActor in
+                withAnimation { containerWidth = length - 48 }
+            }
+            return length
+        }
     }
 
     // MARK: Internal
@@ -67,7 +74,9 @@ public struct WallpaperGalleryViewContent: View {
     @ViewBuilder var coreBodyView: some View {
         StaggeredGrid(
             columns: columns,
-            showsIndicators: true,
+            showsIndicators: false,
+            outerPadding: true,
+            scroll: true,
             list: searchResults
         ) { currentCard in
             draw(wallpaper: currentCard)
