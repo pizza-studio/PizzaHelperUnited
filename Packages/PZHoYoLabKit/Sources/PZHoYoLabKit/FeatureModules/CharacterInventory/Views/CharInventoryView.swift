@@ -167,6 +167,7 @@ public struct CharacterInventoryView: View {
                             .frame(width: 8, height: 8)
                             .clipShape(.circle)
                     }
+                    .padding(.top, 5)
                     .listRowSeparatorTint(.secondary.opacity(0.7))
                     .environment(orientation)
                 }
