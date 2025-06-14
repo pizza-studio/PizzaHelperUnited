@@ -77,9 +77,9 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
             }
             appendedContent()
         }
-        .onChange(of: broadcaster.eventForStoppingRootTabTasks) { _, _ in
-            delegate.forceStopTheTask()
-        }
+        // .onChange(of: broadcaster.eventForStoppingRootTabTasks) { _, _ in
+        //     delegate.forceStopTheTask()
+        // }
         .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
             triggerUpdateTask()
         }
