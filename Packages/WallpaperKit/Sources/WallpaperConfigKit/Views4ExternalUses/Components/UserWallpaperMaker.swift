@@ -126,6 +126,17 @@ struct UserWallpaperMakerView: View {
                         failureHandler()
                     }
                 }
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("sys.cancel".i18nBaseKit) {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                }
+                // 逼着用户改用自订的后退按钮。
+                // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
+                // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
+                .navigationBarBackButtonHidden(true)
         }
     }
 
