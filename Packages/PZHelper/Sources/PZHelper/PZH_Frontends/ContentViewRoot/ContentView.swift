@@ -22,7 +22,7 @@ public struct ContentView: View {
 
     public var body: some View {
         VStack(spacing: 0) {
-            TabView(selection: $tabNavVM.rootTabNav.animation()) {
+            TabView(selection: $tabNavVM.rootTabNav) {
                 ForEach(AppTabNav.allCases) { navCase in
                     if navCase.isExposed {
                         navCase
@@ -87,7 +87,7 @@ public struct ContentView: View {
                     let isChosen: Bool = navCase == tabNavVM.rootTabNav
                     if navCase.isExposed {
                         Button {
-                            withAnimation {
+                            withAnimation(.easeInOut) {
                                 tabNavVM.rootTabNav = navCase
                             }
                         } label: {
