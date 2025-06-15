@@ -1,17 +1,12 @@
-//  StaggeredGrid for SwiftUI.
-//
-//  Written by 李宇鸿 on 2022/8/13; Refactored by Shiki Suen on 2025/06/15.
-//  Original version: https://blog.csdn.net/qq_42816425/article/details/126325803
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import SwiftUI
 
 // MARK: - StaggeredGrid
 
-// 自定义视图构建器…… Content 外界传递的视图
-
-// T -> 是用来保存可识别的数据集合… 外界传递的列表模型数据
-
-public struct StaggeredGrid<Content: View, T: Identifiable & Equatable>: View {
+public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendable>: View {
     // MARK: Lifecycle
 
     // MARK: - Initialization
@@ -27,7 +22,6 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable>: View {
         list: [T],
         @ViewBuilder content: @escaping (T) -> Content
     ) {
-        // 验证 columns 参数
         guard columns > 0 else {
             fatalError("Columns must be greater than 0")
         }
@@ -40,8 +34,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable>: View {
         self.alignment = alignment
         self.content = content
         self.list = list
-        // 初始化网格数据
-        self._gridArray = State(initialValue: Self.computeGridArray(list: list, columns: columns))
+        self._vm = StateObject(wrappedValue: StaggeredGridVM(list: list, columns: columns))
     }
 
     // MARK: Public
@@ -58,20 +51,23 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable>: View {
                 innerContent
             }
         }
-        // 监听 list 和 columns 变化，更新网格数据
         .onChange(of: list) { _, newList in
-            gridArray = Self.computeGridArray(list: newList, columns: columns)
+            vm.updateGridArray(list: newList, columns: columns)
         }
         .onChange(of: columns) { _, newColumns in
             guard newColumns > 0 else { return }
-            gridArray = Self.computeGridArray(list: list, columns: newColumns)
+            vm.updateGridArray(list: list, columns: newColumns)
+        }
+        .onAppear {
+            if vm.gridArray.isEmpty, !list.isEmpty {
+                vm.updateGridArray(list: list, columns: columns)
+            }
         }
     }
 
     // MARK: Private
 
-    // 缓存网格数据，优化性能
-    @State private var gridArray: [[T]] = []
+    @StateObject private var vm: StaggeredGridVM<T>
 
     private let columns: Int
     private let scrollAxis: Axis.Set
@@ -85,7 +81,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable>: View {
 
     private var innerContent: some View {
         HStack(alignment: alignment, spacing: horizontalSpacing) {
-            ForEach(Array(gridArray.enumerated()), id: \.offset) { _, columnsData in
+            ForEach(Array(vm.gridArray.enumerated()), id: \.offset) { _, columnsData in
                 LazyVStack(spacing: verticalSpacing) {
                     ForEach(columnsData) { object in
                         content(object)
@@ -95,9 +91,77 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable>: View {
         }
         .padding(padding)
     }
+}
 
-    // 计算网格数据，将列表分配到列中
-    private static func computeGridArray(list: [T], columns: Int) -> [[T]] {
+// MARK: - StaggeredGridVM
+
+@MainActor
+final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableObject {
+    // MARK: Lifecycle
+
+    // MARK: - Initialization
+
+    init(list: [T] = [], columns: Int = 1) {
+        if !list.isEmpty, columns > 0 {
+            self.gridArray = computeGridArray(list: list, columns: columns)
+        }
+    }
+
+    // MARK: Internal
+
+    @Published var gridArray: [[T]] = []
+
+    // MARK: - Methods
+
+    func updateGridArray(list: [T], columns: Int) {
+        // 取消前一个任务
+        updateTask?.cancel()
+
+        // 异步计算
+        let threshold = 100 // 可调整的阈值
+        updateTask = Task.detached(priority: .userInitiated) {
+            let newGridArray: [[T]] = if list.count <= threshold {
+                await self.computeGridArray(list: list, columns: columns)
+            } else {
+                await self.computeGridArrayAsync(list: list, columns: columns)
+            }
+            await MainActor.run {
+                if !Task.isCancelled {
+                    withAnimation {
+                        self.gridArray = newGridArray
+                    }
+                }
+            }
+        }
+    }
+
+    // MARK: Private
+
+    private var updateTask: Task<Void, Never>?
+
+    // 异步计算方法
+    private func computeGridArrayAsync(list: [T], columns: Int) async -> [[T]] {
+        await withTaskGroup(of: [T].self) { group in
+            let chunkSize = max(1, list.count / columns)
+            for i in 0 ..< columns {
+                let start = i * chunkSize
+                let end = min((i + 1) * chunkSize, list.count)
+                group.addTask {
+                    Array(list[start ..< end])
+                }
+            }
+            var gridArray: [[T]] = Array(repeating: [], count: columns)
+            for await chunk in group {
+                if let index = gridArray.firstIndex(where: { $0.isEmpty }) {
+                    gridArray[index] = chunk
+                }
+            }
+            return gridArray
+        }
+    }
+
+    // 同步计算方法
+    private func computeGridArray(list: [T], columns: Int) -> [[T]] {
         var gridArray: [[T]] = Array(repeating: [], count: columns)
         var currentIndex = 0
         for object in list {
@@ -108,8 +172,9 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable>: View {
     }
 }
 
+// MARK: - API Compatibility
+
 extension StaggeredGrid {
-    // 提供构造函数的闭包
     public init(
         columns: Int,
         showsIndicators: Bool = false,
