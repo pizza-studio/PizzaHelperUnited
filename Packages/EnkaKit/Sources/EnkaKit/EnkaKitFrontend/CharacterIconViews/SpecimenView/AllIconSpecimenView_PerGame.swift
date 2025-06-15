@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - CharSpecimen
 
-public struct CharSpecimen: Identifiable, Hashable {
+public struct CharSpecimen: Identifiable, Hashable, Sendable {
     // MARK: Public
 
     public let id: String
