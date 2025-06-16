@@ -53,6 +53,10 @@ struct UtilsTabPage: View {
             #elseif os(macOS)
             .listStyle(.bordered)
             #endif
+            .safeAreaInset(edge: .bottom) {
+                tabNavVM.tabBarForMacCatalyst
+                    .fixedSize(horizontal: false, vertical: true)
+            }
             .navigationTitle("tab.utils.fullTitle".i18nPZHelper)
             .navigationDestination(item: $nav, destination: navigationDetail)
         }
@@ -61,6 +65,7 @@ struct UtilsTabPage: View {
     // MARK: Private
 
     @State private var nav: Nav?
+    @StateObject private var tabNavVM = GlobalNavVM.shared
 
     @ViewBuilder
     private func navigationDetail(_ selection: Nav?) -> some View {

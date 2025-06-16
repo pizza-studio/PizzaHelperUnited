@@ -59,6 +59,10 @@ struct TodayTabPage: View {
             }
         }
         .formStyle(.grouped)
+        .safeAreaInset(edge: .bottom) {
+            tabNavVM.tabBarForMacCatalyst
+                .fixedSize(horizontal: false, vertical: true)
+        }
         .navigationTitle("tab.today.fullTitle".i18nPZHelper)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
@@ -109,6 +113,7 @@ struct TodayTabPage: View {
 
     @State private var wrappedByNavStack: Bool
     @State private var game: Pizza.SupportedGame? = .none
+    @StateObject private var tabNavVM = GlobalNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
 
     @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]

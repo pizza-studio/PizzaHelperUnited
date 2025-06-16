@@ -118,6 +118,10 @@ struct AppSettingsTabPage: View {
             #elseif os(macOS)
             .listStyle(.bordered)
             #endif
+            .safeAreaInset(edge: .bottom) {
+                tabNavVM.tabBarForMacCatalyst
+                    .fixedSize(horizontal: false, vertical: true)
+            }
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
         } detail: {
             navigationDetail(selection: $nav)
@@ -128,6 +132,7 @@ struct AppSettingsTabPage: View {
 
     @State private var nav: Nav?
     @State private var sharedDB = Enka.Sputnik.shared
+    @StateObject private var tabNavVM = GlobalNavVM.shared
 
     @Default(.appLanguage) private var appLanguage: [String]?
 
