@@ -20,43 +20,39 @@ public struct ContentView: View {
     // MARK: Public
 
     public var body: some View {
-        VStack(spacing: 0) {
-            TabView(selection: $tabNavVM.rootTabNav) {
-                ForEach(AppTabNav.allCases) { navCase in
-                    if navCase.isExposed {
-                        navCase
-                        #if targetEnvironment(macCatalyst)
-                        .toolbar(.hidden, for: .tabBar)
-                        #endif
-                    }
+        TabView(selection: $tabNavVM.rootTabNav) {
+            ForEach(AppTabNav.allCases) { navCase in
+                if navCase.isExposed {
+                    navCase
+                    #if targetEnvironment(macCatalyst)
+                    .toolbar(.hidden, for: .tabBar)
+                    #endif
                 }
             }
-            .appTabBarVisibility(.visible)
-            .tint(tintForCurrentTab)
-            tabNavVM.tabBarForMacCatalyst
-                .fixedSize(horizontal: false, vertical: true)
         }
+        .appTabBarVisibility(.visible)
+        .tint(tintForCurrentTab)
         #if targetEnvironment(macCatalyst)
-        .apply { theContent in
-            Group {
-                #if compiler(>=6.0) && canImport(UIKit, _version: 18.0)
-                if #unavailable(iOS 18.0), #unavailable(macCatalyst 18.0) {
+            .apply { theContent in
+                Group {
+                    #if compiler(>=6.0) && canImport(UIKit, _version: 18.0)
+                    if #unavailable(iOS 18.0), #unavailable(macCatalyst 18.0) {
+                        theContent
+                    } else {
+                        theContent
+                            .tabViewStyle(.sidebarAdaptable)
+                            .tabViewCustomization(.none)
+                    }
+                    #else
                     theContent
-                } else {
-                    theContent
-                        .tabViewStyle(.sidebarAdaptable)
-                        .tabViewCustomization(.none)
+                    #endif
                 }
-                #else
-                theContent
-                #endif
             }
-        }
         #endif
-        .onChange(of: tabNavVM.rootTabNav.rootID) {
-            simpleTaptic(type: .selection)
-        }
-        .environment(GachaVM.shared)
+            .onChange(of: tabNavVM.rootTabNav.rootID) {
+                simpleTaptic(type: .selection)
+            }
+            .environment(GachaVM.shared)
     }
 
     // MARK: Internal

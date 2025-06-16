@@ -39,6 +39,10 @@ struct DetailPortalTabPage: View {
             formContent
         }
         .formStyle(.grouped)
+        .safeAreaInset(edge: .bottom) {
+            tabNavVM.tabBarForMacCatalyst
+                .fixedSize(horizontal: false, vertical: true)
+        }
         .refreshable {
             refreshAction()
         }
@@ -193,6 +197,7 @@ struct DetailPortalTabPage: View {
     @State private var sharedDB: Enka.Sputnik = .shared
     @StateObject private var vmDPV: DetailPortalViewModel = .init()
     @StateObject private var pfMgrVM: ProfileManagerVM = .shared
+    @StateObject private var tabNavVM = GlobalNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
 
