@@ -46,8 +46,8 @@ struct DetailPortalTabPage: View {
         .apply(hookNavigationDestinations)
         .apply(hookToolbar)
         .onAppear {
-            if let profile = delegate.currentProfile, !sortedProfiles.contains(profile) {
-                delegate.currentProfile = nil
+            if let profile = vmDPV.currentProfile, !sortedProfiles.contains(profile) {
+                vmDPV.currentProfile = nil
             }
         }
     }
@@ -60,11 +60,11 @@ struct DetailPortalTabPage: View {
             .listRowMaterialBackground()
         let query4HSR = CaseQuerySection(theDB: sharedDB.db4HSR, focus: $uidInputFieldFocus)
             .listRowMaterialBackground()
-        if let profile = delegate.currentProfile {
+        if let profile = vmDPV.currentProfile {
             switch profile.game {
             case .genshinImpact:
                 ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile) {
-                    CharInventoryNav(theVM: delegate)
+                    CharInventoryNav(theVM: vmDPV)
                 } onTapGestureAction: {
                     uidInputFieldFocus = false
                 }
@@ -73,7 +73,7 @@ struct DetailPortalTabPage: View {
                 query4GI
             case .starRail:
                 ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile) {
-                    CharInventoryNav(theVM: delegate)
+                    CharInventoryNav(theVM: vmDPV)
                 } onTapGestureAction: {
                     uidInputFieldFocus = false
                 }
@@ -84,8 +84,8 @@ struct DetailPortalTabPage: View {
             }
             // Peripheral Nav Sections.
             Section {
-                AbyssReportNav(theVM: delegate)
-                LedgerNav(theVM: delegate)
+                AbyssReportNav(theVM: vmDPV)
+                LedgerNav(theVM: vmDPV)
             } footer: {
                 Text("dpv.peripherals.footer.whySomeContentsAreRemoved".i18nPZHelper)
             }
@@ -101,7 +101,7 @@ struct DetailPortalTabPage: View {
         LabeledContent {
             let dimension: CGFloat = 30
             Group {
-                if let profile: PZProfileSendable = delegate.currentProfile {
+                if let profile: PZProfileSendable = vmDPV.currentProfile {
                     Enka.ProfileIconView(uid: profile.uid, game: profile.game)
                         .frame(width: dimension)
                 } else {
@@ -124,7 +124,7 @@ struct DetailPortalTabPage: View {
             .clipShape(.circle)
             .compositingGroup()
         } label: {
-            if let profile: PZProfileSendable = delegate.currentProfile {
+            if let profile: PZProfileSendable = vmDPV.currentProfile {
                 Text(profile.uidWithGame).fontWidth(.condensed)
             } else {
                 Text("dpv.query.menuCommandTitle".i18nPZHelper)
@@ -137,46 +137,10 @@ struct DetailPortalTabPage: View {
 
     @ViewBuilder
     func profileSwitcherMenu() -> some View {
-        Menu {
-            Button {
-                withAnimation {
-                    delegate.currentProfile = nil
-                }
-            } label: {
-                switch OS.type {
-                case .macOS:
-                    Text("dpv.query.menuCommandTitle".i18nPZHelper)
-                        .multilineTextAlignment(.leading)
-                        .fontWidth(.condensed)
-                        .frame(maxWidth: .infinity)
-                default:
-                    LabeledContent {
-                        Text("dpv.query.menuCommandTitle".i18nPZHelper)
-                            .multilineTextAlignment(.leading)
-                            .fontWidth(.condensed)
-                            .frame(maxWidth: .infinity)
-                    } label: {
-                        Image(systemSymbol: .magnifyingglassCircleFill)
-                            .frame(width: 48)
-                            .clipShape(.circle)
-                            .padding(.trailing, 4)
-                    }
-                }
-            }
-            Divider()
-            ForEach(sortedProfiles) { enumeratedProfile in
-                Button {
-                    withAnimation {
-                        delegate.currentProfile = enumeratedProfile
-                    }
-                } label: {
-                    enumeratedProfile.asMenuLabel4SUI()
-                }
-            }
-        } label: {
-            profileSwitcherMenuLabel
-        }
-        .menuStyle(.button)
+        pfMgrVM.profileSwitcherMenu4DPV(
+            $vmDPV.currentProfile,
+            games: [.genshinImpact, .starRail]
+        )
     }
 
     @ViewBuilder
@@ -204,7 +168,7 @@ struct DetailPortalTabPage: View {
     func hookToolbar(_ content: some View) -> some View {
         if !sortedProfiles.isEmpty {
             content.toolbar {
-                if delegate.currentProfile != nil {
+                if vmDPV.currentProfile != nil {
                     ToolbarItem(placement: .confirmationAction) {
                         Button("".description, systemImage: "arrow.clockwise") {
                             refreshAction()
@@ -227,7 +191,8 @@ struct DetailPortalTabPage: View {
     @State private var wrappedByNavStack: Bool
     @State private var showProfileSwitcher: Bool
     @State private var sharedDB: Enka.Sputnik = .shared
-    @StateObject private var delegate: DetailPortalViewModel = .init()
+    @StateObject private var vmDPV: DetailPortalViewModel = .init()
+    @StateObject private var pfMgrVM: ProfileManagerVM = .shared
     @StateObject private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
 
