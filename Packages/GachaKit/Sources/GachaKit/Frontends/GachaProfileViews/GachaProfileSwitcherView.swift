@@ -5,7 +5,6 @@
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
-import SwiftData
 import SwiftUI
 
 public struct GachaProfileSwitcherView: View {

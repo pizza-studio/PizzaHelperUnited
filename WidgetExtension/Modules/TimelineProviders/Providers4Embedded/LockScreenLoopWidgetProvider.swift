@@ -7,7 +7,6 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 import PZWidgetsKit
-import SwiftData
 import WidgetKit
 
 // MARK: - LockScreenLoopWidgetProvider

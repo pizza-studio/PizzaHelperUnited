@@ -6,7 +6,6 @@ import Defaults
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
-import SwiftData
 import SwiftUI
 import WidgetKit
 

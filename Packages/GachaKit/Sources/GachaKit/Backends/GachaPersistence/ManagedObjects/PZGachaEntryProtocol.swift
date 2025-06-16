@@ -4,7 +4,6 @@
 
 import Foundation
 import PZBaseKit
-import SwiftData
 
 // MARK: - PZGachaEntryProtocol
 

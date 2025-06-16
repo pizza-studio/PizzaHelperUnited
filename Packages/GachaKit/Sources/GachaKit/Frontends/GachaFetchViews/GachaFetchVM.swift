@@ -5,7 +5,6 @@
 import Foundation
 import PZAccountKit
 import PZBaseKit
-import SwiftData
 import SwiftUI
 
 // MARK: - GachaFetchVM
