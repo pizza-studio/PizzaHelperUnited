@@ -37,6 +37,7 @@ public struct WallpaperGalleryViewContent: View {
                                     .tag(Pizza.SupportedGame?.none)
                             }
                             .pickerStyle(.segmented)
+                            .fixedSize()
                         }
                     }
                     .navigationTitle(Self.navTitle)
