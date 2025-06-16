@@ -176,7 +176,7 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
 
 #if DEBUG
 
-public struct FakePZProfileMO: ProfileMOProtocol {
+public struct FakePZProfileMO: ProfileMOProtocol, Sendable {
     // MARK: Lifecycle
 
     public init(game: PZBaseKit.Pizza.SupportedGame, uid: String) {
