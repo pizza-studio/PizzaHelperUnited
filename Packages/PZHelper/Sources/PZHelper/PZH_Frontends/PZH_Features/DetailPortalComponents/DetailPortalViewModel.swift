@@ -8,7 +8,6 @@ import Observation
 import PZAccountKit
 import PZBaseKit
 import PZHoYoLabKit
-import SwiftData
 import SwiftUI
 
 // MARK: - DetailPortalViewModel

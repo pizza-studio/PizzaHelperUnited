@@ -8,7 +8,6 @@ import GachaKit
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
-import SwiftData
 import SwiftUI
 
 // MARK: - ContentView

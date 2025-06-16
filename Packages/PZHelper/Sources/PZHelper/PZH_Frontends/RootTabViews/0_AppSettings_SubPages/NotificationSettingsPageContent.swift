@@ -5,7 +5,6 @@
 import Defaults
 import PZAccountKit
 import PZBaseKit
-import SwiftData
 import SwiftUI
 import UserNotifications
 
