@@ -118,13 +118,11 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableO
         updateTask?.cancel()
 
         // 异步计算
-        let threshold = 100 // 可调整的阈值
+        // let threshold = 100 // 可调整的阈值
         updateTask = Task.detached(priority: .userInitiated) {
-            let newGridArray: [[T]] = if list.count <= threshold {
-                await self.computeGridArray(list: list, columns: columns)
-            } else {
-                await self.computeGridArrayAsync(list: list, columns: columns)
-            }
+            let newGridArray: [[T]] = await self.computeGridArray(
+                list: list, columns: columns
+            )
             await MainActor.run {
                 if !Task.isCancelled {
                     withAnimation {
@@ -139,7 +137,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableO
 
     private var updateTask: Task<Void, Never>?
 
-    // 异步计算方法
+    // 异步计算方法，会彻底打碎排序。慎用。
     private func computeGridArrayAsync(list: [T], columns: Int) async -> [[T]] {
         await withTaskGroup(of: [T].self) { group in
             let chunkSize = max(1, list.count / columns)
