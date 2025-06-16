@@ -33,10 +33,8 @@ public struct ContentView: View {
             }
             .appTabBarVisibility(.visible)
             .tint(tintForCurrentTab)
-            if OS.type == .macOS {
-                tabBarForMacCatalyst
-                    .fixedSize(horizontal: false, vertical: true)
-            }
+            tabNavVM.tabBarForMacCatalyst
+                .fixedSize(horizontal: false, vertical: true)
         }
         #if targetEnvironment(macCatalyst)
         .apply { theContent in
@@ -76,37 +74,6 @@ public struct ContentView: View {
         case .today: Color.accessibilityAccent(colorScheme)
         case .showcaseDetail: Color.accessibilityAccent(colorScheme)
         default: .accentColor
-        }
-    }
-
-    @ViewBuilder private var tabBarForMacCatalyst: some View {
-        if appTabVM.latestVisibility != .hidden {
-            HStack {
-                ForEach(AppTabNav.allCases) { navCase in
-                    let isChosen: Bool = navCase == tabNavVM.rootTabNav
-                    if navCase.isExposed {
-                        Button {
-                            withAnimation(.easeInOut) {
-                                tabNavVM.rootTabNav = navCase
-                            }
-                        } label: {
-                            navCase.label
-                                .fixedSize()
-                                .labelStyle(.titleAndIcon)
-                                .fontWidth(.compressed)
-                                .fontWeight(isChosen ? .bold : .regular)
-                                .foregroundStyle(isChosen ? Color.accentColor : .secondary)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .contentShape(.rect)
-                        }
-                        .buttonStyle(.plain)
-                        .id(navCase)
-                    }
-                }
-            }
-            .blurMaterialBackground()
-            .frame(height: 50)
         }
     }
 }
