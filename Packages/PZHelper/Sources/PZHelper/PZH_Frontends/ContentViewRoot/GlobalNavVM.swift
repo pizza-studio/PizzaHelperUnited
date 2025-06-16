@@ -39,8 +39,11 @@ final class GlobalNavVM: Sendable, ObservableObject {
                     }
                 }
             }
-            .blurMaterialBackground()
             .frame(height: 50)
+            .blurMaterialBackground()
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .legibilityShadow(isText: true)
+            .padding([.horizontal, .bottom])
         }
     }
 
