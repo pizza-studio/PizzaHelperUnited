@@ -238,7 +238,11 @@
     "210240" : "Erlebnispass – Blumenkampf",
     "210241" : "Escoffier – Charme",
     "210242" : "Ifa – Brüder",
-    "210243" : "Erlebnispass – Balletika"
+    "210243" : "Erlebnispass – Balletika",
+    "210244" : "Skirk – Einsamer Schatten",
+    "210245" : "Dahlia – Heilige Berufung",
+    "210246" : "Feierlichkeit – Aufwendige Gala",
+    "210247" : "Erlebnispass – Spekulation"
   },
   "en" : {
     "210001" : "Genshin Impact: A New World",
@@ -479,7 +483,11 @@
     "210240" : "Travel Notes: Blooming Glory",
     "210241" : "Escoffier: Charm",
     "210242" : "Ifa: Bro",
-    "210243" : "Travel Notes: Balletica"
+    "210243" : "Travel Notes: Balletica",
+    "210244" : "Skirk: Lone Shadow",
+    "210245" : "Dahlia: Sacred Duty",
+    "210246" : "Celebration: Lavish Gala",
+    "210247" : "Travel Notes: Speculation"
   },
   "es" : {
     "210001" : "Genshin Impact - Un nuevo mundo",
@@ -720,7 +728,11 @@
     "210240" : "PB - Gloria floral",
     "210241" : "Escoffier - Encanto oculto",
     "210242" : "Ifá - Colega",
-    "210243" : "PB - Vals"
+    "210243" : "PB - Vals",
+    "210244" : "Skirk - Sombra solitaria",
+    "210245" : "Dahlia - Deber sagrado",
+    "210246" : "Celebración - Banquete de gala",
+    "210247" : "PB - Hipótesis"
   },
   "fr" : {
     "210001" : "Genshin Impact - Un monde nouveau",
@@ -961,7 +973,11 @@
     "210240" : "PB - Gloire florale",
     "210241" : "Escoffier - Délice",
     "210242" : "Ifa - Poto",
-    "210243" : "PB - Balletica"
+    "210243" : "PB - Balletica",
+    "210244" : "Skirk - Ombre solitaire",
+    "210245" : "Dahlia - Devoir sacré",
+    "210246" : "Célébration - Gala",
+    "210247" : "PB - Spéculation"
   },
   "id" : {
     "210001" : "Genshin Impact: Dunia Baru",
@@ -1202,7 +1218,11 @@
     "210240" : "Catatan Perjalanan: Kemuliaan Merekah",
     "210241" : "Escoffier: Charm",
     "210242" : "Ifa: Bro",
-    "210243" : "Catatan Perjalanan: Tarian Balet"
+    "210243" : "Catatan Perjalanan: Tarian Balet",
+    "210244" : "Skirk: Lone Shadow",
+    "210245" : "Dahlia: Sacred Duty",
+    "210246" : "Celebration: Lavish Gala",
+    "210247" : "Catatan Perjalanan: Spekulasi"
   },
   "it" : {
     "210001" : "Genshin Impact: Un mondo nuovo",
@@ -1443,7 +1463,11 @@
     "210240" : "Appunti di viaggio: Fioritura gloriosa",
     "210241" : "Escoffier: Fascino",
     "210242" : "#Ifa: {F#Amica}{M#Amico}",
-    "210243" : "Appunti di viaggio: Spettacolo di danza"
+    "210243" : "Appunti di viaggio: Spettacolo di danza",
+    "210244" : "Skirk: Ombra solitaria",
+    "210245" : "Dahlia: Dovere sacro",
+    "210246" : "Celebrazione: Galà sfarzoso",
+    "210247" : "Appunti di viaggio: Ipotesi"
   },
   "ja" : {
     "210001" : "原神·印象",
@@ -1684,7 +1708,11 @@
     "210240" : "紀行・栄華",
     "210241" : "エスコフィエ・余韻",
     "210242" : "イファ・きょうだい",
-    "210243" : "紀行・円舞"
+    "210243" : "紀行・円舞",
+    "210244" : "スカーク・孤影",
+    "210245" : "ダリア・天職",
+    "210246" : "祭典・饗宴",
+    "210247" : "紀行・知略"
   },
   "ko" : {
     "210001" : "원신·인상",
@@ -1925,7 +1953,11 @@
     "210240" : "기행·영광의 꽃",
     "210241" : "에스코피에·풍미",
     "210242" : "이파·형씨",
-    "210243" : "기행·왈츠"
+    "210243" : "기행·왈츠",
+    "210244" : "스커크·고독",
+    "210245" : "달리아·천직",
+    "210246" : "축제·향연",
+    "210247" : "기행·추론"
   },
   "pt" : {
     "210001" : "Genshin Impact - Um Novo Mundo",
@@ -2166,7 +2198,11 @@
     "210240" : "Passe de Batalha: Flor Gloriosa",
     "210241" : "Escoffier: Charme",
     "210242" : "Ifa: Mano",
-    "210243" : "Passe de Batalha: Valsa Rodopiante"
+    "210243" : "Passe de Batalha: Valsa Rodopiante",
+    "210244" : "Skirk: Sombra Solitária",
+    "210245" : "Dahlia: Dever Divino",
+    "210246" : "Celebração: Banquete Luxuoso",
+    "210247" : "Passe de Batalha: Especulativo"
   },
   "ru" : {
     "210001" : "Новый мир",
@@ -2407,7 +2443,11 @@
     "210240" : "Цветущая слава",
     "210241" : "Изысканный вкус",
     "210242" : "Кент",
-    "210243" : "Баллетика"
+    "210243" : "Баллетика",
+    "210244" : "Одинокая тень",
+    "210245" : "Священный долг",
+    "210246" : "Пиршество",
+    "210247" : "Размышления"
   },
   "th" : {
     "210001" : "Genshin Impact - ความประทับใจ",
@@ -2648,7 +2688,11 @@
     "210240" : "บันทึก - บุปผาเกียรติยศ",
     "210241" : "Escoffier - เสน่ห์",
     "210242" : "Ifa - พวก",
-    "210243" : "บันทึก - เริงระบำ"
+    "210243" : "บันทึก - เริงระบำ",
+    "210244" : "Skirk - เงาเดียวดาย",
+    "210245" : "Dahlia - หน้าที่ศักดิ์สิทธิ์",
+    "210246" : "การฉลอง - งานเลี้ยงสุดหรู",
+    "210247" : "บันทึก - คาดการณ์"
   },
   "tr" : {
     "210001" : "Genshin Impact: Yeni Bir Dünya",
@@ -2889,7 +2933,11 @@
     "210240" : "Gezi Notları: İhtişamın Doğuşu",
     "210241" : "Escoffier: Cazibe",
     "210242" : "Ifa: Dost",
-    "210243" : "Gezi Notları: Dans Şöleni"
+    "210243" : "Gezi Notları: Dans Şöleni",
+    "210244" : "Skirk: Yalnız Gölge",
+    "210245" : "Dahlia: Kutsal Vazife",
+    "210246" : "Kutlama: Görkemli Gala",
+    "210247" : "Gezi Notları: Spekülasyon"
   },
   "vi" : {
     "210001" : "Nguyên Thần - Ấn Tượng",
@@ -3130,7 +3178,11 @@
     "210240" : "Nhật Ký Hành Trình - Vinh Hoa",
     "210241" : "Escoffier - Thú Vị",
     "210242" : "Ifa - Người Anh Em",
-    "210243" : "Nhật Ký Hành Trình - Kịch Múa"
+    "210243" : "Nhật Ký Hành Trình - Kịch Múa",
+    "210244" : "Skirk - Bóng Dáng Cô Độc",
+    "210245" : "Dahlia - Thiên Chức",
+    "210246" : "Lễ Hội - Tiệc Tùng",
+    "210247" : "Nhật Ký Hành Trình - Suy Tưởng"
   },
   "zh-cn" : {
     "210001" : "原神·印象",
@@ -3371,7 +3423,11 @@
     "210240" : "纪行·荣花",
     "210241" : "爱可菲·韵味",
     "210242" : "伊法·哥们",
-    "210243" : "纪行·舞剧"
+    "210243" : "纪行·舞剧",
+    "210244" : "丝柯克·孤影",
+    "210245" : "塔利雅·天职",
+    "210246" : "庆典·宴飨",
+    "210247" : "纪行·推想"
   },
   "zh-tw" : {
     "210001" : "原神·印象",
@@ -3612,6 +3668,10 @@
     "210240" : "紀行·榮花",
     "210241" : "愛可菲·韻味",
     "210242" : "伊法·哥們",
-    "210243" : "紀行·舞劇"
+    "210243" : "紀行·舞劇",
+    "210244" : "絲柯克·孤影",
+    "210245" : "塔利雅·天職",
+    "210246" : "慶典·宴饗",
+    "210247" : "紀行·推想"
   }
 }
