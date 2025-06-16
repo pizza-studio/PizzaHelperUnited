@@ -177,8 +177,6 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
 
 #if DEBUG
 
-extension FakePZProfileMO: @unchecked @retroactive Sendable {}
-
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
 private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
