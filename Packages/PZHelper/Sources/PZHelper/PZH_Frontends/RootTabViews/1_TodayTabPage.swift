@@ -15,55 +15,69 @@ import SwiftUI
 // MARK: - TodayTabPage
 
 struct TodayTabPage: View {
+    // MARK: Lifecycle
+
+    public init(wrappedByNavStack: Bool = true) {
+        self.wrappedByNavStack = wrappedByNavStack
+    }
+
     // MARK: Internal
 
     var body: some View {
-        NavigationStack {
-            Form {
-                ASUpdateNoticeView()
-                    .font(.footnote)
-                    .listRowMaterialBackground()
-                OfficialFeed.OfficialFeedSection(game: $game.animation()) {
-                    todayMaterialNav
+        if wrappedByNavStack {
+            NavigationStack {
+                formContentHooked
+                    .scrollContentBackground(.hidden)
+                    .listContainerBackground()
+            }
+        } else {
+            formContentHooked
+        }
+    }
+
+    @ViewBuilder var formContentHooked: some View {
+        Form {
+            ASUpdateNoticeView()
+                .font(.footnote)
+                .listRowMaterialBackground()
+            OfficialFeed.OfficialFeedSection(game: $game.animation()) {
+                todayMaterialNav
+            }
+            .listRowMaterialBackground()
+            if pzProfiles.isEmpty {
+                Label {
+                    Text("app.dailynote.noCard.suggestion".i18nPZHelper)
+                } icon: {
+                    Image(systemSymbol: .questionmarkCircle)
+                        .foregroundColor(.yellow)
                 }
                 .listRowMaterialBackground()
-                if pzProfiles.isEmpty {
-                    Label {
-                        Text("app.dailynote.noCard.suggestion".i18nPZHelper)
-                    } icon: {
-                        Image(systemSymbol: .questionmarkCircle)
-                            .foregroundColor(.yellow)
-                    }
-                    .listRowMaterialBackground()
-                } else {
-                    ForEach(filteredProfiles) { profile in
-                        InAppDailyNoteCardView(profile: profile)
-                            .listRowMaterialBackground()
-                    }
+            } else {
+                ForEach(filteredProfiles) { profile in
+                    InAppDailyNoteCardView(profile: profile)
+                        .listRowMaterialBackground()
                 }
             }
-            .formStyle(.grouped)
-            .scrollContentBackground(.hidden)
-            .listContainerBackground()
-            .navigationTitle("tab.today.fullTitle".i18nPZHelper)
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("".description, systemImage: "arrow.clockwise") { refresh() }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    gamePicker
-                        .pickerStyle(.segmented)
-                        .fixedSize()
-                }
+        }
+        .formStyle(.grouped)
+        .navigationTitle("tab.today.fullTitle".i18nPZHelper)
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("".description, systemImage: "arrow.clockwise") { refresh() }
             }
-            .refreshable {
-                broadcaster.refreshPage()
+            ToolbarItem(placement: .confirmationAction) {
+                gamePicker
+                    .pickerStyle(.segmented)
+                    .fixedSize()
             }
-            .onAppear {
-                if let theGame = game, !games.contains(theGame) {
-                    withAnimation {
-                        game = .none
-                    }
+        }
+        .refreshable {
+            broadcaster.refreshPage()
+        }
+        .onAppear {
+            if let theGame = game, !games.contains(theGame) {
+                withAnimation {
+                    game = .none
                 }
             }
         }
@@ -94,9 +108,11 @@ struct TodayTabPage: View {
 
     // MARK: Private
 
-    @StateObject private var broadcaster = Broadcaster.shared
-    @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
+    @State private var wrappedByNavStack: Bool
     @State private var game: Pizza.SupportedGame? = .none
+    @StateObject private var broadcaster = Broadcaster.shared
+
+    @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
 
     private var filteredProfiles: [PZProfileSendable] {
         pzProfiles.values.filter {
