@@ -8,7 +8,6 @@ import Observation
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
-import SwiftData
 import SwiftUI
 
 // MARK: - DetailPortalTabPage
@@ -16,28 +15,39 @@ import SwiftUI
 struct DetailPortalTabPage: View {
     // MARK: Lifecycle
 
-    public init() {}
+    public init(wrappedByNavStack: Bool = true, showProfileSwitcher: Bool = true) {
+        self.showProfileSwitcher = showProfileSwitcher
+        self.wrappedByNavStack = wrappedByNavStack
+    }
 
     // MARK: Internal
 
     var body: some View {
-        NavigationStack {
-            Form {
-                formContent
+        if wrappedByNavStack {
+            NavigationStack {
+                formContentHooked
+                    .scrollContentBackground(.hidden)
+                    .listContainerBackground()
             }
-            .formStyle(.grouped)
-            .scrollContentBackground(.hidden)
-            .listContainerBackground()
-            .refreshable {
-                refreshAction()
-            }
-            .navigationTitle("tab.details.fullTitle".i18nPZHelper)
-            .apply(hookNavigationDestinations)
-            .apply(hookToolbar)
-            .onAppear {
-                if let profile = delegate.currentProfile, !sortedProfiles.contains(profile) {
-                    delegate.currentProfile = nil
-                }
+        } else {
+            formContentHooked
+        }
+    }
+
+    @ViewBuilder var formContentHooked: some View {
+        Form {
+            formContent
+        }
+        .formStyle(.grouped)
+        .refreshable {
+            refreshAction()
+        }
+        .navigationTitle("tab.details.fullTitle".i18nPZHelper)
+        .apply(hookNavigationDestinations)
+        .apply(hookToolbar)
+        .onAppear {
+            if let profile = delegate.currentProfile, !sortedProfiles.contains(profile) {
+                delegate.currentProfile = nil
             }
         }
     }
@@ -201,8 +211,10 @@ struct DetailPortalTabPage: View {
                         }
                     }
                 }
-                ToolbarItem(placement: .confirmationAction) {
-                    profileSwitcherMenu()
+                if showProfileSwitcher {
+                    ToolbarItem(placement: .confirmationAction) {
+                        profileSwitcherMenu()
+                    }
                 }
             }
         } else {
@@ -212,6 +224,8 @@ struct DetailPortalTabPage: View {
 
     // MARK: Private
 
+    @State private var wrappedByNavStack: Bool
+    @State private var showProfileSwitcher: Bool
     @State private var sharedDB: Enka.Sputnik = .shared
     @StateObject private var delegate: DetailPortalViewModel = .init()
     @StateObject private var broadcaster = Broadcaster.shared
