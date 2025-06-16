@@ -7,7 +7,6 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 import SFSafeSymbols
-import SwiftData
 import SwiftUI
 
 // MARK: - ProfileShowCaseSections

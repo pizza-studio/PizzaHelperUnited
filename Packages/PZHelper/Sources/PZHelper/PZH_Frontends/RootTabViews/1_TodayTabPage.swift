@@ -9,7 +9,6 @@ import GITodayMaterialsKit
 import PZAccountKit
 import PZBaseKit
 import PZInGameEventKit
-import SwiftData
 import SwiftUI
 
 // MARK: - TodayTabPage
