@@ -20,7 +20,7 @@ public struct InfiniteProgressBar: View {
                 overlayRect(in: geo.frame(in: .local))
             })
             .clipped()
-            .clipShape(RoundedRectangle(cornerRadius: 4))
+            .clipShape(.capsule)
     }
 
     // MARK: Private

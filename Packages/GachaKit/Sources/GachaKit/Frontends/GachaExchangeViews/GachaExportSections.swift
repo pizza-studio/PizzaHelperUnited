@@ -48,7 +48,7 @@ public struct GachaExportSections: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding(8)
                             .background {
-                                RoundedRectangle(cornerRadius: 8).foregroundStyle(.primary.opacity(0.1))
+                                Capsule().foregroundStyle(.primary.opacity(0.1))
                             }
                     }
                 }

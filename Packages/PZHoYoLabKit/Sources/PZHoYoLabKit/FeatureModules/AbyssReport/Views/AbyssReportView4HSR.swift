@@ -66,7 +66,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                         .pickerStyle(.menu)
                         .fixedSize()
                         .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .clipShape(.capsule)
                 }
             }
         }
