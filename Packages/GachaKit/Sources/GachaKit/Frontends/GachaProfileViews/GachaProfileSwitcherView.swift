@@ -63,6 +63,11 @@ public struct GachaProfileSwitcherView: View {
             }
         }
         .padding(4).padding(.leading, 12)
+        .background {
+            if colorScheme != .dark {
+                Color.gray.blendMode(.colorDodge)
+            }
+        }
         .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
         .clipShape(.capsule)
     }
@@ -117,6 +122,7 @@ public struct GachaProfileSwitcherView: View {
     // MARK: Private
 
     @Environment(GachaVM.self) private var theVM
+    @Environment(\.colorScheme) private var colorScheme
 
     private var sortedGPIDsNested: [EnumeratedSequence<[[GachaProfileID]?]>.Element] {
         let allGPIDs = sortedGPIDs
