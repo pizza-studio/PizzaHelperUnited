@@ -250,6 +250,10 @@ struct LinkLabelItem: View {
         @MainActor @ViewBuilder public var asView: some View {
             LinkLabelItem(self)
         }
+
+        @MainActor @ViewBuilder public var asMenuItem4MacOS: some View {
+            LinkLabelItem(self).bodyAsMenuItemForMacOS
+        }
     }
 
     public var body: some View {
@@ -264,6 +268,12 @@ struct LinkLabelItem: View {
             .alignmentGuide(.listRowSeparatorLeading) { d in
                 d[.leading] + 40
             }
+        }
+    }
+
+    @ViewBuilder public var bodyAsMenuItemForMacOS: some View {
+        Link(destination: destination) {
+            Text(verbatim: text)
         }
     }
 

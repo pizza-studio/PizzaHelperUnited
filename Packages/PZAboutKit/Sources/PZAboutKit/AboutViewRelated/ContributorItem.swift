@@ -135,7 +135,13 @@ struct ContributorItem: View {
         }
         if !extraLinks.isEmpty {
             Menu {
-                ForEach(extraLinks) { $0.asView }
+                ForEach(extraLinks) {
+                    if OS.type == .macOS {
+                        $0.asMenuItem4MacOS
+                    } else {
+                        $0.asView
+                    }
+                }
             } label: {
                 labelContent
             }
