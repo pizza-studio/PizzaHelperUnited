@@ -61,14 +61,10 @@ private struct AppTabBarVisibilityModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppear {
-                withAnimation {
-                    appTabBarVM.addOneLevel(visibility, timestampID: timestamp)
-                }
+                appTabBarVM.addOneLevel(visibility, timestampID: timestamp)
             }
             .onDisappear {
-                withAnimation {
-                    appTabBarVM.dropOneLevel(timestampID: timestamp)
-                }
+                appTabBarVM.dropOneLevel(timestampID: timestamp)
             }
     }
 
