@@ -45,6 +45,7 @@ struct PhotoSpecimenView: View {
                         .tag(Enka.GameType.starRail)
                 }
                 .pickerStyle(.segmented)
+                .fixedSize()
             }
         }
         .navigationTitle("enka.photoSpecimen.navTitle".i18nEnka)

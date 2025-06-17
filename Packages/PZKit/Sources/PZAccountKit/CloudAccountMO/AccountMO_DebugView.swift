@@ -89,6 +89,7 @@ public struct AccountMODebugView: View {
                     }
                 }
                 .pickerStyle(.segmented)
+                .fixedSize()
                 .onChange(of: game, initial: true) {
                     print("Action")
                 }
