@@ -41,9 +41,16 @@ final class GlobalNavVM: Sendable, ObservableObject {
             }
             .frame(height: 50)
             .blurMaterialBackground()
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .clipShape(.capsule)
             .legibilityShadow(isText: true)
             .padding([.horizontal, .bottom])
+            .background {
+                LinearGradient(
+                    colors: [.clear, .colorSysBackground],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            }
         }
     }
 
