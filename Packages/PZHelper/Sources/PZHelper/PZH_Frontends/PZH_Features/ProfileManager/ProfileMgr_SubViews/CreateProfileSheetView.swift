@@ -379,7 +379,7 @@ private struct RequireLoginView: View {
                 .frame(maxWidth: .infinity)
                 .padding(8)
                 .background {
-                    RoundedRectangle(cornerRadius: 8).foregroundStyle(.primary.opacity(0.1))
+                    Capsule().foregroundStyle(.primary.opacity(0.1))
                 }
         }
         .foregroundColor(.accentColor)

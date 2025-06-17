@@ -196,7 +196,6 @@ extension DesktopWidgets {
 
             @ViewBuilder
             private func percentageBar(_ percentage: Double) -> some View {
-                let cornerRadius: CGFloat = 3
                 GeometryReader { g in
                     ZStack(alignment: .leading) {
                         Color.secondary.opacity(0.8)
@@ -204,11 +203,11 @@ extension DesktopWidgets {
                             .brightness(-0.3)
                         Color.primary.opacity(0.625)
                             .frame(width: g.size.width * percentage, height: g.size.height)
-                            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .circular))
+                            .clipShape(.capsule)
                     }
                     .aspectRatio(30 / 1, contentMode: .fit)
                     .compositingGroup()
-                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .circular))
+                    .clipShape(.capsule)
                     .environment(\.colorScheme, .dark)
                     .legibilityShadow(isText: false)
                 }
