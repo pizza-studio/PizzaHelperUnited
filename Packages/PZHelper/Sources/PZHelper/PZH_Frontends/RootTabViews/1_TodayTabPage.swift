@@ -68,10 +68,12 @@ struct TodayTabPage: View {
             ToolbarItem(placement: .confirmationAction) {
                 Button("".description, systemImage: "arrow.clockwise") { refresh() }
             }
-            ToolbarItem(placement: .confirmationAction) {
-                gamePicker
-                    .pickerStyle(.segmented)
-                    .fixedSize()
+            if !games.isEmpty {
+                ToolbarItem(placement: .confirmationAction) {
+                    gamePicker
+                        .pickerStyle(.segmented)
+                        .fixedSize()
+                }
             }
         }
         .refreshable {
