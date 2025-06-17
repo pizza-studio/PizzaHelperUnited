@@ -232,6 +232,7 @@ private struct StaminaNotificationThresholdConfigView: View {
             ToolbarItem(placement: .confirmationAction) {
                 gamePicker
                     .pickerStyle(.segmented)
+                    .fixedSize()
             }
         }
         .navigationTitle(Self.navTitle)

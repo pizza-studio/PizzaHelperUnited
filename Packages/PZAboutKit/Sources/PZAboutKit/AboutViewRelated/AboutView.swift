@@ -51,6 +51,7 @@ public struct AboutView: View {
                     }
                     .labelsHidden()
                     .pickerStyle(.segmented)
+                    .fixedSize()
                 }
             }
         }
