@@ -261,6 +261,9 @@ extension NotificationSputnik {
             threshold.description,
             dateFormatter.string(from: timeOnFinish)
         )
+        if Locale.isUILanguageJapanese {
+            content.body = content.body.replacingOccurrences(of: "今日", with: "本日")
+        }
         content.badge = 1
         let timeInterval = remainingSecs - Double(information.all - threshold) * dailyNote.eachStaminaRecoveryTime
         guard timeInterval > 0 else {
