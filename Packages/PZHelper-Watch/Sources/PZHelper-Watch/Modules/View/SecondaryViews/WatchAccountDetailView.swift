@@ -222,13 +222,12 @@ private struct WatchEachExpeditionView: View {
 
     @ViewBuilder
     func percentageBar(_ percentage: Double) -> some View {
-        let cornerRadius: CGFloat = 3
         GeometryReader { g in
             ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                Capsule()
                     .opacity(0.3)
                     .frame(width: g.size.width, height: g.size.height)
-                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                Capsule()
                     .frame(
                         width: g.size.width * percentage,
                         height: g.size.height

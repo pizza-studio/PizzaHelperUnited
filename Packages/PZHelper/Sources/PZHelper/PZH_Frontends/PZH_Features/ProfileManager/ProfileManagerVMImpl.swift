@@ -113,6 +113,6 @@ extension ProfileManagerVM {
         }
         .padding(4).padding(.leading, 12)
         .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .clipShape(.capsule)
     }
 }
