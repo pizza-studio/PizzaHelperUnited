@@ -213,11 +213,9 @@ extension GachaImportSections {
                             .fontWidth(.condensed)
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(8)
-                            .background {
-                                Capsule().foregroundStyle(.primary.opacity(0.1))
-                            }
                     }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.capsule)
                 } else {
                     InfiniteProgressBar().id(UUID())
                 }
@@ -357,11 +355,9 @@ private struct PopFileButton: View {
                 .fontWidth(.condensed)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity, alignment: .center)
-                .padding(8)
-                .background {
-                    Capsule().foregroundStyle(.primary.opacity(0.1))
-                }
         }
+        .buttonStyle(.borderedProminent)
+        .buttonBorderShape(.capsule)
         .fileImporter(
             isPresented: $isFileImporterShown,
             allowedContentTypes: allowedContentTypes

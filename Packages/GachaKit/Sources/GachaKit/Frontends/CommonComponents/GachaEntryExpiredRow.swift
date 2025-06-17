@@ -29,12 +29,10 @@ public struct GachaEntryExpiredRow: View {
                         .fontWidth(.condensed)
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(8)
-                        .background {
-                            Capsule().foregroundStyle(.primary.opacity(0.1))
-                        }
-                        .foregroundStyle(.red)
                 }
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.capsule)
+                .tint(.red)
                 Text("gachaKit.GMDB.gmdbExpired.explanation", bundle: .module)
                     .asInlineTextDescription()
             }

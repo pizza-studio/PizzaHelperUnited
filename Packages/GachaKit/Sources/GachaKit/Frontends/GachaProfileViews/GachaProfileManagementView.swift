@@ -22,22 +22,7 @@ public struct GachaProfileManagementView: View {
                         } label: {
                             Text("gachaKit.management.uidAndGameToPurge", bundle: .module)
                         }
-                        if theVM.taskState != .busy {
-                            Button {
-                                isRemovalConfirmationAlertShown = true
-                            } label: {
-                                Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID", bundle: .module)
-                                    .fontWidth(.condensed)
-                                    .fontWeight(.bold)
-                                    .multilineTextAlignment(.center)
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                    .padding(8)
-                                    .background {
-                                        Capsule().foregroundStyle(.primary.opacity(0.1))
-                                    }
-                                    .foregroundStyle(.red)
-                            }
-                        } else {
+                        if theVM.taskState == .busy {
                             InfiniteProgressBar().id(UUID())
                         }
                     } header: {
@@ -49,6 +34,22 @@ public struct GachaProfileManagementView: View {
                             }
                             .textCase(.none)
                         }
+                    }
+                    if theVM.taskState != .busy {
+                        Button(role: .destructive) {
+                            isRemovalConfirmationAlertShown = true
+                        } label: {
+                            Text("gachaKit.management.clickHereToDeleteAllRecordsOfThisGPID", bundle: .module)
+                                .fontWidth(.condensed)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.capsule)
+                        .tint(.red)
+                        .listRowInsets(.init())
+                        .listRowBackground(Color.clear)
                     }
                 } else {
                     Text("gachaKit.prompt.noGachaProfileFound", bundle: .module)
