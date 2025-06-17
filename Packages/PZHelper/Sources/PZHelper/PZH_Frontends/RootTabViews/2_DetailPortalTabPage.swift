@@ -101,44 +101,6 @@ struct DetailPortalTabPage: View {
         }
     }
 
-    @ViewBuilder var profileSwitcherMenuLabel: some View {
-        LabeledContent {
-            let dimension: CGFloat = 30
-            Group {
-                if let profile: PZProfileSendable = vmDPV.currentProfile {
-                    Enka.ProfileIconView(uid: profile.uid, game: profile.game)
-                        .frame(width: dimension)
-                } else {
-                    Image(systemSymbol: .personCircleFill)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: dimension - 8)
-                        .foregroundStyle(Color.accentColor)
-                }
-            }
-            .background {
-                // Compiler optimization.
-                AnyView(erasing: {
-                    Circle()
-                        .strokeBorder(Color.accentColor, lineWidth: 8)
-                        .frame(width: dimension, height: dimension)
-                }())
-            }
-            .frame(width: dimension, height: dimension)
-            .clipShape(.circle)
-            .compositingGroup()
-        } label: {
-            if let profile: PZProfileSendable = vmDPV.currentProfile {
-                Text(profile.uidWithGame).fontWidth(.condensed)
-            } else {
-                Text("dpv.query.menuCommandTitle".i18nPZHelper)
-            }
-        }
-        .padding(4).padding(.leading, 12)
-        .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-    }
-
     @ViewBuilder
     func profileSwitcherMenu() -> some View {
         pfMgrVM.profileSwitcherMenu4DPV(
