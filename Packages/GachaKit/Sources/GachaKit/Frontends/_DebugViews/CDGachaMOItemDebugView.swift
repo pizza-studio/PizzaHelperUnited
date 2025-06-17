@@ -48,17 +48,16 @@ public struct CDGachaMODebugView: View {
         .formStyle(.grouped)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                HStack {
-                    Picker("".description, selection: $delegate.game.animation()) {
-                        ForEach(Self.oldGachaGames) { enumeratedGame in
-                            Text(enumeratedGame.localizedShortName)
-                                .tag(enumeratedGame)
-                        }
+                Picker("".description, selection: $delegate.game.animation()) {
+                    ForEach(Self.oldGachaGames) { enumeratedGame in
+                        Text(enumeratedGame.localizedShortName)
+                            .tag(enumeratedGame)
                     }
-                    .pickerStyle(.segmented)
-                    .onChange(of: delegate.game, initial: true) {
-                        print("Action")
-                    }
+                }
+                .pickerStyle(.segmented)
+                .fixedSize()
+                .onChange(of: delegate.game, initial: true) {
+                    print("Action")
                 }
             }
         }
