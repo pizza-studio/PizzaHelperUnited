@@ -125,6 +125,12 @@ extension BundledWallpaper {
             ?? BundledWallpaper.defaultValue(for: .genshinImpact)
     }
 
+    /// This will return nullable value.
+    public static func findNullableNameCardForGenshinCharacter(charID: String) -> Self? {
+        assetCharMap4GI[charID]
+            ?? assetCharMap4GI[charID.prefix(8).description]
+    }
+
     public static var allCases: [Self] {
         switch appGame {
         case .genshinImpact: allCases4PZ + allCases4GI
