@@ -540,73 +540,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die im Hintergrund verwendeten Totem-Assets für ID-Fotos von Genshin Impact-Charakteren in dieser App stammen von Star Rail (ausgenommen Geo, Dendro und Hydro) und repräsentieren das Teyvat-Element jedes Charakters. Diese Totems sind nur sichtbar, wenn \"Namenskarten-Hintergründe für Genshin-Charakter-ID-Fotos und Vorzeige-Bau-Panels verwenden\" deaktiviert ist."
+            "value" : "Die im Hintergrund verwendeten Totem-Assets für ID-Fotos von Genshin Impact-Charakteren in dieser App dienen standardmäßig dazu, sowohl ihre Lebenswege als auch ihre elementaren Kräfte darzustellen. Das Element wird durch die zur Darstellung des Totems verwendete Farbe repräsentiert. Wenn kein passender Lebensweg verfügbar ist, wird stattdessen das Element-Totem angezeigt. Die in diesem Fall verwendeten Element-Totem-Assets stammen von Star Rail (außer Geo, Dendro und Hydro) und repräsentieren das Teyvat-Element jedes Charakters. Diese Totems sind jedoch nur sichtbar, wenn „Verwenden Sie Visitenkarten-Hintergründe für Genshin-Charaktere ID-Fotos und Showcase-Build-Panels“ deaktiviert ist."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The background totem assets used for ID Photos of Genshin Impact characters in this app are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. These totems is visible only if “Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels” is disabled."
+            "value" : "The background totem assets used for ID Photos of Genshin Impact characters in this app are for representing both their life paths and their elemental powers by default. The element is represented by the color used for rendering the totem. If there's no matched lifepath available, then the totem pattern will be the elemental totem instead. The elemental totem assets used in such case are from Star Rail (excl. Geo, Dendro, and Hydro), representing the Teyvat Element of each character. Nevertheless, these totems' visibility can be toggled in UI Settings."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los elementos de tótem de fondo utilizados para las fotos de identificación de personajes de Genshin Impact en esta aplicación son de Star Rail (excluyendo Geo, Dendro y Hydro), representando el elemento Teyvat de cada personaje. Estos tótems son visibles solo si la opción \"Usar fondos de tarjetas de presentación para fotos de identificación de personajes de Genshin y paneles de construcción de conjuntos\" está deshabilitada."
+            "value" : "Los tótems de fondo utilizados para las fotos de identificación de personajes de Genshin Impact en esta app representan por defecto tanto sus caminos de vida como sus poderes elementales. El elemento se representa mediante el color utilizado para renderizar el tótem. Si no hay un camino de vida coincidente, el patrón del tótem será el tótem elemental. Los assets de tótem elemental utilizados en ese caso provienen de Star Rail (excepto Geo, Dendro y Hydro), representando el elemento Teyvat de cada personaje. Sin embargo, la visibilidad de estos tótems se puede cambiar en la configuración de la interfaz de usuario."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang mga background totem asset na ginamit para sa ID Photos ng mga character ng Genshin Impact sa app na ito ay mula sa Star Rail (hindi kasama ang Geo, Dendro, at Hydro), na kumakatawan sa Teyvat Element ng bawat karakter. Ang mga totem na ito ay makikita lamang kung naka-disable ang “Gumamit ng Namecard backgrounds para sa ID Photos ng Genshin Characters at ShowCase Build panels.”"
+            "value" : "Ang mga background na totem asset na ginagamit para sa ID Photos ng mga karakter ng Genshin Impact sa app na ito ay para sa pagpapakita ng kanilang mga landas ng buhay at mga kapangyarihang elemental bilang default. Ang elemento ay kinakatawan ng kulay na ginamit sa pag-render ng totem. Kung walang tumutugmang lifepath, ang pattern ng totem ay magiging elemental totem. Ang mga asset ng elemental totem na ginagamit sa ganitong kaso ay mula sa Star Rail (maliban sa Geo, Dendro, at Hydro), na kumakatawan sa Teyvat Element ng bawat karakter. Gayunpaman, ang visibility ng mga totem na ito ay maaaring baguhin sa UI Settings."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les images de fond utilisées pour les photos des personnages de Genshin dans cette application proviennent de Star Rail (à l'exception de Geo, Dendro et Hydro), représentant l'élément de Teyvat de chaque personnage. Ceux-ci ne sont visibles que si \"Utiliser les arrière-plans signatures pour les photos des personnages de Genshin et les vitrines de builds.\" est désactivé."
+            "value" : "Les images de fond utilisées pour les photos d'identité des personnages de Genshin Impact dans cette application servent par défaut à représenter à la fois leur voie de vie et leurs pouvoirs élémentaires. L'élément est représenté par la couleur utilisée pour le rendu du totem. S'il n'y a pas de voie de vie correspondante, le motif du totem sera celui de l'élément. Les assets de totem élémentaire utilisés dans ce cas proviennent de Star Rail (sauf Geo, Dendro et Hydro), représentant l'élément Teyvat de chaque personnage. Néanmoins, la visibilité de ces totems peut être modifiée dans les paramètres de l'interface utilisateur."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gli asset dei totem di sfondo utilizzati per le foto ID dei personaggi di Genshin Impact in questa app provengono da Star Rail (esclusi Geo, Dendro e Hydro), rappresentando l'elemento di Teyvat di ciascun personaggio. Questi totem sono visibili solo se \"Usa sfondi con nome per le foto ID dei personaggi di Genshin e i pannelli della vetrina\" è disabilitato."
+            "value" : "Gli asset dei totem di sfondo utilizzati per le foto ID dei personaggi di Genshin Impact in questa app servono di default a rappresentare sia i loro percorsi di vita che i loro poteri elementali. L'elemento è rappresentato dal colore utilizzato per rendere il totem. Se non è disponibile un percorso di vita corrispondente, il motivo del totem sarà quello elementale. Gli asset dei totem elementali utilizzati in tal caso provengono da Star Rail (esclusi Geo, Dendro e Hydro), rappresentando l'elemento Teyvat di ciascun personaggio. Tuttavia, la visibilità di questi totem può essere modificata nelle impostazioni dell'interfaccia utente."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "弊アプリ内の『原神』キャラクターの画像の背景紋様は、キャラクターの元素能力属性を示します。その紋様の素材は『崩壊：スターレイル』からの素材です（草、水、岩属性の紋様は例外）。「原神のキャラクターの画像とビルド画面には名刺背景を起用」がONにされている限り、その紋様は見えません。"
+            "value" : "本アプリで『原神』キャラクターのID写真に使われている背景紋様は、デフォルトでキャラクターの運命の途と元素能力属性の両方を表現します。元素属性は紋様の色で示されます。一致する運命の途がない場合、紋様は元素トーテムになります。この場合に使われる元素トーテム素材は『崩壊：スターレイル』（岩・草・水属性を除く）からのもので、各キャラクターのテイワット元素を表します。なお、これらの紋様の表示・非表示はUI設定で切り替え可能です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 앱에서 Genshin Impact 캐릭터의 ID 사진에 사용된 배경 토템 자산은 교토, 나무, 물을 제외하고 스타 레일에서 가져온 것으로, 각 캐릭터의 티바트 원소를 나타냅니다. 이 토템은 \"Genshin 캐릭터의 ID 사진 및 ShowCase 빌드 패널에 이름 카드 배경 사용\"이 비활성화된 경우에만 표시됩니다."
+            "value" : "이 앱에서 Genshin Impact 캐릭터의 ID 사진에 사용된 배경 토템 자산은 기본적으로 각 캐릭터의 인생 경로와 원소력을 모두 나타냅니다. 원소는 토템을 렌더링할 때 사용된 색상으로 표현됩니다. 일치하는 인생 경로가 없으면 토템 패턴은 원소 토템이 됩니다. 이 경우 사용되는 원소 토템 자산은 스타 레일(Geo, Dendro, Hydro 제외)에서 가져온 것으로, 각 캐릭터의 티바트 원소를 나타냅니다. 이 토템의 표시 여부는 UI 설정에서 변경할 수 있습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Фоны тотемов, используемые для ID-фотографий персонажей Genshin Impact в этом приложении, взяты из Star Rail (за исключением Гео, Дендр и Гидро), представляя элемент Тейвата каждого персонажа. Эти тотемы видны только если отключена опция «Использовать фоны Namecard для ID-фотографий персонажей Genshin и панелей ShowCase Build»."
+            "value" : "Фоны тотемов, используемые для ID-фотографий персонажей Genshin Impact в этом приложении, по умолчанию предназначены для отображения как их жизненного пути, так и их элементальных сил. Элемент представлен цветом, используемым для отображения тотема. Если подходящий жизненный путь отсутствует, вместо этого используется элементальный тотем. В таком случае используются элементальные тотемы из Star Rail (кроме Geo, Dendro и Hydro), представляющие элемент Тейвата каждого персонажа. Тем не менее, видимость этих тотемов можно изменить в настройках интерфейса."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Các yếu tố totem nền được sử dụng cho Ảnh ID của các nhân vật Genshin Impact trong ứng dụng này là từ Star Rail (trừ Geo, Dendro và Hydro), đại diện cho Nguyên tố Teyvat của mỗi nhân vật. Các totem này chỉ hiển thị khi “Sử dụng nền Namecard cho Ảnh ID Nhân vật Genshin và các bảng Build ShowCase” bị tắt."
+            "value" : "Các totem nền được sử dụng cho Ảnh ID của các nhân vật Genshin Impact trong ứng dụng này mặc định dùng để thể hiện cả con đường cuộc sống và sức mạnh nguyên tố của họ. Nguyên tố được thể hiện bằng màu sắc dùng để hiển thị totem. Nếu không có con đường cuộc sống phù hợp, mẫu totem sẽ là totem nguyên tố. Các asset totem nguyên tố sử dụng trong trường hợp này đến từ Star Rail (trừ Geo, Dendro và Hydro), đại diện cho Nguyên tố Teyvat của từng nhân vật. Tuy nhiên, bạn có thể bật/tắt hiển thị các totem này trong phần Cài đặt giao diện người dùng."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本 App 内显示的《原神》角色证件照的背景图腾乃是为了彰显该角色的元素能力属性而设定。该图腾素材取自《崩坏：星穹铁道》（水、岩、草这三个属性除外）。当「针对原神角色的证件照与面板启用名片背景」选项停用时，背景图腾才会显现。"
+            "value" : "本 App 内显示的《原神》角色证件照的背景图腾默认用于同时彰显该角色的命途与元素能力属性。元素属性体现在图腾的配色上。如果没有匹配的命途，则会显示元素图腾。此时所用的元素图腾素材取自《崩坏：星穹铁道》（水、岩、草除外），代表每个角色的提瓦特元素。这些图腾的显示与否可在 UI 设置中切换。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "該應用內顯示的《原神》角色證件照的背景圖騰乃是為了彰顯該角色的元素能力屬性而設定。該圖騰素材取自《崩壞：星穹鐵道》（水、岩、草這三個屬性除外）。當「針對原神角色的證件照與面板啟用名片背景」選項停用時，背景圖騰才會顯現。"
+            "value" : "該應用內顯示的《原神》角色證件照的背景圖騰預設用於同時彰顯該角色的命途與元素能力屬性。元素屬性體現在圖騰的配色上。如果沒有匹配的命途，則會顯示元素圖騰。此時所用的元素圖騰素材取自《崩壞：星穹鐵道》（水、岩、草除外），代表每個角色的提瓦特元素。這些圖騰的顯示與否可於 UI 設定中切換。"
           }
         }
       }
@@ -623,7 +623,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The background totem assets used for ID Photos of Star Rail in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem."
+            "value" : "The background totem assets used for ID Photos of Star Rail characters in this app are for representing both their life paths and their elemental powers. The element is represented by the color used for rendering the totem."
           }
         },
         "es" : {

@@ -184,7 +184,6 @@ public struct CharacterIconView: View {
     private static let roundedRectRatio = 179.649 / 1024
 
     @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleIcon: Bool
-    @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
     @Default(.useTotemWithGenshinIDPhotos) private var useTotemWithGenshinIDPhotos: Bool
 
     private let isCard: Bool
@@ -223,14 +222,6 @@ public struct CharacterIconView: View {
         }
     }
 
-    private var useNameCardBackgrounds: Bool {
-        switch game {
-        case .genshinImpact: useNameCardBGWithGICharacters
-        case .starRail: false
-        case .zenlessZone: false // 临时设定。
-        }
-    }
-
     @ViewBuilder private var blankQuestionedView: some View {
         Circle().background(.gray).overlay {
             Text(verbatim: "?").foregroundStyle(.white).fontWeight(.black)
@@ -241,45 +232,112 @@ public struct CharacterIconView: View {
     }
 
     @ViewBuilder private var namecardBg4GI: some View {
-        let wallPaper = BundledWallpaper.findNameCardForGenshinCharacter(charID: charID)
-        wallPaper.image4CellphoneWallpaper
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .offset(x: size / -3)
-            .apply { content in
-                let isProtagonist: Bool = ["10000005", "10000007"].contains(charID.prefix(8))
-                if isProtagonist, let element = guessGenshinCharacterElement(id: charID) {
-                    content
-                        .saturation(0)
-                        .colorMultiply(element.themeColor.suiColor)
-                        .saturation(0.5)
-                        .brightness(0.1)
-                } else {
-                    content
+        let wallPaper = BundledWallpaper.findNullableNameCardForGenshinCharacter(charID: charID)
+        if let wallPaper {
+            wallPaper.image4CellphoneWallpaper
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .offset(x: size / -3)
+                .apply { content in
+                    let isProtagonist: Bool = ["10000005", "10000007"].contains(charID.prefix(8))
+                    if isProtagonist, let element = guessGenshinCharacterElement(id: charID) {
+                        content
+                            .saturation(0)
+                            .colorMultiply(element.themeColor.suiColor)
+                            .saturation(0.5)
+                            .brightness(0.1)
+                    } else {
+                        content
+                    }
                 }
-            }
+        } else {
+            BundledWallpaper.defaultValue(for: .genshinImpact).image4CellphoneWallpaper
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .offset(x: size / -3)
+                .apply { content in
+                    if let element = guessGenshinCharacterElement(id: charID) {
+                        content
+                            .saturation(0)
+                            .colorMultiply(element.themeColor.suiColor)
+                            .saturation(0.5)
+                            .brightness(0.1)
+                    } else {
+                        content
+                    }
+                }
+        }
+    }
+
+    @ViewBuilder private var namecardBgBlurred4GI: some View {
+        let wallPaper = BundledWallpaper.findNullableNameCardForGenshinCharacter(charID: charID)
+        if let wallPaper {
+            wallPaper.image4CellphoneWallpaper
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .offset(x: size / -3)
+                .apply { content in
+                    let isProtagonist: Bool = ["10000005", "10000007"].contains(charID.prefix(8))
+                    if isProtagonist, let element = guessGenshinCharacterElement(id: charID) {
+                        content
+                            .saturation(0)
+                            .colorMultiply(element.themeColor.suiColor)
+                            .saturation(0.5)
+                            .brightness(0.1)
+                    } else {
+                        content
+                    }
+                }
+                .blur(radius: 6)
+                .scaleEffect(1.5, anchor: .center)
+        } else {
+            pureElementColorBG4GI
+        }
+    }
+
+    @ViewBuilder private var pureElementColorBG4GI: some View {
+        let elementColor: Color = {
+            guard let cgColor = guessGenshinCharacterElement(id: charID)?.themeColor else { return .gray }
+            return Color(cgColor: cgColor)
+        }()
+        LinearGradient(
+            colors: [
+                elementColor.addBrightness(-0.5).addSaturation(-0.5),
+                elementColor.addSaturation(-0.5),
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+        )
     }
 
     @ViewBuilder
     private func turnImageAsBlurredBackground4GI(_ image: Image) -> some View {
         ZStack {
-            if useNameCardBackgrounds {
+            if !useTotemWithGenshinIDPhotos {
                 namecardBg4GI
             } else {
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .rotationEffect(.degrees(180))
-                    .blur(radius: 6)
-                    .scaleEffect(5, anchor: .center)
+                namecardBgBlurred4GI
                 Color.black.opacity(0.265)
-                if cutType.pathTotemVisible, let element = guessGenshinCharacterElement(id: charID) {
-                    element.localFittingIcon4SUI
-                        .scaleEffect(1.5)
-                        .colorMultiply(Color(cgColor: element.themeColor))
-                        .saturation(0.5)
-                        .brightness(0.7)
-                        .opacity(0.3)
+                if cutType.pathTotemVisible {
+                    if let element = guessGenshinCharacterElement(id: charID) {
+                        if let path = Enka.GenshinLifePathRecord.guessPath(for: charID) {
+                            path.localIcon4SUI
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .scaleEffect(1.2)
+                                .colorMultiply(Color(cgColor: element.themeColor))
+                                .saturation(0.5)
+                                .brightness(0.5)
+                                .opacity(0.7)
+                        } else {
+                            element.localFittingIcon4SUI
+                                .scaleEffect(1.5)
+                                .colorMultiply(Color(cgColor: element.themeColor))
+                                .saturation(0.5)
+                                .brightness(0.7)
+                                .opacity(0.3)
+                        }
+                    }
                 }
             }
         }
