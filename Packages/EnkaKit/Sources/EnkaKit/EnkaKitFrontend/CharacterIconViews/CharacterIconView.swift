@@ -183,17 +183,9 @@ public struct CharacterIconView: View {
 
     private static let roundedRectRatio = 179.649 / 1024
 
-    // Note: Due to the mission-critical fact in this context, we use @AppStorage in lieu of @Default.
-    // @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleIcon: Bool
-    // @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
-    @AppStorage(
-        "useGenshinStyleCharacterPhotos",
-        store: .baseSuite
-    ) private var useGenshinStyleIcon: Bool = true
-    @AppStorage(
-        "useNameCardBGWithGICharacters",
-        store: .baseSuite
-    ) private var useNameCardBGWithGICharacters: Bool = true
+    @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleIcon: Bool
+    @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
+    @Default(.useTotemWithGenshinIDPhotos) private var useTotemWithGenshinIDPhotos: Bool
 
     private let isCard: Bool
     private let charID: String
