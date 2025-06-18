@@ -65,7 +65,14 @@ extension Defaults.Keys {
         suite: .enkaSuite
     )
 
-    // MARK: - HSR Suite
+    // MARK: - Base Suite
+
+    /// 决定是否给原神的角色证件照启用图腾。
+    public static let useTotemWithGenshinIDPhotos = Key<Bool>(
+        "useTotemWithGenshinIDPhotos",
+        default: true,
+        suite: .baseSuite
+    )
 
     /// 决定是否给原神的角色面板与证件照启用名片背景。
     public static let useNameCardBGWithGICharacters = Key<Bool>(
