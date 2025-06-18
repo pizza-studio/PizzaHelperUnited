@@ -37,7 +37,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         self.baseSkills = baseSkillSet
         self.uniqueCharId = charID
         self.element = theElement
-        self.lifePath = .none // 原神角色没有命途的概念。
+        let maybeLifepath = Enka.GenshinLifePathRecord.guessPath(for: charID)
+        self.lifePath = maybeLifepath ?? .none // 原神角色没有命途的概念。
         let nameTyped = Enka.CharacterName(pidStr: charID)
         self.localizedName = nameTyped.i18n(theDB: giDB, officialNameOnly: true)
         self.localizedRealName = nameTyped.i18n(theDB: giDB, officialNameOnly: false)
@@ -277,7 +278,8 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
         self.baseSkills = baseSkillSet
         self.uniqueCharId = charID
         self.element = theElement
-        self.lifePath = .none // 原神角色没有命途的概念。
+        let maybeLifepath = Enka.GenshinLifePathRecord.guessPath(for: charID)
+        self.lifePath = maybeLifepath ?? .none // 原神角色没有命途的概念。
         let nameTyped = Enka.CharacterName(pidStr: charID)
         self.localizedName = nameTyped.i18n(theDB: giDB, officialNameOnly: true)
         self.localizedRealName = nameTyped.i18n(theDB: giDB, officialNameOnly: false)
