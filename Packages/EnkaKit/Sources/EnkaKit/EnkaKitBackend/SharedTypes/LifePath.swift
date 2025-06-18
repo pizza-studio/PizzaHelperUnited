@@ -28,4 +28,8 @@ extension Enka.LifePath {
     public var iconAssetName: String {
         "path_\(String(describing: self).capitalized)"
     }
+
+    public var publicName: String {
+        String(describing: self).capitalized
+    }
 }
