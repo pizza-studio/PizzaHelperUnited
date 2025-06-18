@@ -1,0 +1,454 @@
+[
+  {
+    "id": "10000002",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000003",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000005-502",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000005-503",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000005-504",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000005-506",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000005-507",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000005-508",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000006",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000007-702",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000007-703",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000007-704",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000007-706",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000007-707",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000007-708",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000014",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000015",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000016",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000020",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000021",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000022",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000023",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000024",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000025",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000026",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000027",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000029",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000030",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000031",
+    "path": "Remembrance"
+  },
+  {
+    "id": "10000032",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000033",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000034",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000035",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000036",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000037",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000038",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000039",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000041",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000042",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000043",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000044",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000045",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000046",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000047",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000048",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000049",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000050",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000051",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000052",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000053",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000054",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000055",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000056",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000057",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000058",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000059",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000060",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000061",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000062",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000063",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000064",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000065",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000066",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000067",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000068",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000069",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000070",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000071",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000072",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000073",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000074",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000075",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000076",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000077",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000078",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000079",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000080",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000081",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000082",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000083",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000084",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000085",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000086",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000087",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000088",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000089",
+    "path": "Remembrance"
+  },
+  {
+    "id": "10000090",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000091",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000092",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000093",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000094",
+    "path": "Remembrance"
+  },
+  {
+    "id": "10000095",
+    "path": "Abundance"
+  },
+  {
+    "id": "10000096",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000097",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000098",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000099",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000100",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000101",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000102",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000103",
+    "path": "Harmony"
+  },
+  {
+    "id": "10000104",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000105",
+    "path": "Hunt"
+  },
+  {
+    "id": "10000106",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000107",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000108",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000109",
+    "path": "Remembrance"
+  },
+  {
+    "id": "10000110",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000111",
+    "path": "Erudition"
+  },
+  {
+    "id": "10000112",
+    "path": "Remembrance"
+  },
+  {
+    "id": "10000113",
+    "path": "Nihility"
+  },
+  {
+    "id": "10000114",
+    "path": "Destruction"
+  },
+  {
+    "id": "10000115",
+    "path": "Preservation"
+  },
+  {
+    "id": "10000116",
+    "path": "Preservation"
+  }
+]
