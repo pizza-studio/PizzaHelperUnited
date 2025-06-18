@@ -347,8 +347,21 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
                     Spacer()
-                    switch game {
-                    case .starRail:
+                    switch lifePath {
+                    case .none:
+                        ZStack(alignment: .center) {
+                            Color.black.opacity(0.1)
+                                .clipShape(.circle)
+                            Enka.queryImageAssetSUI(for: element.iconAssetName)?.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(.circle)
+                                .opacity(0.9)
+                        }.padding(fontSize * 0.3)
+                            .frame(
+                                width: fontSize * 2.6,
+                                height: fontSize * 2
+                            )
+                    default:
                         ZStack(alignment: .center) {
                             Color.black.opacity(0.1)
                                 .clipShape(.circle)
@@ -374,20 +387,6 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                                 Color.black.clipShape(.circle).blurMaterialBackground().opacity(0.3)
                             }
                         }
-                    case .genshinImpact:
-                        ZStack(alignment: .center) {
-                            Color.black.opacity(0.1)
-                                .clipShape(.circle)
-                            Enka.queryImageAssetSUI(for: element.iconAssetName)?.resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(.circle)
-                                .opacity(0.9)
-                        }.padding(fontSize * 0.3)
-                            .frame(
-                                width: fontSize * 2.6,
-                                height: fontSize * 2
-                            )
-                    case .zenlessZone: EmptyView() // 临时设定。
                     }
                 }
                 HStack {
