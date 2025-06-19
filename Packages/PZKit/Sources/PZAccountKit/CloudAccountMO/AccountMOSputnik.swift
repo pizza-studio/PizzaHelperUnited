@@ -26,7 +26,7 @@ public final class AccountMOSputnik {
 
     // MARK: Public
 
-    public static let shared = try! AccountMOSputnik(persistence: .cloud, backgroundContext: true)
+    public static let shared = try! AccountMOSputnik(persistence: .cloud, backgroundContext: false)
 
     public func queryAccountDataMO(uuid givenUUID: String) throws -> PZProfileSendable? {
         var result: [(AccountMOProtocol, Pizza.SupportedGame)] = []
