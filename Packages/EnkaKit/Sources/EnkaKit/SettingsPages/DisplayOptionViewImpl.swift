@@ -77,6 +77,9 @@ extension Enka {
                 Toggle(isOn: $useNameCardBGWithGICharacters) {
                     Text("settings.display.showCase.useNameCardBGWithGICharacters".i18nEnka)
                 }
+                Toggle(isOn: $useTotemWithGenshinIDPhotos) {
+                    Text("settings.display.showCase.useTotemWithGenshinIDPhotos".i18nEnka)
+                }
                 VStack {
                     Toggle(isOn: $useGenshinStyleCharacterPhotos) {
                         Text("settings.display.showCase.useGenshinStyleCharacterPhotos".i18nEnka)
@@ -153,6 +156,7 @@ extension Enka {
 
         @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
         @Default(.useGenshinStyleCharacterPhotos) private var useGenshinStyleCharacterPhotos: Bool
+        @Default(.useTotemWithGenshinIDPhotos) private var useTotemWithGenshinIDPhotos: Bool
         @Default(.colorizeArtifactSubPropCounts) private var colorizeArtifactSubPropCounts: Bool
         @Default(.artifactRatingRules) private var artifactRatingRules: ArtifactRating.Rules
         @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool

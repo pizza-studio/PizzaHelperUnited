@@ -3312,73 +3312,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verwenden Sie Visitenkarten-Hintergründe für Genshin-Charaktere ID-Fotos und Showcase-Build-Panels"
+            "value" : "Verwenden Sie Visitenkarten-Hintergründe für die Build-Panels von Genshin-Charakteren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Use Namecard backgrounds for Genshin Characters’ ID Photos and ShowCase Build panels"
+            "value" : "Use Namecard backgrounds for Genshin Characters’ ShowCase Build panels"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Usa fondos de Tarjetas de Presentación para las Fotos de Identificación de Personajes de Genshin y paneles de Construcción de Escaparate"
+            "value" : "Usar fondos de Tarjeta de Presentación para los paneles de Construcción de Escaparate de personajes de Genshin"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gumamit ng mga background ng Namecard para sa mga ID Photos ng Genshin Characters at mga panel ng ShowCase Build"
+            "value" : "Gumamit ng mga background ng Namecard para sa ShowCase Build panels ng mga Genshin Character"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Utilisez des arrière-plans signature pour les photos des personnages de Genshin et les vitrines de build"
+            "value" : "Utiliser les arrière-plans de carte de visite pour les panneaux de build ShowCase des personnages Genshin"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Usa sfondi di Namecard per le foto ID dei personaggi di Genshin e i pannelli della vetrina di Build"
+            "value" : "Usa sfondi Namecard per i pannelli Build ShowCase dei personaggi di Genshin"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "原神のキャラクターの画像とビルド画面には名刺背景を起用"
+            "value" : "原神キャラクターのビルド画面に名刺背景を使用する"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "원신 캐릭터의 ID 사진과 쇼케이스 빌드 패널에 명함 배경 사용"
+            "value" : "원신 캐릭터의 쇼케이스 빌드 패널에 명함 배경 사용"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Используйте фоны визиток для фотографий персонажей в Genshin и панелей сборки витрины"
+            "value" : "Использовать фоны визитных карточек для панелей сборки ShowCase персонажей Genshin"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sử dụng nền Thẻ Tên cho ảnh ID của Nhân Vật Genshin và các bảng ShowCase Build"
+            "value" : "Sử dụng nền Thẻ Tên cho các bảng ShowCase Build của nhân vật Genshin"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "针对原神角色的证件照与面板启用名片背景"
+            "value" : "为原神角色的面板启用名片背景"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "針對原神角色的證件照與面板啟用名片背景"
+            "value" : "為原神角色的面板啟用名片背景"
           }
         }
       }
@@ -3456,6 +3456,83 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "顯示部分角色的真實姓名"
+          }
+        }
+      }
+    },
+    "settings.display.showCase.useTotemWithGenshinIDPhotos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwenden Sie Totem-Hintergründe für Genshin-Charaktere ID-Fotos"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use totem backgrounds for Genshin Characters’ ID Photos"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar fondos de tótem para las fotos de identificación de personajes de Genshin"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gumamit ng mga totem na background para sa mga ID Photo ng Genshin Characters"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser des arrière-plans totem pour les photos d'identité des personnages Genshin"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa sfondi totem per le foto ID dei personaggi di Genshin"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原神キャラクターのID写真にトーテム背景紋様を使用する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원신 캐릭터의 ID 사진에 토템 배경 사용"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Использовать тотемные фоны для ID-фото персонажей Genshin"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sử dụng nền totem cho ảnh ID của nhân vật Genshin"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "为原神角色证件照启用图腾背景"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "為原神角色證件照啟用圖騰背景"
           }
         }
       }
