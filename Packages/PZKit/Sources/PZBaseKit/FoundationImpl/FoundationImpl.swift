@@ -363,7 +363,7 @@ extension Date {
         timeIntervalSinceReferenceDate - Date.now.timeIntervalSinceReferenceDate
     }
 
-    public static func specify(day: Int, month: Int, year: Int) -> Date? {
+    public static func specify(day: Int, month: Int, year: Int, timeZone: TimeZone? = nil) -> Date? {
         let month = max(1, min(12, month))
         let year = max(1965, min(9999, year))
         var day = max(1, min(31, day))
@@ -371,6 +371,7 @@ extension Date {
         comps.setValue(day, for: .day)
         comps.setValue(month, for: .month)
         comps.setValue(year, for: .year)
+        comps.timeZone = timeZone
         let gregorian = Calendar(identifier: .gregorian)
         var date = gregorian.date(from: comps)
         while date == nil, day > 28 {
