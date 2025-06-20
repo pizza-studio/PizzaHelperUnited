@@ -2,13 +2,17 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
 import PZBaseKit
+
+// MARK: - GachaTypeHSR
 
 /// 卡池类型，API返回
 public enum GachaTypeHSR: GachaTypeProtocol {
     case stellarWarp
     case characterEventWarp
     case lightConeEventWarp
+    case collabWarpFateUBW
     case departureWarp
     case unknown(rawValue: String)
 
@@ -20,6 +24,8 @@ public enum GachaTypeHSR: GachaTypeProtocol {
         case "11": .characterEventWarp
         case "12": .lightConeEventWarp
         case "2": .departureWarp
+        // TODO: To be confirmed when HSR v3.4 publicly releases. Until then we disable this.
+        // case "FATECOLLAB": .collabWarpFateUBW
         default: .unknown(rawValue: rawValue)
         }
     }
@@ -28,12 +34,22 @@ public enum GachaTypeHSR: GachaTypeProtocol {
 
     public typealias ItemType = UIGFv4.GachaItemHSR
 
-    public static let knownCases: [Self] = [
-        .characterEventWarp,
-        .lightConeEventWarp,
-        .stellarWarp,
-        .departureWarp,
-    ]
+    public static var knownCases: [Self] {
+        [
+            .characterEventWarp,
+            .lightConeEventWarp,
+            .stellarWarp,
+            .departureWarp,
+            .collabWarpFateUBW.available(
+                since: .specify(
+                    day: 2,
+                    month: 7,
+                    year: 2025,
+                    timeZone: TimeZone(secondsFromGMT: 8 * 3600) // 以上海总部时间计算。
+                )
+            ),
+        ].compactMap(\.self)
+    }
 
     public var rawValue: String {
         switch self {
@@ -41,6 +57,7 @@ public enum GachaTypeHSR: GachaTypeProtocol {
         case .characterEventWarp: "11"
         case .lightConeEventWarp: "12"
         case .departureWarp: "2"
+        case .collabWarpFateUBW: "FATECOLLAB" // TODO: To be confirmed when HSR v3.4 publicly releases.
         case let .unknown(rawValue): rawValue
         }
     }
@@ -51,6 +68,7 @@ public enum GachaTypeHSR: GachaTypeProtocol {
         case .characterEventWarp: .srCharacterEventWarp
         case .lightConeEventWarp: .srLightConeEventWarp
         case .departureWarp: .srDepartureWarp
+        case .collabWarpFateUBW: .srCollabWarpFateUBW
         case .unknown: .srUnknown
         }
     }

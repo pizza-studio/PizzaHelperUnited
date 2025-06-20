@@ -19,6 +19,7 @@ public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sen
     case srUnknown
     case srCharacterEventWarp
     case srLightConeEventWarp
+    case srCollabWarpFateUBW
     case srStellarWarp
     case srDepartureWarp
     case zzUnknown
@@ -70,10 +71,11 @@ extension GachaPoolExpressible {
         case .giWeaponEventWish: .genshinImpact
         case .giChronicledWish: .genshinImpact
         case .srUnknown: .starRail
+        case .srDepartureWarp: .starRail
         case .srStellarWarp: .starRail
         case .srCharacterEventWarp: .starRail
         case .srLightConeEventWarp: .starRail
-        case .srDepartureWarp: .starRail
+        case .srCollabWarpFateUBW: .starRail
         case .zzUnknown: .zenlessZone
         case .zzStableChannel: .zenlessZone
         case .zzExclusiveChannel: .zenlessZone
@@ -91,10 +93,11 @@ extension GachaPoolExpressible {
         case .giWeaponEventWish: true
         case .giChronicledWish: false
         case .srUnknown: false
+        case .srDepartureWarp: false
         case .srStellarWarp: false
         case .srCharacterEventWarp: true
         case .srLightConeEventWarp: true
-        case .srDepartureWarp: false
+        case .srCollabWarpFateUBW: true
         case .zzUnknown: false
         case .zzStableChannel: false
         case .zzExclusiveChannel: true
@@ -116,6 +119,7 @@ extension GachaPoolExpressible {
         case .srStellarWarp: GachaTypeHSR.stellarWarp.rawValue
         case .srCharacterEventWarp: GachaTypeHSR.characterEventWarp.rawValue
         case .srLightConeEventWarp: GachaTypeHSR.lightConeEventWarp.rawValue
+        case .srCollabWarpFateUBW: GachaTypeHSR.collabWarpFateUBW.rawValue
         case .srDepartureWarp: GachaTypeHSR.departureWarp.rawValue
         case .zzUnknown: "-114514"
         case .zzStableChannel: GachaTypeZZZ.stableChannel.rawValue
@@ -141,6 +145,7 @@ extension GachaPoolExpressible {
         case .giChronicledWish, .zzBangbooChannel: .red
         case .giStandardWish, .srStellarWarp, .zzStableChannel: .green
         case .giBeginnersWish, .srDepartureWarp: .cyan
+        case .srCollabWarpFateUBW: .pink
         }
     }
 }
