@@ -7,6 +7,7 @@ import Foundation
 import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
+import WallpaperKit
 
 // MARK: - CaseQuerySection
 
@@ -24,7 +25,11 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
         Section {
             queryInputSection()
             if let result = delegate.currentInfo {
-                NavigationLink(value: result) {
+                NavigationLink {
+                    ShowCaseListView<QueryDB>(profile: result, enkaDB: theDB)
+                        .scrollContentBackground(.hidden)
+                        .listContainerBackground()
+                } label: {
                     HStack {
                         result.localFittingIcon4SUI
                             .background { Color.black.opacity(0.165) }
@@ -216,12 +221,6 @@ private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
         List {
             CaseQuerySection(theDB: enkaDatabaseHSR)
             CaseQuerySection(theDB: enkaDatabaseGI)
-        }
-        .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
-            ShowCaseListView(profile: result, enkaDB: enkaDatabaseGI)
-        }
-        .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
-            ShowCaseListView(profile: result, enkaDB: enkaDatabaseHSR)
         }
     }
     .environment(\.locale, .init(identifier: "zh-Hant-TW"))
