@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-#if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+#if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
 import ActivityKit
 #endif
 import Defaults
@@ -18,7 +18,7 @@ public struct EnableLiveActivityButton: View {
     // MARK: Lifecycle
 
     public init?(for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol) {
-        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
         self.profile = profile
         self.dailyNote = dailyNote
         #else
@@ -58,7 +58,7 @@ public struct EnableLiveActivityButton: View {
     private let dailyNote: any DailyNoteProtocol
 }
 
-#if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+#if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
 extension LiveActivityAttributes: ActivityAttributes {}
 #endif
 
@@ -148,14 +148,14 @@ public final class StaminaLiveActivityController: Sendable {
 
     public static let shared: StaminaLiveActivityController = .init()
 
-    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
     public var currentActivities: [Activity<LiveActivityAttributes>] {
         Activity<LiveActivityAttributes>.activities
     }
     #endif
 
     public var allowLiveActivity: Bool {
-        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
         return ActivityAuthorizationInfo().areActivitiesEnabled
         #else
         return false
@@ -163,7 +163,7 @@ public final class StaminaLiveActivityController: Sendable {
     }
 
     public func createResinRecoveryTimerActivity(for profile: PZProfileSendable, data: some DailyNoteProtocol) throws {
-        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
         guard allowLiveActivity else {
             throw CreateLiveActivityError.notAllowed
         }
@@ -211,7 +211,7 @@ public final class StaminaLiveActivityController: Sendable {
     }
 
     public func updateResinRecoveryTimerActivity(for profile: PZProfileSendable, data: some DailyNoteProtocol) {
-        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
         Task {
             let filtered = currentActivities.filter { activity in
                 activity.attributes.profileUUID == profile.uuid
@@ -238,7 +238,7 @@ public final class StaminaLiveActivityController: Sendable {
     }
 
     public func endActivity(for profile: PZProfileSendable) {
-        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
         Task {
             let filtered = currentActivities.filter { activity in
                 activity.attributes.profileUUID == profile.uuid
@@ -251,7 +251,7 @@ public final class StaminaLiveActivityController: Sendable {
     }
 
     public func endAllActivity() {
-        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
         Task {
             for activity in currentActivities {
                 await activity.end(nil, dismissalPolicy: .default)

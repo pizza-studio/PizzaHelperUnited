@@ -47,17 +47,19 @@ public struct CharacterInventoryView: View {
     public let sortedSummariesMap: [Enka.GameElement: [SummaryPtr]]
 
     @ViewBuilder public var body: some View {
-        basicBody
-            .appTabBarVisibility(.hidden)
-            .overlay {
-                AvatarStatCollectionTabView(
-                    selectedAvatarID: $currentAvatarSummaryID,
-                    summarizedAvatars: summaries.map(\.wrappedValue)
-                ) {
-                    currentAvatarSummaryID = ""
-                    simpleTaptic(type: .medium)
+        NavigationStack {
+            basicBody
+                .appTabBarVisibility(.hidden)
+                .overlay {
+                    AvatarStatCollectionTabView(
+                        selectedAvatarID: $currentAvatarSummaryID,
+                        summarizedAvatars: summaries.map(\.wrappedValue)
+                    ) {
+                        currentAvatarSummaryID = ""
+                        simpleTaptic(type: .medium)
+                    }
                 }
-            }
+        }
     }
 
     // MARK: Internal
@@ -77,6 +79,7 @@ public struct CharacterInventoryView: View {
                 }
             }.listRowMaterialBackground()
         }
+        .formStyle(.grouped)
         .scrollContentBackground(.hidden)
         .listContainerBackground()
         .containerRelativeFrame(.horizontal) { length, _ in

@@ -47,7 +47,10 @@ public struct AvatarStatCollectionTabView: View {
                     coreBody()
                         .environment(orientation)
                         .overlay(alignment: .top) {
-                            HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
+                            if !isAppKit {
+                                // AppKit 的 TabView 不支持走马灯滚动操作。
+                                HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
+                            }
                         }.onChange(of: geometry.size, initial: true) { _, _ in
                             showTabViewIndex = $showTabViewIndex.wrappedValue // 强制重新渲染整个画面。
                         }
@@ -171,12 +174,16 @@ public struct AvatarStatCollectionTabView: View {
     @ViewBuilder
     func framedCoreView(_ avatar: Enka.AvatarSummarized) -> some View {
         VStack {
-            Spacer().frame(width: 25, height: 10)
+            if !isAppKit {
+                Spacer().frame(width: 25, height: 10)
+            }
             /// Width is locked inside the EachAvatarStatView.
             EachAvatarStatView(data: avatar, background: false)
                 .fixedSize()
                 .scaleEffect(scaleRatioCompatible)
-            Spacer().frame(width: 25, height: bottomSpacerHeight)
+            if !isAppKit {
+                Spacer().frame(width: 25, height: bottomSpacerHeight)
+            }
         }
     }
 
@@ -192,13 +199,15 @@ public struct AvatarStatCollectionTabView: View {
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
+    @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
+
     private let isEnka: Bool
     private let summarizedAvatars: [Enka.AvatarSummarized]
     private let allIDs: [String]
     private let onClose: (() -> Void)?
     private let bottomSpacerHeight: CGFloat = 20
     private let sortedCharIDMap: [Enka.GameElement: [CharNameID]]
-    @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
+    private let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
     private var avatar: Enka.AvatarSummarized? {
         summarizedAvatars.first(where: { avatar in
