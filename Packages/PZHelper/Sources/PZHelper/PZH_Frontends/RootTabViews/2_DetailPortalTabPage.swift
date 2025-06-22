@@ -47,7 +47,6 @@ struct DetailPortalTabPage: View {
             refreshAction()
         }
         .navigationTitle("tab.details.fullTitle".i18nPZHelper)
-        .apply(hookNavigationDestinations)
         .apply(hookToolbar)
         .onAppear {
             if let profile = vmDPV.currentProfile, !sortedProfiles.contains(profile) {
@@ -107,27 +106,6 @@ struct DetailPortalTabPage: View {
             $vmDPV.currentProfile,
             games: [.genshinImpact, .starRail]
         )
-    }
-
-    @ViewBuilder
-    func hookNavigationDestinations(_ content: some View) -> some View {
-        content
-            .navigationDestination(for: Enka.QueriedProfileGI.self) { result in
-                ShowCaseListView(
-                    profile: result,
-                    enkaDB: sharedDB.db4GI
-                )
-                .scrollContentBackground(.hidden)
-                .listContainerBackground()
-            }
-            .navigationDestination(for: Enka.QueriedProfileHSR.self) { result in
-                ShowCaseListView(
-                    profile: result,
-                    enkaDB: sharedDB.db4HSR
-                )
-                .scrollContentBackground(.hidden)
-                .listContainerBackground()
-            }
     }
 
     @ViewBuilder
