@@ -24,9 +24,9 @@ public struct EachAvatarStatView: View {
 
     public var body: some View {
         // 按照 iPhone SE2-SE3 的标准画面解析度（375 × 667）制作。
-        LazyVStack(spacing: outerContentSpacing) {
+        VStack(spacing: outerContentSpacing) {
             data.mainInfo.asView(fontSize: fontSize)
-            LazyVStack(spacing: 2 * Self.zoomFactor) {
+            VStack(spacing: 2 * Self.zoomFactor) {
                 if let weapon = data.equippedWeapon {
                     WeaponPanelView(for: weapon, fontSize: fontSize)
                 }
@@ -85,11 +85,15 @@ public struct EachAvatarStatView: View {
     }
 
     @ViewBuilder var artifactGrid: some View {
-        let gridColumnsFixed = [GridItem](repeating: .init(), count: 2)
-        LazyVGrid(columns: gridColumnsFixed, spacing: outerContentSpacing) {
-            ForEach(data.artifacts) { currentArtifact in
-                currentArtifact.asView(fontSize: fontSize, langTag: data.mainInfo.terms.langTag)
-            }
+        StaggeredGrid(
+            columns: 2,
+            showsIndicators: false,
+            outerPadding: false,
+            scroll: false,
+            spacing: outerContentSpacing,
+            list: data.artifacts
+        ) { currentArtifact in
+            currentArtifact.asView(fontSize: fontSize, langTag: data.mainInfo.terms.langTag)
         }
         .fixedSize(horizontal: false, vertical: true)
         .padding(.bottom, 18 * Self.zoomFactor)
@@ -116,11 +120,10 @@ public struct EachAvatarStatView: View {
 
     @ViewBuilder
     func renderPropertyGrid() -> some View {
-        let gridColumnsFixed = [GridItem](repeating: .init(.flexible()), count: 2)
-        LazyVGrid(columns: gridColumnsFixed, spacing: 0) {
-            let max = data.avatarPropertiesA.count
+        let max = data.avatarPropertiesA.count
+        Grid(horizontalSpacing: 0, verticalSpacing: 0) {
             if data.game == .genshinImpact {
-                Group {
+                GridRow {
                     AttributeTagPair(
                         icon: Enka.PropertyType.allDamageTypeAddedRatio.iconAssetName,
                         title: "YJSNPI",
@@ -145,32 +148,27 @@ public struct EachAvatarStatView: View {
             ForEach(0 ..< max, id: \.self) {
                 let property1 = data.avatarPropertiesA[$0]
                 let property2 = data.avatarPropertiesB[$0]
-                AttributeTagPair(
-                    icon: property1.type.iconAssetName,
-                    title: property1.localizedTitle,
-                    valueStr: property1.valueString,
-                    fontSize: fontSize * 0.8
-                )
-                AttributeTagPair(
-                    icon: property2.type.iconAssetName,
-                    title: property2.localizedTitle,
-                    valueStr: property2.valueString,
-                    fontSize: fontSize * 0.8
-                )
+                GridRow {
+                    AttributeTagPair(
+                        icon: property1.type.iconAssetName,
+                        title: property1.localizedTitle,
+                        valueStr: property1.valueString,
+                        fontSize: fontSize * 0.8
+                    )
+                    AttributeTagPair(
+                        icon: property2.type.iconAssetName,
+                        title: property2.localizedTitle,
+                        valueStr: property2.valueString,
+                        fontSize: fontSize * 0.8
+                    )
+                }
             }
         }
     }
 
     // MARK: Private
 
-    private static let zoomFactor: CGFloat = {
-        #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-        return 1.3
-        #else
-        return 1.66
-        #endif
-    }()
-
+    private static let zoomFactor: CGFloat = 1.66
     private static let spacingDeltaAmount: CGFloat = 5
 
     @Environment(\.verticalSizeClass) private var verticalSizeClass: UserInterfaceSizeClass?
@@ -338,7 +336,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     public func asView(fontSize: CGFloat) -> some View {
         HStack(alignment: .bottom, spacing: fontSize * 0.55) {
             idExpressable.avatarPhoto(size: fontSize * 5)
-            LazyVStack(spacing: 0) {
+            VStack(spacing: 0) {
                 HStack(alignment: .bottom) {
                     Text(name)
                         .font(.system(size: fontSize * 1.6))
@@ -390,7 +388,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                     }
                 }
                 HStack {
-                    LazyVStack(spacing: 1) {
+                    VStack(spacing: 1) {
                         AttributeTagPair(
                             title: terms.levelName, valueStr: self.avatarLevel.description,
                             fontSize: fontSize * 0.8
@@ -443,7 +441,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
     @MainActor @ViewBuilder
     public func asView(fontSize: CGFloat) -> some View {
         ZStack(alignment: .bottom) {
-            LazyVStack {
+            VStack {
                 ZStack(alignment: .center) {
                     Color.black.opacity(0.1)
                         .clipShape(.circle)
@@ -496,7 +494,7 @@ private struct WeaponPanelView: View {
                     verbatim: corneredTagText,
                     alignment: .bottom, textSize: fontSize * 0.8
                 )
-            LazyVStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(weapon.localizedName)
                     .font(.system(size: fontSize, weight: .bold))
                     .fontWidth(.compressed)
@@ -614,7 +612,7 @@ private struct ArtifactView: View {
     private func coreBody(fontSize: CGFloat, langTag: String) -> some View {
         HStack(alignment: .top) {
             Color.clear.frame(width: fontSize * 2.6)
-            LazyVStack(spacing: 0) {
+            VStack(spacing: 0) {
                 AttributeTagPair(
                     icon: artifact.mainProp.iconAssetName,
                     title: "",
@@ -624,29 +622,33 @@ private struct ArtifactView: View {
                 Divider().overlay {
                     Color.primary.opacity(0.6)
                 }
-                let gridColumnsFixed = [GridItem](repeating: .init(), count: 2)
-                LazyVGrid(columns: gridColumnsFixed, spacing: 0) {
-                    ForEach(artifact.subProps) { prop in
-                        let propDisplay = HStack(spacing: 0) {
-                            Enka.queryImageAssetSUI(for: prop.iconAssetName)?
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: fontSize * 1.25, height: fontSize * 1.25)
-                            Text(prop.valueString)
-                                .lineLimit(1)
-                                .font(.system(size: fontSize * 0.86))
-                                .fontWidth(.compressed)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .minimumScaleFactor(0.5)
-                        }
-                        .frame(maxWidth: .infinity)
+                StaggeredGrid(
+                    columns: 2,
+                    showsIndicators: false,
+                    outerPadding: false,
+                    scroll: false,
+                    spacing: 0,
+                    list: artifact.subProps
+                ) { prop in
+                    let propDisplay = HStack(spacing: 0) {
+                        Enka.queryImageAssetSUI(for: prop.iconAssetName)?
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: fontSize * 1.25, height: fontSize * 1.25)
+                        Text(prop.valueString)
+                            .lineLimit(1)
+                            .font(.system(size: fontSize * 0.86))
+                            .fontWidth(.compressed)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .minimumScaleFactor(0.5)
+                    }
+                    .frame(maxWidth: .infinity)
 
-                        if colorizeArtifactSubPropCounts {
-                            propDisplay
-                                .colorMultiply(colorToMultiply(on: prop))
-                        } else {
-                            propDisplay
-                        }
+                    if colorizeArtifactSubPropCounts {
+                        propDisplay
+                            .colorMultiply(colorToMultiply(on: prop))
+                    } else {
+                        propDisplay
                     }
                 }
             }
