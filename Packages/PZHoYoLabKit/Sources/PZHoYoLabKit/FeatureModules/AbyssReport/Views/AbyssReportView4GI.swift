@@ -81,10 +81,9 @@ public struct AbyssReportView4GI: AbyssReportView {
                 list: data.summarizedIntoCells(compact: columns % 2 == 0),
                 content: { currentCell in
                     drawAbyssValueCell(currentCell)
-                        .matchedGeometryEffect(id: currentCell.id, in: animation)
+                        .id(currentCell.id)
                 }
             )
-            .animation(.easeInOut, value: columns)
             .environment(orientation)
         } header: {
             HStack {
