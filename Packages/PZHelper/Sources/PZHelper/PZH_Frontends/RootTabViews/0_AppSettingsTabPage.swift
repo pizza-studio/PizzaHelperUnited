@@ -13,34 +13,20 @@ import SwiftUI
 struct AppSettingsTabPage: View {
     // MARK: Lifecycle
 
-    init(nav: Nav? = nil) {
-        self.nav = nav
-    }
+    init() {}
 
     // MARK: Internal
 
-    enum Nav: Int {
-        case profileManager
-        case faq
-        case cloudAccountSettings
-        case liveActivitySettings
-        case notificationSettings
-        case uiSettings
-        case privacySettings
-        case otherSettings
-        case about
-    }
-
     var body: some View {
-        NavigationSplitView(columnVisibility: .constant(.all)) {
-            List(selection: $nav) {
+        NavigationStack {
+            Form {
                 ASUpdateNoticeView()
                     .font(.footnote)
                 Section {
-                    NavigationLink(value: Nav.profileManager) {
+                    NavigationLink(destination: ProfileManagerPageContent.init) {
                         Label("profileMgr.manage.title".i18nPZHelper, systemSymbol: .personTextRectangleFill)
                     }
-                    NavigationLink(value: Nav.faq) {
+                    NavigationLink(destination: FAQView.init) {
                         Label(
                             FAQView.navTitle,
                             systemSymbol: .personFillQuestionmark
@@ -53,7 +39,7 @@ struct AppSettingsTabPage: View {
 
                 Section {
                     AppLanguageSwitcher()
-                    NavigationLink(value: Nav.uiSettings) {
+                    NavigationLink(destination: UISettingsPageContent.init) {
                         Label("settings.uiSettings.title".i18nPZHelper, systemSymbol: .pc)
                     }
                 } header: {
@@ -62,10 +48,10 @@ struct AppSettingsTabPage: View {
                 }
 
                 Section {
-                    NavigationLink(value: Nav.notificationSettings) {
+                    NavigationLink(destination: NotificationSettingsPageContent.init) {
                         Label(NotificationSettingsPageContent.navTitle, systemSymbol: .bellBadge)
                     }
-                    LiveActivitySettingNavigator(selectedView: $nav)
+                    LiveActivitySettingNavigator()
                 } header: {
                     Text(NotificationSettingsPageContent.navTitleShortened)
                         .textCase(.none)
@@ -84,11 +70,11 @@ struct AppSettingsTabPage: View {
 
                 Section {
                     NavigationLink(
-                        value: Nav.privacySettings,
+                        destination: PrivacySettingsPageContent.init,
                         label: { Label("settings.privacy.title".i18nPZHelper, systemSymbol: .handRaisedSlashFill) }
                     )
                     NavigationLink(
-                        value: Nav.about,
+                        destination: AboutView.init,
                         label: {
                             Label {
                                 Text(verbatim: AboutView.navTitle)
@@ -104,53 +90,28 @@ struct AppSettingsTabPage: View {
 
                 #if DEBUG
                 Section {
-                    NavigationLink(value: Nav.cloudAccountSettings) {
+                    NavigationLink(destination: CloudAccountSettingsPageContent.init) {
                         Label("# Cloud Account Settings".description, systemSymbol: .cloudCircle)
                     }
-                    NavigationLink(value: Nav.otherSettings) {
+                    NavigationLink(destination: OtherSettingsPageContent.init) {
                         Label("# Other Settings".description, systemSymbol: .infoSquare)
                     }
                 }
                 #endif
             }
-            #if os(iOS) || targetEnvironment(macCatalyst)
-            .listStyle(.insetGrouped)
-            #elseif os(macOS)
-            .listStyle(.bordered)
-            #endif
+            .formStyle(.grouped)
             .safeAreaInset(edge: .bottom) {
                 tabNavVM.tabBarForMacCatalyst
                     .fixedSize(horizontal: false, vertical: true)
             }
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
-        } detail: {
-            navigationDetail(selection: $nav)
         }
     }
 
     // MARK: Private
 
-    @State private var nav: Nav?
     @State private var sharedDB = Enka.Sputnik.shared
     @StateObject private var tabNavVM = GlobalNavVM.shared
 
     @Default(.appLanguage) private var appLanguage: [String]?
-
-    @ViewBuilder
-    private func navigationDetail(selection: Binding<Nav?>) -> some View {
-        NavigationStack {
-            switch selection.wrappedValue {
-            case .profileManager: ProfileManagerPageContent()
-            case .faq: FAQView()
-            case .cloudAccountSettings: CloudAccountSettingsPageContent()
-            case .uiSettings: UISettingsPageContent()
-            case .liveActivitySettings: LiveActivitySettingsPageContent()
-            case .notificationSettings: NotificationSettingsPageContent()
-            case .privacySettings: PrivacySettingsPageContent()
-            case .otherSettings: OtherSettingsPageContent()
-            case .none: UISettingsPageContent()
-            case .about: AboutView()
-            }
-        }
-    }
 }
