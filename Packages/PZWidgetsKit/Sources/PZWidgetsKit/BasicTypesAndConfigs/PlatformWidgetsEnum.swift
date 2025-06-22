@@ -11,3 +11,19 @@ public enum DesktopWidgets {}
 
 @available(macOS, unavailable)
 public enum EmbeddedWidgets {}
+
+#if os(macOS) && !targetEnvironment(macCatalyst)
+import SwiftUI
+
+extension View {
+    @MainActor @preconcurrency
+    public func widgetLabel(_ label: any StringProtocol) -> some View {
+        self
+    }
+
+    @MainActor @preconcurrency
+    public func widgetLabel<Label>(@ViewBuilder label: () -> Label) -> some View where Label: View {
+        label()
+    }
+}
+#endif
