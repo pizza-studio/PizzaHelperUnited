@@ -11,19 +11,13 @@ import WallpaperConfigKit
 struct UtilsTabPage: View {
     // MARK: Internal
 
-    enum Nav {
-        case gachaManager
-        case wallpaperGallery
-        case userWallpaperManager
-    }
-
     var body: some View {
         NavigationStack {
-            List(selection: $nav) {
+            Form {
                 ASUpdateNoticeView()
                     .font(.footnote)
                 Section {
-                    NavigationLink(value: Nav.gachaManager) {
+                    NavigationLink(destination: GachaRootView.init) {
                         Label {
                             Text(GachaRootView.navTitle)
                         } icon: {
@@ -35,10 +29,10 @@ struct UtilsTabPage: View {
                 }
 
                 Section {
-                    NavigationLink(value: Nav.wallpaperGallery) {
+                    NavigationLink(destination: WallpaperGalleryViewContent.init) {
                         Label(WallpaperGalleryViewContent.navTitle, systemSymbol: .photoOnRectangleAngled)
                     }
-                    NavigationLink(value: Nav.userWallpaperManager) {
+                    NavigationLink(destination: UserWallpaperMgrViewContent.init) {
                         Label(UserWallpaperMgrViewContent.navTitle, systemSymbol: .photoFillOnRectangleFill)
                     }
                 } footer: {
@@ -48,34 +42,16 @@ struct UtilsTabPage: View {
                 Text("tab.utils.featureRemovalNotice", bundle: .module)
                     .asInlineTextDescription()
             }
-            #if os(iOS) || targetEnvironment(macCatalyst)
-            .listStyle(.insetGrouped)
-            #elseif os(macOS)
-            .listStyle(.bordered)
-            #endif
+            .formStyle(.grouped)
             .safeAreaInset(edge: .bottom) {
                 tabNavVM.tabBarForMacCatalyst
                     .fixedSize(horizontal: false, vertical: true)
             }
             .navigationTitle("tab.utils.fullTitle".i18nPZHelper)
-            .navigationDestination(item: $nav, destination: navigationDetail)
         }
     }
 
     // MARK: Private
 
-    @State private var nav: Nav?
     @StateObject private var tabNavVM = GlobalNavVM.shared
-
-    @ViewBuilder
-    private func navigationDetail(_ selection: Nav?) -> some View {
-        NavigationStack {
-            switch selection {
-            case .gachaManager: GachaRootView()
-            case .wallpaperGallery: WallpaperGalleryViewContent()
-            case .userWallpaperManager: UserWallpaperMgrViewContent()
-            case .none: EmptyView() // Temporary for now.
-            }
-        }
-    }
 }
