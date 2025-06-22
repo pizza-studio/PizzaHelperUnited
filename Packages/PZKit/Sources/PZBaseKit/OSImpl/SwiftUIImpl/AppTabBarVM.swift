@@ -79,10 +79,12 @@ extension View {
     @ViewBuilder
     public func appTabBarVisibility(_ visibility: SwiftUI.Visibility) -> some View {
         modifier(AppTabBarVisibilityModifier(visibility))
+        #if !os(macOS)
         #if targetEnvironment(macCatalyst)
             .toolbar(.hidden, for: .tabBar)
         #else
             .toolbar(visibility, for: .tabBar)
+        #endif
         #endif
     }
 }

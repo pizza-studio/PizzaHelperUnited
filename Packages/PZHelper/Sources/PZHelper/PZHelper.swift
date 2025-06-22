@@ -21,10 +21,15 @@ extension PZHelper {
                 .initializeApp()
                 .environment(\.horizontalSizeClass, .compact)
                 .defaultAppStorage(.baseSuite)
-            #if targetEnvironment(macCatalyst)
+            #if os(macOS) && targetEnvironment(macCatalyst)
                 .frame(
                     minWidth: OS.liquidGlassThemeSuspected ? 640 : 600,
                     minHeight: 800
+                )
+            #elseif os(macOS) && !targetEnvironment(macCatalyst)
+                .frame(
+                    minWidth: OS.liquidGlassThemeSuspected ? 504 : 464,
+                    minHeight: 646
                 )
             #endif
                 .onAppear {

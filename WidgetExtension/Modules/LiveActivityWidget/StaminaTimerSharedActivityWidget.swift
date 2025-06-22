@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-#if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+#if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
 import ActivityKit
 import AppIntents
 import Defaults

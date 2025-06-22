@@ -85,7 +85,7 @@ public struct WallpaperGalleryViewContent: View {
                     Button("wpKit.assign.background4App".i18nWPConfKit) {
                         appWallpaperID = currentCard.id
                     }
-                    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+                    #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
                     let alreadyChosenAsLABG: Bool = !labvParser.useRandomBackground.wrappedValue
                         && !labvParser.useEmptyBackground.wrappedValue
                         && liveActivityWallpaperIDs.contains(currentCard.id)

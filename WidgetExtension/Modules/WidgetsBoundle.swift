@@ -8,7 +8,7 @@ import WidgetKit
 
 extension PZWidgets {
     @WidgetBundleBuilder @MainActor @preconcurrency public static var widgets: some Widget {
-        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
         StaminaTimerSharedActivityWidget()
         #endif
         #if !os(watchOS)

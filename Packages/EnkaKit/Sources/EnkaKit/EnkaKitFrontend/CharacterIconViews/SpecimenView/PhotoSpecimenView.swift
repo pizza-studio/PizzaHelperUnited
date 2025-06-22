@@ -8,48 +8,50 @@ struct PhotoSpecimenView: View {
     // MARK: Public
 
     public var body: some View {
-        Form {
-            Section {
-                switch game {
-                case .genshinImpact:
-                    AllCharacterPhotoSpecimenViewPerGame(
-                        for: .genshinImpact,
-                        scroll: false
-                    )
-                case .starRail:
-                    AllCharacterPhotoSpecimenViewPerGame(
-                        for: .starRail,
-                        scroll: false
-                    )
-                case .zenlessZone: EmptyView()
-                }
-            } header: {
-                switch game {
-                case .genshinImpact:
-                    Text("enka.photoSpecimen.credit.genshin".i18nEnka)
-                        .textCase(.none)
-                case .starRail:
-                    Text("enka.photoSpecimen.credit.starRail".i18nEnka)
-                        .textCase(.none)
-                case .zenlessZone: EmptyView()
+        NavigationStack {
+            Form {
+                Section {
+                    switch game {
+                    case .genshinImpact:
+                        AllCharacterPhotoSpecimenViewPerGame(
+                            for: .genshinImpact,
+                            scroll: false
+                        )
+                    case .starRail:
+                        AllCharacterPhotoSpecimenViewPerGame(
+                            for: .starRail,
+                            scroll: false
+                        )
+                    case .zenlessZone: EmptyView()
+                    }
+                } header: {
+                    switch game {
+                    case .genshinImpact:
+                        Text("enka.photoSpecimen.credit.genshin".i18nEnka)
+                            .textCase(.none)
+                    case .starRail:
+                        Text("enka.photoSpecimen.credit.starRail".i18nEnka)
+                            .textCase(.none)
+                    case .zenlessZone: EmptyView()
+                    }
                 }
             }
-        }
-        .formStyle(.grouped)
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Picker("".description, selection: $game.animation()) {
-                    Text("game.genshin.shortNameEX".i18nBaseKit)
-                        .tag(Enka.GameType.genshinImpact)
-                    Text("game.starRail.shortNameEX".i18nBaseKit)
-                        .tag(Enka.GameType.starRail)
+            .formStyle(.grouped)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Picker("".description, selection: $game.animation()) {
+                        Text("game.genshin.shortNameEX".i18nBaseKit)
+                            .tag(Enka.GameType.genshinImpact)
+                        Text("game.starRail.shortNameEX".i18nBaseKit)
+                            .tag(Enka.GameType.starRail)
+                    }
+                    .pickerStyle(.segmented)
+                    .fixedSize()
                 }
-                .pickerStyle(.segmented)
-                .fixedSize()
             }
+            .navigationTitle("enka.photoSpecimen.navTitle".i18nEnka)
+            .navBarTitleDisplayMode(.large)
         }
-        .navigationTitle("enka.photoSpecimen.navTitle".i18nEnka)
-        .navBarTitleDisplayMode(.large)
     }
 
     // MARK: Private
