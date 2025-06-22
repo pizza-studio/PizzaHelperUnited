@@ -76,14 +76,6 @@ public struct AvatarStatCollectionTabView: View {
             .page(indexDisplayMode: showTabViewIndex ? .automatic : .never)
         )
         #endif
-        .onTapGesture {
-            if let onClose {
-                onClose()
-            } else {
-                simpleTaptic(type: .medium)
-                presentationMode.wrappedValue.dismiss()
-            }
-        }
         .background {
             ZStack {
                 Color(hue: 0, saturation: 0, brightness: 0.1)
@@ -94,6 +86,14 @@ public struct AvatarStatCollectionTabView: View {
             }
             .compositingGroup()
             .ignoresSafeArea(.all)
+        }
+        .onTapGesture {
+            if let onClose {
+                onClose()
+            } else {
+                simpleTaptic(type: .medium)
+                presentationMode.wrappedValue.dismiss()
+            }
         }
         .contextMenu { contextMenuContents }
         .clipped()
