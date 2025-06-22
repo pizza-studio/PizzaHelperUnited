@@ -156,11 +156,11 @@ public struct CharacterInventoryView: View {
                         AvatarListItem(game: game, avatar: avatar, condensed: true)
                             .padding(.vertical, 4)
                             .compositingGroup()
-                            .matchedGeometryEffect(id: avatar.wrappedValue.id, in: animation)
                             .onTapGesture {
                                 currentAvatarSummaryID = avatar.id
                                 simpleTaptic(type: .medium)
                             }
+                            .id(avatar.id)
                     }
                     .overlay(alignment: .topLeading) {
                         Color(cgColor: currentElement.themeColor)
@@ -181,7 +181,6 @@ public struct CharacterInventoryView: View {
     @State private var containerWidth: CGFloat = 320
     @State private var expanded: Bool = false
     @State private var currentAvatarSummaryID: String
-    @Namespace private var animation: Namespace.ID
     @StateObject private var orientation = DeviceOrientation()
     @Environment(\.dismiss) private var dismiss
 
