@@ -33,10 +33,8 @@ public struct CharSpecimen: Identifiable, Hashable, Sendable {
         for game: Enka.GameType?,
         scroll: Bool,
         columns: Int,
-        size: Double,
-        cutType: IDPhotoView4HSR.IconType = .cutShoulder,
-        animation: Namespace.ID,
-        supplementalIDs: (() -> [String])? = nil
+        supplementalIDs: (() -> [String])? = nil,
+        viewRenderer: @escaping (CharSpecimen) -> some View
     )
         -> some View {
         let specimens = Self.allSpecimens(for: game, supplementalIDs: supplementalIDs?())
@@ -47,8 +45,7 @@ public struct CharSpecimen: Identifiable, Hashable, Sendable {
             scroll: scroll,
             list: specimens
         ) { specimen in
-            specimen.render(size: size, cutType: cutType)
-                .matchedGeometryEffect(id: specimen.id, in: animation)
+            viewRenderer(specimen)
         }
         if scroll {
             ScrollView {
@@ -117,42 +114,34 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
             }
     }
 
-    // MARK: Internal
+    // MARK: Private
 
-    @Namespace var animation: Namespace.ID
+    @StateObject private var orientation = DeviceOrientation()
+    @State private var containerWidth: CGFloat = 320
+    @State private var scroll: Bool
+    @State private var game: Enka.GameType
+    @State private var supplementalIDs: [String]
 
-    @State var containerWidth: CGFloat = 320
-
-    @State var scroll: Bool
-
-    var columns: Int {
+    private var columns: Int {
         max(Int((containerWidth / 120).rounded(.down)), 1)
     }
 
-    var singleSize: Double {
+    private var singleSize: Double {
         ((containerWidth / Double(columns)) - 8.0).rounded(.down)
     }
 
-    @ViewBuilder var coreBodyView: some View {
+    @ViewBuilder private var coreBodyView: some View {
         CharSpecimen.renderAllSpecimen(
             for: game,
             scroll: scroll,
-            columns: columns,
-            size: singleSize,
-            cutType: .cutShoulder,
-            animation: animation
+            columns: columns
         ) {
             supplementalIDs
+        } viewRenderer: { specimen in
+            specimen.render(size: singleSize, cutType: .cutShoulder)
         }
-        .animation(.easeInOut, value: columns)
         .environment(orientation)
     }
-
-    // MARK: Private
-
-    @State private var game: Enka.GameType
-    @State private var supplementalIDs: [String]
-    @StateObject private var orientation = DeviceOrientation()
 }
 
 #if DEBUG
