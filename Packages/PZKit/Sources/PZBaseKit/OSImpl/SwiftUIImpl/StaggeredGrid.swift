@@ -79,7 +79,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
     private let content: (T) -> Content
     private let list: [T]
 
-    private var innerContent: some View {
+    @ViewBuilder private var innerContent: some View {
         HStack(alignment: alignment, spacing: horizontalSpacing) {
             ForEach(Array(vm.gridArray.enumerated()), id: \.offset) { _, columnsData in
                 LazyVStack(spacing: verticalSpacing) {
@@ -95,7 +95,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
 // MARK: - StaggeredGridVM
 
-@MainActor
+@Observable @MainActor
 final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableObject {
     // MARK: Lifecycle
 
@@ -109,17 +109,16 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableO
 
     // MARK: Internal
 
-    @Published var gridArray: [[T]] = []
+    var gridArray: [[T]] = []
 
     // MARK: - Methods
 
     func updateGridArray(list: [T], columns: Int) {
-        // 取消前一个任务
-        updateTask?.cancel()
-
+        let oldTask = updateTask
         // 异步计算
         // let threshold = 100 // 可调整的阈值
-        updateTask = Task.detached(priority: .userInitiated) {
+        let newTask = Task.detached(priority: .userInitiated) {
+            _ = await oldTask?.value
             let newGridArray: [[T]] = await self.computeGridArray(
                 list: list, columns: columns
             )
@@ -131,6 +130,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableO
                 }
             }
         }
+        updateTask = newTask
     }
 
     // MARK: Private
