@@ -26,6 +26,11 @@ extension PZHelper {
                     minWidth: OS.liquidGlassThemeSuspected ? 640 : 600,
                     minHeight: 800
                 )
+            #elseif os(macOS) && !targetEnvironment(macCatalyst)
+                .frame(
+                    minWidth: OS.liquidGlassThemeSuspected ? 504 : 464,
+                    minHeight: 646
+                )
             #endif
                 .onAppear {
                     if !isApplicationBooted {

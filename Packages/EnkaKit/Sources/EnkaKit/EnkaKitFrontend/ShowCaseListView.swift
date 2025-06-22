@@ -70,6 +70,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                             } label: {
                                 avatar.asCardIcon(75)
                             }
+                            .buttonStyle(.plain)
                         }
                     }
                 }
@@ -82,7 +83,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
     // MARK: Internal
 
     @ViewBuilder var showAsList: some View {
-        List {
+        Form {
             listHeader
                 .listRowMaterialBackground()
             if profile.summarizedAvatars.isEmpty {
@@ -107,6 +108,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 .listRowMaterialBackground()
             }
         }
+        .formStyle(.grouped)
         .navigationTitle(Text(verbatim: "\(profile.rawInfo.nickname) (\(profile.uid.description))"))
         .navBarTitleDisplayMode(.inline)
     }

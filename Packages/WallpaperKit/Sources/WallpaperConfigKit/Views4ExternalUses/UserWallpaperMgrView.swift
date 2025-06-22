@@ -240,7 +240,7 @@ extension UserWallpaperMgrViewContent {
             Button("wpKit.assign.background4App".i18nWPConfKit) {
                 appWallpaperID = userWallpaper.id.uuidString
             }
-            #if canImport(ActivityKit) && !targetEnvironment(macCatalyst)
+            #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
             let alreadyChosenAsLABG: Bool = !labvParser.useRandomBackground.wrappedValue
                 && !labvParser.useEmptyBackground.wrappedValue
                 && liveActivityWallpaperIDs.contains(userWallpaper.id.uuidString)

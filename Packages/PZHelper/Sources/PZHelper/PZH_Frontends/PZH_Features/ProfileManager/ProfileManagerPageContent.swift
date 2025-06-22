@@ -69,7 +69,7 @@ struct ProfileManagerPageContent: View {
                                     sheetType = .editExistingProfile(profileMO)
                                 }
                                 #else
-                                sheetType = .editExistingProfile(profile)
+                                sheetType = .editExistingProfile(profileMO)
                                 #endif
                             } label: {
                                 drawRow(profile: profileMO)
