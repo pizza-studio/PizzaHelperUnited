@@ -77,11 +77,10 @@ public struct WallpaperGalleryViewContent: View {
             columns: columns,
             showsIndicators: false,
             outerPadding: true,
-            scroll: true,
+            scroll: false,
             list: searchResults
         ) { currentCard in
             draw(wallpaper: currentCard)
-                .matchedGeometryEffect(id: currentCard.id, in: animation)
                 .contextMenu {
                     Button("wpKit.assign.background4App".i18nWPConfKit) {
                         appWallpaperID = currentCard.id
@@ -105,16 +104,15 @@ public struct WallpaperGalleryViewContent: View {
                     }
                     #endif
                 }
+                .id(currentCard.id)
         }
         .searchable(text: $searchText, placement: searchFieldPlacement)
         .padding(.horizontal)
-        .animation(.easeInOut, value: columns)
         .environment(orientation)
     }
 
     // MARK: Private
 
-    @Namespace private var animation
     @StateObject private var orientation = DeviceOrientation()
     @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
