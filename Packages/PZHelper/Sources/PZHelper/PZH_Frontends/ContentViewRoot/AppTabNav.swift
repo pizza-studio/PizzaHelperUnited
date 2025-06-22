@@ -10,7 +10,7 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
     case today
     case showcaseDetail
     case utils
-    case appSettings(AppSettingsTabPage.Nav? = nil)
+    case appSettings
 
     // MARK: Lifecycle
 
@@ -22,12 +22,7 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
 
     // MARK: Public
 
-    nonisolated public var id: Int {
-        switch self {
-        case let .appSettings(subNav): rootID + (subNav?.rawValue ?? 0) * 100
-        default: rootID
-        }
-    }
+    nonisolated public var id: Int { rootID }
 
     nonisolated public var rootID: Int {
         switch self {
@@ -52,8 +47,8 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
             UtilsTabPage()
                 .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem { label }
-        case let .appSettings(subNav):
-            AppSettingsTabPage(nav: subNav)
+        case .appSettings:
+            AppSettingsTabPage()
                 .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
                 .tabItem { label }
         }
@@ -74,7 +69,7 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
         .today,
         .showcaseDetail,
         .utils,
-        .appSettings(nil),
+        .appSettings,
     ]
 
     static var exposedCaseTags: [Int] {
