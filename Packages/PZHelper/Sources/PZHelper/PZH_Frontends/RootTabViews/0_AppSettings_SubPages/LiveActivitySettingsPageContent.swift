@@ -16,8 +16,7 @@ import WallpaperKit
 struct LiveActivitySettingNavigator: View {
     // MARK: Lifecycle
 
-    public init?(selectedView: Binding<AppSettingsTabPage.Nav?>) {
-        self._selectedView = selectedView
+    public init?() {
         #if !DEBUG && (os(macOS) || targetEnvironment(macCatalyst))
         return nil
         #endif
@@ -26,7 +25,7 @@ struct LiveActivitySettingNavigator: View {
     // MARK: Internal
 
     var body: some View {
-        NavigationLink(value: AppSettingsTabPage.Nav.liveActivitySettings) {
+        NavigationLink(destination: LiveActivitySettingsPageContent.init) {
             Label {
                 Text("settings.staminaTimer.settings.navTitle", bundle: .module)
             } icon: {
@@ -36,8 +35,6 @@ struct LiveActivitySettingNavigator: View {
     }
 
     // MARK: Private
-
-    @Binding private var selectedView: AppSettingsTabPage.Nav?
 
     @State private var isAlertShow: Bool = false
 }
