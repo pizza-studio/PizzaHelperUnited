@@ -151,8 +151,22 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
             var uid: String?
             var validTransactionIDMap: [String: [String]] = [:]
             do {
+                GachaVM.shared.isDoingBatchInsertionAction = true
+                defer {
+                    GachaVM.shared.isDoingBatchInsertionAction = false
+                }
                 for try await (gachaType, result) in client {
                     setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
+                    var transactionCounter = 0
+                    // 每隔一个小保底，就存盘一次。
+                    func saveDataPer16PagesOfTransactions() async throws {
+                        transactionCounter += 1
+                        if transactionCounter >= 16 {
+                            try await GachaActor.shared.asyncSave()
+                            transactionCounter = 0
+                            try await Task.sleep(for: .seconds(1))
+                        }
+                    }
                     for item in result.listConverted {
                         if uid == nil { uid = item.uid }
                         withAnimation {
@@ -170,14 +184,18 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
                         }
                         try await Task.sleep(for: .seconds(0.5 / 20.0))
                     }
-                    try await GachaActor.shared.asyncSave()
-                    GachaVM.shared.remoteChangesAvailable = false
+                    try await saveDataPer16PagesOfTransactions()
                 }
+                try await GachaActor.shared.asyncSave()
+                try await Task.sleep(for: .seconds(1))
                 if isBleachingModeEnabled {
                     bleachCounter += await GachaActor.shared.bleach(
                         against: validTransactionIDMap, uid: uid, game: GachaType.game
-                    )
+                    ) // This will do asyncSave at the end of its transaction block.
+                    try await Task.sleep(for: .seconds(1))
                 }
+                GachaVM.shared.isDoingBatchInsertionAction = false
+                await GachaVM.shared.updateAllCachedGPIDs()
                 setFinished()
             } catch {
                 if error is CancellationError {
