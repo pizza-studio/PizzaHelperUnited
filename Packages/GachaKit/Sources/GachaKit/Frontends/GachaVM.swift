@@ -136,7 +136,17 @@ extension GachaVM {
         fireTask(
             cancelPreviousTask: immediately,
             givenTask: {
-                try await GachaActor.shared.deleteAllEntriesOfGPID(gpid)
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        return try await GachaActor.shared.deleteAllEntriesOfGPID(gpid)
+                    }
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
+                }
+                return nil
             },
             completionHandler: { _ in
                 self.showSucceededAlertToast = true
@@ -148,7 +158,17 @@ extension GachaVM {
         fireTask(
             cancelPreviousTask: immediately,
             givenTask: {
-                try await GachaActor.shared.refreshAllProfiles()
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        return try await GachaActor.shared.refreshAllProfiles()
+                    }
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
+                }
+                return nil
             },
             completionHandler: { _ in
                 if self.currentGPID == nil {
@@ -178,7 +198,19 @@ extension GachaVM {
     public func migrateOldGachasIntoProfiles(immediately: Bool = true) {
         fireTask(
             cancelPreviousTask: immediately,
-            givenTask: { try await GachaActor.shared.migrateOldGachasIntoProfiles() },
+            givenTask: {
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        return try await GachaActor.shared.migrateOldGachasIntoProfiles()
+                    }
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
+                }
+                return nil
+            },
             completionHandler: { _ in
                 if self.currentGPID == nil {
                     self.resetDefaultProfile()
@@ -357,11 +389,21 @@ extension GachaVM {
         fireTask(
             cancelPreviousTask: immediately,
             givenTask: {
-                try await GachaActor.shared.importUIGFv4(
-                    source,
-                    specifiedGPIDs: specifiedGPIDs,
-                    overrideDuplicatedEntries: overrideDuplicatedEntries
-                )
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        return try await GachaActor.shared.importUIGFv4(
+                            source,
+                            specifiedGPIDs: specifiedGPIDs,
+                            overrideDuplicatedEntries: overrideDuplicatedEntries
+                        )
+                    }
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
+                }
+                return nil
             },
             completionHandler: { resultMap in
                 if let resultMap {
