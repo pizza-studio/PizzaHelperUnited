@@ -109,9 +109,17 @@ extension AppleWatchSputnik: WCSessionDelegate {
             }
             print("Received profiles")
 
-            Task { @MainActor in
-                // `@MainActor` is still necessary here to halt SwiftUI from writing into SwiftData via MainActor.
-                await PZProfileActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
+            Task {
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        await PZProfileActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
+                    }
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
+                }
             }
         } catch {
             print("save profile failed: \(error)")
