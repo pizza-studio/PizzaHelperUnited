@@ -151,52 +151,61 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
             var uid: String?
             var validTransactionIDMap: [String: [String]] = [:]
             do {
-                GachaVM.shared.isDoingBatchInsertionAction = true
-                defer {
-                    GachaVM.shared.isDoingBatchInsertionAction = false
-                }
-                for try await (gachaType, result) in client {
-                    setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
-                    var transactionCounter = 0
-                    // 每隔一个小保底，就存盘一次。
-                    func saveDataPer16PagesOfTransactions() async throws {
-                        transactionCounter += 1
-                        if transactionCounter >= 16 {
-                            try await GachaActor.shared.asyncSave()
-                            transactionCounter = 0
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        GachaVM.shared.isDoingBatchInsertionAction = true
+                        defer {
+                            GachaVM.shared.isDoingBatchInsertionAction = false
+                        }
+                        for try await (gachaType, result) in client {
+                            setGot(page: Int(result.page) ?? 0, gachaType: gachaType)
+                            var transactionCounter = 0
+                            // 每隔一个小保底，就存盘一次。
+                            func saveDataPer16PagesOfTransactions() async throws {
+                                transactionCounter += 1
+                                if transactionCounter >= 16 {
+                                    try await GachaActor.shared.asyncSave()
+                                    transactionCounter = 0
+                                    try await Task.sleep(for: .seconds(1))
+                                }
+                            }
+                            for item in result.listConverted {
+                                if uid == nil { uid = item.uid }
+                                withAnimation {
+                                    self.updateCachedItems(item)
+                                    self.updateGachaDateCounts(item)
+                                }
+                                if isBleachingModeEnabled {
+                                    validTransactionIDMap[item.time, default: []].append(item.id)
+                                }
+                                try await GachaActor.shared.insertRawEntrySansCommission(
+                                    item, forceOverride: isForceOverrideModeEnabled
+                                )
+                                withAnimation {
+                                    self.savedTypeFetchedCount[.init(rawValue: item.gachaType)]! += 1
+                                }
+                                try await Task.sleep(for: .seconds(0.5 / 20.0))
+                            }
+                            try await saveDataPer16PagesOfTransactions()
+                        }
+                        try await GachaActor.shared.asyncSave()
+                        try await Task.sleep(for: .seconds(1))
+                        if isBleachingModeEnabled {
+                            bleachCounter += await GachaActor.shared.bleach(
+                                against: validTransactionIDMap, uid: uid, game: GachaType.game
+                            ) // This will do asyncSave at the end of its transaction block.
                             try await Task.sleep(for: .seconds(1))
                         }
+                        GachaVM.shared.isDoingBatchInsertionAction = false
+                        await GachaVM.shared.updateAllCachedGPIDs()
+                        setFinished()
                     }
-                    for item in result.listConverted {
-                        if uid == nil { uid = item.uid }
-                        withAnimation {
-                            self.updateCachedItems(item)
-                            self.updateGachaDateCounts(item)
-                        }
-                        if isBleachingModeEnabled {
-                            validTransactionIDMap[item.time, default: []].append(item.id)
-                        }
-                        try await GachaActor.shared.insertRawEntrySansCommission(
-                            item, forceOverride: isForceOverrideModeEnabled
-                        )
-                        withAnimation {
-                            self.savedTypeFetchedCount[.init(rawValue: item.gachaType)]! += 1
-                        }
-                        try await Task.sleep(for: .seconds(0.5 / 20.0))
-                    }
-                    try await saveDataPer16PagesOfTransactions()
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
                 }
-                try await GachaActor.shared.asyncSave()
-                try await Task.sleep(for: .seconds(1))
-                if isBleachingModeEnabled {
-                    bleachCounter += await GachaActor.shared.bleach(
-                        against: validTransactionIDMap, uid: uid, game: GachaType.game
-                    ) // This will do asyncSave at the end of its transaction block.
-                    try await Task.sleep(for: .seconds(1))
-                }
-                GachaVM.shared.isDoingBatchInsertionAction = false
-                await GachaVM.shared.updateAllCachedGPIDs()
-                setFinished()
             } catch {
                 if error is CancellationError {
                     bleachCounter += await GachaActor.shared.bleach(
