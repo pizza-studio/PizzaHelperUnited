@@ -41,6 +41,7 @@ public final class GachaVM: TaskManagedVM {
 
     public static var shared = GachaVM()
 
+    @ObservationIgnored public var isDoingBatchInsertionAction = false
     public var remoteChangesAvailable = false
     public var hasInheritableGachaEntries: Bool = false
     public private(set) var mappedEntriesByPools: [GachaPoolExpressible: [GachaEntryExpressible]] = [:]
@@ -70,6 +71,10 @@ public final class GachaVM: TaskManagedVM {
         }
     }
 
+    public func updateAllCachedGPIDs() async {
+        allGPIDs = await GachaActor.shared.fetchAllGPIDs()
+    }
+
     // MARK: Private
 
     @ObservationIgnored private var cancellables: [AnyCancellable] = []
@@ -93,6 +98,7 @@ public final class GachaVM: TaskManagedVM {
                 let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
                 let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
                 guard changesInvolveGPID, changesInvolveGachaEntry else { return }
+                guard !self.isDoingBatchInsertionAction else { return }
                 Task { @MainActor in
                     if !self.remoteChangesAvailable {
                         self.remoteChangesAvailable = true
@@ -105,10 +111,6 @@ public final class GachaVM: TaskManagedVM {
                 }
             })
             .store(in: &cancellables)
-    }
-
-    private func updateAllCachedGPIDs() async {
-        allGPIDs = await GachaActor.shared.fetchAllGPIDs()
     }
 }
 
