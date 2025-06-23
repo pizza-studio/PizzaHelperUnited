@@ -414,7 +414,16 @@ struct ProfileManagerPageContent: View {
                     let data: Data = try Data(contentsOf: url)
                     let decoded = try JSONDecoder().decode([PZProfileSendable].self, from: data)
                     let decodedProfileSet = Set(decoded)
-                    try await PZProfileActor.shared.addProfiles(decodedProfileSet)
+                    let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                    do {
+                        if await !assertion.state.isReleased {
+                            try await PZProfileActor.shared.addProfiles(decodedProfileSet)
+                        }
+                        await assertion.release()
+                    } catch {
+                        await assertion.release()
+                        throw error
+                    }
                     Broadcaster.shared.requireOSNotificationCenterAuthorization()
                     Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
