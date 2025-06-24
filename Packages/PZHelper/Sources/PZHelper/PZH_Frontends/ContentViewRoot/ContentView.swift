@@ -15,55 +15,73 @@ import SwiftUI
 public struct ContentView: View {
     // MARK: Lifecycle
 
-    public init() {}
+    public init() {
+        self.rootTabNavBinding = GlobalNavVM.shared.rootTabNavBindingNullable
+    }
 
     // MARK: Public
 
     public var body: some View {
-        TabView(selection: $tabNavVM.rootTabNav) {
-            ForEach(AppTabNav.allCases) { navCase in
-                if navCase.isExposed {
-                    navCase
-                    #if targetEnvironment(macCatalyst)
-                    .toolbar(.hidden, for: .tabBar)
-                    #endif
+        NavigationSplitView(
+            columnVisibility: .constant(.all),
+            preferredCompactColumn: $viewColumn
+        ) {
+            NavigationStack {
+                TodayTabPage(wrappedByNavStack: false)
+                    .scrollContentBackground(.hidden)
+                    .listRowMaterialBackground()
+                    .listContainerBackground(thickMaterial: true)
+                    .navBarTitleDisplayMode(.large)
+            }
+            .tint(Color.accessibilityAccent(colorScheme))
+            #if os(macOS) && !targetEnvironment(macCatalyst)
+                .frame(width: sideBarWidth)
+            #endif
+                .toolbar(removing: .sidebarToggle) // Remove toggle button
+            #if !os(macOS)
+                .toolbar(.hidden, for: .navigationBar) // Additional safeguard
+            #endif
+        } detail: {
+            tabNavVM.rootTabNav.body
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        tabNavVM.sharedToolbarNavPicker(
+                            allCases: horizontalSizeClass == .compact
+                        )
+                    }
                 }
+                .tint(tintForCurrentTab)
+        }
+        .navigationSplitViewStyle(.balanced)
+        .tint(tintForCurrentTab)
+        .onChange(of: horizontalSizeClass) { oldValue, newValue in
+            if oldValue == .compact, newValue != .compact, tabNavVM.rootTabNav == .today {
+                rootTabNavBinding.wrappedValue = .showcaseDetail
             }
         }
+        .navigationSplitViewColumnWidth(sideBarWidth)
         .appTabBarVisibility(.visible)
-        .tint(tintForCurrentTab)
-        #if targetEnvironment(macCatalyst)
-            .apply { theContent in
-                Group {
-                    #if compiler(>=6.0) && canImport(UIKit, _version: 18.0)
-                    if #unavailable(iOS 18.0), #unavailable(macCatalyst 18.0) {
-                        theContent
-                    } else {
-                        theContent
-                            .tabViewStyle(.sidebarAdaptable)
-                            .tabViewCustomization(.none)
-                    }
-                    #else
-                    theContent
-                    #endif
-                }
-            }
-        #endif
-            .onChange(of: tabNavVM.rootTabNav.rootID) {
-                simpleTaptic(type: .selection)
-            }
-            .environment(GachaVM.shared)
+        .environment(GachaVM.shared)
     }
 
     // MARK: Internal
+
+    let rootTabNavBinding: Binding<AppTabNav?>
 
     @Default(.appTabIndex) var appIndex: Int
 
     // MARK: Private
 
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @StateObject private var tabNavVM = GlobalNavVM.shared
     @StateObject private var appTabVM = AppTabBarVM.shared
+    @State private var viewColumn: NavigationSplitViewColumn = .content
+
+    private let isAppKit = OS.type == .macOS && !OS.isCatalyst
+
+    private var sideBarWidth: CGFloat { 375 }
 
     private var tintForCurrentTab: Color {
         switch AppTabNav(rootID: tabNavVM.rootTabNav.rootID) {

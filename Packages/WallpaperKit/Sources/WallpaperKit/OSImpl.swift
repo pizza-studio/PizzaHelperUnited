@@ -9,10 +9,20 @@ import SwiftUI
 
 extension View {
     @ViewBuilder
-    public func listContainerBackground(wallpaperOverride: BundledWallpaper? = nil) -> some View {
+    public func listContainerBackground(
+        wallpaperOverride: BundledWallpaper? = nil,
+        thickMaterial: Bool = false
+    )
+        -> some View {
         background(alignment: .topTrailing) {
             #if !os(watchOS)
             AppWallpaperView()
+                .saturation(thickMaterial ? 0.8 : 1)
+                .overlay {
+                    if thickMaterial {
+                        Color.primary.colorInvert().opacity(0.1)
+                    }
+                }
             #endif
         }
     }
