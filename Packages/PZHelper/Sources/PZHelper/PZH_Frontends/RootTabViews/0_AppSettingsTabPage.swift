@@ -100,11 +100,8 @@ struct AppSettingsTabPage: View {
                 #endif
             }
             .formStyle(.grouped)
-            .safeAreaInset(edge: .bottom) {
-                tabNavVM.tabBarForMacCatalyst
-                    .fixedSize(horizontal: false, vertical: true)
-            }
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
+            .navBarTitleDisplayMode(.large)
         }
     }
 

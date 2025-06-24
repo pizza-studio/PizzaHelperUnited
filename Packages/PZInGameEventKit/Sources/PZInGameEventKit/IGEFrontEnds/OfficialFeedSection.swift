@@ -14,14 +14,16 @@ import SwiftUI
 
 extension OfficialFeed {
     @available(watchOS, unavailable)
-    public struct OfficialFeedSection<TT: View>: View {
+    public struct OfficialFeedSection<TT: View, HH: View>: View {
         // MARK: Lifecycle
 
         public init(
             game: Binding<Pizza.SupportedGame?>,
-            peripheralViews: @escaping (() -> TT) = { EmptyView() }
+            @ViewBuilder peripheralViews: @escaping (() -> TT) = { EmptyView() },
+            @ViewBuilder sectionHeader: @escaping (() -> HH) = { EmptyView() },
         ) {
             self.peripheralViews = peripheralViews
+            self.sectionHeader = sectionHeader
             self._game = game
         }
 
@@ -31,7 +33,9 @@ extension OfficialFeed {
             MainComponent(
                 supportedGames: supportedGames.animation(),
                 eventContents: eventContentsFiltered.animation(),
-                peripheralViews: peripheralViews
+                isFeedSheetShown: $isFeedSheetShown,
+                peripheralViews: peripheralViews,
+                sectionHeader: sectionHeader,
             )
             .listRowMaterialBackground()
             .onChange(of: scenePhase) { _, newPhase in
@@ -69,8 +73,10 @@ extension OfficialFeed {
         @Binding private var game: Pizza.SupportedGame?
         @StateObject private var broadcaster = Broadcaster.shared
         @StateObject private var theVM: OfficialFeedVM = .init()
+        @State private var isFeedSheetShown: Bool = false
 
         private let peripheralViews: () -> TT
+        private let sectionHeader: () -> HH
 
         private var supportedGames: Binding<Set<Pizza.SupportedGame>> {
             .init(get: {
@@ -94,41 +100,62 @@ extension OfficialFeed {
 
 @available(watchOS, unavailable)
 extension OfficialFeed.OfficialFeedSection {
-    private struct MainComponent<T: View>: View {
+    private struct MainComponent<T: View, H: View>: View {
         // MARK: Public
 
         public var body: some View {
             Section {
                 peripheralViews()
                 if !$eventContents.animation().wrappedValue.isEmpty {
-                    VStack {
-                        NavigationLink {
-                            OfficialFeed.OfficialFeedAllListView(eventContents: eventContents)
-                        } label: {
-                            Text("igev.gameEvents.pendingEvents.title", bundle: .module)
-                        }
-                        VStack(spacing: 7) {
-                            let eventContentsValid = validEventContents.prefix(3)
-                            if eventContentsValid.isEmpty {
-                                HStack {
-                                    Spacer()
-                                    Text("igev.gameEvents.noCurrentEventInfo", bundle: .module)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    Spacer()
-                                }
-                            } else {
-                                ForEach(eventContentsValid, id: \.id) { content in
-                                    content.textListItemRenderable()
+                    Button {
+                        isFeedSheetShown.toggle()
+                    } label: {
+                        VStack(alignment: .leading) {
+                            LabeledContent {
+                                Image(systemSymbol: .newspaper)
+                            } label: {
+                                Text("igev.gameEvents.pendingEvents.title", bundle: .module)
+                            }
+                            VStack(spacing: 7) {
+                                let eventContentsValid = validEventContents.prefix(3)
+                                if eventContentsValid.isEmpty {
+                                    HStack {
+                                        Spacer()
+                                        Text("igev.gameEvents.noCurrentEventInfo", bundle: .module)
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                        Spacer()
+                                    }
+                                } else {
+                                    ForEach(eventContentsValid, id: \.id) { content in
+                                        content.textListItemRenderable()
+                                    }
                                 }
                             }
+                            .padding(.top, 2)
+                            .id(defaultServer4GI)
                         }
-                        .padding(.top, 2)
-                        .id(defaultServer4GI)
+                        .contentShape(.rect)
+                    }
+                    .buttonStyle(.plain)
+                    .listRowMaterialBackground()
+                    .sheet(isPresented: $isFeedSheetShown) {
+                        NavigationStack {
+                            OfficialFeed.OfficialFeedAllListView(eventContents: eventContents)
+                                .toolbar {
+                                    ToolbarItem(placement: .cancellationAction) {
+                                        Button("sys.close".i18nBaseKit) {
+                                            isFeedSheetShown.toggle()
+                                        }
+                                    }
+                                }
+                        }
                     }
                 } else {
                     ProgressView()
                 }
+            } header: {
+                sectionHeader()
             }
         }
 
@@ -152,7 +179,9 @@ extension OfficialFeed.OfficialFeedSection {
         @Default(.defaultServer) private var defaultServer4GI: String
         @Binding public var supportedGames: Set<Pizza.SupportedGame>
         @Binding public var eventContents: [EventModel]
+        @Binding public var isFeedSheetShown: Bool
         public let peripheralViews: () -> T
+        public let sectionHeader: () -> H
 
         private var viewBackgroundColor: UIColor {
             colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground

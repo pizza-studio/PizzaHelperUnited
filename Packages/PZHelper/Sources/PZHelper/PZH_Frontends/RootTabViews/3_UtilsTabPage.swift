@@ -43,11 +43,8 @@ struct UtilsTabPage: View {
                     .asInlineTextDescription()
             }
             .formStyle(.grouped)
-            .safeAreaInset(edge: .bottom) {
-                tabNavVM.tabBarForMacCatalyst
-                    .fixedSize(horizontal: false, vertical: true)
-            }
             .navigationTitle("tab.utils.fullTitle".i18nPZHelper)
+            .navBarTitleDisplayMode(.large)
         }
     }
 

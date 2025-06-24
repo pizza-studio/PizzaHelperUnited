@@ -13,52 +13,46 @@ import SwiftUI
 final class GlobalNavVM: Sendable, ObservableObject {
     // MARK: Public
 
-    @ViewBuilder public var tabBarForMacCatalyst: some View {
-        if OS.type == .macOS, appTabVM.latestVisibility != .hidden {
-            HStack {
-                ForEach(AppTabNav.allCases) { navCase in
-                    let isChosen: Bool = navCase == self.rootTabNav
-                    if navCase.isExposed {
-                        Button {
-                            withAnimation(.easeInOut) {
-                                self.rootTabNav = navCase
-                            }
-                        } label: {
-                            navCase.label
-                                .fixedSize()
-                                .labelStyle(.titleAndIcon)
-                                .fontWidth(.compressed)
-                                .fontWeight(isChosen ? .bold : .regular)
-                                .foregroundStyle(isChosen ? Color.accentColor : .secondary)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .contentShape(.rect)
-                        }
-                        .buttonStyle(.plain)
-                        .id(navCase)
+    @MainActor @ViewBuilder
+    public func sharedToolbarNavPicker(allCases: Bool) -> some View {
+        @Bindable var this = self
+        let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
+        Picker("".description, selection: $this.rootTabNav.animation()) {
+            ForEach(effectiveCases) { navCase in
+                if navCase.isExposed {
+                    HStack {
+                        navCase.icon
+                        navCase.labelNameText
                     }
+                    .tag(navCase)
                 }
             }
-            .frame(height: 50)
-            .blurMaterialBackground()
-            .clipShape(.capsule)
-            .legibilityShadow(isText: true)
-            .padding([.horizontal, .bottom])
-            .background {
-                LinearGradient(
-                    colors: [.clear, .colorSysBackground],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-            }
         }
+        .labelsHidden()
+        .pickerStyle(.menu)
+        .fixedSize()
+        .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected)
+        .clipShape(.capsule)
     }
 
     // MARK: Internal
 
     static let shared = GlobalNavVM()
 
+    static let isAppKit = OS.type == .macOS && !OS.isCatalyst
+
     var appTabVM = AppTabBarVM.shared
+
+    var rootTabNavBindingNullable: Binding<AppTabNav?> {
+        .init(
+            get: {
+                self.rootTabNav
+            },
+            set: { newValue in
+                self.rootTabNav = newValue ?? .today
+            }
+        )
+    }
 
     var rootTabNav: AppTabNav = {
         let initSelection: Int = {
