@@ -43,13 +43,11 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
     public var body: some View {
         Group {
-            if scrollAxis != [] {
-                ScrollView(scrollAxis, showsIndicators: showsIndicators) {
-                    innerContent
-                }
-            } else {
+            let axisSet = scrollAxis.isEmpty ? Axis.Set([.vertical]) : scrollAxis
+            ScrollView(axisSet, showsIndicators: showsIndicators && !scrollAxis.isEmpty) {
                 innerContent
             }
+            .scrollDisabled(scrollAxis.isEmpty)
         }
         .onChange(of: list) { _, newList in
             vm.updateGridArray(list: newList, columns: columns)
@@ -78,6 +76,8 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
     private let alignment: VerticalAlignment
     private let content: (T) -> Content
     private let list: [T]
+
+    private var scroll: Bool { scrollAxis.isEmpty }
 
     @ViewBuilder private var innerContent: some View {
         HStack(alignment: alignment, spacing: horizontalSpacing) {
@@ -184,7 +184,7 @@ extension StaggeredGrid {
     ) {
         self.init(
             columns: columns,
-            scrollAxis: .vertical,
+            scrollAxis: [],
             showsIndicators: showsIndicators,
             horizontalSpacing: spacing,
             verticalSpacing: spacing,
