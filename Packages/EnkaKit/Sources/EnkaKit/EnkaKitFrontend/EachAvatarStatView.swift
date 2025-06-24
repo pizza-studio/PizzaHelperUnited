@@ -404,7 +404,12 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
                         )
                     }
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        ForEach(baseSkills.toArray.prefix(availableSkillsPrefixNumber), id: \.type) { skill in
+                        let baseSkillsArray = baseSkills.toArray
+                        if game == .genshinImpact {
+                            // 排版占位符
+                            baseSkillsArray.first?.asView(fontSize: fontSize).fixedSize().opacity(0)
+                        }
+                        ForEach(baseSkillsArray.prefix(availableSkillsPrefixNumber), id: \.type) { skill in
                             skill.asView(fontSize: fontSize).fixedSize()
                         }
                     }
@@ -449,7 +454,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
                         .aspectRatio(contentMode: .fit)
                         .clipShape(.circle)
                         .scaleEffect(0.8)
-                        .blendMode(game == .genshinImpact ? .normal : .colorDodge)
+                        .blendMode(.colorDodge)
                 }.frame(
                     width: fontSize * 2.2,
                     height: fontSize * 2
