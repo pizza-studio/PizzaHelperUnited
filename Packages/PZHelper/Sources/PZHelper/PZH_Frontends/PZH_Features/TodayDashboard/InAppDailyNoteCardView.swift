@@ -144,7 +144,8 @@ private struct DailyNoteCardView4GI: View {
     // MARK: Public
 
     public var body: some View {
-        drawResinAndWeeklyBosses()
+        drawResin() // This draws trounce blossom when resin is finished
+        drawTrounceBlossomIfResinNotFinished()
         drawDailyTaskAndParametricTransformer()
         drawRealmCurrencyStatus()
         drawExpeditions()
@@ -155,8 +156,12 @@ private struct DailyNoteCardView4GI: View {
 
     // MARK: Internal
 
+    var resinFinished: Bool {
+        dailyNote.staminaIntel.isAccomplished
+    }
+
     @ViewBuilder
-    func drawResinAndWeeklyBosses() -> some View {
+    func drawResin() -> some View {
         VStack(alignment: .leading) {
             let resinIntel = dailyNote.resinInfo
             HStack(spacing: 10) {
@@ -171,7 +176,7 @@ private struct DailyNoteCardView4GI: View {
                     Text(verbatim: " / \(resinIntel.maxResin)")
                         .font(.caption)
                     Spacer()
-                    if resinIntel.resinRecoveryTime > Date() {
+                    if !resinFinished {
                         let fullyChargedTime = resinIntel.resinRecoveryTime
                         let nestedString = """
                         \(dateFormatter.string(from: fullyChargedTime))
@@ -212,6 +217,37 @@ private struct DailyNoteCardView4GI: View {
                 }
             }
         }.help("app.dailynote.card.resin.label".i18nPZHelper)
+    }
+
+    @ViewBuilder
+    func drawTrounceBlossomIfResinNotFinished() -> some View {
+        if !resinFinished, let dailyNote = dailyNote as? FullNote4GI {
+            VStack(alignment: .leading) {
+                HStack(spacing: 10) {
+                    dailyNote.game.giTrounceBlossomAssetIcon
+                        .resizable()
+                        .scaledToFit()
+                        .scaleEffect(1.1)
+                        .frame(width: iconFrame, height: iconFrame)
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        let weeklyBossesInfo = dailyNote.weeklyBossesInfo
+                        if weeklyBossesInfo.allDiscountsAreUsedUp {
+                            Image(systemSymbol: .checkmarkCircle)
+                                .foregroundColor(.green)
+                                .frame(width: 20, height: 20)
+                        } else {
+                            HStack(alignment: .lastTextBaseline, spacing: 0) {
+                                Text(verbatim: "\(weeklyBossesInfo.remainResinDiscount)")
+                                    .font(.title)
+                                Text(verbatim: " / \(weeklyBossesInfo.totalResinDiscount)")
+                                    .font(.caption)
+                            }
+                        }
+                        Spacer()
+                    }
+                }
+            }.help("app.dailynote.card.resin.label".i18nPZHelper)
+        }
     }
 
     @ViewBuilder
@@ -332,19 +368,20 @@ private struct DailyNoteCardView4GI: View {
     func drawExpeditions() -> some View {
         VStack(alignment: .leading) {
             let expeditionIntel = dailyNote.expeditionCompletionStatus
-            HStack(alignment: .center, spacing: 10) {
+            HStack(alignment: .center, spacing: 0) {
                 dailyNote.game.expeditionAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
                     .frame(width: iconFrame, height: iconFrame)
+                    .padding(.trailing, 10)
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
                     Text(verbatim: "\(expeditionIntel.finished)")
                         .font(.title)
                     Text(verbatim: " / \(expeditionIntel.all)")
                         .font(.caption)
+                    Spacer(minLength: 0)
                 }
-                Spacer()
                 HStack(alignment: .bottom, spacing: 0) {
                     ForEach(dailyNote.expeditionTasks, id: \.iconURL) { expedition in
                         let image = getPilotImage(expedition.iconURL) ?? Image(systemSymbol: .person)
@@ -509,7 +546,7 @@ private struct DailyNoteCardView4HSR: View {
             }
             VStack(spacing: 15) {
                 ViewThatFits(in: .horizontal) {
-                    ForEach([4, 2], id: \.self) { columnsCompatible in
+                    ForEach([4, 2, 1], id: \.self) { columnsCompatible in
                         StaggeredGrid(
                             columns: columnsCompatible,
                             outerPadding: false,
