@@ -332,19 +332,20 @@ private struct DailyNoteCardView4GI: View {
     func drawExpeditions() -> some View {
         VStack(alignment: .leading) {
             let expeditionIntel = dailyNote.expeditionCompletionStatus
-            HStack(alignment: .center, spacing: 10) {
+            HStack(alignment: .center, spacing: 0) {
                 dailyNote.game.expeditionAssetIcon
                     .resizable()
                     .scaledToFit()
                     .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
                     .frame(width: iconFrame, height: iconFrame)
+                    .padding(.trailing, 10)
                 HStack(alignment: .lastTextBaseline, spacing: 0) {
                     Text(verbatim: "\(expeditionIntel.finished)")
                         .font(.title)
                     Text(verbatim: " / \(expeditionIntel.all)")
                         .font(.caption)
+                    Spacer(minLength: 0)
                 }
-                Spacer()
                 HStack(alignment: .bottom, spacing: 0) {
                     ForEach(dailyNote.expeditionTasks, id: \.iconURL) { expedition in
                         let image = getPilotImage(expedition.iconURL) ?? Image(systemSymbol: .person)
@@ -509,7 +510,7 @@ private struct DailyNoteCardView4HSR: View {
             }
             VStack(spacing: 15) {
                 ViewThatFits(in: .horizontal) {
-                    ForEach([4, 2], id: \.self) { columnsCompatible in
+                    ForEach([4, 2, 1], id: \.self) { columnsCompatible in
                         StaggeredGrid(
                             columns: columnsCompatible,
                             outerPadding: false,
