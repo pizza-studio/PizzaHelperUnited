@@ -45,12 +45,6 @@ public struct AvatarStatCollectionTabView: View {
             if isMainBodyVisible {
                 coreBody()
                     .environment(orientation)
-                    .overlay(alignment: .top) {
-                        if !isAppKit {
-                            // AppKit 的 TabView 不支持走马灯滚动操作。
-                            HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
-                        }
-                    }
                     .containerRelativeFrame([.horizontal, .vertical]) { currentLength, currentAxis in
                         Task { @MainActor in
                             withAnimation(.easeIn(duration: 0.1)) {
@@ -66,6 +60,18 @@ public struct AvatarStatCollectionTabView: View {
                         Task { @MainActor in
                             // 强制重新渲染整个画面。
                             showTabViewIndex = $showTabViewIndex.wrappedValue
+                        }
+                    }
+                    .overlay(alignment: .top) {
+                        if !isAppKit {
+                            // AppKit 的 TabView 不支持走马灯滚动操作。
+                            HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
+                        } else {
+                            Text("enka.ASCV.scrollingGuide.appKit", bundle: Bundle.module)
+                                .font(.caption2)
+                                .fontWidth(.condensed)
+                                .opacity(0.7)
+                                .padding()
                         }
                     }
             }

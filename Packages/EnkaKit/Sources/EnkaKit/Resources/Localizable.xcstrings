@@ -1,6 +1,82 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "enka.ASCV.scrollingGuide.appKit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwenden Sie das Kontextmenü, um den aktuellen Charakter zu wechseln;\nTippen Sie irgendwo, um zu schließen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use context menu to switch the current character;\nTap anywhere to dismiss."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa el menú contextual para cambiar el personaje actual;\nToca en cualquier parte para cerrar."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gamitin ang context menu upang palitan ang kasalukuyang karakter;\nTapikin kahit saan upang isara."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilisez le menu contextuel pour changer de personnage;\nTouchez n'importe où pour fermer."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa il menu contestuale per cambiare personaggio;\nTocca ovunque per chiudere."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コンテキストメニューでキャラを切り替え、どこでもタップで閉じます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "컨텍스트 메뉴로 캐릭터를 전환하세요. 아무 곳이나 탭하면 닫힙니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используйте контекстное меню для смены персонажа;\nнажмите в любом месте для закрытия."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dùng menu ngữ cảnh để chuyển nhân vật;\nChạm bất kỳ đâu để đóng."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用上下文选单切换当前角色；点击任意位置可退出该画面。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用上下文選單切換當前角色；點按任意位置可退出該畫面。"
+          }
+        }
+      }
+    },
     "enka.ASCV.summarzeToClipboard.asMD" : {
       "localizations" : {
         "de" : {
