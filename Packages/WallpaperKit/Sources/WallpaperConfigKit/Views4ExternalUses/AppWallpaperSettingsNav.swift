@@ -7,10 +7,10 @@ import PZBaseKit
 import SwiftUI
 import WallpaperKit
 
-// MARK: - AppWallpaperSettingsPicker
+// MARK: - AppWallpaperSettingsNav
 
 #if !os(watchOS)
-public struct AppWallpaperSettingsPicker: View {
+public struct AppWallpaperSettingsNav: View {
     // MARK: Lifecycle
 
     public init() {}
@@ -28,22 +28,23 @@ public struct AppWallpaperSettingsPicker: View {
     }()
 
     public var body: some View {
-        Picker("settings.display.appBackground".i18nWPConfKit, selection: $appWallpaperID) {
-            ForEach(Wallpaper.allCases) { currentWallpaper in
-                let isChosen = currentWallpaper.id == appWallpaperID
-                switch currentWallpaper {
-                case let .bundled(wallpaper):
-                    drawBundledWallpaperLabel(wallpaper, isChosen: isChosen)
-                        .tag(currentWallpaper.id)
-                case let .user(userWallpaper):
-                    drawUserWallpaperLabel(userWallpaper, isChosen: isChosen)
-                        .tag(currentWallpaper.id)
+        NavigationLink(destination: AppWallpaperSettingsView.init) {
+            LabeledContent {
+                let currentWallpaper = Wallpaper(id: appWallpaperID) {
+                    Defaults.reset(.appWallpaperID)
                 }
+                if let currentWallpaper {
+                    switch currentWallpaper {
+                    case let .bundled(wallpaper):
+                        drawBundledWallpaperLabel(wallpaper, isChosen: false)
+                    case let .user(userWallpaper):
+                        drawUserWallpaperLabel(userWallpaper, isChosen: false)
+                    }
+                }
+            } label: {
+                Text("settings.display.appBackground".i18nWPConfKit)
             }
         }
-        #if os(iOS) || targetEnvironment(macCatalyst)
-        .pickerStyle(.navigationLink)
-        #endif
     }
 
     // MARK: Internal
