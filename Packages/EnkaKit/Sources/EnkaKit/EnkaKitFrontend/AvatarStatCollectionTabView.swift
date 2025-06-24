@@ -43,18 +43,31 @@ public struct AvatarStatCollectionTabView: View {
     public var body: some View {
         Group {
             if isMainBodyVisible {
-                GeometryReader { geometry in
-                    coreBody()
-                        .environment(orientation)
-                        .overlay(alignment: .top) {
-                            if !isAppKit {
-                                // AppKit 的 TabView 不支持走马灯滚动操作。
-                                HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
-                            }
-                        }.onChange(of: geometry.size, initial: true) { _, _ in
-                            showTabViewIndex = $showTabViewIndex.wrappedValue // 强制重新渲染整个画面。
+                coreBody()
+                    .environment(orientation)
+                    .overlay(alignment: .top) {
+                        if !isAppKit {
+                            // AppKit 的 TabView 不支持走马灯滚动操作。
+                            HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
                         }
-                }
+                    }
+                    .containerRelativeFrame([.horizontal, .vertical]) { currentLength, currentAxis in
+                        Task { @MainActor in
+                            withAnimation(.easeIn(duration: 0.1)) {
+                                switch currentAxis {
+                                case .horizontal: canvasSize.width = currentLength
+                                case .vertical: canvasSize.height = currentLength
+                                }
+                            }
+                        }
+                        return currentLength
+                    }
+                    .onChange(of: canvasSize) { _, _ in
+                        Task { @MainActor in
+                            // 强制重新渲染整个画面。
+                            showTabViewIndex = $showTabViewIndex.wrappedValue
+                        }
+                    }
             }
         }
         .environment(\.colorScheme, .dark)
@@ -144,7 +157,7 @@ public struct AvatarStatCollectionTabView: View {
                 if isEnka {
                     ForEach(summarizedAvatars) { theAvatar in
                         Button(theAvatar.mainInfo.name) {
-                            withAnimation {
+                            withAnimation(.easeIn(duration: 0.1)) {
                                 showingCharacterIdentifier = theAvatar.mainInfo.uniqueCharId
                             }
                         }
@@ -156,7 +169,7 @@ public struct AvatarStatCollectionTabView: View {
                             Menu {
                                 ForEach(avatarsOfThisElement) { charNameID in
                                     Button(charNameID.name) {
-                                        withAnimation {
+                                        withAnimation(.easeIn(duration: 0.1)) {
                                             showingCharacterIdentifier = charNameID.id
                                         }
                                     }
@@ -194,6 +207,7 @@ public struct AvatarStatCollectionTabView: View {
         let name: String
     }
 
+    @State private var canvasSize: CGSize = .init(width: 375, height: 667)
     @State private var showTabViewIndex = false
     @Binding private var showingCharacterIdentifier: String
     @StateObject private var orientation = DeviceOrientation()
@@ -215,7 +229,9 @@ public struct AvatarStatCollectionTabView: View {
         })
     }
 
-    private var scaleRatioCompatible: CGFloat { DeviceOrientation.scaleRatioCompatible }
+    private var scaleRatioCompatible: CGFloat {
+        DeviceOrientation.calculateScaleRatio(canvasSize: canvasSize)
+    }
 
     private var hasNoAvatars: Bool { summarizedAvatars.isEmpty }
 
