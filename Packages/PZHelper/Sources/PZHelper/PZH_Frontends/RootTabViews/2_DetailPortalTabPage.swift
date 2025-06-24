@@ -26,6 +26,7 @@ struct DetailPortalTabPage: View {
         if wrappedByNavStack {
             NavigationStack {
                 formContentHooked
+                    .navBarTitleDisplayMode(.large)
                     .scrollContentBackground(.hidden)
                     .listContainerBackground()
             }
@@ -39,10 +40,6 @@ struct DetailPortalTabPage: View {
             formContent
         }
         .formStyle(.grouped)
-        .safeAreaInset(edge: .bottom) {
-            tabNavVM.tabBarForMacCatalyst
-                .fixedSize(horizontal: false, vertical: true)
-        }
         .refreshable {
             refreshAction()
         }

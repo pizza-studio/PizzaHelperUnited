@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZBaseKit
 import SwiftUI
 
 // MARK: Internal
@@ -22,6 +23,23 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
 
     // MARK: Public
 
+    nonisolated public static let allCases: [AppTabNav] = [
+        .today,
+        .showcaseDetail,
+        .utils,
+        .appSettings,
+    ]
+
+    nonisolated public static let enabledSubCases: [AppTabNav] = [
+        .showcaseDetail,
+        .utils,
+        .appSettings,
+    ]
+
+    public static var exposedCaseTags: [Int] {
+        [1, 2, 3, 0]
+    }
+
     nonisolated public var id: Int { rootID }
 
     nonisolated public var rootID: Int {
@@ -31,6 +49,28 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
         case .utils: 3
         case .appSettings: 0
         }
+    }
+
+    public var labelNameText: Text {
+        switch self {
+        case .today: Text("tab.today".i18nPZHelper)
+        case .showcaseDetail: Text("tab.details".i18nPZHelper)
+        case .utils: Text("tab.utils".i18nPZHelper)
+        case .appSettings: Text("tab.settings".i18nPZHelper)
+        }
+    }
+
+    public var icon: Image {
+        switch self {
+        case .today: Image(systemSymbol: .windshieldFrontAndWiperAndDrop)
+        case .showcaseDetail: Image(systemSymbol: .personTextRectangleFill)
+        case .utils: Image(systemSymbol: .shippingboxFill)
+        case .appSettings: Image(systemSymbol: .wrenchAndScrewdriverFill)
+        }
+    }
+
+    public var isExposed: Bool {
+        Self.exposedCaseTags.contains(rootID)
     }
 
     @ViewBuilder public var body: some View {
@@ -55,28 +95,6 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
     }
 
     public var label: some View {
-        switch self {
-        case .today: Label("tab.today".i18nPZHelper, systemSymbol: .windshieldFrontAndWiperAndDrop)
-        case .showcaseDetail: Label("tab.details".i18nPZHelper, systemSymbol: .personTextRectangleFill)
-        case .utils: Label("tab.utils".i18nPZHelper, systemSymbol: .shippingboxFill)
-        case .appSettings: Label("tab.settings".i18nPZHelper, systemSymbol: .wrenchAndScrewdriverFill)
-        }
-    }
-
-    // MARK: Internal
-
-    nonisolated static let allCases: [AppTabNav] = [
-        .today,
-        .showcaseDetail,
-        .utils,
-        .appSettings,
-    ]
-
-    static var exposedCaseTags: [Int] {
-        [1, 2, 3, 0]
-    }
-
-    var isExposed: Bool {
-        Self.exposedCaseTags.contains(rootID)
+        Label(title: { labelNameText }, icon: { icon })
     }
 }
