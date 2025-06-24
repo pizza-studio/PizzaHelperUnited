@@ -17,15 +17,19 @@ struct TodayTabPage: View {
     // MARK: Lifecycle
 
     public init(wrappedByNavStack: Bool = true) {
+        self.rootTabNavBinding = GlobalNavVM.shared.rootTabNavBindingNullable
         self.wrappedByNavStack = wrappedByNavStack
     }
 
     // MARK: Internal
 
+    let rootTabNavBinding: Binding<AppTabNav?>
+
     var body: some View {
         if wrappedByNavStack {
             NavigationStack {
                 formContentHooked
+                    .navBarTitleDisplayMode(.large)
                     .scrollContentBackground(.hidden)
                     .listContainerBackground()
             }
@@ -35,12 +39,24 @@ struct TodayTabPage: View {
     }
 
     @ViewBuilder var formContentHooked: some View {
-        Form {
+        let innerContents = Group {
             ASUpdateNoticeView()
                 .font(.footnote)
                 .listRowMaterialBackground()
             OfficialFeed.OfficialFeedSection(game: $game.animation()) {
                 todayMaterialNav
+            } sectionHeader: {
+                if !wrappedByNavStack {
+                    HStack {
+                        Button("sys.refresh".i18nBaseKit, systemImage: "arrow.clockwise") { refresh() }
+                            .buttonStyle(.borderless)
+                        Spacer()
+                        gamePicker
+                            .pickerStyle(.menu)
+                            .buttonStyle(.borderless)
+                    }
+                    .textCase(.none)
+                }
             }
             .listRowMaterialBackground()
             if pzProfiles.isEmpty {
@@ -58,21 +74,48 @@ struct TodayTabPage: View {
                 }
             }
         }
-        .formStyle(.grouped)
-        .safeAreaInset(edge: .bottom) {
-            tabNavVM.tabBarForMacCatalyst
-                .fixedSize(horizontal: false, vertical: true)
+
+        Group {
+            Form {
+                innerContents
+                    .listRowInsets(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
+            }
+            .formStyle(.grouped)
+            .background(alignment: .bottom) {
+                if !wrappedByNavStack {
+                    // 这个隐形 List 不要删除，否则 NavSplitView 全局导航会失效。
+                    List(selection: rootTabNavBinding) {}
+                        .fixedSize()
+                        .frame(height: 0)
+                        .opacity(0)
+                }
+            }
         }
         .navigationTitle("tab.today.fullTitle".i18nPZHelper)
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("".description, systemImage: "arrow.clockwise") { refresh() }
-            }
-            if !games.isEmpty {
-                ToolbarItem(placement: .confirmationAction) {
+        .contextMenu {
+            if !wrappedByNavStack {
+                Button("sys.refresh".i18nBaseKit, systemImage: "arrow.clockwise") { refresh() }
+                if !games.isEmpty {
+                    Divider()
                     gamePicker
-                        .pickerStyle(.segmented)
-                        .fixedSize()
+                        .pickerStyle(.menu)
+                }
+            }
+        }
+        .toolbar {
+            if wrappedByNavStack {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("sys.refresh".i18nBaseKit, systemImage: "arrow.clockwise") { refresh() }
+                }
+                if !games.isEmpty {
+                    ToolbarItem(placement: .confirmationAction) {
+                        ViewThatFits {
+                            gamePicker
+                                .pickerStyle(.segmented)
+                            gamePicker
+                                .pickerStyle(.menu)
+                        }
+                    }
                 }
             }
         }
@@ -92,33 +135,45 @@ struct TodayTabPage: View {
         if shouldShowGenshinTodayMaterial {
             let navName =
                 "\(GITodayMaterialsView<EmptyView>.navTitle) (\(Pizza.SupportedGame.genshinImpact.localizedDescriptionTrimmed))"
-            NavigationLink {
-                GITodayMaterialsView { isWeapon, itemID in
-                    if isWeapon {
-                        Enka.queryImageAssetSUI(for: "gi_weapon_\(itemID)")?
-                            .resizable().aspectRatio(contentMode: .fit)
-                            .frame(height: 64)
-                    } else {
-                        if Enka.Sputnik.shared.db4GI.characters.keys.contains(itemID) {
-                            CharacterIconView(charID: itemID, cardSize: 64)
-                        }
-                    }
-                }
+            Button {
+                isTodayMaterialSheetShown.toggle()
             } label: {
-                Text(navName)
+                LabeledContent {
+                    Image(systemSymbol: .calendarBadgeClock)
+                } label: {
+                    Text(navName)
+                }
+                .contentShape(.rect)
             }
+            .buttonStyle(.plain)
             .listRowMaterialBackground()
+            .sheet(isPresented: $isTodayMaterialSheetShown) {
+                NavigationStack {
+                    giTodayMaterialsView
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("sys.close".i18nBaseKit) {
+                                    isTodayMaterialSheetShown.toggle()
+                                }
+                            }
+                        }
+                }
+            }
         }
     }
 
     // MARK: Private
 
+    @State private var isTodayMaterialSheetShown: Bool = false
     @State private var wrappedByNavStack: Bool
     @State private var game: Pizza.SupportedGame? = .none
     @StateObject private var tabNavVM = GlobalNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
     @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
+
+    private let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
     private var filteredProfiles: [PZProfileSendable] {
         pzProfiles.values.filter {
@@ -149,12 +204,28 @@ struct TodayTabPage: View {
 
     @ViewBuilder private var gamePicker: some View {
         if !pzProfiles.isEmpty {
-            Picker("".description, selection: $game.animation()) {
+            Picker(game.localizedShortName, selection: $game.animation()) {
                 Text(Pizza.SupportedGame?.none.localizedShortName)
                     .tag(nil as Pizza.SupportedGame?)
                 ForEach(games) { game in
                     Text(game.localizedShortName)
                         .tag(game as Pizza.SupportedGame?)
+                }
+            }
+            .labelsHidden()
+            .fixedSize()
+        }
+    }
+
+    @ViewBuilder private var giTodayMaterialsView: some View {
+        GITodayMaterialsView { isWeapon, itemID in
+            if isWeapon {
+                Enka.queryImageAssetSUI(for: "gi_weapon_\(itemID)")?
+                    .resizable().aspectRatio(contentMode: .fit)
+                    .frame(height: 64)
+            } else {
+                if Enka.Sputnik.shared.db4GI.characters.keys.contains(itemID) {
+                    CharacterIconView(charID: itemID, cardSize: 64)
                 }
             }
         }

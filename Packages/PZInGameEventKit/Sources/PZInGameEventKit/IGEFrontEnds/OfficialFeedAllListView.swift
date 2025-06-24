@@ -148,6 +148,9 @@ extension OfficialFeed {
             webview
                 .navBarTitleDisplayMode(.inline)
                 .navigationTitle(event.title)
+            #if os(macOS) && !targetEnvironment(macCatalyst)
+                .frame(height: 563)
+            #endif
         }
 
         func getIndex(Card: EventModel) -> Int {
