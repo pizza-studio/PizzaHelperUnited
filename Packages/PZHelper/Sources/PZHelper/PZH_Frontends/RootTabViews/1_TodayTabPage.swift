@@ -109,12 +109,11 @@ struct TodayTabPage: View {
                 }
                 if !games.isEmpty {
                     ToolbarItem(placement: .confirmationAction) {
-                        if horizontalSizeClass == .compact || isAppKit {
-                            gamePicker
-                                .pickerStyle(.menu)
-                        } else {
+                        ViewThatFits {
                             gamePicker
                                 .pickerStyle(.segmented)
+                            gamePicker
+                                .pickerStyle(.menu)
                         }
                     }
                 }
@@ -140,7 +139,7 @@ struct TodayTabPage: View {
                 isTodayMaterialSheetShown.toggle()
             } label: {
                 LabeledContent {
-                    Image(systemSymbol: .calendarCircle)
+                    Image(systemSymbol: .calendarBadgeClock)
                 } label: {
                     Text(navName)
                 }
