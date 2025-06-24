@@ -86,6 +86,20 @@ extension DeviceOrientation {
         return result
     }
 
+    public static func calculateScaleRatio(canvasSize: CGSize) -> CGFloat {
+        var result = canvasSize.width / basicWindowSize.width
+        let zoomedSize = CGSize(
+            width: basicWindowSize.width * result,
+            height: basicWindowSize.height * result
+        )
+        let compatible = CGRect(origin: .zero, size: canvasSize)
+            .contains(CGRect(origin: .zero, size: zoomedSize))
+        if !compatible {
+            result = canvasSize.height / basicWindowSize.height
+        }
+        return result
+    }
+
     public static func getKeyWindowSize() -> CGSize? {
         #if canImport(UIKit)
         return UIApplication.shared.connectedScenes
