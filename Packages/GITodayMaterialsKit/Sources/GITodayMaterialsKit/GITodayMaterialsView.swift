@@ -25,36 +25,41 @@ public struct GITodayMaterialsView<T: View>: View {
     }
 
     public var body: some View {
-        Form {
-            content
-                .listRowMaterialBackground()
-        }
-        .formStyle(.grouped)
-        .scrollContentBackground(.hidden)
-        .listContainerBackground()
-        .navBarTitleDisplayMode(.large)
-        .navigationTitle(Self.navTitle)
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Picker("".description, selection: $isWeapon.animation()) {
-                    Text("todayMaterialsKit.character.short".i18nTodayMaterials).tag(false)
-                    Text("todayMaterialsKit.weapon.short".i18nTodayMaterials).tag(true)
-                }
-                .pickerStyle(.segmented)
-                .fixedSize()
+        NavigationStack {
+            Form {
+                content
+                    .listRowMaterialBackground()
             }
-            ToolbarItem(placement: .principal) {
-                Picker("".description, selection: $weekday.animation()) {
-                    Text(Material.AvailableWeekDay?.none.localizedName).tag(Material.AvailableWeekDay?.none)
-                    ForEach(Material.AvailableWeekDay.allCases) { weekday in
-                        let weekday = weekday as Material.AvailableWeekDay?
-                        Text(weekday.localizedName).tag(weekday as Material.AvailableWeekDay?)
+            .formStyle(.grouped)
+            .scrollContentBackground(.hidden)
+            .listContainerBackground()
+            .navBarTitleDisplayMode(.large)
+            .navigationTitle(Self.navTitle)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Picker("".description, selection: $isWeapon.animation()) {
+                        Text("todayMaterialsKit.character.short".i18nTodayMaterials).tag(false)
+                        Text("todayMaterialsKit.weapon.short".i18nTodayMaterials).tag(true)
+                    }
+                    .pickerStyle(.segmented)
+                    .fixedSize()
+                }
+                if !isAppKit {
+                    ToolbarItem(placement: .principal) {
+                        Picker("".description, selection: $weekday.animation()) {
+                            Text(Material.AvailableWeekDay?.none.localizedName).tag(Material.AvailableWeekDay?.none)
+                            ForEach(Material.AvailableWeekDay.allCases) { weekday in
+                                let weekday = weekday as Material.AvailableWeekDay?
+                                Text(weekday.localizedName).tag(weekday as Material.AvailableWeekDay?)
+                            }
+                        }
+                        .pickerStyle(.menu)
+                        .labelsHidden()
+                        .fixedSize()
+                        .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
+                        .clipShape(.capsule)
                     }
                 }
-                .pickerStyle(.menu)
-                .fixedSize()
-                .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
-                .clipShape(.capsule)
             }
         }
         .onAppear {
@@ -67,9 +72,30 @@ public struct GITodayMaterialsView<T: View>: View {
 
     // MARK: Internal
 
-    var content: some View {
+    @ViewBuilder var content: some View {
+        if isAppKit {
+            Picker("".description, selection: $weekday.animation()) {
+                Text(Material.AvailableWeekDay?.none.localizedName).tag(Material.AvailableWeekDay?.none)
+                ForEach(Material.AvailableWeekDay.allCases) { weekday in
+                    let weekday = weekday as Material.AvailableWeekDay?
+                    Text(weekday.localizedName).tag(weekday as Material.AvailableWeekDay?)
+                }
+            }
+            .labelsHidden()
+            .pickerStyle(.segmented)
+        }
         ForEach(materialsFiltered.reversed()) { material in
-            LabeledContent {
+            HStack {
+                material.iconObj
+                    .resizable().aspectRatio(contentMode: .fit)
+                    .frame(width: 96, height: 96)
+                    .scaleEffect(1)
+                    .clipped()
+                    .frame(width: 84, height: 96)
+                    .corneredTag(
+                        verbatim: material.availableWeekDay.localizedName,
+                        alignment: .bottom
+                    )
                 VStack(alignment: .leading, spacing: 4) {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 4) {
@@ -84,17 +110,7 @@ public struct GITodayMaterialsView<T: View>: View {
                     }
                 }
                 .frame(height: 96)
-            } label: {
-                material.iconObj
-                    .resizable().aspectRatio(contentMode: .fit)
-                    .frame(width: 96, height: 96)
-                    .scaleEffect(1)
-                    .clipped()
-                    .frame(width: 84, height: 96)
-                    .corneredTag(
-                        verbatim: material.availableWeekDay.localizedName,
-                        alignment: .bottom
-                    )
+                .frame(maxWidth: .infinity)
             }
         }
     }
@@ -109,6 +125,7 @@ public struct GITodayMaterialsView<T: View>: View {
 
     private let data: [Material]
     private let querier: (Bool, String) -> T
+    private let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
     private var materialsFiltered: [Material] {
         data.filter {

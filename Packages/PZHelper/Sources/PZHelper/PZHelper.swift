@@ -19,16 +19,16 @@ extension PZHelper {
         WindowGroup {
             ContentView()
                 .initializeApp()
-                .environment(\.horizontalSizeClass, .compact)
+                // .environment(\.horizontalSizeClass, .compact)
                 .defaultAppStorage(.baseSuite)
             #if targetEnvironment(macCatalyst)
                 .frame(
-                    minWidth: OS.liquidGlassThemeSuspected ? 640 : 600,
+                    minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
                     minHeight: 800
                 )
             #elseif os(macOS) && !targetEnvironment(macCatalyst)
                 .frame(
-                    minWidth: OS.liquidGlassThemeSuspected ? 504 : 464,
+                    minWidth: OS.liquidGlassThemeSuspected ? 768 : 640,
                     minHeight: 646
                 )
             #endif
