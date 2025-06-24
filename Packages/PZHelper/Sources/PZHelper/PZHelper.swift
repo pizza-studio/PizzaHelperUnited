@@ -44,6 +44,9 @@ extension PZHelper {
                     }
                 }
         }
+        #if os(macOS) && !targetEnvironment(macCatalyst)
+        .windowToolbarStyle(.expanded)
+        #endif
         .windowResizability(.contentMinSize)
         .modelContainer(modelContainer)
     }
