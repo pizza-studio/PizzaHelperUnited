@@ -18,15 +18,15 @@ struct UISettingsPageContent: View {
     var body: some View {
         Form {
             Section {
-                AppWallpaperSettingsPicker()
+                AppWallpaperSettingsNav()
                     .alignmentGuide(.listRowSeparatorLeading) { d in
                         d[.leading]
                     }
             } header: {
-                Text(AppWallpaperSettingsPicker.navSectionHeader)
+                Text(AppWallpaperSettingsNav.navSectionHeader)
                     .textCase(.none)
             } footer: {
-                Text(AppWallpaperSettingsPicker.navDescription)
+                Text(AppWallpaperSettingsNav.navDescription)
             }
 
             Section {
