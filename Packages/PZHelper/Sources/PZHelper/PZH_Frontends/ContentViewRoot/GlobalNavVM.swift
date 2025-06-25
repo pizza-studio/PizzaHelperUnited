@@ -13,6 +13,25 @@ import SwiftUI
 final class GlobalNavVM: Sendable, ObservableObject {
     // MARK: Public
 
+    @ViewBuilder public var gotoSettingsButtonIfAppropriate: some View {
+        if rootTabNav != .appSettings {
+            Button {
+                withAnimation {
+                    self.rootTabNav = .appSettings
+                }
+            } label: {
+                Text("app.dailynote.noCard.switchToSettingsPage".i18nPZHelper)
+                    .fontWidth(.condensed)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
+            .tint(.green)
+            .listRowMaterialBackground()
+        }
+    }
+
     @MainActor @ViewBuilder
     public func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
         @Bindable var this = self

@@ -64,13 +64,16 @@ struct TodayTabPage: View {
             }
             .listRowMaterialBackground()
             if pzProfiles.isEmpty {
-                Label {
-                    Text("app.dailynote.noCard.suggestion".i18nPZHelper)
-                } icon: {
-                    Image(systemSymbol: .questionmarkCircle)
-                        .foregroundColor(.yellow)
+                Section {
+                    Label {
+                        Text("app.dailynote.noCard.suggestion".i18nPZHelper)
+                    } icon: {
+                        Image(systemSymbol: .questionmarkCircle)
+                            .foregroundColor(.yellow)
+                    }
+                    .listRowMaterialBackground()
+                    tabNavVM.gotoSettingsButtonIfAppropriate
                 }
-                .listRowMaterialBackground()
             } else {
                 ForEach(filteredProfiles) { profile in
                     InAppDailyNoteCardView(profile: profile)
