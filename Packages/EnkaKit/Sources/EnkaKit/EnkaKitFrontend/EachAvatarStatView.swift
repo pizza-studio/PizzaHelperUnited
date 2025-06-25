@@ -40,6 +40,7 @@ public struct EachAvatarStatView: View {
             }
             artifactGrid
         }
+        .clipShape(.rect)
         .environment(\.colorScheme, .dark)
         .padding(Self.spacingDeltaAmount * 5)
         .frame(width: 375 * Self.zoomFactor) // 输出画面刚好 375*500，可同时相容于 iPad。
