@@ -146,9 +146,6 @@ public struct AvatarStatCollectionTabView: View {
         #if !os(macOS)
         .statusBarHidden(true)
         #endif
-        .apply { currentContent in
-            hookSidebarHandlers(currentContent)
-        }
     }
 
     // MARK: Internal
@@ -264,34 +261,5 @@ public struct AvatarStatCollectionTabView: View {
 
     private var isMainBodyVisible: Bool {
         !hasNoAvatars && allIDs.contains(showingCharacterIdentifier)
-    }
-
-    private var isCompact: Bool {
-        horizontalSizeClass == .compact
-    }
-
-    private var sideBarConditionMonitoringHash: Int {
-        var hasher = Hasher()
-        hasher.combine(horizontalSizeClass)
-        hasher.combine(orientation.orientation)
-        return hasher.finalize()
-    }
-
-    @ViewBuilder
-    private func hookSidebarHandlers(_ givenView: some View) -> some View {
-        givenView
-            .onChange(of: sideBarConditionMonitoringHash, initial: true) { _, newValue in
-                updateSidebarHandlingStatus()
-            }
-            .onDisappear {
-                Broadcaster.shared.splitViewVisibility = .all
-            }
-    }
-
-    private func updateSidebarHandlingStatus() {
-        switch orientation.orientation {
-        case .landscape where !isCompact: Broadcaster.shared.splitViewVisibility = .all
-        default: Broadcaster.shared.splitViewVisibility = .detailOnly
-        }
     }
 }
