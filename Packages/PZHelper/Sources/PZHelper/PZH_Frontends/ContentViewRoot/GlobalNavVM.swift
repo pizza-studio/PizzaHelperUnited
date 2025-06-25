@@ -76,40 +76,38 @@ final class GlobalNavVM: Sendable, ObservableObject {
 
     @ViewBuilder
     public func bottomTabBarForCompactLayout(allCases: Bool) -> some View {
-        if appTabVM.latestVisibility != .hidden {
-            let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
-            HStack(spacing: 0) {
-                ForEach(effectiveCases) { navCase in
-                    let isChosen: Bool = navCase == self.rootTabNav
-                    if navCase.isExposed {
-                        Button {
-                            withAnimation(.easeInOut) {
-                                self.rootTabNav = navCase
-                            }
-                        } label: {
-                            VStack(spacing: 0) {
-                                navCase.icon.frame(width: 30, height: 30)
-                                navCase.labelNameText
-                                    .font(.footnote)
-                                    .padding(.bottom, OS.liquidGlassThemeSuspected ? 0 : 4)
-                            }
-                            .padding(.vertical, 4)
-                            .fixedSize()
-                            .labelStyle(.titleAndIcon)
-                            .fontWidth(.compressed)
-                            .fontWeight(isChosen ? .bold : .regular)
-                            .foregroundStyle(isChosen ? Color.accentColor : .secondary)
-                            .padding()
-                            .contentShape(.rect)
-                            .frame(maxWidth: OS.liquidGlassThemeSuspected ? nil : .infinity)
+        let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
+        HStack(spacing: 0) {
+            ForEach(effectiveCases) { navCase in
+                let isChosen: Bool = navCase == self.rootTabNav
+                if navCase.isExposed {
+                    Button {
+                        withAnimation(.easeInOut) {
+                            self.rootTabNav = navCase
                         }
-                        .buttonStyle(.plain)
-                        .id(navCase)
+                    } label: {
+                        VStack(spacing: 0) {
+                            navCase.icon.frame(width: 30, height: 30)
+                            navCase.labelNameText
+                                .font(.footnote)
+                                .padding(.bottom, OS.liquidGlassThemeSuspected ? 0 : 4)
+                        }
+                        .padding(.vertical, 4)
+                        .fixedSize()
+                        .labelStyle(.titleAndIcon)
+                        .fontWidth(.compressed)
+                        .fontWeight(isChosen ? .bold : .regular)
+                        .foregroundStyle(isChosen ? Color.accentColor : .secondary)
+                        .padding()
+                        .contentShape(.rect)
+                        .frame(maxWidth: OS.liquidGlassThemeSuspected ? nil : .infinity)
                     }
+                    .buttonStyle(.plain)
+                    .id(navCase)
                 }
             }
-            .frame(height: 50)
         }
+        .frame(height: 50)
     }
 
     // MARK: Internal
@@ -117,8 +115,6 @@ final class GlobalNavVM: Sendable, ObservableObject {
     static let shared = GlobalNavVM()
 
     static let isAppKit = OS.type == .macOS && !OS.isCatalyst
-
-    var appTabVM = AppTabBarVM.shared
 
     var rootTabNavBindingNullable: Binding<AppTabNav?> {
         .init(
