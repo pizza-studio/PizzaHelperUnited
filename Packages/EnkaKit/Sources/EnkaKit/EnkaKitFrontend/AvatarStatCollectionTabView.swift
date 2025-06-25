@@ -56,7 +56,7 @@ public struct AvatarStatCollectionTabView: View {
                         }
                         return currentLength
                     }
-                    .onChange(of: canvasSize) { _, _ in
+                    .onChange(of: canvasSize, initial: true) { _, _ in
                         Task { @MainActor in
                             // 强制重新渲染整个画面。
                             showTabViewIndex = $showTabViewIndex.wrappedValue
@@ -98,17 +98,12 @@ public struct AvatarStatCollectionTabView: View {
             .page(indexDisplayMode: showTabViewIndex ? .automatic : .never)
         )
         #endif
+        .compositingGroup()
         .background {
-            ZStack {
-                Color(hue: 0, saturation: 0, brightness: 0.1)
-                avatar?.asBackground(useNameCardBG: useNameCardBackgrounds)
-                    .scaledToFill()
-                    .scaleEffect(1.2)
-                    .clipped()
-            }
-            .compositingGroup()
-            .ignoresSafeArea(.all)
+            // 此处设计仅为了扩大点击范围。
+            Color.clear
         }
+        .contextMenu { contextMenuContents }
         .onTapGesture {
             if let onClose {
                 onClose()
@@ -117,20 +112,17 @@ public struct AvatarStatCollectionTabView: View {
                 presentationMode.wrappedValue.dismiss()
             }
         }
-        .contextMenu { contextMenuContents }
-        .clipped()
-        .compositingGroup()
-        .onChange(of: showingCharacterIdentifier) { _, _ in
+        .onChange(of: showingCharacterIdentifier, initial: true) { _, _ in
             simpleTaptic(type: .selection)
             withAnimation(.easeIn(duration: 0.1)) {
                 showTabViewIndex = true
             }
         }
-        .ignoresSafeArea()
+        .ignoresSafeArea(.all, edges: .vertical)
         .onAppear {
             showTabViewIndex = true
         }
-        .onChange(of: showTabViewIndex) { _, newValue in
+        .onChange(of: showTabViewIndex, initial: true) { _, newValue in
             if newValue == true {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
                     withAnimation {
@@ -139,9 +131,24 @@ public struct AvatarStatCollectionTabView: View {
                 }
             }
         }
+        .background {
+            // 为了兼容 iOS 26 / macOS 26，必须得把背景挪到这个层面来处理。
+            ZStack {
+                Color(hue: 0, saturation: 0, brightness: 0.1)
+                avatar?.asBackground(useNameCardBG: useNameCardBackgrounds)
+                    .scaledToFill()
+                    .scaleEffect(1.2)
+                    .clipped()
+            }
+            .compositingGroup()
+            .ignoresSafeArea(.all, edges: .all)
+        }
         #if !os(macOS)
         .statusBarHidden(true)
         #endif
+        .apply { currentContent in
+            hookSidebarHandlers(currentContent)
+        }
     }
 
     // MARK: Internal
@@ -217,6 +224,7 @@ public struct AvatarStatCollectionTabView: View {
     @State private var showTabViewIndex = false
     @Binding private var showingCharacterIdentifier: String
     @StateObject private var orientation = DeviceOrientation()
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     @Default(.useNameCardBGWithGICharacters) private var useNameCardBGWithGICharacters: Bool
@@ -256,5 +264,34 @@ public struct AvatarStatCollectionTabView: View {
 
     private var isMainBodyVisible: Bool {
         !hasNoAvatars && allIDs.contains(showingCharacterIdentifier)
+    }
+
+    private var isCompact: Bool {
+        horizontalSizeClass == .compact
+    }
+
+    private var sideBarConditionMonitoringHash: Int {
+        var hasher = Hasher()
+        hasher.combine(horizontalSizeClass)
+        hasher.combine(orientation.orientation)
+        return hasher.finalize()
+    }
+
+    @ViewBuilder
+    private func hookSidebarHandlers(_ givenView: some View) -> some View {
+        givenView
+            .onChange(of: sideBarConditionMonitoringHash, initial: true) { _, newValue in
+                updateSidebarHandlingStatus()
+            }
+            .onDisappear {
+                Broadcaster.shared.splitViewVisibility = .all
+            }
+    }
+
+    private func updateSidebarHandlingStatus() {
+        switch orientation.orientation {
+        case .landscape where !isCompact: Broadcaster.shared.splitViewVisibility = .all
+        default: Broadcaster.shared.splitViewVisibility = .detailOnly
+        }
     }
 }

@@ -4,6 +4,7 @@
 
 import Foundation
 import Observation
+import SwiftUI
 import WidgetKit
 
 // MARK: - Broadcaster
@@ -15,6 +16,7 @@ public final class Broadcaster: ObservableObject, Sendable {
     public private(set) var eventForRefreshingCurrentPage: UUID = .init()
     public private(set) var eventForJustSwitchedToTodayTab: UUID = .init()
     public private(set) var eventForStoppingRootTabTasks: UUID = .init()
+    public var splitViewVisibility: NavigationSplitViewVisibility = .all // Accessible by SPM.
 
     public func todayTabDidSwitchTo() {
         eventForJustSwitchedToTodayTab = .init()
