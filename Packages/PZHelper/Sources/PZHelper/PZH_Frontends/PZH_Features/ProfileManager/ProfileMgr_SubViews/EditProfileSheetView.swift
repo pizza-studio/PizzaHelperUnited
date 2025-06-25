@@ -13,9 +13,11 @@ extension ProfileManagerPageContent {
     struct EditProfileSheetView: View {
         // MARK: Lifecycle
 
-        init(profile: PZProfileMO, sheetType: Binding<SheetType?>) {
-            self._sheetType = sheetType
+        init(profile: PZProfileMO) {
             self._profile = State(wrappedValue: profile)
+            Task { @MainActor in
+                ProfileManagerVM.shared.sheetType = .editExistingProfile(profile)
+            }
         }
 
         // MARK: Internal
@@ -29,6 +31,12 @@ extension ProfileManagerPageContent {
                 .saturation(theVM.taskState == .busy ? 0 : 1)
                 .formStyle(.grouped)
                 .navigationTitle("profileMgr.edit.title".i18nPZHelper)
+                // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
+                .appTabBarVisibility(.hidden)
+                // 逼着用户改用自订的后退按钮。
+                // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
+                // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
+                .navigationBarBackButtonHidden(true)
                 .navBarTitleDisplayMode(.large)
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
@@ -41,8 +49,13 @@ extension ProfileManagerPageContent {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {
                             theVM.discardUncommittedChanges()
-                            sheetType = nil
+                            theVM.sheetType = nil
                         }
+                    }
+                }
+                .onChange(of: theVM.sheetType) { oldValue, newValue in
+                    if oldValue != nil, newValue == nil {
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }
@@ -50,12 +63,12 @@ extension ProfileManagerPageContent {
 
         // MARK: Private
 
-        @Binding private var sheetType: SheetType?
         @State private var profile: PZProfileMO
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
         @StateObject private var theVM: ProfileManagerVM = .shared
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
+        @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
         private func saveButtonDidTap() {
             if theVM.hasUncommittedChanges {
@@ -63,7 +76,7 @@ extension ProfileManagerPageContent {
                     profile.asSendable,
                     trailingTasks: {
                         PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-                        sheetType = nil
+                        theVM.sheetType = nil
                         Broadcaster.shared.requireOSNotificationCenterAuthorization()
                         Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                         alertToastEventStatus.isProfileTaskSucceeded.toggle()
@@ -74,7 +87,7 @@ extension ProfileManagerPageContent {
                     }
                 )
             } else {
-                sheetType = nil
+                theVM.sheetType = nil
                 alertToastEventStatus.isProfileTaskSucceeded.toggle()
             }
         }
