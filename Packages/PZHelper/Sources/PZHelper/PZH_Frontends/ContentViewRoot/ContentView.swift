@@ -43,6 +43,7 @@ public struct ContentView: View {
             #endif
         } detail: {
             tabNavVM.rootTabNav.body
+                .appTabBarVisibility(.visible)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
                     ToolbarItem(placement: isCompact ? .bottomBar : .cancellationAction) {
@@ -64,7 +65,6 @@ public struct ContentView: View {
             hookSidebarAndPageHandlers(currentContent)
         }
         .navigationSplitViewColumnWidth(sideBarWidth)
-        .appTabBarVisibility(.visible)
         .environment(GachaVM.shared)
     }
 
