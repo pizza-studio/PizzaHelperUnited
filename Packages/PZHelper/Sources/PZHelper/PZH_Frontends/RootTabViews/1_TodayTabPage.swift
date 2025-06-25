@@ -38,53 +38,53 @@ struct TodayTabPage: View {
         }
     }
 
-    @ViewBuilder var formContentHooked: some View {
-        let innerContents = Group {
-            ASUpdateNoticeView()
-                .font(.footnote)
-                .listRowMaterialBackground()
-            OfficialFeed.OfficialFeedSection(game: $game.animation()) {
-                todayMaterialNav
-            } sectionHeader: {
-                if !wrappedByNavStack {
-                    HStack {
-                        Spacer()
-                        gamePicker
-                            .pickerStyle(.menu)
-                            .buttonStyle(.borderless)
-                        Button {
-                            refresh()
-                        } label: {
-                            Image(systemSymbol: .arrowClockwise)
-                        }
-                        .buttonStyle(.borderless)
-                    }
-                    .textCase(.none)
-                }
-            }
+    @ViewBuilder var formContentToHook: some View {
+        ASUpdateNoticeView()
+            .font(.footnote)
             .listRowMaterialBackground()
-            if pzProfiles.isEmpty {
-                Section {
-                    Label {
-                        Text("app.dailynote.noCard.suggestion".i18nPZHelper)
-                    } icon: {
-                        Image(systemSymbol: .questionmarkCircle)
-                            .foregroundColor(.yellow)
+        OfficialFeed.OfficialFeedSection(game: $game.animation()) {
+            todayMaterialNav
+        } sectionHeader: {
+            if !wrappedByNavStack {
+                HStack {
+                    Spacer()
+                    gamePicker
+                        .pickerStyle(.menu)
+                        .buttonStyle(.borderless)
+                    Button {
+                        refresh()
+                    } label: {
+                        Image(systemSymbol: .arrowClockwise)
                     }
-                    .listRowMaterialBackground()
-                    tabNavVM.gotoSettingsButtonIfAppropriate
+                    .buttonStyle(.borderless)
                 }
-            } else {
-                ForEach(filteredProfiles) { profile in
-                    InAppDailyNoteCardView(profile: profile)
-                        .listRowMaterialBackground()
-                }
+                .textCase(.none)
             }
         }
+        .listRowMaterialBackground()
+        if pzProfiles.isEmpty {
+            Section {
+                Label {
+                    Text("app.dailynote.noCard.suggestion".i18nPZHelper)
+                } icon: {
+                    Image(systemSymbol: .questionmarkCircle)
+                        .foregroundColor(.yellow)
+                }
+                .listRowMaterialBackground()
+                tabNavVM.gotoSettingsButtonIfAppropriate
+            }
+        } else {
+            ForEach(filteredProfiles) { profile in
+                InAppDailyNoteCardView(profile: profile)
+                    .listRowMaterialBackground()
+            }
+        }
+    }
 
+    @ViewBuilder var formContentHooked: some View {
         Group {
             Form {
-                innerContents
+                formContentToHook
                     .listRowInsets(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
             }
             .formStyle(.grouped)
