@@ -109,12 +109,9 @@ struct TodayTabPage: View {
                 }
                 if !games.isEmpty {
                     ToolbarItem(placement: .confirmationAction) {
-                        ViewThatFits {
-                            gamePicker
-                                .pickerStyle(.segmented)
-                            gamePicker
-                                .pickerStyle(.menu)
-                        }
+                        // ViewThatFits 不适用于此种场景。
+                        gamePicker
+                            .pickerStyle(.segmented)
                     }
                 }
             }

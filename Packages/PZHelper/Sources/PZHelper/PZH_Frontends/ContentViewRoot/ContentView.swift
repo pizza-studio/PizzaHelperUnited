@@ -55,7 +55,7 @@ public struct ContentView: View {
         }
         .navigationSplitViewStyle(.balanced)
         .tint(tintForCurrentTab)
-        .onChange(of: horizontalSizeClass) { oldValue, newValue in
+        .onChange(of: horizontalSizeClass, initial: true) { oldValue, newValue in
             if oldValue == .compact, newValue != .compact, tabNavVM.rootTabNav == .today {
                 rootTabNavBinding.wrappedValue = .showcaseDetail
             }
