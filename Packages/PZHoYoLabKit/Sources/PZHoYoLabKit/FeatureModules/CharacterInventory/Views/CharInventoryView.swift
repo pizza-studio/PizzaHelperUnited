@@ -96,6 +96,8 @@ public struct CharacterInventoryView: View {
                     Text("hylKit.inventoryView.collapse.tabText".i18nHYLKit).tag(false)
                 }
                 .pickerStyle(.menu)
+                .labelsHidden()
+                .fixedSize()
                 Menu {
                     ForEach(
                         InventoryViewFilterType.allCases,
