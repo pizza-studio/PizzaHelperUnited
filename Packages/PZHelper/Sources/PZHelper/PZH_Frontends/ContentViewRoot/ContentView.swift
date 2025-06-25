@@ -79,7 +79,6 @@ public struct ContentView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @StateObject private var tabNavVM = GlobalNavVM.shared
-    @StateObject private var appTabVM = AppTabBarVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
     @StateObject private var orientation = DeviceOrientation()
     @State private var viewColumn: NavigationSplitViewColumn = .content
