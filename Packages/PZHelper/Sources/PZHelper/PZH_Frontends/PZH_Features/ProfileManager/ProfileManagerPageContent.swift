@@ -45,10 +45,12 @@ struct ProfileManagerPageContent: View {
     #endif
 
     @ViewBuilder var coreBody: some View {
-        List {
+        Form {
             Section {
-                Button {
-                    sheetType = .createNewProfile(.init())
+                NavigationLink {
+                    let newProfile = PZProfileMO()
+                    CreateProfileSheetView(profile: newProfile)
+                        .environment(alertToastEventStatus)
                 } label: {
                     Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
                 }
@@ -65,16 +67,16 @@ struct ProfileManagerPageContent: View {
                 ForEach(theVM.profiles) { profile in
                     Group {
                         if let profileMO = theVM.profileMOs[profile.uuid.uuidString] {
-                            Button {
-                                #if os(iOS) || targetEnvironment(macCatalyst)
-                                if isEditMode != .active {
-                                    sheetType = .editExistingProfile(profileMO)
+                            let label = drawRow(profile: profileMO)
+                            if isAppKitOrNotEditing {
+                                NavigationLink {
+                                    EditProfileSheetView(profile: profileMO)
+                                        .environment(alertToastEventStatus)
+                                } label: {
+                                    label
                                 }
-                                #else
-                                sheetType = .editExistingProfile(profileMO)
-                                #endif
-                            } label: {
-                                drawRow(profile: profileMO)
+                            } else {
+                                label
                             }
                         }
                     }
@@ -97,7 +99,7 @@ struct ProfileManagerPageContent: View {
                 }
             }
         }
-        .navigationDestination(item: $sheetType, destination: handleSheetNavigation)
+        .formStyle(.grouped)
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
         .onAppear(perform: bleachInvalidProfiles)
@@ -150,7 +152,6 @@ struct ProfileManagerPageContent: View {
         return formatter
     }()
 
-    @State private var sheetType: SheetType?
     @StateObject private var theVM: ProfileManagerVM = .shared
     @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var errorMessage: String?
@@ -165,28 +166,12 @@ struct ProfileManagerPageContent: View {
         #endif
     }
 
-    private var isBusy: Bool {
-        theVM.taskState == .busy
+    private var isAppKitOrNotEditing: Bool {
+        !isEditing || (OS.type == .macOS && !OS.isCatalyst)
     }
 
-    @ViewBuilder
-    private func handleSheetNavigation(_ sheetType: SheetType) -> some View {
-        Group {
-            switch sheetType {
-            case let .createNewProfile(newProfile):
-                CreateProfileSheetView(profile: newProfile, sheetType: $sheetType)
-                    .environment(alertToastEventStatus)
-            case let .editExistingProfile(profile):
-                EditProfileSheetView(profile: profile, sheetType: $sheetType)
-                    .environment(alertToastEventStatus)
-            }
-        }
-        // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
-        .appTabBarVisibility(.hidden)
-        // 逼着用户改用自订的后退按钮。
-        // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
-        // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
-        .navigationBarBackButtonHidden(true)
+    private var isBusy: Bool {
+        theVM.taskState == .busy
     }
 
     @ViewBuilder
@@ -215,6 +200,7 @@ struct ProfileManagerPageContent: View {
         Divider()
         NavigationLink {
             PFMgrAdvancedOptionsView()
+                .environment(alertToastEventStatus)
         } label: {
             Label {
                 Text(verbatim: PFMgrAdvancedOptionsView.navTitle)
@@ -249,17 +235,13 @@ struct ProfileManagerPageContent: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
-            #if os(iOS) || targetEnvironment(macCatalyst)
-            if isEditMode != .active {
+            if isAppKitOrNotEditing {
                 Image(systemSymbol: .sliderHorizontal3)
             }
-            #else
-            Image(systemSymbol: .sliderHorizontal3)
-            #endif
         }
         .contextMenu {
             Button("profileMgr.edit.title".i18nPZHelper) {
-                sheetType = .editExistingProfile(profile)
+                theVM.sheetType = .editExistingProfile(profile)
             }
             Button(role: .destructive) {
                 deleteItems(uuids: [profile.uuid], clearEnkaCache: false)
@@ -442,17 +424,5 @@ struct ProfileManagerPageContent: View {
 // MARK: ProfileManagerPageContent.SheetType
 
 extension ProfileManagerPageContent {
-    enum SheetType: Identifiable, Hashable {
-        case createNewProfile(PZProfileMO)
-        case editExistingProfile(PZProfileMO)
-
-        // MARK: Public
-
-        public var id: UUID {
-            switch self {
-            case let .createNewProfile(profile): profile.uuid
-            case let .editExistingProfile(profile): profile.uuid
-            }
-        }
-    }
+    typealias SheetType = ProfileManagerVM.SheetType
 }
