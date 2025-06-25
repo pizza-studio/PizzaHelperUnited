@@ -14,6 +14,7 @@ struct PFMgrAdvancedOptionsView: View {
     public static let navTitle = "settings.profile.advanced.navTitle".i18nPZHelper
 
     public var body: some View {
+        @Bindable var alertToastEventStatus = alertToastEventStatus
         Form {
             Section {
                 Picker(selection: $situatePZProfileDBIntoGroupContainer) {
@@ -120,7 +121,7 @@ struct PFMgrAdvancedOptionsView: View {
     @Default(.automaticallyDeduplicatePZProfiles) private var automaticallyDeduplicatePZProfiles: Bool
     @Default(.situatePZProfileDBIntoGroupContainer) private var situatePZProfileDBIntoGroupContainer: Bool
     @Default(.recentlyPropagatedDeviceFingerprint) private var recentlyPropagatedDeviceFingerprint
-    @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
+    @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
     @State private var alertPresented: Bool = false
 
     private func formatDeviceFingerprint() {

@@ -40,12 +40,28 @@ public final class ProfileManagerVM: TaskManagedVM {
 
     // MARK: Public
 
+    public enum SheetType: Identifiable, Hashable {
+        case createNewProfile(PZProfileMO)
+        case editExistingProfile(PZProfileMO)
+
+        // MARK: Public
+
+        public var id: UUID {
+            switch self {
+            case let .createNewProfile(profile): profile.uuid
+            case let .editExistingProfile(profile): profile.uuid
+            }
+        }
+    }
+
     public static let shared = ProfileManagerVM()
 
     public internal(set) var hasOldAccountDataDetected: Bool = false
 
     /// 此处沿用 PZProfileMO 作为指针格式，但不用于对 SwiftData 的写入。
     public internal(set) var profileMOs: [String: PZProfileMO]
+
+    public var sheetType: SheetType?
 
     // 当前的所有 Profile 列表
     public internal(set) var profiles: [PZProfileSendable] {
