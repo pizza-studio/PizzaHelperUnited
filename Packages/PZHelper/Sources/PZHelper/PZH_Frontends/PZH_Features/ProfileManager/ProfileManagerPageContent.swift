@@ -22,18 +22,20 @@ struct ProfileManagerPageContent: View {
     // MARK: Public
 
     public var body: some View {
-        coreBody
-            .disabled(isBusy)
-            .saturation(isBusy ? 0 : 1)
-            .overlay {
-                if isBusy {
-                    Color.clear
-                        .frame(width: 128, height: 128)
-                        .background(.regularMaterial)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .overlay { ProgressView().frame(width: 100, height: 100) }
+        NavigationStack {
+            coreBody
+                .disabled(isBusy)
+                .saturation(isBusy ? 0 : 1)
+                .overlay {
+                    if isBusy {
+                        Color.clear
+                            .frame(width: 128, height: 128)
+                            .background(.regularMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .overlay { ProgressView().frame(width: 100, height: 100) }
+                    }
                 }
-            }
+        }
     }
 
     // MARK: Internal
