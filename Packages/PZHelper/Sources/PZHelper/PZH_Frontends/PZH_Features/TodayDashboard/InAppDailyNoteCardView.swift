@@ -198,7 +198,7 @@ private struct DailyNoteCardView4GI: View {
                     }
                 }
                 // Trounce Blossom (Weekly Bosses)
-                if let dailyNote = dailyNote as? FullNote4GI {
+                if resinFinished, let dailyNote = dailyNote as? FullNote4GI {
                     HStack(spacing: 4) {
                         dailyNote.game.giTrounceBlossomAssetIcon
                             .resizable()
