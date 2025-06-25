@@ -87,10 +87,11 @@ final class GlobalNavVM: Sendable, ObservableObject {
                                 self.rootTabNav = navCase
                             }
                         } label: {
-                            VStack(spacing: 2) {
-                                navCase.icon.frame(width: 32, height: 32)
+                            VStack(spacing: 0) {
+                                navCase.icon.frame(width: 30, height: 30)
                                 navCase.labelNameText
                                     .font(.footnote)
+                                    .padding(.bottom, OS.liquidGlassThemeSuspected ? 0 : 4)
                             }
                             .padding(.vertical, 4)
                             .fixedSize()
