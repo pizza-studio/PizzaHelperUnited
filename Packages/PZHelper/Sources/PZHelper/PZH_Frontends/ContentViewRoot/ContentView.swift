@@ -16,7 +16,7 @@ public struct ContentView: View {
     // MARK: Lifecycle
 
     public init() {
-        self.rootTabNavBinding = GlobalNavVM.shared.rootTabNavBindingNullable
+        self._rootTabNavBinding = GlobalNavVM.shared.rootTabNavBindingNullable
     }
 
     // MARK: Public
@@ -71,12 +71,6 @@ public struct ContentView: View {
         .environment(GachaVM.shared)
     }
 
-    // MARK: Internal
-
-    let rootTabNavBinding: Binding<AppTabNav?>
-
-    @Default(.appTabIndex) var appIndex: Int
-
     // MARK: Private
 
     @Environment(\.colorScheme) private var colorScheme
@@ -85,6 +79,7 @@ public struct ContentView: View {
     @StateObject private var broadcaster = Broadcaster.shared
     @StateObject private var orientation = DeviceOrientation()
     @State private var viewColumn: NavigationSplitViewColumn = .content
+    @Binding private var rootTabNavBinding: AppTabNav?
 
     private let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
@@ -123,7 +118,7 @@ public struct ContentView: View {
             .onChange(of: sideBarConditionMonitoringHash, initial: true) { _, newValue in
                 updateSidebarHandlingStatus()
                 if isSidebarVisible, tabNavVM.rootTabNav == .today {
-                    rootTabNavBinding.wrappedValue = .showcaseDetail
+                    rootTabNavBinding = .showcaseDetail
                 }
             }
             .onDisappear {
