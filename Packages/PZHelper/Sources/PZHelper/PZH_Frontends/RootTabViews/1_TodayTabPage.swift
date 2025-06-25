@@ -82,10 +82,13 @@ struct TodayTabPage: View {
     }
 
     @ViewBuilder var formContentHooked: some View {
+        let pd: CGFloat = OS.liquidGlassThemeSuspected ? 15 : 12
         Group {
             Form {
                 formContentToHook
-                    .listRowInsets(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
+                    .listRowInsets(
+                        .init(top: pd, leading: pd, bottom: pd, trailing: pd)
+                    )
             }
             .formStyle(.grouped)
             .background(alignment: .bottom) {
