@@ -45,10 +45,15 @@ public struct ContentView: View {
             tabNavVM.rootTabNav.body
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        tabNavVM.sharedToolbarNavPicker(
-                            allCases: !isSidebarVisible
-                        )
+                    ToolbarItem(placement: isCompact ? .bottomBar : .cancellationAction) {
+                        if !isCompact {
+                            tabNavVM.sharedToolbarNavPicker(
+                                allCases: !isSidebarVisible,
+                                isMenu: false
+                            )
+                        } else {
+                            tabNavVM.bottomTabBarForCompactLayout(allCases: !isSidebarVisible)
+                        }
                     }
                 }
                 .tint(tintForCurrentTab)
@@ -82,6 +87,10 @@ public struct ContentView: View {
     private let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
     private var sideBarWidth: CGFloat { 375 }
+
+    private var effectiveAppNavCases: [AppTabNav] {
+        isSidebarVisible ? AppTabNav.enabledSubCases : AppTabNav.allCases
+    }
 
     private var isCompact: Bool {
         horizontalSizeClass == .compact
