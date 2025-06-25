@@ -14,17 +14,27 @@ import SwiftUI
 
 // 注：这个 Class 不负责管理 Enka 展柜的 Raw Profile。
 
-@Observable
+@Observable @MainActor
 public final class DetailPortalViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    @MainActor
     public init() {
         let pzProfiles: [PZProfileSendable] = Defaults[.pzProfiles].map(\.value)
             .sorted { $0.priority < $1.priority }
             .filter { $0.game != .zenlessZone } // 临时设定。
         self.currentProfile = pzProfiles.first
         refresh()
+        Task {
+            for await newMap in Defaults.updates(.pzProfiles) {
+                let pzProfilesNow: [PZProfileSendable] = newMap.map(\.value)
+                    .sorted { $0.priority < $1.priority }
+                    .filter { $0.game != .zenlessZone } // 临时设定。
+                let allUIDWithGames = pzProfilesNow.map(\.uidWithGame)
+                if let currentProfile = self.currentProfile, !allUIDWithGames.contains(currentProfile.uidWithGame) {
+                    self.currentProfile = pzProfilesNow.first
+                }
+            }
+        }
     }
 
     // MARK: Public
@@ -45,13 +55,14 @@ public final class DetailPortalViewModel: ObservableObject {
         }
     }
 
-    @MainActor public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
-    @MainActor public var taskStatus4Ledger: Status<any Ledger> = .standby
-    @MainActor public var taskStatus4AbyssReport: Status<any AbyssReportSet> = .standby
+    public static let shared = DetailPortalViewModel()
 
+    public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
+    public var taskStatus4Ledger: Status<any Ledger> = .standby
+    public var taskStatus4AbyssReport: Status<any AbyssReportSet> = .standby
     @ObservationIgnored public var refreshingStatus: Status<Void> = .standby
 
-    @MainActor public var currentProfile: PZProfileSendable? {
+    public var currentProfile: PZProfileSendable? {
         didSet {
             if case let .progress(task) = refreshingStatus { task.cancel() }
             refreshingStatus = .standby
@@ -59,7 +70,6 @@ public final class DetailPortalViewModel: ObservableObject {
         }
     }
 
-    @MainActor
     public func refresh() {
         guard case .standby = refreshingStatus else { return }
         let task = Task {
@@ -73,7 +83,6 @@ public final class DetailPortalViewModel: ObservableObject {
 }
 
 extension DetailPortalViewModel {
-    @MainActor
     func fetchCharacterInventoryList() async {
         if case let .progress(task) = taskStatus4CharInventory { task.cancel() }
         let task = Task {
@@ -101,7 +110,6 @@ extension DetailPortalViewModel {
         }
     }
 
-    @MainActor
     func fetchLedgerData() async {
         if case let .progress(task) = taskStatus4Ledger { task.cancel() }
         let task = Task {
@@ -129,7 +137,6 @@ extension DetailPortalViewModel {
         }
     }
 
-    @MainActor
     func fetchAbyssReportSet() async {
         if case let .progress(task) = taskStatus4AbyssReport { task.cancel() }
         let task = Task {
