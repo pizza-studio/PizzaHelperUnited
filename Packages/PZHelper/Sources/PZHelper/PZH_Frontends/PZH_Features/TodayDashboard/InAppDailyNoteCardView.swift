@@ -179,8 +179,8 @@ private struct DailyNoteCardView4GI: View {
                     if !resinFinished {
                         let fullyChargedTime = resinIntel.resinRecoveryTime
                         let nestedString = """
-                        \(dateFormatter.string(from: fullyChargedTime))
                         \(dateComponentsFormatter.string(from: TimeInterval.sinceNow(to: fullyChargedTime))!)
+                        \(dateFormatter.string(from: fullyChargedTime))
                         """
                         Text(verbatim: nestedString)
                             .multilineTextAlignment(.trailing)
@@ -351,8 +351,8 @@ private struct DailyNoteCardView4GI: View {
                     if homeCoin.fullTime > Date() {
                         let fullyChargedTime = homeCoin.fullTime
                         let nestedString = """
-                        \(dateFormatter.string(from: fullyChargedTime))
                         \(dateComponentsFormatter.string(from: TimeInterval.sinceNow(to: fullyChargedTime))!)
+                        \(dateFormatter.string(from: fullyChargedTime))
                         """
                         Text(verbatim: nestedString)
                             .multilineTextAlignment(.trailing)
