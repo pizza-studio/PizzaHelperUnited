@@ -47,7 +47,7 @@ public struct ContentView: View {
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         tabNavVM.sharedToolbarNavPicker(
-                            allCases: horizontalSizeClass == .compact
+                            allCases: !isSidebarVisible
                         )
                     }
                 }
@@ -55,10 +55,8 @@ public struct ContentView: View {
         }
         .navigationSplitViewStyle(.balanced)
         .tint(tintForCurrentTab)
-        .onChange(of: horizontalSizeClass, initial: true) { oldValue, newValue in
-            if oldValue == .compact, newValue != .compact, tabNavVM.rootTabNav == .today {
-                rootTabNavBinding.wrappedValue = .showcaseDetail
-            }
+        .apply { currentContent in
+            hookSidebarAndPageHandlers(currentContent)
         }
         .navigationSplitViewColumnWidth(sideBarWidth)
         .appTabBarVisibility(.visible)
@@ -78,17 +76,58 @@ public struct ContentView: View {
     @StateObject private var tabNavVM = GlobalNavVM.shared
     @StateObject private var appTabVM = AppTabBarVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
+    @StateObject private var orientation = DeviceOrientation()
     @State private var viewColumn: NavigationSplitViewColumn = .content
 
     private let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
     private var sideBarWidth: CGFloat { 375 }
 
+    private var isCompact: Bool {
+        horizontalSizeClass == .compact
+    }
+
+    private var sideBarConditionMonitoringHash: Int {
+        var hasher = Hasher()
+        hasher.combine(horizontalSizeClass)
+        hasher.combine(orientation.orientation)
+        return hasher.finalize()
+    }
+
     private var tintForCurrentTab: Color {
         switch AppTabNav(rootID: tabNavVM.rootTabNav.rootID) {
         case .today: Color.accessibilityAccent(colorScheme)
         case .showcaseDetail: Color.accessibilityAccent(colorScheme)
         default: .accentColor
+        }
+    }
+
+    private var isSidebarVisible: Bool {
+        Broadcaster.shared.splitViewVisibility == .all && horizontalSizeClass != .compact
+    }
+
+    @ViewBuilder
+    private func hookSidebarAndPageHandlers(_ givenView: some View) -> some View {
+        givenView
+            .onChange(of: sideBarConditionMonitoringHash, initial: true) { _, newValue in
+                updateSidebarHandlingStatus()
+                if isSidebarVisible, tabNavVM.rootTabNav == .today {
+                    rootTabNavBinding.wrappedValue = .showcaseDetail
+                }
+            }
+            .onDisappear {
+                Broadcaster.shared.splitViewVisibility = .all
+            }
+    }
+
+    private func updateSidebarHandlingStatus() {
+        guard OS.type != .macOS else {
+            Broadcaster.shared.splitViewVisibility = .all
+            return
+        }
+        switch orientation.orientation {
+        case .landscape where !isCompact: Broadcaster.shared.splitViewVisibility = .all
+        default: Broadcaster.shared.splitViewVisibility = .detailOnly
         }
     }
 }
