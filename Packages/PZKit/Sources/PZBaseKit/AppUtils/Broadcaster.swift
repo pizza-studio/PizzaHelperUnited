@@ -13,6 +13,7 @@ import WidgetKit
 public final class Broadcaster: ObservableObject, Sendable {
     public static let shared = Broadcaster()
 
+    public private(set) var eventForRefreshingTodayTab: UUID = .init()
     public private(set) var eventForRefreshingCurrentPage: UUID = .init()
     public private(set) var eventForJustSwitchedToTodayTab: UUID = .init()
     public private(set) var eventForStoppingRootTabTasks: UUID = .init()
@@ -24,6 +25,10 @@ public final class Broadcaster: ObservableObject, Sendable {
 
     public func refreshPage() {
         eventForRefreshingCurrentPage = .init()
+    }
+
+    public func refreshTodayTab() {
+        eventForRefreshingTodayTab = .init()
     }
 
     public func stopRootTabTasks() {

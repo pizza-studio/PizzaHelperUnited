@@ -124,7 +124,7 @@ struct TodayTabPage: View {
             }
         }
         .refreshable {
-            broadcaster.refreshPage()
+            broadcaster.refreshTodayTab()
         }
         .onAppear {
             if let theGame = game, !games.contains(theGame) {
@@ -236,7 +236,7 @@ struct TodayTabPage: View {
     }
 
     private func refresh() {
-        broadcaster.refreshPage()
+        broadcaster.refreshTodayTab()
         Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
     }
 }
