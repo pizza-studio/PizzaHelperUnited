@@ -78,7 +78,7 @@ struct InAppDailyNoteCardView: View {
         .onChange(of: broadcaster.eventForJustSwitchedToTodayTab) {
             theVM.getDailyNote()
         }
-        .onChange(of: broadcaster.eventForRefreshingCurrentPage) {
+        .onChange(of: broadcaster.eventForRefreshingTodayTab) {
             theVM.getDailyNoteUncheck()
         }
         .onAppBecomeActive {
