@@ -23,7 +23,7 @@ public struct ContentView: View {
 
     public var body: some View {
         NavigationSplitView(
-            columnVisibility: .constant(.all),
+            columnVisibility: $broadcaster.splitViewVisibility,
             preferredCompactColumn: $viewColumn
         ) {
             NavigationStack {
@@ -77,6 +77,7 @@ public struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @StateObject private var tabNavVM = GlobalNavVM.shared
     @StateObject private var appTabVM = AppTabBarVM.shared
+    @StateObject private var broadcaster = Broadcaster.shared
     @State private var viewColumn: NavigationSplitViewColumn = .content
 
     private let isAppKit = OS.type == .macOS && !OS.isCatalyst
