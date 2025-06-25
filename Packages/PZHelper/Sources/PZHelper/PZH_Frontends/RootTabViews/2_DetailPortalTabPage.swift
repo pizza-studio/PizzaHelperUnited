@@ -132,7 +132,7 @@ struct DetailPortalTabPage: View {
     @State private var wrappedByNavStack: Bool
     @State private var showProfileSwitcher: Bool
     @State private var sharedDB: Enka.Sputnik = .shared
-    @StateObject private var vmDPV: DetailPortalViewModel = .init()
+    @StateObject private var vmDPV: DetailPortalViewModel = .shared
     @StateObject private var pfMgrVM: ProfileManagerVM = .shared
     @StateObject private var tabNavVM = GlobalNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
