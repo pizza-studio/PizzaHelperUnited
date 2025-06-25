@@ -89,28 +89,44 @@ public final class GachaVM: TaskManagedVM {
     }
 
     private func configurePublisherObservations() {
-        NotificationCenter.default.publisher(for: ModelContext.didSave)
-            .sink(receiveValue: { notification in
-                let changedEntityNames = PersistentIdentifier.parseObjectNames(
-                    notificationResult: notification.userInfo
-                )
-                guard !changedEntityNames.isEmpty else { return }
-                let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
-                let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
-                guard changesInvolveGPID, changesInvolveGachaEntry else { return }
-                guard !self.isDoingBatchInsertionAction else { return }
-                Task { @MainActor in
-                    if !self.remoteChangesAvailable {
-                        self.remoteChangesAvailable = true
-                    }
-                }
-                if changesInvolveGPID {
-                    Task {
-                        await self.updateAllCachedGPIDs()
-                    }
-                }
-            })
-            .store(in: &cancellables)
+        switch OS.isOS25OrAbove {
+        case false:
+            // OS24 (iOS 17, macOS 14) 无法时刻抓到 ModelContext.didSave，
+            // 所以只能抓 NSManagedObjectContextDidSaveObjectIDs。但这样又会有紫色警告。
+            // 算了不管了，忍到 2026 年夏天放弃 iOS 17。
+            NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
+                .sink(receiveValue: { notification in
+                    self.didObserveChangesFromSwiftData(changesInvolveGPID: true)
+                })
+                .store(in: &cancellables)
+        case true:
+            NotificationCenter.default.publisher(for: ModelContext.didSave)
+                .sink(receiveValue: { notification in
+                    let changedEntityNames = PersistentIdentifier.parseObjectNames(
+                        notificationResult: notification.userInfo
+                    )
+                    guard !changedEntityNames.isEmpty else { return }
+                    let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
+                    let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
+                    guard changesInvolveGPID, changesInvolveGachaEntry else { return }
+                    guard !self.isDoingBatchInsertionAction else { return }
+                    self.didObserveChangesFromSwiftData(changesInvolveGPID: changesInvolveGPID)
+                })
+                .store(in: &cancellables)
+        }
+    }
+
+    nonisolated private func didObserveChangesFromSwiftData(changesInvolveGPID: Bool) {
+        Task { @MainActor in
+            if !self.remoteChangesAvailable {
+                self.remoteChangesAvailable = true
+            }
+        }
+        if changesInvolveGPID {
+            Task {
+                await self.updateAllCachedGPIDs()
+            }
+        }
     }
 }
 
