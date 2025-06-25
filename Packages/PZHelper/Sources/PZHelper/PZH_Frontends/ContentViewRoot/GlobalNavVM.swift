@@ -14,25 +14,82 @@ final class GlobalNavVM: Sendable, ObservableObject {
     // MARK: Public
 
     @MainActor @ViewBuilder
-    public func sharedToolbarNavPicker(allCases: Bool) -> some View {
+    public func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
         @Bindable var this = self
         let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
         Picker("".description, selection: $this.rootTabNav.animation()) {
             ForEach(effectiveCases) { navCase in
                 if navCase.isExposed {
-                    HStack {
-                        navCase.icon
-                        navCase.labelNameText
+                    let isChosen: Bool = navCase == self.rootTabNav
+                    switch isMenu {
+                    case true:
+                        VStack(alignment: .center) {
+                            navCase.icon
+                            navCase.labelNameText
+                                .fontWidth(.compressed)
+                                .fontWeight(isChosen ? .bold : .regular)
+                                .textCase(.uppercase)
+                        }
+                        .tag(navCase)
+                    case false:
+                        navCase.label
+                            .tag(navCase)
                     }
-                    .tag(navCase)
                 }
             }
         }
         .labelsHidden()
-        .pickerStyle(.menu)
+        .apply { currentContent in
+            switch isMenu {
+            case true:
+                currentContent
+                    .pickerStyle(.menu)
+                    .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected)
+                    .clipShape(.capsule)
+            case false:
+                currentContent
+                    .pickerStyle(.segmented)
+                    .labelStyle(.titleAndIcon)
+            }
+        }
         .fixedSize()
-        .blurMaterialBackground(enabled: !OS.liquidGlassThemeSuspected)
-        .clipShape(.capsule)
+    }
+
+    @ViewBuilder
+    public func bottomTabBarForCompactLayout(allCases: Bool) -> some View {
+        if appTabVM.latestVisibility != .hidden {
+            let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
+            HStack(spacing: 0) {
+                ForEach(effectiveCases) { navCase in
+                    let isChosen: Bool = navCase == self.rootTabNav
+                    if navCase.isExposed {
+                        Button {
+                            withAnimation(.easeInOut) {
+                                self.rootTabNav = navCase
+                            }
+                        } label: {
+                            VStack(spacing: 2) {
+                                navCase.icon.frame(width: 32, height: 32)
+                                navCase.labelNameText
+                                    .font(.footnote)
+                            }
+                            .padding(.vertical, 4)
+                            .fixedSize()
+                            .labelStyle(.titleAndIcon)
+                            .fontWidth(.compressed)
+                            .fontWeight(isChosen ? .bold : .regular)
+                            .foregroundStyle(isChosen ? Color.accentColor : .secondary)
+                            .padding()
+                            .contentShape(.rect)
+                            .frame(maxWidth: OS.liquidGlassThemeSuspected ? nil : .infinity)
+                        }
+                        .buttonStyle(.plain)
+                        .id(navCase)
+                    }
+                }
+            }
+            .frame(height: 50)
+        }
     }
 
     // MARK: Internal
