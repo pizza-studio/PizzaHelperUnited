@@ -63,6 +63,9 @@ public struct ContentView: View {
         .tint(tintForCurrentTab)
         .apply { currentContent in
             hookSidebarAndPageHandlers(currentContent)
+                .onChange(of: tabNavVM.rootTabNav) {
+                    simpleTaptic(type: .selection)
+                }
         }
         .navigationSplitViewColumnWidth(sideBarWidth)
         .environment(GachaVM.shared)
