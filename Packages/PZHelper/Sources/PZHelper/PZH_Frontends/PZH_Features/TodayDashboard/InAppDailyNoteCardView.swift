@@ -95,25 +95,34 @@ struct InAppDailyNoteCardView: View {
 // MARK: - DailyNoteCardErrorView
 
 private struct DailyNoteCardErrorView: View {
+    // MARK: Public
+
     public let profile: PZProfileSendable
     public var error: Error
 
     public var body: some View {
-        Label {
-            VStack {
-                Text("app.dailynote.card.error.pleaseCheckAtProfileMgr".i18nPZHelper)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text(error.localizedDescription).font(.caption)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 0.5)
+        Section {
+            Label {
+                VStack {
+                    Text("app.dailynote.card.error.pleaseCheckAtProfileMgr".i18nPZHelper)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(error.localizedDescription).font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top, 0.5)
+                }
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            } icon: {
+                Image(systemSymbol: .questionmarkCircle)
+                    .foregroundColor(.yellow)
             }
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        } icon: {
-            Image(systemSymbol: .questionmarkCircle)
-                .foregroundColor(.yellow)
+            tabNavVM.gotoSettingsButtonIfAppropriate
         }
     }
+
+    // MARK: Private
+
+    @StateObject private var tabNavVM = GlobalNavVM.shared
 }
 
 private let dateFormatter: DateFormatter = {
