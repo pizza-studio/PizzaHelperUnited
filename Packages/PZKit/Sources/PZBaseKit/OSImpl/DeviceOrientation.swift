@@ -48,14 +48,16 @@ public final class DeviceOrientation: ObservableObject {
 
     // MARK: Public
 
-    public enum Orientation {
+    public enum Orientation: String, Hashable, Equatable, Identifiable {
         case portrait
         case landscape
+
+        // MARK: Public
+
+        public var id: String { rawValue }
     }
 
-    // MARK: Internal
-
-    var orientation: Orientation
+    public var orientation: Orientation
 
     // MARK: Private
 
