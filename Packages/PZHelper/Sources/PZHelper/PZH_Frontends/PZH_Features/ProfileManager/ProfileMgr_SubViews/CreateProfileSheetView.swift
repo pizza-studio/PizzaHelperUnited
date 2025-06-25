@@ -13,9 +13,11 @@ extension ProfileManagerPageContent {
     struct CreateProfileSheetView: View {
         // MARK: Lifecycle
 
-        init(profile: PZProfileMO, sheetType: Binding<SheetType?>) {
-            self._sheetType = sheetType
+        init(profile: PZProfileMO) {
             self._profile = State(wrappedValue: profile)
+            Task { @MainActor in
+                ProfileManagerVM.shared.sheetType = .createNewProfile(profile)
+            }
         }
 
         // MARK: Internal
@@ -38,6 +40,12 @@ extension ProfileManagerPageContent {
                 }
                 .formStyle(.grouped)
                 .navigationTitle("profileMgr.new".i18nPZHelper)
+                // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
+                .appTabBarVisibility(.hidden)
+                // 逼着用户改用自订的后退按钮。
+                // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
+                // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
+                .navigationBarBackButtonHidden(true)
                 .toolbar {
                     if status != .pending {
                         ToolbarItem(placement: .confirmationAction) {
@@ -56,7 +64,7 @@ extension ProfileManagerPageContent {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {
                             theVM.discardUncommittedChanges()
-                            sheetType = nil
+                            theVM.sheetType = nil
                         }
                     }
                 }
@@ -80,6 +88,11 @@ extension ProfileManagerPageContent {
                         }
                     default:
                         return
+                    }
+                }
+                .onChange(of: theVM.sheetType) { oldValue, newValue in
+                    if oldValue != nil, newValue == nil {
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }
@@ -129,7 +142,6 @@ extension ProfileManagerPageContent {
                     status = .gotCookie
                 }
             }
-            .interactiveDismissDisabled()
         }
 
         @ViewBuilder
@@ -152,7 +164,7 @@ extension ProfileManagerPageContent {
                 profile.asSendable,
                 trailingTasks: {
                     PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-                    sheetType = nil
+                    theVM.sheetType = nil
                     Broadcaster.shared.requireOSNotificationCenterAuthorization()
                     Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
@@ -248,7 +260,7 @@ extension ProfileManagerPageContent {
                         onlyDeleteIfDisabled: false
                     )
                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
-                    sheetType = nil
+                    theVM.sheetType = nil
                 },
                 errorHandler: { error in
                     getAccountError = .source(error)
@@ -298,9 +310,9 @@ extension ProfileManagerPageContent {
         @State private var profile: PZProfileMO
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
-        @Binding private var sheetType: SheetType?
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
         @StateObject private var theVM: ProfileManagerVM = .shared
+        @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
         private var game: Binding<Pizza.SupportedGame> {
             .init(
