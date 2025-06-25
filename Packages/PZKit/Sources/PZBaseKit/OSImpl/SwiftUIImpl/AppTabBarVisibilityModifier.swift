@@ -1,0 +1,21 @@
+// (c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).
+// ====================
+// This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
+
+#if !os(watchOS)
+import Foundation
+import Observation
+import SwiftUI
+
+extension View {
+    @ViewBuilder
+    public func appTabBarVisibility(_ visibility: SwiftUI.Visibility) -> some View {
+        #if !os(macOS)
+        toolbar(visibility, for: .tabBar)
+        #else
+        self
+        #endif
+    }
+}
+
+#endif
