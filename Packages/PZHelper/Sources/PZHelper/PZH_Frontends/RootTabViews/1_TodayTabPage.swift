@@ -48,12 +48,16 @@ struct TodayTabPage: View {
             } sectionHeader: {
                 if !wrappedByNavStack {
                     HStack {
-                        Button("sys.refresh".i18nBaseKit, systemImage: "arrow.clockwise") { refresh() }
-                            .buttonStyle(.borderless)
                         Spacer()
                         gamePicker
                             .pickerStyle(.menu)
                             .buttonStyle(.borderless)
+                        Button {
+                            refresh()
+                        } label: {
+                            Image(systemSymbol: .arrowClockwise)
+                        }
+                        .buttonStyle(.borderless)
                     }
                     .textCase(.none)
                 }
