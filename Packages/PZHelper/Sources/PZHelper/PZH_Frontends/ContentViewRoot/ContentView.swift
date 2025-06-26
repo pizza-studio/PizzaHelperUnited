@@ -115,7 +115,7 @@ public struct ContentView: View {
     @ViewBuilder
     private func hookSidebarAndPageHandlers(_ givenView: some View) -> some View {
         givenView
-            .onChange(of: sideBarConditionMonitoringHash, initial: true) { _, newValue in
+            .onChange(of: sideBarConditionMonitoringHash, initial: true) { _, _ in
                 updateSidebarHandlingStatus()
                 if isSidebarVisible, tabNavVM.rootTabNav == .today {
                     rootTabNavBinding = .showcaseDetail
