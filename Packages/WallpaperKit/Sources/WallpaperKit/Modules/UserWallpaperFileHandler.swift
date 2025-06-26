@@ -109,16 +109,27 @@ extension UserWallpaperFileHandler {
 
     /// We assume that this API never fails.
     private static var userWallpaperFolderURL: URL {
-        let backgroundFolderUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-            .first!
-            .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
-            .appendingPathComponent("UserWallpapers", isDirectory: true)
+        let backgroundFolderURL: URL = {
+            switch Pizza.isAppStoreRelease {
+            case false: break
+            case true:
+                guard let groupContainerURL else { break }
+                return groupContainerURL
+                    .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                    .appendingPathComponent("UserWallpapers", isDirectory: true)
+            }
+            return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+                .first!
+                .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+                .appendingPathComponent("UserWallpapers", isDirectory: true)
+        }()
+
         try? FileManager.default.createDirectory(
-            at: backgroundFolderUrl,
+            at: backgroundFolderURL,
             withIntermediateDirectories: true,
             attributes: nil
         )
-        return backgroundFolderUrl
+        return backgroundFolderURL
     }
 
     private static func getURL4UserWallpaper(uuid: UUID) -> URL {
