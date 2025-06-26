@@ -9,6 +9,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftData
 import SwiftUI
+import WallpaperKit
 
 // MARK: - PZHelper
 
@@ -69,6 +70,7 @@ extension PZHelper {
         PZHelper.setupSpotlightSearch()
         GachaRootView.getFAQView = { AnyView(FAQView()) }
         Enka.Sputnik.migrateCachedProfilesFromUserDefaultsToFiles()
+        UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
     }
 }
 
