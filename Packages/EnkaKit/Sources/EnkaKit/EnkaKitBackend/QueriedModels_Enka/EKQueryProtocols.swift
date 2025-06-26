@@ -4,6 +4,7 @@
 
 import Defaults
 import Foundation
+import PZBaseKit
 
 // MARK: - EKQueryResultProtocol
 
@@ -53,7 +54,6 @@ public protocol EKQueriedProfileProtocol: Codable, Hashable, Sendable, Equatable
     var signature: String { get }
     var level: Int { get }
     var worldLevel: Int { get }
-    static var locallyCachedData: [String: Self] { get set }
     var headIcon: Int { get }
 }
 
@@ -67,16 +67,6 @@ extension EKQueriedProfileProtocol {
             newResult.avatarDetailList.append(oldAvatar)
         }
         return newResult
-    }
-
-    public func saveToCache() {
-        Task.detached { @MainActor in
-            Self.locallyCachedData[uid] = self
-        }
-    }
-
-    public static func getCachedProfile(uid: String) -> Self? {
-        Self.locallyCachedData[uid]
     }
 
     public var onlineAssetURLStr: String {
@@ -107,6 +97,100 @@ extension EKQueriedProfileProtocol {
 
     public static var nullPhotoAssetName: String {
         AnonymousIconView.nullPhotoAssetName
+    }
+}
+
+extension EKQueriedProfileProtocol {
+    public func saveToCache() {
+        let encodedData = try? JSONEncoder().encode(self)
+        guard let encodedData else { return }
+        do {
+            try encodedData.write(
+                to: Self.getURL4LocallyCachedQueryProfile(uid: uid),
+                options: .atomic
+            )
+            Task { @MainActor in
+                Broadcaster.shared.localEnkaAvatarCacheDidUpdate(
+                    uidWithGame: Self.getUIDWithGame(uid: uid)
+                )
+            }
+        } catch {
+            return
+        }
+    }
+
+    public static func getCachedProfile(uid: String) -> Self? {
+        let cachedRawData = try? Data(contentsOf: getURL4LocallyCachedQueryProfile(uid: uid))
+        guard let cachedRawData else { return nil }
+        return try? cachedRawData.parseAs(Self.self)
+    }
+
+    public static func removeCachedProfile(uid: String) {
+        let fileURL = getURL4LocallyCachedQueryProfile(uid: uid)
+        do {
+            try FileManager.default.removeItem(at: fileURL)
+        } catch {
+            print(error)
+            print("[FAILURE] Unable to remove cached Enka profile at: \(fileURL)")
+        }
+    }
+
+    public static func getAllCachedProfiles() -> [String: Self] {
+        var result = [String: Self]()
+        let resourceKeys = [URLResourceKey]([.nameKey, .isRegularFileKey])
+        let directoryEnumerator = FileManager.default.enumerator(
+            at: localAvatarCacheFolderURL,
+            includingPropertiesForKeys: resourceKeys,
+            options: [.skipsSubdirectoryDescendants, .skipsPackageDescendants]
+        )
+        guard let directoryEnumerator else { return result }
+        for case let fileURL as URL in directoryEnumerator {
+            let resourceValues = try? fileURL.resourceValues(forKeys: Set(resourceKeys))
+            guard let isFile = resourceValues?.isRegularFile, isFile else { continue }
+            guard let fileName = resourceValues?.name else { continue }
+            // Parse filename (Game).
+            let maybeMatchedGame = Pizza.SupportedGame(
+                uidPrefix: fileName.prefix(2).description
+            )
+            guard maybeMatchedGame == DBType.game else { continue }
+            // Parse filename (UID).
+            let fileNameStem = fileName.split(separator: ".").prefix(1).joined()
+            let uidStr = fileNameStem.split(separator: "-").dropFirst(1).prefix(1).joined()
+            guard !uidStr.isEmpty, Int(uidStr) != nil else { continue }
+            // Read file into the map.
+            guard let profile = getCachedProfile(uid: uidStr) else { continue }
+            result[uidStr] = profile
+        }
+        return result
+    }
+
+    /// We assume that this API never fails.
+    private static var localAvatarCacheFolderURL: URL {
+        let backgroundFolderUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+            .first!
+            .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+            .appendingPathComponent("CachedAvatars", isDirectory: true)
+            .appendingPathComponent("FromEnkaNetworks", isDirectory: true)
+        try? FileManager.default.createDirectory(
+            at: backgroundFolderUrl,
+            withIntermediateDirectories: true,
+            attributes: nil
+        )
+        return backgroundFolderUrl
+    }
+
+    private static func getUIDWithGame(uid: String) -> String {
+        "\(DBType.game.uidPrefix)-\(uid)"
+    }
+
+    private static func getFileNameStem4LocallyCachedQueryProfile(uid: String) -> String {
+        "\(getUIDWithGame(uid: uid))-EnkaQueryProfile"
+    }
+
+    private static func getURL4LocallyCachedQueryProfile(uid: String) -> URL {
+        localAvatarCacheFolderURL.appendingPathComponent(
+            getFileNameStem4LocallyCachedQueryProfile(uid: uid) + ".json", isDirectory: false
+        )
     }
 }
 

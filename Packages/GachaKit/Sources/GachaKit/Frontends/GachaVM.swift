@@ -49,6 +49,7 @@ public final class GachaVM: TaskManagedVM {
     public var currentExportableDocument: Result<GachaDocument, Error>?
     public var currentSceneStep4Import: GachaImportSections.SceneStep = .chooseFormat
     public var showSucceededAlertToast = false
+    public var nameIDMap: [String: String] = GachaVM.getLatestNameIDMap()
 
     public var allGPIDs: [GachaProfileID] = [] {
         didSet {
@@ -73,6 +74,7 @@ public final class GachaVM: TaskManagedVM {
 
     public func updateAllCachedGPIDs() async {
         allGPIDs = await GachaActor.shared.fetchAllGPIDs()
+        updateNameIDMap()
     }
 
     // MARK: Private
@@ -451,26 +453,6 @@ extension GachaVM {
         return nameIDMap[pfID.uidWithGame] ?? nil
     }
 
-    public var nameIDMap: [String: String] {
-        var nameMap = [String: String]()
-        Defaults[.pzProfiles].values.forEach { pzProfile in
-            if nameMap[pzProfile.uidWithGame] == nil {
-                nameMap[pzProfile.uidWithGame] = pzProfile.name
-            }
-        }
-        Defaults[.queriedEnkaProfiles4GI].forEach { uid, enkaProfile in
-            let pfID = GachaProfileID(uid: uid, game: .genshinImpact)
-            guard nameMap[pfID.uidWithGame] == nil else { return }
-            nameMap[pfID.uidWithGame] = enkaProfile.nickname
-        }
-        Defaults[.queriedEnkaProfiles4HSR].forEach { uid, enkaProfile in
-            let pfID = GachaProfileID(uid: uid, game: .starRail)
-            guard nameMap[pfID.uidWithGame] == nil else { return }
-            nameMap[pfID.uidWithGame] = enkaProfile.nickname
-        }
-        return nameMap
-    }
-
     public var allPZProfiles: [PZProfileSendable] {
         let profileSets = Set<PZProfileSendable>(Defaults[.pzProfiles].values)
         return profileSets.sorted { $0.priority < $1.priority }
@@ -482,6 +464,30 @@ extension GachaVM {
         }, set: { _ in
 
         })
+    }
+
+    public static func getLatestNameIDMap() -> [String: String] {
+        var nameMap = [String: String]()
+        Defaults[.pzProfiles].values.forEach { pzProfile in
+            if nameMap[pzProfile.uidWithGame] == nil {
+                nameMap[pzProfile.uidWithGame] = pzProfile.name
+            }
+        }
+        Enka.Sputnik.shared.db4GI.getAllCachedProfiles().forEach { uid, enkaProfile in
+            let pfID = GachaProfileID(uid: uid, game: .genshinImpact)
+            guard nameMap[pfID.uidWithGame] == nil else { return }
+            nameMap[pfID.uidWithGame] = enkaProfile.nickname
+        }
+        Enka.Sputnik.shared.db4HSR.getAllCachedProfiles().forEach { uid, enkaProfile in
+            let pfID = GachaProfileID(uid: uid, game: .starRail)
+            guard nameMap[pfID.uidWithGame] == nil else { return }
+            nameMap[pfID.uidWithGame] = enkaProfile.nickname
+        }
+        return nameMap
+    }
+
+    public func updateNameIDMap() {
+        nameIDMap = Self.getLatestNameIDMap()
     }
 
     private func getCurrentPentaStars(

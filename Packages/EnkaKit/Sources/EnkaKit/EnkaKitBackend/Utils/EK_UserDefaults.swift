@@ -7,8 +7,30 @@ import Foundation
 import PZBaseKit
 
 extension UserDefaults {
-    public static let enkaSuite = UserDefaults(suiteName: appGroupID + ".storageForEnka") ??
-        .baseSuite
+    public static let enkaSuite: UserDefaults = {
+        let result = UserDefaults(suiteName: appGroupID + ".storageForEnka") ??
+            .baseSuite
+        // HoYoLAB 的角色面板资料档案异常庞大，于是这里不再用 UserDefaults 处理。
+        result.removeObject(forKey: "queriedHoYoProfiles4GI")
+        result.removeObject(forKey: "queriedHoYoProfiles4HSR")
+        // Enka Networks 的角色面板资料也不再用 UserDefaults 处理，但這裡先做遷移。
+        return result
+    }()
+}
+
+extension Enka.Sputnik {
+    public static func migrateCachedProfilesFromUserDefaultsToFiles() {
+        let oldEnkaProfiles4GI = Defaults[.queriedEnkaProfiles4GI]
+        if !oldEnkaProfiles4GI.isEmpty {
+            oldEnkaProfiles4GI.values.forEach { $0.saveToCache() }
+            Defaults.reset(.queriedEnkaProfiles4GI)
+        }
+        let oldEnkaProfiles4HSR = Defaults[.queriedEnkaProfiles4HSR]
+        if !oldEnkaProfiles4HSR.isEmpty {
+            oldEnkaProfiles4HSR.values.forEach { $0.saveToCache() }
+            Defaults.reset(.queriedEnkaProfiles4HSR)
+        }
+    }
 }
 
 extension Defaults.Keys {
@@ -44,23 +66,16 @@ extension Defaults.Keys {
         default: try! Enka.EnkaDB4HSR(locTag: Enka.currentLangTag),
         suite: .enkaSuite
     )
-    public static let queriedEnkaProfiles4GI = Key<[String: Enka.QueriedProfileGI]>(
+
+    // MARK: - Enka Suite (Deprecated APIs kept for data migration purposes.)
+
+    fileprivate static let queriedEnkaProfiles4GI = Key<[String: Enka.QueriedProfileGI]>(
         "queriedEnkaProfiles4GI",
         default: [:],
         suite: .enkaSuite
     )
-    public static let queriedEnkaProfiles4HSR = Key<[String: Enka.QueriedProfileHSR]>(
+    fileprivate static let queriedEnkaProfiles4HSR = Key<[String: Enka.QueriedProfileHSR]>(
         "queriedEnkaProfiles4HSR",
-        default: [:],
-        suite: .enkaSuite
-    )
-    public static let queriedHoYoProfiles4GI = Key<[String: [HYQueriedModels.HYLAvatarDetail4GI]]>(
-        "queriedHoYoProfiles4GI",
-        default: [:],
-        suite: .enkaSuite
-    )
-    public static let queriedHoYoProfiles4HSR = Key<[String: [HYQueriedModels.HYLAvatarDetail4HSR]]>(
-        "queriedHoYoProfiles4HSR",
         default: [:],
         suite: .enkaSuite
     )
