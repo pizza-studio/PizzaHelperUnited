@@ -11,24 +11,27 @@ import PZBaseKit
 public enum UserWallpaperFileHandler {}
 
 extension UserWallpaperFileHandler {
+    /// 如果已经迁移过的话，这个函式不会有任何作用。
     public static func migrateUserWallpapersFromUserDefaultsToFiles() {
-        let userWallpapersLeft = Defaults[.userWallpapers]
-        if !userWallpapersLeft.isEmpty {
-            var results = Set<Bool>()
-            userWallpapersLeft.forEach {
-                results.insert(saveUserWallpaperToDisk($0, broadcastNotificationChanges: false))
-            }
-            if results == [true] {
-                Defaults.reset(.userWallpapers)
-                Task { @MainActor in
-                    Broadcaster.shared.userWallpaperEntryChangesDidSave()
-                }
-            }
-        }
         UserDefaults.baseSuite.removeObject(forKey: "backgrounds4LiveActivity")
         UserDefaults.baseSuite.removeObject(forKey: "background4App")
         UserDefaults.baseSuite.removeObject(forKey: "userWallpapers4LiveActivity")
         UserDefaults.baseSuite.removeObject(forKey: "userWallpaper4App")
+        let userWallpapersLeft = Defaults[.userWallpapers]
+        guard !userWallpapersLeft.isEmpty else { return }
+        var results = Set<Bool>()
+        userWallpapersLeft.forEach {
+            results.insert(saveUserWallpaperToDisk($0, broadcastNotificationChanges: false))
+        }
+        if results == [true] {
+            Defaults.reset(.userWallpapers)
+            Task { @MainActor in
+                Broadcaster.shared.userWallpaperEntryChangesDidSave()
+            }
+        }
+        Task { @MainActor in
+            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+        }
     }
 
     public static func getAllUserWallpapers() -> Set<UserWallpaper> {

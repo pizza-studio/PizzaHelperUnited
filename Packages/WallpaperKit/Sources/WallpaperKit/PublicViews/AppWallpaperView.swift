@@ -21,6 +21,7 @@ public struct AppWallpaperView: View {
 
     public init(blur: Bool = true) {
         self.blur = blur
+        UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
     }
 
     // MARK: Public
