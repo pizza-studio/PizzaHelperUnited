@@ -27,14 +27,15 @@ public struct AbyssReportView4GI: AbyssReportView {
             }.flatMap(\.self)
         }.flatMap(\.self)
         let allCharIDStrings = Set(allCharIDsEnumerated.map(\.description))
-        let uidWithGame = profile.uidWithGame
         let theDB = Enka.Sputnik.shared.db4GI
         var summaries: [String: SummaryPtr] = [:]
-        (Defaults[.queriedHoYoProfiles4GI][uidWithGame] ?? []).forEach { maybeRaw in
-            guard allCharIDStrings.contains(maybeRaw.avatarIdStr) else { return }
-            let ptr = SummaryPtr(summary: maybeRaw.summarize(theDB: theDB))
-            guard let ptr else { return }
-            summaries[maybeRaw.avatarIdStr] = ptr
+        let summariesData = HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoAvatars(
+            theDB: theDB, uid: profile.uid
+        )
+        summariesData.forEach { currentSummary in
+            let ucid = currentSummary.mainInfo.uniqueCharId
+            guard allCharIDStrings.contains(ucid) else { return }
+            summaries[ucid] = .init(summaryNotNulled: currentSummary)
         }
         self.summaryMap = summaries
     }
