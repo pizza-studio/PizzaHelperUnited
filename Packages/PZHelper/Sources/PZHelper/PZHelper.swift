@@ -57,12 +57,12 @@ extension PZHelper {
         PZProfileActor.shared.modelContainer
     }
 
-    @MainActor public private(set) static var isApplicationBooted = false
+    @MainActor static var isApplicationBooted = false
 }
 
 extension PZHelper {
     @MainActor
-    private static func startupTasks() {
+    static func startupTasks() {
         PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
         Task {
             await PZProfileActor.shared.syncAllDataToUserDefaults()
@@ -77,6 +77,17 @@ extension PZHelper {
 // MARK: - AppInitializer
 
 private struct AppInitializer: ViewModifier {
+    // MARK: Lifecycle
+
+    init() {
+        if !PZHelper.isApplicationBooted {
+            PZHelper.startupTasks()
+        }
+        PZHelper.isApplicationBooted = true
+    }
+
+    // MARK: Internal
+
     func body(content: Content) -> some View {
         content
             .syncProfilesToUserDefaults()
