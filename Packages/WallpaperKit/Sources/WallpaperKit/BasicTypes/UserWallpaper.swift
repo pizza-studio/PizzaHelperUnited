@@ -8,8 +8,9 @@ import Foundation
 import PZBaseKit
 
 extension Defaults.Keys {
-    // User-supplied Wallpapers. API deprecated. Left for data migration purposes.
-    public static let userWallpapers = Key<Set<UserWallpaper>>(
+    /// User-supplied Wallpapers. API deprecated. Left for data migration purposes.
+    /// This API is intentionally marked as non-public.
+    internal static let userWallpapers = Key<Set<UserWallpaper>>(
         "userWallpapers",
         default: [],
         suite: .baseSuite
