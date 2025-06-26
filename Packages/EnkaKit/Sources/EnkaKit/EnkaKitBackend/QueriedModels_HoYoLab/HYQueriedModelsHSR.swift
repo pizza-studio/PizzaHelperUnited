@@ -55,7 +55,7 @@ extension HYQueriedModels {
         public typealias DBType = Enka.EnkaDB4HSR
         public typealias List = [HYLAvatarDetail4HSR]
 
-        public struct DecodableList: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
+        public struct DecodableList: DecodableHYLAvatarListProtocol {
             // MARK: Lifecycle
 
             public init(avatarList: HYLAvatarDetail4HSR.List) {
