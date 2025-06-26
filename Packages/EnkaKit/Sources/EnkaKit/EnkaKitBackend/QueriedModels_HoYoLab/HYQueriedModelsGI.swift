@@ -207,11 +207,18 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
     public struct Constellation: AbleToCodeSendHash {
         // MARK: Lifecycle
 
-        public init(id: Int, name: String, icon: String, effect: String, isActived: Bool, pos: Int) {
+        public init(
+            id: Int,
+            // name: String,
+            icon: String,
+            // effect: String,
+            isActived: Bool,
+            pos: Int
+        ) {
             self.id = id
-            self.name = name
+            // self.name = name
             self.icon = icon
-            self.effect = effect
+            // self.effect = effect
             self.isActived = isActived
             self.pos = pos
         }
@@ -219,15 +226,17 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
         // MARK: Public
 
         public enum CodingKeys: String, CodingKey {
-            case id, name, icon, effect
+            case id, icon
+            // case name
+            // case effect
             case isActived = "is_actived"
             case pos
         }
 
         public var id: Int
-        public var name: String
+        // public var name: String
         public var icon: String
-        public var effect: String
+        // public var effect: String
         public var isActived: Bool
         public var pos: Int
     }
@@ -257,24 +266,24 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
 
         public init(
             id: Int,
-            name: String,
+            // name: String,
             icon: String,
             pos: Int,
             rarity: Int,
             level: Int,
             relicSet: RelicSet,
-            posName: String,
+            // posName: String,
             mainProperty: GameProperty,
             subPropertyList: [GameProperty]
         ) {
             self.id = id
-            self.name = name
+            // self.name = name
             self.icon = icon
             self.pos = pos
             self.rarity = rarity
             self.level = level
             self.relicSet = relicSet
-            self.posName = posName
+            // self.posName = posName
             self.mainProperty = mainProperty
             self.subPropertyList = subPropertyList
         }
@@ -282,19 +291,20 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
         // MARK: Public
 
         public enum CodingKeys: String, CodingKey {
-            case id, name, icon, pos, rarity, level
+            case id, icon, pos, rarity, level
+            // case name
             case relicSet = "set"
-            case posName = "pos_name"
+            // case posName = "pos_name"
             case mainProperty = "main_property"
             case subPropertyList = "sub_property_list"
         }
 
         public var id: Int
-        public var name: String
+        // public var name: String
         public var icon: String
         public var pos, rarity, level: Int
         public var relicSet: RelicSet
-        public var posName: String
+        // public var posName: String
         public var mainProperty: GameProperty
         public var subPropertyList: [GameProperty]
     }
@@ -327,10 +337,14 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
     public struct RelicSet: AbleToCodeSendHash {
         // MARK: Lifecycle
 
-        public init(id: Int, name: String, affixes: [RelicAffix]) {
+        public init(
+            id: Int,
+            // affixes: [RelicAffix],
+            name: String
+        ) {
             self.id = id
             self.name = name
-            self.affixes = affixes
+            // self.affixes = affixes
         }
 
         // MARK: Public
@@ -358,7 +372,7 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
 
         public var id: Int
         public var name: String
-        public var affixes: [RelicAffix]
+        // public var affixes: [RelicAffix]
     }
 
     // MARK: - Skill
@@ -370,20 +384,20 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
             skillID: Int,
             skillType: Int,
             level: Int,
-            desc: String,
-            skillAffixList: [SkillAffix],
+            // desc: String,
+            // skillAffixList: [SkillAffix],
             icon: String,
-            isUnlock: Bool,
-            name: String
+            // name: String,
+            isUnlock: Bool
         ) {
             self.skillID = skillID
             self.skillType = skillType
             self.level = level
-            self.desc = desc
-            self.skillAffixList = skillAffixList
+            // self.desc = desc
+            // self.skillAffixList = skillAffixList
             self.icon = icon
             self.isUnlock = isUnlock
-            self.name = name
+            // self.name = name
         }
 
         // MARK: Public
@@ -406,19 +420,20 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
         public enum CodingKeys: String, CodingKey {
             case skillID = "skill_id"
             case skillType = "skill_type"
-            case level, desc
-            case skillAffixList = "skill_affix_list"
+            case level
+            // case desc
+            // case skillAffixList = "skill_affix_list"
             case icon
             case isUnlock = "is_unlock"
-            case name
+            // case name
         }
 
         public var skillID, skillType, level: Int
-        public var desc: String
-        public var skillAffixList: [SkillAffix]
+        // public var desc: String
+        // public var skillAffixList: [SkillAffix]
         public var icon: String
         public var isUnlock: Bool
-        public var name: String
+        // public var name: String
     }
 
     // MARK: - ListWeapon
@@ -435,7 +450,7 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
             level: Int,
             promoteLevel: Int,
             typeName: String,
-            desc: String,
+            // desc: String,
             affixLevel: Int,
             mainProperty: PanelProperty,
             subProperty: PanelProperty?
@@ -448,7 +463,7 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
             self.level = level
             self.promoteLevel = promoteLevel
             self.typeName = typeName
-            self.desc = desc
+            // self.desc = desc
             self.affixLevel = affixLevel
             self.mainProperty = mainProperty
             self.subProperty = subProperty
@@ -460,7 +475,7 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
             case id, name, icon, type, rarity, level
             case promoteLevel = "promote_level"
             case typeName = "type_name"
-            case desc
+            // case desc
             case affixLevel = "affix_level"
             case mainProperty = "main_property"
             case subProperty = "sub_property"
@@ -471,7 +486,7 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
         public var icon: String
         public var type, rarity, level, promoteLevel: Int
         public var typeName: String
-        public var desc: String
+        // public var desc: String
         public var affixLevel: Int
         public var mainProperty: PanelProperty
         public var subProperty: PanelProperty?

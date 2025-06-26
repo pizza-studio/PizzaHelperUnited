@@ -117,12 +117,20 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
     public struct Equip: AbleToCodeSendHash {
         // MARK: Lifecycle
 
-        public init(id: Int, level: Int, rank: Int, name: String, desc: String, icon: String, rarity: Int) {
+        public init(
+            id: Int,
+            level: Int,
+            rank: Int,
+            name: String,
+            // desc: String,
+            icon: String,
+            rarity: Int
+        ) {
             self.id = id
             self.level = level
             self.rank = rank
             self.name = name
-            self.desc = desc
+            // self.desc = desc
             self.icon = icon
             self.rarity = rarity
         }
@@ -130,7 +138,8 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
         // MARK: Public
 
         public var id, level, rank: Int
-        public var name, desc: String
+        public var name: String
+        // public var desc: String
         public var icon: String
         public var rarity: Int
     }
@@ -144,8 +153,8 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
             id: Int,
             level: Int,
             pos: Int,
-            name: String,
-            desc: String,
+            // name: String,
+            // desc: String,
             icon: String,
             rarity: Int,
             mainProperty: GameProperty,
@@ -154,8 +163,8 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
             self.id = id
             self.level = level
             self.pos = pos
-            self.name = name
-            self.desc = desc
+            // self.name = name
+            // self.desc = desc
             self.icon = icon
             self.rarity = rarity
             self.mainProperty = mainProperty
@@ -165,13 +174,16 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
         // MARK: Public
 
         public enum CodingKeys: String, CodingKey {
-            case id, level, pos, name, desc, icon, rarity
+            case id, level, pos
+            // case name
+            // case desc
+            case icon, rarity
             case mainProperty = "main_property"
             case properties
         }
 
         public var id, level, pos: Int
-        public var name, desc: String
+        // public var name, desc: String
         public var icon: String
         public var rarity: Int
         public var mainProperty: GameProperty
@@ -230,26 +242,34 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
     public struct EidolonResonance: AbleToCodeSendHash {
         // MARK: Lifecycle
 
-        public init(id: Int, pos: Int, name: String, icon: String, desc: String, isUnlocked: Bool) {
+        public init(
+            id: Int,
+            pos: Int,
+            // name: String,
+            icon: String,
+            // desc: String,
+            isUnlocked: Bool
+        ) {
             self.id = id
             self.pos = pos
-            self.name = name
+            // self.name = name
             self.icon = icon
-            self.desc = desc
+            // self.desc = desc
             self.isUnlocked = isUnlocked
         }
 
         // MARK: Public
 
         public enum CodingKeys: String, CodingKey {
-            case id, pos, name, icon, desc
+            case id, pos, icon
+            // case name, desc
             case isUnlocked = "is_unlocked"
         }
 
         public var id, pos: Int
-        public var name: String
+        // public var name: String
         public var icon: String
-        public var desc: String
+        // public var desc: String
         public var isUnlocked: Bool
     }
 
@@ -268,7 +288,7 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
             prePoint: String,
             anchor: Anchor,
             remake: String,
-            skillStages: [SkillStage]
+            // skillStages: [SkillStage]
         ) {
             self.pointID = pointID
             self.pointType = pointType
@@ -279,7 +299,7 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
             self.prePoint = prePoint
             self.anchor = anchor
             self.remake = remake
-            self.skillStages = skillStages
+            // self.skillStages = skillStages
         }
 
         // MARK: Public
@@ -293,7 +313,7 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
             case isRankWork = "is_rank_work"
             case prePoint = "pre_point"
             case anchor, remake
-            case skillStages = "skill_stages"
+            // case skillStages = "skill_stages"
         }
 
         public var pointID: String
@@ -304,7 +324,7 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
         public var prePoint: String
         public var anchor: Anchor
         public var remake: String
-        public var skillStages: [SkillStage]
+        // public var skillStages: [SkillStage]
     }
 
     public enum Anchor: String, AbleToCodeSendHash {
