@@ -21,6 +21,10 @@ extension Enka {
                 self.wrappedValue = summary
             }
 
+            public init(summaryNotNulled: AvatarSummarized) {
+                self.wrappedValue = summaryNotNulled
+            }
+
             // MARK: Public
 
             public let wrappedValue: AvatarSummarized
