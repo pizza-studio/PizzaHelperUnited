@@ -23,6 +23,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
         background: WidgetBackground,
         darkModeOn: Bool
     ) {
+        UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
         self.background = background
         self.darkModeOn = darkModeOn
     }
