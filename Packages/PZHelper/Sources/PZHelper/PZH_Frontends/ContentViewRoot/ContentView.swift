@@ -42,7 +42,7 @@ public struct ContentView: View {
                 .toolbar(.hidden, for: .navigationBar) // Additional safeguard
             #endif
         } detail: {
-            tabNavVM.rootTabNav.body
+            AppRootPageViewWrapper(tab: tabNavVM.rootTabNav)
                 .appTabBarVisibility(.visible)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {

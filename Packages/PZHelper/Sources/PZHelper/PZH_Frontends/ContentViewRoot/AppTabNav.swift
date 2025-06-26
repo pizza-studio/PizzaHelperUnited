@@ -5,9 +5,9 @@
 import PZBaseKit
 import SwiftUI
 
-// MARK: Internal
+// MARK: - AppTabNav
 
-enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
+enum AppTabNav: CaseIterable, Identifiable, Sendable, Hashable {
     case today
     case showcaseDetail
     case utils
@@ -23,14 +23,14 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
 
     // MARK: Public
 
-    nonisolated public static let allCases: [AppTabNav] = [
+    public static let allCases: [AppTabNav] = [
         .today,
         .showcaseDetail,
         .utils,
         .appSettings,
     ]
 
-    nonisolated public static let enabledSubCases: [AppTabNav] = [
+    public static let enabledSubCases: [AppTabNav] = [
         .showcaseDetail,
         .utils,
         .appSettings,
@@ -40,9 +40,9 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
         [1, 2, 3, 0]
     }
 
-    nonisolated public var id: Int { rootID }
+    public var id: Int { rootID }
 
-    nonisolated public var rootID: Int {
+    public var rootID: Int {
         switch self {
         case .today: 1
         case .showcaseDetail: 2
@@ -73,28 +73,44 @@ enum AppTabNav: View, CaseIterable, Identifiable, Sendable, Hashable {
         Self.exposedCaseTags.contains(rootID)
     }
 
-    @ViewBuilder public var body: some View {
-        switch self {
-        case .today:
-            TodayTabPage()
-                .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                .tabItem { label }
-        case .showcaseDetail:
-            DetailPortalTabPage()
-                .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                .tabItem { label }
-        case .utils:
-            UtilsTabPage()
-                .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                .tabItem { label }
-        case .appSettings:
-            AppSettingsTabPage()
-                .tag(self) // .toolbarBackground(.thinMaterial, for: .tabBar)
-                .tabItem { label }
-        }
-    }
-
     public var label: some View {
         Label(title: { labelNameText }, icon: { icon })
     }
+}
+
+// MARK: - AppRootPageViewWrapper
+
+struct AppRootPageViewWrapper: View {
+    // MARK: Lifecycle
+
+    public init(tab: AppTabNav) {
+        self.tab = tab
+    }
+
+    // MARK: Public
+
+    public var body: some View {
+        switch tab {
+        case .today:
+            TodayTabPage()
+                .tag(tab)
+        // .tabItem { tab.label }
+        case .showcaseDetail:
+            DetailPortalTabPage()
+                .tag(tab)
+        // .tabItem { tab.label }
+        case .utils:
+            UtilsTabPage()
+                .tag(tab)
+        // .tabItem { tab.label }
+        case .appSettings:
+            AppSettingsTabPage()
+                .tag(tab)
+            // .tabItem { tab.label }
+        }
+    }
+
+    // MARK: Private
+
+    private let tab: AppTabNav
 }
