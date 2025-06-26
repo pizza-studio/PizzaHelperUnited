@@ -44,7 +44,7 @@ extension HYQueriedModels {
 
         public typealias List = [HYLAvatarDetail4GI]
 
-        public struct DecodableList: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
+        public struct DecodableList: DecodableHYLAvatarListProtocol {
             // MARK: Lifecycle
 
             public init(avatarList: HYLAvatarDetail4GI.List) {
