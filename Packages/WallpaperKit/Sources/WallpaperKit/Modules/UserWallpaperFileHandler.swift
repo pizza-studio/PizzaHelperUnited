@@ -53,10 +53,24 @@ extension UserWallpaperFileHandler {
         return result
     }
 
-    public static func removeWallpaper(uuid: UUID) {
+    public static func removeWallpapers(uuids: Set<UUID>) {
+        uuids.forEach {
+            removeWallpaper(uuid: $0, broadcastChanges: false)
+        }
+        Task { @MainActor in
+            Broadcaster.shared.userWallpaperEntryChangesDidSave()
+        }
+    }
+
+    public static func removeWallpaper(uuid: UUID, broadcastChanges: Bool = true) {
         let fileURL = getURL4UserWallpaper(uuid: uuid)
         do {
             try FileManager.default.removeItem(at: fileURL)
+            if broadcastChanges {
+                Task { @MainActor in
+                    Broadcaster.shared.userWallpaperEntryChangesDidSave()
+                }
+            }
         } catch {
             print(error)
             print("[FAILURE] Unable to remove user wallpaper at: \(fileURL)")
