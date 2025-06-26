@@ -165,8 +165,6 @@ extension ProfileManagerPageContent {
                 trailingTasks: {
                     PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
                     theVM.sheetType = nil
-                    Broadcaster.shared.requireOSNotificationCenterAuthorization()
-                    Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
                 },
                 errorHandler: { error in
