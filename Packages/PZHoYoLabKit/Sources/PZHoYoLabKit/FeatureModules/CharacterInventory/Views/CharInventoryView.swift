@@ -15,18 +15,21 @@ public struct CharacterInventoryView: View {
     // MARK: Lifecycle
 
     public init(profile: PZProfileSendable) {
-        let uidWithGame = profile.uidWithGame
         let rawSummaries: [SummaryPtr]
         switch profile.game {
         case .genshinImpact:
             let theDB = Enka.Sputnik.shared.db4GI
-            rawSummaries = (Defaults[.queriedHoYoProfiles4GI][uidWithGame] ?? []).compactMap {
-                .init(summary: $0.summarize(theDB: theDB))
+            rawSummaries = HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoAvatars(
+                theDB: theDB, uid: profile.uid
+            ).compactMap {
+                .init(summary: $0)
             }
         case .starRail:
             let theDB = Enka.Sputnik.shared.db4HSR
-            rawSummaries = (Defaults[.queriedHoYoProfiles4HSR][uidWithGame] ?? []).compactMap {
-                .init(summary: $0.summarize(theDB: theDB))
+            rawSummaries = HYQueriedModels.HYLAvatarDetail4HSR.getLocalHoYoAvatars(
+                theDB: theDB, uid: profile.uid
+            ).compactMap {
+                .init(summary: $0)
             }
         case .zenlessZone:
             rawSummaries = []
