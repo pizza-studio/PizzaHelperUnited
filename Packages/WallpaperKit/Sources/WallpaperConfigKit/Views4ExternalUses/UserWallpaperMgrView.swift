@@ -15,11 +15,7 @@ public struct UserWallpaperMgrViewContent: View {
     // MARK: Lifecycle
 
     public init() {
-        self._userWallpapers = .init {
-            UserWallpaperFileHandler.getAllUserWallpapers()
-        } set: { newValue in
-            UserWallpaperPack.loadAndParseANewWallpaperSet(newValue)
-        }
+        self.userWallpapers = UserWallpaperFileHandler.getAllUserWallpapers()
     }
 
     // MARK: Public
@@ -68,7 +64,7 @@ public struct UserWallpaperMgrViewContent: View {
                                 alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
                             }
                         } extraItem: {
-                            NavigationLink(destination: callUserWallpaperView) {
+                            NavigationLink(destination: callUserWallpaperMakerView) {
                                 Label {
                                     Text("userWallpaperMgr.menu.addNewWallpaper", bundle: .module)
                                 } icon: {
@@ -132,7 +128,7 @@ public struct UserWallpaperMgrViewContent: View {
 
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
-    @Binding private var userWallpapers: Set<UserWallpaper>
+    @State private var userWallpapers: Set<UserWallpaper>
 
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
     @Default(.appWallpaperID) private var appWallpaperID: String
@@ -166,7 +162,7 @@ extension UserWallpaperMgrViewContent {
     @ViewBuilder var coreBody: some View {
         List {
             Section {
-                ForEach(userWallpapersSorted, content: drawRow)
+                ForEach(userWallpapersSorted, id: \.id, content: drawRow)
                     .onDelete(perform: deleteItems)
             } header: {
                 if userWallpapers.count >= Self.maxEntriesAmount {
@@ -184,7 +180,7 @@ extension UserWallpaperMgrViewContent {
             if userWallpapers.isEmpty {
                 Section {
                     Text("userWallpaperMgr.emptyContentsNotice", bundle: .module)
-                    NavigationLink(destination: callUserWallpaperView) {
+                    NavigationLink(destination: callUserWallpaperMakerView) {
                         Text("userWallpaperMgr.clickToAddYourFirstWallpaper", bundle: .module)
                             .fontWeight(.bold)
                             .fontWidth(.condensed)
@@ -198,7 +194,13 @@ extension UserWallpaperMgrViewContent {
                 }
             }
         }
-        .id(broadcaster.eventForUserWallpaperDidSave)
+        .onChange(of: broadcaster.eventForUserWallpaperDidSave) {
+            Task { @MainActor in
+                withAnimation {
+                    userWallpapers = UserWallpaperFileHandler.getAllUserWallpapers()
+                }
+            }
+        }
     }
 
     @ViewBuilder
@@ -270,9 +272,7 @@ extension UserWallpaperMgrViewContent {
             Divider()
             Button(role: .destructive) {
                 withAnimation {
-                    userWallpapers = userWallpapers.filter {
-                        $0.id != userWallpaper.id
-                    }
+                    UserWallpaperFileHandler.removeWallpaper(uuid: userWallpaper.id)
                     #if os(iOS) || targetEnvironment(macCatalyst)
                     if userWallpapers.isEmpty {
                         isEditMode = .inactive
@@ -298,26 +298,21 @@ extension UserWallpaperMgrViewContent {
                     guard oldValue != newValue else { return }
                     limitText(30)
                 }
-                Button {
-                    if let currentEditingWallpaper {
-                        var newWallpapers = userWallpapers.filter {
-                            $0.id != currentEditingWallpaper.id
+                if var currentEditingWallpaper {
+                    Button {
+                        currentEditingWallpaper.name = nameEditingBuffer.wrappedValue
+                        UserWallpaperFileHandler.saveUserWallpaperToDisk(currentEditingWallpaper)
+                        alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
+                        Task { @MainActor in
+                            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                         }
-                        newWallpapers.insert(currentEditingWallpaper)
-                        withAnimation {
-                            userWallpapers = newWallpapers
-                            alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
-                            Task { @MainActor in
-                                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-                            }
-                        }
+                        isNameEditorVisible = false
+                    } label: {
+                        Text("sys.done".i18nBaseKit)
                     }
-                    isNameEditorVisible = false
-                } label: {
-                    Text("sys.done".i18nBaseKit)
+                    .buttonStyle(.borderedProminent)
+                    .keyboardShortcut(.return)
                 }
-                .buttonStyle(.borderedProminent)
-                .keyboardShortcut(.return)
                 Button {
                     currentEditingWallpaper = nil
                     isNameEditorVisible = false
@@ -330,14 +325,12 @@ extension UserWallpaperMgrViewContent {
     }
 
     @ViewBuilder
-    func callUserWallpaperView() -> some View {
+    func callUserWallpaperMakerView() -> some View {
         UserWallpaperMakerView { finishedWallpaper in
             withAnimation {
                 alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
                 currentEditingWallpaper = finishedWallpaper
-                var allUserWallpapers = userWallpapersSorted
-                allUserWallpapers.insert(finishedWallpaper, at: 0)
-                userWallpapers = .init(allUserWallpapers)
+                UserWallpaperFileHandler.saveUserWallpaperToDisk(finishedWallpaper)
                 isNameEditorVisible = true
                 Task { @MainActor in
                     Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
@@ -350,9 +343,14 @@ extension UserWallpaperMgrViewContent {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            var wallpapersTemp = userWallpapersSorted
-            wallpapersTemp.remove(atOffsets: offsets)
-            userWallpapers = .init(wallpapersTemp)
+            let wallpapersTemp = userWallpapersSorted
+            guard offsets.subtracting(IndexSet(wallpapersTemp.indices)).isEmpty else { return }
+            var uuidsToRemove = Set<UUID>()
+            offsets.forEach {
+                let wp = userWallpapersSorted[$0]
+                uuidsToRemove.insert(wp.id)
+            }
+            UserWallpaperFileHandler.removeWallpapers(uuids: uuidsToRemove)
             #if os(iOS) || targetEnvironment(macCatalyst)
             if userWallpapers.isEmpty {
                 isEditMode = .inactive
