@@ -10,11 +10,12 @@ import SwiftUI
 extension View {
     @ViewBuilder
     public func appTabBarVisibility(_ visibility: SwiftUI.Visibility) -> some View {
-        #if !os(macOS)
-        toolbar(visibility, for: .tabBar)
-        #else
         self
-        #endif
+        // #if !os(macOS)
+        // toolbar(visibility, for: .tabBar)
+        // #else
+        // self
+        // #endif
     }
 }
 
