@@ -44,17 +44,27 @@ public struct LiveActivityWallpaperView: View {
             }
         }
         .compositingGroup()
-        .id(Set([userWallpapers.hashValue, liveActivityWallpaperIDs.hashValue]).hashValue)
+        .id(viewRefreshHash)
     }
 
     // MARK: Private
 
     @Environment(\.colorScheme) private var colorScheme
 
-    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
+    @StateObject private var broadcaster = Broadcaster.shared
+
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
 
     private let game: Pizza.SupportedGame?
+
+    private var viewRefreshHash: Int {
+        Set(
+            [
+                broadcaster.eventForUserWallpaperDidSave.hashValue,
+                liveActivityWallpaperIDs.hashValue,
+            ]
+        ).hashValue
+    }
 
     private var currentSettings: BackgroundSettings {
         let ids = liveActivityWallpaperIDs

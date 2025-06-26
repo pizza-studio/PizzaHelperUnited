@@ -6,6 +6,7 @@ import Defaults
 import Foundation
 import PZAccountKit
 import PZWidgetsKit
+import WallpaperKit
 
 // MARK: - PZWidgets
 
@@ -13,8 +14,9 @@ public enum PZWidgets {}
 
 extension PZWidgets {
     @MainActor
-    public static func attemptToAutoInheritOldAccountsIntoProfiles() {
+    public static func startupTask() {
         PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+        UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
     }
 
     public static func getAllProfiles(sortByGame: Bool = false) -> [PZProfileSendable] {

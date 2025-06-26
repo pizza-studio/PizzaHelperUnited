@@ -8,22 +8,10 @@ import Foundation
 import PZBaseKit
 
 extension Defaults.Keys {
-    // User-supplied Wallpapers.
+    // User-supplied Wallpapers. API deprecated. Left for data migration purposes.
     public static let userWallpapers = Key<Set<UserWallpaper>>(
         "userWallpapers",
         default: [],
-        suite: .baseSuite
-    )
-    // User wallpapers for live activity view.
-    public static let userWallpapers4LiveActivity = Key<Set<String>>(
-        "userWallpapers4LiveActivity",
-        default: [],
-        suite: .baseSuite
-    )
-    // User wallpaper for app view.
-    public static let userWallpaper4App = Key<String?>(
-        "userWallpaper4App",
-        default: nil,
         suite: .baseSuite
     )
 }
@@ -36,7 +24,7 @@ public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
     public init?(defaultsValueID: String?, validateImageData: Bool = false) {
         guard let defaultsValueID else { return nil }
         guard let uuid = UUID(uuidString: defaultsValueID) else { return nil }
-        let matched = Defaults[.userWallpapers].first { $0.id == uuid }
+        let matched = UserWallpaperFileHandler.getUserWallpaper(uuid: uuid)
         guard let matched else { return nil }
         if validateImageData {
             guard matched.isImageDataValid else { return nil }
@@ -106,7 +94,7 @@ extension UserWallpaper: Defaults.Serializable {}
 
 extension UserWallpaper {
     public static var allCases: [UserWallpaper] {
-        Defaults[.userWallpapers].sorted {
+        UserWallpaperFileHandler.getAllUserWallpapers().sorted {
             $0.timestamp > $1.timestamp
         }
     }
@@ -115,7 +103,9 @@ extension UserWallpaper {
 extension Set where Element == UserWallpaper {
     public init(defaultsValueIDs: Set<String>) {
         let uuids = defaultsValueIDs.compactMap { UUID(uuidString: $0) }
-        let validResults = Defaults[.userWallpapers].filter { uuids.contains($0.id) }
+        let validResults = UserWallpaperFileHandler.getAllUserWallpapers().filter {
+            uuids.contains($0.id)
+        }
         self = .init(validResults)
     }
 }
