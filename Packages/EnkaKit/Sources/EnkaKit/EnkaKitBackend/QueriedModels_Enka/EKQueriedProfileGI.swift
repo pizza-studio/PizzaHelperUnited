@@ -75,11 +75,6 @@ extension Enka {
             public var costumeId: Int?
         }
 
-        public static var locallyCachedData: [String: Self] {
-            get { Defaults[.queriedEnkaProfiles4GI] }
-            set { Defaults[.queriedEnkaProfiles4GI] = newValue }
-        }
-
         /// UID
         public var uid: String
         /// 名称

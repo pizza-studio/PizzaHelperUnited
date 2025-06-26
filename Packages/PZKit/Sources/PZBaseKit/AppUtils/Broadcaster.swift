@@ -13,11 +13,21 @@ import WidgetKit
 public final class Broadcaster: ObservableObject, Sendable {
     public static let shared = Broadcaster()
 
+    public private(set) var eventForUpdatingLocalEnkaAvatarCache: [String: Date] = .init()
+    public private(set) var eventForUpdatingLocalHoYoLABAvatarCache: UUID = .init()
     public private(set) var eventForRefreshingTodayTab: UUID = .init()
     public private(set) var eventForRefreshingCurrentPage: UUID = .init()
     public private(set) var eventForJustSwitchedToTodayTab: UUID = .init()
     public private(set) var eventForStoppingRootTabTasks: UUID = .init()
     public var splitViewVisibility: NavigationSplitViewVisibility = .all // Accessible by SPM.
+
+    public func localEnkaAvatarCacheDidUpdate(uidWithGame: String) {
+        eventForUpdatingLocalEnkaAvatarCache[uidWithGame] = .init()
+    }
+
+    public func localHoYoLABAvatarCacheDidUpdate() {
+        eventForUpdatingLocalHoYoLABAvatarCache = .init()
+    }
 
     public func todayTabDidSwitchTo() {
         eventForJustSwitchedToTodayTab = .init()

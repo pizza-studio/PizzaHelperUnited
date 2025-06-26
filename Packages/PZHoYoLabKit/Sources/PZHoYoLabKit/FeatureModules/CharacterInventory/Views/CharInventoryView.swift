@@ -15,39 +15,17 @@ public struct CharacterInventoryView: View {
     // MARK: Lifecycle
 
     public init(profile: PZProfileSendable) {
-        let rawSummaries: [SummaryPtr]
-        switch profile.game {
-        case .genshinImpact:
-            let theDB = Enka.Sputnik.shared.db4GI
-            rawSummaries = HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoAvatars(
-                theDB: theDB, uid: profile.uid
-            ).compactMap {
-                .init(summary: $0)
-            }
-        case .starRail:
-            let theDB = Enka.Sputnik.shared.db4HSR
-            rawSummaries = HYQueriedModels.HYLAvatarDetail4HSR.getLocalHoYoAvatars(
-                theDB: theDB, uid: profile.uid
-            ).compactMap {
-                .init(summary: $0)
-            }
-        case .zenlessZone:
-            rawSummaries = []
-        }
         self.currentAvatarSummaryID = ""
         self.game = profile.game
+        self.profile = profile
+        let rawSummaries: [SummaryPtr] = Self.getRawSummaries(profile: profile)
         self.sortedSummariesMap = Dictionary(grouping: rawSummaries, by: \.wrappedValue.mainInfo.element)
-        self.summaries = rawSummaries.sorted {
-            $0.wrappedValue.mainInfo.element.tourID < $1.wrappedValue.mainInfo.element.tourID
-        }
+        self.summaries = rawSummaries
     }
 
     // MARK: Public
 
     public typealias SummaryPtr = Enka.AvatarSummarized.SharedPointer
-
-    public let summaries: [SummaryPtr]
-    public let sortedSummariesMap: [Enka.GameElement: [SummaryPtr]]
 
     @ViewBuilder public var body: some View {
         NavigationStack {
@@ -62,6 +40,16 @@ public struct CharacterInventoryView: View {
                         simpleTaptic(type: .medium)
                     }
                 }
+        }
+        .onChange(of: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
+            Task { @MainActor in
+                let rawSummaries: [SummaryPtr] = Self.getRawSummaries(profile: profile)
+                let sortedMap = Dictionary(grouping: rawSummaries, by: \.wrappedValue.mainInfo.element)
+                withAnimation {
+                    sortedSummariesMap = sortedMap
+                    summaries = rawSummaries
+                }
+            }
         }
     }
 
@@ -185,17 +173,47 @@ public struct CharacterInventoryView: View {
 
     // MARK: Private
 
+    @State private var summaries: [SummaryPtr]
+    @State private var sortedSummariesMap: [Enka.GameElement: [SummaryPtr]]
     @State private var allAvatarListDisplayType: InventoryViewFilterType = .all
     @State private var containerWidth: CGFloat = 320
     @State private var expanded: Bool = false
     @State private var currentAvatarSummaryID: String
     @StateObject private var orientation = DeviceOrientation()
+    @StateObject private var broadcaster = Broadcaster.shared
     @Environment(\.dismiss) private var dismiss
+
+    private let profile: PZProfileSendable
 
     private let game: Pizza.SupportedGame
 
     private var lineCapacity: Int {
         Int(floor((containerWidth - 20) / 70))
+    }
+
+    private static func getRawSummaries(profile: PZProfileSendable) -> [SummaryPtr] {
+        let rawSummaries: [SummaryPtr]
+        switch profile.game {
+        case .genshinImpact:
+            let theDB = Enka.Sputnik.shared.db4GI
+            rawSummaries = HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoAvatars(
+                theDB: theDB, uid: profile.uid
+            ).compactMap {
+                .init(summary: $0)
+            }
+        case .starRail:
+            let theDB = Enka.Sputnik.shared.db4HSR
+            rawSummaries = HYQueriedModels.HYLAvatarDetail4HSR.getLocalHoYoAvatars(
+                theDB: theDB, uid: profile.uid
+            ).compactMap {
+                .init(summary: $0)
+            }
+        case .zenlessZone:
+            rawSummaries = []
+        }
+        return rawSummaries.sorted {
+            $0.wrappedValue.mainInfo.element.tourID < $1.wrappedValue.mainInfo.element.tourID
+        }
     }
 }
 

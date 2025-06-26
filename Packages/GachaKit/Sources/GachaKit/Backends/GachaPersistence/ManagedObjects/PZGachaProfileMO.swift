@@ -59,7 +59,7 @@ public struct GachaProfileID: GachaProfileIDProtocol, Sendable {
         let matchedGame = Pizza.SupportedGame(uidPrefix: uidWithGame.prefix(2).description)
         guard let matchedGame else { return nil }
         // Parse filename (UID).
-        let uidStr = uidWithGame.dropFirst(3).description
+        let uidStr = uidWithGame.split(separator: "-").dropFirst(1).prefix(1).joined()
         guard !uidStr.isEmpty, Int(uidStr) != nil else { return nil }
         self.uid = uidStr
         self.game = matchedGame

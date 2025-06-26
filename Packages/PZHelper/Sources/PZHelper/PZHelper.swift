@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import EnkaKit
 import GachaKit
 import PZAboutKit
 import PZAccountKit
@@ -67,6 +68,7 @@ extension PZHelper {
         }
         PZHelper.setupSpotlightSearch()
         GachaRootView.getFAQView = { AnyView(FAQView()) }
+        Enka.Sputnik.migrateCachedProfilesFromUserDefaultsToFiles()
     }
 }
 

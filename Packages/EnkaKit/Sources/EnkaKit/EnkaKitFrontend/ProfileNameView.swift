@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Defaults
+import PZBaseKit
 import SwiftUI
 
 extension Enka {
@@ -26,38 +27,50 @@ extension Enka {
             if let profileName {
                 Text(profileName)
             } else {
-                switch game {
-                case .genshinImpact:
-                    if let profile = profiles4GI[uid] {
-                        Text(profile.nickname)
-                    } else {
-                        Text(uid)
-                            .task(priority: .background) {
-                                if onlineUpdate {
-                                    try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
+                Group {
+                    switch game {
+                    case .genshinImpact:
+                        if let profile = sharedDB.db4GI.getCachedProfileRAW(uid: uid) {
+                            Text(profile.nickname)
+                        } else {
+                            Text(uid)
+                                .task(priority: .background) {
+                                    if onlineUpdate {
+                                        try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
+                                    }
                                 }
-                            }
-                    }
-                case .starRail:
-                    if let profile = profiles4HSR[uid] {
-                        Text(profile.nickname)
-                    } else {
-                        Text(uid)
-                            .task(priority: .background) {
-                                if onlineUpdate {
-                                    try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
+                        }
+                    case .starRail:
+                        if let profile = sharedDB.db4HSR.getCachedProfileRAW(uid: uid) {
+                            Text(profile.nickname)
+                        } else {
+                            Text(uid)
+                                .task(priority: .background) {
+                                    if onlineUpdate {
+                                        try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
+                                    }
                                 }
-                            }
+                        }
+                    case .zenlessZone: Text(uid) // 临时设定。
                     }
-                case .zenlessZone: Text(uid) // 临时设定。
                 }
+                .id(latestHash)
             }
         }
 
         // MARK: Private
 
+        @State private var sharedDB: Enka.Sputnik = .shared
+        @StateObject private var broadcaster = Broadcaster.shared
+
         private let onlineUpdate: Bool
-        @Default(.queriedEnkaProfiles4GI) private var profiles4GI
-        @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
+
+        private var uidWithGame: String { "\(game.uidPrefix)-\(uid)" }
+
+        private var latestHash: Int {
+            let mostRecentDate = broadcaster.eventForUpdatingLocalEnkaAvatarCache[uidWithGame]
+            let timeInterval = (mostRecentDate ?? .distantPast).timeIntervalSince1970
+            return timeInterval.hashValue
+        }
     }
 }
