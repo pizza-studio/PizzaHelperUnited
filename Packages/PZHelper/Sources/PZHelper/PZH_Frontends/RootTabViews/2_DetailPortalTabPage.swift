@@ -140,9 +140,6 @@ struct DetailPortalTabPage: View {
 
     @Default(.pzProfiles) private var profiles: [String: PZProfileSendable]
 
-    @Default(.queriedEnkaProfiles4GI) private var profiles4GI
-    @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
-
     private var sortedProfiles: [PZProfileSendable] {
         profiles.map(\.value).sorted { $0.priority < $1.priority }
             .filter { $0.game != .zenlessZone } // 临时设定。

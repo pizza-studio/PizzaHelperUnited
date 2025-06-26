@@ -328,9 +328,10 @@ struct ProfileManagerPageContent: View {
                     PZNotificationCenter.deleteDailyNoteNotification(for: currentProfile)
                     if clearEnkaCache {
                         switch currentProfile.game {
-                        case .genshinImpact: Defaults[.queriedEnkaProfiles4GI]
-                            .removeValue(forKey: currentProfile.uid)
-                        case .starRail: Defaults[.queriedEnkaProfiles4HSR].removeValue(forKey: currentProfile.uid)
+                        case .genshinImpact:
+                            Enka.Sputnik.shared.db4GI.removeCachedProfileRAW(uid: currentProfile.uid)
+                        case .starRail:
+                            Enka.Sputnik.shared.db4HSR.removeCachedProfileRAW(uid: currentProfile.uid)
                         case .zenlessZone: break // 临时设定。
                         }
                     }

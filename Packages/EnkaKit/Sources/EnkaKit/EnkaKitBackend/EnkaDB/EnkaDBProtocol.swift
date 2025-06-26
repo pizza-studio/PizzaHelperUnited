@@ -76,8 +76,16 @@ extension EnkaDBProtocol {
         return self
     }
 
-    func getCachedProfileRAW(uid: String) -> QueriedProfile? {
+    public func getCachedProfileRAW(uid: String) -> QueriedProfile? {
         QueriedProfile.getCachedProfile(uid: uid)
+    }
+
+    public func removeCachedProfileRAW(uid: String) {
+        QueriedProfile.removeCachedProfile(uid: uid)
+    }
+
+    public func getAllCachedProfiles() -> [String: QueriedProfile] {
+        QueriedProfile.getAllCachedProfiles()
     }
 
     @MainActor
@@ -86,11 +94,11 @@ extension EnkaDBProtocol {
         dateWhenNextRefreshable nextAvailableDate: Date? = nil
     ) async throws
         -> Self.QueriedProfile {
-        let existingData = QueriedProfile.locallyCachedData[uid]
+        let existingData = QueriedProfile.getCachedProfile(uid: uid)
         do {
             let detailInfo = try await QueriedResult.queryProfile(uid: uid, dateWhenNextRefreshable: nextAvailableDate)
             let newMerged = detailInfo.inheritAvatars(from: existingData)
-            QueriedProfile.locallyCachedData[uid] = newMerged
+            newMerged.saveToCache()
             return newMerged
         } catch {
             let msg = error.localizedDescription + "\n-------\n// \(error)"

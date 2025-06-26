@@ -27,7 +27,64 @@ public protocol HYQueriedAvatarProtocol: Identifiable, Equatable, AbleToCodeSend
     var id: Int { get }
     @MainActor
     func summarize(theDB: DBType) -> Enka.AvatarSummarized?
+}
+
+extension HYQueriedAvatarProtocol {
+    public static func cacheLocalHoYoAvatars(uid: String, data: Data) {
+        let decoded = try? Self.DecodableList.decodeFromMiHoYoAPIJSONResult(
+            data: data,
+            debugTag: "HYQueriedModels.cacheLocalHoYoAvatars()"
+        )
+        guard decoded != nil else { return }
+        do {
+            try data.write(to: getURL4LocallyCachedAvatars(uid: uid), options: .atomic)
+            Task { @MainActor in
+                Broadcaster.shared.localHoYoLABAvatarCacheDidUpdate()
+            }
+        } catch {
+            return
+        }
+    }
+
+    public static func getLocalAvatarRaws(uid: String) -> List {
+        let cachedRawData = try? Data(contentsOf: getURL4LocallyCachedAvatars(uid: uid))
+        guard let cachedRawData else { return [] }
+        let decoded = try? Self.DecodableList.decodeFromMiHoYoAPIJSONResult(
+            data: cachedRawData,
+            debugTag: "HYQueriedModels.getLocalAvatarRaws()"
+        )
+        guard let decoded else { return [] }
+        return decoded.avatarList
+    }
+
     @MainActor
-    static func getLocalHoYoAvatars(theDB: DBType, uid: String) -> [Enka.AvatarSummarized]
-    static func cacheLocalHoYoAvatars(uid: String, data: Data)
+    public static func getLocalHoYoAvatars(theDB: DBType, uid: String) -> [Enka.AvatarSummarized] {
+        let raw = getLocalAvatarRaws(uid: uid)
+        return raw.compactMap { $0.summarize(theDB: theDB) }
+    }
+
+    /// We assume that this API never fails.
+    private static var localAvatarCacheFolderURL: URL {
+        let backgroundFolderUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+            .first!
+            .appendingPathComponent(sharedBundleIDHeader, isDirectory: true)
+            .appendingPathComponent("CachedAvatars", isDirectory: true)
+            .appendingPathComponent("FromHoYoLAB", isDirectory: true)
+        try? FileManager.default.createDirectory(
+            at: backgroundFolderUrl,
+            withIntermediateDirectories: true,
+            attributes: nil
+        )
+        return backgroundFolderUrl
+    }
+
+    private static func getFileNameStem4LocallyCachedAvatars(uid: String) -> String {
+        "\(DBType.game.uidPrefix)-\(uid)-HoYoLABQueryResult"
+    }
+
+    private static func getURL4LocallyCachedAvatars(uid: String) -> URL {
+        localAvatarCacheFolderURL.appendingPathComponent(
+            getFileNameStem4LocallyCachedAvatars(uid: uid) + ".json", isDirectory: false
+        )
+    }
 }

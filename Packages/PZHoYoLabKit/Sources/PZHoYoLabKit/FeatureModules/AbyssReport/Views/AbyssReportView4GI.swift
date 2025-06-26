@@ -14,30 +14,9 @@ public struct AbyssReportView4GI: AbyssReportView {
     // MARK: Lifecycle
 
     public init(data: AbyssReportData, profile: PZProfileSendable?) {
+        self.profile = profile
         self.data = data
-        guard let profile else {
-            self.summaryMap = [:]
-            return
-        }
-        let allCharIDsEnumerated: [Int] = data.floors.compactMap { floor in
-            floor.levels.compactMap { level in
-                level.battles.compactMap { battle in
-                    battle.avatars.map(\.id)
-                }.flatMap(\.self)
-            }.flatMap(\.self)
-        }.flatMap(\.self)
-        let allCharIDStrings = Set(allCharIDsEnumerated.map(\.description))
-        let theDB = Enka.Sputnik.shared.db4GI
-        var summaries: [String: SummaryPtr] = [:]
-        let summariesData = HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoAvatars(
-            theDB: theDB, uid: profile.uid
-        )
-        summariesData.forEach { currentSummary in
-            let ucid = currentSummary.mainInfo.uniqueCharId
-            guard allCharIDStrings.contains(ucid) else { return }
-            summaries[ucid] = .init(summaryNotNulled: currentSummary)
-        }
-        self.summaryMap = summaries
+        self.summaryMap = Self.getSummaryMap(data: data, profile: profile)
     }
 
     // MARK: Public
@@ -71,6 +50,13 @@ public struct AbyssReportView4GI: AbyssReportView {
         }
         .formStyle(.grouped)
         .scrollContentBackground(.hidden)
+        .onChange(of: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
+            Task { @MainActor in
+                withAnimation {
+                    summaryMap = Self.getSummaryMap(data: data, profile: profile)
+                }
+            }
+        }
     }
 
     @ViewBuilder var stats: some View {
@@ -98,11 +84,42 @@ public struct AbyssReportView4GI: AbyssReportView {
 
     @State private var containerWidth: CGFloat = 320
     @StateObject private var orientation = DeviceOrientation()
+    @StateObject private var broadcaster = Broadcaster.shared
     @Namespace private var animation
+    @State private var summaryMap: [String: SummaryPtr]
 
-    private let summaryMap: [String: SummaryPtr]
+    private let profile: PZProfileSendable?
 
     private var columns: Int { min(max(Int(floor($containerWidth.wrappedValue / 200)), 2), 4) }
+
+    private static func getSummaryMap(
+        data: AbyssReportData,
+        profile: PZProfileSendable?
+    )
+        -> [String: SummaryPtr] {
+        guard let profile else {
+            return [:]
+        }
+        let allCharIDsEnumerated: [Int] = data.floors.compactMap { floor in
+            floor.levels.compactMap { level in
+                level.battles.compactMap { battle in
+                    battle.avatars.map(\.id)
+                }.flatMap(\.self)
+            }.flatMap(\.self)
+        }.flatMap(\.self)
+        let allCharIDStrings = Set(allCharIDsEnumerated.map(\.description))
+        let theDB = Enka.Sputnik.shared.db4GI
+        var summaries: [String: SummaryPtr] = [:]
+        let summariesData = HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoAvatars(
+            theDB: theDB, uid: profile.uid
+        )
+        summariesData.forEach { currentSummary in
+            let ucid = currentSummary.mainInfo.uniqueCharId
+            guard allCharIDStrings.contains(ucid) else { return }
+            summaries[ucid] = .init(summaryNotNulled: currentSummary)
+        }
+        return summaries
+    }
 }
 
 extension AbyssReportView4GI {

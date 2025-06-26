@@ -6,20 +6,6 @@ import Defaults
 import Foundation
 
 extension HYQueriedModels.HYLAvatarDetail4GI: HYQueriedAvatarProtocol {
-    public static func cacheLocalHoYoAvatars(uid: String, data: Data) {
-        let decoded = try? Self.DecodableList.decodeFromMiHoYoAPIJSONResult(
-            data: data,
-            debugTag: "HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoProfiles()"
-        )
-        guard let decoded else { return }
-        Defaults[.queriedHoYoProfiles4GI]["GI-\(uid)"] = decoded.avatarList
-    }
-
-    public static func getLocalHoYoAvatars(theDB: DBType, uid: String) -> [Enka.AvatarSummarized] {
-        let cachedData = Defaults[.queriedHoYoProfiles4GI]["GI-\(uid)"] ?? []
-        return cachedData.compactMap { $0.summarize(theDB: theDB) }
-    }
-
     public func summarize(theDB: Enka.EnkaDB4GI) -> Enka.AvatarSummarized? {
         let mainInfo = Enka.AvatarSummarized.AvatarMainInfo(giDB: theDB, hylRAW: self)
         guard let mainInfo else { return nil }
