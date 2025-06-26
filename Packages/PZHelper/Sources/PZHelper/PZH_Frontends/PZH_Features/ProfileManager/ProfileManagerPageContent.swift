@@ -272,8 +272,6 @@ struct ProfileManagerPageContent: View {
             givenTask: {
                 PZNotificationCenter.deleteDailyNoteNotification(for: profile.asSendable)
                 try await PZProfileActor.shared.addProfiles([profile.asSendable])
-                Broadcaster.shared.requireOSNotificationCenterAuthorization()
-                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                 alertToastEventStatus.isProfileTaskSucceeded.toggle()
             },
             completionHandler: { _ in
@@ -408,8 +406,6 @@ struct ProfileManagerPageContent: View {
                         await assertion.release()
                         throw error
                     }
-                    Broadcaster.shared.requireOSNotificationCenterAuthorization()
-                    Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
                 },
                 errorHandler: { error in
