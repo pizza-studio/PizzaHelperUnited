@@ -194,7 +194,7 @@ public final class ProfileManagerVM: TaskManagedVM {
             // 所以只能抓 NSManagedObjectContextDidSaveObjectIDs。但这样又会有紫色警告。
             // 算了不管了，忍到 2026 年夏天放弃 iOS 17。
             NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
-                .sink(receiveValue: { notification in
+                .sink(receiveValue: { _ in
                     self.didObserveChangesFromSwiftData()
                 })
                 .store(in: &cancellables)
