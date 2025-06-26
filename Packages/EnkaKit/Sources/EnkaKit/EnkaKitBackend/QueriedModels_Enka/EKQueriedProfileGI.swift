@@ -29,7 +29,8 @@ extension Enka {
             self.showNameCardIdList = try container.decodeIfPresent([Int].self, forKey: .showNameCardIdList)
             self.profilePicture = try container.decode(ProfilePictureRAW.self, forKey: .profilePicture)
             self.avatarDetailList = try container.decodeIfPresent([QueriedAvatar].self, forKey: .avatarDetailList) ?? []
-            self.uid = "UID not included in the retrieved JSON."
+            self.uid = (try? container.decode(String.self, forKey: .uid))
+                ?? "UID not included in the retrieved JSON."
         }
 
         // MARK: Public
