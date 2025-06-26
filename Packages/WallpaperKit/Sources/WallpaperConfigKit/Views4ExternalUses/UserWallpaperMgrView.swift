@@ -14,7 +14,13 @@ import WallpaperKit
 public struct UserWallpaperMgrViewContent: View {
     // MARK: Lifecycle
 
-    public init() {}
+    public init() {
+        self._userWallpapers = .init {
+            UserWallpaperFileHandler.getAllUserWallpapers()
+        } set: { newValue in
+            UserWallpaperPack.loadAndParseANewWallpaperSet(newValue)
+        }
+    }
 
     // MARK: Public
 
@@ -120,12 +126,14 @@ public struct UserWallpaperMgrViewContent: View {
 
     @State private var isCropperSheetPresented: Bool = false
     @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
+    @StateObject private var broadcaster = Broadcaster.shared
     @State private var isNameEditorVisible: Bool = false
     @State private var currentEditingWallpaper: UserWallpaper?
 
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
-    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
+    @Binding private var userWallpapers: Set<UserWallpaper>
+
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
     @Default(.appWallpaperID) private var appWallpaperID: String
 
@@ -190,6 +198,7 @@ extension UserWallpaperMgrViewContent {
                 }
             }
         }
+        .id(broadcaster.eventForUserWallpaperDidSave)
     }
 
     @ViewBuilder

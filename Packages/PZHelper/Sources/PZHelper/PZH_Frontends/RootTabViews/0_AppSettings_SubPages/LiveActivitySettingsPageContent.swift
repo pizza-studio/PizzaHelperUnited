@@ -142,8 +142,6 @@ struct LiveActivitySettingsPageContent: View {
 
     // MARK: Private
 
-    @Default(.userWallpapers4LiveActivity) private var userWallpaperIDs4LiveActivity: Set<String>
-    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
     @State private var isHowToCloseDynamicIslandAlertShow: Bool = false
     @State private var allowLiveActivity: Bool = StaminaLiveActivityController.shared.allowLiveActivity
 

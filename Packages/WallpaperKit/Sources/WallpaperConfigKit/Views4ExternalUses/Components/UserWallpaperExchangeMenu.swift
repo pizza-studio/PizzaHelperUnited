@@ -24,6 +24,7 @@ struct UserWallpaperExchangeMenu<T: View>: View {
     // MARK: Public
 
     @ViewBuilder public var body: some View {
+        let userWallpapers = UserWallpaperFileHandler.getAllUserWallpapers()
         @Bindable var theVM = theVM
         let msgPack = theVM.fileSaveActionResultMessagePack
         Menu {
@@ -83,6 +84,7 @@ struct UserWallpaperExchangeMenu<T: View>: View {
                         Text(verbatim: msgPack.message)
                     }
                 )
+                .id(broadcaster.eventForUserWallpaperDidSave)
         }
         .onDisappear {
             theVM.currentExportableDocument = nil
@@ -92,8 +94,8 @@ struct UserWallpaperExchangeMenu<T: View>: View {
     // MARK: Private
 
     @StateObject private var theVM = Coordinator()
+    @StateObject private var broadcaster = Broadcaster.shared
 
-    @Default(.userWallpapers) private var userWallpapers: Set<UserWallpaper>
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
     private let extraItem: (() -> T)?
 }

@@ -48,7 +48,7 @@ struct WidgetExtensionBundle: WidgetBundle {
     // MARK: Lifecycle
 
     init() {
-        PZWidgets.attemptToAutoInheritOldAccountsIntoProfiles()
+        PZWidgets.startupTask()
     }
 
     // MARK: Internal
