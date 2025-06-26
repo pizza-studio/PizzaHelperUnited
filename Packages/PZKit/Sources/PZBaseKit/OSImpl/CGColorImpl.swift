@@ -5,8 +5,6 @@
 import CoreGraphics
 import Foundation
 
-import CoreGraphics
-
 extension CGColor {
     public struct HSLData: Codable, Hashable, Sendable {
         // MARK: Lifecycle
