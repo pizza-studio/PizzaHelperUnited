@@ -181,7 +181,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                             Text(verbatim: challengeTime.description)
                         }
                         HStack(spacing: 0) {
-                            ForEach(Array(repeating: 0, count: floorData.starNum), id: \.self) { _ in
+                            ForEach(1 ... floorData.starNum, id: \.self) { _ in
                                 Self.drawAbyssStarIcon()
                             }
                         }
@@ -219,7 +219,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                         }
                         HStack(spacing: 0) {
                             let starNumInt = floorData.starNum
-                            ForEach(Array(repeating: 0, count: starNumInt), id: \.self) { _ in
+                            ForEach(1 ... starNumInt, id: \.self) { _ in
                                 Self.drawAbyssStarIcon()
                             }
                         }
@@ -257,7 +257,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                         }
                         HStack(spacing: 0) {
                             let starNumInt = Int(floorData.starNum) ?? 0
-                            ForEach(Array(repeating: 0, count: starNumInt), id: \.self) { _ in
+                            ForEach(1 ... starNumInt, id: \.self) { _ in
                                 Self.drawAbyssStarIcon()
                             }
                         }
