@@ -67,34 +67,45 @@ extension UserWallpaperPack {
         guard let data = try? Data(contentsOf: url) else { throw FileParseException.dataNotFetchable }
         do {
             let decoded = try JSONDecoder().decode(Set<UserWallpaper>.self, from: data)
-            var allUserWallpapers = Defaults[.userWallpapers]
-            var inserted = 0
-            decoded.forEach { currentWallpaper in
-                var currentWallpaper = currentWallpaper
-                guard currentWallpaper.imageSquared != nil else { return }
-                guard currentWallpaper.imageHorizontal != nil else { return }
-                if currentWallpaper.name.isEmpty {
-                    currentWallpaper.name = currentWallpaper.dateString
-                }
-                allUserWallpapers = allUserWallpapers.filter {
-                    $0.id != currentWallpaper.id
-                        && $0.b64Data4Squared != currentWallpaper.b64Data4Squared
-                        && $0.b64Data4Horizontal != currentWallpaper.b64Data4Horizontal
-                }
-                allUserWallpapers.insert(currentWallpaper)
-                inserted += 1
-            }
-            guard inserted > 0 else { return 0 }
-            Defaults[.userWallpapers] = allUserWallpapers
-            defer {
-                Task { @MainActor in
-                    Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-                }
-            }
-            return inserted
+            return loadAndParseANewWallpaperSet(decoded)
         } catch {
             throw FileParseException.decodingError(error)
         }
+    }
+
+    @discardableResult
+    public static func loadAndParseANewWallpaperSet(_ decoded: Set<UserWallpaper>) -> Int {
+        var allUserWallpapers = UserWallpaperFileHandler.getAllUserWallpapers()
+        let oldWallpapers = allUserWallpapers
+        var inserted = 0
+        decoded.forEach { currentWallpaper in
+            var currentWallpaper = currentWallpaper
+            guard currentWallpaper.imageSquared != nil else { return }
+            guard currentWallpaper.imageHorizontal != nil else { return }
+            if currentWallpaper.name.isEmpty {
+                currentWallpaper.name = currentWallpaper.dateString
+            }
+            allUserWallpapers = allUserWallpapers.filter {
+                $0.id != currentWallpaper.id
+                    && $0.b64Data4Squared != currentWallpaper.b64Data4Squared
+                    && $0.b64Data4Horizontal != currentWallpaper.b64Data4Horizontal
+            }
+            allUserWallpapers.insert(currentWallpaper)
+            inserted += 1
+        }
+        guard inserted > 0 else { return 0 }
+        let entriesToDelete = oldWallpapers.subtracting(allUserWallpapers)
+        let entriesToAdd = allUserWallpapers.subtracting(oldWallpapers)
+        entriesToDelete.forEach {
+            UserWallpaperFileHandler.removeWallpaper(uuid: $0.id)
+        }
+        UserWallpaperFileHandler.saveUserWallpapersToDisk(entriesToAdd)
+        defer {
+            Task { @MainActor in
+                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+            }
+        }
+        return inserted
     }
 }
 

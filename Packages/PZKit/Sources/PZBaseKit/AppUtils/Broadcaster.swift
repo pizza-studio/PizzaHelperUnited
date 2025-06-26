@@ -15,11 +15,16 @@ public final class Broadcaster: ObservableObject, Sendable {
 
     public private(set) var eventForUpdatingLocalEnkaAvatarCache: [String: Date] = .init()
     public private(set) var eventForUpdatingLocalHoYoLABAvatarCache: UUID = .init()
+    public private(set) var eventForUserWallpaperDidSave: UUID = .init()
     public private(set) var eventForRefreshingTodayTab: UUID = .init()
     public private(set) var eventForRefreshingCurrentPage: UUID = .init()
     public private(set) var eventForJustSwitchedToTodayTab: UUID = .init()
     public private(set) var eventForStoppingRootTabTasks: UUID = .init()
     public var splitViewVisibility: NavigationSplitViewVisibility = .all // Accessible by SPM.
+
+    public func userWallpaperEntryChangesDidSave() {
+        eventForUserWallpaperDidSave = .init()
+    }
 
     public func localEnkaAvatarCacheDidUpdate(uidWithGame: String) {
         eventForUpdatingLocalEnkaAvatarCache[uidWithGame] = .init()
