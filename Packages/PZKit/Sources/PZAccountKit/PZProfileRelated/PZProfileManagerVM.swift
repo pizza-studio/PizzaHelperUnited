@@ -221,6 +221,9 @@ public final class ProfileManagerVM: TaskManagedVM {
             ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
                 $0.priority < $1.priority
             }
+            Broadcaster.shared.refreshTodayTab()
+            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+            Broadcaster.shared.requireOSNotificationCenterAuthorization()
         }
     }
 }
