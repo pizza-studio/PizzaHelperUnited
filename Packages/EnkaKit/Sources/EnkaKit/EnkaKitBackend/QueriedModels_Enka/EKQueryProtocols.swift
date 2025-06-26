@@ -125,10 +125,17 @@ extension EKQueriedProfileProtocol {
         return try? cachedRawData.parseAs(Self.self)
     }
 
-    public static func removeCachedProfile(uid: String) {
+    public static func removeCachedProfile(uid: String, broadcastChanges: Bool = true) {
         let fileURL = getURL4LocallyCachedQueryProfile(uid: uid)
         do {
             try FileManager.default.removeItem(at: fileURL)
+            if broadcastChanges {
+                Task { @MainActor in
+                    Broadcaster.shared.localEnkaAvatarCacheDidUpdate(
+                        uidWithGame: Self.getUIDWithGame(uid: uid)
+                    )
+                }
+            }
         } catch {
             print(error)
             print("[FAILURE] Unable to remove cached Enka profile at: \(fileURL)")
