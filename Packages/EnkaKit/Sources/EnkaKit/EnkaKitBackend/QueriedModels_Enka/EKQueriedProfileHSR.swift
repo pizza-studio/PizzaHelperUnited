@@ -74,11 +74,6 @@ extension Enka {
 
         public static var game: Enka.GameType { .starRail }
 
-        public static var locallyCachedData: [String: Self] {
-            get { Defaults[.queriedEnkaProfiles4HSR] }
-            set { Defaults[.queriedEnkaProfiles4HSR] = newValue }
-        }
-
         public var uid: String
         public let nickname: String
         public let level, friendCount: Int

@@ -51,35 +51,46 @@ extension Enka {
         public let game: Enka.GameType
 
         public var body: some View {
-            switch game {
-            case .genshinImpact:
-                if let profile = profiles4GI[uid] {
-                    profile.localFittingIcon4SUI
-                } else {
-                    AnonymousIconView.rawImage4SUI
-                        .clipShape(.circle)
-                        .task(priority: .background) {
-                            try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
-                        }
+            Group {
+                switch game {
+                case .genshinImpact:
+                    if let profile = sharedDB.db4GI.getCachedProfileRAW(uid: uid) {
+                        profile.localFittingIcon4SUI
+                    } else {
+                        AnonymousIconView.rawImage4SUI
+                            .clipShape(.circle)
+                            .task(priority: .background) {
+                                try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
+                            }
+                    }
+                case .starRail:
+                    if let profile = sharedDB.db4HSR.getCachedProfileRAW(uid: uid) {
+                        profile.localFittingIcon4SUI
+                    } else {
+                        AnonymousIconView.rawImage4SUI
+                            .clipShape(.circle)
+                            .task(priority: .background) {
+                                try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
+                            }
+                    }
+                case .zenlessZone: AnonymousIconView.rawImage4SUI.clipShape(.circle) // 临时设定。
                 }
-            case .starRail:
-                if let profile = profiles4HSR[uid] {
-                    profile.localFittingIcon4SUI
-                } else {
-                    AnonymousIconView.rawImage4SUI
-                        .clipShape(.circle)
-                        .task(priority: .background) {
-                            try? await Enka.Sputnik.commonActor.queryAndSave(uid: uid, game: game)
-                        }
-                }
-            case .zenlessZone: AnonymousIconView.rawImage4SUI.clipShape(.circle) // 临时设定。
             }
+            .id(latestHash)
         }
 
         // MARK: Private
 
-        @Default(.queriedEnkaProfiles4GI) private var profiles4GI
-        @Default(.queriedEnkaProfiles4HSR) private var profiles4HSR
+        @State private var sharedDB: Enka.Sputnik = .shared
+        @StateObject private var broadcaster = Broadcaster.shared
+
+        private var uidWithGame: String { "\(game.uidPrefix)-\(uid)" }
+
+        private var latestHash: Int {
+            let mostRecentDate = broadcaster.eventForUpdatingLocalEnkaAvatarCache[uidWithGame]
+            let timeInterval = (mostRecentDate ?? .distantPast).timeIntervalSince1970
+            return timeInterval.hashValue
+        }
     }
 }
 
