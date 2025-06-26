@@ -7,7 +7,7 @@ import Foundation
 
 // MARK: - EKQueryResultProtocol
 
-public protocol EKQueryResultProtocol: Decodable, Hashable, Sendable, Equatable, Sendable {
+public protocol EKQueryResultProtocol: Codable, Hashable, Sendable, Equatable, Sendable {
     associatedtype DBType: EnkaDBProtocol where DBType.QueriedResult == Self
     typealias QueriedProfileType = DBType.QueriedProfile
     var detailInfo: DBType.QueriedProfile? { get set }
@@ -44,7 +44,7 @@ extension EKQueryResultProtocol {
 
 // MARK: - EKQueriedProfileProtocol
 
-public protocol EKQueriedProfileProtocol: Decodable, Hashable, Sendable, Equatable, Sendable {
+public protocol EKQueriedProfileProtocol: Codable, Hashable, Sendable, Equatable, Sendable {
     associatedtype DBType: EnkaDBProtocol where DBType.QueriedProfile == Self
     associatedtype QueriedAvatar: EKQueriedRawAvatarProtocol where QueriedAvatar.DBType == DBType
     var avatarDetailList: [QueriedAvatar] { get set }
