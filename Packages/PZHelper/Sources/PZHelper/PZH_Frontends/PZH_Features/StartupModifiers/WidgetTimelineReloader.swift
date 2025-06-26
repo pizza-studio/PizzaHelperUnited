@@ -21,11 +21,7 @@ private struct WidgetTimelineReloader: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppBecomeActive {
-                reloadAllTimelines()
+                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
             }
-    }
-
-    func reloadAllTimelines() {
-        Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
     }
 }
