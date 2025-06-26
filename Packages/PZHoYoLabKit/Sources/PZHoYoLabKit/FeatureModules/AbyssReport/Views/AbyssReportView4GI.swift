@@ -156,7 +156,7 @@ extension AbyssReportView4GI {
                     .fontWeight(.black)
                 Spacer()
                 HStack(spacing: 0) {
-                    ForEach(Array(repeating: 0, count: levelData.star), id: \.self) { _ in
+                    ForEach(1 ... levelData.star, id: \.self) { _ in
                         Self.drawAbyssStarIcon()
                     }
                 }
