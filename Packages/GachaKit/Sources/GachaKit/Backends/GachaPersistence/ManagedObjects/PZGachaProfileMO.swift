@@ -21,14 +21,11 @@ public final class PZGachaProfileMO: GachaProfileIDProtocol {
     }
 
     public init?(uidWithGame: String, profileName: String? = nil) {
-        let cells = uidWithGame.split(separator: "-")
-        guard cells.count == 2 else { return nil }
-        let uidStr = cells[1].description
-        guard let matchedGame = Pizza.SupportedGame(uidPrefix: cells[0].description) else { return nil }
-        guard Int(uidStr) != nil else { return nil }
-        self.uid = uidStr
-        self.game = matchedGame
-        self.gameRAW = matchedGame.rawValue
+        let this = GachaProfileID(uidWithGame: uidWithGame, profileName: profileName)?.asMO
+        guard let this else { return nil }
+        self.uid = this.uid
+        self.game = this.game
+        self.gameRAW = game.rawValue
         self.profileName = profileName
     }
 
@@ -58,11 +55,12 @@ public struct GachaProfileID: GachaProfileIDProtocol, Sendable {
     }
 
     public init?(uidWithGame: String, profileName: String? = nil) {
-        let cells = uidWithGame.split(separator: "-")
-        guard cells.count == 2 else { return nil }
-        let uidStr = cells[1].description
-        guard let matchedGame = Pizza.SupportedGame(uidPrefix: cells[0].description) else { return nil }
-        guard Int(uidStr) != nil else { return nil }
+        // Parse filename (Game).
+        let matchedGame = Pizza.SupportedGame(uidPrefix: uidWithGame.prefix(2).description)
+        guard let matchedGame else { return nil }
+        // Parse filename (UID).
+        let uidStr = uidWithGame.dropFirst(3).description
+        guard !uidStr.isEmpty, Int(uidStr) != nil else { return nil }
         self.uid = uidStr
         self.game = matchedGame
         self.profileName = profileName
