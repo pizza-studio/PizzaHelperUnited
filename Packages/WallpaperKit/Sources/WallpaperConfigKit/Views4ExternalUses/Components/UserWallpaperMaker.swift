@@ -68,7 +68,16 @@ struct UserWallpaperMakerView: View {
                         }
                     }
                 } footer: {
-                    Text("userWPCropper.step1.footerDescription", bundle: .module)
+                    VStack(spacing: 8) {
+                        Text("userWPCropper.step1.footerDescription.1", bundle: .module)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .multilineTextAlignment(.leading)
+                        Text("userWPCropper.step1.footerDescription.2", bundle: .module)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .multilineTextAlignment(.leading)
+                            .bold().foregroundStyle(.red)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
             case let .crop4Horizontal(cgImage):
                 CGImageCropperView(
