@@ -2370,7 +2370,7 @@
         }
       }
     },
-    "userWPCropper.step1.footerDescription" : {
+    "userWPCropper.step1.footerDescription.1" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2442,6 +2442,82 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "請選擇您喜歡的方式來選取自訂壁紙的來源圖片。接下來的兩個步驟中，您可以將其裁剪以適應兩種不同的桌面小工具尺寸。"
+          }
+        }
+      }
+    },
+    "userWPCropper.step1.footerDescription.2" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte bewahren Sie eine eigene Kopie Ihrer Originalbilddateien auf. Benutzerdefinierte Hintergründe, die in dieser App gespeichert werden, sind von extrem niedriger Qualität und reduzierten Abmessungen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please keep your own copy of your original image files. User wallpapers saved in this app is in extremely low quality with reduced dimensions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, conserve su propia copia de los archivos de imagen originales. Los fondos de pantalla de usuario guardados en esta aplicación tienen una calidad extremadamente baja y dimensiones reducidas."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mangyaring panatilihin ang sariling kopya ng iyong orihinal na mga file ng larawan. Ang mga wallpaper ng user na naka-save sa app na ito ay may napakababang kalidad at nabawasang sukat."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez conserver une copie de vos fichiers image originaux. Les fonds d'écran utilisateur enregistrés dans cette application sont de très faible qualité et de dimensions réduites."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si prega di conservare una copia dei file immagine originali. Gli sfondi utente salvati in questa app sono di qualità estremamente bassa e con dimensioni ridotte."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "元画像ファイルはご自身で必ず保管してください。このアプリに保存されるユーザー壁紙は、極端に低画質かつ縮小されたものです。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원본 이미지 파일은 반드시 별도로 보관하세요. 이 앱에 저장된 사용자 배경화면은 매우 낮은 화질과 축소된 크기입니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, храните собственную копию оригинальных файлов изображений. Пользовательские обои, сохранённые в этом приложении, имеют крайне низкое качество и уменьшенные размеры."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng giữ bản sao riêng các tệp hình ảnh gốc của bạn. Hình nền người dùng lưu trong ứng dụng này có chất lượng rất thấp và kích thước bị giảm."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请务必自行保留原始图片文件的副本。本应用保存的用户壁纸均为低分辨率暨极低画质。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請務必自行保留原始圖片檔案的副本。敝應用儲存的使用者壁紙均為低解析度暨極低畫質。"
           }
         }
       }
