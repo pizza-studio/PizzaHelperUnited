@@ -33,11 +33,8 @@ public struct AbyssReportView4GI: AbyssReportView {
 
     public var body: some View {
         contents
-            .containerRelativeFrame(.horizontal) { length, _ in
-                Task { @MainActor in
-                    containerWidth = length - 48
-                }
-                return length
+            .trackCanvasSize { newSize in
+                containerWidth = newSize.width - 48
             }
     }
 
