@@ -45,6 +45,9 @@ struct UtilsTabPage: View {
             .formStyle(.grouped)
             .navigationTitle("tab.utils.fullTitle".i18nPZHelper)
             .navBarTitleDisplayMode(.large)
+            .toolbar {
+                tabNavVM.sharedRootPageSwitcherAsToolbarContent()
+            }
         }
     }
 
