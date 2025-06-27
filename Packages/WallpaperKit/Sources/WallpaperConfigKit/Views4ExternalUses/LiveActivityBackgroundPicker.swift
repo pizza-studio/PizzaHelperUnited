@@ -124,7 +124,6 @@ public struct LiveActivityBackgroundPicker: View {
     // MARK: Private
 
     @Namespace private var animation
-    @StateObject private var orientation = DeviceOrientation()
     @State private var searchText = ""
     @State private var containerSize: CGSize = .zero
 

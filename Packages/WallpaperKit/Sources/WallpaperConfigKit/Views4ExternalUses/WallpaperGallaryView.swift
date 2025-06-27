@@ -108,12 +108,12 @@ public struct WallpaperGalleryViewContent: View {
         }
         .searchable(text: $searchText, placement: searchFieldPlacement)
         .padding(.horizontal)
-        .environment(orientation)
+        .environment(screenVM)
     }
 
     // MARK: Private
 
-    @StateObject private var orientation = DeviceOrientation()
+    @StateObject private var screenVM: ScreenVM = .shared
     @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
     @State private var containerWidth: CGFloat = 320

@@ -62,8 +62,8 @@ public struct ContentView: View {
                 .containerRelativeFrame(Axis.Set([.horizontal, .vertical])) { value, axis in
                     Task { @MainActor in
                         switch axis {
-                        case .horizontal: orientationTracker.windowSizeObserved.width = value
-                        case .vertical: orientationTracker.windowSizeObserved.height = value
+                        case .horizontal: screenVM.windowSizeObserved.width = value
+                        case .vertical: screenVM.windowSizeObserved.height = value
                         }
                     }
                     return value
@@ -77,7 +77,7 @@ public struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @StateObject private var tabNavVM = GlobalNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
-    @StateObject private var orientationTracker = DeviceOrientation.shared
+    @StateObject private var screenVM = ScreenVM.shared
     @State private var viewColumn: NavigationSplitViewColumn = .content
     @Binding private var rootTabNavBinding: AppTabNav?
 
@@ -111,7 +111,7 @@ public struct ContentView: View {
             .task {
                 updateSidebarHandlingStatus()
             }
-            .onChange(of: orientationTracker.hashForTracking, initial: true) { _, _ in
+            .onChange(of: screenVM.hashForTracking, initial: true) { _, _ in
                 updateSidebarHandlingStatus()
             }
     }
@@ -127,14 +127,14 @@ public struct ContentView: View {
             Broadcaster.shared.splitViewVisibility = .all
             return
         }
-        switch orientationTracker.orientation {
+        switch screenVM.orientation {
         case .landscape where !isCompact: Broadcaster.shared.splitViewVisibility = .all
         default: Broadcaster.shared.splitViewVisibility = .detailOnly
         }
     }
 
     private func syncLayoutParamsToBackend() {
-        orientationTracker.isHorizontallyCompact = isCompact
-        orientationTracker.isSidebarVisible = isSidebarVisible
+        screenVM.isHorizontallyCompact = isCompact
+        screenVM.isSidebarVisible = isSidebarVisible
     }
 }
