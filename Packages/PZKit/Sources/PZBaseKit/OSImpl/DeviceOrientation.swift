@@ -64,6 +64,15 @@ public final class DeviceOrientation: ObservableObject {
     public var isSidebarVisible: Bool = OS.type != .iPhoneOS
     public var windowSizeObserved: CGSize = DeviceOrientation.getKeyWindowSize()
 
+    public var hashForTracking: Int {
+        var hasher = Hasher()
+        hasher.combine(orientation)
+        hasher.combine(orientation)
+        hasher.combine(windowSizeObserved.width)
+        hasher.combine(windowSizeObserved.height)
+        return hasher.finalize()
+    }
+
     // MARK: Private
 
     @ObservationIgnored private var listener: AnyCancellable?
