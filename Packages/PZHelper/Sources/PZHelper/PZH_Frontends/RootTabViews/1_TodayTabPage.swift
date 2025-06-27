@@ -113,7 +113,6 @@ struct TodayTabPage: View {
             }
         }
         .toolbar {
-            tabNavVM.sharedRootPageSwitcherAsToolbarContent()
             if wrappedByNavStack {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("sys.refresh".i18nBaseKit, systemImage: "arrow.clockwise") { refresh() }
