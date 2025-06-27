@@ -129,17 +129,9 @@ extension ScreenVM {
 
         public func body(content: Content) -> some View {
             content
-                .background {
-                    Color.clear
-                        .containerRelativeFrame(Axis.Set([.horizontal, .vertical])) { value, axis in
-                            Task { @MainActor in
-                                switch axis {
-                                case .horizontal: screenVM.windowSizeObserved.width = value
-                                case .vertical: screenVM.windowSizeObserved.height = value
-                                }
-                            }
-                            return value
-                        }
+                .trackCanvasSize { newSize in
+                    screenVM.windowSizeObserved.width = newSize.width
+                    screenVM.windowSizeObserved.height = newSize.height
                 }
                 .onAppBecomeActive {
                     pushTrackedPropertiesToScreenVM()
