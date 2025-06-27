@@ -60,6 +60,18 @@ public struct ContentView: View {
         }
         .navigationSplitViewColumnWidth(sideBarWidth)
         .environment(GachaVM.shared)
+        .background {
+            Color.clear
+                .containerRelativeFrame(Axis.Set([.horizontal, .vertical])) { value, axis in
+                    Task { @MainActor in
+                        switch axis {
+                        case .horizontal: tabNavVM.windowSizeObserved.width = value
+                        case .vertical: tabNavVM.windowSizeObserved.height = value
+                        }
+                    }
+                    return value
+                }
+        }
     }
 
     // MARK: Private
@@ -88,6 +100,8 @@ public struct ContentView: View {
         var hasher = Hasher()
         hasher.combine(horizontalSizeClass)
         hasher.combine(orientation.orientation)
+        hasher.combine(tabNavVM.windowSizeObserved.width)
+        hasher.combine(tabNavVM.windowSizeObserved.height)
         return hasher.finalize()
     }
 
@@ -106,21 +120,20 @@ public struct ContentView: View {
     @ViewBuilder
     private func hookSidebarAndPageHandlers(_ givenView: some View) -> some View {
         givenView
+            .task {
+                updateSidebarHandlingStatus()
+            }
             .onChange(of: sideBarConditionMonitoringHash, initial: true) { _, _ in
                 updateSidebarHandlingStatus()
-                if isSidebarVisible, tabNavVM.rootTabNav == .today {
-                    rootTabNavBinding = .showcaseDetail
-                }
             }
-            .onDisappear {
-                Broadcaster.shared.splitViewVisibility = .all
-            }
-                updateSidebarHandlingStatus()
     }
 
     private func updateSidebarHandlingStatus() {
         defer {
-            syncLayoutParamsToTabNavVM()
+            syncLayoutParamsToBackend()
+            if isSidebarVisible, tabNavVM.rootTabNav == .today {
+                rootTabNavBinding = .showcaseDetail
+            }
         }
         guard OS.type != .macOS else {
             Broadcaster.shared.splitViewVisibility = .all
@@ -132,7 +145,7 @@ public struct ContentView: View {
         }
     }
 
-    private func syncLayoutParamsToTabNavVM() {
+    private func syncLayoutParamsToBackend() {
         tabNavVM.isCompact = isCompact
         tabNavVM.isSidebarVisible = isSidebarVisible
     }

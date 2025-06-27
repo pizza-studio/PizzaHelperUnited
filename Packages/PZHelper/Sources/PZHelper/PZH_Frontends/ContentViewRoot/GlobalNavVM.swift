@@ -18,6 +18,7 @@ final class GlobalNavVM: Sendable, ObservableObject {
 
     public var isCompact: Bool = OS.type == .iPhoneOS
     public var isSidebarVisible: Bool = OS.type != .iPhoneOS
+    public var windowSizeObserved: CGSize = .init(width: 375, height: 667)
 
     public var rootTabNavBindingNullable: Binding<AppTabNav?> {
         .init(
