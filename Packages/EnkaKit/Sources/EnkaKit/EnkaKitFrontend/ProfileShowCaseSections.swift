@@ -31,6 +31,48 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
         )
     }
 
+    @MainActor
+    public init(
+        theDB4GI: Enka.EnkaDB4GI,
+        pzProfile: any ProfileProtocol,
+        appendedContent: @escaping (() -> AnyView) = { AnyView(EmptyView()) },
+        onTapGestureAction: (() -> Void)? = nil
+    ) where QueryDB == Enka.EnkaDB4GI {
+        self.appendedContent = appendedContent
+        self.theDB = theDB4GI
+        self.pzProfile = pzProfile
+        self.onTapGestureAction = onTapGestureAction
+        let indexKey4VM = pzProfile.uidWithGame
+        let vm = CaseProfileVM<Enka.EnkaDB4GI>.singletonForPersonalProfile[
+            indexKey4VM, default: .init(uid: pzProfile.uid, theDB: theDB)
+        ]
+        CaseProfileVM<Enka.EnkaDB4GI>.singletonForPersonalProfile[
+            indexKey4VM
+        ] = vm
+        self._delegate = .init(wrappedValue: vm)
+    }
+
+    @MainActor
+    public init(
+        theDB4HSR: Enka.EnkaDB4HSR,
+        pzProfile: any ProfileProtocol,
+        appendedContent: @escaping (() -> AnyView) = { AnyView(EmptyView()) },
+        onTapGestureAction: (() -> Void)? = nil
+    ) where QueryDB == Enka.EnkaDB4HSR {
+        self.appendedContent = appendedContent
+        self.theDB = theDB4HSR
+        self.pzProfile = pzProfile
+        self.onTapGestureAction = onTapGestureAction
+        let indexKey4VM = pzProfile.uidWithGame
+        let vm = CaseProfileVM<Enka.EnkaDB4HSR>.singletonForPersonalProfile[
+            indexKey4VM, default: .init(uid: pzProfile.uid, theDB: theDB)
+        ]
+        CaseProfileVM<Enka.EnkaDB4HSR>.singletonForPersonalProfile[
+            indexKey4VM
+        ] = vm
+        self._delegate = .init(wrappedValue: vm)
+    }
+
     // MARK: Public
 
     public var body: some View {

@@ -63,7 +63,7 @@ struct DetailPortalTabPage: View {
         if let profile = vmDPV.currentProfile {
             switch profile.game {
             case .genshinImpact:
-                ProfileShowCaseSections(theDB: sharedDB.db4GI, pzProfile: profile) {
+                ProfileShowCaseSections(theDB4GI: sharedDB.db4GI, pzProfile: profile) {
                     AnyView(CharInventoryNav(theVM: vmDPV))
                 } onTapGestureAction: {
                     uidInputFieldFocus = false
@@ -72,7 +72,7 @@ struct DetailPortalTabPage: View {
                 .id(profile.uidWithGame) // 很重要，否则在同款游戏之间的账号切换不会生效。
                 query4GI
             case .starRail:
-                ProfileShowCaseSections(theDB: sharedDB.db4HSR, pzProfile: profile) {
+                ProfileShowCaseSections(theDB4HSR: sharedDB.db4HSR, pzProfile: profile) {
                     AnyView(CharInventoryNav(theVM: vmDPV))
                 } onTapGestureAction: {
                     uidInputFieldFocus = false
