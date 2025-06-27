@@ -17,6 +17,19 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     public init(theDB: QueryDB, focus: FocusState<Bool>.Binding? = nil) {
         self.theDB = theDB
         self.focused = focus
+        _delegate = .init(wrappedValue: .init())
+    }
+
+    public init(theDB: QueryDB, focus: FocusState<Bool>.Binding? = nil) where QueryDB == Enka.EnkaDB4GI {
+        self.theDB = theDB
+        self.focused = focus
+        _delegate = .init(wrappedValue: CaseProfileVM<QueryDB>.singletonForPublicQuery)
+    }
+
+    public init(theDB: QueryDB, focus: FocusState<Bool>.Binding? = nil) where QueryDB == Enka.EnkaDB4HSR {
+        self.theDB = theDB
+        self.focused = focus
+        _delegate = .init(wrappedValue: CaseProfileVM<QueryDB>.singletonForPublicQuery)
     }
 
     // MARK: Public
@@ -74,26 +87,14 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
     // MARK: Internal
 
-    @State var givenUID: String = {
-        #if DEBUG
-        switch QueryDB.game {
-        case .genshinImpact: return "114514810"
-        case .starRail: return "114514810"
-        case .zenlessZone: return "114514810"
-        }
-        #else
-        return ""
-        #endif
-    }()
-
     @FocusState var backupFocus: Bool
 
     var focused: FocusState<Bool>.Binding?
 
     @ViewBuilder var textFieldView: some View {
-        TextField("UID".description, text: $givenUID)
+        TextField("UID".description, text: $delegate.uid)
             .focused(focused ?? $backupFocus)
-            .onChange(of: givenUID) { oldValue, newValue in
+            .onChange(of: delegate.uid) { oldValue, newValue in
                 guard oldValue != newValue else { return }
                 formatText()
             }
@@ -106,6 +107,11 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
                 }
             }
             .disabled(delegate.taskState == .busy)
+            .task {
+                if delegate.uid == "YJSNPI" {
+                    delegate.uid = Pizza.isDebug ? "114514810" : ""
+                }
+            }
     }
 
     @ViewBuilder
@@ -178,31 +184,31 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
     @MainActor
     func triggerUpdateTask() {
-        delegate.update(givenUID: Int(givenUID))
+        delegate.update(givenUID: Int(delegate.uid))
     }
 
     // MARK: Private
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
-    @StateObject private var delegate: CaseProfileVM<QueryDB> = .init()
+    @StateObject private var delegate: CaseProfileVM<QueryDB>
 
     private var theDB: QueryDB
 
     private var isUIDValid: Bool {
-        guard let givenUIDInt = Int(givenUID) else { return false }
+        guard let givenUIDInt = Int(delegate.uid) else { return false }
         return (100_000_000 ... 9_999_999_999).contains(givenUIDInt)
     }
 
     private func formatText() {
         let maxCharInputLimit = 10
         let pattern = "[^0-9]+"
-        var toHandle = givenUID.replacingOccurrences(of: pattern, with: "", options: [.regularExpression])
+        var toHandle = delegate.uid.replacingOccurrences(of: pattern, with: "", options: [.regularExpression])
         if toHandle.count > maxCharInputLimit {
             toHandle = toHandle.prefix(maxCharInputLimit).description
         }
         // 仅当结果相异时，才会写入。
-        if givenUID != toHandle { givenUID = toHandle }
+        if delegate.uid != toHandle { delegate.uid = toHandle }
     }
 }
 
