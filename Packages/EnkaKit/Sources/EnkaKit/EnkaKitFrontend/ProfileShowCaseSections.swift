@@ -11,7 +11,7 @@ import SwiftUI
 
 // MARK: - ProfileShowCaseSections
 
-public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
+public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
     where QueryDB.QueriedProfile.DBType == QueryDB {
     // MARK: Lifecycle
 
@@ -19,7 +19,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     public init(
         theDB: QueryDB,
         pzProfile: any ProfileProtocol,
-        appendedContent: @escaping (() -> T) = { EmptyView() },
+        appendedContent: @escaping (() -> AnyView) = { AnyView(EmptyView()) },
         onTapGestureAction: (() -> Void)? = nil
     ) {
         self.appendedContent = appendedContent
@@ -161,7 +161,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol, T: View>: View
     @StateObject private var delegate: CaseProfileVM<QueryDB>
     @StateObject private var broadcaster = Broadcaster.shared
 
-    private let appendedContent: () -> T
+    private let appendedContent: () -> AnyView
     private let onTapGestureAction: (() -> Void)?
     private var theDB: QueryDB
 
