@@ -20,7 +20,6 @@ public final class Broadcaster: ObservableObject, Sendable {
     public private(set) var eventForRefreshingCurrentPage: UUID = .init()
     public private(set) var eventForJustSwitchedToTodayTab: UUID = .init()
     public private(set) var eventForStoppingRootTabTasks: UUID = .init()
-    public var splitViewVisibility: NavigationSplitViewVisibility = .all // Accessible by SPM.
 
     public func userWallpaperEntryChangesDidSave() {
         eventForUserWallpaperDidSave = .init()
