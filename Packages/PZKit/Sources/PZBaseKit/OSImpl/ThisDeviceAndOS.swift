@@ -150,6 +150,17 @@ public enum OS: Int {
 
     public static let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
+    /// iOS 18.0 ~ 18.3 有关于画面底部的 Bottom Toolbar 的故障，需要单独应对。
+    public static let isBuggyOS25Build: Bool = {
+        #if os(iOS)
+        guard #unavailable(iOS 18.4) else { return false }
+        guard #available(iOS 18.0, *) else { return false }
+        return true
+        #else
+        return false
+        #endif
+    }()
+
     public static let liquidGlassThemeSuspected: Bool = {
         checkInfoPlist: if let infoDict = Bundle.main.infoDictionary {
             let verStr = (infoDict["DTPlatformVersion"] as? String)?.prefix(4) ?? "_"

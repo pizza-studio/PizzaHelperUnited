@@ -81,14 +81,14 @@ final class GlobalNavVM: Sendable, ObservableObject {
         /// 440 是 iPhone 16 Pro Max 的荧幕画布尺寸。
         let isOverCompact = screenVM.isHorizontallyCompact && screenVM.windowSizeObserved
             .width <= 440
-        let placeAtTop = !(isOverCompact && !isBuggyOS25Build)
+        let placeAtTop = !(isOverCompact && !OS.isBuggyOS25Build)
         ToolbarItem(placement: !placeAtTop ? .bottomBar : .cancellationAction) {
             if !isOverCompact {
                 sharedToolbarNavPicker(
                     allCases: !screenVM.isSidebarVisible,
                     isMenu: false
                 )
-            } else if isBuggyOS25Build {
+            } else if OS.isBuggyOS25Build {
                 sharedToolbarNavPicker(
                     allCases: !screenVM.isSidebarVisible,
                     isMenu: true
@@ -101,17 +101,6 @@ final class GlobalNavVM: Sendable, ObservableObject {
     }
 
     // MARK: Private
-
-    /// iOS 18.0 ~ 18.3 有关于画面底部的 Bottom Toolbar 的故障，需要单独应对。
-    private let isBuggyOS25Build: Bool = {
-        #if os(iOS)
-        guard #unavailable(iOS 18.4) else { return false }
-        guard #available(iOS 18.0, *) else { return false }
-        return true
-        #else
-        return false
-        #endif
-    }()
 
     @MainActor @ViewBuilder
     private func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
