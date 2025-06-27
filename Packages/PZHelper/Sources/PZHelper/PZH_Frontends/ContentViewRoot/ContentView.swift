@@ -62,8 +62,8 @@ public struct ContentView: View {
                 .containerRelativeFrame(Axis.Set([.horizontal, .vertical])) { value, axis in
                     Task { @MainActor in
                         switch axis {
-                        case .horizontal: tabNavVM.windowSizeObserved.width = value
-                        case .vertical: tabNavVM.windowSizeObserved.height = value
+                        case .horizontal: orientationTracker.windowSizeObserved.width = value
+                        case .vertical: orientationTracker.windowSizeObserved.height = value
                         }
                     }
                     return value
@@ -77,7 +77,7 @@ public struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @StateObject private var tabNavVM = GlobalNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
-    @StateObject private var orientation = DeviceOrientation()
+    @StateObject private var orientationTracker = DeviceOrientation.shared
     @State private var viewColumn: NavigationSplitViewColumn = .content
     @Binding private var rootTabNavBinding: AppTabNav?
 
@@ -91,15 +91,6 @@ public struct ContentView: View {
 
     private var isCompact: Bool {
         horizontalSizeClass == .compact
-    }
-
-    private var sideBarConditionMonitoringHash: Int {
-        var hasher = Hasher()
-        hasher.combine(horizontalSizeClass)
-        hasher.combine(orientation.orientation)
-        hasher.combine(tabNavVM.windowSizeObserved.width)
-        hasher.combine(tabNavVM.windowSizeObserved.height)
-        return hasher.finalize()
     }
 
     private var tintForCurrentTab: Color {
@@ -120,7 +111,7 @@ public struct ContentView: View {
             .task {
                 updateSidebarHandlingStatus()
             }
-            .onChange(of: sideBarConditionMonitoringHash, initial: true) { _, _ in
+            .onChange(of: orientationTracker.hashForTracking, initial: true) { _, _ in
                 updateSidebarHandlingStatus()
             }
     }
@@ -136,14 +127,14 @@ public struct ContentView: View {
             Broadcaster.shared.splitViewVisibility = .all
             return
         }
-        switch orientation.orientation {
+        switch orientationTracker.orientation {
         case .landscape where !isCompact: Broadcaster.shared.splitViewVisibility = .all
         default: Broadcaster.shared.splitViewVisibility = .detailOnly
         }
     }
 
     private func syncLayoutParamsToBackend() {
-        tabNavVM.isCompact = isCompact
-        tabNavVM.isSidebarVisible = isSidebarVisible
+        orientationTracker.isHorizontallyCompact = isCompact
+        orientationTracker.isSidebarVisible = isSidebarVisible
     }
 }
