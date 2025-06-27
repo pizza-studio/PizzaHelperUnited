@@ -45,6 +45,9 @@ public struct ContentView: View {
             AppRootPageViewWrapper(tab: tabNavVM.rootTabNav)
                 .appTabBarVisibility(.visible)
                 .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    tabNavVM.sharedRootPageSwitcherAsToolbarContent()
+                }
                 .tint(tintForCurrentTab)
         }
         .navigationSplitViewStyle(.balanced)
