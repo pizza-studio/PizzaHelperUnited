@@ -116,7 +116,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     // MARK: Private
 
-    @StateObject private var orientation = DeviceOrientation()
+    @StateObject private var screenVM: ScreenVM = .shared
     @State private var containerWidth: CGFloat = 320
     @State private var scroll: Bool
     @State private var game: Enka.GameType
@@ -140,7 +140,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
         } viewRenderer: { specimen in
             specimen.render(size: singleSize, cutType: .cutShoulder)
         }
-        .environment(orientation)
+        .environment(screenVM)
     }
 }
 
