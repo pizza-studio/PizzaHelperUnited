@@ -55,7 +55,7 @@ public struct ContentView: View {
         .apply { currentContent in
             hookSidebarAndPageHandlers(currentContent)
                 .onChange(of: tabNavVM.rootTabNav) {
-                    simpleTaptic(type: .selection)
+                    simpleTaptic(type: .medium)
                 }
         }
         .navigationSplitViewColumnWidth(sideBarWidth)
