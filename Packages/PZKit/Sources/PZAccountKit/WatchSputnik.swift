@@ -111,15 +111,10 @@ extension AppleWatchSputnik: WCSessionDelegate {
 
             Task {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
-                do {
-                    if await !assertion.state.isReleased {
-                        await PZProfileActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
-                    }
-                    await assertion.release()
-                } catch {
-                    await assertion.release()
-                    throw error
+                if await !assertion.state.isReleased {
+                    await PZProfileActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
                 }
+                await assertion.release()
             }
         } catch {
             print("save profile failed: \(error)")
