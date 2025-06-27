@@ -16,7 +16,7 @@ final class GlobalNavVM: Sendable, ObservableObject {
     public static let isAppKit = OS.type == .macOS && !OS.isCatalyst
     public static let shared = GlobalNavVM()
 
-    public let orientationTracker = DeviceOrientation.shared
+    public let screenVM = ScreenVM.shared
 
     public var rootTabNavBindingNullable: Binding<AppTabNav?> {
         .init(
@@ -79,16 +79,16 @@ final class GlobalNavVM: Sendable, ObservableObject {
         }
         #else
         /// 440 是 iPhone 16 Pro Max 的荧幕画布尺寸。
-        let isOverCompact = orientationTracker.isHorizontallyCompact && orientationTracker.windowSizeObserved
+        let isOverCompact = screenVM.isHorizontallyCompact && screenVM.windowSizeObserved
             .width <= 440
         ToolbarItem(placement: isOverCompact ? .bottomBar : .cancellationAction) {
             if !isOverCompact {
                 sharedToolbarNavPicker(
-                    allCases: !orientationTracker.isSidebarVisible,
+                    allCases: !screenVM.isSidebarVisible,
                     isMenu: false
                 )
             } else {
-                bottomTabBarForCompactLayout(allCases: !orientationTracker.isSidebarVisible)
+                bottomTabBarForCompactLayout(allCases: !screenVM.isSidebarVisible)
             }
         }
         #endif

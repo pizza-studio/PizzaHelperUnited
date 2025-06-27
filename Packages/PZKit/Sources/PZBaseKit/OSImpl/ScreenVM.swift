@@ -13,11 +13,11 @@ import AppKit
 import UIKit
 #endif
 
-// MARK: - DeviceOrientation
+// MARK: - ScreenVM
 
 @Observable
 @MainActor
-public final class DeviceOrientation: ObservableObject {
+public final class ScreenVM: ObservableObject {
     // MARK: Lifecycle
 
     public init() {
@@ -57,12 +57,12 @@ public final class DeviceOrientation: ObservableObject {
         public var id: String { rawValue }
     }
 
-    public static let shared = DeviceOrientation()
+    public static let shared = ScreenVM()
 
     public var orientation: Orientation
     public var isHorizontallyCompact: Bool = OS.type == .iPhoneOS
     public var isSidebarVisible: Bool = OS.type != .iPhoneOS
-    public var windowSizeObserved: CGSize = DeviceOrientation.getKeyWindowSize()
+    public var windowSizeObserved: CGSize = ScreenVM.getKeyWindowSize()
 
     public var hashForTracking: Int {
         var hasher = Hasher()
@@ -78,7 +78,7 @@ public final class DeviceOrientation: ObservableObject {
     @ObservationIgnored private var listener: AnyCancellable?
 }
 
-extension DeviceOrientation {
+extension ScreenVM {
     public static var basicWindowPixelSize: CGSize {
         .init(
             width: 622,

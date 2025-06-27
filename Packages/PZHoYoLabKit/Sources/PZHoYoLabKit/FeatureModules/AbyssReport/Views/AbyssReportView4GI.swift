@@ -71,7 +71,7 @@ public struct AbyssReportView4GI: AbyssReportView {
                         .id(currentCell.id)
                 }
             )
-            .environment(orientation)
+            .environment(screenVM)
         } header: {
             HStack {
                 Text("hylKit.abyssReport.gi.stat.summary".i18nHYLKit)
@@ -83,7 +83,7 @@ public struct AbyssReportView4GI: AbyssReportView {
     // MARK: Private
 
     @State private var containerWidth: CGFloat = 320
-    @StateObject private var orientation = DeviceOrientation()
+    @StateObject private var screenVM: ScreenVM = .shared
     @StateObject private var broadcaster = Broadcaster.shared
     @Namespace private var animation
     @State private var summaryMap: [String: SummaryPtr]
