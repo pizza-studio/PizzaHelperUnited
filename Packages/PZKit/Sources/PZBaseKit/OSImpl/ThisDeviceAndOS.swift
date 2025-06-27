@@ -148,6 +148,8 @@ public enum OS: Int {
 
     // MARK: Public
 
+    public static let isAppKit = OS.type == .macOS && !OS.isCatalyst
+
     public static let liquidGlassThemeSuspected: Bool = {
         checkInfoPlist: if let infoDict = Bundle.main.infoDictionary {
             let verStr = (infoDict["DTPlatformVersion"] as? String)?.prefix(4) ?? "_"
@@ -236,10 +238,6 @@ public enum OS: Int {
 
 #if os(macOS) || os(iOS) || targetEnvironment(macCatalyst)
 extension ThisDevice {
-    public static var basicWindowSize: CGSize {
-        DeviceOrientation.basicWindowSize
-    }
-
     public static var isScreenLandScape: Bool {
         #if canImport(UIKit)
         guard let window = getKeyWindow() else { return false }
@@ -289,10 +287,6 @@ extension ThisDevice {
         #else
         return false
         #endif
-    }
-
-    public static var scaleRatioCompatible: CGFloat {
-        DeviceOrientation.scaleRatioCompatible
     }
 
     public static var isThinnestSplitOnPad: Bool {
