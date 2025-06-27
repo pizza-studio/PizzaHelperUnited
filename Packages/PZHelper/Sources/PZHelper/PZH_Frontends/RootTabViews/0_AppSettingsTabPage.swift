@@ -102,6 +102,9 @@ struct AppSettingsTabPage: View {
             .formStyle(.grouped)
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
             .navBarTitleDisplayMode(.large)
+            .toolbar {
+                tabNavVM.sharedRootPageSwitcherAsToolbarContent()
+            }
         }
     }
 
