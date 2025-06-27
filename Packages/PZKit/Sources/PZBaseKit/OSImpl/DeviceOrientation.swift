@@ -57,7 +57,12 @@ public final class DeviceOrientation: ObservableObject {
         public var id: String { rawValue }
     }
 
+    public static let shared = DeviceOrientation()
+
     public var orientation: Orientation
+    public var isHorizontallyCompact: Bool = OS.type == .iPhoneOS
+    public var isSidebarVisible: Bool = OS.type != .iPhoneOS
+    public var windowSizeObserved: CGSize = DeviceOrientation.getKeyWindowSize()
 
     // MARK: Private
 
@@ -65,52 +70,36 @@ public final class DeviceOrientation: ObservableObject {
 }
 
 extension DeviceOrientation {
-    public static var basicWindowSize: CGSize {
+    public static var basicWindowPixelSize: CGSize {
         .init(
             width: 622,
             height: 1107
         )
     }
 
-    public static var scaleRatioCompatible: CGFloat {
-        guard let windowSize = getKeyWindowSize() else { return 1 }
-        // 对哀凤优先使用宽度适配，没准哪天哀凤长得跟法棍面包似的也说不定。
-        var result = windowSize.width / basicWindowSize.width
-        let zoomedSize = CGSize(
-            width: basicWindowSize.width * result,
-            height: basicWindowSize.height * result
-        )
-        let compatible = CGRect(origin: .zero, size: windowSize)
-            .contains(CGRect(origin: .zero, size: zoomedSize))
-        if !compatible {
-            result = windowSize.height / basicWindowSize.height
-        }
-        return result
-    }
-
     public static func calculateScaleRatio(canvasSize: CGSize) -> CGFloat {
-        var result = canvasSize.width / basicWindowSize.width
+        var result = canvasSize.width / basicWindowPixelSize.width
         let zoomedSize = CGSize(
-            width: basicWindowSize.width * result,
-            height: basicWindowSize.height * result
+            width: basicWindowPixelSize.width * result,
+            height: basicWindowPixelSize.height * result
         )
         let compatible = CGRect(origin: .zero, size: canvasSize)
             .contains(CGRect(origin: .zero, size: zoomedSize))
         if !compatible {
-            result = canvasSize.height / basicWindowSize.height
+            result = canvasSize.height / basicWindowPixelSize.height
         }
         return result
     }
 
-    public static func getKeyWindowSize() -> CGSize? {
+    public static func getKeyWindowSize() -> CGSize {
         #if canImport(UIKit)
         return UIApplication.shared.connectedScenes
             .compactMap { scene -> UIWindow? in
                 (scene as? UIWindowScene)?.keyWindow
             }
-            .first?.frame.size
+            .first?.frame.size ?? .init(width: 375, height: 667)
         #elseif canImport(AppKit)
-        return NSApplication.shared.keyWindow?.frame.size
+        return NSApplication.shared.keyWindow?.frame.size ?? .init(width: 375, height: 667)
         #endif
     }
 }
