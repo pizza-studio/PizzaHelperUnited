@@ -107,24 +107,24 @@ struct DetailPortalTabPage: View {
 
     @ViewBuilder
     func hookToolbar(_ content: some View) -> some View {
-        if !sortedProfiles.isEmpty {
-            content.toolbar {
-                if vmDPV.currentProfile != nil {
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button("".description, systemImage: "arrow.clockwise") {
-                            refreshAction()
+        content
+            .toolbar {
+                tabNavVM.sharedRootPageSwitcherAsToolbarContent()
+                if !sortedProfiles.isEmpty {
+                    if vmDPV.currentProfile != nil {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("".description, systemImage: "arrow.clockwise") {
+                                refreshAction()
+                            }
+                        }
+                    }
+                    if showProfileSwitcher {
+                        ToolbarItem(placement: .confirmationAction) {
+                            profileSwitcherMenu()
                         }
                     }
                 }
-                if showProfileSwitcher {
-                    ToolbarItem(placement: .confirmationAction) {
-                        profileSwitcherMenu()
-                    }
-                }
             }
-        } else {
-            content
-        }
     }
 
     // MARK: Private
