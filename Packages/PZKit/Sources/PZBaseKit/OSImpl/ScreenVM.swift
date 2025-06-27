@@ -22,7 +22,7 @@ public final class ScreenVM: ObservableObject {
     // MARK: Lifecycle
 
     public init() {
-        #if os(iOS) || targetEnvironment(macCatalyst)
+        #if os(iOS) && !targetEnvironment(macCatalyst)
         // 启用设备方向通知
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         // 使用 UIWindowScene.interfaceOrientation 作为回退
@@ -71,7 +71,7 @@ public final class ScreenVM: ObservableObject {
     }
 
     deinit {
-        #if os(iOS) || targetEnvironment(macCatalyst)
+        #if os(iOS) && !targetEnvironment(macCatalyst)
         Task { @MainActor in
             UIDevice.current.endGeneratingDeviceOrientationNotifications()
         }
@@ -106,7 +106,7 @@ public final class ScreenVM: ObservableObject {
     // MARK: Static Helpers
 
     private static func getInitialOrientation() -> Orientation {
-        #if os(iOS) || targetEnvironment(macCatalyst)
+        #if os(iOS) && !targetEnvironment(macCatalyst)
         // 优先使用 UIWindowScene.interfaceOrientation
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             return windowScene.interfaceOrientation.screenVMOrientation
@@ -125,7 +125,7 @@ public final class ScreenVM: ObservableObject {
     }
 
     private static func getInitialHorizontalSizeClass() -> UserInterfaceSizeClass? {
-        #if os(iOS) || targetEnvironment(macCatalyst)
+        #if os(iOS) && !targetEnvironment(macCatalyst)
         guard let windowScene = UIApplication.shared.connectedScenes
             .first(where: { $0 is UIWindowScene }) as? UIWindowScene
         else { return nil }
@@ -144,7 +144,7 @@ public final class ScreenVM: ObservableObject {
         horizontalSizeClass: UserInterfaceSizeClass?
     )
         -> NavigationSplitViewVisibility {
-        #if os(iOS) || targetEnvironment(macCatalyst)
+        #if os(iOS) && !targetEnvironment(macCatalyst)
         if orientation == .landscape, horizontalSizeClass != .compact {
             return .all
         }
@@ -173,7 +173,7 @@ public final class ScreenVM: ObservableObject {
 
 // MARK: - UIWindowScene Orientation Extension
 
-#if os(iOS) || targetEnvironment(macCatalyst)
+#if os(iOS) && !targetEnvironment(macCatalyst)
 extension UIInterfaceOrientation {
     var screenVMOrientation: ScreenVM.Orientation {
         switch self {
