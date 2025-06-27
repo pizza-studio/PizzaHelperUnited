@@ -368,40 +368,32 @@ extension GachaFetchView4Game {
 
         @ViewBuilder
         func drawAlertRegardingTrashDataIncidents() -> some View {
-            let explanationText = Text(
-                "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents",
-                bundle: .module
-            )
-            let shouldFoldDescription: Bool = switch OS.type {
-            case .macOS: false
-            case .iPhoneOS: true
-            case .iPadOS: ThisDevice.isSplitOrSlideOver
-            default: false
-            }
-            if !shouldFoldDescription {
-                explanationText
-            } else {
-                Button {
-                    withAnimation {
-                        isAlertShownRegardingTrashDataIncidents.toggle()
-                    }
-                } label: {
-                    Group {
-                        if !isAlertShownRegardingTrashDataIncidents {
-                            Text(verbatim: "⚠️ ") + Text(
-                                "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle",
-                                bundle: .module
-                            )
-                            .bold()
-                        } else {
-                            explanationText
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .font(.footnote)
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            Button {
+                isAlertShownRegardingTrashDataIncidents = true
+            } label: {
+                Group {
+                    Text(verbatim: "⚠️ ") + Text(
+                        "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle",
+                        bundle: .module
+                    )
+                    .bold()
                 }
+                .font(.footnote)
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .alert(
+                "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents.linkTitle".i18nGachaKit,
+                isPresented: $isAlertShownRegardingTrashDataIncidents
+            ) {
+                Button("sys.ok".i18nBaseKit) {
+                    isAlertShownRegardingTrashDataIncidents = false
+                }
+            } message: {
+                Text(
+                    "gachaKit.getRecord.readyStart.sectionFooter.regardingTrashDataIncidents",
+                    bundle: .module
+                )
             }
         }
 
