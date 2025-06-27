@@ -45,6 +45,7 @@ struct UtilsTabPage: View {
             .formStyle(.grouped)
             .navigationTitle("tab.utils.fullTitle".i18nPZHelper)
             .navBarTitleDisplayMode(.large)
+            .safeAreaInset(edge: .bottom, content: tabNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         }
     }
 

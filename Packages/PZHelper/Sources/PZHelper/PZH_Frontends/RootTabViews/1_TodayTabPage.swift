@@ -100,6 +100,7 @@ struct TodayTabPage: View {
                         .opacity(0)
                 }
             }
+            .safeAreaInset(edge: .bottom, content: tabNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         }
         .navigationTitle("tab.today.fullTitle".i18nPZHelper)
         .contextMenu {

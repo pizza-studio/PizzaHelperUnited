@@ -102,6 +102,7 @@ struct AppSettingsTabPage: View {
             .formStyle(.grouped)
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
             .navBarTitleDisplayMode(.large)
+            .safeAreaInset(edge: .bottom, content: tabNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         }
     }
 
