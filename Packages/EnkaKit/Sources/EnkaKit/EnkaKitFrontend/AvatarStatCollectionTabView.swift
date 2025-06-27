@@ -44,7 +44,7 @@ public struct AvatarStatCollectionTabView: View {
         Group {
             if isMainBodyVisible {
                 coreBody()
-                    .environment(orientation)
+                    .environment(screenVM)
                     .containerRelativeFrame([.horizontal, .vertical]) { currentLength, currentAxis in
                         Task { @MainActor in
                             withAnimation(.easeIn(duration: 0.1)) {
@@ -220,7 +220,7 @@ public struct AvatarStatCollectionTabView: View {
     @State private var canvasSize: CGSize = .init(width: 375, height: 667)
     @State private var showTabViewIndex = false
     @Binding private var showingCharacterIdentifier: String
-    @StateObject private var orientation = DeviceOrientation()
+    @StateObject private var screenVM: ScreenVM = .shared
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
@@ -241,7 +241,7 @@ public struct AvatarStatCollectionTabView: View {
     }
 
     private var scaleRatioCompatible: CGFloat {
-        DeviceOrientation.calculateScaleRatio(canvasSize: canvasSize)
+        ScreenVM.calculateScaleRatio(canvasSize: canvasSize)
     }
 
     private var hasNoAvatars: Bool { summarizedAvatars.isEmpty }

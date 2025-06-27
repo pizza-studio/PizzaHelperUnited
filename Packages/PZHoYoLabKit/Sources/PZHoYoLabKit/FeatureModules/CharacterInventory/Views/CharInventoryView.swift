@@ -165,7 +165,7 @@ public struct CharacterInventoryView: View {
                     }
                     .padding(.top, 5)
                     .listRowSeparatorTint(.secondary.opacity(0.7))
-                    .environment(orientation)
+                    .environment(screenVM)
                 }
             }
         }
@@ -179,7 +179,7 @@ public struct CharacterInventoryView: View {
     @State private var containerWidth: CGFloat = 320
     @State private var expanded: Bool = false
     @State private var currentAvatarSummaryID: String
-    @StateObject private var orientation = DeviceOrientation()
+    @StateObject private var screenVM: ScreenVM = .shared
     @StateObject private var broadcaster = Broadcaster.shared
     @Environment(\.dismiss) private var dismiss
 
