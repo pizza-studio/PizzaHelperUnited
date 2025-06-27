@@ -45,6 +45,7 @@ extension PZHelper {
                         await ASMetaSputnik.shared.updateMeta()
                     }
                 }
+                .trackScreenVMParameters()
         }
         #if os(macOS) && !targetEnvironment(macCatalyst)
         .windowToolbarStyle(.expanded)
