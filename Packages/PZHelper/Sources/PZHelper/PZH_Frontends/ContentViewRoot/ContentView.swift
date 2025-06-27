@@ -46,16 +46,7 @@ public struct ContentView: View {
                 .appTabBarVisibility(.visible)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
-                    ToolbarItem(placement: isCompact ? .bottomBar : .cancellationAction) {
-                        if !isCompact {
-                            tabNavVM.sharedToolbarNavPicker(
-                                allCases: !isSidebarVisible,
-                                isMenu: false
-                            )
-                        } else {
-                            tabNavVM.bottomTabBarForCompactLayout(allCases: !isSidebarVisible)
-                        }
-                    }
+                    tabNavVM.sharedRootPageSwitcherAsToolbarContent()
                 }
                 .tint(tintForCurrentTab)
         }
@@ -124,9 +115,13 @@ public struct ContentView: View {
             .onDisappear {
                 Broadcaster.shared.splitViewVisibility = .all
             }
+                updateSidebarHandlingStatus()
     }
 
     private func updateSidebarHandlingStatus() {
+        defer {
+            syncLayoutParamsToTabNavVM()
+        }
         guard OS.type != .macOS else {
             Broadcaster.shared.splitViewVisibility = .all
             return
@@ -135,5 +130,10 @@ public struct ContentView: View {
         case .landscape where !isCompact: Broadcaster.shared.splitViewVisibility = .all
         default: Broadcaster.shared.splitViewVisibility = .detailOnly
         }
+    }
+
+    private func syncLayoutParamsToTabNavVM() {
+        tabNavVM.isCompact = isCompact
+        tabNavVM.isSidebarVisible = isSidebarVisible
     }
 }
