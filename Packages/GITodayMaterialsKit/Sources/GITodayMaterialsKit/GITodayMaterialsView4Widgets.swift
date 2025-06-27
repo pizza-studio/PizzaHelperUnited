@@ -78,12 +78,8 @@ public struct GITodayMaterialsView4Widgets<T: View>: View {
                 .padding([.top], containerSize.height * 0.2)
                 .padding([.leading], containerSize.height * 0.4)
             }
-            .overlay {
-                GeometryReader { proxy in
-                    Color.clear.onAppear {
-                        containerSize = proxy.size
-                    }
-                }
+            .trackCanvasSize { newSize in
+                containerSize = newSize
             }
         }
     }

@@ -45,16 +45,10 @@ public struct AvatarStatCollectionTabView: View {
             if isMainBodyVisible {
                 coreBody()
                     .environment(screenVM)
-                    .containerRelativeFrame([.horizontal, .vertical]) { currentLength, currentAxis in
-                        Task { @MainActor in
-                            withAnimation(.easeIn(duration: 0.1)) {
-                                switch currentAxis {
-                                case .horizontal: canvasSize.width = currentLength
-                                case .vertical: canvasSize.height = currentLength
-                                }
-                            }
+                    .trackCanvasSize { newSize in
+                        withAnimation(.easeIn(duration: 0.1)) {
+                            canvasSize = newSize
                         }
-                        return currentLength
                     }
                     .onChange(of: canvasSize, initial: true) { _, _ in
                         Task { @MainActor in
@@ -217,7 +211,7 @@ public struct AvatarStatCollectionTabView: View {
         let name: String
     }
 
-    @State private var canvasSize: CGSize = .init(width: 375, height: 667)
+    @State private var canvasSize: CGSize = ScreenVM.shared.windowSizeObserved
     @State private var showTabViewIndex = false
     @Binding private var showingCharacterIdentifier: String
     @StateObject private var screenVM: ScreenVM = .shared
