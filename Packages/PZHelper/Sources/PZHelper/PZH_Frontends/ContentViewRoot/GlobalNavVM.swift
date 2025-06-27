@@ -13,6 +13,43 @@ import SwiftUI
 final class GlobalNavVM: Sendable, ObservableObject {
     // MARK: Public
 
+    public static let isAppKit = OS.type == .macOS && !OS.isCatalyst
+    public static let shared = GlobalNavVM()
+
+    public var isCompact: Bool = OS.type == .iPhoneOS
+    public var isSidebarVisible: Bool = OS.type != .iPhoneOS
+
+    public var rootTabNavBindingNullable: Binding<AppTabNav?> {
+        .init(
+            get: {
+                self.rootTabNav
+            },
+            set: { newValue in
+                self.rootTabNav = newValue ?? .today
+            }
+        )
+    }
+
+    public var rootTabNav: AppTabNav = {
+        let initSelection: Int = {
+            guard Defaults[.restoreTabOnLaunching] else { return 1 }
+            let allBaseID = AppTabNav.allCases.map(\.id)
+            guard allBaseID.contains(Defaults[.appTabIndex]) else { return 1 }
+            return Defaults[.appTabIndex]
+        }()
+        return .init(rootID: initSelection) ?? .today
+    }() {
+        willSet {
+            guard rootTabNav != newValue else { return }
+            Defaults[.appTabIndex] = newValue.rootID
+            UserDefaults.baseSuite.synchronize()
+            Broadcaster.shared.stopRootTabTasks()
+            if newValue == .today {
+                Broadcaster.shared.todayTabDidSwitchTo()
+            }
+        }
+    }
+
     @ViewBuilder public var gotoSettingsButtonIfAppropriate: some View {
         if rootTabNav != .appSettings {
             Button {
@@ -32,8 +69,24 @@ final class GlobalNavVM: Sendable, ObservableObject {
         }
     }
 
+    @ToolbarContentBuilder
+    public func sharedRootPageSwitcherAsToolbarContent() -> some ToolbarContent {
+        ToolbarItem(placement: isCompact ? .bottomBar : .cancellationAction) {
+            if !isCompact {
+                sharedToolbarNavPicker(
+                    allCases: !isSidebarVisible,
+                    isMenu: false
+                )
+            } else {
+                bottomTabBarForCompactLayout(allCases: !isSidebarVisible)
+            }
+        }
+    }
+
+    // MARK: Private
+
     @MainActor @ViewBuilder
-    public func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
+    private func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
         @Bindable var this = self
         let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
         Picker("".description, selection: $this.rootTabNav.animation()) {
@@ -75,7 +128,7 @@ final class GlobalNavVM: Sendable, ObservableObject {
     }
 
     @ViewBuilder
-    public func bottomTabBarForCompactLayout(allCases: Bool) -> some View {
+    private func bottomTabBarForCompactLayout(allCases: Bool) -> some View {
         let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
         HStack(spacing: 0) {
             ForEach(effectiveCases) { navCase in
@@ -108,42 +161,5 @@ final class GlobalNavVM: Sendable, ObservableObject {
             }
         }
         .frame(height: 50)
-    }
-
-    // MARK: Internal
-
-    static let shared = GlobalNavVM()
-
-    static let isAppKit = OS.type == .macOS && !OS.isCatalyst
-
-    var rootTabNavBindingNullable: Binding<AppTabNav?> {
-        .init(
-            get: {
-                self.rootTabNav
-            },
-            set: { newValue in
-                self.rootTabNav = newValue ?? .today
-            }
-        )
-    }
-
-    var rootTabNav: AppTabNav = {
-        let initSelection: Int = {
-            guard Defaults[.restoreTabOnLaunching] else { return 1 }
-            let allBaseID = AppTabNav.allCases.map(\.id)
-            guard allBaseID.contains(Defaults[.appTabIndex]) else { return 1 }
-            return Defaults[.appTabIndex]
-        }()
-        return .init(rootID: initSelection) ?? .today
-    }() {
-        willSet {
-            guard rootTabNav != newValue else { return }
-            Defaults[.appTabIndex] = newValue.rootID
-            UserDefaults.baseSuite.synchronize()
-            Broadcaster.shared.stopRootTabTasks()
-            if newValue == .today {
-                Broadcaster.shared.todayTabDidSwitchTo()
-            }
-        }
     }
 }
