@@ -68,6 +68,19 @@ final class GlobalNavVM: Sendable, ObservableObject {
         }
     }
 
+    @ViewBuilder
+    public func iOSBottomTabBarForBuggyOS25ReleasesOn() -> some View {
+        #if !(os(macOS) && !targetEnvironment(macCatalyst))
+        let isOverCompact = screenVM.isHorizontallyCompact && screenVM.windowSizeObserved
+            .width <= 440
+        if OS.isBuggyOS25Build, isOverCompact {
+            bottomTabBarForCompactLayout(allCases: !screenVM.isSidebarVisible)
+                .blurMaterialBackground()
+                .shadow(radius: 4)
+        }
+        #endif
+    }
+
     @ToolbarContentBuilder
     public func sharedRootPageSwitcherAsToolbarContent() -> some ToolbarContent {
         #if os(macOS) && !targetEnvironment(macCatalyst)
@@ -89,10 +102,7 @@ final class GlobalNavVM: Sendable, ObservableObject {
                     isMenu: false
                 )
             } else if OS.isBuggyOS25Build {
-                sharedToolbarNavPicker(
-                    allCases: !screenVM.isSidebarVisible,
-                    isMenu: true
-                )
+                // NOTHING. We use non-toolbar approaches for such case.
             } else {
                 bottomTabBarForCompactLayout(allCases: !screenVM.isSidebarVisible)
             }

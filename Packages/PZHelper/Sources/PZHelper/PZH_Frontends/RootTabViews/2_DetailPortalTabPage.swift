@@ -45,6 +45,7 @@ struct DetailPortalTabPage: View {
         }
         .navigationTitle("tab.details.fullTitle".i18nPZHelper)
         .apply(hookToolbar)
+        .safeAreaInset(edge: .bottom, content: tabNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         .onAppear {
             if let profile = vmDPV.currentProfile, !sortedProfiles.contains(profile) {
                 vmDPV.currentProfile = nil
