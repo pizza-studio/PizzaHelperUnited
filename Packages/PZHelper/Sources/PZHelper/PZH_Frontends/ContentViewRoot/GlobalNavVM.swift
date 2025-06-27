@@ -72,6 +72,14 @@ final class GlobalNavVM: Sendable, ObservableObject {
 
     @ToolbarContentBuilder
     public func sharedRootPageSwitcherAsToolbarContent() -> some ToolbarContent {
+        #if os(macOS) && !targetEnvironment(macCatalyst)
+        ToolbarItem(placement: .cancellationAction) {
+            sharedToolbarNavPicker(
+                allCases: !screenVM.isSidebarVisible,
+                isMenu: false
+            )
+        }
+        #else
         /// 440 是 iPhone 16 Pro Max 的荧幕画布尺寸。
         let isOverCompact = isCompact && windowSizeObserved.width <= 440
         ToolbarItem(placement: isOverCompact ? .bottomBar : .cancellationAction) {
@@ -84,6 +92,7 @@ final class GlobalNavVM: Sendable, ObservableObject {
                 bottomTabBarForCompactLayout(allCases: !isSidebarVisible)
             }
         }
+        #endif
     }
 
     // MARK: Private
