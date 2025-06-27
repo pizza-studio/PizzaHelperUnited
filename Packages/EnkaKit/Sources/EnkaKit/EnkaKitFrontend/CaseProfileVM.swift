@@ -8,10 +8,12 @@ import Observation
 import PZBaseKit
 
 extension CaseProfileVM where CoordinatedDB == Enka.EnkaDB4GI {
+    static var singletonForPublicQuery: CaseProfileVM<CoordinatedDB> = .init()
     static var singletonForPersonalProfile: [String: CaseProfileVM<CoordinatedDB>] = .init()
 }
 
 extension CaseProfileVM where CoordinatedDB == Enka.EnkaDB4HSR {
+    static var singletonForPublicQuery: CaseProfileVM<CoordinatedDB> = .init()
     static var singletonForPersonalProfile: [String: CaseProfileVM<CoordinatedDB>] = .init()
 }
 
@@ -38,6 +40,8 @@ final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
     }
 
     public override init() {
+        // 特殊值，方便前端据此判定是否是首次使用以这个建构子建构的这个副本。
+        // 前端应该及时地将这个值清空、或换成其他有效值，免得之后误判这个副本是否符合上述判定目的。
         self.uid = "YJSNPI"
         super.init()
     }
