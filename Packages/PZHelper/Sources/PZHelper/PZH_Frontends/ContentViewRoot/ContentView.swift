@@ -23,7 +23,7 @@ public struct ContentView: View {
 
     public var body: some View {
         NavigationSplitView(
-            columnVisibility: $broadcaster.splitViewVisibility,
+            columnVisibility: $screenVM.splitViewVisibility,
             preferredCompactColumn: $viewColumn
         ) {
             NavigationStack {
@@ -57,18 +57,6 @@ public struct ContentView: View {
         }
         .navigationSplitViewColumnWidth(sideBarWidth)
         .environment(GachaVM.shared)
-        .background {
-            Color.clear
-                .containerRelativeFrame(Axis.Set([.horizontal, .vertical])) { value, axis in
-                    Task { @MainActor in
-                        switch axis {
-                        case .horizontal: screenVM.windowSizeObserved.width = value
-                        case .vertical: screenVM.windowSizeObserved.height = value
-                        }
-                    }
-                    return value
-                }
-        }
     }
 
     // MARK: Private
@@ -86,7 +74,7 @@ public struct ContentView: View {
     private var sideBarWidth: CGFloat { 375 }
 
     private var effectiveAppNavCases: [AppTabNav] {
-        isSidebarVisible ? AppTabNav.enabledSubCases : AppTabNav.allCases
+        screenVM.isSidebarVisible ? AppTabNav.enabledSubCases : AppTabNav.allCases
     }
 
     private var isCompact: Bool {
@@ -101,40 +89,18 @@ public struct ContentView: View {
         }
     }
 
-    private var isSidebarVisible: Bool {
-        Broadcaster.shared.splitViewVisibility == .all && horizontalSizeClass != .compact
-    }
-
     @ViewBuilder
     private func hookSidebarAndPageHandlers(_ givenView: some View) -> some View {
         givenView
-            .task {
-                updateSidebarHandlingStatus()
-            }
-            .onChange(of: screenVM.hashForTracking, initial: true) { _, _ in
-                updateSidebarHandlingStatus()
+            // .task { fixMainColumnPageIfNeeded() }
+            .onChange(of: screenVM.hashForTracking, initial: true) {
+                fixMainColumnPageIfNeeded()
             }
     }
 
-    private func updateSidebarHandlingStatus() {
-        defer {
-            syncLayoutParamsToBackend()
-            if isSidebarVisible, tabNavVM.rootTabNav == .today {
-                rootTabNavBinding = .showcaseDetail
-            }
+    private func fixMainColumnPageIfNeeded() {
+        if screenVM.isSidebarVisible, tabNavVM.rootTabNav == .today {
+            rootTabNavBinding = .showcaseDetail
         }
-        guard OS.type != .macOS else {
-            Broadcaster.shared.splitViewVisibility = .all
-            return
-        }
-        switch screenVM.orientation {
-        case .landscape where !isCompact: Broadcaster.shared.splitViewVisibility = .all
-        default: Broadcaster.shared.splitViewVisibility = .detailOnly
-        }
-    }
-
-    private func syncLayoutParamsToBackend() {
-        screenVM.isHorizontallyCompact = isCompact
-        screenVM.isSidebarVisible = isSidebarVisible
     }
 }
