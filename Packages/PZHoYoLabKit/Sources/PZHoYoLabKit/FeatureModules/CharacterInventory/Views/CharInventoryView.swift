@@ -51,6 +51,9 @@ public struct CharacterInventoryView: View {
                 }
             }
         }
+        .trackCanvasSize { newSize in
+            containerWidth = newSize.width - 48
+        }
     }
 
     // MARK: Internal
@@ -73,12 +76,6 @@ public struct CharacterInventoryView: View {
         .formStyle(.grouped)
         .scrollContentBackground(.hidden)
         .listContainerBackground()
-        .containerRelativeFrame(.horizontal) { length, _ in
-            Task { @MainActor in
-                containerWidth = length - 48
-            }
-            return length
-        }
         .navigationTitle("hylKit.inventoryView.characters.title".i18nHYLKit)
         .toolbar {
             ToolbarItemGroup(placement: .confirmationAction) {
