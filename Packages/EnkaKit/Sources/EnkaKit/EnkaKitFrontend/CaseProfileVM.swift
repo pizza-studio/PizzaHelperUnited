@@ -7,14 +7,26 @@ import Foundation
 import Observation
 import PZBaseKit
 
+extension CaseProfileVM where CoordinatedDB == Enka.EnkaDB4GI {
+    static var singletonForPersonalProfile: [String: CaseProfileVM<CoordinatedDB>] = .init()
+}
+
+extension CaseProfileVM where CoordinatedDB == Enka.EnkaDB4HSR {
+    static var singletonForPersonalProfile: [String: CaseProfileVM<CoordinatedDB>] = .init()
+}
+
+// MARK: - CaseProfileVM
+
 @Observable
 final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
     // MARK: Lifecycle
 
     /// 展柜 ViewModel 的建构子。
     ///
-    /// - Remark: 注意：该 ViewModel 会在 App Tab 切换时立刻被析构，
+    /// - Remark: 注意：
+    /// 该 ViewModel 会在 App Tab / NavigationSplitView Root Page 切换时立刻被析构，
     /// 所以严禁任何放在 MainActor 之外的间接脱手操作（哪怕间接也不行）。
+    /// （手动制作 singleton 的情况除外，仍需谨慎操作。）
     /// - Parameters:
     ///   - uid: UID
     ///   - theDB: EnkaDB（注意直接决定了游戏类型）。
