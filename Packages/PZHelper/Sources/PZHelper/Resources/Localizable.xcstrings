@@ -8469,79 +8469,79 @@
         }
       }
     },
-    "settings.display.timeZone4GI.title" : {
+    "settings.display.timeZone4OfficialFeedsEtc.title" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeitzone für die Anzeige der GI-Universelligenz"
+            "value" : "Zeitzone für die Anzeige universeller Informationen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TimeZone for displaying GI universal information"
+            "value" : "TimeZone for displaying universal information"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zona horaria para mostrar la inteligencia universal GI"
+            "value" : "Zona horaria para mostrar información universal"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TimeZone para sa pagpapakita ng GI universal intelligence"
+            "value" : "TimeZone para sa pagpapakita ng universal information"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fuseau horaire pour afficher les informations GI universelles"
+            "value" : "Fuseau horaire pour afficher les informations universelles"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fuso orario per visualizzare l'intelligenza universale GI"
+            "value" : "Fuso orario per visualizzare informazioni universali"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一般情報表示用時間帯（原神）"
+            "value" : "一般情報表示用時間帯"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GI 범용 정보를 표시하는 시간대"
+            "value" : "범용 정보 표시용 시간대"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Часовой пояс для отображения GI универсального интеллекта"
+            "value" : "Часовой пояс для отображения универсальной информации"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Múi giờ để hiển thị trí tuệ nhân tạo GI"
+            "value" : "Múi giờ để hiển thị thông tin chung"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "原神通用资讯显示专用时区"
+            "value" : "通用资讯显示专用时区"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "原神通用資訊顯示專用時區"
+            "value" : "通用資訊顯示專用時區"
           }
         }
       }
