@@ -54,7 +54,7 @@ struct UISettingsPageContent: View {
                     ).tag(server.rawValue)
                 }
             } label: {
-                Text("settings.display.timeZone4GI.title".i18nPZHelper)
+                Text("settings.display.timeZone4OfficialFeedsEtc.title".i18nPZHelper)
             }
             Text("settings.display.timeZone4GI.description".i18nPZHelper)
                 .asInlineTextDescription()
