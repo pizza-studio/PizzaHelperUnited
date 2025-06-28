@@ -741,6 +741,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ThePizzaHelper/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
@@ -788,6 +789,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ThePizzaHelper/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Pizza Helper";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
@@ -1176,6 +1178,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnitedPizzaHelperEngine/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "United Pizza Engine";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
@@ -1221,6 +1224,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnitedPizzaHelperEngine/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "United Pizza Engine";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "(c) 2024 and onwards Pizza Studio (AGPL v3.0 License or later).";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc.";
