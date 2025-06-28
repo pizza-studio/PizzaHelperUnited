@@ -52,7 +52,7 @@ final class GlobalNavVM: Sendable, ObservableObject {
     @ViewBuilder public var gotoSettingsButtonIfAppropriate: some View {
         if rootTabNav != .appSettings {
             Button {
-                withAnimation {
+                withAnimation(.easeInOut(duration: 0.2)) {
                     self.rootTabNav = .appSettings
                 }
             } label: {
@@ -116,7 +116,10 @@ final class GlobalNavVM: Sendable, ObservableObject {
     private func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
         @Bindable var this = self
         let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
-        Picker("".description, selection: $this.rootTabNav.animation()) {
+        Picker(
+            "".description,
+            selection: $this.rootTabNav.animation(.easeInOut(duration: 0.2))
+        ) {
             ForEach(effectiveCases) { navCase in
                 if navCase.isExposed {
                     let isChosen: Bool = navCase == self.rootTabNav
@@ -162,7 +165,7 @@ final class GlobalNavVM: Sendable, ObservableObject {
                 let isChosen: Bool = navCase == self.rootTabNav
                 if navCase.isExposed {
                     Button {
-                        withAnimation(.easeInOut) {
+                        withAnimation(.easeInOut(duration: 0.2)) {
                             self.rootTabNav = navCase
                         }
                     } label: {
