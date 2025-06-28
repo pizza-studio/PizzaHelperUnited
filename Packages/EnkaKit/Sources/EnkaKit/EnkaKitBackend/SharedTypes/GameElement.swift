@@ -27,7 +27,7 @@ extension Enka {
 extension Enka.GameElement {
     public init?(rawValue: String) {
         switch rawValue {
-        case "Physical", "Unknown": self = .physico
+        case "Physical", "Physico", "Unknown": self = .physico
         case "Wind": self = .anemo
         case "Rock": self = .geo
         case "Electric", "Lightning", "Thunder": self = .electro
@@ -35,8 +35,8 @@ extension Enka.GameElement {
         case "Water": self = .hydro
         case "Fire": self = .pyro
         case "Ice": self = .cryo
-        case "Imaginary": self = .imago
-        case "Quantum": self = .quanto
+        case "Imaginary", "Imago": self = .imago
+        case "Quantum", "Quanto": self = .quanto
         case "Anemo": self = .anemo
         case "Cryo": self = .cryo
         case "Dendro": self = .dendro
