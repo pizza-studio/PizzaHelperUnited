@@ -8,12 +8,24 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-// MARK: - AbyssReportView4GI
+// MARK: - BattleReportView4GI.TreasuresStarwardType
 
-public struct AbyssReportView4GI: AbyssReportView {
+extension BattleReportView4GI {
+    typealias TreasuresStarwardType = HoYo.BattleReport4GI.TreasuresStarwardType
+}
+
+extension BattleReportView4GI.TreasuresStarwardType {
+    public var asIcon: Image {
+        Image(iconFileNameStem, bundle: .module)
+    }
+}
+
+// MARK: - BattleReportView4GI
+
+public struct BattleReportView4GI: BattleReportView {
     // MARK: Lifecycle
 
-    public init(data: AbyssReportData, profile: PZProfileSendable?) {
+    public init(data: BattleReportData, profile: PZProfileSendable?) {
         self.profile = profile
         self.data = data
         self.summaryMap = Self.getSummaryMap(data: data, profile: profile)
@@ -22,31 +34,45 @@ public struct AbyssReportView4GI: AbyssReportView {
     // MARK: Public
 
     public typealias SummaryPtr = Enka.AvatarSummarized.SharedPointer
-    public typealias AbyssReportData = HoYo.AbyssReport4GI
+    public typealias BattleReportData = HoYo.BattleReport4GI
 
-    public static let navTitle = "hylKit.abyssReportView4GI.navTitle".i18nHYLKit
-    public static let navTitleTiny = "hylKit.abyssReportView4GI.navTitle.tiny".i18nHYLKit
+    public static let navTitle = "hylKit.battleReportView4GI.navTitle.treasuresStarward".i18nHYLKit
+    public static let navTitleTiny = "hylKit.battleReportView4GI.navTitle.treasuresStarward.tiny".i18nHYLKit
 
-    public static var abyssIcon: Image { Image("gi_abyss", bundle: .module) }
-
-    public var data: AbyssReportData
+    public var data: BattleReportData
 
     public var body: some View {
         contents
-            .trackCanvasSize { newSize in
-                containerWidth = newSize.width - 48
-            }
     }
 
     // MARK: Internal
 
     @ViewBuilder var contents: some View {
         Form {
-            stats
-            floorList
+            formContents4SpiralAbyss
         }
         .formStyle(.grouped)
         .scrollContentBackground(.hidden)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                let picker = Picker("".description, selection: $contentType.animation()) {
+                    ForEach(TreasuresStarwardType.allCases) { contentTypeCase in
+                        Text(verbatim: contentTypeCase.localizedTitle).tag(contentTypeCase)
+                    }
+                }
+                .labelsHidden()
+                ViewThatFits(in: .horizontal) {
+                    picker
+                        .pickerStyle(.segmented)
+                        .fixedSize()
+                    picker
+                        .pickerStyle(.menu)
+                        .fixedSize()
+                        .blurMaterialBackground(enabled: true) // 在正中心位置时，不是玻璃按钮，所以始终启用。
+                        .clipShape(.capsule)
+                }
+            }
+        }
         .onChange(of: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
             Task { @MainActor in
                 withAnimation {
@@ -56,13 +82,63 @@ public struct AbyssReportView4GI: AbyssReportView {
         }
     }
 
-    @ViewBuilder var stats: some View {
+    // MARK: Private
+
+    @State private var contentType: TreasuresStarwardType = .spiralAbyss
+    @StateObject private var screenVM: ScreenVM = .shared
+    @StateObject private var broadcaster = Broadcaster.shared
+    @Namespace private var animation
+    @State private var summaryMap: [String: SummaryPtr]
+
+    private let profile: PZProfileSendable?
+
+    private var containerWidth: CGFloat {
+        screenVM.mainColumnCanvasSizeObserved.width - 48
+    }
+
+    private var columns: Int { min(max(Int(floor(containerWidth / 200)), 2), 4) }
+
+    private var data4SA: BattleReportData.SpiralAbyssData { data.spiralAbyss }
+
+    private static func getSummaryMap(
+        data: BattleReportData,
+        profile: PZProfileSendable?
+    )
+        -> [String: SummaryPtr] {
+        guard let profile else {
+            return [:]
+        }
+        let allCharIDsEnumerated: Set<Int> = data.spiralAbyss.allCharIDsEnumerated
+        let theDB = Enka.Sputnik.shared.db4GI
+        var summaries: [String: SummaryPtr] = [:]
+        let summariesData = HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoAvatars(
+            theDB: theDB, uid: profile.uid
+        )
+        summariesData.forEach { currentSummary in
+            let ucid = currentSummary.mainInfo.uniqueCharId
+            guard let intUCID = Int(ucid) else { return }
+            guard allCharIDsEnumerated.contains(intUCID) else { return }
+            summaries[ucid] = .init(summaryNotNulled: currentSummary)
+        }
+        return summaries
+    }
+}
+
+// MARK: - Contents for Spiral Abyss.
+
+extension BattleReportView4GI {
+    @ViewBuilder private var formContents4SpiralAbyss: some View {
+        stats4SpiralAbyss
+        floorList4SpiralAbyss
+    }
+
+    @ViewBuilder private var stats4SpiralAbyss: some View {
         Section {
             StaggeredGrid(
                 columns: columns,
                 outerPadding: false,
                 scroll: false,
-                list: data.summarizedIntoCells(compact: columns % 2 == 0),
+                list: data4SA.summarizedIntoCells(compact: columns % 2 == 0),
                 content: { currentCell in
                     drawAbyssValueCell(currentCell)
                         .id(currentCell.id)
@@ -71,59 +147,20 @@ public struct AbyssReportView4GI: AbyssReportView {
             .environment(screenVM)
         } header: {
             HStack {
-                Text("hylKit.abyssReport.gi.stat.summary".i18nHYLKit)
+                Text("hylKit.battleReport.gi.stat.summary".i18nHYLKit)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("hylKit.battleReport.stat.seasonID".i18nHYLKit + " \(data4SA.scheduleID)")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
+            .frame(maxWidth: .infinity)
         }
         .listRowMaterialBackground()
     }
 
-    // MARK: Private
-
-    @State private var containerWidth: CGFloat = 320
-    @StateObject private var screenVM: ScreenVM = .shared
-    @StateObject private var broadcaster = Broadcaster.shared
-    @Namespace private var animation
-    @State private var summaryMap: [String: SummaryPtr]
-
-    private let profile: PZProfileSendable?
-
-    private var columns: Int { min(max(Int(floor($containerWidth.wrappedValue / 200)), 2), 4) }
-
-    private static func getSummaryMap(
-        data: AbyssReportData,
-        profile: PZProfileSendable?
-    )
-        -> [String: SummaryPtr] {
-        guard let profile else {
-            return [:]
-        }
-        let allCharIDsEnumerated: [Int] = data.floors.compactMap { floor in
-            floor.levels.compactMap { level in
-                level.battles.compactMap { battle in
-                    battle.avatars.map(\.id)
-                }.flatMap(\.self)
-            }.flatMap(\.self)
-        }.flatMap(\.self)
-        let allCharIDStrings = Set(allCharIDsEnumerated.map(\.description))
-        let theDB = Enka.Sputnik.shared.db4GI
-        var summaries: [String: SummaryPtr] = [:]
-        let summariesData = HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoAvatars(
-            theDB: theDB, uid: profile.uid
-        )
-        summariesData.forEach { currentSummary in
-            let ucid = currentSummary.mainInfo.uniqueCharId
-            guard allCharIDStrings.contains(ucid) else { return }
-            summaries[ucid] = .init(summaryNotNulled: currentSummary)
-        }
-        return summaries
-    }
-}
-
-extension AbyssReportView4GI {
-    @ViewBuilder private var floorList: some View {
-        ForEach(data.floors.reversed(), id: \.index) { floorData in
+    @ViewBuilder private var floorList4SpiralAbyss: some View {
+        ForEach(data4SA.floors.reversed(), id: \.index) { floorData in
             Section {
-                LazyVStack {
+                VStack {
                     ForEach(floorData.levels, id: \.index) { battleRoom in
                         drawBattleRoom(levelData: battleRoom)
                     }
@@ -132,7 +169,7 @@ extension AbyssReportView4GI {
             } header: {
                 HStack {
                     Text(
-                        "hylKit.abyssReport.floor.title:\(floorData.index.description)",
+                        "hylKit.battleReport.floor.title:\(floorData.index.description)",
                         bundle: .module
                     )
                     Spacer()
@@ -146,10 +183,10 @@ extension AbyssReportView4GI {
     }
 
     @ViewBuilder
-    private func drawBattleRoom(levelData: HoYo.AbyssReport4GI.Floor.Level) -> some View {
-        LazyVStack {
+    private func drawBattleRoom(levelData: HoYo.BattleReport4GI.SpiralAbyssData.Floor.Level) -> some View {
+        VStack {
             HStack {
-                Text("hylKit.abyssReport.room.title:\(levelData.index.description)", bundle: .module)
+                Text("hylKit.battleReport.room.title:\(levelData.index.description)", bundle: .module)
                     .fontWeight(.black)
                 Spacer()
                 HStack(spacing: 0) {
@@ -173,7 +210,7 @@ extension AbyssReportView4GI {
 
     @ViewBuilder
     func drawLevelInnerContents(
-        _ levelData: HoYo.AbyssReport4GI.Floor.Level,
+        _ levelData: HoYo.BattleReport4GI.SpiralAbyssData.Floor.Level,
         vertical: Bool,
         hasLabel: Bool,
         hasSpacers: Bool
@@ -183,18 +220,18 @@ extension AbyssReportView4GI {
         let theContent = Group {
             drawBattleNode(
                 levelData.battles[0],
-                label: hasLabel ? "hylKit.abyssReport.floor.1stHalf".i18nHYLKit : ""
+                label: hasLabel ? "hylKit.battleReport.floor.1stHalf".i18nHYLKit : ""
             )
             if levelData.battles.count > 1 {
                 if hasSpacers, !vertical { Spacer() }
                 drawBattleNode(
                     levelData.battles[1],
-                    label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
+                    label: hasLabel ? "hylKit.battleReport.floor.2ndHalf".i18nHYLKit : ""
                 )
             }
         }
         if vertical {
-            LazyVStack { theContent }
+            VStack { theContent }
         } else {
             HStack { theContent }
         }
@@ -202,7 +239,7 @@ extension AbyssReportView4GI {
 
     @ViewBuilder
     private func drawBattleNode(
-        _ node: HoYo.AbyssReport4GI.Floor.Level.Battle,
+        _ node: HoYo.BattleReport4GI.SpiralAbyssData.Floor.Level.Battle,
         label: String = "",
         spacers: Bool = true
     )
@@ -214,7 +251,7 @@ extension AbyssReportView4GI {
                     .fontDesign(.monospaced)
             }
             if spacers { Spacer() }
-            var guardedAvatars: [HoYo.AbyssReport4GI.Floor.Level.Battle.Avatar] {
+            var guardedAvatars: [HoYo.BattleReport4GI.SpiralAbyssData.Floor.Level.Battle.Avatar] {
                 var result = node.avatars
                 while result.count < 4 {
                     result.append(.init(id: -114_514, icon: "", level: -213, rarity: 5))
@@ -318,8 +355,8 @@ extension AbyssReportView4GI {
 
 #Preview {
     NavigationStack {
-        AbyssReportView4GI(
-            data: try! AbyssReportTestAssets.giCurr.getReport4GI(),
+        BattleReportView4GI(
+            data: try! BattleReportTestAssets.giSACurr.getReport4GI(),
             profile: nil
         ).formStyle(.grouped)
     }

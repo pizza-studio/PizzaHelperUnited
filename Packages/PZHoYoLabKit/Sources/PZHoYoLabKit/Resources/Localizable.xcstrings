@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "hylKit.abyssReport.floor.1stHalf" : {
+    "hylKit.battleReport.floor.1stHalf" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -78,7 +78,7 @@
         }
       }
     },
-    "hylKit.abyssReport.floor.2ndHalf" : {
+    "hylKit.battleReport.floor.2ndHalf" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -155,7 +155,7 @@
         }
       }
     },
-    "hylKit.abyssReport.floor.thisFloorIsSkipped" : {
+    "hylKit.battleReport.floor.thisFloorIsSkipped" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -232,7 +232,7 @@
         }
       }
     },
-    "hylKit.abyssReport.floor.title:%@" : {
+    "hylKit.battleReport.floor.title:%@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -308,7 +308,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.battle" : {
+    "hylKit.battleReport.gi.stat.battle" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -385,7 +385,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.deepest" : {
+    "hylKit.battleReport.gi.stat.deepest" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -462,7 +462,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.mostDamageTaken" : {
+    "hylKit.battleReport.gi.stat.mostDamageTaken" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -539,7 +539,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.mostDefeats" : {
+    "hylKit.battleReport.gi.stat.mostDefeats" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -616,7 +616,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.mostESkills" : {
+    "hylKit.battleReport.gi.stat.mostESkills" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -693,7 +693,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.mostQSkills" : {
+    "hylKit.battleReport.gi.stat.mostQSkills" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -770,7 +770,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.star" : {
+    "hylKit.battleReport.gi.stat.star" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -847,7 +847,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.strongest" : {
+    "hylKit.battleReport.gi.stat.strongest" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -924,7 +924,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.summary" : {
+    "hylKit.battleReport.gi.stat.summary" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1001,7 +1001,7 @@
         }
       }
     },
-    "hylKit.abyssReport.gi.stat.win" : {
+    "hylKit.battleReport.gi.stat.win" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1078,7 +1078,7 @@
         }
       }
     },
-    "hylKit.abyssReport.hsr.stat.maxFloorConquered" : {
+    "hylKit.battleReport.hsr.stat.maxFloorConquered" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1155,7 +1155,7 @@
         }
       }
     },
-    "hylKit.abyssReport.hsr.stat.numOfBattles" : {
+    "hylKit.battleReport.hsr.stat.numOfBattles" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1232,84 +1232,7 @@
         }
       }
     },
-    "hylKit.abyssReport.hsr.stat.seasonID" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saison-ID"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Season ID"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID de temporada"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID ng Season"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID de la saison"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID stagione"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "開催シーズン番号"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "시즌 ID"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID сезона"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID Mùa"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "赛季编号"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "賽季編號"
-          }
-        }
-      }
-    },
-    "hylKit.abyssReport.hsr.stat.starsGained" : {
+    "hylKit.battleReport.hsr.stat.starsGained" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1386,7 +1309,7 @@
         }
       }
     },
-    "hylKit.abyssReport.hsr.stats.header" : {
+    "hylKit.battleReport.hsr.stats.header" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1463,7 +1386,7 @@
         }
       }
     },
-    "hylKit.abyssReport.noDataAvailableForThisSeason" : {
+    "hylKit.battleReport.noDataAvailableForThisSeason" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1540,7 +1463,7 @@
         }
       }
     },
-    "hylKit.abyssReport.room.title:%@" : {
+    "hylKit.battleReport.room.title:%@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1616,7 +1539,7 @@
         }
       }
     },
-    "hylKit.abyssReport.seasonPicker.current" : {
+    "hylKit.battleReport.seasonPicker.current" : {
       "comment" : "Shortened ",
       "extractionState" : "manual",
       "localizations" : {
@@ -1694,7 +1617,7 @@
         }
       }
     },
-    "hylKit.abyssReport.seasonPicker.previous" : {
+    "hylKit.battleReport.seasonPicker.previous" : {
       "comment" : "Shortened",
       "extractionState" : "manual",
       "localizations" : {
@@ -1772,84 +1695,84 @@
         }
       }
     },
-    "hylKit.abyssReportView4GI.navTitle" : {
+    "hylKit.battleReport.stat.seasonID" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kampfbericht: Spiralabgrund"
+            "value" : "Saison-ID"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Battle Report: Spiral Abyss"
+            "value" : "Season ID"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Informe de Batalla: Abismo Espiral"
+            "value" : "ID de temporada"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ulat ng Laban: Spiral Abyss"
+            "value" : "ID ng Season"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rapport de bataille : Profondeurs Spiralées"
+            "value" : "ID de la saison"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rapporto di Battaglia: Abisso a Spirale"
+            "value" : "ID stagione"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "作戦報告・深境螺旋"
+            "value" : "開催シーズン番号"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "전투 보고서: 나선 비경"
+            "value" : "시즌 ID"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Отчет о битве: Спиральная бездна"
+            "value" : "ID сезона"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Báo Cáo Chiến Đấu: Hầm Nhiên Liệu Xoắn ốc"
+            "value" : "ID Mùa"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "个人战报・深境螺旋"
+            "value" : "赛季编号"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "個人戰報・深境螺旋"
+            "value" : "賽季編號"
           }
         }
       }
     },
-    "hylKit.abyssReportView4GI.navTitle.tiny" : {
+    "hylKit.battleReportView4GI.navTitle.spiralAbyss" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1926,7 +1849,161 @@
         }
       }
     },
-    "hylKit.abyssReportView4HSR.navTitle.apocalypticShadow" : {
+    "hylKit.battleReportView4GI.navTitle.treasuresStarward" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kampfbericht: Sternwärts"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battle Report: Treasures Starward"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informe de batalla: Rumbo a las estrellas"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ulat ng Labanan: Treasures Starward"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapport de bataille : Trésors vers les étoiles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapporto di Battaglia: Tesori verso le stelle"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作戦報告・星追銀掴"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전투 보고서: 별 따라 은 찾아"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Боевой отчет: К звёздам за сокровищами"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Báo cáo Chiến đấu: Kho Báu Sao Trời"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "个人战报・逐星捡银"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "個人戰報・逐星撿銀"
+          }
+        }
+      }
+    },
+    "hylKit.battleReportView4GI.navTitle.treasuresStarward.tiny" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sternwärts"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treasures Starward"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rumbo a las estrellas"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treasures Starward"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trésors vers les étoiles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tesori verso le stelle"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "星追銀掴"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "별 따라 은 찾아"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "К звёздам за сокровищами"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kho Báu Sao Trời"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "逐星捡银"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "逐星撿銀"
+          }
+        }
+      }
+    },
+    "hylKit.battleReportView4HSR.navTitle.apocalypticShadow" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -2003,7 +2080,7 @@
         }
       }
     },
-    "hylKit.abyssReportView4HSR.navTitle.forgottenHall" : {
+    "hylKit.battleReportView4HSR.navTitle.forgottenHall" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -2080,7 +2157,7 @@
         }
       }
     },
-    "hylKit.abyssReportView4HSR.navTitle.pureFiction" : {
+    "hylKit.battleReportView4HSR.navTitle.pureFiction" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -2157,7 +2234,7 @@
         }
       }
     },
-    "hylKit.abyssReportView4HSR.navTitle.treasuresLightward" : {
+    "hylKit.battleReportView4HSR.navTitle.treasuresLightward" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -2234,7 +2311,7 @@
         }
       }
     },
-    "hylKit.abyssReportView4HSR.navTitle.treasuresLightward.tiny" : {
+    "hylKit.battleReportView4HSR.navTitle.treasuresLightward.tiny" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -2276,7 +2353,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "光を追い、黄金を掴む"
+            "value" : "光追金掴"
           }
         },
         "ko" : {

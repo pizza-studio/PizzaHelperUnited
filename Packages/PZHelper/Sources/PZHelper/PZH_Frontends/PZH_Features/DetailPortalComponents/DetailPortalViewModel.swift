@@ -59,7 +59,7 @@ public final class DetailPortalViewModel: ObservableObject {
 
     public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
     public var taskStatus4Ledger: Status<any Ledger> = .standby
-    public var taskStatus4AbyssReport: Status<any AbyssReportSet> = .standby
+    public var taskStatus4BattleReport: Status<any BattleReportSet> = .standby
     @ObservationIgnored public var refreshingStatus: Status<Void> = .standby
 
     public var currentProfile: PZProfileSendable? {
@@ -75,7 +75,7 @@ public final class DetailPortalViewModel: ObservableObject {
         let task = Task {
             await self.fetchCharacterInventoryList()
             await self.fetchLedgerData()
-            await self.fetchAbyssReportSet()
+            await self.fetchBattleReportSet()
             refreshingStatus = .standby
         }
         refreshingStatus = .progress(task)
@@ -137,29 +137,29 @@ extension DetailPortalViewModel {
         }
     }
 
-    func fetchAbyssReportSet() async {
-        if case let .progress(task) = taskStatus4AbyssReport { task.cancel() }
+    func fetchBattleReportSet() async {
+        if case let .progress(task) = taskStatus4BattleReport { task.cancel() }
         let task = Task {
             do {
                 guard let profile = self.currentProfile,
-                      let queryResult = try await HoYo.getAbyssReportSet(for: profile)
+                      let queryResult = try await HoYo.getBattleReportSet(for: profile)
                 else { return }
                 Task.detached { @MainActor in
                     withAnimation {
-                        self.taskStatus4AbyssReport = .succeed(queryResult)
+                        self.taskStatus4BattleReport = .succeed(queryResult)
                     }
                 }
             } catch {
                 Task.detached { @MainActor in
                     withAnimation {
-                        self.taskStatus4AbyssReport = .fail(error)
+                        self.taskStatus4BattleReport = .fail(error)
                     }
                 }
             }
         }
         Task.detached { @MainActor in
             withAnimation {
-                self.taskStatus4AbyssReport = .progress(task)
+                self.taskStatus4BattleReport = .progress(task)
             }
         }
     }

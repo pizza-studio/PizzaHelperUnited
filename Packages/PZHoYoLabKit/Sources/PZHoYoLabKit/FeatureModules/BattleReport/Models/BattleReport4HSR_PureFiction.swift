@@ -6,17 +6,19 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 
+// MARK: - Pure Fiction.
+
 // MARK: - Apocalyptic Shadow.
 
-extension HoYo.AbyssReport4HSR {
-    public struct ApocalypticShadowData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
+extension HoYo.BattleReport4HSR {
+    public struct PureFictionData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
 
         public let starNum: Int
         public let maxFloor: String
         public let battleNum: Int
         public let hasData: Bool
-        public let allFloorDetail: [ASFloorDetail]
+        public let allFloorDetail: [PFFloorDetail]
 
         public var maxFloorNumStr: String {
             allFloorDetail.max {
@@ -41,11 +43,11 @@ extension HoYo.AbyssReport4HSR {
         }
     }
 
-    public struct ASFloorDetail: AbleToCodeSendHash {
+    public struct PFFloorDetail: AbleToCodeSendHash {
         // MARK: Public
 
         public let name: String
-        public let starNum: String
+        public let starNum: Int
         public let node1: FHNode
         public let node2: FHNode
         public let mazeID: Int
@@ -75,7 +77,7 @@ extension HoYo.AbyssReport4HSR {
     }
 }
 
-extension [HoYo.AbyssReport4HSR.ASFloorDetail] {
+extension [HoYo.BattleReport4HSR.PFFloorDetail] {
     var trimmed: Self {
         var copied = self
         while copied.last?.isSkipped ?? false {
