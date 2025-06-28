@@ -116,13 +116,13 @@ private struct DailyNoteCardErrorView: View {
                 Image(systemSymbol: .questionmarkCircle)
                     .foregroundColor(.yellow)
             }
-            tabNavVM.gotoSettingsButtonIfAppropriate
+            rootNavVM.gotoSettingsButtonIfAppropriate
         }
     }
 
     // MARK: Private
 
-    @StateObject private var tabNavVM = GlobalNavVM.shared
+    @StateObject private var rootNavVM = RootNavVM.shared
 }
 
 private let dateFormatter: DateFormatter = {
