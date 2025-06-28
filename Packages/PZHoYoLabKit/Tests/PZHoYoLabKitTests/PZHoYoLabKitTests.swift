@@ -12,7 +12,7 @@ final class PZHoYoLabKitTests: XCTestCase {
 
     #if DEBUG
     func testBundledDataDecoding() throws {
-        _ = try AbyssReportTestAssets.getReport4HSR()
+        _ = try BattleReportTestAssets.getReport4HSR()
     }
     #endif
 }

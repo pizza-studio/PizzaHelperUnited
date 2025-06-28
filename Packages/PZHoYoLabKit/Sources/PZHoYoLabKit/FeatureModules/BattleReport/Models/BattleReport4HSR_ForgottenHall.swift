@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - Forgotten Hall.
 
-extension HoYo.AbyssReport4HSR {
+extension HoYo.BattleReport4HSR {
     public struct ForgottenHallData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
 
@@ -151,7 +151,7 @@ extension HoYo.AbyssReport4HSR {
     }
 }
 
-extension [HoYo.AbyssReport4HSR.FHFloorDetail] {
+extension [HoYo.BattleReport4HSR.FHFloorDetail] {
     var trimmed: Self {
         var copied = self.filter(\.isChaos)
         while copied.last?.isSkipped ?? false {

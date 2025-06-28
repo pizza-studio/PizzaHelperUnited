@@ -9,9 +9,9 @@ import PZBaseKit
 import PZHoYoLabKit
 import SwiftUI
 
-// MARK: - AbyssReportNav
+// MARK: - BattleReportNav
 
-public struct AbyssReportNav: View {
+public struct BattleReportNav: View {
     // MARK: Lifecycle
 
     public init(theVM: DetailPortalViewModel) {
@@ -31,7 +31,7 @@ public struct AbyssReportNav: View {
 
     @ViewBuilder
     public func coreBody(profile: PZProfileSendable) -> some View {
-        switch theVM.taskStatus4AbyssReport {
+        switch theVM.taskStatus4BattleReport {
         case .progress:
             InformationRowView(navTitle) {
                 ProgressView()
@@ -39,42 +39,25 @@ public struct AbyssReportNav: View {
         case let .fail(error):
             InformationRowView(navTitle) {
                 let region = profile.server.region.withGame(profile.game)
-                let suffix = region.abyssReportRetrievalPath
+                let suffix: String = switch profile.game {
+                case .genshinImpact:
+                    HoYo.BattleReport4GI.TreasuresStarwardType.spiralAbyss.getAPIPath(
+                        region: region
+                    )
+                case .starRail:
+                    HoYo.BattleReport4HSR.TreasuresLightwardType.forgottenHall.getAPIPath(
+                        region: region
+                    )
+                case .zenlessZone:
+                    ""
+                }
                 let apiPath = URLRequestConfig.recordURLAPIHost(region: region) + suffix
                 HoYoAPIErrorView(profile: profile, apiPath: apiPath, error: error) {
                     theVM.refresh()
                 }
             }
         case let .succeed(data):
-            if let data = data as? AbyssReportSet4GI {
-                InformationRowView(navTitle) {
-                    NavigationLink(destination: data.asView.navigationTitle(navTitleTiny)) {
-                        HStack(spacing: 10) {
-                            let iconFrame: CGFloat = 40
-                            AbyssReportView4GI.abyssIcon
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: iconFrame, height: iconFrame)
-                            if !data.current.floors.isEmpty {
-                                HStack(alignment: .lastTextBaseline) {
-                                    Text(verbatim: "\(data.current.maxFloor)")
-                                        .font(.title)
-                                    HStack(alignment: .center, spacing: 2) {
-                                        AbyssReportView4GI.drawAbyssStarIcon()
-                                        Text(verbatim: " \(data.current.totalStar)")
-                                            .font(.title3)
-                                    }
-                                }
-                                Spacer()
-                            } else {
-                                Text("hylKit.abyssReport.noDataAvailableForThisSeason".i18nHYLKit)
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                    }
-                }
-            } else if let data = data as? AbyssReportSet4HSR {
+            if let data = data as? BattleReportSet4GI {
                 InformationRowView(navTitle) {
                     NavigationLink(destination: data.asView.navigationTitle(navTitleTiny)) {
                         HStack(spacing: 10) {
@@ -89,14 +72,43 @@ public struct AbyssReportNav: View {
                                     Text(verbatim: "\(latestChallenge.deepestLevel)")
                                         .font(.title)
                                     HStack(alignment: .center, spacing: 2) {
-                                        AbyssReportView4GI.drawAbyssStarIcon()
+                                        BattleReportView4GI.drawAbyssStarIcon()
                                         Text(verbatim: " \(latestChallenge.totalStarsGained)")
                                             .font(.title3)
                                     }
                                 }
                                 Spacer()
                             } else {
-                                Text("hylKit.abyssReport.noDataAvailableForThisSeason".i18nHYLKit)
+                                Text("hylKit.battleReport.noDataAvailableForThisSeason".i18nHYLKit)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                }
+            } else if let data = data as? BattleReportSet4HSR {
+                InformationRowView(navTitle) {
+                    NavigationLink(destination: data.asView.navigationTitle(navTitleTiny)) {
+                        HStack(spacing: 10) {
+                            let iconFrame: CGFloat = 40
+                            data.current.latestChallengeType?.asIcon
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: iconFrame, height: iconFrame)
+                            let latestChallenge = data.current.latestChallengeIntel
+                            if let latestChallenge {
+                                HStack(alignment: .lastTextBaseline) {
+                                    Text(verbatim: "\(latestChallenge.deepestLevel)")
+                                        .font(.title)
+                                    HStack(alignment: .center, spacing: 2) {
+                                        BattleReportView4HSR.drawAbyssStarIcon()
+                                        Text(verbatim: " \(latestChallenge.totalStarsGained)")
+                                            .font(.title3)
+                                    }
+                                }
+                                Spacer()
+                            } else {
+                                Text("hylKit.battleReport.noDataAvailableForThisSeason".i18nHYLKit)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -113,16 +125,16 @@ public struct AbyssReportNav: View {
 
     @MainActor var navTitle: String {
         switch theVM.currentProfile?.game {
-        case .genshinImpact: AbyssReportView4GI.navTitle
-        case .starRail: AbyssReportView4HSR.navTitle
+        case .genshinImpact: BattleReportView4GI.navTitle
+        case .starRail: BattleReportView4HSR.navTitle
         default: "N/A"
         }
     }
 
     @MainActor var navTitleTiny: String {
         switch theVM.currentProfile?.game {
-        case .genshinImpact: AbyssReportView4GI.navTitleTiny
-        case .starRail: AbyssReportView4HSR.navTitleTiny
+        case .genshinImpact: BattleReportView4GI.navTitleTiny
+        case .starRail: BattleReportView4HSR.navTitleTiny
         default: "N/A"
         }
     }

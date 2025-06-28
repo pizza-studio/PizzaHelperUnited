@@ -89,7 +89,7 @@ struct DetailPortalTabPage: View {
             }
             // Peripheral Nav Sections.
             Section {
-                AbyssReportNav(theVM: vmDPV)
+                BattleReportNav(theVM: vmDPV)
                 LedgerNav(theVM: vmDPV)
             } footer: {
                 Text("dpv.peripherals.footer.whySomeContentsAreRemoved".i18nPZHelper)

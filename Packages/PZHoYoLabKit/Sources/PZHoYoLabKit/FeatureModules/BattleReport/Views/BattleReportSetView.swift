@@ -6,9 +6,9 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-// MARK: - AbyssReportSetView
+// MARK: - BattleReportSetView
 
-public struct AbyssReportSetView<Report: AbyssReport>: View {
+public struct BattleReportSetView<Report: BattleReport>: View {
     // MARK: Lifecycle
 
     public init(data: SetData, profile: PZProfileSendable?) {
@@ -18,7 +18,7 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
 
     // MARK: Public
 
-    public typealias SetData = AbyssReportSetTyped<Report>
+    public typealias SetData = BattleReportSetTyped<Report>
 
     public let data: SetData
 
@@ -27,6 +27,7 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
     public var body: some View {
         container
             .navBarTitleDisplayMode(.inline)
+            .fontWidth(screenVM.isExtremeCompact ? .compressed : nil)
     }
 
     @ViewBuilder public var container: some View {
@@ -44,11 +45,17 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
                     placement: .confirmationAction
                 ) {
                     Picker("".description, selection: $showPreviousSeason.animation()) {
-                        Text("hylKit.abyssReport.seasonPicker.current".i18nHYLKit).tag(false)
-                        Text("hylKit.abyssReport.seasonPicker.previous".i18nHYLKit).tag(true)
+                        Text("hylKit.battleReport.seasonPicker.current".i18nHYLKit).tag(false)
+                        Text("hylKit.battleReport.seasonPicker.previous".i18nHYLKit).tag(true)
                     }
                     .labelsHidden()
-                    .pickerStyle(.segmented)
+                    .apply { thePicker in
+                        if screenVM.isExtremeCompact {
+                            thePicker.pickerStyle(.menu)
+                        } else {
+                            thePicker.pickerStyle(.segmented)
+                        }
+                    }
                     .fixedSize()
                 }
             }
@@ -70,6 +77,7 @@ public struct AbyssReportSetView<Report: AbyssReport>: View {
     // MARK: Private
 
     @State private var showPreviousSeason = false
+    @StateObject private var screenVM: ScreenVM = .shared
 
     private var hasPreviousSeasonContent: Bool { data.previous != nil }
 }
