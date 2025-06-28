@@ -17,13 +17,13 @@ struct TodayTabPage: View {
     // MARK: Lifecycle
 
     public init(wrappedByNavStack: Bool = true) {
-        self.rootTabNavBinding = GlobalNavVM.shared.rootTabNavBindingNullable
+        self.rootPageNavBinding = RootNavVM.shared.rootPageNavBindingNullable
         self.wrappedByNavStack = wrappedByNavStack
     }
 
     // MARK: Internal
 
-    let rootTabNavBinding: Binding<AppTabNav?>
+    let rootPageNavBinding: Binding<AppRootPage?>
 
     var body: some View {
         if wrappedByNavStack {
@@ -71,7 +71,7 @@ struct TodayTabPage: View {
                         .foregroundColor(.yellow)
                 }
                 .listRowMaterialBackground()
-                tabNavVM.gotoSettingsButtonIfAppropriate
+                rootNavVM.gotoSettingsButtonIfAppropriate
             }
         } else {
             ForEach(filteredProfiles) { profile in
@@ -94,13 +94,13 @@ struct TodayTabPage: View {
             .background(alignment: .bottom) {
                 if !wrappedByNavStack {
                     // 这个隐形 List 不要删除，否则 NavSplitView 全局导航会失效。
-                    List(selection: rootTabNavBinding) {}
+                    List(selection: rootPageNavBinding) {}
                         .fixedSize()
                         .frame(height: 0)
                         .opacity(0)
                 }
             }
-            .safeAreaInset(edge: .bottom, content: tabNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
+            .safeAreaInset(edge: .bottom, content: rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         }
         .navigationTitle("tab.today.fullTitle".i18nPZHelper)
         .contextMenu {
@@ -175,7 +175,7 @@ struct TodayTabPage: View {
     @State private var isTodayMaterialSheetShown: Bool = false
     @State private var wrappedByNavStack: Bool
     @State private var game: Pizza.SupportedGame? = .none
-    @StateObject private var tabNavVM = GlobalNavVM.shared
+    @StateObject private var rootNavVM = RootNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 

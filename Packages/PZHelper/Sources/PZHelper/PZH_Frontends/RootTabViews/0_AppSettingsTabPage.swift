@@ -102,14 +102,14 @@ struct AppSettingsTabPage: View {
             .formStyle(.grouped)
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
             .navBarTitleDisplayMode(.large)
-            .safeAreaInset(edge: .bottom, content: tabNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
+            .safeAreaInset(edge: .bottom, content: rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         }
     }
 
     // MARK: Private
 
     @State private var sharedDB = Enka.Sputnik.shared
-    @StateObject private var tabNavVM = GlobalNavVM.shared
+    @StateObject private var rootNavVM = RootNavVM.shared
 
     @Default(.appLanguage) private var appLanguage: [String]?
 }
