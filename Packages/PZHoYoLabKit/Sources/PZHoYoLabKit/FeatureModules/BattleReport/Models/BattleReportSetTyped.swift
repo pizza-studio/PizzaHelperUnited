@@ -5,10 +5,10 @@
 import PZAccountKit
 import PZBaseKit
 
-// MARK: - AbyssReportSetTyped
+// MARK: - BattleReportSetTyped
 
 /// 一套深渊战报得允许包括前一次的深渊战绩。
-public struct AbyssReportSetTyped<Report: AbyssReport>: AbyssReportSet {
+public struct BattleReportSetTyped<Report: BattleReport>: BattleReportSet {
     // MARK: Lifecycle
 
     public init?(
@@ -31,10 +31,10 @@ public struct AbyssReportSetTyped<Report: AbyssReport>: AbyssReportSet {
     public var costumeMap: [String: String]
     public let profile: PZProfileSendable?
 
-    @MainActor public var asView: AbyssReportSetView<Report> {
-        AbyssReportSetView(data: self, profile: profile)
+    @MainActor public var asView: BattleReportSetView<Report> {
+        BattleReportSetView(data: self, profile: profile)
     }
 }
 
-public typealias AbyssReportSet4GI = AbyssReportSetTyped<HoYo.AbyssReport4GI>
-public typealias AbyssReportSet4HSR = AbyssReportSetTyped<HoYo.AbyssReport4HSR>
+public typealias BattleReportSet4GI = BattleReportSetTyped<HoYo.BattleReport4GI>
+public typealias BattleReportSet4HSR = BattleReportSetTyped<HoYo.BattleReport4HSR>

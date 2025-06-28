@@ -2,16 +2,17 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
 import PZAccountKit
 import PZBaseKit
 
-// MARK: - HoYo.AbyssReport4GI
+// MARK: - Spiral Abyss.
 
-extension HoYo {
-    public struct AbyssReport4GI: AbyssReport, DecodableFromMiHoYoAPIJSONResult {
+extension HoYo.BattleReport4GI {
+    public struct SpiralAbyssData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
 
-        public typealias ViewType = AbyssReportView4GI
+        public typealias ViewType = BattleReportView4GI
 
         public struct CharacterRankModel: AbleToCodeSendHash {
             // MARK: Public
@@ -135,7 +136,7 @@ extension HoYo {
         /// 总胜利次数
         public var totalWinTimes: Int
         /// 到达最高层间数（最深抵达），eg "12-3"
-        public var maxFloor: String
+        public var maxFloorNumStr: String
         /// 各楼层数据
         public var floors: [Floor]
         /// 总挑战次数
@@ -148,19 +149,21 @@ extension HoYo {
         public var defeatRank: [CharacterRankModel]
         /// 本期深境螺旋结束时间
         public var endTime: String
-        /// 元素战记伤害排名（只有最高）
+        /// 元素战技伤害排名（只有最高）
         public var normalSkillRank: [CharacterRankModel]
-        /// 元素战记伤害排名（只有最高）
+        /// 元素战技伤害排名（只有最高）
         public var damageRank: [CharacterRankModel]
         /// 深境螺旋期数ID，每期+1
-        public var scheduleId: Int
+        public var scheduleID: Int
         /// 出站次数
         public var revealRank: [CharacterRankModel]
-        public var totalStar: Int
+        /// 总渊星获得数
+        public var starNum: Int
 
-        public var rankDataMissing: Bool {
-            damageRank.count * defeatRank.count * takeDamageRank.count * normalSkillRank.count * energySkillRank
-                .count == 0
+        public var hasData: Bool {
+            guard isUnlock else { return false }
+            return damageRank.count * defeatRank.count * takeDamageRank.count * normalSkillRank.count * energySkillRank
+                .count != 0
         }
 
         // MARK: Internal
@@ -169,7 +172,7 @@ extension HoYo {
             case energySkillRank = "energy_skill_rank"
             case startTime = "start_time"
             case totalWinTimes = "total_win_times"
-            case maxFloor = "max_floor"
+            case maxFloorNumStr = "max_floor"
             case floors
             case totalBattleTimes = "total_battle_times"
             case takeDamageRank = "take_damage_rank"
@@ -178,20 +181,75 @@ extension HoYo {
             case endTime = "end_time"
             case normalSkillRank = "normal_skill_rank"
             case damageRank = "damage_rank"
-            case scheduleId = "schedule_id"
+            case scheduleID = "schedule_id"
             case revealRank = "reveal_rank"
-            case totalStar = "total_star"
+            case starNum = "total_star"
         }
     }
 }
 
-extension HoYo.AbyssReport4GI {
-    public var hasSufficientStarsForUpload: Bool {
-        var finalFloorIndex = 0
-        for floor in floors where floor.index >= 9 {
-            guard floor.star == floor.maxStar else { return false }
-            finalFloorIndex = Swift.max(floor.index, finalFloorIndex)
+extension HoYo.BattleReport4GI.SpiralAbyssData {
+    func summarizedIntoCells(compact: Bool = false) -> [AbyssValueCell] {
+        var result = [AbyssValueCell]()
+        result.append(AbyssValueCell(value: maxFloorNumStr, description: "hylKit.battleReport.gi.stat.deepest"))
+        if compact {
+            let appendCell = AbyssValueCell(value: totalBattleTimes, description: "hylKit.battleReport.gi.stat.battle")
+            var newCell = AbyssValueCell(value: totalWinTimes, description: "hylKit.battleReport.gi.stat.win")
+            newCell.value += " / \(appendCell.value)"
+            newCell.description += " / \(appendCell.description)"
+            result.append(newCell)
+        } else {
+            result.append(AbyssValueCell(value: totalBattleTimes, description: "hylKit.battleReport.gi.stat.battle"))
+            result.append(AbyssValueCell(value: totalWinTimes, description: "hylKit.battleReport.gi.stat.win"))
         }
-        return finalFloorIndex >= 12
+        result.append(AbyssValueCell(value: starNum, description: "hylKit.battleReport.gi.stat.star"))
+        result.append(
+            AbyssValueCell(
+                value: takeDamageRank.first?.value,
+                description: "hylKit.battleReport.gi.stat.mostDamageTaken",
+                avatarID: takeDamageRank.first?.avatarID
+            )
+        )
+        result.append(
+            AbyssValueCell(
+                value: damageRank.first?.value,
+                description: "hylKit.battleReport.gi.stat.strongest",
+                avatarID: damageRank.first?.avatarID
+            )
+        )
+        result.append(
+            AbyssValueCell(
+                value: defeatRank.first?.value,
+                description: "hylKit.battleReport.gi.stat.mostDefeats",
+                avatarID: defeatRank.first?.avatarID
+            )
+        )
+        result.append(
+            AbyssValueCell(
+                value: normalSkillRank.first?.value,
+                description: "hylKit.battleReport.gi.stat.mostESkills",
+                avatarID: normalSkillRank.first?.avatarID
+            )
+        )
+        result.append(
+            AbyssValueCell(
+                value: energySkillRank.first?.value,
+                description: "hylKit.battleReport.gi.stat.mostQSkills",
+                avatarID: energySkillRank.first?.avatarID
+            )
+        )
+        return result
+    }
+
+    var allCharIDsEnumerated: Set<Int> {
+        .init(
+            floors.compactMap { floor in
+                floor.levels.compactMap { level in
+                    level.battles.compactMap { battle in
+                        battle.avatars.map(\.id)
+                    }.flatMap(\.self)
+                }.flatMap(\.self)
+            }.flatMap(\.self)
+        )
     }
 }

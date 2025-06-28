@@ -7,27 +7,27 @@ import PZAccountKit
 import PZBaseKit
 
 extension HoYo {
-    public static func getAbyssReportSet(for profile: PZProfileSendable) async throws -> (any AbyssReportSet)? {
+    public static func getBattleReportSet(for profile: PZProfileSendable) async throws -> (any BattleReportSet)? {
         switch profile.game {
         case .genshinImpact:
-            let current = try await abyssReportData4GI(for: profile, isPreviousRound: false)
-            let previous = try await abyssReportData4GI(for: profile, isPreviousRound: true)
-            return AbyssReportSet4GI(current: current, previous: previous, profile: profile)
+            let current = try await battleReportData4GI(for: profile, isPreviousRound: false)
+            let previous = try await battleReportData4GI(for: profile, isPreviousRound: true)
+            return BattleReportSet4GI(current: current, previous: previous, profile: profile)
         case .starRail:
-            let current = try await abyssReportData4HSR(for: profile, isPreviousRound: false)
-            let previous = try await abyssReportData4HSR(for: profile, isPreviousRound: true)
-            return AbyssReportSet4HSR(current: current, previous: previous, profile: profile)
+            let current = try await battleReportData4HSR(for: profile, isPreviousRound: false)
+            let previous = try await battleReportData4HSR(for: profile, isPreviousRound: true)
+            return BattleReportSet4HSR(current: current, previous: previous, profile: profile)
         default: return nil
         }
     }
 }
 
 extension HoYo {
-    static func abyssReportData4GI(
+    static func battleReportData4GI(
         for profile: PZProfileSendable, isPreviousRound: Bool = false
     ) async throws
-        -> AbyssReport4GI {
-        try await abyssReportData4GI(
+        -> BattleReport4GI {
+        let spiralAbyss = try await battleReportData4GISpiralAbyss(
             isPreviousRound: isPreviousRound,
             server: profile.server,
             uid: profile.uid,
@@ -35,13 +35,14 @@ extension HoYo {
             deviceFingerPrint: profile.deviceFingerPrint,
             deviceID: profile.deviceID
         )
+        return .init(spiralAbyss: spiralAbyss)
     }
 
-    static func abyssReportData4HSR(
+    static func battleReportData4HSR(
         for profile: PZProfileSendable, isPreviousRound: Bool = false
     ) async throws
-        -> AbyssReport4HSR {
-        let dataForgottenHall = try await abyssReportData4HSRForgottenHall(
+        -> BattleReport4HSR {
+        let dataForgottenHall = try await battleReportData4HSRForgottenHall(
             isPreviousRound: isPreviousRound,
             server: profile.server,
             uid: profile.uid,
@@ -49,7 +50,7 @@ extension HoYo {
             deviceFingerPrint: profile.deviceFingerPrint,
             deviceID: profile.deviceID
         )
-        let dataApocalypticShadow = try await abyssReportData4HSRApoShadow(
+        let dataApocalypticShadow = try await battleReportData4HSRApoShadow(
             isPreviousRound: isPreviousRound,
             server: profile.server,
             uid: profile.uid,
@@ -57,7 +58,7 @@ extension HoYo {
             deviceFingerPrint: profile.deviceFingerPrint,
             deviceID: profile.deviceID
         )
-        let dataPureFiction = try await abyssReportData4HSRPureFiction(
+        let dataPureFiction = try await battleReportData4HSRPureFiction(
             isPreviousRound: isPreviousRound,
             server: profile.server,
             uid: profile.uid,
@@ -65,7 +66,7 @@ extension HoYo {
             deviceFingerPrint: profile.deviceFingerPrint,
             deviceID: profile.deviceID
         )
-        let result = HoYo.AbyssReport4HSR(
+        let result = HoYo.BattleReport4HSR(
             forgottenHall: dataForgottenHall,
             pureFiction: dataPureFiction,
             apocalypticShadow: dataApocalypticShadow
@@ -77,7 +78,7 @@ extension HoYo {
 // MARK: - Private Methods (Genshin Impact).
 
 extension HoYo {
-    private static func abyssReportData4GI(
+    private static func battleReportData4GISpiralAbyss(
         isPreviousRound: Bool = false,
         server: Server,
         uid: String,
@@ -85,10 +86,11 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> AbyssReport4GI {
+        -> BattleReport4GI.SpiralAbyssData {
+        let type = HoYo.BattleReport4GI.TreasuresStarwardType.spiralAbyss
         await HoYo.waitFor300ms()
         #if DEBUG
-        print("||| START REQUESTING SPIRAL ABYSS DATA (GI) |||")
+        print("||| START REQUESTING SPIRAL ABYSS DATA (GI - SpiralAbyss) |||")
         #endif
         let queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
@@ -109,7 +111,7 @@ extension HoYo {
 
         let request = try await Self.generateRecordAPIRequest(
             region: server.region,
-            path: server.region.abyssReportRetrievalPath,
+            path: type.getAPIPath(region: server.region),
             queryItems: queryItems,
             cookie: cookie,
             additionalHeaders: additionalHeaders
@@ -118,14 +120,14 @@ extension HoYo {
 
         let data = try await request.serializingData().value
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.AbyssReportData4GI()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.battleReportData4GISpiralAbyss()")
     }
 }
 
 // MARK: - Private Methods (Star Rail).
 
 extension HoYo {
-    private static func abyssReportData4HSRForgottenHall(
+    private static func battleReportData4HSRForgottenHall(
         isPreviousRound: Bool = false,
         server: Server,
         uid: String,
@@ -133,7 +135,8 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> AbyssReport4HSR.ForgottenHallData {
+        -> BattleReport4HSR.ForgottenHallData {
+        let type = HoYo.BattleReport4HSR.TreasuresLightwardType.forgottenHall
         await HoYo.waitFor300ms()
         #if DEBUG
         print("||| START REQUESTING SPIRAL ABYSS DATA (HSR - ForgottenHall) |||")
@@ -169,7 +172,7 @@ extension HoYo {
 
         let request = try await Self.generateRecordAPIRequest(
             region: server.region,
-            path: server.region.abyssReportRetrievalPath,
+            path: type.getAPIPath(region: server.region),
             queryItems: queryItems,
             cookie: cookie,
             additionalHeaders: additionalHeaders
@@ -178,10 +181,10 @@ extension HoYo {
 
         let data = try await request.serializingData().value
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.abyssReportData4HSRForgottenHall()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.battleReportData4HSRForgottenHall()")
     }
 
-    private static func abyssReportData4HSRPureFiction(
+    private static func battleReportData4HSRPureFiction(
         isPreviousRound: Bool = false,
         server: Server,
         uid: String,
@@ -189,7 +192,8 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> AbyssReport4HSR.PureFictionData {
+        -> BattleReport4HSR.PureFictionData {
+        let type = HoYo.BattleReport4HSR.TreasuresLightwardType.pureFiction
         await HoYo.waitFor300ms()
         #if DEBUG
         print("||| START REQUESTING SPIRAL ABYSS DATA (HSR - Pure Fiction) |||")
@@ -225,7 +229,7 @@ extension HoYo {
 
         let request = try await Self.generateRecordAPIRequest(
             region: server.region,
-            path: server.region.abyssReportRetrievalPath + "_story",
+            path: type.getAPIPath(region: server.region),
             queryItems: queryItems,
             cookie: cookie,
             additionalHeaders: additionalHeaders
@@ -234,10 +238,10 @@ extension HoYo {
 
         let data = try await request.serializingData().value
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.abyssReportData4HSRPureFiction()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.battleReportData4HSRPureFiction()")
     }
 
-    private static func abyssReportData4HSRApoShadow(
+    private static func battleReportData4HSRApoShadow(
         isPreviousRound: Bool = false,
         server: Server,
         uid: String,
@@ -245,7 +249,8 @@ extension HoYo {
         deviceFingerPrint: String?,
         deviceID: String?
     ) async throws
-        -> AbyssReport4HSR.ApocalypticShadowData {
+        -> BattleReport4HSR.ApocalypticShadowData {
+        let type = HoYo.BattleReport4HSR.TreasuresLightwardType.apocalypticShadow
         await HoYo.waitFor300ms()
         #if DEBUG
         print("||| START REQUESTING SPIRAL ABYSS DATA (HSR - Pure Fiction) |||")
@@ -281,7 +286,7 @@ extension HoYo {
 
         let request = try await Self.generateRecordAPIRequest(
             region: server.region,
-            path: server.region.abyssReportRetrievalPath + "_boss",
+            path: type.getAPIPath(region: server.region),
             queryItems: queryItems,
             cookie: cookie,
             additionalHeaders: additionalHeaders
@@ -290,20 +295,30 @@ extension HoYo {
 
         let data = try await request.serializingData().value
 
-        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.abyssReportData4HSRApoShadow()")
+        return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.battleReportData4HSRApoShadow()")
     }
 }
 
-extension HoYo.AccountRegion {
-    /// 除绝区零情况未知以外，原神与星穹铁道搭配 `.recordURLAPIHost()` 使用。
-    public var abyssReportRetrievalPath: String {
-        switch (self, game) {
-        case (.hoyoLab, .genshinImpact): "/game_record/app/genshin/api/spiralAbyss"
-        case (.miyoushe, .genshinImpact): "/game_record/app/genshin/api/spiralAbyss"
-        case (.hoyoLab, .starRail): "/game_record/app/hkrpg/api/challenge"
-        case (.miyoushe, .starRail): "/game_record/app/hkrpg/api/challenge"
-        case (.hoyoLab, .zenlessZone): "" // 暂不实作。
-        case (.miyoushe, .zenlessZone): "" // 暂不实作。
+extension HoYo.BattleReport4GI.TreasuresStarwardType {
+    /// 搭配 `.recordURLAPIHost()` 使用。
+    public func getAPIPath(region: HoYo.AccountRegion) -> String {
+        switch (self, region) {
+        case (.spiralAbyss, .hoyoLab): "/game_record/app/genshin/api/spiralAbyss"
+        case (.spiralAbyss, .miyoushe): "/game_record/app/genshin/api/spiralAbyss"
+        }
+    }
+}
+
+extension HoYo.BattleReport4HSR.TreasuresLightwardType {
+    /// 搭配 `.recordURLAPIHost()` 使用。
+    public func getAPIPath(region: HoYo.AccountRegion) -> String {
+        switch (self, region) {
+        case (.forgottenHall, .hoyoLab): "/game_record/app/hkrpg/api/challenge"
+        case (.forgottenHall, .miyoushe): "/game_record/app/hkrpg/api/challenge"
+        case (.pureFiction, .hoyoLab): "/game_record/app/hkrpg/api/challenge_story"
+        case (.pureFiction, .miyoushe): "/game_record/app/hkrpg/api/challenge_story"
+        case (.apocalypticShadow, .hoyoLab): "/game_record/app/hkrpg/api/challenge_boss"
+        case (.apocalypticShadow, .miyoushe): "/game_record/app/hkrpg/api/challenge_boss"
         }
     }
 }
