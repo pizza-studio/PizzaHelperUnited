@@ -45,7 +45,7 @@ struct DetailPortalTabPage: View {
         }
         .navigationTitle("tab.details.fullTitle".i18nPZHelper)
         .apply(hookToolbar)
-        .safeAreaInset(edge: .bottom, content: tabNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
+        .safeAreaInset(edge: .bottom, content: rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         .onAppear {
             if let profile = vmDPV.currentProfile, !sortedProfiles.contains(profile) {
                 vmDPV.currentProfile = nil
@@ -135,7 +135,7 @@ struct DetailPortalTabPage: View {
     @State private var sharedDB: Enka.Sputnik = .shared
     @StateObject private var vmDPV: DetailPortalViewModel = .shared
     @StateObject private var pfMgrVM: ProfileManagerVM = .shared
-    @StateObject private var tabNavVM = GlobalNavVM.shared
+    @StateObject private var rootNavVM = RootNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
 

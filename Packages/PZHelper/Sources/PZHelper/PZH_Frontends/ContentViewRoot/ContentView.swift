@@ -16,7 +16,7 @@ public struct ContentView: View {
     // MARK: Lifecycle
 
     public init() {
-        self._rootTabNavBinding = GlobalNavVM.shared.rootTabNavBindingNullable
+        self._rootPageNavBinding = RootNavVM.shared.rootPageNavBindingNullable
     }
 
     // MARK: Public
@@ -42,11 +42,11 @@ public struct ContentView: View {
                 .toolbar(.hidden, for: .navigationBar) // Additional safeguard
             #endif
         } detail: {
-            AppRootPageViewWrapper(tab: tabNavVM.rootTabNav)
+            AppRootPageViewWrapper(tab: rootNavVM.rootPageNav)
                 .appTabBarVisibility(.visible)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
-                    tabNavVM.sharedRootPageSwitcherAsToolbarContent()
+                    rootNavVM.sharedRootPageSwitcherAsToolbarContent()
                 }
                 .tint(tintForCurrentTab)
         }
@@ -54,7 +54,7 @@ public struct ContentView: View {
         .tint(tintForCurrentTab)
         .apply { currentContent in
             hookSidebarAndPageHandlers(currentContent)
-                .onChange(of: tabNavVM.rootTabNav) {
+                .onChange(of: rootNavVM.rootPageNav) {
                     simpleTaptic(type: .medium)
                 }
         }
@@ -66,18 +66,18 @@ public struct ContentView: View {
 
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
-    @StateObject private var tabNavVM = GlobalNavVM.shared
+    @StateObject private var rootNavVM = RootNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
     @StateObject private var screenVM = ScreenVM.shared
     @State private var viewColumn: NavigationSplitViewColumn = .content
-    @Binding private var rootTabNavBinding: AppTabNav?
+    @Binding private var rootPageNavBinding: AppRootPage?
 
     private let isAppKit = OS.type == .macOS && !OS.isCatalyst
 
     private var sideBarWidth: CGFloat { 375 }
 
-    private var effectiveAppNavCases: [AppTabNav] {
-        screenVM.isSidebarVisible ? AppTabNav.enabledSubCases : AppTabNav.allCases
+    private var effectiveAppNavCases: [AppRootPage] {
+        screenVM.isSidebarVisible ? AppRootPage.enabledSubCases : AppRootPage.allCases
     }
 
     private var isCompact: Bool {
@@ -85,7 +85,7 @@ public struct ContentView: View {
     }
 
     private var tintForCurrentTab: Color {
-        switch AppTabNav(rootID: tabNavVM.rootTabNav.rootID) {
+        switch AppRootPage(rootID: rootNavVM.rootPageNav.rootID) {
         case .today: Color.accessibilityAccent(colorScheme)
         case .showcaseDetail: Color.accessibilityAccent(colorScheme)
         default: .accentColor
@@ -102,8 +102,8 @@ public struct ContentView: View {
     }
 
     private func fixMainColumnPageIfNeeded() {
-        if screenVM.isSidebarVisible, tabNavVM.rootTabNav == .today {
-            rootTabNavBinding = .showcaseDetail
+        if screenVM.isSidebarVisible, rootNavVM.rootPageNav == .today {
+            rootPageNavBinding = .showcaseDetail
         }
     }
 }
