@@ -5,9 +5,9 @@
 import PZBaseKit
 import SwiftUI
 
-// MARK: - AppTabNav
+// MARK: - AppRootPage
 
-enum AppTabNav: CaseIterable, Identifiable, Sendable, Hashable {
+enum AppRootPage: CaseIterable, Identifiable, Sendable, Hashable {
     case today
     case showcaseDetail
     case utils
@@ -23,14 +23,14 @@ enum AppTabNav: CaseIterable, Identifiable, Sendable, Hashable {
 
     // MARK: Public
 
-    public static let allCases: [AppTabNav] = [
+    public static let allCases: [AppRootPage] = [
         .today,
         .showcaseDetail,
         .utils,
         .appSettings,
     ]
 
-    public static let enabledSubCases: [AppTabNav] = [
+    public static let enabledSubCases: [AppRootPage] = [
         .showcaseDetail,
         .utils,
         .appSettings,
@@ -83,7 +83,7 @@ enum AppTabNav: CaseIterable, Identifiable, Sendable, Hashable {
 struct AppRootPageViewWrapper: View {
     // MARK: Lifecycle
 
-    public init(tab: AppTabNav) {
+    public init(tab: AppRootPage) {
         self.tab = tab
     }
 
@@ -112,5 +112,5 @@ struct AppRootPageViewWrapper: View {
 
     // MARK: Private
 
-    private let tab: AppTabNav
+    private let tab: AppRootPage
 }

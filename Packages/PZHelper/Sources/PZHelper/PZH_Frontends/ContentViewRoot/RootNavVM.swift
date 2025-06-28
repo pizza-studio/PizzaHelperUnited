@@ -7,39 +7,28 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-// MARK: - GlobalNavVM
+// MARK: - RootNavVM
 
 @Observable @MainActor
-final class GlobalNavVM: Sendable, ObservableObject {
+final class RootNavVM: Sendable, ObservableObject {
     // MARK: Public
 
     public static let isAppKit = OS.type == .macOS && !OS.isCatalyst
-    public static let shared = GlobalNavVM()
+    public static let shared = RootNavVM()
 
     public let screenVM = ScreenVM.shared
 
-    public var rootTabNavBindingNullable: Binding<AppTabNav?> {
-        .init(
-            get: {
-                self.rootTabNav
-            },
-            set: { newValue in
-                self.rootTabNav = newValue ?? .today
-            }
-        )
-    }
-
-    public var rootTabNav: AppTabNav = {
+    public var rootPageNav: AppRootPage = {
         let initSelection: Int = {
             guard Defaults[.restoreTabOnLaunching] else { return 1 }
-            let allBaseID = AppTabNav.allCases.map(\.id)
+            let allBaseID = AppRootPage.allCases.map(\.id)
             guard allBaseID.contains(Defaults[.appTabIndex]) else { return 1 }
             return Defaults[.appTabIndex]
         }()
         return .init(rootID: initSelection) ?? .today
     }() {
         willSet {
-            guard rootTabNav != newValue else { return }
+            guard rootPageNav != newValue else { return }
             Defaults[.appTabIndex] = newValue.rootID
             UserDefaults.baseSuite.synchronize()
             Broadcaster.shared.stopRootTabTasks()
@@ -49,11 +38,22 @@ final class GlobalNavVM: Sendable, ObservableObject {
         }
     }
 
+    public var rootPageNavBindingNullable: Binding<AppRootPage?> {
+        .init(
+            get: {
+                self.rootPageNav
+            },
+            set: { newValue in
+                self.rootPageNav = newValue ?? .today
+            }
+        )
+    }
+
     @ViewBuilder public var gotoSettingsButtonIfAppropriate: some View {
-        if rootTabNav != .appSettings {
+        if rootPageNav != .appSettings {
             Button {
                 withAnimation(.easeInOut(duration: 0.2)) {
-                    self.rootTabNav = .appSettings
+                    self.rootPageNav = .appSettings
                 }
             } label: {
                 Text("app.dailynote.noCard.switchToSettingsPage".i18nPZHelper)
@@ -115,14 +115,14 @@ final class GlobalNavVM: Sendable, ObservableObject {
     @MainActor @ViewBuilder
     private func sharedToolbarNavPicker(allCases: Bool, isMenu: Bool = true) -> some View {
         @Bindable var this = self
-        let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
+        let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
         Picker(
             "".description,
-            selection: $this.rootTabNav.animation(.easeInOut(duration: 0.2))
+            selection: $this.rootPageNav.animation(.easeInOut(duration: 0.2))
         ) {
             ForEach(effectiveCases) { navCase in
                 if navCase.isExposed {
-                    let isChosen: Bool = navCase == self.rootTabNav
+                    let isChosen: Bool = navCase == self.rootPageNav
                     switch isMenu {
                     case true:
                         VStack(alignment: .center) {
@@ -159,14 +159,14 @@ final class GlobalNavVM: Sendable, ObservableObject {
 
     @ViewBuilder
     private func bottomTabBarForCompactLayout(allCases: Bool) -> some View {
-        let effectiveCases = !allCases ? AppTabNav.enabledSubCases : AppTabNav.allCases
+        let effectiveCases = !allCases ? AppRootPage.enabledSubCases : AppRootPage.allCases
         HStack(spacing: 0) {
             ForEach(effectiveCases) { navCase in
-                let isChosen: Bool = navCase == self.rootTabNav
+                let isChosen: Bool = navCase == self.rootPageNav
                 if navCase.isExposed {
                     Button {
                         withAnimation(.easeInOut(duration: 0.2)) {
-                            self.rootTabNav = navCase
+                            self.rootPageNav = navCase
                         }
                     } label: {
                         VStack(spacing: 0) {
