@@ -6,41 +6,40 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-// MARK: - AbyssReportSet
+// MARK: - BattleReportSet
 
-public protocol AbyssReportSet: AbleToCodeSendHash {
-    associatedtype Report: AbyssReport
+public protocol BattleReportSet: AbleToCodeSendHash {
+    associatedtype Report: BattleReport
     var current: Report { get }
     var previous: Report? { get set }
     var costumeMap: [String: String] { get set }
 }
 
-// MARK: - AbyssReport
+// MARK: - BattleReport
 
-public protocol AbyssReport: AbleToCodeSendHash {
-    associatedtype ViewType: AbyssReportView where Self == ViewType.AbyssReportData
+public protocol BattleReport: AbleToCodeSendHash {
+    associatedtype ViewType: BattleReportView where Self == ViewType.BattleReportData
 }
 
-extension AbyssReport {
+extension BattleReport {
     @MainActor @ViewBuilder
     public func asView(profile: PZProfileSendable?) -> some View {
         ViewType(data: self, profile: profile)
     }
 }
 
-// MARK: - AbyssReportView
+// MARK: - BattleReportView
 
 @MainActor
-public protocol AbyssReportView: View {
-    associatedtype AbyssReportData: AbyssReport where Self == AbyssReportData.ViewType
-    init(data: AbyssReportData, profile: PZProfileSendable?)
-    var data: AbyssReportData { get }
+public protocol BattleReportView: View {
+    associatedtype BattleReportData: BattleReport where Self == BattleReportData.ViewType
+    init(data: BattleReportData, profile: PZProfileSendable?)
+    var data: BattleReportData { get }
     static var navTitle: String { get }
-    static var abyssIcon: Image { get }
     @ViewBuilder var body: Self.Body { get }
 }
 
-extension AbyssReportView {
+extension BattleReportView {
     public static var abyssStarIcon: Image { Image("abyssStar", bundle: .module) }
 
     @ViewBuilder
@@ -58,7 +57,7 @@ extension AbyssReportView {
 
 // MARK: - Debug
 
-extension AbyssReportView {
+extension BattleReportView {
     @ViewBuilder public var debugBody: some View {
         VStack {
             Text(verbatim: "Abyss Report Loaded Successfully.")

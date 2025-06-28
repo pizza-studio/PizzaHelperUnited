@@ -7,42 +7,40 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-// MARK: - AbyssReportView4HSR.TreasuresLightwardType
+// MARK: - BattleReportView4HSR.TreasuresLightwardType
 
-extension AbyssReportView4HSR {
-    typealias TreasuresLightwardType = HoYo.AbyssReport4HSR.TreasuresLightwardType
+extension BattleReportView4HSR {
+    typealias TreasuresLightwardType = HoYo.BattleReport4HSR.TreasuresLightwardType
 }
 
-extension AbyssReportView4HSR.TreasuresLightwardType {
+extension BattleReportView4HSR.TreasuresLightwardType {
     public var asIcon: Image {
         Image(iconFileNameStem, bundle: .module)
     }
 }
 
-// MARK: - AbyssReportView4HSR
+// MARK: - BattleReportView4HSR
 
-public struct AbyssReportView4HSR: AbyssReportView {
+public struct BattleReportView4HSR: BattleReportView {
     // MARK: Lifecycle
 
-    public init(data: AbyssReportData, profile: PZProfileSendable?) {
+    public init(data: BattleReportData, profile: PZProfileSendable?) {
         self.data = data
         _ = profile // 目前暫無需求。
     }
 
     // MARK: Public
 
-    public typealias AbyssReportData = HoYo.AbyssReport4HSR
+    public typealias BattleReportData = HoYo.BattleReport4HSR
 
-    public static let navTitle = "hylKit.abyssReportView4HSR.navTitle.treasuresLightward".i18nHYLKit
-    public static let navTitleTiny = "hylKit.abyssReportView4HSR.navTitle.treasuresLightward.tiny".i18nHYLKit
+    public static let navTitle = "hylKit.battleReportView4HSR.navTitle.treasuresLightward".i18nHYLKit
+    public static let navTitleTiny = "hylKit.battleReportView4HSR.navTitle.treasuresLightward.tiny".i18nHYLKit
 
-    public static var abyssIcon: Image { Image("hsr_abyss_ForgottenHall", bundle: .module) }
-
-    public var data: AbyssReportData
+    public var data: BattleReportData
 
     public var body: some View {
         Form {
-            if data4FH.hasData {
+            if data4FH.hasData || data4AS.hasData || data4PF.hasData {
                 contents
             } else {
                 blankView
@@ -76,7 +74,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     @ViewBuilder var blankView: some View {
         Section {
-            Text(verbatim: "hylKit.abyssReport.noDataAvailableForThisSeason".i18nHYLKit)
+            Text(verbatim: "hylKit.battleReport.noDataAvailableForThisSeason".i18nHYLKit)
         }
         .listRowMaterialBackground()
     }
@@ -93,59 +91,61 @@ public struct AbyssReportView4HSR: AbyssReportView {
                 LabeledContent {
                     Text(verbatim: data4FH.maxFloorNumStr)
                 } label: {
-                    Text("hylKit.abyssReport.hsr.stat.maxFloorConquered".i18nHYLKit)
+                    Text("hylKit.battleReport.hsr.stat.maxFloorConquered".i18nHYLKit)
                 }
                 LabeledContent {
                     Text(verbatim: data4FH.starNum.description)
                 } label: {
-                    Text("hylKit.abyssReport.hsr.stat.starsGained".i18nHYLKit)
+                    Text("hylKit.battleReport.hsr.stat.starsGained".i18nHYLKit)
                 }
                 LabeledContent {
                     Text(verbatim: data4FH.battleNum.description)
                 } label: {
-                    Text("hylKit.abyssReport.hsr.stat.numOfBattles".i18nHYLKit)
+                    Text("hylKit.battleReport.hsr.stat.numOfBattles".i18nHYLKit)
                 }
             case .pureFiction:
                 LabeledContent {
                     Text(verbatim: data4PF.maxFloorNumStr)
                 } label: {
-                    Text("hylKit.abyssReport.hsr.stat.maxFloorConquered".i18nHYLKit)
+                    Text("hylKit.battleReport.hsr.stat.maxFloorConquered".i18nHYLKit)
                 }
                 LabeledContent {
                     Text(verbatim: data4PF.starNum.description)
                 } label: {
-                    Text("hylKit.abyssReport.hsr.stat.starsGained".i18nHYLKit)
+                    Text("hylKit.battleReport.hsr.stat.starsGained".i18nHYLKit)
                 }
                 LabeledContent {
                     Text(verbatim: data4PF.battleNum.description)
                 } label: {
-                    Text("hylKit.abyssReport.hsr.stat.numOfBattles".i18nHYLKit)
+                    Text("hylKit.battleReport.hsr.stat.numOfBattles".i18nHYLKit)
                 }
             case .apocalypticShadow:
                 LabeledContent {
                     Text(verbatim: data4AS.maxFloorNumStr)
                 } label: {
-                    Text("hylKit.abyssReport.hsr.stat.maxFloorConquered".i18nHYLKit)
+                    Text("hylKit.battleReport.hsr.stat.maxFloorConquered".i18nHYLKit)
                 }
                 LabeledContent {
                     Text(verbatim: data4AS.starNum.description)
                 } label: {
-                    Text("hylKit.abyssReport.hsr.stat.starsGained".i18nHYLKit)
+                    Text("hylKit.battleReport.hsr.stat.starsGained".i18nHYLKit)
                 }
                 LabeledContent {
                     Text(verbatim: data4AS.battleNum.description)
                 } label: {
-                    Text("hylKit.abyssReport.hsr.stat.numOfBattles".i18nHYLKit)
+                    Text("hylKit.battleReport.hsr.stat.numOfBattles".i18nHYLKit)
                 }
             }
         } header: {
             HStack {
-                Text("hylKit.abyssReport.hsr.stats.header".i18nHYLKit)
-                Spacer()
+                Text("hylKit.battleReport.hsr.stats.header".i18nHYLKit)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 if contentType == .forgottenHall {
-                    Text("hylKit.abyssReport.hsr.stat.seasonID".i18nHYLKit + " \(data4FH.scheduleID)")
+                    Text("hylKit.battleReport.stat.seasonID".i18nHYLKit + " \(data4FH.scheduleID)")
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
+            .frame(maxWidth: .infinity)
         }
         .listRowMaterialBackground()
     }
@@ -156,7 +156,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
             ForEach(data4FH.allFloorDetail.trimmed, id: \.mazeID) { floorData in
                 Section {
                     if floorData.isSkipped {
-                        Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+                        Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
                     } else {
                         ViewThatFits(in: .horizontal) {
                             drawFloorInnerContents4FH(floorData, vertical: false, hasLabel: true, hasSpacers: true)
@@ -173,7 +173,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                 } header: {
                     HStack {
                         Text(
-                            "hylKit.abyssReport.floor.title:\(floorData.floorNumStr)",
+                            "hylKit.battleReport.floor.title:\(floorData.floorNumStr)",
                             bundle: .module
                         )
                         Spacer()
@@ -193,7 +193,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
             ForEach(data4PF.allFloorDetail.trimmed, id: \.mazeID) { floorData in
                 Section {
                     if floorData.isSkipped {
-                        Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+                        Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
                     } else {
                         ViewThatFits(in: .horizontal) {
                             drawFloorInnerContents4PF(floorData, vertical: false, hasLabel: true, hasSpacers: true)
@@ -210,7 +210,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                 } header: {
                     HStack {
                         Text(
-                            "hylKit.abyssReport.floor.title:\(floorData.floorNumStr)",
+                            "hylKit.battleReport.floor.title:\(floorData.floorNumStr)",
                             bundle: .module
                         )
                         Spacer()
@@ -231,7 +231,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
             ForEach(data4AS.allFloorDetail.trimmed, id: \.mazeID) { floorData in
                 Section {
                     if floorData.isSkipped {
-                        Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+                        Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
                     } else {
                         ViewThatFits(in: .horizontal) {
                             drawFloorInnerContents4AS(floorData, vertical: false, hasLabel: true, hasSpacers: true)
@@ -248,7 +248,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                 } header: {
                     HStack {
                         Text(
-                            "hylKit.abyssReport.floor.title:\(floorData.floorNumStr)",
+                            "hylKit.battleReport.floor.title:\(floorData.floorNumStr)",
                             bundle: .module
                         )
                         Spacer()
@@ -270,28 +270,28 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     @ViewBuilder
     func drawFloorInnerContents4FH(
-        _ floorData: HoYo.AbyssReport4HSR.FHFloorDetail,
+        _ floorData: HoYo.BattleReport4HSR.FHFloorDetail,
         vertical: Bool,
         hasLabel: Bool,
         hasSpacers: Bool
     )
         -> some View {
         if floorData.isSkipped {
-            Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+            Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
         } else {
             let theContent = Group {
                 drawBattleNode(
                     floorData.node1,
-                    label: hasLabel ? "hylKit.abyssReport.floor.1stHalf".i18nHYLKit : ""
+                    label: hasLabel ? "hylKit.battleReport.floor.1stHalf".i18nHYLKit : ""
                 )
                 if hasSpacers, !vertical { Spacer() }
                 drawBattleNode(
                     floorData.node2,
-                    label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
+                    label: hasLabel ? "hylKit.battleReport.floor.2ndHalf".i18nHYLKit : ""
                 )
             }
             if vertical {
-                LazyVStack { theContent }
+                VStack { theContent }
             } else {
                 HStack { theContent }
             }
@@ -300,28 +300,28 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     @ViewBuilder
     func drawFloorInnerContents4PF(
-        _ floorData: HoYo.AbyssReport4HSR.PFFloorDetail,
+        _ floorData: HoYo.BattleReport4HSR.PFFloorDetail,
         vertical: Bool,
         hasLabel: Bool,
         hasSpacers: Bool
     )
         -> some View {
         if floorData.isSkipped {
-            Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+            Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
         } else {
             let theContent = Group {
                 drawBattleNode(
                     floorData.node1,
-                    label: hasLabel ? "hylKit.abyssReport.floor.1stHalf".i18nHYLKit : ""
+                    label: hasLabel ? "hylKit.battleReport.floor.1stHalf".i18nHYLKit : ""
                 )
                 if hasSpacers, !vertical { Spacer() }
                 drawBattleNode(
                     floorData.node2,
-                    label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
+                    label: hasLabel ? "hylKit.battleReport.floor.2ndHalf".i18nHYLKit : ""
                 )
             }
             if vertical {
-                LazyVStack { theContent }
+                VStack { theContent }
             } else {
                 HStack { theContent }
             }
@@ -330,28 +330,28 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     @ViewBuilder
     func drawFloorInnerContents4AS(
-        _ floorData: HoYo.AbyssReport4HSR.ASFloorDetail,
+        _ floorData: HoYo.BattleReport4HSR.ASFloorDetail,
         vertical: Bool,
         hasLabel: Bool,
         hasSpacers: Bool
     )
         -> some View {
         if floorData.isSkipped {
-            Text("hylKit.abyssReport.floor.thisFloorIsSkipped".i18nHYLKit)
+            Text("hylKit.battleReport.floor.thisFloorIsSkipped".i18nHYLKit)
         } else {
             let theContent = Group {
                 drawBattleNode(
                     floorData.node1,
-                    label: hasLabel ? "hylKit.abyssReport.floor.1stHalf".i18nHYLKit : ""
+                    label: hasLabel ? "hylKit.battleReport.floor.1stHalf".i18nHYLKit : ""
                 )
                 if hasSpacers, !vertical { Spacer() }
                 drawBattleNode(
                     floorData.node2,
-                    label: hasLabel ? "hylKit.abyssReport.floor.2ndHalf".i18nHYLKit : ""
+                    label: hasLabel ? "hylKit.battleReport.floor.2ndHalf".i18nHYLKit : ""
                 )
             }
             if vertical {
-                LazyVStack { theContent }
+                VStack { theContent }
             } else {
                 HStack { theContent }
             }
@@ -359,7 +359,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
     }
 
     @ViewBuilder
-    func drawBattleNode(_ node: HoYo.AbyssReport4HSR.FHNode, label: String = "", spacers: Bool = true) -> some View {
+    func drawBattleNode(_ node: HoYo.BattleReport4HSR.FHNode, label: String = "", spacers: Bool = true) -> some View {
         HStack {
             if !label.isEmpty {
                 Text(label)
@@ -367,7 +367,7 @@ public struct AbyssReportView4HSR: AbyssReportView {
                     .fontDesign(.monospaced)
             }
             if spacers { Spacer() }
-            var guardedAvatars: [HoYo.AbyssReport4HSR.FHAvatar] {
+            var guardedAvatars: [HoYo.BattleReport4HSR.FHAvatar] {
                 var result = node.avatars
                 while result.count < 4 {
                     result.append(.init(id: -114_514, level: 0, icon: "", rarity: 0, element: "", eidolon: 0))
@@ -420,19 +420,19 @@ public struct AbyssReportView4HSR: AbyssReportView {
 
     @State private var contentType: TreasuresLightwardType = .forgottenHall
 
-    private var data4FH: AbyssReportData.ForgottenHallData { data.forgottenHall }
+    private var data4FH: BattleReportData.ForgottenHallData { data.forgottenHall }
 
-    private var data4AS: AbyssReportData.ApocalypticShadowData { data.apocalypticShadow }
+    private var data4AS: BattleReportData.ApocalypticShadowData { data.apocalypticShadow }
 
-    private var data4PF: AbyssReportData.PureFictionData { data.pureFiction }
+    private var data4PF: BattleReportData.PureFictionData { data.pureFiction }
 }
 
 #if DEBUG
 
 #Preview {
     NavigationStack {
-        AbyssReportView4HSR(
-            data: try! AbyssReportTestAssets.getReport4HSR(),
+        BattleReportView4HSR(
+            data: try! BattleReportTestAssets.getReport4HSR(),
             profile: nil
         ).formStyle(.grouped)
     }
