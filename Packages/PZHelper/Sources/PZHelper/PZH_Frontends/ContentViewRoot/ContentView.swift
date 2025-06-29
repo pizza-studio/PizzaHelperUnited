@@ -41,6 +41,7 @@ public struct ContentView: View {
             #if !os(macOS)
                 .toolbar(.hidden, for: .navigationBar) // Additional safeguard
             #endif
+                .fontWidth(screenVM.actualSidebarWidthObserved < 350 ? .compressed : nil)
                 .trackCanvasSize {
                     screenVM.actualSidebarWidthObserved = $0.width
                 }
