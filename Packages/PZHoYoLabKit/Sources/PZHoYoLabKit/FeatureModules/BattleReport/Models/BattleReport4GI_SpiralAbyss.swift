@@ -6,7 +6,7 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 
-// MARK: - Spiral Abyss.
+// MARK: - HoYo.BattleReport4GI.SpiralAbyssData
 
 extension HoYo.BattleReport4GI {
     public struct SpiralAbyssData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
