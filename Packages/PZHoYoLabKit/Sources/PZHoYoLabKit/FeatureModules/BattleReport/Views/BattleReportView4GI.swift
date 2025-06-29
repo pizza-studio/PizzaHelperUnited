@@ -451,9 +451,11 @@ extension BattleReportView4GI {
                 Text("hylKit.battleReport.room.title:\(levelData.index.description)", bundle: .module)
                     .fontWeight(.black)
                 Spacer()
-                HStack(spacing: 0) {
-                    ForEach(1 ... levelData.star, id: \.self) { _ in
-                        Self.drawAbyssStarIcon()
+                if levelData.star > 0 {
+                    HStack(spacing: 0) {
+                        ForEach(1 ... levelData.star, id: \.self) { _ in
+                            Self.drawAbyssStarIcon()
+                        }
                     }
                 }
             }
