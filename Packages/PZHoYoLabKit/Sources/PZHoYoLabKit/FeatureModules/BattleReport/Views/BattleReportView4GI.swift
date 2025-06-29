@@ -156,7 +156,9 @@ extension BattleReportView4GI {
         } else {
             stats4SygianOnslaught
             floorList4StygianOnslaught(theData: data4SO?.single, isMultiplayer: false)
-            floorList4StygianOnslaught(theData: data4SO?.mp, isMultiplayer: true)
+            if let mpData = data4SO?.mp, mpData.hasData {
+                floorList4StygianOnslaught(theData: data4SO?.mp, isMultiplayer: true)
+            }
         }
     }
 
