@@ -45,9 +45,6 @@ public struct WallpaperGalleryViewContent: View {
             .listRowInsets(.init())
             .listRowBackground(Color.clear)
         }
-        .trackCanvasSize { newSize in
-            containerWidth = newSize.width - 48
-        }
     }
 
     // MARK: Internal
@@ -112,13 +109,16 @@ public struct WallpaperGalleryViewContent: View {
     @StateObject private var screenVM: ScreenVM = .shared
     @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
-    @State private var containerWidth: CGFloat = 320
 
     @Default(.useRealCharacterNames) private var useRealCharacterNames: Bool
     @Default(.forceCharacterWeaponNameFixed) private var forceCharacterWeaponNameFixed: Bool
     @Default(.customizedNameForWanderer) private var customizedNameForWanderer: String
     @Default(.appWallpaperID) private var appWallpaperID: String
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
+
+    private var containerWidth: CGFloat {
+        screenVM.mainColumnCanvasSizeObserved.width - 48
+    }
 
     private var searchFieldPlacement: SearchFieldPlacement {
         #if os(iOS) || targetEnvironment(macCatalyst)
