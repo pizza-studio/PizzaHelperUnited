@@ -180,9 +180,11 @@ public struct BattleReportView4HSR: BattleReportView {
                         if let challengeTime = floorData.node1.challengeTime {
                             Text(verbatim: challengeTime.description)
                         }
-                        HStack(spacing: 0) {
-                            ForEach(1 ... floorData.starNum, id: \.self) { _ in
-                                Self.drawAbyssStarIcon()
+                        if floorData.starNum > 0 {
+                            HStack(spacing: 0) {
+                                ForEach(1 ... floorData.starNum, id: \.self) { _ in
+                                    Self.drawAbyssStarIcon()
+                                }
                             }
                         }
                     }
@@ -217,10 +219,13 @@ public struct BattleReportView4HSR: BattleReportView {
                         if let challengeTime = floorData.node1.challengeTime {
                             Text(verbatim: challengeTime.description)
                         }
-                        HStack(spacing: 0) {
-                            let starNumInt = floorData.starNum
-                            ForEach(1 ... starNumInt, id: \.self) { _ in
-                                Self.drawAbyssStarIcon()
+
+                        let starNumInt = floorData.starNum
+                        if starNumInt > 0 {
+                            HStack(spacing: 0) {
+                                ForEach(1 ... starNumInt, id: \.self) { _ in
+                                    Self.drawAbyssStarIcon()
+                                }
                             }
                         }
                     }
@@ -255,10 +260,12 @@ public struct BattleReportView4HSR: BattleReportView {
                         if let challengeTime = floorData.node1.challengeTime {
                             Text(verbatim: challengeTime.description)
                         }
-                        HStack(spacing: 0) {
-                            let starNumInt = Int(floorData.starNum) ?? 0
-                            ForEach(1 ... starNumInt, id: \.self) { _ in
-                                Self.drawAbyssStarIcon()
+                        let starNumInt = Int(floorData.starNum) ?? 0
+                        if starNumInt > 0 {
+                            HStack(spacing: 0) {
+                                ForEach(1 ... starNumInt, id: \.self) { _ in
+                                    Self.drawAbyssStarIcon()
+                                }
                             }
                         }
                     }
