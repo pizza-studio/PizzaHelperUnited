@@ -52,6 +52,15 @@ public struct ContentView: View {
                     rootNavVM.sharedRootPageSwitcherAsToolbarContent()
                 }
                 .tint(tintForCurrentTab)
+                .apply { mainColumnContent in
+                    if screenVM.isExtremeCompact {
+                        mainColumnContent
+                            .fontWidth(.compressed)
+                            .navigationTitle(rootNavVM.rootPageNav.labelNameText)
+                    } else {
+                        mainColumnContent
+                    }
+                }
         }
         .navigationSplitViewStyle(.balanced)
         .tint(tintForCurrentTab)
@@ -68,7 +77,6 @@ public struct ContentView: View {
     // MARK: Private
 
     @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @StateObject private var rootNavVM = RootNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
     @StateObject private var screenVM = ScreenVM.shared
@@ -81,10 +89,6 @@ public struct ContentView: View {
 
     private var effectiveAppNavCases: [AppRootPage] {
         screenVM.isSidebarVisible ? AppRootPage.enabledSubCases : AppRootPage.allCases
-    }
-
-    private var isCompact: Bool {
-        horizontalSizeClass == .compact
     }
 
     private var tintForCurrentTab: Color {

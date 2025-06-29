@@ -43,7 +43,11 @@ struct DetailPortalTabPage: View {
         .refreshable {
             refreshAction()
         }
-        .navigationTitle("tab.details.fullTitle".i18nPZHelper)
+        .navigationTitle(
+            rootNavVM.screenVM.isExtremeCompact
+                ? rootNavVM.rootPageNav.labelNameText
+                : Text("tab.details.fullTitle".i18nPZHelper)
+        )
         .apply(hookToolbar)
         .safeAreaInset(edge: .bottom, content: rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         .onAppear {
