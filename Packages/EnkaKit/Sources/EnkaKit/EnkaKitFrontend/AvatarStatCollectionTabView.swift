@@ -45,12 +45,7 @@ public struct AvatarStatCollectionTabView: View {
             if isMainBodyVisible {
                 coreBody()
                     .environment(screenVM)
-                    .trackCanvasSize { newSize in
-                        withAnimation(.easeIn(duration: 0.1)) {
-                            canvasSize = newSize
-                        }
-                    }
-                    .onChange(of: canvasSize, initial: true) { _, _ in
+                    .onChange(of: screenVM.mainColumnCanvasSizeObserved, initial: true) { _, _ in
                         Task { @MainActor in
                             // 强制重新渲染整个画面。
                             showTabViewIndex = $showTabViewIndex.wrappedValue
@@ -211,7 +206,6 @@ public struct AvatarStatCollectionTabView: View {
         let name: String
     }
 
-    @State private var canvasSize: CGSize = ScreenVM.shared.windowSizeObserved
     @State private var showTabViewIndex = false
     @Binding private var showingCharacterIdentifier: String
     @StateObject private var screenVM: ScreenVM = .shared
@@ -235,7 +229,7 @@ public struct AvatarStatCollectionTabView: View {
     }
 
     private var scaleRatioCompatible: CGFloat {
-        ScreenVM.calculateScaleRatio(canvasSize: canvasSize)
+        ScreenVM.calculateScaleRatio(canvasSize: screenVM.mainColumnCanvasSizeObserved)
     }
 
     private var hasNoAvatars: Bool { summarizedAvatars.isEmpty }

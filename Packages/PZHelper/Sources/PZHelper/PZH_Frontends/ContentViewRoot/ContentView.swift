@@ -41,6 +41,9 @@ public struct ContentView: View {
             #if !os(macOS)
                 .toolbar(.hidden, for: .navigationBar) // Additional safeguard
             #endif
+                .trackCanvasSize {
+                    screenVM.actualSidebarWidthObserved = $0.width
+                }
         } detail: {
             AppRootPageViewWrapper(tab: rootNavVM.rootPageNav)
                 .appTabBarVisibility(.visible)
