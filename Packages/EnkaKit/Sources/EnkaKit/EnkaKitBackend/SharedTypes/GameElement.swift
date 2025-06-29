@@ -36,7 +36,7 @@ extension Enka.GameElement {
         case "Fire": self = .pyro
         case "Ice": self = .cryo
         case "Imaginary", "Imago": self = .imago
-        case "Quantum", "Quanto": self = .quanto
+        case "Quanto", "Quantum": self = .quanto
         case "Anemo": self = .anemo
         case "Cryo": self = .cryo
         case "Dendro": self = .dendro

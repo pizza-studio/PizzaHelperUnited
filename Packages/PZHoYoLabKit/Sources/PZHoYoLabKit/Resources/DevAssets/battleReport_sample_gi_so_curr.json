@@ -1,0 +1,543 @@
+{
+	"data": [
+		{
+			"schedule": {
+				"schedule_id": "5269001",
+				"start_time": "1750816800",
+				"end_time": "1753732799",
+				"start_date_time": {
+					"year": 2025,
+					"month": 6,
+					"day": 25,
+					"hour": 10,
+					"minute": 0,
+					"second": 0
+				},
+				"end_date_time": {
+					"year": 2025,
+					"month": 7,
+					"day": 29,
+					"hour": 3,
+					"minute": 59,
+					"second": 59
+				},
+				"is_valid": true,
+				"name": "驅侵之役"
+			},
+			"single": {
+				"best": {
+					"difficulty": 3,
+					"second": 130,
+					"icon": "UI_LeyLineChallenge_Medal_3"
+				},
+				"challenge": [
+					{
+						"name": "水形幻人·常形",
+						"second": 23,
+						"teams": [
+							{
+								"avatar_id": 10000052,
+								"name": "雷電將軍",
+								"element": "Electro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/23aa979c8e86b7006a62039b9dd81c5b.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 2
+							},
+							{
+								"avatar_id": 10000089,
+								"name": "芙寧娜",
+								"element": "Hydro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/0a024f0f2e06e99d67f112cd12eef4af.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							},
+							{
+								"avatar_id": 10000073,
+								"name": "納西妲",
+								"element": "Dendro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/823e31bf43f378bd66c394985a323da8.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 2
+							},
+							{
+								"avatar_id": 10000082,
+								"name": "白朮",
+								"element": "Dendro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/afc87fc731e998f8f0f956f03de1cf21.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 1
+							}
+						],
+						"best_avatar": [
+							{
+								"avatar_id": 10000052,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/ecc17cb83ca92fc24f7a39d7605364e3.png",
+								"dps": "70664",
+								"type": 1
+							},
+							{
+								"avatar_id": 10000052,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/ecc17cb83ca92fc24f7a39d7605364e3.png",
+								"dps": "793806",
+								"type": 2
+							}
+						],
+						"monster": {
+							"name": "水形幻人·常形",
+							"level": 90,
+							"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/6851f427/ee71463c321c847d625e596965003e0a.png",
+							"desc": [
+								"將透過吸收間歇性出現的\u003ccolor=#FFD780FF\u003e「半幻人」\u003c/color\u003e以\u003ccolor=#FFD780FF\u003e強化自身\u003c/color\u003e。及時使用攻擊或元素反應消滅「半幻人」或將其\u003ccolor=#FFD780FF\u003e凍結\u003c/color\u003e可以中斷吸收進度。",
+								"",
+								"",
+								"",
+								""
+							],
+							"tags": [
+								{
+									"type": 1,
+									"desc": "{SPRITE_PRESET#11003}元素優勢"
+								},
+								{
+									"type": 0,
+									"desc": "{SPRITE_PRESET#11002}元素劣勢"
+								}
+							],
+							"monster_id": 1001041
+						}
+					},
+					{
+						"name": "熔岩輝龍像·常形",
+						"second": 49,
+						"teams": [
+							{
+								"avatar_id": 10000023,
+								"name": "香菱",
+								"element": "Pyro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/c836c2dc7d71fe8065ae2798d360167b.png",
+								"level": 90,
+								"rarity": 4,
+								"rank": 6
+							},
+							{
+								"avatar_id": 10000032,
+								"name": "班尼特",
+								"element": "Pyro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/41a97aae8bf579ce350a90bbddc59fdf.png",
+								"level": 90,
+								"rarity": 4,
+								"rank": 6
+							},
+							{
+								"avatar_id": 10000096,
+								"name": "阿蕾奇諾",
+								"element": "Pyro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/1b277d9a90936da66f13918e3c9b828c.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							},
+							{
+								"avatar_id": 10000087,
+								"name": "那維萊特",
+								"element": "Hydro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/b30987d539b299dc89004d72274f5e89.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							}
+						],
+						"best_avatar": [
+							{
+								"avatar_id": 10000096,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/4cbb3a9f099fb8e31117047189192471.png",
+								"dps": "48781",
+								"type": 1
+							},
+							{
+								"avatar_id": 10000096,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/4cbb3a9f099fb8e31117047189192471.png",
+								"dps": "310398",
+								"type": 2
+							}
+						],
+						"monster": {
+							"name": "熔岩輝龍像·常形",
+							"level": 90,
+							"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/6851f427/90c73c32b988aba431d6085e6908cbc5.png",
+							"desc": [
+								"擁有兩種形態，初始形態具備較高的\u003ccolor=#FFD780FF\u003e所有抗性\u003c/color\u003e，受到一定次數的\u003ccolor=#FF9999FF\u003e火元素傷害\u003c/color\u003e後，將切換至第二形態，\u003ccolor=#FFD780FF\u003e火元素外的所有抗性大幅降低\u003c/color\u003e，繼續受到一定次數的\u003ccolor=#FF9999FF\u003e火元素傷害\u003c/color\u003e後，將受到大量傷害並癱瘓，\u003ccolor=#FFD780FF\u003e所有抗性進一步降低\u003c/color\u003e。",
+								"受到\u003ccolor=#80C0FFFF\u003e水元素傷害\u003c/color\u003e或\u003ccolor=#99FFFFFF\u003e冰元素傷害\u003c/color\u003e後，將逐漸恢復回抗性較高的初始形態。",
+								"",
+								"",
+								""
+							],
+							"tags": [
+								{
+									"type": 1,
+									"desc": "{SPRITE_PRESET#11007}{SPRITE_PRESET#11003}元素優勢"
+								},
+								{
+									"type": 0,
+									"desc": "{SPRITE_PRESET#11001}{SPRITE_PRESET#11002}元素劣勢"
+								}
+							],
+							"monster_id": 1001042
+						}
+					},
+					{
+						"name": "秘源機兵統御械·常形",
+						"second": 58,
+						"teams": [
+							{
+								"avatar_id": 10000002,
+								"name": "神里綾華",
+								"element": "Cryo",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/f616e8fdc168d5e5314929a492788e93.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							},
+							{
+								"avatar_id": 10000065,
+								"name": "久岐忍",
+								"element": "Electro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/caa2e14875915abee78b186b61fd8f3a.png",
+								"level": 90,
+								"rarity": 4,
+								"rank": 6
+							},
+							{
+								"avatar_id": 10000073,
+								"name": "納西妲",
+								"element": "Dendro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/823e31bf43f378bd66c394985a323da8.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 2
+							},
+							{
+								"avatar_id": 10000066,
+								"name": "神里綾人",
+								"element": "Hydro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/e350954e7c5f587e8c1e9fd5931ebac2.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							}
+						],
+						"best_avatar": [
+							{
+								"avatar_id": 10000065,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/4e729aba062b54ac30a6351664e19ff1.png",
+								"dps": "62480",
+								"type": 1
+							},
+							{
+								"avatar_id": 10000065,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/4e729aba062b54ac30a6351664e19ff1.png",
+								"dps": "612438",
+								"type": 2
+							}
+						],
+						"monster": {
+							"name": "秘源機兵統御械·常形",
+							"level": 90,
+							"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/6851f427/79730aad9e298a2d28da12ad0d643e0b.png",
+							"desc": [
+								"戰鬥中將進入「蕩除模式」：\u003ccolor=#FFD780FF\u003e所有抗性大幅提升\u003c/color\u003e，產生「液流動量」的同時進行旋轉攻擊。受到\u003ccolor=#99FFFFFF\u003e冰元素傷害\u003c/color\u003e後，將損失「液流動量」，「液流動量」低於一定值時，將暫停旋轉攻擊，且\u003ccolor=#FFD780FF\u003e所有抗性大幅降低\u003c/color\u003e。",
+								"若場上角色進入並維持\u003ccolor=#FFD780FF\u003e「夜魂加持」\u003c/color\u003e狀態一段時間，此敵人將進入「應戰狀態」，改為使用追蹤射線攻擊，此時其\u003ccolor=#FFD780FF\u003e所有抗性大幅降低\u003c/color\u003e。",
+								"",
+								"",
+								""
+							],
+							"tags": [
+								{
+									"type": 1,
+									"desc": "{SPRITE_PRESET#11001}元素優勢"
+								}
+							],
+							"monster_id": 1001043
+						}
+					}
+				],
+				"has_data": true
+			},
+			"mp": {
+				"best": {
+					"difficulty": 3,
+					"second": 134,
+					"icon": "UI_LeyLineChallenge_Medal_3"
+				},
+				"challenge": [
+					{
+						"name": "水形幻人·常形",
+						"second": 52,
+						"teams": [
+							{
+								"avatar_id": 10000106,
+								"name": "瑪薇卡",
+								"element": "Pyro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/c54cf9fe971d6226b78ad795ced9bee8.png",
+								"level": 80,
+								"rarity": 5,
+								"rank": 0
+							},
+							{
+								"avatar_id": 10000101,
+								"name": "基尼奇",
+								"element": "Dendro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/ec67809641b4f1d2d2e87bc0e1e88b93.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 1
+							},
+							{
+								"avatar_id": 10000103,
+								"name": "希諾寧",
+								"element": "Geo",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/7c047dce3a1be70baa30f28111222e38.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							},
+							{
+								"avatar_id": 10000089,
+								"name": "芙寧娜",
+								"element": "Hydro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/0a024f0f2e06e99d67f112cd12eef4af.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							}
+						],
+						"best_avatar": [
+							{
+								"avatar_id": 10000106,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/decc41d08a4dd4053f3503924b40bbca.png",
+								"dps": "148502",
+								"type": 1
+							},
+							{
+								"avatar_id": 10000106,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/decc41d08a4dd4053f3503924b40bbca.png",
+								"dps": "1088246",
+								"type": 2
+							}
+						],
+						"monster": {
+							"name": "水形幻人·常形",
+							"level": 90,
+							"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/6851f427/ee71463c321c847d625e596965003e0a.png",
+							"desc": [
+								"將透過吸收間歇性出現的\u003ccolor=#FFD780FF\u003e「半幻人」\u003c/color\u003e以\u003ccolor=#FFD780FF\u003e強化自身\u003c/color\u003e。及時使用攻擊或元素反應消滅「半幻人」或將其\u003ccolor=#FFD780FF\u003e凍結\u003c/color\u003e可以中斷吸收進度。",
+								"",
+								"",
+								"",
+								""
+							],
+							"tags": [
+								{
+									"type": 1,
+									"desc": "{SPRITE_PRESET#11003}元素優勢"
+								},
+								{
+									"type": 0,
+									"desc": "{SPRITE_PRESET#11002}元素劣勢"
+								}
+							],
+							"monster_id": 1001041
+						}
+					},
+					{
+						"name": "熔岩輝龍像·常形",
+						"second": 33,
+						"teams": [
+							{
+								"avatar_id": 10000106,
+								"name": "瑪薇卡",
+								"element": "Pyro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/c54cf9fe971d6226b78ad795ced9bee8.png",
+								"level": 80,
+								"rarity": 5,
+								"rank": 0
+							},
+							{
+								"avatar_id": 10000101,
+								"name": "基尼奇",
+								"element": "Dendro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/ec67809641b4f1d2d2e87bc0e1e88b93.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 1
+							},
+							{
+								"avatar_id": 10000103,
+								"name": "希諾寧",
+								"element": "Geo",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/7c047dce3a1be70baa30f28111222e38.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							},
+							{
+								"avatar_id": 10000096,
+								"name": "阿蕾奇諾",
+								"element": "Pyro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/1b277d9a90936da66f13918e3c9b828c.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							}
+						],
+						"best_avatar": [
+							{
+								"avatar_id": 10000101,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/72cb8d1f97981b2de8b212325200e54b.png",
+								"dps": "195310",
+								"type": 1
+							},
+							{
+								"avatar_id": 10000101,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/72cb8d1f97981b2de8b212325200e54b.png",
+								"dps": "634114",
+								"type": 2
+							}
+						],
+						"monster": {
+							"name": "熔岩輝龍像·常形",
+							"level": 90,
+							"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/6851f427/90c73c32b988aba431d6085e6908cbc5.png",
+							"desc": [
+								"擁有兩種形態，初始形態具備較高的\u003ccolor=#FFD780FF\u003e所有抗性\u003c/color\u003e，受到一定次數的\u003ccolor=#FF9999FF\u003e火元素傷害\u003c/color\u003e後，將切換至第二形態，\u003ccolor=#FFD780FF\u003e火元素外的所有抗性大幅降低\u003c/color\u003e，繼續受到一定次數的\u003ccolor=#FF9999FF\u003e火元素傷害\u003c/color\u003e後，將受到大量傷害並癱瘓，\u003ccolor=#FFD780FF\u003e所有抗性進一步降低\u003c/color\u003e。",
+								"受到\u003ccolor=#80C0FFFF\u003e水元素傷害\u003c/color\u003e或\u003ccolor=#99FFFFFF\u003e冰元素傷害\u003c/color\u003e後，將逐漸恢復回抗性較高的初始形態。",
+								"",
+								"",
+								""
+							],
+							"tags": [
+								{
+									"type": 1,
+									"desc": "{SPRITE_PRESET#11007}{SPRITE_PRESET#11003}元素優勢"
+								},
+								{
+									"type": 0,
+									"desc": "{SPRITE_PRESET#11001}{SPRITE_PRESET#11002}元素劣勢"
+								}
+							],
+							"monster_id": 1001042
+						}
+					},
+					{
+						"name": "秘源機兵統御械·常形",
+						"second": 49,
+						"teams": [
+							{
+								"avatar_id": 10000073,
+								"name": "納西妲",
+								"element": "Dendro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/823e31bf43f378bd66c394985a323da8.png",
+								"level": 89,
+								"rarity": 5,
+								"rank": 0
+							},
+							{
+								"avatar_id": 10000088,
+								"name": "夏洛蒂",
+								"element": "Cryo",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/f4e68e94225fa95112ae03c0a6d10938.png",
+								"level": 81,
+								"rarity": 4,
+								"rank": 6
+							},
+							{
+								"avatar_id": 10000089,
+								"name": "芙寧娜",
+								"element": "Hydro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/0a024f0f2e06e99d67f112cd12eef4af.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 0
+							},
+							{
+								"avatar_id": 10000052,
+								"name": "雷電將軍",
+								"element": "Electro",
+								"image": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f6c8/23aa979c8e86b7006a62039b9dd81c5b.png",
+								"level": 90,
+								"rarity": 5,
+								"rank": 2
+							}
+						],
+						"best_avatar": [
+							{
+								"avatar_id": 10000052,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/ecc17cb83ca92fc24f7a39d7605364e3.png",
+								"dps": "38729",
+								"type": 1
+							},
+							{
+								"avatar_id": 10000052,
+								"side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/67c7f727/ecc17cb83ca92fc24f7a39d7605364e3.png",
+								"dps": "890649",
+								"type": 2
+							}
+						],
+						"monster": {
+							"name": "秘源機兵統御械·常形",
+							"level": 90,
+							"icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_icon/6851f427/79730aad9e298a2d28da12ad0d643e0b.png",
+							"desc": [
+								"戰鬥中將進入「蕩除模式」：\u003ccolor=#FFD780FF\u003e所有抗性大幅提升\u003c/color\u003e，產生「液流動量」的同時進行旋轉攻擊。受到\u003ccolor=#99FFFFFF\u003e冰元素傷害\u003c/color\u003e後，將損失「液流動量」，「液流動量」低於一定值時，將暫停旋轉攻擊，且\u003ccolor=#FFD780FF\u003e所有抗性大幅降低\u003c/color\u003e。",
+								"若場上角色進入並維持\u003ccolor=#FFD780FF\u003e「夜魂加持」\u003c/color\u003e狀態一段時間，此敵人將進入「應戰狀態」，改為使用追蹤射線攻擊，此時其\u003ccolor=#FFD780FF\u003e所有抗性大幅降低\u003c/color\u003e。",
+								"",
+								"",
+								""
+							],
+							"tags": [
+								{
+									"type": 1,
+									"desc": "{SPRITE_PRESET#11001}元素優勢"
+								}
+							],
+							"monster_id": 1001043
+						}
+					}
+				],
+				"has_data": true
+			},
+			"blings": []
+		},
+		{
+			"schedule": {
+				"schedule_id": "0",
+				"start_time": "0",
+				"end_time": "0",
+				"start_date_time": null,
+				"end_date_time": null,
+				"is_valid": false,
+				"name": ""
+			},
+			"single": {
+				"best": null,
+				"challenge": [],
+				"has_data": false
+			},
+			"mp": {
+				"best": null,
+				"challenge": [],
+				"has_data": false
+			},
+			"blings": []
+		}
+	],
+	"is_unlock": true,
+	"links": {
+		"lineup_link": "",
+		"play_link": "https://baike.mihoyo.com/ys/strategy/channel/map/48/459?bbs_presentation_style=no_header"
+	}
+}

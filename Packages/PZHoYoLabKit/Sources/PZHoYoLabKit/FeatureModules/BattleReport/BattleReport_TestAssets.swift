@@ -51,9 +51,13 @@ enum BattleReportTestAssets: String {
         }
     }
 
-    func getReport4GI(isPrev: Bool = false) throws -> HoYo.BattleReport4GI {
-        let spiralAbyss = try rawData.parseAs(HoYo.BattleReport4GI.SpiralAbyssData.self)
-        return HoYo.BattleReport4GI.init(spiralAbyss: spiralAbyss)
+    static func getReport4GI(isPrev: Bool = false) throws -> HoYo.BattleReport4GI {
+        let spiralAbyss = try giSACurr.rawData.parseAs(HoYo.BattleReport4GI.SpiralAbyssData.self)
+        let stygianOnslaught = try hsrFHCurr.rawData.parseAs(HoYo.BattleReport4GI.StygianOnslaughtData.self)
+        return HoYo.BattleReport4GI(
+            spiralAbyss: spiralAbyss,
+            stygianOnslaught: stygianOnslaught
+        )
     }
 }
 
