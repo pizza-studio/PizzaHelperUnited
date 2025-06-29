@@ -102,7 +102,11 @@ struct TodayTabPage: View {
             }
             .safeAreaInset(edge: .bottom, content: rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         }
-        .navigationTitle("tab.today.fullTitle".i18nPZHelper)
+        .navigationTitle(
+            rootNavVM.screenVM.isExtremeCompact
+                ? rootNavVM.rootPageNav.labelNameText
+                : Text("tab.today.fullTitle".i18nPZHelper)
+        )
         .contextMenu {
             if !wrappedByNavStack {
                 Button("sys.refresh".i18nBaseKit, systemImage: "arrow.clockwise") { refresh() }
@@ -120,9 +124,9 @@ struct TodayTabPage: View {
                 }
                 if !games.isEmpty {
                     ToolbarItem(placement: .confirmationAction) {
-                        // ViewThatFits 不适用于此种场景。
                         gamePicker
                             .pickerStyle(.segmented)
+                        // ViewThatFits 不适用于此种场景。
                     }
                 }
             }
