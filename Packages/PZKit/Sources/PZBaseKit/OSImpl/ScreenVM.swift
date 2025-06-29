@@ -109,6 +109,10 @@ public final class ScreenVM: ObservableObject {
         return newResult
     }
 
+    public var isExtremeCompact: Bool {
+        mainColumnCanvasSizeObserved.width < 375 // iPhone SE3 ZOOMED mode.
+    }
+
     // MARK: Private
 
     @ObservationIgnored private let debouncer: Debouncer = .init(delay: 0.1)
