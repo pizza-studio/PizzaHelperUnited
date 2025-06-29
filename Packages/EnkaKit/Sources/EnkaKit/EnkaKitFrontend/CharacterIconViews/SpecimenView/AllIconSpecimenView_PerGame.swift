@@ -116,7 +116,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
     @State private var supplementalIDs: [String]
 
     private var containerWidth: CGFloat {
-        screenVM.mainColumnCanvasSizeObserved.width - 48
+        screenVM.mainColumnCanvasSizeObserved.width - 48 - 36
     }
 
     private var columns: Int {
