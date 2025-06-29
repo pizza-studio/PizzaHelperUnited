@@ -103,7 +103,7 @@ public struct BattleReportView4GI: BattleReportView {
 
     // MARK: Private
 
-    @State private var contentType: TreasuresStarwardType = .spiralAbyss
+    @State private var contentType: TreasuresStarwardType = .stygianOnslaught
     @StateObject private var screenVM: ScreenVM = .shared
     @StateObject private var broadcaster = Broadcaster.shared
     @Namespace private var animation
