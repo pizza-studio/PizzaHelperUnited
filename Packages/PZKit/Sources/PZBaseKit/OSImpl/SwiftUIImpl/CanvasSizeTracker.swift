@@ -4,8 +4,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 // MARK: - CanvasSizeTracker
 
 private struct CanvasSizeTracker: ViewModifier {
