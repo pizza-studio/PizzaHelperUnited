@@ -16,7 +16,8 @@ public struct CharacterIconView: View {
         charID: String,
         size: CGFloat,
         circleClipped: Bool = true,
-        clipToHead: Bool = false
+        clipToHead: Bool = false,
+        energySavingMode: Bool = false
     ) {
         /// 原神主角双子的 charID 是十二位，需要去掉后四位。
         var newCharID = charID
@@ -32,12 +33,14 @@ public struct CharacterIconView: View {
         /// 算上 costume id 后缀的话，原神的 CharID 会更长。所以 >= 8。
         self.game = charID.count >= 8 ? .genshinImpact : .starRail
         self.roundRectCornerRadius = size * Self.roundedRectRatio
+        self.energySavingMode = energySavingMode
     }
 
     /// 卡片图示。
     public init(
         charID: String,
-        cardSize size: CGFloat
+        cardSize size: CGFloat,
+        energySavingMode: Bool = false
     ) {
         /// 原神主角双子的 charID 是十二位，需要去掉后四位。
         var newCharID = charID
@@ -53,6 +56,7 @@ public struct CharacterIconView: View {
         /// 算上 costume id 后缀的话，原神的 CharID 会更长。所以 >= 8。
         self.game = charID.count >= 8 ? .genshinImpact : .starRail
         self.roundRectCornerRadius = size * Self.roundedRectRatio
+        self.energySavingMode = energySavingMode
     }
 
     // MARK: Public
@@ -119,11 +123,13 @@ public struct CharacterIconView: View {
     }
 
     @ViewBuilder var cardIconHSR: some View {
-        if useGenshinStyleIcon,
-           let idPhotoView = IDPhotoView4HSR(pid: charIDGuarded, size, .asCard) {
+        if useGenshinStyleIcon, let idPhotoView = IDPhotoView4HSR(
+            pid: charIDGuarded, size, .asCard, energySavingMode: energySavingMode
+        ) {
             idPhotoView
-        } else if useGenshinStyleIcon,
-                  let idPhotoView = IDPhotoFallbackView4HSR(pid: charIDGuarded, size, .asCard) {
+        } else if useGenshinStyleIcon, let idPhotoView = IDPhotoFallbackView4HSR(
+            pid: charIDGuarded, size, .asCard, energySavingMode: energySavingMode
+        ) {
             idPhotoView
         } else if let traditionalFallback = Enka.queryImageAssetSUI(for: proposedPhotoAssetName) {
             traditionalFallback
@@ -145,10 +151,13 @@ public struct CharacterIconView: View {
 
     @ViewBuilder var normalIconHSR: some View {
         if useGenshinStyleIcon,
-           let idPhotoView = IDPhotoView4HSR(pid: charIDGuarded, size, cutType) {
+           let idPhotoView = IDPhotoView4HSR(
+               pid: charIDGuarded, size, cutType, energySavingMode: energySavingMode
+           ) {
             idPhotoView
-        } else if useGenshinStyleIcon,
-                  let idPhotoView = IDPhotoFallbackView4HSR(pid: charIDGuarded, size, cutType) {
+        } else if useGenshinStyleIcon, let idPhotoView = IDPhotoFallbackView4HSR(
+            pid: charIDGuarded, size, cutType, energySavingMode: energySavingMode
+        ) {
             idPhotoView
         } else if let result = Enka.queryImageAssetSUI(for: proposedPhotoAssetName) {
             let newResult = result
@@ -194,6 +203,7 @@ public struct CharacterIconView: View {
     private let clipToHead: Bool
     private let game: Enka.GameType
     private let roundRectCornerRadius: CGFloat
+    private let energySavingMode: Bool
 
     private var cutType: IDPhotoView4HSR.IconType {
         if !circleClipped, !isCard {
@@ -296,51 +306,68 @@ public struct CharacterIconView: View {
     }
 
     @ViewBuilder private var pureElementColorBG4GI: some View {
-        let elementColor: Color = {
-            guard let cgColor = guessGenshinCharacterElement(id: charID)?.themeColor else { return .gray }
-            return Color(cgColor: cgColor)
-        }()
-        LinearGradient(
-            colors: [
-                elementColor.addBrightness(-0.5).addSaturation(-0.5),
-                elementColor.addSaturation(-0.5),
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-        )
+        (guessGenshinCharacterElement(id: charID) ?? .physico).linearGradientAsBackground
     }
 
     @ViewBuilder
     private func turnImageAsBlurredBackground4GI(_ image: Image) -> some View {
-        ZStack {
-            if !useTotemWithGenshinIDPhotos {
-                namecardBg4GI
-            } else {
-                namecardBgBlurred4GI
-                Color.black.opacity(0.265)
-                if cutType.pathTotemVisible {
-                    if let element = guessGenshinCharacterElement(id: charID) {
-                        if let path = Enka.GenshinLifePathRecord.guessPath(for: charID) {
-                            path.localIcon4SUI
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .scaleEffect(1.2)
-                                .colorMultiply(Color(cgColor: element.themeColor))
-                                .saturation(0.5)
-                                .brightness(0.5)
-                                .opacity(0.7)
-                        } else {
-                            element.localFittingIcon4SUI
-                                .scaleEffect(1.5)
-                                .colorMultiply(Color(cgColor: element.themeColor))
-                                .saturation(0.5)
-                                .brightness(0.7)
-                                .opacity(0.3)
-                        }
-                    }
+        let background: AnyView = energySavingMode
+            ? AnyView(pureElementColorBG4GI)
+            : {
+                useTotemWithGenshinIDPhotos
+                    ? AnyView(namecardBgBlurred4GI)
+                    : AnyView(namecardBg4GI)
+            }()
+        background
+            .overlay {
+                if useTotemWithGenshinIDPhotos {
+                    Color.black.opacity(0.265)
+                    drawPathTotemWhenShould()
+                }
+            }
+            .compositingGroup()
+    }
+
+    @ViewBuilder
+    private func drawPathTotemWhenShould() -> some View {
+        if cutType.pathTotemVisible {
+            if let element = guessGenshinCharacterElement(id: charID) {
+                if let path = Enka.GenshinLifePathRecord.guessPath(for: charID) {
+                    let deductedMultiplyColor = deductElementColorForMultiply(
+                        element: element, lifePath: path
+                    )
+                    path.localIcon4SUI
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaleEffect(1.2)
+                        .colorMultiply(deductedMultiplyColor)
+                        .saturation(0.5)
+                        .brightness(0.5)
+                        .opacity(0.7)
+                } else {
+                    element.localFittingIcon4SUI
+                        .scaleEffect(1.5)
+                        .colorMultiply(Color(cgColor: element.themeColor))
+                        .saturation(0.5)
+                        .brightness(0.7)
+                        .opacity(0.3)
                 }
             }
         }
+    }
+
+    private func deductElementColorForMultiply(
+        element givenElement: Enka.GameElement,
+        lifePath givenLifePath: Enka.LifePath
+    )
+        -> Color {
+        var opacity: Double = 1
+        switch givenLifePath {
+        case .abundance: opacity = 0.4
+        case .hunt: opacity = 0.35
+        default: break
+        }
+        return givenElement.themeColor.suiColor.opacity(opacity)
     }
 
     private func guessGenshinCharacterElement(id: String) -> Enka.GameElement? {
@@ -354,6 +381,20 @@ public struct CharacterIconView: View {
         }
         guard let str, let element = Enka.GameElement(rawValue: str) else { return nil }
         return element
+    }
+}
+
+extension Enka.GameElement {
+    public var linearGradientAsBackground: LinearGradient {
+        let suiColor = themeColor.suiColor
+        return LinearGradient(
+            colors: [
+                suiColor.addBrightness(-0.5).addSaturation(-0.5),
+                suiColor.addSaturation(-0.5),
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+        )
     }
 }
 

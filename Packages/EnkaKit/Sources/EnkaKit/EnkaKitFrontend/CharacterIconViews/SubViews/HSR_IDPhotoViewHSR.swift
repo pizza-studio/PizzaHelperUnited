@@ -15,6 +15,7 @@ public struct IDPhotoView4HSR: View {
         _ size: CGFloat,
         _ type: IconType,
         forceRender: Bool = false,
+        energySavingMode: Bool = false,
         imageHandler: ((Image) -> Image)? = nil
     ) {
         guard Defaults[.useGenshinStyleCharacterPhotos] || forceRender else { return nil }
@@ -28,6 +29,9 @@ public struct IDPhotoView4HSR: View {
         self.imageHandler = imageHandler ?? { $0 }
         self.lifePath = lifePath
         self.pathTotemVisible = type.pathTotemVisible
+        self.energySavingMode = energySavingMode
+        let maybeElementStr = Enka.Sputnik.shared.db4HSR.characters[pid]?.element ?? ""
+        self.element = .init(rawValueGuarded: maybeElementStr)
     }
 
     // MARK: Public
@@ -105,8 +109,7 @@ public struct IDPhotoView4HSR: View {
         case .hunt: opacity = 0.35
         default: break
         }
-        guard let colorStr = Enka.Sputnik.shared.db4HSR.characters[pid]?.element else { return .clear }
-        return Enka.GameElement(rawValueGuarded: colorStr).themeColor.suiColor.opacity(opacity)
+        return element.themeColor.suiColor.opacity(opacity)
     }
 
     var baseWindowBGColor: Color {
@@ -169,12 +172,16 @@ public struct IDPhotoView4HSR: View {
 
     @ViewBuilder var backgroundObj: some View {
         Group {
-            coordinator.backgroundImage
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .scaleEffect(2)
-                .rotationEffect(.degrees(180))
-                .blur(radius: 12)
+            if energySavingMode {
+                element.linearGradientAsBackground
+            } else {
+                coordinator.backgroundImage
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .scaleEffect(2)
+                    .rotationEffect(.degrees(180))
+                    .blur(radius: 12)
+            }
         }
         .overlay {
             if pathTotemVisible {
@@ -201,4 +208,6 @@ public struct IDPhotoView4HSR: View {
     private let iconType: IconType
     private let pathTotemVisible: Bool
     private let lifePath: Enka.LifePath
+    private let energySavingMode: Bool
+    private let element: Enka.GameElement
 }
