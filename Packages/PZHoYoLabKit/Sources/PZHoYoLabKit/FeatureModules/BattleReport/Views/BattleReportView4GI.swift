@@ -42,14 +42,12 @@ public struct BattleReportView4GI: BattleReportView {
     public var data: BattleReportData
 
     public var body: some View {
-        contents
-    }
-
-    // MARK: Internal
-
-    @ViewBuilder var contents: some View {
         Form {
-            formContents4SpiralAbyss
+            if data4SA.hasData || (data4SO?.single.hasData ?? false) {
+                contents
+            } else {
+                blankView
+            }
         }
         .formStyle(.grouped)
         .scrollContentBackground(.hidden)
@@ -80,6 +78,27 @@ public struct BattleReportView4GI: BattleReportView {
                 }
             }
         }
+        .task {
+            if data4SO == nil, contentType == .stygianOnslaught {
+                contentType = .spiralAbyss
+            }
+        }
+    }
+
+    // MARK: Internal
+
+    @ViewBuilder var contents: some View {
+        switch contentType {
+        case .spiralAbyss: formContents4SpiralAbyss
+        case .stygianOnslaught: formContents4StygianOnslaught
+        }
+    }
+
+    @ViewBuilder var blankView: some View {
+        Section {
+            Text(verbatim: "hylKit.battleReport.noDataAvailableForThisSeason".i18nHYLKit)
+        }
+        .listRowMaterialBackground()
     }
 
     // MARK: Private
@@ -100,6 +119,8 @@ public struct BattleReportView4GI: BattleReportView {
 
     private var data4SA: BattleReportData.SpiralAbyssData { data.spiralAbyss }
 
+    private var data4SO: BattleReportData.StygianOnslaughtData? { data.stygianOnslaught }
+
     private static func getSummaryMap(
         data: BattleReportData,
         profile: PZProfileSendable?
@@ -108,7 +129,9 @@ public struct BattleReportView4GI: BattleReportView {
         guard let profile else {
             return [:]
         }
-        let allCharIDsEnumerated: Set<Int> = data.spiralAbyss.allCharIDsEnumerated
+        let allCharIDsEnumerated: Set<Int> = data.spiralAbyss.allCharIDsEnumerated.union(
+            data.stygianOnslaught?.allCharIDsEnumerated ?? []
+        )
         let theDB = Enka.Sputnik.shared.db4GI
         var summaries: [String: SummaryPtr] = [:]
         let summariesData = HYQueriedModels.HYLAvatarDetail4GI.getLocalHoYoAvatars(
@@ -124,6 +147,244 @@ public struct BattleReportView4GI: BattleReportView {
     }
 }
 
+// MARK: - Contents for Stygian Onslaught.
+
+extension BattleReportView4GI {
+    @ViewBuilder private var formContents4StygianOnslaught: some View {
+        if data4SO == nil {
+            blankView
+        } else {
+            stats4SygianOnslaught
+            floorList4StygianOnslaught(theData: data4SO?.single, isMultiplayer: false)
+            floorList4StygianOnslaught(theData: data4SO?.mp, isMultiplayer: true)
+        }
+    }
+
+    @ViewBuilder private var stats4SygianOnslaught: some View {
+        let summarizedCells = data4SO?.single.summarizedIntoCells(
+            oddCellsPerLine: columns % 2 != 0
+        )
+        let schedule = data4SO?.schedule
+        if let summarizedCells, !summarizedCells.isEmpty, let schedule {
+            Section {
+                StaggeredGrid(
+                    columns: columns,
+                    outerPadding: true,
+                    scroll: false,
+                    list: summarizedCells,
+                    content: { currentCell in
+                        drawAbyssValueCell(currentCell)
+                            .id(currentCell.id)
+                    }
+                )
+                .listRowInsets(.init())
+                .environment(screenVM)
+            } header: {
+                HStack {
+                    Text(
+                        "hylKit.battleReport.gi.stat.summary".i18nHYLKit
+                            + " (\("hylKit.battleReport.gi.attendanceMethod.singleplayer".i18nHYLKit))"
+                    )
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("hylKit.battleReport.stat.seasonID".i18nHYLKit + " \(schedule.scheduleID)")
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .frame(maxWidth: .infinity)
+            } footer: {
+                if let sdt = schedule.startDateTime, let edt = schedule.endDateTime {
+                    HStack {
+                        Text(sdt.description)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .multilineTextAlignment(.leading)
+                        Text(edt.description)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+            .listRowMaterialBackground()
+        }
+    }
+
+    @ViewBuilder
+    private func floorList4StygianOnslaught(
+        theData: HoYo.BattleReport4GI.StygianOnslaughtData.ModeData?,
+        isMultiplayer: Bool = false
+    )
+        -> some View {
+        if let theData {
+            Section {
+                ForEach(Array(theData.challenge.enumerated()), id: \.offset) { offset, currentChallenge in
+                    VStack {
+                        HStack {
+                            Text(currentChallenge.name) // Title.
+                                .font(.caption)
+                                .fontWeight(.black)
+                                .fontWidth(.compressed)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .center) {
+                                let roomNumber = (offset + 1).description
+                                ViewThatFits {
+                                    Text("hylKit.battleReport.round.title:\(roomNumber)", bundle: .module)
+                                        .multilineTextAlignment(.center)
+                                        .lineLimit(1)
+                                    Text(verbatim: "#\(roomNumber)")
+                                        .multilineTextAlignment(.center)
+                                        .lineLimit(1)
+                                }
+
+                                Text(verbatim: "\(currentChallenge.second)s")
+                                    .multilineTextAlignment(.center)
+                            }
+                            .fixedSize(horizontal: false, vertical: true)
+                            .font(.caption)
+                            var guardedAvatars: [
+                                HoYo.BattleReport4GI.StygianOnslaughtData.ModeData.Challenge
+                                    .TeamAvatar
+                            ] {
+                                var result = currentChallenge.crew
+                                while result.count < 4 {
+                                    result.append(
+                                        .init(
+                                            avatarID: -114_514,
+                                            name: "YJSNPI",
+                                            element: "Physico",
+                                            image: "",
+                                            level: 1,
+                                            rarity: 5,
+                                            rank: 6
+                                        )
+                                    )
+                                }
+                                return result
+                            }
+
+                            ForEach(guardedAvatars, id: \.avatarID) { currentAvatarRAW in
+                                Spacer()
+                                drawAvatarIconForStygianOnslaught(for: currentAvatarRAW)
+                            }
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                }
+            } header: {
+                HStack {
+                    Group {
+                        isMultiplayer
+                            ? Text("hylKit.battleReport.gi.attendanceMethod.multiplayer", bundle: .module)
+                            : Text("hylKit.battleReport.gi.attendanceMethod.singleplayer", bundle: .module)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                    if isMultiplayer {
+                        Text(
+                            "hylKit.battleReport.gi.stat.deepest"
+                                .i18nHYLKit + "\(theData.best?.difficulty.description ?? "N/A")"
+                        )
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .textCase(.none)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .listRowMaterialBackground()
+        }
+    }
+
+    @ViewBuilder
+    private func drawAvatarIconForStygianOnslaught(
+        for raw: HoYo.BattleReport4GI.StygianOnslaughtData.ModeData.Challenge.TeamAvatar
+    )
+        -> some View {
+        let decoratedIconSize = decoratedIconSize
+        let isNullAvatar: Bool = raw.avatarID == -114_514
+        let maybeProtagonistAvatarID = getSygianOnslaughtProtagonistIDWithDepotPrefix(raw)
+        let avatarIDRaw = maybeProtagonistAvatarID ?? raw.avatarID.description
+        let maybeSummary = summaryMap[avatarIDRaw]
+        let maybeID = maybeSummary?.wrappedValue.mainInfo.idExpressable
+        // TODO: To be implemented.
+        Group {
+            if ThisDevice.isHDPhoneOrPodTouch {
+                if isNullAvatar {
+                    AnonymousIconView(decoratedIconSize, cutType: .roundRectangle)
+                } else {
+                    ZStack {
+                        if let maybeID, !maybeID.isProtagonist {
+                            maybeID.avatarPhoto(
+                                size: decoratedIconSize,
+                                circleClipped: false,
+                                clipToHead: true
+                            )
+                        } else {
+                            CharacterIconView(
+                                charID: avatarIDRaw,
+                                size: decoratedIconSize,
+                                circleClipped: false,
+                                clipToHead: true
+                            )
+                        }
+                    }
+                    .corneredTag(
+                        verbatim: raw.level.description,
+                        alignment: .bottomTrailing,
+                        textSize: 11
+                    )
+                }
+            } else {
+                if isNullAvatar {
+                    AnonymousIconView(decoratedIconSize / 0.74, cutType: .card)
+                } else {
+                    ZStack {
+                        if let maybeID, !maybeID.isProtagonist {
+                            maybeID.cardIcon(
+                                size: decoratedIconSize / 0.74
+                            )
+                        } else {
+                            CharacterIconView(
+                                charID: avatarIDRaw,
+                                cardSize: decoratedIconSize / 0.74
+                            )
+                        }
+                    }
+                    .corneredTag(
+                        verbatim: "Lv.\(raw.level)",
+                        alignment: .bottom,
+                        textSize: 11
+                    )
+                }
+            }
+        }.frame(
+            width: decoratedIconSize,
+            height: ThisDevice.isHDPhoneOrPodTouch ? decoratedIconSize : (decoratedIconSize / 0.74)
+        )
+    }
+
+    private func getSygianOnslaughtProtagonistIDWithDepotPrefix(
+        _ raw: HoYo.BattleReport4GI.StygianOnslaughtData.ModeData.Challenge.TeamAvatar
+    )
+        -> String? {
+        let theElement = Enka.GameElement(rawValue: raw.element)
+        guard let theElement, let idExpressible = Enka.AvatarSummarized.CharacterID(
+            id: raw.avatarID.description, costumeID: nil
+        ) else {
+            print("idExpressible nulled")
+            return nil
+        }
+        let skillDepotIDSuffix: String = {
+            let depotID = idExpressible.nameObj.getGenshinProtagonistSkillDepotID(element: theElement)
+            guard let depotID else { return "" }
+            return "-\(depotID)"
+        }()
+        guard idExpressible.isProtagonist else { return nil }
+        return raw.avatarID.description + skillDepotIDSuffix
+    }
+}
+
 // MARK: - Contents for Spiral Abyss.
 
 extension BattleReportView4GI {
@@ -136,7 +397,7 @@ extension BattleReportView4GI {
         Section {
             StaggeredGrid(
                 columns: columns,
-                outerPadding: false,
+                outerPadding: true,
                 scroll: false,
                 list: data4SA.summarizedIntoCells(compact: columns % 2 == 0),
                 content: { currentCell in
@@ -144,6 +405,7 @@ extension BattleReportView4GI {
                         .id(currentCell.id)
                 }
             )
+            .listRowInsets(.init())
             .environment(screenVM)
         } header: {
             HStack {
@@ -245,6 +507,7 @@ extension BattleReportView4GI {
     )
         -> some View {
         HStack {
+            if spacers { Spacer() }
             if !label.isEmpty {
                 Text(label)
                     .font(.caption)
@@ -356,7 +619,7 @@ extension BattleReportView4GI {
 #Preview {
     NavigationStack {
         BattleReportView4GI(
-            data: try! BattleReportTestAssets.giSACurr.getReport4GI(),
+            data: try! BattleReportTestAssets.getReport4GI(),
             profile: nil
         ).formStyle(.grouped)
     }

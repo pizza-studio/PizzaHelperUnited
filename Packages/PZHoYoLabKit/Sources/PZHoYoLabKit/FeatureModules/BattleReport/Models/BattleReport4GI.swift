@@ -14,8 +14,10 @@ extension HoYo {
 
         public init(
             spiralAbyss: SpiralAbyssData,
+            stygianOnslaught: StygianOnslaughtData? = nil
         ) {
             self.spiralAbyss = spiralAbyss
+            self.stygianOnslaught = stygianOnslaught
         }
 
         // MARK: Public
@@ -23,6 +25,7 @@ extension HoYo {
         public typealias ViewType = BattleReportView4GI
 
         public var spiralAbyss: SpiralAbyssData
+        public var stygianOnslaught: StygianOnslaughtData?
     }
 }
 
@@ -30,6 +33,7 @@ extension HoYo {
 
 extension HoYo.BattleReport4GI {
     public enum TreasuresStarwardType: String, Identifiable, CaseIterable, AbleToCodeSendHash {
+        case stygianOnslaught
         case spiralAbyss
 
         // MARK: Public
@@ -46,12 +50,15 @@ extension HoYo.BattleReport4GI {
             switch self {
             case .spiralAbyss:
                 .init("hylKit.battleReportView4GI.navTitle.spiralAbyss")
+            case .stygianOnslaught:
+                .init("hylKit.battleReportView4GI.navTitle.stygianOnslaught")
             }
         }
 
         var iconFileNameStem: String {
             switch self {
             case .spiralAbyss: "gi_TS_SpiralAbyss"
+            case .stygianOnslaught: "gi_TS_StygianOnslaught"
             }
         }
     }
@@ -65,7 +72,14 @@ extension HoYo.BattleReport4GI {
     }
 
     public var latestChallengeType: TreasuresStarwardType? {
-        .spiralAbyss
+        var mapTimeAndType: [TreasuresStarwardType: Int] = [:]
+        // 此处的时区是随便取的，只要三个时区都雷同就行。
+        mapTimeAndType[.spiralAbyss] = Int(spiralAbyss.startTime) ?? 0
+        mapTimeAndType[.stygianOnslaught] = Int(stygianOnslaught?.schedule.startTime ?? "0") ?? 0
+        let possible = mapTimeAndType.max {
+            $0.value < $1.value
+        }
+        return possible?.key
     }
 
     public var latestChallengeIntel: LatestChallengeIntel? {
@@ -79,6 +93,16 @@ extension HoYo.BattleReport4GI {
                 type: latestChallengeType,
                 deepestLevel: deepestLevel,
                 totalStarsGained: starNum
+            )
+        case .stygianOnslaught:
+            let singleData = stygianOnslaught?.single
+            guard let singleData, singleData.hasData else { return nil }
+            let deepestLevel = singleData.best?.difficulty.description ?? "0"
+            let secondsSpent = singleData.best?.second ?? 114_514
+            return .init(
+                type: latestChallengeType,
+                deepestLevel: deepestLevel,
+                totalStarsGained: secondsSpent
             )
         }
     }

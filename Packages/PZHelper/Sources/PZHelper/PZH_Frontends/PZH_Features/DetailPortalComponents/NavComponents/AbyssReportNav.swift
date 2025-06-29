@@ -71,10 +71,22 @@ public struct BattleReportNav: View {
                                 HStack(alignment: .lastTextBaseline) {
                                     Text(verbatim: "\(latestChallenge.deepestLevel)")
                                         .font(.title)
-                                    HStack(alignment: .center, spacing: 2) {
-                                        BattleReportView4GI.drawAbyssStarIcon()
-                                        Text(verbatim: " \(latestChallenge.totalStarsGained)")
-                                            .font(.title3)
+                                    switch latestChallenge.type {
+                                    case .spiralAbyss:
+                                        HStack(alignment: .center, spacing: 2) {
+                                            BattleReportView4GI.drawAbyssStarIcon()
+                                            Text(verbatim: " \(latestChallenge.totalStarsGained)")
+                                                .font(.title3)
+                                        }
+                                    case .stygianOnslaught:
+                                        HStack(alignment: .center, spacing: 2) {
+                                            Image(systemSymbol: .timer)
+                                                .foregroundStyle(.yellow)
+                                                .shadow(radius: 4)
+                                                .frame(width: 24, height: 24)
+                                            Text(verbatim: "\(latestChallenge.totalStarsGained)s")
+                                                .font(.title3)
+                                        }
                                     }
                                 }
                                 Spacer()
