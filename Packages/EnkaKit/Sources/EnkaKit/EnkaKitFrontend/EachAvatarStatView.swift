@@ -294,8 +294,20 @@ extension Enka.AvatarSummarized.CharacterID {
     }
 
     @MainActor @ViewBuilder
-    public func avatarPhoto(size: CGFloat, circleClipped: Bool = true, clipToHead: Bool = false) -> some View {
-        CharacterIconView(charID: id, size: size, circleClipped: circleClipped, clipToHead: clipToHead)
+    public func avatarPhoto(
+        size: CGFloat,
+        circleClipped: Bool = true,
+        clipToHead: Bool = false,
+        energySavingMode: Bool = false
+    )
+        -> some View {
+        CharacterIconView(
+            charID: id,
+            size: size,
+            circleClipped: circleClipped,
+            clipToHead: clipToHead,
+            energySavingMode: energySavingMode
+        )
     }
 
     /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
