@@ -15,6 +15,7 @@ struct IDPhotoFallbackView4HSR: View {
         pid: String,
         _ size: CGFloat,
         _ type: IDPhotoView4HSR.IconType,
+        energySavingMode: Bool = false,
         imageHandler: ((Image) -> Image)? = nil
     ) {
         let coordinator = Self.Coordinator(pid: pid)
@@ -24,6 +25,9 @@ struct IDPhotoFallbackView4HSR: View {
         self.size = size
         self.iconType = type
         self.imageHandler = imageHandler ?? { $0 }
+        self.energySavingMode = energySavingMode
+        let maybeElementStr = Enka.Sputnik.shared.db4HSR.characters[pid]?.element ?? ""
+        self.element = .init(rawValueGuarded: maybeElementStr)
     }
 
     // MARK: Public
@@ -127,12 +131,16 @@ struct IDPhotoFallbackView4HSR: View {
 
     @ViewBuilder var backgroundObj: some View {
         Group {
-            coordinator.backgroundImage
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .scaleEffect(2)
-                .rotationEffect(.degrees(180))
-                .blur(radius: 12)
+            if energySavingMode {
+                element.linearGradientAsBackground
+            } else {
+                coordinator.backgroundImage
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .scaleEffect(2)
+                    .rotationEffect(.degrees(180))
+                    .blur(radius: 12)
+            }
         }
         .background(baseWindowBGColor)
     }
@@ -145,4 +153,6 @@ struct IDPhotoFallbackView4HSR: View {
     private let imageHandler: (Image) -> Image
     private let size: CGFloat
     private let iconType: IDPhotoView4HSR.IconType
+    private let energySavingMode: Bool
+    private let element: Enka.GameElement
 }
