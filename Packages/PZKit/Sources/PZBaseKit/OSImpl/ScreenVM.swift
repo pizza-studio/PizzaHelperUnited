@@ -256,8 +256,17 @@ extension ScreenVM {
 
         public func body(content: Content) -> some View {
             content
-                .trackCanvasSize { newSize in
-                    screenVM.windowSizeObserved = newSize
+                .trackCanvasSize { newSizeRAW in
+                    var newSize = newSizeRAW
+                    newSize.width.round(.up)
+                    newSize.height.round(.up)
+                    let oldSize = screenVM.windowSizeObserved
+                    if oldSize.width != newSize.width {
+                        screenVM.windowSizeObserved.width = newSize.width
+                    }
+                    if oldSize.height != newSize.height {
+                        screenVM.windowSizeObserved.height = newSize.height
+                    }
                 }
                 .onAppBecomeActive {
                     debouncer.debounce {

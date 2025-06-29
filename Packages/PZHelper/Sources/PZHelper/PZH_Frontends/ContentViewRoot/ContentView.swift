@@ -43,7 +43,10 @@ public struct ContentView: View {
             #endif
                 .fontWidth(screenVM.actualSidebarWidthObserved < 350 ? .compressed : nil)
                 .trackCanvasSize {
-                    screenVM.actualSidebarWidthObserved = $0.width
+                    let existingWidth = screenVM.actualSidebarWidthObserved
+                    let newValue = $0.width.rounded(.up)
+                    guard existingWidth != newValue else { return }
+                    screenVM.actualSidebarWidthObserved = newValue
                 }
         } detail: {
             AppRootPageViewWrapper(tab: rootNavVM.rootPageNav)
