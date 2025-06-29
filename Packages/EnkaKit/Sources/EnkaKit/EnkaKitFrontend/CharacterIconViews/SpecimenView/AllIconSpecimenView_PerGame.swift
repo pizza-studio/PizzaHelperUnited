@@ -106,18 +106,18 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     public var body: some View {
         coreBodyView
-            .trackCanvasSize { newSize in
-                containerWidth = newSize.width - 48
-            }
     }
 
     // MARK: Private
 
     @StateObject private var screenVM: ScreenVM = .shared
-    @State private var containerWidth: CGFloat = 320
     @State private var scroll: Bool
     @State private var game: Enka.GameType
     @State private var supplementalIDs: [String]
+
+    private var containerWidth: CGFloat {
+        screenVM.mainColumnCanvasSizeObserved.width - 48
+    }
 
     private var columns: Int {
         max(Int((containerWidth / 120).rounded(.down)), 1)
