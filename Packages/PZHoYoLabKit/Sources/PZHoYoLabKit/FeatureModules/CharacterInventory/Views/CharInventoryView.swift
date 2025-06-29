@@ -51,9 +51,6 @@ public struct CharacterInventoryView: View {
                 }
             }
         }
-        .trackCanvasSize { newSize in
-            containerWidth = newSize.width - 48
-        }
     }
 
     // MARK: Internal
@@ -173,7 +170,6 @@ public struct CharacterInventoryView: View {
     @State private var summaries: [SummaryPtr]
     @State private var sortedSummariesMap: [Enka.GameElement: [SummaryPtr]]
     @State private var allAvatarListDisplayType: InventoryViewFilterType = .all
-    @State private var containerWidth: CGFloat = 320
     @State private var expanded: Bool = false
     @State private var currentAvatarSummaryID: String
     @StateObject private var screenVM: ScreenVM = .shared
@@ -183,6 +179,10 @@ public struct CharacterInventoryView: View {
     private let profile: PZProfileSendable
 
     private let game: Pizza.SupportedGame
+
+    private var containerWidth: CGFloat {
+        screenVM.mainColumnCanvasSizeObserved.width - 48
+    }
 
     private var lineCapacity: Int {
         Int(floor((containerWidth - 20) / 70))

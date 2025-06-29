@@ -61,6 +61,7 @@ public final class ScreenVM: ObservableObject {
             _ = orientation
             _ = isHorizontallyCompact
             _ = isSidebarVisible
+            _ = actualSidebarWidthObserved
             _ = windowSizeObserved.width
             _ = windowSizeObserved.height
         } onChange: {
@@ -94,10 +95,19 @@ public final class ScreenVM: ObservableObject {
     public var orientation: Orientation
     public var isHorizontallyCompact: Bool = OS.type == .iPhoneOS
     public var isSidebarVisible: Bool = OS.type != .iPhoneOS
+    public var actualSidebarWidthObserved: CGFloat = 0
     public var windowSizeObserved: CGSize = ScreenVM.getKeyWindowSize()
     public var splitViewVisibility: NavigationSplitViewVisibility
 
     public private(set) var hashForTracking: Int = 0
+
+    public var mainColumnCanvasSizeObserved: CGSize {
+        var newResult = windowSizeObserved
+        guard splitViewVisibility != .detailOnly else { return newResult }
+        newResult.width -= actualSidebarWidthObserved
+        guard newResult.width > 0 else { return windowSizeObserved }
+        return newResult
+    }
 
     // MARK: Private
 
@@ -165,6 +175,7 @@ public final class ScreenVM: ObservableObject {
         hasher.combine(orientation)
         hasher.combine(isHorizontallyCompact)
         hasher.combine(isSidebarVisible)
+        hasher.combine(actualSidebarWidthObserved)
         hasher.combine(windowSizeObserved.width)
         hasher.combine(windowSizeObserved.height)
         hashForTracking = hasher.finalize()
