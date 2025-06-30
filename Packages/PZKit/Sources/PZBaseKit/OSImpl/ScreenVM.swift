@@ -58,12 +58,10 @@ public final class ScreenVM: ObservableObject {
         #endif
         updateHash4Tracking() // 初始化 hashForTracking
         withObservationTracking {
-            _ = orientation
+            // _ = orientation <- 无须重複观测 orientation。
             _ = isHorizontallyCompact
-            _ = isSidebarVisible
             _ = actualSidebarWidthObserved
-            _ = windowSizeObserved.width
-            _ = windowSizeObserved.height
+            _ = windowSizeObserved.hashValue
         } onChange: {
             Task { @MainActor in
                 self.updateHash4TrackingWithDebounce()
@@ -94,7 +92,6 @@ public final class ScreenVM: ObservableObject {
 
     public var orientation: Orientation
     public var isHorizontallyCompact: Bool = OS.type == .iPhoneOS
-    public var isSidebarVisible: Bool = OS.type != .iPhoneOS
     public var actualSidebarWidthObserved: CGFloat = 0
     public var windowSizeObserved: CGSize = ScreenVM.getKeyWindowSize()
     public var splitViewVisibility: NavigationSplitViewVisibility
@@ -111,6 +108,12 @@ public final class ScreenVM: ObservableObject {
 
     public var isExtremeCompact: Bool {
         mainColumnCanvasSizeObserved.width < 375 // iPhone SE3 ZOOMED mode.
+    }
+
+    public var isSidebarVisible: Bool {
+        var isSidebarVisibleNow = splitViewVisibility == .all
+        isSidebarVisibleNow = isSidebarVisibleNow && !isHorizontallyCompact
+        return isSidebarVisibleNow
     }
 
     // MARK: Private
@@ -178,7 +181,6 @@ public final class ScreenVM: ObservableObject {
         var hasher = Hasher()
         hasher.combine(orientation)
         hasher.combine(isHorizontallyCompact)
-        hasher.combine(isSidebarVisible)
         hasher.combine(actualSidebarWidthObserved)
         hasher.combine(windowSizeObserved.width)
         hasher.combine(windowSizeObserved.height)
@@ -275,6 +277,7 @@ extension ScreenVM {
             defer {
                 syncLayoutParamsToBackend()
             }
+            // 似乎在 iOS 系统下没有办法停用与边栏有关的出入动画。
             guard OS.type != .macOS else {
                 screenVM.splitViewVisibility = .all
                 return
@@ -289,9 +292,6 @@ extension ScreenVM {
 
         private func syncLayoutParamsToBackend() {
             screenVM.isHorizontallyCompact = (horizontalSizeClass ?? .regular) == .compact
-            var isSidebarVisibleNow = screenVM.splitViewVisibility == .all
-            isSidebarVisibleNow = isSidebarVisibleNow && (horizontalSizeClass ?? .regular) != .compact
-            screenVM.isSidebarVisible = isSidebarVisibleNow
         }
     }
 }
