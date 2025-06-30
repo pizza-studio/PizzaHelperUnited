@@ -49,7 +49,9 @@ public final class ScreenVM: ObservableObject {
                 try Task.checkCancellation()
                 self.orientation = newOrientation
                 print("方向更新: \(newOrientation), windowSizeObserved: \(windowSizeObserved)")
-                self.updateHash4TrackingWithDebounce()
+                Task {
+                    await self.updateHash4TrackingWithDebounce()
+                }
             }
         }
         #else
@@ -65,8 +67,8 @@ public final class ScreenVM: ObservableObject {
             _ = windowSizeObserved.width
             _ = windowSizeObserved.height
         } onChange: {
-            Task { @MainActor in
-                self.updateHash4TrackingWithDebounce()
+            Task {
+                await self.updateHash4TrackingWithDebounce()
             }
         }
     }
@@ -168,8 +170,8 @@ public final class ScreenVM: ObservableObject {
         #endif
     }
 
-    private func updateHash4TrackingWithDebounce() {
-        debouncer.debounce {
+    private func updateHash4TrackingWithDebounce() async {
+        await debouncer.debounce {
             self.updateHash4Tracking()
         }
     }
@@ -251,16 +253,20 @@ extension ScreenVM {
                     }
                 }
                 .onAppBecomeActive {
-                    debouncer.debounce {
-                        await pushTrackedPropertiesToScreenVM()
+                    Task {
+                        await debouncer.debounce {
+                            await pushTrackedPropertiesToScreenVM()
+                        }
                     }
                 }
                 .task {
                     await pushTrackedPropertiesToScreenVM() // 立即执行
                 }
                 .onChange(of: combinedHash, initial: true) { _, _ in
-                    debouncer.debounce {
-                        await pushTrackedPropertiesToScreenVM()
+                    Task {
+                        await debouncer.debounce {
+                            await pushTrackedPropertiesToScreenVM()
+                        }
                     }
                 }
         }
@@ -298,8 +304,7 @@ extension ScreenVM {
 
 // MARK: - Debouncer
 
-@MainActor
-private class Debouncer: ObservableObject {
+public actor Debouncer: ObservableObject {
     // MARK: Lifecycle
 
     init(delay: TimeInterval) {
