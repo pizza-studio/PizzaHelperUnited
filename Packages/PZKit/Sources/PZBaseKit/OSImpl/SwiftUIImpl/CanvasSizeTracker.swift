@@ -20,15 +20,15 @@ private struct CanvasSizeTracker: ViewModifier {
         content
             .background {
                 Color.clear
-                    .containerRelativeFrame(.horizontal) { width, _ in
-                        sizeState.update(width: width)
+                    .containerRelativeFrame([.horizontal, .vertical]) { length, axis in
+                        switch axis {
+                        case .horizontal:
+                            sizeState.update(width: length)
+                        case .vertical:
+                            sizeState.update(height: length)
+                        }
                         dispatchHandlerIfValid()
-                        return width
-                    }
-                    .containerRelativeFrame(.vertical) { height, _ in
-                        sizeState.update(height: height)
-                        dispatchHandlerIfValid()
-                        return height
+                        return length
                     }
             }
     }
@@ -63,32 +63,21 @@ private class SizeState: ObservableObject {
     var size: CGSize = .zero
 
     func update(width: CGFloat? = nil, height: CGFloat? = nil) {
-        if let width = width {
+        if let width = width, width.isFinite, width >= 0 {
             size.width = width
         }
-        if let height = height {
+        if let height = height, height.isFinite, height >= 0 {
             size.height = height
         }
     }
 
     func debounce(_ action: @escaping @MainActor (CGSize) -> Void) {
-        // 取消之前的任务
         task?.cancel()
-
-        // 创建新任务
-        let newTask = Task { @MainActor in
-            // 等待指定的延迟时间
+        task = Task { @MainActor in
             try await Task.sleep(nanoseconds: UInt64(debounceDelay * 1_000_000_000))
-
-            // 检查任务是否被取消
             try Task.checkCancellation()
-
-            // 执行动作
             action(size)
         }
-
-        // 存储新任务
-        task = newTask
     }
 
     // MARK: Private
