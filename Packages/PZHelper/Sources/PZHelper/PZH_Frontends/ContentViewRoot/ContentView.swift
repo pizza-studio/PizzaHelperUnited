@@ -42,7 +42,7 @@ public struct ContentView: View {
                 .toolbar(.hidden, for: .navigationBar) // Additional safeguard
             #endif
                 .fontWidth(screenVM.actualSidebarWidthObserved < 350 ? .compressed : nil)
-                .trackCanvasSize {
+                .trackCanvasSize(debounceDelay: 0.3) {
                     let existingWidth = screenVM.actualSidebarWidthObserved
                     let newValue = $0.width.rounded(.up)
                     guard existingWidth != newValue else { return }
