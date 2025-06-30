@@ -4,16 +4,18 @@
 
 import SwiftUI
 
+// MARK: - FlowLayout
+
 public struct FlowLayout: Layout {
     // MARK: Lifecycle
 
     public init(spacing: CGFloat) {
-        self.spacing = spacing
+        self.spacing = Swift.max(0.0, spacing)
     }
 
     // MARK: Public
 
-    public var spacing: CGFloat = 8
+    public var spacing: CGFloat
 
     public func sizeThatFits(
         proposal: ProposedViewSize,
@@ -21,7 +23,7 @@ public struct FlowLayout: Layout {
         cache: inout Void
     )
         -> CGSize {
-        guard !subviews.isEmpty else { return .zero }
+        guard !subviews.isEmpty, let width = proposal.width, width > 0 else { return .zero }
 
         var totalHeight: CGFloat = 0
         var currentLineWidth: CGFloat = 0
@@ -29,21 +31,23 @@ public struct FlowLayout: Layout {
 
         for view in subviews {
             let size = view.sizeThatFits(.unspecified)
+            guard size.width.isFinite, size.height.isFinite, size.width >= 0, size.height >= 0 else { continue }
 
-            if currentLineWidth + size.width + spacing > proposal.width! {
-                // 换行
+            if currentLineWidth + size.width + spacing > width {
                 totalHeight += currentLineHeight + spacing
                 currentLineWidth = size.width
                 currentLineHeight = size.height
             } else {
-                // 继续当前行
                 currentLineWidth += size.width + (currentLineWidth > 0 ? spacing : 0)
                 currentLineHeight = max(currentLineHeight, size.height)
             }
         }
 
         totalHeight += currentLineHeight
-        return CGSize(width: proposal.width!, height: totalHeight)
+        if let maxHeight = proposal.height, maxHeight > 0 {
+            totalHeight = min(totalHeight, maxHeight)
+        }
+        return CGSize(width: width, height: totalHeight)
     }
 
     public func placeSubviews(
@@ -52,17 +56,20 @@ public struct FlowLayout: Layout {
         subviews: Subviews,
         cache: inout Void
     ) {
-        guard !subviews.isEmpty else { return }
+        guard !subviews.isEmpty, let width = proposal.width, width > 0 else { return }
 
         var currentX = bounds.minX
         var currentY = bounds.minY
         var currentLineHeight: CGFloat = 0
+        var totalHeight: CGFloat = 0
 
         for view in subviews {
             let size = view.sizeThatFits(.unspecified)
+            guard size.width.isFinite, size.height.isFinite, size.width >= 0, size.height >= 0 else { continue }
 
             if currentX + size.width > bounds.maxX {
-                // 换行
+                totalHeight += currentLineHeight + spacing
+                if let maxHeight = proposal.height, totalHeight >= maxHeight { break }
                 currentY += currentLineHeight + spacing
                 currentX = bounds.minX
                 currentLineHeight = 0
@@ -78,4 +85,42 @@ public struct FlowLayout: Layout {
             currentLineHeight = max(currentLineHeight, size.height)
         }
     }
+}
+
+// MARK: - FlowLayoutView
+
+public struct FlowLayoutView<T: View, Element: Hashable>: View {
+    // MARK: Lifecycle
+
+    public init(
+        spacing: CGFloat,
+        items: [Element],
+        @ViewBuilder itemView: @MainActor @escaping (Element) -> T
+    ) {
+        self.items = items
+        self.spacing = Swift.max(0.0, spacing)
+        self.itemView = itemView
+    }
+
+    // MARK: Public
+
+    public var body: some View {
+        FlowLayout(spacing: spacing) {
+            ForEach(items, id: \.self) { item in
+                itemView(item)
+            }
+        }
+        .frame(width: containerSize.width)
+        .trackCanvasSize(debounceDelay: 0.1) { size in
+            containerSize = size
+        }
+    }
+
+    // MARK: Private
+
+    @State private var containerSize: CGSize = .zero
+
+    private let items: [Element]
+    private let spacing: CGFloat
+    private let itemView: (Element) -> T
 }
