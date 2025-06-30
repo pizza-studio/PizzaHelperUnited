@@ -204,24 +204,6 @@ extension UIInterfaceOrientation {
 #endif
 
 extension ScreenVM {
-    public static var basicWindowPixelSize: CGSize {
-        .init(width: 622, height: 1107)
-    }
-
-    public static func calculateScaleRatio(canvasSize: CGSize) -> CGFloat {
-        var result = canvasSize.width / basicWindowPixelSize.width
-        let zoomedSize = CGSize(
-            width: basicWindowPixelSize.width * result,
-            height: basicWindowPixelSize.height * result
-        )
-        let compatible = CGRect(origin: .zero, size: canvasSize)
-            .contains(CGRect(origin: .zero, size: zoomedSize))
-        if !compatible {
-            result = canvasSize.height / basicWindowPixelSize.height
-        }
-        return result
-    }
-
     public static func getKeyWindowSize() -> CGSize {
         #if os(iOS) || targetEnvironment(macCatalyst)
         return UIApplication.shared.connectedScenes
