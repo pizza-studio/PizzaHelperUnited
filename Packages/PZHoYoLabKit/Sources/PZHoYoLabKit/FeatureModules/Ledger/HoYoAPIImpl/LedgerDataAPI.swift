@@ -18,7 +18,23 @@ extension HoYo {
 
 extension HoYo {
     static func ledgerData4GI(for profile: PZProfileSendable) async throws -> LedgerData4GI? {
-        guard let month = Calendar.gregorian.dateComponents([.month], from: Date()).month else { return nil }
+        guard var month = Calendar.gregorian.dateComponents([.month], from: Date()).month else { return nil }
+        do {
+            let firstResult = try await ledgerData4GI(
+                month: month,
+                uid: profile.uid,
+                server: profile.server,
+                cookie: profile.cookie
+            )
+            return firstResult
+        } catch {
+            switch error {
+            case let MiHoYoAPIError.other(retCode, _) where retCode == -2: break
+            default: throw error
+            }
+        }
+        month -= 1
+        if month < 1 { month = 12 }
         return try await ledgerData4GI(
             month: month,
             uid: profile.uid,
