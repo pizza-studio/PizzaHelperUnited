@@ -58,7 +58,7 @@ public final class ScreenVM: ObservableObject {
         #endif
         updateHash4Tracking() // 初始化 hashForTracking
         withObservationTracking {
-            _ = orientation
+            // _ = orientation <- 无须重複观测 orientation。
             _ = isHorizontallyCompact
             _ = isSidebarVisible
             _ = actualSidebarWidthObserved
