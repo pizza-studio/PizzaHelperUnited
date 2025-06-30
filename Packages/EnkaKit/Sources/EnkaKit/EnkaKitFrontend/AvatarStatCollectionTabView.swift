@@ -45,12 +45,6 @@ public struct AvatarStatCollectionTabView: View {
             if isMainBodyVisible {
                 coreBody()
                     .environment(screenVM)
-                    .onChange(of: screenVM.mainColumnCanvasSizeObserved, initial: true) { _, _ in
-                        Task { @MainActor in
-                            // 强制重新渲染整个画面。
-                            showTabViewIndex = $showTabViewIndex.wrappedValue
-                        }
-                    }
                     .overlay(alignment: .top) {
                         if !isAppKit {
                             // AppKit 的 TabView 不支持走马灯滚动操作。
@@ -193,6 +187,7 @@ public struct AvatarStatCollectionTabView: View {
             EachAvatarStatView(data: avatar, background: false)
                 .fixedSize()
                 .scaleEffect(scaleRatioCompatible)
+                .animation(.easeIn(duration: 0.2), value: screenVM.mainColumnCanvasSizeObserved)
             if !isAppKit {
                 Spacer().frame(width: 25, height: bottomSpacerHeight)
             }
