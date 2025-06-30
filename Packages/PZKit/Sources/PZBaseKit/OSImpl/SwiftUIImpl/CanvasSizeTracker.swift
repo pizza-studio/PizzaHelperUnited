@@ -50,7 +50,9 @@ private struct CanvasSizeTracker: ViewModifier {
 
 // MARK: - SizeState
 
-@Observable @MainActor
+/// This doesn't need to be @Observable,
+/// but we use ObservableObject to hinder it from being reinitialized again-and-again.
+@MainActor
 private class SizeState: ObservableObject {
     // MARK: Lifecycle
 
@@ -82,7 +84,7 @@ private class SizeState: ObservableObject {
 
     // MARK: Private
 
-    @ObservationIgnored private var task: Task<Void, Error>?
+    private var task: Task<Void, Error>?
     private let debounceDelay: TimeInterval
 }
 
