@@ -49,7 +49,7 @@ public final class ScreenVM: ObservableObject {
                 try Task.checkCancellation()
                 self.orientation = newOrientation
                 print("方向更新: \(newOrientation), windowSizeObserved: \(windowSizeObserved)")
-                self.updateHash4TrackingWithDebounce()
+                self.updateHash4Tracking()
             }
         }
         #else
@@ -64,7 +64,7 @@ public final class ScreenVM: ObservableObject {
             _ = windowSizeObserved.hashValue
         } onChange: {
             Task { @MainActor in
-                self.updateHash4TrackingWithDebounce()
+                self.updateHash4Tracking()
             }
         }
     }
@@ -118,8 +118,6 @@ public final class ScreenVM: ObservableObject {
 
     // MARK: Private
 
-    @ObservationIgnored private let debouncer: Debouncer = .init(delay: 0.1)
-
     // MARK: Static Helpers
 
     private static func getInitialOrientation() -> Orientation {
@@ -169,12 +167,6 @@ public final class ScreenVM: ObservableObject {
         #else
         return .all // macOS 默认显示侧边栏
         #endif
-    }
-
-    private func updateHash4TrackingWithDebounce() {
-        debouncer.debounce {
-            self.updateHash4Tracking()
-        }
     }
 
     private func updateHash4Tracking() {
@@ -253,16 +245,20 @@ extension ScreenVM {
                     }
                 }
                 .onAppBecomeActive {
-                    debouncer.debounce {
-                        await pushTrackedPropertiesToScreenVM()
+                    Task {
+                        await debouncer.debounce {
+                            await pushTrackedPropertiesToScreenVM()
+                        }
                     }
                 }
                 .task {
                     await pushTrackedPropertiesToScreenVM() // 立即执行
                 }
                 .onChange(of: combinedHash, initial: true) { _, _ in
-                    debouncer.debounce {
-                        await pushTrackedPropertiesToScreenVM()
+                    Task {
+                        await debouncer.debounce {
+                            await pushTrackedPropertiesToScreenVM()
+                        }
                     }
                 }
         }
@@ -294,33 +290,6 @@ extension ScreenVM {
             screenVM.isHorizontallyCompact = (horizontalSizeClass ?? .regular) == .compact
         }
     }
-}
-
-// MARK: - Debouncer
-
-@MainActor
-private class Debouncer: ObservableObject {
-    // MARK: Lifecycle
-
-    init(delay: TimeInterval) {
-        self.delay = delay
-    }
-
-    // MARK: Internal
-
-    func debounce(_ action: @escaping @MainActor () async -> Void) {
-        task?.cancel()
-        task = Task { @MainActor in
-            try await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
-            try Task.checkCancellation()
-            await action()
-        }
-    }
-
-    // MARK: Private
-
-    private var task: Task<Void, Error>?
-    private let delay: TimeInterval
 }
 
 extension View {
