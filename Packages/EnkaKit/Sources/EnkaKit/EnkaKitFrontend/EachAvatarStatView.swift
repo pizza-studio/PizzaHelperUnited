@@ -174,6 +174,7 @@ public struct EachAvatarStatView: View {
 
     @Environment(\.verticalSizeClass) private var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
+    @StateObject private var screenVM: ScreenVM = .shared
 
     private let showBackground: Bool
 
@@ -184,7 +185,7 @@ public struct EachAvatarStatView: View {
         // ref: https://forums.developer.apple.com/forums/thread/126878
         switch (horizontalSizeClass, verticalSizeClass) {
         case (.regular, .regular): return false
-        default: return true
+        default: return screenVM.orientation != .landscape && !screenVM.isExtremeCompact
         }
         #endif
     }

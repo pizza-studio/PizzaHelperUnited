@@ -229,7 +229,33 @@ public struct AvatarStatCollectionTabView: View {
     }
 
     private var scaleRatioCompatible: CGFloat {
-        ScreenVM.calculateScaleRatio(canvasSize: screenVM.mainColumnCanvasSizeObserved)
+        let canvasSize = screenVM.mainColumnCanvasSizeObserved
+        guard canvasSize.width > 0, canvasSize.height > 0 else {
+            return 1.0 // 防止除零或无效输入
+        }
+        let basicMemberSize: CGSize = basicContentUnitSize4ASCV
+        let widthRatio = canvasSize.width / basicMemberSize.width
+        let heightRatio = canvasSize.height / basicMemberSize.height
+        var result = widthRatio
+        let zoomedSize = CGSize(
+            width: basicMemberSize.width * result,
+            height: basicMemberSize.height * result
+        )
+        let compatible = CGRect(origin: .zero, size: canvasSize)
+            .contains(CGRect(origin: .zero, size: zoomedSize))
+        if !compatible {
+            result = heightRatio
+        }
+        return result
+    }
+
+    private var basicContentUnitSize4ASCV: CGSize {
+        switch OS.type {
+        case .iPadOS where screenVM.orientation == .landscape && !screenVM.isExtremeCompact:
+            .init(width: 622, height: 900)
+        default:
+            .init(width: 622, height: 1107)
+        }
     }
 
     private var hasNoAvatars: Bool { summarizedAvatars.isEmpty }
