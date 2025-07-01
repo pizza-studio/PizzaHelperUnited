@@ -25,12 +25,12 @@ extension PZHelper {
                 .defaultAppStorage(.baseSuite)
             #if targetEnvironment(macCatalyst)
                 .frame(
-                    minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
+                    minWidth: OS.liquidGlassThemeSuspected ? 832 : 800,
                     minHeight: 800
                 )
             #elseif os(macOS) && !targetEnvironment(macCatalyst)
                 .frame(
-                    minWidth: OS.liquidGlassThemeSuspected ? 768 : 640,
+                    minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
                     minHeight: 646
                 )
             #endif
