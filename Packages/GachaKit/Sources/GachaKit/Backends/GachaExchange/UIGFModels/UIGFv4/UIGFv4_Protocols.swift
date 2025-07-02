@@ -27,7 +27,7 @@ public protocol GachaTypeProtocol: RawRepresentable, AbleToCodeSendHash,
 }
 
 extension GachaTypeProtocol {
-    static var game: Pizza.SupportedGame { ItemType.game }
+    public static var game: Pizza.SupportedGame { ItemType.game }
     public var game: Pizza.SupportedGame { Self.game }
     public var id: String { rawValue }
 
@@ -49,6 +49,11 @@ extension GachaTypeProtocol {
 
     public var color4SUI: Color {
         expressible.color4SUI
+    }
+
+    public func available(since date: Date?) -> Self? {
+        guard let date = date else { return self }
+        return Date() < date ? nil : self
     }
 }
 
