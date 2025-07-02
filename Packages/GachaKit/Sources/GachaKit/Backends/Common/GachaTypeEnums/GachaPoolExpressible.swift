@@ -19,6 +19,8 @@ public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sen
     case srUnknown
     case srCharacterEventWarp
     case srLightConeEventWarp
+    case srCollabWarpFateUBWCharacter
+    case srCollabWarpFateUBWLightCone
     case srStellarWarp
     case srDepartureWarp
     case zzUnknown
@@ -40,7 +42,19 @@ extension GachaPoolExpressible {
     // MARK: Public
 
     public static func getKnownCases(by game: Pizza.SupportedGame) -> [Self] {
-        Self.allCases.filter { $0.game == game && !$0.isUnknown }
+        var rawResults = Self.allCases.filter { $0.game == game && !$0.isUnknown }
+        let validRawValues: [String] = switch game {
+        case .genshinImpact:
+            GachaTypeGI.knownCases.map(\.rawValue)
+        case .starRail:
+            GachaTypeHSR.knownCases.map(\.rawValue)
+        case .zenlessZone:
+            GachaTypeZZZ.knownCases.map(\.rawValue)
+        }
+        rawResults.removeAll {
+            !validRawValues.contains($0.rawValueForKnownPools)
+        }
+        return rawResults
     }
 
     public static func getPoolFilterLabel(by game: Pizza.SupportedGame) -> String {
@@ -70,10 +84,12 @@ extension GachaPoolExpressible {
         case .giWeaponEventWish: .genshinImpact
         case .giChronicledWish: .genshinImpact
         case .srUnknown: .starRail
+        case .srDepartureWarp: .starRail
         case .srStellarWarp: .starRail
         case .srCharacterEventWarp: .starRail
         case .srLightConeEventWarp: .starRail
-        case .srDepartureWarp: .starRail
+        case .srCollabWarpFateUBWCharacter: .starRail
+        case .srCollabWarpFateUBWLightCone: .starRail
         case .zzUnknown: .zenlessZone
         case .zzStableChannel: .zenlessZone
         case .zzExclusiveChannel: .zenlessZone
@@ -91,10 +107,12 @@ extension GachaPoolExpressible {
         case .giWeaponEventWish: true
         case .giChronicledWish: false
         case .srUnknown: false
+        case .srDepartureWarp: false
         case .srStellarWarp: false
         case .srCharacterEventWarp: true
         case .srLightConeEventWarp: true
-        case .srDepartureWarp: false
+        case .srCollabWarpFateUBWCharacter: true
+        case .srCollabWarpFateUBWLightCone: true
         case .zzUnknown: false
         case .zzStableChannel: false
         case .zzExclusiveChannel: true
@@ -116,6 +134,8 @@ extension GachaPoolExpressible {
         case .srStellarWarp: GachaTypeHSR.stellarWarp.rawValue
         case .srCharacterEventWarp: GachaTypeHSR.characterEventWarp.rawValue
         case .srLightConeEventWarp: GachaTypeHSR.lightConeEventWarp.rawValue
+        case .srCollabWarpFateUBWCharacter: GachaTypeHSR.collabWarpFateUBWCharacter.rawValue
+        case .srCollabWarpFateUBWLightCone: GachaTypeHSR.collabWarpFateUBWLightCone.rawValue
         case .srDepartureWarp: GachaTypeHSR.departureWarp.rawValue
         case .zzUnknown: "-114514"
         case .zzStableChannel: GachaTypeZZZ.stableChannel.rawValue
@@ -141,6 +161,8 @@ extension GachaPoolExpressible {
         case .giChronicledWish, .zzBangbooChannel: .red
         case .giStandardWish, .srStellarWarp, .zzStableChannel: .green
         case .giBeginnersWish, .srDepartureWarp: .cyan
+        case .srCollabWarpFateUBWCharacter: .pink
+        case .srCollabWarpFateUBWLightCone: .brown
         }
     }
 }

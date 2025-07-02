@@ -8572,7 +8572,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Evento di Deformazione del Personaggio"
+            "value" : "Varco Evento Personaggio"
           }
         },
         "ja" : {
@@ -8613,6 +8613,160 @@
         }
       }
     },
+    "gachaKit.poolType.srCollabWarpFateUBWCharacter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kollaborations-Charakter-Warp"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collab. Character Warp"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warp de Colaboración de Personaje"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collaboration Character Warp"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warp de collaboration personnage"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varco Collaborazione Personaggio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コラボキャラ跳躍"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "콜라보 캐릭터 워프"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Коллаборационный варп персонажа"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warp hợp tác nhân vật"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "联动角色跃迁"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聯動角色躍遷"
+          }
+        }
+      }
+    },
+    "gachaKit.poolType.srCollabWarpFateUBWLightCone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kollaborations-Lichtkegel-Warp"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collab. Light Cone Warp"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warp de Cono de Luz de Colaboración"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collaboration Light Cone Warp"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warp de cône de lumière collaboration"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varco Collaborazione Cono di Luce"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コラボ光円錐跳躍"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "콜라보 광추 워프"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Коллаборационный варп светового конуса"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warp Nón Ánh Sáng Hợp Tác"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "联动光锥跃迁"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聯動光錐躍遷"
+          }
+        }
+      }
+    },
     "gachaKit.poolType.srDepartureWarp" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8649,7 +8803,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Curvatura di Partenza"
+            "value" : "Varco di Partenza"
           }
         },
         "ja" : {
@@ -8803,7 +8957,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stellar Warp"
+            "value" : "Varco Stellare"
           }
         },
         "ja" : {
@@ -8880,7 +9034,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp sconosciuto"
+            "value" : "Varco Sconosciuto"
           }
         },
         "ja" : {
