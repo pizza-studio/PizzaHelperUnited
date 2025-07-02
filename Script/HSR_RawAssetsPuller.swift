@@ -202,10 +202,21 @@ public enum DataType: String, CaseIterable {
 
     // MARK: Public
 
+    public var hasCollab: Bool {
+        switch self {
+        case .character, .skillTree: return true
+        default: return false
+        }
+    }
+
     public func generateLinkDataDict() async throws -> [String: String] {
         var dict = [String: String]()
-        guard let sourceURL = sourceURL else { return [:] }
+        guard let sourceURL = getSourceURL(isCollab: false) else { return [:] }
         let (data, _) = try await URLSession.shared.data(from: sourceURL)
+        var data4Collab: Data = .init([])
+        if let collabURL = getSourceURL(isCollab: true) {
+            (data4Collab, _) = try await URLSession.shared.data(from: collabURL)
+        }
 
         do {
             switch self {
@@ -218,7 +229,13 @@ public enum DataType: String, CaseIterable {
                     writeKeyValuePair(id: sourceFileName, dict: &dict, sourceFileName: sourceFileName)
                 }
             case .skillTree:
-                let buffer = try JSONDecoder().decode([SRDSkillTree].self, from: data)
+                var buffer = try JSONDecoder().decode(
+                    [SRDSkillTree].self, from: data
+                ) + JSONDecoder().decode(
+                    [SRDSkillTree].self, from: data4Collab
+                )
+                buffer.sort { $0.id < $1.id }
+                // 只保留有技能图标的。
                 buffer.forEach { obj in
                     guard !obj.icon.isEmpty else { return }
                     let sourceFileName = obj.icon.extractFileNameStem()
@@ -233,7 +250,12 @@ public enum DataType: String, CaseIterable {
                     writeKeyValuePair(id: newID, dict: &dict, sourceFileName: sourceFileName)
                 }
             case .character:
-                let buffer = try JSONDecoder().decode([SRDCharacter].self, from: data)
+                var buffer = try JSONDecoder().decode(
+                    [SRDCharacter].self, from: data
+                ) + JSONDecoder().decode(
+                    [SRDCharacter].self, from: data4Collab
+                )
+                buffer.sort { $0.id < $1.id }
                 buffer.forEach { obj in
                     writeKeyValuePair(id: obj.id, dict: &dict, sourceFileName: String?.none)
                 }
@@ -276,12 +298,23 @@ public enum DataType: String, CaseIterable {
         }
     }
 
+    private var jsonURLString4Collab: String? {
+        switch self {
+        case .skillTree: Self.srdBasePath + "AvatarSkillTreeConfigLD.json"
+        case .character: Self.srdBasePath + "AvatarConfigLD.json"
+        default: nil
+        }
+    }
+
     private var isMar7th: Bool {
         jsonURLString.hasPrefix(Self.mar7BasePath)
     }
 
-    private var sourceURL: URL? {
-        URL(string: jsonURLString)
+    private func getSourceURL(isCollab: Bool) -> URL? {
+        if isCollab, let collabURLString = jsonURLString4Collab {
+            return URL(string: collabURLString)
+        }
+        return URL(string: jsonURLString)
     }
 
     private func writeKeyValuePair(id: String, dict: inout [String: String], sourceFileName: String? = nil) {
