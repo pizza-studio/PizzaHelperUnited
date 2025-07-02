@@ -127,7 +127,7 @@ extension GachaPoolExpressible {
         case .giUnknown: "-114514"
         case .giBeginnersWish: GachaTypeGI.beginnersWish.rawValue
         case .giStandardWish: GachaTypeGI.standardWish.rawValue
-        case .giCharacterEventWish: GachaTypeGI.UIGFGachaType.standardWish.rawValue
+        case .giCharacterEventWish: GachaTypeGI.UIGFGachaType.characterEventWish.rawValue
         case .giWeaponEventWish: GachaTypeGI.weaponEventWish.rawValue
         case .giChronicledWish: GachaTypeGI.chronicledWish.rawValue
         case .srUnknown: "-114514"
