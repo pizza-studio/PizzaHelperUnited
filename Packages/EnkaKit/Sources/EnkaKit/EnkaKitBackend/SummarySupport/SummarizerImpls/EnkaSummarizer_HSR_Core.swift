@@ -12,6 +12,7 @@ extension Enka.QueriedProfileHSR.QueriedAvatar {
         let baseSkillSet = Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet(
             hsrDB: theDB,
             constellation: rank ?? 0,
+            charID: avatarId,
             fetched: skillTreeList
         )
         guard let baseSkillSet = baseSkillSet else { return nil }

@@ -44,10 +44,12 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     public init?(
         hsrDB: Enka.EnkaDB4HSR,
         constellation: Int,
+        charID: Int,
         fetched: [Enka.QueriedProfileHSR.SkillTreeItem]
     ) {
-        guard fetched.count >= 4, let firstTreeItem = fetched.first else { return nil }
-        var charID = Int((Double(firstTreeItem.pointId) / 1000.0).rounded(.down))
+        guard fetched.count >= 4 else { return nil }
+        var charID = charID
+        /// 主角龙凤胎共用男方「穹」的技能图案。
         if case .ofStelle = Protagonist(rawValue: charID) { charID -= 1 }
         let charIDStr = charID.description
         var levelAdditionList = [String: Int]()
