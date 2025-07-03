@@ -116,6 +116,19 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         }
     }
 
+    public var retireDate: Date? {
+        switch self {
+        case .lava:
+            // 2024-OCT-01, GMT+8
+            Date(timeIntervalSince1970: 1727712000)
+        case .hakubill:
+            // 2024-MAY-20, GMT+8
+            Date(timeIntervalSince1970: 1716134400)
+        case .shikisuen: nil
+        default: nil
+        }
+    }
+
     public var subtitleAsMainCrew: String? {
         let key: String.LocalizationValue? = switch self {
         case .lava: "aboutKit.contributor.subtitleAsMainCrew.lava"
@@ -192,7 +205,8 @@ extension Contributor {
             main: big,
             icon: iconAssetName,
             title: title,
-            subtitle: subtitle
+            subtitle: subtitle,
+            retireDate: retireDate
         ) {
             for link in links { link }
         }
