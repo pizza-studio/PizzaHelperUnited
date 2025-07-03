@@ -15,6 +15,7 @@ struct ContributorItem: View {
         icon: String,
         title: String,
         subtitle: String? = nil,
+        retireDate: Date? = nil,
         @ArrayBuilder<Link?> extraLinks: () -> [Link?] = { [] }
     ) {
         self.isExpanded = isExpanded
@@ -22,6 +23,7 @@ struct ContributorItem: View {
         self.iconName = icon
         self.title = title
         self.subtitle = subtitle ?? ""
+        self.retireDate = retireDate
         self.extraLinks = extraLinks().compactMap { $0 }
     }
 
@@ -31,6 +33,7 @@ struct ContributorItem: View {
         icon: String,
         titleKey: String.LocalizationValue,
         subtitleKey: String.LocalizationValue? = nil,
+        retireDate: Date? = nil,
         @ArrayBuilder<Link?> extraLinks: () -> [Link?] = { [] }
     ) {
         self.isExpanded = isExpanded
@@ -42,6 +45,7 @@ struct ContributorItem: View {
         } else {
             self.subtitle = ""
         }
+        self.retireDate = retireDate
         self.extraLinks = extraLinks().compactMap { $0 }
     }
 
@@ -67,7 +71,15 @@ struct ContributorItem: View {
     private let iconName: String
     private let title: String
     private let subtitle: String
+    private let retireDate: Date?
     private let extraLinks: [Link]
+
+    private let dateFormatter: DateFormatter = {
+        let result = DateFormatter.GregorianPOSIX()
+        result.dateFormat = "yyyy-MM-dd"
+        result.timeZone = .init(secondsFromGMT: 3600 * 8)
+        return result
+    }()
 
     @ViewBuilder
     private func drawAsMainMember() -> some View {
@@ -83,6 +95,17 @@ struct ContributorItem: View {
                         .fontWeight(.heavy)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
+                    if let retireDate {
+                        let dateText = dateFormatter.string(from: retireDate)
+                        Text("aboutKit.contributor.retiredOn:\(dateText)", bundle: .module)
+                            .font(.caption2)
+                            .foregroundColor(.red)
+                            .fontWeight(.medium)
+                            .fontWidth(.condensed)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .multilineTextAlignment(.leading)
+                            .saturation(0.5)
+                    }
                     if !subtitle.isEmpty {
                         Text(verbatim: subtitle)
                             .font(.caption2)
