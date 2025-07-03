@@ -73,7 +73,7 @@ However, for iPhone models that are more than 3 years old, even if the battery h
 
 #### Q: How can I learn more about the development team or discuss other topics?
 
-You can find the development team's QQ channel and Discord channel in the "About" section of The Pizza Helper. Since April 2023, the development team has grown to three members (Lava; Bill Haku; Shiki Suen). You can click "Development Team" at the top-right corner of the "About" section to see their contact details.
+You can find the development team's QQ channel and Discord channel in the "About" section of The Pizza Helper. Since April 2023, the development team has grown to three members (Lava; Bill Haku; Shiki Suen). You can click "Development Team" at the top-right corner of the "About" section to see their contact details. Due to personal career plans, only Shiki Suen is the current development maintainer since October 1, 2024.
 
 #### Q: Any plan on implementing advanced features regarding Zenless Zone Zero? e.g. Gacha Record Management, etc.
 
