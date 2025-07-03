@@ -48,11 +48,14 @@ All Swift program files (excluding data structures used for decoding & encoding 
 
 ### Credits
 
-**Main Developers:**
+**Main Developers (Current maintainer):**
 
-* Lava (CanglongCL): Project founder; Main developer (especially Widgets)
-* Haku Bill: Main developer
 * Shiki Suen: Main Architect for the United Pizza Engine; Enka Showcase support, etc.
+
+**Main Developers (Retired from the development):**
+
+* Lava (CanglongCL): Project founder; Main developer (especially Widgets) (Retired on October 1, 2024).
+* Haku Bill: Main developer (Retired on May 20, 2024).
 
 This repository does not include the development history of its predecessors (i.e., PizzaHelper4Genshin v1~v4 & PizzaHelper4HSR). Here are the links for reference:
 
