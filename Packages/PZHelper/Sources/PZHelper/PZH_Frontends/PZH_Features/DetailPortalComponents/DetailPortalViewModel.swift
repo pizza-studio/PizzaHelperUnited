@@ -90,22 +90,22 @@ extension DetailPortalViewModel {
                 guard let profile = self.currentProfile,
                       let queryResult = try await HoYo.getCharacterInventory(for: profile)
                 else { return }
-                Task.detached { @MainActor in
+                Task.detached { @MainActor [weak self] in
                     withAnimation {
-                        self.taskStatus4CharInventory = .succeed(queryResult)
+                        self?.taskStatus4CharInventory = .succeed(queryResult)
                     }
                 }
             } catch {
-                Task.detached { @MainActor in
+                Task.detached { @MainActor [weak self] in
                     withAnimation {
-                        self.taskStatus4CharInventory = .fail(error)
+                        self?.taskStatus4CharInventory = .fail(error)
                     }
                 }
             }
         }
-        Task.detached { @MainActor in
+        Task.detached { @MainActor [weak self] in
             withAnimation {
-                self.taskStatus4CharInventory = .progress(task)
+                self?.taskStatus4CharInventory = .progress(task)
             }
         }
     }
@@ -117,22 +117,22 @@ extension DetailPortalViewModel {
                 guard let profile = self.currentProfile,
                       let queryResult = try await HoYo.getLedgerData(for: profile)
                 else { return }
-                Task.detached { @MainActor in
+                Task.detached { @MainActor [weak self] in
                     withAnimation {
-                        self.taskStatus4Ledger = .succeed(queryResult)
+                        self?.taskStatus4Ledger = .succeed(queryResult)
                     }
                 }
             } catch {
-                Task.detached { @MainActor in
+                Task.detached { @MainActor [weak self] in
                     withAnimation {
-                        self.taskStatus4Ledger = .fail(error)
+                        self?.taskStatus4Ledger = .fail(error)
                     }
                 }
             }
         }
-        Task.detached { @MainActor in
+        Task.detached { @MainActor [weak self] in
             withAnimation {
-                self.taskStatus4Ledger = .progress(task)
+                self?.taskStatus4Ledger = .progress(task)
             }
         }
     }
@@ -144,22 +144,22 @@ extension DetailPortalViewModel {
                 guard let profile = self.currentProfile,
                       let queryResult = try await HoYo.getBattleReportSet(for: profile)
                 else { return }
-                Task.detached { @MainActor in
+                Task.detached { @MainActor [weak self] in
                     withAnimation {
-                        self.taskStatus4BattleReport = .succeed(queryResult)
+                        self?.taskStatus4BattleReport = .succeed(queryResult)
                     }
                 }
             } catch {
-                Task.detached { @MainActor in
+                Task.detached { @MainActor [weak self] in
                     withAnimation {
-                        self.taskStatus4BattleReport = .fail(error)
+                        self?.taskStatus4BattleReport = .fail(error)
                     }
                 }
             }
         }
-        Task.detached { @MainActor in
+        Task.detached { @MainActor [weak self] in
             withAnimation {
-                self.taskStatus4BattleReport = .progress(task)
+                self?.taskStatus4BattleReport = .progress(task)
             }
         }
     }
