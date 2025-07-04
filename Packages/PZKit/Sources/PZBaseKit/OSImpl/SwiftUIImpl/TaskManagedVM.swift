@@ -34,9 +34,12 @@ open class TaskManagedVM: ObservableObject {
         didSet {
             if let theTask = task {
                 stateGuard?.cancel()
-                stateGuard = Task {
+                stateGuard = Task { [weak self] in
+                    guard let self else { return }
                     await theTask.value
-                    taskState = .standBy
+                    await MainActor.run {
+                        self.taskState = .standBy
+                    }
                 }
                 taskState = .busy
             } else {
@@ -87,9 +90,10 @@ open class TaskManagedVM: ObservableObject {
             taskState = .busy
             animatedPreparationTask?()
         }
-        Task {
+        Task { [weak self] in
+            guard let self else { return }
             let previousTask = task
-            task = Task(priority: .background) {
+            task = Task(priority: .background) { [weak self] in
                 if cancelPreviousTask {
                     previousTask?.cancel() // 按需取消既有任务。
                 } else {
@@ -97,18 +101,20 @@ open class TaskManagedVM: ObservableObject {
                 }
                 do {
                     let retrieved = try await givenTask()
-                    Task { @MainActor in
+                    Task { @MainActor [weak self] in
+                        guard let self else { return }
                         withAnimation {
                             if let retrieved {
                                 completionHandler?(retrieved)
                             }
-                            currentError = nil
+                            self.currentError = nil
                             // taskState = .standBy
                         }
                     }
                 } catch {
-                    Task { @MainActor in
-                        (errorHandler ?? handleError)(error) // 处理其他的错误。
+                    Task { @MainActor [weak self] in
+                        guard let this = self else { return }
+                        (errorHandler ?? this.handleError)(error) // 处理其他的错误。
                         // taskState = .standBy
                     }
                 }
