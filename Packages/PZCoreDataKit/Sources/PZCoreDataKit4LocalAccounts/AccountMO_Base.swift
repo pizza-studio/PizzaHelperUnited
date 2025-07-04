@@ -4,31 +4,18 @@
 
 @preconcurrency import CoreData
 import Foundation
-import PZBaseKit
+import PZCoreDataKitShared
 @preconcurrency import Sworm
 
-// MARK: - ProfileBasicProtocol
+// MARK: - AccountMOProtocol
 
-/// AccountMO 不是统一披萨助手引擎用来主要处理的格式，
-/// 而是专门为了从 CloudKit 读取既有资料而实作的资料交换格式。
-/// 这也是为了方便直接继承旧版原披助手与穹披助手的云端资料。
-/// AccountMO 不曝露给前端使用，不直接用于 SwiftUI。
+public protocol AccountMOProtocol: Codable, CDStoredGameAssignable {
+    static var entityName: String { get }
+    static var modelName: String { get }
+    static var containerName: String { get }
+    static var cloudContainerID: String { get }
+    static var alternativeSQLiteDBURL: URL? { get }
 
-public protocol ProfileBasicProtocol: Codable {
-    var allowNotification: Bool { get }
-    var cookie: String { get }
-    var deviceFingerPrint: String { get }
-    var name: String { get }
-    var priority: Int { get }
-    var serverRawValue: String { get }
-    var sTokenV2: String? { get }
-    var uid: String { get }
-    var uuid: UUID { get }
-}
-
-// MARK: - ProfileMOBasicProtocol
-
-public protocol ProfileMOBasicProtocol: Codable, ProfileBasicProtocol {
     var allowNotification: Bool { get set }
     var cookie: String { get set }
     var deviceFingerPrint: String { get set }
@@ -40,108 +27,18 @@ public protocol ProfileMOBasicProtocol: Codable, ProfileBasicProtocol {
     var uuid: UUID { get set }
 }
 
-extension Array where Element: ProfileMOBasicProtocol {
-    mutating public func fixPrioritySettings(respectExistingPriority: Bool = false) {
-        var newResult = self
-        if respectExistingPriority {
-            newResult.sort { $0.priority < $1.priority }
-        }
-        newResult.indices.forEach {
-            var newObj = newResult[$0]
-            newObj.priority = $0
-            newResult[$0] = newObj
-        }
-        self = newResult
-    }
-}
-
-extension ProfileBasicProtocol {
-    public var isValid: Bool {
-        true
-            && isUIDValid
-            && !name.isEmpty
-    }
-
-    public var isOfflineProfile: Bool {
-        cookie.isEmpty
-    }
-
-    public var isInvalid: Bool { !isValid }
-
-    private var isUIDValid: Bool {
-        guard let givenUIDInt = Int(uid) else { return false }
-        /// 绝区零的国服 UID 是八位。
-        #if os(watchOS)
-        return (100_000_00 ... Int(Int32.max)).contains(givenUIDInt)
-        #else
-        return (100_000_00 ... 9_999_999_999).contains(givenUIDInt)
-        #endif
-    }
-}
-
-// MARK: - ProfileMOProtocol
-
-public protocol ProfileMOProtocol: ProfileProtocol, ProfileMOBasicProtocol {
-    var game: Pizza.SupportedGame { get set }
-    var deviceID: String { get set }
-    var server: HoYo.Server { get set }
-}
-
-// MARK: - ProfileProtocol
-
-public protocol ProfileProtocol: ProfileBasicProtocol, Identifiable {
-    var game: Pizza.SupportedGame { get }
-    var deviceID: String { get }
-    var server: HoYo.Server { get }
-}
-
-extension ProfileProtocol {
-    public var uidWithGame: String {
-        "\(game.uidPrefix)-\(uid)"
-    }
-}
-
-extension ProfileMOProtocol {
-    public mutating func inherit(from target: some ProfileMOProtocol) {
-        uid = target.uid
-        uuid = target.uuid
-        allowNotification = target.allowNotification
-        cookie = target.cookie
-        deviceFingerPrint = target.deviceFingerPrint
-        name = target.name
-        priority = target.priority
-        serverRawValue = target.serverRawValue
-        sTokenV2 = target.sTokenV2
-        deviceID = target.deviceID
-        game = target.game
-        server = target.server
-    }
-}
-
-// MARK: - AccountMOProtocol
-
-public protocol AccountMOProtocol: Codable, ProfileMOBasicProtocol {
-    static var entityName: String { get }
-    static var modelName: String { get }
-    static var containerName: String { get }
-    static var cloudContainerID: String { get }
-    static var game: Pizza.SupportedGame { get }
-    static var alternativeSQLiteDBURL: URL? { get }
-}
-
 extension AccountMOProtocol {
     public var entityName: String { Self.entityName }
     public var modelName: String { Self.modelName }
     public var containerName: String { Self.containerName }
-    public var game: Pizza.SupportedGame { Self.game }
     public var cloudContainerID: String { Self.cloudContainerID }
 
     public static var primarySQLiteDBURL: URL? {
-        let containerURL = Pizza.isAppStoreRelease
-            ? groupContainerURL
+        let containerURL = PZCoreDataKit.isAppStoreRelease
+            ? PZCoreDataKit.groupContainerURL
             : FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
         guard let containerURL else { return nil }
-        let prefix = Pizza.isAppStoreRelease ? "" : "\(sharedBundleIDHeader)/"
+        let prefix = PZCoreDataKit.isAppStoreRelease ? "" : "\(PZCoreDataKit.sharedBundleIDHeader)/"
         return containerURL.appendingPathComponent("\(prefix + modelName).sqlite")
     }
 
@@ -207,15 +104,16 @@ extension AccountMOProtocol {
 // MARK: - AccountMO4GI
 
 /// 原披助手专用。
-struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
+public struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol, Codable, Hashable, Sendable {
     // MARK: Lifecycle
 
     public init() {}
 
     // MARK: Public
 
-    public struct Relations {}
+    public struct Relations: Sendable {}
 
+    public static let storedGame: PZCoreDataKit.StoredGame = .genshinImpact
     public static let cloudContainerID: String = "iCloud.com.Canglong.GenshinPizzaHepler" // 没机会纠正了。
     public static let containerName: String = "AccountConfiguration"
     public static let entityName: String = "AccountConfiguration"
@@ -232,13 +130,16 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
         .init(\.uuid, "uuid"),
     ]
 
-    public static let game: Pizza.SupportedGame = .genshinImpact
     public static let alternativeSQLiteDBURL: URL? = {
         // 下述命令等价于判断「appGroupID == "group.GenshinPizzaHelper"」。
-        guard Pizza.isAppStoreRelease else { return URL?.none }
-        guard let containerURL = groupContainerURL else { return URL?.none }
+        guard PZCoreDataKit.isAppStoreRelease else { return URL?.none }
+        guard let containerURL = PZCoreDataKit.groupContainerURL else { return URL?.none }
         let storeURL = containerURL.appendingPathComponent("AccountConfiguration.splite")
-        let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+        let exists = if #available(macCatalyst 16.0, *) {
+            FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+        } else {
+            FileManager.default.fileExists(atPath: storeURL.path)
+        }
         return exists ? storeURL : URL?.none
     }()
 
@@ -257,15 +158,16 @@ struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol {
 // MARK: - AccountMO4HSR
 
 /// 穹披助手专用，不曝露。
-struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol {
+public struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol, Codable, Hashable, Sendable {
     // MARK: Lifecycle
 
     public init() {}
 
     // MARK: Public
 
-    public struct Relations {}
+    public struct Relations: Sendable {}
 
+    public static let storedGame: PZCoreDataKit.StoredGame = .starRail
     public static let cloudContainerID: String = "iCloud.com.Canglong.HSRPizzaHelper"
     public static let containerName: String = "HSRPizzaHelper"
     public static let entityName: String = "Account"
@@ -282,8 +184,6 @@ struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol {
         .init(\.uid, "uid"),
         .init(\.uuid, "uuid"),
     ]
-
-    public static let game: Pizza.SupportedGame = .starRail
 
     /// 安全起见，穹披助手的资料只能云继承，因为穹披助手将两个 CoreDataMO 写到一个 Container 里面了。这样处理起来非常棘手。
     /// 新披萨助手只是原神披萨助手的原位升级、与穹披助手仍旧彼此独立，这里弄本地继承的话反而可能会破坏穹披助手的本地资料。

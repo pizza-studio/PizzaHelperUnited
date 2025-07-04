@@ -40,6 +40,7 @@ let package = Package(
         Package.Dependency.package(
             url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
         )
+        Package.Dependency.package(path: "../PZCoreDataKit")
     },
     targets: buildTargets {
         // MARK: - Common Targets
@@ -62,6 +63,14 @@ let package = Package(
             name: "PZAccountKit",
             dependencies: buildTargetDependencies {
                 "PZBaseKit"
+                Target.Dependency.product(
+                    name: "PZCoreDataKitShared",
+                    package: "PZCoreDataKit"
+                )
+                Target.Dependency.product(
+                    name: "PZCoreDataKit4LocalAccounts",
+                    package: "PZCoreDataKit"
+                )
                 Target.Dependency.product(
                     name: "Sworm",
                     package: "Sworm"

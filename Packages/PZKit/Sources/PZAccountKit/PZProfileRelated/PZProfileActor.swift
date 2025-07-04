@@ -6,6 +6,7 @@
 import Defaults
 import Foundation
 import PZBaseKit
+import PZCoreDataKit4LocalAccounts
 import SwiftData
 
 // MARK: - PZProfileActor
@@ -144,7 +145,7 @@ extension PZProfileActor {
     public static func migrateOldAccountsIntoProfiles(
         resetNotifications: Bool = true, isUnattended: Bool = false
     ) throws {
-        let oldData = try AccountMOSputnik.shared.allAccountDataAsPZProfileSendable()
+        let oldData = try AccountMOSputnik.shared.getAllAccountDataAsPZProfileSendable()
         Task {
             do {
                 try await PZProfileActor.shared.acceptMigratedOldAccountProfiles(
@@ -297,18 +298,6 @@ extension PZProfileActor {
             }
         }
         return deletedProfiles
-    }
-
-    public func migrateOldAccountMatchingUUID(_ uuid: String) async throws {
-        let profiles = getSendableProfiles()
-        let firstMatched = profiles.first { $0.uuid.uuidString == uuid }
-        guard firstMatched == nil else { return }
-        guard let newProfile = try? await AccountMOSputnik.shared.queryAccountDataMO(uuid: uuid) else { return }
-        modelContext.insert(newProfile.asMO)
-        try modelContext.save()
-        PZNotificationCenter.bleachNotificationsIfDisabled(for: newProfile)
-        Defaults[.pzProfiles][newProfile.uuid.uuidString] = newProfile
-        UserDefaults.profileSuite.synchronize()
     }
 }
 

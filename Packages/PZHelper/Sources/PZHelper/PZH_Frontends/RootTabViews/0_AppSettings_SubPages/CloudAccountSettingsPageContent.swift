@@ -12,7 +12,7 @@ struct CloudAccountSettingsPageContent: View {
     // MARK: Internal
 
     var body: some View {
-        AccountMODebugView()
+        PZAccountMODebugView()
             .navigationTitle("# CloudKit Debug".description)
     }
 

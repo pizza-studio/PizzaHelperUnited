@@ -17,6 +17,10 @@ let package = Package(
             name: "PZCoreDataKit4GachaEntries",
             targets: ["PZCoreDataKit4GachaEntries"]
         ),
+        .library(
+            name: "PZCoreDataKitShared",
+            targets: ["PZCoreDataKitShared"]
+        ),
     ],
     dependencies: [
         .package(
