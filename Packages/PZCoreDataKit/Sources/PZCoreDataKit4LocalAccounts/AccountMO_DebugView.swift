@@ -2,14 +2,19 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import PZBaseKit
+#if !os(watchOS)
+
+import PZCoreDataKitShared
 import SwiftUI
 @preconcurrency import Sworm
 
 // MARK: - AccountMOItemDebugView
 
-@available(watchOS, unavailable)
-public struct AccountMOItemDebugView: View {
+@available(macOS 14, *)
+@available(macCatalyst 17, *)
+@available(iOS 17, *)
+@available(iOSApplicationExtension, unavailable)
+private struct AccountMOItemDebugView: View {
     // MARK: Lifecycle
 
     public init(accountMO: AccountMOProtocol) {
@@ -21,7 +26,7 @@ public struct AccountMOItemDebugView: View {
     public var body: some View {
         Section {
             LabeledContent("game".description) {
-                Text(verbatim: accountMO.game.localizedShortName)
+                Text(verbatim: accountMO.storedGame.uidPrefix)
             }
             LabeledContent("allowNotification".description) {
                 Text(verbatim: accountMO.allowNotification.description)
@@ -54,13 +59,16 @@ public struct AccountMOItemDebugView: View {
     private let accountMO: AccountMOProtocol
 
     private var headerText: String {
-        "\(accountMO.game.uidPrefix)-\(accountMO.uid) // \(accountMO.uuid.uuidString)"
+        "\(accountMO.storedGame.uidPrefix)-\(accountMO.uid) // \(accountMO.uuid.uuidString)"
     }
 }
 
 // MARK: - AccountMODebugView
 
-@available(watchOS, unavailable)
+@available(macOS 14, *)
+@available(macCatalyst 17, *)
+@available(iOS 17, *)
+@available(iOSApplicationExtension, unavailable)
 public struct AccountMODebugView: View {
     // MARK: Lifecycle
 
@@ -75,7 +83,8 @@ public struct AccountMODebugView: View {
                 "This view enumerates all accountMO data from previous PizzaHelper4Genshin and PizzaHelper4HSR."
             )
             .font(.caption)
-            ForEach(try! Self.sputnik.allAccountDataMO(for: game), id: \.uuid) { accountMO in
+            let allAccountData = try! Self.sputnik.allAccountData(for: game)
+            ForEach(allAccountData, id: \.uuid) { accountMO in
                 AccountMOItemDebugView(accountMO: accountMO)
             }
         }
@@ -84,7 +93,7 @@ public struct AccountMODebugView: View {
             ToolbarItem(placement: .confirmationAction) {
                 Picker("".description, selection: $game.animation()) {
                     ForEach(casesOfGames) { enumeratedGame in
-                        Text(enumeratedGame.localizedShortName)
+                        Text(enumeratedGame.uidPrefix)
                             .tag(enumeratedGame)
                     }
                 }
@@ -101,7 +110,9 @@ public struct AccountMODebugView: View {
 
     @MainActor private static let sputnik: AccountMOSputnik = .shared
 
-    @State private var game: Pizza.SupportedGame = .genshinImpact
+    @State private var game: PZCoreDataKit.StoredGame = .genshinImpact
 
-    private let casesOfGames: [Pizza.SupportedGame] = [.genshinImpact, .starRail]
+    private let casesOfGames: [PZCoreDataKit.StoredGame] = [.genshinImpact, .starRail]
 }
+
+#endif
