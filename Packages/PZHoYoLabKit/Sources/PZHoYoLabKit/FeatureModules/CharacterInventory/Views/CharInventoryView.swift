@@ -143,9 +143,32 @@ public struct CharacterInventoryView: View {
                         scroll: false, spacing: 2, list: theListFiltered
                     ) { avatar in
                         // WIDTH: 70, HEIGHT: 63
-                        AvatarListItem(game: game, avatar: avatar, condensed: true)
-                            .padding(.vertical, 4)
-                            .compositingGroup()
+                        Color.clear.frame(width: 70, height: 63)
+                            .overlay {
+                                if let image = avatarItemViewCacheMap[avatar.id] {
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 70, height: 63)
+                                } else {
+                                    ProgressView()
+                                }
+                            }
+                            .task {
+                                let avatarListItem = AvatarListItem(game: game, avatar: avatar, condensed: true)
+                                    .padding(.vertical, 4)
+                                    .compositingGroup()
+                                let renderer = ImageRenderer(
+                                    content: avatarListItem
+                                )
+                                renderer.scale = 3.0
+                                if let cgImage = renderer.cgImage {
+                                    avatarItemViewCacheMap[avatar.id] = Image(
+                                        decorative: cgImage,
+                                        scale: 1
+                                    )
+                                }
+                            }
                             .onTapGesture {
                                 currentAvatarSummaryID = avatar.id
                                 simpleTaptic(type: .medium)
@@ -170,6 +193,7 @@ public struct CharacterInventoryView: View {
 
     @State private var summaries: [SummaryPtr]
     @State private var sortedSummariesMap: [Enka.GameElement: [SummaryPtr]]
+    @State private var avatarItemViewCacheMap: [String: Image] = [:]
     @State private var allAvatarListDisplayType: InventoryViewFilterType = .all
     @State private var expanded: Bool = false
     @State private var currentAvatarSummaryID: String
