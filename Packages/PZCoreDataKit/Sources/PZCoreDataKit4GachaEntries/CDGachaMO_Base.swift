@@ -4,7 +4,7 @@
 
 @preconcurrency import CoreData
 import Foundation
-import PZBaseKit
+import PZCoreDataKitShared
 @preconcurrency import Sworm
 
 // MARK: - CDGachaMOProtocol
@@ -19,12 +19,11 @@ public protocol CDGachaMOProtocol: Sendable {
     var uid: String { get set }
     var name: String { get set }
     var time: Date { get set }
-    var asPZGachaEntrySendable: PZGachaEntrySendable { get }
     static var entityName: String { get }
     static var modelName: String { get }
     static var containerName: String { get }
     static var cloudContainerID: String { get }
-    static var game: Pizza.SupportedGame { get }
+    static var game: PZCoreDataKit.StoredGame { get }
     static var alternativeSQLiteDBURL: URL? { get }
 }
 
@@ -33,15 +32,15 @@ extension CDGachaMOProtocol {
     public var entityName: String { Self.entityName }
     public var modelName: String { Self.modelName }
     public var containerName: String { Self.containerName }
-    public var game: Pizza.SupportedGame { Self.game }
+    public var game: PZCoreDataKit.StoredGame { Self.game }
     public var cloudContainerID: String { Self.cloudContainerID }
 
     public static var primarySQLiteDBURL: URL? {
-        let containerURL = Pizza.isAppStoreRelease
-            ? groupContainerURL
+        let containerURL = PZCoreDataKit.isAppStoreRelease
+            ? PZCoreDataKit.groupContainerURL
             : FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
         guard let containerURL else { return nil }
-        let prefix = Pizza.isAppStoreRelease ? "" : "\(sharedBundleIDHeader)/"
+        let prefix = PZCoreDataKit.isAppStoreRelease ? "" : "\(PZCoreDataKit.sharedBundleIDHeader)/"
         return containerURL.appendingPathComponent("\(prefix + modelName).sqlite")
     }
 
@@ -107,8 +106,14 @@ extension CDGachaMOProtocol {
 // MARK: - CDGachaMO4GI
 
 /// 原披助手专用，不曝露。
-struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol {
-    public struct Relations {}
+public struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol, Codable, Hashable, Sendable {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
+    public struct Relations: Sendable {}
 
     public static let cloudContainerID: String = "iCloud.com.Canglong.PizzaGachaLog" // 没机会纠正了。
     public static let containerName: String = "PizzaGachaLog"
@@ -128,14 +133,35 @@ struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol {
         .init(\.uid, "uid"),
     ]
 
-    public static let game: Pizza.SupportedGame = .genshinImpact
+    public static let game: PZCoreDataKit.StoredGame = .genshinImpact
 
     public static let alternativeSQLiteDBURL: URL? = {
         // 下述命令等价于判断「appGroupID == "group.GenshinPizzaHelper"」。
-        guard Pizza.isAppStoreRelease else { return URL?.none }
-        guard let containerURL = groupContainerURL else { return URL?.none }
+        guard PZCoreDataKit.isAppStoreRelease else { return URL?.none }
+        guard let containerURL = PZCoreDataKit.groupContainerURL else { return URL?.none }
         let storeURL = containerURL.appendingPathComponent("PizzaGachaLog.splite")
-        let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+        #if targetEnvironment(macCatalyst)
+        if #available(macCatalyst 16.0, *) {
+            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+            return exists ? storeURL : URL?.none
+        }
+        #elseif os(iOS)
+        if #available(iOS 16.0, *) {
+            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+            return exists ? storeURL : URL?.none
+        }
+        #elseif os(macOS)
+        if #available(macOS 13.0, *) {
+            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+            return exists ? storeURL : URL?.none
+        }
+        #else
+        if #available(watchOS 9.0, *) {
+            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+            return exists ? storeURL : URL?.none
+        }
+        #endif
+        let exists = FileManager.default.fileExists(atPath: storeURL.path)
         return exists ? storeURL : URL?.none
     }()
 
@@ -149,31 +175,19 @@ struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol {
     public var rankType: Int = 3
     public var time: Date = .init(timeIntervalSince1970: 1)
     public var uid = "YJSNPI"
-
-    public var asPZGachaEntrySendable: PZGachaEntrySendable {
-        PZGachaEntrySendable.init { newEntry in
-            newEntry.game = Pizza.SupportedGame.genshinImpact.rawValue
-            newEntry.uid = uid
-            newEntry.count = 1.description
-            newEntry.gachaType = gachaType.description
-            newEntry.id = id
-            newEntry.itemID = itemId
-            newEntry.itemType = itemType
-            newEntry.lang = lang
-            newEntry.name = name
-            newEntry.rankType = rankType.description
-            newEntry.time = time.asUIGFDate(
-                timeZoneDelta: GachaKit.getServerTimeZoneDelta(uid: uid, game: .genshinImpact)
-            )
-        }
-    }
 }
 
 // MARK: - CDGachaMO4HSR
 
 /// 穹披助手专用，不曝露。
-struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol {
-    public struct Relations {}
+public struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol, Codable, Hashable, Sendable {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
+    public struct Relations: Sendable {}
 
     public static let cloudContainerID: String = "iCloud.com.Canglong.HSRPizzaHelper"
     public static let containerName: String = "HSRPizzaHelper"
@@ -195,7 +209,7 @@ struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol {
         .init(\.uid, "uid"),
     ]
 
-    public static let game: Pizza.SupportedGame = .starRail
+    public static let game: PZCoreDataKit.StoredGame = .starRail
 
     /// 安全起见，穹披助手的资料只能云继承，因为穹披助手将两个 CoreDataMO 写到一个 Container 里面了。这样处理起来非常棘手。
     /// 新披萨助手只是原神披萨助手的原位升级、与穹披助手仍旧彼此独立，这里弄本地继承的话反而可能会破坏穹披助手的本地资料。
@@ -213,23 +227,4 @@ struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol {
     public var time: Date = .init(timeIntervalSince1970: 1)
     public var timeRawValue: String? = "1"
     public var uid = "YJSNPI"
-
-    public var asPZGachaEntrySendable: PZGachaEntrySendable {
-        PZGachaEntrySendable.init { newEntry in
-            newEntry.game = Pizza.SupportedGame.starRail.rawValue
-            newEntry.uid = uid
-            newEntry.count = count.description
-            newEntry.gachaID = gachaID.description
-            newEntry.gachaType = gachaTypeRawValue
-            newEntry.id = id
-            newEntry.itemID = itemID
-            newEntry.itemType = itemTypeRawValue
-            newEntry.lang = langRawValue
-            newEntry.name = name
-            newEntry.rankType = rankRawValue
-            newEntry.time = timeRawValue ?? time.asUIGFDate(
-                timeZoneDelta: GachaKit.getServerTimeZoneDelta(uid: uid, game: .genshinImpact)
-            )
-        }
-    }
 }

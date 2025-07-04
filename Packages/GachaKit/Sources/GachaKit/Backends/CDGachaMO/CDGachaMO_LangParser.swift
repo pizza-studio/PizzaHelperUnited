@@ -2,108 +2,10 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import CoreData
 import GachaMetaDB
 @preconcurrency import NaturalLanguage
 import PZAccountKit
-import PZBaseKit
-@preconcurrency import Sworm
-
-// MARK: - CDGachaMOSputnik
-
-/// 警告：请务必不要直接初始化这个 class。请借由 GachaActor 来使用这个 class。
-public final class CDGachaMOSputnik: Sendable {
-    // MARK: Lifecycle
-
-    public init(persistence: DBPersistenceMethod, backgroundContext: Bool) throws {
-        let pc4HSR = try CDGachaMO4HSR.getLoadedPersistentContainer(persistence: persistence)
-        let pc4GI = try CDGachaMO4GI.getLoadedPersistentContainer(persistence: persistence)
-        if backgroundContext {
-            self.db4HSR = .init(managedObjectContext: pc4HSR.newBackgroundContext)
-            self.db4GI = .init(managedObjectContext: pc4GI.newBackgroundContext)
-        } else {
-            self.db4HSR = .init { pc4HSR.viewContext }
-            self.db4GI = .init { pc4GI.viewContext }
-        }
-    }
-
-    // MARK: Public
-
-    public static let shared = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: true)
-
-    public func confirmWhetherHavingData() async -> Bool {
-        ((try? await countAllCDGachaMOAsPZGachaEntryMO()) ?? 0) > 0
-    }
-
-    public func allGachaDataMO(for game: Pizza.SupportedGame, fixItemIDs: Bool = true) throws -> [CDGachaMOProtocol] {
-        try theDB(for: game)?.perform { ctx in
-            switch game {
-            case .genshinImpact:
-                var genshinDataRAW = try ctx.fetch(CDGachaMO4GI.all).map { try $0.decode() }
-                if fixItemIDs {
-                    // Fix Genshin ItemIDs.
-                    genshinDataRAW.fixItemIDs()
-                    if genshinDataRAW.mightHaveNonCHSLanguageTag {
-                        try genshinDataRAW.updateLanguage(.langCHS)
-                    }
-                    for idx in 0 ..< genshinDataRAW.count {
-                        let currentObj = genshinDataRAW[idx]
-                        guard Int(currentObj.itemId) == nil else { continue }
-                        Task { @MainActor in
-                            try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
-                        }
-                        throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
-                    }
-                }
-                return genshinDataRAW
-            case .starRail: return try ctx.fetch(CDGachaMO4HSR.all).map { try $0.decode() }
-            case .zenlessZone: return []
-            }
-        } ?? []
-    }
-
-    public func countAllCDGachaMO(for game: Pizza.SupportedGame) throws -> Int {
-        try theDB(for: game)?.perform { ctx in
-            switch game {
-            case .genshinImpact: try ctx.count(of: CDGachaMO4GI.all)
-            case .starRail: try ctx.count(of: CDGachaMO4HSR.all)
-            case .zenlessZone: 0
-            }
-        } ?? 0
-    }
-
-    public func countAllCDGachaMOAsPZGachaEntryMO() async throws -> Int {
-        async let countGI = countAllCDGachaMO(for: .genshinImpact)
-        async let countHSR = countAllCDGachaMO(for: .starRail)
-        let intGI = try await countGI
-        let intHSR = try await countHSR
-        return intGI + intHSR
-    }
-
-    public func allCDGachaMOAsPZGachaEntryMO() throws -> [PZGachaEntrySendable] {
-        // Genshin.
-        let genshinData = try allGachaDataMO(for: .genshinImpact, fixItemIDs: true).map(\.asPZGachaEntrySendable)
-        // StarRail.
-        let hsrData = try allGachaDataMO(for: .starRail).map(\.asPZGachaEntrySendable)
-        let dataSet: [PZGachaEntrySendable] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
-        return dataSet
-    }
-
-    // MARK: Internal
-
-    func theDB(for game: Pizza.SupportedGame) -> PersistentContainer? {
-        switch game {
-        case .genshinImpact: db4GI
-        case .starRail: db4HSR
-        case .zenlessZone: nil
-        }
-    }
-
-    // MARK: Private
-
-    private let db4GI: PersistentContainer
-    private let db4HSR: PersistentContainer
-}
+import PZCoreDataKit4GachaEntries
 
 // MARK: - Language parser (duplicated from GIGF with modifications)
 
@@ -200,24 +102,24 @@ extension [CDGachaMO4GI] {
         var newItemContainer = Self()
         // 君子协定：这里要求 UIGFGachaItem 的 itemID 必须是有效值，否则会出现灾难性的后果。
         try forEach { currentItem in
+            let currentGame = currentItem.game.asSupportedGame
             guard currentItem.itemId.isInt else {
                 throw GachaMeta.GMDBError.itemIDInvalid(
-                    name: currentItem.name, game: currentItem.game, uid: currentItem.uid
+                    name: currentItem.name, game: currentGame, uid: currentItem.uid
                 )
             }
-            let lang = lang.sanitized(by: currentItem.game)
+            let lang = lang.sanitized(by: currentGame)
             let theDB: [String: GachaItemMetadata] = switch currentItem.game {
             case .genshinImpact: GachaMeta.sharedDB.mainDB4GI
             case .starRail: GachaMeta.sharedDB.mainDB4HSR
-            case .zenlessZone: [:] // 目前暂时不处理绝区零。
             }
             var newItem = currentItem
-            let itemTypeRaw: GachaItemType = .init(itemID: newItem.itemId, game: currentItem.game)
-            newItem.itemType = itemTypeRaw.getTranslatedRaw(for: lang, game: currentItem.game)
+            let itemTypeRaw: GachaItemType = .init(itemID: newItem.itemId, game: currentGame)
+            newItem.itemType = itemTypeRaw.getTranslatedRaw(for: lang, game: currentGame)
             if let newName = theDB.plainQueryForNames(itemID: newItem.itemId, langID: lang.rawValue) {
                 newItem.name = newName
             } else {
-                throw GachaMeta.GMDBError.databaseExpired(game: currentItem.game)
+                throw GachaMeta.GMDBError.databaseExpired(game: currentGame)
             }
             newItemContainer.append(newItem)
         }

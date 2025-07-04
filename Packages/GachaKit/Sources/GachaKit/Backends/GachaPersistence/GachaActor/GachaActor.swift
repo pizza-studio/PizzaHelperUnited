@@ -6,6 +6,7 @@ import Foundation
 import GachaMetaDB
 import PZAccountKit
 import PZBaseKit
+import PZCoreDataKit4GachaEntries
 import SwiftData
 
 // MARK: - GachaActor
@@ -90,7 +91,7 @@ extension GachaActor {
 
 extension GachaActor {
     public func migrateOldGachasIntoProfiles() throws {
-        let oldData = try CDGachaMOSputnik.shared.allCDGachaMOAsPZGachaEntryMO()
+        let oldData = try CDGachaMOSputnik.shared.getAllDataEntriesAsSendable()
         try batchInsert(
             oldData,
             overrideDuplicatedEntries: false,

@@ -10,6 +10,7 @@ import GachaMetaDB
 import Observation
 import PZAccountKit
 import PZBaseKit
+import PZCoreDataKit4GachaEntries
 import SwiftData
 import SwiftUI
 

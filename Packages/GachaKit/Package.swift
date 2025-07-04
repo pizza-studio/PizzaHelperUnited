@@ -17,6 +17,7 @@ let package = Package(
     dependencies: [
         .package(path: "../PZKit"),
         .package(path: "../EnkaKit"),
+        .package(path: "../PZCoreDataKit"),
         .package(
             url: "https://github.com/pizza-studio/GachaMetaGenerator", .upToNextMajor(from: "2.5.4")
         ),
@@ -47,6 +48,8 @@ let package = Package(
             dependencies: [
                 .product(name: "PZAccountKit", package: "PZKit"),
                 .product(name: "PZBaseKit", package: "PZKit"),
+                .product(name: "PZCoreDataKitShared", package: "PZCoreDataKit"),
+                .product(name: "PZCoreDataKit4GachaEntries", package: "PZCoreDataKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "Sworm", package: "Sworm"),
                 .product(name: "GachaMetaDB", package: "GachaMetaGenerator"),
