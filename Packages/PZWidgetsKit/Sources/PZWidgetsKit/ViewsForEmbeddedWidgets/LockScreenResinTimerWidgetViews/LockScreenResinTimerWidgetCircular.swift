@@ -64,7 +64,7 @@ extension EmbeddedWidgets {
                                     .font(.system(.body, design: .monospaced))
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
-                                    .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in
+                                    .containerRelativeFrameEX(.horizontal, alignment: .leading) { length, _ in
                                         #if os(watchOS)
                                         length * 0.8
                                         #else
@@ -127,7 +127,7 @@ extension EmbeddedWidgets {
                                     .font(.system(.body, design: .monospaced))
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
-                                    .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in
+                                    .containerRelativeFrameEX(.horizontal, alignment: .leading) { length, _ in
                                         #if os(watchOS)
                                         length * 0.8
                                         #else
