@@ -5,6 +5,7 @@
 import Foundation
 import SwiftData
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension ModelActor {
     public func asyncInsert<T: PersistentModel>(_ model: T) throws {
         modelContext.insert(model)
@@ -27,6 +28,7 @@ extension ModelActor {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension PersistentIdentifier {
     public static func parseObjectNames(notificationResult maybeUserInfo: [AnyHashable: Any]?) -> Set<String> {
         guard let userInfo = maybeUserInfo else { return [] }

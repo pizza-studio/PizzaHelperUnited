@@ -20,7 +20,7 @@ extension FullNote4GI.TransformerInfo4GI {
         )
         let reached = try recoveryTimeContainer.decode(Bool.self, forKey: .reached)
         if reached {
-            self.recoveryTime = .now
+            self.recoveryTime = .init()
         } else {
             let day = try recoveryTimeContainer.decode(Int.self, forKey: .day)
             let minute = try recoveryTimeContainer.decode(Int.self, forKey: .minute)

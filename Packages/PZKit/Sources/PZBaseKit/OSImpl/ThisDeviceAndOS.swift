@@ -18,10 +18,12 @@ import WatchKit
 
 // MARK: - ThisDevice
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
 @MainActor
 public enum ThisDevice {}
 
 #if os(watchOS)
+@available(watchOS 8.0, *)
 extension ThisDevice {
     public static let identifier4Vendor: String = UUID().uuidString
 
@@ -30,6 +32,7 @@ extension ThisDevice {
     }
 }
 #else
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
 extension ThisDevice {
     // MARK: Public
 
@@ -138,6 +141,7 @@ extension ThisDevice {
 
 // MARK: - OS
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
 @MainActor
 public enum OS: Int {
     case macOS = 0
@@ -154,7 +158,8 @@ public enum OS: Int {
     public static let isBuggyOS25Build: Bool = {
         #if os(iOS)
         guard #unavailable(iOS 18.4) else { return false }
-        guard #available(iOS 18.0, *) else { return false }
+        guard #available(iOS 18.0, *)
+        else { return false }
         return true
         #else
         return false
@@ -218,18 +223,24 @@ public enum OS: Int {
     public static var isOS25OrAbove: Bool {
         switch OS.type {
         case .macOS:
-            if #available(macOS 15, *) { return true }
-            if #available(macCatalyst 18, *) { return true }
+            if #available(macOS 15, *)
+            { return true }
+            if #available(macCatalyst 18, *)
+            { return true }
             return false
         case .iPhoneOS:
-            if #available(iOS 18, *) { return true }
+            if #available(iOS 18, *)
+            { return true }
             return false
         case .iPadOS:
-            if #available(iOS 18, *) { return true }
+            if #available(iOS 18, *)
+            { return true }
         case .watchOS:
-            if #available(watchOS 11, *) { return true }
+            if #available(watchOS 11, *)
+            { return true }
         case .tvOS:
-            if #available(tvOS 18, *) { return true }
+            if #available(tvOS 18, *)
+            { return true }
         }
         return false
     }
@@ -248,6 +259,7 @@ public enum OS: Int {
 // MARK: - Window Size Helpers
 
 #if os(macOS) || os(iOS) || targetEnvironment(macCatalyst)
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
 extension ThisDevice {
     public static var isScreenLandScape: Bool {
         #if canImport(UIKit)

@@ -128,7 +128,7 @@ extension Note4ZZZ {
 
         // MARK: Public
 
-        public var localizedDescription: String {
+        @available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *) public var localizedDescription: String {
             switch self {
             case .revenueAvailable:
                 String(localized: "dailyNote.zzz.vhsState.revenueAvailable", bundle: .module)
@@ -174,7 +174,7 @@ extension Note4ZZZ {
 
         public let progress: EnergyProgress
         public let restore: Int
-        public let fetchedTime: Date = .now // 从伺服器拿到这笔资料的那一刻的时间戳。
+        public let fetchedTime: Date = .init() // 从伺服器拿到这笔资料的那一刻的时间戳。
 
         public var fullyChargedDate: Date {
             .init(timeInterval: Double(restore), since: fetchedTime)
@@ -239,15 +239,15 @@ extension Note4ZZZ.Energy {
 
     public var currentEnergyAmountDynamic: Int {
         let baseValue = progress.current
-        let timePassedSinceLastFetch = Date.now.timeIntervalSince1970 - fetchedTime.timeIntervalSince1970
+        let timePassedSinceLastFetch = Date().timeIntervalSince1970 - fetchedTime.timeIntervalSince1970
         return baseValue + Int((timePassedSinceLastFetch / Self.eachStaminaRecoveryTime).rounded(.down))
     }
 
     public var timeOnFinish: Date {
-        guard progress.current < progress.max else { return .now }
+        guard progress.current < progress.max else { return .init() }
         let restEnergyToCharge = progress.max - currentEnergyAmountDynamic
         let timeIntervalDelta = Self.eachStaminaRecoveryTime * Double(restEnergyToCharge)
-        return Date.now.addingTimeInterval(timeIntervalDelta)
+        return Date().addingTimeInterval(timeIntervalDelta)
     }
 }
 

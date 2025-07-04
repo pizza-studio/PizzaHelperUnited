@@ -8,6 +8,7 @@ import SwiftUI
 // MARK: - OnAppBecomeActiveModifier
 
 /// A ViewModifier that adds an action to be performed whenever an app comes to active state.
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 private struct OnAppBecomeActiveModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
@@ -33,9 +34,7 @@ private struct OnAppBecomeActiveModifier: ViewModifier {
 
 // MARK: - OnAppBecomeActiveModifierMac
 
-@available(watchOS 11.0, *)
-@available(iOS 18.0, *)
-@available(macCatalyst 18.0, *)
+@available(iOS 18.0, macCatalyst 18.0, macOS 14.0, watchOS 11.0, *)
 private struct OnAppBecomeActiveModifierMac: ViewModifier {
     @Environment(\.appearsActive) var appearsActive
 
@@ -56,6 +55,7 @@ private struct OnAppBecomeActiveModifierMac: ViewModifier {
 // MARK: - OnAppEnterBackgroundModifier
 
 /// A ViewModifier that adds an action to be performed whenever an app enters background state.
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 private struct OnAppEnterBackgroundModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
@@ -79,6 +79,7 @@ private struct OnAppEnterBackgroundModifier: ViewModifier {
 // MARK: - OnAppBecomeInactiveModifier
 
 /// A ViewModifier that adds an action to be performed whenever an app becomes inactive.
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 private struct OnAppBecomeInactiveModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
@@ -99,6 +100,7 @@ private struct OnAppBecomeInactiveModifier: ViewModifier {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension View {
     /// Add an action to be performed whenever an app comes to active state.
     ///
@@ -106,7 +108,7 @@ extension View {
     /// - Returns: A View with the added action.
     @ViewBuilder
     public func onAppBecomeActive(perform action: @escaping () -> Void) -> some View {
-        if #available(iOS 18.0, *) {
+        if #available(macCatalyst 18.0, macOS 14.0, *) {
             #if targetEnvironment(macCatalyst)
             modifier(OnAppBecomeActiveModifierMac(action: action))
             #else

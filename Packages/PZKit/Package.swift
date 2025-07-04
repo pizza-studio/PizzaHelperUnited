@@ -18,7 +18,7 @@ let sharedSwiftSettings: [SwiftSetting] = [
 let package = Package(
     name: "PizzaKitPKG",
     defaultLocalization: "en",
-    platforms: [.iOS(.v17), .macOS(.v14), .watchOS(.v10), .macCatalyst(.v17), .visionOS(.v1)],
+    platforms: [.iOS(.v14), .macOS(.v11), .macCatalyst(.v14), .watchOS(.v9), .visionOS(.v1)],
     products: buildProducts {
         Product.library(
             name: "PZBaseKit",

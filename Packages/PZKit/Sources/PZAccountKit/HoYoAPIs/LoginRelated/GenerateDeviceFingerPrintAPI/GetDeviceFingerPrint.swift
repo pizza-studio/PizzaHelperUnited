@@ -22,6 +22,7 @@ extension HoYo {
         public let seedTime: String
     }
 
+    @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
     public static func getDeviceFingerPrint(
         region: HoYo.AccountRegion, deviceID: String? = nil, forceClean: Bool = false
     ) async throws
@@ -33,7 +34,7 @@ extension HoYo {
             let code: Int
         }
         if Date(timeIntervalSince1970: 0) == Defaults[.lastDefaultFingerprintRefreshDate] || forceClean {
-            Defaults[.lastDefaultFingerprintRefreshDate] = .now // 确保 UserDefaults 有写入的值、而不是每次读取时都给默认值。
+            Defaults[.lastDefaultFingerprintRefreshDate] = .init() // 确保 UserDefaults 有写入的值、而不是每次读取时都给默认值。
         }
         let refreshDate = Defaults[.lastDefaultFingerprintRefreshDate]
         let url = "\(region.publicDataHostURLHeader)/device-fp/api/getFp"
@@ -95,6 +96,9 @@ extension HoYo.AccountRegion {
         }
     }
 
+    @available(iOS 15.0, *)
+    @available(macCatalyst 15.0, *)
+    @available(macOS 12.0, *)
     fileprivate func getFpExtFields(deviceID: String) -> String {
         switch self {
         case .miyoushe:
