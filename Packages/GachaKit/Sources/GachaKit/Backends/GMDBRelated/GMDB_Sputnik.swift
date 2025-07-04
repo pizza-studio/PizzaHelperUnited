@@ -25,7 +25,7 @@ extension GachaMeta {
 // MARK: - GachaMeta.DBSet
 
 /// 备注：此处不宜将 GachaMetaDB 继续用作 Root Namespace，
-/// 否则 Observable Macro 生成的内容在这个代码文脉下会产生冲突性质的 cmopile-time error。
+/// 否则 Observable Macro 生成的内容在这个代码文脉下会产生冲突性质的 compile-time error。
 extension GachaMeta {
     public static let sharedDB = GachaMeta.DBSet()
 
