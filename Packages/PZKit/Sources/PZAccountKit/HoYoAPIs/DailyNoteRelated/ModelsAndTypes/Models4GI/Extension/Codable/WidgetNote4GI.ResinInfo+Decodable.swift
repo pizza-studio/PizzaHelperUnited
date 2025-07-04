@@ -12,7 +12,7 @@ extension WidgetNote4GI.ResinInfo4GI: Decodable {
         self.maxResin = try container.decode(Int.self, forKey: .maxResin)
         self.currentResin = try container.decode(Int.self, forKey: .currentResin)
         if let resinRecoveryTimeInterval = TimeInterval(try container.decode(String.self, forKey: .resinRecoveryTime)) {
-            self.resinRecoveryTime = Date(timeInterval: resinRecoveryTimeInterval, since: .now)
+            self.resinRecoveryTime = Date(timeInterval: resinRecoveryTimeInterval, since: .init())
         } else {
             throw DecodingError.typeMismatch(
                 Double.self,

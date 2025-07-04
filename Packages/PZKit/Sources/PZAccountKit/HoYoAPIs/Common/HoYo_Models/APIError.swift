@@ -7,7 +7,7 @@ import PZBaseKit
 
 // MARK: - MiHoYoAPIError
 
-public enum MiHoYoAPIError: Error, LocalizedError {
+public enum MiHoYoAPIError: Error {
     case verificationNeeded
     case fingerPrintInvalidOrMissing
     case sTokenV2InvalidOrMissing
@@ -31,9 +31,12 @@ public enum MiHoYoAPIError: Error, LocalizedError {
         default: .other(retcode: retcode, message: message)
         }
     }
+}
 
-    // MARK: Public
+// MARK: LocalizedError
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
+extension MiHoYoAPIError: LocalizedError {
     public var description: String { localizedDescription }
 
     public var localizedDescription: String {

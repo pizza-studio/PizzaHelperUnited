@@ -51,7 +51,7 @@ public struct StaminaInfo4HSR: AbleToCodeSendHash {
 
     /// Rest of recovery time
     public var remainingTime: TimeInterval {
-        let restOfTime = _staminaRecoverTime - Date.now.timeIntervalSince(fetchTime)
+        let restOfTime = _staminaRecoverTime - Date().timeIntervalSince(fetchTime)
         if restOfTime > 0 {
             return restOfTime
         } else {
@@ -71,7 +71,7 @@ public struct StaminaInfo4HSR: AbleToCodeSendHash {
     public var nextStaminaTime: Date? {
         let nextRecoverTimeInterval = remainingTime.truncatingRemainder(dividingBy: Self.eachStaminaRecoveryTime)
         if nextRecoverTimeInterval != 0 {
-            return Date(timeInterval: nextRecoverTimeInterval + 1, since: Date.now)
+            return Date(timeInterval: nextRecoverTimeInterval + 1, since: .init())
         } else {
             return nil
         }

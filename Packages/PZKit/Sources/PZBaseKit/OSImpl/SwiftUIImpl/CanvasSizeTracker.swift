@@ -6,6 +6,7 @@ import SwiftUI
 
 // MARK: - CanvasSizeTracker
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
 private struct CanvasSizeTracker: ViewModifier {
     // MARK: Lifecycle
 
@@ -91,6 +92,7 @@ private class SizeState: ObservableObject {
     private let debounceDelay: TimeInterval
 }
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
 extension View {
     public func trackCanvasSize(
         debounceDelay: TimeInterval = 0.1,

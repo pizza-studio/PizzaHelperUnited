@@ -12,7 +12,7 @@ public struct CachedJSON: AbleToCodeSendHash, Defaults.Serializable {
 
     public init(rawJSONString: String, timestamp: TimeInterval? = nil) {
         self.rawJSONString = rawJSONString
-        self.timestamp = timestamp ?? Date.now.timeIntervalSince1970
+        self.timestamp = timestamp ?? Date().timeIntervalSince1970
     }
 
     // MARK: Public
