@@ -44,9 +44,105 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
     @State var direction: Direction
 }
 
-// MARK: - Trailing Text Label
+// MARK: - CornerTaggedViewModifier
+
+struct CornerTaggedViewModifier<T: View>: ViewModifier {
+    // MARK: Lifecycle
+
+    public init(
+        verbatim: String,
+        alignment: Alignment,
+        textSize: CGFloat,
+        opacity: CGFloat,
+        padding: CGFloat,
+        backgroundOverride: T? = nil
+    ) {
+        self.stringVerbatim = verbatim
+        self.alignment = alignment
+        self.textSize = textSize
+        self.opacity = opacity
+        self.padding = padding
+        self.backgroundOverride = backgroundOverride
+    }
+
+    // MARK: Public
+
+    @ViewBuilder
+    public func body(content: Content) -> some View {
+        switch stringVerbatim != "" {
+        case false: content
+        case true:
+            content.overlay(alignment: alignment) {
+                theTagCapsule
+            }
+        }
+    }
+
+    // MARK: Private
+
+    @Environment(\.colorScheme) private var colorScheme
+
+    private let stringVerbatim: String
+    private let alignment: Alignment
+    private let textSize: CGFloat
+    private let opacity: CGFloat
+    private let padding: CGFloat
+    private let backgroundOverride: T?
+
+    @ViewBuilder private var theTagCapsule: some View {
+        Text(stringVerbatim)
+            .font(.system(size: textSize))
+            .fontWidth(.condensed)
+            .fontWeight(.medium)
+            .padding(.horizontal, 0.3 * textSize)
+            .apply { content in
+                if let backgroundOverride {
+                    content
+                        .background {
+                            backgroundOverride
+                        }
+                } else {
+                    content
+                        .adjustedBlurMaterialBackground()
+                }
+            }
+            .clipShape(Capsule())
+            .opacity(opacity)
+            .padding(padding)
+            .fixedSize()
+            .foregroundStyle(.white)
+    }
+}
 
 extension View {
+    @ViewBuilder
+    public func corneredTag<T: View>(
+        verbatim stringVerbatim: String,
+        alignment: Alignment,
+        textSize: CGFloat = 12,
+        opacity: CGFloat = 1,
+        enabled: Bool = true,
+        padding: CGFloat = 0,
+        @ViewBuilder backgroundOverride: () -> some View
+    )
+        -> some View {
+        switch enabled {
+        case false: self
+        case true:
+            modifier(
+                CornerTaggedViewModifier(
+                    verbatim: stringVerbatim,
+                    alignment: alignment,
+                    textSize: textSize,
+                    opacity: opacity,
+                    padding: padding,
+                    backgroundOverride: backgroundOverride()
+                )
+            )
+            .environment(\.colorScheme, .dark)
+        }
+    }
+
     @ViewBuilder
     public func corneredTag(
         verbatim stringVerbatim: String,
@@ -57,23 +153,20 @@ extension View {
         padding: CGFloat = 0
     )
         -> some View {
-        switch enabled && stringVerbatim != "" {
+        switch enabled {
         case false: self
         case true:
-            ZStack(alignment: alignment) {
-                self
-                Text(stringVerbatim)
-                    .font(.system(size: textSize))
-                    .fontWidth(.condensed)
-                    .fontWeight(.medium)
-                    .padding(.horizontal, 0.3 * textSize)
-                    .adjustedBlurMaterialBackground().clipShape(Capsule())
-                    .opacity(opacity)
-                    .padding(padding)
-                    .fixedSize()
-                    .foregroundStyle(.white)
-                    .environment(\.colorScheme, .dark)
-            }
+            modifier(
+                CornerTaggedViewModifier<EmptyView>(
+                    verbatim: stringVerbatim,
+                    alignment: alignment,
+                    textSize: textSize,
+                    opacity: opacity,
+                    padding: padding,
+                    backgroundOverride: nil
+                )
+            )
+            .environment(\.colorScheme, .dark)
         }
     }
 }
