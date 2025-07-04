@@ -2,11 +2,20 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
+// 这个 View 不迁移到 PZCoreDataKit。
+
 import PZBaseKit
+import PZCoreDataKit4GachaEntries
+import PZCoreDataKitShared
 import SwiftUI
 
 // MARK: - CDGachaMODebugView
 
+@available(macOS 14, *)
+@available(macCatalyst 17, *)
+@available(iOS 17, *)
 public struct CDGachaMODebugView: View {
     // MARK: Lifecycle
 
@@ -50,7 +59,7 @@ public struct CDGachaMODebugView: View {
             ToolbarItem(placement: .confirmationAction) {
                 Picker("".description, selection: $delegate.game.animation()) {
                     ForEach(Self.oldGachaGames) { enumeratedGame in
-                        Text(enumeratedGame.localizedShortName)
+                        Text(enumeratedGame.uidPrefix)
                             .tag(enumeratedGame)
                     }
                 }
@@ -61,7 +70,7 @@ public struct CDGachaMODebugView: View {
                 }
             }
         }
-        .navigationTitle(delegate.game.localizedDescription)
+        .navigationTitle(delegate.game.titleFullInEnglish)
         .navBarTitleDisplayMode(.large)
         .onChange(of: delegate.game, initial: true) {
             delegate.loadData()
@@ -70,18 +79,21 @@ public struct CDGachaMODebugView: View {
 
     // MARK: Internal
 
-    static let oldGachaGames: [Pizza.SupportedGame] = [.genshinImpact, .starRail]
+    static let oldGachaGames: [PZCoreDataKit.StoredGame] = [.genshinImpact, .starRail]
 
     @StateObject var delegate = CDGachaMODebugVM()
 }
 
 // MARK: CDGachaMODebugView.CDGachaMODebugVM
 
+@available(macOS 14, *)
+@available(macCatalyst 17, *)
+@available(iOS 17, *)
 extension CDGachaMODebugView {
     @Observable
     final class CDGachaMODebugVM: TaskManagedVM {
-        var game: Pizza.SupportedGame = .genshinImpact
-        var managedObjs: [any CDGachaMOProtocol] = []
+        var game: PZCoreDataKit.StoredGame = .genshinImpact
+        var managedObjs: [any (CDGachaMOProtocol & GachaSendableConvertible)] = []
 
         func loadData() {
             let game = game // 使其变成 Sendable.
@@ -91,8 +103,14 @@ extension CDGachaMODebugView {
                 },
                 cancelPreviousTask: true, // 强制重新读入。
                 givenTask: {
-                    async let fetchedManagedObjs = try CDGachaMOSputnik.shared.allGachaDataMO(for: game)
-                    let fetched: [any CDGachaMOProtocol] = try await fetchedManagedObjs
+                    async let fetchedManagedObjs = try CDGachaMOSputnik.shared.getAllDataEntries(for: game)
+                    let fetched: [any CDGachaMOProtocol & GachaSendableConvertible] = try await fetchedManagedObjs
+                        .compactMap {
+                            if let convertible = $0 as? (CDGachaMOProtocol & GachaSendableConvertible) {
+                                return convertible
+                            }
+                            return .none
+                        }
                     return fetched
                 },
                 completionHandler: { fetched in
@@ -102,3 +120,5 @@ extension CDGachaMODebugView {
         }
     }
 }
+
+#endif
