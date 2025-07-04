@@ -135,11 +135,28 @@ public struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol, Codable
         guard PZCoreDataKit.isAppStoreRelease else { return URL?.none }
         guard let containerURL = PZCoreDataKit.groupContainerURL else { return URL?.none }
         let storeURL = containerURL.appendingPathComponent("AccountConfiguration.splite")
-        let exists = if #available(macCatalyst 16.0, *) {
-            FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
-        } else {
-            FileManager.default.fileExists(atPath: storeURL.path)
+        #if targetEnvironment(macCatalyst)
+        if #available(macCatalyst 16.0, *) {
+            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+            return exists ? storeURL : URL?.none
         }
+        #elseif os(iOS)
+        if #available(iOS 16.0, *) {
+            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+            return exists ? storeURL : URL?.none
+        }
+        #elseif os(macOS)
+        if #available(macOS 13.0, *) {
+            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+            return exists ? storeURL : URL?.none
+        }
+        #else
+        if #available(watchOS 9.0, *) {
+            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+            return exists ? storeURL : URL?.none
+        }
+        #endif
+        let exists = FileManager.default.fileExists(atPath: storeURL.path)
         return exists ? storeURL : URL?.none
     }()
 
