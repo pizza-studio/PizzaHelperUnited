@@ -7,6 +7,7 @@ import CoreData
 import Defaults
 import Foundation
 import PZBaseKit
+import PZCoreDataKit4LocalAccounts
 import SwiftData
 
 @Observable

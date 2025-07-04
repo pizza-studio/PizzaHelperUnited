@@ -4,6 +4,7 @@
 
 import Foundation
 import PZBaseKit
+import PZCoreDataKit4LocalAccounts
 
 // MARK: - PZProfileRefProtocol
 
@@ -83,7 +84,8 @@ extension PZProfileRefProtocol {
     ///   - configuration: 旧版 AccountMO。
     @MainActor
     public static func makeInheritedInstance(
-        game: Pizza.SupportedGame, uid: String, configuration: AccountMOProtocol? = nil
+        game: Pizza.SupportedGame, uid: String,
+        configuration: AccountMOProtocol? = nil
     )
         -> Self? {
         guard let server = HoYo.Server(uid: uid, game: game) else { return nil }

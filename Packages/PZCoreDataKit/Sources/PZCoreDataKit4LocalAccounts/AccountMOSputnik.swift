@@ -3,7 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 @preconcurrency import CoreData
-import PZBaseKit
+import PZCoreDataKitShared
 @preconcurrency import Sworm
 
 // MARK: - AccountMOSputnik
@@ -28,54 +28,57 @@ public final class AccountMOSputnik {
 
     public static let shared = try! AccountMOSputnik(persistence: .cloud, backgroundContext: false)
 
-    public func queryAccountDataMO(uuid givenUUID: String) throws -> PZProfileSendable? {
-        var result: [(AccountMOProtocol, Pizza.SupportedGame)] = []
-        try Pizza.SupportedGame.allCases.forEach { game in
+    public func queryAccountData(uuid givenUUID: String) throws -> (
+        any AccountMOProtocol
+    )? {
+        var result: [AccountMOProtocol] = []
+        try PZCoreDataKit.StoredGame.allCases.forEach { game in
             try theDB(for: game)?.perform { ctx in
                 switch game {
                 case .genshinImpact:
                     try ctx.fetch(AccountMO4GI.all).forEach {
                         let decoded = try $0.decode()
                         if decoded.uuid.uuidString == givenUUID {
-                            result.append((decoded, .genshinImpact))
+                            result.append(decoded)
                         }
                     }
                 case .starRail:
                     try ctx.fetch(AccountMO4HSR.all).forEach {
                         let decoded = try $0.decode()
                         if decoded.uuid.uuidString == givenUUID {
-                            result.append((decoded, .starRail))
+                            result.append(decoded)
                         }
                     }
-                case .zenlessZone: return
                 }
             }
         }
         guard let firstResult = result.first else { return nil }
-        let game = firstResult.1
-        let oldProfileMO = firstResult.0
-        let newMO = PZProfileMO.makeInheritedInstance(
-            game: game, uid: oldProfileMO.uid, configuration: oldProfileMO
-        )
-        return newMO?.asSendable
+        return firstResult
     }
 
-    public func allAccountDataMO(for game: Pizza.SupportedGame) throws -> [AccountMOProtocol] {
+    public func allAccountData(
+        for game: PZCoreDataKit.StoredGame
+    ) throws
+        -> [AccountMOProtocol] {
         try theDB(for: game)?.perform { ctx in
             switch game {
-            case .genshinImpact: try ctx.fetch(AccountMO4GI.all).map { try $0.decode() }
-            case .starRail: try ctx.fetch(AccountMO4HSR.all).map { try $0.decode() }
-            case .zenlessZone: []
+            case .genshinImpact: try ctx.fetch(AccountMO4GI.all).map {
+                    let obj = try $0.decode()
+                    return obj
+                }
+            case .starRail: try ctx.fetch(AccountMO4HSR.all).map {
+                    let obj = try $0.decode()
+                    return obj
+                }
             }
         } ?? []
     }
 
-    public func countAllAccountData(for game: Pizza.SupportedGame) throws -> Int {
+    public func countAllAccountData(for game: PZCoreDataKit.StoredGame) throws -> Int {
         try theDB(for: game)?.perform { ctx in
             switch game {
             case .genshinImpact: try ctx.count(of: AccountMO4GI.all)
             case .starRail: try ctx.count(of: AccountMO4HSR.all)
-            case .zenlessZone: 0
             }
         } ?? 0
     }
@@ -84,34 +87,12 @@ public final class AccountMOSputnik {
         try countAllAccountData(for: .genshinImpact) + countAllAccountData(for: .starRail)
     }
 
-    public func allAccountDataAsPZProfileSendable() throws -> [PZProfileSendable] {
-        // Genshin.
-        let genshinData: [PZProfileMO]? = try allAccountDataMO(for: .genshinImpact).compactMap { oldMO in
-            let result = PZProfileMO.makeInheritedInstance(
-                game: .genshinImpact, uid: oldMO.uid, configuration: oldMO
-            )
-            result?.deviceID = oldMO.uuid.uuidString
-            return result
-        }
-        // StarRail.
-        let hsrData: [PZProfileMO]? = try allAccountDataMO(for: .starRail).compactMap { oldMO in
-            let result = PZProfileMO.makeInheritedInstance(
-                game: .starRail, uid: oldMO.uid, configuration: oldMO
-            )
-            result?.deviceID = oldMO.uuid.uuidString
-            return result
-        }
-        let dataSet: [PZProfileMO] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
-        return dataSet.map(\.asSendable)
-    }
-
     // MARK: Internal
 
-    func theDB(for game: Pizza.SupportedGame) -> PersistentContainer? {
+    func theDB(for game: PZCoreDataKit.StoredGame) -> PersistentContainer? {
         switch game {
         case .genshinImpact: db4GI
         case .starRail: db4HSR
-        case .zenlessZone: nil
         }
     }
 
