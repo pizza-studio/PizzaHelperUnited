@@ -54,7 +54,9 @@ public final class AccountMOSputnik {
         guard let firstResult = result.first else { return nil }
         let game = firstResult.1
         let oldProfileMO = firstResult.0
-        let newMO = PZProfileMO(game: game, uid: oldProfileMO.uid, configuration: oldProfileMO)
+        let newMO = PZProfileMO.makeInheritedInstance(
+            game: game, uid: oldProfileMO.uid, configuration: oldProfileMO
+        )
         return newMO?.asSendable
     }
 
@@ -68,7 +70,7 @@ public final class AccountMOSputnik {
         } ?? []
     }
 
-    public func countAllAccountDataMO(for game: Pizza.SupportedGame) throws -> Int {
+    public func countAllAccountData(for game: Pizza.SupportedGame) throws -> Int {
         try theDB(for: game)?.perform { ctx in
             switch game {
             case .genshinImpact: try ctx.count(of: AccountMO4GI.all)
@@ -78,25 +80,29 @@ public final class AccountMOSputnik {
         } ?? 0
     }
 
-    public func countAllAccountDataAsPZProfileMO() throws -> Int {
-        try countAllAccountDataMO(for: .genshinImpact) + countAllAccountDataMO(for: .starRail)
+    public func countAllAccountData() throws -> Int {
+        try countAllAccountData(for: .genshinImpact) + countAllAccountData(for: .starRail)
     }
 
-    public func allAccountDataAsPZProfileMO() throws -> [PZProfileMO] {
+    public func allAccountDataAsPZProfileSendable() throws -> [PZProfileSendable] {
         // Genshin.
         let genshinData: [PZProfileMO]? = try allAccountDataMO(for: .genshinImpact).compactMap { oldMO in
-            let result = PZProfileMO(game: .genshinImpact, uid: oldMO.uid, configuration: oldMO)
+            let result = PZProfileMO.makeInheritedInstance(
+                game: .genshinImpact, uid: oldMO.uid, configuration: oldMO
+            )
             result?.deviceID = oldMO.uuid.uuidString
             return result
         }
         // StarRail.
         let hsrData: [PZProfileMO]? = try allAccountDataMO(for: .starRail).compactMap { oldMO in
-            let result = PZProfileMO(game: .starRail, uid: oldMO.uid, configuration: oldMO)
+            let result = PZProfileMO.makeInheritedInstance(
+                game: .starRail, uid: oldMO.uid, configuration: oldMO
+            )
             result?.deviceID = oldMO.uuid.uuidString
             return result
         }
         let dataSet: [PZProfileMO] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
-        return dataSet
+        return dataSet.map(\.asSendable)
     }
 
     // MARK: Internal

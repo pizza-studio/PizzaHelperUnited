@@ -13,7 +13,7 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent
 
-/// MEMO: 此处沿用 PZProfileMO 作为指针格式，但在增删改操作进行的时候一律走 VM。
+/// MEMO: 此处沿用 PZProfileRef 作为指针格式，但在增删改操作进行的时候一律走 VM。
 /// PZProfileActor 与 MainActor 只能有其中一个用来专门管理 SwiftData 的增删改，
 /// 所以只能放弃使用与后者有关的 Environment 层面的 SwiftData API。
 /// 不然的话，在 iOS 26 / macOS 26 系统下会崩溃。
@@ -48,7 +48,7 @@ struct ProfileManagerPageContent: View {
         Form {
             Section {
                 NavigationLink {
-                    let newProfile = PZProfileMO()
+                    let newProfile = PZProfileRef.makeDefaultInstance()
                     CreateProfileSheetView(profile: newProfile)
                         .environment(alertToastEventStatus)
                 } label: {
@@ -211,7 +211,7 @@ struct ProfileManagerPageContent: View {
     }
 
     @ViewBuilder
-    private func drawRow(profile: PZProfileMO) -> some View {
+    private func drawRow(profile: PZProfileRef) -> some View {
         /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
         HStack {
             profile.asIcon4SUI().frame(width: 48).padding(.trailing, 4)
@@ -266,7 +266,7 @@ struct ProfileManagerPageContent: View {
         }
     }
 
-    private func addProfile(_ profile: PZProfileMO, inBatchQueue: Bool = true) {
+    private func addProfile(_ profile: PZProfileRef, inBatchQueue: Bool = true) {
         theVM.fireTask(
             cancelPreviousTask: false,
             givenTask: {

@@ -144,7 +144,7 @@ extension PZProfileActor {
     public static func migrateOldAccountsIntoProfiles(
         resetNotifications: Bool = true, isUnattended: Bool = false
     ) throws {
-        let oldData = try AccountMOSputnik.shared.allAccountDataAsPZProfileMO().map(\.asSendable)
+        let oldData = try AccountMOSputnik.shared.allAccountDataAsPZProfileSendable()
         Task {
             do {
                 try await PZProfileActor.shared.acceptMigratedOldAccountProfiles(

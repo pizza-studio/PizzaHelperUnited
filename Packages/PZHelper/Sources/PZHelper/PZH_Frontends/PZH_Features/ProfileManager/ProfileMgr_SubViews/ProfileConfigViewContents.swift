@@ -12,7 +12,7 @@ import SwiftUI
 struct ProfileConfigViewContents: View {
     // MARK: Lifecycle
 
-    public init(profile: PZProfileMO, fetchedAccounts: [FetchedAccount]? = nil) {
+    public init(profile: PZProfileRef, fetchedAccounts: [FetchedAccount]? = nil) {
         self.profile = profile
         self.fetchedAccounts = fetchedAccounts
     }
@@ -69,7 +69,7 @@ struct ProfileConfigViewContents: View {
 
     // MARK: Private
 
-    @State private var profile: PZProfileMO
+    @State private var profile: PZProfileRef
     @State private var validate: String = ""
     @State private var fetchedAccounts: [FetchedAccount]?
 
@@ -140,14 +140,14 @@ extension ProfileConfigViewContents {
     private struct SelectAccountView: View {
         // MARK: Lifecycle
 
-        init(profile: PZProfileMO, fetchedAccounts: [FetchedAccount]) {
+        init(profile: PZProfileRef, fetchedAccounts: [FetchedAccount]) {
             self._profile = State(wrappedValue: profile)
             self.fetchedAccounts = fetchedAccounts
         }
 
         // MARK: Internal
 
-        @State var profile: PZProfileMO
+        @State var profile: PZProfileRef
 
         let fetchedAccounts: [FetchedAccount]
 

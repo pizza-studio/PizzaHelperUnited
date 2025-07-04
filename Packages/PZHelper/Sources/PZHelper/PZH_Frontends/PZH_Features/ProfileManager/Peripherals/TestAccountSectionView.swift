@@ -9,7 +9,7 @@ import SwiftUI
 struct TestAccountSectionView: View {
     // MARK: Internal
 
-    @State var profile: PZProfileMO
+    @State var profile: PZProfileRef
 
     var body: some View {
         Section {
@@ -141,7 +141,7 @@ struct TestAccountSectionView: View {
     private struct VerificationNeededView: View {
         // MARK: Internal
 
-        let profile: PZProfileMO
+        let profile: PZProfileRef
         @State var shouldRefreshAccount: () -> Void
 
         var body: some View {

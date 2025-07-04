@@ -10,9 +10,15 @@ import SwiftUI
 // MARK: - ProfileConfigEditorView
 
 struct ProfileConfigEditorView: View {
+    // MARK: Lifecycle
+
+    init(unsavedProfile: PZProfileRef) {
+        self.unsavedProfile = unsavedProfile
+    }
+
     // MARK: Internal
 
-    @Bindable var unsavedProfile: PZProfileMO
+    @Bindable var unsavedProfile: PZProfileRef
 
     var body: some View {
         Form {
@@ -122,7 +128,7 @@ struct ProfileConfigEditorView: View {
 private struct RegenerateDeviceFingerPrintButton: View {
     // MARK: Lifecycle
 
-    init(profile: PZProfileMO) {
+    init(profile: PZProfileRef) {
         self._profile = State(wrappedValue: profile)
     }
 
@@ -135,7 +141,7 @@ private struct RegenerateDeviceFingerPrintButton: View {
         case fail(Error)
     }
 
-    @State var profile: PZProfileMO
+    @State var profile: PZProfileRef
 
     @State var isErrorAlertShown: Bool = false
     @State var error: AnyLocalizedError?
