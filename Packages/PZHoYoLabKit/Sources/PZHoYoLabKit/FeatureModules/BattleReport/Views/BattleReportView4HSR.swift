@@ -42,6 +42,8 @@ public struct BattleReportView4HSR: BattleReportView {
         Form {
             if data4FH.hasData || data4AS.hasData || data4PF.hasData {
                 contents
+                    .frame(width: containerWidth)
+                    .animation(.default, value: screenVM.mainColumnCanvasSizeObserved)
             } else {
                 blankView
             }
@@ -426,6 +428,11 @@ public struct BattleReportView4HSR: BattleReportView {
     // MARK: Private
 
     @State private var contentType: TreasuresLightwardType = .forgottenHall
+    @StateObject private var screenVM: ScreenVM = .shared
+
+    private var containerWidth: CGFloat {
+        screenVM.mainColumnCanvasSizeObserved.width - 64
+    }
 
     private var data4FH: BattleReportData.ForgottenHallData { data.forgottenHall }
 

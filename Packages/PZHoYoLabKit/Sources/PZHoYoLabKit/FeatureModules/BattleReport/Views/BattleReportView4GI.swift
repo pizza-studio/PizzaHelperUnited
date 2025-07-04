@@ -45,6 +45,8 @@ public struct BattleReportView4GI: BattleReportView {
         Form {
             if data4SA.hasData || (data4SO?.single.hasData ?? false) {
                 contents
+                    .frame(width: containerWidth)
+                    .animation(.default, value: screenVM.mainColumnCanvasSizeObserved)
             } else {
                 blankView
             }
@@ -112,7 +114,7 @@ public struct BattleReportView4GI: BattleReportView {
     private let profile: PZProfileSendable?
 
     private var containerWidth: CGFloat {
-        screenVM.mainColumnCanvasSizeObserved.width - 48
+        screenVM.mainColumnCanvasSizeObserved.width - 64
     }
 
     private var columns: Int { min(max(Int(floor(containerWidth / 200)), 2), 4) }
