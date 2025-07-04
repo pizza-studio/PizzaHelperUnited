@@ -41,19 +41,4 @@ extension Pizza {
         guard let bID = Bundle.main.bundleIdentifier?.lowercased() else { return false }
         return bID.hasSuffix("extension") || bID.hasSuffix("widget")
     }()
-
-    /// Retrieves the URL of the folder where the `WidgetBackground`s are stored in the documents directory.
-    /// - Parameter folderName: The name of the folder where the `WidgetBackground`s are stored.
-    /// - Returns: The URL of the folder where the `WidgetBackground`s are stored in the documents directory.
-    public static func documentBackgroundFolderUrl(folderName: String) throws -> URL {
-        let backgroundFolderUrl = groupContainerURL!
-            .appendingPathComponent("UserSuppliedWallpapers", isDirectory: true)
-            .appendingPathComponent(folderName, isDirectory: true)
-        try? FileManager.default.createDirectory(
-            at: backgroundFolderUrl,
-            withIntermediateDirectories: true,
-            attributes: nil
-        )
-        return backgroundFolderUrl
-    }
 }
