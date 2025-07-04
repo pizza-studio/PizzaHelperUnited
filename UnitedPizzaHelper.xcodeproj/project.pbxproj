@@ -105,6 +105,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B02FD042E182DB0003E26D3 /* PZCoreDataKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZCoreDataKit; sourceTree = "<group>"; };
 		5B10D7F12CC6636C00245B77 /* Pizza Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pizza Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B10D8C82CC67CE800245B77 /* PZAboutKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZAboutKit; sourceTree = "<group>"; };
 		5B258C812CCE890300131992 /* PizzaWatchAppExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PizzaWatchAppExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +307,7 @@
 				5BDDF2762C7601AA006D4BFE /* GachaKit */,
 				5B978A8F2C8D8DF60000EB61 /* GITodayMaterialsKit */,
 				5B10D8C82CC67CE800245B77 /* PZAboutKit */,
+				5B02FD042E182DB0003E26D3 /* PZCoreDataKit */,
 				5BD0D0F22C6A633700DA8099 /* PZHelper */,
 				5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */,
 				5B4CDE852C8482D700298C69 /* PZHoYoLabKit */,
