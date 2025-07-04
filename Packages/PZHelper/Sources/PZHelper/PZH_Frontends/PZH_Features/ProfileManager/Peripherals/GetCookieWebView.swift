@@ -124,9 +124,7 @@ struct GetCookieWebView: View {
                 Color.black.opacity(0.5)
                     .blurMaterialBackground()
                 Color.clear
-                    .containerRelativeFrame(.horizontal, alignment: .leading) { length, _ in
-                        min(400, length * 0.8)
-                    }
+                    .frame(minWidth: 400, maxWidth: 0.8 * pageWidth)
                     .overlay {
                         VStack(alignment: .center, spacing: 12) {
                             Text("profileMgr.accountLogin.attention.title".i18nPZHelper)
@@ -166,6 +164,12 @@ struct GetCookieWebView: View {
             }
             .environment(\.colorScheme, .dark)
         }
+    }
+
+    @StateObject private var screenVM: ScreenVM = .shared
+
+    private var pageWidth: CGFloat {
+        screenVM.mainColumnCanvasSizeObserved.width
     }
 }
 

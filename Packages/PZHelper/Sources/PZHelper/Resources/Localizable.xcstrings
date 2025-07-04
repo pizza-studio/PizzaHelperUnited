@@ -4617,7 +4617,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "為了確保您對此感到安全，這裡介紹一下運作方式：您的密碼輸入受到 macOS 內建的 SecureEventInputAPI（或 iOS 上的等效功能）的保護，然後將直接由 HoYoLAB 登入網頁處理。這是 Apple 對 WKWebView 的設計使然。其他人無法幹擾或截聽這個過程，包括敝應用。您會發現，在密碼接收來自使用者的輸入的過程中，您無法切換到第三方輸入法。"
+            "value" : "為了確保您對此感到安全，這裡介紹一下運作方式：您的密碼輸入受到 macOS 內建的 SecureEventInputAPI（或 iOS 上的等效功能）的保護，然後將直接由 HoYoLAB 登入網頁處理。這是 Apple 對 WKWebView 的設計使然。其他人無法干擾或截聽這個過程，包括敝應用。您會發現，在密碼接收來自使用者的輸入的過程中，您無法切換到第三方輸入法。"
           }
         }
       }
