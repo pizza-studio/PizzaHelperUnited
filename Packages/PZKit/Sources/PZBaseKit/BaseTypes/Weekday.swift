@@ -2,7 +2,9 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-public enum Weekday: Int, CaseIterable, CustomStringConvertible {
+// MARK: - Weekday
+
+public enum Weekday: Int, CaseIterable {
     case sunday = 1
     case monday = 2
     case tuesday = 3
@@ -12,7 +14,15 @@ public enum Weekday: Int, CaseIterable, CustomStringConvertible {
     case saturday = 7
 
     // MARK: Public
+}
 
+// MARK: CustomStringConvertible
+
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
+extension Weekday: CustomStringConvertible {
     public var description: String {
         switch self {
         case .sunday: String(localized: "sys.weekday.sunday", bundle: .module)

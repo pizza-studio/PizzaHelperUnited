@@ -7,11 +7,19 @@ import Foundation
 import Observation
 import SwiftUI
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension View {
     @ViewBuilder
     public func appTabBarVisibility(_ visibility: SwiftUI.Visibility) -> some View {
         #if !os(macOS)
-        toolbar(visibility, for: .tabBar)
+        if #available(macCatalyst 16.0, *) {
+            toolbar(visibility, for: .tabBar)
+        } else {
+            self
+        }
         #else
         self
         #endif

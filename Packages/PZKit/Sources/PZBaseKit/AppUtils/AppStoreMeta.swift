@@ -10,6 +10,10 @@ import SwiftUI
 
 // MARK: - ASUpdateNoticeView
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 public struct ASUpdateNoticeView: View {
     // MARK: Lifecycle
 
@@ -44,6 +48,10 @@ public struct ASUpdateNoticeView: View {
 
 // MARK: - ASMetaSputnik
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 public actor ASMetaSputnik: Sendable {
     // MARK: Lifecycle
 

@@ -154,7 +154,9 @@ public final class OPWebView: WKWebView {
         let result = WKWebViewConfiguration()
         let pagePref = WKWebpagePreferences()
         let viewPref = WKPreferences()
-        viewPref.isTextInteractionEnabled = true
+        if #available(macCatalyst 14.5, *) {
+            viewPref.isTextInteractionEnabled = true
+        }
         // 防止 iPad 用户受困于登入网页所显示的荧幕旋转提示。
         pagePref.preferredContentMode = .mobile
         result.defaultWebpagePreferences = pagePref

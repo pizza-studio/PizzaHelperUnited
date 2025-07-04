@@ -87,7 +87,7 @@ extension FullNote4GI {
 
 extension FullNote4GI.TransformerInfo4GI {
     public var percentage: Double {
-        let seconds = recoveryTime.timeIntervalSince1970 - Date.now.timeIntervalSince1970
+        let seconds = recoveryTime.timeIntervalSince1970 - Date().timeIntervalSince1970
         // 冷却时间是六天 22 小时。Ref: https://genshin-impact.fandom.com/wiki/Parametric_Transformer
         return seconds / Double(((6 * 24) + 22) * 60 * 60)
     }
@@ -97,7 +97,7 @@ extension FullNote4GI.TransformerInfo4GI {
     }
 
     public var remainingDays: Int {
-        let seconds = recoveryTime.timeIntervalSince1970 - Date.now.timeIntervalSince1970
+        let seconds = recoveryTime.timeIntervalSince1970 - Date().timeIntervalSince1970
         return Swift.max(Int((seconds / 86400.0).rounded(.down)), 0)
     }
 }

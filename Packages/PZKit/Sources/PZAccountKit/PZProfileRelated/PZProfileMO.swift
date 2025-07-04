@@ -8,6 +8,10 @@ import SwiftData
 
 // MARK: - PZProfileMO
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 @Model
 internal final class PZProfileMO: Codable, PZProfileRefProtocol {
     // MARK: Lifecycle
@@ -69,6 +73,10 @@ internal final class PZProfileMO: Codable, PZProfileRefProtocol {
 
 // MARK: Hashable, Equatable
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension PZProfileMO: Hashable, Equatable {
     public func hash(into hasher: inout Hasher) {
         asSendable.hash(into: &hasher)
@@ -79,6 +87,10 @@ extension PZProfileMO: Hashable, Equatable {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension PZProfileMO {
     /// 此处得重复一遍该 Protocol 方法，不然就只能针对 var 变数使用该函式了。
     public func inherit(from target: some ProfileProtocol) {

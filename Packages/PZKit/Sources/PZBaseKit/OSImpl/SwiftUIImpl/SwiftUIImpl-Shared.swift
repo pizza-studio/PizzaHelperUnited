@@ -14,6 +14,10 @@ extension Image {
 
 // MARK: - HelpTextForScrollingOnDesktopComputer
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public struct HelpTextForScrollingOnDesktopComputer: View {
     // MARK: Lifecycle
 
@@ -46,6 +50,10 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
 
 // MARK: - CornerTaggedViewModifier
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 struct CornerTaggedViewModifier<T: View>: ViewModifier {
     // MARK: Lifecycle
 
@@ -114,6 +122,10 @@ struct CornerTaggedViewModifier<T: View>: ViewModifier {
     }
 }
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 extension View {
     @ViewBuilder
     public func corneredTag<T: View>(
@@ -173,6 +185,10 @@ extension View {
 
 // MARK: - Blur Background
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension View {
     @ViewBuilder
     public func blurMaterialBackground(enabled: Bool = true) -> some View {
@@ -206,6 +222,10 @@ extension View {
 
 // MARK: - BlurMaterialBackground
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 struct BlurMaterialBackground: ViewModifier {
     @ViewBuilder
     public func body(content: Content) -> some View {
@@ -219,6 +239,10 @@ struct BlurMaterialBackground: ViewModifier {
 
 // MARK: - AdjustedBlurMaterialBackground
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 struct AdjustedBlurMaterialBackground: ViewModifier {
     // MARK: Public
 
@@ -274,6 +298,10 @@ extension Font {
     }()
 }
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension CGColor {
     public var suiColor: Color {
         .init(cgColor: self)
@@ -320,6 +348,10 @@ public struct Divided<Content: View>: View {
 
 // MARK: - View.restoreAppTint.
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension View {
     @ViewBuilder
     public func restoreSystemTint() -> some View {
@@ -439,6 +471,10 @@ public enum NavBarTitleDisplayMode {
 
 // MARK: - InlineTextDescription
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension View {
     @ViewBuilder
     public func asInlineTextDescription() -> some View {

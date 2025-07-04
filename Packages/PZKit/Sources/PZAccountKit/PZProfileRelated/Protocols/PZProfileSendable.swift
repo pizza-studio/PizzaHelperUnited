@@ -31,7 +31,10 @@ extension PZProfileSendable {
         "\(game.uidPrefix)-\(uid)"
     }
 
-    internal var asMO: PZProfileMO {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
+    @available(watchOS 10.0, *) internal var asMO: PZProfileMO {
         .init(
             game: game,
             server: server,
@@ -48,7 +51,10 @@ extension PZProfileSendable {
         )
     }
 
-    public var asRef: PZProfileRef {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
+    @available(watchOS 10.0, *) public var asRef: PZProfileRef {
         .init(
             game: game,
             server: server,

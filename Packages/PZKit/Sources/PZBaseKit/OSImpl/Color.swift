@@ -54,6 +54,10 @@ extension UIColor {
 }
 #endif
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension Color {
     #if !os(watchOS)
     public static var colorSystemGray6: Color {

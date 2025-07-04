@@ -6,6 +6,10 @@ import Foundation
 import Observation
 import SwiftUI
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 @Observable
 @MainActor
 open class TaskManagedVM: ObservableObject {

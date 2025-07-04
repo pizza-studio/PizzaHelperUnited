@@ -202,6 +202,10 @@ extension HoYo.Server: RawRepresentable, Codable, Identifiable, Hashable {
 
 // MARK: - HoYo.Server + CustomStringConvertible
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension HoYo.Server: CustomStringConvertible {
     public var description: String {
         localizedDescription
@@ -218,7 +222,9 @@ extension HoYo.Server: CustomStringConvertible {
     public var localizedDescriptionByGameAndRegion: String {
         "\(localizedDescriptionByGame) (\(region.localizedDescription))"
     }
+}
 
+extension HoYo.Server {
     public var literalNameRawValue: String {
         switch self {
         case .celestia: "celestia"

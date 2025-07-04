@@ -22,7 +22,10 @@ extension Pizza {
 
         public var id: String { rawValue }
 
-        public var localizedShortName: String {
+        @available(iOS 15.0, *)
+        @available(macCatalyst 15.0, *)
+        @available(macOS 12.0, *)
+        @available(watchOS 8.0, *) public var localizedShortName: String {
             switch self {
             case .genshinImpact: "game.genshin.shortNameEX".i18nBaseKit
             case .starRail: "game.starRail.shortNameEX".i18nBaseKit
@@ -64,6 +67,10 @@ extension Pizza {
 
 // MARK: - Pizza.SupportedGame + CustomStringConvertible
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension Pizza.SupportedGame: CustomStringConvertible {
     public var description: String {
         localizedDescription
@@ -96,6 +103,10 @@ extension Pizza.SupportedGame: CustomStringConvertible {
     }
 }
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension Pizza.SupportedGame? {
     public var localizedShortName: String {
         self?.localizedShortName ?? "game.all.shortNameEX".i18nBaseKit

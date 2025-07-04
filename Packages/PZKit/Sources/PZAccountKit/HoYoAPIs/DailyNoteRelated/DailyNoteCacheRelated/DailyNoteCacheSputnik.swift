@@ -29,7 +29,7 @@ public struct DailyNoteCacheSputnik<T: DailyNoteProtocol> {
     public static func getCache(uidWithGame: String) -> T? {
         guard let package = Defaults[.cachedDailyNotes][uidWithGame] else { return nil }
         let cachedTimestamp = package.timestamp
-        let currentTimestamp = Date.now.timeIntervalSince1970
+        let currentTimestamp = Date().timeIntervalSince1970
         guard cachedTimestamp + T.game.eachStaminaRecoveryTime > currentTimestamp else { return nil }
         guard let data = package.rawJSONString.data(using: .utf8) else { return nil }
         let decoded = try? T.decodeFromMiHoYoAPIJSONResult(

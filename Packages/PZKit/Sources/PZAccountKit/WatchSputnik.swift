@@ -11,6 +11,10 @@ import WatchConnectivity
 
 // MARK: - AppleWatchSputnik
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 @Observable
 public final class AppleWatchSputnik: NSObject, ObservableObject {
     // MARK: Lifecycle
@@ -97,6 +101,10 @@ public final class AppleWatchSputnik: NSObject, ObservableObject {
 
 // MARK: WCSessionDelegate
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension AppleWatchSputnik: WCSessionDelegate {
     public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         #if os(watchOS)

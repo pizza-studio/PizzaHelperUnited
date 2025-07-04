@@ -8,6 +8,10 @@ import PZCoreDataKit4LocalAccounts
 
 // MARK: - PZProfileRefProtocol
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 public protocol PZProfileRefProtocol: AnyObject, ProfileMOProtocol, Codable {
     init(
         game: Pizza.SupportedGame,
@@ -27,6 +31,10 @@ public protocol PZProfileRefProtocol: AnyObject, ProfileMOProtocol, Codable {
     var asSendable: PZProfileSendable { get }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension PZProfileRefProtocol {
     @MainActor
     public static func new(server: HoYo.Server, uid: String) -> Self {
@@ -109,6 +117,10 @@ extension PZProfileRefProtocol {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension PZProfileRefProtocol {
     public init(from decoder: any Decoder) throws {
         let decoded = try PZProfileSendable(from: decoder)
@@ -153,6 +165,10 @@ extension PZProfileRefProtocol {
 // MARK: - PZProfileRef
 
 /// PZProfileMO 不适合拿来滥用成在外部使用的 Reference Type，所以单独构建一个。
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 @Observable
 public final class PZProfileRef: Identifiable, PZProfileRefProtocol, ObservableObject {
     // MARK: Lifecycle
@@ -216,6 +232,10 @@ public final class PZProfileRef: Identifiable, PZProfileRefProtocol, ObservableO
 
 // MARK: Hashable, Equatable
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension PZProfileRef: Hashable, Equatable {
     public func hash(into hasher: inout Hasher) {
         asSendable.hash(into: &hasher)
@@ -226,6 +246,10 @@ extension PZProfileRef: Hashable, Equatable {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension PZProfileRef {
     /// 此处得重复一遍该 Protocol 方法，不然就只能针对 var 变数使用该函式了。
     public func inherit(from target: some ProfileProtocol) {

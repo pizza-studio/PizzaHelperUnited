@@ -11,6 +11,10 @@ import SwiftUI
 
 // 因为该 VM 也用于 Apple Watch，所以塞到 PZAccountKit 里面。
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 @Observable @MainActor
 public final class DailyNoteViewModel: ObservableObject, Sendable {
     // MARK: Lifecycle
