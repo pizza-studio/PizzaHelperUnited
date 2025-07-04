@@ -274,6 +274,7 @@ extension CGImageCropperView {
             if let sourceCGImageZoomedAndCroppedCache {
                 Section {
                     let metrics = currentMetrics
+                    let needsToShrinkThePreviewViewport = needsToShrinkThePreviewViewport
                     Image(
                         decorative: sourceCGImageZoomedAndCroppedCache,
                         scale: 1,
@@ -282,7 +283,7 @@ extension CGImageCropperView {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(8)
-                    .containerRelativeFrame(.horizontal, alignment: .center) { length, _ in
+                    .containerRelativeFrameEX(.horizontal, alignment: .center) { length, _ in
                         length * (needsToShrinkThePreviewViewport ? 0.6 : 1)
                     }
                     .frame(maxWidth: .infinity)
