@@ -9,6 +9,9 @@ import Foundation
 
 public enum HoYo {}
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
 extension HoYo {
     /// Generate `api-takumi-record.mihoyo.com` / `bbs-api-os.hoyolab.com` request for miHoYo API
     /// - Parameters:

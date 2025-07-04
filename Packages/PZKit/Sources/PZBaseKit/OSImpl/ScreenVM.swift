@@ -16,6 +16,10 @@ extension Notification: @unchecked @retroactive Sendable {}
 
 // MARK: - ScreenVM
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 @Observable
 @MainActor
 public final class ScreenVM: ObservableObject {
@@ -183,6 +187,10 @@ public final class ScreenVM: ObservableObject {
 // MARK: - UIWindowScene Orientation Extension
 
 #if os(iOS) && !targetEnvironment(macCatalyst)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension UIInterfaceOrientation {
     var screenVMOrientation: ScreenVM.Orientation {
         switch self {
@@ -197,6 +205,10 @@ extension UIInterfaceOrientation {
 }
 #endif
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension ScreenVM {
     public static func getKeyWindowSize() -> CGSize {
         #if os(iOS) || targetEnvironment(macCatalyst)
@@ -213,6 +225,10 @@ extension ScreenVM {
 
 // MARK: ScreenVM.ViewTracker
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension ScreenVM {
     fileprivate struct ViewTracker: ViewModifier {
         // MARK: Lifecycle
@@ -292,6 +308,10 @@ extension ScreenVM {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension View {
     @ViewBuilder
     public func trackScreenVMParameters(debounceDelay: TimeInterval = 0.1) -> some View {

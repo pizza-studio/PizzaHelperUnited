@@ -2,11 +2,15 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Foundation
 import PZBaseKit
 
 // MARK: - URLRequestConfig
 
 /// Abstract class storing salt, version, etc for API.
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
 public enum URLRequestConfig {
     public static func getUserAgent(region: HoYo.AccountRegion) -> String {
         """
@@ -117,6 +121,11 @@ public enum URLRequestConfig {
         additionalHeaders: [String: String]?
     ) async throws
         -> [String: String] {
+        let deviceID: String = if #available(macCatalyst 15.0, *) {
+            await ThisDevice.getDeviceID4Vendor(deviceID)
+        } else {
+            UUID().uuidString
+        }
         var headers = [
             "User-Agent": Self.getUserAgent(region: region),
             "Referer": referer(region: region),
@@ -130,7 +139,7 @@ public enum URLRequestConfig {
             "x-rpc-app_version": xRPCAppVersion(region: region),
             "x-rpc-client_type": xRPCClientType(region: region),
             "x-rpc-page": "3.1.3_#/rpg",
-            "x-rpc-device_id": await ThisDevice.getDeviceID4Vendor(deviceID),
+            "x-rpc-device_id": deviceID,
             "x-rpc-language": xRPCLanguage(region: region),
 
             "Sec-Fetch-Dest": "empty",
@@ -144,6 +153,9 @@ public enum URLRequestConfig {
     }
 }
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
 extension URLRequestConfig {
     public static func writeXRPCChallengeHeaders4DailyNote(
         to target: inout [String: String],

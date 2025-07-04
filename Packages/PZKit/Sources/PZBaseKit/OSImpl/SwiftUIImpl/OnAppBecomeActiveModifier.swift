@@ -8,6 +8,10 @@ import SwiftUI
 // MARK: - OnAppBecomeActiveModifier
 
 /// A ViewModifier that adds an action to be performed whenever an app comes to active state.
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 private struct OnAppBecomeActiveModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
@@ -56,6 +60,10 @@ private struct OnAppBecomeActiveModifierMac: ViewModifier {
 // MARK: - OnAppEnterBackgroundModifier
 
 /// A ViewModifier that adds an action to be performed whenever an app enters background state.
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 private struct OnAppEnterBackgroundModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
@@ -79,6 +87,10 @@ private struct OnAppEnterBackgroundModifier: ViewModifier {
 // MARK: - OnAppBecomeInactiveModifier
 
 /// A ViewModifier that adds an action to be performed whenever an app becomes inactive.
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 private struct OnAppBecomeInactiveModifier: ViewModifier {
     @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
@@ -99,6 +111,10 @@ private struct OnAppBecomeInactiveModifier: ViewModifier {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension View {
     /// Add an action to be performed whenever an app comes to active state.
     ///

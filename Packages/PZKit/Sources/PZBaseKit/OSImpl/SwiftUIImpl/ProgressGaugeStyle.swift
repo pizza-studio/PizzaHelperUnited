@@ -7,6 +7,10 @@ import SwiftUI
 
 // MARK: - ProgressGaugeStyle
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public struct ProgressGaugeStyle: GaugeStyle {
     // MARK: Lifecycle
 

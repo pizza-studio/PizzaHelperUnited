@@ -10,6 +10,10 @@ import PZBaseKit
 import PZCoreDataKit4LocalAccounts
 import SwiftData
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 @Observable
 public final class ProfileManagerVM: TaskManagedVM {
     // MARK: Lifecycle

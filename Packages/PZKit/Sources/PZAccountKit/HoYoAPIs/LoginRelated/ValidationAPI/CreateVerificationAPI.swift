@@ -7,6 +7,10 @@ import Foundation
 import PZBaseKit
 
 extension HoYo {
+    @available(iOS 15.0, *)
+    @available(macCatalyst 15.0, *)
+    @available(macOS 12.0, *)
+    @available(watchOS 8.0, *)
     public static func createVerification(
         region: HoYo.AccountRegion,
         cookie: String,
@@ -55,6 +59,10 @@ extension HoYo {
         return try .decodeFromMiHoYoAPIJSONResult(data: data, debugTag: "HoYo.createVerification()")
     }
 
+    @available(iOS 15.0, *)
+    @available(macCatalyst 15.0, *)
+    @available(macOS 12.0, *)
+    @available(watchOS 8.0, *)
     @discardableResult
     public static func verifyVerification(
         region: HoYo.AccountRegion,

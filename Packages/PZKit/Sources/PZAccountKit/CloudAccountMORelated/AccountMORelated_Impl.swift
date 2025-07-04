@@ -7,27 +7,37 @@ import PZBaseKit
 import PZCoreDataKit4LocalAccounts
 @preconcurrency import Sworm
 
+#if !os(watchOS)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(iOSApplicationExtension, unavailable)
 public typealias PZAccountMODebugView = AccountMODebugView
+#endif
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension AccountMOSputnik {
     public func getAllAccountDataAsPZProfileSendable() throws -> [PZProfileSendable] {
         // Genshin.
-        let genshinData: [PZProfileMO]? = try allAccountData(for: .genshinImpact).compactMap { oldMO in
-            let result = PZProfileMO.makeInheritedInstance(
+        let genshinData: [PZProfileRef]? = try allAccountData(for: .genshinImpact).compactMap { oldMO in
+            let result = PZProfileRef.makeInheritedInstance(
                 game: .genshinImpact, uid: oldMO.uid, configuration: oldMO
             )
             result?.deviceID = oldMO.uuid.uuidString
             return result
         }
         // StarRail.
-        let hsrData: [PZProfileMO]? = try allAccountData(for: .starRail).compactMap { oldMO in
-            let result = PZProfileMO.makeInheritedInstance(
+        let hsrData: [PZProfileRef]? = try allAccountData(for: .starRail).compactMap { oldMO in
+            let result = PZProfileRef.makeInheritedInstance(
                 game: .starRail, uid: oldMO.uid, configuration: oldMO
             )
             result?.deviceID = oldMO.uuid.uuidString
             return result
         }
-        let dataSet: [PZProfileMO] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
+        let dataSet: [PZProfileRef] = [genshinData, hsrData].compactMap { $0 }.reduce([], +)
         return dataSet.map(\.asSendable)
     }
 }

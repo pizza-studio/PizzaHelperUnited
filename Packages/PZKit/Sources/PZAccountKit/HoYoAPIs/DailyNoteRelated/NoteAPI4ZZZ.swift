@@ -6,6 +6,9 @@ import Alamofire
 import Foundation
 import PZBaseKit
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
 extension HoYo {
     public static func note4ZZZ(profile: PZProfileSendable) async throws -> Note4ZZZ {
         try await note4ZZZ(

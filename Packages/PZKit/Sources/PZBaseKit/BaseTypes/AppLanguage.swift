@@ -31,7 +31,10 @@ public enum AppLanguage: String, CaseIterable, Identifiable {
 
     public var id: String { rawValue }
 
-    public var localizedDescription: String {
+    @available(iOS 15.0, *)
+    @available(macCatalyst 15.0, *)
+    @available(macOS 12.0, *)
+    @available(watchOS 8.0, *) public var localizedDescription: String {
         "app.language.\(rawValue)".i18nBaseKit
     }
 

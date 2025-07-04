@@ -108,6 +108,10 @@ extension HoYo.AccountRegion: RawRepresentable, Codable, Identifiable, Hashable 
 
 // MARK: - HoYo.AccountRegion + CustomStringConvertible
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension HoYo.AccountRegion: CustomStringConvertible {
     public var description: String {
         localizedDescription
@@ -116,7 +120,9 @@ extension HoYo.AccountRegion: CustomStringConvertible {
     public var localizedDescription: String {
         localizedStringKey.i18nAK
     }
+}
 
+extension HoYo.AccountRegion {
     public var literalNameRawValue: String {
         switch self {
         case .miyoushe: "miyoushe"

@@ -63,7 +63,7 @@ public struct AssignmentInfo4HSR: AbleToCodeSendHash {
 
         /// Remaining time of assignment
         public var remainingTime: TimeInterval {
-            max(_remainingTime - Date.now.timeIntervalSince(fetchTime), 0)
+            max(_remainingTime - Date().timeIntervalSince(fetchTime), 0)
         }
 
         /// The status of the assignment

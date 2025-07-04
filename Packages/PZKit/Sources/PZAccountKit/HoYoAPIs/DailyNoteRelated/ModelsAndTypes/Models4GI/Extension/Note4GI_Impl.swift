@@ -8,7 +8,7 @@ import PZBaseKit
 
 extension ResinInfo4GI {
     public var currentResinDynamic: Int {
-        calculatedCurrentResin(referTo: .now)
+        calculatedCurrentResin(referTo: .init())
     }
 
     public func calculatedCurrentResin(referTo date: Date) -> Int {

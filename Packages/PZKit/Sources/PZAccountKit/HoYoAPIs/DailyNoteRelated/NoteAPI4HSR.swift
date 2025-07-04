@@ -6,6 +6,9 @@ import Alamofire
 import Foundation
 import PZBaseKit
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
 extension HoYo {
     public static func note4HSR(profile: PZProfileSendable) async throws -> any Note4HSR {
         try await note4HSR(

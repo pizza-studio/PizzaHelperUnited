@@ -6,6 +6,10 @@ import Foundation
 import PZBaseKit
 import SwiftUI
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension PZProfileSendable {
     public func getDailyNote(cached returnCachedResult: Bool = false) async throws -> any DailyNoteProtocol {
         handleCachedResults: if returnCachedResult {
@@ -41,6 +45,10 @@ extension PZProfileSendable {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension PZProfileMO {
     public func getDailyNote() async throws -> any DailyNoteProtocol {
         try await asSendable.getDailyNote()
@@ -102,7 +110,7 @@ extension DailyNoteProtocol {
             return dailyNote.staminaInfo.fullTime
         case let dailyNote as Note4ZZZ:
             return dailyNote.energy.timeOnFinish
-        default: return .now
+        default: return .init()
         }
     }
 

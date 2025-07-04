@@ -8,6 +8,9 @@ import PZBaseKit
 // MARK: - URLRequestHelper
 
 /// Abstract class help generate api url request
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
 enum URLRequestHelper {
     /// Calculate the DS used in url request headers
     /// - Parameters:
