@@ -26,45 +26,43 @@ public struct PZProfileSendable: AbleToCodeSendHash, Equatable, Identifiable, Pr
     public var id: UUID { uuid }
 }
 
-extension PZProfileMO {
-    public var asSendable: PZProfileSendable {
-        .init(
-            game: game,
-            server: server,
-            uid: uid,
-            uuid: uuid,
-            allowNotification: allowNotification,
-            cookie: cookie,
-            deviceFingerPrint: deviceFingerPrint,
-            name: name,
-            priority: priority,
-            serverRawValue: serverRawValue,
-            sTokenV2: sTokenV2,
-            deviceID: deviceID
-        )
-    }
-}
-
 extension PZProfileSendable {
-    public var asMO: PZProfileMO {
-        .init(
-            game: game,
-            server: server,
-            uid: uid,
-            uuid: uuid,
-            allowNotification: allowNotification,
-            cookie: cookie,
-            deviceFingerPrint: deviceFingerPrint,
-            name: name,
-            priority: priority,
-            serverRawValue: serverRawValue,
-            sTokenV2: sTokenV2,
-            deviceID: deviceID
-        )
-    }
-
     public var uidWithGame: String {
         "\(game.uidPrefix)-\(uid)"
+    }
+
+    internal var asMO: PZProfileMO {
+        .init(
+            game: game,
+            server: server,
+            uid: uid,
+            uuid: uuid,
+            allowNotification: allowNotification,
+            cookie: cookie,
+            deviceFingerPrint: deviceFingerPrint,
+            name: name,
+            priority: priority,
+            serverRawValue: serverRawValue,
+            sTokenV2: sTokenV2,
+            deviceID: deviceID
+        )
+    }
+
+    public var asRef: PZProfileRef {
+        .init(
+            game: game,
+            server: server,
+            uid: uid,
+            uuid: uuid,
+            allowNotification: allowNotification,
+            cookie: cookie,
+            deviceFingerPrint: deviceFingerPrint,
+            name: name,
+            priority: priority,
+            serverRawValue: serverRawValue,
+            sTokenV2: sTokenV2,
+            deviceID: deviceID
+        )
     }
 }
 

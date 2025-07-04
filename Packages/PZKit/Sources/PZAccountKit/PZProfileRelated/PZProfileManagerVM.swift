@@ -18,15 +18,15 @@ public final class ProfileManagerVM: TaskManagedVM {
         var profiles = defaultsMap.values.sorted { $0.priority < $1.priority }
         profiles.fixPrioritySettings()
         self.profiles = profiles
-        var newMOMap = [String: PZProfileMO]()
+        var newMOMap = [String: PZProfileRef]()
         profiles.forEach { profileSendable in
-            newMOMap[profileSendable.uuid.uuidString] = profileSendable.asMO
+            newMOMap[profileSendable.uuid.uuidString] = profileSendable.asRef
         }
         self.profileMOs = newMOMap
         super.init()
         configurePublisherObservations()
         Task { @MainActor in
-            let count = try? AccountMOSputnik.shared.countAllAccountDataAsPZProfileMO()
+            let count = try? AccountMOSputnik.shared.countAllAccountData()
             self.hasOldAccountDataDetected = (count ?? 0) > 0
         }
         Task {
@@ -41,8 +41,8 @@ public final class ProfileManagerVM: TaskManagedVM {
     // MARK: Public
 
     public enum SheetType: Identifiable, Hashable {
-        case createNewProfile(PZProfileMO)
-        case editExistingProfile(PZProfileMO)
+        case createNewProfile(PZProfileRef)
+        case editExistingProfile(PZProfileRef)
 
         // MARK: Public
 
@@ -58,8 +58,8 @@ public final class ProfileManagerVM: TaskManagedVM {
 
     public internal(set) var hasOldAccountDataDetected: Bool = false
 
-    /// 此处沿用 PZProfileMO 作为指针格式，但不用于对 SwiftData 的写入。
-    public internal(set) var profileMOs: [String: PZProfileMO]
+    /// 此处沿用 PZProfileRef 作为指针格式，但不用于对 SwiftData 的写入。
+    public internal(set) var profileMOs: [String: PZProfileRef]
 
     public var sheetType: SheetType?
 
@@ -77,9 +77,9 @@ public final class ProfileManagerVM: TaskManagedVM {
     public func discardUncommittedChanges() {
         // 这里的实作可能有些机车，但这是为了确保所有被还原的对象的指针一致。
         guard hasUncommittedChanges else { return }
-        var newResult = [String: PZProfileMO]()
+        var newResult = [String: PZProfileRef]()
         Defaults[.pzProfiles].forEach { uuidStr, profileSendable in
-            newResult[uuidStr] = profileSendable.asMO
+            newResult[uuidStr] = profileSendable.asRef
         }
         profileMOs = newResult
     }
@@ -205,7 +205,7 @@ public final class ProfileManagerVM: TaskManagedVM {
                         notificationResult: notification.userInfo
                     )
                     guard !changedEntityNames.isEmpty else { return }
-                    guard changedEntityNames.contains("PZProfileMO") else { return }
+                    guard changedEntityNames.contains("PZProfileRef") else { return }
                     self.didObserveChangesFromSwiftData()
                 })
                 .store(in: &cancellables)

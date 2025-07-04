@@ -13,7 +13,7 @@ extension ProfileManagerPageContent {
     struct CreateProfileSheetView: View {
         // MARK: Lifecycle
 
-        init(profile: PZProfileMO) {
+        init(profile: PZProfileRef) {
             self._profile = State(wrappedValue: profile)
             Task { @MainActor in
                 ProfileManagerVM.shared.sheetType = .createNewProfile(profile)
@@ -184,7 +184,7 @@ extension ProfileManagerPageContent {
         ) async throws
             -> PZProfileSendable? {
             guard let server = HoYo.Server(uid: account.gameUid, game: game) else { return nil }
-            var newProfile = PZProfileMO(server: server, uid: account.gameUid).asSendable
+            var newProfile = PZProfileRef.makeNewInstance(server: server, uid: account.gameUid).asSendable
             newProfile.game = game
             newProfile.server = server
             newProfile.name = account.nickname
@@ -305,7 +305,7 @@ extension ProfileManagerPageContent {
         @State private var status: AddProfileStatus = .pending
         @State private var fetchedAccounts: [FetchedAccount] = []
         @State private var region: HoYo.AccountRegion = .miyoushe(.genshinImpact)
-        @State private var profile: PZProfileMO
+        @State private var profile: PZProfileRef
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus

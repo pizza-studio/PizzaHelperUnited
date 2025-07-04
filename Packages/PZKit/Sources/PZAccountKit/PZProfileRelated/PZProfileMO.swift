@@ -9,10 +9,10 @@ import SwiftData
 // MARK: - PZProfileMO
 
 @Model
-public final class PZProfileMO: Codable, ProfileMOProtocol {
+internal final class PZProfileMO: Codable, PZProfileRefProtocol {
     // MARK: Lifecycle
 
-    internal init(
+    required public init(
         game: Pizza.SupportedGame,
         server: HoYo.Server,
         uid: String,
@@ -37,10 +37,6 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
         self.priority = priority
         self.serverRawValue = serverRawValue
         self.sTokenV2 = sTokenV2
-        self.deviceID = deviceID
-    }
-
-    private init(deviceID: String) {
         self.deviceID = deviceID
     }
 
@@ -71,87 +67,19 @@ public final class PZProfileMO: Codable, ProfileMOProtocol {
     }
 }
 
+// MARK: Hashable, Equatable
+
+extension PZProfileMO: Hashable, Equatable {
+    public func hash(into hasher: inout Hasher) {
+        asSendable.hash(into: &hasher)
+    }
+
+    public static func == (lhs: PZProfileMO, rhs: PZProfileMO) -> Bool {
+        lhs.asSendable == rhs.asSendable
+    }
+}
+
 extension PZProfileMO {
-    // MARK: Lifecycle
-
-    /// 专门用来从旧版 AccountMO 迁移到全新的 PZProfileMO 账号体系的建构子。
-    /// - Parameters:
-    ///   - game: 游戏。
-    ///   - uid: UID。
-    ///   - configuration: 旧版 AccountMO。
-    @MainActor
-    public convenience init?(game: Pizza.SupportedGame, uid: String, configuration: AccountMOProtocol? = nil) {
-        guard let server = HoYo.Server(uid: uid, game: game) else { return nil }
-        // .description 很重要，防止 EXC_BAD_ACCESS。
-        self.init(deviceID: ThisDevice.identifier4Vendor.description)
-        self.game = game
-        self.uid = uid
-        self.serverRawValue = server.rawValue
-        self.server = server.withGame(game)
-        if let configuration {
-            self.allowNotification = configuration.allowNotification
-            self.cookie = configuration.cookie
-            self.deviceFingerPrint = configuration.deviceFingerPrint
-            self.name = configuration.name
-            self.priority = configuration.priority
-            self.sTokenV2 = configuration.sTokenV2
-            self.uid = configuration.uid
-            self.uuid = configuration.uuid
-        }
-    }
-
-    @MainActor
-    public convenience init(server: HoYo.Server, uid: String) {
-        // .description 很重要，防止 EXC_BAD_ACCESS。
-        self.init(deviceID: ThisDevice.identifier4Vendor.description)
-        self.game = server.game
-        self.uid = uid
-        self.serverRawValue = server.rawValue
-        self.server = server
-    }
-
-    @MainActor
-    public convenience init() {
-        // .description 很重要，防止 EXC_BAD_ACCESS。
-        self.init(deviceID: ThisDevice.identifier4Vendor.description)
-    }
-
-    public convenience init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let deviceIDDecoded = try container.decode(String.self, forKey: .deviceID)
-        self.init(deviceID: deviceIDDecoded)
-        self.allowNotification = try container.decode(Bool.self, forKey: .allowNotification)
-        self.cookie = try container.decode(String.self, forKey: .cookie)
-        self.deviceFingerPrint = try container.decode(String.self, forKey: .deviceFingerPrint)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.priority = try container.decode(Int.self, forKey: .priority)
-        self.game = try container.decode(Pizza.SupportedGame.self, forKey: .game)
-        self.server = try container.decode(HoYo.Server.self, forKey: .server).withGame(game)
-        self.serverRawValue = try container.decode(String.self, forKey: .serverRawValue)
-        self.sTokenV2 = try container.decodeIfPresent(String.self, forKey: .sTokenV2) ?? ""
-        self.uid = try container.decode(String.self, forKey: .uid)
-        self.uuid = try container.decode(UUID.self, forKey: .uuid)
-        self.deviceID = try container.decode(String.self, forKey: .deviceID)
-    }
-
-    // MARK: Public
-
-    public func encode(to encoder: any Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(allowNotification, forKey: .allowNotification)
-        try container.encode(cookie, forKey: .cookie)
-        try container.encode(deviceFingerPrint, forKey: .deviceFingerPrint)
-        try container.encode(name, forKey: .name)
-        try container.encode(game, forKey: .game)
-        try container.encode(priority, forKey: .priority)
-        try container.encode(server, forKey: .server)
-        try container.encode(serverRawValue, forKey: .serverRawValue)
-        try container.encodeIfPresent(sTokenV2, forKey: .sTokenV2)
-        try container.encode(uid, forKey: .uid)
-        try container.encode(uuid, forKey: .uuid)
-        try container.encode(deviceID, forKey: .deviceID)
-    }
-
     /// 此处得重复一遍该 Protocol 方法，不然就只能针对 var 变数使用该函式了。
     public func inherit(from target: some ProfileProtocol) {
         uid = target.uid
@@ -166,23 +94,6 @@ extension PZProfileMO {
         deviceID = target.deviceID
         game = target.game
         server = target.server
-    }
-
-    // MARK: Private
-
-    private enum CodingKeys: CodingKey {
-        case allowNotification
-        case cookie
-        case deviceFingerPrint
-        case name
-        case game
-        case priority
-        case serverRawValue
-        case server
-        case sTokenV2
-        case uid
-        case uuid
-        case deviceID
     }
 }
 
