@@ -20,14 +20,16 @@ private struct CanvasSizeTracker: ViewModifier {
         content
             .background {
                 Color.clear
-                    .containerRelativeFrame([.horizontal, .vertical]) { length, axis in
-                        switch axis {
-                        case .horizontal:
-                            sizeState.update(width: length)
-                        case .vertical:
-                            sizeState.update(height: length)
+                    .containerRelativeFrameEX([.horizontal, .vertical]) { length, axis in
+                        Task { @MainActor in
+                            switch axis {
+                            case .horizontal:
+                                sizeState.update(width: length)
+                            case .vertical:
+                                sizeState.update(height: length)
+                            }
+                            dispatchHandlerIfValid()
                         }
-                        dispatchHandlerIfValid()
                         return length
                     }
             }
