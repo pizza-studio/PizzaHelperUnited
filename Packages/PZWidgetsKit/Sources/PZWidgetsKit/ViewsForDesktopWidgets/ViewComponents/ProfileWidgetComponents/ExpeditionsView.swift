@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - DesktopWidgets.ExpeditionsView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public struct ExpeditionsView: View {
@@ -240,6 +241,7 @@ extension DesktopWidgets {
 
 #if DEBUG && !os(watchOS)
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @MainActor
 private func prepareExpeditionsView4Preview(
     _ game: Pizza.SupportedGame,
@@ -257,6 +259,7 @@ private func prepareExpeditionsView4Preview(
     )
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 #Preview {
     Group {
         Section {

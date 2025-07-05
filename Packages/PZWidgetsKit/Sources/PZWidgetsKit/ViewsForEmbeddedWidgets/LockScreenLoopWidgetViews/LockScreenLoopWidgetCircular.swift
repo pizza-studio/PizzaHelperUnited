@@ -9,6 +9,7 @@ import WidgetKit
 
 // MARK: - LockScreenLoopWidgetCircular
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
     public struct LockScreenLoopWidgetCircular: View {

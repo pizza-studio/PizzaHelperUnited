@@ -10,11 +10,11 @@ import WidgetKit
 
 // MARK: - EmbeddedWidgets.LockScreenResinWidgetRectangular
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
     // MARK: - LockScreenResinWidgetRectangular
 
-    @available(macOS, unavailable)
     public struct LockScreenResinWidgetRectangular: View {
         // MARK: Lifecycle
 
