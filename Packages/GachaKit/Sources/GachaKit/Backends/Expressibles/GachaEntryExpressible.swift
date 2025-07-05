@@ -212,6 +212,9 @@ extension GachaEntryExpressible {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension [GachaEntryExpressible] {
     /// 注意：有明显的效能开销。
     public var withDrawCounts: Self {

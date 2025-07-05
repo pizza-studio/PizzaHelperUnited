@@ -9,6 +9,9 @@ import SwiftUI
 
 // MARK: - PZGachaProfileMO
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @Model
 public final class PZGachaProfileMO: GachaProfileIDProtocol {
     // MARK: Lifecycle

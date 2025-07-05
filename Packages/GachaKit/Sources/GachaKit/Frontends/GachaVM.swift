@@ -16,6 +16,9 @@ import SwiftUI
 
 // MARK: - GachaVM
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @Observable
 public final class GachaVM: TaskManagedVM {
     // MARK: Lifecycle

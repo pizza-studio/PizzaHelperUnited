@@ -152,6 +152,9 @@ extension PZGachaEntryProtocol {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension [PZGachaEntryProtocol] {
     func extractItem<T: UIGFGachaItemProtocol>(_ type: T.Type) throws -> [(gpid: GachaProfileID, entry: T)] {
         try compactMap {

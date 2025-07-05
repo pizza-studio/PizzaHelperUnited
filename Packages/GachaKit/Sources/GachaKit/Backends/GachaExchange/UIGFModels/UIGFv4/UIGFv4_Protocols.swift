@@ -21,6 +21,9 @@ extension Pizza.SupportedGame {
 
 // MARK: - GachaTypeProtocol
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public protocol GachaTypeProtocol: RawRepresentable, AbleToCodeSendHash,
     Identifiable where RawValue == String {
     associatedtype ItemType: UIGFGachaItemProtocol where ItemType.PoolType == Self
@@ -65,6 +68,9 @@ extension GachaTypeProtocol {
 
 // MARK: - UIGFGachaItemProtocol
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public protocol UIGFGachaItemProtocol: AbleToCodeSendHash {
     associatedtype PoolType: GachaTypeProtocol where PoolType.ItemType == Self
     static var game: Pizza.SupportedGame { get }
@@ -136,6 +142,9 @@ extension Array where Element: UIGFGachaItemProtocol {
 
 // MARK: - UIGFProfileProtocol
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public protocol UIGFProfileProtocol {
     associatedtype ItemType: UIGFGachaItemProtocol where ItemType.PoolType == PoolType
     associatedtype PoolType: GachaTypeProtocol

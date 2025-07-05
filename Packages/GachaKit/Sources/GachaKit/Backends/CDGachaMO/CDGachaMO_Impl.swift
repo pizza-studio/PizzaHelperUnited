@@ -57,6 +57,9 @@ extension CDGachaMOSputnik {
 
 // MARK: - GachaSendableConvertible
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public protocol GachaSendableConvertible {
     var asPZGachaEntrySendable: PZGachaEntrySendable { get }
 }

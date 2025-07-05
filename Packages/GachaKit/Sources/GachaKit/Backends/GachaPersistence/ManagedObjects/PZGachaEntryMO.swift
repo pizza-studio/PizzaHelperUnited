@@ -8,6 +8,9 @@ import SwiftData
 
 // MARK: - PZGachaEntryMO
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @Model
 public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
     // MARK: Lifecycle
