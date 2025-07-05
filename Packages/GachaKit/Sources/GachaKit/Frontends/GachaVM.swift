@@ -81,7 +81,7 @@ public final class GachaVM: TaskManagedVM {
 
     // MARK: Private
 
-    @ObservationIgnored private var cancellables: [AnyCancellable] = []
+    @ObservationIgnored nonisolated(unsafe) private var cancellables: [AnyCancellable] = []
 
     private static func defaultPoolType(for game: Pizza.SupportedGame?) -> GachaPoolExpressible? {
         switch game {
