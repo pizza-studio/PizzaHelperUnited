@@ -4,6 +4,8 @@
 
 import Foundation
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(watchOS, unavailable)
 extension GITodayMaterial {
     public static let bundledData: [Self] = {
         guard let url = Bundle.module.url(
@@ -45,6 +47,8 @@ extension GITodayMaterial {
     }
 }
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(watchOS, unavailable)
 extension String {
     public var i18nTodayMaterials: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
@@ -55,6 +59,8 @@ extension String {
     }
 }
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(watchOS, unavailable)
 extension String.LocalizationValue {
     public var i18nTodayMaterials: String {
         String(localized: self, bundle: .module)
