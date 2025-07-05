@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - EULAView
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 public struct EULAView: View {
     // MARK: Lifecycle
 
