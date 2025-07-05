@@ -22,6 +22,7 @@ public protocol PZGachaEntryProtocol {
     var gachaID: String { get set }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension PZGachaEntryProtocol {
     public var gameTyped: Pizza.SupportedGame {
         .init(rawValue: game) ?? .genshinImpact

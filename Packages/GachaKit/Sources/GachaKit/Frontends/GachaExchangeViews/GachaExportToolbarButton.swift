@@ -5,6 +5,7 @@
 import SFSafeSymbols
 import SwiftUI
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct GachaExportToolbarButton: View {
     // MARK: Lifecycle
 

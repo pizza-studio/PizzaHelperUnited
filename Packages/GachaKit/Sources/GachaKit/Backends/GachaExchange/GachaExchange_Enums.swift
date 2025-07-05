@@ -4,6 +4,7 @@
 
 import PZBaseKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public enum GachaExchange {
     public enum ExportableFormat: String, Sendable, Identifiable, CaseIterable, Hashable {
         case asUIGFv4

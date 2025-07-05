@@ -10,6 +10,7 @@ import PZBaseKit
 // 穹披助手对 UIGF 仅从 v4 开始支援，因为之前版本的 UIGF 仅支援原神。
 // Ref: https://uigf.org/zh/standards/uigf.html
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct UIGFv4: AbleToCodeSendHash {
     // MARK: Lifecycle
 
@@ -40,6 +41,7 @@ public struct UIGFv4: AbleToCodeSendHash {
     public var zzzProfiles: [ProfileZZZ]?
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension UIGFv4 {
     static func makeDecodingError(_ key: CodingKey) -> Error {
         let keyName = key.description
@@ -59,6 +61,7 @@ extension UIGFv4 {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension UIGFv4 {
     public init(
         info: Info,
@@ -74,6 +77,7 @@ extension UIGFv4 {
 
 // MARK: UIGFv4.Info
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension UIGFv4 {
     public struct Info: AbleToCodeSendHash {
         // MARK: Lifecycle
@@ -113,6 +117,9 @@ extension UIGFv4 {
 
         // MARK: Public
 
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
         public enum CodingKeys: String, CodingKey {
             case exportApp = "export_app"
             case exportAppVersion = "export_app_version"
@@ -136,6 +143,7 @@ extension UIGFv4 {
 
 // MARK: - Extensions
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension UIGFv4 {
     public init() {
         self.info = .init()
@@ -179,6 +187,7 @@ extension UIGFv4 {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension UIGFv4.Info {
     // MARK: Lifecycle
 

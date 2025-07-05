@@ -6,6 +6,7 @@ import SwiftUI
 
 // MARK: - GachaBigChartView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct GachaBigChartView: View {
     // MARK: Lifecycle
 

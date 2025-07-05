@@ -9,6 +9,7 @@ import SwiftUI
 // MARK: - GachaPoolExpressible
 
 /// 该 Enum 仅用于前台显示之用途，不参与后台资料处理、不承载任何附加参数资讯。
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sendable, CaseIterable, Plottable {
     case giUnknown
     case giCharacterEventWish // 两个限定池合并显示
@@ -30,6 +31,7 @@ public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sen
     case zzStableChannel
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension GachaPoolExpressible {
     public init(_ gachaTypeStr: String, game: Pizza.SupportedGame) {
         switch game {

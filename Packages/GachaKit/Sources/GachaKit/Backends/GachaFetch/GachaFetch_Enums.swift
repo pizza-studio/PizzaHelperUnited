@@ -7,6 +7,7 @@ import PZAccountKit
 
 // MARK: - GachaRequestAuthentication
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct GachaRequestAuthentication: Sendable {
     public let authenticationKey: String
     public let authenticationKeyVersion: String
@@ -16,12 +17,14 @@ public struct GachaRequestAuthentication: Sendable {
 
 // MARK: - GachaError
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public enum GachaError: Error, Sendable {
     case fetchDataError(page: Int, size: Int, gachaTypeRaw: String, error: Error)
 }
 
 // MARK: - ParseGachaURLError
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public enum ParseGachaURLError: String, Error, LocalizedError {
     case urlGenerationFailure
     case invalidURL
@@ -48,6 +51,7 @@ public enum ParseGachaURLError: String, Error, LocalizedError {
 
 // MARK: - GetGachaError
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public enum GetGachaError: Error, Equatable {
     case incorrectAuthkey
     case authkeyTimeout
@@ -61,12 +65,14 @@ public enum GetGachaError: Error, Equatable {
 
 // MARK: - GenGachaURLError
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public enum GenGachaURLError: Error {
     case genURLError(message: String)
 }
 
 // MARK: - GachaFetchRange
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public enum GachaFetchRange: Int, CaseIterable {
     case allAvailable = 0
     case recent72Hours = 72
