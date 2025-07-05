@@ -7,6 +7,9 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension HoYo {
     static func generateGachaURL(_ profile: PZProfileSendable) async throws -> String {
         do {
@@ -41,6 +44,9 @@ extension HoYo {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension HoYo {
     private static func generateAuthKey(
         for profile: PZProfileSendable

@@ -7,6 +7,9 @@ import PZBaseKit
 
 // MARK: - APIs for converting fetched contents to PZGachaEntrySendable.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchModels.PageFetched.FetchedEntry {
     func toGachaEntrySendable(game: Pizza.SupportedGame, fixItemIDs: Bool = true) async throws -> PZGachaEntrySendable {
         var result = PZGachaEntrySendable { newEntry in
@@ -40,6 +43,9 @@ extension GachaFetchModels.PageFetched.FetchedEntry {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchModels.PageFetched {
     func extractEntries(
         game: Pizza.SupportedGame,
@@ -59,6 +65,9 @@ extension GachaFetchModels.PageFetched {
 
 // MARK: - APIs for converting PZGachaEntryProtocol to UIGF.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension PZGachaEntryProtocol {
     public mutating func fixItemID() async throws {
         guard Pizza.SupportedGame(rawValue: game) == .genshinImpact, itemID.isNotInt else { return }
@@ -182,6 +191,9 @@ extension [PZGachaEntryProtocol] {
 
 // MARK: - APIs for converting UIGF to PZGachaEntrySendable.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UIGFGachaItemProtocol {
     func asPZGachaEntrySendable(uid: String) -> PZGachaEntrySendable {
         let result = PZGachaEntrySendable { newEntry in
@@ -204,12 +216,18 @@ extension UIGFGachaItemProtocol {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UIGFv4.Profile {
     func extractEntries() -> [PZGachaEntrySendable] {
         list.map { $0.asPZGachaEntrySendable(uid: self.uid) }
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UIGFv4 {
     func extractAllEntries() -> [PZGachaEntrySendable] {
         var result = [[PZGachaEntrySendable]]()

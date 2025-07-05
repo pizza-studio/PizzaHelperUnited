@@ -6,18 +6,27 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension String {
     public var i18nGachaKit: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension String.LocalizationValue {
     public var i18nGachaKit: String {
         String(localized: self, bundle: .module)
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension StringProtocol {
     public var isInt: Bool {
         Int(self) != nil

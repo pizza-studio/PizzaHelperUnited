@@ -11,6 +11,9 @@ import SwiftUI
 
 /// The view model displaying current fetch gacha status.
 @Observable @MainActor
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
     // MARK: Lifecycle
 
@@ -18,6 +21,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
 
     // MARK: Public
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public struct GachaTypeDateCount: Hashable, Identifiable {
         // MARK: Lifecycle
 
@@ -54,6 +60,9 @@ public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
         }
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public enum Status {
         case waitingForURL
         case readyToFire(start: () -> Void, reinit: () -> Void)

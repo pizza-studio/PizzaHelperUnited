@@ -8,7 +8,13 @@ import PZBaseKit
 
 // MARK: - UIGFv4.GachaItemGI
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UIGFv4 {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public struct GachaItemGI: UIGFGachaItemProtocol {
         // MARK: Lifecycle
 
@@ -70,6 +76,9 @@ extension UIGFv4 {
 
         // MARK: Public
 
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
         public enum CodingKeys: String, CodingKey {
             case count
             case gachaType = "gacha_type"
@@ -123,6 +132,9 @@ extension UIGFv4 {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UIGFv4.GachaItemGI {
     public mutating func editId(_ newId: String) {
         id = newId

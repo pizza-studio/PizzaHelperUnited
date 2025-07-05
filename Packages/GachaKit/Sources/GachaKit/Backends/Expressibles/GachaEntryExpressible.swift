@@ -12,6 +12,9 @@ import SwiftUI
 // MARK: - GachaEntryExpressible
 
 /// 专用于 PZGachaEntry 的前端表述框架。
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GachaEntryExpressible: Identifiable, Equatable, Sendable, Hashable {
     public let id: String
     public let uid: String
@@ -30,6 +33,9 @@ public struct GachaEntryExpressible: Identifiable, Equatable, Sendable, Hashable
     // MARK: private
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaEntryExpressible {
     public init(rawEntry: PZGachaEntryProtocol) {
         self.id = rawEntry.id
@@ -47,6 +53,9 @@ extension GachaEntryExpressible {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaEntryExpressible {
     public var uidWithGame: String {
         "\(game.uidPrefix)-\(uid)"
@@ -128,6 +137,9 @@ extension GachaEntryExpressible {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaEntryExpressible {
     public var itemType: GachaItemType { GachaItemType(itemID: itemID, game: game) }
 

@@ -7,10 +7,19 @@ import PZAccountKit
 
 // MARK: - Shared Structs for Gacha URL Generation.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension HoYo {
     // MARK: - GetCookieTokenResult
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     struct GetCookieTokenResult: Codable {
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
         struct GetCookieTokenData: Codable {
             let uid: String
             let cookieToken: String
@@ -23,6 +32,9 @@ extension HoYo {
 
     // MARK: - GenAuthKeyParam
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     struct GenAuthKeyParam: Encodable {
         // MARK: Internal
 
@@ -42,6 +54,9 @@ extension HoYo {
 
         // MARK: Private
 
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
         private enum CodingKeys: String, CodingKey {
             case authAppid
             case gameUid
@@ -52,9 +67,15 @@ extension HoYo {
 
     // MARK: - GenAuthKeyResult
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     struct GenAuthKeyResult: Codable {
         // MARK: Public
 
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
         public struct GenAuthKeyData: Codable {
             let authkeyVer: Int
             let signType: Int

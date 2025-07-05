@@ -6,9 +6,15 @@ import SwiftUI
 
 // MARK: - GachaExchangeView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GachaExchangeView: View {
     // MARK: Public
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public enum Page: String, Sendable, CaseIterable, Identifiable {
         case exportData
         case importData
@@ -81,6 +87,9 @@ public struct GachaExchangeView: View {
     @Environment(GachaVM.self) private var theVM
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaExchangeView {
     @ViewBuilder
     public static func drawGPID(
@@ -118,7 +127,13 @@ extension GachaExchangeView {
 
 // MARK: GachaExchangeView.GachaProfileDoppelPicker
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaExchangeView {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public struct GachaProfileDoppelPicker: View {
         // MARK: Lifecycle
 

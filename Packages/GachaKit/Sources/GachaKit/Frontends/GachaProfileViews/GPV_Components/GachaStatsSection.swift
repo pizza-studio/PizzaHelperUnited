@@ -8,7 +8,13 @@ import SwiftUI
 
 // MARK: - GachaProfileView.GachaStatsSection
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaProfileView {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public struct GachaStatsSection: View {
         // MARK: Lifecycle
 
@@ -184,10 +190,16 @@ extension GachaProfileView {
 
 // MARK: - GachaProfileView.GachaStatsSection.ApprisedLevel
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaProfileView.GachaStatsSection {
     // MARK: Internal
 
     /// 抽卡评分，数字值越小则评价越低。
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public enum ApprisedLevel: Int, CaseIterable {
         case one = 1
         case two = 2

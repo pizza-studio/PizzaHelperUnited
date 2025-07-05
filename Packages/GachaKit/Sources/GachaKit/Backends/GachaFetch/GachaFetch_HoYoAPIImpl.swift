@@ -8,6 +8,9 @@ import PZBaseKit
 
 // MARK: - Gacha DS Generator.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension HoYo {
     static func getDSTokenForGachaRecords(region: HoYo.AccountRegion) -> String {
         /// The following salts are LK2. Intelligence provided by Snap.Hutao.
@@ -28,6 +31,9 @@ extension HoYo {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension URLRequestConfig {
     static func xRPCAppVersion4Gacha(region: HoYo.AccountRegion) -> String {
         switch region {

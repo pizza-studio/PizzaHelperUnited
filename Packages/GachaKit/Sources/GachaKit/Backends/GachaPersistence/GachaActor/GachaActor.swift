@@ -12,6 +12,9 @@ import SwiftData
 // MARK: - GachaActor
 
 @ModelActor
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public actor GachaActor {
     public init(unitTests: Bool = false) {
         modelContainer = unitTests ? Self.makeContainer4UnitTests() : Self.makeContainer()
@@ -23,6 +26,9 @@ public actor GachaActor {
     // MARK: Private
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaActor {
     public static let shared = GachaActor()
 
@@ -61,6 +67,9 @@ extension GachaActor {
 
 // MARK: - Schemes and Configs.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaActor {
     public static func makeSchema() -> Schema {
         Schema([PZGachaEntryMO.self, PZGachaProfileMO.self])
@@ -89,6 +98,9 @@ extension GachaActor {
 
 // MARK: - CDGachaMO Related Static Methods.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaActor {
     public func migrateOldGachasIntoProfiles() throws {
         let oldData = try CDGachaMOSputnik.shared.getAllDataEntriesAsSendable()
@@ -215,6 +227,9 @@ extension GachaActor {
 
 // MARK: - CRUD APIs for GachaVM.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaActor {
     public func fetchAllGPIDs() -> [GachaProfileID] {
         let resultRAW = try? modelContext.fetch(
@@ -261,6 +276,9 @@ extension GachaActor {
 
 // MARK: - CRUD APIs for GachaFetchVM.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaActor {
     /// 自本地 SwiftData 抽卡资料库移除指定 UID 与流水号的所有记录。
     /// - Parameters:
@@ -350,6 +368,9 @@ extension GachaActor {
 
 // MARK: - APIs for bleaching tasks.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaActor {
     /// - Remark: UID must be non-null. Otherwise this API is no-op.
     public func bleach(

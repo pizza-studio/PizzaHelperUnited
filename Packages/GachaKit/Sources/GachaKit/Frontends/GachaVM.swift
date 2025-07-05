@@ -135,6 +135,9 @@ public final class GachaVM: TaskManagedVM {
 
 // MARK: - Tasks and Error Handlers.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaVM {
     public func updateGMDB(for games: [Pizza.SupportedGame?]? = nil, immediately: Bool = true) {
         fireTask(
@@ -448,6 +451,9 @@ extension GachaVM {
 
 // MARK: - Profile Switchers and other tools.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaVM {
     public var currentGPIDTitle: String? {
         guard let pfID = currentGPID else { return nil }

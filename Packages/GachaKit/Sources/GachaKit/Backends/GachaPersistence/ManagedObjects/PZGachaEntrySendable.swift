@@ -9,6 +9,9 @@ import PZBaseKit
 
 /// 这个 Struct 就做一件事情：跨 Actor 传输资料。
 @frozen
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct PZGachaEntrySendable: PZGachaEntryProtocol, AbleToCodeSendHash, Identifiable {
     // MARK: Lifecycle
 
@@ -49,6 +52,9 @@ public struct PZGachaEntrySendable: PZGachaEntryProtocol, AbleToCodeSendHash, Id
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension PZGachaEntryMO {
     public var asSendable: PZGachaEntrySendable {
         .init { this in

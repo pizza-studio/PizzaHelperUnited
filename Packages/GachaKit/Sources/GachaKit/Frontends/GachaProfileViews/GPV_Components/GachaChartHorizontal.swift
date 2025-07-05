@@ -7,6 +7,9 @@ import SwiftUI
 
 // MARK: - GachaChartHorizontal
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GachaChartHorizontal: View {
     // MARK: Lifecycle
 
@@ -71,6 +74,9 @@ public struct GachaChartHorizontal: View {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaChartHorizontal {
     @ViewBuilder
     private func drawEntry(

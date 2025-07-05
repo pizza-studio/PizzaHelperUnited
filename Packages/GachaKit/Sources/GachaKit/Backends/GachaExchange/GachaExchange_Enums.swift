@@ -4,7 +4,13 @@
 
 import PZBaseKit
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public enum GachaExchange {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public enum ExportableFormat: String, Sendable, Identifiable, CaseIterable, Hashable {
         case asUIGFv4
         case asSRGFv1
@@ -28,6 +34,9 @@ public enum GachaExchange {
         }
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public enum ExportPackageMethod: Sendable, Identifiable, Hashable {
         case specifiedOwners([GachaProfileID])
         case singleOwner(GachaProfileID)
@@ -69,6 +78,9 @@ public enum GachaExchange {
         }
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public enum ImportableFormat: String, Sendable, Identifiable, CaseIterable, Hashable {
         case asUIGFv4
         case asSRGFv1

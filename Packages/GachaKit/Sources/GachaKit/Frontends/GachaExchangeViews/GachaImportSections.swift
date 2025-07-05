@@ -10,6 +10,9 @@ import UniformTypeIdentifiers
 
 // MARK: - GachaImportSections
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GachaImportSections: View {
     // MARK: Public
 
@@ -63,7 +66,13 @@ public struct GachaImportSections: View {
 
 // MARK: GachaImportSections.SceneStep
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaImportSections {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public enum SceneStep: Hashable, Sendable, Equatable {
         case chooseFormat
         case chooseProfiles(UIGFv4)
@@ -104,6 +113,9 @@ extension GachaImportSections {
 
 // MARK: - Scene Page - Choose Format
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaImportSections {
     @ViewBuilder
     func body4SceneStepChooseFormat() -> some View {
@@ -174,6 +186,9 @@ extension GachaImportSections {
 
 // MARK: - Scene Page - Choose Profiles
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaImportSections {
     @ViewBuilder
     func body4SceneStepChooseProfiles(_ source: UIGFv4) -> some View {
@@ -280,6 +295,9 @@ extension GachaImportSections {
 
 // MARK: - Scene Page - Ready to Import
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaImportSections {
     @ViewBuilder
     func body4SceneStepImportResultPresentation(_ result: [GachaProfileID: Int]) -> some View {
@@ -319,6 +337,9 @@ extension GachaImportSections {
 
 // MARK: - Scene Page - Error
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaImportSections {
     @ViewBuilder
     func errorView(_ error: Error) -> some View {
@@ -331,6 +352,9 @@ extension GachaImportSections {
 
 // MARK: - PopFileButton
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 private struct PopFileButton: View {
     // MARK: Lifecycle
 
@@ -377,6 +401,9 @@ private struct PopFileButton: View {
 
 // MARK: - FallbackTimeZonePicker
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 private struct FallbackTimeZonePicker: View {
     // MARK: Public
 

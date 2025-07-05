@@ -24,6 +24,9 @@ import UniformTypeIdentifiers
 /// 最终写入 App 自身的 CoreData 资料库的内容一定是简体中文，这个步骤由 UIGFv4 把关。
 ///
 /// Ref: [UIGF](https://uigf.org/zh/standards/uigf.html)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GIGF: Decodable {
     // MARK: Lifecycle
 
@@ -42,6 +45,9 @@ public struct GIGF: Decodable {
 
     // MARK: Public
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public struct Info: Decodable {
         // MARK: Lifecycle
 
@@ -108,6 +114,9 @@ public struct GIGF: Decodable {
 
         // MARK: Internal
 
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
         enum CodingKeys: String, CodingKey {
             case uid, lang
             case exportTime = "export_time"
@@ -135,6 +144,9 @@ public struct GIGF: Decodable {
 
     // MARK: Internal
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     enum CodingKeys: CodingKey {
         case info
         case list
@@ -144,6 +156,9 @@ public struct GIGF: Decodable {
 // MARK: - GIGFGachaItem
 
 /// UIGFv2~v3 格式（也就是 GIGF 格式）的 GachaItem。
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GIGFGachaItem: Decodable {
     // MARK: Lifecycle
 
@@ -222,6 +237,9 @@ public struct GIGFGachaItem: Decodable {
 
     // MARK: Internal
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     enum CodingKeys: String, CodingKey {
         case gachaType = "gacha_type"
         case itemID = "item_id"
@@ -247,6 +265,9 @@ public struct GIGFGachaItem: Decodable {
 
 // MARK: - Time Zone Fixer
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GIGF {
     mutating func fixTimeZoneIfNil() {
         guard info.regionTimeZone == nil else { return }
@@ -275,6 +296,9 @@ extension GIGF {
 
 // MARK: - Translator to UIGFv4 Profile
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GIGF {
     /// 注意：这个方法不会自动尝试修复 GIGF (UIGFv2.2 & v2.3) 的时区资讯。
     func upgradeToUIGFv4Profile() -> UIGFv4.ProfileGI {
@@ -332,6 +356,9 @@ extension GIGF {
 
 // MARK: - Language Detection Feature
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaLanguage {
     var nlLanguage: NLLanguage {
         switch self {
@@ -354,6 +381,9 @@ extension GachaLanguage {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GIGF {
     private static let recognizer = NLLanguageRecognizer()
 
@@ -442,6 +472,9 @@ extension GIGF {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaLanguage {
     func makeRevDB() -> [String: Int] {
         GachaMeta.sharedDB.mainDB4GI.generateHotReverseQueryDict(for: rawValue) ?? [:]
@@ -450,7 +483,13 @@ extension GachaLanguage {
 
 // MARK: - GIGF XLSX Parsing
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension XLSXFile {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     enum GIGFExcelError: Error, LocalizedError {
         case errorWithMessage(msg: String)
         case rawDataMissing
@@ -471,6 +510,9 @@ extension XLSXFile {
         public var description: String { localizedDescription }
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     private struct ParsedRow {
         let lang: GachaLanguage
         let uid: String

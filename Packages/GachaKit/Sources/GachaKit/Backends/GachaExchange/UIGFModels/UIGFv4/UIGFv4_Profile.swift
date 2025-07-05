@@ -6,11 +6,17 @@ import Foundation
 import GachaMetaDB
 import PZBaseKit
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UIGFv4 {
     public typealias ProfileHSR = Profile<GachaItemHSR>
     public typealias ProfileGI = Profile<GachaItemGI>
     public typealias ProfileZZZ = Profile<GachaItemZZZ>
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     public struct Profile<ItemType: UIGFGachaItemProtocol>: AbleToCodeSendHash {
         // MARK: Lifecycle
 
@@ -72,6 +78,9 @@ extension UIGFv4 {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UIGFv4 {
     func extractGachaProfileIDs() -> [GachaProfileID] {
         var results = Set<GachaProfileID>()

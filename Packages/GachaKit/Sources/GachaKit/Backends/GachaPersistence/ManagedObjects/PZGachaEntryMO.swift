@@ -93,6 +93,9 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
 
     // MARK: Private
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     private enum CodingKeys: CodingKey {
         case game
         case uid
@@ -111,6 +114,9 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
 
 // MARK: - Predicates.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension PZGachaEntryMO {
     public static func predicate(
         owner gachaProfile: (any GachaProfileIDProtocol)?,
@@ -138,6 +144,9 @@ extension PZGachaEntryMO {
 
 // MARK: - Update Existing GachaEntryMO information. (no need to extend the PZGachaEntryProtocol.)
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension PZGachaEntryMO {
     public func inherit(from target: PZGachaEntryProtocol) {
         game = target.game
@@ -157,6 +166,9 @@ extension PZGachaEntryMO {
 
 // MARK: - Date Time Sanity Check.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension PZGachaEntryMO {
     public func fixTimeFieldIfNecessary(context: ModelContext) throws {
         guard !time.isUIGFDateTimeFormat else { return }
