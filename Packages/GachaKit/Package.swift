@@ -18,7 +18,7 @@ let package = Package(
         .package(path: "../PZKit"),
         .package(path: "../EnkaKit"),
         .package(
-            url: "https://github.com/pizza-studio/GachaMetaGenerator", .upToNextMajor(from: "2.5.3")
+            url: "https://github.com/pizza-studio/GachaMetaGenerator", .upToNextMajor(from: "2.5.4")
         ),
         .package(
             url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")
