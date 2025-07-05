@@ -5,6 +5,7 @@
 import Foundation
 import Observation
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @Observable
 final class AlertToastEventStatus: ObservableObject {
     public var isProfileTaskSucceeded = false

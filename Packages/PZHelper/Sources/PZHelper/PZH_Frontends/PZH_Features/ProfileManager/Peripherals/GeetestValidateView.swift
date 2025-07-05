@@ -8,6 +8,7 @@ import WebKit
 
 // MARK: - GeetestValidateCoordinator
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 class GeetestValidateCoordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     // MARK: Lifecycle
 
@@ -34,6 +35,7 @@ class GeetestValidateCoordinator: NSObject, WKNavigationDelegate, WKScriptMessag
 }
 
 #if canImport(AppKit) && !canImport(UIKit)
+@available(macOS 14.0, *)
 struct GeetestValidateView: NSViewRepresentable {
     typealias Coordinator = GeetestValidateCoordinator
 
@@ -87,6 +89,7 @@ struct GeetestValidateView: NSViewRepresentable {
 }
 
 #elseif canImport(UIKit)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct GeetestValidateView: UIViewRepresentable {
     typealias Coordinator = GeetestValidateCoordinator
 

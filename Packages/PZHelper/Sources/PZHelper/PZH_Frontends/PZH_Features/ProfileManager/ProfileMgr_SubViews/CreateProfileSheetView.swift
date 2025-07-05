@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent.CreateProfileSheetView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension ProfileManagerPageContent {
     struct CreateProfileSheetView: View {
         // MARK: Lifecycle
@@ -299,6 +300,12 @@ extension ProfileManagerPageContent {
 
         // MARK: Private
 
+        private enum AddProfileStatus {
+            case pending
+            case gotCookie
+            case gotProfile
+        }
+
         @State private var importAllUIDs: Bool = true
         @State private var isGetAccountFailAlertShown: Bool = false
         @State private var getAccountError: GetAccountError?
@@ -327,6 +334,7 @@ extension ProfileManagerPageContent {
 
 // MARK: - RequireLoginView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct RequireLoginView: View {
     // MARK: Lifecycle
 
@@ -431,16 +439,9 @@ private struct RequireLoginView: View {
     }
 }
 
-// MARK: - AddProfileStatus
-
-private enum AddProfileStatus {
-    case pending
-    case gotCookie
-    case gotProfile
-}
-
 // MARK: - ExplanationView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct ExplanationView: View {
     // MARK: Internal
 

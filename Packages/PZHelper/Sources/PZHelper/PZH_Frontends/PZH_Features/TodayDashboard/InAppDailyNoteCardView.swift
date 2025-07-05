@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - InAppDailyNoteCardView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct InAppDailyNoteCardView: View {
     // MARK: Lifecycle
 
@@ -94,6 +95,7 @@ struct InAppDailyNoteCardView: View {
 
 // MARK: - DailyNoteCardErrorView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct DailyNoteCardErrorView: View {
     // MARK: Public
 
@@ -143,6 +145,7 @@ private let dateComponentsFormatter: DateComponentsFormatter = {
 
 // MARK: - DailyNoteCardView4GI
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct DailyNoteCardView4GI: View {
     // MARK: Lifecycle
 
@@ -426,6 +429,7 @@ private struct DailyNoteCardView4GI: View {
 
 // MARK: - DailyNoteCardView4HSR
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct DailyNoteCardView4HSR: View {
     // MARK: Lifecycle
 
@@ -627,6 +631,7 @@ private struct DailyNoteCardView4HSR: View {
 
 // MARK: - DailyNoteCardView4ZZZ
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct DailyNoteCardView4ZZZ: View {
     // MARK: Lifecycle
 

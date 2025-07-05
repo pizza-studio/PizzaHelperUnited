@@ -12,6 +12,7 @@ import WallpaperKit
 
 // MARK: - UISettingsPageContent
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct UISettingsPageContent: View {
     // MARK: Internal
 

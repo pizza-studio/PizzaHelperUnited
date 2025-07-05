@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - HoYoAPIErrorView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct HoYoAPIErrorView: View {
     let profile: PZProfileSendable
     let apiPath: String
@@ -53,6 +54,7 @@ struct HoYoAPIErrorView: View {
 
 // MARK: HoYoAPIErrorView.VerificationNeededView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYoAPIErrorView {
     struct VerificationNeededView: View {
         // MARK: Internal

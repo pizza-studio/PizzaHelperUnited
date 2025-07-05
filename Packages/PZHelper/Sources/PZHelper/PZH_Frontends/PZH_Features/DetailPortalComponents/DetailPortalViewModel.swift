@@ -14,6 +14,7 @@ import SwiftUI
 
 // 注：这个 Class 不负责管理 Enka 展柜的 Raw Profile。
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @Observable @MainActor
 public final class DetailPortalViewModel: ObservableObject {
     // MARK: Lifecycle
@@ -82,6 +83,7 @@ public final class DetailPortalViewModel: ObservableObject {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension DetailPortalViewModel {
     func fetchCharacterInventoryList() async {
         if case let .progress(task) = taskStatus4CharInventory { task.cancel() }

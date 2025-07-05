@@ -7,6 +7,7 @@ import PZBaseKit
 import PZHoYoLabKit
 import SwiftUI
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct PrivacySettingsPageContent: View {
     var body: some View {
         List {

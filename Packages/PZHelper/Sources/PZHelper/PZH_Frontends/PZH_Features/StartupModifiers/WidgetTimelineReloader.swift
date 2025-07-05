@@ -8,6 +8,7 @@ import PZBaseKit
 import SwiftUI
 import WidgetKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension View {
     @ViewBuilder
     func checkAndReloadWidgetTimeline() -> some View {
@@ -17,6 +18,7 @@ extension View {
 
 // MARK: - WidgetTimelineReloader
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct WidgetTimelineReloader: ViewModifier {
     func body(content: Content) -> some View {
         content

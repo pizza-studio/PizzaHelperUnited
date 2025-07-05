@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - AppRootPage
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 enum AppRootPage: CaseIterable, Identifiable, Sendable, Hashable {
     case today
     case showcaseDetail
@@ -80,6 +81,7 @@ enum AppRootPage: CaseIterable, Identifiable, Sendable, Hashable {
 
 // MARK: - AppRootPageViewWrapper
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct AppRootPageViewWrapper: View {
     // MARK: Lifecycle
 
