@@ -24,6 +24,7 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(path: "../PZCoreDataKit"), // <- Refugee Purposes.
         .package(path: "../GITodayMaterialsKit"),
         .package(path: "../WallpaperKit"),
         .package(path: "../EnkaKit"),
@@ -41,6 +42,8 @@ let package = Package(
         .target(
             name: "PZHelper",
             dependencies: [
+                .product(name: "PZCoreDataKitShared", package: "PZCoreDataKit"),
+                .product(name: "PZCoreDataKit4LocalAccounts", package: "PZCoreDataKit"),
                 .product(name: "AlertToast", package: "AlertToast"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "PZAboutKit", package: "PZAboutKit"),
