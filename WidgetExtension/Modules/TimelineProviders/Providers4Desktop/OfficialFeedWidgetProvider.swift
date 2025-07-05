@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import Defaults
 import Foundation
 import GITodayMaterialsKit
@@ -76,3 +78,5 @@ struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
         }
     }
 }
+
+#endif

@@ -8,6 +8,8 @@ import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
+#if !os(macOS)
+
 @available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
@@ -139,3 +141,5 @@ extension EmbeddedWidgets {
         private var homeCoinMonochromeIconAssetName: String { "icon.homeCoin" }
     }
 }
+
+#endif

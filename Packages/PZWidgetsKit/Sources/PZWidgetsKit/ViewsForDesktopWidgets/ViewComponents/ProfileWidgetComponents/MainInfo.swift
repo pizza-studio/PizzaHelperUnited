@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
@@ -39,3 +41,5 @@ extension DesktopWidgets {
         private let viewConfig: WidgetViewConfig
     }
 }
+
+#endif

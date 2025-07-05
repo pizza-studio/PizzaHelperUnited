@@ -8,6 +8,8 @@ import SwiftUI
 import WallpaperKit
 import WidgetKit
 
+#if !os(watchOS)
+
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
@@ -130,10 +132,13 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
     }
 }
 
+#endif
+
 // MARK: - ContainerBackgroundModifier
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension View {
+    #if !os(watchOS)
     @available(watchOS, unavailable)
     @ViewBuilder
     public func pzWidgetContainerBackground(
@@ -155,6 +160,7 @@ extension View {
         -> some View {
         modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
     }
+    #endif
 
     @available(watchOS 10.0, *)
     @ViewBuilder
@@ -175,6 +181,8 @@ private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
         }
     }
 }
+
+#if !os(watchOS)
 
 // MARK: - ContainerBackgroundModifier
 
@@ -216,3 +224,5 @@ private struct ContainerBackgroundStandbyDetector: ViewModifier {
         }
     }
 }
+
+#endif

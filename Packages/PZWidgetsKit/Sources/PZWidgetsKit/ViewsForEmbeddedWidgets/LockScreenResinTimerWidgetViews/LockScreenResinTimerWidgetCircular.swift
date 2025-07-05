@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(macOS)
+
 import Foundation
 import PZAccountKit
 import PZBaseKit
@@ -169,3 +171,5 @@ extension EmbeddedWidgets {
         private let result: Result<any DailyNoteProtocol, any Error>
     }
 }
+
+#endif
