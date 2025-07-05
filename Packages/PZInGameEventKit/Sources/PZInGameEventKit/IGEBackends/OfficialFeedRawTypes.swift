@@ -8,13 +8,11 @@ import PZBaseKit
 
 // MARK: - HoYoEventPack
 
-@available(watchOS, unavailable)
 public struct HoYoEventPack: AbleToCodeSendHash {
     public let content: HoYoEventContent
     public let meta: HoYoEventMeta
 }
 
-@available(watchOS, unavailable)
 extension HoYoEventPack {
     public struct HoYoEventContent: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
@@ -107,7 +105,6 @@ extension HoYoEventPack {
     }
 }
 
-@available(watchOS, unavailable)
 extension HoYoEventPack {
     public struct HoYoEventMeta: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public

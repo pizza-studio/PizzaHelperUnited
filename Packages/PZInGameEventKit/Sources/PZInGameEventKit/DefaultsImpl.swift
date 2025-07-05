@@ -6,7 +6,7 @@ import Defaults
 import Foundation
 import PZBaseKit
 
-@available(watchOS, unavailable)
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 extension Defaults.Keys {
     public static let officialFeedCache = Key<[OfficialFeed.FeedEvent]>(
         "officialFeedCache",

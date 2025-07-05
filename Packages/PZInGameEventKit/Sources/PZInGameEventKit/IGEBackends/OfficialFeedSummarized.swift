@@ -9,6 +9,7 @@ import PZBaseKit
 
 // MARK: OfficialFeed.FeedEvent
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
 extension OfficialFeed {
     public struct FeedEvent: AbleToCodeSendHash, Identifiable, Defaults.Serializable {
         public let game: Pizza.SupportedGame
@@ -23,7 +24,6 @@ extension OfficialFeed {
     }
 
     /// This returns true even if no local cache entry is available.
-    @available(watchOS, unavailable)
     public static func getCachedEventsIfValid(for game: Pizza.SupportedGame) -> [FeedEvent]? {
         let lastFetchDate = Defaults[.officialFeedMostRecentFetchDate][game.rawValue]
         guard let lastFetchDate else { return nil }
@@ -34,9 +34,21 @@ extension OfficialFeed {
         guard cachedEvent.first?.lang == .current else { return nil }
         return cachedEvent
     }
+
+    public static func getAllBundledFeedEvents() -> [FeedEvent] {
+        var resultStack = [FeedEvent]()
+        for game in Pizza.SupportedGame.allCases {
+            let rawPackage = try? game.getBundledTestOfficialFeedPackage()
+            guard let rawPackage else { continue }
+            resultStack.append(
+                contentsOf: OfficialFeed.summarize(rawPackage, for: game, server: .asia(game))
+            )
+        }
+        return resultStack
+    }
 }
 
-@available(watchOS, unavailable)
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
 extension OfficialFeed {
     public static func getAllFeedEventsOnline(
         game givenGame: Pizza.SupportedGame? = nil,
@@ -74,18 +86,6 @@ extension OfficialFeed {
                 print("[getAllFeedEventsOnline][\(game)] \(error)")
                 continue
             }
-        }
-        return resultStack
-    }
-
-    public static func getAllBundledFeedEvents() -> [FeedEvent] {
-        var resultStack = [FeedEvent]()
-        for game in Pizza.SupportedGame.allCases {
-            let rawPackage = try? game.getBundledTestOfficialFeedPackage()
-            guard let rawPackage else { continue }
-            resultStack.append(
-                contentsOf: OfficialFeed.summarize(rawPackage, for: game, server: .asia(game))
-            )
         }
         return resultStack
     }

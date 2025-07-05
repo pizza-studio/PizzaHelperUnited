@@ -7,7 +7,6 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 
-@available(watchOS, unavailable)
 extension Pizza.SupportedGame {
     public func getOfficialFeedPackageOnline(
         _ server: HoYo.Server,
@@ -85,7 +84,6 @@ extension Pizza.SupportedGame {
     }
 }
 
-@available(watchOS, unavailable)
 extension Pizza.SupportedGame {
     public func getBundledTestOfficialFeedPackage() throws -> HoYoEventPack {
         .init(

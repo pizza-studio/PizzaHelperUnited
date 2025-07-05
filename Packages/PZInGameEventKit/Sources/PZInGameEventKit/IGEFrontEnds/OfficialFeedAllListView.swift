@@ -11,7 +11,7 @@ import WallpaperKit
 
 // MARK: - GIOngoingEventAllListView
 
-@available(watchOS, unavailable)
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension OfficialFeed {
     struct OfficialFeedAllListView: View {
         // MARK: Lifecycle
@@ -167,6 +167,7 @@ extension OfficialFeed {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension View {
     @ViewBuilder
     fileprivate func opacityMaterial() -> some View {
