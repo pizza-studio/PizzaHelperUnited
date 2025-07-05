@@ -10,6 +10,7 @@ import PZBaseKit
 @testable import PZInGameEventKit
 import Testing
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 @Test
 func testDecodingOnlineFetchedOfficialFeeds() async throws {
     for game in Pizza.SupportedGame.allCases {
@@ -26,6 +27,7 @@ func testDecodingOnlineFetchedOfficialFeeds() async throws {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 @Test
 func testDecodingBundledOfficialFeeds() async throws {
     for game in Pizza.SupportedGame.allCases {
@@ -40,6 +42,7 @@ func testDecodingBundledOfficialFeeds() async throws {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 @Test
 func testGetAllOfficialFeedEventsOnline() async throws {
     let allData = await OfficialFeed.getAllFeedEventsOnline(bypassCache: true)
@@ -48,6 +51,7 @@ func testGetAllOfficialFeedEventsOnline() async throws {
     print(allZZZResults.count)
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 @Test
 func testGetAllOfficialFeedEventsOffline() async throws {
     let allData = OfficialFeed.getAllBundledFeedEvents()
@@ -56,6 +60,7 @@ func testGetAllOfficialFeedEventsOffline() async throws {
     print(allZZZResults.count)
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 @Test
 func testGetAllOfficialFeedEventsCache() async throws {
     _ = await OfficialFeed.getAllFeedEventsOnline(bypassCache: false)

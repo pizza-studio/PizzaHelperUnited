@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
+@available(watchOS, unavailable)
 extension OfficialFeed.FeedEvent {
     @available(watchOS, unavailable)
     @MainActor @ViewBuilder
