@@ -13,47 +13,55 @@ import WallpaperKit
 
 // MARK: - PZHelper
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public enum PZHelper {}
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension PZHelper {
-    @MainActor @SceneBuilder
+    @MainActor
     public static func makeMainScene() -> some Scene {
-        WindowGroup {
-            ContentView()
-                .initializeApp()
-                // .environment(\.horizontalSizeClass, .compact)
-                .defaultAppStorage(.baseSuite)
-            #if targetEnvironment(macCatalyst)
-                .frame(
-                    minWidth: OS.liquidGlassThemeSuspected ? 832 : 800,
-                    minHeight: 800
-                )
-            #elseif os(macOS) && !targetEnvironment(macCatalyst)
-                .frame(
-                    minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
-                    minHeight: 646
-                )
-            #endif
-                .onAppear {
-                    if !isApplicationBooted {
-                        startupTasks()
+        let windowToReturn = WindowGroup {
+            if #unavailable(iOS 17.0, macCatalyst 17.0, macOS 14.0) {
+                Text(verbatim: "Please upgrade to watchOS 10 or later.")
+            } else {
+                ContentView()
+                    .initializeApp()
+                    // .environment(\.horizontalSizeClass, .compact)
+                    .defaultAppStorage(.baseSuite)
+                #if targetEnvironment(macCatalyst)
+                    .frame(
+                        minWidth: OS.liquidGlassThemeSuspected ? 832 : 800,
+                        minHeight: 800
+                    )
+                #elseif os(macOS) && !targetEnvironment(macCatalyst)
+                    .frame(
+                        minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
+                        minHeight: 646
+                    )
+                #endif
+                    .onAppear {
+                        if !isApplicationBooted {
+                            startupTasks()
+                        }
+                        isApplicationBooted = true
                     }
-                    isApplicationBooted = true
-                }
-                .onAppBecomeActive {
-                    Task {
-                        await ASMetaSputnik.shared.updateMeta()
+                    .onAppBecomeActive {
+                        Task {
+                            await ASMetaSputnik.shared.updateMeta()
+                        }
                     }
-                }
-                .trackScreenVMParameters()
+                    .trackScreenVMParameters()
+                    .modelContainer(PZProfileActor.shared.modelContainer)
+            }
         }
         #if os(macOS) && !targetEnvironment(macCatalyst)
         .windowToolbarStyle(.expanded)
         #endif
-        .windowResizability(.contentMinSize)
-        .modelContainer(PZProfileActor.shared.modelContainer)
+
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+            return windowToReturn
+                .windowResizability(.contentMinSize)
+        } else {
+            return windowToReturn
+        }
     }
 
     @MainActor static var isApplicationBooted = false
