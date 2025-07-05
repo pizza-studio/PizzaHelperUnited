@@ -7,6 +7,7 @@ import PZBaseKit
 
 // MARK: - HoYo.CharInventory4HSR
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo {
     public struct CharInventory4HSR: CharacterInventory {
         // MARK: Public
@@ -47,6 +48,7 @@ extension HoYo {
 
 // MARK: - HoyoArtifactProtocol4HSR
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public protocol HoyoArtifactProtocol4HSR: AbleToCodeSendHash, Identifiable {
     var id: Int { get }
     var level: Int { get }
@@ -57,6 +59,7 @@ public protocol HoyoArtifactProtocol4HSR: AbleToCodeSendHash, Identifiable {
     var rarity: Int { get }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo.CharInventory4HSR.HYAvatar4HSR {
     public struct HYEquip4HSR: AbleToCodeSendHash, Identifiable {
         public let id: Int

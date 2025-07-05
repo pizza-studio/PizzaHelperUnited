@@ -9,10 +9,12 @@ import SwiftUI
 
 // MARK: - BattleReportView4HSR.TreasuresLightwardType
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension BattleReportView4HSR {
     typealias TreasuresLightwardType = HoYo.BattleReport4HSR.TreasuresLightwardType
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension BattleReportView4HSR.TreasuresLightwardType {
     public var asIcon: Image {
         Image(iconFileNameStem, bundle: .module)
@@ -21,6 +23,7 @@ extension BattleReportView4HSR.TreasuresLightwardType {
 
 // MARK: - BattleReportView4HSR
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct BattleReportView4HSR: BattleReportView {
     // MARK: Lifecycle
 
@@ -443,6 +446,7 @@ public struct BattleReportView4HSR: BattleReportView {
 
 #if DEBUG
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 #Preview {
     NavigationStack {
         BattleReportView4HSR(

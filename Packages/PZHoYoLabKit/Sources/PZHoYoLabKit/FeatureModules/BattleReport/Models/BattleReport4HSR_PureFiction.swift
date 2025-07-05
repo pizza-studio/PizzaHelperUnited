@@ -8,8 +8,7 @@ import PZBaseKit
 
 // MARK: - Pure Fiction.
 
-// MARK: - Apocalyptic Shadow.
-
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo.BattleReport4HSR {
     public struct PureFictionData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
@@ -77,6 +76,7 @@ extension HoYo.BattleReport4HSR {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension [HoYo.BattleReport4HSR.PFFloorDetail] {
     var trimmed: Self {
         var copied = self

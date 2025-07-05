@@ -7,6 +7,7 @@ import PZBaseKit
 
 // MARK: - HoYo.LedgerData4GI
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo {
     public struct LedgerData4GI: Ledger {
         // MARK: Public
@@ -120,6 +121,7 @@ extension HoYo {
 
 // MARK: - HoYo.LedgerData4GI.Action
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo.LedgerData4GI {
     public enum Action: Int, CaseIterable {
         case byOther = 0
@@ -138,6 +140,7 @@ extension HoYo.LedgerData4GI {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo.LedgerData4GI.MonthData.LedgerDataGroup {
     public var actionTyped: HoYo.LedgerData4GI.Action {
         .init(rawValue: actionID) ?? .byOther
