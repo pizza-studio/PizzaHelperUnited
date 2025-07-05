@@ -7,13 +7,7 @@ import SwiftUI
 
 @main
 struct PizzaWatchApp: App {
-    // MARK: Internal
-
     var body: some Scene {
-        PZHelperWatch.makeMainScene(modelContainer: profileContainer)
+        PZHelperWatch.makeMainScene()
     }
-
-    // MARK: Private
-
-    @State private var profileContainer = PZHelperWatch.getSharedModelContainer()
 }

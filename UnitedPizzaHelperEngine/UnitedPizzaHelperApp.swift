@@ -9,13 +9,7 @@ import SwiftUI
 @main
 @MainActor
 struct UnitedPizzaHelperApp: App {
-    // MARK: Internal
-
     var body: some Scene {
-        PZHelper.makeMainScene(modelContainer: profileContainer)
+        PZHelper.makeMainScene()
     }
-
-    // MARK: Private
-
-    @State private var profileContainer = PZHelper.getSharedModelContainer()
 }
