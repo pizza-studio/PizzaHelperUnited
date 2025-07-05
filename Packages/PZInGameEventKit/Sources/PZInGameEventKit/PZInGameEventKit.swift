@@ -4,4 +4,8 @@
 
 // MARK: - OfficialFeed
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 public enum OfficialFeed {}

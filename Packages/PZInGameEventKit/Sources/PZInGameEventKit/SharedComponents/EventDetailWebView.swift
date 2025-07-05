@@ -9,6 +9,9 @@ import SafariServices
 import SwiftUI
 import WebKit
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
 @MainActor
 struct EventDetailWebView {
     // MARK: Lifecycle
@@ -58,6 +61,9 @@ struct EventDetailWebView {
 
 #if os(macOS)
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
 extension EventDetailWebView: NSViewRepresentable {
     class Coordinator: NSObject, WKScriptMessageHandler, WKUIDelegate {
         // MARK: Lifecycle
@@ -129,6 +135,9 @@ extension EventDetailWebView: NSViewRepresentable {
 
 #elseif os(iOS) || targetEnvironment(macCatalyst)
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
 extension EventDetailWebView: UIViewRepresentable {
     class Coordinator: NSObject, WKScriptMessageHandler, WKUIDelegate {
         // MARK: Lifecycle
