@@ -49,6 +49,7 @@ let package = Package(
                 .product(name: "PZAccountKit", package: "PZKit"),
                 .product(name: "PZBaseKit", package: "PZKit"),
                 .product(name: "PZCoreDataKitShared", package: "PZCoreDataKit"),
+                .product(name: "PZCoreDataKit4LocalAccounts", package: "PZCoreDataKit"),
                 .product(name: "PZCoreDataKit4GachaEntries", package: "PZCoreDataKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
                 .product(name: "Sworm", package: "Sworm"),
