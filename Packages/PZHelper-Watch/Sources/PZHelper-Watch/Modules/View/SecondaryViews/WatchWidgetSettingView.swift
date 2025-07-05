@@ -11,6 +11,7 @@ import WidgetKit
 
 // MARK: - WatchWidgetSettingView
 
+@available(watchOS 10.0, *)
 struct WatchWidgetSettingView: View {
     // MARK: Internal
 

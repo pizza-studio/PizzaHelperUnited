@@ -6,9 +6,10 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-// MARK: - WatchAccountDetailView
+// MARK: - WatchProfileDetailView
 
-struct WatchAccountDetailView: View {
+@available(watchOS 10.0, *)
+struct WatchProfileDetailView: View {
     // MARK: Lifecycle
 
     init(data: any DailyNoteProtocol, profile: PZProfileSendable) {
@@ -22,7 +23,7 @@ struct WatchAccountDetailView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 Divider()
-                WatchResinDetailView(dailyNote: data)
+                WatchStaminaDetailView(dailyNote: data)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .overlay(alignment: .trailing) {
                         Text("\n\n" + profile.uidWithGame)
@@ -39,7 +40,7 @@ struct WatchAccountDetailView: View {
                         case .starRail: "watch.dailyNote.card.dailyTask.label"
                         case .zenlessZone: "watch.dailyNote.card.zzzVitality.label"
                         }
-                        WatchAccountDetailItemView(
+                        WatchProfileDetailItemView(
                             title: titleKey,
                             value: "\(sitrep.finished) / \(sitrep.all)",
                             icon: data.game.dailyTaskAssetIcon
@@ -87,21 +88,21 @@ struct WatchAccountDetailView: View {
 
     @ViewBuilder
     private func drawNote4GI(_ data: any Note4GI) -> some View {
-        WatchAccountDetailItemView(
+        WatchProfileDetailItemView(
             title: "watch.dailyNote.card.homeCoin.label",
             value: "\(data.homeCoinInfo.currentHomeCoin)",
             icon: data.game.giRealmCurrencyAssetIcon
         )
         Divider()
         let expeditionIntel = data.expeditionCompletionStatus
-        WatchAccountDetailItemView(
+        WatchProfileDetailItemView(
             title: "watch.dailyNote.card.expedition.label",
             value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
             icon: data.game.expeditionAssetIcon
         )
         Divider()
         if let data = data as? FullNote4GI {
-            WatchAccountDetailItemView(
+            WatchProfileDetailItemView(
                 title: "watch.dailyNote.card.transformer",
                 value: intervalFormatter
                     .string(
@@ -111,7 +112,7 @@ struct WatchAccountDetailView: View {
                 icon: data.game.giTransformerAssetIcon
             )
             Divider()
-            WatchAccountDetailItemView(
+            WatchProfileDetailItemView(
                 title: "watch.dailyNote.card.giTrounceBlossom",
                 value: data.weeklyBossesInfo.textDescription,
                 icon: data.game.giTrounceBlossomAssetIcon
@@ -122,21 +123,21 @@ struct WatchAccountDetailView: View {
 
     @ViewBuilder
     private func drawNote4HSR(_ data: any Note4HSR) -> some View {
-        WatchAccountDetailItemView(
+        WatchProfileDetailItemView(
             title: "watch.dailyNote.card.simulatedUniverse.label",
             value: "\(data.simulatedUniverseInfo.currentScore) / \(data.simulatedUniverseInfo.maxScore)",
             icon: data.game.hsrSimulatedUniverseAssetIcon
         )
         Divider()
         let expeditionIntel = data.expeditionCompletionStatus
-        WatchAccountDetailItemView(
+        WatchProfileDetailItemView(
             title: "watch.dailyNote.card.expedition.label",
             value: "\(expeditionIntel.finished) / \(expeditionIntel.all)",
             icon: data.game.expeditionAssetIcon
         )
         Divider()
         if let eowIntel = data.echoOfWarIntel {
-            WatchAccountDetailItemView(
+            WatchProfileDetailItemView(
                 title: "watch.dailyNote.card.hsrEchoOfWar.label",
                 value: eowIntel.textDescription,
                 icon: data.game.hsrEchoOfWarAssetIcon
@@ -148,7 +149,7 @@ struct WatchAccountDetailView: View {
     @ViewBuilder
     private func drawNote4ZZZ(_ data: Note4ZZZ) -> some View {
         Group {
-            WatchAccountDetailItemView(
+            WatchProfileDetailItemView(
                 title: "watch.dailyNote.card.zzzVHSStoreInOperationState.label",
                 value: String(data.vhsStoreState.localizedDescription),
                 icon: data.game.zzzVHSStoreAssetIcon
@@ -158,7 +159,7 @@ struct WatchAccountDetailView: View {
         if let cardScratched = data.cardScratched {
             let stateDone: String.LocalizationValue = "watch.dailyNote.card.zzzScratchableCard.done"
             let stateNyet: String.LocalizationValue = "watch.dailyNote.card.zzzScratchableCard.notYet"
-            WatchAccountDetailItemView(
+            WatchProfileDetailItemView(
                 title: "watch.dailyNote.card.zzzScratchableCard.label",
                 value: String(localized: cardScratched ? stateDone : stateNyet, bundle: .module),
                 icon: data.game.zzzScratchCardAssetIcon
@@ -166,7 +167,7 @@ struct WatchAccountDetailView: View {
             Divider()
         }
         if let bountyCommission = data.hollowZero.bountyCommission {
-            WatchAccountDetailItemView(
+            WatchProfileDetailItemView(
                 title: "watch.dailyNote.card.zzzHollowZeroBountyCommission.label",
                 value: bountyCommission.textDescription,
                 icon: data.game.zzzBountyAssetIcon
@@ -174,7 +175,7 @@ struct WatchAccountDetailView: View {
             Divider()
         }
         if let investigationPoint = data.hollowZero.investigationPoint {
-            WatchAccountDetailItemView(
+            WatchProfileDetailItemView(
                 title: "watch.dailyNote.card.zzzHollowZeroInvestigationPoint.label",
                 value: investigationPoint.textDescription,
                 icon: data.game.zzzInvestigationPointsAssetIcon
@@ -186,6 +187,7 @@ struct WatchAccountDetailView: View {
 
 // MARK: - WatchEachExpeditionView
 
+@available(watchOS 10.0, *)
 private struct WatchEachExpeditionView: View {
     let expedition: any ExpeditionTask
     var useAsyncImage: Bool = false

@@ -6,9 +6,10 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-// MARK: - WatchResinDetailView
+// MARK: - WatchStaminaDetailView
 
-struct WatchResinDetailView: View {
+@available(watchOS 10.0, *)
+struct WatchStaminaDetailView: View {
     let dailyNote: any DailyNoteProtocol
 
     var body: some View {
