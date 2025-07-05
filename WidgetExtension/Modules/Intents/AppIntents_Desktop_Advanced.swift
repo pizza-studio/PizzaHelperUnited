@@ -9,6 +9,7 @@ import PZBaseKit
 
 // MARK: - ProfileWidgetIntentProtocol
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 public protocol ProfileWidgetIntentProtocol {
     var showStaminaOnly: Bool { get }
     var useTinyGlassDisplayStyle: Bool { get }
@@ -24,7 +25,7 @@ public protocol ProfileWidgetIntentProtocol {
 
 // MARK: - SelectAccountIntent
 
-// Only for iOS Springboard Widgets and macOS Desktop Widgets.
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
     ProfileWidgetIntentProtocol {
     // MARK: Lifecycle
@@ -123,6 +124,8 @@ public struct SelectAccountIntent: AppIntent, WidgetConfigurationIntent, CustomI
 
 // Only for iOS Springboard Widgets and macOS Desktop Widgets.
 // 该 Intent 允许指定两个本地帐号。
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(watchOS, unavailable)
 public struct SelectDualProfileIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
     ProfileWidgetIntentProtocol {
     // MARK: Lifecycle

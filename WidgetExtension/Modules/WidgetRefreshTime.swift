@@ -6,6 +6,7 @@ import Defaults
 import Foundation
 import PZBaseKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension PZWidgets {
     private static let refreshWhenSucceedAfterHour: Double = 2.0
     private static let refreshWhenErrorMinute: Double = 15

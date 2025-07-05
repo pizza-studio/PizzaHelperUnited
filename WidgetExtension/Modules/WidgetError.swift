@@ -4,6 +4,7 @@
 
 import Foundation
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 enum WidgetError: CustomLocalizedStringResourceConvertible, LocalizedError {
     case profileSelectionNeeded
     case noProfileFound

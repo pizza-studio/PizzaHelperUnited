@@ -12,6 +12,7 @@ import WidgetKit
 
 // MARK: - DualProfileWidgetProvider
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @available(watchOS, unavailable)
 struct DualProfileWidgetProvider: AppIntentTimelineProvider {
     // MARK: Internal

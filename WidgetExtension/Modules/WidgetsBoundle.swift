@@ -8,35 +8,40 @@ import WidgetKit
 
 extension PZWidgets {
     @WidgetBundleBuilder @MainActor @preconcurrency public static var widgets: some Widget {
-        #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
-        StaminaTimerSharedActivityWidget()
-        #endif
-        #if !os(watchOS)
-        MainWidget()
-        DualProfileWidget()
-        MaterialWidget()
-        OfficialFeedWidget()
-        #endif
-        #if (os(iOS) && !targetEnvironment(macCatalyst)) || os(watchOS)
-        widgets4MobilePlatforms
-        #endif
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+            #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
+            StaminaTimerSharedActivityWidget()
+            #endif
+            #if !os(watchOS)
+            MainWidget()
+            DualProfileWidget()
+            MaterialWidget()
+            OfficialFeedWidget()
+            #endif
+            #if (os(iOS) && !targetEnvironment(macCatalyst)) || os(watchOS)
+            widgets4MobilePlatforms
+            #endif
+        }
+        DummyWidget() // 没这玩意的话无法正常编译。
     }
 
     #if (os(iOS) && !targetEnvironment(macCatalyst)) || os(watchOS)
     @WidgetBundleBuilder @MainActor @preconcurrency public static var widgets4MobilePlatforms: some Widget {
-        LockScreenResinWidget()
-        LockScreenLoopWidget()
-        LockScreenAllInfoWidget()
-        LockScreenResinTimerWidget()
-        LockScreenResinFullTimeWidget()
-        LockScreenHomeCoinWidget()
-        #if !os(watchOS)
-        // 洞天宝钱的环形进度条。这厮在 watchOS 系统下有莫名其妙的排版八哥，暂时排除。
-        AlternativeLockScreenHomeCoinWidget()
-        #endif
-        LockScreenDailyTaskWidget()
-        LockScreenExpeditionWidget()
-        AlternativeLockScreenResinWidget()
+        if #available(iOS 17.0, watchOS 10.0, *) {
+            LockScreenResinWidget()
+            LockScreenLoopWidget()
+            LockScreenAllInfoWidget()
+            LockScreenResinTimerWidget()
+            LockScreenResinFullTimeWidget()
+            LockScreenHomeCoinWidget()
+            #if !os(watchOS)
+            // 洞天宝钱的环形进度条。这厮在 watchOS 系统下有莫名其妙的排版八哥，暂时排除。
+            AlternativeLockScreenHomeCoinWidget()
+            #endif
+            LockScreenDailyTaskWidget()
+            LockScreenExpeditionWidget()
+            AlternativeLockScreenResinWidget()
+        }
     }
     #endif
 }
@@ -48,7 +53,9 @@ struct WidgetExtensionBundle: WidgetBundle {
     // MARK: Lifecycle
 
     init() {
-        PZWidgets.startupTask()
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+            PZWidgets.startupTask()
+        }
     }
 
     // MARK: Internal

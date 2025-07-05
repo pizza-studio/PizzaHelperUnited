@@ -8,6 +8,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension Pizza.SupportedGame {
     public init?(intentConfig: some WidgetConfigurationIntent) {
         let uuid: String?
@@ -25,6 +26,7 @@ extension Pizza.SupportedGame {
         self = profile.game
     }
 
+    @available(watchOS, unavailable)
     public static func initFromDualProfileConfig(
         intent: SelectDualProfileIntent
     )
