@@ -17,7 +17,6 @@ import WidgetKit
 extension EmbeddedWidgets {
     // MARK: - LockScreenResinWidgetRectangular
 
-    @available(macOS, unavailable)
     public struct LockScreenResinWidgetRectangular: View {
         // MARK: Lifecycle
 
@@ -156,9 +155,6 @@ extension EmbeddedWidgets {
 
 // MARK: - FitSystemFont
 
-@available(iOS 17.0, *)
-@available(macCatalyst 17.0, *)
-@available(watchOS 10.0, *)
 private struct FitSystemFont: ViewModifier {
     var lineLimit: Int
     var minimumScaleFactor: CGFloat
@@ -181,9 +177,6 @@ private struct FitSystemFont: ViewModifier {
     }
 }
 
-@available(iOS 17.0, *)
-@available(macCatalyst 17.0, *)
-@available(watchOS 10.0, *)
 extension View {
     @ViewBuilder
     private func fitSystemFont(

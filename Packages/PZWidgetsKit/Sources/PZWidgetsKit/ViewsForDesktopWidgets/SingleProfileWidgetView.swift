@@ -58,7 +58,6 @@ extension DesktopWidgets {
 
     // MARK: - SingleProfileWidgetViewCore
 
-    @available(watchOS, unavailable)
     struct SingleProfileWidgetViewCore: View {
         let entry: ProfileWidgetEntry
         @Environment(\.widgetFamily) var family: WidgetFamily

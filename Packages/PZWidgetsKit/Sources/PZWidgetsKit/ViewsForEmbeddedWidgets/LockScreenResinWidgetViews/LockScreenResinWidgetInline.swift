@@ -17,7 +17,6 @@ import WidgetKit
 extension EmbeddedWidgets {
     // MARK: Lifecycle
 
-    @available(macOS, unavailable)
     public struct LockScreenResinWidgetInline: View {
         // MARK: Lifecycle
 

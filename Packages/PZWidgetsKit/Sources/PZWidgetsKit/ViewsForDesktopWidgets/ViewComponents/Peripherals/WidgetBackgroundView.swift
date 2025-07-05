@@ -139,7 +139,6 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 @available(iOS 17.0, *)
 @available(macCatalyst 17.0, *)
 @available(macOS 14.0, *)
-@available(watchOS 10.0, *)
 extension View {
     @available(watchOS, unavailable)
     @ViewBuilder
@@ -163,6 +162,7 @@ extension View {
         modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
     }
 
+    @available(watchOS 10.0, *)
     @ViewBuilder
     public func smartStackWidgetContainerBackground(@ViewBuilder _ background: @escaping () -> some View) -> some View {
         modifier(SmartStackWidgetContainerBackground(background: background))

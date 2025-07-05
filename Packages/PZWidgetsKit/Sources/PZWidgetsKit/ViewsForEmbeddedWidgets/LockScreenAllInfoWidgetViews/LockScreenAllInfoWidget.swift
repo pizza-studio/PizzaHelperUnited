@@ -18,7 +18,6 @@ import WidgetKit
 extension EmbeddedWidgets {
     // MARK: - LockScreenAllInfoWidgetView
 
-    @available(macOS, unavailable)
     public struct LockScreenAllInfoWidgetView: View {
         // MARK: Lifecycle
 

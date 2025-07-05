@@ -30,9 +30,6 @@ extension DesktopWidgets {
 
         // MARK: Public
 
-        @available(iOS 17.0, *)
-        @available(macCatalyst 17.0, *)
-        @available(macOS 14.0, *)
         public enum Layout: String {
             case normal
             case tiny
@@ -62,9 +59,6 @@ extension DesktopWidgets {
 
         // MARK: Private
 
-        @available(iOS 17.0, *)
-        @available(macCatalyst 17.0, *)
-        @available(macOS 14.0, *)
         private struct EachExpeditionView: View {
             // MARK: Lifecycle
 

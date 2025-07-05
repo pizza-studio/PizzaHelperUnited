@@ -80,7 +80,6 @@ extension EmbeddedWidgets {
 
     // MARK: - LockScreenLoopWidgetType
 
-    @available(macOS, unavailable)
     enum LockScreenLoopWidgetType: CaseIterable {
         case resin
         case expedition
