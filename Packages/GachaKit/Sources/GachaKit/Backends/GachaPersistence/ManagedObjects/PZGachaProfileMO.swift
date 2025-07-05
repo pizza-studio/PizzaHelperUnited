@@ -9,6 +9,9 @@ import SwiftUI
 
 // MARK: - PZGachaProfileMO
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @Model
 public final class PZGachaProfileMO: GachaProfileIDProtocol {
     // MARK: Lifecycle
@@ -45,6 +48,9 @@ public final class PZGachaProfileMO: GachaProfileIDProtocol {
 
 // MARK: - GachaProfileID
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GachaProfileID: GachaProfileIDProtocol, Sendable {
     // MARK: Lifecycle
 
@@ -87,6 +93,9 @@ public protocol GachaProfileIDProtocol: Identifiable, Equatable, Hashable {
     var profileName: String? { get set }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaProfileIDProtocol {
     @MainActor @ViewBuilder var photoView: some View {
         Enka.ProfileIconView(uid: uid, game: game)

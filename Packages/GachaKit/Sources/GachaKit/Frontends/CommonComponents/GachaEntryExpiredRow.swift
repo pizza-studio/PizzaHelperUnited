@@ -6,6 +6,9 @@ import GachaMetaDB
 import PZBaseKit
 import SwiftUI
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GachaEntryExpiredRow: View {
     // MARK: Lifecycle
 

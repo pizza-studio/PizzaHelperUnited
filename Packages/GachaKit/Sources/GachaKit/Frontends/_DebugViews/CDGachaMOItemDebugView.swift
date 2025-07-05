@@ -13,9 +13,9 @@ import SwiftUI
 
 // MARK: - CDGachaMODebugView
 
-@available(macOS 14, *)
-@available(macCatalyst 17, *)
-@available(iOS 17, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct CDGachaMODebugView: View {
     // MARK: Lifecycle
 
@@ -89,6 +89,9 @@ public struct CDGachaMODebugView: View {
 @available(macOS 14, *)
 @available(macCatalyst 17, *)
 @available(iOS 17, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension CDGachaMODebugView {
     @Observable
     final class CDGachaMODebugVM: TaskManagedVM {

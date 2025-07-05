@@ -7,6 +7,9 @@ import PZAccountKit
 
 public typealias GachaLanguage = HoYo.APILang
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Locale {
     /// Get the language code used for gacha API according to current preferred localization.
     public static var gachaLangauge: GachaLanguage { .current }

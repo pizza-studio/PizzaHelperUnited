@@ -11,6 +11,9 @@ import SwiftUI
 
 // MARK: - GachaFetchView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GachaFetchView: View {
     // MARK: Lifecycle
 
@@ -42,6 +45,9 @@ public struct GachaFetchView: View {
 
 // MARK: - GachaFetchView4Game
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
     // MARK: Lifecycle
 
@@ -143,6 +149,9 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
 
 // MARK: GachaFetchView4Game.WaitingForURLView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchView4Game {
     private struct WaitingForURLView: View {
         // MARK: Lifecycle
@@ -193,6 +202,9 @@ extension GachaFetchView4Game {
         // MARK: Private
 
         @Observable
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
         private class URLAwaitVM: TaskManagedVM {}
 
         @State private var pzProfiles: [PZProfileSendable] = []
@@ -294,6 +306,9 @@ extension GachaFetchView4Game {
 
 // MARK: GachaFetchView4Game.ReadyToFireView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchView4Game {
     private struct ReadyToFireView: View {
         // MARK: Lifecycle
@@ -409,6 +424,9 @@ extension GachaFetchView4Game {
 
 // MARK: GachaFetchView4Game.GachaPoolTypePickerSection
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchView4Game {
     private struct GachaPoolTypePickerSection: View {
         // MARK: Public
@@ -459,6 +477,9 @@ extension GachaFetchView4Game {
 
 // MARK: GachaFetchView4Game.InProgressView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchView4Game {
     private struct InProgressView: View {
         // MARK: Lifecycle
@@ -492,6 +513,9 @@ extension GachaFetchView4Game {
 
 // MARK: GachaFetchView4Game.GotSomeItemView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchView4Game {
     private struct GotSomeItemView: View {
         // MARK: Lifecycle
@@ -549,6 +573,9 @@ extension GachaFetchView4Game {
 
 // MARK: GachaFetchView4Game.FailFetchingView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchView4Game {
     private struct FailFetchingView: View {
         // MARK: Lifecycle
@@ -587,6 +614,9 @@ extension GachaFetchView4Game {
 
 // MARK: GachaFetchView4Game.FinishedView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchView4Game {
     private struct FinishedView: View {
         // MARK: Lifecycle
@@ -671,6 +701,9 @@ extension GachaFetchView4Game {
 
 // MARK: GachaFetchView4Game.GetGachaChart
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaFetchView4Game {
     private struct GetGachaChart: View {
         // MARK: Internal

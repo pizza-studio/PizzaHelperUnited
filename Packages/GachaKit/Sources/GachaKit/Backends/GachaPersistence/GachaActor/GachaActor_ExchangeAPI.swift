@@ -10,6 +10,9 @@ import SwiftData
 
 // MARK: - UIGF & SRGF Exporter APIs.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaActor {
     public func prepareUIGFv4(
         for owners: [GachaProfileID]? = nil,
@@ -92,6 +95,9 @@ extension GachaActor {
 
 // MARK: - UIGF & SRGF & GIGF Importer APIs.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaActor {
     /// UIGFv4 抽卡记录导入专用函式，直接处理整个档案。
     @discardableResult

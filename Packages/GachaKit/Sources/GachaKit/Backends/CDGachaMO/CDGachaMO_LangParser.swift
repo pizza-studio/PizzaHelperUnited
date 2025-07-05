@@ -9,6 +9,9 @@ import PZCoreDataKit4GachaEntries
 
 // MARK: - Language parser (duplicated from GIGF with modifications)
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension [CDGachaMO4GI] {
     fileprivate static let recognizer = NLLanguageRecognizer()
 

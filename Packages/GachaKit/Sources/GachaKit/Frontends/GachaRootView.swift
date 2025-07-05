@@ -11,6 +11,9 @@ import SwiftUI
 
 // MARK: - GachaRootView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct GachaRootView: View {
     // MARK: Lifecycle
 
@@ -148,6 +151,9 @@ public struct GachaRootView: View {
     @Environment(GachaVM.self) private var theVM
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension GachaRootView {
     @ViewBuilder public var coreBody: some View {
         Form {
