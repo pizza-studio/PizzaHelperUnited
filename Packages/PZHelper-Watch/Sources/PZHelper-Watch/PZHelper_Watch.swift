@@ -9,8 +9,10 @@ import SwiftUI
 
 // MARK: - PZHelperWatch
 
+@available(watchOS 10.0, *)
 public enum PZHelperWatch {}
 
+@available(watchOS 10.0, *)
 extension PZHelperWatch {
     @MainActor @SceneBuilder
     public static func makeMainScene() -> some Scene {
@@ -39,6 +41,7 @@ extension PZHelperWatch {
     @MainActor public private(set) static var isApplicationBooted = false
 }
 
+@available(watchOS 10.0, *)
 extension PZHelperWatch {
     @MainActor
     private static func startupTasks() {

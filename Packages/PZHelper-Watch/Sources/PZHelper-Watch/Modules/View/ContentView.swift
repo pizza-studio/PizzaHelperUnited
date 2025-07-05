@@ -11,6 +11,7 @@ import WidgetKit
 
 // MARK: - ContentView
 
+@available(watchOS 10.0, *)
 public struct ContentView: View {
     // MARK: Lifecycle
 
@@ -97,6 +98,7 @@ public struct ContentView: View {
 
 // MARK: - DetailNavigator
 
+@available(watchOS 10.0, *)
 private struct DetailNavigator: View {
     // MARK: Lifecycle
 
@@ -115,7 +117,7 @@ private struct DetailNavigator: View {
             switch dailyNoteViewModel.dailyNoteStatus {
             case let .succeed(dailyNote, _):
                 NavigationLink {
-                    WatchAccountDetailView(data: dailyNote, profile: account)
+                    WatchProfileDetailView(data: dailyNote, profile: account)
                 } label: {
                     VStack(alignment: .leading) {
                         HStack {
