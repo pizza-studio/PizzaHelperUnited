@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import SwiftUI
 
 @available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
@@ -53,3 +55,5 @@ extension OfficialFeed.FeedEvent {
         return (title, remainingDays)
     }
 }
+
+#endif

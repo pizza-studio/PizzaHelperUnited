@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(macOS)
+
 import PZAccountKit
 import PZBaseKit
 import PZWidgetsKit
@@ -312,3 +314,5 @@ struct AlternativeWatchCornerResinWidget: Widget {
         #endif
     }
 }
+
+#endif

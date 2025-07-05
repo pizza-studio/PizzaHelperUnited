@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import Foundation
 
 @available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
@@ -70,3 +72,5 @@ extension String.LocalizationValue {
         String(localized: self, table: "MaterialNames", bundle: .module)
     }
 }
+
+#endif

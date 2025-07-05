@@ -4,13 +4,21 @@
 
 // MARK: - DesktopWidgets
 
+#if !os(watchOS)
+
 @available(watchOS, unavailable)
 public enum DesktopWidgets {}
 
+#endif
+
 // MARK: - EmbeddedWidgets
+
+#if !os(macOS)
 
 @available(macOS, unavailable)
 public enum EmbeddedWidgets {}
+
+#endif
 
 #if os(macOS) && !targetEnvironment(macCatalyst)
 import SwiftUI

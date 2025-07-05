@@ -26,7 +26,6 @@ extension Pizza.SupportedGame {
         self = profile.game
     }
 
-    @available(watchOS, unavailable)
     public static func initFromDualProfileConfig(
         intent: SelectDualProfileIntent
     )
