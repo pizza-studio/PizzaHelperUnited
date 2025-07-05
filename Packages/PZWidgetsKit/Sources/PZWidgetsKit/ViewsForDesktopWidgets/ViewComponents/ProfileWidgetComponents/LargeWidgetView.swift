@@ -11,6 +11,7 @@ import WidgetKit
 
 // MARK: - DesktopWidgets.LargeWidgetView4SingleProfile
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     struct LargeWidgetView4SingleProfile: View {

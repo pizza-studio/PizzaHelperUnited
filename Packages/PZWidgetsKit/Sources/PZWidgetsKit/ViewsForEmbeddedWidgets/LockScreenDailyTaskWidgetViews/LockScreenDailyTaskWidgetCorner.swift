@@ -6,6 +6,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
     public struct LockScreenDailyTaskWidgetCorner: View {

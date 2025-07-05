@@ -7,6 +7,7 @@ import PZBaseKit
 import SwiftUI
 import WidgetKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public struct SingleProfileWidgetView: View {
@@ -55,7 +56,6 @@ extension DesktopWidgets {
 
     // MARK: - SingleProfileWidgetViewCore
 
-    @available(watchOS, unavailable)
     struct SingleProfileWidgetViewCore: View {
         let entry: ProfileWidgetEntry
         @Environment(\.widgetFamily) var family: WidgetFamily

@@ -10,6 +10,7 @@ import WallpaperKit
 
 // MARK: - WidgetBackground
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 public struct WidgetBackground: AbleToCodeSendHash {
     // MARK: Lifecycle
 
@@ -28,6 +29,7 @@ public struct WidgetBackground: AbleToCodeSendHash {
     public var displayString: String
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension WidgetBackground {
     public static let colors: [String] = [
         "pzWidgetsKit.widgetBackgroundColorScheme.gray",
@@ -227,6 +229,7 @@ extension WidgetBackground {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension WidgetBackground {
     public static var randomBackground: Self {
         let pickedBackgroundId = WidgetBackground.allOptions.randomElement()!
@@ -279,6 +282,7 @@ extension WidgetBackground {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension BundledWallpaper {
     public var asWidgetBackground: WidgetBackground {
         .init(id: assetName4LiveActivity, displayString: localizedNameForWidgets)
@@ -293,12 +297,14 @@ extension BundledWallpaper {
 
 // MARK: - User Wallpaper Implementations.
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension UserWallpaper {
     fileprivate var asWidgetBackground: WidgetBackground {
         .init(id: id.uuidString, displayString: "\(name) (\(dateString))")
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension Wallpaper {
     fileprivate var asWidgetBackground: WidgetBackground {
         switch self {

@@ -4,6 +4,7 @@
 
 import PZBaseKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension PZWidgetsSPM {
     // MARK: - WeeklyBossesDisplayMethod
 

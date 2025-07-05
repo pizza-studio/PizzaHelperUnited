@@ -9,6 +9,7 @@ import WidgetKit
 
 // MARK: - DesktopWidgets.MetaBlockView4Desktop
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     // MARK: - MetaBlockView4Desktop
@@ -56,6 +57,7 @@ extension DesktopWidgets {
 
 #if DEBUG && !os(watchOS)
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 #Preview {
     let viewConfig = WidgetViewConfig()
     NavigationStack {
