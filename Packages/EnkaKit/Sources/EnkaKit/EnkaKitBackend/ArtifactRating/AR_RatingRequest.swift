@@ -6,6 +6,9 @@ import PZBaseKit
 
 // MARK: - ArtifactRating.RatingRequest
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating {
     public struct RatingRequest {
         public var game: Enka.GameType
@@ -30,6 +33,9 @@ extension ArtifactRating {
 
 // MARK: - ArtifactRating.RatingRequest.Artifact
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating.RatingRequest {
     // MARK: Public
 
@@ -54,6 +60,9 @@ extension ArtifactRating.RatingRequest {
 
 // MARK: - ArtifactRating.RatingRequest.SubPropData
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating.RatingRequest {
     public struct SubPropData: AbleToCodeSendHash {
         var hpDelta: Double = 0

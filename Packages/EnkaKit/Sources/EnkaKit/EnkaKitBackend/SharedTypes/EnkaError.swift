@@ -5,6 +5,9 @@
 import Foundation
 import PZBaseKit
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka {
     public enum EKError: Error, LocalizedError {
         case langTableMatchingFailure

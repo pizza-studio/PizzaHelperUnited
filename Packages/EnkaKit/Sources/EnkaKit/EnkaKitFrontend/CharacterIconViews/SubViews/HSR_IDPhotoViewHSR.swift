@@ -7,6 +7,9 @@ import SwiftUI
 
 // MARK: - IDPhotoView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct IDPhotoView4HSR: View {
     // MARK: Lifecycle
 

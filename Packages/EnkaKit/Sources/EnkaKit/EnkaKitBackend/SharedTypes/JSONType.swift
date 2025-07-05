@@ -5,6 +5,9 @@
 import EnkaDBFiles
 import Foundation
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka {
     public enum JSONType: String, CaseIterable, Sendable {
         case giLocTable = "loc"

@@ -6,6 +6,9 @@ import Defaults
 import PZBaseKit
 import SwiftUI
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension EKQueriedProfileProtocol {
     @MainActor
     public func onlineIcon(imageHandler: ((Image) -> Image)? = nil) -> AsyncImage<some View> {
@@ -36,6 +39,9 @@ extension EKQueriedProfileProtocol {
 
 // MARK: - Enka.ProfileIconView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka {
     public struct ProfileIconView: View {
         // MARK: Lifecycle
@@ -96,7 +102,9 @@ extension Enka {
 
 #if DEBUG
 
-private let profileHSR: Enka.QueriedProfileHSR = {
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *) private let profileHSR: Enka.QueriedProfileHSR = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
@@ -113,7 +121,9 @@ private let profileHSR: Enka.QueriedProfileHSR = {
     // swiftlint:enable force_unwrapping
 }()
 
-private let profileGI: Enka.QueriedProfileGI = {
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *) private let profileGI: Enka.QueriedProfileGI = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
@@ -130,6 +140,9 @@ private let profileGI: Enka.QueriedProfileGI = {
     // swiftlint:enable force_unwrapping
 }()
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 #Preview {
     VStack {
         profileHSR.localFittingIcon4SUI

@@ -9,12 +9,21 @@ import PZBaseKit
 
 // swiftlint:disable cyclomatic_complexity
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public enum ArtifactRating {}
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public typealias ArtifactSubStatScore = ArtifactRating.SubStatScoreLevel
 
 // MARK: - ArtifactRating.SubStatScoreLevel
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating {
     public enum SubStatScoreLevel: Double, AbleToCodeSendHash {
         case highest = 100
@@ -77,6 +86,9 @@ extension ArtifactRating {
 
 // MARK: - ArtifactRating.Appraiser
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating {
     public struct Appraiser {
         // MARK: Lifecycle
@@ -116,6 +128,9 @@ extension ArtifactRating {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating.Appraiser {
     public static func tellTier(score: Int) -> String {
         // 虽然原神每个角色只能装备五件圣遗物，
@@ -151,6 +166,9 @@ extension ArtifactRating.Appraiser {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating.RatingRequest.Artifact {
     /// Adjust dictionary contents for potential Hyperbloom Electro Roles.
     ///
@@ -305,6 +323,9 @@ extension ArtifactRating.RatingRequest.Artifact {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating.Appraiser {
     @MainActor
     public func evaluate() -> ArtifactRating.ScoreResult? {
@@ -335,6 +356,9 @@ extension ArtifactRating.Appraiser {
 
 // MARK: - ArtifactRating.ScoreResult
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating {
     public struct ScoreResult: Codable, Equatable, Hashable, Sendable {
         public var game: Enka.GameType
@@ -391,6 +415,9 @@ extension ArtifactRating {
 
 // MARK: - ArtifactRating.CollectionModel
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating {
     public struct CollectionModel: Codable {
         public var uid: String

@@ -8,6 +8,9 @@ import PZBaseKit
 
 // MARK: - Enka.AvatarSummarized
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka {
     /// The backend struct dedicated for rendering EachAvatarStatView.
     public struct AvatarSummarized: AbleToCodeSendHash, Identifiable {
@@ -68,6 +71,9 @@ extension Enka {
 
 // MARK: - Enka.AvatarSummarized.AvatarMainInfo
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.AvatarSummarized {
     /// 专门用来负责管理角色证件照显示的 Identifiable Struct。
     public struct CharacterID: Identifiable, AbleToCodeSendHash {
@@ -178,6 +184,9 @@ extension Enka.AvatarSummarized {
 
 // MARK: - Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo {
     /// Base Skill Set of a Character, excluding Technique since it doesn't have a level.
     public struct BaseSkillSet: AbleToCodeSendHash {
@@ -259,6 +268,9 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
 
 // MARK: - Enka.AvatarSummarized.WeaponPanel
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.AvatarSummarized {
     public struct WeaponPanel: AbleToCodeSendHash {
         /// Game.
@@ -283,6 +295,9 @@ extension Enka.AvatarSummarized {
 
 // MARK: - Enka.AvatarSummarized.ArtifactInfo
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.AvatarSummarized {
     public struct ArtifactInfo: AbleToCodeSendHash, Identifiable {
         /// Game.

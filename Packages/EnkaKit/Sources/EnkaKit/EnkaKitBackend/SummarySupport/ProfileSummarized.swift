@@ -7,6 +7,9 @@ import Foundation
 
 // MARK: - Enka.ProfileSummarized
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka {
     public struct ProfileSummarized<DBType: EnkaDBProtocol>: Sendable {
         // MARK: Lifecycle
@@ -40,6 +43,9 @@ extension Enka {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.ProfileSummarized {
     @MainActor
     public mutating func update(
@@ -63,6 +69,9 @@ extension Enka.ProfileSummarized {
 
 // MARK: - Enka.ProfileSummarized + Hashable, Identifiable
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.ProfileSummarized: Hashable, Identifiable {
     public var id: Int {
         hashValue // 这里不能直接用 UID 了，因为需要处理单个 profile 被更新的情况。
@@ -80,6 +89,9 @@ extension Enka.ProfileSummarized: Hashable, Identifiable {
 
 // MARK: - Enka.ProfileSummarized + Equatable
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.ProfileSummarized: Equatable {
     public static func == (lhs: Enka.ProfileSummarized<DBType>, rhs: Enka.ProfileSummarized<DBType>) -> Bool {
         lhs.rawInfo == rhs.rawInfo && lhs.summarizedAvatars == rhs.summarizedAvatars
@@ -88,6 +100,9 @@ extension Enka.ProfileSummarized: Equatable {
 
 // MARK: - Summerizer APIs.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension EKQueriedProfileProtocol {
     @MainActor
     public func summarizeAllAvatars(

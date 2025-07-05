@@ -4,6 +4,9 @@
 
 // MARK: - ArtifactRatingOptions
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension ArtifactRating {
     /// 圣遗物评分时的例外选项的处理，仅适用于原神。
     ///

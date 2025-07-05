@@ -5,6 +5,9 @@
 import Defaults
 import Foundation
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension HYQueriedModels.HYLAvatarDetail4HSR: HYQueriedAvatarProtocol {
     public func summarize(theDB: Enka.EnkaDB4HSR) -> Enka.AvatarSummarized? {
         let mainInfo = Enka.AvatarSummarized.AvatarMainInfo(hsrDB: theDB, hylRAW: self)
