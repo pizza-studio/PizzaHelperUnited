@@ -12,6 +12,7 @@ import UniformTypeIdentifiers
 
 // MARK: - ProfileBackupRestoreMenu
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct ProfileBackupRestoreMenu<T: View>: View {
     // MARK: Lifecycle
 
@@ -99,6 +100,7 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 
 // MARK: ProfileBackupRestoreMenu.Coordinator
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension ProfileBackupRestoreMenu {
     @Observable
     private final class Coordinator: TaskManagedVM {
@@ -154,6 +156,7 @@ extension ProfileBackupRestoreMenu {
 
 // MARK: - PZProfilesDocument
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct PZProfilesDocument: FileDocument {
     // MARK: Lifecycle
 

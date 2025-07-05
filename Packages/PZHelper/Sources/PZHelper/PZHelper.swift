@@ -13,8 +13,10 @@ import WallpaperKit
 
 // MARK: - PZHelper
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public enum PZHelper {}
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension PZHelper {
     @MainActor @SceneBuilder
     public static func makeMainScene() -> some Scene {
@@ -57,6 +59,7 @@ extension PZHelper {
     @MainActor static var isApplicationBooted = false
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension PZHelper {
     @MainActor
     static func startupTasks() {
@@ -73,6 +76,7 @@ extension PZHelper {
 
 // MARK: - AppInitializer
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct AppInitializer: ViewModifier {
     // MARK: Lifecycle
 
@@ -97,6 +101,7 @@ private struct AppInitializer: ViewModifier {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension View {
     @ViewBuilder
     func initializeApp() -> some View {

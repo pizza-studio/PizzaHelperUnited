@@ -16,7 +16,7 @@ let sharedSwiftSettings: [SwiftSetting] = [
 let package = Package(
     name: "PZHelperPKG",
     defaultLocalization: "en",
-    platforms: [.iOS(.v17), .macOS(.v14), .macCatalyst(.v17), .visionOS(.v1)],
+    platforms: [.iOS(.v14), .macOS(.v11), .macCatalyst(.v14), .visionOS(.v1)],
     products: [
         .library(
             name: "PZHelper",

@@ -8,6 +8,7 @@ import PZBaseKit
 import SwiftUI
 import WallpaperConfigKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct UtilsTabPage: View {
     // MARK: Internal
 

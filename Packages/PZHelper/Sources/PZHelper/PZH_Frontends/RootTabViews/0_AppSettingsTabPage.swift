@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - AppSettingsTabPage
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct AppSettingsTabPage: View {
     // MARK: Lifecycle
 

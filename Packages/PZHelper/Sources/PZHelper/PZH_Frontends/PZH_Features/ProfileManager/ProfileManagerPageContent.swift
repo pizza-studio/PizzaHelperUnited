@@ -18,6 +18,7 @@ import SwiftUI
 /// 所以只能放弃使用与后者有关的 Environment 层面的 SwiftData API。
 /// 不然的话，在 iOS 26 / macOS 26 系统下会崩溃。
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct ProfileManagerPageContent: View {
     // MARK: Public
 
@@ -420,6 +421,7 @@ struct ProfileManagerPageContent: View {
 
 // MARK: ProfileManagerPageContent.SheetType
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension ProfileManagerPageContent {
     typealias SheetType = ProfileManagerVM.SheetType
 }

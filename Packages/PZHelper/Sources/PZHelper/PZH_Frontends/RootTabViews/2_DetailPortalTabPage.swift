@@ -12,6 +12,7 @@ import SwiftUI
 
 // MARK: - DetailPortalTabPage
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct DetailPortalTabPage: View {
     // MARK: Lifecycle
 

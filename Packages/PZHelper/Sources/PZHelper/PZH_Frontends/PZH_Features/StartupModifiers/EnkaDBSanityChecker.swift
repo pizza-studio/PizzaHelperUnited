@@ -11,6 +11,7 @@ import UserNotifications
 
 // MARK: - EnkaDBSanityChecker
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct EnkaDBSanityChecker: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -25,6 +26,7 @@ private struct EnkaDBSanityChecker: ViewModifier {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension View {
     @ViewBuilder
     func performEnkaDBSanityCheck() -> some View {
