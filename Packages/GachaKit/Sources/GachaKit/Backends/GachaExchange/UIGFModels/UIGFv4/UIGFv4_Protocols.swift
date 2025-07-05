@@ -6,6 +6,7 @@ import GachaMetaDB
 import PZBaseKit
 import SwiftUI
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Pizza.SupportedGame {
     public var gachaItemType: any UIGFGachaItemProtocol.Type {
         switch self {
@@ -18,6 +19,7 @@ extension Pizza.SupportedGame {
 
 // MARK: - GachaTypeProtocol
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public protocol GachaTypeProtocol: RawRepresentable, AbleToCodeSendHash,
     Identifiable where RawValue == String {
     associatedtype ItemType: UIGFGachaItemProtocol where ItemType.PoolType == Self
@@ -26,6 +28,7 @@ public protocol GachaTypeProtocol: RawRepresentable, AbleToCodeSendHash,
     init(rawValue: String)
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension GachaTypeProtocol {
     public static var game: Pizza.SupportedGame { ItemType.game }
     public var game: Pizza.SupportedGame { Self.game }
@@ -59,6 +62,7 @@ extension GachaTypeProtocol {
 
 // MARK: - UIGFGachaItemProtocol
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public protocol UIGFGachaItemProtocol: AbleToCodeSendHash {
     associatedtype PoolType: GachaTypeProtocol where PoolType.ItemType == Self
     static var game: Pizza.SupportedGame { get }
@@ -86,10 +90,12 @@ public protocol UIGFGachaItemProtocol: AbleToCodeSendHash {
     var time: String { get set }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension UIGFGachaItemProtocol {
     var game: Pizza.SupportedGame { Self.game }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Array where Element: UIGFGachaItemProtocol {
     /// 将当前 UIGFGachaItem 的物品分类与名称转换成给定的语言。
     /// - Parameter lang: 给定的语言。
@@ -124,11 +130,13 @@ extension Array where Element: UIGFGachaItemProtocol {
 
 // MARK: - UIGFProfileProtocol
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public protocol UIGFProfileProtocol {
     associatedtype ItemType: UIGFGachaItemProtocol where ItemType.PoolType == PoolType
     associatedtype PoolType: GachaTypeProtocol
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension UIGFProfileProtocol {
     static var game: Pizza.SupportedGame { ItemType.game }
     var game: Pizza.SupportedGame { Self.game }

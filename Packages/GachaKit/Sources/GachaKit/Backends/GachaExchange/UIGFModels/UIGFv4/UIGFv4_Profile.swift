@@ -6,6 +6,7 @@ import Foundation
 import GachaMetaDB
 import PZBaseKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension UIGFv4 {
     public typealias ProfileHSR = Profile<GachaItemHSR>
     public typealias ProfileGI = Profile<GachaItemGI>
@@ -72,6 +73,7 @@ extension UIGFv4 {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension UIGFv4 {
     func extractGachaProfileIDs() -> [GachaProfileID] {
         var results = Set<GachaProfileID>()

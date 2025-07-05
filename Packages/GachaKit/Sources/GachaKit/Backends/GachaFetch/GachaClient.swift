@@ -8,6 +8,7 @@ import PZAccountKit
 
 // MARK: - GachaClient
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIteratorProtocol {
     // MARK: Lifecycle
 

@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - GachaProfileView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct GachaProfileView: View {
     // MARK: Lifecycle
 
