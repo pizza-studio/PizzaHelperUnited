@@ -8,6 +8,9 @@ import WallpaperKit
 
 // MARK: - GITodayMaterialsView
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
 @available(watchOS, unavailable)
 public struct GITodayMaterialsView<T: View>: View {
     // MARK: Lifecycle
@@ -32,9 +35,6 @@ public struct GITodayMaterialsView<T: View>: View {
             }
             .formStyle(.grouped)
             .scrollContentBackground(.hidden)
-            .listContainerBackground()
-            .navBarTitleDisplayMode(.large)
-            .navigationTitle(Self.navTitle)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Picker("".description, selection: $isWeapon.animation()) {
@@ -61,6 +61,9 @@ public struct GITodayMaterialsView<T: View>: View {
                     }
                 }
             }
+            .listContainerBackground()
+            .navBarTitleDisplayMode(.large)
+            .navigationTitle(Self.navTitle)
         }
         .onAppear {
             if !initialized {
@@ -135,8 +138,12 @@ public struct GITodayMaterialsView<T: View>: View {
     }
 }
 
-#if DEBUG && !os(watchOS)
+#if DEBUG
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS, unavailable)
 #Preview {
     NavigationStack {
         GITodayMaterialsView { _, _ in

@@ -4,6 +4,9 @@
 
 import SwiftUI
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
 @available(watchOS, unavailable)
 public struct GITodayMaterialsView4Widgets<T: View>: View {
     // MARK: Lifecycle
