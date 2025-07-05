@@ -49,6 +49,16 @@ public final class CDGachaMOSputnik: Sendable {
         return intGI + intHSR
     }
 
+    /// Refugee API.
+    ///
+    /// WARNING: This does not fix Genshin Gacha Entry ItemIDs.
+    public func getAllGenshinDataEntriesVanilla() throws
+        -> [CDGachaMO4GI] {
+        try theDB(for: .genshinImpact)?.perform { ctx in
+            try ctx.fetch(CDGachaMO4GI.all).map { try $0.decode() }
+        } ?? []
+    }
+
     /// WARNING: This does not fix Genshin Gacha Entry ItemIDs.
     public func getAllDataEntriesVanilla(
         for game: PZCoreDataKit.StoredGame,

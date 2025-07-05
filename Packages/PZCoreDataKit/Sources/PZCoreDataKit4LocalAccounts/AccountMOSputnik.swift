@@ -56,6 +56,15 @@ public final class AccountMOSputnik {
         return firstResult
     }
 
+    /// Refugee API.
+    public func allAccountDataForGenshin() throws -> [AccountMO4GI] {
+        try theDB(for: .genshinImpact)?.perform { ctx in
+            try ctx.fetch(AccountMO4GI.all).map {
+                try $0.decode()
+            }
+        } ?? []
+    }
+
     public func allAccountData(
         for game: PZCoreDataKit.StoredGame
     ) throws
