@@ -12,7 +12,7 @@ import PZCoreDataKitShared
 public final class CDGachaMOSputnik: Sendable {
     // MARK: Lifecycle
 
-    public init(persistence: PZCoreDataKitShared.DBPersistenceMethod, backgroundContext: Bool) throws {
+    public init(persistence: DBPersistenceMethod, backgroundContext: Bool) throws {
         let pc4HSR = try CDGachaMO4HSR.getLoadedPersistentContainer(persistence: persistence)
         let pc4GI = try CDGachaMO4GI.getLoadedPersistentContainer(persistence: persistence)
         if backgroundContext {
