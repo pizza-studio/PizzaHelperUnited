@@ -59,6 +59,9 @@ extension DesktopWidgets {
 
 #if DEBUG && !os(watchOS)
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 #Preview {
     let viewConfig = WidgetViewConfig()
     NavigationStack {
