@@ -16,6 +16,9 @@ extension BundledWallpaper {
 // MARK: - AppWallpaperView
 
 #if !os(watchOS)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct AppWallpaperView: View {
     // MARK: Lifecycle
 

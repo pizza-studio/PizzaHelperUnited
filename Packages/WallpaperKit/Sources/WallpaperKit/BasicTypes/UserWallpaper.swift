@@ -7,6 +7,10 @@ import Defaults
 import Foundation
 import PZBaseKit
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension Defaults.Keys {
     /// User-supplied Wallpapers. API deprecated. Left for data migration purposes.
     /// This API is intentionally marked as non-public.
@@ -19,6 +23,10 @@ extension Defaults.Keys {
 
 // MARK: - UserWallpaper
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
     // MARK: Lifecycle
 
@@ -60,6 +68,10 @@ public struct UserWallpaper: Identifiable, AbleToCodeSendHash {
     public let b64Data4Squared: String
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension UserWallpaper {
     public var imageHorizontal: CGImage? {
         guard let data = Data(base64Encoded: b64Data4Horizontal) else { return nil }
@@ -91,8 +103,16 @@ extension UserWallpaper {
 
 // MARK: Defaults.Serializable
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension UserWallpaper: Defaults.Serializable {}
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension UserWallpaper {
     public static var allCases: [UserWallpaper] {
         UserWallpaperFileHandler.getAllUserWallpapers().sorted {
@@ -101,6 +121,10 @@ extension UserWallpaper {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension Set where Element == UserWallpaper {
     public init(defaultsValueIDs: Set<String>) {
         let uuids = defaultsValueIDs.compactMap { UUID(uuidString: $0) }

@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import Defaults
 import Foundation
 import Observation
@@ -13,6 +15,9 @@ import WallpaperKit
 
 // MARK: - UserWallpaperExchangeMenu
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 struct UserWallpaperExchangeMenu<T: View>: View {
     // MARK: Lifecycle
 
@@ -102,6 +107,9 @@ struct UserWallpaperExchangeMenu<T: View>: View {
 
 // MARK: UserWallpaperExchangeMenu.Coordinator
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UserWallpaperExchangeMenu {
     @Observable
     private final class Coordinator: TaskManagedVM {
@@ -154,3 +162,5 @@ extension UserWallpaperExchangeMenu {
         }
     }
 }
+
+#endif

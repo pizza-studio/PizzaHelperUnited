@@ -7,6 +7,10 @@ import SwiftUI
 
 // MARK: - NavigationBackground
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension View {
     @ViewBuilder
     public func listContainerBackground(
@@ -28,12 +32,20 @@ extension View {
     }
 }
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension String {
     public var i18nWPKit: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
     }
 }
 
+@available(iOS 15.0, *)
+@available(macCatalyst 15.0, *)
+@available(macOS 12.0, *)
+@available(watchOS 8.0, *)
 extension String.LocalizationValue {
     public var i18nWPKit: String {
         String(localized: self, bundle: .module)

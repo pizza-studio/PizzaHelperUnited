@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import Defaults
 import PZBaseKit
 import SFSafeSymbols
@@ -10,7 +12,9 @@ import WallpaperKit
 
 // MARK: - WallpaperGalleryViewContent
 
-#if !os(watchOS)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct WallpaperGalleryViewContent: View {
     // MARK: Lifecycle
 
@@ -173,6 +177,9 @@ public struct WallpaperGalleryViewContent: View {
 }
 
 #if DEBUG
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 #Preview {
     WallpaperGalleryViewContent()
 }
