@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - LedgerView4HSR
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct LedgerView4HSR: LedgerView {
     // MARK: Lifecycle
 
@@ -188,13 +189,14 @@ public struct LedgerView4HSR: LedgerView {
 }
 
 #if DEBUG
-private let demoData: HoYo.LedgerData4HSR = {
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) private let demoData: HoYo.LedgerData4HSR = {
     let sampleDataURL = Bundle.module.url(forResource: "ledger_sample_hsr", withExtension: "json")!
     let data = try! Data(contentsOf: sampleDataURL)
     let decoded = try! JSONDecoder().decode(HoYo.LedgerData4HSR.self, from: data)
     return decoded
 }()
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 #Preview {
     LedgerView4HSR(data: demoData)
 }

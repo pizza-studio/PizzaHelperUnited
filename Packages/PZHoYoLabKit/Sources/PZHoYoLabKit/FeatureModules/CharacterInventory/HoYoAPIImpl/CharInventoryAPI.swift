@@ -8,6 +8,7 @@ import EnkaKit
 import Foundation
 import PZAccountKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo {
     public static func getCharacterInventory(for profile: PZProfileSendable) async throws -> (any CharacterInventory)? {
         #if DEBUG
@@ -21,6 +22,7 @@ extension HoYo {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo {
     static func characterInventory4GI(for profile: PZProfileSendable) async throws -> CharInventory4GI {
         try await characterInventory4GI(
@@ -43,6 +45,7 @@ extension HoYo {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo {
     private static func characterInventory4GI(
         server: Server,
@@ -186,6 +189,7 @@ extension HoYo {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo.AccountRegion {
     public var characterInventoryRetrievalPath: String {
         switch (self, game) {

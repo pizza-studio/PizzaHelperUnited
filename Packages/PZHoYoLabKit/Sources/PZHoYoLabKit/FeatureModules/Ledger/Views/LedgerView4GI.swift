@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - LedgerView4GI
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct LedgerView4GI: LedgerView {
     // MARK: Lifecycle
 
@@ -188,13 +189,14 @@ public struct LedgerView4GI: LedgerView {
 }
 
 #if DEBUG
-private let demoData: HoYo.LedgerData4GI = {
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) private let demoData: HoYo.LedgerData4GI = {
     let sampleDataURL = Bundle.module.url(forResource: "ledger_sample_gi", withExtension: "json")!
     let data = try! Data(contentsOf: sampleDataURL)
     let decoded = try! JSONDecoder().decode(HoYo.LedgerData4GI.self, from: data)
     return decoded
 }()
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 #Preview {
     LedgerView4GI(data: demoData)
 }

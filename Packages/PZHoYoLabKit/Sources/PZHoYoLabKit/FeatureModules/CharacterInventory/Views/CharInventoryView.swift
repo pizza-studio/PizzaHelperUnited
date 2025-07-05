@@ -11,6 +11,7 @@ import SwiftUI
 
 // MARK: - CharacterInventoryView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct CharacterInventoryView: View {
     // MARK: Lifecycle
 
@@ -241,6 +242,7 @@ public struct CharacterInventoryView: View {
 
 // MARK: CharacterInventoryView.AvatarListItem
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension CharacterInventoryView {
     // MARK: - AvatarListItem
 
@@ -374,6 +376,7 @@ extension CharacterInventoryView {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension CharacterInventoryView {
     // MARK: - GoldNum
 

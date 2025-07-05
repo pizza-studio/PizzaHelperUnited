@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - BattleReportSet
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public protocol BattleReportSet: AbleToCodeSendHash {
     associatedtype Report: BattleReport
     var current: Report { get }
@@ -17,10 +18,12 @@ public protocol BattleReportSet: AbleToCodeSendHash {
 
 // MARK: - BattleReport
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public protocol BattleReport: AbleToCodeSendHash {
     associatedtype ViewType: BattleReportView where Self == ViewType.BattleReportData
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension BattleReport {
     @MainActor @ViewBuilder
     public func asView(profile: PZProfileSendable?) -> some View {
@@ -30,6 +33,7 @@ extension BattleReport {
 
 // MARK: - BattleReportView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @MainActor
 public protocol BattleReportView: View {
     associatedtype BattleReportData: BattleReport where Self == BattleReportData.ViewType
@@ -39,6 +43,7 @@ public protocol BattleReportView: View {
     @ViewBuilder var body: Self.Body { get }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension BattleReportView {
     public static var abyssStarIcon: Image { Image("abyssStar", bundle: .module) }
 
@@ -57,6 +62,7 @@ extension BattleReportView {
 
 // MARK: - Debug
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension BattleReportView {
     @ViewBuilder public var debugBody: some View {
         VStack {

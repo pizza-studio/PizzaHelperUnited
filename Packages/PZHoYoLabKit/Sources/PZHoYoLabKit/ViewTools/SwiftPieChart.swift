@@ -12,6 +12,7 @@ import SwiftUI
 
 // MARK: - PieChartView
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
 public struct PieChartView: View {
     // MARK: Lifecycle
 
@@ -194,6 +195,7 @@ public struct PieChartView: View {
 
 // MARK: - PieChartRows
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
 struct PieChartRows: View {
     // MARK: Lifecycle
 
@@ -262,6 +264,7 @@ struct PieChartRows: View {
 
 // MARK: - PieChartView_Previews
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
         PieChartView(

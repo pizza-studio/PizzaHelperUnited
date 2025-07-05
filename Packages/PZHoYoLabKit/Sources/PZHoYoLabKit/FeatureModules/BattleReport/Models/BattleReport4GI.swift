@@ -8,6 +8,7 @@ import PZBaseKit
 
 // MARK: - HoYo.BattleReport4GI
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo {
     public struct BattleReport4GI: BattleReport {
         // MARK: Lifecycle
@@ -31,6 +32,7 @@ extension HoYo {
 
 // MARK: - HoYo.BattleReport4GI.TreasuresStarwardType
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo.BattleReport4GI {
     public enum TreasuresStarwardType: String, Identifiable, CaseIterable, AbleToCodeSendHash {
         case stygianOnslaught
@@ -64,6 +66,7 @@ extension HoYo.BattleReport4GI {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo.BattleReport4GI {
     public struct LatestChallengeIntel: AbleToCodeSendHash {
         public let type: TreasuresStarwardType
