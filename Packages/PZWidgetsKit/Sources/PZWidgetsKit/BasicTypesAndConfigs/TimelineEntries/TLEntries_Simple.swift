@@ -13,6 +13,10 @@ import WidgetKit
 @available(macCatalyst 16.0, *)
 @available(macOS 13.0, *)
 @available(watchOS, unavailable)
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public struct MaterialWidgetEntry: TimelineEntry, AbleToCodeSendHash {
     // MARK: Lifecycle
 
@@ -40,6 +44,10 @@ public struct MaterialWidgetEntry: TimelineEntry, AbleToCodeSendHash {
 @available(macCatalyst 16.0, *)
 @available(macOS 13.0, *)
 @available(watchOS, unavailable)
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public struct OfficialFeedWidgetEntry: TimelineEntry, AbleToCodeSendHash {
     // MARK: Lifecycle
 

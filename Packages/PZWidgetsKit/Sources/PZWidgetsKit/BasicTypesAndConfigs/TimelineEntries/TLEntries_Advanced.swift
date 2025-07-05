@@ -110,6 +110,10 @@ public struct ProfileWidgetEntry: TimelineEntry, Sendable {
 
 // MARK: Hashable, Identifiable
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 extension ProfileWidgetEntry: Hashable, Identifiable {
     public static func == (lhs: ProfileWidgetEntry, rhs: ProfileWidgetEntry) -> Bool {
         lhs.hashValue == rhs.hashValue

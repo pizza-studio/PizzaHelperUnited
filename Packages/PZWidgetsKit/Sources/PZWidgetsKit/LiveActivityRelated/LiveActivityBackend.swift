@@ -14,6 +14,10 @@ import WallpaperKit
 
 // MARK: - EnableLiveActivityButton
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public struct EnableLiveActivityButton: View {
     // MARK: Lifecycle
 
@@ -59,11 +63,19 @@ public struct EnableLiveActivityButton: View {
 }
 
 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 extension LiveActivityAttributes: ActivityAttributes {}
 #endif
 
 // MARK: - LiveActivityAttributes
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public struct LiveActivityAttributes: Sendable {
     public typealias LiveActivityState = ContentState
 
@@ -102,6 +114,10 @@ public struct LiveActivityAttributes: Sendable {
     public let profileUUID: UUID
 }
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 extension LiveActivityAttributes.LiveActivityState {
     public var maxPrimaryStamina: Int { staminaCompletionStatus.all }
 
@@ -263,6 +279,10 @@ public final class StaminaLiveActivityController: Sendable {
 
 // MARK: - CreateLiveActivityError
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public enum CreateLiveActivityError: Error {
     case notAllowed
     case otherError(String)
@@ -271,6 +291,10 @@ public enum CreateLiveActivityError: Error {
 
 // MARK: LocalizedError
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 extension CreateLiveActivityError: LocalizedError {
     public var errorDescription: String? {
         switch self {

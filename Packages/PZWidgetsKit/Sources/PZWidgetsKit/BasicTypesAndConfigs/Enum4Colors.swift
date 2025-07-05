@@ -6,6 +6,10 @@ import CoreGraphics
 
 // MARK: - PZWidgetsSPM.Colors
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 extension PZWidgetsSPM {
     /// 用 Xcode Asset Catalog 管理颜色的话会有个风险：一旦颜色名称填写错误的话，就是 Runtime Error。
     /// 用 Enums 管理颜色可以使这种错误变成 Compile-time Error。

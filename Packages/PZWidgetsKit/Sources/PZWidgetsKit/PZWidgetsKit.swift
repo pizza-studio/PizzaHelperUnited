@@ -16,8 +16,16 @@ import PZBaseKit
 /// - Widgets
 ///
 /// 虽有一定技术难度，但 PZWidgets 已经对小工具实现了最大程度上的 SPM 解耦。
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public enum PZWidgetsSPM {}
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 extension PZWidgetsSPM {
     public static let dateFormatter: DateFormatter = {
         let fmt = DateFormatter.CurrentLocale()
