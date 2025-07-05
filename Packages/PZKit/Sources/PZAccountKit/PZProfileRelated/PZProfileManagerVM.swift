@@ -187,7 +187,7 @@ public final class ProfileManagerVM: TaskManagedVM {
 
     // MARK: Private
 
-    @ObservationIgnored private var cancellables: [AnyCancellable] = []
+    @ObservationIgnored nonisolated(unsafe) private var cancellables: [AnyCancellable] = []
 
     private func configurePublisherObservations() {
         switch OS.isOS25OrAbove {
