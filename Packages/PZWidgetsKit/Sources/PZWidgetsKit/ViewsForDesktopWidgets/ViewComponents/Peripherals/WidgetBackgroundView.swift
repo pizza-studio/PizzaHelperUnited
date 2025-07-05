@@ -9,10 +9,6 @@ import WallpaperKit
 import WidgetKit
 
 @available(watchOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 extension DesktopWidgets {
     public typealias WidgetBackgroundView = WidgetBackgroundView4DesktopWidgets
 }
@@ -20,10 +16,6 @@ extension DesktopWidgets {
 // MARK: - WidgetBackgroundView4DesktopWidgets
 
 @available(watchOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 public struct WidgetBackgroundView4DesktopWidgets: View {
     // MARK: Lifecycle
 
@@ -141,7 +133,6 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 @available(iOS 16.0, *)
 @available(macCatalyst 16.0, *)
 @available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 extension View {
     @available(watchOS, unavailable)
     @ViewBuilder
@@ -176,7 +167,6 @@ extension View {
 @available(iOS 16.0, *)
 @available(macCatalyst 16.0, *)
 @available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
     let background: () -> B
 
@@ -190,10 +180,6 @@ private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
 // MARK: - ContainerBackgroundModifier
 
 @available(watchOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 private struct ContainerBackgroundModifier: ViewModifier {
     var viewConfig: WidgetViewConfig
 
@@ -205,10 +191,6 @@ private struct ContainerBackgroundModifier: ViewModifier {
 // MARK: - ContainerBackgroundStandbyDetector
 
 @available(watchOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 private struct ContainerBackgroundStandbyDetector: ViewModifier {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode
     @Environment(\.widgetContentMargins) var widgetContentMargins: EdgeInsets

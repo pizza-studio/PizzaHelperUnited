@@ -8,10 +8,6 @@ import SwiftUI
 import WidgetKit
 
 @available(watchOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 extension DesktopWidgets {
     public struct DualProfileWidgetView: View {
         // MARK: Lifecycle

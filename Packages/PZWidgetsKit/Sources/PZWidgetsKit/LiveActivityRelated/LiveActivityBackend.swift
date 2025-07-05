@@ -79,6 +79,10 @@ extension LiveActivityAttributes: ActivityAttributes {}
 public struct LiveActivityAttributes: Sendable {
     public typealias LiveActivityState = ContentState
 
+    @available(iOS 16.0, *)
+    @available(macCatalyst 16.0, *)
+    @available(macOS 13.0, *)
+    @available(watchOS 9.0, *)
     public struct ContentState: AbleToCodeSendHash {
         // MARK: Lifecycle
 
@@ -155,6 +159,10 @@ extension LiveActivityAttributes.LiveActivityState {
 
 // MARK: - StaminaLiveActivityController
 
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public final class StaminaLiveActivityController: Sendable {
     // MARK: Lifecycle
 

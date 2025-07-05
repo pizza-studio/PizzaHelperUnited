@@ -11,13 +11,10 @@ import WidgetKit
 // MARK: - EmbeddedWidgets.LockScreenResinWidgetRectangular
 
 @available(macOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 extension EmbeddedWidgets {
     // MARK: - LockScreenResinWidgetRectangular
 
+    @available(macOS, unavailable)
     public struct LockScreenResinWidgetRectangular: View {
         // MARK: Lifecycle
 
@@ -158,7 +155,6 @@ extension EmbeddedWidgets {
 
 @available(iOS 16.0, *)
 @available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
 @available(watchOS 9.0, *)
 private struct FitSystemFont: ViewModifier {
     var lineLimit: Int
@@ -184,7 +180,6 @@ private struct FitSystemFont: ViewModifier {
 
 @available(iOS 16.0, *)
 @available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
 @available(watchOS 9.0, *)
 extension View {
     @ViewBuilder

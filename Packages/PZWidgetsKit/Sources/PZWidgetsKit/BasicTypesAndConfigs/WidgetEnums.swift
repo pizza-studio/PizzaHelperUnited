@@ -11,6 +11,10 @@ import PZBaseKit
 extension PZWidgetsSPM {
     // MARK: - WeeklyBossesDisplayMethod
 
+    @available(iOS 16.0, *)
+    @available(macCatalyst 16.0, *)
+    @available(macOS 13.0, *)
+    @available(watchOS 9.0, *)
     public enum WeeklyBossesDisplayMethod: String, AbleToCodeSendHash {
         case disappearAfterCompleted
         case alwaysShow
@@ -19,6 +23,10 @@ extension PZWidgetsSPM {
 
     // MARK: - ExpeditionDisplayPolicy
 
+    @available(iOS 16.0, *)
+    @available(macCatalyst 16.0, *)
+    @available(macOS 13.0, *)
+    @available(watchOS 9.0, *)
     public enum ExpeditionDisplayPolicy: String, AbleToCodeSendHash {
         case neverDisplay
         case displayWhenAvailable
@@ -27,6 +35,10 @@ extension PZWidgetsSPM {
 
     // MARK: - StaminaContentRevolverStyle
 
+    @available(iOS 16.0, *)
+    @available(macCatalyst 16.0, *)
+    @available(macOS 13.0, *)
+    @available(watchOS 9.0, *)
     public enum StaminaContentRevolverStyle: String, AbleToCodeSendHash {
         case byDefault
         case timer

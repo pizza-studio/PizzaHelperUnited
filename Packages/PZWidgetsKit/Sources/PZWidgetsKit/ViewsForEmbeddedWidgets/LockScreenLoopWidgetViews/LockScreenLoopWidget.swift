@@ -10,10 +10,6 @@ import WidgetKit
 // MARK: - LockScreenLoopWidgetView
 
 @available(macOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 extension EmbeddedWidgets {
     public struct LockScreenLoopWidgetView: View {
         // MARK: Lifecycle
@@ -81,6 +77,7 @@ extension EmbeddedWidgets {
 
     // MARK: - LockScreenLoopWidgetType
 
+    @available(macOS, unavailable)
     enum LockScreenLoopWidgetType: CaseIterable {
         case resin
         case expedition

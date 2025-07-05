@@ -9,10 +9,6 @@ import SwiftUI
 // MARK: - DesktopWidgets.ExpeditionsView
 
 @available(watchOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 extension DesktopWidgets {
     public struct ExpeditionsView: View {
         // MARK: Lifecycle
@@ -31,6 +27,9 @@ extension DesktopWidgets {
 
         // MARK: Public
 
+        @available(iOS 16.0, *)
+        @available(macCatalyst 16.0, *)
+        @available(macOS 13.0, *)
         public enum Layout: String {
             case normal
             case tiny
@@ -60,6 +59,9 @@ extension DesktopWidgets {
 
         // MARK: Private
 
+        @available(iOS 16.0, *)
+        @available(macCatalyst 16.0, *)
+        @available(macOS 13.0, *)
         private struct EachExpeditionView: View {
             // MARK: Lifecycle
 

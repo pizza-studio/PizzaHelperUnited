@@ -5,28 +5,16 @@
 // MARK: - DesktopWidgets
 
 @available(watchOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 public enum DesktopWidgets {}
 
 // MARK: - EmbeddedWidgets
 
 @available(macOS, unavailable)
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 public enum EmbeddedWidgets {}
 
 #if os(macOS) && !targetEnvironment(macCatalyst)
 import SwiftUI
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
 extension View {
     @MainActor @preconcurrency
     public func widgetLabel(_ label: any StringProtocol) -> some View {
