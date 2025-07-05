@@ -10,6 +10,9 @@ import WallpaperKit
 
 // MARK: - EnkaShowCaseView
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct EnkaShowCaseView<DBType: EnkaDBProtocol>: View where DBType.QueriedProfile.DBType == DBType {
     // MARK: Lifecycle
 
@@ -57,6 +60,9 @@ public struct EnkaShowCaseView<DBType: EnkaDBProtocol>: View where DBType.Querie
     private let onClose: (() -> Void)?
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
     @MainActor
     public func asView(selectedAvatarID: String? = nil, onClose: (() -> Void)? = nil) -> EnkaShowCaseView<DBType>? {
@@ -68,6 +74,9 @@ extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
 
 #if DEBUG
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @MainActor private let summaryHSR: Enka.ProfileSummarized<Enka.EnkaDB4HSR> = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
@@ -79,6 +88,9 @@ extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
     // swiftlint:enable force_unwrapping
 }()
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @MainActor private let summaryGI: Enka.ProfileSummarized<Enka.EnkaDB4GI> = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
@@ -90,6 +102,9 @@ extension Enka.ProfileSummarized where DBType.QueriedProfile.DBType == DBType {
     // swiftlint:enable force_unwrapping
 }()
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 #Preview {
     /// 注意：请仅用 iOS 或者 MacCatalyst 来预览。AppKit 无法正常处理这个 View。
     TabView {

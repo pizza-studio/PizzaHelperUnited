@@ -5,6 +5,9 @@
 // MARK: - MutableAvatarPropertyPanel
 
 /// 一个即用即抛的类型，用来快速整理角色面板。
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 struct MutableAvatarPropertyPanel {
     // MARK: Lifecycle
 

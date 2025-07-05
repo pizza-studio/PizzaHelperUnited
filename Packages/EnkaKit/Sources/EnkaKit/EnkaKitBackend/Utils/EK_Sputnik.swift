@@ -13,6 +13,9 @@ import PZBaseKit
 
 // 注意：针对展柜的查询 API 并未放在该档案内，而是针对 EnkaDBProtocol 直接实作了。
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka {
     @Observable
     public final class Sputnik: ObservableObject, @unchecked Sendable {
@@ -79,6 +82,9 @@ extension Enka {
 
 // MARK: - Enka.Sputnik.DBActor
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.Sputnik {
     public actor DBActor {
         // MARK: Public
@@ -95,6 +101,9 @@ extension Enka.Sputnik {
 
 // MARK: - EnkaDB Getters.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.Sputnik {
     @MainActor
     @discardableResult
@@ -153,6 +162,9 @@ extension Enka.Sputnik {
 
 // MARK: - Fetching Enka Query Profile.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.Sputnik {
     public func queryAndSave(uid: String, game: Enka.GameType) async throws {
         switch game {

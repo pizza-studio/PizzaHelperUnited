@@ -10,6 +10,9 @@ import PZBaseKit
 
 // MARK: - Enka.EnkaDB4GI
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka {
     @Observable
     public final class EnkaDB4GI: ObservableObject, EnkaDBProtocol, Codable, @unchecked Sendable {
@@ -104,6 +107,9 @@ extension Enka {
 
 // MARK: - Protocol Conformance.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.EnkaDB4GI {
     public static var game: Enka.GameType { .genshinImpact }
 
@@ -130,6 +136,9 @@ extension Enka.EnkaDB4GI {
 
 // MARK: - Use bundled resources to initiate an EnkaDB instance.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.EnkaDB4GI {
     public convenience init(locTag: String? = nil) throws {
         let locTables = try Enka.JSONType.giLocTable.bundledJSONData
@@ -153,6 +162,9 @@ extension Enka.EnkaDB4GI {
 
 // MARK: - Expiry Check.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.EnkaDB4GI {
     public func checkIfExpired(against givenProfile: QueriedProfile) -> Bool {
         guard Enka.currentLangTag == locTag else { return true }
@@ -183,6 +195,9 @@ extension Enka.EnkaDB4GI {
 
 // MARK: - Extra.
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension Enka.EnkaDB4GI {
     public func findCostume(charID: String) -> (costumeID: String, costume: EnkaDBModelsGI.Costume)? {
         guard let matchedCharacter = characters[charID] else { return nil }
