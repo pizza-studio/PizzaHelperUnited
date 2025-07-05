@@ -8,8 +8,16 @@ import PZBaseKit
 
 // MARK: - UserWallpaperFileHandler
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 public enum UserWallpaperFileHandler {}
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension UserWallpaperFileHandler {
     /// 如果已经迁移过的话，这个函式不会有任何作用。
     public static func migrateUserWallpapersFromUserDefaultsToFiles() {

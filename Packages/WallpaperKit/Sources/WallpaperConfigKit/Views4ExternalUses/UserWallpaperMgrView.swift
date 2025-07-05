@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import AlertToast
 import Defaults
 import PZBaseKit
@@ -9,8 +11,9 @@ import SFSafeSymbols
 import SwiftUI
 import WallpaperKit
 
-#if !os(watchOS)
-
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct UserWallpaperMgrViewContent: View {
     // MARK: Lifecycle
 
@@ -158,6 +161,9 @@ public struct UserWallpaperMgrViewContent: View {
     private var labvParser: LiveActivityBackgroundValueParser { .init($liveActivityWallpaperIDs) }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UserWallpaperMgrViewContent {
     @ViewBuilder var coreBody: some View {
         List {
@@ -373,6 +379,9 @@ extension UserWallpaperMgrViewContent {
 
 #if DEBUG
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 #Preview {
     NavigationStack {
         UserWallpaperMgrViewContent()

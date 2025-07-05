@@ -14,6 +14,9 @@ import WallpaperKit
 // MARK: - UserWallpaperPack
 
 /// 该结构仅用作导出内容之用途。
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct UserWallpaperPack: FileDocument {
     // MARK: Lifecycle
 
@@ -54,6 +57,9 @@ public struct UserWallpaperPack: FileDocument {
     }
 }
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension UserWallpaperPack {
     public enum FileParseException: Error, LocalizedError {
         case urlNull

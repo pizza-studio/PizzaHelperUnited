@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import Defaults
 import PZBaseKit
 import SwiftUI
@@ -9,7 +11,9 @@ import WallpaperKit
 
 // MARK: - AppWallpaperSettingsNav
 
-#if !os(watchOS)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct AppWallpaperSettingsNav: View {
     // MARK: Lifecycle
 

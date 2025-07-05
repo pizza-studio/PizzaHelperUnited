@@ -2,6 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import Defaults
 import PZBaseKit
 import SwiftUI
@@ -9,6 +11,9 @@ import WallpaperKit
 
 // MARK: - LiveActivityBackgroundValueParser
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 public struct LiveActivityBackgroundValueParser: Sendable {
     // MARK: Lifecycle
 
@@ -66,3 +71,4 @@ public struct LiveActivityBackgroundValueParser: Sendable {
     private let ids: Binding<Set<String>>
     private let nullFlag = Wallpaper.nullLiveActivityWallpaperIdentifier
 }
+#endif
