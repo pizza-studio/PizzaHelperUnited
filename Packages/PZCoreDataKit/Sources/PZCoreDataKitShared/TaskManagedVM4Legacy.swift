@@ -9,6 +9,7 @@ import SwiftUI
 ///
 /// OS21 = [iOS14, macOS11]
 @MainActor
+@preconcurrency
 open class TaskManagedVM4OS21: ObservableObject {
     // MARK: Lifecycle
 
@@ -103,7 +104,7 @@ open class TaskManagedVM4OS21: ObservableObject {
         }
         workItem = item
 
-        DispatchQueue.global(qos: .userInitiated).async(execute: item)
+        DispatchQueue.main.async(execute: item)
     }
 
     // MARK: Private
