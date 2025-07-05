@@ -1,6 +1,82 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "app.appName.full" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ピザ助手"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pizza Helper"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "披萨小助手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "披薩小助手"
+          }
+        }
+      }
+    },
     "app.dailynote.card.daily_training.label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7849,6 +7925,693 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "該頁面乃應 App Store 審委會之要求而實作。"
+          }
+        }
+      }
+    },
+    "refugee.export.failedInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler beim Exportieren der Migrationsdatendatei."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed from dumping the migration data file."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al exportar el archivo de datos de migración."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nabigo sa pag-export ng migration data file."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échec de l’exportation du fichier de données de migration."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore durante l’esportazione del file dati di migrazione."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移行データファイルのエクスポートに失敗しました。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마이그레이션 데이터 파일 내보내기에 실패했습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось экспортировать файл данных миграции."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không thể xuất tệp dữ liệu di chuyển."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "迁移数据文件导出失败。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遷移資料檔案匯出失敗。"
+          }
+        }
+      }
+    },
+    "refugee.export.fileSavedTo:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Migrationsdatendatei erfolgreich exportiert nach:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped the migration data file to:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivo de datos de migración exportado correctamente a:"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matagumpay na na-export ang migration data file sa:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichier de données de migration exporté avec succès vers :"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File dati di migrazione esportato correttamente in:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移行データファイルを正常にエクスポートしました:"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마이그레이션 데이터 파일을 다음 위치에 성공적으로 내보냈습니다:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файл данных миграции успешно экспортирован в:"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã xuất thành công tệp dữ liệu di chuyển tới:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "迁移数据文件已成功导出至: "
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遷移資料檔案已成功匯出至: "
+          }
+        }
+      }
+    },
+    "refugee.export.succeededInSavingToFile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Migrationsdatendatei wurde erfolgreich exportiert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully dumped the migration data file."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El archivo de datos de migración se ha exportado correctamente."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matagumpay na na-export ang migration data file."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le fichier de données de migration a été exporté avec succès."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File dati di migrazione esportato con successo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移行データファイルは正常にエクスポートされました。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마이그레이션 데이터 파일을 성공적으로 내보냈습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файл данных миграции успешно экспортирован."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tệp dữ liệu di chuyển đã được xuất thành công."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "迁移数据文件已成功导出。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遷移資料檔案已成功匯出。"
+          }
+        }
+      }
+    },
+    "refugee.exportableCount.gachaEntries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wunschverlaufseinträge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wish Record Entries"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entradas de historial de deseos"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Entry ng Wish Record"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrées de l'historique des vœux"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voci del registro dei desideri"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祈願履歴エントリー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소원 기록 항목"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записи истории желаний"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mục Nhật ký Nguyện vọng"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祈愿记录笔数"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "祈願記錄筆數"
+          }
+        }
+      }
+    },
+    "refugee.exportableCount.header" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportierbare Datenanzahl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportable Data Count"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cantidad de datos exportables"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilang ng Maaaring I-export na Data"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de données exportables"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conteggio Dati Esportabili"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エクスポート可能なデータ数"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내보낼 수 있는 데이터 수"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество экспортируемых данных"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Số lượng dữ liệu có thể xuất"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可导出数据数量"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可匯出資料數量"
+          }
+        }
+      }
+    },
+    "refugee.exportableCount.profiles" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokale Profile"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local Profiles"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfiles locales"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Lokal na Profile"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profils locaux"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profili Locali"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローカルプロファイル"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로컬 프로필"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Локальные профили"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hồ sơ cục bộ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地账号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本機帳號"
+          }
+        }
+      }
+    },
+    "refugee.footer.exportInstructions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen Sie auf die Schaltfläche oben rechts in dieser Ansicht, um die Daten für den Export vorzubereiten. Sobald die Daten erfolgreich vorbereitet wurden, erscheint ein Dialogfeld, in dem Sie auswählen können, wo die Datei gespeichert werden soll."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may tap the button situated in the top-trailing of this view to start preparing the data for export. Once the data is successfully prepared for export, the file export dialog will pop-up to ask you where do you want to place the file."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puedes tocar el botón situado en la esquina superior derecha de esta vista para comenzar a preparar los datos para exportar. Una vez que los datos estén listos, aparecerá el diálogo de exportación de archivos para preguntarte dónde deseas guardar el archivo."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maaari mong i-tap ang button sa itaas na kanang bahagi ng view na ito upang simulan ang paghahanda ng data para sa export. Kapag handa na ang data, lalabas ang file export dialog para itanong kung saan mo gustong ilagay ang file."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez appuyer sur le bouton situé en haut à droite de cette vue pour commencer à préparer les données à exporter. Une fois les données prêtes, une boîte de dialogue s'affichera pour vous demander où enregistrer le fichier."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi toccare il pulsante situato in alto a destra di questa schermata per iniziare a preparare i dati per l'esportazione. Una volta che i dati sono pronti, apparirà la finestra di dialogo per scegliere dove salvare il file."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この画面右上のボタンをタップすると、エクスポート用データの準備が始まります。データの準備が完了すると、ファイルの保存先を選択するダイアログが表示されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 화면 오른쪽 상단에 있는 버튼을 눌러 내보낼 데이터를 준비할 수 있습니다. 데이터 준비가 완료되면 파일 저장 위치를 묻는 대화상자가 나타납니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы можете нажать кнопку в правом верхнем углу этого экрана, чтобы начать подготовку данных к экспорту. После успешной подготовки появится диалоговое окно, в котором вы сможете выбрать место для сохранения файла."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn có thể nhấn vào nút ở góc trên bên phải của màn hình này để bắt đầu chuẩn bị dữ liệu xuất. Khi dữ liệu đã sẵn sàng, hộp thoại xuất file sẽ hiện ra để bạn chọn nơi lưu file."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以点击本页面右上角的按钮开始准备导出数据。数据准备完成后，将弹出文件导出对话框，询问您要将文件保存到哪里。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以點擊本頁右上角的按鈕開始準備匯出資料。資料準備完成後，會彈出檔案匯出對話框，詢問您要將檔案儲存到哪裡。"
+          }
+        }
+      }
+    },
+    "refugee.footer.whyServiceTerminatedForOS21" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Systemversion dieses Geräts ist älter als OS24 (iOS 17 / macOS 14 / watchOS 10) und liegt daher außerhalb des aktuellen Serviceumfangs von The Pizza Helper.\n\nBeide Hauptentwickler von „Pizza Helper für Genshin“ (bis v4) mussten 2024 aus karrierebedingten Gründen die Entwicklung einstellen, und die Entwicklung von „Pizza Helper für HSR“ wurde ebenfalls ausgesetzt. Der verbleibende Entwickler empfand die Wartung beider Apps allein als überfordernd, weshalb das Projekt „Unified Pizza Engine“ gestartet wurde, um beide Apps zu vereinen. Daraus entstand The Pizza Helper v5, das ab Mitte November 2024 veröffentlicht wurde.\n\nDie in älteren Systemversionen integrierten SwiftUI-Frameworks haben viele Mängel, die die Wartung erheblich erschweren. Daher wurde OS24 (iOS 17 / macOS 14 / watchOS 10) als Hauptziel der Entwicklung für die Unified Pizza Engine gewählt. Das in dieser Generation eingeführte Observable Macro Framework ermöglicht es dem Frontend, schneller und präziser auf kleinste Backend-Datenänderungen zu reagieren, im Gegensatz zum alten, auf Combine basierten Ansatz, der oft die gesamte Benutzeroberfläche neu zeichnete. Die alte Technologie konnte sogar zu verzögerten UI-Aktualisierungen und anderen Problemen führen, was die Nutzer- und Entwicklungserfahrung beeinträchtigte. Außerdem wurde mit OS24 SwiftData eingeführt, das die langjährigen Thread-Sicherheitsprobleme von CoreData löst. Der gesamte Entwicklungsprozess der Unified Pizza Engine nutzt moderne Concurrency-Technologien von Swift.\n\nAb v2.5.0 unterstützte „Pizza Helper für Genshin“ die Funktion „Spiral-Abyss-Toplisten“ (sowie das Hochladen persönlicher Kampfreports) auf OS21 (iOS 14, macOS 11, watchOS 8). Nach dem Release von The Pizza Helper v5 Ende 2024 wurde aus rechtlichen Gründen eine „Zero-Data-Collection“-Strategie umgesetzt, sodass die Spiral-Abyss-Toplisten-Funktion und das Hochladen von Kampfreports im Sommer 2025 eingestellt wurden. Dies birgt jedoch ein offensichtliches Datensicherheitsrisiko für bestehende Nutzer, die nicht auf OS24 upgraden können: Nach der bevorstehenden Stilllegung des Serverhosts könnten alte App-Versionen weiterhin versuchen, Daten hochzuladen. Wenn die Server-IP in andere Hände fällt, könnten unkontrollierbare Informationssicherheitsrisiken entstehen.\n\nUm dem entgegenzuwirken, einigten sich die drei Entwickler darauf, dass The Pizza Helper v5 auch für OS21 (iOS 14 usw.) gebaut und ausgeführt werden kann, jedoch mit einer Einschränkung für Systeme unter OS24: Auf OS21 ~ OS23 stehen keine Funktionen mehr zur Verfügung, außer dem Export alter Kontodaten und Ziehungs-Historien, die auf einem neuen Gerät mit OS24 oder höher importiert werden können.\n\nThe Pizza Helper v5 kann SwiftData nicht auf CoreData zurückstufen, ohne das Risiko eines Datenverlusts einzugehen. Daher kann für Systeme unter OS24 kein Service mehr angeboten werden. Wie immer bedeutet FOSS (Free and Open Source Software) keine unbegrenzte Verfügbarkeit oder Haftung. Wir bitten alle betroffenen Nutzer um Verständnis."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device's system version is older than OS24 (iOS 17 / macOS 14 / watchOS 10), which falls outside the current service perimeter of The Pizza Helper.\n\nBoth main developers of \"Pizza Helper for Genshin\" (up to v4) had to step down from development in 2024 due to their own career plans, and the development of \"Pizza Helper for HSR\" was also suspended. The remaining developer found it overwhelming to maintain both apps alone, hence the launch of the \"Unified Pizza Engine\" project to combine both apps. This resulted in \"The Pizza Helper\" v5 which was released in mid-November 2024.\n\nThe built-in SwiftUI frameworks in older system versions have many defects that significantly affect maintenance efficiency. Therefore, the Unified Pizza Engine chose OS24 (iOS 17 / macOS 14 / watchOS 10) as its primary development target. The Observable Macro framework introduced in this generation allows the frontend to respond more quickly and precisely to micro-scale backend data changes, instead of the old Combine-based approach that would often redraw the entire UI at once. The old technology could even cause delayed UI updates and other issues, negatively impacting both user experience and development efficiency. Additionally, OS24 introduced SwiftData, which solves CoreData's long-standing concurrency-safety issues. The entire development process of the Unified Pizza Engine leverages Swift's modern concurrency technologies.\n\nStarting from v2.5.0, \"Pizza Helper for Genshin\" supported the \"Spiral Abyss Top Lists\" (and the related personal battle report uploading feature), which was available on OS21 (iOS 14, macOS 11, watchOS 8). After the release of Pizza Helper v5 at the end of 2024, the project, out of concerns about legal risks, implemented a \"zero data collection\" strategy. As a result, the Spiral Abyss Leaderboard and related personal battle report uploading features were discontinued in the summer of 2025. However, this poses an obvious data security risk for existing users who cannot upgrade to OS24: after the incoming decommission of the dedicated leaderboard server, older versions of the app on older systems may still try to upload data. If the server's IP address falls into the hands of a new owner, it could lead to uncontrollable information security risks.\n\nTo address this, the three developers reached a consensus: allow The Pizza Helper v5 to be built and executable for OS21 (iOS 14, etc.) with a limitation for systems below OS24: The Pizza Helper v5 will no longer provide any features on OS21 ~ OS23 except allowing users to export their old account data and draw history for import on a new device running OS24 and above.\n\nThe Pizza Helper v5 cannot risk data loss by downgrading SwiftData to CoreData, so it can no longer provide service to users on systems below OS24. As always, FOSS (Free and Open Source Software) does not mean unlimited availability or unlimited responsibility. We hope for the understanding of all affected users."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La versión del sistema de este dispositivo es anterior a OS24 (iOS 17 / macOS 14 / watchOS 10), lo que lo deja fuera del alcance de servicio actual de The Pizza Helper.\n\nAmbos desarrolladores principales de \"Pizza Helper para Genshin\" (hasta la v4) tuvieron que abandonar el desarrollo en 2024 por motivos profesionales, y el desarrollo de \"Pizza Helper para HSR\" también fue suspendido. El desarrollador restante encontró abrumador mantener ambas apps solo, por lo que se lanzó el proyecto \"Unified Pizza Engine\" para combinar ambas apps. Esto dio lugar a The Pizza Helper v5, lanzado a mediados de noviembre de 2024.\n\nLos frameworks SwiftUI integrados en versiones antiguas del sistema tienen muchos defectos que afectan significativamente la eficiencia de mantenimiento. Por ello, Unified Pizza Engine eligió OS24 (iOS 17 / macOS 14 / watchOS 10) como su principal objetivo de desarrollo. El framework Observable Macro introducido en esta generación permite al frontend responder más rápido y con mayor precisión a cambios pequeños de los datos de backend, a diferencia del antiguo enfoque basado en Combine que solía redibujar toda la interfaz de usuario. La tecnología antigua incluso podía provocar retrasos en la actualización de la UI y otros problemas, afectando negativamente la experiencia de usuario y la eficiencia de desarrollo. Además, OS24 introdujo SwiftData, que resuelve los problemas históricos de concurrencia de CoreData. Todo el desarrollo de Unified Pizza Engine aprovecha las modernas tecnologías de concurrencia de Swift.\n\nDesde la v2.5.0, \"Pizza Helper para Genshin\" soportaba la función \"Clasificaciones del Abismo Espiral\" (y la subida de reportes personales) en OS21 (iOS 14, macOS 11, watchOS 8). Tras el lanzamiento de The Pizza Helper v5 a finales de 2024, el proyecto, por motivos legales, adoptó una estrategia de \"cero recopilación de datos\". Como resultado, las clasificaciones del Abismo Espiral y el reporte personal se eliminaron en verano de 2025. Sin embargo, esto plantea un riesgo de seguridad de datos para los usuarios que no pueden actualizar a OS24: tras la desactivación del servidor, las apps antiguas podrían seguir intentando subir datos, y si la IP del servidor cae en manos de un nuevo propietario, puede haber riesgos de seguridad incontrolables.\n\nPara abordar esto, los tres desarrolladores acordaron permitir la compilación y ejecución de The Pizza Helper v5 en OS21 (iOS 14, etc.), pero con la limitación de que en sistemas por debajo de OS24, The Pizza Helper v5 solo permitirá exportar datos antiguos de cuenta e historial de sorteos para su importación en un nuevo dispositivo con OS24 o superior.\n\nThe Pizza Helper v5 no puede arriesgarse a la pérdida de datos al degradar SwiftData a CoreData, por lo que ya no puede prestar servicio a usuarios con sistemas inferiores a OS24. Como siempre, el FOSS (software libre y de código abierto) no significa disponibilidad o responsabilidad ilimitada. Esperamos la comprensión de todos los usuarios afectados."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang bersyon ng system ng device na ito ay mas luma kaysa OS24 (iOS 17 / macOS 14 / watchOS 10), kaya hindi ito saklaw ng kasalukuyang serbisyo ng The Pizza Helper.\n\nAng dalawang pangunahing developer ng \"Pizza Helper para sa Genshin\" (hanggang v4) ay parehong kinailangang tumigil sa pag-develop noong 2024 dahil sa kani-kanilang career plans, at ang development ng \"Pizza Helper para sa HSR\" ay nasuspinde rin. Ang natirang developer ay natagpuang napakabigat na panatilihin ang dalawang app nang mag-isa, kaya't napagdesisyunan niyang pagsamahin ang dalawang app sa pamamagitan ng \"Unified Pizza Engine.\" Ito ang naging The Pizza Helper v5 na inilabas noong kalagitnaan ng Nobyembre 2024.\n\nMaraming depekto ang built-in na SwiftUI frameworks ng mas lumang system versions na malaki ang epekto sa maintenance efficiency. Kaya't napili ng Unified Pizza Engine na gawing pangunahing development target ang OS24 (iOS 17 / macOS 14 / watchOS 10). Ang Observable Macro framework na ipinakilala sa OS24 ay nagpapabilis at nagpapahusay sa pagtugon ng frontend sa maliliit na pagbabago mula sa backend data, hindi gaya ng luma at Combine-based na approach na madalas mag-redraw ng buong UI. Maaari pang magdulot ng delayed UI updates ang lumang teknolohiya at iba pang isyu na nakakaapekto sa user experience at development. Dagdag pa rito, ang SwiftData na ipinakilala sa OS24 ay nagresolba sa matagal nang concurrency-safety issues ng CoreData. Buong proseso ng pag-develop ng Unified Pizza Engine ay gumamit ng makabagong concurrency technologies ng Swift.\n\nSimula v2.5.0, sinusuportahan ng \"Pizza Helper para sa Genshin\" ang \"Spiral Abyss Top Lists\" (at kaugnay na upload ng personal battle report) sa OS21 (iOS 14, macOS 11, watchOS 8). Pagkatapos ilabas ang The Pizza Helper v5 sa dulo ng 2024, ipinatupad ng proyekto ang \"zero data collection\" dahil sa legal risks. Kaya't tinanggal ang Spiral Abyss Leaderboard at kaugnay na battle report uploading sa tag-init ng 2025. Ngunit nagdudulot ito ng panganib sa data security para sa mga hindi makapag-upgrade sa OS24: kapag na-decommission ang server para sa leaderboard, maaaring subukang mag-upload pa rin ng lumang app mula sa lumang system. Kapag napunta ang server's IP sa ibang tao, maaaring magdulot ito ng hindi makontrol na panganib sa data security.\n\nBilang tugon, nagkasundo ang tatlong developer na payagan ang The Pizza Helper v5 na ma-build at mag-run sa OS21 (iOS 14, atbp.) ngunit limitado sa mga system na mas mababa sa OS24: tanging export ng lumang account data at draw history lang ang papayagan para sa import sa bagong device na tumatakbo sa OS24 pataas.\n\nHindi maaaring i-downgrade ang SwiftData papuntang CoreData dahil sa panganib ng data loss, kaya hindi na maaaring magpatuloy magbigay-serbisyo sa mga gumagamit ng system na mas mababa sa OS24. Tulad ng dati, ang FOSS (Free and Open Source Software) ay hindi nangangahulugang walang limitasyon sa availability o responsibilidad. Sana'y maunawaan ito ng mga apektadong user."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La version système de cet appareil est antérieure à OS24 (iOS 17 / macOS 14 / watchOS 10), ce qui le place hors du périmètre de service actuel de The Pizza Helper.\n\nLes deux développeurs principaux de « Pizza Helper pour Genshin » (jusqu'à la v4) ont dû quitter le projet en 2024 pour des raisons de carrière, et le développement de « Pizza Helper pour HSR » a également été suspendu. Le développeur restant a trouvé la maintenance des deux applications trop lourde à gérer seul, d'où le lancement du projet « Unified Pizza Engine » pour fusionner les deux apps. Cela a donné lieu à la sortie de « The Pizza Helper » v5 à la mi-novembre 2024.\n\nLes frameworks SwiftUI intégrés dans les anciennes versions du système comportent de nombreux défauts qui nuisent à l'efficacité de la maintenance. C'est pourquoi l’Unified Pizza Engine a choisi OS24 (iOS 17 / macOS 14 / watchOS 10) comme cible principale de développement. Le framework Observable Macro de cette génération permet au frontend de réagir plus rapidement et précisément aux changements de données du backend, contrairement à l’ancienne approche basée sur Combine qui redessinait souvent toute l’interface. L’ancienne technologie pouvait causer des retards de mise à jour de l’UI et d’autres problèmes, dégradant l'expérience utilisateur et la productivité du développement. De plus, OS24 introduit SwiftData, qui résout les problèmes historiques de sécurité de CoreData en matière de concurrence. Le développement de l’Unified Pizza Engine exploite pleinement les technologies modernes de concurrence de Swift.\n\nDepuis la v2.5.0, « Pizza Helper pour Genshin » offrait la fonction de « Top List de l’Abysse Spiralé » (ainsi que l’upload de rapports personnels) sur OS21 (iOS 14, macOS 11, watchOS 8). Après la sortie de The Pizza Helper v5 fin 2024, le projet, par souci de risques juridiques, a adopté une stratégie « zéro collecte de données ». Par conséquent, la fonction de classement de l’Abysse Spiralé et l'upload de rapports ont été supprimés à l’été 2025. Cela pose cependant un risque évident pour la sécurité des données des utilisateurs ne pouvant pas passer à OS24 : après la décommission prochaine du serveur de classement, les anciennes versions de l’app pourraient encore essayer d’uploader des données. Si l’IP du serveur est réattribuée à un autre propriétaire, cela pourrait entraîner des risques incontrôlables pour la sécurité de l’information.\n\nPour y remédier, les trois développeurs se sont mis d’accord : permettre à The Pizza Helper v5 d’être compilé et exécuté sur OS21 (iOS 14, etc.), mais avec une limitation pour les systèmes inférieurs à OS24 : aucune fonction ne sera disponible sur OS21 ~ OS23, sauf l’export des anciennes données de compte et historiques de tirages pour importation sur un nouvel appareil sous OS24 ou ultérieur.\n\nThe Pizza Helper v5 ne peut pas risquer de perte de données en rétrogradant SwiftData vers CoreData, il ne peut donc plus fournir de service aux utilisateurs sous OS24. Comme toujours, le FOSS (logiciel libre et open source) ne signifie pas une disponibilité ou une responsabilité illimitée. Merci de la compréhension de tous les utilisateurs affectés."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La versione del sistema di questo dispositivo è inferiore a OS24 (iOS 17 / macOS 14 / watchOS 10), quindi non rientra nell’attuale ambito di servizio di The Pizza Helper.\n\nEntrambi i principali sviluppatori di \"Pizza Helper per Genshin\" (fino alla v4) hanno dovuto abbandonare lo sviluppo nel 2024 a causa dei propri piani di carriera, e lo sviluppo di \"Pizza Helper per HSR\" è stato anch’esso sospeso. Lo sviluppatore rimasto ha trovato troppo gravoso mantenere entrambe le app da solo, quindi è stato avviato il progetto \"Unified Pizza Engine\" per unificare le due app. Questo ha portato alla pubblicazione di The Pizza Helper v5 a metà novembre 2024.\n\nI framework SwiftUI integrati nelle versioni precedenti del sistema presentano molti difetti che incidono notevolmente sull’efficienza della manutenzione. Per questo motivo, Unified Pizza Engine ha scelto OS24 (iOS 17 / macOS 14 / watchOS 10) come target principale di sviluppo. Il framework Observable Macro introdotto in questa generazione consente al frontend di rispondere in modo più rapido e preciso ai cambiamenti dei dati di backend, a differenza dell’approccio vecchio basato su Combine che spesso ridisegnava l’intera interfaccia. La vecchia tecnologia poteva causare ritardi negli aggiornamenti dell’interfaccia e altri problemi, compromettendo l’esperienza utente e lo sviluppo. Inoltre, OS24 ha introdotto SwiftData, che risolve i problemi di sicurezza della concorrenza di CoreData. Tutto lo sviluppo di Unified Pizza Engine sfrutta le moderne tecnologie di concorrenza di Swift.\n\nA partire dalla v2.5.0, \"Pizza Helper per Genshin\" supportava la funzione \"Classifiche Abisso Spiralato\" (e il relativo caricamento dei report personali) su OS21 (iOS 14, macOS 11, watchOS 8). Dopo il rilascio di The Pizza Helper v5 a fine 2024, il progetto, preoccupato dai rischi legali, ha adottato una strategia \"zero raccolta dati\". Di conseguenza, la classifica Abisso Spiralato e la funzione di caricamento report sono state rimosse nell’estate 2025. Tuttavia, ciò comporta un evidente rischio di sicurezza per gli utenti che non possono aggiornare a OS24: dopo la dismissione del server dedicato, le vecchie app potrebbero ancora tentare di caricare dati. Se l’IP del server passa a un nuovo proprietario, potrebbero verificarsi rischi di sicurezza incontrollabili.\n\nPer affrontare questa situazione, i tre sviluppatori hanno concordato di consentire la build e l’esecuzione di The Pizza Helper v5 anche su OS21 (iOS 14, ecc.), ma con una limitazione per i sistemi inferiori a OS24: The Pizza Helper v5 non offrirà più funzioni su OS21 ~ OS23 se non l’esportazione dei vecchi dati account e della cronologia delle estrazioni per l’importazione su un nuovo dispositivo con OS24 e successivi.\n\nThe Pizza Helper v5 non può rischiare la perdita di dati effettuando un downgrade di SwiftData a CoreData, quindi non può più fornire servizio agli utenti con sistemi inferiori a OS24. Come sempre, FOSS (Free and Open Source Software) non significa disponibilità o responsabilità illimitata. Confidiamo nella comprensione di tutti gli utenti interessati."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在ご利用中のデバイスのシステムバージョンは OS24（iOS 17 / macOS 14 / watchOS 10）未満のため、『ピザ助手(無印)』の現行サービス対象外となります。\n\n『原神ピザ助手』v4 までの二人の主要開発者は、それぞれのキャリアプランの都合で 2024 年に開発から離脱し、『崩スタピザ助手』の開発も中止されました。残った開発者が二つのアプリの保守を一人で担うのは過重であったため、両者を統合する「統一ピザエンジン」の開発を開始しました。これが 2024 年 11 月中旬から実装された『ピザ助手(無印)』v5 です。\n\n旧バージョンのシステムに組み込まれている SwiftUI フレームワークには、保守効率に大きく影響する多くの欠陥があるため、「統一ピザエンジン」では OS24（iOS 17、macOS 14、watchOS 10）を主なターゲットとする開発方針を採用しました。この世代で導入された Observable Macro フレームワークにより、フロントエンドはより細かなバックエンド情報の変化に素早く正確に対応できるようになり、旧来の Combine ベースの技術のように画面全体を一度に再描画することがなくなりました。旧技術では画面更新の遅延などの問題も発生し、ユーザー体験や開発体験を損なっていました。さらに OS24 で導入された SwiftData は、CoreData の長年のスレッド並行安全性問題を解決しています。「統一ピザエンジン」の開発全体を通じて Swift の最新の並行処理技術が活用されています。\n\n『原神ピザ助手』は v2.5.0 から「深境螺旋ランキング」（および関連する個人作戦報告アップロード機能）を OS21（iOS 14、macOS 11、watchOS 8）でサポートしていました。2024 年末に『ピザ助手(無印)』v5 が実装された後、法的配慮のため、「データ不収集」方針が採用され、2025 年夏には原神向け「深境螺旋ランキング」機能と個人作戦報告アップロード機能が削除されました。しかし、OS24 へアップグレードできない既存ユーザーにとっては重大な情報セキュリティリスクが残ります。ランキング専用サーバーの契約終了後も、旧バージョンのアプリがデータをアップロードし続ける可能性があり、そのサーバーの IP が新たな所有者の手に渡った場合、制御不能な情報流出リスクとなります。\n\nこの状況に対応するため、三人の開発者は『ピザ助手(無印)』v5 を OS21（iOS 14 など）向けにもビルドすることで合意しましたが、OS24 未満のシステムでは旧バージョンのアカウントデータやガチャ履歴のエクスポートのみを提供し、ユーザーが新しいデバイス（OS24 以降）でインポートできるようにします。\n\n『ピザ助手(無印)』v5 はデータ損失のリスクを冒してまで SwiftData を CoreData へダウングレードできないため、OS24 未満のシステムへのサポートは継続できません。FOSS（フリー・オープンソース・ソフトウェア）は無限の利用可能性や責任を意味しません。ご理解のほど、よろしくお願いいたします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 기기의 시스템 버전은 OS24(iOS 17 / macOS 14 / watchOS 10)보다 낮아 현재 The Pizza Helper의 서비스 대상에 포함되지 않습니다.\n\n「Genshin 피자 도우미」 v4까지의 두 메인 개발자는 각자의 경력 계획으로 인해 2024년에 개발에서 차례로 물러났고, 「HSR 피자 도우미」의 개발도 중단되었습니다. 남은 개발자가 두 앱을 혼자 관리하기엔 과부하였기에, 두 앱을 통합하는 「통합 피자 엔진」 프로젝트를 시작했습니다. 이것이 2024년 11월 중순부터 적용된 The Pizza Helper v5입니다.\n\n이전 시스템에 내장된 SwiftUI 프레임워크는 유지보수 효율에 큰 영향을 미치는 결함이 많아, 통합 피자 엔진은 OS24(iOS 17, macOS 14, watchOS 10)를 주요 개발 대상으로 삼았습니다. 이 세대의 Observable Macro 프레임워크는 프론트엔드가 백엔드 데이터의 세밀한 변화에도 빠르고 정확하게 반응하도록 하며, 예전 Combine 기반 방식처럼 전체 UI를 한번에 다시 그리지 않습니다. 구 기술은 UI 업데이트 지연 등 문제를 유발해 사용자 경험과 개발 경험을 모두 저해했습니다. OS24에서 도입된 SwiftData는 CoreData의 오랜 스레드 동시성 문제를 해결했습니다. 통합 피자 엔진의 개발 전반에 Swift의 최신 동시성 기술이 활용되었습니다.\n\n「Genshin 피자 도우미」는 v2.5.0부터 「심연 랭킹」(및 개인 전투 리포트 업로드)을 OS21(iOS 14, macOS 11, watchOS 8)에서 지원했습니다. 2024년 말 The Pizza Helper v5가 적용된 후, 법적 리스크를 고려해 「데이터 수집 없음」 전략이 도입되어 2025년 여름에 심연 랭킹 및 전투 리포트 업로드 기능이 삭제되었습니다. 그러나 OS24로 업그레이드할 수 없는 기존 사용자에겐 명백한 정보 보안 리스크가 남습니다. 랭킹 서버 호스트가 폐기된 뒤에도 구버전 앱이 데이터 업로드를 시도할 수 있고, 서버 IP가 새로운 소유자에게 넘어가면 통제 불가능한 정보 보안 위험이 발생할 수 있습니다.\n\n이 문제에 대응하기 위해 세 개발자는 The Pizza Helper v5가 OS21(iOS 14 등)에서도 빌드 및 실행될 수 있도록 합의했으나, OS24 미만 시스템에서는 구 계정 데이터 및 뽑기 기록 내보내기만 제공하며, 사용자가 새 기기(OS24 이상)에서 직접 가져올 수 있도록 했습니다.\n\nThe Pizza Helper v5는 데이터 손실 위험 때문에 SwiftData를 CoreData로 다운그레이드할 수 없으므로, OS24 미만 시스템 지원을 계속할 수 없습니다. FOSS(자유 및 오픈 소스 소프트웨어)는 무제한 이용 가능성이나 책임을 의미하지 않습니다. 영향받은 사용자 여러분의 양해 부탁드립니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия системы этого устройства ниже OS24 (iOS 17 / macOS 14 / watchOS 10), поэтому оно находится вне текущей области обслуживания The Pizza Helper.\n\nОба основных разработчика \"Pizza Helper для Genshin\" (до v4) были вынуждены покинуть проект в 2024 году из‑за своих карьерных планов, и разработка \"Pizza Helper для HSR\" также была приостановлена. Оставшийся разработчик не смог в одиночку поддерживать оба приложения, поэтому был запущен проект \"Unified Pizza Engine\" для объединения обоих приложений. В результате появился The Pizza Helper v5, выпущенный в середине ноября 2024 года.\n\nВстроенные SwiftUI‑фреймворки старых версий системы имеют множество недостатков, существенно влияющих на эффективность поддержки. Поэтому для Unified Pizza Engine в качестве основной целевой платформы был выбран OS24 (iOS 17 / macOS 14 / watchOS 10). Фреймворк Observable Macro, представленный в этом поколении, позволяет фронтенду быстрее и точнее реагировать на мелкие изменения данных, в отличие от старого подхода на основе Combine, который часто полностью перерисовывал интерфейс. Старая технология даже могла вызывать задержку обновления интерфейса и другие проблемы, негативно влияя на пользовательский опыт и разработку. Кроме того, в OS24 был представлен SwiftData, который решил многолетние проблемы CoreData с безопасностью параллельного доступа. Весь процесс разработки Unified Pizza Engine построен на современных технологиях параллельности Swift.\n\nНачиная с v2.5.0, \"Pizza Helper для Genshin\" поддерживал функцию \"Топ-листы Бездонного Спирали\" (и сопутствующую возможность загрузки персональных отчетов) на OS21 (iOS 14, macOS 11, watchOS 8). После выхода The Pizza Helper v5 в конце 2024 года, проект из соображений юридических рисков перешел к стратегии \"нулевого сбора данных\". Таким образом, летом 2025 года были отключены топ‑листы Бездонного Спирали и функция загрузки отчетов. Однако для пользователей, которые не могут перейти на OS24, это создает очевидный риск безопасности данных: после предстоящей ликвидации сервера старые версии приложения могут по-прежнему пытаться отправлять данные, и если IP сервера попадёт к новому владельцу, возникнет неконтролируемый риск информационной безопасности.\n\nДля решения этой проблемы три разработчика договорились: разрешить сборку и запуск The Pizza Helper v5 для OS21 (iOS 14 и пр.), но с ограничением для систем ниже OS24: The Pizza Helper v5 больше не будет предоставлять никаких функций на OS21 ~ OS23, кроме экспорта старых данных аккаунта и истории розыгрышей для последующего импорта на новое устройство с OS24 и выше.\n\nThe Pizza Helper v5 не может рисковать потерей данных при понижении SwiftData до CoreData, поэтому больше не может предоставлять сервис пользователям систем ниже OS24. Как и прежде, FOSS (свободное и открытое ПО) не означает неограниченную доступность или ответственность. Надеемся на понимание всех затронутых пользователей."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phiên bản hệ thống của thiết bị này cũ hơn OS24 (iOS 17 / macOS 14 / watchOS 10), không nằm trong phạm vi phục vụ hiện tại của The Pizza Helper.\n\nCả hai lập trình viên chính của \"Pizza Helper cho Genshin\" (đến v4) đều phải rời khỏi dự án vào năm 2024 do kế hoạch sự nghiệp riêng, và việc phát triển \"Pizza Helper cho HSR\" cũng bị dừng lại. Lập trình viên còn lại cảm thấy quá tải khi phải duy trì cả hai ứng dụng một mình, do đó dự án \"Unified Pizza Engine\" được khởi động để hợp nhất hai ứng dụng này. Kết quả là The Pizza Helper v5 được phát hành vào giữa tháng 11 năm 2024.\n\nCác framework SwiftUI tích hợp trong các phiên bản hệ thống cũ có nhiều lỗi ảnh hưởng lớn đến hiệu quả bảo trì. Do đó, Unified Pizza Engine đã chọn OS24 (iOS 17 / macOS 14 / watchOS 10) làm mục tiêu phát triển chính. Framework Observable Macro được giới thiệu trong thế hệ này cho phép frontend phản hồi nhanh và chính xác hơn với các thay đổi nhỏ ở backend, thay vì phải vẽ lại toàn bộ giao diện như công nghệ Combine cũ. Công nghệ cũ thậm chí còn có thể gây ra các vấn đề như cập nhật giao diện bị chậm, làm giảm trải nghiệm người dùng và hiệu suất phát triển. Ngoài ra, OS24 còn giới thiệu SwiftData, giải quyết triệt để vấn đề an toàn song song lâu năm của CoreData. Toàn bộ quá trình phát triển Unified Pizza Engine tận dụng công nghệ song song hiện đại của Swift.\n\nTừ v2.5.0, \"Pizza Helper cho Genshin\" đã hỗ trợ tính năng \"Bảng xếp hạng Vực Sâu\" (và chức năng tải lên báo cáo cá nhân) trên OS21 (iOS 14, macOS 11, watchOS 8). Sau khi The Pizza Helper v5 ra mắt cuối năm 2024, dự án đã triển khai chiến lược \"không thu thập dữ liệu\" do lo ngại rủi ro pháp lý. Do đó, tính năng bảng xếp hạng Vực Sâu và tải báo cáo cá nhân đã bị ngừng vào mùa hè 2025. Tuy nhiên, điều này gây rủi ro rõ ràng cho bảo mật dữ liệu của người dùng không thể nâng cấp lên OS24: sau khi máy chủ bảng xếp hạng ngừng hoạt động, các phiên bản cũ của ứng dụng trên hệ điều hành cũ vẫn có thể cố gắng tải dữ liệu lên. Nếu IP của máy chủ rơi vào tay chủ mới, rủi ro dữ liệu không thể kiểm soát có thể xảy ra.\n\nĐể giải quyết vấn đề này, ba lập trình viên đã đồng ý cho phép The Pizza Helper v5 được build và chạy trên OS21 (iOS 14, v.v.) nhưng có giới hạn với các hệ điều hành dưới OS24: The Pizza Helper v5 sẽ không cung cấp bất kỳ chức năng nào ngoài việc cho phép người dùng xuất dữ liệu tài khoản cũ và lịch sử quay để nhập vào thiết bị mới chạy OS24 trở lên.\n\nThe Pizza Helper v5 không thể hạ cấp SwiftData xuống CoreData do rủi ro mất dữ liệu, vì vậy không thể tiếp tục cung cấp dịch vụ cho người dùng hệ điều hành dưới OS24. Như thường lệ, FOSS (phần mền tự do và mã nguồn mở) không có nghĩa là sử dụng hay trách nhiệm không giới hạn. Mong người dùng bị ảnh hưởng thông cảm."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前设备的系统版本低于 OS24（iOS 17 / macOS 14 / watchOS 10），不属于《披萨小助手》目前的服务对象范围内。\n\n《原神披萨小助手》v4 版本为止的两位主要程式师均受制于各自的生涯计划，而不得不在 2024 年先后退出了开发工作。《星铁披萨小助手》的开发也随即中止。仅剩的程式师单枪匹马负责两款应用的维护实在有些过劳，于是启动了《统一披萨引擎》的开发、将两者结合起来。这就是从 2024 年 11 月中旬开始实装的《披萨小助手》v5。\n\n旧版系统内建的 SwiftUI 框架有很多足以影响维护效率的缺陷，于是《统一披萨引擎》在技术选型上选择了以 OS24（也就是 iOS 17、macOS 14、watchOS 10）为主的开发模式。这一代的系统所支持的 Observable Macro 框架允许前端画面针对颗粒度更细致的后端资讯变化做出更快速有效的准确响应，而不是像基于 Combine 的旧代技术那样一下子就重新绘制整个画面。旧代技术甚至还可能会出现画面更新不及时等不良情况。这些都破坏了使用体验与产品开发体验。OS24 这一代的系统新推出的 SwiftData 则解决了 CoreData 旷日持久的跨执行绪并行安全缺陷。《统一披萨引擎》的整个开发过程贯彻了对 Swift 现代跨执行绪并行技术的利用。\n\n《原神披萨小助手》从 v2.5.0 开始实装了「深境螺旋排行榜单」的功能（以及配套的个人战报资料上传功能），当时支持的系统是 OS21，也就是 iOS 14、macOS 11、watchOS 8。《披萨小助手》v5 在 2024 年末实装之后，出于法律风险疑虑等原因，该专案决定落实「零收集」策略。于是，该专案于 2025 年夏天下架了针对原神的「深境螺旋排行榜单」的功能。与此有关的个人战报资料上传之功能也一同下架了。但这对无法升级到 OS24 的既有用户而言，他们面临着一个很明显的资讯安全风险：榜单专用的伺服器主机在接下来取消订购之后，旧系统的旧版 App 可能还在试图上传资料。那如果这台伺服器主机的 IP 落入新的买家的手里的话，这就构成了资讯安全上的不可控之情形。\n\n因应该情形，三位程式师达成共同意见：允许《披萨小助手》v5 建置给 OS21（iOS 14 等）。但《披萨小助手》v5 在不满 OS24 的系统上将不再提供任何功能，仅允许用户将旧版本地帐号资料与旧版抽卡记录导出、由用户自行在新的设备上导入到以 OS24 开始的系统运行的《披萨小助手》。\n\n《披萨小助手》v5 无法冒着丢失资料的风险将 SwiftData 降级为 CoreData，所以无法再继续向低于 OS24 的系统的用户们继续提供服务。FOSS 类软件从来都不意味着无限可用性与无限责任，望各位受影响的用户群体们谅解。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當前裝置的系統版本低於 OS24（iOS 17 / macOS 14 / watchOS 10），不屬於《披薩小助手》目前的服務對象範圍內。\n\n《原神披薩小助手》v4 版本為止的兩位主要程式設計師均因各自的生涯規劃而在 2024 年陸續退出開發工作，《星鐵披薩小助手》的開發也隨即中止。僅剩的程式設計師一人難以承擔兩款應用的維護工作，因此啟動了「統一披薩引擎」專案，結合了兩者。這就是自 2024 年 11 月中旬開始實裝的《披薩小助手》v5。\n\n舊版系統內建的 SwiftUI 框架有許多影響維護效率的缺陷，因此「統一披薩引擎」在技術選型上選擇以 OS24（即 iOS 17、macOS 14、watchOS 10）為主的開發模式。這一代系統支援的 Observable Macro 框架，讓前端畫面能針對更細緻的後端資料變化快速且精確地響應，而不像舊有基於 Combine 的技術那樣一次性重繪整個畫面。舊技術甚至可能造成畫面更新延遲等問題，嚴重損害使用者體驗與產品開發效率。OS24 這一代新增的 SwiftData 則解決了 CoreData 長久以來的跨執行緒並行安全問題。「統一披薩引擎」的整個開發過程徹底運用 Swift 現代跨執行緒並行技術。\n\n《原神披薩小助手》自 v2.5.0 起支援「深境螺旋排行榜」功能（以及個人戰報資料上傳功能），當時支援的系統為 OS21，即 iOS 14、macOS 11、watchOS 8。《披薩小助手》v5 在 2024 年底實裝後，因法律風險疑慮等原因，該專案決定落實「零收集」策略。因此，該專案在 2025 年夏天下架了「深境螺旋排行榜」功能與相關戰報資料上傳功能。但對無法升級至 OS24 的既有使用者而言，這帶來了明顯的資訊安全風險：排行榜專用伺服器主機退租後，舊系統的舊版 App 仍可能嘗試上傳資料，若該主機 IP 落入他人之手，將導致資訊安全不可控風險。\n\n為此，三位程式設計師達成共識：允許《披薩小助手》v5 可針對 OS21（iOS 14 等）系統建置運行，但在 OS24 未滿的系統上將不再提供功能，僅允許使用者匯出舊帳號資料及抽卡記錄，再自行於 OS24 或以上系統的新裝置上導入。\n\n《披薩小助手》v5 無法冒資料遺失風險將 SwiftData 降級至 CoreData，因此無法再為低於 OS24 系統的使用者提供服務。FOSS（自由及開源軟體）從來不代表無限可用性與無限責任，敬請受影響使用者見諒。"
+          }
+        }
+      }
+    },
+    "refugee.noDataExportable" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derzeit sind keine lokalen Daten exportierbar. Diese Ansicht wartet auf iCloud-Hintergrunddatenaktualisierungen, aber alle iCloud-Daten können von dieser App unter iOS 17 oder neuer übernommen werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No local data exportable for now. This view awaits for iCloud background data updates, but all iCloud data can be inheritable by this app running on iOS 17 or later."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay datos locales exportables por ahora. Esta vista espera actualizaciones de datos en segundo plano de iCloud, pero todos los datos de iCloud pueden ser heredados por esta app en iOS 17 o posterior."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walang lokal na data na maaaring i-export sa ngayon. Ang view na ito ay naghihintay ng iCloud background data updates, ngunit lahat ng iCloud data ay maaaring mamanahin ng app na ito kapag tumatakbo sa iOS 17 o mas bago."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune donnée locale exportable pour le moment. Cette vue attend les mises à jour des données iCloud en arrière-plan, mais toutes les données iCloud peuvent être héritées par cette application sous iOS 17 ou version ultérieure."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun dato locale esportabile al momento. Questa schermata attende aggiornamenti dei dati iCloud in background, ma tutti i dati iCloud possono essere ereditati da questa app su iOS 17 o versioni successive."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現時点ではエクスポート可能なローカルデータはありません。この画面はiCloudのバックグラウンドデータ更新を待っていますが、iOS 17以降ではすべてのiCloudデータを本アプリで引き継ぐことができます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 내보낼 수 있는 로컬 데이터가 없습니다. 이 화면은 iCloud 백그라운드 데이터 업데이트를 기다리고 있지만, iOS 17 이상에서 실행되는 이 앱은 모든 iCloud 데이터를 상속받을 수 있습니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В настоящее время нет локальных данных для экспорта. Этот экран ожидает обновления фоновых данных iCloud, но все данные iCloud могут быть унаследованы этим приложением на iOS 17 или новее."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiện không có dữ liệu cục bộ nào có thể xuất. Giao diện này đang chờ cập nhật dữ liệu nền từ iCloud, nhưng tất cả dữ liệu iCloud đều có thể được kế thừa bởi ứng dụng này trên iOS 17 trở lên."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前暂无可导出的本地数据。本页面正在等待 iCloud 后台数据更新，但所有 iCloud 数据在 iOS 17 及以上系统可由本 App 继承。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前沒有可匯出的本機資料。本頁面正在等待 iCloud 背景資料更新，但所有 iCloud 資料在 iOS 17 及以上系統可由本 App 繼承。"
           }
         }
       }
