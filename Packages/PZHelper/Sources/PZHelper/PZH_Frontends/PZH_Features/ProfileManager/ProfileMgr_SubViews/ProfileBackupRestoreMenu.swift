@@ -102,8 +102,14 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension ProfileBackupRestoreMenu {
-    @Observable
-    private final class Coordinator: TaskManagedVM {
+    @Observable @MainActor
+    internal final class Coordinator: ObservableObject {
+        // MARK: Lifecycle
+
+        public init() {}
+
+        // MARK: Internal
+
         var fileSaveActionResult: Result<URL, any Error>?
         var currentExportableDocument: Result<PZProfilesDocument, Error>?
         var isImporterVisible: Bool = false
@@ -157,7 +163,7 @@ extension ProfileBackupRestoreMenu {
 // MARK: - PZProfilesDocument
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
-private struct PZProfilesDocument: FileDocument {
+internal struct PZProfilesDocument: FileDocument {
     // MARK: Lifecycle
 
     public init(configuration: ReadConfiguration) throws {
