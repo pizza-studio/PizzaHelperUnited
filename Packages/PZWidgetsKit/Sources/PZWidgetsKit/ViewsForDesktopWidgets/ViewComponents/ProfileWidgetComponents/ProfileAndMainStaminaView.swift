@@ -12,6 +12,9 @@ import WidgetKit
 
 // MARK: - MainInfo
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public struct ProfileAndMainStaminaView: View {

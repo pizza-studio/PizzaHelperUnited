@@ -7,6 +7,9 @@ import PZBaseKit
 import SwiftUI
 import WidgetKit
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(watchOS 10.0, *)
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
     public struct LockScreenLoopWidgetCorner: View {

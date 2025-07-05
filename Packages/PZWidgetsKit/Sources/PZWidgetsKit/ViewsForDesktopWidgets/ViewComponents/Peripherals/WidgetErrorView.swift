@@ -7,6 +7,9 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public struct WidgetErrorView: View {

@@ -8,6 +8,9 @@ import SwiftUI
 import WallpaperKit
 import WidgetKit
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public typealias WidgetBackgroundView = WidgetBackgroundView4DesktopWidgets
@@ -15,6 +18,9 @@ extension DesktopWidgets {
 
 // MARK: - WidgetBackgroundView4DesktopWidgets
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @available(watchOS, unavailable)
 public struct WidgetBackgroundView4DesktopWidgets: View {
     // MARK: Lifecycle
@@ -133,6 +139,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 @available(iOS 17.0, *)
 @available(macCatalyst 17.0, *)
 @available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension View {
     @available(watchOS, unavailable)
     @ViewBuilder
@@ -167,6 +174,7 @@ extension View {
 @available(iOS 17.0, *)
 @available(macCatalyst 17.0, *)
 @available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
     let background: () -> B
 
@@ -179,6 +187,9 @@ private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
 
 // MARK: - ContainerBackgroundModifier
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @available(watchOS, unavailable)
 private struct ContainerBackgroundModifier: ViewModifier {
     var viewConfig: WidgetViewConfig
@@ -190,6 +201,9 @@ private struct ContainerBackgroundModifier: ViewModifier {
 
 // MARK: - ContainerBackgroundStandbyDetector
 
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 @available(watchOS, unavailable)
 private struct ContainerBackgroundStandbyDetector: ViewModifier {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode
