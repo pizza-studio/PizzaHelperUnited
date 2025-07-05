@@ -14,26 +14,62 @@ extension View {
         thickMaterial: Bool = false
     )
         -> some View {
-        background(alignment: .topTrailing) {
-            #if !os(watchOS)
-            AppWallpaperView()
-                .saturation(thickMaterial ? 0.8 : 1)
-                .overlay {
-                    if thickMaterial {
-                        Color.primary.colorInvert().opacity(0.1)
+        #if targetEnvironment(macCatalyst)
+        if #available(macCatalyst 17.0, *) {
+            background {
+                AppWallpaperView()
+                    .saturation(thickMaterial ? 0.8 : 1)
+                    .overlay {
+                        if thickMaterial {
+                            Color.primary.colorInvert().opacity(0.1)
+                        }
                     }
-                }
-            #endif
+            }
+        } else {
+            self
         }
+        #elseif os(iOS)
+        if #available(iOS 17.0, *) {
+            background {
+                AppWallpaperView()
+                    .saturation(thickMaterial ? 0.8 : 1)
+                    .overlay {
+                        if thickMaterial {
+                            Color.primary.colorInvert().opacity(0.1)
+                        }
+                    }
+            }
+        } else {
+            self
+        }
+        #elseif os(macOS)
+        if #available(macOS 14.0, *) {
+            background {
+                AppWallpaperView()
+                    .saturation(thickMaterial ? 0.8 : 1)
+                    .overlay {
+                        if thickMaterial {
+                            Color.primary.colorInvert().opacity(0.1)
+                        }
+                    }
+            }
+        } else {
+            self
+        }
+        #else
+        self
+        #endif
     }
 }
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
 extension String {
     public var i18nWPKit: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
     }
 }
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
 extension String.LocalizationValue {
     public var i18nWPKit: String {
         String(localized: self, bundle: .module)
