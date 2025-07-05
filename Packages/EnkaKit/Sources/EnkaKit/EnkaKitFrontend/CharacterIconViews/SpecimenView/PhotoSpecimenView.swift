@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct PhotoSpecimenView: View {
     // MARK: Public
 

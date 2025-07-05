@@ -7,10 +7,12 @@ import PZBaseKit
 
 // MARK: - Enka.GameType
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     public typealias GameType = Pizza.SupportedGame
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Pizza.SupportedGame {
     public var debugTag: String {
         switch self {
@@ -29,6 +31,7 @@ extension Pizza.SupportedGame {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     public typealias RawLocTables = [String: LocTable]
     public typealias LocTable = [String: String]
@@ -98,6 +101,7 @@ extension Enka {
 
 // MARK: - EnkaAPI LangCode
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Locale {
     public static var langCodeForEnkaAPI: String {
         let languageCode = Locale.preferredLanguages.first
@@ -124,16 +128,19 @@ extension Locale {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Bundle {
     public static let enka = Bundle.module
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension String {
     public var i18nEnka: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension String.LocalizationValue {
     public var i18nEnka: String {
         String(localized: self, bundle: .module)

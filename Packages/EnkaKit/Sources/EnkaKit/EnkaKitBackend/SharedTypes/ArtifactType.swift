@@ -5,6 +5,7 @@
 import EnkaDBModels
 import PZBaseKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     public enum ArtifactType: String, AbleToCodeSendHash, CaseIterable, Identifiable {
         case hsrHead = "HEAD"

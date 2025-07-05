@@ -11,6 +11,7 @@ import WallpaperKit
 
 // MARK: - CaseQuerySection
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     // MARK: Lifecycle
 
@@ -214,14 +215,14 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
 #if DEBUG
 
-// swiftlint:disable force_try
-// swiftlint:disable force_unwrapping
-private let enkaDatabaseHSR = try! Enka.EnkaDB4HSR(locTag: "zh-tw")
-private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
-// swiftlint:enable force_try
-// swiftlint:enable force_unwrapping
-
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 #Preview {
+    // swiftlint:disable force_try
+    // swiftlint:disable force_unwrapping
+    let enkaDatabaseHSR = try! Enka.EnkaDB4HSR(locTag: "zh-tw")
+    let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
+    // swiftlint:enable force_try
+    // swiftlint:enable force_unwrapping
     /// 注意：请仅用 iOS 或者 MacCatalyst 来预览。AppKit 无法正常处理这个 View。
     NavigationStack {
         List {

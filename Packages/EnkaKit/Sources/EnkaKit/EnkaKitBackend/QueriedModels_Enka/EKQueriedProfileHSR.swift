@@ -7,6 +7,7 @@ import PZBaseKit
 
 // MARK: - Enka.QueriedProfileHSR
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     public struct QueriedProfileHSR: AbleToCodeSendHash, EKQueriedProfileProtocol {
         // MARK: Lifecycle
@@ -87,6 +88,7 @@ extension Enka {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.QueriedProfileHSR {
     // MARK: - Avatar
 

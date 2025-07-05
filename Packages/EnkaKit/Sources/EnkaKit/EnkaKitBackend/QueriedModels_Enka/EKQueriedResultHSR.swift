@@ -7,6 +7,7 @@ import PZBaseKit
 
 // MARK: - Enka.QueriedResultHSR
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     public struct QueriedResultHSR: AbleToCodeSendHash, EKQueryResultProtocol {
         // MARK: Lifecycle
@@ -49,6 +50,7 @@ extension Enka {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.QueriedResultHSR {
     public static func exampleData() throws -> Self {
         let exampleURL = Bundle.module.url(

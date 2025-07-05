@@ -8,6 +8,7 @@ import PZBaseKit
 
 // MARK: - Enka.GameElement
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     /// 元素（星穹铁道与原神共用）。
     public enum GameElement: String, CaseIterable, AbleToCodeSendHash {
@@ -24,6 +25,7 @@ extension Enka {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.GameElement {
     public init?(rawValue: String) {
         switch rawValue {
@@ -134,6 +136,7 @@ extension Enka.GameElement {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.GameElement {
     public var iconFileNameStem: String {
         "\(rawValue)"
@@ -184,6 +187,7 @@ extension Enka.GameElement {
     ]
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.GameElement {
     public var themeColor: CGColor {
         switch self {

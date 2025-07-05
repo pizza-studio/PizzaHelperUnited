@@ -7,6 +7,7 @@ import PZBaseKit
 
 // MARK: - Enka.LifePath
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     public enum LifePath: String, AbleToCodeSendHash, CaseIterable {
         case none = "None"
@@ -21,6 +22,7 @@ extension Enka {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.LifePath {
     public var iconFileName: String {
         String(describing: self).capitalized
@@ -37,6 +39,7 @@ extension Enka.LifePath {
 
 // MARK: - Enka.GenshinLifePathRecord
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     public struct GenshinLifePathRecord: AbleToCodeSendHash {
         // MARK: Lifecycle
@@ -73,6 +76,7 @@ extension Enka {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.GenshinLifePathRecord {
     public static let allMap: [String: Enka.LifePath] = {
         guard let url = Bundle.module.url(
