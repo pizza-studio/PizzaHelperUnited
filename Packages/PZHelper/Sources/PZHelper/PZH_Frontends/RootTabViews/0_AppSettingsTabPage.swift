@@ -91,6 +91,9 @@ struct AppSettingsTabPage: View {
 
                 #if DEBUG
                 Section {
+                    NavigationLink(destination: ContentView4iOS14.init) {
+                        Label("# Refugee View Test".description, systemSymbol: .figureWalkDiamond)
+                    }
                     NavigationLink(destination: CloudAccountSettingsPageContent.init) {
                         Label("# Cloud Account Settings".description, systemSymbol: .cloudCircle)
                     }

@@ -20,7 +20,7 @@ extension PZHelper {
     public static func makeMainScene() -> some Scene {
         let windowToReturn = WindowGroup {
             if #unavailable(iOS 17.0, macCatalyst 17.0, macOS 14.0) {
-                Text(verbatim: "Please upgrade to watchOS 10 or later.")
+                ContentView4iOS14()
             } else {
                 ContentView()
                     .initializeApp()
