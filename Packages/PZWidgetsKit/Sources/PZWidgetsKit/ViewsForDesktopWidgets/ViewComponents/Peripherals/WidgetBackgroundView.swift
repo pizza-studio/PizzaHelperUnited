@@ -130,9 +130,9 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 
 // MARK: - ContainerBackgroundModifier
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 extension View {
     @available(watchOS, unavailable)
     @ViewBuilder
@@ -164,9 +164,9 @@ extension View {
 
 // MARK: - SmartStackWidgetContainerBackground
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
 private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
     let background: () -> B
 

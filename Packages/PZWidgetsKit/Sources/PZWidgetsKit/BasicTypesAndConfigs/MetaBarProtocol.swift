@@ -19,10 +19,10 @@ public protocol MetaBar {
     nonisolated var game: Pizza.SupportedGame { get }
 }
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension MetaBar {
     nonisolated private var maxStatusIconDimension: CGFloat { 13 }
     nonisolated private var statusIconInnerScale: CGFloat { 0.78 }
@@ -33,10 +33,10 @@ extension MetaBar {
 }
 
 @MainActor
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension MetaBar {
     @ViewBuilder public var body: some View {
         HStack(alignment: .center, spacing: 8) {

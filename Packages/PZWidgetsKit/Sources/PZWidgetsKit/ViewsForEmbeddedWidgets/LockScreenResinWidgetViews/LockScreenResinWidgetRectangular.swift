@@ -153,9 +153,9 @@ extension EmbeddedWidgets {
 
 // MARK: - FitSystemFont
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(watchOS 10.0, *)
 private struct FitSystemFont: ViewModifier {
     var lineLimit: Int
     var minimumScaleFactor: CGFloat
@@ -178,9 +178,9 @@ private struct FitSystemFont: ViewModifier {
     }
 }
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(watchOS 10.0, *)
 extension View {
     @ViewBuilder
     private func fitSystemFont(

@@ -10,10 +10,10 @@ import WallpaperKit
 
 // MARK: - WidgetBackground
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 public struct WidgetBackground: AbleToCodeSendHash {
     // MARK: Lifecycle
 
@@ -32,10 +32,10 @@ public struct WidgetBackground: AbleToCodeSendHash {
     public var displayString: String
 }
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension WidgetBackground {
     public static let colors: [String] = [
         "pzWidgetsKit.widgetBackgroundColorScheme.gray",
@@ -235,10 +235,10 @@ extension WidgetBackground {
     }
 }
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension WidgetBackground {
     public static var randomBackground: Self {
         let pickedBackgroundId = WidgetBackground.allOptions.randomElement()!
@@ -291,10 +291,10 @@ extension WidgetBackground {
     }
 }
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension BundledWallpaper {
     public var asWidgetBackground: WidgetBackground {
         .init(id: assetName4LiveActivity, displayString: localizedNameForWidgets)
@@ -309,20 +309,20 @@ extension BundledWallpaper {
 
 // MARK: - User Wallpaper Implementations.
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension UserWallpaper {
     fileprivate var asWidgetBackground: WidgetBackground {
         .init(id: id.uuidString, displayString: "\(name) (\(dateString))")
     }
 }
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension Wallpaper {
     fileprivate var asWidgetBackground: WidgetBackground {
         switch self {

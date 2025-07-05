@@ -7,10 +7,10 @@ import WidgetKit
 
 // MARK: - WidgetAccessibilityBackground
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 private struct WidgetAccessibilityBackground: ViewModifier {
     let enabled: Bool
 
@@ -27,10 +27,10 @@ private struct WidgetAccessibilityBackground: ViewModifier {
     }
 }
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension View {
     public func widgetAccessibilityBackground(enabled: Bool) -> some View {
         modifier(WidgetAccessibilityBackground(enabled: enabled))

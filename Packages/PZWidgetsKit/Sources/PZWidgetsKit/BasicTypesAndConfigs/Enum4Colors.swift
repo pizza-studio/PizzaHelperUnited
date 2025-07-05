@@ -6,22 +6,22 @@ import CoreGraphics
 
 // MARK: - PZWidgetsSPM.Colors
 
-@available(iOS 16.0, *)
-@available(macCatalyst 16.0, *)
-@available(macOS 13.0, *)
-@available(watchOS 9.0, *)
+@available(iOS 17.0, *)
+@available(macCatalyst 17.0, *)
+@available(macOS 14.0, *)
+@available(watchOS 10.0, *)
 extension PZWidgetsSPM {
     /// 用 Xcode Asset Catalog 管理颜色的话会有个风险：一旦颜色名称填写错误的话，就是 Runtime Error。
     /// 用 Enums 管理颜色可以使这种错误变成 Compile-time Error。
-    @available(iOS 16.0, *)
-    @available(macCatalyst 16.0, *)
-    @available(macOS 13.0, *)
-    @available(watchOS 9.0, *)
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
+    @available(watchOS 10.0, *)
     public enum Colors {
-        @available(iOS 16.0, *)
-        @available(macCatalyst 16.0, *)
-        @available(macOS 13.0, *)
-        @available(watchOS 9.0, *)
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
+        @available(watchOS 10.0, *)
         public enum TextColor {
             public static let primaryBlack = CGColor(red: 0.439, green: 0.604, blue: 0.820, alpha: 1.0)
             public static let activityBlueText = CGColor(red: 0.847, green: 0.906, blue: 0.996, alpha: 1.0)
@@ -31,15 +31,15 @@ extension PZWidgetsSPM {
             public static let appIconLike = CGColor(red: 0.961, green: 0.91, blue: 1.0, alpha: 1.0)
         }
 
-        @available(iOS 16.0, *)
-        @available(macCatalyst 16.0, *)
-        @available(macOS 13.0, *)
-        @available(watchOS 9.0, *)
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
+        @available(watchOS 10.0, *)
         public enum IconColor {
-            @available(iOS 16.0, *)
-            @available(macCatalyst 16.0, *)
-            @available(macOS 13.0, *)
-            @available(watchOS 9.0, *)
+            @available(iOS 17.0, *)
+            @available(macCatalyst 17.0, *)
+            @available(macOS 14.0, *)
+            @available(watchOS 10.0, *)
             public enum Resin {
                 public static let accented = CGColor(red: 0.459, green: 0.643, blue: 0.867, alpha: 1.0)
                 public static let light = CGColor(red: 0.98, green: 0.988, blue: 0.996, alpha: 1.0)
@@ -47,10 +47,10 @@ extension PZWidgetsSPM {
                 public static let dark = CGColor(red: 0.353, green: 0.478, blue: 0.792, alpha: 1.0)
             }
 
-            @available(iOS 16.0, *)
-            @available(macCatalyst 16.0, *)
-            @available(macOS 13.0, *)
-            @available(watchOS 9.0, *)
+            @available(iOS 17.0, *)
+            @available(macCatalyst 17.0, *)
+            @available(macOS 14.0, *)
+            @available(watchOS 10.0, *)
             public enum HomeCoin {
                 public static let accented = CGColor(red: 0.961, green: 0.761, blue: 0.259, alpha: 1.0)
                 public static let darkBlue = CGColor(red: 0.075, green: 0.651, blue: 0.945, alpha: 1.0)
@@ -65,15 +65,15 @@ extension PZWidgetsSPM {
 
         // MARK: - 背景顏色
 
-        @available(iOS 16.0, *)
-        @available(macCatalyst 16.0, *)
-        @available(macOS 13.0, *)
-        @available(watchOS 9.0, *)
+        @available(iOS 17.0, *)
+        @available(macCatalyst 17.0, *)
+        @available(macOS 14.0, *)
+        @available(watchOS 10.0, *)
         public enum Background {
-            @available(iOS 16.0, *)
-            @available(macCatalyst 16.0, *)
-            @available(macOS 13.0, *)
-            @available(watchOS 9.0, *)
+            @available(iOS 17.0, *)
+            @available(macCatalyst 17.0, *)
+            @available(macOS 14.0, *)
+            @available(watchOS 10.0, *)
             public enum IntertwinedFate {
                 public static let color1 = CGColor(red: 0.843, green: 0.549, blue: 0.753, alpha: 1.0)
                 public static let color2 = CGColor(red: 0.753, green: 0.682, blue: 0.894, alpha: 1.0)
