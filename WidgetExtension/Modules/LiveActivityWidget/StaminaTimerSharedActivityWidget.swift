@@ -13,6 +13,7 @@ import SwiftUI
 import WallpaperKit
 import WidgetKit
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 struct StaminaTimerRefreshIntent: AppIntent {
     // MARK: Public
 
@@ -37,6 +38,7 @@ struct StaminaTimerRefreshIntent: AppIntent {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 struct StaminaTimerRerenderIntent: AppIntent {
     // MARK: Public
 
@@ -57,6 +59,7 @@ struct StaminaTimerRerenderIntent: AppIntent {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 struct StaminaTimerSharedActivityWidget: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(

@@ -14,6 +14,7 @@ import WidgetKit
 
 // MARK: - MaterialWidgetProvider
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @available(watchOS, unavailable)
 struct MaterialWidgetProvider: TimelineProvider {
     typealias Entry = MaterialWidgetEntry

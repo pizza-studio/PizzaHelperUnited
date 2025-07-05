@@ -14,6 +14,7 @@ import WidgetKit
 
 // MARK: - OfficialFeedWidgetProvider
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @available(watchOS, unavailable)
 struct OfficialFeedWidgetProvider: AppIntentTimelineProvider {
     typealias Entry = OfficialFeedWidgetEntry

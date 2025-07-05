@@ -12,6 +12,7 @@ import WidgetKit
 
 // MARK: - MaterialWidget
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @available(watchOS, unavailable)
 struct MaterialWidget: Widget {
     var body: some WidgetConfiguration {
