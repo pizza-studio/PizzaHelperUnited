@@ -21,6 +21,7 @@ extension Defaults.Keys {
 
 // MARK: - ASReviewHandler
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 public enum ASReviewHandler {
     public static let navTitle = "aboutKit.appStoreReview.navTitle".i18nAboutKit
     public static let asURLString = "https://apps.apple.com/app/id1635319193"

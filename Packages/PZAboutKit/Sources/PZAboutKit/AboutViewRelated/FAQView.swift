@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - FAQView
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 public struct FAQView: View {
     // MARK: Lifecycle
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - AboutView
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 public struct AboutView: View {
     // MARK: Lifecycle
 
@@ -72,6 +73,7 @@ public struct AboutView: View {
 
 // MARK: - AppAboutViewSections
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 struct AppAboutViewSections: View {
     // MARK: Internal
 
@@ -209,6 +211,7 @@ struct AppAboutViewSections: View {
 
 // MARK: - DevCrewViewSections
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 struct DevCrewViewSections: View {
     // MARK: Internal
 
@@ -286,6 +289,7 @@ struct DevCrewViewSections: View {
     }
 }
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 #Preview {
     AboutView()
 }

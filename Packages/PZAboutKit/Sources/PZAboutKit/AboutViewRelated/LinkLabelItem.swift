@@ -5,6 +5,7 @@
 import PZBaseKit
 import SwiftUI
 
+@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
 struct LinkLabelItem: View {
     // MARK: Lifecycle
 
