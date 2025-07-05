@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 // swiftlint:disable cyclomatic_complexity
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.PropertyType {
     public var appraisableArtifactParam: ArtifactRating.Appraiser.Param? {
         switch self {

@@ -8,6 +8,7 @@ import SwiftUI
 
 // MARK: - CharSpecimen
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct CharSpecimen: Identifiable, Hashable, Sendable {
     // MARK: Public
 
@@ -89,6 +90,7 @@ public struct CharSpecimen: Identifiable, Hashable, Sendable {
 
 // MARK: - AllCharacterPhotoSpecimenViewPerGame
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct AllCharacterPhotoSpecimenViewPerGame: View {
     // MARK: Lifecycle
 
@@ -143,6 +145,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
 #if DEBUG
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 struct CharacterPhotoSpecimenViewPerGame_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {

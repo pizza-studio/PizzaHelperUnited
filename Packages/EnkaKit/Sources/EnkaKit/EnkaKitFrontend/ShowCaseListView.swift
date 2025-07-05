@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - ShowCaseListView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.QueriedProfile.DBType == DBType {
     // MARK: Lifecycle
 
@@ -200,6 +201,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension EKQueriedProfileProtocol {
     @MainActor
     public func asView(
@@ -217,12 +219,13 @@ extension EKQueriedProfileProtocol {
 
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
-private let enkaDatabaseHSR = try! Enka.EnkaDB4HSR(locTag: "zh-tw")
-private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) private let enkaDatabaseHSR = try! Enka
+    .EnkaDB4HSR(locTag: "zh-tw")
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
 // swiftlint:enable force_try
 // swiftlint:enable force_unwrapping
 
-private let summaryHSR: Enka.QueriedProfileHSR = {
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) private let summaryHSR: Enka.QueriedProfileHSR = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
@@ -237,7 +240,7 @@ private let summaryHSR: Enka.QueriedProfileHSR = {
     // swiftlint:enable force_unwrapping
 }()
 
-private let summaryGI: Enka.QueriedProfileGI = {
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) private let summaryGI: Enka.QueriedProfileGI = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
     // Note: Do not use #Preview macro. Otherwise, the preview won't be able to access the assets.
@@ -252,6 +255,7 @@ private let summaryGI: Enka.QueriedProfileGI = {
     // swiftlint:enable force_unwrapping
 }()
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 #Preview {
     /// 注意：请仅用 iOS 或者 MacCatalyst 来预览。AppKit 无法正常处理这个 View。
     TabView {

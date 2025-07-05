@@ -8,6 +8,7 @@ import PZBaseKit
 
 // MARK: - EnkaDBProtocol
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public protocol EnkaDBProtocol: AnyObject, Sendable {
     associatedtype QueriedResult: EKQueryResultProtocol where QueriedResult.DBType == Self
     associatedtype QueriedProfile: EKQueriedProfileProtocol where QueriedProfile.DBType == Self
@@ -34,6 +35,7 @@ public protocol EnkaDBProtocol: AnyObject, Sendable {
 
 // MARK: - Online Update & Query.
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension EnkaDBProtocol {
     public typealias QueriedAvatar = QueriedProfile.QueriedAvatar
     public typealias SummarizedType = Enka.ProfileSummarized<Self>
@@ -113,6 +115,7 @@ extension EnkaDBProtocol {
 
 // MARK: - Translation APIs.
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension EnkaDBProtocol {
     public var locTagMismatchingTheSystem: Bool {
         Enka.currentLangTag != locTag
@@ -168,6 +171,7 @@ extension EnkaDBProtocol {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     fileprivate static let kanjiFixTableCHS: [String: String] = [
         "钟离": "锺离",

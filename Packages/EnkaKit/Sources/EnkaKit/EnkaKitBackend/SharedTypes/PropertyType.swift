@@ -6,6 +6,7 @@ import PZBaseKit
 
 // MARK: - Enka.PropertyType
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     /// 原神＆星穹铁道共用的属性类型。
     public enum PropertyType: String, Hashable, CaseIterable, RawRepresentable, Sendable {
@@ -85,6 +86,7 @@ extension Enka {
 
 /// 注意：这个 Enum 目前在技术上来讲无法作为 Dictionary Key 来解码「原神词条数字名称」，
 /// 因为在这个场合下无法让自订 decoder 生效。
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.PropertyType: Codable, CodingKeyRepresentable {
     public init(rawValue: String) {
         guard let matched = Self(enkaPropIDStr4GI: rawValue)
@@ -123,6 +125,7 @@ extension Enka.PropertyType: Codable, CodingKeyRepresentable {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.PropertyType {
     private init?(enkaPropIDStr4GI: String) {
         guard let propID = Int(enkaPropIDStr4GI) else { return nil }
@@ -273,6 +276,7 @@ extension Enka.PropertyType {
 
 // MARK: - Enka.PVPair
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     public struct PVPair: AbleToCodeSendHash, Identifiable {
         // MARK: Lifecycle
@@ -447,6 +451,7 @@ extension Enka {
 
 /// 原神词条 Enum，一律先翻译成 PropertyType 再投入使用。
 /// 这个 Enum 有极大概率已经没用了，因为 Enka 查询结果里面的原神词条是以 Stringed Integer 命名的。
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private enum GIAvatarAttribute: String, AbleToCodeSendHash, CaseIterable, RawRepresentable {
     case baseAttack = "FIGHT_PROP_BASE_ATTACK"
     case maxHP = "FIGHT_PROP_MAX_HP"
@@ -527,6 +532,7 @@ private enum GIAvatarAttribute: String, AbleToCodeSendHash, CaseIterable, RawRep
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.PropertyType {
     public var titleSuffix: String {
         var result = ""

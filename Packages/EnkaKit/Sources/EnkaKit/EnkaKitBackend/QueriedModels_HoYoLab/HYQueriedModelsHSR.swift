@@ -8,6 +8,7 @@ import PZBaseKit
 
 // MARK: - HYQueriedModels.HYLAvatarDetail4HSR
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HYQueriedModels {
     public struct HYLAvatarDetail4HSR: AbleToCodeSendHash {
         // MARK: Lifecycle
@@ -101,6 +102,7 @@ extension HYQueriedModels {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HYQueriedModels.HYLAvatarDetail4HSR {
     public enum Element: String, AbleToCodeSendHash {
         case fire
@@ -388,6 +390,7 @@ extension HYQueriedModels.HYLAvatarDetail4HSR {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HYQueriedModels.HYLAvatarDetail4HSR {
     public static func exampleData() throws -> DecodableList {
         let exampleURL = Bundle.module.url(

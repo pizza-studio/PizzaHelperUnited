@@ -4,6 +4,7 @@
 
 import EnkaDBModels
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension EnkaDBModelsHSR.Meta.NestedPropValueMap {
     public func query(id: some StringProtocol, stage: Int) -> [Enka.PropertyType: Double] {
         let rawResult = self[id.description]?[stage.description]?["props"] ?? [:]
@@ -21,12 +22,14 @@ extension EnkaDBModelsHSR.Meta.NestedPropValueMap {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension EnkaDBModelsHSR.Meta.RawRelicDB.SubAffix {
     var propertyType: Enka.PropertyType? {
         .init(rawValue: property)
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension EnkaDBModelsHSR.Meta.RawRelicDB.MainAffix {
     var propertyType: Enka.PropertyType? {
         .init(rawValue: property)

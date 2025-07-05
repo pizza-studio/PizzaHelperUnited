@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka.QueriedProfileGI.QueriedAvatar {
     /// 计算角色面板（原神）。
     @MainActor

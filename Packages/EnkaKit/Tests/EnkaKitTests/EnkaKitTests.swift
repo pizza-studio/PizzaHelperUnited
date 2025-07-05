@@ -9,6 +9,9 @@ import Testing
 // MARK: - ArtifactRatingTests
 
 struct ArtifactRatingTests {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testInitializingBundledArtifactRatingDB() async throws {
         let dictA = ArtifactRating.ModelDB(game: .starRail)
@@ -20,6 +23,9 @@ struct ArtifactRatingTests {
         print(c)
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testFetchingRemoteData() async throws {
         _ = try await ArtifactRating.ARSputnik.fetchARDBData(
@@ -38,6 +44,9 @@ struct ArtifactRatingTests {
 // MARK: - EnkaKitTests
 
 struct EnkaKitTests {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testDecodingPropertyAndElement() throws {
         let jsonStr1 = #"{"PropType": "GrassAddedRatio"}"#
@@ -82,6 +91,9 @@ struct EnkaKitTests {
         #expect(decoded5[.criticalChance] == 0.533699989318848)
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testEnkaDBInitUsingBundledData() throws {
         let dbGI = try Enka.EnkaDB4GI(locTag: "zh-Hant")
@@ -90,6 +102,9 @@ struct EnkaKitTests {
         #expect(dbHSR.locTag == "zh-tw")
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testEnkaDBOnlineConstruction() async throws {
         let dbGI = try await Enka.EnkaDB4GI(host: .mainlandChina)
@@ -98,6 +113,9 @@ struct EnkaKitTests {
         #expect(dbHSR.game == .starRail)
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testEnkaQueryFileDecoding() throws {
         let hsrDecoded = try Enka.QueriedResultHSR.exampleData()
@@ -112,6 +130,9 @@ struct EnkaKitTests {
         #expect(!hsrDecodedHYL.avatarList.isEmpty)
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testEnkaOnlineProfileQueryRAW() async throws {
         let hsrQueried = try await Enka.QueriedResultHSR.queryRAW(uid: "114514810")
@@ -119,6 +140,9 @@ struct EnkaKitTests {
         #expect(hsrQueried.uid == giQueried.uid)
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testEnkaHSRProfileSummaryAsText() async throws {
         let hsrDecoded = try Enka.QueriedResultHSR.exampleData()
@@ -143,6 +167,9 @@ struct EnkaKitTests {
         print(x ?? "Result Rating Failed.")
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testEnkaGIProfileSummaryAsText() async throws {
         let giDecoded = try Enka.QueriedResultGI.exampleData()
@@ -170,6 +197,9 @@ struct EnkaKitTests {
 // MARK: - EnkaKitWithHoYoQueryResultTests
 
 struct EnkaKitWithHoYoQueryResultTests {
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testBatchSummary4GI() async throws {
         let chtDB = try Enka.EnkaDB4GI(locTag: "zh-Hant")
@@ -180,6 +210,9 @@ struct EnkaKitWithHoYoQueryResultTests {
         #expect(giDecoded.avatarList.count == summarized.count)
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testBatchSummary4HSR() async throws {
         let chtDB = try Enka.EnkaDB4HSR(locTag: "zh-Hant")
@@ -190,6 +223,9 @@ struct EnkaKitWithHoYoQueryResultTests {
         #expect(hsrDecoded.avatarList.count == summarized.count)
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testHoYoGIProfileSummaryAsText() async throws {
         let giDecoded = try HYQueriedModels.HYLAvatarDetail4GI.exampleData()
@@ -211,6 +247,9 @@ struct EnkaKitWithHoYoQueryResultTests {
         print(x ?? "Result Rating Failed.")
     }
 
+    @available(iOS 17.0, *)
+    @available(macCatalyst 17.0, *)
+    @available(macOS 14.0, *)
     @Test
     func testHoYoHSRProfileSummaryAsText() async throws {
         let hsrDecoded = try HYQueriedModels.HYLAvatarDetail4HSR.exampleData()
