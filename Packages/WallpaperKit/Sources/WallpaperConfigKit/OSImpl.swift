@@ -4,12 +4,14 @@
 
 import Foundation
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
 extension String {
     public var i18nWPConfKit: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
     }
 }
 
+@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
 extension String.LocalizationValue {
     public var i18nWPConfKit: String {
         String(localized: self, bundle: .module)

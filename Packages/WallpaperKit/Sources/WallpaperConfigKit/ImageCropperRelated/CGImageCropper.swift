@@ -2,14 +2,15 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+#if !os(watchOS)
+
 import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
-#if !os(watchOS)
-
 // MARK: - CGImageCropperView
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 public struct CGImageCropperView: View {
     // MARK: Lifecycle
 
@@ -170,6 +171,7 @@ public struct CGImageCropperView: View {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension CGImageCropperView {
     fileprivate enum OperationState {
         case awaitingForFileDesignation
@@ -185,6 +187,7 @@ extension CGImageCropperView {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension CGImageCropperView {
     @ViewBuilder fileprivate var mainView: some View {
         switch currentState {
@@ -370,6 +373,7 @@ extension CGImageCropperView {
 
 import WallpaperKit
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension CGImageCropperView {
     @ViewBuilder
     public static func makeTestView() -> some View {
@@ -381,6 +385,7 @@ extension CGImageCropperView {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 #Preview {
     Form {
         CGImageCropperView.makeTestView()
