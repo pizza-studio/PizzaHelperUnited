@@ -11,6 +11,10 @@ import WidgetKit
 // MARK: - ProfileWidgetEntry
 
 /// 这是（无论系统平台的）任何需要配置本地帐号的小工具所共用的 TimelineEntry 类型。
+@available(iOS 16.0, *)
+@available(macCatalyst 16.0, *)
+@available(macOS 13.0, *)
+@available(watchOS 9.0, *)
 public struct ProfileWidgetEntry: TimelineEntry, Sendable {
     // MARK: Lifecycle
 
