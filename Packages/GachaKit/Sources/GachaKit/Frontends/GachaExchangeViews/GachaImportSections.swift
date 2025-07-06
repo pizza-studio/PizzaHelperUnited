@@ -120,7 +120,7 @@ extension GachaImportSections {
             } else {
                 Group {
                     let rawUTTypes: [String] = switch format {
-                    case .asUIGFv4: ["uigf", "json"]
+                    case .asUIGFv4: ["uigf", "json", "plist"]
                     case .asSRGFv1: ["srgf", "json"]
                     case .asGIGFJson: ["gigf", "json"]
                     case .asGIGFExcel: ["xlsx"]
@@ -151,6 +151,9 @@ extension GachaImportSections {
                 case .asUIGFv4:
                     Text("gachaKit.exchange.formatExplain.uigfv4", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("gachaKit.exchange.formatExplain.uigfv4.refugee", bundle: .module)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundStyle(.red)
                 case .asSRGFv1:
                     Text("gachaKit.exchange.formatExplain.srgfv1", bundle: .module)
                         .frame(maxWidth: .infinity, alignment: .leading)

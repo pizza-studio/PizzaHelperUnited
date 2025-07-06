@@ -344,7 +344,7 @@ extension GachaVM {
                 }
                 var fetchedFile: UIGFv4
                 let decoder = JSONDecoder()
-                switch format {
+                formatProcess: switch format {
                 case .asGIGFExcel:
                     guard let file = XLSXFile(filepath: url.relativePath) else {
                         throw GachaKit.FileExchangeException.fileNotExist
@@ -356,6 +356,46 @@ extension GachaVM {
                     }
                 case .asUIGFv4:
                     let data: Data = try Data(contentsOf: url)
+                    var isRefugee = false
+                    refugeeTask: do {
+                        let refugeeData = try PropertyListDecoder().decode(
+                            RefugeeFile.self, from: data
+                        )
+                        isRefugee = true
+                        var genshinDataRAW = refugeeData.oldGachaEntries4GI
+                        genshinDataRAW.fixItemIDs()
+                        if genshinDataRAW.mightHaveNonCHSLanguageTag {
+                            try genshinDataRAW.updateLanguage(.langCHS)
+                        }
+                        for idx in 0 ..< genshinDataRAW.count {
+                            let currentObj = genshinDataRAW[idx]
+                            guard Int(currentObj.itemId) == nil else { continue }
+                            Task { @MainActor in
+                                // 读取难民档案时出现 GMDB 匹配错误的可能性非常小，因为旧版披萨的 GMDB 太旧、恐无法获取记录。
+                                // 但这里仍旧按照例行步骤处理，以防万一。
+                                try? await GachaMeta.Sputnik.updateLocalGachaMetaDB(for: .genshinImpact)
+                            }
+                            throw GachaMeta.GMDBError.databaseExpired(game: .genshinImpact)
+                        }
+                        let newUIGFEntries4Genshin = genshinDataRAW.map(\.asPZGachaEntrySendable)
+                        fetchedFile = try UIGFv4(info: .init(), entries: newUIGFEntries4Genshin, lang: .langCHS)
+                        fetchedFile.info = .init(
+                            exportApp: "PizzaHelper4Genshin",
+                            exportAppVersion: "v4",
+                            exportTimestamp: "N/A",
+                            version: "N/A",
+                            previousFormat: "[PLIST] OldPizzaRefugeeData"
+                        )
+                        break formatProcess
+                    } catch let refugeeError {
+                        print(refugeeError)
+                        if isRefugee {
+                            throw GachaKit.FileExchangeException.otherError(refugeeError)
+                        } else {
+                            break refugeeTask
+                        }
+                    }
+                    // 正常处理流程。
                     do {
                         fetchedFile = try decoder.decode(UIGFv4.self, from: data)
                     } catch {

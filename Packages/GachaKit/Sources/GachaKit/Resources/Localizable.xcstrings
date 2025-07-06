@@ -1618,6 +1618,82 @@
         }
       }
     },
+    "gachaKit.exchange.formatExplain.uigfv4.refugee" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Sie eine Old Pizza Refugee Data-Datei importieren möchten, wählen Sie bitte das UIGFv4-Format. Die App beginnt dann automatisch damit, die Gacha-Einträge zu konvertieren, alle ItemIDs zu korrigieren und sie anschließend in das UIGFv4-Format umzuwandeln, um den Import abzuschließen. Dieser Vorgang erfolgt automatisch."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have Old Pizza Refugee Data file to import, please choose UIGFv4 format. The app will start converting its gacha entries to fix all itemIDs and then convert them into a UIGFv4 format to import instead. This process is automatic."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si tienes un archivo Old Pizza Refugee Data para importar, selecciona el formato UIGFv4. La aplicación comenzará a convertir sus entradas de gacha para corregir todos los itemIDs y luego las convertirá al formato UIGFv4 para importarlas. Este proceso es automático."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kung mayroon kang Old Pizza Refugee Data file na i-import, piliin ang UIGFv4 format. Awtomatikong sisimulan ng app ang pag-convert ng mga gacha entry, aayusin ang lahat ng itemID, at iko-convert ang mga ito sa UIGFv4 format para i-import. Ang prosesong ito ay awtomatiko."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous avez un fichier Old Pizza Refugee Data à importer, veuillez choisir le format UIGFv4. L'application commencera à convertir ses entrées gacha pour corriger tous les itemIDs, puis les convertira au format UIGFv4 pour l'importation. Ce processus est automatique."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se hai un file Old Pizza Refugee Data da importare, scegli il formato UIGFv4. L'app inizierà a convertire le sue voci gacha per correggere tutti gli itemID e poi le convertirà in formato UIGFv4 per l'importazione. Questo processo è automatico."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "旧ピザ難民資料をお持ちした場合、UIGFv4 フォーマットを選択してください。アプリは自動的にガチャ記録の itemID を修正し、UIGFv4 フォーマットに変換してインポートします。この処理は自動で行われます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Old Pizza Refugee Data 파일을 가져오려면 UIGFv4 형식을 선택하세요. 앱이 모든 itemID를 수정하고 UIGFv4 형식으로 변환하여 가져오기를 자동으로 시작합니다. 이 과정은 자동으로 진행됩니다."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если у вас есть файл Old Pizza Refugee Data для импорта, выберите формат UIGFv4. Приложение автоматически начнет конвертацию записей гача, исправит все itemID и затем преобразует их в формат UIGFv4 для импорта. Этот процесс автоматический."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu bạn có tệp Old Pizza Refugee Data để nhập, hãy chọn định dạng UIGFv4. Ứng dụng sẽ tự động chuyển đổi các mục gacha, sửa tất cả itemID và chuyển chúng sang định dạng UIGFv4 để nhập. Quá trình này là tự động."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果你有旧披萨难民资料需要导入的话，请选择 UIGFv4 格式。App 会自动将其抽卡记录转换、修正所有 itemID，并转为 UIGFv4 格式后导入。此过程全自动完成。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果你有舊披薩難民資料需要匯入的話，請選擇 UIGFv4 格式。App 會自動將其抽卡記錄轉換、修正所有 itemID，並轉為 UIGFv4 格式後匯入。此過程全自動完成。"
+          }
+        }
+      }
+    },
     "gachaKit.exchange.import.info.time" : {
       "extractionState" : "manual",
       "localizations" : {
