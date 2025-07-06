@@ -68,11 +68,11 @@ struct ProfileManagerPageContent: View {
             Section {
                 ForEach(theVM.profiles) { profile in
                     Group {
-                        if let profileMO = theVM.profileMOs[profile.uuid.uuidString] {
-                            let label = drawRow(profile: profileMO)
+                        if let profileRef = theVM.profileRefMap[profile.uuid.uuidString] {
+                            let label = drawRow(profile: profileRef)
                             if isAppKitOrNotEditing {
                                 NavigationLink {
-                                    EditProfileSheetView(profile: profileMO)
+                                    EditProfileSheetView(profile: profileRef)
                                         .environment(alertToastEventStatus)
                                 } label: {
                                     label

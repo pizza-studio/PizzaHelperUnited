@@ -24,7 +24,7 @@ public final class ProfileManagerVM: TaskManagedVM {
         profiles.forEach { profileSendable in
             newMOMap[profileSendable.uuid.uuidString] = profileSendable.asRef
         }
-        self.profileMOs = newMOMap
+        self.profileRefMap = newMOMap
         super.init()
         configurePublisherObservations()
         Task { @MainActor in
@@ -61,7 +61,7 @@ public final class ProfileManagerVM: TaskManagedVM {
     public internal(set) var hasOldAccountDataDetected: Bool = false
 
     /// 此处沿用 PZProfileRef 作为指针格式，但不用于对 SwiftData 的写入。
-    public internal(set) var profileMOs: [String: PZProfileRef]
+    public internal(set) var profileRefMap: [String: PZProfileRef]
 
     public var sheetType: SheetType?
 
@@ -73,7 +73,7 @@ public final class ProfileManagerVM: TaskManagedVM {
     }
 
     public var hasUncommittedChanges: Bool {
-        Set(profileMOs.map(\.value.asSendable)).hashValue != Set(profiles).hashValue
+        Set(profileRefMap.map(\.value.asSendable)).hashValue != Set(profiles).hashValue
     }
 
     public func discardUncommittedChanges() {
@@ -83,7 +83,7 @@ public final class ProfileManagerVM: TaskManagedVM {
         Defaults[.pzProfiles].forEach { uuidStr, profileSendable in
             newResult[uuidStr] = profileSendable.asRef
         }
-        profileMOs = newResult
+        profileRefMap = newResult
     }
 
     public func moveItems(
@@ -96,7 +96,7 @@ public final class ProfileManagerVM: TaskManagedVM {
         newProfiles.fixPrioritySettings()
         newProfiles.forEach {
             let uuidStr = $0.uuid.uuidString
-            if let mo = profileMOs[uuidStr] {
+            if let mo = profileRefMap[uuidStr] {
                 mo.priority = $0.priority
             }
         }
@@ -117,7 +117,7 @@ public final class ProfileManagerVM: TaskManagedVM {
         trailingTasks: (() -> Void)? = nil,
         errorHandler: ((any Error) -> Void)? = nil
     ) {
-        profileMOs.values.filter { $0.uuid == profile.uuid }.forEach {
+        profileRefMap.values.filter { $0.uuid == profile.uuid }.forEach {
             $0.inherit(from: profile)
         }
         profiles.indices.forEach { index in
@@ -142,17 +142,17 @@ public final class ProfileManagerVM: TaskManagedVM {
         completionHandler: ((Set<PZProfileSendable>?) -> Void)? = nil,
         errorHandler: ((any Error) -> Void)? = nil
     ) {
-        guard !profiles.isEmpty, !profileMOs.isEmpty else { return }
+        guard !profiles.isEmpty, !profileRefMap.isEmpty else { return }
         // 这里提前先修改 VM 内部的参数。
         // 虽然最后会被自动再重复落实一次，但不事先落实 VM 的修改的话就会造成前台 SwiftUI 视觉效果割裂。
-        var profileMOsModified = profileMOs
+        var modifiedProfileRefMap = profileRefMap
         let profilesModified = profiles.filter {
-            profileMOsModified.removeValue(forKey: $0.uuid.uuidString)
+            modifiedProfileRefMap.removeValue(forKey: $0.uuid.uuidString)
             return !uuidsToDrop.contains($0.uuid)
         }
         fireTask(
             animatedPreparationTask: {
-                self.profileMOs = profileMOsModified
+                self.profileRefMap = modifiedProfileRefMap
                 self.profiles = profilesModified
             },
             cancelPreviousTask: false,
@@ -228,7 +228,7 @@ public final class ProfileManagerVM: TaskManagedVM {
             Broadcaster.shared.requireOSNotificationCenterAuthorization()
             let dailyNoteVMMapKeys = DailyNoteViewModel.vmMap.keys
             dailyNoteVMMapKeys.forEach { uuidString in
-                if !ProfileManagerVM.shared.profileMOs.keys.contains(uuidString) {
+                if !ProfileManagerVM.shared.profileRefMap.keys.contains(uuidString) {
                     DailyNoteViewModel.vmMap.removeValue(forKey: uuidString)
                 }
             }
