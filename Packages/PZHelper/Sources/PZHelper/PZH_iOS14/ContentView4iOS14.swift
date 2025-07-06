@@ -91,7 +91,7 @@ public struct ContentView4iOS14: View {
             .fileExporter(
                 isPresented: theVM.isExportDialogVisible,
                 document: theVM.currentExportableDocument,
-                contentType: .json,
+                contentType: .propertyList,
                 defaultFilename: "PizzaHelper4Genshin_RefugeeMigrationData"
             ) { result in
                 fileSaveActionResult = result
