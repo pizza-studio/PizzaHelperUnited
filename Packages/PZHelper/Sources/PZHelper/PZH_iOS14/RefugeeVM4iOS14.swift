@@ -47,6 +47,7 @@ public final class RefugeeVM4iOS14: TaskManagedVM4OS21 {
 
     private func configurePublisherObservations() {
         if #unavailable(iOS 17) {
+            // 警告：iOS 18 开始，严禁监听 `.NSManagedObjectContextDidSave`，否则必炸。
             NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
                 .sink(receiveValue: { _ in
                     self.startCountingDataEntriesTask(forced: false)
