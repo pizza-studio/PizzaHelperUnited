@@ -49,6 +49,7 @@ public struct AppWallpaperView: View {
     @Environment(\.colorScheme) private var colorScheme
 
     @State private var broadcaster = Broadcaster.shared
+    @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
 
     @Default(.appWallpaperID) private var appWallpaperID: String
 
@@ -59,6 +60,7 @@ public struct AppWallpaperView: View {
             [
                 broadcaster.eventForUserWallpaperDidSave.hashValue,
                 appWallpaperID.hashValue,
+                folderMonitor.stateHash.hashValue,
             ]
         ).hashValue
     }

@@ -54,6 +54,7 @@ public struct LiveActivityWallpaperView: View {
     @Environment(\.colorScheme) private var colorScheme
 
     @State private var broadcaster = Broadcaster.shared
+    @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
 
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
 
@@ -64,6 +65,7 @@ public struct LiveActivityWallpaperView: View {
             [
                 broadcaster.eventForUserWallpaperDidSave.hashValue,
                 liveActivityWallpaperIDs.hashValue,
+                folderMonitor.stateHash.hashValue,
             ]
         ).hashValue
     }
