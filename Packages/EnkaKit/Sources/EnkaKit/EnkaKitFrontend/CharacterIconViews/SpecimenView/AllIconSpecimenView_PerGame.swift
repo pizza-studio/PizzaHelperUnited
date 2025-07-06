@@ -112,7 +112,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 
     // MARK: Private
 
-    @StateObject private var screenVM: ScreenVM = .shared
+    @State private var screenVM: ScreenVM = .shared
     @State private var scroll: Bool
     @State private var game: Enka.GameType
     @State private var supplementalIDs: [String]

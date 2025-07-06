@@ -154,8 +154,8 @@ struct ProfileManagerPageContent: View {
         return formatter
     }()
 
-    @StateObject private var theVM: ProfileManagerVM = .shared
-    @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
+    @State private var theVM: ProfileManagerVM = .shared
+    @State private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var errorMessage: String?
     @Default(.lastTimeResetLocalProfileDB) private var lastTimeResetLocalProfileDB: Date?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?

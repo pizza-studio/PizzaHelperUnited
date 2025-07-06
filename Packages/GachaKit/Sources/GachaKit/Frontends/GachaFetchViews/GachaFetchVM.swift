@@ -12,7 +12,7 @@ import SwiftUI
 /// The view model displaying current fetch gacha status.
 @Observable @MainActor
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
-public class GachaFetchVM<GachaType: GachaTypeProtocol>: ObservableObject {
+public class GachaFetchVM<GachaType: GachaTypeProtocol> {
     // MARK: Lifecycle
 
     public init() {}

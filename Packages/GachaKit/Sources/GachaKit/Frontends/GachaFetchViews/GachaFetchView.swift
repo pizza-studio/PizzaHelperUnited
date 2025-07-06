@@ -139,7 +139,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
 
     // MARK: Private
 
-    @StateObject private var gachaVM4Fetch: VMType = .init()
+    @State private var gachaVM4Fetch: VMType = .init()
     @Environment(GachaVM.self) private var gachaRootVM
 }
 
@@ -205,7 +205,7 @@ extension GachaFetchView4Game {
         @State private var error: ParseGachaURLError?
         @State private var subError: Error?
         @State private var isErrorAlertVisible: Bool = false
-        @StateObject private var urlAwaitVM = URLAwaitVM()
+        @State private var urlAwaitVM = URLAwaitVM()
 
         private let completion: (String) throws -> Void
 

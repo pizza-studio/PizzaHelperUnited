@@ -52,5 +52,5 @@ struct UtilsTabPage: View {
 
     // MARK: Private
 
-    @StateObject private var rootNavVM = RootNavVM.shared
+    @State private var rootNavVM = RootNavVM.shared
 }

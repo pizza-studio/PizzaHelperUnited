@@ -79,7 +79,7 @@ public struct CDGachaMODebugView: View {
 
     static let oldGachaGames: [PZCoreDataKit.StoredGame] = [.genshinImpact, .starRail]
 
-    @StateObject var delegate = CDGachaMODebugVM()
+    @State var delegate = CDGachaMODebugVM()
 }
 
 // MARK: CDGachaMODebugView.CDGachaMODebugVM

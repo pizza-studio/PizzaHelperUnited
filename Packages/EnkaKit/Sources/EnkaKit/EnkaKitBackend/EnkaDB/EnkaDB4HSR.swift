@@ -13,7 +13,7 @@ import PZBaseKit
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     @Observable
-    public final class EnkaDB4HSR: ObservableObject, EnkaDBProtocol, Codable, @unchecked Sendable {
+    public final class EnkaDB4HSR: EnkaDBProtocol, Codable, @unchecked Sendable {
         // MARK: Lifecycle
 
         required public convenience init(host: Enka.HostType) async throws {

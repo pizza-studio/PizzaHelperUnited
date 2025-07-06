@@ -138,10 +138,10 @@ struct DetailPortalTabPage: View {
     @State private var wrappedByNavStack: Bool
     @State private var showProfileSwitcher: Bool
     @State private var sharedDB: Enka.Sputnik = .shared
-    @StateObject private var vmDPV: DetailPortalViewModel = .shared
-    @StateObject private var pfMgrVM: ProfileManagerVM = .shared
-    @StateObject private var rootNavVM = RootNavVM.shared
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var vmDPV: DetailPortalViewModel = .shared
+    @State private var pfMgrVM: ProfileManagerVM = .shared
+    @State private var rootNavVM = RootNavVM.shared
+    @State private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
 
     @Default(.pzProfiles) private var profiles: [String: PZProfileSendable]

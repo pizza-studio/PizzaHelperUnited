@@ -180,8 +180,8 @@ struct TodayTabPage: View {
     @State private var isTodayMaterialSheetShown: Bool = false
     @State private var wrappedByNavStack: Bool
     @State private var game: Pizza.SupportedGame? = .none
-    @StateObject private var rootNavVM = RootNavVM.shared
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var rootNavVM = RootNavVM.shared
+    @State private var broadcaster = Broadcaster.shared
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
     @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]

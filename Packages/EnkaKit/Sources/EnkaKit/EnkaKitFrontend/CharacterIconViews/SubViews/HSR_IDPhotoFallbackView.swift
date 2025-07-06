@@ -40,7 +40,7 @@ struct IDPhotoFallbackView4HSR: View {
     // MARK: Internal
 
     @Observable
-    final class Coordinator: ObservableObject {
+    final class Coordinator {
         // MARK: Lifecycle
 
         @MainActor
@@ -148,7 +148,7 @@ struct IDPhotoFallbackView4HSR: View {
 
     // MARK: Private
 
-    @StateObject private var coordinator: Coordinator
+    @State private var coordinator: Coordinator
 
     private let pid: String
     private let imageHandler: (Image) -> Image

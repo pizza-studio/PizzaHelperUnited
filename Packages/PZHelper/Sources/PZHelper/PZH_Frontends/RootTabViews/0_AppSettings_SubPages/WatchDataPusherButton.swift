@@ -53,5 +53,5 @@ struct WatchDataPusherButton: View {
 
     // MARK: Private
 
-    @StateObject private var theVM: ProfileManagerVM = .shared
+    @State private var theVM: ProfileManagerVM = .shared
 }

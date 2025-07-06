@@ -108,7 +108,7 @@ public struct WallpaperGalleryViewContent: View {
 
     // MARK: Private
 
-    @StateObject private var screenVM: ScreenVM = .shared
+    @State private var screenVM: ScreenVM = .shared
     @State private var game: Pizza.SupportedGame? = appGame ?? .genshinImpact
     @State private var searchText = ""
 

@@ -168,7 +168,7 @@ struct GetCookieWebView: View {
         }
     }
 
-    @StateObject private var screenVM: ScreenVM = .shared
+    @State private var screenVM: ScreenVM = .shared
 
     private var pageWidth: CGFloat {
         screenVM.mainColumnCanvasSizeObserved.width

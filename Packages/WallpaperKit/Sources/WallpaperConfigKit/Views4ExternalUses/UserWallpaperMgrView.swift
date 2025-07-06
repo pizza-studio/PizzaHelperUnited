@@ -100,7 +100,7 @@ public struct UserWallpaperMgrViewContent: View {
     // MARK: Internal
 
     @Observable
-    final class AlertToastEventStatus: ObservableObject {
+    final class AlertToastEventStatus {
         public var isWallpaperTaskSucceeded = false
         public var isWallpaperTaskFailed = false
     }
@@ -122,8 +122,8 @@ public struct UserWallpaperMgrViewContent: View {
     #endif
 
     @State private var isCropperSheetPresented: Bool = false
-    @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var alertToastEventStatus: AlertToastEventStatus = .init()
+    @State private var broadcaster = Broadcaster.shared
     @State private var isNameEditorVisible: Bool = false
     @State private var currentEditingWallpaper: UserWallpaper?
 

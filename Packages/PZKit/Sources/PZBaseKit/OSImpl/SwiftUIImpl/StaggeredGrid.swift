@@ -35,7 +35,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
         self.alignment = alignment
         self.content = content
         self.list = list
-        self._vm = StateObject(wrappedValue: StaggeredGridVM(list: list, columns: columns))
+        self._vm = .init(wrappedValue: StaggeredGridVM(list: list, columns: columns))
     }
 
     // MARK: Public
@@ -66,7 +66,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
     // MARK: Private
 
-    @StateObject private var vm: StaggeredGridVM<T>
+    @State private var vm: StaggeredGridVM<T>
 
     private let columns: Int
     private let scrollAxis: Axis.Set
@@ -98,7 +98,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 @Observable @MainActor
-final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableObject {
+final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
     // MARK: Lifecycle
 
     // MARK: - Initialization

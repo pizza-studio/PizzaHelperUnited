@@ -316,7 +316,7 @@ extension ProfileManagerPageContent {
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
-        @StateObject private var theVM: ProfileManagerVM = .shared
+        @State private var theVM: ProfileManagerVM = .shared
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
         private var game: Binding<Pizza.SupportedGame> {

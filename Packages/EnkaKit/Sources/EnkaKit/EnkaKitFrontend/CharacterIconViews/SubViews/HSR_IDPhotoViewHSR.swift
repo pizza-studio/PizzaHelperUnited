@@ -67,7 +67,7 @@ public struct IDPhotoView4HSR: View {
     // MARK: Internal
 
     @Observable
-    final class Coordinator: ObservableObject {
+    final class Coordinator {
         // MARK: Lifecycle
 
         public init?(pid: String) {
@@ -201,7 +201,7 @@ public struct IDPhotoView4HSR: View {
 
     // MARK: Private
 
-    @StateObject private var coordinator: Coordinator
+    @State private var coordinator: Coordinator
 
     private let pid: String
     private let imageHandler: (Image) -> Image

@@ -16,7 +16,7 @@ import SwiftUI
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 @Observable @MainActor
-public final class DetailPortalViewModel: ObservableObject {
+public final class DetailPortalViewModel {
     // MARK: Lifecycle
 
     public init() {

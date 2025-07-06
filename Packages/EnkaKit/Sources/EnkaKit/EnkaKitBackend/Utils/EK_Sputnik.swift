@@ -16,7 +16,7 @@ import PZBaseKit
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension Enka {
     @Observable
-    public final class Sputnik: ObservableObject, @unchecked Sendable {
+    public final class Sputnik: @unchecked Sendable {
         // MARK: Lifecycle
 
         private init() {

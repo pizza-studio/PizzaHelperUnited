@@ -41,7 +41,7 @@ struct WatchWidgetSettingView: View {
 
     // MARK: Private
 
-    @StateObject private var theVM: ProfileManagerVM = .shared
+    @State private var theVM: ProfileManagerVM = .shared
 
     @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
 

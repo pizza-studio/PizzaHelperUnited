@@ -67,7 +67,7 @@ extension ProfileManagerPageContent {
         @State private var profile: PZProfileRef
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
-        @StateObject private var theVM: ProfileManagerVM = .shared
+        @State private var theVM: ProfileManagerVM = .shared
         @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 

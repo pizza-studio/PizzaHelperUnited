@@ -192,7 +192,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
-    @StateObject private var delegate: CaseProfileVM<QueryDB>
+    @State private var delegate: CaseProfileVM<QueryDB>
 
     private var theDB: QueryDB
 

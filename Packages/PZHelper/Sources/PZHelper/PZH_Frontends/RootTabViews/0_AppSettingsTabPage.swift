@@ -113,7 +113,7 @@ struct AppSettingsTabPage: View {
     // MARK: Private
 
     @State private var sharedDB = Enka.Sputnik.shared
-    @StateObject private var rootNavVM = RootNavVM.shared
+    @State private var rootNavVM = RootNavVM.shared
 
     @Default(.appLanguage) private var appLanguage: [String]?
 }
