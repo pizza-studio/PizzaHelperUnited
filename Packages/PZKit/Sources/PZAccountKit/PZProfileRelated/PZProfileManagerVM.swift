@@ -226,6 +226,12 @@ public final class ProfileManagerVM: TaskManagedVM {
             Broadcaster.shared.refreshTodayTab()
             Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
             Broadcaster.shared.requireOSNotificationCenterAuthorization()
+            let dailyNoteVMMapKeys = DailyNoteViewModel.vmMap.keys
+            dailyNoteVMMapKeys.forEach { uuidString in
+                if !ProfileManagerVM.shared.profileMOs.keys.contains(uuidString) {
+                    DailyNoteViewModel.vmMap.removeValue(forKey: uuidString)
+                }
+            }
         }
     }
 }

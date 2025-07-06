@@ -15,12 +15,18 @@ struct InAppDailyNoteCardView: View {
     // MARK: Lifecycle
 
     init(profile: PZProfileSendable) {
+        // InAppDailyNoteCardView 是在一个惰性容器（List / Form）内创建的。
+        // 这就导致在今日画面卷动过程中会有一个现象：
+        // 所有跑到视野之外的 InAppDailyNoteCardView 都会连同其 VM 一同被销毁。
+        // 然后再卷到视野内的话就又会刷出来。
+        // 这就容易造成对 HoYoLAB / 米游社伺服器的洪水访问增频事故。
+        // 所以 InAppDailyNoteCardView 的 VM 必须缓存处理。
+        let existingVM = DailyNoteViewModel.vmMap[profile.uuid.uuidString]
         self._theVM = .init(
-            wrappedValue: DailyNoteViewModel(profile: profile) { dailyNote in
+            wrappedValue: existingVM ?? DailyNoteViewModel(profile: profile) { dailyNote in
                 #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
                 if Defaults[.autoDeliveryStaminaTimerLiveActivity] {
                     Task {
-                        // let accounts = AccountModel.shared.fetchAccountConfigs()
                         try? StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
                             for: profile,
                             data: dailyNote
@@ -30,6 +36,9 @@ struct InAppDailyNoteCardView: View {
                 #endif
             }
         )
+        if existingVM == nil {
+            DailyNoteViewModel.vmMap[profile.uuid.uuidString] = theVM
+        }
     }
 
     // MARK: Internal

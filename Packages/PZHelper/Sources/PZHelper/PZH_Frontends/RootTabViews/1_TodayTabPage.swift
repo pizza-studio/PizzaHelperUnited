@@ -77,6 +77,7 @@ struct TodayTabPage: View {
         } else {
             ForEach(filteredProfiles) { profile in
                 InAppDailyNoteCardView(profile: profile)
+                    .id(profile)
                     .listRowMaterialBackground()
             }
         }
