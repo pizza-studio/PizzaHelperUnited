@@ -33,6 +33,8 @@ public final class DailyNoteViewModel {
         case progress(Task<Void, Never>?)
     }
 
+    public static var vmMap: [UUID: DailyNoteViewModel] = [:]
+
     /// The current daily note.
     public private(set) var dailyNoteStatus: Status = .progress(nil)
 
