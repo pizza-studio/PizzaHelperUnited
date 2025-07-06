@@ -47,7 +47,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
                 .blendMode(.multiply) // 很重要。
         }
         .scaleEffect(1.01) // HSR 的名片有光边。
-        .id(broadcaster.eventForUserWallpaperDidSave)
+        .id(viewRefreshHash)
     }
 
     // MARK: Private
@@ -55,9 +55,19 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     @Environment(\.widgetFamily) private var widgetFamily: WidgetFamily
     @State private var broadcaster = Broadcaster.shared
+    @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
 
     private let background: WidgetBackground
     private let darkModeOn: Bool
+
+    private var viewRefreshHash: Int {
+        Set(
+            [
+                broadcaster.eventForUserWallpaperDidSave.hashValue,
+                folderMonitor.stateHash.hashValue,
+            ]
+        ).hashValue
+    }
 
     private var shouldEnforceDark: Bool { colorScheme == .dark && darkModeOn }
 

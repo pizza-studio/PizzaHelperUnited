@@ -124,6 +124,7 @@ public struct UserWallpaperMgrViewContent: View {
     @State private var isCropperSheetPresented: Bool = false
     @State private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var broadcaster = Broadcaster.shared
+    @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
     @State private var isNameEditorVisible: Bool = false
     @State private var currentEditingWallpaper: UserWallpaper?
 
@@ -133,6 +134,15 @@ public struct UserWallpaperMgrViewContent: View {
 
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
     @Default(.appWallpaperID) private var appWallpaperID: String
+
+    private var viewRefreshHash: Int {
+        Set(
+            [
+                broadcaster.eventForUserWallpaperDidSave.hashValue,
+                folderMonitor.stateHash.hashValue,
+            ]
+        ).hashValue
+    }
 
     private var nameEditingBuffer: Binding<String> {
         .init {
@@ -196,7 +206,7 @@ extension UserWallpaperMgrViewContent {
                 }
             }
         }
-        .onChange(of: broadcaster.eventForUserWallpaperDidSave) {
+        .onChange(of: viewRefreshHash) {
             Task { @MainActor in
                 withAnimation {
                     userWallpapers = UserWallpaperFileHandler.getAllUserWallpapers()

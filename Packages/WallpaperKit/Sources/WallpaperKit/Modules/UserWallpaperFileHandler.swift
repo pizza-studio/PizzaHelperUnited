@@ -13,6 +13,8 @@ public enum UserWallpaperFileHandler {}
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension UserWallpaperFileHandler {
+    @MainActor public static let folderMonitor: FolderMonitor = .init(url: userWallpaperFolderURL)
+
     /// 如果已经迁移过的话，这个函式不会有任何作用。
     public static func migrateUserWallpapersFromUserDefaultsToFiles() {
         UserDefaults.baseSuite.removeObject(forKey: "backgrounds4LiveActivity")
