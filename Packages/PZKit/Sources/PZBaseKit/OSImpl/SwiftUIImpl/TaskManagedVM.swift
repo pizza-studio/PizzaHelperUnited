@@ -18,14 +18,14 @@ open class TaskManagedVM: ObservableObject {
 
     public enum State: String, Sendable, Hashable, Identifiable {
         case busy
-        case standBy
+        case standby
 
         // MARK: Public
 
         public var id: String { rawValue }
     }
 
-    public var taskState: State = .standBy
+    public var taskState: State = .standby
     public var currentError: Error?
     /// 这是能够用来干涉父 class 里面的 errorHanler 的唯一途径。
     public var assignableErrorHandlingTask: ((Error) -> Void) = { _ in }
@@ -39,19 +39,19 @@ open class TaskManagedVM: ObservableObject {
                     guard let this = self else { return }
                     await theTask.value
                     await MainActor.run {
-                        this.taskState = .standBy
+                        this.taskState = .standby
                     }
                 }
                 taskState = .busy
             } else {
-                taskState = .standBy
+                taskState = .standby
             }
         }
     }
 
     public func forceStopTheTask() {
         task?.cancel()
-        taskState = .standBy
+        taskState = .standby
     }
 
     /// 不要在子 class 内 override 这个方法，因为一点儿屌用也没有。
@@ -64,7 +64,7 @@ open class TaskManagedVM: ObservableObject {
     public func handleError(_ error: Error) {
         withAnimation {
             currentError = error
-            // taskState = .standBy
+            // taskState = .standby
         }
         assignableErrorHandlingTask(error)
         task?.cancel()
@@ -109,14 +109,14 @@ open class TaskManagedVM: ObservableObject {
                                 completionHandler?(retrieved)
                             }
                             this.currentError = nil
-                            this.taskState = .standBy // 此步骤必需。
+                            this.taskState = .standby // 此步骤必需。
                         }
                     }
                 } catch {
                     Task { @MainActor [weak self] in
                         guard let this = self else { return }
                         (errorHandler ?? this.handleError)(error) // 处理其他的错误。
-                        this.taskState = .standBy // 此步骤必需。
+                        this.taskState = .standby // 此步骤必需。
                     }
                 }
             }

@@ -94,10 +94,10 @@ extension RefugeeVM4iOS14 {
                 result.oldGachaEntries4GI = try CDGachaMOSputnik.shared.getAllGenshinDataEntriesVanilla()
                 result.oldProfiles4GI = try AccountMOSputnik.shared.allAccountDataForGenshin()
                 completion(.success(result))
-                self?.taskState = .standBy
+                self?.taskState = .standby
             } catch {
                 completion(.failure(error))
-                self?.taskState = .standBy
+                self?.taskState = .standby
             }
         }
     }
@@ -109,10 +109,10 @@ extension RefugeeVM4iOS14 {
                 intGacha = try CDGachaMOSputnik.shared.countAllDataEntries(for: .genshinImpact)
                 intProfile = try AccountMOSputnik.shared.countAllAccountData(for: .genshinImpact)
                 completion(.success((intGacha, intProfile)))
-                self?.taskState = .standBy
+                self?.taskState = .standby
             } catch {
                 completion(.failure(error))
-                self?.taskState = .standBy
+                self?.taskState = .standby
             }
         }
     }

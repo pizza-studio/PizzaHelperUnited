@@ -19,21 +19,21 @@ open class TaskManagedVM4OS21: ObservableObject {
 
     public enum State: String, Hashable, Identifiable {
         case busy
-        case standBy
+        case standby
 
         // MARK: Public
 
         public var id: String { rawValue }
     }
 
-    @Published public var taskState: State = .standBy
+    @Published public var taskState: State = .standby
     @Published public var currentError: Error?
     /// 这是能够用来干涉父 class 里面的 errorHanler 的唯一途径。
     public var assignableErrorHandlingTask: ((Error) -> Void) = { _ in }
 
     public func forceStopTheTask() {
         workItem?.cancel()
-        taskState = .standBy
+        taskState = .standby
     }
 
     public func handleError(_ error: Error) {
