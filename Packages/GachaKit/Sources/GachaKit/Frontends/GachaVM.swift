@@ -98,6 +98,7 @@ public final class GachaVM: TaskManagedVM {
             // OS24 (iOS 17, macOS 14) 无法时刻抓到 ModelContext.didSave，
             // 所以只能抓 NSManagedObjectContextDidSaveObjectIDs。但这样又会有紫色警告。
             // 算了不管了，忍到 2026 年夏天放弃 iOS 17。
+            // 警告：iOS 18 开始，严禁监听 `.NSManagedObjectContextDidSave`，否则必炸。
             NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
                 .sink(receiveValue: { _ in
                     self.didObserveChangesFromSwiftData(changesInvolveGPID: true)
