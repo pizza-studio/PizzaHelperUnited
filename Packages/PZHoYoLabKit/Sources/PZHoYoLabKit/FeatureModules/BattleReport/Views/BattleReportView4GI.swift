@@ -48,7 +48,6 @@ public struct BattleReportView4GI: BattleReportView {
         Form {
             if data4SA.hasData || (data4SO?.single.hasData ?? false) {
                 contents
-                    .frame(width: containerWidth)
                     .animation(.default, value: screenVM.mainColumnCanvasSizeObserved)
             } else {
                 blankView
@@ -94,8 +93,10 @@ public struct BattleReportView4GI: BattleReportView {
 
     @ViewBuilder var contents: some View {
         switch contentType {
-        case .spiralAbyss: formContents4SpiralAbyss
-        case .stygianOnslaught: formContents4StygianOnslaught
+        case .spiralAbyss:
+            formContents4SpiralAbyss
+        case .stygianOnslaught:
+            formContents4StygianOnslaught
         }
     }
 
@@ -162,8 +163,10 @@ extension BattleReportView4GI {
         } else {
             stats4SygianOnslaught
             floorList4StygianOnslaught(theData: data4SO?.single, isMultiplayer: false)
+                .frame(width: containerWidth)
             if let mpData = data4SO?.mp, mpData.hasData {
                 floorList4StygianOnslaught(theData: data4SO?.mp, isMultiplayer: true)
+                    .frame(width: containerWidth)
             }
         }
     }
@@ -400,6 +403,7 @@ extension BattleReportView4GI {
     @ViewBuilder private var formContents4SpiralAbyss: some View {
         stats4SpiralAbyss
         floorList4SpiralAbyss
+            .frame(width: containerWidth)
     }
 
     @ViewBuilder private var stats4SpiralAbyss: some View {
