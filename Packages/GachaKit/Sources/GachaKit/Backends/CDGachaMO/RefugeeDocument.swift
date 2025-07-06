@@ -32,7 +32,10 @@ public struct RefugeeDocument: FileDocument {
     // MARK: Lifecycle
 
     public init(configuration: ReadConfiguration) throws {
-        let srgfModel = try JSONDecoder().decode(RefugeeFile.self, from: configuration.file.regularFileContents!)
+        let srgfModel = try PropertyListDecoder().decode(
+            RefugeeFile.self,
+            from: configuration.file.regularFileContents ?? .init([])
+        )
         self.model = srgfModel
     }
 
@@ -42,23 +45,12 @@ public struct RefugeeDocument: FileDocument {
 
     // MARK: Public
 
-    public static var readableContentTypes: [UTType] { [.json] }
+    public static var readableContentTypes: [UTType] { [.propertyList] }
 
     public let model: RefugeeFile
 
-    public let dateFormatter: DateFormatter = {
-        let result = DateFormatter()
-        result.locale = .init(identifier: "en_US_POSIX")
-        result.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return result
-    }()
-
     public func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        encoder.dateEncodingStrategy = .formatted(dateFormatter)
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        let data = try encoder.encode(model)
+        let data = try PropertyListEncoder().encode(model)
         return FileWrapper(regularFileWithContents: data)
     }
 }
