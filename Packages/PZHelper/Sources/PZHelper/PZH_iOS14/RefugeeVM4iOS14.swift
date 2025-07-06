@@ -89,31 +89,27 @@ extension RefugeeVM4iOS14 {
 
 extension RefugeeVM4iOS14 {
     private func prepareDocument(completion: @escaping (Result<RefugeeFile?, Error>) -> Void) {
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {
             var result = RefugeeFile()
             do {
                 result.oldGachaEntries4GI = try CDGachaMOSputnik.shared.getAllGenshinDataEntriesVanilla()
                 result.oldProfiles4GI = try AccountMOSputnik.shared.allAccountDataForGenshin()
                 completion(.success(result))
-                self?.taskState = .standby
             } catch {
                 completion(.failure(error))
-                self?.taskState = .standby
             }
         }
     }
 
     private func countAllDataEntries(completion: @escaping (Result<(Int, Int)?, Error>) -> Void) {
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {
             var (intGacha, intProfile) = (0, 0)
             do {
                 intGacha = try CDGachaMOSputnik.shared.countAllDataEntries(for: .genshinImpact)
                 intProfile = try AccountMOSputnik.shared.countAllAccountData(for: .genshinImpact)
                 completion(.success((intGacha, intProfile)))
-                self?.taskState = .standby
             } catch {
                 completion(.failure(error))
-                self?.taskState = .standby
             }
         }
     }
