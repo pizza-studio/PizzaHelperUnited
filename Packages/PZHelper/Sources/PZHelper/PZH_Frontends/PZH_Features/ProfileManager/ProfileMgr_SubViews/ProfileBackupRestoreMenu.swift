@@ -58,7 +58,7 @@ struct ProfileBackupRestoreMenu<T: View>: View {
             coreContent
                 .fileImporter(
                     isPresented: $vm4ProfileExchange.isImporterVisible,
-                    allowedContentTypes: [.json]
+                    allowedContentTypes: [.json, .propertyList]
                 ) { result in
                     importCompletionHandler(result)
                 }
