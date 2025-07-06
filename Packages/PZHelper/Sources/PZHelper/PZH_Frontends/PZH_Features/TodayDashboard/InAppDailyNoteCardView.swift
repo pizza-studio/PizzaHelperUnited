@@ -89,8 +89,8 @@ struct InAppDailyNoteCardView: View {
 
     // MARK: Private
 
-    @StateObject private var theVM: DailyNoteViewModel
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var theVM: DailyNoteViewModel
+    @State private var broadcaster = Broadcaster.shared
 }
 
 // MARK: - DailyNoteCardErrorView
@@ -124,7 +124,7 @@ private struct DailyNoteCardErrorView: View {
 
     // MARK: Private
 
-    @StateObject private var rootNavVM = RootNavVM.shared
+    @State private var rootNavVM = RootNavVM.shared
 }
 
 private let dateFormatter: DateFormatter = {

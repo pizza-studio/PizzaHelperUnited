@@ -72,8 +72,8 @@ extension OfficialFeed {
 
         @Environment(\.scenePhase) private var scenePhase
         @Binding private var game: Pizza.SupportedGame?
-        @StateObject private var broadcaster = Broadcaster.shared
-        @StateObject private var theVM: OfficialFeedVM = .init()
+        @State private var broadcaster = Broadcaster.shared
+        @State private var theVM: OfficialFeedVM = .init()
         @State private var isFeedSheetShown: Bool = false
 
         private let peripheralViews: () -> TT

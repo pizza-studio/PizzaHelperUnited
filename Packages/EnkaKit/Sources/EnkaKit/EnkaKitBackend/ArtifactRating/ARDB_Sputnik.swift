@@ -14,7 +14,7 @@ import PZBaseKit
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension ArtifactRating {
     @Observable @MainActor
-    public final class ARSputnik: ObservableObject {
+    public final class ARSputnik {
         // MARK: Lifecycle
 
         private init() {

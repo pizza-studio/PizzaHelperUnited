@@ -91,8 +91,8 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 
     // MARK: Private
 
-    @StateObject private var vm4ProfileExchange = Coordinator()
-    @StateObject private var vm4ProfileMgmt: ProfileManagerVM = .shared
+    @State private var vm4ProfileExchange = Coordinator()
+    @State private var vm4ProfileMgmt: ProfileManagerVM = .shared
 
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
     private let extraItem: (() -> T)?
@@ -103,7 +103,7 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension ProfileBackupRestoreMenu {
     @Observable @MainActor
-    internal final class Coordinator: ObservableObject {
+    internal final class Coordinator {
         // MARK: Lifecycle
 
         public init() {}

@@ -431,7 +431,7 @@ public struct BattleReportView4HSR: BattleReportView {
     // MARK: Private
 
     @State private var contentType: TreasuresLightwardType = .forgottenHall
-    @StateObject private var screenVM: ScreenVM = .shared
+    @State private var screenVM: ScreenVM = .shared
 
     private var containerWidth: CGFloat {
         screenVM.mainColumnCanvasSizeObserved.width - 64

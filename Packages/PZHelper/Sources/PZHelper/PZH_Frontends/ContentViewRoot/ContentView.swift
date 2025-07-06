@@ -82,9 +82,9 @@ public struct ContentView: View {
     // MARK: Private
 
     @Environment(\.colorScheme) private var colorScheme
-    @StateObject private var rootNavVM = RootNavVM.shared
-    @StateObject private var broadcaster = Broadcaster.shared
-    @StateObject private var screenVM = ScreenVM.shared
+    @State private var rootNavVM = RootNavVM.shared
+    @State private var broadcaster = Broadcaster.shared
+    @State private var screenVM = ScreenVM.shared
     @State private var viewColumn: NavigationSplitViewColumn = .content
     @Binding private var rootPageNavBinding: AppRootPage?
 

@@ -204,7 +204,7 @@ public struct AvatarStatCollectionTabView: View {
 
     @State private var showTabViewIndex = false
     @Binding private var showingCharacterIdentifier: String
-    @StateObject private var screenVM: ScreenVM = .shared
+    @State private var screenVM: ScreenVM = .shared
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 

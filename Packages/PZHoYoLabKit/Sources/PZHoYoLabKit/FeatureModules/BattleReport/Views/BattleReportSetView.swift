@@ -78,7 +78,7 @@ public struct BattleReportSetView<Report: BattleReport>: View {
     // MARK: Private
 
     @State private var showPreviousSeason = false
-    @StateObject private var screenVM: ScreenVM = .shared
+    @State private var screenVM: ScreenVM = .shared
 
     private var hasPreviousSeasonContent: Bool { data.previous != nil }
 }

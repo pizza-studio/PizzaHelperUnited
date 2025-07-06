@@ -53,7 +53,7 @@ public struct LiveActivityWallpaperView: View {
 
     @Environment(\.colorScheme) private var colorScheme
 
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
 
     @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
 

@@ -11,7 +11,7 @@ import WidgetKit
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 @Observable @MainActor
-public final class Broadcaster: ObservableObject, Sendable {
+public final class Broadcaster {
     public static let shared = Broadcaster()
 
     public private(set) var eventForUpdatingLocalEnkaAvatarCache: [String: Date] = .init()

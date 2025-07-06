@@ -228,9 +228,13 @@ struct GetCookieQRCodeView: View {
                     }
                 }
             }
+            .onAppear {
+                viewModel.onAppear()
+            }
             .onDisappear {
                 // 确保在视图消失时取消所有任务
                 viewModel.cancelAllConfirmationTasks(resetState: true)
+                viewModel.onDisappear()
             }
         }
     }
@@ -240,8 +244,8 @@ struct GetCookieQRCodeView: View {
 
 // Credit: Bill Haku for the fix.
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
-@Observable
-final class GetCookieQRCodeViewModel: ObservableObject, @unchecked Sendable {
+@Observable @MainActor
+final class GetCookieQRCodeViewModel {
     // MARK: Lifecycle
 
     init() {
@@ -249,14 +253,19 @@ final class GetCookieQRCodeViewModel: ObservableObject, @unchecked Sendable {
         reCreateQRCode()
     }
 
-    deinit {
+    // MARK: Public
+
+    public func onAppear() {
+        taskId = .init()
+        reCreateQRCode()
+    }
+
+    public func onDisappear() {
         scanningConfirmationStatus = .idle
         if let pollingTaskId = pollingTaskId {
             HoYo.cancelQRCodePollingTask(taskId: pollingTaskId)
         }
     }
-
-    // MARK: Public
 
     public func reCreateQRCode() {
         taskId = .init()
@@ -287,7 +296,7 @@ final class GetCookieQRCodeViewModel: ObservableObject, @unchecked Sendable {
         }
     }
 
-    nonisolated(unsafe) static var shared: GetCookieQRCodeViewModel = .init()
+    static var shared: GetCookieQRCodeViewModel = .init()
 
     var qrCodeAndTicket: (qrCode: CGImage, ticket: String)?
     var taskId: UUID

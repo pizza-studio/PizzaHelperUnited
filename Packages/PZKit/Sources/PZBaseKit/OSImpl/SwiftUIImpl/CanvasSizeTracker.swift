@@ -38,7 +38,7 @@ private struct CanvasSizeTracker: ViewModifier {
 
     // MARK: Private
 
-    @StateObject private var sizeState: SizeState
+    @State private var sizeState: SizeState
 
     private let handler: (CGSize) -> Void
 
@@ -56,7 +56,7 @@ private struct CanvasSizeTracker: ViewModifier {
 /// This doesn't need to be @Observable,
 /// but we use ObservableObject to hinder it from being reinitialized again-and-again.
 @MainActor
-private class SizeState: ObservableObject {
+private class SizeState {
     // MARK: Lifecycle
 
     init(debounceDelay: TimeInterval) {

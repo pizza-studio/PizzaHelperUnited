@@ -84,8 +84,8 @@ public struct ContentView: View {
 
     // MARK: Private
 
-    @StateObject private var connectivityManager = AppleWatchSputnik.shared
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var connectivityManager = AppleWatchSputnik.shared
+    @State private var broadcaster = Broadcaster.shared
 
     @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
 
@@ -169,6 +169,6 @@ private struct DetailNavigator: View {
 
     // MARK: Private
 
-    @StateObject private var dailyNoteViewModel: DailyNoteViewModel
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var dailyNoteViewModel: DailyNoteViewModel
+    @State private var broadcaster = Broadcaster.shared
 }

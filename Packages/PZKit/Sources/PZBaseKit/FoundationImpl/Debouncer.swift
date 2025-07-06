@@ -6,9 +6,7 @@ import Foundation
 
 // MARK: - Debouncer
 
-/// This doesn't need to be @Observable,
-/// but we use ObservableObject to hinder it from being reinitialized again-and-again.
-public actor Debouncer: ObservableObject {
+public actor Debouncer {
     // MARK: Lifecycle
 
     init(delay: TimeInterval) {

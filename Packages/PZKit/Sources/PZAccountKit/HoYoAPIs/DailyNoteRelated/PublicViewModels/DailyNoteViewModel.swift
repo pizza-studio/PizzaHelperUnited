@@ -13,7 +13,7 @@ import SwiftUI
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 @Observable @MainActor
-public final class DailyNoteViewModel: ObservableObject, Sendable {
+public final class DailyNoteViewModel {
     // MARK: Lifecycle
 
     /// Initializes a new instance of the view model.

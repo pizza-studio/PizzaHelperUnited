@@ -19,7 +19,7 @@ extension Notification: @unchecked @retroactive Sendable {}
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 @Observable
 @MainActor
-public final class ScreenVM: ObservableObject {
+public final class ScreenVM {
     // MARK: Lifecycle
 
     public init() {
@@ -269,8 +269,8 @@ extension ScreenVM {
 
         // MARK: Private
 
-        @StateObject private var screenVM = ScreenVM.shared
-        @StateObject private var debouncer: Debouncer
+        @State private var screenVM = ScreenVM.shared
+        @State private var debouncer: Debouncer
         @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
         private func pushTrackedPropertiesToScreenVM() async {
