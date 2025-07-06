@@ -36,10 +36,10 @@ open class TaskManagedVM: ObservableObject {
             if let theTask = task {
                 stateGuard?.cancel()
                 stateGuard = Task { [weak self] in
-                    guard let self else { return }
+                    guard let this = self else { return }
                     await theTask.value
                     await MainActor.run {
-                        self.taskState = .standBy
+                        this.taskState = .standBy
                     }
                 }
                 taskState = .busy
@@ -103,20 +103,20 @@ open class TaskManagedVM: ObservableObject {
                 do {
                     let retrieved = try await givenTask()
                     Task { @MainActor [weak self] in
-                        guard let self else { return }
+                        guard let this = self else { return }
                         withAnimation {
                             if let retrieved {
                                 completionHandler?(retrieved)
                             }
-                            self.currentError = nil
-                            // taskState = .standBy
+                            this.currentError = nil
+                            this.taskState = .standBy // 此步骤必需。
                         }
                     }
                 } catch {
                     Task { @MainActor [weak self] in
                         guard let this = self else { return }
                         (errorHandler ?? this.handleError)(error) // 处理其他的错误。
-                        // taskState = .standBy
+                        this.taskState = .standBy // 此步骤必需。
                     }
                 }
             }
