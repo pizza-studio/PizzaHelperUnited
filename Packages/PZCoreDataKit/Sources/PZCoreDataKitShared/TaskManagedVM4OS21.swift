@@ -38,12 +38,12 @@ open class TaskManagedVM4OS21: ObservableObject {
 
     public func handleError(_ error: Error) {
         DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
+            guard let this = self else { return }
             withAnimation {
-                self.currentError = error
+                this.currentError = error
             }
-            assignableErrorHandlingTask(error)
-            forceStopTheTask()
+            this.assignableErrorHandlingTask(error)
+            this.forceStopTheTask()
         }
     }
 
@@ -70,10 +70,10 @@ open class TaskManagedVM4OS21: ObservableObject {
         }
 
         DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
+            guard let this = self else { return }
             withAnimation {
-                self.currentError = nil
-                self.taskState = .busy
+                this.currentError = nil
+                this.taskState = .busy
                 animatedPreparationTask?()
             }
         }
@@ -84,19 +84,21 @@ open class TaskManagedVM4OS21: ObservableObject {
         }
 
         let item = DispatchWorkItem { [weak self] in
-            guard let self else { return }
+            guard self != nil else { return }
             givenTask { [weak self] result in
-                guard let self else { return }
+                guard self != nil else { return }
                 DispatchQueue.main.async { [weak self] in
-                    guard let self else { return }
+                    guard let this = self else { return }
                     switch result {
                     case let .success(value):
                         withAnimation {
                             completionHandler?(value)
-                            self.currentError = nil
+                            this.currentError = nil
+                            this.taskState = .standby
                         }
                     case let .failure(error):
-                        (errorHandler ?? handleError)(error)
+                        (errorHandler ?? this.handleError)(error)
+                        this.taskState = .standby
                     }
                     // 注意：taskState 状态恢复交给调用者自己处理
                 }
