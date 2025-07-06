@@ -5,6 +5,7 @@
 import AlertToast
 import Defaults
 import EnkaKit
+import GachaKit
 import Observation
 import PZAccountKit
 import PZBaseKit
@@ -395,9 +396,24 @@ struct ProfileManagerPageContent: View {
                         alertToastEventStatus.isFailureSituationTriggered.toggle()
                         return
                     }
+                    var decodedProfileSet: Set<PZProfileSendable> = []
                     let data: Data = try Data(contentsOf: url)
-                    let decoded = try JSONDecoder().decode([PZProfileSendable].self, from: data)
-                    let decodedProfileSet = Set(decoded)
+                    do {
+                        // 此时可以假设要处理的档案是披萨难民资料包，里面只有原神的本机帐号资料。
+                        let decoded = try PropertyListDecoder().decode(RefugeeFile.self, from: data)
+                        for oldAccountMO in decoded.oldProfiles4GI {
+                            let newProfileRef = PZProfileRef.makeInheritedInstance(
+                                game: .genshinImpact, uid: oldAccountMO.uid, configuration: oldAccountMO
+                            )
+                            guard let newProfileRef else { continue }
+                            decodedProfileSet.insert(newProfileRef.asSendable)
+                        }
+                    } catch {
+                        // 难民资料包的解码出错可以忽略不管，因为用户不该手动修改难民资料包的内容。
+                        // 接下来处理正常的本地帐号资料备份交换包。
+                        let decoded = try JSONDecoder().decode([PZProfileSendable].self, from: data)
+                        decodedProfileSet = Set(decoded)
+                    }
                     let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                     do {
                         if await !assertion.state.isReleased {
