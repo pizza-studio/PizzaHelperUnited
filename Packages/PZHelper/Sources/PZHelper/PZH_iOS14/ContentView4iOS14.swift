@@ -18,6 +18,11 @@ public struct ContentView4iOS14: View {
         let msgPack = fileSaveActionResultMessagePack
         NavigationView {
             List {
+                if let theError = theVM.currentError {
+                    Section {
+                        Text(verbatim: "\(theError) ||| \(theError.localizedDescription)")
+                    }
+                }
                 Section {
                     if theVM.localProfileEntriesCount > 0 {
                         HStack {
