@@ -7935,73 +7935,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fehler beim Exportieren der Migrationsdatendatei."
+            "value" : "Fehler beim Exportieren der alten Pizza Refugee Datendatei."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Failed from dumping the migration data file."
+            "value" : "Failed from dumping the Old Pizza Refugee Data file."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Error al exportar el archivo de datos de migración."
+            "value" : "Error al exportar el archivo de datos de Old Pizza Refugee."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nabigo sa pag-export ng migration data file."
+            "value" : "Nabigo sa pag-export ng Old Pizza Refugee Data file."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Échec de l’exportation du fichier de données de migration."
+            "value" : "Échec de l’exportation du fichier de données Old Pizza Refugee."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Errore durante l’esportazione del file dati di migrazione."
+            "value" : "Errore durante l’esportazione del file dati Old Pizza Refugee."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "移行データファイルのエクスポートに失敗しました。"
+            "value" : "旧ピザ難民資料のエクスポートに失敗しました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "마이그레이션 데이터 파일 내보내기에 실패했습니다."
+            "value" : "Old Pizza Refugee 데이터 파일 내보내기에 실패했습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не удалось экспортировать файл данных миграции."
+            "value" : "Не удалось экспортировать файл данных Old Pizza Refugee."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Không thể xuất tệp dữ liệu di chuyển."
+            "value" : "Không thể xuất tệp dữ liệu Old Pizza Refugee."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "迁移数据文件导出失败。"
+            "value" : "旧披萨难民资料导出失败。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "遷移資料檔案匯出失敗。"
+            "value" : "舊披薩難民資料匯出失敗。"
           }
         }
       }
@@ -8012,73 +8012,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Migrationsdatendatei erfolgreich exportiert nach:"
+            "value" : "Alte Pizza Refugee Datendatei erfolgreich exportiert nach:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully dumped the migration data file to:"
+            "value" : "Successfully dumped the Old Pizza Refugee Data file to:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Archivo de datos de migración exportado correctamente a:"
+            "value" : "Archivo de datos de Old Pizza Refugee exportado correctamente a:"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matagumpay na na-export ang migration data file sa:"
+            "value" : "Matagumpay na na-export ang Old Pizza Refugee Data file sa:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fichier de données de migration exporté avec succès vers :"
+            "value" : "Fichier de données Old Pizza Refugee exporté avec succès vers :"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "File dati di migrazione esportato correttamente in:"
+            "value" : "File dati Old Pizza Refugee esportato correttamente in:"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "移行データファイルを正常にエクスポートしました:"
+            "value" : "旧ピザ難民資料を正常にエクスポートしました:"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "마이그레이션 데이터 파일을 다음 위치에 성공적으로 내보냈습니다:"
+            "value" : "Old Pizza Refugee 데이터 파일을 다음 위치에 성공적으로 내보냈습니다:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Файл данных миграции успешно экспортирован в:"
+            "value" : "Файл данных Old Pizza Refugee успешно экспортирован в:"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đã xuất thành công tệp dữ liệu di chuyển tới:"
+            "value" : "Đã xuất thành công tệp dữ liệu Old Pizza Refugee tới:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "迁移数据文件已成功导出至: "
+            "value" : "旧披萨难民资料已成功导出至: "
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "遷移資料檔案已成功匯出至: "
+            "value" : "舊披薩難民資料已成功匯出至: "
           }
         }
       }
@@ -8089,73 +8089,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Migrationsdatendatei wurde erfolgreich exportiert."
+            "value" : "Die alte Pizza Refugee Datendatei wurde erfolgreich exportiert."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Successfully dumped the migration data file."
+            "value" : "Successfully dumped the Old Pizza Refugee Data file."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El archivo de datos de migración se ha exportado correctamente."
+            "value" : "El archivo de datos de Old Pizza Refugee se ha exportado correctamente."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matagumpay na na-export ang migration data file."
+            "value" : "Matagumpay na na-export ang Old Pizza Refugee Data file."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le fichier de données de migration a été exporté avec succès."
+            "value" : "Le fichier de données Old Pizza Refugee a été exporté avec succès."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "File dati di migrazione esportato con successo."
+            "value" : "File dati Old Pizza Refugee esportato con successo."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "移行データファイルは正常にエクスポートされました。"
+            "value" : "旧ピザ難民資料は正常にエクスポートされました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "마이그레이션 데이터 파일을 성공적으로 내보냈습니다."
+            "value" : "Old Pizza Refugee 데이터 파일을 성공적으로 내보냈습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Файл данных миграции успешно экспортирован."
+            "value" : "Файл данных Old Pizza Refugee успешно экспортирован."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tệp dữ liệu di chuyển đã được xuất thành công."
+            "value" : "Tệp dữ liệu Old Pizza Refugee đã được xuất thành công."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "迁移数据文件已成功导出。"
+            "value" : "旧披萨难民资料已成功导出。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "遷移資料檔案已成功匯出。"
+            "value" : "舊披薩難民資料已成功匯出。"
           }
         }
       }
