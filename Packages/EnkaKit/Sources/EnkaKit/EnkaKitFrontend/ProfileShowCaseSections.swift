@@ -81,7 +81,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
         Section {
             Group {
                 switch delegate.taskState {
-                case .standBy:
+                case .standby:
                     if let result = guardedEnkaProfile {
                         ShowCaseListView(
                             profile: result,
@@ -192,7 +192,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
     }
 
     func triggerUpdateTask() {
-        if delegate.taskState == .standBy {
+        if delegate.taskState == .standby {
             delegate.update()
         }
     }
