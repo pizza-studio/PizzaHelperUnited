@@ -9,8 +9,6 @@ import Foundation
 /// SwiftData CloudKit 喜欢把 String-based Enum 保存成 NSKeyedArchiver 处理过的 Plist。
 /// 这里准备一套 Codec 方便 CoreData 针对 SwiftData CloudKit 处理数据。
 public enum SDStringEnumCodec {
-    // MARK: Public
-
     /// 从 CloudKit NSData（NSKeyedArchiver Plist）解码出 rawValue 字符串
     public static func decodeRawValue(from data: Data) throws -> String {
         let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
@@ -37,11 +35,9 @@ public enum SDStringEnumCodec {
         return rawValue
     }
 
-    // MARK: Internal
-
     // 把 rawValue 字符串编码成 CloudKit 需要的 NSData（NSKeyedArchiver Plist 格式）
     // 编码 rawValue 字符串为 CloudKit 兼容 Data（NSKnownKeysDictionary1 格式）
-    static func encodeRawValue(_ rawValue: String, forKey key: String) throws -> Data {
+    public static func encodeRawValue(_ rawValue: String, forKey key: String) throws -> Data {
         // 必须用 NSDictionary，否则结构和 CloudKit 不兼容
         let dict = NSDictionary(object: rawValue, forKey: key as NSString)
         let data = try NSKeyedArchiver.archivedData(withRootObject: dict, requiringSecureCoding: false)

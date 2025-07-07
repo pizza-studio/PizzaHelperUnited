@@ -18,6 +18,10 @@ let package = Package(
             targets: ["PZCoreDataKit4GachaEntries"]
         ),
         .library(
+            name: "PZProfileCDMOBackports",
+            targets: ["PZProfileCDMOBackports"]
+        ),
+        .library(
             name: "PZCoreDataKitShared",
             targets: ["PZCoreDataKitShared"]
         ),
@@ -48,6 +52,17 @@ let package = Package(
             dependencies: [
                 "PZCoreDataKitShared",
                 .product(name: "Sworm", package: "Sworm"),
+            ],
+            resources: [
+                .process("Resources/"),
+            ]
+        ),
+        .target(
+            name: "PZProfileCDMOBackports",
+            dependencies: [
+                "PZCoreDataKitShared",
+                .product(name: "Sworm", package: "Sworm"),
+                .product(name: "Defaults", package: "Defaults"),
             ],
             resources: [
                 .process("Resources/"),
