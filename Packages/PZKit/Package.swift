@@ -69,6 +69,10 @@ let package = Package(
                     package: "PZCoreDataKit"
                 )
                 Target.Dependency.product(
+                    name: "PZProfileCDMOBackports",
+                    package: "PZCoreDataKit"
+                )
+                Target.Dependency.product(
                     name: "Alamofire",
                     package: "Alamofire"
                 )
