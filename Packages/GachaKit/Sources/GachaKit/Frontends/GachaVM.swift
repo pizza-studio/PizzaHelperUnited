@@ -107,11 +107,11 @@ public final class GachaVM: TaskManagedVM {
                 let changedEntityNames = NSManagedObjectID.parseObjectNames(
                     notificationResult: notification.userInfo
                 )
+                guard !changedEntityNames.isEmpty else { return }
+                let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
+                let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
+                guard changesInvolveGachaEntry else { return }
                 Task { @MainActor in
-                    guard !changedEntityNames.isEmpty else { return }
-                    let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
-                    let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
-                    guard changesInvolveGPID, changesInvolveGachaEntry else { return }
                     guard !self.isDoingBatchInsertionAction else { return }
                     self.didObserveChangesFromSwiftData(changesInvolveGPID: changesInvolveGPID)
                 }
@@ -125,11 +125,11 @@ public final class GachaVM: TaskManagedVM {
                 let changedEntityNames = PersistentIdentifier.parseObjectNames(
                     notificationResult: notification.userInfo
                 )
+                guard !changedEntityNames.isEmpty else { return }
+                let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
+                let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
+                guard changesInvolveGachaEntry else { return }
                 Task { @MainActor in
-                    guard !changedEntityNames.isEmpty else { return }
-                    let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
-                    let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
-                    guard changesInvolveGPID, changesInvolveGachaEntry else { return }
                     guard !self.isDoingBatchInsertionAction else { return }
                     self.didObserveChangesFromSwiftData(changesInvolveGPID: changesInvolveGPID)
                 }

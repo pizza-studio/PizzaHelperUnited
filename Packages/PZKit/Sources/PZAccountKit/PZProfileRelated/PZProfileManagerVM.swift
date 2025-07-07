@@ -203,9 +203,9 @@ public final class ProfileManagerVM: TaskManagedVM {
                 let changedEntityNames = NSManagedObjectID.parseObjectNames(
                     notificationResult: notification.userInfo
                 )
+                guard !changedEntityNames.isEmpty else { return }
+                guard changedEntityNames.contains("PZProfileMO") else { return }
                 Task { @MainActor in
-                    guard !changedEntityNames.isEmpty else { return }
-                    guard changedEntityNames.contains("PZProfileMO") else { return }
                     self.didObserveChangesFromSwiftData()
                 }
             }
@@ -218,9 +218,9 @@ public final class ProfileManagerVM: TaskManagedVM {
                 let changedEntityNames = PersistentIdentifier.parseObjectNames(
                     notificationResult: notification.userInfo
                 )
+                guard !changedEntityNames.isEmpty else { return }
+                guard changedEntityNames.contains("PZProfileMO") else { return }
                 Task { @MainActor in
-                    guard !changedEntityNames.isEmpty else { return }
-                    guard changedEntityNames.contains("PZProfileMO") else { return }
                     self.didObserveChangesFromSwiftData()
                 }
             }
