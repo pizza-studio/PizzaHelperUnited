@@ -100,7 +100,6 @@ open class TaskManagedVM4OS21: ObservableObject {
                         (errorHandler ?? this.handleError)(error)
                         this.taskState = .standby
                     }
-                    // 注意：taskState 状态恢复交给调用者自己处理
                 }
             }
         }
