@@ -8,7 +8,6 @@ import PZBaseKit
 // MARK: - URLRequestConfig
 
 /// Abstract class storing salt, version, etc for API.
-@available(iOS 15.0, macCatalyst 15.0, *)
 public enum URLRequestConfig {
     public static func getUserAgent(region: HoYo.AccountRegion) -> String {
         """
@@ -151,7 +150,6 @@ public enum URLRequestConfig {
     }
 }
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension URLRequestConfig {
     public static func writeXRPCChallengeHeaders4DailyNote(
         to target: inout [String: String],
