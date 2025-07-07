@@ -18,7 +18,7 @@ extension CDGachaMOSputnik {
     }
 
     public func getAllDataEntriesAsSendable(
-        for game: PZCoreDataKit.StoredGame,
+        for game: PZCoreDataKit.CDStoredGame,
         fixItemIDs: Bool = true
     ) throws
         -> [PZGachaEntrySendable] {
@@ -29,7 +29,7 @@ extension CDGachaMOSputnik {
     }
 
     public func getAllDataEntries(
-        for game: PZCoreDataKit.StoredGame,
+        for game: PZCoreDataKit.CDStoredGame,
         fixItemIDs: Bool = true
     ) throws
         -> [CDGachaMOProtocol] {
@@ -66,7 +66,7 @@ public protocol GachaSendableConvertible {
 extension CDGachaMO4GI: GachaSendableConvertible {
     public var asPZGachaEntrySendable: PZGachaEntrySendable {
         PZGachaEntrySendable.init { newEntry in
-            newEntry.game = PZCoreDataKit.StoredGame.genshinImpact.rawValue
+            newEntry.game = PZCoreDataKit.CDStoredGame.genshinImpact.rawValue
             newEntry.uid = uid
             newEntry.count = 1.description
             newEntry.gachaType = gachaType.description
@@ -89,7 +89,7 @@ extension CDGachaMO4GI: GachaSendableConvertible {
 extension CDGachaMO4HSR: GachaSendableConvertible {
     public var asPZGachaEntrySendable: PZGachaEntrySendable {
         PZGachaEntrySendable.init { newEntry in
-            newEntry.game = PZCoreDataKit.StoredGame.starRail.rawValue
+            newEntry.game = PZCoreDataKit.CDStoredGame.starRail.rawValue
             newEntry.uid = uid
             newEntry.count = count.description
             newEntry.gachaID = gachaID.description

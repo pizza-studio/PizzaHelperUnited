@@ -23,7 +23,7 @@ public protocol CDGachaMOProtocol: Sendable {
     static var modelName: String { get }
     static var containerName: String { get }
     static var cloudContainerID: String { get }
-    static var game: PZCoreDataKit.StoredGame { get }
+    static var game: PZCoreDataKit.CDStoredGame { get }
     static var alternativeSQLiteDBURL: URL? { get }
 }
 
@@ -32,7 +32,7 @@ extension CDGachaMOProtocol {
     public var entityName: String { Self.entityName }
     public var modelName: String { Self.modelName }
     public var containerName: String { Self.containerName }
-    public var game: PZCoreDataKit.StoredGame { Self.game }
+    public var game: PZCoreDataKit.CDStoredGame { Self.game }
     public var cloudContainerID: String { Self.cloudContainerID }
 
     public static var primarySQLiteDBURL: URL? {
@@ -133,7 +133,7 @@ public struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol, Codable
         .init(\.uid, "uid"),
     ]
 
-    public static let game: PZCoreDataKit.StoredGame = .genshinImpact
+    public static let game: PZCoreDataKit.CDStoredGame = .genshinImpact
 
     public static let alternativeSQLiteDBURL: URL? = {
         // 下述命令等价于判断「appGroupID == "group.GenshinPizzaHelper"」。
@@ -205,7 +205,7 @@ public struct CDGachaMO4HSR: ManagedObjectConvertible, CDGachaMOProtocol, Codabl
         .init(\.uid, "uid"),
     ]
 
-    public static let game: PZCoreDataKit.StoredGame = .starRail
+    public static let game: PZCoreDataKit.CDStoredGame = .starRail
 
     /// 安全起见，穹披助手的资料只能云继承，因为穹披助手将两个 CoreDataMO 写到一个 Container 里面了。这样处理起来非常棘手。
     /// 新披萨助手只是原神披萨助手的原位升级、与穹披助手仍旧彼此独立，这里弄本地继承的话反而可能会破坏穹披助手的本地资料。

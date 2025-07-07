@@ -77,7 +77,7 @@ public struct CDGachaMODebugView: View {
 
     // MARK: Internal
 
-    static let oldGachaGames: [PZCoreDataKit.StoredGame] = [.genshinImpact, .starRail]
+    static let oldGachaGames: [PZCoreDataKit.CDStoredGame] = [.genshinImpact, .starRail]
 
     @State var delegate = CDGachaMODebugVM()
 }
@@ -91,7 +91,7 @@ public struct CDGachaMODebugView: View {
 extension CDGachaMODebugView {
     @Observable
     final class CDGachaMODebugVM: TaskManagedVM {
-        var game: PZCoreDataKit.StoredGame = .genshinImpact
+        var game: PZCoreDataKit.CDStoredGame = .genshinImpact
         var managedObjs: [any (CDGachaMOProtocol & GachaSendableConvertible)] = []
 
         func loadData() {

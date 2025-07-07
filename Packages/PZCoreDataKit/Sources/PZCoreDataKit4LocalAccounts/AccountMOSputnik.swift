@@ -32,7 +32,7 @@ public final class AccountMOSputnik {
         any AccountMOProtocol
     )? {
         var result: [AccountMOProtocol] = []
-        try PZCoreDataKit.StoredGame.allCases.forEach { game in
+        try PZCoreDataKit.CDStoredGame.allCases.forEach { game in
             try theDB(for: game)?.perform { ctx in
                 switch game {
                 case .genshinImpact:
@@ -66,7 +66,7 @@ public final class AccountMOSputnik {
     }
 
     public func allAccountData(
-        for game: PZCoreDataKit.StoredGame
+        for game: PZCoreDataKit.CDStoredGame
     ) throws
         -> [AccountMOProtocol] {
         try theDB(for: game)?.perform { ctx in
@@ -83,7 +83,7 @@ public final class AccountMOSputnik {
         } ?? []
     }
 
-    public func countAllAccountData(for game: PZCoreDataKit.StoredGame) throws -> Int {
+    public func countAllAccountData(for game: PZCoreDataKit.CDStoredGame) throws -> Int {
         try theDB(for: game)?.perform { ctx in
             switch game {
             case .genshinImpact: try ctx.count(of: AccountMO4GI.all)
@@ -98,7 +98,7 @@ public final class AccountMOSputnik {
 
     // MARK: Internal
 
-    func theDB(for game: PZCoreDataKit.StoredGame) -> PersistentContainer? {
+    func theDB(for game: PZCoreDataKit.CDStoredGame) -> PersistentContainer? {
         switch game {
         case .genshinImpact: db4GI
         case .starRail: db4HSR
