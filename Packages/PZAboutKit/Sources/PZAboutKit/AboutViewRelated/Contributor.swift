@@ -15,7 +15,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
     case xinzoruo
     case koni
     case yulijushi
-    case pan93412
+    case panbystar
     case taotao
     case art34222
     case ngo
@@ -44,7 +44,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .shikisuen: "avatar.shikisuen"
         case .art34222: "avatar.art34222"
         case .yulijushi: "avatar.jushi"
-        case .pan93412: "avatar.pan93412"
+        case .panbystar: "avatar.panbystar"
         case .koni: "avatar.koni"
         case .ngo: "avatar.ngo"
         case .qiFrench: "avatar.qi"
@@ -61,7 +61,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .shikisuen: "aboutKit.contributors.name.shikisuen"
         case .art34222: "aboutKit.contributors.name.art34222"
         case .yulijushi: "aboutKit.contributors.name.yulijushi"
-        case .pan93412: "aboutKit.contributors.name.pan93412"
+        case .panbystar: "aboutKit.contributors.name.panbystar"
         case .koni: "aboutKit.contributors.name.koni"
         case .ngo: "aboutKit.contributors.name.ngo"
         case .qiFrench: "aboutKit.contributors.name.qi"
@@ -96,7 +96,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
             LinkType.github(userID: "ShikiSuen")
             LinkType.blueSky(id: "shikisuen")
         case .art34222: nil
-        case .pan93412:
+        case .panbystar:
             LinkType.github(userID: "pan93412")
         case .yulijushi:
             LinkType.qqPersonal(id: "2251435011")
@@ -160,7 +160,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
         case .lava: "zh-Hans (fixes)"
         case .hakubill: "zh-Hans (fixes)"
         case .escartem: "fr (fixes)"
-        case .pan93412: "[GPT] fil, fr, de, it, ko-KR, ru, es, vi"
+        case .panbystar: "[GPT] fil, fr, de, it, ko-KR, ru, es, vi"
         default: nil
         }
     }
