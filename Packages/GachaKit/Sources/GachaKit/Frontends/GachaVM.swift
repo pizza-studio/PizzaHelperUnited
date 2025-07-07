@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
+import CoreData
 import CoreXLSX
 import Defaults
 import EnkaKit
@@ -81,7 +81,7 @@ public final class GachaVM: TaskManagedVM {
 
     // MARK: Private
 
-    @ObservationIgnored nonisolated(unsafe) private var cancellables: [AnyCancellable] = []
+    private var subscribed: Bool = false
 
     private static func defaultPoolType(for game: Pizza.SupportedGame?) -> GachaPoolExpressible? {
         switch game {
@@ -93,31 +93,47 @@ public final class GachaVM: TaskManagedVM {
     }
 
     private func configurePublisherObservations() {
+        guard !subscribed else { return }
+        defer { subscribed = true }
         switch OS.isOS25OrAbove {
         case false:
             // OS24 (iOS 17, macOS 14) 无法时刻抓到 ModelContext.didSave，
-            // 所以只能抓 NSManagedObjectContextDidSaveObjectIDs。但这样又会有紫色警告。
-            // 算了不管了，忍到 2026 年夏天放弃 iOS 17。
-            // 警告：iOS 18 开始，严禁监听 `.NSManagedObjectContextDidSave`，否则必炸。
-            NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
-                .sink(receiveValue: { _ in
-                    self.didObserveChangesFromSwiftData(changesInvolveGPID: true)
-                })
-                .store(in: &cancellables)
-        case true:
-            NotificationCenter.default.publisher(for: ModelContext.didSave)
-                .sink(receiveValue: { notification in
-                    let changedEntityNames = PersistentIdentifier.parseObjectNames(
-                        notificationResult: notification.userInfo
-                    )
+            // 所以只能抓 NSManagedObjectContextDidSaveObjectIDs。
+            NotificationCenter.default.addObserver(
+                forName: .NSManagedObjectContextDidSaveObjectIDs,
+                object: nil,
+                queue: nil // 不指定队列，依赖 actor 隔离
+            ) { notification in // Singleton 不需要 weak self。
+                let changedEntityNames = NSManagedObjectID.parseObjectNames(
+                    notificationResult: notification.userInfo
+                )
+                Task { @MainActor in
                     guard !changedEntityNames.isEmpty else { return }
                     let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
                     let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
                     guard changesInvolveGPID, changesInvolveGachaEntry else { return }
                     guard !self.isDoingBatchInsertionAction else { return }
                     self.didObserveChangesFromSwiftData(changesInvolveGPID: changesInvolveGPID)
-                })
-                .store(in: &cancellables)
+                }
+            }
+        case true:
+            NotificationCenter.default.addObserver(
+                forName: ModelContext.didSave,
+                object: nil,
+                queue: nil // 不指定队列，依赖 actor 隔离
+            ) { notification in // Singleton 不需要 weak self。
+                let changedEntityNames = PersistentIdentifier.parseObjectNames(
+                    notificationResult: notification.userInfo
+                )
+                Task { @MainActor in
+                    guard !changedEntityNames.isEmpty else { return }
+                    let changesInvolveGPID = changedEntityNames.contains("PZGachaProfileMO")
+                    let changesInvolveGachaEntry = changedEntityNames.contains("PZGachaEntryMO")
+                    guard changesInvolveGPID, changesInvolveGachaEntry else { return }
+                    guard !self.isDoingBatchInsertionAction else { return }
+                    self.didObserveChangesFromSwiftData(changesInvolveGPID: changesInvolveGPID)
+                }
+            }
         }
     }
 
