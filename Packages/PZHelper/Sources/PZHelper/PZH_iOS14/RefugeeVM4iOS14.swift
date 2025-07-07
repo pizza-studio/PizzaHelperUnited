@@ -57,6 +57,9 @@ public final class RefugeeVM4iOS14: TaskManagedVM4OS21 {
                 notificationResult: notification.userInfo
             )
             guard !changedEntityNames.isEmpty else { return }
+            let hasAccountMO4GI = changedEntityNames.contains("AccountConfiguration")
+            let hasOldGachaLog4GI = changedEntityNames.contains("GachaItemMO")
+            guard hasAccountMO4GI || hasOldGachaLog4GI else { return }
             Task { @MainActor in
                 self.startCountingDataEntriesTask(forced: false)
             }
