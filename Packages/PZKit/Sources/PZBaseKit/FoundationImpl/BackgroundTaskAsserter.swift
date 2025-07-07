@@ -23,7 +23,7 @@ import Foundation
 /// networking (r. 109839489). This implementation avoids blocking a Dispatch
 /// worker thread by using Swift concurrency, improving efficiency compared to
 /// the original semaphore-based approach.
-public final actor BackgroundTaskAsserter {
+public actor BackgroundTaskAsserter {
     // MARK: Lifecycle
 
     /// Creates an assertion with the given name.
