@@ -8,9 +8,7 @@ import PZBaseKit
 // MARK: - PZProfileRef
 
 /// PZProfileMO 不适合拿来滥用成在外部使用的 Reference Type，所以单独构建一个。
-@available(iOS 17.0, macCatalyst 17.0, *)
-@Observable
-public final class PZProfileRef: Identifiable, PZProfileRefProtocol, ObservableObject {
+public final class PZProfileRef: ObservableObject, Identifiable, PZProfileRefProtocol {
     // MARK: Lifecycle
 
     required public init(
@@ -43,24 +41,24 @@ public final class PZProfileRef: Identifiable, PZProfileRefProtocol, ObservableO
 
     // MARK: Public
 
-    public var uid: String = "114514810"
-    public var uuid: UUID = .init()
-    public var allowNotification: Bool = true
-    public var cookie: String = ""
-    public var deviceFingerPrint: String = ""
-    public var name: String = ""
-    public var priority: Int = 0
-    public var serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue
-    public var sTokenV2: String? = ""
-    public var deviceID: String = UUID().uuidString // For cross-device purposes.
+    @Published public var uid: String = "114514810"
+    @Published public var uuid: UUID = .init()
+    @Published public var allowNotification: Bool = true
+    @Published public var cookie: String = ""
+    @Published public var deviceFingerPrint: String = ""
+    @Published public var name: String = ""
+    @Published public var priority: Int = 0
+    @Published public var serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue
+    @Published public var sTokenV2: String? = ""
+    @Published public var deviceID: String = UUID().uuidString // For cross-device purposes.
 
-    public var server: HoYo.Server = .celestia(.genshinImpact) {
+    @Published public var server: HoYo.Server = .celestia(.genshinImpact) {
         didSet {
             serverRawValue = server.rawValue
         }
     }
 
-    public var game: Pizza.SupportedGame = .genshinImpact {
+    @Published public var game: Pizza.SupportedGame = .genshinImpact {
         didSet {
             server.changeGame(to: game)
             serverRawValue = server.rawValue
@@ -72,7 +70,6 @@ public final class PZProfileRef: Identifiable, PZProfileRefProtocol, ObservableO
 
 // MARK: Hashable, Equatable
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileRef: Hashable, Equatable {
     public func hash(into hasher: inout Hasher) {
         asSendable.hash(into: &hasher)
@@ -83,7 +80,6 @@ extension PZProfileRef: Hashable, Equatable {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileRef {
     /// 此处得重复一遍该 Protocol 方法，不然就只能针对 var 变数使用该函式了。
     public func inherit(from target: some ProfileProtocol) {

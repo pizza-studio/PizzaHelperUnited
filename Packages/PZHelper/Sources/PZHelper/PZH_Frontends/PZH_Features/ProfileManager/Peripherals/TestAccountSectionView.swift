@@ -10,7 +10,7 @@ import SwiftUI
 struct TestAccountSectionView: View {
     // MARK: Internal
 
-    @State var profile: PZProfileRef
+    @StateObject var profile: PZProfileRef
 
     var body: some View {
         Section {

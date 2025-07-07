@@ -15,7 +15,7 @@ extension ProfileManagerPageContent {
         // MARK: Lifecycle
 
         init(profile: PZProfileRef) {
-            self._profile = State(wrappedValue: profile)
+            self._profile = .init(wrappedValue: profile)
             Task { @MainActor in
                 ProfileManagerVM.shared.sheetType = .createNewProfile(profile)
             }
@@ -306,17 +306,17 @@ extension ProfileManagerPageContent {
             case gotProfile
         }
 
+        @StateObject private var profile: PZProfileRef
         @State private var importAllUIDs: Bool = true
         @State private var isGetAccountFailAlertShown: Bool = false
         @State private var getAccountError: GetAccountError?
         @State private var status: AddProfileStatus = .pending
         @State private var fetchedAccounts: [FetchedAccount] = []
         @State private var region: HoYo.AccountRegion = .miyoushe(.genshinImpact)
-        @State private var profile: PZProfileRef
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
-        @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
         @State private var theVM: ProfileManagerVM = .shared
+        @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
         private var game: Binding<Pizza.SupportedGame> {
