@@ -8,7 +8,6 @@ import SwiftUI
 
 // MARK: - WatchProfileDetailView
 
-@available(watchOS 10.0, *)
 struct WatchProfileDetailView: View {
     // MARK: Lifecycle
 
@@ -187,7 +186,6 @@ struct WatchProfileDetailView: View {
 
 // MARK: - WatchEachExpeditionView
 
-@available(watchOS 10.0, *)
 private struct WatchEachExpeditionView: View {
     let expedition: any ExpeditionTask
     var useAsyncImage: Bool = false

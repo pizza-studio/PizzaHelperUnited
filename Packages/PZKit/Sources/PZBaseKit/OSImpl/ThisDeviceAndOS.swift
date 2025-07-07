@@ -22,7 +22,6 @@ import WatchKit
 public enum ThisDevice {}
 
 #if os(watchOS)
-@available(watchOS 8.0, *)
 extension ThisDevice {
     public static let identifier4Vendor: String = UUID().uuidString
 
@@ -141,7 +140,7 @@ extension ThisDevice {
 
 // MARK: - OS
 
-@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 @MainActor
 public enum OS: Int {
     case macOS = 0
@@ -259,7 +258,7 @@ public enum OS: Int {
 // MARK: - Window Size Helpers
 
 #if os(macOS) || os(iOS) || targetEnvironment(macCatalyst)
-@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 extension ThisDevice {
     public static var isScreenLandScape: Bool {
         #if canImport(UIKit)

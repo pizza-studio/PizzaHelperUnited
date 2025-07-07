@@ -172,7 +172,6 @@ extension View {
     }
     #endif
 
-    @available(watchOS 10.0, *)
     @ViewBuilder
     public func smartStackWidgetContainerBackground(@ViewBuilder _ background: @escaping () -> some View) -> some View {
         modifier(SmartStackWidgetContainerBackground(background: background))
@@ -181,7 +180,7 @@ extension View {
 
 // MARK: - SmartStackWidgetContainerBackground
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
     let background: () -> B
 

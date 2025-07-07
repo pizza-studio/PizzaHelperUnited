@@ -10,7 +10,7 @@ import SwiftUI
 import WallpaperKit
 import WidgetKit
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct StaminaTimerDynamicIslandWidgetView: View {
     // MARK: Lifecycle
 

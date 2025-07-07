@@ -35,7 +35,7 @@ public enum MiHoYoAPIError: Error {
 
 // MARK: LocalizedError
 
-@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 extension MiHoYoAPIError: LocalizedError {
     public var description: String { localizedDescription }
 

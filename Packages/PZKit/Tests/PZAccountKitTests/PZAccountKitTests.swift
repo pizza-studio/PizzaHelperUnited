@@ -5,7 +5,7 @@
 @testable import PZAccountKit
 import Testing
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @Test
 func testDeviceFPGenerationOnline() async throws {
     print(

@@ -148,11 +148,9 @@ public struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol, Codable
         #elseif os(macOS)
         let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
         return exists ? storeURL : URL?.none
-        #else
-        if #available(watchOS 9.0, *) {
-            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
-            return exists ? storeURL : URL?.none
-        }
+        #elseif os(watchOS)
+        let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+        return exists ? storeURL : URL?.none
         #endif
         let exists = FileManager.default.fileExists(atPath: storeURL.path)
         return exists ? storeURL : URL?.none

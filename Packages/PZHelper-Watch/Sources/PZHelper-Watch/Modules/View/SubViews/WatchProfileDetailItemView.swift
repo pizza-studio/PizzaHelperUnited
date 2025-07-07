@@ -4,7 +4,6 @@
 
 import SwiftUI
 
-@available(watchOS 10.0, *)
 struct WatchProfileDetailItemView: View {
     var title: LocalizedStringKey
     var value: String
