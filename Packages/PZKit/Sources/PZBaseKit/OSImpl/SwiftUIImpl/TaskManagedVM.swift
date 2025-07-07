@@ -28,8 +28,7 @@ open class TaskManagedVM {
     public var taskState: State = .standby
     public var currentError: Error?
     /// 这是能够用来干涉父 class 里面的 errorHanler 的唯一途径。
-    public var assignableErrorHandlingTask: ((Error) -> Void) = { _ in }
-    public private(set) var stateGuard: Task<Void, Never>?
+    @ObservationIgnored public var assignableErrorHandlingTask: ((Error) -> Void) = { _ in }
 
     public var task: Task<Void, Never>? {
         didSet {
@@ -122,4 +121,8 @@ open class TaskManagedVM {
             }
         }
     }
+
+    // MARK: Private
+
+    @ObservationIgnored private var stateGuard: Task<Void, Never>?
 }
