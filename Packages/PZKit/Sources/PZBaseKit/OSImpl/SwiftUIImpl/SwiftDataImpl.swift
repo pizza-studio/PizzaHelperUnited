@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import CoreData
 import Foundation
 import SwiftData
 
@@ -30,6 +31,7 @@ extension ModelActor {
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension PersistentIdentifier {
+    /// Handle notification userinfo table brought by `ModelContext.didSave`.
     public static func parseObjectNames(notificationResult maybeUserInfo: [AnyHashable: Any]?) -> Set<String> {
         guard let userInfo = maybeUserInfo else { return [] }
         let entitiesNested: [[PersistentIdentifier]?] = [
@@ -37,15 +39,37 @@ extension PersistentIdentifier {
             userInfo["updated"] as? [PersistentIdentifier],
             userInfo["deleted"] as? [PersistentIdentifier],
         ]
-        let entitiyNames: Set<String> = entitiesNested.reduce(Set<String>()) { lhs, rhs in
+        let entityNames: Set<String> = entitiesNested.reduce(Set<String>()) { lhs, rhs in
             guard let rhs else { return lhs }
             return lhs.union(rhs.map(\.entityName))
         }
         #if DEBUG
-        if !entitiyNames.isEmpty {
-            print(userInfo)
+        if !entityNames.isEmpty {
+            print("Parsed SwiftData entity names: \(entityNames), from userInfo: \(userInfo)")
         }
         #endif
-        return entitiyNames
+        return entityNames
+    }
+}
+
+extension NSManagedObjectID {
+    /// Handle notification userinfo table brought by `NSManagedObjectContextDidSaveObjectIDs`.
+    public static func parseObjectNames(notificationResult maybeUserInfo: [AnyHashable: Any]?) -> Set<String> {
+        guard let userInfo = maybeUserInfo else { return [] }
+        let entitiesNested: [Set<NSManagedObjectID>?] = [
+            userInfo[NSInsertedObjectIDsKey] as? Set<NSManagedObjectID>,
+            userInfo[NSUpdatedObjectIDsKey] as? Set<NSManagedObjectID>,
+            userInfo[NSDeletedObjectIDsKey] as? Set<NSManagedObjectID>,
+        ]
+        let entityNames: Set<String> = entitiesNested.reduce(Set<String>()) { lhs, rhs in
+            guard let rhs else { return lhs }
+            return lhs.union(rhs.compactMap(\.entity.name))
+        }
+        #if DEBUG
+        if !entityNames.isEmpty {
+            print("Parsed CoreData entity names: \(entityNames), from userInfo: \(userInfo)")
+        }
+        #endif
+        return entityNames
     }
 }
