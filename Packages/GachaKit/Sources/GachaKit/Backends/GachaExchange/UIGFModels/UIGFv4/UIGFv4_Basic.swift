@@ -117,9 +117,7 @@ extension UIGFv4 {
 
         // MARK: Public
 
-        @available(iOS 17.0, *)
-        @available(macCatalyst 17.0, *)
-        @available(macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
         public enum CodingKeys: String, CodingKey {
             case exportApp = "export_app"
             case exportAppVersion = "export_app_version"

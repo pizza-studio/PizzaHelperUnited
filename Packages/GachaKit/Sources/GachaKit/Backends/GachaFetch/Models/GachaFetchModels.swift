@@ -75,9 +75,7 @@ extension GachaFetchModels {
 
         // MARK: Private
 
-        @available(iOS 17.0, *)
-        @available(macCatalyst 17.0, *)
-        @available(macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
         private enum CodingKeys: String, CodingKey {
             case page
             case size
@@ -131,9 +129,7 @@ extension GachaFetchModels.PageFetched {
 
         // MARK: Private
 
-        @available(iOS 17.0, *)
-        @available(macCatalyst 17.0, *)
-        @available(macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
         private enum CodingKeys: String, CodingKey {
             case uid
             case gachaType = "gacha_type"
