@@ -231,10 +231,10 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
     /// 注意：请仅用 iOS 或者 MacCatalyst 来预览。AppKit 无法正常处理这个 View。
     NavigationStack {
         List {
-            if let testAccountMO = PZProfileRef.makeInheritedInstance(
+            if let testAccountMO = PZProfileSendable.makeInheritedInstance(
                 game: .genshinImpact,
                 uid: "114514810"
-            )?.asSendable {
+            ) {
                 ProfileShowCaseSections(theDB: enkaDatabaseGI, pzProfile: testAccountMO)
             }
         }
