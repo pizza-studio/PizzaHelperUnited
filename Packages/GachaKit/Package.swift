@@ -25,9 +25,6 @@ let package = Package(
             url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "6.2.0")
         ),
         .package(
-            url: "https://github.com/prisma-ai/Sworm.git", .upToNextMajor(from: "1.1.0")
-        ),
-        .package(
             url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
         ),
         .package(
@@ -52,7 +49,6 @@ let package = Package(
                 .product(name: "PZCoreDataKit4LocalAccounts", package: "PZCoreDataKit"),
                 .product(name: "PZCoreDataKit4GachaEntries", package: "PZCoreDataKit"),
                 .product(name: "EnkaKit", package: "EnkaKit"),
-                .product(name: "Sworm", package: "Sworm"),
                 .product(name: "GachaMetaDB", package: "GachaMetaGenerator"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
                 .product(name: "Defaults", package: "Defaults"),
