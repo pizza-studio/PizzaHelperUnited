@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - ContainerRelativeFrameLayout
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
+@available(iOS 16.0, macCatalyst 16.0, watchOS 9.0, *)
 private struct ContainerRelativeFrameLayout: Layout {
     // MARK: Lifecycle
 
@@ -114,7 +114,7 @@ private struct ContainerRelativeFrameLayout: Layout {
 }
 
 // View 扩展
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
+@available(iOS 16.0, macCatalyst 16.0, watchOS 9.0, *)
 extension View {
     @MainActor
     public func containerRelativeFrameEX(

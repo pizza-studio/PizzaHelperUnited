@@ -7,13 +7,13 @@ import Foundation
 import Observation
 import PZBaseKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension CaseProfileVM where CoordinatedDB == Enka.EnkaDB4GI {
     static var singletonForPublicQuery: CaseProfileVM<CoordinatedDB> = .init()
     static var singletonForPersonalProfile: [String: CaseProfileVM<CoordinatedDB>] = .init()
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension CaseProfileVM where CoordinatedDB == Enka.EnkaDB4HSR {
     static var singletonForPublicQuery: CaseProfileVM<CoordinatedDB> = .init()
     static var singletonForPersonalProfile: [String: CaseProfileVM<CoordinatedDB>] = .init()
@@ -21,7 +21,7 @@ extension CaseProfileVM where CoordinatedDB == Enka.EnkaDB4HSR {
 
 // MARK: - CaseProfileVM
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @Observable
 final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
     // MARK: Lifecycle

@@ -6,7 +6,7 @@
 
 import Foundation
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 @available(watchOS, unavailable)
 extension GITodayMaterial {
     public static let bundledData: [Self] = {
@@ -49,7 +49,7 @@ extension GITodayMaterial {
     }
 }
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 @available(watchOS, unavailable)
 extension String {
     public var i18nTodayMaterials: String {
@@ -61,7 +61,7 @@ extension String {
     }
 }
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 @available(watchOS, unavailable)
 extension String.LocalizationValue {
     public var i18nTodayMaterials: String {

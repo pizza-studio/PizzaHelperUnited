@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - Contributor
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
+@available(iOS 16.0, macCatalyst 16.0, *)
 enum Contributor: String, Identifiable, Sendable, CaseIterable {
     case lava
     case hakubill
@@ -179,7 +179,7 @@ enum Contributor: String, Identifiable, Sendable, CaseIterable {
     }
 }
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
+@available(iOS 16.0, macCatalyst 16.0, *)
 extension Contributor {
     public static var mainCrew: [Self] {
         allCases.filter(\.isCrewMember)

@@ -10,12 +10,12 @@ import SwiftUI
 
 // MARK: - BattleReportView4GI.TreasuresStarwardType
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension BattleReportView4GI {
     typealias TreasuresStarwardType = HoYo.BattleReport4GI.TreasuresStarwardType
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension BattleReportView4GI.TreasuresStarwardType {
     public var asIcon: Image {
         Image(iconFileNameStem, bundle: .module)
@@ -24,7 +24,7 @@ extension BattleReportView4GI.TreasuresStarwardType {
 
 // MARK: - BattleReportView4GI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct BattleReportView4GI: BattleReportView {
     // MARK: Lifecycle
 
@@ -155,7 +155,7 @@ public struct BattleReportView4GI: BattleReportView {
 
 // MARK: - Contents for Stygian Onslaught.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension BattleReportView4GI {
     @ViewBuilder private var formContents4StygianOnslaught: some View {
         if data4SO == nil {
@@ -398,7 +398,7 @@ extension BattleReportView4GI {
 
 // MARK: - Contents for Spiral Abyss.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension BattleReportView4GI {
     @ViewBuilder private var formContents4SpiralAbyss: some View {
         stats4SpiralAbyss
@@ -631,7 +631,7 @@ extension BattleReportView4GI {
 
 #if DEBUG
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 #Preview {
     NavigationStack {
         BattleReportView4GI(

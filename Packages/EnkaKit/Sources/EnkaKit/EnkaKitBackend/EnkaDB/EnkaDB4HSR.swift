@@ -10,7 +10,7 @@ import PZBaseKit
 
 // MARK: - Enka.EnkaDB4HSR
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     @Observable
     public final class EnkaDB4HSR: EnkaDBProtocol, Codable, @unchecked Sendable {
@@ -155,7 +155,7 @@ extension Enka {
 
 // MARK: - Protocol Conformance.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.EnkaDB4HSR {
     public static var game: Enka.GameType { .starRail }
 
@@ -190,7 +190,7 @@ extension Enka.EnkaDB4HSR {
 
 // MARK: - Use bundled resources to initiate an EnkaDB instance.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.EnkaDB4HSR {
     public convenience init(locTag: String? = nil) throws {
         let locTables = try Enka.JSONType.hsrLocTable.bundledJSONData
@@ -224,7 +224,7 @@ extension Enka.EnkaDB4HSR {
 
 // MARK: - Expiry Check.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.EnkaDB4HSR {
     public func checkIfExpired(against givenProfile: QueriedProfile) -> Bool {
         guard Enka.currentLangTag == locTag else { return true }

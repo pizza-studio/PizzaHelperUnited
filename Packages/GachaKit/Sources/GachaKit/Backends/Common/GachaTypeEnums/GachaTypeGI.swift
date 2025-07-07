@@ -7,7 +7,7 @@ import PZBaseKit
 // MARK: - GachaTypeGI
 
 /// 卡池类型，API返回
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum GachaTypeGI: GachaTypeProtocol {
     case beginnersWish
     case standardWish
@@ -74,12 +74,10 @@ public enum GachaTypeGI: GachaTypeProtocol {
 
 // MARK: GachaTypeGI.UIGFGachaType
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaTypeGI {
     /// UIGF 卡池类型，用于区分卡池类型不同，但卡池保底计算相同的物品
-    @available(iOS 17.0, *)
-    @available(macCatalyst 17.0, *)
-    @available(macOS 14.0, *)
+    @available(iOS 17.0, macCatalyst 17.0, *)
     public enum UIGFGachaType: RawRepresentable, AbleToCodeSendHash {
         case beginnersWish
         case standardWish

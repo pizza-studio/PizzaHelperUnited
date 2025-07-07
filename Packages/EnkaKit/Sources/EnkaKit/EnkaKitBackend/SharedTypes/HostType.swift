@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - Enka.HostType
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     public enum HostType: Int, Codable, RawRepresentable, Hashable, Sendable {
         case mainlandChina = 0

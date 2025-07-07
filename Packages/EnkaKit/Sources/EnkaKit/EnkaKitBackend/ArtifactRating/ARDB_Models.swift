@@ -7,7 +7,7 @@ import PZBaseKit
 
 // MARK: - ArtifactRating
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating {
     public typealias ModelDB = [String: RatingModel]
     public struct RatingModel: AbleToCodeSendHash {
@@ -21,7 +21,7 @@ extension ArtifactRating {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating.ModelDB {
     public static func makeBundledDB() -> Self {
         var result = Self()
@@ -56,7 +56,7 @@ extension ArtifactRating.ModelDB {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension [ArtifactRating.RatingModel] {
     fileprivate var areAllContentsValid: Bool {
         let effectiveCount: Int = map { theModel in
@@ -66,7 +66,7 @@ extension [ArtifactRating.RatingModel] {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating {
     public static func initBundledCountDB() -> [String: Enka.PropertyType] {
         ARDB.getBundledJSONFileObject(
@@ -95,12 +95,12 @@ extension ArtifactRating {
 
 // MARK: - ArtifactRating.CharacterStatScoreModel
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating {
     public typealias CharacterStatScoreModel = [ArtifactRating.Appraiser.Param: ArtifactSubStatScore]
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating.CharacterStatScoreModel {
     /// 查詢得分模型專用的函式。
     /// - Parameters:

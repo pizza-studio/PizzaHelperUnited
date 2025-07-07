@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - Apocalyptic Shadow.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4HSR {
     public struct ApocalypticShadowData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
@@ -76,7 +76,7 @@ extension HoYo.BattleReport4HSR {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension [HoYo.BattleReport4HSR.ASFloorDetail] {
     var trimmed: Self {
         var copied = self

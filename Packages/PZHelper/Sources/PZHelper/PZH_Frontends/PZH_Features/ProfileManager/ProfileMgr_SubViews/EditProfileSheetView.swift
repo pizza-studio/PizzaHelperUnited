@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent.EditProfileSheetView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ProfileManagerPageContent {
     struct EditProfileSheetView: View {
         // MARK: Lifecycle

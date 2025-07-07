@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - CharInventoryNav
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct CharInventoryNav: View {
     // MARK: Lifecycle
 

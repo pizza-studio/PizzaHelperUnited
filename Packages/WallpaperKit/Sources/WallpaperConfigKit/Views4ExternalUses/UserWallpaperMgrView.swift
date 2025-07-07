@@ -11,7 +11,7 @@ import SFSafeSymbols
 import SwiftUI
 import WallpaperKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct UserWallpaperMgrViewContent: View {
     // MARK: Lifecycle
 
@@ -169,7 +169,7 @@ public struct UserWallpaperMgrViewContent: View {
     private var labvParser: LiveActivityBackgroundValueParser { .init($liveActivityWallpaperIDs) }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension UserWallpaperMgrViewContent {
     @ViewBuilder var coreBody: some View {
         List {
@@ -385,7 +385,7 @@ extension UserWallpaperMgrViewContent {
 
 #if DEBUG
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 #Preview {
     NavigationStack {
         UserWallpaperMgrViewContent()

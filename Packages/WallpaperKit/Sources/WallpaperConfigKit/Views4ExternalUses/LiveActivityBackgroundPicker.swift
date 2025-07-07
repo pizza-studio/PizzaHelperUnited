@@ -11,7 +11,7 @@ import WallpaperKit
 
 // MARK: - LiveActivityBackgroundPicker
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct LiveActivityBackgroundPicker: View {
     // MARK: Lifecycle
 
@@ -172,7 +172,7 @@ public struct LiveActivityBackgroundPicker: View {
 }
 
 #if DEBUG
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 #Preview {
     LiveActivityBackgroundPicker()
 }

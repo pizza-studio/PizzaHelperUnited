@@ -6,7 +6,7 @@ import PZBaseKit
 
 // MARK: - Enka.ExtraTerms
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     public struct ExtraTerms: AbleToCodeSendHash {
         // MARK: Lifecycle
@@ -66,7 +66,7 @@ extension Enka {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.GameType {
     var i18nKeyForExtraTerms: Enka.ExtraTerms {
         switch self {

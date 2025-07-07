@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - CharacterInventory
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol CharacterInventory: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
     associatedtype AvatarType: HYAvatar
     var avatars: [AvatarType] { get }
@@ -17,14 +17,14 @@ public protocol CharacterInventory: AbleToCodeSendHash, DecodableFromMiHoYoAPIJS
 
 // MARK: - HYAvatar
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol HYAvatar: Codable, Sendable, Equatable, Hashable, Identifiable {
     var id: Int { get }
     var rarity: Int { get }
     var icon: String { get }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HYAvatar {
     public var firstCostumeID: Int? {
         guard let this = self as? HoYo.CharInventory4GI.HYAvatar4GI else { return nil }

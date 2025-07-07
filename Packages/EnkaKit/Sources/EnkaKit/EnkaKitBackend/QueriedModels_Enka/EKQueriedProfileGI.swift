@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - Enka.QueriedProfileGI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     public struct QueriedProfileGI: AbleToCodeSendHash, EKQueriedProfileProtocol {
         // MARK: Lifecycle
@@ -111,7 +111,7 @@ extension Enka {
 
 // MARK: - Enka.QueriedProfileGI.QueriedAvatar
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedProfileGI {
     public struct QueriedAvatar: AbleToCodeSendHash, EKQueriedRawAvatarProtocol {
         // MARK: Lifecycle

@@ -11,7 +11,7 @@ import SwiftUI
 
 // MARK: - ProfileShowCaseSections
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
     where QueryDB.QueriedProfile.DBType == QueryDB {
     // MARK: Lifecycle
@@ -222,15 +222,15 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
 
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) private let testAccountMO = FakePZProfileMO(
+@available(iOS 17.0, macCatalyst 17.0, *) private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
+@available(iOS 17.0, macCatalyst 17.0, *) private let testAccountMO = FakePZProfileMO(
     game: .genshinImpact,
     uid: "114514810"
 )
 // swiftlint:enable force_try
 // swiftlint:enable force_unwrapping
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 #Preview {
     /// 注意：请仅用 iOS 或者 MacCatalyst 来预览。AppKit 无法正常处理这个 View。
     NavigationStack {

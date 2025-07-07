@@ -11,7 +11,7 @@ import SwiftData
 
 // MARK: - GachaSwiftData
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum GachaSwiftData {
     @ModelActor
     public actor GachaActor {
@@ -26,10 +26,10 @@ public enum GachaSwiftData {
 
 // MARK: - GachaActor
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public typealias GachaActor = GachaSwiftData.GachaActor
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaActor {
     public static let shared = GachaActor()
 
@@ -68,7 +68,7 @@ extension GachaActor {
 
 // MARK: - Schemes and Configs.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaActor {
     public static func makeSchema() -> Schema {
         Schema([PZGachaEntryMO.self, PZGachaProfileMO.self])
@@ -97,7 +97,7 @@ extension GachaActor {
 
 // MARK: - CDGachaMO Related Static Methods.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaActor {
     public func migrateOldGachasIntoProfiles() throws {
         let oldData = try CDGachaMOSputnik.shared.getAllDataEntriesAsSendable()
@@ -224,7 +224,7 @@ extension GachaActor {
 
 // MARK: - CRUD APIs for GachaVM.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaActor {
     public func fetchAllGPIDs() -> [GachaProfileID] {
         let resultRAW = try? modelContext.fetch(
@@ -271,7 +271,7 @@ extension GachaActor {
 
 // MARK: - CRUD APIs for GachaFetchVM.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaActor {
     /// 自本地 SwiftData 抽卡资料库移除指定 UID 与流水号的所有记录。
     /// - Parameters:
@@ -361,7 +361,7 @@ extension GachaActor {
 
 // MARK: - APIs for bleaching tasks.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaActor {
     /// - Remark: UID must be non-null. Otherwise this API is no-op.
     public func bleach(

@@ -6,7 +6,7 @@ import Defaults
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     public struct ProfileNameView: View {
         // MARK: Lifecycle

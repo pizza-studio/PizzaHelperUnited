@@ -9,12 +9,12 @@ import SwiftUI
 
 // MARK: - OnlineAssetSuppliable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol OnlineAssetSuppliable {
     var onlineAssetURLStr: String { get }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension OnlineAssetSuppliable {
     @MainActor
     public func onlineIcon(imageHandler: ((Image) -> Image)? = nil) -> AsyncImage<some View> {
@@ -32,7 +32,7 @@ extension OnlineAssetSuppliable {
 
 // MARK: - Enka.AvatarSummarized.CharacterID + OnlineAssetSuppliable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.CharacterID: OnlineAssetSuppliable {
     public var onlineAssetURLStr: String {
         guard !iconOnlineFileNameStem.hasPrefix("https://") else {
@@ -52,7 +52,7 @@ extension Enka.AvatarSummarized.CharacterID: OnlineAssetSuppliable {
 
 // MARK: - Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill + OnlineAssetSuppliable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill: OnlineAssetSuppliable {
     public var onlineAssetURLStr: String {
         guard !iconOnlineFileNameStem.hasPrefix("https://") else {
@@ -72,7 +72,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill: OnlineAss
 
 // MARK: - Enka.AvatarSummarized.WeaponPanel + OnlineAssetSuppliable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.WeaponPanel: OnlineAssetSuppliable {
     public var onlineAssetURLStr: String {
         guard !iconOnlineFileNameStem.hasPrefix("https://") else {
@@ -91,7 +91,7 @@ extension Enka.AvatarSummarized.WeaponPanel: OnlineAssetSuppliable {
 
 // MARK: - Enka.AvatarSummarized.ArtifactInfo + OnlineAssetSuppliable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.ArtifactInfo: OnlineAssetSuppliable {
     public var onlineAssetURLStr: String {
         guard !iconOnlineFileNameStem.hasPrefix("https://") else {

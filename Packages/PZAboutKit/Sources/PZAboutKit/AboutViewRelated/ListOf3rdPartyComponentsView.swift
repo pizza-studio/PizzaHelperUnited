@@ -5,12 +5,12 @@
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
+@available(iOS 16.0, macCatalyst 16.0, *)
 #Preview {
     ListOf3rdPartyComponentsView()
 }
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
+@available(iOS 16.0, macCatalyst 16.0, *)
 struct ListOf3rdPartyComponentsView: View {
     static let navTitle: String = {
         let key: String.LocalizationValue = "aboutKit.3rdParty.navTitle"

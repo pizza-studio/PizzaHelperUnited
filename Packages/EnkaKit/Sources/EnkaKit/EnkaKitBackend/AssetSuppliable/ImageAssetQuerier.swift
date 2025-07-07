@@ -11,7 +11,7 @@ import UIKit
 #endif
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     public static func queryImageAsset(for assetName: String) -> CGImage? {
         #if os(macOS)

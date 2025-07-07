@@ -12,7 +12,7 @@ import SwiftUI
 
 // MARK: - GITodayMaterial
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 @available(watchOS, unavailable)
 public struct GITodayMaterial: AbleToCodeSendHash, Identifiable, Equatable {
     public let id: Int
@@ -21,7 +21,7 @@ public struct GITodayMaterial: AbleToCodeSendHash, Identifiable, Equatable {
     public var costedBy: [String]
 }
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 @available(watchOS, unavailable)
 extension GITodayMaterial {
     public var iconObj: Image { Image(nameTag, bundle: .module) }
@@ -74,7 +74,7 @@ extension GITodayMaterial {
     }
 }
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 @available(watchOS, unavailable)
 extension GITodayMaterial.AvailableWeekDay? {
     public func tomorrow() -> Self {

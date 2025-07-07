@@ -7,7 +7,7 @@ import Foundation
 import PZBaseKit
 @preconcurrency import UserNotifications
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
 extension PZNotificationCenter {
     public static func refreshScheduledNotifications(
         for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol
@@ -96,7 +96,7 @@ public enum DailyNoteNotificationType: String {
 
 // MARK: - NotificationSputnik
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
 private struct NotificationSputnik {
     // MARK: Lifecycle
 
@@ -120,7 +120,7 @@ private struct NotificationSputnik {
     }()
 }
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
 extension NotificationSputnik {
     // MARK: Internal
 

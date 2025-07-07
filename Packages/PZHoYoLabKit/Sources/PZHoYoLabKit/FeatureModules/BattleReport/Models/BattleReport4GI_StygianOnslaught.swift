@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - HoYo.BattleReport4GI.StygianOnslaughtQueryResult
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4GI {
     public struct StygianOnslaughtQueryResult: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
@@ -42,7 +42,7 @@ extension HoYo.BattleReport4GI {
 
 // MARK: - HoYo.BattleReport4GI.StygianOnslaughtData
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4GI {
     public struct StygianOnslaughtData: AbleToCodeSendHash {
         // MARK: Public
@@ -239,7 +239,7 @@ extension HoYo.BattleReport4GI {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension [HoYo.BattleReport4GI.StygianOnslaughtData.ModeData.Challenge] {
     var bestAvatarForSingleStrike: HoYo.BattleReport4GI.StygianOnslaughtData.ModeData.Challenge.BestAvatar? {
         let sortedSelf = sorted {
@@ -262,7 +262,7 @@ extension [HoYo.BattleReport4GI.StygianOnslaughtData.ModeData.Challenge] {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4GI.StygianOnslaughtData.ModeData {
     func summarizedIntoCells(oddCellsPerLine: Bool = false) -> [AbyssValueCell] {
         var result = [AbyssValueCell]()
@@ -320,7 +320,7 @@ extension HoYo.BattleReport4GI.StygianOnslaughtData.ModeData {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4GI.StygianOnslaughtData {
     var allCharIDsEnumerated: Set<Int> {
         single.allCharIDsEnumerated.union(mp.allCharIDsEnumerated)

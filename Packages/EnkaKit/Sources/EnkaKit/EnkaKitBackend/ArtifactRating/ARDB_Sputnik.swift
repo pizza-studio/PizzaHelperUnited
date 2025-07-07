@@ -11,7 +11,7 @@ import PZBaseKit
 
 // MARK: - ArtifactRating.ARSputnik
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating {
     @Observable @MainActor
     public final class ARSputnik {
@@ -41,7 +41,7 @@ extension ArtifactRating {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating.ARSputnik {
     public func resetFactoryScoreModel() {
         Defaults.reset(.artifactRatingDB)
@@ -112,7 +112,7 @@ extension ArtifactRating.ARSputnik {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.HostType {
     fileprivate func getRemoteARDBFileURL(type: ArtifactRating.ARSputnik.RemoteSourceFile) -> URL {
         let baseStr = arDBSourceURLPrefix + type.rawValue

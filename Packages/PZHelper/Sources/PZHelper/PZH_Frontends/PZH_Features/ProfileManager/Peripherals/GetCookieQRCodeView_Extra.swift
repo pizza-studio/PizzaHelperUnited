@@ -4,7 +4,7 @@
 
 import PZAccountKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GetCookieQRCodeView {
     func extraCookieProcess(cookie: inout String) async throws {
         let fpResult = try await HoYo.getDeviceFingerPrint(region: .miyoushe(.genshinImpact), deviceID: deviceID)

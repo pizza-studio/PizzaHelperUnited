@@ -8,7 +8,7 @@ import WidgetKit
 
 extension PZWidgets {
     @WidgetBundleBuilder @MainActor @preconcurrency public static var widgets: some Widget {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
             StaminaTimerSharedActivityWidget()
             #endif
@@ -53,7 +53,7 @@ struct WidgetExtensionBundle: WidgetBundle {
     // MARK: Lifecycle
 
     init() {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             PZWidgets.startupTask()
         }
     }

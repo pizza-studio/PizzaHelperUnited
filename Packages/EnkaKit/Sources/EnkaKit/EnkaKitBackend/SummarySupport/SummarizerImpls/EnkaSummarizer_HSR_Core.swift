@@ -4,7 +4,7 @@
 
 import EnkaDBModels
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedProfileHSR.QueriedAvatar {
     /// 计算角色面板（星穹铁道）。
     @MainActor
@@ -120,7 +120,7 @@ extension Enka.QueriedProfileHSR.QueriedAvatar {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedProfileHSR.QueriedAvatar {
     private static func updateFlat(
         for panel: inout MutableAvatarPropertyPanel,
@@ -134,7 +134,7 @@ extension Enka.QueriedProfileHSR.QueriedAvatar {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedProfileHSR.ArtifactItem {
     public func getFlat(hsrDB: Enka.EnkaDB4HSR) -> Enka.QueriedProfileHSR.ArtifactItem.SteppedFlat? {
         var result = [Enka.QueriedProfileHSR.PropStepped]()
@@ -173,7 +173,7 @@ extension Enka.QueriedProfileHSR.ArtifactItem {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedProfileHSR.Equipment {
     public func getFlat(hsrDB: Enka.EnkaDB4HSR) -> Enka.QueriedProfileHSR.EquipmentFlat {
         var result = [Enka.QueriedProfileHSR.Prop]()
@@ -192,7 +192,7 @@ extension Enka.QueriedProfileHSR.Equipment {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HYQueriedModels.HYLAvatarDetail4HSR.Equip {
     public func getFlat(hsrDB: Enka.EnkaDB4HSR) -> Enka.QueriedProfileHSR.EquipmentFlat {
         var result = [Enka.QueriedProfileHSR.Prop]()

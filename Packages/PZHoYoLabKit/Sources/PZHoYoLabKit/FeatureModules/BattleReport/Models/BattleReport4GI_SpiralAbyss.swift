@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - HoYo.BattleReport4GI.SpiralAbyssData
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4GI {
     public struct SpiralAbyssData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
@@ -189,7 +189,7 @@ extension HoYo.BattleReport4GI {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4GI.SpiralAbyssData {
     func summarizedIntoCells(compact: Bool = false) -> [AbyssValueCell] {
         var result = [AbyssValueCell]()

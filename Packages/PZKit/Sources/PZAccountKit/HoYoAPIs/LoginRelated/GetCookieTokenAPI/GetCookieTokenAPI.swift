@@ -6,7 +6,7 @@ import Alamofire
 import Foundation
 import PZBaseKit
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 extension HoYo {
     /// 返回CookieToken，需要验证SToken。
     public static func cookieToken(
@@ -32,7 +32,7 @@ extension HoYo {
 
 // MARK: - GetCookieTokenResult
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 public struct GetCookieTokenResult: Decodable, DecodableFromMiHoYoAPIJSONResult {
     // MARK: Lifecycle
 

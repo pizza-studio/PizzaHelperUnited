@@ -6,7 +6,7 @@ import GachaMetaDB
 import PZCoreDataKit4GachaEntries
 import PZCoreDataKitShared
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension CDGachaMOSputnik {
     public func getAllDataEntriesAsSendable() throws -> [PZGachaEntrySendable] {
         // Genshin.
@@ -55,14 +55,14 @@ extension CDGachaMOSputnik {
 
 // MARK: - GachaSendableConvertible
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol GachaSendableConvertible {
     var asPZGachaEntrySendable: PZGachaEntrySendable { get }
 }
 
 // MARK: - CDGachaMO4GI + GachaSendableConvertible
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension CDGachaMO4GI: GachaSendableConvertible {
     public var asPZGachaEntrySendable: PZGachaEntrySendable {
         PZGachaEntrySendable.init { newEntry in
@@ -85,7 +85,7 @@ extension CDGachaMO4GI: GachaSendableConvertible {
 
 // MARK: - CDGachaMO4HSR + GachaSendableConvertible
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension CDGachaMO4HSR: GachaSendableConvertible {
     public var asPZGachaEntrySendable: PZGachaEntrySendable {
         PZGachaEntrySendable.init { newEntry in

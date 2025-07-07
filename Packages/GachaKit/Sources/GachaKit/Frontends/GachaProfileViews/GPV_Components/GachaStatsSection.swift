@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - GachaProfileView.GachaStatsSection
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaProfileView {
     public struct GachaStatsSection: View {
         // MARK: Lifecycle
@@ -185,7 +185,7 @@ extension GachaProfileView {
 
 // MARK: - GachaProfileView.GachaStatsSection.ApprisedLevel
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaProfileView.GachaStatsSection {
     // MARK: Internal
 

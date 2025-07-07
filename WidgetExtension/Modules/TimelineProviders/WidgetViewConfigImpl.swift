@@ -9,7 +9,7 @@ import PZWidgetsKit
 import SwiftUI
 import WallpaperKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension WidgetViewConfig {
     public init(_ intent: some ProfileWidgetIntentProtocol, _ noticeMessage: String?) {
         self = .defaultConfig // 作为拓展 constructor 使用时，此行必需。

@@ -5,7 +5,7 @@
 import PZBaseKit
 
 /// 卡池类型，API返回
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum GachaTypeZZZ: GachaTypeProtocol {
     case stableChannel
     case exclusiveChannel

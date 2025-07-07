@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - Forgotten Hall.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4HSR {
     public struct ForgottenHallData: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Public
@@ -152,7 +152,7 @@ extension HoYo.BattleReport4HSR {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension [HoYo.BattleReport4HSR.FHFloorDetail] {
     var trimmed: Self {
         var copied = self.filter(\.isChaos)

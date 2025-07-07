@@ -14,13 +14,13 @@ protocol GachaFetchModelTypeProtocol: Decodable, Hashable, Equatable, Sendable {
 /// Namespaces holding all types used for decoding raw remote JSON data of Gacha Records from HoYo servers.
 ///
 /// This namespaces is intensionally made non-public.
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum GachaFetchModels {}
 
 // MARK: - GachaFetchModelError
 
 /// This, as an exception, is public.
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum GachaFetchModelError: Error, LocalizedError {
     case retrievalFailure(retCode: Int, message: String)
 
@@ -42,12 +42,10 @@ public enum GachaFetchModelError: Error, LocalizedError {
 
 // MARK: - GachaFetchModels.PageFetched
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaFetchModels {
     /// 专门用来解码伺服器远端抽卡记录的单页资料结构，共用于绝区零、原神、星穹铁道的抽卡记录。
-    @available(iOS 17.0, *)
-    @available(macCatalyst 17.0, *)
-    @available(macOS 14.0, *)
+    @available(iOS 17.0, macCatalyst 17.0, *)
     public struct PageFetched: GachaFetchModelTypeProtocol, DecodableFromMiHoYoAPIJSONResult {
         // MARK: Lifecycle
 
@@ -75,7 +73,7 @@ extension GachaFetchModels {
 
         // MARK: Private
 
-        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, *)
         private enum CodingKeys: String, CodingKey {
             case page
             case size
@@ -89,7 +87,7 @@ extension GachaFetchModels {
 
 // MARK: - GachaFetchModels.PageFetched.FetchedEntry
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaFetchModels.PageFetched {
     /// 专门用来解码伺服器远端抽卡记录的单笔资料结构，共用于绝区零、原神、星穹铁道的抽卡记录。
     ///
@@ -129,7 +127,7 @@ extension GachaFetchModels.PageFetched {
 
         // MARK: Private
 
-        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, *)
         private enum CodingKeys: String, CodingKey {
             case uid
             case gachaType = "gacha_type"

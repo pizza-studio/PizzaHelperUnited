@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - GetCookieQRCodeView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct GetCookieQRCodeView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @State var viewModel = GetCookieQRCodeViewModel.shared
@@ -243,7 +243,7 @@ struct GetCookieQRCodeView: View {
 // MARK: - GetCookieQRCodeViewModel
 
 // Credit: Bill Haku for the fix.
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @Observable @MainActor
 final class GetCookieQRCodeViewModel {
     // MARK: Lifecycle

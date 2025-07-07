@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - GachaItemRankType
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum GachaItemRankType: Int, Identifiable, AbleToCodeSendHash, CaseIterable {
     case rank3 = 3
     case rank4 = 4
@@ -56,7 +56,7 @@ public enum GachaItemRankType: Int, Identifiable, AbleToCodeSendHash, CaseIterab
 
 // MARK: - Background Gradients.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaItemRankType {
     private var gradientColors: [CGColor] {
         switch self {

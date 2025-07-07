@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - GachaItemType
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum GachaItemType: String, AbleToCodeSendHash, Identifiable {
     case character
     case weapon
@@ -20,7 +20,7 @@ public enum GachaItemType: String, AbleToCodeSendHash, Identifiable {
     public var id: String { rawValue }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaItemType {
     public init(itemID: String, game: Pizza.SupportedGame) {
         guard let itemIDInt = Int(itemID) else {
@@ -136,7 +136,7 @@ extension GachaItemType {
 
 // MARK: - TimeTag
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct TimeTag: Hashable, Identifiable {
     // MARK: Lifecycle
 

@@ -8,7 +8,7 @@ import PZBaseKit
 // MARK: - GachaTypeHSR
 
 /// 卡池类型，API返回
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum GachaTypeHSR: GachaTypeProtocol {
     case stellarWarp
     case characterEventWarp

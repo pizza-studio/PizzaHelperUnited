@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - PrivacyPolicyView
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
+@available(iOS 16.0, macCatalyst 16.0, *)
 public struct PrivacyPolicyView: View {
     // MARK: Lifecycle
 

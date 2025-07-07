@@ -8,17 +8,17 @@ import PZBaseKit
 
 // MARK: - GachaKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum GachaKit {}
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaKit {
     public static func getServerTimeZoneDelta(uid: String, game: Pizza.SupportedGame) -> Int {
         HoYo.Server(uid: uid, game: game)?.timeZoneDelta ?? 8
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension DateFormatter {
     public static func forUIGFEntry(
         timeZoneDelta: Int
@@ -47,7 +47,7 @@ extension DateFormatter {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension TimeZone {
     public init?(uid: String, game: Pizza.SupportedGame) {
         let server = HoYo.Server(uid: uid, game: game)
@@ -58,7 +58,7 @@ extension TimeZone {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Date {
     public func asUIGFDate(
         timeZoneDelta: Int
@@ -105,7 +105,7 @@ extension Date {
 
 // MARK: - GachaKit.EntryException
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaKit {
     public enum EntryException: Error, LocalizedError {
         case timeRawValueNotParsable(rawString: String)
@@ -159,7 +159,7 @@ extension GachaKit {
 
 // MARK: - UIGF Gacha Entry Date String Format Fixer APIs.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension String {
     /// Corrects malformed date strings to "yyyy-MM-dd HH:mm:ss" format
     /// Handles cases where DateFormatter produces incorrect formats like:

@@ -11,7 +11,7 @@ import WallpaperKit
 
 // MARK: - LiveActivityBackgroundValueParser
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct LiveActivityBackgroundValueParser: Sendable {
     // MARK: Lifecycle
 

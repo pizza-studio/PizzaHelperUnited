@@ -9,7 +9,7 @@ import UserNotifications
 
 // MARK: - ApplicationIconBadgeNumberCleaner
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct ApplicationIconBadgeNumberCleaner: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -21,7 +21,7 @@ private struct ApplicationIconBadgeNumberCleaner: ViewModifier {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension View {
     @ViewBuilder
     func cleanApplicationIconBadgeNumber() -> some View {

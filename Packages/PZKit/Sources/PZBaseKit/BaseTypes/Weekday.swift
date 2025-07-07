@@ -18,7 +18,7 @@ public enum Weekday: Int, CaseIterable {
 
 // MARK: CustomStringConvertible
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
 extension Weekday: CustomStringConvertible {
     public var description: String {
         switch self {

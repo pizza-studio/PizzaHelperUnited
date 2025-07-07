@@ -7,7 +7,7 @@ import PZBaseKit
 
 // MARK: UIGFv4.ProfileZZZ
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension UIGFv4 {
     public struct GachaItemZZZ: UIGFGachaItemProtocol {
         // MARK: Lifecycle
@@ -71,7 +71,7 @@ extension UIGFv4 {
 
         // MARK: Public
 
-        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, *)
         public enum CodingKeys: String, CodingKey {
             case count
             case gachaID = "gacha_id"

@@ -140,14 +140,14 @@ extension String {
     }
 }
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
 extension String {
     public var i18nBaseKit: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
     }
 }
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
 extension String.LocalizationValue {
     public var i18nBaseKit: String {
         String(localized: self, bundle: .module)
@@ -340,7 +340,7 @@ extension Date {
         }
     }
 
-    @available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
+    @available(iOS 16.0, macCatalyst 16.0, watchOS 9.0, *)
     public func getRelativeDateString(benchmarkDate: Date = Date()) -> String {
         let relationIdentifier: RelationIdentifier = .getRelationIdentifier(of: self)
         let formatter = DateFormatter.GregorianPOSIX()
@@ -389,7 +389,7 @@ extension Date {
         Calendar.gregorian.date(byAdding: .second, value: seconds, to: self)!
     }
 
-    @available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
+    @available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
     public static func secondsToHoursMinutes(_ seconds: Int) -> String {
         if seconds / 3600 > 24 {
             return String(

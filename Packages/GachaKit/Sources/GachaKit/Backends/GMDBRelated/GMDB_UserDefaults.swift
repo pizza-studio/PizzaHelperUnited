@@ -7,13 +7,13 @@ import Foundation
 import GachaMetaDB
 import PZBaseKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension UserDefaults {
     public static let gmdbSuite = UserDefaults(suiteName: appGroupID + ".storageForGMDB") ??
         .baseSuite
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Defaults.Keys {
     public static let lastGMDBDataCheckDate = Key<Date>(
         "lastCheckDateForGachaMetaDB",
@@ -50,13 +50,13 @@ extension Defaults.Keys {
 }
 
 #if hasFeature(RetroactiveAttribute)
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaItemMetadata: @retroactive Defaults.Serializable {}
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension TimeZone: @retroactive Defaults.Serializable {}
 #else
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaItemMetadata: Defaults.Serializable {}
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension TimeZone: Defaults.Serializable {}
 #endif
