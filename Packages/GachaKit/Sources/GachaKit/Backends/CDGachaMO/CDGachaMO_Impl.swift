@@ -7,7 +7,7 @@ import PZCoreDataKit4GachaEntries
 import PZCoreDataKitShared
 
 @available(iOS 17.0, macCatalyst 17.0, *)
-extension CDGachaMOSputnik {
+extension CDGachaMOActor {
     public func getAllDataEntriesAsSendable() throws -> [PZGachaEntrySendable] {
         // Genshin.
         let genshinData = try getAllDataEntriesAsSendable(for: .genshinImpact, fixItemIDs: true)

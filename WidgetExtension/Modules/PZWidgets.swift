@@ -16,7 +16,9 @@ public enum PZWidgets {}
 extension PZWidgets {
     @MainActor
     public static func startupTask() {
-        PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+        Task {
+            await PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+        }
         UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
     }
 

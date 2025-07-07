@@ -99,8 +99,8 @@ extension GachaActor {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaActor {
-    public func migrateOldGachasIntoProfiles() throws {
-        let oldData = try CDGachaMOSputnik.shared.getAllDataEntriesAsSendable()
+    public func migrateOldGachasIntoProfiles() async throws {
+        let oldData = try await CDGachaMOActor.shared.getAllDataEntriesAsSendable()
         try batchInsert(
             oldData,
             overrideDuplicatedEntries: false,
