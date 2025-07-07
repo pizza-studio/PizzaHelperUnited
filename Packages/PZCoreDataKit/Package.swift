@@ -24,7 +24,7 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/prisma-ai/Sworm.git", .upToNextMajor(from: "1.1.0")
+            url: "https://github.com/prisma-ai/Sworm.git", .upToNextMajor(from: "1.3.0")
         ),
         .package(
             url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
