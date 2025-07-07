@@ -63,8 +63,11 @@ public final class RefugeeVM4iOS14: TaskManagedVM4OS21 {
 extension RefugeeVM4iOS14 {
     public func startDocumentationPreparationTask(forced: Bool) {
         fireTask(
-            cancelPreviousTask: forced, givenTask: { [weak self] this in
-                self?.prepareDocument(completion: this)
+            cancelPreviousTask: forced, givenTask: {
+                var result = RefugeeFile()
+                result.oldGachaEntries4GI = try CDGachaMOSputnik.shared.getAllGenshinDataEntriesVanilla()
+                result.oldProfiles4GI = try AccountMOSputnik.shared.allAccountDataForGenshin()
+                return result
             }, completionHandler: { [weak self] newResult in
                 guard let this = self, let newResult else { return }
                 withAnimation {
@@ -76,8 +79,11 @@ extension RefugeeVM4iOS14 {
 
     public func startCountingDataEntriesTask(forced: Bool) {
         fireTask(
-            cancelPreviousTask: forced, givenTask: { [weak self] this in
-                self?.countAllDataEntries(completion: this)
+            cancelPreviousTask: forced, givenTask: {
+                var (intGacha, intProfile) = (0, 0)
+                intGacha = try CDGachaMOSputnik.shared.countAllDataEntries(for: .genshinImpact)
+                intProfile = try AccountMOSputnik.shared.countAllAccountData(for: .genshinImpact)
+                return (intGacha, intProfile)
             }, completionHandler: { [weak self] newResult in
                 guard let this = self, let newResult else { return }
                 let (intGacha, intProfile) = newResult
@@ -87,33 +93,5 @@ extension RefugeeVM4iOS14 {
                 }
             }
         )
-    }
-}
-
-extension RefugeeVM4iOS14 {
-    private func prepareDocument(completion: @escaping (Result<RefugeeFile?, Error>) -> Void) {
-        DispatchQueue.main.async {
-            var result = RefugeeFile()
-            do {
-                result.oldGachaEntries4GI = try CDGachaMOSputnik.shared.getAllGenshinDataEntriesVanilla()
-                result.oldProfiles4GI = try AccountMOSputnik.shared.allAccountDataForGenshin()
-                completion(.success(result))
-            } catch {
-                completion(.failure(error))
-            }
-        }
-    }
-
-    private func countAllDataEntries(completion: @escaping (Result<(Int, Int)?, Error>) -> Void) {
-        DispatchQueue.main.async {
-            var (intGacha, intProfile) = (0, 0)
-            do {
-                intGacha = try CDGachaMOSputnik.shared.countAllDataEntries(for: .genshinImpact)
-                intProfile = try AccountMOSputnik.shared.countAllAccountData(for: .genshinImpact)
-                completion(.success((intGacha, intProfile)))
-            } catch {
-                completion(.failure(error))
-            }
-        }
     }
 }

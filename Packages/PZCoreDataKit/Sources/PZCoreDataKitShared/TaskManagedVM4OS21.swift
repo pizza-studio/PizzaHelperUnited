@@ -9,7 +9,6 @@ import SwiftUI
 ///
 /// OS21 = [iOS14, macOS11]
 @MainActor
-@preconcurrency
 open class TaskManagedVM4OS21: ObservableObject {
     // MARK: Lifecycle
 
@@ -17,7 +16,7 @@ open class TaskManagedVM4OS21: ObservableObject {
 
     // MARK: Public
 
-    public enum State: String, Hashable, Identifiable {
+    public enum State: String, Sendable, Hashable, Identifiable {
         case busy
         case standby
 
@@ -31,84 +30,99 @@ open class TaskManagedVM4OS21: ObservableObject {
     /// 这是能够用来干涉父 class 里面的 errorHanler 的唯一途径。
     public var assignableErrorHandlingTask: ((Error) -> Void) = { _ in }
 
-    public func forceStopTheTask() {
-        workItem?.cancel()
-        taskState = .standby
-    }
-
-    public func handleError(_ error: Error) {
-        DispatchQueue.main.async { [weak self] in
-            guard let this = self else { return }
-            withAnimation {
-                this.currentError = error
+    public var task: Task<Void, Never>? {
+        didSet {
+            if let theTask = task {
+                stateGuard?.cancel()
+                stateGuard = Task { [weak self] in
+                    guard let this = self else { return }
+                    await theTask.value
+                    await MainActor.run {
+                        this.taskState = .standby
+                    }
+                }
+                taskState = .busy
+            } else {
+                taskState = .standby
             }
-            this.assignableErrorHandlingTask(error)
-            this.forceStopTheTask()
         }
     }
 
-    /// iOS 14 不支持 async/await 和 variadic generics。
-    /// 这里的 givenTask 必须是非 async 的同步闭包。调用异步 API 需自行封装为 completion handler。
-    public func fireTask<T>(
+    public func forceStopTheTask() {
+        task?.cancel()
+        taskState = .standby
+    }
+
+    /// 不要在子 class 内 override 这个方法，因为一点儿屌用也没有。
+    /// 除非你在子 class 内也复写了 fireTask()，否则其预设的 Error 处理函式永远都是父 class 的。
+    ///
+    /// 正确方法是在子 class 内直接改写 `super.assignableErrorHandlingTask` 的资料值。
+    /// 或者你可以在 fireTask 的参数里面就地指定如何处理错误（但与之有关的动画与状态控制得自己搞）。
+    ///
+    /// 你可以在其中用 `if error is CancellationError` 处理与任务取消有关的错误。
+    public func handleError(_ error: Error) {
+        withAnimation {
+            currentError = error
+            // taskState = .standby
+        }
+        assignableErrorHandlingTask(error)
+        task?.cancel()
+    }
+
+    public func fireTask<each T: Sendable>(
         prerequisite: (condition: Bool, notMetHandler: (() -> Void)?)? = nil,
         animatedPreparationTask: (() -> Void)? = nil,
         cancelPreviousTask: Bool = true,
-        givenTask: @escaping (@escaping (Result<T?, Error>) -> Void) -> Void,
-        completionHandler: ((T?) -> Void)? = nil,
+        givenTask: @escaping () async throws -> (repeat each T)?,
+        completionHandler: (((repeat each T)?) -> Void)? = nil,
         errorHandler: ((Error) -> Void)? = nil
     ) {
-        if let prerequisite = prerequisite, !prerequisite.condition {
+        if let prerequisite, !prerequisite.condition {
             if let notMetHandler = prerequisite.notMetHandler {
-                DispatchQueue.main.async { [weak self] in
-                    guard self != nil else { return }
-                    withAnimation {
-                        notMetHandler()
-                    }
+                withAnimation {
+                    notMetHandler()
                 }
             }
             return
         }
-
-        DispatchQueue.main.async { [weak self] in
-            guard let this = self else { return }
-            withAnimation {
-                this.currentError = nil
-                this.taskState = .busy
-                animatedPreparationTask?()
-            }
+        withAnimation {
+            currentError = nil
+            taskState = .busy
+            animatedPreparationTask?()
         }
-
-        // 取消旧任务
-        if cancelPreviousTask {
-            workItem?.cancel()
-        }
-
-        let item = DispatchWorkItem { [weak self] in
-            guard self != nil else { return }
-            givenTask { [weak self] result in
-                guard self != nil else { return }
-                DispatchQueue.main.async { [weak self] in
-                    guard let this = self else { return }
-                    switch result {
-                    case let .success(value):
+        Task { [weak self] in
+            guard let self else { return }
+            let previousTask = task
+            task = Task(priority: .background) { [weak self] in
+                if cancelPreviousTask {
+                    previousTask?.cancel() // 按需取消既有任务。
+                } else {
+                    await previousTask?.value // 等待既有任务执行完毕。
+                }
+                do {
+                    let retrieved = try await givenTask()
+                    Task { @MainActor [weak self] in
+                        guard let this = self else { return }
                         withAnimation {
-                            completionHandler?(value)
+                            if let retrieved {
+                                completionHandler?(retrieved)
+                            }
                             this.currentError = nil
-                            this.taskState = .standby
+                            this.taskState = .standby // 此步骤必需。
                         }
-                    case let .failure(error):
-                        (errorHandler ?? this.handleError)(error)
-                        this.taskState = .standby
+                    }
+                } catch {
+                    Task { @MainActor [weak self] in
+                        guard let this = self else { return }
+                        (errorHandler ?? this.handleError)(error) // 处理其他的错误。
+                        this.taskState = .standby // 此步骤必需。
                     }
                 }
             }
         }
-        workItem = item
-
-        DispatchQueue.main.async(execute: item)
     }
 
     // MARK: Private
 
-    private var workItem: DispatchWorkItem?
+    private var stateGuard: Task<Void, Never>?
 }
