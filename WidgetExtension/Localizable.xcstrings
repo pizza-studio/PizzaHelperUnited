@@ -1525,6 +1525,7 @@
       }
     },
     "dummyWidget.description" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1601,6 +1602,7 @@
       }
     },
     "dummyWidget.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

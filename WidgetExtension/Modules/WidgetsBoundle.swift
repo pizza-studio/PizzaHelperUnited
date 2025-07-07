@@ -22,7 +22,6 @@ extension PZWidgets {
             widgets4MobilePlatforms
             #endif
         }
-        DummyWidget() // 没这玩意的话无法正常编译。
     }
 
     #if (os(iOS) && !targetEnvironment(macCatalyst)) || os(watchOS)
