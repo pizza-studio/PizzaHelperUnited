@@ -53,6 +53,10 @@ public final class RefugeeVM4iOS14: TaskManagedVM4OS21 {
             object: nil,
             queue: nil // 不指定队列，依赖 actor 隔离
         ) { notification in // Singleton 不需要 weak self。
+            let changedEntityNames = NSManagedObjectID.parseObjectNames(
+                notificationResult: notification.userInfo
+            )
+            guard !changedEntityNames.isEmpty else { return }
             Task { @MainActor in
                 self.startCountingDataEntriesTask(forced: false)
             }
