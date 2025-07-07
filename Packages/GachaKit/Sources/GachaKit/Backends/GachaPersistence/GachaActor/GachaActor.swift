@@ -9,20 +9,25 @@ import PZBaseKit
 import PZCoreDataKit4GachaEntries
 import SwiftData
 
+// MARK: - GachaSwiftData
+
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+public enum GachaSwiftData {
+    @ModelActor
+    public actor GachaActor {
+        public init(unitTests: Bool = false) {
+            modelContainer = unitTests ? Self.makeContainer4UnitTests() : Self.makeContainer()
+            modelExecutor = DefaultSerialModelExecutor(
+                modelContext: .init(modelContainer)
+            )
+        }
+    }
+}
+
 // MARK: - GachaActor
 
-@ModelActor
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
-public actor GachaActor {
-    public init(unitTests: Bool = false) {
-        modelContainer = unitTests ? Self.makeContainer4UnitTests() : Self.makeContainer()
-        modelExecutor = DefaultSerialModelExecutor(
-            modelContext: .init(modelContainer)
-        )
-    }
-
-    // MARK: Private
-}
+public typealias GachaActor = GachaSwiftData.GachaActor
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension GachaActor {
