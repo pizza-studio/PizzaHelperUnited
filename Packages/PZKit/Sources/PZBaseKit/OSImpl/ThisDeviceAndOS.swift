@@ -18,7 +18,6 @@ import WatchKit
 
 // MARK: - ThisDevice
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
 @MainActor
 public enum ThisDevice {}
 
@@ -32,7 +31,25 @@ extension ThisDevice {
     }
 }
 #else
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+extension ThisDevice {
+    public static let identifier4Vendor: String = {
+        #if canImport(IOKit) && canImport(UIKit)
+        return UIDevice.current.identifierForVendor?.uuidString ?? getIdentifier4Vendor() ?? UUID().uuidString
+        #elseif canImport(UIKit) && !canImport(IOKit)
+        return UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        #elseif canImport(IOKit)
+        return getIdentifier4Vendor() ?? UUID().uuidString
+        #else
+        return UUID().uuidString
+        #endif
+    }()
+
+    public nonisolated static func getDeviceID4Vendor(_ overridedValue: String? = nil) async -> String {
+        guard let overridedValue else { return await identifier4Vendor.description }
+        return overridedValue
+    }
+}
+
 extension ThisDevice {
     // MARK: Public
 
@@ -57,23 +74,6 @@ extension ThisDevice {
         return identifier
         #endif
     }()
-
-    public static let identifier4Vendor: String = {
-        #if canImport(IOKit) && canImport(UIKit)
-        return UIDevice.current.identifierForVendor?.uuidString ?? getIdentifier4Vendor() ?? UUID().uuidString
-        #elseif canImport(UIKit) && !canImport(IOKit)
-        return UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
-        #elseif canImport(IOKit)
-        return getIdentifier4Vendor() ?? UUID().uuidString
-        #else
-        return UUID().uuidString
-        #endif
-    }()
-
-    public nonisolated static func getDeviceID4Vendor(_ overridedValue: String? = nil) async -> String {
-        guard let overridedValue else { return await identifier4Vendor.description }
-        return overridedValue
-    }
 
     // MARK: Private
 
