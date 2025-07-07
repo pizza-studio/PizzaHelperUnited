@@ -32,7 +32,7 @@ public final class CDGachaMOSputnik: Sendable {
         ((try? await countAllDataEntries()) ?? 0) > 0
     }
 
-    public func countAllDataEntries(for game: PZCoreDataKit.StoredGame) throws -> Int {
+    public func countAllDataEntries(for game: PZCoreDataKit.CDStoredGame) throws -> Int {
         try theDB(for: game)?.perform { ctx in
             switch game {
             case .genshinImpact: try ctx.count(of: CDGachaMO4GI.all)
@@ -61,7 +61,7 @@ public final class CDGachaMOSputnik: Sendable {
 
     /// WARNING: This does not fix Genshin Gacha Entry ItemIDs.
     public func getAllDataEntriesVanilla(
-        for game: PZCoreDataKit.StoredGame,
+        for game: PZCoreDataKit.CDStoredGame,
         genshinGachaEntryFixHandler: @escaping (inout [CDGachaMO4GI]) throws -> Void
     ) throws
         -> [CDGachaMOProtocol] {
@@ -78,7 +78,7 @@ public final class CDGachaMOSputnik: Sendable {
 
     // MARK: Internal
 
-    func theDB(for game: PZCoreDataKit.StoredGame) -> PersistentContainer? {
+    func theDB(for game: PZCoreDataKit.CDStoredGame) -> PersistentContainer? {
         switch game {
         case .genshinImpact: db4GI
         case .starRail: db4HSR

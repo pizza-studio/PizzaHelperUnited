@@ -26,7 +26,7 @@ private struct AccountMOItemDebugView: View {
     public var body: some View {
         Section {
             LabeledContent("game".description) {
-                Text(verbatim: accountMO.storedGame.uidPrefix)
+                Text(verbatim: accountMO.cdStoredGame.uidPrefix)
             }
             LabeledContent("allowNotification".description) {
                 Text(verbatim: accountMO.allowNotification.description)
@@ -59,7 +59,7 @@ private struct AccountMOItemDebugView: View {
     private let accountMO: AccountMOProtocol
 
     private var headerText: String {
-        "\(accountMO.storedGame.uidPrefix)-\(accountMO.uid) // \(accountMO.uuid.uuidString)"
+        "\(accountMO.cdStoredGame.uidPrefix)-\(accountMO.uid) // \(accountMO.uuid.uuidString)"
     }
 }
 
@@ -110,9 +110,9 @@ public struct AccountMODebugView: View {
 
     @MainActor private static let sputnik: AccountMOSputnik = .shared
 
-    @State private var game: PZCoreDataKit.StoredGame = .genshinImpact
+    @State private var game: PZCoreDataKit.CDStoredGame = .genshinImpact
 
-    private let casesOfGames: [PZCoreDataKit.StoredGame] = [.genshinImpact, .starRail]
+    private let casesOfGames: [PZCoreDataKit.CDStoredGame] = [.genshinImpact, .starRail]
 }
 
 #endif

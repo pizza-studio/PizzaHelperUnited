@@ -2,10 +2,10 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-// MARK: - PZCoreDataKit.StoredGame
+// MARK: - PZCoreDataKit.CDStoredGame
 
 extension PZCoreDataKit {
-    public enum StoredGame: String, Sendable, Identifiable, Hashable, Codable, CaseIterable, Equatable {
+    public enum CDStoredGame: String, Sendable, Identifiable, Hashable, Codable, CaseIterable, Equatable {
         case genshinImpact = "GI"
         case starRail = "HSR"
 
@@ -49,10 +49,10 @@ extension PZCoreDataKit {
     }
 }
 
-// MARK: - PZCoreDataKit.StoredGame + Comparable
+// MARK: - PZCoreDataKit.CDStoredGame + Comparable
 
-extension PZCoreDataKit.StoredGame: Comparable {
-    public static func < (lhs: PZCoreDataKit.StoredGame, rhs: PZCoreDataKit.StoredGame) -> Bool {
+extension PZCoreDataKit.CDStoredGame: Comparable {
+    public static func < (lhs: PZCoreDataKit.CDStoredGame, rhs: PZCoreDataKit.CDStoredGame) -> Bool {
         lhs.caseIndex < rhs.caseIndex
     }
 
@@ -64,9 +64,9 @@ extension PZCoreDataKit.StoredGame: Comparable {
 // MARK: - CDStoredGameAssignable
 
 public protocol CDStoredGameAssignable {
-    static var storedGame: PZCoreDataKit.StoredGame { get }
+    static var cdStoredGame: PZCoreDataKit.CDStoredGame { get }
 }
 
 extension CDStoredGameAssignable {
-    public var storedGame: PZCoreDataKit.StoredGame { Self.storedGame }
+    public var cdStoredGame: PZCoreDataKit.CDStoredGame { Self.cdStoredGame }
 }

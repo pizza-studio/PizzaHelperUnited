@@ -5,7 +5,7 @@
 import PZBaseKit
 import PZCoreDataKitShared
 
-extension PZCoreDataKit.StoredGame {
+extension PZCoreDataKit.CDStoredGame {
     public var asSupportedGame: Pizza.SupportedGame {
         switch self {
         case .genshinImpact: .genshinImpact
@@ -15,7 +15,7 @@ extension PZCoreDataKit.StoredGame {
 }
 
 extension Pizza.SupportedGame {
-    public var asCDSupportedGame: PZCoreDataKit.StoredGame? {
+    public var asCDSupportedGame: PZCoreDataKit.CDStoredGame? {
         switch self {
         case .genshinImpact: .genshinImpact
         case .starRail: .starRail

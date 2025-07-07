@@ -113,7 +113,7 @@ public struct AccountMO4GI: ManagedObjectConvertible, AccountMOProtocol, Codable
 
     public struct Relations: Sendable {}
 
-    public static let storedGame: PZCoreDataKit.StoredGame = .genshinImpact
+    public static let cdStoredGame: PZCoreDataKit.CDStoredGame = .genshinImpact
     public static let cloudContainerID: String = "iCloud.com.Canglong.GenshinPizzaHepler" // 没机会纠正了。
     public static let containerName: String = "AccountConfiguration"
     public static let entityName: String = "AccountConfiguration"
@@ -180,7 +180,7 @@ public struct AccountMO4HSR: ManagedObjectConvertible, AccountMOProtocol, Codabl
 
     public struct Relations: Sendable {}
 
-    public static let storedGame: PZCoreDataKit.StoredGame = .starRail
+    public static let cdStoredGame: PZCoreDataKit.CDStoredGame = .starRail
     public static let cloudContainerID: String = "iCloud.com.Canglong.HSRPizzaHelper"
     public static let containerName: String = "HSRPizzaHelper"
     public static let entityName: String = "Account"
