@@ -7,7 +7,7 @@ import Foundation
 import SwiftUI
 
 // SwiftUI 视图封装
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
 public struct AsyncCGImage<Content: View, Placeholder: View>: View {
     // MARK: Lifecycle
 

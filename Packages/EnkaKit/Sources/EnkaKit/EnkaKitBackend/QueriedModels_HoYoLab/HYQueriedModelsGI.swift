@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - HYQueriedModels.HYLAvatarDetail4GI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HYQueriedModels {
     public struct HYLAvatarDetail4GI: AbleToCodeSendHash {
         // MARK: Lifecycle
@@ -90,7 +90,7 @@ extension HYQueriedModels {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HYQueriedModels.HYLAvatarDetail4GI {
     // MARK: - Base
 
@@ -497,7 +497,7 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
 
 // MARK: - HYQueriedModels.HYLAvatarDetail4GI.RecommendRelicProperty
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HYQueriedModels.HYLAvatarDetail4GI {
     // MARK: - RecommendRelicProperty
 
@@ -551,7 +551,7 @@ extension HYQueriedModels.HYLAvatarDetail4GI {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HYQueriedModels.HYLAvatarDetail4GI {
     public static func exampleData() throws -> DecodableList {
         let exampleURL = Bundle.module.url(

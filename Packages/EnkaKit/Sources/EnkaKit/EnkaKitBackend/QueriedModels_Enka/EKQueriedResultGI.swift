@@ -7,7 +7,7 @@ import PZBaseKit
 
 // MARK: - Enka.QueriedResultGI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     public struct QueriedResultGI: AbleToCodeSendHash, EKQueryResultProtocol {
         // MARK: Lifecycle
@@ -78,7 +78,7 @@ extension Enka {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedResultGI {
     public static func exampleData() throws -> Self {
         let exampleURL = Bundle.module.url(

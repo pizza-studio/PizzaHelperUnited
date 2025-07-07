@@ -39,7 +39,7 @@ struct DummyWidget: Widget {
     // MARK: Private
 
     private static var systemRequirementsAreMet: Bool {
-        if #unavailable(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0) {
+        if #unavailable(iOS 17.0, macCatalyst 17.0, watchOS 10.0) {
             return false
         }
         return true

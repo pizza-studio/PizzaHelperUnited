@@ -8,7 +8,7 @@ import SafariServices
 import SwiftUI
 import WebKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
     /// 国际服尽量避免使用 HoYoLab 论坛社区的页面，免得 Apple 审核员工瞎基蔔乱点之后找事。
     switch (region, region.game) {
@@ -21,7 +21,7 @@ private func getAccountPageLoginURL(region: HoYo.AccountRegion) -> String {
 
 // MARK: - GetCookieWebView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct GetCookieWebView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
@@ -178,7 +178,6 @@ struct GetCookieWebView: View {
 // MARK: - CookieGetterWebView
 
 #if canImport(AppKit) && !canImport(UIKit)
-@available(macOS 14.0, *)
 struct CookieGetterWebView: NSViewRepresentable {
     final class Coordinator: NSObject, WKNavigationDelegate {
         // MARK: Lifecycle
@@ -362,7 +361,7 @@ struct CookieGetterWebView: UIViewRepresentable {
 }
 #endif
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String] {
     switch region {
     case .miyoushe:
@@ -407,12 +406,12 @@ import Combine
 import UIKit
 
 /// Publisher to read keyboard changes.
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private protocol KeyboardReadable {
     var keyboardPublisher: AnyPublisher<Bool, Never> { get }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension KeyboardReadable {
     fileprivate var keyboardPublisher: AnyPublisher<Bool, Never> {
         Publishers.Merge(
@@ -428,7 +427,7 @@ extension KeyboardReadable {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GetCookieWebView: KeyboardReadable {}
 
 #endif

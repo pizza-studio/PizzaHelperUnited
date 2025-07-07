@@ -15,7 +15,7 @@ import WallpaperKit
 
 // MARK: - UserWallpaperExchangeMenu
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct UserWallpaperExchangeMenu<T: View>: View {
     // MARK: Lifecycle
 
@@ -105,7 +105,7 @@ struct UserWallpaperExchangeMenu<T: View>: View {
 
 // MARK: UserWallpaperExchangeMenu.Coordinator
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension UserWallpaperExchangeMenu {
     @Observable
     private final class Coordinator: TaskManagedVM {

@@ -7,7 +7,7 @@ import EnkaDBModels
 
 // MARK: - Constructors for summarizing Enka query results.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo {
     // MARK: Lifecycle
 
@@ -55,7 +55,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     fileprivate struct GenshinSkillRawDataPair {
         // MARK: Internal
@@ -122,7 +122,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.WeaponPanel {
     // MARK: Lifecycle
 
@@ -167,7 +167,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.ArtifactInfo {
     // MARK: Lifecycle
 
@@ -241,7 +241,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
 
 // MARK: - Constructors for summarizing HoYoLAB query results.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo {
     public init?(
         giDB: Enka.EnkaDB4GI,
@@ -296,7 +296,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     fileprivate init?(
         giDB: Enka.EnkaDB4GI,
@@ -338,7 +338,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.WeaponPanel {
     public init?(
         giDB: Enka.EnkaDB4GI,
@@ -373,7 +373,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.ArtifactInfo {
     public init?(
         giDB: Enka.EnkaDB4GI,

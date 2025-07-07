@@ -128,7 +128,7 @@ extension Note4ZZZ {
 
         // MARK: Public
 
-        @available(iOS 15.0, macCatalyst 15.0, macOS 12.0, watchOS 8.0, *) public var localizedDescription: String {
+        @available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *) public var localizedDescription: String {
             switch self {
             case .revenueAvailable:
                 String(localized: "dailyNote.zzz.vhsState.revenueAvailable", bundle: .module)

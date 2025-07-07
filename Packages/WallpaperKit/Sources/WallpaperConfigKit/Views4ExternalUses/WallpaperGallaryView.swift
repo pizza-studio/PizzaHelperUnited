@@ -12,7 +12,7 @@ import WallpaperKit
 
 // MARK: - WallpaperGalleryViewContent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct WallpaperGalleryViewContent: View {
     // MARK: Lifecycle
 
@@ -175,7 +175,7 @@ public struct WallpaperGalleryViewContent: View {
 }
 
 #if DEBUG
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 #Preview {
     WallpaperGalleryViewContent()
 }

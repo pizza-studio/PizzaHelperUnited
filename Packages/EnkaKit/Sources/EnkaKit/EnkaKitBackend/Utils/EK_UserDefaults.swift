@@ -6,7 +6,7 @@ import Defaults
 import Foundation
 import PZBaseKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension UserDefaults {
     public static let enkaSuite: UserDefaults = {
         let result = UserDefaults(suiteName: appGroupID + ".storageForEnka") ??
@@ -19,7 +19,7 @@ extension UserDefaults {
     }()
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.Sputnik {
     public static func migrateCachedProfilesFromUserDefaultsToFiles() {
         let oldEnkaProfiles4GI = Defaults[.queriedEnkaProfiles4GI]
@@ -35,7 +35,7 @@ extension Enka.Sputnik {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Defaults.Keys {
     // MARK: - Enka Suite
 
@@ -123,42 +123,42 @@ extension Defaults.Keys {
 
 // MARK: - ArtifactRating.Rules + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating.Rules: Defaults.Serializable {}
 
 // MARK: - ArtifactRating.RatingModel + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ArtifactRating.RatingModel: Defaults.Serializable {}
 
 // MARK: - Enka.EnkaDB4GI + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.EnkaDB4GI: Defaults.Serializable {}
 
 // MARK: - Enka.EnkaDB4HSR + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.EnkaDB4HSR: Defaults.Serializable {}
 
 // MARK: - Enka.QueriedProfileGI + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedProfileGI: Defaults.Serializable {}
 
 // MARK: - Enka.QueriedProfileHSR + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.QueriedProfileHSR: Defaults.Serializable {}
 
 // MARK: - Enka.PropertyType + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.PropertyType: Defaults.Serializable {}
 
 // MARK: - Enka.HostType + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.HostType: Defaults.Serializable {
     public static func toggleEnkaDBQueryHost() {
         switch Defaults[.defaultDBQueryHost] {
@@ -170,10 +170,10 @@ extension Enka.HostType: Defaults.Serializable {
 
 // MARK: - HYQueriedModels.HYLAvatarDetail4GI + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HYQueriedModels.HYLAvatarDetail4GI: Defaults.Serializable {}
 
 // MARK: - HYQueriedModels.HYLAvatarDetail4HSR + Defaults.Serializable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HYQueriedModels.HYLAvatarDetail4HSR: Defaults.Serializable {}

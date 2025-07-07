@@ -8,7 +8,7 @@ import PZBaseKit
 // MARK: - BattleReportSetTyped
 
 /// 一套深渊战报得允许包括前一次的深渊战绩。
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct BattleReportSetTyped<Report: BattleReport>: BattleReportSet {
     // MARK: Lifecycle
 
@@ -37,7 +37,7 @@ public struct BattleReportSetTyped<Report: BattleReport>: BattleReportSet {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public typealias BattleReportSet4GI = BattleReportSetTyped<HoYo.BattleReport4GI>
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public typealias BattleReportSet4HSR = BattleReportSetTyped<HoYo.BattleReport4HSR>

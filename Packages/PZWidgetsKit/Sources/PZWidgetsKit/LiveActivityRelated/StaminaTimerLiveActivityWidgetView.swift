@@ -11,7 +11,7 @@ import SwiftUI
 import WallpaperKit
 import WidgetKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, RefreshIntent: AppIntent>: View {
     // MARK: Lifecycle
 

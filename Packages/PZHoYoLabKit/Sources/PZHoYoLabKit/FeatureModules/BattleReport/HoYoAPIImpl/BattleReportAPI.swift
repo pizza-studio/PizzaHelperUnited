@@ -6,7 +6,7 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     public static func getBattleReportSet(for profile: PZProfileSendable) async throws -> (any BattleReportSet)? {
         switch profile.game {
@@ -41,7 +41,7 @@ extension HoYo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     static func battleReportData4GI(
         for profile: PZProfileSendable, isPreviousRound: Bool = false
@@ -98,7 +98,7 @@ extension HoYo {
 
 // MARK: - Private Methods (Genshin Impact).
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     private static func battleReportData4GISpiralAbyss(
         isPreviousRound: Bool = false,
@@ -193,7 +193,7 @@ extension HoYo {
 
 // MARK: - Private Methods (Star Rail).
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     private static func battleReportData4HSRForgottenHall(
         isPreviousRound: Bool = false,
@@ -367,7 +367,7 @@ extension HoYo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4GI.TreasuresStarwardType {
     /// 搭配 `.recordURLAPIHost()` 使用。
     public func getAPIPath(region: HoYo.AccountRegion) -> String {
@@ -380,7 +380,7 @@ extension HoYo.BattleReport4GI.TreasuresStarwardType {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4HSR.TreasuresLightwardType {
     /// 搭配 `.recordURLAPIHost()` 使用。
     public func getAPIPath(region: HoYo.AccountRegion) -> String {

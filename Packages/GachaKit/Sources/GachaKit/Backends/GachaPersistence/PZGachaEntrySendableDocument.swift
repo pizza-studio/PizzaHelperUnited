@@ -7,7 +7,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 /// 该结构仅用作导出内容之用途，导出披萨助手的某些原始抽卡资料供诊断之用途。
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct PZGachaEntrySendableDocument: FileDocument {
     // MARK: Lifecycle
 

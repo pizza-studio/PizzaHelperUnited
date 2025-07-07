@@ -7,7 +7,7 @@ import PZBaseKit
 
 // MARK: - HoYo.LedgerData4HSR
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     public struct LedgerData4HSR: Ledger {
         // MARK: Public
@@ -108,7 +108,7 @@ extension HoYo {
 
 // MARK: - HoYo.LedgerData4HSR.Action
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.LedgerData4HSR {
     public enum Action: String, CaseIterable {
         case byOther = "other"
@@ -127,7 +127,7 @@ extension HoYo.LedgerData4HSR {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.LedgerData4HSR.MonthData.LedgerDataGroup {
     public var actionTyped: HoYo.LedgerData4HSR.Action {
         .init(rawValue: action) ?? .byOther

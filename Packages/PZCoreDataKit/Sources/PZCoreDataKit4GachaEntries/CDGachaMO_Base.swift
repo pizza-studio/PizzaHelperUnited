@@ -151,10 +151,8 @@ public struct CDGachaMO4GI: ManagedObjectConvertible, CDGachaMOProtocol, Codable
             return exists ? storeURL : URL?.none
         }
         #elseif os(macOS)
-        if #available(macOS 13.0, *) {
-            let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
-            return exists ? storeURL : URL?.none
-        }
+        let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))
+        return exists ? storeURL : URL?.none
         #else
         if #available(watchOS 9.0, *) {
             let exists = FileManager.default.fileExists(atPath: storeURL.path(percentEncoded: false))

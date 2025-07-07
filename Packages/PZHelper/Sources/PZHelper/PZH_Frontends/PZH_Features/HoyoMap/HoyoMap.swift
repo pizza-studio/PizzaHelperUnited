@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - HoYoMapMenuLinkSection
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct HoYoMapMenuLinkSection: View {
     // MARK: Public
 
@@ -47,7 +47,7 @@ struct HoYoMapMenuLinkSection: View {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.AccountRegion {
     fileprivate var hoyoMapURL: URL? {
         switch (self, game) {

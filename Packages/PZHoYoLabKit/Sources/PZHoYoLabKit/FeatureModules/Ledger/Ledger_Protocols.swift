@@ -8,12 +8,12 @@ import SwiftUI
 
 // MARK: - Ledger
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol Ledger: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
     associatedtype ViewType: LedgerView where Self == ViewType.LedgerData
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Ledger {
     @MainActor @ViewBuilder
     public func asView() -> some View {
@@ -23,7 +23,7 @@ extension Ledger {
 
 // MARK: - LedgerView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @MainActor
 public protocol LedgerView: View {
     associatedtype LedgerData: Ledger where Self == LedgerData.ViewType

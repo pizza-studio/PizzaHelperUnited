@@ -12,7 +12,7 @@ import PZBaseKit
 
 // MARK: - HakushinCharacter4GI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct HakushinCharacter4GI: Codable {
     // MARK: - CharaInfo
 
@@ -32,7 +32,7 @@ private struct HakushinCharacter4GI: Codable {
     let icon: String
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HakushinCharacter4GI {
     public static func queryNameCardURLStr(charIDStr: String) async throws -> String {
         let fallbackAnswer = "https://api.hakush.in/gi/UI/UI_NameCardIcon_Bp2.webp"

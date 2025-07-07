@@ -9,7 +9,7 @@ import UniformTypeIdentifiers
 /// 该结构仅用作导出内容之用途。
 /// 由于 SwiftUI 给单个 View 连续挂接 fileExporter 的时候只有最后挂接的会生效的缘故，
 /// 必须让 SRGF 与 UIGF 混用一个 Document 结构。
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct GachaDocument: FileDocument {
     // MARK: Lifecycle
 

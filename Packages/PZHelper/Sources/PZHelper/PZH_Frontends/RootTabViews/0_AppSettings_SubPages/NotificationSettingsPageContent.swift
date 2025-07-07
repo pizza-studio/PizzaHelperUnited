@@ -10,7 +10,7 @@ import UserNotifications
 
 // MARK: - NotificationSettingsPageContent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct NotificationSettingsPageContent: View {
     // MARK: Public
 
@@ -83,7 +83,7 @@ struct NotificationSettingsPageContent: View {
 
 // MARK: - ProfilesNotificationPermissionView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct ProfilesNotificationPermissionView: View {
     // MARK: Public
 
@@ -165,7 +165,7 @@ private struct ProfilesNotificationPermissionView: View {
 
 // MARK: - StaminaNotificationThresholdConfigView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct StaminaNotificationThresholdConfigView: View {
     // MARK: Public
 
@@ -340,7 +340,7 @@ private struct StaminaNotificationThresholdConfigView: View {
 
 // MARK: - NotificationSettingDetailContent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct NotificationSettingDetailContent: View {
     // MARK: Public
 

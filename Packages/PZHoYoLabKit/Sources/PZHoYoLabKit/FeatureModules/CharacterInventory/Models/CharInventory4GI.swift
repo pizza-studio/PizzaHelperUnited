@@ -7,7 +7,7 @@ import PZBaseKit
 
 // MARK: - HoYo.CharInventory4GI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     public struct CharInventory4GI: CharacterInventory {
         public typealias AvatarType = HYAvatar4GI
@@ -89,7 +89,7 @@ extension HoYo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.CharInventory4GI {
     public struct AvatarDetailPackage4GI: AbleToCodeSendHash, DecodableFromMiHoYoAPIJSONResult {
         public var list: [AvatarDetail4GI]

@@ -7,7 +7,7 @@ import WidgetKit
 
 // MARK: - WidgetAccessibilityBackground
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 private struct WidgetAccessibilityBackground: ViewModifier {
     let enabled: Bool
 
@@ -27,7 +27,7 @@ private struct WidgetAccessibilityBackground: ViewModifier {
 extension View {
     @ViewBuilder
     public func widgetAccessibilityBackground(enabled: Bool) -> some View {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             modifier(WidgetAccessibilityBackground(enabled: enabled))
         } else {
             self

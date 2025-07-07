@@ -7,7 +7,7 @@ import Foundation
 import PZAccountKit
 import PZBaseKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 enum BattleReportTestAssets: String {
     case giSACurr = "battleReport_sample_gi_sa_curr"
     case giSAPrev = "battleReport_sample_gi_sa_prev"

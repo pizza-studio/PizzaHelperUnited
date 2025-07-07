@@ -9,7 +9,7 @@ import PZBaseKit
 
 // MARK: OfficialFeed.FeedEvent
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
+@available(iOS 16.0, macCatalyst 16.0, watchOS 9.0, *)
 extension OfficialFeed {
     public struct FeedEvent: AbleToCodeSendHash, Identifiable, Defaults.Serializable {
         public let game: Pizza.SupportedGame
@@ -48,7 +48,7 @@ extension OfficialFeed {
     }
 }
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
+@available(iOS 16.0, macCatalyst 16.0, watchOS 9.0, *)
 extension OfficialFeed {
     public static func getAllFeedEventsOnline(
         game givenGame: Pizza.SupportedGame? = nil,

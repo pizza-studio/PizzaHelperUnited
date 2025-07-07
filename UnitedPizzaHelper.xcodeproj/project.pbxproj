@@ -1204,7 +1204,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 5.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "United Pizza Engine";
@@ -1251,7 +1251,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 5.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "United Pizza Engine";

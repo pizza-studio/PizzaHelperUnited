@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - EKQueryResultProtocol
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol EKQueryResultProtocol: Codable, Hashable, Sendable, Equatable, Sendable {
     associatedtype DBType: EnkaDBProtocol where DBType.QueriedResult == Self
     typealias QueriedProfileType = DBType.QueriedProfile
@@ -18,7 +18,7 @@ public protocol EKQueryResultProtocol: Codable, Hashable, Sendable, Equatable, S
     static var game: Enka.GameType { get }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension EKQueryResultProtocol {
     public static func queryRAW(
         uid: String,
@@ -47,7 +47,7 @@ extension EKQueryResultProtocol {
 
 // MARK: - EKQueriedProfileProtocol
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol EKQueriedProfileProtocol: Codable, Hashable, Sendable, Equatable, Sendable {
     associatedtype DBType: EnkaDBProtocol where DBType.QueriedProfile == Self
     associatedtype QueriedAvatar: EKQueriedRawAvatarProtocol where QueriedAvatar.DBType == DBType
@@ -60,7 +60,7 @@ public protocol EKQueriedProfileProtocol: Codable, Hashable, Sendable, Equatable
     var headIcon: Int { get }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension EKQueriedProfileProtocol {
     /// 仅制作这个新 API 将旧资料融入新资料，因为反向融合没有任何意义。
     public func inheritAvatars(from oldInfo: Self?) -> Self {
@@ -104,7 +104,7 @@ extension EKQueriedProfileProtocol {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension EKQueriedProfileProtocol {
     public func saveToCache() {
         let encodedData = try? JSONEncoder().encode(self)
@@ -208,7 +208,7 @@ extension EKQueriedProfileProtocol {
 
 // MARK: - EKQueriedRawAvatarProtocol
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol EKQueriedRawAvatarProtocol: Identifiable, Hashable, Equatable, Sendable {
     associatedtype DBType: EnkaDBProtocol where DBType.QueriedProfile.QueriedAvatar == Self
     var avatarId: Int { get }

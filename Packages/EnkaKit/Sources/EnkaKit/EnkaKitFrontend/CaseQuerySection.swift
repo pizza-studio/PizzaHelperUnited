@@ -11,7 +11,7 @@ import WallpaperKit
 
 // MARK: - CaseQuerySection
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     // MARK: Lifecycle
 
@@ -215,7 +215,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
 
 #if DEBUG
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 #Preview {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping

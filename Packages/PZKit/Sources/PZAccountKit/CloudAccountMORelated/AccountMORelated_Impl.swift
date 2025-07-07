@@ -8,7 +8,7 @@ import PZCoreDataKit4LocalAccounts
 @preconcurrency import Sworm
 
 #if !os(watchOS)
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(iOSApplicationExtension, unavailable)
 public typealias PZAccountMODebugView = AccountMODebugView
 #endif

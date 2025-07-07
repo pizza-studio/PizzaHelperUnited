@@ -10,7 +10,7 @@ import UserNotifications
 
 // MARK: - UserDefaultsProfileSynchronizer
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct UserDefaultsProfileSynchronizer: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -22,7 +22,7 @@ private struct UserDefaultsProfileSynchronizer: ViewModifier {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension View {
     @ViewBuilder
     func syncProfilesToUserDefaults() -> some View {

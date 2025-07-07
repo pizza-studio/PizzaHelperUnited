@@ -7,7 +7,7 @@ import PZBaseKit
 
 // MARK: - Enka.CharacterName
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     public enum CharacterName {
         case protagonist(Protagonist)
@@ -68,7 +68,7 @@ extension Enka {
 
 // MARK: - Enka.CharacterName + RawRepresentable, AbleToCodeSendHash
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.CharacterName: RawRepresentable, AbleToCodeSendHash {
     public init(pid: Int) {
         self = Enka.CharacterName(rawValue: pid.description)
@@ -105,14 +105,14 @@ extension Enka.CharacterName: RawRepresentable, AbleToCodeSendHash {
 
 // MARK: - Enka.CharacterName + Identifiable
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.CharacterName: Identifiable {
     public var id: String { rawValue }
 }
 
 // MARK: - Enka.CharacterName + CustomStringConvertible
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.CharacterName: CustomStringConvertible {
     public var description: String {
         getDescription(officialName: false)

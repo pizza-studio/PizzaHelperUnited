@@ -8,7 +8,7 @@ import PZBaseKit
 
 // MARK: - HoYo.BattleReport4HSR
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     public struct BattleReport4HSR: BattleReport {
         // MARK: Lifecycle
@@ -35,7 +35,7 @@ extension HoYo {
 
 // MARK: - HoYo.BattleReport4HSR.TreasuresLightwardType
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4HSR {
     public enum TreasuresLightwardType: String, Identifiable, CaseIterable, AbleToCodeSendHash {
         case forgottenHall
@@ -73,7 +73,7 @@ extension HoYo.BattleReport4HSR {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.BattleReport4HSR {
     public struct LatestChallengeIntel: AbleToCodeSendHash {
         public let type: TreasuresLightwardType

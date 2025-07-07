@@ -11,7 +11,7 @@ import PZWidgetsKit
 // MARK: - SelectOnlyAccountIntent
 
 // Only for watchOS and iOS_Lock_Screen.
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
     ProfileWidgetIntentProtocol {
     // MARK: Lifecycle
@@ -60,7 +60,7 @@ public struct SelectOnlyAccountIntent: AppIntent, WidgetConfigurationIntent, Cus
 // MARK: - SelectAccountAndShowWhichInfoIntent
 
 // Only for watchOS and iOS_Lock_Screen.
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 public struct SelectAccountAndShowWhichInfoIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent,
     ProfileWidgetIntentProtocol {
     // MARK: Lifecycle

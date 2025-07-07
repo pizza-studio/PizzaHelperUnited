@@ -10,7 +10,7 @@ import WidgetKit
 
 #if !os(watchOS)
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public typealias WidgetBackgroundView = WidgetBackgroundView4DesktopWidgets
@@ -18,7 +18,7 @@ extension DesktopWidgets {
 
 // MARK: - WidgetBackgroundView4DesktopWidgets
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 public struct WidgetBackgroundView4DesktopWidgets: View {
     // MARK: Lifecycle
@@ -146,7 +146,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 
 // MARK: - ContainerBackgroundModifier
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension View {
     #if !os(watchOS)
     @available(watchOS, unavailable)
@@ -181,7 +181,7 @@ extension View {
 
 // MARK: - SmartStackWidgetContainerBackground
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
     let background: () -> B
 
@@ -196,7 +196,7 @@ private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
 
 // MARK: - ContainerBackgroundModifier
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 private struct ContainerBackgroundModifier: ViewModifier {
     var viewConfig: WidgetViewConfig
@@ -208,7 +208,7 @@ private struct ContainerBackgroundModifier: ViewModifier {
 
 // MARK: - ContainerBackgroundStandbyDetector
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 private struct ContainerBackgroundStandbyDetector: ViewModifier {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode

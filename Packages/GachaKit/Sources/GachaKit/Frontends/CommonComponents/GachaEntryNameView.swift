@@ -7,7 +7,7 @@ import EnkaKit
 import GachaMetaDB
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct GachaEntryNameView: View {
     // MARK: Lifecycle
 

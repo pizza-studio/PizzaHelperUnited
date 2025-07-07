@@ -9,7 +9,7 @@ import PZBaseKit
 
 // Ref: https://uigf.org/zh/standards/srgf.html
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct SRGFv1: AbleToCodeSendHash {
     // MARK: Lifecycle
 
@@ -24,7 +24,7 @@ public struct SRGFv1: AbleToCodeSendHash {
     public var list: [DataEntry]
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension SRGFv1 {
     private static func makeDecodingError(_ key: CodingKey) -> Error {
         let keyName = key.description
@@ -35,7 +35,7 @@ extension SRGFv1 {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension SRGFv1 {
     // MARK: - Info
 
@@ -70,7 +70,7 @@ extension SRGFv1 {
 
         // MARK: Internal
 
-        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, *)
         enum CodingKeys: String, CodingKey {
             case uid, lang
             case regionTimeZone = "region_time_zone"
@@ -154,7 +154,7 @@ extension SRGFv1 {
 
         // MARK: Internal
 
-        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, *)
         enum CodingKeys: String, CodingKey {
             case gachaID = "gacha_id"
             case gachaType = "gacha_type"
@@ -169,7 +169,7 @@ extension SRGFv1 {
 
 // MARK: - Extensions.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension SRGFv1 {
     public var defaultFileNameStem: String {
         let dateFormatter = DateFormatter.forUIGFFileName
@@ -177,7 +177,7 @@ extension SRGFv1 {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension SRGFv1.Info {
     public init(uid: String, lang: GachaLanguage) {
         self.uid = uid
@@ -198,7 +198,7 @@ extension SRGFv1.Info {
 
 // MARK: - Translating SRGF Entry to UIGF Entry.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension UIGFv4.GachaItemHSR {
     public init(fromSRGFEntry source: SRGFv1.DataEntry) {
         self = .init(
@@ -215,14 +215,14 @@ extension UIGFv4.GachaItemHSR {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension SRGFv1.DataEntry {
     public var asUIGFv4: UIGFv4.GachaItemHSR {
         .init(fromSRGFEntry: self)
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension SRGFv1 {
     public func upgradeToUIGFv4Profile() -> UIGFv4.ProfileHSR {
         .init(
@@ -239,7 +239,7 @@ extension SRGFv1 {
 /// 因为 UIGFv4 到 SRGFv1 的转换过程是无损转换，所以统一披萨引擎不再支持直接的 SRGFv1 导出。
 /// 对 SRGFv1 导出的导出流程定为：先生成 UIGFv4.ProfileHSR 再转换成 SRGFv1。
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension SRGFv1.DataEntry {
     public init(fromUIGFv4 source: UIGFv4.GachaItemHSR) {
         self = .init(
@@ -256,14 +256,14 @@ extension SRGFv1.DataEntry {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension UIGFv4.GachaItemHSR {
     public var asSRGFv1Item: SRGFv1.DataEntry {
         .init(fromUIGFv4: self)
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension SRGFv1.Info {
     public init(fromUIGFv4 source: UIGFv4.ProfileHSR) {
         self = .init(uid: source.uid, lang: source.lang ?? Locale.gachaLangauge)
@@ -271,7 +271,7 @@ extension SRGFv1.Info {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension SRGFv1 {
     public init(fromUIGFv4 source: UIGFv4.ProfileHSR) {
         self = .init(
@@ -281,14 +281,14 @@ extension SRGFv1 {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension UIGFv4.ProfileHSR {
     public var asSRGFv1: SRGFv1 {
         .init(fromUIGFv4: self)
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension UIGFv4 {
     public func extractSRGFv1() -> [SRGFv1]? {
         guard let uigfProfiles = hsrProfiles, !uigfProfiles.isEmpty else { return nil }

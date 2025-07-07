@@ -19,7 +19,7 @@ extension PZHelper {
     @MainActor
     public static func makeMainScene() -> some Scene {
         let windowToReturn = WindowGroup {
-            if #unavailable(iOS 17.0, macCatalyst 17.0, macOS 14.0) {
+            if #unavailable(iOS 17.0, macCatalyst 17.0) {
                 ContentView4iOS14()
             } else {
                 ContentView()
@@ -56,7 +56,7 @@ extension PZHelper {
         .windowToolbarStyle(.expanded)
         #endif
 
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, *) {
             return windowToReturn
                 .windowResizability(.contentMinSize)
         } else {
@@ -67,7 +67,7 @@ extension PZHelper {
     @MainActor static var isApplicationBooted = false
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZHelper {
     @MainActor
     static func startupTasks() {
@@ -84,7 +84,7 @@ extension PZHelper {
 
 // MARK: - AppInitializer
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct AppInitializer: ViewModifier {
     // MARK: Lifecycle
 
@@ -109,7 +109,7 @@ private struct AppInitializer: ViewModifier {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension View {
     @ViewBuilder
     func initializeApp() -> some View {

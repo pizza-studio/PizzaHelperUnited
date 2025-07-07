@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     /// 任何需要解读 pfp 里面的 avatarID 与 CostumeID 的账号
     /// 都只可能在这两个栏位填入原神 4.1 之前的角色与皮肤。

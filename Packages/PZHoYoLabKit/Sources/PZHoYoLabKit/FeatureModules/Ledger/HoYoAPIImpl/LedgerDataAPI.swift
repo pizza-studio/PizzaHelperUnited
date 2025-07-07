@@ -6,7 +6,7 @@ import Alamofire
 import Foundation
 import PZAccountKit
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     public static func getLedgerData(for profile: PZProfileSendable) async throws -> (any Ledger)? {
         switch profile.game {
@@ -17,7 +17,7 @@ extension HoYo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     static func ledgerData4GI(for profile: PZProfileSendable) async throws -> LedgerData4GI? {
         guard var month = Calendar.gregorian.dateComponents([.month], from: Date()).month else { return nil }
@@ -61,7 +61,7 @@ extension HoYo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo {
     private static func ledgerData4GI(
         month: Int, uid: String, server: Server, cookie: String
@@ -160,7 +160,7 @@ extension HoYo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.AccountRegion {
     public var ledgerDataRetrievalPath: String {
         switch (self, game) {

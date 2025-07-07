@@ -13,7 +13,7 @@ import PZBaseKit
 
 // MARK: - GachaMeta.Sputnik
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta {
     public enum Sputnik {}
 
@@ -27,7 +27,7 @@ extension GachaMeta {
 
 /// 备注：此处不宜将 GachaMetaDB 继续用作 Root Namespace，
 /// 否则 Observable Macro 生成的内容在这个代码文脉下会产生冲突性质的 compile-time error。
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta {
     public static let sharedDB = GachaMeta.DBSet()
 
@@ -67,7 +67,7 @@ extension GachaMeta {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta.Sputnik {
     @MainActor
     public static func updateLocalGachaMetaDB(for game: Pizza.SupportedGame) async throws {
@@ -117,7 +117,7 @@ extension GachaMeta.Sputnik {
 
 // MARK: - GachaMeta.Trie
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta {
     class Trie {
         // MARK: Lifecycle
@@ -162,7 +162,7 @@ extension GachaMeta {
 
         // MARK: Fileprivate
 
-        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, *)
         fileprivate class Node {
             var children: [Character: Node] = [:]
             var isWord: Bool = false
@@ -178,7 +178,7 @@ extension GachaMeta {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta.Trie.Node {
     /// key 应该是米哈游官方用字，而 value 是其可能的笔画相似的错别字或非官方用字。
     /// 抽卡记录的原始数据原则上只能使用米哈游官方用字，哪怕米哈游自己用了错别字。
@@ -238,7 +238,7 @@ extension GachaMeta.Trie.Node {
 
 // MARK: - GachaMeta.GMDBError
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension GachaMeta {
     public enum GMDBError: Error, LocalizedError {
         case emptyFetchResult
@@ -274,7 +274,7 @@ extension GachaMeta {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HoYo.AccountRegion {
     fileprivate var gmdbServerViceVersa: Self {
         switch self {
@@ -291,7 +291,7 @@ extension HoYo.AccountRegion {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.HostType {
     fileprivate func getRemoteGMDBFileURL(game: Pizza.SupportedGame) -> URL {
         let baseStr: String = switch game {

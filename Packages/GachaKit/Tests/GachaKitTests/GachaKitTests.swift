@@ -6,7 +6,7 @@
 import GachaMetaDB
 import XCTest
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @MainActor
 final class GachaKitGMDBTests: XCTestCase {
     func testFetchingRemoteData() async throws {

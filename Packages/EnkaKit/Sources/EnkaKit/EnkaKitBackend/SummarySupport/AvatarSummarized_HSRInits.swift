@@ -7,7 +7,7 @@ import EnkaDBModels
 
 // MARK: - Constructors for summarizing Enka query results.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo {
     // MARK: Lifecycle
 
@@ -40,7 +40,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     /// 星穹铁道专用建构子。
     public init?(
@@ -109,7 +109,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.WeaponPanel {
     // MARK: Lifecycle
 
@@ -143,7 +143,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.ArtifactInfo {
     // MARK: Lifecycle
 
@@ -192,7 +192,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
 
 // MARK: - Constructors for summarizing HoYoLAB query results.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo {
     public init?(hsrDB: Enka.EnkaDB4HSR, hylRAW: HYQueriedModels.HYLAvatarDetail4HSR) {
         let charIDStr = hylRAW.avatarIdStr
@@ -224,7 +224,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     public init?(hsrDB: Enka.EnkaDB4HSR, hylRAW: HYQueriedModels.HYLAvatarDetail4HSR) {
         var charID = hylRAW.id
@@ -290,7 +290,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.WeaponPanel {
     public init?(hsrDB: Enka.EnkaDB4HSR, hylRAW: HYQueriedModels.HYLAvatarDetail4HSR) {
         guard let weaponRAW = hylRAW.equip else { return nil }
@@ -319,7 +319,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.ArtifactInfo {
     public init?(
         hsrDB: Enka.EnkaDB4HSR,

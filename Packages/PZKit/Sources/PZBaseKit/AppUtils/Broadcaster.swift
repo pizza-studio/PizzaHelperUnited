@@ -9,7 +9,7 @@ import WidgetKit
 
 // MARK: - Broadcaster
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 @Observable @MainActor
 public final class Broadcaster {
     public static let shared = Broadcaster()
@@ -51,7 +51,7 @@ public final class Broadcaster {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension Broadcaster {
     public func reloadAllTimeLinesAcrossWidgets() {
         WidgetCenter.shared.reloadAllTimelines()

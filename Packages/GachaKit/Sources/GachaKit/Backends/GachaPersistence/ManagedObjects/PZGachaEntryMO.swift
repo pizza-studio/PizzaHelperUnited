@@ -8,7 +8,7 @@ import SwiftData
 
 // MARK: - PZGachaEntryMO
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @Model
 public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
     // MARK: Lifecycle
@@ -112,7 +112,7 @@ public final class PZGachaEntryMO: Codable, PZGachaEntryProtocol {
 
 // MARK: - Predicates.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZGachaEntryMO {
     public static func predicate(
         owner gachaProfile: (any GachaProfileIDProtocol)?,
@@ -140,7 +140,7 @@ extension PZGachaEntryMO {
 
 // MARK: - Update Existing GachaEntryMO information. (no need to extend the PZGachaEntryProtocol.)
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZGachaEntryMO {
     public func inherit(from target: PZGachaEntryProtocol) {
         game = target.game
@@ -160,7 +160,7 @@ extension PZGachaEntryMO {
 
 // MARK: - Date Time Sanity Check.
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZGachaEntryMO {
     public func fixTimeFieldIfNecessary(context: ModelContext) throws {
         guard !time.isUIGFDateTimeFormat else { return }

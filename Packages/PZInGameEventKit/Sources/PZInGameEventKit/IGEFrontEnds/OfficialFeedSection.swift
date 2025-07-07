@@ -12,7 +12,7 @@ import SwiftUI
 
 // MARK: - OfficialFeed.OfficialFeedSection
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension OfficialFeed {
     @available(watchOS, unavailable)
     public struct OfficialFeedSection<TT: View, HH: View>: View {
@@ -99,7 +99,7 @@ extension OfficialFeed {
 
 // MARK: - OfficialFeed.OfficialFeedSection.MainComponent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension OfficialFeed.OfficialFeedSection {
     private struct MainComponent<T: View, H: View>: View {
         // MARK: Public
@@ -194,7 +194,7 @@ extension OfficialFeed.OfficialFeedSection {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @Observable
 private final class OfficialFeedVM: TaskManagedVM {
     public static let shared = OfficialFeedVM()
@@ -218,7 +218,7 @@ private final class OfficialFeedVM: TaskManagedVM {
 
 #if DEBUG
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct TestOfficialFeedSectionView: View {
     @State var game: Pizza.SupportedGame?
 
@@ -231,7 +231,7 @@ private struct TestOfficialFeedSectionView: View {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 #Preview {
     TestOfficialFeedSectionView()
 }

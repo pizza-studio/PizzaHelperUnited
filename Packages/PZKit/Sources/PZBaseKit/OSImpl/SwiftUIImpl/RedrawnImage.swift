@@ -6,7 +6,7 @@ import SwiftUI
 
 // MARK: - RedrawnImage
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
+@available(iOS 16.0, macCatalyst 16.0, watchOS 9.0, *)
 public struct RedrawnImage {
     // MARK: Lifecycle
 
@@ -34,7 +34,7 @@ public struct RedrawnImage {
     private let targetSize: CGSize
 }
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, watchOS 9.0, *)
+@available(iOS 16.0, macCatalyst 16.0, watchOS 9.0, *)
 extension Image {
     public func redrawn(_ size: CGSize) -> Image {
         RedrawnImage(self, size: size).redrawn

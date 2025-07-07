@@ -8,7 +8,7 @@ import WallpaperKit
 
 // MARK: - CharacterIconView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct CharacterIconView: View {
     // MARK: Lifecycle
 
@@ -385,7 +385,7 @@ public struct CharacterIconView: View {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.GameElement {
     public var linearGradientAsBackground: LinearGradient {
         let suiColor = themeColor.suiColor
@@ -403,7 +403,7 @@ extension Enka.GameElement {
 // MARK: - EachAvatarStatView_Previews
 
 #if DEBUG
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 struct IDPhotoView_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 0) {

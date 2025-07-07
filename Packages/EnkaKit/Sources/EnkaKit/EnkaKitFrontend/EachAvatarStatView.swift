@@ -10,7 +10,7 @@ import WallpaperKit
 
 // MARK: - EachAvatarStatView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct EachAvatarStatView: View {
     // MARK: Lifecycle
 
@@ -204,7 +204,7 @@ public struct EachAvatarStatView: View {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.CharacterID {
     @MainActor @ViewBuilder
     public func asRowBG(element: Enka.GameElement? = nil) -> some View {
@@ -320,7 +320,7 @@ extension Enka.AvatarSummarized.CharacterID {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized {
     @MainActor @ViewBuilder
     public func asView(background: Bool = false) -> some View {
@@ -348,7 +348,7 @@ extension Enka.AvatarSummarized {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo {
     @MainActor @ViewBuilder
     public func asView(fontSize: CGFloat) -> some View {
@@ -449,7 +449,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
     @ViewBuilder
     func levelDisplay(size: CGFloat) -> some View {
@@ -494,7 +494,7 @@ extension Enka.AvatarSummarized.AvatarMainInfo.BaseSkillSet.BaseSkill {
 
 // MARK: - WeaponPanelView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct WeaponPanelView: View {
     // MARK: Lifecycle
 
@@ -590,7 +590,7 @@ private struct WeaponPanelView: View {
     private let iconImg: Image?
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.WeaponPanel {
     @MainActor @ViewBuilder
     public func asView(fontSize: CGFloat) -> some View {
@@ -600,7 +600,7 @@ extension Enka.AvatarSummarized.WeaponPanel {
 
 // MARK: - ArtifactView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct ArtifactView: View {
     // MARK: Lifecycle
 
@@ -736,7 +736,7 @@ private struct ArtifactView: View {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka.AvatarSummarized.ArtifactInfo {
     @MainActor @ViewBuilder
     public func asView(fontSize: CGFloat, langTag: String) -> some View {
@@ -746,7 +746,7 @@ extension Enka.AvatarSummarized.ArtifactInfo {
 
 // MARK: - AttributeTagPair
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct AttributeTagPair: View {
     // MARK: Lifecycle
 
@@ -813,7 +813,7 @@ public struct AttributeTagPair: View {
 
 #if DEBUG
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @MainActor private let summariesHSR: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
@@ -825,7 +825,7 @@ public struct AttributeTagPair: View {
     // swiftlint:enable force_unwrapping
 }()
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @MainActor private let summariesGI: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
@@ -837,7 +837,7 @@ public struct AttributeTagPair: View {
     // swiftlint:enable force_unwrapping
 }()
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @MainActor private let summariesHSRofHoYoLAB: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
@@ -849,7 +849,7 @@ public struct AttributeTagPair: View {
     // swiftlint:enable force_unwrapping
 }()
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @MainActor private let summariesGIofHoYoLAB: [Enka.AvatarSummarized] = {
     // swiftlint:disable force_try
     // swiftlint:disable force_unwrapping
@@ -861,7 +861,7 @@ public struct AttributeTagPair: View {
     // swiftlint:enable force_unwrapping
 }()
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 #Preview {
     TabView {
         TabView {

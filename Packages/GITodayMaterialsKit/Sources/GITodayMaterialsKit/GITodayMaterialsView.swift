@@ -10,7 +10,7 @@ import WallpaperKit
 
 // MARK: - GITodayMaterialsView
 
-@available(iOS 16.0, macCatalyst 16.0, macOS 13.0, *)
+@available(iOS 16.0, macCatalyst 16.0, *)
 @available(watchOS, unavailable)
 public struct GITodayMaterialsView<T: View>: View {
     // MARK: Lifecycle
@@ -140,7 +140,7 @@ public struct GITodayMaterialsView<T: View>: View {
 
 #if DEBUG
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 #Preview {
     NavigationStack {

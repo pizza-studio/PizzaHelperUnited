@@ -8,12 +8,12 @@ import PZBaseKit
 
 // MARK: - HYQueriedModels
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum HYQueriedModels {}
 
 // MARK: - DecodableHYLAvatarListProtocol
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol DecodableHYLAvatarListProtocol: AbleToCodeSendHash & DecodableFromMiHoYoAPIJSONResult {
     associatedtype Content = HYQueriedAvatarProtocol
     var avatarList: [Content] { get }
@@ -21,7 +21,7 @@ public protocol DecodableHYLAvatarListProtocol: AbleToCodeSendHash & DecodableFr
 
 // MARK: - HYQueriedAvatarProtocol
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol HYQueriedAvatarProtocol: Identifiable, Equatable, AbleToCodeSendHash {
     associatedtype DBType: EnkaDBProtocol where DBType.HYLAvatarDetailType == Self
     associatedtype DecodableList: DecodableHYLAvatarListProtocol where DecodableList.Content == Self
@@ -32,7 +32,7 @@ public protocol HYQueriedAvatarProtocol: Identifiable, Equatable, AbleToCodeSend
     func summarize(theDB: DBType) -> Enka.AvatarSummarized?
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension HYQueriedAvatarProtocol {
     public static func cacheLocalHoYoAvatars(uid: String, data: Data) {
         let decoded = try? Self.DecodableList.decodeFromMiHoYoAPIJSONResult(

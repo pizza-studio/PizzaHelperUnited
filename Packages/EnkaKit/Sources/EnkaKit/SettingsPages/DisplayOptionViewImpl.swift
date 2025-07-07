@@ -8,7 +8,7 @@ import Defaults
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Enka {
     public struct DisplayOptionViewContents: View {
         // MARK: Lifecycle
@@ -179,7 +179,7 @@ extension Enka {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 #Preview {
     Form {
         Enka.DisplayOptionViewContents()

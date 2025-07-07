@@ -5,7 +5,7 @@
 import Alamofire
 import Foundation
 
-@available(iOS 15.0, macCatalyst 15.0, macOS 12.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 extension HoYo {
     public static func getUserGameRolesByCookie(
         region: AccountRegion,
