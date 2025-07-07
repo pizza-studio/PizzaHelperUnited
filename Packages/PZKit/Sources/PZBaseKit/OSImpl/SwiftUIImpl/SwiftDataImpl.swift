@@ -44,7 +44,7 @@ extension PersistentIdentifier {
             return lhs.union(rhs.map(\.entityName))
         }
         #if DEBUG
-        if !entityNames.isEmpty {
+        if let firstEntityName = entityNames.first, !(firstEntityName.hasPrefix("NSCK")) {
             print("Parsed SwiftData entity names: \(entityNames), from userInfo: \(userInfo)")
         }
         #endif
@@ -66,7 +66,7 @@ extension NSManagedObjectID {
             return lhs.union(rhs.compactMap(\.entity.name))
         }
         #if DEBUG
-        if !entityNames.isEmpty {
+        if let firstEntityName = entityNames.first, !(firstEntityName.hasPrefix("NSCK")) {
             print("Parsed CoreData entity names: \(entityNames), from userInfo: \(userInfo)")
         }
         #endif
