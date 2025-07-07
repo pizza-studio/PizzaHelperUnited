@@ -53,8 +53,7 @@ private struct CanvasSizeTracker: ViewModifier {
 
 // MARK: - SizeState
 
-/// This doesn't need to be @Observable,
-/// but we use ObservableObject to hinder it from being reinitialized again-and-again.
+/// This doesn't need to be @Observable.
 @MainActor
 private class SizeState {
     // MARK: Lifecycle

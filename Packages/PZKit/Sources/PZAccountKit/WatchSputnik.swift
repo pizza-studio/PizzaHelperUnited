@@ -13,7 +13,7 @@ import WatchConnectivity
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 @Observable
-public final class AppleWatchSputnik: NSObject, ObservableObject {
+public final class AppleWatchSputnik: NSObject {
     // MARK: Lifecycle
 
     private override init() {
