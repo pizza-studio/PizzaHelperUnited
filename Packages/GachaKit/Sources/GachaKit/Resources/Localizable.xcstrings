@@ -9844,6 +9844,82 @@
         }
       }
     },
+    "gachaKit.prompt.remoteChangesDetected.withRecommendedAction" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remote iCloud SwiftData-Änderungen wurden erkannt und bereits im Backend angewendet. Bitte überprüfen Sie das Dropdown-Menü oben rechts, um „Gacha-UID-Liste neu erstellen“ auszuführen, oder starten Sie diese App neu, damit die Änderungen sichtbar werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remote iCloud SwiftData changes are detected and are already applied in the backend. Please check the top-trailing dropdown menu to run “Rebuild Gacha UID List” or restart this app to let those changes visible to you."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se detectaron cambios remotos de iCloud SwiftData y ya se aplicaron en el backend. Por favor, revisa el menú desplegable superior derecho para ejecutar “Reconstruir lista de UID de Gacha” o reinicia esta aplicación para que los cambios sean visibles."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "May natukoy na remote iCloud SwiftData na mga pagbabago at naipatupad na sa backend. Pakisuri ang dropdown menu sa itaas-kanan upang patakbuhin ang “Rebuild Gacha UID List” o i-restart ang app na ito upang makita ang mga pagbabagong iyon."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Des modifications distantes iCloud SwiftData ont été détectées et déjà appliquées en arrière-plan. Veuillez consulter le menu déroulant en haut à droite pour lancer « Reconstruire la liste des UID Gacha » ou redémarrer cette application pour rendre ces modifications visibles."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sono state rilevate modifiche remote di iCloud SwiftData già applicate nel backend. Controlla il menu a discesa in alto a destra per eseguire \"Ricostruisci elenco UID Gacha\" o riavvia questa app per rendere visibili tali modifiche."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リモートの iCloud SwiftData の変更が検出され、すでにバックエンドに適用されています。右上のドロップダウンメニューから「ガチャUIDリストを再構築」を実行するか、このアプリを再起動して変更内容を反映させてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원격 iCloud SwiftData 변경 사항이 감지되어 백엔드에 이미 적용되었습니다. 오른쪽 상단 드롭다운 메뉴에서 '가챠 UID 목록 재구성'을 실행하거나 앱을 재시작하여 변경 사항을 확인하세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обнаружены удалённые изменения iCloud SwiftData, которые уже применены на сервере. Проверьте выпадающее меню в правом верхнем углу, чтобы выполнить «Перестроить список Gacha UID», или перезапустите приложение, чтобы увидеть эти изменения."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã phát hiện các thay đổi từ xa của iCloud SwiftData và đã được áp dụng ở backend. Vui lòng kiểm tra menu thả xuống ở góc trên bên phải để chạy “Xây dựng lại danh sách UID Gacha” hoặc khởi động lại ứng dụng này để các thay đổi đó hiển thị."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检测到远程 iCloud SwiftData 变更，且已在后台套用。请在右上角下拉选单中执行「重建抽卡记录 UID 清单」，或重启本应用以使这些变更可见。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "偵測到遠端 iCloud SwiftData 變更，且已在後台套用。請在右上角下拉選單中執行「重建抽卡記錄 UID 清單」，或重啟敝應用以使這些變更可見。"
+          }
+        }
+      }
+    },
     "gachaKit.reviewFromAppraiser.gi" : {
       "extractionState" : "manual",
       "localizations" : {

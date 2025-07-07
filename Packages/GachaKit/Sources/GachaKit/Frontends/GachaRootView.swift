@@ -153,6 +153,15 @@ public struct GachaRootView: View {
 extension GachaRootView {
     @ViewBuilder public var coreBody: some View {
         Form {
+            if theVM.remoteChangesAvailable {
+                Text(
+                    "gachaKit.prompt.remoteChangesDetected.withRecommendedAction",
+                    bundle: .module
+                )
+                .font(.caption)
+                .fontWeight(.medium)
+                .fontWidth(.condensed)
+            }
             if theVM.currentGPID != nil {
                 GachaProfileView()
             } else if !theVM.hasGPID.wrappedValue {
