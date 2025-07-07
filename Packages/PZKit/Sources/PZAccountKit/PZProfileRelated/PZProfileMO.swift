@@ -99,36 +99,3 @@ extension PZProfileMO {
         server = target.server
     }
 }
-
-// MARK: - FakePZProfileMO
-
-#if DEBUG
-
-public struct FakePZProfileMO: ProfileMOProtocol, Sendable {
-    // MARK: Lifecycle
-
-    public init(game: PZBaseKit.Pizza.SupportedGame, uid: String) {
-        self.game = game
-        self.uid = uid
-        self.server = .asia(game)
-    }
-
-    // MARK: Public
-
-    public var game: PZBaseKit.Pizza.SupportedGame
-    public var uid: String
-    public var allowNotification: Bool = true
-    public var cookie: String = ""
-    public var deviceFingerPrint: String = ""
-    public var name: String = ""
-    public var priority: Int = 0
-    public var serverRawValue: String = ""
-    public var sTokenV2: String? = ""
-    public var uuid: UUID = .init()
-    public var deviceID: String = ""
-    public var server: HoYo.Server = .asia(.genshinImpact)
-
-    public var id: UUID { uuid }
-}
-
-#endif

@@ -223,10 +223,6 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
 // swiftlint:disable force_try
 // swiftlint:disable force_unwrapping
 @available(iOS 17.0, macCatalyst 17.0, *) private let enkaDatabaseGI = try! Enka.EnkaDB4GI(locTag: "zh-tw")
-@available(iOS 17.0, macCatalyst 17.0, *) private let testAccountMO = FakePZProfileMO(
-    game: .genshinImpact,
-    uid: "114514810"
-)
 // swiftlint:enable force_try
 // swiftlint:enable force_unwrapping
 
@@ -235,7 +231,12 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
     /// 注意：请仅用 iOS 或者 MacCatalyst 来预览。AppKit 无法正常处理这个 View。
     NavigationStack {
         List {
-            ProfileShowCaseSections(theDB: enkaDatabaseGI, pzProfile: testAccountMO)
+            if let testAccountMO = PZProfileRef.makeInheritedInstance(
+                game: .genshinImpact,
+                uid: "114514810"
+            )?.asSendable {
+                ProfileShowCaseSections(theDB: enkaDatabaseGI, pzProfile: testAccountMO)
+            }
         }
     }
     .environment(\.locale, .init(identifier: "zh-Hant-TW"))
