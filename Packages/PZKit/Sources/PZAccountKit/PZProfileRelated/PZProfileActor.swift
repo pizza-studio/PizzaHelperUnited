@@ -11,7 +11,7 @@ import SwiftData
 
 // MARK: - PZProfileSwiftData
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum PZProfileSwiftData {
     @ModelActor
     public actor PZProfileActor {
@@ -43,12 +43,12 @@ public enum PZProfileSwiftData {
 
 // MARK: - PZProfileActor
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public typealias PZProfileActor = PZProfileSwiftData.PZProfileActor
 
 // MARK: - PZProfileActor.
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
     public static let shared = PZProfileActor()
 
@@ -114,7 +114,7 @@ extension PZProfileActor {
 
 // MARK: - AccountMO Related.
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
     private func acceptMigratedOldAccountProfiles(
         oldData: [PZProfileSendable],
@@ -311,7 +311,7 @@ extension PZProfileActor {
 
 // MARK: - Backup and Restore
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
     @discardableResult
     public func syncAllDataToUserDefaults() -> [PZProfileSendable] {
@@ -347,7 +347,7 @@ extension PZProfileActor {
 
 // MARK: - Deduplication.
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
     /// Warning: 该方法仅对 SwiftData 资料库有操作，不影响 UserDefaults。
     @discardableResult
@@ -380,7 +380,7 @@ extension PZProfileActor {
 
 // MARK: - DeviceFP Propagation.
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
     /// This only works with Miyoushe UIDs.
     public func propagateDeviceFingerprint(_ fingerprint: String) throws {

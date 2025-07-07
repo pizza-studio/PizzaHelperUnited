@@ -14,7 +14,7 @@ extension Image {
 
 // MARK: - HelpTextForScrollingOnDesktopComputer
 
-@available(iOS 16.0, macCatalyst 16.0, watchOS 9.0, *)
+@available(iOS 16.0, macCatalyst 16.0, *)
 public struct HelpTextForScrollingOnDesktopComputer: View {
     // MARK: Lifecycle
 
@@ -47,7 +47,7 @@ public struct HelpTextForScrollingOnDesktopComputer: View {
 
 // MARK: - CornerTaggedViewModifier
 
-@available(iOS 16.0, macCatalyst 16.0, watchOS 10.0, *)
+@available(iOS 16.0, macCatalyst 16.0, *)
 struct CornerTaggedViewModifier<T: View>: ViewModifier {
     // MARK: Lifecycle
 
@@ -128,7 +128,7 @@ extension View {
         @ViewBuilder backgroundOverride: () -> some View
     )
         -> some View {
-        if enabled, #available(iOS 16.0, macCatalyst 16.0, watchOS 10.0, *) {
+        if enabled, #available(iOS 16.0, macCatalyst 16.0, *) {
             modifier(
                 CornerTaggedViewModifier(
                     verbatim: stringVerbatim,
@@ -155,7 +155,7 @@ extension View {
         padding: CGFloat = 0
     )
         -> some View {
-        if enabled, #available(iOS 16.0, macCatalyst 16.0, watchOS 10.0, *) {
+        if enabled, #available(iOS 16.0, macCatalyst 16.0, *) {
             modifier(
                 CornerTaggedViewModifier<EmptyView>(
                     verbatim: stringVerbatim,
@@ -178,7 +178,7 @@ extension View {
 extension View {
     @ViewBuilder
     public func blurMaterialBackground(enabled: Bool = true) -> some View {
-        if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
+        if #available(iOS 15.0, macCatalyst 15.0, *), enabled {
             modifier(BlurMaterialBackground())
         } else {
             self
@@ -187,7 +187,7 @@ extension View {
 
     @ViewBuilder
     public func adjustedBlurMaterialBackground(enabled: Bool = true) -> some View {
-        if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
+        if #available(iOS 15.0, macCatalyst 15.0, *), enabled {
             modifier(AdjustedBlurMaterialBackground())
         } else {
             self
@@ -196,7 +196,7 @@ extension View {
 
     @ViewBuilder
     public func listRowMaterialBackground(enabled: Bool = true) -> some View {
-        if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
+        if #available(iOS 15.0, macCatalyst 15.0, *), enabled {
             listRowBackground(
                 Color.clear.background(.thinMaterial, in: Rectangle())
             )
@@ -208,7 +208,7 @@ extension View {
 
 // MARK: - BlurMaterialBackground
 
-@available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 struct BlurMaterialBackground: ViewModifier {
     @ViewBuilder
     public func body(content: Content) -> some View {
@@ -222,7 +222,7 @@ struct BlurMaterialBackground: ViewModifier {
 
 // MARK: - AdjustedBlurMaterialBackground
 
-@available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 struct AdjustedBlurMaterialBackground: ViewModifier {
     // MARK: Public
 
@@ -278,7 +278,7 @@ extension Font {
     }()
 }
 
-@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 extension CGColor {
     public var suiColor: Color {
         .init(cgColor: self)
@@ -325,7 +325,7 @@ public struct Divided<Content: View>: View {
 
 // MARK: - View.restoreAppTint.
 
-@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 extension View {
     @ViewBuilder
     public func restoreSystemTint() -> some View {
@@ -445,7 +445,7 @@ public enum NavBarTitleDisplayMode {
 
 // MARK: - InlineTextDescription
 
-@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 extension View {
     @ViewBuilder
     public func asInlineTextDescription() -> some View {

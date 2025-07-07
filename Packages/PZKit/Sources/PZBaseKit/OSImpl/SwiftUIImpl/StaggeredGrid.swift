@@ -6,7 +6,7 @@ import SwiftUI
 
 // MARK: - StaggeredGrid
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendable>: View {
     // MARK: Lifecycle
 
@@ -96,7 +96,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
 // MARK: - StaggeredGridVM
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @Observable @MainActor
 final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
     // MARK: Lifecycle
@@ -174,7 +174,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
 
 // MARK: - API Compatibility
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension StaggeredGrid {
     public init(
         columns: Int,

@@ -11,7 +11,6 @@ import WidgetKit
 
 // MARK: - ContentView
 
-@available(watchOS 10.0, *)
 public struct ContentView: View {
     // MARK: Lifecycle
 
@@ -98,7 +97,6 @@ public struct ContentView: View {
 
 // MARK: - DetailNavigator
 
-@available(watchOS 10.0, *)
 private struct DetailNavigator: View {
     // MARK: Lifecycle
 

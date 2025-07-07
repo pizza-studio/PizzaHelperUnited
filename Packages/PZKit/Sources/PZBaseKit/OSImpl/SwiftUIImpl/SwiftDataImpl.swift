@@ -6,7 +6,7 @@ import CoreData
 import Foundation
 import SwiftData
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension ModelActor {
     public func asyncInsert<T: PersistentModel>(_ model: T) throws {
         modelContext.insert(model)
@@ -29,7 +29,7 @@ extension ModelActor {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PersistentIdentifier {
     /// Handle notification userinfo table brought by `ModelContext.didSave`.
     public static func parseObjectNames(notificationResult maybeUserInfo: [AnyHashable: Any]?) -> Set<String> {

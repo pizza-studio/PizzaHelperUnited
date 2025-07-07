@@ -22,7 +22,7 @@ extension HoYo {
         public let seedTime: String
     }
 
-    @available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+    @available(iOS 17.0, macCatalyst 17.0, *)
     public static func getDeviceFingerPrint(
         region: HoYo.AccountRegion, deviceID: String? = nil, forceClean: Bool = false
     ) async throws

@@ -15,35 +15,30 @@ extension PZHelperWatch {
     @MainActor @SceneBuilder
     public static func makeMainScene() -> some Scene {
         WindowGroup {
-            if #available(watchOS 10.0, *) {
-                ContentView()
-                    .environment(\.horizontalSizeClass, .compact)
-                    .defaultAppStorage(.baseSuite)
-                    .onAppear {
-                        if !isApplicationBooted {
-                            startupTasks()
-                        }
-                        isApplicationBooted = true
+            ContentView()
+                .environment(\.horizontalSizeClass, .compact)
+                .defaultAppStorage(.baseSuite)
+                .onAppear {
+                    if !isApplicationBooted {
+                        startupTasks()
                     }
-                    .onAppBecomeActive {
-                        Task { @MainActor in
-                            await PZProfileActor.shared.syncAllDataToUserDefaults()
-                        }
-                        Task {
-                            await ASMetaSputnik.shared.updateMeta()
-                        }
+                    isApplicationBooted = true
+                }
+                .onAppBecomeActive {
+                    Task { @MainActor in
+                        await PZProfileActor.shared.syncAllDataToUserDefaults()
                     }
-                    .modelContainer(PZProfileActor.shared.modelContainer)
-            } else {
-                Text(verbatim: "Please upgrade to watchOS 10 or later.")
-            }
+                    Task {
+                        await ASMetaSputnik.shared.updateMeta()
+                    }
+                }
+                .modelContainer(PZProfileActor.shared.modelContainer)
         }
     }
 
     @MainActor public private(set) static var isApplicationBooted = false
 }
 
-@available(watchOS 10.0, *)
 extension PZHelperWatch {
     @MainActor
     private static func startupTasks() {

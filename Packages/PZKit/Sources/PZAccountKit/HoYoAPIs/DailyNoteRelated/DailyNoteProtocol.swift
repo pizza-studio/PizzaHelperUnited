@@ -6,7 +6,7 @@ import Foundation
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 15.0, macCatalyst 15.0, watchOS 8.0, *)
+@available(iOS 15.0, macCatalyst 15.0, *)
 extension PZProfileSendable {
     public func getDailyNote(cached returnCachedResult: Bool = false) async throws -> any DailyNoteProtocol {
         handleCachedResults: if returnCachedResult {
@@ -42,7 +42,7 @@ extension PZProfileSendable {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileMO {
     public func getDailyNote() async throws -> any DailyNoteProtocol {
         try await asSendable.getDailyNote()

@@ -8,7 +8,6 @@ import SwiftUI
 
 // MARK: - WatchStaminaDetailView
 
-@available(watchOS 10.0, *)
 struct WatchStaminaDetailView: View {
     let dailyNote: any DailyNoteProtocol
 

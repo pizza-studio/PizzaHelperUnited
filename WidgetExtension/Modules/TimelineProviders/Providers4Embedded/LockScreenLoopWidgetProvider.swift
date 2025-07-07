@@ -14,7 +14,7 @@ import WidgetKit
 // MARK: - LockScreenLoopWidgetProvider
 
 /// This struct actually "inherits" from LockScreenWidgetProvider with extra options.
-@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(macOS, unavailable)
 struct LockScreenLoopWidgetProvider: AppIntentTimelineProvider {
     // MARK: Lifecycle
