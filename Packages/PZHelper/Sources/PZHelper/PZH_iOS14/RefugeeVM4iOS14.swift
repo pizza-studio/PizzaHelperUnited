@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-import Combine
+import CoreData
 import GachaKit
 import PZCoreDataKit4GachaEntries
 import PZCoreDataKit4LocalAccounts
@@ -43,16 +43,19 @@ public final class RefugeeVM4iOS14: TaskManagedVM4OS21 {
 
     // MARK: Private
 
-    nonisolated(unsafe) private var cancellables: [AnyCancellable] = []
+    private var subscribed: Bool = false
 
     private func configurePublisherObservations() {
-        if #unavailable(iOS 17) {
-            // 警告：iOS 18 开始，严禁监听 `.NSManagedObjectContextDidSave`，否则必炸。
-            NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
-                .sink(receiveValue: { _ in
-                    self.startCountingDataEntriesTask(forced: false)
-                })
-                .store(in: &cancellables)
+        guard !subscribed else { return }
+        defer { subscribed = true }
+        NotificationCenter.default.addObserver(
+            forName: .NSManagedObjectContextDidSaveObjectIDs,
+            object: nil,
+            queue: nil // 不指定队列，依赖 actor 隔离
+        ) { notification in // Singleton 不需要 weak self。
+            Task { @MainActor in
+                self.startCountingDataEntriesTask(forced: false)
+            }
         }
     }
 }
