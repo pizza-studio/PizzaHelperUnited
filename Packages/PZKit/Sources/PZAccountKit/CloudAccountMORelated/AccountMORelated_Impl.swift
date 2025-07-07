@@ -2,10 +2,8 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
-@preconcurrency import CoreData
 import PZBaseKit
 import PZCoreDataKit4LocalAccounts
-@preconcurrency import Sworm
 
 #if !os(watchOS)
 @available(iOS 17.0, macCatalyst 17.0, *)
