@@ -9,39 +9,47 @@ import PZBaseKit
 import PZCoreDataKit4LocalAccounts
 import SwiftData
 
-// MARK: - PZProfileActor
+// MARK: - PZProfileSwiftData
 
 @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
-@ModelActor
-public actor PZProfileActor {
-    // MARK: Lifecycle
-
-    public init(unitTests: Bool = false) {
-        var isReset = false
-        if unitTests {
-            modelContainer = Self.makeContainer4UnitTests()
-        } else {
-            let newContainer = Self.makeContainer()
-            modelContainer = newContainer.container
-            isReset = newContainer.isReset
-        }
-        modelExecutor = DefaultSerialModelExecutor(
-            modelContext: .init(modelContainer)
-        )
-        Task { @MainActor in
-            let stillNeedsReset = await detectWhetherIsReset()
-            isReset = isReset || stillNeedsReset
-            // 处理资料库被重设的情形。
-            if isReset {
-                await failSafeRestoreAllDataFromUserDefaults()
+public enum PZProfileSwiftData {
+    @ModelActor
+    public actor PZProfileActor {
+        public init(unitTests: Bool = false) {
+            var isReset = false
+            if unitTests {
+                modelContainer = PZProfileActor.makeContainer4UnitTests()
             } else {
-                await syncAllDataToUserDefaults()
+                let newContainer = PZProfileActor.makeContainer()
+                modelContainer = newContainer.container
+                isReset = newContainer.isReset
+            }
+            modelExecutor = DefaultSerialModelExecutor(
+                modelContext: .init(modelContainer)
+            )
+            Task { @MainActor in
+                let stillNeedsReset = await detectWhetherIsReset()
+                isReset = isReset || stillNeedsReset
+                // 处理资料库被重设的情形。
+                if isReset {
+                    await failSafeRestoreAllDataFromUserDefaults()
+                } else {
+                    await syncAllDataToUserDefaults()
+                }
             }
         }
     }
+}
 
-    // MARK: Public
+// MARK: - PZProfileActor
 
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+public typealias PZProfileActor = PZProfileSwiftData.PZProfileActor
+
+// MARK: - PZProfileActor.
+
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
+extension PZProfileActor {
     public static let shared = PZProfileActor()
 
     public static var modelConfig: ModelConfiguration {
@@ -102,8 +110,6 @@ public actor PZProfileActor {
             fatalError("Could not create in-memory ModelContainer: \(error)")
         }
     }
-
-    // MARK: Private
 }
 
 // MARK: - AccountMO Related.
