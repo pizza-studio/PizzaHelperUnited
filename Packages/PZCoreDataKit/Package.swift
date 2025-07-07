@@ -38,7 +38,6 @@ let package = Package(
             dependencies: [
                 "PZCoreDataKitShared",
                 .product(name: "Sworm", package: "Sworm"),
-                .product(name: "Defaults", package: "Defaults"),
             ],
             resources: [
                 .process("Resources/"),
@@ -49,7 +48,6 @@ let package = Package(
             dependencies: [
                 "PZCoreDataKitShared",
                 .product(name: "Sworm", package: "Sworm"),
-                .product(name: "Defaults", package: "Defaults"),
             ],
             resources: [
                 .process("Resources/"),
