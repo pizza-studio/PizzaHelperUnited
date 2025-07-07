@@ -9,13 +9,13 @@ import Foundation
 public actor Debouncer {
     // MARK: Lifecycle
 
-    init(delay: TimeInterval) {
+    public init(delay: TimeInterval) {
         self.delay = delay
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    func debounce(_ action: @escaping @MainActor () async -> Void) async {
+    public func debounce(_ action: @escaping @MainActor () async -> Void) async {
         task?.cancel()
         task = Task { @MainActor [weak self] in
             guard let self else { return }
