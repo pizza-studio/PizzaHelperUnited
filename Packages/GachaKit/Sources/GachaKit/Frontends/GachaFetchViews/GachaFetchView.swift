@@ -196,9 +196,7 @@ extension GachaFetchView4Game {
         // MARK: Private
 
         @Observable
-        @available(iOS 17.0, *)
-        @available(macCatalyst 17.0, *)
-        @available(macOS 14.0, *)
+        @available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
         private class URLAwaitVM: TaskManagedVM {}
 
         @State private var pzProfiles: [PZProfileSendable] = []
