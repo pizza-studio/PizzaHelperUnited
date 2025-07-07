@@ -149,31 +149,27 @@ extension PZProfileActor {
         }
     }
 
-    @MainActor
     public static func migrateOldAccountsIntoProfiles(
         resetNotifications: Bool = true, isUnattended: Bool = false
-    ) throws {
-        let oldData = try AccountMOSputnik.shared.getAllAccountDataAsPZProfileSendable()
-        Task {
-            do {
-                try await PZProfileActor.shared.acceptMigratedOldAccountProfiles(
-                    oldData: oldData,
-                    resetNotifications: resetNotifications,
-                    isUnattended: isUnattended
-                )
-            } catch {
-                return
-            }
+    ) async throws {
+        do {
+            let oldData = try await CDAccountMOActor.shared.getAllAccountDataAsPZProfileSendable()
+            try await PZProfileActor.shared.acceptMigratedOldAccountProfiles(
+                oldData: oldData,
+                resetNotifications: resetNotifications,
+                isUnattended: isUnattended
+            )
+        } catch {
+            return
         }
     }
 
     /// An OOBE task attempts inheriting old AccountMOs from the previous Pizza Apps using obsolete engines.
     /// - Parameter resetNotifications: Recheck permissions for notifications && reload all timelines across widgets.
-    @MainActor
-    public static func attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: Bool = true) {
+    public static func attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: Bool = true) async {
         guard Pizza.isAppStoreRelease, !Defaults[.oldAccountMOAlreadyAutoInherited] else { return }
         do {
-            try migrateOldAccountsIntoProfiles(
+            try await migrateOldAccountsIntoProfiles(
                 resetNotifications: resetNotifications,
                 isUnattended: true
             )

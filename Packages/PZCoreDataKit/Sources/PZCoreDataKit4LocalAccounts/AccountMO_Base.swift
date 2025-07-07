@@ -9,7 +9,7 @@ import PZCoreDataKitShared
 
 // MARK: - AccountMOProtocol
 
-public protocol AccountMOProtocol: Codable, CDStoredGameAssignable {
+public protocol AccountMOProtocol: Codable, CDStoredGameAssignable, Sendable {
     static var entityName: String { get }
     static var modelName: String { get }
     static var containerName: String { get }

@@ -356,7 +356,7 @@ struct ProfileManagerPageContent: View {
         theVM.fireTask(
             cancelPreviousTask: false,
             givenTask: {
-                try PZProfileActor.migrateOldAccountsIntoProfiles()
+                try await PZProfileActor.migrateOldAccountsIntoProfiles()
             },
             errorHandler: { error in
                 errorMessage = error.localizedDescription
