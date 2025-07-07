@@ -80,7 +80,12 @@ extension ThisDevice {
     private static func getIdentifier4Vendor() -> String? {
         // Returns an object with a +1 retain count; the caller needs to release.
         func ioService(named name: String, wantBuiltIn: Bool) -> io_service_t? {
-            let default_port = kIOMainPortDefault
+            let default_port: mach_port_t
+            if #unavailable(macCatalyst 15.0, iOS 15.0) {
+                default_port = kIOMasterPortDefault
+            } else {
+                default_port = kIOMainPortDefault
+            }
             var iterator = io_iterator_t()
             defer { if iterator != IO_OBJECT_NULL { IOObjectRelease(iterator) } }
 
