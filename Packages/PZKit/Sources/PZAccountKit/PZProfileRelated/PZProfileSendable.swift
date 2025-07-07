@@ -62,6 +62,39 @@ extension PZProfileSendable {
         }
         return result
     }
+
+    /// 专门用来从旧版 AccountMO 迁移到全新的 PZProfileMO 账号体系的建构子。
+    /// 不过，为了在某些 Concurrency 环境下使用方便，这个建构子并不分配当前设备唯一的 DeviceID。
+    /// - Parameters:
+    ///   - game: 游戏。
+    ///   - uid: UID。
+    ///   - configuration: 旧版 AccountMO。
+    public static func makeInheritedInstanceWithRandomDeviceID(
+        game: Pizza.SupportedGame, uid: String,
+        configuration: AccountMOProtocol? = nil
+    )
+        -> Self? {
+        guard let server = HoYo.Server(uid: uid, game: game) else { return nil }
+        // .description 很重要，防止 EXC_BAD_ACCESS。
+        var result = getDummyInstance(for: game)
+        result.deviceID = UUID().uuidString
+
+        result.game = game
+        result.uid = uid
+        result.serverRawValue = server.rawValue
+        result.server = server.withGame(game)
+        if let configuration {
+            result.allowNotification = configuration.allowNotification
+            result.cookie = configuration.cookie
+            result.deviceFingerPrint = configuration.deviceFingerPrint
+            result.name = configuration.name
+            result.priority = configuration.priority
+            result.sTokenV2 = configuration.sTokenV2
+            result.uid = configuration.uid
+            result.uuid = configuration.uuid
+        }
+        return result
+    }
 }
 
 extension PZProfileSendable {
