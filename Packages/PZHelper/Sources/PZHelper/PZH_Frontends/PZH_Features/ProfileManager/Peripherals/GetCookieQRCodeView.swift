@@ -331,7 +331,6 @@ final class GetCookieQRCodeViewModel {
 
 // MARK: - HoYo.HandleBackgroundSessionsModifier
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo {
     /// 用于在 SwiftUI App 生命周期中处理背景 URL Session 事件的修饰器
     public struct HandleBackgroundSessionsModifier: ViewModifier {
@@ -350,7 +349,6 @@ extension HoYo {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension View {
     /// 添加处理 HoYo 背景 URL Session 事件的能力
     @ViewBuilder
@@ -359,7 +357,6 @@ extension View {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension View {
     @ViewBuilder
     fileprivate func onBackgroundURLSessionEvents(
@@ -374,7 +371,6 @@ extension View {
 private typealias UIViewRepresentable = NSViewRepresentable
 private typealias UIView = NSView
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension BackgroundURLSessionHandler {
     func makeNSView(context: Context) -> NSView {
         makeUIView(context: context)
@@ -386,7 +382,6 @@ extension BackgroundURLSessionHandler {
 
 // MARK: - BackgroundURLSessionHandler
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 private struct BackgroundURLSessionHandler: UIViewRepresentable {
     final class Coordinator: NSObject, URLSessionDelegate {
         // MARK: Lifecycle
@@ -439,7 +434,6 @@ private struct BackgroundURLSessionHandler: UIViewRepresentable {
 }
 
 // 为了支持在 SwiftUI 中捕获背景 session 事件
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
 extension HoYo {
     /// 在 SceneDelegate 或其他地方接收到背景 URL Session 事件时调用此方法
     public static func postBackgroundSessionEventNotification(
