@@ -83,7 +83,11 @@ public struct AccountMODebugView: View {
                 "This view enumerates all accountMO data from previous PizzaHelper4Genshin and PizzaHelper4HSR."
             )
             .font(.caption)
-            let allAccountData = try! Self.sputnik.allAccountData(for: game)
+            .onChange(of: game, initial: true) {
+                Task { @MainActor in
+                    allAccountData = try! await Self.sputnik.allAccountData(for: game)
+                }
+            }
             ForEach(allAccountData, id: \.uuid) { accountMO in
                 AccountMOItemDebugView(accountMO: accountMO)
             }
@@ -108,9 +112,11 @@ public struct AccountMODebugView: View {
 
     // MARK: Private
 
-    @MainActor private static let sputnik: AccountMOSputnik = .shared
+    @MainActor private static let sputnik: CDAccountMOActor = .shared
 
     @State private var game: PZCoreDataKit.CDStoredGame = .genshinImpact
+
+    @State private var allAccountData: [any AccountMOProtocol] = []
 
     private let casesOfGames: [PZCoreDataKit.CDStoredGame] = [.genshinImpact, .starRail]
 }

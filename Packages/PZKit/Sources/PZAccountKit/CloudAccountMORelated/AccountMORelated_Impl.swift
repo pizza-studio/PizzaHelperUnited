@@ -11,11 +11,11 @@ import PZCoreDataKit4LocalAccounts
 public typealias PZAccountMODebugView = AccountMODebugView
 #endif
 
-extension AccountMOSputnik {
+extension CDAccountMOActor {
     public func getAllAccountDataAsPZProfileSendable() throws -> [PZProfileSendable] {
         // Genshin.
         let genshinData: [PZProfileSendable]? = try allAccountData(for: .genshinImpact).compactMap { oldMO in
-            var result = PZProfileSendable.makeInheritedInstance(
+            var result = PZProfileSendable.makeInheritedInstanceWithRandomDeviceID(
                 game: .genshinImpact, uid: oldMO.uid, configuration: oldMO
             )
             result?.deviceID = oldMO.uuid.uuidString
@@ -23,7 +23,7 @@ extension AccountMOSputnik {
         }
         // StarRail.
         let hsrData: [PZProfileSendable]? = try allAccountData(for: .starRail).compactMap { oldMO in
-            var result = PZProfileSendable.makeInheritedInstance(
+            var result = PZProfileSendable.makeInheritedInstanceWithRandomDeviceID(
                 game: .starRail, uid: oldMO.uid, configuration: oldMO
             )
             result?.deviceID = oldMO.uuid.uuidString

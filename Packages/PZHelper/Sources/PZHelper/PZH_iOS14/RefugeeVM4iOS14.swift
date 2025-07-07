@@ -72,8 +72,8 @@ extension RefugeeVM4iOS14 {
         fireTask(
             cancelPreviousTask: forced, givenTask: {
                 var result = RefugeeFile()
-                result.oldGachaEntries4GI = try CDGachaMOSputnik.shared.getAllGenshinDataEntriesVanilla()
-                result.oldProfiles4GI = try AccountMOSputnik.shared.allAccountDataForGenshin()
+                result.oldGachaEntries4GI = try await CDGachaMOActor.shared.getAllGenshinDataEntriesVanilla()
+                result.oldProfiles4GI = try await CDAccountMOActor.shared.allAccountDataForGenshin()
                 return result
             }, completionHandler: { [weak self] newResult in
                 guard let this = self, let newResult else { return }
@@ -88,8 +88,8 @@ extension RefugeeVM4iOS14 {
         fireTask(
             cancelPreviousTask: forced, givenTask: {
                 var (intGacha, intProfile) = (0, 0)
-                intGacha = try CDGachaMOSputnik.shared.countAllDataEntries(for: .genshinImpact)
-                intProfile = try AccountMOSputnik.shared.countAllAccountData(for: .genshinImpact)
+                intGacha = try await CDGachaMOActor.shared.countAllDataEntries(for: .genshinImpact)
+                intProfile = try await CDAccountMOActor.shared.countAllAccountData(for: .genshinImpact)
                 return (intGacha, intProfile)
             }, completionHandler: { [weak self] newResult in
                 guard let this = self, let newResult else { return }

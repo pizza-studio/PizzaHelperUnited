@@ -6,10 +6,10 @@
 import PZCoreDataKitShared
 @preconcurrency import Sworm
 
-// MARK: - CDGachaMOSputnik
+// MARK: - CDGachaMOActor
 
-/// 警告：请务必不要直接初始化这个 class。请借由 GachaActor 来使用这个 class。
-public final class CDGachaMOSputnik: Sendable {
+/// 警告：请务必不要直接初始化这个 class。请使用 .shared。
+public actor CDGachaMOActor: Sendable {
     // MARK: Lifecycle
 
     public init(persistence: DBPersistenceMethod, backgroundContext: Bool) throws {
@@ -26,7 +26,7 @@ public final class CDGachaMOSputnik: Sendable {
 
     // MARK: Public
 
-    public static let shared = try! CDGachaMOSputnik(persistence: .cloud, backgroundContext: true)
+    public static let shared = try! CDGachaMOActor(persistence: .cloud, backgroundContext: true)
 
     public func confirmWhetherHavingData() async -> Bool {
         ((try? await countAllDataEntries()) ?? 0) > 0

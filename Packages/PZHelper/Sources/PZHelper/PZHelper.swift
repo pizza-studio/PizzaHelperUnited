@@ -71,8 +71,8 @@ extension PZHelper {
 extension PZHelper {
     @MainActor
     static func startupTasks() {
-        PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
         Task {
+            await PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
             await PZProfileActor.shared.syncAllDataToUserDefaults()
         }
         PZHelper.setupSpotlightSearch()

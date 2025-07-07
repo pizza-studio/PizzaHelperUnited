@@ -6,10 +6,10 @@
 import PZCoreDataKitShared
 @preconcurrency import Sworm
 
-// MARK: - AccountMOSputnik
+// MARK: - CDAccountMOActor
 
-@MainActor
-public final class AccountMOSputnik {
+/// 警告：请务必不要直接初始化这个 class。请使用 .shared。
+public actor CDAccountMOActor {
     // MARK: Lifecycle
 
     public init(persistence: DBPersistenceMethod, backgroundContext: Bool) throws {
@@ -26,32 +26,33 @@ public final class AccountMOSputnik {
 
     // MARK: Public
 
-    public static let shared = try! AccountMOSputnik(persistence: .cloud, backgroundContext: false)
+    public static let shared = try! CDAccountMOActor(persistence: .cloud, backgroundContext: true)
 
     public func queryAccountData(uuid givenUUID: String) throws -> (
         any AccountMOProtocol
     )? {
-        var result: [AccountMOProtocol] = []
-        try PZCoreDataKit.CDStoredGame.allCases.forEach { game in
+        let result: [AccountMOProtocol] = try PZCoreDataKit.CDStoredGame.allCases.compactMap { game in
             try theDB(for: game)?.perform { ctx in
                 switch game {
                 case .genshinImpact:
-                    try ctx.fetch(AccountMO4GI.all).forEach {
+                    return try ctx.fetch(AccountMO4GI.all).compactMap {
                         let decoded = try $0.decode()
                         if decoded.uuid.uuidString == givenUUID {
-                            result.append(decoded)
+                            return decoded
                         }
-                    }
+                        return nil
+                    } as [AccountMOProtocol]
                 case .starRail:
-                    try ctx.fetch(AccountMO4HSR.all).forEach {
+                    return try ctx.fetch(AccountMO4HSR.all).compactMap {
                         let decoded = try $0.decode()
                         if decoded.uuid.uuidString == givenUUID {
-                            result.append(decoded)
+                            return decoded
                         }
-                    }
+                        return nil
+                    } as [AccountMOProtocol]
                 }
             }
-        }
+        }.reduce([], +)
         guard let firstResult = result.first else { return nil }
         return firstResult
     }
