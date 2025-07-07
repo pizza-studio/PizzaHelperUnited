@@ -8,7 +8,6 @@ import PZCoreDataKit4LocalAccounts
 
 // MARK: - PZProfileRefProtocol
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 public protocol PZProfileRefProtocol: AnyObject, ProfileMOProtocol, Codable {
     init(
         game: Pizza.SupportedGame,
@@ -28,7 +27,6 @@ public protocol PZProfileRefProtocol: AnyObject, ProfileMOProtocol, Codable {
     var asSendable: PZProfileSendable { get }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileRefProtocol {
     @MainActor
     public static func new(server: HoYo.Server, uid: String) -> Self {
@@ -111,7 +109,6 @@ extension PZProfileRefProtocol {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileRefProtocol {
     public init(from decoder: any Decoder) throws {
         let decoded = try PZProfileSendable(from: decoder)

@@ -22,7 +22,6 @@ extension HoYo {
         public let seedTime: String
     }
 
-    @available(iOS 17.0, macCatalyst 17.0, *)
     public static func getDeviceFingerPrint(
         region: HoYo.AccountRegion, deviceID: String? = nil, forceClean: Bool = false
     ) async throws
@@ -96,7 +95,6 @@ extension HoYo.AccountRegion {
         }
     }
 
-    @available(iOS 15.0, macCatalyst 15.0, *)
     fileprivate func getFpExtFields(deviceID: String) -> String {
         switch self {
         case .miyoushe:
