@@ -5,6 +5,7 @@
 import Foundation
 import PZBaseKit
 import PZCoreDataKit4LocalAccounts
+import PZProfileCDMOBackports
 
 // MARK: - PZProfileSendable
 
@@ -125,6 +126,25 @@ extension PZProfileSendable {
 
 extension PZProfileSendable {
     public var asRef: PZProfileRef {
+        .init(
+            game: game,
+            server: server,
+            uid: uid,
+            uuid: uuid,
+            allowNotification: allowNotification,
+            cookie: cookie,
+            deviceFingerPrint: deviceFingerPrint,
+            name: name,
+            priority: priority,
+            serverRawValue: serverRawValue,
+            sTokenV2: sTokenV2,
+            deviceID: deviceID
+        )
+    }
+}
+
+extension PZProfileSendable {
+    public var asCDMO: PZProfileCDMO {
         .init(
             game: game,
             server: server,
