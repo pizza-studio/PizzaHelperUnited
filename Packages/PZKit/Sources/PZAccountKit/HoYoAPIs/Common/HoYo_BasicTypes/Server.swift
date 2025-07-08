@@ -202,7 +202,6 @@ extension HoYo.Server: RawRepresentable, Codable, Identifiable, Hashable {
 
 // MARK: - HoYo.Server + CustomStringConvertible
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension HoYo.Server: CustomStringConvertible {
     public var description: String {
         localizedDescription
