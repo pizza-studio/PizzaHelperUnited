@@ -116,16 +116,14 @@ extension PZProfileActor {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
-    private func acceptMigratedOldAccountProfiles(
+    public func acceptMigratedOldAccountProfiles(
         oldData: [PZProfileSendable],
         resetNotifications: Bool = true,
         isUnattended: Bool = false
     ) async throws {
-        let allExistingMOs = try modelContext.fetch(FetchDescriptor<PZProfileMO>()).sorted {
-            $0.priority < $1.priority
-        }
-        let allExistingUUIDs: [String] = allExistingMOs.map(\.uuid.uuidString)
-        var currentPriorityID = (allExistingMOs.map(\.priority).max() ?? 0) + 1
+        let allExistingPFs = getSendableProfiles()
+        let allExistingUUIDs: [String] = allExistingPFs.map(\.uuid.uuidString)
+        var currentPriorityID = (allExistingPFs.map(\.priority).max() ?? 0) + 1
         var profilesMigratedCount = 0
         try modelContext.transaction {
             oldData.forEach { theEntrySendable in
@@ -149,43 +147,13 @@ extension PZProfileActor {
         }
     }
 
-    public func migrateOldAccountsIntoProfiles(
-        resetNotifications: Bool = true, isUnattended: Bool = false
-    ) async throws {
-        do {
-            let oldData = try await CDAccountMOActor.shared.getAllAccountDataAsPZProfileSendable()
-            try await acceptMigratedOldAccountProfiles(
-                oldData: oldData,
-                resetNotifications: resetNotifications,
-                isUnattended: isUnattended
-            )
-        } catch {
-            return
-        }
-    }
-
-    /// An OOBE task attempts inheriting old AccountMOs from the previous Pizza Apps using obsolete engines.
-    /// - Parameter resetNotifications: Recheck permissions for notifications && reload all timelines across widgets.
-    public func tryAutoInheritOldLocalAccounts(resetNotifications: Bool = true) async {
-        guard Pizza.isAppStoreRelease, !Defaults[.oldAccountMOAlreadyAutoInherited] else { return }
-        do {
-            try await migrateOldAccountsIntoProfiles(
-                resetNotifications: resetNotifications,
-                isUnattended: true
-            )
-        } catch {
-            return
-        }
-        Defaults[.oldAccountMOAlreadyAutoInherited] = true
-    }
-
     public func getSendableProfiles() -> [PZProfileSendable] {
         var result = (try? modelContext.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
         result.fixPrioritySettings(respectExistingPriority: true)
         return result.sorted { $0.priority < $1.priority }
     }
 
-    private func addProfile(_ profileSendable: PZProfileSendable, commitAfterDone: Bool = true) throws {
+    private func addOrUpdateProfile(_ profileSendable: PZProfileSendable, commitAfterDone: Bool) throws {
         func subTask() throws {
             var isAdded = false
             try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
@@ -211,31 +179,21 @@ extension PZProfileActor {
         }
     }
 
-    public func addProfiles(
+    public func addOrUpdateProfiles(
         _ profileSendableSet: Set<PZProfileSendable>
     ) throws {
         try modelContext.transaction {
             try profileSendableSet.sorted {
                 $0.priority < $1.priority
             }.forEach {
-                try addProfile($0, commitAfterDone: false)
+                try addOrUpdateProfile($0, commitAfterDone: false)
             }
         }
     }
 
     /// This will add the profile if it is not already added.
-    public func updateProfile(_ profileSendable: PZProfileSendable) throws {
-        try modelContext.transaction {
-            var processed = false
-            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
-                guard currentMO.uuid == profileSendable.uuid else { return }
-                currentMO.inherit(from: profileSendable)
-                processed = true
-            }
-            if !processed {
-                modelContext.insert(profileSendable.asMO)
-            }
-        }
+    public func addOrUpdateProfile(_ profileSendable: PZProfileSendable) throws {
+        try addOrUpdateProfile(profileSendable, commitAfterDone: true)
     }
 
     public func replaceAllProfiles(with profileSendableSet: Set<PZProfileSendable>) throws {
@@ -261,12 +219,7 @@ extension PZProfileActor {
     }
 
     public func deleteProfile(uuid: UUID) throws {
-        try modelContext.transaction {
-            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
-                guard currentMO.uuid == uuid else { return }
-                modelContext.delete(currentMO)
-            }
-        }
+        _ = try deleteProfiles(uuids: [uuid])
     }
 
     /// - Returns: Remaining entries.
@@ -303,19 +256,6 @@ extension PZProfileActor {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
-    @discardableResult
-    public func syncAllDataToUserDefaults() -> [PZProfileSendable] {
-        var existingKeys = Set<String>(Defaults[.pzProfiles].keys)
-        let profiles = getSendableProfiles()
-        profiles.forEach {
-            Defaults[.pzProfiles][$0.uuid.uuidString] = $0
-            existingKeys.remove($0.uuid.uuidString)
-        }
-        existingKeys.forEach { Defaults[.pzProfiles].removeValue(forKey: $0) }
-        UserDefaults.profileSuite.synchronize()
-        return profiles
-    }
-
     private func detectWhetherIsReset() -> Bool {
         let existingSQLCount = (try? modelContext.fetchCount(FetchDescriptor<PZProfileMO>())) ?? -1
         let isSQLEmpty = (existingSQLCount == 0)
@@ -343,12 +283,13 @@ extension PZProfileActor {
     @discardableResult
     public func deduplicate() throws
         -> (removed: Set<PZProfileSendable>, left: Set<PZProfileSendable>) {
-        let existingMOs = (try modelContext.fetch(FetchDescriptor<PZProfileMO>()))
-        let existingProfiles = existingMOs.map(\.asSendable).sorted { $0.uuid < $1.uuid }
+        var existingMOs = (try modelContext.fetch(FetchDescriptor<PZProfileMO>()))
+        existingMOs.sort { $0.priority < $1.priority }
+        let existingProfiles = existingMOs.map(\.asSendable)
         var profileSet = Set<PZProfileSendable>(existingProfiles)
-        let uniqueProfiles = profileSet.sorted { $0.uuid < $1.uuid }
+        let uniqueProfiles = profileSet
         /// 用这一行来判断是否有重复内容。没有的话就直接放弃处理。
-        guard existingProfiles != uniqueProfiles else {
+        guard Set(existingProfiles) != Set(uniqueProfiles) else {
             return (removed: .init(), left: profileSet)
         }
         profileSet.removeAll()
