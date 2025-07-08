@@ -29,6 +29,29 @@ extension EmbeddedWidgets {
         public let entry: any TimelineEntry
 
         public var body: some View {
+            coreBody
+                .trackCanvasSize { newSize in
+                    canvasSize = newSize
+                }
+        }
+
+        // MARK: Private
+
+        @State private var canvasSize: CGSize = .zero
+
+        @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+
+        private let result: Result<any DailyNoteProtocol, any Error>
+
+        private var textWidth: CGFloat {
+            #if os(watchOS)
+            0.8 * canvasSize.width
+            #else
+            0.6 * canvasSize.width
+            #endif
+        }
+
+        @ViewBuilder private var coreBody: some View {
             switch widgetRenderingMode {
             case .fullColor:
                 ZStack {
@@ -66,13 +89,7 @@ extension EmbeddedWidgets {
                                     .font(.system(.body, design: .monospaced))
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
-                                    .containerRelativeFrameEX(.horizontal, alignment: .leading) { length, _ in
-                                        #if os(watchOS)
-                                        length * 0.8
-                                        #else
-                                        length * 0.6
-                                        #endif
-                                    }
+                                    .frame(width: textWidth)
                                     Text(verbatim: "\(staminaIntel.finished)")
                                         .font(.system(
                                             .body,
@@ -129,13 +146,7 @@ extension EmbeddedWidgets {
                                     .font(.system(.body, design: .monospaced))
                                     .minimumScaleFactor(0.1)
                                     .widgetAccentable()
-                                    .containerRelativeFrameEX(.horizontal, alignment: .leading) { length, _ in
-                                        #if os(watchOS)
-                                        length * 0.8
-                                        #else
-                                        length * 0.6
-                                        #endif
-                                    }
+                                    .frame(width: textWidth)
                                     Text(verbatim: "\(staminaIntel.finished)")
                                         .font(.system(
                                             .body,
@@ -163,12 +174,6 @@ extension EmbeddedWidgets {
                 }
             }
         }
-
-        // MARK: Private
-
-        @Environment(\.widgetRenderingMode) private var widgetRenderingMode
-
-        private let result: Result<any DailyNoteProtocol, any Error>
     }
 }
 
