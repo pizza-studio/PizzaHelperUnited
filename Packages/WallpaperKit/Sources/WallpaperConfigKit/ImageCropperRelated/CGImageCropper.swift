@@ -60,6 +60,7 @@ public struct CGImageCropperView: View {
     @State private var originX: Double = 0
     @State private var originY: Double = 0
     @State private var sourceCGImageZoomedAndCroppedCache: CGImage?
+    @State private var screenVM: ScreenVM = .shared
 
     private let cropCompletionHandler: ((CGImage) -> Void)?
     private let targetDimension: CGSize
@@ -272,12 +273,17 @@ extension CGImageCropperView {
         .disabled(sourceCGImage == nil)
     }
 
+    private var previewBlockWidth: CGFloat? {
+        guard needsToShrinkThePreviewViewport else { return nil }
+        let basicLength = screenVM.mainColumnCanvasSizeObserved.width - 64
+        return basicLength * 0.6
+    }
+
     @ViewBuilder private var croppedImagePreview: some View {
         Group {
             if let sourceCGImageZoomedAndCroppedCache {
                 Section {
                     let metrics = currentMetrics
-                    let needsToShrinkThePreviewViewport = needsToShrinkThePreviewViewport
                     Image(
                         decorative: sourceCGImageZoomedAndCroppedCache,
                         scale: 1,
@@ -286,9 +292,7 @@ extension CGImageCropperView {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(8)
-                    .containerRelativeFrameEX(.horizontal, alignment: .center) { length, _ in
-                        length * (needsToShrinkThePreviewViewport ? 0.6 : 1)
-                    }
+                    .frame(width: previewBlockWidth)
                     .frame(maxWidth: .infinity)
                     .cornerRadius(8)
                     // 以下修改阻止手势事件传递到父视图
