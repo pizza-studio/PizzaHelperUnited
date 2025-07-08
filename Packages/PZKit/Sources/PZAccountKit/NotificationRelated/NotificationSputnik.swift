@@ -7,14 +7,15 @@ import Foundation
 import PZBaseKit
 @preconcurrency import UserNotifications
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension PZNotificationCenter {
     public static func refreshScheduledNotifications(
         for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol
     ) {
         #if !os(watchOS)
-        NotificationSputnik(profile: profile, dailyNote: dailyNote)
-            .refreshPendingNotifications()
+        if #available(iOS 15.0, macCatalyst 15.0, *) {
+            NotificationSputnik(profile: profile, dailyNote: dailyNote)
+                .refreshPendingNotifications()
+        }
         #endif
     }
 
