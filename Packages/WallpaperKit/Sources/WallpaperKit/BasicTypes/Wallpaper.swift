@@ -6,6 +6,7 @@ import Defaults
 import PZBaseKit
 import SwiftUI
 
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum Wallpaper: Identifiable, AbleToCodeSendHash {
     case bundled(BundledWallpaper)
     case user(UserWallpaper)

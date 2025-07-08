@@ -7,7 +7,7 @@ import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
-@available(iOS 15.0, macCatalyst 15.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension BundledWallpaper {
     public var image4LiveActivity: Image {
         Image(assetName4LiveActivity, bundle: .module)
@@ -16,7 +16,7 @@ extension BundledWallpaper {
 
 // MARK: - LiveActivityWallpaperView
 
-@available(iOS 15.0, macCatalyst 15.0, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct LiveActivityWallpaperView: View {
     // MARK: Lifecycle
 
