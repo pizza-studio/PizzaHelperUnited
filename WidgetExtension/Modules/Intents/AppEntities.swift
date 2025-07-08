@@ -11,7 +11,7 @@ import PZWidgetsKit
 // MARK: - AccountIntentAppEntity
 
 /// Local Profile Intent Entity. Named 'Account' here for compatibility purposes.
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct AccountIntentAppEntity: AppEntity {
     // MARK: Lifecycle
 
@@ -71,7 +71,7 @@ public struct AccountIntentAppEntity: AppEntity {
 
 // MARK: - WidgetBackgroundAppEntity
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct WidgetBackgroundAppEntity: AppEntity {
     // MARK: Lifecycle
 
@@ -121,21 +121,21 @@ public struct WidgetBackgroundAppEntity: AppEntity {
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension WidgetBackground {
     public var asAppEntity: WidgetBackgroundAppEntity {
         .init(id: id, displayString: displayString)
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension WidgetBackgroundAppEntity {
     public var asRawEntity: WidgetBackground {
         .init(id: id, displayString: displayString)
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Array where Element == WidgetBackgroundAppEntity {
     public var asRawEntitySet: Set<WidgetBackground> {
         Set(map(\.asRawEntity))

@@ -7,7 +7,7 @@ import WidgetKit
 
 // MARK: - WidgetAccessibilityBackground
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct WidgetAccessibilityBackground: ViewModifier {
     let enabled: Bool
 
@@ -27,7 +27,7 @@ private struct WidgetAccessibilityBackground: ViewModifier {
 extension View {
     @ViewBuilder
     public func widgetAccessibilityBackground(enabled: Bool) -> some View {
-        if #available(iOS 16.2, macCatalyst 16.2, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, *) {
             modifier(WidgetAccessibilityBackground(enabled: enabled))
         } else {
             self

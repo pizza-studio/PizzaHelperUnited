@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - Asset Icons (SVG)
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Pizza.SupportedGame? {
     public var unavailableAssetSVG: Image {
         Image("icon.info.unavailable", bundle: .module)
@@ -27,7 +27,7 @@ extension Pizza.SupportedGame? {
     }
 }
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Pizza.SupportedGame {
     /// 主要玩家体力。
     public var primaryStaminaAssetSVG: Image {

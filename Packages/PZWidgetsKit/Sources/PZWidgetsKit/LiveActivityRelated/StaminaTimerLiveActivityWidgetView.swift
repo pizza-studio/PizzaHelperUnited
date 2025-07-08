@@ -11,7 +11,7 @@ import SwiftUI
 import WallpaperKit
 import WidgetKit
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, RefreshIntent: AppIntent>: View {
     // MARK: Lifecycle
 
@@ -31,16 +31,11 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
         #endif
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .activityBackgroundTint(.clear)
-        if #available(iOS 17.0, *) {
-            Button(intent: RendererIntent()) {
-                mainContent
-            }
-            .buttonStyle(.plain)
-            .ignoresSafeArea()
-        } else {
+        Button(intent: RendererIntent()) {
             mainContent
-                .ignoresSafeArea()
         }
+        .buttonStyle(.plain)
+        .ignoresSafeArea()
     }
 
     // MARK: Internal
@@ -76,7 +71,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                     GridRow {
                         Color.clear.frame(width: 38, height: 38, alignment: .center)
                             .overlay {
-                                Image(systemSymbol: .alarmWavesLeftAndRightFill)
+                                Image(systemSymbol: .evChargerArrowtriangleRight)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxHeight: 22)
@@ -123,20 +118,15 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
             Spacer()
             VStack {
                 Spacer()
-                let label = HStack(alignment: .lastTextBaseline, spacing: 2) {
-                    Text(context.attributes.profileName)
-                    Image(systemSymbol: .arrowTriangle2CirclepathCircle)
-                }
-                .legibilityShadow(isText: true, enabled: !disableTextShadow)
-                .font(.footnote)
-                if #available(iOS 17.0, macCatalyst 17.0, *) {
-                    Button(intent: RefreshIntent()) {
-                        label
+                Button(intent: RefreshIntent()) {
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                        Text(context.attributes.profileName)
+                        Image(systemSymbol: .arrowTriangle2CirclepathCircle)
                     }
-                    .buttonStyle(.plain)
-                } else {
-                    label
+                    .legibilityShadow(isText: true, enabled: !disableTextShadow)
                 }
+                .buttonStyle(.plain)
+                .font(.footnote)
             }
         }
         .foregroundColor(useNoBackground ? .primary : .white)

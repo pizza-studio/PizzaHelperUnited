@@ -11,7 +11,7 @@ import PZWidgetsKit
 
 /// 注意：Xcode 不支持将 AppEnum 塞到 Swift Package 内的做法，也不支持与此有关的拆分扩展定义。
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum StaminaContentRevolverStyleAppEnum: String, AppEnum {
     case byDefault = "default"
     case timer
@@ -42,7 +42,7 @@ public enum StaminaContentRevolverStyleAppEnum: String, AppEnum {
 
 // MARK: - WeeklyBossesDisplayMethodAppEnum
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum WeeklyBossesDisplayMethodAppEnum: String, AppEnum {
     case disappearAfterCompleted
     case alwaysShow
@@ -70,7 +70,7 @@ public enum WeeklyBossesDisplayMethodAppEnum: String, AppEnum {
 
 // MARK: - WidgetSupportedGameAppEnum
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum WidgetSupportedGameAppEnum: String, AppEnum {
     case allGames = "ALL"
     case genshinImpact = "GI"
@@ -108,7 +108,7 @@ public enum WidgetSupportedGameAppEnum: String, AppEnum {
 
 // MARK: - ExpeditionDisplayPolicyAppEnum
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public enum ExpeditionDisplayPolicyAppEnum: String, AppEnum {
     case neverDisplay
     case displayWhenAvailable

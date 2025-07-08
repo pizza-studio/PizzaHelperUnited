@@ -14,7 +14,7 @@ import WidgetKit
 
 // MARK: - MainInfo
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public struct ProfileAndMainStaminaView: View {
@@ -66,14 +66,10 @@ extension DesktopWidgets {
                             .font(.title3)
                             .clipShape(.circle)
                             .legibilityShadow()
-                        if #available(iOS 17.0, macCatalyst 17.0, *) {
-                            Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
-                                labelImage
-                            }
-                            .buttonStyle(.plain)
-                        } else {
+                        Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
                             labelImage
                         }
+                        .buttonStyle(.plain)
                         StaminaRecoveryTimeText(data: dailyNote)
                     }
                 case true:
@@ -135,14 +131,10 @@ extension DesktopWidgets {
             .padding(.trailing, 10)
             .padding(.vertical, 5)
             .widgetAccessibilityBackground(enabled: true)
-            if #available(iOS 17.0, macCatalyst 17.0, *) {
-                Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
-                    bigLabel
-                }
-                .buttonStyle(.plain)
-            } else {
+            Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: profile?.uidWithGame)) {
                 bigLabel
             }
+            .buttonStyle(.plain)
         }
 
         // MARK: Private

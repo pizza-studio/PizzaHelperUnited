@@ -9,7 +9,7 @@ import WallpaperKit
 
 // MARK: - WidgetViewConfig
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct WidgetViewConfig: AbleToCodeSendHash {
     // MARK: Lifecycle
 

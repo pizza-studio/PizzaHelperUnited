@@ -10,7 +10,7 @@ import PZBaseKit
 
 /// I don't know why the fuck this one can be put in a Swift Package without a fucking problem.
 /// Maybe the limitation doesn't hinder this intent to be triggered in a view it gets embedded in.
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 public struct WidgetRefreshIntent: AppIntent {
     // MARK: Lifecycle

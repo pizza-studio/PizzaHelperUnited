@@ -8,7 +8,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 16.2, macCatalyst 16.2, *)
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Pizza.SupportedGame {
     public init?(intentConfig: some WidgetConfigurationIntent) {
         let uuid: String?
