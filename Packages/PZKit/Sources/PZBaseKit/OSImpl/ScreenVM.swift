@@ -269,7 +269,7 @@ extension ScreenVM {
 
         // MARK: Private
 
-        @State private var screenVM = ScreenVM.shared
+        @State private var screenVM: ScreenVM = .shared
         @State private var debouncer: Debouncer
         @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 

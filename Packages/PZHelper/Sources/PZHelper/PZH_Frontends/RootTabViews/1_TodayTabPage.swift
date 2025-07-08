@@ -105,7 +105,7 @@ struct TodayTabPage: View {
             .safeAreaInset(edge: .bottom, content: rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
         }
         .navigationTitle(
-            rootNavVM.screenVM.isExtremeCompact
+            screenVM.isExtremeCompact
                 ? rootNavVM.rootPageNav.labelNameText
                 : Text("tab.today.fullTitle".i18nPZHelper)
         )
@@ -182,6 +182,7 @@ struct TodayTabPage: View {
     @State private var wrappedByNavStack: Bool
     @State private var game: Pizza.SupportedGame? = .none
     @State private var rootNavVM = RootNavVM.shared
+    @State private var screenVM: ScreenVM = .shared
     @StateObject private var broadcaster = Broadcaster.shared
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 

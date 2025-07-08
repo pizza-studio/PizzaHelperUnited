@@ -45,7 +45,7 @@ struct DetailPortalTabPage: View {
             refreshAction()
         }
         .navigationTitle(
-            rootNavVM.screenVM.isExtremeCompact
+            screenVM.isExtremeCompact
                 ? rootNavVM.rootPageNav.labelNameText
                 : Text("tab.details.fullTitle".i18nPZHelper)
         )
@@ -141,6 +141,7 @@ struct DetailPortalTabPage: View {
     @State private var vmDPV: DetailPortalViewModel = .shared
     @State private var pfMgrVM: ProfileManagerVM = .shared
     @State private var rootNavVM = RootNavVM.shared
+    @State private var screenVM: ScreenVM = .shared
     @StateObject private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
 

@@ -17,7 +17,7 @@ final class RootNavVM: Sendable {
     public static let isAppKit = OS.type == .macOS && !OS.isCatalyst
     public static let shared = RootNavVM()
 
-    public let screenVM = ScreenVM.shared
+    public let screenVM: ScreenVM = .shared
 
     public var rootPageNav: AppRootPage = {
         let initSelection: Int = {

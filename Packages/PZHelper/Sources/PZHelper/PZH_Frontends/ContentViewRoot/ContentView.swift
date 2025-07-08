@@ -84,7 +84,7 @@ public struct ContentView: View {
     @Environment(\.colorScheme) private var colorScheme
     @State private var rootNavVM = RootNavVM.shared
     @StateObject private var broadcaster = Broadcaster.shared
-    @State private var screenVM = ScreenVM.shared
+    @State private var screenVM: ScreenVM = .shared
     @State private var viewColumn: NavigationSplitViewColumn = .content
     @Binding private var rootPageNavBinding: AppRootPage?
 
