@@ -6,7 +6,6 @@ import SwiftUI
 
 // MARK: - StaggeredGrid
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendable>: View {
     // MARK: Lifecycle
 
@@ -48,7 +47,13 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
             ScrollView(axisSet, showsIndicators: showsIndicators && !scrollAxis.isEmpty) {
                 innerContent
             }
-            .scrollDisabled(scrollAxis.isEmpty)
+            .apply { scrollView in
+                if #available(iOS 16.0, macCatalyst 16.0, *) {
+                    scrollView.scrollDisabled(scrollAxis.isEmpty)
+                } else {
+                    scrollView
+                }
+            }
         }
         .react(to: list) { _, newList in
             vm.updateGridArray(list: newList, columns: columns)
@@ -66,7 +71,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
     // MARK: Private
 
-    @State private var vm: StaggeredGridVM<T>
+    @StateObject private var vm: StaggeredGridVM<T>
 
     private let columns: Int
     private let scrollAxis: Axis.Set
@@ -96,9 +101,8 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
 // MARK: - StaggeredGridVM
 
-@available(iOS 17.0, macCatalyst 17.0, *)
-@Observable @MainActor
-final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
+@MainActor
+final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableObject {
     // MARK: Lifecycle
 
     // MARK: - Initialization
@@ -111,7 +115,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
 
     // MARK: Internal
 
-    var gridArray: [[T]] = []
+    @Published var gridArray: [[T]] = []
 
     // MARK: - Methods
 
@@ -174,7 +178,6 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
 
 // MARK: - API Compatibility
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 extension StaggeredGrid {
     public init(
         columns: Int,
