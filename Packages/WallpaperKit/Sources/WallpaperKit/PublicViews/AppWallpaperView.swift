@@ -49,7 +49,7 @@ public struct AppWallpaperView: View {
     @Environment(\.colorScheme) private var colorScheme
 
     @StateObject private var broadcaster = Broadcaster.shared
-    @StateObject private var folderMonitor = UserWallpaperFileHandler.folderMonitor
+    @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
 
     @Default(.appWallpaperID) private var appWallpaperID: String
 

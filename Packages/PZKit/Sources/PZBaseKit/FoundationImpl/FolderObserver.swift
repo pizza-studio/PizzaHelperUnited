@@ -3,9 +3,11 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import Foundation
+import Observation
 
-@MainActor
-public final class FolderMonitor: ObservableObject {
+@available(iOS 17.0, macCatalyst 17.0, *)
+@Observable @MainActor
+public final class FolderMonitor {
     // MARK: Lifecycle
 
     // MARK: - Initialization
@@ -28,7 +30,7 @@ public final class FolderMonitor: ObservableObject {
     /// URL for the directory being monitored.
     public let url: URL
 
-    @Published public private(set) var stateHash: UUID = .init()
+    public private(set) var stateHash: UUID = .init()
 
     // MARK: - Monitoring
 
@@ -77,12 +79,10 @@ public final class FolderMonitor: ObservableObject {
     // MARK: Private
 
     /// Task for monitoring the directory.
-    // @ObservationIgnored
-    private var monitoringTask: Task<Void, Never>?
+    @ObservationIgnored private var monitoringTask: Task<Void, Never>?
 
     /// Flag to control monitoring state.
-    // @ObservationIgnored
-    private var isMonitoring = false
+    @ObservationIgnored private var isMonitoring = false
 
     // MARK: - Private Methods
 
@@ -119,11 +119,11 @@ public final class FolderMonitor: ObservableObject {
                             lastContents = currentContents
                         }
 
-                        // Wait before next check (0.5s)
-                        try await Task.sleep(nanoseconds: 500_000_000)
+                        // Wait before next check
+                        try await Task.sleep(for: .milliseconds(500))
                     } catch {
                         // Handle errors silently or log them
-                        try await Task.sleep(nanoseconds: 500_000_000)
+                        try? await Task.sleep(for: .milliseconds(500))
                     }
                 }
 
