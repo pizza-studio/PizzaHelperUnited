@@ -206,7 +206,7 @@ extension UserWallpaperMgrViewContent {
                 }
             }
         }
-        .onChange(of: viewRefreshHash) {
+        .react(to: viewRefreshHash) {
             Task { @MainActor in
                 withAnimation {
                     userWallpapers = UserWallpaperFileHandler.getAllUserWallpapers()
@@ -306,7 +306,7 @@ extension UserWallpaperMgrViewContent {
                     text: nameEditingBuffer
                 ) {
                     Text("userWallpaperMgr.editingWallpaperName.fieldLabel", bundle: .module)
-                }.onChange(of: currentEditingWallpaper) { oldValue, newValue in
+                }.react(to: currentEditingWallpaper) { oldValue, newValue in
                     guard oldValue != newValue else { return }
                     limitText(30)
                 }

@@ -95,7 +95,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     @ViewBuilder var textFieldView: some View {
         TextField("UID".description, text: $delegate.uid)
             .focused(focused ?? $backupFocus)
-            .onChange(of: delegate.uid) { oldValue, newValue in
+            .react(to: delegate.uid) { oldValue, newValue in
                 guard oldValue != newValue else { return }
                 formatText()
             }

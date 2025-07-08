@@ -39,7 +39,7 @@ extension OfficialFeed {
                 sectionHeader: sectionHeader,
             )
             .listRowMaterialBackground()
-            .onChange(of: scenePhase) { _, newPhase in
+            .react(to: scenePhase) { _, newPhase in
                 switch newPhase {
                 case .active:
                     getCurrentEvent()
@@ -47,7 +47,7 @@ extension OfficialFeed {
                     break
                 }
             }
-            .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
+            .react(to: broadcaster.eventForRefreshingCurrentPage) { _, _ in
                 getCurrentEvent()
             }
             .onAppear {

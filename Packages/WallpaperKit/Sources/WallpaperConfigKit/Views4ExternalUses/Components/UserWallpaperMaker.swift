@@ -43,7 +43,7 @@ struct UserWallpaperMakerView: View {
                             Image(systemSymbol: .photoStack)
                         }
                     }
-                    .onChange(of: currentPhotoPickerItem) { _, newPickerItem in
+                    .react(to: currentPhotoPickerItem) { _, newPickerItem in
                         guard let newPickerItem else { return }
                         Task {
                             let data = try? await newPickerItem.loadTransferable(type: Data.self)

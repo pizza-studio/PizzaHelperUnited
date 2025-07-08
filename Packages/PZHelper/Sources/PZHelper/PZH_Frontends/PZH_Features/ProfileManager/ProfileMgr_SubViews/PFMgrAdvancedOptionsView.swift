@@ -33,7 +33,7 @@ struct PFMgrAdvancedOptionsView: View {
                         bundle: .module
                     )
                 }
-                .onChange(of: situatePZProfileDBIntoGroupContainer) { _, _ in
+                .react(to: situatePZProfileDBIntoGroupContainer) { _, _ in
                     alertPresented.toggle()
                 }
             } header: {
@@ -70,7 +70,7 @@ struct PFMgrAdvancedOptionsView: View {
                         .textCase(nil)
                         .fontDesign(.monospaced)
                 }
-                .onChange(of: recentlyPropagatedDeviceFingerprint) { oldValue, newValue in
+                .react(to: recentlyPropagatedDeviceFingerprint) { oldValue, newValue in
                     guard oldValue != newValue else { return }
                     formatDeviceFingerprint()
                 }

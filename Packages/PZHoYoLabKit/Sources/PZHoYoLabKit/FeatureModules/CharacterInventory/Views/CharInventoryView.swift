@@ -42,7 +42,7 @@ public struct CharacterInventoryView: View {
                     }
                 }
         }
-        .onChange(of: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
+        .react(to: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
             Task { @MainActor in
                 let rawSummaries: [SummaryPtr] = Self.getRawSummaries(profile: profile)
                 let sortedMap = Dictionary(grouping: rawSummaries, by: \.wrappedValue.mainInfo.element)

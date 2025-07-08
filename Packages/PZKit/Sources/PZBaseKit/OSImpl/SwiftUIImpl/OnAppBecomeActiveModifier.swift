@@ -23,7 +23,7 @@ private struct OnAppBecomeActiveModifier: ViewModifier {
             action()
         }
         #else
-        .onChange(of: scenePhase) { _, scenePhase in
+        .react(to: scenePhase) { _, scenePhase in
                 if scenePhase == .active {
                     action()
                 }
@@ -44,7 +44,7 @@ private struct OnAppBecomeActiveModifierMac: ViewModifier {
     @ViewBuilder
     func body(content: Content) -> some View {
         content
-            .onChange(of: appearsActive) { oldValue, newValue in
+            .react(to: appearsActive) { oldValue, newValue in
                 if newValue, oldValue != newValue {
                     action()
                 }
@@ -68,7 +68,7 @@ private struct OnAppEnterBackgroundModifier: ViewModifier {
     @ViewBuilder
     func body(content: Content) -> some View {
         content
-            .onChange(of: scenePhase) { _, scenePhase in
+            .react(to: scenePhase) { _, scenePhase in
                 if scenePhase == .background {
                     action()
                 }
@@ -92,7 +92,7 @@ private struct OnAppBecomeInactiveModifier: ViewModifier {
     @ViewBuilder
     func body(content: Content) -> some View {
         content
-            .onChange(of: scenePhase) { _, scenePhase in
+            .react(to: scenePhase) { _, scenePhase in
                 if scenePhase == .inactive {
                     action()
                 }

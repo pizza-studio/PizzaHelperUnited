@@ -63,14 +63,14 @@ public struct CDGachaMODebugView: View {
                 }
                 .pickerStyle(.segmented)
                 .fixedSize()
-                .onChange(of: delegate.game, initial: true) {
+                .react(to: delegate.game, initial: true) {
                     print("Action")
                 }
             }
         }
         .navigationTitle(delegate.game.titleFullInEnglish)
         .navBarTitleDisplayMode(.large)
-        .onChange(of: delegate.game, initial: true) {
+        .react(to: delegate.game, initial: true) {
             delegate.loadData()
         }
     }

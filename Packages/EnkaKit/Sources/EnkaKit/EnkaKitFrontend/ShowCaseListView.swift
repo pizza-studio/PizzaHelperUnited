@@ -44,10 +44,10 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 showAsList
             }
         }
-        .onChange(of: dbSet.eventForResummarizingEnkaProfiles) { _, _ in
+        .react(to: dbSet.eventForResummarizingEnkaProfiles) { _, _ in
             triggerCaseContentUpdate()
         }
-        .onChange(of: dbSet.eventForResummarizingHoYoLABProfiles) { _, _ in
+        .react(to: dbSet.eventForResummarizingHoYoLABProfiles) { _, _ in
             triggerCaseContentUpdate()
         }
     }

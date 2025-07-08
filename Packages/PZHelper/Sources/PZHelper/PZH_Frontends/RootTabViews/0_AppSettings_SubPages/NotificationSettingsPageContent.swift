@@ -290,7 +290,7 @@ private struct StaminaNotificationThresholdConfigView: View {
                 Text(verbatim: "\(numberToSave)")
                     .foregroundColor(isNewThresholdValid ? .primary : .red)
             }
-            .onChange(of: game) {
+            .react(to: game) {
                 newNumber = min(newNumber, Double(game.maxPrimaryStamina))
             }
             Button {

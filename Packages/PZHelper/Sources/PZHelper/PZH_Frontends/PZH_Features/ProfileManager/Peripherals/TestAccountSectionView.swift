@@ -44,7 +44,7 @@ struct TestAccountSectionView: View {
                 }
             }
         }
-        .onChange(of: profile.cookie, initial: true) {
+        .react(to: profile.cookie, initial: true) {
             doTest()
         }
     }

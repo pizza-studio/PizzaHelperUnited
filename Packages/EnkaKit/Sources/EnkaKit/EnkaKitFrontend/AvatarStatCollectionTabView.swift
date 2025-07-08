@@ -96,7 +96,7 @@ public struct AvatarStatCollectionTabView: View {
                 presentationMode.wrappedValue.dismiss()
             }
         }
-        .onChange(of: showingCharacterIdentifier, initial: true) { _, _ in
+        .react(to: showingCharacterIdentifier, initial: true) { _, _ in
             simpleTaptic(type: .selection)
             withAnimation(.easeIn(duration: 0.1)) {
                 showTabViewIndex = true
@@ -106,7 +106,7 @@ public struct AvatarStatCollectionTabView: View {
         .onAppear {
             showTabViewIndex = true
         }
-        .onChange(of: showTabViewIndex, initial: true) { _, newValue in
+        .react(to: showTabViewIndex, initial: true) { _, newValue in
             if newValue == true {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
                     withAnimation {

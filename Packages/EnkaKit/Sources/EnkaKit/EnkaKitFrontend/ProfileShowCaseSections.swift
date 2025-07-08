@@ -119,10 +119,10 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
             }
             appendedContent()
         }
-        // .onChange(of: broadcaster.eventForStoppingRootTabTasks) { _, _ in
+        // .react(to: broadcaster.eventForStoppingRootTabTasks) { _, _ in
         //     delegate.forceStopTheTask()
         // }
-        .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
+        .react(to: broadcaster.eventForRefreshingCurrentPage) { _, _ in
             triggerUpdateTask()
         }
     }

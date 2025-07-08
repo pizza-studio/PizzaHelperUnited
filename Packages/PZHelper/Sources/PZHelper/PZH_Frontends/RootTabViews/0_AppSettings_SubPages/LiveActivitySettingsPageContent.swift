@@ -135,7 +135,7 @@ struct LiveActivitySettingsPageContent: View {
                     .allowLiveActivity
             }
         }
-        .onChange(of: scenePhase) { oldValue, newValue in
+        .react(to: scenePhase) { oldValue, newValue in
             if newValue != oldValue {
                 syncLiveActivityToggleSettings()
             }
