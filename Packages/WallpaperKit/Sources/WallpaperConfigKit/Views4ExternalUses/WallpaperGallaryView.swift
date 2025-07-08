@@ -103,7 +103,6 @@ public struct WallpaperGalleryViewContent: View {
         }
         .searchable(text: $searchText, placement: searchFieldPlacement)
         .padding(.horizontal)
-        .environment(screenVM)
     }
 
     // MARK: Private
