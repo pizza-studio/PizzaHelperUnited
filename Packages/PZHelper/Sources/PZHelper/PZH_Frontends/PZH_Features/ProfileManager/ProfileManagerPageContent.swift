@@ -273,7 +273,7 @@ struct ProfileManagerPageContent: View {
             cancelPreviousTask: false,
             givenTask: {
                 PZNotificationCenter.deleteDailyNoteNotification(for: profile.asSendable)
-                try await PZProfileActor.shared.addProfiles([profile.asSendable])
+                try await PZProfileActor.shared.addOrUpdateProfiles([profile.asSendable])
                 alertToastEventStatus.isProfileTaskSucceeded.toggle()
             },
             completionHandler: { _ in
@@ -417,7 +417,7 @@ struct ProfileManagerPageContent: View {
                     let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                     do {
                         if await !assertion.state.isReleased {
-                            try await PZProfileActor.shared.addProfiles(decodedProfileSet)
+                            try await PZProfileActor.shared.addOrUpdateProfiles(decodedProfileSet)
                         }
                         await assertion.release()
                     } catch {

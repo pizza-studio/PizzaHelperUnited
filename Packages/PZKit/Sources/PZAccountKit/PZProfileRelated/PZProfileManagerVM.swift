@@ -127,7 +127,7 @@ public final class ProfileManagerVM: TaskManagedVM {
         fireTask(
             cancelPreviousTask: false,
             givenTask: {
-                try await PZProfileActor.shared.updateProfile(profile)
+                try await PZProfileActor.shared.addOrUpdateProfile(profile)
             },
             completionHandler: { _ in
                 trailingTasks?()

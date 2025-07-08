@@ -253,7 +253,7 @@ extension ProfileManagerPageContent {
                         allProfilesFetched.insert(handled)
                         existingProfilesCount += 1
                     }
-                    try await PZProfileActor.shared.addProfiles(allProfilesFetched)
+                    try await PZProfileActor.shared.addOrUpdateProfiles(allProfilesFetched)
                     PZNotificationCenter.batchDeleteDailyNoteNotification(
                         profiles: allProfilesFetched,
                         onlyDeleteIfDisabled: false
