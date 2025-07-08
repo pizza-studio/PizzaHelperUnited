@@ -83,7 +83,7 @@ public struct ContentView: View {
 
     // MARK: Private
 
-    @State private var connectivityManager = AppleWatchSputnik.shared
+    @StateObject private var connectivityManager = AppleWatchSputnik.shared
     @StateObject private var broadcaster = Broadcaster.shared
 
     @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
