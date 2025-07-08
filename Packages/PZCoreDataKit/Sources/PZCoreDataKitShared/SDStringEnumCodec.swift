@@ -10,7 +10,7 @@ import Foundation
 /// 这里准备一套 Codec 方便 CoreData 针对 SwiftData CloudKit 处理数据。
 public enum SDStringEnumCodec {
     /// 从 CloudKit NSData（NSKeyedArchiver Plist）解码出 rawValue 字符串
-    public static func decodeRawValue(from data: Data) throws -> String {
+    public static func decodeRawValue(from data: Data, fieldName: String) throws -> String {
         let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
         // 解析 Plist 结构，找到 rawValue（以 "HSR" 或 "GI" 形式出现）
         guard let dict = plist as? [String: Any],
@@ -23,8 +23,8 @@ public enum SDStringEnumCodec {
         }
         // 查找第一个 String 类型且不是 "$null" 或 "__empty_slot_token..." 的字符串
         let stringCandidates = objects.compactMap { $0 as? String }
-        // 排除特殊字符串，通常就是 HSR、GI
-        let value = stringCandidates.first { $0 != "$null" && !$0.hasPrefix("__empty_slot_token") && $0 != "game" }
+        // 排除特殊字符串
+        let value = stringCandidates.first { $0 != "$null" && !$0.hasPrefix("__empty_slot_token") && $0 != fieldName }
         guard let rawValue = value else {
             throw NSError(
                 domain: "SwiftDataStringEnumCodec",
