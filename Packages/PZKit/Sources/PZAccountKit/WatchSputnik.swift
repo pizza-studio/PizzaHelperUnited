@@ -6,14 +6,13 @@
 import Defaults
 import Foundation
 import PZBaseKit
+import PZProfileCDMOBackports
 import SwiftData
 import WatchConnectivity
 
 // MARK: - AppleWatchSputnik
 
-@available(iOS 17.0, macCatalyst 17.0, *)
-@Observable
-public final class AppleWatchSputnik: NSObject {
+public final class AppleWatchSputnik: NSObject, ObservableObject {
     // MARK: Lifecycle
 
     private override init() {
@@ -38,7 +37,7 @@ public final class AppleWatchSputnik: NSObject {
         WCSession.isSupported()
     }
 
-    public var notificationMessage: NotificationMessage?
+    @Published public var notificationMessage: NotificationMessage?
 
     // var sharedAccounts = [PZProfileMO]() // 完全沒用到。
 
@@ -98,7 +97,6 @@ public final class AppleWatchSputnik: NSObject {
 
 // MARK: WCSessionDelegate
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 extension AppleWatchSputnik: WCSessionDelegate {
     public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         #if os(watchOS)
@@ -115,6 +113,7 @@ extension AppleWatchSputnik: WCSessionDelegate {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 if await !assertion.state.isReleased {
                     await PZProfileActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
+                    // await CDProfileMOActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
                 }
                 await assertion.release()
             }
@@ -140,10 +139,66 @@ extension AppleWatchSputnik: WCSessionDelegate {
 #endif
 
 #if os(watchOS)
+extension CDProfileMOActor {
+    /// 将来 watchOS 需要降级的话，会用到这个 API。
+    public func watchSessionHandleIncomingPushedProfiles(_ receivedProfileMap: [String: PZProfileSendable]) {
+        do {
+            var receivedProfileMap = receivedProfileMap
+            try container.perform { context in
+                let fetchedCDMOObjs = try context.fetch(PZProfileCDMO.all)
+
+                // 如果有既有重複記錄的話，先刪得只剩一個，然後覆蓋其所有資料欄目值。
+                if !fetchedCDMOObjs.isEmpty {
+                    var uidHandled = Set<String>()
+                    try fetchedCDMOObjs.forEach { oldProfileCDMOObj in
+                        var oldProfile = try oldProfileCDMOObj.decode()
+                        let matched = receivedProfileMap[oldProfile.uidWithGame]
+                        guard let matched else {
+                            // 删除已经不存在的 Profile。
+                            PZNotificationCenter.deleteDailyNoteNotification(for: oldProfile.asSendable)
+                            context.delete(oldProfileCDMOObj)
+                            return
+                        }
+                        if !uidHandled.contains(oldProfile.uidWithGame) {
+                            let uuidBackup = oldProfile.uuid
+                            oldProfile.inherit(from: matched)
+                            oldProfile.uuid = uuidBackup
+                            oldProfileCDMOObj.encode(oldProfile)
+                            PZNotificationCenter.bleachNotificationsIfDisabled(for: oldProfile.asSendable)
+                            uidHandled.insert(oldProfile.uidWithGame)
+                        } else {
+                            // 删除已经处理过的重复的 Profile。
+                            PZNotificationCenter.deleteDailyNoteNotification(for: oldProfile.asSendable)
+                            context.delete(oldProfileCDMOObj)
+                            return
+                        }
+                    }
+                    // 筛选掉已经处理过的传入的 profile，然后就只剩下需要全新插入的 profile。
+                    uidHandled.forEach { receivedProfileMap.removeValue(forKey: $0) }
+                }
+
+                try receivedProfileMap.values.forEach {
+                    try context.insert($0.asCDMO)
+                    PZNotificationCenter.bleachNotificationsIfDisabled(for: $0)
+                }
+            }
+
+            Defaults[.pzProfiles].removeAll()
+            receivedProfileMap.values.forEach {
+                Defaults[.pzProfiles][$0.uuid.uuidString] = $0
+            }
+            UserDefaults.profileSuite.synchronize()
+        } catch {
+            print("save profile failed: \(error)")
+        }
+    }
+}
+
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
-    public func watchSessionHandleIncomingPushedProfiles(_ receivedProfileMap: [String: PZProfileSendable]) {
-        #if os(watchOS)
+    public func watchSessionHandleIncomingPushedProfiles(
+        _ receivedProfileMap: [String: PZProfileSendable]
+    ) {
         do {
             var receivedProfileMap = receivedProfileMap
             try modelContext.transaction {
@@ -163,7 +218,7 @@ extension PZProfileActor {
                         }
                         if !uidHandled.contains(oldProfile.uidWithGame) {
                             let uuidBackup = oldProfile.uuid
-                            oldProfile.inherit(from: matched.asMO)
+                            oldProfile.inherit(from: matched)
                             oldProfile.uuid = uuidBackup
                             PZNotificationCenter.bleachNotificationsIfDisabled(for: oldProfile.asSendable)
                             uidHandled.insert(oldProfile.uidWithGame)
@@ -190,7 +245,6 @@ extension PZProfileActor {
         } catch {
             print("save profile failed: \(error)")
         }
-        #endif
     }
 }
 #endif
