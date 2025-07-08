@@ -18,6 +18,16 @@ extension CDProfileMOActor {
     }
 
     public static let singleton: Result<CDProfileMOActor, Error> = {
+        guard #unavailable(iOS 17.0, macCatalyst 17.0) else {
+            let error = NSError(
+                domain: "CDProfileMOActor.singleton",
+                code: 20250709,
+                userInfo: [
+                    NSLocalizedDescriptionKey: "Target system already supports SwiftData, hence no need to use CDProfileMOActor.",
+                ]
+            )
+            return .failure(error)
+        }
         let useGroupContainer = Defaults[.situatePZProfileDBIntoGroupContainer]
         do {
             let result = try CDProfileMOActor(
@@ -85,9 +95,11 @@ extension CDProfileMOActor: PZProfileActorProtocol {
             }
             self.syncAllDataToUserDefaults()
             if resetNotifications, profilesMigratedCount > 0 {
-                Task {
-                    await Broadcaster.shared.requireOSNotificationCenterAuthorization()
-                    await Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                if #available(iOS 17.0, macCatalyst 17.0, *) {
+                    Task {
+                        await Broadcaster.shared.requireOSNotificationCenterAuthorization()
+                        await Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                    }
                 }
             }
         }
