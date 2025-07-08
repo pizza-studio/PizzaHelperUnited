@@ -13,7 +13,9 @@ import SwiftData
 extension PZProfileCDMO: ProfileProtocol {
     public var game: Pizza.SupportedGame {
         get {
-            let matchedRaw = try? SDStringEnumCodec.decodeRawValue(from: gameBlob)
+            let matchedRaw = try? SDStringEnumCodec.decodeRawValue(
+                from: gameBlob, fieldName: "game"
+            )
             guard let matchedRaw else { return .genshinImpact }
             return Pizza.SupportedGame(rawValue: matchedRaw) ?? .genshinImpact
         }
@@ -29,7 +31,9 @@ extension PZProfileCDMO: ProfileProtocol {
 
     public var server: HoYo.Server {
         get {
-            let matchedRaw = try? SDStringEnumCodec.decodeRawValue(from: serverBlob)
+            let matchedRaw = try? SDStringEnumCodec.decodeRawValue(
+                from: serverBlob, fieldName: "server"
+            )
             guard let matchedRaw else { return .celestia(game) }
             return .init(rawValue: matchedRaw)?.withGame(game) ?? .celestia(game)
         }
