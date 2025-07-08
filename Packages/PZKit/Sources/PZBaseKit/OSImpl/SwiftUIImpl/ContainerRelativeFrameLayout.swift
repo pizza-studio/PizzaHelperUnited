@@ -116,6 +116,8 @@ private struct ContainerRelativeFrameLayout: Layout {
 // View 扩展
 @available(iOS 16.0, macCatalyst 16.0, *)
 extension View {
+    /// 警告：必须放在 .background 或 .overlay 当中使用。
+    /// 原因：这个 API 在其他场合下无法完全复刻 iOS 17 同名 API 的行为。
     @MainActor
     public func containerRelativeFrameEX(
         _ axes: Axis.Set,
