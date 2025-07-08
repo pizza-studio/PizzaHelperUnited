@@ -8,6 +8,8 @@ import PZCoreDataKitShared
 import PZProfileCDMOBackports
 import SwiftData
 
+// MARK: - PZProfileCDMO + ProfileProtocol
+
 extension PZProfileCDMO: ProfileProtocol {
     public var game: Pizza.SupportedGame {
         get {
@@ -39,5 +41,53 @@ extension PZProfileCDMO: ProfileProtocol {
                 return
             }
         }
+    }
+}
+
+extension PZProfileCDMO {
+    public init(
+        game: Pizza.SupportedGame,
+        server: HoYo.Server,
+        uid: String,
+        uuid: UUID,
+        allowNotification: Bool,
+        cookie: String,
+        deviceFingerPrint: String,
+        name: String,
+        priority: Int,
+        serverRawValue: String,
+        sTokenV2: String? = nil,
+        deviceID: String
+    ) {
+        self.init()
+        self.uid = uid
+        self.uuid = uuid
+        self.allowNotification = allowNotification
+        self.cookie = cookie
+        self.deviceFingerPrint = deviceFingerPrint
+        self.name = name
+        self.priority = priority
+        self.serverRawValue = serverRawValue
+        self.sTokenV2 = sTokenV2
+        self.deviceID = deviceID
+        self.game = game
+        self.server = server
+    }
+
+    public var asSendable: PZProfileSendable {
+        .init(
+            game: game,
+            server: server,
+            uid: uid,
+            uuid: uuid,
+            allowNotification: allowNotification,
+            cookie: cookie,
+            deviceFingerPrint: deviceFingerPrint,
+            name: name,
+            priority: priority,
+            serverRawValue: serverRawValue,
+            sTokenV2: sTokenV2,
+            deviceID: deviceID
+        )
     }
 }
