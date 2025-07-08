@@ -8,10 +8,8 @@ import PZBaseKit
 
 // MARK: - UserWallpaperFileHandler
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 public enum UserWallpaperFileHandler {}
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 extension UserWallpaperFileHandler {
     @MainActor public static let folderMonitor: FolderMonitor = .init(url: userWallpaperFolderURL)
 
