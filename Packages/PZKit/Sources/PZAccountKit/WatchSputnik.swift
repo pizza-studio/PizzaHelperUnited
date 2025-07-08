@@ -12,7 +12,9 @@ import WatchConnectivity
 
 // MARK: - AppleWatchSputnik
 
-public final class AppleWatchSputnik: NSObject, ObservableObject {
+@available(iOS 17.0, macCatalyst 17.0, *)
+@Observable
+public final class AppleWatchSputnik: NSObject {
     // MARK: Lifecycle
 
     private override init() {
@@ -37,7 +39,7 @@ public final class AppleWatchSputnik: NSObject, ObservableObject {
         WCSession.isSupported()
     }
 
-    @Published public var notificationMessage: NotificationMessage?
+    public var notificationMessage: NotificationMessage?
 
     // var sharedAccounts = [PZProfileMO]() // 完全沒用到。
 
@@ -97,6 +99,7 @@ public final class AppleWatchSputnik: NSObject, ObservableObject {
 
 // MARK: WCSessionDelegate
 
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension AppleWatchSputnik: WCSessionDelegate {
     public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         #if os(watchOS)
@@ -113,7 +116,6 @@ extension AppleWatchSputnik: WCSessionDelegate {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 if await !assertion.state.isReleased {
                     await PZProfileActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
-                    // await CDProfileMOActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
                 }
                 await assertion.release()
             }
@@ -196,9 +198,8 @@ extension CDProfileMOActor {
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
-    public func watchSessionHandleIncomingPushedProfiles(
-        _ receivedProfileMap: [String: PZProfileSendable]
-    ) {
+    public func watchSessionHandleIncomingPushedProfiles(_ receivedProfileMap: [String: PZProfileSendable]) {
+        #if os(watchOS)
         do {
             var receivedProfileMap = receivedProfileMap
             try modelContext.transaction {
@@ -218,7 +219,7 @@ extension PZProfileActor {
                         }
                         if !uidHandled.contains(oldProfile.uidWithGame) {
                             let uuidBackup = oldProfile.uuid
-                            oldProfile.inherit(from: matched)
+                            oldProfile.inherit(from: matched.asMO)
                             oldProfile.uuid = uuidBackup
                             PZNotificationCenter.bleachNotificationsIfDisabled(for: oldProfile.asSendable)
                             uidHandled.insert(oldProfile.uidWithGame)
@@ -245,6 +246,7 @@ extension PZProfileActor {
         } catch {
             print("save profile failed: \(error)")
         }
+        #endif
     }
 }
 #endif
