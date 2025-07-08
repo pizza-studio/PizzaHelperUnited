@@ -139,7 +139,6 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
         } viewRenderer: { specimen in
             specimen.render(size: singleSize, cutType: .cutShoulder)
         }
-        .environment(screenVM)
     }
 }
 

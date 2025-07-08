@@ -45,7 +45,6 @@ public struct AvatarStatCollectionTabView: View {
         Group {
             if isMainBodyVisible {
                 coreBody()
-                    .environment(screenVM)
                     .overlay(alignment: .top) {
                         if !isAppKit {
                             // AppKit 的 TabView 不支持走马灯滚动操作。

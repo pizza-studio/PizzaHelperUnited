@@ -189,7 +189,6 @@ extension BattleReportView4GI {
                     }
                 )
                 .listRowInsets(.init())
-                .environment(screenVM)
             } header: {
                 HStack {
                     Text(
@@ -419,7 +418,6 @@ extension BattleReportView4GI {
                 }
             )
             .listRowInsets(.init())
-            .environment(screenVM)
         } header: {
             HStack {
                 Text("hylKit.battleReport.gi.stat.summary".i18nHYLKit)

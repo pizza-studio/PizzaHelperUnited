@@ -184,7 +184,6 @@ public struct CharacterInventoryView: View {
                     }
                     .padding(.top, 5)
                     .listRowSeparatorTint(.secondary.opacity(0.7))
-                    .environment(screenVM)
                 }
             }
         }
