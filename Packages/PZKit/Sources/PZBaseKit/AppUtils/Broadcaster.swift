@@ -9,17 +9,18 @@ import WidgetKit
 
 // MARK: - Broadcaster
 
-@MainActor
-public final class Broadcaster: ObservableObject {
+@available(iOS 17.0, macCatalyst 17.0, *)
+@Observable @MainActor
+public final class Broadcaster {
     public static let shared = Broadcaster()
 
-    @Published public private(set) var eventForUpdatingLocalEnkaAvatarCache: [String: Date] = .init()
-    @Published public private(set) var eventForUpdatingLocalHoYoLABAvatarCache: UUID = .init()
-    @Published public private(set) var eventForUserWallpaperDidSave: UUID = .init()
-    @Published public private(set) var eventForRefreshingTodayTab: UUID = .init()
-    @Published public private(set) var eventForRefreshingCurrentPage: UUID = .init()
-    @Published public private(set) var eventForJustSwitchedToTodayTab: UUID = .init()
-    @Published public private(set) var eventForStoppingRootTabTasks: UUID = .init()
+    public private(set) var eventForUpdatingLocalEnkaAvatarCache: [String: Date] = .init()
+    public private(set) var eventForUpdatingLocalHoYoLABAvatarCache: UUID = .init()
+    public private(set) var eventForUserWallpaperDidSave: UUID = .init()
+    public private(set) var eventForRefreshingTodayTab: UUID = .init()
+    public private(set) var eventForRefreshingCurrentPage: UUID = .init()
+    public private(set) var eventForJustSwitchedToTodayTab: UUID = .init()
+    public private(set) var eventForStoppingRootTabTasks: UUID = .init()
 
     public func userWallpaperEntryChangesDidSave() {
         eventForUserWallpaperDidSave = .init()
@@ -50,6 +51,7 @@ public final class Broadcaster: ObservableObject {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension Broadcaster {
     public func reloadAllTimeLinesAcrossWidgets() {
         WidgetCenter.shared.reloadAllTimelines()

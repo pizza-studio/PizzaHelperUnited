@@ -123,7 +123,7 @@ public struct UserWallpaperMgrViewContent: View {
 
     @State private var isCropperSheetPresented: Bool = false
     @State private var alertToastEventStatus: AlertToastEventStatus = .init()
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
     @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
     @State private var isNameEditorVisible: Bool = false
     @State private var currentEditingWallpaper: UserWallpaper?

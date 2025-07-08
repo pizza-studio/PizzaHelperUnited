@@ -155,5 +155,5 @@ public struct BattleReportNav: View {
     // MARK: Private
 
     @State private var theVM: DetailPortalViewModel
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
 }

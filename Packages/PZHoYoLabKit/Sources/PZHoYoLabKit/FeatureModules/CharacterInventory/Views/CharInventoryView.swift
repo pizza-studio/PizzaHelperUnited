@@ -198,7 +198,7 @@ public struct CharacterInventoryView: View {
     @State private var expanded: Bool = false
     @State private var currentAvatarSummaryID: String
     @State private var screenVM: ScreenVM = .shared
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
     @Environment(\.dismiss) private var dismiss
 
     private let profile: PZProfileSendable

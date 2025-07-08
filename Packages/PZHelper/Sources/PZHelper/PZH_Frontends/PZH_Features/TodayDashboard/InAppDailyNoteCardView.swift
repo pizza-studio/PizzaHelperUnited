@@ -99,7 +99,7 @@ struct InAppDailyNoteCardView: View {
     // MARK: Private
 
     @State private var theVM: DailyNoteViewModel
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
 }
 
 // MARK: - DailyNoteCardErrorView

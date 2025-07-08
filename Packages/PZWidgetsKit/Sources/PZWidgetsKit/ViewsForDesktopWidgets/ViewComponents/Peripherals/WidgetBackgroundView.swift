@@ -54,7 +54,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     @Environment(\.widgetFamily) private var widgetFamily: WidgetFamily
-    @StateObject private var broadcaster = Broadcaster.shared
+    @State private var broadcaster = Broadcaster.shared
     @State private var folderMonitor = UserWallpaperFileHandler.folderMonitor
 
     private let background: WidgetBackground
