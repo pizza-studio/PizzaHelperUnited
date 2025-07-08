@@ -6,7 +6,6 @@ import Testing
 @testable import WallpaperKit
 
 struct WallpaperKitTests {
-    @available(iOS 17.0, macCatalyst 17.0, *)
     @Test
     func testAssetMetaAccessibility() throws {
         for theCase in BundledWallpaper.allCases(for: .genshinImpact) {
