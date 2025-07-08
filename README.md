@@ -26,13 +26,15 @@ This project uses Swift 6 and targeting iOS 17.4 and later.
 * Honkai: Star Rail (full support)
 * Zenless Zone Zero (Daily Note only)
 
+> Advanced support for ZZZ (Zenless Zone Zero) in this repository is currently not planned for the coming year due to various reasons. For now, the app only plans to support ZZZ daily notes in Widgets, Live Activity, and Today Tab.
+
 ### Supported Operating Systems
 
 Actual system requirements: Apple OS24 Series (iOS 17, macOS 14, watchOS 10)。
 
 This project may be compilable against earlier iOS releases. However, the compiled app on these older OSes won't provide any feature except those for allowing users to export their data.
 
-> Advanced support for ZZZ (Zenless Zone Zero) in this repository is currently not planned for the coming year due to various reasons. For now, the app only plans to support ZZZ daily notes in Widgets, Live Activity, and Today Tab.
+P.S.: We have struggled in attempting to backport this app to iOS 16 with a total failure: AppIntentConfiguration, the key component for all widgets, hardly require iOS 17+. There are also other crucial system APIs that require iOS 17+.
 
 ### Installation and Release Notes
 
