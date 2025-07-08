@@ -4,20 +4,21 @@
 
 import AppIntents
 import Defaults
+import Intents
 import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension Pizza.SupportedGame {
-    public init?(intentConfig: some WidgetConfigurationIntent) {
+    public init?(intentConfig: some AppIntent) {
         let uuid: String?
         switch intentConfig {
-        case let intentConfig as SelectOnlyAccountIntent:
+        case let intentConfig as PZEmbeddedIntent4ProfileOnly:
             uuid = intentConfig.account?.id
-        case let intentConfig as SelectAccountIntent:
+        case let intentConfig as PZDesktopIntent4SingleProfile:
             uuid = intentConfig.accountIntent?.id
-        case let intentConfig as SelectAccountAndShowWhichInfoIntent:
+        case let intentConfig as PZEmbeddedIntent4ProfileMisc:
             uuid = intentConfig.account?.id
         default:
             uuid = nil
@@ -26,8 +27,24 @@ extension Pizza.SupportedGame {
         self = profile.game
     }
 
+    public init?(intentConfigIN: some INIntent) {
+        let uuid: String?
+        switch intentConfigIN {
+        case let intentConfig as INSelectOnlyAccount:
+            uuid = intentConfig.account?.identifier
+        case let intentConfig as INSelectAccount:
+            uuid = intentConfig.accountIntent?.identifier
+        case let intentConfig as INSelectAccountAndShowWhichInfo:
+            uuid = intentConfig.account?.identifier
+        default:
+            uuid = nil
+        }
+        guard let uuid, let profile = Defaults[.pzProfiles][uuid] else { return nil }
+        self = profile.game
+    }
+
     public static func initFromDualProfileConfig(
-        intent: SelectDualProfileIntent
+        intent: PZDesktopIntent4DualProfiles
     )
         -> (slot1: Self?, slot2: Self?) {
         var game1: Self?

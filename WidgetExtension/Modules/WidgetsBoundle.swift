@@ -13,7 +13,7 @@ extension PZWidgets {
             StaminaTimerSharedActivityWidget()
             #endif
             #if !os(watchOS)
-            MainWidget()
+            SingleProfileWidget()
             DualProfileWidget()
             MaterialWidget()
             OfficialFeedWidget()
@@ -52,7 +52,7 @@ struct WidgetExtensionBundle: WidgetBundle {
     // MARK: Lifecycle
 
     init() {
-        if #available(iOS 17.0, macCatalyst 17.0, *) {
+        if #available(iOS 16.2, macCatalyst 16.2, *) {
             PZWidgets.startupTask()
         }
     }
@@ -70,10 +70,10 @@ struct WidgetExtensionBundle: WidgetBundle {
 //
 // #if DEBUG && !os(watchOS)
 // #Preview(as: .systemLarge, widget: {
-//    MainWidget()
+//    SingleProfileWidget()
 // }, timeline: {
 //    let date = Date()
-//    let provider = MainWidgetProvider()
+//    let provider = SingleProfileWidgetProvider()
 //    let game = Pizza.SupportedGame.genshinImpact
 //  let config: WidgetViewConfig = {
 //    var result = WidgetViewConfig.defaultConfig

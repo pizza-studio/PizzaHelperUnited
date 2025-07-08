@@ -1,0 +1,59 @@
+/* ru.lproj/Localizable.strings */
+
+/* appEntity. */
+"appEntity.localProfile" = "Профиль";
+"appEntity.widgetBackground" = "Фон виджета";
+
+/* appEnum. */
+"appEnum.ExpeditionDisplayPolicy.displayExclusively" = "Показывать исключительно";
+"appEnum.ExpeditionDisplayPolicy.displayWhenAvailable" = "Отображать если Доступно";
+"appEnum.ExpeditionDisplayPolicy.neverDisplay" = "Никогда не Отображать";
+"appEnum.ExpeditionDisplayPolicy.title" = "Политика Отображения Экспедиций";
+"appEnum.StaminaContentRevolverStyle.asRoundMeter" = "Круглый счётчик";
+"appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish" = "Отметка времени (по завершении)";
+"appEnum.StaminaContentRevolverStyle.asTimerCountDown" = "Таймер обратного отсчета";
+"appEnum.StaminaContentRevolverStyle.byDefault" = "По умолчанию";
+"appEnum.StaminaContentRevolverStyle.title" = "Автоповорот стилей виджета выносливости";
+"appEnum.WeeklyBossesDisplayMethod.alwaysHidden" = "всегда скрыто";
+"appEnum.WeeklyBossesDisplayMethod.alwaysVisible" = "всегда виден";
+"appEnum.WeeklyBossesDisplayMethod.hiddenIfAllCompleted" = "скрыто, если все выполнено";
+"appEnum.WeeklyBossesDisplayMethod.title" = "Метод отображения информации о еженедельных боссах";
+"appEnum.WidgetSupportedGame.GI" = "Genshin Impact";
+"appEnum.WidgetSupportedGame.HSR" = "Star Rail";
+"appEnum.WidgetSupportedGame.ZZZ" = "Zenless Zone Zero";
+"appEnum.WidgetSupportedGame.allGames" = "Все игры";
+"appEnum.WidgetSupportedGame.title" = "Поддерживаемая игра";
+
+/* intent.description. */
+"intent.description.chooseTheGame" = "Выберите игру";
+"intent.description.pickTheLocalProfileDuoForThisWidget" = "Выберите два локальных профиля для этого виджета";
+"intent.description.pickTheLocalProfileForThisWidget" = "Выберите локальный профиль для этого виджета";
+
+/* intent.field. */
+"intent.field.echoOfWarDisplayMethod" = "Отображение Эха войны";
+"intent.field.expeditionDisplayPolicy" = "Политика Отображения Экспедиций";
+"intent.field.followSystemDarkMode" = "Использовать системную цветовую схему";
+"intent.field.game" = "Игра";
+"intent.field.inverseSelectMode" = "Инвертировать выбор";
+"intent.field.localProfile" = "Локальный профиль";
+"intent.field.localProfile.slot1" = "Локальный профиль #1";
+"intent.field.localProfile.slot2" = "Локальный профиль #2";
+"intent.field.showMaterialsInLargeSizeWidget" = "[GI] Показать ежедневные материалы (только для виджетов большого размера)";
+"intent.field.showStaminaOnly" = "Показывать только выносливость игрока";
+"intent.field.showTransformer" = "[GI] Показать статус трансформатора";
+"intent.field.staminaDisplayStyle" = "Стиль отображения выносливости (Смола / Боевой дух / Энергия дзэн)";
+"intent.field.trounceBlossomDisplayMethod" = "Отображение Цветка наказания";
+"intent.field.useRandomWallpaper" = "Использовать случайные обои";
+"intent.field.useTinyGlassDisplayStyle" = "Использовать крошечный стеклянный стиль отображения";
+"intent.field.wallpaper" = "Обои";
+
+/* intent.name. */
+"intent.name.selectGameOnly" = "Выбрать только игру";
+"intent.name.selectLocalProfile" = "Выберите локальный профиль";
+"intent.name.selectLocalProfile4Peripherals" = "Выберите локальный профиль (только)";
+"intent.name.selectLocalProfile4PeripheralsWithExtraConfig" = "Выберите локальный профиль с дополнительной настройкой";
+"intent.name.selectLocalProfileDuo" = "Выберите локальный двойной профиль";
+
+/* intent.bool. */
+"intent.bool.false" = "нет";
+"intent.bool.true" = "да";

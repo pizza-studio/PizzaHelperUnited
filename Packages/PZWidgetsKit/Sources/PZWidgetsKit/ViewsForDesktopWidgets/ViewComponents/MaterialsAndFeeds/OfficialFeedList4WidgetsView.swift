@@ -11,7 +11,7 @@ import PZInGameEventKit
 import SwiftUI
 import WidgetKit
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public struct OfficialFeedList4WidgetsView: View {
@@ -51,7 +51,7 @@ extension DesktopWidgets {
 
         @ViewBuilder
         private func coreComponentEmbeddable() -> some View {
-            if events.isEmpty {
+            if events.isEmpty, #available(iOS 17.0, macCatalyst 17.0, *) {
                 Button(intent: WidgetRefreshIntent(dailyNoteUIDWithGame: nil)) {
                     Image(systemSymbol: .arrowClockwiseCircle)
                         .font(.title3)

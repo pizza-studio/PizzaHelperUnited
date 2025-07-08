@@ -4,14 +4,14 @@
 
 import Foundation
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension String {
     public var i18nPZWidgetsKit: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension String.LocalizationValue {
     public var i18nPZWidgetsKit: String {
         String(localized: self, bundle: .module)

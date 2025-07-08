@@ -11,7 +11,7 @@ import WidgetKit
 
 // MARK: - LockScreenLoopWidgetView
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 extension EmbeddedWidgets {
     public struct LockScreenLoopWidgetView: View {

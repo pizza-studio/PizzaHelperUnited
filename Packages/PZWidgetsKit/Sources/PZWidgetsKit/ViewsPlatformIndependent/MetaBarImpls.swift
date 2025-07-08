@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - MetaBar4DailyTask
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4DailyTask: View, MetaBar {
     // MARK: Lifecycle
 
@@ -60,7 +60,7 @@ public struct MetaBar4DailyTask: View, MetaBar {
 
 // MARK: - MetaBar4Expedition
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4Expedition: View, MetaBar {
     // MARK: Lifecycle
 
@@ -100,7 +100,7 @@ public struct MetaBar4Expedition: View, MetaBar {
 
 // MARK: - MetaBar4WeeklyBosses
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4WeeklyBosses: View, MetaBar {
     // MARK: Lifecycle
 
@@ -181,7 +181,7 @@ public struct MetaBar4WeeklyBosses: View, MetaBar {
 
 // MARK: - MetaBar4GIRealmCurrency
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4GIRealmCurrency: View, MetaBar {
     // MARK: Lifecycle
 
@@ -225,7 +225,7 @@ public struct MetaBar4GIRealmCurrency: View, MetaBar {
 
 // MARK: - MetaBar4GITransformer
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4GITransformer: View, MetaBar {
     // MARK: Lifecycle
 
@@ -279,7 +279,7 @@ public struct MetaBar4GITransformer: View, MetaBar {
 
 // MARK: - MetaBar4HSRReservedTBPower
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4HSRReservedTBPower: View, MetaBar {
     // MARK: Lifecycle
 
@@ -323,7 +323,7 @@ public struct MetaBar4HSRReservedTBPower: View, MetaBar {
 
 // MARK: - MetaBar4HSRSimulUniv
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4HSRSimulUniv: View, MetaBar {
     // MARK: Lifecycle
 
@@ -367,7 +367,7 @@ public struct MetaBar4HSRSimulUniv: View, MetaBar {
 
 // MARK: - MetaBar4ZZZBounty
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4ZZZBounty: View, MetaBar {
     // MARK: Lifecycle
 
@@ -386,7 +386,7 @@ public struct MetaBar4ZZZBounty: View, MetaBar {
     }
 
     public var statusIcon4SUI: Image {
-        Image(systemSymbol: .dotScope)
+        Image(systemSymbol: .scope)
     }
 
     public var statusTextUnits4SUI: [Text] {
@@ -409,7 +409,7 @@ public struct MetaBar4ZZZBounty: View, MetaBar {
 
 // MARK: - MetaBar4ZZZInvestigationPoint
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4ZZZInvestigationPoint: View, MetaBar {
     // MARK: Lifecycle
 
@@ -451,7 +451,7 @@ public struct MetaBar4ZZZInvestigationPoint: View, MetaBar {
 
 // MARK: - MetaBar4ZZZScratchCard
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4ZZZScratchCard: View, MetaBar {
     // MARK: Lifecycle
 
@@ -495,7 +495,7 @@ public struct MetaBar4ZZZScratchCard: View, MetaBar {
 
 // MARK: - MetaBar4ZZZVHSStore
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct MetaBar4ZZZVHSStore: View, MetaBar {
     // MARK: Lifecycle
 

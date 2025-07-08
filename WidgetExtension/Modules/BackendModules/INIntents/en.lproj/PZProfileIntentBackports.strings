@@ -1,0 +1,59 @@
+/* en.lproj/Localizable.strings */
+
+/* appEntity. */
+"appEntity.localProfile" = "Profile";
+"appEntity.widgetBackground" = "Widget Background";
+
+/* appEnum. */
+"appEnum.ExpeditionDisplayPolicy.displayExclusively" = "Display Exclusively";
+"appEnum.ExpeditionDisplayPolicy.displayWhenAvailable" = "Display If Available";
+"appEnum.ExpeditionDisplayPolicy.neverDisplay" = "Never Display";
+"appEnum.ExpeditionDisplayPolicy.title" = "Expedition Display Policy";
+"appEnum.StaminaContentRevolverStyle.asRoundMeter" = "Round Meter";
+"appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish" = "Timestamp (when finished)";
+"appEnum.StaminaContentRevolverStyle.asTimerCountDown" = "Countdown Timer";
+"appEnum.StaminaContentRevolverStyle.byDefault" = "Default";
+"appEnum.StaminaContentRevolverStyle.title" = "Auto Rotation of Stamina Widget Styles";
+"appEnum.WeeklyBossesDisplayMethod.alwaysHidden" = "always hidden";
+"appEnum.WeeklyBossesDisplayMethod.alwaysVisible" = "always visible";
+"appEnum.WeeklyBossesDisplayMethod.hiddenIfAllCompleted" = "hidden if all completed";
+"appEnum.WeeklyBossesDisplayMethod.title" = "Weekly Bosses Info Display Method";
+"appEnum.WidgetSupportedGame.GI" = "Genshin Impact";
+"appEnum.WidgetSupportedGame.HSR" = "Star Rail";
+"appEnum.WidgetSupportedGame.ZZZ" = "Zenless Zone Zero";
+"appEnum.WidgetSupportedGame.allGames" = "All Games";
+"appEnum.WidgetSupportedGame.title" = "Supported Game";
+
+/* intent.description. */
+"intent.description.chooseTheGame" = "Choose the game";
+"intent.description.pickTheLocalProfileDuoForThisWidget" = "Choose 2 local profiles for this widget";
+"intent.description.pickTheLocalProfileForThisWidget" = "Choose a local profile for this widget";
+
+/* intent.field. */
+"intent.field.echoOfWarDisplayMethod" = "Echo of War Display";
+"intent.field.expeditionDisplayPolicy" = "Expedition Display Policy";
+"intent.field.followSystemDarkMode" = "Follow system color scheme";
+"intent.field.game" = "Game";
+"intent.field.inverseSelectMode" = "Inverse the Selection";
+"intent.field.localProfile" = "Local profile";
+"intent.field.localProfile.slot1" = "Local profile #1";
+"intent.field.localProfile.slot2" = "Local profile #2";
+"intent.field.showMaterialsInLargeSizeWidget" = "[GI] Show daily materials (large-sized widgets only)";
+"intent.field.showStaminaOnly" = "Show Player Stamina Only";
+"intent.field.showTransformer" = "[GI] Show transformer status";
+"intent.field.staminaDisplayStyle" = "Stamina display style (Resin / Trailblazing Power / Zenless Energy)";
+"intent.field.trounceBlossomDisplayMethod" = "Trounce Blossom Display";
+"intent.field.useRandomWallpaper" = "Use random wallpaper";
+"intent.field.useTinyGlassDisplayStyle" = "Use Tiny Glass Display Style";
+"intent.field.wallpaper" = "Wallpaper";
+
+/* intent.name. */
+"intent.name.selectGameOnly" = "Only choose the game";
+"intent.name.selectLocalProfile" = "Choose Local Profile";
+"intent.name.selectLocalProfile4Peripherals" = "Choose Local Profile (only)";
+"intent.name.selectLocalProfile4PeripheralsWithExtraConfig" = "Choose Local Profile with Extra Configuration";
+"intent.name.selectLocalProfileDuo" = "Choose Local Profile (Dual)";
+
+/* intent.bool. */
+"intent.bool.false" = "false";
+"intent.bool.true" = "true";

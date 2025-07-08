@@ -1,0 +1,59 @@
+/* zh-Hans.lproj/Localizable.strings */
+
+/* appEntity. */
+"appEntity.localProfile" = "本地账号";
+"appEntity.widgetBackground" = "小组件背景";
+
+/* appEnum. */
+"appEnum.ExpeditionDisplayPolicy.displayExclusively" = "独占显示";
+"appEnum.ExpeditionDisplayPolicy.displayWhenAvailable" = "有资讯时显示";
+"appEnum.ExpeditionDisplayPolicy.neverDisplay" = "始终不显示";
+"appEnum.ExpeditionDisplayPolicy.title" = "派遣委托显示策略";
+"appEnum.StaminaContentRevolverStyle.asRoundMeter" = "仪表盘";
+"appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish" = "完工时间戳";
+"appEnum.StaminaContentRevolverStyle.asTimerCountDown" = "计时器";
+"appEnum.StaminaContentRevolverStyle.byDefault" = "默认值";
+"appEnum.StaminaContentRevolverStyle.title" = "轮替显示不同的体力表示风格";
+"appEnum.WeeklyBossesDisplayMethod.alwaysHidden" = "始终隐藏";
+"appEnum.WeeklyBossesDisplayMethod.alwaysVisible" = "始终显示";
+"appEnum.WeeklyBossesDisplayMethod.hiddenIfAllCompleted" = "全部完成时则隐藏";
+"appEnum.WeeklyBossesDisplayMethod.title" = "每周强敌征讨信息显示方法";
+"appEnum.WidgetSupportedGame.GI" = "原神";
+"appEnum.WidgetSupportedGame.HSR" = "星穹铁道";
+"appEnum.WidgetSupportedGame.ZZZ" = "绝区零";
+"appEnum.WidgetSupportedGame.allGames" = "所有游戏";
+"appEnum.WidgetSupportedGame.title" = "受支持的游戏";
+
+/* intent.description. */
+"intent.description.chooseTheGame" = "选择游戏";
+"intent.description.pickTheLocalProfileDuoForThisWidget" = "替该小组件选择两个本地账号";
+"intent.description.pickTheLocalProfileForThisWidget" = "替该小组件选择一个本地账号";
+
+/* intent.field. */
+"intent.field.echoOfWarDisplayMethod" = "[星铁] 显示历战余响剩余奖励次数";
+"intent.field.expeditionDisplayPolicy" = "派遣委托显示策略";
+"intent.field.followSystemDarkMode" = "跟随系统明暗配色方案";
+"intent.field.game" = "游戏";
+"intent.field.inverseSelectMode" = "反向选择";
+"intent.field.localProfile" = "本地账号";
+"intent.field.localProfile.slot1" = "本地账号 #1";
+"intent.field.localProfile.slot2" = "本地账号 #2";
+"intent.field.showMaterialsInLargeSizeWidget" = "[原神] 在大尺寸小组件显示每日材料";
+"intent.field.showStaminaOnly" = "仅显示玩家体力";
+"intent.field.showTransformer" = "[原神] 显示参量质变仪的状态";
+"intent.field.staminaDisplayStyle" = "体力显示风格 (原粹树脂 / 开拓力 / 绝区电量)";
+"intent.field.trounceBlossomDisplayMethod" = "[原神] 显示征讨之花树脂折扣";
+"intent.field.useRandomWallpaper" = "随机选用壁纸";
+"intent.field.useTinyGlassDisplayStyle" = "启用袖珍玻璃显示风格";
+"intent.field.wallpaper" = "壁纸";
+
+/* intent.name. */
+"intent.name.selectGameOnly" = "仅选择游戏";
+"intent.name.selectLocalProfile" = "选择本地账号";
+"intent.name.selectLocalProfile4Peripherals" = "仅选择本地账号";
+"intent.name.selectLocalProfile4PeripheralsWithExtraConfig" = "选择本地账号及额外配置";
+"intent.name.selectLocalProfileDuo" = "选择两个本地账号";
+
+/* intent.bool. */
+"intent.bool.false" = "否";
+"intent.bool.true" = "是";
