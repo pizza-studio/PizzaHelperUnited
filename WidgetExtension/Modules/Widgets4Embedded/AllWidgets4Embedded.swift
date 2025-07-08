@@ -12,7 +12,7 @@ import WidgetKit
 
 // MARK: - LockScreenResinWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct LockScreenResinWidget: Widget {
     let kind: String = "LockScreenResinWidget"
@@ -48,7 +48,7 @@ struct LockScreenResinWidget: Widget {
 
 // MARK: - AlternativeLockScreenHomeCoinWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct AlternativeLockScreenHomeCoinWidget: Widget {
     let kind: String = "AlternativeLockScreenHomeCoinWidget"
@@ -74,7 +74,7 @@ struct AlternativeLockScreenHomeCoinWidget: Widget {
 
 // MARK: - AlternativeLockScreenResinWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct AlternativeLockScreenResinWidget: Widget {
     let kind: String = "AlternativeLockScreenResinWidget"
@@ -97,7 +97,7 @@ struct AlternativeLockScreenResinWidget: Widget {
 
 // MARK: - LockScreenAllInfoWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct LockScreenAllInfoWidget: Widget {
     let kind: String = "LockScreenAllInfoWidget"
@@ -122,7 +122,7 @@ struct LockScreenAllInfoWidget: Widget {
 
 // MARK: - LockScreenDailyTaskWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct LockScreenDailyTaskWidget: Widget {
     let kind: String = "LockScreenDailyTaskWidget"
@@ -149,7 +149,7 @@ struct LockScreenDailyTaskWidget: Widget {
 
 // MARK: - LockScreenExpeditionWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct LockScreenExpeditionWidget: Widget {
     let kind: String = "LockScreenExpeditionWidget"
@@ -179,7 +179,7 @@ struct LockScreenExpeditionWidget: Widget {
 
 // MARK: - LockScreenHomeCoinWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct LockScreenHomeCoinWidget: Widget {
     let kind: String = "LockScreenHomeCoinWidget"
@@ -213,7 +213,7 @@ struct LockScreenHomeCoinWidget: Widget {
 
 // MARK: - LockScreenLoopWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct LockScreenLoopWidget: Widget {
     let kind: String = "LockScreenLoopWidget"
@@ -242,7 +242,7 @@ struct LockScreenLoopWidget: Widget {
 
 // MARK: - LockScreenResinFullTimeWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct LockScreenResinFullTimeWidget: Widget {
     let kind: String = "LockScreenResinFullTimeWidget"
@@ -266,7 +266,7 @@ struct LockScreenResinFullTimeWidget: Widget {
 
 // MARK: - LockScreenResinTimerWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct LockScreenResinTimerWidget: Widget {
     let kind: String = "LockScreenResinTimerWidget"
@@ -293,7 +293,7 @@ struct LockScreenResinTimerWidget: Widget {
 
 // MARK: - AlternativeWatchCornerResinWidget
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(macOS, unavailable)
 struct AlternativeWatchCornerResinWidget: Widget {
     let kind: String = "AlternativeWatchCornerResinWidget"

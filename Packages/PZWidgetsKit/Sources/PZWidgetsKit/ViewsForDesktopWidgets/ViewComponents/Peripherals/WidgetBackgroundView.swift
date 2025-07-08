@@ -10,7 +10,7 @@ import WidgetKit
 
 #if !os(watchOS)
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 extension DesktopWidgets {
     public typealias WidgetBackgroundView = WidgetBackgroundView4DesktopWidgets
@@ -18,7 +18,7 @@ extension DesktopWidgets {
 
 // MARK: - WidgetBackgroundView4DesktopWidgets
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 public struct WidgetBackgroundView4DesktopWidgets: View {
     // MARK: Lifecycle
@@ -146,7 +146,7 @@ public struct WidgetBackgroundView4DesktopWidgets: View {
 
 // MARK: - ContainerBackgroundModifier
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension View {
     #if !os(watchOS)
     @available(watchOS, unavailable)
@@ -168,7 +168,7 @@ extension View {
         viewConfig: WidgetViewConfig
     )
         -> some View {
-        modifier(ContainerBackgroundStandbyDetector(viewConfig: viewConfig))
+        modifier(ContainerBackgroundModifier(viewConfig: viewConfig))
     }
     #endif
 
@@ -180,13 +180,19 @@ extension View {
 
 // MARK: - SmartStackWidgetContainerBackground
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
     let background: () -> B
 
     func body(content: Content) -> some View {
-        content.containerBackground(for: .widget) {
-            background()
+        if #available(iOS 17.0, *) {
+            content.containerBackground(for: .widget) {
+                background()
+            }
+        } else {
+            content.background {
+                background()
+            }
         }
     }
 }
@@ -195,13 +201,17 @@ private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
 
 // MARK: - ContainerBackgroundModifier
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 private struct ContainerBackgroundModifier: ViewModifier {
     var viewConfig: WidgetViewConfig
 
     func body(content: Content) -> some View {
-        content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
+        if #available(iOS 17, *) {
+            content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
+        } else {
+            content
+        }
     }
 }
 

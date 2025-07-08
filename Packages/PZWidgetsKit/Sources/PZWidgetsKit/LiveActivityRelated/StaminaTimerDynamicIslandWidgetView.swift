@@ -10,7 +10,7 @@ import SwiftUI
 import WallpaperKit
 import WidgetKit
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct StaminaTimerDynamicIslandWidgetView: View {
     // MARK: Lifecycle
 
@@ -99,9 +99,10 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
                 Spacer()
                 if Date() < context.state.primaryStaminaRecoveryTime {
                     HStack {
-                        Color.clear.frame(width: 40, height: 40, alignment: .center)
+                        Color.clear
+                            .frame(width: 40, height: 40, alignment: .center)
                             .overlay {
-                                Image(systemSymbol: .evChargerArrowtriangleRight)
+                                Image(systemSymbol: .alarmWavesLeftAndRightFill)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxHeight: 24)
