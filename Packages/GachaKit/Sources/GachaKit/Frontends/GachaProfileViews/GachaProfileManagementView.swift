@@ -61,7 +61,7 @@ public struct GachaProfileManagementView: View {
             .saturation(theVM.taskState == .busy ? 0 : 1)
             .navigationBarBackButtonHidden(theVM.taskState == .busy)
             .animation(.default, value: theVM.taskState)
-            .onChange(of: theVM.hasGPID.wrappedValue) { _, newValue in
+            .react(to: theVM.hasGPID.wrappedValue) { _, newValue in
                 if !newValue {
                     presentationMode.wrappedValue.dismiss()
                 }

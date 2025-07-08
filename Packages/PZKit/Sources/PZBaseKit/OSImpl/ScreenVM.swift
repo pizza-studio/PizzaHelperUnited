@@ -258,7 +258,7 @@ extension ScreenVM {
                 .task {
                     await pushTrackedPropertiesToScreenVM() // 立即执行
                 }
-                .onChange(of: combinedHash, initial: true) { _, _ in
+                .react(to: combinedHash, initial: true) { _, _ in
                     Task {
                         await debouncer.debounce {
                             await pushTrackedPropertiesToScreenVM()

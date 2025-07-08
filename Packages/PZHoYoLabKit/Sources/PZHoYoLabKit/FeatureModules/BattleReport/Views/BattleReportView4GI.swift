@@ -75,7 +75,7 @@ public struct BattleReportView4GI: BattleReportView {
                 }
             }
         }
-        .onChange(of: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
+        .react(to: broadcaster.eventForUpdatingLocalHoYoLABAvatarCache) {
             Task { @MainActor in
                 withAnimation {
                     summaryMap = Self.getSummaryMap(data: data, profile: profile)

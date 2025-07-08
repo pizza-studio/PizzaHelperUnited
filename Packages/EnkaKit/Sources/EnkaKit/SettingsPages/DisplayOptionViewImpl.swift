@@ -26,7 +26,7 @@ extension Enka {
                         TextField(
                             "settings.display.customizingNameForKunikuzushi.currentValueLabel".i18nEnka,
                             text: $customizedNameForWanderer
-                        ).onChange(of: customizedNameForWanderer) { oldValue, newValue in
+                        ).react(to: customizedNameForWanderer) { oldValue, newValue in
                             guard oldValue != newValue else { return }
                             limitText(20)
                         }

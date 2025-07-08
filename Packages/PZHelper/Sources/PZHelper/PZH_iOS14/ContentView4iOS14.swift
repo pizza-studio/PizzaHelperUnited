@@ -112,7 +112,7 @@ public struct ContentView4iOS14: View {
                     }
                 )
             }
-            .onChange(of: isExportResultAvailable.wrappedValue) { _ in
+            .react(to: isExportResultAvailable.wrappedValue) {
                 theVM.forceStopTheTask()
             }
         }

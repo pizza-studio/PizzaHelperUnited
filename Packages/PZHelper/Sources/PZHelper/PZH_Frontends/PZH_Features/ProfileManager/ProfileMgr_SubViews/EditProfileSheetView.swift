@@ -54,7 +54,7 @@ extension ProfileManagerPageContent {
                         }
                     }
                 }
-                .onChange(of: theVM.sheetType) { oldValue, newValue in
+                .react(to: theVM.sheetType) { oldValue, newValue in
                     if oldValue != nil, newValue == nil {
                         presentationMode.wrappedValue.dismiss()
                     }

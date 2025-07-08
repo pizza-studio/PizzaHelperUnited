@@ -79,7 +79,7 @@ extension ProfileManagerPageContent {
                         isGetAccountFailAlertShown.toggle()
                     }
                 }
-                .onChange(of: status) { _, newValue in
+                .react(to: status) { _, newValue in
                     switch newValue {
                     case .gotCookie:
                         if importAllUIDs {
@@ -91,7 +91,7 @@ extension ProfileManagerPageContent {
                         return
                     }
                 }
-                .onChange(of: theVM.sheetType) { oldValue, newValue in
+                .react(to: theVM.sheetType) { oldValue, newValue in
                     if oldValue != nil, newValue == nil {
                         presentationMode.wrappedValue.dismiss()
                     }
@@ -138,7 +138,7 @@ extension ProfileManagerPageContent {
                     }
                 }
             }
-            .onChange(of: profile.cookie) { _, newValue in
+            .react(to: profile.cookie) { _, newValue in
                 if !newValue.isEmpty {
                     status = .gotCookie
                 }

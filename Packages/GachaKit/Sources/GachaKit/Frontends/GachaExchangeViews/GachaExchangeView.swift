@@ -63,7 +63,7 @@ public struct GachaExchangeView: View {
                     }
                 }
             }
-            .onChange(of: theVM.hasGPID.wrappedValue, initial: true) { _, hasGPID in
+            .react(to: theVM.hasGPID.wrappedValue, initial: true) { _, hasGPID in
                 if !hasGPID, currentPage != .importData {
                     currentPage = .importData
                 }

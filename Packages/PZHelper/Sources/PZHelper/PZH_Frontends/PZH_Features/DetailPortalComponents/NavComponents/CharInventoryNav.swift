@@ -23,7 +23,7 @@ public struct CharInventoryNav: View {
     public var body: some View {
         if let profile = theVM.currentProfile {
             coreBody(profile: profile)
-                .onChange(of: broadcaster.eventForRefreshingCurrentPage) {
+                .react(to: broadcaster.eventForRefreshingCurrentPage) {
                     theVM.refresh()
                 }
         }

@@ -71,7 +71,7 @@ public struct ContentView: View {
         .tint(tintForCurrentTab)
         .apply { currentContent in
             hookSidebarAndPageHandlers(currentContent)
-                .onChange(of: rootNavVM.rootPageNav) {
+                .react(to: rootNavVM.rootPageNav) {
                     simpleTaptic(type: .medium)
                 }
         }
@@ -108,7 +108,7 @@ public struct ContentView: View {
     private func hookSidebarAndPageHandlers(_ givenView: some View) -> some View {
         givenView
             // .task { fixMainColumnPageIfNeeded() }
-            .onChange(of: screenVM.hashForTracking, initial: true) {
+            .react(to: screenVM.hashForTracking, initial: true) {
                 fixMainColumnPageIfNeeded()
             }
     }

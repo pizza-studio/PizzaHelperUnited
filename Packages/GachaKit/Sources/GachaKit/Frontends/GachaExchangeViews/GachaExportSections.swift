@@ -74,7 +74,7 @@ public struct GachaExportSections: View {
         .apply { exporterButton in
             hookAlertAndComDlg32(target: exporterButton)
         }
-        .onChange(of: specifiedProfiles, initial: true) {
+        .react(to: specifiedProfiles, initial: true) {
             packageMethod = .init(
                 owners: Array(
                     specifiedProfiles.sorted {
@@ -83,7 +83,7 @@ public struct GachaExportSections: View {
                 )
             )
         }
-        .onChange(of: packageMethod) { _, newValue in
+        .react(to: packageMethod) { _, newValue in
             switch newValue {
             case .singleOwner where specifiedProfiles.first?.game == .starRail: break
             default: exportFormat = .asUIGFv4
@@ -203,7 +203,7 @@ public struct GachaExportSections: View {
                     Text(verbatim: msgPack.message)
                 }
             )
-            .onChange(of: isExportResultAvailable.wrappedValue) {
+            .react(to: isExportResultAvailable.wrappedValue) {
                 theVM.forceStopTheTask()
             }
     }

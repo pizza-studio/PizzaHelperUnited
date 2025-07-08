@@ -85,10 +85,10 @@ struct InAppDailyNoteCardView: View {
             .secondaryColorVerseBackground()
             .textCase(.none)
         }
-        .onChange(of: broadcaster.eventForJustSwitchedToTodayTab) {
+        .react(to: broadcaster.eventForJustSwitchedToTodayTab) {
             theVM.getDailyNote()
         }
-        .onChange(of: broadcaster.eventForRefreshingTodayTab) {
+        .react(to: broadcaster.eventForRefreshingTodayTab) {
             theVM.getDailyNoteUncheck()
         }
         .onAppBecomeActive {

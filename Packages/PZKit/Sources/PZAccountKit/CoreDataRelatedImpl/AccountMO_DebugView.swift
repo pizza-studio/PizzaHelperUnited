@@ -77,7 +77,7 @@ public struct AccountMODebugView: View {
                 "This view enumerates all accountMO data from previous PizzaHelper4Genshin and PizzaHelper4HSR."
             )
             .font(.caption)
-            .onChange(of: game, initial: true) {
+            .react(to: game, initial: true) {
                 Task { @MainActor in
                     allAccountData = try! await Self.sputnik.allAccountData(for: game)
                 }
@@ -97,7 +97,7 @@ public struct AccountMODebugView: View {
                 }
                 .pickerStyle(.segmented)
                 .fixedSize()
-                .onChange(of: game, initial: true) {
+                .react(to: game, initial: true) {
                     print("Action")
                 }
             }

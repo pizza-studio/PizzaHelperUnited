@@ -50,10 +50,10 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
             }
             .scrollDisabled(scrollAxis.isEmpty)
         }
-        .onChange(of: list) { _, newList in
+        .react(to: list) { _, newList in
             vm.updateGridArray(list: newList, columns: columns)
         }
-        .onChange(of: columns) { _, newColumns in
+        .react(to: columns) { _, newColumns in
             guard newColumns > 0 else { return }
             vm.updateGridArray(list: list, columns: newColumns)
         }

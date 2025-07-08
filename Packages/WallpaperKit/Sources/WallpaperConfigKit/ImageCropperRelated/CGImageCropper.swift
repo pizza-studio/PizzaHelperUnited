@@ -266,7 +266,7 @@ extension CGImageCropperView {
         } label: {
             Image(systemSymbol: .magnifyingglass)
         }
-        .onChange(of: scaleFactor) { _, _ in
+        .react(to: scaleFactor) { _, _ in
             fixOriginIfNeeded()
         }
         .disabled(sourceCGImage == nil)

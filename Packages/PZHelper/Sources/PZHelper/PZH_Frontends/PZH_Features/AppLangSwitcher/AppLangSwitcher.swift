@@ -59,7 +59,7 @@ struct AppLanguageSwitcher: View {
         } icon: {
             Image(systemSymbol: .globe)
         }
-        .onChange(of: appLanguage) {
+        .react(to: appLanguage) {
             alertPresented = true
         }
         .alert(

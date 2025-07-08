@@ -53,7 +53,7 @@ public struct ContentView: View {
                 }
             }
         }
-        .onChange(of: scenePhase) { _, newPhase in
+        .react(to: scenePhase) { _, newPhase in
             switch newPhase {
             case .inactive:
                 if #available(watchOSApplicationExtension 9.0, *) {
@@ -70,7 +70,7 @@ public struct ContentView: View {
                 dismissButton: .default(Text(verbatim: "sys.done".i18nBaseKit))
             )
         }
-        .onChange(of: profiles) {
+        .react(to: profiles) {
             Task { @MainActor in
                 await PZProfileActor.shared.syncAllDataToUserDefaults()
             }
@@ -154,7 +154,7 @@ private struct DetailNavigator: View {
                 ProgressView()
             }
         }
-        .onChange(of: broadcaster.eventForRefreshingCurrentPage) { _, _ in
+        .react(to: broadcaster.eventForRefreshingCurrentPage) { _, _ in
             dailyNoteViewModel.getDailyNoteUncheck()
         }
         .onAppear {
