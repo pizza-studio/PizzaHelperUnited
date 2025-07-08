@@ -7,6 +7,7 @@ import SwiftUI
 
 // MARK: - NavigationBackground
 
+#if !os(watchOS)
 extension View {
     @ViewBuilder
     public func listContainerBackground(
@@ -29,6 +30,7 @@ extension View {
         }
     }
 }
+#endif
 
 @available(iOS 15.0, macCatalyst 15.0, *)
 extension String {
