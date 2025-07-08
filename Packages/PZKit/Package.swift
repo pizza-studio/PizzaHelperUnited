@@ -35,6 +35,9 @@ let package = Package(
             url: "https://github.com/sindresorhus/Defaults", .upToNextMajor(from: "9.0.2")
         )
         Package.Dependency.package(
+            url: "https://github.com/prisma-ai/Sworm.git", .upToNextMajor(from: "1.3.0")
+        )
+        Package.Dependency.package(
             url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.2")
         )
         Package.Dependency.package(path: "../PZCoreDataKit")
@@ -71,6 +74,10 @@ let package = Package(
                 Target.Dependency.product(
                     name: "PZProfileCDMOBackports",
                     package: "PZCoreDataKit"
+                )
+                Target.Dependency.product(
+                    name: "Sworm",
+                    package: "Sworm"
                 )
                 Target.Dependency.product(
                     name: "Alamofire",
