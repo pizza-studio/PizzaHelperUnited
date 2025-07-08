@@ -12,10 +12,8 @@ extension PZNotificationCenter {
         for profile: PZProfileSendable, dailyNote: any DailyNoteProtocol
     ) {
         #if !os(watchOS)
-        if #available(iOS 15.0, macCatalyst 15.0, *) {
-            NotificationSputnik(profile: profile, dailyNote: dailyNote)
-                .refreshPendingNotifications()
-        }
+        NotificationSputnik(profile: profile, dailyNote: dailyNote)
+            .refreshPendingNotifications()
         #endif
     }
 
@@ -97,7 +95,6 @@ public enum DailyNoteNotificationType: String {
 
 // MARK: - NotificationSputnik
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 private struct NotificationSputnik {
     // MARK: Lifecycle
 
@@ -121,7 +118,6 @@ private struct NotificationSputnik {
     }()
 }
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension NotificationSputnik {
     // MARK: Internal
 
@@ -225,19 +221,19 @@ extension NotificationSputnik {
     /// 玩家体力，只要不满载就不提醒。
     private func scheduleStaminaFullNotification() async -> UNNotificationRequest? {
         let timeOnFinish = dailyNote.staminaFullTimeOnFinish
-        guard timeOnFinish > .now else {
+        guard timeOnFinish > .init() else {
             await deleteNotification(.staminaFull)
             return nil
         }
-        let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date.now.timeIntervalSince1970
+        let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date().timeIntervalSince1970
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.stamina.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.stamina.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.stamina.full.body:%@", bundle: .module),
+            format: NSLocalizedString("notification.stamina.full.body:%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -252,15 +248,15 @@ extension NotificationSputnik {
         let information = dailyNote.staminaIntel
         guard threshold <= information.all else { return nil } // 阈值不得高于满载值。
         let timeOnFinish = dailyNote.staminaFullTimeOnFinish
-        let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date.now.timeIntervalSince1970
+        let remainingSecs = timeOnFinish.timeIntervalSince1970 - Date().timeIntervalSince1970
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.stamina.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.stamina.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.stamina.customize.body:%@%@%@", bundle: .module),
+            format: NSLocalizedString("notification.stamina.customize.body:%@%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             threshold.description,
             dateFormatter.string(from: timeOnFinish)
@@ -290,11 +286,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.expedition.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.expedition.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.expedition.summary.body:%@", bundle: .module),
+            format: NSLocalizedString("notification.expedition.summary.body:%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -315,11 +311,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.expedition.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.expedition.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.expedition.each.body:%@%@", bundle: .module),
+            format: NSLocalizedString("notification.expedition.each.body:%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             index.description
         )
@@ -341,11 +337,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.dailyTask.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.dailyTask.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.dailyTask.body:%@%@%@", bundle: .module),
+            format: NSLocalizedString("notification.dailyTask.body:%@%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             sitrep.finished.description,
             sitrep.all.description
@@ -373,11 +369,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.katheryneRewardsAvailable.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.katheryneRewardsAvailable.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.katheryneRewardsAvailable.body:%@", bundle: .module),
+            format: NSLocalizedString("notification.katheryneRewardsAvailable.body:%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -398,11 +394,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.realmCurrency.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.realmCurrency.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.realmCurrency.body:%@", bundle: .module),
+            format: NSLocalizedString("notification.realmCurrency.body:%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -425,11 +421,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.parametricTransformer.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.parametricTransformer.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.parametricTransformer.body:%@", bundle: .module),
+            format: NSLocalizedString("notification.parametricTransformer.body:%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))"
         )
         content.badge = 1
@@ -458,11 +454,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.trounceBlossom.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.trounceBlossom.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.trounceBlossom.body:%@%@", bundle: .module),
+            format: NSLocalizedString("notification.trounceBlossom.body:%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             trounceBlossom.remainResinDiscount.description
         )
@@ -495,11 +491,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.echoOfWar.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.echoOfWar.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.echoOfWar.body:%@%@", bundle: .module),
+            format: NSLocalizedString("notification.echoOfWar.body:%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             eowIntel.weeklyEOWRewardsLeft.description
         )
@@ -532,11 +528,11 @@ extension NotificationSputnik {
         let content = UNMutableNotificationContent()
         let gameTag = "[\(profile.game.localizedShortName)] "
         content.title = gameTag + String(
-            format: String(localized: "notification.simulatedUniverse.title:%@", bundle: .module),
+            format: NSLocalizedString("notification.simulatedUniverse.title:%@", bundle: .module, comment: ""),
             profile.name
         )
         content.body = String(
-            format: String(localized: "notification.simulatedUniverse.body:%@%@%@", bundle: .module),
+            format: NSLocalizedString("notification.simulatedUniverse.body:%@%@%@", bundle: .module, comment: ""),
             "\(profile.name) (\(profile.uidWithGame))",
             simulatedUniverse.currentScore.description,
             simulatedUniverse.maxScore.description
