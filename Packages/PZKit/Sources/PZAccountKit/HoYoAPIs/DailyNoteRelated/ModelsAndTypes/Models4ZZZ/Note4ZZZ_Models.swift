@@ -128,14 +128,14 @@ extension Note4ZZZ {
 
         // MARK: Public
 
-        @available(iOS 15.0, macCatalyst 15.0, *) public var localizedDescription: String {
+        public var localizedDescription: String {
             switch self {
             case .revenueAvailable:
-                String(localized: "dailyNote.zzz.vhsState.revenueAvailable", bundle: .module)
+                "dailyNote.zzz.vhsState.revenueAvailable".i18nAK
             case .awaitingForOperation:
-                String(localized: "dailyNote.zzz.vhsState.awaitingForOperation", bundle: .module)
+                "dailyNote.zzz.vhsState.awaitingForOperation".i18nAK
             case .inOperation:
-                String(localized: "dailyNote.zzz.vhsState.inOperation", bundle: .module)
+                "dailyNote.zzz.vhsState.inOperation".i18nAK
             }
         }
 

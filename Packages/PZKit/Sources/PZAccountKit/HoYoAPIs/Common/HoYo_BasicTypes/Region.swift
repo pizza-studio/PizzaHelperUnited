@@ -108,7 +108,6 @@ extension HoYo.AccountRegion: RawRepresentable, Codable, Identifiable, Hashable 
 
 // MARK: - HoYo.AccountRegion + CustomStringConvertible
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension HoYo.AccountRegion: CustomStringConvertible {
     public var description: String {
         localizedDescription

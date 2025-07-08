@@ -5,7 +5,6 @@
 import Alamofire
 import Foundation
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension HoYo {
     /// Get `MultiToken` by using a login ticket
     ///
