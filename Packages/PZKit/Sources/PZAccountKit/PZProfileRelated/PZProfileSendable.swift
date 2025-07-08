@@ -124,6 +124,7 @@ extension PZProfileSendable {
     }
 }
 
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileSendable {
     public var asRef: PZProfileRef {
         .init(

@@ -14,12 +14,12 @@ struct ProfileConfigEditorView: View {
     // MARK: Lifecycle
 
     init(unsavedProfile: PZProfileRef) {
-        self._unsavedProfile = .init(wrappedValue: unsavedProfile)
+        self.unsavedProfile = unsavedProfile
     }
 
     // MARK: Internal
 
-    @StateObject var unsavedProfile: PZProfileRef
+    @Bindable var unsavedProfile: PZProfileRef
 
     var body: some View {
         Form {
@@ -131,7 +131,7 @@ private struct RegenerateDeviceFingerPrintButton: View {
     // MARK: Lifecycle
 
     init(profile: PZProfileRef) {
-        self._profile = .init(wrappedValue: profile)
+        self._profile = State(wrappedValue: profile)
     }
 
     // MARK: Internal
@@ -143,7 +143,7 @@ private struct RegenerateDeviceFingerPrintButton: View {
         case fail(Error)
     }
 
-    @StateObject var profile: PZProfileRef
+    @State var profile: PZProfileRef
 
     @State var isErrorAlertShown: Bool = false
     @State var error: AnyLocalizedError?

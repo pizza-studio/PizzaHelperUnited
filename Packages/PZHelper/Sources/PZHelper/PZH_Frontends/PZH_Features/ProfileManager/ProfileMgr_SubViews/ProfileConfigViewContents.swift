@@ -14,7 +14,7 @@ struct ProfileConfigViewContents: View {
     // MARK: Lifecycle
 
     public init(profile: PZProfileRef, fetchedAccounts: [FetchedAccount]? = nil) {
-        self._profile = .init(wrappedValue: profile)
+        self.profile = profile
         self.fetchedAccounts = fetchedAccounts
     }
 
@@ -70,7 +70,7 @@ struct ProfileConfigViewContents: View {
 
     // MARK: Private
 
-    @StateObject private var profile: PZProfileRef
+    @State private var profile: PZProfileRef
     @State private var validate: String = ""
     @State private var fetchedAccounts: [FetchedAccount]?
 
@@ -143,13 +143,13 @@ extension ProfileConfigViewContents {
         // MARK: Lifecycle
 
         init(profile: PZProfileRef, fetchedAccounts: [FetchedAccount]) {
-            self._profile = .init(wrappedValue: profile)
+            self._profile = State(wrappedValue: profile)
             self.fetchedAccounts = fetchedAccounts
         }
 
         // MARK: Internal
 
-        @StateObject var profile: PZProfileRef
+        @State var profile: PZProfileRef
 
         let fetchedAccounts: [FetchedAccount]
 

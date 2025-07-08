@@ -15,7 +15,7 @@ extension ProfileManagerPageContent {
         // MARK: Lifecycle
 
         init(profile: PZProfileRef) {
-            self._profile = .init(wrappedValue: profile)
+            self._profile = State(wrappedValue: profile)
             Task { @MainActor in
                 ProfileManagerVM.shared.sheetType = .editExistingProfile(profile)
             }
@@ -64,7 +64,7 @@ extension ProfileManagerPageContent {
 
         // MARK: Private
 
-        @StateObject private var profile: PZProfileRef
+        @State private var profile: PZProfileRef
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
         @State private var theVM: ProfileManagerVM = .shared
