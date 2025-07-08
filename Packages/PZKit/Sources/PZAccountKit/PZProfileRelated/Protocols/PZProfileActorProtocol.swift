@@ -5,8 +5,6 @@
 import Foundation
 
 public protocol PZProfileActorProtocol: Actor {
-    static var shared: Self { get }
-
     func getSendableProfiles() -> [PZProfileSendable]
     func addProfiles(_ profileSendableSet: Set<PZProfileSendable>) throws
     func updateProfile(_ profileSendable: PZProfileSendable) throws
