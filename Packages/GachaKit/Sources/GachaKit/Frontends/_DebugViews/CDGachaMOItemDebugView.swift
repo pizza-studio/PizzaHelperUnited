@@ -84,9 +84,6 @@ public struct CDGachaMODebugView: View {
 
 // MARK: CDGachaMODebugView.CDGachaMODebugVM
 
-@available(macOS 14, *)
-@available(macCatalyst 17, *)
-@available(iOS 17, *)
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension CDGachaMODebugView {
     @Observable

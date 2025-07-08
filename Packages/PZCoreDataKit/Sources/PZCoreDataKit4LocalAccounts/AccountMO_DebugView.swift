@@ -10,10 +10,7 @@ import SwiftUI
 
 // MARK: - AccountMOItemDebugView
 
-@available(macOS 14, *)
-@available(macCatalyst 17, *)
-@available(iOS 17, *)
-@available(iOSApplicationExtension, unavailable)
+@available(iOS 17.0, macCatalyst 17.0, *)
 private struct AccountMOItemDebugView: View {
     // MARK: Lifecycle
 
@@ -65,10 +62,7 @@ private struct AccountMOItemDebugView: View {
 
 // MARK: - AccountMODebugView
 
-@available(macOS 14, *)
-@available(macCatalyst 17, *)
-@available(iOS 17, *)
-@available(iOSApplicationExtension, unavailable)
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct AccountMODebugView: View {
     // MARK: Lifecycle
 
