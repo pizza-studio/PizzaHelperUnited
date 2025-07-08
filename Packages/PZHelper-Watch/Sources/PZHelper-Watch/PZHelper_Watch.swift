@@ -43,7 +43,7 @@ extension PZHelperWatch {
     @MainActor
     private static func startupTasks() {
         Task {
-            await PZProfileActor.attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: true)
+            await PZProfileActor.shared.tryAutoInheritOldLocalAccounts(resetNotifications: true)
         }
     }
 }
