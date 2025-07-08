@@ -14,7 +14,7 @@ import SwiftData
 @available(iOS 17.0, macCatalyst 17.0, *)
 public enum PZProfileSwiftData {
     @ModelActor
-    public actor PZProfileActor {
+    public actor PZProfileActor: PZProfileActorProtocol {
         public init(unitTests: Bool = false) {
             var isReset = false
             if unitTests {
@@ -149,12 +149,12 @@ extension PZProfileActor {
         }
     }
 
-    public static func migrateOldAccountsIntoProfiles(
+    public func migrateOldAccountsIntoProfiles(
         resetNotifications: Bool = true, isUnattended: Bool = false
     ) async throws {
         do {
             let oldData = try await CDAccountMOActor.shared.getAllAccountDataAsPZProfileSendable()
-            try await PZProfileActor.shared.acceptMigratedOldAccountProfiles(
+            try await acceptMigratedOldAccountProfiles(
                 oldData: oldData,
                 resetNotifications: resetNotifications,
                 isUnattended: isUnattended
@@ -166,7 +166,7 @@ extension PZProfileActor {
 
     /// An OOBE task attempts inheriting old AccountMOs from the previous Pizza Apps using obsolete engines.
     /// - Parameter resetNotifications: Recheck permissions for notifications && reload all timelines across widgets.
-    public static func attemptToAutoInheritOldAccountsIntoProfiles(resetNotifications: Bool = true) async {
+    public func tryAutoInheritOldLocalAccounts(resetNotifications: Bool = true) async {
         guard Pizza.isAppStoreRelease, !Defaults[.oldAccountMOAlreadyAutoInherited] else { return }
         do {
             try await migrateOldAccountsIntoProfiles(
@@ -283,12 +283,6 @@ extension PZProfileActor {
             }
         }
         return remainingProfiles
-    }
-
-    public static func getSendableProfiles() -> [PZProfileSendable] {
-        let context = ModelContext(shared.modelContainer)
-        let result = (try? context.fetch(FetchDescriptor<PZProfileMO>()).map(\.asSendable)) ?? []
-        return result.sorted { $0.priority < $1.priority }
     }
 
     @discardableResult
