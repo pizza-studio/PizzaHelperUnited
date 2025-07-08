@@ -6,6 +6,7 @@ import SwiftUI
 
 // MARK: - StaggeredGrid
 
+@available(iOS 17.0, macCatalyst 17.0, *)
 public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendable>: View {
     // MARK: Lifecycle
 
@@ -47,13 +48,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
             ScrollView(axisSet, showsIndicators: showsIndicators && !scrollAxis.isEmpty) {
                 innerContent
             }
-            .apply { scrollView in
-                if #available(iOS 16.0, macCatalyst 16.0, *) {
-                    scrollView.scrollDisabled(scrollAxis.isEmpty)
-                } else {
-                    scrollView
-                }
-            }
+            .scrollDisabled(scrollAxis.isEmpty)
         }
         .react(to: list) { _, newList in
             vm.updateGridArray(list: newList, columns: columns)
@@ -71,7 +66,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
     // MARK: Private
 
-    @StateObject private var vm: StaggeredGridVM<T>
+    @State private var vm: StaggeredGridVM<T>
 
     private let columns: Int
     private let scrollAxis: Axis.Set
@@ -101,8 +96,9 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
 
 // MARK: - StaggeredGridVM
 
-@MainActor
-final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableObject {
+@available(iOS 17.0, macCatalyst 17.0, *)
+@Observable @MainActor
+final class StaggeredGridVM<T: Identifiable & Equatable & Sendable> {
     // MARK: Lifecycle
 
     // MARK: - Initialization
@@ -115,7 +111,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableO
 
     // MARK: Internal
 
-    @Published var gridArray: [[T]] = []
+    var gridArray: [[T]] = []
 
     // MARK: - Methods
 
@@ -178,6 +174,7 @@ final class StaggeredGridVM<T: Identifiable & Equatable & Sendable>: ObservableO
 
 // MARK: - API Compatibility
 
+@available(iOS 17.0, macCatalyst 17.0, *)
 extension StaggeredGrid {
     public init(
         columns: Int,
