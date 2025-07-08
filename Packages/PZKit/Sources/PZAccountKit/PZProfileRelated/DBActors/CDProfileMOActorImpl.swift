@@ -5,8 +5,11 @@
 import Defaults
 import Foundation
 import PZBaseKit
+import PZCoreDataKitShared
 import PZProfileCDMOBackports
 import Sworm
+
+public typealias CDProfileMOActor = PZCoreDataKit.CDProfileMOActor
 
 extension CDProfileMOActor {
     public static var shared: CDProfileMOActor? {
