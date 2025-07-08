@@ -14,8 +14,7 @@ extension View {
         thickMaterial: Bool = false
     )
         -> some View {
-        #if targetEnvironment(macCatalyst)
-        if #available(macCatalyst 17.0, *) {
+        if #available(iOS 15.0, macCatalyst 15.0, *) {
             background {
                 AppWallpaperView()
                     .saturation(thickMaterial ? 0.8 : 1)
@@ -28,33 +27,6 @@ extension View {
         } else {
             self
         }
-        #elseif os(iOS)
-        if #available(iOS 17.0, *) {
-            background {
-                AppWallpaperView()
-                    .saturation(thickMaterial ? 0.8 : 1)
-                    .overlay {
-                        if thickMaterial {
-                            Color.primary.colorInvert().opacity(0.1)
-                        }
-                    }
-            }
-        } else {
-            self
-        }
-        #elseif os(macOS)
-        background {
-            AppWallpaperView()
-                .saturation(thickMaterial ? 0.8 : 1)
-                .overlay {
-                    if thickMaterial {
-                        Color.primary.colorInvert().opacity(0.1)
-                    }
-                }
-        }
-        #else
-        self
-        #endif
     }
 }
 
