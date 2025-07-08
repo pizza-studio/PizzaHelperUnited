@@ -8,7 +8,7 @@ import PZCoreDataKitShared
 import PZProfileCDMOBackports
 import SwiftData
 
-extension PZProfileCDMO: ProfileMOProtocol {
+extension PZProfileCDMO: ProfileProtocol {
     public var game: Pizza.SupportedGame {
         get {
             let matchedRaw = try? SDStringEnumCodec.decodeRawValue(from: gameBlob)
