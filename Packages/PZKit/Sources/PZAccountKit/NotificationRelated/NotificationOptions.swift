@@ -7,14 +7,12 @@ import Foundation
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension Defaults.Keys {
     public static let notificationOptions = Key<NotificationOptions>(
         "notificationOptions", default: .init(), suite: .baseSuite
     )
 }
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension Pizza.SupportedGame {
     fileprivate var notificationThreshold: NotificationOptions.StaminaThreshold {
         .init(game: self, threshold: maxPrimaryStamina - 10)
@@ -27,7 +25,6 @@ extension Pizza.SupportedGame {
 
 // MARK: - NotificationOptions
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 public struct NotificationOptions: AbleToCodeSendHash, Defaults.Serializable {
     // MARK: Lifecycle
 
@@ -107,10 +104,23 @@ public struct NotificationOptions: AbleToCodeSendHash, Defaults.Serializable {
         // MARK: Public
 
         public var description: String {
-            String(localized: descriptionKey, bundle: .module)
+            if #available(iOS 15.0, macCatalyst 15.0, *) {
+                String(localized: descriptionKey, bundle: .module)
+            } else {
+                descriptionKeyStr.i18nAK
+            }
         }
 
-        public var descriptionKey: String.LocalizationValue {
+        @available(iOS 15.0, *) public var descriptionKey: String.LocalizationValue {
+            switch self {
+            case .onlySummary:
+                return "notification.expedition.method.summary"
+            case .forEachExpedition:
+                return "notification.expedition.method.each"
+            }
+        }
+
+        public var descriptionKeyStr: String {
             switch self {
             case .onlySummary:
                 return "notification.expedition.method.summary"
@@ -264,7 +274,6 @@ public struct NotificationOptions: AbleToCodeSendHash, Defaults.Serializable {
     }
 }
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension [NotificationOptions.StaminaThreshold] {
     public func byGame(_ game: Pizza.SupportedGame) -> Self {
         filter { $0.game == game }.sorted { $0.threshold < $1.threshold }
@@ -273,7 +282,6 @@ extension [NotificationOptions.StaminaThreshold] {
 
 // MARK: - Binding Generators
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 extension NotificationOptions {
     private static var shared: NotificationOptions {
         get {
@@ -290,7 +298,7 @@ extension NotificationOptions {
                 switch Self.shared.dailyTaskNotificationSetting {
                 case let .notifyAt(_, hour, minute):
                     return Calendar.gregorian.nextDate(
-                        after: Date.now,
+                        after: Date(),
                         matching: DateComponents(hour: hour, minute: minute),
                         matchingPolicy: .nextTime
                     )!
@@ -329,7 +337,7 @@ extension NotificationOptions {
                 switch Self.shared.giKatheryneNotificationSetting {
                 case let .notifyAt(_, hour, minute):
                     return Calendar.gregorian.nextDate(
-                        after: Date.now,
+                        after: Date(),
                         matching: DateComponents(hour: hour, minute: minute),
                         matchingPolicy: .nextTime
                     )!
