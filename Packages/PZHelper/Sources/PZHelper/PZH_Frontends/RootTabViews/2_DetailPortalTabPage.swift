@@ -141,7 +141,7 @@ struct DetailPortalTabPage: View {
     @State private var vmDPV: DetailPortalViewModel = .shared
     @State private var pfMgrVM: ProfileManagerVM = .shared
     @State private var rootNavVM = RootNavVM.shared
-    @State private var broadcaster = Broadcaster.shared
+    @StateObject private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
 
     @Default(.pzProfiles) private var profiles: [String: PZProfileSendable]

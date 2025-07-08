@@ -93,5 +93,5 @@ public struct LedgerNav: View {
     // MARK: Private
 
     @State private var theVM: DetailPortalViewModel
-    @State private var broadcaster = Broadcaster.shared
+    @StateObject private var broadcaster = Broadcaster.shared
 }

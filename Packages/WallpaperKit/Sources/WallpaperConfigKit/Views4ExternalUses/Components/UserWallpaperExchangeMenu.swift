@@ -97,7 +97,7 @@ struct UserWallpaperExchangeMenu<T: View>: View {
     // MARK: Private
 
     @State private var theVM = Coordinator()
-    @State private var broadcaster = Broadcaster.shared
+    @StateObject private var broadcaster = Broadcaster.shared
 
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
     private let extraItem: (() -> T)?
