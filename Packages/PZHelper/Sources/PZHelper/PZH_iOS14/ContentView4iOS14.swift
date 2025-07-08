@@ -136,11 +136,11 @@ public struct ContentView4iOS14: View {
         switch fileSaveActionResult {
         case let .success(url):
             (
-                "refugee.export.succeededInSavingToFile".i18nRefugee,
-                "refugee.export.fileSavedTo:".i18nRefugee + "\n\n\(url)"
+                "refugee.export.succeededInSavingToFile".i18nPZHelper,
+                "refugee.export.fileSavedTo:".i18nPZHelper + "\n\n\(url)"
             )
         case let .failure(message):
-            ("refugee.export.failedInSavingToFile".i18nRefugee, "⚠︎ \(message)")
+            ("refugee.export.failedInSavingToFile".i18nPZHelper, "⚠︎ \(message)")
         case nil: ("", "")
         }
     }
