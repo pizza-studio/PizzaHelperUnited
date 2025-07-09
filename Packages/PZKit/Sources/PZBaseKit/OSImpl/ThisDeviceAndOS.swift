@@ -227,24 +227,18 @@ public enum OS: Int {
     public static var isOS25OrAbove: Bool {
         switch OS.type {
         case .macOS:
-            if #available(macOS 15, *)
-            { return true }
-            if #available(macCatalyst 18, *)
-            { return true }
+            if #available(macOS 15, *) { return true }
+            if #available(macCatalyst 18, *) { return true }
             return false
         case .iPhoneOS:
-            if #available(iOS 18, *)
-            { return true }
+            if #available(iOS 18, *) { return true }
             return false
         case .iPadOS:
-            if #available(iOS 18, *)
-            { return true }
+            if #available(iOS 18, *) { return true }
         case .watchOS:
-            if #available(watchOS 11, *)
-            { return true }
+            if #available(watchOS 11, *) { return true }
         case .tvOS:
-            if #available(tvOS 18, *)
-            { return true }
+            if #available(tvOS 18, *) { return true }
         }
         return false
     }
