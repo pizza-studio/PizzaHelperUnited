@@ -20,7 +20,7 @@ struct SingleProfileWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(
             kind: kind,
-            intent: PZDesktopIntent4SingleProfile.self,
+            intent: SingleProfileWidgetProvider.Intent.self,
             provider: SingleProfileWidgetProvider()
         ) { entry in
             DesktopWidgets
@@ -29,6 +29,29 @@ struct SingleProfileWidget: Widget {
         .configurationDisplayName("pzWidgetsKit.status.title".i18nWidgets)
         .description("pzWidgetsKit.status.enquiry.title".i18nWidgets)
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
+        .containerBackgroundRemovable(false)
+    }
+}
+
+@available(iOS 16.2, macCatalyst 16.2, *)
+@available(watchOS, unavailable)
+struct INSingleProfileWidget: Widget {
+    let kind: String = "WidgetView"
+
+    var body: some WidgetConfiguration {
+        IntentConfiguration(
+            kind: kind,
+            intent: INSingleProfileWidgetProvider.Intent.self,
+            provider: INSingleProfileWidgetProvider()
+        ) { entry in
+            DesktopWidgets
+                .SingleProfileWidgetView(entry: entry, noBackground: false)
+        }
+        .configurationDisplayName("pzWidgetsKit.status.title".i18nWidgets)
+        .description("pzWidgetsKit.status.enquiry.title".i18nWidgets)
+        .supportedFamilies(
+            [.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge].backportsOnly
+        )
         .containerBackgroundRemovable(false)
     }
 }

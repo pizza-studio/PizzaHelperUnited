@@ -20,7 +20,7 @@ struct DualProfileWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(
             kind: kind,
-            intent: PZDesktopIntent4DualProfiles.self,
+            intent: DualProfileWidgetProvider.Intent.self,
             provider: DualProfileWidgetProvider()
         ) { entry in
             DesktopWidgets
@@ -29,6 +29,29 @@ struct DualProfileWidget: Widget {
         .configurationDisplayName("pzWidgetsKit.statusDualProfile.title".i18nWidgets)
         .description("pzWidgetsKit.statusDualProfile.enquiry.title".i18nWidgets)
         .supportedFamilies([.systemMedium, .systemLarge, .systemExtraLarge])
+        .containerBackgroundRemovable(false)
+    }
+}
+
+@available(iOS 16.2, macCatalyst 16.2, *)
+@available(watchOS, unavailable)
+struct INDualProfileWidget: Widget {
+    let kind: String = "WidgetView"
+
+    var body: some WidgetConfiguration {
+        IntentConfiguration(
+            kind: kind,
+            intent: INDualProfileWidgetProvider.Intent.self,
+            provider: INDualProfileWidgetProvider()
+        ) { entry in
+            DesktopWidgets
+                .DualProfileWidgetView(entry: entry)
+        }
+        .configurationDisplayName("pzWidgetsKit.statusDualProfile.title".i18nWidgets)
+        .description("pzWidgetsKit.statusDualProfile.enquiry.title".i18nWidgets)
+        .supportedFamilies(
+            [.systemMedium, .systemLarge, .systemExtraLarge].backportsOnly
+        )
         .containerBackgroundRemovable(false)
     }
 }

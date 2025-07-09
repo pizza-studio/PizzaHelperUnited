@@ -12,17 +12,17 @@ import WidgetKit
 
 // MARK: - LockScreenResinWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct LockScreenResinWidget: Widget {
+struct INLockScreenResinWidget: Widget {
     let kind: String = "LockScreenResinWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
         ) { entry in
             EmbeddedWidgets
                 .LockScreenResinWidgetView(entry: entry)
@@ -36,30 +36,30 @@ struct LockScreenResinWidget: Widget {
                 .accessoryInline,
                 .accessoryRectangular,
                 .accessoryCorner,
-            ])
+            ].backportsOnly)
         #else
             .supportedFamilies([
                 .accessoryCircular,
                 .accessoryInline,
                 .accessoryRectangular,
-            ])
+            ].backportsOnly)
         #endif
     }
 }
 
 // MARK: - AlternativeLockScreenHomeCoinWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct AlternativeLockScreenHomeCoinWidget: Widget {
+struct INAlternativeLockScreenHomeCoinWidget: Widget {
     let kind: String = "AlternativeLockScreenHomeCoinWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(
                 games: [.genshinImpact],
                 recommendationsTag: "watch.info.RealmCurrency"
             )
@@ -70,23 +70,23 @@ struct AlternativeLockScreenHomeCoinWidget: Widget {
         }
         .configurationDisplayName("pzWidgetsKit.homeCoin".i18nWidgets)
         .description("pzWidgetsKit.cfgName.homeCoin.2".i18nWidgets)
-        .supportedFamilies([.accessoryCircular])
+        .supportedFamilies([.accessoryCircular].backportsOnly)
     }
 }
 
 // MARK: - AlternativeLockScreenResinWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct AlternativeLockScreenResinWidget: Widget {
+struct INAlternativeLockScreenResinWidget: Widget {
     let kind: String = "AlternativeLockScreenResinWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
         ) { entry in
             EmbeddedWidgets
                 .AlternativeLockScreenResinWidgetView(entry: entry)
@@ -94,23 +94,23 @@ struct AlternativeLockScreenResinWidget: Widget {
         }
         .configurationDisplayName("pzWidgetsKit.cfgName.stamina".i18nWidgets)
         .description("pzWidgetsKit.cfgName.stamina.detail.2".i18nWidgets)
-        .supportedFamilies([.accessoryCircular])
+        .supportedFamilies([.accessoryCircular].backportsOnly)
     }
 }
 
 // MARK: - LockScreenAllInfoWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct LockScreenAllInfoWidget: Widget {
+struct INLockScreenAllInfoWidget: Widget {
     let kind: String = "LockScreenAllInfoWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(
                 recommendationsTag: "watch.info.dailyCommission"
             )
         ) { entry in
@@ -120,23 +120,23 @@ struct LockScreenAllInfoWidget: Widget {
         }
         .configurationDisplayName("pzWidgetsKit.cfgName.generalInfo".i18nWidgets)
         .description("pzWidgetsKit.cfgName.generalInfo.detail".i18nWidgets)
-        .supportedFamilies([.accessoryRectangular])
+        .supportedFamilies([.accessoryRectangular].backportsOnly)
     }
 }
 
 // MARK: - LockScreenDailyTaskWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct LockScreenDailyTaskWidget: Widget {
+struct INLockScreenDailyTaskWidget: Widget {
     let kind: String = "LockScreenDailyTaskWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.dailyCommission")
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(recommendationsTag: "watch.info.dailyCommission")
         ) { entry in
             EmbeddedWidgets
                 .LockScreenDailyTaskWidgetView(entry: entry)
@@ -145,26 +145,26 @@ struct LockScreenDailyTaskWidget: Widget {
         .configurationDisplayName("pzWidgetsKit.dailyTask".i18nWidgets)
         .description("pzWidgetsKit.cfgName.dailyCommission".i18nWidgets)
         #if os(watchOS)
-            .supportedFamilies([.accessoryCircular, .accessoryCorner])
+            .supportedFamilies([.accessoryCircular, .accessoryCorner].backportsOnly)
         #else
-            .supportedFamilies([.accessoryCircular])
+            .supportedFamilies([.accessoryCircular].backportsOnly)
         #endif
     }
 }
 
 // MARK: - LockScreenExpeditionWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct LockScreenExpeditionWidget: Widget {
+struct INLockScreenExpeditionWidget: Widget {
     let kind: String = "LockScreenExpeditionWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(
                 games: [.genshinImpact, .starRail],
                 recommendationsTag: "watch.info.expedition"
             )
@@ -176,26 +176,26 @@ struct LockScreenExpeditionWidget: Widget {
         .configurationDisplayName("pzWidgetsKit.expedition".i18nWidgets)
         .description("pzWidgetsKit.cfgName.expedition".i18nWidgets)
         #if os(watchOS)
-            .supportedFamilies([.accessoryCircular, .accessoryCorner])
+            .supportedFamilies([.accessoryCircular, .accessoryCorner].backportsOnly)
         #else
-            .supportedFamilies([.accessoryCircular])
+            .supportedFamilies([.accessoryCircular].backportsOnly)
         #endif
     }
 }
 
 // MARK: - LockScreenHomeCoinWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct LockScreenHomeCoinWidget: Widget {
+struct INLockScreenHomeCoinWidget: Widget {
     let kind: String = "LockScreenHomeCoinWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(
                 games: [.genshinImpact],
                 recommendationsTag: "watch.info.RealmCurrency"
             )
@@ -211,26 +211,26 @@ struct LockScreenHomeCoinWidget: Widget {
                 .accessoryCircular,
                 .accessoryCorner,
                 .accessoryRectangular,
-            ])
+            ].backportsOnly)
         #else
-            .supportedFamilies([.accessoryCircular, .accessoryRectangular])
+            .supportedFamilies([.accessoryCircular, .accessoryRectangular].backportsOnly)
         #endif
     }
 }
 
 // MARK: - LockScreenLoopWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct LockScreenLoopWidget: Widget {
+struct INLockScreenLoopWidget: Widget {
     let kind: String = "LockScreenLoopWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileMisc.self,
-            provider: LockScreenLoopWidgetProvider(
+            intent: INLockScreenLoopWidgetProvider.Intent.self,
+            provider: INLockScreenLoopWidgetProvider(
                 recommendationsTag: "watch.info.autoRotation"
             )
         ) { entry in
@@ -241,26 +241,26 @@ struct LockScreenLoopWidget: Widget {
         .configurationDisplayName("pzWidgetsKit.cfgName.autoRotation".i18nWidgets)
         .description("pzWidgetsKit.cfgName.autoDisplay".i18nWidgets)
         #if os(watchOS)
-            .supportedFamilies([.accessoryCircular, .accessoryCorner])
+            .supportedFamilies([.accessoryCircular, .accessoryCorner].backportsOnly)
         #else
-            .supportedFamilies([.accessoryCircular])
+            .supportedFamilies([.accessoryCircular].backportsOnly)
         #endif
     }
 }
 
 // MARK: - LockScreenResinFullTimeWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct LockScreenResinFullTimeWidget: Widget {
+struct INLockScreenResinFullTimeWidget: Widget {
     let kind: String = "LockScreenResinFullTimeWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "pzWidgetsKit.stamina.refillTime.ofSb")
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(recommendationsTag: "pzWidgetsKit.stamina.refillTime.ofSb")
         ) { entry in
             EmbeddedWidgets
                 .LockScreenResinFullTimeWidgetView(entry: entry)
@@ -268,24 +268,24 @@ struct LockScreenResinFullTimeWidget: Widget {
         }
         .configurationDisplayName("pzWidgetsKit.stamina.refillTime.title".i18nWidgets)
         .description("pzWidgetsKit.stamina.refillTime.show.title".i18nWidgets)
-        .supportedFamilies([.accessoryCircular])
+        .supportedFamilies([.accessoryCircular].backportsOnly)
         .contentMarginsDisabled()
     }
 }
 
 // MARK: - LockScreenResinTimerWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct LockScreenResinTimerWidget: Widget {
+struct INLockScreenResinTimerWidget: Widget {
     let kind: String = "LockScreenResinTimerWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "pzWidgetsKit.stamina.refillTime.countdown.ofSb")
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(recommendationsTag: "pzWidgetsKit.stamina.refillTime.countdown.ofSb")
         ) { entry in
             EmbeddedWidgets
                 .LockScreenResinTimerWidgetView(entry: entry)
@@ -294,26 +294,26 @@ struct LockScreenResinTimerWidget: Widget {
         .configurationDisplayName("pzWidgetsKit.stamina.refillTime.countdown.title".i18nWidgets)
         .description("pzWidgetsKit.stamina.refillTime.countdown.show.title".i18nWidgets)
         #if os(watchOS)
-            .supportedFamilies([.accessoryCircular, .accessoryCircular])
+            .supportedFamilies([.accessoryCircular, .accessoryCircular].backportsOnly)
         #else
-            .supportedFamilies([.accessoryCircular])
+            .supportedFamilies([.accessoryCircular].backportsOnly)
         #endif
     }
 }
 
 // MARK: - AlternativeWatchCornerResinWidget
 
-@available(iOS 17.0, watchOS 10.0, *)
+@available(iOS 16.2, watchOS 9.0, *)
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
-struct AlternativeWatchCornerResinWidget: Widget {
+struct INAlternativeWatchCornerResinWidget: Widget {
     let kind: String = "AlternativeWatchCornerResinWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: PZEmbeddedIntent4ProfileOnly.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
+            intent: INLockScreenWidgetProvider.Intent.self,
+            provider: INLockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
         ) { entry in
             EmbeddedWidgets
                 .AlternativeWatchCornerResinWidgetView(entry: entry)
@@ -321,7 +321,7 @@ struct AlternativeWatchCornerResinWidget: Widget {
         .configurationDisplayName("pzWidgetsKit.cfgName.stamina".i18nWidgets)
         .description("pzWidgetsKit.cfgName.stamina.detail".i18nWidgets)
         #if os(watchOS)
-            .supportedFamilies([.accessoryCorner])
+            .supportedFamilies([.accessoryCorner].backportsOnly)
         #endif
     }
 }

@@ -18,7 +18,7 @@ struct OfficialFeedWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(
             kind: "OfficialFeedWidget",
-            intent: PZDesktopIntent4GameOnly.self,
+            intent: OfficialFeedWidgetProvider.Intent.self,
             provider: OfficialFeedWidgetProvider()
         ) { entry in
             DesktopWidgets.OfficialFeedWidgetView(
@@ -29,6 +29,29 @@ struct OfficialFeedWidget: Widget {
         .configurationDisplayName("pzWidgetsKit.officialFeed.title".i18nWidgets)
         .description("pzWidgetsKit.officialFeed.description".i18nWidgets)
         .supportedFamilies([.systemMedium, .systemLarge, .systemExtraLarge])
+        .containerBackgroundRemovable(false)
+    }
+}
+
+@available(iOS 16.2, macCatalyst 16.2, *)
+@available(watchOS, unavailable)
+struct INOfficialFeedWidget: Widget {
+    var body: some WidgetConfiguration {
+        IntentConfiguration(
+            kind: "OfficialFeedWidget",
+            intent: INOfficialFeedWidgetProvider.Intent.self,
+            provider: INOfficialFeedWidgetProvider()
+        ) { entry in
+            DesktopWidgets.OfficialFeedWidgetView(
+                entry: entry,
+                showLeadingBorder: true
+            )
+        }
+        .configurationDisplayName("pzWidgetsKit.officialFeed.title".i18nWidgets)
+        .description("pzWidgetsKit.officialFeed.description".i18nWidgets)
+        .supportedFamilies(
+            [.systemMedium, .systemLarge, .systemExtraLarge].backportsOnly
+        )
         .containerBackgroundRemovable(false)
     }
 }
