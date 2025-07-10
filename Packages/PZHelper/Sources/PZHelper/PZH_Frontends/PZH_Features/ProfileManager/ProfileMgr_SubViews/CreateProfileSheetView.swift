@@ -96,6 +96,9 @@ extension ProfileManagerPageContent {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
+                .react(to: profile.game) { _, newValue in
+                    region.changeGame(to: newValue)
+                }
             }
         }
 
@@ -117,7 +120,7 @@ extension ProfileManagerPageContent {
                         unsavedFP: $profile.deviceFingerPrint,
                         deviceID: $profile.deviceID,
                         region: $region,
-                        game: game,
+                        game: $profile.game,
                         importAllUIDs: $importAllUIDs
                     )
                 } header: {
@@ -318,17 +321,6 @@ extension ProfileManagerPageContent {
         @StateObject private var theVM: ProfileManagerVM = .shared
         @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-
-        private var game: Binding<Pizza.SupportedGame> {
-            .init(
-                get: { profile.game },
-                set: { newGame in
-                    profile.server.changeGame(to: newGame)
-                    region.changeGame(to: newGame)
-                    profile.game = newGame
-                }
-            )
-        }
     }
 }
 
