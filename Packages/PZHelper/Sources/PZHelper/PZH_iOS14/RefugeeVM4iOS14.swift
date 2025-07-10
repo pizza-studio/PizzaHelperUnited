@@ -3,7 +3,9 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import CoreData
+import Defaults
 import GachaKit
+import PZAccountKit
 import PZBaseKit
 import PZCoreDataKit4GachaEntries
 import PZCoreDataKit4LocalAccounts
@@ -18,7 +20,12 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
     override private init() {
         super.init()
         configurePublisherObservations()
-        startCountingDataEntriesTask(forced: true)
+        Task {
+            while Defaults[.isEULAConfirmed] == false {
+                try await Task.sleep(nanoseconds: 500_000_000)
+            }
+            startCountingDataEntriesTask(forced: true)
+        }
     }
 
     // MARK: Public
@@ -43,6 +50,11 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
 
     // MARK: Private
 
+    private static var isOS23OrAbove: Bool {
+        if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) { return true }
+        return false
+    }
+
     private var subscribed: Bool = false
 
     private func configurePublisherObservations() {
@@ -59,7 +71,8 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
             guard !changedEntityNames.isEmpty else { return }
             let hasAccountMO4GI = changedEntityNames.contains("AccountConfiguration")
             let hasOldGachaLog4GI = changedEntityNames.contains("GachaItemMO")
-            guard hasAccountMO4GI || hasOldGachaLog4GI else { return }
+            let hasPZProfileMO = changedEntityNames.contains("PZProfileMO")
+            guard hasAccountMO4GI || hasOldGachaLog4GI || hasPZProfileMO else { return }
             Task { @MainActor in
                 self.startCountingDataEntriesTask(forced: false)
             }
@@ -73,7 +86,11 @@ extension RefugeeVM4iOS14 {
             cancelPreviousTask: forced, givenTask: {
                 var result = RefugeeFile()
                 result.oldGachaEntries4GI = try await CDGachaMOActor.shared.getAllGenshinDataEntriesVanilla()
-                result.oldProfiles4GI = try await CDAccountMOActor.shared.allAccountDataForGenshin()
+                if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
+                    result.newProfiles = ProfileManagerVM.shared.profiles
+                } else {
+                    result.oldProfiles4GI = try await CDAccountMOActor.shared.allAccountDataForGenshin()
+                }
                 return result
             }, completionHandler: { [weak self] newResult in
                 guard let this = self, let newResult else { return }
@@ -89,7 +106,11 @@ extension RefugeeVM4iOS14 {
             cancelPreviousTask: forced, givenTask: {
                 var (intGacha, intProfile) = (0, 0)
                 intGacha = try await CDGachaMOActor.shared.countAllDataEntries(for: .genshinImpact)
-                intProfile = try await CDAccountMOActor.shared.countAllAccountData(for: .genshinImpact)
+                if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
+                    intProfile = ProfileManagerVM.shared.profiles.count
+                } else {
+                    intProfile = try await CDAccountMOActor.shared.countAllAccountData(for: .genshinImpact)
+                }
                 return (intGacha, intProfile)
             }, completionHandler: { [weak self] newResult in
                 guard let this = self, let newResult else { return }

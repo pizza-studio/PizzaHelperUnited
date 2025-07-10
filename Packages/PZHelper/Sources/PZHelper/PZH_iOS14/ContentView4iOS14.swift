@@ -2,8 +2,12 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import Foundation
+import PZAboutKit
+import PZAccountKit
 import PZBaseKit
+import PZWidgetsKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -15,114 +19,198 @@ public struct ContentView4iOS14: View {
     // MARK: Public
 
     public var body: some View {
-        let msgPack = fileSaveActionResultMessagePack
-        NavigationView {
-            List {
-                if let theError = theVM.currentError {
-                    Section {
-                        Text(verbatim: "\(theError) ||| \(theError.localizedDescription)")
-                    }
-                }
-                Section {
-                    if theVM.localProfileEntriesCount > 0 {
-                        HStack {
-                            Text("refugee.exportableCount.profiles", bundle: .module)
-                                .multilineTextAlignment(.leading)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text(verbatim: theVM.localProfileEntriesCount.description)
-                                .foregroundColor(.secondary)
-                                .padding(.leading)
-                        }
-                    }
-                    if theVM.gachaEntriesCount > 0 {
-                        HStack {
-                            Text("refugee.exportableCount.gachaEntries", bundle: .module)
-                                .multilineTextAlignment(.leading)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text(verbatim: theVM.gachaEntriesCount.description)
-                                .foregroundColor(.secondary)
-                                .padding(.leading)
-                        }
-                    }
-                    if !hasData {
-                        Text("refugee.noDataExportable", bundle: .module)
-                            .foregroundColor(.secondary)
-                    }
-                } header: {
-                    HStack {
-                        Text("refugee.exportableCount.header", bundle: .module)
-                            .multilineTextAlignment(.leading)
-                            .textCase(.none)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+        if #available(iOS 16.2, *) {
+            NavigationStack {
+                contentsInsideNavigationContainer
+            }
+        } else {
+            NavigationView {
+                contentsInsideNavigationContainer
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+        }
+    }
 
-                        Button {
-                            theVM.startCountingDataEntriesTask(forced: true)
-                        } label: {
-                            Image(systemSymbol: .arrowClockwiseCircle)
-                        }
-                        .disabled(theVM.taskState == .busy)
-                    }
-                    .frame(maxWidth: .infinity)
-                } footer: {
-                    VStack(alignment: .leading, spacing: 20) {
-                        Text("refugee.footer.exportInstructions", bundle: .module)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.accentColor)
-                        Text("refugee.footer.whyServiceTerminatedForOS21", bundle: .module)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .frame(maxWidth: .infinity)
+    // MARK: Internal
+
+    @ViewBuilder var contentsInsideNavigationContainer: some View {
+        let msgPack = fileSaveActionResultMessagePack
+        List {
+            if let theError = theVM.currentError {
+                Section {
+                    Text(verbatim: "\(theError) ||| \(theError.localizedDescription)")
                 }
             }
-            .navigationTitle(Text("app.appName.full", bundle: .module))
-            .navBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    if theVM.taskState == .busy {
-                        ProgressView()
+            if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
+                Section {
+                    NavigationLink(destination: ProfileManagerPageContent.init) {
+                        Label("profileMgr.manage.title".i18nPZHelper, systemSymbol: .personTextRectangleFill)
+                    }
+                    NavigationLink(destination: NotificationSettingsPageContent.init) {
+                        Label(NotificationSettingsPageContent.navTitle, systemSymbol: .bellBadge)
+                    }
+                    LiveActivitySettingNavigator()
+                    if !pzProfilesMap.isEmpty {
+                        drawLiveActivityCallerRow()
+                    }
+                    NavigationLink(
+                        destination: AboutView.init,
+                        label: {
+                            Label {
+                                Text(verbatim: AboutView.navTitle)
+                            } icon: {
+                                AboutView.navIcon
+                            }
+                        }
+                    )
+                } header: {
+                    Text("refugee.limitedServiceCategory4iOS16.header", bundle: .module)
+                        .textCase(.none)
+                } footer: {
+                    Text("refugee.limitedServiceCategory4iOS16.footer", bundle: .module)
+                        .textCase(.none)
+                }
+                .fontWidth(.condensed)
+            }
+            Section {
+                if theVM.localProfileEntriesCount > 0 {
+                    HStack {
+                        Text("refugee.exportableCount.profiles", bundle: .module)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text(verbatim: theVM.localProfileEntriesCount.description)
+                            .foregroundColor(.secondary)
+                            .padding(.leading)
                     }
                 }
-                ToolbarItem(placement: .topBarTrailing) {
+                if theVM.gachaEntriesCount > 0 {
+                    HStack {
+                        Text("refugee.exportableCount.gachaEntries", bundle: .module)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text(verbatim: theVM.gachaEntriesCount.description)
+                            .foregroundColor(.secondary)
+                            .padding(.leading)
+                    }
+                }
+                if !hasData {
+                    Text("refugee.noDataExportable", bundle: .module)
+                        .foregroundColor(.secondary)
+                }
+            } header: {
+                HStack {
+                    Text("refugee.exportableCount.header", bundle: .module)
+                        .multilineTextAlignment(.leading)
+                        .textCase(.none)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
                     Button {
-                        theVM.startDocumentationPreparationTask(forced: false)
+                        theVM.startCountingDataEntriesTask(forced: true)
                     } label: {
-                        Image(systemSymbol: .squareAndArrowUp)
+                        Image(systemSymbol: .arrowClockwiseCircle)
                     }
                     .disabled(theVM.taskState == .busy)
                 }
-            }
-            .fileExporter(
-                isPresented: theVM.isExportDialogVisible,
-                document: theVM.currentExportableDocument,
-                contentType: .propertyList,
-                defaultFilename: "PizzaHelper4Genshin_RefugeeMigrationData"
-            ) { result in
-                fileSaveActionResult = result
-                theVM.currentExportableDocument = nil
-            }
-            .alert(isPresented: isExportResultAvailable) {
-                Alert(
-                    title: Text(msgPack.title),
-                    message: Text(msgPack.message),
-                    dismissButton: Alert.Button.default(Text(verbatim: "✔︎")) {
-                        fileSaveActionResult = nil
-                        theVM.forceStopTheTask()
-                    }
-                )
-            }
-            .react(to: isExportResultAvailable.wrappedValue) {
-                theVM.forceStopTheTask()
+                .frame(maxWidth: .infinity)
+            } footer: {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("refugee.footer.exportInstructions", bundle: .module)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.accentColor)
+                    Text("refugee.footer.whyServiceTerminatedForOS21", bundle: .module)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .frame(maxWidth: .infinity)
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationTitle(Text("app.appName.full", bundle: .module))
+        .navBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                if theVM.taskState == .busy {
+                    ProgressView()
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    theVM.startDocumentationPreparationTask(forced: false)
+                } label: {
+                    Image(systemSymbol: .squareAndArrowUp)
+                }
+                .disabled(theVM.taskState == .busy)
+            }
+        }
+        .fileExporter(
+            isPresented: theVM.isExportDialogVisible,
+            document: theVM.currentExportableDocument,
+            contentType: .propertyList,
+            defaultFilename: "PizzaHelper4Genshin_RefugeeMigrationData"
+        ) { result in
+            fileSaveActionResult = result
+            theVM.currentExportableDocument = nil
+        }
+        .alert(isPresented: isExportResultAvailable) {
+            Alert(
+                title: Text(msgPack.title),
+                message: Text(msgPack.message),
+                dismissButton: Alert.Button.default(Text(verbatim: "✔︎")) {
+                    fileSaveActionResult = nil
+                    theVM.forceStopTheTask()
+                }
+            )
+        }
+        .react(to: isExportResultAvailable.wrappedValue) {
+            theVM.forceStopTheTask()
+        }
+    }
+
+    @available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *)
+    @ViewBuilder
+    func drawLiveActivityCallerRow() -> some View {
+        LabeledContent {
+            Menu {
+                ForEach(pzProfilesSorted, id: \.uuid) { profile in
+                    Button(profile.asTinyMenuLabelText()) {
+                        theVM.fireTask(
+                            givenTask: {
+                                let dailyNote = try await profile.getDailyNote(cached: true)
+                                try StaminaLiveActivityController.shared.createResinRecoveryTimerActivity(
+                                    for: profile,
+                                    data: dailyNote
+                                )
+                            }
+                        )
+                    }
+                }
+            } label: {
+                Text("refugee.liveActivity.tapHereToInitiate", bundle: .module)
+            }
+        } label: {
+            Label {
+                Text("refugee.liveActivity.featureLabel", bundle: .module)
+            } icon: {
+                Image(systemSymbol: .timerSquare)
+            }
+        }
     }
 
     // MARK: Private
 
     @StateObject private var theVM = RefugeeVM4iOS14.shared
     @State private var fileSaveActionResult: Result<URL, any Error>?
+
+    @Default(.pzProfiles) private var pzProfilesMap: [String: PZProfileSendable]
+
+    private var pzProfilesSorted: [PZProfileSendable] {
+        Array(pzProfilesMap.values.sorted { $0.priority < $1.priority })
+    }
+
+    private var isOS23OrAbove: Bool {
+        if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) { return true }
+        return false
+    }
 
     private var isExportResultAvailable: Binding<Bool> {
         .init(get: { fileSaveActionResult != nil }, set: { _ in })
