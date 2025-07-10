@@ -56,7 +56,6 @@ public struct PZDesktopIntent4SingleProfile: AppIntent, CustomIntentMigratedAppI
                     \.$isDarkModeRespected
                     \.$showStaminaOnly
                     \.$useTinyGlassDisplayStyle
-                    \.$expeditionDisplayPolicy
                 }
             } otherwise: {
                 Summary {
@@ -66,7 +65,6 @@ public struct PZDesktopIntent4SingleProfile: AppIntent, CustomIntentMigratedAppI
                     \.$isDarkModeRespected
                     \.$showStaminaOnly
                     \.$useTinyGlassDisplayStyle
-                    \.$expeditionDisplayPolicy
                 }
             }
         } otherwise: {
