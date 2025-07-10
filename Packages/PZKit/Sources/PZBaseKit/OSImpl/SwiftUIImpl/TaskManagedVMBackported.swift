@@ -9,7 +9,7 @@ import SwiftUI
 ///
 /// OS21 = [iOS14, macOS11]
 @MainActor
-open class TaskManagedVM4OS21: ObservableObject {
+open class TaskManagedVMBackported: ObservableObject {
     // MARK: Lifecycle
 
     public init() {}

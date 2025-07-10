@@ -4,15 +4,15 @@
 
 import CoreData
 import GachaKit
+import PZBaseKit
 import PZCoreDataKit4GachaEntries
 import PZCoreDataKit4LocalAccounts
-import PZCoreDataKitShared
 import SwiftUI
 
 // MARK: - RefugeeVM4iOS14
 
 @MainActor
-public final class RefugeeVM4iOS14: TaskManagedVM4OS21 {
+public final class RefugeeVM4iOS14: TaskManagedVMBackported {
     // MARK: Lifecycle
 
     override private init() {
