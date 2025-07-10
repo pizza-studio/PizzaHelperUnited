@@ -18,6 +18,7 @@ extension PZWidgets {
     public static func startupTask() {
         Task {
             if #available(iOS 17.0, *) {
+                _ = ProfileManagerVM.shared
                 await PZProfileActor.shared.tryAutoInheritOldLocalAccounts(
                     resetNotifications: true
                 )
