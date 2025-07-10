@@ -2,6 +2,7 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import PZAccountKit
 import PZCoreDataKit4GachaEntries
 import PZCoreDataKit4LocalAccounts
 import SwiftUI
@@ -14,14 +15,17 @@ public struct RefugeeFile: Codable, Hashable, Sendable {
 
     public init(
         oldProfiles4GI: [AccountMO4GI] = [],
-        oldGachaEntries4GI: [CDGachaMO4GI] = []
+        oldGachaEntries4GI: [CDGachaMO4GI] = [],
+        newPZProfiles: [PZProfileSendable] = []
     ) {
         self.oldProfiles4GI = oldProfiles4GI
         self.oldGachaEntries4GI = oldGachaEntries4GI
+        self.newProfiles = newPZProfiles
     }
 
     // MARK: Public
 
+    public var newProfiles: [PZProfileSendable]
     public var oldProfiles4GI: [AccountMO4GI]
     public var oldGachaEntries4GI: [CDGachaMO4GI]
 }
