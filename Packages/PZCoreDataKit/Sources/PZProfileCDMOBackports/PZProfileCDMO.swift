@@ -83,7 +83,7 @@ extension PZProfileCDMO {
 
     public static func getManagedObjModel() -> NSManagedObjectModel {
         .init(
-            contentsOf: Bundle.main.url(forResource: Self.modelName, withExtension: "momd")!
+            contentsOf: Bundle.module.url(forResource: Self.modelName, withExtension: "momd")!
         )!
     }
 
