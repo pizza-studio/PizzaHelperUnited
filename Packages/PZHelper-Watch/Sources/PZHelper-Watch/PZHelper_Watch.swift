@@ -32,7 +32,6 @@ extension PZHelperWatch {
                         await ASMetaSputnik.shared.updateMeta()
                     }
                 }
-                .modelContainer(PZProfileActor.shared.modelContainer)
         }
     }
 
@@ -44,6 +43,7 @@ extension PZHelperWatch {
     private static func startupTasks() {
         Task {
             await PZProfileActor.shared.tryAutoInheritOldLocalAccounts(resetNotifications: true)
+            _ = ProfileManagerVM.shared
         }
     }
 }

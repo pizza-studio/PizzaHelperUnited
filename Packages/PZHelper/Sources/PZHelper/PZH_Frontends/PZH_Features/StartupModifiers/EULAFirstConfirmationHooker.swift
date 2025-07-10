@@ -8,7 +8,7 @@ import PZAboutKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension View {
     @ViewBuilder
     func hookEULACheckerOnOOBE() -> some View {
@@ -18,7 +18,7 @@ extension View {
 
 // MARK: - EULAFirstConfirmationHooker
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 private struct EULAFirstConfirmationHooker: ViewModifier {
     // MARK: Internal
 

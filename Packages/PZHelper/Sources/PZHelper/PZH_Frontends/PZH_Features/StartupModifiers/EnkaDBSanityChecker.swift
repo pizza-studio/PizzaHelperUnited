@@ -11,22 +11,24 @@ import UserNotifications
 
 // MARK: - EnkaDBSanityChecker
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 private struct EnkaDBSanityChecker: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppBecomeActive {
                 Task { @MainActor in
-                    try? await Enka.Sputnik.shared.db4HSR.reinitIfLocMismatches()
-                    try? await Enka.Sputnik.shared.db4GI.reinitIfLocMismatches()
-                    _ = try? Enka.Sputnik.shared.db4HSR.reinitOnlyIfBundledDBIsNewer()
-                    _ = try? Enka.Sputnik.shared.db4GI.reinitOnlyIfBundledDBIsNewer()
+                    if #available(iOS 17.0, *) {
+                        try? await Enka.Sputnik.shared.db4HSR.reinitIfLocMismatches()
+                        try? await Enka.Sputnik.shared.db4GI.reinitIfLocMismatches()
+                        _ = try? Enka.Sputnik.shared.db4HSR.reinitOnlyIfBundledDBIsNewer()
+                        _ = try? Enka.Sputnik.shared.db4GI.reinitOnlyIfBundledDBIsNewer()
+                    }
                 }
             }
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension View {
     @ViewBuilder
     func performEnkaDBSanityCheck() -> some View {

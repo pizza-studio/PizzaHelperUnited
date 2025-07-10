@@ -8,7 +8,7 @@ import PZAboutKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension View {
     @ViewBuilder
     func hookPrivacyPolicyCheckerOnOOBE() -> some View {
@@ -18,7 +18,7 @@ extension View {
 
 // MARK: - PrivacyPolicyFirstConfirmationHooker
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 private struct PrivacyPolicyFirstConfirmationHooker: ViewModifier {
     // MARK: Internal
 

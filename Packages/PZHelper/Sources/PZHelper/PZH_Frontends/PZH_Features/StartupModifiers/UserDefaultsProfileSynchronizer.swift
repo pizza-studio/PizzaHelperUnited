@@ -10,19 +10,23 @@ import UserNotifications
 
 // MARK: - UserDefaultsProfileSynchronizer
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 private struct UserDefaultsProfileSynchronizer: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppBecomeActive {
                 Task { @MainActor in
-                    await PZProfileActor.shared.syncAllDataToUserDefaults()
+                    if #available(iOS 17.0, *) {
+                        await PZProfileActor.shared.syncAllDataToUserDefaults()
+                    } else {
+                        await CDProfileMOActor.shared?.syncAllDataToUserDefaults()
+                    }
                 }
             }
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension View {
     @ViewBuilder
     func syncProfilesToUserDefaults() -> some View {

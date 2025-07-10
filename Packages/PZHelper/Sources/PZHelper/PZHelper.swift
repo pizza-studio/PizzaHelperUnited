@@ -19,38 +19,43 @@ extension PZHelper {
     @MainActor
     public static func makeMainScene() -> some Scene {
         let windowToReturn = WindowGroup {
-            if #unavailable(iOS 17.0, macCatalyst 17.0) {
-                ContentView4iOS14()
-            } else {
-                ContentView()
-                    .initializeApp()
-                    // .environment(\.horizontalSizeClass, .compact)
-                    .defaultAppStorage(.baseSuite)
-                #if targetEnvironment(macCatalyst)
-                    .frame(
-                        minWidth: OS.liquidGlassThemeSuspected ? 832 : 800,
-                        minHeight: 800
-                    )
-                #elseif os(macOS) && !targetEnvironment(macCatalyst)
-                    .frame(
-                        minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
-                        minHeight: 646
-                    )
-                #endif
-                    .onAppear {
-                        if !isApplicationBooted {
-                            startupTasks()
-                        }
-                        isApplicationBooted = true
-                    }
-                    .onAppBecomeActive {
-                        Task {
-                            await ASMetaSputnik.shared.updateMeta()
-                        }
-                    }
-                    .trackScreenVMParameters()
-                    .modelContainer(PZProfileActor.shared.modelContainer)
+            Group {
+                if #available(iOS 17.0, macCatalyst 17.0, *) {
+                    ContentView()
+                        .trackScreenVMParameters()
+                } else {
+                    ContentView4iOS14()
+                }
             }
+            .initializeApp()
+            // .environment(\.horizontalSizeClass, .compact)
+            .defaultAppStorage(.baseSuite)
+            #if targetEnvironment(macCatalyst)
+                .frame(
+                    minWidth: OS.liquidGlassThemeSuspected ? 832 : 800,
+                    minHeight: 800
+                )
+            #elseif os(macOS) && !targetEnvironment(macCatalyst)
+                .frame(
+                    minWidth: OS.liquidGlassThemeSuspected ? 800 : 768,
+                    minHeight: 646
+                )
+            #endif
+                .apply { mainContents in
+                    if #available(iOS 16.2, macCatalyst 16.2, *) {
+                        mainContents
+                            .onAppear {
+                                startupTasks()
+                            }
+                            .onAppBecomeActive {
+                                Task {
+                                    await ASMetaSputnik.shared.updateMeta()
+                                }
+                            }
+                    } else {
+                        mainContents
+                    }
+                }
         }
         #if os(macOS) && !targetEnvironment(macCatalyst)
         .windowToolbarStyle(.expanded)
@@ -67,24 +72,32 @@ extension PZHelper {
     @MainActor static var isApplicationBooted = false
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension PZHelper {
     @MainActor
     static func startupTasks() {
         Task {
-            await PZProfileActor.shared.tryAutoInheritOldLocalAccounts(resetNotifications: true)
-            await PZProfileActor.shared.syncAllDataToUserDefaults()
+            if #available(iOS 17.0, *) {
+                await PZProfileActor.shared.tryAutoInheritOldLocalAccounts(resetNotifications: true)
+            } else {
+                await CDProfileMOActor.shared?.tryAutoInheritOldLocalAccounts(resetNotifications: true)
+            }
+            _ = ProfileManagerVM.shared
         }
         PZHelper.setupSpotlightSearch()
-        GachaRootView.getFAQView = { AnyView(FAQView()) }
-        Enka.Sputnik.migrateCachedProfilesFromUserDefaultsToFiles()
+        if #available(iOS 17.0, *) {
+            GachaRootView.getFAQView = { AnyView(FAQView()) }
+            Enka.Sputnik.migrateCachedProfilesFromUserDefaultsToFiles()
+        } else {
+            // Fallback on earlier versions
+        }
         UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
     }
 }
 
 // MARK: - AppInitializer
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 private struct AppInitializer: ViewModifier {
     // MARK: Lifecycle
 
@@ -104,15 +117,18 @@ private struct AppInitializer: ViewModifier {
             .checkAndReloadWidgetTimeline()
             .hookEULACheckerOnOOBE()
             .hookPrivacyPolicyCheckerOnOOBE()
-            .performEnkaDBSanityCheck()
             .handleHoYoBackgroundSessions()
+            .performEnkaDBSanityCheck()
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
 extension View {
     @ViewBuilder
     func initializeApp() -> some View {
-        modifier(AppInitializer())
+        if #available(iOS 16.2, *) {
+            modifier(AppInitializer())
+        } else {
+            self
+        }
     }
 }
