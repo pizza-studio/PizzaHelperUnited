@@ -145,7 +145,6 @@ extension ThisDevice {
 
 // MARK: - OS
 
-@available(iOS 15.0, macCatalyst 15.0, *)
 @MainActor
 public enum OS: Int {
     case macOS = 0
