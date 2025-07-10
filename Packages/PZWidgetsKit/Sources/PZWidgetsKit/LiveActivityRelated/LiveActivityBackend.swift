@@ -134,11 +134,12 @@ extension LiveActivityAttributes.LiveActivityState {
 
     /// 下一20倍数树脂回复时间点
     public var next20PrimaryStaminaRecoveryTime: Date {
-        Date(
+        let result = Date(
             timeIntervalSinceNow: TimeInterval(
                 Double(next20PrimaryStamina - currentPrimaryStamina) * primaryStaminaRecoverySpeed
             )
         )
+        return Swift.min(primaryStaminaRecoveryTime, result)
     }
 }
 

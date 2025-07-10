@@ -68,66 +68,111 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
         }
         .contentMargins(.leading, 15)
         DynamicIslandExpandedRegion(.bottom) {
-            HStack {
-                if Date() < context.state.next20PrimaryStaminaRecoveryTime {
-                    HStack {
-                        context.state.game.primaryStaminaAssetIcon
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 40)
-                        VStack(alignment: .leading) {
-                            Text(
-                                "pzWidgetsKit.next20Stamina:\(context.state.next20PrimaryStamina)",
-                                bundle: .module
-                            )
-                            .font(.caption2)
-                            Text(
-                                timerInterval: Date() ... context.state
-                                    .next20PrimaryStaminaRecoveryTime,
-                                countsDown: true
-                            )
-                            .multilineTextAlignment(.leading)
-                            .font(.system(.title2, design: .rounded))
-                            .foregroundColor(
-                                PZWidgetsSPM.Colors.TextColor.originResin.suiColor
-                            )
-                        }
-                        .gridColumnAlignment(.leading)
-                        .frame(width: 100)
-                    }
-                }
-                Spacer()
+            Group {
                 if Date() < context.state.primaryStaminaRecoveryTime {
-                    HStack {
-                        Color.clear
-                            .frame(width: 40, height: 40, alignment: .center)
-                            .overlay {
-                                Image(systemSymbol: .alarmWavesLeftAndRightFill)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(maxHeight: 24)
-                            }
-                        VStack(alignment: .leading) {
-                            Text("pzWidgetsKit.nextMaxStamina", bundle: .module)
-                                .font(.caption2)
-
-                            Text(
-                                timerInterval: Date() ... context.state
-                                    .primaryStaminaRecoveryTime,
-                                countsDown: true
-                            )
-                            .multilineTextAlignment(.leading)
-                            .font(.system(.title2, design: .rounded))
-                            .foregroundColor(
-                                PZWidgetsSPM.Colors.TextColor.originResin.suiColor
-                            )
-                        }
-                        .gridColumnAlignment(.leading)
-                        .frame(width: 100)
-                    }
+                    expandedContentWhenStaminaIsNotFull
+                } else {
+                    expandedContentWhenStaminaIsFull
                 }
             }
             .foregroundColor(PZWidgetsSPM.Colors.TextColor.primaryWhite.suiColor)
+        }
+    }
+
+    @ViewBuilder private var expandedContentWhenStaminaIsFull: some View {
+        HStack {
+            HStack {
+                context.state.game.primaryStaminaAssetIcon
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 40)
+                Text(verbatim: context.state.currentPrimaryStamina.description)
+                    .multilineTextAlignment(.leading)
+                    .font(.system(.title, design: .rounded))
+                    .foregroundColor(
+                        PZWidgetsSPM.Colors.TextColor.originResin.suiColor
+                    )
+                    .gridColumnAlignment(.leading)
+            }
+            .frame(height: 40)
+            Spacer()
+            HStack {
+                Text(verbatim: "100%")
+                    .multilineTextAlignment(.trailing)
+                    .font(.system(.title, design: .rounded))
+                    .foregroundColor(
+                        PZWidgetsSPM.Colors.TextColor.originResin.suiColor
+                    )
+                    .gridColumnAlignment(.trailing)
+                Image(systemSymbol: .checkmarkCircle)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(.green)
+                    .frame(height: 30)
+            }
+            .frame(height: 40)
+        }
+    }
+
+    @ViewBuilder private var expandedContentWhenStaminaIsNotFull: some View {
+        HStack {
+            if Date() < context.state.next20PrimaryStaminaRecoveryTime {
+                HStack {
+                    context.state.game.primaryStaminaAssetIcon
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 40)
+                    VStack(alignment: .leading) {
+                        Text(
+                            "pzWidgetsKit.next20Stamina:\(context.state.next20PrimaryStamina)",
+                            bundle: .module
+                        )
+                        .font(.caption2)
+                        Text(
+                            timerInterval: Date() ... context.state
+                                .next20PrimaryStaminaRecoveryTime,
+                            countsDown: true
+                        )
+                        .multilineTextAlignment(.leading)
+                        .font(.system(.title2, design: .rounded))
+                        .foregroundColor(
+                            PZWidgetsSPM.Colors.TextColor.originResin.suiColor
+                        )
+                    }
+                    .gridColumnAlignment(.leading)
+                    .frame(width: 100)
+                }
+            }
+            Spacer()
+            if Date() < context.state.primaryStaminaRecoveryTime {
+                HStack {
+                    Color.clear
+                        .frame(width: 40, height: 40, alignment: .center)
+                        .overlay {
+                            Image(systemSymbol: .alarmWavesLeftAndRightFill)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 24)
+                        }
+                    VStack(alignment: .leading) {
+                        Text("pzWidgetsKit.nextMaxStamina", bundle: .module)
+                            .font(.caption2)
+
+                        Text(
+                            timerInterval: Date() ... context.state
+                                .primaryStaminaRecoveryTime,
+                            countsDown: true
+                        )
+                        .multilineTextAlignment(.leading)
+                        .font(.system(.title2, design: .rounded))
+                        .foregroundColor(
+                            PZWidgetsSPM.Colors.TextColor.originResin.suiColor
+                        )
+                    }
+                    .gridColumnAlignment(.leading)
+                    .frame(width: 100)
+                }
+            }
         }
     }
 
@@ -148,6 +193,10 @@ public struct StaminaTimerDynamicIslandWidgetView: View {
             .multilineTextAlignment(.center)
             .frame(width: 60)
             .foregroundColor(PZWidgetsSPM.Colors.TextColor.activityBlueText.suiColor)
+        } else {
+            Image(systemSymbol: .checkmarkCircle)
+                .foregroundColor(.green)
+                .frame(width: 20)
         }
     }
 
