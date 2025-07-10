@@ -351,16 +351,32 @@ private struct RequireLoginView: View {
     @Binding var deviceID: String
 
     var body: some View {
-        VStack {
-            Text("settings.profile.pleaseSelectGame".i18nPZHelper).frame(maxWidth: .infinity, alignment: .leading)
-            Picker("".description, selection: $game) {
-                ForEach(Pizza.SupportedGame.allCases) { currentGame in
-                    Text(currentGame.localizedDescriptionTrimmed)
-                        .tag(currentGame)
+        if Self.isOS24OrAbove {
+            VStack {
+                Text("settings.profile.pleaseSelectGame".i18nPZHelper)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Picker("".description, selection: $game) {
+                    ForEach(Pizza.SupportedGame.allCases) { currentGame in
+                        Text(currentGame.localizedDescriptionTrimmed)
+                            .tag(currentGame)
+                    }
                 }
+                .pickerStyle(.segmented)
+                .fontWidth(.condensed)
             }
-            .pickerStyle(.segmented)
-            .fontWidth(.condensed)
+        } else {
+            // iOS 16 的 Bug: Segmented Picker 在 ListRow 里面失灵。
+            LabeledContent("settings.profile.pleaseSelectGame".i18nPZHelper) {
+                Picker("".description, selection: $game) {
+                    ForEach(Pizza.SupportedGame.allCases) { currentGame in
+                        Text(currentGame.localizedDescriptionTrimmed)
+                            .tag(currentGame)
+                    }
+                }
+                .pickerStyle(.menu)
+                .fontWidth(.condensed)
+                .fixedSize()
+            }
         }
         LabeledContent("settings.profile.pleaseSelectRegion".i18nPZHelper) {
             Picker("".description, selection: $region) {
@@ -370,7 +386,13 @@ private struct RequireLoginView: View {
                         .tag(matchedRegion)
                 }
             }
-            .pickerStyle(.segmented)
+            .apply { picker in
+                // iOS 16 的 Bug: Segmented Picker 在 ListRow 里面失灵。
+                switch Self.isOS24OrAbove {
+                case true: picker.pickerStyle(.segmented)
+                case false: picker.pickerStyle(.menu)
+                }
+            }
             .fixedSize()
         }
         VStack {
@@ -396,6 +418,11 @@ private struct RequireLoginView: View {
     }
 
     // MARK: Private
+
+    private static var isOS24OrAbove: Bool {
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
+        return false
+    }
 
     @Binding private var importAllUIDs: Bool
     @Binding private var unsavedCookie: String

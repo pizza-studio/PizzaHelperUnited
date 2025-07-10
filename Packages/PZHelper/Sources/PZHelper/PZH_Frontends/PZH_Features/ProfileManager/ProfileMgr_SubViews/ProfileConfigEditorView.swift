@@ -39,7 +39,13 @@ struct ProfileConfigEditorView: View {
                                 .tag(currentGame)
                         }
                     }
-                    .pickerStyle(.segmented)
+                    .apply { picker in
+                        // iOS 16 的 Bug: Segmented Picker 在 ListRow 里面失灵。
+                        switch Self.isOS24OrAbove {
+                        case true: picker.pickerStyle(.segmented)
+                        case false: picker.pickerStyle(.menu)
+                        }
+                    }
                     .fontWidth(.condensed)
                     .fixedSize()
                 }.react(to: unsavedProfile.game, initial: true) { _, newValue in
@@ -101,6 +107,11 @@ struct ProfileConfigEditorView: View {
     }
 
     // MARK: Private
+
+    private static var isOS24OrAbove: Bool {
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
+        return false
+    }
 
     private var sTokenBinding: Binding<String> {
         .init(
