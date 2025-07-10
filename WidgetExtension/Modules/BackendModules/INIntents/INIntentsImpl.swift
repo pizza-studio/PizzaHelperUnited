@@ -6,11 +6,10 @@ import Foundation
 import Intents
 import PZWidgetsKit
 
-// MARK: - SelectAccountIntentOLD
+// MARK: - SelectAccountIntent + AppIntentUpgradable
 
 @available(iOS 16.2, macCatalyst 16.2, *)
-@objc(SelectAccountIntent)
-public class SelectAccountIntentOLD: INSelectAccount, AppIntentUpgradable { // SelectAccountIntent
+extension SelectAccountIntent: AppIntentUpgradable { // SelectAccountIntent
     public typealias AppIntent = PZDesktopIntent4SingleProfile
 
     public var asAppIntent: AppIntent {
@@ -24,20 +23,23 @@ public class SelectAccountIntentOLD: INSelectAccount, AppIntentUpgradable { // S
         result.showStaminaOnly = showStaminaOnly?.boolValue ?? result.showStaminaOnly
         result.useTinyGlassDisplayStyle = useTinyGlassDisplayStyle?.boolValue ?? result.useTinyGlassDisplayStyle
         result.showTransformer = showTransformer?.boolValue ?? result.showTransformer
-        result.trounceBlossomDisplayMethod = switch trounceBlossomDisplayMethod {
-        case .alwaysShow: .alwaysShow
-        case .disappearAfterCompleted: .disappearAfterCompleted
-        case .neverShow: .neverShow
+        switch trounceBlossomDisplayMethod {
+        case .alwaysShow: result.trounceBlossomDisplayMethod = .alwaysShow
+        case .disappearAfterCompleted: result.trounceBlossomDisplayMethod = .disappearAfterCompleted
+        case .neverShow: result.trounceBlossomDisplayMethod = .neverShow
+        default: break
         }
-        result.echoOfWarDisplayMethod = switch echoOfWarDisplayMethod {
-        case .alwaysShow: .alwaysShow
-        case .disappearAfterCompleted: .disappearAfterCompleted
-        case .neverShow: .neverShow
+        switch echoOfWarDisplayMethod {
+        case .alwaysShow: result.echoOfWarDisplayMethod = .alwaysShow
+        case .disappearAfterCompleted: result.echoOfWarDisplayMethod = .disappearAfterCompleted
+        case .neverShow: result.echoOfWarDisplayMethod = .neverShow
+        default: break
         }
-        result.expeditionDisplayPolicy = switch expeditionDisplayPolicy {
-        case .neverDisplay: .neverDisplay
-        case .displayWhenAvailable: .displayWhenAvailable
-        case .displayExclusively: .displayExclusively
+        switch expeditionDisplayPolicy {
+        case .neverDisplay: result.expeditionDisplayPolicy = .neverDisplay
+        case .displayWhenAvailable: result.expeditionDisplayPolicy = .displayWhenAvailable
+        case .displayExclusively: result.expeditionDisplayPolicy = .displayExclusively
+        default: break
         }
         result.randomBackground = randomBackground?.boolValue ?? result.randomBackground
         result.chosenBackgrounds = chosenBackgrounds?.compactMap {
@@ -51,11 +53,10 @@ public class SelectAccountIntentOLD: INSelectAccount, AppIntentUpgradable { // S
     }
 }
 
-// MARK: - SelectDualProfileIntentOLD
+// MARK: - SelectDualProfileIntent + AppIntentUpgradable
 
 @available(iOS 16.2, macCatalyst 16.2, *)
-@objc(SelectDualProfileIntent)
-public class SelectDualProfileIntentOLD: INSelectDualProfile, AppIntentUpgradable { // SelectDualProfileIntent
+extension SelectDualProfileIntent: AppIntentUpgradable { // SelectDualProfileIntent
     public typealias AppIntent = PZDesktopIntent4DualProfiles
 
     public var asAppIntent: AppIntent {
@@ -73,20 +74,23 @@ public class SelectDualProfileIntentOLD: INSelectDualProfile, AppIntentUpgradabl
         // 剩下的都相同
         result.useTinyGlassDisplayStyle = useTinyGlassDisplayStyle?.boolValue ?? result.useTinyGlassDisplayStyle
         result.showTransformer = showTransformer?.boolValue ?? result.showTransformer
-        result.trounceBlossomDisplayMethod = switch trounceBlossomDisplayMethod {
-        case .alwaysShow: .alwaysShow
-        case .disappearAfterCompleted: .disappearAfterCompleted
-        case .neverShow: .neverShow
+        switch trounceBlossomDisplayMethod {
+        case .alwaysShow: result.trounceBlossomDisplayMethod = .alwaysShow
+        case .disappearAfterCompleted: result.trounceBlossomDisplayMethod = .disappearAfterCompleted
+        case .neverShow: result.trounceBlossomDisplayMethod = .neverShow
+        default: break
         }
-        result.echoOfWarDisplayMethod = switch echoOfWarDisplayMethod {
-        case .alwaysShow: .alwaysShow
-        case .disappearAfterCompleted: .disappearAfterCompleted
-        case .neverShow: .neverShow
+        switch echoOfWarDisplayMethod {
+        case .alwaysShow: result.echoOfWarDisplayMethod = .alwaysShow
+        case .disappearAfterCompleted: result.echoOfWarDisplayMethod = .disappearAfterCompleted
+        case .neverShow: result.echoOfWarDisplayMethod = .neverShow
+        default: break
         }
-        result.expeditionDisplayPolicy = switch expeditionDisplayPolicy {
-        case .neverDisplay: .neverDisplay
-        case .displayWhenAvailable: .displayWhenAvailable
-        case .displayExclusively: .displayExclusively
+        switch expeditionDisplayPolicy {
+        case .neverDisplay: result.expeditionDisplayPolicy = .neverDisplay
+        case .displayWhenAvailable: result.expeditionDisplayPolicy = .displayWhenAvailable
+        case .displayExclusively: result.expeditionDisplayPolicy = .displayExclusively
+        default: break
         }
         result.randomBackground = randomBackground?.boolValue ?? result.randomBackground
         result.chosenBackgrounds = chosenBackgrounds?.compactMap {
@@ -98,11 +102,10 @@ public class SelectDualProfileIntentOLD: INSelectDualProfile, AppIntentUpgradabl
     }
 }
 
-// MARK: - SelectOnlyAccountIntentOLD
+// MARK: - SelectOnlyAccountIntent + AppIntentUpgradable
 
 @available(iOS 16.2, macCatalyst 16.2, *)
-@objc(SelectOnlyAccountIntent)
-public class SelectOnlyAccountIntentOLD: INSelectOnlyAccount, AppIntentUpgradable { // SelectOnlyAccountIntent
+extension SelectOnlyAccountIntent: AppIntentUpgradable { // SelectOnlyAccountIntent
     public typealias AppIntent = PZEmbeddedIntent4ProfileOnly
 
     public var asAppIntent: AppIntent {
@@ -116,12 +119,10 @@ public class SelectOnlyAccountIntentOLD: INSelectOnlyAccount, AppIntentUpgradabl
     }
 }
 
-// MARK: - SelectAccountAndShowWhichInfoIntentOLD
+// MARK: - SelectAccountAndShowWhichInfoIntent + AppIntentUpgradable
 
 @available(iOS 16.2, macCatalyst 16.2, *)
-@objc(SelectAccountAndShowWhichInfoIntent)
-public class SelectAccountAndShowWhichInfoIntentOLD: INSelectAccountAndShowWhichInfo,
-    AppIntentUpgradable { // SelectAccountAndShowWhichInfoIntent
+extension SelectAccountAndShowWhichInfoIntent: AppIntentUpgradable { // SelectAccountAndShowWhichInfoIntent
     public typealias AppIntent = PZEmbeddedIntent4ProfileMisc
 
     public var asAppIntent: AppIntent {
@@ -134,21 +135,21 @@ public class SelectAccountAndShowWhichInfoIntentOLD: INSelectAccountAndShowWhich
         result.showEchoOfWar = showEchoOfWar?.boolValue ?? result.showEchoOfWar
         result.showTrounceBlossom = showTrounceBlossom?.boolValue ?? result.showTrounceBlossom
         result.showTransformer = showTransformer?.boolValue ?? result.showTransformer
-        result.usingResinStyle = switch usingResinStyle {
-        case .default: .byDefault
-        case .timer: .timer
-        case .time: .time
-        case .circle: .roundMeter
+        switch usingResinStyle {
+        case .byDefault: result.usingResinStyle = .byDefault
+        case .timer: result.usingResinStyle = .timer
+        case .time: result.usingResinStyle = .time
+        case .roundMeter: result.usingResinStyle = .roundMeter
+        default: break
         }
         return result
     }
 }
 
-// MARK: - SelectOnlyGameIntentOLD
+// MARK: - SelectOnlyGameIntent + AppIntentUpgradable
 
 @available(iOS 16.2, macCatalyst 16.2, *)
-@objc(SelectOnlyGameIntent)
-public class SelectOnlyGameIntentOLD: INSelectOnlyGame, AppIntentUpgradable { // SelectOnlyGameIntent
+extension SelectOnlyGameIntent: AppIntentUpgradable { // SelectOnlyGameIntent
     public typealias AppIntent = PZDesktopIntent4GameOnly
 
     public var asAppIntent: AppIntent {
@@ -158,6 +159,7 @@ public class SelectOnlyGameIntentOLD: INSelectOnlyGame, AppIntentUpgradable { //
         case .genshinImpact: .genshinImpact
         case .starRail: .starRail
         case .zenlessZone: .zenlessZone
+        default: .allGames
         }
         return result
     }

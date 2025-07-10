@@ -1,0 +1,59 @@
+/* de.lproj/Localizable.strings */
+
+/* appEntity_ */
+"appEntity_localProfile" = "Profil";
+"appEntity_widgetBackground" = "Widget-Hintergrund";
+
+/* appEnum_ */
+"appEnum_ExpeditionDisplayPolicy_displayExclusively" = "Exklusiv anzeigen";
+"appEnum_ExpeditionDisplayPolicy_displayWhenAvailable" = "Anzeigen wenn Verfügbar";
+"appEnum_ExpeditionDisplayPolicy_neverDisplay" = "Nie Anzeigen";
+"appEnum_ExpeditionDisplayPolicy_title" = "Expeditionsanzeige-Richtlinie";
+"appEnum_StaminaContentRevolverStyle_asRoundMeter" = "Rundzähler";
+"appEnum_StaminaContentRevolverStyle_asTimeStampWhenWillAccomplish" = "Zeitstempel (bei Fertigstellung)";
+"appEnum_StaminaContentRevolverStyle_asTimerCountDown" = "Countdown-Timer";
+"appEnum_StaminaContentRevolverStyle_byDefault" = "Standard";
+"appEnum_StaminaContentRevolverStyle_title" = "Automatische Rotation der Ausdauer-Widget-Stile";
+"appEnum_WeeklyBossesDisplayMethod_alwaysHidden" = "immer verborgen";
+"appEnum_WeeklyBossesDisplayMethod_alwaysVisible" = "immer sichtbar";
+"appEnum_WeeklyBossesDisplayMethod_hiddenIfAllCompleted" = "Ausgeblendet, wenn alle abgeschlossen";
+"appEnum_WeeklyBossesDisplayMethod_title" = "Wöchentliche Boss-Info-Anzeigemethode";
+"appEnum_WidgetSupportedGame_GI" = "Genshin Impact";
+"appEnum_WidgetSupportedGame_HSR" = "Star Rail";
+"appEnum_WidgetSupportedGame_ZZZ" = "Zenless Zone Zero";
+"appEnum_WidgetSupportedGame_allGames" = "Alle Spiele";
+"appEnum_WidgetSupportedGame_title" = "Unterstütztes Spiel";
+
+/* intent_description_ */
+"intent_description_chooseTheGame" = "Wähle das Spiel";
+"intent_description_pickTheLocalProfileDuoForThisWidget" = "Wählen Sie zwei lokale Profile für dieses Widget aus";
+"intent_description_pickTheLocalProfileForThisWidget" = "Wählen Sie ein lokales Profil für dieses Widget aus";
+
+/* intent_field_ */
+"intent_field_echoOfWarDisplayMethod" = "Echo des Krieges Anzeige";
+"intent_field_expeditionDisplayPolicy" = "Expeditionsanzeige-Richtlinie";
+"intent_field_followSystemDarkMode" = "Dem Farbschema des Systems folgen";
+"intent_field_game" = "Spiel";
+"intent_field_inverseSelectMode" = "Auswahl umkehren";
+"intent_field_localProfile" = "Lokales Profil";
+"intent_field_localProfile_slot1" = "Lokales Profil #1";
+"intent_field_localProfile_slot2" = "Lokales Profil #2";
+"intent_field_showMaterialsInLargeSizeWidget" = "[GI] Tägliche Materialien anzeigen (nur große Widgets)";
+"intent_field_showStaminaOnly" = "Nur Spielerausdauer anzeigen";
+"intent_field_showTransformer" = "[GI] Transformatorstatus anzeigen";
+"intent_field_staminaDisplayStyle" = "Ausdauer-Anzeigestil (Harz / Pionierkraft / Zenlose Energie)";
+"intent_field_trounceBlossomDisplayMethod" = "Blüte der Eroberung Anzeige";
+"intent_field_useRandomWallpaper" = "Zufälliges Hintergrundbild verwenden";
+"intent_field_useTinyGlassDisplayStyle" = "Winzigen Glas-Anzeigestil verwenden";
+"intent_field_wallpaper" = "Tapete";
+
+/* intent_name_ */
+"intent_name_selectGameOnly" = "Nur das Spiel wählen";
+"intent_name_selectLocalProfile" = "Lokales Profil auswählen";
+"intent_name_selectLocalProfile4Peripherals" = "Nur lokales Profil wählen";
+"intent_name_selectLocalProfile4PeripheralsWithExtraConfig" = "Lokales Profil mit zusätzlicher Konfiguration auswählen";
+"intent_name_selectLocalProfileDuo" = "Lokales Doppelprofil auswählen";
+
+/* intent_bool_ */
+"intent_bool_false" = "Falsch";
+"intent_bool_true" = "Wahr";

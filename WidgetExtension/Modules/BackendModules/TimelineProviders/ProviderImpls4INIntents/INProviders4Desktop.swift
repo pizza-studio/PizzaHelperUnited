@@ -18,7 +18,7 @@ import WidgetKit
 @available(watchOS, unavailable)
 struct INDualProfileWidgetProvider: INThreadSafeTimelineProvider {
     public typealias Entry = ProfileWidgetEntry
-    public typealias Intent = SelectDualProfileIntentOLD
+    public typealias Intent = SelectDualProfileIntent
     public typealias NextGenTLProvider = DualProfileWidgetProvider
 
     public let asyncTLProvider: NextGenTLProvider = .init()
@@ -30,7 +30,7 @@ struct INDualProfileWidgetProvider: INThreadSafeTimelineProvider {
 @available(watchOS, unavailable)
 struct INSingleProfileWidgetProvider: INThreadSafeTimelineProvider {
     public typealias Entry = ProfileWidgetEntry
-    public typealias Intent = SelectAccountIntentOLD
+    public typealias Intent = SelectAccountIntent
     public typealias NextGenTLProvider = SingleProfileWidgetProvider
 
     public let asyncTLProvider: NextGenTLProvider = .init()
@@ -42,7 +42,7 @@ struct INSingleProfileWidgetProvider: INThreadSafeTimelineProvider {
 @available(watchOS, unavailable)
 struct INOfficialFeedWidgetProvider: INThreadSafeTimelineProvider {
     public typealias Entry = OfficialFeedWidgetEntry
-    public typealias Intent = SelectOnlyGameIntentOLD
+    public typealias Intent = SelectOnlyGameIntent
     public typealias NextGenTLProvider = OfficialFeedWidgetProvider
 
     public let asyncTLProvider: NextGenTLProvider = .init()

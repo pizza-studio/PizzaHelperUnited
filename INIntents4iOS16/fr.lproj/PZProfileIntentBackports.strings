@@ -1,0 +1,59 @@
+/* fr.lproj/Localizable.strings */
+
+/* appEntity_ */
+"appEntity_localProfile" = "Profil";
+"appEntity_widgetBackground" = "Arrière-plan du widget";
+
+/* appEnum_ */
+"appEnum_ExpeditionDisplayPolicy_displayExclusively" = "Afficher exclusivement";
+"appEnum_ExpeditionDisplayPolicy_displayWhenAvailable" = "Afficher si Disponible";
+"appEnum_ExpeditionDisplayPolicy_neverDisplay" = "Ne Jamais Afficher";
+"appEnum_ExpeditionDisplayPolicy_title" = "Politique d'Affichage des Expéditions";
+"appEnum_StaminaContentRevolverStyle_asRoundMeter" = "Jauge ronde";
+"appEnum_StaminaContentRevolverStyle_asTimeStampWhenWillAccomplish" = "Horodatage (lorsque terminé)";
+"appEnum_StaminaContentRevolverStyle_asTimerCountDown" = "Minuteur de compte à rebours";
+"appEnum_StaminaContentRevolverStyle_byDefault" = "Par défaut";
+"appEnum_StaminaContentRevolverStyle_title" = "Rotation automatique des styles du widget";
+"appEnum_WeeklyBossesDisplayMethod_alwaysHidden" = "toujours caché";
+"appEnum_WeeklyBossesDisplayMethod_alwaysVisible" = "toujours visible";
+"appEnum_WeeklyBossesDisplayMethod_hiddenIfAllCompleted" = "masquer si tout est terminé";
+"appEnum_WeeklyBossesDisplayMethod_title" = "Méthode d'affichage des informations sur les Boss hebdomadaires";
+"appEnum_WidgetSupportedGame_GI" = "Genshin Impact";
+"appEnum_WidgetSupportedGame_HSR" = "Star Rail";
+"appEnum_WidgetSupportedGame_ZZZ" = "Zenless Zone Zero";
+"appEnum_WidgetSupportedGame_allGames" = "Tous les jeux";
+"appEnum_WidgetSupportedGame_title" = "Jeu pris en charge";
+
+/* intent_description_ */
+"intent_description_chooseTheGame" = "Choisissez le jeu";
+"intent_description_pickTheLocalProfileDuoForThisWidget" = "Choisissez deux profils locaux pour ce widget";
+"intent_description_pickTheLocalProfileForThisWidget" = "Choisissez un profil local pour ce widget";
+
+/* intent_field_ */
+"intent_field_echoOfWarDisplayMethod" = "Affichage des Échos de la guerre";
+"intent_field_expeditionDisplayPolicy" = "Politique d'Affichage des Expéditions";
+"intent_field_followSystemDarkMode" = "Thème du système";
+"intent_field_game" = "Jeu";
+"intent_field_inverseSelectMode" = "Inverser la sélection";
+"intent_field_localProfile" = "Profil local";
+"intent_field_localProfile_slot1" = "Profil local #1";
+"intent_field_localProfile_slot2" = "Profil local #2";
+"intent_field_showMaterialsInLargeSizeWidget" = "[GI] Afficher les matériaux quotidiens (widgets de grande taille uniquement)";
+"intent_field_showStaminaOnly" = "Afficher uniquement la résine du joueur";
+"intent_field_showTransformer" = "[IG] Afficher l'état du transformateur";
+"intent_field_staminaDisplayStyle" = "Style d'affichage de l'endurance (Résine / Puissance du Pionnier / Énergie Zenless)";
+"intent_field_trounceBlossomDisplayMethod" = "Affichage des fleurs des lignes énergétiques";
+"intent_field_useRandomWallpaper" = "Utiliser un fond d'écran aléatoire";
+"intent_field_useTinyGlassDisplayStyle" = "Utiliser le style d'affichage en verre miniature";
+"intent_field_wallpaper" = "Fond d'écran";
+
+/* intent_name_ */
+"intent_name_selectGameOnly" = "Choisissez uniquement le jeu";
+"intent_name_selectLocalProfile" = "Choisir le profil local";
+"intent_name_selectLocalProfile4Peripherals" = "Choisir le profil local (uniquement)";
+"intent_name_selectLocalProfile4PeripheralsWithExtraConfig" = "Choisir un profil local avec configuration supplémentaire";
+"intent_name_selectLocalProfileDuo" = "Choisir le profil local (Double)";
+
+/* intent_bool_ */
+"intent_bool_false" = "faux";
+"intent_bool_true" = "vrai";

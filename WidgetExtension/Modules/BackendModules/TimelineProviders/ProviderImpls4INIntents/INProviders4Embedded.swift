@@ -32,7 +32,7 @@ struct INLockScreenLoopWidgetProvider: INThreadSafeTimelineProvider {
     // MARK: Public
 
     public typealias Entry = ProfileWidgetEntry
-    public typealias Intent = SelectAccountAndShowWhichInfoIntentOLD
+    public typealias Intent = SelectAccountAndShowWhichInfoIntent
     public typealias NextGenTLProvider = LockScreenLoopWidgetProvider
 
     public let asyncTLProvider: NextGenTLProvider
@@ -84,7 +84,7 @@ struct INLockScreenWidgetProvider: INThreadSafeTimelineProvider {
     // MARK: Public
 
     public typealias Entry = ProfileWidgetEntry
-    public typealias Intent = SelectOnlyAccountIntentOLD
+    public typealias Intent = SelectOnlyAccountIntent
     public typealias NextGenTLProvider = LockScreenWidgetProvider
 
     public let asyncTLProvider: NextGenTLProvider

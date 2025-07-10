@@ -10,7 +10,7 @@
 			<key>INEnumDisplayName</key>
 			<string>Auto Rotation of Stamina Widget Styles</string>
 			<key>INEnumDisplayNameID</key>
-			<string>appEnum.StaminaContentRevolverStyle.title</string>
+			<string>appEnum_StaminaContentRevolverStyle_title</string>
 			<key>INEnumGeneratesHeader</key>
 			<true/>
 			<key>INEnumName</key>
@@ -21,19 +21,27 @@
 			<array>
 				<dict>
 					<key>INEnumValueDisplayName</key>
+					<string>(N/A)</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>appEnum_INIntentsShared_unknown</string>
+					<key>INEnumValueName</key>
+					<string>unknown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
 					<string>Default</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.StaminaContentRevolverStyle.byDefault</string>
+					<string>appEnum_StaminaContentRevolverStyle_byDefault</string>
 					<key>INEnumValueIndex</key>
 					<integer>1</integer>
 					<key>INEnumValueName</key>
-					<string>default</string>
+					<string>byDefault</string>
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
 					<string>Countdown Timer</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.StaminaContentRevolverStyle.asTimerCountDown</string>
+					<string>appEnum_StaminaContentRevolverStyle_asTimerCountDown</string>
 					<key>INEnumValueIndex</key>
 					<integer>2</integer>
 					<key>INEnumValueName</key>
@@ -43,7 +51,7 @@
 					<key>INEnumValueDisplayName</key>
 					<string>Timestamp (when finished)</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.StaminaContentRevolverStyle.asTimeStampWhenWillAccomplish</string>
+					<string>appEnum_StaminaContentRevolverStyle_asTimeStampWhenWillAccomplish</string>
 					<key>INEnumValueIndex</key>
 					<integer>3</integer>
 					<key>INEnumValueName</key>
@@ -53,11 +61,11 @@
 					<key>INEnumValueDisplayName</key>
 					<string>Round Meter</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.StaminaContentRevolverStyle.asRoundMeter</string>
+					<string>appEnum_StaminaContentRevolverStyle_asRoundMeter</string>
 					<key>INEnumValueIndex</key>
 					<integer>4</integer>
 					<key>INEnumValueName</key>
-					<string>circle</string>
+					<string>roundMeter</string>
 				</dict>
 			</array>
 		</dict>
@@ -67,7 +75,7 @@
 			<key>INEnumDisplayName</key>
 			<string>Weekly Bosses Info Display Method</string>
 			<key>INEnumDisplayNameID</key>
-			<string>appEnum.WeeklyBossesDisplayMethod.title</string>
+			<string>appEnum_WeeklyBossesDisplayMethod_title</string>
 			<key>INEnumGeneratesHeader</key>
 			<true/>
 			<key>INEnumName</key>
@@ -78,9 +86,17 @@
 			<array>
 				<dict>
 					<key>INEnumValueDisplayName</key>
+					<string>(N/A)</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>appEnum_INIntentsShared_unknown</string>
+					<key>INEnumValueName</key>
+					<string>unknown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
 					<string>hidden if all completed</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.WeeklyBossesDisplayMethod.hiddenIfAllCompleted</string>
+					<string>appEnum_WeeklyBossesDisplayMethod_hiddenIfAllCompleted</string>
 					<key>INEnumValueIndex</key>
 					<integer>1</integer>
 					<key>INEnumValueName</key>
@@ -90,7 +106,7 @@
 					<key>INEnumValueDisplayName</key>
 					<string>always visible</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.WeeklyBossesDisplayMethod.alwaysVisible</string>
+					<string>appEnum_WeeklyBossesDisplayMethod_alwaysVisible</string>
 					<key>INEnumValueIndex</key>
 					<integer>2</integer>
 					<key>INEnumValueName</key>
@@ -100,7 +116,7 @@
 					<key>INEnumValueDisplayName</key>
 					<string>always hidden</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.WeeklyBossesDisplayMethod.alwaysHidden</string>
+					<string>appEnum_WeeklyBossesDisplayMethod_alwaysHidden</string>
 					<key>INEnumValueIndex</key>
 					<integer>3</integer>
 					<key>INEnumValueName</key>
@@ -114,7 +130,7 @@
 			<key>INEnumDisplayName</key>
 			<string>Supported Game</string>
 			<key>INEnumDisplayNameID</key>
-			<string>appEnum.WidgetSupportedGame.title</string>
+			<string>appEnum_WidgetSupportedGame_title</string>
 			<key>INEnumGeneratesHeader</key>
 			<true/>
 			<key>INEnumName</key>
@@ -125,9 +141,17 @@
 			<array>
 				<dict>
 					<key>INEnumValueDisplayName</key>
+					<string>(N/A)</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>appEnum_INIntentsShared_unknown</string>
+					<key>INEnumValueName</key>
+					<string>unknown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
 					<string>All Games</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.WidgetSupportedGame.allGames</string>
+					<string>appEnum_WidgetSupportedGame_allGames</string>
 					<key>INEnumValueIndex</key>
 					<integer>1</integer>
 					<key>INEnumValueName</key>
@@ -137,7 +161,7 @@
 					<key>INEnumValueDisplayName</key>
 					<string>Genshin Impact</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.WidgetSupportedGame.GI</string>
+					<string>appEnum_WidgetSupportedGame_GI</string>
 					<key>INEnumValueIndex</key>
 					<integer>2</integer>
 					<key>INEnumValueName</key>
@@ -147,7 +171,7 @@
 					<key>INEnumValueDisplayName</key>
 					<string>Star Rail</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.WidgetSupportedGame.HSR</string>
+					<string>appEnum_WidgetSupportedGame_HSR</string>
 					<key>INEnumValueIndex</key>
 					<integer>3</integer>
 					<key>INEnumValueName</key>
@@ -157,7 +181,7 @@
 					<key>INEnumValueDisplayName</key>
 					<string>Zenless Zone Zero</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.WidgetSupportedGame.ZZZ</string>
+					<string>appEnum_WidgetSupportedGame_ZZZ</string>
 					<key>INEnumValueIndex</key>
 					<integer>4</integer>
 					<key>INEnumValueName</key>
@@ -171,7 +195,7 @@
 			<key>INEnumDisplayName</key>
 			<string>Expedition Display Policy</string>
 			<key>INEnumDisplayNameID</key>
-			<string>appEnum.ExpeditionDisplayPolicy.title</string>
+			<string>appEnum_ExpeditionDisplayPolicy_title</string>
 			<key>INEnumGeneratesHeader</key>
 			<true/>
 			<key>INEnumName</key>
@@ -182,9 +206,17 @@
 			<array>
 				<dict>
 					<key>INEnumValueDisplayName</key>
+					<string>(N/A)</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>appEnum_INIntentsShared_unknown</string>
+					<key>INEnumValueName</key>
+					<string>unknown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
 					<string>Never Display</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.ExpeditionDisplayPolicy.neverDisplay</string>
+					<string>appEnum_ExpeditionDisplayPolicy_neverDisplay</string>
 					<key>INEnumValueIndex</key>
 					<integer>1</integer>
 					<key>INEnumValueName</key>
@@ -194,7 +226,7 @@
 					<key>INEnumValueDisplayName</key>
 					<string>Display If Available</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.ExpeditionDisplayPolicy.displayWhenAvailable</string>
+					<string>appEnum_ExpeditionDisplayPolicy_displayWhenAvailable</string>
 					<key>INEnumValueIndex</key>
 					<integer>2</integer>
 					<key>INEnumValueName</key>
@@ -204,7 +236,7 @@
 					<key>INEnumValueDisplayName</key>
 					<string>Display Exclusively</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>appEnum.ExpeditionDisplayPolicy.displayExclusively</string>
+					<string>appEnum_ExpeditionDisplayPolicy_displayExclusively</string>
 					<key>INEnumValueIndex</key>
 					<integer>3</integer>
 					<key>INEnumValueName</key>
@@ -216,30 +248,30 @@
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.2</string>
 	<key>INIntentDefinitionNamespace</key>
-	<string>Pittqt</string>
+	<string>appIntentNameSpacePizza</string>
 	<key>INIntentDefinitionSystemVersion</key>
 	<string>24F74</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>17A5241o</string>
+	<string>16F6</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>26.0</string>
+	<string>16.4</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
 			<key>INIntentCategory</key>
 			<string>generic</string>
 			<key>INIntentClassName</key>
-			<string>INSelectAccount</string>
+			<string>SelectAccountIntent</string>
 			<key>INIntentDescription</key>
 			<string>Choose a local profile for this widget</string>
 			<key>INIntentDescriptionID</key>
-			<string>intent.description.pickTheLocalProfileForThisWidget</string>
+			<string>intent_description_pickTheLocalProfileForThisWidget</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>1</integer>
+			<integer>114514</integer>
 			<key>INIntentName</key>
 			<string>SelectAccount</string>
 			<key>INIntentParameters</key>
@@ -250,7 +282,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Local profile</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.localProfile</string>
+					<string>intent_field_localProfile</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
@@ -258,7 +290,7 @@
 					<key>INIntentParameterObjectType</key>
 					<string>INAccountIntentEntity</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -276,58 +308,6 @@
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
-					<key>INIntentParameterType</key>
-					<string>Object</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>Use random wallpaper</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.useRandomWallpaper</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>2</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>randomBackground</string>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>Wallpaper</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.wallpaper</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>3</integer>
-					<key>INIntentParameterName</key>
-					<string>chosenBackgrounds</string>
-					<key>INIntentParameterObjectType</key>
-					<string>INWidgetBackgroundEntity</string>
-					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>Pittqt</string>
-					<key>INIntentParameterRelationship</key>
-					<dict>
-						<key>INIntentParameterRelationshipParentName</key>
-						<string>randomBackground</string>
-						<key>INIntentParameterRelationshipPredicateName</key>
-						<string>BooleanHasExactValue</string>
-					</dict>
-					<key>INIntentParameterSupportsMultipleValues</key>
-					<true/>
 					<key>INIntentParameterTag</key>
 					<integer>1</integer>
 					<key>INIntentParameterType</key>
@@ -337,9 +317,67 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
+					<string>Use random wallpaper</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>intent_field_useRandomWallpaper</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>2</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>false</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>intent_bool_false</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>true</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>intent_bool_true</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>randomBackground</string>
+					<key>INIntentParameterTag</key>
+					<integer>2</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Wallpaper</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>intent_field_wallpaper</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>3</integer>
+					<key>INIntentParameterName</key>
+					<string>chosenBackgrounds</string>
+					<key>INIntentParameterObjectType</key>
+					<string>INWidgetBackgroundEntity</string>
+					<key>INIntentParameterObjectTypeNamespace</key>
+					<string>appIntentNameSpacePizza</string>
+					<key>INIntentParameterRelationship</key>
+					<dict>
+						<key>INIntentParameterRelationshipParentName</key>
+						<string>randomBackground</string>
+						<key>INIntentParameterRelationshipPredicateName</key>
+						<string>BooleanHasExactValue</string>
+					</dict>
+					<key>INIntentParameterSupportsDynamicEnumeration</key>
+					<true/>
+					<key>INIntentParameterSupportsMultipleValues</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>3</integer>
+					<key>INIntentParameterType</key>
+					<string>Object</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
 					<string>Follow system color scheme</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.followSystemDarkMode</string>
+					<string>intent_field_followSystemDarkMode</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>4</integer>
 					<key>INIntentParameterMetadata</key>
@@ -349,14 +387,16 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>isDarkModeRespected</string>
+					<key>INIntentParameterTag</key>
+					<integer>4</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -366,7 +406,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Use Tiny Glass Display Style</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.useTinyGlassDisplayStyle</string>
+					<string>intent_field_useTinyGlassDisplayStyle</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>5</integer>
 					<key>INIntentParameterMetadata</key>
@@ -374,14 +414,16 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>useTinyGlassDisplayStyle</string>
+					<key>INIntentParameterTag</key>
+					<integer>5</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -391,7 +433,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Show Player Stamina Only</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.showStaminaOnly</string>
+					<string>intent_field_showStaminaOnly</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>6</integer>
 					<key>INIntentParameterMetadata</key>
@@ -399,14 +441,16 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>showStaminaOnly</string>
+					<key>INIntentParameterTag</key>
+					<integer>6</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -416,28 +460,29 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Expedition Display Policy</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.expeditionDisplayPolicy</string>
+					<string>intent_field_expeditionDisplayPolicy</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>7</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>ExpeditionDisplayPolicy</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>displayWhenAvailable</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>expeditionDisplayPolicy</string>
+					<key>INIntentParameterRelationship</key>
+					<dict>
+						<key>INIntentParameterRelationshipParentName</key>
+						<string>showStaminaOnly</string>
+						<key>INIntentParameterRelationshipPredicateName</key>
+						<string>BooleanHasExactValue</string>
+					</dict>
+					<key>INIntentParameterTag</key>
+					<integer>7</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
 				</dict>
@@ -447,7 +492,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>[GI] Show daily materials (large-sized widgets only)</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.showMaterialsInLargeSizeWidget</string>
+					<string>intent_field_showMaterialsInLargeSizeWidget</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>8</integer>
 					<key>INIntentParameterMetadata</key>
@@ -457,14 +502,23 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>showMaterialsInLargeSizeWidget</string>
+					<key>INIntentParameterRelationship</key>
+					<dict>
+						<key>INIntentParameterRelationshipParentName</key>
+						<string>showStaminaOnly</string>
+						<key>INIntentParameterRelationshipPredicateName</key>
+						<string>BooleanHasExactValue</string>
+					</dict>
+					<key>INIntentParameterTag</key>
+					<integer>8</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -474,13 +528,13 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Echo of War Display</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.echoOfWarDisplayMethod</string>
+					<string>intent_field_echoOfWarDisplayMethod</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>9</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>WeeklyBossesDisplayMethod</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -488,6 +542,15 @@
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>echoOfWarDisplayMethod</string>
+					<key>INIntentParameterRelationship</key>
+					<dict>
+						<key>INIntentParameterRelationshipParentName</key>
+						<string>showStaminaOnly</string>
+						<key>INIntentParameterRelationshipPredicateName</key>
+						<string>BooleanHasExactValue</string>
+					</dict>
+					<key>INIntentParameterTag</key>
+					<integer>9</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
 				</dict>
@@ -497,13 +560,13 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Trounce Blossom Display</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.trounceBlossomDisplayMethod</string>
+					<string>intent_field_trounceBlossomDisplayMethod</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>10</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>WeeklyBossesDisplayMethod</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -511,6 +574,15 @@
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>trounceBlossomDisplayMethod</string>
+					<key>INIntentParameterRelationship</key>
+					<dict>
+						<key>INIntentParameterRelationshipParentName</key>
+						<string>showStaminaOnly</string>
+						<key>INIntentParameterRelationshipPredicateName</key>
+						<string>BooleanHasExactValue</string>
+					</dict>
+					<key>INIntentParameterTag</key>
+					<integer>10</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
 				</dict>
@@ -520,7 +592,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>[GI] Show transformer status</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.showTransformer</string>
+					<string>intent_field_showTransformer</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>11</integer>
 					<key>INIntentParameterMetadata</key>
@@ -530,14 +602,23 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>showTransformer</string>
+					<key>INIntentParameterRelationship</key>
+					<dict>
+						<key>INIntentParameterRelationshipParentName</key>
+						<string>showStaminaOnly</string>
+						<key>INIntentParameterRelationshipPredicateName</key>
+						<string>BooleanHasExactValue</string>
+					</dict>
+					<key>INIntentParameterTag</key>
+					<integer>11</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -561,7 +642,7 @@
 			<key>INIntentTitle</key>
 			<string>Choose Local Profile</string>
 			<key>INIntentTitleID</key>
-			<string>intent.name.selectLocalProfile</string>
+			<string>intent_name_selectLocalProfile</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
@@ -571,17 +652,17 @@
 			<key>INIntentCategory</key>
 			<string>generic</string>
 			<key>INIntentClassName</key>
-			<string>INSelectDualProfile</string>
+			<string>SelectDualProfileIntent</string>
 			<key>INIntentDescription</key>
 			<string>Choose 2 local profiles for this widget</string>
 			<key>INIntentDescriptionID</key>
-			<string>intent.description.pickTheLocalProfileDuoForThisWidget</string>
+			<string>intent_description_pickTheLocalProfileDuoForThisWidget</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>7</integer>
+			<integer>114514</integer>
 			<key>INIntentName</key>
 			<string>SelectDualProfile</string>
 			<key>INIntentParameters</key>
@@ -592,7 +673,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Local profile #1</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.localProfile.slot1</string>
+					<string>intent_field_localProfile_slot1</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
@@ -600,7 +681,7 @@
 					<key>INIntentParameterObjectType</key>
 					<string>INAccountIntentEntity</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -629,7 +710,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Local profile #2</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.localProfile.slot2</string>
+					<string>intent_field_localProfile_slot2</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>2</integer>
 					<key>INIntentParameterName</key>
@@ -637,7 +718,7 @@
 					<key>INIntentParameterObjectType</key>
 					<string>INAccountIntentEntity</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -666,7 +747,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Use random wallpaper</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.useRandomWallpaper</string>
+					<string>intent_field_useRandomWallpaper</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>3</integer>
 					<key>INIntentParameterMetadata</key>
@@ -674,14 +755,16 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>randomBackground</string>
+					<key>INIntentParameterTag</key>
+					<integer>3</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -691,7 +774,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Wallpaper</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.wallpaper</string>
+					<string>intent_field_wallpaper</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>4</integer>
 					<key>INIntentParameterName</key>
@@ -699,7 +782,7 @@
 					<key>INIntentParameterObjectType</key>
 					<string>INWidgetBackgroundEntity</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterRelationship</key>
 					<dict>
 						<key>INIntentParameterRelationshipParentName</key>
@@ -707,6 +790,8 @@
 						<key>INIntentParameterRelationshipPredicateName</key>
 						<string>BooleanHasExactValue</string>
 					</dict>
+					<key>INIntentParameterSupportsDynamicEnumeration</key>
+					<true/>
 					<key>INIntentParameterSupportsMultipleValues</key>
 					<true/>
 					<key>INIntentParameterTag</key>
@@ -720,7 +805,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Follow system color scheme</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.followSystemDarkMode</string>
+					<string>intent_field_followSystemDarkMode</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>5</integer>
 					<key>INIntentParameterMetadata</key>
@@ -730,14 +815,16 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>isDarkModeRespected</string>
+					<key>INIntentParameterTag</key>
+					<integer>5</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -747,7 +834,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Use Tiny Glass Display Style</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.useTinyGlassDisplayStyle</string>
+					<string>intent_field_useTinyGlassDisplayStyle</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>6</integer>
 					<key>INIntentParameterMetadata</key>
@@ -755,39 +842,16 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>useTinyGlassDisplayStyle</string>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>Show Player Stamina Only</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.showStaminaOnly</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>7</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>showStaminaOnly</string>
+					<key>INIntentParameterTag</key>
+					<integer>6</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -797,103 +861,20 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Expedition Display Policy</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.expeditionDisplayPolicy</string>
+					<string>intent_field_expeditionDisplayPolicy</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>8</integer>
+					<integer>7</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>ExpeditionDisplayPolicy</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>displayWhenAvailable</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>expeditionDisplayPolicy</string>
-					<key>INIntentParameterType</key>
-					<string>Integer</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>[GI] Show daily materials (large-sized widgets only)</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.showMaterialsInLargeSizeWidget</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>9</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>showMaterialsInLargeSizeWidget</string>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>Echo of War Display</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.echoOfWarDisplayMethod</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>10</integer>
-					<key>INIntentParameterEnumType</key>
-					<string>WeeklyBossesDisplayMethod</string>
-					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Pittqt</string>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>alwaysShow</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>echoOfWarDisplayMethod</string>
-					<key>INIntentParameterTag</key>
-					<integer>6</integer>
-					<key>INIntentParameterType</key>
-					<string>Integer</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>Trounce Blossom Display</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.trounceBlossomDisplayMethod</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>11</integer>
-					<key>INIntentParameterEnumType</key>
-					<string>WeeklyBossesDisplayMethod</string>
-					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Pittqt</string>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>alwaysShow</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>trounceBlossomDisplayMethod</string>
 					<key>INIntentParameterTag</key>
 					<integer>7</integer>
 					<key>INIntentParameterType</key>
@@ -903,11 +884,61 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
+					<string>Echo of War Display</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>intent_field_echoOfWarDisplayMethod</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>8</integer>
+					<key>INIntentParameterEnumType</key>
+					<string>WeeklyBossesDisplayMethod</string>
+					<key>INIntentParameterEnumTypeNamespace</key>
+					<string>appIntentNameSpacePizza</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>alwaysShow</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>echoOfWarDisplayMethod</string>
+					<key>INIntentParameterTag</key>
+					<integer>8</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Trounce Blossom Display</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>intent_field_trounceBlossomDisplayMethod</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>9</integer>
+					<key>INIntentParameterEnumType</key>
+					<string>WeeklyBossesDisplayMethod</string>
+					<key>INIntentParameterEnumTypeNamespace</key>
+					<string>appIntentNameSpacePizza</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>alwaysShow</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>trounceBlossomDisplayMethod</string>
+					<key>INIntentParameterTag</key>
+					<integer>9</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
 					<string>[GI] Show transformer status</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.showTransformer</string>
+					<string>intent_field_showTransformer</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>12</integer>
+					<integer>10</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -915,14 +946,16 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>showTransformer</string>
+					<key>INIntentParameterTag</key>
+					<integer>10</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
@@ -946,7 +979,7 @@
 			<key>INIntentTitle</key>
 			<string>Choose Local Profile (Dual)</string>
 			<key>INIntentTitleID</key>
-			<string>intent.name.selectLocalProfileDuo</string>
+			<string>intent_name_selectLocalProfileDuo</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
@@ -956,15 +989,17 @@
 			<key>INIntentCategory</key>
 			<string>generic</string>
 			<key>INIntentClassName</key>
-			<string>INSelectOnlyGame</string>
+			<string>SelectOnlyGameIntent</string>
 			<key>INIntentDescription</key>
 			<string>Choose the game</string>
 			<key>INIntentDescriptionID</key>
-			<string>intent.description.chooseTheGame</string>
+			<string>intent_description_chooseTheGame</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
+			<key>INIntentLastParameterTag</key>
+			<integer>114514</integer>
 			<key>INIntentName</key>
 			<string>SelectOnlyGame</string>
 			<key>INIntentParameters</key>
@@ -975,15 +1010,22 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Game</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.game</string>
+					<string>intent_field_game</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>WidgetSupportedGame</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>allGames</string>
+					</dict>
 					<key>INIntentParameterName</key>
 					<string>game</string>
+					<key>INIntentParameterTag</key>
+					<integer>1</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
 				</dict>
@@ -1007,7 +1049,7 @@
 			<key>INIntentTitle</key>
 			<string>Only choose the game</string>
 			<key>INIntentTitleID</key>
-			<string>intent.name.selectGameOnly</string>
+			<string>intent_name_selectGameOnly</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
@@ -1017,15 +1059,17 @@
 			<key>INIntentCategory</key>
 			<string>generic</string>
 			<key>INIntentClassName</key>
-			<string>INSelectOnlyAccount</string>
+			<string>SelectOnlyAccountIntent</string>
 			<key>INIntentDescription</key>
 			<string>Choose a local profile for this widget</string>
 			<key>INIntentDescriptionID</key>
-			<string>intent.description.pickTheLocalProfileForThisWidget</string>
+			<string>intent_description_pickTheLocalProfileForThisWidget</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
+			<key>INIntentLastParameterTag</key>
+			<integer>114514</integer>
 			<key>INIntentName</key>
 			<string>SelectOnlyAccount</string>
 			<key>INIntentParameters</key>
@@ -1036,7 +1080,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Local profile</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.localProfile</string>
+					<string>intent_field_localProfile</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
@@ -1044,7 +1088,7 @@
 					<key>INIntentParameterObjectType</key>
 					<string>INAccountIntentEntity</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -1062,6 +1106,8 @@
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>1</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
@@ -1085,7 +1131,7 @@
 			<key>INIntentTitle</key>
 			<string>Choose Local Profile (only)</string>
 			<key>INIntentTitleID</key>
-			<string>intent.name.selectLocalProfile4Peripherals</string>
+			<string>intent_name_selectLocalProfile4Peripherals</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
@@ -1095,17 +1141,17 @@
 			<key>INIntentCategory</key>
 			<string>generic</string>
 			<key>INIntentClassName</key>
-			<string>INSelectAccountAndShowWhichInfo</string>
+			<string>SelectAccountAndShowWhichInfoIntent</string>
 			<key>INIntentDescription</key>
 			<string>Choose a local profile and configure what to show</string>
 			<key>INIntentDescriptionID</key>
-			<string>intent.description.pickTheLocalProfileForThisWidget</string>
+			<string>intent_description_pickTheLocalProfileForThisWidget</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>6</integer>
+			<integer>114514</integer>
 			<key>INIntentName</key>
 			<string>SelectAccountAndShowWhichInfo</string>
 			<key>INIntentParameters</key>
@@ -1116,7 +1162,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Local profile</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.localProfile</string>
+					<string>intent_field_localProfile</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
@@ -1124,7 +1170,7 @@
 					<key>INIntentParameterObjectType</key>
 					<string>INAccountIntentEntity</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -1142,6 +1188,8 @@
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>1</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
@@ -1151,7 +1199,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Echo of War Display</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.echoOfWarDisplayMethod</string>
+					<string>intent_field_echoOfWarDisplayMethod</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>2</integer>
 					<key>INIntentParameterMetadata</key>
@@ -1161,11 +1209,11 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>showEchoOfWar</string>
@@ -1195,7 +1243,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Trounce Blossom Display</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.trounceBlossomDisplayMethod</string>
+					<string>intent_field_trounceBlossomDisplayMethod</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>3</integer>
 					<key>INIntentParameterMetadata</key>
@@ -1205,11 +1253,11 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>showTrounceBlossom</string>
@@ -1239,7 +1287,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>[GI] Show transformer status</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.showTransformer</string>
+					<string>intent_field_showTransformer</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>4</integer>
 					<key>INIntentParameterMetadata</key>
@@ -1249,11 +1297,11 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>intent.bool.false</string>
+						<string>intent_bool_false</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>intent.bool.true</string>
+						<string>intent_bool_true</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>showTransformer</string>
@@ -1283,13 +1331,18 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Stamina display style (Resin / Trailblazing Power / Zenless Energy)</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>intent.field.staminaDisplayStyle</string>
+					<string>intent_field_staminaDisplayStyle</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>5</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>StaminaContentRevolverStyle</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Pittqt</string>
+					<string>appIntentNameSpacePizza</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>default</string>
+					</dict>
 					<key>INIntentParameterName</key>
 					<string>usingResinStyle</string>
 					<key>INIntentParameterPromptDialogs</key>
@@ -1318,7 +1371,7 @@
 						</dict>
 					</array>
 					<key>INIntentParameterTag</key>
-					<integer>6</integer>
+					<integer>5</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
 				</dict>
@@ -1342,7 +1395,7 @@
 			<key>INIntentTitle</key>
 			<string>Choose Local Profile with Extra Configuration</string>
 			<key>INIntentTitleID</key>
-			<string>intent.name.selectLocalProfile4PeripheralsWithExtraConfig</string>
+			<string>intent_name_selectLocalProfile4PeripheralsWithExtraConfig</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
@@ -1355,7 +1408,7 @@
 			<key>INTypeDisplayName</key>
 			<string>Local Profile</string>
 			<key>INTypeDisplayNameID</key>
-			<string>appEntity.localProfile</string>
+			<string>appEntity_localProfile</string>
 			<key>INTypeLastPropertyTag</key>
 			<integer>100</integer>
 			<key>INTypeName</key>
@@ -1418,7 +1471,7 @@
 			<key>INTypeDisplayName</key>
 			<string>Widget Background</string>
 			<key>INTypeDisplayNameID</key>
-			<string>appEntity.widgetBackground</string>
+			<string>appEntity_widgetBackground</string>
 			<key>INTypeLastPropertyTag</key>
 			<integer>100</integer>
 			<key>INTypeName</key>

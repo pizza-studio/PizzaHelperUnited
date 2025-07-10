@@ -1,0 +1,59 @@
+/* vi.lproj/Localizable.strings */
+
+/* appEntity_ */
+"appEntity_localProfile" = "Hồ sơ";
+"appEntity_widgetBackground" = "Nền tiện ích";
+
+/* appEnum_ */
+"appEnum_ExpeditionDisplayPolicy_displayExclusively" = "Hiển thị độc quyền";
+"appEnum_ExpeditionDisplayPolicy_displayWhenAvailable" = "Hiển thị Nếu Có sẵn";
+"appEnum_ExpeditionDisplayPolicy_neverDisplay" = "Không Bao giờ Hiển thị";
+"appEnum_ExpeditionDisplayPolicy_title" = "Chính sách Hiển thị Thám hiểm";
+"appEnum_StaminaContentRevolverStyle_asRoundMeter" = "Đồng hồ tròn";
+"appEnum_StaminaContentRevolverStyle_asTimeStampWhenWillAccomplish" = "Dấu thời gian (khi hoàn thành)";
+"appEnum_StaminaContentRevolverStyle_asTimerCountDown" = "Đồng hồ đếm ngược";
+"appEnum_StaminaContentRevolverStyle_byDefault" = "Mặc định";
+"appEnum_StaminaContentRevolverStyle_title" = "Tự động xoay kiểu widget sức bền";
+"appEnum_WeeklyBossesDisplayMethod_alwaysHidden" = "luôn ẩn";
+"appEnum_WeeklyBossesDisplayMethod_alwaysVisible" = "luôn hiển thị";
+"appEnum_WeeklyBossesDisplayMethod_hiddenIfAllCompleted" = "ẩn nếu tất cả đã hoàn thành";
+"appEnum_WeeklyBossesDisplayMethod_title" = "Phương Pháp Hiển Thị Thông Tin Boss Hàng Tuần";
+"appEnum_WidgetSupportedGame_GI" = "Genshin Impact";
+"appEnum_WidgetSupportedGame_HSR" = "Star Rail";
+"appEnum_WidgetSupportedGame_ZZZ" = "Zenless Zone Zero";
+"appEnum_WidgetSupportedGame_allGames" = "Tất cả các trò chơi";
+"appEnum_WidgetSupportedGame_title" = "Trò chơi được hỗ trợ";
+
+/* intent_description_ */
+"intent_description_chooseTheGame" = "Chọn trò chơi";
+"intent_description_pickTheLocalProfileDuoForThisWidget" = "Chọn hai hồ sơ cục bộ cho tiện ích này";
+"intent_description_pickTheLocalProfileForThisWidget" = "Chọn một hồ sơ cục bộ cho tiện ích này";
+
+/* intent_field_ */
+"intent_field_echoOfWarDisplayMethod" = "Hiển thị Dư Âm Chiến Đấu";
+"intent_field_expeditionDisplayPolicy" = "Chính sách Hiển thị Thám hiểm";
+"intent_field_followSystemDarkMode" = "Theo dõi chế độ màu của hệ thống";
+"intent_field_game" = "Trò chơi";
+"intent_field_inverseSelectMode" = "Đảo ngược lựa chọn";
+"intent_field_localProfile" = "Hồ sơ cục bộ";
+"intent_field_localProfile_slot1" = "Hồ sơ cục bộ #1";
+"intent_field_localProfile_slot2" = "Hồ sơ cục bộ #2";
+"intent_field_showMaterialsInLargeSizeWidget" = "[GI] Hiển thị tài liệu hàng ngày (chỉ dành cho widget cỡ lớn)";
+"intent_field_showStaminaOnly" = "Chỉ hiển thị thể lực người chơi";
+"intent_field_showTransformer" = "[GI] Hiển thị trạng thái máy biến áp";
+"intent_field_staminaDisplayStyle" = "Kiểu hiển thị thể lực (Nhựa / Sức mạnh phiêu lưu / Năng lượng tĩnh)";
+"intent_field_trounceBlossomDisplayMethod" = "Hiển thị Hoa Chinh Phạt";
+"intent_field_useRandomWallpaper" = "Sử dụng hình nền ngẫu nhiên";
+"intent_field_useTinyGlassDisplayStyle" = "Sử dụng kiểu hiển thị kính nhỏ";
+"intent_field_wallpaper" = "Hình nền";
+
+/* intent_name_ */
+"intent_name_selectGameOnly" = "Chỉ chọn trò chơi";
+"intent_name_selectLocalProfile" = "Chọn hồ sơ cục bộ";
+"intent_name_selectLocalProfile4Peripherals" = "Chọn Hồ sơ Cục bộ (chỉ)";
+"intent_name_selectLocalProfile4PeripheralsWithExtraConfig" = "Chọn Hồ Sơ Cục Bộ với Cấu Hình Bổ Sung";
+"intent_name_selectLocalProfileDuo" = "Chọn hồ sơ cục bộ (Kép)";
+
+/* intent_bool_ */
+"intent_bool_false" = "sai";
+"intent_bool_true" = "đúng";

@@ -1,0 +1,59 @@
+/* fil.lproj/Localizable.strings */
+
+/* appEntity_ */
+"appEntity_localProfile" = "Profile";
+"appEntity_widgetBackground" = "Likuran ng Widget";
+
+/* appEnum_ */
+"appEnum_ExpeditionDisplayPolicy_displayExclusively" = "Ipakita nang Eksklusibo";
+"appEnum_ExpeditionDisplayPolicy_displayWhenAvailable" = "Ipakita Kung May Magagamit";
+"appEnum_ExpeditionDisplayPolicy_neverDisplay" = "Hindi Kailanman Ipakita";
+"appEnum_ExpeditionDisplayPolicy_title" = "Patakaran sa Pagpapakita ng Ekspedisyon";
+"appEnum_StaminaContentRevolverStyle_asRoundMeter" = "Bilog na Metro";
+"appEnum_StaminaContentRevolverStyle_asTimeStampWhenWillAccomplish" = "Timestamp (kapag natapos)";
+"appEnum_StaminaContentRevolverStyle_asTimerCountDown" = "Countdown Timer";
+"appEnum_StaminaContentRevolverStyle_byDefault" = "Default";
+"appEnum_StaminaContentRevolverStyle_title" = "Awtomatikong Pag-ikot ng mga Estilo ng Stamina Widget";
+"appEnum_WeeklyBossesDisplayMethod_alwaysHidden" = "laging nakatago";
+"appEnum_WeeklyBossesDisplayMethod_alwaysVisible" = "laging nakikita";
+"appEnum_WeeklyBossesDisplayMethod_hiddenIfAllCompleted" = "nakatago kung natapos lahat";
+"appEnum_WeeklyBossesDisplayMethod_title" = "Paraan ng Pagpapakita ng Impormasyon ng Lingguhang Bosses";
+"appEnum_WidgetSupportedGame_GI" = "Genshin Impact";
+"appEnum_WidgetSupportedGame_HSR" = "Star Rail";
+"appEnum_WidgetSupportedGame_ZZZ" = "Zenless Zone Zero";
+"appEnum_WidgetSupportedGame_allGames" = "Lahat ng Laro";
+"appEnum_WidgetSupportedGame_title" = "Sinusuportahang Laro";
+
+/* intent_description_ */
+"intent_description_chooseTheGame" = "Piliin ang laro";
+"intent_description_pickTheLocalProfileDuoForThisWidget" = "Piliin ang dalawang lokal na profile para sa widget na ito";
+"intent_description_pickTheLocalProfileForThisWidget" = "Piliin ang isang lokal na profile para sa widget na ito";
+
+/* intent_field_ */
+"intent_field_echoOfWarDisplayMethod" = "Ipakita ang Echo of War";
+"intent_field_expeditionDisplayPolicy" = "Patakaran sa Pagpapakita ng Ekspedisyon";
+"intent_field_followSystemDarkMode" = "Sundin ang scheme ng kulay ng sistema";
+"intent_field_game" = "Laro";
+"intent_field_inverseSelectMode" = "Baligtarin ang Pagpili";
+"intent_field_localProfile" = "Pook na lokal";
+"intent_field_localProfile_slot1" = "Pook na lokal #1";
+"intent_field_localProfile_slot2" = "Pook na lokal #2";
+"intent_field_showMaterialsInLargeSizeWidget" = "[GI] Ipakita ang mga materyales araw-araw (para sa malalaking widget lamang)";
+"intent_field_showStaminaOnly" = "Ipakita lamang ang stamina ng manlalaro";
+"intent_field_showTransformer" = "Ipakita ang status ng transformer";
+"intent_field_staminaDisplayStyle" = "Estilo ng pagpapakita ng Stamina (Resin / Trailblazing Power / Zenless Energy)";
+"intent_field_trounceBlossomDisplayMethod" = "Ipakita ang Trounce Blossom";
+"intent_field_useRandomWallpaper" = "Gumamit ng random na wallpaper";
+"intent_field_useTinyGlassDisplayStyle" = "Gumamit ng Maliit na Estilo ng Display ng Salamin";
+"intent_field_wallpaper" = "Papel de dinding";
+
+/* intent_name_ */
+"intent_name_selectGameOnly" = "Piliin lamang ang laro";
+"intent_name_selectLocalProfile" = "Piliin ang Lokal na Profile";
+"intent_name_selectLocalProfile4Peripherals" = "Pumili ng Lokal na Profile (lamang)";
+"intent_name_selectLocalProfile4PeripheralsWithExtraConfig" = "Piliin ang Lokal na Profile na may Karagdagang Pag-configure";
+"intent_name_selectLocalProfileDuo" = "Piliin ang Lokal na Dual Profile";
+
+/* intent_bool_ */
+"intent_bool_false" = "mali";
+"intent_bool_true" = "tama";

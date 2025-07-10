@@ -30,11 +30,11 @@ extension Pizza.SupportedGame {
     public init?(intentConfigIN: some INIntent) {
         let uuid: String?
         switch intentConfigIN {
-        case let intentConfig as INSelectOnlyAccount:
+        case let intentConfig as SelectOnlyAccountIntent:
             uuid = intentConfig.account?.identifier
-        case let intentConfig as INSelectAccount:
+        case let intentConfig as SelectAccountIntent:
             uuid = intentConfig.accountIntent?.identifier
-        case let intentConfig as INSelectAccountAndShowWhichInfo:
+        case let intentConfig as SelectAccountAndShowWhichInfoIntent:
             uuid = intentConfig.account?.identifier
         default:
             uuid = nil

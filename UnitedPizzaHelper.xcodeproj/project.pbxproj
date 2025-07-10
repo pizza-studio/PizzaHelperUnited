@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 74;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,8 @@
 		5B560A0F2C6BB5BB00175FB1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */; };
 		5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A172C6BBB8300175FB1 /* Settings.bundle */; };
 		5B6F380C2CCE4EDE0081A23D /* PizzaWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BB1392D2E1F892500D1F169 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB1392C2E1F892500D1F169 /* Intents.framework */; };
+		5BB139342E1F892500D1F169 /* INIntents4iOS16.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5BB1392B2E1F892500D1F169 /* INIntents4iOS16.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BD0D0F52C6A653500DA8099 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD0D0F42C6A653500DA8099 /* PZHelper */; };
 		5BD7442A2CC6B262007DE385 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD744292CC6B262007DE385 /* WidgetKit.framework */; };
 		5BD7442C2CC6B262007DE385 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7442B2CC6B262007DE385 /* SwiftUI.framework */; };
@@ -30,6 +32,10 @@
 		5BDA29DC2C69EE5F009640D1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA29DB2C69EE5F009640D1 /* Localizable.xcstrings */; };
 		5BDB94A42CDB57E100488574 /* PZWidgetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDB94A32CDB57E100488574 /* PZWidgetsKit */; };
 		5BDB94A62CDB57E600488574 /* PZWidgetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDB94A52CDB57E600488574 /* PZWidgetsKit */; };
+		5BF798312E1FAA8B00CBB24C /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF798302E1FAA8B00CBB24C /* Defaults */; };
+		5BF798332E1FAA9200CBB24C /* PZAccountKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF798322E1FAA9200CBB24C /* PZAccountKit */; };
+		5BF798352E1FAA9700CBB24C /* WallpaperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF798342E1FAA9700CBB24C /* WallpaperKit */; };
+		5BF798392E1FAB0100CBB24C /* PZWidgetsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BF798382E1FAB0100CBB24C /* PZWidgetsKit */; };
 		5BFB9D2A2C6BBCE700DC648F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D292C6BBCE700DC648F /* PrivacyInfo.xcprivacy */; };
 		5BFCA0542CCDFFE300F182C7 /* PZBaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0532CCDFFE300F182C7 /* PZBaseKit */; };
 		5BFCA0562CCDFFEA00F182C7 /* PZAccountKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFCA0552CCDFFEA00F182C7 /* PZAccountKit */; };
@@ -58,6 +64,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5B6F37FE2CCE4EDC0081A23D;
 			remoteInfo = WatchApp;
+		};
+		5BB139322E1F892500D1F169 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BFD6B842C628CD8000A63E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BB1392A2E1F892500D1F169;
+			remoteInfo = INIntents4iOS16;
 		};
 		5BD7443B2CC6B264007DE385 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -98,6 +111,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				5BD7443D2CC6B264007DE385 /* WidgetExtension.appex in Embed Foundation Extensions */,
+				5BB139342E1F892500D1F169 /* INIntents4iOS16.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +131,8 @@
 		5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7619052D3293DC0076AA08 /* GI_MaterialDBGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GI_MaterialDBGenerator.swift; sourceTree = "<group>"; };
 		5B978A8F2C8D8DF60000EB61 /* GITodayMaterialsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GITodayMaterialsKit; sourceTree = "<group>"; };
+		5BB1392B2E1F892500D1F169 /* INIntents4iOS16.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = INIntents4iOS16.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BB1392C2E1F892500D1F169 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		5BD0D0F22C6A633700DA8099 /* PZHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PZHelper; sourceTree = "<group>"; };
 		5BD0D0F32C6A633700DA8099 /* PZHelper-Watch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "PZHelper-Watch"; sourceTree = "<group>"; };
 		5BD744282CC6B262007DE385 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +194,31 @@
 			);
 			target = 5B6F37FE2CCE4EDC0081A23D /* PizzaWatchApp */;
 		};
+		5BB139382E1F892500D1F169 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5BB1392A2E1F892500D1F169 /* INIntents4iOS16 */;
+		};
+		5BB1396A2E1F8A0900D1F169 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				/Localized/PZProfileIntentBackports.strings,
+				IntentHandler.swift,
+				PZProfileIntentBackports.intentdefinition,
+			);
+			target = 5BD744272CC6B262007DE385 /* WidgetExtension */;
+		};
+		5BB1396B2E1F8A0900D1F169 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				/Localized/PZProfileIntentBackports.strings,
+				IntentHandler.swift,
+				PZProfileIntentBackports.intentdefinition,
+			);
+			target = 5B258C802CCE890300131992 /* PizzaWatchAppExtension */;
+		};
 		5BD744432CC6B265007DE385 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -186,13 +227,22 @@
 			);
 			target = 5BD744272CC6B262007DE385 /* WidgetExtension */;
 		};
+		5BF798372E1FAAC300CBB24C /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Modules/BackendModules/Intents/AppEntities.swift,
+				Modules/PZWidgets.swift,
+			);
+			target = 5BB1392A2E1F892500D1F169 /* INIntents4iOS16 */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5B10D7F22CC6636C00245B77 /* ThePizzaHelper */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5B10D8172CC6668000245B77 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ThePizzaHelper; sourceTree = "<group>"; };
 		5B258C842CCE890300131992 /* WatchExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5B258C902CCE890500131992 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = WatchExtension; sourceTree = "<group>"; };
 		5B6F38002CCE4EDC0081A23D /* WatchApp */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5B261FB22CCE6E7A00CD64FA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = WatchApp; sourceTree = "<group>"; };
-		5BD7442D2CC6B262007DE385 /* WidgetExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5BD744432CC6B265007DE385 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 5B258CD72CCE896200131992 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = WidgetExtension; sourceTree = "<group>"; };
+		5BB1392E2E1F892500D1F169 /* INIntents4iOS16 */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5BB1396A2E1F8A0900D1F169 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 5BB1396B2E1F8A0900D1F169 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 5BB139382E1F892500D1F169 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = INIntents4iOS16; sourceTree = "<group>"; };
+		5BD7442D2CC6B262007DE385 /* WidgetExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5BD744432CC6B265007DE385 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 5B258CD72CCE896200131992 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 5BF798372E1FAAC300CBB24C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = WidgetExtension; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +279,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BB139282E1F892500D1F169 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BF798352E1FAA9700CBB24C /* WallpaperKit in Frameworks */,
+				5BF798332E1FAA9200CBB24C /* PZAccountKit in Frameworks */,
+				5BF798312E1FAA8B00CBB24C /* Defaults in Frameworks */,
+				5BF798392E1FAB0100CBB24C /* PZWidgetsKit in Frameworks */,
+				5BB1392D2E1F892500D1F169 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BD744252CC6B262007DE385 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +324,7 @@
 			children = (
 				5BD744292CC6B262007DE385 /* WidgetKit.framework */,
 				5BD7442B2CC6B262007DE385 /* SwiftUI.framework */,
+				5BB1392C2E1F892500D1F169 /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -329,6 +392,7 @@
 				5BFD6B8E2C628CD8000A63E9 /* UnitedPizzaHelperEngine */,
 				5B6F38002CCE4EDC0081A23D /* WatchApp */,
 				5B258C842CCE890300131992 /* WatchExtension */,
+				5BB1392E2E1F892500D1F169 /* INIntents4iOS16 */,
 				5B2A65F92C69204600BAEE7E /* Frameworks */,
 				5BFD6B8D2C628CD8000A63E9 /* Products */,
 				5B560A182C6BBB8300175FB1 /* SharedBundles */,
@@ -343,6 +407,7 @@
 				5BD744282CC6B262007DE385 /* WidgetExtension.appex */,
 				5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */,
 				5B258C812CCE890300131992 /* PizzaWatchAppExtension.appex */,
+				5BB1392B2E1F892500D1F169 /* INIntents4iOS16.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -399,6 +464,7 @@
 			dependencies = (
 				5BD7443C2CC6B264007DE385 /* PBXTargetDependency */,
 				5B6F380B2CCE4EDE0081A23D /* PBXTargetDependency */,
+				5BB139332E1F892500D1F169 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5B10D7F22CC6636C00245B77 /* ThePizzaHelper */,
@@ -467,6 +533,32 @@
 			productReference = 5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5BB1392A2E1F892500D1F169 /* INIntents4iOS16 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BB139372E1F892500D1F169 /* Build configuration list for PBXNativeTarget "INIntents4iOS16" */;
+			buildPhases = (
+				5BB139272E1F892500D1F169 /* Sources */,
+				5BB139282E1F892500D1F169 /* Frameworks */,
+				5BB139292E1F892500D1F169 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5BB1392E2E1F892500D1F169 /* INIntents4iOS16 */,
+			);
+			name = INIntents4iOS16;
+			packageProductDependencies = (
+				5BF798302E1FAA8B00CBB24C /* Defaults */,
+				5BF798322E1FAA9200CBB24C /* PZAccountKit */,
+				5BF798342E1FAA9700CBB24C /* WallpaperKit */,
+				5BF798382E1FAB0100CBB24C /* PZWidgetsKit */,
+			);
+			productName = INIntents4iOS16;
+			productReference = 5BB1392B2E1F892500D1F169 /* INIntents4iOS16.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		5BD744272CC6B262007DE385 /* WidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BD744422CC6B265007DE385 /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
@@ -525,7 +617,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					5B10D7F02CC6636C00245B77 = {
@@ -537,6 +629,9 @@
 					5B6F37FE2CCE4EDC0081A23D = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					5BB1392A2E1F892500D1F169 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					5BD744272CC6B262007DE385 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -546,7 +641,6 @@
 				};
 			};
 			buildConfigurationList = 5BFD6B872C628CD8000A63E9 /* Build configuration list for PBXProject "UnitedPizzaHelper" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -569,6 +663,7 @@
 				5BFCA05B2CCE002700F182C7 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				5BFCA05E2CCE003A00F182C7 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
+			preferredProjectObjectVersion = 56;
 			productRefGroup = 5BFD6B8D2C628CD8000A63E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -578,6 +673,7 @@
 				5BFD6B8B2C628CD8000A63E9 /* UnitedPizzaHelperEngine */,
 				5B6F37FE2CCE4EDC0081A23D /* PizzaWatchApp */,
 				5B258C802CCE890300131992 /* PizzaWatchAppExtension */,
+				5BB1392A2E1F892500D1F169 /* INIntents4iOS16 */,
 			);
 		};
 /* End PBXProject section */
@@ -598,6 +694,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5B6F37FD2CCE4EDC0081A23D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BB139292E1F892500D1F169 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -690,6 +793,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BB139272E1F892500D1F169 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BD744242CC6B262007DE385 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -718,6 +828,11 @@
 			platformFilter = ios;
 			target = 5B6F37FE2CCE4EDC0081A23D /* PizzaWatchApp */;
 			targetProxy = 5B6F380A2CCE4EDE0081A23D /* PBXContainerItemProxy */;
+		};
+		5BB139332E1F892500D1F169 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BB1392A2E1F892500D1F169 /* INIntents4iOS16 */;
+			targetProxy = 5BB139322E1F892500D1F169 /* PBXContainerItemProxy */;
 		};
 		5BD7443C2CC6B264007DE385 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -958,6 +1073,73 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 10;
+			};
+			name = Release;
+		};
+		5BB139352E1F892500D1F169 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = INIntents4iOS16/INIntents4iOS16.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5552;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = INIntents4iOS16/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = INIntents4iOS16;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 5.4.2;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.INIntents4iOS16;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5BB139362E1F892500D1F169 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = INIntents4iOS16/INIntents4iOS16.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5552;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = INIntents4iOS16/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = INIntents4iOS16;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 5.4.2;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.INIntents4iOS16;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -1294,6 +1476,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5BB139372E1F892500D1F169 /* Build configuration list for PBXNativeTarget "INIntents4iOS16" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BB139352E1F892500D1F169 /* Debug */,
+				5BB139362E1F892500D1F169 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5BD744422CC6B265007DE385 /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1390,6 +1581,23 @@
 			productName = PZWidgetsKit;
 		};
 		5BDB94A52CDB57E600488574 /* PZWidgetsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZWidgetsKit;
+		};
+		5BF798302E1FAA8B00CBB24C /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BFCA05E2CCE003A00F182C7 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		5BF798322E1FAA9200CBB24C /* PZAccountKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PZAccountKit;
+		};
+		5BF798342E1FAA9700CBB24C /* WallpaperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WallpaperKit;
+		};
+		5BF798382E1FAB0100CBB24C /* PZWidgetsKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PZWidgetsKit;
 		};

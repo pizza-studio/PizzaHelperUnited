@@ -1,0 +1,59 @@
+/* ko.lproj/Localizable.strings */
+
+/* appEntity_ */
+"appEntity_localProfile" = "프로필";
+"appEntity_widgetBackground" = "위젯 배경";
+
+/* appEnum_ */
+"appEnum_ExpeditionDisplayPolicy_displayExclusively" = "독점 표시";
+"appEnum_ExpeditionDisplayPolicy_displayWhenAvailable" = "사용 가능한 경우 표시";
+"appEnum_ExpeditionDisplayPolicy_neverDisplay" = "표시하지 않음";
+"appEnum_ExpeditionDisplayPolicy_title" = "원정 표시 정책";
+"appEnum_StaminaContentRevolverStyle_asRoundMeter" = "라운드 미터";
+"appEnum_StaminaContentRevolverStyle_asTimeStampWhenWillAccomplish" = "타임스탬프 (완료 시점)";
+"appEnum_StaminaContentRevolverStyle_asTimerCountDown" = "카운트다운 타이머";
+"appEnum_StaminaContentRevolverStyle_byDefault" = "기본";
+"appEnum_StaminaContentRevolverStyle_title" = "스태미너 위젯 스타일 자동 회전";
+"appEnum_WeeklyBossesDisplayMethod_alwaysHidden" = "항상 숨김";
+"appEnum_WeeklyBossesDisplayMethod_alwaysVisible" = "항상 표시됨";
+"appEnum_WeeklyBossesDisplayMethod_hiddenIfAllCompleted" = "모두 완료된 경우 숨기기";
+"appEnum_WeeklyBossesDisplayMethod_title" = "주간 보스 정보 표시 방법";
+"appEnum_WidgetSupportedGame_GI" = "원신";
+"appEnum_WidgetSupportedGame_HSR" = "스타 레일";
+"appEnum_WidgetSupportedGame_ZZZ" = "절레스 존 제로";
+"appEnum_WidgetSupportedGame_allGames" = "모든 게임";
+"appEnum_WidgetSupportedGame_title" = "지원되는 게임";
+
+/* intent_description_ */
+"intent_description_chooseTheGame" = "게임 선택";
+"intent_description_pickTheLocalProfileDuoForThisWidget" = "이 위젯에 대한 두 개의 로컬 프로필을 선택하세요";
+"intent_description_pickTheLocalProfileForThisWidget" = "이 위젯에 대한 로컬 프로필을 선택하세요";
+
+/* intent_field_ */
+"intent_field_echoOfWarDisplayMethod" = "전쟁의 여운 표시";
+"intent_field_expeditionDisplayPolicy" = "원정 표시 정책";
+"intent_field_followSystemDarkMode" = "시스템 색상 구성표 따르기";
+"intent_field_game" = "게임";
+"intent_field_inverseSelectMode" = "선택 반전";
+"intent_field_localProfile" = "로컬 프로필";
+"intent_field_localProfile_slot1" = "로컬 프로필 #1";
+"intent_field_localProfile_slot2" = "로컬 프로필 #2";
+"intent_field_showMaterialsInLargeSizeWidget" = "[GI] 일일 재료 표시 (대형 위젯 전용)";
+"intent_field_showStaminaOnly" = "플레이어 체력만 표시";
+"intent_field_showTransformer" = "[GI] 변압기 상태 표시";
+"intent_field_staminaDisplayStyle" = "스태미너 표시 스타일 (수지 / 개척의 힘 / 젠레스 에너지)";
+"intent_field_trounceBlossomDisplayMethod" = "토벌의 꽃 표시";
+"intent_field_useRandomWallpaper" = "랜덤 배경화면 사용";
+"intent_field_useTinyGlassDisplayStyle" = "작은 유리 디스플레이 스타일 사용";
+"intent_field_wallpaper" = "배경화면";
+
+/* intent_name_ */
+"intent_name_selectGameOnly" = "게임만 선택";
+"intent_name_selectLocalProfile" = "로컬 프로필 선택";
+"intent_name_selectLocalProfile4Peripherals" = "로컬 프로필 선택 (전용)";
+"intent_name_selectLocalProfile4PeripheralsWithExtraConfig" = "추가 설정으로 로컬 프로필 선택";
+"intent_name_selectLocalProfileDuo" = "로컬 듀얼 프로필 선택";
+
+/* intent_bool_ */
+"intent_bool_false" = "아니오";
+"intent_bool_true" = "예";
