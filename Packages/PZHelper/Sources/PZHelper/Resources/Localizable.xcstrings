@@ -4319,61 +4319,61 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dieses Verfahren ist kein illegales Verfahren wie Plug-ins. Dieses Programm hält sich an die relevanten Inhalte der Sekundärschöpfungsregeln von miHoYo. Diese App ist ein Open-Source-Projekt. Jeder kann alle zugrunde liegenden Verhaltensweisen dieses Programms überprüfen und überwachen. Details finden Sie unter Einstellungen - FAQ."
+            "value" : "Dieses Verfahren ist kein illegales Verfahren wie infiltrierende Cheat-Programme (z. B. Mods). Dieses Programm hält sich an die relevanten Inhalte der Sekundärschöpfungsregeln von miHoYo. Diese App ist ein Open-Source-Projekt. Jeder kann alle zugrunde liegenden Verhaltensweisen dieses Programms überprüfen und überwachen. Details finden Sie unter Einstellungen - FAQ."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This procedure is not an illegal procedure such as plug-ins. This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ."
+            "value" : "This procedure is not like those illegal procedures such as infiltrative cheating injectors (i.e. mods). This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Este procedimiento no es un procedimiento ilegal, como los complementos. Este programa cumple con el contenido relevante de las reglas de creación secundaria de miHoYo. Esta aplicación es un proyecto de código abierto. Todos pueden comprobar y supervisar todos los comportamientos subyacentes de este programa. Para más detalles, consulta Configuración - Preguntas frecuentes."
+            "value" : "Este procedimiento no es un procedimiento ilegal, como inyectores de trampas infiltrantes (es decir, mods). Este programa cumple con el contenido relevante de las reglas de creación secundaria de miHoYo. Esta aplicación es un proyecto de código abierto. Todos pueden comprobar y supervisar todos los comportamientos subyacentes de este programa. Para más detalles, consulta Configuración - Preguntas frecuentes."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang pamamaraang ito ay hindi isang ilegal na pamamaraan gaya ng mga plug-in. Ang programang ito ay sumusunod sa kaukulang nilalaman ng mga patakaran ng sekundaryong paglikha ng miHoYo. Ang App na ito ay isang proyekto ng bukas na pinagmulan. Maaaring suriin at bantayan ng lahat ang lahat ng mga nakapaloob na kilos ng programang ito. Para sa mga detalye, tingnan ang Mga Setting - FAQ."
+            "value" : "Ang pamamaraang ito ay hindi isang ilegal na pamamaraan gaya ng infiltrative cheating injectors (hal. mods). Ang programang ito ay sumusunod sa kaukulang nilalaman ng mga patakaran ng sekundaryong paglikha ng miHoYo. Ang App na ito ay isang proyekto ng bukas na pinagmulan. Maaaring suriin at bantayan ng lahat ang lahat ng mga nakapaloob na kilos ng programang ito. Para sa mga detalye, tingnan ang Mga Setting - FAQ."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cette procédure n'est pas une procédure illégale comme les plug-ins. Ce programme respecte les règles sur la création de comptes secondaire par miHoYo. Cette application est un projet open source. Le code source est donc accessible publiquement afin de vérifier le comportement de ce programme. Pour plus de détails, référez vous à Paramètres - FAQ."
+            "value" : "Cette procédure n'est pas une procédure illégale comme les injecteurs de triche infiltrants (c'est-à-dire mods). Ce programme respecte les règles sur la création secondaire de miHoYo. Cette application est un projet open source. Le code source est donc accessible publiquement afin de vérifier le comportement de ce programme. Pour plus de détails, référez-vous à Paramètres - FAQ."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Questa procedura non è una procedura illegale come i plug-in. Questo programma si conforma ai contenuti rilevanti delle regole per la creazione secondaria di miHoYo. Questa App è un progetto open source. Chiunque può controllare e supervisionare tutti i comportamenti di base di questo programma. Per i dettagli, vedere Impostazioni - FAQ."
+            "value" : "Questa procedura non è una procedura illegale come gli injector di cheat infiltranti (cioè mod). Questo programma si conforma ai contenuti rilevanti delle regole per la creazione secondaria di miHoYo. Questa App è un progetto open source. Chiunque può controllare e supervisionare tutti i comportamenti di base di questo programma. Per i dettagli, vedere Impostazioni - FAQ."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本プログラムは、プラグインなどの不正プログラムではありません。 本プログラムは、HoYoverseの二次創作ルールの該当する内容を遵守しています。 このAppはオープンソース プログラムであり、誰もがこのプログラムの基本的な動作をすべてチェックおよび監視できます。 詳しくは、設定-FAQをご覧ください。"
+            "value" : "本プログラムは、改造やチートなどの不正な侵入型ツール（いわゆるMOD等）ではありません。本プログラムは、HoYoverseの二次創作ルールの該当する内容を遵守しています。このAppはオープンソース プログラムであり、誰もがこのプログラムの基本的な動作をすべてチェックおよび監視できます。詳しくは、設定-FAQをご覧ください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 절차는 플러그인과 같은 불법적인 절차가 아닙니다. 이 프로그램은 miHoYo의 2차 창작 규정을 준수합니다. 이 앱은 오픈소스 프로젝트입니다. 모든 사람이 이 프로그램의 모든 기본 동작을 확인하고 감독할 수 있습니다. 자세한 내용은 설정 - FAQ를 참조하세요."
+            "value" : "이 절차는 침투형 치트 인젝터(예: 모드)와 같은 불법적인 절차가 아닙니다. 이 프로그램은 miHoYo의 2차 창작 규정을 준수합니다. 이 앱은 오픈소스 프로젝트입니다. 모든 사람이 이 프로그램의 모든 기본 동작을 확인하고 감독할 수 있습니다. 자세한 내용은 설정 - FAQ를 참조하세요."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Эта процедура не является нелегальной, например, плагинами. Эта программа соответствует соответствующему содержанию правил вторичного создания miHoYo. Это приложение является проектом с открытым исходным кодом. Каждый может проверить и контролировать все основные действия этой программы. Подробности см. в Настройки - FAQ."
+            "value" : "Эта процедура не является нелегальной, например, внедряющими чит-инжекторами (моды). Эта программа соответствует соответствующему содержанию правил вторичного создания miHoYo. Это приложение является проектом с открытым исходным кодом. Каждый может проверить и контролировать все основные действия этой программы. Подробности см. в Настройки - FAQ."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quy trình này không phải là một quy trình bất hợp pháp như plug-ins. Chương trình này tuân theo nội dung liên quan của quy tắc sáng tạo thứ cấp của miHoYo. Ứng dụng này là một dự án mã nguồn mở. Mọi người có thể kiểm tra và giám sát tất cả các hành vi nền tảng của chương trình này. Để biết chi tiết, xem Cài đặt - Câu hỏi thường gặp."
+            "value" : "Quy trình này không phải là một quy trình bất hợp pháp như các injector gian lận xâm nhập (ví dụ: mod). Chương trình này tuân theo nội dung liên quan của quy tắc sáng tạo thứ cấp của miHoYo. Ứng dụng này là một dự án mã nguồn mở. Mọi người có thể kiểm tra và giám sát tất cả các hành vi nền tảng của chương trình này. Để biết chi tiết, xem Cài đặt - Câu hỏi thường gặp."
           }
         },
         "zh-Hans" : {
