@@ -108,9 +108,10 @@ extension CDProfileMOActor: PZProfileActorProtocol {
         _ profileSendable: PZProfileSendable,
         against context: ManagedObjectContext
     ) throws {
-        var matchedExistingObjs = try context.fetch(
-            PZProfileCDMO.all.where(\PZProfileCDMO.uuid == profileSendable.uuid)
-        )
+        let existingObjs = try context.fetch(PZProfileCDMO.all)
+        var matchedExistingObjs: [ManagedObject<PZProfileCDMO>] = existingObjs.filter {
+            (try? $0.decode())?.uuid.uuidString == profileSendable.uuid.uuidString
+        }
         var existingDataUpdatedSuccessfully = false
         deduplicateAndUpdate: while let lastObj = matchedExistingObjs.last {
             if matchedExistingObjs.count > 1 {
