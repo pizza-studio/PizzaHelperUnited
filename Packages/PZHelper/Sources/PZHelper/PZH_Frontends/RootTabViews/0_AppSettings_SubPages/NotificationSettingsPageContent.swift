@@ -120,7 +120,7 @@ private struct ProfilesNotificationPermissionView: View {
 
     // MARK: Private
 
-    @State private var profileManagerVM: ProfileManagerVM = .shared
+    @StateObject private var profileManagerVM: ProfileManagerVM = .shared
 
     @ViewBuilder
     private static func drawLocalProfile(

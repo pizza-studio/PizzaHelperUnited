@@ -92,7 +92,7 @@ struct ProfileBackupRestoreMenu<T: View>: View {
     // MARK: Private
 
     @State private var vm4ProfileExchange = Coordinator()
-    @State private var vm4ProfileMgmt: ProfileManagerVM = .shared
+    @StateObject private var vm4ProfileMgmt: ProfileManagerVM = .shared
 
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
     private let extraItem: (() -> T)?

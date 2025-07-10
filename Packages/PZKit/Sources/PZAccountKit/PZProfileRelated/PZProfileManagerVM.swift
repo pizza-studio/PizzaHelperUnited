@@ -9,9 +9,8 @@ import PZBaseKit
 import PZCoreDataKit4LocalAccounts
 import SwiftData
 
-@available(iOS 17.0, macCatalyst 17.0, *)
-@Observable
-public final class ProfileManagerVM: TaskManagedVM {
+@available(iOS 16.0, macCatalyst 16.0, *)
+public final class ProfileManagerVM: TaskManagedVMBackported {
     // MARK: Lifecycle
 
     public override init() {
@@ -57,17 +56,25 @@ public final class ProfileManagerVM: TaskManagedVM {
 
     public static let shared = ProfileManagerVM()
 
-    public internal(set) var hasOldAccountDataDetected: Bool = false
+    @Published public internal(set) var hasOldAccountDataDetected: Bool = false
 
     /// 此处沿用 PZProfileRef 作为指针格式，但不用于对 SwiftData 的写入。
-    public internal(set) var profileRefMap: [String: PZProfileRef]
+    @Published public internal(set) var profileRefMap: [String: PZProfileRef]
 
-    public var sheetType: SheetType?
+    @Published public var sheetType: SheetType?
 
     // 当前的所有 Profile 列表
-    public internal(set) var profiles: [PZProfileSendable] {
+    @Published public internal(set) var profiles: [PZProfileSendable] {
         didSet {
             discardUncommittedChanges()
+        }
+    }
+
+    public var profileActor: (any PZProfileActorProtocol)? {
+        if #available(iOS 17.0, macCatalyst 17.0, *) {
+            PZProfileActor.shared
+        } else {
+            CDProfileMOActor.shared
         }
     }
 
@@ -105,7 +112,7 @@ public final class ProfileManagerVM: TaskManagedVM {
             },
             cancelPreviousTask: false,
             givenTask: {
-                try await PZProfileActor.shared.replaceAllProfiles(with: Set(newProfiles))
+                try await self.profileActor?.replaceAllProfiles(with: Set(newProfiles))
             },
             errorHandler: errorHandler
         )
@@ -127,7 +134,7 @@ public final class ProfileManagerVM: TaskManagedVM {
         fireTask(
             cancelPreviousTask: false,
             givenTask: {
-                try await PZProfileActor.shared.addOrUpdateProfile(profile)
+                try await self.profileActor?.addOrUpdateProfile(profile)
             },
             completionHandler: { _ in
                 trailingTasks?()
@@ -156,7 +163,7 @@ public final class ProfileManagerVM: TaskManagedVM {
             },
             cancelPreviousTask: false,
             givenTask: {
-                try await PZProfileActor.shared.deleteProfiles(uuids: uuidsToDrop)
+                try await self.profileActor?.deleteProfiles(uuids: uuidsToDrop)
             },
             completionHandler: { fetched in
                 completionHandler?(fetched)
@@ -174,8 +181,10 @@ public final class ProfileManagerVM: TaskManagedVM {
             cancelPreviousTask: false,
             givenTask: {
                 let profileSendableSet = profileSendableSet ?? Set(self.profiles)
-                try await PZProfileActor.shared.replaceAllProfiles(with: profileSendableSet)
-                return await PZProfileActor.shared.getSendableProfiles()
+                try await self.profileActor?.replaceAllProfiles(with: profileSendableSet)
+                return await self.profileActor?.getSendableProfiles() ?? Defaults[.pzProfiles].values.sorted {
+                    $0.priority < $1.priority
+                }
             },
             completionHandler: { _ in
                 trailingTasks?()
@@ -191,8 +200,22 @@ public final class ProfileManagerVM: TaskManagedVM {
     private func configurePublisherObservations() {
         guard !subscribed else { return }
         defer { subscribed = true }
-        switch OS.isOS25OrAbove {
-        case false:
+        if #available(iOS 18.0, macCatalyst 18.0, macOS 15.0, watchOS 11.0, *) {
+            NotificationCenter.default.addObserver(
+                forName: ModelContext.didSave,
+                object: nil,
+                queue: nil // 不指定队列，依赖 actor 隔离
+            ) { notification in // Singleton 不需要 weak self。
+                let changedEntityNames = PersistentIdentifier.parseObjectNames(
+                    notificationResult: notification.userInfo
+                )
+                guard !changedEntityNames.isEmpty else { return }
+                guard changedEntityNames.contains("PZProfileMO") else { return }
+                Task { @MainActor in
+                    self.didObserveChangesFromSwiftData()
+                }
+            }
+        } else {
             // OS24 (iOS 17, macOS 14) 无法时刻抓到 ModelContext.didSave，
             // 所以只能抓 NSManagedObjectContextDidSaveObjectIDs。
             NotificationCenter.default.addObserver(
@@ -209,30 +232,15 @@ public final class ProfileManagerVM: TaskManagedVM {
                     self.didObserveChangesFromSwiftData()
                 }
             }
-        case true:
-            NotificationCenter.default.addObserver(
-                forName: ModelContext.didSave,
-                object: nil,
-                queue: nil // 不指定队列，依赖 actor 隔离
-            ) { notification in // Singleton 不需要 weak self。
-                let changedEntityNames = PersistentIdentifier.parseObjectNames(
-                    notificationResult: notification.userInfo
-                )
-                guard !changedEntityNames.isEmpty else { return }
-                guard changedEntityNames.contains("PZProfileMO") else { return }
-                Task { @MainActor in
-                    self.didObserveChangesFromSwiftData()
-                }
-            }
         }
     }
 
     nonisolated private func didObserveChangesFromSwiftData() {
         Task { @MainActor in
             if Defaults[.automaticallyDeduplicatePZProfiles] {
-                try await PZProfileActor.shared.deduplicate()
+                try await self.profileActor?.deduplicate()
             }
-            await PZProfileActor.shared.syncAllDataToUserDefaults()
+            await self.profileActor?.syncAllDataToUserDefaults()
             ProfileManagerVM.shared.profiles = Defaults[.pzProfiles].values.sorted {
                 $0.priority < $1.priority
             }
