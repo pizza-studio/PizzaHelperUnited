@@ -401,12 +401,18 @@ struct ProfileManagerPageContent: View {
                     do {
                         // 此时可以假设要处理的档案是披萨难民资料包，里面只有原神的本机帐号资料。
                         let decoded = try PropertyListDecoder().decode(RefugeeFile.self, from: data)
+                        var insertedUUIDs = Set<UUID>()
+                        for newProfileSendable in decoded.newProfiles {
+                            decodedProfileSet.insert(newProfileSendable)
+                            insertedUUIDs.insert(newProfileSendable.uuid)
+                        }
                         for oldAccountMO in decoded.oldProfiles4GI {
-                            let newProfileRef = PZProfileSendable.makeInheritedInstance(
+                            let newProfileSendable = PZProfileSendable.makeInheritedInstance(
                                 game: .genshinImpact, uid: oldAccountMO.uid, configuration: oldAccountMO
                             )
-                            guard let newProfileRef else { continue }
-                            decodedProfileSet.insert(newProfileRef)
+                            guard let newProfileSendable else { continue }
+                            guard !insertedUUIDs.contains(newProfileSendable.uuid) else { continue }
+                            decodedProfileSet.insert(newProfileSendable)
                         }
                     } catch {
                         // 难民资料包的解码出错可以忽略不管，因为用户不该手动修改难民资料包的内容。
