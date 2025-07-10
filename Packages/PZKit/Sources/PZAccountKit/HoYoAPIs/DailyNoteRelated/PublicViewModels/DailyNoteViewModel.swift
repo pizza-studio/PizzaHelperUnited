@@ -2,10 +2,48 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Defaults
 import Foundation
 import Observation
 import PZBaseKit
 import SwiftUI
+
+// MARK: - MultiNoteViewModel
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+@Observable @MainActor
+public final class MultiNoteViewModel: TaskManagedVM {
+    // MARK: Lifecycle
+
+    override public init() {
+        super.init()
+        updateVMInstances()
+        Task {
+            for await _ in Defaults.updates(.pzProfiles) {
+                self.updateVMInstances()
+            }
+        }
+    }
+
+    // MARK: Public
+
+    public static let shared: MultiNoteViewModel = .init()
+
+    public var vmMap: [String: DailyNoteViewModel] = [:]
+
+    public func updateVMInstances() {
+        let dailyNoteVMMapKeys = Set(vmMap.keys)
+        let latestProfileKeys = Set<String>(Defaults[.pzProfiles].keys)
+        let vmKeysToDrop = dailyNoteVMMapKeys.subtracting(latestProfileKeys)
+        let vmKeysToAdd = latestProfileKeys.subtracting(dailyNoteVMMapKeys)
+        vmKeysToDrop.forEach { vmMap.removeValue(forKey: $0) }
+        vmKeysToAdd.forEach { uuidStr in
+            if vmMap[uuidStr] == nil, let profile = Defaults[.pzProfiles][uuidStr] {
+                vmMap[uuidStr] = .init(profile: profile)
+            }
+        }
+    }
+}
 
 // MARK: - DailyNoteViewModel
 
@@ -22,7 +60,7 @@ public final class DailyNoteViewModel {
     public init(profile: PZProfileSendable, extraTaskAfterFetch: ((any DailyNoteProtocol) -> Void)? = nil) {
         self.profile = profile
         self.extraTask = extraTaskAfterFetch
-        getDailyNoteUncheck()
+        getDailyNoteUncheck(getCachedResult: true)
     }
 
     // MARK: Public
@@ -33,8 +71,6 @@ public final class DailyNoteViewModel {
         case progress(Task<Void, Never>?)
     }
 
-    public static var vmMap: [String: DailyNoteViewModel] = [:]
-
     /// The current daily note.
     public private(set) var dailyNoteStatus: Status = .progress(nil)
 
@@ -42,7 +78,6 @@ public final class DailyNoteViewModel {
     public let profile: PZProfileSendable
 
     /// Fetches the daily note and updates the published `dailyNote` property accordingly.
-    @MainActor
     public func getDailyNote() {
         if case let .succeed(_, refreshDate) = dailyNoteStatus {
             // check if note is older than 15 minutes
@@ -60,14 +95,13 @@ public final class DailyNoteViewModel {
     }
 
     /// Asynchronously fetches the daily note using the MiHoYoAPI with the account information it was initialized with.
-    @MainActor
-    public func getDailyNoteUncheck() {
+    public func getDailyNoteUncheck(getCachedResult: Bool = true) {
         if case let .progress(task) = dailyNoteStatus {
             task?.cancel()
         }
         let task = Task { @MainActor in
             do {
-                let result = try await profile.getDailyNote()
+                let result = try await profile.getDailyNote(cached: getCachedResult)
                 withAnimation {
                     dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
                 }

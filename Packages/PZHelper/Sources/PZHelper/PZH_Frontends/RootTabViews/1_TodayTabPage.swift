@@ -76,9 +76,12 @@ struct TodayTabPage: View {
             }
         } else {
             ForEach(filteredProfiles) { profile in
-                InAppDailyNoteCardView(profile: profile)
-                    .id(profile)
-                    .listRowMaterialBackground()
+                if let dailyNoteVM = multiNoteVM.vmMap[profile.uuid.uuidString] {
+                    InAppDailyNoteCardView()
+                        .environment(dailyNoteVM)
+                        .id(profile)
+                        .listRowMaterialBackground()
+                }
             }
         }
     }
@@ -181,6 +184,7 @@ struct TodayTabPage: View {
     @State private var isTodayMaterialSheetShown: Bool = false
     @State private var wrappedByNavStack: Bool
     @State private var game: Pizza.SupportedGame? = .none
+    @State private var multiNoteVM = MultiNoteViewModel.shared
     @State private var rootNavVM = RootNavVM.shared
     @State private var screenVM: ScreenVM = .shared
     @StateObject private var broadcaster = Broadcaster.shared

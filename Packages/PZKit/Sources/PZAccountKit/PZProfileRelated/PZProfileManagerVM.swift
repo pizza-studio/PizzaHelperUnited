@@ -239,12 +239,7 @@ public final class ProfileManagerVM: TaskManagedVM {
             Broadcaster.shared.refreshTodayTab()
             Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
             Broadcaster.shared.requireOSNotificationCenterAuthorization()
-            let dailyNoteVMMapKeys = DailyNoteViewModel.vmMap.keys
-            dailyNoteVMMapKeys.forEach { uuidString in
-                if !ProfileManagerVM.shared.profileRefMap.keys.contains(uuidString) {
-                    DailyNoteViewModel.vmMap.removeValue(forKey: uuidString)
-                }
-            }
+            // MultiNoteViewModel 会自己主动监视且清理无效值，不用在此处再安排相关操作。
         }
     }
 }
