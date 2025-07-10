@@ -214,7 +214,13 @@ private struct ContainerBackgroundModifier: ViewModifier {
         if #available(iOS 17, *) {
             content.containerBackgroundStandbyDetector(viewConfig: viewConfig)
         } else {
-            content
+            WidgetBackgroundView4DesktopWidgets(
+                background: viewConfig.background,
+                darkModeOn: viewConfig.isDarkModeRespected
+            )
+            .overlay {
+                content
+            }
         }
     }
 }
