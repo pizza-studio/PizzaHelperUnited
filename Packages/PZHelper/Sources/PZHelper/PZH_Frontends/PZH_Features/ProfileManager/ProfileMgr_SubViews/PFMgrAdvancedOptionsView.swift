@@ -8,14 +8,13 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 struct PFMgrAdvancedOptionsView: View {
     // MARK: Public
 
     public static let navTitle = "settings.profile.advanced.navTitle".i18nPZHelper
 
     public var body: some View {
-        @Bindable var alertToastEventStatus = alertToastEventStatus
         Form {
             Section {
                 Picker(selection: $situatePZProfileDBIntoGroupContainer) {
@@ -37,7 +36,11 @@ struct PFMgrAdvancedOptionsView: View {
                     alertPresented.toggle()
                 }
             } header: {
-                Text(verbatim: "SwiftData™").textCase(.none)
+                if #available(iOS 17.0, macCatalyst 17.0, *) {
+                    Text(verbatim: "SwiftData™").textCase(.none)
+                } else {
+                    Text(verbatim: "CoreData™").textCase(.none)
+                }
             } footer: {
                 Text(
                     "settings.profile.advanced.dbSaveLocation.footer",
@@ -80,7 +83,7 @@ struct PFMgrAdvancedOptionsView: View {
                 Button {
                     Task {
                         do {
-                            try await PZProfileActor.shared.propagateDeviceFingerprint(
+                            try await theVM.profileActor?.propagateDeviceFingerprint(
                                 recentlyPropagatedDeviceFingerprint
                             )
                             simpleTaptic(type: .success)
@@ -122,7 +125,8 @@ struct PFMgrAdvancedOptionsView: View {
     @Default(.automaticallyDeduplicatePZProfiles) private var automaticallyDeduplicatePZProfiles: Bool
     @Default(.situatePZProfileDBIntoGroupContainer) private var situatePZProfileDBIntoGroupContainer: Bool
     @Default(.recentlyPropagatedDeviceFingerprint) private var recentlyPropagatedDeviceFingerprint
-    @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
+    @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
+    @StateObject private var theVM: ProfileManagerVM = .shared
     @State private var alertPresented: Bool = false
 
     private func formatDeviceFingerprint() {

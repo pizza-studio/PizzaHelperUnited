@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - ProfileConfigViewContents
 
 /// 就是原先的 EditAccountView。
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 struct ProfileConfigViewContents: View {
     // MARK: Lifecycle
 
@@ -91,7 +91,7 @@ struct ProfileConfigViewContents: View {
 
 // MARK: ProfileConfigViewContents.RequireLoginView
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension ProfileConfigViewContents {
     private struct RequireLoginView: View {
         // MARK: Internal

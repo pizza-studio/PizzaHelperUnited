@@ -12,7 +12,7 @@ import UniformTypeIdentifiers
 
 // MARK: - ProfileBackupRestoreMenu
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 struct ProfileBackupRestoreMenu<T: View>: View {
     // MARK: Lifecycle
 
@@ -24,7 +24,6 @@ struct ProfileBackupRestoreMenu<T: View>: View {
     // MARK: Public
 
     @ViewBuilder public var body: some View {
-        @Bindable var vm4ProfileExchange = vm4ProfileExchange
         let msgPack = vm4ProfileExchange.fileSaveActionResultMessagePack
         Menu {
             Button {
@@ -91,7 +90,7 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 
     // MARK: Private
 
-    @State private var vm4ProfileExchange = Coordinator()
+    @StateObject private var vm4ProfileExchange = Coordinator()
     @StateObject private var vm4ProfileMgmt: ProfileManagerVM = .shared
 
     private let importCompletionHandler: (Result<URL, any Error>) -> Void
@@ -100,19 +99,19 @@ struct ProfileBackupRestoreMenu<T: View>: View {
 
 // MARK: ProfileBackupRestoreMenu.Coordinator
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension ProfileBackupRestoreMenu {
-    @Observable @MainActor
-    internal final class Coordinator {
+    @MainActor
+    internal final class Coordinator: ObservableObject {
         // MARK: Lifecycle
 
         public init() {}
 
         // MARK: Internal
 
-        var fileSaveActionResult: Result<URL, any Error>?
-        var currentExportableDocument: Result<PZProfilesDocument, Error>?
-        var isImporterVisible: Bool = false
+        @Published var fileSaveActionResult: Result<URL, any Error>?
+        @Published var currentExportableDocument: Result<PZProfilesDocument, Error>?
+        @Published var isImporterVisible: Bool = false
 
         var fileSaveActionResultMessagePack: (title: String, message: String) {
             switch fileSaveActionResult {
@@ -162,7 +161,7 @@ extension ProfileBackupRestoreMenu {
 
 // MARK: - PZProfilesDocument
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 internal struct PZProfilesDocument: FileDocument {
     // MARK: Lifecycle
 

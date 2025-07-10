@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - SaveProfileError
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 enum SaveProfileError: Error, LocalizedError {
     case saveDataError(Error)
     case missingFieldError(String)
@@ -48,7 +48,7 @@ enum SaveProfileError: Error, LocalizedError {
 
 // MARK: - GetAccountError
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 enum GetAccountError: LocalizedError {
     case source(Error)
     case customize(String)

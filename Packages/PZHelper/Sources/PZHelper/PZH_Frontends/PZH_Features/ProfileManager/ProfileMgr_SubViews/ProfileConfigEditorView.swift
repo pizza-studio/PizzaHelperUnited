@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - ProfileConfigEditorView
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 struct ProfileConfigEditorView: View {
     // MARK: Lifecycle
 
@@ -126,7 +126,7 @@ struct ProfileConfigEditorView: View {
 
 // MARK: - RegenerateDeviceFingerPrintButton
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 private struct RegenerateDeviceFingerPrintButton: View {
     // MARK: Lifecycle
 

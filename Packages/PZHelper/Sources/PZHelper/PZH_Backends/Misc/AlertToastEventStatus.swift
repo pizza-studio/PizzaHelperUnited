@@ -5,9 +5,8 @@
 import Foundation
 import Observation
 
-@available(iOS 17.0, macCatalyst 17.0, *)
-@Observable
-final class AlertToastEventStatus {
+@MainActor
+final class AlertToastEventStatus: ObservableObject {
     public var isProfileTaskSucceeded = false
     public var isFailureSituationTriggered = false
     public var isDeviceFPPropagationSucceeded = false

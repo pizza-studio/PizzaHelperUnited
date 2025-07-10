@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent.EditProfileSheetView
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension ProfileManagerPageContent {
     struct EditProfileSheetView: View {
         // MARK: Lifecycle
@@ -68,7 +68,7 @@ extension ProfileManagerPageContent {
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
         @StateObject private var theVM: ProfileManagerVM = .shared
-        @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
+        @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
         private func saveButtonDidTap() {

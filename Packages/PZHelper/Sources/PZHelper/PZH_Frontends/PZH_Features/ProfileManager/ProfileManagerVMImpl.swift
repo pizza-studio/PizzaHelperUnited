@@ -7,7 +7,7 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension ProfileManagerVM {
     func profilesFilteredByGame(
         _ games: Set<Pizza.SupportedGame> = []
@@ -25,7 +25,7 @@ extension ProfileManagerVM {
         Menu {
             profileSwitcherMenuContents4DPV(target, games: games)
         } label: {
-            profileSwitcherMenuLabel(target)
+            profileSwitcherMenuLabel4DPV(target)
         }
         .menuStyle(.button)
     }
@@ -74,7 +74,7 @@ extension ProfileManagerVM {
     }
 
     @ViewBuilder
-    func profileSwitcherMenuLabel(
+    func profileSwitcherMenuLabel4DPV(
         _ target: Binding<PZProfileSendable?>
     )
         -> some View {
@@ -82,8 +82,12 @@ extension ProfileManagerVM {
             let dimension: CGFloat = 30
             Group {
                 if let profile: PZProfileSendable = target.wrappedValue {
-                    Enka.ProfileIconView(uid: profile.uid, game: profile.game)
-                        .frame(width: dimension)
+                    if #available(iOS 17.0, *) {
+                        Enka.ProfileIconView(uid: profile.uid, game: profile.game)
+                            .frame(width: dimension)
+                    } else {
+                        profile.asIcon4SUI()
+                    }
                 } else {
                     Image(systemSymbol: .personCircleFill)
                         .resizable()

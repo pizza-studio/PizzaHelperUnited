@@ -6,7 +6,7 @@ import SwiftUI
 
 // MARK: - AnonymousIconView
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct AnonymousIconView: View {
     // MARK: Lifecycle
 
@@ -45,7 +45,7 @@ public struct AnonymousIconView: View {
     private let roundRectCornerRadius: CGFloat
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension AnonymousIconView {
     nonisolated public static let nullPhotoAssetName = "avatar_anonymous_yjsnpi"
 

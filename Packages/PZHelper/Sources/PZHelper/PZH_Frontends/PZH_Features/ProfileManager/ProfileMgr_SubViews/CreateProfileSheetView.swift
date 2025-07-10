@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - ProfileManagerPageContent.CreateProfileSheetView
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension ProfileManagerPageContent {
     struct CreateProfileSheetView: View {
         // MARK: Lifecycle
@@ -253,7 +253,7 @@ extension ProfileManagerPageContent {
                         allProfilesFetched.insert(handled)
                         existingProfilesCount += 1
                     }
-                    try await PZProfileActor.shared.addOrUpdateProfiles(allProfilesFetched)
+                    try await theVM.profileActor?.addOrUpdateProfiles(allProfilesFetched)
                     PZNotificationCenter.batchDeleteDailyNoteNotification(
                         profiles: allProfilesFetched,
                         onlyDeleteIfDisabled: false
@@ -316,7 +316,7 @@ extension ProfileManagerPageContent {
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
         @StateObject private var theVM: ProfileManagerVM = .shared
-        @Environment(AlertToastEventStatus.self) private var alertToastEventStatus
+        @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
         private var game: Binding<Pizza.SupportedGame> {
@@ -334,7 +334,7 @@ extension ProfileManagerPageContent {
 
 // MARK: - RequireLoginView
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 private struct RequireLoginView: View {
     // MARK: Lifecycle
 
@@ -441,7 +441,7 @@ private struct RequireLoginView: View {
 
 // MARK: - ExplanationView
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 private struct ExplanationView: View {
     // MARK: Internal
 

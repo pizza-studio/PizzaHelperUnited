@@ -7,11 +7,33 @@ import PZAccountKit
 import PZBaseKit
 import SwiftUI
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension ProfileProtocol {
     @MainActor @ViewBuilder
     func asIcon4SUI() -> some View {
-        Enka.ProfileIconView(uid: uid, game: game)
+        if #available(iOS 17.0, macCatalyst 17.0, *) {
+            Enka.ProfileIconView(uid: uid, game: game)
+        } else {
+            AnonymousIconView.rawImage4SUI
+                .clipShape(.circle)
+                .contentShape(.circle)
+                .saturation(0)
+                .colorMultiply({
+                    switch game {
+                    case .genshinImpact: .purple
+                    case .starRail: .pink
+                    case .zenlessZone: .orange
+                    }
+                }())
+        }
+    }
+
+    func asTinyMenuLabelText() -> String {
+        #if os(macOS) || targetEnvironment(macCatalyst)
+        name + " // \(uidWithGame)"
+        #else
+        name + "\n\(uidWithGame)"
+        #endif
     }
 
     @MainActor @ViewBuilder

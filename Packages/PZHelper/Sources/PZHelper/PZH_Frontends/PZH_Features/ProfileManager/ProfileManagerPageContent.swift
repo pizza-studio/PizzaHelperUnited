@@ -19,8 +19,12 @@ import SwiftUI
 /// 所以只能放弃使用与后者有关的 Environment 层面的 SwiftData API。
 /// 不然的话，在 iOS 26 / macOS 26 系统下会崩溃。
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 struct ProfileManagerPageContent: View {
+    // MARK: Lifecycle
+
+    public init() {}
+
     // MARK: Public
 
     public var body: some View {
@@ -52,7 +56,7 @@ struct ProfileManagerPageContent: View {
                 NavigationLink {
                     let newProfile = PZProfileRef.makeDefaultInstance()
                     CreateProfileSheetView(profile: newProfile)
-                        .environment(alertToastEventStatus)
+                        .environmentObject(alertToastEventStatus)
                 } label: {
                     Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
                 }
@@ -73,7 +77,7 @@ struct ProfileManagerPageContent: View {
                             if isAppKitOrNotEditing {
                                 NavigationLink {
                                     EditProfileSheetView(profile: profileRef)
-                                        .environment(alertToastEventStatus)
+                                        .environmentObject(alertToastEventStatus)
                                 } label: {
                                     label
                                 }
@@ -155,10 +159,11 @@ struct ProfileManagerPageContent: View {
     }()
 
     @StateObject private var theVM: ProfileManagerVM = .shared
-    @State private var alertToastEventStatus: AlertToastEventStatus = .init()
+    @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var errorMessage: String?
-    @Default(.lastTimeResetLocalProfileDB) private var lastTimeResetLocalProfileDB: Date?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
+
+    @Default(.lastTimeResetLocalProfileDB) private var lastTimeResetLocalProfileDB: Date?
 
     private var isEditing: Bool {
         #if os(iOS) || targetEnvironment(macCatalyst)
@@ -174,42 +179,6 @@ struct ProfileManagerPageContent: View {
 
     private var isBusy: Bool {
         theVM.taskState == .busy
-    }
-
-    @ViewBuilder
-    private func extraMenuItems() -> (some View)? {
-        if theVM.hasOldAccountDataDetected {
-            Button {
-                importLegacyData()
-            } label: {
-                Label(
-                    "profileMgr.importLegacyProfiles.title".i18nPZHelper,
-                    systemSymbol: .tray2Fill
-                )
-            }
-        }
-        Divider()
-        Button {
-            Task { @MainActor in
-                await PZProfileActor.shared.syncAllDataToUserDefaults()
-            }
-        } label: {
-            Label(
-                "profileMgr.syncAllProfilesToUserDefaults.title".i18nPZHelper,
-                systemSymbol: .clockArrow2Circlepath
-            )
-        }
-        Divider()
-        NavigationLink {
-            PFMgrAdvancedOptionsView()
-                .environment(alertToastEventStatus)
-        } label: {
-            Label {
-                Text(verbatim: PFMgrAdvancedOptionsView.navTitle)
-            } icon: {
-                Image(systemSymbol: .pc)
-            }
-        }
     }
 
     @ViewBuilder
@@ -268,12 +237,48 @@ struct ProfileManagerPageContent: View {
         }
     }
 
+    @ViewBuilder
+    private func extraMenuItems() -> (some View)? {
+        if theVM.hasOldAccountDataDetected {
+            Button {
+                importLegacyData()
+            } label: {
+                Label(
+                    "profileMgr.importLegacyProfiles.title".i18nPZHelper,
+                    systemSymbol: .tray2Fill
+                )
+            }
+        }
+        Divider()
+        Button {
+            Task { @MainActor in
+                await theVM.profileActor?.syncAllDataToUserDefaults()
+            }
+        } label: {
+            Label(
+                "profileMgr.syncAllProfilesToUserDefaults.title".i18nPZHelper,
+                systemSymbol: .clockArrow2Circlepath
+            )
+        }
+        Divider()
+        NavigationLink {
+            PFMgrAdvancedOptionsView()
+                .environmentObject(alertToastEventStatus)
+        } label: {
+            Label {
+                Text(verbatim: PFMgrAdvancedOptionsView.navTitle)
+            } icon: {
+                Image(systemSymbol: .pc)
+            }
+        }
+    }
+
     private func addProfile(_ profile: PZProfileRef, inBatchQueue: Bool = true) {
         theVM.fireTask(
             cancelPreviousTask: false,
             givenTask: {
                 PZNotificationCenter.deleteDailyNoteNotification(for: profile.asSendable)
-                try await PZProfileActor.shared.addOrUpdateProfiles([profile.asSendable])
+                try await theVM.profileActor?.addOrUpdateProfiles([profile.asSendable])
                 alertToastEventStatus.isProfileTaskSucceeded.toggle()
             },
             completionHandler: { _ in
@@ -328,13 +333,15 @@ struct ProfileManagerPageContent: View {
                     // 特殊处理：当且仅当当前删掉的账号不是重复的本地账号的时候，才清空展柜缓存與通知。
                     guard !remainingUIDs.contains(currentProfile.uidWithGame) else { return }
                     PZNotificationCenter.deleteDailyNoteNotification(for: currentProfile)
-                    if clearEnkaCache {
-                        switch currentProfile.game {
-                        case .genshinImpact:
-                            Enka.Sputnik.shared.db4GI.removeCachedProfileRAW(uid: currentProfile.uid)
-                        case .starRail:
-                            Enka.Sputnik.shared.db4HSR.removeCachedProfileRAW(uid: currentProfile.uid)
-                        case .zenlessZone: break // 临时设定。
+                    if #available(iOS 17.0, macCatalyst 17.0, *) {
+                        if clearEnkaCache {
+                            switch currentProfile.game {
+                            case .genshinImpact:
+                                Enka.Sputnik.shared.db4GI.removeCachedProfileRAW(uid: currentProfile.uid)
+                            case .starRail:
+                                Enka.Sputnik.shared.db4HSR.removeCachedProfileRAW(uid: currentProfile.uid)
+                            case .zenlessZone: break // 临时设定。
+                            }
                         }
                     }
                 }
@@ -356,7 +363,7 @@ struct ProfileManagerPageContent: View {
         theVM.fireTask(
             cancelPreviousTask: false,
             givenTask: {
-                try await PZProfileActor.shared.migrateOldAccountsIntoProfiles()
+                try await theVM.profileActor?.migrateOldAccountsIntoProfiles()
             },
             errorHandler: { error in
                 errorMessage = error.localizedDescription
@@ -368,10 +375,10 @@ struct ProfileManagerPageContent: View {
         theVM.fireTask(
             cancelPreviousTask: false,
             givenTask: {
-                let removedSet = try await PZProfileActor.shared.bleachInvalidProfiles()
+                let removedSet = try await theVM.profileActor?.bleachInvalidProfiles()
                 // 注：PZProfileActor 会自动将 SwiftData 内容变更同步到 UserDefaults。
                 PZNotificationCenter.batchDeleteDailyNoteNotification(
-                    profiles: removedSet,
+                    profiles: removedSet ?? [],
                     onlyDeleteIfDisabled: false
                 )
             },
@@ -423,7 +430,7 @@ struct ProfileManagerPageContent: View {
                     let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                     do {
                         if await !assertion.state.isReleased {
-                            try await PZProfileActor.shared.addOrUpdateProfiles(decodedProfileSet)
+                            try await theVM.profileActor?.addOrUpdateProfiles(decodedProfileSet)
                         }
                         await assertion.release()
                     } catch {
@@ -443,7 +450,7 @@ struct ProfileManagerPageContent: View {
 
 // MARK: ProfileManagerPageContent.SheetType
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 extension ProfileManagerPageContent {
     typealias SheetType = ProfileManagerVM.SheetType
 }
