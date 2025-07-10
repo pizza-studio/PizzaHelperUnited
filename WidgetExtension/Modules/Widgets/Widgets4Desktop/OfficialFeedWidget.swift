@@ -15,6 +15,8 @@ import WidgetKit
 @available(iOS 17.0, macCatalyst 17.0, *)
 @available(watchOS, unavailable)
 struct OfficialFeedWidget: Widget {
+    let kind: String = "OfficialFeedWidget"
+
     var body: some WidgetConfiguration {
         AppIntentConfiguration(
             kind: "OfficialFeedWidget",
@@ -36,6 +38,8 @@ struct OfficialFeedWidget: Widget {
 @available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 struct INOfficialFeedWidget: Widget {
+    let kind: String = "OfficialFeedWidget"
+
     var body: some WidgetConfiguration {
         IntentConfiguration(
             kind: "OfficialFeedWidget",

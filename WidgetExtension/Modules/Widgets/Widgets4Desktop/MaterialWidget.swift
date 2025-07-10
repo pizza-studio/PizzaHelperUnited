@@ -17,6 +17,8 @@ import WidgetKit
 @available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 struct MaterialWidget: Widget {
+    let kind: String = "MaterialWidget"
+
     var body: some WidgetConfiguration {
         StaticConfiguration(
             kind: "MaterialWidget",
