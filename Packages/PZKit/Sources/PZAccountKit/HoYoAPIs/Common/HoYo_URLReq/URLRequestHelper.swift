@@ -38,7 +38,7 @@ extension HoYo {
     private static let taskBuffer: URLAsyncTaskStack = .init()
 
     public static func waitFor300ms() async {
-        guard !Pizza.isWidgetExtension else { return }
+        guard !Pizza.isNotMainApp else { return }
         await Self.taskBuffer.addTask {
             try await Task.sleep(nanoseconds: 300_000_000) // 300ms sleep
         }
