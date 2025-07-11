@@ -16,17 +16,7 @@ public enum PZWidgets {}
 extension PZWidgets {
     @MainActor
     public static func startupTask() {
-        Task {
-            if #available(iOS 17.0, *) {
-                await PZProfileActor.shared.tryAutoInheritOldLocalAccounts(
-                    resetNotifications: true
-                )
-            } else {
-                await CDProfileMOActor.shared?.tryAutoInheritOldLocalAccounts(
-                    resetNotifications: true
-                )
-            }
-        }
+        // 不能再让小工具有权限存取 CoreData / SwiftData 了，已经炸了至少一万多起案例了。
         UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
     }
 
