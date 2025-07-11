@@ -13,8 +13,10 @@ public enum GachaTypeHSR: GachaTypeProtocol {
     case stellarWarp
     case characterEventWarp
     case lightConeEventWarp
-    case collabWarpFateUBWCharacter
-    case collabWarpFateUBWLightCone
+    case collabWarpFateUBW21
+    case collabWarpFateUBW22
+    case collabWarpFateUBW23
+    case collabWarpFateUBW24
     case departureWarp
     case unknown(rawValue: String)
 
@@ -26,8 +28,10 @@ public enum GachaTypeHSR: GachaTypeProtocol {
         case "11": .characterEventWarp
         case "12": .lightConeEventWarp
         case "2": .departureWarp
-        case "31": .collabWarpFateUBWCharacter
-        case "32": .collabWarpFateUBWLightCone
+        case "21": .collabWarpFateUBW21
+        case "22": .collabWarpFateUBW22
+        case "23": .collabWarpFateUBW23
+        case "24": .collabWarpFateUBW24
         default: .unknown(rawValue: rawValue)
         }
     }
@@ -42,22 +46,10 @@ public enum GachaTypeHSR: GachaTypeProtocol {
             .lightConeEventWarp,
             .stellarWarp,
             .departureWarp,
-            .collabWarpFateUBWCharacter.available(
-                since: .specify(
-                    day: 11,
-                    month: 7,
-                    year: 2025,
-                    timeZone: TimeZone(secondsFromGMT: 8 * 3600) // 以上海总部时间计算。
-                )
-            ),
-            .collabWarpFateUBWLightCone.available(
-                since: .specify(
-                    day: 11,
-                    month: 7,
-                    year: 2025,
-                    timeZone: TimeZone(secondsFromGMT: 8 * 3600) // 以上海总部时间计算。
-                )
-            ),
+            .collabWarpFateUBW21,
+            .collabWarpFateUBW22,
+            .collabWarpFateUBW23,
+            .collabWarpFateUBW24,
         ].compactMap(\.self)
     }
 
@@ -67,8 +59,10 @@ public enum GachaTypeHSR: GachaTypeProtocol {
         case .characterEventWarp: "11"
         case .lightConeEventWarp: "12"
         case .departureWarp: "2"
-        case .collabWarpFateUBWCharacter: "31" // TODO: To be verified when collab pool opens.
-        case .collabWarpFateUBWLightCone: "32" // TODO: To be verified when collab pool opens.
+        case .collabWarpFateUBW21: "21"
+        case .collabWarpFateUBW22: "22"
+        case .collabWarpFateUBW23: "23"
+        case .collabWarpFateUBW24: "24"
         case let .unknown(rawValue): rawValue
         }
     }
@@ -79,9 +73,21 @@ public enum GachaTypeHSR: GachaTypeProtocol {
         case .characterEventWarp: .srCharacterEventWarp
         case .lightConeEventWarp: .srLightConeEventWarp
         case .departureWarp: .srDepartureWarp
-        case .collabWarpFateUBWCharacter: .srCollabWarpFateUBWCharacter
-        case .collabWarpFateUBWLightCone: .srCollabWarpFateUBWLightCone
+        case .collabWarpFateUBW21: .srCollabWarpFateUBW21
+        case .collabWarpFateUBW22: .srCollabWarpFateUBW22
+        case .collabWarpFateUBW23: .srCollabWarpFateUBW23
+        case .collabWarpFateUBW24: .srCollabWarpFateUBW24
         case .unknown: .srUnknown
+        }
+    }
+
+    public var isCollab: Bool {
+        switch self {
+        case .collabWarpFateUBW21: true
+        case .collabWarpFateUBW22: true
+        case .collabWarpFateUBW23: true
+        case .collabWarpFateUBW24: true
+        default: false
         }
     }
 }

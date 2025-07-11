@@ -725,6 +725,10 @@ extension GachaFetchView4Game {
                     GachaPoolExpressible.srLightConeEventWarp.localizedTitle: .yellow,
                     GachaPoolExpressible.srStellarWarp.localizedTitle: .green,
                     GachaPoolExpressible.srDepartureWarp.localizedTitle: .cyan,
+                    GachaPoolExpressible.srCollabWarpFateUBW21.localizedTitle: .pink,
+                    GachaPoolExpressible.srCollabWarpFateUBW22.localizedTitle: .red,
+                    GachaPoolExpressible.srCollabWarpFateUBW23.localizedTitle: .orange,
+                    GachaPoolExpressible.srCollabWarpFateUBW24.localizedTitle: .brown,
                 ]
             case .zenlessZone: [
                     GachaPoolExpressible.zzExclusiveChannel.localizedTitle: .blue,

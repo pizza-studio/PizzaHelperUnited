@@ -20,8 +20,10 @@ public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sen
     case srUnknown
     case srCharacterEventWarp
     case srLightConeEventWarp
-    case srCollabWarpFateUBWCharacter
-    case srCollabWarpFateUBWLightCone
+    case srCollabWarpFateUBW21
+    case srCollabWarpFateUBW22
+    case srCollabWarpFateUBW23
+    case srCollabWarpFateUBW24
     case srStellarWarp
     case srDepartureWarp
     case zzUnknown
@@ -90,8 +92,10 @@ extension GachaPoolExpressible {
         case .srStellarWarp: .starRail
         case .srCharacterEventWarp: .starRail
         case .srLightConeEventWarp: .starRail
-        case .srCollabWarpFateUBWCharacter: .starRail
-        case .srCollabWarpFateUBWLightCone: .starRail
+        case .srCollabWarpFateUBW21: .starRail
+        case .srCollabWarpFateUBW22: .starRail
+        case .srCollabWarpFateUBW23: .starRail
+        case .srCollabWarpFateUBW24: .starRail
         case .zzUnknown: .zenlessZone
         case .zzStableChannel: .zenlessZone
         case .zzExclusiveChannel: .zenlessZone
@@ -113,8 +117,10 @@ extension GachaPoolExpressible {
         case .srStellarWarp: false
         case .srCharacterEventWarp: true
         case .srLightConeEventWarp: true
-        case .srCollabWarpFateUBWCharacter: true
-        case .srCollabWarpFateUBWLightCone: true
+        case .srCollabWarpFateUBW21: true
+        case .srCollabWarpFateUBW22: true
+        case .srCollabWarpFateUBW23: true
+        case .srCollabWarpFateUBW24: true
         case .zzUnknown: false
         case .zzStableChannel: false
         case .zzExclusiveChannel: true
@@ -136,8 +142,10 @@ extension GachaPoolExpressible {
         case .srStellarWarp: GachaTypeHSR.stellarWarp.rawValue
         case .srCharacterEventWarp: GachaTypeHSR.characterEventWarp.rawValue
         case .srLightConeEventWarp: GachaTypeHSR.lightConeEventWarp.rawValue
-        case .srCollabWarpFateUBWCharacter: GachaTypeHSR.collabWarpFateUBWCharacter.rawValue
-        case .srCollabWarpFateUBWLightCone: GachaTypeHSR.collabWarpFateUBWLightCone.rawValue
+        case .srCollabWarpFateUBW21: GachaTypeHSR.collabWarpFateUBW21.rawValue
+        case .srCollabWarpFateUBW22: GachaTypeHSR.collabWarpFateUBW22.rawValue
+        case .srCollabWarpFateUBW23: GachaTypeHSR.collabWarpFateUBW23.rawValue
+        case .srCollabWarpFateUBW24: GachaTypeHSR.collabWarpFateUBW24.rawValue
         case .srDepartureWarp: GachaTypeHSR.departureWarp.rawValue
         case .zzUnknown: "-114514"
         case .zzStableChannel: GachaTypeZZZ.stableChannel.rawValue
@@ -155,6 +163,7 @@ extension GachaPoolExpressible {
         }
     }
 
+    // 注意：不要忘记同步更新 GetGachaChart.colorMap，否则必定崩溃！！！
     public var color4SUI: Color {
         switch self {
         case .giUnknown, .srUnknown, .zzUnknown: .gray
@@ -163,8 +172,10 @@ extension GachaPoolExpressible {
         case .giChronicledWish, .zzBangbooChannel: .red
         case .giStandardWish, .srStellarWarp, .zzStableChannel: .green
         case .giBeginnersWish, .srDepartureWarp: .cyan
-        case .srCollabWarpFateUBWCharacter: .pink
-        case .srCollabWarpFateUBWLightCone: .brown
+        case .srCollabWarpFateUBW21: .pink
+        case .srCollabWarpFateUBW22: .red
+        case .srCollabWarpFateUBW23: .orange
+        case .srCollabWarpFateUBW24: .brown
         }
     }
 }
