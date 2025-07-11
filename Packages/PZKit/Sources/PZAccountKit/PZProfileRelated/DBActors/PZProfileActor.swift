@@ -14,7 +14,7 @@ import SwiftData
 @available(iOS 17.0, macCatalyst 17.0, *)
 public enum PZProfileSwiftData {
     @ModelActor
-    public actor PZProfileActor: PZProfileActorProtocol {
+    actor PZProfileActor: PZProfileActorProtocol {
         public init(unitTests: Bool = false) {
             var isReset = false
             if unitTests {
@@ -44,7 +44,7 @@ public enum PZProfileSwiftData {
 // MARK: - PZProfileActor
 
 @available(iOS 17.0, macCatalyst 17.0, *)
-public typealias PZProfileActor = PZProfileSwiftData.PZProfileActor
+typealias PZProfileActor = PZProfileSwiftData.PZProfileActor
 
 // MARK: - PZProfileActor.
 

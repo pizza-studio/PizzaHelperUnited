@@ -72,7 +72,9 @@ public struct ContentView: View {
         }
         .react(to: profiles) {
             Task { @MainActor in
-                await PZProfileActor.shared.syncAllDataToUserDefaults()
+                await ProfileManagerVM.shared
+                    .profileActor?
+                    .syncAllDataToUserDefaults()
             }
         }
     }

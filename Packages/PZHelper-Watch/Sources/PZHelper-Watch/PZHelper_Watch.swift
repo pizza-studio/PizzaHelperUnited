@@ -26,7 +26,9 @@ extension PZHelperWatch {
                 }
                 .onAppBecomeActive {
                     Task { @MainActor in
-                        await PZProfileActor.shared.syncAllDataToUserDefaults()
+                        await ProfileManagerVM.shared
+                            .profileActor?
+                            .syncAllDataToUserDefaults()
                     }
                     Task {
                         await ASMetaSputnik.shared.updateMeta()
@@ -42,8 +44,9 @@ extension PZHelperWatch {
     @MainActor
     private static func startupTasks() {
         Task {
-            await PZProfileActor.shared.tryAutoInheritOldLocalAccounts(resetNotifications: true)
-            _ = ProfileManagerVM.shared
+            await ProfileManagerVM.shared
+                .profileActor?
+                .tryAutoInheritOldLocalAccounts(resetNotifications: true)
         }
     }
 }

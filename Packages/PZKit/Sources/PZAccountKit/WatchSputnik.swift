@@ -112,8 +112,9 @@ extension AppleWatchSputnik: WCSessionDelegate {
             Task {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 if await !assertion.state.isReleased {
-                    await PZProfileActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
-                    // await CDProfileMOActor.shared.watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
+                    await ProfileManagerVM.shared
+                        .profileActor?
+                        .watchSessionHandleIncomingPushedProfiles(receivedProfileMap)
                 }
                 await assertion.release()
             }

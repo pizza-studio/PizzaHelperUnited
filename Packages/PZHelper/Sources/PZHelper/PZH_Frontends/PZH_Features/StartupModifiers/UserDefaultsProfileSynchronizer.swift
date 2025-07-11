@@ -16,11 +16,9 @@ private struct UserDefaultsProfileSynchronizer: ViewModifier {
         content
             .onAppBecomeActive {
                 Task { @MainActor in
-                    if #available(iOS 17.0, *) {
-                        await PZProfileActor.shared.syncAllDataToUserDefaults()
-                    } else {
-                        await CDProfileMOActor.shared?.syncAllDataToUserDefaults()
-                    }
+                    await ProfileManagerVM.shared
+                        .profileActor?
+                        .syncAllDataToUserDefaults()
                 }
             }
     }

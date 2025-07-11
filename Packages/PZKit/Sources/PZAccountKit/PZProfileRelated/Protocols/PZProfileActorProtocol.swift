@@ -30,6 +30,9 @@ public protocol PZProfileActorProtocol: Actor {
         resetNotifications: Bool,
         isUnattended: Bool
     ) async throws
+    #if os(watchOS)
+    func watchSessionHandleIncomingPushedProfiles(_ receivedProfileMap: [String: PZProfileSendable])
+    #endif
 }
 
 extension PZProfileActorProtocol {

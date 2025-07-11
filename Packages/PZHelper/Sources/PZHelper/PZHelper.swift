@@ -77,12 +77,9 @@ extension PZHelper {
     @MainActor
     static func startupTasks() {
         Task {
-            if #available(iOS 17.0, *) {
-                await PZProfileActor.shared.tryAutoInheritOldLocalAccounts(resetNotifications: true)
-            } else {
-                await CDProfileMOActor.shared?.tryAutoInheritOldLocalAccounts(resetNotifications: true)
-            }
-            _ = ProfileManagerVM.shared
+            await ProfileManagerVM.shared
+                .profileActor?
+                .tryAutoInheritOldLocalAccounts(resetNotifications: true)
         }
         PZHelper.setupSpotlightSearch()
         if #available(iOS 17.0, *) {
