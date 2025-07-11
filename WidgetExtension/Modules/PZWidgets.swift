@@ -26,7 +26,6 @@ extension PZWidgets {
                     resetNotifications: true
                 )
             }
-            _ = ProfileManagerVM.shared
         }
         UserWallpaperFileHandler.migrateUserWallpapersFromUserDefaultsToFiles()
     }
