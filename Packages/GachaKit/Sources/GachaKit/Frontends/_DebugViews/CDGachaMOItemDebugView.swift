@@ -99,7 +99,7 @@ extension CDGachaMODebugView {
                 },
                 cancelPreviousTask: true, // 强制重新读入。
                 givenTask: {
-                    async let fetchedManagedObjs = try CDGachaMOActor.shared.getAllDataEntries(for: game)
+                    async let fetchedManagedObjs = try CDGachaMOActor.shared?.getAllDataEntries(for: game) ?? []
                     let fetched: [any CDGachaMOProtocol & GachaSendableConvertible] = try await fetchedManagedObjs
                         .compactMap {
                             if let convertible = $0 as? (CDGachaMOProtocol & GachaSendableConvertible) {

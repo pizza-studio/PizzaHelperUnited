@@ -85,11 +85,11 @@ extension RefugeeVM4iOS14 {
         fireTask(
             cancelPreviousTask: forced, givenTask: {
                 var result = RefugeeFile()
-                result.oldGachaEntries4GI = try await CDGachaMOActor.shared.getAllGenshinDataEntriesVanilla()
+                result.oldGachaEntries4GI = try await CDGachaMOActor.shared?.getAllGenshinDataEntriesVanilla() ?? []
                 if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
                     result.newProfiles = ProfileManagerVM.shared.profiles
                 } else {
-                    result.oldProfiles4GI = try await CDAccountMOActor.shared.allAccountDataForGenshin()
+                    result.oldProfiles4GI = try await CDAccountMOActor.shared?.allAccountDataForGenshin() ?? []
                 }
                 return result
             }, completionHandler: { [weak self] newResult in
@@ -105,11 +105,11 @@ extension RefugeeVM4iOS14 {
         fireTask(
             cancelPreviousTask: forced, givenTask: {
                 var (intGacha, intProfile) = (0, 0)
-                intGacha = try await CDGachaMOActor.shared.countAllDataEntries(for: .genshinImpact)
+                intGacha = try await CDGachaMOActor.shared?.countAllDataEntries(for: .genshinImpact) ?? 0
                 if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) {
                     intProfile = ProfileManagerVM.shared.profiles.count
                 } else {
-                    intProfile = try await CDAccountMOActor.shared.countAllAccountData(for: .genshinImpact)
+                    intProfile = try await CDAccountMOActor.shared?.countAllAccountData(for: .genshinImpact) ?? 0
                 }
                 return (intGacha, intProfile)
             }, completionHandler: { [weak self] newResult in

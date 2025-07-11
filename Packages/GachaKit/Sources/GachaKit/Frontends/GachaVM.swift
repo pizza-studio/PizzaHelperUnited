@@ -223,7 +223,7 @@ extension GachaVM {
         fireTask(
             cancelPreviousTask: immediately,
             givenTask: {
-                await CDGachaMOActor.shared.confirmWhetherHavingData()
+                await CDGachaMOActor.shared?.confirmWhetherHavingData() ?? false
             },
             completionHandler: {
                 if let retrieved = $0 {

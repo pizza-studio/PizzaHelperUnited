@@ -16,6 +16,7 @@ extension CDProfileMOActor {
         if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
             return nil
         }
+        guard !Pizza.isNotMainApp else { return nil }
         guard case let .success(result) = singleton else { return nil }
         return result
     }

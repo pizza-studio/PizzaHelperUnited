@@ -79,7 +79,7 @@ public struct AccountMODebugView: View {
             .font(.caption)
             .react(to: game, initial: true) {
                 Task { @MainActor in
-                    allAccountData = try! await Self.sputnik.allAccountData(for: game)
+                    allAccountData = try! await Self.sputnik?.allAccountData(for: game) ?? []
                 }
             }
             ForEach(allAccountData, id: \.uuid) { accountMO in
@@ -106,7 +106,7 @@ public struct AccountMODebugView: View {
 
     // MARK: Private
 
-    @MainActor private static let sputnik: CDAccountMOActor = .shared
+    @MainActor private static let sputnik: CDAccountMOActor? = .shared
 
     @State private var game: PZCoreDataKit.CDStoredGame = .genshinImpact
 

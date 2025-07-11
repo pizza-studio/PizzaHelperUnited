@@ -26,7 +26,7 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
         super.init()
         configurePublisherObservations()
         Task { @MainActor in
-            let count = try? await CDAccountMOActor.shared.countAllAccountData()
+            let count = try? await CDAccountMOActor.shared?.countAllAccountData()
             self.hasOldAccountDataDetected = (count ?? 0) > 0
         }
         Task {

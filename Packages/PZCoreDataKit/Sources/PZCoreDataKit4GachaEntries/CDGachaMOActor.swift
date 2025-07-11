@@ -26,7 +26,19 @@ public actor CDGachaMOActor: Sendable {
 
     // MARK: Public
 
-    public static let shared = try! CDGachaMOActor(persistence: .cloud, backgroundContext: true)
+    public static let singleton: Result<CDGachaMOActor, Error> = {
+        do {
+            return .success(try CDGachaMOActor(persistence: .cloud, backgroundContext: true))
+        } catch {
+            return .failure(error)
+        }
+    }()
+
+    public static var shared: CDGachaMOActor? {
+        guard !PZCoreDataKit.isNotMainApp else { return nil }
+        guard case let .success(result) = singleton else { return nil }
+        return result
+    }
 
     public func confirmWhetherHavingData() async -> Bool {
         ((try? await countAllDataEntries()) ?? 0) > 0

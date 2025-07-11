@@ -26,7 +26,19 @@ public actor CDAccountMOActor {
 
     // MARK: Public
 
-    public static let shared = try! CDAccountMOActor(persistence: .cloud, backgroundContext: true)
+    public static let singleton: Result<CDAccountMOActor, Error> = {
+        do {
+            return .success(try CDAccountMOActor(persistence: .cloud, backgroundContext: true))
+        } catch {
+            return .failure(error)
+        }
+    }()
+
+    public static var shared: CDAccountMOActor? {
+        guard !PZCoreDataKit.isNotMainApp else { return nil }
+        guard case let .success(result) = singleton else { return nil }
+        return result
+    }
 
     public func queryAccountData(uuid givenUUID: String) throws -> (
         any AccountMOProtocol

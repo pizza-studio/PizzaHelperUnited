@@ -54,7 +54,8 @@ extension PZProfileActorProtocol {
         isUnattended: Bool = false
     ) async throws {
         do {
-            let oldData = try await CDAccountMOActor.shared.getAllAccountDataAsPZProfileSendable()
+            let oldData = try await CDAccountMOActor.shared?.getAllAccountDataAsPZProfileSendable() ?? []
+            guard !oldData.isEmpty else { return }
             try await acceptMigratedOldAccountProfiles(
                 oldData: oldData,
                 resetNotifications: resetNotifications,
