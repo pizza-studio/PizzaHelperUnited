@@ -13,6 +13,27 @@ public typealias AbleToCodeSendHash = Codable & Sendable & Hashable
 
 extension UserDefaults: @unchecked @retroactive Sendable {}
 
+// MARK: - Debug Message Printer
+
+extension String {
+    public static func printDebug(
+        _ items: Any..., separator: String = " ", terminator: String = "\n"
+    ) {
+        #if DEBUG
+        print(items, separator: separator, terminator: terminator)
+        #endif
+    }
+
+    public static func printNSLog4Debug(
+        _ format: String,
+        _ args: any CVarArg...
+    ) {
+        #if DEBUG
+        NSLog(format, args)
+        #endif
+    }
+}
+
 // MARK: - Debug Intel Dumper for URLRequest.
 
 extension URLRequest {
