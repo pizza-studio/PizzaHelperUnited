@@ -71,7 +71,7 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
     }
 
     public var profileActor: (any PZProfileActorProtocol)? {
-        if #available(iOS 17.0, macCatalyst 17.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
             PZProfileActor.shared
         } else {
             CDProfileMOActor.shared
