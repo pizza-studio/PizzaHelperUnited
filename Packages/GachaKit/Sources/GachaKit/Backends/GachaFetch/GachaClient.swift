@@ -137,10 +137,13 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         -> GachaRequestAuthentication {
         var validDomain = false
         validDomain = validDomain || gachaURLString.contains("api/getGachaLog")
+        validDomain = validDomain || gachaURLString.contains("api/getLdGachaLog")
         validDomain = validDomain || gachaURLString.contains(try! Regex(#"/event/e.*?gacha-v.*?/index.html"#))
         guard validDomain, let url = URL(string: gachaURLString),
               let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        else { throw ParseGachaURLError.invalidURL }
+        else {
+            throw ParseGachaURLError.invalidURL
+        }
 
         let queryItems = components.queryItems
         guard let authenticationKey = queryItems?.first(where: { $0.name == "authkey" })?.value
@@ -181,7 +184,10 @@ public struct GachaClient<GachaType: GachaTypeProtocol>: AsyncSequence, AsyncIte
         }
 
         let host = URLRequestConfig.domain4PublicOps(region: basicParam.server.region)
-        let path = URLRequestConfig.gachaRecordAPIPath(game: gachaType.game)
+        var path = URLRequestConfig.gachaRecordAPIPath(game: gachaType.game)
+        if let gachaType = gachaType as? GachaTypeHSR, gachaType.isCollab {
+            path.replace("getGachaLog", with: "getLdGachaLog")
+        }
         let baseURL = "https://\(host)\(path)"
 
         // 改用明确的字典型别，避免 Any 型别问题
