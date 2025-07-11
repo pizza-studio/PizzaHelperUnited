@@ -12,7 +12,8 @@ import SwiftData
 // MARK: - PZProfileSwiftData
 
 @available(iOS 17.0, macCatalyst 17.0, *)
-public enum PZProfileSwiftData {
+enum PZProfileSwiftData {
+    /// 为了消除 availability tag 与 ModelActor Macro 的兼容性问题，只能单独用一个 Enum 包着。
     @ModelActor
     actor PZProfileActor: PZProfileActorProtocol {
         public init(unitTests: Bool = false) {
