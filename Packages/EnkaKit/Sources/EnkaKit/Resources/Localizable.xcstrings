@@ -539,73 +539,73 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dieses Set von ID-Fotos ist möglicherweise unter bestimmten Umständen in dieser App nicht anwendbar. Außerdem ein Hinweis: Die Genshin-Charakter-ID-Fotos stammen **NICHT aus geleakten Charakterdesign-Assets von Hoyoverse / Cognosphere / MiHoYo**. Stattdessen werden diese Assets mit [den von MiHoYo öffentlich freigegebenen MikuMikuDance-Modellen](https://www.aplaybox.com/u/516827875) gerendert."
+            "value" : "Dieses Set von ID-Fotos ist möglicherweise unter bestimmten Umständen in dieser App nicht anwendbar. Außerdem ein Hinweis: Die Genshin-Charakter-ID-Fotos stammen **NICHT aus geleakten Charakterdesign-Assets von Hoyoverse / Cognosphere / MiHoYo**. Stattdessen werden diese Assets mit [den von MiHoYo öffentlich freigegebenen MikuMikuDance-Modellen](https://www.aplaybox.com/u/516827875) oder [anderen öffentlich verfügbaren Ressourcen](https://www.aplaybox.com/u/106842826) gerendert."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875)."
+            "value" : "This set of ID photos might not be applicable under certain circumstances in this app. Also, a disclaimer: The Genshin-style character ID photos are **NOT from leaked character design assets from Hoyoverse / Cognosphere / MiHoYo**. Instead, these assets are rendered using [the MikuMikuDance models released by MiHoYo in public](https://www.aplaybox.com/u/516827875) or [other publicly available resources](https://www.aplaybox.com/u/106842826)."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Este conjunto de fotos de identificación podría no ser aplicable en ciertas circunstancias en esta aplicación. Además, un aviso: Las fotos de identificación de personajes al estilo Genshin **NO provienen de activos de diseño de personajes filtrados de Hoyoverse / Cognosphere / MiHoYo**. En su lugar, estos activos se renderizan utilizando [los modelos de MikuMikuDance publicados por MiHoYo en público](https://www.aplaybox.com/u/516827875)."
+            "value" : "Este conjunto de fotos de identificación podría no ser aplicable en ciertas circunstancias en esta aplicación. Además, un aviso: Las fotos de identificación de personajes al estilo Genshin **NO provienen de activos de diseño de personajes filtrados de Hoyoverse / Cognosphere / MiHoYo**. En su lugar, estos activos se renderizan utilizando [los modelos de MikuMikuDance publicados por MiHoYo en público](https://www.aplaybox.com/u/516827875) u [otros recursos públicos disponibles](https://www.aplaybox.com/u/106842826)."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang hanay ng ID photos na ito ay maaaring hindi naaangkop sa ilang pagkakataon sa app na ito. Gayundin, isang disclaimer: Ang mga ID photos ng karakter na Genshin-style ay **HINDI mula sa leaked na disenyo ng mga karakter mula sa Hoyoverse / Cognosphere / MiHoYo**. Sa halip, ang mga asset na ito ay nilikha gamit ang [mga MikuMikuDance models na inilabas ng MiHoYo sa publiko](https://www.aplaybox.com/u/516827875)."
+            "value" : "Ang hanay ng ID photos na ito ay maaaring hindi naaangkop sa ilang pagkakataon sa app na ito. Gayundin, isang disclaimer: Ang mga ID photos ng karakter na Genshin-style ay **HINDI mula sa leaked na disenyo ng mga karakter mula sa Hoyoverse / Cognosphere / MiHoYo**. Sa halip, ang mga asset na ito ay nilikha gamit ang [mga MikuMikuDance models na inilabas ng MiHoYo sa publiko](https://www.aplaybox.com/u/516827875) o [iba pang pampublikong mapagkukunan](https://www.aplaybox.com/u/106842826)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cet ensemble de photos pourrait ne pas être valide dans certaines circonstances. De plus, un avertissement : Les photos des personnages Genshin **NE PROVIENNENT PAS des fichiers provenant de versions de tests par Hoyoverse / Cognosphere / MiHoYo**. Ces derniers sont crées à l'aide [des modèles MikuMikuDance publiés par MiHoYo publiquement](https://www.aplaybox.com/u/516827875)."
+            "value" : "Cet ensemble de photos pourrait ne pas être valide dans certaines circonstances. De plus, un avertissement : Les photos des personnages Genshin **NE PROVIENNENT PAS des fichiers provenant de versions de tests par Hoyoverse / Cognosphere / MiHoYo**. Ces derniers sont créés à l'aide [des modèles MikuMikuDance publiés par MiHoYo publiquement](https://www.aplaybox.com/u/516827875) ou [d'autres ressources publiques disponibles](https://www.aplaybox.com/u/106842826)."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Questo set di foto ID potrebbe non essere applicabile in determinate circostanze in questa app. Inoltre, un disclaimer: Le foto ID dei personaggi in stile Genshin **NON provengono da design di personaggi trapelati da Hoyoverse / Cognosphere / MiHoYo**. Al contrario, queste risorse sono renderizzate utilizzando [i modelli MikuMikuDance rilasciati pubblicamente da MiHoYo](https://www.aplaybox.com/u/516827875)."
+            "value" : "Questo set di foto ID potrebbe non essere applicabile in determinate circostanze in questa app. Inoltre, un disclaimer: Le foto ID dei personaggi in stile Genshin **NON provengono da design di personaggi trapelati da Hoyoverse / Cognosphere / MiHoYo**. Al contrario, queste risorse sono renderizzate utilizzando [i modelli MikuMikuDance rilasciati pubblicamente da MiHoYo](https://www.aplaybox.com/u/516827875) o [altre risorse pubbliche disponibili](https://www.aplaybox.com/u/106842826)."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "これらの画像は弊アプリで効かぬ場合はございます。なお：弊アプリで使用していた「原神のキャラ写真スタイルに基づいたキャラ写真」素材は、**情報漏洩者からの素材でなく**、「[MiHoYo公式提供したミクミクダンス用モデル](https://www.aplaybox.com/u/516827875)」を使って作ったものである。"
+            "value" : "これらの画像は弊アプリで効かぬ場合はございます。なお：弊アプリで使用していた「原神のキャラ写真スタイルに基づいたキャラ写真」素材は、**情報漏洩者からの素材でなく**、「[MiHoYo公式提供したミクミクダンス用モデル](https://www.aplaybox.com/u/516827875)」や[その他の公開リソース](https://www.aplaybox.com/u/106842826)を使って作ったものである。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 ID 사진 세트는 이 앱에서 특정 상황에서는 적용되지 않을 수 있습니다. 또한 다음을 명시합니다: Genshin 스타일의 캐릭터 ID 사진은 HoYoverse / Cognosphere / MiHoYo에서 유출된 캐릭터 디자인 에셋이 **아닙니다.** 대신, 이 에셋은 [MiHoYo가 공개한 MikuMikuDance 모델을 사용하여 렌더링되었습니다](https://www.aplaybox.com/u/516827875)."
+            "value" : "이 ID 사진 세트는 이 앱에서 특정 상황에서는 적용되지 않을 수 있습니다. 또한 다음을 명시합니다: Genshin 스타일의 캐릭터 ID 사진은 HoYoverse / Cognosphere / MiHoYo에서 유출된 캐릭터 디자인 에셋이 **아닙니다.** 대신, 이 에셋은 [MiHoYo가 공개한 MikuMikuDance 모델](https://www.aplaybox.com/u/516827875) 또는 [기타 공개된 리소스](https://www.aplaybox.com/u/106842826)를 사용하여 렌더링되었습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Этот набор фотографий удостоверений личности может не подходить в определенных обстоятельствах в этом приложении. Также отказ от ответственности: фотографии удостоверений личности в стиле Genshin **НЕ являются утечкой дизайнерских активов персонажей от Hoyoverse / Cognosphere / MiHoYo**. Вместо этого эти активы создаются с использованием [моделей MikuMikuDance, выпущенных MiHoYo в открытый доступ](https://www.aplaybox.com/u/516827875)."
+            "value" : "Этот набор фотографий удостоверений личности может не подходить в определенных обстоятельствах в этом приложении. Также отказ от ответственности: фотографии удостоверений личности в стиле Genshin **НЕ являются утечкой дизайнерских активов персонажей от Hoyoverse / Cognosphere / MiHoYo**. Вместо этого эти активы создаются с использованием [моделей MikuMikuDance, выпущенных MiHoYo в открытый доступ](https://www.aplaybox.com/u/516827875) или [других общедоступных ресурсов](https://www.aplaybox.com/u/106842826)."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tập hợp ảnh ID này có thể không được áp dụng trong một số trường hợp nhất định trong ứng dụng này. Ngoài ra, một tuyên bố miễn trách nhiệm: Ảnh ID nhân vật kiểu Genshin **KHÔNG phải từ các tài sản thiết kế nhân vật bị rò rỉ từ Hoyoverse / Cognosphere / MiHoYo**. Thay vào đó, các tài sản này được tạo ra bằng cách sử dụng [các mô hình MikuMikuDance do MiHoYo phát hành công khai](https://www.aplaybox.com/u/516827875)."
+            "value" : "Tập hợp ảnh ID này có thể không được áp dụng trong một số trường hợp nhất định trong ứng dụng này. Ngoài ra, một tuyên bố miễn trách nhiệm: Ảnh ID nhân vật kiểu Genshin **KHÔNG phải từ các tài sản thiết kế nhân vật bị rò rỉ từ Hoyoverse / Cognosphere / MiHoYo**. Thay vào đó, các tài sản này được tạo ra bằng cách sử dụng [các mô hình MikuMikuDance do MiHoYo phát hành công khai](https://www.aplaybox.com/u/516827875) hoặc [các nguồn tài nguyên công khai khác](https://www.aplaybox.com/u/106842826)."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这套证件照可能在该App内的某些场合下无法起作用。另附免责声明：这套原神风格的角色证件照**并非出自内鬼泄漏的角色人设图稿**，而是利用[米哈游官方放出的MMD模型](https://www.aplaybox.com/u/516827875)渲染而成。\n"
+            "value" : "这套证件照可能在该App内的某些场合下无法起作用。另附免责声明：这套原神风格的角色证件照**并非出自内鬼泄漏的角色人设图稿**，而是利用[米哈游官方放出的MMD模型](https://www.aplaybox.com/u/516827875)或[其他公开资源](https://www.aplaybox.com/u/106842826)渲染而成。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "這套證件照可能在該 App 內的某些場合下無法起作用。另附免責聲明：這套原神風格的角色證件照**並非出自內鬼洩漏的角色人設圖稿**，而是利用[米哈遊官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)渲染而成。"
+            "value" : "這套證件照可能在該 App 內的某些場合下無法起作用。另附免責聲明：這套原神風格的角色證件照**並非出自內鬼洩漏的角色人設圖稿**，而是利用[米哈遊官方放出的 MMD 模型](https://www.aplaybox.com/u/516827875)或[其他公開資源](https://www.aplaybox.com/u/106842826)渲染而成。"
           }
         }
       }
