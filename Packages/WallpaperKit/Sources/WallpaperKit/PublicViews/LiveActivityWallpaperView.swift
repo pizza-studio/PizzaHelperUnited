@@ -16,7 +16,7 @@ extension BundledWallpaper {
 
 // MARK: - LiveActivityWallpaperView
 
-@available(iOS 15.0, macCatalyst 15.0, *)
+@available(iOS 16.2, macCatalyst 16.2, *)
 public struct LiveActivityWallpaperView: View {
     // MARK: Lifecycle
 
@@ -70,16 +70,18 @@ public struct LiveActivityWallpaperView: View {
         ).hashValue
     }
 
+    private var labvParser: LiveActivityBackgroundValueParser { .init($liveActivityWallpaperIDs) }
+
     private var currentSettings: BackgroundSettings {
+        if labvParser.useEmptyBackground.wrappedValue { return .noBackground }
         let ids = liveActivityWallpaperIDs
-        if ids.contains(Wallpaper.nullLiveActivityWallpaperIdentifier) { return .noBackground }
         var idsToRemove: Set<String> = []
         let mapped: [Wallpaper] = ids.compactMap { idStr in
             Wallpaper(id: idStr) {
                 idsToRemove.insert(idStr)
             }
         }
-        defer {
+        if !idsToRemove.isEmpty {
             liveActivityWallpaperIDs = ids.subtracting(idsToRemove)
         }
         return .multiple(.init(mapped))
