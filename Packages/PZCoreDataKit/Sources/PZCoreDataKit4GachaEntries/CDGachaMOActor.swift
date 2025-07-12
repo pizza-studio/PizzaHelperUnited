@@ -34,7 +34,7 @@ public actor CDGachaMOActor: Sendable {
         }
     }()
 
-    public static var shared: CDGachaMOActor? {
+    @MainActor public static var shared: CDGachaMOActor? {
         guard !PZCoreDataKit.isNotMainApp else { return nil }
         guard case let .success(result) = singleton else { return nil }
         return result

@@ -34,7 +34,7 @@ public actor CDAccountMOActor {
         }
     }()
 
-    public static var shared: CDAccountMOActor? {
+    @MainActor public static var shared: CDAccountMOActor? {
         guard !PZCoreDataKit.isNotMainApp else { return nil }
         guard case let .success(result) = singleton else { return nil }
         return result
