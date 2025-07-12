@@ -38,6 +38,9 @@ let sampleJSONForFile = #"""
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "compression-type" : "gpu-optimized-smallest"
   }
 }
 
@@ -131,7 +134,7 @@ func cleanWorkspace() {
 func handleAllFiles() {
     let fileMgr = FileManager.default
     let allPaths: [String] = (fileMgr.subpaths(atPath: "./Assets/") ?? []).filter {
-        $0.contains("AssetTemp") && $0.suffix(5).lowercased() == ".heic"
+        $0.contains("AssetTemp") && $0.suffix(4).lowercased() == ".png"
     }
     let assets: [AssetFile] = allPaths.map { AssetFile(oldPath: "./Assets/" + $0) }
     assets.forEach {

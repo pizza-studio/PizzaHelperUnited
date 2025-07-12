@@ -15,7 +15,6 @@ let forbiddenNameTextMapHashes: [Int] = [
 // 下述档案名称对应的全都是无效档案，应全部排除在最终抓取的内容范围之外。
 
 let bannedFinalFileNames: [String] = [
-    "gi_weapon_15306.png",
     "gi_relic_10000_2.png",
     "gi_relic_10000_4.png",
     "gi_relic_15000_1.png",
@@ -29,13 +28,14 @@ let bannedFinalFileNames: [String] = [
     "gi_relic_15004_4.png",
     "gi_relic_15004_5.png",
     "gi_relic_15012_3.png",
+    "gi_skill_A_DreamExplore.png",
     "gi_skill_A_Dvalin_AirGun.png",
     "gi_skill_Btn_Arana_Exchange.png",
     "gi_skill_Btn_Arana_Shoot.png",
+    "gi_skill_Btn_Blocking.png",
     "gi_skill_Btn_Blocking_Burst01.png",
     "gi_skill_Btn_Blocking_Burst02.png",
     "gi_skill_Btn_Blocking_Burst03.png",
-    "gi_skill_Btn_Blocking.png",
     "gi_skill_Btn_BounceConjuring_Bomb_S_01.png",
     "gi_skill_Btn_BounceConjuring_Bomb_S_02.png",
     "gi_skill_Btn_BounceConjuring_Bomb_S_03.png",
@@ -55,19 +55,6 @@ let bannedFinalFileNames: [String] = [
     "gi_skill_Btn_Fishing_Pull.png",
     "gi_skill_Btn_FlightSprint.png",
     "gi_skill_Btn_FungusFighter_Aim.png",
-    "gi_skill_Btn_HideAndSeek_Hider_A_01.png",
-    "gi_skill_Btn_HideAndSeek_Hider_A_03.png",
-    "gi_skill_Btn_HideAndSeek_Hider_E_01.png",
-    "gi_skill_Btn_HideAndSeek_Hider_S_01_Borbid.png",
-    "gi_skill_Btn_HideAndSeek_Hider_S_01.png",
-    "gi_skill_Btn_HideAndSeek_Hider_S_02_Borbid.png",
-    "gi_skill_Btn_HideAndSeek_Hider_S_02.png",
-    "gi_skill_Btn_HideAndSeek_Seeker_A_01.png",
-    "gi_skill_Btn_HideAndSeek_Seeker_E_01.png",
-    "gi_skill_Btn_HideAndSeek_Seeker_E_02.png",
-    "gi_skill_Btn_HideAndSeek_Seeker_E_03.png",
-    "gi_skill_Btn_HideAndSeek_Seeker_S_01.png",
-    "gi_skill_Btn_HideAndSeek_Seeker_S_02.png",
     "gi_skill_Btn_HideAndSeekV4_Hider_A_01.png",
     "gi_skill_Btn_HideAndSeekV4_Hider_A_02.png",
     "gi_skill_Btn_HideAndSeekV4_Hider_E.png",
@@ -79,9 +66,22 @@ let bannedFinalFileNames: [String] = [
     "gi_skill_Btn_HideAndSeekV4_Seeker_E_02.png",
     "gi_skill_Btn_HideAndSeekV4_Seeker_E_03.png",
     "gi_skill_Btn_HideAndSeekV4_Seeker_S.png",
+    "gi_skill_Btn_HideAndSeek_Hider_A_01.png",
+    "gi_skill_Btn_HideAndSeek_Hider_A_03.png",
+    "gi_skill_Btn_HideAndSeek_Hider_E_01.png",
+    "gi_skill_Btn_HideAndSeek_Hider_S_01.png",
+    "gi_skill_Btn_HideAndSeek_Hider_S_01_Borbid.png",
+    "gi_skill_Btn_HideAndSeek_Hider_S_02.png",
+    "gi_skill_Btn_HideAndSeek_Hider_S_02_Borbid.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_A_01.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_E_01.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_E_02.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_E_03.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_S_01.png",
+    "gi_skill_Btn_HideAndSeek_Seeker_S_02.png",
     "gi_skill_Btn_PacMan.png",
-    "gi_skill_Btn_Recon_Bait_Beans.png",
     "gi_skill_Btn_Recon_Bait.png",
+    "gi_skill_Btn_Recon_Bait_Beans.png",
     "gi_skill_Btn_Rises.png",
     "gi_skill_Btn_SlimeCannon_Fire_01.png",
     "gi_skill_Btn_SlimeCannon_Fire_04.png",
@@ -89,41 +89,51 @@ let bannedFinalFileNames: [String] = [
     "gi_skill_Btn_Turn.png",
     "gi_skill_Btn_WaterSpirit_Skill.png",
     "gi_skill_Btn_Whale_Interrupt.png",
-    "gi_skill_C_FairyGadgetSet.png",
     "gi_skill_CarpJump_01.png",
     "gi_skill_CarpJump_02.png",
+    "gi_skill_C_FairyGadgetSet.png",
     "gi_skill_Diving_Absorb.png",
     "gi_skill_Diving_Echo.png",
-    "gi_skill_Diving_Jellyfish_Trigger.png",
     "gi_skill_Diving_Jellyfish.png",
+    "gi_skill_Diving_Jellyfish_Trigger.png",
     "gi_skill_Diving_Octopus.png",
     "gi_skill_Diving_Shield.png",
     "gi_skill_Diving_Slash.png",
+    "gi_skill_E_BubbleGun_01.png",
+    "gi_skill_E_Gagana_AimShoot.png",
     "gi_skill_E_Kate.png",
+    "gi_skill_E_Monster_Shougun_EyeStrip.png",
+    "gi_skill_E_Olorun_Create.png",
     "gi_skill_E_Qin.png",
+    "gi_skill_E_SummerTimeV2Quest_BanSkill.png",
+    "gi_skill_FairyTalesCurrent_Charge.png",
+    "gi_skill_FairyTalesCurrent_Normal.png",
+    "gi_skill_LanV3_Icon05.png",
+    "gi_skill_LanV4PartyLion_01.png",
     "gi_skill_Main_AimActive.png",
+    "gi_skill_Music.png",
+    "gi_skill_PoetryFestival_PitchPot_Icon01.png",
     "gi_skill_QuesteventSkillIcon_01.png",
     "gi_skill_S_Kate_01.png",
+    "gi_skill_S_Kinich_06.png",
+    "gi_skill_S_Kinich_07.png",
+    "gi_skill_S_LunaRiteQuest_BanSkill.png",
+    "gi_skill_S_Monster_Shougun_EyeStrip.png",
+    "gi_skill_S_Mualani_05.png",
+    "gi_skill_S_SummerTimeV2Quest_BanSkill.png",
+    "gi_skill_UI_Icon_ColoringSpirit.png",
     "gi_skill_UI_Icon_Hunter_Net.png",
     "gi_skill_UI_Img_MVM_01.png",
     "gi_skill_UI_Img_MVM_02.png",
     "gi_skill_UI_Img_MVM_03.png",
     "gi_skill_UI_Img_MVM_Summon.png",
-    "gi_skill_FairyTalesCurrent_Charge.png",
-    "gi_skill_FairyTalesCurrent_Normal.png",
-    "gi_skill_LanV3_Icon05.png",
-    "gi_skill_LanV4PartyLion_01.png",
-    "gi_skill_Music.png",
-    "gi_skill_PoetryFestival_PitchPot_Icon01.png",
-    "gi_skill_E_Monster_Shougun_EyeStrip.png",
-    "gi_skill_E_SummerTimeV2Quest_BanSkill.png",
-    "gi_skill_E_Gagana_AimShoot.png",
-    "gi_skill_S_Monster_Shougun_EyeStrip.png",
-    "gi_skill_S_LunaRiteQuest_BanSkill.png",
-    "gi_skill_S_SummerTimeV2Quest_BanSkill.png",
+    "gi_weapon_11419.png",
+    "gi_weapon_11420.png",
+    "gi_weapon_11421.png",
     "gi_weapon_12304.png",
     "gi_weapon_13304.png",
     "gi_weapon_14306.png",
+    "gi_weapon_15306.png",
 ]
 
 // MARK: - ImageProcessingError
@@ -477,8 +487,23 @@ let dataDict = try await withThrowingTaskGroup(
     urlDict.forEach { fileNameStem, urlString in
         taskGroup.addTask {
             await URLAsyncTaskStack.waitFor200ms()
-            let (data, _) = try await URLSession.shared.data(from: URL(string: urlString)!)
-            return (fileNameStem, data)
+            guard let url = URL(string: urlString) else { return nil }
+            do {
+                let (data, response) = try await URLSession.shared.data(from: url)
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                    if httpResponse.statusCode == 404 {
+                        print("[FETCH FAILURE] 404 Not Found: \(fileNameStem) @ \(urlString)")
+                        return nil
+                    } else {
+                        print("[FETCH FAILURE] HTTP \(httpResponse.statusCode): \(fileNameStem) @ \(urlString)")
+                        return nil
+                    }
+                }
+                return (fileNameStem, data)
+            } catch {
+                print("Failed to fetch: \(urlString) (\(error))")
+                return nil
+            }
         }
     }
 
@@ -505,12 +530,11 @@ do {
     for (fileNameStem, data) in dataDict {
         let newURL = URL(fileURLWithPath: workSpaceDirPath + "/\(fileNameStem)")
         do {
-            // if fileNameStem.hasSuffix("png") {
-            //     try reencodePNG(from: data).write(to: newURL, options: .atomic)
-            // } else {
-            //     try data.write(to: newURL, options: .atomic)
-            // }
-            try data.write(to: newURL, options: .atomic)
+            if fileNameStem.hasSuffix("png") {
+                try reencodePNG(from: data).write(to: newURL, options: .atomic)
+            } else {
+                try data.write(to: newURL, options: .atomic)
+            }
         } catch {
             if !fileNameStem.contains("_avatar_") {
                 throw error
