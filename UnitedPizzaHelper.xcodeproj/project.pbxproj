@@ -458,6 +458,7 @@
 				5B10D7EF2CC6636C00245B77 /* Resources */,
 				5BD7443F2CC6B265007DE385 /* Embed Foundation Extensions */,
 				5B6F380D2CCE4EDE0081A23D /* Embed Watch Content */,
+				5B2CEBD42E22742200942A6D /* Run Script (Assets Cleanup) */,
 			);
 			buildRules = (
 			);
@@ -749,6 +750,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+		5B2CEBD42E22742200942A6D /* Run Script (Assets Cleanup) */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (Assets Cleanup)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n# Post-task 脚本：定点删除指定的 Assets.car 文件\n\n# 日志文件路径\nLOG_FILE=\"${DERIVED_DATA_DIR}/remove_assets_log.txt\"\necho \"Starting Remove Assets.car Script at $(date)\" > \"${LOG_FILE}\"\n\n# 获取构建输出根目录\nBUILD_DIR=\"${BUILT_PRODUCTS_DIR}\"\necho \"Main Build Directory: ${BUILD_DIR}\" >> \"${LOG_FILE}\"\n\n# 检查构建目录是否存在\nif [ ! -d \"${BUILD_DIR}\" ]; then\n    echo \"Error: Build directory ${BUILD_DIR} does not exist or is inaccessible\" >> \"${LOG_FILE}\"\n    echo \"Error: Build directory ${BUILD_DIR} does not exist or is inaccessible\"\n    exit 1\nfi\n\n# 定义所有需要删除的 Assets.car 路径（带 Contents 的是 mac 版）。\nASSETS_CARS=(\n    \"${BUILD_DIR}/Pizza Helper.app/PlugIns/INIntents4iOS16.appex/GITodayMaterialsKitPKG_GITodayMaterialsKit.bundle/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/PlugIns/INIntents4iOS16.appex/PZWidgetsKitPKG_PZWidgetsKit.bundle/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/PlugIns/INIntents4iOS16.appex/PizzaKitPKG_PZAccountKit.bundle/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/PlugIns/INIntents4iOS16.appex/WallpaperKitPKG_WallpaperKit.bundle/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/Watch/PizzaWatchApp.app/PlugIns/PizzaWatchAppExtension.appex/GITodayMaterialsKitPKG_GITodayMaterialsKit.bundle/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/Watch/PizzaWatchApp.app/PlugIns/PizzaWatchAppExtension.appex/PZWidgetsKitPKG_PZWidgetsKit.bundle/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/Watch/PizzaWatchApp.app/PlugIns/PizzaWatchAppExtension.appex/PizzaKitPKG_PZAccountKit.bundle/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/Contents/PlugIns/INIntents4iOS16.appex/Contents/Resources/GITodayMaterialsKitPKG_GITodayMaterialsKit.bundle/Contents/Resources/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/Contents/PlugIns/INIntents4iOS16.appex/Contents/Resources/PZWidgetsKitPKG_PZWidgetsKit.bundle/Contents/Resources/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/Contents/PlugIns/INIntents4iOS16.appex/Contents/Resources/PizzaKitPKG_PZAccountKit.bundle/Contents/Resources/Assets.car\"\n    \"${BUILD_DIR}/Pizza Helper.app/Contents/PlugIns/INIntents4iOS16.appex/Contents/Resources/WallpaperKitPKG_WallpaperKit.bundle/Contents/Resources/Assets.car\"\n)\n\n# 逐一检查并删除 Assets.car\nfor assets_car in \"${ASSETS_CARS[@]}\"; do\n    if [ -f \"${assets_car}\" ]; then\n        echo \"Found Assets.car at ${assets_car}\" >> \"${LOG_FILE}\"\n        if [ -w \"${assets_car}\" ]; then\n            echo \"Attempting to delete ${assets_car}\" >> \"${LOG_FILE}\"\n            rm -f \"${assets_car}\"\n            if [ $? -eq 0 ]; then\n                echo \"Successfully deleted ${assets_car}\" >> \"${LOG_FILE}\"\n                echo \"Successfully deleted ${assets_car}\"\n            else\n                echo \"Error: Failed to delete ${assets_car} (possible sandbox or permission issue)\" >> \"${LOG_FILE}\"\n                echo \"Error: Failed to delete ${assets_car} (possible sandbox or permission issue)\"\n                exit 1\n            fi\n        else\n            echo \"Error: No write permission for ${assets_car}\" >> \"${LOG_FILE}\"\n            echo \"Error: No write permission for ${assets_car}\"\n            exit 1\n        fi\n    else\n        echo \"No Assets.car found at ${assets_car}\" >> \"${LOG_FILE}\"\n    fi\ndone\n\necho \"Script completed at $(date)\" >> \"${LOG_FILE}\"\nexit 0\n";
 		};
 		5BB3A4E72C69232400653C89 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
