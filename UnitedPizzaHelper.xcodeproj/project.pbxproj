@@ -65,7 +65,7 @@
 			remoteGlobalIDString = 5B6F37FE2CCE4EDC0081A23D;
 			remoteInfo = WatchApp;
 		};
-		5BB139322E1F892500D1F169 /* PBXContainerItemProxy */ = {
+		5B89502B2E22A65300E3C183 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5BFD6B842C628CD8000A63E9 /* Project object */;
 			proxyType = 1;
@@ -464,7 +464,6 @@
 			dependencies = (
 				5BD7443C2CC6B264007DE385 /* PBXTargetDependency */,
 				5B6F380B2CCE4EDE0081A23D /* PBXTargetDependency */,
-				5BB139332E1F892500D1F169 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5B10D7F22CC6636C00245B77 /* ThePizzaHelper */,
@@ -570,6 +569,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5B89502C2E22A65300E3C183 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5BD7442D2CC6B262007DE385 /* WidgetExtension */,
@@ -829,10 +829,10 @@
 			target = 5B6F37FE2CCE4EDC0081A23D /* PizzaWatchApp */;
 			targetProxy = 5B6F380A2CCE4EDE0081A23D /* PBXContainerItemProxy */;
 		};
-		5BB139332E1F892500D1F169 /* PBXTargetDependency */ = {
+		5B89502C2E22A65300E3C183 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5BB1392A2E1F892500D1F169 /* INIntents4iOS16 */;
-			targetProxy = 5BB139322E1F892500D1F169 /* PBXContainerItemProxy */;
+			targetProxy = 5B89502B2E22A65300E3C183 /* PBXContainerItemProxy */;
 		};
 		5BD7443C2CC6B264007DE385 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
