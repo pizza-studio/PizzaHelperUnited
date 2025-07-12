@@ -144,7 +144,7 @@ extension PZProfileRefProtocol {
         priority: Int = 0,
         serverRawValue: String = HoYo.Server.celestia(.genshinImpact).rawValue,
         sTokenV2: String? = "",
-        deviceID: String? = nil,
+        deviceID: String? = nil
     )
         -> Self {
         .init(

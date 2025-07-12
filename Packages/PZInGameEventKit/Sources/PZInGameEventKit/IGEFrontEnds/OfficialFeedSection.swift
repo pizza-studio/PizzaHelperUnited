@@ -21,7 +21,7 @@ extension OfficialFeed {
         public init(
             game: Binding<Pizza.SupportedGame?>,
             @ViewBuilder peripheralViews: @escaping (() -> TT) = { EmptyView() },
-            @ViewBuilder sectionHeader: @escaping (() -> HH) = { EmptyView() },
+            @ViewBuilder sectionHeader: @escaping (() -> HH) = { EmptyView() }
         ) {
             self.peripheralViews = peripheralViews
             self.sectionHeader = sectionHeader
@@ -36,7 +36,7 @@ extension OfficialFeed {
                 eventContents: eventContentsFiltered.animation(),
                 isFeedSheetShown: $isFeedSheetShown,
                 peripheralViews: peripheralViews,
-                sectionHeader: sectionHeader,
+                sectionHeader: sectionHeader
             )
             .listRowMaterialBackground()
             .react(to: scenePhase) { _, newPhase in
