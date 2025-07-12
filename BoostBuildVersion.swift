@@ -53,7 +53,7 @@ func process(_ dirXcodeProjectFile: String) {
     var verMarket: String?
     do {
         var intVerBuild = try gitCommitCount()
-        intVerBuild += 3041
+        intVerBuild += 3055
         verBuild = intVerBuild.description
     } catch {
         print("Failed to get Git Revision Number.")
