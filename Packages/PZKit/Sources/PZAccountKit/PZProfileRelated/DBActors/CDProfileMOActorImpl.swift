@@ -12,7 +12,7 @@ import Sworm
 public typealias CDProfileMOActor = PZCoreDataKit.CDProfileMOActor
 
 extension CDProfileMOActor {
-    static var shared: CDProfileMOActor? {
+    @MainActor static var shared: CDProfileMOActor? {
         if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
             return nil
         }
