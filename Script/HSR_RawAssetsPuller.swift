@@ -371,8 +371,23 @@ let dataDict = try await withThrowingTaskGroup(
     urlDict.forEach { fileNameStem, urlString in
         taskGroup.addTask {
             await URLAsyncTaskStack.waitFor200ms()
-            let (data, _) = try await URLSession.shared.data(from: URL(string: urlString)!)
-            return (fileNameStem, data)
+            guard let url = URL(string: urlString) else { return nil }
+            do {
+                let (data, response) = try await URLSession.shared.data(from: url)
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                    if httpResponse.statusCode == 404 {
+                        print("[FETCH FAILURE] 404 Not Found: \(fileNameStem) @ \(urlString)")
+                        return nil
+                    } else {
+                        print("[FETCH FAILURE] HTTP \(httpResponse.statusCode): \(fileNameStem) @ \(urlString)")
+                        return nil
+                    }
+                }
+                return (fileNameStem, data)
+            } catch {
+                print("Failed to fetch: \(urlString) (\(error))")
+                return nil
+            }
         }
     }
 
