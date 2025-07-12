@@ -76,7 +76,7 @@ extension PZHelper {
 extension PZHelper {
     @MainActor
     static func startupTasks() {
-        Task {
+        Task { @MainActor in
             await ProfileManagerVM.shared
                 .profileActor?
                 .tryAutoInheritOldLocalAccounts(resetNotifications: true)
