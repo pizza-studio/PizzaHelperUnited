@@ -871,7 +871,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -901,7 +901,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "Pizza Helper";
 				SDKROOT = auto;
@@ -921,7 +921,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThePizzaHelper/ThePizzaHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePizzaHelper/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -951,7 +951,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "Pizza Helper";
 				SDKROOT = auto;
@@ -971,7 +971,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
@@ -983,7 +983,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1002,7 +1002,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchExtension/PizzaWatchAppExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchExtension;
@@ -1014,7 +1014,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1034,7 +1034,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				DEVELOPMENT_ASSET_PATHS = "WatchApp/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1047,7 +1047,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1066,7 +1066,7 @@
 				CODE_SIGN_ENTITLEMENTS = WatchApp/PizzaWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				DEVELOPMENT_ASSET_PATHS = "WatchApp/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1079,7 +1079,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1097,7 +1097,7 @@
 				CODE_SIGN_ENTITLEMENTS = INIntents4iOS16/INIntents4iOS16.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = INIntents4iOS16/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = INIntents4iOS16;
@@ -1108,7 +1108,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.INIntents4iOS16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1129,7 +1129,7 @@
 				CODE_SIGN_ENTITLEMENTS = INIntents4iOS16/INIntents4iOS16.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = INIntents4iOS16/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = INIntents4iOS16;
@@ -1140,7 +1140,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.INIntents4iOS16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1164,7 +1164,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1178,7 +1178,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1201,7 +1201,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1215,7 +1215,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1372,7 +1372,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -1398,7 +1398,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "United Pizza Engine";
 				REGISTER_APP_GROUPS = YES;
@@ -1419,7 +1419,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5594;
+				CURRENT_PROJECT_VERSION = 5606;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"UnitedPizzaHelperEngine/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -1445,7 +1445,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 5.4.2;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.pizzastudio.UnitedPizzaHelper;
 				PRODUCT_NAME = "United Pizza Engine";
 				REGISTER_APP_GROUPS = YES;
