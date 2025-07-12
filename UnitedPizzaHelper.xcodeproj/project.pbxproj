@@ -452,7 +452,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B10D7FF2CC6636E00245B77 /* Build configuration list for PBXNativeTarget "ThePizzaHelper" */;
 			buildPhases = (
-				5B10D8262CC66A7600245B77 /* ShellScript */,
+				5B10D8262CC66A7600245B77 /* SwiftFormat */,
 				5B10D7ED2CC6636C00245B77 /* Sources */,
 				5B10D7EE2CC6636C00245B77 /* Frameworks */,
 				5B10D7EF2CC6636C00245B77 /* Resources */,
@@ -733,7 +733,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5B10D8262CC66A7600245B77 /* ShellScript */ = {
+		5B10D8262CC66A7600245B77 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -743,6 +743,7 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftFormat;
 			outputFileListPaths = (
 			);
 			outputPaths = (
