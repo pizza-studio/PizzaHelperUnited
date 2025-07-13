@@ -51,7 +51,11 @@ typealias PZProfileActor = PZProfileSwiftData.PZProfileActor
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension PZProfileActor {
-    @MainActor public static let shared: PZProfileActor? = {
+    @MainActor public static var shared: PZProfileActor? {
+        singleton
+    }
+
+    public static let singleton: PZProfileActor? = {
         guard !Pizza.isNotMainApp else { return nil }
         return PZProfileActor()
     }()
