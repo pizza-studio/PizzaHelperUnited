@@ -108,7 +108,7 @@ extension CDProfileMOActor: PZProfileActorProtocol {
         return result.sorted { $0.priority < $1.priority }
     }
 
-    private func addOrUpdateProfile(
+    private func addOrUpdateProfileSansCommission(
         _ profileSendable: PZProfileSendable,
         against context: ManagedObjectContext
     ) throws {
@@ -137,14 +137,14 @@ extension CDProfileMOActor: PZProfileActorProtocol {
             try profileSendableSet.sorted {
                 $0.priority < $1.priority
             }.forEach { profileSendable in
-                try self.addOrUpdateProfile(profileSendable, against: context)
+                try self.addOrUpdateProfileSansCommission(profileSendable, against: context)
             }
         }
     }
 
     public func addOrUpdateProfile(_ profileSendable: PZProfileSendable) throws {
         try container.perform { context in
-            try self.addOrUpdateProfile(profileSendable, against: context)
+            try self.addOrUpdateProfileSansCommission(profileSendable, against: context)
         }
     }
 
