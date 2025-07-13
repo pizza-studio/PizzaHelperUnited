@@ -157,29 +157,27 @@ extension PZProfileActor {
         return result.sorted { $0.priority < $1.priority }
     }
 
-    private func addOrUpdateProfile(_ profileSendable: PZProfileSendable, commitAfterDone: Bool) throws {
-        func subTask() throws {
-            var isAdded = false
-            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
-                guard !isAdded else { return }
-                switch currentMO.uuid == profileSendable.uuid {
-                case true:
-                    currentMO.inherit(from: profileSendable)
-                    isAdded = true
-                case false:
-                    break
-                }
-            }
-            if !isAdded {
-                modelContext.insert(profileSendable.asMO)
+    private func addOrUpdateProfileSansCommission(
+        _ profileSendable: PZProfileSendable,
+        against context: ModelContext
+    ) throws {
+        let existingObjs = try context.fetch(FetchDescriptor<PZProfileMO>())
+        var matchedExistingObjs: [PZProfileMO] = existingObjs.filter {
+            $0.uuid.uuidString == profileSendable.uuid.uuidString
+        }
+        var existingDataUpdatedSuccessfully = false
+        deduplicateAndUpdate: while let lastObj = matchedExistingObjs.last {
+            if matchedExistingObjs.count > 1 {
+                context.delete(lastObj)
+                matchedExistingObjs.removeLast()
+            } else {
+                lastObj.inherit(from: profileSendable)
+                existingDataUpdatedSuccessfully = true
+                break deduplicateAndUpdate
             }
         }
-        if commitAfterDone {
-            try modelContext.transaction {
-                try subTask()
-            }
-        } else {
-            try subTask()
+        if !existingDataUpdatedSuccessfully {
+            context.insert(profileSendable.asMO)
         }
     }
 
@@ -190,14 +188,16 @@ extension PZProfileActor {
             try profileSendableSet.sorted {
                 $0.priority < $1.priority
             }.forEach {
-                try addOrUpdateProfile($0, commitAfterDone: false)
+                try addOrUpdateProfileSansCommission($0, against: modelContext)
             }
         }
     }
 
     /// This will add the profile if it is not already added.
     public func addOrUpdateProfile(_ profileSendable: PZProfileSendable) throws {
-        try addOrUpdateProfile(profileSendable, commitAfterDone: true)
+        try modelContext.transaction {
+            try addOrUpdateProfileSansCommission(profileSendable, against: modelContext)
+        }
     }
 
     public func replaceAllProfiles(with profileSendableSet: Set<PZProfileSendable>) throws {
