@@ -10,7 +10,7 @@ import PZWidgetsKit
 
 // MARK: - PZEmbeddedIntent4ProfileOnly + WidgetConfigurationIntent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension PZEmbeddedIntent4ProfileOnly: WidgetConfigurationIntent {}
 
 // MARK: - PZEmbeddedIntent4ProfileOnly
@@ -64,7 +64,7 @@ public struct PZEmbeddedIntent4ProfileOnly: AppIntent, CustomIntentMigratedAppIn
 
 // MARK: - PZEmbeddedIntent4ProfileMisc + WidgetConfigurationIntent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension PZEmbeddedIntent4ProfileMisc: WidgetConfigurationIntent {}
 
 // MARK: - PZEmbeddedIntent4ProfileMisc
