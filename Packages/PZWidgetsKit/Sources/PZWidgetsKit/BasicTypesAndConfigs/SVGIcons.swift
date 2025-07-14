@@ -3,6 +3,7 @@
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
 import PZBaseKit
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - Asset Icons (SVG)
@@ -31,6 +32,14 @@ extension Pizza.SupportedGame? {
 extension Pizza.SupportedGame {
     /// 主要玩家体力。
     public var primaryStaminaAssetSVG: Image {
+        if #unavailable(watchOS 10.0) {
+            let sfSymbol: SFSymbol = switch self {
+            case .genshinImpact: .moonFill
+            case .starRail: .line3CrossedSwirlCircleFill
+            case .zenlessZone: .minusPlusBatteryblock
+            }
+            return Image(systemSymbol: sfSymbol)
+        }
         let assetName = switch self {
         case .genshinImpact: "icon.resin"
         case .starRail: "icon.trailblazePower"
@@ -40,6 +49,9 @@ extension Pizza.SupportedGame {
     }
 
     public var dailyTaskAssetSVG: Image {
+        if #unavailable(watchOS 10.0) {
+            return Image(systemSymbol: .listStar)
+        }
         let assetName = switch self {
         case .genshinImpact: "icon.dailyTask.gi"
         case .starRail: "icon.dailyTask.hsr"
@@ -49,6 +61,9 @@ extension Pizza.SupportedGame {
     }
 
     public var expeditionAssetSVG: Image {
+        if #unavailable(watchOS 10.0) {
+            return Image(systemSymbol: .flag)
+        }
         let assetName = switch self {
         case .genshinImpact: "icon.expedition.gi"
         case .starRail: "icon.expedition.hsr"
@@ -70,26 +85,45 @@ extension Pizza.SupportedGame {
     }
 
     public var hsrEchoOfWarAssetSVG: Image {
-        Image("icon.echoOfWar", bundle: .module)
+        if #unavailable(watchOS 10.0) {
+            return Image(systemSymbol: .headphones)
+        }
+        return Image("icon.echoOfWar", bundle: .module)
     }
 
     public var hsrSimulatedUniverseAssetSVG: Image {
-        Image("icon.simulatedUniverse", bundle: .module)
+        if #unavailable(watchOS 10.0) {
+            return Image(systemSymbol: .pc)
+        }
+        return Image("icon.simulatedUniverse", bundle: .module)
     }
 
     public var zzzVHSStoreAssetSVG: Image {
-        Image("icon.zzzVHSStore", bundle: .module)
+        if #unavailable(watchOS 10.0) {
+            return Image(systemSymbol: .film)
+        }
+        return
+            Image("icon.zzzVHSStore", bundle: .module)
     }
 
     public var zzzScratchCardAssetSVG: Image {
-        Image("icon.zzzScratch", bundle: .module)
+        if #unavailable(watchOS 10.0) {
+            return Image(systemSymbol: .giftcard)
+        }
+        return Image("icon.zzzScratch", bundle: .module)
     }
 
     public var zzzBountyAssetSVG: Image {
-        Image("icon.zzzBounty", bundle: .module)
+        if #unavailable(watchOS 10.0) {
+            return Image(systemSymbol: .scope)
+        }
+        return Image("icon.zzzBounty", bundle: .module)
     }
 
     public var zzzInvestigationPointsAssetSVG: Image {
-        Image("icon.zzzInvestigation", bundle: .module)
+        if #unavailable(watchOS 10.0) {
+            return Image(systemSymbol: .magnifyingglass)
+        }
+        return Image("icon.zzzInvestigation", bundle: .module)
     }
 }
