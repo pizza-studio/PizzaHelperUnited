@@ -80,26 +80,25 @@ struct ProfileManagerPageContent: View {
             Section {
                 ForEach(theVM.profiles) { profile in
                     Group {
-                        if let profileRef = theVM.profileRefMap[profile.uuid.uuidString] {
-                            let label = drawRow(profile: profileRef)
-                            if isAppKitOrNotEditing {
-                                if Self.isOS24OrNewer {
-                                    NavigationLink {
-                                        EditProfileSheetView(profile: profileRef, isVisible: isSheetVisible)
-                                            .environmentObject(alertToastEventStatus)
-                                    } label: {
-                                        label
-                                    }
-                                } else {
-                                    Button {
-                                        sheetType = .editExistingProfile(profileRef)
-                                    } label: {
-                                        label
-                                    }
+                        let profileRef = profile.asRef
+                        let label = drawRow(profile: profileRef)
+                        if isAppKitOrNotEditing {
+                            if Self.isOS24OrNewer {
+                                NavigationLink {
+                                    EditProfileSheetView(profile: profileRef, isVisible: isSheetVisible)
+                                        .environmentObject(alertToastEventStatus)
+                                } label: {
+                                    label
                                 }
                             } else {
-                                label
+                                Button {
+                                    sheetType = .editExistingProfile(profileRef)
+                                } label: {
+                                    label
+                                }
                             }
+                        } else {
+                            label
                         }
                     }
                     .id(profile)

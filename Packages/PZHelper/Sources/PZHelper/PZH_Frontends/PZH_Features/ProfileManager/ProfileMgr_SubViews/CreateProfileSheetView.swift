@@ -67,7 +67,6 @@ extension ProfileManagerPageContent {
                     }
                     ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {
-                            theVM.discardUncommittedChanges()
                             isVisible.toggle()
                         }
                     }
