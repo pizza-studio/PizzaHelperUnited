@@ -69,8 +69,7 @@ final class RootNavVM: Sendable {
         }
     }
 
-    @ViewBuilder
-    public func iOSBottomTabBarForBuggyOS25ReleasesOn() -> some View {
+    @ViewBuilder public var iOSBottomTabBarForBuggyOS25ReleasesOn: some View {
         #if !(os(macOS) && !targetEnvironment(macCatalyst))
         let isOverCompact = screenVM.isHorizontallyCompact && screenVM.windowSizeObserved
             .width <= 440
