@@ -45,7 +45,7 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
 
     // MARK: Private
 
-    private static var isOS23OrAbove: Bool {
+    private static var isOS23OrNewer: Bool {
         if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) { return true }
         return false
     }

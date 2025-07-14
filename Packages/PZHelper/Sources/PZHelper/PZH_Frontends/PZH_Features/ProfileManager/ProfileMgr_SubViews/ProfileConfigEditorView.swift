@@ -102,7 +102,7 @@ struct ProfileConfigEditorView: View {
 
     // MARK: Private
 
-    private static var isOS24OrAbove: Bool {
+    private static var isOS24OrNewer: Bool {
         if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
         return false
     }

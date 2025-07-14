@@ -209,7 +209,7 @@ public struct ContentView4iOS14: View {
         Array(pzProfilesMap.values.sorted { $0.priority < $1.priority })
     }
 
-    private var isOS23OrAbove: Bool {
+    private var isOS23OrNewer: Bool {
         if #available(iOS 16.2, macCatalyst 16.2, macOS 13.0, *) { return true }
         return false
     }

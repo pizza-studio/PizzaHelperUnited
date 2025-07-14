@@ -223,7 +223,7 @@ public enum OS: Int {
         #endif
     }()
 
-    public static var isOS25OrAbove: Bool {
+    public static var isOS25OrNewer: Bool {
         switch OS.type {
         case .macOS:
             if #available(macOS 15, *) { return true }

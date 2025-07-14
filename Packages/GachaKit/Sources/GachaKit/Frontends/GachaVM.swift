@@ -97,7 +97,7 @@ public final class GachaVM: TaskManagedVM {
     private func configurePublisherObservations() {
         guard !subscribed else { return }
         defer { subscribed = true }
-        switch OS.isOS25OrAbove {
+        switch OS.isOS25OrNewer {
         case false:
             // OS24 (iOS 17, macOS 14) 无法时刻抓到 ModelContext.didSave，
             // 所以只能抓 NSManagedObjectContextDidSaveObjectIDs。
