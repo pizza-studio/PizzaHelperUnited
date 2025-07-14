@@ -31,7 +31,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
         #endif
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .activityBackgroundTint(.clear)
-        if #available(iOS 17.0, macCatalyst 17.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             Button(intent: RendererIntent()) {
                 mainContent
             }
@@ -129,7 +129,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
                 }
                 .legibilityShadow(isText: true, enabled: !disableTextShadow)
                 .font(.footnote)
-                if #available(iOS 17.0, macCatalyst 17.0, *) {
+                if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
                     Button(intent: RefreshIntent()) {
                         label
                     }

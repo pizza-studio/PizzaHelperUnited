@@ -195,7 +195,7 @@ extension CDProfileMOActor {
     }
 }
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZProfileActor {
     public func watchSessionHandleIncomingPushedProfiles(
         _ receivedProfileMap: [String: PZProfileSendable]

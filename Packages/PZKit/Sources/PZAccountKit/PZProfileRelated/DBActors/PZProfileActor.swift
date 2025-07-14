@@ -11,7 +11,7 @@ import SwiftData
 
 // MARK: - PZProfileSwiftData
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 enum PZProfileSwiftData {
     /// 为了消除 availability tag 与 ModelActor Macro 的兼容性问题，只能单独用一个 Enum 包着。
     @ModelActor
@@ -44,12 +44,12 @@ enum PZProfileSwiftData {
 
 // MARK: - PZProfileActor
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 typealias PZProfileActor = PZProfileSwiftData.PZProfileActor
 
 // MARK: - PZProfileActor.
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZProfileActor {
     @MainActor public static var shared: PZProfileActor? {
         singleton
@@ -122,7 +122,7 @@ extension PZProfileActor {
 
 // MARK: - AccountMO Related.
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZProfileActor {
     public func acceptMigratedOldAccountProfiles(
         oldData: [PZProfileSendable],
@@ -262,7 +262,7 @@ extension PZProfileActor {
 
 // MARK: - Backup and Restore
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZProfileActor {
     private func detectWhetherIsReset() -> Bool {
         let existingSQLCount = (try? modelContext.fetchCount(FetchDescriptor<PZProfileMO>())) ?? -1
@@ -285,7 +285,7 @@ extension PZProfileActor {
 
 // MARK: - Deduplication.
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZProfileActor {
     /// Warning: 该方法仅对 SwiftData 资料库有操作，不影响 UserDefaults。
     @discardableResult
@@ -319,7 +319,7 @@ extension PZProfileActor {
 
 // MARK: - DeviceFP Propagation.
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZProfileActor {
     /// This only works with Miyoushe UIDs.
     public func propagateDeviceFingerprint(_ fingerprint: String) throws {
