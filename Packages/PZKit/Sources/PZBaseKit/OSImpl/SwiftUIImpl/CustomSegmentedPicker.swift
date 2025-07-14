@@ -4,8 +4,10 @@
 
 import SwiftUI
 
+// MARK: - CustomSegmentedPicker
+
 @available(iOS 15.0, macCatalyst 15.0, *)
-public struct CustomSegmentedPicker<Item: Identifiable, Content: View>: View {
+public struct CustomSegmentedPicker<Item: Identifiable & Sendable, Content: View>: View {
     // MARK: Lifecycle
 
     public init(
@@ -23,25 +25,8 @@ public struct CustomSegmentedPicker<Item: Identifiable, Content: View>: View {
     public var body: some View {
         HStack(spacing: 0) {
             ForEach(items) { item in
-                let selected: Bool = selection.id == item.id
-                // 选项内容
                 content(item)
-                    .fixedSize()
-                    .frame(maxWidth: .infinity)
-                    .font(.footnote)
-                    .foregroundColor(selected ? .white : .primary)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background {
-                        Capsule()
-                            .fill(selection.id == item.id ? Color.accentColor : .clear)
-                    }
-                    .animation(.easeInOut(duration: 0.2), value: selection.id)
-                    .contentShape(Capsule()) // 确保整个区域可点击
-                    .onTapGesture {
-                        selection = item // 更新选中状态
-                        simpleTaptic(type: .medium)
-                    }
+                    .modifier(CustomSegmentedPickerItemModifier(item: item, selection: $selection))
             }
         }
         .padding(4)
@@ -58,4 +43,46 @@ public struct CustomSegmentedPicker<Item: Identifiable, Content: View>: View {
 
     let items: [Item] // 选项数组，需符合 Identifiable
     let content: (Item) -> Content // 自定义选项内容的闭包
+}
+
+// MARK: - CustomSegmentedPickerItemModifier
+
+@available(iOS 15.0, macCatalyst 15.0, *)
+private struct CustomSegmentedPickerItemModifier<Item: Identifiable & Sendable>: ViewModifier {
+    // MARK: Lifecycle
+
+    public init(item: Item, selection: Binding<Item>) {
+        self.item = item
+        self._selection = selection
+    }
+
+    // MARK: Public
+
+    @ViewBuilder
+    public func body(content: Content) -> some View {
+        let selected: Bool = selection.id == item.id
+        content
+            .fixedSize()
+            .frame(maxWidth: .infinity)
+            .font(.footnote)
+            .foregroundColor(selected ? .white : .primary)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background {
+                Capsule()
+                    .fill(selection.id == item.id ? Color.accentColor : .clear)
+            }
+            .animation(.easeInOut(duration: 0.2), value: selection.id)
+            .contentShape(Capsule()) // 确保整个区域可点击
+            .onTapGesture {
+                selection = item // 更新选中状态
+                simpleTaptic(type: .medium)
+            }
+    }
+
+    // MARK: Private
+
+    @Binding private var selection: Item
+
+    private let item: Item
 }
