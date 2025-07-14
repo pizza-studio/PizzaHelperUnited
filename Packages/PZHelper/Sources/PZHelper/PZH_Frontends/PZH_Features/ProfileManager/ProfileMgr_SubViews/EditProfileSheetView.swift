@@ -16,6 +16,7 @@ extension ProfileManagerPageContent {
 
         init(profile: PZProfileRef, isVisible: Binding<Bool>) {
             self._profile = .init(wrappedValue: profile)
+            self.profileBeforeEdit = profile.asSendable
             self._isVisible = isVisible
             if Self.isOS24OrNewer {
                 Task { @MainActor in
@@ -52,7 +53,6 @@ extension ProfileManagerPageContent {
                     }
                     ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {
-                            theVM.discardUncommittedChanges()
                             isVisible.toggle()
                         }
                     }
@@ -78,8 +78,10 @@ extension ProfileManagerPageContent {
         @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
+        private let profileBeforeEdit: PZProfileSendable
+
         private func saveButtonDidTap() {
-            if theVM.hasUncommittedChanges {
+            if profileBeforeEdit.hashValue != profile.asSendable.hashValue {
                 theVM.updateProfile(
                     profile.asSendable,
                     trailingTasks: {
