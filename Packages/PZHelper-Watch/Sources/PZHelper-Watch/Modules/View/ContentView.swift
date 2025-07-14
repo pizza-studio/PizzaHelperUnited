@@ -38,8 +38,11 @@ public struct ContentView: View {
                 List {
                     ASUpdateNoticeView()
                         .font(.footnote)
-                    ForEach(profiles, id: \.uuid) { account in
-                        DetailNavigator(account: account)
+                    ForEach(profiles, id: \.uuid) { profile in
+                        if let dailyNoteVM = multiNoteVM.vmMap[profile.uuid.uuidString] {
+                            DetailNavigator()
+                                .environmentObject(dailyNoteVM)
+                        }
                     }
                     NavigationLink {
                         WatchWidgetSettingView()
@@ -56,10 +59,8 @@ public struct ContentView: View {
         .react(to: scenePhase) { _, newPhase in
             switch newPhase {
             case .inactive:
-                if #available(watchOSApplicationExtension 9.0, *) {
-                    WidgetCenter.shared.reloadAllTimelines()
-                    WidgetCenter.shared.invalidateConfigurationRecommendations()
-                }
+                WidgetCenter.shared.reloadAllTimelines()
+                WidgetCenter.shared.invalidateConfigurationRecommendations()
             default:
                 break
             }
@@ -87,6 +88,7 @@ public struct ContentView: View {
 
     @StateObject private var connectivityManager = AppleWatchSputnik.shared
     @StateObject private var broadcaster = Broadcaster.shared
+    @StateObject private var multiNoteVM = MultiNoteViewModel.shared
 
     @Default(.pzProfiles) private var pzProfiles: [String: PZProfileSendable]
 
@@ -100,12 +102,6 @@ public struct ContentView: View {
 // MARK: - DetailNavigator
 
 private struct DetailNavigator: View {
-    // MARK: Lifecycle
-
-    init(account: PZProfileSendable) {
-        self._dailyNoteViewModel = .init(wrappedValue: DailyNoteViewModel(profile: account))
-    }
-
     // MARK: Internal
 
     @Environment(\.scenePhase) var scenePhase
@@ -169,6 +165,6 @@ private struct DetailNavigator: View {
 
     // MARK: Private
 
-    @State private var dailyNoteViewModel: DailyNoteViewModel
+    @EnvironmentObject private var dailyNoteViewModel: DailyNoteViewModel
     @StateObject private var broadcaster = Broadcaster.shared
 }

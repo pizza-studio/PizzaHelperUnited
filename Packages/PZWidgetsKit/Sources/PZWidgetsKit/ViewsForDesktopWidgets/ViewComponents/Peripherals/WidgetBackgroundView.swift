@@ -189,7 +189,7 @@ private struct SmartStackWidgetContainerBackground<B: View>: ViewModifier {
     let background: () -> B
 
     func body(content: Content) -> some View {
-        if #available(iOS 17.0, macCatalyst 17.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *) {
             content.containerBackground(for: .widget) {
                 background()
             }
@@ -227,7 +227,7 @@ private struct ContainerBackgroundModifier: ViewModifier {
 
 // MARK: - ContainerBackgroundStandbyDetector
 
-@available(iOS 17.0, macCatalyst 17.0, *)
+@available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 @available(watchOS, unavailable)
 private struct ContainerBackgroundStandbyDetector: ViewModifier {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode: WidgetRenderingMode

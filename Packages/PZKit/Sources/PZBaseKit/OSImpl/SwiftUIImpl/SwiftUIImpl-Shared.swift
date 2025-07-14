@@ -178,7 +178,7 @@ extension View {
 extension View {
     @ViewBuilder
     public func blurMaterialBackground(enabled: Bool = true) -> some View {
-        if #available(iOS 15.0, macCatalyst 15.0, *), enabled {
+        if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
             modifier(BlurMaterialBackground())
         } else {
             self
@@ -187,7 +187,7 @@ extension View {
 
     @ViewBuilder
     public func adjustedBlurMaterialBackground(enabled: Bool = true) -> some View {
-        if #available(iOS 15.0, macCatalyst 15.0, *), enabled {
+        if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
             modifier(AdjustedBlurMaterialBackground())
         } else {
             self
@@ -196,7 +196,7 @@ extension View {
 
     @ViewBuilder
     public func listRowMaterialBackground(enabled: Bool = true) -> some View {
-        if #available(iOS 15.0, macCatalyst 15.0, *), enabled {
+        if #available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *), enabled {
             listRowBackground(
                 Color.clear.background(.thinMaterial, in: Rectangle())
             )
@@ -208,7 +208,7 @@ extension View {
 
 // MARK: - BlurMaterialBackground
 
-@available(iOS 15.0, macCatalyst 15.0, *)
+@available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *)
 struct BlurMaterialBackground: ViewModifier {
     @ViewBuilder
     public func body(content: Content) -> some View {
@@ -222,7 +222,7 @@ struct BlurMaterialBackground: ViewModifier {
 
 // MARK: - AdjustedBlurMaterialBackground
 
-@available(iOS 15.0, macCatalyst 15.0, *)
+@available(iOS 15.0, macCatalyst 15.0, watchOS 10.0, *)
 struct AdjustedBlurMaterialBackground: ViewModifier {
     // MARK: Public
 
