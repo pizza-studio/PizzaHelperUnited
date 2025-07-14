@@ -25,7 +25,7 @@ public protocol ProfileWidgetIntentProtocol {
 
 // MARK: - PZDesktopIntent4SingleProfile + WidgetConfigurationIntent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension PZDesktopIntent4SingleProfile: WidgetConfigurationIntent {}
 
 // MARK: - PZDesktopIntent4SingleProfile
@@ -125,7 +125,7 @@ public struct PZDesktopIntent4SingleProfile: AppIntent, CustomIntentMigratedAppI
 
 // MARK: - PZDesktopIntent4DualProfiles + WidgetConfigurationIntent
 
-@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *)
+@available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *)
 extension PZDesktopIntent4DualProfiles: WidgetConfigurationIntent {}
 
 // MARK: - PZDesktopIntent4DualProfiles
