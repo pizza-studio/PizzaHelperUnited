@@ -47,22 +47,22 @@ public struct UserWallpaperMgrViewContent: View {
                         UserWallpaperExchangeMenu { importFileResult in
                             switch importFileResult {
                             case .failure:
-                                alertToastEventStatus.isWallpaperTaskFailed.toggle()
+                                alertToastEventStatus4WPMgr.isWallpaperTaskFailed.toggle()
                             case let .success(url):
                                 defer {
                                     url.stopAccessingSecurityScopedResource()
                                 }
                                 guard url.startAccessingSecurityScopedResource() else {
-                                    alertToastEventStatus.isWallpaperTaskFailed.toggle()
+                                    alertToastEventStatus4WPMgr.isWallpaperTaskFailed.toggle()
                                     return
                                 }
                                 do {
                                     try UserWallpaperPack.loadAndParse(url)
                                 } catch {
-                                    alertToastEventStatus.isWallpaperTaskFailed.toggle()
+                                    alertToastEventStatus4WPMgr.isWallpaperTaskFailed.toggle()
                                     return
                                 }
-                                alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
+                                alertToastEventStatus4WPMgr.isWallpaperTaskSucceeded.toggle()
                             }
                         } extraItem: {
                             NavigationLink(destination: callUserWallpaperMakerView) {
@@ -77,14 +77,14 @@ public struct UserWallpaperMgrViewContent: View {
                         .disabled(isEditing)
                     }
                 }
-                .toast(isPresenting: $alertToastEventStatus.isWallpaperTaskSucceeded) {
+                .toast(isPresenting: $alertToastEventStatus4WPMgr.isWallpaperTaskSucceeded) {
                     AlertToast(
                         displayMode: .alert,
                         type: .complete(.green),
                         title: "userWallpaperMgr.toast.taskSucceeded".i18nWPConfKit
                     )
                 }
-                .toast(isPresenting: $alertToastEventStatus.isWallpaperTaskFailed) {
+                .toast(isPresenting: $alertToastEventStatus4WPMgr.isWallpaperTaskFailed) {
                     AlertToast(
                         displayMode: .alert,
                         type: .error(.red),
@@ -100,7 +100,7 @@ public struct UserWallpaperMgrViewContent: View {
     // MARK: Internal
 
     @Observable
-    final class AlertToastEventStatus {
+    final class AlertToastEventStatus4WPMgr {
         public var isWallpaperTaskSucceeded = false
         public var isWallpaperTaskFailed = false
     }
@@ -122,7 +122,7 @@ public struct UserWallpaperMgrViewContent: View {
     #endif
 
     @State private var isCropperSheetPresented: Bool = false
-    @State private var alertToastEventStatus: AlertToastEventStatus = .init()
+    @State private var alertToastEventStatus4WPMgr: AlertToastEventStatus4WPMgr = .init()
     @StateObject private var broadcaster = Broadcaster.shared
     @StateObject private var folderMonitor = UserWallpaperFileHandler.folderMonitor
     @State private var isNameEditorVisible: Bool = false
@@ -174,8 +174,18 @@ extension UserWallpaperMgrViewContent {
     @ViewBuilder var coreBody: some View {
         List {
             Section {
-                ForEach(userWallpapersSorted, id: \.id, content: drawRow)
-                    .onDelete(perform: deleteItems)
+                ForEach(userWallpapersSorted, id: \.id) { userWallpaper in
+                    RowEntryView(
+                        userWallpaper: userWallpaper,
+                        textLimiter: limitText,
+                        isEditMode: $isEditMode,
+                        isNameEditorVisible: $isNameEditorVisible,
+                        currentEditingWallpaper: $currentEditingWallpaper,
+                        userWallpapers: $userWallpapers
+                    )
+                    .environment(alertToastEventStatus4WPMgr)
+                }
+                .onDelete(perform: deleteItems)
             } header: {
                 if userWallpapers.count >= Self.maxEntriesAmount {
                     Text("userWallpaperMgr.footerNotice.maximumEntryAmountReached", bundle: .module)
@@ -216,131 +226,10 @@ extension UserWallpaperMgrViewContent {
     }
 
     @ViewBuilder
-    private func drawRow(_ userWallpaper: UserWallpaper) -> some View {
-        let cgImage = userWallpaper.imageSquared
-        let iconImage: Image = {
-            if let cgImage { return Image(decorative: cgImage, scale: 1, orientation: .up) }
-            return Image(systemSymbol: .trashSlashFill)
-        }()
-        /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
-        HStack {
-            iconImage
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .frame(width: 48).padding(.trailing, 4)
-            VStack(alignment: .leading, spacing: 3) {
-                Text(userWallpaper.name)
-                    .foregroundColor(.primary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                VStack(alignment: .leading) {
-                    Text(userWallpaper.dateString).fontDesign(.monospaced)
-                }
-                .font(.caption2)
-                .fontWidth(.condensed)
-                .foregroundColor(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            Spacer()
-            if isEditing || (OS.type == .macOS && !OS.isCatalyst) {
-                Button {
-                    currentEditingWallpaper = userWallpaper
-                    isNameEditorVisible = true
-                } label: {
-                    Image(systemSymbol: .squareAndPencil)
-                }
-            }
-        }
-        .contextMenu {
-            Button {
-                currentEditingWallpaper = userWallpaper
-                isNameEditorVisible = true
-            } label: {
-                Text("userWallpaperMgr.contextMenu.renameWallpaperEntry", bundle: .module)
-            }
-            Divider()
-            Button("wpKit.assign.background4App".i18nWPConfKit) {
-                appWallpaperID = userWallpaper.id.uuidString
-            }
-            #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
-            let alreadyChosenAsLABG: Bool = !labvParser.useRandomBackground.wrappedValue
-                && !labvParser.useEmptyBackground.wrappedValue
-                && liveActivityWallpaperIDs.contains(userWallpaper.id.uuidString)
-            Button {
-                if alreadyChosenAsLABG {
-                    liveActivityWallpaperIDs.remove(userWallpaper.id.uuidString)
-                } else {
-                    labvParser.useEmptyBackground.wrappedValue = false
-                    liveActivityWallpaperIDs.insert(userWallpaper.id.uuidString)
-                }
-            } label: {
-                Label(
-                    "wpKit.assign.backgrounds4LiveActivity".i18nWPConfKit,
-                    systemSymbol: alreadyChosenAsLABG ? .checkmark : nil
-                )
-            }
-            #endif
-            Divider()
-            Button(role: .destructive) {
-                withAnimation {
-                    UserWallpaperFileHandler.removeWallpaper(uuid: userWallpaper.id)
-                    #if os(iOS) || targetEnvironment(macCatalyst)
-                    if userWallpapers.isEmpty {
-                        isEditMode = .inactive
-                    }
-                    #endif
-                    Task { @MainActor in
-                        Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-                    }
-                }
-            } label: {
-                Text("userWallpaperMgr.contextMenu.removeWallpaperEntry", bundle: .module)
-            }
-        }
-        .alert(
-            Text("userWallpaperMgr.editingWallpaperName.prompt", bundle: .module),
-            isPresented: $isNameEditorVisible,
-            actions: {
-                TextField(
-                    text: nameEditingBuffer
-                ) {
-                    Text("userWallpaperMgr.editingWallpaperName.fieldLabel", bundle: .module)
-                }.react(to: currentEditingWallpaper) { oldValue, newValue in
-                    guard oldValue != newValue else { return }
-                    limitText(30)
-                }
-                if var currentEditingWallpaper {
-                    Button {
-                        currentEditingWallpaper.name = nameEditingBuffer.wrappedValue
-                        UserWallpaperFileHandler.saveUserWallpaperToDisk(currentEditingWallpaper)
-                        alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
-                        Task { @MainActor in
-                            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
-                        }
-                        isNameEditorVisible = false
-                    } label: {
-                        Text("sys.done".i18nBaseKit)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .keyboardShortcut(.return)
-                }
-                Button {
-                    currentEditingWallpaper = nil
-                    isNameEditorVisible = false
-                } label: {
-                    Text("sys.cancel".i18nBaseKit)
-                }
-                .keyboardShortcut(.escape)
-            }
-        )
-    }
-
-    @ViewBuilder
-    func callUserWallpaperMakerView() -> some View {
+    func callUserWallpaperMakerView() -> UserWallpaperMakerView {
         UserWallpaperMakerView { finishedWallpaper in
             withAnimation {
-                alertToastEventStatus.isWallpaperTaskSucceeded.toggle()
+                alertToastEventStatus4WPMgr.isWallpaperTaskSucceeded.toggle()
                 currentEditingWallpaper = finishedWallpaper
                 UserWallpaperFileHandler.saveUserWallpaperToDisk(finishedWallpaper)
                 isNameEditorVisible = true
@@ -349,7 +238,7 @@ extension UserWallpaperMgrViewContent {
                 }
             }
         } failureHandler: {
-            alertToastEventStatus.isWallpaperTaskFailed.toggle()
+            alertToastEventStatus4WPMgr.isWallpaperTaskFailed.toggle()
         }
     }
 
@@ -379,6 +268,186 @@ extension UserWallpaperMgrViewContent {
         guard upper > 0 else { return }
         if (currentEditingWallpaper?.name.count ?? -1) > upper {
             currentEditingWallpaper?.name = String(nameEditingBuffer.wrappedValue.prefix(upper))
+        }
+    }
+}
+
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension UserWallpaperMgrViewContent {
+    private struct RowEntryView: View {
+        // MARK: Lifecycle
+
+        public init(
+            userWallpaper: UserWallpaper,
+            textLimiter: @escaping (Int) -> Void,
+            isEditMode: Binding<EditMode>,
+            isNameEditorVisible: Binding<Bool>,
+            currentEditingWallpaper: Binding<UserWallpaper?>,
+            userWallpapers: Binding<Set<UserWallpaper>>
+        ) {
+            self.userWallpaper = userWallpaper
+            self.textLimiter = textLimiter
+            self._isEditMode = isEditMode
+            self._isNameEditorVisible = isNameEditorVisible
+            self._currentEditingWallpaper = currentEditingWallpaper
+            self._userWallpapers = userWallpapers
+        }
+
+        // MARK: Public
+
+        public var body: some View {
+            let cgImage = userWallpaper.imageSquared
+            let iconImage: Image = {
+                if let cgImage { return Image(decorative: cgImage, scale: 1, orientation: .up) }
+                return Image(systemSymbol: .trashSlashFill)
+            }()
+            /// LabeledContent 与 iPadOS 18 的某些版本不相容，使得此处需要改用 HStack 应对处理。
+            HStack {
+                iconImage
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .frame(width: 48).padding(.trailing, 4)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(userWallpaper.name)
+                        .foregroundColor(.primary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    VStack(alignment: .leading) {
+                        Text(userWallpaper.dateString).fontDesign(.monospaced)
+                    }
+                    .font(.caption2)
+                    .fontWidth(.condensed)
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+                if isEditing || (OS.type == .macOS && !OS.isCatalyst) {
+                    Button {
+                        currentEditingWallpaper = userWallpaper
+                        isNameEditorVisible = true
+                    } label: {
+                        Image(systemSymbol: .squareAndPencil)
+                    }
+                }
+            }
+            .contextMenu {
+                Button {
+                    currentEditingWallpaper = userWallpaper
+                    isNameEditorVisible = true
+                } label: {
+                    Text("userWallpaperMgr.contextMenu.renameWallpaperEntry", bundle: .module)
+                }
+                Divider()
+                Button("wpKit.assign.background4App".i18nWPConfKit) {
+                    appWallpaperID = userWallpaper.id.uuidString
+                }
+                #if canImport(ActivityKit) && !targetEnvironment(macCatalyst) && !os(macOS)
+                let alreadyChosenAsLABG: Bool =
+                    !labvParser.useRandomBackground.wrappedValue
+                        && !labvParser.useEmptyBackground.wrappedValue
+                        && liveActivityWallpaperIDs.contains(userWallpaper.id.uuidString)
+                Button {
+                    if alreadyChosenAsLABG {
+                        liveActivityWallpaperIDs.remove(userWallpaper.id.uuidString)
+                    } else {
+                        labvParser.useEmptyBackground.wrappedValue = false
+                        liveActivityWallpaperIDs.insert(userWallpaper.id.uuidString)
+                    }
+                } label: {
+                    Label(
+                        "wpKit.assign.backgrounds4LiveActivity".i18nWPConfKit,
+                        systemSymbol: alreadyChosenAsLABG ? .checkmark : nil
+                    )
+                }
+                #endif
+                Divider()
+                Button(role: .destructive) {
+                    withAnimation {
+                        UserWallpaperFileHandler.removeWallpaper(uuid: userWallpaper.id)
+                        #if os(iOS) || targetEnvironment(macCatalyst)
+                        if userWallpapers.isEmpty {
+                            isEditMode = .inactive
+                        }
+                        #endif
+                        Task { @MainActor in
+                            Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                        }
+                    }
+                } label: {
+                    Text("userWallpaperMgr.contextMenu.removeWallpaperEntry", bundle: .module)
+                }
+            }
+            .alert(
+                Text("userWallpaperMgr.editingWallpaperName.prompt", bundle: .module),
+                isPresented: $isNameEditorVisible,
+                actions: {
+                    TextField(
+                        text: nameEditingBuffer
+                    ) {
+                        Text("userWallpaperMgr.editingWallpaperName.fieldLabel", bundle: .module)
+                    }.react(to: currentEditingWallpaper) { oldValue, newValue in
+                        guard oldValue != newValue else { return }
+                        textLimiter(30)
+                    }
+                    if var currentEditingWallpaper {
+                        Button {
+                            currentEditingWallpaper.name = nameEditingBuffer.wrappedValue
+                            UserWallpaperFileHandler.saveUserWallpaperToDisk(currentEditingWallpaper)
+                            alertToastEventStatus4WPMgr.isWallpaperTaskSucceeded.toggle()
+                            Task { @MainActor in
+                                Broadcaster.shared.reloadAllTimeLinesAcrossWidgets()
+                            }
+                            isNameEditorVisible = false
+                        } label: {
+                            Text("sys.done".i18nBaseKit)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .keyboardShortcut(.return)
+                    }
+                    Button {
+                        currentEditingWallpaper = nil
+                        isNameEditorVisible = false
+                    } label: {
+                        Text("sys.cancel".i18nBaseKit)
+                    }
+                    .keyboardShortcut(.escape)
+                }
+            )
+        }
+
+        // MARK: Private
+
+        @Binding private var isEditMode: EditMode
+        @Binding private var isNameEditorVisible: Bool
+        @Binding private var currentEditingWallpaper: UserWallpaper?
+        @Binding private var userWallpapers: Set<UserWallpaper>
+        @Environment(AlertToastEventStatus4WPMgr.self) private var alertToastEventStatus4WPMgr
+
+        @Default(.liveActivityWallpaperIDs) private var liveActivityWallpaperIDs: Set<String>
+        @Default(.appWallpaperID) private var appWallpaperID: String
+
+        private let userWallpaper: UserWallpaper
+        private let textLimiter: (Int) -> Void
+
+        private var labvParser: LiveActivityBackgroundValueParser {
+            .init($liveActivityWallpaperIDs)
+        }
+
+        private var isEditing: Bool {
+            #if os(iOS) || targetEnvironment(macCatalyst)
+            return isEditMode.isEditing
+            #else
+            return false
+            #endif
+        }
+
+        private var nameEditingBuffer: Binding<String> {
+            .init {
+                currentEditingWallpaper?.name ?? ""
+            } set: { newValue in
+                currentEditingWallpaper?.name = newValue
+            }
         }
     }
 }
