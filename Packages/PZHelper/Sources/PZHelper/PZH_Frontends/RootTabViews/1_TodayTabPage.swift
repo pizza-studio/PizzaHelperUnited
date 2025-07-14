@@ -105,7 +105,9 @@ struct TodayTabPage: View {
                         .opacity(0)
                 }
             }
-            .safeAreaInset(edge: .bottom, content: rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn)
+            .safeAreaInset(edge: .bottom) {
+                rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn
+            }
         }
         .navigationTitle(
             screenVM.isExtremeCompact
