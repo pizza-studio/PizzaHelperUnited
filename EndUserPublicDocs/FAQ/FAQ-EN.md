@@ -47,6 +47,10 @@ Features have been removed for the following reasons:
 - Features that can no longer be maintained due to developer time constraints, such as the Pizza Dictionary.
 - Features with unresolvable user experience issues, such as the Spiral Abyss Top Lists.
 
+#### Q: After upgrading this app from the App Store, why have many features disappeared? Now only the data export function remains?
+
+Starting from v5.5.0 (v5.5.1 for watchOS app), this software has reintroduced its installability for OS21 ~ OS23 (i.e., iOS 14 ~ 16 and macOS 11 ~ 13) to replace deprecated legacy versions. This decision was made due to security concerns in older versions (v4.x and earlier) and our inability to address them through other means. Considering the unique needs of OS23 users, we have backported some core features to OS23 (iOS 16.2+, macOS 13.0+, watchOS 9.2+) and later. However, SwiftUI remains highly unstable on these OS versions, which may cause operational issues. If your usage requirements and budget permit, please switch to a device supporting at least OS24+.
+
 ## // App and Development Team
 
 #### Q: I am a refugee of the Pizza Helper for HSR. What should I be aware of when migrating to this new app?
