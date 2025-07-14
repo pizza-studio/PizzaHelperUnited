@@ -53,12 +53,20 @@ struct ProfileManagerPageContent: View {
     @ViewBuilder var coreBody: some View {
         Form {
             Section {
-                NavigationLink {
-                    let newProfile = PZProfileRef.makeDefaultInstance()
-                    CreateProfileSheetView(profile: newProfile)
-                        .environmentObject(alertToastEventStatus)
-                } label: {
-                    Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
+                if Self.isOS24OrAbove {
+                    NavigationLink {
+                        let newProfile = PZProfileRef.makeDefaultInstance()
+                        CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
+                            .environmentObject(alertToastEventStatus)
+                    } label: {
+                        Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
+                    }
+                } else {
+                    Button {
+                        sheetType = .createNewProfile(PZProfileRef.makeDefaultInstance())
+                    } label: {
+                        Label("profileMgr.new".i18nPZHelper, systemSymbol: .plusCircle)
+                    }
                 }
             } footer: {
                 NavigationLink {
@@ -75,11 +83,19 @@ struct ProfileManagerPageContent: View {
                         if let profileRef = theVM.profileRefMap[profile.uuid.uuidString] {
                             let label = drawRow(profile: profileRef)
                             if isAppKitOrNotEditing {
-                                NavigationLink {
-                                    EditProfileSheetView(profile: profileRef)
-                                        .environmentObject(alertToastEventStatus)
-                                } label: {
-                                    label
+                                if Self.isOS24OrAbove {
+                                    NavigationLink {
+                                        EditProfileSheetView(profile: profileRef, isVisible: isSheetVisible)
+                                            .environmentObject(alertToastEventStatus)
+                                    } label: {
+                                        label
+                                    }
+                                } else {
+                                    Button {
+                                        sheetType = .editExistingProfile(profileRef)
+                                    } label: {
+                                        label
+                                    }
                                 }
                             } else {
                                 label
@@ -109,6 +125,7 @@ struct ProfileManagerPageContent: View {
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
         .onAppear(perform: bleachInvalidProfiles)
+        .apply(hookSheet)
         .apply { content in
             content
                 .toolbar {
@@ -158,12 +175,36 @@ struct ProfileManagerPageContent: View {
         return formatter
     }()
 
+    private static var isOS24OrAbove: Bool {
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
+        return false
+    }
+
     @StateObject private var theVM: ProfileManagerVM = .shared
     @StateObject private var alertToastEventStatus: AlertToastEventStatus = .init()
     @State private var errorMessage: String?
+    @State private var sheetType: SheetType?
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass: UserInterfaceSizeClass?
 
     @Default(.lastTimeResetLocalProfileDB) private var lastTimeResetLocalProfileDB: Date?
+
+    private var isSheetVisible: Binding<Bool> {
+        .init {
+            if Self.isOS24OrAbove {
+                theVM.sheetType != nil
+            } else {
+                sheetType != nil
+            }
+        } set: { newValue in
+            if !newValue {
+                if Self.isOS24OrAbove {
+                    theVM.sheetType = nil
+                } else {
+                    sheetType = nil
+                }
+            }
+        }
+    }
 
     private var isEditing: Bool {
         #if os(iOS) || targetEnvironment(macCatalyst)
@@ -179,6 +220,26 @@ struct ProfileManagerPageContent: View {
 
     private var isBusy: Bool {
         theVM.taskState == .busy
+    }
+
+    @ViewBuilder
+    private func hookSheet(_ givenView: some View) -> some View {
+        if !Self.isOS24OrAbove {
+            givenView.sheet(item: $sheetType) { currentSheetType in
+                switch currentSheetType {
+                case let .createNewProfile(newProfile):
+                    CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
+                        .environmentObject(alertToastEventStatus)
+                        .interactiveDismissDisabled(true)
+                case let .editExistingProfile(existingProfile):
+                    EditProfileSheetView(profile: existingProfile, isVisible: isSheetVisible)
+                        .environmentObject(alertToastEventStatus)
+                        .interactiveDismissDisabled(true)
+                }
+            }
+        } else {
+            givenView
+        }
     }
 
     @ViewBuilder
@@ -212,7 +273,7 @@ struct ProfileManagerPageContent: View {
         }
         .contextMenu {
             Button("profileMgr.edit.title".i18nPZHelper) {
-                theVM.sheetType = .editExistingProfile(profile)
+                sheetType = .editExistingProfile(profile)
             }
             Button(role: .destructive) {
                 deleteItems(uuids: [profile.uuid], clearEnkaCache: false)

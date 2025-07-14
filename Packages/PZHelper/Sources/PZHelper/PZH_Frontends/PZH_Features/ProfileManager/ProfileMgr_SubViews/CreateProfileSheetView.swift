@@ -14,10 +14,13 @@ extension ProfileManagerPageContent {
     struct CreateProfileSheetView: View {
         // MARK: Lifecycle
 
-        init(profile: PZProfileRef) {
+        init(profile: PZProfileRef, isVisible: Binding<Bool>) {
             self._profile = .init(wrappedValue: profile)
-            Task { @MainActor in
-                ProfileManagerVM.shared.sheetType = .createNewProfile(profile)
+            self._isVisible = isVisible
+            if Self.isOS24OrNewer {
+                Task { @MainActor in
+                    ProfileManagerVM.shared.sheetType = .createNewProfile(profile)
+                }
             }
         }
 
@@ -65,7 +68,7 @@ extension ProfileManagerPageContent {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {
                             theVM.discardUncommittedChanges()
-                            theVM.sheetType = nil
+                            isVisible.toggle()
                         }
                     }
                 }
@@ -91,10 +94,8 @@ extension ProfileManagerPageContent {
                         return
                     }
                 }
-                .react(to: theVM.sheetType) { oldValue, newValue in
-                    if oldValue != nil, newValue == nil {
-                        presentationMode.wrappedValue.dismiss()
-                    }
+                .react(to: isVisible) { _, newValue in
+                    if Self.isOS24OrAbove, !newValue { presentationMode.wrappedValue.dismiss() }
                 }
                 .react(to: profile.game) { _, newValue in
                     region.changeGame(to: newValue)
@@ -168,7 +169,7 @@ extension ProfileManagerPageContent {
                 profile.asSendable,
                 trailingTasks: {
                     PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-                    theVM.sheetType = nil
+                    isVisible.toggle()
                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
                 },
                 errorHandler: { error in
@@ -262,7 +263,7 @@ extension ProfileManagerPageContent {
                         onlyDeleteIfDisabled: false
                     )
                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
-                    theVM.sheetType = nil
+                    isVisible.toggle()
                 },
                 errorHandler: { error in
                     getAccountError = .source(error)
@@ -309,6 +310,11 @@ extension ProfileManagerPageContent {
             case gotProfile
         }
 
+        private static var isOS24OrAbove: Bool {
+            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
+            return false
+        }
+
         @StateObject private var profile: PZProfileRef
         @State private var importAllUIDs: Bool = true
         @State private var isGetAccountFailAlertShown: Bool = false
@@ -318,6 +324,7 @@ extension ProfileManagerPageContent {
         @State private var region: HoYo.AccountRegion = .miyoushe(.genshinImpact)
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
+        @Binding private var isVisible: Bool
         @StateObject private var theVM: ProfileManagerVM = .shared
         @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
@@ -397,11 +404,6 @@ private struct RequireLoginView: View {
     }
 
     // MARK: Private
-
-    private static var isOS24OrAbove: Bool {
-        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
-        return false
-    }
 
     @Binding private var importAllUIDs: Bool
     @Binding private var unsavedCookie: String
