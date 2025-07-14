@@ -17,10 +17,10 @@ public final class MultiNoteViewModel: TaskManagedVM {
 
     override public init() {
         super.init()
-        updateVMInstances()
+        fireTask(givenTask: updateVMInstances)
         Task {
             for await _ in Defaults.updates(.pzProfiles) {
-                self.updateVMInstances()
+                self.fireTask(givenTask: self.updateVMInstances)
             }
         }
     }
