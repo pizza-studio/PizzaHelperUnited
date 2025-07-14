@@ -23,6 +23,8 @@
 		5B560A0F2C6BB5BB00175FB1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A0E2C6BB5BB00175FB1 /* InfoPlist.xcstrings */; };
 		5B560A192C6BBB8300175FB1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B560A172C6BBB8300175FB1 /* Settings.bundle */; };
 		5B6F380C2CCE4EDE0081A23D /* PizzaWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B8FF7092E24D14D0014696F /* SwiftData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8FF7082E24D14C0014696F /* SwiftData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5B8FF70A2E24D1580014696F /* SwiftData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8FF7082E24D14C0014696F /* SwiftData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5BB1392D2E1F892500D1F169 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB1392C2E1F892500D1F169 /* Intents.framework */; };
 		5BB139342E1F892500D1F169 /* INIntents4iOS16.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5BB1392B2E1F892500D1F169 /* INIntents4iOS16.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BD0D0F52C6A653500DA8099 /* PZHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD0D0F42C6A653500DA8099 /* PZHelper */; };
@@ -130,6 +132,7 @@
 		5B560A172C6BBB8300175FB1 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5B6F37FF2CCE4EDC0081A23D /* PizzaWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7619052D3293DC0076AA08 /* GI_MaterialDBGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GI_MaterialDBGenerator.swift; sourceTree = "<group>"; };
+		5B8FF7082E24D14C0014696F /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/SwiftData.framework; sourceTree = DEVELOPER_DIR; };
 		5B978A8F2C8D8DF60000EB61 /* GITodayMaterialsKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GITodayMaterialsKit; sourceTree = "<group>"; };
 		5BB1392B2E1F892500D1F169 /* INIntents4iOS16.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = INIntents4iOS16.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB1392C2E1F892500D1F169 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
@@ -258,6 +261,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8FF70A2E24D1580014696F /* SwiftData.framework in Frameworks */,
 				5B258E292CCE8A1300131992 /* PZBaseKit in Frameworks */,
 				5B258E2F2CCE8A1D00131992 /* WallpaperKit in Frameworks */,
 				5B258E232CCE8A0500131992 /* Defaults in Frameworks */,
@@ -275,6 +279,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8FF7092E24D14D0014696F /* SwiftData.framework in Frameworks */,
 				5B0A42BF2CCE4F96004463D5 /* PZHelper-Watch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +327,7 @@
 		5B2A65F92C69204600BAEE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B8FF7082E24D14C0014696F /* SwiftData.framework */,
 				5BD744292CC6B262007DE385 /* WidgetKit.framework */,
 				5BD7442B2CC6B262007DE385 /* SwiftUI.framework */,
 				5BB1392C2E1F892500D1F169 /* Intents.framework */,
@@ -990,7 +996,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10;
+				WATCHOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
 		};
@@ -1022,7 +1028,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10;
+				WATCHOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
 		};
@@ -1054,7 +1060,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10;
+				WATCHOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
 		};
@@ -1087,7 +1093,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10;
+				WATCHOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
 		};
