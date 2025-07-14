@@ -351,47 +351,26 @@ private struct RequireLoginView: View {
     @Binding var deviceID: String
 
     var body: some View {
-        if Self.isOS24OrAbove {
-            VStack {
-                Text("settings.profile.pleaseSelectGame".i18nPZHelper)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Picker("".description, selection: $game) {
-                    ForEach(Pizza.SupportedGame.allCases) { currentGame in
-                        Text(currentGame.localizedDescriptionTrimmed)
-                            .tag(currentGame)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .fontWidth(.condensed)
-            }
-        } else {
-            // iOS 16 的 Bug: Segmented Picker 在 ListRow 里面失灵。
-            LabeledContent("settings.profile.pleaseSelectGame".i18nPZHelper) {
-                Picker("".description, selection: $game) {
-                    ForEach(Pizza.SupportedGame.allCases) { currentGame in
-                        Text(currentGame.localizedDescriptionTrimmed)
-                            .tag(currentGame)
-                    }
-                }
-                .pickerStyle(.menu)
-                .fontWidth(.condensed)
-                .fixedSize()
+        VStack {
+            Text("settings.profile.pleaseSelectGame".i18nPZHelper)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            CustomSegmentedPicker(
+                selection: $game,
+                items: Pizza.SupportedGame.allCases
+            ) { currentGame in
+                Text(currentGame.localizedDescriptionTrimmed)
+                    .fontWidth(.condensed)
+                    .tag(currentGame)
             }
         }
         LabeledContent("settings.profile.pleaseSelectRegion".i18nPZHelper) {
-            Picker("".description, selection: $region) {
-                let regionsMatched = HoYo.AccountRegion.getCases(region.game)
-                ForEach(regionsMatched) { matchedRegion in
-                    Text(matchedRegion.localizedDescription)
-                        .tag(matchedRegion)
-                }
-            }
-            .apply { picker in
-                // iOS 16 的 Bug: Segmented Picker 在 ListRow 里面失灵。
-                switch Self.isOS24OrAbove {
-                case true: picker.pickerStyle(.segmented)
-                case false: picker.pickerStyle(.menu)
-                }
+            CustomSegmentedPicker(
+                selection: $region,
+                items: HoYo.AccountRegion.getCases(region.game)
+            ) { matchedRegion in
+                Text(matchedRegion.localizedDescription)
+                    .fontWidth(.condensed)
+                    .tag(matchedRegion)
             }
             .fixedSize()
         }
