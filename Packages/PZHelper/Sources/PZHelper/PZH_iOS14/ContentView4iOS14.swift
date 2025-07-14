@@ -71,6 +71,8 @@ public struct ContentView4iOS14: View {
                         .textCase(.none)
                 }
                 .fontWidth(.condensed)
+                WatchDataPusherButton()
+                    .fontWidth(.condensed)
             }
             Section {
                 if theVM.localProfileEntriesCount > 0 {
