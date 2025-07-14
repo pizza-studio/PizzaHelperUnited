@@ -95,7 +95,7 @@ extension ProfileManagerPageContent {
                     }
                 }
                 .react(to: isVisible) { _, newValue in
-                    if Self.isOS24OrAbove, !newValue { presentationMode.wrappedValue.dismiss() }
+                    if Self.isOS24OrNewer, !newValue { presentationMode.wrappedValue.dismiss() }
                 }
                 .react(to: profile.game) { _, newValue in
                     region.changeGame(to: newValue)
@@ -310,7 +310,7 @@ extension ProfileManagerPageContent {
             case gotProfile
         }
 
-        private static var isOS24OrAbove: Bool {
+        private static var isOS24OrNewer: Bool {
             if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
             return false
         }

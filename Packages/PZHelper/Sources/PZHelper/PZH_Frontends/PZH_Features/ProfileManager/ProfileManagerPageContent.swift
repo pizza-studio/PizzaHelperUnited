@@ -53,7 +53,7 @@ struct ProfileManagerPageContent: View {
     @ViewBuilder var coreBody: some View {
         Form {
             Section {
-                if Self.isOS24OrAbove {
+                if Self.isOS24OrNewer {
                     NavigationLink {
                         let newProfile = PZProfileRef.makeDefaultInstance()
                         CreateProfileSheetView(profile: newProfile, isVisible: isSheetVisible)
@@ -83,7 +83,7 @@ struct ProfileManagerPageContent: View {
                         if let profileRef = theVM.profileRefMap[profile.uuid.uuidString] {
                             let label = drawRow(profile: profileRef)
                             if isAppKitOrNotEditing {
-                                if Self.isOS24OrAbove {
+                                if Self.isOS24OrNewer {
                                     NavigationLink {
                                         EditProfileSheetView(profile: profileRef, isVisible: isSheetVisible)
                                             .environmentObject(alertToastEventStatus)
@@ -175,7 +175,7 @@ struct ProfileManagerPageContent: View {
         return formatter
     }()
 
-    private static var isOS24OrAbove: Bool {
+    private static var isOS24OrNewer: Bool {
         if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
         return false
     }
@@ -190,14 +190,14 @@ struct ProfileManagerPageContent: View {
 
     private var isSheetVisible: Binding<Bool> {
         .init {
-            if Self.isOS24OrAbove {
+            if Self.isOS24OrNewer {
                 theVM.sheetType != nil
             } else {
                 sheetType != nil
             }
         } set: { newValue in
             if !newValue {
-                if Self.isOS24OrAbove {
+                if Self.isOS24OrNewer {
                     theVM.sheetType = nil
                 } else {
                     sheetType = nil
@@ -224,7 +224,7 @@ struct ProfileManagerPageContent: View {
 
     @ViewBuilder
     private func hookSheet(_ givenView: some View) -> some View {
-        if !Self.isOS24OrAbove {
+        if !Self.isOS24OrNewer {
             givenView.sheet(item: $sheetType) { currentSheetType in
                 switch currentSheetType {
                 case let .createNewProfile(newProfile):
