@@ -55,6 +55,8 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
         return false
     }
 
+    private let debouncer: Debouncer = .init(delay: 0.5)
+
     private var subscribed: Bool = false
 
     private func configurePublisherObservations() {
@@ -74,7 +76,9 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
             let hasPZProfileMO = changedEntityNames.contains("PZProfileMO")
             guard hasAccountMO4GI || hasOldGachaLog4GI || hasPZProfileMO else { return }
             Task { @MainActor in
-                self.startCountingDataEntriesTask(forced: false)
+                await self.debouncer.debounce {
+                    self.startCountingDataEntriesTask(forced: false)
+                }
             }
         }
     }

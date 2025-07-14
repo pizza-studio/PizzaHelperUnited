@@ -81,6 +81,8 @@ public final class GachaVM: TaskManagedVM {
 
     // MARK: Private
 
+    private let debouncer: Debouncer = .init(delay: 0.5)
+
     private var subscribed: Bool = false
 
     private static func defaultPoolType(for game: Pizza.SupportedGame?) -> GachaPoolExpressible? {
@@ -145,7 +147,9 @@ public final class GachaVM: TaskManagedVM {
         }
         if changesInvolveGPID {
             Task {
-                await self.updateAllCachedGPIDs()
+                await debouncer.debounce {
+                    await self.updateAllCachedGPIDs()
+                }
             }
         }
     }
