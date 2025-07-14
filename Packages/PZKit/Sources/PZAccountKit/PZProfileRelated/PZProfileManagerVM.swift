@@ -195,6 +195,8 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
 
     // MARK: Private
 
+    private let debouncer: Debouncer = .init(delay: 0.5)
+
     private var subscribed: Bool = false
 
     private func configurePublisherObservations() {
@@ -212,7 +214,9 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
                 guard !changedEntityNames.isEmpty else { return }
                 guard changedEntityNames.contains("PZProfileMO") else { return }
                 Task { @MainActor in
-                    self.didObserveChangesFromSwiftData()
+                    await self.debouncer.debounce {
+                        self.didObserveChangesFromSwiftData()
+                    }
                 }
             }
         } else {
@@ -229,7 +233,9 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
                 guard !changedEntityNames.isEmpty else { return }
                 guard changedEntityNames.contains("PZProfileMO") else { return }
                 Task { @MainActor in
-                    self.didObserveChangesFromSwiftData()
+                    await self.debouncer.debounce {
+                        self.didObserveChangesFromSwiftData()
+                    }
                 }
             }
         }
