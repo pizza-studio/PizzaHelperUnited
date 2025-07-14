@@ -20,12 +20,7 @@ public final class RefugeeVM4iOS14: TaskManagedVMBackported {
     override private init() {
         super.init()
         configurePublisherObservations()
-        Task {
-            while Defaults[.isEULAConfirmed] == false {
-                try await Task.sleep(nanoseconds: 500_000_000)
-            }
-            startCountingDataEntriesTask(forced: true)
-        }
+        startCountingDataEntriesTask(forced: true)
     }
 
     // MARK: Public
