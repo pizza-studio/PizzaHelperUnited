@@ -31,8 +31,12 @@ public final class DetailPortalViewModel {
                     .sorted { $0.priority < $1.priority }
                     .filter { $0.game != .zenlessZone } // 临时设定。
                 let allUIDWithGames = pzProfilesNow.map(\.uidWithGame)
-                if let currentProfile = self.currentProfile, !allUIDWithGames.contains(currentProfile.uidWithGame) {
-                    self.currentProfile = pzProfilesNow.first
+                if let currentProfile = self.currentProfile {
+                    if !allUIDWithGames.contains(currentProfile.uidWithGame) {
+                        self.currentProfile = pzProfilesNow.first
+                    } else if let currentProfileUpdated = newMap[currentProfile.uuid.uuidString] {
+                        self.currentProfile?.inherit(from: currentProfileUpdated)
+                    }
                 }
             }
         }
