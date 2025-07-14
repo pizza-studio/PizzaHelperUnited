@@ -33,20 +33,14 @@ struct ProfileConfigEditorView: View {
                     .multilineTextAlignment(.trailing)
                 } label: { Text("profile.label.nickname".i18nPZHelper) }
                 LabeledContent("profile.label.game".i18nPZHelper) {
-                    Picker("".description, selection: $unsavedProfile.game) {
-                        ForEach(Pizza.SupportedGame.allCases) { currentGame in
-                            Text(currentGame.localizedDescriptionTrimmed)
-                                .tag(currentGame)
-                        }
+                    CustomSegmentedPicker(
+                        selection: $unsavedProfile.game,
+                        items: Pizza.SupportedGame.allCases
+                    ) { currentGame in
+                        Text(currentGame.localizedDescriptionTrimmed)
+                            .fontWidth(.condensed)
+                            .tag(currentGame)
                     }
-                    .apply { picker in
-                        // iOS 16 的 Bug: Segmented Picker 在 ListRow 里面失灵。
-                        switch Self.isOS24OrAbove {
-                        case true: picker.pickerStyle(.segmented)
-                        case false: picker.pickerStyle(.menu)
-                        }
-                    }
-                    .fontWidth(.condensed)
                     .fixedSize()
                 }.react(to: unsavedProfile.game, initial: true) { _, newValue in
                     unsavedProfile.server.changeGame(to: newValue)

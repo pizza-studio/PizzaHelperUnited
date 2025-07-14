@@ -14,10 +14,13 @@ extension ProfileManagerPageContent {
     struct EditProfileSheetView: View {
         // MARK: Lifecycle
 
-        init(profile: PZProfileRef) {
+        init(profile: PZProfileRef, isVisible: Binding<Bool>) {
             self._profile = .init(wrappedValue: profile)
-            Task { @MainActor in
-                ProfileManagerVM.shared.sheetType = .editExistingProfile(profile)
+            self._isVisible = isVisible
+            if Self.isOS24OrNewer {
+                Task { @MainActor in
+                    ProfileManagerVM.shared.sheetType = .editExistingProfile(profile)
+                }
             }
         }
 
@@ -50,24 +53,28 @@ extension ProfileManagerPageContent {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("sys.cancel".i18nBaseKit) {
                             theVM.discardUncommittedChanges()
-                            theVM.sheetType = nil
+                            isVisible.toggle()
                         }
                     }
                 }
-                .react(to: theVM.sheetType) { oldValue, newValue in
-                    if oldValue != nil, newValue == nil {
-                        presentationMode.wrappedValue.dismiss()
-                    }
+                .react(to: isVisible) { _, newValue in
+                    if Self.isOS24OrAbove, !newValue { presentationMode.wrappedValue.dismiss() }
                 }
             }
         }
 
         // MARK: Private
 
+        private static var isOS24OrAbove: Bool {
+            if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, *) { return true }
+            return false
+        }
+
         @StateObject private var profile: PZProfileRef
         @State private var isSaveProfileFailAlertShown: Bool = false
         @State private var saveProfileError: SaveProfileError?
         @StateObject private var theVM: ProfileManagerVM = .shared
+        @Binding private var isVisible: Bool
         @EnvironmentObject private var alertToastEventStatus: AlertToastEventStatus
         @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
@@ -77,7 +84,7 @@ extension ProfileManagerPageContent {
                     profile.asSendable,
                     trailingTasks: {
                         PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-                        theVM.sheetType = nil
+                        isVisible.toggle()
                         alertToastEventStatus.isProfileTaskSucceeded.toggle()
                     },
                     errorHandler: { error in
@@ -86,7 +93,7 @@ extension ProfileManagerPageContent {
                     }
                 )
             } else {
-                theVM.sheetType = nil
+                isVisible.toggle()
                 alertToastEventStatus.isProfileTaskSucceeded.toggle()
             }
         }
