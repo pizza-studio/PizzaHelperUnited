@@ -75,7 +75,7 @@ public final class DailyNoteViewModel {
     public private(set) var dailyNoteStatus: Status = .progress(nil)
 
     /// The account for which the daily note is being fetched.
-    public let profile: PZProfileSendable
+    public var profile: PZProfileSendable
 
     /// Fetches the daily note and updates the published `dailyNote` property accordingly.
     public func getDailyNote() {
