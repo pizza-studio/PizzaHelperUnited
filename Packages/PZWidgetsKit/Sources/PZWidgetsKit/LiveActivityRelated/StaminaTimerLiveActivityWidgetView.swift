@@ -31,7 +31,7 @@ public struct StaminaTimerLiveActivityWidgetView<RendererIntent: AppIntent, Refr
         #endif
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .activityBackgroundTint(.clear)
-        if #available(iOS 17.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, *) {
             Button(intent: RendererIntent()) {
                 mainContent
             }

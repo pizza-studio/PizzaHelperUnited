@@ -41,7 +41,7 @@ extension PZWidgets {
     @available(iOS 16.2, macCatalyst 16.2, *)
     @WidgetBundleBuilder @MainActor public static var widgets4Embeddeds: some Widget {
         #if (os(iOS) && !targetEnvironment(macCatalyst)) || os(watchOS)
-        if #available(iOS 17.0, *) {
+        if #available(iOS 17.0, macCatalyst 17.0, *) {
             LockScreenResinWidget()
             LockScreenLoopWidget()
             LockScreenAllInfoWidget()
