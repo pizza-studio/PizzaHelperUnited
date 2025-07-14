@@ -129,7 +129,7 @@ struct GetCookieWebView: View {
                 Color.black.opacity(0.5)
                     .blurMaterialBackground()
                 Color.clear
-                    .frame(minWidth: 400, maxWidth: 0.8 * pageWidth)
+                    .frame(minWidth: 320, maxWidth: Swift.max(0.8 * pageWidth, 320))
                     .overlay {
                         VStack(alignment: .center, spacing: 12) {
                             Text("profileMgr.accountLogin.attention.title".i18nPZHelper)
