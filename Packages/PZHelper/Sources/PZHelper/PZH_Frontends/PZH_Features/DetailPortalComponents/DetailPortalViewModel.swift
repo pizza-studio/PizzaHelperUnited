@@ -45,7 +45,7 @@ public final class DetailPortalViewModel {
     // MARK: Public
 
     public enum Status<T> {
-        case progress(Task<Void, Never>)
+        case progress
         case fail(Error)
         case succeed(T)
         case standby
@@ -65,120 +65,124 @@ public final class DetailPortalViewModel {
     public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
     public var taskStatus4Ledger: Status<any Ledger> = .standby
     public var taskStatus4BattleReport: Status<any BattleReportSet> = .standby
-    @ObservationIgnored public var refreshingStatus: Status<Void> = .standby
 
     public var currentProfile: PZProfileSendable? {
         didSet {
-            if case let .progress(task) = refreshingStatus { task.cancel() }
-            refreshingStatus = .standby
+            cancelAllTasks()
+            resetAllStatus()
             refresh()
         }
     }
 
+    // 统一刷新
     public func refresh() {
-        guard case .standby = refreshingStatus else { return }
-        let task = Task {
-            await self.fetchCharacterInventoryList()
-            await self.fetchLedgerData()
-            await self.fetchBattleReportSet()
-            refreshingStatus = .standby
-        }
-        refreshingStatus = .progress(task)
+        guard let profile = currentProfile else { return }
+        cancelAllTasks()
+        // 三个异步任务并发
+        tasks["CharInventory"] = Task { await fetchCharInventory(for: profile) }
+        tasks["Ledger"] = Task { await fetchLedger(for: profile) }
+        tasks["BattleReport"] = Task { await fetchBattleReport(for: profile) }
     }
+
+    // MARK: Private
+
+    @ObservationIgnored private var refreshingStatus: Status<Void> = .standby
+    @ObservationIgnored private var tasks: [String: Task<Void, Never>] = [:]
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension DetailPortalViewModel {
-    func fetchCharacterInventoryList() async {
-        if case let .progress(task) = taskStatus4CharInventory { task.cancel() }
-        let task = Task {
-            do {
-                guard let profile = self.currentProfile,
-                      let queryResult = try await HoYo.getCharacterInventory(for: profile)
-                else { return }
-                Task.detached { @MainActor [weak self] in
-                    withAnimation {
-                        self?.taskStatus4CharInventory = .succeed(queryResult)
-                    }
-                }
-            } catch {
-                Task.detached { @MainActor [weak self] in
-                    withAnimation {
-                        if "\(error)" == "explicitlyCancelled" {
-                            return
-                        } else {
-                            self?.taskStatus4CharInventory = .fail(error)
-                        }
-                    }
-                }
+    private func cancelAllTasks() {
+        tasks.values.forEach { $0.cancel() }
+        tasks.removeAll()
+    }
+
+    private func resetAllStatus() {
+        taskStatus4CharInventory = .standby
+        taskStatus4Ledger = .standby
+        taskStatus4BattleReport = .standby
+    }
+
+    private func fetchCharInventory(for profile: PZProfileSendable) async {
+        await MainActor.run {
+            withAnimation {
+                self.taskStatus4CharInventory = .progress
             }
         }
-        Task.detached { @MainActor [weak self] in
-            withAnimation {
-                self?.taskStatus4CharInventory = .progress(task)
+        do {
+            let result = try await HoYo.getCharacterInventory(for: profile)
+            guard let result else { throw CustomError.noResult }
+            await MainActor.run {
+                withAnimation {
+                    self.taskStatus4CharInventory = .succeed(result)
+                }
+            }
+        } catch {
+            await MainActor.run {
+                withAnimation {
+                    if error is CancellationError || "\(error)" == "explicitlyCancelled" {
+                        return
+                    } else {
+                        self.taskStatus4CharInventory = .fail(error)
+                    }
+                }
             }
         }
     }
 
-    func fetchLedgerData() async {
-        if case let .progress(task) = taskStatus4Ledger { task.cancel() }
-        let task = Task {
-            do {
-                guard let profile = self.currentProfile,
-                      let queryResult = try await HoYo.getLedgerData(for: profile)
-                else { return }
-                Task.detached { @MainActor [weak self] in
-                    withAnimation {
-                        self?.taskStatus4Ledger = .succeed(queryResult)
-                    }
-                }
-            } catch {
-                Task.detached { @MainActor [weak self] in
-                    withAnimation {
-                        if "\(error)" == "explicitlyCancelled" {
-                            return
-                        } else {
-                            self?.taskStatus4Ledger = .fail(error)
-                        }
-                    }
-                }
+    private func fetchLedger(for profile: PZProfileSendable) async {
+        await MainActor.run {
+            withAnimation {
+                self.taskStatus4Ledger = .progress
             }
         }
-        Task.detached { @MainActor [weak self] in
-            withAnimation {
-                self?.taskStatus4Ledger = .progress(task)
+        do {
+            let result = try await HoYo.getLedgerData(for: profile)
+            guard let result else { throw CustomError.noResult }
+            await MainActor.run {
+                withAnimation {
+                    self.taskStatus4Ledger = .succeed(result)
+                }
+            }
+        } catch {
+            await MainActor.run {
+                withAnimation {
+                    if error is CancellationError || "\(error)" == "explicitlyCancelled" {
+                        return
+                    } else {
+                        self.taskStatus4Ledger = .fail(error)
+                    }
+                }
             }
         }
     }
 
-    func fetchBattleReportSet() async {
-        if case let .progress(task) = taskStatus4BattleReport { task.cancel() }
-        let task = Task {
-            do {
-                guard let profile = self.currentProfile,
-                      let queryResult = try await HoYo.getBattleReportSet(for: profile)
-                else { return }
-                Task.detached { @MainActor [weak self] in
-                    withAnimation {
-                        self?.taskStatus4BattleReport = .succeed(queryResult)
-                    }
-                }
-            } catch {
-                Task.detached { @MainActor [weak self] in
-                    withAnimation {
-                        if "\(error)" == "explicitlyCancelled" {
-                            return
-                        } else {
-                            self?.taskStatus4BattleReport = .fail(error)
-                        }
-                    }
-                }
+    private func fetchBattleReport(for profile: PZProfileSendable) async {
+        await MainActor.run {
+            withAnimation {
+                self.taskStatus4BattleReport = .progress
             }
         }
-        Task.detached { @MainActor [weak self] in
-            withAnimation {
-                self?.taskStatus4BattleReport = .progress(task)
+        do {
+            let result = try await HoYo.getBattleReportSet(for: profile)
+            guard let result else { throw CustomError.noResult }
+            await MainActor.run {
+                withAnimation {
+                    self.taskStatus4BattleReport = .succeed(result)
+                }
+            }
+        } catch {
+            await MainActor.run {
+                withAnimation {
+                    if error is CancellationError || "\(error)" == "explicitlyCancelled" {
+                        return
+                    } else {
+                        self.taskStatus4BattleReport = .fail(error)
+                    }
+                }
             }
         }
     }
+
+    enum CustomError: Error { case noResult }
 }
