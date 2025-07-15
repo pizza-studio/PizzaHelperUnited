@@ -2,12 +2,57 @@
 // ====================
 // This code is released under the SPDX-License-Identifier: `AGPL-3.0-or-later`.
 
+import Combine
 import Foundation
 import SwiftUI
 
 extension View {
-    /// Observes changes to a value, invoking the action with the new value and the old value.
-    /// - Note: The action captures values corresponding to the new state, consistent with iOS 17's `.onChange`. For `initial: true`, the old value is passed as the current value to mimic non-nil behavior.
+    /// Adds a modifier for this view that fires an action when a specific
+    /// value changes.
+    ///
+    /// - Remark: 这是 iOS 17 的 `.onChange(of:initial:_:)` 的向前移植版本，使用 Combine-Just 技术实现。
+    ///
+    /// You can use `react` to trigger a side effect as the result of a
+    /// value changing, such as an `Environment` key or a `Binding`.
+    ///
+    /// The system may call the action closure on the main actor, so avoid
+    /// long-running tasks in the closure. If you need to perform such tasks,
+    /// detach an asynchronous background task.
+    ///
+    /// When the value changes, the new version of the closure will be called,
+    /// so any captured values will have their values from the time that the
+    /// observed value has its new value. The old and new observed values are
+    /// passed into the closure. In the following code example, `PlayerView`
+    /// passes both the old and new values to the model.
+    ///
+    /// ```swift
+    ///     struct PlayerView: View {
+    ///         var episode: Episode
+    ///         @State private var playState: PlayState = .paused
+    ///
+    ///         var body: some View {
+    ///             VStack {
+    ///                 Text(episode.title)
+    ///                 Text(episode.showTitle)
+    ///                 PlayButton(playState: $playState)
+    ///             }
+    ///             .react(to: playState) { oldState, newState in
+    ///                 model.playStateDidChange(from: oldState, to: newState)
+    ///             }
+    ///         }
+    ///     }
+    /// ```
+    /// - Parameters:
+    ///   - value: The value to check against when determining whether
+    ///     to run the closure.
+    ///   - initial: Whether the action should be run when this view initially
+    ///     appears.
+    ///   - action: A closure to run when the value changes.
+    ///   - oldValue: The old value that failed the comparison check (or the
+    ///     initial value when requested).
+    ///   - newValue: The new value that failed the comparison check.
+    ///
+    /// - Returns: A view that fires an action when the specified value changes.
     @ViewBuilder
     public func react<V>(
         to value: V,
@@ -24,8 +69,48 @@ extension View {
         )
     }
 
-    /// Observes changes to a value, invoking the action without parameters.
-    /// - Note: The action is triggered based on the new state, consistent with iOS 17's `.onChange`.
+    /// Adds a modifier for this view that fires an action when a specific
+    /// value changes.
+    ///
+    /// - Remark: 这是 iOS 17 的 `.onChange(of:initial:_:)` 的向前移植版本，使用 Combine-Just 技术实现。
+    ///
+    /// You can use `react` to trigger a side effect as the result of a
+    /// value changing, such as an `Environment` key or a `Binding`.
+    ///
+    /// The system may call the action closure on the main actor, so avoid
+    /// long-running tasks in the closure. If you need to perform such tasks,
+    /// detach an asynchronous background task.
+    ///
+    /// When the value changes, the new version of the closure will be called,
+    /// so any captured values will have their values from the time that the
+    /// observed value has its new value. In the following code example,
+    /// `PlayerView` calls into its model when `playState` changes model.
+    ///
+    /// ```swift
+    ///     struct PlayerView: View {
+    ///         var episode: Episode
+    ///         @State private var playState: PlayState = .paused
+    ///
+    ///         var body: some View {
+    ///             VStack {
+    ///                 Text(episode.title)
+    ///                 Text(episode.showTitle)
+    ///                 PlayButton(playState: $playState)
+    ///             }
+    ///             .react(to: playState) {
+    ///                 model.playStateDidChange(state: playState)
+    ///             }
+    ///         }
+    ///     }
+    /// ```
+    /// - Parameters:
+    ///   - value: The value to check against when determining whether
+    ///     to run the closure.
+    ///   - initial: Whether the action should be run when this view initially
+    ///     appears.
+    ///   - action: A closure to run when the value changes.
+    ///
+    /// - Returns: A view that fires an action when the specified value changes.
     @ViewBuilder
     public func react<V>(
         to value: V,
@@ -48,40 +133,43 @@ extension View {
 private struct ComparableReactModifier<V: Equatable>: ViewModifier {
     // MARK: Lifecycle
 
-    public init(
-        value: V,
-        initial: Bool,
-        action: @escaping (V, V) -> Void
-    ) {
+    init(value: V, initial: Bool, action: @escaping (V, V) -> Void) {
         self.value = value
         self.initial = initial
         self.action = action
+        self._lastValue = State(initialValue: value)
     }
 
-    // MARK: Public
+    // MARK: Internal
 
-    public func body(content: Content) -> some View {
+    let value: V
+    let initial: Bool
+    let action: (V, V) -> Void
+
+    func body(content: Content) -> some View {
         content
-            .onChange(of: value) { newValue in
-                action(oldValue ?? value, newValue)
-                oldValue = newValue
-            }
-            .onAppear {
-                if initial {
-                    // 初始调用，模仿 iOS 17 的 oldValue 为 nil，但由于签名限制，使用 value
-                    action(value, value)
-                    oldValue = value
+            .onReceive(Just(value)) { newValue in
+                guard !isInitialRun || initial else {
+                    // 跳过初始运行（如果未启用 initial）
+                    lastValue = newValue
+                    isInitialRun = false
+                    return
                 }
+
+                if newValue != lastValue {
+                    // 执行回调：lastValue = 变化前的值，newValue = 变化后的值
+                    action(lastValue, newValue)
+                    lastValue = newValue
+                }
+
+                isInitialRun = false
             }
     }
 
     // MARK: Private
 
-    @State private var oldValue: V?
-
-    private let value: V
-    private let initial: Bool
-    private let action: (V, V) -> Void
+    @State private var lastValue: V
+    @State private var isInitialRun = true
 }
 
 // MARK: - ReactModifier
@@ -89,37 +177,39 @@ private struct ComparableReactModifier<V: Equatable>: ViewModifier {
 private struct ReactModifier<V: Equatable>: ViewModifier {
     // MARK: Lifecycle
 
-    public init(
-        value: V,
-        initial: Bool,
-        action: @escaping () -> Void
-    ) {
+    init(value: V, initial: Bool, action: @escaping () -> Void) {
         self.value = value
         self.initial = initial
         self.action = action
+        self._lastValue = State(initialValue: value)
     }
 
-    // MARK: Public
+    // MARK: Internal
 
-    public func body(content: Content) -> some View {
+    let value: V
+    let initial: Bool
+    let action: () -> Void
+
+    func body(content: Content) -> some View {
         content
-            .onChange(of: value) { newValue in
-                action()
-                oldValue = newValue
-            }
-            .onAppear {
-                if initial {
-                    action()
-                    oldValue = value
+            .onReceive(Just(value)) { newValue in
+                guard !isInitialRun || initial else {
+                    lastValue = newValue
+                    isInitialRun = false
+                    return
                 }
+
+                if newValue != lastValue {
+                    action()
+                    lastValue = newValue
+                }
+
+                isInitialRun = false
             }
     }
 
     // MARK: Private
 
-    @State private var oldValue: V?
-
-    private let value: V
-    private let initial: Bool
-    private let action: () -> Void
+    @State private var lastValue: V
+    @State private var isInitialRun = true
 }
