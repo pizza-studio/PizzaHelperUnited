@@ -32,7 +32,7 @@ public struct CharInventoryNav: View {
     @ViewBuilder
     public func coreBody(profile: PZProfileSendable) -> some View {
         switch theVM.taskStatus4CharInventory {
-        case .progress:
+        case .progress, .standby:
             InformationRowView(Self.navTitle) {
                 ProgressView()
             }
@@ -85,8 +85,6 @@ public struct CharInventoryNav: View {
                     }
                 }
             }
-        case .standby:
-            EmptyView()
         }
     }
 
