@@ -95,10 +95,6 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     @ViewBuilder var textFieldView: some View {
         TextField("UID".description, text: $delegate.uid)
             .focused(focused ?? $backupFocus)
-            .react(to: delegate.uid) { oldValue, newValue in
-                guard oldValue != newValue else { return }
-                formatText()
-            }
         #if !os(macOS) && !targetEnvironment(macCatalyst)
             .keyboardType(.numberPad)
         #endif
@@ -200,17 +196,6 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     private var isUIDValid: Bool {
         guard let givenUIDInt = Int(delegate.uid) else { return false }
         return (100_000_000 ... 9_999_999_999).contains(givenUIDInt)
-    }
-
-    private func formatText() {
-        let maxCharInputLimit = 10
-        let pattern = "[^0-9]+"
-        var toHandle = delegate.uid.replacingOccurrences(of: pattern, with: "", options: [.regularExpression])
-        if toHandle.count > maxCharInputLimit {
-            toHandle = toHandle.prefix(maxCharInputLimit).description
-        }
-        // 仅当结果相异时，才会写入。
-        if delegate.uid != toHandle { delegate.uid = toHandle }
     }
 }
 

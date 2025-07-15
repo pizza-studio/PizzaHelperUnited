@@ -52,7 +52,13 @@ final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
     // MARK: Internal
 
     var currentInfo: CoordinatedDB.QueriedProfile?
-    var uid: String
+
+    var uid: String {
+        didSet {
+            guard oldValue != uid else { return }
+            formatText()
+        }
+    }
 
     func update(givenUID: Int? = nil, immediately: Bool = true) {
         guard let givenUID = givenUID ?? Int(uid) else { return }
@@ -89,5 +95,18 @@ final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
                 super.handleError(error)
             }
         )
+    }
+
+    // MARK: Private
+
+    private func formatText() {
+        let maxCharInputLimit = 10
+        let pattern = "[^0-9]+"
+        var toHandle = uid.replacingOccurrences(of: pattern, with: "", options: [.regularExpression])
+        if toHandle.count > maxCharInputLimit {
+            toHandle = toHandle.prefix(maxCharInputLimit).description
+        }
+        // 仅当结果相异时，才会写入。
+        if uid != toHandle { uid = toHandle }
     }
 }
