@@ -95,24 +95,21 @@ public struct AvatarStatCollectionTabView: View {
                 presentationMode.wrappedValue.dismiss()
             }
         }
-        .react(to: showingCharacterIdentifier, initial: true) { _, _ in
+        .react(to: showingCharacterIdentifier, initial: true) { _, newValue in
             simpleTaptic(type: .selection)
             withAnimation(.easeIn(duration: 0.1)) {
                 showTabViewIndex = true
-            }
-        }
-        .ignoresSafeArea(.all, edges: .vertical)
-        .onAppear {
-            showTabViewIndex = true
-        }
-        .react(to: showTabViewIndex, initial: true) { _, newValue in
-            if newValue == true {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
+                Task {
+                    try await Task.sleep(nanoseconds: 1_700_000_000) // Sleep 1.7s
                     withAnimation {
                         showTabViewIndex = false
                     }
                 }
             }
+        }
+        .ignoresSafeArea(.all, edges: .vertical)
+        .onAppear {
+            showTabViewIndex = true
         }
         .background {
             // 为了兼容 iOS 26 / macOS 26，必须得把背景挪到这个层面来处理。
