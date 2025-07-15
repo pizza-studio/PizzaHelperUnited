@@ -104,7 +104,11 @@ extension DetailPortalViewModel {
             } catch {
                 Task.detached { @MainActor [weak self] in
                     withAnimation {
-                        self?.taskStatus4CharInventory = .fail(error)
+                        if "\(error)" == "explicitlyCancelled" {
+                            return
+                        } else {
+                            self?.taskStatus4CharInventory = .fail(error)
+                        }
                     }
                 }
             }
@@ -131,7 +135,11 @@ extension DetailPortalViewModel {
             } catch {
                 Task.detached { @MainActor [weak self] in
                     withAnimation {
-                        self?.taskStatus4Ledger = .fail(error)
+                        if "\(error)" == "explicitlyCancelled" {
+                            return
+                        } else {
+                            self?.taskStatus4Ledger = .fail(error)
+                        }
                     }
                 }
             }
@@ -158,7 +166,11 @@ extension DetailPortalViewModel {
             } catch {
                 Task.detached { @MainActor [weak self] in
                     withAnimation {
-                        self?.taskStatus4BattleReport = .fail(error)
+                        if "\(error)" == "explicitlyCancelled" {
+                            return
+                        } else {
+                            self?.taskStatus4BattleReport = .fail(error)
+                        }
                     }
                 }
             }
