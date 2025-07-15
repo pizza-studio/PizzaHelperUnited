@@ -172,7 +172,7 @@ public struct UserWallpaperMgrViewContent: View {
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension UserWallpaperMgrViewContent {
     @ViewBuilder var coreBody: some View {
-        List {
+        Form {
             Section {
                 ForEach(userWallpapersSorted, id: \.id) { userWallpaper in
                     RowEntryView(
@@ -216,6 +216,7 @@ extension UserWallpaperMgrViewContent {
                 }
             }
         }
+        .formStyle(.grouped)
         .react(to: viewRefreshHash) {
             Task { @MainActor in
                 withAnimation {

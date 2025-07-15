@@ -42,8 +42,8 @@ public struct AppWallpaperSettingsView: View {
                     .clipShape(.rect)
                 }
             }
-            .searchable(text: $searchText, placement: searchFieldPlacement)
             .formStyle(.grouped)
+            .searchable(text: $searchText, placement: searchFieldPlacement)
             .navBarTitleDisplayMode(.inline) // 特例：這個畫面用 inline 會有更好的效能。
             .navigationTitle(Self.navTitle)
         }

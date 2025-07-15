@@ -56,6 +56,7 @@ public struct GachaProfileManagementView: View {
                     Text("gachaKit.prompt.noGachaProfileFound", bundle: .module)
                 }
             }
+            .formStyle(.grouped)
             .navigationTitle(Self.navTitle)
             .disabled(theVM.taskState == .busy)
             .saturation(theVM.taskState == .busy ? 0 : 1)

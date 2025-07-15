@@ -37,7 +37,7 @@ public struct LedgerView4HSR: LedgerView {
     public let dataText: String
 
     public var body: some View {
-        List {
+        Form {
             Section {
                 LabelWithDescription(
                     title: "hylKit.ledger4HSR.stellarJade",
@@ -95,6 +95,7 @@ public struct LedgerView4HSR: LedgerView {
             }
             .listRowMaterialBackground()
         }
+        .formStyle(.grouped)
         .scrollContentBackground(.hidden)
         .listContainerBackground()
         .navigationTitle(Self.navTitle)

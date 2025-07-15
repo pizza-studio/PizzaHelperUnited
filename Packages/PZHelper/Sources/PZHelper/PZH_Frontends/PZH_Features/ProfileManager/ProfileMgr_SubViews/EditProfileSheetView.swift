@@ -32,9 +32,9 @@ extension ProfileManagerPageContent {
                 Form {
                     ProfileConfigViewContents(profile: profile)
                 }
+                .formStyle(.grouped)
                 .disabled(theVM.taskState == .busy)
                 .saturation(theVM.taskState == .busy ? 0 : 1)
-                .formStyle(.grouped)
                 .navigationTitle("profileMgr.edit.title".i18nPZHelper)
                 // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
                 .appTabBarVisibility(.hidden)

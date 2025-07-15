@@ -38,8 +38,8 @@ public struct GachaProfileDetailedListView: View {
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
             }
-            .saturation(theVM.taskState == .busy ? 0 : 1)
             .formStyle(.grouped)
+            .saturation(theVM.taskState == .busy ? 0 : 1)
             .navBarTitleDisplayMode(.large)
             .navigationTitle(theVM.currentGPIDTitle ?? Self.navTitle)
             .toolbar {

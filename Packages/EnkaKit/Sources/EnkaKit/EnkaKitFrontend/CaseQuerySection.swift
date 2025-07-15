@@ -225,10 +225,11 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
     // swiftlint:enable force_unwrapping
     /// 注意：请仅用 iOS 或者 MacCatalyst 来预览。AppKit 无法正常处理这个 View。
     NavigationStack {
-        List {
+        Form {
             CaseQuerySection(theDB: enkaDatabaseHSR)
             CaseQuerySection(theDB: enkaDatabaseGI)
         }
+        .formStyle(.grouped)
     }
     .environment(\.locale, .init(identifier: "zh-Hant-TW"))
 }

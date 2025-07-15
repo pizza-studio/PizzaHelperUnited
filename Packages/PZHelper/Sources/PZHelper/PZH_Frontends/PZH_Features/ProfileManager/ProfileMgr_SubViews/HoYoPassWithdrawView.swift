@@ -26,7 +26,7 @@ struct HoYoPassWithdrawView: View {
     var body: some View {
         let urlStrHoYoLab = "https://account.hoyoverse.com/#/account/safetySettings"
         let urlStrMiyoushe = "https://user.mihoyo.com/#/account/closeAccount"
-        List {
+        Form {
             Section {
                 Label {
                     HStack {
@@ -88,7 +88,9 @@ struct HoYoPassWithdrawView: View {
                     Text("profileMgr.withdrawal.readme.miyoushe.specialNotice".i18nPZHelper)
                 }
             }
-        }.navigationTitle("profileMgr.withdraw.view.title".i18nPZHelper)
+        }
+        .formStyle(.grouped)
+        .navigationTitle("profileMgr.withdraw.view.title".i18nPZHelper)
     }
 
     // MARK: Private
