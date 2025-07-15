@@ -33,7 +33,7 @@ public struct BattleReportNav: View {
     @ViewBuilder
     public func coreBody(profile: PZProfileSendable) -> some View {
         switch theVM.taskStatus4BattleReport {
-        case .progress:
+        case .progress, .standby:
             InformationRowView(navTitle) {
                 ProgressView()
             }
@@ -129,8 +129,6 @@ public struct BattleReportNav: View {
                     }
                 }
             }
-        case .standby:
-            EmptyView()
         }
     }
 

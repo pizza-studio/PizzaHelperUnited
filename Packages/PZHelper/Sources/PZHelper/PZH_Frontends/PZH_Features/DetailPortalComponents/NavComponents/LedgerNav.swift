@@ -32,7 +32,7 @@ public struct LedgerNav: View {
     @ViewBuilder
     public func coreBody(profile: PZProfileSendable) -> some View {
         switch theVM.taskStatus4Ledger {
-        case .progress:
+        case .progress, .standby:
             InformationRowView(navTitle) {
                 ProgressView()
             }
@@ -75,8 +75,6 @@ public struct LedgerNav: View {
                     }
                 }
             }
-        case .standby:
-            EmptyView()
         }
     }
 
