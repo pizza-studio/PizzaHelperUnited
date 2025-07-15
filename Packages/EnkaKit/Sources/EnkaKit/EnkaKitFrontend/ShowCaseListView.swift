@@ -45,10 +45,18 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
             }
         }
         .react(to: dbSet.eventForResummarizingEnkaProfiles) { _, _ in
-            triggerCaseContentUpdate()
+            Task {
+                await debouncer.debounce {
+                    triggerCaseContentUpdate()
+                }
+            }
         }
         .react(to: dbSet.eventForResummarizingHoYoLABProfiles) { _, _ in
-            triggerCaseContentUpdate()
+            Task {
+                await debouncer.debounce {
+                    triggerCaseContentUpdate()
+                }
+            }
         }
     }
 
@@ -189,6 +197,8 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
     @State private var extraTerms: Enka.ExtraTerms
 
     private let asCardIcons: Bool
+
+    private let debouncer: Debouncer = .init(delay: 0.1)
 
     private func triggerCaseContentUpdate() {
         Task { @MainActor in
