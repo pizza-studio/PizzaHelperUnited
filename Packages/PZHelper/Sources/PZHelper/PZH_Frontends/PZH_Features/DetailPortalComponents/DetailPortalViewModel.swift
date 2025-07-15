@@ -45,7 +45,7 @@ public final class DetailPortalViewModel {
     // MARK: Public
 
     public enum Status<T> {
-        case progress
+        case progress(Task<Void, Never>)
         case fail(Error)
         case succeed(T)
         case standby
@@ -58,6 +58,21 @@ public final class DetailPortalViewModel {
             default: false
             }
         }
+
+        mutating func goProgress(task: Task<Void, Never>) {
+            self = .progress(task)
+        }
+
+        mutating func accept(_ succeededObj: T) {
+            self = .succeed(succeededObj)
+        }
+
+        mutating func accept(_ error: Error) {
+            if error is CancellationError || "\(error)" == "explicitlyCancelled" {
+                return
+            }
+            self = .fail(error)
+        }
     }
 
     public static let shared = DetailPortalViewModel()
@@ -65,124 +80,85 @@ public final class DetailPortalViewModel {
     public var taskStatus4CharInventory: Status<any CharacterInventory> = .standby
     public var taskStatus4Ledger: Status<any Ledger> = .standby
     public var taskStatus4BattleReport: Status<any BattleReportSet> = .standby
+    @ObservationIgnored public var refreshingStatus: Status<Void> = .standby
 
     public var currentProfile: PZProfileSendable? {
         didSet {
-            cancelAllTasks()
-            resetAllStatus()
+            if case let .progress(task) = refreshingStatus { task.cancel() }
+            refreshingStatus = .standby
             refresh()
         }
     }
 
-    // 统一刷新
     public func refresh() {
-        guard let profile = currentProfile else { return }
-        cancelAllTasks()
-        // 三个异步任务并发
-        tasks["CharInventory"] = Task { await fetchCharInventory(for: profile) }
-        tasks["Ledger"] = Task { await fetchLedger(for: profile) }
-        tasks["BattleReport"] = Task { await fetchBattleReport(for: profile) }
+        guard case .standby = refreshingStatus else { return }
+        let task = Task {
+            await self.fetchCharacterInventoryList()
+            await self.fetchLedgerData()
+            await self.fetchBattleReportSet()
+            refreshingStatus = .standby
+        }
+        refreshingStatus = .progress(task)
     }
 
     // MARK: Private
 
-    @ObservationIgnored private var refreshingStatus: Status<Void> = .standby
-    @ObservationIgnored private var tasks: [String: Task<Void, Never>] = [:]
+    private func animateOnMain<T>(
+        resultType: T.Type = T.self,
+        body action: @MainActor () throws -> T
+    ) async rethrows
+        -> T where T: Sendable {
+        try withAnimation {
+            try action()
+        }
+    }
 }
 
 @available(iOS 17.0, macCatalyst 17.0, *)
 extension DetailPortalViewModel {
-    private func cancelAllTasks() {
-        tasks.values.forEach { $0.cancel() }
-        tasks.removeAll()
-    }
-
-    private func resetAllStatus() {
-        taskStatus4CharInventory = .standby
-        taskStatus4Ledger = .standby
-        taskStatus4BattleReport = .standby
-    }
-
-    private func fetchCharInventory(for profile: PZProfileSendable) async {
-        await MainActor.run {
-            withAnimation {
-                self.taskStatus4CharInventory = .progress
-            }
-        }
+    enum DPVError: Error { case noResult }
+    private func update<T: Sendable>(_ status: Status<T>, _ task: () async throws -> T?) async -> Status<T> {
+        var status = status
         do {
-            let result = try await HoYo.getCharacterInventory(for: profile)
-            guard let result else { throw CustomError.noResult }
-            await MainActor.run {
-                withAnimation {
-                    self.taskStatus4CharInventory = .succeed(result)
-                }
-            }
+            let retrieved = try await task()
+            guard let retrieved else { throw DPVError.noResult }
+            await animateOnMain { status.accept(retrieved) }
         } catch {
-            await MainActor.run {
-                withAnimation {
-                    if error is CancellationError || "\(error)" == "explicitlyCancelled" {
-                        return
-                    } else {
-                        self.taskStatus4CharInventory = .fail(error)
-                    }
-                }
-            }
+            await animateOnMain { status.accept(error) }
+        }
+        return status
+    }
+
+    func fetchCharacterInventoryList() async {
+        guard let profile = currentProfile else { return }
+        if case let .progress(task) = taskStatus4CharInventory { task.cancel() }
+        let newTask = await update(taskStatus4CharInventory) {
+            try await HoYo.getCharacterInventory(for: profile)
+        }
+        await animateOnMain {
+            taskStatus4CharInventory = newTask
         }
     }
 
-    private func fetchLedger(for profile: PZProfileSendable) async {
-        await MainActor.run {
-            withAnimation {
-                self.taskStatus4Ledger = .progress
-            }
+    func fetchLedgerData() async {
+        guard let profile = currentProfile else { return }
+        if case let .progress(task) = taskStatus4Ledger { task.cancel() }
+        let newTask = await update(taskStatus4Ledger) {
+            try await HoYo.getLedgerData(for: profile)
         }
-        do {
-            let result = try await HoYo.getLedgerData(for: profile)
-            guard let result else { throw CustomError.noResult }
-            await MainActor.run {
-                withAnimation {
-                    self.taskStatus4Ledger = .succeed(result)
-                }
-            }
-        } catch {
-            await MainActor.run {
-                withAnimation {
-                    if error is CancellationError || "\(error)" == "explicitlyCancelled" {
-                        return
-                    } else {
-                        self.taskStatus4Ledger = .fail(error)
-                    }
-                }
-            }
+        await animateOnMain {
+            taskStatus4Ledger = newTask
         }
     }
 
-    private func fetchBattleReport(for profile: PZProfileSendable) async {
-        await MainActor.run {
-            withAnimation {
-                self.taskStatus4BattleReport = .progress
-            }
+    func fetchBattleReportSet() async {
+        guard let profile = currentProfile else { return }
+        if case let .progress(task) = taskStatus4BattleReport { task.cancel() }
+        let newTask = await update(taskStatus4BattleReport) {
+            try await HoYo.getBattleReportSet(for: profile)
         }
-        do {
-            let result = try await HoYo.getBattleReportSet(for: profile)
-            guard let result else { throw CustomError.noResult }
-            await MainActor.run {
-                withAnimation {
-                    self.taskStatus4BattleReport = .succeed(result)
-                }
-            }
-        } catch {
-            await MainActor.run {
-                withAnimation {
-                    if error is CancellationError || "\(error)" == "explicitlyCancelled" {
-                        return
-                    } else {
-                        self.taskStatus4BattleReport = .fail(error)
-                    }
-                }
-            }
+        await animateOnMain {
+            taskStatus4BattleReport = newTask
         }
     }
-
-    enum CustomError: Error { case noResult }
 }
