@@ -95,7 +95,7 @@ public struct LedgerView4HSR: LedgerView {
             }
             .listRowMaterialBackground()
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .scrollContentBackground(.hidden)
         .listContainerBackground()
         .navigationTitle(Self.navTitle)

@@ -184,7 +184,7 @@ extension Enka {
     Form {
         Enka.DisplayOptionViewContents()
     }
-    .formStyle(.grouped)
+    .formStyle(.grouped).disableFocusable()
     .frame(height: 800)
     .environment(\.locale, .init(identifier: "zh-Hant-TW"))
 }

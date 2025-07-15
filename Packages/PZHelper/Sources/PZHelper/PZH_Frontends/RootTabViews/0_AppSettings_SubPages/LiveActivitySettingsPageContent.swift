@@ -117,7 +117,7 @@ struct LiveActivitySettingsPageContent: View {
                 Text("settings.staminaTimer.background.navTitle".i18nWPConfKit)
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 let link = "https://gi.pizzastudio.org/static/resin_timer_help.html"

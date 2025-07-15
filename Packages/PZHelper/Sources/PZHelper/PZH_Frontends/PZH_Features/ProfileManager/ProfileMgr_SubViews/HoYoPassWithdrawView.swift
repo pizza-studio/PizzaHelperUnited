@@ -89,7 +89,7 @@ struct HoYoPassWithdrawView: View {
                 }
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navigationTitle("profileMgr.withdraw.view.title".i18nPZHelper)
     }
 

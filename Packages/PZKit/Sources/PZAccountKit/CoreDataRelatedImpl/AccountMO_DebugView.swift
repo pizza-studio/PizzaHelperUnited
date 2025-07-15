@@ -86,7 +86,7 @@ public struct AccountMODebugView: View {
                 AccountMOItemDebugView(accountMO: accountMO)
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Picker("".description, selection: $game.animation()) {

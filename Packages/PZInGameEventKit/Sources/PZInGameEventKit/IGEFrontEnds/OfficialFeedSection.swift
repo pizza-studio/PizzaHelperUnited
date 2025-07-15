@@ -226,7 +226,7 @@ private struct TestOfficialFeedSectionView: View {
         NavigationStack {
             Form {
                 OfficialFeed.OfficialFeedSection(game: $game)
-            }.formStyle(.grouped)
+            }.formStyle(.grouped).disableFocusable()
         }
     }
 }

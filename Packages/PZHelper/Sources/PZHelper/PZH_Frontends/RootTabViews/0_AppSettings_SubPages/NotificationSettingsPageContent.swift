@@ -54,7 +54,7 @@ struct NotificationSettingsPageContent: View {
                 ProgressView()
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navBarTitleDisplayMode(.large)
         .navigationTitle(Self.navTitleShortened)
         .onAppear {
@@ -113,7 +113,7 @@ private struct ProfilesNotificationPermissionView: View {
             .disabled(profileManagerVM.taskState == .busy)
             .saturation(profileManagerVM.taskState == .busy ? 0 : 1)
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navBarTitleDisplayMode(.large)
         .navigationTitle(Self.navTitleShortened)
     }
@@ -222,7 +222,7 @@ private struct StaminaNotificationThresholdConfigView: View {
                 }
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .toolbar {
             #if os(iOS) || targetEnvironment(macCatalyst)
             ToolbarItem(placement: .confirmationAction) {

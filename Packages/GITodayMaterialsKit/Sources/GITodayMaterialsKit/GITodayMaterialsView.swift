@@ -33,7 +33,7 @@ public struct GITodayMaterialsView<T: View>: View {
                 content
                     .listRowMaterialBackground()
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .scrollContentBackground(.hidden)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {

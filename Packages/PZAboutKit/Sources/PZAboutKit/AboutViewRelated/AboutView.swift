@@ -39,7 +39,7 @@ public struct AboutView: View {
                 case true: DevCrewViewSections()
                 }
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .navigationTitle(internalNavTitle)
             .navBarTitleDisplayMode(.large)
             .toolbar {

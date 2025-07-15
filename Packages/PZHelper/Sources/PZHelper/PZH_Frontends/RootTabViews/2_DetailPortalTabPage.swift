@@ -40,7 +40,7 @@ struct DetailPortalTabPage: View {
         Form {
             formContent
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .refreshable {
             refreshAction()
         }

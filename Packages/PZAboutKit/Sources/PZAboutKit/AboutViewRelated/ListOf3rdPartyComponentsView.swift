@@ -89,7 +89,7 @@ struct ListOf3rdPartyComponentsView: View {
                         .textCase(.none)
                 }
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .navigationTitle(Self.navTitleShortened)
             .navBarTitleDisplayMode(.large)
         }

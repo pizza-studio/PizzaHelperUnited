@@ -42,7 +42,7 @@ extension ProfileManagerPageContent {
                     .disabled(theVM.taskState == .busy)
                     .saturation(theVM.taskState == .busy ? 0 : 1)
                 }
-                .formStyle(.grouped)
+                .formStyle(.grouped).disableFocusable()
                 .navigationTitle("profileMgr.new".i18nPZHelper)
                 // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
                 .appTabBarVisibility(.hidden)

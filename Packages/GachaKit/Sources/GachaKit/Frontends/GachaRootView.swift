@@ -170,6 +170,6 @@ extension GachaRootView {
                 Text("gachaKit.prompt.noGachaProfileFound", bundle: .module)
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
     }
 }

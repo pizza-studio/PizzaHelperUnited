@@ -37,7 +37,7 @@ struct PhotoSpecimenView: View {
                     }
                 }
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Picker("".description, selection: $game.animation()) {

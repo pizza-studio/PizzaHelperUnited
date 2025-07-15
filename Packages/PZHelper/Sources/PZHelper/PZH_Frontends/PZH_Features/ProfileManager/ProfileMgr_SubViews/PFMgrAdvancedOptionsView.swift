@@ -108,7 +108,7 @@ struct PFMgrAdvancedOptionsView: View {
                 )
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navigationTitle(Self.navTitle)
         .navBarTitleDisplayMode(.large)
         .toast(isPresenting: $alertToastEventStatus.isDeviceFPPropagationSucceeded) {

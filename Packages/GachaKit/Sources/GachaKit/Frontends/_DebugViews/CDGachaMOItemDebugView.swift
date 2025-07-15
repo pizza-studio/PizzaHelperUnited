@@ -52,7 +52,7 @@ public struct CDGachaMODebugView: View {
                     .foregroundStyle(isWrecked ? Color.red : Color.primary)
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Picker("".description, selection: $delegate.game.animation()) {

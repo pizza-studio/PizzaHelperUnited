@@ -14,7 +14,7 @@ struct PrivacySettingsPageContent: View {
             Text("settings.privacy.noOptionsAvailable", bundle: .module)
                 .asInlineTextDescription()
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navigationTitle("settings.privacy.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
     }

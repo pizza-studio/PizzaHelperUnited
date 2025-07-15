@@ -79,7 +79,7 @@ extension DesktopWidgets {
                 viewConfig: viewConfig,
                 spacing: 0
             )
-        }.formStyle(.grouped)
+        }.formStyle(.grouped).disableFocusable()
     }
 }
 

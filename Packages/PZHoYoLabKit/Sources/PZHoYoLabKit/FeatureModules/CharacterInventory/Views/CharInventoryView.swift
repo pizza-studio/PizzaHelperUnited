@@ -71,7 +71,7 @@ public struct CharacterInventoryView: View {
                 }
             }.listRowMaterialBackground()
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .scrollContentBackground(.hidden)
         .listContainerBackground()
         .navigationTitle("hylKit.inventoryView.characters.title".i18nHYLKit)

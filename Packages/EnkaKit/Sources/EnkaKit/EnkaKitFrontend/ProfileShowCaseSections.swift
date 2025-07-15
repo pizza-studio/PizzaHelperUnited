@@ -238,7 +238,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
                 ProfileShowCaseSections(theDB: enkaDatabaseGI, pzProfile: testAccountMO)
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
     }
     .environment(\.locale, .init(identifier: "zh-Hant-TW"))
 }
