@@ -22,10 +22,7 @@ public struct StaggeredGrid<Content: View, T: Identifiable & Equatable & Sendabl
         list: [T],
         @ViewBuilder content: @escaping (T) -> Content
     ) {
-        guard columns > 0 else {
-            fatalError("Columns must be greater than 0")
-        }
-        self.columns = columns
+        self.columns = Swift.max(1, columns)
         self.scrollAxis = scrollAxis
         self.showsIndicators = showsIndicators
         self.horizontalSpacing = horizontalSpacing
