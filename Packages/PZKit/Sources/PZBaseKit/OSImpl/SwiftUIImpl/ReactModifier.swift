@@ -10,7 +10,9 @@ extension View {
     /// Adds a modifier for this view that fires an action when a specific
     /// value changes.
     ///
-    /// - Remark: 这是 iOS 17 的 `.onChange(of:initial:_:)` 的向前移植版本，使用 Combine-Just 技术实现。
+    /// - Remark: 这是 OS24 的 `.onChange(of:initial:_:)` 的向前移植版本，使用 Combine-Just 技术实现。
+    /// 但这个实现会有额外的 Just 开销。
+    /// 所以在 OS24+ 系统下，本 API 反而会改用 `.onChange(of:initial:_:)` 代劳。
     ///
     /// You can use `react` to trigger a side effect as the result of a
     /// value changing, such as an `Environment` key or a `Binding`.
@@ -60,19 +62,21 @@ extension View {
         _ action: @escaping (V, V) -> Void
     )
         -> some View where V: Equatable {
-        modifier(
-            ComparableReactModifier(
-                value: value,
-                initial: initial,
-                action: action
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+            onChange(of: value, initial: initial, action)
+        } else {
+            modifier(
+                ComparableReactModifier(value: value, initial: initial, action: action)
             )
-        )
+        }
     }
 
     /// Adds a modifier for this view that fires an action when a specific
     /// value changes.
     ///
     /// - Remark: 这是 iOS 17 的 `.onChange(of:initial:_:)` 的向前移植版本，使用 Combine-Just 技术实现。
+    /// 但这个实现会有额外的 Just 开销。
+    /// 所以在 OS24+ 系统下，本 API 反而会改用 `.onChange(of:initial:_:)` 代劳。
     ///
     /// You can use `react` to trigger a side effect as the result of a
     /// value changing, such as an `Environment` key or a `Binding`.
@@ -118,13 +122,13 @@ extension View {
         _ action: @escaping () -> Void
     )
         -> some View where V: Equatable {
-        modifier(
-            ReactModifier(
-                value: value,
-                initial: initial,
-                action: action
+        if #available(iOS 17.0, macCatalyst 17.0, macOS 14.0, watchOS 10.0, *) {
+            onChange(of: value, initial: initial, action)
+        } else {
+            modifier(
+                ReactModifier(value: value, initial: initial, action: action)
             )
-        )
+        }
     }
 }
 
