@@ -148,7 +148,7 @@ public struct AllCharacterPhotoSpecimenViewPerGame: View {
 struct CharacterPhotoSpecimenViewPerGame_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            List {
+            Form {
                 TabView {
                     AllCharacterPhotoSpecimenViewPerGame(for: .starRail, scroll: false) {
                         ["1218", "1221", "1224"]
@@ -157,6 +157,7 @@ struct CharacterPhotoSpecimenViewPerGame_Previews: PreviewProvider {
                         .tabItem { Text(verbatim: "GI") }
                 }
             }
+            .formStyle(.grouped)
         }
         .frame(height: 600)
     }

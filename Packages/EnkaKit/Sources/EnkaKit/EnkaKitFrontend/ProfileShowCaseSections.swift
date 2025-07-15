@@ -230,7 +230,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
 #Preview {
     /// 注意：请仅用 iOS 或者 MacCatalyst 来预览。AppKit 无法正常处理这个 View。
     NavigationStack {
-        List {
+        Form {
             if let testAccountMO = PZProfileSendable.makeInheritedInstance(
                 game: .genshinImpact,
                 uid: "114514810"
@@ -238,6 +238,7 @@ public struct ProfileShowCaseSections<QueryDB: EnkaDBProtocol>: View
                 ProfileShowCaseSections(theDB: enkaDatabaseGI, pzProfile: testAccountMO)
             }
         }
+        .formStyle(.grouped)
     }
     .environment(\.locale, .init(identifier: "zh-Hant-TW"))
 }

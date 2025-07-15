@@ -10,10 +10,11 @@ import SwiftUI
 @available(iOS 17.0, macCatalyst 17.0, *)
 struct PrivacySettingsPageContent: View {
     var body: some View {
-        List {
+        Form {
             Text("settings.privacy.noOptionsAvailable", bundle: .module)
                 .asInlineTextDescription()
         }
+        .formStyle(.grouped)
         .navigationTitle("settings.privacy.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
     }

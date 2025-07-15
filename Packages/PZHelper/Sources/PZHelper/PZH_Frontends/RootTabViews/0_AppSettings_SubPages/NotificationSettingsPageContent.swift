@@ -176,7 +176,7 @@ private struct StaminaNotificationThresholdConfigView: View {
     // MARK: Internal
 
     var body: some View {
-        List {
+        Form {
             Section {
                 valueInsertionControls
             }
@@ -222,6 +222,7 @@ private struct StaminaNotificationThresholdConfigView: View {
                 }
             }
         }
+        .formStyle(.grouped)
         .toolbar {
             #if os(iOS) || targetEnvironment(macCatalyst)
             ToolbarItem(placement: .confirmationAction) {

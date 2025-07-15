@@ -37,7 +37,7 @@ public struct LedgerView4GI: LedgerView {
     public let dataText: String
 
     public var body: some View {
-        List {
+        Form {
             Section {
                 LabelWithDescription(
                     title: "hylKit.ledger4GI.primogems",
@@ -95,6 +95,7 @@ public struct LedgerView4GI: LedgerView {
             }
             .listRowMaterialBackground()
         }
+        .formStyle(.grouped)
         .scrollContentBackground(.hidden)
         .listContainerBackground()
         .navigationTitle(Self.navTitle)
