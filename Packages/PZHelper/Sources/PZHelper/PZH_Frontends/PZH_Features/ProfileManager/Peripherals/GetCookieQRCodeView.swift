@@ -211,7 +211,7 @@ struct GetCookieQRCodeView: View {
                     Text("profileMgr.account.qr_code_login.footer".i18nPZHelper)
                 }
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .alert(
                 "profileMgr.account.qr_code_login.not_scanned_alert".i18nPZHelper,
                 isPresented: $viewModel.isNotScannedAlertShown

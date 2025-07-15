@@ -51,7 +51,7 @@ public struct BattleReportView4HSR: BattleReportView {
                 blankView
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -452,7 +452,7 @@ public struct BattleReportView4HSR: BattleReportView {
         BattleReportView4HSR(
             data: try! BattleReportTestAssets.getReport4HSR(),
             profile: nil
-        ).formStyle(.grouped)
+        ).formStyle(.grouped).disableFocusable()
     }
     .environment(\.colorScheme, .dark)
 }

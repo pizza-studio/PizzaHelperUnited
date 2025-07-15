@@ -41,7 +41,7 @@ struct UISettingsPageContent: View {
 
             Enka.DisplayOptionViewContents()
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navigationTitle("settings.uiSettings.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
     }

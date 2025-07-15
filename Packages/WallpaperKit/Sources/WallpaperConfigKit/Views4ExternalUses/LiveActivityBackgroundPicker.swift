@@ -49,7 +49,7 @@ public struct LiveActivityBackgroundPicker: View {
                     .clipShape(.rect)
                 }
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .searchable(text: $searchText, placement: searchFieldPlacement)
             .navBarTitleDisplayMode(.inline) // 特例：這個畫面用 inline 會有更好的效能。
             .navigationTitle(Self.navTitle)

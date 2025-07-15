@@ -31,7 +31,7 @@ struct OtherSettingsPageContent: View {
                 CGImageCropperView.makeTestView()
                 #endif
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .navigationTitle("Developer Settings".description)
             .navBarTitleDisplayMode(.large)
             .toolbar {

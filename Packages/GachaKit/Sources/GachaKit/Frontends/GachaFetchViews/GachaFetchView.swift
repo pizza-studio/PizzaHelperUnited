@@ -119,7 +119,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                     }
                 }
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .navigationTitle(GachaFetchView.navTitle)
             .navBarTitleDisplayMode(.large)
             .navigationBarBackButtonHidden(gachaVM4Fetch.status.isBusy)

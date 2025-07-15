@@ -157,7 +157,7 @@ struct CharacterPhotoSpecimenViewPerGame_Previews: PreviewProvider {
                         .tabItem { Text(verbatim: "GI") }
                 }
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
         }
         .frame(height: 600)
     }

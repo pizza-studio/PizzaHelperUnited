@@ -26,7 +26,7 @@ public struct GachaBigChartView: View {
                     poolType: theVM.currentPoolType
                 )?.environment(theVM)
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .saturation(theVM.taskState == .busy ? 0 : 1)
             .navBarTitleDisplayMode(.large)
             .navigationTitle(theVM.currentGPIDTitle ?? Self.navTitle)

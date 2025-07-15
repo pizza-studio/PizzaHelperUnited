@@ -32,7 +32,7 @@ extension ProfileManagerPageContent {
                 Form {
                     ProfileConfigViewContents(profile: profile)
                 }
-                .formStyle(.grouped)
+                .formStyle(.grouped).disableFocusable()
                 .disabled(theVM.taskState == .busy)
                 .saturation(theVM.taskState == .busy ? 0 : 1)
                 .navigationTitle("profileMgr.edit.title".i18nPZHelper)

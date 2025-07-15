@@ -103,7 +103,7 @@ struct AppSettingsTabPage: View {
                 }
                 #endif
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .navigationTitle("tab.settings.fullTitle".i18nPZHelper)
             .navBarTitleDisplayMode(.large)
             .safeAreaInset(edge: .bottom) {

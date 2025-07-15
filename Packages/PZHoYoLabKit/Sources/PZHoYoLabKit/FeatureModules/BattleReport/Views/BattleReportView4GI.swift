@@ -53,7 +53,7 @@ public struct BattleReportView4GI: BattleReportView {
                 blankView
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -635,7 +635,7 @@ extension BattleReportView4GI {
         BattleReportView4GI(
             data: try! BattleReportTestAssets.getReport4GI(),
             profile: nil
-        ).formStyle(.grouped)
+        ).formStyle(.grouped).disableFocusable()
     }
     .environment(\.colorScheme, .dark)
 }

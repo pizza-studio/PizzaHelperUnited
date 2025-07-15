@@ -95,7 +95,7 @@ struct ProfileConfigEditorView: View {
                 warningAboutDeviceFP
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navigationTitle("profile.label.editDetails".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
     }

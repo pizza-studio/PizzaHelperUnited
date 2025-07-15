@@ -43,7 +43,7 @@ struct UtilsTabPage: View {
                 Text("tab.utils.featureRemovalNotice", bundle: .module)
                     .asInlineTextDescription()
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .navigationTitle("tab.utils.fullTitle".i18nPZHelper)
             .navBarTitleDisplayMode(.large)
             .safeAreaInset(edge: .bottom) {

@@ -109,7 +109,7 @@ struct UserWallpaperMakerView: View {
                 }
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navigationTitle(navTitle)
         .navBarTitleDisplayMode(.large)
         .apply { currentContent in

@@ -109,7 +109,7 @@ public struct ShowCaseListView<DBType: EnkaDBProtocol>: View where DBType.Querie
                 .listRowMaterialBackground()
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navigationTitle(Text(verbatim: "\(profile.rawInfo.nickname) (\(profile.uid.description))"))
         .navBarTitleDisplayMode(.inline)
     }

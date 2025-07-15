@@ -394,7 +394,7 @@ extension CGImageCropperView {
     Form {
         CGImageCropperView.makeTestView()
     }
-    .formStyle(.grouped)
+    .formStyle(.grouped).disableFocusable()
 }
 #endif
 

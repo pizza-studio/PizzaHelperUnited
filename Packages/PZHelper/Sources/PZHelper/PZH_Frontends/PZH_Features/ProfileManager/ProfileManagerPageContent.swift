@@ -120,7 +120,7 @@ struct ProfileManagerPageContent: View {
                 }
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .navigationTitle("profileMgr.manage.title".i18nPZHelper)
         .navBarTitleDisplayMode(.large)
         .onAppear(perform: bleachInvalidProfiles)

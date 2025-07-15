@@ -40,7 +40,7 @@ public struct GachaExchangeView: View {
                 .disabled(theVM.taskState == .busy)
                 .saturation(theVM.taskState == .busy ? 0 : 1)
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .navBarTitleDisplayMode(.large)
             .navigationTitle(currentPage.localizedTitleForNav)
             .toolbar {

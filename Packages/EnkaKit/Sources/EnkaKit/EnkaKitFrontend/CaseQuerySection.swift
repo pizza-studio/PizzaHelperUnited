@@ -146,6 +146,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
                 .font(.system(.title))
                 .monospaced()
                 .fontWidth(.condensed)
+                .enableFocusable()
             let buttonDimension = ceil(Font.baseFontSize * 2)
             #if os(iOS) && !targetEnvironment(macCatalyst)
             if (focused ?? $backupFocus).wrappedValue {
@@ -229,7 +230,7 @@ public struct CaseQuerySection<QueryDB: EnkaDBProtocol>: View {
             CaseQuerySection(theDB: enkaDatabaseHSR)
             CaseQuerySection(theDB: enkaDatabaseGI)
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
     }
     .environment(\.locale, .init(identifier: "zh-Hant-TW"))
 }

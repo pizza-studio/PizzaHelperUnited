@@ -95,7 +95,7 @@ struct TodayTabPage: View {
                         .init(top: pd, leading: pd, bottom: pd, trailing: pd)
                     )
             }
-            .formStyle(.grouped)
+            .formStyle(.grouped).disableFocusable()
             .background(alignment: .bottom) {
                 if !wrappedByNavStack {
                     // 这个隐形 List 不要删除，否则 NavSplitView 全局导航会失效。

@@ -127,6 +127,7 @@ public struct ContentView4iOS14: View {
                 .frame(maxWidth: .infinity)
             }
         }
+        .disableFocusable()
         .navigationTitle(Text("app.appName.full", bundle: .module))
         .navBarTitleDisplayMode(.large)
         .toolbar {

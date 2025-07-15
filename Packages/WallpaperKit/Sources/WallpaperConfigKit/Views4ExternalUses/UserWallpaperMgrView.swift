@@ -216,7 +216,7 @@ extension UserWallpaperMgrViewContent {
                 }
             }
         }
-        .formStyle(.grouped)
+        .formStyle(.grouped).disableFocusable()
         .react(to: viewRefreshHash) {
             Task { @MainActor in
                 withAnimation {
