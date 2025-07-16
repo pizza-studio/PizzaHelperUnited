@@ -94,7 +94,8 @@ public protocol TaskManagedVMProtocol: AnyObject {
     func handleError(_ error: Error)
     func fireTask<each T: Sendable>(
         prerequisite: (condition: Bool, notMetHandler: (() -> Void)?)?,
-        animatedPreparationTask: (() -> Void)?,
+        preparationTask: (() -> Void)?,
+        shouldAnimatePreparationTask: Bool,
         cancelPreviousTask: Bool,
         givenTask: @escaping () async throws -> (repeat each T)?,
         completionHandler: (((repeat each T)?) -> Void)?,
@@ -138,7 +139,8 @@ extension TaskManagedVMProtocol {
 
     public func fireTask<each T: Sendable>(
         prerequisite: (condition: Bool, notMetHandler: (() -> Void)?)? = nil,
-        animatedPreparationTask: (() -> Void)? = nil,
+        preparationTask: (() -> Void)? = nil,
+        shouldAnimatePreparationTask: Bool = true,
         cancelPreviousTask: Bool = true,
         givenTask: @escaping () async throws -> (repeat each T)?,
         completionHandler: (((repeat each T)?) -> Void)? = nil,
@@ -155,7 +157,12 @@ extension TaskManagedVMProtocol {
         withAnimation {
             currentError = nil
             taskState = .busy
-            animatedPreparationTask?()
+            if shouldAnimatePreparationTask {
+                preparationTask?()
+            }
+        }
+        if !shouldAnimatePreparationTask {
+            preparationTask?()
         }
         Task { [weak self] in
             guard let self else { return }

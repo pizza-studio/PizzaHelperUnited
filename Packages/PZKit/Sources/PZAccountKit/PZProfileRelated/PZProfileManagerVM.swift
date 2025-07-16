@@ -108,7 +108,7 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
     ) {
         var newProfiles = profiles
         fireTask(
-            animatedPreparationTask: {
+            preparationTask: {
                 newProfiles.move(fromOffsets: source, toOffset: destination)
                 newProfiles.fixPrioritySettings()
                 self.profiles = newProfiles
@@ -138,7 +138,7 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
         errorHandler: ((any Error) -> Void)? = nil
     ) {
         fireTask(
-            animatedPreparationTask: {
+            preparationTask: {
                 self.profiles.indices.forEach { index in
                     if self.profiles[index].uuid == profile.uuid {
                         self.profiles[index].inherit(from: profile)
@@ -178,7 +178,7 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
         guard !profiles.isEmpty, !profileRefMap.isEmpty else { return }
         var droppedProfiles: [PZProfileSendable] = []
         fireTask(
-            animatedPreparationTask: {
+            preparationTask: {
                 droppedProfiles = self.profiles.filter {
                     uuidsToDrop.contains($0.uuid)
                 }

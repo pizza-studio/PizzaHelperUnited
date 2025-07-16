@@ -94,7 +94,7 @@ extension CDGachaMODebugView {
         func loadData() {
             let game = game // 使其变成 Sendable.
             fireTask(
-                animatedPreparationTask: {
+                preparationTask: {
                     self.managedObjs.removeAll()
                 },
                 cancelPreviousTask: true, // 强制重新读入。
