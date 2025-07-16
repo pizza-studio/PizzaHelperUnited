@@ -98,21 +98,30 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
         errorHandler: ((any Error) -> Void)? = nil
     ) {
         var newProfiles = profiles
-        newProfiles.move(fromOffsets: source, toOffset: destination)
-        newProfiles.fixPrioritySettings()
-        newProfiles.forEach {
-            let uuidStr = $0.uuid.uuidString
-            if let mo = profileRefMap[uuidStr] {
-                mo.priority = $0.priority
-            }
-        }
         fireTask(
             animatedPreparationTask: {
+                newProfiles.move(fromOffsets: source, toOffset: destination)
+                newProfiles.fixPrioritySettings()
+                newProfiles.forEach {
+                    let uuidStr = $0.uuid.uuidString
+                    if let mo = self.profileRefMap[uuidStr] {
+                        mo.priority = $0.priority
+                    }
+                }
                 self.profiles = newProfiles
             },
             cancelPreviousTask: false,
             givenTask: {
-                try await self.profileActor?.replaceAllProfiles(with: Set(newProfiles))
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        try await self.profileActor?.replaceAllProfiles(with: Set(newProfiles))
+                    }
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
+                }
             },
             errorHandler: errorHandler
         )
@@ -123,18 +132,29 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
         trailingTasks: (() -> Void)? = nil,
         errorHandler: ((any Error) -> Void)? = nil
     ) {
-        profileRefMap.values.filter { $0.uuid == profile.uuid }.forEach {
-            $0.inherit(from: profile)
-        }
-        profiles.indices.forEach { index in
-            if profiles[index].uuid == profile.uuid {
-                profiles[index].inherit(from: profile)
-            }
-        }
         fireTask(
+            animatedPreparationTask: {
+                self.profileRefMap.values.filter { $0.uuid == profile.uuid }.forEach {
+                    $0.inherit(from: profile)
+                }
+                self.profiles.indices.forEach { index in
+                    if self.profiles[index].uuid == profile.uuid {
+                        self.profiles[index].inherit(from: profile)
+                    }
+                }
+            },
             cancelPreviousTask: false,
             givenTask: {
-                try await self.profileActor?.addOrUpdateProfile(profile)
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        try await self.profileActor?.addOrUpdateProfile(profile)
+                    }
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
+                }
             },
             completionHandler: { _ in
                 trailingTasks?()
@@ -152,21 +172,31 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
         // 这里提前先修改 VM 内部的参数。
         // 虽然最后会被自动再重复落实一次，但不事先落实 VM 的修改的话就会造成前台 SwiftUI 视觉效果割裂。
         var modifiedProfileRefMap = profileRefMap
-        let profilesModified = profiles.filter {
-            modifiedProfileRefMap.removeValue(forKey: $0.uuid.uuidString)
-            return !uuidsToDrop.contains($0.uuid)
-        }
         fireTask(
             animatedPreparationTask: {
                 self.profileRefMap = modifiedProfileRefMap
+                let profilesModified = self.profiles.filter {
+                    modifiedProfileRefMap.removeValue(forKey: $0.uuid.uuidString)
+                    return !uuidsToDrop.contains($0.uuid)
+                }
                 self.profiles = profilesModified
             },
             cancelPreviousTask: false,
             givenTask: {
-                try await self.profileActor?.deleteProfiles(uuids: uuidsToDrop)
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        return try await self.profileActor?.deleteProfiles(uuids: uuidsToDrop)
+                    }
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
+                }
+                return []
             },
-            completionHandler: { fetched in
-                completionHandler?(fetched)
+            completionHandler: { remainingEntries in
+                completionHandler?(remainingEntries)
             },
             errorHandler: errorHandler
         )
@@ -181,7 +211,16 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
             cancelPreviousTask: false,
             givenTask: {
                 let profileSendableSet = profileSendableSet ?? Set(self.profiles)
-                try await self.profileActor?.replaceAllProfiles(with: profileSendableSet)
+                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
+                do {
+                    if await !assertion.state.isReleased {
+                        try await self.profileActor?.replaceAllProfiles(with: profileSendableSet)
+                    }
+                    await assertion.release()
+                } catch {
+                    await assertion.release()
+                    throw error
+                }
                 return await self.profileActor?.getSendableProfiles() ?? Defaults[.pzProfiles].values.sorted {
                     $0.priority < $1.priority
                 }
