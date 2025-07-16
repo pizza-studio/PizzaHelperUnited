@@ -170,7 +170,7 @@ final class RootNavVM: Sendable {
                         }
                     } label: {
                         VStack(spacing: 0) {
-                            navCase.icon.frame(width: 30, height: 30)
+                            navCase.icon.frame(width: 28, height: 28)
                             navCase.labelNameText
                                 .font(.footnote)
                                 .padding(.bottom, OS.liquidGlassThemeSuspected ? 0 : 4)
@@ -190,6 +190,6 @@ final class RootNavVM: Sendable {
                 }
             }
         }
-        .frame(height: 50)
+        .frame(minHeight: 50, maxHeight: 60)
     }
 }
