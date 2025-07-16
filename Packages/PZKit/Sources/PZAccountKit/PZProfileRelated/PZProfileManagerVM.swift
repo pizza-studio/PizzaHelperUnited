@@ -85,10 +85,19 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
     public func discardUncommittedChanges() {
         // 这里的实作可能有些机车，但这是为了确保所有被还原的对象的指针一致。
         guard hasUncommittedChanges else { return }
-        var newResult = [String: PZProfileRef]()
+        var newResult = profileRefMap
+        let oldUUIDs = Set(newResult.values.map(\.uuid.uuidString))
+        var handledUUIDs = Set<String>()
         Defaults[.pzProfiles].forEach { uuidStr, profileSendable in
-            newResult[uuidStr] = profileSendable.asRef
+            if newResult[uuidStr] == nil {
+                newResult[uuidStr] = profileSendable.asRef
+            } else {
+                newResult[uuidStr]?.inherit(from: profileSendable)
+            }
+            handledUUIDs.insert(uuidStr)
         }
+        let uuidsOfOrphans = oldUUIDs.subtracting(handledUUIDs)
+        uuidsOfOrphans.forEach { newResult.removeValue(forKey: $0) }
         profileRefMap = newResult
     }
 
