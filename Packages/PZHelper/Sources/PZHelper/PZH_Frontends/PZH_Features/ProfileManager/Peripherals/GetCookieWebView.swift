@@ -401,32 +401,6 @@ private func getHTTPHeaderFields(region: HoYo.AccountRegion) -> [String: String]
 }
 
 #if os(iOS) && !targetEnvironment(macCatalyst)
-import Combine
-import UIKit
-
-/// Publisher to read keyboard changes.
-@available(iOS 16.2, macCatalyst 16.2, *)
-private protocol KeyboardReadable {
-    var keyboardPublisher: AnyPublisher<Bool, Never> { get }
-}
-
-@available(iOS 16.2, macCatalyst 16.2, *)
-extension KeyboardReadable {
-    fileprivate var keyboardPublisher: AnyPublisher<Bool, Never> {
-        Publishers.Merge(
-            NotificationCenter.default
-                .publisher(for: UIResponder.keyboardWillShowNotification)
-                .map { _ in true },
-
-            NotificationCenter.default
-                .publisher(for: UIResponder.keyboardWillHideNotification)
-                .map { _ in false }
-        )
-        .eraseToAnyPublisher()
-    }
-}
-
 @available(iOS 16.2, macCatalyst 16.2, *)
 extension GetCookieWebView: KeyboardReadable {}
-
 #endif
