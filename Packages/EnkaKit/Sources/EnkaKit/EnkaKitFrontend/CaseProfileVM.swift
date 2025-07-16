@@ -63,7 +63,7 @@ final class CaseProfileVM<CoordinatedDB: EnkaDBProtocol>: TaskManagedVM {
     func update(givenUID: Int? = nil, immediately: Bool = true) {
         guard let givenUID = givenUID ?? Int(uid) else { return }
         fireTask(
-            animatedPreparationTask: nil,
+            preparationTask: nil,
             cancelPreviousTask: immediately,
             givenTask: {
                 let enkaDB = CoordinatedDB.shared
