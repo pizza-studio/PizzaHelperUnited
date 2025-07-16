@@ -114,6 +114,7 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
                 self.profiles = newProfiles
                 // self.profileRefMap 会通过 self.profiles 的 didSet 同步更新。
             },
+            shouldAnimatePreparationTask: false,
             cancelPreviousTask: false,
             givenTask: {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
