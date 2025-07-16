@@ -111,19 +111,15 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
             animatedPreparationTask: {
                 newProfiles.move(fromOffsets: source, toOffset: destination)
                 newProfiles.fixPrioritySettings()
-                newProfiles.forEach {
-                    let uuidStr = $0.uuid.uuidString
-                    if let mo = self.profileRefMap[uuidStr] {
-                        mo.priority = $0.priority
-                    }
-                }
                 self.profiles = newProfiles
+                // self.profileRefMap 会通过 self.profiles 的 didSet 同步更新。
             },
             cancelPreviousTask: false,
             givenTask: {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
+                        // 此处的 newProfiles 已经是修过 priority 了的。
                         try await self.profileActor?.replaceAllProfiles(with: Set(newProfiles))
                     }
                     await assertion.release()
@@ -143,21 +139,23 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
     ) {
         fireTask(
             animatedPreparationTask: {
-                self.profileRefMap.values.filter { $0.uuid == profile.uuid }.forEach {
-                    $0.inherit(from: profile)
-                }
                 self.profiles.indices.forEach { index in
                     if self.profiles[index].uuid == profile.uuid {
                         self.profiles[index].inherit(from: profile)
                     }
                 }
+                // self.profileRefMap 会通过 self.profiles 的 didSet 同步更新。
             },
             cancelPreviousTask: false,
             givenTask: {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
-                        try await self.profileActor?.addOrUpdateProfile(profile)
+                        if let fixed = self.profiles.priorityIssuesSolvedForm {
+                            try await self.profileActor?.addOrUpdateProfiles(Set(fixed))
+                        } else {
+                            try await self.profileActor?.addOrUpdateProfile(profile)
+                        }
                     }
                     await assertion.release()
                 } catch {
@@ -178,64 +176,34 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
         errorHandler: ((any Error) -> Void)? = nil
     ) {
         guard !profiles.isEmpty, !profileRefMap.isEmpty else { return }
-        // 这里提前先修改 VM 内部的参数。
-        // 虽然最后会被自动再重复落实一次，但不事先落实 VM 的修改的话就会造成前台 SwiftUI 视觉效果割裂。
-        var modifiedProfileRefMap = profileRefMap
+        var droppedProfiles: [PZProfileSendable] = []
         fireTask(
             animatedPreparationTask: {
-                self.profileRefMap = modifiedProfileRefMap
-                let profilesModified = self.profiles.filter {
-                    modifiedProfileRefMap.removeValue(forKey: $0.uuid.uuidString)
-                    return !uuidsToDrop.contains($0.uuid)
+                droppedProfiles = self.profiles.filter {
+                    uuidsToDrop.contains($0.uuid)
                 }
-                self.profiles = profilesModified
+                let newProfiles = self.profiles.filter {
+                    !uuidsToDrop.contains($0.uuid)
+                }
+                self.profiles = newProfiles.priorityIssuesSolvedForm ?? newProfiles
+                // self.profileRefMap 会通过 self.profiles 的 didSet 同步更新。
             },
             cancelPreviousTask: false,
             givenTask: {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
-                        return try await self.profileActor?.deleteProfiles(uuids: uuidsToDrop)
+                        try await self.profileActor?.addOrUpdateProfiles(Set(self.profiles))
                     }
                     await assertion.release()
                 } catch {
                     await assertion.release()
                     throw error
                 }
-                return []
+                return Set(droppedProfiles)
             },
             completionHandler: { remainingEntries in
                 completionHandler?(remainingEntries)
-            },
-            errorHandler: errorHandler
-        )
-    }
-
-    public func replaceAllProfiles(
-        with profileSendableSet: Set<PZProfileSendable>? = nil,
-        trailingTasks: (() -> Void)? = nil,
-        errorHandler: ((any Error) -> Void)? = nil
-    ) {
-        fireTask(
-            cancelPreviousTask: false,
-            givenTask: {
-                let profileSendableSet = profileSendableSet ?? Set(self.profiles)
-                let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
-                do {
-                    if await !assertion.state.isReleased {
-                        try await self.profileActor?.replaceAllProfiles(with: profileSendableSet)
-                    }
-                    await assertion.release()
-                } catch {
-                    await assertion.release()
-                    throw error
-                }
-                return await self.profileActor?.getSendableProfiles() ?? Defaults[.pzProfiles].values.sorted {
-                    $0.priority < $1.priority
-                }
-            },
-            completionHandler: { _ in
-                trailingTasks?()
             },
             errorHandler: errorHandler
         )
