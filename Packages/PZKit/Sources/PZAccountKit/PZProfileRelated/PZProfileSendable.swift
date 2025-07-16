@@ -104,6 +104,20 @@ extension PZProfileSendable {
     }
 }
 
+extension Array where Element == PZProfileSendable {
+    public var hasPriorityIssues: Bool {
+        priorityIssuesSolvedForm != nil
+    }
+
+    /// This property returns nil if no problem to solve.
+    public var priorityIssuesSolvedForm: Self? {
+        let oldHash = hashValue
+        var newProfiles = self
+        newProfiles.fixPrioritySettings()
+        return oldHash != newProfiles.hashValue ? newProfiles : nil
+    }
+}
+
 @available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, *)
 extension PZProfileSendable {
     internal var asMO: PZProfileMO {
