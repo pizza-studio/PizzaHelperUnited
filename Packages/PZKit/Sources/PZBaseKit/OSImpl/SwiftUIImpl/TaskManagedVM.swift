@@ -27,13 +27,25 @@ open class TaskManagedVM: TaskManagedVMProtocol {
     /// 唯一保留的业务 Task
     public var task: Task<Void, Never>? {
         didSet {
-            if task == nil {
-                taskState = .standby
-            } else {
+            if let theTask = task {
+                stateGuard?.cancel()
+                stateGuard = Task { [weak self] in
+                    guard let this = self else { return }
+                    await theTask.value
+                    await MainActor.run {
+                        this.taskState = .standby
+                    }
+                }
                 taskState = .busy
+            } else {
+                taskState = .standby
             }
         }
     }
+
+    // MARK: Private
+
+    @ObservationIgnored private var stateGuard: Task<Void, Never>?
 }
 
 // MARK: - TaskManagedVMBackported
@@ -62,6 +74,10 @@ open class TaskManagedVMBackported: TaskManagedVMProtocol, ObservableObject {
             }
         }
     }
+
+    // MARK: Private
+
+    private var stateGuard: Task<Void, Never>?
 }
 
 // MARK: - TaskManagedVMProtocol
@@ -104,13 +120,20 @@ extension TaskManagedVMProtocol {
         taskState = .standby
     }
 
+    /// 不要在子 class 内 override 这个方法，因为一点儿屌用也没有。
+    /// 除非你在子 class 内也复写了 fireTask()，否则其预设的 Error 处理函式永远都是父 class 的。
+    ///
+    /// 正确方法是在子 class 内直接改写 `super.assignableErrorHandlingTask` 的资料值。
+    /// 或者你可以在 fireTask 的参数里面就地指定如何处理错误（但与之有关的动画与状态控制得自己搞）。
+    ///
+    /// 你可以在其中用 `if error is CancellationError` 处理与任务取消有关的错误。
     public func handleError(_ error: Error) {
         withAnimation {
             currentError = error
+            // taskState = .standby
         }
         assignableErrorHandlingTask(error)
         task?.cancel()
-        taskState = .standby
     }
 
     public func fireTask<each T: Sendable>(
@@ -123,7 +146,9 @@ extension TaskManagedVMProtocol {
     ) {
         if let prerequisite, !prerequisite.condition {
             if let notMetHandler = prerequisite.notMetHandler {
-                withAnimation { notMetHandler() }
+                withAnimation {
+                    notMetHandler()
+                }
             }
             return
         }
@@ -132,39 +157,38 @@ extension TaskManagedVMProtocol {
             taskState = .busy
             animatedPreparationTask?()
         }
-        let oldTask = task
-        if cancelPreviousTask {
-            oldTask?.cancel()
-        }
-        task = Task(priority: .background) { [weak self] in
+        Task { [weak self] in
             guard let self else { return }
-            if !cancelPreviousTask {
-                await oldTask?.value
-            }
-            do {
-                let retrieved = try await givenTask()
-                await animateOnMain {
-                    if let retrieved {
-                        completionHandler?(retrieved)
+            let previousTask = task
+            let newTask = Task(priority: .background) { [weak self] in
+                if cancelPreviousTask {
+                    previousTask?.cancel() // 按需取消既有任务。
+                } else {
+                    await previousTask?.value // 等待既有任务执行完毕。
+                }
+                do {
+                    let retrieved = try await givenTask()
+                    await MainActor.run { [weak self] in
+                        guard let this = self else { return }
+                        withAnimation {
+                            if let retrieved {
+                                completionHandler?(retrieved)
+                            }
+                            this.currentError = nil
+                            this.taskState = .standby // 此步骤必需。
+                        }
                     }
-                    self.currentError = nil
-                }
-            } catch {
-                await animateOnMain {
-                    (errorHandler ?? self.handleError)(error)
+                } catch {
+                    Task { @MainActor [weak self] in
+                        guard let this = self else { return }
+                        (errorHandler ?? this.handleError)(error) // 处理其他的错误。
+                        this.taskState = .standby // 此步骤必需。
+                    }
                 }
             }
-            await animateOnMain { self.taskState = .standby }
-        }
-    }
-
-    private func animateOnMain<T>(
-        resultType: T.Type = T.self,
-        body action: @MainActor () throws -> T
-    ) async rethrows
-        -> T where T: Sendable {
-        try await MainActor.run {
-            try withAnimation { try action() }
+            await MainActor.run {
+                task = newTask
+            }
         }
     }
 }
