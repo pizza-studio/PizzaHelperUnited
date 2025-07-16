@@ -463,14 +463,14 @@ struct ProfileManagerPageContent: View {
                         alertToastEventStatus.isFailureSituationTriggered.toggle()
                         return
                     }
-                    var decodedProfileSet: Set<PZProfileSendable> = []
+                    var decodedProfiles = [PZProfileSendable]()
                     let data: Data = try Data(contentsOf: url)
                     do {
                         // 此时可以假设要处理的档案是披萨难民资料包，里面只有原神的本机帐号资料。
                         let decoded = try PropertyListDecoder().decode(RefugeeFile.self, from: data)
                         var insertedUUIDs = Set<UUID>()
                         for newProfileSendable in decoded.newProfiles {
-                            decodedProfileSet.insert(newProfileSendable)
+                            decodedProfiles.append(newProfileSendable)
                             insertedUUIDs.insert(newProfileSendable.uuid)
                         }
                         for oldAccountMO in decoded.oldProfiles4GI {
@@ -479,18 +479,18 @@ struct ProfileManagerPageContent: View {
                             )
                             guard let newProfileSendable else { continue }
                             guard !insertedUUIDs.contains(newProfileSendable.uuid) else { continue }
-                            decodedProfileSet.insert(newProfileSendable)
+                            decodedProfiles.append(newProfileSendable)
                         }
                     } catch {
                         // 难民资料包的解码出错可以忽略不管，因为用户不该手动修改难民资料包的内容。
                         // 接下来处理正常的本地帐号资料备份交换包。
-                        let decoded = try JSONDecoder().decode([PZProfileSendable].self, from: data)
-                        decodedProfileSet = Set(decoded)
+                        decodedProfiles = try JSONDecoder().decode([PZProfileSendable].self, from: data)
                     }
+                    decodedProfiles.fixPrioritySettings(respectExistingPriority: true, delta: theVM.profiles.count)
                     let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                     do {
                         if await !assertion.state.isReleased {
-                            try await theVM.profileActor?.addOrUpdateProfiles(decodedProfileSet)
+                            try await theVM.profileActor?.addOrUpdateProfiles(Set(decodedProfiles))
                         }
                         await assertion.release()
                     } catch {
