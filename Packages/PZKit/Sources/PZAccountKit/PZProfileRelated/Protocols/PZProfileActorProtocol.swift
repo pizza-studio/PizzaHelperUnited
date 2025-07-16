@@ -80,4 +80,10 @@ extension PZProfileActorProtocol {
         }
         Defaults[.oldAccountMOAlreadyAutoInherited] = true
     }
+
+    public func fixPriorityForExistingProfiles() async throws {
+        var existingProfiles = getSendableProfiles()
+        existingProfiles.fixPrioritySettings(respectExistingPriority: true)
+        try addOrUpdateProfiles(Set(existingProfiles))
+    }
 }
