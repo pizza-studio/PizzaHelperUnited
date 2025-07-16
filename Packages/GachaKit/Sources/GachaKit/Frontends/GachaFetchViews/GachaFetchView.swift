@@ -93,6 +93,7 @@ private struct GachaFetchView4Game<GachaType: GachaTypeProtocol>: View {
                 case .failFetching, .finished, .got:
                     Section {
                         GetGachaChart(data: $gachaVM4Fetch.gachaTypeDateCounts)
+                            .frame(minHeight: 120)
                     } header: {
                         HStack {
                             (Text("gachaKit.getRecord.fetchRange.title", bundle: .module) + Text(verbatim: ":"))
