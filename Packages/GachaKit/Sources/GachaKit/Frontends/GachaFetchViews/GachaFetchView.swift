@@ -422,9 +422,13 @@ extension GachaFetchView4Game {
 
         public var body: some View {
             Section {
-                // 合并显示原神的两个限定活动卡池。
-                let pools = GachaType.knownCases.filter {
-                    ($0 as? GachaTypeGI) != GachaTypeGI.characterEventWish2
+                let pools = GachaType.knownCases.filter { currentCase in
+                    switch currentCase {
+                    case let currentCase as GachaTypeGI:
+                        // 合并显示原神的两个限定活动卡池。
+                        currentCase != .characterEventWish2
+                    default: true
+                    }
                 }
                 ForEach(pools) { poolType in
                     Toggle(
@@ -449,6 +453,7 @@ extension GachaFetchView4Game {
                 var gachaTypes = [gachaType]
                 switch gachaType {
                 case let gachaType as GachaTypeGI where gachaType.uigfGachaType == .characterEventWish:
+                    // 合并显示原神的两个限定活动卡池，所以在该开关打开时插入所有符合的条件。
                     let eventWishes: [GachaTypeGI] = [.characterEventWish1, .characterEventWish2]
                     gachaTypes = eventWishes.compactMap { $0 as? GachaType }
                 default: break
@@ -726,10 +731,8 @@ extension GachaFetchView4Game {
                     GachaPoolExpressible.srLightConeEventWarp.localizedTitle: .yellow,
                     GachaPoolExpressible.srStellarWarp.localizedTitle: .green,
                     GachaPoolExpressible.srDepartureWarp.localizedTitle: .cyan,
-                    GachaPoolExpressible.srCollabWarpFateUBW21.localizedTitle: .pink,
-                    GachaPoolExpressible.srCollabWarpFateUBW22.localizedTitle: .red,
-                    GachaPoolExpressible.srCollabWarpFateUBW23.localizedTitle: .orange,
-                    GachaPoolExpressible.srCollabWarpFateUBW24.localizedTitle: .brown,
+                    GachaPoolExpressible.srCollabWarpFateUBWCharacter.localizedTitle: .pink,
+                    GachaPoolExpressible.srCollabWarpFateUBWLightCone.localizedTitle: .brown,
                 ]
             case .zenlessZone: [
                     GachaPoolExpressible.zzExclusiveChannel.localizedTitle: .blue,

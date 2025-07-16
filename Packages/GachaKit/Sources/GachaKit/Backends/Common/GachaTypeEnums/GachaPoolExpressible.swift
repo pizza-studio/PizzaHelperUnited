@@ -20,10 +20,8 @@ public enum GachaPoolExpressible: String, Identifiable, Equatable, Hashable, Sen
     case srUnknown
     case srCharacterEventWarp
     case srLightConeEventWarp
-    case srCollabWarpFateUBW21
-    case srCollabWarpFateUBW22
-    case srCollabWarpFateUBW23
-    case srCollabWarpFateUBW24
+    case srCollabWarpFateUBWCharacter
+    case srCollabWarpFateUBWLightCone
     case srStellarWarp
     case srDepartureWarp
     case zzUnknown
@@ -46,19 +44,7 @@ extension GachaPoolExpressible {
     // MARK: Public
 
     public static func getKnownCases(by game: Pizza.SupportedGame) -> [Self] {
-        var rawResults = Self.allCases.filter { $0.game == game && !$0.isUnknown }
-        let validRawValues: [String] = switch game {
-        case .genshinImpact:
-            GachaTypeGI.knownCases.map(\.rawValue)
-        case .starRail:
-            GachaTypeHSR.knownCases.map(\.rawValue)
-        case .zenlessZone:
-            GachaTypeZZZ.knownCases.map(\.rawValue)
-        }
-        rawResults.removeAll {
-            !validRawValues.contains($0.rawValueForKnownPools)
-        }
-        return rawResults
+        Self.allCases.filter { $0.game == game && !$0.isUnknown }
     }
 
     public static func getPoolFilterLabel(by game: Pizza.SupportedGame) -> String {
@@ -92,10 +78,8 @@ extension GachaPoolExpressible {
         case .srStellarWarp: .starRail
         case .srCharacterEventWarp: .starRail
         case .srLightConeEventWarp: .starRail
-        case .srCollabWarpFateUBW21: .starRail
-        case .srCollabWarpFateUBW22: .starRail
-        case .srCollabWarpFateUBW23: .starRail
-        case .srCollabWarpFateUBW24: .starRail
+        case .srCollabWarpFateUBWCharacter: .starRail
+        case .srCollabWarpFateUBWLightCone: .starRail
         case .zzUnknown: .zenlessZone
         case .zzStableChannel: .zenlessZone
         case .zzExclusiveChannel: .zenlessZone
@@ -117,41 +101,13 @@ extension GachaPoolExpressible {
         case .srStellarWarp: false
         case .srCharacterEventWarp: true
         case .srLightConeEventWarp: true
-        case .srCollabWarpFateUBW21: true
-        case .srCollabWarpFateUBW22: true
-        case .srCollabWarpFateUBW23: true
-        case .srCollabWarpFateUBW24: true
+        case .srCollabWarpFateUBWCharacter: true
+        case .srCollabWarpFateUBWLightCone: true
         case .zzUnknown: false
         case .zzStableChannel: false
         case .zzExclusiveChannel: true
         case .zzWEngineChannel: true
         case .zzBangbooChannel: false
-        }
-    }
-
-    /// 该动态 property 用来辅助 Predicate 筛选。所有目前未知的卡池在这里都指定「-114514」。
-    public var rawValueForKnownPools: String {
-        switch self {
-        case .giUnknown: "-114514"
-        case .giBeginnersWish: GachaTypeGI.beginnersWish.rawValue
-        case .giStandardWish: GachaTypeGI.standardWish.rawValue
-        case .giCharacterEventWish: GachaTypeGI.UIGFGachaType.characterEventWish.rawValue
-        case .giWeaponEventWish: GachaTypeGI.weaponEventWish.rawValue
-        case .giChronicledWish: GachaTypeGI.chronicledWish.rawValue
-        case .srUnknown: "-114514"
-        case .srStellarWarp: GachaTypeHSR.stellarWarp.rawValue
-        case .srCharacterEventWarp: GachaTypeHSR.characterEventWarp.rawValue
-        case .srLightConeEventWarp: GachaTypeHSR.lightConeEventWarp.rawValue
-        case .srCollabWarpFateUBW21: GachaTypeHSR.collabWarpFateUBW21.rawValue
-        case .srCollabWarpFateUBW22: GachaTypeHSR.collabWarpFateUBW22.rawValue
-        case .srCollabWarpFateUBW23: GachaTypeHSR.collabWarpFateUBW23.rawValue
-        case .srCollabWarpFateUBW24: GachaTypeHSR.collabWarpFateUBW24.rawValue
-        case .srDepartureWarp: GachaTypeHSR.departureWarp.rawValue
-        case .zzUnknown: "-114514"
-        case .zzStableChannel: GachaTypeZZZ.stableChannel.rawValue
-        case .zzExclusiveChannel: GachaTypeZZZ.exclusiveChannel.rawValue
-        case .zzWEngineChannel: GachaTypeZZZ.wEngineChannel.rawValue
-        case .zzBangbooChannel: GachaTypeZZZ.bangbooChannel.rawValue
         }
     }
 
@@ -172,10 +128,8 @@ extension GachaPoolExpressible {
         case .giChronicledWish, .zzBangbooChannel: .red
         case .giStandardWish, .srStellarWarp, .zzStableChannel: .green
         case .giBeginnersWish, .srDepartureWarp: .cyan
-        case .srCollabWarpFateUBW21: .pink
-        case .srCollabWarpFateUBW22: .red
-        case .srCollabWarpFateUBW23: .orange
-        case .srCollabWarpFateUBW24: .brown
+        case .srCollabWarpFateUBWCharacter: .pink
+        case .srCollabWarpFateUBWLightCone: .brown
         }
     }
 }
