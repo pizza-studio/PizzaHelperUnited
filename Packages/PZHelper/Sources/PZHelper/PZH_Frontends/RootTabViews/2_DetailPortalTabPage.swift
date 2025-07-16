@@ -10,6 +10,11 @@ import PZBaseKit
 import SFSafeSymbols
 import SwiftUI
 
+#if os(iOS) && !targetEnvironment(macCatalyst)
+@available(iOS 17.0, macCatalyst 17.0, *)
+extension DetailPortalTabPage: KeyboardReadable {}
+#endif
+
 // MARK: - DetailPortalTabPage
 
 @available(iOS 17.0, macCatalyst 17.0, *)
@@ -51,13 +56,22 @@ struct DetailPortalTabPage: View {
         )
         .apply(hookToolbar)
         .safeAreaInset(edge: .bottom) {
-            rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn
+            if !isKeyboardVisible {
+                rootNavVM.iOSBottomTabBarForBuggyOS25ReleasesOn
+            }
         }
         .onAppear {
             if let profile = vmDPV.currentProfile, !sortedProfiles.contains(profile) {
                 vmDPV.currentProfile = nil
             }
         }
+        #if os(iOS) && !targetEnvironment(macCatalyst)
+        .onReceive(keyboardPublisher) { keyboardComesOut in
+            withAnimation {
+                isKeyboardVisible = keyboardComesOut
+            }
+        }
+        #endif
     }
 
     @ViewBuilder var formContent: some View {
@@ -146,6 +160,7 @@ struct DetailPortalTabPage: View {
     @State private var screenVM: ScreenVM = .shared
     @StateObject private var broadcaster = Broadcaster.shared
     @FocusState private var uidInputFieldFocus: Bool
+    @State private var isKeyboardVisible = false
 
     @Default(.pzProfiles) private var profiles: [String: PZProfileSendable]
 
