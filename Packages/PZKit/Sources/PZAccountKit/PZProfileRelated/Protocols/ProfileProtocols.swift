@@ -25,14 +25,15 @@ public protocol ProfileBasicProtocol: Codable {
 }
 
 extension Array where Element: ProfileBasicProtocol {
-    mutating public func fixPrioritySettings(respectExistingPriority: Bool = false) {
+    mutating public func fixPrioritySettings(respectExistingPriority: Bool = false, delta: Int = 0) {
+        let delta = Swift.max(0, delta)
         var newResult = self
         if respectExistingPriority {
             newResult.sort { $0.priority < $1.priority }
         }
         newResult.indices.forEach {
             var newObj = newResult[$0]
-            newObj.priority = $0
+            newObj.priority = $0 + delta
             newResult[$0] = newObj
         }
         self = newResult
