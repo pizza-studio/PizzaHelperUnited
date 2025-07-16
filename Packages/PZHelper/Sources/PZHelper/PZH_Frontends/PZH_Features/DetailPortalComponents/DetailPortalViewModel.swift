@@ -20,10 +20,6 @@ public final class DetailPortalViewModel {
     // MARK: Lifecycle
 
     public init() {
-        let pzProfiles: [PZProfileSendable] = Defaults[.pzProfiles].map(\.value)
-            .sorted { $0.priority < $1.priority }
-            .filter { $0.game != .zenlessZone } // 临时设定。
-        self.currentProfile = pzProfiles.first
         refresh()
         Task {
             for await newMap in Defaults.updates(.pzProfiles) {
@@ -82,7 +78,12 @@ public final class DetailPortalViewModel {
     public var taskStatus4BattleReport: Status<any BattleReportSet> = .standby
     @ObservationIgnored public var refreshingStatus: Status<Void> = .standby
 
-    public var currentProfile: PZProfileSendable? {
+    public var currentProfile: PZProfileSendable? = {
+        let pzProfiles: [PZProfileSendable] = Defaults[.pzProfiles].map(\.value)
+            .sorted { $0.priority < $1.priority }
+            .filter { $0.game != .zenlessZone } // 临时设定。
+        return pzProfiles.first
+    }() {
         didSet {
             if case let .progress(task) = refreshingStatus { task.cancel() }
             refreshingStatus = .standby
