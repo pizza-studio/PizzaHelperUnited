@@ -8689,310 +8689,156 @@
         }
       }
     },
-    "gachaKit.poolType.srCollabWarpFateUBW21" : {
+    "gachaKit.poolType.srCollabWarpFateUBWCharacter" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kollaborations-Warp #21"
+            "value" : "Kollaborations-Charakter-Warp"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Collab. Warp #21"
+            "value" : "Collab. Character Warp"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp de Colaboración #21"
+            "value" : "Warp de Colaboración de Personaje"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Collaboration Warp #21"
+            "value" : "Collaboration Character Warp"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp de collaboration #21"
+            "value" : "Warp de collaboration personnage"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Varco Collaborazione #21"
+            "value" : "Varco Collaborazione Personaggio"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "コラボ跳躍 #21"
+            "value" : "コラボキャラ跳躍"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "콜라보 워프 #21"
+            "value" : "콜라보 캐릭터 워프"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Коллаборационный варп #21"
+            "value" : "Коллаборационный варп персонажа"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp hợp tác #21"
+            "value" : "Warp hợp tác nhân vật"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "联动跃迁 #21"
+            "value" : "联动角色跃迁"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "聯動躍遷 #21"
+            "value" : "聯動角色躍遷"
           }
         }
       }
     },
-    "gachaKit.poolType.srCollabWarpFateUBW22" : {
+    "gachaKit.poolType.srCollabWarpFateUBWLightCone" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kollaborations-Warp #22"
+            "value" : "Kollaborations-Lichtkegel-Warp"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Collab. Warp #22"
+            "value" : "Collab. Light Cone Warp"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp de Colaboración #22"
+            "value" : "Warp de Cono de Luz de Colaboración"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Collaboration Warp #22"
+            "value" : "Collaboration Light Cone Warp"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp de collaboration #22"
+            "value" : "Warp de cône de lumière collaboration"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Varco Collaborazione #22"
+            "value" : "Varco Collaborazione Cono di Luce"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "コラボ跳躍 #22"
+            "value" : "コラボ光円錐跳躍"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "콜라보 워프 #22"
+            "value" : "콜라보 광추 워프"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Коллаборационный варп #22"
+            "value" : "Коллаборационный варп светового конуса"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp hợp tác #22"
+            "value" : "Warp Nón Ánh Sáng Hợp Tác"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "联动跃迁 #22"
+            "value" : "联动光锥跃迁"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "聯動躍遷 #22"
-          }
-        }
-      }
-    },
-    "gachaKit.poolType.srCollabWarpFateUBW23" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kollaborations-Warp #23"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Collab. Warp #23"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp de Colaboración #23"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Collaboration Warp #23"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp de collaboration #23"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Varco Collaborazione #23"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "コラボ跳躍 #23"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "콜라보 워프 #23"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Коллаборационный варп #23"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp hợp tác #23"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "联动跃迁 #23"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "聯動躍遷 #23"
-          }
-        }
-      }
-    },
-    "gachaKit.poolType.srCollabWarpFateUBW24" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kollaborations-Warp #24"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Collab. Warp #24"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp de Colaboración #24"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Collaboration Warp #24"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp de collaboration #24"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Varco Collaborazione #24"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "コラボ跳躍 #24"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "콜라보 워프 #24"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Коллаборационный варп #24"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp hợp tác #24"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "联动跃迁 #24"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "聯動躍遷 #24"
+            "value" : "聯動光錐躍遷"
           }
         }
       }
