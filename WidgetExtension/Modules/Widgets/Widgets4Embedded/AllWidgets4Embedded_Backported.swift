@@ -16,7 +16,7 @@ import WidgetKit
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INLockScreenResinWidget: Widget {
-    let kind: String = "LockScreenResinWidget"
+    let kind: String = "LockScreenResinWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -53,7 +53,7 @@ struct INLockScreenResinWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INAlternativeLockScreenHomeCoinWidget: Widget {
-    let kind: String = "AlternativeLockScreenHomeCoinWidget"
+    let kind: String = "AlternativeLockScreenHomeCoinWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -80,7 +80,7 @@ struct INAlternativeLockScreenHomeCoinWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INAlternativeLockScreenResinWidget: Widget {
-    let kind: String = "AlternativeLockScreenResinWidget"
+    let kind: String = "AlternativeLockScreenResinWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -104,7 +104,7 @@ struct INAlternativeLockScreenResinWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INLockScreenAllInfoWidget: Widget {
-    let kind: String = "LockScreenAllInfoWidget"
+    let kind: String = "LockScreenAllInfoWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -130,7 +130,7 @@ struct INLockScreenAllInfoWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INLockScreenDailyTaskWidget: Widget {
-    let kind: String = "LockScreenDailyTaskWidget"
+    let kind: String = "LockScreenDailyTaskWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -158,7 +158,7 @@ struct INLockScreenDailyTaskWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INLockScreenExpeditionWidget: Widget {
-    let kind: String = "LockScreenExpeditionWidget"
+    let kind: String = "LockScreenExpeditionWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -189,7 +189,7 @@ struct INLockScreenExpeditionWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INLockScreenHomeCoinWidget: Widget {
-    let kind: String = "LockScreenHomeCoinWidget"
+    let kind: String = "LockScreenHomeCoinWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -224,7 +224,7 @@ struct INLockScreenHomeCoinWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INLockScreenLoopWidget: Widget {
-    let kind: String = "LockScreenLoopWidget"
+    let kind: String = "LockScreenLoopWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -254,7 +254,7 @@ struct INLockScreenLoopWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INLockScreenResinFullTimeWidget: Widget {
-    let kind: String = "LockScreenResinFullTimeWidget"
+    let kind: String = "LockScreenResinFullTimeWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -279,7 +279,7 @@ struct INLockScreenResinFullTimeWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INLockScreenResinTimerWidget: Widget {
-    let kind: String = "LockScreenResinTimerWidget"
+    let kind: String = "LockScreenResinTimerWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -307,7 +307,7 @@ struct INLockScreenResinTimerWidget: Widget {
 @available(macOS, unavailable)
 @available(macCatalyst, unavailable)
 struct INAlternativeWatchCornerResinWidget: Widget {
-    let kind: String = "AlternativeWatchCornerResinWidget"
+    let kind: String = "AlternativeWatchCornerResinWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(

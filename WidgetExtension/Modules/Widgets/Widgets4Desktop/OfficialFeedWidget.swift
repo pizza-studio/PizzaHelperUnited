@@ -38,7 +38,7 @@ struct OfficialFeedWidget: Widget {
 @available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 struct INOfficialFeedWidget: Widget {
-    let kind: String = "OfficialFeedWidget"
+    let kind: String = "OfficialFeedWidget".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
