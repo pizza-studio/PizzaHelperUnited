@@ -1683,13 +1683,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果你有旧披萨难民资料需要导入的话，请选择 UIGFv4 格式。App 会自动对该文件的所有抽卡记录修正 itemID 等栏位内容、再转为 UIGFv4 格式后导入。此过程全自动完成。"
+            "value" : "如果您有旧披萨难民资料需要导入的话，请选择 UIGFv4 格式。App 会自动对该文件的所有抽卡记录修正 itemID 等栏位内容、再转为 UIGFv4 格式后导入。此过程全自动完成。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果你有舊披薩難民資料需要匯入的話，請選擇 UIGFv4 格式。App 會自動對該檔案的所有抽卡記錄修正 itemID 等欄位內容、再轉為 UIGFv4 格式後匯入。此過程全自動完成。"
+            "value" : "如果您有舊披薩難民資料需要匯入的話，請選擇 UIGFv4 格式。App 會自動對該檔案的所有抽卡記錄修正 itemID 等欄位內容、再轉為 UIGFv4 格式後匯入。此過程全自動完成。"
           }
         }
       }
