@@ -572,7 +572,7 @@ extension Enka.PropertyType {
         case .criticalChanceBase: nameStem = "CriticalChance"
         case .healRatioBase: nameStem = "HealRatio"
         case .statusProbabilityBase: nameStem = "StatusProbability"
-        case .speedAddedRatio, .speedDelta: nameStem = "Speed"
+        case .baseSpeed, .speedAddedRatio, .speedDelta: nameStem = "Speed"
         case .energyRecovery: nameStem = "EnergyRecovery"
         case .energyRecoveryBase: nameStem = "EnergyRecovery"
         case .criticalDamageBase: nameStem = "CriticalDamage"
