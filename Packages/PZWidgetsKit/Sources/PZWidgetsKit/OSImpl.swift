@@ -9,6 +9,14 @@ extension String {
     public var i18nPZWidgetsKit: String {
         String(localized: .init(stringLiteral: self), bundle: .module)
     }
+
+    public var asBackportedWidgetKindName: String {
+        if #available(iOS 17.0, macCatalyst 17.0, watchOS 10.0, macOS 14.0, *) {
+            "\(self)_backported"
+        } else {
+            self
+        }
+    }
 }
 
 @available(iOS 16.2, macCatalyst 16.2, *)
