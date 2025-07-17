@@ -36,7 +36,7 @@ struct SingleProfileWidget: Widget {
 @available(iOS 16.2, macCatalyst 16.2, *)
 @available(watchOS, unavailable)
 struct INSingleProfileWidget: Widget {
-    let kind: String = "WidgetView"
+    let kind: String = "WidgetView".asBackportedWidgetKindName
 
     var body: some WidgetConfiguration {
         IntentConfiguration(
