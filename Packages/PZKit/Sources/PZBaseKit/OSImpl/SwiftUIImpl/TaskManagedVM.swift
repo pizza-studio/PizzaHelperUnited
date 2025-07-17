@@ -186,9 +186,10 @@ extension TaskManagedVMProtocol {
                         }
                     }
                 } catch {
-                    Task { @MainActor [weak self] in
+                    await MainActor.run { [weak self] in
                         guard let this = self else { return }
-                        (errorHandler ?? this.handleError)(error) // 处理其他的错误。
+                        // Ensure handleError is called on the main actor
+                        (errorHandler ?? { error in this.handleError(error) })(error)
                         this.taskState = .standby // 此步骤必需。
                     }
                 }
