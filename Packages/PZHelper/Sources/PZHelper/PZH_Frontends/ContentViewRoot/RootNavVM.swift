@@ -190,6 +190,6 @@ final class RootNavVM: Sendable {
                 }
             }
         }
-        .frame(minHeight: 50, maxHeight: 60)
+        .frame(minHeight: 50, maxHeight: 54)
     }
 }
