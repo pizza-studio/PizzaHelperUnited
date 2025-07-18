@@ -94,8 +94,11 @@ public final class DetailPortalViewModel {
     public func refresh() {
         guard case .standby = refreshingStatus else { return }
         let task = Task {
+            // 此处的 `HoYo.waitFor300ms()` 是必需的，否则伺服器会喷 TOO MANY REQUESTS。
             await self.fetchCharacterInventoryList()
+            await HoYo.waitFor300ms()
             await self.fetchLedgerData()
+            await HoYo.waitFor300ms()
             await self.fetchBattleReportSet()
             refreshingStatus = .standby
         }
