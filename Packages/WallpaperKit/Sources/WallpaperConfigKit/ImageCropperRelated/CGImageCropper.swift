@@ -231,11 +231,7 @@ extension CGImageCropperView {
             let maxOriginXGuarded = max(1, maxOrigin.x)
             let stepValue = 1.0
             Stepper(value: $originX, in: 0 ... maxOriginXGuarded, step: stepValue) {
-                if OS.type == .macOS, !OS.isCatalyst {
-                    Slider(value: $originX, in: 0 ... maxOriginXGuarded)
-                } else {
-                    Slider(value: $originX, in: 0 ... maxOriginXGuarded, step: stepValue)
-                }
+                Slider(value: $originX, in: 0 ... maxOriginXGuarded)
             }
         } label: {
             Image(systemSymbol: .arrowLeftAndRightCircle)
@@ -246,11 +242,7 @@ extension CGImageCropperView {
             let maxOriginYGuarded = max(1, maxOrigin.y)
             let stepValue = 1.0
             Stepper(value: $originY, in: 0 ... maxOriginYGuarded, step: stepValue) {
-                if OS.type == .macOS, !OS.isCatalyst {
-                    Slider(value: $originY, in: 0 ... maxOriginYGuarded)
-                } else {
-                    Slider(value: $originY, in: 0 ... maxOriginYGuarded, step: stepValue)
-                }
+                Slider(value: $originY, in: 0 ... maxOriginYGuarded)
             }
         } label: {
             Image(systemSymbol: .arrowUpAndDownCircle)
@@ -262,7 +254,7 @@ extension CGImageCropperView {
         let maxScaleFactor = minimumScaleFactor + 2.0
         LabeledContent {
             Stepper(value: $scaleFactor, in: minimumScaleFactor ... maxScaleFactor, step: 0.1) {
-                Slider(value: $scaleFactor, in: minimumScaleFactor ... maxScaleFactor, step: 0.1)
+                Slider(value: $scaleFactor, in: minimumScaleFactor ... maxScaleFactor)
             }
         } label: {
             Image(systemSymbol: .magnifyingglass)
