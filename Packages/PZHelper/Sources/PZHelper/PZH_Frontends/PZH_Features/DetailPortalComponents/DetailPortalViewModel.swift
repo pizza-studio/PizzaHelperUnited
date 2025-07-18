@@ -55,6 +55,11 @@ public final class DetailPortalViewModel {
             }
         }
 
+        mutating func cancelAndStandBy() {
+            if case let .progress(task) = self { task.cancel() }
+            self = .standby
+        }
+
         mutating func goProgress(task: Task<Void, Never>) {
             self = .progress(task)
         }
@@ -85,9 +90,16 @@ public final class DetailPortalViewModel {
         return pzProfiles.first
     }() {
         didSet {
-            if case let .progress(task) = refreshingStatus { task.cancel() }
-            refreshingStatus = .standby
-            refresh()
+            if oldValue != currentProfile, currentProfile != nil {
+                if case let .progress(task) = refreshingStatus { task.cancel() }
+                refreshingStatus = .standby
+                withAnimation {
+                    taskStatus4CharInventory.cancelAndStandBy()
+                    taskStatus4Ledger.cancelAndStandBy()
+                    taskStatus4BattleReport.cancelAndStandBy()
+                }
+                refresh()
+            }
         }
     }
 
