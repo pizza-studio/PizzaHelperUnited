@@ -194,7 +194,10 @@ public final class ProfileManagerVM: TaskManagedVMBackported {
                 let assertion = BackgroundTaskAsserter(name: UUID().uuidString)
                 do {
                     if await !assertion.state.isReleased {
-                        try await self.profileActor?.addOrUpdateProfiles(Set(self.profiles))
+                        try await self.profileActor?.addOrUpdateProfilesWithDeletion(
+                            Set(self.profiles),
+                            uuidsToDelete: uuidsToDrop
+                        )
                     }
                     await assertion.release()
                 } catch {
