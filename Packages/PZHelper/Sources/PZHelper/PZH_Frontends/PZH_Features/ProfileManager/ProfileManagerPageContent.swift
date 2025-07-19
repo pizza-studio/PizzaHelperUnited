@@ -413,6 +413,9 @@ struct ProfileManagerPageContent: View {
     }
 
     private func moveItems(from source: IndexSet, to destination: Int) {
+        if source.count == 1, let sourceIndex = source.randomElement() {
+            guard sourceIndex != destination else { return }
+        }
         theVM.moveItems(from: source, to: destination) { error in
             errorMessage = error.localizedDescription
         }
