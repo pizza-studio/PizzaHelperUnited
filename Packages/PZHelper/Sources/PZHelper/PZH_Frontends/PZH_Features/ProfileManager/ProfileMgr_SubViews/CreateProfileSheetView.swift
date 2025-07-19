@@ -168,7 +168,7 @@ extension ProfileManagerPageContent {
                 profile.asSendable,
                 trailingTasks: {
                     PZNotificationCenter.bleachNotificationsIfDisabled(for: profile.asSendable)
-                    isVisible.toggle()
+                    isVisible.toggle() // 该行为必须发生在 trailingTasks (completionHandler) 内！！！
                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
                 },
                 errorHandler: { error in
@@ -257,12 +257,17 @@ extension ProfileManagerPageContent {
                         existingProfilesCount += 1
                     }
                     try await theVM.profileActor?.addOrUpdateProfiles(allProfilesFetched)
-                    PZNotificationCenter.batchDeleteDailyNoteNotification(
-                        profiles: allProfilesFetched,
-                        onlyDeleteIfDisabled: false
-                    )
+                    return allProfilesFetched
+                },
+                completionHandler: { allProfilesFetched in
+                    if let allProfilesFetched {
+                        PZNotificationCenter.batchDeleteDailyNoteNotification(
+                            profiles: allProfilesFetched,
+                            onlyDeleteIfDisabled: false
+                        )
+                    }
                     alertToastEventStatus.isProfileTaskSucceeded.toggle()
-                    isVisible.toggle()
+                    isVisible.toggle() // 该行为必须发生在 completionHandler 内！！！
                 },
                 errorHandler: { error in
                     getAccountError = .source(error)
