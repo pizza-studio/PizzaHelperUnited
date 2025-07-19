@@ -192,28 +192,6 @@ extension PZProfileActor {
         }
     }
 
-    public func replaceAllProfiles(with profileSendableSet: Set<PZProfileSendable>) throws {
-        var map: [UUID: PZProfileSendable] = [:]
-        var handledUUIDs = Set<UUID>()
-        profileSendableSet.forEach {
-            map[$0.uuid] = $0
-        }
-
-        try modelContext.transaction {
-            try modelContext.enumerate(FetchDescriptor<PZProfileMO>()) { currentMO in
-                guard let matchedSendable = map[currentMO.uuid] else {
-                    modelContext.delete(currentMO)
-                    return
-                }
-                currentMO.inherit(from: matchedSendable)
-                handledUUIDs.insert(matchedSendable.uuid)
-            }
-            let restUUIDs = Set(profileSendableSet.map(\.uuid)).subtracting(handledUUIDs)
-            let restProfilesToAdd: [PZProfileMO] = restUUIDs.compactMap { map[$0]?.asMO }
-            restProfilesToAdd.forEach(modelContext.insert)
-        }
-    }
-
     public func addOrUpdateProfilesWithDeletion(
         _ profileSendableSet: Set<PZProfileSendable>,
         uuidsToDelete: Set<UUID>
