@@ -13,7 +13,6 @@ public protocol PZProfileActorProtocol: Actor {
     func getSendableProfiles() -> [PZProfileSendable]
     func addOrUpdateProfilesWithDeletion(_ profileSendableSet: Set<PZProfileSendable>, uuidsToDelete: Set<UUID>) throws
     func addOrUpdateProfile(_ profileSendable: PZProfileSendable) throws
-    func replaceAllProfiles(with profileSendableSet: Set<PZProfileSendable>) throws
     func deleteProfile(uuid: UUID) throws
     @discardableResult
     func deleteProfiles(uuids: Set<UUID>) throws -> Set<PZProfileSendable>

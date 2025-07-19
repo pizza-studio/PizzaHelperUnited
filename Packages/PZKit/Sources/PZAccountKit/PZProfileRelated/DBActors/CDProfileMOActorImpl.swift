@@ -138,29 +138,6 @@ extension CDProfileMOActor: PZProfileActorProtocol {
         }
     }
 
-    public func replaceAllProfiles(with profileSendableSet: Set<PZProfileSendable>) throws {
-        var map: [UUID: PZProfileSendable] = [:]
-        var handledUUIDs = Set<UUID>()
-        profileSendableSet.forEach {
-            map[$0.uuid] = $0
-        }
-        try container.perform { context in
-            try context.fetch(PZProfileCDMO.all).forEach { currentCDMOObj in
-                var currentCDMO = try currentCDMOObj.decode()
-                guard let matchedSendable = map[currentCDMO.uuid] else {
-                    context.delete(currentCDMOObj)
-                    return
-                }
-                currentCDMO.inherit(from: matchedSendable)
-                currentCDMOObj.encode(currentCDMO)
-                handledUUIDs.insert(matchedSendable.uuid)
-            }
-            let restUUIDs = Set(profileSendableSet.map(\.uuid)).subtracting(handledUUIDs)
-            let restProfilesToAdd: [PZProfileCDMO] = restUUIDs.compactMap { map[$0]?.asCDMO }
-            try restProfilesToAdd.forEach { try context.insert($0) }
-        }
-    }
-
     public func addOrUpdateProfilesWithDeletion(
         _ profileSendableSet: Set<PZProfileSendable>,
         uuidsToDelete: Set<UUID>
