@@ -175,6 +175,7 @@ extension UserWallpaperMgrViewContent {
         Form {
             Section {
                 ForEach(userWallpapersSorted, id: \.id) { userWallpaper in
+                    #if os(iOS) || targetEnvironment(macCatalyst)
                     RowEntryView(
                         userWallpaper: userWallpaper,
                         textLimiter: limitText,
@@ -184,6 +185,16 @@ extension UserWallpaperMgrViewContent {
                         userWallpapers: $userWallpapers
                     )
                     .environment(alertToastEventStatus4WPMgr)
+                    #else
+                    RowEntryView(
+                        userWallpaper: userWallpaper,
+                        textLimiter: limitText,
+                        isNameEditorVisible: $isNameEditorVisible,
+                        currentEditingWallpaper: $currentEditingWallpaper,
+                        userWallpapers: $userWallpapers
+                    )
+                    .environment(alertToastEventStatus4WPMgr)
+                    #endif
                 }
                 .onDelete(perform: deleteItems)
             } header: {
@@ -278,6 +289,7 @@ extension UserWallpaperMgrViewContent {
     private struct RowEntryView: View {
         // MARK: Lifecycle
 
+        #if os(iOS) || targetEnvironment(macCatalyst)
         public init(
             userWallpaper: UserWallpaper,
             textLimiter: @escaping (Int) -> Void,
@@ -293,6 +305,21 @@ extension UserWallpaperMgrViewContent {
             self._currentEditingWallpaper = currentEditingWallpaper
             self._userWallpapers = userWallpapers
         }
+        #else
+        public init(
+            userWallpaper: UserWallpaper,
+            textLimiter: @escaping (Int) -> Void,
+            isNameEditorVisible: Binding<Bool>,
+            currentEditingWallpaper: Binding<UserWallpaper?>,
+            userWallpapers: Binding<Set<UserWallpaper>>
+        ) {
+            self.userWallpaper = userWallpaper
+            self.textLimiter = textLimiter
+            self._isNameEditorVisible = isNameEditorVisible
+            self._currentEditingWallpaper = currentEditingWallpaper
+            self._userWallpapers = userWallpapers
+        }
+        #endif
 
         // MARK: Public
 
@@ -419,7 +446,9 @@ extension UserWallpaperMgrViewContent {
 
         // MARK: Private
 
+        #if os(iOS) || targetEnvironment(macCatalyst)
         @Binding private var isEditMode: EditMode
+        #endif
         @Binding private var isNameEditorVisible: Bool
         @Binding private var currentEditingWallpaper: UserWallpaper?
         @Binding private var userWallpapers: Set<UserWallpaper>
